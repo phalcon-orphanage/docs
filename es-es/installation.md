@@ -82,14 +82,6 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using MacPorts
-
-Make sure you have [MacPorts](https://www.macports.org) installed and up to date (`sudo port -v selfupdate`)
-
-```bash
-sudo port install php-phalcon4
-```
-
 #### Mac/Osx using Brew
 
 ```bash
@@ -108,13 +100,13 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-Para Maverick
+For Maverick
 
 ```bash
 brew install pcre
 ```
 
-si te da error, puedes usar
+if it gives you error, you can use
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/
@@ -123,31 +115,31 @@ sudo pecl install apc
 
 ## Plataformas de instalación
 
-Como Phalcon está compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en el servidor web.
+Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
 ### Linux
 
-Para instalar Phalcon en Linux, necesitará agregar nuestro repositorio en su distribución y luego instalarlo.
+To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
 
 #### DEB Based Distributions (Debian, Ubuntu, Etc.)
 
 ##### Instalación desde el repositorio
 
-Agregar el repositorio en su distribución:
+Add the repository to your distribution:
 
-**Versiones estables**
+**Stable releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Versiones nocturnas**
+**Nightly releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Versiones principales (alpha, beta, etc.)**
+**Mainline releases (alpha, beta etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
@@ -158,7 +150,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb
 
 ##### Instalación de Phalcon
 
-Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
+To install Phalcon you need to type the following commands in your terminal:
 
 ```bash
 sudo apt-get update
@@ -169,9 +161,9 @@ sudo apt-get install php7.2-phalcon
 
 **Ondřej Surý**
 
-Si no desea usar nuestro repositorio en [packagecloud.io](https://packagecloud.io/phalcon), puede utilizar uno ofrecido por [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Instalación del repositorio:
+Installation of the repo:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
@@ -188,21 +180,21 @@ sudo apt-get install php-phalcon
 
 ##### Instalación desde el repositorio
 
-Agregar el repositorio en su distribución:
+Add the repository to your distribution:
 
-**Versiones estables**
+**Stable releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Versiones nocturnas**
+**Nightly releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Versiones principales (alpha, beta, etc.)**
+**Mainline releases (alpha, beta etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
@@ -214,7 +206,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm
 
 ##### Instalación de Phalcon
 
-Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
+To install Phalcon you need to issue the following commands in your terminal:
 
 ```bash
 sudo yum update
@@ -225,19 +217,19 @@ sudo yum install php72u-phalcon
 
 **Remi**
 
-[Remi Collet](https://github.com/remicollet) mantiene un excelente repositorio de RPM basado en instalaciones. Puede encontrar instrucciones sobre cómo activar en su distribución [aquí](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
 
-La instalación de Phalcon después de eso, es tan fácil como:
+Installing Phalcon after that is as easy as:
 
 ```bash
 yum install php72-php-phalcon4
 ```
 
-Versiones adicionales están disponibles para cada arquitectura específica (x86/x64), así como versiones específicas de PHP
+Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
 
 #### FreeBSD
 
-Un puerto está disponible para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
+A port is available for FreeBSD. To install it you will need to issue the following commands:
 
 ##### pkg_add
 
@@ -255,7 +247,7 @@ make install clean
 
 ##### Gentoo
 
-Un overlay para la instalación de Phalcon se puede encontrar [aquí](https://github.com/smoke/phalcon-gentoo-overlay)
+An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
 
 #### Raspberry Pi
 
@@ -286,19 +278,27 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
 
-#### Requerimentos
+#### Compilation requirements
 
-* Recursos de desarrollo para PHP 7.2.x
+* PHP 7.x development resources
 * XCode
 
 #### Brew
 
+Binary installation (preferred):
+
 ```bash
-brew tap tigerstrikemedia/homebrew-phalconphp
-brew install php72-phalcon
-brew install php73-phalcon
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon
+```
+
+Compile phalcon:
+
+```bash
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon --build-from-source 
 ```
 
 #### MacPorts
