@@ -3,7 +3,7 @@ layout: default
 language: 'ko-kr'
 version: '4.0'
 title: '소 개'
-keywords: 'introduction'
+keywords: '소 개'
 ---
 
 # 환영합니다!
@@ -24,5 +24,5 @@ C 언어를 몰라도 Phalcon을 사용하는데에는 지장이 없습니다. P
 
 Phalcon은 느슨하게 연결되어 있어서, 개발자들이 어플리케이션 개발 시 필요한 객체만 연결 컴포넌트(glue components) 로 사용할 수 있습니다.
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. 이 번역판의 영어버전은 [GitHub](https://github.com/phalcon/docs) 에서 관리하고 있으며, 나머지 언어들은 [Crowdin](https://crowdin.com/project/phalcon-documentation) 에서 관리합니다.
+> **주의** 이 문서의 번역은 열광적인 팬들과 기여자들이 주도하고 있습니다. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. 이 번역판의 영어버전은 [GitHub](https://github.com/phalcon/docs) 에서 관리하고 있으며, 나머지 언어들은 [Crowdin](https://crowdin.com/project/phalcon-documentation) 에서 관리합니다.
 {: .alert .alert-info }
