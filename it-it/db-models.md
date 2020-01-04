@@ -919,6 +919,9 @@ $invoice->inv_total = 120;
 $invoice->save();
 ```
 
+> **NOTE**: `save()` no longer accepts parameters to set data. You can use `assign` instead.
+{: .alert .alert-warning }
+
 ```php
 public function serialize(): string
 ```

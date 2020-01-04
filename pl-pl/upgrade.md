@@ -678,6 +678,10 @@ class Users
     } }
 ```
 
+### Save
+
+The `save()` method no longer accepts parameters to set data. You can use `assign` instead.
+
 ### Criteria
 
 The second parameter of `Criteria::limit()` ('offset') must now be an integer or null. Previously there was no type requirement.
