@@ -689,21 +689,19 @@ use Phalcon\Forms\Form;
 $form = new Form();
 
 $name = new Text('nameLast');
-$name
-    ->setFilters(
-        [
-            'string',
-            'trim',
-        ]
-    )
-    ->add($name);
+$name->setFilters(
+    [
+        'string',
+        'trim',
+    ]
+);
+$form->add($name);
 
 $email = new Text('email');
-$email
-    ->setFilters(
-        'email'
-    )
-    ->add($email);
+$email->setFilters(
+    'email'
+);
+$form->add($email);
 ```
 
 > **NOTE**: For more information regarding filters, you can check our [Filter document](filters)
