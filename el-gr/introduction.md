@@ -16,7 +16,7 @@ keywords: 'introduction'
 
 ## Τι είναι το Phalcon
 
-Το Phalcon είναι ένα πλαίσιο PHP πλήρης στοίβας και ανοικτού κώδικα, γραμμένο ως επέκταση C. Το Phalcon είναι βελτιστοποιημένο για υψηλή απόδοση. Η μοναδική αρχιτεκτονική του, του επιτρέπει να είναι πάντα φορτωμένο στη μνήμη, προσφέροντας τη λειτουργικότητά του, οπότε είναι αναγκαίο, δίχως στατιστικές και αναγνώσεις φακέλων που όπως σε παραδοσιακά πλαίσια PHP.
+Το Phalcon είναι ένα πλαίσιο PHP πλήρης στοίβας και ανοικτού κώδικα, γραμμένο ως επέκταση C. Το Phalcon είναι βελτιστοποιημένο για υψηλή απόδοση. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever it's needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
 ## Χρήση
 

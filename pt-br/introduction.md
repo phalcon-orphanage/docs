@@ -16,7 +16,7 @@ Nossa missão é oferecer aos desenvolvedores uma ferramenta avançada e rica, p
 
 ## O que é a Phalcon
 
-Phalcon é um framework "full stack" de código aberto para PHP, escrito como uma extensão em linguagem C. O Phalcon é otimizada para alta performance. Sua arquitetura única permite que o framework esteja sempre residente na memória, oferecendo sua funcionalidade sempre que necessário, sem toda aquela leitura e carregamento de arquivos que frameworks tradicionais do PHP exigem.
+Phalcon é um framework "full stack" de código aberto para PHP, escrito como uma extensão em linguagem C. O Phalcon é otimizada para alta performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever it's needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
 ## Utilização
 
