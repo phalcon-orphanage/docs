@@ -317,7 +317,20 @@ public function isValid(
     object $entity = null
 ): bool
 ```
-Validates the form. The first element is the data that has been provided by the user. This is usually the `$_POST` array. There is an optional `entity` parameter, which, if passed, will be populated by the user input after all validations and filtering have been completed.
+Validates the form. The first element is the data that has been provided by the user. This is usually the `$_POST` array. 
+
+The second optional parameter is `entity` (object). If passed, internally the component will call `bind()` which will:
+- Loop through the passed `data`
+- Check if the element from the `data` exists (with the same name) in the `entity`
+- If yes, check the form's whitelist array. If the element exists there, it will not be changed
+- The value of the element (from the `data` array) will be sanitized based on the defined filters (if any)
+- Call any setters on the `entity` if present
+- Assign the value to the property with the same name on the `entity`. 
+
+Once the `bind()` process finishes, the modified `entity` will be passed in the `beforeValidation` event (if events are enabled) and after that all the validators will be called on the form using the modified `entity` object. 
+
+> **NOTE**: Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, so as to keep a copy of the original object
+{: .alert .alert-info }
 
 ```php
 <?php
