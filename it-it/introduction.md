@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'it-it'
+language: 'en'
 version: '4.0'
 title: 'Introduction'
 keywords: 'introduction'
