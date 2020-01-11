@@ -304,6 +304,32 @@ $response->setCookies($cookies);
 
 To get the cookies set by the user you can use the `getCookies()` method on the [Phalcon\Http\Response](api/phalcon_http#http-response) object. The method returns a [Phalcon\Http\Response\Cookies](api/phalcon_http#http-response-cookies) collection object. You can set the cookies in the response object using the `setCookies()`, as shown above, and then use `sendCookies()` to send them back to the caller.
 
+### `SameSite`
+
+If you are using PHP 7.3 or later you can set the `SameSite` as an element to the `options` array (last parameter of the constructor) or by using `setOptions()`. It is your responsibility to assign a valid value for `SameSite` (such as `Strict`, `Lax` etc.) >
+
+```php
+<?php
+
+use Phalcon\Http\Cookie;
+
+$cookie  = new Cookie(
+    'my-cookie',                   // name
+    1234,                          // value
+    time() + 86400,                // expires
+    "/",                           // path
+    true,                          // secure
+    ".phalcon.io",                 // domain
+    true,                          // httponly
+    [                              // options
+        "samesite" => "Strict",    // 
+    ]                              // 
+);
+```
+
+> **NOTE**: If your DI container contains the `session` service, the cookies will be stored in the session automatically. If not, they will not be stored, and you are responsible to persist them if you wish to.
+{: .alert .alert-info } 
+
 ### Encryption
 
 The cookies collection is automatically registered as part of the `response` service that is registered in the DI container. By default, cookies are automatically encrypted prior to sending them to the client and are decrypted when retrieved from the user.
