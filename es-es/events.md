@@ -590,6 +590,9 @@ $eventsManager->fire('notifications:afterSend', $this, $data, false);
 
 The `afterSend` event will no longer be cancelable and will execute on all listeners that implement it.
 
+> **NOTE**: You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object.
+{: .alert .alert-warning } 
+
 ## Priorities
 
 When attaching listeners you can set a specific priority. Setting up priorities when attaching listeners to your events manager defines the order in which they are called:
@@ -884,7 +887,7 @@ class EventsManager implements ManagerInterface
 
 ## List of Events
 
-The event will always have as The events available in Phalcon are:
+The events available in Phalcon are:
 
 | Componente                  | Evento                               | Parameters                                              |
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
