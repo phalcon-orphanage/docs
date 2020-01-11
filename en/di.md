@@ -1304,7 +1304,7 @@ class InvoiceComponent implements InjectionAwareInterface
 
     public function getDi(): DiInterface
     {
-        return $this->contianer;
+        return $this->container;
     }
 }
 ```
