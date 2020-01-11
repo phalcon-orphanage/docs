@@ -16,7 +16,7 @@ Phalcon 프레임워크에 대한 문서에 오신 것을 환영합니다.
 
 ## 팔콘은 무엇인가?
 
-Phalcon은 C-익스텐션으로 작성된, PHP를 위한 오픈소스 풀스택 프레임워크입니다. Phalcon은 고성능을 위해 최적화되어 있습니다. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever it's needed, without expensive file stats and file reads that traditional PHP frameworks employ.
+Phalcon은 C-익스텐션으로 작성된, PHP를 위한 오픈소스 풀스택 프레임워크입니다. Phalcon은 고성능을 위해 최적화되어 있습니다. 부하가 큰 파일상태, 파일읽기를 채용한 전통적인 PHP프레임워크와 달리, Phalcon의 고유한 아키텍처 덕분에 이 프레임워크는 메모리에 상주하면서 기능들을 필요할 때마다 바로바로 제공할 수 있도록 해줍니다.
 
 ## 사용
 
