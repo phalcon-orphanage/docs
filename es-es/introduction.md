@@ -33,28 +33,21 @@ Since this is a community driven project, you can share your thoughts and reques
 
 Feel free to connect with us using our social media accounts:
 
-Chat - Q&A
-
-* [Discord Chat](https://phalcon.io/discord)
-* [Foros](https://phalcon.link/forum)
-
-Support
-
-* [OpenCollective - Support Us](https://phalcon.io/fund)
-* [Store - Merchandise](https://phalcon.io/store)
-
-Social Media
-
-* [Telegram](https://phalcon.io/telegram)
-* [Gab.ai](https://phalcon.io/gab)
-* [MeWe](https://phalcon.io/mewe)
-* [Parler](https://phalcon.io/parler)
-* [Reddit](https://phalcon.io/reddit)
-* [Facebook](https://phalcon.io/fb)
-* [Twitter](https://phalcon.io/t)
-
-Videos
-
-* [BitChute](https://phalcon.io/bitchute)
-* [LBRY](https://phalcon.io/lbry)
-* [YouTube](https://phalcon.io/youtube)
+- Chat - Q&A 
+  - [Discord Chat](https://phalcon.io/discord)
+  - [Foros](https://phalcon.link/forum)
+- Support 
+  - [OpenCollective - Support Us](https://phalcon.io/fund)
+  - [Store - Merchandise](https://phalcon.io/store)
+- Social Media 
+  - [Telegram](https://phalcon.io/telegram)
+  - [Gab.ai](https://phalcon.io/gab)
+  - [MeWe](https://phalcon.io/mewe)
+  - [Parler](https://phalcon.io/parler)
+  - [Reddit](https://phalcon.io/reddit)
+  - [Facebook](https://phalcon.io/fb)
+  - [Twitter](https://phalcon.io/t)
+- Videos 
+  - [BitChute](https://phalcon.io/bitchute)
+  - [LBRY](https://phalcon.io/lbry)
+  - [YouTube](https://phalcon.io/youtube)
