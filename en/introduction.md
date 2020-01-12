@@ -22,3 +22,37 @@ Phalcon is loosely coupled, allowing developers to use only the objects that the
 
 > **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
 {: .alert .alert-info }
+
+You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality. 
+
+Since this is a community driven project, you can share your thoughts and requests for functionality you need by issuing a [New Feature Request](new-feature-request) and if you wish vote in GitHub for [existing NFRs](new-feature-request-list).
+
+Feel free to connect with us using our social media accounts:
+ 
+Chat - Q&A
+
+* [Discord Chat](https://phalcon.io/discord)
+* [Forum](https://phalcon.link/forum)
+
+Support
+
+* [OpenCollective - Support Us](https://phalcon.io/fund)
+* [Store - Merchandise](https://phalcon.io/store)
+
+Social Media
+
+* [Telegram](https://phalcon.io/telegram)
+* [Gab](https://phalcon.io/gab)
+* [MeWe](https://phalcon.io/mewe)
+* [Parler](https://phalcon.io/parler)
+* [Reddit](https://phalcon.io/reddit)
+* [Facebook](https://phalcon.io/fb)
+* [Twitter](https://phalcon.io/t)
+
+Videos
+
+* [BitChute](https://phalcon.io/bitchute)
+* [LBRY](https://phalcon.io/lbry)
+* [YouTube](https://phalcon.io/youtube)
+
+[github]: https://github.com/phalcon/cphalcon 
