@@ -311,7 +311,7 @@ echo $baseConfig
         ->get('name');  // MYAPP
 echo $baseConfig
         ->get('app')
-        ->get('name');  // America/New_York
+        ->get('timezone');  // America/New_York
 echo $baseConfig
         ->get('app')
         ->get('time');  // 1562909409.6162
