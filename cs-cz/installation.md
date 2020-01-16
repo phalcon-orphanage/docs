@@ -34,6 +34,8 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
+Using Pecl this extension will be automatically installed.
+
 ### PDO
 
 Since Phalcon is loosely coupled, it exposes functionality without the need for additional extensions. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
@@ -67,6 +69,14 @@ Along with PHP 7.2 or greater, depending on your application needs and the Phalc
 {: .alert .alert-info }
 
 For the `libpcre3-dev` package you can use the following commands:
+
+### Pecl
+
+The Pecl installation method is available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS it will compile phalcon locally so it could be faster to use a different installation method on these platforms. To install using Pecl make sure you have [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) installed.
+
+    pecl channel-update pecl.php.net
+    pecl install phalcon
+    
 
 #### Debian
 
