@@ -167,25 +167,6 @@ sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Πρόσθετα PPA
-
-**Ondřej Surý**
-
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
-
-Installation of the repo:
-
-```php
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-```
-
-and Phalcon:
-
-```php
-sudo apt-get install php-phalcon
-```
-
 #### RPM Based Distributions (CentOS, Fedora, Etc.)
 
 ##### Αποθετήριο εγκατάστασης
@@ -223,7 +204,7 @@ sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### Πρόσθετα PPA
+##### Additional RPMs
 
 **Remi**
 
