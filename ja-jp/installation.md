@@ -167,25 +167,6 @@ sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Additional PPAs
-
-**Ondřej Surý**
-
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
-
-Installation of the repo:
-
-```php
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-```
-
-and Phalcon:
-
-```php
-sudo apt-get install php-phalcon
-```
-
 #### RPM Based Distributions (CentOS, Fedora, Etc.)
 
 ##### Repository installation
@@ -247,7 +228,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### ソースコード
+##### Source
 
 ```bash
 cd /usr/ports/www/phalcon4
