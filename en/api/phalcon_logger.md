@@ -697,7 +697,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/abstractformatter.zep)
 
 | Namespace  | Phalcon\Logger\Formatter |
-| Uses       | Phalcon\Logger |
+| Uses       | DateTimeImmutable, DateTimeZone, Phalcon\Logger, Phalcon\Logger\Item |
 | Implements | FormatterInterface |
 
 This file is part of the Phalcon Framework.
@@ -708,13 +708,40 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
+## Properties
+```php
+/**
+ * Default date format
+ *
+ * @var string
+ */
+protected dateFormat;
+
+```
+
 ## Methods
+```php
+public function getDateFormat(): string
+```
+
+
 ```php
 public function interpolate( string $message, mixed $context = null );
 ```
 Interpolates context values into the message placeholders
 
 @see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message
+
+
+```php
+public function setDateFormat( string $dateFormat )
+```
+
+
+```php
+protected function getFormattedDate(): string;
+```
+Returns the date formatted for the logger.
 
 
 
@@ -753,17 +780,6 @@ Phalcon\Logger\Formatter\Json
 Formats messages using JSON encoding
 
 
-## Properties
-```php
-/**
- * Default date format
- *
- * @var string
- */
-protected dateFormat;
-
-```
-
 ## Methods
 ```php
 public function __construct( string $dateFormat = string );
@@ -777,16 +793,6 @@ public function format( Item $item ): string;
 Applies a format to a message before sent it to the internal log
 
 
-```php
-public function getDateFormat(): string
-```
-
-
-```php
-public function setDateFormat( string $dateFormat )
-```
-
-
 
         
 <h1 id="logger-formatter-line">Class Phalcon\Logger\Formatter\Line</h1>
@@ -794,7 +800,7 @@ public function setDateFormat( string $dateFormat )
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
 | Namespace  | Phalcon\Logger\Formatter |
-| Uses       | Phalcon\Logger\Item |
+| Uses       | DateTime, Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
 Phalcon\Logger\Formatter\Line
@@ -804,13 +810,6 @@ Formats messages using an one-line string
 
 ## Properties
 ```php
-/**
- * Default date format
- *
- * @var string
- */
-protected dateFormat;
-
 /**
  * Format applied to each message
  *
@@ -834,17 +833,7 @@ Applies a format to a message before sent it to the internal log
 
 
 ```php
-public function getDateFormat(): string
-```
-
-
-```php
 public function getFormat(): string
-```
-
-
-```php
-public function setDateFormat( string $dateFormat )
 ```
 
 

@@ -7966,7 +7966,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Resultset |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | Resultset |
 
 Phalcon\Mvc\Model\Resultset\Simple
