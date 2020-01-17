@@ -345,7 +345,7 @@ The available methdods are:
 | `delete`     | Deletes data from the adapter                                              |
 | `get`        | Reads data from the adapter                                                |
 | `getAdapter` | Returns the already connected adapter or connects to the backend server(s) |
-| `getKeys`    | Returns all the keys stored                                                |
+| `getKeys`    | Returns all the keys stored (optional filter parameter)                    |
 | `getPrefix`  | Returns the prefix for the keys                                            |
 | `has`        | Checks if an element exists in the cache                                   |
 | `increment`  | Increments a stored number                                                 |
@@ -727,9 +727,10 @@ class Custom extends AdapterInterface
     }
 
     /**
-     * Returns all the keys stored
+     * Returns all the keys stored. If a filter has been passed the keys that 
+     * match the filter will be returned 
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ""): array
     {
         // Custom implementation
     }
