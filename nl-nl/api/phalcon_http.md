@@ -46,7 +46,7 @@ title: 'Phalcon\Http'
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-| Namespace | Phalcon\Http | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | CookieInterface |
+| Namespace | Phalcon\Http | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Helper\Arr, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | CookieInterface |
 
 Provide OO wrappers to manage a HTTP cookie.
 
@@ -2680,6 +2680,12 @@ Phalcon\Http\Request\FileInterface
 Interface for Phalcon\Http\Request\File
 
 ## Methoden
+
+```php
+public function getError(): string | null;
+```
+
+Returns the error if any
 
 ```php
 public function getName(): string;
