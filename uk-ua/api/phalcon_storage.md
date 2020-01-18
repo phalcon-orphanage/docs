@@ -626,7 +626,7 @@ Returns the already connected adapter or connects to the Redis server(s)
 public function getKeys( string $prefix = string ): array;
 ```
 
-Stores data in the adapter
+Gets the keys from the adapter. Accepts an optional prefix which will filter the keys returned
 
 @return array @throws Exception
 
