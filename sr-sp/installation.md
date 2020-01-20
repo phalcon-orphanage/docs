@@ -183,7 +183,7 @@ sudo apt-get update
 and Phalcon:
 
 ```php
-sudo apt-get install php-phalcon
+sudo apt-get install php-phalcon4
 ```
 
 #### RPM Based Distributions (CentOS, Fedora, Etc.)

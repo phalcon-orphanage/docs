@@ -183,7 +183,7 @@ sudo apt-get update
 and Phalcon:
 
 ```php
-sudo apt-get install php-phalcon
+sudo apt-get install php-phalcon4
 ```
 
 #### RPM Based Distributions (CentOS, Fedora, Etc.)
@@ -247,7 +247,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### Сборка из исходников
+##### Source
 
 ```bash
 cd /usr/ports/www/phalcon4

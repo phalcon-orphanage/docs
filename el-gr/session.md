@@ -354,9 +354,10 @@ The available options for Redis are: - `client` - client settings - `servers` - 
 ```php
 <?php
 
+use Phalcon\Session\Adapter\Libmemcached;
 use Phalcon\Session\Manager;
 use Phalcon\Storage\AdapterFactory;
-use Phalcon\Session\Adapter\Libmemcached;
+use Phalcon\Storage\SerializerFactory;
 
 $options = [
     'client'  => [],
@@ -369,9 +370,10 @@ $options = [
     ],
 ];
 
-$session = new Manager();
-$factory = new AdapterFactory();
-$redis   = new Libmemcached($factory, $options);
+$session           = new Manager();
+$serializerFactory = new SerializerFactory();
+$factory           = new AdapterFactory($serializerFactory);
+$redis             = new Libmemcached($factory, $options);
 
 $session
     ->setAdapter($redis)
@@ -403,9 +405,10 @@ The available options for Redis are: - `host` - the host - `port` - the port - `
 ```php
 <?php
 
+use Phalcon\Session\Adapter\Redis;
 use Phalcon\Session\Manager;
 use Phalcon\Storage\AdapterFactory;
-use Phalcon\Session\Adapter\Redis;
+use Phalcon\Storage\SerializerFactory;
 
 $options = [
     'host'  => '127.0.0.1',
@@ -413,9 +416,10 @@ $options = [
     'index' => '1',
 ];
 
-$session = new Manager();
-$factory = new AdapterFactory();
-$redis   = new Redis($factory, $options);
+$session           = new Manager();
+$serializerFactory = new SerializerFactory();
+$factory           = new AdapterFactory($serializerFactory);
+$redis             = new Redis($factory, $options);
 
 $session
     ->setAdapter($redis)

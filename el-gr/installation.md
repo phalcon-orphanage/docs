@@ -167,7 +167,7 @@ sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Πρόσθετα PPA
+##### Additional PPAs
 
 **Ondřej Surý**
 
@@ -183,7 +183,7 @@ sudo apt-get update
 and Phalcon:
 
 ```php
-sudo apt-get install php-phalcon
+sudo apt-get install php-phalcon4
 ```
 
 #### RPM Based Distributions (CentOS, Fedora, Etc.)
@@ -223,7 +223,7 @@ sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### Πρόσθετα PPA
+##### Additional RPMs
 
 **Remi**
 

@@ -167,7 +167,7 @@ sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### 다른 PPA
+##### Additional PPAs
 
 **Ondřej Surý**
 
@@ -183,7 +183,7 @@ sudo apt-get update
 and Phalcon:
 
 ```php
-sudo apt-get install php-phalcon
+sudo apt-get install php-phalcon4
 ```
 
 #### RPM 기반 배포판 (CentOS, Fedora 등)
@@ -223,7 +223,7 @@ sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### 다른 RPM
+##### Additional RPMs
 
 **Remi**
 
@@ -247,7 +247,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### 소스
+##### Source
 
 ```bash
 cd /usr/ports/www/phalcon4
