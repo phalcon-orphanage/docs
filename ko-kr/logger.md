@@ -710,7 +710,7 @@ The [Phalcon\Logger\AdapterInterface](api/phalcon_logger#logger-adapter-adapteri
 
 There are two abstract classes that offer useful functionality when creating custom adapters: [Phalcon\Logger\Adapter\AbstractAdapter](api/phalcon_logger#logger-adapter-abstractadapter) and [Phalcon\Logger\Formatter\AbstractFormatter](api/phalcon_logger#logger-formatter-abstractformatter).
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container. An example of the registration of the service as well as accessing it is below:
 
