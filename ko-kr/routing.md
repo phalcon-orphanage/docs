@@ -1390,7 +1390,7 @@ The router also understand prefixes to ensure that the routes are resolved as fa
 
 only the `/clients` prefix can be used in all controllers, thus speeding up the lookup.
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 You can register the router component during the container setup, to make it available inside the controllers or any other components that extend the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) component.
 
