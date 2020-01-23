@@ -896,7 +896,7 @@ $micro->setModelBinder(
 ```php
 public function setResponseHandler( mixed $handler ): Micro;
 ```
-Appends a custom 'reponse' handler to be called insted of the default
+Appends a custom 'response' handler to be called instead of the default
 response handler
 
 
@@ -7609,7 +7609,7 @@ Check whether the relation is a 'many-to-many' relation or not
 ```php
 public function setIntermediateRelation( mixed $intermediateFields, string $intermediateModel, mixed $intermediateReferencedFields );
 ```
-Sets the intermediate model dat for has-*-through relations
+Sets the intermediate model data for has-*-through relations
 
 
 
