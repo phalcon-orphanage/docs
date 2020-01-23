@@ -897,7 +897,7 @@ $validator->add(
 ```
 
 ### File Resolution Max
-Checks if a file has the rigth resolution
+Checks if a file has the right resolution
 
 ```php
 <?php
@@ -943,7 +943,7 @@ $validator->add(
 ```
 
 ### File Resolution Min
-Checks if a file has the rigth resolution
+Checks if a file has the right resolution
 
 ```php
 <?php
