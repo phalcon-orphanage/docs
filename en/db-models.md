@@ -2764,7 +2764,7 @@ $invoice->assign(
 $result = $invoice->save();
 ```
 
-> **NOTE**: On really busy applications, you can use `create` or `update` for the respective operations. By using those two methods instead of save, we ensure that data will be saved or not in the database, since those throw exceptions on `create` if the record already exists, and on `update` if the record does nto exist.
+> **NOTE**: On really busy applications, you can use `create` or `update` for the respective operations. By using those two methods instead of save, we ensure that data will be saved or not in the database, since those throw exceptions on `create` if the record already exists, and on `update` if the record does not exist.
 {: .alert .alert-info }
 
 ```php
