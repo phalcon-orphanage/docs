@@ -72,7 +72,7 @@ Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스�
 
 ### Pecl
 
-Pecl 설치방법은 윈도우, 리눅스와 MacOS에서 가능합니다. 윈도우에서는 사전컴파일 된 dll 파일을 사용합니다. 리눅스와 MacOS에서는 phalcon을 로컬에서 컴파일 할 것이기 때문에 다른 설치방법을 사용하는 것이 더 빠를 수 있습니다. Pecl을 이용해서 설치하시려면 [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) 가 설치되어있는지를 먼저 확인해 주세요.
+Pecl 설치방법은 윈도우, 리눅스와 MacOS에서 가능합니다. 윈도우에서는 사전컴파일 된 dll 파일을 사용합니다. Under Linux and MacOS it will compile Phalcon locally so it could be faster to use a different installation method on these platforms. Pecl을 이용해서 설치하시려면 [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) 가 설치되어있는지를 먼저 확인해 주세요.
 
     pecl channel-update pecl.php.net
     pecl install phalcon
@@ -428,7 +428,7 @@ make && make install
 
 ### 공유 호스팅
 
-공유 호스팅 환경에서 어플리케이션을 운영하실 경우, 특히 root 권한이 없을 경우에 Phalcon 설치가 제한될 가능성이 큽니다. 일부 웹 호스팅사의 경우 운 좋게도 제어판에서 Phalcon 설치를 지원합니다.
+공유 호스팅 환경에서 어플리케이션을 운영하실 경우, 특히 root 권한이 없을 경우에 Phalcon 설치가 제한될 가능성이 큽니다. Some web hosting control panels luckily have Phalcon support.
 
 #### cPanel & WHM
 
