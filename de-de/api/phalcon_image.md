@@ -634,7 +634,7 @@ TagFactory constructor.
 public function load( mixed $config ): AdapterInterface;
 ```
 
-Factory to create an instace from a Config object
+Factory to create an instance from a Config object
 
 ```php
 public function newInstance( string $name, string $file, int $width = null, int $height = null ): AdapterInterface;
