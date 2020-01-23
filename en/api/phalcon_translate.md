@@ -388,7 +388,7 @@ Check whether is defined a translation key in the internal array
 ```php
 public function notFound( string $index ): string;
 ```
-Whenever a key is not found this medhod will be called
+Whenever a key is not found this method will be called
 
 
 ```php
@@ -565,7 +565,7 @@ AdapterFactory constructor.
 ```php
 public function load( mixed $config ): mixed;
 ```
-Factory to create an instace from a Config object
+Factory to create an instance from a Config object
 
 
 ```php
