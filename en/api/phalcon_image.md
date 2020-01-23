@@ -15,7 +15,7 @@ title: 'Phalcon\Image'
         
 <h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/abstractadapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
@@ -199,7 +199,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
         
 <h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum |
@@ -287,7 +287,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
         
 <h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/Gd.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
@@ -408,7 +408,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
         
 <h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/Imagick.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
@@ -571,7 +571,7 @@ Execute a watermarking.
         
 <h1 id="image-enum">Class Phalcon\Image\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Enum.zep)
 
 | Namespace  | Phalcon\Image |
 
@@ -599,7 +599,7 @@ const WIDTH = 2;
         
 <h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Exception.zep)
 
 | Namespace  | Phalcon\Image |
 | Extends    | \Phalcon\Exception |
@@ -615,7 +615,7 @@ file that was distributed with this source code.
         
 <h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/imagefactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/ImageFactory.zep)
 
 | Namespace  | Phalcon\Image |
 | Uses       | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface |
@@ -634,7 +634,7 @@ TagFactory constructor.
 ```php
 public function load( mixed $config ): AdapterInterface;
 ```
-Factory to create an instace from a Config object
+Factory to create an instance from a Config object
 
 
 ```php

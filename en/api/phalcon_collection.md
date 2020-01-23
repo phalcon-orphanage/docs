@@ -11,7 +11,7 @@ title: 'Phalcon\Collection'
         
 <h1 id="collection">Class Phalcon\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Collection.zep)
 
 | Namespace  | Phalcon |
 | Uses       | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Helper\Json, Serializable, Traversable |
@@ -216,7 +216,7 @@ Internal method to set data
         
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Collection/Exception.zep)
 
 | Namespace  | Phalcon\Collection |
 | Uses       | Throwable |
@@ -229,7 +229,7 @@ Exceptions for the Collection object
         
 <h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Collection/ReadOnly.zep)
 
 | Namespace  | Phalcon\Collection |
 | Uses       | Phalcon\Collection |

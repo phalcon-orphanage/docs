@@ -19,7 +19,7 @@ title: 'Phalcon\Acl'
         
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
 | Uses       | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface |
@@ -119,7 +119,7 @@ Sets the events manager
         
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
 | Uses       | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
@@ -255,7 +255,7 @@ accessKey
         
 <h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
 | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction |
@@ -606,7 +606,7 @@ accessKey
         
 <h1 id="acl-component">Class Phalcon\Acl\Component</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/component.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Component.zep)
 
 | Namespace  | Phalcon\Acl |
 | Implements | ComponentInterface |
@@ -658,7 +658,7 @@ public function getName(): string
         
 <h1 id="acl-componentaware">Interface Phalcon\Acl\ComponentAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/componentaware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/ComponentAware.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -676,7 +676,7 @@ Returns component name
         
 <h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/componentinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/ComponentInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -706,7 +706,7 @@ Returns the component name
         
 <h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Enum.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -722,7 +722,7 @@ const DENY = 0;
         
 <h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
 
 | Namespace  | Phalcon\Acl |
 | Extends    | \Phalcon\Exception |
@@ -733,7 +733,7 @@ Class for exceptions thrown by Phalcon\Acl
         
 <h1 id="acl-role">Class Phalcon\Acl\Role</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/role.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Role.zep)
 
 | Namespace  | Phalcon\Acl |
 | Implements | RoleInterface |
@@ -785,7 +785,7 @@ public function getName(): string
         
 <h1 id="acl-roleaware">Interface Phalcon\Acl\RoleAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleaware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/RoleAware.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -803,7 +803,7 @@ Returns role name
         
 <h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/RoleInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 

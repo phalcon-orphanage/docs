@@ -11,7 +11,7 @@ title: 'Phalcon\Tag'
         
 <h1 id="tag">Class Phalcon\Tag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Tag.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
@@ -280,7 +280,7 @@ Renders parameters keeping order in their HTML attributes
 ```php
 public static function renderTitle( bool $prepend = bool, bool $append = bool ): string;
 ```
-Renders the title with title tags. The title is automaticall escaped
+Renders the title with title tags. The title is automatically escaped
 
 
 ```php
@@ -428,7 +428,7 @@ Builds INPUT tags that implements the checked attribute
         
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Tag/Exception.zep)
 
 | Namespace  | Phalcon\Tag |
 | Extends    | \Phalcon\Exception |
@@ -441,7 +441,7 @@ Exceptions thrown in Phalcon\Tag will use this class
         
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Tag/Select.zep)
 
 | Namespace  | Phalcon\Tag |
 | Uses       | Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |

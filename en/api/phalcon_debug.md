@@ -11,7 +11,7 @@ title: 'Phalcon\Debug'
         
 <h1 id="debug">Class Phalcon\Debug</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug.zep)
 
 | Namespace  | Phalcon |
 | Uses       | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
@@ -187,7 +187,7 @@ Shows a backtrace item
         
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
 
 | Namespace  | Phalcon\Debug |
 | Uses       | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
@@ -323,7 +323,7 @@ Prepare an HTML string of information about a single variable.
         
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
 
 | Namespace  | Phalcon\Debug |
 | Extends    | \Phalcon\Exception |

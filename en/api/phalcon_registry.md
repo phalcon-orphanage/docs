@@ -9,7 +9,7 @@ title: 'Phalcon\Registry'
         
 <h1 id="registry">Final Class Phalcon\Registry</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Registry.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Traversable |
