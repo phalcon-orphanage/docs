@@ -19,7 +19,7 @@ The problem with the above approach is two fold. For starters, in most cases the
 
 The problem will remain: _the poorly written application_
 
-In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfils its requirements. Nothing beats a good design. After that, there are many aspects to consider:
+In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfills its requirements. Nothing beats a good design. After that, there are many aspects to consider:
 - server hardware
 - clients connecting (location, browsers)
 - network latency
@@ -92,7 +92,7 @@ long_query_time = 1.5
 Another area to focus on is the client. Improving the loading of assets such as images, stylesheets, javascript files can significantly improve performance and enhance user experience. There are a number of tools that can help with identifying bottlenecks on the client:
 
 ### Browsers
-Most modern browsers have tools to profile a page's loading time. Those are easily called _web inspectors_ or _developer tools_. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the curent page (files), how much time it took and the total loading time:
+Most modern browsers have tools to profile a page's loading time. Those are easily called _web inspectors_ or _developer tools_. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the current page (files), how much time it took and the total loading time:
 
 ![](/assets/images/content/performance-chrome-1.jpg)
 
