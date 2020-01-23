@@ -593,7 +593,7 @@ class SecurityPlugin extends Injectable
     } }
 ```
 
-The event methods always receive the actual event as the first parameter. This is a [Phalcon\Events\Event](api/phalcon_events#events-event) object which will contain information regarding the event such as its type and other related informtion. For this particular event, the second parameter will be the object that produced the event itself (`$containerspatcher`). It is not mandatory that plugins classes extend the class [Phalcon\Di\Injectable](api/phalcon_di#di-injectable), but by doing this they gain easier access to the services available in the application.
+The event methods always receive the actual event as the first parameter. This is a [Phalcon\Events\Event](api/phalcon_events#events-event) object which will contain information regarding the event such as its type and other related information. For this particular event, the second parameter will be the object that produced the event itself (`$containerspatcher`). It is not mandatory that plugins classes extend the class [Phalcon\Di\Injectable](api/phalcon_di#di-injectable), but by doing this they gain easier access to the services available in the application.
 
 We now have the structure to start verifying the role in the current session. We can check if the user has access to use the [ACL](acl). If the user does not have access, we will redirect them to the home screen.
 
@@ -851,7 +851,7 @@ class ProductsController extends ControllerBase
 
 ## Search Form
 
-Our CRUD operations start with the search form. This form shows each field that the table has (`products`), allowing the user to enter search criteria for each field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in the `product_types` tabel to offer search criteria for this field:
+Our CRUD operations start with the search form. This form shows each field that the table has (`products`), allowing the user to enter search criteria for each field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in the `product_types` table to offer search criteria for this field:
 
 ```php
 <?php
