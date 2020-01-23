@@ -393,7 +393,7 @@ will produce
 > **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session](api/phalcon_flash#flash-session) is already registered for you with the name `flashSession`.
 

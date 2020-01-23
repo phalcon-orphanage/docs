@@ -678,7 +678,7 @@ $response = new Response();
 $response->setNotModified();
 ```
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 

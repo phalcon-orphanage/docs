@@ -224,7 +224,7 @@ You can also set the padding used by the component by using `setPadding()`. By d
 * `PADDING_SPACE`
 * `PADDING_ZERO`
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 As with most Phalcon components, you can store the [Phalcon\Crypt](api/phalcon_crypt#crypt) object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 

@@ -3772,7 +3772,7 @@ If conditions have been defined, we are checking if we have the `id` as a field 
 
 The `selectReadConnection()` method is called every time we need to get data from the database, and returns the correct connection to be used.
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) is tightly bound to the DI container. You can retrieve the container by using the `getDI` method. Therefore you have access to all services registered in the DI container.
 

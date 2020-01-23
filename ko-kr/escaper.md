@@ -293,7 +293,7 @@ class IndexController extends Controller
 }
 ```
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Escaper](api/phalcon_escaper#escaper) is already registered for you with the name `escaper`.
 

@@ -155,7 +155,7 @@ vokuro/
 | `var/logs`        | Logs                                                  |
 | `vendor`          | Vendor/composer based libraries                       |
 
-## Configuration
+## 구성
 
 ### `.env`
 
