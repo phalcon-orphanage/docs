@@ -923,7 +923,7 @@ The events available in Phalcon are:
 | [Αποστολέας](dispatcher)    | `dispatch:beforeDispatch`            | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeDispatchLoop`        | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array                                       |
-| [Αποστολέας](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher |                                            |
+| [Αποστολέας](dispatcher)    | `dispatch:beforeNotFoundAction`      | Αποστολέας                                              |
 | [Φορτωτής](loader)          | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Φορτωτής](loader)          | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Φορτωτής](loader)          | `loader:beforeCheckPath`             | Φορτωτής                                                |
