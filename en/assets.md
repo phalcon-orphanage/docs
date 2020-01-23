@@ -308,7 +308,7 @@ echo $this->assets->has('headerJs'); // true
 ```
 
 ### Set
-If the built-in `css` and `js` collections are not sufficient for your needs, you can attach a new collection to the manager by using `se()`.
+If the built-in `css` and `js` collections are not sufficient for your needs, you can attach a new collection to the manager by using `set()`.
 
 ```php
 <?php
