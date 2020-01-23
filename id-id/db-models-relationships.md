@@ -430,7 +430,7 @@ There are several ways that we can access the relationships of a model.
 
 ### `__get()`
 
-You can use the magic method to access the relationship. Assignning an `alias` to the relationship simplifies accessing the related data. The name of the property is the same as the one defined in the `alias`.
+You can use the magic method to access the relationship. Assigning an `alias` to the relationship simplifies accessing the related data. The name of the property is the same as the one defined in the `alias`.
 
 ```php
 <?php
@@ -1269,7 +1269,7 @@ $customer->invoices = [
 $customer->save();
 ```
 
-The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship fo the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
+The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship of the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
 
 Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an **update**, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
 
