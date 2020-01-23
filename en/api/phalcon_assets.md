@@ -284,7 +284,7 @@ Phalcon\Assets\Asset\Js constructor
 
 | Namespace  | Phalcon\Assets |
 
-Interface for custom Phalcon\Assets reources
+Interface for custom Phalcon\Assets resources
 
 
 ## Methods
