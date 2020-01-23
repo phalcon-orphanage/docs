@@ -956,7 +956,7 @@ $router->setDefaults(
 ```
 
 ## Trailing Slashes
-Sometimes a route could be accessed with extra/trailing slashes. The extra slashes will produce a not-found status in the dispathcer, which is not what we want. You can set up the router to automatically remove the slashes from the end of handled route.
+Sometimes a route could be accessed with extra/trailing slashes. The extra slashes will produce a not-found status in the dispatcher, which is not what we want. You can set up the router to automatically remove the slashes from the end of handled route.
 
 ```php
 <?php
@@ -1382,7 +1382,7 @@ return $router;
 ```
 
 ## Custom
-You can create your own components by implementing the supplied interfances:
+You can create your own components by implementing the supplied interfaces:
 - [Phalcon\Mvc\Router\GroupInterface][mvc-router-groupinterface]
 - [Phalcon\Mvc\Router\RouteInterface][mvc-router-routeinterface]
 - [Phalcon\Mvc\RouterInterface][mvc-routerinterface]

@@ -280,7 +280,7 @@ php cli.php users add 4 5
 ```
 
 ## Chain
-You can also chain tasks. To run them one after another, we need to make a small change in our bootstap: we need to register our application in the DI container:
+You can also chain tasks. To run them one after another, we need to make a small change in our bootstrap: we need to register our application in the DI container:
 
 ```php
 // ...

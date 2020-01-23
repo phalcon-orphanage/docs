@@ -889,7 +889,7 @@ The events available in Phalcon are:
 | [Dispatcher](dispatcher)        | `dispatch:beforeDispatch`            | Dispatcher                                              |
 | [Dispatcher](dispatcher)        | `dispatch:beforeDispatchLoop`        | Dispatcher                                              |
 | [Dispatcher](dispatcher)        | `dispatch:beforeForward`             | Dispatcher, array                                       |
-| [Dispatcher](dispatcher)        | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |                                |
+| [Dispatcher](dispatcher)        | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
 | [Loader](loader)                | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Loader](loader)                | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Loader](loader)                | `loader:beforeCheckPath`             | Loader                                                  |

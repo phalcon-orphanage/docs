@@ -64,7 +64,7 @@ Along with PHP 7.2 or greater, depending on your application needs and the Phalc
 For the `libpcre3-dev` package you can use the following commands:
 
 ### Pecl
-The Pecl installation method is available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS it will compile phalcon locally so it could be faster to use a different installation method on these platforms. To install using Pecl make sure you have [pecl/pear][install-pecl] installed. 
+The Pecl installation method is available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS it will compile Phalcon locally so it could be faster to use a different installation method on these platforms. To install using Pecl make sure you have [pecl/pear][install-pecl] installed. 
 ```
 pecl channel-update pecl.php.net
 pecl install phalcon
@@ -392,7 +392,7 @@ zephir build
 This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
 
 ### Shared Hosting 
-Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckly have Phalcon support.
+Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckily have Phalcon support.
 
 #### cPanel & WHM
 cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module][cpanel-phalcon] in Easy Apache 4 (EA4).

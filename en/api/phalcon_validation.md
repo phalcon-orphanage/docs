@@ -1439,7 +1439,7 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile |
 | Extends    | AbstractFile |
 
-Checks if a file has the rigth resolution
+Checks if a file has the right resolution
 
 ```php
 use Phalcon\Validation;
@@ -1502,7 +1502,7 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile |
 | Extends    | AbstractFile |
 
-Checks if a file has the rigth resolution
+Checks if a file has the right resolution
 
 ```php
 use Phalcon\Validation;
@@ -1570,7 +1570,7 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile |
 | Extends    | AbstractFile |
 
-Checks if a file has the rigth resolution
+Checks if a file has the right resolution
 
 ```php
 use Phalcon\Validation;
@@ -1673,7 +1673,7 @@ $validator->add(
                 "anotherFile" => true,
             ],
             "message" => [
-                "file"        => "file does not have the rigth filesize",
+                "file"        => "file does not have the right filesize",
                 "anotherFile" => "anotherFile wrong filesize (4MB)",
             ],
         ]
@@ -2231,7 +2231,7 @@ Executes the validation
 Validates that a string has the specified maximum and minimum constraints
 The test is passed if for a string's length L, min<=L<=max, i.e. L must
 be at least min, and at most max.
-Since Phalcon v4.0 this valitor works like a container
+Since Phalcon v4.0 this validator works like a container
 
 ```php
 use Phalcon\Validation;
@@ -2720,7 +2720,7 @@ Checks if an option is defined
 ```php
 public function setTemplate( string $template ): ValidatorInterface;
 ```
-   Set a new temlate message
+   Set a new template message
    
    @return ValidatorInterface
    

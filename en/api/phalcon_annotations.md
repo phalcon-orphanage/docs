@@ -400,7 +400,7 @@ AdapterFactory constructor.
 ```php
 public function load( mixed $config ): mixed;
 ```
-Factory to create an instace from a Config object
+Factory to create an instance from a Config object
 
 
 ```php

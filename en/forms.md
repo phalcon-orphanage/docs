@@ -654,7 +654,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 |----------------------------------------------------------|---------------------------------------------|
 | [Phalcon\Forms\Element\Check][forms-element-check]       | Generate `input[type=check]` elements       |
 | [Phalcon\Forms\Element\Date][forms-element-date]         | Generate `input[type=date]` elements        |
-| [Phalcon\Forms\Element\Email][forms-element-email]       | Generate `input[type=dateemail]` elements   |
+| [Phalcon\Forms\Element\Email][forms-element-email]       | Generate `input[type=email]` elements       |
 | [Phalcon\Forms\Element\File][forms-element-file]         | Generate `input[type=file]` elements        |
 | [Phalcon\Forms\Element\Hidden][forms-element-hidden]     | Generate `input[type=hidden]` elements      |
 | [Phalcon\Forms\Element\Numeric][forms-element-numeric]   | Generate `input[type=number]` elements      |

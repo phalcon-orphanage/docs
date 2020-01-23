@@ -12,7 +12,7 @@ keywords: 'devtools, developer tools, models, controllers'
 ## Overview
 These tools help you to generate skeleton code, maintain your database structure and helps to speedup development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-Phalcon Devtool can ben controlled using the cmd line or the web interface.
+Phalcon Devtool can be controlled using the cmd line or the web interface.
 
 ## Installation
 
@@ -211,7 +211,7 @@ The simplest way to generate a model for a table called users is:
 ```bash
 $ phalcon model users
 ```
-If your databse looks like this:
+If your database looks like this:
 ```sql
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,

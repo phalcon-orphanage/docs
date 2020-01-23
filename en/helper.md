@@ -187,7 +187,7 @@ final public static function group(
     mixed $method
 ): array
 ```
-Groups the elements of an array based on the passed callable and returns the array of the groupped elements back. The callable can be a string as the element name, a callable or a method available. The array can contain sub arrays as elements or objects with relevant properties.
+Groups the elements of an array based on the passed callable and returns the array of the grouped elements back. The callable can be a string as the element name, a callable or a method available. The array can contain sub arrays as elements or objects with relevant properties.
 ```php
 <?php
 
