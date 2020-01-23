@@ -118,7 +118,7 @@ Removes all characters except digits, dot, plus and minus sign and casts the val
 ```php
 IntVal( mixed $input ): int
 ```
-Remove all characters except digits, plus and minus sign abd casts the value as an integer. Internally it uses [`filter_var`][filter_var] and `(int)`.
+Remove all characters except digits, plus and minus sign and casts the value as an integer. Internally it uses [`filter_var`][filter_var] and `(int)`.
 
 #### `lower`
 ```php
