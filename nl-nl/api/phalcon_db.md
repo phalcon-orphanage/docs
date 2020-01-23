@@ -3979,7 +3979,7 @@ $row = $result->fetch();
 public function execute(): bool;
 ```
 
-Allows to execute the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
+Allows to execute the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the beginning
 
 ```php
 public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null, mixed $cursorOffset = null );
@@ -4099,7 +4099,7 @@ Moves internal resultset cursor to another position letting us to fetch a certai
 public function execute(): bool;
 ```
 
-Allows to executes the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
+Allows to execute the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the beginning
 
 ```php
 public function fetch(): mixed;
