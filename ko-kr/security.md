@@ -442,7 +442,7 @@ $random = new Random();
 echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 ```
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Security](api/phalcon_security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 

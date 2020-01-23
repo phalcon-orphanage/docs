@@ -27,27 +27,27 @@ Phalcon은 느슨하게 연결되어 있어서, 개발자들이 어플리케이�
 > **주의** 이 문서의 번역은 열광적인 팬들과 기여자들이 주도하고 있습니다. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. 이 번역판의 영어버전은 [GitHub](https://github.com/phalcon/docs) 에서 관리하고 있으며, 나머지 언어들은 [Crowdin](https://crowdin.com/project/phalcon-documentation) 에서 관리합니다.
 {: .alert .alert-info }
 
-You can check our [GitHub](https://github.com/phalcon/cphalcon) project for the code and browse through these documents for usage and functionality.
+코드들은 우리의 [GitHub](https://github.com/phalcon/cphalcon) 프로젝트에서 확인 하실 수 있고 사용법과 기능에 대해서는 이 문서를 참조하시면 됩니다.
 
-Since this is a community driven project, you can share your thoughts and requests for functionality you need by issuing a [New Feature Request](new-feature-request) and if you wish vote in GitHub for [existing NFRs](new-feature-request-list).
+이 프로젝트는 커뮤니티가 주도하는 프로젝트이기 때문에, [새로운 기능 요청(NFR)](new-feature-request) 을 통해 당신이 필요한 기능에 대한 생각과 요청을 공유할 수 있으며, 원한다면 [올라와 있는 NFR들](new-feature-request-list)에 대해 투표하실 수도 있습니다.
 
-Feel free to connect with us using our social media accounts:
+소셜미디어 계정을 통해 우리와 편하게 연락 하실 수 있습니다:
 
-- Chat - Q&A 
-  - [Discord Chat](https://phalcon.io/discord)
+- 채팅 - Q&A 
+  - [디스코드 챗](https://phalcon.io/discord)
   - [포럼](https://phalcon.link/forum)
-- Support 
-  - [OpenCollective - Support Us](https://phalcon.io/fund)
-  - [Store - Merchandise](https://phalcon.io/store)
-- Social Media 
-  - [Telegram](https://phalcon.io/telegram)
+- 후원 
+  - [OpenCollective - 후원하기](https://phalcon.io/fund)
+  - [스토어 - 상점](https://phalcon.io/store)
+- 소셜미디어 
+  - [텔레그램](https://phalcon.io/telegram)
   - [Gab](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
   - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
-  - [Facebook](https://phalcon.io/fb)
-  - [Twitter](https://phalcon.io/t)
-- Videos 
+  - [페이스북](https://phalcon.io/fb)
+  - [트위터](https://phalcon.io/t)
+- 동영상 
   - [BitChute](https://phalcon.io/bitchute)
   - [LBRY](https://phalcon.io/lbry)
-  - [YouTube](https://phalcon.io/youtube)
+  - [유튜브](https://phalcon.io/youtube)

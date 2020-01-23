@@ -1424,7 +1424,7 @@ $container->set(
 );
 ```
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 Since our view is registered in our Dependency Injection container, the services available in the container are also available in the view. Each service is available by a property with the same name as the defined service.
 

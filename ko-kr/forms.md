@@ -1005,7 +1005,7 @@ class IndexController extends Controller
 }
 ```
 
-## Dependency Injection
+## 의존성 주입(Dependency Injection)
 
 [Phalcon\Forms\Form](api/phalcon_forms#forms-form) extends [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) so you have access to the application services if needed:
 
