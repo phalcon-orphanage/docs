@@ -145,7 +145,7 @@ vokuro/
 |----------------------|-------------------------------------------------------|
 | `.ci`                | Files necessary for setting services for the CI       |
 | `configs`            | Configuration files                                   |
-| `db`                 | Holds the migrations for the databsae                 |
+| `db`                 | Holds the migrations for the database                 |
 | `public`             | Entry point for the application, css, js, images      |
 | `resources`          | Docker/nanobox files for setting the application      |
 | `src`                | Where the application lives (controllers, forms etc.) |
@@ -1273,7 +1273,7 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events. 
 
-The core method, the setup if you like happens in the `inintialize` method. That is the spot where we set all the [relationships](db-models-relationships) for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model. 
+The core method, the setup if you like happens in the `initialize` method. That is the spot where we set all the [relationships](db-models-relationships) for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model. 
 
 If for instance we want to check all the successful logins for a particular user, we can do so with the following code snippet:
 
