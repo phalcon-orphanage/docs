@@ -174,7 +174,7 @@ Returns true if the provided function returns true for all elements of the colle
 final public static function validateAny( array $collection, mixed $method = null ): bool;
 ```
 
-Returns true if the provided function returns true for at least one element fo the collection, false otherwise.
+Returns true if the provided function returns true for at least one element of the collection, false otherwise.
 
 @return bool
 
@@ -346,7 +346,7 @@ echo $str;   // /tmp/folder_1/folder_2/folder_3/
 final public static function countVowels( string $text ): int;
 ```
 
-Retuns number of vowels in provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string.
+Returns number of vowels in provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string.
 
 @return int
 
@@ -354,7 +354,7 @@ Retuns number of vowels in provided string. Uses a regular expression to count t
 final public static function decapitalize( string $text, bool $upperRest = bool, string $encoding = string ): string;
 ```
 
-Decapitalizes the first letter of the sring and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
+Decapitalizes the first letter of the string and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 @return string
 
