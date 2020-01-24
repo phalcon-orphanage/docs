@@ -831,7 +831,7 @@ $micro->setModelBinder(
 public function setResponseHandler( mixed $handler ): Micro;
 ```
 
-Appends a custom 'reponse' handler to be called insted of the default response handler
+Appends a custom 'response' handler to be called instead of the default response handler
 
 ```php
 public function setService( string $serviceName, mixed $definition, bool $shared = bool ): ServiceInterface;
@@ -7253,7 +7253,7 @@ Check whether the relation is a 'many-to-many' relation or not
 public function setIntermediateRelation( mixed $intermediateFields, string $intermediateModel, mixed $intermediateReferencedFields );
 ```
 
-Sets the intermediate model dat for has-*-through relations
+Sets the intermediate model data for has-*-through relations
 
 <h1 id="mvc-model-resultinterface">Interface Phalcon\Mvc\Model\ResultInterface</h1>
 
