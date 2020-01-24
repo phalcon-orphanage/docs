@@ -923,7 +923,7 @@ The events available in Phalcon are:
 | [Gönderici](dispatcher)     | `dispatch:beforeDispatch`            | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeDispatchLoop`        | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array                                       |
-| [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Dispatcher |                                            |
+| [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Gönderici                                               |
 | [Yükleyici](loader)         | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Yükleyici](loader)         | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Yükleyici](loader)         | `loader:beforeCheckPath`             | Yükleyici                                               |
