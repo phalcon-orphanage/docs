@@ -689,7 +689,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | ----------------------------------------------------------------------------- | ------------------------------------------- |
 | [Phalcon\Forms\Element\Check](api/phalcon_forms#forms-element-check)       | Generate `input[type=check]` elements       |
 | [Phalcon\Forms\Element\Date](api/phalcon_forms#forms-element-date)         | Generate `input[type=date]` elements        |
-| [Phalcon\Forms\Element\Email](api/phalcon_forms#forms-element-email)       | Generate `input[type=dateemail]` elements   |
+| [Phalcon\Forms\Element\Email](api/phalcon_forms#forms-element-email)       | Generate `input[type=email]` elements       |
 | [Phalcon\Forms\Element\File](api/phalcon_forms#forms-element-file)         | Generate `input[type=file]` elements        |
 | [Phalcon\Forms\Element\Hidden](api/phalcon_forms#forms-element-hidden)     | Generate `input[type=hidden]` elements      |
 | [Phalcon\Forms\Element\Numeric](api/phalcon_forms#forms-element-numeric)   | Generate `input[type=number]` elements      |

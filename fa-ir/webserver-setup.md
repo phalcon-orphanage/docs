@@ -348,7 +348,7 @@ Restart the Apache Web Server. Do a single click on the WampServer icon at syste
 
 ![](/assets/images/content/webserver-wamp-manager.png)
 
-Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
+Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
@@ -410,7 +410,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the Phalcon extension has been loaded correctly.
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 

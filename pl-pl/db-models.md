@@ -203,7 +203,7 @@ public function assign(
 ): ModelInterface
 ```
 
-Assigns data to the model. The `data` parameter can be an array or a database row. The `whitelist` is an array of model properties that will be updated during the assignment process. Ommited properties will NOT be accepted even if they are included in the array or database row; nevertheless if one of them is required by the model, the data will not be saved and the model will produce an error. The `dataColumnMap` is an array that maps columns from the `data` to the actual model. This helps when you want to map input from an array such as `$_POST` to fields in the database.
+Assigns data to the model. The `data` parameter can be an array or a database row. The `whitelist` is an array of model properties that will be updated during the assignment process. Omitted properties will NOT be accepted even if they are included in the array or database row; nevertheless if one of them is required by the model, the data will not be saved and the model will produce an error. The `dataColumnMap` is an array that maps columns from the `data` to the actual model. This helps when you want to map input from an array such as `$_POST` to fields in the database.
 
 Assign values to a model from an array
 
@@ -397,7 +397,7 @@ echo 'COUNT [Customer: 1] ', $average, PHP_EOL;
 public function create(): bool
 ```
 
-Inserts a model in the database. If the record exists in the databse, `create()` will throw an exception. It will return `true` on success, `false` otherwise.
+Inserts a model in the database. If the record exists in the database, `create()` will throw an exception. It will return `true` on success, `false` otherwise.
 
 ```php
 <?php
@@ -3072,7 +3072,7 @@ echo $invoices->getSource(); // will return co_invoices
 
 ## Identity Columns
 
-Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) can recognize the identity column omitting it in the generated `INSERT` SQL statements, to allow the database system to corretly generate a new value for that field. After creating a new record, the identity field will always be registered with the value generated in the database system for it:
+Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) can recognize the identity column omitting it in the generated `INSERT` SQL statements, to allow the database system to correctly generate a new value for that field. After creating a new record, the identity field will always be registered with the value generated in the database system for it:
 
 ```php
 <?php

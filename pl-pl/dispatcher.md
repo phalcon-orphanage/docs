@@ -806,7 +806,7 @@ $container->set(
 );
 ```
 
-In the example above, we get the controller class and acive method from the dispatcher. Looping through the parameters, we use reflection to check the method to be executed. We calculate the model name and also check if the parameter is expecting a model name. If yes, we override the parameter by passing the model found. If an exception was thrown, we can handle that accordingly, for instance if the class or action do not exist or the record has not been found.
+In the example above, we get the controller class and active method from the dispatcher. Looping through the parameters, we use reflection to check the method to be executed. We calculate the model name and also check if the parameter is expecting a model name. If yes, we override the parameter by passing the model found. If an exception was thrown, we can handle that accordingly, for instance if the class or action do not exist or the record has not been found.
 
 The above example has been simplified. You can adjust it according to your needs and inject any kind of dependency or model to an action before it gets executed.
 
@@ -942,7 +942,7 @@ $container->setShared(
 );
 ```
 
-or use an alternative systax checking for the exception.
+or use an alternative syntax checking for the exception.
 
 ```php
 <?php

@@ -325,7 +325,7 @@ public function setResponseHandler(
 ): Micro
 ```
 
-Appends a custom `reponse` handler to be called instead of the default one
+Appends a custom `response` handler to be called instead of the default one
 
 ```php
 public function setService(

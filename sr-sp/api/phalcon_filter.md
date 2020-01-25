@@ -146,7 +146,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function newInstance(): FilterInterface;
 ```
 
-Returns a Locator object with all the helpers defined in anonynous functions
+Returns a Locator object with all the helpers defined in anonymous functions
 
 ```php
 protected function getAdapters(): array;

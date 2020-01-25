@@ -1849,7 +1849,7 @@ public function compileFile(
 ): string | array
 ```
 
-Compiles a template into a file also creating the desination path
+Compiles a template into a file also creating the destination path
 
 ```php
 $compiler->compileFile(

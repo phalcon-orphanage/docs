@@ -541,7 +541,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-A slightly modified bootstap file is required for a a multi module MVC architecture
+A slightly modified bootstrap file is required for a a multi module MVC architecture
 
 ```php
 <?php

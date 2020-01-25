@@ -884,7 +884,7 @@ public function __construct( AdapterFactory $factory );
 public function load( mixed $config ): Logger;
 ```
 
-Factory to create an instace from a Config object
+Factory to create an instance from a Config object
 
 ```php
 public function newInstance( string $name, array $adapters = [] ): Logger;

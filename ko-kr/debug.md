@@ -136,7 +136,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-위의 예시가 보여주는 바와 같이, Phalcon이 PHP익스텐션으로 컴파일 되었다는 것은 아무런 문제가 되지 않습니다. 예외에 대한 정보는 예외를 발생시킨 부분과 관련된 파라미터와 메서드 호출에 대한 정보를 포함하고 있습니다. 필요한 경우 [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) 가 추가적인 정보를 제공합니다.
+As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. 예외에 대한 정보는 예외를 발생시킨 부분과 관련된 파라미터와 메서드 호출에 대한 정보를 포함하고 있습니다. 필요한 경우 [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) 가 추가적인 정보를 제공합니다.
 
 ## 생성자
 

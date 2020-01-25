@@ -23,7 +23,7 @@ The problem with the above approach is two fold. For starters, in most cases the
 
 The problem will remain: *the poorly written application*
 
-In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfils its requirements. Nothing beats a good design. After that, there are many aspects to consider: - server hardware - clients connecting (location, browsers) - network latency - database hardware
+In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfills its requirements. Nothing beats a good design. After that, there are many aspects to consider: - server hardware - clients connecting (location, browsers) - network latency - database hardware
 
 and many more. In this article we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
 
@@ -98,7 +98,7 @@ Another area to focus on is the client. Improving the loading of assets such as 
 
 ### Browsers
 
-Most modern browsers have tools to profile a page's loading time. Those are easily called *web inspectors* or *developer tools*. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the curent page (files), how much time it took and the total loading time:
+Most modern browsers have tools to profile a page's loading time. Those are easily called *web inspectors* or *developer tools*. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the current page (files), how much time it took and the total loading time:
 
 ![](/assets/images/content/performance-chrome-1.jpg)
 

@@ -138,7 +138,7 @@ Elimina todos los caracteres excepto dígitos, punto, signos más y menos, y con
 IntVal( mixed $input ): int
 ```
 
-Elimina todos los caracteres excepto digitos, signos más y menos, y convierte el valor a íntegro. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
+Remove all characters except digits, plus and minus sign and casts the value as an integer. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
 
 #### `lower`
 

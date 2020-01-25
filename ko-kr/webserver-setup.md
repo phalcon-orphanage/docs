@@ -347,7 +347,7 @@ Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServ
 
 ![](/assets/images/content/webserver-wamp-manager.png)
 
-브라우저를 실행해서 주소창에 https://localhost 입력 후 엔터 WAMP 의 환영페이지가 나타날 것입니다. `extensions loaded` 섹션에서 Phalcon이 정상적으로 로드되었는지 확인해주세요.
+브라우저를 실행해서 주소창에 https://localhost 입력 후 엔터 WAMP 의 환영페이지가 나타날 것입니다. Check the section `extensions loaded` to ensure that Phalcon was loaded.
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
@@ -409,7 +409,7 @@ XAMPP 컨트롤센터에서 Apache 웹서버를 재시작 해주세요. 재시�
 
 ![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) 는 현재 PHP이 상태에 대한 엄청난 양의 정보를 표시할 것입니다. Phalcon익스텐션이 정상적으로 로드되었는지 아래로 스크롤 해서 확인해주세요.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) 는 현재 PHP이 상태에 대한 엄청난 양의 정보를 표시할 것입니다. Scroll down to check if the Phalcon extension has been loaded correctly.
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 

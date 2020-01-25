@@ -278,7 +278,7 @@ Renders parameters keeping order in their HTML attributes
 public static function renderTitle( bool $prepend = bool, bool $append = bool ): string;
 ```
 
-Renders the title with title tags. The title is automaticall escaped
+Renders the title with title tags. The title is automatically escaped
 
 ```php
 deprecated public static function resetInput(): void;
