@@ -481,15 +481,6 @@ $invoice = Invoices::findFirst();
  {: .alert .alert-warning }
 
 ```php
-<?php
-
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
-
-// OR
-
 $uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
 $invoice = Invoices::findFirst([
     'uuid = ?0',
@@ -503,6 +494,18 @@ $invoice = Invoices::findFirst([
     'uuid = :primary:',
     'bind' => ['primary' => $uuid],
 ]);
+```
+
+> **NOTE**: If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
+ {: .alert .alert-warning }
+
+```php
+<?php
+
+
+use MyApp\Models\Invoices;
+
+$invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 ```
 
 ```php
