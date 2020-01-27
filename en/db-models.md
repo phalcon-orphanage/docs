@@ -474,7 +474,35 @@ Query the first record that matches the specified conditions. It will return a r
 
 use MyApp\Models\Invoices;
 
-$invoice  = Invoices::findFirst();
+$invoice = Invoices::findFirst();
+```
+
+> **NOTE**: If primary key of table is not numeric, use condition. See examples below.
+ {: .alert .alert-warning }
+
+```php
+<?php
+
+
+use MyApp\Models\Invoices;
+
+$invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
+
+// OR
+
+$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
+$invoice = Invoices::findFirst([
+    'uuid = ?0',
+    'bind' => [$uuid],
+]);
+
+// OR
+
+$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
+$invoice = Invoices::findFirst([
+    'uuid = :primary:',
+    'bind' => ['primary' => $uuid],
+]);
 ```
 
 ```php
