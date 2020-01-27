@@ -477,37 +477,6 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst();
 ```
 
-> **NOTE**: If primary key of table is not numeric, use condition. See examples below.
- {: .alert .alert-warning }
-
-```php
-$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
-$invoice = Invoices::findFirst([
-    'uuid = ?0',
-    'bind' => [$uuid],
-]);
-
-// OR
-
-$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
-$invoice = Invoices::findFirst([
-    'uuid = :primary:',
-    'bind' => ['primary' => $uuid],
-]);
-```
-
-> **NOTE**: If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
- {: .alert .alert-warning }
-
-```php
-<?php
-
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
-```
-
 ```php
 public function fireEvent(string $eventName): bool
 ```
@@ -1746,6 +1715,38 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst('inv_id = 3');
 ```
 You can also pass a string with a `WHERE` clause. In the above example we are getting the same record, instructing the ORM to give us a record with `inv_cst_id = 3`
+
+> **NOTE**: If primary key of table is not numeric, use condition. See examples below.
+ {: .alert .alert-warning }
+
+```php
+$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
+$invoice = Invoices::findFirst([
+    'uuid = ?0',
+    'bind' => [$uuid],
+]);
+
+// OR
+
+$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
+$invoice = Invoices::findFirst([
+    'uuid = :primary:',
+    'bind' => ['primary' => $uuid],
+]);
+```
+
+> **NOTE**: If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
+ {: .alert .alert-warning }
+
+```php
+<?php
+
+
+use MyApp\Models\Invoices;
+
+$invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
+```
+
 
 ### Parameters
 
