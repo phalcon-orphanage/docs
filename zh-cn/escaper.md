@@ -44,7 +44,7 @@ echo $escaper->escapeJs($js);
 
 ## HTML
 
-You can escape text prior to printing it to your views using `escapeHtml()`. Without escaping you could potentially echo unsafe data in your HTML output.
+You can escape text prior to printing it to your views using `escapeHtml()`. 如果不进行转义，您可能会在HTML输出中回显不安全的数据。
 
 ```php
 <?php
