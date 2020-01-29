@@ -27,14 +27,6 @@ https://github.com/phalcon/migrations
 composer require --dev phalcon/migrations
 ```
 
-```json
-{
-    "require": {
-        "phalcon/migrations": "^1.1"
-    }
-}
-```
-
 ## Quick start
 
 What you need for quick start:
