@@ -7,7 +7,7 @@ title: 'Listes de contrôle d''accès (Access Control Lists)'
 keywords: 'acl, access control list, permissions'
 ---
 
-# Listes de contrôle d'accès (Access Control Lists)
+# Access Control Lists (ACL)
 
 * * *
 
