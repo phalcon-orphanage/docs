@@ -27,6 +27,7 @@ keywords: 'psr-7, http, http response'
 <?php
 
 use Phalcon\Http\Message\Response;
+use Phalcon\Http\Message\Stream;
 
 $response = new Response();
 
@@ -39,9 +40,12 @@ $payload = [
     ]
 ];
 
+$stream = new Stream('php://memory', 'wb');
+$stream->write(json_encode($payload));
+            
 $response = $response
     ->withHeader('Content-Type', 'application/json')
-    ->withBody(json_encode($payload))
+    ->withBody($stream)
     ->withStatusCode(200)
 ;
 
