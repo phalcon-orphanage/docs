@@ -44,7 +44,7 @@ echo $escaper->escapeJs($js);
 
 ## HTML
 
-You can escape text prior to printing it to your views using `escapeHtml()`. Without escaping you could potentially echo unsafe data in your HTML output.
+You can escape text prior to printing it to your views using `escapeHtml()`. 如果不进行转义，您可能会在HTML输出中回显不安全的数据。
 
 ```php
 <?php
@@ -58,7 +58,7 @@ echo $escaper->escapeHtml($title);
 // &lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```html
 <?php echo $this->escaper->escapeHtml($title); ?>
@@ -86,7 +86,7 @@ echo $escaper->escapeHtmlAttr($attr);
 // &#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```html
 <?php echo $this->escaper->escapeHtmlAttr($attr); ?>
@@ -114,7 +114,7 @@ echo $escaper->escapeHtmlAttr($url);
 // %22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```html
 <?php echo $this->escaper->escapeHtmlAttr($url); ?>
@@ -136,7 +136,7 @@ echo $escaper->escapeCss($css);
 // \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```html
 <?php echo $this->escaper->escapeCss($css); ?>
@@ -164,7 +164,7 @@ echo $escaper->escapeJs($js);
 // \x27; alert(100); var x\x3d\x27
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```html
 <?php echo $this->escaper->escapeJs($js); ?>

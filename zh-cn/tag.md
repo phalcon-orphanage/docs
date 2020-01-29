@@ -283,7 +283,7 @@ echo Tag::checkField(
 // <input type='checkbox' id='terms' name='terms' value='Y' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->checkField(
@@ -319,7 +319,7 @@ echo Tag::colorField(
 // <input type='color' id='background' name='background' class='myclass' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->colorField(
@@ -355,7 +355,7 @@ echo Tag::dateField(
 // <input type='date' id='born' name='born' value='1980-01-01' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->dateField(
@@ -392,7 +392,7 @@ echo Tag::dateTimeField(
 //        value='1980-01-01 01:02:03' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->dateTimeField(
@@ -429,7 +429,7 @@ echo Tag::dateTimeLocalField(
 //        value='1980-01-01 01:02:03' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->dateTimeLocalField(
@@ -465,7 +465,7 @@ echo Tag::fileField(
 // <input type='file' id='document' name='document' class='input' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->fileField(
@@ -501,7 +501,7 @@ echo Tag::hiddenField(
 // <input type='hidden' id='id' name='id' value='1234' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->hiddenField(
@@ -536,7 +536,7 @@ echo Tag::imageInput(
 // <input type='image' src='/img/button.png' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->imageInput(
@@ -571,7 +571,7 @@ echo Tag::monthField(
 // <input type='month' id='month' name='month' value='04' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->monthField(
@@ -608,7 +608,7 @@ echo Tag::numericField(
 // <input type='number' id='price' name='price' min='1' max='5' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->numericField(
@@ -645,7 +645,7 @@ echo Tag::radioField(
 // <input type='radio' id='gender' name='gender' value='Male' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->radioField(
@@ -682,7 +682,7 @@ echo Tag::rangeField(
 // <input type='range' id='points' name='points' min='0' max='10' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->rangeField(
@@ -719,7 +719,7 @@ echo Tag::searchField(
 // <input type='search' id='search' name='search' q='startpage' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->searchField(
@@ -754,7 +754,7 @@ echo Tag::submitButton(
 // <input type='submit' value='Save' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->submitButton(
@@ -789,7 +789,7 @@ echo Tag::telField(
 // <input type='tel' id='mobile' name='mobile' size='12' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->telField(
@@ -825,7 +825,7 @@ echo Tag::textField(
 // <input type='text' id='name' name='name' size='30' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->textField(
@@ -861,7 +861,7 @@ echo Tag::timeField(
 // <input type='time' id='start' name='start' size='5' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->timeField(
@@ -896,7 +896,7 @@ echo Tag::urlField(
 // <input type='url' id='homepage' name='homepage' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->urlField(
@@ -931,7 +931,7 @@ echo Tag::weekField(
 // <input type='week' id='week' name='week' size='2' />
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->weekField(
@@ -976,7 +976,7 @@ echo Tag::image(
 // <img src='http://static.mywebsite.com/img/bg.png'>
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->image(
@@ -1040,7 +1040,7 @@ echo Tag::select(
 // </select>
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->select(
@@ -1109,7 +1109,7 @@ echo Tag::selectStatic(
 // </select>
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php echo $this->tag->selectStatic(
@@ -1168,7 +1168,7 @@ echo Tag::tagHtmlClose('canvas');
 // </canvas>
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php 
@@ -1385,7 +1385,7 @@ echo Tag::linkTo('http://phalcon.io/', 'Phalcon', false);
 // <a href='http://phalcon.io/'>Phalcon Home</a>
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php 
@@ -1452,7 +1452,7 @@ echo Tag::linkTo(
 );
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php 
@@ -1513,7 +1513,7 @@ echo Tag::endForm();
 // </form>
 ```
 
-HTML syntax:
+HTML 语法：
 
 ```php
 <?php 
