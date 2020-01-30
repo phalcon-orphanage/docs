@@ -1730,7 +1730,7 @@ use MyApp\Models\Customers;
 // cst_id = 3
 $customer = Customers::findFirst(3);
 
-$customer->inv_name_last = 'Princess';
+$customer->cst_name_last = 'Princess';
 
 $customer->save();
 ```
@@ -3858,8 +3858,6 @@ The available options are:
 
 | Option                          | Default | Description                                                              |
 | ------------------------------- |:-------:| ------------------------------------------------------------------------ |
-| `astCache`                      | `null`  | Cache level for the AST (intermediate cache)                             |
-| `cacheLevel`                    |   `3`   | Cache level for the ORM                                                  |
 | `caseInsensitiveColumnMap`      | `false` | Case insensitive column map                                              |
 | `castLastInsertIdToInt`         | `false` | Casts the `lastInsertId` to an integer                                   |
 | `castOnHydrate`                 | `false` | Automatic cast to original types on hydration                            |
@@ -3874,7 +3872,6 @@ The available options are:
 | `notNullValidations`            | `true`  | Automatically validate the not `null` columns present                    |
 | `phqlLiterals`                  | `true`  | Literals in the PHQL parser                                              |
 | `prefetchRecords`               |   `0`   | The number of records to prefetch when getting data from the ORM         |
-| `uniqueCacheId`                 |   `3`   | Unique cache id                                                          |
 | `updateSnapshotOnSave`          | `true`  | Update snapshots on `save()`                                             |
 | `virtualForeignKeys`            | `true`  | Virtual foreign keys                                                     |
 
@@ -3895,6 +3892,7 @@ The available options are:
     ; phalcon..orm.ignore_unknown_columns = false
     ; phalcon..orm.late_state_binding = false
     ; phalcon..orm.not_null_validations = true
+    ; phalcon.orm.parser_cache = null,
     ; phalcon..orm.resultset_prefetch_records = 0
     ; phalcon..orm.unique_cache_id = 3
     ; phalcon..orm.update_snapshot_on_save = true
