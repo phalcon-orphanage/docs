@@ -289,6 +289,18 @@ extension=php_phalcon.so
 
 Restart your webserver.
 
+### PHPBrew (macOS/Linux)
+
+```bash
+sudo phpbrew ext install phalcon
+```
+
+You can install the PSR dependency via phpbrew as well if needed:
+
+```bash
+sudo phpbrew ext install psr
+```
+
 ### Windows
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download][download] page.
 
