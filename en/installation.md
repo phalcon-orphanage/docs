@@ -289,6 +289,22 @@ extension=php_phalcon.so
 
 Restart your webserver.
 
+### PHPBrew (macOS/Linux)
+
+PHPBrew is an excellent way to manage multiple versions of PHP and PHP extensions on your system(s). Installation instructions for PHPBrew can be found [here][install-phpbrew] 
+
+If you're using PHPBrew, you can install Phalcon using the following:
+
+```bash
+sudo phpbrew ext install phalcon
+```
+
+You can install the PSR dependency via phpbrew as well if needed:
+
+```bash
+sudo phpbrew ext install psr
+```
+
 ### Windows
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download][download] page.
 
@@ -426,3 +442,4 @@ The plesk control panel doesn't have Phalcon support but you can find installati
 [remi-config]: https://blog.remirepo.net/pages/Config-en
 [zephir-phar]: https://github.com/phalcon/zephir/releases
 [install-pecl]: https://pear.php.net/manual/en/installation.getting.php
+[install-phpbrew]: https://github.com/phpbrew/phpbrew/wiki/Quick-Start
