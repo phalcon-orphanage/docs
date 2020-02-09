@@ -386,24 +386,7 @@ $options = [
 $adapter = new Apcu($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
-
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Apcu;
-use Phalcon\Storage\Serializer\Json;
-
-$jsonSerializer = new Json();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'serializer'        => $jsonSerializer,
-];
-
-$adapter = new Apcu(null, $options);
-```
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
 ### `Libmemcached`
 This adapter utilizes PHP's [memcached][memcached] extension to connect to Memcached servers. The adapter used is an instance of the `Memcached` class, created after the first event that requires the connection to be active. 
@@ -458,36 +441,7 @@ $options = [
 $adapter = new Libmemcached($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
-
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Libmemcached;
-use Phalcon\Storage\Serializer\Json;
-
-$jsonSerializer = new Json();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'serializer'        => $jsonSerializer,
-    'servers'           => [
-        0 => [
-            'host'   => '10.4.13.100',
-            'port'   => 11211,
-            'weight' => 1,
-        ],
-        1 => [
-            'host'   => '10.4.13.110',
-            'port'   => 11211,
-            'weight' => 5,
-        ],
-    ],
-];
-
-$adapter = new Libmemcached(null, $options);
-```
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
 **Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached] uses, offers support for serializing out of the box. The built-in serializers are: 
 
@@ -528,24 +482,7 @@ $options = [
 $adapter = new Memory($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
-
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Memory;
-use Phalcon\Storage\Serializer\Json;
-
-$jsonSerializer = new Json();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'serializer'        => $jsonSerializer,
-];
-
-$adapter = new Memory(null, $options);
-```
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
 ### `Redis`
 This adapter utilizes PHP's [redis][redis] extension to connect to a Redis server. The adapter used is an instance of the `Redis` class, created after the first event that requires the connection to be active. 
@@ -586,26 +523,7 @@ $options = [
 $adapter = new Redis($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
-
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Redis;
-use Phalcon\Storage\Serializer\Json;
-
-$jsonSerializer = new Json();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'host'              => '10.4.13.100',
-    'port'              => 6379,
-    'index'             => 1,
-];
-
-$adapter = new Redis(null, $options);
-```
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
 **Serializers**: The `Redis` class which is the adapter that the [Phalcon\Cache\Adapter\Redis][cache-adapter-redis] uses, offers support for serializing out of the box. The built-in serializers are: 
 
@@ -654,24 +572,7 @@ $options = [
 $adapter = new Stream($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
-
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Stream;
-use Phalcon\Storage\Serializer\Json;
-
-$jsonSerializer = new Json();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'storageDir'        => '/data/storage/cache',
-];
-
-$adapter = new Stream(null, $options);
-```
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
 ### Custom
 Phalcon also offers the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface] which can be implemented in a custom class. The class can offer the cache adapter functionality you require.
