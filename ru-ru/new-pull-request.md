@@ -21,7 +21,7 @@ Your pull request must include: * Target the correct branch. * Update the releva
 
 If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in GitHub to present this information. If no issue exists, please create one.
 
-For new functionality, we will need to have an issue created and referenced. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
+For new functionality, **we will need to have an issue created and referenced**. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
 
 Additionally any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version.
 
