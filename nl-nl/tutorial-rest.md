@@ -447,7 +447,7 @@ Updating data is similar to inserting. For this operation we are using the `put(
 
 use Phalcon\Http\Response;
 
-/app->put(
+$app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
         $robot = $app->request->getJsonRawBody();
