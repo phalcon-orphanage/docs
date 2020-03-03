@@ -5405,7 +5405,7 @@ use Phalcon\Mvc\Model\Transaction;
 // $di needs to have the service "db" registered for this to work
 $di = Phalcon\Di\FactoryDefault::getDefault();
 
-$phql = 'SELECTFROM robot';
+$phql = 'SELECT * FROM robot';
 
 $myTransaction = new Transaction($di);
 $myTransaction->begin();
