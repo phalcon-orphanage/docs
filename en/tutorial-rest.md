@@ -317,7 +317,7 @@ $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
         $phql = 'SELECT * '
-              . 'FROM MyApp\ModelsRobots '
+              . 'FROM MyApp\Models\Robots '
               . 'WHERE id = :id:'
         ;
 
