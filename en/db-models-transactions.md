@@ -44,7 +44,7 @@ class InvoicesController extends Controller
             $customer->cst_has_unpaid = true;
             $result = $customer->save();
 
-            if (false !== $result) {
+            if (false === $result) {
                 throw new \Exception('Error saving file');
             }
     
@@ -56,7 +56,7 @@ class InvoicesController extends Controller
             
             $result = $invoice->save();
             
-            if (false !== $result) {
+            if (false === $result) {
                 throw new \Exception('Error saving file');
             }
     
@@ -120,7 +120,7 @@ try {
     $customer->cst_has_unpaid = true;
     $result = $customer->save();
 
-    if (false !== $result) {
+    if (false === $result) {
         throw new \Exception('Error saving file');
     }
 
@@ -132,7 +132,7 @@ try {
     
     $result = $invoice->save();
     
-    if (false !== $result) {
+    if (false === $result) {
         throw new \Exception('Error saving file');
     }
 
@@ -169,7 +169,7 @@ try {
     
     foreach ($invoices as $invoice) {
         $invoice->setTransaction($transaction);
-        if (false === $invoice->delete() === false) {
+        if (false === $invoice->delete()) {
             $messages = $invoice->getMessages();
 
             foreach ($messages as $message) {
@@ -203,8 +203,8 @@ $manager = new TxManager();
 
 // Request a transaction
 $transaction = $manager
-    ->get
-    ()->throwRollbackException(true)
+    ->get()
+    ->throwRollbackException(true)
 ;
 
 try {
@@ -219,7 +219,7 @@ try {
     
     foreach ($invoices as $invoice) {
         $invoice->setTransaction($transaction);
-        if (false === $invoice->delete() === false) {
+        if (false === $invoice->delete()) {
             $messages = $invoice->getMessages();
 
             foreach ($messages as $message) {
