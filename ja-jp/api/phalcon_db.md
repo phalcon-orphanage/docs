@@ -61,10 +61,10 @@ try {
     );
 
     $result = $connection->query(
-        "SELECTFROM robots LIMIT 5"
+        "SELECT * FROM robots LIMIT 5"
     );
 
-    $result->setFetchMode(Enum::FETCH_NUM);
+    $result->setFetchMode(Db\Enum::FETCH_NUM);
 
     while ($robot = $result->fetch()) {
         print_r($robot);
@@ -324,7 +324,7 @@ Dumps the complete result of a query into an array
 ```php
 // Getting all robots with associative indexes only
 $robots = $connection->fetchAll(
-    "SELECTFROM robots",
+    "SELECT * FROM robots",
     \Phalcon\Db\Enum::FETCH_ASSOC
 );
 
@@ -334,7 +334,7 @@ foreach ($robots as $robot) {
 
  // Getting all robots that contains word "robot" withing the name
 $robots = $connection->fetchAll(
-    "SELECTFROM robots WHERE name LIKE :name",
+    "SELECT * FROM robots WHERE name LIKE :name",
     \Phalcon\Db\Enum::FETCH_ASSOC,
     [
         "name" => "%robot%",
@@ -372,12 +372,12 @@ Returns the first row in a SQL query result
 
 ```php
 // Getting first robot
-$robot = $connection->fetchOne("SELECTFROM robots");
+$robot = $connection->fetchOne("SELECT * FROM robots");
 print_r($robot);
 
 // Getting first robot with associative indexes only
 $robot = $connection->fetchOne(
-    "SELECTFROM robots",
+    "SELECT * FROM robots",
     \Phalcon\Db\Enum::FETCH_ASSOC
 );
 print_r($robot);
@@ -556,7 +556,7 @@ public function limit( string $sqlQuery, int $number ): string;
 Appends a LIMIT clause to $sqlQuery argument
 
 ```php
-echo $connection->limit("SELECTFROM robots", 5);
+echo $connection->limit("SELECT * FROM robots", 5);
 ```
 
 ```php
@@ -1285,7 +1285,7 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 ```php
 print_r(
     $connection->convertBoundParams(
-        "SELECTFROM robots WHERE name = :name:",
+        "SELECT * FROM robots WHERE name = :name:",
         [
             "Bender",
         ]
@@ -1334,7 +1334,7 @@ Executes a prepared statement binding. This function uses integer indexes starti
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-    "SELECTFROM robots WHERE name = :name"
+    "SELECT * FROM robots WHERE name = :name"
 );
 
 $result = $connection->executePrepared(
@@ -1415,7 +1415,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-    "SELECTFROM robots WHERE name = :name"
+    "SELECT * FROM robots WHERE name = :name"
 );
 
 $result = $connection->executePrepared(
@@ -1438,11 +1438,11 @@ Sends SQL statements to the database server returning the success state. Use thi
 ```php
 // Querying data
 $resultset = $connection->query(
-    "SELECTFROM robots WHERE type = 'mechanical'"
+    "SELECT * FROM robots WHERE type = 'mechanical'"
 );
 
 $resultset = $connection->query(
-    "SELECTFROM robots WHERE type = ?",
+    "SELECT * FROM robots WHERE type = ?",
     [
         "mechanical",
     ]
@@ -2235,9 +2235,9 @@ public function forUpdate( string $sqlQuery ): string;
 Returns a SQL modified with a FOR UPDATE clause
 
 ```php
-$sql = $dialect->forUpdate("SELECTFROM robots");
+$sql = $dialect->forUpdate("SELECT * FROM robots");
 
-echo $sql; // SELECTFROM robots FOR UPDATE
+echo $sql; // SELECT * FROM robots FOR UPDATE
 ```
 
 ```php
@@ -2286,15 +2286,15 @@ public function limit( string $sqlQuery, mixed $number ): string;
 Generates the SQL for LIMIT clause
 
 ```php
-// SELECTFROM robots LIMIT 10
+// SELECT * FROM robots LIMIT 10
 echo $dialect->limit(
-    "SELECTFROM robots",
+    "SELECT * FROM robots",
     10
 );
 
-// SELECTFROM robots LIMIT 10 OFFSET 50
+// SELECT * FROM robots LIMIT 10 OFFSET 50
 echo $dialect->limit(
-    "SELECTFROM robots",
+    "SELECT * FROM robots",
     [10, 50]
 );
 ```
@@ -2644,9 +2644,9 @@ public function sharedLock( string $sqlQuery ): string;
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
-$sql = $dialect->sharedLock("SELECTFROM robots");
+$sql = $dialect->sharedLock("SELECT * FROM robots");
 
-echo $sql; // SELECTFROM robots LOCK IN SHARE MODE
+echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 ```
 
 ```php
@@ -3903,7 +3903,7 @@ Gets the schema where referenced table is
 Encapsulates the resultset internals
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Db\Enum::FETCH_NUM
@@ -3965,7 +3965,7 @@ Moves internal resultset cursor to another position letting us to fetch a certai
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 // Move to third row on result
@@ -3988,7 +3988,7 @@ public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null
 Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
@@ -4007,7 +4007,7 @@ Returns an array of arrays containing all the records in the result This method 
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 $robots = $result->fetchAll();
@@ -4020,7 +4020,7 @@ public function fetchArray();
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_NUM
@@ -4045,7 +4045,7 @@ Gets number of rows returned by a resultset
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";
