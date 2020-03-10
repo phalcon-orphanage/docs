@@ -19,17 +19,22 @@ Models allow you to implement events that will be thrown while performing an ins
 | Операция      | Название                   | Stop? | Пояснение                                                                                             |
 | ------------- | -------------------------- |:-----:| ----------------------------------------------------------------------------------------------------- |
 | Insert        | `afterCreate`              |  Нет  | Runs after creating a record                                                                          |
+| Delete        | `afterDelete`              |  Нет  | Runs after deleting records                                                                           |
+| Fetch         | `afterFetch`               |  Нет  | Runs after fetching records                                                                           |
 | Insert/Update | `afterSave`                |  Нет  | Runs after saving a record                                                                            |
 | Update        | `afterUpdate`              |  Нет  | Runs after updating a record                                                                          |
 | Insert/Update | `afterValidation`          |  Да   | Is executed after the fields are validated for not `null`/empty strings or foreign keys               |
 | Insert        | `afterValidationOnCreate`  |  Да   | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an insert  |
 | Update        | `afterValidationOnUpdate`  |  Да   | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an update  |
 | Insert        | `beforeCreate`             |  Да   | Runs before creating a record                                                                         |
+| Delete        | `beforeDelete`             |  Да   | Runs before deleting records                                                                          |
 | Insert/Update | `beforeSave`               |  Да   | Runs before saving a record                                                                           |
 | Update        | `beforeUpdate`             |  Да   | Runs before updating a record                                                                         |
 | Insert/Update | `beforeValidation`         |  Да   | Is executed before the fields are validated for not `null`/empty strings or foreign keys              |
 | Insert        | `beforeValidationOnCreate` |  Да   | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an insert |
 | Update        | `beforeValidationOnUpdate` |  Да   | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an update |
+| Delete        | `notDeleted`               |  Нет  | Runs when records are not deleted (fail)                                                              |
+| Save          | `notSaved`                 |  Нет  | Runs when records are not saved (fail)                                                                |
 | Insert/Update | `onValidationFails`        |  Да   | Is executed after an integrity validator fails                                                        |
 | Insert/Update | `prepareSave`              |  Нет  | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               |  Да   | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
