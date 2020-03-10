@@ -23,7 +23,7 @@ Controllers in Phalcon **must** have the suffix `Controller` in their file and c
 > **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
 {: .alert .alert-info }
 
-## Ruteo
+## Routing
 
 [Routing](routing) is further explained in the relevant document. However the default route is:
 
@@ -45,7 +45,7 @@ https://dev.phalcon.ld/invoices/list/2/25
 
 will have:
 
-| Slug       | Descripción    |
+| Slug       | Description    |
 | ---------- | -------------- |
 | `invoices` | **Controller** |
 | `list`     | **Action**     |
