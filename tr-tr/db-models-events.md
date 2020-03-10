@@ -19,17 +19,22 @@ Models allow you to implement events that will be thrown while performing an ins
 | Operation     | Name                       | Stop? | Explanation                                                                                           |
 | ------------- | -------------------------- |:-----:| ----------------------------------------------------------------------------------------------------- |
 | Insert        | `afterCreate`              | Hayır | Runs after creating a record                                                                          |
+| Delete        | `afterDelete`              | Hayır | Runs after deleting records                                                                           |
+| Fetch         | `afterFetch`               | Hayır | Runs after fetching records                                                                           |
 | Insert/Update | `afterSave`                | Hayır | Runs after saving a record                                                                            |
 | Update        | `afterUpdate`              | Hayır | Runs after updating a record                                                                          |
 | Insert/Update | `afterValidation`          | Evet  | Is executed after the fields are validated for not `null`/empty strings or foreign keys               |
 | Insert        | `afterValidationOnCreate`  | Evet  | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an insert  |
 | Update        | `afterValidationOnUpdate`  | Evet  | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an update  |
 | Insert        | `beforeCreate`             | Evet  | Runs before creating a record                                                                         |
+| Delete        | `beforeDelete`             | Evet  | Runs before deleting records                                                                          |
 | Insert/Update | `beforeSave`               | Evet  | Runs before saving a record                                                                           |
 | Update        | `beforeUpdate`             | Evet  | Runs before updating a record                                                                         |
 | Insert/Update | `beforeValidation`         | Evet  | Is executed before the fields are validated for not `null`/empty strings or foreign keys              |
 | Insert        | `beforeValidationOnCreate` | Evet  | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an insert |
 | Update        | `beforeValidationOnUpdate` | Evet  | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an update |
+| Delete        | `notDeleted`               | Hayır | Runs when records are not deleted (fail)                                                              |
+| Save          | `notSaved`                 | Hayır | Runs when records are not saved (fail)                                                                |
 | Insert/Update | `onValidationFails`        | Evet  | Is executed after an integrity validator fails                                                        |
 | Insert/Update | `prepareSave`              | Hayır | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               | Evet  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
