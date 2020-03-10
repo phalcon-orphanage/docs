@@ -35,9 +35,6 @@ Models allow you to implement events that will be thrown while performing an ins
 | Insert/Update | `prepareSave`              |  No   | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               |  Yes  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
 
-
-
-
 ### Events
 Models act as listeners to the events manager. Therefore we only need to implement the events above in the models directly as public methods:
 
