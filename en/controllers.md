@@ -12,7 +12,7 @@ keywords: 'controllers, mvc'
 ## Overview
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.
 
-An action is any public class in a controller with the `Action` suffix. These _actions_ are accessible by a URL and are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+An action is any public method in a controller with the `Action` suffix. These _actions_ are accessible by a URL and are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
 Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller][mvc-controller] class.
 
@@ -43,10 +43,10 @@ will have:
 
 | Slug        | Description    |
 |-------------|----------------|
-| `invvoices` | **Controller** |
+| `invoices`  | **Controller** |
 | `list`      | **Action**     |
-| `2`         | **Parameter**  |
-| `25`        | **Parameter**  |
+| `2`         | **Parameter1** |
+| `25`        | **Parameter2** |
 
 The above will call the `InvoicesController` and `listAction`. The parameters will be available through the [request](request) in the controller and action.
 
@@ -122,7 +122,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control implemented in the application).
+> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
 {: .alert .alert-warning }
 
 ## Dispatch Loop
@@ -250,7 +250,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE** You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
+> **NOTE**: You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
 {: .alert .alert-warning }
 
 For the example above, the URL to call the method is:
@@ -280,7 +280,7 @@ class InvoicesController extends Controller
     public function listAction($page = 1, $perPage = 25)
     {
         $page    = (int) $page;
-        $perPage = (int) $perPage;)
+        $perPage = (int) $perPage;
     }
 }
 ```
