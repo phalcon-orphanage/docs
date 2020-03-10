@@ -9,6 +9,8 @@ keywords: 'new feature request, nfr'
 <hr/>
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
+[List of NRFs](new-feature-request-list)
+
 A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
 A NFR contains:
