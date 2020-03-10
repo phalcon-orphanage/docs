@@ -19,17 +19,22 @@ Models allow you to implement events that will be thrown while performing an ins
 | Operation     | Nazwa                      | Stop? | Explanation                                                                                           |
 | ------------- | -------------------------- |:-----:| ----------------------------------------------------------------------------------------------------- |
 | Insert        | `afterCreate`              |  Nie  | Runs after creating a record                                                                          |
+| Delete        | `afterDelete`              |  Nie  | Runs after deleting records                                                                           |
+| Fetch         | `afterFetch`               |  Nie  | Runs after fetching records                                                                           |
 | Insert/Update | `afterSave`                |  Nie  | Runs after saving a record                                                                            |
 | Update        | `afterUpdate`              |  Nie  | Runs after updating a record                                                                          |
 | Insert/Update | `afterValidation`          |  Tak  | Is executed after the fields are validated for not `null`/empty strings or foreign keys               |
 | Insert        | `afterValidationOnCreate`  |  Tak  | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an insert  |
 | Update        | `afterValidationOnUpdate`  |  Tak  | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an update  |
 | Insert        | `beforeCreate`             |  Tak  | Runs before creating a record                                                                         |
+| Delete        | `beforeDelete`             |  Tak  | Runs before deleting records                                                                          |
 | Insert/Update | `beforeSave`               |  Tak  | Runs before saving a record                                                                           |
 | Update        | `beforeUpdate`             |  Tak  | Runs before updating a record                                                                         |
 | Insert/Update | `beforeValidation`         |  Tak  | Is executed before the fields are validated for not `null`/empty strings or foreign keys              |
 | Insert        | `beforeValidationOnCreate` |  Tak  | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an insert |
 | Update        | `beforeValidationOnUpdate` |  Tak  | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an update |
+| Delete        | `notDeleted`               |  Nie  | Runs when records are not deleted (fail)                                                              |
+| Save          | `notSaved`                 |  Nie  | Runs when records are not saved (fail)                                                                |
 | Insert/Update | `onValidationFails`        |  Tak  | Is executed after an integrity validator fails                                                        |
 | Insert/Update | `prepareSave`              |  Nie  | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               |  Tak  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
