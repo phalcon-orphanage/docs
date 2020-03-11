@@ -19,19 +19,24 @@ Models allow you to implement events that will be thrown while performing an ins
 | Operación     | Nombre                     | Stop? | Explicación                                                                                           |
 | ------------- | -------------------------- |:-----:| ----------------------------------------------------------------------------------------------------- |
 | Insert        | `afterCreate`              |  No   | Runs after creating a record                                                                          |
+| Delete        | `afterDelete`              |  No   | Runs after deleting records                                                                           |
+| Fetch         | `afterFetch`               |  No   | Runs after fetching records                                                                           |
 | Insert/Update | `afterSave`                |  No   | Runs after saving a record                                                                            |
 | Update        | `afterUpdate`              |  No   | Runs after updating a record                                                                          |
 | Insert/Update | `afterValidation`          |  Si   | Is executed after the fields are validated for not `null`/empty strings or foreign keys               |
 | Insert        | `afterValidationOnCreate`  |  Si   | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an insert  |
 | Update        | `afterValidationOnUpdate`  |  Si   | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an update  |
 | Insert        | `beforeCreate`             |  Si   | Runs before creating a record                                                                         |
+| Delete        | `beforeDelete`             |  Si   | Runs before deleting records                                                                          |
 | Insert/Update | `beforeSave`               |  Si   | Runs before saving a record                                                                           |
 | Update        | `beforeUpdate`             |  Si   | Runs before updating a record                                                                         |
 | Insert/Update | `beforeValidation`         |  Si   | Is executed before the fields are validated for not `null`/empty strings or foreign keys              |
 | Insert        | `beforeValidationOnCreate` |  Si   | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an insert |
 | Update        | `beforeValidationOnUpdate` |  Si   | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an update |
-| Insert/Update | `onValidationFails`        |  Si   | Se ejecuta después de un validador de integridad falla                                                |
-| Insert/Update | `prepareSave`              |  No   | Es ejecutado antes de guardar y permite la manipulación de datos                                      |
+| Delete        | `notDeleted`               |  No   | Runs when records are not deleted (fail)                                                              |
+| Save          | `notSaved`                 |  No   | Runs when records are not saved (fail)                                                                |
+| Insert/Update | `onValidationFails`        |  Si   | Is executed after an integrity validator fails                                                        |
+| Insert/Update | `prepareSave`              |  No   | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               |  Si   | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
 
 ### Eventos
