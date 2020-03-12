@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Vistas'
+upgrade: '#views'
 keywords: 'mvc, view, view component, simple view, responses'
 ---
 
