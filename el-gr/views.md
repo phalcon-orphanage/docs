@@ -3,6 +3,7 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 title: 'Προβολές'
+upgrade: '#views'
 keywords: 'mvc, view, view component, simple view, responses'
 ---
 
