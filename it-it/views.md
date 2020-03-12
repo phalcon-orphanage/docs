@@ -3,6 +3,7 @@ layout: default
 language: 'it-it'
 version: '4.0'
 title: 'Views'
+upgrade: '#views'
 keywords: 'mvc, view, view component, simple view, responses'
 ---
 
