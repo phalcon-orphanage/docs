@@ -968,6 +968,17 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
+## Görüntülenmeler
+
+> Status: **changes required**
+> 
+> Usage: [View Documentation](views)
+{: .alert .alert-info }
+
+View caching along with the `viewCache` service have been removed from the framework because they were incompatible with the new Cache component. Developers can easily utilize a *view cache* from external services such as Varnish, Cloudflare etc. Additionally, developers can cache fragments by either using the `Phalcon\Mvc\View\Simple::render()` or the `Phalcon\Mvc\View::toString()`. Those two methods return the produced HTML that can be cached in the cache backend of your choice.
+
+* * *
+
 ## Url
 
 > Status: **changes required**
