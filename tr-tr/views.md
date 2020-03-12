@@ -3,6 +3,7 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 title: 'Görüntülenmeler'
+upgrade: '#views'
 keywords: 'mvc, view, view component, simple view, responses'
 ---
 
