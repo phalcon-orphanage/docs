@@ -46,7 +46,7 @@ $stream->write(json_encode($payload));
 $response = $response
     ->withHeader('Content-Type', 'application/json')
     ->withBody($stream)
-    ->withStatusCode(200)
+    ->withStatus(200)
 ;
 
 $result = $httpClient->send($response);
@@ -60,7 +60,7 @@ $payload = 'The above copyright notice and this permission '
 $response = $response
     ->withHeader('Content-Type', 'text/html')
     ->withBody($payload)
-    ->withStatusCode(200)
+    ->withStatus(200)
 ;
 
 $result = $httpClient->send($response);
