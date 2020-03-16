@@ -3,40 +3,45 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 upgrade: '#acl'
-title: 'Access Control Lists (ACL)'
-keywords: 'acl, access control list, permissions'
+title: 'アクセス制御リスト - Access Control Lists (ACL)'
+keywords: 'アクセス制御リスト, アクセス権, 権限, パーミッション, acl, access control list, permissions'
 ---
 
-# Access Control Lists (ACL)
+# アクセス制御リスト - Access Control Lists (ACL)
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
-[Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
+[Phalcon\Acl](api/Phalcon_Acl) は、ファイルパーミッションの付与同様に、簡単で軽量なアクセス制御の管理機能を提供します。[Access Control Lists](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E5%88%B6%E5%BE%A1%E3%83%AA%E3%82%B9%E3%83%88) (ACLs) を使用すると、アプリケーションはAPIのリクエストからそれらのデータ領域と基本となるオブジェクトへアクセスできます。
 
-In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role](api/Phalcon_Acl#acl-role) and [Component](api/Phalcon_Acl#acl-component).
+簡単に言えば、ACLsには2つのオブジェクトがあります: アクセスの際に必要な要素を格納したオブジェクトと、我々がアクセスしたいと思うオブジェクトです。プログラミングの世界では、一般的にRoleとComponentと呼ばれています。Phalconでは [Role](api/Phalcon_Acl#acl-role) と [Component](api/Phalcon_Acl#acl-component) という用語を使用します。
 
-> **Use Case**
+> **使用例**
 > 
-> An accounting application needs to have different groups of users have access to various areas of the application.
+> 例えば、会計アプリケーションは、アプリケーションのさまざまな領域にアクセスできる様々なユーザーグループを持つ必要があります。
 > 
 > **Role** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
 > 
 > **Component** - Login page - Admin page - Invoices page - Reports page
 {:.alert .alert-info}
 
-As seen above in the use case, an [Role](api/Phalcon_Acl#acl-role) is defined as who needs to access a particular [Component](api/Phalcon_Acl#acl-component) i.e. an area of the application. A [Component](api/Phalcon_Acl#acl-component) is defined as the area of the application that needs to be accessed.
+上記の使用例では、 １つの [Role](api/Phalcon_Acl#acl-role) は、アプリケーションの特定の部分である [Component](api/Phalcon_Acl#acl-component) にアクセスする必要があるユーザーとして定義されます。 [Component](api/Phalcon_Acl#acl-component) は、アクセスする必要があるアプリケーションの領域として定義されます。
 
-Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.
+[Phalcon\Acl](api/Phalcon_Acl) を使用すると、これら2つを結び付けることができます。そうすれば、アプリケーションのセキュリティを強化して特定のロールのみを特定のコンポーネントにバインドできるようになるのです。
 
-## Activation
+## 機能の有効化
 
-[Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with roles and components. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl#acl-adapter-memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
+[Phalcon\Acl](api/Phalcon_Acl) は、Adapterを使用してRoleとComponentの保管や操作を行います。 
 
-The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an adapter used to retrieve the information related to the control list.
+現在利用できる唯一のアダプターは  [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl#acl-adapter-memory) です。 しかし、Adapterにメモリを使用させると、ACLへのアクセス速度が大幅に向上しますが、欠点もあります。主な欠点はメモリが永続的ではないことです。
+そのため、開発者はACLデータの保存を実装する必要があります。つまり、ACLはリクエストごとに生成されないということです。
+これは特に、ACLが非常に大きい場合、さらにデータベースまたはファイルシステムに格納されている場合はなおさら、
+遅延と不要な処理を容易に引き起こす可能性があります。
+
+[Phalcon\Acl](api/Phalcon_Acl) コンストラクターの1つめの引数はアクセス制御リストの情報を取得するために使用するアダプターです。
 
 ```php
 <?php
@@ -46,7 +51,7 @@ use Phalcon\Acl\Adapter\Memory;
 $acl = new Memory();
 ```
 
-The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role](api/Phalcon_Acl#acl-role) or [Component](api/Phalcon_Acl#acl-component). This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
+既定のアクションは、 [Role](api/Phalcon_Acl#acl-role) または [Component](api/Phalcon_Acl#acl-component) の **`Phalcon\Acl\Enum::DENY`** です。これは、開発者またはアプリケーションのみが特定のコンポーネントへのアクセスを許可し、ACLコンポーネント自体へのアクセスを許可しないようにするためです。
 
 ```php
 <?php
@@ -61,22 +66,26 @@ $acl->setDefaultAction(Enum::ALLOW);
 
 ## 定数
 
-The [Phalcon\Acl\Enum](api/Phalcon_Acl#acl-enum) class offers two constants that can be used when defining access levels.
+[Phalcon\Acl\Enum](api/Phalcon_Acl#acl-enum) classは、アクセスレベルを定義するときに使用できる2つの定数を提供します。
 
 * `Phalcon\Acl\Enum::ALLOW` (`1`)
 * `Phalcon\Acl\Enum::DENY` (`0` - default)
 
-You can use these constants to define access levels for your ACL.
+これらの定数を使用して、ACLのアクセスレベルを定義できます。
 
-## Adding Roles
+## Roleの追加
 
-As mentioned above, a [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) is an object that can or cannot access a set of [Component](api/Phalcon_Acl#acl-component) in the access list.
+上記で説明した通り、 [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) は、アクセス制御リストの [Component](api/Phalcon_Acl#acl-component) にアクセスできる、またはアクセスできないオブジェクトの組み合わせです。
 
-There are two ways of adding roles to our list. * by using a [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) object or * using a string, representing the name of the role
+アクセス制御リストにroleを追加するには2つの方法があります。
+* by using a [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) オブジェクトを使用する。
+* ロールの名前を表す文字列を使用する。
 
 To see this in action, using the example outlined above, we will add the relevant [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) objects in our list.
+実例として上記の定義を使用し、関連する [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) オブジェクトをリストに追加します。
 
-Role objects. The first parameter is the name of the role, the second the description
+下記はオブジェクトを使用して追加する場合です。
+Roleオブジェクトの1つ目の引数はRoleの名称、2つ目の引数は説明文です。
 
 ```php
 <?php
@@ -93,7 +102,7 @@ $acl->addRole($roleAdmins);
 $acl->addRole($roleAccounting);
 ```
 
-Strings. Add the role with just the name directly to the ACL:
+下記は文字列を使用して追加する場合です。名前だけのRoleを直接ACLに追加します。
 
 ```php
 <?php
@@ -106,15 +115,18 @@ $acl->addRole('manager');
 $acl->addRole('guest');
 ```
 
-## Adding Components
+## Componentの追加
 
-A [Component](api/Phalcon_Acl#acl-component) is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component](api/Phalcon_Acl#acl-component) class can be used to define components in the application. Also it is important to add related actions to a component so that the ACL can understand what it should control.
+A [Component](api/Phalcon_Acl#acl-component) はアクセス制限をしたいアプリケーションの領域です。 MVCアプリケーションでは、これはControllerになります。必須ではありませんが、 [Phalcon\Acl\Component](api/Phalcon_Acl#acl-component) classをアプリケーションでコンポーネントを定義する際に使用することもできます。そして、ACLが制御対象を理解できるように、関連ActionをComponentに追加することが重要です。
 
-There are two ways of adding components to our list. * by using a [Phalcon\Acl\Component](api/Phalcon_Acl#acl-component) object or * using a string, representing the name of the role
+リストにコンポーネントを追加するには2つの方法があります。
+* [Phalcon\Acl\Component](api/Phalcon_Acl#acl-component) オブジェクトを使用するか、
+* 文字列を使用します。Roleの名前を示すものを。
 
-Similar to the `addRole`, `addComponent` requires a name for the component and an optional description.
+`addRole` と同様に、`addComponent`にはコンポーネントの名前とオプションの説明が必要です。
 
-Component objects. The first parameter is the name of the component, the second the description
+下記はオブジェクトを使用して追加する場合です。
+Component オブジェクトの1つ目の引数はComponentの名称、2つ目の引数は説明文です。
 
 ```php
 <?php
@@ -144,7 +156,7 @@ $acl->addComponent(
 );
 ```
 
-Strings. Add the component with just the name directly to the ACL:
+下記は文字列を使用して追加する場合です。名前だけのComponentを直接ACLに追加します。
 
 ```php
 <?php
