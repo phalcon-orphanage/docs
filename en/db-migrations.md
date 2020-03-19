@@ -156,5 +156,5 @@ Will produce folder name with such names
 
 Migrations will be executed from oldest to newest.
 
-> **NOTE**: In case when one of past migrations wasn't executed and was introduced, after next run it executes without any problem.
+> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
 {: .alert .alert-info }
