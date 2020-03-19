@@ -19,7 +19,7 @@ https://github.com/phalcon/migrations
 ## Requirements
 
 * PHP >= 7.2
-* Phalcon >= 4.0.0
+* Phalcon >= 4.0.5
 
 ## Installing via Composer
 
@@ -56,7 +56,7 @@ return new Config([
     'application' => [
         'logInDb' => true,
         'migrationsDir' => 'db/migrations',
-        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions (1.0.1)
+        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
         'exportDataFromTables' => [
             // Tables names
             // Attention! It will export data every new migration
@@ -68,13 +68,19 @@ return new Config([
 ### Generate migrations
 
 ```
-vendor/bin/phalcon-migrations migration generate
+vendor/bin/phalcon-migrations generate
 ```
 
-### Run Migrations
+### Run migrations
 
 ```
-vendor/bin/phalcon-migrations migration run
+vendor/bin/phalcon-migrations run
+```
+
+### List existing migrations
+
+```
+vendor/bin/phalcon-migrations list
 ```
 
 ## Usage example
@@ -115,14 +121,13 @@ $migration::run([
 
 | Action | Description
 | ------ | -----------
-| --action=s | Generates/Runs a Migration [generate|run]
 | --config=s | Configuration file
 | --migrations=s | Migrations directory. Use comma separated string to specify multiple directories
 | --directory=s | Directory where the project was created
 | --table=s | Table to migrate. Table name or table prefix with asterisk. Default: all
 | --version=s | Version to migrate
 | --descr=s   | Migration description (used for timestamp based migration)
-| --data=s    | Export data [always|oncreate] (Import data when run migration)
+| --data=s    | Export data ['always' or 'oncreate'] (Data is imported during migration run)
 | --exportDataFromTables=s | Export data from specific tables, use comma separated string.
 | --force | Forces to overwrite existing migrations
 | --ts-based | Timestamp based migration version
@@ -131,3 +136,25 @@ $migration::run([
 | --verbose | Output of debugging information during operation (Running only)
 | --no-auto-increment | Disable auto increment (Generating only)
 | --help | Shows this help
+
+## Timestamp based migrations
+
+Current approach is useful when more than one developer is participating in Database Structure management.
+Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment.
+Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
+
+Current command
+```
+vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
+```
+
+Will produce folder name with such names
+
+* 1582539287636860_1.0.0
+* 1682539471102635_1.0.0
+* 1782539471102635_1.0.0
+
+Migrations will be executed from oldest to newest.
+
+> **NOTE**: In case when one of past migrations wasn't executed and was introduced, after next run it executes without any problem.
+{: .alert .alert-info }
