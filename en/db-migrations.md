@@ -139,7 +139,7 @@ $migration::run([
 
 ## Timestamp based migrations
 
-Current approach is useful when more than one developer is participating in Database Structure management.
+Using this approach is useful when more than one developer is participating in the database structure management.
 Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment.
 Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
 
