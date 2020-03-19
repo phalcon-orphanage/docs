@@ -516,31 +516,30 @@ class SignupController extends Controller
     {
         $user = new Users();
 
+        //assign value from the form to $user
         $user->assign(
             $this->request->getPost(),
-            null,
             [
-                "name",
-                "email",
+                'name',
+                'email'
             ]
         );
 
         // Store and check for errors
         $success = $user->save();
 
+        // passing the result to the view
+        $this->view->success = $success;
+
         if ($success) {
-            echo "Thank you for registering!";
+            $message = "Thanks for registering!";
         } else {
-            echo "Sorry, the following problems were generated: ";
-
-            $messages = $user->getMessages();
-
-            foreach ($messages as $message) {
-                echo $message->getMessage(), "<br/>";
-            }
+            $message = "Sorry, the following problems were generated:<br>"
+                     . implode('<br>', $user->getMessages());
         }
 
-        $this->view->disable();
+        // passing a message to the view
+        $this->view->message = $message;
     }
 }
 ```
