@@ -2,24 +2,24 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Security'
+title: 'セキュリティ'
 keywords: 'security, hashing, passwords'
 ---
 
-# Security
+# セキュリティ
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 > **NOTE**: Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }
 
 [Phalcon\Security](api/phalcon_security#security) is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
-## Password Hashing
+## パスワードのハッシュ
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use popular one way hashing methods [md5](https://php.net/manual/en/function.md5.php) and [sha1](https://php.net/manual/en/function.sha1.php). However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
 
@@ -153,7 +153,7 @@ $this->security->hash(rand());
 
 This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
 
-## Exceptions
+## 例外
 
 Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception](api/phalcon_security#security-exception). You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
 
@@ -224,7 +224,7 @@ Adding a [captcha](https://en.wikipedia.org/wiki/ReCAPTCHA) to the form is also 
 
 ## Functionality
 
-### Hash
+### ハッシュ
 
 **getDefaultHash() / setDefaultHash()**
 
@@ -256,7 +256,7 @@ Returns `true` if the passed hashed string is a valid [bcrypt](https://en.wikipe
 
 Generates a keyed hash value using the HMAC method. It uses PHP's [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php) method internally, therefore all the parameters it accepts are the same as the [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php).
 
-### Random
+### 乱数
 
 **`getRandom()`**
 
@@ -296,7 +296,7 @@ Returns the value of the CSRF token in session
 
 Removes the value of the CSRF token and key from session
 
-## Random
+## 乱数
 
 The [Phalcon\Security\Random](api/phalcon_security#security-random) class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom](https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html) library from Ruby.
 
@@ -442,7 +442,7 @@ $random = new Random();
 echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 ```
 
-## Dependency Injection
+## 依存性の注入
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Security](api/phalcon_security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
