@@ -1201,7 +1201,7 @@ Volt syntax:
 {% endraw %}
 ```
 
-## Assets
+## アセット
 
 [Phalcon\Tag](api/phalcon_tag) offers helper methods to generate stylesheet and javascript HTML tags.
 
