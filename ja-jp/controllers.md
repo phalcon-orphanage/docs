@@ -324,7 +324,7 @@ class InvoicesController extends Controller
 
 The above parameters will match the route the way it was defined.
 
-## Events
+## イベント
 
 Controllers automatically act as listeners for <dispatcher> <events>, implementing methods with those event names allowing you to implement hook points before/after the actions are executed:
 
