@@ -756,7 +756,7 @@ $form->add($email);
 > **NOTE**: For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
-## Validation
+## バリデーション
 
 Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 
@@ -915,7 +915,7 @@ echo $element->renderDecorated('nameLast');
 echo $element->renderDecorated('nameFirst');
 ```
 
-## Events
+## イベント
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 
