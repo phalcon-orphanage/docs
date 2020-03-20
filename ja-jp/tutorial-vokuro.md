@@ -502,7 +502,7 @@ The available providers are:
 | `MailProvider`           | Mail support                                      |
 | `ModelsMetadataProvider` | Metadata for models                               |
 | `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Security                                          |
+| `SecurityProvider`       | セキュリティ                                            |
 | `SessionBagProvider`     | Session data                                      |
 | `SessionProvider`        | Session data                                      |
 | `UrlProvider`            | URL handling                                      |
