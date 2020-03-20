@@ -199,7 +199,7 @@ $response = $application->handle(
 $response->send();
 ```
 
-## Dependency Injection
+## 依存性の注入
 
 In the first line of the code block above, the [Application](application) class constructor receives the variable `$container` as an argument.
 
