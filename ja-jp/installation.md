@@ -388,7 +388,7 @@ Clone the repository
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Phalconのコンパイル
 
 ```bash
 cd cphalcon/
