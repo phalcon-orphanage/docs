@@ -1183,11 +1183,11 @@ $annotations = $container->get(
 );
 ```
 
-## Events
+## イベント
 
 [Phalcon\Di](api/phalcon_di#di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `di`.
 
-| Event Name             | Triggered                                                                                                       |
+| イベント名                  | トリガー                                                                                                            |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `afterServiceResolve`  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |
 | `beforeServiceResolve` | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |
