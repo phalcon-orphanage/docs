@@ -269,7 +269,7 @@ try {
 
 As you can see, the bootstrap file is very short and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
 
-## Creating a Controller
+## Controllerの作成
 
 By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
@@ -463,7 +463,7 @@ If you click the *Register* button again, you will see a blank page.
 
 The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
-## Creating a Model
+## Modelの作成
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
@@ -501,7 +501,7 @@ class Users extends Model
 > **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
 {: .alert .alert-info }
 
-## Setting a Database Connection
+## データベース接続の設定
 
 In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has, that can be used throughout our application:
 
