@@ -868,7 +868,7 @@ $group->addTrace(
 
 * * *
 
-## Security
+## セキュリティ
 
 - Removed `hasLibreSsl`
 - Removed `getSslVersionNumber`
