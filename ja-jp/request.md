@@ -538,7 +538,7 @@ The method returns an array of [Phalcon\Http\Request\File](api/phalcon_http#http
 
 The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
-## Events
+## イベント
 
 The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
