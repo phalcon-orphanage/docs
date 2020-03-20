@@ -1525,11 +1525,11 @@ echo $view->render(
 
 In the above example, we set up the engine and then echo a rendered template on screen (`templates/welcome`). We can also send parameters to the template by issuing an array as the second parameter. The keys are the names of the variables.
 
-## Events
+## イベント
 
 [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are able to send events to an [Events Manager](events) if it is present. Events are triggered using the type `view`. If an event returns `false` it can stop the active operation. The following events are supported:
 
-| Event Name         | Triggered                           | Can stop |
+| イベント名              | トリガー                                | Can stop |
 | ------------------ | ----------------------------------- |:--------:|
 | `afterRender`      | After completing the render process |    No    |
 | `afterRenderView`  | After rendering an existing view    |    No    |
