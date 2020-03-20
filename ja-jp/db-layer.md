@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Database Abstraction Layer'
+title: 'データベース抽象化レイヤー'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---
 
-# Database Abstraction Layer
+# データベース抽象化レイヤー
 
 * * *
 
@@ -1669,11 +1669,11 @@ try {
 }
 ```
 
-## Events
+## イベント
 
 The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 
-| Event Name            | Triggered                           | Can stop |
+| イベント名                 | トリガー                                | Can stop |
 | --------------------- | ----------------------------------- |:--------:|
 | `afterQuery`          | After a query is executed           |    No    |
 | `beforeQuery`         | Before a query is executed          |   Yes    |
