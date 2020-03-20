@@ -40,13 +40,13 @@ Using Pecl this extension will be automatically installed.
 
 Since Phalcon is loosely coupled, it exposes functionality without the need for additional extensions. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
-### Hardware
+### ハードウェア
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
 We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
 
-### Software
+### ソフトウェア
 
 > **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 {: .alert .alert-danger }
