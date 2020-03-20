@@ -71,8 +71,8 @@ Setting up the
 ### Authentication
 ### Tokens
 ### Verification
-### Validation
-### Response
+### バリデーション
+### レスポンス
 
 ## CLI
 
