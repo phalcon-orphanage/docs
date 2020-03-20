@@ -64,13 +64,13 @@ public function getModule(
 ): array | object
 ```
 
-Gets the module definition registered in the application via module name
+モジュール名でアプリケーションに登録されているモジュール定義を取得します。
 
 ```php
 public function getModules(): array
 ```
 
-Return the modules registered in the application
+アプリケーションに登録されているモジュールを返す
 
 ```php
 public function registerModules(
@@ -695,11 +695,11 @@ try {
 }
 ```
 
-## Events
+## イベント
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Event Name            | Triggered                                                    |
+| イベント名                 | トリガー                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
