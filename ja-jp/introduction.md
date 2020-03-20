@@ -41,7 +41,7 @@ Feel free to connect with us using our social media accounts:
   - [Store - Merchandise](https://phalcon.io/store)
 - Social Media 
   - [Telegram](https://phalcon.io/telegram)
-  - [Gab](https://phalcon.io/gab)
+  - [Gab.ai](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
   - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
