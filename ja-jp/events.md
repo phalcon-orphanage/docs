@@ -958,8 +958,8 @@ The events available in Phalcon are:
 | [Models Manager](db-models) | `modelsManager:afterInitialize`      | Manager, Model                                          |
 | [Request](request)          | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
 | [Request](request)          | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
-| [Response](response)        | `response:afterSendHeaders`          | Response                                                |
-| [Response](response)        | `response:beforeSendHeaders`         | Response                                                |
+| [レスポンス](response)           | `response:afterSendHeaders`          | レスポンス                                                   |
+| [レスポンス](response)           | `response:beforeSendHeaders`         | レスポンス                                                   |
 | [Router](routing)           | `router:afterCheckRoutes`            | Router                                                  |
 | [Router](routing)           | `router:beforeCheckRoutes`           | Router                                                  |
 | [Router](routing)           | `router:beforeCheckRoute`            | Router, Route                                           |
