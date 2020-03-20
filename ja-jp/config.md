@@ -793,7 +793,7 @@ $config = $factory->newinstance('yaml', $fileName, $callbacks);
 
 There are more adapters available for Config in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
-## Dependency Injection
+## 依存性の注入
 
 As with most Phalcon components, you can store the [Phalcon\Config](api/phalcon_config) object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
