@@ -410,7 +410,7 @@ Adds a component to the ACL list
 
 Access names can be a particular action, by example search, update, delete, etc or a list of them
 
-Example:
+例:
 
 ```php
 // Add a component to the the list allowing access to an action
