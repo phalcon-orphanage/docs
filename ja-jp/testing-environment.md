@@ -188,7 +188,7 @@ Help:
   To display the list of available commands, please use the list command.
 ```
 
-## Compile Phalcon
+## Phalconのコンパイル
 
 Phalcon is not compiled yet. We need to instruct Zephir to do that:
 
