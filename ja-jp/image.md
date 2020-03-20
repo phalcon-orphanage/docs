@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Image'
+title: '画像'
 keywords: 'image, gd, imagick'
 ---
 
-# Image
+# 画像
 
 * * *
 
