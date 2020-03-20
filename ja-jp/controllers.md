@@ -549,7 +549,7 @@ class UserController extends Controller
 > **NOTE**: Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
 {: .alert .alert-info }
 
-## Dependency Injection
+## 依存性の注入
 
 You can create a controller as a stand alone class. However you can extend the [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
 
