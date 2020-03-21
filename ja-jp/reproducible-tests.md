@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Reproducible Tests'
+title: '再現テスト'
 keywords: 'tests, testing, reproducible tests'
 ---
 
-# Reproducible Tests
+# 再現テスト
 
 * * *
 

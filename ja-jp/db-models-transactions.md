@@ -243,7 +243,7 @@ try {
 }
 ```
 
-## Dependency Injection
+## 依存性の注入
 
 Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or `rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
 

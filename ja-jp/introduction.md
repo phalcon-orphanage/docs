@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Introduction'
+title: 'はじめに'
 keywords: 'introduction'
 ---
 
@@ -35,13 +35,13 @@ Feel free to connect with us using our social media accounts:
 
 - Chat - Q&A 
   - [Discord Chat](https://phalcon.io/discord)
-  - [Forum](https://phalcon.link/forum)
+  - [フォーラム](https://phalcon.link/forum)
 - Support 
   - [OpenCollective - Support Us](https://phalcon.io/fund)
   - [Store - Merchandise](https://phalcon.io/store)
 - Social Media 
   - [Telegram](https://phalcon.io/telegram)
-  - [Gab](https://phalcon.io/gab)
+  - [Gab.ai](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
   - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)

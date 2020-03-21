@@ -1201,7 +1201,7 @@ Volt syntax:
 {% endraw %}
 ```
 
-## Assets
+## アセット
 
 [Phalcon\Tag](api/phalcon_tag) offers helper methods to generate stylesheet and javascript HTML tags.
 
@@ -1694,7 +1694,7 @@ echo Tag::textField(
 //        value="<h1>hello</h1>" />
 ```
 
-## Dependency Injection
+## 依存性の注入
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Tag](api/phalcon_tag) is already registered for you with the name `tag`.
 

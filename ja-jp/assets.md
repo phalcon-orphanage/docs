@@ -3,7 +3,7 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 upgrade: '#assets'
-title: 'Assets'
+title: 'アセット'
 keywords: 'assets, js, css'
 ---
 
@@ -28,7 +28,7 @@ $container = new FactoryDefault();
 $manager   = $container->get('assets')
 ```
 
-## Assets
+## アセット
 
 Assets can be added to the manager or a collection using the Asset related classes. The [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset) class. The object accepts the necessary data to create the asset. * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `path` : the path of the asset * `local`: whether this is a local asset or not * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset * `version`: version of the asset * `autoVersion`: let the component auto version this asset or not
 

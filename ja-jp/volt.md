@@ -859,7 +859,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
 | `loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
 
-Example:
+例:
 
 ```twig
 {%- raw -%}
@@ -2034,7 +2034,7 @@ public function setUniquePrefix(string $prefix): Compiler
 
 Set a unique prefix to be used as prefix for compiled variables
 
-## Events
+## イベント
 
 The following compilation <events> are available to be implemented in extensions:
 

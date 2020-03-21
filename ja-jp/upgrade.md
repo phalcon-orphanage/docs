@@ -50,7 +50,7 @@ Clone the repository
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Phalconのコンパイル
 
 ```bash
 cd cphalcon/
@@ -125,7 +125,7 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 ### Acl\Enum (Constants)
 
-Example:
+例:
 
 ```php
 use Phalcon\Acl\Enum;
@@ -137,7 +137,7 @@ echo Enum::DENY;  //prints 0
 
 * * *
 
-## Assets
+## アセット
 
 > Status: **changes required**
 > 
@@ -370,7 +370,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Events
+## イベント
 
 ### Events\ManagerInterface
 
@@ -515,7 +515,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Image
+## 画像
 
 - Added `Phalcon\Image\Enum`
 - Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
@@ -524,7 +524,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 ## Image\Enum (Constants)
 
-Example:
+例:
 
 ```php
 <?php
@@ -868,7 +868,7 @@ $group->addTrace(
 
 * * *
 
-## Security
+## セキュリティ
 
 - Removed `hasLibreSsl`
 - Removed `getSslVersionNumber`
@@ -948,7 +948,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Validation
+## バリデーション
 
 ### Validation\Message
 
@@ -1015,7 +1015,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------------- | ---------- | ----------------------------------------- |
 | Phalcon\Application | Renamed to | Phalcon\Application\AbstractApplication |
 
-### Assets
+### アセット
 
 | 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
 
@@ -1207,7 +1207,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | New   | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Image
+### 画像
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1322,7 +1322,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Storage\Serializer\None               |
 |       | New   | Phalcon\Storage\Serializer\Php                |
 
-### Translate
+### Helper
 
 | 3.4.x                       | State      | 4.0.x                                        |
 | --------------------------- | ---------- | -------------------------------------------- |
@@ -1338,7 +1338,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Url            |
 |       | New   | Phalcon\Url\Exception |
 
-### Validation
+### バリデーション
 
 | 3.4.x                                        | State      | 4.0.x                                                   |
 | -------------------------------------------- | ---------- | ------------------------------------------------------- |

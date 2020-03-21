@@ -502,7 +502,7 @@ The available providers are:
 | `MailProvider`           | Mail support                                      |
 | `ModelsMetadataProvider` | Metadata for models                               |
 | `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Security                                          |
+| `SecurityProvider`       | セキュリティ                                            |
 | `SessionBagProvider`     | Session data                                      |
 | `SessionProvider`        | Session data                                      |
 | `UrlProvider`            | URL handling                                      |
@@ -1420,7 +1420,7 @@ As you can see in the defined relationships, we have a `belongsTo` and three `ha
 
 Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
 
-**Events**
+**イベント**
 
 [Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
 
@@ -1519,7 +1519,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
-**Validation**
+**バリデーション**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 

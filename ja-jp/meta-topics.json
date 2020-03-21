@@ -4,20 +4,20 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "はじめに",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "リリースノート",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "アップグレード",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "スポンサー",
                 "url": "/sponsors"
             }
         ]
@@ -31,7 +31,7 @@
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "プルリクエスト",
                 "url": "/new-pull-request"
             },
             {
@@ -43,11 +43,11 @@
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "再現テスト",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "テストガイド",
                 "url": "/testing-environment"
             },
             {
@@ -65,7 +65,7 @@
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Webサーバのセットアップ",
                 "url": "/webserver-setup"
             }
         ]
@@ -217,7 +217,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "イベント",
                 "url": "/db-models-events"
             },
             {
@@ -247,7 +247,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "アセット",
                 "url": "/assets"
             },
             {
@@ -259,7 +259,7 @@
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "画像",
                 "url": "/image"
             },
             {
@@ -317,7 +317,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "バリデーション",
                 "url": "/validation"
             }
         ]
@@ -335,13 +335,13 @@
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "レスポンス",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "セキュリティ",
         "url": "",
         "menu": [
             {
@@ -413,7 +413,7 @@
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Helper",
                 "url": "/translate"
             }
         ]

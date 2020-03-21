@@ -472,7 +472,7 @@ $router = new Router(false);
 
 For more information regarding routes and the route classes, you can check the [Routing](routing) page.
 
-## Events
+## イベント
 
 CLI applications are also <events> aware. You can use the `setEventsManager` and `getEventsManager` methods to access the events manager.
 

@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Validation'
+title: 'バリデーション'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -1872,7 +1872,7 @@ $validation->setFilters('email', 'trim');
 
 Filtering and sanitizing is performed using the <filter> component. You can add more filters to this component or use the built-in ones.
 
-## Events
+## イベント
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 

@@ -65,13 +65,13 @@ public function getEventsManager(): ManagerInterface;
 public function getModule( string $name ): array | object;
 ```
 
-Gets the module definition registered in the application via module name
+モジュール名でアプリケーションに登録されているモジュール定義を取得します。
 
 ```php
 public function getModules(): array;
 ```
 
-Return the modules registered in the application
+アプリケーションに登録されているモジュールを返す
 
 ```php
 public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;

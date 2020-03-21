@@ -678,7 +678,7 @@ $response = new Response();
 $response->setNotModified();
 ```
 
-## Dependency Injection
+## 依存性の注入
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
@@ -708,7 +708,7 @@ class PostsController extends Controller
 }
 ```
 
-## Events
+## イベント
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 

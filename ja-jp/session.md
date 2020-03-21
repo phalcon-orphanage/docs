@@ -539,7 +539,7 @@ $user->name     = 'Dark Helmet';
 $user->password = 12345;
 ```
 
-## Dependency Injection
+## 依存性の注入
 
 If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container you can register your session manager. An example of the registration of the service as well as accessing it is below:
 

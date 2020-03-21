@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Translate'
+title: 'Helper'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'
 ---
 

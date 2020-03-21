@@ -762,11 +762,11 @@ if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
 
 It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
 
-## Events
+## イベント
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [Events Manager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
-| Event Name          | Triggered                                                | Can stop role? |
+| イベント名               | トリガー                                                     | Can stop role? |
 | ------------------- | -------------------------------------------------------- |:--------------:|
 | `afterCheckAccess`  | Triggered after checking if a role/component has access  |       No       |
 | `beforeCheckAccess` | Triggered before checking if a role/component has access |      Yes       |
