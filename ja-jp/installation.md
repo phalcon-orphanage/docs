@@ -133,7 +133,7 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 #### DEB Based Distributions (Debian, Ubuntu, Etc.)
 
-##### Repository installation
+##### リポジトリのインストール
 
 Add the repository to your distribution:
 
@@ -188,7 +188,7 @@ sudo apt-get install php-phalcon4
 
 #### RPM Based Distributions (CentOS, Fedora, Etc.)
 
-##### Repository installation
+##### リポジトリのインストール
 
 Add the repository to your distribution:
 
@@ -352,12 +352,12 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| アーキテクチャー | Version | Type           |
-|:--------:|:-------:| -------------- |
-|   x64    |   7.x   | スレッドセーフ        |
-|   x64    |   7.x   | 非スレッドセーフ (NTS) |
-|   x86    |   7.x   | スレッドセーフ        |
-|   x86    |   7.x   | 非スレッドセーフ (NTS) |
+| アーキテクチャー | バージョン | Type           |
+|:--------:|:-----:| -------------- |
+|   x64    |  7.x  | スレッドセーフ        |
+|   x64    |  7.x  | 非スレッドセーフ (NTS) |
+|   x86    |  7.x  | スレッドセーフ        |
+|   x86    |  7.x  | 非スレッドセーフ (NTS) |
 
 Edit your php.ini file and then append at the end:
 
