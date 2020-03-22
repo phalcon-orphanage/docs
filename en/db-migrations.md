@@ -67,8 +67,20 @@ return new Config([
 
 ### Generate migrations
 
+**Basic generation**
+
 ```
 vendor/bin/phalcon-migrations generate
+```
+
+**Generate specific table and export data from it
+
+```
+vendor/bin/phalcon-migrations generate \
+    --config=migrations.php \
+    --table=users \
+    --exportDataFromTables=users \
+    --data=oncreate
 ```
 
 ### Run migrations
@@ -135,6 +147,8 @@ $migration::run([
 | --dry | Attempt requested operation without making changes to system (Generating only)
 | --verbose | Output of debugging information during operation (Running only)
 | --no-auto-increment | Disable auto increment (Generating only)
+| --skip-ref-schema | Skip referencedSchema inside generated migration (Generating only)
+| --skip-foreign-checks | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only)
 | --help | Shows this help
 
 ## Timestamp based migrations
