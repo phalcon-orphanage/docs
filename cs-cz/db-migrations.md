@@ -69,7 +69,18 @@ return new Config([
 
 ### Generate migrations
 
+**Basic generation**
+
     vendor/bin/phalcon-migrations generate
+    
+
+**Generate specific table and export data from it
+
+    vendor/bin/phalcon-migrations generate \
+        --config=migrations.php \
+        --table=users \
+        --exportDataFromTables=users \
+        --data=oncreate
     
 
 ### Run migrations
@@ -117,23 +128,25 @@ return new Config([
 
 **Options**
 
-| Akce                     | Description                                                                      |
-| ------------------------ | -------------------------------------------------------------------------------- |
-| --config=s               | Configuration file                                                               |
-| --migrations=s           | Migrations directory. Use comma separated string to specify multiple directories |
-| --directory=s            | Directory where the project was created                                          |
-| --table=s                | Table to migrate. Table name or table prefix with asterisk. Default: all         |
-| --version=s              | Version to migrate                                                               |
-| --descr=s                | Migration description (used for timestamp based migration)                       |
-| --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)   |
-| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                    |
-| --force                  | Forces to overwrite existing migrations                                          |
-| --ts-based               | Timestamp based migration version                                                |
-| --log-in-db              | Keep migrations log in the database table rather then in file                    |
-| --dry                    | Attempt requested operation without making changes to system (Generating only)   |
-| --verbose                | Output of debugging information during operation (Running only)                  |
-| --no-auto-increment      | Disable auto increment (Generating only)                                         |
-| --help                   | Shows this help                                                                  |
+| Akce                     | Description                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------- |
+| --config=s               | Configuration file                                                                       |
+| --migrations=s           | Migrations directory. Use comma separated string to specify multiple directories         |
+| --directory=s            | Directory where the project was created                                                  |
+| --table=s                | Table to migrate. Table name or table prefix with asterisk. Default: all                 |
+| --version=s              | Version to migrate                                                                       |
+| --descr=s                | Migration description (used for timestamp based migration)                               |
+| --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)           |
+| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                            |
+| --force                  | Forces to overwrite existing migrations                                                  |
+| --ts-based               | Timestamp based migration version                                                        |
+| --log-in-db              | Keep migrations log in the database table rather then in file                            |
+| --dry                    | Attempt requested operation without making changes to system (Generating only)           |
+| --verbose                | Output of debugging information during operation (Running only)                          |
+| --no-auto-increment      | Disable auto increment (Generating only)                                                 |
+| --skip-ref-schema        | Skip referencedSchema inside generated migration (Generating only)                       |
+| --skip-foreign-checks    | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only) |
+| --help                   | Shows this help                                                                          |
 
 ## Timestamp based migrations
 
