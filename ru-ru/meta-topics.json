@@ -95,6 +95,10 @@
             {
                 "text": "Отладка",
                 "url": "/debug"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -239,6 +243,10 @@
             {
                 "text": "Постраничная навигация",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
