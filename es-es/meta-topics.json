@@ -95,6 +95,10 @@
             {
                 "text": "Depuración",
                 "url": "/debug"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -239,6 +243,10 @@
             {
                 "text": "Paginación",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
