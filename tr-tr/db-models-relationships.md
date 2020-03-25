@@ -251,16 +251,31 @@ class Products extends Model
 
     public function initialize()
     {
+        // To the intermediate table
         $this->hasMany(
             'prd_id',
-            Products::class,
+            InvoicesProducts::class,
             'ixp_prd_id'
+        );
+
+        // Many to many -> Invoices
+        $this->hasManyToMany(
+            'prd_id',
+            InvoicesProducts::class,
+            'ixp_prd_id',
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
+            [
+                'reusable' => true,
+                'alias'    => 'invoices',
+            ]
         );
     }
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model, and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
 Many to many relationships require 3 models and define the attributes involved in the relationship:
 
@@ -300,7 +315,7 @@ class Invoices extends Model
 
 ## Parametreler
 
-Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the *status* of the customer (e.g. active, inactive, etc.).
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the *status* of the customer (e.g. active, inactive, etc.).
 
 Using relationships, you can get only those `Customers` that relate to our `Invoices` that have a certain `cst_status_flag`. Defining that constraint in the relationship allows you to let the model do all the work.
 
@@ -343,7 +358,7 @@ class Invoices extends Model
 
 ## Multiple Fields
 
-There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+There are times, where relationships need to be defined on a combination of fields and not only one. Consider the following example:
 
 ```php
 <?php

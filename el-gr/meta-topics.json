@@ -95,6 +95,10 @@
             {
                 "text": "Εντοπισμός σφαλμάτων",
                 "url": "/debug"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -119,11 +123,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Περίπτωση Χρήσης",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "Απόδοση",
                 "url": "/performance"
             }
         ]
@@ -239,6 +243,10 @@
             {
                 "text": "Σελιδοποίηση",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
