@@ -95,6 +95,10 @@
             {
                 "text": "디버그",
                 "url": "/debug"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -239,6 +243,10 @@
             {
                 "text": "페이지 나누기",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
