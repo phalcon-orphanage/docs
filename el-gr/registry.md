@@ -356,7 +356,7 @@ $collection->unserialize($serialized);
 echo $collection->jsonSerialize(); // $data
 ```
 
-## Transformations
+## Μεταμορφώσεις
 
 [Phalcon\Registry](api/phalcon_registry#registry) also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
