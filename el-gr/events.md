@@ -914,15 +914,16 @@ The events available in Phalcon are:
 | [Db](db-layer)              | `db:releaseSavepoint`                | Db, Savepoint Name                                      |
 | [Db](db-layer)              | `db:rollbackTransaction`             | Db                                                      |
 | [Db](db-layer)              | `db:rollbackSavepoint`               | Db, Savepoint Name                                      |
-| [Αποστολέας](dispatcher)    | `dispatch:afterExecuteRoute`         | Αποστολέας                                              |
+| [Αποστολέας](dispatcher)    | `dispatch:afterBinding`              | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:afterDispatch`             | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:afterDispatchLoop`         | Αποστολέας                                              |
+| [Αποστολέας](dispatcher)    | `dispatch:afterExecuteRoute`         | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:afterInitialize`           | Αποστολέας                                              |
-| [Αποστολέας](dispatcher)    | `dispatch:beforeException`           | Dispatcher, Exception                                   |
-| [Αποστολέας](dispatcher)    | `dispatch:beforeExecuteRoute`        | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeDispatch`            | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeDispatchLoop`        | Αποστολέας                                              |
-| [Αποστολέας](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array                                       |
+| [Αποστολέας](dispatcher)    | `dispatch:beforeException`           | Dispatcher, Exception                                   |
+| [Αποστολέας](dispatcher)    | `dispatch:beforeExecuteRoute`        | Αποστολέας                                              |
+| [Αποστολέας](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeNotFoundAction`      | Αποστολέας                                              |
 | [Φορτωτής](loader)          | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Φορτωτής](loader)          | `loader:beforeCheckClass`            | Loader, Class Name                                      |
