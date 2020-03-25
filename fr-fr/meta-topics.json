@@ -95,6 +95,10 @@
             {
                 "text": "Debug",
                 "url": "/debug"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -239,6 +243,10 @@
             {
                 "text": "Pagination",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
