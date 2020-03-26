@@ -914,15 +914,16 @@ The events available in Phalcon are:
 | [Db](db-layer)              | `db:releaseSavepoint`                | Db, Savepoint Name                                      |
 | [Db](db-layer)              | `db:rollbackTransaction`             | Db                                                      |
 | [Db](db-layer)              | `db:rollbackSavepoint`               | Db, Savepoint Name                                      |
-| [디스패쳐](dispatcher)          | `dispatch:afterExecuteRoute`         | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:afterBinding`              | 디스패쳐                                                    |
 | [디스패쳐](dispatcher)          | `dispatch:afterDispatch`             | 디스패쳐                                                    |
 | [디스패쳐](dispatcher)          | `dispatch:afterDispatchLoop`         | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:afterExecuteRoute`         | 디스패쳐                                                    |
 | [디스패쳐](dispatcher)          | `dispatch:afterInitialize`           | 디스패쳐                                                    |
-| [디스패쳐](dispatcher)          | `dispatch:beforeException`           | Dispatcher, Exception                                   |
-| [디스패쳐](dispatcher)          | `dispatch:beforeExecuteRoute`        | 디스패쳐                                                    |
 | [디스패쳐](dispatcher)          | `dispatch:beforeDispatch`            | 디스패쳐                                                    |
 | [디스패쳐](dispatcher)          | `dispatch:beforeDispatchLoop`        | 디스패쳐                                                    |
-| [디스패쳐](dispatcher)          | `dispatch:beforeForward`             | Dispatcher, array                                       |
+| [디스패쳐](dispatcher)          | `dispatch:beforeException`           | Dispatcher, Exception                                   |
+| [디스패쳐](dispatcher)          | `dispatch:beforeExecuteRoute`        | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
 | [디스패쳐](dispatcher)          | `dispatch:beforeNotFoundAction`      | 디스패쳐                                                    |
 | [로더](loader)                | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [로더](loader)                | `loader:beforeCheckClass`            | Loader, Class Name                                      |
