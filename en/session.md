@@ -333,7 +333,7 @@ unset($session->userId);
 ### Libmemcached
 [Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.  
 
-The available options for Redis are:
+The available options for Memcached are:
 - `client` - client settings
 - `servers` - array of server data
     - `host` - the host
@@ -362,10 +362,10 @@ $options = [
 $session           = new Manager();
 $serializerFactory = new SerializerFactory();
 $factory           = new AdapterFactory($serializerFactory);
-$redis             = new Libmemcached($factory, $options);
+$libmemcached      = new Libmemcached($factory, $options);
 
 $session
-    ->setAdapter($redis)
+    ->setAdapter($libmemcached)
     ->start();
 ```
 
