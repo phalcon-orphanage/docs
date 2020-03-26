@@ -914,15 +914,16 @@ The events available in Phalcon are:
 | [Db](db-layer)              | `db:releaseSavepoint`                | Db, Savepoint Name                                      |
 | [Db](db-layer)              | `db:rollbackTransaction`             | Db                                                      |
 | [Db](db-layer)              | `db:rollbackSavepoint`               | Db, Savepoint Name                                      |
-| [Gönderici](dispatcher)     | `dispatch:afterExecuteRoute`         | Gönderici                                               |
+| [Gönderici](dispatcher)     | `dispatch:afterBinding`              | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:afterDispatch`             | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:afterDispatchLoop`         | Gönderici                                               |
+| [Gönderici](dispatcher)     | `dispatch:afterExecuteRoute`         | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:afterInitialize`           | Gönderici                                               |
-| [Gönderici](dispatcher)     | `dispatch:beforeException`           | Dispatcher, Exception                                   |
-| [Gönderici](dispatcher)     | `dispatch:beforeExecuteRoute`        | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeDispatch`            | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeDispatchLoop`        | Gönderici                                               |
-| [Gönderici](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array                                       |
+| [Gönderici](dispatcher)     | `dispatch:beforeException`           | Dispatcher, Exception                                   |
+| [Gönderici](dispatcher)     | `dispatch:beforeExecuteRoute`        | Gönderici                                               |
+| [Gönderici](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
 | [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Gönderici                                               |
 | [Yükleyici](loader)         | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Yükleyici](loader)         | `loader:beforeCheckClass`            | Loader, Class Name                                      |
