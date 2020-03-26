@@ -1037,12 +1037,13 @@ class ExceptionsPlugin
 | `afterDispatch`        | After executing the controller/action method.                                                                               |   Tak    |
 | `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |   Nie    |
 | `afterExecuteRoute`    | After executing the controller/action method.                                                                               |   Nie    |
+| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |   Nie    |
 | `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Tak    |
 | `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Tak    |
 | `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Tak    |
 | `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |   Tak    |
+| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |   Nie    |
 | `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Tak    |
-| `initialize`           | Allow to globally initialize the controller in the request                                                                  |   Nie    |
 
 The [INVO](https://github.com/phalcon/invo) sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl)
 
