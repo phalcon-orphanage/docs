@@ -212,7 +212,7 @@ If you need to check what classes are registered in the autoloader, you can use 
 ]
 ```
 
-## Classes
+## Clases
 
 Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your classes are components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
 
