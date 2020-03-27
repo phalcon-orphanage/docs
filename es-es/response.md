@@ -411,7 +411,7 @@ $cookies->set(
 );
 ```
 
-## Files
+## Archivos
 
 The `setFileToSend()` helper method allows you to easily set a file to be sent back to the caller using the response object. This is particularly useful when we want to introduce download files functionality in our application.
 
