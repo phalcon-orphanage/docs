@@ -33,7 +33,7 @@ const XHTML20 = 10;
 const XHTML5 = 11;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
