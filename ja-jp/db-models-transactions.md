@@ -12,7 +12,7 @@ keywords: 'models, transactions'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 When a process performs multiple database operations, it is important to perform all these operations as a single unit of work. This way if one of the operations fails, we do not end up with corrupted data or orphaned records. Database transactions offer this functionality and ensure that all database operations have been executed successfully prior to storing the data in the database.
 
