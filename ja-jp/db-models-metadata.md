@@ -12,7 +12,7 @@ keywords: 'model, caching, metadata, query fields'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 When using [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model) classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
 
@@ -721,7 +721,7 @@ $container->set(
 
 This strategy does not require any customization and is implicitly used by all the metadata adapters.
 
-### Annotations
+### アノテーション
 
 This strategy makes use of <annotations> to describe the columns in a model.
 
