@@ -47,7 +47,7 @@ $config = new \Phalcon\Config(
 const DEFAULT_PATH_DELIMITER = .;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
