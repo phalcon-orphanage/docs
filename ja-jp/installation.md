@@ -239,7 +239,7 @@ Additional versions are available both architecture specific (x86/x64) as well a
 
 #### FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+FreeBSDではportsコレクションが利用できます。 インストールするには、次のコマンドを実行してください:
 
 ##### pkg_add
 
@@ -247,7 +247,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### Source
+##### ソースコードからコンパイル
 
 ```bash
 cd /usr/ports/www/phalcon4
@@ -262,12 +262,7 @@ An overlay for installing Phalcon can be found [here](https://github.com/smoke/p
 #### Raspberry Pi
 
 ```bash
-sudo -s
-git clone https://github.com/phalcon/cphalcon
-cd cphalcon/
-git checkout tags/v4.0.0 ./
-zephir fullclean
-zephir build
+macOS
 ```
 
 It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
@@ -367,9 +362,9 @@ extension=php_phalcon.dll
 
 Restart your webserver.
 
-### Compile From Sources
+### ソースコードからコンパイル
 
-Compiling from source is similar to most environments (Linux/macOS).
+ソースコードからのコンパイルは、ほとんどの環境 (Linux/macOS) で同じ様に行えます。
 
 #### Requirements
 
