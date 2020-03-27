@@ -10,7 +10,7 @@ keywords: 'html, attributes, tag, tag factory'
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 This namespace contains components that help with the generation of HTML.
 
 ## Attributes
