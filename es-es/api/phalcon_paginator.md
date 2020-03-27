@@ -23,7 +23,7 @@ title: 'Phalcon\Paginator'
 
 Phalcon\Paginator\Adapter\AbstractAdapter
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -266,7 +266,7 @@ $paginator = new QueryBuilder(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -391,7 +391,7 @@ Phalcon\Paginator\Repository
 
 Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
-## Properties
+## Propiedades
 
 ```php
 /**
