@@ -20,7 +20,7 @@ title: 'Phalcon\Domain'
 
 Holds the payload
 
-## Properties
+## Propiedades
 
 ```php
 /**
