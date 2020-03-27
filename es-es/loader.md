@@ -284,7 +284,7 @@ If you need to check what classes are registered in the autoloader, you can use 
 ]
 ```
 
-## Files
+## Archivos
 
 There are times that you might need to *require* a specific file that contains a class without a namespace or a file that contains some code that you need. An example would be a file that contains handy debugging functions.
 

@@ -161,7 +161,7 @@ class IndexController extends Controller
 
 ## Adding Assets
 
-### Files
+### Archivos
 
 Assets supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS.
 
