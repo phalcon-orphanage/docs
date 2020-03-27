@@ -12,7 +12,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 [Phalcon\Di](api/phalcon_di#di) is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
 
@@ -1584,8 +1584,8 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `crypt`              | [Phalcon\Crypt](crypt)                                             | Yes    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Yes    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Yes    | Database connection          |
-| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Yes    | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Yes    | Escaper                      |
+| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Yes    | ディスパッチャー                     |
+| `escaper`            | [Phalcon\Escaper](escaper)                                         | Yes    | エスケープ                        |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Yes    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Yes    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Yes    | Flash Session Messaging      |
