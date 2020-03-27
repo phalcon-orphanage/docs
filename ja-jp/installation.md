@@ -2,73 +2,73 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Installation'
-keywords: 'installation, installing Phalcon'
+title: 'インストール'
+keywords: 'インストール, インストール方法, Phalconのインストール'
 ---
 
-# Installation
+# インストール
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Requirements
+## 必要条件
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 は、 PHP 7.2 もしくはそれ以降のバージョンのみをサポートしています。 2年前にリリースされたPHP 7.1は、[サポート](https://secure.php.net/supported-versions.php)が失効したため、継続的にサポートされているPHPバージョンに従うことにしました。
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available on the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon には PSR 拡張機能が必要です。 拡張機能は、[こちら](https://github.com/jbboehr/php-psr) のGitHubリポジトリからダウンロードしてコンパイルできます。 拡張機能のインストール手順は、リポジトリの` README `に記載されています。 拡張機能をコンパイルしてシステムで使用可能になったら、それを` php.ini `でロードする必要があります。 下記のように、1行を追加してください。
 
 ```ini
 extension=psr.so
 ```
 
-before
+これは、下記の前に追加するようにしてください。
 
 ```ini
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+または、一部のディストリビューションでは、` ini `ファイル名に数字のプレフィックスが追加されます。 その場合は、Phalconに大きい数値を指定してください(例：` 50-phalcon.ini `)。
 
-Using Pecl this extension will be automatically installed.
+Peclを使用する場合は、この拡張機能が自動的にインストールされます。
 
 ### PDO
 
-Since Phalcon is loosely coupled, it exposes functionality without the need for additional extensions. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalconは疎結合であるため、追加の拡張機能を必要とせずに機能を公開できます。 ただし、特定のコンポーネントは追加の拡張機能に依存します。 データベースへの接続とアクセスが必要な場合は、` php_pdo `拡張機能をインストールする必要があります。 RDBMSが MySQL / MariaDB または Aurora の場合、`php_mysqlnd` 拡張機能も必要です。 同様に、PhalconでPostgreSQLデータベースを使用するには、`php_pgsql`拡張モジュールが必要です。
 
 ### ハードウェア
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalconは、高いパフォーマンスを提供しつつ、可能な限り少ないリソースを使用するようにデザインされています。 さまざまなローエンド環境 (0.25GB RAM、0.5 CPUなど) でPhalconをテストしましたが、選択するハードウェアはアプリケーションのニーズによって異なります。
 
-We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
+ここ数年、私たちは512 MBのRAMと1つのvCPUを備えたAmazon VMで、ウェブサイトとブログをホストしています。
 
 ### ソフトウェア
 
-> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
+> **NOTE**: バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。
 {: .alert .alert-danger }
 
-Along with PHP 7.2 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+PHP 7.2または以降のバージョンと共に、あなたのアプリケーションとPhalconコンポーネントに応じて、次の拡張機能をインストールする必要があります。
 
 * [curl](https://secure.php.net/manual/en/book.curl.php)
 * [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
 * [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2](https://secure.php.net/manual/ja/book.image.php) ([Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) classを使用する場合)
+* [imagick](https://secure.php.net/manual/ja/book.imagick.php) ([Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) classを使用する場合)
 * [json](https://secure.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
-* [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-* [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
-* [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension
-* [Memcached](https://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
+* [PDO](https://php.net/manual/ja/book.pdo.php)および関連するRDBMS固有の拡張機能(つまり、[MySQL](https://php.net/manual/ja/ref.pdo-mysql.php)、[PostgreSql](https://php.net/manual/ja/ref.pdo-pgsql.php)など)
+* [OpenSSL](https://php.net/manual/ja/book.openssl.php) 拡張機能
+* [Mbstring](https://php.net/manual/ja/book.mbstring.php) 拡張機能
+* [Memcached](https://php.net/manual/ja/book.memcached.php) 、またはキャッシュの使用状況に応じた他のキャッシュアダプター
 
-> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
+> **NOTE**: これらのパッケージのインストールは、オペレーティングシステムと(存在する場合に) 使用するパッケージマネージャーによって異なります。 これらの拡張機能のインストール方法については関連ドキュメントを参照してください。
 {: .alert .alert-info }
 
-For the `libpcre3-dev` package you can use the following commands:
+`libpcre3-dev`パッケージでは、次のコマンドを使用できます。
 
 ### Pecl
 
@@ -84,7 +84,7 @@ The Pecl installation method is available for Windows, Linux and MacOS. Under wi
 sudo apt-get install libpcre3-dev
 ```
 
-and then try and install Phalcon again
+その後、もう一度Phalconをインストールしてみてください。
 
 #### CentOS
 
@@ -98,7 +98,7 @@ sudo yum install pcre-devel
 brew install pcre
 ```
 
-Without `brew`, you need to go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
+`brew`がない場合、[PCRE](https://www.pcre.org/)のWebサイトにアクセスし、最新のpcreをダウンロードする必要があります。
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz
@@ -110,13 +110,13 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-For Maverick
+Maverickの場合
 
 ```bash
 brew install pcre
 ```
 
-if it gives you error, you can use
+エラーが発生した場合、次のコマンドを実行してみてください。
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/
@@ -129,27 +129,27 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
 ### Linux
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+LinuxにPhalconをインストールする場合、リポジトリをディストリビューションに追加しておく必要があります。
 
-#### DEB Based Distributions (Debian, Ubuntu, Etc.)
+#### DEBベースのディストリビューション(Debian, Ubuntu, その他)
 
 ##### リポジトリのインストール
 
-Add the repository to your distribution:
+ディストリビューションへのリポジトリの追加方法：
 
-**Stable releases**
+**安定版リリース**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Nightly releases**
+**Nightly リリース**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Mainlineリリース (alpha, beta, その他)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
@@ -158,16 +158,16 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb
 > **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
-##### Phalcon installation
+##### Phalcon のインストール
 
-To install Phalcon you need to type the following commands in your terminal:
+次のコマンドを実行して、Phalcon をインストールします。
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Additional PPAs
+##### 追加のPPA
 
 **Ondřej Surý**
 
@@ -186,25 +186,25 @@ and Phalcon:
 sudo apt-get install php-phalcon4
 ```
 
-#### RPM Based Distributions (CentOS, Fedora, Etc.)
+#### RPM ベースのディストリビューション (CentOS、Fedora 等)
 
 ##### リポジトリのインストール
 
-Add the repository to your distribution:
+ディストリビューションへのリポジトリの追加方法：
 
-**Stable releases**
+**安定版リリース**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Nightly releases**
+**Nightly リリース**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Mainlineリリース (alpha, beta, その他)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
@@ -214,7 +214,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm
 {: .alert .alert-warning }
 
 
-##### Phalcon installation
+##### Phalcon のインストール
 
 To install Phalcon you need to issue the following commands in your terminal:
 
