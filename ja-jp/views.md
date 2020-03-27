@@ -13,7 +13,7 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 ビューはアプリケーションのユーザインタフェースを表します。 ビューは、多くの場合にデータの表示のみに関連するタスクを実行する、埋め込みの PHP コードを含む HTML ファイルです。 Views format the content that you need to send back to the user/web browser that initiated the request.
 
