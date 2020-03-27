@@ -42,7 +42,7 @@ class Memory extends Adapter
 ```
 
 - El código debe utilizar 4 espacios para la sangría, no tabulaciones.
-- Lines should be 80 characters or less. The hard limit on line length is 120 characters.
+- Las líneas deben tener como máximo 80 caracteres. El límite de la longitud de línea es de 120 caracteres.
 - There must be one blank line after the namespace declaration, and there must be one blank line after the block of use declarations.
 - There must not be trailing whitespace at the end of non-blank lines.
 - Blank lines may be added to improve readability and to indicate related blocks of code.
