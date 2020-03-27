@@ -12,7 +12,7 @@ keywords: 'phql, phalcon query language, query language'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows you to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
@@ -285,7 +285,7 @@ class Invoices extends Controller
 
 As the familiar SQL, PHQL allows selecting records using the `SELECT` statement, except that instead of specifying tables, we use the model classes:
 
-**Models**
+**モデル**
 
 ```sql
 SELECT 
