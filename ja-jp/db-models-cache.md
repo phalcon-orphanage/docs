@@ -12,7 +12,7 @@ keywords: 'models, caching, phql, resultsets, reuse'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 In most applications, there is data that changes infrequently. One of the most common bottlenecks in terms of performance is accessing data from a database. We first have a layer of complexity that allows PHP to communicate with the database and then we have the layer of complexity and potentially bottleneck within the database itself, when trying to analyze the query sent and return the data back (especially when the query contains multiple joins and group statements).
 
@@ -104,7 +104,7 @@ $invoices = Invoices::find(
 
 Cache the resultset using `my-cache` as the key but now use the service `cache` from the DI container instead of the `modelsCache`
 
-## Relationships
+## リレーション
 
 You can also cache resultsets that are returned by relationships.
 
