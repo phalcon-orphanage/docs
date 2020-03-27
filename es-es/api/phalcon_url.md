@@ -31,7 +31,7 @@ echo $url->get(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
