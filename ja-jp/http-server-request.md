@@ -10,7 +10,7 @@ keywords: 'psr-7, http, http server request'
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
