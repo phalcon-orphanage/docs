@@ -3,17 +3,17 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 upgrade: '#cache'
-title: 'Cache'
+title: 'キャッシュ'
 keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
 ---
 
-# Cache
+# キャッシュ
 
 <hr />
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 The [Phalcon\Cache](api/phalcon_cache#cache) namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
 
@@ -30,7 +30,7 @@ Frequently used data or already processed/calculated data, can be stored in a ca
 
 [Phalcon\Cache](api/phalcon_cache#cache) components rely on `Phalcon\Storage` components. `Phalcon\Storage` is split into two categories: Serializers and Adapters.
 
-## Cache
+## キャッシュ
 
 In order to instantiate a new [Phalcon\Cache](api/phalcon_cache#cache) component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface). For a detailed explanation on adapters and serializers, see below.
 
