@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Coding Standard'
+title: 'コーディング規約'
 keywords: 'coding standard, zephir'
 ---
 
