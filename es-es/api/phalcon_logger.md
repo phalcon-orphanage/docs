@@ -70,7 +70,7 @@ const NOTICE = 5;
 const WARNING = 4;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -255,7 +255,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -465,7 +465,7 @@ $logger->error("This is another error");
 $logger->close();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -550,7 +550,7 @@ $logger->log(Logger::ERROR, "This is an error");
 $logger->error("This is another error");
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -656,7 +656,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -744,7 +744,7 @@ Phalcon\Logger\Formatter\Line
 
 Formats messages using an one-line string
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -788,7 +788,7 @@ Phalcon\Logger\Item
 
 Represents each item in a logging transaction
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -862,7 +862,7 @@ Phalcon\Logger\LoggerFactory
 
 Logger factory
 
-## Properties
+## Propiedades
 
 ```php
 /**
