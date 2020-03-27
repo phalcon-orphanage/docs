@@ -12,7 +12,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 > **NOTE**: Requires PHP's [openssl](https://secure.php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }
