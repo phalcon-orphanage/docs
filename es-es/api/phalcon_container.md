@@ -15,7 +15,7 @@ title: 'Phalcon\Container'
 
 PSR-11 Wrapper for `Phalcon\Di`
 
-## Properties
+## Propiedades
 
 ```php
 /**
