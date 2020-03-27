@@ -13,7 +13,7 @@ keywords: 'assets, js, css'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
