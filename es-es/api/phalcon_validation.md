@@ -54,7 +54,7 @@ title: 'Phalcon\Validation'
 
 Allows to validate data using custom or built-in validators
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -211,7 +211,7 @@ This is a base class for combined fields validators
 
 This is a base class for validators
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -327,7 +327,7 @@ Prepares a label for the field.
 
 This is a base class for combined fields validators
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -490,7 +490,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -545,7 +545,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -610,7 +610,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -675,7 +675,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -735,7 +735,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -796,7 +796,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -856,7 +856,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -911,7 +911,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -966,7 +966,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1040,7 +1040,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1180,7 +1180,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1332,7 +1332,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1394,7 +1394,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1459,7 +1459,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1524,7 +1524,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1589,7 +1589,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1654,7 +1654,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1719,7 +1719,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1779,7 +1779,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1839,7 +1839,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1918,7 +1918,7 @@ const VERSION_4 = FILTER_FLAG_IPV4;
 const VERSION_6 = FILTER_FLAG_IPV6;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -1973,7 +1973,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2028,7 +2028,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2088,7 +2088,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2225,7 +2225,7 @@ $validation->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2290,7 +2290,7 @@ $validation->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2383,7 +2383,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2459,7 +2459,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
