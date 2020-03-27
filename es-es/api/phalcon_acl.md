@@ -305,7 +305,7 @@ foreach ($privateComponents as $component => $actions) {
 }
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -588,7 +588,7 @@ Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`) fo
 
 This class defines component entity and its description
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -702,7 +702,7 @@ Class for exceptions thrown by Phalcon\Acl
 
 This class defines role entity and its description
 
-## Properties
+## Propiedades
 
 ```php
 /**
