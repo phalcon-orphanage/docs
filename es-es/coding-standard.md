@@ -6,7 +6,7 @@ title: 'Estándar de codificación'
 keywords: 'coding standard, zephir'
 ---
 
-# Phalcon Coding Standard
+# Estándar de Código de Phalcon
 
 * * *
 
@@ -18,7 +18,7 @@ Phalcon is written in [Zephir](https://zephir-lang.com), a language that the Pha
 
 In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a variant of [PSR-12](https://www.php-fig.org/psr/psr-12/) developed by [PHP-FIG](https://www.php-fig.org/)
 
-## Files
+## Archivos
 
 - Files must use only UTF-8 without BOM.
 - File names must be named StudlyCaps.
