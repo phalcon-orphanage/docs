@@ -17,7 +17,7 @@ title: 'Phalcon\Debug'
 
 Provides debug capabilities to Phalcon applications
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -204,7 +204,7 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
