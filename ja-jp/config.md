@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Config'
+title: '設定'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 Nearly all applications require configuration data for it to operate correctly. The configuration can contain parameters and initial settings for the application like location of log files, database connection values, services registered etc. The [Phalcon\Config](api/phalcon_config) is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config](api/phalcon_config) extends the [Phalcon\Collection](api/phalcon_collection) object and thus inheriting its functionality.
 
