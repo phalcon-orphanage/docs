@@ -12,9 +12,9 @@ keywords: 'coding standard, zephir'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Last update: 2019-07-04
+Última actualización: 04-07-2019
 
-Phalcon is written in [Zephir](https://zephir-lang.com), a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
+Phalcon está escrito en [Zephir](https://zephir-lang.com), un lenguaje creado por el equipo de Phalcon y que se encuentra en continuo desarrollo. Therefore, there are no established coding standards that developers can follow, should they wish to.
 
 In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a variant of [PSR-12](https://www.php-fig.org/psr/psr-12/) developed by [PHP-FIG](https://www.php-fig.org/)
 
