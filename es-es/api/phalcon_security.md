@@ -45,7 +45,7 @@ const CRYPT_SHA512 = 9;
 const CRYPT_STD_DES = 1;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
