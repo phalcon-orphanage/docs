@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Dispatcher'
+title: 'ディスパッチャー'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'dispatcher, mvc, dispatch loop'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 The [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
 
