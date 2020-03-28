@@ -119,6 +119,33 @@ $migration::run([
 ]);
 ```
 
+## Migration methods
+
+Each migration is an separate class that works as entity for specific database table.
+Inside each class there are different methods that can occur during migration running.
+
+You can also execute whatever logic you want inside each migration, without any limitation.
+
+Here are tables with Migration Class methods. Table is sorted by order of execution: from earliest to latest.
+
+**Running to up**
+
+| Method name      | Description |
+| ---------------- | ----------- |
+| morph            | Morph table structure |
+| afterCreateTable | Make something immediately after table was created |
+| up               | Table is created and ready to work with |
+| afterUp          | Extra method to work for some specific cases |
+
+
+**Running to down**
+
+| Method name | Description |
+| ----------------------------------- | ----------- |
+| down                                | Normally you put here table drop or data truncation |
+| aferDown                            | Extra method to work after all was cleaned up |
+| morph (**from previous migration**) | As migration was moved backward, there need to be all returned to previous state |
+
 ## CLI Arguments and options
 
 **Arguments**
