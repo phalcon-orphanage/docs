@@ -27,7 +27,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 > **NOTE**: Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
-## Installation
+## インストール
 
 ### Downloading
 
@@ -142,8 +142,8 @@ vokuro/
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Controllers                                           |
-| `src/Forms`       | Forms                                                 |
+| `src/Controllers` | コントローラ                                                |
+| `src/Forms`       | フォーム                                                  |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
 | `src/Providers`   | Providers: setting services in the DI container       |
@@ -188,7 +188,7 @@ Once the configuration file is in place, visiting the IP address will present a 
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-### `Database`
+### `データベース`
 
 You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
 
@@ -216,7 +216,7 @@ And the `status` command will now show all green:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### Config
+### 設定
 
 **acl.php**
 
@@ -365,7 +365,7 @@ Dotenv\Dotenv::create($rootPath)->load();
 
 Finally, we run our application.
 
-### Application
+### アプリケーション
 
 All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
 
@@ -510,7 +510,7 @@ The available providers are:
 
 `run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
 
-## Database
+## データベース
 
 As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
 
@@ -527,7 +527,7 @@ As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, Postgre
 | `success_logins`      | Successful login attempts               |
 | `users`               | Users                                   |
 
-## Models
+## モデル
 
 Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
 
@@ -598,7 +598,7 @@ echo $successLogin->user->name;
 > **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
 {: .alert .alert-info }
 
-## Controllers
+## コントローラ
 
 Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
 
@@ -670,7 +670,7 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | View                           | Description                                 |
+| Controller    | Action           | ビュー                            | Description                                 |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Index`       | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -1049,7 +1049,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-### View
+### ビュー
 
 Now that we have everything set up in our form, we pass the form to the view:
 
@@ -1275,7 +1275,7 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 ### Model
 
-**Relationships**
+**リレーション**
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
 

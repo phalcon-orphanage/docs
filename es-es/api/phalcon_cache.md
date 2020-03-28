@@ -25,7 +25,7 @@ title: 'Phalcon\Cache'
 
 This component offers caching capabilities for your application. Phalcon\Cache implements PSR-16.
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -203,7 +203,7 @@ Stream adapter
 
 Factory to create Cache adapters
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -241,7 +241,7 @@ Returns the available adapters
 
 Creates a new Cache class
 
-## Properties
+## Propiedades
 
 ```php
 /**

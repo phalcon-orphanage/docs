@@ -12,7 +12,7 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
-## Overview
+## 概要
 
 In this tutorial, you will learn how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using different HTTP methods:
 
@@ -37,7 +37,7 @@ The API consists of the following methods:
 | `PUT`    | `/api/robots/2`            | Update robot based on primary key          |
 | `DELETE` | `/api/robots/2`            | Delete robot based on primary key          |
 
-## Application
+## アプリケーション
 
 As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) application for our needs. The structure of the application is as follows:
 
@@ -133,7 +133,7 @@ The first parameter of each method call is the route and the second is the handl
 
 we explicitly set the `id` parameter to be a number. When a defined route matches the requested URI, then the corresponding handler (anonymous function) will be executed.
 
-## Models
+## モデル
 
 For this application we store and manipulate `Robots` in the database. To access the table we need a model. The class below, allows us to access each record of the table in an object oriented manner. We have also implemented business rules, using built-in validators. By doing so, we have high confidence that the data saved will meet the requirements of our application. This model file needs to be created in the `my-rest-api/models` directory.
 
@@ -193,7 +193,7 @@ class Robots extends Model
 
 We attach three validators to the model. The first one checks the type of the robot. It must be `droid`, `mechanical` or `virtual`. Any other value will make the validator return `false` and the operation (insert/update) will fail. The second validator checks the uniqueness of the name for our robot. The last validator checks the `year` field to be a positive number.
 
-## Database
+## データベース
 
 We need to connect our application to the database. For this example we are going to use the popular MariaDB or similar variants such as MySQL, Aurora etc. In addition to the database setup, we are going to set up the autoloader, so that our application is aware of where to search for files required.
 

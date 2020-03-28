@@ -10,12 +10,12 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 <hr />
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 The `REST API` application is an application that shows how you can create a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API utilizing Phalcon. In this tutorial, we will use the [Micro](application-micro) application. We will also utilize \[Phinx\]\[phinx\] for our database migrations, \[JSON Web Tokens (JWT)\]\[jwt\] for authentication as well as \[JSON API\]\[jsonapi\] for the structured responses.
 
-## Installation
+## インストール
 ## Structure
-## Installation
+## インストール
 ## Dependencies
 The application needs a minimum of PHP 7.2 and the following extensions available:
 - curl
@@ -37,8 +37,8 @@ The remaining dependencies for the project are installed using composer.
 Setting up the
 
 
-## Controllers
-## Models
+## コントローラ
+## モデル
 ## Routes
 
 |  メソッド  | Description                                                                       |

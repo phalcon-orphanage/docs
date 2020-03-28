@@ -6,7 +6,7 @@ title: 'Contributing'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 
-# Contributions
+# 貢献
 
 * * *
 
@@ -27,7 +27,7 @@ When you create a pull request, we have a handy template to help you describe wh
 > **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
 {:.alert .alert-danger}
 
-## Documentation
+## ドキュメント
 
 If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
 

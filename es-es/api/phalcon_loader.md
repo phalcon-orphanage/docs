@@ -38,7 +38,7 @@ $loader->register();
 $adapter = new \Example\Adapter\Some();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //

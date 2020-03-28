@@ -65,7 +65,7 @@ const FILTER_UPPERWORDS = upperWords;
 const FILTER_URL = url;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**

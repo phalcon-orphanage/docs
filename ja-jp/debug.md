@@ -2,17 +2,17 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Debug'
+title: 'デバッグ'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# デバッグ
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 ![](/assets/images/content/xdebug-1.jpg)
 

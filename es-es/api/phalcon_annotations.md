@@ -26,7 +26,7 @@ title: 'Phalcon\Annotations'
 
 This is the base class for Phalcon\Annotations adapters
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -151,7 +151,7 @@ use Phalcon\Annotations\Adapter\Apcu;
 $annotations = new Apcu();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -194,7 +194,7 @@ Writes parsed annotations to APCu
 
 Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -236,7 +236,7 @@ $annotations = new Stream(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -274,7 +274,7 @@ Writes parsed annotations to files
 
 Represents a single annotation in an annotations collection
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -417,7 +417,7 @@ var_dump($classAnnotations->has("Cacheable"));
 $annotation = $classAnnotations->get("Cacheable");
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -575,7 +575,7 @@ $reflection = new Reflection($parsing);
 $classAnnotations = $reflection->getClassAnnotations();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //

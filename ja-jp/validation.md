@@ -12,7 +12,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 [Phalcon\Validation](api/phalcon_validation#validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -254,7 +254,7 @@ if (count($messages)) {
 }
 ```
 
-## Validators
+## バリデーター
 
 Phalcon offers a set of built-in validators for this component:
 

@@ -16,7 +16,7 @@ title: 'Phalcon\Application'
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Properties
+## Propiedades
 
 ```php
 /**

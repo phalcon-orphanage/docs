@@ -13,7 +13,7 @@ keywords: 'http, http request, request'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 [Phalcon\Http\Request](api/phalcon_http#http-request) is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request](api/phalcon_http#http-request) object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
 
@@ -286,7 +286,7 @@ The above will automatically sanitize any parameter that is POSTed from a form t
 
 These methods accept the same parameters as the `getPost()`, `getPut()` and `getQuery()` but without the `$filter` parameter.
 
-## Controllers
+## コントローラ
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Http\Request](api/phalcon_http#http-request) is already registered for you. The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/phalcon_http#http-request) object from a controller you will need to use the `$this->request` public property of the controller:
 

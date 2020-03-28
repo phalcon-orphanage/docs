@@ -40,7 +40,7 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
-### Installation
+### インストール
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
@@ -90,7 +90,7 @@ php -m | grep phalcon
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
-### Overview
+### 概要
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
@@ -156,7 +156,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 * * *
 
-## Cache
+## キャッシュ
 
 > Status: **changes required**
 > 
@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## デバッグ
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -363,7 +363,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Dispatcher
+## ディスパッチャー
 
 - Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
 - Added `getHandlerSuffix()`, `setHandlerSuffix()`
@@ -395,7 +395,7 @@ echo Enum::FETCH_ASSOC;
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-### Overview
+### 概要
 
 The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
@@ -482,7 +482,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Forms
+## フォーム
 
 ### Forms\Form
 
@@ -547,7 +547,7 @@ echo Enum::VERTICAL;   // prints  12
 
 * * *
 
-## Logger
+## ログ
 
 > Status: **changes required**
 > 
@@ -643,7 +643,7 @@ $logger->error('Something went wrong');
 
 * * *
 
-### Transactions
+### トランザクション
 
 Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
 
@@ -651,7 +651,7 @@ Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit(
 
 - Removed `$logger->setLogLevel()`
 
-## Models
+## モデル
 
 > Status: **changes required**
 > 
@@ -877,7 +877,7 @@ $group->addTrace(
 
 * * *
 
-## Request
+## リクエスト
 
 ### Http\Request
 
@@ -929,7 +929,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 * * *
 
-## Tag
+## タグ
 
 - Added `renderTitle()` that renders the title enclosed in `<title>` tags.
 - Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
@@ -999,7 +999,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Acl\Resource | Renamed to | Phalcon\Acl\Component                |
 |                        | New        | Phalcon\Acl\Enum                     |
 
-### Annotations
+### アノテーション
 
 | 3.4.x                                 | State      | 4.0.x                                          |
 | ------------------------------------- | ---------- | ---------------------------------------------- |
@@ -1009,7 +1009,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Annotations\Adapter\Xcache | Removed    |                                                |
 | Phalcon\Annotations\Factory         | Renamed to | Phalcon\Annotations\AnnotationsFactory       |
 
-### Application
+### アプリケーション
 
 | 3.4.x                | State      | 4.0.x                                     |
 | -------------------- | ---------- | ----------------------------------------- |
@@ -1019,7 +1019,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
 
-### Cache
+### キャッシュ
 
 | 3.4.x                                 | State      | 4.0.x                                               |
 | ------------------------------------- | ---------- | --------------------------------------------------- |
@@ -1047,7 +1047,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
 | Phalcon\Cache\Multiple              | Removed    |                                                     |
 
-### Collection
+### コレクション
 
 | 3.4.x | State | 4.0.x                          |
 | ----- | ----- | ------------------------------ |
@@ -1055,7 +1055,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Collection\Exception |
 |       | New   | Phalcon\Collection\ReadOnly  |
 
-### Config
+### 設定
 
 | 3.4.x                    | State      | 4.0.x                          |
 | ------------------------ | ---------- | ------------------------------ |
@@ -1077,7 +1077,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Db\Adapter\Pdo\Factory | Renamed to | Phalcon\Db\Adapter\PdoFactory       |
 |                                    | New        | Phalcon\Db\Enum                      |
 
-### Dispatcher
+### ディスパッチャー
 
 | 3.4.x               | State      | 4.0.x                                   |
 | ------------------- | ---------- | --------------------------------------- |
@@ -1138,7 +1138,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------- | ---------- | ----------------------------- |
 | Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### フォーム
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |

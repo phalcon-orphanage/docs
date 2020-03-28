@@ -13,7 +13,7 @@ keywords: 'filter, sanitize'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -303,7 +303,7 @@ $locator->sanitize('!100a019', 'int');
 $locator->sanitize('!100a019.01a', 'float');
 ```
 
-## Controllers
+## コントローラ
 
 You can access the [Phalcon\Filter](api/phalcon_filter#filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply.
 

@@ -2,16 +2,16 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Sponsors'
-keywords: 'sponsors, opencollective, supporters'
+title: 'スポンサー'
+keywords: 'sponsors, opencollective, supporters, スポンサー, 援助'
 ---
 
-# Becoming a Sponsor
+# スポンサーになると
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the project's stability.
+私たちの活動を援助してPhalcon の開発を促進したい人のため、予算に応じた様々なスポンサーの選択肢を用意しています。 私たちの活動を支援することによって、不具合の改善や新規機能の開発が素早く行えるようになり、プロジェクトの安定性を確保するための活動に多くの時間を費やすことができるようになります。
 
-# Sponsors and Supporters
+# スポンサーとサポーター
 
 {% include sponsors.html %}

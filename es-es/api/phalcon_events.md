@@ -31,7 +31,7 @@ if ($event->isCancelable()) {
 }
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -237,7 +237,7 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 const DEFAULT_PRIORITY = 100;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**

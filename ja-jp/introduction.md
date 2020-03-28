@@ -3,51 +3,51 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 title: 'はじめに'
-keywords: 'introduction'
+keywords: 'introduction, ご紹介, はじめに'
 ---
 
 # ようこそ
 
-Welcome to the documentation for the Phalcon framework.
+Phalcon framework のドキュメントへようこそ。
 
 ## ミッション
 
-Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
+私たちのミッションは、ハイパフォーマンス且つ強力でサーバーリソースの消費が少ないアプリケーションの開発を行える、先進的で豊富な機能を備えたツールを開発者のみなさんに提供することです。
 
-## What is Phalcon
+## Phalconとは
 
-Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever it's needed, without expensive file stats and file reads that traditional PHP frameworks employ.
+Phalconは、PHP用のオープンソースでフルスタックなフレームワークです。C言語によるPHPの拡張機能として開発されています。 Phalconは、高いパフォーマンスを発揮するように最適化されています。 独自のアーキテクチャによって、このフレームワークはメモリ上への常駐出来ます。これにより、従来のPHPフレームワークで採用されているような高コストのファイル展開や読み込みをすることなく、必要なときにいつでもその機能が提供することが出来るのです。
 
-## Usage
+## 使い方
 
-Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
+Phalconを使用するのに、開発者はC言語を理解する必要はありません。 インターフェースは `Phalcon` の名前空間のもとで、PHPのクラスとして公開されており、ただちに使用できます。
 
-Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
+Phalconは疎結合であり、開発者はアプリケーションに必要なだけ、グルーコンポーネントとして必要なオブジェクトのみを使用できます。
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in [GitHub](https://github.com/phalcon/docs) for English, and [Crowdin](https://crowdin.com/project/phalcon-documentation) for other languages
+> **NOTE**: このドキュメントの翻訳は、愛好家や寄稿者によって行われています。 私たちは、あなたの新たな翻訳や修正への参加を歓迎しています。 翻訳は[Github](https://github.com/phalcon/docs) で英語を、 [Crowdin](https://crowdin.com/project/phalcon-documentation) で他の言語を扱っています。
 {: .alert .alert-info }
 
-You can check our [GitHub](https://github.com/phalcon/cphalcon) project for the code and browse through these documents for usage and functionality.
+あなたは私たちの[ GitHub ](https://github.com/phalcon/cphalcon)プロジェクトのコードを確認することができ、使用法と機能についてはこれらのドキュメントを参照できます。
 
-Since this is a community driven project, you can share your thoughts and requests for functionality you need by issuing a [New Feature Request](new-feature-request) and if you wish vote in GitHub for [existing NFRs](new-feature-request-list).
+これはコミュニティ主導のプロジェクトです。このため、[新機能の要望](new-feature-request)を出したり、[既存のNFR](new-feature-request-list)についてGitHubで投票をすることで、必要な機能に対するあなたの考えやリクエストを共有することが出来ます。
 
-Feel free to connect with us using our social media accounts:
+私たちのソーシャルメディアアカウントです。お気軽にご連絡ください。
 
-- Chat - Q&A 
+- チャット - Q&A 
   - [Discord Chat](https://phalcon.io/discord)
   - [フォーラム](https://phalcon.link/forum)
-- Support 
-  - [OpenCollective - Support Us](https://phalcon.io/fund)
-  - [Store - Merchandise](https://phalcon.io/store)
-- Social Media 
+- プロジェクトへの援助 
+  - [Open Collectiveによる支援](https://phalcon.io/fund)
+  - [ストア - グッズの販売](https://phalcon.io/store)
+- ソーシャルメディア 
   - [Telegram](https://phalcon.io/telegram)
-  - [Gab.ai](https://phalcon.io/gab)
+  - [Gab](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
   - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)
-- Videos 
+- 動画 
   - [BitChute](https://phalcon.io/bitchute)
   - [LBRY](https://phalcon.io/lbry)
   - [YouTube](https://phalcon.io/youtube)

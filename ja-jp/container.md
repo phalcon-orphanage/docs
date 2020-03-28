@@ -10,7 +10,7 @@ keywords: 'psr-11, di, container, dependency injection'
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 [Phalcon\Container](api/phalcon_container#container) is an implementation of the [PSR-11](https://www.php-fig.org/psr/psr-11/) Container interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--11-blue.svg)

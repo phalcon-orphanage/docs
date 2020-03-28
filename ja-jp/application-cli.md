@@ -13,7 +13,7 @@ keywords: 'cli, command line, application, tasks'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-# Overview
+# 概要
 
 CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on screen) and can be run more than one at a time. Some of the common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
 
@@ -95,7 +95,7 @@ Let's look at the code above in more detail.
 
 First we need to create all the necessary services for our CLI application. We are going to create a loader to autoload our tasks, the CLI application, a dispatcher and a CLI Console application. These are the minimum amount of services that we need to instantiate to create a CLI application.
 
-**Loader**
+**ローダー**
 
 ```php
 $loader = new Loader();
@@ -120,7 +120,7 @@ $container  = new CliDI();
 
 We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli](api/phalcon_di#di-factorydefault-cli) container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di](api/phalcon_di#di) and register the services you need, one after another.
 
-**Dispatcher**
+**ディスパッチャー**
 
 ```php
 $dispatcher = new Dispatcher();
@@ -131,7 +131,7 @@ $container->setShared('dispatcher', $dispatcher);
 
 CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
 
-**Application**
+**アプリケーション**
 
 ```php
 $console = new Console($container);

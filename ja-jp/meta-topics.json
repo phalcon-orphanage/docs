@@ -1,6 +1,6 @@
 [
     {
-        "text": "General",
+        "text": "概要",
         "url": "/introduction",
         "menu": [
             {
@@ -23,11 +23,11 @@
         ]
     },
     {
-        "text": "Contributions",
+        "text": "貢献",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "概要",
                 "url": "/contributions"
             },
             {
@@ -39,7 +39,7 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "バックトレースの生成",
                 "url": "/generating-backtrace"
             },
             {
@@ -51,17 +51,17 @@
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "コーディング規約",
                 "url": "/coding-standard"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "はじめに",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "インストール",
                 "url": "/installation"
             },
             {
@@ -71,7 +71,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "環境",
         "url": "",
         "menu": [
             {
@@ -85,29 +85,29 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "開発ツール",
         "url": "",
         "menu": [
             {
-                "text": "DevTools",
+                "text": "開発ツール",
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "デバッグ",
                 "url": "/debug"
             },
             {
-                "text": "Migrations",
+                "text": "マイグレーション",
                 "url": "/db-migrations"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "チュートリアル",
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "基本",
                 "url": "/tutorial-basic"
             },
             {
@@ -123,29 +123,29 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "使用例",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "パフォーマンス",
                 "url": "/performance"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "コア",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "API インデックス",
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "アプリケーション",
                 "url": "/application"
             },
             {
-                "text": "Micro",
+                "text": "小規模アプリ",
                 "url": "/application-micro"
             },
             {
@@ -153,7 +153,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI コンテナ",
                 "url": "/di"
             },
             {
@@ -161,43 +161,43 @@
                 "url": "/mvc"
             },
             {
-                "text": "Namespaces",
+                "text": "名前空間",
                 "url": "/namespaces"
             }
         ]
     },
     {
-        "text": "Services",
+        "text": "サービス",
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "キャッシュ",
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "設定",
                 "url": "/config"
             },
             {
-                "text": "Escaper",
+                "text": "エスケープ",
                 "url": "/escaper"
             },
             {
-                "text": "Loader",
+                "text": "ローダー",
                 "url": "/loader"
             },
             {
-                "text": "Logger",
+                "text": "ログ",
                 "url": "/logger"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "データベース",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "レイヤー",
                 "url": "/db-layer"
             },
             {
@@ -209,15 +209,15 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "モデル",
                 "url": "/db-models"
             },
             {
-                "text": "Behaviors",
+                "text": "ビヘイビア",
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "キャッシュ",
                 "url": "/db-models-cache"
             },
             {
@@ -225,33 +225,33 @@
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "メタデータ",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "リレーション",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "トランザクション",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "バリデーター",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "ページネーション",
                 "url": "/db-pagination"
             },
             {
-                "text": "Migrations",
+                "text": "マイグレーション",
                 "url": "/db-migrations"
             }
         ]
     },
     {
-        "text": "Front End",
+        "text": "フロントエンド",
         "url": "",
         "menu": [
             {
@@ -259,11 +259,11 @@
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "フラッシュメッセージ",
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "フォーム",
                 "url": "/forms"
             },
             {
@@ -271,11 +271,11 @@
                 "url": "/image"
             },
             {
-                "text": "Tag",
+                "text": "タグ",
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "ビュー",
                 "url": "/views"
             },
             {
@@ -285,39 +285,39 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "ビジネスロジック",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "アクセス制御リスト",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "アノテーション",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "コントローラ",
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "ディスパッチャー",
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "イベント管理",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "フィルター",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "ルーティング",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "セッション",
                 "url": "/session"
             },
             {
@@ -335,11 +335,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Cookies",
+                "text": "クッキー",
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "リクエスト",
                 "url": "/request"
             },
             {
@@ -353,11 +353,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "暗号化",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "セキュリティ",
                 "url": "/security"
             }
         ]
@@ -375,7 +375,7 @@
                 "url": "/loader"
             },
             {
-                "text": "PSR-7 HTTP Request",
+                "text": "PSR-7 HTTPリクエスト",
                 "url": "/http-request"
             },
             {
@@ -417,7 +417,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "多言語対応",
                 "url": "/i18n"
             },
             {
@@ -427,15 +427,15 @@
         ]
     },
     {
-        "text": "Utility",
+        "text": "ユーティリティ",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "コレクション",
                 "url": "/collection"
             },
             {
-                "text": "Domain",
+                "text": "ドメイン",
                 "url": "/domain"
             },
             {
@@ -443,11 +443,11 @@
                 "url": "/html"
             },
             {
-                "text": "Helper",
+                "text": "ヘルパー",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "レジストリ",
                 "url": "/registry"
             }
         ]

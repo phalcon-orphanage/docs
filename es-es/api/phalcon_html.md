@@ -104,7 +104,7 @@ Phalcon\Html\Breadcrumbs
 
 This component offers an easy way to create breadcrumbs for your application. The resulting HTML when calling `render()` will have each breadcrumb enclosed in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -213,7 +213,7 @@ Phalcon\Html\Helper\AbstractHelper
 
 Abstract class for all html helpers
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -585,7 +585,7 @@ Class Phalcon\Http\Link\Link
 
 @property array attributes @property string href @property array rels @property bool templated
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -680,7 +680,7 @@ Class Phalcon\Http\Link\LinkProvider
 
 @property LinkInterface[] links
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -766,7 +766,7 @@ Serializer method
 
 ServiceLocator implementation for Tag helpers
 
-## Properties
+## Propiedades
 
 ```php
 /**

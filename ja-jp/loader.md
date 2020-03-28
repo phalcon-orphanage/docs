@@ -2,17 +2,17 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Loader'
+title: 'ローダー'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 
-# Loader
+# ローダー
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 [Phalcon\Loader](api/phalcon_loader#loader) is an autoloader that implements [PSR-4](https://www.php-fig.org/psr/psr-4/). Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
 
@@ -130,7 +130,7 @@ In the above snippet, if `../processes/important-process.php` is a valid file, t
 
 To avoid most of these kind of attacks, [Phalcon\Loader](api/phalcon_loader#loader) removes invalid characters from the class name.
 
-## Namespaces
+## 名前空間
 
 A very popular way to organize your application is with directories, each representing a particular namespace. [Phalcon\Loader](api/phalcon_loader#loader) can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
 

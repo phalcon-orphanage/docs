@@ -25,7 +25,7 @@ title: 'Phalcon\Collection'
 
 It can be used in any part of the application that needs collection of data Such implementations are for instance accessing globals `$_GET`, `$_POST` etc.
 
-## Properties
+## Propiedades
 
 ```php
 /**

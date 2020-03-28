@@ -3,17 +3,17 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 upgrade: '#logger'
-title: 'Logger'
+title: 'ログ'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 ---
 
-# Logger
+# ログ
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 [Phalcon\Logger](api/phalcon_logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/phalcon_logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
 
@@ -329,7 +329,7 @@ The above can be used in situations where you want to log messages above a certa
 > **NOTE**: It is **never** a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
 {: .alert .alert-danger }
 
-## Transactions
+## トランザクション
 
 [Phalcon\Logger](api/phalcon_logger#logger-logger) also offers the ability to queue the messages in your logger, and then *commit* them all together in the log file. This is similar to a database transaction with `begin` and `commit`. Each adapter exposes the following methods: - `begin` - begins the logging transaction - `inTransaction` - `bool` if you are in a transaction or not - `commit` - writes all the queued messages in the log file
 

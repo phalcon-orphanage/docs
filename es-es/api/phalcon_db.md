@@ -90,7 +90,7 @@ Enables/disables options in the Database component
 
 Base class for Phalcon\Db adapters
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1193,7 +1193,7 @@ $config = [
 $connection = new Mysql($config);
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1483,7 +1483,7 @@ $config = [
 $connection = new Mysql($config);
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1570,7 +1570,7 @@ $config = [
 $connection = new Postgresql($config);
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1694,7 +1694,7 @@ $connection = new Sqlite(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1891,7 +1891,7 @@ const TYPE_TINYTEXT = 25;
 const TYPE_VARCHAR = 2;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -2197,7 +2197,7 @@ Returns true if number column is unsigned
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2493,7 +2493,7 @@ Prepares table for this RDBMS
 
 Generates database specific SQL for the MySQL RDBMS
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -2693,7 +2693,7 @@ Generates SQL to add the table creation options
 
 Generates database specific SQL for the PostgreSQL RDBMS
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -2887,7 +2887,7 @@ protected function getTableOptions( array $definition ): string;
 
 Generates database specific SQL for the SQLite RDBMS
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3369,7 +3369,7 @@ $connection->addIndex("robots", null, $index_unique);
 $connection->addIndex("robots", null, $index_primary);
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3496,7 +3496,7 @@ echo "Final Time: ", $profile->getFinalTime(), "\n";
 echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3574,7 +3574,7 @@ Stops the active profile
 
 This class identifies each profile in a Phalcon\Db\Profiler
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3681,7 +3681,7 @@ $subscriber->createdAt = new \Phalcon\Db\RawValue("now()");
 $subscriber->save();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3735,7 +3735,7 @@ $reference = new \Phalcon\Db\Reference(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3914,7 +3914,7 @@ while ($robot = $result->fetchArray()) {
 }
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //

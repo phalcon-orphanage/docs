@@ -2,17 +2,17 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Forms'
+title: 'フォーム'
 keywords: 'forms, render html, validation, elements'
 ---
 
-# Forms
+# フォーム
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 概要
 
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
 

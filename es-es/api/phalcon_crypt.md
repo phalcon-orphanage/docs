@@ -45,7 +45,7 @@ const PADDING_SPACE = 6;
 const PADDING_ZERO = 5;
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**

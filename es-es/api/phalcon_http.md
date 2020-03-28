@@ -50,7 +50,7 @@ title: 'Phalcon\Http'
 
 Provide OO wrappers to manage a HTTP cookie.
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -451,7 +451,7 @@ Checks the element passed; assigns it to the property and returns a clone of the
 
 Message methods
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -732,7 +732,7 @@ Checks the protocol
 
 Request methods
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -900,7 +900,7 @@ Create a new request.
 
 PSR-7 Response
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -993,7 +993,7 @@ Create a new response.
 
 PSR-7 ServerRequest
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1254,7 +1254,7 @@ Returns the apache_request_headers if it exists
 
 PSR-7 Stream
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1413,7 +1413,7 @@ Describes a data stream from "php://input"
 
 Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1562,7 +1562,7 @@ The stream MUST be readable and may be writable.
 
 PSR-7 UploadedFile
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -1735,7 +1735,7 @@ If a size is not provided it will be determined by checking the size of the stre
 
 PSR-7 Uri
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -2020,7 +2020,7 @@ $request->getMethod();
 $request->getLanguages();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -2572,7 +2572,7 @@ class PostsController extends Controller
 }
 ```
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -3141,7 +3141,7 @@ $response->setContent("<html><body>Hello</body></html>");
 $response->send();
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -3516,7 +3516,7 @@ $di->set(
 );
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -3706,7 +3706,7 @@ Phalcon\Http\Response\Headers
 
 This class is a bag to manage the response headers
 
-## Properties
+## Propiedades
 
 ```php
 //

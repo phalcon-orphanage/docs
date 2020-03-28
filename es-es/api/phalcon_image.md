@@ -23,7 +23,7 @@ Phalcon\Image\Adapter
 
 All image adapters must use this class
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -296,7 +296,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Propiedades
 
 ```php
 //
@@ -441,7 +441,7 @@ if ($image->save()) {
 }
 ```
 
-## Properties
+## Propiedades
 
 ```php
 //
