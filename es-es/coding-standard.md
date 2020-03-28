@@ -20,11 +20,11 @@ En este documento se describe el estándar de código que utiliza Phalcon para e
 
 ## Archivos
 
-- Los archivos deben usar solo UTF-8 sin [BOM (marca de orden de bytes)](https://es.wikipedia.org/wiki/Marca_de_orden_de_bytes).
+- Los archivos deben usar solo UTF-8 sin [BOM (*marca de orden de bytes*)](https://es.wikipedia.org/wiki/Marca_de_orden_de_bytes).
 - Los nombres de los archivos deben estar en formato [StudlyCaps](https://en.wikipedia.org/wiki/Studly_caps).
-- Todos los archivos deben usar el final de línea de Unix LF (linefeed).
+- Todos los archivos deben usar el final de línea de Unix LF (*linefeed*).
 - Todos los archivos deben terminar con una única línea en blanco.
-- Los nombres de las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (namespace) de la clase.
+- Los nombres de las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (*namespace*) de la clase.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -43,7 +43,7 @@ class Memory extends Adapter
 
 - El código debe utilizar 4 espacios para la sangría, no tabulaciones.
 - Las líneas deben tener como máximo 80 caracteres. El límite de la longitud de línea es de 120 caracteres.
-- Debe haber una línea en blanco después del espacio de nombres (namespace). También debe haber una línea en blanco después del bloque de declaraciones.
+- Debe haber una línea en blanco después del espacio de nombres. También debe haber una línea en blanco después del bloque de declaraciones.
 - No debe haber espacios en blanco al final de las líneas con código.
 - Se pueden agregar líneas en blanco para hacer más legible el código o para indicar bloques de código relacionados.
 - No debe haber más de una declaración por línea.
@@ -73,11 +73,11 @@ class Enum
 
 ### Propiedades
 
-- Class properties must be declared in camelCase.
-- Class properties must be sorted alphabetically based on name.
-- Whenever possible, properties must have a default value.
-- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration.
-- Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
+- Las propiedades de clase deben ser declaradas en formato camelCase.
+- Las propiedades de clase deben estar en orden alfabético.
+- Siempre que sea posible, las propiedades deben tener un valor predeterminado.
+- Siempre que sea posible, las propiedades deben tener un bloque de documentación (*docblock*) que defina su tipo mediante la declaración `@var`.
+- Las propiedades no deben usar como prefijo un guion bajo `_`. La única excepción es si el nombre de la propiedad es una palabra reservada como `default`, `namespace`, etc.
 
 ```php
 namespace Phalcon\Acl\Adapter;
@@ -136,4 +136,4 @@ public function setElement(string! name, var value) -> void;
 
 ### Archivos PHP
 
-PHP files such as tests must follow [PSR-12](https://www.php-fig.org/psr/psr-12/).
+Los archivos PHP tales como los tests deben seguir la especificación [PSR-12](https://www.php-fig.org/psr/psr-12/).
