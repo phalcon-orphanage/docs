@@ -43,14 +43,14 @@ class Memory extends Adapter
 
 - El código debe utilizar 4 espacios para la sangría, no tabulaciones.
 - Las líneas deben tener como máximo 80 caracteres. El límite de la longitud de línea es de 120 caracteres.
-- There must be one blank line after the namespace declaration, and there must be one blank line after the block of use declarations.
-- There must not be trailing whitespace at the end of non-blank lines.
-- Blank lines may be added to improve readability and to indicate related blocks of code.
-- There must not be more than one statement per line.
+- Debe haber una línea en blanco después del espacio de nombres (namespace). También debe haber una línea en blanco después del bloque de declaraciones.
+- No debe haber espacios en blanco al final de las líneas con código.
+- Se pueden agregar líneas en blanco para hacer más legible el código o para indicar bloques de código relacionados.
+- No debe haber más de una declaración por línea.
 
 ## Clases
 
-- Class names must be declared in StudlyCaps.
+- Los nombres de las clases deben estar en formato StudlyCaps.
 - Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
 - Abstract classes must be prefixed by `Abstract`
 - Interfaces must be suffixed by `Interface`
