@@ -116,6 +116,31 @@ return new Config([
     ]);
     
 
+## Migration methods
+
+Each migration is an separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
+
+Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
+
+The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
+
+**Running to up**
+
+| Method name      | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| morph            | Morph table structure                              |
+| afterCreateTable | Make something immediately after table was created |
+| up               | Table is created and ready to work with            |
+| afterUp          | Extra method to work for some specific cases       |
+
+**Running to down**
+
+| Method name                         | Description                                                                      |
+| ----------------------------------- | -------------------------------------------------------------------------------- |
+| down                                | Normally you put here table drop or data truncation                              |
+| aferDown                            | Extra method to work after all was cleaned up                                    |
+| morph (**from previous migration**) | As migration was moved backward, there need to be all returned to previous state |
+
 ## CLI Arguments and options
 
 **Arguments**
