@@ -127,7 +127,7 @@ Inside each class there are different methods that can occur during migration ru
 Each migration file (and class) can implement specific methods, that will be executed based on the operation requested.
 There are no restrictions on the logic encapsulated in each method.
 
-Here are tables with Migration Class methods. Table is sorted by order of execution: from earliest to latest.
+The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
 
 **Running to up**
 
