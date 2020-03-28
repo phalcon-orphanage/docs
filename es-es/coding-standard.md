@@ -51,15 +51,15 @@ class Memory extends Adapter
 ## Clases
 
 - Los nombres de las clases deben estar en formato StudlyCaps.
-- Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
-- Abstract classes must be prefixed by `Abstract`
-- Interfaces must be suffixed by `Interface`
+- La llave de apertura de las clases debe ir en la línea siguiente a la declaración, y la de cierre en la línea siguiente del cuerpo.
+- Las clases abstractas deben tener el prefijo `Abstract`
+- Las interfaces deben tener el sufijo `Interface`
 
 ### Constantes
 
-- Class constants must be declared in all upper case with underscore separators.
-- Class constants must appear at the top of the class.
-- Class constants must be sorted alphabetically by constant name.
+- Las constantes de clase deben declararse en mayúscula utilizando el guion bajo como separador.
+- Las constantes de clase deben aparecer en la parte superior.
+- Las constantes de clase deben estar en orden alfabético.
 
 ```php
 namespace Phalcon\Acl;
