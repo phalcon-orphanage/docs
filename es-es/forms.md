@@ -455,7 +455,7 @@ public function valid(): bool
 
 Returns if the current element in the iterator is valid or not
 
-## Initialization
+## Inicialización
 
 Forms can be initialized outside the form class by adding elements to it. However you can reuse code or organize your form classes by implementing forms in their own classes:
 
