@@ -97,12 +97,12 @@ class Memory extends Adapter
 
 ### Métodos
 
-- Method names must be declared in camelCase.
-- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
-- Method names must not be prefixed with underscore `_`.
-- All methods must have a return type. If the method does not return anything it should be marked `void`
-- Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
-- Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the visibility; `static` must be declared after the visibility.
+- Los nombres de los métodos deben ser declarados en formato camelCase.
+- Los métodos deben estar en orden alfabético según su visibilidad. El orden es `public`, `protected` y `private`. Si se define `__construct` debe aparecer al principio de la clase.
+- Los nombres de los métodos no deben usar como prefijo un guion bajo `_`.
+- Todos los métodos deben devolver un tipo. Si el método no devuelve nada entonces debe ser marcado como `void`.
+- La llave de apertura de los métodos debe ir en la línea siguiente a la declaración, y la de cierre en la línea siguiente del cuerpo.
+- En todas las propiedades y métodos se debe declarar su visibilidad; `abstract` y `final` deben declararse antes de la misma; `static`, después.
 
 ```php
 abstract public function getElement() -> var;
