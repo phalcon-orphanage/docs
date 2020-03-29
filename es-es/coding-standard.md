@@ -112,9 +112,9 @@ final public function getElement() -> var;
 public static function getElement() -> var;
 ```
 
-- Control structure keywords must have one space after them; method and function calls must not.
-- Opening braces for control structures must go on the same line, and closing braces must go on the next line after the body.
-- Control structures such as `if` must not have parentheses around the conditional, unless it is a complex one.
+- Después de las palabras clave (*keywords*) de las estructuras de control debe haber un espacio en blanco; después de las llamadas a métodos y funciones, no.
+- La llave de apertura de las estructuras de control debe ir en la misma línea, y la de cierre en la línea siguiente del cuerpo.
+- Las estructuras de control como `if` no deben tener la condición entre paréntesis, salvo que sea compleja.
 
 ```php
 if typeof variable === "array" {
@@ -122,17 +122,17 @@ if typeof variable === "array" {
 }
 ```
 
-### Method Arguments
+### Argumentos de los métodos
 
-- In the argument list, there must not be a space before each comma, and there must be one space after each comma.
-- Each method must have its type declared before it
-- Method arguments with default values must go at the end of the argument list.
+- En la lista de argumentos no debe haber un espacio en blanco antes de cada coma, pero sí después de cada una de ellas.
+- El tipo de cada método debe declararse al principio.
+- Los argumentos de los métodos con valores predeterminados deben ir al final de la lista de argumentos.
 
 ```php
 public function setElement(string! name, var value) -> void;
 ```
 
-- Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list must be on the next line, and there must be only one argument per line.
+- La lista de argumentos se puede dividir en múltiples líneas, cada una con su respectiva sangría. Al hacerlo así, el primer elemento de la lista debe estar en la línea siguiente, y solo debe haber un argumento por línea.
 
 ### Archivos PHP
 
