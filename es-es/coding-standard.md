@@ -20,11 +20,11 @@ En este documento se describe el estándar de código que utiliza Phalcon para e
 
 ## Archivos
 
-- Los archivos deben usar solo UTF-8 sin [BOM (marca de orden de bytes)](https://es.wikipedia.org/wiki/Marca_de_orden_de_bytes).
+- Los archivos deben usar solo UTF-8 sin [BOM (*marca de orden de bytes*)](https://es.wikipedia.org/wiki/Marca_de_orden_de_bytes).
 - Los nombres de los archivos deben estar en formato [StudlyCaps](https://en.wikipedia.org/wiki/Studly_caps).
-- Todos los archivos deben usar el final de línea de Unix LF (linefeed).
+- Todos los archivos deben usar el final de línea de Unix LF (*linefeed*).
 - Todos los archivos deben terminar con una única línea en blanco.
-- Los nombres de las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (namespace) de la clase.
+- Los nombres de las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (*namespace*) de la clase.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -43,23 +43,23 @@ class Memory extends Adapter
 
 - El código debe utilizar 4 espacios para la sangría, no tabulaciones.
 - Las líneas deben tener como máximo 80 caracteres. El límite de la longitud de línea es de 120 caracteres.
-- There must be one blank line after the namespace declaration, and there must be one blank line after the block of use declarations.
-- There must not be trailing whitespace at the end of non-blank lines.
-- Blank lines may be added to improve readability and to indicate related blocks of code.
-- There must not be more than one statement per line.
+- Debe haber una línea en blanco después del espacio de nombres. También debe haber una línea en blanco después del bloque de declaraciones.
+- No debe haber espacios en blanco al final de las líneas con código.
+- Se pueden agregar líneas en blanco para hacer más legible el código o para indicar bloques de código relacionados.
+- No debe haber más de una declaración por línea.
 
 ## Clases
 
-- Class names must be declared in StudlyCaps.
-- Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
-- Abstract classes must be prefixed by `Abstract`
-- Interfaces must be suffixed by `Interface`
+- Los nombres de las clases deben estar en formato StudlyCaps.
+- La llave de apertura de las clases debe ir en la línea siguiente a la declaración, y la de cierre en la línea siguiente del cuerpo.
+- Las clases abstractas deben tener el prefijo `Abstract`
+- Las interfaces deben tener el sufijo `Interface`
 
 ### Constantes
 
-- Class constants must be declared in all upper case with underscore separators.
-- Class constants must appear at the top of the class.
-- Class constants must be sorted alphabetically by constant name.
+- Las constantes de clase deben declararse en mayúscula utilizando el guion bajo como separador.
+- Las constantes de clase deben aparecer en la parte superior.
+- Las constantes de clase deben estar en orden alfabético.
 
 ```php
 namespace Phalcon\Acl;
@@ -73,11 +73,11 @@ class Enum
 
 ### Propiedades
 
-- Class properties must be declared in camelCase.
-- Class properties must be sorted alphabetically based on name.
-- Whenever possible, properties must have a default value.
-- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration.
-- Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
+- Las propiedades de clase deben ser declaradas en formato camelCase.
+- Las propiedades de clase deben estar en orden alfabético.
+- Siempre que sea posible, las propiedades deben tener un valor predeterminado.
+- Siempre que sea posible, las propiedades deben tener un bloque de documentación (*docblock*) que defina su tipo mediante la declaración `@var`.
+- Las propiedades no deben usar como prefijo un guion bajo `_`. La única excepción es si el nombre de la propiedad es una palabra reservada como `default`, `namespace`, etc.
 
 ```php
 namespace Phalcon\Acl\Adapter;
@@ -97,12 +97,12 @@ class Memory extends Adapter
 
 ### Métodos
 
-- Method names must be declared in camelCase.
-- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
-- Method names must not be prefixed with underscore `_`.
-- All methods must have a return type. If the method does not return anything it should be marked `void`
-- Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
-- Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the visibility; `static` must be declared after the visibility.
+- Los nombres de los métodos deben ser declarados en formato camelCase.
+- Los métodos deben estar en orden alfabético según su visibilidad. El orden es `public`, `protected` y `private`. Si se define `__construct` debe aparecer al principio de la clase.
+- Los nombres de los métodos no deben usar como prefijo un guion bajo `_`.
+- Todos los métodos deben devolver un tipo. Si el método no devuelve nada entonces debe ser marcado como `void`.
+- La llave de apertura de los métodos debe ir en la línea siguiente a la declaración, y la de cierre en la línea siguiente del cuerpo.
+- En todas las propiedades y métodos se debe declarar su visibilidad; `abstract` y `final` deben declararse antes de la misma; `static`, después.
 
 ```php
 abstract public function getElement() -> var;
@@ -136,4 +136,4 @@ public function setElement(string! name, var value) -> void;
 
 ### Archivos PHP
 
-PHP files such as tests must follow [PSR-12](https://www.php-fig.org/psr/psr-12/).
+Los archivos PHP tales como los tests deben seguir la especificación [PSR-12](https://www.php-fig.org/psr/psr-12/).
