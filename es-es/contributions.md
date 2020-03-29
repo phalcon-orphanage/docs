@@ -14,7 +14,7 @@ keywords: 'contributing, nfr, pull request, pr, new feature request'
 
 # Cómo contribuir en Phalcon
 
-Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
+Phalcon es un proyecto de código abierto que depende en gran medida de los esfuerzos y contribuciones voluntarias. ¡Por lo que son bienvenidas las contribuciones de todos!
 
 Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
 
@@ -76,16 +76,16 @@ Before submitting **new functionality**, please open a [NFR](new-feature-request
 
 - Una actualización al `CHANGELOG.md`
 - Pruebas unitarias
-- Documentación o ejemplos de uso
+- Documentación o Ejemplos de Uso
 
-## Obtener ayuda
+## Obtener Ayuda
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.io/support).
+Si tiene alguna pregunta sobre cómo utilizar Phalcon, consulte la [página de soporte](http://phalcon.io/support).
 
-## Solicitar nuevas funcionalidades
+## Solicitar Funcionalidades
 
-If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
+Si tienes algún cambio o nuevas características en mente, por favor rellena una Solicitud de Nueva Funcionalidad [(NFR)](new-feature-request).
 
-Thanks!
+¡Gracias!
 
 <3 Phalcon Team
