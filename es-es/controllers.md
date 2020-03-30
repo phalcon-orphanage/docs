@@ -14,49 +14,49 @@ keywords: 'controllers, mvc'
 
 ## Controladores
 
-A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called *actions* that contain such business logic and handle user requests.
+Un controlador es una clase que contiene la lógica de negocio para una aplicación. También es responsable de ejecutar las solicitudes de los usuarios. Los controladores tienen métodos llamados *acciones* que contienen esa lógica de negocio y gestionan las solicitudes de los usuarios.
 
-An action is any public method in a controller with the `Action` suffix. These *actions* are accessible by a URL and are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Una acción es cualquier método público en un controlador con el sufijo `Action`. Estas *acciones* son accesibles a través de una URL y son responsables de interpretar la solicitud y crear la respuesta. Normalmente las respuestas tienen forma de una vista renderizada, pero también hay otras formas de crear respuestas.
 
-Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) class.
+Los controladores en Phalcon **deben** tener el sufijo `Controller` en su nombre de archivo y de clase y **deben** extender la clase [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller).
 
-> **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
+> **NOTA**: El controlador por defecto (cuando no se ha especificado ninguno en la URL) es **IndexController** y la acción por defecto (cuando no se ha especificado ninguna en la URL) es **indexAction**.
 {: .alert .alert-info }
 
-## Routing
+## Enrutamiento
 
-[Routing](routing) is further explained in the relevant document. However the default route is:
+El [enrutamiento](routing) se explica más en detalle en el documento correspondiente. No obstante, el formato de ruta por defecto es:
 
 ```bash
 /:module/:controller/:action/:parameter1/:parameter2
 ```
 
-You can find more information about modules in the <application> document. For an application that does not have any modules, the default routes are:
+Puedes encontrar más información acerca de los módulos en el documento dedicado a la [aplicación](application). Para una aplicación que no tiene ningún módulo, el formato de ruta por defecto es:
 
 ```bash
 /:controller/:action/:parameter1/:parameter2
 ```
 
-As a result, the URL:
+Como resultado, la URL:
 
 ```bash
 https://dev.phalcon.ld/invoices/list/2/25
 ```
 
-will have:
+tendrá:
 
-| Slug       | Description    |
+| Slug       | Descripción    |
 | ---------- | -------------- |
 | `invoices` | **Controller** |
 | `list`     | **Action**     |
 | `2`        | **Parameter1** |
 | `25`       | **Parameter2** |
 
-The above will call the `InvoicesController` and `listAction`. The parameters will be available through the <request> in the controller and action.
+La dirección arriba descrita llamará a `InvoiceController` y `listAction`. Los parámetros estarán disponibles a través de la solicitud [](request) en el controlador y la acción.
 
-Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Loader](loader) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
+Las clases de controlador pueden estar en cualquier carpeta de la aplicación, siempre y cuando el autoloader sepa dónde buscarlas en el momento en el que se las llame. [Phalcon\Loader](loader) tiene numerosas opciones para registrar directorios, espacios de nombres, etc. con el propósito de ayudar a descubrir los controladores.
 
-A sample controller is as follows:
+A continuación un ejemplo de controlador:
 
 ```php
 <?php
@@ -77,9 +77,9 @@ class InvoicesController extends Controller
 }
 ```
 
-## Initialization
+## Inicialización
 
-[Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) calls the `initialize()` method (if present) first, before any action is executed on a controller.
+[Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) llama al método `initialize()` (si está presente) primero, antes de que cualquier acción se ejecute en un controlador.
 
 ```php
 <?php
@@ -104,15 +104,15 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: The use of the `__construct()` method is not recommended.
+> **NOTE**: No se recomienda el uso del método `__construct()`.
 {: .alert .alert-warning }
 
 
 > 
-> **NOTE**: The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
+> **NOTE**: El método `initialize()` solo se llama si el evento `beforeExecuteRoute` se ha ejecutado correctamente. Esto es así para asegurar que si tienes el código de verificación de autorización en el evento, `inicialize` nunca será invocado.
 {: .alert .alert-warning }
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
+Si deseas ejecutar alguna lógica de inicialización justo después de que el objeto del controlador sea construido, entonces puedes implementar el método `onConstruct()`:
 
 ```php
 <?php
@@ -128,14 +128,14 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
+> **NOTA**: Ten en cuenta que `onConstruct()` se ejecuta incluso si la acción a ejecutar no existe en el controlador o el usuario no tiene acceso a él (asumiendo que el control de acceso personalizado está implementado en la aplicación).
 {: .alert .alert-warning }
 
 ## Dispatch Loop
 
-The dispatch loop will be executed within the [Dispatcher](dispatcher) until there are no actions left to be executed. In the examples above we showed code in only one action, which will be executed with the appropriate request.
+El dispatch loop se ejecutará dentro del [Dispatcher](dispatcher) hasta que no quede ninguna acción por ejecutar. En los ejemplos anteriores se mostraba el código en una única acción, la cual se ejecutará con la solicitud apropiada.
 
-We can utilize the [Dispatcher](dispatcher) object to forward the request to a different module, controller or action, thus creating a more complex flow of operations in the dispatch loop.
+Podemos utilizar el objeto [Dispatcher](dispatcher) para reenviar la solicitud a un módulo, controlador o acción diferente, creando así un flujo de operaciones más complejo en el dispatch loop.
 
 ```php
 <?php
@@ -172,7 +172,7 @@ class InvoicesController extends Controller
 }
 ```
 
-If users do not have permission to access the particular action, they will be forwarded to the `login` action in the `UsersController`.
+Si los usuarios no tienen permiso para acceder a una determinada acción, entonces serán reenviados a la acción de `inicio de sesión` en el controlador `UsersController`.
 
 ```php
 <?php
@@ -193,11 +193,11 @@ class UsersController extends Controller
 }
 ```
 
-The above is a simple example of forwarding for users that are not logged in or do not have access. You can check the Events section below on how you can leverage events to do the same thing globally for your application.
+Lo anterior es un simple ejemplo de reenvio para los usuarios que no han iniciado sesión o que no tienen acceso. Puedes consultar la sección de Eventos más abajo sobre cómo aprovechar los eventos para hacer lo mismo globalmente para tu aplicación.
 
-There is no limit on the `forward` calls you can have in your application. You have to be careful though, since forwarding could lead to circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View](views).
+No hay límite para las llamadas de `reenvío` que puedas tener en tu aplicación. Sin embargo, hay que tener cuidado ya que el reenvío podría conducir a referencias circulares, momento en el cual tu aplicación se detendrá. Si no hay otras acciones que enviar por el dispatch loop, el dispatcher invocará automáticamente la capa de la vista del MVC administrada por [Phalcon\Mvc\View](views).
 
-## Actions
+## Acciones
 
 Actions are methods that are called to execute the necessary functionality for our application. Actions **must** be suffixed by `Action` and they match a route request from the user.
 

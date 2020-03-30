@@ -14,7 +14,7 @@ keywords: 'contributing, nfr, pull request, pr, new feature request'
 
 # Cómo contribuir en Phalcon
 
-Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
+Phalcon es un proyecto de código abierto que depende en gran medida de los esfuerzos y contribuciones voluntarias. ¡Por lo que son bienvenidas las contribuciones de todos!
 
 Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
 
@@ -72,20 +72,20 @@ Please check the following links for instructions on how to generate the backtra
 - Suprimir cualquier cambio hecho a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su *pull request*.
 - More information [here](new-pull-request).
 
-Before submitting **new functionality**, please open a [NFR](new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Antes de enviar **una nueva funcionalidad**, por favor cree una [Solicitud de Nueva Funcionalidad](new-feature-request) *(New Feature Request, NFR)* en GitHub para debatir el impacto de incluiarla o el de los cambios necesarios en la extensión principal. Una vez que la funcionalidad sea aprobada, confirme que su *pull request (PR)* contiene lo siguiente:
 
 - Una actualización al `CHANGELOG.md`
-- Pruebas unitarias
-- Documentación o ejemplos de uso
+- Pruebas Unitarias
+- Documentación o Ejemplos de Uso
 
-## Obtener ayuda
+## Obtener Ayuda
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.io/support).
+Si tiene alguna pregunta sobre cómo utilizar Phalcon, consulte la [página de soporte](http://phalcon.io/support).
 
-## Solicitar nuevas funcionalidades
+## Solicitar Funcionalidades
 
-If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
+Si tienes algún cambio o nuevas características en mente, por favor rellena una Solicitud de Nueva Funcionalidad [(NFR)](new-feature-request).
 
-Thanks!
+¡Gracias!
 
 <3 Phalcon Team
