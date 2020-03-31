@@ -607,7 +607,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) is the default component for rendering views in Phalcon and supports a hierarchy of files. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
-The default rendering engine for the view component is PHP. As a result all view related files need to have the `.phtml` extension. For the above example:
+The default rendering engine for the view component is PHP. As a result all view related files need to have the `.phtml` extension. Para el ejemplo anterior:
 
     https://dev.phalcon.ld/admin/invoices/view/12345
     
