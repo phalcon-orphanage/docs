@@ -509,7 +509,7 @@ A `forward` action accepts the following parameters:
 | `params`     | An array of parameters for the action.                  |
 | `namespace`  | A valid namespace name where the controller is part of. |
 
-## Parameters
+## Parámetros
 
 ### Preparing
 

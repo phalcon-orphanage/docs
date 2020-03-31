@@ -258,7 +258,7 @@ or the `regenerate` action:
 ./cli.php users regenerate
 ```
 
-## Parameters
+## Parámetros
 
 You can also pass parameters to action. An example of how to process the parameters can be found above, in the sample bootstrap file.
 

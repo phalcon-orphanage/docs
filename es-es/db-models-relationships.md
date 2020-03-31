@@ -313,7 +313,7 @@ class Invoices extends Model
 }
 ```
 
-## Parameters
+## Parámetros
 
 Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the *status* of the customer (e.g. active, inactive, etc.).
 

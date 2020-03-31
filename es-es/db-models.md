@@ -1839,7 +1839,7 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 ```
 
-### Parameters
+### Parámetros
 
 > **NOTE**: It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. For more information check the [Binding Parameters](#binding-parameters)` section.
 {: .alert .alert-warning }

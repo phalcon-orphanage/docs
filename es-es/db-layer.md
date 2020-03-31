@@ -1154,7 +1154,7 @@ $success = $connection->delete(
 
 Dynamic generation
 
-## Parameters
+## Parámetros
 
 The `Phalcon\Db` adapters provide several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 

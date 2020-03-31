@@ -242,7 +242,7 @@ $container->set(
 > Usage: [CLI Documentation](cli)
 {: .alert .alert-info }
 
-### Parameters
+### Parámetros
 
 Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
 

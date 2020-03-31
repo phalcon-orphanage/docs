@@ -889,7 +889,7 @@ class EventsManager implements ManagerInterface
 
 The events available in Phalcon are:
 
-| Componente                  | Evento                               | Parameters                                              |
+| Componente                  | Evento                               | Parámetros                                              |
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
 | [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
 | [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
