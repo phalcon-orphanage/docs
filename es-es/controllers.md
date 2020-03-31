@@ -199,7 +199,7 @@ No hay límite para las llamadas de `reenvío` que puedas tener en tu aplicació
 
 ## Acciones
 
-Actions are methods that are called to execute the necessary functionality for our application. Actions **must** be suffixed by `Action` and they match a route request from the user.
+Las acciones son métodos que se llaman para ejecutar la funcionalidad necesaria para nuestra aplicación. Las acciones **deben** tener el sufijo `Acción` y a su vez coinciden con una solicitud de ruta del usuario.
 
 ```php
 <?php
@@ -220,21 +220,21 @@ class InvoicesController extends Controller
 }
 ```
 
-For the above example:
+Para el ejemplo anterior:
 
 ```php
 /invoices/list
 ```
 
-will tell the dispatcher to call the `listAction` method with any parameters passed. However
+le dirá al dispatcher que llame al método `listAction` con los parámetros que se le hayan pasado. Sin embargo
 
 ```bash
 /invoices/other
 ```
 
-will result in a `404` - page not found.
+devolverá un `404` - página no encontrada.
 
-## Parameters
+## Parámetros
 
 Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). By doing this, the controller can have easy access to the application services.
 
