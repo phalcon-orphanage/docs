@@ -1126,7 +1126,7 @@ public function setPrefix(
 
 Sets a prefix for all routes added to the collection
 
-### Parameters
+### Parámetros
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
