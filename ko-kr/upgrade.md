@@ -42,12 +42,12 @@ Alternatively some distributions add a number prefix on `ini` files. If that is 
 
 ### 설치
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+[여기](https://github.com/phalcon/zephir/releases)에서 최신버전의 `zephir.phar` 를 다운받으세요. 내려받은 파일을 시스템에서 접근가능한 폴더에 집어넣습니다.
 
-Clone the repository
+아래와 같이 저장소를 클론 하세요
 
 ```bash
-git clone https://github.com/phalcon/cphalcon
+https://github.com/phalcon/cphalcon
 ```
 
 Compile Phalcon
@@ -59,7 +59,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+모듈 확인
 
 ```bash
 php -m | grep phalcon
