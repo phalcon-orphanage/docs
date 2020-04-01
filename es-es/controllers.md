@@ -236,9 +236,9 @@ devolverá un `404` - página no encontrada.
 
 ## Parámetros
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). By doing this, the controller can have easy access to the application services.
+Los parámetros adicionales del URI se definen como parámetros de la acción, de modo que puedan ser fácilmente accesibles usando variables locales. El controlador puede extender opcionalmente [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). De esta manera, el controlador puede acceder fácilmente a los servicios de la aplicación.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as in PHP:
+Los parámetros sin ningún valor por defecto son tratados como obligatorios. Establecer los parámetros con valores opcionales se realiza como de costumbre en PHP:
 
 ```php
 <?php
