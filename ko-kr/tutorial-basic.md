@@ -549,7 +549,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        //assign value from the form to $user
+        //form에서 넘어온 값을 $user에 할당
         $user->assign(
             $this->request->getPost(),
             [
@@ -558,20 +558,20 @@ class SignupController extends Controller
             ]
         );
 
-        // Store and check for errors
+        // 저장하고 오류 확인
         $success = $user->save();
 
-        // passing the result to the view
+        // 뷰에 결과를 전달
         $this->view->success = $success;
 
         if ($success) {
-            $message = "Thanks for registering!";
+            $message = "등록되었습니다";
         } else {
-            $message = "Sorry, the following problems were generated:<br>"
+            $message = "죄송합니다, 다음과 같은 오류가 발생했습니다:<br>"
                      . implode('<br>', $user->getMessages());
         }
 
-        // passing a message to the view
+        // message를 뷰로 전달
         $this->view->message = $message;
     }
 }
