@@ -594,7 +594,7 @@ class SecurityPlugin extends Injectable
 }
 ```
 
-이벤트 메서드는 첫번째 파라미터로 항상 실제 이벤트를 받습니다. This is a [Phalcon\Events\Event](api/phalcon_events#events-event) object which will contain information regarding the event such as its type and other related information. 이 특정 이벤트에서, 두번째 파라미터는 이벤트 자체가 생성한 객체(`$containerspatcher`) 가 될 것입니다. 플러그인이 [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) 클래스를 반드시 상속받아야 할 필요는 없지만, 상속을 받으면 어플리케이션에서 사용가능한 서비스에 더 쉽게 접근할 수 있습니다.
+이벤트 메서드는 첫번째 파라미터로 항상 실제 이벤트를 받습니다. 이 [Phalcon\Events\Event](api/phalcon_events#events-event) 객체는 이벤트 타입, 기타 이벤트에 관련한 정보들을 가지고 있습니다. 이 특정 이벤트에서, 두번째 파라미터는 이벤트 자체가 생성한 객체(`$containerspatcher`) 가 될 것입니다. 플러그인이 [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) 클래스를 반드시 상속받아야 할 필요는 없지만, 상속을 받으면 어플리케이션에서 사용가능한 서비스에 더 쉽게 접근할 수 있습니다.
 
 이제 우리는 현재 세션에서 역할(role) 을 검증할 수 있는 구조를 갖추었습니다. 사용자가 [ACL](acl) 사용권한이 있는지 확인할 수 있습니다. 사용자에게 권한이 없으면, 홈 화면으로 리다이렉트 시킵니다.
 
@@ -852,7 +852,7 @@ class ProductsController extends ControllerBase
 
 ## 검색 Form
 
-INVO에서 CRUD 작업은 검색 form에서 시작합니다. 이 form은 상품 테이블(`products`) 에 있는 필드들을 표시해서 사용자가 각각의 항목에 대해 검색어를 입력할 수 있도록 합니다. `products` 테이블은 `products_types` 테이블과 종속관계가 있습니다. In this case, we previously queried the records in the `product_types` table to offer search criteria for this field:
+INVO에서 CRUD 작업은 검색 form에서 시작합니다. 이 form은 상품 테이블(`products`) 에 있는 필드들을 표시해서 사용자가 각각의 항목에 대해 검색어를 입력할 수 있도록 합니다. `products` 테이블은 `products_types` 테이블과 종속관계가 있습니다. 여기서는, 이 필드에 대해 검색어를 제공하기 위해 `product_types` 테이블의 레코드값을 사전에 쿼리 했습니다:
 
 ```php
 <?php
