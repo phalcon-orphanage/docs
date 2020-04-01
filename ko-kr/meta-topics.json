@@ -97,7 +97,7 @@
                 "url": "/debug"
             },
             {
-                "text": "Migrations",
+                "text": "마이그레이션",
                 "url": "/db-migrations"
             }
         ]
@@ -245,7 +245,7 @@
                 "url": "/db-pagination"
             },
             {
-                "text": "Migrations",
+                "text": "마이그레이션",
                 "url": "/db-migrations"
             }
         ]
