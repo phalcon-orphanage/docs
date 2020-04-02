@@ -236,9 +236,9 @@ devolverá un `404` - página no encontrada.
 
 ## Parámetros
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). By doing this, the controller can have easy access to the application services.
+Los parámetros adicionales del URI se definen como parámetros de la acción, de modo que puedan ser fácilmente accesibles usando variables locales. El controlador puede extender opcionalmente [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). De esta manera, el controlador puede acceder fácilmente a los servicios de la aplicación.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as in PHP:
+Los parámetros sin ningún valor por defecto son tratados como obligatorios. Establecer los parámetros con valores opcionales se realiza como de costumbre en PHP:
 
 ```php
 <?php
@@ -259,22 +259,22 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
+> **NOTA**: Necesitarás añadir código adicional para asegurarte que los datos pasados son del tipo correcto y que o bien utilizan el valor por defecto o tienen un valor correcto. Sinó, acabarás con errores.
 {: .alert .alert-warning }
 
-For the example above, the URL to call the method is:
+Para el ejemplo anterior, la URL para llamar al método es:
 
 ```php
 /invoices/list/2/10
 ```
 
-However, you will need to ensure that you account for a URL like this one:
+Sin embargo, tendrás que asegurarte de tener en cuenta una URL como ésta:
 
 ```php
 /invoices/list/wrong-value/another-wrong-value
 ```
 
-The above URL will not match the `int` for the `$page` or `perPage` and thus result in an error. You might want to consider a strategy to counter that. One way is to remove the types and ensure that your parameters are converted in the action:
+En la URL anterior ni el parámetro `$page` ni `$perPage` concordarán con el tipo `int` y por lo tanto se producirá un error. Tal vez quieras considerar otra estrategia para contrarrestar esto. Una forma de solucionarlo es eliminar los tipos y asegurarse de que los parámetros se convierten dentro de la acción:
 
 ```php
 <?php
@@ -296,7 +296,7 @@ class InvoicesController extends Controller
 }
 ```
 
-You can also remove the parameters from the action declaration and retrieve them from the dispatcher instead. Parameters are assigned in the same order as they were passed in the route. You can get a parameter from its name as follows:
+También puedes eliminar los parámetros de la declaración de la acción y recuperarlos del dispatcher en su lugar. Los parámetros se asignan en el mismo orden en el que aparecen en la ruta. Puedes obtener un parámetro por su nombre de la siguiente manera:
 
 ```php
 <?php
@@ -316,13 +316,13 @@ class InvoicesController extends Controller
 
     public function listAction()
     {
-        $year      = $this->dispatcher->getParam('year');
-        $postTitle = $this->dispatcher->getParam('postTitle');
+        $page      = $this->dispatcher->getParam('page');
+        $perPage = $this->dispatcher->getParam('perPage');
     }
 }
 ```
 
-The above parameters will match the route the way it was defined.
+Los parámetros anteriores coincidirán con la ruta tal y como fue definida.
 
 ## Eventos
 
