@@ -369,11 +369,11 @@ class InvoicesController extends Controller
 
 ## Solicitud - Respuesta
 
-If you have already registered a [Request](request) and [Response](response) services to your DI container or have simply instantiated the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) one, you can access these objects as properties in your controller.
+Si ya has registrado los servicios de [Solicitud](request) y [Respuesta](response) en el contenedor de DI (Inyección de Dependencias) o simplemente has instanciado el [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) correspondiente, puedes acceder a estos objetos como propiedades en el controlador.
 
-For [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), your objects will be [Phalcon\Http\Request](api/phalcon_http#http-request) for `request` and [Phalcon\Http\Response](api/phalcon_http#http-response) for response. The `request` contains the request from the user, including all the variables set by the method use (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
+Para [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), sus objetos serán [Phalcon\Http\Request](api/phalcon_http#http-request) para la `solicitud` y [Phalcon\Http\Response](api/phalcon_http#http-response) para la respuesta. La `solicitud` contiene la solicitud del usuario, incluyendo todas las variables establecidas por el método (`GET`, `POST`, etc.) junto con información adicional sobre la solicitud. La `respuesta` contiene datos que necesitamos enviar como `content-type`, código de estado, payload, etc.
 
-> **NOTE**: In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
+> **NOTA**: Para acceder a los servicios desde el controlador, necesitarás extender la clase `Phalcon\Mvc\Controller`
 {: .alert .alert-info }
 
 ```php
