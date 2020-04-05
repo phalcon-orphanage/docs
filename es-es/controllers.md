@@ -16,7 +16,7 @@ keywords: 'controllers, mvc'
 
 Un controlador es una clase que contiene la lógica de negocio para una aplicación. También es responsable de ejecutar las solicitudes de los usuarios. Los controladores tienen métodos llamados *acciones* que contienen esa lógica de negocio y gestionan las solicitudes de los usuarios.
 
-Una acción es cualquier método público en un controlador con el sufijo `Action`. Estas *acciones* son accesibles a través de una URL y son responsables de interpretar la solicitud y crear la respuesta. Normalmente las respuestas tienen forma de una vista renderizada, pero también hay otras formas de crear respuestas.
+Una acción es cualquier método público en un controlador con el sufijo `Action`. Estas *acciones* están disponibles a través de una URL y son responsables de interpretar la solicitud y crear la respuesta. Normalmente las respuestas tienen forma de una vista renderizada, pero también hay otras formas de crear respuestas.
 
 Los controladores en Phalcon **deben** tener el sufijo `Controller` en su nombre de archivo y de clase y **deben** extender la clase [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller).
 
@@ -104,12 +104,12 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: No se recomienda el uso del método `__construct()`.
+> **NOTA**: No se recomienda el uso del método `__construct()`.
 {: .alert .alert-warning }
 
 
 > 
-> **NOTE**: El método `initialize()` solo se llama si el evento `beforeExecuteRoute` se ha ejecutado correctamente. Esto es así para asegurar que si tienes el código de verificación de autorización en el evento, `inicialize` nunca será invocado.
+> **NOTA**: El método `initialize()` solo se llama si el evento `beforeExecuteRoute` se ha ejecutado correctamente. Esto es así para asegurar que si tienes el código de verificación de autorización en el evento, `inicialize` nunca será invocado.
 {: .alert .alert-warning }
 
 Si deseas ejecutar alguna lógica de inicialización justo después de que el objeto del controlador sea construido, entonces puedes implementar el método `onConstruct()`:
@@ -199,7 +199,7 @@ No hay límite para las llamadas de `reenvío` que puedas tener en tu aplicació
 
 ## Acciones
 
-Las acciones son métodos que se llaman para ejecutar la funcionalidad necesaria para nuestra aplicación. Las acciones **deben** tener el sufijo `Acción` y a su vez coinciden con una solicitud de ruta del usuario.
+Las acciones son métodos que se llaman para ejecutar la funcionalidad necesaria para nuestra aplicación. Las acciones **deben** tener el sufijo `Action` y a su vez deben coincidir con una solicitud de ruta del usuario.
 
 ```php
 <?php
@@ -236,7 +236,7 @@ devolverá un `404` - página no encontrada.
 
 ## Parámetros
 
-Los parámetros adicionales del URI se definen como parámetros de la acción, de modo que puedan ser fácilmente accesibles usando variables locales. El controlador puede extender opcionalmente [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). De esta manera, el controlador puede acceder fácilmente a los servicios de la aplicación.
+Los parámetros adicionales del URI se definen como parámetros de la acción, de modo que puedan ser fácilmente accesibles usando variables locales. Cualquier controlador puede extender opcionalmente [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). De esta manera, el controlador puede acceder fácilmente a los servicios de la aplicación.
 
 Los parámetros sin ningún valor por defecto son tratados como obligatorios. Establecer los parámetros con valores opcionales se realiza como de costumbre en PHP:
 
@@ -274,7 +274,7 @@ Sin embargo, tendrás que asegurarte de tener en cuenta una URL como ésta:
 /invoices/list/wrong-value/another-wrong-value
 ```
 
-En la URL anterior ni el parámetro `$page` ni `$perPage` concordarán con el tipo `int` y por lo tanto se producirá un error. Tal vez quieras considerar otra estrategia para contrarrestar esto. Una forma de solucionarlo es eliminar los tipos y asegurarse de que los parámetros se convierten dentro de la acción:
+En la URL anterior ni el parámetro `$page` ni `$perPage` concordarán con el tipo `int` y por lo tanto se producirá un error. Puede que quieras considerar otra estrategia para contrarrestar esto. Una forma de solucionarlo es eliminar los tipos y asegurarse de que los parámetros se convierten al tipo correcto dentro de la acción:
 
 ```php
 <?php
@@ -326,7 +326,7 @@ Los parámetros anteriores coincidirán con la ruta tal y como fue definida.
 
 ## Eventos
 
-Controllers automatically act as listeners for <dispatcher> <events>, implementing methods with those event names allowing you to implement hook points before/after the actions are executed:
+Los controladores actúan automáticamente como listeners para los [eventos](events) del <dispatcher>, implementando métodos con los nombres de los eventos que permiten a su vez implementar puntos de enganche antes/después de que las acciones sean ejecutadas:
 
 ```php
 <?php
@@ -367,13 +367,13 @@ class InvoicesController extends Controller
 }
 ```
 
-## Request - Response
+## Solicitud - Respuesta
 
-If you have already registered a [Request](request) and [Response](response) services to your DI container or have simply instantiated the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) one, you can access these objects as properties in your controller.
+Si ya has registrado los servicios de [Solicitud](request) y [Respuesta](response) en el contenedor de DI (Inyección de Dependencias) o simplemente has instanciado el [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) correspondiente, puedes acceder a estos objetos como propiedades en el controlador.
 
-For [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), your objects will be [Phalcon\Http\Request](api/phalcon_http#http-request) for `request` and [Phalcon\Http\Response](api/phalcon_http#http-response) for response. The `request` contains the request from the user, including all the variables set by the method use (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
+Para [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), sus objetos serán [Phalcon\Http\Request](api/phalcon_http#http-request) para la `solicitud` y [Phalcon\Http\Response](api/phalcon_http#http-response) para la respuesta. La `solicitud` contiene la solicitud del usuario, incluyendo todas las variables establecidas por el método (`GET`, `POST`, etc.) junto con información adicional sobre la solicitud. La `respuesta` contiene datos que necesitamos enviar como `content-type`, código de estado, payload, etc.
 
-> **NOTE**: In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
+> **NOTA**: Para acceder a los servicios desde el controlador, necesitarás extender la clase `Phalcon\Mvc\Controller`
 {: .alert .alert-info }
 
 ```php
