@@ -459,9 +459,9 @@ class SignupController extends Controller
 }
 ```
 
-다시 *Register* 버튼을 클릭하면, 이젠 빈 페이지가 보일겁니다.
+If you click the *Register* button again, you will see a blank page. We will be adding a view a little later that provides useful feedback. But first, we should work on the code to store the user's inputs in a database.
 
-사용자가 입력한 이름과 이메일은 데이터베이스에 저장되어야 합니다. MVC 가이드라인에 따르면, 깔끔한 객체지향적 코드가 될 수 있도록 데이터베이스와의 상호작용은 모델을 통해서 이루어져야 합니다.
+According to MVC guidelines, database interactions must be done through models to ensure clean, object-oriented code.
 
 ## 모델 생성
 
@@ -527,7 +527,21 @@ $container->set(
 );
 ```
 
-데이터베이스 매개변수가 올바르다면 모델들은 어플리케이션의 다른 부분들과 상호작용할 준비가 끝난겁니다. 만약 사용중인 데이터베이스 정보나 인증정보가 다르다면, 위의 코드를 수정해서 사용해주세요.
+Adjust the code snippet above as appropriate for your database.
+
+With the correct database parameters, our model is ready to interact with the rest of the application so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the *save* operation.
+
+`app/views/signup/register.phtml`
+
+```php
+<div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
+    <?php echo $message; ?>
+</div>
+
+<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+```
+
+Note that we have added some css styling in the code above. We will cover including the stylesheet in the [Styling](#styling) section below.
 
 ## 모델을 이용해서 데이터 저장하기
 
@@ -549,7 +563,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        //form에서 넘어온 값을 $user에 할당
+        //assign value from the form to $user
         $user->assign(
             $this->request->getPost(),
             [
@@ -558,40 +572,40 @@ class SignupController extends Controller
             ]
         );
 
-        // 저장하고 오류 확인
+        // Store and check for errors
         $success = $user->save();
 
-        // 뷰에 결과를 전달
+        // passing the result to the view
         $this->view->success = $success;
 
         if ($success) {
-            $message = "등록되었습니다";
+            $message = "Thanks for registering!";
         } else {
-            $message = "죄송합니다, 다음과 같은 오류가 발생했습니다:<br>"
+            $message = "Sorry, the following problems were generated:<br>"
                      . implode('<br>', $user->getMessages());
         }
 
-        // message를 뷰로 전달
+        // passing a message to the view
         $this->view->message = $message;
     }
 }
 ```
 
-`registerAction` 시작부분에 앞에서 만들었던 `Users` 클래스를 사용해서 비어있는 사용자 객체를 만듭니다. 우리는 이 클래스를 이용해서 사용자의 레코드를 관리하겠습니다. 위에서 말한 것처럼, 이 클래스의 퍼블릭 속성은 데이터베이스에 만들어진 `users` 테이블의 필드와 매칭됩니다. 새로운 레코드에 적절한 값을 집어 넣고 `save()` 를 호출하면 해당 레코드에 대한 데이터를 데이터베이스에 저장하게 됩니다. `save()` 메서드는 저장에 대한 성공여부를 나타내는 `boolean` 값을 반환합니다.
+At the beginning of the `registerAction` we create an empty user object using the `Users` class we created earlier. We will use this class to manage the record of a user. As mentioned above, the class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a `boolean` value which indicates whether the save was successful or not.
 
-ORM은 SQL 인젝션을 방지하기 위해 자동으로 입력값을 이스케이프 시켜주기 때문에, 우리는 그냥 `save()` 메서드로 요청을 넘겨주기만 하면 됩니다.
+The ORM will automatically escape the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
-Not null (필수) 로 정의된 필드들에 대해 추가 검증이 자동으로 행해집니다. 우리가 만든 회원가입 form에서 필수입력 필드 중 하나라도 입력하지 않으면 화면은 다음과 같이 표시됩니다:
+Additional validation happens automatically on fields that are defined as not null (required). If we do not enter any of the required fields in the sign-up form our screen will look like this:
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
 ## 등록된 사용자 목록표시
 
-이제 데이터베이스에 있는 모든 등록된 사용자들을 가져와서 표시 해보겠습니다
+Now we will need to get and display all the registered users in our database
 
-`IndexController`의 `indexAction` 내에서 할 첫 번째 작업은 전체 사용자 검색에 대한 결과를 표시하는 건데요, 이 부분은 우리가 앞서 만든 모델의 static 메서드 `find()` 를 호출함으로써 간단히 해결됩니다(`Users::find()`).
+The first thing that we are going to do in our `indexAction` of the`IndexController` is to show the result of the search of all the users, which is done simply by calling the static method `find()` on our model (`Users::find()`).
 
-`indexAction` 메서드는 다음과 같이 변경됩니다:
+`indexAction` would change as follows:
 
 `app/controllers/IndexController.php`
 
@@ -615,9 +629,9 @@ class IndexController extends Controller
 > **주의**: `view` 객체의 magic 속성에 `find` 의 결과값을 할당합니다. 이렇게 하면 이 변수에 주어진 데이터 값이 설정되어 뷰에서 사용할 수 있게 되는 것입니다
 {: .alert .alert-info } 
 
-`views/index/index.phtml` 뷰 파일에서 `$users` 변수를 아래처럼 사용할 수 있습니다:
+In our view file `views/index/index.phtml` we can use the `$users` variable as follows:
 
-뷰는 다음과 비슷한 형태가 될것입니다:
+The view will look like this:
 
 `views/index/index.phtml`
 
@@ -657,13 +671,13 @@ if ($users->count() > 0) {
 }
 ```
 
-보신 바와 같이 `$users` 변수는 루핑을 돌 수 있고 카운트 할 수 있습니다. [models](db-models) 문서를 참고하시면 모델이 어떻게 동작하는 지에 대한 더 많은 정보를 확인하실 수 있습니다.
+As you can see our variables `$users` can be iterated and counted. You can get more information on how models operate in our document about [models](db-models).
 
 ![](/assets/images/content/tutorial-basic-5.png)
 
 ## 스타일 입히기
 
-이제 만들어진 어플리케이션에 디자인을 살짝 입혀봅시다. 코드에 [Bootstrap CSS](https://getbootstrap.com/) 를 추가해서 전체 뷰에서 사용될 수 있도록 합니다. `views` 폴더에 아래의 내용으로 `index.phtml` 파일을 추가합니다:
+We can now add small design touches to our application. We can add the [Bootstrap CSS](https://getbootstrap.com/) in our code so that it is used throughout our views. We will add an `index.phtml` file in the`views` folder, with the following content:
 
 `app/views/index.phtml`
 
@@ -683,12 +697,12 @@ if ($users->count() > 0) {
 </html>
 ```
 
-위의 템플릿에서, 가장 중요한 곳은 `getContent()` 메서드를 호출하는 부분입니다. 이 메서드는 뷰에서 생성된 모든 컨텐츠를 반환합니다. 자 이제 우리의 어플리케이션은 다음과 같이 표시됩니다:
+In the above template, the most important line is the call to the `getContent()` method. This method returns all the content that has been generated from our view. Our application will now show:
 
 ![](/assets/images/content/tutorial-basic-6.png)
 
 ## 결론
 
-보시는 바와 같이, Phalcon을 이용해서 어플리케이션을 만드는 것은 매우 쉽습니다. Phalcon은 메모리에 로드되는 익스텐션이기 때문에, 멋진 성능향상을 즐기면서도 프로젝트가 받는 영향은 최소화 됩니다.
+As you can see, it is easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time you will enjoy a nice performance boost.
 
-더 공부하실 준비가 되셨다면 다음으로 [Vökuró 자습서](tutorial-vokuro)를 확인 해주세요.
+If you are ready to learn more check out the [Vökuró Tutorial](tutorial-vokuro) next.
