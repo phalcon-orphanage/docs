@@ -512,7 +512,7 @@ class Users extends Model
 
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
-$di->set(
+$container->set(
     'db',
     function () {
         return new Mysql(
