@@ -459,9 +459,9 @@ class SignupController extends Controller
 }
 ```
 
-If you click the *Register* button again, you will see a blank page.
+If you click the *Register* button again, you will see a blank page. We will be adding a view a little later that provides useful feedback. But first, we should work on the code to store the user's inputs in a database.
 
-The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+According to MVC guidelines, database interactions must be done through models to ensure clean, object-oriented code.
 
 ## Criando um Model
 
@@ -527,7 +527,21 @@ $container->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application. If you use different credentials or database, you will need to adjust the code snippet above.
+Adjust the code snippet above as appropriate for your database.
+
+With the correct database parameters, our model is ready to interact with the rest of the application so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the *save* operation.
+
+`app/views/signup/register.phtml`
+
+```php
+<div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
+    <?php echo $message; ?>
+</div>
+
+<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+```
+
+Note that we have added some css styling in the code above. We will cover including the stylesheet in the [Styling](#styling) section below.
 
 ## Storing Data using Models
 
@@ -689,6 +703,6 @@ In the above template, the most important line is the call to the `getContent()`
 
 ## Conclusão
 
-As you can see, it is very easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time you will enjoy a nice performance boost.
+As you can see, it is easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time you will enjoy a nice performance boost.
 
 If you are ready to learn more check out the [Vökuró Tutorial](tutorial-vokuro) next.
