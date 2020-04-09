@@ -512,7 +512,7 @@ In order to use a database connection and subsequently access data through our m
 
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
-$di->set(
+$container->set(
     'db',
     function () {
         return new Mysql(
