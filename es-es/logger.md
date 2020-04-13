@@ -29,7 +29,7 @@ En Phalcon v4 el componente se reescribió de tal manera que se dedica a la func
 
 El componente registro hace uso de diversos adaptadores para guardar los mensajes. El uso de adaptadores permite una interfaz común de registro de mensajes y proporciona la capacidad de cambiar fácilmente de backend o utilizar múltiples adaptadores en caso de ser necesario. Los adaptadores disponibles son:
 
-| Adaptador                                                                    | Description                                 |
+| Adaptador                                                                    | Descripción                                 |
 | ---------------------------------------------------------------------------- | ------------------------------------------- |
 | [Phalcon\Logger\Adapter\Noop](api/phalcon_logger#logger-adapter-noop)     | Blackhole adapter (used for testing mostly) |
 | [Phalcon\Logger\Adapter\Stream](api/phalcon_logger#logger-adapter-stream) | Logs messages on a file stream              |
