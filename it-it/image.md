@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'it-it'
 version: '4.0'
 title: 'Image'
 keywords: 'image, gd, imagick'
