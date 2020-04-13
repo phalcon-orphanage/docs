@@ -20,7 +20,7 @@ title: 'Phalcon\Annotations'
 
 <h1 id="annotations-adapter-abstractadapter">Abstract Class Phalcon\Annotations\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/abstractadapter.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reader, Phalcon\Annotations\Exception, Phalcon\Annotations\Collection, Phalcon\Annotations\Reflection, Phalcon\Annotations\ReaderInterface | | Implements | AdapterInterface |
 
@@ -87,13 +87,13 @@ Sets the annotations parser
 
 <h1 id="annotations-adapter-adapterinterface">Interface Phalcon\Annotations\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/adapterinterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection, Phalcon\Annotations\Collection, Phalcon\Annotations\ReaderInterface |
 
 This interface must be implemented by adapters in Phalcon\Annotations
 
-## Methods
+## Métodos
 
 ```php
 public function get( string $className ): Reflection;
@@ -139,7 +139,7 @@ Sets the annotations parser
 
 <h1 id="annotations-adapter-apcu">Class Phalcon\Annotations\Adapter\Apcu</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection | | Extends | AbstractAdapter |
 
