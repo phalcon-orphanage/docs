@@ -156,7 +156,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 * * *
 
-## Cache
+## 캐시
 
 > Status: **changes required**
 > 
@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## 디버그
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
