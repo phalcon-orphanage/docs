@@ -56,7 +56,7 @@ $logger
         ->info('This does not go to the "manager" logger);
 ```
 
-## Constants
+## Константы
 
 ```php
 const ALERT = 2;
@@ -101,7 +101,7 @@ protected excluded;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $adapters = [] );
