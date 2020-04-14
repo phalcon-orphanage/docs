@@ -1,11 +1,11 @@
 ---
 layout: default
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
-title: 'API Index'
+title: 'API Bölüm'
 ---
 
-## API Index
+## API Bölüm
 {% for element in site.data.api %}
 ### {{ element['title'] }}
     {% for document in element['docs'] %}

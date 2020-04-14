@@ -83,7 +83,7 @@ Write
 
 Phalcon\Session\Adapter\Libmemcached
 
-## Methods
+## Методы
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );

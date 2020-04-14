@@ -19,13 +19,13 @@ title: 'Phalcon\Acl'
 
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
 Adapter for Phalcon\Acl adapters
 
-## Properties
+## Propiedades
 
 ```php
 /**
@@ -73,7 +73,7 @@ protected eventsManager;
 
 ```
 
-## Methods
+## Métodos
 
 ```php
 public function getActiveAccess(): string
@@ -97,7 +97,7 @@ Returns the default ACL access level
 public function getEventsManager(): ManagerInterface;
 ```
 
-Returns the internal event manager
+Devuelve el administrador de eventos interno
 
 ```php
 public function setDefaultAction( int $defaultAccess ): void;
@@ -109,17 +109,17 @@ Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
-Sets the events manager
+Establece el administrador de eventos
 
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
 Interface for Phalcon\Acl adapters
 
-## Methods
+## Métodos
 
 ```php
 public function addComponent( mixed $componentObject, mixed $accessList ): bool;
@@ -239,7 +239,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 <h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends | AbstractAdapter |
 

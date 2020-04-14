@@ -17,7 +17,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
 
 > just throw more hardware to it
-{: .alert .alert-info } 
+{: .alert .alert-info }
 
 The problem with the above approach is two fold. For starters, in most cases the owner is the one that will incur the additional costs. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
 
@@ -114,15 +114,27 @@ A relatively easy fix for increasing client performance is to set the correct he
 
 PHP is becoming faster with every new version. Using the latest version improves the performance of your applications and also of Phalcon.
 
-## Bytecode Cache
+### Bytecode Cache
 
-[APCu](https://php.net/manual/en/book.apcu.php) as many other bytecode caches helps applications reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
+[OPcache](https://php.net/manual/en/book.opcache.php) as many other bytecode caches helps applications reduce the overhead of read, tokenize and parse PHP files in each request. The interpreted results are kept in RAM between requests as long as PHP runs as fcgi (fpm) or mod_php. OPcache is bundled with php starting 5.5.0. To check if it is activated, look for the following entry in php.ini:
+
+```ini
+opcache.enable = On
+opcache.memory_consumption = 128    ;default
+```
+
+Furthermore, the amount of memory available for opcode caching needs to be enough to hold all files of your applications. The default of 128MB is usually enough for even larger codebases.
+
+### Serverside cache
+
+[APCu](https://php.net/manual/en/book.apcu.php) can be used to cache the results of computational expensive operations or otherwise slow data sources like webservices with high latency. What makes a result cacheable is another topic, as a rule of thumb: the operations needs to be executed often and yield identical results. Make sure to measure through profiling that the optimizations actually improved execution time.
 
 ```ini
 apc.enabled = On
+apc.shm_size = 32M  ;default
 ```
 
-Ensuring that `opcache` is also enabled will also help.
+As with the aforementioned opcache, make sure, the amount of RAM available suits your application. Alternatives to APCu would be [Redis](https://redis.io/) or [Memcached](https://memcached.org/) - although they need extra processes running on your server or another machine.
 
 ## Slow Tasks
 

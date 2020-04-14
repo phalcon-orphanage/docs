@@ -17,7 +17,7 @@
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Sponsorlar",
                 "url": "/sponsors"
             }
         ]
@@ -217,7 +217,7 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Önbellek",
                 "url": "/db-models-cache"
             },
             {
@@ -417,7 +417,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Uluslararası yapma",
                 "url": "/i18n"
             },
             {

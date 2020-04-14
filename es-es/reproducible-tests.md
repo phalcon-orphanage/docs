@@ -81,7 +81,7 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-### Database
+### Base de Datos
 
 > **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}
