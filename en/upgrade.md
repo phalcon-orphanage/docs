@@ -749,7 +749,7 @@ The options for Volt have changed (the key names). Using the old syntax will pro
 <hr/>
 
 ## Paginator
-- `getPaginate` not becomes `paginate`
+- `getPaginate` now becomes `paginate`
 - `$before` is removed and replaced with `$previous`
 - `$total_pages` is removed since it contained the same information as `$last`
 - Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
