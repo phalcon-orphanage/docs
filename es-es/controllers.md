@@ -326,7 +326,7 @@ Los parámetros anteriores coincidirán con la ruta tal y como fue definida.
 
 ## Eventos
 
-Los controladores actúan automáticamente como listeners para los [eventos](events) del <dispatcher>, implementando métodos con los nombres de los eventos que permiten a su vez implementar puntos de enganche antes/después de que las acciones sean ejecutadas:
+Los controladores funcionan también como *escuchas (listeners)* de los [eventos](events) del *[despachador (dispatcher)](dispatcher)*. Tienen métodos para cada evento, por lo cual se pueden crear *puntos de enganche* antes y después de que las acciones sean ejecutadas:
 
 ```php
 <?php
@@ -343,10 +343,10 @@ class InvoicesController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // This is executed before every found action
+        // Esta condición se ejecuta antes del evento guardar (<i>save</i>)
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "You do not have permission to save invoices"
+                "No tiene permiso para guardar facturas"
             );
 
             $this->dispatcher->forward(
@@ -362,7 +362,7 @@ class InvoicesController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Executed after every found action
+        // Se ejecuta después de cada ruta
     }
 }
 ```
