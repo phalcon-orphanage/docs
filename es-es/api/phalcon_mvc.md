@@ -642,8 +642,6 @@ public function getActiveHandler();
 
 Return the handler that will be called for the matched route
 
-@return callable
-
 ```php
 public function getBoundModels(): array;
 ```
@@ -1329,8 +1327,19 @@ class Robots extends Model
         $this->addBehavior(
             new Timestampable(
                 [
-                    "onCreate" => [
+                    "beforeCreate" => [
                         "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
+
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeUpdate" => [
+                        "field"  => "updated_at",
                         "format" => "Y-m-d",
                     ],
                 ]
@@ -5903,7 +5912,9 @@ protected joins;
 //
 protected limit;
 
-//
+/**
+ * @var array|string
+ */
 protected models;
 
 //
@@ -10840,7 +10851,7 @@ Renders a view using the template engine
 
 | Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception | | Extends | AbstractEngine | | Implements | EventsAwareInterface |
 
-Diseñador de plantilla amigable y rápido para PHP escrito en Zephir/C
+Designer friendly and fast template engine for PHP written in Zephir/C
 
 ## Propiedades
 
