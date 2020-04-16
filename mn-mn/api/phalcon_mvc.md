@@ -642,8 +642,6 @@ public function getActiveHandler();
 
 Return the handler that will be called for the matched route
 
-@return callable
-
 ```php
 public function getBoundModels(): array;
 ```
@@ -1329,8 +1327,19 @@ class Robots extends Model
         $this->addBehavior(
             new Timestampable(
                 [
-                    "onCreate" => [
+                    "beforeCreate" => [
                         "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
+
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeUpdate" => [
+                        "field"  => "updated_at",
                         "format" => "Y-m-d",
                     ],
                 ]
@@ -5903,7 +5912,9 @@ protected joins;
 //
 protected limit;
 
-//
+/**
+ * @var array|string
+ */
 protected models;
 
 //
