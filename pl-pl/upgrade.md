@@ -717,7 +717,7 @@ $criteria->limit(10, null);
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
 - Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
-- Changed `Phalcon\Model::findFrst` to return `null` instead of `false` if no record was found
+- Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
 ### Mvc\Model\Criteria
@@ -825,7 +825,7 @@ The options for Volt have changed (the key names). Using the old syntax will pro
 
 ## Paginator
 
-- `getPaginate` not becomes `paginate`
+- `getPaginate` now becomes `paginate`
 - `$before` is removed and replaced with `$previous`
 - `$total_pages` is removed since it contained the same information as `$last`
 - Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
