@@ -444,7 +444,7 @@ In the above example, we set where the file lives (`/app/storage/files/invoice.p
 
 When calling `send()`, the file will be read using [readfile()](https://www.php.net/manual/en/function.readfile.php) and the contents will be sent back to the caller.
 
-## Redirections
+## Redirecciones
 
 With [Phalcon\Http\Response](api/phalcon_http#http-response) you can also execute HTTP redirections.
 
