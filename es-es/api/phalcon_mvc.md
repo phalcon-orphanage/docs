@@ -926,19 +926,19 @@ Maps a route to a handler that only matches if the HTTP method is HEAD.
 public function isLazy(): bool;
 ```
 
-Returns if the main handler must be lazy loaded
+Devuelve si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function map( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler.
+Asigna una ruta a un gestor.
 
 ```php
 public function mapVia( string $routePattern, mixed $handler, mixed $method, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler via methods.
+Asigna una ruta a un gestor a través de métodos.
 
 ```php
 $collection->mapVia(
@@ -977,19 +977,19 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
 ```
 
-Sets the main handler.
+Configura el gestor principal.
 
 ```php
 public function setLazy( bool $lazy ): CollectionInterface;
 ```
 
-Sets if the main handler must be lazy loaded
+Establece si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function setPrefix( string $prefix ): CollectionInterface;
 ```
 
-Sets a prefix for all routes added to the collection
+Configura un prefijo para todas las rutas agregadas a la colección
 
 ```php
 protected function addMap( mixed $method, string $routePattern, mixed $handler, string $name );
@@ -1049,7 +1049,7 @@ Asigna una ruta a un controlador que solo coincide si el método HTTP es HEAD
 public function isLazy(): bool;
 ```
 
-Returns if the main handler must be lazy loaded
+Devuelve si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function map( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
@@ -1091,13 +1091,13 @@ Sets the main handler
 public function setLazy( bool $lazy ): CollectionInterface;
 ```
 
-Sets if the main handler must be lazy loaded
+Establece si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function setPrefix( string $prefix ): CollectionInterface;
 ```
 
-Sets a prefix for all routes added to the collection
+Configura un prefijo para todas las rutas agregadas a la colección
 
 <h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
 
