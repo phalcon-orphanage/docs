@@ -176,7 +176,7 @@ $response = $application->handle(
 echo $response->getContent();
 ```
 
-### Micro Application
+### Micro Aplicaciones
 
 For micro applications, you can use the skeleton script below:
 
