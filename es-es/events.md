@@ -211,7 +211,7 @@ In the above example, we are using the events manager to listen to the `afterQue
 > **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
 {: .alert .alert-warning }
   
-## Handlers
+## Gestores
 
 The events manager wires a handler to an event. A handler is a piece of code that will do something when the event fires. As seen in the above example, you can use an anonymous function as your handler:
 
@@ -630,7 +630,7 @@ $eventsManager->attach(
 > **NOTE**: A high priority number means that the listener will be processed before those with lower priorities
 {: .alert .alert-warning }
 
-## Responses
+## Respuestas
 
 The events manager can also collect any responses returned by each event and return them back using the `getResponses()` method. The method returns an array with the responses:
 
