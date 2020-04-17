@@ -272,7 +272,7 @@ public function indexAction()
 }
 ```
 
-## Collections
+## Colecciones
 
 [Phalcon\Assets\Collections](api/phalcon_assets#assets-collection) are objects that group assets of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific assets to make it easier to place those assets in the views:
 
