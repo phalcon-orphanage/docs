@@ -288,7 +288,7 @@ In the example above, we will never show the element `some` from the `$_REQUEST`
 > **NOTE**: The keys of the array elements to be hidden are case insensitive
 {: .alert .alert-info }
 
-## Handlers
+## Gestores
 
 In order to catch exceptions and low severity errors, [Phalcon\Debug](api/phalcon_debug#debug) makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. Most developers that use this component will never need to extend these methods. However, if you wish you can do so by extending the component and overriding these methods to manipulate the exception and return the output you require.
 

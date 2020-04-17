@@ -642,8 +642,6 @@ public function getActiveHandler();
 
 Return the handler that will be called for the matched route
 
-@return callable
-
 ```php
 public function getBoundModels(): array;
 ```
@@ -660,7 +658,7 @@ Devuelve el administrador de eventos interno
 public function getHandlers(): array;
 ```
 
-Returns the internal handlers attached to the application
+Devuelve los gestores internos adjuntos a la aplicación
 
 ```php
 public function getModelBinder(): BinderInterface | null;
@@ -672,7 +670,7 @@ Gets model binder
 public function getReturnedValue();
 ```
 
-Returns the value returned by the executed handler
+Devuelve el valor devuelto por el gestor ejecutado
 
 @return mixed
 
@@ -680,13 +678,13 @@ Returns the value returned by the executed handler
 public function getRouter(): RouterInterface;
 ```
 
-Returns the internal router used by the application
+Devuelve el enrutador interno utilizado por la aplicación
 
 ```php
 public function getService( string $serviceName );
 ```
 
-Obtains a service from the DI
+Obtiene un servicio del DI
 
 @return object
 
@@ -694,7 +692,7 @@ Obtains a service from the DI
 public function getSharedService( string $serviceName );
 ```
 
-Obtains a shared service from the DI
+Obtiene un servicio compartido del DI
 
 @return mixed
 
@@ -702,7 +700,7 @@ Obtains a shared service from the DI
 public function handle( string $uri );
 ```
 
-Handle the whole request
+Maneja toda la solicitud
 
 @return mixed
 
@@ -710,25 +708,25 @@ Handle the whole request
 public function hasService( string $serviceName ): bool;
 ```
 
-Checks if a service is registered in the DI
+Comprueba si un servicio está registrado en el DI
 
 ```php
 public function head( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is HEAD
+Asigna una ruta a un controlador que solo coincide si el método HTTP es HEAD
 
 ```php
 public function map( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler without any HTTP method constraint
+Asigna una ruta a un controlador sin ninguna restricción de método HTTP
 
 ```php
 public function mount( CollectionInterface $collection ): Micro;
 ```
 
-Mounts a collection of handlers
+Monta una colección de gestores
 
 ```php
 public function notFound( mixed $handler ): Micro;
@@ -798,7 +796,7 @@ Maps a route to a handler that only matches if the HTTP method is PUT
 public function setActiveHandler( mixed $activeHandler );
 ```
 
-Sets externally the handler that must be called by the matched route
+Configura externamente el gestor que debe ser llamado por la ruta coincidente
 
 ```php
 public function setDI( DiInterface $container ): void;
@@ -816,7 +814,7 @@ Establece el administrador de eventos
 public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): Micro;
 ```
 
-Sets model binder
+Configura el enlazador de modelo
 
 ```php
 $micro = new Micro($di);
@@ -904,19 +902,19 @@ Maps a route to a handler that only matches if the HTTP method is GET.
 public function getHandler(): mixed;
 ```
 
-Returns the main handler
+Devuelve el gestor principal
 
 ```php
 public function getHandlers(): array;
 ```
 
-Returns the registered handlers
+Devuelve los gestores registrados
 
 ```php
 public function getPrefix(): string;
 ```
 
-Returns the collection prefix if any
+Devuelve el prefijo de la colección (si hay alguno)
 
 ```php
 public function head( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
@@ -928,19 +926,19 @@ Maps a route to a handler that only matches if the HTTP method is HEAD.
 public function isLazy(): bool;
 ```
 
-Returns if the main handler must be lazy loaded
+Devuelve si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function map( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler.
+Asigna una ruta a un gestor.
 
 ```php
 public function mapVia( string $routePattern, mixed $handler, mixed $method, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler via methods.
+Asigna una ruta a un gestor a través de métodos.
 
 ```php
 $collection->mapVia(
@@ -979,19 +977,19 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
 ```
 
-Sets the main handler.
+Configura el gestor principal.
 
 ```php
 public function setLazy( bool $lazy ): CollectionInterface;
 ```
 
-Sets if the main handler must be lazy loaded
+Establece si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function setPrefix( string $prefix ): CollectionInterface;
 ```
 
-Sets a prefix for all routes added to the collection
+Configura un prefijo para todas las rutas agregadas a la colección
 
 ```php
 protected function addMap( mixed $method, string $routePattern, mixed $handler, string $name );
@@ -1027,31 +1025,31 @@ Maps a route to a handler that only matches if the HTTP method is GET
 public function getHandler(): mixed;
 ```
 
-Returns the main handler
+Devuelve el gestor principal
 
 ```php
 public function getHandlers(): array;
 ```
 
-Returns the registered handlers
+Devuelve los gestores registrados
 
 ```php
 public function getPrefix(): string;
 ```
 
-Returns the collection prefix if any
+Devuelve el prefijo de la colección (si hay alguno)
 
 ```php
 public function head( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is HEAD
+Asigna una ruta a un controlador que solo coincide si el método HTTP es HEAD
 
 ```php
 public function isLazy(): bool;
 ```
 
-Returns if the main handler must be lazy loaded
+Devuelve si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function map( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
@@ -1093,13 +1091,13 @@ Sets the main handler
 public function setLazy( bool $lazy ): CollectionInterface;
 ```
 
-Sets if the main handler must be lazy loaded
+Establece si el gestor principal debe ser cargado de forma diferida
 
 ```php
 public function setPrefix( string $prefix ): CollectionInterface;
 ```
 
-Sets a prefix for all routes added to the collection
+Configura un prefijo para todas las rutas agregadas a la colección
 
 <h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
 
@@ -1329,8 +1327,19 @@ class Robots extends Model
         $this->addBehavior(
             new Timestampable(
                 [
-                    "onCreate" => [
+                    "beforeCreate" => [
                         "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
+
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeUpdate" => [
+                        "field"  => "updated_at",
                         "format" => "Y-m-d",
                     ],
                 ]
@@ -5903,7 +5912,9 @@ protected joins;
 //
 protected limit;
 
-//
+/**
+ * @var array|string
+ */
 protected models;
 
 //
@@ -10840,7 +10851,7 @@ Renders a view using the template engine
 
 | Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception | | Extends | AbstractEngine | | Implements | EventsAwareInterface |
 
-Diseñador de plantilla amigable y rápido para PHP escrito en Zephir/C
+Designer friendly and fast template engine for PHP written in Zephir/C
 
 ## Propiedades
 
