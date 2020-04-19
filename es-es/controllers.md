@@ -408,11 +408,11 @@ class InvoicesController extends Controller
 }
 ```
 
-The code above first checks if the request is a `POST` request. If yes, then it gets two variables from the `$_POST` superglobal. The syntax we use is: - Get the variable (`page`) - If it exists, sanitize it to an integer - If it does not exist, return the default `1`
+El código anterior comprueba primero si la solicitud es una solicitud de tipo `POST`. Si es así, entonces obtiene dos variables del superglobal `$_POST`. La sintaxis que usamos es: - Obtener la variable (`page`) - Si existe, sanearla como un entero - Si no existe, devolver el valor predeterminado `1`
 
-Using this technique, we ensure that all input is properly sanitized and defaults are set.
+Usando esta técnica, nos aseguramos de que toda la entrada esté correctamente saneada y que se establezcan los valores predeterminados.
 
-The response object is not called directly in most cases, rather it is built gradually or attached to the `afterDispatch` event. If for instance we need to send JSON back to the user as a result of an AJAX request, we can do so directly in the action, interacting with the response:
+El objeto de respuesta no se llama directamente en la mayoría de los casos, sino que se construye gradualmente o se une al evento `afterDispatch`. Si por ejemplo necesitamos devolver un JSON al usuario como resultado de una solicitud AJAX, podemos hacerlo directamente en la acción, interactuando con la respuesta:
 
 ```php
 <?php
@@ -458,7 +458,7 @@ class InvoicesController extends Controller
 }
 ```
 
-Assuming that you have code that sets the status code and content type for the response in the `afterDispatch` or `afterExecuteRoute` events, you can always return directly the data. Phalcon will set that as the returned payload. This is particularly useful when writing APIs.
+Suponiendo que tengas un código que establece el código de estado y el tipo de contenido para la respuesta en los eventos `afterDispatch` o `afterExecuteRoute` siempre puedes devolver directamente los datos. Phalcon lo establecerá como el payload devuelto. Esto es particularmente útil al escribir APIs.
 
 ```php
 <?php
@@ -517,9 +517,9 @@ class InvoicesController extends Controller
 }
 ```
 
-In the above example, we return an array from our action. The `afterExecuteRoute` method disables the view, sets the content type to JSON, and then if the response has not been sent, sets the JSON content and sends the response.
+En el ejemplo anterior, devolvemos un array desde nuestra acción. El método `afterExecuteRoute` inhabilita la vista, establece el tipo de contenido a JSON, y si la respuesta no ha sido enviada, establece el contenido en formato JSON y envía la respuesta.
 
-## Session
+## Sesión
 
 Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/phalcon_session#session-bag) from any controller using the property `persistent` to encapsulate data that needs to be persistent:
 
