@@ -521,7 +521,7 @@ En el ejemplo anterior, devolvemos un array desde nuestra acción. El método `a
 
 ## Sesión
 
-Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/phalcon_session#session-bag) from any controller using the property `persistent` to encapsulate data that needs to be persistent:
+Las sesiones nos ayudan a mantener la persistencia de datos entre las solicitudes. Puedes acceder a un [Phalcon\Session\Bag](api/phalcon_session#session-bag) desde cualquier controlador utilizando la propiedad `persistent` para encapsular los datos que necesitan ser persistentes:
 
 ```php
 <?php
@@ -546,12 +546,12 @@ class UserController extends Controller
 }
 ```
 
-> **NOTE**: Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
+> **NOTA**: Ten en cuenta que el servicio `persistent` se registra automáticamente para cualquier componente (incluyendo los controladores) que extienda la clase `Phalcon\Di\Injectable`
 {: .alert .alert-info }
 
 ## Inyección de Dependencias
 
-You can create a controller as a stand alone class. However you can extend the [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
+Puedes crear un controlador como una clase independiente. Sin embargo, puedes extender la clase [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) para que te exponga el contenedor DI completo. Cada servicio estará disponible utilizando su nombre como una propiedad del controlador:
 
 ```php
 <?php
@@ -610,11 +610,11 @@ class InvoicesController extends Controller
 }
 ```
 
-In the above example, we access the `request`, `response` and `view` services that are automatically injected in our controller.
+En el ejemplo anterior, accedemos a los servicios de `solicitud`, `respuesta` y `vista` que son inyectados automáticamente en nuestro controlador.
 
-## Services as Controllers
+## Servicios como controladores
 
-Services can act as controllers. Controllers are classes that are always requested from the DI container. As a result, any other class registered with the correct name can easily replace a controller:
+Los servicios pueden actuar como controladores. Los controladores son clases que siempre son requeridas desde el contenedor DI. Como resultado, cualquier otra clase registrada con el nombre correcto puede reemplazar fácilmente un controlador:
 
 ```php
 <?php
