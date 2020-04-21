@@ -823,7 +823,7 @@ $group->addTrace(
 - Added `Phalcon\Session\Adapter\Stream`
 - Added `Phalcon\Session\Manager`
 - Added `Phalcon\Session\ManagerInterface`
-- Removed `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\AbstractAdapter`
+- Removed `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\Adapter\AbstractAdapter`
 - Removed `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
 - Removed `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
 - Removed `Phalcon\Session\Adapter\Memcache`
