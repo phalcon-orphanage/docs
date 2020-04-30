@@ -9,7 +9,7 @@ title: 'Phalcon\Version'
         
 <h1 id="version">Class Phalcon\Version</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Version.zep)
 
 | Namespace  | Phalcon |
 

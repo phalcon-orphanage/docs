@@ -9,7 +9,7 @@ title: 'Phalcon\Exception'
         
 <h1 id="exception">Class Phalcon\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Exception.zep)
 
 | Namespace  | Phalcon |
 | Extends    | \Exception |

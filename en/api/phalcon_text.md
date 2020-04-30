@@ -9,7 +9,7 @@ title: 'Phalcon\Text'
         
 <h1 id="text">Class Phalcon\Text</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Text.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Helper\Str |

@@ -10,7 +10,7 @@ title: 'Phalcon\Loader'
         
 <h1 id="loader">Class Phalcon\Loader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Loader.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface |
@@ -228,7 +228,7 @@ protected function prepareNamespace( array $namespaceName ): array;
         
 <h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Loader/Exception.zep)
 
 | Namespace  | Phalcon\Loader |
 | Extends    | \Phalcon\Exception |

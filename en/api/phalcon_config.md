@@ -16,7 +16,7 @@ title: 'Phalcon\Config'
         
 <h1 id="config">Class Phalcon\Config</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Collection, Phalcon\Config\Exception |
@@ -132,7 +132,7 @@ Sets the collection data
         
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/grouped.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/Adapter/Grouped.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory |
@@ -200,7 +200,7 @@ Phalcon\Config\Adapter\Grouped constructor
         
 <h1 id="config-adapter-ini">Class Phalcon\Config\Adapter\Ini</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/Adapter/Ini.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception |
@@ -272,7 +272,7 @@ Build multidimensional array from string
         
 <h1 id="config-adapter-json">Class Phalcon\Config\Adapter\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/Adapter/Json.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Helper\Json |
@@ -309,7 +309,7 @@ Phalcon\Config\Adapter\Json constructor
         
 <h1 id="config-adapter-php">Class Phalcon\Config\Adapter\Php</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/Adapter/Php.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config |
@@ -361,7 +361,7 @@ Phalcon\Config\Adapter\Php constructor
         
 <h1 id="config-adapter-yaml">Class Phalcon\Config\Adapter\Yaml</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/Adapter/Yaml.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception |
@@ -415,7 +415,7 @@ Phalcon\Config\Adapter\Yaml constructor
         
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/configfactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/ConfigFactory.zep)
 
 | Namespace  | Phalcon\Config |
 | Uses       | Phalcon\Config, Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr |
@@ -465,7 +465,7 @@ Returns the adapters for the factory
         
 <h1 id="config-exception">Class Phalcon\Config\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Config/Exception.zep)
 
 | Namespace  | Phalcon\Config |
 | Extends    | \Phalcon\Exception |
