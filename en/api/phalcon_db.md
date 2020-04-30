@@ -3787,7 +3787,7 @@ public function setSqlVariables( array $sqlVariables )
         
 <h1 id="db-rawvalue">Class Phalcon\Db\RawValue</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Db/Rawvalue.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Db/RawValue.zep)
 
 | Namespace  | Phalcon\Db |
 
