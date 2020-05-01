@@ -15,7 +15,7 @@ title: 'Phalcon\Image'
 
 <h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Implements | AdapterInterface |
 
@@ -72,29 +72,29 @@ protected width;
 
 ## Méthodes
 
-Set the background color of an image
-
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
 ```
 
-Blur image
+Set the background color of an image
 
 ```php
 public function blur( int $radius ): AdapterInterface;
 ```
 
-Crop an image to the given size
+Blur image
 
 ```php
 public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): AdapterInterface;
 ```
 
-Flip the image along the horizontal or vertical axis
+Crop an image to the given size
 
 ```php
 public function flip( int $direction ): AdapterInterface;
 ```
+
+Flip the image along the horizontal or vertical axis
 
 ```php
 public function getHeight(): int
@@ -120,75 +120,75 @@ public function getType(): int
 public function getWidth(): int
 ```
 
-This method scales the images using liquid rescaling method. Only support Imagick
-
 ```php
 public function liquidRescale( int $width, int $height, int $deltaX = int, int $rigidity = int ): AbstractAdapter;
 ```
 
-Composite one image onto another
+This method scales the images using liquid rescaling method. Only support Imagick
 
 ```php
 public function mask( AdapterInterface $watermark ): AdapterInterface;
 ```
 
-Pixelate image
+Composite one image onto another
 
 ```php
 public function pixelate( int $amount ): AdapterInterface;
 ```
 
-Add a reflection to an image
+Pixelate image
 
 ```php
 public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): AdapterInterface;
 ```
 
-Render the image and return the binary string
+Add a reflection to an image
 
 ```php
 public function render( string $ext = null, int $quality = int ): string;
 ```
 
-Resize the image to the given size
+Render the image and return the binary string
 
 ```php
 public function resize( int $width = null, int $height = null, int $master = static-constant-access ): AdapterInterface;
 ```
 
-Rotate the image by a given amount
+Resize the image to the given size
 
 ```php
 public function rotate( int $degrees ): AdapterInterface;
 ```
 
-Save the image
+Rotate the image by a given amount
 
 ```php
 public function save( string $file = null, int $quality = int ): AdapterInterface;
 ```
 
-Sharpen the image by a given amount
+Save the image
 
 ```php
 public function sharpen( int $amount ): AdapterInterface;
 ```
 
-Add a text to an image with a specified opacity
+Sharpen the image by a given amount
 
 ```php
 public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): AdapterInterface;
 ```
 
-Add a watermark to an image with the specified opacity
+Add a text to an image with a specified opacity
 
 ```php
 public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): AdapterInterface;
 ```
 
+Add a watermark to an image with the specified opacity
+
 <h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum |
 
@@ -258,7 +258,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 <h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/Gd.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/Gd.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -356,7 +356,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 <h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Adapter/Imagick.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/Imagick.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -388,28 +388,32 @@ protected static version = 0;
 
 ## Méthodes
 
-\Phalcon\Image\Adapter\Imagick constructor
-
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
 ```
 
-Destroys the loaded image to free up resources.
+\Phalcon\Image\Adapter\Imagick constructor
 
 ```php
 public function __destruct();
 ```
 
-Checks if Imagick is enabled
+Destroys the loaded image to free up resources.
 
 ```php
 public static function check(): bool;
 ```
 
-Get instance
+Checks if Imagick is enabled
 
 ```php
 public function getInternalImInstance(): \Imagick;
+```
+
+Get instance
+
+```php
+public function setResourceLimit( int $type, int $limit );
 ```
 
 Sets the limit for a particular resource in megabytes
@@ -417,102 +421,98 @@ Sets the limit for a particular resource in megabytes
 @link http://php.net/manual/ru/imagick.constants.php#imagick.constants.resourcetypes
 
 ```php
-public function setResourceLimit( int $type, int $limit );
+protected function processBackground( int $r, int $g, int $b, int $opacity );
 ```
 
 Execute a background.
 
 ```php
-protected function processBackground( int $r, int $g, int $b, int $opacity );
+protected function processBlur( int $radius );
 ```
 
 Blur image
 
 ```php
-protected function processBlur( int $radius );
+protected function processCrop( int $width, int $height, int $offsetX, int $offsetY );
 ```
 
 Execute a crop.
 
 ```php
-protected function processCrop( int $width, int $height, int $offsetX, int $offsetY );
+protected function processFlip( int $direction );
 ```
 
 Execute a flip.
 
 ```php
-protected function processFlip( int $direction );
+protected function processLiquidRescale( int $width, int $height, int $deltaX, int $rigidity );
 ```
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
 ```php
-protected function processLiquidRescale( int $width, int $height, int $deltaX, int $rigidity );
+protected function processMask( AdapterInterface $image );
 ```
 
 Composite one image onto another
 
 ```php
-protected function processMask( AdapterInterface $image );
+protected function processPixelate( int $amount );
 ```
 
 Pixelate image
 
 ```php
-protected function processPixelate( int $amount );
+protected function processReflection( int $height, int $opacity, bool $fadeIn );
 ```
 
 Execute a reflection.
 
 ```php
-protected function processReflection( int $height, int $opacity, bool $fadeIn );
+protected function processRender( string $extension, int $quality ): string;
 ```
 
 Execute a render.
 
 ```php
-protected function processRender( string $extension, int $quality ): string;
+protected function processResize( int $width, int $height );
 ```
 
 Execute a resize.
 
 ```php
-protected function processResize( int $width, int $height );
+protected function processRotate( int $degrees );
 ```
 
 Execute a rotation.
 
 ```php
-protected function processRotate( int $degrees );
+protected function processSave( string $file, int $quality );
 ```
 
 Execute a save.
 
 ```php
-protected function processSave( string $file, int $quality );
+protected function processSharpen( int $amount );
 ```
 
 Execute a sharpen.
 
 ```php
-protected function processSharpen( int $amount );
+protected function processText( string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile );
 ```
 
 Execute a text
 
 ```php
-protected function processText( string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile );
+protected function processWatermark( AdapterInterface $image, int $offsetX, int $offsetY, int $opacity );
 ```
 
 Execute a watermarking.
 
-```php
-protected function processWatermark( AdapterInterface $image, int $offsetX, int $offsetY, int $opacity );
-```
-
 <h1 id="image-enum">Class Phalcon\Image\Enum</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Enum.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Enum.zep)
 
 | Namespace | Phalcon\Image |
 
@@ -538,7 +538,7 @@ const WIDTH = 2;
 
 <h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/Exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Exception.zep)
 
 | Namespace | Phalcon\Image | | Extends | \Phalcon\Exception |
 
@@ -550,7 +550,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 <h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Image/ImageFactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/ImageFactory.zep)
 
 | Namespace | Phalcon\Image | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
@@ -558,23 +558,23 @@ Phalcon\Image/ImageFactory
 
 ## Méthodes
 
-TagFactory constructor.
-
 ```php
 public function __construct( array $services = [] );
 ```
 
-Factory to create an instance from a Config object
+TagFactory constructor.
 
 ```php
 public function load( mixed $config ): AdapterInterface;
 ```
 
-Creates a new instance
+Factory to create an instance from a Config object
 
 ```php
 public function newInstance( string $name, string $file, int $width = null, int $height = null ): AdapterInterface;
 ```
+
+Creates a new instance
 
 ```php
 protected function getAdapters(): array;
