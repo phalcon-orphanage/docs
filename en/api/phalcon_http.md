@@ -44,7 +44,7 @@ title: 'Phalcon\Http'
 
 <h1 id="http-cookie">Class Phalcon\Http\Cookie</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Cookie.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Helper\Arr, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
@@ -265,7 +265,7 @@ protected function assertSignKeyIsLongEnough( string $signKey ): void;
 
 <h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/CookieInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Cookie/CookieInterface.zep)
 
 | Namespace  | Phalcon\Http\Cookie |
 
@@ -375,7 +375,7 @@ public function useEncryption( bool $useEncryption ): CookieInterface;
 
 <h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Cookie/Exception.zep)
 
 | Namespace  | Phalcon\Http\Cookie |
 | Extends    | \Phalcon\Exception |
@@ -388,7 +388,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 <h1 id="http-message-abstractcommon">Abstract Class Phalcon\Http\Message\AbstractCommon</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractCommon.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/AbstractCommon.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException |
@@ -418,7 +418,7 @@ final protected function processWith( mixed $element, string $property ): object
 
 <h1 id="http-message-abstractmessage">Abstract Class Phalcon\Http\Message\AbstractMessage</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractMessage.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/AbstractMessage.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
@@ -694,7 +694,7 @@ final protected function processProtocol( mixed $protocol = string ): string;
 
 <h1 id="http-message-abstractrequest">Abstract Class Phalcon\Http\Message\AbstractRequest</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractRequest.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/AbstractRequest.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface |
@@ -831,7 +831,7 @@ final protected function processUri( mixed $uri ): UriInterface;
 
 <h1 id="http-message-exception-invalidargumentexception">Class Phalcon\Http\Message\Exception\InvalidArgumentException</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Exception/InvalidArgumentException.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Exception/InvalidArgumentException.zep)
 
 | Namespace  | Phalcon\Http\Message\Exception |
 | Uses       | Throwable |
@@ -849,7 +849,7 @@ file that was distributed with this source code.
 
 <h1 id="http-message-request">Final Class Phalcon\Http\Message\Request</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Request.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Request.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Http\Message\Stream\Input, Phalcon\Http\Message\AbstractRequest, Psr\Http\Message\RequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
@@ -870,7 +870,7 @@ public function __construct( string $method = string, mixed $uri = null, mixed $
 
 <h1 id="http-message-requestfactory">Final Class Phalcon\Http\Message\RequestFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/RequestFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/RequestFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Psr\Http\Message\RequestInterface, Psr\Http\Message\RequestFactoryInterface, Psr\Http\Message\UriInterface |
@@ -890,7 +890,7 @@ public function createRequest( string $method, mixed $uri ): RequestInterface;
 
 <h1 id="http-message-response">Final Class Phalcon\Http\Message\Response</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Response.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Response.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Helper\Number, Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ResponseInterface |
@@ -969,7 +969,7 @@ public function withStatus( mixed $code, mixed $reasonPhrase = string ): Respons
 
 <h1 id="http-message-responsefactory">Final Class Phalcon\Http\Message\ResponseFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ResponseFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/ResponseFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ResponseFactoryInterface |
@@ -989,7 +989,7 @@ public function createResponse( int $code = int, string $reasonPhrase = string )
 
 <h1 id="http-message-serverrequest">Final Class Phalcon\Http\Message\ServerRequest</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequest.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/ServerRequest.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface |
@@ -1226,7 +1226,7 @@ public function withoutAttribute( mixed $name ): ServerRequest;
 
 <h1 id="http-message-serverrequestfactory">Class Phalcon\Http\Message\ServerRequestFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequestFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/ServerRequestFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface |
@@ -1264,7 +1264,7 @@ protected function getHeaders();
 
 <h1 id="http-message-stream">Class Phalcon\Http\Message\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Stream.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Helper\Arr, Exception, Psr\Http\Message\StreamInterface, RuntimeException |
@@ -1401,7 +1401,7 @@ public function write( mixed $data ): int;
 
 <h1 id="http-message-stream-input">Class Phalcon\Http\Message\Stream\Input</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream/Input.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Stream/Input.zep)
 
 | Namespace  | Phalcon\Http\Message\Stream |
 | Uses       | Phalcon\Http\Message\Stream |
@@ -1472,7 +1472,7 @@ public function read( mixed $length ): string;
 
 <h1 id="http-message-stream-memory">Class Phalcon\Http\Message\Stream\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream/Memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Stream/Memory.zep)
 
 | Namespace  | Phalcon\Http\Message\Stream |
 | Uses       | Phalcon\Http\Message\Stream |
@@ -1496,7 +1496,7 @@ public function __construct( mixed $mode = string );
 
 <h1 id="http-message-stream-temp">Class Phalcon\Http\Message\Stream\Temp</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream/Temp.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Stream/Temp.zep)
 
 | Namespace  | Phalcon\Http\Message\Stream |
 | Uses       | Phalcon\Http\Message\Stream |
@@ -1520,7 +1520,7 @@ public function __construct( mixed $mode = string );
 
 <h1 id="http-message-streamfactory">Final Class Phalcon\Http\Message\StreamFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/StreamFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/StreamFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamFactoryInterface, Psr\Http\Message\StreamInterface |
@@ -1559,7 +1559,7 @@ public function createStreamFromResource( mixed $phpResource ): StreamInterface;
 
 <h1 id="http-message-uploadedfile">Final Class Phalcon\Http\Message\UploadedFile</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/UploadedFile.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/UploadedFile.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Helper\Number, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, RuntimeException |
@@ -1724,7 +1724,7 @@ public function moveTo( mixed $targetPath ): void;
 
 <h1 id="http-message-uploadedfilefactory">Final Class Phalcon\Http\Message\UploadedFileFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/UploadedFileFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/UploadedFileFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UploadedFileFactoryInterface |
@@ -1750,7 +1750,7 @@ public function createUploadedFile( StreamInterface $stream, int $size = null, i
 
 <h1 id="http-message-uri">Final Class Phalcon\Http\Message\Uri</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Uri.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/Uri.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface |
@@ -2002,7 +2002,7 @@ public function withUserInfo( mixed $user, mixed $password = null ): Uri;
 
 <h1 id="http-message-urifactory">Final Class Phalcon\Http\Message\UriFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/UriFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Message/UriFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
 | Uses       | Psr\Http\Message\UriFactoryInterface, Psr\Http\Message\UriInterface |
@@ -2023,7 +2023,7 @@ public function createUri( string $uri = string ): UriInterface;
 
 <h1 id="http-request">Class Phalcon\Http\Request</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Request.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Helper\Json, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass |
@@ -2541,7 +2541,7 @@ final protected function smoothFiles( array $names, array $types, array $tmp_nam
 
 <h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Request/Exception.zep)
 
 | Namespace  | Phalcon\Http\Request |
 | Extends    | \Phalcon\Exception |
@@ -2554,10 +2554,9 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 <h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/File.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Request/File.zep)
 
 | Namespace  | Phalcon\Http\Request |
-| Uses       | Phalcon\Helper\Arr |
 | Implements | FileInterface |
 
 Phalcon\Http\Request\File
@@ -2679,7 +2678,7 @@ public function moveTo( string $destination ): bool;
 
 <h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/FileInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Request/FileInterface.zep)
 
 | Namespace  | Phalcon\Http\Request |
 
@@ -2731,7 +2730,7 @@ public function moveTo( string $destination ): bool;
 
 <h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/RequestInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/RequestInterface.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | Phalcon\Http\Request\FileInterface, stdClass |
@@ -3103,7 +3102,7 @@ public function numFiles( bool $onlySuccessful = bool ): long;
 
 <h1 id="http-response">Class Phalcon\Http\Response</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Response.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Helper\Fs, Phalcon\Helper\Json, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
@@ -3419,7 +3418,7 @@ public function setStatusCode( int $code, string $message = null ): ResponseInte
 
 <h1 id="http-response-cookies">Class Phalcon\Http\Response\Cookies</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Cookies.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Response/Cookies.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\Cookie\Exception, Phalcon\Http\Cookie\CookieInterface |
@@ -3580,7 +3579,7 @@ public function useEncryption( bool $useEncryption ): CookiesInterface;
 
 <h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/CookiesInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Response/CookiesInterface.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Uses       | Phalcon\Http\Cookie\CookieInterface |
@@ -3637,7 +3636,7 @@ public function useEncryption( bool $useEncryption ): CookiesInterface;
 
 <h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Response/Exception.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Extends    | \Phalcon\Exception |
@@ -3650,7 +3649,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 <h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Headers.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Response/Headers.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Implements | HeadersInterface |
@@ -3713,7 +3712,7 @@ public function toArray(): array;
 
 <h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/HeadersInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Response/HeadersInterface.zep)
 
 | Namespace  | Phalcon\Http\Response |
 
@@ -3758,7 +3757,7 @@ public function setRaw( string $header );
 
 <h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/ResponseInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/ResponseInterface.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | DateTime, Phalcon\Http\Response\HeadersInterface |
@@ -3887,7 +3886,7 @@ public function setStatusCode( int $code, string $message = null ): ResponseInte
 
 <h1 id="http-server-abstractmiddleware">Abstract Class Phalcon\Http\Server\AbstractMiddleware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Server/AbstractMiddleware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Server/AbstractMiddleware.zep)
 
 | Namespace  | Phalcon\Http\Server |
 | Uses       | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Server\MiddlewareInterface, Psr\Http\Server\RequestHandlerInterface |
@@ -3915,7 +3914,7 @@ abstract public function process( ServerRequestInterface $request, RequestHandle
 
 <h1 id="http-server-abstractrequesthandler">Abstract Class Phalcon\Http\Server\AbstractRequestHandler</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Server/AbstractRequestHandler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Http/Server/AbstractRequestHandler.zep)
 
 | Namespace  | Phalcon\Http\Server |
 | Uses       | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Server\RequestHandlerInterface |

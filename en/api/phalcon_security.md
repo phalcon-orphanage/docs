@@ -11,7 +11,7 @@ title: 'Phalcon\Security'
 
 <h1 id="security">Class Phalcon\Security</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Security.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\RequestInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Session\ManagerInterface |
@@ -217,7 +217,7 @@ public function setWorkFactor( int $workFactor ): Security;
 
 <h1 id="security-exception">Class Phalcon\Security\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Security/Exception.zep)
 
 | Namespace  | Phalcon\Security |
 | Extends    | \Phalcon\Exception |
@@ -230,7 +230,7 @@ Exceptions thrown in Phalcon\Security will use this class
 
 <h1 id="security-random">Class Phalcon\Security\Random</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Random.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Security/Random.zep)
 
 | Namespace  | Phalcon\Security |
 

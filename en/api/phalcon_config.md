@@ -16,7 +16,7 @@ title: 'Phalcon\Config'
 
 <h1 id="config">Class Phalcon\Config</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Collection, Phalcon\Config\Exception |
@@ -91,7 +91,7 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 ```
 ```php
-public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
+public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null );
 ```
 
 Sets the default path delimiter
@@ -124,7 +124,7 @@ protected function setData( mixed $element, mixed $value ): void;
 
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory |
@@ -192,7 +192,7 @@ public function __construct( array $arrayConfig, string $defaultAdapter = string
 
 <h1 id="config-adapter-ini">Class Phalcon\Config\Adapter\Ini</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Ini.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Ini.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception |
@@ -262,7 +262,7 @@ protected function parseIniString( string $path, mixed $value ): array;
 
 <h1 id="config-adapter-json">Class Phalcon\Config\Adapter\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Json.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Helper\Json |
@@ -299,7 +299,7 @@ public function __construct( string $filePath );
 
 <h1 id="config-adapter-php">Class Phalcon\Config\Adapter\Php</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Php.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config |
@@ -351,7 +351,7 @@ public function __construct( string $filePath );
 
 <h1 id="config-adapter-yaml">Class Phalcon\Config\Adapter\Yaml</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Yaml.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Yaml.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception |
@@ -405,7 +405,7 @@ public function __construct( string $filePath, array $callbacks = null );
 
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
 
 | Namespace  | Phalcon\Config |
 | Uses       | Phalcon\Config, Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr |
@@ -452,7 +452,7 @@ protected function getAdapters(): array;
 
 <h1 id="config-exception">Class Phalcon\Config\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Exception.zep)
 
 | Namespace  | Phalcon\Config |
 | Extends    | \Phalcon\Exception |

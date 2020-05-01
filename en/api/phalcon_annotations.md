@@ -20,7 +20,7 @@ title: 'Phalcon\Annotations'
 
 <h1 id="annotations-adapter-abstractadapter">Abstract Class Phalcon\Annotations\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
 | Uses       | Phalcon\Annotations\Reader, Phalcon\Annotations\Exception, Phalcon\Annotations\Collection, Phalcon\Annotations\Reflection, Phalcon\Annotations\ReaderInterface |
@@ -84,7 +84,7 @@ public function setReader( ReaderInterface $reader );
 
 <h1 id="annotations-adapter-adapterinterface">Interface Phalcon\Annotations\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
 | Uses       | Phalcon\Annotations\Reflection, Phalcon\Annotations\Collection, Phalcon\Annotations\ReaderInterface |
@@ -133,7 +133,7 @@ public function setReader( ReaderInterface $reader );
 
 <h1 id="annotations-adapter-apcu">Class Phalcon\Annotations\Adapter\Apcu</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Apcu.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Adapter/Apcu.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
 | Uses       | Phalcon\Annotations\Reflection |
@@ -183,7 +183,7 @@ public function write( string $key, Reflection $data ): bool;
 
 <h1 id="annotations-adapter-memory">Class Phalcon\Annotations\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
 | Uses       | Phalcon\Annotations\Reflection |
@@ -218,7 +218,7 @@ public function write( string $key, Reflection $data ): void;
 
 <h1 id="annotations-adapter-stream">Class Phalcon\Annotations\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
 | Uses       | Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception, RuntimeException |
@@ -267,7 +267,7 @@ public function write( string $key, Reflection $data ): void;
 
 <h1 id="annotations-annotation">Class Phalcon\Annotations\Annotation</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Annotation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Annotation.zep)
 
 | Namespace  | Phalcon\Annotations |
 
@@ -355,7 +355,7 @@ public function numberArguments(): int;
 
 <h1 id="annotations-annotationsfactory">Class Phalcon\Annotations\AnnotationsFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/AnnotationsFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/AnnotationsFactory.zep)
 
 | Namespace  | Phalcon\Annotations |
 | Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
@@ -390,7 +390,7 @@ protected function getAdapters(): array;
 
 <h1 id="annotations-collection">Class Phalcon\Annotations\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Collection.zep)
 
 | Namespace  | Phalcon\Annotations |
 | Uses       | Countable, Iterator |
@@ -488,7 +488,7 @@ public function valid(): bool;
 
 <h1 id="annotations-exception">Class Phalcon\Annotations\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Exception.zep)
 
 | Namespace  | Phalcon\Annotations |
 | Extends    | \Phalcon\Exception |
@@ -499,7 +499,7 @@ Class for exceptions thrown by Phalcon\Annotations
 
 <h1 id="annotations-reader">Class Phalcon\Annotations\Reader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Reader.zep)
 
 | Namespace  | Phalcon\Annotations |
 | Uses       | ReflectionClass |
@@ -524,7 +524,7 @@ public static function parseDocBlock( string $docBlock, mixed $file = null, mixe
 
 <h1 id="annotations-readerinterface">Interface Phalcon\Annotations\ReaderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/ReaderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/ReaderInterface.zep)
 
 | Namespace  | Phalcon\Annotations |
 
@@ -547,7 +547,7 @@ public static function parseDocBlock( string $docBlock, mixed $file = null, mixe
 
 <h1 id="annotations-reflection">Class Phalcon\Annotations\Reflection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reflection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Annotations/Reflection.zep)
 
 | Namespace  | Phalcon\Annotations |
 

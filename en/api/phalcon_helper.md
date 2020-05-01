@@ -14,7 +14,7 @@ title: 'Phalcon\Helper'
 
 <h1 id="helper-arr">Class Phalcon\Helper\Arr</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Arr.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Helper/Arr.zep)
 
 | Namespace  | Phalcon\Helper |
 | Uses       | stdClass |
@@ -142,7 +142,7 @@ final public static function whiteList( array $collection, array $whiteList ): a
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Helper/Exception.zep)
 
 | Namespace  | Phalcon\Helper |
 | Extends    | \Phalcon\Exception |
@@ -153,7 +153,7 @@ Exceptions thrown in Phalcon\Helper will use this class
 
 <h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Fs.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Helper/Fs.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -173,7 +173,7 @@ final public static function basename( string $uri, mixed $suffix = null ): stri
 
 <h1 id="helper-json">Class Phalcon\Helper\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Helper/Json.zep)
 
 | Namespace  | Phalcon\Helper |
 | Uses       | InvalidArgumentException |
@@ -223,7 +223,7 @@ final public static function encode( mixed $data, int $options = int, int $depth
 
 <h1 id="helper-number">Class Phalcon\Helper\Number</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Number.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Helper/Number.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -243,7 +243,7 @@ final public static function between( int $value, int $from, int $to ): bool;
 
 <h1 id="helper-str">Class Phalcon\Helper\Str</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Str.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Helper/Str.zep)
 
 | Namespace  | Phalcon\Helper |
 | Uses       | RuntimeException |

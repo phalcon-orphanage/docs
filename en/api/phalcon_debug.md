@@ -11,7 +11,7 @@ title: 'Phalcon\Debug'
 
 <h1 id="debug">Class Phalcon\Debug</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug.zep)
 
 | Namespace  | Phalcon |
 | Uses       | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
@@ -168,7 +168,7 @@ final protected function showTraceItem( int $n, array $trace ): string;
 
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
 
 | Namespace  | Phalcon\Debug |
 | Uses       | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
@@ -296,7 +296,7 @@ protected function output( mixed $variable, string $name = null, int $tab = int 
 
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
 
 | Namespace  | Phalcon\Debug |
 | Extends    | \Phalcon\Exception |

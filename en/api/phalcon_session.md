@@ -17,7 +17,7 @@ title: 'Phalcon\Session'
 
 <h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface |
@@ -76,7 +76,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Storage\AdapterFactory |
@@ -96,7 +96,7 @@ public function __construct( AdapterFactory $factory, array $options = [] );
 
 <h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Noop.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Adapter/Noop.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | SessionHandlerInterface |
@@ -194,7 +194,7 @@ protected function getPrefixedName( mixed $name ): string;
 
 <h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Storage\AdapterFactory |
@@ -214,7 +214,7 @@ public function __construct( AdapterFactory $factory, array $options = [] );
 
 <h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Helper\Str, Phalcon\Session\Exception |
@@ -287,7 +287,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 <h1 id="session-bag">Class Phalcon\Session\Bag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Bag.zep)
 
 | Namespace  | Phalcon\Session |
 | Uses       | Phalcon\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
@@ -362,7 +362,7 @@ public function setDI( DiInterface $container ): void;
 
 <h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Exception.zep)
 
 | Namespace  | Phalcon\Session |
 | Extends    | \Phalcon\Exception |
@@ -375,7 +375,7 @@ Exceptions thrown in Phalcon\Session will use this class
 
 <h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/Manager.zep)
 
 | Namespace  | Phalcon\Session |
 | Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr |
@@ -529,7 +529,7 @@ public function status(): int;
 
 <h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Session/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Session |
 | Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface |

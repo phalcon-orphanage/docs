@@ -22,7 +22,7 @@ title: 'Phalcon\Assets'
 
 <h1 id="assets-asset">Class Phalcon\Assets\Asset</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Asset.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Asset.zep)
 
 | Namespace  | Phalcon\Assets |
 | Implements | AssetInterface |
@@ -226,7 +226,7 @@ public function setVersion( 	string $version )
 
 <h1 id="assets-asset-css">Class Phalcon\Assets\Asset\Css</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Asset/Css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Asset/Css.zep)
 
 | Namespace  | Phalcon\Assets\Asset |
 | Uses       | Phalcon\Assets\Asset |
@@ -246,7 +246,7 @@ public function __construct( string $path, bool $local = bool, bool $filter = bo
 
 <h1 id="assets-asset-js">Class Phalcon\Assets\Asset\Js</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Asset/Js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Asset/Js.zep)
 
 | Namespace  | Phalcon\Assets\Asset |
 | Uses       | Phalcon\Assets\Asset |
@@ -266,7 +266,7 @@ public function __construct( string $path, bool $local = bool, bool $filter = bo
 
 <h1 id="assets-assetinterface">Interface Phalcon\Assets\AssetInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/AssetInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/AssetInterface.zep)
 
 | Namespace  | Phalcon\Assets |
 
@@ -314,7 +314,7 @@ public function setType( string $type ): AssetInterface;
 
 <h1 id="assets-collection">Class Phalcon\Assets\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Collection.zep)
 
 | Namespace  | Phalcon\Assets |
 | Uses       | Countable, Iterator, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css |
@@ -634,7 +634,7 @@ final protected function addAsset( AssetInterface $asset ): bool;
 
 <h1 id="assets-exception">Class Phalcon\Assets\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Exception.zep)
 
 | Namespace  | Phalcon\Assets |
 | Extends    | \Phalcon\Exception |
@@ -645,7 +645,7 @@ Exceptions thrown in Phalcon\Assets will use this class
 
 <h1 id="assets-filterinterface">Interface Phalcon\Assets\FilterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/FilterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/FilterInterface.zep)
 
 | Namespace  | Phalcon\Assets |
 
@@ -663,7 +663,7 @@ public function filter( string $content ): string;
 
 <h1 id="assets-filters-cssmin">Class Phalcon\Assets\Filters\Cssmin</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Filters/CssMin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Filters/CssMin.zep)
 
 | Namespace  | Phalcon\Assets\Filters |
 | Uses       | Phalcon\Assets\FilterInterface |
@@ -685,7 +685,7 @@ public function filter( string $content ): string;
 
 <h1 id="assets-filters-jsmin">Class Phalcon\Assets\Filters\Jsmin</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Filters/JsMin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Filters/JsMin.zep)
 
 | Namespace  | Phalcon\Assets\Filters |
 | Uses       | Phalcon\Assets\FilterInterface |
@@ -708,7 +708,7 @@ public function filter( string $content ): string;
 
 <h1 id="assets-filters-none">Class Phalcon\Assets\Filters\None</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Filters/None.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Filters/None.zep)
 
 | Namespace  | Phalcon\Assets\Filters |
 | Uses       | Phalcon\Assets\FilterInterface |
@@ -728,7 +728,7 @@ public function filter( string $content ): string;
 
 <h1 id="assets-inline">Class Phalcon\Assets\Inline</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Inline.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Inline.zep)
 
 | Namespace  | Phalcon\Assets |
 | Implements | AssetInterface |
@@ -815,7 +815,7 @@ public function setType( string $type ): AssetInterface;
 
 <h1 id="assets-inline-css">Class Phalcon\Assets\Inline\Css</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Inline/Css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Inline/Css.zep)
 
 | Namespace  | Phalcon\Assets\Inline |
 | Uses       | Phalcon\Assets\Inline |
@@ -835,7 +835,7 @@ public function __construct( string $content, bool $filter = bool, mixed $attrib
 
 <h1 id="assets-inline-js">Class Phalcon\Assets\Inline\Js</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Inline/Js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Inline/Js.zep)
 
 | Namespace  | Phalcon\Assets\Inline |
 | Uses       | Phalcon\Assets\Inline |
@@ -855,7 +855,7 @@ public function __construct( string $content, bool $filter = bool, mixed $attrib
 
 <h1 id="assets-manager">Class Phalcon\Assets\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Assets/Manager.zep)
 
 | Namespace  | Phalcon\Assets |
 | Uses       | Phalcon\Tag, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware |

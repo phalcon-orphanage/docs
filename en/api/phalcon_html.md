@@ -32,7 +32,7 @@ title: 'Phalcon\Html'
 
 <h1 id="html-attributes">Class Phalcon\Html\Attributes</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Attributes.zep)
 
 | Namespace  | Phalcon\Html |
 | Uses       | Phalcon\Collection, Phalcon\Html\Attributes\RenderInterface, Phalcon\Tag |
@@ -58,7 +58,7 @@ public function render(): string;
 
 <h1 id="html-attributes-attributesinterface">Interface Phalcon\Html\Attributes\AttributesInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes/AttributesInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Attributes/AttributesInterface.zep)
 
 | Namespace  | Phalcon\Html\Attributes |
 | Uses       | Phalcon\Html\Attributes |
@@ -84,7 +84,7 @@ public function setAttributes( Attributes $attributes ): AttributesInterface;
 
 <h1 id="html-attributes-renderinterface">Interface Phalcon\Html\Attributes\RenderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes/RenderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Attributes/RenderInterface.zep)
 
 | Namespace  | Phalcon\Html\Attributes |
 
@@ -104,7 +104,7 @@ public function render(): string;
 
 <h1 id="html-breadcrumbs">Class Phalcon\Html\Breadcrumbs</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Breadcrumbs.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Breadcrumbs.zep)
 
 | Namespace  | Phalcon\Html |
 | Uses       | Phalcon\Di\DiInterface |
@@ -205,7 +205,7 @@ public function toArray(): array;
 
 <h1 id="html-exception">Class Phalcon\Html\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Exception.zep)
 
 | Namespace  | Phalcon\Html |
 | Extends    | \Phalcon\Exception |
@@ -218,7 +218,7 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 <h1 id="html-helper-abstracthelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/AbstractHelper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/AbstractHelper.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Uses       | Phalcon\Html\Exception, Phalcon\Escaper\EscaperInterface |
@@ -273,7 +273,7 @@ protected function selfClose( string $tag, array $attributes = [] ): string;
 
 <h1 id="html-helper-anchor">Class Phalcon\Html\Helper\Anchor</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Anchor.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Anchor.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -296,7 +296,7 @@ public function __invoke( string $href, string $text, array $attributes = [] ): 
 
 <h1 id="html-helper-anchorraw">Class Phalcon\Html\Helper\AnchorRaw</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/AnchorRaw.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/AnchorRaw.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -319,7 +319,7 @@ public function __invoke( string $href, string $text, array $attributes = [] ): 
 
 <h1 id="html-helper-body">Class Phalcon\Html\Helper\Body</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Body.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Body.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -340,7 +340,7 @@ public function __invoke( array $attributes = [] ): string;
 
 <h1 id="html-helper-button">Class Phalcon\Html\Helper\Button</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Button.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Button.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -362,7 +362,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 <h1 id="html-helper-close">Class Phalcon\Html\Helper\Close</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Close.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Close.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -383,7 +383,7 @@ public function __invoke( string $tag ): string;
 
 <h1 id="html-helper-element">Class Phalcon\Html\Helper\Element</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Element.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Element.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -406,7 +406,7 @@ public function __invoke( string $tag, string $text, array $attributes = [] ): s
 
 <h1 id="html-helper-elementraw">Class Phalcon\Html\Helper\ElementRaw</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/ElementRaw.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/ElementRaw.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Uses       | Phalcon\Html\Exception |
@@ -428,7 +428,7 @@ public function __invoke( string $tag, string $text, array $attributes = [] ): s
 
 <h1 id="html-helper-form">Class Phalcon\Html\Helper\Form</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Form.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -449,7 +449,7 @@ public function __invoke( array $attributes = [] ): string;
 
 <h1 id="html-helper-img">Class Phalcon\Html\Helper\Img</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Img.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Img.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Uses       | Phalcon\Html\Exception |
@@ -471,7 +471,7 @@ public function __invoke( string $src, array $attributes = [] ): string;
 
 <h1 id="html-helper-label">Class Phalcon\Html\Helper\Label</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Label.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Label.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Uses       | Phalcon\Html\Exception |
@@ -493,7 +493,7 @@ public function __invoke( array $attributes = [] ): string;
 
 <h1 id="html-helper-textarea">Class Phalcon\Html\Helper\TextArea</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/TextArea.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/TextArea.zep)
 
 | Namespace  | Phalcon\Html\Helper |
 | Extends    | AbstractHelper |
@@ -515,7 +515,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 <h1 id="html-link-evolvablelink">Class Phalcon\Html\Link\EvolvableLink</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLink.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLink.zep)
 
 | Namespace  | Phalcon\Html\Link |
 | Uses       | Psr\Link\EvolvableLinkInterface |
@@ -573,7 +573,7 @@ public function withoutRel( mixed $rel );
 
 <h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLinkProvider.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLinkProvider.zep)
 
 | Namespace  | Phalcon\Html\Link |
 | Uses       | Psr\Link\EvolvableLinkProviderInterface, Psr\Link\LinkInterface |
@@ -609,7 +609,7 @@ public function withoutLink( LinkInterface $link );
 
 <h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
 
 | Namespace  | Phalcon\Html\Link |
 | Uses       | Phalcon\Collection, Psr\Link\LinkInterface |
@@ -696,7 +696,7 @@ protected function hrefIsTemplated( string $href ): bool;
 
 <h1 id="html-link-linkprovider">Class Phalcon\Html\Link\LinkProvider</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/LinkProvider.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/LinkProvider.zep)
 
 | Namespace  | Phalcon\Html\Link |
 | Uses       | Psr\Link\LinkInterface, Psr\Link\LinkProviderInterface |
@@ -750,7 +750,7 @@ protected function getKey( LinkInterface $link ): string;
 
 <h1 id="html-link-serializer-header">Class Phalcon\Html\Link\Serializer\Header</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Serializer/Header.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/Serializer/Header.zep)
 
 | Namespace  | Phalcon\Html\Link\Serializer |
 | Uses       | Psr\Link\EvolvableLinkInterface |
@@ -770,7 +770,7 @@ public function serialize( array $links ): string | null;
 
 <h1 id="html-link-serializer-serializerinterface">Interface Phalcon\Html\Link\Serializer\SerializerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Serializer/SerializerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/Serializer/SerializerInterface.zep)
 
 | Namespace  | Phalcon\Html\Link\Serializer |
 
@@ -788,7 +788,7 @@ public function serialize( array $links ): string | null;
 
 <h1 id="html-tagfactory">Class Phalcon\Html\TagFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/TagFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/TagFactory.zep)
 
 | Namespace  | Phalcon\Html |
 | Uses       | Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory |

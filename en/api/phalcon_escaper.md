@@ -11,7 +11,7 @@ title: 'Phalcon\Escaper'
 
 <h1 id="escaper">Class Phalcon\Escaper</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Escaper.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception |
@@ -131,7 +131,7 @@ public function setHtmlQuoteType( int $quoteType ): void;
 
 <h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper/EscaperInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Escaper/EscaperInterface.zep)
 
 | Namespace  | Phalcon\Escaper |
 
@@ -186,7 +186,7 @@ public function setHtmlQuoteType( int $quoteType ): void;
 
 <h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Escaper/Exception.zep)
 
 | Namespace  | Phalcon\Escaper |
 | Extends    | \Phalcon\Exception |

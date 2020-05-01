@@ -11,7 +11,7 @@ title: 'Phalcon\Url'
 
 <h1 id="url">Class Phalcon\Url</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Url.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface |
@@ -171,7 +171,7 @@ public function setStaticBaseUri( string $staticBaseUri ): UrlInterface;
 
 <h1 id="url-exception">Class Phalcon\Url\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Url/Exception.zep)
 
 | Namespace  | Phalcon\Url |
 | Extends    | \Phalcon\Exception |
@@ -184,7 +184,7 @@ Exceptions thrown in Phalcon\Url will use this class
 
 <h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/UrlInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Url/UrlInterface.zep)
 
 | Namespace  | Phalcon\Url |
 
