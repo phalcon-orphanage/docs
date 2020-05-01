@@ -32,7 +32,7 @@ title: 'Phalcon\Html'
 
 <h1 id="html-attributes">Class Phalcon\Html\Attributes</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Attributes.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes.zep)
 
 | Namespace | Phalcon\Html | | Uses | Phalcon\Collection, Phalcon\Html\Attributes\RenderInterface, Phalcon\Tag | | Extends | Collection | | Implements | RenderInterface |
 
@@ -40,21 +40,21 @@ This class helps to work with HTML Attributes
 
 ## Methoden
 
-Alias of the render method
-
 ```php
 public function __toString(): string;
 ```
 
-Render attributes as HTML attributes
+Alias of the render method
 
 ```php
 public function render(): string;
 ```
 
+Render attributes as HTML attributes
+
 <h1 id="html-attributes-attributesinterface">Interface Phalcon\Html\Attributes\AttributesInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Attributes/AttributesInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes/AttributesInterface.zep)
 
 | Namespace | Phalcon\Html\Attributes | | Uses | Phalcon\Html\Attributes |
 
@@ -64,21 +64,21 @@ public function render(): string;
 
 ## Methoden
 
-Get Attributes
-
 ```php
 public function getAttributes(): Attributes;
 ```
 
-Set Attributes
+Get Attributes
 
 ```php
 public function setAttributes( Attributes $attributes ): AttributesInterface;
 ```
 
+Set Attributes
+
 <h1 id="html-attributes-renderinterface">Interface Phalcon\Html\Attributes\RenderInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Attributes/RenderInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes/RenderInterface.zep)
 
 | Namespace | Phalcon\Html\Attributes |
 
@@ -88,15 +88,15 @@ public function setAttributes( Attributes $attributes ): AttributesInterface;
 
 ## Methoden
 
-Generate a string represetation
-
 ```php
 public function render(): string;
 ```
 
+Generate a string represetation
+
 <h1 id="html-breadcrumbs">Class Phalcon\Html\Breadcrumbs</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Breadcrumbs.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Breadcrumbs.zep)
 
 | Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface |
 
@@ -132,6 +132,10 @@ private template = <dt><a href=\"%link%\">%label%</a></dt>;
 
 ## Methoden
 
+```php
+public function add( string $label, string $link = string ): Breadcrumbs;
+```
+
 Adds a new crumb.
 
 ```php
@@ -143,7 +147,7 @@ $breadcrumbs->add("Users");
 ```
 
 ```php
-public function add( string $label, string $link = string ): Breadcrumbs;
+public function clear(): void;
 ```
 
 Clears the crumbs
@@ -153,11 +157,11 @@ $breadcrumbs->clear()
 ```
 
 ```php
-public function clear(): void;
+public function getSeparator(): string
 ```
 
 ```php
-public function getSeparator(): string
+public function remove( string $link ): void;
 ```
 
 Removes crumb by url.
@@ -170,7 +174,7 @@ $breadcrumbs->remove();
 ```
 
 ```php
-public function remove( string $link ): void;
+public function render(): string;
 ```
 
 Renders and outputs breadcrumbs based on previously set template.
@@ -180,22 +184,18 @@ echo $breadcrumbs->render();
 ```
 
 ```php
-public function render(): string;
-```
-
-```php
 public function setSeparator( string $separator )
 ```
-
-Returns the internal breadcrumbs array
 
 ```php
 public function toArray(): array;
 ```
 
+Returns the internal breadcrumbs array
+
 <h1 id="html-exception">Class Phalcon\Html\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Exception.zep)
 
 | Namespace | Phalcon\Html | | Extends | \Phalcon\Exception |
 
@@ -205,7 +205,7 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 <h1 id="html-helper-abstracthelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/AbstractHelper.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/AbstractHelper.zep)
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception, Phalcon\Escaper\EscaperInterface |
 
@@ -225,25 +225,23 @@ protected escaper;
 
 ## Methoden
 
-Constructor
-
 ```php
 public function __construct( EscaperInterface $escaper );
 ```
 
-Keeps all the attributes sorted - same order all the tome
+Constructor
 
 ```php
 protected function orderAttributes( array $overrides, array $attributes ): array;
 ```
 
-Renders all the attributes
+Keeps all the attributes sorted - same order all the tome
 
 ```php
 protected function renderAttributes( array $attributes ): string;
 ```
 
-Renders an element
+Renders all the attributes
 
 ```php
 protected function renderElement( string $tag, array $attributes = [] ): string;
@@ -255,15 +253,17 @@ Renders an element
 protected function renderFullElement( string $tag, string $text, array $attributes = [], bool $raw = bool ): string;
 ```
 
-Produces a self close tag i.e. <img />
+Renders an element
 
 ```php
 protected function selfClose( string $tag, array $attributes = [] ): string;
 ```
 
+Produces a self close tag i.e. <img />
+
 <h1 id="html-helper-anchor">Class Phalcon\Html\Helper\Anchor</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Anchor.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Anchor.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -273,15 +273,15 @@ Creates an anchor
 
 ## Methoden
 
-@var string href The href tag @var string text The text for the anchor @var array attributes Any additional attributes
-
 ```php
 public function __invoke( string $href, string $text, array $attributes = [] ): string;
 ```
 
+@var string href The href tag @var string text The text for the anchor @var array attributes Any additional attributes
+
 <h1 id="html-helper-anchorraw">Class Phalcon\Html\Helper\AnchorRaw</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/AnchorRaw.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/AnchorRaw.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -291,15 +291,15 @@ Creates a raw anchor
 
 ## Methoden
 
-@var string href The href tag @var string text The text for the anchor @var array attributes Any additional attributes
-
 ```php
 public function __invoke( string $href, string $text, array $attributes = [] ): string;
 ```
 
+@var string href The href tag @var string text The text for the anchor @var array attributes Any additional attributes
+
 <h1 id="html-helper-body">Class Phalcon\Html\Helper\Body</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Body.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Body.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -309,15 +309,15 @@ Creates a body tag
 
 ## Methoden
 
-@var array attributes Any additional attributes
-
 ```php
 public function __invoke( array $attributes = [] ): string;
 ```
 
+@var array attributes Any additional attributes
+
 <h1 id="html-helper-button">Class Phalcon\Html\Helper\Button</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Button.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Button.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -327,15 +327,15 @@ Creates a button tag
 
 ## Methoden
 
-@var string text The text for the anchor @var array attributes Any additional attributes
-
 ```php
 public function __invoke( string $text, array $attributes = [] ): string;
 ```
 
+@var string text The text for the anchor @var array attributes Any additional attributes
+
 <h1 id="html-helper-close">Class Phalcon\Html\Helper\Close</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Close.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Close.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -351,7 +351,7 @@ public function __invoke( string $tag ): string;
 
 <h1 id="html-helper-element">Class Phalcon\Html\Helper\Element</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Element.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Element.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -361,15 +361,15 @@ Creates an element
 
 ## Methoden
 
-@var string tag The tag name @var string text The text for the anchor @var array attributes Any additional attributes
-
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [] ): string;
 ```
 
+@var string tag The tag name @var string text The text for the anchor @var array attributes Any additional attributes
+
 <h1 id="html-helper-elementraw">Class Phalcon\Html\Helper\ElementRaw</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/ElementRaw.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/ElementRaw.zep)
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception | | Extends | AbstractHelper |
 
@@ -385,7 +385,7 @@ public function __invoke( string $tag, string $text, array $attributes = [] ): s
 
 <h1 id="html-helper-form">Class Phalcon\Html\Helper\Form</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Form.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Form.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -395,15 +395,15 @@ Creates a form opening tag
 
 ## Methoden
 
-@var array attributes Any additional attributes
-
 ```php
 public function __invoke( array $attributes = [] ): string;
 ```
 
+@var array attributes Any additional attributes
+
 <h1 id="html-helper-img">Class Phalcon\Html\Helper\Img</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Img.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Img.zep)
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception | | Extends | AbstractHelper |
 
@@ -419,7 +419,7 @@ public function __invoke( string $src, array $attributes = [] ): string;
 
 <h1 id="html-helper-label">Class Phalcon\Html\Helper\Label</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/Label.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Label.zep)
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception | | Extends | AbstractHelper |
 
@@ -435,7 +435,7 @@ public function __invoke( array $attributes = [] ): string;
 
 <h1 id="html-helper-textarea">Class Phalcon\Html\Helper\TextArea</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Helper/TextArea.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/TextArea.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
@@ -445,15 +445,15 @@ Creates a textarea tag
 
 ## Methoden
 
-@var string text The text for the anchor @var array attributes Any additional attributes
-
 ```php
 public function __invoke( string $text, array $attributes = [] ): string;
 ```
 
+@var string text The text for the anchor @var array attributes Any additional attributes
+
 <h1 id="html-link-evolvablelink">Class Phalcon\Html\Link\EvolvableLink</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLink.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLink.zep)
 
 | Namespace | Phalcon\Html\Link | | Uses | Psr\Link\EvolvableLinkInterface | | Extends | Link | | Implements | EvolvableLinkInterface |
 
@@ -463,18 +463,22 @@ Class Phalcon\Http\Link\EvolvableLink
 
 ## Methoden
 
+```php
+public function withAttribute( mixed $attribute, mixed $value );
+```
+
 Returns an instance with the specified attribute added.
 
 If the specified attribute is already present, it will be overwritten with the new value.
 
 ```php
-public function withAttribute( mixed $attribute, mixed $value );
+public function withHref( mixed $href );
 ```
 
 Returns an instance with the specified href.
 
 ```php
-public function withHref( mixed $href );
+public function withRel( mixed $rel );
 ```
 
 Returns an instance with the specified relationship included.
@@ -482,7 +486,7 @@ Returns an instance with the specified relationship included.
 If the specified rel is already present, this method MUST return normally without errors, but without adding the rel a second time.
 
 ```php
-public function withRel( mixed $rel );
+public function withoutAttribute( mixed $attribute );
 ```
 
 Returns an instance with the specified attribute excluded.
@@ -490,20 +494,16 @@ Returns an instance with the specified attribute excluded.
 If the specified attribute is not present, this method MUST return normally without errors.
 
 ```php
-public function withoutAttribute( mixed $attribute );
+public function withoutRel( mixed $rel );
 ```
 
 Returns an instance with the specified relationship excluded.
 
 If the specified rel is already not present, this method MUST return normally without errors.
 
-```php
-public function withoutRel( mixed $rel );
-```
-
 <h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLinkProvider.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLinkProvider.zep)
 
 | Namespace | Phalcon\Html\Link | | Uses | Psr\Link\EvolvableLinkProviderInterface, Psr\Link\LinkInterface | | Extends | LinkProvider | | Implements | EvolvableLinkProviderInterface |
 
@@ -513,25 +513,25 @@ Class Phalcon\Http\Link\LinkProvider
 
 ## Methoden
 
+```php
+public function withLink( LinkInterface $link );
+```
+
 Returns an instance with the specified link included.
 
 If the specified link is already present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
 
 ```php
-public function withLink( LinkInterface $link );
+public function withoutLink( LinkInterface $link );
 ```
 
 Returns an instance with the specified link removed.
 
 If the specified link is not present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
 
-```php
-public function withoutLink( LinkInterface $link );
-```
-
 <h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
 
 | Namespace | Phalcon\Html\Link | | Uses | Phalcon\Collection, Psr\Link\LinkInterface | | Implements | LinkInterface |
 
@@ -566,16 +566,20 @@ protected templated = false;
 
 ## Methoden
 
+```php
+public function __construct( string $rel = string, string $href = string, array $attributes = [] );
+```
+
 Link constructor.
 
 ```php
-public function __construct( string $rel = string, string $href = string, array $attributes = [] );
+public function getAttributes();
 ```
 
 Returns a list of attributes that describe the target URI.
 
 ```php
-public function getAttributes();
+public function getHref();
 ```
 
 Returns the target of the link.
@@ -589,7 +593,7 @@ The target link must be one of:
 If a URI template is returned, isTemplated() MUST return True.
 
 ```php
-public function getHref();
+public function getRels();
 ```
 
 Returns the relationship type(s) of the link.
@@ -597,26 +601,22 @@ Returns the relationship type(s) of the link.
 This method returns 0 or more relationship types for a link, expressed as an array of strings.
 
 ```php
-public function getRels();
+public function isTemplated();
 ```
 
 Returns whether or not this is a templated link.
 
 ```php
-public function isTemplated();
+protected function hrefIsTemplated( string $href ): bool;
 ```
 
 Determines if a href is a templated link or not.
 
 @see https://tools.ietf.org/html/rfc6570
 
-```php
-protected function hrefIsTemplated( string $href ): bool;
-```
-
 <h1 id="html-link-linkprovider">Class Phalcon\Html\Link\LinkProvider</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/LinkProvider.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/LinkProvider.zep)
 
 | Namespace | Phalcon\Html\Link | | Uses | Psr\Link\LinkInterface, Psr\Link\LinkProviderInterface | | Implements | LinkProviderInterface |
 
@@ -636,10 +636,14 @@ protected links;
 
 ## Methoden
 
+```php
+public function __construct( array $links = [] );
+```
+
 LinkProvider constructor.
 
 ```php
-public function __construct( array $links = [] );
+public function getLinks();
 ```
 
 Returns an iterable of LinkInterface objects.
@@ -647,7 +651,7 @@ Returns an iterable of LinkInterface objects.
 The iterable may be an array or any PHP \Traversable object. If no links are available, an empty array or \Traversable MUST be returned.
 
 ```php
-public function getLinks();
+public function getLinksByRel( mixed $rel );
 ```
 
 Returns an iterable of LinkInterface objects that have a specific relationship.
@@ -655,18 +659,14 @@ Returns an iterable of LinkInterface objects that have a specific relationship.
 The iterable may be an array or any PHP \Traversable object. If no links with that relationship are available, an empty array or \Traversable MUST be returned.
 
 ```php
-public function getLinksByRel( mixed $rel );
+protected function getKey( LinkInterface $link ): string;
 ```
 
 Returns the object hash key
 
-```php
-protected function getKey( LinkInterface $link ): string;
-```
-
 <h1 id="html-link-serializer-header">Class Phalcon\Html\Link\Serializer\Header</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/Serializer/Header.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Serializer/Header.zep)
 
 | Namespace | Phalcon\Html\Link\Serializer | | Uses | Psr\Link\EvolvableLinkInterface | | Implements | SerializerInterface |
 
@@ -674,15 +674,15 @@ Class Phalcon\Http\Link\Serializer\Header
 
 ## Methoden
 
-Serializes all the passed links to a HTTP link header
-
 ```php
 public function serialize( array $links ): string | null;
 ```
 
+Serializes all the passed links to a HTTP link header
+
 <h1 id="html-link-serializer-serializerinterface">Interface Phalcon\Html\Link\Serializer\SerializerInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/Link/Serializer/SerializerInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Serializer/SerializerInterface.zep)
 
 | Namespace | Phalcon\Html\Link\Serializer |
 
@@ -690,15 +690,15 @@ Class Phalcon\Http\Link\Serializer\SerializerInterface
 
 ## Methoden
 
-Serializer method
-
 ```php
 public function serialize( array $links ): string | null;
 ```
 
+Serializer method
+
 <h1 id="html-tagfactory">Class Phalcon\Html\TagFactory</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Html/TagFactory.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/TagFactory.zep)
 
 | Namespace | Phalcon\Html | | Uses | Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory | | Extends | AbstractFactory |
 
@@ -716,11 +716,11 @@ private escaper;
 
 ## Methoden
 
-TagFactory constructor.
-
 ```php
 public function __construct( EscaperInterface $escaper, array $services = [] );
 ```
+
+TagFactory constructor.
 
 ```php
 public function newInstance( string $name ): mixed;
