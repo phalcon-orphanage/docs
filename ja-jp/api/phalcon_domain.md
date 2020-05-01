@@ -14,7 +14,7 @@ title: 'Phalcon\Domain'
 
 <h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable | | Implements | PayloadInterface |
 
@@ -69,11 +69,11 @@ protected output;
 
 ## メソッド
 
-Gets the potential exception thrown in the domain layer
-
 ```php
 public function getException(): Throwable | null;
 ```
+
+Gets the potential exception thrown in the domain layer
 
 ```php
 public function getExtras(): mixed
@@ -95,45 +95,45 @@ public function getOutput(): mixed
 public function getStatus(): mixed
 ```
 
-Sets an exception thrown in the domain
-
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
 ```
 
-Sets arbitrary extra domain information.
+Sets an exception thrown in the domain
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
 
-Sets the domain input.
+Sets arbitrary extra domain information.
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
 
-Sets the domain messages.
+Sets the domain input.
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
 
-Sets the domain output.
+Sets the domain messages.
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
 
-Sets the payload status.
+Sets the domain output.
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 
+Sets the payload status.
+
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
@@ -141,15 +141,15 @@ Factory to create payload objects
 
 ## メソッド
 
-Instantiate a new object
-
 ```php
 public function newInstance(): PayloadInterface;
 ```
 
+Instantiate a new object
+
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Extends | ReadableInterface |
 
@@ -157,7 +157,7 @@ This interface is used for consumers
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
@@ -165,45 +165,45 @@ This interface is used for consumers (read only)
 
 ## メソッド
 
-Gets the potential exception thrown in the domain layer
-
 ```php
 public function getException(): Throwable | null;
 ```
 
-Gets arbitrary extra values produced by the domain layer.
+Gets the potential exception thrown in the domain layer
 
 ```php
 public function getExtras(): mixed;
 ```
 
-Gets the input received by the domain layer.
+Gets arbitrary extra values produced by the domain layer.
 
 ```php
 public function getInput(): mixed;
 ```
 
-Gets the messages produced by the domain layer.
+Gets the input received by the domain layer.
 
 ```php
 public function getMessages(): mixed;
 ```
 
-Gets the output produced from the domain layer.
+Gets the messages produced by the domain layer.
 
 ```php
 public function getOutput(): mixed;
 ```
 
-Gets the status of this payload.
+Gets the output produced from the domain layer.
 
 ```php
 public function getStatus(): mixed;
 ```
 
+Gets the status of this payload.
+
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
@@ -236,15 +236,15 @@ const VALID = VALID;
 
 ## メソッド
 
-Instantiation not allowed.
-
 ```php
 final private function __construct();
 ```
 
+Instantiation not allowed.
+
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
@@ -252,38 +252,38 @@ This interface is used for consumers (write)
 
 ## メソッド
 
-Sets an exception produced by the domain layer.
-
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
 ```
 
-Sets arbitrary extra values produced by the domain layer.
+Sets an exception produced by the domain layer.
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
 
-Sets the input received by the domain layer.
+Sets arbitrary extra values produced by the domain layer.
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
 
-Sets the messages produced by the domain layer.
+Sets the input received by the domain layer.
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
 
-Sets the output produced from the domain layer.
+Sets the messages produced by the domain layer.
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
 
-Sets the status of this payload.
+Sets the output produced from the domain layer.
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
+
+Sets the status of this payload.
