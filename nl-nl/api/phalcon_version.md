@@ -9,7 +9,7 @@ title: 'Phalcon\Version'
 
 <h1 id="version">Class Phalcon\Version</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Version.zep)
 
 | Namespace | Phalcon |
 
@@ -27,10 +27,6 @@ const VERSION_SPECIAL_NUMBER = 4;
 
 ## Methoden
 
-```php
-public static function get(): string;
-```
-
 Returns the active version (string)
 
 ```php
@@ -38,7 +34,7 @@ echo Phalcon\Version::get();
 ```
 
 ```php
-public static function getId(): string;
+public static function get(): string;
 ```
 
 Returns the numeric active version
@@ -48,7 +44,7 @@ echo Phalcon\Version::getId();
 ```
 
 ```php
-public static function getPart( int $part ): string;
+public static function getId(): string;
 ```
 
 Returns a specific part of the version. If the wrong parameter is passed it will return the full version
@@ -60,9 +56,13 @@ echo Phalcon\Version::getPart(
 ```
 
 ```php
-protected static function _getVersion(): array;
+public static function getPart( int $part ): string;
 ```
 
 Area where the version number is set. The format is as follows: ABBCCDE
 
 A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Special release version i.e. RC1, Beta2 etc.
+
+```php
+protected static function _getVersion(): array;
+```
