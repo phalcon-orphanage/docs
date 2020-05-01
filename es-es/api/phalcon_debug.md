@@ -11,7 +11,7 @@ title: 'Phalcon\Debug'
 
 <h1 id="debug">Class Phalcon\Debug</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug.zep)
 
 | Namespace | Phalcon | | Uses | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
 
@@ -62,73 +62,71 @@ protected uri = https://assets.phalcon.io/debug/4.0.x/;
 
 ## Métodos
 
-Clears are variables added previously
-
 ```php
 public function clearVars(): Debug;
 ```
 
-Adds a variable to the debug output
+Clears are variables added previously
 
 ```php
 public function debugVar( mixed $varz, string $key = null ): Debug;
 ```
 
-Returns the CSS sources
+Adds a variable to the debug output
 
 ```php
 public function getCssSources(): string;
 ```
 
-Returns the JavaScript sources
+Returns the CSS sources
 
 ```php
 public function getJsSources(): string;
 ```
 
-Generates a link to the current version documentation
+Returns the JavaScript sources
 
 ```php
 public function getVersion(): string;
 ```
 
-Halts the request showing a backtrace
+Generates a link to the current version documentation
 
 ```php
 public function halt(): void;
 ```
 
-Listen for uncaught exceptions and unsilent notices or warnings
+Halts the request showing a backtrace
 
 ```php
 public function listen( bool $exceptions = bool, bool $lowSeverity = bool ): Debug;
 ```
 
-Listen for uncaught exceptions
+Listen for uncaught exceptions and unsilent notices or warnings
 
 ```php
 public function listenExceptions(): Debug;
 ```
 
-Listen for unsilent notices or warnings
+Listen for uncaught exceptions
 
 ```php
 public function listenLowSeverity(): Debug;
 ```
 
-Handles uncaught exceptions
+Listen for unsilent notices or warnings
 
 ```php
 public function onUncaughtException( \Throwable $exception ): bool;
 ```
 
-Throws an exception when a notice or warning is raised
+Handles uncaught exceptions
 
 ```php
 public function onUncaughtLowSeverity( mixed $severity, mixed $message, mixed $file, mixed $line, mixed $context ): void;
 ```
 
-Sets if files the exception's backtrace must be showed
+Throws an exception when a notice or warning is raised
 
 ```php
 public function setBlacklist( array $blacklist ): Debug;
@@ -140,51 +138,53 @@ Sets if files the exception's backtrace must be showed
 public function setShowBackTrace( bool $showBackTrace ): Debug;
 ```
 
-Sets if files must be completely opened and showed in the output or just the fragment related to the exception
+Sets if files the exception's backtrace must be showed
 
 ```php
 public function setShowFileFragment( bool $showFileFragment ): Debug;
 ```
 
-Set if files part of the backtrace must be shown in the output
+Sets if files must be completely opened and showed in the output or just the fragment related to the exception
 
 ```php
 public function setShowFiles( bool $showFiles ): Debug;
 ```
 
-Change the base URI for static resources
+Set if files part of the backtrace must be shown in the output
 
 ```php
 public function setUri( string $uri ): Debug;
 ```
 
-Escapes a string with htmlentities
+Change the base URI for static resources
 
 ```php
 protected function escapeString( mixed $value ): string;
 ```
 
-Produces a recursive representation of an array
+Escapes a string with htmlentities
 
 ```php
 protected function getArrayDump( array $argument, mixed $n = int ): string | null;
 ```
 
-Produces an string representation of a variable
+Produces a recursive representation of an array
 
 ```php
 protected function getVarDump( mixed $variable ): string;
 ```
 
-Shows a backtrace item
+Produces an string representation of a variable
 
 ```php
 final protected function showTraceItem( int $n, array $trace ): string;
 ```
 
+Shows a backtrace item
+
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
 
 | Namespace | Phalcon\Debug | | Uses | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
@@ -226,36 +226,40 @@ protected styles;
 
 ## Métodos
 
-Phalcon\Debug\Dump constructor
-
 ```php
 public function __construct( array $styles = [], bool $detailed = bool );
 ```
 
-Alias of variables() method
+Phalcon\Debug\Dump constructor
 
 ```php
 public function all(): string;
 ```
 
+Alias of variables() method
+
 ```php
 public function getDetailed(): bool
 ```
-
-Alias of variable() method
 
 ```php
 public function one( mixed $variable, string $name = null ): string;
 ```
 
+Alias of variable() method
+
 ```php
 public function setDetailed( bool $detailed )
+```
+
+```php
+public function setStyles( array $styles = [] ): array;
 ```
 
 Set styles for vars type
 
 ```php
-public function setStyles( array $styles = [] ): array;
+public function toJson( mixed $variable ): string;
 ```
 
 Returns an JSON string of information about a single variable.
@@ -274,7 +278,7 @@ echo (new \Phalcon\Debug\Dump())->toJson($foo);
 ```
 
 ```php
-public function toJson( mixed $variable ): string;
+public function variable( mixed $variable, string $name = null ): string;
 ```
 
 Returns an HTML string of information about a single variable.
@@ -284,7 +288,7 @@ echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 ```
 
 ```php
-public function variable( mixed $variable, string $name = null ): string;
+public function variables(): string;
 ```
 
 Returns an HTML string of debugging information about any number of variables, each wrapped in a "pre" tag.
@@ -298,24 +302,20 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
 ```php
-public function variables(): string;
+protected function getStyle( string $type ): string;
 ```
 
 Get style for type
 
 ```php
-protected function getStyle( string $type ): string;
+protected function output( mixed $variable, string $name = null, int $tab = int ): string;
 ```
 
 Prepare an HTML string of information about a single variable.
 
-```php
-protected function output( mixed $variable, string $name = null, int $tab = int ): string;
-```
-
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
 
 | Namespace | Phalcon\Debug | | Extends | \Phalcon\Exception |
 
