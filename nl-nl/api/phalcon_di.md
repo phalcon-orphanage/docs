@@ -21,7 +21,7 @@ title: 'Phalcon\Di'
 
 <h1 id="di">Class Phalcon\Di</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
@@ -82,70 +82,74 @@ protected static _default;
 
 ## Methoden
 
-Magic method to get or set services using setters/getters
-
 ```php
 public function __call( string $method, array $arguments = [] ): mixed | null;
 ```
 
-Phalcon\Di constructor
+Magic method to get or set services using setters/getters
 
 ```php
 public function __construct();
 ```
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Phalcon\Di constructor
 
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 
-Resolves the service based on its configuration
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 ```php
 public function get( string $name, mixed $parameters = null ): mixed;
 ```
 
-Return the latest DI created
+Resolves the service based on its configuration
 
 ```php
 public static function getDefault(): DiInterface | null;
 ```
 
-Returns the internal event manager
+Return the latest DI created
 
 ```php
 public function getInternalEventsManager(): ManagerInterface;
 ```
 
-Returns a service definition without resolving
+Returns the internal event manager
 
 ```php
 public function getRaw( string $name ): mixed;
 ```
 
-Returns a Phalcon\Di\Service instance
+Returns a service definition without resolving
 
 ```php
 public function getService( string $name ): ServiceInterface;
 ```
 
-Return the services registered in the DI
+Returns a Phalcon\Di\Service instance
 
 ```php
 public function getServices(): ServiceInterface[];
 ```
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+Return the services registered in the DI
 
 ```php
 public function getShared( string $name, mixed $parameters = null ): mixed;
 ```
 
-Check whether the DI contains a service by a name
+Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
 ```php
 public function has( string $name ): bool;
+```
+
+Check whether the DI contains a service by a name
+
+```php
+public function loadFromPhp( string $filePath ): void;
 ```
 
 Loads services from a php config file.
@@ -180,7 +184,7 @@ return [
 @link https://docs.phalcon.io/en/latest/reference/di.html
 
 ```php
-public function loadFromPhp( string $filePath ): void;
+public function loadFromYaml( string $filePath, array $callbacks = null ): void;
 ```
 
 Loads services from a yaml file.
@@ -217,13 +221,13 @@ user:
 @link https://docs.phalcon.io/en/latest/reference/di.html
 
 ```php
-public function loadFromYaml( string $filePath, array $callbacks = null ): void;
+public function offsetExists( mixed $name ): bool;
 ```
 
 Check if a service is registered using the array syntax
 
 ```php
-public function offsetExists( mixed $name ): bool;
+public function offsetGet( mixed $name ): mixed;
 ```
 
 Allows to obtain a shared service using the array syntax
@@ -233,7 +237,7 @@ var_dump($di["request"]);
 ```
 
 ```php
-public function offsetGet( mixed $name ): mixed;
+public function offsetSet( mixed $name, mixed $definition ): void;
 ```
 
 Allows to register a shared service using the array syntax
@@ -243,13 +247,13 @@ $di["request"] = new \Phalcon\Http\Request();
 ```
 
 ```php
-public function offsetSet( mixed $name, mixed $definition ): void;
+public function offsetUnset( mixed $name ): void;
 ```
 
 Removes a service from the services container using the array syntax
 
 ```php
-public function offsetUnset( mixed $name ): void;
+public function register( ServiceProviderInterface $provider ): void;
 ```
 
 Registers a service provider.
@@ -273,60 +277,56 @@ class SomeServiceProvider implements ServiceProviderInterface
 ```
 
 ```php
-public function register( ServiceProviderInterface $provider ): void;
+public function remove( string $name ): void;
 ```
 
 Removes a service in the services container It also removes any shared instance created for the service
 
 ```php
-public function remove( string $name ): void;
+public static function reset(): void;
 ```
 
 Resets the internal default DI
 
 ```php
-public static function reset(): void;
+public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 
 Registers a service in the services container
 
 ```php
-public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
+public static function setDefault( DiInterface $container ): void;
 ```
 
 Set a default dependency injection container to be obtained into static methods
 
 ```php
-public static function setDefault( DiInterface $container ): void;
+public function setInternalEventsManager( ManagerInterface $eventsManager );
 ```
 
 Sets the internal event manager
 
 ```php
-public function setInternalEventsManager( ManagerInterface $eventsManager );
+public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
 Sets a service using a raw Phalcon\Di\Service definition
 
 ```php
-public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
+public function setShared( string $name, mixed $definition ): ServiceInterface;
 ```
 
 Registers an "always shared" service in the services container
 
 ```php
-public function setShared( string $name, mixed $definition ): ServiceInterface;
+protected function loadFromConfig( Config $config ): void;
 ```
 
 Loads services from a Config object.
 
-```php
-protected function loadFromConfig( Config $config ): void;
-```
-
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/AbstractInjectionAware.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/AbstractInjectionAware.zep)
 
 | Namespace | Phalcon\Di | | Implements | InjectionAwareInterface |
 
@@ -346,21 +346,21 @@ protected container;
 
 ## Methoden
 
-Returns the internal dependency injector
-
 ```php
 public function getDI(): DiInterface;
 ```
 
-Sets the dependency injector
+Returns the internal dependency injector
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
 
+Sets the dependency injector
+
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/DiInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/DiInterface.zep)
 
 | Namespace | Phalcon\Di | | Uses | ArrayAccess | | Extends | ArrayAccess |
 
@@ -368,93 +368,93 @@ Interface for Phalcon\Di
 
 ## Methoden
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
-
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 
-Resolves the service based on its configuration
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 ```php
 public function get( string $name, mixed $parameters = null ): mixed;
 ```
 
-Return the last DI created
+Resolves the service based on its configuration
 
 ```php
 public static function getDefault(): DiInterface | null;
 ```
 
-Returns a service definition without resolving
+Return the last DI created
 
 ```php
 public function getRaw( string $name ): mixed;
 ```
 
-Returns the corresponding Phalcon\Di\Service instance for a service
+Returns a service definition without resolving
 
 ```php
 public function getService( string $name ): ServiceInterface;
 ```
 
-Return the services registered in the DI
+Returns the corresponding Phalcon\Di\Service instance for a service
 
 ```php
 public function getServices(): ServiceInterface[];
 ```
 
-Returns a shared service based on their configuration
+Return the services registered in the DI
 
 ```php
 public function getShared( string $name, mixed $parameters = null ): mixed;
 ```
 
-Check whether the DI contains a service by a name
+Returns a shared service based on their configuration
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Removes a service in the services container
+Check whether the DI contains a service by a name
 
 ```php
 public function remove( string $name ): void;
 ```
 
-Resets the internal default DI
+Removes a service in the services container
 
 ```php
 public static function reset(): void;
 ```
 
-Registers a service in the services container
+Resets the internal default DI
 
 ```php
 public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 
-Set a default dependency injection container to be obtained into static methods
+Registers a service in the services container
 
 ```php
 public static function setDefault( DiInterface $container ): void;
 ```
 
-Sets a service using a raw Phalcon\Di\Service definition
+Set a default dependency injection container to be obtained into static methods
 
 ```php
 public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
-Registers an "always shared" service in the services container
+Sets a service using a raw Phalcon\Di\Service definition
 
 ```php
 public function setShared( string $name, mixed $definition ): ServiceInterface;
 ```
 
+Registers an "always shared" service in the services container
+
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/Exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception.zep)
 
 | Namespace | Phalcon\Di | | Extends | \Phalcon\Exception |
 
@@ -462,7 +462,7 @@ Exceptions thrown in Phalcon\Di will use this class
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/Exception/ServiceResolutionException.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception/ServiceResolutionException.zep)
 
 | Namespace | Phalcon\Di\Exception | | Extends | \Phalcon\Di\Exception |
 
@@ -470,7 +470,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/FactoryDefault.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/FactoryDefault.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Filter\FilterFactory | | Extends | \Phalcon\Di |
 
@@ -478,15 +478,15 @@ This is a variant of the standard Phalcon\Di. By default it automatically regist
 
 ## Methoden
 
-Phalcon\Di\FactoryDefault constructor
-
 ```php
 public function __construct();
 ```
 
+Phalcon\Di\FactoryDefault constructor
+
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/FactoryDefault/Cli.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/FactoryDefault/Cli.zep)
 
 | Namespace | Phalcon\Di\FactoryDefault | | Uses | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory | | Extends | FactoryDefault |
 
@@ -496,15 +496,15 @@ This is a variant of the standard Phalcon\Di. By default it automatically regist
 
 ## Methoden
 
-Phalcon\Di\FactoryDefault\Cli constructor
-
 ```php
 public function __construct();
 ```
 
+Phalcon\Di\FactoryDefault\Cli constructor
+
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
 
@@ -526,33 +526,33 @@ protected container;
 
 ## Methoden
 
-Magic method __get
-
 ```php
 public function __get( string $propertyName ): mixed | null;
 ```
 
-Magic method __isset
+Magic method __get
 
 ```php
 public function __isset( string $name ): bool;
 ```
 
-Returns the internal dependency injector
+Magic method __isset
 
 ```php
 public function getDI(): DiInterface;
 ```
 
-Sets the dependency injector
+Returns the internal dependency injector
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
 
+Sets the dependency injector
+
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/InjectionAwareInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/InjectionAwareInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -560,21 +560,21 @@ This interface must be implemented in those classes that uses internally the Pha
 
 ## Methoden
 
-Returns the internal dependency injector
-
 ```php
 public function getDI(): DiInterface;
 ```
 
-Sets the dependency injector
+Returns the internal dependency injector
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
 
+Sets the dependency injector
+
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/Service.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service.zep)
 
 | Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
@@ -612,69 +612,69 @@ protected sharedInstance;
 
 ## Methoden
 
-Phalcon\Di\Service
-
 ```php
 final public function __construct( mixed $definition, bool $shared = bool );
 ```
 
-Returns the service definition
+Phalcon\Di\Service
 
 ```php
 public function getDefinition(): mixed;
 ```
 
-Returns a parameter in a specific position
+Returns the service definition
 
 ```php
 public function getParameter( int $position );
 ```
 
-Returns true if the service was resolved
+Returns a parameter in a specific position
 
 ```php
 public function isResolved(): bool;
 ```
 
-Check whether the service is shared or not
+Returns true if the service was resolved
 
 ```php
 public function isShared(): bool;
 ```
 
-Resolves the service
+Check whether the service is shared or not
 
 ```php
 public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 
-Set the service definition
+Resolves the service
 
 ```php
 public function setDefinition( mixed $definition ): void;
 ```
 
-Changes a parameter in the definition without resolve the service
+Set the service definition
 
 ```php
 public function setParameter( int $position, array $parameter ): ServiceInterface;
 ```
 
-Sets if the service is shared or not
+Changes a parameter in the definition without resolve the service
 
 ```php
 public function setShared( bool $shared ): void;
 ```
 
-Sets/Resets the shared instance related to the service
+Sets if the service is shared or not
 
 ```php
 public function setSharedInstance( mixed $sharedInstance ): void;
 ```
 
+Sets/Resets the shared instance related to the service
+
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/Service/Builder.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service/Builder.zep)
 
 | Namespace | Phalcon\Di\Service | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
 
@@ -684,15 +684,15 @@ This class builds instances based on complex definitions
 
 ## Methoden
 
-Builds a service using a complex service definition
-
 ```php
 public function build( DiInterface $container, array $definition, mixed $parameters = null );
 ```
 
+Builds a service using a complex service definition
+
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/ServiceInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -700,57 +700,57 @@ Represents a service in the services container
 
 ## Methoden
 
-Returns the service definition
-
 ```php
 public function getDefinition(): mixed;
 ```
 
-Returns a parameter in a specific position
+Returns the service definition
 
 ```php
 public function getParameter( int $position );
 ```
 
-Returns true if the service was resolved
+Returns a parameter in a specific position
 
 ```php
 public function isResolved(): bool;
 ```
 
-Check whether the service is shared or not
+Returns true if the service was resolved
 
 ```php
 public function isShared(): bool;
 ```
 
-Resolves the service
+Check whether the service is shared or not
 
 ```php
 public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 
-Set the service definition
+Resolves the service
 
 ```php
 public function setDefinition( mixed $definition );
 ```
 
-Changes a parameter in the definition without resolve the service
+Set the service definition
 
 ```php
 public function setParameter( int $position, array $parameter ): ServiceInterface;
 ```
 
-Sets if the service is shared or not
+Changes a parameter in the definition without resolve the service
 
 ```php
 public function setShared( bool $shared );
 ```
 
+Sets if the service is shared or not
+
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Di/ServiceProviderInterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceProviderInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -778,8 +778,8 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 ## Methoden
 
-Registers a service provider.
-
 ```php
 public function register( DiInterface $di ): void;
 ```
+
+Registers a service provider.
