@@ -12,7 +12,7 @@ title: 'Phalcon\Messages'
 
 <h1 id="messages-exception">Classe Phalcon\Messages\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Messages/Exception.zep)
 
 | Espace de noms | Phalcon\Messages | | Hérite de | \Phalcon\Exception |
 
@@ -22,7 +22,7 @@ Les exceptions émises dans la classe Phalcon\Messages\* utiliseront cette class
 
 <h1 id="messages-message">Classe Phalcon\Messages\Message</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/message.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Messages/Message.zep)
 
 | Espace de noms | Phalcon\Messages | | Utilise | JsonSerializable | | Implémente | MessageInterface, JsonSerializable |
 
@@ -62,17 +62,17 @@ protected metaData;
 
 ## Méthodes
 
+Constructeur de Phalcon\Messages\Message
+
 ```php
 public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
 ```
 
-Constructeur de Phalcon\Messages\Message
+La méthode magique __toString renvoie un message qui est une chaîne de caractères
 
 ```php
 public function __toString(): string;
 ```
-
-La méthode magique __toString renvoie un message qui est une chaîne de caractères
 
 ```php
 public function getCode(): int
@@ -94,45 +94,45 @@ public function getMetaData(): array
 public function getType(): string
 ```
 
-```php
-public function jsonSerialize(): array;
-```
-
 Sérialise l'objet pour json_encode
 
 ```php
-public function setCode( int $code ): MessageInterface;
+public function jsonSerialize(): array;
 ```
 
 Définit le code du message
 
 ```php
-public function setField( mixed $field ): MessageInterface;
+public function setCode( int $code ): MessageInterface;
 ```
 
 Définit le nom du champ lié au message
 
 ```php
-public function setMessage( string $message ): MessageInterface;
+public function setField( mixed $field ): MessageInterface;
 ```
 
 Définit un message verbeux
 
 ```php
-public function setMetaData( array $metaData ): MessageInterface;
+public function setMessage( string $message ): MessageInterface;
 ```
 
 Sets message metadata
 
 ```php
-public function setType( string $type ): MessageInterface;
+public function setMetaData( array $metaData ): MessageInterface;
 ```
 
 Sets message type
 
+```php
+public function setType( string $type ): MessageInterface;
+```
+
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messageinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Messages/MessageInterface.zep)
 
 | Namespace | Phalcon\Messages |
 
@@ -142,79 +142,75 @@ Interface for Phalcon\Messages\MessageInterface
 
 ## Méthodes
 
+La méthode magique __toString renvoie un message qui est une chaîne de caractères
+
 ```php
 public function __toString(): string;
 ```
 
-La méthode magique __toString renvoie un message qui est une chaîne de caractères
+Returns the message code related to this message
 
 ```php
 public function getCode();
 ```
 
-Returns the message code related to this message
-
-@return int
+Returns field name related to message
 
 ```php
 public function getField();
 ```
 
-Returns field name related to message
-
-@return string
+Returns verbose message
 
 ```php
 public function getMessage(): string;
 ```
 
-Returns verbose message
+Returns message metadata
 
 ```php
 public function getMetaData(): array;
 ```
 
-Returns message metadata
+Returns message type
 
 ```php
 public function getType(): string;
 ```
 
-Returns message type
+Définit le code du message
 
 ```php
 public function setCode( int $code ): MessageInterface;
 ```
 
-Définit le code du message
+Définit le nom du champ lié au message
 
 ```php
 public function setField( string $field ): MessageInterface;
 ```
 
-Définit le nom du champ lié au message
+Définit un message verbeux
 
 ```php
 public function setMessage( string $message ): MessageInterface;
 ```
 
-Définit un message verbeux
+Sets message metadata
 
 ```php
 public function setMetaData( array $metaData ): MessageInterface;
 ```
 
-Sets message metadata
+Sets message type
 
 ```php
 public function setType( string $type ): MessageInterface;
 ```
 
-Sets message type
-
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messages.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Messages/Messages.zep)
 
 | Namespace | Phalcon\Messages | | Uses | ArrayAccess, Countable, Iterator, JsonSerializable | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
 
@@ -237,14 +233,10 @@ protected messages;
 
 ## Méthodes
 
-```php
-public function __construct( array $messages = [] );
-```
-
 Phalcon\Messages\Messages constructor
 
 ```php
-public function appendMessage( MessageInterface $message );
+public function __construct( array $messages = [] );
 ```
 
 Appends a message to the collection
@@ -256,7 +248,7 @@ $messages->appendMessage(
 ```
 
 ```php
-public function appendMessages( mixed $messages );
+public function appendMessage( MessageInterface $message );
 ```
 
 Appends an array of messages to the collection
@@ -266,25 +258,25 @@ $messages->appendMessages($messagesArray);
 ```
 
 ```php
-public function count(): int;
+public function appendMessages( mixed $messages );
 ```
 
 Returns the number of messages in the list
 
 ```php
-public function current(): MessageInterface;
+public function count(): int;
 ```
 
 Returns the current message in the iterator
 
 ```php
-public function filter( string $fieldName ): array;
+public function current(): MessageInterface;
 ```
 
 Filters the message collection by field name
 
 ```php
-public function jsonSerialize(): array;
+public function filter( string $fieldName ): array;
 ```
 
 Returns serialised message objects as array for json_encode. Calls jsonSerialize on each object if present
@@ -295,19 +287,19 @@ echo json_encode($data);
 ```
 
 ```php
-public function key(): int;
+public function jsonSerialize(): array;
 ```
 
 Returns the current position/key in the iterator
 
 ```php
-public function next(): void;
+public function key(): int;
 ```
 
 Moves the internal iteration pointer to the next position
 
 ```php
-public function offsetExists( mixed $index ): bool;
+public function next(): void;
 ```
 
 Checks if an index exists
@@ -319,7 +311,7 @@ var_dump(
 ```
 
 ```php
-public function offsetGet( mixed $index ): mixed;
+public function offsetExists( mixed $index ): bool;
 ```
 
 Gets an attribute a message using the array syntax
@@ -331,33 +323,37 @@ print_r(
 ```
 
 ```php
-public function offsetSet( mixed $index, mixed $message ): void;
+public function offsetGet( mixed $index ): mixed;
 ```
 
 Sets an attribute using the array-syntax
 
 ```php
-$messages[0] = new \Phalcon\Messages\Message("Ceci est un message");
+$messages[0] = new \Phalcon\Messages\Message("This is a message");
 ```
 
 ```php
-public function offsetUnset( mixed $index ): void;
+public function offsetSet( mixed $index, mixed $message ): void;
 ```
 
-Supprime un message de la liste
+Removes a message from the list
 
 ```php
 unset($message["database"]);
 ```
 
 ```php
+public function offsetUnset( mixed $index ): void;
+```
+
+Rewinds the internal iterator
+
+```php
 public function rewind(): void;
 ```
 
-Rembobine l'itérateur interne
+Check if the current message in the iterator is valid
 
 ```php
 public function valid(): bool;
 ```
-
-Vérifiez si le message actuel dans l'itérateur est valide
