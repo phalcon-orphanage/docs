@@ -20,7 +20,7 @@ title: 'Phalcon\Cli'
 
 <h1 id="cli-console">Class Phalcon\Cli\Console</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Console.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Console.zep)
 
 | Namespace | Phalcon\Cli | | Uses | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface | | Extends | AbstractApplication |
 
@@ -43,21 +43,21 @@ protected options;
 
 ## Methods
 
-Handle the whole command-line tasks
-
 ```php
 public function handle( array $arguments = null );
 ```
 
-Set an specific argument
+Handle the whole command-line tasks
 
 ```php
 public function setArgument( array $arguments = null, bool $str = bool, bool $shift = bool ): Console;
 ```
 
+Set an specific argument
+
 <h1 id="cli-console-exception">Class Phalcon\Cli\Console\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Console/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Console/Exception.zep)
 
 | Namespace | Phalcon\Cli\Console | | Extends | \Phalcon\Application\Exception |
 
@@ -65,7 +65,7 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 
 <h1 id="cli-dispatcher">Class Phalcon\Cli\Dispatcher</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Dispatcher.zep)
 
 | Namespace | Phalcon\Cli | | Uses | Phalcon\Cli\Dispatcher\Exception, Phalcon\Dispatcher\AbstractDispatcher, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface | | Extends | CliDispatcher | | Implements | DispatcherInterface |
 
@@ -115,93 +115,93 @@ protected options;
 
 ## Methods
 
-Calls the action method.
-
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] ): mixed;
 ```
 
-Returns the active task in the dispatcher
+Calls the action method.
 
 ```php
 public function getActiveTask(): TaskInterface;
 ```
 
-Returns the latest dispatched controller
+Returns the active task in the dispatcher
 
 ```php
 public function getLastTask(): TaskInterface;
 ```
 
-Gets an option by its name or numeric index
+Returns the latest dispatched controller
 
 ```php
 public function getOption( mixed $option, mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 
-Get dispatched options
+Gets an option by its name or numeric index
 
 ```php
 public function getOptions(): array;
 ```
 
-Gets last dispatched task name
+Get dispatched options
 
 ```php
 public function getTaskName(): string;
 ```
 
-Gets the default task suffix
+Gets last dispatched task name
 
 ```php
 public function getTaskSuffix(): string;
 ```
 
-Check if an option exists
+Gets the default task suffix
 
 ```php
 public function hasOption( mixed $option ): bool;
 ```
 
-Sets the default task name
+Check if an option exists
 
 ```php
 public function setDefaultTask( string $taskName ): void;
 ```
 
-Set the options to be dispatched
+Sets the default task name
 
 ```php
 public function setOptions( array $options ): void;
 ```
 
-Sets the task name to be dispatched
+Set the options to be dispatched
 
 ```php
 public function setTaskName( string $taskName ): void;
 ```
 
-Sets the default task suffix
+Sets the task name to be dispatched
 
 ```php
 public function setTaskSuffix( string $taskSuffix ): void;
 ```
 
-Handles a user exception
+Sets the default task suffix
 
 ```php
 protected function handleException( \Exception $exception );
 ```
 
-Throws an internal exception
+Handles a user exception
 
 ```php
 protected function throwDispatchException( string $message, int $exceptionCode = int );
 ```
 
+Throws an internal exception
+
 <h1 id="cli-dispatcher-exception">Class Phalcon\Cli\Dispatcher\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Dispatcher/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Dispatcher/Exception.zep)
 
 | Namespace | Phalcon\Cli\Dispatcher | | Extends | \Phalcon\Dispatcher\Exception |
 
@@ -209,7 +209,7 @@ Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 <h1 id="cli-dispatcherinterface">Interface Phalcon\Cli\DispatcherInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/DispatcherInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/DispatcherInterface.zep)
 
 | Namespace | Phalcon\Cli | | Uses | Phalcon\Dispatcher\DispatcherInterface | | Extends | DispatcherInterfaceBase |
 
@@ -217,63 +217,63 @@ Interface for Phalcon\Cli\Dispatcher
 
 ## Methods
 
-Returns the active task in the dispatcher
-
 ```php
 public function getActiveTask(): TaskInterface;
 ```
 
-Returns the latest dispatched controller
+Returns the active task in the dispatcher
 
 ```php
 public function getLastTask(): TaskInterface;
 ```
 
-Get dispatched options
+Returns the latest dispatched controller
 
 ```php
 public function getOptions(): array;
 ```
 
-Gets last dispatched task name
+Get dispatched options
 
 ```php
 public function getTaskName(): string;
 ```
 
-Gets default task suffix
+Gets last dispatched task name
 
 ```php
 public function getTaskSuffix(): string;
 ```
 
-Sets the default task name
+Gets default task suffix
 
 ```php
 public function setDefaultTask( string $taskName ): void;
 ```
 
-Set the options to be dispatched
+Sets the default task name
 
 ```php
 public function setOptions( array $options ): void;
 ```
 
-Sets the task name to be dispatched
+Set the options to be dispatched
 
 ```php
 public function setTaskName( string $taskName ): void;
 ```
 
-Sets the default task suffix
+Sets the task name to be dispatched
 
 ```php
 public function setTaskSuffix( string $taskSuffix ): void;
 ```
 
+Sets the default task suffix
+
 <h1 id="cli-router">Class Phalcon\Cli\Router</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router.zep)
 
 | Namespace | Phalcon\Cli | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception, Phalcon\Cli\Router\RouteInterface | | Extends | AbstractInjectionAware |
 
@@ -340,10 +340,14 @@ protected wasMatched = false;
 
 ## Methods
 
+```php
+public function __construct( bool $defaultRoutes = bool );
+```
+
 Phalcon\Cli\Router constructor
 
 ```php
-public function __construct( bool $defaultRoutes = bool );
+public function add( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
 Adds a route to the router
@@ -353,85 +357,85 @@ $router->add("/about", "About::main");
 ```
 
 ```php
-public function add( string $pattern, mixed $paths = null ): RouteInterface;
+public function getActionName(): string;
 ```
 
 Returns processed action name
 
 ```php
-public function getActionName(): string;
+public function getMatchedRoute(): RouteInterface;
 ```
 
 Returns the route that matches the handled URI
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatches(): array;
 ```
 
 Returns the sub expressions in the regular expression matched
 
 ```php
-public function getMatches(): array;
+public function getModuleName(): string;
 ```
 
 Returns processed module name
 
 ```php
-public function getModuleName(): string;
+public function getParams(): array;
 ```
 
 Returns processed extra params
 
 ```php
-public function getParams(): array;
+public function getRouteById( mixed $id ): RouteInterface | bool;
 ```
 
 Returns a route object by its id
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface | bool;
+public function getRouteByName( string $name ): RouteInterface | bool;
 ```
 
 Returns a route object by its name
 
 ```php
-public function getRouteByName( string $name ): RouteInterface | bool;
+public function getRoutes(): Route[];
 ```
 
 Returns all the routes defined in the router
 
 ```php
-public function getRoutes(): Route[];
+public function getTaskName(): string;
 ```
 
 Returns processed task name
 
 ```php
-public function getTaskName(): string;
+public function handle( mixed $arguments = null );
 ```
 
 Handles routing information received from command-line arguments
 
 ```php
-public function handle( mixed $arguments = null );
+public function setDefaultAction( string $actionName );
 ```
 
 Sets the default action name
 
 ```php
-public function setDefaultAction( string $actionName );
+public function setDefaultModule( string $moduleName );
 ```
 
 Sets the name of the default module
 
 ```php
-public function setDefaultModule( string $moduleName );
+public function setDefaultTask( string $taskName ): void;
 ```
 
 Sets the default controller name
 
 ```php
-public function setDefaultTask( string $taskName ): void;
+public function setDefaults( array $defaults ): Router;
 ```
 
 Sets an array of default paths. If a route is missing a path the router will use the defined here. This method must not be used to set a 404 route
@@ -446,18 +450,14 @@ $router->setDefaults(
 ```
 
 ```php
-public function setDefaults( array $defaults ): Router;
+public function wasMatched(): bool;
 ```
 
 Checks if the router matches any of the defined routes
 
-```php
-public function wasMatched(): bool;
-```
-
 <h1 id="cli-router-exception">Class Phalcon\Cli\Router\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Router/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Exception.zep)
 
 | Namespace | Phalcon\Cli\Router | | Extends | \Phalcon\Exception |
 
@@ -465,7 +465,7 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 
 <h1 id="cli-router-route">Class Phalcon\Cli\Router\Route</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Router/Route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Route.zep)
 
 | Namespace | Phalcon\Cli\Router | | Implements | RouteInterface |
 
@@ -521,112 +521,116 @@ protected static uniqueId = 0;
 public function __construct( string $pattern, mixed $paths = null );
 ```
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
-
 ```php
 public function beforeMatch( mixed $callback ): RouteInterface;
 ```
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
+Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
 
 ```php
 public function compilePattern( string $pattern ): string;
 ```
 
-Adds a converter to perform an additional transformation for certain parameter
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
 public function convert( string $name, mixed $converter ): RouteInterface;
 ```
 
-Set the routing delimiter
+Adds a converter to perform an additional transformation for certain parameter
 
 ```php
 public static function delimiter( string $delimiter = null ): void;
 ```
 
-Extracts parameters from a string
+Set the routing delimiter
 
 ```php
 public function extractNamedParams( string $pattern ): array | bool;
 ```
 
-Returns the 'before match' callback if any
+Extracts parameters from a string
 
 ```php
 public function getBeforeMatch(): mixed;
 ```
 
-Returns the route's compiled pattern
+Returns the 'before match' callback if any
 
 ```php
 public function getCompiledPattern(): string;
 ```
 
-Returns the router converter
+Returns the route's compiled pattern
 
 ```php
 public function getConverters(): array;
 ```
 
-Get routing delimiter
+Returns the router converter
 
 ```php
 public static function getDelimiter(): string;
 ```
 
-Returns the route's description
+Get routing delimiter
 
 ```php
 public function getDescription(): string;
 ```
 
-Returns the route's name
+Returns the route's description
 
 ```php
 public function getName(): string;
 ```
 
-Returns the paths
+Returns the route's name
 
 ```php
 public function getPaths(): array;
 ```
 
-Returns the route's pattern
+Returns the paths
 
 ```php
 public function getPattern(): string;
 ```
 
-Returns the paths using positions as keys and names as values
+Returns the route's pattern
 
 ```php
 public function getReversedPaths(): array;
 ```
 
-Returns the route's id
+Returns the paths using positions as keys and names as values
 
 ```php
 public function getRouteId(): string;
 ```
 
-Reconfigure the route adding a new pattern and a set of paths
+Returns the route's id
 
 ```php
 public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
-Resets the internal route id generator
+Reconfigure the route adding a new pattern and a set of paths
 
 ```php
 public static function reset(): void;
 ```
 
-Sets the route's description
+Resets the internal route id generator
 
 ```php
 public function setDescription( string $description ): RouteInterface;
+```
+
+Sets the route's description
+
+```php
+public function setName( string $name ): RouteInterface;
 ```
 
 Sets the route's name
@@ -640,13 +644,9 @@ $router->add(
 )->setName("about");
 ```
 
-```php
-public function setName( string $name ): RouteInterface;
-```
-
 <h1 id="cli-router-routeinterface">Interface Phalcon\Cli\Router\RouteInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Router/RouteInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/RouteInterface.zep)
 
 | Namespace | Phalcon\Cli\Router |
 
@@ -654,93 +654,93 @@ Interface for Phalcon\Cli\Router\Route
 
 ## Methods
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
-
 ```php
 public function compilePattern( string $pattern ): string;
 ```
 
-Set the routing delimiter
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
 public static function delimiter( string $delimiter = null );
 ```
 
-Returns the route's pattern
+Set the routing delimiter
 
 ```php
 public function getCompiledPattern(): string;
 ```
 
-Get routing delimiter
+Returns the route's pattern
 
 ```php
 public static function getDelimiter(): string;
 ```
 
-Returns the route's description
+Get routing delimiter
 
 ```php
 public function getDescription(): string;
 ```
 
-Returns the route's name
+Returns the route's description
 
 ```php
 public function getName(): string;
 ```
 
-Returns the paths
+Returns the route's name
 
 ```php
 public function getPaths(): array;
 ```
 
-Returns the route's pattern
+Returns the paths
 
 ```php
 public function getPattern(): string;
 ```
 
-Returns the paths using positions as keys and names as values
+Returns the route's pattern
 
 ```php
 public function getReversedPaths(): array;
 ```
 
-Returns the route's id
+Returns the paths using positions as keys and names as values
 
 ```php
 public function getRouteId(): string;
 ```
 
-Reconfigure the route adding a new pattern and a set of paths
+Returns the route's id
 
 ```php
 public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
-Resets the internal route id generator
+Reconfigure the route adding a new pattern and a set of paths
 
 ```php
 public static function reset(): void;
 ```
 
-Sets the route's description
+Resets the internal route id generator
 
 ```php
 public function setDescription( string $description ): RouteInterface;
 ```
 
-Sets the route's name
+Sets the route's description
 
 ```php
 public function setName( string $name ): RouteInterface;
 ```
 
+Sets the route's name
+
 <h1 id="cli-routerinterface">Interface Phalcon\Cli\RouterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/RouterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/RouterInterface.zep)
 
 | Namespace | Phalcon\Cli | | Uses | Phalcon\Cli\Router\RouteInterface |
 
@@ -748,105 +748,105 @@ Interface for Phalcon\Cli\Router
 
 ## Methods
 
-Adds a route to the router on any HTTP method
-
 ```php
 public function add( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Returns processed action name
+Adds a route to the router on any HTTP method
 
 ```php
 public function getActionName(): string;
 ```
 
-Returns the route that matches the handled URI
+Returns processed action name
 
 ```php
 public function getMatchedRoute(): RouteInterface;
 ```
 
-Return the sub expressions in the regular expression matched
+Returns the route that matches the handled URI
 
 ```php
 public function getMatches(): array;
 ```
 
-Returns processed module name
+Return the sub expressions in the regular expression matched
 
 ```php
 public function getModuleName(): string;
 ```
 
-Returns processed extra params
+Returns processed module name
 
 ```php
 public function getParams(): array;
 ```
 
-Returns a route object by its id
+Returns processed extra params
 
 ```php
 public function getRouteById( mixed $id ): RouteInterface;
 ```
 
-Returns a route object by its name
+Returns a route object by its id
 
 ```php
 public function getRouteByName( string $name ): RouteInterface;
 ```
 
-Return all the routes defined in the router
+Returns a route object by its name
 
 ```php
 public function getRoutes(): RouteInterface[];
 ```
 
-Returns processed task name
+Return all the routes defined in the router
 
 ```php
 public function getTaskName(): string;
 ```
 
-Handles routing information received from the rewrite engine
+Returns processed task name
 
 ```php
 public function handle( mixed $arguments = null );
 ```
 
-Sets the default action name
+Handles routing information received from the rewrite engine
 
 ```php
 public function setDefaultAction( string $actionName ): void;
 ```
 
-Sets the name of the default module
+Sets the default action name
 
 ```php
 public function setDefaultModule( string $moduleName ): void;
 ```
 
-Sets the default task name
+Sets the name of the default module
 
 ```php
 public function setDefaultTask( string $taskName ): void;
 ```
 
-Sets an array of default paths
+Sets the default task name
 
 ```php
 public function setDefaults( array $defaults ): void;
 ```
 
-Check if the router matches any of the defined routes
+Sets an array of default paths
 
 ```php
 public function wasMatched(): bool;
 ```
 
+Check if the router matches any of the defined routes
+
 <h1 id="cli-task">Class Phalcon\Cli\Task</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/Task.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Task.zep)
 
 | Namespace | Phalcon\Cli | | Uses | Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | TaskInterface, EventsAwareInterface |
 
@@ -880,27 +880,27 @@ protected eventsManager;
 
 ## Methods
 
-Phalcon\Cli\Task constructor
-
 ```php
 final public function __construct();
 ```
 
-返回内部事件管理器
+Phalcon\Cli\Task constructor
 
 ```php
 public function getEventsManager(): ManagerInterface | null;
 ```
 
-设置事件管理器
+返回内部事件管理器
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
+设置事件管理器
+
 <h1 id="cli-taskinterface">Interface Phalcon\Cli\TaskInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Cli/TaskInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/TaskInterface.zep)
 
 | Namespace | Phalcon\Cli |
 
