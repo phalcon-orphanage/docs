@@ -9,7 +9,7 @@ title: 'Phalcon\Registry'
 
 <h1 id="registry">Final Class Phalcon\Registry</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Registry.zep)
 
 | Namespace | Phalcon | | Uses | Traversable | | Extends | Collection |
 
@@ -51,44 +51,40 @@ Internally all the magic methods (and interfaces except JsonSerializable) are im
 
 ## Metody
 
-```php
-final public function __construct( array $data = null );
-```
-
 Constructor
 
 ```php
-final public function __get( string $element ): mixed;
+final public function __construct( array $data = null );
 ```
 
 Magic getter to get an element from the collection
 
 ```php
-final public function __isset( string $element ): bool;
+final public function __get( string $element ): mixed;
 ```
 
 Magic isset to check whether an element exists or not
 
 ```php
-final public function __set( string $element, mixed $value ): void;
+final public function __isset( string $element ): bool;
 ```
 
 Magic setter to assign values to an element
 
 ```php
-final public function __unset( string $element ): void;
+final public function __set( string $element, mixed $value ): void;
 ```
 
 Magic unset to remove an element from the collection
 
 ```php
-final public function clear(): void;
+final public function __unset( string $element ): void;
 ```
 
 Clears the internal collection
 
 ```php
-final public function count(): int;
+final public function clear(): void;
 ```
 
 Count elements of an object
@@ -96,31 +92,31 @@ Count elements of an object
 @link https://php.net/manual/en/countable.count.php
 
 ```php
-final public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
+final public function count(): int;
 ```
 
 Get the element from the collection
 
 ```php
-final public function getIterator(): Traversable;
+final public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 
 Returns the iterator of the class
 
 ```php
-final public function has( string $element ): bool;
+final public function getIterator(): Traversable;
 ```
 
 Get the element from the collection
 
 ```php
-final public function init( array $data = [] ): void;
+final public function has( string $element ): bool;
 ```
 
 Initialize internal array
 
 ```php
-final public function jsonSerialize(): array;
+final public function init( array $data = [] ): void;
 ```
 
 Specify data which should be serialized to JSON
@@ -128,7 +124,7 @@ Specify data which should be serialized to JSON
 @link https://php.net/manual/en/jsonserializable.jsonserialize.php
 
 ```php
-final public function offsetExists( mixed $element ): bool;
+final public function jsonSerialize(): array;
 ```
 
 Whether a offset exists
@@ -136,7 +132,7 @@ Whether a offset exists
 @link https://php.net/manual/en/arrayaccess.offsetexists.php
 
 ```php
-final public function offsetGet( mixed $element ): mixed;
+final public function offsetExists( mixed $element ): bool;
 ```
 
 Offset to retrieve
@@ -144,7 +140,7 @@ Offset to retrieve
 @link https://php.net/manual/en/arrayaccess.offsetget.php
 
 ```php
-final public function offsetSet( mixed $element, mixed $value ): void;
+final public function offsetGet( mixed $element ): mixed;
 ```
 
 Offset to set
@@ -152,7 +148,7 @@ Offset to set
 @link https://php.net/manual/en/arrayaccess.offsetset.php
 
 ```php
-final public function offsetUnset( mixed $element ): void;
+final public function offsetSet( mixed $element, mixed $value ): void;
 ```
 
 Offset to unset
@@ -160,13 +156,13 @@ Offset to unset
 @link https://php.net/manual/en/arrayaccess.offsetunset.php
 
 ```php
-final public function remove( string $element ): void;
+final public function offsetUnset( mixed $element ): void;
 ```
 
 Delete the element from the collection
 
 ```php
-final public function serialize(): string;
+final public function remove( string $element ): void;
 ```
 
 String representation of object
@@ -174,19 +170,19 @@ String representation of object
 @link https://php.net/manual/en/serializable.serialize.php
 
 ```php
-final public function set( string $element, mixed $value ): void;
+final public function serialize(): string;
 ```
 
 Set an element in the collection
 
 ```php
-final public function toArray(): array;
+final public function set( string $element, mixed $value ): void;
 ```
 
 Returns the object in an array format
 
 ```php
-final public function toJson( int $options = int ): string;
+final public function toArray(): array;
 ```
 
 Returns the object in a JSON format
@@ -198,9 +194,13 @@ JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
 @see https://www.ietf.org/rfc/rfc4627.txt
 
 ```php
-final public function unserialize( mixed $serialized ): void;
+final public function toJson( int $options = int ): string;
 ```
 
 Constructs the object
 
 @link https://php.net/manual/en/serializable.unserialize.php
+
+```php
+final public function unserialize( mixed $serialized ): void;
+```
