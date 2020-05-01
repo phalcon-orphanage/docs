@@ -11,7 +11,7 @@ title: 'Phalcon\Collection'
 
 <h1 id="collection">Class Phalcon\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Collection.zep)
 
 | Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
@@ -47,140 +47,132 @@ protected lowerKeys;
 
 ## Methods
 
-```php
-public function __construct( array $data = [], bool $insensitive = bool );
-```
-
 Collection constructor.
 
 ```php
-public function __get( string $element ): mixed;
+public function __construct( array $data = [], bool $insensitive = bool );
 ```
 
 Magic getter to get an element from the collection
 
 ```php
-public function __isset( string $element ): bool;
+public function __get( string $element ): mixed;
 ```
 
 Magic isset to check whether an element exists or not
 
 ```php
-public function __set( string $element, mixed $value ): void;
+public function __isset( string $element ): bool;
 ```
 
 Magic setter to assign values to an element
 
 ```php
-public function __unset( string $element ): void;
+public function __set( string $element, mixed $value ): void;
 ```
 
 Magic unset to remove an element from the collection
 
 ```php
-public function clear(): void;
+public function __unset( string $element ): void;
 ```
 
 Clears the internal collection
 
 ```php
-public function count(): int;
+public function clear(): void;
 ```
 
 Count elements of an object. See [count](https://php.net/manual/en/countable.count.php)
 
 ```php
-public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
+public function count(): int;
 ```
 
 Get the element from the collection
 
 ```php
-public function getIterator(): Traversable;
+public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 
 Returns the iterator of the class
 
 ```php
-public function getKeys( bool $insensitive = bool ): array;
+public function getIterator(): Traversable;
 ```
 
-//
+```php
+public function getKeys( bool $insensitive = bool ): array;
+```
 
 ```php
 public function getValues(): array;
 ```
 
-//
+Get the element from the collection
 
 ```php
 public function has( string $element ): bool;
 ```
 
-Get the element from the collection
+Initialize internal array
 
 ```php
 public function init( array $data = [] ): void;
 ```
 
-Initialize internal array
+Specify data which should be serialized to JSON See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
 
 ```php
 public function jsonSerialize(): array;
 ```
 
-Specify data which should be serialized to JSON See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
+Whether a offset exists See [offsetExists](https://php.net/manual/en/arrayaccess.offsetexists.php)
 
 ```php
 public function offsetExists( mixed $element ): bool;
 ```
 
-Whether a offset exists See [offsetExists](https://php.net/manual/en/arrayaccess.offsetexists.php)
+Offset to retrieve See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
 
 ```php
 public function offsetGet( mixed $element );
 ```
 
-Offset to retrieve See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
+Offset to set See [offsetSet](https://php.net/manual/en/arrayaccess.offsetset.php)
 
 ```php
 public function offsetSet( mixed $element, mixed $value ): void;
 ```
 
-Offset to set See [offsetSet](https://php.net/manual/en/arrayaccess.offsetset.php)
+Offset to unset See [offsetUnset](https://php.net/manual/en/arrayaccess.offsetunset.php)
 
 ```php
 public function offsetUnset( mixed $element ): void;
 ```
 
-Offset to unset See [offsetUnset](https://php.net/manual/en/arrayaccess.offsetunset.php)
+Delete the element from the collection
 
 ```php
 public function remove( string $element ): void;
 ```
 
-Delete the element from the collection
+String representation of object See [serialize](https://php.net/manual/en/serializable.serialize.php)
 
 ```php
 public function serialize(): string;
 ```
 
-String representation of object See [serialize](https://php.net/manual/en/serializable.serialize.php)
+Set an element in the collection
 
 ```php
 public function set( string $element, mixed $value ): void;
 ```
 
-Set an element in the collection
-
-```php
-public function toArray(): array;
-```
-
 Returns the object in an array format
 
 ```php
-public function toJson( int $options = int ): string;
+public function toArray(): array;
 ```
 
 Returns the object in a JSON format
@@ -192,20 +184,24 @@ The default string uses the following options for json_encode
 See [rfc4627](https://www.ietf.org/rfc/rfc4627.txt)
 
 ```php
-public function unserialize( mixed $serialized ): void;
+public function toJson( int $options = int ): string;
 ```
 
 Constructs the object See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
 
 ```php
-protected function setData( string $element, mixed $value ): void;
+public function unserialize( mixed $serialized ): void;
 ```
 
 Internal method to set data
 
+```php
+protected function setData( string $element, mixed $value ): void;
+```
+
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Collection/Exception.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Phalcon\Exception | | Implements | Throwable |
 
@@ -213,7 +209,7 @@ Exceptions for the Collection object
 
 <h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Collection/ReadOnly.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Phalcon\Collection | | Extends | Collection |
 
@@ -221,14 +217,14 @@ Phalcon\Collection\ReadOnly is a read only Collection object
 
 ## Methods
 
+Delete the element from the collection
+
 ```php
 public function remove( string $element ): void;
 ```
 
-Delete the element from the collection
+Set an element in the collection
 
 ```php
 public function set( string $element, mixed $value ): void;
 ```
-
-Set an element in the collection
