@@ -14,10 +14,10 @@ title: 'Phalcon\Session'
 * [Phalcon\Session\Exception](#session-exception)
 * [Phalcon\Session\Manager](#session-manager)
 * [Phalcon\Session\ManagerInterface](#session-managerinterface)
-        
+
 <h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/abstractadapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface |
@@ -41,47 +41,42 @@ protected adapter;
 ```
 
 ## Methods
+
+Close
 ```php
 public function close(): bool;
 ```
-Close
 
-
+Destroy
 ```php
 public function destroy( mixed $id ): bool;
 ```
-Destroy
 
-
+Garbage Collector
 ```php
 public function gc( mixed $maxlifetime ): bool;
 ```
-Garbage Collector
 
-
+Open
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
-Open
 
-
+Read
 ```php
 public function read( mixed $id ): string;
 ```
-Read
 
-
+Write
 ```php
 public function write( mixed $id, mixed $data ): bool;
 ```
-Write
 
 
 
-        
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Storage\AdapterFactory |
@@ -91,17 +86,17 @@ Phalcon\Session\Adapter\Libmemcached
 
 
 ## Methods
+
+Constructor
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
-Constructor
 
 
 
-        
 <h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/noop.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Noop.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | SessionHandlerInterface |
@@ -154,59 +149,52 @@ protected ttl = 8600;
 ```
 
 ## Methods
+
+Constructor
 ```php
 public function __construct( array $options = [] );
 ```
-Constructor
 
-
+Close
 ```php
 public function close(): bool;
 ```
-Close
 
-
+Destroy
 ```php
 public function destroy( mixed $id ): bool;
 ```
-Destroy
 
-
+Garbage Collector
 ```php
 public function gc( mixed $maxlifetime ): bool;
 ```
-Garbage Collector
 
-
+Open
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
-Open
 
-
+Read
 ```php
 public function read( mixed $id ): string;
 ```
-Read
 
-
+Write
 ```php
 public function write( mixed $id, mixed $data ): bool;
 ```
-Write
 
-
+Helper method to get the name prefixed
 ```php
 protected function getPrefixedName( mixed $name ): string;
 ```
-Helper method to get the name prefixed
 
 
 
-        
 <h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Storage\AdapterFactory |
@@ -216,17 +204,17 @@ Phalcon\Session\Adapter\Redis
 
 
 ## Methods
+
+Constructor
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
-Constructor
 
 
 
-        
 <h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
 | Uses       | Phalcon\Helper\Str, Phalcon\Session\Exception |
@@ -262,44 +250,44 @@ private path = ;
 ```
 
 ## Methods
+
+Constructor
 ```php
 public function __construct( array $options = [] );
 ```
-//
+
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
-//
+
 
 ```php
 public function gc( mixed $maxlifetime ): bool;
 ```
-//
 
+   Ignore the savePath and use local defined path
+   
+   
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
-   Ignore the savePath and use local defined path
-   
-   @return bool
-   
+
 
 ```php
 public function read( mixed $id ): string;
 ```
-//
+
 
 ```php
 public function write( mixed $id, mixed $data ): bool;
 ```
-//
 
 
-        
+
 <h1 id="session-bag">Class Phalcon\Session\Bag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
 
 | Namespace  | Phalcon\Session |
 | Uses       | Phalcon\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
@@ -334,53 +322,47 @@ private session;
 ```
 
 ## Methods
+
+Phalcon\Session\Bag constructor
 ```php
 public function __construct( string $name );
 ```
-Phalcon\Session\Bag constructor
 
-
+Destroys the session bag
 ```php
 public function clear(): void;
 ```
-Destroys the session bag
 
-
+Returns the DependencyInjector container
 ```php
 public function getDI(): DiInterface;
 ```
-Returns the DependencyInjector container
 
-
+Removes a property from the internal bag
 ```php
 public function init( array $data = [] ): void;
 ```
+
 Removes a property from the internal bag
-
-
 ```php
 public function remove( string $element ): void;
 ```
-Removes a property from the internal bag
 
-
+Sets a value in the session bag
 ```php
 public function set( string $element, mixed $value ): void;
 ```
-Sets a value in the session bag
 
-
+Sets the DependencyInjector container
 ```php
 public function setDI( DiInterface $container ): void;
 ```
-Sets the DependencyInjector container
 
 
 
-        
 <h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Exception.zep)
 
 | Namespace  | Phalcon\Session |
 | Extends    | \Phalcon\Exception |
@@ -390,10 +372,10 @@ Phalcon\Session\Exception
 Exceptions thrown in Phalcon\Session will use this class
 
 
-        
+
 <h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Manager.zep)
 
 | Namespace  | Phalcon\Session |
 | Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr |
@@ -430,150 +412,124 @@ private uniqueId = ;
 ```
 
 ## Methods
+
+Manager constructor.
 ```php
 public function __construct( array $options = [] );
 ```
-Manager constructor.
 
-
+Alias: Gets a session variable from an application context
 ```php
 public function __get( string $key ): mixed;
 ```
-Alias: Gets a session variable from an application context
 
-
+Alias: Check whether a session variable is set in an application context
 ```php
 public function __isset( string $key ): bool;
 ```
-Alias: Check whether a session variable is set in an application context
 
-
+Alias: Sets a session variable in an application context
 ```php
 public function __set( string $key, mixed $value ): void;
 ```
-Alias: Sets a session variable in an application context
 
-
+Alias: Removes a session variable from an application context
 ```php
 public function __unset( string $key ): void;
 ```
-Alias: Removes a session variable from an application context
 
-
+Destroy/end a session
 ```php
 public function destroy(): void;
 ```
-Destroy/end a session
 
-
+Check whether the session has been started
 ```php
 public function exists(): bool;
 ```
-Check whether the session has been started
 
-
+Gets a session variable from an application context
 ```php
 public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
 ```
-Gets a session variable from an application context
 
-
+Returns the stored session adapter
 ```php
 public function getAdapter(): SessionHandlerInterface;
 ```
-Returns the stored session adapter
 
-
+Returns the session id
 ```php
 public function getId(): string;
 ```
-Returns the session id
 
-
+Returns the name of the session
 ```php
 public function getName(): string;
 ```
-Returns the name of the session
 
-
+Get internal options
 ```php
 public function getOptions(): array;
 ```
-Get internal options
 
-
+Check whether a session variable is set in an application context
 ```php
 public function has( string $key ): bool;
 ```
-Check whether a session variable is set in an application context
 
-
+Regenerates the session id using the adapter.
 ```php
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
-Regenerates the session id using the adapter.
 
-
+Removes a session variable from an application context
 ```php
 public function remove( string $key ): void;
 ```
-Removes a session variable from an application context
 
-
+Sets a session variable in an application context
 ```php
 public function set( string $key, mixed $value ): void;
 ```
-Sets a session variable in an application context
 
-
+Set the adapter for the session
 ```php
 public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
-Set the adapter for the session
 
-
+Set session Id
 ```php
 public function setId( string $id ): ManagerInterface;
 ```
-Set session Id
 
-
+Set the session name. Throw exception if the session has started
+and do not allow poop names
 ```php
 public function setName( string $name ): ManagerInterface;
 ```
-Set the session name. Throw exception if the session has started
-and do not allow poop names
 
-
-@throws InvalidArgumentException
-
-@return Manager
-
-
+Sets session's options
 ```php
 public function setOptions( array $options ): void;
 ```
-Sets session's options
 
-
+Starts the session (if headers are already sent the session will not be
+started)
 ```php
 public function start(): bool;
 ```
-Starts the session (if headers are already sent the session will not be
-started)
 
-
+Returns the status of the current session.
 ```php
 public function status(): int;
 ```
-Returns the status of the current session.
 
 
 
-        
 <h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/managerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Session |
 | Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface |
@@ -591,133 +547,113 @@ const SESSION_NONE = 1;
 ```
 
 ## Methods
+
+Alias: Gets a session variable from an application context
 ```php
 public function __get( string $key ): mixed;
 ```
-Alias: Gets a session variable from an application context
 
-
+Alias: Check whether a session variable is set in an application context
 ```php
 public function __isset( string $key ): bool;
 ```
-Alias: Check whether a session variable is set in an application context
 
-
+Alias: Sets a session variable in an application context
 ```php
 public function __set( string $key, mixed $value ): void;
 ```
-Alias: Sets a session variable in an application context
 
-
+Alias: Removes a session variable from an application context
 ```php
 public function __unset( string $key ): void;
 ```
-Alias: Removes a session variable from an application context
 
-
+Destroy/end a session
 ```php
 public function destroy(): void;
 ```
-Destroy/end a session
 
-
+Check whether the session has been started
 ```php
 public function exists(): bool;
 ```
-Check whether the session has been started
 
-
+Gets a session variable from an application context
 ```php
 public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
 ```
-Gets a session variable from an application context
 
-
+Returns the stored session adapter
 ```php
 public function getAdapter(): SessionHandlerInterface;
 ```
-Returns the stored session adapter
 
-
+Returns the session id
 ```php
 public function getId(): string;
 ```
-Returns the session id
 
-
+Returns the name of the session
 ```php
 public function getName(): string;
 ```
-Returns the name of the session
 
-
+Get internal options
 ```php
 public function getOptions(): array;
 ```
-Get internal options
 
-
+Check whether a session variable is set in an application context
 ```php
 public function has( string $key ): bool;
 ```
-Check whether a session variable is set in an application context
 
-
+Regenerates the session id using the adapter.
 ```php
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
-Regenerates the session id using the adapter.
 
-
+Removes a session variable from an application context
 ```php
 public function remove( string $key ): void;
 ```
-Removes a session variable from an application context
 
-
+Sets a session variable in an application context
 ```php
 public function set( string $key, mixed $value ): void;
 ```
-Sets a session variable in an application context
 
-
+Set the adapter for the session
 ```php
 public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
-Set the adapter for the session
 
-
+Set session Id
 ```php
 public function setId( string $id ): ManagerInterface;
 ```
-Set session Id
 
-
-```php
-public function setName( string $name ): ManagerInterface;
-```
 Set the session name. Throw exception if the session has started
 and do not allow poop names
 
 @throws InvalidArgumentException
+```php
+public function setName( string $name ): ManagerInterface;
+```
 
-
+Sets session's options
 ```php
 public function setOptions( array $options ): void;
 ```
-Sets session's options
 
-
+Starts the session (if headers are already sent the session will not be
+started)
 ```php
 public function start(): bool;
 ```
-Starts the session (if headers are already sent the session will not be
-started)
 
-
+Returns the status of the current session.
 ```php
 public function status(): int;
 ```
-Returns the status of the current session.
-
 

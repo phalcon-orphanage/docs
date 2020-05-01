@@ -6,10 +6,10 @@ title: 'Phalcon\Container'
 ---
 
 * [Phalcon\Container](#container)
-        
+
 <h1 id="container">Class Phalcon\Container</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Container.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface |
@@ -28,21 +28,19 @@ protected container;
 ```
 
 ## Methods
+
+Phalcon\Container constructor
 ```php
 public function __construct( DiInterface $container );
 ```
-Phalcon\Container constructor
 
-
+Return the service
 ```php
 public function get( mixed $name ): mixed;
 ```
-Return the service
 
-
+Whether a service exists or not in the container
 ```php
 public function has( mixed $name ): bool;
 ```
-Whether a service exists or not in the container
-
 
