@@ -22,10 +22,10 @@ title: 'Phalcon\Forms'
 * [Phalcon\Forms\Exception](#forms-exception)
 * [Phalcon\Forms\Form](#forms-form)
 * [Phalcon\Forms\Manager](#forms-manager)
-        
+
 <h1 id="forms-element-abstractelement">Abstract Class Phalcon\Forms\Element\AbstractElement</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/abstractelement.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/AbstractElement.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | InvalidArgumentException, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation\ValidatorInterface |
@@ -68,211 +68,175 @@ protected value;
 ```
 
 ## Methods
+
+Phalcon\Forms\Element constructor
 ```php
 public function __construct( string $name, array $attributes = [] );
 ```
-Phalcon\Forms\Element constructor
 
-
-
+Magic method __toString renders the widget without attributes
 ```php
 public function __toString(): string;
 ```
-Magic method __toString renders the widget without attributes
 
-
+Adds a filter to current list of filters
 ```php
 public function addFilter( string $filter ): ElementInterface;
 ```
-Adds a filter to current list of filters
 
-
+Adds a validator to the element
 ```php
 public function addValidator( ValidatorInterface $validator ): ElementInterface;
 ```
-Adds a validator to the element
 
-
+Adds a group of validators
 ```php
 public function addValidators( array $validators, bool $merge = bool ): ElementInterface;
 ```
-Adds a group of validators
 
-
-
+Appends a message to the internal message list
 ```php
 public function appendMessage( MessageInterface $message ): ElementInterface;
 ```
-Appends a message to the internal message list
 
-
+Clears element to its default value
 ```php
 public function clear(): ElementInterface;
 ```
-Clears element to its default value
 
-
+Returns the value of an attribute if present
 ```php
 public function getAttribute( string $attribute, mixed $defaultValue = null ): mixed;
 ```
-Returns the value of an attribute if present
 
-
+Returns the default attributes for the element
 ```php
 public function getAttributes(): array;
 ```
-Returns the default attributes for the element
 
-
+Returns the default value assigned to the element
 ```php
 public function getDefault(): mixed;
 ```
-Returns the default value assigned to the element
 
-
+Returns the element filters
 ```php
 public function getFilters();
 ```
-Returns the element filters
 
-@return mixed
-
-
+Returns the parent form to the element
 ```php
 public function getForm(): Form;
 ```
-Returns the parent form to the element
 
-
+Returns the element label
 ```php
 public function getLabel(): string;
 ```
-Returns the element label
 
-
+Returns the messages that belongs to the element
+The element needs to be attached to a form
 ```php
 public function getMessages(): Messages;
 ```
-Returns the messages that belongs to the element
-The element needs to be attached to a form
 
-
+Returns the element name
 ```php
 public function getName(): string;
 ```
-Returns the element name
 
-
+Returns the value of an option if present
 ```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
-Returns the value of an option if present
 
-
+Returns the options for the element
 ```php
 public function getUserOptions(): array;
 ```
-Returns the options for the element
 
-
+Returns the validators registered for the element
 ```php
 public function getValidators(): ValidatorInterface[];
 ```
-Returns the validators registered for the element
 
-
+Returns the element's value
 ```php
 public function getValue(): mixed;
 ```
-Returns the element's value
 
-
+Checks whether there are messages attached to the element
 ```php
 public function hasMessages(): bool;
 ```
-Checks whether there are messages attached to the element
 
-
+Generate the HTML to label the element
 ```php
 public function label( array $attributes = [] ): string;
 ```
-Generate the HTML to label the element
 
-
+Returns an array of prepared attributes for Phalcon\Tag helpers
+according to the element parameters
 ```php
 public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
 ```
-Returns an array of prepared attributes for Phalcon\Tag helpers
-according to the element parameters
 
-
+Sets a default attribute for the element
 ```php
 public function setAttribute( string $attribute, mixed $value ): ElementInterface;
 ```
-Sets a default attribute for the element
 
-
+Sets default attributes for the element
 ```php
 public function setAttributes( array $attributes ): ElementInterface;
 ```
-Sets default attributes for the element
 
-
+Sets a default value in case the form does not use an entity
+or there is no value available for the element in _POST
 ```php
 public function setDefault( mixed $value ): ElementInterface;
 ```
-Sets a default value in case the form does not use an entity
-or there is no value available for the element in _POST
 
-
+Sets the element filters
 ```php
 public function setFilters( mixed $filters ): ElementInterface;
 ```
-Sets the element filters
 
-
-
+Sets the parent form to the element
 ```php
 public function setForm( Form $form ): ElementInterface;
 ```
-Sets the parent form to the element
 
-
+Sets the element label
 ```php
 public function setLabel( string $label ): ElementInterface;
 ```
-Sets the element label
 
-
+Sets the validation messages related to the element
 ```php
 public function setMessages( Messages $messages ): ElementInterface;
 ```
-Sets the validation messages related to the element
 
-
+Sets the element name
 ```php
 public function setName( string $name ): ElementInterface;
 ```
-Sets the element name
 
-
+Sets an option for the element
 ```php
 public function setUserOption( string $option, mixed $value ): ElementInterface;
 ```
-Sets an option for the element
 
-
+Sets options for the element
 ```php
 public function setUserOptions( array $options ): ElementInterface;
 ```
-Sets options for the element
 
 
 
-        
 <h1 id="forms-element-check">Class Phalcon\Forms\Element\Check</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Check.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -284,17 +248,17 @@ Component INPUT[type=check] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-date">Class Phalcon\Forms\Element\Date</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Date.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -304,17 +268,17 @@ Component INPUT[type=date] for forms
 
 
 ## Methods
+
+Renders the element widget returning html
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-elementinterface">Interface Phalcon\Forms\Element\ElementInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/elementinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/ElementInterface.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidatorInterface |
@@ -323,204 +287,170 @@ Interface for Phalcon\Forms\Element classes
 
 
 ## Methods
+
+Adds a filter to current list of filters
 ```php
 public function addFilter( string $filter ): ElementInterface;
 ```
-Adds a filter to current list of filters
 
-
+Adds a validator to the element
 ```php
 public function addValidator( ValidatorInterface $validator ): ElementInterface;
 ```
-Adds a validator to the element
 
-
+Adds a group of validators
 ```php
 public function addValidators( array $validators, bool $merge = bool ): ElementInterface;
 ```
-Adds a group of validators
 
-
-
+Appends a message to the internal message list
 ```php
 public function appendMessage( MessageInterface $message ): ElementInterface;
 ```
-Appends a message to the internal message list
 
-
+Clears every element in the form to its default value
 ```php
 public function clear(): ElementInterface;
 ```
-Clears every element in the form to its default value
 
-
+Returns the value of an attribute if present
 ```php
 public function getAttribute( string $attribute, mixed $defaultValue = null ): mixed;
 ```
-Returns the value of an attribute if present
 
-
+Returns the default attributes for the element
 ```php
 public function getAttributes(): array;
 ```
-Returns the default attributes for the element
 
-
+Returns the default value assigned to the element
 ```php
 public function getDefault(): mixed;
 ```
-Returns the default value assigned to the element
 
-
+Returns the element's filters
 ```php
 public function getFilters();
 ```
-Returns the element's filters
 
-@return mixed
-
-
+Returns the parent form to the element
 ```php
 public function getForm(): Form;
 ```
-Returns the parent form to the element
 
-
+Returns the element's label
 ```php
 public function getLabel(): string;
 ```
-Returns the element's label
 
-
+Returns the messages that belongs to the element
+The element needs to be attached to a form
 ```php
 public function getMessages(): Messages;
 ```
-Returns the messages that belongs to the element
-The element needs to be attached to a form
 
-
+Returns the element's name
 ```php
 public function getName(): string;
 ```
-Returns the element's name
 
-
+Returns the value of an option if present
 ```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
-Returns the value of an option if present
 
-
+Returns the options for the element
 ```php
 public function getUserOptions(): array;
 ```
-Returns the options for the element
 
-
+Returns the validators registered for the element
 ```php
 public function getValidators(): ValidatorInterface[];
 ```
-Returns the validators registered for the element
 
-
+Returns the element's value
 ```php
 public function getValue(): mixed;
 ```
-Returns the element's value
 
-
+Checks whether there are messages attached to the element
 ```php
 public function hasMessages(): bool;
 ```
-Checks whether there are messages attached to the element
 
-
+Generate the HTML to label the element
 ```php
 public function label(): string;
 ```
-Generate the HTML to label the element
 
-
+Returns an array of prepared attributes for Phalcon\Tag helpers
+according to the element's parameters
 ```php
 public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
 ```
-Returns an array of prepared attributes for Phalcon\Tag helpers
-according to the element's parameters
 
-
+Renders the element widget
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget
 
-
+Sets a default attribute for the element
 ```php
 public function setAttribute( string $attribute, mixed $value ): ElementInterface;
 ```
-Sets a default attribute for the element
 
-
+Sets default attributes for the element
 ```php
 public function setAttributes( array $attributes ): ElementInterface;
 ```
-Sets default attributes for the element
 
-
+Sets a default value in case the form does not use an entity
+or there is no value available for the element in _POST
 ```php
 public function setDefault( mixed $value ): ElementInterface;
 ```
-Sets a default value in case the form does not use an entity
-or there is no value available for the element in _POST
 
-
+Sets the element's filters
 ```php
 public function setFilters( mixed $filters ): ElementInterface;
 ```
-Sets the element's filters
 
-
-
+Sets the parent form to the element
 ```php
 public function setForm( Form $form ): ElementInterface;
 ```
-Sets the parent form to the element
 
-
+Sets the element label
 ```php
 public function setLabel( string $label ): ElementInterface;
 ```
-Sets the element label
 
-
+Sets the validation messages related to the element
 ```php
 public function setMessages( Messages $messages ): ElementInterface;
 ```
-Sets the validation messages related to the element
 
-
+Sets the element's name
 ```php
 public function setName( string $name ): ElementInterface;
 ```
-Sets the element's name
 
-
+Sets an option for the element
 ```php
 public function setUserOption( string $option, mixed $value ): ElementInterface;
 ```
-Sets an option for the element
 
-
+Sets options for the element
 ```php
 public function setUserOptions( array $options ): ElementInterface;
 ```
-Sets options for the element
 
 
 
-        
 <h1 id="forms-element-email">Class Phalcon\Forms\Element\Email</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Email.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -532,17 +462,17 @@ Component INPUT[type=email] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-file">Class Phalcon\Forms\Element\File</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/File.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -552,17 +482,17 @@ Component INPUT[type=file] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-hidden">Class Phalcon\Forms\Element\Hidden</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/hidden.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Hidden.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -574,17 +504,17 @@ Component INPUT[type=hidden] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-numeric">Class Phalcon\Forms\Element\Numeric</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Numeric.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -596,17 +526,17 @@ Component INPUT[type=number] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-password">Class Phalcon\Forms\Element\Password</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Password.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -618,17 +548,17 @@ Component INPUT[type=password] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-radio">Class Phalcon\Forms\Element\Radio</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/radio.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Radio.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -640,17 +570,17 @@ Component INPUT[type=radio] for forms
 
 
 ## Methods
+
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
 
 
-        
 <h1 id="forms-element-select">Class Phalcon\Forms\Element\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Select.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag\Select |
@@ -669,46 +599,37 @@ protected optionsValues;
 ```
 
 ## Methods
+
+Phalcon\Forms\Element constructor
 ```php
 public function __construct( string $name, mixed $options = null, mixed $attributes = null );
 ```
-Phalcon\Forms\Element constructor
 
-
-
+Adds an option to the current options
 ```php
 public function addOption( mixed $option ): ElementInterface;
 ```
-Adds an option to the current options
 
-
-
+Returns the choices' options
 ```php
 public function getOptions();
 ```
-Returns the choices' options
 
-@return array|object
-
-
+Renders the element widget returning HTML
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
 
-
+Set the choice's options
 ```php
 public function setOptions( mixed $options ): ElementInterface;
 ```
-Set the choice's options
 
 
 
-
-        
 <h1 id="forms-element-submit">Class Phalcon\Forms\Element\Submit</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/submit.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Submit.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -718,17 +639,17 @@ Component INPUT[type=submit] for forms
 
 
 ## Methods
+
+Renders the element widget
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget
 
 
 
-        
 <h1 id="forms-element-text">Class Phalcon\Forms\Element\Text</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/Text.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -740,17 +661,17 @@ Component INPUT[type=text] for forms
 
 
 ## Methods
+
+Renders the element widget
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget
 
 
 
-        
 <h1 id="forms-element-textarea">Class Phalcon\Forms\Element\TextArea</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/textarea.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Element/TextArea.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -760,17 +681,17 @@ Component TEXTAREA for forms
 
 
 ## Methods
+
+Renders the element widget
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget
 
 
 
-        
 <h1 id="forms-exception">Class Phalcon\Forms\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Exception.zep)
 
 | Namespace  | Phalcon\Forms |
 | Extends    | \Phalcon\Exception |
@@ -778,10 +699,10 @@ Renders the element widget
 Exceptions thrown in Phalcon\Forms will use this class
 
 
-        
+
 <h1 id="forms-form">Class Phalcon\Forms\Form</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Form.zep)
 
 | Namespace  | Phalcon\Forms |
 | Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface |
@@ -825,85 +746,68 @@ protected validation;
 ```
 
 ## Methods
+
+Phalcon\Forms\Form constructor
 ```php
 public function __construct( mixed $entity = null, array $userOptions = [] );
 ```
-Phalcon\Forms\Form constructor
 
-
+Adds an element to the form
 ```php
 public function add( ElementInterface $element, string $position = null, bool $type = null ): Form;
 ```
-Adds an element to the form
 
-
+Binds data to the entity
 ```php
 public function bind( array $data, mixed $entity, mixed $whitelist = null ): Form;
 ```
-Binds data to the entity
 
-
-
+Clears every element in the form to its default value
 ```php
 public function clear( mixed $fields = null ): Form;
 ```
-Clears every element in the form to its default value
 
-
-
+Returns the number of elements in the form
 ```php
 public function count(): int;
 ```
-Returns the number of elements in the form
 
-
+Returns the current element in the iterator
 ```php
 public function current(): ElementInterface | bool;
 ```
-Returns the current element in the iterator
 
-
+Returns an element added to the form by its name
 ```php
 public function get( string $name ): ElementInterface;
 ```
-Returns an element added to the form by its name
 
-
+Returns the form's action
 ```php
 public function getAction(): string;
 ```
-Returns the form's action
 
-
+   Get Form attributes collection
+   
 ```php
 public function getAttributes(): Attributes;
 ```
-   Get Form attributes collection
-   
 
+Returns the form elements added to the form
 ```php
 public function getElements(): ElementInterface[];
 ```
-Returns the form elements added to the form
 
-
+Returns the entity related to the model
 ```php
 public function getEntity();
 ```
-Returns the entity related to the model
 
-@return object
-
-
+Returns a label for an element
 ```php
 public function getLabel( string $name ): string;
 ```
-Returns a label for an element
 
-
-```php
-public function getMessages(): Messages | array;
-```
 Returns the messages generated in the validation.
 
 ```php
@@ -915,141 +819,121 @@ if ($form->isValid($_POST) == false) {
     }
 }
 ```
+```php
+public function getMessages(): Messages | array;
+```
 
-
+Returns the messages generated for a specific element
 ```php
 public function getMessagesFor( string $name ): Messages;
 ```
-Returns the messages generated for a specific element
 
-
+Returns the value of an option if present
 ```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
-Returns the value of an option if present
 
-
+Returns the options for the element
 ```php
 public function getUserOptions(): array;
 ```
-Returns the options for the element
 
 
 ```php
 public function getValidation()
 ```
 
-
+Gets a value from the internal related entity or from the default value
 ```php
 public function getValue( string $name ): mixed | null;
 ```
-Gets a value from the internal related entity or from the default value
 
-
+Check if the form contains an element
 ```php
 public function has( string $name ): bool;
 ```
-Check if the form contains an element
 
-
+Check if messages were generated for a specific element
 ```php
 public function hasMessagesFor( string $name ): bool;
 ```
-Check if messages were generated for a specific element
 
-
+Validates the form
 ```php
 public function isValid( mixed $data = null, mixed $entity = null ): bool;
 ```
-Validates the form
 
-
-
+Returns the current position/key in the iterator
 ```php
 public function key(): int;
 ```
-Returns the current position/key in the iterator
 
-
+Generate the label of an element added to the form including HTML
 ```php
 public function label( string $name, array $attributes = null ): string;
 ```
-Generate the label of an element added to the form including HTML
 
-
+Moves the internal iteration pointer to the next position
 ```php
 public function next(): void;
 ```
-Moves the internal iteration pointer to the next position
 
-
+Removes an element from the form
 ```php
 public function remove( string $name ): bool;
 ```
-Removes an element from the form
 
-
+Renders a specific item in the form
 ```php
 public function render( string $name, array $attributes = [] ): string;
 ```
-Renders a specific item in the form
 
-
+Rewinds the internal iterator
 ```php
 public function rewind(): void;
 ```
-Rewinds the internal iterator
 
-
+Sets the form's action
 ```php
 public function setAction( string $action ): Form;
 ```
-Sets the form's action
 
-@return Form
-
-
+   Set form attributes collection
+   
 ```php
 public function setAttributes( Attributes $attributes ): AttributesInterface;
 ```
-   Set form attributes collection
-   
 
+Sets the entity related to the model
 ```php
 public function setEntity( mixed $entity ): Form;
 ```
-Sets the entity related to the model
 
-
-
+Sets an option for the form
 ```php
 public function setUserOption( string $option, mixed $value ): Form;
 ```
-Sets an option for the form
 
-
+Sets options for the element
 ```php
 public function setUserOptions( array $options ): Form;
 ```
-Sets options for the element
 
 
 ```php
 public function setValidation( $validation )
 ```
 
-
+Check if the current element in the iterator is valid
 ```php
 public function valid(): bool;
 ```
-Check if the current element in the iterator is valid
 
 
 
-        
 <h1 id="forms-manager">Class Phalcon\Forms\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Forms/Manager.zep)
 
 | Namespace  | Phalcon\Forms |
 
@@ -1064,28 +948,24 @@ protected forms;
 ```
 
 ## Methods
+
+Creates a form registering it in the forms manager
 ```php
 public function create( string $name, mixed $entity = null ): Form;
 ```
-Creates a form registering it in the forms manager
 
-
-
+Returns a form by its name
 ```php
 public function get( string $name ): Form;
 ```
-Returns a form by its name
 
-
+Checks if a form is registered in the forms manager
 ```php
 public function has( string $name ): bool;
 ```
-Checks if a form is registered in the forms manager
 
-
+Registers a form in the Forms Manager
 ```php
 public function set( string $name, Form $form ): Manager;
 ```
-Registers a form in the Forms Manager
-
 
