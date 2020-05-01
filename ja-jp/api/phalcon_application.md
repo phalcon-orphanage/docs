@@ -10,7 +10,7 @@ title: 'Phalcon\Application'
 
 <h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Application/AbstractApplication.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/AbstractApplication.zep)
 
 | Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
 
@@ -43,34 +43,38 @@ protected modules;
 
 ## メソッド
 
-Phalcon\AbstractApplication constructor
-
 ```php
 public function __construct( DiInterface $container = null );
 ```
 
-Returns the default module name
+Phalcon\AbstractApplication constructor
 
 ```php
 public function getDefaultModule(): string;
 ```
 
-内部イベントマネージャーを返します
+Returns the default module name
 
 ```php
 public function getEventsManager(): ManagerInterface;
 ```
 
-モジュール名でアプリケーションに登録されているモジュール定義を取得します。
+内部イベントマネージャーを返します
 
 ```php
 public function getModule( string $name ): array | object;
 ```
 
-アプリケーションに登録されているモジュールを返す
+モジュール名でアプリケーションに登録されているモジュール定義を取得します。
 
 ```php
 public function getModules(): array;
+```
+
+アプリケーションに登録されているモジュールを返す
+
+```php
+public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
 
 Register an array of modules present in the application
@@ -91,24 +95,20 @@ $this->registerModules(
 ```
 
 ```php
-public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
+public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
 
 Sets the module name to be used if the router doesn't return a valid module
 
 ```php
-public function setDefaultModule( string $defaultModule ): AbstractApplication;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 イベントマネージャーをセットします
 
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Application/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/Exception.zep)
 
 | Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
 
