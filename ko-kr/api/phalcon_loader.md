@@ -10,7 +10,7 @@ title: 'Phalcon\Loader'
 
 <h1 id="loader">Class Phalcon\Loader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Loader.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | EventsAwareInterface |
 
@@ -89,110 +89,106 @@ protected registered = false;
 
 ## Methods
 
-```php
-public function autoLoad( string $className ): bool;
-```
-
 Autoloads the registered classes
 
 ```php
-public function getCheckedPath(): string;
+public function autoLoad( string $className ): bool;
 ```
 
 Get the path the loader is checking for a path
 
 ```php
-public function getClasses(): array;
+public function getCheckedPath(): string;
 ```
 
 Returns the class-map currently registered in the autoloader
 
 ```php
-public function getDirs(): array;
+public function getClasses(): array;
 ```
 
 Returns the directories currently registered in the autoloader
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getDirs(): array;
 ```
 
 Returns the internal event manager
 
 ```php
-public function getExtensions(): array;
+public function getEventsManager(): ManagerInterface;
 ```
 
 Returns the file extensions registered in the loader
 
 ```php
-public function getFiles(): array;
+public function getExtensions(): array;
 ```
 
 Returns the files currently registered in the autoloader
 
 ```php
-public function getFoundPath(): string;
+public function getFiles(): array;
 ```
 
 Get the path when a class was found
 
 ```php
-public function getNamespaces(): array;
+public function getFoundPath(): string;
 ```
 
 Returns the namespaces currently registered in the autoloader
 
 ```php
-public function loadFiles(): void;
+public function getNamespaces(): array;
 ```
 
 Checks if a file exists and then adds the file by doing virtual require
 
 ```php
-public function register( bool $prepend = bool ): Loader;
+public function loadFiles(): void;
 ```
 
 Register the autoload method
 
 ```php
-public function registerClasses( array $classes, bool $merge = bool ): Loader;
+public function register( bool $prepend = bool ): Loader;
 ```
 
 Register classes and their locations
 
 ```php
-public function registerDirs( array $directories, bool $merge = bool ): Loader;
+public function registerClasses( array $classes, bool $merge = bool ): Loader;
 ```
 
 Register directories in which "not found" classes could be found
 
 ```php
-public function registerFiles( array $files, bool $merge = bool ): Loader;
+public function registerDirs( array $directories, bool $merge = bool ): Loader;
 ```
 
 Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
 
 ```php
-public function registerNamespaces( array $namespaces, bool $merge = bool ): Loader;
+public function registerFiles( array $files, bool $merge = bool ): Loader;
 ```
 
 Register namespaces and their related directories
 
 ```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
+public function registerNamespaces( array $namespaces, bool $merge = bool ): Loader;
 ```
 
 Sets the events manager
 
 ```php
-public function setExtensions( array $extensions ): Loader;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets an array of file extensions that the loader must try in each attempt to locate the file
 
 ```php
-public function setFileCheckingCallback( mixed $callback = null ): Loader;
+public function setExtensions( array $extensions ): Loader;
 ```
 
 Sets the file check callback.
@@ -210,20 +206,22 @@ $loader->setFileCheckingCallback(null);
 ```
 
 ```php
-public function unregister(): Loader;
+public function setFileCheckingCallback( mixed $callback = null ): Loader;
 ```
 
 Unregister the autoload method
 
 ```php
+public function unregister(): Loader;
+```
+
+```php
 protected function prepareNamespace( array $namespaceName ): array;
 ```
 
-//
-
 <h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Loader/Exception.zep)
 
 | Namespace | Phalcon\Loader | | Extends | \Phalcon\Exception |
 
