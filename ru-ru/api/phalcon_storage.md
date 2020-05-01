@@ -26,7 +26,7 @@ title: 'Phalcon\Storage'
 
 <h1 id="storage-adapter-abstractadapter">Abstract Class Phalcon\Storage\Adapter\AbstractAdapter</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/AbstractAdapter.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Implements | AdapterInterface |
 
@@ -81,117 +81,117 @@ protected serializerFactory;
 
 ## Методы
 
-Sets parameters based on options
-
 ```php
 protected function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Flushes/clears the cache
+Sets parameters based on options
 
 ```php
 abstract public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 abstract public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Deletes data from the adapter
+Decrements a stored number
 
 ```php
 abstract public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Deletes data from the adapter
 
 ```php
 abstract public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Returns the adapter - connects to the storage if not connected
+Reads data from the adapter
 
 ```php
 abstract public function getAdapter(): mixed;
 ```
 
+Returns the adapter - connects to the storage if not connected
+
 ```php
 public function getDefaultSerializer(): string
 ```
-
-Returns all the keys stored
 
 ```php
 abstract public function getKeys( string $prefix = string ): array;
 ```
 
+Returns all the keys stored
+
 ```php
 public function getPrefix(): string
 ```
-
-Checks if an element exists in the cache
 
 ```php
 abstract public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache
 
 ```php
 abstract public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 abstract public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 ```php
 public function setDefaultSerializer( string $defaultSerializer )
 ```
-
-Filters the keys array based on global and passed prefix
 
 ```php
 protected function getFilteredKeys( mixed $keys, string $prefix ): array;
 ```
 
-Returns the key requested, prefixed
+Filters the keys array based on global and passed prefix
 
 ```php
 protected function getPrefixedKey( mixed $key ): string;
 ```
 
-Returns serialized data
+Returns the key requested, prefixed
 
 ```php
 protected function getSerializedData( mixed $content ): mixed;
 ```
 
-Calculates the TTL for a cache item
+Returns serialized data
 
 ```php
 protected function getTtl( mixed $ttl ): int;
 ```
 
-Returns unserialized data
+Calculates the TTL for a cache item
 
 ```php
 protected function getUnserializedData( mixed $content, mixed $defaultValue = null ): mixed;
 ```
 
-Initializes the serializer
+Returns unserialized data
 
 ```php
 protected function initSerializer(): void;
 ```
 
+Initializes the serializer
+
 <h1 id="storage-adapter-adapterinterface">Interface Phalcon\Storage\Adapter\AdapterInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/AdapterInterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Storage\Serializer\SerializerInterface |
 
@@ -199,69 +199,69 @@ Interface for Phalcon\Logger adapters
 
 ## Методы
 
-Flushes/clears the cache
-
 ```php
 public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Deletes data from the adapter
+Decrements a stored number
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Deletes data from the adapter
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Returns the already connected adapter or connects to the backend server(s)
+Reads data from the adapter
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Returns all the keys stored
+Returns the already connected adapter or connects to the backend server(s)
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Returns the prefix for the keys
+Returns all the keys stored
 
 ```php
 public function getPrefix(): string;
 ```
 
-Checks if an element exists in the cache
+Returns the prefix for the keys
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 <h1 id="storage-adapter-apcu">Class Phalcon\Storage\Adapter\Apcu</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/Apcu.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Apcu.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -279,25 +279,23 @@ protected options;
 
 ## Методы
 
-Constructor
-
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Flushes/clears the cache
+Constructor
 
 ```php
 public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Reads data from the adapter
+Decrements a stored number
 
 ```php
 public function delete( string $key ): bool;
@@ -309,39 +307,41 @@ Reads data from the adapter
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Always returns null
+Reads data from the adapter
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Stores data in the adapter
+Always returns null
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Checks if an element exists in the cache
+Stores data in the adapter
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 <h1 id="storage-adapter-libmemcached">Class Phalcon\Storage\Adapter\Libmemcached</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/Libmemcached.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Libmemcached.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -359,25 +359,23 @@ protected options;
 
 ## Методы
 
-Libmemcached constructor.
-
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Flushes/clears the cache
+Libmemcached constructor.
 
 ```php
 public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Reads data from the adapter
+Decrements a stored number
 
 ```php
 public function delete( string $key ): bool;
@@ -389,39 +387,41 @@ Reads data from the adapter
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Returns the already connected adapter or connects to the Memcached server(s)
+Reads data from the adapter
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Stores data in the adapter
+Returns the already connected adapter or connects to the Memcached server(s)
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Checks if an element exists in the cache
+Stores data in the adapter
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 <h1 id="storage-adapter-memory">Class Phalcon\Storage\Adapter\Memory</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/Memory.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Memory.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -444,25 +444,23 @@ protected options;
 
 ## Методы
 
-Constructor
-
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Flushes/clears the cache
+Constructor
 
 ```php
 public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Reads data from the adapter
+Decrements a stored number
 
 ```php
 public function delete( string $key ): bool;
@@ -474,39 +472,41 @@ Reads data from the adapter
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Always returns null
+Reads data from the adapter
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Stores data in the adapter
+Always returns null
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Checks if an element exists in the cache
+Stores data in the adapter
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 <h1 id="storage-adapter-redis">Class Phalcon\Storage\Adapter\Redis</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/Redis.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Redis.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -524,25 +524,23 @@ protected options;
 
 ## Методы
 
-Constructor
-
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Flushes/clears the cache
+Constructor
 
 ```php
 public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Reads data from the adapter
+Decrements a stored number
 
 ```php
 public function delete( string $key ): bool;
@@ -554,39 +552,41 @@ Reads data from the adapter
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Returns the already connected adapter or connects to the Redis server(s)
+Reads data from the adapter
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Gets the keys from the adapter. Accepts an optional prefix which will filter the keys returned
+Returns the already connected adapter or connects to the Redis server(s)
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Checks if an element exists in the cache
+Gets the keys from the adapter. Accepts an optional prefix which will filter the keys returned
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 <h1 id="storage-adapter-stream">Class Phalcon\Storage\Adapter\Stream</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Adapter/Stream.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Stream.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | FilesystemIterator, Iterator, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface, RecursiveDirectoryIterator, RecursiveIteratorIterator | | Extends | AbstractAdapter |
 
@@ -609,25 +609,23 @@ protected options;
 
 ## Методы
 
-Stream constructor.
-
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Flushes/clears the cache
+Stream constructor.
 
 ```php
 public function clear(): bool;
 ```
 
-Decrements a stored number
+Flushes/clears the cache
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Reads data from the adapter
+Decrements a stored number
 
 ```php
 public function delete( string $key ): bool;
@@ -639,39 +637,41 @@ Reads data from the adapter
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Always returns null
+Reads data from the adapter
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Stores data in the adapter
+Always returns null
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Checks if an element exists in the cache and is not expired
+Stores data in the adapter
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Increments a stored number
+Checks if an element exists in the cache and is not expired
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Stores data in the adapter
+Increments a stored number
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
+Stores data in the adapter
+
 <h1 id="storage-adapterfactory">Class Phalcon\Storage\AdapterFactory</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/AdapterFactory.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/AdapterFactory.zep)
 
 | Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
@@ -693,17 +693,17 @@ private serializerFactory;
 
 ## Методы
 
-AdapterFactory constructor.
-
 ```php
 public function __construct( SerializerFactory $factory, array $services = [] );
 ```
 
-Create a new instance of the adapter
+AdapterFactory constructor.
 
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
+
+Create a new instance of the adapter
 
 ```php
 protected function getAdapters(): array;
@@ -711,7 +711,7 @@ protected function getAdapters(): array;
 
 <h1 id="storage-exception">Class Phalcon\Storage\Exception</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Exception.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Exception.zep)
 
 | Namespace | Phalcon\Storage | | Extends | \Phalcon\Exception |
 
@@ -721,7 +721,7 @@ Exceptions thrown in Phalcon\Storage will use this class
 
 <h1 id="storage-serializer-abstractserializer">Abstract Class Phalcon\Storage\Serializer\AbstractSerializer</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/AbstractSerializer.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/AbstractSerializer.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Exception | | Implements | SerializerInterface |
 
@@ -743,11 +743,11 @@ protected data;
 
 ## Методы
 
-Constructor
-
 ```php
 public function __construct( mixed $data = null );
 ```
+
+Constructor
 
 ```php
 public function getData(): mixed;
@@ -757,15 +757,15 @@ public function getData(): mixed;
 public function setData( mixed $data ): void;
 ```
 
-If this returns true, then the data returns back as is
-
 ```php
 protected function isSerializable( mixed $data ): bool;
 ```
 
+If this returns true, then the data returns back as is
+
 <h1 id="storage-serializer-base64">Class Phalcon\Storage\Serializer\Base64</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/Base64.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Base64.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
 
@@ -777,21 +777,21 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-Serializes data
-
 ```php
 public function serialize(): string;
 ```
 
-Unserializes data
+Serializes data
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
+Unserializes data
+
 <h1 id="storage-serializer-igbinary">Class Phalcon\Storage\Serializer\Igbinary</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/Igbinary.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Igbinary.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Extends | AbstractSerializer |
 
@@ -803,21 +803,21 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-Serializes data
-
 ```php
 public function serialize(): string;
 ```
 
-Unserializes data
+Serializes data
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
+Unserializes data
+
 <h1 id="storage-serializer-json">Class Phalcon\Storage\Serializer\Json</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/Json.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Json.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, JsonSerializable, Phalcon\Helper\Json | | Extends | AbstractSerializer |
 
@@ -829,21 +829,21 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-Serializes data
-
 ```php
 public function serialize(): string;
 ```
 
-Unserializes data
+Serializes data
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
+Unserializes data
+
 <h1 id="storage-serializer-msgpack">Class Phalcon\Storage\Serializer\Msgpack</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/Msgpack.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Msgpack.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Extends | AbstractSerializer |
 
@@ -855,21 +855,21 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-Serializes data
-
 ```php
 public function serialize(): string | null;
 ```
 
-Unserializes data
+Serializes data
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
+Unserializes data
+
 <h1 id="storage-serializer-none">Class Phalcon\Storage\Serializer\None</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/None.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/None.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
 
@@ -881,21 +881,21 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-Serializes data
-
 ```php
 public function serialize(): string;
 ```
 
-Unserializes data
+Serializes data
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
+Unserializes data
+
 <h1 id="storage-serializer-php">Class Phalcon\Storage\Serializer\Php</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/Php.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Php.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, Phalcon\Storage\Exception | | Extends | AbstractSerializer |
 
@@ -907,21 +907,21 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-Serializes data
-
 ```php
 public function serialize(): string;
 ```
 
-Unserializes data
+Serializes data
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
+Unserializes data
+
 <h1 id="storage-serializer-serializerinterface">Interface Phalcon\Storage\Serializer\SerializerInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/Serializer/SerializerInterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/SerializerInterface.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | Serializable | | Extends | Serializable |
 
@@ -943,7 +943,7 @@ public function setData( mixed $data ): void;
 
 <h1 id="storage-serializerfactory">Class Phalcon\Storage\SerializerFactory</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Storage/SerializerFactory.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/SerializerFactory.zep)
 
 | Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractFactory |
 
@@ -955,11 +955,11 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ## Методы
 
-SerializerFactory constructor.
-
 ```php
 public function __construct( array $services = [] );
 ```
+
+SerializerFactory constructor.
 
 ```php
 public function newInstance( string $name ): SerializerInterface;
