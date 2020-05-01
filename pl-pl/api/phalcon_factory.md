@@ -10,7 +10,7 @@ title: 'Phalcon\Factory'
 
 <h1 id="factory-abstractfactory">Abstract Class Phalcon\Factory\AbstractFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/AbstractFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Factory/AbstractFactory.zep)
 
 | Namespace | Phalcon\Factory | | Uses | Phalcon\Config |
 
@@ -37,33 +37,33 @@ protected services;
 
 ## Metody
 
-Checks the config if it is a valid object
-
 ```php
 protected function checkConfig( mixed $config ): array;
 ```
 
-Checks if a service exists and throws an exception
+Checks the config if it is a valid object
 
 ```php
 protected function checkService( string $name ): void;
 ```
 
-Returns the adapters for the factory
+Checks if a service exists and throws an exception
 
 ```php
 abstract protected function getAdapters(): array;
 ```
 
-AdapterFactory constructor.
+Returns the adapters for the factory
 
 ```php
 protected function init( array $services = [] ): void;
 ```
 
+AdapterFactory constructor.
+
 <h1 id="factory-exception">Class Phalcon\Factory\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Factory/Exception.zep)
 
 | Namespace | Phalcon\Factory | | Extends | \Phalcon\Exception |
 
