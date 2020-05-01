@@ -16,7 +16,7 @@ title: 'Phalcon\Config'
 
 <h1 id="config">Class Phalcon\Config</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Collection, Phalcon\Config\Exception |
@@ -63,11 +63,15 @@ protected pathDelimiter;
 
 ## Methods
 
-Gets the default path delimiter
 ```php
 public function getPathDelimiter(): string;
 ```
+Gets the default path delimiter
 
+
+```php
+public function merge( mixed $toMerge ): Config;
+```
 Merges a configuration into the current one
 
 ```php
@@ -81,24 +85,27 @@ $appConfig = new \Phalcon\Config(
 
 $globalConfig->merge($appConfig);
 ```
-```php
-public function merge( mixed $toMerge ): Config;
-```
 
+
+```php
+public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
+```
 Returns a value from current config using a dot separated path.
 
 ```php
 echo $config->path("unknown.path", "default", ".");
 ```
-```php
-public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null );
-```
 
-Sets the default path delimiter
+
 ```php
 public function setPathDelimiter( string $delimiter = null ): Config;
 ```
+Sets the default path delimiter
 
+
+```php
+public function toArray(): array;
+```
 Converts recursively the object to an array
 
 ```php
@@ -106,25 +113,25 @@ print_r(
     $config->toArray()
 );
 ```
-```php
-public function toArray(): array;
-```
 
-Performs a merge recursively
+
 ```php
 final protected function internalMerge( array $source, array $target ): array;
 ```
+Performs a merge recursively
 
-Sets the collection data
+
 ```php
 protected function setData( mixed $element, mixed $value ): void;
 ```
+Sets the collection data
+
 
 
 
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory |
@@ -183,16 +190,17 @@ $config = new Grouped(
 
 ## Methods
 
-Phalcon\Config\Adapter\Grouped constructor
 ```php
 public function __construct( array $arrayConfig, string $defaultAdapter = string );
 ```
+Phalcon\Config\Adapter\Grouped constructor
+
 
 
 
 <h1 id="config-adapter-ini">Class Phalcon\Config\Adapter\Ini</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Ini.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Ini.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception |
@@ -242,27 +250,30 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 ## Methods
 
-Ini constructor.
 ```php
 public function __construct( string $filePath, mixed $mode = null );
 ```
+Ini constructor.
 
-We have to cast values manually because parse_ini_file() has a poor
-implementation.
+
 ```php
 protected function cast( mixed $ini ): bool | null | double | int | string;
 ```
+We have to cast values manually because parse_ini_file() has a poor
+implementation.
 
-Build multidimensional array from string
+
 ```php
 protected function parseIniString( string $path, mixed $value ): array;
 ```
+Build multidimensional array from string
+
 
 
 
 <h1 id="config-adapter-json">Class Phalcon\Config\Adapter\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Json.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Helper\Json |
@@ -290,16 +301,17 @@ echo $config->models->metadata;
 
 ## Methods
 
-Phalcon\Config\Adapter\Json constructor
 ```php
 public function __construct( string $filePath );
 ```
+Phalcon\Config\Adapter\Json constructor
+
 
 
 
 <h1 id="config-adapter-php">Class Phalcon\Config\Adapter\Php</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Php.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config |
@@ -342,16 +354,17 @@ echo $config->database->username;
 
 ## Methods
 
-Phalcon\Config\Adapter\Php constructor
 ```php
 public function __construct( string $filePath );
 ```
+Phalcon\Config\Adapter\Php constructor
+
 
 
 
 <h1 id="config-adapter-yaml">Class Phalcon\Config\Adapter\Yaml</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Adapter/Yaml.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Yaml.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
 | Uses       | Phalcon\Config, Phalcon\Config\Exception |
@@ -396,16 +409,17 @@ echo $config->models->metadata;
 
 ## Methods
 
-Phalcon\Config\Adapter\Yaml constructor
 ```php
 public function __construct( string $filePath, array $callbacks = null );
 ```
+Phalcon\Config\Adapter\Yaml constructor
+
 
 
 
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
 
 | Namespace  | Phalcon\Config |
 | Uses       | Phalcon\Config, Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr |
@@ -428,31 +442,35 @@ $config = (new ConfigFactory())->load($options);
 
 ## Methods
 
-ConfigFactory constructor.
 ```php
 public function __construct( array $services = [] );
 ```
+ConfigFactory constructor.
 
-Load a config to create a new instance
+
 ```php
 public function load( mixed $config ): object;
 ```
+Load a config to create a new instance
 
-Returns a new Config instance
+
 ```php
 public function newInstance( string $name, string $fileName, mixed $params = null ): object;
 ```
+Returns a new Config instance
 
-Returns the adapters for the factory
+
 ```php
 protected function getAdapters(): array;
 ```
+Returns the adapters for the factory
+
 
 
 
 <h1 id="config-exception">Class Phalcon\Config\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Config/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Exception.zep)
 
 | Namespace  | Phalcon\Config |
 | Extends    | \Phalcon\Exception |

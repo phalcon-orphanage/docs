@@ -19,7 +19,7 @@ title: 'Phalcon\Acl'
 
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
 | Uses       | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface |
@@ -77,10 +77,10 @@ protected eventsManager;
 
 ## Methods
 
-
 ```php
 public function getActiveAccess(): string
 ```
+
 
 
 ```php
@@ -88,35 +88,42 @@ public function getActiveComponent(): string
 ```
 
 
+
 ```php
 public function getActiveRole(): string
 ```
 
-Returns the default ACL access level
+
+
 ```php
 public function getDefaultAction(): int;
 ```
+Returns the default ACL access level
 
-Returns the internal event manager
+
 ```php
 public function getEventsManager(): ManagerInterface;
 ```
+Returns the internal event manager
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+
 ```php
 public function setDefaultAction( int $defaultAccess ): void;
 ```
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
-Sets the events manager
+
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
+Sets the events manager
+
 
 
 
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
 | Uses       | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
@@ -126,115 +133,134 @@ Interface for Phalcon\Acl adapters
 
 ## Methods
 
+```php
+public function addComponent( mixed $componentObject, mixed $accessList ): bool;
+```
 Adds a component to the ACL list
 
 Access names can be a particular action, by example
 search, update, delete, etc or a list of them
-```php
-public function addComponent( mixed $componentObject, mixed $accessList ): bool;
-```
 
-Adds access to components
+
 ```php
 public function addComponentAccess( string $componentName, mixed $accessList ): bool;
 ```
+Adds access to components
 
-Do a role inherit from another existing role
+
 ```php
 public function addInherit( string $roleName, mixed $roleToInherit ): bool;
 ```
+Do a role inherit from another existing role
 
-Adds a role to the ACL list. Second parameter lets to inherit access data
-from other existing role
+
 ```php
 public function addRole( mixed $role, mixed $accessInherits = null ): bool;
 ```
+Adds a role to the ACL list. Second parameter lets to inherit access data
+from other existing role
 
-Allow access to a role on a component
+
 ```php
 public function allow( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
+Allow access to a role on a component
 
-Deny access to a role on a component
+
 ```php
 public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
+Deny access to a role on a component
 
-Removes an access from a component
+
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
+Removes an access from a component
 
-Returns the access which the list is checking if some role can access it
+
 ```php
 public function getActiveAccess(): string;
 ```
+Returns the access which the list is checking if some role can access it
 
-Returns the component which the list is checking if some role can access
-it
+
 ```php
 public function getActiveComponent(): string;
 ```
+Returns the component which the list is checking if some role can access
+it
 
-Returns the role which the list is checking if it's allowed to certain
-component/access
+
 ```php
 public function getActiveRole(): string;
 ```
+Returns the role which the list is checking if it's allowed to certain
+component/access
 
-Return an array with every component registered in the list
+
 ```php
 public function getComponents(): ComponentInterface[];
 ```
+Return an array with every component registered in the list
 
-Returns the default ACL access level
+
 ```php
 public function getDefaultAction(): int;
 ```
+Returns the default ACL access level
 
-Returns the default ACL access level for no arguments provided in
-isAllowed action if there exists func for accessKey
+
 ```php
 public function getNoArgumentsDefaultAction(): int;
 ```
+Returns the default ACL access level for no arguments provided in
+isAllowed action if there exists func for accessKey
 
-Return an array with every role registered in the list
+
 ```php
 public function getRoles(): RoleInterface[];
 ```
+Return an array with every role registered in the list
 
-Check whether a role is allowed to access an action from a component
+
 ```php
 public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
 ```
+Check whether a role is allowed to access an action from a component
 
-Check whether component exist in the components list
+
 ```php
 public function isComponent( string $componentName ): bool;
 ```
+Check whether component exist in the components list
 
-Check whether role exist in the roles list
+
 ```php
 public function isRole( string $roleName ): bool;
 ```
+Check whether role exist in the roles list
 
-Sets the default access level (Phalcon\Ac\Enuml::ALLOW or Phalcon\Acl\Enum::DENY)
+
 ```php
 public function setDefaultAction( int $defaultAccess ): void;
 ```
+Sets the default access level (Phalcon\Ac\Enuml::ALLOW or Phalcon\Acl\Enum::DENY)
 
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
-for no arguments provided in isAllowed action if there exists func for
-accessKey
+
 ```php
 public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
 ```
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+for no arguments provided in isAllowed action if there exists func for
+accessKey
+
 
 
 
 <h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
 | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction |
@@ -393,11 +419,15 @@ protected rolesNames;
 
 ## Methods
 
-Phalcon\Acl\Adapter\Memory constructor
 ```php
 public function __construct();
 ```
+Phalcon\Acl\Adapter\Memory constructor
 
+
+```php
+public function addComponent( mixed $componentValue, mixed $accessList ): bool;
+```
 Adds a component to the ACL list
 
 Access names can be a particular action, by example
@@ -430,25 +460,28 @@ $acl->addComponent(
     ]
 );
 ```
-```php
-public function addComponent( mixed $componentValue, mixed $accessList ): bool;
-```
 
-Adds access to components
+
 ```php
 public function addComponentAccess( string $componentName, mixed $accessList ): bool;
 ```
+Adds access to components
 
+
+```php
+public function addInherit( string $roleName, mixed $roleToInherits ): bool;
+```
 Do a role inherit from another existing role
 
 ```php
 $acl->addRole("administrator", "consultant");
 $acl->addRole("administrator", ["consultant", "consultant2"]);
 ```
-```php
-public function addInherit( string $roleName, mixed $roleToInherits ): bool;
-```
 
+
+```php
+public function addRole( mixed $role, mixed $accessInherits = null ): bool;
+```
 Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
 
 ```php
@@ -460,10 +493,11 @@ $acl->addRole(
 $acl->addRole("administrator", "consultant");
 $acl->addRole("administrator", ["consultant", "consultant2"]);
 ```
-```php
-public function addRole( mixed $role, mixed $accessInherits = null ): bool;
-```
 
+
+```php
+public function allow( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
+```
 Allow access to a role on a component. You can use `*` as wildcard
 
 ```php
@@ -478,10 +512,11 @@ $acl->allow("*", "products", "browse");
 
 // Allow access to any role to browse on any component
 $acl->allow("*", "*", "browse");
-```php
-public function allow( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
-```
 
+
+```php
+public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
+```
 Deny access to a role on a component. You can use `*` as wildcard
 
 ```php
@@ -497,14 +532,12 @@ $acl->deny("*", "products", "browse");
 // Deny access to any role to browse on any component
 $acl->deny("*", "*", "browse");
 ```
-```php
-public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
-```
 
-Removes an access from a component
+
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
+Removes an access from a component
 
 
 ```php
@@ -512,31 +545,41 @@ public function getActiveFunction(): mixed
 ```
 
 
+
 ```php
 public function getActiveFunctionCustomArgumentsCount(): int
 ```
+
 
 
 ```php
 public function getActiveKey(): string|null
 ```
 
-Return an array with every component registered in the list
+
+
 ```php
 public function getComponents(): ComponentInterface[];
 ```
+Return an array with every component registered in the list
 
-Returns the default ACL access level for no arguments provided in
-`isAllowed` action if a `func` (callable) exists for `accessKey`
+
 ```php
 public function getNoArgumentsDefaultAction(): int;
 ```
+Returns the default ACL access level for no arguments provided in
+`isAllowed` action if a `func` (callable) exists for `accessKey`
 
-Return an array with every role registered in the list
+
 ```php
 public function getRoles(): RoleInterface[];
 ```
+Return an array with every role registered in the list
 
+
+```php
+public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
+```
 Check whether a role is allowed to access an action from a component
 
 ```php
@@ -546,32 +589,33 @@ $acl->isAllowed("andres", "Products", "create");
 // Do guests have access to any component to edit?
 $acl->isAllowed("guests", "*", "edit");
 ```
-```php
-public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
-```
 
-Check whether component exist in the components list
+
 ```php
 public function isComponent( string $componentName ): bool;
 ```
+Check whether component exist in the components list
 
-Check whether role exist in the roles list
+
 ```php
 public function isRole( string $roleName ): bool;
 ```
+Check whether role exist in the roles list
 
-Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`)
-for no arguments provided in isAllowed action if there exists func for
-accessKey
+
 ```php
 public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
 ```
+Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`)
+for no arguments provided in isAllowed action if there exists func for
+accessKey
+
 
 
 
 <h1 id="acl-component">Class Phalcon\Acl\Component</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Component.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Component.zep)
 
 | Namespace  | Phalcon\Acl |
 | Implements | ComponentInterface |
@@ -599,10 +643,10 @@ private name;
 
 ## Methods
 
-Phalcon\Acl\Component constructor
 ```php
 public function __construct( string $name, string $description = null );
 ```
+Phalcon\Acl\Component constructor
 
 
 ```php
@@ -610,9 +654,11 @@ public function __toString(): string
 ```
 
 
+
 ```php
 public function getDescription(): string
 ```
+
 
 
 ```php
@@ -621,9 +667,11 @@ public function getName(): string
 
 
 
+
+
 <h1 id="acl-componentaware">Interface Phalcon\Acl\ComponentAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/ComponentAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentAware.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -632,16 +680,17 @@ Interface for classes which could be used in allow method as RESOURCE
 
 ## Methods
 
-Returns component name
 ```php
 public function getComponentName(): string;
 ```
+Returns component name
+
 
 
 
 <h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/ComponentInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -650,26 +699,29 @@ Interface for Phalcon\Acl\Component
 
 ## Methods
 
-Magic method __toString
 ```php
 public function __toString(): string;
 ```
+Magic method __toString
 
-Returns component description
+
 ```php
 public function getDescription(): string;
 ```
+Returns component description
 
-Returns the component name
+
 ```php
 public function getName(): string;
 ```
+Returns the component name
+
 
 
 
 <h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Enum.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -685,7 +737,7 @@ const DENY = 0;
 
 <h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
 
 | Namespace  | Phalcon\Acl |
 | Extends    | \Phalcon\Exception |
@@ -696,7 +748,7 @@ Class for exceptions thrown by Phalcon\Acl
 
 <h1 id="acl-role">Class Phalcon\Acl\Role</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/Role.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Role.zep)
 
 | Namespace  | Phalcon\Acl |
 | Implements | RoleInterface |
@@ -724,10 +776,10 @@ private description;
 
 ## Methods
 
-Phalcon\Acl\Role constructor
 ```php
 public function __construct( string $name, string $description = null );
 ```
+Phalcon\Acl\Role constructor
 
 
 ```php
@@ -735,9 +787,11 @@ public function __toString(): string
 ```
 
 
+
 ```php
 public function getDescription(): string
 ```
+
 
 
 ```php
@@ -746,9 +800,11 @@ public function getName(): string
 
 
 
+
+
 <h1 id="acl-roleaware">Interface Phalcon\Acl\RoleAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/RoleAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleAware.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -757,16 +813,17 @@ Interface for classes which could be used in allow method as ROLE
 
 ## Methods
 
-Returns role name
 ```php
 public function getRoleName(): string;
 ```
+Returns role name
+
 
 
 
 <h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Acl/RoleInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -775,18 +832,21 @@ Interface for Phalcon\Acl\Role
 
 ## Methods
 
-Magic method __toString
 ```php
 public function __toString(): string;
 ```
+Magic method __toString
 
-Returns role description
+
 ```php
 public function getDescription(): string;
 ```
+Returns role description
 
-Returns the role name
+
 ```php
 public function getName(): string;
 ```
+Returns the role name
+
 

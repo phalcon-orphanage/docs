@@ -33,7 +33,7 @@ title: 'Phalcon\Filter'
 
 <h1 id="filter">Class Phalcon\Filter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface |
@@ -83,43 +83,49 @@ protected services;
 
 ## Methods
 
-Key value pairs with name as the key and a callable as the value for
-the service object
 ```php
 public function __construct( array $mapper = [] );
 ```
+Key value pairs with name as the key and a callable as the value for
+the service object
 
-Get a service. If it is not in the mapper array, create a new object,
-set it and then return it.
+
 ```php
 public function get( string $name ): object;
 ```
+Get a service. If it is not in the mapper array, create a new object,
+set it and then return it.
 
-Checks if a service exists in the map array
+
 ```php
 public function has( string $name ): bool;
 ```
+Checks if a service exists in the map array
 
-Sanitizes a value with a specified single or set of sanitizers
+
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
+Sanitizes a value with a specified single or set of sanitizers
 
-Set a new service to the mapper array
+
 ```php
 public function set( string $name, callable $service ): void;
 ```
+Set a new service to the mapper array
 
-Loads the objects in the internal mapper array
+
 ```php
 protected function init( array $mapper ): void;
 ```
+Loads the objects in the internal mapper array
+
 
 
 
 <h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Exception.zep)
 
 | Namespace  | Phalcon\Filter |
 | Extends    | \Phalcon\Exception |
@@ -132,7 +138,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 <h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/FilterFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterFactory.zep)
 
 | Namespace  | Phalcon\Filter |
 | Uses       | Phalcon\Filter |
@@ -147,11 +153,11 @@ file that was distributed with this source code.
 
 ## Methods
 
-Returns a Locator object with all the helpers defined in anonymous
-functions
 ```php
 public function newInstance(): FilterInterface;
 ```
+Returns a Locator object with all the helpers defined in anonymous
+functions
 
 
 ```php
@@ -160,9 +166,11 @@ protected function getAdapters(): array;
 
 
 
+
+
 <h1 id="filter-filterinterface">Interface Phalcon\Filter\FilterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/FilterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterInterface.zep)
 
 | Namespace  | Phalcon\Filter |
 
@@ -171,16 +179,17 @@ Lazy loads, stores and exposes sanitizer objects
 
 ## Methods
 
-Sanitizes a value with a specified single or set of sanitizers
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
+Sanitizes a value with a specified single or set of sanitizers
+
 
 
 
 <h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/AbsInt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/AbsInt.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -191,16 +200,17 @@ Sanitizes a value to absolute integer
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alnum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alnum.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -211,16 +221,17 @@ Sanitizes a value to an alphanumeric value
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alpha.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alpha.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -231,16 +242,17 @@ Sanitizes a value to an alpha value
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-boolval">Class Phalcon\Filter\Sanitize\BoolVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/BoolVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/BoolVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -251,16 +263,17 @@ Sanitizes a value to boolean
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-email">Class Phalcon\Filter\Sanitize\Email</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Email.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -271,16 +284,17 @@ Sanitizes an email string
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-floatval">Class Phalcon\Filter\Sanitize\FloatVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/FloatVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/FloatVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -291,16 +305,17 @@ Sanitizes a value to float
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-intval">Class Phalcon\Filter\Sanitize\IntVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/IntVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/IntVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -311,16 +326,17 @@ Sanitizes a value to integer
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-lower">Class Phalcon\Filter\Sanitize\Lower</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Lower.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Lower.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -331,16 +347,17 @@ Sanitizes a value to lowercase
 
 ## Methods
 
-@var string input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var string input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/LowerFirst.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/LowerFirst.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -351,16 +368,17 @@ Sanitizes a value to lcfirst
 
 ## Methods
 
-@var string input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var string input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Regex.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Regex.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -371,16 +389,17 @@ Sanitizes a value performing preg_replace
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-remove">Class Phalcon\Filter\Sanitize\Remove</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Remove.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Remove.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -391,16 +410,17 @@ Sanitizes a value removing parts of a string
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input, mixed $replace );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-replace">Class Phalcon\Filter\Sanitize\Replace</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Replace.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Replace.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -411,16 +431,17 @@ Sanitizes a value replacing parts of a string
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input, mixed $from, mixed $to );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-special">Class Phalcon\Filter\Sanitize\Special</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Special.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Special.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -431,16 +452,17 @@ Sanitizes a value special characters
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-specialfull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/SpecialFull.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/SpecialFull.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -451,16 +473,17 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-stringval">Class Phalcon\Filter\Sanitize\StringVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/StringVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/StringVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -471,16 +494,17 @@ Sanitizes a value to string
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Striptags.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Striptags.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -491,16 +515,17 @@ Sanitizes a value striptags
 
 ## Methods
 
-@var string input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var string input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Trim.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Trim.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -511,16 +536,17 @@ Sanitizes a value removing leading and trailing spaces
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var mixed input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-upper">Class Phalcon\Filter\Sanitize\Upper</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upper.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -531,16 +557,17 @@ Sanitizes a value to uppercase
 
 ## Methods
 
-@var string input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var string input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperFirst.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperFirst.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -551,16 +578,17 @@ Sanitizes a value to ucfirst
 
 ## Methods
 
-@var string input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var string input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperWords.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperWords.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -571,16 +599,17 @@ Sanitizes a value to uppercase the first character of each word
 
 ## Methods
 
-@var string input The text to sanitize
 ```php
 public function __invoke( string $input );
 ```
+@var string input The text to sanitize
+
 
 
 
 <h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Filter/Sanitize/Url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Url.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -591,8 +620,9 @@ Sanitizes a value url
 
 ## Methods
 
-@var mixed input The text to sanitize
 ```php
 public function __invoke( mixed $input );
 ```
+@var mixed input The text to sanitize
+
 
