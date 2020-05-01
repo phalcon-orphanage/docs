@@ -9,10 +9,10 @@ title: 'Phalcon\Crypt'
 * [Phalcon\Crypt\CryptInterface](#crypt-cryptinterface)
 * [Phalcon\Crypt\Exception](#crypt-exception)
 * [Phalcon\Crypt\Mismatch](#crypt-mismatch)
-        
+
 <h1 id="crypt">Class Phalcon\Crypt</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Crypt.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch |
@@ -107,15 +107,12 @@ protected useSigning = true;
 ```
 
 ## Methods
+
+Phalcon\Crypt constructor.
 ```php
 public function __construct( string $cipher = string, bool $useSigning = bool );
 ```
-Phalcon\Crypt constructor.
 
-
-```php
-public function decrypt( string $text, string $key = null ): string;
-```
 Decrypts an encrypted text.
 
 ```php
@@ -124,19 +121,17 @@ $encrypted = $crypt->decrypt(
     "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
-
-
 ```php
-public function decryptBase64( string $text, mixed $key = null, bool $safe = bool ): string;
+public function decrypt( string $text, string $key = null ): string;
 ```
+
 Decrypt a text that is coded as a base64 string.
 
 @throws \Phalcon\Crypt\Mismatch
-
-
 ```php
-public function encrypt( string $text, string $key = null ): string;
+public function decryptBase64( string $text, mixed $key = null, bool $safe = bool ): string;
 ```
+
 Encrypts a text.
 
 ```php
@@ -145,12 +140,14 @@ $encrypted = $crypt->encrypt(
     "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
+```php
+public function encrypt( string $text, string $key = null ): string;
+```
 
-
+Encrypts a text returning the result as a base64 string.
 ```php
 public function encryptBase64( string $text, mixed $key = null, bool $safe = bool ): string;
 ```
-Encrypts a text returning the result as a base64 string.
 
 
 ```php
@@ -167,55 +164,46 @@ public function getAuthTag(): string
 public function getAuthTagLength(): int
 ```
 
-
+Returns a list of available ciphers.
 ```php
 public function getAvailableCiphers(): array;
 ```
-Returns a list of available ciphers.
 
-
+Return a list of registered hashing algorithms suitable for hash_hmac.
 ```php
 public function getAvailableHashAlgos(): array;
 ```
-Return a list of registered hashing algorithms suitable for hash_hmac.
 
-
+Returns the current cipher
 ```php
 public function getCipher(): string;
 ```
-Returns the current cipher
 
-
+Get the name of hashing algorithm.
 ```php
 public function getHashAlgo(): string;
 ```
-Get the name of hashing algorithm.
 
-
+Returns the encryption key
 ```php
 public function getKey(): string;
 ```
-Returns the encryption key
 
 
 ```php
 public function setAuthData( string $data ): CryptInterface;
 ```
-//
+
 
 ```php
 public function setAuthTag( string $tag ): CryptInterface;
 ```
-//
+
 
 ```php
 public function setAuthTagLength( int $length ): CryptInterface;
 ```
-//
 
-```php
-public function setCipher( string $cipher ): CryptInterface;
-```
 Sets the cipher algorithm for data encryption and decryption.
 
 The `aes-256-gcm' is the preferable cipher, but it is not usable
@@ -223,19 +211,17 @@ until the openssl library is upgraded, which is available in PHP 7.1.
 
 The `aes-256-ctr' is arguably the best choice for cipher
 algorithm for current openssl library version.
-
-
 ```php
-public function setHashAlgo( string $hashAlgo ): CryptInterface;
+public function setCipher( string $cipher ): CryptInterface;
 ```
+
 Set the name of hashing algorithm.
 
 @throws \Phalcon\Crypt\Exception
-
-
 ```php
-public function setKey( string $key ): CryptInterface;
+public function setHashAlgo( string $hashAlgo ): CryptInterface;
 ```
+
 Sets the encryption key.
 
 The `$key' should have been previously generated in a cryptographically
@@ -249,64 +235,58 @@ Better (but still unsafe):
 
 Good key:
 "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+```php
+public function setKey( string $key ): CryptInterface;
+```
 
-
+Changes the padding scheme used.
 ```php
 public function setPadding( int $scheme ): CryptInterface;
 ```
-Changes the padding scheme used.
 
-
+Sets if the calculating message digest must used.
 ```php
 public function useSigning( bool $useSigning ): CryptInterface;
 ```
-Sets if the calculating message digest must used.
 
-
+Assert the cipher is available.
 ```php
 protected function assertCipherIsAvailable( string $cipher ): void;
 ```
-Assert the cipher is available.
 
-
+Assert the hash algorithm is available.
 ```php
 protected function assertHashAlgorithmAvailable( string $hashAlgo ): void;
 ```
-Assert the hash algorithm is available.
 
-
+Pads texts before encryption. See [cryptopad](http://www.di-mgt.com.au/cryptopad.html)
 ```php
 protected function cryptPadText( string $text, string $mode, int $blockSize, int $paddingType ): string;
 ```
-Pads texts before encryption. See [cryptopad](http://www.di-mgt.com.au/cryptopad.html)
 
-
-```php
-protected function cryptUnpadText( string $text, string $mode, int $blockSize, int $paddingType );
-```
 Removes a padding from a text.
 
 If the function detects that the text was not padded, it will return it
 unmodified.
+```php
+protected function cryptUnpadText( string $text, string $mode, int $blockSize, int $paddingType );
+```
 
-
+Initialize available cipher algorithms.
 ```php
 protected function getIvLength( string $cipher ): int;
 ```
+
 Initialize available cipher algorithms.
-
-
 ```php
 protected function initializeAvailableCiphers(): void;
 ```
-Initialize available cipher algorithms.
 
 
 
-        
 <h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/cryptinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Crypt/CryptInterface.zep)
 
 | Namespace  | Phalcon\Crypt |
 
@@ -314,107 +294,92 @@ Interface for Phalcon\Crypt
 
 
 ## Methods
+
+Decrypts a text
 ```php
 public function decrypt( string $text, string $key = null ): string;
 ```
-Decrypts a text
 
-
+Decrypt a text that is coded as a base64 string
 ```php
 public function decryptBase64( string $text, mixed $key = null ): string;
 ```
-Decrypt a text that is coded as a base64 string
 
-
+Encrypts a text
 ```php
 public function encrypt( string $text, string $key = null ): string;
 ```
-Encrypts a text
 
-
+Encrypts a text returning the result as a base64 string
 ```php
 public function encryptBase64( string $text, mixed $key = null ): string;
 ```
-Encrypts a text returning the result as a base64 string
 
-
+Returns authentication data
 ```php
 public function getAuthData(): string;
 ```
-Returns authentication data
 
-
+Returns the authentication tag
 ```php
 public function getAuthTag(): string;
 ```
-Returns the authentication tag
 
-
+Returns the authentication tag length
 ```php
 public function getAuthTagLength(): int;
 ```
-Returns the authentication tag length
 
-
+Returns a list of available cyphers
 ```php
 public function getAvailableCiphers(): array;
 ```
-Returns a list of available cyphers
 
-
+Returns the current cipher
 ```php
 public function getCipher(): string;
 ```
-Returns the current cipher
 
-
+Returns the encryption key
 ```php
 public function getKey(): string;
 ```
-Returns the encryption key
 
-
+Sets authentication data
 ```php
 public function setAuthData( string $data ): CryptInterface;
 ```
-Sets authentication data
 
-
+Sets the authentication tag
 ```php
 public function setAuthTag( string $tag ): CryptInterface;
 ```
-Sets the authentication tag
 
-
+Sets the authentication tag length
 ```php
 public function setAuthTagLength( int $length ): CryptInterface;
 ```
-Sets the authentication tag length
 
-
+Sets the cipher algorithm
 ```php
 public function setCipher( string $cipher ): CryptInterface;
 ```
-Sets the cipher algorithm
 
-
+Sets the encryption key
 ```php
 public function setKey( string $key ): CryptInterface;
 ```
-Sets the encryption key
 
-
+Changes the padding scheme used.
 ```php
 public function setPadding( int $scheme ): CryptInterface;
 ```
-Changes the padding scheme used.
 
 
 
-        
 <h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Crypt/Exception.zep)
 
 | Namespace  | Phalcon\Crypt |
 | Extends    | \Phalcon\Exception |
@@ -422,10 +387,10 @@ Changes the padding scheme used.
 Exceptions thrown in Phalcon\Crypt use this class
 
 
-        
+
 <h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Crypt/Mismatch.zep)
 
 | Namespace  | Phalcon\Crypt |
 | Extends    | Exception |
