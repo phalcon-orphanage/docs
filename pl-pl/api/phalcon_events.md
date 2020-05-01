@@ -14,7 +14,7 @@ title: 'Phalcon\Events'
 
 <h1 id="events-event">Class Phalcon\Events\Event</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Events/Event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Event.zep)
 
 | Namespace | Phalcon\Events | | Implements | EventInterface |
 
@@ -73,11 +73,11 @@ protected type;
 
 ## Metody
 
-Phalcon\Events\Event constructor
-
 ```php
 public function __construct( string $type, object $source, mixed $data = null, bool $cancelable = bool );
 ```
+
+Phalcon\Events\Event constructor
 
 ```php
 public function getData(): mixed
@@ -91,6 +91,10 @@ public function getSource(): object
 public function getType(): string
 ```
 
+```php
+public function isCancelable(): bool;
+```
+
 Check whether the event is cancelable.
 
 ```php
@@ -100,25 +104,25 @@ if ($event->isCancelable()) {
 ```
 
 ```php
-public function isCancelable(): bool;
+public function isStopped(): bool;
 ```
 
 Check whether the event is currently stopped.
 
 ```php
-public function isStopped(): bool;
+public function setData( mixed $data = null ): EventInterface;
 ```
 
 Sets event data.
 
 ```php
-public function setData( mixed $data = null ): EventInterface;
+public function setType( string $type ): EventInterface;
 ```
 
 Sets event type.
 
 ```php
-public function setType( string $type ): EventInterface;
+public function stop(): EventInterface;
 ```
 
 Stops the event preventing propagation.
@@ -129,13 +133,9 @@ if ($event->isCancelable()) {
 }
 ```
 
-```php
-public function stop(): EventInterface;
-```
-
 <h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Events/EventInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -145,51 +145,51 @@ Interface for Phalcon\Events\Event class
 
 ## Metody
 
-Gets event data
-
 ```php
 public function getData(): mixed;
 ```
 
-Gets event type
+Gets event data
 
 ```php
 public function getType(): mixed;
 ```
 
-Check whether the event is cancelable
+Gets event type
 
 ```php
 public function isCancelable(): bool;
 ```
 
-Check whether the event is currently stopped
+Check whether the event is cancelable
 
 ```php
 public function isStopped(): bool;
 ```
 
-Sets event data
+Check whether the event is currently stopped
 
 ```php
 public function setData( mixed $data = null ): EventInterface;
 ```
 
-Sets event type
+Sets event data
 
 ```php
 public function setType( string $type ): EventInterface;
 ```
 
-Stops the event preventing propagation
+Sets event type
 
 ```php
 public function stop(): EventInterface;
 ```
 
+Stops the event preventing propagation
+
 <h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Events/EventsAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventsAwareInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -199,21 +199,21 @@ This interface must for those classes that accept an EventsManager and dispatch 
 
 ## Metody
 
-Returns the internal event manager
-
 ```php
 public function getEventsManager(): ManagerInterface | null;
 ```
 
-Sets the events manager
+Returns the internal event manager
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
+Sets the events manager
+
 <h1 id="events-exception">Class Phalcon\Events\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Events/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Exception.zep)
 
 | Namespace | Phalcon\Events | | Extends | \Phalcon\Exception |
 
@@ -223,7 +223,7 @@ Exceptions thrown in Phalcon\Events will use this class
 
 <h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Events/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Manager.zep)
 
 | Namespace | Phalcon\Events | | Uses | Closure, SplPriorityQueue | | Implements | ManagerInterface |
 
@@ -260,40 +260,44 @@ protected responses;
 
 ## Metody
 
-Returns if priorities are enabled
-
 ```php
 public function arePrioritiesEnabled(): bool;
 ```
 
-Attach a listener to the events manager
+Returns if priorities are enabled
 
 ```php
 public function attach( string $eventType, mixed $handler, int $priority = static-constant-access ): void;
 ```
 
-Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
+Attach a listener to the events manager
 
 ```php
 public function collectResponses( bool $collect ): void;
 ```
 
-Detach the listener from the events manager
+Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
 
 ```php
 public function detach( string $eventType, mixed $handler ): void;
 ```
 
-Removes all events from the EventsManager
+Detach the listener from the events manager
 
 ```php
 public function detachAll( string $type = null ): void;
 ```
 
-Set if priorities are enabled in the EventsManager
+Removes all events from the EventsManager
 
 ```php
 public function enablePriorities( bool $enablePriorities ): void;
+```
+
+Set if priorities are enabled in the EventsManager
+
+```php
+public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
 Fires an event in the events manager causing the active listeners to be notified about it
@@ -303,42 +307,38 @@ $eventsManager->fire("db", $connection);
 ```
 
 ```php
-public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
+final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
 ```
 
 Internal handler to call a queue of events
 
 ```php
-final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
+public function getListeners( string $type ): array;
 ```
 
 Returns all the attached listeners of a certain type
 
 ```php
-public function getListeners( string $type ): array;
+public function getResponses(): array;
 ```
 
 Returns all the responses returned by every handler executed by the last 'fire' executed
 
 ```php
-public function getResponses(): array;
+public function hasListeners( string $type ): bool;
 ```
 
 Check whether certain type of event has listeners
 
 ```php
-public function hasListeners( string $type ): bool;
+public function isCollecting(): bool;
 ```
 
 Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
 
-```php
-public function isCollecting(): bool;
-```
-
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -348,38 +348,38 @@ Interface for Phalcon\Events managers.
 
 ## Metody
 
-Attach a listener to the events manager
-
 ```php
 public function attach( string $eventType, mixed $handler ): void;
 ```
 
-Detach the listener from the events manager
+Attach a listener to the events manager
 
 ```php
 public function detach( string $eventType, mixed $handler ): void;
 ```
 
-Removes all events from the EventsManager
+Detach the listener from the events manager
 
 ```php
 public function detachAll( string $type = null ): void;
 ```
 
-Fires an event in the events manager causing the active listeners to be notified about it
+Removes all events from the EventsManager
 
 ```php
 public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
-Returns all the attached listeners of a certain type
+Fires an event in the events manager causing the active listeners to be notified about it
 
 ```php
 public function getListeners( string $type ): array;
 ```
 
-Check whether certain type of event has listeners
+Returns all the attached listeners of a certain type
 
 ```php
 public function hasListeners( string $type ): bool;
 ```
+
+Check whether certain type of event has listeners
