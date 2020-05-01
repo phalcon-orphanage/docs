@@ -10,7 +10,7 @@ title: 'Phalcon\Application'
 
 <h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/abstractapplication.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Application/AbstractApplication.zep)
 
 | Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
 
@@ -43,38 +43,34 @@ protected modules;
 
 ## Methoden
 
-```php
-public function __construct( DiInterface $container = null );
-```
-
 Phalcon\AbstractApplication constructor
 
 ```php
-public function getDefaultModule(): string;
+public function __construct( DiInterface $container = null );
 ```
 
 Returns the default module name
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getDefaultModule(): string;
 ```
 
 Returns the internal event manager
 
 ```php
-public function getModule( string $name ): array | object;
+public function getEventsManager(): ManagerInterface;
 ```
 
 Gets the module definition registered in the application via module name
 
 ```php
-public function getModules(): array;
+public function getModule( string $name ): array | object;
 ```
 
 Return the modules registered in the application
 
 ```php
-public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
+public function getModules(): array;
 ```
 
 Register an array of modules present in the application
@@ -95,20 +91,24 @@ $this->registerModules(
 ```
 
 ```php
-public function setDefaultModule( string $defaultModule ): AbstractApplication;
+public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
 
 Sets the module name to be used if the router doesn't return a valid module
 
 ```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
+public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
 
 Sets the events manager
 
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Application/Exception.zep)
 
 | Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
 
