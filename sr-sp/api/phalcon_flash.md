@@ -13,7 +13,7 @@ title: 'Phalcon\Flash'
 
 <h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Flash/AbstractFlash.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/AbstractFlash.zep)
 
 | Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | FlashInterface |
 
@@ -71,26 +71,26 @@ protected sessionService;
 
 ## Methods
 
+```php
+public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
+```
+
 Phalcon\Flash constructor
 
 ```php
-public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
+public function clear(): void;
 ```
 
 Clears accumulated messages when implicit flush is disabled
 
 ```php
-public function clear(): void;
+public function error( string $message ): string;
 ```
 
 Shows a HTML error message
 
 ```php
 $flash->error("This is an error");
-```
-
-```php
-public function error( string $message ): string;
 ```
 
 ```php
@@ -105,10 +105,14 @@ public function getCssClasses(): array
 public function getCustomTemplate(): string
 ```
 
+```php
+public function getEscaperService(): EscaperInterface;
+```
+
 Returns the Escaper Service
 
 ```php
-public function getEscaperService(): EscaperInterface;
+public function notice( string $message ): string;
 ```
 
 Shows a HTML notice/information message
@@ -118,7 +122,7 @@ $flash->notice("This is an information");
 ```
 
 ```php
-public function notice( string $message ): string;
+public function outputMessage( string $type, mixed $message );
 ```
 
 Outputs a message formatting it with HTML
@@ -128,43 +132,43 @@ $flash->outputMessage("error", $message);
 ```
 
 ```php
-public function outputMessage( string $type, mixed $message );
+public function setAutoescape( bool $autoescape ): FlashInterface;
 ```
 
 Set the autoescape mode in generated HTML
 
 ```php
-public function setAutoescape( bool $autoescape ): FlashInterface;
+public function setAutomaticHtml( bool $automaticHtml ): FlashInterface;
 ```
 
 Set if the output must be implicitly formatted with HTML
 
 ```php
-public function setAutomaticHtml( bool $automaticHtml ): FlashInterface;
+public function setCssClasses( array $cssClasses ): FlashInterface;
 ```
 
 Set an array with CSS classes to format the messages
 
 ```php
-public function setCssClasses( array $cssClasses ): FlashInterface;
+public function setCustomTemplate( string $customTemplate ): FlashInterface;
 ```
 
 Set an custom template for showing the messages
 
 ```php
-public function setCustomTemplate( string $customTemplate ): FlashInterface;
+public function setEscaperService( EscaperInterface $escaperService ): FlashInterface;
 ```
 
 Sets the Escaper Service
 
 ```php
-public function setEscaperService( EscaperInterface $escaperService ): FlashInterface;
+public function setImplicitFlush( bool $implicitFlush ): FlashInterface;
 ```
 
 Set whether the output must be implicitly flushed to the output or returned as string
 
 ```php
-public function setImplicitFlush( bool $implicitFlush ): FlashInterface;
+public function success( string $message ): string;
 ```
 
 Shows a HTML success message
@@ -174,7 +178,7 @@ $flash->success("The process was finished successfully");
 ```
 
 ```php
-public function success( string $message ): string;
+public function warning( string $message ): string;
 ```
 
 Shows a HTML warning message
@@ -183,13 +187,9 @@ Shows a HTML warning message
 $flash->warning("Hey, this is important");
 ```
 
-```php
-public function warning( string $message ): string;
-```
-
 <h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Flash/Direct.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Direct.zep)
 
 | Namespace | Phalcon\Flash | | Extends | AbstractFlash |
 
@@ -197,21 +197,21 @@ This is a variant of the Phalcon\Flash that immediately outputs any message pass
 
 ## Methods
 
-Outputs a message
-
 ```php
 public function message( string $type, mixed $message ): string | null;
 ```
 
-Prints the messages accumulated in the flasher
+Outputs a message
 
 ```php
 public function output( bool $remove = bool ): void;
 ```
 
+Prints the messages accumulated in the flasher
+
 <h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Flash/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Exception.zep)
 
 | Namespace | Phalcon\Flash | | Extends | \Phalcon\Exception |
 
@@ -219,7 +219,7 @@ Exceptions thrown in Phalcon\Flash will use this class
 
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Flash/FlashInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/FlashInterface.zep)
 
 | Namespace | Phalcon\Flash |
 
@@ -229,39 +229,39 @@ Interface for Phalcon\Flash
 
 ## Methods
 
-Shows a HTML error message
-
 ```php
 public function error( string $message ): string;
 ```
 
-Outputs a message
+Shows a HTML error message
 
 ```php
 public function message( string $type, string $message ): string | null;
 ```
 
-Shows a HTML notice/information message
+Outputs a message
 
 ```php
 public function notice( string $message ): string;
 ```
 
-Shows a HTML success message
+Shows a HTML notice/information message
 
 ```php
 public function success( string $message ): string;
 ```
 
-Shows a HTML warning message
+Shows a HTML success message
 
 ```php
 public function warning( string $message ): string;
 ```
 
+Shows a HTML warning message
+
 <h1 id="flash-session">Class Phalcon\Flash\Session</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Flash/Session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Session.zep)
 
 | Namespace | Phalcon\Flash | | Uses | Phalcon\Di\DiInterface, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
 
@@ -269,50 +269,50 @@ Temporarily stores the messages in session, then messages can be printed in the 
 
 ## Methods
 
-Clear messages in the session messenger
-
 ```php
 public function clear(): void;
 ```
 
-Returns the messages in the session flasher
+Clear messages in the session messenger
 
 ```php
 public function getMessages( mixed $type = null, bool $remove = bool ): array;
 ```
 
-Returns the Session Service
+Returns the messages in the session flasher
 
 ```php
 public function getSessionService(): ManagerInterface;
 ```
 
-Checks whether there are messages
+Returns the Session Service
 
 ```php
 public function has( mixed $type = null ): bool;
 ```
 
-Adds a message to the session flasher
+Checks whether there are messages
 
 ```php
 public function message( string $type, string $message ): string | null;
 ```
 
-Prints the messages in the session flasher
+Adds a message to the session flasher
 
 ```php
 public function output( bool $remove = bool ): void;
 ```
 
-Returns the messages stored in session
+Prints the messages in the session flasher
 
 ```php
 protected function getSessionMessages( bool $remove, mixed $type = null ): array;
 ```
 
-Stores the messages in session
+Returns the messages stored in session
 
 ```php
 protected function setSessionMessages( array $messages ): array;
 ```
+
+Stores the messages in session
