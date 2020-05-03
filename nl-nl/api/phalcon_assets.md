@@ -22,7 +22,7 @@ title: 'Phalcon\Assets'
 
 <h1 id="assets-asset">Class Phalcon\Assets\Asset</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/asset.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Asset.zep)
 
 | Namespace | Phalcon\Assets | | Implements | AssetInterface |
 
@@ -226,7 +226,7 @@ public function setVersion(     string $version )
 
 <h1 id="assets-asset-css">Class Phalcon\Assets\Asset\Css</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/asset/css.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Asset/Css.zep)
 
 | Namespace | Phalcon\Assets\Asset | | Uses | Phalcon\Assets\Asset | | Extends | AssetBase |
 
@@ -242,11 +242,11 @@ Phalcon\Assets\Asset\Css constructor
 
 <h1 id="assets-asset-js">Class Phalcon\Assets\Asset\Js</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/asset/js.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Asset/Js.zep)
 
 | Namespace | Phalcon\Assets\Asset | | Uses | Phalcon\Assets\Asset | | Extends | AssetBase |
 
-Represents Javascript assets
+Represents JavaScript assets
 
 ## Methoden
 
@@ -258,7 +258,7 @@ Phalcon\Assets\Asset\Js constructor
 
 <h1 id="assets-assetinterface">Interface Phalcon\Assets\AssetInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/assetinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/AssetInterface.zep)
 
 | Namespace | Phalcon\Assets |
 
@@ -310,7 +310,7 @@ Sets the asset's type.
 
 <h1 id="assets-collection">Class Phalcon\Assets\Collection</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Collection.zep)
 
 | Namespace | Phalcon\Assets | | Uses | Countable, Iterator, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css | | Implements | Countable, Iterator |
 
@@ -368,7 +368,7 @@ protected prefix;
 /**
  * @var int
  */
-protected position;
+protected position = 0;
 
 /**
  * @var string
@@ -440,13 +440,13 @@ Adds an inline CSS to the collection
 public function addInlineJs( string $content, bool $filter = bool, mixed $attributes = null ): Collection;
 ```
 
-Adds an inline javascript to the collection
+Adds an inline JavaScript to the collection
 
 ```php
 public function addJs( string $path, mixed $local = null, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Collection;
 ```
 
-Adds a javascript asset to the collection
+Adds a JavaScript asset to the collection
 
 ```php
 public function count(): int;
@@ -636,7 +636,7 @@ Adds a asset or inline-code to the collection
 
 <h1 id="assets-exception">Class Phalcon\Assets\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Exception.zep)
 
 | Namespace | Phalcon\Assets | | Extends | \Phalcon\Exception |
 
@@ -644,7 +644,7 @@ Exceptions thrown in Phalcon\Assets will use this class
 
 <h1 id="assets-filterinterface">Interface Phalcon\Assets\FilterInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filterinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/FilterInterface.zep)
 
 | Namespace | Phalcon\Assets |
 
@@ -660,11 +660,11 @@ Filters the content returning a string with the filtered content
 
 <h1 id="assets-filters-cssmin">Class Phalcon\Assets\Filters\Cssmin</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/cssmin.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Filters/CssMin.zep)
 
 | Namespace | Phalcon\Assets\Filters | | Uses | Phalcon\Assets\FilterInterface | | Implements | FilterInterface |
 
-Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
+Minify the CSS - removes comments removes newlines and line feeds keeping removes last semicolon from last property
 
 ## Methoden
 
@@ -676,7 +676,7 @@ Filters the content using CSSMIN NOTE: This functionality is not currently avail
 
 <h1 id="assets-filters-jsmin">Class Phalcon\Assets\Filters\Jsmin</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Filters/JsMin.zep)
 
 | Namespace | Phalcon\Assets\Filters | | Uses | Phalcon\Assets\FilterInterface | | Implements | FilterInterface |
 
@@ -692,7 +692,7 @@ Filters the content using JSMIN NOTE: This functionality is not currently availa
 
 <h1 id="assets-filters-none">Class Phalcon\Assets\Filters\None</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/none.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Filters/None.zep)
 
 | Namespace | Phalcon\Assets\Filters | | Uses | Phalcon\Assets\FilterInterface | | Implements | FilterInterface |
 
@@ -708,7 +708,7 @@ Returns the content as is
 
 <h1 id="assets-inline">Class Phalcon\Assets\Inline</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Inline.zep)
 
 | Namespace | Phalcon\Assets | | Implements | AssetInterface |
 
@@ -793,7 +793,7 @@ Sets the inline's type
 
 <h1 id="assets-inline-css">Class Phalcon\Assets\Inline\Css</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Inline/Css.zep)
 
 | Namespace | Phalcon\Assets\Inline | | Uses | Phalcon\Assets\Inline | | Extends | InlineBase |
 
@@ -809,7 +809,7 @@ Phalcon\Assets\Inline\Css constructor
 
 <h1 id="assets-inline-js">Class Phalcon\Assets\Inline\Js</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Inline/Js.zep)
 
 | Namespace | Phalcon\Assets\Inline | | Uses | Phalcon\Assets\Inline | | Extends | InlineBase |
 
@@ -825,13 +825,13 @@ Phalcon\Assets\Inline\Js constructor
 
 <h1 id="assets-manager">Class Phalcon\Assets\Manager</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Assets/Manager.zep)
 
 | Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware | | Extends | AbstractInjectionAware |
 
 Phalcon\Assets\Manager
 
-Manages collections of CSS/Javascript assets
+Manages collections of CSS/JavaScript assets
 
 ## Properties
 
@@ -889,7 +889,7 @@ $assets->addAssetByType(
 public function addCss( string $path, mixed $local = bool, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Manager;
 ```
 
-Adds a Css asset to the 'css' collection
+Adds a CSS asset to the 'css' collection
 
    ```php
    $assets->addCss("css/bootstrap.css");
@@ -912,19 +912,19 @@ Adds an inline code by its type
 public function addInlineCss( string $content, mixed $filter = bool, mixed $attributes = null ): Manager;
 ```
 
-Adds an inline Css to the 'css' collection
+Adds an inline CSS to the 'css' collection
 
 ```php
 public function addInlineJs( string $content, mixed $filter = bool, mixed $attributes = null ): Manager;
 ```
 
-Adds an inline javascript to the 'js' collection
+Adds an inline JavaScript to the 'js' collection
 
 ```php
 public function addJs( string $path, mixed $local = bool, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Manager;
 ```
 
-Adds a javascript asset to the 'js' collection
+Adds a JavaScript asset to the 'js' collection
 
 ```php
 $assets->addJs("scripts/jquery.js");

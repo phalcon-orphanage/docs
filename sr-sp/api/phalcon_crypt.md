@@ -12,7 +12,7 @@ title: 'Phalcon\Crypt'
 
 <h1 id="crypt">Class Phalcon\Crypt</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch | | Implements | CryptInterface |
 
@@ -199,19 +199,13 @@ Returns the encryption key
 public function setAuthData( string $data ): CryptInterface;
 ```
 
-//
-
 ```php
 public function setAuthTag( string $tag ): CryptInterface;
 ```
 
-//
-
 ```php
 public function setAuthTagLength( int $length ): CryptInterface;
 ```
-
-//
 
 ```php
 public function setCipher( string $cipher ): CryptInterface;
@@ -297,7 +291,7 @@ Initialize available cipher algorithms.
 
 <h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/cryptinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/CryptInterface.zep)
 
 | Namespace | Phalcon\Crypt |
 
@@ -403,7 +397,7 @@ Changes the padding scheme used.
 
 <h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Exception.zep)
 
 | Namespace | Phalcon\Crypt | | Extends | \Phalcon\Exception |
 
@@ -411,7 +405,7 @@ Exceptions thrown in Phalcon\Crypt use this class
 
 <h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Mismatch.zep)
 
 | Namespace | Phalcon\Crypt | | Extends | Exception |
 

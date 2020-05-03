@@ -89,7 +89,7 @@ title: 'Phalcon\Mvc'
 
 <h1 id="mvc-application">Class Phalcon\Mvc\Application</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Application.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Closure, Phalcon\Application\AbstractApplication, Phalcon\Di\DiInterface, Phalcon\Http\ResponseInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Application\Exception, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\ModuleDefinitionInterface | | Extends | AbstractApplication |
 
@@ -176,7 +176,7 @@ By default. The view is implicitly buffering all the output You can full disable
 
 <h1 id="mvc-application-exception">Class Phalcon\Mvc\Application\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Application/Exception.zep)
 
 | Namespace | Phalcon\Mvc\Application | | Extends | \Phalcon\Application\Exception |
 
@@ -186,7 +186,7 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 <h1 id="mvc-controller">Abstract Class Phalcon\Mvc\Controller</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Controller.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\Injectable | | Extends | Injectable | | Implements | ControllerInterface |
 
@@ -235,7 +235,7 @@ Phalcon\Mvc\Controller constructor
 
 <h1 id="mvc-controller-bindmodelinterface">Interface Phalcon\Mvc\Controller\BindModelInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Controller/BindModelInterface.zep)
 
 | Namespace | Phalcon\Mvc\Controller |
 
@@ -253,7 +253,7 @@ Return the model name associated with this controller
 
 <h1 id="mvc-controllerinterface">Interface Phalcon\Mvc\ControllerInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controllerinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ControllerInterface.zep)
 
 | Namespace | Phalcon\Mvc |
 
@@ -263,7 +263,7 @@ Interface for controller handlers
 
 <h1 id="mvc-dispatcher">Class Phalcon\Mvc\Dispatcher</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Dispatcher.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Mvc\Dispatcher\Exception, Phalcon\Events\ManagerInterface, Phalcon\Http\ResponseInterface, Phalcon\Dispatcher\AbstractDispatcher | | Extends | BaseDispatcher | | Implements | DispatcherInterface |
 
@@ -433,7 +433,7 @@ Throws an internal exception
 
 <h1 id="mvc-dispatcher-exception">Class Phalcon\Mvc\Dispatcher\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Dispatcher/Exception.zep)
 
 | Namespace | Phalcon\Mvc\Dispatcher | | Extends | \Phalcon\Dispatcher\Exception |
 
@@ -443,7 +443,7 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 <h1 id="mvc-dispatcherinterface">Interface Phalcon\Mvc\DispatcherInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcherinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/DispatcherInterface.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Dispatcher\DispatcherInterface | | Extends | DispatcherInterfaceBase |
 
@@ -491,7 +491,7 @@ Sets the default controller name
 
 <h1 id="mvc-entityinterface">Interface Phalcon\Mvc\EntityInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/EntityInterface.zep)
 
 | Namespace | Phalcon\Mvc |
 
@@ -515,7 +515,7 @@ Writes an attribute value by its name
 
 <h1 id="mvc-micro">Class Phalcon\Mvc\Micro</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | ArrayAccess, Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable | | Extends | Injectable | | Implements | ArrayAccess, EventsAwareInterface |
 
@@ -672,8 +672,6 @@ public function getReturnedValue();
 
 Returns the value returned by the executed handler
 
-@return mixed
-
 ```php
 public function getRouter(): RouterInterface;
 ```
@@ -686,23 +684,17 @@ public function getService( string $serviceName );
 
 Obtains a service from the DI
 
-@return object
-
 ```php
 public function getSharedService( string $serviceName );
 ```
 
 Obtains a shared service from the DI
 
-@return mixed
-
 ```php
 public function handle( string $uri );
 ```
 
 Handle the whole request
-
-@return mixed
 
 ```php
 public function hasService( string $serviceName ): bool;
@@ -845,7 +837,7 @@ Stops the middleware execution avoiding than other middlewares be executed
 
 <h1 id="mvc-micro-collection">Class Phalcon\Mvc\Micro\Collection</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Collection.zep)
 
 | Namespace | Phalcon\Mvc\Micro | | Implements | CollectionInterface |
 
@@ -999,7 +991,7 @@ Internal function to add a handler to the group.
 
 <h1 id="mvc-micro-collectioninterface">Interface Phalcon\Mvc\Micro\CollectionInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/CollectionInterface.zep)
 
 | Namespace | Phalcon\Mvc\Micro |
 
@@ -1101,7 +1093,7 @@ Sets a prefix for all routes added to the collection
 
 <h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Exception.zep)
 
 | Namespace | Phalcon\Mvc\Micro | | Extends | \Phalcon\Exception |
 
@@ -1109,7 +1101,7 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 <h1 id="mvc-micro-lazyloader">Class Phalcon\Mvc\Micro\LazyLoader</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/LazyLoader.zep)
 
 | Namespace | Phalcon\Mvc\Micro | | Uses | Phalcon\Mvc\Model\BinderInterface |
 
@@ -1142,15 +1134,13 @@ public function callMethod( string $method, mixed $arguments, BinderInterface $m
 
 Calling __call method
 
-@return mixed
-
 ```php
 public function getDefinition()
 ```
 
 <h1 id="mvc-micro-middlewareinterface">Interface Phalcon\Mvc\Micro\MiddlewareInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/middlewareinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/MiddlewareInterface.zep)
 
 | Namespace | Phalcon\Mvc\Micro | | Uses | Phalcon\Mvc\Micro |
 
@@ -1166,7 +1156,7 @@ Calls the middleware
 
 <h1 id="mvc-model">Abstract Class Phalcon\Mvc\Model</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Serializable | | Extends | AbstractInjectionAware | | Implements | EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable |
 
@@ -1274,15 +1264,11 @@ public function __call( string $method, array $arguments );
 
 Handles method calls when a method is not implemented
 
-@return mixed @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
-
 ```php
 public static function __callStatic( string $method, array $arguments );
 ```
 
 Handles method calls when a static method is not implemented
-
-@return mixed @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
 
 ```php
 final public function __construct( mixed $data = null, DiInterface $container = null, ManagerInterface $modelsManager = null );
@@ -1295,8 +1281,6 @@ public function __get( string $property );
 ```
 
 Magic method to get related records using the relation alias as a property
-
-@return mixed
 
 ```php
 public function __isset( string $property ): bool;
@@ -1448,8 +1432,6 @@ $average = Robots::average(
 echo "The average price of mechanical robots is ", $average, "\n";
 ```
 
-@return double
-
 ```php
 public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
 ```
@@ -1490,8 +1472,6 @@ public static function cloneResultMapHydrate( array $data, mixed $columnMap, int
 
 Returns an hydrated result based on the data and the column map
 
-@return mixed
-
 ```php
 public static function count( mixed $parameters = null ): int;
 ```
@@ -1509,8 +1489,6 @@ $number = Robots::count("type = 'mechanical'");
 
 echo "There are ", $number, " mechanical robots\n";
 ```
-
-@return mixed
 
 ```php
 public function create(): bool;
@@ -1911,8 +1889,6 @@ public function getRelated( string $alias, mixed $arguments = null );
 
 Returns related records based on defined relations
 
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
-
 ```php
 final public function getSchema(): string;
 ```
@@ -2058,8 +2034,6 @@ $sum = Robots::maximum(
 
 echo "The maximum robot id of mechanical robots is ", $id, "\n";
 ```
-
-@return mixed
 
 ```php
 public static function minimum( mixed $parameters = null ): mixed;
@@ -2263,8 +2237,6 @@ $sum = Robots::sum(
 echo "The total price of mechanical robots is  ", $sum, "\n";
 ```
 
-@return double
-
 ```php
 public function toArray( mixed $columns = null ): array;
 ```
@@ -2389,8 +2361,6 @@ protected function _getRelatedRecords( string $modelName, string $method, array 
 ```
 
 Returns related records defined relations depending on the method name. Returns false if the relation is non-existent.
-
-@return ResultsetInterface|ModelInterface|bool|null
 
 ```php
 protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
@@ -2700,7 +2670,7 @@ class Subscriptors extends Model
 
 <h1 id="mvc-model-behavior">Abstract Class Phalcon\Mvc\Model\Behavior</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface | | Implements | BehaviorInterface |
 
@@ -2744,8 +2714,6 @@ protected function getOptions( string $eventName = null );
 
 Returns the behavior options related to an event
 
-@return array
-
 ```php
 protected function mustTakeAction( string $eventName ): bool;
 ```
@@ -2754,7 +2722,7 @@ Checks whether the behavior must take action on certain event
 
 <h1 id="mvc-model-behavior-softdelete">Class Phalcon\Mvc\Model\Behavior\SoftDelete</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/softdelete.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior/SoftDelete.zep)
 
 | Namespace | Phalcon\Mvc\Model\Behavior | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception | | Extends | Behavior |
 
@@ -2772,7 +2740,7 @@ Listens for notifications from the models manager
 
 <h1 id="mvc-model-behavior-timestampable">Class Phalcon\Mvc\Model\Behavior\Timestampable</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/timestampable.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior/Timestampable.zep)
 
 | Namespace | Phalcon\Mvc\Model\Behavior | | Uses | Closure, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception | | Extends | Behavior |
 
@@ -2790,7 +2758,7 @@ Listens for notifications from the models manager
 
 <h1 id="mvc-model-behaviorinterface">Interface Phalcon\Mvc\Model\BehaviorInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behaviorinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/BehaviorInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface |
 
@@ -2814,7 +2782,7 @@ This method receives the notifications from the EventsManager
 
 <h1 id="mvc-model-binder">Class Phalcon\Mvc\Model\Binder</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Binder.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Closure, Phalcon\Mvc\Controller\BindModelInterface, Phalcon\Mvc\Model\Binder\BindableInterface, Phalcon\Cache\Adapter\AdapterInterface, ReflectionFunction, ReflectionMethod | | Implements | BinderInterface |
 
@@ -2903,7 +2871,7 @@ Get modified params for handler using reflection
 
 <h1 id="mvc-model-binder-bindableinterface">Interface Phalcon\Mvc\Model\Binder\BindableInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder/bindableinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Binder/BindableInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model\Binder |
 
@@ -2921,7 +2889,7 @@ Return the model name or models names and parameters keys associated with this c
 
 <h1 id="mvc-model-binderinterface">Interface Phalcon\Mvc\Model\BinderInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/BinderInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Cache\Adapter\AdapterInterface |
 
@@ -2957,7 +2925,7 @@ Sets cache instance
 
 <h1 id="mvc-model-criteria">Class Phalcon\Mvc\Model\Criteria</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Criteria.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Query\BuilderInterface | | Implements | CriteriaInterface, InjectionAwareInterface |
 
@@ -3124,8 +3092,6 @@ public function getLimit(): string | null;
 ```
 
 Returns the limit parameter in the criteria, which will be an integer if limit was set without an offset, an array with 'number' and 'offset' keys if an offset was set with the limit, or null if limit has not been set.
-
-@return string|null
 
 ```php
 public function getModelName(): string;
@@ -3324,7 +3290,7 @@ Sets the conditions parameter in the criteria
 
 <h1 id="mvc-model-criteriainterface">Interface Phalcon\Mvc\Model\CriteriaInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/CriteriaInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface |
 
@@ -3577,7 +3543,7 @@ Sets the conditions parameter in the criteria
 
 <h1 id="mvc-model-exception">Class Phalcon\Mvc\Model\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Exception.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Extends | \Phalcon\Exception |
 
@@ -3587,7 +3553,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 <h1 id="mvc-model-manager">Class Phalcon\Mvc\Model\Manager</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Manager.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface | | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
 
@@ -3967,8 +3933,6 @@ public function getRelationRecords( RelationInterface $relation, ModelInterface 
 
 Helper method to query records based on a relation definition
 
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
-
 ```php
 public function getRelations( string $modelName ): RelationInterface[];
 ```
@@ -4159,7 +4123,7 @@ Merge two arrays of find parameters
 
 <h1 id="mvc-model-managerinterface">Interface Phalcon\Mvc\Model\ManagerInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ManagerInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface |
 
@@ -4355,8 +4319,6 @@ public function getRelationRecords( RelationInterface $relation, ModelInterface 
 
 Helper method to query records based on a relation definition
 
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
-
 ```php
 public function getRelations( string $modelName ): RelationInterface[];
 ```
@@ -4436,8 +4398,6 @@ public function missingMethod( ModelInterface $model, string $eventName, mixed $
 
 Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 
-@return bool
-
 ```php
 public function notifyEvent( string $eventName, ModelInterface $model );
 ```
@@ -4482,7 +4442,7 @@ Sets if a model must use dynamic update instead of the all-field update
 
 <h1 id="mvc-model-metadata">Abstract Class Phalcon\Mvc\Model\MetaData</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface, Phalcon\Mvc\ModelInterface | | Implements | InjectionAwareInterface, MetaDataInterface |
 
@@ -4945,7 +4905,7 @@ Initialize the metadata for certain table
 
 <h1 id="mvc-model-metadata-apcu">Class Phalcon\Mvc\Model\MetaData\Apcu</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/apcu.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Apcu.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory | | Extends | MetaData |
 
@@ -4976,7 +4936,7 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 <h1 id="mvc-model-metadata-libmemcached">Class Phalcon\Mvc\Model\MetaData\Libmemcached</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/libmemcached.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Libmemcached.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory | | Extends | MetaData |
 
@@ -5002,7 +4962,7 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 <h1 id="mvc-model-metadata-memory">Class Phalcon\Mvc\Model\MetaData\Memory</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/memory.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Memory.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception | | Extends | MetaData |
 
@@ -5032,7 +4992,7 @@ Writes the meta-data to temporal memory
 
 <h1 id="mvc-model-metadata-redis">Class Phalcon\Mvc\Model\MetaData\Redis</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/redis.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Redis.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory | | Extends | MetaData |
 
@@ -5072,7 +5032,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 <h1 id="mvc-model-metadata-strategy-annotations">Class Phalcon\Mvc\Model\MetaData\Strategy\Annotations</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/annotations.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Strategy/Annotations.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception | | Implements | StrategyInterface |
 
@@ -5098,7 +5058,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 <h1 id="mvc-model-metadata-strategy-introspection">Class Phalcon\Mvc\Model\MetaData\Strategy\Introspection</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/introspection.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Strategy/Introspection.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData | | Implements | StrategyInterface |
 
@@ -5122,7 +5082,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 <h1 id="mvc-model-metadata-strategy-strategyinterface">Interface Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/strategyinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Strategy/StrategyInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Di\DiInterface |
 
@@ -5150,7 +5110,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 <h1 id="mvc-model-metadata-stream">Class Phalcon\Mvc\Model\MetaData\Stream</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/stream.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Stream.zep)
 
 | Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception | | Extends | MetaData |
 
@@ -5196,7 +5156,7 @@ Writes the meta-data to files
 
 <h1 id="mvc-model-metadatainterface">Interface Phalcon\Mvc\Model\MetaDataInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaDataInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface |
 
@@ -5382,7 +5342,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 <h1 id="mvc-model-query">Class Phalcon\Mvc\Model\Query</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang | | Implements | QueryInterface, InjectionAwareInterface |
 
@@ -5414,7 +5374,7 @@ use Phalcon\Mvc\Model\Transaction;
 // $di needs to have the service "db" registered for this to work
 $di = Phalcon\Di\FactoryDefault::getDefault();
 
-$phql = 'SELECT * FROM robot';
+$phql = 'SELECTFROM robot';
 
 $myTransaction = new Transaction($di);
 $myTransaction->begin();
@@ -5551,8 +5511,6 @@ public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 
 Executes a parsed PHQL statement
-
-@return mixed
 
 ```php
 public function getBindParams(): array;
@@ -5792,8 +5750,6 @@ final protected function _getTable( ManagerInterface $manager, array $qualifiedN
 
 Resolves a table in a SELECT statement checking if the model exists
 
-@return string
-
 ```php
 final protected function _prepareDelete(): array;
 ```
@@ -5832,7 +5788,7 @@ Gets the write connection from the model if there is no transaction inside the q
 
 <h1 id="mvc-model-query-builder">Class Phalcon\Mvc\Model\Query\Builder</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Builder.zep)
 
 | Namespace | Phalcon\Mvc\Model\Query | | Uses | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface | | Implements | BuilderInterface, InjectionAwareInterface |
 
@@ -6105,8 +6061,6 @@ public function getColumns();
 
 Return the columns to be queried
 
-@return string|array
-
 ```php
 public function getDI(): DiInterface;
 ```
@@ -6124,8 +6078,6 @@ public function getFrom();
 ```
 
 Return the models who makes part of the query
-
-@return string|array
 
 ```php
 public function getGroupBy(): array;
@@ -6151,8 +6103,6 @@ public function getLimit();
 
 Returns the current LIMIT clause
 
-@return string|array
-
 ```php
 public function getModels(): string | array | null;
 ```
@@ -6171,8 +6121,6 @@ public function getOrderBy();
 
 Returns the set ORDER BY clause
 
-@return string|array
-
 ```php
 final public function getPhql(): string;
 ```
@@ -6190,8 +6138,6 @@ public function getWhere();
 ```
 
 Return the conditions for the query
-
-@return string|array
 
 ```php
 public function groupBy( mixed $group ): BuilderInterface;
@@ -6508,7 +6454,7 @@ Appends a NOT IN condition
 
 <h1 id="mvc-model-query-builderinterface">Interface Phalcon\Mvc\Model\Query\BuilderInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builderinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/BuilderInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model\Query | | Uses | Phalcon\Mvc\Model\QueryInterface |
 
@@ -6594,8 +6540,6 @@ public function getColumns();
 
 Return the columns to be queried
 
-@return string|array
-
 ```php
 public function getDistinct(): bool;
 ```
@@ -6607,8 +6551,6 @@ public function getFrom();
 ```
 
 Return the models who makes part of the query
-
-@return string|array
 
 ```php
 public function getGroupBy(): array;
@@ -6634,8 +6576,6 @@ public function getLimit();
 
 Returns the current LIMIT clause
 
-@return string|array
-
 ```php
 public function getModels(): string | array | null;
 ```
@@ -6654,8 +6594,6 @@ public function getOrderBy();
 
 Return the set ORDER BY clause
 
-@return string|array
-
 ```php
 public function getPhql(): string;
 ```
@@ -6673,8 +6611,6 @@ public function getWhere();
 ```
 
 Return the conditions for the query
-
-@return string|array
 
 ```php
 public function groupBy( mixed $group ): BuilderInterface;
@@ -6705,8 +6641,6 @@ public function join( string $model, string $conditions = null, string $alias = 
 ```
 
 Adds an :type: join (by default type - INNER) to the query
-
-@return BuilderInterface
 
 ```php
 public function leftJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
@@ -6776,7 +6710,7 @@ Sets conditions for the query
 
 <h1 id="mvc-model-query-lang">Abstract Class Phalcon\Mvc\Model\Query\Lang</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/lang.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Lang.zep)
 
 | Namespace | Phalcon\Mvc\Model\Query |
 
@@ -6804,7 +6738,7 @@ Parses a PHQL statement returning an intermediate representation (IR)
 
 <h1 id="mvc-model-query-status">Class Phalcon\Mvc\Model\Query\Status</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/status.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Status.zep)
 
 | Namespace | Phalcon\Mvc\Model\Query | | Uses | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface | | Implements | StatusInterface |
 
@@ -6870,7 +6804,7 @@ Allows to check if the executed operation was successful
 
 <h1 id="mvc-model-query-statusinterface">Interface Phalcon\Mvc\Model\Query\StatusInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/statusinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/StatusInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model\Query | | Uses | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
 
@@ -6900,7 +6834,7 @@ Allows to check if the executed operation was successful
 
 <h1 id="mvc-model-queryinterface">Interface Phalcon\Mvc\Model\QueryInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/queryinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/QueryInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface |
 
@@ -6921,8 +6855,6 @@ public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 
 Executes a parsed PHQL statement
-
-@return mixed
 
 ```php
 public function getBindParams(): array;
@@ -6992,7 +6924,7 @@ Tells to the query if only the first row in the resultset must be returned
 
 <h1 id="mvc-model-relation">Class Phalcon\Mvc\Model\Relation</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Relation.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Implements | RelationInterface |
 
@@ -7056,23 +6988,17 @@ public function getFields();
 
 Returns the fields
 
-@return string|array
-
 ```php
 public function getForeignKey();
 ```
 
 Returns the foreign key configuration
 
-@return string|array
-
 ```php
 public function getIntermediateFields();
 ```
 
 Gets the intermediate fields for has-*-through relations
-
-@return string|array
 
 ```php
 public function getIntermediateModel(): string;
@@ -7085,8 +7011,6 @@ public function getIntermediateReferencedFields();
 ```
 
 Gets the intermediate referenced fields for has-*-through relations
-
-@return string|array
 
 ```php
 public function getOption( string $name );
@@ -7106,15 +7030,11 @@ public function getParams();
 
 Returns parameters that must be always used when the related records are obtained
 
-@return array
-
 ```php
 public function getReferencedFields();
 ```
 
 Returns the referenced fields
-
-@return string|array
 
 ```php
 public function getReferencedModel(): string;
@@ -7154,7 +7074,7 @@ Sets the intermediate model data for has-*-through relations
 
 <h1 id="mvc-model-relationinterface">Interface Phalcon\Mvc\Model\RelationInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relationinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/RelationInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model |
 
@@ -7170,23 +7090,17 @@ public function getFields();
 
 Returns the fields
 
-@return string|array
-
 ```php
 public function getForeignKey();
 ```
 
 Returns the foreign key configuration
 
-@return string|array
-
 ```php
 public function getIntermediateFields();
 ```
 
 Gets the intermediate fields for has-*-through relations
-
-@return string|array
 
 ```php
 public function getIntermediateModel(): string;
@@ -7199,8 +7113,6 @@ public function getIntermediateReferencedFields();
 ```
 
 Gets the intermediate referenced fields for has-*-through relations
-
-@return string|array
 
 ```php
 public function getOption( string $name );
@@ -7220,15 +7132,11 @@ public function getParams();
 
 Returns parameters that must be always used when the related records are obtained
 
-@return array
-
 ```php
 public function getReferencedFields();
 ```
 
 Returns the referenced fields
-
-@return string|array
 
 ```php
 public function getReferencedModel(): string;
@@ -7268,7 +7176,7 @@ Sets the intermediate model data for has-*-through relations
 
 <h1 id="mvc-model-resultinterface">Interface Phalcon\Mvc\Model\ResultInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface |
 
@@ -7286,7 +7194,7 @@ Sets the object's state
 
 <h1 id="mvc-model-resultset">Abstract Class Phalcon\Mvc\Model\Resultset</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, SeekableIterator, Serializable | | Implements | ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable |
 
@@ -7537,7 +7445,7 @@ Check whether internal resource has rows to fetch
 
 <h1 id="mvc-model-resultset-complex">Class Phalcon\Mvc\Model\Resultset\Complex</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/complex.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Complex.zep)
 
 | Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass | | Extends | Resultset | | Implements | ResultsetInterface |
 
@@ -7593,7 +7501,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 <h1 id="mvc-model-resultset-simple">Class Phalcon\Mvc\Model\Resultset\Simple</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Simple.zep)
 
 | Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface | | Extends | Resultset |
 
@@ -7651,7 +7559,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 <h1 id="mvc-model-resultsetinterface">Interface Phalcon\Mvc\Model\ResultsetInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultsetInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface |
 
@@ -7751,7 +7659,7 @@ Updates every record in the resultset
 
 <h1 id="mvc-model-row">Class Phalcon\Mvc\Model\Row</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Row.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\ModelInterface | | Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
 
@@ -7779,8 +7687,6 @@ public function offsetGet( mixed $index ): mixed;
 
 Gets a record in a specific position of the row
 
-@return string|Phalcon\Mvc\ModelInterface
-
 ```php
 public function offsetSet( mixed $index, mixed $value ): void;
 ```
@@ -7802,8 +7708,6 @@ Reads an attribute value by its name
 ```php
 echo $robot->readAttribute("name");
 ```
-
-@return mixed
 
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
@@ -7829,7 +7733,7 @@ $robot->writeAttribute("name", "Rosey");
 
 <h1 id="mvc-model-transaction">Class Phalcon\Mvc\Model\Transaction</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface | | Implements | TransactionInterface |
 
@@ -7984,7 +7888,7 @@ Enables throwing exception
 
 <h1 id="mvc-model-transaction-exception">Class Phalcon\Mvc\Model\Transaction\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Exception.zep)
 
 | Namespace | Phalcon\Mvc\Model\Transaction | | Extends | \Phalcon\Mvc\Model\Exception |
 
@@ -7994,7 +7898,7 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 <h1 id="mvc-model-transaction-failed">Class Phalcon\Mvc\Model\Transaction\Failed</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Failed.zep)
 
 | Namespace | Phalcon\Mvc\Model\Transaction | | Uses | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface | | Extends | Exception |
 
@@ -8032,7 +7936,7 @@ Returns validation record messages which stop the transaction
 
 <h1 id="mvc-model-transaction-manager">Class Phalcon\Mvc\Model\Transaction\Manager</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Manager.zep)
 
 | Namespace | Phalcon\Mvc\Model\Transaction | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface | | Implements | ManagerInterface, InjectionAwareInterface |
 
@@ -8209,7 +8113,7 @@ Removes transactions from the TransactionManager
 
 <h1 id="mvc-model-transaction-managerinterface">Interface Phalcon\Mvc\Model\Transaction\ManagerInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/ManagerInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model\Transaction | | Uses | Phalcon\Mvc\Model\TransactionInterface |
 
@@ -8293,7 +8197,7 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 <h1 id="mvc-model-transactioninterface">Interface Phalcon\Mvc\Model\TransactionInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transactioninterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/TransactionInterface.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface |
 
@@ -8377,7 +8281,7 @@ Enables throwing exception
 
 <h1 id="mvc-model-validationfailed">Class Phalcon\Mvc\Model\ValidationFailed</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ValidationFailed.zep)
 
 | Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface | | Extends | Exception |
 
@@ -8418,7 +8322,7 @@ Returns the model that generated the messages
 
 <h1 id="mvc-modelinterface">Interface Phalcon\Mvc\ModelInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/modelinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ModelInterface.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface |
 
@@ -8446,8 +8350,6 @@ public static function average( mixed $parameters = null ): double;
 
 Allows to calculate the average value on a column matching the specified conditions
 
-@return double
-
 ```php
 public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
 ```
@@ -8460,8 +8362,6 @@ public static function cloneResultMap( mixed $base, array $data, mixed $columnMa
 
 Assigns values to a model from an array returning a new model
 
-@return \Phalcon\Mvc\Model result
-
 ```php
 public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
 ```
@@ -8473,8 +8373,6 @@ public static function count( mixed $parameters = null ): int;
 ```
 
 Allows to count how many records match the specified conditions
-
-@return int
 
 ```php
 public function create(): bool;
@@ -8554,8 +8452,6 @@ public function getRelated( string $alias, mixed $arguments = null );
 
 Returns related records based on defined relations
 
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
-
 ```php
 public function getSchema(): string;
 ```
@@ -8586,15 +8482,11 @@ public static function maximum( mixed $parameters = null ): mixed;
 
 Allows to get the maximum value of a column that match the specified conditions
 
-@return mixed
-
 ```php
 public static function minimum( mixed $parameters = null ): mixed;
 ```
 
 Allows to get the minimum value of a column that match the specified conditions
-
-@return mixed
 
 ```php
 public static function query( DiInterface $container = null ): CriteriaInterface;
@@ -8662,8 +8554,6 @@ public static function sum( mixed $parameters = null ): double;
 
 Allows to calculate a sum on a column that match the specified conditions
 
-@return double
-
 ```php
 public function update(): bool;
 ```
@@ -8678,7 +8568,7 @@ Check whether validation process has generated any messages
 
 <h1 id="mvc-moduledefinitioninterface">Interface Phalcon\Mvc\ModuleDefinitionInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/moduledefinitioninterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ModuleDefinitionInterface.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\DiInterface |
 
@@ -8702,7 +8592,7 @@ Registers services related to the module
 
 <h1 id="mvc-router">Class Phalcon\Mvc\Router</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\Exception, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\RouteInterface | | Extends | AbstractInjectionAware | | Implements | RouterInterface, EventsAwareInterface |
 
@@ -9099,7 +8989,7 @@ Checks if the router matches any of the defined routes
 
 <h1 id="mvc-router-annotations">Class Phalcon\Mvc\Router\Annotations</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Annotations.zep)
 
 | Namespace | Phalcon\Mvc\Router | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\Router, Phalcon\Annotations\Annotation | | Extends | Router |
 
@@ -9193,7 +9083,7 @@ Changes the controller class suffix
 
 <h1 id="mvc-router-exception">Class Phalcon\Mvc\Router\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Exception.zep)
 
 | Namespace | Phalcon\Mvc\Router | | Extends | \Phalcon\Exception |
 
@@ -9203,7 +9093,7 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 <h1 id="mvc-router-group">Class Phalcon\Mvc\Router\Group</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Group.zep)
 
 | Namespace | Phalcon\Mvc\Router | | Implements | GroupInterface |
 
@@ -9420,7 +9310,7 @@ Adds a route applying the common attributes
 
 <h1 id="mvc-router-groupinterface">Interface Phalcon\Mvc\Router\GroupInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/GroupInterface.zep)
 
 | Namespace | Phalcon\Mvc\Router |
 
@@ -9603,7 +9493,7 @@ Set a common uri prefix for all the routes in this group
 
 <h1 id="mvc-router-route">Class Phalcon\Mvc\Router\Route</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Route.zep)
 
 | Namespace | Phalcon\Mvc\Router | | Implements | RouteInterface |
 
@@ -9881,7 +9771,7 @@ $route->via(
 
 <h1 id="mvc-router-routeinterface">Interface Phalcon\Mvc\Router\RouteInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/RouteInterface.zep)
 
 | Namespace | Phalcon\Mvc\Router |
 
@@ -9989,7 +9879,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 <h1 id="mvc-routerinterface">Interface Phalcon\Mvc\RouterInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/routerinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/RouterInterface.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Router\GroupInterface |
 
@@ -10179,7 +10069,7 @@ Check if the router matches any of the defined routes
 
 <h1 id="mvc-view">Class Phalcon\Mvc\View</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\View\Engine\Php | | Extends | Injectable | | Implements | ViewInterface, EventsAwareInterface |
 
@@ -10761,7 +10651,7 @@ Loads registered template engines, if none is registered it will use Phalcon\Mvc
 
 <h1 id="mvc-view-engine-abstractengine">Abstract Class Phalcon\Mvc\View\Engine\AbstractEngine</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/abstractengine.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/AbstractEngine.zep)
 
 | Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\ViewBaseInterface | | Extends | Injectable | | Implements | EngineInterface |
 
@@ -10803,7 +10693,7 @@ Renders a partial inside another view
 
 <h1 id="mvc-view-engine-engineinterface">Interface Phalcon\Mvc\View\Engine\EngineInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/engineinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/EngineInterface.zep)
 
 | Namespace | Phalcon\Mvc\View\Engine |
 
@@ -10831,7 +10721,7 @@ Renders a view using the template engine
 
 <h1 id="mvc-view-engine-php">Class Phalcon\Mvc\View\Engine\Php</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/php.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Php.zep)
 
 | Namespace | Phalcon\Mvc\View\Engine | | Extends | AbstractEngine |
 
@@ -10847,7 +10737,7 @@ Renders a view using the template engine
 
 <h1 id="mvc-view-engine-volt">Class Phalcon\Mvc\View\Engine\Volt</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt.zep)
 
 | Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception | | Extends | AbstractEngine | | Implements | EventsAwareInterface |
 
@@ -10946,7 +10836,7 @@ Sorts an array
 
 <h1 id="mvc-view-engine-volt-compiler">Class Phalcon\Mvc\View\Engine\Volt\Compiler</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt/Compiler.zep)
 
 | Namespace | Phalcon\Mvc\View\Engine\Volt | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
 
@@ -11127,8 +11017,6 @@ $compiler->compileFile(
 );
 ```
 
-@return string|array
-
 ```php
 public function compileForElse(): string;
 ```
@@ -11199,8 +11087,6 @@ final public function fireExtensionEvent( string $name, mixed $arguments = null 
 
 Fires an event to registered extensions
 
-@return mixed
-
 ```php
 public function functionCall( array $expr ): string;
 ```
@@ -11243,8 +11129,6 @@ public function getOption( string $option );
 
 Returns a compiler's option
 
-@return string
-
 ```php
 public function getOptions(): array;
 ```
@@ -11274,8 +11158,6 @@ print_r(
     $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
 );
 ```
-
-@return array
 
 ```php
 public function resolveTest( array $test, string $left ): string;
@@ -11337,11 +11219,9 @@ final protected function statementListOrExtends( mixed $statements );
 
 Compiles a block of statements
 
-@return string|array
-
 <h1 id="mvc-view-engine-volt-exception">Class Phalcon\Mvc\View\Engine\Volt\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt/Exception.zep)
 
 | Namespace | Phalcon\Mvc\View\Engine\Volt | | Uses | Phalcon\Mvc\View\Exception | | Extends | BaseException |
 
@@ -11361,8 +11241,6 @@ protected statement;
 public function __construct( string $message = string, array $statement = [], int $code = int, \Exception $previous = null );
 ```
 
-//
-
 ```php
 public function getStatement(): array;
 ```
@@ -11371,7 +11249,7 @@ Gets currently parsed statement (if any).
 
 <h1 id="mvc-view-exception">Class Phalcon\Mvc\View\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Exception.zep)
 
 | Namespace | Phalcon\Mvc\View | | Extends | \Phalcon\Exception |
 
@@ -11381,7 +11259,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 <h1 id="mvc-view-simple">Class Phalcon\Mvc\View\Simple</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Simple.zep)
 
 | Namespace | Phalcon\Mvc\View | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php | | Extends | Injectable | | Implements | ViewBaseInterface, EventsAwareInterface |
 
@@ -11628,7 +11506,7 @@ Loads registered template engines, if none are registered it will use Phalcon\Mv
 
 <h1 id="mvc-viewbaseinterface">Interface Phalcon\Mvc\ViewBaseInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ViewBaseInterface.zep)
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Cache\Adapter\AdapterInterface |
 
@@ -11688,7 +11566,7 @@ Sets views directory. Depending of your platform, always add a trailing slash or
 
 <h1 id="mvc-viewinterface">Interface Phalcon\Mvc\ViewInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ViewInterface.zep)
 
 | Namespace | Phalcon\Mvc | | Extends | ViewBaseInterface |
 

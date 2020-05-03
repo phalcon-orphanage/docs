@@ -11,7 +11,7 @@ title: 'Phalcon\Dispatcher'
 
 <h1 id="dispatcher-abstractdispatcher">Abstract Class Phalcon\Dispatcher\AbstractDispatcher</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/abstractdispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/AbstractDispatcher.zep)
 
 | Namespace | Phalcon\Dispatcher | | Uses | Exception, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Extends | AbstractInjectionAware | | Implements | DispatcherInterface, EventsAwareInterface |
 
@@ -125,17 +125,11 @@ protected returnedValue;
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] );
 ```
 
-//
-
 ```php
 public function dispatch(): object | bool;
 ```
 
 Process the results of the router by calling into the appropriate controller action(s) including any routing data or injected parameters.
-
-@return object|false Returns the dispatched handler class (the Controller for Mvc dispatching or a Task for CLI dispatching) or <tt>false</tt> if an exception occurred and the operation was stopped by returning <tt>false</tt> in the exception handler.
-
-@throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
 
 ```php
 public function forward( array $forward ): void;
@@ -236,8 +230,6 @@ public function getParam( mixed $param, mixed $filters = null, mixed $defaultVal
 ```
 
 Gets a param by its name or numeric index
-
-@return mixed
 
 ```php
 public function getParams(): array;
@@ -367,11 +359,9 @@ Set empty properties to their defaults (where defaults are available)
 protected function toCamelCase( string $input ): string;
 ```
 
-//
-
 <h1 id="dispatcher-dispatcherinterface">Interface Phalcon\Dispatcher\DispatcherInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/dispatcherinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/DispatcherInterface.zep)
 
 | Namespace | Phalcon\Dispatcher |
 
@@ -495,7 +485,7 @@ Sets action params to be dispatched
 
 <h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/Exception.zep)
 
 | Namespace | Phalcon\Dispatcher | | Extends | \Phalcon\Exception |
 

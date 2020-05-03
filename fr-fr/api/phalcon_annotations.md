@@ -20,7 +20,7 @@ title: 'Phalcon\Annotations'
 
 <h1 id="annotations-adapter-abstractadapter">Abstract Class Phalcon\Annotations\Adapter\AbstractAdapter</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/AbstractAdapter.zep)
 
 | Espace de noms| Phalcon\Annotations\Adapter | | Utilise | Phalcon\Annotations\Reader, Phalcon\Annotations\Exception, Phalcon\Annotations\Collection, Phalcon\Annotations\Reflection, Phalcon\Annotations\ReaderInterface | | Implémente | AdapterInterface |
 
@@ -87,7 +87,7 @@ Sets the annotations parser
 
 <h1 id="annotations-adapter-adapterinterface">Interface Phalcon\Annotations\Adapter\AdapterInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection, Phalcon\Annotations\Collection, Phalcon\Annotations\ReaderInterface |
 
@@ -139,7 +139,7 @@ Sets the annotations parser
 
 <h1 id="annotations-adapter-apcu">Class Phalcon\Annotations\Adapter\Apcu</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Apcu.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection | | Extends | AbstractAdapter |
 
@@ -172,8 +172,6 @@ protected ttl = 172800;
 public function __construct( array $options = [] );
 ```
 
-Phalcon\Annotations\Adapter\Apcu constructor
-
 ```php
 public function read( string $key ): Reflection | bool;
 ```
@@ -188,7 +186,7 @@ Writes parsed annotations to APCu
 
 <h1 id="annotations-adapter-memory">Class Phalcon\Annotations\Adapter\Memory</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Memory.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection | | Extends | AbstractAdapter |
 
@@ -220,7 +218,7 @@ Writes parsed annotations to memory
 
 <h1 id="annotations-adapter-stream">Class Phalcon\Annotations\Adapter\Stream</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/stream.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Stream.zep)
 
 | Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception, RuntimeException | | Extends | AbstractAdapter |
 
@@ -252,8 +250,6 @@ protected annotationsDir = ./;
 public function __construct( array $options = [] );
 ```
 
-Phalcon\Annotations\Adapter\Stream constructor
-
 ```php
 public function read( string $key ): Reflection | bool | int;
 ```
@@ -268,7 +264,7 @@ Writes parsed annotations to files
 
 <h1 id="annotations-annotation">Class Phalcon\Annotations\Annotation</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Annotation.zep)
 
 | Namespace | Phalcon\Annotations |
 
@@ -364,7 +360,7 @@ Returns the number of arguments that the annotation has
 
 <h1 id="annotations-annotationsfactory">Class Phalcon\Annotations\AnnotationsFactory</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotationsfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/AnnotationsFactory.zep)
 
 | Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
@@ -382,8 +378,6 @@ AdapterFactory constructor.
 public function load( mixed $config ): mixed;
 ```
 
-Factory to create an instance from a Config object
-
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
@@ -398,7 +392,7 @@ The available adapters
 
 <h1 id="annotations-collection">Class Phalcon\Annotations\Collection</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Collection.zep)
 
 | Namespace | Phalcon\Annotations | | Uses | Countable, Iterator | | Implements | Iterator, Countable |
 
@@ -502,7 +496,7 @@ Check if the current annotation in the iterator is valid
 
 <h1 id="annotations-exception">Class Phalcon\Annotations\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Exception.zep)
 
 | Namespace | Phalcon\Annotations | | Extends | \Phalcon\Exception |
 
@@ -510,7 +504,7 @@ Class for exceptions thrown by Phalcon\Annotations
 
 <h1 id="annotations-reader">Class Phalcon\Annotations\Reader</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reader.zep)
 
 | Namespace | Phalcon\Annotations | | Uses | ReflectionClass | | Implements | ReaderInterface |
 
@@ -532,7 +526,7 @@ Parses a raw doc block returning the annotations found
 
 <h1 id="annotations-readerinterface">Interface Phalcon\Annotations\ReaderInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/ReaderInterface.zep)
 
 | Namespace | Phalcon\Annotations |
 
@@ -554,7 +548,7 @@ Parses a raw docblock returning the annotations found
 
 <h1 id="annotations-reflection">Class Phalcon\Annotations\Reflection</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reflection.zep)
 
 | Namespace | Phalcon\Annotations |
 

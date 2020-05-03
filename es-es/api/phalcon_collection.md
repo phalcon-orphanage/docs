@@ -11,7 +11,7 @@ title: 'Phalcon\Collection'
 
 <h1 id="collection">Class Phalcon\Collection</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection.zep)
 
 | Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
@@ -105,13 +105,9 @@ Returns the iterator of the class
 public function getKeys( bool $insensitive = bool ): array;
 ```
 
-//
-
 ```php
 public function getValues(): array;
 ```
-
-//
 
 ```php
 public function has( string $element ): bool;
@@ -205,7 +201,7 @@ Internal method to set data
 
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/Exception.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Phalcon\Exception | | Implements | Throwable |
 
@@ -213,7 +209,7 @@ Exceptions for the Collection object
 
 <h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/ReadOnly.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Phalcon\Collection | | Extends | Collection |
 

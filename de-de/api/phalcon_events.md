@@ -14,7 +14,7 @@ title: 'Phalcon\Events'
 
 <h1 id="events-event">Class Phalcon\Events\Event</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Event.zep)
 
 | Namespace | Phalcon\Events | | Implements | EventInterface |
 
@@ -135,7 +135,7 @@ if ($event->isCancelable()) {
 
 <h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -189,7 +189,7 @@ Stops the event preventing propagation
 
 <h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventsawareinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventsAwareInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -213,7 +213,7 @@ Sets the events manager
 
 <h1 id="events-exception">Class Phalcon\Events\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Exception.zep)
 
 | Namespace | Phalcon\Events | | Extends | \Phalcon\Exception |
 
@@ -223,7 +223,7 @@ Exceptions thrown in Phalcon\Events will use this class
 
 <h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Manager.zep)
 
 | Namespace | Phalcon\Events | | Uses | Closure, SplPriorityQueue | | Implements | ManagerInterface |
 
@@ -306,15 +306,11 @@ Fires an event in the events manager causing the active listeners to be notified
 $eventsManager->fire("db", $connection);
 ```
 
-@return mixed
-
 ```php
 final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
 ```
 
 Internal handler to call a queue of events
-
-@return mixed
 
 ```php
 public function getListeners( string $type ): array;
@@ -342,7 +338,7 @@ Check if the events manager is collecting all all the responses returned by ever
 
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -375,8 +371,6 @@ public function fire( string $eventType, object $source, mixed $data = null, boo
 ```
 
 Fires an event in the events manager causing the active listeners to be notified about it
-
-@return mixed
 
 ```php
 public function getListeners( string $type ): array;

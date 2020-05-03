@@ -21,7 +21,7 @@ title: 'Phalcon\Di'
 
 <h1 id="di">Class Phalcon\Di</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
@@ -326,7 +326,7 @@ Loads services from a Config object.
 
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractinjectionaware.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/AbstractInjectionAware.zep)
 
 | Namespace | Phalcon\Di | | Implements | InjectionAwareInterface |
 
@@ -360,7 +360,7 @@ Sets the dependency injector
 
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/diinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/DiInterface.zep)
 
 | Namespace | Phalcon\Di | | Uses | ArrayAccess | | Extends | ArrayAccess |
 
@@ -454,7 +454,7 @@ Registers an "always shared" service in the services container
 
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception.zep)
 
 | Namespace | Phalcon\Di | | Extends | \Phalcon\Exception |
 
@@ -462,7 +462,7 @@ Exceptions thrown in Phalcon\Di will use this class
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception/serviceresolutionexception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception/ServiceResolutionException.zep)
 
 | Namespace | Phalcon\Di\Exception | | Extends | \Phalcon\Di\Exception |
 
@@ -470,7 +470,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/FactoryDefault.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Filter\FilterFactory | | Extends | \Phalcon\Di |
 
@@ -486,7 +486,7 @@ Phalcon\Di\FactoryDefault constructor
 
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/FactoryDefault/Cli.zep)
 
 | Namespace | Phalcon\Di\FactoryDefault | | Uses | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory | | Extends | FactoryDefault |
 
@@ -504,7 +504,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
 
@@ -552,7 +552,7 @@ Sets the dependency injector
 
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/InjectionAwareInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -574,7 +574,7 @@ Sets the dependency injector
 
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service.zep)
 
 | Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
@@ -630,8 +630,6 @@ public function getParameter( int $position );
 
 Returns a parameter in a specific position
 
-@return array
-
 ```php
 public function isResolved(): bool;
 ```
@@ -676,7 +674,7 @@ Sets/Resets the shared instance related to the service
 
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service/Builder.zep)
 
 | Namespace | Phalcon\Di\Service | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
 
@@ -692,11 +690,9 @@ public function build( DiInterface $container, array $definition, mixed $paramet
 
 Builds a service using a complex service definition
 
-@return mixed
-
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -715,8 +711,6 @@ public function getParameter( int $position );
 ```
 
 Returns a parameter in a specific position
-
-@return array
 
 ```php
 public function isResolved(): bool;
@@ -756,7 +750,7 @@ Sets if the service is shared or not
 
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceProviderInterface.zep)
 
 | Namespace | Phalcon\Di |
 

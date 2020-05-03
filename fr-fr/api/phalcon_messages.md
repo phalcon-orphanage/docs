@@ -12,7 +12,7 @@ title: 'Phalcon\Messages'
 
 <h1 id="messages-exception">Classe Phalcon\Messages\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Exception.zep)
 
 | Espace de noms | Phalcon\Messages | | Hérite de | \Phalcon\Exception |
 
@@ -22,7 +22,7 @@ Les exceptions émises dans la classe Phalcon\Messages\* utiliseront cette class
 
 <h1 id="messages-message">Classe Phalcon\Messages\Message</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/message.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Message.zep)
 
 | Espace de noms | Phalcon\Messages | | Utilise | JsonSerializable | | Implémente | MessageInterface, JsonSerializable |
 
@@ -132,7 +132,7 @@ Sets message type
 
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messageinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/MessageInterface.zep)
 
 | Namespace | Phalcon\Messages |
 
@@ -154,15 +154,11 @@ public function getCode();
 
 Returns the message code related to this message
 
-@return int
-
 ```php
 public function getField();
 ```
 
 Returns field name related to message
-
-@return string
 
 ```php
 public function getMessage(): string;
@@ -214,7 +210,7 @@ Sets message type
 
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messages.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Messages.zep)
 
 | Namespace | Phalcon\Messages | | Uses | ArrayAccess, Countable, Iterator, JsonSerializable | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
 
@@ -337,14 +333,14 @@ public function offsetSet( mixed $index, mixed $message ): void;
 Sets an attribute using the array-syntax
 
 ```php
-$messages[0] = new \Phalcon\Messages\Message("Ceci est un message");
+$messages[0] = new \Phalcon\Messages\Message("This is a message");
 ```
 
 ```php
 public function offsetUnset( mixed $index ): void;
 ```
 
-Supprime un message de la liste
+Removes a message from the list
 
 ```php
 unset($message["database"]);
@@ -354,10 +350,10 @@ unset($message["database"]);
 public function rewind(): void;
 ```
 
-Rembobine l'itérateur interne
+Rewinds the internal iterator
 
 ```php
 public function valid(): bool;
 ```
 
-Vérifiez si le message actuel dans l'itérateur est valide
+Check if the current message in the iterator is valid
