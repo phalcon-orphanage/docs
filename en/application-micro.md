@@ -1872,15 +1872,15 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
+     * @param Event $event
+     * @param Micro $application
+     *
      * @returns bool
      */
-    public function beforeNotFound()
+    public function beforeNotFound(Event $event, Micro $application)
     {
-        $this
-            ->response
-            ->redirect('/404')
-            ->send()
-        ;
+        $application->response->redirect('/404');
+        $application->response->->send();
 
         return false;
     }
