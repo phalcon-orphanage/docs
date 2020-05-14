@@ -1966,7 +1966,7 @@ class NotFoundMiddleware implements MiddlewareInterface
     public function beforeNotFound(Event $event, Micro $application)
     {
         $application->response->redirect('/404');
-        $application->response->->send();
+        $application->response->send();
 
         return false;
     }
