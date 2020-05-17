@@ -1183,7 +1183,7 @@ $annotations = $container->get(
 );
 ```
 
-## Events
+## Eventos
 
 [Phalcon\Di](api/phalcon_di#di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `di`.
 
@@ -1596,7 +1596,7 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `request`            | [Phalcon\Http\Request](request)                                   | Yes    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Yes    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Yes    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Yes    | Security                     |
+| `security`           | [Phalcon\Security](security)                                       | Yes    | Segurança                    |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Yes    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Yes    | HTML Tag helpers             |
