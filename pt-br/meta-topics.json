@@ -1,6 +1,6 @@
 [
     {
-        "text": "General",
+        "text": "Geral",
         "url": "/introduction",
         "menu": [
             {
@@ -8,22 +8,22 @@
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Notas de Versão",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Atualização",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Patrocinadores",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Contribuições",
         "url": "",
         "menu": [
             {
@@ -39,39 +39,39 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Geração de Backtrace",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Testes Reproduzíveis",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Ambiente de Teste",
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "Padrão de Código",
                 "url": "/coding-standard"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Primeiros Passos",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Instalação",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Configuração de Servidor Web",
                 "url": "/webserver-setup"
             }
         ]
     },
     {
-        "text": "Environments",
+        "text": "Ambientes",
         "url": "",
         "menu": [
             {
@@ -85,7 +85,7 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Ferramentas de Desenvolvimento",
         "url": "",
         "menu": [
             {
@@ -103,7 +103,7 @@
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Tutoriais",
         "url": "",
         "menu": [
             {
