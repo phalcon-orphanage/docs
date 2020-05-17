@@ -18,7 +18,7 @@ These tools help you to generate skeleton code, maintain your database structure
 
 Phalcon Devtool can be controlled using the cmd line or the web interface.
 
-## Installation
+## Instalação
 
 Phalcon Devtools can be installed using <composer>. Make sure you have installed first.
 
