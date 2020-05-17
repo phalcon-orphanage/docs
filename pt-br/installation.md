@@ -149,7 +149,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Lançamentos em testes (alfa, beta etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
@@ -204,7 +204,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Lançamentos em testes (alfa, beta etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
