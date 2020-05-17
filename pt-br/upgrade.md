@@ -2,19 +2,19 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Upgrade Guide'
-keywords: 'upgrade, v3, v4'
+title: 'Guia de atualização'
+keywords: 'atualização, v3, v4'
 ---
 
 # Upgrade Guide
 
 * * *
 
-# Upgrading to V4
+# Atualizando para V4
 
-So you have decided to upgrade to v4! **Congratulations**!!
+Então você decidiu atualizar para a v4! **Parabéns**!!
 
-Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 contém muitas alterações em componentes, incluindo alterações nas interfaces, tipos estritos, remoção e adição de novos componentes. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
 
 ## Requirements
 
@@ -38,19 +38,19 @@ before
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+Alternativamente, algumas distribuições adicionam um prefixo numérico em arquivos `ini`. Se for esse o caso, escolha um número alto para o Phalcon (por exemplo, `50-phalcon.ini`).
 
-### Installation
+### Instalação
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+Baixe o `zephir.phar` mais recente [daqui](https://github.com/phalcon/zephir/releases). Adicione-o a uma pasta que pode ser acessada pelo seu sistema.
 
-Clone the repository
+Clonar o repositório
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Compilar o Phalcon
 
 ```bash
 cd cphalcon/
@@ -59,7 +59,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+Verifique o módulo
 
 ```bash
 php -m | grep phalcon
