@@ -2,11 +2,11 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Reproducible Tests'
+title: 'Testes Reproduzíveis'
 keywords: 'tests, testing, reproducible tests'
 ---
 
-# Reproducible Tests
+# Testes Reproduzíveis
 
 * * *
 
