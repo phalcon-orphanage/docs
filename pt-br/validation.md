@@ -254,7 +254,7 @@ if (count($messages)) {
 }
 ```
 
-## Validators
+## Validadores
 
 Phalcon offers a set of built-in validators for this component:
 
@@ -1872,7 +1872,7 @@ $validation->setFilters('email', 'trim');
 
 Filtering and sanitizing is performed using the <filter> component. You can add more filters to this component or use the built-in ones.
 
-## Events
+## Eventos
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
