@@ -34,21 +34,21 @@ extension=phalcon.so
 
 Como alternativa, algumas distribuições adicionam um prefixo de número nos arquivos `ini`. Se for esse o caso, escolha um número alto para Phalcon (ex.: `50-phalcon.ini`).
 
-Using Pecl this extension will be automatically installed.
+Usando Pecl esta extensão será instalada automaticamente.
 
 ### PDO
 
-Uma vez que o Phalcon tem baixa dependência, ele expõe suas funcionalidade sem a necessidade de extensões adicionais. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Uma vez que o Phalcon tem baixa dependência, ele expõe suas funcionalidade sem a necessidade de extensões adicionais. No entanto, certos componentes dependem de extensões adicionais para funcionar. Quando uma conexão com o banco de dados precisa ser feita, você precisará instalar a extensão `php_pdo`. Se seu SGBD é MySQL/MariaDB ou Aurora, você também precisará da extensão `php_mysqlnd`. Da mesma forma que usar um banco de dados PostgreSQL com Phalcon requer a extensão `php_pgsql`.
 
 ### Hardware
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+O Phalcon foi projetado para usar o mínimo de recursos possível e ainda assim oferecer alto desempenho. Embora tenhamos testado Phalcon em vários ambientes de baixo custo, (como 0.25GB de RAM, 0.5 CPU), o hardware que você escolherá dependerá das necessidades da sua aplicação.
 
-We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
+Nós hospedamos nosso site e blog nos últimos anos em uma VM na Amazon com 512MB de RAM e 1 vCPU.
 
 ### Software
 
-> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
+> **NOTA**: Você sempre deve tentar usar a versão mais recente do Phalcon e PHP pois ambos corrigem bugs, aprimoram a segurança bem como a performance.
 {: .alert .alert-danger }
 
 Juntamente com PHP 7.2 ou superior, dependendo das necessidades da sua aplicação e dos componentes do Phalcon que você precisa, talvez seja necessário instalar as seguintes extensões:
@@ -56,8 +56,8 @@ Juntamente com PHP 7.2 ou superior, dependendo das necessidades da sua aplicaç�
 * [curl](https://secure.php.net/manual/en/book.curl.php)
 * [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
 * [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2](https://secure.php.net/manual/en/book.image.php) (para usar a classe [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd))
+* [imagick](https://secure.php.net/manual/en/book.imagick.php) (para usar a classe [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick))
 * [json](https://secure.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [PDO](https://php.net/manual/en/book.pdo.php) bem como as extensões relevantes do SGDB específico (ex. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSQL](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
@@ -324,7 +324,7 @@ Edit your php.ini file and then append at the end:
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+Reinicie seu servidor web.
 
 ### PHPBrew (macOS/Linux)
 
@@ -365,7 +365,7 @@ Edit your php.ini file and then append at the end:
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Reinicie seu servidor web.
 
 ### Compile From Sources
 
