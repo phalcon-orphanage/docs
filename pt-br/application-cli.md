@@ -131,7 +131,7 @@ $container->setShared('dispatcher', $dispatcher);
 
 CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
 
-**Application**
+**Aplicação**
 
 ```php
 $console = new Console($container);
@@ -472,7 +472,7 @@ $router = new Router(false);
 
 For more information regarding routes and the route classes, you can check the [Routing](routing) page.
 
-## Events
+## Eventos
 
 CLI applications are also <events> aware. You can use the `setEventsManager` and `getEventsManager` methods to access the events manager.
 
