@@ -2,11 +2,11 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Image'
+title: 'Imagem'
 keywords: 'image, gd, imagick'
 ---
 
-# Image
+# Imagem
 
 * * *
 
