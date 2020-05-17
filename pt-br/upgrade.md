@@ -14,25 +14,25 @@ keywords: 'atualização, v3, v4'
 
 Então você decidiu atualizar para a v4! **Parabéns**!!
 
-Phalcon v4 contém muitas alterações em componentes, incluindo alterações nas interfaces, tipos estritos, remoção e adição de novos componentes. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 contém muitas alterações em componentes, incluindo alterações nas interfaces, tipos estritos, remoção e adição de novos componentes. Este documento é um esforço para ajudá-lo a atualizar seu aplicativo Phalcon existente para v4. Vamos esboçar as áreas às quais você precisa prestar atenção e fazer as alterações necessárias para que seu código possa ser executado de forma tão suave quanto tem sido com a v3. Embora as mudanças sejam significativas, são mais uma tarefa metódica do que uma tarefa assustadora.
 
-## Requirements
+## Requisitos
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 suporta apenas PHP 7.2 e superior. O PHP 7.1 foi liberado há 2 anos e o seu [suporte](https://secure.php.net/supported-versions.php) expirou. Então, nós decidimos utilizar apenas as versões do PHP que são suportadas.
 
 <a name='psr'></a>
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon requer a extensão PSR. A extensão pode ser baixada e compilada a partir [deste](https://github.com/jbboehr/php-psr) repositório do GitHub. As instruções de instalação estão disponíveis no arquivo `README` do repositório. Uma vez que a extensão tenha sido compilada e esteja disponível em seu sistema, você precisará carregá-la no seu `php.ini`. Você precisará adicionar essa linha:
 
 ```ini
 extension=psr.so
 ```
 
-before
+antes de
 
 ```ini
 extension=phalcon.so
@@ -44,7 +44,7 @@ Alternativamente, algumas distribuições adicionam um prefixo numérico em arqu
 
 Baixe o `zephir.phar` mais recente [daqui](https://github.com/phalcon/zephir/releases). Adicione-o a uma pasta que pode ser acessada pelo seu sistema.
 
-Clonar o repositório
+Clone o repositório
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -67,71 +67,71 @@ php -m | grep phalcon
 
 * * *
 
-## General Notes
+## Notas Gerais
 
-### Applications
+### Aplicações
 
-- The `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` and `Phalcon\Mvc\Router` now must have a URI to process
+- O `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` e `Phalcon\Mvc\Router` agora devem ter um URI para processar
 
-### Exceptions
+### Exceções
 
-- Changed catch `Exception` to `Throwable`
+- Alterado catch de `Exception` para `Throwable`
 
 * * *
 
-# Components
+# Componentes
 
 ## ACL
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
-> Usage: [ACL Documentation](acl)
+> Uso: [Documentação da ACL](acl)
 {: .alert .alert-info }
 
-The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
+O componente [ACL](acl) teve alguns métodos e componentes renomeados. A funcionalidade permanece a mesma que em versões anteriores.
 
-### Overview
+### Visão Geral
 
-The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
+Os componentes necessários para a ACL funcionar foram renomeados. Em particular, o `Resource` foi renomeado para `Component` em todas as interfaces, classes e métodos relevantes que este componente usa.
 
-- Added `Phalcon\Acl\Adapter\AbstractAdapter`
-- Added `Acl\Enum`
+- Adicionado `Phalcon\Acl\Adapter\AbstractAdapter`
+- Adicionado `Acl\Enum`
 
-- Removed `Phalcon\Acl`
+- Removido `Phalcon\Acl`
 
-- Removed `Phalcon\Acl\Adapter`
+- Removido `Phalcon\Acl\Adapter`
 
-- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+- Renomeado `Phalcon\Acl\Resource` para `Phalcon\Acl\Component`
 
-- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
-- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
-- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::getResources` to `Phalcon\Acl\AdapterInterface::getComponents`
-- Renamed `Phalcon\Acl\Adapter::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::isResource` to `Phalcon\Acl\Adapter\Memory::isComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResource` to `Phalcon\Acl\Adapter\Memory::addComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResourceAccess` to `Phalcon\Acl\Adapter\Memory::addComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`
+- Renomeado `Phalcon\Acl\ResourceInterface` para `Phalcon\Acl\ComponentInterface`
+- Renomeado `Phalcon\Acl\ResourceAware` para `Phalcon\Acl\ComponentAware`
+- Renomeado `Phalcon\Acl\AdapterInterface::isResource` para `Phalcon\Acl\AdapterInterface::isComponent`
+- Renomeado `Phalcon\Acl\AdapterInterface::addResource` para `Phalcon\Acl\AdapterInterface::addComponent`
+- Renomeado `Phalcon\Acl\AdapterInterface::addResourceAccess` para `Phalcon\Acl\AdapterInterface::addComponentAccess`
+- Renomeado `Phalcon\Acl\AdapterInterface::dropResourceAccess` para `Phalcon\Acl\AdapterInterface::dropComponentAccess`
+- Renomeado `Phalcon\Acl\AdapterInterface::getActiveResource` para `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Renomeado `Phalcon\Acl\AdapterInterface::getResources` para `Phalcon\Acl\AdapterInterface::getComponents`
+- Renomeado `Phalcon\Acl\Adapter::getActiveResource` para `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Renomeado `Phalcon\Acl\Adapter\Memory::isResource` para `Phalcon\Acl\Adapter\Memory::isComponent`
+- Renomeado `Phalcon\Acl\Adapter\Memory::addResource` para `Phalcon\Acl\Adapter\Memory::addComponent`
+- Renomeado `Phalcon\Acl\Adapter\Memory::addResourceAccess` para `Phalcon\Acl\Adapter\Memory::addComponentAccess`
+- Renomeado `Phalcon\Acl\Adapter\Memory::dropResourceAccess` para `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
+- Renomeado `Phalcon\Acl\Adapter\Memory::getResources` para `Phalcon\Acl\Adapter\Memory::getComponents`
 
 ### Acl\Adapter\Memory
 
-- Added `getActiveKey`, `activeFunctionCustomArgumentsCount` and `getActiveFunction` to get latest key, number of custom arguments, and function used to acquire access
-- Added `addOpertion` support multiple inherited
+- Adicionado `getActiveKey`, `activeFunctionCustomArgumentsCount` e `getActiveFunction` para obter a última chave, número de argumentos personalizados e função usada para obter acesso
+- Adicionado `addOperation` suporta múltiplas heranças
 
-### Acl\Enum (Constants)
+### Acl\Enum (Constantes)
 
-Example:
+Exemplo:
 
 ```php
 use Phalcon\Acl\Enum;
 
 echo Enum::ALLOW; //prints 1
-echo Enum::DENY;  //prints 0
+echo Enum::DENY; //prints 0
 
 ```
 
@@ -139,7 +139,7 @@ echo Enum::DENY;  //prints 0
 
 ## Assets
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Assets Documentation](assets)
 {: .alert .alert-info }
@@ -158,7 +158,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 ## Cache
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Cache Documentation](cache)
 {: .alert .alert-info }
@@ -237,7 +237,7 @@ $container->set(
 
 ## CLI
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [CLI Documentation](cli)
 {: .alert .alert-info }
@@ -388,14 +388,14 @@ echo Enum::FETCH_ASSOC;
 
 ## Filter
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Filter Documentation](filter)
 {: .alert .alert-info }
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-### Overview
+### Visão Geral
 
 The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
@@ -549,7 +549,7 @@ echo Enum::VERTICAL;   // prints  12
 
 ## Logger
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Logger Documentation](logger)
 {: .alert .alert-info }
@@ -653,7 +653,7 @@ Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit(
 
 ## Models
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Models Documentation](db-models)
 {: .alert .alert-info }
@@ -699,7 +699,7 @@ $criteria->limit(10, null);
 
 ## MVC
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [MVC Documentation](mvc)
 {: .alert .alert-info }
@@ -893,7 +893,7 @@ $group->addTrace(
 
 ## Session
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
@@ -939,7 +939,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 ## Text
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Str Documentation](helpers#str)
 {: .alert .alert-info }
@@ -969,7 +969,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 ## Views
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [View Documentation](views)
 {: .alert .alert-info }
@@ -980,7 +980,7 @@ View caching along with the `viewCache` service have been removed from the frame
 
 ## Url
 
-> Status: **changes required**
+> Estado: **mudanças necessárias**
 > 
 > Usage: [Url Documentation](url)
 {: .alert .alert-info }
