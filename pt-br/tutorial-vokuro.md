@@ -695,7 +695,7 @@ The available views are:
 
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
-## Components
+## Componentes
 
 There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
 
