@@ -2,11 +2,11 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Pagination'
+title: 'Paginação'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
 ---
 
-# Pagination
+# Paginação
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
