@@ -93,7 +93,7 @@
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Depuração",
                 "url": "/debug"
             },
             {
@@ -107,7 +107,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "Básico",
                 "url": "/tutorial-basic"
             },
             {
@@ -123,7 +123,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Caso de uso",
                 "url": "/use-case"
             },
             {
@@ -133,15 +133,15 @@
         ]
     },
     {
-        "text": "Core",
+        "text": "Núcleo",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Índice da API",
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Aplicação",
                 "url": "/application"
             },
             {
@@ -167,7 +167,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Serviços",
         "url": "",
         "menu": [
             {
@@ -193,11 +193,11 @@
         ]
     },
     {
-        "text": "Database",
+        "text": "Banco de Dados",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Camada",
                 "url": "/db-layer"
             },
             {
@@ -213,7 +213,7 @@
                 "url": "/db-models"
             },
             {
-                "text": "Behaviors",
+                "text": "Comportamentos",
                 "url": "/db-models-behaviors"
             },
             {
@@ -221,27 +221,27 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Eventos",
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Metadados",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Relacionamentos",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Transações",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Validadores",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "Paginação",
                 "url": "/db-pagination"
             },
             {
@@ -263,11 +263,11 @@
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formulários",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Imagem",
                 "url": "/image"
             },
             {
@@ -285,11 +285,11 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Lógica de Negócios",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Listas de Controle de Acesso",
                 "url": "/acl"
             },
             {
@@ -305,19 +305,19 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Gerenciador de Eventos",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Filtros",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Rotas",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Sessões",
                 "url": "/session"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Validação",
                 "url": "/validation"
             }
         ]
@@ -349,15 +349,15 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Segurança",
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "Criptografia",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Segurança",
                 "url": "/security"
             }
         ]
@@ -417,25 +417,25 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Internacionalização",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Tradução",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "Utilitários",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Coleção",
                 "url": "/collection"
             },
             {
-                "text": "Domain",
+                "text": "Domínio",
                 "url": "/domain"
             },
             {
@@ -443,11 +443,11 @@
                 "url": "/html"
             },
             {
-                "text": "Helper",
+                "text": "Ajudante",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "Registro",
                 "url": "/registry"
             }
         ]
