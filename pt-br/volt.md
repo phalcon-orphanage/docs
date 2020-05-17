@@ -13,7 +13,7 @@ keywords: 'volt, template engine, php generation, view data'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Visão Geral
 
 Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
 
@@ -480,7 +480,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 {% endraw %}
 ```
 
-## Filters
+## Filtros
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -1652,7 +1652,7 @@ You can also override built-in functions by using the same name in the defined f
 $compiler->addFunction('dump', 'print_r');
 ```
 
-### Filters
+### Filtros
 
 A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as with the functions.
 
@@ -2034,7 +2034,7 @@ public function setUniquePrefix(string $prefix): Compiler
 
 Set a unique prefix to be used as prefix for compiled variables
 
-## Events
+## Eventos
 
 The following compilation <events> are available to be implemented in extensions:
 
@@ -2080,7 +2080,7 @@ Any valid expression can be used as cache key:
 
 The caching is done by the [Phalcon\Cache](cache) component via the view component.
 
-## Services
+## Serviços
 
 If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
 

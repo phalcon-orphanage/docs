@@ -2,7 +2,7 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Validation'
+title: 'Validação'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Visão Geral
 
 [Phalcon\Validation](api/phalcon_validation#validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -254,7 +254,7 @@ if (count($messages)) {
 }
 ```
 
-## Validators
+## Validadores
 
 Phalcon offers a set of built-in validators for this component:
 
@@ -1872,7 +1872,7 @@ $validation->setFilters('email', 'trim');
 
 Filtering and sanitizing is performed using the <filter> component. You can add more filters to this component or use the built-in ones.
 
-## Events
+## Eventos
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 

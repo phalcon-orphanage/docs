@@ -2,7 +2,7 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Routing'
+title: 'Rotas'
 upgrade: '#router'
 keywords: 'routing, routes'
 ---
@@ -13,7 +13,7 @@ keywords: 'routing, routes'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Visão Geral
 
 The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -1246,7 +1246,7 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
-## Events
+## Eventos
 
 Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) also has events, when an [Events Manager](events) is present. The available events are:
 
