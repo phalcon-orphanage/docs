@@ -2,7 +2,7 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Sponsors'
+title: 'Patrocinadores'
 keywords: 'sponsors, opencollective, supporters'
 ---
 
