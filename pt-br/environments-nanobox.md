@@ -6,7 +6,7 @@ title: 'Environments - Nanobox'
 keywords: 'environment, nanobox, docker'
 ---
 
-# Environments
+# Ambientes
 
 * * *
 
