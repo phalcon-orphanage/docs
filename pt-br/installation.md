@@ -2,43 +2,43 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Installation'
-keywords: 'installation, installing Phalcon'
+title: 'Instalação'
+keywords: 'instalação, instalando o Phalcon'
 ---
 
-# Installation
+# Instalação
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Requirements
+## Requisitos
 
 ### PHP 7.2
 
-Phalcon v4 suporta apenas PHP 7.2 e superior. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 suporta apenas PHP 7.2 e superior. O PHP 7.1 foi liberado há 2 anos e o seu [suporte](https://secure.php.net/supported-versions.php) expirou. Então, nós decidimos utilizar apenas as versões do PHP que são suportadas.
 
 ### PSR
 
-Phalcon requer a extensão PSR. A extensão pode ser baixada e compilada a partir [deste](https://github.com/jbboehr/php-psr) repositório do GitHub. Installation instructions are available on the `README` of the repository. Uma vez que a extensão tenha sido compilada e esteja disponível em seu sistema, você precisará carregá-la no seu `php.ini`. Você precisará adicionar essa linha:
+Phalcon requer a extensão PSR. A extensão pode ser baixada e compilada a partir [deste](https://github.com/jbboehr/php-psr) repositório do GitHub. As instruções de instalação estão disponíveis no arquivo `README` do repositório. Uma vez que a extensão foi compilada e está disponível em seu sistema, você precisará carregá-la para seu `php.ini`. Você precisará adicionar esta linha:
 
 ```ini
 extension=psr.so
 ```
 
-before
+antes de
 
 ```ini
 extension=phalcon.so
 ```
 
-Alternativamente, algumas distribuições adicionam um prefixo numérico em arquivos `ini`. Se for esse o caso, escolha um número alto para o Phalcon (por exemplo, `50-phalcon.ini`).
+Como alternativa, algumas distribuições adicionam um prefixo de número nos arquivos `ini`. Se for esse o caso, escolha um número alto para Phalcon (ex.: `50-phalcon.ini`).
 
 Using Pecl this extension will be automatically installed.
 
 ### PDO
 
-Since Phalcon is loosely coupled, it exposes functionality without the need for additional extensions. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Uma vez que o Phalcon tem baixa dependência, ele expõe suas funcionalidade sem a necessidade de extensões adicionais. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 ### Hardware
 
