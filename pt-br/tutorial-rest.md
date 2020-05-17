@@ -37,7 +37,7 @@ The API consists of the following methods:
 | `PUT`    | `/api/robots/2`            | Update robot based on primary key          |
 | `DELETE` | `/api/robots/2`            | Delete robot based on primary key          |
 
-## Application
+## Aplicação
 
 As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) application for our needs. The structure of the application is as follows:
 
@@ -193,7 +193,7 @@ class Robots extends Model
 
 We attach three validators to the model. The first one checks the type of the robot. It must be `droid`, `mechanical` or `virtual`. Any other value will make the validator return `false` and the operation (insert/update) will fail. The second validator checks the uniqueness of the name for our robot. The last validator checks the `year` field to be a positive number.
 
-## Database
+## Banco de Dados
 
 We need to connect our application to the database. For this example we are going to use the popular MariaDB or similar variants such as MySQL, Aurora etc. In addition to the database setup, we are going to set up the autoloader, so that our application is aware of where to search for files required.
 
