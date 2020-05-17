@@ -296,7 +296,7 @@ The controller classes must have the suffix `Controller` and controller actions 
 > **Congratulations, you are Phlying with Phalcon!**
 {: .alert .alert-info }
 
-## Sending Output to a View
+## Enviando a Saída pela View
 
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller.
 
