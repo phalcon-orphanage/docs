@@ -2,11 +2,11 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Application'
+title: 'Aplicação'
 keywords: 'application, mvc, controllers'
 ---
 
-# Application
+# Aplicação
 
 * * *
 
@@ -695,7 +695,7 @@ try {
 }
 ```
 
-## Events
+## Eventos
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
