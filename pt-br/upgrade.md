@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## Depuração
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -370,7 +370,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Events
+## Eventos
 
 ### Events\ManagerInterface
 
@@ -482,7 +482,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Forms
+## Formulários
 
 ### Forms\Form
 
@@ -515,7 +515,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Image
+## Imagem
 
 - Added `Phalcon\Image\Enum`
 - Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
@@ -643,7 +643,7 @@ $logger->error('Something went wrong');
 
 * * *
 
-### Transactions
+### Transações
 
 Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
 
@@ -868,7 +868,7 @@ $group->addTrace(
 
 * * *
 
-## Security
+## Segurança
 
 - Removed `hasLibreSsl`
 - Removed `getSslVersionNumber`
@@ -1008,7 +1008,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Annotations\Adapter\Xcache | Removed    |                                                |
 | Phalcon\Annotations\Factory         | Renamed to | Phalcon\Annotations\AnnotationsFactory       |
 
-### Application
+### Aplicação
 
 | 3.4.x                | State      | 4.0.x                                     |
 | -------------------- | ---------- | ----------------------------------------- |
@@ -1046,7 +1046,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
 | Phalcon\Cache\Multiple              | Removed    |                                                     |
 
-### Collection
+### Coleção
 
 | 3.4.x | State | 4.0.x                          |
 | ----- | ----- | ------------------------------ |
@@ -1137,7 +1137,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------- | ---------- | ----------------------------- |
 | Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### Formulários
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1206,7 +1206,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | New   | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Image
+### Imagem
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1321,7 +1321,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Storage\Serializer\None               |
 |       | New   | Phalcon\Storage\Serializer\Php                |
 
-### Translate
+### Tradução
 
 | 3.4.x                       | State      | 4.0.x                                        |
 | --------------------------- | ---------- | -------------------------------------------- |
