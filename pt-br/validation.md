@@ -2,7 +2,7 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Validation'
+title: 'Validação'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
