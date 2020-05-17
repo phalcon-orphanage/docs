@@ -1619,7 +1619,7 @@ if (11 === $invoice->inv_id) {
 > **NOTE**: If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model.
 {: .alert .alert-info }
 
-## Transactions
+## Transações
 
 Working with transactions is supported the same way as with with PDO. Using transactions increases performance in most database systems and also ensures data integrity:
 
@@ -1669,7 +1669,7 @@ try {
 }
 ```
 
-## Events
+## Eventos
 
 The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 
