@@ -893,13 +893,13 @@ The events available in Phalcon are:
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
 | [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
 | [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
-| [Application](application)  | `application:afterHandleRequest`     | Application, Controller                                 |
-| [Application](application)  | `application:afterStartModule`       | Application, Module                                     |
-| [Application](application)  | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
-| [Application](application)  | `application:beforeSendResponse`     | Application, Response                                   |
-| [Application](application)  | `application:beforeStartModule`      | Application, Module                                     |
-| [Application](application)  | `application:boot`                   | Application                                             |
-| [Application](application)  | `application:viewRender`             | Application, View                                       |
+| [Aplicação](application)    | `application:afterHandleRequest`     | Application, Controller                                 |
+| [Aplicação](application)    | `application:afterStartModule`       | Application, Module                                     |
+| [Aplicação](application)    | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
+| [Aplicação](application)    | `application:beforeSendResponse`     | Application, Response                                   |
+| [Aplicação](application)    | `application:beforeStartModule`      | Application, Module                                     |
+| [Aplicação](application)    | `application:boot`                   | Aplicação                                               |
+| [Aplicação](application)    | `application:viewRender`             | Application, View                                       |
 | [CLI](application-cli)      | `dispatch:beforeException`           | Console, Exception                                      |
 | [Console](application-cli)  | `console:afterHandleTask`            | Console, Task                                           |
 | [Console](application-cli)  | `console:afterStartModule`           | Console, Module                                         |
