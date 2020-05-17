@@ -1519,7 +1519,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
-**Validation**
+**Validação**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 
