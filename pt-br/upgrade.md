@@ -948,7 +948,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Validation
+## Validação
 
 ### Validation\Message
 
@@ -1337,7 +1337,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Url            |
 |       | New   | Phalcon\Url\Exception |
 
-### Validation
+### Validação
 
 | 3.4.x                                        | State      | 4.0.x                                                   |
 | -------------------------------------------- | ---------- | ------------------------------------------------------- |
