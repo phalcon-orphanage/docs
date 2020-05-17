@@ -32,7 +32,7 @@ before
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+Alternativamente, algumas distribuições adicionam um prefixo numérico em arquivos `ini`. Se for esse o caso, escolha um número alto para o Phalcon (por exemplo, `50-phalcon.ini`).
 
 Using Pecl this extension will be automatically installed.
 
@@ -380,9 +380,9 @@ Compiling from source is similar to most environments (Linux/macOS).
 
 #### Compilation
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+Baixe o `zephir.phar` mais recente [daqui](https://github.com/phalcon/zephir/releases). Adicione-o a uma pasta que pode ser acessada pelo seu sistema.
 
-Clone the repository
+Clonar o repositório
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -397,7 +397,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+Verifique o módulo
 
 ```bash
 php -m | grep phalcon
