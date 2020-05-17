@@ -71,7 +71,7 @@ Setting up the
 ### Authentication
 ### Tokens
 ### Verification
-### Validation
+### Validação
 ### Response
 
 ## CLI
