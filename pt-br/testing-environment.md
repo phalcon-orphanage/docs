@@ -362,4 +362,4 @@ The database dumps are located under `tests/_data/assets/db/schemas`
 
 If you have any questions, feel free to join us in our [Discord](https://phalcon.io/discord) server or our [Forum](https://forum.phalcon.io).
 
-<3 Phalcon Team
+<3 Equipe Phalcon

@@ -3,7 +3,7 @@ layout: default
 language: 'pl-pl'
 version: '4.0'
 title: 'Web Server Setup'
-keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'
+keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 
 # Webserver Setup
@@ -280,6 +280,75 @@ The configuration below is for when you want to install your application in a vi
     
     </VirtualHost>
     
+
+## Lighttpd
+
+[lighttpd](https://redmine.lighttpd.net/) (pronounced "lighty") is an open-source web server optimized for speed-critical environments while remaining standards-compliant, secure and flexible. It was originally written by Jan Kneschke as a proof-of-concept of the c10k problem – how to handle 10,000 connections in parallel on one server, but has gained worldwide popularity. Its name is a portmanteau of "light" and "httpd".
+
+### Install lighttpd
+
+[lighttpd Official Site](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
+
+You can use following potencial configuration to setup lighttpd with Phalcon:
+
+```nginx
+server.modules = (
+        "mod_indexfile",
+        "mod_access",
+        "mod_alias",
+        "mod_redirect",
+        "mod_rewrite",
+)
+
+server.document-root        = "/var/www/html/public"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+# strict parsing and normalization of URL for consistency and security
+# https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_http-parseoptsDetails
+# (might need to explicitly set "url-path-2f-decode" = "disable"
+#  if a specific application is encoding URLs inside url-path)
+server.http-parseopts = (
+  "header-strict"           => "enable",# default
+  "host-strict"             => "enable",# default
+  "host-normalize"          => "enable",# default
+  "url-normalize-unreserved"=> "enable",# recommended highly
+  "url-normalize-required"  => "enable",# recommended
+  "url-ctrls-reject"        => "enable",# recommended
+  "url-path-2f-decode"      => "enable",# recommended highly (unless breaks app)
+ #"url-path-2f-reject"      => "enable",
+  "url-path-dotseg-remove"  => "enable",# recommended highly (unless breaks app)
+ #"url-path-dotseg-reject"  => "enable",
+ #"url-query-20-plus"       => "enable",# consistency in query string
+)
+
+index-file.names            = ( "index.php", "index.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.conf.pl"
+include "/etc/lighttpd/conf-enabled/*.conf"
+
+#server.compat-module-load   = "disable"
+server.modules += (
+        "mod_compress",
+        "mod_dirlisting",
+        "mod_staticfile",
+)
+
+url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_url=$1" )
+# or
+#url.rewrite-if-not-file = ( "/" => "/index.php?_rl=$1" )
+```
 
 ## WAMP
 

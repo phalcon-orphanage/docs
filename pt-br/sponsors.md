@@ -3,15 +3,15 @@ layout: default
 language: 'pt-br'
 version: '4.0'
 title: 'Patrocinadores'
-keywords: 'sponsors, opencollective, supporters'
+keywords: 'patrocinadores, opencollective, apoiadores'
 ---
 
-# Becoming a Sponsor
+# Torne-se um Patrocinador
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the project's stability.
+Para aqueles que desejam patrocinar o nosso trabalho e promover o desenvolvimento da Phalcon, oferecemos várias opções de patrocínio que servirão em qualquer orçamento. Patrocinar nosso trabalho nos permite dedicar mais tempo ao projeto, oferecer respostas mais rápidas a bugs e recursos e garantir a estabilidade do projeto.
 
-# Sponsors and Supporters
+# Patrocinadores e Apoiadores
 
 {% include sponsors.html %}
