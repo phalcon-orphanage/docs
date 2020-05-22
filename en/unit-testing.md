@@ -16,7 +16,7 @@ Writing proper tests can assist in writing better software. If you set up proper
 ## Integrating PHPUnit with Phalcon
 
 ```bash
-composer require phpunit/phpunit:^9.0
+composer require --dev phpunit/phpunit:^9.0
 ```
 
 or by manually adding it to `composer.json`:
@@ -84,7 +84,7 @@ Phalcon provides a test library that provides few abstract classes you can use t
 You can use the Incubator test library by adding it as a dependency:
 
 ```bash
-composer require phalcon/incubator-test":^v1.0.0-alpha.1
+composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 ```
 
 or by manually adding it to `composer.json`:
@@ -163,7 +163,7 @@ class UnitTest extends AbstractUnitTest
         $this->assertEquals(
             "roman",
             "roman",
-            "This is OK"
+            "This will pass"
         );
 
         $this->assertEquals(
@@ -188,7 +188,7 @@ If you need to overload the `setUp` method, it is important you call the parent 
 
 ### Running Unit Tests
 
-Execute `phpunit` in your command-line you will get the following output:
+When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
 
 ```bash
 $ phpunit
@@ -208,8 +208,8 @@ Failed asserting that two strings are equal.
 --- Expected
 +++ Actual
 @@ @@
--'works'
-+'works1'
+-'hope'
++'ava'
 
 /var/www/tests/Unit/UnitTest.php:25
 
