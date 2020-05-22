@@ -163,7 +163,7 @@ class UnitTest extends AbstractUnitTest
         $this->assertEquals(
             "roman",
             "roman",
-            "This is OK"
+            "This will pass"
         );
 
         $this->assertEquals(
