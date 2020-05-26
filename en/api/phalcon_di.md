@@ -21,7 +21,7 @@ title: 'Phalcon\Di'
         
 <h1 id="di">Class Phalcon\Di</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
@@ -342,7 +342,7 @@ Loads services from a Config object.
         
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/AbstractinjectionAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/AbstractinjectionAware.zep)
 
 | Namespace  | Phalcon\Di |
 | Implements | InjectionAwareInterface |
@@ -378,7 +378,7 @@ Sets the dependency injector
         
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/DiInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/DiInterface.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | ArrayAccess |
@@ -480,7 +480,7 @@ Registers an "always shared" service in the services container
         
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception.zep)
 
 | Namespace  | Phalcon\Di |
 | Extends    | \Phalcon\Exception |
@@ -491,7 +491,7 @@ Exceptions thrown in Phalcon\Di will use this class
         
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Exception/ServiceresolutionException.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception/ServiceresolutionException.zep)
 
 | Namespace  | Phalcon\Di\Exception |
 | Extends    | \Phalcon\Di\Exception |
@@ -502,7 +502,7 @@ Exceptions thrown in Phalcon\Di will use this class
         
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Factorydefault.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Factorydefault.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Phalcon\Filter\FilterFactory |
@@ -525,7 +525,7 @@ Phalcon\Di\FactoryDefault constructor
         
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Factorydefault/Cli.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Factorydefault/Cli.zep)
 
 | Namespace  | Phalcon\Di\FactoryDefault |
 | Uses       | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory |
@@ -550,7 +550,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
         
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Injectable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Phalcon\Di, Phalcon\Session\BagInterface |
@@ -625,7 +625,7 @@ Sets the dependency injector
         
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/InjectionAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/InjectionAwareInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
@@ -650,7 +650,7 @@ Sets the dependency injector
         
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder |
@@ -756,7 +756,7 @@ Sets/Resets the shared instance related to the service
         
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/Service/Builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service/Builder.zep)
 
 | Namespace  | Phalcon\Di\Service |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
@@ -779,7 +779,7 @@ Builds a service using a complex service definition
         
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/ServiceInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
@@ -842,7 +842,7 @@ Sets if the service is shared or not
         
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ page.version }}.x/phalcon/Di/ServiceproviderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceproviderInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
