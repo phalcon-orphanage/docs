@@ -92,7 +92,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
     "require-dev": {
-        "phalcon/incubator-test": ",^v1.0.0-alpha.1"
+        "phalcon/incubator-test": "^v1.0.0-alpha.1"
     }
 }
 ```
@@ -154,7 +154,7 @@ Create the test below and save it in your `tests/Unit` directory.
 
 declare(strict_types=1);
 
-namespace Test\Unit;
+namespace Tests\Unit;
 
 class UnitTest extends AbstractUnitTest
 {
