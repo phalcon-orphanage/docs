@@ -16,7 +16,7 @@ title: 'Phalcon\Cache'
 * [Phalcon\Cache\CacheFactory](#cache-cachefactory)
 * [Phalcon\Cache\Exception\Exception](#cache-exception-exception)
 * [Phalcon\Cache\Exception\InvalidArgumentException](#cache-exception-invalidargumentexception)
-        
+
 <h1 id="cache">Class Phalcon\Cache</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache.zep)
@@ -41,19 +41,17 @@ protected adapter;
 ```
 
 ## Methods
+
 ```php
 public function __construct( AdapterInterface $adapter );
 ```
 Constructor.
 
 
-
 ```php
 public function clear(): bool;
 ```
 Wipes clean the entire cache's keys.
-
-@return bool True on success and false on failure.
 
 
 ```php
@@ -62,20 +60,10 @@ public function delete( mixed $key ): bool;
 Delete an item from the cache by its unique key.
 
 
-@return bool True if the item was successfully removed. False if there was an error.
-
-@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
-
-
 ```php
 public function deleteMultiple( mixed $keys ): bool;
 ```
 Deletes multiple cache items in a single operation.
-
-
-@return bool True if the items were successfully removed. False if there was an error.
-
-@throws InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
 
 
 ```php
@@ -84,14 +72,10 @@ public function get( mixed $key, mixed $defaultValue = null ): mixed;
 Fetches a value from the cache.
 
 
-@return mixed The value of the item from the cache, or $default in case of cache miss.
-
-@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
-
-
 ```php
 public function getAdapter(): AdapterInterface
 ```
+
 
 
 ```php
@@ -100,20 +84,10 @@ public function getMultiple( mixed $keys, mixed $defaultValue = null ): mixed;
 Obtains multiple cache items by their unique keys.
 
 
-@return iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
-
-@throws InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
-
-
 ```php
 public function has( mixed $key ): bool;
 ```
 Determines whether an item is present in the cache.
-
-
-@return bool
-
-@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 
 ```php
@@ -121,25 +95,11 @@ public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
 ```
 Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
 
-                                     the driver supports TTL then the library may set a default value
-                                     for it or let the driver take care of that.
-
-@return bool True on success and false on failure.
-
-@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
-
 
 ```php
 public function setMultiple( mixed $values, mixed $ttl = null ): bool;
 ```
 Persists a set of key => value pairs in the cache, with an optional TTL.
-
-                                      the driver supports TTL then the library may set a default value
-                                      for it or let the driver take care of that.
-
-@return bool True on success and false on failure.
-
-@throws InvalidArgumentException MUST be thrown if $values is neither an array nor a Traversable, or if any of the $values are not a legal value.
 
 
 ```php
@@ -155,7 +115,7 @@ Checks the key. If it contains invalid characters an exception is thrown
 
 
 
-        
+
 <h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/AdapterInterface.zep)
@@ -167,7 +127,7 @@ Checks the key. If it contains invalid characters an exception is thrown
 Interface for Phalcon\Cache adapters
 
 
-        
+
 <h1 id="cache-adapter-apcu">Class Phalcon\Cache\Adapter\Apcu</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Apcu.zep)
@@ -180,7 +140,7 @@ Interface for Phalcon\Cache adapters
 Apcu adapter
 
 
-        
+
 <h1 id="cache-adapter-libmemcached">Class Phalcon\Cache\Adapter\Libmemcached</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Libmemcached.zep)
@@ -193,7 +153,7 @@ Apcu adapter
 Libmemcached adapter
 
 
-        
+
 <h1 id="cache-adapter-memory">Class Phalcon\Cache\Adapter\Memory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Memory.zep)
@@ -206,7 +166,7 @@ Libmemcached adapter
 Memory adapter
 
 
-        
+
 <h1 id="cache-adapter-redis">Class Phalcon\Cache\Adapter\Redis</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Redis.zep)
@@ -219,7 +179,7 @@ Memory adapter
 Redis adapter
 
 
-        
+
 <h1 id="cache-adapter-stream">Class Phalcon\Cache\Adapter\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Stream.zep)
@@ -232,7 +192,7 @@ Redis adapter
 Stream adapter
 
 
-        
+
 <h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/AdapterFactory.zep)
@@ -254,6 +214,7 @@ private serializerFactory;
 ```
 
 ## Methods
+
 ```php
 public function __construct( SerializerFactory $factory = null, array $services = [] );
 ```
@@ -273,7 +234,7 @@ Returns the available adapters
 
 
 
-        
+
 <h1 id="cache-cachefactory">Class Phalcon\Cache\CacheFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/CacheFactory.zep)
@@ -294,6 +255,7 @@ protected adapterFactory;
 ```
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory );
 ```
@@ -313,7 +275,7 @@ Constructs a new Cache instance.
 
 
 
-        
+
 <h1 id="cache-exception-exception">Class Phalcon\Cache\Exception\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Exception/Exception.zep)
@@ -325,7 +287,7 @@ Constructs a new Cache instance.
 Exceptions thrown in Phalcon\Cache will use this class
 
 
-        
+
 <h1 id="cache-exception-invalidargumentexception">Class Phalcon\Cache\Exception\InvalidArgumentException</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Exception/InvalidargumentException.zep)

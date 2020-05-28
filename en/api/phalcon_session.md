@@ -14,7 +14,7 @@ title: 'Phalcon\Session'
 * [Phalcon\Session\Exception](#session-exception)
 * [Phalcon\Session\Manager](#session-manager)
 * [Phalcon\Session\ManagerInterface](#session-managerinterface)
-        
+
 <h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/AbstractAdapter.zep)
@@ -41,6 +41,7 @@ protected adapter;
 ```
 
 ## Methods
+
 ```php
 public function close(): bool;
 ```
@@ -78,7 +79,7 @@ Write
 
 
 
-        
+
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
@@ -91,6 +92,7 @@ Phalcon\Session\Adapter\Libmemcached
 
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
@@ -98,7 +100,7 @@ Constructor
 
 
 
-        
+
 <h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Noop.zep)
@@ -154,6 +156,7 @@ protected ttl = 8600;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
@@ -203,7 +206,7 @@ Helper method to get the name prefixed
 
 
 
-        
+
 <h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
@@ -216,6 +219,7 @@ Phalcon\Session\Adapter\Redis
 
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
@@ -223,7 +227,7 @@ Constructor
 
 
 
-        
+
 <h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
@@ -262,41 +266,47 @@ private path = ;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
-//
+Constructor
+
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
-//
+
+
 
 ```php
 public function gc( mixed $maxlifetime ): bool;
 ```
-//
+
+
 
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
    Ignore the savePath and use local defined path
    
-   @return bool
    
+
 
 ```php
 public function read( mixed $id ): string;
 ```
-//
+
+
 
 ```php
 public function write( mixed $id, mixed $data ): bool;
 ```
-//
 
 
-        
+
+
+
 <h1 id="session-bag">Class Phalcon\Session\Bag</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
@@ -334,6 +344,7 @@ private session;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name );
 ```
@@ -377,7 +388,7 @@ Sets the DependencyInjector container
 
 
 
-        
+
 <h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Exception.zep)
@@ -390,7 +401,7 @@ Phalcon\Session\Exception
 Exceptions thrown in Phalcon\Session will use this class
 
 
-        
+
 <h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Manager.zep)
@@ -430,6 +441,7 @@ private uniqueId = ;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
@@ -545,11 +557,6 @@ Set the session name. Throw exception if the session has started
 and do not allow poop names
 
 
-@throws InvalidArgumentException
-
-@return Manager
-
-
 ```php
 public function setOptions( array $options ): void;
 ```
@@ -570,7 +577,7 @@ Returns the status of the current session.
 
 
 
-        
+
 <h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/ManagerInterface.zep)
@@ -591,6 +598,7 @@ const SESSION_NONE = 1;
 ```
 
 ## Methods
+
 ```php
 public function __get( string $key ): mixed;
 ```

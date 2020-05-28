@@ -12,7 +12,7 @@ keywords: 'application, micro, handlers, api'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Visão Geral
 
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
 
@@ -1546,7 +1546,7 @@ $app->get(
 );
 ```
 
-## Events
+## Eventos
 
 A [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application works closely with an [Events Manager](events) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -1961,15 +1961,15 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
+     * @param Event $event
+     * @param Micro $application
+     *
      * @returns bool
      */
-    public function beforeNotFound()
+    public function beforeNotFound(Event $event, Micro $application)
     {
-        $this
-            ->response
-            ->redirect('/404')
-            ->send()
-        ;
+        $application->response->redirect('/404');
+        $application->response->send();
 
         return false;
     }

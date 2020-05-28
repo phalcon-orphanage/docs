@@ -12,7 +12,7 @@ title: 'Phalcon\Messages'
 
 <h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/exception.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Exception.zep)
 
 | Namespace | Phalcon\Messages | | Extends | \Phalcon\Exception |
 
@@ -22,7 +22,7 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 <h1 id="messages-message">Class Phalcon\Messages\Message</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/message.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Message.zep)
 
 | Namespace | Phalcon\Messages | | Uses | JsonSerializable | | Implements | MessageInterface, JsonSerializable |
 
@@ -132,7 +132,7 @@ Sets message type
 
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messageinterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/MessageInterface.zep)
 
 | Namespace | Phalcon\Messages |
 
@@ -154,15 +154,11 @@ public function getCode();
 
 Returns the message code related to this message
 
-@return int
-
 ```php
 public function getField();
 ```
 
 Returns field name related to message
-
-@return string
 
 ```php
 public function getMessage(): string;
@@ -214,7 +210,7 @@ Sets message type
 
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messages.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Messages.zep)
 
 | Namespace | Phalcon\Messages | | Uses | ArrayAccess, Countable, Iterator, JsonSerializable | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
 

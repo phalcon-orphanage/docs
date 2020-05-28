@@ -11,7 +11,7 @@ title: 'Phalcon\Debug'
 
 <h1 id="debug">Class Phalcon\Debug</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug.zep)
 
 | Namespace | Phalcon | | Uses | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
 
@@ -78,13 +78,13 @@ Adds a variable to the debug output
 public function getCssSources(): string;
 ```
 
-Returns the css sources
+Returns the CSS sources
 
 ```php
 public function getJsSources(): string;
 ```
 
-Returns the javascript sources
+Returns the JavaScript sources
 
 ```php
 public function getVersion(): string;
@@ -117,7 +117,7 @@ public function listenLowSeverity(): Debug;
 Listen for unsilent notices or warnings
 
 ```php
-public function onUncaughtException( \Exception $exception ): bool;
+public function onUncaughtException( \Throwable $exception ): bool;
 ```
 
 Handles uncaught exceptions
@@ -184,7 +184,7 @@ Shows a backtrace item
 
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
 
 | Namespace | Phalcon\Debug | | Uses | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
@@ -315,7 +315,7 @@ Prepare an HTML string of information about a single variable.
 
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
 
 | Namespace | Phalcon\Debug | | Extends | \Phalcon\Exception |
 

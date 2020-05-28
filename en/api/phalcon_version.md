@@ -6,7 +6,7 @@ title: 'Phalcon\Version'
 ---
 
 * [Phalcon\Version](#version)
-        
+
 <h1 id="version">Class Phalcon\Version</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Version.zep)
@@ -26,6 +26,7 @@ const VERSION_SPECIAL_NUMBER = 4;
 ```
 
 ## Methods
+
 ```php
 public static function get(): string;
 ```

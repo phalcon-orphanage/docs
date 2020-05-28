@@ -27,7 +27,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 > **NOTE**: Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
-## Installation
+## Instalação
 
 ### Downloading
 
@@ -143,7 +143,7 @@ vokuro/
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
 | `src/Controllers` | Controllers                                           |
-| `src/Forms`       | Forms                                                 |
+| `src/Forms`       | Formulários                                           |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
 | `src/Providers`   | Providers: setting services in the DI container       |
@@ -188,7 +188,7 @@ Once the configuration file is in place, visiting the IP address will present a 
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-### `Database`
+### `Banco de Dados`
 
 You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
 
@@ -365,7 +365,7 @@ Dotenv\Dotenv::create($rootPath)->load();
 
 Finally, we run our application.
 
-### Application
+### Aplicação
 
 All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
 
@@ -502,7 +502,7 @@ The available providers are:
 | `MailProvider`           | Mail support                                      |
 | `ModelsMetadataProvider` | Metadata for models                               |
 | `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Security                                          |
+| `SecurityProvider`       | Segurança                                         |
 | `SessionBagProvider`     | Session data                                      |
 | `SessionProvider`        | Session data                                      |
 | `UrlProvider`            | URL handling                                      |
@@ -510,7 +510,7 @@ The available providers are:
 
 `run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
 
-## Database
+## Banco de Dados
 
 As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
 
@@ -695,7 +695,7 @@ The available views are:
 
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
-## Components
+## Componentes
 
 There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
 
@@ -1275,7 +1275,7 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 ### Model
 
-**Relationships**
+**Relacionamentos**
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
 
@@ -1420,7 +1420,7 @@ As you can see in the defined relationships, we have a `belongsTo` and three `ha
 
 Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
 
-**Events**
+**Eventos**
 
 [Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
 
@@ -1519,7 +1519,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
-**Validation**
+**Validação**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 

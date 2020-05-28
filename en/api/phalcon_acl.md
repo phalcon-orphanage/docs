@@ -16,7 +16,7 @@ title: 'Phalcon\Acl'
 * [Phalcon\Acl\Role](#acl-role)
 * [Phalcon\Acl\RoleAware](#acl-roleaware)
 * [Phalcon\Acl\RoleInterface](#acl-roleinterface)
-        
+
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
@@ -76,9 +76,11 @@ protected eventsManager;
 ```
 
 ## Methods
+
 ```php
 public function getActiveAccess(): string
 ```
+
 
 
 ```php
@@ -86,9 +88,11 @@ public function getActiveComponent(): string
 ```
 
 
+
 ```php
 public function getActiveRole(): string
 ```
+
 
 
 ```php
@@ -116,7 +120,7 @@ Sets the events manager
 
 
 
-        
+
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
@@ -128,6 +132,7 @@ Interface for Phalcon\Acl adapters
 
 
 ## Methods
+
 ```php
 public function addComponent( mixed $componentObject, mixed $accessList ): bool;
 ```
@@ -252,7 +257,7 @@ accessKey
 
 
 
-        
+
 <h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
@@ -413,6 +418,7 @@ protected rolesNames;
 ```
 
 ## Methods
+
 ```php
 public function __construct();
 ```
@@ -539,14 +545,17 @@ public function getActiveFunction(): mixed
 ```
 
 
+
 ```php
 public function getActiveFunctionCustomArgumentsCount(): int
 ```
 
 
+
 ```php
 public function getActiveKey(): string|null
 ```
+
 
 
 ```php
@@ -603,7 +612,7 @@ accessKey
 
 
 
-        
+
 <h1 id="acl-component">Class Phalcon\Acl\Component</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Component.zep)
@@ -633,6 +642,7 @@ private name;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, string $description = null );
 ```
@@ -644,9 +654,11 @@ public function __toString(): string
 ```
 
 
+
 ```php
 public function getDescription(): string
 ```
+
 
 
 ```php
@@ -655,7 +667,8 @@ public function getName(): string
 
 
 
-        
+
+
 <h1 id="acl-componentaware">Interface Phalcon\Acl\ComponentAware</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentAware.zep)
@@ -666,6 +679,7 @@ Interface for classes which could be used in allow method as RESOURCE
 
 
 ## Methods
+
 ```php
 public function getComponentName(): string;
 ```
@@ -673,7 +687,7 @@ Returns component name
 
 
 
-        
+
 <h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentInterface.zep)
@@ -684,6 +698,7 @@ Interface for Phalcon\Acl\Component
 
 
 ## Methods
+
 ```php
 public function __toString(): string;
 ```
@@ -703,7 +718,7 @@ Returns the component name
 
 
 
-        
+
 <h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Enum.zep)
@@ -719,7 +734,7 @@ const ALLOW = 1;
 const DENY = 0;
 ```
 
-        
+
 <h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
@@ -730,7 +745,7 @@ const DENY = 0;
 Class for exceptions thrown by Phalcon\Acl
 
 
-        
+
 <h1 id="acl-role">Class Phalcon\Acl\Role</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Role.zep)
@@ -760,6 +775,7 @@ private description;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, string $description = null );
 ```
@@ -771,9 +787,11 @@ public function __toString(): string
 ```
 
 
+
 ```php
 public function getDescription(): string
 ```
+
 
 
 ```php
@@ -782,7 +800,8 @@ public function getName(): string
 
 
 
-        
+
+
 <h1 id="acl-roleaware">Interface Phalcon\Acl\RoleAware</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleAware.zep)
@@ -793,6 +812,7 @@ Interface for classes which could be used in allow method as ROLE
 
 
 ## Methods
+
 ```php
 public function getRoleName(): string;
 ```
@@ -800,7 +820,7 @@ Returns role name
 
 
 
-        
+
 <h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleInterface.zep)
@@ -811,6 +831,7 @@ Interface for Phalcon\Acl\Role
 
 
 ## Methods
+
 ```php
 public function __toString(): string;
 ```

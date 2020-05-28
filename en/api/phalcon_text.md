@@ -6,7 +6,7 @@ title: 'Phalcon\Text'
 ---
 
 * [Phalcon\Text](#text)
-        
+
 <h1 id="text">Class Phalcon\Text</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Text.zep)
@@ -28,6 +28,7 @@ const RANDOM_NUMERIC = 3;
 ```
 
 ## Methods
+
 ```php
 public static function camelize( string $text, mixed $delimiter = null ): string;
 ```
@@ -58,7 +59,6 @@ $str = Phalcon\Text::concat(
 // /tmp/folder_1/folder_2/folder_3/
 echo $str;
 ```
-
 
 
 ```php

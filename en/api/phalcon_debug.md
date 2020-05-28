@@ -8,7 +8,7 @@ title: 'Phalcon\Debug'
 * [Phalcon\Debug](#debug)
 * [Phalcon\Debug\Dump](#debug-dump)
 * [Phalcon\Debug\Exception](#debug-exception)
-        
+
 <h1 id="debug">Class Phalcon\Debug</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug.zep)
@@ -62,6 +62,7 @@ protected uri = https://assets.phalcon.io/debug/4.0.x/;
 ```
 
 ## Methods
+
 ```php
 public function clearVars(): Debug;
 ```
@@ -77,13 +78,13 @@ Adds a variable to the debug output
 ```php
 public function getCssSources(): string;
 ```
-Returns the css sources
+Returns the CSS sources
 
 
 ```php
 public function getJsSources(): string;
 ```
-Returns the javascript sources
+Returns the JavaScript sources
 
 
 ```php
@@ -117,7 +118,7 @@ Listen for unsilent notices or warnings
 
 
 ```php
-public function onUncaughtException( \Exception $exception ): bool;
+public function onUncaughtException( \Throwable $exception ): bool;
 ```
 Handles uncaught exceptions
 
@@ -184,7 +185,7 @@ Shows a backtrace item
 
 
 
-        
+
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
@@ -229,6 +230,7 @@ protected styles;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $styles = [], bool $detailed = bool );
 ```
@@ -246,6 +248,7 @@ public function getDetailed(): bool
 ```
 
 
+
 ```php
 public function one( mixed $variable, string $name = null ): string;
 ```
@@ -255,6 +258,7 @@ Alias of variable() method
 ```php
 public function setDetailed( bool $detailed )
 ```
+
 
 
 ```php
@@ -320,7 +324,7 @@ Prepare an HTML string of information about a single variable.
 
 
 
-        
+
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Exception.zep)

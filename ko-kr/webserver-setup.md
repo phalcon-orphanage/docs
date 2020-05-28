@@ -3,7 +3,7 @@ layout: default
 language: 'ko-kr'
 version: '4.0'
 title: '웹서버 설정'
-keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server, 웹서버, 서버'
+keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 
 # 웹서버 설정
@@ -280,9 +280,78 @@ uri가 영어 이외의 문자를 포함하는 경우, `mod_rewrite`가 정확�
     </VirtualHost>
     
 
+## Lighttpd
+
+[lighttpd](https://redmine.lighttpd.net/) (pronounced "lighty") is an open-source web server optimized for speed-critical environments while remaining standards-compliant, secure and flexible. It was originally written by Jan Kneschke as a proof-of-concept of the c10k problem – how to handle 10,000 connections in parallel on one server, but has gained worldwide popularity. Its name is a portmanteau of "light" and "httpd".
+
+### Install lighttpd
+
+[lighttpd Official Site](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
+
+You can use following potencial configuration to setup lighttpd with Phalcon:
+
+```nginx
+server.modules = (
+        "mod_indexfile",
+        "mod_access",
+        "mod_alias",
+        "mod_redirect",
+        "mod_rewrite",
+)
+
+server.document-root        = "/var/www/html/public"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+# strict parsing and normalization of URL for consistency and security
+# https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_http-parseoptsDetails
+# (might need to explicitly set "url-path-2f-decode" = "disable"
+#  if a specific application is encoding URLs inside url-path)
+server.http-parseopts = (
+  "header-strict"           => "enable",# default
+  "host-strict"             => "enable",# default
+  "host-normalize"          => "enable",# default
+  "url-normalize-unreserved"=> "enable",# recommended highly
+  "url-normalize-required"  => "enable",# recommended
+  "url-ctrls-reject"        => "enable",# recommended
+  "url-path-2f-decode"      => "enable",# recommended highly (unless breaks app)
+ #"url-path-2f-reject"      => "enable",
+  "url-path-dotseg-remove"  => "enable",# recommended highly (unless breaks app)
+ #"url-path-dotseg-reject"  => "enable",
+ #"url-query-20-plus"       => "enable",# consistency in query string
+)
+
+index-file.names            = ( "index.php", "index.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.conf.pl"
+include "/etc/lighttpd/conf-enabled/*.conf"
+
+#server.compat-module-load   = "disable"
+server.modules += (
+        "mod_compress",
+        "mod_dirlisting",
+        "mod_staticfile",
+)
+
+url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_url=$1" )
+# or
+#url.rewrite-if-not-file = ( "/" => "/index.php?_rl=$1" )
+```
+
 ## WAMP
 
-[WampServer](http://www.wampserver.com/en/) 는 윈도우용 웹 개발환경입니다. 이 환경을 이용해서 Apache2, PHP 와 MySQL 데이터베이스를 이용해서 웹 어플리케이션을 개발하실 수 있습니다. 다음은 WampServer 에서 Phalcon을 설치하는 방법에 대한 상세한 설명입니다. 최신버전 WampServer 사용을 강력히 권고드립니다.
+[WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 > **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.7.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
@@ -293,46 +362,46 @@ uri가 영어 이외의 문자를 포함하는 경우, `mod_rewrite`가 정확�
 
 ### Phalcon 다운로드
 
-Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 버전의 빌드된 익스텐션을 설치하셔야 합니다. WAMP에서 제공하는 `phpinfo` 페이지를 로드하세요:
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-`Architecture` 와 `Extension Build` 값을 확인하세요. 그 값 기준으로 호환되는 DLL파일을 다운로드 받으실 수 있습니다. 위의 예시를 기준으로 보면 다음의 파일을 다운로드 해야 합니다:
+Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-`x86`, `vc15` 이면서 `TS` 즉, *Thread Safe(다중스레드지원)*인 조건에 맞는 파일입니다. 시스템에서 `NTS` (*Non Thread Safe(단일스레드지원)*) 로 나온다면 그에 맞는 DLL을 내려받아야 하겠죠.
+which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
 
-WAMP는 32bit와 64bit 버전이 있습니다. 다운로드 섹션에서, WAMP 설치에 맞는 Phalcon DLL 파일을 다운로드 받으실 수 있습니다.
+WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMP installation.
 
-Phalcon 라이브러리를 다운로드 하시면 아래에 보시는 것과 비슷한 zip 파일이 있을겁니다:
+After downloading the Phalcon library you will have a zip file like the one shown below:
 
 ![](/assets/images/content/webserver-zip-icon.png)
 
-압축파일을 해제하시면 Phalcon DLL 파일이 있을겁니다:
+Extract the library from the archive to get the Phalcon DLL:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
-`php_phalcon.dll` 파일을 PHP 의 extensions 폴더로 복사하세요. WAMP가 `C:\wamp` 폴더에 설치되어 있는 경우, 익스텐션은 `C:\wamp\bin\php\php7.2.18\ext` 폴더에 있어야 합니다. (WAMP 설치시 설치된 PHP버전이 7.2.18이라고 가정).
+Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php7.2.18\ext` (assuming your WAMP installation installed PHP 7.2.18).
 
 ![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
 
-`php.ini` 파일을 수정하세요. 이 파일은 `C:\wamp\bin\php\php7.2.18\php.ini` 에 있습니다. 메모장이나 기타 텍스트편집 프로그램으로 수정하실 수 있습니다. 줄바꿈 문제를 겪지 않으시려면 Notepad++ 사용을 추천합니다. 파일의 제일 아랫쪽에 추가해주세요:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
 
 ```ini extension=php_phalcon.dll
 
-    <br />그리고 저장해주세요.
+    <br />and save it.
     
     ![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
     
-    `C:\wamp\bin\apache\apache2.4.9\bin\php.ini` 에 있는 `php.ini` 파일도 동일한 수정이 필요합니다. 파일 제일 아랫쪽에 추가: 
+    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
     
     ```ini
     extension=php_phalcon.dll 
     
 
-그리고 저장해주세요.
+and save it.
 
 > **주의**: 웹서버로 사용하는 apache 설치방식에 따라 경로는 달라질 수 있습니다. 감안해서 파일을 찾아 수정해주세요.
 {: .alert .alert-warning }
@@ -343,11 +412,11 @@ Phalcon 라이브러리를 다운로드 하시면 아래에 보시는 것과 비
 
 ![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
 
-Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServer 아이콘을 클릭. 팝업 메뉴에서 `Restart All Services` 를 선택. 트레이 아이콘이 다시 녹색으로 바뀌는지 확인.
+Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
 ![](/assets/images/content/webserver-wamp-manager.png)
 
-브라우저를 실행해서 주소창에 https://localhost 입력 후 엔터 WAMP 의 환영페이지가 나타날 것입니다. `extensions loaded` 섹션에서 Phalcon이 정상적으로 로드되었는지 확인해주세요.
+Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
@@ -356,7 +425,7 @@ Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServ
 
 ## XAMPP
 
-[XAMPP](https://www.apachefriends.org/download.html) 는 MYSQL,PHP와 Perl이 포함된, 쉽게 설치할 수 있는 Apache 배포판입니다. XAMPP를 다운로드 하신 후, 압축을 풀고 그냥 사용하시면 됩니다. 아래는 윈도우 에서 돌아가는 XAMPP 상에서 Phalcon을 설치하는 방법에 대한 자세한 안내입니다. 최신버전의 XAMPP를 사용하시기를 강력히 권해 드립니다.
+[XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 > **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.7.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
@@ -367,49 +436,49 @@ Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServ
 
 ### Phalcon 다운로드
 
-Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 버전의 빌드된 익스텐션을 설치하셔야 합니다. WAMP에서 제공하는 `phpinfo` 페이지를 로드하세요:
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-`Architecture` 와 `Extension Build` 값을 확인하세요. 그 값 기준으로 호환되는 DLL파일을 다운로드 받으실 수 있습니다. 위의 예시를 기준으로 보면 다음의 파일을 다운로드 해야 합니다:
+Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-`x86`, `vc15` 이면서 `TS` 즉, *Thread Safe(다중스레드지원)*인 조건에 맞는 파일입니다. 시스템에서 `NTS` (*Non Thread Safe(단일스레드지원)*) 로 나온다면 그에 맞는 DLL을 내려받아야 하겠죠.
+which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
 
-XAMPP 항상 32 bit 버전의 Apache와 PHP를 릴리즈합니다. 다운로드 섹션에서 x86버전의 윈도우용 Phalcon을 다운로드 받으셔야 합니다.
+XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
-Phalcon 라이브러리를 다운로드 하시면 아래에 보시는 것과 비슷한 zip 파일이 있을겁니다:
+After downloading the Phalcon library you will have a zip file like the one shown below:
 
 ![](/assets/images/content/webserver-zip-icon.png)
 
-압축파일을 해제하시면 Phalcon DLL 파일이 있을겁니다:
+Extract the library from the archive to get the Phalcon DLL:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
-`php_phalcon.dll` 파일을 PHP 익스텐션 디렉토리로 복사하세요. XAMPP를 `C:\xampp` 폴더에 설치하신 경우 익스텐션은`C:\xampp\php\ext` 폴더에 들어가야 합니다.
+Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
 ![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
 
-`C:\xampp\php\php.ini` 에 있는 `php.ini` 파일을 편집하세요. 메모장이나 기타 텍스트편집 프로그램으로 수정하실 수 있습니다. 줄바꿈관련 문제를 겪지 않으려면 [Notepad++](https://notepad-plus-plus.org/) 프로그램 이용을 추천합니다. 파일의 제일 아랫쪽에 추가해주세요:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-그리고 저장해주세요.
+and save it.
 
 > **주의**: 위에서 언급한 바와 같이 `PSR` 익스텐션의 설치가 필요하며 이 익스텐션은 Phalcon이 로드되기 전에 로드되어야 합니다. 위의 이미지에 나타난 것 처럼 Phalcon 관련 줄 윗쪽에`extension=php_psr.dll` 줄이 위치해야 합니다.
 {: .alert .alert-warning }
 
 ![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
 
-XAMPP 컨트롤센터에서 Apache 웹서버를 재시작 해주세요. 재시작 하면 변경된 PHP 설정을 읽어들입니다. 브라우저를 실행해서 주소창에 `https://localhost` 입력 후 엔터 XAMPP 환영 페이지가 나타날 것입니다. `phpinfo()` 링크를 클릭하세요.
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
 ![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) 는 현재 PHP이 상태에 대한 엄청난 양의 정보를 표시할 것입니다. Phalcon익스텐션이 정상적으로 로드되었는지 아래로 스크롤 해서 확인해주세요.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the Phalcon extension has been loaded correctly.
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
@@ -419,44 +488,44 @@ XAMPP 컨트롤센터에서 Apache 웹서버를 재시작 해주세요. 재시�
 
 ## Cherokee
 
-[Cherokee](https://www.cherokee-project.com/) 는 고성능의 웹서버입니다. 매우 빠르고, 유연하며, 설정이 쉽습니다.
+[Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 ### Phalcon 설정
 
-Cherokee 는 웹서버에서 가능한 거의 모든 값을 설정 할 수 있도록 친숙한 그래픽 UI를 제공합니다.
+Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
-`/path-to-cherokee/sbin/cherokee-admin` 를 root 권한으로 실행해서 cherokee 관리자를 시작합니다
+Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-`vServers`를 클릭해서 새로운 가상호스트를 생성한 후, 새로운 가상서버를 생성하세요:
+Create a new virtual host by clicking on `vServers`, then add a new virtual server:
 
 ![](/assets/images/content/webserver-cherokee-2.jpg)
 
-가장 최근에 추가된 가상 서버가 화면 좌측 바에 나타날 것입니다. `Behaviors`탭에서는 가상서버의 동작에 대한 기본값들을 확인하실 수 있습니다. `Rule Management`버튼을 클릭하세요. `Directory /cherokee_themes` 부분과 `Directory /icons` 부분을 삭제하세요:
+The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
 
 ![](/assets/images/content/webserver-cherokee-3.jpg)
 
-마법사를 이용해서 `PHP Language` behavior를 추가하세요. 이 behavior값이 PHP어플리케이션이 동작하도록 해줍니다:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-일반적으로 이 behavior는 추가적인 설정을 할 필요는 없습니다. 이번에는 `Manual Configuration`섹션에 다른 behavior를 추가합시다. `Rule Type` 부분에서 `File Exists`를 선택하신 후, `Match any file` 옵션이 활성화 되도록 해주세요:
+Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
 
 ![](/assets/images/content/webserver-cherokee-5.jpg)
 
-`Handler` 탭에서 핸들러로 `List & Send`를 선택하세요:
+In the `Handler` tab choose `List & Send` as handler:
 
 ![](/assets/images/content/webserver-cherokee-7.jpg)
 
-`Default` behavior 를 수정해서 URL-rewrite 엔진을 활성화 합니다. `Redirection` 을 핸들러로 선택한 후, 엔진에 다음의 정규식을 추가해 주세요 `^(.*)$`:
+Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
 
 ![](/assets/images/content/webserver-cherokee-6.jpg)
 
-마지막으로, behaviors가 다음의 순서대로 되어있는지 확인해 주세요:
+Finally, make sure the behaviors have the following order:
 
 ![](/assets/images/content/webserver-cherokee-8.jpg)
 
-브라우저에서 어플리케이션을 실행해주세요
+Execute the application in a browser:
 
 ![](/assets/images/content/webserver-cherokee-9.jpg)

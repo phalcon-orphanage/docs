@@ -12,13 +12,13 @@ keywords: 'devtools, developer tools, models, controllers'
 
 ![](/assets/images/document-status-under-review-red.svg)
 
-## Overview
+## Visão Geral
 
 These tools help you to generate skeleton code, maintain your database structure and helps to speedup development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
 Phalcon Devtool can be controlled using the cmd line or the web interface.
 
-## Installation
+## Instalação
 
 Phalcon Devtools can be installed using <composer>. Make sure you have installed first.
 

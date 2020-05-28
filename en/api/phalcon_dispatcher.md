@@ -8,7 +8,7 @@ title: 'Phalcon\Dispatcher'
 * [Phalcon\Dispatcher\AbstractDispatcher](#dispatcher-abstractdispatcher)
 * [Phalcon\Dispatcher\DispatcherInterface](#dispatcher-dispatcherinterface)
 * [Phalcon\Dispatcher\Exception](#dispatcher-exception)
-        
+
 <h1 id="dispatcher-abstractdispatcher">Abstract Class Phalcon\Dispatcher\AbstractDispatcher</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/Abstractdispatcher.zep)
@@ -125,22 +125,18 @@ protected returnedValue;
 ```
 
 ## Methods
+
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] );
 ```
-//
+
+
 
 ```php
 public function dispatch(): object | bool;
 ```
 Process the results of the router by calling into the appropriate
 controller action(s) including any routing data or injected parameters.
-
-@return object|false Returns the dispatched handler class (the Controller for Mvc dispatching or a Task
-                     for CLI dispatching) or <tt>false</tt> if an exception occurred and the operation was
-                     stopped by returning <tt>false</tt> in the exception handler.
-
-@throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
 
 
 ```php
@@ -241,8 +237,6 @@ Gets a namespace to be prepended to the current handler name
 public function getParam( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 Gets a param by its name or numeric index
-
-@return mixed
 
 
 ```php
@@ -373,10 +367,11 @@ Set empty properties to their defaults (where defaults are available)
 ```php
 protected function toCamelCase( string $input ): string;
 ```
-//
 
 
-        
+
+
+
 <h1 id="dispatcher-dispatcherinterface">Interface Phalcon\Dispatcher\DispatcherInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/DispatcherInterface.zep)
@@ -387,6 +382,7 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 
 
 ## Methods
+
 ```php
 public function dispatch(): object | bool;
 ```
@@ -421,7 +417,6 @@ Gets the default handler suffix
 public function getParam( mixed $param, mixed $filters = null ): mixed;
 ```
 Gets a param by its name or numeric index
-
 
 
 ```php
@@ -497,7 +492,6 @@ public function setParam( mixed $param, mixed $value ): void;
 Set a param by its name or numeric index
 
 
-
 ```php
 public function setParams( array $params ): void;
 ```
@@ -505,7 +499,7 @@ Sets action params to be dispatched
 
 
 
-        
+
 <h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/Exception.zep)

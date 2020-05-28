@@ -8,7 +8,7 @@ title: 'Phalcon\Collection'
 * [Phalcon\Collection](#collection)
 * [Phalcon\Collection\Exception](#collection-exception)
 * [Phalcon\Collection\ReadOnly](#collection-readonly)
-        
+
 <h1 id="collection">Class Phalcon\Collection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection.zep)
@@ -49,6 +49,7 @@ protected lowerKeys;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $data = [], bool $insensitive = bool );
 ```
@@ -107,12 +108,14 @@ Returns the iterator of the class
 ```php
 public function getKeys( bool $insensitive = bool ): array;
 ```
-//
+
+
 
 ```php
 public function getValues(): array;
 ```
-//
+
+
 
 ```php
 public function has( string $element ): bool;
@@ -213,7 +216,7 @@ Internal method to set data
 
 
 
-        
+
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/Exception.zep)
@@ -226,7 +229,7 @@ Internal method to set data
 Exceptions for the Collection object
 
 
-        
+
 <h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/Readonly.zep)
@@ -239,6 +242,7 @@ Phalcon\Collection\ReadOnly is a read only Collection object
 
 
 ## Methods
+
 ```php
 public function remove( string $element ): void;
 ```

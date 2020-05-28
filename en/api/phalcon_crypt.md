@@ -9,7 +9,7 @@ title: 'Phalcon\Crypt'
 * [Phalcon\Crypt\CryptInterface](#crypt-cryptinterface)
 * [Phalcon\Crypt\Exception](#crypt-exception)
 * [Phalcon\Crypt\Mismatch](#crypt-mismatch)
-        
+
 <h1 id="crypt">Class Phalcon\Crypt</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt.zep)
@@ -107,6 +107,7 @@ protected useSigning = true;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $cipher = string, bool $useSigning = bool );
 ```
@@ -158,14 +159,17 @@ public function getAuthData(): string
 ```
 
 
+
 ```php
 public function getAuthTag(): string
 ```
 
 
+
 ```php
 public function getAuthTagLength(): int
 ```
+
 
 
 ```php
@@ -201,17 +205,20 @@ Returns the encryption key
 ```php
 public function setAuthData( string $data ): CryptInterface;
 ```
-//
+
+
 
 ```php
 public function setAuthTag( string $tag ): CryptInterface;
 ```
-//
+
+
 
 ```php
 public function setAuthTagLength( int $length ): CryptInterface;
 ```
-//
+
+
 
 ```php
 public function setCipher( string $cipher ): CryptInterface;
@@ -303,7 +310,7 @@ Initialize available cipher algorithms.
 
 
 
-        
+
 <h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/CryptInterface.zep)
@@ -314,6 +321,7 @@ Interface for Phalcon\Crypt
 
 
 ## Methods
+
 ```php
 public function decrypt( string $text, string $key = null ): string;
 ```
@@ -411,7 +419,7 @@ Changes the padding scheme used.
 
 
 
-        
+
 <h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Exception.zep)
@@ -422,7 +430,7 @@ Changes the padding scheme used.
 Exceptions thrown in Phalcon\Crypt use this class
 
 
-        
+
 <h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Mismatch.zep)

@@ -6,7 +6,7 @@ title: 'Phalcon\Exception'
 ---
 
 * [Phalcon\Exception](#exception)
-        
+
 <h1 id="exception">Class Phalcon\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Exception.zep)
@@ -21,8 +21,10 @@ All framework exceptions should use or extend this exception
 
 
 ## Methods
+
 ```php
 public static function containerServiceNotFound( string $service ): string;
 ```
-//
+
+
 

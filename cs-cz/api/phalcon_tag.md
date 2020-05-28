@@ -11,7 +11,7 @@ title: 'Phalcon\Tag'
 
 <h1 id="tag">Class Phalcon\Tag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
 
@@ -310,7 +310,7 @@ Builds a HTML SELECT tag using a PHP array for options
 public static function setAutoescape( bool $autoescape ): void;
 ```
 
-Set autoescape mode in generated html
+Set autoescape mode in generated HTML
 
 ```php
 public static function setDI( DiInterface $container ): void;
@@ -384,6 +384,8 @@ public static function textArea( mixed $parameters ): string;
 
 Builds a HTML TEXTAREA tag
 
+@paraym array parameters = [ 'id' => '', 'name' => '', 'value' => '', 'class' => '' ]
+
 ```php
 public static function textField( mixed $parameters ): string;
 ```
@@ -422,7 +424,7 @@ Builds INPUT tags that implements the checked attribute
 
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag/Exception.zep)
 
 | Namespace | Phalcon\Tag | | Extends | \Phalcon\Exception |
 
@@ -432,13 +434,13 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag/Select.zep)
 
 | Namespace | Phalcon\Tag | | Uses | Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
 
 Phalcon\Tag\Select
 
-Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
+Generates a SELECT HTML tag using a static array of values or a Phalcon\Mvc\Model resultset
 
 ## Methods
 

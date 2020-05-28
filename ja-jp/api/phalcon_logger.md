@@ -22,7 +22,7 @@ title: 'Phalcon\Logger'
 
 <h1 id="logger">Class Phalcon\Logger</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger.zep)
 
 | Namespace | Phalcon | | Uses | Psr\Log\LoggerInterface, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception | | Implements | LoggerInterface |
 
@@ -161,15 +161,11 @@ public function getAdapter( string $name ): AdapterInterface;
 
 Returns an adapter from the stack
 
-@throws Exception
-
 ```php
 public function getAdapters(): array;
 ```
 
 Returns the adapter stack array
-
-@return AdapterInterface[]
 
 ```php
 public function getLogLevel(): int
@@ -207,8 +203,6 @@ public function removeAdapter( string $name ): Logger;
 
 Removes an adapter from the stack
 
-@throws Logger\Exception
-
 ```php
 public function setAdapters( array $adapters ): Logger;
 ```
@@ -235,8 +229,6 @@ protected function addMessage( int $level, string $message, array $context = [] 
 
 Adds a message to each handler for processing
 
-@throws Logger\Exception
-
 ```php
 protected function getLevels(): array;
 ```
@@ -245,7 +237,7 @@ Returns an array of log levels with integer to string conversion
 
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Implements | AdapterInterface |
 
@@ -318,8 +310,6 @@ Commits the internal transaction
 public function getFormatter(): FormatterInterface;
 ```
 
-//
-
 ```php
 public function inTransaction(): bool;
 ```
@@ -346,7 +336,7 @@ Sets the message formatter
 
 <h1 id="logger-adapter-adapterinterface">Interface Phalcon\Logger\Adapter\AdapterInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/adapterinterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 
@@ -392,8 +382,6 @@ public function inTransaction(): bool;
 
 Returns the whether the logger is currently in an active transaction or not
 
-@return bool
-
 ```php
 public function process( Item $item ): void;
 ```
@@ -414,7 +402,7 @@ Sets the message formatter
 
 <h1 id="logger-adapter-noop">Class Phalcon\Logger\Adapter\Noop</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/noop.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/Noop.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
@@ -447,7 +435,7 @@ Processes the message i.e. writes it to the file
 
 <h1 id="logger-adapter-stream">Class Phalcon\Logger\Adapter\Stream</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/stream.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/Stream.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item, UnexpectedValueException | | Extends | AbstractAdapter |
 
@@ -524,7 +512,7 @@ Processes the message i.e. writes it to the file
 
 <h1 id="logger-adapter-syslog">Class Phalcon\Logger\Adapter\Syslog</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/Syslog.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Helper\Arr, Phalcon\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
@@ -604,7 +592,7 @@ Processes the message i.e. writes it to the syslog
 
 <h1 id="logger-adapterfactory">Class Phalcon\Logger\AdapterFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterfactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/AdapterFactory.zep)
 
 | Namespace | Phalcon\Logger | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Logger\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
@@ -632,11 +620,9 @@ Create a new instance of the adapter
 protected function getAdapters(): array;
 ```
 
-//
-
 <h1 id="logger-exception">Class Phalcon\Logger\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Exception.zep)
 
 | Namespace | Phalcon\Logger | | Extends | \Phalcon\Exception |
 
@@ -646,7 +632,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 
 <h1 id="logger-formatter-abstractformatter">Abstract Class Phalcon\Logger\Formatter\AbstractFormatter</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/abstractformatter.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/AbstractFormatter.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | DateTimeImmutable, DateTimeZone, Phalcon\Logger, Phalcon\Logger\Item | | Implements | FormatterInterface |
 
@@ -690,11 +676,11 @@ public function setDateFormat( string $dateFormat )
 protected function getFormattedDate(): string;
 ```
 
-Returns the date formatted for the logger.
+Returns the date formatted for the logger. @todo Not using the set time from the Item since we have interface misalignment which will break semver This will change in the future
 
 <h1 id="logger-formatter-formatterinterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/formatterinterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/FormatterInterface.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger\Item |
 
@@ -712,7 +698,7 @@ Applies a format to an item
 
 <h1 id="logger-formatter-json">Class Phalcon\Logger\Formatter\Json</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/Json.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Helper\Json, Phalcon\Logger\Item | | Extends | AbstractFormatter |
 
@@ -736,7 +722,7 @@ Applies a format to a message before sent it to the internal log
 
 <h1 id="logger-formatter-line">Class Phalcon\Logger\Formatter\Line</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/Line.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | DateTime, Phalcon\Logger\Item | | Extends | AbstractFormatter |
 
@@ -780,7 +766,7 @@ public function setFormat( string $format )
 
 <h1 id="logger-item">Class Phalcon\Logger\Item</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Item.zep)
 
 | Namespace | Phalcon\Logger |
 
@@ -791,7 +777,10 @@ Represents each item in a logging transaction
 ## Properties
 
 ```php
-//
+/**
+ * Log Context
+ * @return mixed
+ */
 protected context;
 
 /**
@@ -830,7 +819,7 @@ protected type;
 public function __construct( string $message, string $name, int $type, int $time = int, mixed $context = [] );
 ```
 
-Phalcon\Logger\Item constructor
+Phalcon\Logger\Item constructor @todo Remove the time or change the signature to an array
 
 ```php
 public function getContext()
@@ -854,7 +843,7 @@ public function getType(): integer
 
 <h1 id="logger-loggerfactory">Class Phalcon\Logger\LoggerFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/LoggerFactory.zep)
 
 | Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger |
 
@@ -878,8 +867,6 @@ private adapterFactory;
 public function __construct( AdapterFactory $factory );
 ```
 
-//
-
 ```php
 public function load( mixed $config ): Logger;
 ```
@@ -891,5 +878,3 @@ public function newInstance( string $name, array $adapters = [] ): Logger;
 ```
 
 Returns a Logger object
-
-@return Logger

@@ -8,7 +8,7 @@ title: 'Phalcon\Escaper'
 * [Phalcon\Escaper](#escaper)
 * [Phalcon\Escaper\EscaperInterface](#escaper-escaperinterface)
 * [Phalcon\Escaper\Exception](#escaper-exception)
-        
+
 <h1 id="escaper">Class Phalcon\Escaper</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper.zep)
@@ -55,6 +55,7 @@ protected htmlQuoteType = 3;
 ```
 
 ## Methods
+
 ```php
 final public function detectEncoding( string $str ): string | null;
 ```
@@ -85,7 +86,7 @@ Escapes a HTML attribute string
 ```php
 public function escapeJs( string $js ): string;
 ```
-Escape javascript strings by replacing non-alphanumeric chars by their
+Escape JavaScript strings by replacing non-alphanumeric chars by their
 hexadecimal escaped representation
 
 
@@ -138,7 +139,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 
 
-        
+
 <h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper/EscaperInterface.zep)
@@ -149,6 +150,7 @@ Interface for Phalcon\Escaper
 
 
 ## Methods
+
 ```php
 public function escapeCss( string $css ): string;
 ```
@@ -200,7 +202,7 @@ Sets the HTML quoting type for htmlspecialchars
 
 
 
-        
+
 <h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper/Exception.zep)

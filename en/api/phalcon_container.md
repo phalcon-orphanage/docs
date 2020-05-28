@@ -6,7 +6,7 @@ title: 'Phalcon\Container'
 ---
 
 * [Phalcon\Container](#container)
-        
+
 <h1 id="container">Class Phalcon\Container</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Container.zep)
@@ -28,6 +28,7 @@ protected container;
 ```
 
 ## Methods
+
 ```php
 public function __construct( DiInterface $container );
 ```

@@ -6,7 +6,7 @@ title: 'Generating a backtrace'
 keywords: 'backtrace, debugging, segmentation faults'
 ---
 
-# Generating a Backtrace
+# Geração de Backtrace
 
 * * *
 

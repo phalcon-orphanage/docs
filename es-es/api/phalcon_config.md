@@ -16,7 +16,7 @@ title: 'Phalcon\Config'
 
 <h1 id="config">Class Phalcon\Config</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Collection, Phalcon\Config\Exception | | Extends | Collection |
 
@@ -65,8 +65,6 @@ public function getPathDelimiter(): string;
 
 Gets the default path delimiter
 
-@return string
-
 ```php
 public function merge( mixed $toMerge ): Config;
 ```
@@ -86,7 +84,7 @@ $globalConfig->merge($appConfig);
 ```
 
 ```php
-public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null );
+public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
 ```
 
 Returns a value from current config using a dot separated path.
@@ -127,7 +125,7 @@ Sets the collection data
 
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/grouped.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory | | Extends | Config |
 
@@ -191,7 +189,7 @@ Phalcon\Config\Adapter\Grouped constructor
 
 <h1 id="config-adapter-ini">Class Phalcon\Config\Adapter\Ini</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Ini.zep)
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\Exception | | Extends | Config |
 
@@ -255,7 +253,7 @@ Build multidimensional array from string
 
 <h1 id="config-adapter-json">Class Phalcon\Config\Adapter\Json</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Json.zep)
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Helper\Json | | Extends | Config |
 
@@ -288,7 +286,7 @@ Phalcon\Config\Adapter\Json constructor
 
 <h1 id="config-adapter-php">Class Phalcon\Config\Adapter\Php</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Php.zep)
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config | | Extends | Config |
 
@@ -336,7 +334,7 @@ Phalcon\Config\Adapter\Php constructor
 
 <h1 id="config-adapter-yaml">Class Phalcon\Config\Adapter\Yaml</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Yaml.zep)
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\Exception | | Extends | Config |
 
@@ -386,7 +384,7 @@ Phalcon\Config\Adapter\Yaml constructor
 
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/configfactory.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
 
 | Namespace | Phalcon\Config | | Uses | Phalcon\Config, Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
@@ -431,7 +429,7 @@ Returns the adapters for the factory
 
 <h1 id="config-exception">Class Phalcon\Config\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Exception.zep)
 
 | Namespace | Phalcon\Config | | Extends | \Phalcon\Exception |
 

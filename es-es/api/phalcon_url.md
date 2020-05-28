@@ -11,7 +11,7 @@ title: 'Phalcon\Url'
 
 <h1 id="url">Class Phalcon\Url</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface | | Extends | AbstractInjectionAware | | Implements | UrlInterface |
 
@@ -61,8 +61,6 @@ protected staticBaseUri;
 ```php
 public function __construct( RouterInterface $router = null );
 ```
-
-//
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
@@ -176,7 +174,7 @@ $url->setStaticBaseUri("/invo/");
 
 <h1 id="url-exception">Class Phalcon\Url\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url/exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/Exception.zep)
 
 | Namespace | Phalcon\Url | | Extends | \Phalcon\Exception |
 
@@ -186,7 +184,7 @@ Exceptions thrown in Phalcon\Url will use this class
 
 <h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url/urlinterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/UrlInterface.zep)
 
 | Namespace | Phalcon\Url |
 

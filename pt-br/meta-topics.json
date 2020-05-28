@@ -1,33 +1,33 @@
 [
     {
-        "text": "General",
+        "text": "Geral",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Introdução",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Notas de Versão",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Atualização",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Patrocinadores",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Contribuições",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Visão Geral",
                 "url": "/contributions"
             },
             {
@@ -39,39 +39,39 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Geração de Backtrace",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Testes Reproduzíveis",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Ambiente de Teste",
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "Padrão de Código",
                 "url": "/coding-standard"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Primeiros Passos",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Instalação",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Configuração de Servidor Web",
                 "url": "/webserver-setup"
             }
         ]
     },
     {
-        "text": "Environments",
+        "text": "Ambientes",
         "url": "",
         "menu": [
             {
@@ -85,7 +85,7 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Ferramentas de Desenvolvimento",
         "url": "",
         "menu": [
             {
@@ -93,21 +93,25 @@
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Depuração",
                 "url": "/debug"
             },
             {
                 "text": "Migrations",
                 "url": "/db-migrations"
+            },
+            {
+                "text": "Unit Testing",
+                "url": "/unit-testing"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Tutoriais",
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "Básico",
                 "url": "/tutorial-basic"
             },
             {
@@ -123,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Caso de uso",
                 "url": "/use-case"
             },
             {
@@ -133,15 +137,15 @@
         ]
     },
     {
-        "text": "Core",
+        "text": "Núcleo",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Índice da API",
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Aplicação",
                 "url": "/application"
             },
             {
@@ -167,7 +171,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Serviços",
         "url": "",
         "menu": [
             {
@@ -193,11 +197,11 @@
         ]
     },
     {
-        "text": "Database",
+        "text": "Banco de Dados",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Camada",
                 "url": "/db-layer"
             },
             {
@@ -213,7 +217,7 @@
                 "url": "/db-models"
             },
             {
-                "text": "Behaviors",
+                "text": "Comportamentos",
                 "url": "/db-models-behaviors"
             },
             {
@@ -221,27 +225,27 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Eventos",
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Metadados",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Relacionamentos",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Transações",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Validadores",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "Paginação",
                 "url": "/db-pagination"
             },
             {
@@ -263,11 +267,11 @@
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formulários",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Imagem",
                 "url": "/image"
             },
             {
@@ -285,11 +289,11 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Lógica de Negócios",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Listas de Controle de Acesso",
                 "url": "/acl"
             },
             {
@@ -305,19 +309,19 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Gerenciador de Eventos",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Filtros",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Rotas",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Sessões",
                 "url": "/session"
             },
             {
@@ -325,7 +329,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Validação",
                 "url": "/validation"
             }
         ]
@@ -349,15 +353,15 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Segurança",
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "Criptografia",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Segurança",
                 "url": "/security"
             }
         ]
@@ -417,25 +421,25 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Internacionalização",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Tradução",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "Utilitários",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Coleção",
                 "url": "/collection"
             },
             {
-                "text": "Domain",
+                "text": "Domínio",
                 "url": "/domain"
             },
             {
@@ -443,11 +447,11 @@
                 "url": "/html"
             },
             {
-                "text": "Helper",
+                "text": "Ajudante",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "Registro",
                 "url": "/registry"
             }
         ]

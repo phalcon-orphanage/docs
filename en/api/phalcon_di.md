@@ -18,7 +18,7 @@ title: 'Phalcon\Di'
 * [Phalcon\Di\Service\Builder](#di-service-builder)
 * [Phalcon\Di\ServiceInterface](#di-serviceinterface)
 * [Phalcon\Di\ServiceProviderInterface](#di-serviceproviderinterface)
-        
+
 <h1 id="di">Class Phalcon\Di</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di.zep)
@@ -92,6 +92,7 @@ protected static _default;
 ```
 
 ## Methods
+
 ```php
 public function __call( string $method, array $arguments = [] ): mixed | null;
 ```
@@ -339,7 +340,7 @@ Loads services from a Config object.
 
 
 
-        
+
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/AbstractinjectionAware.zep)
@@ -362,6 +363,7 @@ protected container;
 ```
 
 ## Methods
+
 ```php
 public function getDI(): DiInterface;
 ```
@@ -375,7 +377,7 @@ Sets the dependency injector
 
 
 
-        
+
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/DiInterface.zep)
@@ -388,13 +390,13 @@ Interface for Phalcon\Di
 
 
 ## Methods
+
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
 with the same name
-
 
 
 ```php
@@ -477,7 +479,7 @@ Registers an "always shared" service in the services container
 
 
 
-        
+
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception.zep)
@@ -488,7 +490,7 @@ Registers an "always shared" service in the services container
 Exceptions thrown in Phalcon\Di will use this class
 
 
-        
+
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception/ServiceresolutionException.zep)
@@ -499,7 +501,7 @@ Exceptions thrown in Phalcon\Di will use this class
  Phalcon\Di\Exception\ServiceResolutionException
  
 
-        
+
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Factorydefault.zep)
@@ -515,6 +517,7 @@ full stack framework
 
 
 ## Methods
+
 ```php
 public function __construct();
 ```
@@ -522,7 +525,7 @@ Phalcon\Di\FactoryDefault constructor
 
 
 
-        
+
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Factorydefault/Cli.zep)
@@ -540,6 +543,7 @@ This class is specially suitable for CLI applications
 
 
 ## Methods
+
 ```php
 public function __construct();
 ```
@@ -547,7 +551,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 
 
-        
+
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
@@ -597,6 +601,7 @@ protected container;
 ```
 
 ## Methods
+
 ```php
 public function __get( string $propertyName ): mixed | null;
 ```
@@ -622,7 +627,7 @@ Sets the dependency injector
 
 
 
-        
+
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/InjectionAwareInterface.zep)
@@ -634,6 +639,7 @@ Phalcon\Di that creates them
 
 
 ## Methods
+
 ```php
 public function getDI(): DiInterface;
 ```
@@ -647,7 +653,7 @@ Sets the dependency injector
 
 
 
-        
+
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service.zep)
@@ -689,6 +695,7 @@ protected sharedInstance;
 ```
 
 ## Methods
+
 ```php
 final public function __construct( mixed $definition, bool $shared = bool );
 ```
@@ -705,8 +712,6 @@ Returns the service definition
 public function getParameter( int $position );
 ```
 Returns a parameter in a specific position
-
-@return array
 
 
 ```php
@@ -725,7 +730,6 @@ Check whether the service is shared or not
 public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 Resolves the service
-
 
 
 ```php
@@ -753,7 +757,7 @@ Sets/Resets the shared instance related to the service
 
 
 
-        
+
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service/Builder.zep)
@@ -767,16 +771,15 @@ This class builds instances based on complex definitions
 
 
 ## Methods
+
 ```php
 public function build( DiInterface $container, array $definition, mixed $parameters = null );
 ```
 Builds a service using a complex service definition
 
-@return mixed
 
 
 
-        
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceInterface.zep)
@@ -787,6 +790,7 @@ Represents a service in the services container
 
 
 ## Methods
+
 ```php
 public function getDefinition(): mixed;
 ```
@@ -797,8 +801,6 @@ Returns the service definition
 public function getParameter( int $position );
 ```
 Returns a parameter in a specific position
-
-@return array
 
 
 ```php
@@ -817,7 +819,6 @@ Check whether the service is shared or not
 public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 Resolves the service
-
 
 
 ```php
@@ -839,7 +840,7 @@ Sets if the service is shared or not
 
 
 
-        
+
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceproviderInterface.zep)
@@ -871,6 +872,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 
 ## Methods
+
 ```php
 public function register( DiInterface $di ): void;
 ```

@@ -12,7 +12,7 @@ keywords: 'tag, helpers, view helpers, html generators'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Visão Geral
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
@@ -1487,7 +1487,7 @@ Volt syntax:
 ) }}{% endraw %}
 ```
 
-## Forms
+## Formulários
 
 Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/phalcon_tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
 

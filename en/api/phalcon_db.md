@@ -31,7 +31,7 @@ title: 'Phalcon\Db'
 * [Phalcon\Db\ReferenceInterface](#db-referenceinterface)
 * [Phalcon\Db\Result\Pdo](#db-result-pdo)
 * [Phalcon\Db\ResultInterface](#db-resultinterface)
-        
+
 <h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Abstractdb.zep)
@@ -68,10 +68,10 @@ try {
     );
 
     $result = $connection->query(
-        "SELECT * FROM robots LIMIT 5"
+        "SELECTFROM robots LIMIT 5"
     );
 
-    $result->setFetchMode(Db\Enum::FETCH_NUM);
+    $result->setFetchMode(Enum::FETCH_NUM);
 
     while ($robot = $result->fetch()) {
         print_r($robot);
@@ -83,6 +83,7 @@ try {
 
 
 ## Methods
+
 ```php
 public static function setup( array $options ): void;
 ```
@@ -90,7 +91,7 @@ Enables/disables options in the Database component
 
 
 
-        
+
 <h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/AbstractAdapter.zep)
@@ -99,7 +100,7 @@ Enables/disables options in the Database component
 | Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
 | Implements | AdapterInterface, EventsAwareInterface |
 
-Base class for Phalcon\Db adapters
+Base class for Phalcon\Db\Adapter adapters
 
 
 ## Properties
@@ -136,7 +137,7 @@ protected dialectType;
 /**
  * Event Manager
  *
- * @var Phalcon\Events\Manager
+ * @var ManagerInterface
  */
 protected eventsManager;
 
@@ -181,6 +182,7 @@ protected type;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $descriptor );
 ```
@@ -333,7 +335,7 @@ Dumps the complete result of a query into an array
 ```php
 // Getting all robots with associative indexes only
 $robots = $connection->fetchAll(
-    "SELECT * FROM robots",
+    "SELECTFROM robots",
     \Phalcon\Db\Enum::FETCH_ASSOC
 );
 
@@ -343,7 +345,7 @@ foreach ($robots as $robot) {
 
  // Getting all robots that contains word "robot" withing the name
 $robots = $connection->fetchAll(
-    "SELECT * FROM robots WHERE name LIKE :name",
+    "SELECTFROM robots WHERE name LIKE :name",
     \Phalcon\Db\Enum::FETCH_ASSOC,
     [
         "name" => "%robot%",
@@ -367,7 +369,7 @@ print_r($robotsCount);
 
 // Getting name of last edited robot
 $robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots order by modified desc",
+    "SELECT id, name FROM robots ORDER BY modified DESC",
     1
 );
 print_r($robot);
@@ -381,12 +383,12 @@ Returns the first row in a SQL query result
 
 ```php
 // Getting first robot
-$robot = $connection->fetchOne("SELECT * FROM robots");
+$robot = $connection->fetchOne("SELECTFROM robots");
 print_r($robot);
 
 // Getting first robot with associative indexes only
 $robot = $connection->fetchOne(
-    "SELECT * FROM robots",
+    "SELECTFROM robots",
     \Phalcon\Db\Enum::FETCH_ASSOC
 );
 print_r($robot);
@@ -479,6 +481,7 @@ public function getDialectType(): string
 ```
 
 
+
 ```php
 public function getEventsManager(): ManagerInterface;
 ```
@@ -514,9 +517,11 @@ public function getSqlVariables(): array
 ```
 
 
+
 ```php
 public function getType(): string
 ```
+
 
 
 ```php
@@ -569,7 +574,7 @@ public function limit( string $sqlQuery, int $number ): string;
 Appends a LIMIT clause to $sqlQuery argument
 
 ```php
-echo $connection->limit("SELECT * FROM robots", 5);
+echo $connection->limit("SELECTFROM robots", 5);
 ```
 
 
@@ -748,7 +753,7 @@ var_dump(
 
 
 
-        
+
 <h1 id="db-adapter-adapterinterface">Interface Phalcon\Db\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/AdapterInterface.zep)
@@ -760,6 +765,7 @@ Interface for Phalcon\Db adapters
 
 
 ## Methods
+
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
 ```
@@ -928,12 +934,12 @@ Returns the n'th field of first row in a SQL query result
 
 ```php
 // Getting count of robots
-$robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
+$robotsCount = $connection->fetchColumn("SELECT COUNT(*) FROM robots");
 print_r($robotsCount);
 
 // Getting name of last edited robot
 $robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots order by modified desc",
+    "SELECT id, name FROM robots ORDER BY modified DESC",
     1
 );
 print_r($robot);
@@ -1203,7 +1209,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-        
+
 <h1 id="db-adapter-pdo-abstractpdo">Abstract Class Phalcon\Db\Adapter\Pdo\AbstractPdo</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
@@ -1247,6 +1253,7 @@ protected pdo;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $descriptor );
 ```
@@ -1322,7 +1329,7 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 ```php
 print_r(
     $connection->convertBoundParams(
-        "SELECT * FROM robots WHERE name = :name:",
+        "SELECTFROM robots WHERE name = :name:",
         [
             "Bender",
         ]
@@ -1375,7 +1382,7 @@ starting from zero
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-    "SELECT * FROM robots WHERE name = :name"
+    "SELECTFROM robots WHERE name = :name"
 );
 
 $result = $connection->executePrepared(
@@ -1457,7 +1464,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-    "SELECT * FROM robots WHERE name = :name"
+    "SELECTFROM robots WHERE name = :name"
 );
 
 $result = $connection->executePrepared(
@@ -1482,11 +1489,11 @@ returning rows
 ```php
 // Querying data
 $resultset = $connection->query(
-    "SELECT * FROM robots WHERE type = 'mechanical'"
+    "SELECTFROM robots WHERE type = 'mechanical'"
 );
 
 $resultset = $connection->query(
-    "SELECT * FROM robots WHERE type = ?",
+    "SELECTFROM robots WHERE type = ?",
     [
         "mechanical",
     ]
@@ -1507,7 +1514,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-        
+
 <h1 id="db-adapter-pdo-mysql">Class Phalcon\Db\Adapter\Pdo\Mysql</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/Mysql.zep)
@@ -1516,7 +1523,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
 | Extends    | PdoAdapter |
 
-Specific functions for the Mysql database system
+Specific functions for the MySQL database system
 
 ```php
 use Phalcon\Db\Adapter\Pdo\Mysql;
@@ -1548,6 +1555,7 @@ protected type = mysql;
 ```
 
 ## Methods
+
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
 ```
@@ -1597,7 +1605,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-        
+
 <h1 id="db-adapter-pdo-postgresql">Class Phalcon\Db\Adapter\Pdo\Postgresql</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/Postgresql.zep)
@@ -1606,7 +1614,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Throwable |
 | Extends    | PdoAdapter |
 
-Specific functions for the Postgresql database system
+Specific functions for the PostgreSQL database system
 
 ```php
 use Phalcon\Db\Adapter\Pdo\Postgresql;
@@ -1638,6 +1646,7 @@ protected type = pgsql;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $descriptor );
 ```
@@ -1731,7 +1740,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-        
+
 <h1 id="db-adapter-pdo-sqlite">Class Phalcon\Db\Adapter\Pdo\Sqlite</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/Sqlite.zep)
@@ -1740,7 +1749,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
 | Extends    | PdoAdapter |
 
-Specific functions for the Sqlite database system
+Specific functions for the SQLite database system
 
 ```php
 use Phalcon\Db\Adapter\Pdo\Sqlite;
@@ -1768,6 +1777,7 @@ protected type = sqlite;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $descriptor );
 ```
@@ -1847,7 +1857,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-        
+
 <h1 id="db-adapter-pdofactory">Class Phalcon\Db\Adapter\PdoFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/PdoFactory.zep)
@@ -1865,6 +1875,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 public function __construct( array $services = [] );
 ```
@@ -1874,7 +1885,7 @@ Constructor
 ```php
 public function load( mixed $config ): AdapterInterface;
 ```
-Factory to create an instace from a Config object
+Factory to create an instance from a Config object
 
 
 ```php
@@ -1890,7 +1901,7 @@ Returns the available adapters
 
 
 
-        
+
 <h1 id="db-column">Class Phalcon\Db\Column</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Column.zep)
@@ -2007,9 +2018,11 @@ protected name;
 /**
  * Column not nullable?
  *
+ * Default SQL definition is NOT NULL.
+ *
  * @var bool
  */
-protected notNull = false;
+protected notNull = true;
 
 /**
  * Column is part of the primary key?
@@ -2061,6 +2074,7 @@ protected unsigned = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $definition );
 ```
@@ -2084,9 +2098,11 @@ public function getName(): string
 ```
 
 
+
 ```php
 public function getScale(): int
 ```
+
 
 
 ```php
@@ -2094,9 +2110,11 @@ public function getSize(): int
 ```
 
 
+
 ```php
 public function getType(): int
 ```
+
 
 
 ```php
@@ -2104,14 +2122,17 @@ public function getTypeReference(): int
 ```
 
 
+
 ```php
 public function getTypeValues(): array|string
 ```
 
 
+
 ```php
 public function get_default()
 ```
+
 
 
 ```php
@@ -2157,7 +2178,7 @@ Returns true if number column is unsigned
 
 
 
-        
+
 <h1 id="db-columninterface">Interface Phalcon\Db\ColumnInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/ColumnInterface.zep)
@@ -2168,6 +2189,7 @@ Interface for Phalcon\Db\Column
 
 
 ## Methods
+
 ```php
 public function getAfterPosition(): string;
 ```
@@ -2265,7 +2287,7 @@ Returns true if number column is unsigned
 
 
 
-        
+
 <h1 id="db-dialect">Abstract Class Phalcon\Db\Dialect</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect.zep)
@@ -2288,6 +2310,7 @@ protected customFunctions;
 ```
 
 ## Methods
+
 ```php
 public function createSavepoint( string $name ): string;
 ```
@@ -2312,9 +2335,9 @@ public function forUpdate( string $sqlQuery ): string;
 Returns a SQL modified with a FOR UPDATE clause
 
 ```php
-$sql = $dialect->forUpdate("SELECT * FROM robots");
+$sql = $dialect->forUpdate("SELECTFROM robots");
 
-echo $sql; // SELECT * FROM robots FOR UPDATE
+echo $sql; // SELECTFROM robots FOR UPDATE
 ```
 
 
@@ -2364,15 +2387,15 @@ public function limit( string $sqlQuery, mixed $number ): string;
 Generates the SQL for LIMIT clause
 
 ```php
-// SELECT * FROM robots LIMIT 10
+// SELECTFROM robots LIMIT 10
 echo $dialect->limit(
-    "SELECT * FROM robots",
+    "SELECTFROM robots",
     10
 );
 
-// SELECT * FROM robots LIMIT 10 OFFSET 50
+// SELECTFROM robots LIMIT 10 OFFSET 50
 echo $dialect->limit(
-    "SELECT * FROM robots",
+    "SELECTFROM robots",
     [10, 50]
 );
 ```
@@ -2565,7 +2588,7 @@ Prepares table for this RDBMS
 
 
 
-        
+
 <h1 id="db-dialect-mysql">Class Phalcon\Db\Dialect\Mysql</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect/Mysql.zep)
@@ -2587,6 +2610,7 @@ protected escapeChar = `;
 ```
 
 ## Methods
+
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
 ```
@@ -2725,9 +2749,9 @@ public function sharedLock( string $sqlQuery ): string;
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
-$sql = $dialect->sharedLock("SELECT * FROM robots");
+$sql = $dialect->sharedLock("SELECTFROM robots");
 
-echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
+echo $sql; // SELECTFROM robots LOCK IN SHARE MODE
 ```
 
 
@@ -2768,7 +2792,7 @@ Generates SQL to add the table creation options
 
 
 
-        
+
 <h1 id="db-dialect-postgresql">Class Phalcon\Db\Dialect\Postgresql</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect/Postgresql.zep)
@@ -2790,6 +2814,7 @@ protected escapeChar = \";
 ```
 
 ## Methods
+
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
 ```
@@ -2956,15 +2981,17 @@ Generates SQL checking for the existence of a schema.view
 ```php
 protected function castDefault( ColumnInterface $column ): string;
 ```
-//
+
+
 
 ```php
 protected function getTableOptions( array $definition ): string;
 ```
-//
 
 
-        
+
+
+
 <h1 id="db-dialect-sqlite">Class Phalcon\Db\Dialect\Sqlite</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect/Sqlite.zep)
@@ -2986,6 +3013,7 @@ protected escapeChar = \";
 ```
 
 ## Methods
+
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
 ```
@@ -3175,7 +3203,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-        
+
 <h1 id="db-dialectinterface">Interface Phalcon\Db\DialectInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/DialectInterface.zep)
@@ -3186,6 +3214,7 @@ Interface for Phalcon\Db dialects
 
 
 ## Methods
+
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
 ```
@@ -3392,7 +3421,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-        
+
 <h1 id="db-enum">Class Phalcon\Db\Enum</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Enum.zep)
@@ -3423,7 +3452,7 @@ const FETCH_SERIALIZE;
 const FETCH_UNIQUE;
 ```
 
-        
+
 <h1 id="db-exception">Class Phalcon\Db\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Exception.zep)
@@ -3434,7 +3463,7 @@ const FETCH_UNIQUE;
 Exceptions thrown in Phalcon\Db will use this class
 
 
-        
+
 <h1 id="db-index">Class Phalcon\Db\Index</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Index.zep)
@@ -3497,6 +3526,7 @@ protected type;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $columns, string $type = string );
 ```
@@ -3508,9 +3538,11 @@ public function getColumns(): array
 ```
 
 
+
 ```php
 public function getName(): string
 ```
+
 
 
 ```php
@@ -3519,7 +3551,8 @@ public function getType(): string
 
 
 
-        
+
+
 <h1 id="db-indexinterface">Interface Phalcon\Db\IndexInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/IndexInterface.zep)
@@ -3530,6 +3563,7 @@ Interface for Phalcon\Db\Index
 
 
 ## Methods
+
 ```php
 public function getColumns(): array;
 ```
@@ -3549,7 +3583,7 @@ Gets the index type
 
 
 
-        
+
 <h1 id="db-profiler">Class Phalcon\Db\Profiler</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Profiler.zep)
@@ -3634,6 +3668,7 @@ protected totalSeconds = 0;
 ```
 
 ## Methods
+
 ```php
 public function getLastProfile(): Item;
 ```
@@ -3677,7 +3712,7 @@ Stops the active profile
 
 
 
-        
+
 <h1 id="db-profiler-item">Class Phalcon\Db\Profiler\Item</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Profiler/Item.zep)
@@ -3727,9 +3762,11 @@ protected sqlVariables;
 ```
 
 ## Methods
+
 ```php
 public function getFinalTime(): double
 ```
+
 
 
 ```php
@@ -3737,9 +3774,11 @@ public function getInitialTime(): double
 ```
 
 
+
 ```php
 public function getSqlBindTypes(): array
 ```
+
 
 
 ```php
@@ -3747,9 +3786,11 @@ public function getSqlStatement(): string
 ```
 
 
+
 ```php
 public function getSqlVariables(): array
 ```
+
 
 
 ```php
@@ -3763,9 +3804,11 @@ public function setFinalTime( double $finalTime )
 ```
 
 
+
 ```php
 public function setInitialTime( double $initialTime )
 ```
+
 
 
 ```php
@@ -3773,9 +3816,11 @@ public function setSqlBindTypes( array $sqlBindTypes )
 ```
 
 
+
 ```php
 public function setSqlStatement( string $sqlStatement )
 ```
+
 
 
 ```php
@@ -3784,7 +3829,8 @@ public function setSqlVariables( array $sqlVariables )
 
 
 
-        
+
+
 <h1 id="db-rawvalue">Class Phalcon\Db\RawValue</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/RawValue.zep)
@@ -3817,6 +3863,7 @@ protected value;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $value );
 ```
@@ -3828,13 +3875,15 @@ public function __toString(): string
 ```
 
 
+
 ```php
 public function getValue(): string
 ```
 
 
 
-        
+
+
 <h1 id="db-reference">Class Phalcon\Db\Reference</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Reference.zep)
@@ -3924,6 +3973,7 @@ protected onUpdate;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $definition );
 ```
@@ -3935,9 +3985,11 @@ public function getColumns(): array
 ```
 
 
+
 ```php
 public function getName(): string
 ```
+
 
 
 ```php
@@ -3945,9 +3997,11 @@ public function getOnDelete(): string
 ```
 
 
+
 ```php
 public function getOnUpdate(): string
 ```
+
 
 
 ```php
@@ -3955,14 +4009,17 @@ public function getReferencedColumns(): array
 ```
 
 
+
 ```php
 public function getReferencedSchema(): string
 ```
 
 
+
 ```php
 public function getReferencedTable(): string
 ```
+
 
 
 ```php
@@ -3971,7 +4028,8 @@ public function getSchemaName(): string
 
 
 
-        
+
+
 <h1 id="db-referenceinterface">Interface Phalcon\Db\ReferenceInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/ReferenceInterface.zep)
@@ -3982,6 +4040,7 @@ Interface for Phalcon\Db\Reference
 
 
 ## Methods
+
 ```php
 public function getColumns(): array;
 ```
@@ -4031,7 +4090,7 @@ Gets the schema where referenced table is
 
 
 
-        
+
 <h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Result/Pdo.zep)
@@ -4043,7 +4102,7 @@ Gets the schema where referenced table is
 Encapsulates the resultset internals
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECTFROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Db\Enum::FETCH_NUM
@@ -4090,6 +4149,7 @@ protected sqlStatement;
 ```
 
 ## Methods
+
 ```php
 public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null );
 ```
@@ -4104,7 +4164,7 @@ certain row
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECTFROM robots ORDER BY name"
 );
 
 // Move to third row on result
@@ -4131,7 +4191,7 @@ or FALSE if there are no more rows. This method is affected by the active
 fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECTFROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
@@ -4152,7 +4212,7 @@ This method is affected by the active fetch flag set using
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECTFROM robots ORDER BY name"
 );
 
 $robots = $result->fetchAll();
@@ -4167,7 +4227,7 @@ if there are no more rows. This method is affected by the active fetch
 flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECTFROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_NUM
@@ -4192,7 +4252,7 @@ Gets number of rows returned by a resultset
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECTFROM robots ORDER BY name"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";
@@ -4228,7 +4288,7 @@ $result->setFetchMode(
 
 
 
-        
+
 <h1 id="db-resultinterface">Interface Phalcon\Db\ResultInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/ResultInterface.zep)
@@ -4239,6 +4299,7 @@ Interface for Phalcon\Db\Result objects
 
 
 ## Methods
+
 ```php
 public function dataSeek( long $number );
 ```
@@ -4294,4 +4355,5 @@ Gets number of rows returned by a resultset
 public function setFetchMode( int $fetchMode ): bool;
 ```
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+
 

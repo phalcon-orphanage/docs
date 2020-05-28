@@ -11,7 +11,7 @@ title: 'Phalcon\Events'
 * [Phalcon\Events\Exception](#events-exception)
 * [Phalcon\Events\Manager](#events-manager)
 * [Phalcon\Events\ManagerInterface](#events-managerinterface)
-        
+
 <h1 id="events-event">Class Phalcon\Events\Event</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Event.zep)
@@ -74,11 +74,11 @@ protected type;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $type, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 Phalcon\Events\Event constructor
-
 
 
 ```php
@@ -86,14 +86,17 @@ public function getData(): mixed
 ```
 
 
+
 ```php
 public function getSource(): object
 ```
 
 
+
 ```php
 public function getType(): string
 ```
+
 
 
 ```php
@@ -139,7 +142,7 @@ if ($event->isCancelable()) {
 
 
 
-        
+
 <h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventInterface.zep)
@@ -152,6 +155,7 @@ Interface for Phalcon\Events\Event class
 
 
 ## Methods
+
 ```php
 public function getData(): mixed;
 ```
@@ -195,7 +199,7 @@ Stops the event preventing propagation
 
 
 
-        
+
 <h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventsAwareInterface.zep)
@@ -209,6 +213,7 @@ dispatch events
 
 
 ## Methods
+
 ```php
 public function getEventsManager(): ManagerInterface | null;
 ```
@@ -222,7 +227,7 @@ Sets the events manager
 
 
 
-        
+
 <h1 id="events-exception">Class Phalcon\Events\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Exception.zep)
@@ -235,7 +240,7 @@ Phalcon\Events\Exception
 Exceptions thrown in Phalcon\Events will use this class
 
 
-        
+
 <h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Manager.zep)
@@ -278,6 +283,7 @@ protected responses;
 ```
 
 ## Methods
+
 ```php
 public function arePrioritiesEnabled(): bool;
 ```
@@ -288,7 +294,6 @@ Returns if priorities are enabled
 public function attach( string $eventType, mixed $handler, int $priority = static-constant-access ): void;
 ```
 Attach a listener to the events manager
-
 
 
 ```php
@@ -302,7 +307,6 @@ by every registered listener in a single fire
 public function detach( string $eventType, mixed $handler ): void;
 ```
 Detach the listener from the events manager
-
 
 
 ```php
@@ -327,15 +331,11 @@ notified about it
 $eventsManager->fire("db", $connection);
 ```
 
-@return mixed
-
 
 ```php
 final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
 ```
 Internal handler to call a queue of events
-
-@return mixed
 
 
 ```php
@@ -365,7 +365,7 @@ by every registered listener in a single fire
 
 
 
-        
+
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
@@ -378,18 +378,17 @@ Interface for Phalcon\Events managers.
 
 
 ## Methods
+
 ```php
 public function attach( string $eventType, mixed $handler ): void;
 ```
 Attach a listener to the events manager
 
 
-
 ```php
 public function detach( string $eventType, mixed $handler ): void;
 ```
 Detach the listener from the events manager
-
 
 
 ```php
@@ -403,8 +402,6 @@ public function fire( string $eventType, object $source, mixed $data = null, boo
 ```
 Fires an event in the events manager causing the active listeners to be
 notified about it
-
-@return mixed
 
 
 ```php

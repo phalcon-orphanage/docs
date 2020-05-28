@@ -8,7 +8,7 @@ title: 'Phalcon\Security'
 * [Phalcon\Security](#security)
 * [Phalcon\Security\Exception](#security-exception)
 * [Phalcon\Security\Random](#security-random)
-        
+
 <h1 id="security">Class Phalcon\Security</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security.zep)
@@ -108,6 +108,7 @@ private localRequest;
 ```
 
 ## Methods
+
 ```php
 public function __construct( SessionInterface $session = null, RequestInterface $request = null );
 ```
@@ -145,6 +146,7 @@ public function getDefaultHash(): int | null;
 ```
  Returns the default hash
  
+
 
 ```php
 public function getRandom(): Random;
@@ -197,6 +199,7 @@ public function getWorkFactor(): int
 ```
 
 
+
 ```php
 public function hash( string $password, int $workFactor = int ): string;
 ```
@@ -215,6 +218,7 @@ public function setDefaultHash( int $defaultHash ): Security;
  Sets the default hash
  
 
+
 ```php
 public function setRandomBytes( int $randomBytes ): Security;
 ```
@@ -229,7 +233,7 @@ Sets the work factor
 
 
 
-        
+
 <h1 id="security-exception">Class Phalcon\Security\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Exception.zep)
@@ -242,7 +246,7 @@ Phalcon\Security\Exception
 Exceptions thrown in Phalcon\Security will use this class
 
 
-        
+
 <h1 id="security-random">Class Phalcon\Security\Random</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Random.zep)
@@ -315,6 +319,7 @@ This class partially borrows SecureRandom library from Ruby
 
 
 ## Methods
+
 ```php
 public function base58( int $len = null ): string;
 ```

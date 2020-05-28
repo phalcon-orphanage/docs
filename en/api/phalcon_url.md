@@ -8,7 +8,7 @@ title: 'Phalcon\Url'
 * [Phalcon\Url](#url)
 * [Phalcon\Url\Exception](#url-exception)
 * [Phalcon\Url\UrlInterface](#url-urlinterface)
-        
+
 <h1 id="url">Class Phalcon\Url</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url.zep)
@@ -60,10 +60,12 @@ protected staticBaseUri;
 ```
 
 ## Methods
+
 ```php
 public function __construct( RouterInterface $router = null );
 ```
-//
+
+
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
@@ -176,7 +178,7 @@ $url->setStaticBaseUri("/invo/");
 
 
 
-        
+
 <h1 id="url-exception">Class Phalcon\Url\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/Exception.zep)
@@ -189,7 +191,7 @@ Phalcon\Url\Exception
 Exceptions thrown in Phalcon\Url will use this class
 
 
-        
+
 <h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/UrlInterface.zep)
@@ -200,11 +202,11 @@ Interface for Phalcon\Url\UrlInterface
 
 
 ## Methods
+
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
 ```
 Generates a URL
-
 
 
 ```php

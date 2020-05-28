@@ -7,7 +7,7 @@ title: 'Phalcon\Loader'
 
 * [Phalcon\Loader](#loader)
 * [Phalcon\Loader\Exception](#loader-exception)
-        
+
 <h1 id="loader">Class Phalcon\Loader</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Loader.zep)
@@ -91,6 +91,7 @@ protected registered = false;
 ```
 
 ## Methods
+
 ```php
 public function autoLoad( string $className ): bool;
 ```
@@ -222,10 +223,11 @@ Unregister the autoload method
 ```php
 protected function prepareNamespace( array $namespaceName ): array;
 ```
-//
 
 
-        
+
+
+
 <h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Loader/Exception.zep)

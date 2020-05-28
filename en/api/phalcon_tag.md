@@ -8,7 +8,7 @@ title: 'Phalcon\Tag'
 * [Phalcon\Tag](#tag)
 * [Phalcon\Tag\Exception](#tag-exception)
 * [Phalcon\Tag\Select](#tag-select)
-        
+
 <h1 id="tag">Class Phalcon\Tag</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag.zep)
@@ -77,6 +77,7 @@ protected static urlService;
 ```
 
 ## Methods
+
 ```php
 public static function appendTitle( mixed $title ): void;
 ```
@@ -107,11 +108,13 @@ public static function dateTimeField( mixed $parameters ): string;
    Builds a HTML input[type="datetime"] tag
    
 
+
 ```php
 public static function dateTimeLocalField( mixed $parameters ): string;
 ```
    Builds a HTML input[type="datetime-local"] tag
    
+
 
 ```php
 public static function displayTo( string $id, mixed $value ): void;
@@ -271,6 +274,7 @@ public static function rangeField( mixed $parameters ): string;
    Builds a HTML input[type="range"] tag
    
 
+
 ```php
 public static function renderAttributes( string $code, array $attributes ): string;
 ```
@@ -313,7 +317,7 @@ Builds a HTML SELECT tag using a PHP array for options
 ```php
 public static function setAutoescape( bool $autoescape ): void;
 ```
-Set autoescape mode in generated html
+Set autoescape mode in generated HTML
 
 
 ```php
@@ -381,11 +385,20 @@ public static function telField( mixed $parameters ): string;
 ```
    Builds a HTML input[type="tel"] tag
    
+   
+
 
 ```php
 public static function textArea( mixed $parameters ): string;
 ```
 Builds a HTML TEXTAREA tag
+
+@paraym array parameters = [
+    'id' => '',
+    'name' => '',
+    'value' => '',
+    'class' => ''
+]
 
 
 ```php
@@ -425,7 +438,7 @@ Builds INPUT tags that implements the checked attribute
 
 
 
-        
+
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag/Exception.zep)
@@ -438,7 +451,7 @@ Phalcon\Tag\Exception
 Exceptions thrown in Phalcon\Tag will use this class
 
 
-        
+
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag/Select.zep)
@@ -448,15 +461,15 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 Phalcon\Tag\Select
 
-Generates a SELECT html tag using a static array of values or a
+Generates a SELECT HTML tag using a static array of values or a
 Phalcon\Mvc\Model resultset
 
 
 ## Methods
+
 ```php
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 Generates a SELECT tag
-
 
 

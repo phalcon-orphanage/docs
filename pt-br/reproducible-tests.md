@@ -2,11 +2,11 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Reproducible Tests'
+title: 'Testes Reproduzíveis'
 keywords: 'tests, testing, reproducible tests'
 ---
 
-# Reproducible Tests
+# Testes Reproduzíveis
 
 * * *
 
@@ -81,7 +81,7 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-### Database
+### Banco de Dados
 
 > **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}

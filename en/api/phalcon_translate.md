@@ -16,7 +16,7 @@ title: 'Phalcon\Translate'
 * [Phalcon\Translate\Interpolator\InterpolatorInterface](#translate-interpolator-interpolatorinterface)
 * [Phalcon\Translate\InterpolatorFactory](#translate-interpolatorfactory)
 * [Phalcon\Translate\TranslateFactory](#translate-translatefactory)
-        
+
 <h1 id="translate-adapter-abstractadapter">Abstract Class Phalcon\Translate\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/AbstractAdapter.zep)
@@ -45,16 +45,17 @@ protected interpolatorFactory;
 ```
 
 ## Methods
+
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
-//
+
+
 
 ```php
 public function _( string $translateKey, array $placeholders = [] ): string;
 ```
 Returns the translation string of the given key (alias of method 't')
-
 
 
 ```php
@@ -75,7 +76,6 @@ public function offsetSet( mixed $offset, mixed $value ): void;
 Sets a translation value
 
 
-
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
@@ -88,7 +88,6 @@ public function t( string $translateKey, array $placeholders = [] ): string;
 Returns the translation string of the given key
 
 
-
 ```php
 protected function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
@@ -96,7 +95,7 @@ Replaces placeholders by the values passed
 
 
 
-        
+
 <h1 id="translate-adapter-adapterinterface">Interface Phalcon\Translate\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/AdapterInterface.zep)
@@ -109,6 +108,7 @@ Interface for Phalcon\Translate adapters
 
 
 ## Methods
+
 ```php
 public function exists( string $index ): bool;
 ```
@@ -121,7 +121,6 @@ public function query( string $translateKey, array $placeholders = [] ): string;
 Returns the translation related to the given key
 
 
-
 ```php
 public function t( string $translateKey, array $placeholders = [] ): string;
 ```
@@ -130,7 +129,6 @@ Returns the translation string of the given key
 
 
 
-        
 <h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/Csv.zep)
@@ -155,6 +153,7 @@ protected translate;
 ```
 
 ## Methods
+
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
@@ -174,7 +173,7 @@ Returns the translation related to the given key
 
 
 
-        
+
 <h1 id="translate-adapter-gettext">Class Phalcon\Translate\Adapter\Gettext</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/Gettext.zep)
@@ -227,6 +226,7 @@ protected locale;
 ```
 
 ## Methods
+
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
@@ -244,9 +244,11 @@ public function getCategory(): int
 ```
 
 
+
 ```php
 public function getDefaultDomain(): string
 ```
+
 
 
 ```php
@@ -254,9 +256,11 @@ public function getDirectory(): string|array
 ```
 
 
+
 ```php
 public function getLocale(): string
 ```
+
 
 
 ```php
@@ -275,7 +279,6 @@ Returns the translation related to the given key.
 ```php
 $translator->query("你好 %name%！", ["name" => "Phalcon"]);
 ```
-
 
 
 ```php
@@ -309,7 +312,6 @@ $gettext->setDirectory(
 ```
 
 
-
 ```php
 public function setDomain( mixed $domain ): string;
 ```
@@ -325,7 +327,7 @@ Sets locale information
 // Set locale to Dutch
 $gettext->setLocale(LC_ALL, "nl_NL");
 
-// Try different possible locale names for german
+// Try different possible locale names for German
 $gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
 ```
 
@@ -343,7 +345,7 @@ Validator for constructor
 
 
 
-        
+
 <h1 id="translate-adapter-nativearray">Class Phalcon\Translate\Adapter\NativeArray</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/NativeArray.zep)
@@ -373,6 +375,7 @@ private triggerError = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
@@ -398,7 +401,7 @@ Returns the translation related to the given key
 
 
 
-        
+
 <h1 id="translate-exception">Class Phalcon\Translate\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Exception.zep)
@@ -411,7 +414,7 @@ Phalcon\Translate\Exception
 Class for exceptions thrown by Phalcon\Translate
 
 
-        
+
 <h1 id="translate-interpolator-associativearray">Class Phalcon\Translate\Interpolator\AssociativeArray</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/AssociativeArray.zep)
@@ -428,6 +431,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
@@ -435,7 +439,7 @@ Replaces placeholders by the values passed
 
 
 
-        
+
 <h1 id="translate-interpolator-indexedarray">Class Phalcon\Translate\Interpolator\IndexedArray</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/IndexedArray.zep)
@@ -452,6 +456,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
@@ -459,7 +464,7 @@ Replaces placeholders by the values passed
 
 
 
-        
+
 <h1 id="translate-interpolator-interpolatorinterface">Interface Phalcon\Translate\Interpolator\InterpolatorInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
@@ -472,6 +477,7 @@ Interface for Phalcon\Translate interpolators
 
 
 ## Methods
+
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
@@ -479,7 +485,7 @@ Replaces placeholders by the values passed
 
 
 
-        
+
 <h1 id="translate-interpolatorfactory">Class Phalcon\Translate\InterpolatorFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/InterpolatorFactory.zep)
@@ -511,6 +517,7 @@ private services;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $services = [] );
 ```
@@ -526,10 +533,11 @@ Create a new instance of the adapter
 ```php
 protected function getAdapters(): array;
 ```
-//
 
 
-        
+
+
+
 <h1 id="translate-translatefactory">Class Phalcon\Translate\TranslateFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/TranslateFactory.zep)
@@ -556,6 +564,7 @@ private interpolator;
 ```
 
 ## Methods
+
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $services = [] );
 ```
@@ -577,5 +586,6 @@ Create a new instance of the adapter
 ```php
 protected function getAdapters(): array;
 ```
-//
+
+
 

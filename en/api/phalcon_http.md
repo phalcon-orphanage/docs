@@ -41,7 +41,7 @@ title: 'Phalcon\Http'
 * [Phalcon\Http\ResponseInterface](#http-responseinterface)
 * [Phalcon\Http\Server\AbstractMiddleware](#http-server-abstractmiddleware)
 * [Phalcon\Http\Server\AbstractRequestHandler](#http-server-abstractrequesthandler)
-        
+
 <h1 id="http-cookie">Class Phalcon\Http\Cookie</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie.zep)
@@ -123,6 +123,7 @@ protected value;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool, array $options = [] );
 ```
@@ -270,7 +271,6 @@ public function setValue( mixed $value ): CookieInterface;
 Sets the cookie's value
 
 
-
 ```php
 public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
@@ -286,7 +286,7 @@ Assert the cookie's key is enough long.
 
 
 
-        
+
 <h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/CookieInterface.zep)
@@ -297,6 +297,7 @@ Interface for Phalcon\Http\Cookie
 
 
 ## Methods
+
 ```php
 public function delete();
 ```
@@ -407,7 +408,6 @@ public function setValue( mixed $value ): CookieInterface;
 Sets the cookie's value
 
 
-
 ```php
 public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
@@ -415,7 +415,7 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 
 
-        
+
 <h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/Exception.zep)
@@ -428,7 +428,7 @@ Phalcon\Http\Cookie\Exception
 Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
-        
+
 <h1 id="http-message-abstractcommon">Abstract Class Phalcon\Http\Message\AbstractCommon</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractCommon.zep)
@@ -440,20 +440,17 @@ Common methods
 
 
 ## Methods
+
 ```php
 final protected function checkStringParameter( mixed $element ): void;
 ```
 Checks the element passed if it is a string
 
 
-
 ```php
 final protected function cloneInstance( mixed $element, string $property ): object;
 ```
 Returns a new instance having set the parameter
-
-
-@return mixed
 
 
 ```php
@@ -463,11 +460,8 @@ Checks the element passed; assigns it to the property and returns a
 clone of the object back
 
 
-@return mixed
 
 
-
-        
 <h1 id="http-message-abstractmessage">Abstract Class Phalcon\Http\Message\AbstractMessage</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractMessage.zep)
@@ -519,9 +513,11 @@ protected uri;
 ```
 
 ## Methods
+
 ```php
 public function getBody(): StreamInterface
 ```
+
 
 
 ```php
@@ -534,9 +530,6 @@ case-insensitive header name.
 
 If the header does not appear in the message, this method MUST return an
 empty array.
-
-
-@return array
 
 
 ```php
@@ -554,9 +547,6 @@ and supply your own delimiter when concatenating.
 
 If the header does not appear in the message, this method MUST return
 an empty string.
-
-
-@return string
 
 
 ```php
@@ -582,12 +572,11 @@ each value is an array of strings associated with the header.
 While header names are not case-sensitive, getHeaders() will preserve the
 exact case in which headers were originally specified.
 
-@return array
-
 
 ```php
 public function getProtocolVersion(): string
 ```
+
 
 
 ```php
@@ -595,13 +584,11 @@ public function getUri(): UriInterface
 ```
 
 
+
 ```php
 public function hasHeader( mixed $name ): bool;
 ```
 Checks if a header exists by the given case-insensitive name.
-
-
-@return bool
 
 
 ```php
@@ -619,9 +606,6 @@ immutability of the message, and MUST return an instance that has the
 new header and/or value.
 
 
-@return self
-
-
 ```php
 public function withBody( StreamInterface $body ): object;
 ```
@@ -632,11 +616,6 @@ The body MUST be a StreamInterface object.
 This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return a new instance that has the
 new body stream.
-
-
-@return self
-@throws InvalidArgumentException When the body is not valid.
-
 
 
 ```php
@@ -653,11 +632,6 @@ immutability of the message, and MUST return an instance that has the
 new and/or updated header and value.
 
 
-@return self
-@throws InvalidArgumentException for invalid header names or values.
-
-
-
 ```php
 public function withProtocolVersion( mixed $version ): object;
 ```
@@ -669,9 +643,6 @@ The version string MUST contain only the HTTP version number (e.g.,
 This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 new protocol version.
-
-
-@return self
 
 
 ```php
@@ -686,18 +657,12 @@ immutability of the message, and MUST return an instance that removes
 the named header.
 
 
-@return self
-
-
 ```php
 final protected function checkHeaderHost( Collection $collection ): Collection;
 ```
 Ensure Host is the first header.
 
 @see: http://tools.ietf.org/html/rfc7230#section-5.4
-
-
-@return Collection
 
 
 ```php
@@ -768,25 +733,16 @@ final protected function getUriHost( UriInterface $uri ): string;
 Return the host and if applicable the port
 
 
-@return string
-
-
 ```php
 final protected function populateHeaderCollection( array $headers ): Collection;
 ```
 Populates the header collection
 
 
-@return Collection
-
-
 ```php
 final protected function processBody( mixed $body = string, string $mode = string ): StreamInterface;
 ```
 Set a valid stream
-
-
-@return StreamInterface
 
 
 ```php
@@ -801,11 +757,8 @@ final protected function processProtocol( mixed $protocol = string ): string;
 Checks the protocol
 
 
-@return string
 
 
-
-        
 <h1 id="http-message-abstractrequest">Abstract Class Phalcon\Http\Message\AbstractRequest</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractRequest.zep)
@@ -847,9 +800,11 @@ protected uri;
 ```
 
 ## Methods
+
 ```php
 public function getMethod(): string
 ```
+
 
 
 ```php
@@ -865,12 +820,11 @@ In most cases, this will be the origin-form of the composed URI, unless a
 value was provided to the concrete implementation (see
 withRequestTarget() below).
 
-@return string
-
 
 ```php
 public function getUri(): UriInterface
 ```
+
 
 
 ```php
@@ -885,11 +839,6 @@ modify the given string.
 This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 changed request method.
-
-
-@return object
-@throws InvalidArgumentException for invalid HTTP methods.
-
 
 
 ```php
@@ -908,9 +857,6 @@ changed request target.
 
 @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
     request-target forms allowed in request messages)
-
-
-@return object
 
 
 ```php
@@ -944,16 +890,10 @@ new UriInterface instance.
 @see http://tools.ietf.org/html/rfc3986#section-4.3
 
 
-@return object
-
-
 ```php
 final protected function processMethod( mixed $method = string ): string;
 ```
 Check the method
-
-
-@return string
 
 
 ```php
@@ -962,11 +902,8 @@ final protected function processUri( mixed $uri ): UriInterface;
 Sets a valid Uri
 
 
-@return UriInterface
 
 
-
-        
 <h1 id="http-message-exception-invalidargumentexception">Class Phalcon\Http\Message\Exception\InvalidArgumentException</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Exception/InvalidargumentException.zep)
@@ -984,7 +921,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-        
+
 <h1 id="http-message-request">Final Class Phalcon\Http\Message\Request</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Request.zep)
@@ -998,6 +935,7 @@ PSR-7 Request
 
 
 ## Methods
+
 ```php
 public function __construct( string $method = string, mixed $uri = null, mixed $body = string, mixed $headers = [] );
 ```
@@ -1006,7 +944,6 @@ Request constructor.
 
 
 
-        
 <h1 id="http-message-requestfactory">Final Class Phalcon\Http\Message\RequestFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/RequestFactory.zep)
@@ -1019,17 +956,15 @@ PSR-17 RequestFactory
 
 
 ## Methods
+
 ```php
 public function createRequest( string $method, mixed $uri ): RequestInterface;
 ```
 Create a new request.
 
 
-@return RequestInterface
 
 
-
-        
 <h1 id="http-message-response">Final Class Phalcon\Http\Message\Response</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Response.zep)
@@ -1074,11 +1009,11 @@ private statusCode = 200;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $body = string, int $code = int, array $headers = [] );
 ```
 Response constructor.
-
 
 
 ```php
@@ -1086,9 +1021,11 @@ public function getReasonPhrase(): string
 ```
 
 
+
 ```php
 public function getStatusCode(): int
 ```
+
 
 
 ```php
@@ -1109,11 +1046,8 @@ updated status and reason phrase.
 @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 
 
-@return Response
 
 
-
-        
 <h1 id="http-message-responsefactory">Final Class Phalcon\Http\Message\ResponseFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ResponseFactory.zep)
@@ -1126,20 +1060,15 @@ PSR-17 ResponseFactory
 
 
 ## Methods
+
 ```php
 public function createResponse( int $code = int, string $reasonPhrase = string ): ResponseInterface;
 ```
 Create a new response.
 
-                            code in the generated response. If none is
-                            provided, implementations MAY use the defaults
-                            as suggested in the HTTP specification.
-
-@return ResponseInterface
 
 
 
-        
 <h1 id="http-message-serverrequest">Final Class Phalcon\Http\Message\ServerRequest</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequest.zep)
@@ -1228,11 +1157,11 @@ private uploadedFiles;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $method = string, mixed $uri = null, array $serverParams = [], mixed $body = string, mixed $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], mixed $parsedBody = null, string $protocol = string );
 ```
 ServerRequest constructor.
-
 
 
 ```php
@@ -1248,9 +1177,6 @@ This method obviates the need for a hasAttribute() method, as it allows
 specifying a default value to return if the attribute is not found.
 
 
-@return mixed
-
-
 ```php
 public function getAttributes(): array;
 ```
@@ -1262,12 +1188,11 @@ match operations; the results of decrypting cookies; the results of
 deserializing non-form-encoded message bodies; etc. Attributes
 will be application and request specific, and CAN be mutable.
 
-@return array
-
 
 ```php
 public function getCookieParams(): array
 ```
+
 
 
 ```php
@@ -1275,9 +1200,11 @@ public function getParsedBody(): mixed
 ```
 
 
+
 ```php
 public function getQueryParams(): array
 ```
+
 
 
 ```php
@@ -1285,9 +1212,11 @@ public function getServerParams(): array
 ```
 
 
+
 ```php
 public function getUploadedFiles(): array
 ```
+
 
 
 ```php
@@ -1301,9 +1230,6 @@ described in getAttributes().
 This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 updated attribute.
-
-
-@return ServerRequest
 
 
 ```php
@@ -1321,9 +1247,6 @@ instance, nor related values in the server params.
 This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 updated cookie values.
-
-
-@return ServerRequest
 
 
 ```php
@@ -1351,11 +1274,6 @@ immutability of the message, and MUST return an instance that has the
 updated body parameters.
 
 
-@return ServerRequest
-@throws InvalidArgumentException if an unsupported argument type is provided.
-
-
-
 ```php
 public function withQueryParams( array $query ): ServerRequest;
 ```
@@ -1377,9 +1295,6 @@ immutability of the message, and MUST return an instance that has the
 updated query string arguments.
 
 
-@return ServerRequest
-
-
 ```php
 public function withUploadedFiles( array $uploadedFiles ): ServerRequest;
 ```
@@ -1388,11 +1303,6 @@ Create a new instance with the specified uploaded files.
 This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 updated body parameters.
-
-
-@return ServerRequest
-@throws InvalidArgumentException if an invalid structure is provided.
-
 
 
 ```php
@@ -1408,11 +1318,8 @@ immutability of the message, and MUST return an instance that removes
 the attribute.
 
 
-@return ServerRequest
 
 
-
-        
 <h1 id="http-message-serverrequestfactory">Class Phalcon\Http\Message\ServerRequestFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequestFactory.zep)
@@ -1425,6 +1332,7 @@ PSR-17 ServerRequestFactory
 
 
 ## Methods
+
 ```php
 public function createServerRequest( string $method, mixed $uri, array $serverParams = [] ): ServerRequestInterface;
 ```
@@ -1434,16 +1342,6 @@ Note that server-params are taken precisely as given - no
 parsing/processing of the given values is performed, and, in particular,
 no attempt is made to determine the HTTP method or URI, which must be
 provided explicitly.
-
-                                         the request.
-                                         request. If the value is a
-                                         string, the factory MUST create
-                                         a UriInterface instance based
-                                         on it.
-                                         which to seed the generated
-                                         request instance.
-
-@return ServerRequestInterface
 
 
 ```php
@@ -1455,20 +1353,14 @@ If any argument is not supplied, the corresponding superglobal value will
 be used.
 
 
-@return ServerRequest
-@see fromServer()
-
-
 ```php
 protected function getHeaders();
 ```
 Returns the apache_request_headers if it exists
 
-@return array|false
 
 
 
-        
 <h1 id="http-message-stream">Class Phalcon\Http\Message\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream.zep)
@@ -1495,11 +1387,11 @@ protected stream;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $stream, string $mode = string );
 ```
 Stream constructor.
-
 
 
 ```php
@@ -1537,8 +1429,6 @@ Separates any underlying resources from the stream.
 
 After the stream has been detached, the stream is in an unusable state.
 
-@return resource | null
-
 
 ```php
 public function eof(): bool;
@@ -1559,9 +1449,6 @@ Get stream metadata as an associative array or retrieve a specific key.
 
 The keys returned are identical to the keys returned from PHP's
 stream_get_meta_data() function.
-
-
-@return array|mixed|null
 
 
 ```php
@@ -1594,9 +1481,6 @@ public function read( mixed $length ): string;
 Read data from the stream.
 
 
-@return string
-
-
 ```php
 public function rewind(): void;
 ```
@@ -1612,20 +1496,16 @@ public function seek( mixed $offset, mixed $whence = int ): void;
 Seek to a position in the stream.
 
 
-
 ```php
 public function setStream( mixed $stream, string $mode = string ): void;
 ```
 Sets the stream - existing instance
 
 
-
 ```php
 public function tell(): int;
 ```
 Returns the current position of the file read/write pointer
-
-@return int
 
 
 ```php
@@ -1634,11 +1514,8 @@ public function write( mixed $data ): int;
 Write data to the stream.
 
 
-@return int
 
 
-
-        
 <h1 id="http-message-stream-input">Class Phalcon\Http\Message\Stream\Input</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream/Input.zep)
@@ -1669,6 +1546,7 @@ private eof = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct();
 ```
@@ -1700,9 +1578,6 @@ Returns the remaining contents in a string
 @throws RuntimeException if error occurs while reading.
 
 
-@return string
-
-
 ```php
 public function isWritable(): bool;
 ```
@@ -1715,11 +1590,8 @@ public function read( mixed $length ): string;
 Read data from the stream.
 
 
-@return string
 
 
-
-        
 <h1 id="http-message-stream-memory">Class Phalcon\Http\Message\Stream\Memory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream/Memory.zep)
@@ -1736,6 +1608,7 @@ the entire stream to a string.
 
 
 ## Methods
+
 ```php
 public function __construct( mixed $mode = string );
 ```
@@ -1743,7 +1616,7 @@ Constructor
 
 
 
-        
+
 <h1 id="http-message-stream-temp">Class Phalcon\Http\Message\Stream\Temp</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream/Temp.zep)
@@ -1760,6 +1633,7 @@ the entire stream to a string.
 
 
 ## Methods
+
 ```php
 public function __construct( mixed $mode = string );
 ```
@@ -1767,7 +1641,7 @@ Constructor
 
 
 
-        
+
 <h1 id="http-message-streamfactory">Final Class Phalcon\Http\Message\StreamFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/StreamFactory.zep)
@@ -1780,15 +1654,13 @@ PSR-17 StreamFactory
 
 
 ## Methods
+
 ```php
 public function createStream( string $content = string ): StreamInterface;
 ```
 Create a new stream from a string.
 
 The stream SHOULD be created with a temporary resource.
-
-
-@return StreamInterface
 
 
 ```php
@@ -1801,11 +1673,6 @@ supported by the `fopen` function.
 
 The `$filename` MAY be any string supported by `fopen()`.
 
-                        stream.
-                        filename/stream.
-
-@return StreamInterface
-
 
 ```php
 public function createStreamFromResource( mixed $phpResource ): StreamInterface;
@@ -1816,7 +1683,7 @@ The stream MUST be readable and may be writable.
 
 
 
-        
+
 <h1 id="http-message-uploadedfile">Final Class Phalcon\Http\Message\UploadedFile</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Uploadedfile.zep)
@@ -1910,11 +1777,11 @@ private stream;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null );
 ```
 UploadedFile constructor.
-
 
 
 ```php
@@ -1922,9 +1789,11 @@ public function getClientFilename(): string | null
 ```
 
 
+
 ```php
 public function getClientMediaType(): string | null
 ```
+
 
 
 ```php
@@ -1932,9 +1801,11 @@ public function getError(): int
 ```
 
 
+
 ```php
 public function getSize(): int | null
 ```
+
 
 
 ```php
@@ -1950,9 +1821,6 @@ a native PHP stream wrapper to work with such functions).
 
 If the moveTo() method has been called previously, this method MUST
 raise an exception.
-
-@return StreamInterface Stream representation of the uploaded file.
-@throws RuntimeException in cases when no stream is available or can be created.
 
 
 ```php
@@ -1986,13 +1854,8 @@ cannot guarantee writing to stream destinations.
 @see http://php.net/move_uploaded_file
 
 
-@throws InvalidArgumentException if the $targetPath specified is invalid.
-@throws RuntimeException on any error during the move operation, or on
-    the second or subsequent call to the method.
 
 
-
-        
 <h1 id="http-message-uploadedfilefactory">Final Class Phalcon\Http\Message\UploadedFileFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/UploadedfileFactory.zep)
@@ -2005,6 +1868,7 @@ PSR-17 UploadedFileFactory
 
 
 ## Methods
+
 ```php
 public function createUploadedFile( StreamInterface $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null ): UploadedFileInterface;
 ```
@@ -2016,13 +1880,9 @@ the stream.
 @link http://php.net/manual/features.file-upload.post-method.php
 @link http://php.net/manual/features.file-upload.errors.php
 
-                                        uploaded file content.
-
-@throws \InvalidArgumentException If the file resource is not readable.
 
 
 
-        
 <h1 id="http-message-uri">Final Class Phalcon\Http\Message\Uri</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Uri.zep)
@@ -2119,11 +1979,11 @@ private user = ;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $uri = string );
 ```
 Uri constructor.
-
 
 
 ```php
@@ -2136,15 +1996,11 @@ string is either a full URI or relative reference according to RFC 3986,
 Section 4.1. The method concatenates the various components of the URI,
 using the appropriate delimiters
 
-@return string
-
 
 ```php
 public function getAuthority(): string;
 ```
 Retrieve the authority component of the URI.
-
-@return string
 
 
 ```php
@@ -2152,9 +2008,11 @@ public function getFragment()
 ```
 
 
+
 ```php
 public function getHost()
 ```
+
 
 
 ```php
@@ -2162,9 +2020,11 @@ public function getPath()
 ```
 
 
+
 ```php
 public function getPort()
 ```
+
 
 
 ```php
@@ -2172,9 +2032,11 @@ public function getQuery()
 ```
 
 
+
 ```php
 public function getScheme()
 ```
+
 
 
 ```php
@@ -2192,8 +2054,6 @@ user value, with a colon (":") separating the values.
 The trailing "@" character is not part of the user information and MUST
 NOT be added.
 
-@return string The URI user information, in "username[:password]" format.
-
 
 ```php
 public function withFragment( mixed $fragment ): Uri;
@@ -2209,9 +2069,6 @@ Implementations ensure the correct encoding as outlined in getFragment().
 An empty fragment value is equivalent to removing the fragment.
 
 
-@return Uri
-
-
 ```php
 public function withHost( mixed $host ): Uri;
 ```
@@ -2221,11 +2078,6 @@ This method MUST retain the state of the current instance, and return
 an instance that contains the specified host.
 
 An empty host value is equivalent to removing the host.
-
-
-@return Uri
-@throws InvalidArgumentException for invalid hostnames.
-
 
 
 ```php
@@ -2249,10 +2101,6 @@ Users can provide both encoded and decoded path characters.
 Implementations ensure the correct encoding as outlined in getPath().
 
 
-@return Uri
-@throws InvalidArgumentException for invalid paths.
-
-
 ```php
 public function withPort( mixed $port ): Uri;
 ```
@@ -2266,10 +2114,6 @@ established TCP and UDP port ranges.
 
 A null value provided for the port is equivalent to removing the port
 information.
-
-
-@return Uri
-@throws InvalidArgumentException for invalid ports.
 
 
 ```php
@@ -2286,10 +2130,6 @@ Implementations ensure the correct encoding as outlined in getQuery().
 An empty query string value is equivalent to removing the query string.
 
 
-@return Uri
-@throws InvalidArgumentException for invalid query strings.
-
-
 ```php
 public function withScheme( mixed $scheme ): Uri;
 ```
@@ -2304,22 +2144,14 @@ insensitively, and MAY accommodate other schemes if required.
 An empty scheme is equivalent to removing the scheme.
 
 
-@return Uri
-@throws InvalidArgumentException for invalid schemes.
-@throws InvalidArgumentException for unsupported schemes.
-
-
 ```php
 public function withUserInfo( mixed $user, mixed $password = null ): Uri;
 ```
 Return an instance with the specified user information.
 
 
-@return Uri
 
 
-
-        
 <h1 id="http-message-urifactory">Final Class Phalcon\Http\Message\UriFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/UriFactory.zep)
@@ -2332,6 +2164,7 @@ PSR-17 UriFactory
 
 
 ## Methods
+
 ```php
 public function createUri( string $uri = string ): UriInterface;
 ```
@@ -2340,7 +2173,7 @@ functions
 
 
 
-        
+
 <h1 id="http-request">Class Phalcon\Http\Request</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request.zep)
@@ -2405,6 +2238,7 @@ private strictHostCheck = false;
 ```
 
 ## Methods
+
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
@@ -2572,6 +2406,7 @@ public function getHttpMethodParameterOverride(): bool
 ```
 
 
+
 ```php
 public function getJsonRawBody( bool $associative = bool ): \stdClass | array | bool;
 ```
@@ -2694,8 +2529,6 @@ $uri = $request->getURI();
 // Returns /some/path
 $uri = $request->getURI(true);
 ```
-
-@return string
 
 
 ```php
@@ -2871,6 +2704,7 @@ public function setHttpMethodParameterOverride( bool $httpMethodParameterOverrid
 ```
 
 
+
 ```php
 public function setParameterFilters( string $name, array $filters = [], array $scope = [] ): RequestInterface;
 ```
@@ -2923,7 +2757,7 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 
 
-        
+
 <h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/Exception.zep)
@@ -2936,12 +2770,13 @@ Phalcon\Http\Request\Exception
 Exceptions thrown in Phalcon\Http\Request will use this class
 
 
-        
+
 <h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/File.zep)
 
 | Namespace  | Phalcon\Http\Request |
+| Uses       | Phalcon\Helper\Arr |
 | Implements | FileInterface |
 
 Phalcon\Http\Request\File
@@ -3002,6 +2837,7 @@ protected type;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $file, mixed $key = null );
 ```
@@ -3013,14 +2849,17 @@ public function getError(): string|null
 ```
 
 
+
 ```php
 public function getExtension(): string
 ```
 
 
+
 ```php
 public function getKey(): string|null
 ```
+
 
 
 ```php
@@ -3067,7 +2906,7 @@ Moves the temporary file to a destination within the application
 
 
 
-        
+
 <h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/FileInterface.zep)
@@ -3081,6 +2920,7 @@ Interface for Phalcon\Http\Request\File
 
 
 ## Methods
+
 ```php
 public function getError(): string | null;
 ```
@@ -3125,7 +2965,7 @@ Move the temporary file to a destination
 
 
 
-        
+
 <h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/RequestInterface.zep)
@@ -3137,6 +2977,7 @@ Interface for Phalcon\Http\Request
 
 
 ## Methods
+
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
@@ -3404,8 +3245,6 @@ $uri = $request->getURI();
 $uri = $request->getURI(true);
 ```
 
-@return string
-
 
 ```php
 public function getUploadedFiles( bool $onlySuccessful = bool, bool $namedKeys = bool ): FileInterface[];
@@ -3498,7 +3337,6 @@ public function isMethod( mixed $methods, bool $strict = bool ): bool;
 Check if HTTP method match any of the passed methods
 
 
-
 ```php
 public function isOptions(): bool;
 ```
@@ -3549,7 +3387,7 @@ Returns the number of files available
 
 
 
-        
+
 <h1 id="http-response">Class Phalcon\Http\Response</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response.zep)
@@ -3603,6 +3441,7 @@ protected statusCodes;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $content = null, mixed $code = null, mixed $status = null );
 ```
@@ -3898,7 +3737,7 @@ $response->setStatusCode(404, "Not Found");
 
 
 
-        
+
 <h1 id="http-response-cookies">Class Phalcon\Http\Response\Cookies</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Cookies.zep)
@@ -3976,6 +3815,7 @@ protected useEncryption = true;
 ```
 
 ## Methods
+
 ```php
 public function __construct( bool $useEncryption = bool, string $signKey = null );
 ```
@@ -4069,7 +3909,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-        
+
 <h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/CookiesInterface.zep)
@@ -4083,6 +3923,7 @@ Interface for Phalcon\Http\Response\Cookies
 
 
 ## Methods
+
 ```php
 public function delete( string $name ): bool;
 ```
@@ -4133,7 +3974,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-        
+
 <h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Exception.zep)
@@ -4146,7 +3987,7 @@ Phalcon\Http\Response\Exception
 Exceptions thrown in Phalcon\Http\Response will use this class.
 
 
-        
+
 <h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Headers.zep)
@@ -4167,6 +4008,7 @@ protected headers;
 ```
 
 ## Methods
+
 ```php
 public function get( string $name ): string | bool;
 ```
@@ -4216,7 +4058,7 @@ Returns the current headers as an array
 
 
 
-        
+
 <h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/HeadersInterface.zep)
@@ -4229,6 +4071,7 @@ Interface for Phalcon\Http\Response\Headers compatible bags
 
 
 ## Methods
+
 ```php
 public function get( string $name ): string | bool;
 ```
@@ -4266,7 +4109,7 @@ Sets a raw header to be sent at the end of the request
 
 
 
-        
+
 <h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/ResponseInterface.zep)
@@ -4280,6 +4123,7 @@ Interface for Phalcon\Http\Response
 
 
 ## Methods
+
 ```php
 public function appendContent( mixed $content ): ResponseInterface;
 ```
@@ -4364,7 +4208,6 @@ public function setContentType( string $contentType, mixed $charset = null ): Re
 Sets the response content-type mime, optionally the charset
 
 
-
 ```php
 public function setExpires( DateTime $datetime ): ResponseInterface;
 ```
@@ -4416,7 +4259,7 @@ Sets the HTTP response code
 
 
 
-        
+
 <h1 id="http-server-abstractmiddleware">Abstract Class Phalcon\Http\Server\AbstractMiddleware</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Server/AbstractMiddleware.zep)
@@ -4433,6 +4276,7 @@ request to a subsequent middleware and possibly acting on its response.
 
 
 ## Methods
+
 ```php
 abstract public function process( ServerRequestInterface $request, RequestHandlerInterface $handler ): ResponseInterface;
 ```
@@ -4444,7 +4288,7 @@ request handler to do so.
 
 
 
-        
+
 <h1 id="http-server-abstractrequesthandler">Abstract Class Phalcon\Http\Server\AbstractRequestHandler</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Server/AbstractRequestHandler.zep)
@@ -4460,6 +4304,7 @@ HTTP response.
 
 
 ## Methods
+
 ```php
 abstract public function handle( ServerRequestInterface $request ): ResponseInterface;
 ```

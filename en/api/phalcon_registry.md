@@ -6,7 +6,7 @@ title: 'Phalcon\Registry'
 ---
 
 * [Phalcon\Registry](#registry)
-        
+
 <h1 id="registry">Final Class Phalcon\Registry</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Registry.zep)
@@ -66,6 +66,7 @@ bypass relatively slow method calls.
 
 
 ## Methods
+
 ```php
 final public function __construct( array $data = null );
 ```

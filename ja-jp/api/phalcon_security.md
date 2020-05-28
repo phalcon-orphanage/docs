@@ -11,7 +11,7 @@ title: 'Phalcon\Security'
 
 <h1 id="security">Class Phalcon\Security</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\RequestInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware |
 
@@ -221,7 +221,7 @@ Sets the work factor
 
 <h1 id="security-exception">Class Phalcon\Security\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Exception.zep)
 
 | Namespace | Phalcon\Security | | Extends | \Phalcon\Exception |
 
@@ -231,7 +231,7 @@ Exceptions thrown in Phalcon\Security will use this class
 
 <h1 id="security-random">Class Phalcon\Security\Random</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Random.zep)
 
 | Namespace | Phalcon\Security |
 

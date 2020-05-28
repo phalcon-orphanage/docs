@@ -22,7 +22,7 @@ title: 'Phalcon\Forms'
 * [Phalcon\Forms\Exception](#forms-exception)
 * [Phalcon\Forms\Form](#forms-form)
 * [Phalcon\Forms\Manager](#forms-manager)
-        
+
 <h1 id="forms-element-abstractelement">Abstract Class Phalcon\Forms\Element\AbstractElement</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/AbstractElement.zep)
@@ -68,11 +68,11 @@ protected value;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $attributes = [] );
 ```
 Phalcon\Forms\Element constructor
-
 
 
 ```php
@@ -97,7 +97,6 @@ Adds a validator to the element
 public function addValidators( array $validators, bool $merge = bool ): ElementInterface;
 ```
 Adds a group of validators
-
 
 
 ```php
@@ -134,8 +133,6 @@ Returns the default value assigned to the element
 public function getFilters();
 ```
 Returns the element filters
-
-@return mixed
 
 
 ```php
@@ -231,7 +228,6 @@ public function setFilters( mixed $filters ): ElementInterface;
 Sets the element filters
 
 
-
 ```php
 public function setForm( Form $form ): ElementInterface;
 ```
@@ -269,7 +265,7 @@ Sets options for the element
 
 
 
-        
+
 <h1 id="forms-element-check">Class Phalcon\Forms\Element\Check</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Check.zep)
@@ -284,14 +280,15 @@ Component INPUT[type=check] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-date">Class Phalcon\Forms\Element\Date</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Date.zep)
@@ -304,6 +301,7 @@ Component INPUT[type=date] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
@@ -311,7 +309,7 @@ Renders the element widget returning html
 
 
 
-        
+
 <h1 id="forms-element-elementinterface">Interface Phalcon\Forms\Element\ElementInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/ElementInterface.zep)
@@ -323,6 +321,7 @@ Interface for Phalcon\Forms\Element classes
 
 
 ## Methods
+
 ```php
 public function addFilter( string $filter ): ElementInterface;
 ```
@@ -339,7 +338,6 @@ Adds a validator to the element
 public function addValidators( array $validators, bool $merge = bool ): ElementInterface;
 ```
 Adds a group of validators
-
 
 
 ```php
@@ -376,8 +374,6 @@ Returns the default value assigned to the element
 public function getFilters();
 ```
 Returns the element's filters
-
-@return mixed
 
 
 ```php
@@ -479,7 +475,6 @@ public function setFilters( mixed $filters ): ElementInterface;
 Sets the element's filters
 
 
-
 ```php
 public function setForm( Form $form ): ElementInterface;
 ```
@@ -517,7 +512,7 @@ Sets options for the element
 
 
 
-        
+
 <h1 id="forms-element-email">Class Phalcon\Forms\Element\Email</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Email.zep)
@@ -532,14 +527,15 @@ Component INPUT[type=email] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-file">Class Phalcon\Forms\Element\File</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/File.zep)
@@ -552,14 +548,15 @@ Component INPUT[type=file] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-hidden">Class Phalcon\Forms\Element\Hidden</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Hidden.zep)
@@ -574,14 +571,15 @@ Component INPUT[type=hidden] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-numeric">Class Phalcon\Forms\Element\Numeric</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Numeric.zep)
@@ -596,14 +594,15 @@ Component INPUT[type=number] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-password">Class Phalcon\Forms\Element\Password</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Password.zep)
@@ -618,14 +617,15 @@ Component INPUT[type=password] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-radio">Class Phalcon\Forms\Element\Radio</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Radio.zep)
@@ -640,14 +640,15 @@ Component INPUT[type=radio] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 
-        
+
 <h1 id="forms-element-select">Class Phalcon\Forms\Element\Select</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Select.zep)
@@ -669,11 +670,11 @@ protected optionsValues;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, mixed $options = null, mixed $attributes = null );
 ```
 Phalcon\Forms\Element constructor
-
 
 
 ```php
@@ -682,19 +683,16 @@ public function addOption( mixed $option ): ElementInterface;
 Adds an option to the current options
 
 
-
 ```php
 public function getOptions();
 ```
 Returns the choices' options
 
-@return array|object
-
 
 ```php
 public function render( array $attributes = [] ): string;
 ```
-Renders the element widget returning html
+Renders the element widget returning HTML
 
 
 ```php
@@ -705,7 +703,6 @@ Set the choice's options
 
 
 
-        
 <h1 id="forms-element-submit">Class Phalcon\Forms\Element\Submit</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Submit.zep)
@@ -718,6 +715,7 @@ Component INPUT[type=submit] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
@@ -725,7 +723,7 @@ Renders the element widget
 
 
 
-        
+
 <h1 id="forms-element-text">Class Phalcon\Forms\Element\Text</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Text.zep)
@@ -740,6 +738,7 @@ Component INPUT[type=text] for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
@@ -747,7 +746,7 @@ Renders the element widget
 
 
 
-        
+
 <h1 id="forms-element-textarea">Class Phalcon\Forms\Element\TextArea</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Textarea.zep)
@@ -760,6 +759,7 @@ Component TEXTAREA for forms
 
 
 ## Methods
+
 ```php
 public function render( array $attributes = [] ): string;
 ```
@@ -767,7 +767,7 @@ Renders the element widget
 
 
 
-        
+
 <h1 id="forms-exception">Class Phalcon\Forms\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Exception.zep)
@@ -778,7 +778,7 @@ Renders the element widget
 Exceptions thrown in Phalcon\Forms will use this class
 
 
-        
+
 <h1 id="forms-form">Class Phalcon\Forms\Form</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Form.zep)
@@ -825,6 +825,7 @@ protected validation;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $entity = null, array $userOptions = [] );
 ```
@@ -843,12 +844,10 @@ public function bind( array $data, mixed $entity, mixed $whitelist = null ): For
 Binds data to the entity
 
 
-
 ```php
 public function clear( mixed $fields = null ): Form;
 ```
 Clears every element in the form to its default value
-
 
 
 ```php
@@ -881,6 +880,7 @@ public function getAttributes(): Attributes;
    Get Form attributes collection
    
 
+
 ```php
 public function getElements(): ElementInterface[];
 ```
@@ -891,8 +891,6 @@ Returns the form elements added to the form
 public function getEntity();
 ```
 Returns the entity related to the model
-
-@return object
 
 
 ```php
@@ -940,6 +938,7 @@ public function getValidation()
 ```
 
 
+
 ```php
 public function getValue( string $name ): mixed | null;
 ```
@@ -962,7 +961,6 @@ Check if messages were generated for a specific element
 public function isValid( mixed $data = null, mixed $entity = null ): bool;
 ```
 Validates the form
-
 
 
 ```php
@@ -1006,8 +1004,6 @@ public function setAction( string $action ): Form;
 ```
 Sets the form's action
 
-@return Form
-
 
 ```php
 public function setAttributes( Attributes $attributes ): AttributesInterface;
@@ -1015,11 +1011,11 @@ public function setAttributes( Attributes $attributes ): AttributesInterface;
    Set form attributes collection
    
 
+
 ```php
 public function setEntity( mixed $entity ): Form;
 ```
 Sets the entity related to the model
-
 
 
 ```php
@@ -1039,6 +1035,7 @@ public function setValidation( $validation )
 ```
 
 
+
 ```php
 public function valid(): bool;
 ```
@@ -1046,7 +1043,7 @@ Check if the current element in the iterator is valid
 
 
 
-        
+
 <h1 id="forms-manager">Class Phalcon\Forms\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Manager.zep)
@@ -1064,11 +1061,11 @@ protected forms;
 ```
 
 ## Methods
+
 ```php
 public function create( string $name, mixed $entity = null ): Form;
 ```
 Creates a form registering it in the forms manager
-
 
 
 ```php

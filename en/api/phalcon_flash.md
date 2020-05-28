@@ -10,7 +10,7 @@ title: 'Phalcon\Flash'
 * [Phalcon\Flash\Exception](#flash-exception)
 * [Phalcon\Flash\FlashInterface](#flash-flashinterface)
 * [Phalcon\Flash\Session](#flash-session)
-        
+
 <h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Abstractflash.zep)
@@ -74,6 +74,7 @@ protected sessionService;
 ```
 
 ## Methods
+
 ```php
 public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
 ```
@@ -101,14 +102,17 @@ public function getAutoescape(): bool
 ```
 
 
+
 ```php
 public function getCssClasses(): array
 ```
 
 
+
 ```php
 public function getCustomTemplate(): string
 ```
+
 
 
 ```php
@@ -136,13 +140,11 @@ Outputs a message formatting it with HTML
 $flash->outputMessage("error", $message);
 ```
 
-@return string|void
-
 
 ```php
 public function setAutoescape( bool $autoescape ): FlashInterface;
 ```
-Set the autoescape mode in generated html
+Set the autoescape mode in generated HTML
 
 
 ```php
@@ -197,7 +199,7 @@ $flash->warning("Hey, this is important");
 
 
 
-        
+
 <h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Direct.zep)
@@ -210,6 +212,7 @@ passed to it
 
 
 ## Methods
+
 ```php
 public function message( string $type, mixed $message ): string | null;
 ```
@@ -223,7 +226,7 @@ Prints the messages accumulated in the flasher
 
 
 
-        
+
 <h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Exception.zep)
@@ -234,7 +237,7 @@ Prints the messages accumulated in the flasher
 Exceptions thrown in Phalcon\Flash will use this class
 
 
-        
+
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/FlashInterface.zep)
@@ -247,6 +250,7 @@ Interface for Phalcon\Flash
 
 
 ## Methods
+
 ```php
 public function error( string $message ): string;
 ```
@@ -278,7 +282,7 @@ Shows a HTML warning message
 
 
 
-        
+
 <h1 id="flash-session">Class Phalcon\Flash\Session</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Session.zep)
@@ -292,6 +296,7 @@ the next request
 
 
 ## Methods
+
 ```php
 public function clear(): void;
 ```

@@ -86,7 +86,7 @@ title: 'Phalcon\Mvc'
 * [Phalcon\Mvc\View\Simple](#mvc-view-simple)
 * [Phalcon\Mvc\ViewBaseInterface](#mvc-viewbaseinterface)
 * [Phalcon\Mvc\ViewInterface](#mvc-viewinterface)
-        
+
 <h1 id="mvc-application">Class Phalcon\Mvc\Application</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Application.zep)
@@ -153,6 +153,7 @@ protected sendHeaders = true;
 ```
 
 ## Methods
+
 ```php
 public function handle( string $uri ): ResponseInterface | bool;
 ```
@@ -179,7 +180,7 @@ You can full disable the view component using this method
 
 
 
-        
+
 <h1 id="mvc-application-exception">Class Phalcon\Mvc\Application\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Application/Exception.zep)
@@ -192,7 +193,7 @@ Phalcon\Mvc\Application\Exception
 Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 
-        
+
 <h1 id="mvc-controller">Abstract Class Phalcon\Mvc\Controller</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Controller.zep)
@@ -243,6 +244,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 
 
 ## Methods
+
 ```php
 final public function __construct();
 ```
@@ -250,7 +252,7 @@ Phalcon\Mvc\Controller constructor
 
 
 
-        
+
 <h1 id="mvc-controller-bindmodelinterface">Interface Phalcon\Mvc\Controller\BindModelInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Controller/BindModelInterface.zep)
@@ -263,6 +265,7 @@ Interface for Phalcon\Mvc\Controller
 
 
 ## Methods
+
 ```php
 public static function getModelName(): string;
 ```
@@ -270,7 +273,7 @@ Return the model name associated with this controller
 
 
 
-        
+
 <h1 id="mvc-controllerinterface">Interface Phalcon\Mvc\ControllerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ControllerInterface.zep)
@@ -282,7 +285,7 @@ Phalcon\Mvc\ControllerInterface
 Interface for controller handlers
 
 
-        
+
 <h1 id="mvc-dispatcher">Class Phalcon\Mvc\Dispatcher</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Dispatcher.zep)
@@ -326,6 +329,7 @@ protected handlerSuffix = Controller;
 ```
 
 ## Methods
+
 ```php
 public function forward( array $forward ): void;
 ```
@@ -384,7 +388,6 @@ $this->dispatcher->forward(
     ]
 );
 ```
-
 
 
 ```php
@@ -461,7 +464,7 @@ Throws an internal exception
 
 
 
-        
+
 <h1 id="mvc-dispatcher-exception">Class Phalcon\Mvc\Dispatcher\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Dispatcher/Exception.zep)
@@ -474,7 +477,7 @@ Phalcon\Mvc\Dispatcher\Exception
 Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 
-        
+
 <h1 id="mvc-dispatcherinterface">Interface Phalcon\Mvc\DispatcherInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/DispatcherInterface.zep)
@@ -489,6 +492,7 @@ Interface for Phalcon\Mvc\Dispatcher
 
 
 ## Methods
+
 ```php
 public function getActiveController(): ControllerInterface;
 ```
@@ -526,7 +530,7 @@ Sets the default controller name
 
 
 
-        
+
 <h1 id="mvc-entityinterface">Interface Phalcon\Mvc\EntityInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/EntityInterface.zep)
@@ -539,6 +543,7 @@ Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 
 
 ## Methods
+
 ```php
 public function readAttribute( string $attribute ): mixed | null;
 ```
@@ -552,7 +557,7 @@ Writes an attribute value by its name
 
 
 
-        
+
 <h1 id="mvc-micro">Class Phalcon\Mvc\Micro</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro.zep)
@@ -633,6 +638,7 @@ protected stopped;
 ```
 
 ## Methods
+
 ```php
 public function __construct( DiInterface $container = null );
 ```
@@ -645,12 +651,10 @@ public function after( mixed $handler ): Micro;
 Appends an 'after' middleware to be called after execute the route
 
 
-
 ```php
 public function afterBinding( mixed $handler ): Micro;
 ```
 Appends a afterBinding middleware to be called after model binding
-
 
 
 ```php
@@ -659,12 +663,10 @@ public function before( mixed $handler ): Micro;
 Appends a before middleware to be called before execute the route
 
 
-
 ```php
 public function delete( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE
-
 
 
 ```php
@@ -674,12 +676,10 @@ Sets a handler that will be called when an exception is thrown handling
 the route
 
 
-
 ```php
 public function finish( mixed $handler ): Micro;
 ```
 Appends a 'finish' middleware to be called when the request is finished
-
 
 
 ```php
@@ -688,11 +688,12 @@ public function get( string $routePattern, mixed $handler ): RouteInterface;
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
-
 ```php
 public function getActiveHandler();
 ```
 Return the handler that will be called for the matched route
+
+
 ```php
 public function getBoundModels(): array;
 ```
@@ -722,8 +723,6 @@ public function getReturnedValue();
 ```
 Returns the value returned by the executed handler
 
-@return mixed
-
 
 ```php
 public function getRouter(): RouterInterface;
@@ -736,23 +735,17 @@ public function getService( string $serviceName );
 ```
 Obtains a service from the DI
 
-@return object
-
 
 ```php
 public function getSharedService( string $serviceName );
 ```
 Obtains a shared service from the DI
 
-@return mixed
-
 
 ```php
 public function handle( string $uri );
 ```
 Handle the whole request
-
-@return mixed
 
 
 ```php
@@ -767,12 +760,10 @@ public function head( string $routePattern, mixed $handler ): RouteInterface;
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
-
 ```php
 public function map( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler without any HTTP method constraint
-
 
 
 ```php
@@ -786,7 +777,6 @@ public function notFound( mixed $handler ): Micro;
 ```
 Sets a handler that will be called when the router doesn't match any of
 the defined routes
-
 
 
 ```php
@@ -833,12 +823,10 @@ public function options( string $routePattern, mixed $handler ): RouteInterface;
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
-
 ```php
 public function patch( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PATCH
-
 
 
 ```php
@@ -847,19 +835,16 @@ public function post( string $routePattern, mixed $handler ): RouteInterface;
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
-
 ```php
 public function put( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
-
 ```php
 public function setActiveHandler( mixed $activeHandler );
 ```
 Sets externally the handler that must be called by the matched route
-
 
 
 ```php
@@ -896,7 +881,6 @@ Appends a custom 'response' handler to be called instead of the default
 response handler
 
 
-
 ```php
 public function setService( string $serviceName, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
@@ -911,7 +895,7 @@ executed
 
 
 
-        
+
 <h1 id="mvc-micro-collection">Class Phalcon\Mvc\Micro\Collection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Collection.zep)
@@ -955,18 +939,17 @@ protected prefix;
 ```
 
 ## Methods
+
 ```php
 public function delete( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE.
 
 
-
 ```php
 public function get( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is GET.
-
 
 
 ```php
@@ -993,7 +976,6 @@ public function head( string $routePattern, mixed $handler, string $name = null 
 Maps a route to a handler that only matches if the HTTP method is HEAD.
 
 
-
 ```php
 public function isLazy(): bool;
 ```
@@ -1004,7 +986,6 @@ Returns if the main handler must be lazy loaded
 public function map( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler.
-
 
 
 ```php
@@ -1022,13 +1003,11 @@ $collection->mapVia(
 ```
 
 
-
 ```php
 public function options( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is
 OPTIONS.
-
 
 
 ```php
@@ -1037,12 +1016,10 @@ public function patch( string $routePattern, mixed $handler, string $name = null
 Maps a route to a handler that only matches if the HTTP method is PATCH.
 
 
-
 ```php
 public function post( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is POST.
-
 
 
 ```php
@@ -1051,12 +1028,10 @@ public function put( string $routePattern, mixed $handler, string $name = null )
 Maps a route to a handler that only matches if the HTTP method is PUT.
 
 
-
 ```php
 public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
 ```
 Sets the main handler.
-
 
 
 ```php
@@ -1079,7 +1054,6 @@ Internal function to add a handler to the group.
 
 
 
-        
 <h1 id="mvc-micro-collectioninterface">Interface Phalcon\Mvc\Micro\CollectionInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/CollectionInterface.zep)
@@ -1092,6 +1066,7 @@ Interface for Phalcon\Mvc\Micro\Collection
 
 
 ## Methods
+
 ```php
 public function delete( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
@@ -1183,7 +1158,7 @@ Sets a prefix for all routes added to the collection
 
 
 
-        
+
 <h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Exception.zep)
@@ -1194,7 +1169,7 @@ Sets a prefix for all routes added to the collection
 Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 
-        
+
 <h1 id="mvc-micro-lazyloader">Class Phalcon\Mvc\Micro\LazyLoader</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Lazyloader.zep)
@@ -1218,6 +1193,7 @@ protected definition;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $definition );
 ```
@@ -1229,8 +1205,6 @@ public function callMethod( string $method, mixed $arguments, BinderInterface $m
 ```
 Calling __call method
 
-@return mixed
-
 
 ```php
 public function getDefinition()
@@ -1238,7 +1212,8 @@ public function getDefinition()
 
 
 
-        
+
+
 <h1 id="mvc-micro-middlewareinterface">Interface Phalcon\Mvc\Micro\MiddlewareInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/MiddlewareInterface.zep)
@@ -1250,6 +1225,7 @@ Allows to implement Phalcon\Mvc\Micro middleware in classes
 
 
 ## Methods
+
 ```php
 public function call( Micro $application );
 ```
@@ -1257,7 +1233,7 @@ Calls the middleware
 
 
 
-        
+
 <h1 id="mvc-model">Abstract Class Phalcon\Mvc\Model</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model.zep)
@@ -1371,22 +1347,17 @@ protected uniqueTypes;
 ```
 
 ## Methods
+
 ```php
 public function __call( string $method, array $arguments );
 ```
 Handles method calls when a method is not implemented
-
-@return mixed
-@throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
 
 
 ```php
 public static function __callStatic( string $method, array $arguments );
 ```
 Handles method calls when a static method is not implemented
-
-@return mixed
-@throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
 
 
 ```php
@@ -1401,8 +1372,6 @@ public function __get( string $property );
 Magic method to get related records using the relation alias as a
 property
 
-@return mixed
-
 
 ```php
 public function __isset( string $property ): bool;
@@ -1414,7 +1383,6 @@ Magic method to check if a property is a valid relation
 public function __set( string $property, mixed $value );
 ```
 Magic method to assign values to the the model
-
 
 
 ```php
@@ -1528,7 +1496,6 @@ $robot->assign(
 ```
 
 
-
 ```php
 public static function average( mixed $parameters = null ): double;
 ```
@@ -1555,8 +1522,6 @@ $average = Robots::average(
 
 echo "The average price of mechanical robots is ", $average, "\n";
 ```
-
-@return double
 
 
 ```php
@@ -1593,13 +1558,10 @@ $robot = \Phalcon\Mvc\Model::cloneResultMap(
 ```
 
 
-
 ```php
 public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
 ```
 Returns an hydrated result based on the data and the column map
-
-@return mixed
 
 
 ```php
@@ -1618,8 +1580,6 @@ $number = Robots::count("type = 'mechanical'");
 
 echo "There are ", $number, " mechanical robots\n";
 ```
-
-@return mixed
 
 
 ```php
@@ -1916,7 +1876,6 @@ $doesFindTheRobotNow = Robot::findFirst(
 ```
 
 
-
 ```php
 public function fireEvent( string $eventName ): bool;
 ```
@@ -2030,8 +1989,6 @@ public function getRelated( string $alias, mixed $arguments = null );
 ```
 Returns related records based on defined relations
 
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
-
 
 ```php
 final public function getSchema(): string;
@@ -2054,6 +2011,7 @@ Returns the table name mapped in the model
 ```php
 public function getTransaction()
 ```
+
 
 
 ```php
@@ -2111,7 +2069,6 @@ $hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
 ```
 
 
-
 ```php
 public function hasSnapshotData(): bool;
 ```
@@ -2123,7 +2080,6 @@ public function hasUpdated( mixed $fieldName = null, bool $allFields = bool ): b
 ```
 Check if a specific attribute was updated
 This only works if the model is keeping data snapshots
-
 
 
 ```php
@@ -2159,6 +2115,7 @@ public function jsonSerialize(): array;
    ```
    
 
+
 ```php
 public static function maximum( mixed $parameters = null ): mixed;
 ```
@@ -2185,8 +2142,6 @@ $sum = Robots::maximum(
 
 echo "The maximum robot id of mechanical robots is ", $id, "\n";
 ```
-
-@return mixed
 
 
 ```php
@@ -2215,7 +2170,6 @@ $sum = Robots::minimum(
 
 echo "The minimum robot id of mechanical robots is ", $id;
 ```
-
 
 
 ```php
@@ -2298,7 +2252,6 @@ This method is used internally to set old snapshot data when the model
 was set up to keep snapshot data
 
 
-
 ```php
 final public function setReadConnectionService( string $connectionService ): void;
 ```
@@ -2311,7 +2264,6 @@ public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 Sets the record's snapshot data.
 This method is used internally to set snapshot data when the model was
 set up to keep snapshot data
-
 
 
 ```php
@@ -2401,8 +2353,6 @@ $sum = Robots::sum(
 echo "The total price of mechanical robots is  ", $sum, "\n";
 ```
 
-@return double
-
 
 ```php
 public function toArray( mixed $columns = null ): array;
@@ -2414,7 +2364,6 @@ print_r(
     $robot->toArray()
 );
 ```
-
 
 
 ```php
@@ -2518,12 +2467,10 @@ protected function _doLowInsert( MetaDataInterface $metaData, AdapterInterface $
 Sends a pre-build INSERT SQL statement to the relational database system
 
 
-
 ```php
 protected function _doLowUpdate( MetaDataInterface $metaData, AdapterInterface $connection, mixed $table ): bool;
 ```
 Sends a pre-build UPDATE SQL statement to the relational database system
-
 
 
 ```php
@@ -2539,14 +2486,10 @@ Returns related records defined relations depending on the method name.
 Returns false if the relation is non-existent.
 
 
-@return ResultsetInterface|ModelInterface|bool|null
-
-
 ```php
 protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
 ```
 Generate a PHQL SELECT statement for an aggregate
-
 
 
 ```php
@@ -2567,7 +2510,6 @@ protected function _postSaveRelatedRecords( AdapterInterface $connection, mixed 
 Save the related records assigned in the has-one/has-many relations
 
 
-
 ```php
 protected function _preSave( MetaDataInterface $metaData, bool $exists, mixed $identityField ): bool;
 ```
@@ -2578,7 +2520,6 @@ Executes internal hooks before save a record
 protected function _preSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
 ```
 Saves related records that must be stored prior to save the master record
-
 
 
 ```php
@@ -2667,7 +2608,6 @@ class Robots extends \Phalcon\Mvc\Model
 ```
 
 
-
 ```php
 protected function hasOne( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
@@ -2711,7 +2651,6 @@ class Robots extends \Phalcon\Mvc\Model
     }
 }
 ```
-
 
 
 ```php
@@ -2860,7 +2799,7 @@ class Subscriptors extends Model
 
 
 
-        
+
 <h1 id="mvc-model-behavior">Abstract Class Phalcon\Mvc\Model\Behavior</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior.zep)
@@ -2884,6 +2823,7 @@ protected options;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
@@ -2907,8 +2847,6 @@ protected function getOptions( string $eventName = null );
 ```
 Returns the behavior options related to an event
 
-@return array
-
 
 ```php
 protected function mustTakeAction( string $eventName ): bool;
@@ -2917,7 +2855,7 @@ Checks whether the behavior must take action on certain event
 
 
 
-        
+
 <h1 id="mvc-model-behavior-softdelete">Class Phalcon\Mvc\Model\Behavior\SoftDelete</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior/Softdelete.zep)
@@ -2933,6 +2871,7 @@ changing the value of a flag column
 
 
 ## Methods
+
 ```php
 public function notify( string $type, ModelInterface $model );
 ```
@@ -2940,7 +2879,7 @@ Listens for notifications from the models manager
 
 
 
-        
+
 <h1 id="mvc-model-behavior-timestampable">Class Phalcon\Mvc\Model\Behavior\Timestampable</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior/Timestampable.zep)
@@ -2956,6 +2895,7 @@ record is created or updated
 
 
 ## Methods
+
 ```php
 public function notify( string $type, ModelInterface $model );
 ```
@@ -2963,7 +2903,7 @@ Listens for notifications from the models manager
 
 
 
-        
+
 <h1 id="mvc-model-behaviorinterface">Interface Phalcon\Mvc\Model\BehaviorInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/BehaviorInterface.zep)
@@ -2977,6 +2917,7 @@ Interface for Phalcon\Mvc\Model\Behavior
 
 
 ## Methods
+
 ```php
 public function missingMethod( ModelInterface $model, string $method, array $arguments = [] );
 ```
@@ -2990,7 +2931,7 @@ This method receives the notifications from the EventsManager
 
 
 
-        
+
 <h1 id="mvc-model-binder">Class Phalcon\Mvc\Model\Binder</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Binder.zep)
@@ -3031,6 +2972,7 @@ protected originalValues;
 ```
 
 ## Methods
+
 ```php
 public function __construct( AdapterInterface $cache = null );
 ```
@@ -3048,6 +2990,7 @@ public function getBoundModels(): array
 ```
 
 
+
 ```php
 public function getCache(): AdapterInterface;
 ```
@@ -3057,6 +3000,7 @@ Sets cache instance
 ```php
 public function getOriginalValues()
 ```
+
 
 
 ```php
@@ -3084,7 +3028,7 @@ Get modified params for handler using reflection
 
 
 
-        
+
 <h1 id="mvc-model-binder-bindableinterface">Interface Phalcon\Mvc\Model\Binder\BindableInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Binder/BindableInterface.zep)
@@ -3097,6 +3041,7 @@ Interface for bindable classes
 
 
 ## Methods
+
 ```php
 public function getModelName(): string | array;
 ```
@@ -3105,7 +3050,7 @@ this class
 
 
 
-        
+
 <h1 id="mvc-model-binderinterface">Interface Phalcon\Mvc\Model\BinderInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/BinderInterface.zep)
@@ -3119,6 +3064,7 @@ Interface for Phalcon\Mvc\Model\Binder
 
 
 ## Methods
+
 ```php
 public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName = null ): array;
 ```
@@ -3144,7 +3090,7 @@ Sets cache instance
 
 
 
-        
+
 <h1 id="mvc-model-criteria">Class Phalcon\Mvc\Model\Criteria</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Criteria.zep)
@@ -3190,6 +3136,7 @@ protected params;
 ```
 
 ## Methods
+
 ```php
 public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
@@ -3240,7 +3187,6 @@ $criteria->columns(
     ]
 );
 ```
-
 
 
 ```php
@@ -3322,8 +3268,6 @@ public function getLimit(): string | null;
 Returns the limit parameter in the criteria, which will be an integer if
 limit was set without an offset, an array with 'number' and 'offset' keys
 if an offset was set with the limit, or null if limit has not been set.
-
-@return string|null
 
 
 ```php
@@ -3522,7 +3466,7 @@ Sets the conditions parameter in the criteria
 
 
 
-        
+
 <h1 id="mvc-model-criteriainterface">Interface Phalcon\Mvc\Model\CriteriaInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/CriteriaInterface.zep)
@@ -3536,11 +3480,11 @@ Interface for Phalcon\Mvc\Model\Criteria
 
 
 ## Methods
+
 ```php
 public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Appends a condition to the current conditions using an AND operator
-
 
 
 ```php
@@ -3551,7 +3495,6 @@ Appends a BETWEEN condition to the current conditions
 ```php
 $criteria->betweenWhere("price", 100.25, 200.50);
 ```
-
 
 
 ```php
@@ -3730,7 +3673,6 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 ```
 
 
-
 ```php
 public function notInWhere( string $expr, array $values ): CriteriaInterface;
 ```
@@ -3745,7 +3687,6 @@ $criteria->notInWhere("id", [1, 2, 3]);
 public function orWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Appends a condition to the current conditions using an OR operator
-
 
 
 ```php
@@ -3787,7 +3728,7 @@ Sets the conditions parameter in the criteria
 
 
 
-        
+
 <h1 id="mvc-model-exception">Class Phalcon\Mvc\Model\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Exception.zep)
@@ -3800,7 +3741,7 @@ Phalcon\Mvc\Model\Exception
 Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 
-        
+
 <h1 id="mvc-model-manager">Class Phalcon\Mvc\Model\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Manager.zep)
@@ -3952,6 +3893,7 @@ protected reusable;
 ```
 
 ## Methods
+
 ```php
 public function __destruct();
 ```
@@ -3977,12 +3919,10 @@ public function addBelongsTo( ModelInterface $model, mixed $fields, string $refe
 Setup a relation reverse many to one between two models
 
 
-
 ```php
 public function addHasMany( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a relation 1-n between two models
-
 
 
 ```php
@@ -3991,19 +3931,16 @@ public function addHasManyToMany( ModelInterface $model, mixed $fields, string $
 Setups a relation n-m between two models
 
 
-
 ```php
 public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a 1-1 relation between two models
 
 
-
 ```php
 public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setups a relation 1-1 between two models using an intermediate model
-
 
 
 ```php
@@ -4190,8 +4127,6 @@ Returns a relation by its alias
 public function getRelationRecords( RelationInterface $relation, ModelInterface $record, mixed $parameters = null, string $method = null );
 ```
 Helper method to query records based on a relation definition
-
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
 
 
 ```php
@@ -4387,7 +4322,7 @@ Merge two arrays of find parameters
 
 
 
-        
+
 <h1 id="mvc-model-managerinterface">Interface Phalcon\Mvc\Model\ManagerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ManagerInterface.zep)
@@ -4401,6 +4336,7 @@ Interface for Phalcon\Mvc\Model\Manager
 
 
 ## Methods
+
 ```php
 public function addBehavior( ModelInterface $model, BehaviorInterface $behavior ): void;
 ```
@@ -4413,12 +4349,10 @@ public function addBelongsTo( ModelInterface $model, mixed $fields, string $refe
 Setup a relation reverse 1-1  between two models
 
 
-
 ```php
 public function addHasMany( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a relation 1-n between two models
-
 
 
 ```php
@@ -4427,12 +4361,10 @@ public function addHasManyToMany( ModelInterface $model, mixed $fields, string $
 Setups a relation n-m between two models
 
 
-
 ```php
 public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a 1-1 relation between two models
-
 
 
 ```php
@@ -4441,12 +4373,10 @@ public function addHasOneThrough( ModelInterface $model, mixed $fields, string $
 Setups a 1-1 relation between two models using an intermediate table
 
 
-
 ```php
 public function createBuilder( mixed $params = null ): BuilderInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query\Builder
-
 
 
 ```php
@@ -4459,7 +4389,6 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 public function executeQuery( string $phql, mixed $placeholders = null ): QueryInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query and execute it
-
 
 
 ```php
@@ -4504,7 +4433,6 @@ public function getBelongsToRecords( string $modelName, string $modelRelation, M
 Gets belongsTo related records from a model
 
 
-
 ```php
 public function getHasMany( ModelInterface $model ): RelationInterface[] | array;
 ```
@@ -4515,7 +4443,6 @@ Gets hasMany relations defined on a model
 public function getHasManyRecords( string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string $method = null ): ResultsetInterface | bool;
 ```
 Gets hasMany related records from a model
-
 
 
 ```php
@@ -4540,7 +4467,6 @@ Gets hasOne relations defined on a model
 public function getHasOneRecords( string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string $method = null ): ModelInterface | bool;
 ```
 Gets hasOne related records from a model
-
 
 
 ```php
@@ -4595,8 +4521,6 @@ Returns a relation by its alias
 public function getRelationRecords( RelationInterface $relation, ModelInterface $record, mixed $parameters = null, string $method = null );
 ```
 Helper method to query records based on a relation definition
-
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
 
 
 ```php
@@ -4679,8 +4603,6 @@ Dispatch an event to the listeners and behaviors
 This method expects that the endpoint listeners/behaviors returns true
 meaning that a least one is implemented
 
-@return bool
-
 
 ```php
 public function notifyEvent( string $eventName, ModelInterface $model );
@@ -4726,7 +4648,7 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 
-        
+
 <h1 id="mvc-model-metadata">Abstract Class Phalcon\Mvc\Model\MetaData</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata.zep)
@@ -4797,6 +4719,7 @@ protected strategy;
 ```
 
 ## Methods
+
 ```php
 public function getAttributes( ModelInterface $model ): array;
 ```
@@ -5194,7 +5117,7 @@ Initialize the metadata for certain table
 
 
 
-        
+
 <h1 id="mvc-model-metadata-apcu">Class Phalcon\Mvc\Model\MetaData\Apcu</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Apcu.zep)
@@ -5222,6 +5145,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory, array $options = null );
 ```
@@ -5230,7 +5154,6 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 
 
-        
 <h1 id="mvc-model-metadata-libmemcached">Class Phalcon\Mvc\Model\MetaData\Libmemcached</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Libmemcached.zep)
@@ -5247,11 +5170,11 @@ By default meta-data is stored for 48 hours (172800 seconds)
 
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 Phalcon\Mvc\Model\MetaData\Libmemcached constructor
-
 
 
 ```php
@@ -5261,7 +5184,7 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 
 
-        
+
 <h1 id="mvc-model-metadata-memory">Class Phalcon\Mvc\Model\MetaData\Memory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Memory.zep)
@@ -5277,11 +5200,11 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 
 
 ## Methods
+
 ```php
 public function __construct( mixed $options = null );
 ```
 Phalcon\Mvc\Model\MetaData\Memory constructor
-
 
 
 ```php
@@ -5297,7 +5220,7 @@ Writes the meta-data to temporal memory
 
 
 
-        
+
 <h1 id="mvc-model-metadata-redis">Class Phalcon\Mvc\Model\MetaData\Redis</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Redis.zep)
@@ -5328,11 +5251,11 @@ $metaData = new Redis(
 
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 Phalcon\Mvc\Model\MetaData\Redis constructor
-
 
 
 ```php
@@ -5342,7 +5265,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 
 
-        
+
 <h1 id="mvc-model-metadata-strategy-annotations">Class Phalcon\Mvc\Model\MetaData\Strategy\Annotations</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Strategy/Annotations.zep)
@@ -5360,6 +5283,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 final public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
 ```
@@ -5373,7 +5297,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-        
+
 <h1 id="mvc-model-metadata-strategy-introspection">Class Phalcon\Mvc\Model\MetaData\Strategy\Introspection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Strategy/Introspection.zep)
@@ -5388,6 +5312,7 @@ Queries the table meta-data in order to introspect the model's metadata
 
 
 ## Methods
+
 ```php
 final public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
 ```
@@ -5401,7 +5326,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-        
+
 <h1 id="mvc-model-metadata-strategy-strategyinterface">Interface Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Strategy/StrategyInterface.zep)
@@ -5418,6 +5343,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
 ```
@@ -5433,7 +5359,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-        
+
 <h1 id="mvc-model-metadata-stream">Class Phalcon\Mvc\Model\MetaData\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Metadata/Stream.zep)
@@ -5463,11 +5389,11 @@ protected metaDataDir = ./;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $options = null );
 ```
 Phalcon\Mvc\Model\MetaData\Files constructor
-
 
 
 ```php
@@ -5483,7 +5409,7 @@ Writes the meta-data to files
 
 
 
-        
+
 <h1 id="mvc-model-metadatainterface">Interface Phalcon\Mvc\Model\MetaDataInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetadataInterface.zep)
@@ -5497,6 +5423,7 @@ Interface for Phalcon\Mvc\Model\MetaData
 
 
 ## Methods
+
 ```php
 public function getAttributes( ModelInterface $model ): array;
 ```
@@ -5672,7 +5599,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 
 
-        
+
 <h1 id="mvc-model-query">Class Phalcon\Mvc\Model\Query</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query.zep)
@@ -5709,7 +5636,7 @@ use Phalcon\Mvc\Model\Transaction;
 // $di needs to have the service "db" registered for this to work
 $di = Phalcon\Di\FactoryDefault::getDefault();
 
-$phql = 'SELECT * FROM robot';
+$phql = 'SELECTFROM robot';
 
 $myTransaction = new Transaction($di);
 $myTransaction->begin();
@@ -5821,6 +5748,7 @@ protected _transaction;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $phql = null, DiInterface $container = null, array $options = [] );
 ```
@@ -5843,8 +5771,6 @@ Destroys the internal PHQL cache
 public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 Executes a parsed PHQL statement
-
-@return mixed
 
 
 ```php
@@ -5912,6 +5838,7 @@ resultset
 ```php
 public function get_transaction()
 ```
+
 
 
 ```php
@@ -6060,12 +5987,10 @@ final protected function _getMultiJoin( string $joinType, mixed $joinSource, str
 Resolves joins involving many-to-many relations
 
 
-
 ```php
 final protected function _getOrderClause( mixed $order ): array;
 ```
 Returns a processed order clause for a SELECT statement
-
 
 
 ```php
@@ -6094,13 +6019,10 @@ final protected function _getSingleJoin( string $joinType, mixed $joinSource, st
 Resolves joins involving has-one/belongs-to/has-many relations
 
 
-
 ```php
 final protected function _getTable( ManagerInterface $manager, array $qualifiedName );
 ```
 Resolves a table in a SELECT statement checking if the model exists
-
-@return string
 
 
 ```php
@@ -6145,7 +6067,7 @@ inside the query object
 
 
 
-        
+
 <h1 id="mvc-model-query-builder">Class Phalcon\Mvc\Model\Query\Builder</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Builder.zep)
@@ -6247,6 +6169,7 @@ protected sharedLock;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $params = null, DiInterface $container = null );
 ```
@@ -6421,8 +6344,6 @@ public function getColumns();
 ```
 Return the columns to be queried
 
-@return string|array
-
 
 ```php
 public function getDI(): DiInterface;
@@ -6440,8 +6361,6 @@ Returns SELECT DISTINCT / SELECT ALL flag
 public function getFrom();
 ```
 Return the models who makes part of the query
-
-@return string|array
 
 
 ```php
@@ -6467,8 +6386,6 @@ public function getLimit();
 ```
 Returns the current LIMIT clause
 
-@return string|array
-
 
 ```php
 public function getModels(): string | array | null;
@@ -6486,8 +6403,6 @@ Returns the current OFFSET clause
 public function getOrderBy();
 ```
 Returns the set ORDER BY clause
-
-@return string|array
 
 
 ```php
@@ -6507,8 +6422,6 @@ public function getWhere();
 ```
 Return the conditions for the query
 
-@return string|array
-
 
 ```php
 public function groupBy( mixed $group ): BuilderInterface;
@@ -6522,7 +6435,6 @@ $builder->groupBy(
     ]
 );
 ```
-
 
 
 ```php
@@ -6748,7 +6660,6 @@ $builder->orderBy(["Robots.name DESC"]);
 ```
 
 
-
 ```php
 public function rightJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
@@ -6826,7 +6737,7 @@ Appends a NOT IN condition
 
 
 
-        
+
 <h1 id="mvc-model-query-builderinterface">Interface Phalcon\Mvc\Model\Query\BuilderInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/BuilderInterface.zep)
@@ -6846,6 +6757,7 @@ const OPERATOR_OR = or;
 ```
 
 ## Methods
+
 ```php
 public function addFrom( string $model, string $alias = null ): BuilderInterface;
 ```
@@ -6864,12 +6776,10 @@ public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, stri
 Appends a BETWEEN condition to the current conditions
 
 
-
 ```php
 public function columns( mixed $columns ): BuilderInterface;
 ```
 Sets the columns to be queried
-
 
 
 ```php
@@ -6899,7 +6809,6 @@ public function from( mixed $models ): BuilderInterface;
 Sets the models who makes part of the query
 
 
-
 ```php
 public function getBindParams(): array;
 ```
@@ -6917,8 +6826,6 @@ public function getColumns();
 ```
 Return the columns to be queried
 
-@return string|array
-
 
 ```php
 public function getDistinct(): bool;
@@ -6930,8 +6837,6 @@ Returns SELECT DISTINCT / SELECT ALL flag
 public function getFrom();
 ```
 Return the models who makes part of the query
-
-@return string|array
 
 
 ```php
@@ -6957,8 +6862,6 @@ public function getLimit();
 ```
 Returns the current LIMIT clause
 
-@return string|array
-
 
 ```php
 public function getModels(): string | array | null;
@@ -6976,8 +6879,6 @@ Returns the current OFFSET clause
 public function getOrderBy();
 ```
 Return the set ORDER BY clause
-
-@return string|array
 
 
 ```php
@@ -6997,14 +6898,11 @@ public function getWhere();
 ```
 Return the conditions for the query
 
-@return string|array
-
 
 ```php
 public function groupBy( mixed $group ): BuilderInterface;
 ```
 Sets a GROUP BY clause
-
 
 
 ```php
@@ -7030,8 +6928,6 @@ public function join( string $model, string $conditions = null, string $alias = 
 ```
 Adds an :type: join (by default type - INNER) to the query
 
-@return BuilderInterface
-
 
 ```php
 public function leftJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
@@ -7045,12 +6941,10 @@ public function limit( int $limit, mixed $offset = null ): BuilderInterface;
 Sets a LIMIT clause
 
 
-
 ```php
 public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT BETWEEN condition to the current conditions
-
 
 
 ```php
@@ -7102,7 +6996,7 @@ Sets conditions for the query
 
 
 
-        
+
 <h1 id="mvc-model-query-lang">Abstract Class Phalcon\Mvc\Model\Query\Lang</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Lang.zep)
@@ -7131,6 +7025,7 @@ $intermediate = Lang::parsePHQL(
 
 
 ## Methods
+
 ```php
 public static function parsePHQL( string $phql ): array;
 ```
@@ -7138,7 +7033,7 @@ Parses a PHQL statement returning an intermediate representation (IR)
 
 
 
-        
+
 <h1 id="mvc-model-query-status">Class Phalcon\Mvc\Model\Query\Status</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Status.zep)
@@ -7185,6 +7080,7 @@ protected success;
 ```
 
 ## Methods
+
 ```php
 public function __construct( bool $success, ModelInterface $model = null );
 ```
@@ -7210,7 +7106,7 @@ Allows to check if the executed operation was successful
 
 
 
-        
+
 <h1 id="mvc-model-query-statusinterface">Interface Phalcon\Mvc\Model\Query\StatusInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/StatusInterface.zep)
@@ -7224,6 +7120,7 @@ Interface for Phalcon\Mvc\Model\Query\Status
 
 
 ## Methods
+
 ```php
 public function getMessages(): MessageInterface[];
 ```
@@ -7243,7 +7140,7 @@ Allows to check if the executed operation was successful
 
 
 
-        
+
 <h1 id="mvc-model-queryinterface">Interface Phalcon\Mvc\Model\QueryInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/QueryInterface.zep)
@@ -7257,6 +7154,7 @@ Interface for Phalcon\Mvc\Model\Query
 
 
 ## Methods
+
 ```php
 public function cache( array $cacheOptions ): QueryInterface;
 ```
@@ -7267,8 +7165,6 @@ Sets the cache parameters of the query
 public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 Executes a parsed PHQL statement
-
-@return mixed
 
 
 ```php
@@ -7339,7 +7235,7 @@ Tells to the query if only the first row in the resultset must be returned
 
 
 
-        
+
 <h1 id="mvc-model-relation">Class Phalcon\Mvc\Model\Relation</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Relation.zep)
@@ -7393,11 +7289,11 @@ protected type;
 ```
 
 ## Methods
+
 ```php
 public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] );
 ```
 Phalcon\Mvc\Model\Relation constructor
-
 
 
 ```php
@@ -7405,23 +7301,17 @@ public function getFields();
 ```
 Returns the fields
 
-@return string|array
-
 
 ```php
 public function getForeignKey();
 ```
 Returns the foreign key configuration
 
-@return string|array
-
 
 ```php
 public function getIntermediateFields();
 ```
 Gets the intermediate fields for has-*-through relations
-
-@return string|array
 
 
 ```php
@@ -7434,8 +7324,6 @@ Gets the intermediate model for has-*-through relations
 public function getIntermediateReferencedFields();
 ```
 Gets the intermediate referenced fields for has-*-through relations
-
-@return string|array
 
 
 ```php
@@ -7456,15 +7344,11 @@ public function getParams();
 ```
 Returns parameters that must be always used when the related records are obtained
 
-@return array
-
 
 ```php
 public function getReferencedFields();
 ```
 Returns the referenced fields
-
-@return string|array
 
 
 ```php
@@ -7505,7 +7389,6 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-        
 <h1 id="mvc-model-relationinterface">Interface Phalcon\Mvc\Model\RelationInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/RelationInterface.zep)
@@ -7518,12 +7401,11 @@ Interface for Phalcon\Mvc\Model\Relation
 
 
 ## Methods
+
 ```php
 public function getFields();
 ```
 Returns the fields
-
-@return string|array
 
 
 ```php
@@ -7531,15 +7413,11 @@ public function getForeignKey();
 ```
 Returns the foreign key configuration
 
-@return string|array
-
 
 ```php
 public function getIntermediateFields();
 ```
 Gets the intermediate fields for has-*-through relations
-
-@return string|array
 
 
 ```php
@@ -7552,8 +7430,6 @@ Gets the intermediate model for has-*-through relations
 public function getIntermediateReferencedFields();
 ```
 Gets the intermediate referenced fields for has-*-through relations
-
-@return string|array
 
 
 ```php
@@ -7574,15 +7450,11 @@ public function getParams();
 ```
 Returns parameters that must be always used when the related records are obtained
 
-@return array
-
 
 ```php
 public function getReferencedFields();
 ```
 Returns the referenced fields
-
-@return string|array
 
 
 ```php
@@ -7623,7 +7495,6 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-        
 <h1 id="mvc-model-resultinterface">Interface Phalcon\Mvc\Model\ResultInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultInterface.zep)
@@ -7637,6 +7508,7 @@ All single objects passed as base objects to Resultsets must implement this inte
 
 
 ## Methods
+
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
 ```
@@ -7644,7 +7516,7 @@ Sets the object's state
 
 
 
-        
+
 <h1 id="mvc-model-resultset">Abstract Class Phalcon\Mvc\Model\Resultset</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset.zep)
@@ -7740,11 +7612,11 @@ protected result;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $result, AdapterInterface $cache = null );
 ```
 Phalcon\Mvc\Model\Resultset constructor
-
 
 
 ```php
@@ -7860,7 +7732,6 @@ public function offsetSet( mixed $index, mixed $value ): void;
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
-
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
@@ -7898,7 +7769,6 @@ public function update( mixed $data, Closure $conditionCallback = null ): bool;
 Updates every record in the resultset
 
 
-
 ```php
 public function valid(): bool;
 ```
@@ -7906,7 +7776,7 @@ Check whether internal resource has rows to fetch
 
 
 
-        
+
 <h1 id="mvc-model-resultset-complex">Class Phalcon\Mvc\Model\Resultset\Complex</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Complex.zep)
@@ -7936,11 +7806,11 @@ protected disableHydration = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null );
 ```
 Phalcon\Mvc\Model\Resultset\Complex constructor
-
 
 
 ```php
@@ -7969,7 +7839,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 
 
-        
+
 <h1 id="mvc-model-resultset-simple">Class Phalcon\Mvc\Model\Resultset\Simple</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Simple.zep)
@@ -8000,11 +7870,11 @@ protected keepSnapshots = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null );
 ```
 Phalcon\Mvc\Model\Resultset\Simple constructor
-
 
 
 ```php
@@ -8036,7 +7906,7 @@ the saved state
 
 
 
-        
+
 <h1 id="mvc-model-resultsetinterface">Interface Phalcon\Mvc\Model\ResultsetInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultsetInterface.zep)
@@ -8050,6 +7920,7 @@ Interface for Phalcon\Mvc\Model\Resultset
 
 
 ## Methods
+
 ```php
 public function delete( Closure $conditionCallback = null ): bool;
 ```
@@ -8141,7 +8012,6 @@ Updates every record in the resultset
 
 
 
-        
 <h1 id="mvc-model-row">Class Phalcon\Mvc\Model\Row</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Row.zep)
@@ -8157,17 +8027,18 @@ This objects implements the ArrayAccess interface to allow access the object as 
 
 
 ## Methods
+
 ```php
 public function jsonSerialize(): array;
 ```
    Serializes the object for json_encode
    
 
+
 ```php
 public function offsetExists( mixed $index ): bool;
 ```
 Checks whether offset exists in the row
-
 
 
 ```php
@@ -8176,21 +8047,16 @@ public function offsetGet( mixed $index ): mixed;
 Gets a record in a specific position of the row
 
 
-@return string|Phalcon\Mvc\ModelInterface
-
-
 ```php
 public function offsetSet( mixed $index, mixed $value ): void;
 ```
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
-
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
-
 
 
 ```php
@@ -8201,8 +8067,6 @@ Reads an attribute value by its name
 ```php
 echo $robot->readAttribute("name");
 ```
-
-@return mixed
 
 
 ```php
@@ -8229,7 +8093,6 @@ $robot->writeAttribute("name", "Rosey");
 
 
 
-        
 <h1 id="mvc-model-transaction">Class Phalcon\Mvc\Model\Transaction</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction.zep)
@@ -8311,6 +8174,7 @@ protected rollbackThrowException = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( DiInterface $container, bool $autoBegin = bool, string $service = string );
 ```
@@ -8390,7 +8254,7 @@ Enables throwing exception
 
 
 
-        
+
 <h1 id="mvc-model-transaction-exception">Class Phalcon\Mvc\Model\Transaction\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Exception.zep)
@@ -8403,7 +8267,7 @@ Phalcon\Mvc\Model\Transaction\Exception
 Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 
-        
+
 <h1 id="mvc-model-transaction-failed">Class Phalcon\Mvc\Model\Transaction\Failed</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Failed.zep)
@@ -8425,6 +8289,7 @@ protected record;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $message, ModelInterface $record = null );
 ```
@@ -8444,7 +8309,7 @@ Returns validation record messages which stop the transaction
 
 
 
-        
+
 <h1 id="mvc-model-transaction-manager">Class Phalcon\Mvc\Model\Transaction\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Manager.zep)
@@ -8525,6 +8390,7 @@ protected transactions;
 ```
 
 ## Methods
+
 ```php
 public function __construct( DiInterface $container = null );
 ```
@@ -8632,7 +8498,7 @@ Removes transactions from the TransactionManager
 
 
 
-        
+
 <h1 id="mvc-model-transaction-managerinterface">Interface Phalcon\Mvc\Model\Transaction\ManagerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/ManagerInterface.zep)
@@ -8646,6 +8512,7 @@ Interface for Phalcon\Mvc\Model\Transaction\Manager
 
 
 ## Methods
+
 ```php
 public function collectTransactions(): void;
 ```
@@ -8720,7 +8587,7 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 
 
-        
+
 <h1 id="mvc-model-transactioninterface">Interface Phalcon\Mvc\Model\TransactionInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/TransactionInterface.zep)
@@ -8734,6 +8601,7 @@ Interface for Phalcon\Mvc\Model\Transaction
 
 
 ## Methods
+
 ```php
 public function begin(): bool;
 ```
@@ -8807,7 +8675,7 @@ Enables throwing exception
 
 
 
-        
+
 <h1 id="mvc-model-validationfailed">Class Phalcon\Mvc\Model\ValidationFailed</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Validationfailed.zep)
@@ -8833,11 +8701,11 @@ protected model;
 ```
 
 ## Methods
+
 ```php
 public function __construct( ModelInterface $model, array $validationMessages );
 ```
 Phalcon\Mvc\Model\ValidationFailed constructor
-
 
 
 ```php
@@ -8853,7 +8721,7 @@ Returns the model that generated the messages
 
 
 
-        
+
 <h1 id="mvc-modelinterface">Interface Phalcon\Mvc\ModelInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ModelInterface.zep)
@@ -8867,6 +8735,7 @@ Interface for Phalcon\Mvc\Model
 
 
 ## Methods
+
 ```php
 public function appendMessage( MessageInterface $message ): ModelInterface;
 ```
@@ -8879,14 +8748,11 @@ public function assign( array $data, mixed $whiteList = null, mixed $dataColumnM
 Assigns values to a model from an array
 
 
-
 ```php
 public static function average( mixed $parameters = null ): double;
 ```
 Allows to calculate the average value on a column matching the specified
 conditions
-
-@return double
 
 
 ```php
@@ -8900,8 +8766,6 @@ public static function cloneResultMap( mixed $base, array $data, mixed $columnMa
 ```
 Assigns values to a model from an array returning a new model
 
-@return \Phalcon\Mvc\Model result
-
 
 ```php
 public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
@@ -8909,13 +8773,10 @@ public static function cloneResultMapHydrate( array $data, mixed $columnMap, int
 Returns an hydrated result based on the data and the column map
 
 
-
 ```php
 public static function count( mixed $parameters = null ): int;
 ```
 Allows to count how many records match the specified conditions
-
-@return int
 
 
 ```php
@@ -8942,7 +8803,6 @@ Allows to query a set of records that match the specified conditions
 public static function findFirst( mixed $parameters = null ): ModelInterface | bool;
 ```
 Allows to query the first record that match the specified conditions
-
 
 
 ```php
@@ -9003,8 +8863,6 @@ public function getRelated( string $alias, mixed $arguments = null );
 ```
 Returns related records based on defined relations
 
-@return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
-
 
 ```php
 public function getSchema(): string;
@@ -9036,16 +8894,12 @@ public static function maximum( mixed $parameters = null ): mixed;
 Allows to get the maximum value of a column that match the specified
 conditions
 
-@return mixed
-
 
 ```php
 public static function minimum( mixed $parameters = null ): mixed;
 ```
 Allows to get the minimum value of a column that match the specified
 conditions
-
-@return mixed
 
 
 ```php
@@ -9093,7 +8947,6 @@ Sets the record's snapshot data. This method is used internally to set
 snapshot data when the model was set up to keep snapshot data
 
 
-
 ```php
 public function setTransaction( TransactionInterface $transaction ): ModelInterface;
 ```
@@ -9117,8 +8970,6 @@ public static function sum( mixed $parameters = null ): double;
 ```
 Allows to calculate a sum on a column that match the specified conditions
 
-@return double
-
 
 ```php
 public function update(): bool;
@@ -9135,7 +8986,7 @@ Check whether validation process has generated any messages
 
 
 
-        
+
 <h1 id="mvc-moduledefinitioninterface">Interface Phalcon\Mvc\ModuleDefinitionInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ModuledefinitionInterface.zep)
@@ -9149,6 +9000,7 @@ This interface must be implemented by class module definitions
 
 
 ## Methods
+
 ```php
 public function registerAutoloaders( DiInterface $container = null );
 ```
@@ -9162,7 +9014,7 @@ Registers services related to the module
 
 
 
-        
+
 <h1 id="mvc-router">Class Phalcon\Mvc\Router</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router.zep)
@@ -9271,6 +9123,7 @@ protected wasMatched = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( bool $defaultRoutes = bool );
 ```
@@ -9420,9 +9273,11 @@ public function getKeyRouteIds()
 ```
 
 
+
 ```php
 public function getKeyRouteNames()
 ```
+
 
 
 ```php
@@ -9561,9 +9416,11 @@ public function setKeyRouteIds( $keyRouteIds )
 ```
 
 
+
 ```php
 public function setKeyRouteNames( $keyRouteNames )
 ```
+
 
 
 ```php
@@ -9573,7 +9430,7 @@ Checks if the router matches any of the defined routes
 
 
 
-        
+
 <h1 id="mvc-router-annotations">Class Phalcon\Mvc\Router\Annotations</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Annotations.zep)
@@ -9621,6 +9478,7 @@ protected routePrefix;
 ```
 
 ## Methods
+
 ```php
 public function addModuleResource( string $module, string $handler, string $prefix = null ): Annotations;
 ```
@@ -9673,7 +9531,7 @@ Changes the controller class suffix
 
 
 
-        
+
 <h1 id="mvc-router-exception">Class Phalcon\Mvc\Router\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Exception.zep)
@@ -9686,7 +9544,7 @@ Phalcon\Mvc\Router\Exception
 Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 
-        
+
 <h1 id="mvc-router-group">Class Phalcon\Mvc\Router\Group</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Group.zep)
@@ -9762,6 +9620,7 @@ protected routes;
 ```
 
 ## Methods
+
 ```php
 public function __construct( mixed $paths = null );
 ```
@@ -9784,12 +9643,10 @@ public function addConnect( string $pattern, mixed $paths = null ): RouteInterfa
 Adds a route to the router that only match if the HTTP method is CONNECT
 
 
-
 ```php
 public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
-
 
 
 ```php
@@ -9798,12 +9655,10 @@ public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 Adds a route to the router that only match if the HTTP method is GET
 
 
-
 ```php
 public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
-
 
 
 ```php
@@ -9812,12 +9667,10 @@ public function addOptions( string $pattern, mixed $paths = null ): RouteInterfa
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
-
 ```php
 public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
-
 
 
 ```php
@@ -9826,12 +9679,10 @@ public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 Adds a route to the router that only match if the HTTP method is POST
 
 
-
 ```php
 public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
-
 
 
 ```php
@@ -9840,12 +9691,10 @@ public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 Adds a route to the router that only match if the HTTP method is PUT
 
 
-
 ```php
 public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
-
 
 
 ```php
@@ -9917,7 +9766,7 @@ Adds a route applying the common attributes
 
 
 
-        
+
 <h1 id="mvc-router-groupinterface">Interface Phalcon\Mvc\Router\GroupInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/GroupInterface.zep)
@@ -9971,6 +9820,7 @@ $router->mount($blog);
 
 
 ## Methods
+
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
@@ -10097,7 +9947,6 @@ public function setPaths( mixed $paths ): GroupInterface;
 Set common paths for all the routes in the group
 
 
-
 ```php
 public function setPrefix( string $prefix ): GroupInterface;
 ```
@@ -10105,7 +9954,7 @@ Set a common uri prefix for all the routes in this group
 
 
 
-        
+
 <h1 id="mvc-router-route">Class Phalcon\Mvc\Router\Route</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Route.zep)
@@ -10159,6 +10008,7 @@ protected static uniqueId = 0;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $pattern, mixed $paths = null, mixed $httpMethods = null );
 ```
@@ -10249,6 +10099,7 @@ Returns the HTTP methods that constraint matching the route
 ```php
 public function getId()
 ```
+
 
 
 ```php
@@ -10388,7 +10239,7 @@ $route->via(
 
 
 
-        
+
 <h1 id="mvc-router-routeinterface">Interface Phalcon\Mvc\Router\RouteInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/RouteInterface.zep)
@@ -10401,6 +10252,7 @@ Interface for Phalcon\Mvc\Router\Route
 
 
 ## Methods
+
 ```php
 public function compilePattern( string $pattern ): string;
 ```
@@ -10498,7 +10350,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-        
+
 <h1 id="mvc-routerinterface">Interface Phalcon\Mvc\RouterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/RouterInterface.zep)
@@ -10510,6 +10362,7 @@ Interface for Phalcon\Mvc\Router
 
 
 ## Methods
+
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
@@ -10692,7 +10545,7 @@ Check if the router matches any of the defined routes
 
 
 
-        
+
 <h1 id="mvc-view">Class Phalcon\Mvc\View</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View.zep)
@@ -10812,6 +10665,7 @@ protected viewParams;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
@@ -10932,6 +10786,7 @@ public function getCurrentRenderLevel()
 ```
 
 
+
 ```php
 public function getEventsManager(): ManagerInterface | null;
 ```
@@ -10994,6 +10849,7 @@ public function getRegisteredEngines()
 ```
 
 
+
 ```php
 public function getRender( string $controllerName, string $actionName, array $params = [], mixed $configCallback = null ): string;
 ```
@@ -11010,10 +10866,10 @@ $template = $this->view->getRender(
 ```
 
 
-
 ```php
 public function getRenderLevel()
 ```
+
 
 
 ```php
@@ -11293,7 +11149,7 @@ Phalcon\Mvc\View\Engine\Php
 
 
 
-        
+
 <h1 id="mvc-view-engine-abstractengine">Abstract Class Phalcon\Mvc\View\Engine\AbstractEngine</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Abstractengine.zep)
@@ -11315,6 +11171,7 @@ protected view;
 ```
 
 ## Methods
+
 ```php
 public function __construct( ViewBaseInterface $view, DiInterface $container = null );
 ```
@@ -11341,7 +11198,6 @@ Renders a partial inside another view
 
 
 
-        
 <h1 id="mvc-view-engine-engineinterface">Interface Phalcon\Mvc\View\Engine\EngineInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/EngineInterface.zep)
@@ -11352,6 +11208,7 @@ Interface for Phalcon\Mvc\View engine adapters
 
 
 ## Methods
+
 ```php
 public function getContent(): string;
 ```
@@ -11371,7 +11228,7 @@ Renders a view using the template engine
 
 
 
-        
+
 <h1 id="mvc-view-engine-php">Class Phalcon\Mvc\View\Engine\Php</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Php.zep)
@@ -11383,6 +11240,7 @@ Adapter to use PHP itself as templating engine
 
 
 ## Methods
+
 ```php
 public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
@@ -11390,7 +11248,7 @@ Renders a view using the template engine
 
 
 
-        
+
 <h1 id="mvc-view-engine-volt">Class Phalcon\Mvc\View\Engine\Volt</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt.zep)
@@ -11420,6 +11278,7 @@ protected options;
 ```
 
 ## Methods
+
 ```php
 public function callMacro( string $name, array $arguments = [] ): mixed;
 ```
@@ -11493,7 +11352,7 @@ Sorts an array
 
 
 
-        
+
 <h1 id="mvc-view-engine-volt-compiler">Class Phalcon\Mvc\View\Engine\Volt\Compiler</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt/Compiler.zep)
@@ -11581,6 +11440,7 @@ protected view;
 ```
 
 ## Methods
+
 ```php
 public function __construct( ViewBaseInterface $view = null );
 ```
@@ -11678,8 +11538,6 @@ $compiler->compileFile(
 );
 ```
 
-@return string|array
-
 
 ```php
 public function compileForElse(): string;
@@ -11750,8 +11608,6 @@ final public function fireExtensionEvent( string $name, mixed $arguments = null 
 ```
 Fires an event to registered extensions
 
-@return mixed
-
 
 ```php
 public function functionCall( array $expr ): string;
@@ -11794,8 +11650,6 @@ public function getOption( string $option );
 ```
 Returns a compiler's option
 
-@return string
-
 
 ```php
 public function getOptions(): array;
@@ -11827,8 +11681,6 @@ print_r(
 );
 ```
 
-@return array
-
 
 ```php
 public function resolveTest( array $test, string $left ): string;
@@ -11846,7 +11698,6 @@ Sets the dependency injector
 public function setOption( string $option, mixed $value );
 ```
 Sets a single compiler option
-
 
 
 ```php
@@ -11890,11 +11741,9 @@ final protected function statementListOrExtends( mixed $statements );
 ```
 Compiles a block of statements
 
-@return string|array
 
 
 
-        
 <h1 id="mvc-view-engine-volt-exception">Class Phalcon\Mvc\View\Engine\Volt\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt/Exception.zep)
@@ -11914,10 +11763,12 @@ protected statement;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $message = string, array $statement = [], int $code = int, \Exception $previous = null );
 ```
-//
+
+
 
 ```php
 public function getStatement(): array;
@@ -11926,7 +11777,7 @@ Gets currently parsed statement (if any).
 
 
 
-        
+
 <h1 id="mvc-view-exception">Class Phalcon\Mvc\View\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Exception.zep)
@@ -11939,7 +11790,7 @@ Phalcon\Mvc\View\Exception
 Class for exceptions thrown by Phalcon\Mvc\View
 
 
-        
+
 <h1 id="mvc-view-simple">Class Phalcon\Mvc\View\Simple</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Simple.zep)
@@ -12012,6 +11863,7 @@ protected viewParams;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
@@ -12065,6 +11917,7 @@ Returns parameters to views
 ```php
 public function getRegisteredEngines(): array|null
 ```
+
 
 
 ```php
@@ -12184,7 +12037,6 @@ final protected function internalRender( string $path, mixed $params );
 Tries to render the view with every engine registered in the component
 
 
-
 ```php
 protected function loadTemplateEngines(): array;
 ```
@@ -12193,7 +12045,7 @@ Phalcon\Mvc\View\Engine\Php
 
 
 
-        
+
 <h1 id="mvc-viewbaseinterface">Interface Phalcon\Mvc\ViewBaseInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ViewbaseInterface.zep)
@@ -12207,6 +12059,7 @@ Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
 
 ## Methods
+
 ```php
 public function getContent(): string;
 ```
@@ -12257,7 +12110,7 @@ slash or backslash
 
 
 
-        
+
 <h1 id="mvc-viewinterface">Interface Phalcon\Mvc\ViewInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ViewInterface.zep)
@@ -12271,6 +12124,7 @@ Interface for Phalcon\Mvc\View
 
 
 ## Methods
+
 ```php
 public function cleanTemplateAfter();
 ```
@@ -12428,12 +12282,10 @@ public function setTemplateAfter( mixed $templateAfter );
 Appends template after controller layout
 
 
-
 ```php
 public function setTemplateBefore( mixed $templateBefore );
 ```
 Appends template before controller layout
-
 
 
 ```php

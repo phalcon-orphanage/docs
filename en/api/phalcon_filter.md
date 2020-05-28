@@ -30,7 +30,7 @@ title: 'Phalcon\Filter'
 * [Phalcon\Filter\Sanitize\UpperFirst](#filter-sanitize-upperfirst)
 * [Phalcon\Filter\Sanitize\UpperWords](#filter-sanitize-upperwords)
 * [Phalcon\Filter\Sanitize\Url](#filter-sanitize-url)
-        
+
 <h1 id="filter">Class Phalcon\Filter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter.zep)
@@ -82,6 +82,7 @@ protected services;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $mapper = [] );
 ```
@@ -121,7 +122,7 @@ Loads the objects in the internal mapper array
 
 
 
-        
+
 <h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Exception.zep)
@@ -134,7 +135,7 @@ Phalcon\Filter\Exception
 Exceptions thrown in Phalcon\Filter will use this class
 
 
-        
+
 <h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterFactory.zep)
@@ -151,6 +152,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 public function newInstance(): FilterInterface;
 ```
@@ -161,10 +163,11 @@ functions
 ```php
 protected function getAdapters(): array;
 ```
-//
 
 
-        
+
+
+
 <h1 id="filter-filterinterface">Interface Phalcon\Filter\FilterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterInterface.zep)
@@ -175,6 +178,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 
 ## Methods
+
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
@@ -182,7 +186,7 @@ Sanitizes a value with a specified single or set of sanitizers
 
 
 
-        
+
 <h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Absint.zep)
@@ -195,6 +199,7 @@ Sanitizes a value to absolute integer
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -202,7 +207,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alnum.zep)
@@ -215,6 +220,7 @@ Sanitizes a value to an alphanumeric value
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -222,7 +228,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alpha.zep)
@@ -235,6 +241,7 @@ Sanitizes a value to an alpha value
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -242,7 +249,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-boolval">Class Phalcon\Filter\Sanitize\BoolVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Boolval.zep)
@@ -255,6 +262,7 @@ Sanitizes a value to boolean
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -262,7 +270,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-email">Class Phalcon\Filter\Sanitize\Email</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Email.zep)
@@ -275,6 +283,7 @@ Sanitizes an email string
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -282,7 +291,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-floatval">Class Phalcon\Filter\Sanitize\FloatVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Floatval.zep)
@@ -295,6 +304,7 @@ Sanitizes a value to float
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -302,7 +312,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-intval">Class Phalcon\Filter\Sanitize\IntVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Intval.zep)
@@ -315,6 +325,7 @@ Sanitizes a value to integer
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -322,7 +333,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-lower">Class Phalcon\Filter\Sanitize\Lower</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Lower.zep)
@@ -335,6 +346,7 @@ Sanitizes a value to lowercase
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -342,7 +354,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Lowerfirst.zep)
@@ -355,6 +367,7 @@ Sanitizes a value to lcfirst
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -362,7 +375,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Regex.zep)
@@ -375,6 +388,7 @@ Sanitizes a value performing preg_replace
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 ```
@@ -382,7 +396,7 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 
 
-        
+
 <h1 id="filter-sanitize-remove">Class Phalcon\Filter\Sanitize\Remove</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Remove.zep)
@@ -395,6 +409,7 @@ Sanitizes a value removing parts of a string
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input, mixed $replace );
 ```
@@ -402,7 +417,7 @@ public function __invoke( mixed $input, mixed $replace );
 
 
 
-        
+
 <h1 id="filter-sanitize-replace">Class Phalcon\Filter\Sanitize\Replace</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Replace.zep)
@@ -415,6 +430,7 @@ Sanitizes a value replacing parts of a string
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input, mixed $from, mixed $to );
 ```
@@ -422,7 +438,7 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 
 
-        
+
 <h1 id="filter-sanitize-special">Class Phalcon\Filter\Sanitize\Special</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Special.zep)
@@ -435,6 +451,7 @@ Sanitizes a value special characters
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -442,7 +459,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-specialfull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Specialfull.zep)
@@ -455,6 +472,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -462,7 +480,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-stringval">Class Phalcon\Filter\Sanitize\StringVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Stringval.zep)
@@ -475,6 +493,7 @@ Sanitizes a value to string
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```
@@ -482,7 +501,7 @@ public function __invoke( mixed $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Striptags.zep)
@@ -495,6 +514,7 @@ Sanitizes a value striptags
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -502,7 +522,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Trim.zep)
@@ -515,6 +535,7 @@ Sanitizes a value removing leading and trailing spaces
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -522,7 +543,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-upper">Class Phalcon\Filter\Sanitize\Upper</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upper.zep)
@@ -535,6 +556,7 @@ Sanitizes a value to uppercase
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -542,7 +564,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upperfirst.zep)
@@ -555,6 +577,7 @@ Sanitizes a value to ucfirst
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -562,7 +585,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upperwords.zep)
@@ -575,6 +598,7 @@ Sanitizes a value to uppercase the first character of each word
 
 
 ## Methods
+
 ```php
 public function __invoke( string $input );
 ```
@@ -582,7 +606,7 @@ public function __invoke( string $input );
 
 
 
-        
+
 <h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Url.zep)
@@ -595,6 +619,7 @@ Sanitizes a value url
 
 
 ## Methods
+
 ```php
 public function __invoke( mixed $input );
 ```

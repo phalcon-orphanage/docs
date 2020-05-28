@@ -9,7 +9,7 @@ title: 'Phalcon\Messages'
 * [Phalcon\Messages\Message](#messages-message)
 * [Phalcon\Messages\MessageInterface](#messages-messageinterface)
 * [Phalcon\Messages\Messages](#messages-messages)
-        
+
 <h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Exception.zep)
@@ -22,7 +22,7 @@ Phalcon\Validation\Exception
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 
-        
+
 <h1 id="messages-message">Class Phalcon\Messages\Message</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Message.zep)
@@ -66,6 +66,7 @@ protected metaData;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
 ```
@@ -83,9 +84,11 @@ public function getCode(): int
 ```
 
 
+
 ```php
 public function getField(): string
 ```
+
 
 
 ```php
@@ -93,14 +96,17 @@ public function getMessage(): string
 ```
 
 
+
 ```php
 public function getMetaData(): array
 ```
 
 
+
 ```php
 public function getType(): string
 ```
+
 
 
 ```php
@@ -140,7 +146,7 @@ Sets message type
 
 
 
-        
+
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/MessageInterface.zep)
@@ -153,6 +159,7 @@ Interface for Phalcon\Messages\MessageInterface
 
 
 ## Methods
+
 ```php
 public function __toString(): string;
 ```
@@ -164,15 +171,11 @@ public function getCode();
 ```
 Returns the message code related to this message
 
-@return int
-
 
 ```php
 public function getField();
 ```
 Returns field name related to message
-
-@return string
 
 
 ```php
@@ -224,7 +227,7 @@ Sets message type
 
 
 
-        
+
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Messages.zep)
@@ -251,6 +254,7 @@ protected messages;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $messages = [] );
 ```
@@ -277,7 +281,6 @@ Appends an array of messages to the collection
 ```php
 $messages->appendMessages($messagesArray);
 ```
-
 
 
 ```php
@@ -334,7 +337,6 @@ var_dump(
 ```
 
 
-
 ```php
 public function offsetGet( mixed $index ): mixed;
 ```
@@ -355,7 +357,6 @@ Sets an attribute using the array-syntax
 ```php
 $messages[0] = new \Phalcon\Messages\Message("This is a message");
 ```
-
 
 
 ```php

@@ -17,7 +17,7 @@ title: 'Phalcon\Annotations'
 * [Phalcon\Annotations\Reader](#annotations-reader)
 * [Phalcon\Annotations\ReaderInterface](#annotations-readerinterface)
 * [Phalcon\Annotations\Reflection](#annotations-reflection)
-        
+
 <h1 id="annotations-adapter-abstractadapter">Abstract Class Phalcon\Annotations\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/AbstractAdapter.zep)
@@ -44,6 +44,7 @@ protected reader;
 ```
 
 ## Methods
+
 ```php
 public function get( mixed $className ): Reflection;
 ```
@@ -87,7 +88,7 @@ Sets the annotations parser
 
 
 
-        
+
 <h1 id="annotations-adapter-adapterinterface">Interface Phalcon\Annotations\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/AdapterInterface.zep)
@@ -99,6 +100,7 @@ This interface must be implemented by adapters in Phalcon\Annotations
 
 
 ## Methods
+
 ```php
 public function get( string $className ): Reflection;
 ```
@@ -142,7 +144,7 @@ Sets the annotations parser
 
 
 
-        
+
 <h1 id="annotations-adapter-apcu">Class Phalcon\Annotations\Adapter\Apcu</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Apcu.zep)
@@ -175,10 +177,11 @@ protected ttl = 172800;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
-Phalcon\Annotations\Adapter\Apcu constructor
+
 
 
 ```php
@@ -194,7 +197,7 @@ Writes parsed annotations to APCu
 
 
 
-        
+
 <h1 id="annotations-adapter-memory">Class Phalcon\Annotations\Adapter\Memory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Memory.zep)
@@ -217,6 +220,7 @@ protected data;
 ```
 
 ## Methods
+
 ```php
 public function read( string $key ): Reflection | bool;
 ```
@@ -230,7 +234,7 @@ Writes parsed annotations to memory
 
 
 
-        
+
 <h1 id="annotations-adapter-stream">Class Phalcon\Annotations\Adapter\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Adapter/Stream.zep)
@@ -262,10 +266,11 @@ protected annotationsDir = ./;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $options = [] );
 ```
-Phalcon\Annotations\Adapter\Stream constructor
+
 
 
 ```php
@@ -281,7 +286,7 @@ Writes parsed annotations to files
 
 
 
-        
+
 <h1 id="annotations-annotation">Class Phalcon\Annotations\Annotation</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Annotation.zep)
@@ -317,6 +322,7 @@ protected name;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $reflectionData );
 ```
@@ -378,7 +384,7 @@ Returns the number of arguments that the annotation has
 
 
 
-        
+
 <h1 id="annotations-annotationsfactory">Class Phalcon\Annotations\AnnotationsFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/AnnotationsFactory.zep)
@@ -391,6 +397,7 @@ Factory to create annotations components
 
 
 ## Methods
+
 ```php
 public function __construct( array $services = [] );
 ```
@@ -400,7 +407,7 @@ AdapterFactory constructor.
 ```php
 public function load( mixed $config ): mixed;
 ```
-Factory to create an instance from a Config object
+
 
 
 ```php
@@ -416,7 +423,7 @@ The available adapters
 
 
 
-        
+
 <h1 id="annotations-collection">Class Phalcon\Annotations\Collection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Collection.zep)
@@ -457,6 +464,7 @@ protected position = 0;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $reflectionData = [] );
 ```
@@ -524,7 +532,7 @@ Check if the current annotation in the iterator is valid
 
 
 
-        
+
 <h1 id="annotations-exception">Class Phalcon\Annotations\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Exception.zep)
@@ -535,7 +543,7 @@ Check if the current annotation in the iterator is valid
 Class for exceptions thrown by Phalcon\Annotations
 
 
-        
+
 <h1 id="annotations-reader">Class Phalcon\Annotations\Reader</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reader.zep)
@@ -548,6 +556,7 @@ Parses docblocks returning an array with the found annotations
 
 
 ## Methods
+
 ```php
 public function parse( string $className ): array;
 ```
@@ -561,7 +570,7 @@ Parses a raw doc block returning the annotations found
 
 
 
-        
+
 <h1 id="annotations-readerinterface">Interface Phalcon\Annotations\ReaderInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/ReaderInterface.zep)
@@ -572,6 +581,7 @@ Parses docblocks returning an array with the found annotations
 
 
 ## Methods
+
 ```php
 public function parse( string $className ): array;
 ```
@@ -585,7 +595,7 @@ Parses a raw docblock returning the annotations found
 
 
 
-        
+
 <h1 id="annotations-reflection">Class Phalcon\Annotations\Reflection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reflection.zep)
@@ -629,6 +639,7 @@ protected reflectionData;
 ```
 
 ## Methods
+
 ```php
 public function __construct( array $reflectionData = [] );
 ```

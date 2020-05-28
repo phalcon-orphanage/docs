@@ -17,7 +17,7 @@ title: 'Phalcon\Cli'
 * [Phalcon\Cli\RouterInterface](#cli-routerinterface)
 * [Phalcon\Cli\Task](#cli-task)
 * [Phalcon\Cli\TaskInterface](#cli-taskinterface)
-        
+
 <h1 id="cli-console">Class Phalcon\Cli\Console</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Console.zep)
@@ -44,6 +44,7 @@ protected options;
 ```
 
 ## Methods
+
 ```php
 public function handle( array $arguments = null );
 ```
@@ -57,7 +58,7 @@ Set an specific argument
 
 
 
-        
+
 <h1 id="cli-console-exception">Class Phalcon\Cli\Console\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Console/Exception.zep)
@@ -68,7 +69,7 @@ Set an specific argument
 Exceptions thrown in Phalcon\Cli\Console will use this class
 
 
-        
+
 <h1 id="cli-dispatcher">Class Phalcon\Cli\Dispatcher</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Dispatcher.zep)
@@ -125,6 +126,7 @@ protected options;
 ```
 
 ## Methods
+
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] ): mixed;
 ```
@@ -147,7 +149,6 @@ Returns the latest dispatched controller
 public function getOption( mixed $option, mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 Gets an option by its name or numeric index
-
 
 
 ```php
@@ -211,7 +212,7 @@ Throws an internal exception
 
 
 
-        
+
 <h1 id="cli-dispatcher-exception">Class Phalcon\Cli\Dispatcher\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Dispatcher/Exception.zep)
@@ -222,7 +223,7 @@ Throws an internal exception
 Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 
-        
+
 <h1 id="cli-dispatcherinterface">Interface Phalcon\Cli\DispatcherInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/DispatcherInterface.zep)
@@ -235,6 +236,7 @@ Interface for Phalcon\Cli\Dispatcher
 
 
 ## Methods
+
 ```php
 public function getActiveTask(): TaskInterface;
 ```
@@ -290,7 +292,7 @@ Sets the default task suffix
 
 
 
-        
+
 <h1 id="cli-router">Class Phalcon\Cli\Router</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router.zep)
@@ -364,6 +366,7 @@ protected wasMatched = false;
 ```
 
 ## Methods
+
 ```php
 public function __construct( bool $defaultRoutes = bool );
 ```
@@ -378,7 +381,6 @@ Adds a route to the router
 ```php
 $router->add("/about", "About::main");
 ```
-
 
 
 ```php
@@ -417,7 +419,6 @@ public function getRouteById( mixed $id ): RouteInterface | bool;
 Returns a route object by its id
 
 
-
 ```php
 public function getRouteByName( string $name ): RouteInterface | bool;
 ```
@@ -440,7 +441,6 @@ Returns processed task name
 public function handle( mixed $arguments = null );
 ```
 Handles routing information received from command-line arguments
-
 
 
 ```php
@@ -485,7 +485,7 @@ Checks if the router matches any of the defined routes
 
 
 
-        
+
 <h1 id="cli-router-exception">Class Phalcon\Cli\Router\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Exception.zep)
@@ -496,7 +496,7 @@ Checks if the router matches any of the defined routes
 Exceptions thrown in Phalcon\Cli\Router will use this class
 
 
-        
+
 <h1 id="cli-router-route">Class Phalcon\Cli\Router\Route</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Route.zep)
@@ -550,9 +550,11 @@ protected static uniqueId = 0;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $pattern, mixed $paths = null );
 ```
+
 
 
 ```php
@@ -561,7 +563,6 @@ public function beforeMatch( mixed $callback ): RouteInterface;
 Sets a callback that is called if the route is matched.
 The developer can implement any arbitrary conditions here
 If the callback returns false the route is treated as not matched
-
 
 
 ```php
@@ -576,7 +577,6 @@ public function convert( string $name, mixed $converter ): RouteInterface;
 ```
 Adds a converter to perform an additional transformation for certain
 parameter
-
 
 
 ```php
@@ -657,7 +657,6 @@ public function reConfigure( string $pattern, mixed $paths = null ): void;
 Reconfigure the route adding a new pattern and a set of paths
 
 
-
 ```php
 public static function reset(): void;
 ```
@@ -686,7 +685,7 @@ $router->add(
 
 
 
-        
+
 <h1 id="cli-router-routeinterface">Interface Phalcon\Cli\Router\RouteInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/RouteInterface.zep)
@@ -697,6 +696,7 @@ Interface for Phalcon\Cli\Router\Route
 
 
 ## Methods
+
 ```php
 public function compilePattern( string $pattern ): string;
 ```
@@ -783,7 +783,7 @@ Sets the route's name
 
 
 
-        
+
 <h1 id="cli-routerinterface">Interface Phalcon\Cli\RouterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/RouterInterface.zep)
@@ -795,6 +795,7 @@ Interface for Phalcon\Cli\Router
 
 
 ## Methods
+
 ```php
 public function add( string $pattern, mixed $paths = null ): RouteInterface;
 ```
@@ -861,7 +862,6 @@ public function handle( mixed $arguments = null );
 Handles routing information received from the rewrite engine
 
 
-
 ```php
 public function setDefaultAction( string $actionName ): void;
 ```
@@ -893,7 +893,7 @@ Check if the router matches any of the defined routes
 
 
 
-        
+
 <h1 id="cli-task">Class Phalcon\Cli\Task</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Task.zep)
@@ -935,6 +935,7 @@ protected eventsManager;
 ```
 
 ## Methods
+
 ```php
 final public function __construct();
 ```
@@ -954,7 +955,7 @@ Sets the events manager
 
 
 
-        
+
 <h1 id="cli-taskinterface">Interface Phalcon\Cli\TaskInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/TaskInterface.zep)

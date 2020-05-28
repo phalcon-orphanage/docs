@@ -33,7 +33,7 @@ title: 'Phalcon\Filter'
 
 <h1 id="filter">Class Phalcon\Filter</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter.zep)
 
 | Namespace | Phalcon | | Uses | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface | | Implements | FilterInterface |
 
@@ -120,7 +120,7 @@ Loads the objects in the internal mapper array
 
 <h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Exception.zep)
 
 | Namespace | Phalcon\Filter | | Extends | \Phalcon\Exception |
 
@@ -130,7 +130,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 <h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterfactory.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterFactory.zep)
 
 | Namespace | Phalcon\Filter | | Uses | Phalcon\Filter |
 
@@ -152,11 +152,9 @@ Returns a Locator object with all the helpers defined in anonymous functions
 protected function getAdapters(): array;
 ```
 
-//
-
 <h1 id="filter-filterinterface">Interface Phalcon\Filter\FilterInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterinterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterInterface.zep)
 
 | Namespace | Phalcon\Filter |
 
@@ -172,7 +170,7 @@ Sanitizes a value with a specified single or set of sanitizers
 
 <h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/absint.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/AbsInt.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -190,7 +188,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/alnum.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alnum.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -208,7 +206,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/alpha.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alpha.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -226,7 +224,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-boolval">Class Phalcon\Filter\Sanitize\BoolVal</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/boolval.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/BoolVal.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -244,7 +242,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-email">Class Phalcon\Filter\Sanitize\Email</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/email.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Email.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -262,7 +260,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-floatval">Class Phalcon\Filter\Sanitize\FloatVal</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/floatval.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/FloatVal.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -280,7 +278,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-intval">Class Phalcon\Filter\Sanitize\IntVal</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/intval.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/IntVal.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -298,7 +296,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-lower">Class Phalcon\Filter\Sanitize\Lower</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/lower.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Lower.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -316,7 +314,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/lowerfirst.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/LowerFirst.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -334,7 +332,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/regex.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Regex.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -352,7 +350,7 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 <h1 id="filter-sanitize-remove">Class Phalcon\Filter\Sanitize\Remove</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/remove.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Remove.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -370,7 +368,7 @@ public function __invoke( mixed $input, mixed $replace );
 
 <h1 id="filter-sanitize-replace">Class Phalcon\Filter\Sanitize\Replace</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/replace.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Replace.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -388,7 +386,7 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 <h1 id="filter-sanitize-special">Class Phalcon\Filter\Sanitize\Special</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/special.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Special.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -406,7 +404,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-specialfull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/specialfull.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/SpecialFull.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -424,7 +422,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-stringval">Class Phalcon\Filter\Sanitize\StringVal</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/stringval.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/StringVal.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -442,7 +440,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/striptags.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Striptags.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -460,7 +458,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/trim.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Trim.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -478,7 +476,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-upper">Class Phalcon\Filter\Sanitize\Upper</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/upper.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upper.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -496,7 +494,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/upperfirst.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperFirst.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -514,7 +512,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/upperwords.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperWords.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 
@@ -532,7 +530,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/url.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Url.zep)
 
 | Namespace | Phalcon\Filter\Sanitize |
 

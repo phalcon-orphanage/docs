@@ -13,7 +13,7 @@ keywords: 'cli, command line, application, tasks'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-# Overview
+# Visão Geral
 
 CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on screen) and can be run more than one at a time. Some of the common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
 
@@ -131,7 +131,7 @@ $container->setShared('dispatcher', $dispatcher);
 
 CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
 
-**Application**
+**Aplicação**
 
 ```php
 $console = new Console($container);
@@ -472,7 +472,7 @@ $router = new Router(false);
 
 For more information regarding routes and the route classes, you can check the [Routing](routing) page.
 
-## Events
+## Eventos
 
 CLI applications are also <events> aware. You can use the `setEventsManager` and `getEventsManager` methods to access the events manager.
 

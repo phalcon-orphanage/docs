@@ -146,7 +146,7 @@ Returns the current method to be/executed in the dispatcher
 public function getBoundModels(): array
 ```
 
-Returns bound models from binder instance
+Devuelve los modelos enlazados de la instancia del enlazador
 
 ```php
 <?php

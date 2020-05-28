@@ -19,7 +19,7 @@ title: 'Phalcon\Logger'
 * [Phalcon\Logger\Formatter\Line](#logger-formatter-line)
 * [Phalcon\Logger\Item](#logger-item)
 * [Phalcon\Logger\LoggerFactory](#logger-loggerfactory)
-        
+
 <h1 id="logger">Class Phalcon\Logger</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger.zep)
@@ -105,18 +105,17 @@ protected excluded;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $adapters = [] );
 ```
 Constructor.
 
 
-
 ```php
 public function addAdapter( string $name, AdapterInterface $adapter ): Logger;
 ```
 Add an adapter to the stack. For processing we use FIFO
-
 
 
 ```php
@@ -128,7 +127,6 @@ Example: Entire website down, database unavailable, etc. This should
 trigger the SMS alerts and wake you up.
 
 
-
 ```php
 public function critical( mixed $message, array $context = [] ): void;
 ```
@@ -137,12 +135,10 @@ Critical conditions.
 Example: Application component unavailable, unexpected exception.
 
 
-
 ```php
 public function debug( mixed $message, array $context = [] ): void;
 ```
 Detailed debug information.
-
 
 
 ```php
@@ -151,13 +147,11 @@ public function emergency( mixed $message, array $context = [] ): void;
 System is unusable.
 
 
-
 ```php
 public function error( mixed $message, array $context = [] ): void;
 ```
 Runtime errors that do not require immediate action but should typically
 be logged and monitored.
-
 
 
 ```php
@@ -172,20 +166,16 @@ public function getAdapter( string $name ): AdapterInterface;
 Returns an adapter from the stack
 
 
-@throws Exception
-
-
 ```php
 public function getAdapters(): array;
 ```
 Returns the adapter stack array
 
-@return AdapterInterface[]
-
 
 ```php
 public function getLogLevel(): int
 ```
+
 
 
 ```php
@@ -202,12 +192,10 @@ Interesting events.
 Example: User logs in, SQL logs.
 
 
-
 ```php
 public function log( mixed $level, mixed $message, array $context = [] ): void;
 ```
 Logs with an arbitrary level.
-
 
 
 ```php
@@ -216,21 +204,16 @@ public function notice( mixed $message, array $context = [] ): void;
 Normal but significant events.
 
 
-
 ```php
 public function removeAdapter( string $name ): Logger;
 ```
 Removes an adapter from the stack
 
 
-@throws Logger\Exception
-
-
 ```php
 public function setAdapters( array $adapters ): Logger;
 ```
 Sets the adapters stack overriding what is already there
-
 
 
 ```php
@@ -248,14 +231,10 @@ Example: Use of deprecated APIs, poor use of an API, undesirable things
 that are not necessarily wrong.
 
 
-
 ```php
 protected function addMessage( int $level, string $message, array $context = [] ): bool;
 ```
 Adds a message to each handler for processing
-
-
-@throws Logger\Exception
 
 
 ```php
@@ -265,7 +244,7 @@ Returns an array of log levels with integer to string conversion
 
 
 
-        
+
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/AbstractAdapter.zep)
@@ -315,6 +294,7 @@ protected queue;
 ```
 
 ## Methods
+
 ```php
 public function __destruct();
 ```
@@ -342,7 +322,8 @@ Commits the internal transaction
 ```php
 public function getFormatter(): FormatterInterface;
 ```
-//
+
+
 
 ```php
 public function inTransaction(): bool;
@@ -355,6 +336,7 @@ abstract public function process( Item $item ): void;
 ```
  Processes the message in the adapter
  
+
 
 ```php
 public function rollback(): AdapterInterface;
@@ -369,7 +351,7 @@ Sets the message formatter
 
 
 
-        
+
 <h1 id="logger-adapter-adapterinterface">Interface Phalcon\Logger\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/AdapterInterface.zep)
@@ -383,6 +365,7 @@ Interface for Phalcon\Logger adapters
 
 
 ## Methods
+
 ```php
 public function add( Item $item ): AdapterInterface;
 ```
@@ -419,8 +402,6 @@ public function inTransaction(): bool;
 Returns the whether the logger is currently in an active transaction or
 not
 
-@return bool
-
 
 ```php
 public function process( Item $item ): void;
@@ -441,7 +422,7 @@ Sets the message formatter
 
 
 
-        
+
 <h1 id="logger-adapter-noop">Class Phalcon\Logger\Adapter\Noop</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/Noop.zep)
@@ -465,6 +446,7 @@ $logger->close();
 
 
 ## Methods
+
 ```php
 public function close(): bool;
 ```
@@ -478,7 +460,7 @@ Processes the message i.e. writes it to the file
 
 
 
-        
+
 <h1 id="logger-adapter-stream">Class Phalcon\Logger\Adapter\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/Stream.zep)
@@ -535,6 +517,7 @@ protected options;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $options = [] );
 ```
@@ -552,6 +535,7 @@ public function getName(): string
 ```
 
 
+
 ```php
 public function process( Item $item ): void;
 ```
@@ -559,7 +543,7 @@ Processes the message i.e. writes it to the file
 
 
 
-        
+
 <h1 id="logger-adapter-syslog">Class Phalcon\Logger\Adapter\Syslog</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Adapter/Syslog.zep)
@@ -623,6 +607,7 @@ protected option = 0;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $name, array $options = [] );
 ```
@@ -635,6 +620,7 @@ public function close(): bool;
  Closes the logger
  
 
+
 ```php
 public function process( Item $item ): void;
 ```
@@ -642,7 +628,7 @@ Processes the message i.e. writes it to the syslog
 
 
 
-        
+
 <h1 id="logger-adapterfactory">Class Phalcon\Logger\AdapterFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/AdapterFactory.zep)
@@ -660,6 +646,7 @@ file that was distributed with this source code.
 
 
 ## Methods
+
 ```php
 public function __construct( array $services = [] );
 ```
@@ -675,10 +662,11 @@ Create a new instance of the adapter
 ```php
 protected function getAdapters(): array;
 ```
-//
 
 
-        
+
+
+
 <h1 id="logger-exception">Class Phalcon\Logger\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Exception.zep)
@@ -691,7 +679,7 @@ Phalcon\Logger\Exception
 Exceptions thrown in Phalcon\Logger will use this class
 
 
-        
+
 <h1 id="logger-formatter-abstractformatter">Abstract Class Phalcon\Logger\Formatter\AbstractFormatter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/Abstractformatter.zep)
@@ -720,9 +708,11 @@ protected dateFormat;
 ```
 
 ## Methods
+
 ```php
 public function getDateFormat(): string
 ```
+
 
 
 ```php
@@ -738,14 +728,17 @@ public function setDateFormat( string $dateFormat )
 ```
 
 
+
 ```php
 protected function getFormattedDate(): string;
 ```
 Returns the date formatted for the logger.
+@todo Not using the set time from the Item since we have interface
+misalignment which will break semver This will change in the future
 
 
 
-        
+
 <h1 id="logger-formatter-formatterinterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/FormatterInterface.zep)
@@ -759,6 +752,7 @@ This interface must be implemented by formatters in Phalcon\Logger
 
 
 ## Methods
+
 ```php
 public function format( Item $item ): string | array;
 ```
@@ -766,7 +760,7 @@ Applies a format to an item
 
 
 
-        
+
 <h1 id="logger-formatter-json">Class Phalcon\Logger\Formatter\Json</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/Json.zep)
@@ -781,6 +775,7 @@ Formats messages using JSON encoding
 
 
 ## Methods
+
 ```php
 public function __construct( string $dateFormat = string );
 ```
@@ -794,7 +789,7 @@ Applies a format to a message before sent it to the internal log
 
 
 
-        
+
 <h1 id="logger-formatter-line">Class Phalcon\Logger\Formatter\Line</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Formatter/Line.zep)
@@ -820,6 +815,7 @@ protected format;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $format = string, string $dateFormat = string );
 ```
@@ -837,13 +833,15 @@ public function getFormat(): string
 ```
 
 
+
 ```php
 public function setFormat( string $format )
 ```
 
 
 
-        
+
+
 <h1 id="logger-item">Class Phalcon\Logger\Item</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Item.zep)
@@ -858,7 +856,10 @@ Represents each item in a logging transaction
 
 ## Properties
 ```php
-//
+/**
+ * Log Context
+ * @return mixed
+ */
 protected context;
 
 /**
@@ -892,10 +893,12 @@ protected type;
 ```
 
 ## Methods
+
 ```php
 public function __construct( string $message, string $name, int $type, int $time = int, mixed $context = [] );
 ```
 Phalcon\Logger\Item constructor
+@todo Remove the time or change the signature to an array
 
 
 ```php
@@ -903,9 +906,11 @@ public function getContext()
 ```
 
 
+
 ```php
 public function getMessage(): string
 ```
+
 
 
 ```php
@@ -913,9 +918,11 @@ public function getName(): string
 ```
 
 
+
 ```php
 public function getTime(): integer
 ```
+
 
 
 ```php
@@ -924,7 +931,8 @@ public function getType(): integer
 
 
 
-        
+
+
 <h1 id="logger-loggerfactory">Class Phalcon\Logger\LoggerFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/LoggerFactory.zep)
@@ -947,10 +955,12 @@ private adapterFactory;
 ```
 
 ## Methods
+
 ```php
 public function __construct( AdapterFactory $factory );
 ```
-//
+
+
 
 ```php
 public function load( mixed $config ): Logger;
@@ -962,8 +972,5 @@ Factory to create an instance from a Config object
 public function newInstance( string $name, array $adapters = [] ): Logger;
 ```
 Returns a Logger object
-
-
-@return Logger
 
 

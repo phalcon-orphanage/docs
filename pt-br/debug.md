@@ -2,17 +2,17 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-title: 'Debug'
+title: 'Depuração'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# Depuração
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Visão Geral
 
 ![](/assets/images/content/xdebug-1.jpg)
 

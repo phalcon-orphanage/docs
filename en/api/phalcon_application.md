@@ -7,7 +7,7 @@ title: 'Phalcon\Application'
 
 * [Phalcon\Application\AbstractApplication](#application-abstractapplication)
 * [Phalcon\Application\Exception](#application-exception)
-        
+
 <h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/AbstractApplication.zep)
@@ -45,6 +45,7 @@ protected modules;
 ```
 
 ## Methods
+
 ```php
 public function __construct( DiInterface $container = null );
 ```
@@ -109,7 +110,7 @@ Sets the events manager
 
 
 
-        
+
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/Exception.zep)
