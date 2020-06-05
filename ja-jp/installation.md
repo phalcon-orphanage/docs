@@ -155,7 +155,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **NOTE**: ディストリビューションを変更したり安定板とNightly版を切り替えるといった事情がなければ、この作業の実施は一度だけしか必要ありません。
 {: .alert .alert-warning }
 
 ##### Phalcon のインストール
@@ -171,16 +171,16 @@ sudo apt-get install php7.2-phalcon
 
 **Ondřej Surý**
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+[packagecloud.io](https://packagecloud.io/phalcon)にて提供されるリポジトリを使用したくない場合、[OndřejSurý](https://launchpad.net/~ondrej/+archive/ubuntu/php/)が提供するリポジトリをいつでも使用できます。
 
-Installation of the repo:
+リポジトリのインストール:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+Phalconのインストール:
 
 ```php
 sudo apt-get install php-phalcon4
@@ -210,32 +210,32 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **NOTE**: ディストリビューションを変更したり安定板とNightly版を切り替えるといった事情がなければ、この作業の実施は一度だけしか必要ありません。
 {: .alert .alert-warning }
 
 
 ##### Phalcon のインストール
 
-To install Phalcon you need to issue the following commands in your terminal:
+次のコマンドを実行して、Phalcon をインストールします。
 
 ```bash
 sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### Additional RPMs
+##### 追加のRPM
 
 **Remi**
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet)は、RPMベースのインストールのための素晴らしいリポジトリをメンテナンスしています。 ディストリビューションを有効にする方法については[こちら](https://blog.remirepo.net/pages/Config-en)をご覧ください。
 
-Installing Phalcon after that is as easy as:
+その後、次のように簡単にPhalconをインストールできます:
 
 ```bash
 yum install php72-php-phalcon4
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
+追加のバージョンには、アーキテクチャー固有のもの (x86/x64) とPHP固有のものがあります
 
 #### FreeBSD
 
@@ -257,7 +257,7 @@ make install clean
 
 ##### Gentoo
 
-An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
+Phalconをインストールするためのオーバーレイは、[こちら](https://github.com/smoke/phalcon-gentoo-overlay)にあります。
 
 #### Raspberry Pi
 
@@ -368,16 +368,16 @@ Restart your webserver.
 
 #### Requirements
 
-* PHP 7.2.x/7.3.x development resources
+* PHP 7.2.x/7.3.x の開発環境
 * GCCコンパイラ (Linux/Solaris/FreeBSD) または Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-#### Compilation
+#### コンパイル
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+最新の `zephir.phar` を [からダウンロードする](https://github.com/phalcon/zephir/releases)。 システムからアクセスできるフォルダに追加します。
 
-Clone the repository
+このリポジトリのクローンを作成
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -392,7 +392,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+モジュールをチェック
 
 ```bash
 php -m | grep phalcon
