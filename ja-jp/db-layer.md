@@ -1676,7 +1676,7 @@ The adapters also send events to an [Events Manager](events) if it is present. I
 | イベント名                 | トリガー                                | Can stop |
 | --------------------- | ----------------------------------- |:--------:|
 | `afterQuery`          | After a query is executed           |    No    |
-| `beforeQuery`         | Before a query is executed          |   Yes    |
+| `beforeQuery`         | Before a query is executed          |    はい    |
 | `beginTransaction`    | Before a transaction starts         |    No    |
 | `createSavepoint`     | Before a savepoint is created       |    No    |
 | `commitTransaction`   | Before a transaction is committed   |    No    |
@@ -2017,17 +2017,17 @@ The `createTable` method accepts an associative array describing the table. Colu
 
 | オプション           | Description                                                                                                             | Optional |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `after`         | Column must be placed after indicated column                                                                            |   Yes    |
-| `autoIncrement` | Set whether this column will be auto incremented by the database. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                  |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                  |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                             |   Yes    |
-| `notNull`       | Column can store null values                                                                                            |   Yes    |
-| `primary`       | `true` if the column is part of the table's primary key                                                                 |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                         |   Yes    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                               |   Yes    |
+| `after`         | Column must be placed after indicated column                                                                            |    はい    |
+| `autoIncrement` | Set whether this column will be auto incremented by the database. Only one column in the table can have this attribute. |    はい    |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                  |    はい    |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                  |    はい    |
+| `first`         | Column must be placed at first position in the column order                                                             |    はい    |
+| `notNull`       | Column can store null values                                                                                            |    はい    |
+| `primary`       | `true` if the column is part of the table's primary key                                                                 |    はい    |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                         |    はい    |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                               |    はい    |
 | `type`          | Column type. Must be a [Phalcon\Db\Column](api/phalcon_db#db-column) constant (see below for a list)                  |    No    |
-| `unsigned`      | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                   |   Yes    |
+| `unsigned`      | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                   |    はい    |
 
 The following database column types are supported by the adapters:
 
@@ -2044,9 +2044,9 @@ The associative array passed in `createTable()` can have the following keys:
 | Index        | Description                                                                                                | Optional |
 | ------------ | ---------------------------------------------------------------------------------------------------------- |:--------:|
 | `columns`    | An array with columns defined with [Phalcon\Db\Column](api/phalcon_db#db-column)                         |    No    |
-| `indexes`    | An array with indexes defined with [Phalcon\Db\Index](api/phalcon_db#db-index)                           |   Yes    |
-| `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference](api/phalcon_db#db-reference) |   Yes    |
-| `options`    | An array with creation options. (specific to the database system)                                          |   Yes    |
+| `indexes`    | An array with indexes defined with [Phalcon\Db\Index](api/phalcon_db#db-index)                           |    はい    |
+| `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference](api/phalcon_db#db-reference) |    はい    |
+| `options`    | An array with creation options. (specific to the database system)                                          |    はい    |
 
 ### Alter
 
