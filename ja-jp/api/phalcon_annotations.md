@@ -372,7 +372,7 @@ Factory to create annotations components
 public function __construct( array $services = [] );
 ```
 
-AdapterFactory constructor.
+AdapterFactory コンストラクタ
 
 ```php
 public function load( mixed $config ): mixed;
@@ -382,7 +382,7 @@ public function load( mixed $config ): mixed;
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+このアダプターの新しいインスタンスを作成
 
 ```php
 protected function getAdapters(): array;
