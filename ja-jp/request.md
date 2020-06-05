@@ -545,7 +545,7 @@ The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the 
 | Event                        | Description                                      | Can stop operation |
 | ---------------------------- | ------------------------------------------------ |:------------------:|
 | `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |         No         |
-| `beforeAuthorizationResolve` | Fires before the authorization has been resolved |        Yes         |
+| `beforeAuthorizationResolve` | Fires before the authorization has been resolved |         はい         |
 
 When using HTTP authorization, the `Authorization` header has the following format:
 
