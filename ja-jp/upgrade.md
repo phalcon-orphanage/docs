@@ -2,49 +2,49 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Upgrade Guide'
+title: 'アップグレードガイド'
 keywords: 'upgrade, v3, v4'
 ---
 
-# Upgrade Guide
+# アップグレードガイド
 
 * * *
 
-# Upgrading to V4
+# V4へのアップグレード
 
-So you have decided to upgrade to v4! **Congratulations**!!
+v4にアップグレードすることにしたのですね！ **おめでとうございます**!!
 
-Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 には、インターフェイスへの変更、厳格なタイプ、コンポーネントの削除、新しいコンポーネントの追加など、コンポーネントへの多くの変更が含まれています。 このドキュメントは、既存のPhalconアプリケーションをv4にアップグレードするのに役立ちます。 v3と同じようにコードをスムーズに実行できるように、変更を加える必要がある部分を中心に解説します。 変更は重要です。順序通りに作業すれば容易にできます。
 
-## Requirements
+## インストール要件
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 は、 PHP 7.2 もしくはそれ以降のバージョンのみをサポートしています。 2年前にリリースされたPHP 7.1は、[サポート](https://secure.php.net/supported-versions.php)が失効したため、継続的にサポートされているPHPバージョンに従うことにしました。
 
 <a name='psr'></a>
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon には PSR 拡張機能が必要です。 拡張機能は、[こちら](https://github.com/jbboehr/php-psr) のGitHubリポジトリからダウンロードしてコンパイルできます。 拡張機能のインストール手順は、リポジトリの` README `に記載されています。 拡張機能をコンパイルしてシステムで使用可能になったら、それを` php.ini `でロードする必要があります。 下記のように、1行を追加してください。
 
 ```ini
 extension=psr.so
 ```
 
-before
+変更前
 
 ```ini
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+一部のディストリビューションでは、` ini `ファイル名に数字のプレフィックスが追加される場合があります。 その場合は、大きい数値を指定してください(例：` 50-phalcon.ini `)。
 
 ### インストール
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+最新の `zephir.phar` を [からダウンロードする](https://github.com/phalcon/zephir/releases)。 システムからアクセスできるフォルダに追加します。
 
-Clone the repository
+このリポジトリのクローンを作成
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -59,7 +59,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+モジュールをチェック
 
 ```bash
 php -m | grep phalcon
