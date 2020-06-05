@@ -76,7 +76,7 @@ compared to:
 <?php } ?>
 ```
 
-## Constructor
+## コンストラクタ
 
 ```php
 public function __construct(
@@ -169,7 +169,7 @@ sort(array $value): array
 
 Sorts an array
 
-## Activation
+## 機能の有効化
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
