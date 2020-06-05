@@ -496,9 +496,9 @@ The following events are available:
 | Event              | Description                                                                             | Can stop operation? |
 | ------------------ | --------------------------------------------------------------------------------------- | ------------------- |
 | `afterCheckClass`  | Fires at the end of the end of the auto load process when the class has not been found. | No                  |
-| `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class.         | Yes                 |
-| `beforeCheckPath`  | Fires before checking a directory for a class file.                                     | Yes                 |
-| `pathFound`        | Fires when the loader locates a class file or a file in a registered directory          | Yes                 |
+| `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class.         | はい                  |
+| `beforeCheckPath`  | Fires before checking a directory for a class file.                                     | はい                  |
+| `pathFound`        | Fires when the loader locates a class file or a file in a registered directory          | はい                  |
 
 In the following example, the `EventsManager` is working with the class loader, offering additional information on the operation flow:
 
