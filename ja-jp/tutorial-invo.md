@@ -651,7 +651,7 @@ Following that we get the name of the controller and the action, and also retrie
 
 If we do not have access, then the method will return `false` stopping the execution, right after we forward the user to the home page.
 
-### ACL
+### アクセス制御リスト(ACL)
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. To build the ACL we need to do the following:
 
@@ -1715,7 +1715,7 @@ public function saveAction()
 }
 ```
 
-## Components
+## コンポーネント
 
 The UI has been create with the [Bootstrap](https://getbootstrap.com) library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
