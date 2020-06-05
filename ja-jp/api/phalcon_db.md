@@ -1816,7 +1816,7 @@ Factory to create an instance from a Config object
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+このアダプターの新しいインスタンスを作成
 
 ```php
 protected function getAdapters(): array;
