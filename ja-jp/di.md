@@ -1586,7 +1586,7 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `db`                 | [Phalcon\Db](db-layer)                                             | Yes    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Yes    | ディスパッチャー                     |
 | `escaper`            | [Phalcon\Escaper](escaper)                                         | Yes    | エスケープ                        |
-| `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Yes    | Events Manager               |
+| `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Yes    | イベント管理                       |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Yes    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Yes    | Flash Session Messaging      |
 | `filter`             | [Phalcon\Filter](filter)                                           | Yes    | Filtering / Sanitizing       |
