@@ -480,10 +480,10 @@ The following events are available:
 
 | Event               | Stop | Description                                             |
 | ------------------- |:----:| ------------------------------------------------------- |
-| `afterHandleTask`   | Yes  | Called after the task is handled                        |
-| `afterStartModule`  | Yes  | Called after processing a module (if modules are used)  |
+| `afterHandleTask`   |  はい  | Called after the task is handled                        |
+| `afterStartModule`  |  はい  | Called after processing a module (if modules are used)  |
 | `beforeHandleTask`  |  No  | Called before the task is handled                       |
-| `beforeStartModule` | Yes  | Called before processing a module (if modules are used) |
-| `boot`              | Yes  | Called when the application boots                       |
+| `beforeStartModule` |  はい  | Called before processing a module (if modules are used) |
+| `boot`              |  はい  | Called when the application boots                       |
 
 If you use the [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) you can also take advantage of the `beforeException` event, which can stop operations and is fired from the dispatcher object.
