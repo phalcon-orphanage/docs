@@ -3,11 +3,11 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 upgrade: '#volt'
-title: 'Volt: Template Engine'
+title: 'Volt: テンプレートエンジン'
 keywords: 'volt, template engine, php generation, view data'
 ---
 
-# Volt: Template Engine
+# Volt: テンプレートエンジン
 
 * * *
 
@@ -23,9 +23,9 @@ Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally create
 
 Many developers will be in familiar territory, using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to, while working with Phalcon.
 
-## Syntax
+## 構文
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Voltによるビューは純粋なPHPコードにコンパイルされるので、手作業でPHPコードを書く労力を節約することができます:
 
 ```twig
 {% raw %}
