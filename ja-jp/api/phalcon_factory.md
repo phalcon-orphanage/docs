@@ -59,7 +59,7 @@ Returns the adapters for the factory
 protected function init( array $services = [] ): void;
 ```
 
-AdapterFactory constructor.
+AdapterFactory コンストラクタ
 
 <h1 id="factory-exception">Class Phalcon\Factory\Exception</h1>
 
