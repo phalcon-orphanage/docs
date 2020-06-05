@@ -715,4 +715,4 @@ The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements th
 | Event               | Description                             | Can stop operation |
 | ------------------- | --------------------------------------- |:------------------:|
 | `afterSendHeaders`  | Fires after the headers have been sent  |         No         |
-| `beforeSendHeaders` | Fires before the headers have been sent |        Yes         |
+| `beforeSendHeaders` | Fires before the headers have been sent |         はい         |
