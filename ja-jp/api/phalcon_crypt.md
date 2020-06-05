@@ -10,7 +10,7 @@ title: 'Phalcon\Crypt'
 * [Phalcon\Crypt\Exception](#crypt-exception)
 * [Phalcon\Crypt\Mismatch](#crypt-mismatch)
 
-<h1 id="crypt">Class Phalcon\Crypt</h1>
+<h1 id="crypt">Phalcon\Cryptクラス</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt.zep)
 
