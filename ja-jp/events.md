@@ -891,8 +891,8 @@ The events available in Phalcon are:
 
 | Component                   | Event                                | Parameters                                              |
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
-| [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
-| [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
+| [アクセス制御リスト(ACL)](acl)       | `acl:afterCheckAccess`               | Acl                                                     |
+| [アクセス制御リスト(ACL)](acl)       | `acl:beforeCheckAccess`              | Acl                                                     |
 | [アプリケーション](application)     | `application:afterHandleRequest`     | Application, Controller                                 |
 | [アプリケーション](application)     | `application:afterStartModule`       | Application, Module                                     |
 | [アプリケーション](application)     | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
