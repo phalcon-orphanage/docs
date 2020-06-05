@@ -1105,7 +1105,7 @@ class InvoicesController extends Controller
 > **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event](api/phalcon_events#events-event) object as their first parameter - methods in controllers do not.
 {: .alert .alert-warning }
 
-## Events Manager
+## イベント管理
 
 You can use the `dispatcher::beforeForward` event to change modules and perform redirections easier.
 
