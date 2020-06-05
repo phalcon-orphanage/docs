@@ -1034,17 +1034,17 @@ class ExceptionsPlugin
 
 | イベント名                  | トリガー                                                                                                                        | Can stop |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `afterBinding`         | After models are bound but before executing route                                                                           |   Yes    |
-| `afterDispatch`        | After executing the controller/action method.                                                                               |   Yes    |
+| `afterBinding`         | After models are bound but before executing route                                                                           |    はい    |
+| `afterDispatch`        | After executing the controller/action method.                                                                               |    はい    |
 | `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |    No    |
 | `afterExecuteRoute`    | After executing the controller/action method.                                                                               |    No    |
 | `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |    No    |
-| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
-| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Yes    |
-| `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Yes    |
-| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |   Yes    |
+| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |    はい    |
+| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |    はい    |
+| `beforeException`      | Before the dispatcher throws any exception                                                                                  |    はい    |
+| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |    はい    |
 | `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |    No    |
-| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Yes    |
+| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |    はい    |
 
 The [INVO](https://github.com/phalcon/invo) sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl)
 
