@@ -36,7 +36,7 @@ $app->handle(
 );
 ```
 
-## Activation
+## 機能の有効化
 
 The [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) class is the one responsible for creating a Micro application.
 
@@ -351,7 +351,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application 
    Application : (http method): (route url/regex, callable PHP function/handler)
 ```
 
-### Activation
+### 機能の有効化
 
 Routing is handled by the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) object.
 
@@ -1556,12 +1556,12 @@ The following events are supported:
 
 | イベント名                | トリガー                                                              | Can stop |
 | -------------------- | ----------------------------------------------------------------- |:--------:|
-| `afterBinding`       | Triggered after models are bound but before executing the handler |   Yes    |
+| `afterBinding`       | Triggered after models are bound but before executing the handler |    はい    |
 | `afterExecuteRoute`  | Handler just finished running                                     |    No    |
-| `afterHandleRoute`   | Route just finished executing                                     |   Yes    |
-| `beforeExecuteRoute` | Route matched, Handler valid, Handler has not been executed yet   |   Yes    |
-| `beforeHandleRoute`  | Main method called; Routes have not been checked yet              |   Yes    |
-| `beforeNotFound`     | Route has not been found                                          |   Yes    |
+| `afterHandleRoute`   | Route just finished executing                                     |    はい    |
+| `beforeExecuteRoute` | Route matched, Handler valid, Handler has not been executed yet   |    はい    |
+| `beforeHandleRoute`  | Main method called; Routes have not been checked yet              |    はい    |
+| `beforeNotFound`     | Route has not been found                                          |    はい    |
 
 ### Authentication example
 
@@ -1729,7 +1729,7 @@ $app->finish(
 
 In the above example we utilize the `finish` event to do some cache cleaning.
 
-### Activation
+### 機能の有効化
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
