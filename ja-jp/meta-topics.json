@@ -101,10 +101,9 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "Unit Testing",
+                "text": "単体テスト",
                 "url": "/unit-testing"
             }
-
         ]
     },
     {
