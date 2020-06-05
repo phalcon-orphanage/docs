@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: デフォルト
 language: 'ja-jp'
 version: '4.0'
-title: 'API インデックス'
+title: 'API 索引'
 ---
 
-## API インデックス
+## API 索引
 {% for element in site.data.api %}
 ### {{ element['title'] }}
     {% for document in element['docs'] %}
