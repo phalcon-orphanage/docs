@@ -72,7 +72,7 @@ PHP 7.2または以降のバージョンと共に、あなたのアプリケー�
 
 ### Pecl
 
-The Pecl installation method is available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS it will compile Phalcon locally so it could be faster to use a different installation method on these platforms. To install using Pecl make sure you have [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) installed.
+Windows、Linux、MacOSでは、Peclによるインストールを利用できます。 Windowsでは、コンパイル済みのdllファイルが使用されます。 LinuxとMacOSでは、Phalconをローカルでコンパイルします。このため、別のインストール方法を選択する方が早いかもしれません。 Peclを使用してインストールするには、 [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) がインストールされていることを確認してください。
 
     pecl channel-update pecl.php.net
     pecl install phalcon
@@ -92,7 +92,7 @@ sudo apt-get install libpcre3-dev
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using Brew
+#### Mac/Osx で Brew を使用する場合
 
 ```bash
 brew install pcre
@@ -123,9 +123,9 @@ sudo ln -s /opt/local/include/pcre.h /usr/include/
 sudo pecl install apc 
 ```
 
-## Installation Platforms
+## インストール プラットフォーム
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+PhalconはPHP拡張機能としてコンパイルされます。このため、他の従来のPHPフレームワークとはインストールの仕方が多少異なります。 Webサーバーにモジュールとしてインストールとロードをする必要があります。
 
 ### Linux
 
