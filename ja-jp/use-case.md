@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Use Case'
+title: '使用例'
 keywords: 'use case, examples'
 ---
 
-# Use Case
+# 使用例
 
 * * *
 

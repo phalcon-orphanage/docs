@@ -6,7 +6,7 @@ title: 'Dependency Injection / Service Locator'
 keywords: 'dependency injection, di, ioc, service locator'
 ---
 
-# Dependency Injection / Service Location
+# 依存性の注入 / サービスの場所
 
 * * *
 
@@ -14,9 +14,9 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 ## 概要
 
-[Phalcon\Di](api/phalcon_di#di) is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
+[Phalcon\Di](api/phalcon_di#di) はサービスまたはコンポーネント(クラス)を格納するコンテナです。 これらのサービスはアプリケーション全体で利用可能で、開発を容易にします。 お客様の請求書の計算を実行する `InvoiceComponent` と呼ばれる請求書コンポーネントを開発していると仮定します。 データベースから `invoice` レコードを取得するためにデータベース接続が必要です。
 
-Our component can be implemented as follows:
+コンポーネントは以下のように実装できます:
 
 ```php
 <?php
@@ -48,7 +48,7 @@ $invoice = new InvoiceComponent();
 $invoice->calculate();
 ```
 
-We use the `calculate` method to get our data. Inside the method, we create a new database connection to MySQL with set credentials and after that we execute a query. Although this is a perfectly valid implementation, it is impractical and will hinder the maintenance of our application later on, due to the fact that our connection parameters or type of the database are hard coded in the component. If in the future we need to change those, we will have to change them in this component and any other component designed in this manner.
+データを取得するために `calculate` メソッドを使用します。 メソッド内では、DB接続情報資格情報を設定してDB（MySQL）への新しい接続情報（認証情報）を作成し、その後クエリを実行します。 これは有効な実装方法ですが、実用的ではありません。後々アプリケーションのメンテナンスを妨げることになるでしょう。 接続パラメータ（認証情報）やデータベースの種類がコンポーネントにハードコードされているためです。 将来、それらを変更する必要がある場合は、コンポーネントを変更する必要があります。
 
 ```php
 <?php
@@ -1579,29 +1579,29 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 
 | Name                 | Object                                                              | Shared | Description                  |
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
-| `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Yes    | Annotations parser           |
-| `assets`             | [Phalcon\Assets\Manager](assets)                                  | Yes    | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Yes    | Encrypt/Decrypt              |
-| `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Yes    | HTTP Cookies manager         |
-| `db`                 | [Phalcon\Db](db-layer)                                             | Yes    | Database connection          |
-| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Yes    | ディスパッチャー                     |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Yes    | エスケープ                        |
-| `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Yes    | Events Manager               |
-| `flash`              | [Phalcon\Flash\Direct](flash)                                     | Yes    | Flash Messaging              |
-| `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Yes    | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | Yes    | Filtering / Sanitizing       |
+| `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | はい     | Annotations parser           |
+| `assets`             | [Phalcon\Assets\Manager](assets)                                  | はい     | Assets manager               |
+| `crypt`              | [Phalcon\Crypt](crypt)                                             | はい     | Encrypt/Decrypt              |
+| `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | はい     | HTTP Cookies manager         |
+| `db`                 | [Phalcon\Db](db-layer)                                             | はい     | Database connection          |
+| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | はい     | ディスパッチャー                     |
+| `escaper`            | [Phalcon\Escaper](escaper)                                         | はい     | エスケープ                        |
+| `eventsManager`      | [Phalcon\Events\Manager](events)                                  | はい     | イベント管理                       |
+| `flash`              | [Phalcon\Flash\Direct](flash)                                     | はい     | Flash Messaging              |
+| `flashSession`       | [Phalcon\Flash\Session](flash)                                    | はい     | Flash Session Messaging      |
+| `filter`             | [Phalcon\Filter](filter)                                           | はい     | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
-| `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Yes    | Models Management            |
+| `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | はい     | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | No     | Models MetaData              |
-| `request`            | [Phalcon\Http\Request](request)                                   | Yes    | HTTP Request                 |
-| `response`           | [Phalcon\Http\Response](response)                                 | Yes    | HTTP Response                |
-| `router`             | [Phalcon\Mvc\Router](routing)                                     | Yes    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Yes    | セキュリティ                       |
+| `request`            | [Phalcon\Http\Request](request)                                   | はい     | HTTP Request                 |
+| `response`           | [Phalcon\Http\Response](response)                                 | はい     | HTTP Response                |
+| `router`             | [Phalcon\Mvc\Router](routing)                                     | はい     | Router                       |
+| `security`           | [Phalcon\Security](security)                                       | はい     | セキュリティ                       |
 | `session`            |                                                                     |        | Session Service              |
-| `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Yes    | Session Bag service          |
-| `tag`                | [Phalcon\Tag](tag)                                                 | Yes    | HTML Tag helpers             |
-| `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Yes    | Database Transaction Manager |
-| `url`                | [Phalcon\Url](url)                                                 | Yes    | URL Generation               |
+| `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | はい     | Session Bag service          |
+| `tag`                | [Phalcon\Tag](tag)                                                 | はい     | HTML Tag helpers             |
+| `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | はい     | Database Transaction Manager |
+| `url`                | [Phalcon\Url](url)                                                 | はい     | URL Generation               |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 

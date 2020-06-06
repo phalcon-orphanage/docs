@@ -21,9 +21,9 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 The [Phalcon\Logger](api/phalcon_logger#logger-logger) has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/phalcon_logger#logger-logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
 
-In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality.
+v3では、ロガーはアダプタを同じコンポーネントに組み込んでいました。 したがって、本質的には、ロガーオブジェクトを作成する際には、開発者がロガー機能を持つアダプター(ファイル、ストリームなど)を作成していました。
 
-For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
 ## Adapters
 
@@ -79,12 +79,12 @@ $config = [
     "adapters" => [
         "main"  => [
             "adapter" => "stream",
-            "file"    => "/storage/logs/main.log",
+            "name"    => "/storage/logs/main.log",
             "options" => []
         ],
         "admin" => [
             "adapter" => "stream",
-            "file"    => "/storage/logs/admin.log",
+            "name"    => "/storage/logs/admin.log",
             "options" => []
         ],
     ],

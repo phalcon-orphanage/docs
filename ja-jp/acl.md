@@ -19,7 +19,7 @@ keywords: 'acl, access control list, permissions'
 
 In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role](api/Phalcon_Acl#acl-role) and [Component](api/Phalcon_Acl#acl-component).
 
-> **Use Case**
+> **使用例**
 > 
 > An accounting application needs to have different groups of users have access to various areas of the application.
 > 
@@ -32,7 +32,7 @@ As seen above in the use case, an [Role](api/Phalcon_Acl#acl-role) is defined as
 
 Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.
 
-## Activation
+## 機能の有効化
 
 [Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with roles and components. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl#acl-adapter-memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
@@ -585,7 +585,7 @@ class ReportsComponent implements ComponentAware
 }
 ```
 
-### ACL
+### アクセス制御リスト(ACL)
 
 These objects can now be used in our ACL.
 
@@ -769,7 +769,7 @@ It is a good practice to not use serialization of the ACL during development, to
 | イベント名               | トリガー                                                     | Can stop role? |
 | ------------------- | -------------------------------------------------------- |:--------------:|
 | `afterCheckAccess`  | Triggered after checking if a role/component has access  |       No       |
-| `beforeCheckAccess` | Triggered before checking if a role/component has access |      Yes       |
+| `beforeCheckAccess` | Triggered before checking if a role/component has access |       はい       |
 
 The following example demonstrates how to attach listeners to the ACL:
 

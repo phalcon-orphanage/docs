@@ -544,7 +544,7 @@ public function toString(
 
 Renders the view and returns it as a string
 
-## Activation
+## 機能の有効化
 
 You must register the view component in your DI container to enable views in your application.
 
@@ -1533,8 +1533,8 @@ In the above example, we set up the engine and then echo a rendered template on 
 | ------------------ | ----------------------------------- |:--------:|
 | `afterRender`      | After completing the render process |    No    |
 | `afterRenderView`  | After rendering an existing view    |    No    |
-| `beforeRender`     | Before starting the render process  |   Yes    |
-| `beforeRenderView` | Before rendering an existing view   |   Yes    |
+| `beforeRender`     | Before starting the render process  |    はい    |
+| `beforeRenderView` | Before rendering an existing view   |    はい    |
 | `notFoundView`     | When a view was not found           |    No    |
 
 The following example demonstrates how to attach listeners to this component:

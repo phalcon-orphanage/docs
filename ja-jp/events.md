@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Events Manager'
+title: 'イベント管理'
 keywords: 'events, events manager, hooks'
 ---
 
-# Events Manager
+# イベント管理
 
 * * *
 
@@ -14,7 +14,7 @@ keywords: 'events, events manager, hooks'
 
 ## 概要
 
-The purpose of this component is to intercept the execution of components in the framework by creating *hooks*. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager](api/phalcon_events#events-manager) that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event](api/phalcon_events#events-event) objects, which contain information about each hook/event.
+このコンポーネントの目的は、 *フック(hooks)*を作成することによって、フレームワーク内のコンポーネントの実行をキャッチすることです。 これらのフックにより、開発者はステータス情報を取得したり、データを操作したり、コンポーネントのプロセス中に実行フローを変更したりすることができます。 このコンポーネントはイベントの伝達とイベントの実行を処理する [Phalcon\Events\Manager](api/phalcon_events#events-manager) で構成されています。 マネージャーには、各フック(hook)/イベント(event)に関する情報を含む [Phalcon\Events\Event](api/phalcon_events#events-event) さまざまなオブジェクトが含まれています。
 
 ```php
 <?php
@@ -47,13 +47,13 @@ $connection->query(
 );
 ```
 
-## Naming Convention
+## 命名規則
 
-Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/phalcon_db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+Phalconイベントは名前空間を使用して衝突を避けます。 Phalconの各コンポーネントは異なるイベント名前空間を占めており、自由に自分のものを作成できます。 イベント名は `component:event` としてフォーマットされます。 例えば、 [Phalcon\Db](api/phalcon_db) は `db` 名前空間を使用しているため、 `afterQuery` イベントのフルネームは `db:afterQuery` です。
 
-When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db](api/phalcon_db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+イベントリスナーをイベントマネージャにアタッチする場合、 ` component ` を使用して、そのコンポーネントからすべてのイベントをキャッチすることができます。 `db` to catch all of the [Phalcon\Db](api/phalcon_db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
-## Manager
+## マネージャ
 
 The [Phalcon\Events\Manager](api/phalcon_events#events-manager) is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as *a handler*. Regardless of the name, the functionality and purpose are the same.
 
@@ -891,8 +891,8 @@ The events available in Phalcon are:
 
 | Component                   | Event                                | Parameters                                              |
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
-| [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
-| [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
+| [アクセス制御リスト(ACL)](acl)       | `acl:afterCheckAccess`               | Acl                                                     |
+| [アクセス制御リスト(ACL)](acl)       | `acl:beforeCheckAccess`              | Acl                                                     |
 | [アプリケーション](application)     | `application:afterHandleRequest`     | Application, Controller                                 |
 | [アプリケーション](application)     | `application:afterStartModule`       | Application, Module                                     |
 | [アプリケーション](application)     | `application:beforeHandleRequest`    | Application, Dispatcher                                 |

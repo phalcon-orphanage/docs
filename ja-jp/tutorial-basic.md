@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Tutorial - Basic'
-keywords: 'tutorial, basic tutorial, step by step, mvc'
+title: 'チュートリアル - 基本編'
+keywords: 'チュートリアル, チュートリアル基本編, 基本, ステップバイステップ, tutorial, step by step, mvc'
 ---
 
-# Tutorial - Basic
+# チュートリアル - 基本編
 
 * * *
 
@@ -22,7 +22,7 @@ If you just want to get started you can skip this and create a Phalcon project a
 
 The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get stuck or have questions, please visit us on [Discord](https://phalcon.io/discord) or in our [Forum](https://phalcon.io/forum).
 
-## File Structure
+## ファイル構造
 
 One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
 

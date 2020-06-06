@@ -2,49 +2,49 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Upgrade Guide'
+title: 'アップグレードガイド'
 keywords: 'upgrade, v3, v4'
 ---
 
-# Upgrade Guide
+# アップグレードガイド
 
 * * *
 
-# Upgrading to V4
+# V4へのアップグレード
 
-So you have decided to upgrade to v4! **Congratulations**!!
+v4にアップグレードすることにしたのですね！ **おめでとうございます**!!
 
-Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 には、インターフェイスへの変更、厳格なタイプ、コンポーネントの削除、新しいコンポーネントの追加など、コンポーネントへの多くの変更が含まれています。 このドキュメントは、既存のPhalconアプリケーションをv4にアップグレードするのに役立ちます。 v3と同じようにコードをスムーズに実行できるように、変更を加える必要がある部分を中心に解説します。 変更は重要です。順序通りに作業すれば容易にできます。
 
-## Requirements
+## インストール要件
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 は、 PHP 7.2 もしくはそれ以降のバージョンのみをサポートしています。 2年前にリリースされたPHP 7.1は、[サポート](https://secure.php.net/supported-versions.php)が失効したため、継続的にサポートされているPHPバージョンに従うことにしました。
 
 <a name='psr'></a>
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon には PSR 拡張機能が必要です。 拡張機能は、[こちら](https://github.com/jbboehr/php-psr) のGitHubリポジトリからダウンロードしてコンパイルできます。 拡張機能のインストール手順は、リポジトリの` README `に記載されています。 拡張機能をコンパイルしてシステムで使用可能になったら、それを` php.ini `でロードする必要があります。 下記のように、1行を追加してください。
 
 ```ini
 extension=psr.so
 ```
 
-before
+変更前
 
 ```ini
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+一部のディストリビューションでは、` ini `ファイル名に数字のプレフィックスが追加される場合があります。 その場合は、大きい数値を指定してください(例：` 50-phalcon.ini `)。
 
 ### インストール
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+最新の `zephir.phar` を [からダウンロードする](https://github.com/phalcon/zephir/releases)。 システムからアクセスできるフォルダに追加します。
 
-Clone the repository
+このリポジトリのクローンを作成
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -59,7 +59,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+モジュールをチェック
 
 ```bash
 php -m | grep phalcon
@@ -67,46 +67,46 @@ php -m | grep phalcon
 
 * * *
 
-## General Notes
+## 一般的なメモ
 
-### Applications
+### アプリケーション
 
-- The `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` and `Phalcon\Mvc\Router` now must have a URI to process
+- `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` と `Phalcon\Mvc\Router` はURI 処理を持つ必要があります。
 
-### Exceptions
+### 例外
 
-- Changed catch `Exception` to `Throwable`
+- catch `Exception` を `Throwable` に変更
 
 * * *
 
-# Components
+# コンポーネント
 
-## ACL
+## アクセス制御リスト(ACL)
 
 > Status: **changes required**
 > 
-> Usage: [ACL Documentation](acl)
+> 使用法: [ACL ドキュメント](acl)
 {: .alert .alert-info }
 
-The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
+[ACL](acl) コンポーネントにはいくつかのメソッドとコンポーネントの名前が変更されています。 機能は以前のバージョンと同じままです。
 
 ### 概要
 
-The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
+ACL を動作させるために必要なコンポーネントの名前が変更されました。 特に、 `Resource` は、このコンポーネントが使用するすべての関連するインターフェイス、クラス、メソッド内の `Component` に改名されました。
 
-- Added `Phalcon\Acl\Adapter\AbstractAdapter`
-- Added `Acl\Enum`
+- `Phalcon\Acl\Adapter\AbstractAdapter` を追加しました
+- `Acl\Enum` を追加しました
 
-- Removed `Phalcon\Acl`
+- `Phalcon\Acl` を削除しました
 
-- Removed `Phalcon\Acl\Adapter`
+- `Phalcon\Acl\Adapter` を削除しました
 
-- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+- `Phalcon\Acl\Resource` を `Phalcon\Acl\Component` にリネームしました
 
-- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
-- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
-- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent`
+- `Phalcon\Acl\Resource` を `Phalcon\Acl\Component` にリネームしました
+- `Phalcon\Acl\Resource` を `Phalcon\Acl\Component` にリネームしました
+- `Phalcon\Acl\AdapterInterface::isResource` を `Phalcon\Acl\AdapterInterface::isComponent` にリネームしました。
+- `Phalcon\Acl\AdapterInterface::addResource` を `Phalcon\Acl\AdapterInterface::addComponent` にリネームしました。
 - Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess`
 - Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess`
 - Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
@@ -184,7 +184,7 @@ The Cache class implements [PSR-16](https://www.php-fig.org/psr/psr-16/) and acc
 
 For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation.
 
-### Creating a Cache
+### キャッシュの作成
 
 ```php
 <?php
@@ -206,7 +206,7 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 $cache = new Cache($adapter);
 ```
 
-Registering it in the DI
+DIに登録する
 
 ```php
 <?php
@@ -239,12 +239,12 @@ $container->set(
 
 > Status: **changes required**
 > 
-> Usage: [CLI Documentation](cli)
+> 使用法: [CLIドキュメント](cli)
 {: .alert .alert-info }
 
-### Parameters
+### パラメータ
 
-Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
+パラメータは MVC コントローラと同じように動作するようになりました。 以前は `$params` プロパティにすべて存在していましたが、適切に名前を付けることができます。
 
 ```php
 use Phalcon\Cli\Task;
@@ -284,7 +284,7 @@ class MainTask extends Task
 
 * * *
 
-## Container
+## コンテナ
 
 - Added `Phalcon\Container`, a proxy container class to the `Phalcon\DI` implementing PSR-11
 
@@ -298,8 +298,8 @@ class MainTask extends Task
 
 ## Db
 
-- Added global setting `orm.case_insensitive_column_map` to attempt to find value in the column map case-insensitively. Can be also enabled by setting `caseInsensitiveColumnMap` key in `\Phalcon\Mvc\Model::setup()`
-- Removed `Phalcon\Db` namespace. Replaced by `Phalcon\Db\AbstractDb` for necessary methods and `Phalcon\Db\Enum` for constants, i.e.:
+- 大文字と小文字を区別しない列マップで値を見つけることができる設定`orm.case_insensive_column_map` のグローバル設定 を追加。 `\Phalcon\Mvc\Model::setup()` で `caseInsensiveColumnMap` キーを設定することで有効にすることもできます。
+- `Phalcon\Db` 名前空間を削除しました。 `Phalcon\Db\AbstractDb` によって必要なメソッドと `Phalcon\Db\Enum` を定数に置き換えます。
 
 ```php
 use Phalcon\Db\Enum;
@@ -313,7 +313,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\Adapter\Pdo
 
-- Added more column types for the Mysql adapter. The adapters support -`TYPE_BIGINTEGER` 
+- Mysqlアダプタにカラムタイプを追加しました。 アダプターサポート -`TYPE_BIGINTEGER` 
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -359,14 +359,14 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\Service
 
-- Changed Phalcon\Di\Service constructor to no longer takes the name of the service.
+- Phalcon\Di\Service コンストラクタがサービスの名前を取得しないように変更されました。
 
 * * *
 
 ## ディスパッチャー
 
-- Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
-- Added `getHandlerSuffix()`, `setHandlerSuffix()`
+- `Phalcon\Dispatcher::setModelBinder()` を削除しました `Phalcon\Dispatcher::setModelBinder()`
+- `getHandlerSuffix()`, `setHandlerSuffix()` を追加しました。
 
 * * *
 
@@ -380,8 +380,8 @@ echo Enum::FETCH_ASSOC;
 
 ## Flash
 
-- Added ability to set a custom template for the Flash Messenger.
-- Constructor no longer accepts an array for the CSS classes. You will need to use `setCssClasses()` to set your custom CSS classes for the component
+- Flash Messenger にカスタムテンプレートを設定する機能を追加しました。
+- コンストラクタは CSS クラスの配列を受け付けなくなりました。 コンポーネントのカスタム CSS クラスを設定するには `setCssClasses()` を使用する必要があります。
 - The constructor now accepts an optional `Phalcon\Escaper` object, as well as a `Phalcon\Session\Manager` object (in the case of `Phalcon\Flash\Session`), in case you do not wish to use the DI and set it yourself.
 
 * * *
@@ -393,7 +393,7 @@ echo Enum::FETCH_ASSOC;
 > Usage: [Filter Documentation](filter)
 {: .alert .alert-info }
 
-The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
+サービスロケータを利用して、 `Filter` コンポーネントが書き換えられました。 Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
 ### 概要
 
@@ -493,17 +493,17 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 ## Html
 
-### Html\Breadcrumbs
+### Html\Breadcrumbs　パンくずリスト
 
-- Added `Phalcon\Html\Breadcrumbs`, a component that creates HTML code for breadcrumbs.
+- `Phalcon\Html\Breadcrumbs`を追加。
 
 ### Html\Tag
 
-- Added `Phalcon\Html\Tag`, a component that creates HTML elements. It will replace `Phalcon\Tag` in a future version. This component does not use static method calls.
+- `Phalcon\Html\Tag`を追加しました。 将来のバージョンで `Phalcon\Tag` を置き換えます。 このコンポーネントは静的メソッド呼び出しを使用しません。
 
 ### Http\RequestInterface
 
-- Removed `isSecureRequest` in favor of `isSecure`
+- `isSecureRequest` を削除しました `isSecure`
 - Removed `isSoapRequested` in favor of `isSoap`
 
 ### Http\Response
@@ -517,10 +517,10 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 ## 画像
 
-- Added `Phalcon\Image\Enum`
-- Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
-- Renamed `Phalcon\Image\Factory` to `Phalcon\Image\ImageFactory`
-- Removed `Phalcon\Image`
+- `Phalcon\Image\Enum` を追加しました
+- `Phalcon\Image\Adapter` を `Phalcon\Image\Adapter\AbstractAdapter` にリネームしました
+- `Phalcon\Image\Factory` を `Phalcon\Image\ImageFactory` にリネームしました
+- `Phalcon\Image` を削除しました
 
 ## Image\Enum (Constants)
 
@@ -554,13 +554,13 @@ echo Enum::VERTICAL;   // prints  12
 > Usage: [Logger Documentation](logger)
 {: .alert .alert-info }
 
-The `Logger` component has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+`Logger` コンポーネントが [PSR-3](https://www.php-fig.org/psr/psr-3/) に準拠するように書き換えられました。 This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
 
-In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality.
+v3では、ロガーはアダプタを同じコンポーネントに組み込んでいました。 したがって、本質的には、ロガーオブジェクトを作成する際には、開発者がロガー機能を持つアダプター(ファイル、ストリームなど)を作成していました。
 
-For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
-### Creating a Logger Component
+### ロガーコンポーネントの作成
 
 ```php
 <?php
@@ -579,7 +579,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-Registering it in the DI
+DIに登録する
 
 ```php
 <?php
@@ -608,7 +608,7 @@ $container->set(
 
 ### Multiple Loggers
 
-The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
+`Phalcon\Logger\Multiple` コンポーネントが削除されました。 logger コンポーネントを使用して複数のアダプターを登録することで、同様の機能を実装できます。
 
 ```php
 <?php
@@ -637,7 +637,7 @@ $logger->error('Something went wrong');
 
 ## Messages
 
-- `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. In the past we had two components, one for validation and one for models. We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages. 
+- `Phalcon\Messages\Message` そして、その複数形の`Phalcon\Messages\Messages` コレクションは、モデルと検証のためのメッセージを処理する新しいコンポーネントです。 過去には検証用とモデル用の2つのコンポーネントがありました。 We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages. 
     - Changed `Phalcon\Mvc\Model` to use the `Phalcon\Messages\Message` object for its messages
     - Changed `Phalcon\Validation\*` to use the `Phalcon\Messages\Message` object for its messages
 
@@ -715,7 +715,7 @@ $criteria->limit(10, null);
 
 ### Mvc\Model
 
-- Removed `Phalcon\Model::reset`
+- `Phalcon\Model::reset` を削除しました
 - Added `isRelationshipLoaded` to check if relationship is loaded
 - Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
@@ -1060,7 +1060,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | ------------------------ | ---------- | ------------------------------ |
 | Phalcon\Config\Factory | Renamed to | Phalcon\Config\ConfigFactory |
 
-### Container
+### コンテナ
 
 | 3.4.x | State | 4.0.x              |
 | ----- | ----- | ------------------ |

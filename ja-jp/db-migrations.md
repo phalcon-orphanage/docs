@@ -2,11 +2,11 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Database Migrations'
-keywords: 'database, migrations, schema, tables, columns'
+title: 'データベースマイグレーション'
+keywords: 'database, migrations, schema, tables, columns, データベース, マイグレーション, テーブル, スキーマ, カラム'
 ---
 
-# Database Migrations
+# データベースマイグレーション
 
 * * *
 
@@ -19,19 +19,19 @@ keywords: 'database, migrations, schema, tables, columns'
 
 https://github.com/phalcon/migrations
 
-## Requirements
+## 必要条件
 
 * PHP >= 7.2
 * Phalcon >= 4.0.5
 
-## Installing via Composer
+## Composer 経由のインストール
 
     composer require --dev phalcon/migrations
     
 
-## Quick start
+## クイックスタート
 
-What you need for quick start:
+必要なもの:
 
 * Configuration file in root of your project (you can also pass them as parameters inside CLI environment)
 * Create database tables structure
@@ -39,7 +39,7 @@ What you need for quick start:
 
 After that you can execute that migrations (run) in another environment to create same DB structure.
 
-### Create configuration file
+### 設定ファイルの作成
 
 ```php
 <?php
@@ -67,7 +67,7 @@ return new Config([
 ]);
 ```
 
-### Generate migrations
+### マイグレーション生成
 
 **Basic generation**
 
@@ -83,17 +83,17 @@ return new Config([
         --data=oncreate
     
 
-### Run migrations
+### マイグレーション実行
 
     vendor/bin/phalcon-migrations run
     
 
-### List existing migrations
+### マイグレーションの一覧表示
 
     vendor/bin/phalcon-migrations list
     
 
-## Usage example
+## 使用例
 
 **Run migrations from specific migrations directory**
 

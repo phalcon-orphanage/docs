@@ -341,7 +341,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function __construct( array $services = [] );
 ```
 
-AdapterFactory constructor.
+AdapterFactory コンストラクタ
 
 ```php
 public function load( mixed $config ): AdapterInterface;
@@ -373,7 +373,7 @@ $paginator = (new PaginatorFactory())->load($options);
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+このアダプターの新しいインスタンスを作成
 
 ```php
 protected function getAdapters(): array;
