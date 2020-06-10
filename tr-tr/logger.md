@@ -79,12 +79,12 @@ $config = [
     "adapters" => [
         "main"  => [
             "adapter" => "stream",
-            "file"    => "/storage/logs/main.log",
+            "name"    => "/storage/logs/main.log",
             "options" => []
         ],
         "admin" => [
             "adapter" => "stream",
-            "file"    => "/storage/logs/admin.log",
+            "name"    => "/storage/logs/admin.log",
             "options" => []
         ],
     ],
