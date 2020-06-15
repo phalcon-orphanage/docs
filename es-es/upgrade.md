@@ -522,7 +522,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - Renamed `Phalcon\Image\Factory` to `Phalcon\Image\ImageFactory`
 - Removed `Phalcon\Image`
 
-## Image\Enum (Constants)
+## Image\Enum (Constantes)
 
 Ejemplo:
 
@@ -531,18 +531,18 @@ Ejemplo:
 
 use Phalcon\Image\Enum;
 
-// Resizing constraints
-echo Enum::AUTO;    // prints 4
-echo Enum::HEIGHT;  // prints  3
-echo Enum::INVERSE; // prints  5
-echo Enum::NONE;   // prints  1
-echo Enum::PRECISE; // prints  6
-echo Enum::TENSILE; // prints  7
-echo Enum::WIDTH;   // prints  2
+// Restricciones de redimensionado
+echo Enum::AUTO;    // imprime 4
+echo Enum::HEIGHT;  // imprime 3
+echo Enum::INVERSE; // imprime 5
+echo Enum::NONE;   // imprime 1
+echo Enum::PRECISE; // imprime 6
+echo Enum::TENSILE; // imprime 7
+echo Enum::WIDTH;   // imprime   2
 
-// Flipping directions
-echo Enum::HORIZONTAL; // prints  11
-echo Enum::VERTICAL;   // prints  12
+// Direcciones de volteado
+echo Enum::HORIZONTAL; // imprime 11
+echo Enum::VERTICAL;   // imprime 12
 ```
 
 * * *
@@ -551,16 +551,16 @@ echo Enum::VERTICAL;   // prints  12
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Logger Documentation](logger)
+> Uso: [Documentación de Logger](logger)
 {: .alert .alert-info }
 
-The `Logger` component has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+El componente `Logger` ha sido reescrito para cumplir con el [PSR-3](https://www.php-fig.org/psr/psr-3/). Esto le permite utilizar el [Phalcon\Logger](api/Phalcon_Logger) para cualquier aplicación que utilice un registro [PSR-3](https://www.php-fig.org/psr/psr-3/) y no solo las basadas en Phalcon.
 
 En Phalcon v3.x el componente trae incorporado el adaptador. Esto en esencia significa que cuando se inicia el objeto de registro, el desarrollador está en realidad creando un adaptador (de archivo, flujo, etc.) con capacidad de registro.
 
 En Phalcon v4 el componente se reescribió de tal manera que se dedica a la función de registro y acepta uno o más adaptadores que serán los responsables de las tareas de registro. Así se logra la compatibilidad con [PSR-3](https://www.php-fig.org/psr/psr-3/), se separan las responsabilidades del componente y se logra la funcionalidad de registro múltiple: fácilmente se puede agregar más de un adaptador al componente, cada uno realizando su propio registro. Con esta implementación se redujo el código del registro y se supimió el componente `Logger\Multiple`.
 
-### Creating a Logger Component
+### Crear un componente Logger
 
 ```php
 <?php
@@ -606,9 +606,9 @@ $container->set(
 );
 ```
 
-### Multiple Loggers
+### Multiples Loggers
 
-The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
+El componente `Phalcon\Logger\Multiple` ha sido eliminado. Puede lograr la misma funcionalidad usando el componente logger y registrando más de un adaptador:
 
 ```php
 <?php
@@ -635,7 +635,7 @@ $logger->error('Algo falló');
 
 * * *
 
-## Messages
+## Mensajes
 
 - `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. In the past we had two components, one for validation and one for models. We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages. 
     - Changed `Phalcon\Mvc\Model` to use the `Phalcon\Messages\Message` object for its messages
