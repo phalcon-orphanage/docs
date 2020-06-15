@@ -276,7 +276,7 @@ will produce:
 > **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
-## Messages
+## Mensajes
 
 As mentioned above, the component has different types of messages. To add a message to the component you can call `message()` with the type as well as the message itself. The types of messages are:
 
