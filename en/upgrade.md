@@ -284,11 +284,11 @@ echo Enum::FETCH_ASSOC;
 ```
 
 ### Db\AdapterInterface
-- Added fetchColumn, insertAsDict, updateAsDict
+- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 - Added more column types for the Mysql adapter. The adapters support
-    -`TYPE_BIGINTEGER`
+    - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -320,7 +320,7 @@ echo Enum::FETCH_ASSOC;
 - Added `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
 
 ### Db\Dialect\Postgresql
-- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
 <hr/>
 
