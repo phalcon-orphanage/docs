@@ -356,11 +356,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Added getParameter, isResolved
+- Added `getParameter`, `isResolved`
 
 ### Di\Service
 
-- Phalcon\Di\Service コンストラクタがサービスの名前を取得しないように変更されました。
+- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
 
 * * *
 
@@ -1017,7 +1017,11 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### アセット
 
-| 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
+| 3.4.x                          | State      | 4.0.x                       |
+| ------------------------------ | ---------- | --------------------------- |
+| Phalcon\Assets\Resource      | Renamed to | Phalcon\Assets\Asset      |
+| Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css |
+| Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 ### キャッシュ
 
