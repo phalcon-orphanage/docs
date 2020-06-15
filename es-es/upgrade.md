@@ -309,11 +309,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
+- Añadido `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 
-- Se han añadido más tipos de columnas para el adaptador Mysql. The adapters support 
+- Se han añadido más tipos de columnas para el adaptador Mysql. Soporte de adaptadores 
     - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
@@ -340,7 +340,7 @@ echo Enum::FETCH_ASSOC;
     - `TYPE_TINYBLOB`
     - `TYPE_TINYINTEGER`
     - `TYPE_TINYTEXT`
-    - `TYPE_VARCHAR` Some adapters do not support certain types. For instance `JSON` is not supported for `Sqlite`. It will be automatically changed to `VARCHAR`.
+    - `TYPE_VARCHAR` Algunos adaptadores no soportan ciertos tipos. Por ejemplo, `JSON` no es compatible con `Sqlite`. Se cambiará automáticamente a `VARCHAR`.
 
 ### Db\DialectInterface
 
@@ -348,7 +348,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\Dialect\Postgresql
 
-- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
+- Se modificó `addPrimaryKey` para hacer que los nombres de restricciones de clave primaria sean únicos prefijándolos con el nombre de la tabla.
 
 * * *
 
@@ -356,18 +356,18 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Añadido getParameter, isResolved
+- Added `getParameter`, `isResolved`
 
 ### Di\Service
 
-- Se cambió el constructor de Phalcon\Di\Service para que deje de tomar el nombre del servicio.
+- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
 
 * * *
 
 ## Dispatcher
 
 - Eliminado `Phalcon\Dispatcher::setModelBinding()` a favor de `Phalcon\Dispatcher::setModelBinder()`
-- Added `getHandlerSuffix()`, `setHandlerSuffix()`
+- Añadido `getHandlerSuffix()`, `setHandlerSuffix()`
 
 * * *
 
@@ -1017,7 +1017,11 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 ### Recursos Activos
 
-| 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
+| 3.4.x                          | Estado       | 4.0.x                       |
+| ------------------------------ | ------------ | --------------------------- |
+| Phalcon\Assets\Resource      | Renombrado a | Phalcon\Assets\Asset      |
+| Phalcon\Assets\Resource\Css | Renombrado a | Phalcon\Assets\Asset\Css |
+| Phalcon\Assets\Resource\Js  | Renombrado a | Phalcon\Assets\Asset\Js  |
 
 ### Cache
 
@@ -1326,7 +1330,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 | 3.4.x                       | Estado       | 4.0.x                                        |
 | --------------------------- | ------------ | -------------------------------------------- |
-| Phalcon\Translate          | Eliminado    |                                              |
+| Phalcon\Translate          | Removed      |                                              |
 | Phalcon\Translate\Adapter | Renombrado a | Phalcon\Translate\Adapter\AbstractAdapter |
 |                             | Nuevo        | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Renombrado a | Phalcon\Translate\TranslateFactory         |
