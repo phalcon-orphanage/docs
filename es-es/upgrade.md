@@ -2,31 +2,31 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Upgrade Guide'
+title: 'Guía de Actualización'
 keywords: 'upgrade, v3, v4'
 ---
 
-# Upgrade Guide
+# Guía de Actualización
 
 * * *
 
-# Upgrading to V4
+# Actualizando a V4
 
-So you have decided to upgrade to v4! **Congratulations**!!
+Así que ha decidido hacer la actualización a v4, **¡felicitaciones!**
 
-Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 trae muchos cambios en los componentes, interfaces, tipos estrictos, adición y eliminación de componentes. El objetivo de esta guía es ayudarle a actualizar una aplicación existente en Phalcon a la v4. Se delinearán las áreas en las cuales se debe poner atención para hacer los cambios necesarios, de tal manera que el código se siga ejecutando con la misma armonía que en v3. A pesar de que los cambios son considerables, la tarea de actualización será más metódica que abrumadora.
 
 ## Requerimentos
 
 ### PHP 7.2
 
-Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 fue publicado hace años y su período de [soporte activo](https://secure.php.net/supported-versions.php) terminó en diciembre de 2019; Phalcon seguirá trabajando solo con versiones de PHP activas.
 
 <a name='psr'></a>
 
-### PSR
+### PSR (Recomendaciones Estándar de PHP)
 
-Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este repositorio de GitHub](https://github.com/jbboehr/php-psr). Installation instructions are available in the `README` of the repository. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
+Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este repositorio de GitHub](https://github.com/jbboehr/php-psr). Las instrucciones de instalación están disponibles en el archivo `README` del repositorio. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
 
 ```ini
 extension=psr.so
@@ -67,25 +67,25 @@ php -m | grep phalcon
 
 * * *
 
-## General Notes
+## Notas generales
 
-### Applications
+### Aplicaciones
 
-- The `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` and `Phalcon\Mvc\Router` now must have a URI to process
+- `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` y `Phalcon\Mvc\Router` ahora deben tener una URI para procesar
 
-### Exceptions
+### Excepciones
 
-- Changed catch `Exception` to `Throwable`
+- `Exception` se a cambiado por `Throwable`
 
 * * *
 
-# Components
+# Componentes
 
 ## ACL
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
-> Usage: [ACL Documentation](acl)
+> Uso: [Documentación ACL](acl)
 {: .alert .alert-info }
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
@@ -139,7 +139,7 @@ echo Enum::DENY;  //prints 0
 
 ## Recursos Activos
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Assets Documentation](assets)
 {: .alert .alert-info }
@@ -158,7 +158,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 ## Cache
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Cache Documentation](cache)
 {: .alert .alert-info }
@@ -237,7 +237,7 @@ $container->set(
 
 ## CLI
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [CLI Documentation](cli)
 {: .alert .alert-info }
@@ -388,7 +388,7 @@ echo Enum::FETCH_ASSOC;
 
 ## Filtro
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Filter Documentation](filter)
 {: .alert .alert-info }
@@ -549,7 +549,7 @@ echo Enum::VERTICAL;   // prints  12
 
 ## Logger
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Logger Documentation](logger)
 {: .alert .alert-info }
@@ -653,7 +653,7 @@ Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit(
 
 ## Modelos
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Models Documentation](db-models)
 {: .alert .alert-info }
@@ -699,7 +699,7 @@ $criteria->limit(10, null);
 
 ## MVC
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [MVC Documentation](mvc)
 {: .alert .alert-info }
@@ -893,7 +893,7 @@ $group->addTrace(
 
 ## Session
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
@@ -939,7 +939,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 ## Text
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Str Documentation](helpers#str)
 {: .alert .alert-info }
@@ -969,7 +969,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 ## Vistas
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [View Documentation](views)
 {: .alert .alert-info }
@@ -980,7 +980,7 @@ View caching along with the `viewCache` service have been removed from the frame
 
 ## Url
 
-> Status: **changes required**
+> Estado: **cambios requeridos**
 > 
 > Usage: [Url Documentation](url)
 {: .alert .alert-info }
