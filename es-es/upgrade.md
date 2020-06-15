@@ -391,10 +391,10 @@ echo Enum::FETCH_ASSOC;
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Filter Documentation](filter)
+> Uso: [Documentación de Filters](filter)
 {: .alert .alert-info }
 
-The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
+El componente `Filter` ha sido reescrito, utilizando un localizador de servicios. Cada sanitizador está ahora encerrado en su propia clase y cargado de forma perezosa para proporcionar el máximo rendimiento y el menor uso de recursos posible.
 
 ### Controladores
 
@@ -404,7 +404,7 @@ The values sanitized are automatically cast to the relevant types. This is the d
 
 When instantiating the filter object, it does not know about any sanitizers. You have two options:
 
-#### Load All the Default Sanitizers
+#### Cargar todos los sanitizadores por defecto
 
 You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
 
@@ -417,21 +417,21 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
 
-Calling`newInstance()` will return a [Phalcon\Filter](api/Phalcon_Filter#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
+Llamando a `newInstance()` devolverá un objeto [Phalcon\Filter](api/Phalcon_Filter#filter) con todos los limpiadores registrados. Los sanitizadores están cargados perezosamente, por lo que se instanciaran sólo cuando se les llame desde el localizador.
 
 #### Load Only Sanitizers You Want
 
-You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
+Puede instanciar el componente [Phalcon\Filter](api/Phalcon_Filter#filter) y utilizar el método `set()` para establecer todos los limpiadores que necesite. o pasar un array en el constructor con los limpiadores que desea registrar.
 
-### Using the `FactoryDefault`
+### Usando `FactoryDefault`
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter](api/Phalcon_Filter#filter) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
+Si utiliza el contenedor [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault), entonces el [Phalcon\Filter](api/Phalcon_Filter#filter) se carga automáticamente en el contenedor. Luego puede continuar usando el servicio en sus controladores o componentes como lo hacia antes. El nombre del servicio del DI es `filter`, como antes.
 
-Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
+También los componentes que utilizan el servicio de filtros, como el objeto [Request](api/phalcon_http#http-request), utilizan de forma transparente el nuevo localizador de filtros. No se requieren cambios adicionales para esos componentes.
 
-### Using a Custom `Di`
+### Usando un `DI` personalizado
 
-If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself and need the filter service, you will need to change its registration as follows:
+Si usted mismo ha configurado todos los servicios en el [Phalcon\Di](api/Phalcon_Di) y necesita el servicio de filtro, necesitarás cambiar su registro de la siguiente manera:
 
 ```php
 <?php
@@ -450,19 +450,19 @@ $container->set(
 );
 ```
 
-> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
+> **NOTA**: Tenga en cuenta que incluso si registra el servicio de filtro manualmente, el **nombre** del servicio debe ser **filter** para que otros componentes puedan usarlo
 {: .alert .alert-warning }
 
 ### Constantes
 
 The constants that the v3 `Phalcon\Filter` have somewhat changed.
 
-#### Removed
+#### Eliminado
 
 - `FILTER_INT_CAST` (`int!`)
 - `FILTER_FLOAT_CAST` (`float!`)
 
-By default the service sanitizers cast the value to the appropriate type so these are obsolete
+Por defecto, el servicio de sanitizadores convierten el valor al tipo apropiado por lo que estos son obsoletos
 
 - `FILTER_APHANUM` ha sido removido, reemplazado por `FILTER_ALNUM`
 
@@ -487,8 +487,8 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 ### Forms\Form
 
-- `Phalcon\Forms\Form::clear` will no longer call `Phalcon\Forms\Element::clear`, instead it will clear/set default value itself, and `Phalcon\Forms\Element::clear` will now call `Phalcon\Forms\Form::clear` if it’s assigned to the form, otherwise it will just clear itself.
-- `Phalcon\Forms\Form::getValue` will now also try to get the value by calling `Tag::getValue` or element’s `getDefault` method before returning `null`, and `Phalcon\Forms\Element::getValue` calls `Tag::getDefault` only if it’s not added to the form.
+- `Phalcon\Forms\Form::clear` ya no llamará `Phalcon\Forms\Element::clear`, en su lugar limpiará/establecerá el valor por defecto en sí mismo, y `Phalcon\Forms\Element::clear` ahora llamará a `Phalcon\Forms\Form::clear` si está asignado al formulario, de lo contrario, se limpiara a si mismo.
+- `Phalcon\Forms\Form::getValue` ahora también intentará obtener el valor llamando `Tag::getValue` o el método `getDefault` del elemento antes de devolver `null`, y `Phalcon\Forms\Element::getValue` llama a `Tag::getDefault` solo si no se añade al formulario.
 
 * * *
 
@@ -496,32 +496,32 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 ### Html\Breadcrumbs
 
-- Added `Phalcon\Html\Breadcrumbs`, a component that creates HTML code for breadcrumbs.
+- Añadido `Phalcon\Html\Breadcrumbs`, un componente que crea código HTML para migas de pan.
 
 ### Html\Tag
 
-- Added `Phalcon\Html\Tag`, a component that creates HTML elements. It will replace `Phalcon\Tag` in a future version. This component does not use static method calls.
+- Añadido `Phalcon\Html\Tag`, un componente que crea elementos HTML. Reemplazará a `Phalcon\Tag` en una versión futura. Este componente no utiliza llamadas a métodos estáticos.
 
 ### Http\RequestInterface
 
-- Removed `isSecureRequest` in favor of `isSecure`
-- Removed `isSoapRequested` in favor of `isSoap`
+- Eliminado `isSecureRequest` a favor de `isSecure`
+- Eliminado `isSoapRequested` a favor de `isSoap`
 
 ### Http\Response
 
-- Added `hasHeader()` method to `Phalcon\Http\Response` to provide the ability to check if a header exists.
-- Added `Phalcon\Http\Response\Cookies::getCookies`
-- Changed `setHeaders` now merges the headers with any pre-existing ones in the internal collection
-- Added two new events `response::beforeSendHeaders` and `response::afterSendHeaders`
+- Se añadió el método `hasHeader()` a `Phalcon\Http\Response` para proporcionar la capacidad de comprobar si existe un encabezado.
+- Añadido `Phalcon\Http\Response\Cookies::getCookies`
+- Modificado `setHeaders` ahora combina los encabezados con los preexistentes en la colección interna
+- Se añadieron dos nuevos eventos `response::beforeSendHeaders` y `response::afterSendHeaders`
 
 * * *
 
 ## Imágenes
 
-- Added `Phalcon\Image\Enum`
-- Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
-- Renamed `Phalcon\Image\Factory` to `Phalcon\Image\ImageFactory`
-- Removed `Phalcon\Image`
+- Añadido `Phalcon\Image\Enum`
+- Renombrado `Phalcon\Image\Adapter` a `Phalcon\Image\Adapter\AbstractAdapter`
+- Renombrado `Phalcon\Image\Factory` a `Phalcon\Image\ImageFactory`
+- Eliminado `Phalcon\Image`
 
 ## Image\Enum (Constantes)
 
@@ -638,9 +638,9 @@ $logger->error('Algo falló');
 
 ## Mensajes
 
-- `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. In the past we had two components, one for validation and one for models. We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages. 
-    - Changed `Phalcon\Mvc\Model` to use the `Phalcon\Messages\Message` object for its messages
-    - Changed `Phalcon\Validation\*` to use the `Phalcon\Messages\Message` object for its messages
+- `Phalcon\Messages\Message` y su colección `Phalcon\Messages\Messages` son nuevos componentes que manejan mensajes para modelos y validación. En el pasado teníamos dos componentes, uno para la validación y otro para los modelos. Hemos fusionado estos dos, así que deberías volver a obtener una `MessageInterface[]` al llamar a `save` en un modelo o al recuperar mensajes de validación. 
+    - Modificado `Phalcon\Mvc\Model` para usar el objeto `Phalcon\Messages\Message` para sus mensajes
+    - Modificado `Phalcon\Validation\*` para usar el objeto `Phalcon\Messages\Message` para sus mensajes
 
 * * *
 
@@ -663,7 +663,7 @@ Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit(
 
 ### Inicialización
 
-The `getSource()` method has been marked as `final`. As such you can no longer override this method in your model to set the corresponding table/source of the RDBMS. Instead, you can now use the `initialize()` method and `setSource()` to set the source of your model.
+El método `getSource()` ha sido marcado como `final`. Como tal, ya no puede sobreescribir este método en su modelo para establecer la tabla/fuente correspondiente del RDBMS. En su lugar, ahora puede utilizar el método `initialize()` y `setSource()` para establecer la fuente de su modelo.
 
 ```php
 <?php
@@ -680,13 +680,13 @@ class Users
 }
 ```
 
-### Save
+### Guardar
 
-The `save()` method no longer accepts parameters to set data. You can use `assign` instead.
+El método `save()` ya no acepta parámetros para establecer datos. En su lugar, puede usar el método `assign`.
 
 ### Criteria
 
-The second parameter of `Criteria::limit()` ('offset') must now be an integer or null. Previously there was no type requirement.
+El segundo parámetro de `Criteria::limit()` ('offset') ahora debe ser un entero o nulo. Anteriormente no existía ningún tipo de requisito.
 
 ```php
 $criteria->limit(10);
@@ -994,7 +994,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 | 3.4.x                  | Estado       | 4.0.x                                  |
 | ---------------------- | ------------ | -------------------------------------- |
-| Phalcon\Acl           | Removed      |                                        |
+| Phalcon\Acl           | Eliminado    |                                        |
 | Phalcon\Acl\Adapter  | Renombrado a | Phalcon\Acl\Adapter\AbstractAdapter |
 | Phalcon\Acl\Resource | Renombrado a | Phalcon\Acl\Component                |
 |                        | Nuevo        | Phalcon\Acl\Enum                     |
@@ -1004,9 +1004,9 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | 3.4.x                                 | Estado       | 4.0.x                                          |
 | ------------------------------------- | ------------ | ---------------------------------------------- |
 | Phalcon\Annotations\Adapter         | Renombrado a | Phalcon\Annotations\Adapter\AbstractAdapter |
-| Phalcon\Annotations\Adapter\Apc    | Removed      |                                                |
+| Phalcon\Annotations\Adapter\Apc    | Eliminado    |                                                |
 | Phalcon\Annotations\Adapter\Files  | Renombrado a | Phalcon\Annotations\Adapter\Stream          |
-| Phalcon\Annotations\Adapter\Xcache | Removed      |                                                |
+| Phalcon\Annotations\Adapter\Xcache | Eliminado    |                                                |
 | Phalcon\Annotations\Factory         | Renombrado a | Phalcon\Annotations\AnnotationsFactory       |
 
 ### Application
@@ -1027,29 +1027,29 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 | 3.4.x                                 | Estado       | 4.0.x                                               |
 | ------------------------------------- | ------------ | --------------------------------------------------- |
-| Phalcon\Cache\Backend\Apc          | Removed      |                                                     |
+| Phalcon\Cache\Backend\Apc          | Eliminado    |                                                     |
 | Phalcon\Cache\Backend               | Renombrado a | Phalcon\Cache                                      |
 | Phalcon\Cache\Backend\Factory      | Renombrado a | Phalcon\Cache\AdapterFactory                      |
 | Phalcon\Cache\Backend\Apcu         | Renombrado a | Phalcon\Cache\Adapter\Apcu                       |
 | Phalcon\Cache\Backend\File         | Renombrado a | Phalcon\Cache\Adapter\Stream                     |
 | Phalcon\Cache\Backend\Libmemcached | Renombrado a | Phalcon\Cache\Adapter\Libmemcached               |
-| Phalcon\Cache\Backend\Memcache     | Removed      |                                                     |
+| Phalcon\Cache\Backend\Memcache     | Eliminado    |                                                     |
 | Phalcon\Cache\Backend\Memory       | Renombrado a | Phalcon\Cache\Adapter\Memory                     |
-| Phalcon\Cache\Backend\Mongo        | Removed      |                                                     |
+| Phalcon\Cache\Backend\Mongo        | Eliminado    |                                                     |
 | Phalcon\Cache\Backend\Redis        | Renombrado a | Phalcon\Cache\Adapter\Redis                      |
 |                                       | Nuevo        | Phalcon\Cache\CacheFactory                        |
-| Phalcon\Cache\Backend\Xcache       | Removed      |                                                     |
+| Phalcon\Cache\Backend\Xcache       | Eliminado    |                                                     |
 | Phalcon\Cache\Exception             | Renombrado a | Phalcon\Cache\Exception\Exception                |
 |                                       | Nuevo        | Phalcon\Cache\Exception\InvalidArgumentException |
-| Phalcon\Cache\Frontend\Base64      | Removed      |                                                     |
-| Phalcon\Cache\Frontend\Data        | Removed      |                                                     |
-| Phalcon\Cache\Frontend\Factory     | Removed      |                                                     |
-| Phalcon\Cache\Frontend\Igbinary    | Removed      |                                                     |
-| Phalcon\Cache\Frontend\Json        | Removed      |                                                     |
-| Phalcon\Cache\Frontend\Msgpack     | Removed      |                                                     |
-| Phalcon\Cache\Frontend\None        | Removed      |                                                     |
-| Phalcon\Cache\Frontend\Output      | Removed      |                                                     |
-| Phalcon\Cache\Multiple              | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Base64      | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\Data        | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\Factory     | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\Igbinary    | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\Json        | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\Msgpack     | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\None        | Eliminado    |                                                     |
+| Phalcon\Cache\Frontend\Output      | Eliminado    |                                                     |
+| Phalcon\Cache\Multiple              | Eliminado    |                                                     |
 
 ### Collection
 
@@ -1215,7 +1215,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 | 3.4.x                   | Estado       | 4.0.x                                    |
 | ----------------------- | ------------ | ---------------------------------------- |
-| Phalcon\Image          | Removed      |                                          |
+| Phalcon\Image          | Eliminado    |                                          |
 | Phalcon\Image\Adapter | Renombrado a | Phalcon\Image\Adapter\AbstractAdapter |
 |                         | Nuevo        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renombrado a | Phalcon\Image\ImageFactory             |
@@ -1228,12 +1228,12 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Logger\Adapter            | Renombrado a | Phalcon\Logger\Adapter\AbstractAdapter     |
 | Phalcon\Logger\Adapter\Blackhole | Renombrado a | Phalcon\Logger\Adapter\Noop                |
 | Phalcon\Logger\Adapter\File      | Renombrado a | Phalcon\Logger\Adapter\Stream              |
-| Phalcon\Logger\Adapter\Firephp   | Removed      |                                               |
+| Phalcon\Logger\Adapter\Firephp   | Eliminado    |                                               |
 | Phalcon\Logger\Factory            | Renombrado a | Phalcon\Logger\LoggerFactory                |
 | Phalcon\Logger\Formatter          | Renombrado a | Phalcon\Logger\Formatter\AbstractFormatter |
-| Phalcon\Logger\Formatter\Firephp | Removed      |                                               |
-| Phalcon\Logger\Formatter\Syslog  | Removed      |                                               |
-| Phalcon\Logger\Multiple           | Removed      |                                               |
+| Phalcon\Logger\Formatter\Firephp | Eliminado    |                                               |
+| Phalcon\Logger\Formatter\Syslog  | Eliminado    |                                               |
+| Phalcon\Logger\Multiple           | Eliminado    |                                               |
 
 ### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
@@ -1248,19 +1248,19 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | 3.4.x                                             | Estado       | 4.0.x                                        |
 | ------------------------------------------------- | ------------ | -------------------------------------------- |
 | Phalcon\Mvc\Collection                          | Renombrado a | Phalcon\Collection                          |
-| Phalcon\Mvc\Collection\Behavior                | Removed      |                                              |
-| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Removed      |                                              |
-| Phalcon\Mvc\Collection\Behavior\Timestampable | Removed      |                                              |
-| Phalcon\Mvc\Collection\Document                | Removed      |                                              |
+| Phalcon\Mvc\Collection\Behavior                | Eliminado    |                                              |
+| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Eliminado    |                                              |
+| Phalcon\Mvc\Collection\Behavior\Timestampable | Eliminado    |                                              |
+| Phalcon\Mvc\Collection\Document                | Eliminado    |                                              |
 | Phalcon\Mvc\Collection\Exception               | Renombrado a | Phalcon\Collection\Exception               |
-| Phalcon\Mvc\Collection\Manager                 | Removed      |                                              |
+| Phalcon\Mvc\Collection\Manager                 | Eliminado    |                                              |
 |                                                   | Nuevo        | Phalcon\Collection\ReadOnly                |
 | Phalcon\Mvc\Model\Message                      | Renombrado a | Phalcon\Messages\Message                   |
-| Phalcon\Mvc\Model\MetaData\Apc                | Removed      |                                              |
+| Phalcon\Mvc\Model\MetaData\Apc                | Eliminado    |                                              |
 | Phalcon\Mvc\Model\MetaData\Files              | Renombrado a | Phalcon\Mvc\Model\MetaData\Stream        |
-| Phalcon\Mvc\Model\MetaData\Memcache           | Removed      |                                              |
-| Phalcon\Mvc\Model\MetaData\Session            | Removed      |                                              |
-| Phalcon\Mvc\Model\MetaData\Xcache             | Removed      |                                              |
+| Phalcon\Mvc\Model\MetaData\Memcache           | Eliminado    |                                              |
+| Phalcon\Mvc\Model\MetaData\Session            | Eliminado    |                                              |
+| Phalcon\Mvc\Model\MetaData\Xcache             | Eliminado    |                                              |
 | Phalcon\Mvc\Model\Validator                    | Renombrado a | Phalcon\Validation\Validator               |
 | Phalcon\Mvc\Model\Validator\Email             | Renombrado a | Phalcon\Validation\Validator\Email        |
 | Phalcon\Mvc\Model\Validator\Exclusionin       | Renombrado a | Phalcon\Validation\Validator\ExclusionIn  |
@@ -1289,11 +1289,11 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 ### Queue
 
-| 3.4.x                                | Estado  | 4.0.x |
-| ------------------------------------ | ------- | ----- |
-| Phalcon\Queue\Beanstalk            | Removed |       |
-| Phalcon\Queue\Beanstalk\Exception | Removed |       |
-| Phalcon\Queue\Beanstalk\Job       | Removed |       |
+| 3.4.x                                | Estado    | 4.0.x |
+| ------------------------------------ | --------- | ----- |
+| Phalcon\Queue\Beanstalk            | Eliminado |       |
+| Phalcon\Queue\Beanstalk\Exception | Eliminado |       |
+| Phalcon\Queue\Beanstalk\Job       | Eliminado |       |
 
 ### Session
 
@@ -1302,7 +1302,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Session\Adapter           | Renombrado a | Phalcon\Session\Adapter\AbstractAdapter |
 | Phalcon\Session\Adapter\Files    | Renombrado a | Phalcon\Session\Adapter\Stream          |
 |                                     | Nuevo        | Phalcon\Session\Adapter\Noop            |
-| Phalcon\Session\Adapter\Memcache | Removed      |                                            |
+| Phalcon\Session\Adapter\Memcache | Eliminado    |                                            |
 | Phalcon\Session\Factory           | Renombrado a | Phalcon\Session\Manager                  |
 
 ### Storage
@@ -1330,7 +1330,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 | 3.4.x                       | Estado       | 4.0.x                                        |
 | --------------------------- | ------------ | -------------------------------------------- |
-| Phalcon\Translate          | Removed      |                                              |
+| Phalcon\Translate          | Eliminado    |                                              |
 | Phalcon\Translate\Adapter | Renombrado a | Phalcon\Translate\Adapter\AbstractAdapter |
 |                             | Nuevo        | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Renombrado a | Phalcon\Translate\TranslateFactory         |
