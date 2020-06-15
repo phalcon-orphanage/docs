@@ -309,11 +309,12 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Añadido fetchColumn, insertAsDict, updateAsDict
+- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 
-- Se han añadido más tipos de columnas para el adaptador Mysql. Soporte para adaptadores -`TYPE_BIGINTEGER` 
+- Se han añadido más tipos de columnas para el adaptador Mysql. The adapters support 
+    - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -339,7 +340,7 @@ echo Enum::FETCH_ASSOC;
     - `TYPE_TINYBLOB`
     - `TYPE_TINYINTEGER`
     - `TYPE_TINYTEXT`
-    - `TYPE_VARCHAR` Algunos adaptadores no soportan ciertos tipos. Por ejemplo, `JSON` no es compatible con `Sqlite`. Se cambiará automáticamente a `VARCHAR`.
+    - `TYPE_VARCHAR` Some adapters do not support certain types. For instance `JSON` is not supported for `Sqlite`. It will be automatically changed to `VARCHAR`.
 
 ### Db\DialectInterface
 
@@ -347,7 +348,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\Dialect\Postgresql
 
-- Se modificó addPrimaryKey para hacer que los nombres de restricciones de clave primaria sean únicos prefijándolos con el nombre de la tabla.
+- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
 * * *
 
