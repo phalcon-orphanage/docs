@@ -309,11 +309,12 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Added fetchColumn, insertAsDict, updateAsDict
+- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 
-- Mysqlアダプタにカラムタイプを追加しました。 アダプターサポート -`TYPE_BIGINTEGER` 
+- Mysqlアダプタにカラムタイプを追加しました。 The adapters support 
+    - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -347,7 +348,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\Dialect\Postgresql
 
-- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
 * * *
 
