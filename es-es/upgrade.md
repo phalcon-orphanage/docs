@@ -152,7 +152,7 @@ Los filtros CSS y JS se han eliminado del componente [Assets](assets). Debido a 
 - Renombrado `Phalcon\Assets\ResourceInterface` a `Phalcon\Assets\AssetInterface`
 - Renombrado `Phalcon\Assets\Manager::addResource` a `Phalcon\Assets\Manager::addAsset`
 - Renombrado `Phalcon\Assets\Manager::addResourceByType` a `Phalcon\Assets\Manager::addAssetByType`
-- Renamed `Phalcon\Assets\Manager::collectionResourcesByType` to `Phalcon\Assets\Manager::collectionAssetsByType`
+- Renombrado `Phalcon\Assets\Manager::collectionResourcesByType` a `Phalcon\Assets\Manager::collectionAssetsByType`
 
 * * *
 
@@ -298,8 +298,8 @@ class MainTask extends Task
 
 ## Db
 
-- Added global setting `orm.case_insensitive_column_map` to attempt to find value in the column map case-insensitively. Can be also enabled by setting `caseInsensitiveColumnMap` key in `\Phalcon\Mvc\Model::setup()`
-- Removed `Phalcon\Db` namespace. Replaced by `Phalcon\Db\AbstractDb` for necessary methods and `Phalcon\Db\Enum` for constants, i.e.:
+- Se añadió el ajuste global `orm.case_insensitive_column_map` para intentar encontrar el valor, en el mapa de columnas, siendo insensiblemente mayúsculas. También se puede activar configurando la clave `caseInsensitiveColumnMap` en `\Phalcon\Mvc\Model::setup()`
+- Eliminado el espacio de nombres `Phalcon\Db`. Reemplazado por `Phalcon\Db\AbstractDb` para los métodos necesarios y `Phalcon\Db\Enum` para las constantes, por ejemplo:
 
 ```php
 use Phalcon\Db\Enum;
@@ -309,11 +309,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Added fetchColumn, insertAsDict, updateAsDict
+- Añadido fetchColumn, insertAsDict, updateAsDict
 
 ### Db\Adapter\Pdo
 
-- Added more column types for the Mysql adapter. The adapters support -`TYPE_BIGINTEGER` 
+- Se han añadido más tipos de columnas para el adaptador Mysql. Soporte para adaptadores -`TYPE_BIGINTEGER` 
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -339,15 +339,15 @@ echo Enum::FETCH_ASSOC;
     - `TYPE_TINYBLOB`
     - `TYPE_TINYINTEGER`
     - `TYPE_TINYTEXT`
-    - `TYPE_VARCHAR` Some adapters do not support certain types. For instance `JSON` is not supported for `Sqlite`. It will be automatically changed to `VARCHAR`.
+    - `TYPE_VARCHAR` Algunos adaptadores no soportan ciertos tipos. Por ejemplo, `JSON` no es compatible con `Sqlite`. Se cambiará automáticamente a `VARCHAR`.
 
 ### Db\DialectInterface
 
-- Added `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
+- Añadido `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
 
 ### Db\Dialect\Postgresql
 
-- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+- Se modificó addPrimaryKey para hacer que los nombres de restricciones de clave primaria sean únicos prefijándolos con el nombre de la tabla.
 
 * * *
 
@@ -355,17 +355,17 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Added getParameter, isResolved
+- Añadido getParameter, isResolved
 
 ### Di\Service
 
-- Changed Phalcon\Di\Service constructor to no longer takes the name of the service.
+- Se cambió el constructor de Phalcon\Di\Service para que deje de tomar el nombre del servicio.
 
 * * *
 
 ## Dispatcher
 
-- Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
+- Eliminado `Phalcon\Dispatcher::setModelBinding()` a favor de `Phalcon\Dispatcher::setModelBinder()`
 - Added `getHandlerSuffix()`, `setHandlerSuffix()`
 
 * * *
@@ -374,15 +374,15 @@ echo Enum::FETCH_ASSOC;
 
 ### Events\ManagerInterface
 
-- Added `hasListeners`
+- Añadido `hasListeners`
 
 * * *
 
 ## Flash
 
-- Added ability to set a custom template for the Flash Messenger.
-- Constructor no longer accepts an array for the CSS classes. You will need to use `setCssClasses()` to set your custom CSS classes for the component
-- The constructor now accepts an optional `Phalcon\Escaper` object, as well as a `Phalcon\Session\Manager` object (in the case of `Phalcon\Flash\Session`), in case you do not wish to use the DI and set it yourself.
+- Se ha añadido la capacidad de establecer una plantilla personalizada para el mensajero Flash.
+- El constructor ya no acepta un array para las clases CSS. Se necesitará usar `setCssClasses()` para establecer tus clases CSS personalizadas para el componente
+- El constructor ahora acepta un objeto opcional `Phalcon\Escaper`, así como un objeto `Phalcon\Session\Manager` (en el caso de `Phalcon\Flash\Session`), en caso de que no desee utilizar el DI y establecerlo usted mismo.
 
 * * *
 
