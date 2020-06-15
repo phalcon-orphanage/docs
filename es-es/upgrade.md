@@ -708,63 +708,63 @@ $criteria->limit(10, null);
 ### Mvc\Collection
 
 - Removed `Phalcon\Mvc\Collection::validationHasFailed`
-- Removed calling `Phalcon\Mvc\Collection::validate` with object of type `Phalcon\Mvc\Model\ValidatorInterface`
+- Llamada eliminada `Phalcon\Mvc\Collection::validate` con un objeto de tipo `Phalcon\Mvc\Model\ValidatorInterface`
 
 ### Mvc\Micro\Lazyloader
 
-- Removed `__call` in favor of `callMethod`
+- Se ha eliminado `__call` a favor de `callMethod`
 
 ### Mvc\Model
 
-- Removed `Phalcon\Model::reset`
-- Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
-- Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
+- Eliminado `Phalcon\Model::reset`
+- Se añadió `isRelationshipLoaded` para comprobar si la relación está cargada
+- Cambiado el orden de los parámetros de `Phalcon\Model::assign` a $data, $whiteList, $dataColumnMap
+- Cambió `Phalcon\Model::findFirst` para devolver `null` en lugar de `false` si no se encontró ningún registro
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
 ### Mvc\Model\Criteria
 
 - Removed `addWhere`
-- Removed `order`
+- Eliminado `order`
 - Removed `order` in favor of `orderBy`
 
 ### Mvc\Model\CriteriaInterface
 
-- Added `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
+- Añadido `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
 
 ### Mvc\Model\Manager
 
-- `Load` no longer reuses already initialized models
-- Removed `Phalcon\Model\Manager::registerNamespaceAlias()`
-- Removed `Phalcon\Model\Manager::getNamespaceAlias()`
-- Removed `Phalcon\Model\Manager::getNamespaceAliases()`
-- The signature of `Phalcon\Mvc\Model\Manager::getRelationRecords()` has changed
+- `load` ya no reutiliza modelos ya inicializados
+- Eliminado `Phalcon\Model\Manager::registerNamespaceAlias()`
+- Eliminado `Phalcon\Model\Manager::getNamespaceAlias()`
+- Eliminado `Phalcon\Model\Manager::getNamespaceAliases()`
+- El armado de `Phalcon\Mvc\Model\Manager::getRelationRecords()` ha cambiado
 - The signature of `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getHasOneRecords()` has changed
+- El armado de `Phalcon\Mvc\Model\Manager::getHasOneRecords()` ha cambiado
 - The signature of `Phalcon\Mvc\Model\Manager::getHasManyRecords()` has changed
 
 ### Mvc\Model\ManagerInterface
 
-- Added `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
-- Removed `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
-- Removed `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
+- Añadido `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
+- Eliminado `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
+- Eliminado `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
 
 ### Mvc\Model\MessageInterface
 
-- Added `setModel`, `getModel`, `setCode`, `getCode`
+- Añadido `setModel`, `getModel`, `setCode`, `getCode`
 
 ### Mvc\Model\QueryInterface
 
-- Added `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
+- Añadido `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
 
 ### Mvc\Model\Query\BuilderInterface
 
-- Added `offset`
+- Añadido `offset`
 
 ### Mvc\Model\Query\Builder
 
-- Added bind support. The Query Builder has the same methods as `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` and `setBindTypes`.
-- Changed `addFrom` to remove third parameter `$with`
+- Añadido soporte para enlazar parámetros. El Query Builder tiene los mismos métodos que `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` y `setBindTypes`.
+- Se ha cambiado `addFrom` para eliminar el tercer parámetro `$with`
 
 ### Mvc\Model\Query\BuilderInterface
 
@@ -772,19 +772,19 @@ $criteria->limit(10, null);
 
 ### Mvc\Model\RelationInterface
 
-- Added `getParams`
+- Añadido `getParams`
 
 ### Mvc\Model\ResultsetInterface
 
-- Added `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
+- Añadido `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
 
 ### Mvc\Model\Transaction\ManagerInterface
 
-- Added `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
+- Añadido `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
 
 ### Mvc\Model\Validator*
 
-- Removed `Phalcon\Mvc\Model\Validator\*` in favor of `Phalcon\Validation\Validator\*`
+- Eliminado `Phalcon\Mvc\Model\Validator\*` a favor de `Phalcon\Validation\Validator\*`
 
 ### Mvc\ModelInterface
 
@@ -792,7 +792,7 @@ $criteria->limit(10, null);
 
 ### Mvc\Router
 
-- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
+- Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
 
 ### Mvc\RouterInterface
 
@@ -800,11 +800,11 @@ $criteria->limit(10, null);
 
 ### Mvc\Router\RouteInterface
 
-- Added `convert` so that calling `add` will return an instance that has `convert` method
+- Añadido `convert` para que la llamada `add` devuelva una instancia que tiene el método `convert`
 
 ### Mvc\Router\RouteInterface
 
-- Added response handler to `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, to allow use of a custom response handler.
+- Añadido el gestor de respuesta a `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, para permitir el uso de un gestor de respuesta personalizado.
 
 ### Mvc\User
 
@@ -814,14 +814,14 @@ $criteria->limit(10, null);
 
 ### Mvc\View\Engine\Volt
 
-The options for Volt have changed (the key names). Using the old syntax will produce a deprecation warning. The new options are:
+Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxis antigua producirá una advertencia de deprecado. Las nuevas opciones son:
 
 - `always` - Always compile
-- `extension` - Extension of files
-- `separator` - Separator (used for the folders/routes)
-- `stat` - Stat each file before trying to use it
-- `path` - The path of the files
-- `prefix` - The prefix of the files
+- `extension` - Extensión de los archivos
+- `separator` - Separador (usado para las carpetas/rutas)
+- `stat` - Estado de cada archivo antes de intentar usarlo
+- `path` - La ruta de los archivos
+- `prefix` - El prefijo de los archivos
 
 * * *
 
@@ -834,7 +834,7 @@ The options for Volt have changed (the key names). Using the old syntax will pro
 
 ## Router
 
-- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
+- Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
 - You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
 
 ```php
