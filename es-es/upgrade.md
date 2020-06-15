@@ -982,37 +982,37 @@ View caching along with the `viewCache` service have been removed from the frame
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Url Documentation](url)
+> Uso: [Documentación de Url](url)
 {: .alert .alert-info }
 
-The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functionality remains the same.
+El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcionalidad sigue siendo la misma.
 
 ## Cheat Sheet
 
 ### Acl
 
-| 3.4.x                  | State      | 4.0.x                                  |
-| ---------------------- | ---------- | -------------------------------------- |
-| Phalcon\Acl           | Removed    |                                        |
-| Phalcon\Acl\Adapter  | Renamed to | Phalcon\Acl\Adapter\AbstractAdapter |
-| Phalcon\Acl\Resource | Renamed to | Phalcon\Acl\Component                |
-|                        | New        | Phalcon\Acl\Enum                     |
+| 3.4.x                  | Estado       | 4.0.x                                  |
+| ---------------------- | ------------ | -------------------------------------- |
+| Phalcon\Acl           | Removed      |                                        |
+| Phalcon\Acl\Adapter  | Renombrado a | Phalcon\Acl\Adapter\AbstractAdapter |
+| Phalcon\Acl\Resource | Renombrado a | Phalcon\Acl\Component                |
+|                        | Nuevo        | Phalcon\Acl\Enum                     |
 
 ### Anotaciones
 
-| 3.4.x                                 | State      | 4.0.x                                          |
-| ------------------------------------- | ---------- | ---------------------------------------------- |
-| Phalcon\Annotations\Adapter         | Renamed to | Phalcon\Annotations\Adapter\AbstractAdapter |
-| Phalcon\Annotations\Adapter\Apc    | Removed    |                                                |
-| Phalcon\Annotations\Adapter\Files  | Renamed to | Phalcon\Annotations\Adapter\Stream          |
-| Phalcon\Annotations\Adapter\Xcache | Removed    |                                                |
-| Phalcon\Annotations\Factory         | Renamed to | Phalcon\Annotations\AnnotationsFactory       |
+| 3.4.x                                 | Estado       | 4.0.x                                          |
+| ------------------------------------- | ------------ | ---------------------------------------------- |
+| Phalcon\Annotations\Adapter         | Renombrado a | Phalcon\Annotations\Adapter\AbstractAdapter |
+| Phalcon\Annotations\Adapter\Apc    | Removed      |                                                |
+| Phalcon\Annotations\Adapter\Files  | Renombrado a | Phalcon\Annotations\Adapter\Stream          |
+| Phalcon\Annotations\Adapter\Xcache | Removed      |                                                |
+| Phalcon\Annotations\Factory         | Renombrado a | Phalcon\Annotations\AnnotationsFactory       |
 
 ### Application
 
-| 3.4.x                | State      | 4.0.x                                     |
-| -------------------- | ---------- | ----------------------------------------- |
-| Phalcon\Application | Renamed to | Phalcon\Application\AbstractApplication |
+| 3.4.x                | Estado       | 4.0.x                                     |
+| -------------------- | ------------ | ----------------------------------------- |
+| Phalcon\Application | Renombrado a | Phalcon\Application\AbstractApplication |
 
 ### Recursos Activos
 
@@ -1020,271 +1020,271 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Cache
 
-| 3.4.x                                 | State      | 4.0.x                                               |
-| ------------------------------------- | ---------- | --------------------------------------------------- |
-| Phalcon\Cache\Backend\Apc          | Removed    |                                                     |
-| Phalcon\Cache\Backend               | Renamed to | Phalcon\Cache                                      |
-| Phalcon\Cache\Backend\Factory      | Renamed to | Phalcon\Cache\AdapterFactory                      |
-| Phalcon\Cache\Backend\Apcu         | Renamed to | Phalcon\Cache\Adapter\Apcu                       |
-| Phalcon\Cache\Backend\File         | Renamed to | Phalcon\Cache\Adapter\Stream                     |
-| Phalcon\Cache\Backend\Libmemcached | Renamed to | Phalcon\Cache\Adapter\Libmemcached               |
-| Phalcon\Cache\Backend\Memcache     | Removed    |                                                     |
-| Phalcon\Cache\Backend\Memory       | Renamed to | Phalcon\Cache\Adapter\Memory                     |
-| Phalcon\Cache\Backend\Mongo        | Removed    |                                                     |
-| Phalcon\Cache\Backend\Redis        | Renamed to | Phalcon\Cache\Adapter\Redis                      |
-|                                       | New        | Phalcon\Cache\CacheFactory                        |
-| Phalcon\Cache\Backend\Xcache       | Removed    |                                                     |
-| Phalcon\Cache\Exception             | Renamed to | Phalcon\Cache\Exception\Exception                |
-|                                       | New        | Phalcon\Cache\Exception\InvalidArgumentException |
-| Phalcon\Cache\Frontend\Base64      | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Data        | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Factory     | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Igbinary    | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Json        | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Msgpack     | Removed    |                                                     |
-| Phalcon\Cache\Frontend\None        | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
-| Phalcon\Cache\Multiple              | Removed    |                                                     |
+| 3.4.x                                 | Estado       | 4.0.x                                               |
+| ------------------------------------- | ------------ | --------------------------------------------------- |
+| Phalcon\Cache\Backend\Apc          | Removed      |                                                     |
+| Phalcon\Cache\Backend               | Renombrado a | Phalcon\Cache                                      |
+| Phalcon\Cache\Backend\Factory      | Renombrado a | Phalcon\Cache\AdapterFactory                      |
+| Phalcon\Cache\Backend\Apcu         | Renombrado a | Phalcon\Cache\Adapter\Apcu                       |
+| Phalcon\Cache\Backend\File         | Renombrado a | Phalcon\Cache\Adapter\Stream                     |
+| Phalcon\Cache\Backend\Libmemcached | Renombrado a | Phalcon\Cache\Adapter\Libmemcached               |
+| Phalcon\Cache\Backend\Memcache     | Removed      |                                                     |
+| Phalcon\Cache\Backend\Memory       | Renombrado a | Phalcon\Cache\Adapter\Memory                     |
+| Phalcon\Cache\Backend\Mongo        | Removed      |                                                     |
+| Phalcon\Cache\Backend\Redis        | Renombrado a | Phalcon\Cache\Adapter\Redis                      |
+|                                       | Nuevo        | Phalcon\Cache\CacheFactory                        |
+| Phalcon\Cache\Backend\Xcache       | Removed      |                                                     |
+| Phalcon\Cache\Exception             | Renombrado a | Phalcon\Cache\Exception\Exception                |
+|                                       | Nuevo        | Phalcon\Cache\Exception\InvalidArgumentException |
+| Phalcon\Cache\Frontend\Base64      | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Data        | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Factory     | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Igbinary    | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Json        | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Msgpack     | Removed      |                                                     |
+| Phalcon\Cache\Frontend\None        | Removed      |                                                     |
+| Phalcon\Cache\Frontend\Output      | Removed      |                                                     |
+| Phalcon\Cache\Multiple              | Removed      |                                                     |
 
 ### Collection
 
-| 3.4.x | State | 4.0.x                          |
-| ----- | ----- | ------------------------------ |
-|       | New   | Phalcon\Collection            |
-|       | New   | Phalcon\Collection\Exception |
-|       | New   | Phalcon\Collection\ReadOnly  |
+| 3.4.x | Estado | 4.0.x                          |
+| ----- | ------ | ------------------------------ |
+|       | Nuevo  | Phalcon\Collection            |
+|       | Nuevo  | Phalcon\Collection\Exception |
+|       | Nuevo  | Phalcon\Collection\ReadOnly  |
 
 ### Configuración
 
-| 3.4.x                    | State      | 4.0.x                          |
-| ------------------------ | ---------- | ------------------------------ |
-| Phalcon\Config\Factory | Renamed to | Phalcon\Config\ConfigFactory |
+| 3.4.x                    | Estado       | 4.0.x                          |
+| ------------------------ | ------------ | ------------------------------ |
+| Phalcon\Config\Factory | Renombrado a | Phalcon\Config\ConfigFactory |
 
 ### Container
 
-| 3.4.x | State | 4.0.x              |
-| ----- | ----- | ------------------ |
-|       | New   | Phalcon\Container |
+| 3.4.x | Estado | 4.0.x              |
+| ----- | ------ | ------------------ |
+|       | Nuevo  | Phalcon\Container |
 
 ### Db
 
-| 3.4.x                              | State      | 4.0.x                                  |
-| ---------------------------------- | ---------- | -------------------------------------- |
-| Phalcon\Db                        | Renamed to | Phalcon\Db\AbstractDb                |
-| Phalcon\Db\Adapter               | Renamed to | Phalcon\Db\Adapter\AbstractAdapter  |
-| Phalcon\Db\Adapter\Pdo          | Renamed to | Phalcon\Db\Adapter\Pdo\AbstractPdo |
-| Phalcon\Db\Adapter\Pdo\Factory | Renamed to | Phalcon\Db\Adapter\PdoFactory       |
-|                                    | New        | Phalcon\Db\Enum                      |
+| 3.4.x                              | Estado       | 4.0.x                                  |
+| ---------------------------------- | ------------ | -------------------------------------- |
+| Phalcon\Db                        | Renombrado a | Phalcon\Db\AbstractDb                |
+| Phalcon\Db\Adapter               | Renombrado a | Phalcon\Db\Adapter\AbstractAdapter  |
+| Phalcon\Db\Adapter\Pdo          | Renombrado a | Phalcon\Db\Adapter\Pdo\AbstractPdo |
+| Phalcon\Db\Adapter\Pdo\Factory | Renombrado a | Phalcon\Db\Adapter\PdoFactory       |
+|                                    | Nuevo        | Phalcon\Db\Enum                      |
 
 ### Dispatcher
 
-| 3.4.x               | State      | 4.0.x                                   |
-| ------------------- | ---------- | --------------------------------------- |
-| Phalcon\Dispatcher | Renamed to | Phalcon\Dispatcher\AbstractDispatcher |
-|                     | New        | Phalcon\Dispatcher\Exception          |
+| 3.4.x               | Estado       | 4.0.x                                   |
+| ------------------- | ------------ | --------------------------------------- |
+| Phalcon\Dispatcher | Renombrado a | Phalcon\Dispatcher\AbstractDispatcher |
+|                     | Nuevo        | Phalcon\Dispatcher\Exception          |
 
 ### Di
 
-| 3.4.x | State | 4.0.x                                              |
-| ----- | ----- | -------------------------------------------------- |
-|       | New   | Phalcon\Di\AbstractInjectionAware                |
-|       | New   | Phalcon\Di\Exception\ServiceResolutionException |
+| 3.4.x | Estado | 4.0.x                                              |
+| ----- | ------ | -------------------------------------------------- |
+|       | Nuevo  | Phalcon\Di\AbstractInjectionAware                |
+|       | Nuevo  | Phalcon\Di\Exception\ServiceResolutionException |
 
 ### Domain
 
-| 3.4.x | State | 4.0.x                                    |
-| ----- | ----- | ---------------------------------------- |
-|       | New   | Phalcon\Domain\Payload\Payload        |
-|       | New   | Phalcon\Domain\Payload\PayloadFactory |
-|       | New   | Phalcon\Domain\Payload\Status         |
+| 3.4.x | Estado | 4.0.x                                    |
+| ----- | ------ | ---------------------------------------- |
+|       | Nuevo  | Phalcon\Domain\Payload\Payload        |
+|       | Nuevo  | Phalcon\Domain\Payload\PayloadFactory |
+|       | Nuevo  | Phalcon\Domain\Payload\Status         |
 
 ### Factory
 
-| 3.4.x            | State      | 4.0.x                             |
-| ---------------- | ---------- | --------------------------------- |
-| Phalcon\Factory | Renamed to | Phalcon\Factory\AbstractFactory |
+| 3.4.x            | Estado       | 4.0.x                             |
+| ---------------- | ------------ | --------------------------------- |
+| Phalcon\Factory | Renombrado a | Phalcon\Factory\AbstractFactory |
 
 ### Filtro
 
-| 3.4.x | State | 4.0.x                                  |
-| ----- | ----- | -------------------------------------- |
-|       | New   | Phalcon\Filter\FilterFactory         |
-|       | New   | Phalcon\Filter\Sanitize\AbsInt      |
-|       | New   | Phalcon\Filter\Sanitize\Alnum       |
-|       | New   | Phalcon\Filter\Sanitize\Alpha       |
-|       | New   | Phalcon\Filter\Sanitize\BoolVal     |
-|       | New   | Phalcon\Filter\Sanitize\Email       |
-|       | New   | Phalcon\Filter\Sanitize\FloatVal    |
-|       | New   | Phalcon\Filter\Sanitize\IntVal      |
-|       | New   | Phalcon\Filter\Sanitize\Lower       |
-|       | New   | Phalcon\Filter\Sanitize\LowerFirst  |
-|       | New   | Phalcon\Filter\Sanitize\Regex       |
-|       | New   | Phalcon\Filter\Sanitize\Remove      |
-|       | New   | Phalcon\Filter\Sanitize\Replace     |
-|       | New   | Phalcon\Filter\Sanitize\Special     |
-|       | New   | Phalcon\Filter\Sanitize\SpecialFull |
-|       | New   | Phalcon\Filter\Sanitize\StringVal   |
-|       | New   | Phalcon\Filter\Sanitize\Striptags   |
-|       | New   | Phalcon\Filter\Sanitize\Trim        |
-|       | New   | Phalcon\Filter\Sanitize\Upper       |
-|       | New   | Phalcon\Filter\Sanitize\UpperFirst  |
-|       | New   | Phalcon\Filter\Sanitize\UpperWords  |
-|       | New   | Phalcon\Filter\Sanitize\Url         |
+| 3.4.x | Estado | 4.0.x                                  |
+| ----- | ------ | -------------------------------------- |
+|       | Nuevo  | Phalcon\Filter\FilterFactory         |
+|       | Nuevo  | Phalcon\Filter\Sanitize\AbsInt      |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Alnum       |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Alpha       |
+|       | Nuevo  | Phalcon\Filter\Sanitize\BoolVal     |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Email       |
+|       | Nuevo  | Phalcon\Filter\Sanitize\FloatVal    |
+|       | Nuevo  | Phalcon\Filter\Sanitize\IntVal      |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Lower       |
+|       | Nuevo  | Phalcon\Filter\Sanitize\LowerFirst  |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Regex       |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Remove      |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Replace     |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Special     |
+|       | Nuevo  | Phalcon\Filter\Sanitize\SpecialFull |
+|       | Nuevo  | Phalcon\Filter\Sanitize\StringVal   |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Striptags   |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Trim        |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Upper       |
+|       | Nuevo  | Phalcon\Filter\Sanitize\UpperFirst  |
+|       | Nuevo  | Phalcon\Filter\Sanitize\UpperWords  |
+|       | Nuevo  | Phalcon\Filter\Sanitize\Url         |
 
 ### Flash
 
-| 3.4.x          | State      | 4.0.x                         |
-| -------------- | ---------- | ----------------------------- |
-| Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
+| 3.4.x          | Estado       | 4.0.x                         |
+| -------------- | ------------ | ----------------------------- |
+| Phalcon\Flash | Renombrado a | Phalcon\Flash\AbstractFlash |
 
 ### Formularios
 
-| 3.4.x                   | State      | 4.0.x                                    |
-| ----------------------- | ---------- | ---------------------------------------- |
-| Phalcon\Forms\Element | Renamed to | Phalcon\Forms\Element\AbstractElement |
+| 3.4.x                   | Estado       | 4.0.x                                    |
+| ----------------------- | ------------ | ---------------------------------------- |
+| Phalcon\Forms\Element | Renombrado a | Phalcon\Forms\Element\AbstractElement |
 
 ### Ayudantes
 
-| 3.4.x | State | 4.0.x                      |
-| ----- | ----- | -------------------------- |
-|       | New   | Phalcon\Helper\Arr       |
-|       | New   | Phalcon\Helper\Exception |
-|       | New   | Phalcon\Helper\Fs        |
-|       | New   | Phalcon\Helper\Json      |
-|       | New   | Phalcon\Helper\Number    |
-|       | New   | Phalcon\Helper\Str       |
+| 3.4.x | Estado | 4.0.x                      |
+| ----- | ------ | -------------------------- |
+|       | Nuevo  | Phalcon\Helper\Arr       |
+|       | Nuevo  | Phalcon\Helper\Exception |
+|       | Nuevo  | Phalcon\Helper\Fs        |
+|       | Nuevo  | Phalcon\Helper\Json      |
+|       | Nuevo  | Phalcon\Helper\Number    |
+|       | Nuevo  | Phalcon\Helper\Str       |
 
 ### Html
 
-| 3.4.x | State | 4.0.x                                      |
-| ----- | ----- | ------------------------------------------ |
-|       | New   | Phalcon\Html\Attributes                  |
-|       | New   | Phalcon\Html\Breadcrumbs                 |
-|       | New   | Phalcon\Html\Exception                   |
-|       | New   | Phalcon\Html\Helper\AbstractHelper      |
-|       | New   | Phalcon\Html\Helper\Anchor              |
-|       | New   | Phalcon\Html\Helper\AnchorRaw           |
-|       | New   | Phalcon\Html\Helper\Body                |
-|       | New   | Phalcon\Html\Helper\Button              |
-|       | New   | Phalcon\Html\Helper\Close               |
-|       | New   | Phalcon\Html\Helper\Element             |
-|       | New   | Phalcon\Html\Helper\ElementRaw          |
-|       | New   | Phalcon\Html\Helper\Form                |
-|       | New   | Phalcon\Html\Helper\Img                 |
-|       | New   | Phalcon\Html\Helper\Label               |
-|       | New   | Phalcon\Html\Helper\TextArea            |
-|       | New   | Phalcon\Html\Link\EvolvableLink         |
-|       | New   | Phalcon\Html\Link\EvolvableLinkProvider |
-|       | New   | Phalcon\Html\Link\Link                  |
-|       | New   | Phalcon\Html\Link\LinkProvider          |
-|       | New   | Phalcon\Html\Link\Serializer\Header    |
-|       | New   | Phalcon\Html\TagFactory                  |
+| 3.4.x | Estado | 4.0.x                                      |
+| ----- | ------ | ------------------------------------------ |
+|       | Nuevo  | Phalcon\Html\Attributes                  |
+|       | Nuevo  | Phalcon\Html\Breadcrumbs                 |
+|       | Nuevo  | Phalcon\Html\Exception                   |
+|       | Nuevo  | Phalcon\Html\Helper\AbstractHelper      |
+|       | Nuevo  | Phalcon\Html\Helper\Anchor              |
+|       | Nuevo  | Phalcon\Html\Helper\AnchorRaw           |
+|       | Nuevo  | Phalcon\Html\Helper\Body                |
+|       | Nuevo  | Phalcon\Html\Helper\Button              |
+|       | Nuevo  | Phalcon\Html\Helper\Close               |
+|       | Nuevo  | Phalcon\Html\Helper\Element             |
+|       | Nuevo  | Phalcon\Html\Helper\ElementRaw          |
+|       | Nuevo  | Phalcon\Html\Helper\Form                |
+|       | Nuevo  | Phalcon\Html\Helper\Img                 |
+|       | Nuevo  | Phalcon\Html\Helper\Label               |
+|       | Nuevo  | Phalcon\Html\Helper\TextArea            |
+|       | Nuevo  | Phalcon\Html\Link\EvolvableLink         |
+|       | Nuevo  | Phalcon\Html\Link\EvolvableLinkProvider |
+|       | Nuevo  | Phalcon\Html\Link\Link                  |
+|       | Nuevo  | Phalcon\Html\Link\LinkProvider          |
+|       | Nuevo  | Phalcon\Html\Link\Serializer\Header    |
+|       | Nuevo  | Phalcon\Html\TagFactory                  |
 
 ### Http
 
-| 3.4.x | State | 4.0.x                                                       |
-| ----- | ----- | ----------------------------------------------------------- |
-|       | New   | Phalcon\Http\Message\AbstractCommon                      |
-|       | New   | Phalcon\Http\Message\AbstractMessage                     |
-|       | New   | Phalcon\Http\Message\AbstractRequest                     |
-|       | New   | Phalcon\Http\Message\Exception\InvalidArgumentException |
-|       | New   | Phalcon\Http\Message\Request                             |
-|       | New   | Phalcon\Http\Message\RequestFactory                      |
-|       | New   | Phalcon\Http\Message\Response                            |
-|       | New   | Phalcon\Http\Message\ResponseFactory                     |
-|       | New   | Phalcon\Http\Message\ServerRequest                       |
-|       | New   | Phalcon\Http\Message\ServerRequestFactory                |
-|       | New   | Phalcon\Http\Message\Stream                              |
-|       | New   | Phalcon\Http\Message\StreamFactory                       |
-|       | New   | Phalcon\Http\Message\Stream\Input                       |
-|       | New   | Phalcon\Http\Message\Stream\Memory                      |
-|       | New   | Phalcon\Http\Message\Stream\Temp                        |
-|       | New   | Phalcon\Http\Message\UploadedFile                        |
-|       | New   | Phalcon\Http\Message\UploadedFileFactory                 |
-|       | New   | Phalcon\Http\Message\Uri                                 |
-|       | New   | Phalcon\Http\Message\UriFactory                          |
-|       | New   | Phalcon\Http\Server\AbstractMiddleware                   |
-|       | New   | Phalcon\Http\Server\AbstractRequestHandler               |
+| 3.4.x | Estado | 4.0.x                                                       |
+| ----- | ------ | ----------------------------------------------------------- |
+|       | Nuevo  | Phalcon\Http\Message\AbstractCommon                      |
+|       | Nuevo  | Phalcon\Http\Message\AbstractMessage                     |
+|       | Nuevo  | Phalcon\Http\Message\AbstractRequest                     |
+|       | Nuevo  | Phalcon\Http\Message\Exception\InvalidArgumentException |
+|       | Nuevo  | Phalcon\Http\Message\Request                             |
+|       | Nuevo  | Phalcon\Http\Message\RequestFactory                      |
+|       | Nuevo  | Phalcon\Http\Message\Response                            |
+|       | Nuevo  | Phalcon\Http\Message\ResponseFactory                     |
+|       | Nuevo  | Phalcon\Http\Message\ServerRequest                       |
+|       | Nuevo  | Phalcon\Http\Message\ServerRequestFactory                |
+|       | Nuevo  | Phalcon\Http\Message\Stream                              |
+|       | Nuevo  | Phalcon\Http\Message\StreamFactory                       |
+|       | Nuevo  | Phalcon\Http\Message\Stream\Input                       |
+|       | Nuevo  | Phalcon\Http\Message\Stream\Memory                      |
+|       | Nuevo  | Phalcon\Http\Message\Stream\Temp                        |
+|       | Nuevo  | Phalcon\Http\Message\UploadedFile                        |
+|       | Nuevo  | Phalcon\Http\Message\UploadedFileFactory                 |
+|       | Nuevo  | Phalcon\Http\Message\Uri                                 |
+|       | Nuevo  | Phalcon\Http\Message\UriFactory                          |
+|       | Nuevo  | Phalcon\Http\Server\AbstractMiddleware                   |
+|       | Nuevo  | Phalcon\Http\Server\AbstractRequestHandler               |
 
 ### Imágenes
 
-| 3.4.x                   | State      | 4.0.x                                    |
-| ----------------------- | ---------- | ---------------------------------------- |
-| Phalcon\Image          | Removed    |                                          |
-| Phalcon\Image\Adapter | Renamed to | Phalcon\Image\Adapter\AbstractAdapter |
-|                         | New        | Phalcon\Image\Enum                     |
-| Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
+| 3.4.x                   | Estado       | 4.0.x                                    |
+| ----------------------- | ------------ | ---------------------------------------- |
+| Phalcon\Image          | Removed      |                                          |
+| Phalcon\Image\Adapter | Renombrado a | Phalcon\Image\Adapter\AbstractAdapter |
+|                         | Nuevo        | Phalcon\Image\Enum                     |
+| Phalcon\Image\Factory | Renombrado a | Phalcon\Image\ImageFactory             |
 
 ### Logger
 
-| 3.4.x                               | State      | 4.0.x                                         |
-| ----------------------------------- | ---------- | --------------------------------------------- |
-|                                     | New        | Phalcon\Logger\AdapterFactory               |
-| Phalcon\Logger\Adapter            | Renamed to | Phalcon\Logger\Adapter\AbstractAdapter     |
-| Phalcon\Logger\Adapter\Blackhole | Renamed to | Phalcon\Logger\Adapter\Noop                |
-| Phalcon\Logger\Adapter\File      | Renamed to | Phalcon\Logger\Adapter\Stream              |
-| Phalcon\Logger\Adapter\Firephp   | Removed    |                                               |
-| Phalcon\Logger\Factory            | Renamed to | Phalcon\Logger\LoggerFactory                |
-| Phalcon\Logger\Formatter          | Renamed to | Phalcon\Logger\Formatter\AbstractFormatter |
-| Phalcon\Logger\Formatter\Firephp | Removed    |                                               |
-| Phalcon\Logger\Formatter\Syslog  | Removed    |                                               |
-| Phalcon\Logger\Multiple           | Removed    |                                               |
+| 3.4.x                               | Estado       | 4.0.x                                         |
+| ----------------------------------- | ------------ | --------------------------------------------- |
+|                                     | Nuevo        | Phalcon\Logger\AdapterFactory               |
+| Phalcon\Logger\Adapter            | Renombrado a | Phalcon\Logger\Adapter\AbstractAdapter     |
+| Phalcon\Logger\Adapter\Blackhole | Renombrado a | Phalcon\Logger\Adapter\Noop                |
+| Phalcon\Logger\Adapter\File      | Renombrado a | Phalcon\Logger\Adapter\Stream              |
+| Phalcon\Logger\Adapter\Firephp   | Removed      |                                               |
+| Phalcon\Logger\Factory            | Renombrado a | Phalcon\Logger\LoggerFactory                |
+| Phalcon\Logger\Formatter          | Renombrado a | Phalcon\Logger\Formatter\AbstractFormatter |
+| Phalcon\Logger\Formatter\Firephp | Removed      |                                               |
+| Phalcon\Logger\Formatter\Syslog  | Removed      |                                               |
+| Phalcon\Logger\Multiple           | Removed      |                                               |
 
 ### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
-| 3.4.x | State | 4.0.x                        |
-| ----- | ----- | ---------------------------- |
-|       | New   | Phalcon\Messages\Exception |
-|       | New   | Phalcon\Messages\Message   |
-|       | New   | Phalcon\Messages\Messages  |
+| 3.4.x | Estado | 4.0.x                        |
+| ----- | ------ | ---------------------------- |
+|       | Nuevo  | Phalcon\Messages\Exception |
+|       | Nuevo  | Phalcon\Messages\Message   |
+|       | Nuevo  | Phalcon\Messages\Messages  |
 
 ### Mvc
 
-| 3.4.x                                             | State      | 4.0.x                                        |
-| ------------------------------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Mvc\Collection                          | Renamed to | Phalcon\Collection                          |
-| Phalcon\Mvc\Collection\Behavior                | Removed    |                                              |
-| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Removed    |                                              |
-| Phalcon\Mvc\Collection\Behavior\Timestampable | Removed    |                                              |
-| Phalcon\Mvc\Collection\Document                | Removed    |                                              |
-| Phalcon\Mvc\Collection\Exception               | Renamed to | Phalcon\Collection\Exception               |
-| Phalcon\Mvc\Collection\Manager                 | Removed    |                                              |
-|                                                   | New        | Phalcon\Collection\ReadOnly                |
-| Phalcon\Mvc\Model\Message                      | Renamed to | Phalcon\Messages\Message                   |
-| Phalcon\Mvc\Model\MetaData\Apc                | Removed    |                                              |
-| Phalcon\Mvc\Model\MetaData\Files              | Renamed to | Phalcon\Mvc\Model\MetaData\Stream        |
-| Phalcon\Mvc\Model\MetaData\Memcache           | Removed    |                                              |
-| Phalcon\Mvc\Model\MetaData\Session            | Removed    |                                              |
-| Phalcon\Mvc\Model\MetaData\Xcache             | Removed    |                                              |
-| Phalcon\Mvc\Model\Validator                    | Renamed to | Phalcon\Validation\Validator               |
-| Phalcon\Mvc\Model\Validator\Email             | Renamed to | Phalcon\Validation\Validator\Email        |
-| Phalcon\Mvc\Model\Validator\Exclusionin       | Renamed to | Phalcon\Validation\Validator\ExclusionIn  |
-| Phalcon\Mvc\Model\Validator\Inclusionin       | Renamed to | Phalcon\Validation\Validator\InclusionIn  |
-| Phalcon\Mvc\Model\Validator\Ip                | Renamed to | Phalcon\Validation\Validator\Ip           |
-| Phalcon\Mvc\Model\Validator\Numericality      | Renamed to | Phalcon\Validation\Validator\Numericality |
-| Phalcon\Mvc\Model\Validator\PresenceOf        | Renamed to | Phalcon\Validation\Validator\PresenceOf   |
-| Phalcon\Mvc\Model\Validator\Regex             | Renamed to | Phalcon\Validation\Validator\Regex        |
-| Phalcon\Mvc\Model\Validator\StringLength      | Renamed to | Phalcon\Validation\Validator\StringLength |
-| Phalcon\Mvc\Model\Validator\Uniqueness        | Renamed to | Phalcon\Validation\Validator\Uniqueness   |
-| Phalcon\Mvc\Model\Validator\Url               | Renamed to | Phalcon\Validation\Validator\Url          |
-| Phalcon\Mvc\Url                                 | Renamed to | Phalcon\Url                                 |
-| Phalcon\Mvc\Url\Exception                      | Renamed to | Phalcon\Url\Exception                      |
-| Phalcon\Mvc\User\Component                     | Renamed to | Phalcon\Di\Injectable                      |
-| Phalcon\Mvc\User\Module                        | Renamed to | Phalcon\Di\Injectable                      |
-| Phalcon\Mvc\User\Plugin                        | Renamed to | Phalcon\Di\Injectable                      |
-| Phalcon\Mvc\View\Engine                        | Renamed to | Phalcon\Mvc\View\Engine\AbstractEngine   |
+| 3.4.x                                             | Estado       | 4.0.x                                        |
+| ------------------------------------------------- | ------------ | -------------------------------------------- |
+| Phalcon\Mvc\Collection                          | Renombrado a | Phalcon\Collection                          |
+| Phalcon\Mvc\Collection\Behavior                | Removed      |                                              |
+| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Removed      |                                              |
+| Phalcon\Mvc\Collection\Behavior\Timestampable | Removed      |                                              |
+| Phalcon\Mvc\Collection\Document                | Removed      |                                              |
+| Phalcon\Mvc\Collection\Exception               | Renombrado a | Phalcon\Collection\Exception               |
+| Phalcon\Mvc\Collection\Manager                 | Removed      |                                              |
+|                                                   | Nuevo        | Phalcon\Collection\ReadOnly                |
+| Phalcon\Mvc\Model\Message                      | Renombrado a | Phalcon\Messages\Message                   |
+| Phalcon\Mvc\Model\MetaData\Apc                | Removed      |                                              |
+| Phalcon\Mvc\Model\MetaData\Files              | Renombrado a | Phalcon\Mvc\Model\MetaData\Stream        |
+| Phalcon\Mvc\Model\MetaData\Memcache           | Removed      |                                              |
+| Phalcon\Mvc\Model\MetaData\Session            | Removed      |                                              |
+| Phalcon\Mvc\Model\MetaData\Xcache             | Removed      |                                              |
+| Phalcon\Mvc\Model\Validator                    | Renombrado a | Phalcon\Validation\Validator               |
+| Phalcon\Mvc\Model\Validator\Email             | Renombrado a | Phalcon\Validation\Validator\Email        |
+| Phalcon\Mvc\Model\Validator\Exclusionin       | Renombrado a | Phalcon\Validation\Validator\ExclusionIn  |
+| Phalcon\Mvc\Model\Validator\Inclusionin       | Renombrado a | Phalcon\Validation\Validator\InclusionIn  |
+| Phalcon\Mvc\Model\Validator\Ip                | Renombrado a | Phalcon\Validation\Validator\Ip           |
+| Phalcon\Mvc\Model\Validator\Numericality      | Renombrado a | Phalcon\Validation\Validator\Numericality |
+| Phalcon\Mvc\Model\Validator\PresenceOf        | Renombrado a | Phalcon\Validation\Validator\PresenceOf   |
+| Phalcon\Mvc\Model\Validator\Regex             | Renombrado a | Phalcon\Validation\Validator\Regex        |
+| Phalcon\Mvc\Model\Validator\StringLength      | Renombrado a | Phalcon\Validation\Validator\StringLength |
+| Phalcon\Mvc\Model\Validator\Uniqueness        | Renombrado a | Phalcon\Validation\Validator\Uniqueness   |
+| Phalcon\Mvc\Model\Validator\Url               | Renombrado a | Phalcon\Validation\Validator\Url          |
+| Phalcon\Mvc\Url                                 | Renombrado a | Phalcon\Url                                 |
+| Phalcon\Mvc\Url\Exception                      | Renombrado a | Phalcon\Url\Exception                      |
+| Phalcon\Mvc\User\Component                     | Renombrado a | Phalcon\Di\Injectable                      |
+| Phalcon\Mvc\User\Module                        | Renombrado a | Phalcon\Di\Injectable                      |
+| Phalcon\Mvc\User\Plugin                        | Renombrado a | Phalcon\Di\Injectable                      |
+| Phalcon\Mvc\View\Engine                        | Renombrado a | Phalcon\Mvc\View\Engine\AbstractEngine   |
 
 ### Paginator
 
-| 3.4.x                       | State      | 4.0.x                                        |
-| --------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Paginator\Adapter | Renamed to | Phalcon\Paginator\Adapter\AbstractAdapter |
-| Phalcon\Paginator\Factory | Renamed to | Phalcon\Paginator\PaginatorFactory         |
-|                             | New        | Phalcon\Paginator\Repository               |
+| 3.4.x                       | Estado       | 4.0.x                                        |
+| --------------------------- | ------------ | -------------------------------------------- |
+| Phalcon\Paginator\Adapter | Renombrado a | Phalcon\Paginator\Adapter\AbstractAdapter |
+| Phalcon\Paginator\Factory | Renombrado a | Phalcon\Paginator\PaginatorFactory         |
+|                             | Nuevo        | Phalcon\Paginator\Repository               |
 
 ### Queue
 
-| 3.4.x                                | State   | 4.0.x |
+| 3.4.x                                | Estado  | 4.0.x |
 | ------------------------------------ | ------- | ----- |
 | Phalcon\Queue\Beanstalk            | Removed |       |
 | Phalcon\Queue\Beanstalk\Exception | Removed |       |
@@ -1292,69 +1292,69 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Session
 
-| 3.4.x                               | State      | 4.0.x                                      |
-| ----------------------------------- | ---------- | ------------------------------------------ |
-| Phalcon\Session\Adapter           | Renamed to | Phalcon\Session\Adapter\AbstractAdapter |
-| Phalcon\Session\Adapter\Files    | Renamed to | Phalcon\Session\Adapter\Stream          |
-|                                     | New        | Phalcon\Session\Adapter\Noop            |
-| Phalcon\Session\Adapter\Memcache | Removed    |                                            |
-| Phalcon\Session\Factory           | Renamed to | Phalcon\Session\Manager                  |
+| 3.4.x                               | Estado       | 4.0.x                                      |
+| ----------------------------------- | ------------ | ------------------------------------------ |
+| Phalcon\Session\Adapter           | Renombrado a | Phalcon\Session\Adapter\AbstractAdapter |
+| Phalcon\Session\Adapter\Files    | Renombrado a | Phalcon\Session\Adapter\Stream          |
+|                                     | Nuevo        | Phalcon\Session\Adapter\Noop            |
+| Phalcon\Session\Adapter\Memcache | Removed      |                                            |
+| Phalcon\Session\Factory           | Renombrado a | Phalcon\Session\Manager                  |
 
 ### Storage
 
-| 3.4.x | State | 4.0.x                                            |
-| ----- | ----- | ------------------------------------------------ |
-|       | New   | Phalcon\Storage\AdapterFactory                 |
-|       | New   | Phalcon\Storage\Adapter\AbstractAdapter       |
-|       | New   | Phalcon\Storage\Adapter\Apcu                  |
-|       | New   | Phalcon\Storage\Adapter\Libmemcached          |
-|       | New   | Phalcon\Storage\Adapter\Memory                |
-|       | New   | Phalcon\Storage\Adapter\Redis                 |
-|       | New   | Phalcon\Storage\Adapter\Stream                |
-|       | New   | Phalcon\Storage\Exception                      |
-|       | New   | Phalcon\Storage\SerializerFactory              |
-|       | New   | Phalcon\Storage\Serializer\AbstractSerializer |
-|       | New   | Phalcon\Storage\Serializer\Base64             |
-|       | New   | Phalcon\Storage\Serializer\Igbinary           |
-|       | New   | Phalcon\Storage\Serializer\Json               |
-|       | New   | Phalcon\Storage\Serializer\Msgpack            |
-|       | New   | Phalcon\Storage\Serializer\None               |
-|       | New   | Phalcon\Storage\Serializer\Php                |
+| 3.4.x | Estado | 4.0.x                                            |
+| ----- | ------ | ------------------------------------------------ |
+|       | Nuevo  | Phalcon\Storage\AdapterFactory                 |
+|       | Nuevo  | Phalcon\Storage\Adapter\AbstractAdapter       |
+|       | Nuevo  | Phalcon\Storage\Adapter\Apcu                  |
+|       | Nuevo  | Phalcon\Storage\Adapter\Libmemcached          |
+|       | Nuevo  | Phalcon\Storage\Adapter\Memory                |
+|       | Nuevo  | Phalcon\Storage\Adapter\Redis                 |
+|       | Nuevo  | Phalcon\Storage\Adapter\Stream                |
+|       | Nuevo  | Phalcon\Storage\Exception                      |
+|       | Nuevo  | Phalcon\Storage\SerializerFactory              |
+|       | Nuevo  | Phalcon\Storage\Serializer\AbstractSerializer |
+|       | Nuevo  | Phalcon\Storage\Serializer\Base64             |
+|       | Nuevo  | Phalcon\Storage\Serializer\Igbinary           |
+|       | Nuevo  | Phalcon\Storage\Serializer\Json               |
+|       | Nuevo  | Phalcon\Storage\Serializer\Msgpack            |
+|       | Nuevo  | Phalcon\Storage\Serializer\None               |
+|       | Nuevo  | Phalcon\Storage\Serializer\Php                |
 
 ### Traducciones
 
-| 3.4.x                       | State      | 4.0.x                                        |
-| --------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Translate          | Removed    |                                              |
-| Phalcon\Translate\Adapter | Renamed to | Phalcon\Translate\Adapter\AbstractAdapter |
-|                             | New        | Phalcon\Translate\InterpolatorFactory      |
-| Phalcon\Translate\Factory | Renamed to | Phalcon\Translate\TranslateFactory         |
+| 3.4.x                       | Estado       | 4.0.x                                        |
+| --------------------------- | ------------ | -------------------------------------------- |
+| Phalcon\Translate          | Eliminado    |                                              |
+| Phalcon\Translate\Adapter | Renombrado a | Phalcon\Translate\Adapter\AbstractAdapter |
+|                             | Nuevo        | Phalcon\Translate\InterpolatorFactory      |
+| Phalcon\Translate\Factory | Renombrado a | Phalcon\Translate\TranslateFactory         |
 
 ### Url
 
-| 3.4.x | State | 4.0.x                   |
-| ----- | ----- | ----------------------- |
-|       | New   | Phalcon\Url            |
-|       | New   | Phalcon\Url\Exception |
+| 3.4.x | Estado | 4.0.x                   |
+| ----- | ------ | ----------------------- |
+|       | Nuevo  | Phalcon\Url            |
+|       | Nuevo  | Phalcon\Url\Exception |
 
 ### Validación
 
-| 3.4.x                                        | State      | 4.0.x                                                   |
-| -------------------------------------------- | ---------- | ------------------------------------------------------- |
-| Phalcon\Validation\CombinedFieldsValidator | Renamed to | Phalcon\Validation\AbstractCombinedFieldsValidator    |
-| Phalcon\Validation\Message                 | Renamed to | Phalcon\Messages\Message                              |
-| Phalcon\Validation\Message\Group          | Renamed to | Phalcon\Messages\Messages                             |
-| Phalcon\Validation\Validator               | Renamed to | Phalcon\Validation\AbstractValidator                  |
-|                                              | New        | Phalcon\Validation\AbstractValidatorComposite         |
-|                                              | New        | Phalcon\Validation\Exception                          |
-|                                              | New        | Phalcon\Validation\ValidatorFactory                   |
-|                                              | New        | Phalcon\Validation\Validator\File\AbstractFile      |
-|                                              | New        | Phalcon\Validation\Validator\File\MimeType          |
-|                                              | New        | Phalcon\Validation\Validator\File\Resolution\Equal |
-|                                              | New        | Phalcon\Validation\Validator\File\Resolution\Max   |
-|                                              | New        | Phalcon\Validation\Validator\File\Resolution\Min   |
-|                                              | New        | Phalcon\Validation\Validator\File\Size\Equal       |
-|                                              | New        | Phalcon\Validation\Validator\File\Size\Max         |
-|                                              | New        | Phalcon\Validation\Validator\File\Size\Min         |
-|                                              | New        | Phalcon\Validation\Validator\StringLength\Max       |
-|                                              | New        | Phalcon\Validation\Validator\StringLength\Min       |
+| 3.4.x                                        | Estado       | 4.0.x                                                   |
+| -------------------------------------------- | ------------ | ------------------------------------------------------- |
+| Phalcon\Validation\CombinedFieldsValidator | Renombrado a | Phalcon\Validation\AbstractCombinedFieldsValidator    |
+| Phalcon\Validation\Message                 | Renombrado a | Phalcon\Messages\Message                              |
+| Phalcon\Validation\Message\Group          | Renombrado a | Phalcon\Messages\Messages                             |
+| Phalcon\Validation\Validator               | Renombrado a | Phalcon\Validation\AbstractValidator                  |
+|                                              | Nuevo        | Phalcon\Validation\AbstractValidatorComposite         |
+|                                              | Nuevo        | Phalcon\Validation\Exception                          |
+|                                              | Nuevo        | Phalcon\Validation\ValidatorFactory                   |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\AbstractFile      |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\MimeType          |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\Resolution\Equal |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\Resolution\Max   |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\Resolution\Min   |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\Size\Equal       |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\Size\Max         |
+|                                              | Nuevo        | Phalcon\Validation\Validator\File\Size\Min         |
+|                                              | Nuevo        | Phalcon\Validation\Validator\StringLength\Max       |
+|                                              | Nuevo        | Phalcon\Validation\Validator\StringLength\Min       |
