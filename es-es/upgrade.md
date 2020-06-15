@@ -88,50 +88,50 @@ php -m | grep phalcon
 > Uso: [Documentación ACL](acl)
 {: .alert .alert-info }
 
-The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
+En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y componentes. La funcionalidad sigue siendo la misma que en versiones anteriores.
 
 ### Controladores
 
-The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
+Los componentes necesarios para trabajar con ACL han sido renombrados. En particular `Resource` ha sido renombrado a `Component` en todas las interfaces, clases y métodos relevantes que utiliza este componente.
 
-- Added `Phalcon\Acl\Adapter\AbstractAdapter`
-- Added `Acl\Enum`
+- Añadido `Phalcon\Acl\Adapter\AbstractAdapter`
+- Añadido `Acl\Enum`
 
-- Removed `Phalcon\Acl`
+- Eliminado `Phalcon\Acl`
 
-- Removed `Phalcon\Acl\Adapter`
+- Eliminado `Phalcon\Acl\Adapter`
 
-- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+- Renombrado `Phalcon\Acl\Resource` a `Phalcon\Acl\Component`
 
-- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
-- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
-- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::getResources` to `Phalcon\Acl\AdapterInterface::getComponents`
-- Renamed `Phalcon\Acl\Adapter::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::isResource` to `Phalcon\Acl\Adapter\Memory::isComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResource` to `Phalcon\Acl\Adapter\Memory::addComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResourceAccess` to `Phalcon\Acl\Adapter\Memory::addComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`
+- Renombrado `Phalcon\Acl\ResourceInterface` a `Phalcon\Acl\ComponentInterface`
+- Renombrado `Phalcon\Acl\ResourceAware` a `Phalcon\Acl\ComponentAware`
+- Renombrado `Phalcon\Acl\AdapterInterface::isResource` a `Phalcon\Acl\AdapterInterface::isComponent`
+- Renombrado `Phalcon\Acl\AdapterInterface::addResource` a `Phalcon\Acl\AdapterInterface::addComponent`
+- Renombrado `Phalcon\Acl\AdapterInterface::addResourceAccess` a `Phalcon\Acl\AdapterInterface::addComponentAccess`
+- Renombrado `Phalcon\Acl\AdapterInterface::dropResourceAccess` a `Phalcon\Acl\AdapterInterface::dropComponentAccess`
+- Renombrado `Phalcon\Acl\AdapterInterface::getActiveResource` a `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Renombrado `Phalcon\Acl\AdapterInterface::getResources` a `Phalcon\Acl\AdapterInterface::getComponents`
+- Renombrado `Phalcon\Acl\Adapter::getActiveResource` a `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Renombrado `Phalcon\Acl\Adapter\Memory::isResource` a `Phalcon\Acl\Adapter\Memory::isComponent`
+- Renombrado `Phalcon\Acl\Adapter\Memory::addResource` a `Phalcon\Acl\Adapter\Memory::addComponent`
+- Renombrado `Phalcon\Acl\Adapter\Memory::addResourceAccess` a `Phalcon\Acl\Adapter\Memory::addComponentAccess`
+- Renombrado `Phalcon\Acl\Adapter\Memory::dropResourceAccess` a `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
+- Renombrado `Phalcon\Acl\Adapter\Memory::getResources` a `Phalcon\Acl\Adapter\Memory::getComponents`
 
 ### Acl\Adapter\Memory
 
-- Added `getActiveKey`, `activeFunctionCustomArgumentsCount` and `getActiveFunction` to get latest key, number of custom arguments, and function used to acquire access
-- Added `addOpertion` support multiple inherited
+- Añadido `getActiveKey`, `activeFunctionCustomArgumentsCount` y `getActiveFunction` para obtener la última clave, número de argumentos personalizados y la función usada para adquirir el acceso
+- Añadido soporte a `addOpertion` para múltiples heredados
 
-### Acl\Enum (Constants)
+### Acl\Enum (Constantes)
 
 Ejemplo:
 
 ```php
 use Phalcon\Acl\Enum;
 
-echo Enum::ALLOW; //prints 1
-echo Enum::DENY;  //prints 0
+echo Enum::ALLOW; //imprime 1
+echo Enum::DENY;  //imprime 0
 
 ```
 
@@ -141,17 +141,17 @@ echo Enum::DENY;  //prints 0
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Assets Documentation](assets)
+> Uso: [Documención de Assets](assets)
 {: .alert .alert-info }
 
-CSS and JS filters have been removed from the [Assets](assets) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
+Los filtros CSS y JS se han eliminado del componente [Assets](assets). Debido a limitaciones de licencia, se han eliminado los minizadores de CSS y JS (filtros) para la v4. En futuras versiones con la ayuda de la comunidad podemos volver a introducir estos filtros. Usted siempre puede implementar los suyos propios implementando `Phalcon\Assets\FilterInterface`.
 
-- Removed `Phalcon\Assets\Filters\CssMin`
-- Removed `Phalcon\Assets\Filters\JsMin`
-- Renamed `Phalcon\Assets\Resource` to `Phalcon\Assets\Asset`
-- Renamed `Phalcon\Assets\ResourceInterface` to `Phalcon\Assets\AssetInterface`
-- Renamed `Phalcon\Assets\Manager::addResource` to `Phalcon\Assets\Manager::addAsset`
-- Renamed `Phalcon\Assets\Manager::addResourceByType` to `Phalcon\Assets\Manager::addAssetByType`
+- Eliminado `Phalcon\Assets\Filters\CssMin`
+- Eliminado `Phalcon\Assets\Filters\JsMin`
+- Renombrado `Phalcon\Assets\Resource` a `Phalcon\Assets\Asset`
+- Renombrado `Phalcon\Assets\ResourceInterface` a `Phalcon\Assets\AssetInterface`
+- Renombrado `Phalcon\Assets\Manager::addResource` a `Phalcon\Assets\Manager::addAsset`
+- Renombrado `Phalcon\Assets\Manager::addResourceByType` a `Phalcon\Assets\Manager::addAssetByType`
 - Renamed `Phalcon\Assets\Manager::collectionResourcesByType` to `Phalcon\Assets\Manager::collectionAssetsByType`
 
 * * *
@@ -160,31 +160,31 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Cache Documentation](cache)
+> Uso: [Documentación de Cache](cache)
 {: .alert .alert-info }
 
-`xcache`, `apc` and `memcache` adapters have been deprecated and removed. The first two are not supported for PHP 7.2+. `apc` has been replaced with `apcu` and `memcache` can be replaced with the `libmemcached` one.
+Los adaptadores `xcache`, `apc` y `memcache` han sido deprecados y eliminados. Los dos primeros no soportan PHP 7.2+. `apc` ha sido reemplazado por `apcu` y `memcache` puede ser reemplazado por el `libmemcached`.
 
-- Removed `Phalcon\Annotations\Adapter\Apc`
-- Removed `Phalcon\Annotations\Adapter\Xcache`
-- Removed `Phalcon\Cache\Backend\Apc`
-- Removed `Phalcon\Cache\Backend\Memcache`
-- Removed `Phalcon\Cache\Backend\Xcache`
-- Removed `Phalcon\Mvc\Model\Metadata\Apc`
-- Removed `Phalcon\Mvc\Model\Metadata\Memcache`
-- Removed `Phalcon\Mvc\Model\Metadata\Xcache`
+- Eliminado `Phalcon\Annotations\Adapter\Apc`
+- Eliminado `Phalcon\Annotations\Adapter\Xcache`
+- Eliminado `Phalcon\Cache\Backend\Apc`
+- Eliminado `Phalcon\Cache\Backend\Memcache`
+- Eliminado `Phalcon\Cache\Backend\Xcache`
+- Eliminado `Phalcon\Mvc\Model\Metadata\Apc`
+- Eliminado `Phalcon\Mvc\Model\Metadata\Memcache`
+- Eliminado `Phalcon\Mvc\Model\Metadata\Xcache`
 
-The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
+El componente `Cache` ha sido reescrito para cumplir con el [PSR-16](https://www.php-fig.org/psr/psr-16/). Esto permite que se utilice [Phalcon\Cache](api/Phalcon_Cache) en cualquier aplicación que utilice [PSR-16](https://www.php-fig.org/psr/psr-16/), no solo en aplicaciones basadas en Phalcon.
 
-In v3, the cache was split into two components, the Frontend and the Backend. This did create a bit of confusion but it was functional. In order to create a cache component you had to create the Frontend first and then inject that to the relevant Backend (which acted as an adapter also).
+En la v3, la caché se dividió en dos componentes, el Frontend y el Backend. Esto creó un poco de confusión, pero era funcional. Para crear un componente de caché primero tenías que crear el Frontend y luego inyectarlo al Backend correspondiente (que actuaba como adaptador también).
 
-For v4, we rewrote the component completely. We first created a `Storage` class which is the basis of the Cache classes. We created Serializer classes whose sole responsibility is to serialize and unserialize the data before they are saved in the cache adapter and after they are retrieved. These classes are injected (based on the developer's choice) to an Adapter object which connects to a backend (`Memcached`, `Redis` etc.), while abiding by a common adapter interface.
+Ahora en la v4, hemos reescrito el componente completamente. Primero creamos una clase `Storage` que es la base de las clases de caché. Creamos clases Serializer cuya única responsabilidad es serializar y desserializar los datos antes de guardarlos en el adaptador de caché y después de recuperarlos. Estas clases son inyectadas (basadas en la elección del desarrollador) a un objeto Adapter que se conecta a un backend (`Memcached`, `Redis` etc.), mientras cumple con una interfaz común de adaptador.
 
-The Cache class implements [PSR-16](https://www.php-fig.org/psr/psr-16/) and accepts an adapter in its constructor, which in turn is doing all the heavy lifting with connecting to the back end and manipulating data.
+La clase Cache implementa [PSR-16](https://www.php-fig.org/psr/psr-16/) y acepta un adaptador en su constructor, que a su vez está haciendo todo el trabajo pesado con la conexión al almacenamiento y la manipulación de datos.
 
-For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation.
+Para una explicación más detallada sobre cómo funciona el nuevo componente de Caché, por favor visite la página correspondiente en nuestra documentación.
 
-### Creating a Cache
+### Creando un Cache
 
 ```php
 <?php
@@ -206,7 +206,7 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 $cache = new Cache($adapter);
 ```
 
-Registering it in the DI
+Registrándolo en el DI
 
 ```php
 <?php
@@ -239,12 +239,12 @@ $container->set(
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [CLI Documentation](cli)
+> Uso: [Documentación de CLI](cli)
 {: .alert .alert-info }
 
 ### Parámetros
 
-Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
+Los parámetros ahora se comportan de la misma manera que los controladores MVC. Mientras que anteriormente todos existían en la propiedad `$params`, ahora puede nombrarlos apropiadamente:
 
 ```php
 use Phalcon\Cli\Task;
@@ -268,31 +268,31 @@ class MainTask extends Task
 
 ### Cli\Console
 
-- Removed `Phalcon\Cli\Console::addModules` in favor of `Phalcon\Cli\Console::registerModules`
+- Eliminado `Phalcon\Cli\Console::addModules` a favor de `Phalcon\Cli\Console::registerModules`
 
 ### Cli\Router\RouteInterface
 
-- Added `delimiter`, `getDelimiter`
+- Añadido `delimiter`, `getDelimiter`
 
 ### Cli\Dispatcher
 
-- Added `getTaskSuffix()`, `setTaskSuffix()`
+- Añadido `getTaskSuffix()`, `setTaskSuffix()`
 
 ### Cli\DispatcherInterface
 
-- Added `setOptions`, `getOptions`
+- Añadido `setOptions`, `getOptions`
 
 * * *
 
 ## Container
 
-- Added `Phalcon\Container`, a proxy container class to the `Phalcon\DI` implementing PSR-11
+- Añadido `Phalcon\Container`, una clase proxy del `Phalcon\DI` implementando PSR-11
 
 * * *
 
 ## Depuración
 
-- Removed `Phalcon\Debug::getMajorVersion`
+- Eliminado `Phalcon\Debug::getMajorVersion`
 
 * * *
 
@@ -579,7 +579,7 @@ $logger  = new Logger(
 $logger->error('Algo falló');
 ```
 
-Registering it in the DI
+Registrándolo en el DI
 
 ```php
 <?php
