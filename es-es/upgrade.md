@@ -463,22 +463,22 @@ The constants that the v3 `Phalcon\Filter` have somewhat changed.
 
 By default the service sanitizers cast the value to the appropriate type so these are obsolete
 
-- `FILTER_APHANUM` has been removed - replaced by `FILTER_ALNUM`
+- `FILTER_APHANUM` ha sido removido, reemplazado por `FILTER_ALNUM`
 
-#### Changed
+#### Cambiado
 
-- `FILTER_SPECIAL_CHARS` has changed been removed - replaced by `FILTER_SPECIAL`
-- `FILTER_ALNUM` - replaced `FILTER_ALPHANUM`
-- `FILTER_ALPHA` - sanitize only alpha characters
-- `FILTER_BOOL` - sanitize boolean including "yes", "no", etc.
-- `FILTER_LOWERFIRST` - sanitze using `lcfirst`
-- `FILTER_REGEX` - sanitize based on a pattern (`preg_replace`)
-- `FILTER_REMOVE` - sanitize by removing characters (`str_replace`)
-- `FILTER_REPLACE` - sanitize by replacing characters (`str_replace`)
-- `FILTER_SPECIAL` - replaced `FILTER_SPECIAL_CHARS`
-- `FILTER_SPECIALFULL` - sanitize special chars (`filter_var`)
-- `FILTER_UPPERFIRST` - sanitize using `ucfirst`
-- `FILTER_UPPERWORDS` - sanitize using `ucwords`
+- `FILTER_SPECIAL_CHARS` ha sido eliminado, reemplazado por `FILTER_SPECIAL`
+- `FILTER_ALNUM` reemplaza a `FILTER_ALPHANUM`
+- `FILTER_ALPHA` sanitiza solo caracteres alfabéticos
+- `FILTER_BOOL` sanitiza booleanos incluyendo "yes", "no", etc.
+- `FILTER_LOWERFIRST` sanitiza usando `lcfirst`
+- `FILTER_REGEX` sanitiza basado en un patrón (`preg_replace`)
+- `FILTER_REMOVE` sanitiza eliminando caracteres (`str_replace`)
+- `FILTER_REPLACE` sanitiza reemplazando caracteres (`str_replace`)
+- `FILTER_SPECIAL` reemplaza a `FILTER_SPECIAL_CHARS`
+- `FILTER_SPECIALFULL` sanitiza caracteres especiales (`filter_var`)
+- `FILTER_UPPERFIRST` sanitiza utilizando `ucfirst`
+- `FILTER_UPPERWORDS` sanitiza utilizando `ucwords`
 
 * * *
 
