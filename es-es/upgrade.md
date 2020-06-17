@@ -896,26 +896,26 @@ $group->addTrace(
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Session Documentation](session)
+> Uso: [Documentación de Session](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+`Session` y `Session\Bag` ya no se cargan por defecto en `Phalcon\DI\FactoryDefault`. Sesión fue refactorizada.
 
-- Added `Phalcon\Session\Adapter\AbstractAdapter`
-- Added `Phalcon\Session\Adapter\Noop`
-- Added `Phalcon\Session\Adapter\Stream`
-- Added `Phalcon\Session\Manager`
-- Added `Phalcon\Session\ManagerInterface`
-- Removed `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\Adapter\AbstractAdapter`
-- Removed `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
-- Removed `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
-- Removed `Phalcon\Session\Adapter\Memcache`
-- Removed `Phalcon\Session\BagInterface`
-- Removed `Phalcon\Session\Factory`
+- Añadido `Phalcon\Session\Adapter\AbstractAdapter`
+- Añadido `Phalcon\Session\Adapter\Noop`
+- Añadido `Phalcon\Session\Adapter\Stream`
+- Añadido `Phalcon\Session\Manager`
+- Añadido `Phalcon\Session\ManagerInterface`
+- Eliminado `Phalcon\Session\Adapter` - reemplazado por `Phalcon\Session\Adapter\AbstractAdapter`
+- Eliminado `Phalcon\Session\AdapterInterface` - reemplazado por nativo `SessionHandlerInterface`
+- Eliminado `Phalcon\Session\Adapter\Files` - reemplazado por `Phalcon\Session\Adapter\Stream`
+- Eliminado `Phalcon\Session\Adapter\Memcache`
+- Eliminado `Phalcon\Session\BagInterface`
+- Eliminado `Phalcon\Session\Factory`
 
 ### Session\Adapter
 
-Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
+Cada adaptador implementa `SessionHandlerInterface` de PHP. Los adaptadores disponibles son:
 
 - `Phalcon\Session\Adapter\AbstractAdapter`
 - `Phalcon\Session\Adapter\Libmemcached`
@@ -925,16 +925,16 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 ### Session\Manager
 
-- Now is the single component that offers session manipulation by using adapters (see above). Each adapter implements PHP's `SessionHandlerInterface`
-- Developers can add any adapter that implements `SessionHandlerInterface`
+- Ahora es el único componente que ofrece manipulación de sesión mediante el uso de adaptadores (ver arriba). Cada adaptador implementa `SessionHandlerInterface` de PHP
+- Los desarrolladores pueden añadir cualquier adaptador que implemente `SessionHandlerInterface`
 
 * * *
 
 ## Tag
 
-- Added `renderTitle()` that renders the title enclosed in `<title>` tags.
-- Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
-- Changed `textArea` to use `htmlspecialchars` to prevent XSS injection.
+- Añadido `renderTitle()` que renderiza el título encerrado entre etiquetas `<title>`.
+- Se ha cambiado `getTitle`. Sólo devuelve el texto del título. Acepta `prepend`, `append` booleanos para agregar un prefijo o sufijo al título.
+- Se ha cambiado `textArea` para usar `htmlspecialchars` para prevenir la inyección XSS.
 
 * * *
 
@@ -942,14 +942,14 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Str Documentation](helpers#str)
+> Uso: [Documentación de Str](helpers#str)
 {: .alert .alert-info }
 
-The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
+El componente `Phalcon\Text` se ha eliminado a favor del `Phalcon\Helper\Str`. La funcionalidad ofrecida por `Phalcon\Text` en v3 es replicada y mejorada en la nueva clase: `Phalcon\Helper\Str`.
 
 * * *
 
-## Validación
+## Validation
 
 ### Validation\Message
 
