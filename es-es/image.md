@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Imágenes'
+title: 'Imagen'
 keywords: 'image, gd, imagick'
 ---
 
-# Imágenes
+# Imagen
 
 * * *
 
