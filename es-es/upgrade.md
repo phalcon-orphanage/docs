@@ -953,29 +953,29 @@ El componente `Phalcon\Text` se ha eliminado a favor del `Phalcon\Helper\Str`. L
 
 ### Validation\Message
 
-- Removed `Phalcon\Validation\Message` and `Phalcon\Mvc\Model\Message` in favor of `Phalcon\Messages\Message`
-- Removed `Phalcon\Validation\MessageInterface` and `Phalcon\Mvc\Model\MessageInterface` in favor of `Phalcon\Messages\MessageInterface`
-- Removed `Phalcon\Validation\Message\Group` in favor of `Phalcon\Messages\Messages`
-- Validator messages have been moved inside each validator
+- Eliminado `Phalcon\Validation\Message` y `Phalcon\Mvc\Model\Message` a favor de `Phalcon\Messages\Message`
+- Eliminado `Phalcon\Validation\MessageInterface` y `Phalcon\Mvc\Model\MessageInterface` a favor de `Phalcon\Messages\MessageInterface`
+- Eliminado `Phalcon\Validation\Message\Group` a favor de `Phalcon\Messages\Messages`
+- Los mensajes del validador se han movido dentro de cada validador
 
 ### Validation\Validator
 
-- Removed `isSetOption`
+- Eliminado `isSetOption`
 
 ### Validation\Validator\Ip
 
-- Added `Phalcon\Validation\Validator\Ip`, class used to validate ip address fields. It allows to validate a field selecting IPv4 or IPv6, allowing private or reserved ranges and empty values if necessary.
+- Añadido `Phalcon\Validation\Validator\Ip`, clase utilizada para validar campos de dirección ip. Permite validar un campo seleccionando IPv4 o IPv6, permitiendo rangos privados o reservados y valores vacíos si es necesario.
 
 * * *
 
-## Vistas
+## Views
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [View Documentation](views)
+> Uso: [Documentación de View](views)
 {: .alert .alert-info }
 
-View caching along with the `viewCache` service have been removed from the framework because they were incompatible with the new Cache component. Developers can easily utilize a *view cache* from external services such as Varnish, Cloudflare etc. Additionally, developers can cache fragments by either using the `Phalcon\Mvc\View\Simple::render()` or the `Phalcon\Mvc\View::toString()`. Those two methods return the produced HTML that can be cached in the cache backend of your choice.
+La caché de vista junto con el servicio de `viewCache` se han eliminado del framework porque eran incompatibles con el nuevo componente de caché. Los desarrolladores pueden utilizar fácilmente un *caché de vista* de servicios externos como Varnish, Cloudflare, etc. Además, los desarrolladores pueden almacenar fragmentos en caché utilizando `Phalcon\Mvc\View\Simple::render()` o el `Phalcon\Mvc\View::toString()`. Estos dos métodos devuelven el HTML producido que puede ser almacenado en caché en el backend de tu elección.
 
 * * *
 
@@ -1015,7 +1015,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | -------------------- | ------------ | ----------------------------------------- |
 | Phalcon\Application | Renombrado a | Phalcon\Application\AbstractApplication |
 
-### Recursos Activos
+### Assets
 
 | 3.4.x                          | Estado       | 4.0.x                       |
 | ------------------------------ | ------------ | --------------------------- |
