@@ -70,7 +70,7 @@ Please check the following links for instructions on how to generate the backtra
 - Dado que Phalcon está escrito en [Zephir](https://zephir-lang.com), por favor, no envíe *commits* que modifiquen los archivos creados en C directamente.
 - Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. Todas las pruebas en código PHP se ajustan a la normativa [PSR-2](https://www.php-fig.org/psr/).
 - Suprimir cualquier cambio hecho a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su *pull request*.
-- More information [here](new-pull-request).
+- Más información [aquí](new-pull-request).
 
 Antes de enviar **una nueva funcionalidad**, por favor cree una [Solicitud de Nueva Funcionalidad](new-feature-request) *(New Feature Request, NFR)* en GitHub para debatir el impacto de incluiarla o el de los cambios necesarios en la extensión principal. Una vez que la funcionalidad sea aprobada, confirme que su *pull request (PR)* contiene lo siguiente:
 
