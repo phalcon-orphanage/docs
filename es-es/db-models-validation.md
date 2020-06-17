@@ -100,7 +100,7 @@ The above example performs a validation using the built-in validator [Phalcon\Va
 > **NOTE**: For more information on validators, see the [Validation documentation](validation)
 {: .alert .alert-warning }
 
-## Mensajes
+## Messages
 
 [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) utilizes the [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) collection to store any validation messages that have been generated during the validation process.
 
