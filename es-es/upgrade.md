@@ -707,7 +707,7 @@ $criteria->limit(10, null);
 
 ### Mvc\Collection
 
-- Removed `Phalcon\Mvc\Collection::validationHasFailed`
+- Eliminado `Phalcon\Mvc\Collection::validationHasFailed`
 - Llamada eliminada `Phalcon\Mvc\Collection::validate` con un objeto de tipo `Phalcon\Mvc\Model\ValidatorInterface`
 
 ### Mvc\Micro\Lazyloader
@@ -1281,11 +1281,11 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 ### Paginator
 
-| 3.4.x                       | Estado       | 4.0.x                                        |
-| --------------------------- | ------------ | -------------------------------------------- |
-| Phalcon\Paginator\Adapter | Renombrado a | Phalcon\Paginator\Adapter\AbstractAdapter |
-| Phalcon\Paginator\Factory | Renombrado a | Phalcon\Paginator\PaginatorFactory         |
-|                             | Nuevo        | Phalcon\Paginator\Repository               |
+| 3.4.x                       | Estado       | 4.0.x                                |
+| --------------------------- | ------------ | ------------------------------------ |
+| Phalcon\Paginator\Adapter | Renombrado a | Phalcon\Paginator\Adapter          |
+| Phalcon\Paginator\Factory | Renombrado a | Phalcon\Paginator\PaginatorFactory |
+|                             | Nuevo        | Phalcon\Paginator\Repository       |
 
 ### Queue
 
@@ -1326,7 +1326,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Storage\Serializer\None               |
 |       | Nuevo  | Phalcon\Storage\Serializer\Php                |
 
-### Traducciones
+### Translate
 
 | 3.4.x                       | Estado       | 4.0.x                                        |
 | --------------------------- | ------------ | -------------------------------------------- |
