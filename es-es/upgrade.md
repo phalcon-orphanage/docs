@@ -356,11 +356,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Added `getParameter`, `isResolved`
+- Añadido `getParameter`, `isResolved`
 
 ### Di\Service
 
-- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
+- Se cambió el constructor del `Phalcon\Di\Service` para que dejara de tomar el nombre del servicio.
 
 * * *
 
@@ -398,15 +398,15 @@ El componente `Filter` ha sido reescrito, utilizando un localizador de servicios
 
 ### Controladores
 
-The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+La clase `Phalcon\Filter` ha sido reescrita para actuar como un localizador de servicios para diferentes *sanitizadores*. Este objeto le permite limpiar la entrada, como antes, al usar el método `sanitize()`.
 
-The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
+Los valores saneados se convierten automáticamente a los tipos relevantes. Este es el comportamiento predeterminado para los filtros `int`, `bool` y `float`.
 
-When instantiating the filter object, it does not know about any sanitizers. You have two options:
+Al instanciar el objeto de filtro, no tiene precargado ningún saneador. Entonces tienes dos opciones:
 
 #### Cargar todos los sanitizadores por defecto
 
-You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
+Puede cargar todos los sanitizadores suministrados utilizando el componente [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory).
 
 ```php
 <?php
@@ -419,7 +419,7 @@ $locator = $factory->newInstance();
 
 Llamando a `newInstance()` devolverá un objeto [Phalcon\Filter](api/Phalcon_Filter#filter) con todos los limpiadores registrados. Los sanitizadores están cargados perezosamente, por lo que se instanciaran sólo cuando se les llame desde el localizador.
 
-#### Load Only Sanitizers You Want
+#### Cargar solo los sanitizadores que quieras
 
 Puede instanciar el componente [Phalcon\Filter](api/Phalcon_Filter#filter) y utilizar el método `set()` para establecer todos los limpiadores que necesite. o pasar un array en el constructor con los limpiadores que desea registrar.
 
@@ -455,7 +455,7 @@ $container->set(
 
 ### Constantes
 
-The constants that the v3 `Phalcon\Filter` have somewhat changed.
+Las constantes de la v3 en `Phalcon\Filter` han cambiado.
 
 #### Eliminado
 
@@ -646,20 +646,20 @@ $logger->error('Algo falló');
 
 ### Transacciones
 
-Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+Eliminado en la versión 4.0: - Eliminado `$logger->begin()` - Eliminado `$logger->commit()`
 
-### Log Level
+### Nivel de registro
 
-- Removed `$logger->setLogLevel()`
+- Eliminado `$logger->setLogLevel()`
 
 ## Modelos
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [Models Documentation](db-models)
+> Uso: [Documentación de Modelos](db-models)
 {: .alert .alert-info }
 
-- You can no longer assign data to models while saving them
+- Ya no puede asignar datos a los modelos al guardarlos
 
 ### Inicialización
 
@@ -702,7 +702,7 @@ $criteria->limit(10, null);
 
 > Estado: **cambios requeridos**
 > 
-> Usage: [MVC Documentation](mvc)
+> Uso: [Documentación del MVC](mvc)
 {: .alert .alert-info }
 
 ### Mvc\Collection
@@ -720,13 +720,13 @@ $criteria->limit(10, null);
 - Se añadió `isRelationshipLoaded` para comprobar si la relación está cargada
 - Cambiado el orden de los parámetros de `Phalcon\Model::assign` a $data, $whiteList, $dataColumnMap
 - Cambió `Phalcon\Model::findFirst` para devolver `null` en lugar de `false` si no se encontró ningún registro
-- Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
+- Cambiado `Phalcon\Model::getRelated()` para devolver `null` para una relación "uno a uno" si no se encontró ningún registro
 
 ### Mvc\Model\Criteria
 
-- Removed `addWhere`
+- Eliminado `addWhere`
 - Eliminado `order`
-- Removed `order` in favor of `orderBy`
+- Eliminado `order` a favor del `orderBy`
 
 ### Mvc\Model\CriteriaInterface
 
@@ -739,9 +739,9 @@ $criteria->limit(10, null);
 - Eliminado `Phalcon\Model\Manager::getNamespaceAlias()`
 - Eliminado `Phalcon\Model\Manager::getNamespaceAliases()`
 - El armado de `Phalcon\Mvc\Model\Manager::getRelationRecords()` ha cambiado
-- The signature of `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` has changed
+- El armado de `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` ha cambiado
 - El armado de `Phalcon\Mvc\Model\Manager::getHasOneRecords()` ha cambiado
-- The signature of `Phalcon\Mvc\Model\Manager::getHasManyRecords()` has changed
+- El armado de `Phalcon\Mvc\Model\Manager::getHasManyRecords()` ha cambiado
 
 ### Mvc\Model\ManagerInterface
 
@@ -768,7 +768,7 @@ $criteria->limit(10, null);
 
 ### Mvc\Model\Query\BuilderInterface
 
-- Added `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
+- Añadido `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
 
 ### Mvc\Model\RelationInterface
 
@@ -788,7 +788,7 @@ $criteria->limit(10, null);
 
 ### Mvc\ModelInterface
 
-- Added `getModelsMetaData`
+- Añadido `getModelsMetaData`
 
 ### Mvc\Router
 
@@ -808,15 +808,15 @@ $criteria->limit(10, null);
 
 ### Mvc\User
 
-- Removed `Phalcon\Mvc\User\Component` - use `Phalcon\Di\Injectable` instead
-- Removed `Phalcon\Mvc\User\Module` - use `Phalcon\Di\Injectable` instead
-- Removed `Phalcon\Mvc\User\Plugin` - use `Phalcon\Di\Injectable` instead
+- Eliminado `Phalcon\Mvc\User\Component`, utilizar `Phalcon\Di\Injectable` en su lugar
+- Eliminado `Phalcon\Mvc\User\Module`, utilizar `Phalcon\Di\Injectable` en su lugar
+- Eliminado `Phalcon\Mvc\User\Plugin`, utilizar `Phalcon\Di\Injectable` en su lugar
 
 ### Mvc\View\Engine\Volt
 
 Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxis antigua producirá una advertencia de deprecado. Las nuevas opciones son:
 
-- `always` - Always compile
+- `always` - Siempre compila
 - `extension` - Extensión de los archivos
 - `separator` - Separador (usado para las carpetas/rutas)
 - `stat` - Estado de cada archivo antes de intentar usarlo
@@ -825,17 +825,17 @@ Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxi
 
 * * *
 
-## Paginator
+## Paginador
 
-- `getPaginate` now becomes `paginate`
-- `$before` is removed and replaced with `$previous`
-- `$total_pages` is removed since it contained the same information as `$last`
-- Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
+- `getPaginate` ahora se convierte en `paginate`
+- `$before` es eliminado y reemplazado por `$previous`
+- `$total_pages` es eliminado ya que contiene la misma información que `$last`
+- Añadido `Phalcon\Paginator\RepositoryInterface` para el repositorio del estado actual del `paginator` y también opcionalmente establece los alias para el repositorio de propiedades
 
 ## Router
 
 - Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
-- You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
+- Puedes añadir `CONNECT`, `PURGE`, `TRACE` a las rutas al grupo enrutador. Funcionan del mismo modo que funcionan en el Router:
 
 ```php
 use Phalcon\Mvc\Router\Group;
@@ -1279,7 +1279,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Mvc\User\Plugin                        | Renombrado a | Phalcon\Di\Injectable                      |
 | Phalcon\Mvc\View\Engine                        | Renombrado a | Phalcon\Mvc\View\Engine\AbstractEngine   |
 
-### Paginator
+### Paginador
 
 | 3.4.x                       | Estado       | 4.0.x                                        |
 | --------------------------- | ------------ | -------------------------------------------- |
