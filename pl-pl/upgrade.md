@@ -646,7 +646,10 @@ $logger->error('Something went wrong');
 
 ### Transactions
 
-Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+Removed in version 4.0:
+
+- Removed `$logger->begin()`
+- Removed `$logger->commit()`
 
 ### Log Level
 
@@ -886,7 +889,7 @@ $group->addTrace(
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `long` - the number of files present in the request
+- Added `numFiles` returning `int` - the number of files present in the request
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
 * * *
@@ -898,7 +901,7 @@ $group->addTrace(
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
 
 - Added `Phalcon\Session\Adapter\AbstractAdapter`
 - Added `Phalcon\Session\Adapter\Noop`
