@@ -12,9 +12,18 @@ keywords: 'new pull request, pull request, pr'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Un *pull request* para Phalcon debe ser hecho en nuestro repositorio principal [cphalcon](https://github.com/phalcon/cphalcon). Es una colección de cambios en el código que: - corregir un error (problema actual) - introducir nuevas funcionalidades o mejoras.
+A pull request for Phalcon must be against our main repository [cphalcon](https://github.com/phalcon/cphalcon). It is a collection of changes to the code that:
 
-Los requisitos para hacer un *pull request* son: * Referirse a la rama correcta. * Actualizar el archivo `CHANGELOG.md` correspondiente * Incluir pruebas unitarias * Actualizar la documentación y los ejemplos según sea necesario * Cumplir con los estándares de código que sigue Phalcon. Para PHP, [PSR-2](https://www.php-fig.org/psr/); para Zephir, los estándares se encuentran en el archivo `.editorconfig` en la raíz del repositorio.
+- fix a bug (current issue)
+- introduce new functionality or enhancement.
+
+Your pull request must include:
+
+- Target the correct branch.
+- Update the relevant `CHANGELOG.md`
+- Contain unit tests
+- Updates to the documentation and usage examples as necessary
+- Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-2](https://www.php-fig.org/psr/) while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.
 
 > **NOTA:** **No se aceptan *Pull Requests* en la rama `master`**
 {:.alert .alert-danger}
@@ -35,8 +44,8 @@ Si está trabajando en un problema, tenga en cuenta el número del problema que 
 
 `#12345 - Create New Object`
 
-- Cambiarse la rama `4.0.x`
-- Crear una nueva rama: `T12345-create-new-object`
+- Checkout the `4.0.x` branch
+- Create a branch: `T12345-create-new-object`
 
 El nombre de la rama comienza con `T`, seguido por el número del problema y luego el título de la cuestión como un slug.
 
