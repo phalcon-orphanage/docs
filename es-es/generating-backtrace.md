@@ -6,7 +6,7 @@ title: 'Generar una traza inversa'
 keywords: 'backtrace, debugging, segmentation faults'
 ---
 
-# Generating a Backtrace
+# Generar una traza inversa
 
 * * *
 
