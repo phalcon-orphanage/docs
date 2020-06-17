@@ -646,7 +646,10 @@ $logger->error('Something went wrong');
 
 ### トランザクション
 
-Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+Removed in version 4.0:
+
+- Removed `$logger->begin()`
+- Removed `$logger->commit()`
 
 ### Log Level
 
@@ -716,7 +719,7 @@ $criteria->limit(10, null);
 
 ### Mvc\Model
 
-- `Phalcon\Model::reset` を削除しました
+- Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
 - Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
@@ -887,7 +890,7 @@ $group->addTrace(
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `long` - the number of files present in the request
+- Added `numFiles` returning `int` - the number of files present in the request
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
 * * *
@@ -899,7 +902,7 @@ $group->addTrace(
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
 
 - Added `Phalcon\Session\Adapter\AbstractAdapter`
 - Added `Phalcon\Session\Adapter\Noop`
