@@ -1715,7 +1715,7 @@ public function saveAction()
 }
 ```
 
-## Componentes
+## Components
 
 The UI has been create with the [Bootstrap](https://getbootstrap.com) library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
