@@ -22,7 +22,12 @@ O código-fonte do Phalcon (junto com documentação, sites etc.) é armazenado 
 
 Se você deseja contribuir com o Phalcon, você pode fazer isso emitindo um [pull request no GitHub](https://help.github.com/articles/using-pull-requests/).
 
-Quando você cria uma pull request, nós temos um modelo bastante útil para ajudá-lo a descrever qual é o escopo da pull request. É muito importante e útil para a comunidade que você adicione testes ao seu pull request. Cada pull request será revisado por um colaborador principal (alguém com permissões para mesclar pull requests). Com base no tipo e conteúdo da pull request, ela pode ser: * mesclado imediatamente ou colocado em espera, pois o revisor requer alterações (estilo, testes, etc.) * colocado em espera, se a discussão for necessária (comunidade, equipe central etc.) * rejeitada
+Quando você cria uma pull request, nós temos um modelo bastante útil para ajudá-lo a descrever qual é o escopo da pull request. É muito importante e útil para a comunidade que você adicione testes ao seu pull request. Cada pull request será revisado por um colaborador principal (alguém com permissões para mesclar pull requests). Based on the type and content of the pull request, it could be:
+
+- merged immediately or 
+- put on hold, where the reviewer requires changes (styling, tests etc.)
+- put on hold, if discussion is necessary (community, core team etc.)
+- rejected
 
 > **NOTA**: Certifique-se de que o branch de destino que você enviou seu pull request está correto e que você já atualizou seu código. Pull requests para a branch **master** não são permitidos
 {:.alert .alert-danger}
@@ -47,11 +52,11 @@ Se você deseja contribuir para o Phalcon traduzindo nossos documentos em sua l�
 
 ## Lista de Problemas Encontrados
 
-- Certifique-se de estar usando a versão mais recente lançada do Phalcon antes de criar uma "issue" no GitHub.
-- Apenas erros encontrados na versão mais recente lançada do Phalcon serão abordados.
-- Temos um modelo bastante útil ao criar uma "issue" para ajudá-lo a fornecer informações suficientes para a equipe central reproduzí-lo e trabalhar na correção. Ser capaz de reproduzir um bug reduz significativamente o tempo para encontrar a causa e corrigi-lo. Scripts de testes das falhas são mais do que apreciados. Por favor, verifique na página [testes repoduzíveis](reproducible-tests) como criá-los para mais informações.
-- Como parte do seu relatório, por favor inclua informações adicionais como o OS, versão do PHP, versão do Phalcon, servidor web, memória etc.
-- Se estiver enviando um erro de [Falha de Segmentação](https://en.wikipedia.org/wiki/Segmentation_fault), nós precisaremos do backtrace. Por favor, verifique na seção [Gerar um Backtrace](#generating-a-backtrace) para obter mais informações.
+- Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
+- Only bugs found in the latest released version of Phalcon will be addressed.
+- We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
+- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
+- If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
 
 ### Geração de Backtrace
 
@@ -59,25 +64,25 @@ Se você deseja contribuir para o Phalcon traduzindo nossos documentos em sua l�
 
 Confira os seguintes links para obter instruções sobre como gerar o backtrace:
 
-- [Gerando um backtrace com gdb](https://bugs.php.net/bugs-generating-backtrace.php)
-- [Gerando um backtrace, com um compilador, no Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Símbolos de depuração](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Construindo PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 ## Listas do Pull Request
 
-- Pull requests para a branch `master` não são permitidos. Por favor, faça fork no repositório e crie seu branch a partir do branch "source" necessário, por exemplo `4.0.x` e, se necessário, faça o rebase de seu branch antes de enviar seu pull request. Se houver colisões, pediremos que você faça o rebase de seu branch novamente.
-- Adicione testes a sua pull request ou ajuste os já existentes. Isto é muito importante, pois ajuda a justificar seu pull request. Por favor, verifique nossa [página de testes](testing-environment) para obter mais informações sobre como configurar um ambiente de teste e como escrevê-los.
-- Uma vez que o Phalcon é escrito em [Zephir](https://zephir-lang.com), por favor não envie commits que modifiquem os arquivos gerados pelo C diretamente.
-- O Phalcon segue um estilo de codificação específico. Por favor, instale o plugin `editorconfig` no seu IDE favorito para aproveitar o arquivo `.editorconfig` que vem com este repositório e não precisar se preocupar com padrões de codificação. Todos os testes (código PHP), seguem o padrão da [PSR-2](https://www.php-fig.org/psr/).
-- Remova qualquer alteração nos arquivos `ext/kernel`, `*.zep.c` e `*.zep.h` antes de enviar o pull request.
-- Mais informações [aqui](new-pull-request).
+- Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
+- Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
+- Since Phalcon is written in [Zephir](https://zephir-lang.com), please do not submit commits that modify the C generated files directly
+- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
+- Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
+- More information [here](new-pull-request).
 
 Antes de enviar **novas funcionalidades**, abra uma [NFR](new-feature-request) como uma nova issue no GitHub para discutir o impacto de incluir a funcionalidade ou alterações na extensão nativa. Uma vez aprovada a funcionalidade, certifique-se de que sua PR contenha o seguinte:
 
-- Uma atualização para o `CHANGELOG.md`
-- Testes Unitários
-- Exemplos de Documentação ou Uso
+- An update to the `CHANGELOG.md`
+- Unit Tests
+- Documentation or Usage Examples
 
 ## Obtendo Suporte
 
