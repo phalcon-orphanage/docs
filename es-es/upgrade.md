@@ -79,7 +79,7 @@ php -m | grep phalcon
 
 * * *
 
-# Componentes
+# Components
 
 ## ACL
 
@@ -137,7 +137,7 @@ echo Enum::DENY;  //imprime 0
 
 * * *
 
-## Recursos Activos
+## Assets
 
 > Estado: **cambios requeridos**
 > 
@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Depuración
+## Debug
 
 - Eliminado `Phalcon\Debug::getMajorVersion`
 
@@ -371,7 +371,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Eventos
+## Events
 
 ### Events\ManagerInterface
 
@@ -387,7 +387,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Filtro
+## Filter
 
 > Estado: **cambios requeridos**
 > 
@@ -483,7 +483,7 @@ Por defecto, el servicio de sanitizadores convierten el valor al tipo apropiado 
 
 * * *
 
-## Formularios
+## Forms
 
 ### Forms\Form
 
@@ -516,7 +516,7 @@ Por defecto, el servicio de sanitizadores convierten el valor al tipo apropiado 
 
 * * *
 
-## Imágenes
+## Imagen
 
 - Añadido `Phalcon\Image\Enum`
 - Renombrado `Phalcon\Image\Adapter` a `Phalcon\Image\Adapter\AbstractAdapter`
@@ -636,7 +636,7 @@ $logger->error('Algo falló');
 
 * * *
 
-## Mensajes
+## Messages
 
 - `Phalcon\Messages\Message` y su colección `Phalcon\Messages\Messages` son nuevos componentes que manejan mensajes para modelos y validación. En el pasado teníamos dos componentes, uno para la validación y otro para los modelos. Hemos fusionado estos dos, así que deberías volver a obtener una `MessageInterface[]` al llamar a `save` en un modelo o al recuperar mensajes de validación. 
     - Modificado `Phalcon\Mvc\Model` para usar el objeto `Phalcon\Messages\Message` para sus mensajes
@@ -652,7 +652,7 @@ Eliminado en la versión 4.0: - Eliminado `$logger->begin()` - Eliminado `$logge
 
 - Eliminado `$logger->setLogLevel()`
 
-## Modelos
+## Models
 
 > Estado: **cambios requeridos**
 > 
@@ -796,7 +796,7 @@ $criteria->limit(10, null);
 
 ### Mvc\RouterInterface
 
-- Added `attach`
+- Añadido `attach`
 
 ### Mvc\Router\RouteInterface
 
@@ -825,7 +825,7 @@ Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxi
 
 * * *
 
-## Paginador
+## Paginator
 
 - `getPaginate` ahora se convierte en `paginate`
 - `$before` es eliminado y reemplazado por `$previous`
@@ -869,26 +869,26 @@ $group->addTrace(
 
 * * *
 
-## Seguridad
+## Security
 
-- Removed `hasLibreSsl`
-- Removed `getSslVersionNumber`
-- Added `setPadding`
-- Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
+- Eliminado `hasLibreSsl`
+- Eliminado `getSslVersionNumber`
+- Añadido `setPadding`
+- Se ha añadido un retenedor para que el token actual se utilice durante las comprobaciones, así que cuando `getToken` es llamado el token usado para verificaciones no cambia
 
 * * *
 
-## Consulta
+## Request
 
 ### Http\Request
 
-- Added `numFiles` returning `long` - the number of files present in the request
-- Changed `hasFiles` to return `bool` - if the request has files or not
+- Añadido `numFiles` retornando `int` - el número de archivos presentes en la solicitud
+- Se ha cambiado `hasFiles` para devolver `bool` - si la solicitud tiene archivos o no
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `long` - the number of files present in the request
-- Changed `hasFiles` to return `bool` - if the request has files or not
+- Añadido `numFiles` retornando `int` - el número de archivos presentes en la solicitud
+- Se ha cambiado `hasFiles` para devolver `bool` - si la solicitud tiene archivos o no
 
 * * *
 
@@ -1211,7 +1211,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | Nuevo  | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Imágenes
+### Imagen
 
 | 3.4.x                   | Estado       | 4.0.x                                    |
 | ----------------------- | ------------ | ---------------------------------------- |
@@ -1279,7 +1279,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Mvc\User\Plugin                        | Renombrado a | Phalcon\Di\Injectable                      |
 | Phalcon\Mvc\View\Engine                        | Renombrado a | Phalcon\Mvc\View\Engine\AbstractEngine   |
 
-### Paginador
+### Paginator
 
 | 3.4.x                       | Estado       | 4.0.x                                        |
 | --------------------------- | ------------ | -------------------------------------------- |
