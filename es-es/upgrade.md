@@ -999,7 +999,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Acl\Resource | Renombrado a | Phalcon\Acl\Component                |
 |                        | Nuevo        | Phalcon\Acl\Enum                     |
 
-### Anotaciones
+### Annotations
 
 | 3.4.x                                 | Estado       | 4.0.x                                          |
 | ------------------------------------- | ------------ | ---------------------------------------------- |
@@ -1059,7 +1059,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Collection\Exception |
 |       | Nuevo  | Phalcon\Collection\ReadOnly  |
 
-### Configuración
+### Config
 
 | 3.4.x                    | Estado       | 4.0.x                          |
 | ------------------------ | ------------ | ------------------------------ |
@@ -1109,7 +1109,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | ---------------- | ------------ | --------------------------------- |
 | Phalcon\Factory | Renombrado a | Phalcon\Factory\AbstractFactory |
 
-### Filtro
+### Filter
 
 | 3.4.x | Estado | 4.0.x                                  |
 | ----- | ------ | -------------------------------------- |
@@ -1142,13 +1142,13 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | -------------- | ------------ | ----------------------------- |
 | Phalcon\Flash | Renombrado a | Phalcon\Flash\AbstractFlash |
 
-### Formularios
+### Forms
 
 | 3.4.x                   | Estado       | 4.0.x                                    |
 | ----------------------- | ------------ | ---------------------------------------- |
 | Phalcon\Forms\Element | Renombrado a | Phalcon\Forms\Element\AbstractElement |
 
-### Ayudantes
+### Helper
 
 | 3.4.x | Estado | 4.0.x                      |
 | ----- | ------ | -------------------------- |
@@ -1211,7 +1211,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | Nuevo  | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Imagen
+### Image
 
 | 3.4.x                   | Estado       | 4.0.x                                    |
 | ----------------------- | ------------ | ---------------------------------------- |
@@ -1235,7 +1235,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Logger\Formatter\Syslog  | Eliminado    |                                               |
 | Phalcon\Logger\Multiple           | Eliminado    |                                               |
 
-### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
+### Message (nuevo en V4, Anteriormente Phalcon\Validation\Message en 3.4)
 
 | 3.4.x | Estado | 4.0.x                        |
 | ----- | ------ | ---------------------------- |
