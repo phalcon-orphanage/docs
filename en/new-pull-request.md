@@ -7,13 +7,15 @@ keywords: 'new pull request, pull request, pr'
 ---
 # New Pull Request
 <hr/>
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) 
 
-A pull request for Phalcon must be against our [main repository[cphalcon]. It is a collection of changes to the code that:
+A pull request for Phalcon must be against our main repository [cphalcon]. It is a collection of changes to the code that:
+
 - fix a bug (current issue)
 - introduce new functionality or enhancement.
 
 Your pull request must include:
+
 * Target the correct branch.
 * Update the relevant `CHANGELOG.md`
 * Contain unit tests
