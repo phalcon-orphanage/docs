@@ -398,7 +398,7 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 ### 개요
 
-The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
@@ -721,7 +721,7 @@ $criteria->limit(10, null);
 
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
+- Changed `Phalcon\Model::assign` parameters order to `$data`, `$whiteList`, `$dataColumnMap`
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
