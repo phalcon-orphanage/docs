@@ -902,19 +902,19 @@ $group->addTrace(
 > Uso: [Documentación de Session](session)
 {: .alert .alert-info }
 
-`Session` y `Session\Bag` ya no se cargan por defecto en `Phalcon\DI\FactoryDefault`. `Session` was refactored.
+`Session` y `Session\Bag` ya no se cargan por defecto en `Phalcon\DI\FactoryDefault`. `Session` fue refactorizada.
 
-- Added `Phalcon\Session\Adapter\AbstractAdapter`
-- Added `Phalcon\Session\Adapter\Noop`
-- Added `Phalcon\Session\Adapter\Stream`
-- Added `Phalcon\Session\Manager`
-- Added `Phalcon\Session\ManagerInterface`
-- Removed `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\Adapter\AbstractAdapter`
-- Removed `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
-- Removed `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
-- Removed `Phalcon\Session\Adapter\Memcache`
-- Removed `Phalcon\Session\BagInterface`
-- Removed `Phalcon\Session\Factory`
+- Añadido `Phalcon\Session\Adapter\AbstractAdapter`
+- Añadido `Phalcon\Session\Adapter\Noop`
+- Añadido `Phalcon\Session\Adapter\Stream`
+- Añadido `Phalcon\Session\Manager`
+- Añadido `Phalcon\Session\ManagerInterface`
+- Eliminado `Phalcon\Session\Adapter` - reemplazado por `Phalcon\Session\Adapter\AbstractAdapter`
+- Eliminado `Phalcon\Session\AdapterInterface` - reemplazado por nativo `SessionHandlerInterface`
+- Eliminado `Phalcon\Session\Adapter\Files` - reemplazado por `Phalcon\Session\Adapter\Stream`
+- Eliminado `Phalcon\Session\Adapter\Memcache`
+- Eliminado `Phalcon\Session\BagInterface`
+- Eliminado `Phalcon\Session\Factory`
 
 ### Session\Adapter
 
@@ -928,16 +928,16 @@ Cada adaptador implementa `SessionHandlerInterface` de PHP. Los adaptadores disp
 
 ### Session\Manager
 
-- Now is the single component that offers session manipulation by using adapters (see above). Each adapter implements PHP's `SessionHandlerInterface`
-- Developers can add any adapter that implements `SessionHandlerInterface`
+- Ahora es el único componente que ofrece manipulación de sesión mediante el uso de adaptadores (ver arriba). Cada adaptador implementa `SessionHandlerInterface` de PHP
+- Los desarrolladores pueden añadir cualquier adaptador que implemente `SessionHandlerInterface`
 
 * * *
 
 ## Tag
 
-- Added `renderTitle()` that renders the title enclosed in `<title>` tags.
-- Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
-- Changed `textArea` to use `htmlspecialchars` to prevent XSS injection.
+- Añadido `renderTitle()` que renderiza el título encerrado entre etiquetas `<title>`.
+- Se ha cambiado `getTitle`. Sólo devuelve el texto del título. Acepta `prepend`, `append` booleanos para agregar un prefijo o sufijo al título.
+- Se ha cambiado `textArea` para usar `htmlspecialchars` para prevenir la inyección XSS.
 
 * * *
 
@@ -956,18 +956,18 @@ El componente `Phalcon\Text` se ha eliminado a favor del `Phalcon\Helper\Str`. L
 
 ### Validation\Message
 
-- Removed `Phalcon\Validation\Message` and `Phalcon\Mvc\Model\Message` in favor of `Phalcon\Messages\Message`
-- Removed `Phalcon\Validation\MessageInterface` and `Phalcon\Mvc\Model\MessageInterface` in favor of `Phalcon\Messages\MessageInterface`
-- Removed `Phalcon\Validation\Message\Group` in favor of `Phalcon\Messages\Messages`
-- Validator messages have been moved inside each validator
+- Eliminado `Phalcon\Validation\Message` y `Phalcon\Mvc\Model\Message` a favor de `Phalcon\Messages\Message`
+- Eliminado `Phalcon\Validation\MessageInterface` y `Phalcon\Mvc\Model\MessageInterface` a favor de `Phalcon\Messages\MessageInterface`
+- Eliminado `Phalcon\Validation\Message\Group` a favor de `Phalcon\Messages\Messages`
+- Los mensajes del validador se han movido dentro de cada validador
 
 ### Validation\Validator
 
-- Removed `isSetOption`
+- Eliminado `isSetOption`
 
 ### Validation\Validator\Ip
 
-- Added `Phalcon\Validation\Validator\Ip`, class used to validate ip address fields. It allows to validate a field selecting IPv4 or IPv6, allowing private or reserved ranges and empty values if necessary.
+- Añadido `Phalcon\Validation\Validator\Ip`, clase utilizada para validar campos de dirección ip. Permite validar un campo seleccionando IPv4 o IPv6, permitiendo rangos privados o reservados y valores vacíos si es necesario.
 
 * * *
 
