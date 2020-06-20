@@ -22,12 +22,12 @@ El código fuente de Phalcon (junto con la documentación, sitios web, etc.) se 
 
 Para contribuir en Phalcon es suficiente con crear un [pull request](https://help.github.com/articles/using-pull-requests/) en GitHub.
 
-Hay una plantilla muy útil para crear el *pull request*. Es muy importante y útil para la comunidad, incluir las pruebas del *pull request*. Cada *pull request* será revisado por un colaborador central (alguien con permiso para fusionar los pull requests). Based on the type and content of the pull request, it could be:
+Hay una plantilla muy útil para crear el *pull request*. Es muy importante y útil para la comunidad, incluir las pruebas del *pull request*. Cada *pull request* será revisado por un colaborador central (alguien con permiso para fusionar los pull requests). Basado en el tipo y contenido del *pull request*, podría ser:
 
-- merged immediately or 
-- put on hold, where the reviewer requires changes (styling, tests etc.)
-- put on hold, if discussion is necessary (community, core team etc.)
-- rejected
+- fusionado inmediatamente o 
+- puesto en espera, donde el revisor requiere cambios (estilo, pruebas, etc.)
+- puesto en espera, si una discusión es necesaria (comunidad, equipo central, etc.)
+- rechazado
 
 > **NOTA:** Por favor, asegúrese que la rama de destino a la que envía el *pull request* es la correcta y que ya ha rebasado su código. Tenga en cuenta que los *pull requests* a la rama ***master*** no están permitidos.
 
@@ -79,9 +79,9 @@ Por favor consulte los siguientes enlaces para obtener instrucciones sobre cómo
 
 Antes de enviar **una nueva funcionalidad**, por favor cree una [Solicitud de Nueva Funcionalidad](new-feature-request) *(New Feature Request, NFR)* en GitHub para debatir el impacto de incluiarla o el de los cambios necesarios en la extensión principal. Una vez que la funcionalidad sea aprobada, confirme que su *pull request (PR)* contiene lo siguiente:
 
-- An update to the `CHANGELOG.md`
-- Unit Tests
-- Documentation or Usage Examples
+- Una actualización al `CHANGELOG.md`
+- Pruebas Unitarias
+- Documentación o Ejemplos de Uso
 
 ## Obtener Ayuda
 
