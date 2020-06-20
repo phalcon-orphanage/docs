@@ -398,7 +398,7 @@ El componente `Filter` ha sido reescrito, utilizando un localizador de servicios
 
 ### Controladores
 
-The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. Este objeto le permite limpiar la entrada, como antes, al usar el método `sanitize()`.
+La clase `Phalcon\Filter` ha sido reescrita para actuar como un localizador de servicios para diferentes *sanitizadores*. Este objeto le permite limpiar la entrada, como antes, al usar el método `sanitize()`.
 
 Los valores saneados se convierten automáticamente a los tipos relevantes. Este es el comportamiento predeterminado para los filtros `int`, `bool` y `float`.
 
@@ -721,7 +721,7 @@ $criteria->limit(10, null);
 
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to `$data`, `$whiteList`, `$dataColumnMap`
+- Cambiado en el método `Phalcon\Model::assign` el orden de los parámetros a `$data`, `$whiteList`, `$dataColumnMap`
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
