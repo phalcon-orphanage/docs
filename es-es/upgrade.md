@@ -90,7 +90,7 @@ php -m | grep phalcon
 
 En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y componentes. La funcionalidad sigue siendo la misma que en versiones anteriores.
 
-### Controladores
+### Resumen
 
 Los componentes necesarios para trabajar con ACL han sido renombrados. En particular `Resource` ha sido renombrado a `Component` en todas las interfaces, clases y métodos relevantes que utiliza este componente.
 
@@ -396,7 +396,7 @@ echo Enum::FETCH_ASSOC;
 
 El componente `Filter` ha sido reescrito, utilizando un localizador de servicios. Cada sanitizador está ahora encerrado en su propia clase y cargado de forma perezosa para proporcionar el máximo rendimiento y el menor uso de recursos posible.
 
-### Controladores
+### Resumen
 
 La clase `Phalcon\Filter` ha sido reescrita para actuar como un localizador de servicios para diferentes *sanitizadores*. Este objeto le permite limpiar la entrada, como antes, al usar el método `sanitize()`.
 
@@ -646,14 +646,14 @@ $logger->error('Algo falló');
 
 ### Transacciones
 
-Removed in version 4.0:
+Eliminado en la versión 4.0:
 
-- Removed `$logger->begin()`
-- Removed `$logger->commit()`
+- Eliminado `$logger->begin()`
+- Eliminado `$logger->commit()`
 
 ### Nivel de registro
 
-- Removed `$logger->setLogLevel()`
+- Eliminado `$logger->setLogLevel()`
 
 ## Models
 
@@ -662,7 +662,7 @@ Removed in version 4.0:
 > Uso: [Documentación de Modelos](db-models)
 {: .alert .alert-info }
 
-- You can no longer assign data to models while saving them
+- Ya no puede asignar datos a los modelos al guardarlos
 
 ### Inicialización
 
@@ -710,135 +710,135 @@ $criteria->limit(10, null);
 
 ### Mvc\Collection
 
-- Removed `Phalcon\Mvc\Collection::validationHasFailed`
-- Removed calling `Phalcon\Mvc\Collection::validate` with object of type `Phalcon\Mvc\Model\ValidatorInterface`
+- Eliminado `Phalcon\Mvc\Collection::validationHasFailed`
+- Llamada eliminada `Phalcon\Mvc\Collection::validate` con un objeto de tipo `Phalcon\Mvc\Model\ValidatorInterface`
 
 ### Mvc\Micro\Lazyloader
 
-- Removed `__call` in favor of `callMethod`
+- Se ha eliminado `__call` a favor de `callMethod`
 
 ### Mvc\Model
 
-- Removed `Phalcon\Model::reset`
-- Added `isRelationshipLoaded` to check if relationship is loaded
+- Eliminado `Phalcon\Model::reset`
+- Se añadió `isRelationshipLoaded` para comprobar si la relación está cargada
 - Cambiado en el método `Phalcon\Model::assign` el orden de los parámetros a `$data`, `$whiteList`, `$dataColumnMap`
-- Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
-- Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
+- Cambió `Phalcon\Model::findFirst` para devolver `null` en lugar de `false` si no se encontró ningún registro
+- Cambiado `Phalcon\Model::getRelated()` para devolver `null` para una relación "uno a uno" si no se encontró ningún registro
 
 ### Mvc\Model\Criteria
 
-- Removed `addWhere`
-- Removed `order`
-- Removed `order` in favor of `orderBy`
+- Eliminado `addWhere`
+- Eliminado `order`
+- Eliminado `order` a favor del `orderBy`
 
 ### Mvc\Model\CriteriaInterface
 
-- Added `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
+- Añadido `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
 
 ### Mvc\Model\Manager
 
-- `Load` no longer reuses already initialized models
-- Removed `Phalcon\Model\Manager::registerNamespaceAlias()`
-- Removed `Phalcon\Model\Manager::getNamespaceAlias()`
-- Removed `Phalcon\Model\Manager::getNamespaceAliases()`
-- The signature of `Phalcon\Mvc\Model\Manager::getRelationRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getHasOneRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getHasManyRecords()` has changed
+- `load` ya no reutiliza modelos ya inicializados
+- Eliminado `Phalcon\Model\Manager::registerNamespaceAlias()`
+- Eliminado `Phalcon\Model\Manager::getNamespaceAlias()`
+- Eliminado `Phalcon\Model\Manager::getNamespaceAliases()`
+- El armado de `Phalcon\Mvc\Model\Manager::getRelationRecords()` ha cambiado
+- El armado de `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` ha cambiado
+- El armado de `Phalcon\Mvc\Model\Manager::getHasOneRecords()` ha cambiado
+- El armado de `Phalcon\Mvc\Model\Manager::getHasManyRecords()` ha cambiado
 
 ### Mvc\Model\ManagerInterface
 
-- Added `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
-- Removed `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
-- Removed `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
+- Añadido `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
+- Eliminado `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
+- Eliminado `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
 
 ### Mvc\Model\MessageInterface
 
-- Added `setModel`, `getModel`, `setCode`, `getCode`
+- Añadido `setModel`, `getModel`, `setCode`, `getCode`
 
 ### Mvc\Model\QueryInterface
 
-- Added `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
+- Añadido `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
 
 ### Mvc\Model\Query\BuilderInterface
 
-- Added `offset`
+- Añadido `offset`
 
 ### Mvc\Model\Query\Builder
 
-- Added bind support. The Query Builder has the same methods as `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` and `setBindTypes`.
-- Changed `addFrom` to remove third parameter `$with`
+- Añadido soporte para enlazar parámetros. El Query Builder tiene los mismos métodos que `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` y `setBindTypes`.
+- Se ha cambiado `addFrom` para eliminar el tercer parámetro `$with`
 
 ### Mvc\Model\Query\BuilderInterface
 
-- Added `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
+- Añadido `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
 
 ### Mvc\Model\RelationInterface
 
-- Added `getParams`
+- Añadido `getParams`
 
 ### Mvc\Model\ResultsetInterface
 
-- Added `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
+- Añadido `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
 
 ### Mvc\Model\Transaction\ManagerInterface
 
-- Added `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
+- Añadido `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
 
 ### Mvc\Model\Validator*
 
-- Removed `Phalcon\Mvc\Model\Validator\*` in favor of `Phalcon\Validation\Validator\*`
+- Eliminado `Phalcon\Mvc\Model\Validator\*` a favor de `Phalcon\Validation\Validator\*`
 
 ### Mvc\ModelInterface
 
-- Added `getModelsMetaData`
+- Añadido `getModelsMetaData`
 
 ### Mvc\Router
 
-- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
+- Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
 
 ### Mvc\RouterInterface
 
-- Added `attach`
+- Añadido `attach`
 
 ### Mvc\Router\RouteInterface
 
-- Added `convert` so that calling `add` will return an instance that has `convert` method
+- Añadido `convert` para que la llamada `add` devuelva una instancia que tiene el método `convert`
 
 ### Mvc\Router\RouteInterface
 
-- Added response handler to `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, to allow use of a custom response handler.
+- Añadido el gestor de respuesta a `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, para permitir el uso de un gestor de respuesta personalizado.
 
 ### Mvc\User
 
-- Removed `Phalcon\Mvc\User\Component` - use `Phalcon\Di\Injectable` instead
-- Removed `Phalcon\Mvc\User\Module` - use `Phalcon\Di\Injectable` instead
-- Removed `Phalcon\Mvc\User\Plugin` - use `Phalcon\Di\Injectable` instead
+- Eliminado `Phalcon\Mvc\User\Component`, utilizar `Phalcon\Di\Injectable` en su lugar
+- Eliminado `Phalcon\Mvc\User\Module`, utilizar `Phalcon\Di\Injectable` en su lugar
+- Eliminado `Phalcon\Mvc\User\Plugin`, utilizar `Phalcon\Di\Injectable` en su lugar
 
 ### Mvc\View\Engine\Volt
 
 Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxis antigua producirá una advertencia de deprecado. Las nuevas opciones son:
 
-- `always` - Always compile
-- `extension` - Extension of files
-- `separator` - Separator (used for the folders/routes)
-- `stat` - Stat each file before trying to use it
-- `path` - The path of the files
-- `prefix` - The prefix of the files
+- `always` - Siempre compila
+- `extension` - Extensión de los archivos
+- `separator` - Separador (usado para las carpetas/rutas)
+- `stat` - Estado de cada archivo antes de intentar usarlo
+- `path` - La ruta de los archivos
+- `prefix` - El prefijo de los archivos
 
 * * *
 
 ## Paginator
 
-- `getPaginate` now becomes `paginate`
-- `$before` is removed and replaced with `$previous`
-- `$total_pages` is removed since it contained the same information as `$last`
-- Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
+- `getPaginate` ahora se convierte en `paginate`
+- `$before` es eliminado y reemplazado por `$previous`
+- `$total_pages` es eliminado ya que contiene la misma información que `$last`
+- Añadido `Phalcon\Paginator\RepositoryInterface` para el repositorio del estado actual del `paginator` y también opcionalmente establece los alias para el repositorio de propiedades
 
 ## Router
 
-- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
-- You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
+- Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
+- Puedes añadir `CONNECT`, `PURGE`, `TRACE` a las rutas al grupo enrutador. Funcionan del mismo modo que funcionan en el Router:
 
 ```php
 use Phalcon\Mvc\Router\Group;
@@ -874,10 +874,10 @@ $group->addTrace(
 
 ## Security
 
-- Removed `hasLibreSsl`
-- Removed `getSslVersionNumber`
-- Added `setPadding`
-- Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
+- Eliminado `hasLibreSsl`
+- Eliminado `getSslVersionNumber`
+- Añadido `setPadding`
+- Se ha añadido un retenedor para que el token actual se utilice durante las comprobaciones, así que cuando `getToken` es llamado el token usado para verificaciones no cambia
 
 * * *
 
@@ -890,7 +890,7 @@ $group->addTrace(
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `int` - the number of files present in the request
+- Añadido `numFiles` retornando `int` - el número de archivos presentes en la solicitud
 - Se ha cambiado `hasFiles` para devolver `bool` - si la solicitud tiene archivos o no
 
 * * *
@@ -1054,7 +1054,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Cache\Frontend\Output      | Eliminado    |                                                     |
 | Phalcon\Cache\Multiple              | Eliminado    |                                                     |
 
-### Collection
+### Coleccion
 
 | 3.4.x | Estado | 4.0.x                          |
 | ----- | ------ | ------------------------------ |
