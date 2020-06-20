@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Instalación'
-keywords: 'installation, installing Phalcon'
+keywords: 'instalación, instalación de Phalcon'
 ---
 
 # Instalación
@@ -16,7 +16,7 @@ keywords: 'installation, installing Phalcon'
 
 ### PHP 7.2
 
-Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 ha sido publicado hace 2 años y su [soporte activo](https://secure.php.net/supported-versions.php) ha caducado, así que decidimos seguir activamente las versiones soportadas de PHP.
 
 ### PSR
 
@@ -34,24 +34,24 @@ extension=phalcon.so
 
 Alternativamente algunas distribuciones añaden un prefijo numérico en los archivos `ini`. Si ese es el caso, elija un número alto para Phalcon (por ejemplo `50-phalcon.ini`).
 
-Using Pecl this extension will be automatically installed.
+Usando Pecl esta extensión se instalará automáticamente en su sistema.
 
 ### PDO
 
-Since Phalcon is loosely coupled, it exposes functionality without the need for additional extensions. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Dado que Phalcon tiene bajo acoplamiento, expone la funcionalidad sin necesidad de extensiones adicionales. Sin embargo, ciertos componentes dependen de extensiones adicionales para funcionar. Cuando necesite conectividad y acceso a la base de datos, necesitará instalar la extensión `php_pdo`. Si su RDBMS es MySQL/MariaDB o Aurora, también se necesita la extensión `php_mysqlnd`. De manera similar, si utiliza una base de datos PostgreSQL con Phalcon, la extensión `php_pgsql` será requerida.
 
 ### Hardware
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalcon fue diseñado para utilizar los menos recursos posibles, al tiempo que ofrece un alto rendimiento. Aunque hemos probado Phalcon en varios ambientes de bajo rendimiento, (por ejemplo 0,25GB RAM, 0,5 CPU), el hardware que usted elija dependerá de las necesidades de su aplicación.
 
-We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
+Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de Amazon con 512MB de RAM y 1 vCPU.
 
 ### Software
 
-> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
+> **NOTA:** Siempre deberías utilizar la última versión de PHP y Phalcon para evitar bugs, mejorar la seguridad y el rendimiento.
 {: .alert .alert-danger }
 
-Along with PHP 7.2 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+Junto con PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de los componentes de Phalcon que necesites, podrías necesitar instalar algunas de las siguientes extensiones:
 
 * [curl](https://secure.php.net/manual/en/book.curl.php)
 * [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
@@ -68,11 +68,11 @@ Along with PHP 7.2 or greater, depending on your application needs and the Phalc
 > **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Por favor consulte la documentación pertinente sobre cómo instalar estas extensiones.
 {: .alert .alert-info }
 
-For the `libpcre3-dev` package you can use the following commands:
+Para el paquete `libpcre3-dev` puedes usar los siguientes comandos:
 
 ### Pecl
 
-The Pecl installation method is available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS it will compile Phalcon locally so it could be faster to use a different installation method on these platforms. To install using Pecl make sure you have [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) installed.
+El método de instalación de Pecl está disponible para Windows, Linux y MacOS. Bajo windows se utilizarán archivos dll precompilados. En Linux y MacOS se compilará Phalcon localmente para que pueda ser más rápido usar un método de instalación diferente en estas plataformas. Para instalar usando Pecl asegúrese de que tiene [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) instalado.
 
     pecl channel-update pecl.php.net
     pecl install phalcon
@@ -84,7 +84,7 @@ The Pecl installation method is available for Windows, Linux and MacOS. Under wi
 sudo apt-get install libpcre3-dev
 ```
 
-and then try and install Phalcon again
+y luego intente instalar Phalcon nuevamente
 
 #### CentOS
 
@@ -92,13 +92,13 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using Brew
+#### Mac/Osx usando Brew
 
 ```bash
 brew install pcre
 ```
 
-Without `brew`, you need to go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
+Sin `brew`, necesitas ir al sitio web [PCRE](https://www.pcre.org/) y descargar la última pcre:
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz
@@ -110,13 +110,13 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-For Maverick
+Para Maverick
 
 ```bash
 brew install pcre
 ```
 
-if it gives you error, you can use
+si le da error, puede usar
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/
@@ -447,14 +447,14 @@ By default we compile to be as compatible as possible with all processors (`gcc 
 
 This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
 
-### Shared Hosting
+### Hosting compartido
 
-Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckily have Phalcon support.
+Ejecutar su aplicación en un alojamiento compartido podría restringirlo en la instalación de Phalcon, especialmente si no tiene acceso root. Algunos paneles de control de alojamiento web afortunadamente tienen soporte de Phalcon.
 
 #### cPanel & WHM
 
-cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
+cPanel & WHM soporta Phalcon usando Easy Apache 4 (EA4). Puede instalar Phalcon habilitando el [módulo Phalcon](https://github.com/CpanelInc/scl-phalcon) en Easy Apache 4 (EA4).
 
 #### Plesk
 
-The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
+El panel de control plesk no tiene soporte de Phalcon, pero puede encontrar las instrucciones de instalación en [el sitio web de Plesk](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
