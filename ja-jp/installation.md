@@ -339,7 +339,7 @@ sudo phpbrew ext install psr
 
 ### Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
+Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
 
 Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
@@ -398,7 +398,7 @@ zephir build
 php -m | grep phalcon
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張モジュールが読み込まれるように、Webサーバを再起動する必要があります。
 
 ```ini
 ; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
@@ -417,7 +417,7 @@ extension=phalcon.so
 extension=phalcon.so
 ```
 
-The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+上記の手順はコンパイルを行い、**そして、さらに** システムにモジュールをインストールします。 拡張機能をコンパイルし、 `ini` ファイルに手動で追加することもできます。
 
 ```bash
 cd cphalcon/
@@ -430,26 +430,26 @@ phpize
 make && make install
 ```
 
-If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
+上記のメソッドを使用する場合は、 `extension=phalconを追加する必要があります。 <code> php.ini` の `` で CLI （コマンドラインインターフェイス用）と Web サーバーの両方を指定します。
 
-#### Tuning Build
+#### チューニングビルド（最適化オプションの指定されたコンパイル）
 
-By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
+デフォルトでは、すべてのプロセッサ (`gcc -mtune=native -O2 -fomit-frame-pointer` ) と可能な限り互換性があるようにコンパイルします。 コンパイラーに現在実行中のプロセッサーに合う最適化されたマシンコードを生成するよう指示したい場合は、ビルドの前にCFLAGSをエクスポートすることで独自のコンパイルフラグを設定できます。 例えば、
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
+これにより、そのチップセットに最適なコードが生成されますが、古いチップセットでコンパイルされたオブジェクトが壊れる可能性があります。
 
-### Shared Hosting
+### 共有ホスティングサービス
 
-Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckily have Phalcon support.
+共有ホスティングサービスでWEBアプリケーションを実行する場合、主にrootアクセス権限がない場合などにPhalconのインストールが制限される場合があります。 いくつかのWebホスティングコントロールパネルは幸運にもPhalconをサポートしています。
 
 #### cPanel & WHM
 
-cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
+cPanelとWHMは、Easy Apache 4(EA4)を用いてPhalconをサポートしています。 Easy Apache 4 (EA4) で [module](https://github.com/CpanelInc/scl-phalcon) を有効にすることで、Phalconをインストールできます。
 
 #### Plesk
 
-The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
+プレスクのコントロールパネルにはPhalconがサポートされていませんが、Plesk [ウェブサイト](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-) にインストール手順があります。
