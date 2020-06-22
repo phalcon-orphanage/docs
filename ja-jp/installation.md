@@ -292,14 +292,14 @@ Brew includes binary packages so you don't need to compile Phalcon yourself. If 
 
 #### Brew
 
-Binary installation (preferred):
+バイナリ インストール (推奨):
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
 brew install phalcon
 ```
 
-Compile phalcon:
+Phalconのコンパイル:
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
@@ -313,19 +313,19 @@ sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+そして、Webサーバを再起動してください。
 
 ### PHPBrew (macOS/Linux)
 
-PHPBrew is an excellent way to manage multiple versions of PHP and PHP extensions on your system(s). Installation instructions for PHPBrew can be found [here](https://github.com/phpbrew/phpbrew/wiki/Quick-Start)
+PHPBrewは、システム上の複数のバージョンのPHPとPHP拡張を管理する優れた方法です。 PHPBrewのインストールの手順は [こちら](https://github.com/phpbrew/phpbrew/wiki/Quick-Start) です。
 
-If you're using PHPBrew, you can install Phalcon using the following:
+PHPBrewを使用している場合は、以下によりPhalconをインストールできます。
 
 ```bash
 sudo phpbrew ext install phalcon
@@ -339,13 +339,13 @@ sudo phpbrew ext install psr
 
 ### Windows
 
-Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
+Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 Phalconプロジェクトでは、プラットフォームに応じた複数の DLL ファイルをコンパイルしています。 DLL は、[ダウンロード](https://phalcon.io/en/download/windows) ページにあります。
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+アーキテクチャと同様に、PHP がインストールされているかを確認します。 間違った DLL をダウンロードした場合、Phalcon は動作しません。 `phpinfo()` にてこれらの情報が確認できます。 次の例では、DLLのNTS バージョンを必要としています:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
-The available DLLs are:
+利用可能な DLL は次のとおりです。
 
 | アーキテクチャー | バージョン | Type           |
 |:--------:|:-----:| -------------- |
@@ -354,13 +354,13 @@ The available DLLs are:
 |   x86    |  7.x  | スレッドセーフ        |
 |   x86    |  7.x  | 非スレッドセーフ (NTS) |
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+そして、Webサーバを再起動してください。
 
 ### ソースコードからコンパイル
 
