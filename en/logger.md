@@ -705,7 +705,7 @@ $container->set(
 );
 
 // accessing it later:
-$logger = $container->getShared('db');
+$logger = $container->getShared('logger');
 
 ```
 
