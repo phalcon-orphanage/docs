@@ -265,16 +265,16 @@ Phalconをインストールするためのオーバーレイは、[こちら](h
 macOS
 ```
 
-It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+また、 swap fileをデフォルトの100 MBから、少なくとも2000 MBに増やす必要があります。 これはコンパイルの際に大量のメモリを必要とするためです。
 
 ```bash
 sudo -s
 nano /etc/dphys-swapfile
 ```
 
-Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+`CONF_SWAPSIZE=100` を `CONF_SWAPSIZE=2000` に置換してください。
 
-After saving the setting, restart the daemon:
+設定を保存した後、daemonを再起動します:
 
 ```bash
 /etc/init.d/dphys-swapfile stop
@@ -283,9 +283,9 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
+Brewにはバイナリパッケージが含まれているため、Phalconを自分でコンパイルする必要はありません。 自分で拡張機能をコンパイルしたい場合は、以下の依存関係がインストールされている必要があります。
 
-#### Compilation requirements
+#### コンパイル要件
 
 * PHP 7.x development resources
 * XCode
@@ -331,7 +331,7 @@ PHPBrewを使用している場合は、以下によりPhalconをインストー
 sudo phpbrew ext install phalcon
 ```
 
-You can install the PSR dependency via phpbrew as well if needed:
+必要に応じて、依存するPSR拡張のインストールをすることもできます。
 
 ```bash
 sudo phpbrew ext install psr
