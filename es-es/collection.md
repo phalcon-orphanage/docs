@@ -2,17 +2,17 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Collection'
+title: 'Coleccion'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
-# Collection
+# Coleccion
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Controladores
+## Resumen
 
 `Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
 
