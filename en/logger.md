@@ -703,6 +703,10 @@ $container->set(
         return new $logger;
     }
 );
+
+// accessing it later:
+$logger = $container->getShared('db');
+
 ```
 
 [date-formats]: https://secure.php.net/manual/en/function.date.php
