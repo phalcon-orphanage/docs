@@ -105,4 +105,4 @@ Thanks!
 [psr-2]: https://www.php-fig.org/psr/
 [pr]: new-pull-request
 [nfr]: new-feature-request
-[support]: http://phalcon.io/support
+[support]: https://phalcon.io/support

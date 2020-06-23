@@ -165,7 +165,7 @@ exit
 [nanobox]: https://nanobox.io
 [nanobox_account]: https://dashboard.nanobox.io/users/register
 [nanobox_installer]: https://dashboard.nanobox.io/download
-[nanobox_docs]: http://docs.nanobox.io
+[nanobox_docs]: https://docs.nanobox.io
 [boxfile]: https://docs.nanobox.io/boxfile/
 [engine]: https://docs.nanobox.io/engines/
 [php_extensions]: https://guides.nanobox.io/php/phalcon/php-extensions/

@@ -534,6 +534,6 @@ Execute the application in a browser:
 [nginx_installation]: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 [notepad_plus]: https://notepad-plus-plus.org/
 [php_fpm]: https://php.net/manual/en/install.fpm.php
-[wamp]: http://www.wampserver.com/en/
+[wamp]: https://www.wampserver.com/en/
 [xampp]: https://www.apachefriends.org/download.html
 [phpinfo]: https://php.net/manual/en/function.phpinfo.php
