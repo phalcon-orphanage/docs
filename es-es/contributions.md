@@ -85,7 +85,7 @@ Antes de enviar **una nueva funcionalidad**, por favor cree una [Solicitud de Nu
 
 ## Obtener Ayuda
 
-Si tiene alguna pregunta sobre cómo utilizar Phalcon, consulte la [página de soporte](http://phalcon.io/support).
+If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
 
 ## Solicitar Funcionalidades
 
