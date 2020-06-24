@@ -351,7 +351,7 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 
 ## WAMP
 
-[WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 > **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.7.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
