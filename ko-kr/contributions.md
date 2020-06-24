@@ -86,7 +86,7 @@ Zephir 프로그래밍이 쉽지 않으시다면, 그밖에도 기여할 수 있
 
 ## 지원 받기
 
-Phalcon 사용방법에 대해 문의사항이 있으신 경우, [지원 페이지](http://phalcon.io/support)를 확인해 주세요.
+If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
 
 ## 기능 요청
 
