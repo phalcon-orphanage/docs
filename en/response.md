@@ -734,7 +734,7 @@ class PostsController extends Controller
 [di-factorydefault]: api/phalcon_di#di-factorydefault
 [url]: api/phalcon_url
 [json-encode]: https://www.php.net/manual/en/function.json-encode.php
-[status-codes]: http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+[status-codes]: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 [events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
 [readfile]: https://www.php.net/manual/en/function.readfile.php
 [http-message-response]: api/phalcon_http#http-message-response
