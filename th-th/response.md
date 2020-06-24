@@ -73,7 +73,7 @@ if (true !== $response->isSent()) {
 
 ## Getters
 
-The [Phalcon\Http\Response](api/phalcon_http#http-response) offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available: - `getContent(): string` - Returns the HTTP response body. - `getHeaders(): HeadersInterface` - Returns the headers object, containing headers set by the user. - `getReasonPhrase(): string | null` - Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes](http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) document. - `getStatusCode(): int | null` - Returns the status code (e.g. `200`).
+The [Phalcon\Http\Response](api/phalcon_http#http-response) offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available: - `getContent(): string` - Returns the HTTP response body. - `getHeaders(): HeadersInterface` - Returns the headers object, containing headers set by the user. - `getReasonPhrase(): string | null` - Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) document. - `getStatusCode(): int | null` - Returns the status code (e.g. `200`).
 
 ## Content
 
