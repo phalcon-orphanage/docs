@@ -49,7 +49,7 @@ The constructor accepts parameters allowing you to create the object with certai
 
 - `stream` - A valid stream for the file (`StreamInterface`, `string`)
 - `size` - The size of the file
-- `error` - An upload error (see the `UPLOAD_ERR_*`PHP [constants](http://php.net/manual/en/features.file-upload.errors.php))
+- `error` - An upload error (see the `UPLOAD_ERR_*`PHP [constants](https://php.net/manual/en/features.file-upload.errors.php))
 - `clientFilename` - The name of the uploaded file from the client
 - `clientMediaType` - The media type of the uploaded file from the client
 
@@ -96,7 +96,7 @@ echo $file->getClientMediaType(); // 'application/text'
 
 ### `getError()`
 
- Returns the error associated with the uploaded file. The value is PHP's `UPLOAD_ERR_*` [constants](http://php.net/manual/en/features.file-upload.errors.php). If the file was uploaded successfully, the method will return `UPLOAD_ERR_OK`. The value returned is the value stored in the `error` key in the `$_FILES` array.
+ Returns the error associated with the uploaded file. The value is PHP's `UPLOAD_ERR_*` [constants](https://php.net/manual/en/features.file-upload.errors.php). If the file was uploaded successfully, the method will return `UPLOAD_ERR_OK`. The value returned is the value stored in the `error` key in the `$_FILES` array.
 
 ```php
 <?php
