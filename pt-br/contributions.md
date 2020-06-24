@@ -86,7 +86,7 @@ Antes de enviar **novas funcionalidades**, abra uma [NFR](new-feature-request) c
 
 ## Obtendo Suporte
 
-Se você tiver alguma dúvida sobre como usar o Phalcon, por favor veja a [página de suporte](http://phalcon.io/support).
+If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
 
 ## Solicitando Recursos
 
