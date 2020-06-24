@@ -86,7 +86,7 @@ Before submitting **new functionality**, please open a [NFR](new-feature-request
 
 ## Getting Support
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.io/support).
+If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
 
 ## Requesting Features
 
