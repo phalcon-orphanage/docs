@@ -346,7 +346,7 @@ sudo phpbrew ext install psr
 
 Para utilizar Phalcon en Windows, usted necesitará instalar el phalcon.dll. Hemos compilado varias DLLs dependiendo de la plataforma de destino. Los archivos dll pueden encontrarse en nuestra página de [descarga](https://phalcon.io/en/download/windows).
 
-Identify your PHP installation as well as architecture. Si descarga el archivo DLL erróneo, Phalcon no funcionará. `phpinfo()` contiene esta información. En el ejemplo siguiente, vamos a necesitar la versión NTS de la DLL:
+Identifique su instalación de PHP, así como la arquitectura. Si descarga el archivo DLL erróneo, Phalcon no funcionará. `phpinfo()` contiene esta información. En el ejemplo siguiente, vamos a necesitar la versión NTS de la DLL:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
@@ -403,7 +403,7 @@ Comprueba el módulo
 php -m | grep phalcon
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+Ahora usted tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
 
 ```ini
 ; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
@@ -422,7 +422,7 @@ extension=phalcon.so
 extension=phalcon.so
 ```
 
-The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+Las instrucciones anteriores compilarán e instalarán el módulo en su sistema. También puedes compilar la extensión y luego añadirla manualmente en tu archivo `ini`:
 
 ```bash
 cd cphalcon/
@@ -435,17 +435,17 @@ phpize
 make && make install
 ```
 
-If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
+Si usas el método anterior, necesitarás añadir la linea `extension=phalcon.so` en tu `php.ini` tanto para CLI como para el servidor web.
 
-#### Tuning Build
+#### Ajustes de construcción
 
-By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
+Por defecto, compilamos para ser lo más compatible posible con todos los procesadores (`gcc -mtune=native -O2 -fomit-frame-pointer`). Si desea que el compilador genere código de máquina optimizado, que coincida con el procesador en el que se está ejecutando actualmente, puede configurar sus propios parámetros de compilación, exportando CFLAGS antes de la compilación. Por ejemplo
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
+Esto generará el mejor código posible para ese chipset pero probablemente romperá el objeto compilado en chipsets antiguos.
 
 ### Hosting compartido
 
