@@ -14,6 +14,7 @@ keywords: 'new feature request, nfr'
 A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
 A NFR contains:
+
 * Suggested syntax
 * Suggested class names and methods
 * A description detailing the usage
@@ -21,6 +22,7 @@ A NFR contains:
 * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
 
 In the following cases a new feature request will be rejected **if**:
+
 * The feature makes the framework slow
 * The feature does not provide any additional value to the framework
 * The NFR is not clear, bad documentation, unclear explanation, etc.
