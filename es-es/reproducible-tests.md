@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Pruebas Reproducibles'
-keywords: 'tests, testing, reproducible tests'
+keywords: 'pruebas, test, testing, pruebas reproducibles'
 ---
 
 # Pruebas Reproducibles
