@@ -65,7 +65,7 @@ Junto con PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de
 * La extensión [Mbstring](https://php.net/manual/en/book.mbstring.php)
 * [Memcached](https://php.net/manual/en/book.memcached.php) u otros adaptadores de caché relevantes en función de su uso de caché
 
-> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Por favor consulte la documentación pertinente sobre cómo instalar estas extensiones.
+> **NOTA**: La instalación de estos paquetes variará en función de su sistema operativo, así como del gestor de paquetes que utilice (si corresponde). Por favor consulte la documentación pertinente sobre cómo instalar estas extensiones.
 {: .alert .alert-info }
 
 Para el paquete `libpcre3-dev` puedes usar los siguientes comandos:
@@ -125,55 +125,55 @@ sudo pecl install apc
 
 ## Plataformas de instalación
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Como Phalcon está compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en el servidor web.
 
 ### Linux
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+Para instalar Phalcon en Linux, necesitará agregar nuestro repositorio en su distribución y luego instalarlo.
 
-#### DEB Based Distributions (Debian, Ubuntu, Etc.)
+#### Distribuciones basadas en DEB (Debian, Ubuntu, etc.)
 
 ##### Instalación desde el repositorio
 
-Add the repository to your distribution:
+Agregar el repositorio en su distribución:
 
-**Stable releases**
+**Versiones estables**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Nightly releases**
+**Versiones nocturnas**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Versiones principales (alpha, beta, etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **NOTA**: Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas.
 {: .alert .alert-warning }
 
 ##### Instalación de Phalcon
 
-To install Phalcon you need to type the following commands in your terminal:
+Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Additional PPAs
+##### PPAs adicionales
 
 **Ondřej Surý**
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+Si no desea usar nuestro repositorio en [packagecloud.io](https://packagecloud.io/phalcon), puede utilizar uno ofrecido por [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+Instalación del repositorio:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
@@ -186,37 +186,37 @@ y Phalcon:
 sudo apt-get install php-phalcon4
 ```
 
-#### RPM Based Distributions (CentOS, Fedora, Etc.)
+#### Distribuciones basadas en RPM (CentOS, Fedora, etc.)
 
 ##### Instalación desde el repositorio
 
-Add the repository to your distribution:
+Agregar el repositorio en su distribución:
 
-**Stable releases**
+**Versiones estables**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Nightly releases**
+**Versiones nocturnas**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Versiones principales (alpha, beta, etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **NOTA**: Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas.
 {: .alert .alert-warning }
 
 
 ##### Instalación de Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Para instalar Phalcon es necesario realizar los siguientes comandos en su terminal:
 
 ```bash
 sudo yum update
@@ -227,19 +227,19 @@ sudo yum install php72u-phalcon
 
 **Remi**
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet) mantiene un excelente repositorio de RPM basado en instalaciones. Puede encontrar instrucciones sobre cómo activar en su distribución [aquí](https://blog.remirepo.net/pages/Config-en).
 
-Installing Phalcon after that is as easy as:
+La instalación de Phalcon después de eso, es tan fácil como:
 
 ```bash
 yum install php72-php-phalcon4
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
+Versiones adicionales están disponibles para cada arquitectura específica (x86/x64), así como versiones específicas de PHP
 
 #### FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+Un puerto está disponible para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
 
 ##### pkg_add
 
@@ -247,7 +247,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### Source
+##### Codigo fuente
 
 ```bash
 cd /usr/ports/www/phalcon4
@@ -257,7 +257,7 @@ make install clean
 
 ##### Gentoo
 
-An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
+Un *overlay* para la instalación de Phalcon se puede encontrar [aquí](https://github.com/smoke/phalcon-gentoo-overlay)
 
 #### Raspberry Pi
 
@@ -270,16 +270,16 @@ zephir fullclean
 zephir build
 ```
 
-It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+También es necesario aumentar el archivo de intercambio de 100 MB por defecto a por lo menos 2000 MB. Porque, el compilador carece de RAM.
 
 ```bash
 sudo -s
 nano /etc/dphys-swapfile
 ```
 
-Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+Reemplazando `CONF_SWAPSIZE=100` con `CONF_SWAPSIZE=2000`
 
-After saving the setting, restart the daemon:
+Después de guardar la configuración, reinicie el daemon:
 
 ```bash
 /etc/init.d/dphys-swapfile stop
@@ -288,23 +288,23 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
+Brew incluye paquetes binarios para que no necesite compilar Phalcon usted mismo. Si desea compilar la extensión usted mismo, necesita las siguientes dependencias instaladas:
 
-#### Compilation requirements
+#### Requisitos de compilación
 
-* PHP 7.x development resources
+* Recursos de desarrollo para PHP 7.x
 * XCode
 
 #### Brew
 
-Binary installation (preferred):
+Instalación binaria (preferida):
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
 brew install phalcon
 ```
 
-Compile phalcon:
+Compilar Phalcon:
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
@@ -318,25 +318,25 @@ sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+Editar el archivo `php.ini` y luego añadir al final:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+Reinicie su servidor Web.
 
 ### PHPBrew (macOS/Linux)
 
-PHPBrew is an excellent way to manage multiple versions of PHP and PHP extensions on your system(s). Installation instructions for PHPBrew can be found [here](https://github.com/phpbrew/phpbrew/wiki/Quick-Start)
+PHPBrew es una excelente manera de administrar múltiples versiones de PHP y sus extensiones en su(s) sistema(s). Las instrucciones de instalación para PHPBrew se pueden encontrar [aquí](https://github.com/phpbrew/phpbrew/wiki/Quick-Start)
 
-If you're using PHPBrew, you can install Phalcon using the following:
+Si está utilizando PHPBrew, puede instalar Phalcon usando lo siguiente:
 
 ```bash
 sudo phpbrew ext install phalcon
 ```
 
-You can install the PSR dependency via phpbrew as well if needed:
+También puede instalar la dependencia PSR desde PHPBrew si es necesario:
 
 ```bash
 sudo phpbrew ext install psr
@@ -344,13 +344,13 @@ sudo phpbrew ext install psr
 
 ### Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
+Para utilizar Phalcon en Windows, usted necesitará instalar el phalcon.dll. Hemos compilado varias DLLs dependiendo de la plataforma de destino. Los archivos dll pueden encontrarse en nuestra página de [descarga](https://phalcon.io/en/download/windows).
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+Identify your PHP installation as well as architecture. Si descarga el archivo DLL erróneo, Phalcon no funcionará. `phpinfo()` contiene esta información. En el ejemplo siguiente, vamos a necesitar la versión NTS de la DLL:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
-The available DLLs are:
+Las DLL disponibles son:
 
 | Arquitectura | Versión | Tipo                  |
 |:------------:|:-------:| --------------------- |
@@ -359,17 +359,17 @@ The available DLLs are:
 |     x86      |   7.x   | Thread safe           |
 |     x86      |   7.x   | Non Thread safe (NTS) |
 
-Edit your php.ini file and then append at the end:
+Editar el archivo `php.ini` y luego añadir al final:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Reinicie su servidor Web.
 
-### Compile From Sources
+### Compilar desde código fuente
 
-Compiling from source is similar to most environments (Linux/macOS).
+Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
 
 #### Requerimentos
 
