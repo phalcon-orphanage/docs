@@ -45,11 +45,11 @@ v4においては、ロギング機能のみを実装するようにコンポー
 
 ### Noop
 
-This is a black hole adapter. It sends messages to *infinity and beyond*! This adapter is used mostly for testing or if you want to joke with a colleague.
+これはブラックホールアダプタです *無限の彼方へ*メッセージを送信します！ このアダプターは、主にテストや同僚と冗談を言いたい場合に使用されます。
 
 ## Factory
 
-You can use the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/phalcon_logger#logger-adapterfactory):
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) コンポーネントを使用して、ロガーを作成できます。 [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) が動作するには、 [Phalcon\Logger\AdapterFactory](api/phalcon_logger#logger-adapterfactory) でインスタンス化する必要があります。
 
 ```php
 <?php
@@ -63,9 +63,9 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 
 ### `load()`
 
-[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config) object.
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) は、設定に基づいてログ処理を構成する `load` メソッドを提供します。 構成は、配列または [Phalcon\Config](config) オブジェクトにすることができます。
 
-> **NOTE**: Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
+> **注意**: これは、2つのストリームアダプタでロガーを作成する例です。 一つ目のアダプターは `main`から呼び出され、全てのメッセージログを採取します。一方、二つ目は`admin`（管理者）から呼び出され、アプリケーションの管理画面で生成されたメッセージログのみを採取します。 
 {: .alert .alert-info}
 
 ```php
@@ -98,7 +98,7 @@ $logger = $loggerFactory->load($config);
 
 ### `newInstance()`
 
-The [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) also offers the `newInstance()` method, that constructs a logger based on the supplied name and array of relevant adapters. Using the use case above:
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) は、`newInstance()` メソッドも提供しています。こちらのメソッドは、与えられた名前と関連するアダプタの配列に基づいてロガーを構成します。 上記の使用例は次の通りです:
 
 ```php
 <?php
