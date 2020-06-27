@@ -210,7 +210,7 @@ $logger = new Logger(
 $logger->error('Something went wrong');
 ```
 
-The messages are sent to the handlers in the order they were registered using the [first in first out](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) principle.
+メッセージは、[first in first out](https://ja.wikipedia.org/wiki/FIFO) に基づき、登録された順序でハンドラーに送信されます。
 
 ### Excluding Adapters
 
