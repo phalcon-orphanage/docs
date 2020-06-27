@@ -17,15 +17,15 @@ title: 'Phalcon\Acl'
 * [Phalcon\Acl\RoleAware](#acl-roleaware)
 * [Phalcon\Acl\RoleInterface](#acl-roleinterface)
 
-<h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
+<h1 id="acl-adapter-abstractadapter">抽象クラス Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
-Adapter for Phalcon\Acl adapters
+Phalcon\Acl 用アダプター
 
-## Properties
+## プロパティ
 
 ```php
 /**
@@ -91,7 +91,7 @@ public function getActiveRole(): string
 public function getDefaultAction(): int;
 ```
 
-Returns the default ACL access level
+デフォルトのACLアクセスレベルを返します
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -103,7 +103,7 @@ public function getEventsManager(): ManagerInterface;
 public function setDefaultAction( int $defaultAccess ): void;
 ```
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+デフォルトのアクセスレベル (Phalcon\Acl::ALLOW または Phalcon\Acl::DENY)をセットします。
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
@@ -111,13 +111,13 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 イベントマネージャーをセットします
 
-<h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
+<h1 id="acl-adapter-adapterinterface">インターフェース Phalcon\Acl\Adapter\AdapterInterface</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
-Interface for Phalcon\Acl adapters
+Phalcon\Acl adapters用のインターフェース
 
 ## メソッド
 
@@ -125,45 +125,45 @@ Interface for Phalcon\Acl adapters
 public function addComponent( mixed $componentObject, mixed $accessList ): bool;
 ```
 
-Adds a component to the ACL list
+アクセス制御リストにコンポーネントを追加します。
 
-Access names can be a particular action, by example search, update, delete, etc or a list of them
+アクセス名は特定のアクションで使用します。例えば search(検索), update(更新), delete(削除)などで、またはこれらのリストの要素です。
 
 ```php
 public function addComponentAccess( string $componentName, mixed $accessList ): bool;
 ```
 
-Adds access to components
+コンポーネントへのアクセスの追加
 
 ```php
 public function addInherit( string $roleName, mixed $roleToInherit ): bool;
 ```
 
-Do a role inherit from another existing role
+既存のロールからロールを継承する。
 
 ```php
 public function addRole( mixed $role, mixed $accessInherits = null ): bool;
 ```
 
-Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
+アクセス制御リストにロールを追加します。 第二引数は、その他の既存のロールからアクセスデータを継承します。
 
 ```php
 public function allow( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
 
-Allow access to a role on a component
+コンポーネント上のロールへのアクセスを許可します。
 
 ```php
 public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
 
-Deny access to a role on a component
+コンポーネント上のロールへのアクセスを拒否
 
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
 
-Removes an access from a component
+コンポーネントからのアクセスを削除します
 
 ```php
 public function getActiveAccess(): string;
@@ -193,7 +193,7 @@ Return an array with every component registered in the list
 public function getDefaultAction(): int;
 ```
 
-Returns the default ACL access level
+デフォルトのACLアクセスレベルを返します
 
 ```php
 public function getNoArgumentsDefaultAction(): int;
@@ -211,7 +211,7 @@ Return an array with every role registered in the list
 public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
 ```
 
-Check whether a role is allowed to access an action from a component
+コンポーネントへのアクションが、ロールに対して許可されているかどうかを確認します。
 
 ```php
 public function isComponent( string $componentName ): bool;
@@ -406,9 +406,9 @@ Phalcon\Acl\Adapter\Memory constructor
 public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 
-Adds a component to the ACL list
+アクセス制御リストにコンポーネントを追加します。
 
-Access names can be a particular action, by example search, update, delete, etc or a list of them
+アクセス名は特定のアクションで使用します。例えば search(検索), update(更新), delete(削除)などで、またはこれらのリストの要素です。
 
 例:
 
@@ -443,13 +443,13 @@ $acl->addComponent(
 public function addComponentAccess( string $componentName, mixed $accessList ): bool;
 ```
 
-Adds access to components
+コンポーネントへのアクセスの追加
 
 ```php
 public function addInherit( string $roleName, mixed $roleToInherits ): bool;
 ```
 
-Do a role inherit from another existing role
+既存のロールからロールを継承する。
 
 ```php
 $acl->addRole("administrator", "consultant");
@@ -460,7 +460,7 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 public function addRole( mixed $role, mixed $accessInherits = null ): bool;
 ```
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
+アクセス制御リストにロールを追加します。 Second parameter allows inheriting access data from other existing role
 
 ```php
 $acl->addRole(
@@ -516,7 +516,7 @@ $acl->deny("*", "*", "browse");
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
 
-Removes an access from a component
+コンポーネントからのアクセスを削除します
 
 ```php
 public function getActiveFunction(): mixed
@@ -552,7 +552,7 @@ Return an array with every role registered in the list
 public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
 ```
 
-Check whether a role is allowed to access an action from a component
+コンポーネントへのアクションが、ロールに対して許可されているかどうかを確認します。
 
 ```php
 // Does andres have access to the customers component to create?
