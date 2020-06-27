@@ -23,9 +23,9 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 v3では、ロガーはアダプタを同じコンポーネントに組み込んでいました。 したがって、本質的には、ロガーオブジェクトを作成する際には、開発者がロガー機能を持つアダプター(ファイル、ストリームなど)を作成していました。
 
-v4においては、ロギング機能のみを実装するようにコンポーネントを書き換えました。そして、ログ処理を担当する1つ以上のアダプタを受け入れるようにしました。 This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+v4においては、ロギング機能のみを実装するようにコンポーネントを書き換えました。そして、ログ処理を担当する1つ以上のアダプタを受け入れるようにしました。 これにより、[PSR-3](https://www.php-fig.org/psr/psr-3/)との互換性の速やかな提供と、コンポーネントの疎結合を実現しました。 また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 この実装を使用することで、このコンポーネントに必要なコードを削減し、古い `Logger\Multiple` コンポーネントを削除しました。
 
-## Adapters
+## アダプター
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch back-ends, or use multiple adapters if necessary. The adapters supported are:
 
