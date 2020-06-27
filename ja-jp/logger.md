@@ -19,11 +19,11 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 ![](/assets/images/implements-psr--3-blue.svg)
 
-The [Phalcon\Logger](api/phalcon_logger#logger-logger) has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/phalcon_logger#logger-logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+[Logger](api/phalcon_logger#logger-logger) コンポーネントは [PSR-3](https://www.php-fig.org/psr/psr-3/) に準拠するように書き換えられました。 これにより、Phalconベースのものだけでなく、 [PSR-3](api/phalcon_logger#logger-logger) ロガーを使用する任意のアプリケーションに [Phalcon\Logger](https://www.php-fig.org/psr/psr-3/) を使用できます。
 
 v3では、ロガーはアダプタを同じコンポーネントに組み込んでいました。 したがって、本質的には、ロガーオブジェクトを作成する際には、開発者がロガー機能を持つアダプター(ファイル、ストリームなど)を作成していました。
 
-For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+v4においては、ロギング機能のみを実装するようにコンポーネントを書き換えました。そして、ログ処理を担当する1つ以上のアダプタを受け入れるようにしました。 This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
 ## Adapters
 
