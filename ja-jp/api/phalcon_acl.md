@@ -169,13 +169,13 @@ public function dropComponentAccess( string $componentName, mixed $accessList ):
 public function getActiveAccess(): string;
 ```
 
-Returns the access which the list is checking if some role can access it
+ロールによるアクセス権の使用可否をチェックし、アクセス権のリストを返します。
 
 ```php
 public function getActiveComponent(): string;
 ```
 
-Returns the component which the list is checking if some role can access it
+ロールによるコンポーネントのアクセス可否をチェックし、コンポーネントのリストを返します。
 
 ```php
 public function getActiveRole(): string;
