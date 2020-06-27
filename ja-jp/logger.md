@@ -27,7 +27,7 @@ v4においては、ロギング機能のみを実装するようにコンポー
 
 ## アダプター
 
-This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch back-ends, or use multiple adapters if necessary. The adapters supported are:
+このコンポーネントは、ログとして採取されたメッセージを記録するためにアダプターを使用します。 アダプタを使用することで、バックエンドを簡単に切り替えたり、必要に応じて複数のアダプタを使用したりできる一般的なロギングインターフェイスを実現します。 サポートされているアダプターは次のとおりです。
 
 | アダプター                                                                        | Description                                 |
 | ---------------------------------------------------------------------------- | ------------------------------------------- |
@@ -37,11 +37,11 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 ### Stream
 
-This adapter is used when we want to log messages to a particular file stream. This adapter combines the v3 `Stream` and `File` ones. Usually this is the most used one: logging to a file in the file system.
+このアダプターは、特定のファイルストリームにメッセージログを記録するときに使用されます。 このアダプターは、v3 `Stream` と `File` のいずれかを組み合わせます。 通常はファイル システム内のファイルにログを記録することが最も多いでしょう。
 
 ### Syslog
 
-This adapter sends messages to the system log. The syslog behavior may vary from one operating system to another.
+このアダプターはシステムログにメッセージを送信します。 syslogの動作はオペレーティングシステムによって異なる場合があります。
 
 ### Noop
 
