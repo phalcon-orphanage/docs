@@ -118,9 +118,9 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 $logger = $loggerFactory->newInstance('prod-logger', $adapters);
 ```
 
-## Creating a Logger
+## ロガーの作成
 
-Creating a logger is a multi step process. First you create the logger object and then you attach an adapter to it. After that you can start logging messages according to the needs of your application.
+ロガーの作成には、いくつかの手順があります。 まず最初にロガーオブジェクトを作成し、次にアダプターを追加します。 その後、アプリケーションに必要なメッセージのロギングを開始できます。
 
 ```php
 <?php
@@ -139,9 +139,9 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-The above example creates a [Stream](api/phalcon_logger#logger-adapter-stream) adapter. We then create a logger object and attach this adapter to it. Each adapter attached to a logger needs to have a unique name, for the logger to be able to know where to log the messages. When calling the `error()` method on the logger object, the message is going to be stored in the `/storage/logs/main.log`.
+上記の例では、 [Stream](api/phalcon_logger#logger-adapter-stream) アダプタを作成します。 次に、ロガーオブジェクトを作成し、このアダプターを付与します。 ロガーに接続された各アダプターには、“どこでログにメッセージを記録するか”を知るために、固有の名前が必要です。 logger オブジェクトの `error()` メソッドを呼び出すと、メッセージは `/storage/logs/main.log` に保存されます。
 
-Since the logger component implements PSR-3, the following methods are available:
+ロガーコンポーネントは PSR-3 に準拠しているため、以下の方法を使用できます。
 
 ```php
 <?php
@@ -185,7 +185,7 @@ The log generated is as follows:
 
 ## Multiple Adapters
 
-[Phalcon\Logger](api/phalcon_logger#logger-logger) can send messages to multiple adapters with a just single call:
+[Phalcon\Logger](api/phalcon_logger#logger-logger) は、一度の呼び出しで複数のアダプターにメッセージを送信できます:
 
 ```php
 <?php
