@@ -181,7 +181,7 @@ public function getActiveComponent(): string;
 public function getActiveRole(): string;
 ```
 
-Returns the role which the list is checking if it's allowed to certain component/access
+ロールによる特定のコンポーネントまたはアクセス権に対する使用可否をチェックし、ロールのリストを返します。
 
 ```php
 public function getComponents(): ComponentInterface[];
@@ -199,7 +199,7 @@ public function getDefaultAction(): int;
 public function getNoArgumentsDefaultAction(): int;
 ```
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+isAllowedアクションに引数が指定されていなかった際のデフォルトのアクセスレベルを返します。ただしaccessKeyのfuncは存在しているものとします。
 
 ```php
 public function getRoles(): RoleInterface[];
