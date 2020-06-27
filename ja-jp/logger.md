@@ -15,7 +15,7 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 ## 概要
 
-[Phalcon\Logger](api/phalcon_logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/phalcon_logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
+[Phalcon\Logger](api/phalcon_logger#logger-logger) は、アプリケーションのログ採取サービスを提供するコンポーネントです。 異なるアダプタを使用して異なるバックエンドにログを記録することができます。 そして、トランザクションログ、設定オプション、さらに異なるログ形式も提供します。 [Phalcon\Logger](api/phalcon_logger#logger-logger) は、デバッグ作業から処理内容の追跡まで、アプリケーションで必要とされるあらゆるログ処理に使用できます。
 
 ![](/assets/images/implements-psr--3-blue.svg)
 
