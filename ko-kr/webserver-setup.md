@@ -30,7 +30,12 @@ $(which php) -S <host>:<port> -t <directory> <setup file>
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-위의 명령어는 다음의 기능을 수행합니다: - `$(which php)` - PHP 바이너리에 대한 절대경로 - `-S localhost:8000` - `host:port` 로 서버모드 실행 - `-t public` - 서버의 루트디렉토리를 지정. 공개 디렉토리에 있는 JS, CSS, 이미지 파일같은 자원에 대한 클라이언트 요청을 php가 라우팅하기 위해 필요 - `.htrouter.php` - 각각의 요청을 처리하는 진입점
+The above command does:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
 
 `.htrouter.php` 파일에는 반드시 다음의 내용이 있어야 합니다:
 
