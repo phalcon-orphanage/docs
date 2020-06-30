@@ -30,7 +30,12 @@ $(which php) -S <host>:<port> -t <directory> <setup file>
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-Рассмотрим, что делает команда, представленная выше: - `$(which php)` - вставляет абсолютный путь к вашей двоичной версии PHP - `-S localhost:8000` - вызовет режим сервера с предоставленным `host:port` - `-t public` - определяет корневую директорию сервера, необходимую для того, чтобы php перенаправлял запросы к таким ресурсам, как JS, CSS, и изображениям в вашем публичном каталоге - `. trouter.php` - входная точка, которая будет оцениваться для каждого запроса
+The above command does:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
 
 Файл `.htrouter.php` должен содержать:
 
