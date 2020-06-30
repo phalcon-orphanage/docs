@@ -394,17 +394,19 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 
 Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
 
-```ini extension=php_phalcon.dll
+```ini
+ extension=php_phalcon.dll
+```
 
-    <br />and save it.
-    
-    ![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
-    
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
-    
-    ```ini
-    extension=php_phalcon.dll 
-    
+and save it.
+
+![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
+
+Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
+
+```ini
+extension=php_phalcon.dll 
+```
 
 and save it.
 
