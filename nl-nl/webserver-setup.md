@@ -30,7 +30,12 @@ If your application has its entry point in `/public/index.php` or your project h
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-The above command does: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+The above command does:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
 
 The `.htrouter.php` file must contain:
 
