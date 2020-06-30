@@ -30,7 +30,12 @@ If your application has its entry point in `/public/index.php` or your project h
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-The above command does: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+The above command does:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
 
 The `.htrouter.php` file must contain:
 
@@ -390,17 +395,19 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 
 Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
 
-```ini extension=php_phalcon.dll
+```ini
+ extension=php_phalcon.dll
+```
 
-    <br />and save it.
-    
-    ![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
-    
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
-    
-    ```ini
-    extension=php_phalcon.dll 
-    
+and save it.
+
+![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
+
+Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
+
+```ini
+extension=php_phalcon.dll 
+```
 
 and save it.
 
