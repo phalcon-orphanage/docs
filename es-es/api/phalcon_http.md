@@ -608,7 +608,7 @@ final protected function checkHeaderHost( Collection $collection ): Collection;
 
 Ensure Host is the first header.
 
-@see: http://tools.ietf.org/html/rfc7230#section-5.4
+@see: https://tools.ietf.org/html/rfc7230#section-5.4
 
 ```php
 final protected function checkHeaderName( mixed $name ): void;
@@ -616,7 +616,7 @@ final protected function checkHeaderName( mixed $name ): void;
 
 Check the name of the header. Throw exception if not valid
 
-@see http://tools.ietf.org/html/rfc7230#section-3.2
+@see https://tools.ietf.org/html/rfc7230#section-3.2
 
 ```php
 final protected function checkHeaderValue( mixed $value ): void;
@@ -722,7 +722,7 @@ protected requestTarget;
  *
  * This method MUST return a UriInterface instance.
  *
- * @see http://tools.ietf.org/html/rfc3986#section-4.3
+ * @see https://tools.ietf.org/html/rfc3986#section-4.3
  *
  * @var UriInterface
  */
@@ -770,7 +770,7 @@ If the request needs a non-origin-form request-target — e.g., for specifying a
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the changed request target.
 
-@see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various request-target forms allowed in request messages)
+@see https://tools.ietf.org/html/rfc7230#section-5.3 (for the various request-target forms allowed in request messages)
 
 ```php
 public function withUri( UriInterface $uri, mixed $preserveHost = bool ): object;
@@ -788,7 +788,7 @@ You can opt-in to preserving the original state of the Host header by setting `$
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new UriInterface instance.
 
-@see http://tools.ietf.org/html/rfc3986#section-4.3
+@see https://tools.ietf.org/html/rfc3986#section-4.3
 
 ```php
 final protected function processMethod( mixed $method = string ): string;
@@ -867,8 +867,8 @@ PSR-7 Response
  * listed in the IANA HTTP Status Code Registry) for the response's
  * status code.
  *
- * @see http://tools.ietf.org/html/rfc7231#section-6
- * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+ * @see https://tools.ietf.org/html/rfc7231#section-6
+ * @see https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  *
  * @var string
  */
@@ -912,7 +912,7 @@ If no reason phrase is specified, implementations MAY choose to default to the R
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated status and reason phrase.
 
-@see http://tools.ietf.org/html/rfc7231#section-6 @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+@see https://tools.ietf.org/html/rfc7231#section-6 @see https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 
 <h1 id="http-message-responsefactory">Final Class Phalcon\Http\Message\ResponseFactory</h1>
 
@@ -1209,7 +1209,7 @@ Warning: This could attempt to load a large amount of data into memory.
 
 This method MUST NOT raise an exception in order to conform with PHP's string casting operations.
 
-@see http://php.net/manual/en/language.oop5.magic.php#object.tostring
+@see https://php.net/manual/en/language.oop5.magic.php#object.tostring
 
 ```php
 public function close(): void;
@@ -1352,7 +1352,7 @@ Warning: This could attempt to load a large amount of data into memory.
 
 This method MUST NOT raise an exception in order to conform with PHP's string casting operations.
 
-@see http://php.net/manual/en/language.oop5.magic.php#object.tostring
+@see https://php.net/manual/en/language.oop5.magic.php#object.tostring
 
 ```php
 public function getContents( int $length = int ): string;
@@ -1503,7 +1503,7 @@ private clientMediaType;
  * Implementations SHOULD return the value stored in the 'error' key of
  * the file in the $_FILES array.
  *
- * @see http://php.net/manual/en/features.file-upload.errors.php
+ * @see https://php.net/manual/en/features.file-upload.errors.php
  *
  * @var int
  */
@@ -1588,7 +1588,7 @@ When used in an SAPI environment where $_FILES is populated, when writing files 
 
 If you wish to move to a stream, use getStream(), as SAPI operations cannot guarantee writing to stream destinations.
 
-@see http://php.net/is_uploaded_file @see http://php.net/move_uploaded_file
+@see https://php.net/is_uploaded_file @see https://php.net/move_uploaded_file
 
 <h1 id="http-message-uploadedfilefactory">Final Class Phalcon\Http\Message\UploadedFileFactory</h1>
 
@@ -1608,7 +1608,7 @@ Create a new uploaded file.
 
 If a size is not provided it will be determined by checking the size of the stream.
 
-@link http://php.net/manual/features.file-upload.post-method.php @link http://php.net/manual/features.file-upload.errors.php
+@link https://php.net/manual/features.file-upload.post-method.php @link https://php.net/manual/features.file-upload.errors.php
 
 <h1 id="http-message-uri">Final Class Phalcon\Http\Message\Uri</h1>
 
@@ -1636,7 +1636,7 @@ private fragment = ;
  * The value returned MUST be normalized to lowercase, per RFC 3986
  * Section 3.2.2.
  *
- * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
+ * @see https://tools.ietf.org/html/rfc3986#section-3.2.2
  *
  * @return string
  */
@@ -2004,7 +2004,7 @@ Retrieves a query/get value always sanitized with the preset filters
 public function getHTTPReferer(): string;
 ```
 
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. ie: https://www.google.com
 
 ```php
 final public function getHeader( string $header ): string;
@@ -2666,7 +2666,7 @@ Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
 public function getHTTPReferer(): string;
 ```
 
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. ie: https://www.google.com
 
 ```php
 public function getHeader( string $header ): string;

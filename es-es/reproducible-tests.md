@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Pruebas Reproducibles'
-keywords: 'tests, testing, reproducible tests'
+keywords: 'pruebas, test, testing, pruebas reproducibles'
 ---
 
 # Pruebas Reproducibles
@@ -12,12 +12,12 @@ keywords: 'tests, testing, reproducible tests'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
+> **NOTA**: En caso de encontrar un error se puede reportar en [GitHub](https://github.com/phalcon/cphalcon/issues). Acompañado por la descripción del error y todos los detalles posibles de tal manera que el equipo principal pueda reproducirlo. La mejor forma de hacerlo es creando una prueba que falle: así se demuestra el error. Si el error se encuentra en una aplicación de dominio público en un repositorio, es pertinente incluir el enlace. También se puede utilizar un [Gist](https://gist.github.com/) para publicar el código relevante para el equipo principal.
 {:.alert .alert-info}
 
-## Creating a Small Script
+## Creando un pequeño script
 
-A small PHP file can be used to showcase how to reproduce the issue:
+La prueba para demostrar el error se puede crear en unas cuantas líneas de PHP, por ejemplo:
 
 ```php
 <?php
@@ -30,7 +30,7 @@ use Phalcon\Http\Response\Cookies;
 
 $container = new FactoryDefault();
 
-// Register your custom services
+// Registro de los servicios
 $container['session'] = function() {
     $session = new Manager();
     $adapter = new Files(
@@ -83,7 +83,7 @@ var_dump($_COOKIE);
 
 ### Base de Datos
 
-> **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
+> **NOTA**: Es importante incluir toda la información de registro del servicio de la base de datos (`db`), tales como adaptador, parámetros de conexión, etc.
 {:.alert .alert-info}
 
 ```php
@@ -112,9 +112,9 @@ $container->setShared(
 $result = $container['db']->query('SELECT * FROM customers');
 ```
 
-### Single/Multi-Module Applications
+### Aplicaciones simples o multi módulo
 
-> **NOTE**: Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules
+> **NOTA**: Es importante incluir la instancia de `Phalcon\Mvc\Application` que se está utilizando al igual que la forma en que se están registrando los módulos
 {:.alert .alert-info}
 
 ```php
@@ -125,13 +125,13 @@ use Phalcon\Mvc\Application;
 
 $container = new FactoryDefault();
 
-// other services
+// otros servicios
 
 $application = new Application();
 
 $application->setDI($container);
 
-// register modules if any
+// registro de módulos (si los hay)
 
 $response = $application->handle(
     $_SERVER["REQUEST_URI"]
@@ -140,7 +140,7 @@ $response = $application->handle(
 echo $response->getContent();
 ```
 
-Include models and controllers as part of the test:
+Incluye modelos y controladores como parte de la prueba:
 
 ```php
 <?php
@@ -152,7 +152,7 @@ use Phalcon\Mvc\Model;
 
 $container = new FactoryDefault();
 
-// other services
+// otros servicios
 
 $application = new Application();
 
@@ -161,7 +161,7 @@ $application->setDI($container);
 class IndexController extends Controller
 {
     public function indexAction() { 
-          /* your content here */
+          /* contenido */
     }
 }
 
@@ -178,7 +178,7 @@ echo $response->getContent();
 
 ### Micro Aplicaciones
 
-For micro applications, you can use the skeleton script below:
+En caso de que se trate de una microaplicación, se puede utilizar la siguiente estructura:
 
 ```php
 <?php
@@ -188,20 +188,20 @@ use Phalcon\Mvc\Micro;
 
 $container = new FactoryDefault();
 
-// other services
+// otros servicios
 
 $application = new Micro($container);
 
-// define your routes here
+// definición de las rutas
 
 $application->handle(
     $_SERVER["REQUEST_URI"]
 );
 ```
 
-### ORM
+### Mapeo objeto-relacional (ORM, siglas en inglés)
 
-> **NOTE**: You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository).
+> **NOTA**: Para la prueba se puede incluir el esquema de la base de datos o, mejor aún, se puede utilizar alguno de los esquemas disponibles en nuestra suite de pruebas ubicada en `tests/_data/assets/db/schemas/` en el repositorio.
 {:.alert .alert-info}
 
 ```php

@@ -3,20 +3,20 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Generar una traza inversa'
-keywords: 'backtrace, debugging, segmentation faults'
+keywords: 'backtrace, depuración, fallas de segmentación'
 ---
 
-# Generating a Backtrace
+# Generar una traza inversa
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Phalcon is compiled into a C extension loaded on your web server. Because of that, bugs lead to segmentation faults, causing Phalcon to crash some of your web server processes.
+Phalcon está compilado en una extensión C cargada en su servidor web. Debido a esto, los errores conducen a fallas de segmentación, causando que Phalcon bloquee algunos de sus procesos de servidor web.
 
-For debugging these segmentation faults a stacktrace is required. Creating a stack trace requires a special build of php and some steps need to be done to generate a trace that allows the Phalcon team to debug this behavior.
+Para depurar estos defectos de segmentación se requiere un *stacktrace* (traza inversa). La creación de un seguimiento de pila requiere una compilación especial de php y se deben seguir algunos pasos para generar un seguimiento que permita al equipo de Phalcon depurar este comportamiento.
 
-Please follow this guide to understand how to generate the backtrace.
+Por favor sigue estas indicaciones para entender cómo generar el *backtrace*.
 
 <https://bugs.php.net/bugs-generating-backtrace.php>
 

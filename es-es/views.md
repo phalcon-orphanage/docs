@@ -13,7 +13,7 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Controladores
+## Resumen
 
 Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Views format the content that you need to send back to the user/web browser that initiated the request.
 

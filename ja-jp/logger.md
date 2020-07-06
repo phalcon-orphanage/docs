@@ -15,19 +15,19 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 ## 概要
 
-[Phalcon\Logger](api/phalcon_logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/phalcon_logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
+[Phalcon\Logger](api/phalcon_logger#logger-logger) は、アプリケーションのログ採取サービスを提供するコンポーネントです。 異なるアダプタを使用して異なるバックエンドにログを記録することができます。 そして、トランザクションログ、設定オプション、さらに異なるログ形式も提供します。 [Phalcon\Logger](api/phalcon_logger#logger-logger) は、デバッグ作業から処理内容の追跡まで、アプリケーションで必要とされるあらゆるログ処理に使用できます。
 
 ![](/assets/images/implements-psr--3-blue.svg)
 
-The [Phalcon\Logger](api/phalcon_logger#logger-logger) has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/phalcon_logger#logger-logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+[Logger](api/phalcon_logger#logger-logger) コンポーネントは [PSR-3](https://www.php-fig.org/psr/psr-3/) に準拠するように書き換えられました。 これにより、Phalconベースのものだけでなく、 [PSR-3](api/phalcon_logger#logger-logger) ロガーを使用する任意のアプリケーションに [Phalcon\Logger](https://www.php-fig.org/psr/psr-3/) を使用できます。
 
 v3では、ロガーはアダプタを同じコンポーネントに組み込んでいました。 したがって、本質的には、ロガーオブジェクトを作成する際には、開発者がロガー機能を持つアダプター(ファイル、ストリームなど)を作成していました。
 
-For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+v4においては、ロギング機能のみを実装するようにコンポーネントを書き換えました。そして、ログ処理を担当する1つ以上のアダプタを受け入れるようにしました。 これにより、[PSR-3](https://www.php-fig.org/psr/psr-3/)との互換性の速やかな提供と、コンポーネントの疎結合を実現しました。 また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 この実装を使用することで、このコンポーネントに必要なコードを削減し、古い `Logger\Multiple` コンポーネントを削除しました。
 
-## Adapters
+## アダプター
 
-This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch back-ends, or use multiple adapters if necessary. The adapters supported are:
+このコンポーネントは、ログとして採取されたメッセージを記録するためにアダプターを使用します。 アダプタを使用することで、バックエンドを簡単に切り替えたり、必要に応じて複数のアダプタを使用したりできる一般的なロギングインターフェイスを実現します。 サポートされているアダプターは次のとおりです。
 
 | アダプター                                                                        | Description                                 |
 | ---------------------------------------------------------------------------- | ------------------------------------------- |
@@ -37,19 +37,19 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 ### Stream
 
-This adapter is used when we want to log messages to a particular file stream. This adapter combines the v3 `Stream` and `File` ones. Usually this is the most used one: logging to a file in the file system.
+このアダプターは、特定のファイルストリームにメッセージログを記録するときに使用されます。 このアダプターは、v3 `Stream` と `File` のいずれかを組み合わせます。 通常はファイル システム内のファイルにログを記録することが最も多いでしょう。
 
 ### Syslog
 
-This adapter sends messages to the system log. The syslog behavior may vary from one operating system to another.
+このアダプターはシステムログにメッセージを送信します。 syslogの動作はオペレーティングシステムによって異なる場合があります。
 
 ### Noop
 
-This is a black hole adapter. It sends messages to *infinity and beyond*! This adapter is used mostly for testing or if you want to joke with a colleague.
+これはブラックホールアダプタです *無限の彼方へ*メッセージを送信します！ このアダプターは、主にテストや同僚と冗談を言いたい場合に使用されます。
 
 ## Factory
 
-You can use the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/phalcon_logger#logger-adapterfactory):
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) コンポーネントを使用して、ロガーを作成できます。 [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) が動作するには、 [Phalcon\Logger\AdapterFactory](api/phalcon_logger#logger-adapterfactory) でインスタンス化する必要があります。
 
 ```php
 <?php
@@ -63,9 +63,9 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 
 ### `load()`
 
-[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config) object.
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) は、設定に基づいてログ処理を構成する `load` メソッドを提供します。 構成は、配列または [Phalcon\Config](config) オブジェクトにすることができます。
 
-> **NOTE**: Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
+> **注意**: これは、2つのストリームアダプタでロガーを作成する例です。 一つ目のアダプターは `main`から呼び出され、全てのメッセージログを採取します。一方、二つ目は`admin`（管理者）から呼び出され、アプリケーションの管理画面で生成されたメッセージログのみを採取します。 
 {: .alert .alert-info}
 
 ```php
@@ -98,7 +98,7 @@ $logger = $loggerFactory->load($config);
 
 ### `newInstance()`
 
-The [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) also offers the `newInstance()` method, that constructs a logger based on the supplied name and array of relevant adapters. Using the use case above:
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) は、`newInstance()` メソッドも提供しています。こちらのメソッドは、与えられた名前と関連するアダプタの配列に基づいてロガーを構成します。 上記の使用例は次の通りです:
 
 ```php
 <?php
@@ -118,9 +118,9 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 $logger = $loggerFactory->newInstance('prod-logger', $adapters);
 ```
 
-## Creating a Logger
+## ロガーの作成
 
-Creating a logger is a multi step process. First you create the logger object and then you attach an adapter to it. After that you can start logging messages according to the needs of your application.
+ロガーの作成には、いくつかの手順があります。 まず最初にロガーオブジェクトを作成し、次にアダプターを追加します。 その後、アプリケーションに必要なメッセージのロギングを開始できます。
 
 ```php
 <?php
@@ -139,9 +139,9 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-The above example creates a [Stream](api/phalcon_logger#logger-adapter-stream) adapter. We then create a logger object and attach this adapter to it. Each adapter attached to a logger needs to have a unique name, for the logger to be able to know where to log the messages. When calling the `error()` method on the logger object, the message is going to be stored in the `/storage/logs/main.log`.
+上記の例では、 [Stream](api/phalcon_logger#logger-adapter-stream) アダプタを作成します。 次に、ロガーオブジェクトを作成し、このアダプターを付与します。 ロガーに接続された各アダプターには、“どこでログにメッセージを記録するか”を知るために、固有の名前が必要です。 logger オブジェクトの `error()` メソッドを呼び出すと、メッセージは `/storage/logs/main.log` に保存されます。
 
-Since the logger component implements PSR-3, the following methods are available:
+ロガーコンポーネントは PSR-3 に準拠しているため、以下の方法を使用できます。
 
 ```php
 <?php
@@ -185,7 +185,7 @@ The log generated is as follows:
 
 ## Multiple Adapters
 
-[Phalcon\Logger](api/phalcon_logger#logger-logger) can send messages to multiple adapters with a just single call:
+[Phalcon\Logger](api/phalcon_logger#logger-logger) は、一度の呼び出しで複数のアダプターにメッセージを送信できます:
 
 ```php
 <?php
@@ -210,7 +210,7 @@ $logger = new Logger(
 $logger->error('Something went wrong');
 ```
 
-The messages are sent to the handlers in the order they were registered using the [first in first out](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) principle.
+メッセージは、[first in first out](https://ja.wikipedia.org/wiki/FIFO) に基づき、登録された順序でハンドラーに送信されます。
 
 ### Excluding Adapters
 
@@ -725,7 +725,7 @@ $container = new Di();
 
 $container->set(
     'logger',
-    function () use () {
+    function () {
         $adapter = new Stream('/storage/logs/main.log');
         $logger  = new Logger(
             'messages',
@@ -734,7 +734,11 @@ $container->set(
             ]
         );
 
-        return new $logger;
+        return $logger;
     }
 );
+
+// accessing it later:
+$logger = $container->getShared('logger');
+
 ```

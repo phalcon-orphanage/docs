@@ -1,5 +1,5 @@
 ---
-layout: デフォルト
+layout: default
 language: 'ja-jp'
 version: '4.0'
 title: 'API 索引'

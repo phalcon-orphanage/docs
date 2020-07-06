@@ -308,11 +308,12 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Added fetchColumn, insertAsDict, updateAsDict
+- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 
-- Mysqlアダプタにカラムタイプを追加しました。 アダプターサポート -`TYPE_BIGINTEGER` 
+- Mysqlアダプタにカラムタイプを追加しました。 The adapters support 
+    - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -346,7 +347,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\Dialect\Postgresql
 
-- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
 * * *
 
@@ -354,11 +355,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Added getParameter, isResolved
+- Added `getParameter`, `isResolved`
 
 ### Di\Service
 
-- Phalcon\Di\Service コンストラクタがサービスの名前を取得しないように変更されました。
+- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
 
 * * *
 
@@ -396,7 +397,7 @@ echo Enum::FETCH_ASSOC;
 
 ### 概要
 
-The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
@@ -557,7 +558,7 @@ echo Enum::VERTICAL;   // prints  12
 
 v3では、ロガーはアダプタを同じコンポーネントに組み込んでいました。 したがって、本質的には、ロガーオブジェクトを作成する際には、開発者がロガー機能を持つアダプター(ファイル、ストリームなど)を作成していました。
 
-For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. また、複数のアダプタへのロギングを実現できるように、複数のアダプタをロギングコンポーネントに簡単に接続する方法も提供します。 この実装を使用することで、このコンポーネントに必要なコードを削減し、古い `Logger\Multiple` コンポーネントを削除しました。
 
 ### ロガーコンポーネントの作成
 
@@ -644,7 +645,10 @@ $logger->error('Something went wrong');
 
 ### トランザクション
 
-Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+Removed in version 4.0:
+
+- Removed `$logger->begin()`
+- Removed `$logger->commit()`
 
 ### Log Level
 
@@ -714,9 +718,9 @@ $criteria->limit(10, null);
 
 ### Mvc\Model
 
-- `Phalcon\Model::reset` を削除しました
+- Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
+- Changed `Phalcon\Model::assign` parameters order to `$data`, `$whiteList`, `$dataColumnMap`
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
@@ -885,7 +889,7 @@ $group->addTrace(
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `long` - the number of files present in the request
+- Added `numFiles` returning `int` - the number of files present in the request
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
 * * *
@@ -897,7 +901,7 @@ $group->addTrace(
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
 
 - Added `Phalcon\Session\Adapter\AbstractAdapter`
 - Added `Phalcon\Session\Adapter\Noop`
@@ -1015,7 +1019,11 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### アセット
 
-| 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
+| 3.4.x                          | State      | 4.0.x                       |
+| ------------------------------ | ---------- | --------------------------- |
+| Phalcon\Assets\Resource      | Renamed to | Phalcon\Assets\Asset      |
+| Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css |
+| Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 ### キャッシュ
 

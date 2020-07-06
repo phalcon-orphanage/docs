@@ -27,7 +27,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Controladores",
+                "text": "Resumen",
                 "url": "/contributions"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Guía para Pruebas",
+                "text": "Entorno de prueba",
                 "url": "/testing-environment"
             },
             {
@@ -97,11 +97,11 @@
                 "url": "/debug"
             },
             {
-                "text": "Migrations",
+                "text": "Migraciones",
                 "url": "/db-migrations"
             },
             {
-                "text": "Unit Testing",
+                "text": "Pruebas Unitarias",
                 "url": "/unit-testing"
             }
         ]
@@ -249,7 +249,7 @@
                 "url": "/db-pagination"
             },
             {
-                "text": "Migrations",
+                "text": "Migraciones",
                 "url": "/db-migrations"
             }
         ]
@@ -271,7 +271,7 @@
                 "url": "/forms"
             },
             {
-                "text": "Imágenes",
+                "text": "Imagen",
                 "url": "/image"
             },
             {
@@ -435,11 +435,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Coleccion",
                 "url": "/collection"
             },
             {
-                "text": "Domain",
+                "text": "Dominio",
                 "url": "/domain"
             },
             {
@@ -447,7 +447,7 @@
                 "url": "/html"
             },
             {
-                "text": "Ayudantes",
+                "text": "Ayudantes (Helpers)",
                 "url": "/helper"
             },
             {

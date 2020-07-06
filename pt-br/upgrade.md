@@ -309,11 +309,12 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Added fetchColumn, insertAsDict, updateAsDict
+- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 
-- Added more column types for the Mysql adapter. The adapters support -`TYPE_BIGINTEGER` 
+- Added more column types for the Mysql adapter. The adapters support 
+    - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -347,7 +348,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\Dialect\Postgresql
 
-- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
 * * *
 
@@ -355,11 +356,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Added getParameter, isResolved
+- Added `getParameter`, `isResolved`
 
 ### Di\Service
 
-- Changed Phalcon\Di\Service constructor to no longer takes the name of the service.
+- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
 
 * * *
 
@@ -397,7 +398,7 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 ### Visão Geral
 
-The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
@@ -645,7 +646,10 @@ $logger->error('Something went wrong');
 
 ### Transações
 
-Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+Removed in version 4.0:
+
+- Removed `$logger->begin()`
+- Removed `$logger->commit()`
 
 ### Log Level
 
@@ -717,7 +721,7 @@ $criteria->limit(10, null);
 
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
+- Changed `Phalcon\Model::assign` parameters order to `$data`, `$whiteList`, `$dataColumnMap`
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
@@ -886,7 +890,7 @@ $group->addTrace(
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `long` - the number of files present in the request
+- Added `numFiles` returning `int` - the number of files present in the request
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
 * * *
@@ -898,7 +902,7 @@ $group->addTrace(
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
 
 - Added `Phalcon\Session\Adapter\AbstractAdapter`
 - Added `Phalcon\Session\Adapter\Noop`
@@ -1016,7 +1020,11 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Assets
 
-| 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
+| 3.4.x                          | State      | 4.0.x                       |
+| ------------------------------ | ---------- | --------------------------- |
+| Phalcon\Assets\Resource      | Renamed to | Phalcon\Assets\Asset      |
+| Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css |
+| Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 ### Cache
 

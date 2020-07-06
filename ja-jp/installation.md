@@ -265,16 +265,16 @@ Phalconをインストールするためのオーバーレイは、[こちら](h
 macOS
 ```
 
-It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+また、 swap fileをデフォルトの100 MBから、少なくとも2000 MBに増やす必要があります。 これはコンパイルの際に大量のメモリを必要とするためです。
 
 ```bash
 sudo -s
 nano /etc/dphys-swapfile
 ```
 
-Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+`CONF_SWAPSIZE=100` を `CONF_SWAPSIZE=2000` に置換してください。
 
-After saving the setting, restart the daemon:
+設定を保存した後、daemonを再起動します:
 
 ```bash
 /etc/init.d/dphys-swapfile stop
@@ -283,23 +283,23 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
+Brewにはバイナリパッケージが含まれているため、Phalconを自分でコンパイルする必要はありません。 自分で拡張機能をコンパイルしたい場合は、以下の依存関係がインストールされている必要があります。
 
-#### Compilation requirements
+#### コンパイル要件
 
 * PHP 7.x development resources
 * XCode
 
 #### Brew
 
-Binary installation (preferred):
+バイナリ インストール (推奨):
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
 brew install phalcon
 ```
 
-Compile phalcon:
+Phalconのコンパイル:
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
@@ -313,25 +313,25 @@ sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+そして、Webサーバを再起動してください。
 
 ### PHPBrew (macOS/Linux)
 
-PHPBrew is an excellent way to manage multiple versions of PHP and PHP extensions on your system(s). Installation instructions for PHPBrew can be found [here](https://github.com/phpbrew/phpbrew/wiki/Quick-Start)
+PHPBrewは、システム上の複数のバージョンのPHPとPHP拡張を管理する優れた方法です。 PHPBrewのインストールの手順は [こちら](https://github.com/phpbrew/phpbrew/wiki/Quick-Start) です。
 
-If you're using PHPBrew, you can install Phalcon using the following:
+PHPBrewを使用している場合は、以下によりPhalconをインストールできます。
 
 ```bash
 sudo phpbrew ext install phalcon
 ```
 
-You can install the PSR dependency via phpbrew as well if needed:
+必要に応じて、依存するPSR拡張のインストールをすることもできます。
 
 ```bash
 sudo phpbrew ext install psr
@@ -339,13 +339,13 @@ sudo phpbrew ext install psr
 
 ### Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
+Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 Phalconプロジェクトでは、プラットフォームに応じた複数の DLL ファイルをコンパイルしています。 DLL は、[ダウンロード](https://phalcon.io/en/download/windows) ページにあります。
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+アーキテクチャと同様に、PHP がインストールされているかを確認します。 間違った DLL をダウンロードした場合、Phalcon は動作しません。 `phpinfo()` にてこれらの情報が確認できます。 次の例では、DLLのNTS バージョンを必要としています:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
-The available DLLs are:
+利用可能な DLL は次のとおりです。
 
 | アーキテクチャー | バージョン | Type           |
 |:--------:|:-----:| -------------- |
@@ -354,13 +354,13 @@ The available DLLs are:
 |   x86    |  7.x  | スレッドセーフ        |
 |   x86    |  7.x  | 非スレッドセーフ (NTS) |
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+そして、Webサーバを再起動してください。
 
 ### ソースコードからコンパイル
 
@@ -398,7 +398,7 @@ zephir build
 php -m | grep phalcon
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張モジュールが読み込まれるように、Webサーバを再起動する必要があります。
 
 ```ini
 ; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
@@ -417,7 +417,7 @@ extension=phalcon.so
 extension=phalcon.so
 ```
 
-The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+上記の手順はコンパイルを行い、**そして、さらに** システムにモジュールをインストールします。 拡張機能をコンパイルし、 `ini` ファイルに手動で追加することもできます。
 
 ```bash
 cd cphalcon/
@@ -430,26 +430,26 @@ phpize
 make && make install
 ```
 
-If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
+上記のメソッドを使用する場合は、 `extension=phalconを追加する必要があります。 <code> php.ini` の `` で CLI （コマンドラインインターフェイス用）と Web サーバーの両方を指定します。
 
-#### Tuning Build
+#### チューニングビルド（最適化オプションの指定されたコンパイル）
 
-By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
+デフォルトでは、すべてのプロセッサ (`gcc -mtune=native -O2 -fomit-frame-pointer` ) と可能な限り互換性があるようにコンパイルします。 コンパイラーに現在実行中のプロセッサーに合う最適化されたマシンコードを生成するよう指示したい場合は、ビルドの前にCFLAGSをエクスポートすることで独自のコンパイルフラグを設定できます。 例えば、
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
+これにより、そのチップセットに最適なコードが生成されますが、古いチップセットでコンパイルされたオブジェクトが壊れる可能性があります。
 
-### Shared Hosting
+### 共有ホスティングサービス
 
-Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckily have Phalcon support.
+共有ホスティングサービスでWEBアプリケーションを実行する場合、主にrootアクセス権限がない場合などにPhalconのインストールが制限される場合があります。 いくつかのWebホスティングコントロールパネルは幸運にもPhalconをサポートしています。
 
 #### cPanel & WHM
 
-cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
+cPanelとWHMは、Easy Apache 4(EA4)を用いてPhalconをサポートしています。 Easy Apache 4 (EA4) で [module](https://github.com/CpanelInc/scl-phalcon) を有効にすることで、Phalconをインストールできます。
 
 #### Plesk
 
-The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
+プレスクのコントロールパネルにはPhalconがサポートされていませんが、Plesk [ウェブサイト](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-) にインストール手順があります。

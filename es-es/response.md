@@ -12,7 +12,7 @@ keywords: 'http, http response, response'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Controladores
+## Resumen
 
 [Phalcon\Http\Response](api/phalcon_http#http-response) is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not *only* the actual response payload. The component acts as a constructor of the response and as a HTTP client to send the response back to the caller. You can always use the [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.
 
@@ -73,7 +73,7 @@ if (true !== $response->isSent()) {
 
 ## Getters
 
-The [Phalcon\Http\Response](api/phalcon_http#http-response) offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available: - `getContent(): string` - Returns the HTTP response body. - `getHeaders(): HeadersInterface` - Returns the headers object, containing headers set by the user. - `getReasonPhrase(): string | null` - Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes](http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) document. - `getStatusCode(): int | null` - Returns the status code (e.g. `200`).
+The [Phalcon\Http\Response](api/phalcon_http#http-response) offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available: - `getContent(): string` - Returns the HTTP response body. - `getHeaders(): HeadersInterface` - Returns the headers object, containing headers set by the user. - `getReasonPhrase(): string | null` - Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) document. - `getStatusCode(): int | null` - Returns the status code (e.g. `200`).
 
 ## Content
 

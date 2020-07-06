@@ -267,7 +267,7 @@ Assert the hash algorithm is available.
 protected function cryptPadText( string $text, string $mode, int $blockSize, int $paddingType ): string;
 ```
 
-Pads texts before encryption. See [cryptopad](http://www.di-mgt.com.au/cryptopad.html)
+Pads texts before encryption. See [cryptopad](https://www.di-mgt.com.au/cryptopad.html)
 
 ```php
 protected function cryptUnpadText( string $text, string $mode, int $blockSize, int $paddingType );

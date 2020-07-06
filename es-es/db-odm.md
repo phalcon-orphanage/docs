@@ -2,19 +2,19 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Object Document Mapper'
+title: 'ODM (Mapeador Objecto-Documento)'
 keywords: 'mongo, odm, object document mapper'
 ---
 
-# Object Document Mapper
+# ODM (Mapeador Objecto-Documento)
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: The Object Document Mapper functionality has been **temporarily** removed for v4.0.
+> **NOTA**: La funcionalidad del Mapper de Documentos de Objeto ha sido **temporalmente** eliminada para la v4.0.
 > 
-> The existing implementation was using a PHP MongoDB driver that has been deprecated for years. As such, work is underway to re-introduce the Object Document Mapper in Phalcon, using the latest MongoDB PHP driver.
+> La implementación existente estaba usando un controlador MongoDB PHP que ha sido deprecado hace años. Como tal, el trabajo está en marcha para reintroducir el mapeador de documentos de objetos en Phalcon, utilizando el último controlador PHP de MongoDB.
 > 
-> We expect this functionality to be reintroduced a future Phalcon release.
+> Esperamos que esta funcionalidad se reintroduzca en una futura versión de Phalcon.
 {: .alert .alert-danger }

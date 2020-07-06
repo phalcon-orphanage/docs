@@ -10,7 +10,7 @@ keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-## Controladores
+## Resumen
 
 Using a static analysis tool in your project can dramatically increase your code quality and highlight potential bugs before they are exposed.
 
@@ -20,7 +20,7 @@ Using a static analysis tool in your project can dramatically increase your code
 composer require --dev vimeo/psalm:^3.11
 ```
 
-or by manually adding it to `composer.json`:
+o agregando manualmente al archivo `composer.json`:
 
 ```json
 {
@@ -40,7 +40,7 @@ You can use the IDE Stubs library by adding it as a dependency:
 composer require --dev phalcon/ide-stubs:^v4.0
 ```
 
-or by manually adding it to `composer.json`:
+o agregando manualmente al archivo `composer.json`:
 
 ```json
 {
@@ -123,7 +123,7 @@ Psalm was able to infer types for 92.9630% of the codebase
 
 Fix your errors, and re-run Psalm!
 
-## Resources
+## Recursos
 - [Psalm Documentation](https://psalm.dev/docs/)
 - [Static Analysis with Psalm PHP](https://www.twilio.com/blog/static-analysis-with-psalm-php)
 - [What Is Static Code Analysis?](https://www.perforce.com/blog/sca/what-static-analysis)

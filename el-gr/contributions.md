@@ -22,7 +22,12 @@ The Phalcon source code (along with documentation, websites etc.) is stored in [
 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
 
-When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be: * merged immediately or * put on hold, where the reviewer requires changes (styling, tests etc.) * put on hold, if discussion is necessary (community, core team etc.) * rejected
+When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be:
+
+- merged immediately or 
+- put on hold, where the reviewer requires changes (styling, tests etc.)
+- put on hold, if discussion is necessary (community, core team etc.)
+- rejected
 
 > **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
 {:.alert .alert-danger}
@@ -81,7 +86,7 @@ Before submitting **new functionality**, please open a [NFR](new-feature-request
 
 ## Getting Support
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.io/support).
+If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
 
 ## Requesting Features
 

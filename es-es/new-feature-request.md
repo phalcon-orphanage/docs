@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Solicitud de Nueva Funcionalidad'
-keywords: 'new feature request, nfr'
+keywords: 'Solicitud de Nueva Funcionalidad, nfr'
 ---
 
 # Solicitud de Nueva Funcionalidad
@@ -12,14 +12,32 @@ keywords: 'new feature request, nfr'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-[List of NFRs](new-feature-request-list)
+[Lista de Solicitudes de Nuevas Funcionalidades](new-feature-request-list)
 
-A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
+Una Solicitud de Nueva Funcionalidad (NFR por sus siglas en inglés) es un pequeño documento explicando cómo debe presentarse, cómo se puede implementar y cómo puede ayudar a los desarrolladores principales y otros a entender como implementarla.
 
-A NFR contains: * Suggested syntax * Suggested class names and methods * A description detailing the usage * How it can benefit the framework and the community * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
+Una solicitud de nueva funcionalidad contiene:
 
-In the following cases a new feature request will be rejected **if**: * The feature makes the framework slow * The feature does not provide any additional value to the framework * The NFR is not clear, bad documentation, unclear explanation, etc. * The NFR has not been discussed with the Team or voted by the community * The NFR does not follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster does not provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) * Uses static methods - (not allowed)
+* Sintaxis sugerida
+* Sugerencias de nombres de clase y métodos
+* Una descripción detallando el uso
+* Cómo puede beneficiar al *framework* y a la comunidad
+* Si la función ya está implementada en otros frameworks, una breve explicación de lo que fue implementado y sus ventajas
 
-To send a NFR you do not need to provide Zephir or C code or develop the feature. New Feature requests explain the goal of the intended implementation and start a discussion on how best to implement it.
+En los siguientes casos se rechazará una solicitud de nueva característica **si**:
 
-All NFRs should be posted as a new issue on [GitHub](https://github.com/phalcon/cphalcon/issues). Please make sure to use the prefix `[NFR]` in the title of your issue.
+* Una característica que haga al framework más lento
+* La característica que no proporcione ningún valor adicional al framework
+* Si la solicitud no es clara, mal documentada, explicación confusa, etcétera.
+* La *NFR* no ha sido discutida con el equipo o votada por la comunidad
+* La solicitud no sigue la directrices o filosofía actual del framework
+* La solicitud afecta/rompe aplicaciones desarrolladas en versiones actuales o anteriores del framework
+* El autor de la propuesta no provee una retroalimentación o respuesta cuando así lo solicite
+* Es técnicamente imposible de aplicar
+* Sólo se puede utilizar en etapas de desarrollo o prueba
+* Si las clases o componentes presentados y propuestos no siguen el [Principio de Responsabilidad Simple](https://en.wikipedia.org/wiki/Single_responsibility_principle)
+* Los métodos estáticos no están permitidos
+
+Para enviar una *NFR* no es necesario proveer el código Zephir o C, o desarrollar la funcionalidad. Las *NFR* explican claramente cuál es el objetivo que se busca implementar y empiezan una sana discusión sobre cuál es la mejor forma de lograrlo.
+
+Todas las NFR deben ser publicadas como nuevas incidencias en [GitHub](https://github.com/phalcon/cphalcon/issues). Es muy importante utilizar el prefijo `[NFR]` en el título de la incidencia.

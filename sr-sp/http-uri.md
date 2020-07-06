@@ -14,7 +14,7 @@ keywords: 'psr-7, http, http uri'
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-The [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) returns a value object representing a URI. The object represents a URI as defined in [RFC 3986](http://tools.ietf.org/html/rfc3986), providing methods for the most common operations. The primary use of this component is for HTTP requests but can be used in other contexts.
+The [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) returns a value object representing a URI. The object represents a URI as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986), providing methods for the most common operations. The primary use of this component is for HTTP requests but can be used in other contexts.
 
 ```php
 <?php
@@ -42,7 +42,7 @@ The constructor accepts an optional string, representing the URI. If specified, 
 
 ### `__toString()`
 
-Returns the string representation of the URI. Depending on which components of the URI are present, the resulting string is either a full URI or relative reference according to [RFC 3986](http://tools.ietf.org/html/rfc3986), Section 4.1. The method concatenates the various components of the URI.
+Returns the string representation of the URI. Depending on which components of the URI are present, the resulting string is either a full URI or relative reference according to [RFC 3986](https://tools.ietf.org/html/rfc3986), Section 4.1. The method concatenates the various components of the URI.
 
 ```php
 <?php

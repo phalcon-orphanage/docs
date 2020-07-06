@@ -5,21 +5,21 @@ version: '4.0'
 title: 'Unit Testing'
 keywords: 'unit testing, phpunit, phalcon'
 ---
-# Unit Testing
+# Pruebas Unitarias
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-## Controladores
+## Preámbulo
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Escribir pruebas adecuadas puede ayudar a escribir mejor software. Si ha configurado correctamente los casos de prueba puede eliminar errores funcionales y mantener mejor su software.
 
-## Integrating PHPUnit with Phalcon
+## Integrando PHPUnit con Phalcon
 
 ```bash
 composer require --dev phpunit/phpunit:^9.0
 ```
 
-or by manually adding it to `composer.json`:
+o agregando manualmente al archivo `composer.json`:
 
 ```json
 {
@@ -29,7 +29,7 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
+Una vez instalado PHPUnit, cree un directorio llamado `tests` en el directorio raíz del proyecto con un subdirectorio llamado `Unit`:
 
 ```
 app/
@@ -38,9 +38,9 @@ public/
 tests/Unit/
 ```
 
-### Configure Test Namespace
+### Configurar el espacio de nombres de prueba
 
-In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
+Para cargar automáticamente nuestro directorio de pruebas, debemos añadir nuestro *namespace* de prueba al *composer*. Añada lo siguiente al *composer* y modifíquelo para que se ajuste a sus necesidades.
 
 ```json
 {
@@ -52,11 +52,11 @@ In order to autoload our test directory, we must add our test namespace to compo
 }
 ```
 
-Now, create a `phpunit.xml` file as follows:
+Ahora, cree un archivo `phpunit.xml` como el siguiente:
 
-### The `phpunit.xml` file
+### El archivo `phpunit.xml`
 
-Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
+Modifique el siguiente `phpunit.xml` para que se ajuste a sus necesidades y guárdelo en el directorio raíz de su proyecto. Esto hará correr cualquier prueba del directorio `tests/Unit`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -79,15 +79,15 @@ Modify the `phpunit.xml` below to fit your needs and save it in your project roo
 
 ### Phalcon Incubator Test
 
-Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
+Phalcon proporciona una biblioteca de pruebas que proporciona algunas clases abstractas que se pueden utilizar para arrancar las Pruebas Unitarias. Estos archivos existen en el repositorio [Phalcon Incubator Test](https://github.com/phalcon/incubator-test).
 
-You can use the Incubator test library by adding it as a dependency:
+Puede usar la biblioteca *Incubator Test Library* agregandola como una dependencia:
 
 ```bash
 composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 ```
 
-or by manually adding it to `composer.json`:
+o agregando manualmente al archivo `composer.json`:
 
 ```json
 {
@@ -97,14 +97,14 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-## Creating a Unit Test
+## Creando una prueba unitaria
 
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Siempre es aconsejable cargar automáticamente las clases usando espacios de nombres. La siguiente configuración asume que está usando *PSR-4* para cargar automáticamente las clases de su proyecto a través de una configuración de *composer*. Entonces el autocargador se asegurará que se carguen los archivos correctos, todo lo que necesitas hacer es crear los archivos y phpunit ejecutará las pruebas para usted.
 
-This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
+Este ejemplo no contiene un archivo de configuración, ya que la mayoría de los casos debería estar simulando sus dependencias. Si necesitas uno, puedes añadir al `DI` en el `AbstractUnitTest`.
 
-### Abstract Unit Test
-First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
+### Prueba Unitaria Abstracta
+En primer lugar crear una prueba unitaria base llamada `AbstractUnitTest.php` en el directorio de `tests/Unit`:
 
 ```php
 <?php
@@ -145,9 +145,9 @@ abstract class AbstractUnitTest extends UnitTestCase
 }
 ```
 
-### Your First Test
+### Tu Primera Prueba
 
-Create the test below and save it in your `tests/Unit` directory.
+Crea la prueba a continuación y guárdala en tu directorio `tests/Unit`.
 
 ```php
 <?php
@@ -175,7 +175,7 @@ class UnitTest extends AbstractUnitTest
 }
 ```
 
-If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
+Si necesita sobrecargar el método `setUp`, es importante llamar al padre o Phalcon no se inicializará correctamente.
 ```php
     protected function setUp(): void
     {
@@ -186,9 +186,9 @@ If you need to overload the `setUp` method, it is important you call the parent 
 
 ```
 
-### Running Unit Tests
+### Ejecución de Pruebas Unitarias
 
-When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
+Cuando ejecutes `vendor/bin/phpunit` en tu línea de comandos, obtendrás la siguiente salida:
 
 ```bash
 $ phpunit
@@ -217,8 +217,8 @@ FAILURES!
 Tests: 1, Assertions: 2, Failures: 1.
 ```
 
-## Resources
-- [PHPUnit Documentation](https://phpunit.de/documentation.html)
-- [Getting Started with TDD in PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
-- [Writing Great Unit Tests](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
-- [What Is Mocking In PHP Unit Testing](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)
+## Recursos
+- [Documentación de PHPUnit](https://phpunit.de/documentation.html)
+- [Comenzando con TDD en PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
+- [Escribir Grandes Pruebas Unitarias](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
+- [Qué es *Mocking* en la Prueba Unitaria de PHP](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)

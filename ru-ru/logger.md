@@ -79,12 +79,12 @@ $config = [
     "adapters" => [
         "main"  => [
             "adapter" => "stream",
-            "file"    => "/storage/logs/main.log",
+            "name"    => "/storage/logs/main.log",
             "options" => []
         ],
         "admin" => [
             "adapter" => "stream",
-            "file"    => "/storage/logs/admin.log",
+            "name"    => "/storage/logs/admin.log",
             "options" => []
         ],
     ],
@@ -725,7 +725,7 @@ $container = new Di();
 
 $container->set(
     'logger',
-    function () use () {
+    function () {
         $adapter = new Stream('/storage/logs/main.log');
         $logger  = new Logger(
             'messages',
@@ -734,7 +734,11 @@ $container->set(
             ]
         );
 
-        return new $logger;
+        return $logger;
     }
 );
+
+// accessing it later:
+$logger = $container->getShared('logger');
+
 ```
