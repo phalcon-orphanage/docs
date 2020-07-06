@@ -26,6 +26,7 @@ $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
 The above command does:
+
 - `$(which php)` - will insert the absolute path to your PHP binary
 - `-S localhost:8000` - invokes server mode with the provided `host:port`
 - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
@@ -387,7 +388,7 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 
 Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
  
- ```ini
+```ini
  extension=php_phalcon.dll
 ```
 
@@ -534,6 +535,6 @@ Execute the application in a browser:
 [nginx_installation]: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 [notepad_plus]: https://notepad-plus-plus.org/
 [php_fpm]: https://php.net/manual/en/install.fpm.php
-[wamp]: http://www.wampserver.com/en/
+[wamp]: https://www.wampserver.com/en/
 [xampp]: https://www.apachefriends.org/download.html
 [phpinfo]: https://php.net/manual/en/function.phpinfo.php

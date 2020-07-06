@@ -662,7 +662,7 @@ final protected function checkHeaderHost( Collection $collection ): Collection;
 ```
 Ensure Host is the first header.
 
-@see: http://tools.ietf.org/html/rfc7230#section-5.4
+@see: https://tools.ietf.org/html/rfc7230#section-5.4
 
 
 ```php
@@ -670,7 +670,7 @@ final protected function checkHeaderName( mixed $name ): void;
 ```
 Check the name of the header. Throw exception if not valid
 
-@see http://tools.ietf.org/html/rfc7230#section-3.2
+@see https://tools.ietf.org/html/rfc7230#section-3.2
 
 
 ```php
@@ -791,7 +791,7 @@ protected requestTarget;
  *
  * This method MUST return a UriInterface instance.
  *
- * @see http://tools.ietf.org/html/rfc3986#section-4.3
+ * @see https://tools.ietf.org/html/rfc3986#section-4.3
  *
  * @var UriInterface
  */
@@ -855,7 +855,7 @@ This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 changed request target.
 
-@see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
+@see https://tools.ietf.org/html/rfc7230#section-5.3 (for the various
     request-target forms allowed in request messages)
 
 
@@ -887,7 +887,7 @@ This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 new UriInterface instance.
 
-@see http://tools.ietf.org/html/rfc3986#section-4.3
+@see https://tools.ietf.org/html/rfc3986#section-4.3
 
 
 ```php
@@ -989,8 +989,8 @@ PSR-7 Response
  * listed in the IANA HTTP Status Code Registry) for the response's
  * status code.
  *
- * @see http://tools.ietf.org/html/rfc7231#section-6
- * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+ * @see https://tools.ietf.org/html/rfc7231#section-6
+ * @see https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  *
  * @var string
  */
@@ -1042,8 +1042,8 @@ This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 updated status and reason phrase.
 
-@see http://tools.ietf.org/html/rfc7231#section-6
-@see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+@see https://tools.ietf.org/html/rfc7231#section-6
+@see https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 
 
 
@@ -1413,7 +1413,7 @@ Warning: This could attempt to load a large amount of data into memory.
 This method MUST NOT raise an exception in order to conform with PHP's
 string casting operations.
 
-@see http://php.net/manual/en/language.oop5.magic.php#object.tostring
+@see https://php.net/manual/en/language.oop5.magic.php#object.tostring
 
 
 ```php
@@ -1566,7 +1566,7 @@ Warning: This could attempt to load a large amount of data into memory.
 This method MUST NOT raise an exception in order to conform with PHP's
 string casting operations.
 
-@see http://php.net/manual/en/language.oop5.magic.php#object.tostring
+@see https://php.net/manual/en/language.oop5.magic.php#object.tostring
 
 
 ```php
@@ -1743,7 +1743,7 @@ private clientMediaType;
  * Implementations SHOULD return the value stored in the 'error' key of
  * the file in the $_FILES array.
  *
- * @see http://php.net/manual/en/features.file-upload.errors.php
+ * @see https://php.net/manual/en/features.file-upload.errors.php
  *
  * @var int
  */
@@ -1850,8 +1850,8 @@ used to ensure permissions and upload status are verified correctly.
 If you wish to move to a stream, use getStream(), as SAPI operations
 cannot guarantee writing to stream destinations.
 
-@see http://php.net/is_uploaded_file
-@see http://php.net/move_uploaded_file
+@see https://php.net/is_uploaded_file
+@see https://php.net/move_uploaded_file
 
 
 
@@ -1877,8 +1877,8 @@ Create a new uploaded file.
 If a size is not provided it will be determined by checking the size of
 the stream.
 
-@link http://php.net/manual/features.file-upload.post-method.php
-@link http://php.net/manual/features.file-upload.errors.php
+@link https://php.net/manual/features.file-upload.post-method.php
+@link https://php.net/manual/features.file-upload.errors.php
 
 
 
@@ -1912,7 +1912,7 @@ private fragment = ;
  * The value returned MUST be normalized to lowercase, per RFC 3986
  * Section 3.2.2.
  *
- * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
+ * @see https://tools.ietf.org/html/rfc3986#section-3.2.2
  *
  * @return string
  */
@@ -2338,7 +2338,7 @@ Retrieves a query/get value always sanitized with the preset filters
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. ie: https://www.google.com
 
 
 ```php
@@ -3059,7 +3059,7 @@ $_SERVER["PHP_AUTH_DIGEST"]
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. ie: https://www.google.com
 
 
 ```php

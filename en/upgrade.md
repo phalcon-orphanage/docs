@@ -284,11 +284,11 @@ echo Enum::FETCH_ASSOC;
 ```
 
 ### Db\AdapterInterface
-- Added fetchColumn, insertAsDict, updateAsDict
+- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 - Added more column types for the Mysql adapter. The adapters support
-    -`TYPE_BIGINTEGER`
+    - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
     - `TYPE_BOOLEAN`
@@ -320,17 +320,17 @@ echo Enum::FETCH_ASSOC;
 - Added `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
 
 ### Db\Dialect\Postgresql
-- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
 <hr/>
 
 ## DI
 
 ### Di\ServiceInterface
-- Added getParameter, isResolved
+- Added `getParameter`, `isResolved`
 
 ### Di\Service
-- Changed Phalcon\Di\Service constructor to no longer takes the name of the service.
+- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
 
 <hr/>
 
@@ -364,7 +364,7 @@ echo Enum::FETCH_ASSOC;
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
 ### Overview
-The `Phalcon\Filter` object has been rewritten to act as a service locator for different _sanitizers_. This object allows you to sanitize input as before using the `sanitize()` method.
+The `Phalcon\Filter` class has been rewritten to act as a service locator for different _sanitizers_. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
@@ -595,6 +595,7 @@ $logger->error('Something went wrong');
 
 ### Transactions
 Removed in version 4.0:
+
 - Removed `$logger->begin()`
 - Removed `$logger->commit()`
 
@@ -661,7 +662,7 @@ $criteria->limit(10, null);
 ### Mvc\Model
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
+- Changed `Phalcon\Model::assign` parameters order to `$data`, `$whiteList`, `$dataColumnMap`
 - Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
 - Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
@@ -805,7 +806,7 @@ $group->addTrace(
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
 ### Http\RequestInterface
-- Added `numFiles` returning `long` - the number of files present in the request
+- Added `numFiles` returning `int` - the number of files present in the request
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
 <hr/>
@@ -816,7 +817,7 @@ $group->addTrace(
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
 
 - Added `Phalcon\Session\Adapter\AbstractAdapter`
 - Added `Phalcon\Session\Adapter\Noop`
@@ -929,11 +930,11 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Assets
 
-| 3.4.x                     | State      | 4.0.x                    |
-|---------------------------|------------|--------------------------|
-Phalcon\Assets\Resource     | Renamed to | Phalcon\Assets\Asset     |
-Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css |
-Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
+| 3.4.x                       | State      | 4.0.x                    |
+|-----------------------------|------------|--------------------------|
+| Phalcon\Assets\Resource     | Renamed to | Phalcon\Assets\Asset     |
+| Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css |
+| Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 ### Cache
 
@@ -1204,9 +1205,9 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 | 3.4.x                             | State      | 4.0.x         |
 |-----------------------------------|------------|---------------|
-| Phalcon\Queue\Beanstalk           | Removed    |               |                                                                                   
-| Phalcon\Queue\Beanstalk\Exception | Removed    |               |                                                                                   
-| Phalcon\Queue\Beanstalk\Job       | Removed    |               |                                                                                   
+| Phalcon\Queue\Beanstalk           | Removed    |               |
+| Phalcon\Queue\Beanstalk\Exception | Removed    |               |
+| Phalcon\Queue\Beanstalk\Job       | Removed    |               |
 
 ### Session
 

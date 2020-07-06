@@ -1321,17 +1321,17 @@ echo Tag::linkTo(
 );
 // <a href='/signup/register' class='btn-primary'>Register Here!</a>
 
-echo Tag::linkTo('http://phalcon.io/', 'Phalcon', false);
-// <a href='http://phalcon.io/'>Phalcon</a>
+echo Tag::linkTo('https://phalcon.io/', 'Phalcon', false);
+// <a href='https://phalcon.io/'>Phalcon</a>
 
  echo Tag::linkTo(
     [
-        'http://phalcon.io/',
+        'https://phalcon.io/',
         'Phalcon Home',
         false,
     ]
 );
-// <a href='http://phalcon.io/'>Phalcon Home</a>
+// <a href='https://phalcon.io/'>Phalcon Home</a>
 ```
 
 HTML syntax:
@@ -1348,11 +1348,11 @@ echo $this->tag->linkTo(
     ]
 );
 
-echo $this->tag->linkTo('http://phalcon.io/', 'Phalcon', false);
+echo $this->tag->linkTo('https://phalcon.io/', 'Phalcon', false);
 
  echo $this->tag->linkTo(
     [
-        'http://phalcon.io/',
+        'https://phalcon.io/',
         'Phalcon Home',
         false,
     ]
@@ -1371,10 +1371,10 @@ Volt syntax:
     'class': 'btn-primary'
 ) }}
 
-{{ link_to('http://phalcon.io/', 'Phalcon', false) }}
+{{ link_to('https://phalcon.io/', 'Phalcon', false) }}
 
 {{ link_to(
-    'http://phalcon.io/',
+    'https://phalcon.io/',
     'Phalcon Home',
     false
 ) }}{% endraw %}
