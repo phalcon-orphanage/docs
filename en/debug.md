@@ -206,6 +206,7 @@ $debug
 
 ## Getters
 There are a few getters available that offer information about the component. Extending those could also change the behavior of the component visually.
+
 - `getCssSources()` - `string` Returns the stylesheets used to display the contents on screen
 - `getJsSources()` - `string` Returns the javascript files used to display the contents on screen
 - `getVersion()` - `string` Returns the link to the current version documentation
