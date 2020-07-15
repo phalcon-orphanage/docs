@@ -211,7 +211,11 @@ $debug
 
 ## Getters
 
-컴포넌트에 대한 정보를 제공하는 몇개의 getter 를 사용할 수 있습니다. 이들을 확장해서 컴포넌트의 동작을 시각적으로 변경하실 수도 있습니다. - `getCssSources()` - `string` 화면에 컨텐츠를 표시하는데 사용되는 스타일시트를 반환 - `getJsSources()` - `string` 화면에 컨텐츠를 표시하는데 사용되는 자바스크립트를 반환 - `getVersion()` - `string` 현재 버전문서의 링크를 반환
+컴포넌트에 대한 정보를 제공하는 몇개의 getter 를 사용할 수 있습니다. 이들을 확장해서 컴포넌트의 동작을 시각적으로 변경하실 수도 있습니다.
+
+- `getCssSources()` - `string` Returns the stylesheets used to display the contents on screen
+- `getJsSources()` - `string` Returns the javascript files used to display the contents on screen
+- `getVersion()` - `string` Returns the link to the current version documentation
 
 예를 들어 이 컴포넌트를 확장해서 다른 CSS HTML 지시자를 반환하도록 `getCssSources()` 를 재정의(overriding) 하면 화면에 표시되는 모습이 바뀌게 되겠지요. 출력되는 CSS클래스는 [Bootstrap CSS](https://getbootstrap.com/) 기반입니다.
 
@@ -219,10 +223,10 @@ $debug
 
 또한 [Phalcon\Debug](api/phalcon_debug#debug) 클래스는 어플리케이션에서 오류가 발생했을 때, 출력되는 내용을 입맛에 맞게 개선할 수 있도록 몇개의 setter를 제공합니다..
 
-- `setShowBackTrace(bool $showBackTrace)` - 예외의 백트레이스 표시여부 제어
-- `setShowFileFragment(bool $showFileFragment)` - 파일의 내용(예외와 관련된) 의 화면출력여부 제어
-- `setShowFiles(bool $showFiles)` - 백트레이스에서 파일 표시여부 제어
-- `setUri(string $uri)` - 정적 리소스들에 대한 base URI (컴포넌트의 커스터마이즈는 Getters 섹션을 참조)
+- `setShowBackTrace(bool $showBackTrace)` - Show/hide the exception's backtrace
+- `setShowFileFragment(bool $showFileFragment)` - Show/Hide the file fragment in the output (related to the exception)
+- `setShowFiles(bool $showFiles)` - Show/Hide the files in the backtrace
+- `setUri(string $uri)` - The base URI for static resources (see also the Getters section for customization of the component)
 
 ## 변수
 
