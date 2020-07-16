@@ -15,7 +15,7 @@ keywords: 'routing, routes'
 
 ## 概要
 
-The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) コンポーネントを使用することで、コントローラやハンドラに紐づくルートを定義し、リクエストを受け取って処理することが出来ます。 The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
 ```php
 <?php
