@@ -371,9 +371,9 @@ public function wasMatched(): bool
 
 Checks if the router matches any of the defined routes
 
-## Defining Routes
+## ルートの定義
 
-[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) は高度なルーティング機能を提供します。 MVC モードでは、ルートを定義して、必要なコントローラー/アクションに紐づけできます。 ルートは以下のように定義されます:
 
 ```php
 <?php
@@ -1388,7 +1388,7 @@ $container['router'] = function () {
     /clients/{clientId:[0-9]+}/parts
     
 
-only the `/clients` prefix can be used in all controllers, thus speeding up the lookup.
+`/clients` プレフィックスのみがすべてのコントローラで使用でき、これにより検索を高速化します。
 
 ## 依存性の注入
 
