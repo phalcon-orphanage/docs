@@ -1130,7 +1130,7 @@ $route->beforeMatch(
 
 ## Hostname
 
-The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component also allows for hostname constraints. This means that the specific routes or a group of routes can be restricted to only match the route if it originated from a specific hostname.
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) コンポーネントはホスト名による制約も許可します。 つまり、特定のルートやルートのグループは、特定のホスト名に由来する場合にのみ、そのルートと一致するように制限することができます。
 
 ```php
 <?php
@@ -1148,7 +1148,7 @@ $route = $router->add(
 $route->setHostName('dev.phalcon.ld');
 ```
 
-The hostname can also be passed as a regular expressions:
+ホスト名は正規表現として渡すこともできます。
 
 ```php
 <?php
@@ -1166,7 +1166,7 @@ $route = $router->add(
 $route->setHostName('([a-z]+).phalcon.ld');
 ```
 
-When using groups of routes, you can set the hostname constraints that apply for every route in the group.
+ルートのグループを使用する場合は、グループ内のすべてのルートに適用されるホスト名制約を設定できます。
 
 ```php
 <?php
@@ -1209,7 +1209,7 @@ $router->mount($invoices);
 
 ## Testing
 
-This component does not have any dependencies. As such you can create unit tests to test your routes.
+このコンポーネントには依存関係はありません。 そのため、ルートをテストするための単体テストを作成できます。
 
 ```php
 <?php
@@ -1248,7 +1248,7 @@ foreach ($testRoutes as $testRoute) {
 
 ## イベント
 
-Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) also has events, when an [Events Manager](events) is present. The available events are:
+他のPhalconコンポーネントと同様に、 [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) にもイベントがあり、 [Events Manager](events) が存在します。 利用可能なイベントは次のとおりです。:
 
 | Event                      | Fired when                        |
 | -------------------------- | --------------------------------- |
