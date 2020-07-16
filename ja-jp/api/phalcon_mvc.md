@@ -8704,7 +8704,7 @@ Phalcon\Mvc\Router constructor
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router without any HTTP constraint
+ルートをHTTPメソッドの制約のないルーターに追加します
 
 ```php
 use Phalcon\Mvc\Router;
@@ -8789,7 +8789,7 @@ Adds a route to the router that only match if the HTTP method is TRACE
 public function attach( RouteInterface $route, mixed $position = static-constant-access ): RouterInterface;
 ```
 
-Attach Route object to the routes stack.
+ルートオブジェクトをルートスタックに付与します。
 
 ```php
 use Phalcon\Mvc\Router;
@@ -9957,7 +9957,7 @@ Adds a route to the router that only match if the HTTP method is TRACE
 public function attach( RouteInterface $route, mixed $position = static-constant-access ): RouterInterface;
 ```
 
-Attach Route object to the routes stack.
+ルートオブジェクトをルートスタックに付与します。
 
 ```php
 public function clear(): void;
