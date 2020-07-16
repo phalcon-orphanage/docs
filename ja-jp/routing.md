@@ -15,7 +15,7 @@ keywords: 'routing, routes'
 
 ## 概要
 
-[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) コンポーネントを使用することで、コントローラやハンドラに紐づくルートを定義し、リクエストを受け取って処理することが出来ます。 The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) コンポーネントを使用することで、コントローラやハンドラに紐づくルートを定義し、リクエストを受け取って処理することが出来ます。 ルータには「MVCモード」と「マッチオンリーモード」の2つのモードがあります。 前者のモードはMVCアプリケーションに最適です。
 
 ```php
 <?php
@@ -62,7 +62,7 @@ public function add(
 ): RouteInterface
 ```
 
-Adds a route to the router without any HTTP constraint
+ルートをHTTPメソッドの制約のないルーターに追加します
 
 ```php
 use Phalcon\Mvc\Router;
@@ -91,7 +91,7 @@ public function addConnect(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `CONNECT`
+ルートをHTTP メソッドが `CONNECT` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addDelete(
@@ -101,7 +101,7 @@ public function addDelete(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `DELETE`
+ルートをHTTP メソッドが `DELETE` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addGet(
@@ -111,7 +111,7 @@ public function addGet(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `GET`
+ルートをHTTP メソッドが `GET` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addHead(
@@ -121,7 +121,7 @@ public function addHead(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `HEAD`
+ルートをHTTP メソッドが `HEAD` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addOptions(
@@ -131,7 +131,7 @@ public function addOptions(
 ): RouteInterface
 ```
 
-Add a route to the router that only match if the HTTP method is `OPTIONS`
+ルートをHTTP メソッドが `OPTIONS` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addPatch(
@@ -141,7 +141,7 @@ public function addPatch(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `PATCH`
+ルートをHTTP メソッドが `PATCH` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addPost(
@@ -151,7 +151,7 @@ public function addPost(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `POST`
+ルートをHTTP メソッドが `POST` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addPurge(
@@ -161,7 +161,7 @@ public function addPurge(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `PURGE` (Squid and Varnish support)
+ルートをHTTP メソッドが `PURGE` である場合にのみ一致するルーターに追加します。(Squid と Varnish のサポート)
 
 ```php
 public function addPut(
@@ -171,7 +171,7 @@ public function addPut(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `PUT`
+ルートをHTTP メソッドが `PUT` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addTrace(
@@ -181,7 +181,7 @@ public function addTrace(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `TRACE`
+ルートをHTTP メソッドが `TRACE` の場合にのみ一致するルータに追加します。
 
 ```php
 public function attach(
@@ -190,7 +190,7 @@ public function attach(
 ): RouterInterface
 ```
 
-Attach Route object to the routes stack.
+ルートオブジェクトをルートスタックに付与します。
 
 ```php use Phalcon\Mvc\Router; use Phalcon\Mvc\Router\Route;
 
@@ -947,7 +947,7 @@ use Phalcon\Mvc\Router;
 $router = new Router(false);
 ```
 
-## Default Route
+## デフォルトのルート
 
 When your application is accessed without any route, the `/` route is used to determine what paths must be used to show the initial page in your application
 
@@ -965,7 +965,7 @@ $router->add(
 
 ## Not Found (404)
 
-If none of the routes, specified in the router, match, you can define a 404 controller/action by using the `notFound` method.
+ルーターで指定されたルートがいずれにも一致しない場合、 `notFound` メソッドを使用して404 controller/actionを定義できます。
 
 ```php
 <?php
@@ -978,7 +978,7 @@ $router->notFound(
 );
 ```
 
-> **NOTE**: This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(false);`
+> **注意**: これはルーターがデフォルトのルートなしで作成された場合にのみ動作します: `$router = Phalcon\Mvc\Router(false);`
 {: .alert .alert-warning }
 
 ## Defaults
