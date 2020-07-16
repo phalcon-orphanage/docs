@@ -1001,9 +1001,9 @@ $router->setDefaults(
 );
 ```
 
-## Trailing Slashes
+## 末尾のスラッシュ
 
-Sometimes a route could be accessed with extra/trailing slashes. The extra slashes will produce a not-found status in the dispatcher, which is not what we want. You can set up the router to automatically remove the slashes from the end of handled route.
+末尾に余分なスラッシュがついていても、場合によってはルートにアクセスすることができます。 余分なスラッシュは予期せぬ動作として、送出時にnot-found ステータスを生成してしまうことがあります。 ルーターの設定により、処理中のルート末尾からスラッシュを自動的に削除することができます。
 
 ```php
 <?php
@@ -1015,7 +1015,7 @@ $router = new Router();
 $router->removeExtraSlashes(true);
 ```
 
-Or, you can modify specific routes to optionally accept trailing slashes:
+または、任意で末尾のスラッシュを受け入れるように特定のルートを変更することもできます。:
 
 ```php
 <?php
@@ -1029,11 +1029,11 @@ $route = $router->add(
 );
 ```
 
-In the above, the `[/]{0,1}` allows for an optional trailing slash
+上記の場合、 `[/]{0,1}` は追加されている末尾のスラッシュを許可します
 
 ## Callbacks
 
-Sometimes, routes should only be matched if they meet specific conditions. You can add arbitrary conditions to routes using the `beforeMatch` callback. If this function return `false`, the route will be treated as non-matched:
+場合によっては、特定の条件を満たす場合にのみルートを一致させたいことがあります。 `beforeMatch` コールバックを使用することで、任意の条件をルートに追加できます。 この関数が `false`を返す場合、ルートは一致しなかったものとして扱われます。
 
 ```php
 <?php
@@ -1059,9 +1059,9 @@ $route->beforeMatch(
 );
 ```
 
-The above will check if the request has been made with AJAX and return false if it was not
+上記は、AJAXでリクエストが行われたかどうかを確認し、そうでない場合は `false` を返します。
 
-You can create a filter class, to allow you to inject the same functionality in different routes.
+フィルタークラスを作成して、異なるルートで同じ機能を組み込むこともできます。
 
 ```php
 <?php
@@ -1075,7 +1075,7 @@ class AjaxFilter
 }
 ```
 
-To set this up, we just add the class to the `beforeMatch` call.
+これを設定するには、クラスを `beforeMatch` 呼び出しに追加します。
 
 ```php
 <?php
@@ -1096,7 +1096,7 @@ $route->beforeMatch(
 );
 ```
 
-Finally you can use the `beforeMatch` method (or event) to check whether this was an AJAX call or not.
+最後に、 `beforeMatch` メソッド (またはイベント) を使用して、これが AJAX によるリクエストかを確認します。
 
 ```php
 <?php
