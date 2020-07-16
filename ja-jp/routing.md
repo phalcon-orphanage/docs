@@ -924,20 +924,20 @@ echo $url->get(
 );
 ```
 
-## Default Behavior
+## デフォルトの動作
 
-[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) has a default behavior providing simple routing that always expects a URI and matches the following pattern:
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) にはデフォルトの動作があります。これは、次のURIのパターンに一致するシンプルなルーティングを提供します。:
 
     /:controller/:action/:params
     
 
-For example, for a URL like this `https://dev.phalcon.od/download/linux/ubuntu.html`, this router will translate it as follows:
+例えば、このような URL の場合、 `https://dev.phalcon.od/download/linux/ubuntu.html` このルータは以下のように解釈されます:
 
 |      Controller      |    Action     |   Parameter   |
 |:--------------------:|:-------------:|:-------------:|
 | `DownloadController` | `linuxAction` | `ubuntu.html` |
 
-If you do not want the router to follow this behavior, you must create the router passing `false` in the constructor.
+このルーターの動作が期待にそぐわない場合は、次のようにコンストラクタで `false` を渡すルーターを作成しましょう。
 
 ```php
 <?php
@@ -949,7 +949,7 @@ $router = new Router(false);
 
 ## デフォルトのルート
 
-When your application is accessed without any route, the `/` route is used to determine what paths must be used to show the initial page in your application
+アプリケーションがルートなしでアクセスされた場合 `/` ルートは、アプリケーションの最初のページを表示するために使用されるパスを決定するために使用されます
 
 ```php
 <?php
@@ -983,7 +983,7 @@ $router->notFound(
 
 ## Defaults
 
-You can define default values for `module`, `controller` and `action. When a route is missing any of these elements in its path, the router will automatically use the default value set.
+`module`、 `controller` 、および `action のデフォルト値を定義できます。 パスにこれらの要素のいずれかを欠落している場合、ルータは自動的にデフォルト値を使用します。
 
 ```php
 <?php
