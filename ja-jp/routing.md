@@ -1261,7 +1261,7 @@ foreach ($testRoutes as $testRoute) {
 
 ## アノテーション
 
-This component provides a variant that is integrated with the <annotations> service. Using this strategy you can write the routes directly in the controllers instead of adding them in router component directly.
+このコンポーネントは、 <annotations> サービスと統合されたバリアントを提供します。 この手法を採用すると、ルータコンポーネントに直接追加する代わりに、コントローラに直接ルートを書くことができます。
 
 ```php
 <?php
@@ -1277,9 +1277,9 @@ $container['router'] = function () {
 };
 ```
 
-In the above example, we utilize the [Phalcon\Mvc\Router\Annotations](api/phalcon_mvc#mvc-router-annotations) component to set up our routes. We pass `false` to remove the default behavior. After that we are instructing the component to read the annotations from the `InvoicesController` if the URI matches `/admin/invoices`.
+上の例では、 [Phalcon\Mvc\Router\Annotations](api/phalcon_mvc#mvc-router-annotations) コンポーネントを使用してルートを設定しています。 デフォルトの動作を削除するには、 `false` を渡します。 その後、URI が `/admin/invoices` と一致する場合、 `InvoicesController` からアノテーションを読み取るようコンポーネントに指示します。
 
-The `InvoicesController` will need to have the following implementation:
+`InvoicesController` には以下の実装が必要です:
 
 ```php
 <?php
@@ -1338,19 +1338,19 @@ class InvoicesController
 }
 ```
 
-Only methods marked with valid annotations are used as routes. The available annotations are:
+ルートとしては、有効なアノテーションでマークされたメソッドのみが使用されます。 使用可能なアノテーションは次のとおりです:
 
-| Annotation    | Description                                                                    | 使い方                                |
-| ------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
-| `Delete`      | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
-| `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
-| `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Option('/invoices/info')`        |
-| `Post`        | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
-| `Put`         | Restrict the HTTP method to `PUT`                                              | `@Put('/invoices/save')`           |
-| `Route`       | Mark a method as a route. Must be placed in a method docblock                  | `@Route('/invoices/show')`         |
-| `RoutePrefix` | Prefix to be prepended to each route URI. Must be placed in the class docblock | `@RoutePrefix('/invoices')`        |
+| Annotation    | Description                                             | 使い方                                |
+| ------------- | ------------------------------------------------------- | ---------------------------------- |
+| `Delete`      | Restrict the HTTP method to `DELETE`                    | `@Delete('/invoices/delete/{id}')` |
+| `Get`         | Restrict the HTTP method to `GET`                       | `@Get('/invoices/search')`         |
+| `Options`     | Restrict the HTTP method to `OPTIONS`                   | `@Option('/invoices/info')`        |
+| `Post`        | Restrict the HTTP method to `POST`                      | `@Post('/invoices/save')`          |
+| `Put`         | Restrict the HTTP method to `PUT`                       | `@Put('/invoices/save')`           |
+| `Route`       | メソッドをルートとしてマークします。 メソッドのdocblockに配置する必要があります            | `@Route('/invoices/show')`         |
+| `RoutePrefix` | 各ルート URI の前に prefix を追加します。 クラスの docblock に配置する必要があります。 | `@RoutePrefix('/invoices')`        |
 
-For annotations that add routes, the following parameters are supported:
+ルートを追加するアノテーションの場合、次のパラメータがサポートされます。
 
 | Name         | Description                                    | 使い方                                                                 |
 | ------------ | ---------------------------------------------- | ------------------------------------------------------------------- |
@@ -1359,7 +1359,7 @@ For annotations that add routes, the following parameters are supported:
 | `name`       | The name for the route                         | `@Route('/api/products', name='get-products')`                      |
 | `paths`      | Paths array for the route                      | `@Route('/invoices/view/{id}/{slug}', paths={module='backend'})`    |
 
-If you are using modules in your application, it is better use the `addModuleResource()` method:
+アプリケーションでモジュールを使用している場合は、 次のように`addModuleResource()` メソッドを使用することをお勧めします。:
 
 ```php
 <?php
@@ -1379,9 +1379,9 @@ $container['router'] = function () {
 };
 ```
 
-In the above we will read the annotations from `Admin\Controllers\InvoicesController` if the URI starts with `/admin/invoices`.
+上記では、URI が `/admin/invoices` で始まる場合、 `Admin\Controllers\InvoicesController` からアノテーションを読みます。
 
-The router also understand prefixes to ensure that the routes are resolved as fast as possible. For instance for the following routes:
+ルータは、最速でルートが解決されるようにプレフィックスを解釈します。 例えば、以下のルート:
 
     /clients/{clientId:[0-9]+}/
     /clients/{clientId:[0-9]+}/robots
