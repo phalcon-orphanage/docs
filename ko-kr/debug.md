@@ -287,7 +287,7 @@ $debug
     ->listen();
 ```
 
-위의 예시에서는, `$_REQUEST`에서 `some` 값 과 `$_SERVER` 의 `hostmane` 값을 보여주지 않도록 합니다. 당연히 이 두 전역변수 배열 내에 존재하는 값이 출력되지 않도록 얼마든지 추가할 수 있습니다. 운영환경에서 컴포넌트 비활성화 하는것을 깜빡한 경우 특히 유용한 사례가 되겠습니다. 하지만 이런걸 깜빡하는 것은 좋지 않은 습관이므로, 최소한 호스트에서 특정 주요 정보는 잠재적 해커에게 결코 노출되지 않도록 하는것이 필요합니다.
+In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostname` from `$_SERVER`. 당연히 이 두 전역변수 배열 내에 존재하는 값이 출력되지 않도록 얼마든지 추가할 수 있습니다. 운영환경에서 컴포넌트 비활성화 하는것을 깜빡한 경우 특히 유용한 사례가 되겠습니다. 하지만 이런걸 깜빡하는 것은 좋지 않은 습관이므로, 최소한 호스트에서 특정 주요 정보는 잠재적 해커에게 결코 노출되지 않도록 하는것이 필요합니다.
 
 > **주의**: 감추고자 하는 배열 요소의 키 값은 대소문자를 구분함
 {: .alert .alert-info }
@@ -367,13 +367,13 @@ Phalcon\Mvc\Router Object
 )
 ```
 
-## XDebug
+## Xdebug
 
-[XDebug](https://xdebug.org) 는 PHP 어플리케이션 디버깅의 불편한 점들을 보완해 주는 놀라운 도구입니다. Xdebug 도 PHP의 C 익스텐션이며, 별도의 설정이나 부작용 없이 Phalcon과 함께 사용할 수 있습니다.
+[Xdebug](https://xdebug.org) is an amazing tool that complements the debugging of PHP applications. Xdebug 도 PHP의 C 익스텐션이며, 별도의 설정이나 부작용 없이 Phalcon과 함께 사용할 수 있습니다.
 
-Xdebug를 설치하고 나면, 제공하는 API를 통해 예외와 메시지에 대한 더 자세한 정보를 확인할 수 있습니다.
+Once you have Xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-> **주의**: Phalcon과의 더 나은 호환성을 위해 가장 최신 버전의 Xdebug 사용을 강력히 권합니다.
+> **NOTE**: We highly recommend using the latest version of Xdebug for a better compatibility with Phalcon
 {: .alert .alert-warning }
 
 아래의 코드는 실행을 중단하고 백트레이스를 생성할 수 있는 [xdebug_print_function_stack](https://xdebug.org/docs/stack_trace) 기능을 적용한 예입니다:

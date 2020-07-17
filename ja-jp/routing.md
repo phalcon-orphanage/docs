@@ -15,7 +15,7 @@ keywords: 'routing, routes'
 
 ## 概要
 
-The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) コンポーネントを使用することで、コントローラやハンドラに紐づくルートを定義し、リクエストを受け取って処理することが出来ます。 ルータには「MVCモード」と「マッチオンリーモード」の2つのモードがあります。 前者のモードはMVCアプリケーションに最適です。
 
 ```php
 <?php
@@ -62,7 +62,7 @@ public function add(
 ): RouteInterface
 ```
 
-Adds a route to the router without any HTTP constraint
+ルートをHTTPメソッドの制約のないルーターに追加します
 
 ```php
 use Phalcon\Mvc\Router;
@@ -91,7 +91,7 @@ public function addConnect(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `CONNECT`
+ルートをHTTP メソッドが `CONNECT` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addDelete(
@@ -101,7 +101,7 @@ public function addDelete(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `DELETE`
+ルートをHTTP メソッドが `DELETE` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addGet(
@@ -111,7 +111,7 @@ public function addGet(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `GET`
+ルートをHTTP メソッドが `GET` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addHead(
@@ -121,7 +121,7 @@ public function addHead(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `HEAD`
+ルートをHTTP メソッドが `HEAD` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addOptions(
@@ -131,7 +131,7 @@ public function addOptions(
 ): RouteInterface
 ```
 
-Add a route to the router that only match if the HTTP method is `OPTIONS`
+ルートをHTTP メソッドが `OPTIONS` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addPatch(
@@ -141,7 +141,7 @@ public function addPatch(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `PATCH`
+ルートをHTTP メソッドが `PATCH` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addPost(
@@ -151,7 +151,7 @@ public function addPost(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `POST`
+ルートをHTTP メソッドが `POST` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addPurge(
@@ -161,7 +161,7 @@ public function addPurge(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `PURGE` (Squid and Varnish support)
+ルートをHTTP メソッドが `PURGE` である場合にのみ一致するルーターに追加します。(Squid と Varnish のサポート)
 
 ```php
 public function addPut(
@@ -171,7 +171,7 @@ public function addPut(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `PUT`
+ルートをHTTP メソッドが `PUT` の場合にのみ一致するルータに追加します。
 
 ```php
 public function addTrace(
@@ -181,7 +181,7 @@ public function addTrace(
 ): RouteInterface
 ```
 
-Adds a route to the router that only match if the HTTP method is `TRACE`
+ルートをHTTP メソッドが `TRACE` の場合にのみ一致するルータに追加します。
 
 ```php
 public function attach(
@@ -190,7 +190,7 @@ public function attach(
 ): RouterInterface
 ```
 
-Attach Route object to the routes stack.
+ルートオブジェクトをルートスタックに付与します。
 
 ```php use Phalcon\Mvc\Router; use Phalcon\Mvc\Router\Route;
 
@@ -371,9 +371,9 @@ public function wasMatched(): bool
 
 Checks if the router matches any of the defined routes
 
-## Defining Routes
+## ルートの定義
 
-[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) は高度なルーティング機能を提供します。 MVC モードでは、ルートを定義して、必要なコントローラー/アクションに紐づけできます。 ルートは以下のように定義されます:
 
 ```php
 <?php
@@ -924,20 +924,20 @@ echo $url->get(
 );
 ```
 
-## Default Behavior
+## デフォルトの動作
 
-[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) has a default behavior providing simple routing that always expects a URI and matches the following pattern:
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) にはデフォルトの動作があります。これは、次のURIのパターンに一致するシンプルなルーティングを提供します。:
 
     /:controller/:action/:params
     
 
-For example, for a URL like this `https://dev.phalcon.od/download/linux/ubuntu.html`, this router will translate it as follows:
+例えば、このような URL の場合、 `https://dev.phalcon.od/download/linux/ubuntu.html` このルータは以下のように解釈されます:
 
 |      Controller      |    Action     |   Parameter   |
 |:--------------------:|:-------------:|:-------------:|
 | `DownloadController` | `linuxAction` | `ubuntu.html` |
 
-If you do not want the router to follow this behavior, you must create the router passing `false` in the constructor.
+このルーターの動作が期待にそぐわない場合は、次のようにコンストラクタで `false` を渡すルーターを作成しましょう。
 
 ```php
 <?php
@@ -947,9 +947,9 @@ use Phalcon\Mvc\Router;
 $router = new Router(false);
 ```
 
-## Default Route
+## デフォルトのルート
 
-When your application is accessed without any route, the `/` route is used to determine what paths must be used to show the initial page in your application
+アプリケーションがルートなしでアクセスされた場合 `/` ルートは、アプリケーションの最初のページを表示するために使用されるパスを決定するために使用されます
 
 ```php
 <?php
@@ -965,7 +965,7 @@ $router->add(
 
 ## Not Found (404)
 
-If none of the routes, specified in the router, match, you can define a 404 controller/action by using the `notFound` method.
+ルーターで指定されたルートがいずれにも一致しない場合、 `notFound` メソッドを使用して404 controller/actionを定義できます。
 
 ```php
 <?php
@@ -978,12 +978,12 @@ $router->notFound(
 );
 ```
 
-> **NOTE**: This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(false);`
+> **注意**: これはルーターがデフォルトのルートなしで作成された場合にのみ動作します: `$router = Phalcon\Mvc\Router(false);`
 {: .alert .alert-warning }
 
 ## Defaults
 
-You can define default values for `module`, `controller` and `action. When a route is missing any of these elements in its path, the router will automatically use the default value set.
+`module`、 `controller` 、および `action のデフォルト値を定義できます。 パスにこれらの要素のいずれかを欠落している場合、ルータは自動的にデフォルト値を使用します。
 
 ```php
 <?php
@@ -1001,9 +1001,9 @@ $router->setDefaults(
 );
 ```
 
-## Trailing Slashes
+## 末尾のスラッシュ
 
-Sometimes a route could be accessed with extra/trailing slashes. The extra slashes will produce a not-found status in the dispatcher, which is not what we want. You can set up the router to automatically remove the slashes from the end of handled route.
+末尾に余分なスラッシュがついていても、場合によってはルートにアクセスすることができます。 余分なスラッシュは予期せぬ動作として、送出時にnot-found ステータスを生成してしまうことがあります。 ルーターの設定により、処理中のルート末尾からスラッシュを自動的に削除することができます。
 
 ```php
 <?php
@@ -1015,7 +1015,7 @@ $router = new Router();
 $router->removeExtraSlashes(true);
 ```
 
-Or, you can modify specific routes to optionally accept trailing slashes:
+または、任意で末尾のスラッシュを受け入れるように特定のルートを変更することもできます。:
 
 ```php
 <?php
@@ -1029,11 +1029,11 @@ $route = $router->add(
 );
 ```
 
-In the above, the `[/]{0,1}` allows for an optional trailing slash
+上記の場合、 `[/]{0,1}` は追加されている末尾のスラッシュを許可します
 
 ## Callbacks
 
-Sometimes, routes should only be matched if they meet specific conditions. You can add arbitrary conditions to routes using the `beforeMatch` callback. If this function return `false`, the route will be treated as non-matched:
+場合によっては、特定の条件を満たす場合にのみルートを一致させたいことがあります。 `beforeMatch` コールバックを使用することで、任意の条件をルートに追加できます。 この関数が `false`を返す場合、ルートは一致しなかったものとして扱われます。
 
 ```php
 <?php
@@ -1059,9 +1059,9 @@ $route->beforeMatch(
 );
 ```
 
-The above will check if the request has been made with AJAX and return false if it was not
+上記は、AJAXでリクエストが行われたかどうかを確認し、そうでない場合は `false` を返します。
 
-You can create a filter class, to allow you to inject the same functionality in different routes.
+フィルタークラスを作成して、異なるルートで同じ機能を組み込むこともできます。
 
 ```php
 <?php
@@ -1075,7 +1075,7 @@ class AjaxFilter
 }
 ```
 
-To set this up, we just add the class to the `beforeMatch` call.
+これを設定するには、クラスを `beforeMatch` 呼び出しに追加します。
 
 ```php
 <?php
@@ -1096,7 +1096,7 @@ $route->beforeMatch(
 );
 ```
 
-Finally you can use the `beforeMatch` method (or event) to check whether this was an AJAX call or not.
+最後に、 `beforeMatch` メソッド (またはイベント) を使用して、これが AJAX によるリクエストかを確認します。
 
 ```php
 <?php
@@ -1130,7 +1130,7 @@ $route->beforeMatch(
 
 ## Hostname
 
-The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component also allows for hostname constraints. This means that the specific routes or a group of routes can be restricted to only match the route if it originated from a specific hostname.
+[Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) コンポーネントはホスト名による制約も許可します。 つまり、特定のルートやルートのグループは、特定のホスト名に由来する場合にのみ、そのルートと一致するように制限することができます。
 
 ```php
 <?php
@@ -1148,7 +1148,7 @@ $route = $router->add(
 $route->setHostName('dev.phalcon.ld');
 ```
 
-The hostname can also be passed as a regular expressions:
+ホスト名は正規表現として渡すこともできます。
 
 ```php
 <?php
@@ -1166,7 +1166,7 @@ $route = $router->add(
 $route->setHostName('([a-z]+).phalcon.ld');
 ```
 
-When using groups of routes, you can set the hostname constraints that apply for every route in the group.
+ルートのグループを使用する場合は、グループ内のすべてのルートに適用されるホスト名制約を設定できます。
 
 ```php
 <?php
@@ -1209,7 +1209,7 @@ $router->mount($invoices);
 
 ## Testing
 
-This component does not have any dependencies. As such you can create unit tests to test your routes.
+このコンポーネントには依存関係はありません。 そのため、ルートをテストするための単体テストを作成できます。
 
 ```php
 <?php
@@ -1248,7 +1248,7 @@ foreach ($testRoutes as $testRoute) {
 
 ## イベント
 
-Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) also has events, when an [Events Manager](events) is present. The available events are:
+他のPhalconコンポーネントと同様に、 [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) にもイベントがあり、 [Events Manager](events) が存在します。 利用可能なイベントは次のとおりです。:
 
 | Event                      | Fired when                        |
 | -------------------------- | --------------------------------- |
@@ -1261,7 +1261,7 @@ Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-ro
 
 ## アノテーション
 
-This component provides a variant that is integrated with the <annotations> service. Using this strategy you can write the routes directly in the controllers instead of adding them in router component directly.
+このコンポーネントは、 <annotations> サービスと統合されたバリアントを提供します。 この手法を採用すると、ルータコンポーネントに直接追加する代わりに、コントローラに直接ルートを書くことができます。
 
 ```php
 <?php
@@ -1277,9 +1277,9 @@ $container['router'] = function () {
 };
 ```
 
-In the above example, we utilize the [Phalcon\Mvc\Router\Annotations](api/phalcon_mvc#mvc-router-annotations) component to set up our routes. We pass `false` to remove the default behavior. After that we are instructing the component to read the annotations from the `InvoicesController` if the URI matches `/admin/invoices`.
+上の例では、 [Phalcon\Mvc\Router\Annotations](api/phalcon_mvc#mvc-router-annotations) コンポーネントを使用してルートを設定しています。 デフォルトの動作を削除するには、 `false` を渡します。 その後、URI が `/admin/invoices` と一致する場合、 `InvoicesController` からアノテーションを読み取るようコンポーネントに指示します。
 
-The `InvoicesController` will need to have the following implementation:
+`InvoicesController` には以下の実装が必要です:
 
 ```php
 <?php
@@ -1338,19 +1338,19 @@ class InvoicesController
 }
 ```
 
-Only methods marked with valid annotations are used as routes. The available annotations are:
+ルートとしては、有効なアノテーションでマークされたメソッドのみが使用されます。 使用可能なアノテーションは次のとおりです:
 
-| Annotation    | Description                                                                    | 使い方                                |
-| ------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
-| `Delete`      | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
-| `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
-| `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Option('/invoices/info')`        |
-| `Post`        | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
-| `Put`         | Restrict the HTTP method to `PUT`                                              | `@Put('/invoices/save')`           |
-| `Route`       | Mark a method as a route. Must be placed in a method docblock                  | `@Route('/invoices/show')`         |
-| `RoutePrefix` | Prefix to be prepended to each route URI. Must be placed in the class docblock | `@RoutePrefix('/invoices')`        |
+| Annotation    | Description                                             | 使い方                                |
+| ------------- | ------------------------------------------------------- | ---------------------------------- |
+| `Delete`      | Restrict the HTTP method to `DELETE`                    | `@Delete('/invoices/delete/{id}')` |
+| `Get`         | Restrict the HTTP method to `GET`                       | `@Get('/invoices/search')`         |
+| `Options`     | Restrict the HTTP method to `OPTIONS`                   | `@Option('/invoices/info')`        |
+| `Post`        | Restrict the HTTP method to `POST`                      | `@Post('/invoices/save')`          |
+| `Put`         | Restrict the HTTP method to `PUT`                       | `@Put('/invoices/save')`           |
+| `Route`       | メソッドをルートとしてマークします。 メソッドのdocblockに配置する必要があります            | `@Route('/invoices/show')`         |
+| `RoutePrefix` | 各ルート URI の前に prefix を追加します。 クラスの docblock に配置する必要があります。 | `@RoutePrefix('/invoices')`        |
 
-For annotations that add routes, the following parameters are supported:
+ルートを追加するアノテーションの場合、次のパラメータがサポートされます。
 
 | Name         | Description                                    | 使い方                                                                 |
 | ------------ | ---------------------------------------------- | ------------------------------------------------------------------- |
@@ -1359,7 +1359,7 @@ For annotations that add routes, the following parameters are supported:
 | `name`       | The name for the route                         | `@Route('/api/products', name='get-products')`                      |
 | `paths`      | Paths array for the route                      | `@Route('/invoices/view/{id}/{slug}', paths={module='backend'})`    |
 
-If you are using modules in your application, it is better use the `addModuleResource()` method:
+アプリケーションでモジュールを使用している場合は、 次のように`addModuleResource()` メソッドを使用することをお勧めします。:
 
 ```php
 <?php
@@ -1379,16 +1379,16 @@ $container['router'] = function () {
 };
 ```
 
-In the above we will read the annotations from `Admin\Controllers\InvoicesController` if the URI starts with `/admin/invoices`.
+上記では、URI が `/admin/invoices` で始まる場合、 `Admin\Controllers\InvoicesController` からアノテーションを読みます。
 
-The router also understand prefixes to ensure that the routes are resolved as fast as possible. For instance for the following routes:
+ルータは、最速でルートが解決されるようにプレフィックスを解釈します。 例えば、以下のルート:
 
     /clients/{clientId:[0-9]+}/
     /clients/{clientId:[0-9]+}/robots
     /clients/{clientId:[0-9]+}/parts
     
 
-only the `/clients` prefix can be used in all controllers, thus speeding up the lookup.
+`/clients` プレフィックスのみがすべてのコントローラで使用でき、これにより検索を高速化します。
 
 ## 依存性の注入
 
