@@ -278,7 +278,7 @@ $debug
     ->listen();
 ```
 
-In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostmane` from `$_SERVER`. You can always add more elements not to be displayed, that exist in these two superglobals. This is particularly useful in case you forget to disable the component in your production environment. It is bad practice to leave it enabled but if you forget, at least certain key pieces of information about your host will not be visible to potential hackers.
+In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostname` from `$_SERVER`. You can always add more elements not to be displayed, that exist in these two superglobals. This is particularly useful in case you forget to disable the component in your production environment. It is bad practice to leave it enabled but if you forget, at least certain key pieces of information about your host will not be visible to potential hackers.
 
 > **NOTE**: The keys of the array elements to be hidden are case insensitive
 {: .alert .alert-info }
@@ -357,11 +357,11 @@ Phalcon\Mvc\Router Object
 ```
 
 ## XDebug
-[XDebug][xdebug] is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
+[Xdebug][xdebug] is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
 
-Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
+Once you have Xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-> **NOTE**: We highly recommend using the latest version of XDebug for a better compatibility with Phalcon
+> **NOTE**: We highly recommend using the latest version of Xdebug for a better compatibility with Phalcon
 {: .alert .alert-warning }
 
 The following example implements [xdebug_print_function_stack][xdebug_print_function_stack] to stop the execution and generate a backtrace:
