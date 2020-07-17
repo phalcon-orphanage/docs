@@ -36,7 +36,7 @@ and many more. In this article we will try to highlight some scenarios that coul
 
 It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
 
-### XDebug
+### Xdebug
 
 [XDebug](https://xdebug.org/docs) offers a very handy profiler right out of the box. All you have to do is install the extension and enable profiling in your `php.ini`:
 
