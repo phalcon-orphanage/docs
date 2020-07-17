@@ -356,7 +356,7 @@ Phalcon\Mvc\Router Object
 )
 ```
 
-## XDebug
+## Xdebug
 [Xdebug][xdebug] is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
 
 Once you have Xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
