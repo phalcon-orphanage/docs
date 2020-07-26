@@ -6,17 +6,17 @@ title: 'Domain'
 keywords: 'domain, adr, payload, dominio'
 ---
 
-# Domain
+# Dominio *(Domain)*
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-The domain component incorporates components that are used for the implementation of the [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) ([ADR](http://pmjones.io/adr/)) pattern and can also be used when implementing [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design).
+El componente de dominio incorpora componentes que se utilizan para la implementación del patrón [Respondedor de Dominio de Acción](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) ([ADR](http://pmjones.io/adr/)) y también se pueden usar al implementar [Diseño Dirigido por Dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 
-## Payload
+## Carga útil
 
-The [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) requires a data transfer mechanism between the three layers to serve your application. The [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) is a data transfer object that is used to send data between the three layers of the pattern.
+El [Respondedor de Dominio de Acción](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) requiere un mecanismo de transferencia de datos entre las tres capas para servir su aplicación. El [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) es un objeto de transferencia de datos que se utiliza para enviar datos entre las tres capas del patrón.
 
 ```php
 <?php
@@ -26,24 +26,24 @@ use Phalcon\Domain\Payload;
 $payload = new Payload();
 ```
 
-When using this object, you can set its status, the input, the output, any messages or extra information required by each layer of your pattern to be transferred to the next layer that requires it during the application flow. The class itself is a data wrapper that contains the necessary information to be passed between layers.
+Al usar este objeto, puede establecer su estado, la entrada, la salida, cualquier mensaje o información adicional requerida por cada capa de su patrón para ser transferida a la siguiente capa que lo requiere durante el flujo de la aplicación. La clase en sí misma es un envoltorio de datos que contiene la información necesaria para ser pasada entre capas.
 
-The properties stored are:
+Las propiedades almacenadas son:
 
-* `extras`: Extra information
-* `input`: Input
-* `messages`: Messages
-* `status`: Status
-* `output`: Output
+* `extras`: Información extra
+* `input`: Entrada
+* `messages`: Mensajes
+* `status`: Estado
+* `output`: Salida
 
-The component offers getters and setters for the above properties.
+El componente ofrece *getters* y *setters* para las propiedades anteriores.
 
-> **NOTE**: All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
+> **NOTA**: Todos los *setters* regresan un objeto [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload), que te permite encadenar llamadas para una sintaxis más fluida.
 {: .alert .alert-info }
 
-## Factory
+## Fábrica *(Factory)*
 
-[Phalcon\Domain\PayloadFactory](api/phalcon_domain#domain-payload-payloadfactory) is also available, offering an easy way to generate new Payload objects.
+También está disponible [Phalcon\Domain\PayloadFactory](api/phalcon_domain#domain-payload-payloadfactory), ofreciendo una forma fácil de generar nuevos objetos de Payload.
 
 ```php
 <?php
@@ -56,15 +56,15 @@ $payload = $payloadFactory->newInstance();
 
 ## Interfaces
 
-There are three interfaces that you can take advantage of if you wish to extend the object.
+Hay tres interfaces que se pueden aprovechar si se desea ampliar el objeto.
 
-* `ReadableInterface`: contains only read methods
-* `WritableInterface`: contains only write methods
-* `PayloadInterface`: contains both read and write methods
+* `ReadableInterface`: contiene solo métodos de lectura
+* `WritableInterface`: contiene solo métodos de escritura
+* `PayloadInterface`: contiene ambos métodos de escritura y lectura
 
-## Status Values
+## Valores de estado
 
-The [Phalcon\Domain\Payload\Status](api/phalcon_domain#domain-payload-status) class contains several constants to help with the domain status of your Payload objects. You can always extend the class and introduce your own domain statuses, depending on the needs of your application.
+La clase [Phalcon\Domain\Payload\Status](api/phalcon_domain#domain-payload-status) contiene varias constantes para ayudar con el estado de dominio de tus objetos de Payload. Siempre puede extender la clase e introducir sus propios estados de dominio, dependiendo de las necesidades de su aplicación.
 
 * `ACCEPTED` 
 * `AUTHENTICATED` 
@@ -87,7 +87,7 @@ The [Phalcon\Domain\Payload\Status](api/phalcon_domain#domain-payload-status) cl
 * `UPDATED` 
 * `VALID` 
 
-These statuses can be used at the display/view layer of your application to process domain objects retrieved via `Payload::getOutput()`.
+Estos estados pueden ser usados en la capa de visualización/vista de su aplicación para procesar los objetos de dominio recuperados a través de `Payload::getOutput()`.
 
 ## Ejemplo
 
@@ -134,5 +134,5 @@ class ReportsController extends Controller
 
 ## Enlaces
 
-* [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder)
-* [Clarifications to a review of Action Domain Responder](http://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/)
+* [Respondedor de dominio de acción](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder)
+* [Aclaraciones a una revisión de Action Domain Responder](http://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/)
