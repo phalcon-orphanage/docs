@@ -500,7 +500,7 @@ $container->set(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -547,7 +547,7 @@ $container->set(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -622,7 +622,7 @@ $container->set(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -662,7 +662,7 @@ $container->set(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -745,7 +745,7 @@ $container->set(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -879,7 +879,7 @@ $container->setShared(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -926,7 +926,7 @@ $container->setShared(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     }
@@ -1012,7 +1012,7 @@ $container->set(
         );
 
         $dispatcher = new MvcDispatcher();
-        $dispatcher->setManager($eventsManager);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     },
