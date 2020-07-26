@@ -158,7 +158,7 @@ Then we can register it in the Di container, when setting up services during boo
 
 use MyApp\Locale;
 
-$container->set('locale', new Locale());
+$container->set('locale', (new Locale())->getTranslator());
 ```
 
 And now you can access the `Locale` plugin from your controllers and anywhere you need to.
