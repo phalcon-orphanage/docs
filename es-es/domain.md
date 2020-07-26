@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Domain'
-keywords: 'domain, adr, payload'
+keywords: 'domain, adr, payload, dominio'
 ---
 
 # Domain
