@@ -3,18 +3,18 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Coleccion'
-keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
+keywords: 'colecciones, collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
-# Coleccion
+# Colección *(Collection)*
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Resumen
+## Preámbulo
 
-`Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
+`Phalcon\Collection` es un arreglo o *array* orientado a objetos. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -60,9 +60,9 @@ $data = [
 $collection = new Collection($data);
 ```
 
-## Case sensitivity
+## Sensible a mayúsculas
 
-When instantiating the object you can specify a second `bool` parameter, which will control the key searching in the object. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element in a case sensitive manner.
+Al instanciar el objeto se puede especificar un segundo parámetro de tipo `bool`, el cual controlará la búsqueda por claves en el objeto. Por defecto `$insensitive` se establece en `true`, haciendo que las búsquedas en la colección sean insensibles a mayúsculas. Establecer este valor en `false` hará que la búsqueda del elemento sea sensible a mayúsculas y minúsculas.
 
 ```php
 <?php
@@ -83,7 +83,7 @@ $collection = new Collection($data, false);
 echo $collection->has('COLORS'); // false
 ```
 
-## Reusing
+## Reutilizando
 
 También puede reutilizar el componente, volviéndolo a rellenar. `Phalcon\Collection` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
