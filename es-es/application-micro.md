@@ -1640,14 +1640,14 @@ Middleware can be attached to a micro application in 3 different events. Those a
 
 | Evento   | Descripción                                                                   |
 | -------- | ----------------------------------------------------------------------------- |
-| `antes`  | Antes de que el manejador haya sido ejecutado                                 |
+| `before` | Antes de que el manejador haya sido ejecutado                                 |
 | `after`  | Después de que el manejador haya sido ejecutado                               |
 | `finish` | Después de que la respuesta ha sido enviada al componente que hizo la llamada |
 
 > **NOTE**: You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
 {: .alert .alert-warning }
 
-**antes**
+**before**
 
 This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
 
@@ -1872,7 +1872,14 @@ The [events](#events) that are triggered for our application also trigger inside
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
-The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
+The middleware that we will use are:
+
+* Firewall
+* NotFound
+* Redirect
+* CORS
+* Consulta
+* Respuesta
 
 **Firewall Middleware**
 
