@@ -1778,6 +1778,7 @@ The [events](#events) that are triggered for our application also trigger inside
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
 The middleware that we will use are:
+
 * Firewall
 * NotFound
 * Redirect
