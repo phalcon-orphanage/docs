@@ -374,7 +374,7 @@ $application->get(
 > **NOTE**: Check our <routing> document for more information for the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router)
 {: .alert .alert-info }
 
-**El Objeto de la Aplicación**
+**El objeto de la Aplicación**
 
 Routes can be set using the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application object as follows:
 
@@ -394,7 +394,7 @@ $app->get(
 );
 ```
 
-**El Objeto Ruoter**
+**El Objeto *Router***
 
 You can also create a [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) object, setting the routes there and then injecting it in the dependency injection container.
 
