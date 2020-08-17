@@ -2,13 +2,13 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Introduction'
-keywords: 'introduction'
+title: 'Знайомство'
+keywords: 'знайомство'
 ---
 
 # Вітаємо
 
-Welcome to the documentation for the Phalcon framework.
+Ласкаво просимо до документації фреймворку Phalcon.
 
 ## Місія
 
