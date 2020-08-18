@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## Відлагодження
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -548,7 +548,7 @@ echo Enum::VERTICAL;   // prints  12
 
 * * *
 
-## Logger
+## Logging
 
 > Status: **changes required**
 > 
@@ -655,7 +655,7 @@ Removed in version 4.0:
 
 - Removed `$logger->setLogLevel()`
 
-## Models
+## Моделі
 
 > Status: **changes required**
 > 
@@ -1223,7 +1223,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                         | New        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
 
-### Logger
+### Logging
 
 | 3.4.x                               | State      | 4.0.x                                         |
 | ----------------------------------- | ---------- | --------------------------------------------- |
