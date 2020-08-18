@@ -82,7 +82,7 @@ $di->set(
 );
 ```
 
-## Controllers
+## Контролери
 
 The following example shows how to implement a controller that uses namespaces:
 
