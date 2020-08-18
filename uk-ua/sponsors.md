@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Sponsors'
+title: 'Спонсори'
 keywords: 'sponsors, opencollective, supporters'
 ---
 
