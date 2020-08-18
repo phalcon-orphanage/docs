@@ -3,11 +3,11 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 upgrade: '#models'
-title: 'Models'
+title: 'Моделі'
 keywords: 'models, active record'
 ---
 
-# Models
+# Моделі
 
 * * *
 
