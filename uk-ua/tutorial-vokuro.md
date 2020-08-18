@@ -27,7 +27,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 > **NOTE**: Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
-## Installation
+## Встановлення
 
 ### Downloading
 
