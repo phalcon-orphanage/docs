@@ -286,7 +286,7 @@ The above will automatically sanitize any parameter that is POSTed from a form t
 
 These methods accept the same parameters as the `getPost()`, `getPut()` and `getQuery()` but without the `$filter` parameter.
 
-## Controllers
+## Контролери
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Http\Request](api/phalcon_http#http-request) is already registered for you. The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/phalcon_http#http-request) object from a controller you will need to use the `$this->request` public property of the controller:
 
@@ -351,7 +351,7 @@ The [Phalcon\Http\Request](api/phalcon_http#http-request) object offers methods 
 * `getJsonRawBody()`: Gets decoded JSON HTTP raw request body
 * `getRawBody()`: Gets HTTP raw request body
 
-### i18n
+### i18n (локалізації)
 
 * `getBestCharset()`: Gets best charset accepted by the browser/client
 * `getBestLanguage()`: Gets best language accepted by the browser/client
