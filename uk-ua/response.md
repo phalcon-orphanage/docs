@@ -284,7 +284,7 @@ $headers->set('Content-Type', 'application/json');
 $response->setHeaders($headers);
 ```
 
-## Cookies
+## Куки
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) offers a collection to store and manipulate cookies. You can then send those cookies back with the response.
 
