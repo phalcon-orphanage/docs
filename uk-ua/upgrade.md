@@ -40,7 +40,7 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
-### Installation
+### Встановлення
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
