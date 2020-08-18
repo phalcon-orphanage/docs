@@ -148,7 +148,7 @@ $loader->register();
 define('APP_PATH', realpath('..') . '/');
 ```
 
-## Services
+## Служби
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses and registers them in the DI container.
 
