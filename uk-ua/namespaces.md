@@ -107,7 +107,7 @@ class InvoicesController extends Controller
 }
 ```
 
-## Models
+## Моделі
 
 The following example shows a model that is namespaced:
 
