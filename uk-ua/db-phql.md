@@ -285,7 +285,7 @@ class Invoices extends Controller
 
 As the familiar SQL, PHQL allows selecting records using the `SELECT` statement, except that instead of specifying tables, we use the model classes:
 
-**Models**
+**Моделі**
 
 ```sql
 SELECT 
@@ -465,7 +465,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-**PHQL**
+**Мова запитів Phalcon**
 
 ```php
 <?php
