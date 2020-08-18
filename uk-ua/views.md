@@ -13,7 +13,7 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Огляд
 
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views format the content that you need to send back to the user/web browser that initiated the request.
 
