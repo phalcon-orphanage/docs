@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Collection'
+title: 'Колекція'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
-# Collection
+# Колекція
 
 * * *
 
