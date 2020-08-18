@@ -1,11 +1,11 @@
 [
     {
-        "text": "General",
-        "url": "/introduction",
+        "text": "Загальне",
+        "url": "/знайомство",
         "menu": [
             {
                 "text": "Знайомство",
-                "url": "/introduction"
+                "url": "/знайомство"
             },
             {
                 "text": "Примітки до збірок",
@@ -233,7 +233,7 @@
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Зв&#039;язки",
                 "url": "/db-models-relationships"
             },
             {
@@ -241,7 +241,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Валідатори",
                 "url": "/db-models-validation"
             },
             {
@@ -255,7 +255,7 @@
         ]
     },
     {
-        "text": "Front End",
+        "text": "Фронтенд",
         "url": "",
         "menu": [
             {
@@ -263,23 +263,23 @@
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Flash-месенджер",
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Форми",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Зображення",
                 "url": "/image"
             },
             {
-                "text": "Tag",
+                "text": "Тег",
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Вигляд",
                 "url": "/views"
             },
             {
@@ -289,47 +289,47 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Бізнес логіка",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Списки управління доступом (ACL)",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Примітки",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Контролери",
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "Диспетчер",
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Менеджер подій",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Фільтри",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Маршрутизація",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Сесії",
                 "url": "/session"
             },
             {
-                "text": "Url",
+                "text": "Гіперпосилання",
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Валідація",
                 "url": "/validation"
             }
         ]
@@ -339,21 +339,21 @@
         "url": "",
         "menu": [
             {
-                "text": "Cookies",
+                "text": "Куки",
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Запит",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Відповідь",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "Безпека",
         "url": "",
         "menu": [
             {
@@ -375,11 +375,11 @@
                 "url": "/logger"
             },
             {
-                "text": "PSR-0, PSR-4 Loader",
+                "text": "PSR-0, PSR-4 навантажувач",
                 "url": "/loader"
             },
             {
-                "text": "PSR-7 HTTP Request",
+                "text": "HTTP запит PSR-7",
                 "url": "/http-request"
             },
             {
@@ -417,29 +417,29 @@
         ]
     },
     {
-        "text": "i18n",
+        "text": "i18n (локалізації)",
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Інтернаціоналізація",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Переклад",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "Службові програми",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Колекція",
                 "url": "/collection"
             },
             {
-                "text": "Domain",
+                "text": "Домен",
                 "url": "/domain"
             },
             {
