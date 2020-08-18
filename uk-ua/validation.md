@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Validation'
+title: 'Валідація'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -254,7 +254,7 @@ if (count($messages)) {
 }
 ```
 
-## Validators
+## Валідатори
 
 Phalcon offers a set of built-in validators for this component:
 
@@ -1640,7 +1640,7 @@ $validator->add(
 );
 ```
 
-### Url
+### Гіперпосилання
 
 Checks if a value has a url format
 
