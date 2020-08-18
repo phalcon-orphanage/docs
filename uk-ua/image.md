@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Image'
+title: 'Зображення'
 keywords: 'image, gd, imagick'
 ---
 
-# Image
+# Зображення
 
 * * *
 
