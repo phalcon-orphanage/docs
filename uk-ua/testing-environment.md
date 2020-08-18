@@ -352,7 +352,7 @@ codecept run tests/unit/somefolder/somecestfile:sometest
 
 For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-lang.com) site.
 
-# Services
+# Служби
 
 The available services are: - Memcached - Mongodb - Mysql - Postgresql - Redis
 
