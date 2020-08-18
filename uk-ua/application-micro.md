@@ -2234,7 +2234,7 @@ class ResponseMiddleware implements MiddlewareInterface
 }
 ```
 
-### Models
+### Моделі
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
