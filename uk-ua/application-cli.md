@@ -120,7 +120,7 @@ $container  = new CliDI();
 
 We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli](api/phalcon_di#di-factorydefault-cli) container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di](api/phalcon_di#di) and register the services you need, one after another.
 
-**Dispatcher**
+**Диспетчер**
 
 ```php
 $dispatcher = new Dispatcher();
