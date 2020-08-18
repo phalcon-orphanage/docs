@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Tag'
+title: 'Тег'
 keywords: 'tag, helpers, view helpers, html generators'
 ---
 
@@ -1487,7 +1487,7 @@ Volt syntax:
 ) }}{% endraw %}
 ```
 
-## Forms
+## Форми
 
 Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/phalcon_tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
 
