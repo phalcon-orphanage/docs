@@ -6,7 +6,7 @@ title: 'Web Server Setup'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 
-# Webserver Setup
+# Налаштування веб-сервера
 
 * * *
 
