@@ -2,17 +2,17 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Security'
+title: 'Безпека'
 keywords: 'security, hashing, passwords'
 ---
 
-# Security
+# Безпека
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Огляд
 
 > **NOTE**: Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }

@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Routing'
+title: 'Маршрутизація'
 upgrade: '#router'
 keywords: 'routing, routes'
 ---
@@ -13,7 +13,7 @@ keywords: 'routing, routes'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Огляд
 
 The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -1259,7 +1259,7 @@ Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-ro
 | `router:matchedRoute`      | When a route is matched           |
 | `router:notMatchedRoute`   | When a route is not matched       |
 
-## Annotations
+## Примітки
 
 This component provides a variant that is integrated with the <annotations> service. Using this strategy you can write the routes directly in the controllers instead of adding them in router component directly.
 
@@ -1340,7 +1340,7 @@ class InvoicesController
 
 Only methods marked with valid annotations are used as routes. The available annotations are:
 
-| Annotation    | Description                                                                    | Usage                              |
+| Annotation    | Description                                                                    | Використання                       |
 | ------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
 | `Delete`      | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
 | `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
@@ -1352,7 +1352,7 @@ Only methods marked with valid annotations are used as routes. The available ann
 
 For annotations that add routes, the following parameters are supported:
 
-| Name         | Description                                    | Usage                                                               |
+| Name         | Description                                    | Використання                                                        |
 | ------------ | ---------------------------------------------- | ------------------------------------------------------------------- |
 | `converters` | A hash of converters for the parameters        | `@Route('/posts/{id}/{slug}', converter={id='MyConverter::getId'})` |
 | `methods`    | One or more HTTP methods allowed for the route | `@Route('/api/products', methods={'GET', 'POST'})`                  |

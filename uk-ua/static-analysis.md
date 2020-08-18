@@ -10,7 +10,7 @@ keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-## Overview
+## Огляд
 
 Using a static analysis tool in your project can dramatically increase your code quality and highlight potential bugs before they are exposed.
 

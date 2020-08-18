@@ -3,17 +3,17 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 upgrade: '#models'
-title: 'Models'
+title: 'Моделі'
 keywords: 'models, active record'
 ---
 
-# Models
+# Моделі
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Огляд
 
 The [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) is the `M` in MVC. It is a class that connects business objects and database tables, to create a persistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
 

@@ -2,17 +2,17 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Debug'
+title: 'Відлагодження'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# Відлагодження
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Огляд
 
 ![](/assets/images/content/xdebug-1.jpg)
 

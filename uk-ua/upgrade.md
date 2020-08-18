@@ -40,7 +40,7 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
-### Installation
+### Встановлення
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
@@ -90,7 +90,7 @@ php -m | grep phalcon
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
-### Overview
+### Огляд
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## Відлагодження
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -364,7 +364,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Dispatcher
+## Диспетчер
 
 - Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
 - Added `getHandlerSuffix()`, `setHandlerSuffix()`
@@ -396,7 +396,7 @@ echo Enum::FETCH_ASSOC;
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-### Overview
+### Огляд
 
 The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
@@ -483,7 +483,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Forms
+## Форми
 
 ### Forms\Form
 
@@ -516,7 +516,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Image
+## Зображення
 
 - Added `Phalcon\Image\Enum`
 - Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
@@ -548,7 +548,7 @@ echo Enum::VERTICAL;   // prints  12
 
 * * *
 
-## Logger
+## Logging
 
 > Status: **changes required**
 > 
@@ -655,7 +655,7 @@ Removed in version 4.0:
 
 - Removed `$logger->setLogLevel()`
 
-## Models
+## Моделі
 
 > Status: **changes required**
 > 
@@ -872,7 +872,7 @@ $group->addTrace(
 
 * * *
 
-## Security
+## Безпека
 
 - Removed `hasLibreSsl`
 - Removed `getSslVersionNumber`
@@ -881,7 +881,7 @@ $group->addTrace(
 
 * * *
 
-## Request
+## Запит
 
 ### Http\Request
 
@@ -933,7 +933,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 * * *
 
-## Tag
+## Тег
 
 - Added `renderTitle()` that renders the title enclosed in `<title>` tags.
 - Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
@@ -952,7 +952,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Validation
+## Валідація
 
 ### Validation\Message
 
@@ -982,7 +982,7 @@ View caching along with the `viewCache` service have been removed from the frame
 
 * * *
 
-## Url
+## Гіперпосилання
 
 > Status: **changes required**
 > 
@@ -1002,7 +1002,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Acl\Resource | Renamed to | Phalcon\Acl\Component                |
 |                        | New        | Phalcon\Acl\Enum                     |
 
-### Annotations
+### Примітки
 
 | 3.4.x                                 | State      | 4.0.x                                          |
 | ------------------------------------- | ---------- | ---------------------------------------------- |
@@ -1054,7 +1054,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
 | Phalcon\Cache\Multiple              | Removed    |                                                     |
 
-### Collection
+### Колекція
 
 | 3.4.x | State | 4.0.x                          |
 | ----- | ----- | ------------------------------ |
@@ -1084,7 +1084,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Db\Adapter\Pdo\Factory | Renamed to | Phalcon\Db\Adapter\PdoFactory       |
 |                                    | New        | Phalcon\Db\Enum                      |
 
-### Dispatcher
+### Диспетчер
 
 | 3.4.x               | State      | 4.0.x                                   |
 | ------------------- | ---------- | --------------------------------------- |
@@ -1145,7 +1145,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------- | ---------- | ----------------------------- |
 | Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### Форми
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1214,7 +1214,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | New   | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Image
+### Зображення
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1223,7 +1223,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                         | New        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
 
-### Logger
+### Logging
 
 | 3.4.x                               | State      | 4.0.x                                         |
 | ----------------------------------- | ---------- | --------------------------------------------- |
@@ -1329,7 +1329,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Storage\Serializer\None               |
 |       | New   | Phalcon\Storage\Serializer\Php                |
 
-### Translate
+### Переклад
 
 | 3.4.x                       | State      | 4.0.x                                        |
 | --------------------------- | ---------- | -------------------------------------------- |
@@ -1338,14 +1338,14 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                             | New        | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Renamed to | Phalcon\Translate\TranslateFactory         |
 
-### Url
+### Гіперпосилання
 
 | 3.4.x | State | 4.0.x                   |
 | ----- | ----- | ----------------------- |
 |       | New   | Phalcon\Url            |
 |       | New   | Phalcon\Url\Exception |
 
-### Validation
+### Валідація
 
 | 3.4.x                                        | State      | 4.0.x                                                   |
 | -------------------------------------------- | ---------- | ------------------------------------------------------- |

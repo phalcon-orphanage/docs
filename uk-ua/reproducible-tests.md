@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Reproducible Tests'
+title: 'Відтворювані тести'
 keywords: 'tests, testing, reproducible tests'
 ---
 
-# Reproducible Tests
+# Відтворювані тести
 
 * * *
 
@@ -81,7 +81,7 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-### Database
+### База данних
 
 > **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}

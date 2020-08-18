@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Validation'
+title: 'Валідація'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Огляд
 
 [Phalcon\Validation](api/phalcon_validation#validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -254,7 +254,7 @@ if (count($messages)) {
 }
 ```
 
-## Validators
+## Валідатори
 
 Phalcon offers a set of built-in validators for this component:
 
@@ -1640,7 +1640,7 @@ $validator->add(
 );
 ```
 
-### Url
+### Гіперпосилання
 
 Checks if a value has a url format
 
