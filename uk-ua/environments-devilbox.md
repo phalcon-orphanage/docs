@@ -6,7 +6,7 @@ title: 'Environments - Devilbox'
 keywords: 'environment, devilbox, docker'
 ---
 
-# Environments
+# Середовища розробки
 
 * * *
 
