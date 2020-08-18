@@ -3,11 +3,11 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 upgrade: '#logger'
-title: 'Logger'
+title: 'Logging'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 ---
 
-# Logger
+# Logging
 
 * * *
 
