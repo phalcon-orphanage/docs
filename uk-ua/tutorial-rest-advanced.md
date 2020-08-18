@@ -38,7 +38,7 @@ Setting up the
 
 
 ## Controllers
-## Models
+## Моделі
 ## Routes
 
 | Method | Description                                                                       |
