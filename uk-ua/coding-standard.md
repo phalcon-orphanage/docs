@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Coding Standard'
+title: 'Стандарти кодування'
 keywords: 'coding standard, zephir'
 ---
 
