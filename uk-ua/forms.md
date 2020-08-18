@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Forms'
+title: 'Форми'
 keywords: 'forms, render html, validation, elements'
 ---
 
-# Forms
+# Форми
 
 * * *
 
@@ -756,7 +756,7 @@ $form->add($email);
 > **NOTE**: For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
-## Validation
+## Валідація
 
 Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 
