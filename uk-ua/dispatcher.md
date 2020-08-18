@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Dispatcher'
+title: 'Диспетчер'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---
 
