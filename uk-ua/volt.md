@@ -2080,7 +2080,7 @@ Any valid expression can be used as cache key:
 
 The caching is done by the [Phalcon\Cache](cache) component via the view component.
 
-## Services
+## Служби
 
 If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
 
