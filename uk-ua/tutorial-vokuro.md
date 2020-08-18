@@ -188,7 +188,7 @@ Once the configuration file is in place, visiting the IP address will present a 
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-### `Database`
+### `База данних`
 
 You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
 
@@ -510,7 +510,7 @@ The available providers are:
 
 `run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
 
-## Database
+## База данних
 
 As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
 
@@ -527,7 +527,7 @@ As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, Postgre
 | `success_logins`      | Successful login attempts               |
 | `users`               | Users                                   |
 
-## Models
+## Моделі
 
 Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
 
