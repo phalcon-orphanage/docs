@@ -142,8 +142,8 @@ vokuro/
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Controllers                                           |
-| `src/Forms`       | Forms                                                 |
+| `src/Controllers` | Контролери                                            |
+| `src/Forms`       | Форми                                                 |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
 | `src/Providers`   | Providers: setting services in the DI container       |
@@ -502,7 +502,7 @@ The available providers are:
 | `MailProvider`           | Mail support                                      |
 | `ModelsMetadataProvider` | Metadata for models                               |
 | `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Security                                          |
+| `SecurityProvider`       | Безпека                                           |
 | `SessionBagProvider`     | Session data                                      |
 | `SessionProvider`        | Session data                                      |
 | `UrlProvider`            | URL handling                                      |
@@ -598,7 +598,7 @@ echo $successLogin->user->name;
 > **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
 {: .alert .alert-info }
 
-## Controllers
+## Контролери
 
 Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
 
@@ -670,7 +670,7 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | View                           | Description                                 |
+| Controller    | Action           | Вигляд                         | Description                                 |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Index`       | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -1049,7 +1049,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-### View
+### Вигляд
 
 Now that we have everything set up in our form, we pass the form to the view:
 
@@ -1275,7 +1275,7 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 ### Model
 
-**Relationships**
+**Зв'язки**
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
 
@@ -1519,7 +1519,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
-**Validation**
+**Валідація**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 
