@@ -5,7 +5,7 @@ layout: default language: 'en' version: '4.0' title: 'Unit Testing' keywords: 'u
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-## Overview
+## Огляд
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
