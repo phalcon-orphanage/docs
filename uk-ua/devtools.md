@@ -12,7 +12,7 @@ keywords: 'devtools, developer tools, models, controllers'
 
 ![](/assets/images/document-status-under-review-red.svg)
 
-## Overview
+## Огляд
 
 These tools help you to generate skeleton code, maintain your database structure and helps to speedup development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
