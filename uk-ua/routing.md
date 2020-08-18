@@ -2,7 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Routing'
+title: 'Маршрутизація'
 upgrade: '#router'
 keywords: 'routing, routes'
 ---
@@ -1259,7 +1259,7 @@ Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-ro
 | `router:matchedRoute`      | When a route is matched           |
 | `router:notMatchedRoute`   | When a route is not matched       |
 
-## Annotations
+## Примітки
 
 This component provides a variant that is integrated with the <annotations> service. Using this strategy you can write the routes directly in the controllers instead of adding them in router component directly.
 
