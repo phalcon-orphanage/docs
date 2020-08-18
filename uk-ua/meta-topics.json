@@ -1,41 +1,41 @@
 [
     {
-        "text": "General",
+        "text": "Загальне",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Знайомство",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Примітки до збірок",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Оновлення",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Спонсори",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Участь у розвитку фреймворка",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Огляд",
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "Ваш вклад (GitHub Pull Requests)",
                 "url": "/new-pull-request"
             },
             {
-                "text": "NFR",
+                "text": "ЗНФ",
                 "url": "/new-feature-request"
             },
             {
