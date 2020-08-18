@@ -741,7 +741,7 @@ class BaseController extends Controller
 
 Execute the code before the router so we can determine if the user is logged in or not. If not, forward them to the login page.
 
-## Models
+## Моделі
 
 Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
