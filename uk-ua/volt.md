@@ -349,7 +349,7 @@ $volt->setOptions(
 );
 ```
 
-## Usage
+## Використання
 
 Volt uses specific delimiters for its syntax. `
 {%- raw -%}
