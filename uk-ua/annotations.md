@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Annotations'
+title: 'Примітки'
 keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
-# Annotations
+# Примітки
 
 * * *
 
