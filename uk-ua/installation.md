@@ -2,77 +2,77 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Installation'
-keywords: 'installation, installing Phalcon'
+title: 'Встановлення'
+keywords: 'встановлення, встановлення Phalcon'
 ---
 
-# Installation
+# Встановлення
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Requirements
+## Вимоги
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 підтримує тільки PHP 7.2 або вище. PHP 7.1 випущено понад 2 роки тому і [активна підтримка](https://secure.php.net/supported-versions.php) цієї версії уже припинена, тому ми вирішили працювати лише з версіями PHP, що активно підтримуються.
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available on the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon потребує PSR-розширення. Його можна завантажити і скомпілювати з [цього](https://github.com/jbboehr/php-psr) GitHub репозиторію. Інструкції з встановлення викладені у файлі `README` цього репозиторію. Після компіляції цього розширення у вашій системі його слід додати до `php.ini`. Ви маєте додати цей рядок:
 
 ```ini
 extension=psr.so
 ```
 
-before
+перед
 
 ```ini
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+Деякі дистрибутиви додають числовий префікс до `ini` файлів для управління черговістю завантаження розширень. Якщо це має місце у вашій системі, вкажіть вище число для Phalcon (наприклад, `50-phalcon.ini`).
 
-Using Pecl this extension will be automatically installed.
+Використання Pecl передбачає автоматичне встановлення цього розширення.
 
 ### PDO
 
-Since Phalcon is loosely coupled, it exposes functionality without the need for additional extensions. However certain components rely on additional extensions to work. When in need for database connectivity and access, you will need to install the `php_pdo` extension. If your RDBMS is MySQL/MariaDB or Aurora, you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Оскільки Phalcon слабко зв'язаний, використання його функціоналу не потребує додаткових розширень. Однак деякі компоненти потребують додаткових розширень для своєї роботи. Якщо є необхідність у використанні доступу до баз даних у вашому проєкті, то необхідно встановити `php_pdo` розширення. Якщо ваша реляційна база даних - MySQL/MariaDB або Aurora, вам знадобиться також розширення `php_mysqlnd`. Подібним чином, для використання PostgreSql з Phalcon вам знадобиться розширення `php_pgsql`.
 
-### Hardware
+### Апаратне забезпечення
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalcon спроектований таким чином, щоб для забезпечення максимальної продуктивності споживати мінімально можливу кількість ресурсів. Хоча ми тестували Phalcon в низькоресурсних середовищах (таких як 0.25GB RAM, 0.5 CPU), вибір обладнання залежатиме від потреб вашого проєкту.
 
-We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
+Ми розміщуємо наш веб-сайт і блог впродовж останніх кількох років на віртуальній машині Amazon з 512 Мб оперативної пам'яті і 1 віртуальним процесором.
 
-### Software
+### Програмне забезпечення
 
-> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
+> **ПРИМІТКА**: Завжди намагайтесь тестувати і використовувати у роботі лише останні версії Phalcon та PHP, оскільки вони передбачають виправлення відомих помилок, покращення безпеки та продуктивності.
 {: .alert .alert-danger }
 
-Along with PHP 7.2 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+Окрім PHP 7.2 або новішої, в залежності від потреб вашого застосунку та компонентів, які вам потрібні, може виникнути потреба в установленні таких розширень:
 
 * [curl](https://secure.php.net/manual/en/book.curl.php)
 * [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
 * [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2](https://secure.php.net/manual/en/book.image.php) (для використання класу [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd))
+* [imagick](https://secure.php.net/manual/en/book.imagick.php) (для використання класу[Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick))
 * [json](https://secure.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
-* [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-* [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
-* [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension
-* [Memcached](https://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
+* [Розширення PDO](https://php.net/manual/en/book.pdo.php) або інше розширення, що відповідає вашій RDBMS (наприклад [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) і т. д.)
+* [Розширення OpenSSL](https://php.net/manual/en/book.openssl.php)
+* [Розширення Mbstring](https://php.net/manual/en/book.mbstring.php)
+* [Memcached](https://php.net/manual/en/book.memcached.php) або інші відповідні адаптери в залежності від вашої політики використання кешу
 
-> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
+> **ПРИМІТКА**: Установка цих пакунків може відрізнятись, залежно від операційної системи вашого сервера чи менеджера пакунків, яким ви користуєтесь. Будь ласка, користуйтесь відповідною документацією про те, як встановити ці розширення.
 {: .alert .alert-info }
 
-For the `libpcre3-dev` package you can use the following commands:
+Для пакету `libpcre3-dev` ви можете використовувати наступні команди:
 
 ### Pecl
 
-The Pecl installation method is available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS it will compile Phalcon locally so it could be faster to use a different installation method on these platforms. To install using Pecl make sure you have [pecl/pear](https://pear.php.net/manual/en/installation.getting.php) installed.
+Метод установки Pecl доступний для Windows, Linux та MacOS. У Windows будуть використані попередньо компільовані файли dll. У Linux та MacOS Phalcon буде компілюватися локально, тому ефективніше буде використовувати методи встановлення на цих платформах. Для встановлення за допомогою Pecl переконайтеся, що у вас встановлено [pecl/pear](https://pear.php.net/manual/en/installation.getting.php).
 
     pecl channel-update pecl.php.net
     pecl install phalcon
@@ -84,7 +84,7 @@ The Pecl installation method is available for Windows, Linux and MacOS. Under wi
 sudo apt-get install libpcre3-dev
 ```
 
-and then try and install Phalcon again
+а потім спробуйте встановити Phalcon знову
 
 #### CentOS
 
@@ -92,13 +92,13 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using Brew
+#### Mac/Osx використовує Brew
 
 ```bash
 brew install pcre
 ```
 
-Without `brew`, you need to go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
+Без `brew`, вам необхідно перейти до сайту [PCRE](https://www.pcre.org/) та завантажити останню версію pcre:
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz
@@ -110,26 +110,26 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-For Maverick
+Для Maverick
 
 ```bash
 brew install pcre
 ```
 
-if it gives you error, you can use
+якщо це видає помилку, ви можете використовувати
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/
 sudo pecl install apc 
 ```
 
-## Installation Platforms
+## Установка платформи
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Оскільки Phalcon компілюється як PHP-розширення, його встановлення дещо відрізняється від будь-яких інших традиційний PHP-фреймворків. Phalcon повинен бути встановлений та завантажений як модуль на вашому веб-сервері.
 
 ### Linux
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+Щоб встановити Phalcon на Linux, Вам необхідно додати наш репозиторій у свій дистрибутив і тоді встановити його.
 
 #### DEB Based Distributions (Debian, Ubuntu, Etc.)
 
