@@ -694,7 +694,7 @@ try {
 }
 ```
 
-## Controllers
+## Контролери
 
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
@@ -914,17 +914,17 @@ The events available in Phalcon are:
 | [Db](db-layer)              | `db:releaseSavepoint`                | Db, Savepoint Name                                      |
 | [Db](db-layer)              | `db:rollbackTransaction`             | Db                                                      |
 | [Db](db-layer)              | `db:rollbackSavepoint`               | Db, Savepoint Name                                      |
-| [Dispatcher](dispatcher)    | `dispatch:afterBinding`              | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterDispatch`             | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterDispatchLoop`         | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterExecuteRoute`         | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterInitialize`           | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeDispatch`            | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeDispatchLoop`        | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeException`           | Dispatcher, Exception                                   |
-| [Dispatcher](dispatcher)    | `dispatch:beforeExecuteRoute`        | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
-| [Dispatcher](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
+| [Диспетчер](dispatcher)     | `dispatch:afterBinding`              | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:afterDispatch`             | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:afterDispatchLoop`         | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:afterExecuteRoute`         | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:afterInitialize`           | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:beforeDispatch`            | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:beforeDispatchLoop`        | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:beforeException`           | Dispatcher, Exception                                   |
+| [Диспетчер](dispatcher)     | `dispatch:beforeExecuteRoute`        | Диспетчер                                               |
+| [Диспетчер](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
+| [Диспетчер](dispatcher)     | `dispatch:beforeNotFoundAction`      | Диспетчер                                               |
 | [Loader](loader)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Loader](loader)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Loader](loader)            | `loader:beforeCheckPath`             | Loader                                                  |
@@ -957,23 +957,23 @@ The events available in Phalcon are:
 | [Model](db-models)          | `model:prepareSave`                  | Model                                                   |
 | [Model](db-models)          | `model:validation`                   | Model                                                   |
 | [Models Manager](db-models) | `modelsManager:afterInitialize`      | Manager, Model                                          |
-| [Request](request)          | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
-| [Request](request)          | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
-| [Response](response)        | `response:afterSendHeaders`          | Response                                                |
-| [Response](response)        | `response:beforeSendHeaders`         | Response                                                |
+| [Запит](request)            | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
+| [Запит](request)            | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
+| [Відповідь](response)       | `response:afterSendHeaders`          | Відповідь                                               |
+| [Відповідь](response)       | `response:beforeSendHeaders`         | Відповідь                                               |
 | [Router](routing)           | `router:afterCheckRoutes`            | Router                                                  |
 | [Router](routing)           | `router:beforeCheckRoutes`           | Router                                                  |
 | [Router](routing)           | `router:beforeCheckRoute`            | Router, Route                                           |
 | [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
 | [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
 | [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
-| [View](view)                | `view:afterCompile`                  | Volt                                                    |
-| [View](view)                | `view:afterRender`                   | View                                                    |
-| [View](view)                | `view:afterRenderView`               | View                                                    |
-| [View](view)                | `view:beforeCompile`                 | Volt                                                    |
-| [View](view)                | `view:beforeRender`                  | View                                                    |
-| [View](view)                | `view:beforeRenderView`              | View, View Engine Path                                  |
-| [View](view)                | `view:notFoundView`                  | View, View Engine Path                                  |
+| [Вигляд](view)              | `view:afterCompile`                  | Volt                                                    |
+| [Вигляд](view)              | `view:afterRender`                   | Вигляд                                                  |
+| [Вигляд](view)              | `view:afterRenderView`               | Вигляд                                                  |
+| [Вигляд](view)              | `view:beforeCompile`                 | Volt                                                    |
+| [Вигляд](view)              | `view:beforeRender`                  | Вигляд                                                  |
+| [Вигляд](view)              | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [Вигляд](view)              | `view:notFoundView`                  | View, View Engine Path                                  |
 | [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |
