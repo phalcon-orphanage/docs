@@ -526,7 +526,7 @@ $app->get(
 );
 ```
 
-**Controllers**
+**Контролери**
 
 With the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) you can create micro or *medium* applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application. In medium applications you can organize handlers in controllers.
 
@@ -1878,8 +1878,8 @@ The middleware that we will use are:
 * NotFound
 * Redirect
 * CORS
-* Request
-* Response
+* Запит
+* Відповідь
 
 **Firewall Middleware**
 
