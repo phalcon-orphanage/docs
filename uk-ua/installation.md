@@ -367,28 +367,28 @@ extension=php_phalcon.dll
 
 Перезапустіть свій веб-сервер.
 
-### Compile From Sources
+### Компіляція з джерельних кодів
 
-Compiling from source is similar to most environments (Linux/macOS).
+Компіляція з джерельних кодів є подібною у більшості оточень (Linux/macOS).
 
-#### Requirements
+#### Вимоги
 
-* PHP 7.2.x/7.3.x development resources
-* GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
+* 7.2.x/7.3.x версії інструментів розробки PHP
+* GCC компілятор (Linux/Solaris/FreeBSD) або Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-#### Compilation
+#### Компіляція
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+Завантажте останню версію `zephir.phar` [звідси](https://github.com/phalcon/zephir/releases). Додайте її в теку, до якої буде мати доступ ваша система.
 
-Clone the repository
+Скопіюйте репозиторій
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Скомпілюйте Phalcon
 
 ```bash
 cd cphalcon/
@@ -397,32 +397,32 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+Перевірте модуль
 
 ```bash
 php -m | grep phalcon
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+Тепер необхідно додати `extension=phalcon.so` у ваш PHP ini і перезапустити web-сервер, щоб таким чином завантажити розширення.
 
 ```ini
-; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
+; Suse: додайте файл з назвою Phalcon.ini у теку /etc/php7/conf.d/ та скопіюйте до нього такий вміст:
 extension=phalcon.so
 
-; CentOS/RedHat/Fedora: Add a File Called Phalcon.ini in /etc/php.d/ with This Content:
+; CentOS/RedHat/Fedora: додайте файл з назвою Phalcon.ini у теку /etc/php.d/ та скопіюйте до нього такий вміст:
 extension=phalcon.so
 
-; Ubuntu/Debian with Apache2: Add a File Called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with This Content:
+; Ubuntu/Debian з Apache2: додайте файл з назвою 30 phalcon.ini в теку /etc/php7/apache2/conf.d/ та скопіюйте до нього такий вміст:
 extension=phalcon.so
 
-; Ubuntu/Debian with Php7-fpm: Add a File Called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with This Content:
+; Ubuntu/Debian з Php7-fpm: додайте файл з назвою 30-phalcon.ini в теку /etc/php7/fpm/conf.d/ та скопіюйте до нього такий вміст:
 extension=phalcon.so
 
-; Ubuntu/Debian with Php7-cli: Add a File Called 30-phalcon.ini in /etc/php7/cli/conf.d/ with This Content:
+; Ubuntu/Debian з Php7-cli: додайте файл з назвою 30-phalcon.ini в теку /etc/php7/cli/conf.d/ та скопіюйте до нього такий вміст:
 extension=phalcon.so
 ```
 
-The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+Наведені вище інструкції наведених вище скомпілюють **та** встановлять модуль у вашу систему. Ви також можете скомпілювати розширення самостійно, а потім додати його вручну до вашого `ini` файлу:
 
 ```bash
 cd cphalcon/
@@ -435,26 +435,26 @@ phpize
 make && make install
 ```
 
-If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
+Якщо ви використовуєте вказаний вище метод, необхідно додати розширення `: extension=phalcon.so` до вашого `php.ini` як для консолі, так і для веб-сервера.
 
-#### Tuning Build
+#### Адаптована збірка
 
-By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
+За замовчуванням ми збираємо максимально сумісні з усіма процесорами збірки (`gcc -mtune=native -O2 -fomit-pointer`). Якщо ви хочете, щоб компілятор створив оптимізований машинний код, який відповідає процесору який зараз працює, ви можете встановити свої власні прапорці компіляції, експортувавши CFLAGS до збирання. Наприклад
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
+Це згенерує найкращий можливий код для цього чіпсета, однак, швидше за все, зламає скомпільований об’єкт під старіші чіпсети.
 
-### Shared Hosting
+### Спільний хостинг
 
-Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckily have Phalcon support.
+Запуск вашого продукту на спільному хостингу може бути обмежений можливостями установки Phalcon, особливо якщо у вас немає root-прав. На щастя, деякі панелі управління веб-хостингу мають вбудовану підтримку Phalcon.
 
-#### cPanel & WHM
+#### cPanel, Brainy & WHM
 
-cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
+cPanel & WHM підтримують Phalcon використовуючи Easy Apache 4 (EA4), а Brainy на базі гнучкої конфігурації веб-сервера. Ви можете встановити Phalcon, увімкнувши [модуль](https://github.com/CpanelInc/scl-phalcon) в Easy Apache 4 (EA4), або через налаштування РНР-модулів у Brainy.
 
 #### Plesk
 
-The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
+Панель управління Plesk не має підтримки Phalcon з коробки, але ви можете знайти інструкції для його установки на сайті [Plesk](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
