@@ -57,7 +57,7 @@ Once the application is set up, you can open it in your browser by navigating to
 
 The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
 
-## Routing
+## Маршрутизація
 
 INVO uses the standard route that is built-in with the [Router](routing) component. These routes match the following pattern:
 
