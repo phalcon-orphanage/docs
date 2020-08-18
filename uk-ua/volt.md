@@ -480,7 +480,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 {% endraw %}
 ```
 
-## Filters
+## Фільтри
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -1330,7 +1330,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `version_id`  | Returns the current version id of the framework             |
 
-## View
+## Вигляд
 
 Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the view hierarchy and include partials as well:
 
@@ -1652,7 +1652,7 @@ You can also override built-in functions by using the same name in the defined f
 $compiler->addFunction('dump', 'print_r');
 ```
 
-### Filters
+### Фільтри
 
 A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as with the functions.
 
