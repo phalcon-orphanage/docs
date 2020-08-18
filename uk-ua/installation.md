@@ -131,115 +131,115 @@ sudo pecl install apc
 
 Щоб встановити Phalcon на Linux, Вам необхідно додати наш репозиторій у свій дистрибутив і тоді встановити його.
 
-#### DEB Based Distributions (Debian, Ubuntu, Etc.)
+#### Дистрибутиви, що базуються на DEB (Debian, Ubuntu тощо)
 
-##### Repository installation
+##### Встановлення з репозиторію
 
-Add the repository to your distribution:
+Додайте репозиторій у свій дистрибутив:
 
-**Stable releases**
+**Стабільні випуски**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Nightly releases**
+**Нічні випуски**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Основні релізи (альфа, бета, тощо)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **ПРИМІТКА**: Це потрібно зробити лише один раз, поки не відбудеться зміни вашого дистрибутива або переходу зі стабільної на нічну збірку.
 {: .alert .alert-warning }
 
-##### Phalcon installation
+##### Встановлення Phalcon
 
-To install Phalcon you need to type the following commands in your terminal:
+Для встановлення Phalcon необхідно виконати наступні команди в терміналі:
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Additional PPAs
+##### Додаткові PPA
 
 **Ondřej Surý**
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+Якщо ви не бажаєте використовувати наш репозиторій на [packagecloud.io](https://packagecloud.io/phalcon), то завжди можете скористатись запропонованим [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+Встановлення репозиторію:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+та Phalcon:
 
 ```php
 sudo apt-get install php-phalcon4
 ```
 
-#### RPM Based Distributions (CentOS, Fedora, Etc.)
+#### Дистрибутиви, що базуються на RPM (CentOS, Fedora тощо)
 
-##### Repository installation
+##### Встановлення з репозиторію
 
-Add the repository to your distribution:
+Додайте репозиторій у свій дистрибутив:
 
-**Stable releases**
+**Стабільні випуски**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Nightly releases**
+**Нічні випуски**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Основні релізи (альфа, бета, тощо)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **ПРИМІТКА**: Це потрібно зробити лише один раз, поки не відбудеться зміни вашого дистрибутива або переходу зі стабільної на нічну збірку.
 {: .alert .alert-warning }
 
 
-##### Phalcon installation
+##### Встановлення Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Для встановлення Phalcon необхідно виконати наступні команди в терміналі:
 
 ```bash
 sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### Additional RPMs
+##### Додаткові RPM
 
 **Remi**
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet) підтримує відмінний репозиторій для встановлення на базі RPM. Ви можете знайти інструкції як додати його до вашого дистрибутиву [тут](https://blog.remirepo.net/pages/Config-en).
 
-Installing Phalcon after that is as easy as:
+Після цього встановлення Phalcon можна здійснити легко, як показано нижче:
 
 ```bash
 yum install php72-php-phalcon4
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
+Додаткові версії доступні для обох архітектур (x86/x64), а також для різних версій PHP
 
 #### FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+Порт доступний для FreeBSD. Для установки вам доведеться виконати наступні команди:
 
 ##### pkg_add
 
@@ -247,7 +247,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### Source
+##### Джерело
 
 ```bash
 cd /usr/ports/www/phalcon4
@@ -257,7 +257,7 @@ make install clean
 
 ##### Gentoo
 
-An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
+Сегмент перекриття (overlay) для встановлення Phalcon можна знайти [тут](https://github.com/smoke/phalcon-gentoo-overlay)
 
 #### Raspberry Pi
 
@@ -270,16 +270,16 @@ zephir fullclean
 zephir build
 ```
 
-It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+Також необхідно збільшити розмір свопу зі значення за замовчуванням 100 МБ до щонайменше 2000 МБ. Тому що компілятору бракуватиме оперативної пам'яті.
 
 ```bash
 sudo -s
 nano /etc/dphys-swapfile
 ```
 
-Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+Замінивши `CONF_SWAPSIZE=100` на `CONF_SWAPSIZE=2000`
 
-After saving the setting, restart the daemon:
+Після збереження налаштувань, перезапустіть демон:
 
 ```bash
 /etc/init.d/dphys-swapfile stop
@@ -288,55 +288,55 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
+Brew включає бінарні пакети, тому вам не потрібно компілювати Phalcon самостійно. Якщо ви хочете скомпілювати розширення самостійно, вам потрібно забезпечити наступні залежності:
 
-#### Compilation requirements
+#### Вимоги до компіляції
 
-* PHP 7.x development resources
+* Інструменти розробки PHP 7.x
 * XCode
 
 #### Brew
 
-Binary installation (preferred):
+Бінарне встановлення (бажано):
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
 brew install phalcon
 ```
 
-Compile phalcon:
+Компіляція Рhalcon:
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
 brew install phalcon --build-from-source 
 ```
 
-#### MacPorts
+#### Макпорти
 
 ```bash
 sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+Відредагуйте ваш файл php.ini, а потім додайте у кінці:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+Перезапустіть свій веб-сервер.
 
 ### PHPBrew (macOS/Linux)
 
-PHPBrew is an excellent way to manage multiple versions of PHP and PHP extensions on your system(s). Installation instructions for PHPBrew can be found [here](https://github.com/phpbrew/phpbrew/wiki/Quick-Start)
+PHPBrew є чудовим способом управління кількома версіями PHP та PHP-розширеннями у ваших системах. Інструкції щодо встановлення PHPBrew можна знайти [тут](https://github.com/phpbrew/phpbrew/wiki/Quick-Start)
 
-If you're using PHPBrew, you can install Phalcon using the following:
+Якщо ви використовуєте PHPBrew, ви можете встановити Phalcon наступним чином:
 
 ```bash
 sudo phpbrew ext install phalcon
 ```
 
-You can install the PSR dependency via phpbrew as well if needed:
+При потребі ви можете встановити залежність PSR через PHPBrew:
 
 ```bash
 sudo phpbrew ext install psr
@@ -344,28 +344,28 @@ sudo phpbrew ext install psr
 
 ### Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
+Щоб використовувати Phalcon на Windows, Вам потрібно встановити phalcon.dll. Ми скомпілювали декілька DLL в залежності від цільової платформи. DLL можна знайти в нашій [сторінці завантаження](https://phalcon.io/en/download/windows).
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+Визначте установлену версію PHP та архітектуру. Якщо ви завантажите хибний DLL, Phalcon не запрацює. `phpinfo()` містить цю інформацію. На прикладі нижче нам буде потрібна NTS версія DLL:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
-The available DLLs are:
+Доступні DLL є:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
+| Архітектура | Версія | Тип                   |
+|:-----------:|:------:| --------------------- |
+|     x64     |  7.x   | Thread safe           |
+|     x64     |  7.x   | Non Thread safe (NTS) |
+|     x86     |  7.x   | Thread safe           |
+|     x86     |  7.x   | Non Thread safe (NTS) |
 
-Edit your php.ini file and then append at the end:
+Відредагуйте ваш файл php.ini, а потім додайте у кінці:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Перезапустіть свій веб-сервер.
 
 ### Compile From Sources
 
