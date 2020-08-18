@@ -37,7 +37,7 @@ The remaining dependencies for the project are installed using composer.
 Setting up the
 
 
-## Controllers
+## Контролери
 ## Моделі
 ## Routes
 
@@ -71,8 +71,8 @@ Setting up the
 ### Authentication
 ### Tokens
 ### Verification
-### Validation
-### Response
+### Валідація
+### Відповідь
 
 ## CLI
 
