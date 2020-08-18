@@ -1584,7 +1584,7 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `crypt`              | [Phalcon\Crypt](crypt)                                             | Yes    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Yes    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Yes    | Database connection          |
-| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Yes    | Dispatcher                   |
+| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Yes    | Диспетчер                    |
 | `escaper`            | [Phalcon\Escaper](escaper)                                         | Yes    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Yes    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Yes    | Flash Messaging              |
@@ -1596,7 +1596,7 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `request`            | [Phalcon\Http\Request](request)                                   | Yes    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Yes    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Yes    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Yes    | Security                     |
+| `security`           | [Phalcon\Security](security)                                       | Yes    | Безпека                      |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Yes    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Yes    | HTML Tag helpers             |
