@@ -144,10 +144,10 @@ echo Enum::DENY;  //виводить 0
 > Використання: [Документація з Assets](assets)
 {: .alert .alert-info }
 
-CSS і JS фільтри було видалено з [Assets](assets). Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
+CSS і JS фільтри було видалено з [Assets](assets). У зв'язку з обмеженнями ліцензій, мінімізатори CSS та JS (фільтри) були видалені з v4. У майбутніх версіях за підтримки спільноти ми можемо ввести ці фільтри знову. Ви завжди можете реалізувати власні фільтри, використовуючи можливості `Phalcon\Assets\FilterInterface`.
 
-- Removed `Phalcon\Assets\Filters\CssMin`
-- Removed `Phalcon\Assets\Filters\JsMin`
+- Видалено `Phalcon\Assets\Filters\CssMin`
+- Видалено `Phalcon\Assets\Filters\JsMin`
 - Renamed `Phalcon\Assets\Resource` to `Phalcon\Assets\Asset`
 - Renamed `Phalcon\Assets\ResourceInterface` to `Phalcon\Assets\AssetInterface`
 - Renamed `Phalcon\Assets\Manager::addResource` to `Phalcon\Assets\Manager::addAsset`
