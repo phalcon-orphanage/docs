@@ -120,18 +120,18 @@ php -m | grep phalcon
 
 ### Acl\Adapter\Memory
 
-- Додано `getActiveKey`,, `activeFunctionCustomArgumentsCount` і `getActiveFunction` щоб отримати останній ключ, кількість користувацьких аргументів, і функцію, яка використовується для отримання доступу
+- Додано `getActiveKey`, `activeFunctionCustomArgumentsCount` і `getActiveFunction` щоб отримати останній ключ, кількість користувацьких аргументів, і функцію, яка використовується для отримання доступу
 - Added `addOpertion` support multiple inherited
 
-### Acl\Enum (Constants)
+### Acl\Enum (Константи)
 
-Example:
+Приклад:
 
 ```php
 use Phalcon\Acl\Enum;
 
-echo Enum::ALLOW; //prints 1
-echo Enum::DENY;  //prints 0
+echo Enum::ALLOW; //виводить 1
+echo Enum::DENY;  //виводить 0
 
 ```
 
@@ -141,10 +141,10 @@ echo Enum::DENY;  //prints 0
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Assets Documentation](assets)
+> Використання: [Документація з Assets](assets)
 {: .alert .alert-info }
 
-CSS and JS filters have been removed from the [Assets](assets) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
+CSS і JS фільтри було видалено з [Assets](assets). Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
 
 - Removed `Phalcon\Assets\Filters\CssMin`
 - Removed `Phalcon\Assets\Filters\JsMin`
