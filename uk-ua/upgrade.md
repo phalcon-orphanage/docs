@@ -148,11 +148,11 @@ CSS і JS фільтри було видалено з [Assets](assets). У зв'
 
 - Видалено `Phalcon\Assets\Filters\CssMin`
 - Видалено `Phalcon\Assets\Filters\JsMin`
-- Renamed `Phalcon\Assets\Resource` to `Phalcon\Assets\Asset`
-- Renamed `Phalcon\Assets\ResourceInterface` to `Phalcon\Assets\AssetInterface`
-- Renamed `Phalcon\Assets\Manager::addResource` to `Phalcon\Assets\Manager::addAsset`
-- Renamed `Phalcon\Assets\Manager::addResourceByType` to `Phalcon\Assets\Manager::addAssetByType`
-- Renamed `Phalcon\Assets\Manager::collectionResourcesByType` to `Phalcon\Assets\Manager::collectionAssetsByType`
+- Перейменовано `Phalcon\Assets\Resource` на `Phalcon\Assets\Asset`
+- Перейменовано `Phalcon\Assets\ResourceInterface` на `Phalcon\Assets\AssetInterface`
+- Перейменовано `Phalcon\Assets\Manager::addResource` на `Phalcon\Assets\Manager::addAsset`
+- Перейменовано `Phalcon\Assets\Manager::addResourceByType` на `Phalcon\Assets\Manager::addAssetByType`
+- Перейменовано `Phalcon\Assets\Manager::collectionResourcesByType` на `Phalcon\Assets\Manager::collectionAssetsByType`
 
 * * *
 
