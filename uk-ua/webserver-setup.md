@@ -2,8 +2,8 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Web Server Setup'
-keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
+title: 'Налаштування веб-сервера'
+keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server, веб-сервер, вебсервер'
 ---
 
 # Налаштування веб-сервера
@@ -14,30 +14,30 @@ keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee
 
 ## Огляд
 
-In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
+Для того, щоб забезпечити коректну роботу додатків, розроблених на Phalcon, потрібно налаштувати веб-сервер таким чином, щоб він належним чином здійснював переспрямування. Нижче наведені інструкції для популярних веб-серверів:
 
-## PHP Built-in
+## Вбудований РНР
 
-The PHP built-in web server is not recommended for production applications. You can use it though very easily for development purposes. The syntax is:
+Використання вбудованого веб-сервера PHP не рекомендується для виробничих потреб. Однак, його зручно використовувати для розробки веб-продуктів. Синтаксис:
 
 ```bash
 $(which php) -S <host>:<port> -t <directory> <setup file>
 ```
 
-If your application has its entry point in `/public/index.php` or your project has been created by the [Phalcon Devtools](devtools), then you can start the web server with the following command:
+Якщо точка входу у ваш продукт знаходиться за адресою `/public/index.рhp` або ваш проєкт було створено за допомогою [Phalcon Dev](devtools), тоді ви можете запустити веб-сервер наступною командою:
 
 ```bash
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-The above command does:
+Ця команда виконує:
 
-- `$(which php)` - will insert the absolute path to your PHP binary
-- `-S localhost:8000` - invokes server mode with the provided `host:port`
-- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
-- `.htrouter.php` - the entry point that will be evaluated for each request
+- `$(which php)` - вставляє абсолютний шлях до вашого файлу РНР
+- `-S localhost:8000` - запускає сервер з заданим параметрами `host:port`
+- `-t public` - визначає root-адресу, що необхідна РНР для переспрямування запитів до ресурсів JS, CSS та малюнків, що знаходяться у вашій теці "public"
+- `.htrouter.php` - точка входу, яка буде використовуватись для оцінки кожного запиту
 
-The `.htrouter.php` file must contain:
+Файл `.htrouter.php` повинен містити:
 
 ```php
 <?php
