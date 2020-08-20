@@ -92,35 +92,35 @@ php -m | grep phalcon
 
 ### Огляд
 
-The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
+Компоненти, необхідні для роботи ACL перейменовано. Зокрема, `Resource` було перейменовано на `Component` у всіх відповідних інтерфейсах, класах і методах, які використовує цей компонент.
 
-- Added `Phalcon\Acl\Adapter\AbstractAdapter`
-- Added `Acl\Enum`
+- Додано `Phalcon\Acl\Adapter\AbstractAdapter`
+- Додано `Acl\Enum`
 
-- Removed `Phalcon\Acl`
+- Видалено `Phalcon\Acl`
 
 - Removed `Phalcon\Acl\Adapter`
 
-- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+- Перейменовано `Phalcon\Acl\Resource` на `Phalcon\Acl\Component`
 
-- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
-- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
-- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::getResources` to `Phalcon\Acl\AdapterInterface::getComponents`
-- Renamed `Phalcon\Acl\Adapter::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::isResource` to `Phalcon\Acl\Adapter\Memory::isComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResource` to `Phalcon\Acl\Adapter\Memory::addComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResourceAccess` to `Phalcon\Acl\Adapter\Memory::addComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`
+- Перейменовано `Phalcon\Acl\ResourceInterface` на `Phalcon\Acl\ComponentInterface`
+- Перейменовано `Phalcon\Acl\ResourceAware` на `Phalcon\Acl\ComponentAware`
+- Перейменовано `Phalcon\Acl\AdapterInterface::isResource` на `Phalcon\Acl\AdapterInterface::isComponent`
+- Перейменовано `Phalcon\Acl\AdapterInterface::addResource` на `Phalcon\Acl\AdapterInterface:addComponent`
+- Перейменовано `Phalcon\Acl\AdapterInterface::addResourceAccess` на `Phalcon\Acl\AdapterInterface:addComponentAccess`
+- Перейменовано `Phalcon\Acl\AdapterInterface::dropResourceAccess` на `Phalcon\Acl\AdapterInterface::ComponentAccess`
+- Перейменовано `Phalcon\Acl\AdapterInterface::getActiveResource` на `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Перейменовано `Phalcon\Acl\AdapterInterface::getResources` на `Phalcon\Acl\AdapterInterface:getComponents`
+- Перейменовано `Phalcon\Acl\Adapter::getActiveResource` на `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::isResource` на `Phalcon\Acl\Adapter\Memory::isComponent`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::addResource` на `Phalcon\Acl\Adapter\Memory:addComponent`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::addResourceAccess` на `Phalcon\Acl\Adapter\Memory::addComponentAccess`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::dropResourceAccess` на `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::getResources` на `Phalcon\Acl\Adapter\Memory:getComponents`
 
 ### Acl\Adapter\Memory
 
-- Added `getActiveKey`, `activeFunctionCustomArgumentsCount` and `getActiveFunction` to get latest key, number of custom arguments, and function used to acquire access
+- Додано `getActiveKey`,, `activeFunctionCustomArgumentsCount` і `getActiveFunction` щоб отримати останній ключ, кількість користувацьких аргументів, і функцію, яка використовується для отримання доступу
 - Added `addOpertion` support multiple inherited
 
 ### Acl\Enum (Constants)
