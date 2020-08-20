@@ -160,14 +160,14 @@ CSS і JS фільтри було видалено з [Assets](assets). У зв'
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Cache Documentation](cache)
+> Використання: [Документація кешу](cache)
 {: .alert .alert-info }
 
-`xcache`, `apc` and `memcache` adapters have been deprecated and removed. The first two are not supported for PHP 7.2+. `apc` has been replaced with `apcu` and `memcache` can be replaced with the `libmemcached` one.
+`xcache`, `apc` та `memcache` адаптери застаріли та видалені. Перші два не підтримуються у PHP 7.2+. `apc` замінено на `apcu`, а `memcache` може бути замінений на `libmemcached`.
 
-- Removed `Phalcon\Annotations\Adapter\Apc`
-- Removed `Phalcon\Annotations\Adapter\Xcache`
-- Removed `Phalcon\Cache\Backend\Apc`
+- Видалено `Phalcon\Annotations\Adapter\Apc`
+- Видалено `Phalcon\Annotations\Adapter\Xcache`
+- Видалено `Phalcon\Cache\Backend\Apc`
 - Removed `Phalcon\Cache\Backend\Memcache`
 - Removed `Phalcon\Cache\Backend\Xcache`
 - Removed `Phalcon\Mvc\Model\Metadata\Apc`
