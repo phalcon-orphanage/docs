@@ -57,15 +57,15 @@ $_GET['_url'] = $_SERVER['REQUEST_URI'];
 require_once __DIR__ . '/public/index.php';
 ```
 
-If your entry point is not `public/index.php`, then adjust the `.htrouter.php` file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to.
+Якщо ваша точка входу не знаходиться за адресою `public/index.php`, тоді налаштуйте `.htrouter.php` (останній рядок), таким чином, щоб цей скрипт переспрямовував запити безпосередньо на точку входу вашого продукту. Ви також можете змінити порт, якщо забажаєте, а також мережевий інтерфейс, до якого він приєднується.
 
-After executing the command above, navigating to `http://localhost:8000/` will show your your site.
+Після виконання команди вище, перехід за адресою `http://localhost:8000/` дозволить побачити ваш сайт.
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
+[PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) зазвичай використовуються для обробки PHP файлів. На сьогодні PHP-FPM входить до складу усіх PHP-дистрибутивів на базі Linux.
 
-On **Windows** PHP-FPM is in the PHP distribution archive. The file `php-cgi.exe` can be used to start the process and set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+На **Windows** PHP-FPM знаходиться в архіві дистрибуції PHP. The file `php-cgi.exe` can be used to start the process and set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
 
 Create the file `php-fcgi.bat` with the following contents:
 
