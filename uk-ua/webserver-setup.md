@@ -78,15 +78,15 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 ## nginx
 
-[nginx](https://wiki.nginx.org/Main) є безкоштовним високопродуктивним HTTP-сервером та зворотним проксі з відкритим вихідним кодом, а також IMAP/POP3 проксі-сервером. На відміну від традиційних серверів, nginx не покладається на потоки для обробки запитів. Замість цього він використовує більш масштабну (асинхронну) архітектуру. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[nginx](https://wiki.nginx.org/Main) є безкоштовним високопродуктивним HTTP-сервером та зворотним проксі з відкритим вихідним кодом, а також IMAP/POP3 проксі-сервером. На відміну від традиційних серверів, nginx не покладається на потоки для обробки запитів. Замість цього він використовує більш масштабну (асинхронну) архітектуру. Ця архітектура використовує невеликі, але що не менш важливо, передбачувані обсяги пам'яті під навантаженням.
 
-Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+Phalcon з nginx і PHP-FPM забезпечують потужний набір інструментів, які пропонують максимальну продуктивність для ваших PHP продуктів.
 
-### Install nginx
+### Установка nginx
 
-[nginx Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[Офіційний сайт nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
-### Phalcon Configuration
+### Конфігурація Phalcon
 
 You can use following potential configuration to setup nginx with Phalcon:
 
@@ -186,7 +186,7 @@ service nginx start
 
 [Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
 
-### Phalcon Configuration
+### Конфігурація Phalcon
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
 
@@ -498,7 +498,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 [Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
-### Phalcon Configuration
+### Конфігурація Phalcon
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
