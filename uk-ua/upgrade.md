@@ -2,19 +2,19 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Upgrade Guide'
-keywords: 'upgrade, v3, v4'
+title: 'Інструкція з оновлення'
+keywords: 'оновлення, v3, v4'
 ---
 
-# Upgrade Guide
+# Інструкція з оновлення
 
 * * *
 
-# Upgrading to V4
+# Оновлення до V4
 
-So you have decided to upgrade to v4! **Congratulations**!!
+Отже, ви вирішили оновитись до v4! **Вітаємо**!!
 
-Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 містить багато змін у компонентах, в тому числі зміни інтерфейсів, суворих типів, видалення компонентів і додавання нових. Цей документ покликаний допомогти вам оновити наявний продукт, розроблений на базі Phalcon, до v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
 
 ## Requirements
 
