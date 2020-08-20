@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'New Feature Request List'
-keywords: 'new feature request list, nfr list'
+title: 'Список запитів на вдосконалення функціоналу'
+keywords: 'список запитів на вдосконалення функціоналу, список знф'
 ---
 
-# New Feature Request List
+# Список запитів на вдосконалення функціоналу
 <hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
