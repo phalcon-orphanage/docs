@@ -168,23 +168,23 @@ CSS і JS фільтри було видалено з [Assets](assets). У зв'
 - Видалено `Phalcon\Annotations\Adapter\Apc`
 - Видалено `Phalcon\Annotations\Adapter\Xcache`
 - Видалено `Phalcon\Cache\Backend\Apc`
-- Removed `Phalcon\Cache\Backend\Memcache`
-- Removed `Phalcon\Cache\Backend\Xcache`
-- Removed `Phalcon\Mvc\Model\Metadata\Apc`
-- Removed `Phalcon\Mvc\Model\Metadata\Memcache`
-- Removed `Phalcon\Mvc\Model\Metadata\Xcache`
+- Видалено `Phalcon\Cache\Backend\Memcache`
+- Видалено `Phalcon\Cache\Backend\Xcache`
+- Видалено `Phalcon\Mvc\Model\Metadata\Apc`
+- Видалено `Phalcon\Mvc\Model\Metadata\Memcache`
+- Видалено `Phalcon\Mvc\Model\Metadata\Xcache`
 
-The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
+Компонент `Cache` перезаписано, щоб він відповідав [PSR-16](https://www.php-fig.org/psr/psr-16/). Це дозволяє вам використовувати [Phalcon\Cache](api/Phalcon_Cache) до будь-якого застосунку, який використовує кеш [PSR-16](https://www.php-fig.org/psr/psr-16/), а не лише кеш Phalcon.
 
-In v3, the cache was split into two components, the Frontend and the Backend. This did create a bit of confusion but it was functional. In order to create a cache component you had to create the Frontend first and then inject that to the relevant Backend (which acted as an adapter also).
+У v3, кеш було розділено на два компонента: фронтенд та бекенд. Це створило трохи плутанини, але воно було функціональним. Для того, щоб створити кеш компонент, спочатку потрібно було створити Frontend і потім вставити його у відповідний Backend (який також діяв як адаптер).
 
-For v4, we rewrote the component completely. We first created a `Storage` class which is the basis of the Cache classes. We created Serializer classes whose sole responsibility is to serialize and unserialize the data before they are saved in the cache adapter and after they are retrieved. These classes are injected (based on the developer's choice) to an Adapter object which connects to a backend (`Memcached`, `Redis` etc.), while abiding by a common adapter interface.
+Для v4 ми повністю переписали компонент. Вперше ми створили клас `Storage`, що є основою класів кешу. Ми створили класи серіалізатора, єдиною відповідальністю яких є серіалізація та несеріалізація даних, перш ніж вони збережуться у кеш-адаптері та після їх витягування з кешу. Ці класи вставляються (за бажанням розробника) до об'єкта Adapter, який з'єднується з бекендом (`Memcached`, `Redis` і т. д.), не маючи спільного адаптера інтерфейсу.
 
-The Cache class implements [PSR-16](https://www.php-fig.org/psr/psr-16/) and accepts an adapter in its constructor, which in turn is doing all the heavy lifting with connecting to the back end and manipulating data.
+Клас кешу реалізує [PSR-16](https://www.php-fig.org/psr/psr-16/) і приймає адаптер у своєму конструкторі, який у свою чергу виконує всі важкі завдання під'єднання до бекенду і маніпулювання даними.
 
-For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation.
+Для більш детального пояснення як працює новий компонент кешу, будь ласка, перегляньте відповідну сторінку в нашій документації.
 
-### Creating a Cache
+### Створення кешу
 
 ```php
 <?php
@@ -206,7 +206,7 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 $cache = new Cache($adapter);
 ```
 
-Registering it in the DI
+Реєстрація його у DI
 
 ```php
 <?php
@@ -580,7 +580,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-Registering it in the DI
+Реєстрація його у DI
 
 ```php
 <?php
