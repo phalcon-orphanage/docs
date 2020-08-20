@@ -14,43 +14,43 @@ keywords: 'оновлення, v3, v4'
 
 Отже, ви вирішили оновитись до v4! **Вітаємо**!!
 
-Phalcon v4 містить багато змін у компонентах, в тому числі зміни інтерфейсів, суворих типів, видалення компонентів і додавання нових. Цей документ покликаний допомогти вам оновити наявний продукт, розроблений на базі Phalcon, до v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 містить багато змін у компонентах, в тому числі зміни інтерфейсів, суворих типів, видалення компонентів і додавання нових. Цей документ покликаний допомогти вам оновити наявний продукт, розроблений на базі Phalcon, до v4. Ми виділимо ті аспекти, на які Вам слід звернути увагу і внести необхідні зміни до вашого коду, аби він продовжив працювати так само легко і швидко, як у версії 3. Хоч і зміни значні, та це скоріше методичне завдання, ніж невідкладне.
 
-## Requirements
+## Вимоги
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 підтримує тільки PHP 7.2 або вище. PHP 7.1 випущено понад 2 роки тому і [активна підтримка](https://secure.php.net/supported-versions.php) цієї версії уже припинена, тому ми вирішили працювати лише з версіями PHP, що активно підтримуються.
 
 <a name='psr'></a>
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon потребує PSR-розширення. Його можна завантажити і скомпілювати з [цього](https://github.com/jbboehr/php-psr) GitHub репозиторію. Інструкції з встановлення викладені у файлі `README` цього репозиторію. Після компіляції цього розширення у вашій системі його слід додати до `php.ini`. Ви маєте додати цей рядок:
 
 ```ini
 extension=psr.so
 ```
 
-before
+перед
 
 ```ini
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+Деякі дистрибутиви додають числовий префікс до `ini` файлів для управління черговістю завантаження розширень. Якщо це має місце у вашій системі, вкажіть вище число для Phalcon (наприклад, `50-phalcon.ini`).
 
 ### Встановлення
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+Завантажте останню версію `zephir.phar` [звідси](https://github.com/phalcon/zephir/releases). Додайте її в теку, до якої буде мати доступ ваша система.
 
-Clone the repository
+Скопіюйте репозиторій
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Скомпілюйте Phalcon
 
 ```bash
 cd cphalcon/
@@ -59,7 +59,7 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+Перевірте модуль
 
 ```bash
 php -m | grep phalcon
@@ -67,28 +67,28 @@ php -m | grep phalcon
 
 * * *
 
-## General Notes
+## Загальні нотатки
 
-### Applications
+### Обробники
 
-- The `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` and `Phalcon\Mvc\Router` now must have a URI to process
+- `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` та `Phalcon\Mvc\Router` тепер потребують URI для опрацювання запитів
 
-### Exceptions
+### Винятки
 
-- Changed catch `Exception` to `Throwable`
+- Змінено виловлювач помилок `Exception` на `Throwable`
 
 * * *
 
-# Components
+# Компоненти
 
 ## ACL
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
-> Usage: [ACL Documentation](acl)
+> Використання: [Документація ACL](acl)
 {: .alert .alert-info }
 
-The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
+У компоненті [ACL](acl) були перейменовані деякі методи та компоненти. Функціонал залишається таким самим, як у попередніх версіях.
 
 ### Огляд
 
@@ -139,7 +139,7 @@ echo Enum::DENY;  //prints 0
 
 ## Assets
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Assets Documentation](assets)
 {: .alert .alert-info }
@@ -158,7 +158,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 ## Cache
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Cache Documentation](cache)
 {: .alert .alert-info }
@@ -237,7 +237,7 @@ $container->set(
 
 ## CLI
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [CLI Documentation](cli)
 {: .alert .alert-info }
@@ -389,7 +389,7 @@ echo Enum::FETCH_ASSOC;
 
 ## Filter
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Filter Documentation](filter)
 {: .alert .alert-info }
@@ -550,7 +550,7 @@ echo Enum::VERTICAL;   // prints  12
 
 ## Logging
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Logger Documentation](logger)
 {: .alert .alert-info }
@@ -657,7 +657,7 @@ Removed in version 4.0:
 
 ## Моделі
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Models Documentation](db-models)
 {: .alert .alert-info }
@@ -703,7 +703,7 @@ $criteria->limit(10, null);
 
 ## MVC
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [MVC Documentation](mvc)
 {: .alert .alert-info }
@@ -897,7 +897,7 @@ $group->addTrace(
 
 ## Session
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Session Documentation](session)
 {: .alert .alert-info }
@@ -943,7 +943,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 ## Text
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Str Documentation](helpers#str)
 {: .alert .alert-info }
@@ -973,7 +973,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 ## Views
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [View Documentation](views)
 {: .alert .alert-info }
@@ -984,7 +984,7 @@ View caching along with the `viewCache` service have been removed from the frame
 
 ## Гіперпосилання
 
-> Status: **changes required**
+> Статус: **необхідні зміни**
 > 
 > Usage: [Url Documentation](url)
 {: .alert .alert-info }
