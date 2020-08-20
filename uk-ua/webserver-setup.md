@@ -65,9 +65,9 @@ require_once __DIR__ . '/public/index.php';
 
 [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) зазвичай використовуються для обробки PHP файлів. На сьогодні PHP-FPM входить до складу усіх PHP-дистрибутивів на базі Linux.
 
-На **Windows** PHP-FPM знаходиться в архіві дистрибуції PHP. The file `php-cgi.exe` can be used to start the process and set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+На **Windows** PHP-FPM знаходиться в архіві дистрибуції PHP. Файл `php-cgi.exe` можна використовувати для запуску процесу і налаштування. Windows не підтримує unix сокети, тож цей скрипт запустить fast-cgi в режимі TCP на порту `9000`.
 
-Create the file `php-fcgi.bat` with the following contents:
+Створіть файл `php-fcgi.bat` з таким змістом:
 
 ```bat
 @ECHO OFF
@@ -78,7 +78,7 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 ## nginx
 
-[nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[nginx](https://wiki.nginx.org/Main) є безкоштовним високопродуктивним HTTP-сервером та зворотним проксі з відкритим вихідним кодом, а також IMAP/POP3 проксі-сервером. На відміну від традиційних серверів, nginx не покладається на потоки для обробки запитів. Замість цього він використовує більш масштабну (асинхронну) архітектуру. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
 Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
