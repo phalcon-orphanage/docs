@@ -92,46 +92,46 @@ php -m | grep phalcon
 
 ### Огляд
 
-The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
+Компоненти, необхідні для роботи ACL перейменовано. Зокрема, `Resource` було перейменовано на `Component` у всіх відповідних інтерфейсах, класах і методах, які використовує цей компонент.
 
-- Added `Phalcon\Acl\Adapter\AbstractAdapter`
-- Added `Acl\Enum`
+- Додано `Phalcon\Acl\Adapter\AbstractAdapter`
+- Додано `Acl\Enum`
 
-- Removed `Phalcon\Acl`
+- Видалено `Phalcon\Acl`
 
 - Removed `Phalcon\Acl\Adapter`
 
-- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+- Перейменовано `Phalcon\Acl\Resource` на `Phalcon\Acl\Component`
 
-- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
-- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
-- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess`
-- Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\AdapterInterface::getResources` to `Phalcon\Acl\AdapterInterface::getComponents`
-- Renamed `Phalcon\Acl\Adapter::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::isResource` to `Phalcon\Acl\Adapter\Memory::isComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResource` to `Phalcon\Acl\Adapter\Memory::addComponent`
-- Renamed `Phalcon\Acl\Adapter\Memory::addResourceAccess` to `Phalcon\Acl\Adapter\Memory::addComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
-- Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`
+- Перейменовано `Phalcon\Acl\ResourceInterface` на `Phalcon\Acl\ComponentInterface`
+- Перейменовано `Phalcon\Acl\ResourceAware` на `Phalcon\Acl\ComponentAware`
+- Перейменовано `Phalcon\Acl\AdapterInterface::isResource` на `Phalcon\Acl\AdapterInterface::isComponent`
+- Перейменовано `Phalcon\Acl\AdapterInterface::addResource` на `Phalcon\Acl\AdapterInterface:addComponent`
+- Перейменовано `Phalcon\Acl\AdapterInterface::addResourceAccess` на `Phalcon\Acl\AdapterInterface:addComponentAccess`
+- Перейменовано `Phalcon\Acl\AdapterInterface::dropResourceAccess` на `Phalcon\Acl\AdapterInterface::ComponentAccess`
+- Перейменовано `Phalcon\Acl\AdapterInterface::getActiveResource` на `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Перейменовано `Phalcon\Acl\AdapterInterface::getResources` на `Phalcon\Acl\AdapterInterface:getComponents`
+- Перейменовано `Phalcon\Acl\Adapter::getActiveResource` на `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::isResource` на `Phalcon\Acl\Adapter\Memory::isComponent`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::addResource` на `Phalcon\Acl\Adapter\Memory:addComponent`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::addResourceAccess` на `Phalcon\Acl\Adapter\Memory::addComponentAccess`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::dropResourceAccess` на `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
+- Перейменовано `Phalcon\Acl\Adapter\Memory::getResources` на `Phalcon\Acl\Adapter\Memory:getComponents`
 
 ### Acl\Adapter\Memory
 
-- Added `getActiveKey`, `activeFunctionCustomArgumentsCount` and `getActiveFunction` to get latest key, number of custom arguments, and function used to acquire access
+- Додано `getActiveKey`, `activeFunctionCustomArgumentsCount` і `getActiveFunction` щоб отримати останній ключ, кількість користувацьких аргументів, і функцію, яка використовується для отримання доступу
 - Added `addOpertion` support multiple inherited
 
-### Acl\Enum (Constants)
+### Acl\Enum (Константи)
 
-Example:
+Приклад:
 
 ```php
 use Phalcon\Acl\Enum;
 
-echo Enum::ALLOW; //prints 1
-echo Enum::DENY;  //prints 0
+echo Enum::ALLOW; //виводить 1
+echo Enum::DENY;  //виводить 0
 
 ```
 
@@ -141,18 +141,18 @@ echo Enum::DENY;  //prints 0
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Assets Documentation](assets)
+> Використання: [Документація з Assets](assets)
 {: .alert .alert-info }
 
-CSS and JS filters have been removed from the [Assets](assets) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
+CSS і JS фільтри було видалено з [Assets](assets). У зв'язку з обмеженнями ліцензій, мінімізатори CSS та JS (фільтри) були видалені з v4. У майбутніх версіях за підтримки спільноти ми можемо ввести ці фільтри знову. Ви завжди можете реалізувати власні фільтри, використовуючи можливості `Phalcon\Assets\FilterInterface`.
 
-- Removed `Phalcon\Assets\Filters\CssMin`
-- Removed `Phalcon\Assets\Filters\JsMin`
-- Renamed `Phalcon\Assets\Resource` to `Phalcon\Assets\Asset`
-- Renamed `Phalcon\Assets\ResourceInterface` to `Phalcon\Assets\AssetInterface`
-- Renamed `Phalcon\Assets\Manager::addResource` to `Phalcon\Assets\Manager::addAsset`
-- Renamed `Phalcon\Assets\Manager::addResourceByType` to `Phalcon\Assets\Manager::addAssetByType`
-- Renamed `Phalcon\Assets\Manager::collectionResourcesByType` to `Phalcon\Assets\Manager::collectionAssetsByType`
+- Видалено `Phalcon\Assets\Filters\CssMin`
+- Видалено `Phalcon\Assets\Filters\JsMin`
+- Перейменовано `Phalcon\Assets\Resource` на `Phalcon\Assets\Asset`
+- Перейменовано `Phalcon\Assets\ResourceInterface` на `Phalcon\Assets\AssetInterface`
+- Перейменовано `Phalcon\Assets\Manager::addResource` на `Phalcon\Assets\Manager::addAsset`
+- Перейменовано `Phalcon\Assets\Manager::addResourceByType` на `Phalcon\Assets\Manager::addAssetByType`
+- Перейменовано `Phalcon\Assets\Manager::collectionResourcesByType` на `Phalcon\Assets\Manager::collectionAssetsByType`
 
 * * *
 
@@ -160,31 +160,31 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Cache Documentation](cache)
+> Використання: [Документація кешу](cache)
 {: .alert .alert-info }
 
-`xcache`, `apc` and `memcache` adapters have been deprecated and removed. The first two are not supported for PHP 7.2+. `apc` has been replaced with `apcu` and `memcache` can be replaced with the `libmemcached` one.
+`xcache`, `apc` та `memcache` адаптери застаріли та видалені. Перші два не підтримуються у PHP 7.2+. `apc` замінено на `apcu`, а `memcache` може бути замінений на `libmemcached`.
 
-- Removed `Phalcon\Annotations\Adapter\Apc`
-- Removed `Phalcon\Annotations\Adapter\Xcache`
-- Removed `Phalcon\Cache\Backend\Apc`
-- Removed `Phalcon\Cache\Backend\Memcache`
-- Removed `Phalcon\Cache\Backend\Xcache`
-- Removed `Phalcon\Mvc\Model\Metadata\Apc`
-- Removed `Phalcon\Mvc\Model\Metadata\Memcache`
-- Removed `Phalcon\Mvc\Model\Metadata\Xcache`
+- Видалено `Phalcon\Annotations\Adapter\Apc`
+- Видалено `Phalcon\Annotations\Adapter\Xcache`
+- Видалено `Phalcon\Cache\Backend\Apc`
+- Видалено `Phalcon\Cache\Backend\Memcache`
+- Видалено `Phalcon\Cache\Backend\Xcache`
+- Видалено `Phalcon\Mvc\Model\Metadata\Apc`
+- Видалено `Phalcon\Mvc\Model\Metadata\Memcache`
+- Видалено `Phalcon\Mvc\Model\Metadata\Xcache`
 
-The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
+Компонент `Cache` перезаписано, щоб він відповідав [PSR-16](https://www.php-fig.org/psr/psr-16/). Це дозволяє вам використовувати [Phalcon\Cache](api/Phalcon_Cache) до будь-якого застосунку, який використовує кеш [PSR-16](https://www.php-fig.org/psr/psr-16/), а не лише кеш Phalcon.
 
-In v3, the cache was split into two components, the Frontend and the Backend. This did create a bit of confusion but it was functional. In order to create a cache component you had to create the Frontend first and then inject that to the relevant Backend (which acted as an adapter also).
+У v3, кеш було розділено на два компонента: фронтенд та бекенд. Це створило трохи плутанини, але воно було функціональним. Для того, щоб створити кеш компонент, спочатку потрібно було створити Frontend і потім вставити його у відповідний Backend (який також діяв як адаптер).
 
-For v4, we rewrote the component completely. We first created a `Storage` class which is the basis of the Cache classes. We created Serializer classes whose sole responsibility is to serialize and unserialize the data before they are saved in the cache adapter and after they are retrieved. These classes are injected (based on the developer's choice) to an Adapter object which connects to a backend (`Memcached`, `Redis` etc.), while abiding by a common adapter interface.
+Для v4 ми повністю переписали компонент. Вперше ми створили клас `Storage`, що є основою класів кешу. Ми створили класи серіалізатора, єдиною відповідальністю яких є серіалізація та несеріалізація даних, перш ніж вони збережуться у кеш-адаптері та після їх витягування з кешу. Ці класи вставляються (за бажанням розробника) до об'єкта Adapter, який з'єднується з бекендом (`Memcached`, `Redis` і т. д.), не маючи спільного адаптера інтерфейсу.
 
-The Cache class implements [PSR-16](https://www.php-fig.org/psr/psr-16/) and accepts an adapter in its constructor, which in turn is doing all the heavy lifting with connecting to the back end and manipulating data.
+Клас кешу реалізує [PSR-16](https://www.php-fig.org/psr/psr-16/) і приймає адаптер у своєму конструкторі, який у свою чергу виконує всі важкі завдання під'єднання до бекенду і маніпулювання даними.
 
-For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation.
+Для більш детального пояснення як працює новий компонент кешу, будь ласка, перегляньте відповідну сторінку в нашій документації.
 
-### Creating a Cache
+### Створення кешу
 
 ```php
 <?php
@@ -206,7 +206,7 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 $cache = new Cache($adapter);
 ```
 
-Registering it in the DI
+Реєстрація його у DI
 
 ```php
 <?php
@@ -239,12 +239,12 @@ $container->set(
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [CLI Documentation](cli)
+> Використання: [Документація CLI](cli)
 {: .alert .alert-info }
 
-### Parameters
+### Параметри
 
-Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
+Параметри тепер поводяться так само, як MVC контролери. Тоді як раніше вони існували у властивості `$params`, тепер ви можете назвати їх належним чином:
 
 ```php
 use Phalcon\Cli\Task;
@@ -268,38 +268,38 @@ class MainTask extends Task
 
 ### Cli\Console
 
-- Removed `Phalcon\Cli\Console::addModules` in favor of `Phalcon\Cli\Console::registerModules`
+- Видалено `Phalcon\Cli\Console:addModules` на користь `Phalcon\Cli\Console:registerModules`
 
 ### Cli\Router\RouteInterface
 
-- Added `delimiter`, `getDelimiter`
+- Додано `delimiter`, `getDelimiter`
 
 ### Cli\Dispatcher
 
-- Added `getTaskSuffix()`, `setTaskSuffix()`
+- Додано `getTaskSuffix()`, `setSuffix()`
 
 ### Cli\DispatcherInterface
 
-- Added `setOptions`, `getOptions`
+- Додано `setOptions`, `getOptions`
 
 * * *
 
 ## Container
 
-- Added `Phalcon\Container`, a proxy container class to the `Phalcon\DI` implementing PSR-11
+- Додано `Phalcon\Container`, проміжний клас контейнерів для `Phalcon\DI`, що реалізує PSR-11
 
 * * *
 
-## Відлагодження
+## Debug
 
-- Removed `Phalcon\Debug::getMajorVersion`
+- Видалено `Phalcon\Debug::getMajorVersion`
 
 * * *
 
 ## Db
 
-- Added global setting `orm.case_insensitive_column_map` to attempt to find value in the column map case-insensitively. Can be also enabled by setting `caseInsensitiveColumnMap` key in `\Phalcon\Mvc\Model::setup()`
-- Removed `Phalcon\Db` namespace. Replaced by `Phalcon\Db\AbstractDb` for necessary methods and `Phalcon\Db\Enum` for constants, i.e.:
+- Доданий глобальний параметр налаштувань `orm.case_insensitive_column_map` для спроби знайти значення у мапі колонок не чутливих до регістру. Може бути також увімкнено через встановлення параметра `caseInsensitiveColumnMap` у `\Phalcon\Mvc\Model::setup()`
+- Видалено простір імен `Phalcon\Db`. Замінено на `Phalcon\Db\AbstractDb` для необхідних методів і на `Phalcon\Db\Enum` для констант, наприклад:
 
 ```php
 use Phalcon\Db\Enum;
@@ -309,11 +309,11 @@ echo Enum::FETCH_ASSOC;
 
 ### Db\AdapterInterface
 
-- Added `fetchColumn`, `insertAsDict`, `updateAsDict`
+- Додано `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
 
-- Added more column types for the Mysql adapter. The adapters support 
+- Додано більше типів стовпців для адаптера Mysql. Підтримуються адаптери: 
     - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
@@ -340,15 +340,15 @@ echo Enum::FETCH_ASSOC;
     - `TYPE_TINYBLOB`
     - `TYPE_TINYINTEGER`
     - `TYPE_TINYTEXT`
-    - `TYPE_VARCHAR` Some adapters do not support certain types. For instance `JSON` is not supported for `Sqlite`. It will be automatically changed to `VARCHAR`.
+    - `TYPE_VARCHAR` Деякі адаптери не підтримують певні типи. Наприклад, `JSON` не підтримується для `Sqlite`. Його буде автоматично змінено на `VARCHAR`.
 
 ### Db\DialectInterface
 
-- Added `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
+- Додано `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
 
 ### Db\Dialect\Postgresql
 
-- Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
+- Змінено `addPrimaryKey`, щоб зробити обмеження імені первинного ключа унікальним, префіксуючи їх з назвою таблиці.
 
 * * *
 
@@ -356,18 +356,18 @@ echo Enum::FETCH_ASSOC;
 
 ### Di\ServiceInterface
 
-- Added `getParameter`, `isResolved`
+- Додано `getParameter`, `isResolved`
 
 ### Di\Service
 
-- Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
+- Змінено `Phalcon\Di\Service` конструктор, щоб він більше не переймав ім'я сервісу.
 
 * * *
 
-## Диспетчер
+## Dispatcher
 
-- Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
-- Added `getHandlerSuffix()`, `setHandlerSuffix()`
+- Видалено `Phalcon\Dispatcher::setModelBinding()` на користь `Phalcon\Dispatcher::setModelBinder()`
+- Додано `getHandlerSuffix()`, `setHandlerSuffix()`
 
 * * *
 
@@ -375,15 +375,15 @@ echo Enum::FETCH_ASSOC;
 
 ### Events\ManagerInterface
 
-- Added `hasListeners`
+- Додано `hasListeners`
 
 * * *
 
 ## Flash
 
-- Added ability to set a custom template for the Flash Messenger.
-- Constructor no longer accepts an array for the CSS classes. You will need to use `setCssClasses()` to set your custom CSS classes for the component
-- The constructor now accepts an optional `Phalcon\Escaper` object, as well as a `Phalcon\Session\Manager` object (in the case of `Phalcon\Flash\Session`), in case you do not wish to use the DI and set it yourself.
+- Додано можливість встановити користувацький шаблон для Flash Messenger.
+- Конструктор більше не приймає масив для класів CSS. Вам потрібно буде використовувати `setCsClasses()` щоб встановити свої користувацькі класи CSS для компонента
+- Конструктор тепер приймає необов'язковий об’єкт `Phalcon\Escaper`, а також об'єкт `Phalcon\Session\Manager` (у випадку `Phalcon\Flash\Session`) на випадок, якщо ви не хочете користуватися DI і встановите його самі.
 
 * * *
 
@@ -391,10 +391,10 @@ echo Enum::FETCH_ASSOC;
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Filter Documentation](filter)
+> Використання: [Документація фільтра](filter)
 {: .alert .alert-info }
 
-The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
+Компонент `Filter` було перезаписано, використовуючи локатор сервісів. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
 ### Огляд
 
@@ -580,7 +580,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-Registering it in the DI
+Реєстрація його у DI
 
 ```php
 <?php
