@@ -394,11 +394,11 @@ echo Enum::FETCH_ASSOC;
 > Використання: [Документація фільтра](filter)
 {: .alert .alert-info }
 
-Компонент `Filter` було перезаписано, використовуючи локатор сервісів. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
+Компонент `Filter` було перезаписано, використовуючи локатор сервісів. Кожен "знешкоджувач" (sanitizer) тепер вкладений у власний клас і завантажений в лінивому режимі, щоб забезпечити максимальну продуктивність і найменше використання ресурсів.
 
 ### Огляд
 
-The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+Клас `Phalcon\Filter` був переписаний, щоб діяти як локатор сервісу для різних *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
