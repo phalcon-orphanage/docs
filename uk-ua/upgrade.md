@@ -394,19 +394,19 @@ echo Enum::FETCH_ASSOC;
 > Використання: [Документація фільтра](filter)
 {: .alert .alert-info }
 
-Компонент `Filter` було перезаписано, використовуючи локатор сервісів. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
+Компонент `Filter` було перезаписано, використовуючи локатор сервісів. Кожен "знешкоджувач" (sanitizer) тепер вкладений у власний клас і завантажений в лінивому режимі, щоб забезпечити максимальну продуктивність і найменше використання ресурсів.
 
 ### Огляд
 
-The `Phalcon\Filter` class has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+Клас `Phalcon\Filter` був переписаний, щоб виконувати роль локатора сервісу для різних *знешкоджувачів*. Цей об'єкт дозволяє вам знешкодити введені дані, як раніше використовувався метод `sanitize()`.
 
-The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
+Знешкоджені значення автоматично перетворюються на відповідні типи. Це типова поведінка для `int`, `bool` та `float` фільтрів.
 
-When instantiating the filter object, it does not know about any sanitizers. You have two options:
+При активізації об'єкта фільтра, він не знає про жоден про знешкоджувач. У вас є два варіанти:
 
-#### Load All the Default Sanitizers
+#### Завантажити всі знешкоджувачі за промовчанням
 
-You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
+Ви можете завантажити всі підтримувані Phalcon знешкоджувачі, використавши компонент [Phalcon\Filter\Factory](api/Phalcon_Filter#filter-filterfactory).
 
 ```php
 <?php
@@ -417,21 +417,21 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
 
-Calling`newInstance()` will return a [Phalcon\Filter](api/Phalcon_Filter#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
+Виклик`newInstance()` поверне об’єкт [Phalcon\Filter](api/Phalcon_Filter#filter) з усіма зареєстрованими знешкоджувачами. Знешкоджувачі завантажені у лінивому режимі, тому вони будуть активовані лише за викликом з локатора.
 
-#### Load Only Sanitizers You Want
+#### Завантажити лише знешкоджувачі, які вам потрібні
 
-You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
+Ви можете задіяти компонент [Phalcon\Filter](api/Phalcon_Filter#filter) або ж використати метод `set()` для встановлення всіх необхідних вам знешкоджувачів, або передати масив зі знешкоджувачами, які ви хочете зареєструвати, у масив конструктора.
 
-### Using the `FactoryDefault`
+### Використання `FactoryDefault`
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter](api/Phalcon_Filter#filter) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
+Якщо ви використовуєте контейнер [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault), тоді [Phalcon\Filter](api/Phalcon_Filter#filter) буде завантажено у контейнер автоматично. Потім ви можете продовжувати використовувати сервіс у своїх контролерах або компонентах, як ви робили до цього. Назва цього сервісу у контейнері Di - `filter`, як і раніше.
 
-Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
+Також компоненти, які використовують службу фільтрації, такі як об'єкт [Request](api/phalcon_http#http-request), безпосередньо використовують новий локатор фільтрів. Для цих компонентів не потрібні ніякі додаткові зміни.
 
-### Using a Custom `Di`
+### Використання власного `Di`
 
-If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself and need the filter service, you will need to change its registration as follows:
+Якщо ви встановили всі сервіси в [Phalcon\Di](api/Phalcon_Di) самостійно і потребуєте сервіс фільтрування, тоді ви повинні змінити його реєстрацію наступним чином:
 
 ```php
 <?php
@@ -450,28 +450,28 @@ $container->set(
 );
 ```
 
-> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
+> **ПРИМІТКА**: Зважайте на те, що навіть якщо ви зареєструєте сервіс фільтрування вручну, **ім'я** цього сервісу має бути **filter**, щоб інші компоненти змогли його використовувати
 {: .alert .alert-warning }
 
-### Constants
+### Константи
 
-The constants that the v3 `Phalcon\Filter` have somewhat changed.
+Константи, які мав `Phalcon\Filter` у v3, дещо змінилися.
 
-#### Removed
+#### Видалено
 
 - `FILTER_INT_CAST` (`int!`)
 - `FILTER_FLOAT_CAST` (`float!`)
 
-By default the service sanitizers cast the value to the appropriate type so these are obsolete
+За замовчуванням сервіс sanitizers передає значення відповідному типу, тому ці застарілі
 
-- `FILTER_APHANUM` has been removed - replaced by `FILTER_ALNUM`
+- `FILTER_APHANUM` було видалено - замінено на `FILTER_ALNUM`
 
-#### Changed
+#### Змінено
 
-- `FILTER_SPECIAL_CHARS` has changed been removed - replaced by `FILTER_SPECIAL`
-- `FILTER_ALNUM` - replaced `FILTER_ALPHANUM`
-- `FILTER_ALPHA` - sanitize only alpha characters
-- `FILTER_BOOL` - sanitize boolean including "yes", "no", etc.
+- `FILTER_SPECAL_CHARS` було видалено - замінено на `FILTER_SPECIAL`
+- `FILTER_ALNUM` - замінено `FILTER_ALPHANUM`
+- `FILTER_ALPHA` - знешкоджує тільки альфа-символи
+- `FILTER_BOOL` - знешкоджує лише логічногі типи, включаючи "так", "ні", і т. д.
 - `FILTER_LOWERFIRST` - sanitze using `lcfirst`
 - `FILTER_REGEX` - sanitize based on a pattern (`preg_replace`)
 - `FILTER_REMOVE` - sanitize by removing characters (`str_replace`)
@@ -997,7 +997,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x                  | State      | 4.0.x                                  |
 | ---------------------- | ---------- | -------------------------------------- |
-| Phalcon\Acl           | Removed    |                                        |
+| Phalcon\Acl           | Видалено   |                                        |
 | Phalcon\Acl\Adapter  | Renamed to | Phalcon\Acl\Adapter\AbstractAdapter |
 | Phalcon\Acl\Resource | Renamed to | Phalcon\Acl\Component                |
 |                        | New        | Phalcon\Acl\Enum                     |
@@ -1007,9 +1007,9 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | 3.4.x                                 | State      | 4.0.x                                          |
 | ------------------------------------- | ---------- | ---------------------------------------------- |
 | Phalcon\Annotations\Adapter         | Renamed to | Phalcon\Annotations\Adapter\AbstractAdapter |
-| Phalcon\Annotations\Adapter\Apc    | Removed    |                                                |
+| Phalcon\Annotations\Adapter\Apc    | Видалено   |                                                |
 | Phalcon\Annotations\Adapter\Files  | Renamed to | Phalcon\Annotations\Adapter\Stream          |
-| Phalcon\Annotations\Adapter\Xcache | Removed    |                                                |
+| Phalcon\Annotations\Adapter\Xcache | Видалено   |                                                |
 | Phalcon\Annotations\Factory         | Renamed to | Phalcon\Annotations\AnnotationsFactory       |
 
 ### Application
@@ -1030,29 +1030,29 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x                                 | State      | 4.0.x                                               |
 | ------------------------------------- | ---------- | --------------------------------------------------- |
-| Phalcon\Cache\Backend\Apc          | Removed    |                                                     |
+| Phalcon\Cache\Backend\Apc          | Видалено   |                                                     |
 | Phalcon\Cache\Backend               | Renamed to | Phalcon\Cache                                      |
 | Phalcon\Cache\Backend\Factory      | Renamed to | Phalcon\Cache\AdapterFactory                      |
 | Phalcon\Cache\Backend\Apcu         | Renamed to | Phalcon\Cache\Adapter\Apcu                       |
 | Phalcon\Cache\Backend\File         | Renamed to | Phalcon\Cache\Adapter\Stream                     |
 | Phalcon\Cache\Backend\Libmemcached | Renamed to | Phalcon\Cache\Adapter\Libmemcached               |
-| Phalcon\Cache\Backend\Memcache     | Removed    |                                                     |
+| Phalcon\Cache\Backend\Memcache     | Видалено   |                                                     |
 | Phalcon\Cache\Backend\Memory       | Renamed to | Phalcon\Cache\Adapter\Memory                     |
-| Phalcon\Cache\Backend\Mongo        | Removed    |                                                     |
+| Phalcon\Cache\Backend\Mongo        | Видалено   |                                                     |
 | Phalcon\Cache\Backend\Redis        | Renamed to | Phalcon\Cache\Adapter\Redis                      |
 |                                       | New        | Phalcon\Cache\CacheFactory                        |
-| Phalcon\Cache\Backend\Xcache       | Removed    |                                                     |
+| Phalcon\Cache\Backend\Xcache       | Видалено   |                                                     |
 | Phalcon\Cache\Exception             | Renamed to | Phalcon\Cache\Exception\Exception                |
 |                                       | New        | Phalcon\Cache\Exception\InvalidArgumentException |
-| Phalcon\Cache\Frontend\Base64      | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Data        | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Factory     | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Igbinary    | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Json        | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Msgpack     | Removed    |                                                     |
-| Phalcon\Cache\Frontend\None        | Removed    |                                                     |
-| Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
-| Phalcon\Cache\Multiple              | Removed    |                                                     |
+| Phalcon\Cache\Frontend\Base64      | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\Data        | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\Factory     | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\Igbinary    | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\Json        | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\Msgpack     | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\None        | Видалено   |                                                     |
+| Phalcon\Cache\Frontend\Output      | Видалено   |                                                     |
+| Phalcon\Cache\Multiple              | Видалено   |                                                     |
 
 ### Колекція
 
@@ -1218,7 +1218,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
-| Phalcon\Image          | Removed    |                                          |
+| Phalcon\Image          | Видалено   |                                          |
 | Phalcon\Image\Adapter | Renamed to | Phalcon\Image\Adapter\AbstractAdapter |
 |                         | New        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
@@ -1231,12 +1231,12 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Logger\Adapter            | Renamed to | Phalcon\Logger\Adapter\AbstractAdapter     |
 | Phalcon\Logger\Adapter\Blackhole | Renamed to | Phalcon\Logger\Adapter\Noop                |
 | Phalcon\Logger\Adapter\File      | Renamed to | Phalcon\Logger\Adapter\Stream              |
-| Phalcon\Logger\Adapter\Firephp   | Removed    |                                               |
+| Phalcon\Logger\Adapter\Firephp   | Видалено   |                                               |
 | Phalcon\Logger\Factory            | Renamed to | Phalcon\Logger\LoggerFactory                |
 | Phalcon\Logger\Formatter          | Renamed to | Phalcon\Logger\Formatter\AbstractFormatter |
-| Phalcon\Logger\Formatter\Firephp | Removed    |                                               |
-| Phalcon\Logger\Formatter\Syslog  | Removed    |                                               |
-| Phalcon\Logger\Multiple           | Removed    |                                               |
+| Phalcon\Logger\Formatter\Firephp | Видалено   |                                               |
+| Phalcon\Logger\Formatter\Syslog  | Видалено   |                                               |
+| Phalcon\Logger\Multiple           | Видалено   |                                               |
 
 ### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
@@ -1251,19 +1251,19 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | 3.4.x                                             | State      | 4.0.x                                        |
 | ------------------------------------------------- | ---------- | -------------------------------------------- |
 | Phalcon\Mvc\Collection                          | Renamed to | Phalcon\Collection                          |
-| Phalcon\Mvc\Collection\Behavior                | Removed    |                                              |
-| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Removed    |                                              |
-| Phalcon\Mvc\Collection\Behavior\Timestampable | Removed    |                                              |
-| Phalcon\Mvc\Collection\Document                | Removed    |                                              |
+| Phalcon\Mvc\Collection\Behavior                | Видалено   |                                              |
+| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Видалено   |                                              |
+| Phalcon\Mvc\Collection\Behavior\Timestampable | Видалено   |                                              |
+| Phalcon\Mvc\Collection\Document                | Видалено   |                                              |
 | Phalcon\Mvc\Collection\Exception               | Renamed to | Phalcon\Collection\Exception               |
-| Phalcon\Mvc\Collection\Manager                 | Removed    |                                              |
+| Phalcon\Mvc\Collection\Manager                 | Видалено   |                                              |
 |                                                   | New        | Phalcon\Collection\ReadOnly                |
 | Phalcon\Mvc\Model\Message                      | Renamed to | Phalcon\Messages\Message                   |
-| Phalcon\Mvc\Model\MetaData\Apc                | Removed    |                                              |
+| Phalcon\Mvc\Model\MetaData\Apc                | Видалено   |                                              |
 | Phalcon\Mvc\Model\MetaData\Files              | Renamed to | Phalcon\Mvc\Model\MetaData\Stream        |
-| Phalcon\Mvc\Model\MetaData\Memcache           | Removed    |                                              |
-| Phalcon\Mvc\Model\MetaData\Session            | Removed    |                                              |
-| Phalcon\Mvc\Model\MetaData\Xcache             | Removed    |                                              |
+| Phalcon\Mvc\Model\MetaData\Memcache           | Видалено   |                                              |
+| Phalcon\Mvc\Model\MetaData\Session            | Видалено   |                                              |
+| Phalcon\Mvc\Model\MetaData\Xcache             | Видалено   |                                              |
 | Phalcon\Mvc\Model\Validator                    | Renamed to | Phalcon\Validation\Validator               |
 | Phalcon\Mvc\Model\Validator\Email             | Renamed to | Phalcon\Validation\Validator\Email        |
 | Phalcon\Mvc\Model\Validator\Exclusionin       | Renamed to | Phalcon\Validation\Validator\ExclusionIn  |
@@ -1292,11 +1292,11 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Queue
 
-| 3.4.x                                | State   | 4.0.x |
-| ------------------------------------ | ------- | ----- |
-| Phalcon\Queue\Beanstalk            | Removed |       |
-| Phalcon\Queue\Beanstalk\Exception | Removed |       |
-| Phalcon\Queue\Beanstalk\Job       | Removed |       |
+| 3.4.x                                | State    | 4.0.x |
+| ------------------------------------ | -------- | ----- |
+| Phalcon\Queue\Beanstalk            | Видалено |       |
+| Phalcon\Queue\Beanstalk\Exception | Видалено |       |
+| Phalcon\Queue\Beanstalk\Job       | Видалено |       |
 
 ### Session
 
@@ -1305,7 +1305,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Session\Adapter           | Renamed to | Phalcon\Session\Adapter\AbstractAdapter |
 | Phalcon\Session\Adapter\Files    | Renamed to | Phalcon\Session\Adapter\Stream          |
 |                                     | New        | Phalcon\Session\Adapter\Noop            |
-| Phalcon\Session\Adapter\Memcache | Removed    |                                            |
+| Phalcon\Session\Adapter\Memcache | Видалено   |                                            |
 | Phalcon\Session\Factory           | Renamed to | Phalcon\Session\Manager                  |
 
 ### Storage
@@ -1333,7 +1333,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x                       | State      | 4.0.x                                        |
 | --------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Translate          | Removed    |                                              |
+| Phalcon\Translate          | Видалено   |                                              |
 | Phalcon\Translate\Adapter | Renamed to | Phalcon\Translate\Adapter\AbstractAdapter |
 |                             | New        | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Renamed to | Phalcon\Translate\TranslateFactory         |
