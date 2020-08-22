@@ -398,15 +398,15 @@ echo Enum::FETCH_ASSOC;
 
 ### Огляд
 
-Клас `Phalcon\Filter` був переписаний, щоб виконувати роль локатора сервісу для різних *знешкоджувачів*. This object allows you to sanitize input as before using the `sanitize()` method.
+Клас `Phalcon\Filter` був переписаний, щоб виконувати роль локатора сервісу для різних *знешкоджувачів*. Цей об'єкт дозволяє вам знешкодити введені дані, як раніше використовувався метод `sanitize()`.
 
-The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
+Знешкоджені значення автоматично перетворюються на відповідні типи. Це типова поведінка для `int`, `bool` та `float` фільтрів.
 
-When instantiating the filter object, it does not know about any sanitizers. You have two options:
+При активізації об'єкта фільтра, він не знає про жоден про знешкоджувач. У вас є два варіанти:
 
-#### Load All the Default Sanitizers
+#### Завантажити всі знешкоджувачі за промовчанням
 
-You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
+Ви можете завантажити всі підтримувані Phalcon знешкоджувачі, використавши компонент [Phalcon\Filter\Factory](api/Phalcon_Filter#filter-filterfactory).
 
 ```php
 <?php
@@ -417,21 +417,21 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
 
-Calling`newInstance()` will return a [Phalcon\Filter](api/Phalcon_Filter#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
+Виклик`newInstance()` поверне об’єкт [Phalcon\Filter](api/Phalcon_Filter#filter) з усіма зареєстрованими знешкоджувачами. Знешкоджувачі завантажені у лінивому режимі, тому вони будуть активовані лише за викликом з локатора.
 
-#### Load Only Sanitizers You Want
+#### Завантажити лише знешкоджувачі, які вам потрібні
 
-You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
+Ви можете задіяти компонент [Phalcon\Filter](api/Phalcon_Filter#filter) або ж використати метод `set()` для встановлення всіх необхідних вам знешкоджувачів, або передати масив зі знешкоджувачами, які ви хочете зареєструвати, у масив конструктора.
 
-### Using the `FactoryDefault`
+### Використання `FactoryDefault`
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter](api/Phalcon_Filter#filter) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
+Якщо ви використовуєте контейнер [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault), тоді [Phalcon\Filter](api/Phalcon_Filter#filter) буде завантажено у контейнер автоматично. Потім ви можете продовжувати використовувати сервіс у своїх контролерах або компонентах, як ви робили до цього. Назва цього сервісу у контейнері Di - `filter`, як і раніше.
 
-Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
+Також компоненти, які використовують службу фільтрації, такі як об'єкт [Request](api/phalcon_http#http-request), безпосередньо використовують новий локатор фільтрів. Для цих компонентів не потрібні ніякі додаткові зміни.
 
-### Using a Custom `Di`
+### Використання власного `Di`
 
-If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself and need the filter service, you will need to change its registration as follows:
+Якщо ви встановили всі сервіси в [Phalcon\Di](api/Phalcon_Di) самостійно і потребуєте сервіс фільтрування, тоді ви повинні змінити його реєстрацію наступним чином:
 
 ```php
 <?php
@@ -450,10 +450,10 @@ $container->set(
 );
 ```
 
-> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
+> **ПРИМІТКА**: Зважайте на те, що навіть якщо ви зареєструєте сервіс фільтрування вручну, **ім'я** цього сервісу має бути **filter**, щоб інші компоненти змогли його використовувати
 {: .alert .alert-warning }
 
-### Constants
+### Константи
 
 The constants that the v3 `Phalcon\Filter` have somewhat changed.
 
