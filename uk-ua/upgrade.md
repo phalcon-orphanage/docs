@@ -398,7 +398,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Огляд
 
-Клас `Phalcon\Filter` був переписаний, щоб діяти як локатор сервісу для різних *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
+Клас `Phalcon\Filter` був переписаний, щоб виконувати роль локатора сервісу для різних *знешкоджувачів*. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
