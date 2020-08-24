@@ -899,26 +899,26 @@ $group->addTrace(
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Session Documentation](session)
+> Використання: [Документація сесій](session)
 {: .alert .alert-info }
 
-`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
+`Session` та `Session\Bag` більше не завантажується за замовчуванням в `Phalcon\DI\FactoryDefault`. `Session` було переписано повністю.
 
-- Added `Phalcon\Session\Adapter\AbstractAdapter`
-- Added `Phalcon\Session\Adapter\Noop`
-- Added `Phalcon\Session\Adapter\Stream`
-- Added `Phalcon\Session\Manager`
-- Added `Phalcon\Session\ManagerInterface`
-- Removed `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\Adapter\AbstractAdapter`
-- Removed `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
-- Removed `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
-- Removed `Phalcon\Session\Adapter\Memcache`
-- Removed `Phalcon\Session\BagInterface`
-- Removed `Phalcon\Session\Factory`
+- Додано `Phalcon\Session\Adapter\AbstractAdapter`
+- Додано `Phalcon\Session\Adapter\Noop`
+- Додано `Phalcon\Session\Adapter\Stream`
+- Додано `Phalcon\Session\Manager`
+- Додано `Phalcon\Session\ManagerInterface`
+- Видалено `Phalcon\Session\Adapter` - замінено на `Phalcon\Session\Adapter\AbstractAdapter`
+- Видалено `Phalcon\Session\AdapterInterface` - замінено на власний `SessionHandlerInterface`
+- Видалено `Phalcon\Session\Adapter\Files` - замінено на `Phalcon\Session\Adapter\Stream`
+- Видалено `Phalcon\Session\Adapter\Memcache`
+- Видалено `Phalcon\Session\BagInterface`
+- Видалено `Phalcon\Session\Factory`
 
 ### Session\Adapter
 
-Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
+Кожен адаптер реалізує інструмент PHP `SessionHandlerInterface`. Доступні адаптери:
 
 - `Phalcon\Session\Adapter\AbstractAdapter`
 - `Phalcon\Session\Adapter\Libmemcached`
@@ -928,15 +928,15 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 ### Session\Manager
 
-- Now is the single component that offers session manipulation by using adapters (see above). Each adapter implements PHP's `SessionHandlerInterface`
-- Developers can add any adapter that implements `SessionHandlerInterface`
+- Зараз це єдиний компонент, який пропонує маніпуляції з сесіями із використанням адаптерів (див. вище). Кожен адаптер реалізує інструмент PHP `SessionHandlerInterface`
+- Розробники можуть додати будь-який адаптер, який реалізує `SessionHandlerInterface`
 
 * * *
 
-## Тег
+## Tag
 
-- Added `renderTitle()` that renders the title enclosed in `<title>` tags.
-- Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
+- Додано `renderTitle()`, який виводить назву, взяту у `<title>` теги.
+- Змінено `getTitle`. Він повертає лише текст. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
 - Changed `textArea` to use `htmlspecialchars` to prevent XSS injection.
 
 * * *
