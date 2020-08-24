@@ -766,79 +766,79 @@ $criteria->limit(10, null);
 
 ### Mvc\Model\Query\Builder
 
-- Додано підтримку прив'язки. The Query Builder has the same methods as `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` and `setBindTypes`.
-- Changed `addFrom` to remove third parameter `$with`
+- Додано підтримку прив'язки. Конструктор запитів має ті ж методи, що і `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` і `setBindTypes`.
+- Змінено `addFrom` для переформатування третього параметра `$with`
 
 ### Mvc\Model\Query\BuilderInterface
 
-- Added `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
+- Додано `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
 
 ### Mvc\Model\RelationInterface
 
-- Added `getParams`
+- Додано `getParams`
 
 ### Mvc\Model\ResultsetInterface
 
-- Added `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
+- Додано `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
 
 ### Mvc\Model\Transaction\ManagerInterface
 
-- Added `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
+- Додано `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
 
 ### Mvc\Model\Validator*
 
-- Removed `Phalcon\Mvc\Model\Validator\*` in favor of `Phalcon\Validation\Validator\*`
+- Видалено `Phalcon\Mvc\Model\Validator\*` на користь `Phalcon\Validation\Validator\*`
 
 ### Mvc\ModelInterface
 
-- Added `getModelsMetaData`
+- Додано `getModelsMetaData`
 
 ### Mvc\Router
 
-- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
+- Видалено `getRewriteUri()`. URI необхідно передавати методу `handle` об'єкта application.
 
 ### Mvc\RouterInterface
 
-- Added `attach`
+- Додано `attach`
 
 ### Mvc\Router\RouteInterface
 
-- Added `convert` so that calling `add` will return an instance that has `convert` method
+- Додано `convert` тому виклик `add` поверне екземпляр, що має метод `convert`
 
 ### Mvc\Router\RouteInterface
 
-- Added response handler to `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, to allow use of a custom response handler.
+- Додано обробник відповіді до `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandseHandler`, щоб дозволити використання обробника індивідуальних відповідей.
 
 ### Mvc\User
 
-- Removed `Phalcon\Mvc\User\Component` - use `Phalcon\Di\Injectable` instead
-- Removed `Phalcon\Mvc\User\Module` - use `Phalcon\Di\Injectable` instead
-- Removed `Phalcon\Mvc\User\Plugin` - use `Phalcon\Di\Injectable` instead
+- Видалено `Phalcon\Mvc\User\Component` - натомість використовується `Phalcon\Di\Injectable`
+- Видалено `Phalcon\Mvc\User\Module` - натомість використовується `Phalcon\Di\Injectable`
+- Видалено `Phalcon\Mvc\User\Plugin` - натомість використовується `Phalcon\Di\Injectable`
 
 ### Mvc\View\Engine\Volt
 
-The options for Volt have changed (the key names). Using the old syntax will produce a deprecation warning. The new options are:
+Налаштування Volt змінено (назви ключів). Використання старого синтаксису спричинить попередження про його неактуальність. Нові опції:
 
-- `always` - Always compile
-- `extension` - Extension of files
-- `separator` - Separator (used for the folders/routes)
-- `stat` - Stat each file before trying to use it
-- `path` - The path of the files
-- `prefix` - The prefix of the files
+- `always` - завжди компілювати
+- `extension` - розширення файлів
+- `separator` - роздільник (використовується для тек/шляхів)
+- `stat` - облік кожного файлу перед спробою його використання
+- `path` - шлях до файлів
+- `prefix` - префікс файлів
 
 * * *
 
 ## Paginator
 
-- `getPaginate` now becomes `paginate`
-- `$before` is removed and replaced with `$previous`
-- `$total_pages` is removed since it contained the same information as `$last`
-- Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
+- `getPaginate` тепер стає `paginate`
+- `$before` видалений і замінений на `$previous`
+- `$total_pages` вилучено, оскільки він містить таку ж інформацію, як і `$last`
+- Додано `Phalcon\Paginator\RepositoryInterface` для репозиторію поточного стану `paginator` а також опціонально встановлює псевдоніми для репозиторію властивостей
 
 ## Router
 
-- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
-- You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
+- Видалено `getRewriteUri()`. URI необхідно передавати методу `handle` об'єкта application.
+- Ви можете додати `CONNECT`, `PURGE`, `TRACE` маршрутів до групи маршрутизаторів. Вони функціонують так само, як і в звичайному маршрутизаторі:
 
 ```php
 use Phalcon\Mvc\Router\Group;
@@ -872,26 +872,26 @@ $group->addTrace(
 
 * * *
 
-## Безпека
+## Security
 
-- Removed `hasLibreSsl`
-- Removed `getSslVersionNumber`
-- Added `setPadding`
-- Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
+- Видалено `hasLibreSsl`
+- Видалено `getSslVersionNumber`
+- Додано `setPadding`
+- Додано фіксатор для поточного токену, що використовується під час перевірок, тому тепер щоразу, як `getToken` отримує токен для перевірки, він не змінюється
 
 * * *
 
-## Запит
+## Request
 
 ### Http\Request
 
-- Added `numFiles` returning `long` - the number of files present in the request
-- Changed `hasFiles` to return `bool` - if the request has files or not
+- Додано `numFiles` який повертає `long` - кількість файлів, що присутні в запиті
+- Змінено `hasFiles` для повернення `bool` - якщо запит має файли чи ні
 
 ### Http\RequestInterface
 
-- Added `numFiles` returning `int` - the number of files present in the request
-- Changed `hasFiles` to return `bool` - if the request has files or not
+- Додано `numFiles`, який повертає `int` - кількість файлів, що присутні в запиті
+- Змінено `hasFiles` для повернення `bool` - якщо запит має файли чи ні
 
 * * *
 
