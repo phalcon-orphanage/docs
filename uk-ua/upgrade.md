@@ -99,7 +99,7 @@ php -m | grep phalcon
 
 - Видалено `Phalcon\Acl`
 
-- Removed `Phalcon\Acl\Adapter`
+- Видалено `Phalcon\Acl\Adapter`
 
 - Перейменовано `Phalcon\Acl\Resource` на `Phalcon\Acl\Component`
 
