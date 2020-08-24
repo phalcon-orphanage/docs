@@ -471,7 +471,7 @@ $container->set(
 - `FILTER_SPECAL_CHARS` було видалено - замінено на `FILTER_SPECIAL`
 - `FILTER_ALNUM` - замінено `FILTER_ALPHANUM`
 - `FILTER_ALPHA` - знешкоджує тільки альфа-символи
-- `FILTER_BOOL` - знешкоджує лише логічногі типи, включаючи "так", "ні", і т. д.
+- `FILTER_BOOL` - знешкоджує лише логічні типи, включаючи "так", "ні", і т. д.
 - `FILTER_LOWERFIRST` - sanitze using `lcfirst`
 - `FILTER_REGEX` - sanitize based on a pattern (`preg_replace`)
 - `FILTER_REMOVE` - sanitize by removing characters (`str_replace`)
