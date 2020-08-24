@@ -1784,7 +1784,7 @@ class IpValidator extends AbstractValidator
 
 It is important that validators return a valid `boolean` value indicating if the validation was successful or not.
 
-## Messages
+## Повідомлення
 
 [Phalcon\Validation](api/phalcon_validation#validation) utilizes the [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) collection, providing a flexible way to output or store the validation messages generated during the validation processes.
 
