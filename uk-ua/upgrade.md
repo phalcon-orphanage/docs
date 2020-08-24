@@ -472,14 +472,14 @@ $container->set(
 - `FILTER_ALNUM` - замінено `FILTER_ALPHANUM`
 - `FILTER_ALPHA` - знешкоджує тільки альфа-символи
 - `FILTER_BOOL` - знешкоджує лише логічні типи, включаючи "так", "ні", і т. д.
-- `FILTER_LOWERFIRST` - sanitze using `lcfirst`
-- `FILTER_REGEX` - sanitize based on a pattern (`preg_replace`)
-- `FILTER_REMOVE` - sanitize by removing characters (`str_replace`)
-- `FILTER_REPLACE` - sanitize by replacing characters (`str_replace`)
-- `FILTER_SPECIAL` - replaced `FILTER_SPECIAL_CHARS`
-- `FILTER_SPECIALFULL` - sanitize special chars (`filter_var`)
-- `FILTER_UPPERFIRST` - sanitize using `ucfirst`
-- `FILTER_UPPERWORDS` - sanitize using `ucwords`
+- `FILTER_LOWERFIRST` - знешкоджує, використовуючи `lcfirst`
+- `FILTER_REGEX` - знешкоджує згідно із заданим шаблоном (`preg_replace`)
+- `FILTER_REMOVE` - знешкоджує, видаляючи символи (`str_replace`)
+- `FILTER_REPLACE` - знешкоджує, замінюючи символи (`str_replace`)
+- `FILTER_SPECIAL` - замінено `FILTER_SPECIAL_CHARS`
+- `FILTER_SPECIALFULL` - знешкоджує спецсимволи (`filter_var`)
+- `FILTER_UPPERFIRST` - знешкоджує, використовуючи `ucfirst`
+- `FILTER_UPPERWORDS` - знешкоджує, використовуючи `ucwords`
 
 * * *
 
@@ -487,8 +487,8 @@ $container->set(
 
 ### Forms\Form
 
-- `Phalcon\Forms\Form::clear` will no longer call `Phalcon\Forms\Element::clear`, instead it will clear/set default value itself, and `Phalcon\Forms\Element::clear` will now call `Phalcon\Forms\Form::clear` if it’s assigned to the form, otherwise it will just clear itself.
-- `Phalcon\Forms\Form::getValue` will now also try to get the value by calling `Tag::getValue` or element’s `getDefault` method before returning `null`, and `Phalcon\Forms\Element::getValue` calls `Tag::getDefault` only if it’s not added to the form.
+- `Phalcon\Forms\Form::clear` більше не викликатиме `Phalcon\Forms\Element::clear`, натомість буде очищувати/встановлювати власні значення за замовчуванням, та `Phalcon\Forms\Element::clear` викликатиме `Phalcon\Forms\Form::clear` якщо він прив'язаний до форми, інакше він просто очистить власне значення.
+- `Phalcon\Forms\Form::getValue` буде також намагатись отримати значення через виклик `Tag::getValue` або методу `getDefault` елементів, перед тим, як поверне значення `null`, та `Phalcon\Forms\Element::getValue` викликає `Tag::getDefault` лише, якщо його не додано до форми.
 
 * * *
 
@@ -496,54 +496,54 @@ $container->set(
 
 ### Html\Breadcrumbs
 
-- Added `Phalcon\Html\Breadcrumbs`, a component that creates HTML code for breadcrumbs.
+- Додано `Phalcon\Html\Breadcrumbs`, компонент, який створює HTML код для хлібних крихт.
 
 ### Html\Tag
 
-- Added `Phalcon\Html\Tag`, a component that creates HTML elements. It will replace `Phalcon\Tag` in a future version. This component does not use static method calls.
+- Додано `Phalcon\Html\Tag`, компонент що створює HTML-елементи. Він замінить `Phalcon\Tag` у наступній версії. Цей компонент не використовує статичні виклики методів.
 
 ### Http\RequestInterface
 
-- Removed `isSecureRequest` in favor of `isSecure`
-- Removed `isSoapRequested` in favor of `isSoap`
+- Видалено `isSecureRequest` на користь `isSecure`
+- Видалено `isSoapRequested` на користь `isSoap`
 
 ### Http\Response
 
-- Added `hasHeader()` method to `Phalcon\Http\Response` to provide the ability to check if a header exists.
-- Added `Phalcon\Http\Response\Cookies::getCookies`
-- Changed `setHeaders` now merges the headers with any pre-existing ones in the internal collection
-- Added two new events `response::beforeSendHeaders` and `response::afterSendHeaders`
+- Додано `hasHeader()` метод до `Phalcon\Http\Response`, щоб зробити можливою перевірку існування заголовка.
+- Додано `Phalcon\Http\Response\Cookies::getCookies`
+- Змінений `setHeaders` тепер об'єднує заголовки з будь-якими попередньо доданими у внутрішню колекцію
+- Додано дві нові події `response::beforeSendHeaders` та `response::afterSendHeaders`
 
 * * *
 
 ## Зображення
 
-- Added `Phalcon\Image\Enum`
-- Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
-- Renamed `Phalcon\Image\Factory` to `Phalcon\Image\ImageFactory`
-- Removed `Phalcon\Image`
+- Додано `Phalcon\Image\Enum`
+- Перейменовано `Phalcon\Image\Adapter` на `Phalcon\Image\Adapter\AbstractAdapter`
+- Перейменовано `Phalcon\Image\Factory` на `Phalcon\Image\ImageFactory`
+- Видалено `Phalcon\Image`
 
-## Image\Enum (Constants)
+## Image\Enum (константи)
 
-Example:
+Приклад:
 
 ```php
 <?php
 
 use Phalcon\Image\Enum;
 
-// Resizing constraints
-echo Enum::AUTO;    // prints 4
-echo Enum::HEIGHT;  // prints  3
-echo Enum::INVERSE; // prints  5
-echo Enum::NONE;   // prints  1
-echo Enum::PRECISE; // prints  6
-echo Enum::TENSILE; // prints  7
-echo Enum::WIDTH;   // prints  2
+// Зміна обмежень
+echo Enum::AUTO;    // виводить 4
+echo Enum::HEIGHT;  // виводить  3
+echo Enum::INVERSE; // виводить  5
+echo Enum::NONE;   // виводить  1
+echo Enum::PRECISE; // виводить  6
+echo Enum::TENSILE; // виводить  7
+echo Enum::WIDTH;   //  виводить 2
 
-// Flipping directions
-echo Enum::HORIZONTAL; // prints  11
-echo Enum::VERTICAL;   // prints  12
+// Вказівки для гортання
+echo Enum::HORIZONTAL; // виводить  11
+echo Enum::VERTICAL;   // виводить  12
 ```
 
 * * *
@@ -552,16 +552,16 @@ echo Enum::VERTICAL;   // prints  12
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Logger Documentation](logger)
+> Використання: [Документація журналу](logger)
 {: .alert .alert-info }
 
-The `Logger` component has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+Компонент `Logger` перезаписано, щоб відповідати [PSR-3](https://www.php-fig.org/psr/psr-3/). Це дозволяє вам використовувати [Phalcon\Logger](api/Phalcon_Logger) у будь-якому продукті, який використовує журнал [PSR-3,](https://www.php-fig.org/psr/psr-3/) а не лише на основі файлів Phalcon.
 
-In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality.
+У v3 до журналу включено адаптер в одному компоненті. Таким чином, під час створення об'єкту журналу, розробник створював адаптер (файл, потік тощо) з функціоналом журналювання.
 
-For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+Для v4 ми переписали компонент, щоб реалізувати лише функціонал журналювання та приймання одного чи більше адаптерів, які відповідальні за виконання роботи з журналювання. Це одразу забезпечує сумісність із [PSR-3](https://www.php-fig.org/psr/psr-3/) і розділяє обов'язки компонента. Це також створює простий спосіб підключити понад одного адаптера до компонента логування, щоб дозволити журналювання подій декількох адаптерів. Використовуючи цю реалізацію, ми зменшили обсяг коду, необхідний для цього компонента та видалили старий компонент `Logger\Multiple`.
 
-### Creating a Logger Component
+### Створення компонента журналу
 
 ```php
 <?php
@@ -577,7 +577,7 @@ $logger  = new Logger(
     ]
 );
 
-$logger->error('Something went wrong');
+$logger->error('Щось пішло не так');
 ```
 
 Реєстрація його у DI
@@ -607,9 +607,9 @@ $container->set(
 );
 ```
 
-### Multiple Loggers
+### Декілька логерів
 
-The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
+Компонент `Phalcon\Logger\Multiple` видалено. Ви можете досягти такої ж функціональності за допомогою компонента журналювання та зареєструвавши більше одного адаптера:
 
 ```php
 <?php
@@ -630,43 +630,43 @@ $logger = new Logger(
     ]
 );
 
-// Log to all adapters
-$logger->error('Something went wrong');
+// Журнал для всіх адаптерів
+$logger->error('Щось пішло не так');
 ```
 
 * * *
 
-## Messages
+## Повідомлення
 
-- `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. In the past we had two components, one for validation and one for models. We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages. 
-    - Changed `Phalcon\Mvc\Model` to use the `Phalcon\Messages\Message` object for its messages
-    - Changed `Phalcon\Validation\*` to use the `Phalcon\Messages\Message` object for its messages
+- `Phalcon\Messages\Message` і його колекція `Phalcon\Messages\Messages` - це нові компоненти, які обробляють повідомлення для моделей і валідаторів. В минулому ми мали два компоненти, один для валідації та один для моделей. Ми об’єднали ці два компоненти, так щоб ви отримали `MessageInterface[]` під час виклику `save` у моделі або під час отримання повідомлень про результати валідації. 
+    - Змінено `Phalcon\Mvc\Model` для використання об'єкта `Phalcon\Messages\Message` для його повідомлень
+    - Змінено `Phalcon\Validation\*` для використання об'єкта `Phalcon\Messages\Message` для його повідомлень
 
 * * *
 
-### Transactions
+### Транзакції
 
-Removed in version 4.0:
+Видалено у версії 4.0:
 
-- Removed `$logger->begin()`
-- Removed `$logger->commit()`
+- Видалено `$logger->begin()`
+- Видалено `$logger->commit()`
 
-### Log Level
+### Рівень журналювання
 
-- Removed `$logger->setLogLevel()`
+- Видалено `$logger->setLogLevel()`
 
 ## Моделі
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Models Documentation](db-models)
+> Використання: [Документація Моделей](db-models)
 {: .alert .alert-info }
 
-- You can no longer assign data to models while saving them
+- Ви більше не можете призначити дані моделям, зберігаючи їх
 
-### Initialization
+### Ініціалізація
 
-The `getSource()` method has been marked as `final`. As such you can no longer override this method in your model to set the corresponding table/source of the RDBMS. Instead, you can now use the `initialize()` method and `setSource()` to set the source of your model.
+Метод `getSource()` був позначений як `final`. Таким чином, ви більше не можете змінити цей метод у вашій моделі, щоб встановити відповідну таблицю/джерело RDBMS. Замість цього, тепер ви можете використовувати методи `initialize()` і `setSource()` щоб встановити джерело вашої моделі.
 
 ```php
 <?php
@@ -683,13 +683,13 @@ class Users
 }
 ```
 
-### Save
+### Зберігання
 
-The `save()` method no longer accepts parameters to set data. You can use `assign` instead.
+Метод `save()` більше не приймає параметри, щоб визначити дані. Натомість ви можете використовувати `assign`.
 
-### Criteria
+### Критерії
 
-The second parameter of `Criteria::limit()` ('offset') must now be an integer or null. Previously there was no type requirement.
+Другий параметр `Criteria:limit()` ('offset') тепер повинен бути цілим числом або null. Раніше там не було вимог щодо типу.
 
 ```php
 $criteria->limit(10);
@@ -705,68 +705,68 @@ $criteria->limit(10, null);
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [MVC Documentation](mvc)
+> Використання: [Документація MVC](mvc)
 {: .alert .alert-info }
 
 ### Mvc\Collection
 
-- Removed `Phalcon\Mvc\Collection::validationHasFailed`
-- Removed calling `Phalcon\Mvc\Collection::validate` with object of type `Phalcon\Mvc\Model\ValidatorInterface`
+- Видалено `Phalcon\Mvc\Collection:validationHasFailed`
+- Видалено виклик `Phalcon\Mvc\Collection::validate` з об’єктом типу `Phalcon\Mvc\Model\ValidatorInterface`
 
 ### Mvc\Micro\Lazyloader
 
-- Removed `__call` in favor of `callMethod`
+- Видалено `__call` на користь `callMethod`
 
 ### Mvc\Model
 
-- Removed `Phalcon\Model::reset`
-- Added `isRelationshipLoaded` to check if relationship is loaded
-- Changed `Phalcon\Model::assign` parameters order to `$data`, `$whiteList`, `$dataColumnMap`
-- Changed `Phalcon\Model::findFirst` to return `null` instead of `false` if no record was found
-- Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
+- Видалено `Phalcon\Model::reset`
+- Додано `isRelationshipLoaded` щоб перевірити, чи завантажено зв'язки
+- Змінено `Phalcon\Model::assign` для впорядкування параметрів `$data`, `$whiteList`, `$dataColumnMap`
+- Змінено `Phalcon\Model:findFirst` для повернення `null` замість `false` якщо записи не знайдено
+- Змінено `Phalcon\Model::getRelated()` для повернення `null` для одного зі зв'язків, якщо запис не знайдено
 
 ### Mvc\Model\Criteria
 
-- Removed `addWhere`
-- Removed `order`
-- Removed `order` in favor of `orderBy`
+- Видалено `addWhere`
+- Видалено `order`
+- Видалено `order` на користь `orderBy`
 
 ### Mvc\Model\CriteriaInterface
 
-- Added `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
+- Додано `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
 
 ### Mvc\Model\Manager
 
-- `Load` no longer reuses already initialized models
-- Removed `Phalcon\Model\Manager::registerNamespaceAlias()`
-- Removed `Phalcon\Model\Manager::getNamespaceAlias()`
-- Removed `Phalcon\Model\Manager::getNamespaceAliases()`
-- The signature of `Phalcon\Mvc\Model\Manager::getRelationRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getHasOneRecords()` has changed
-- The signature of `Phalcon\Mvc\Model\Manager::getHasManyRecords()` has changed
+- `Load` більше не використовує повторно уже викликані моделі
+- Видалено `Phalcon\Model\Manager::registerNamespaceAlias()`
+- Видалено `Phalcon\Model\Manager::getNamespaceAlias()`
+- Видалено `Phalcon\Model\Manager::getNamespaceAliases()`
+- Підпис `Phalcon\Mvc\Model\Manager::getRelationRecords()` змінено
+- Підпис `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` змінено
+- Підпис `Phalcon\Mvc\Model\Manager::getHasOneRecords()` змінено
+- Підпис `Phalcon\Mvc\Model\Manager::getHasManyRecords()` змінено
 
 ### Mvc\Model\ManagerInterface
 
-- Added `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
-- Removed `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
-- Removed `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
+- Додано `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
+- Видалено `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
+- Видалено `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
 
 ### Mvc\Model\MessageInterface
 
-- Added `setModel`, `getModel`, `setCode`, `getCode`
+- Додано `setModel`, `getModel`, `setCode`, `getCode`
 
 ### Mvc\Model\QueryInterface
 
-- Added `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
+- Додано `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
 
 ### Mvc\Model\Query\BuilderInterface
 
-- Added `offset`
+- Додано `offset`
 
 ### Mvc\Model\Query\Builder
 
-- Added bind support. The Query Builder has the same methods as `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` and `setBindTypes`.
+- Додано підтримку прив'язки. The Query Builder has the same methods as `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` and `setBindTypes`.
 - Changed `addFrom` to remove third parameter `$with`
 
 ### Mvc\Model\Query\BuilderInterface
