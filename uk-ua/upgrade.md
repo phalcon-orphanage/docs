@@ -548,7 +548,7 @@ echo Enum::VERTICAL;   // prints  12
 
 * * *
 
-## Logging
+## Logger
 
 > Статус: **необхідні зміни**
 > 
@@ -1223,7 +1223,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                         | New        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
 
-### Logging
+### Logger
 
 | 3.4.x                               | State      | 4.0.x                                         |
 | ----------------------------------- | ---------- | --------------------------------------------- |
