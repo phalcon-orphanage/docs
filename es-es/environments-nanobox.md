@@ -6,31 +6,31 @@ title: 'Entornos - Nanobox'
 keywords: 'environment, nanobox, docker'
 ---
 
-# Entornos
+# Entornos Nanobox
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Resumen
+## Preámbulo
 
-[Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
+[Nanobox](https://nanobox.io) es una micro plataforma portable, para desarrollar y desplegar aplicaciones. Cuando trabajamos localmente, Nanobox utiliza Docker de girar y configurar un entorno de desarrollo virtual configurado a sus necesidades específicas. Cuando esté listo para implementar servidores en vivo, Nanobox tomará ese mismo entorno y los girará para arriba en su proveedor de la nube de elección, donde puede gestionar y ampliar su aplicación a través de la consola de Nanobox.
 
-## Local Development
+## Desarrollo local
 
-Nanobox can be used for local development on any number of projects (not only restricted to PHP). To start working with nanobox you will first [create a free Nanobox account](https://dashboard.nanobox.io/users/register), then [download and run the Nanobox installer](https://dashboard.nanobox.io/download). The account is used only to login to nanobox using the console command. Nanobox will remember your credentials so you only have to do this once. If your intent is only to use nanobox locally, you do not need to do anything else. The same login however can be used later on if you wish to deploy your application to a live environment.
+Nanobox se puede utilizar para el desarrollo local en cualquier número de proyectos (no sólo en PHP). Para comenzar a trabajar con Nanobox, primero deberá [crear una cuenta gratuita en Nanobox](https://dashboard.nanobox.io/users/register), luego [descargar y ejecutar el instalador de Nanobox](https://dashboard.nanobox.io/download). La cuenta se usa sólo para iniciar sesión en nanobox usando el comando de consola. Nanobox recordará sus credenciales por lo que sólo tendrá que hacerlo una vez. Si su intención es usar nanobox localmente, no necesita hacer otra cosa. Sin embargo, el mismo inicio de sesión puede utilizarse más tarde si desea desplegar su aplicación en un entorno en vivo.
 
-### Create a New Project
+### Crear un Nuevo Proyecto
 
-Create a project folder and `cd` into it:
+Crear una carpeta de proyecto y utilizar el comando `cd` en él:
 
 ```bash
 mkdir nanobox-phalcon && cd nanobox-phalcon
 ```
 
-### Add a `boxfile.yml`
+### Añadir un `boxfile.yml`
 
-Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
+Nanobox utiliza el archivo [`boxfile.yml`](https://docs.nanobox.io/boxfile/) para construir y configurar su aplicación en tiempo de ejecución y entorno. En la raíz de su proyecto, crear un archivo `boxfile.yml` con lo siguiente:
 
 ```yaml
 run.config:
@@ -63,16 +63,16 @@ run.config:
     - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
 ```
 
-This tells Nanobox to:
+Esto le indicará a Nanobox:
 
 - Utilizar el [motor](https://docs.nanobox.io/engines/) de PHP, un conjunto de *scripts* que se crean en tiempo de ejecución de la aplicación.
-- Use PHP 7.2.
+- Utilizar PHP 7.2.
 - Establezca la raíz de documento de Apache en `public`.
 - Incluir la extensión de Phalcon. *Nanobox adopta un enfoque básico para extensiones, así que es probable que necesite incluir otras extensiones. Puede encontrar más información [aquí](https://guides.nanobox.io/php/phalcon/php-extensions/).*
-- Install the required [PSR](https://github.com/jbboehr/php-psr.git) extension
-- Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
+- Instala la extensión [PSR](https://github.com/jbboehr/php-psr.git) necesaria
+- Agregar un alias al bash para Phalcon Devtools por lo que se puede usar el comando `phalcon`.
 
-Depending on the needs of your application, you might need to add additional extensions. For instance you might want to add `mbcrypt`, `igbinary`, `json`, `session` and `redis`. Your `extensions` section in the `boxfile.yml` will look like this:
+Dependiendo de las necesidades de su aplicación, puede que necesite añadir extensiones adicionales. Por ejemplo, podría querer añadir `mbcrypt`, `igbinary`, `json`, `session` y `redis`. La sección `extensions` del `boxfile.yml` se verá así:
 
 ```yaml
 run.config:
@@ -87,12 +87,12 @@ run.config:
       - redis
 ```
 
-> **NOTE** The order of the extensions **does** matter. Certain extensions will not load if their prerequisites are not loaded. For instance `igbinary` has to be loaded before `redis` etc.
+> **NOTA** El orden de las extensiones **si importa**. Ciertas extensiones no se cargarán si no se cargan sus prerequisitos. Por ejemplo `igbinary` tiene que ser cargado antes de `redis` etc.
 {: .alert .alert-warning }
 
-### Add Phalcon Devtools to your `composer.json`
+### Añadir Phalcon Devtools a su `composer.json`
 
-Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
+Cree un archivo `composer.json` en la raíz de su proyecto y agregue el paquete de `phalcon/devtools` a sus requisitos de dev:
 
 ```json
 {
@@ -102,60 +102,60 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-> **NOTE**: The version of Phalcon Devtools depends on which PHP version as well as Phalcon version you're using.
+> **Nota**: la versión de Phalcon Devtools depende de qué versión PHP y Phalcon que estés utilizando.
 {: .alert .alert-warning }
 
-### Start Nanobox and Generate a New Phalcon App
+### Iniciar Nanobox y generar una nueva aplicación de Phalcon
 
-From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.
+Desde la raíz de su proyecto, ejecute los siguientes comandos para iniciar Nanobox y generar una nueva aplicación de Phalcon. Cuando Nanobox inicia, el motor de PHP automáticamente instalará y habilitará la extensión de Phalcon, ejecutar un `composer install` para instalar Phalcon Devtools, luego lo dejará en una consola interactiva dentro del entorno virtual. El directorio de trabajo está montado en el directorio `/app` de la máquina virtual, los cambios que se hagan, se verán reflejados en la VM y en el directorio de trabajo local.
 
 ```bash
-# Start Nanobox and Drop into a Nanobox Console
+# iniciar nanobox e ingresar a la consola
 nanobox run
 
-# cd into the /tmp Directory
+# cambiar al directorio /tmp
 cd /tmp
 
-# Generate a New Phalcon App
+# generar una nueva aplicación Phalcon
 phalcon project myapp
 
-# Change Back to the /app Dir
+# volver a cambiar al directorio /app
 cd -
 
-# Copy the Generated App into your Project
+# copiar la aplicación generada en su projecto
 cp -a /tmp/myapp/* .
 
-# Exit the Console
+# sailr de la consola
 exit
 ```
 
-### Run the App
+### Ejecutar la aplicación
 
-Before actually running your new Phalcon app, we recommend using Nanobox to add a DNS alias. This will add an entry to your local `hosts` file pointing to your dev environment and provide a convenient way to access your app from a browser.
+Antes de realmente ejecutar su nueva aplicación de Phalcon, recomendamos utilizar Nanobox para añadir un alias de DNS. Esto añade una entrada al archivo local `hosts` apuntando a su entorno dev y proporciona una manera conveniente de acceder a la aplicación desde un navegador.
 
 ```bash
 nanobox dns add local phalcon.dev
 ```
 
-Alternatively you can use the IP address of your container. The IP address is displayed when you first run your container. If you forgot or did not notice it, on a separate terminal, navigate to the same folder that your project lives on your system and type
+También puede utilizar la dirección IP de su contenedor. La dirección IP se muestra cuando se ejecuta por primera vez el contenedor. Si lo olvidó o no lo notó, en un terminal separado, navega a la misma carpeta que donde esta tu proyecto y escribe
 
 ```bash
 nanobox info local
 ```
 
-The output of this command will show you all the IP addresses of your containers/components as well as passwords to databases (if applicable).
+La salida de este comando le mostrará todas las direcciones IP de sus contenedores/componentes así como contraseñas a bases de datos (si corresponde).
 
-Nanobox provides a `php-server` helper script that starts both Apache (or Nginx depending on your `boxfile.yml` config) and PHP. When passed with the `nanobox run` command, it will start the local dev environment and immediately run your app.
+Nanobox proporciona un script de ayuda `php-server` que inicia tanto Apache (o Nginx dependiendo de su configuración de `boxfile.yml`) y PHP. Cuando se pasa el comando `nanobox run`, iniciará el entorno dev local y ejecutar inmediatamente su aplicación.
 
 ```bash
 nanobox run php-server
 ```
 
-Once running, you can visit your app at `https://phalcon.dev`.
+Una vez en funcionamiento, puede visitar su aplicación en `https://phalcon.dev`.
 
-### Check Out the Environment
+### Revisar el entorno
 
-Your virtual environment includes everything you need to run your Phalcon application.
+El entorno virtual incluye todo que lo necesario para ejecutar su aplicación Phalcon.
 
 ```bash
 # Drop into a Nanobox Console
