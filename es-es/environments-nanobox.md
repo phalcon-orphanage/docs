@@ -65,7 +65,7 @@ run.config:
 
 This tells Nanobox to:
 
-- Utilizar el [motor](https://docs.nanobox.io/engines/) de PHP, un conjunto de scripts que crean el tiempo de ejecución de la aplicación.
+- Utilizar el [motor](https://docs.nanobox.io/engines/) de PHP, un conjunto de *scripts* que se crean en tiempo de ejecución de la aplicación.
 - Use PHP 7.2.
 - Establezca la raíz de documento de Apache en `public`.
 - Incluir la extensión de Phalcon. *Nanobox adopta un enfoque básico para extensiones, así que es probable que necesite incluir otras extensiones. Puede encontrar más información [aquí](https://guides.nanobox.io/php/phalcon/php-extensions/).*
