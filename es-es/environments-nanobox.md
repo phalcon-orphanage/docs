@@ -158,18 +158,18 @@ Una vez en funcionamiento, puede visitar su aplicación en `https://phalcon.dev`
 El entorno virtual incluye todo que lo necesario para ejecutar su aplicación Phalcon.
 
 ```bash
-# Drop into a Nanobox Console
+# Ingresar a la consola de Nanobox
 nanobox run
 
-# Check the Php Version
+# Comprobar la versión de PHP
 php -v
 
-# Check that Phalcon Devtools Are Available
+# Comprobar que versión de Phalcon Devtools esta disponible
 phalcon info
 
-# Check that your Local Codebase is Mounted
+# Comprobar que tu código base este montado
 ls
 
-# Exit the Console
+# Salir de la consola
 exit
 ```
