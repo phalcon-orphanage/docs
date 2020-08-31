@@ -1214,7 +1214,7 @@ $group->addTrace(
 |       | Новий | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | Новий | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Зображення
+### Image
 
 | 3.4.x                   | Стан             | 4.0.x                                    |
 | ----------------------- | ---------------- | ---------------------------------------- |
@@ -1238,7 +1238,7 @@ $group->addTrace(
 | Phalcon\Logger\Formatter\Syslog  | Видалено         |                                               |
 | Phalcon\Logger\Multiple           | Видалено         |                                               |
 
-### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
+### Message (новий у V4, колишній Phalcon\Validation\Message у 3.4)
 
 | 3.4.x | Стан  | 4.0.x                        |
 | ----- | ----- | ---------------------------- |
