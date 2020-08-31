@@ -1000,9 +1000,9 @@ $group->addTrace(
 | Phalcon\Acl           | Видалено         |                                        |
 | Phalcon\Acl\Adapter  | Перейменовано на | Phalcon\Acl\Adapter\AbstractAdapter |
 | Phalcon\Acl\Resource | Перейменовано на | Phalcon\Acl\Component                |
-|                        | New              | Phalcon\Acl\Enum                     |
+|                        | Новий            | Phalcon\Acl\Enum                     |
 
-### Примітки
+### Annotations
 
 | 3.4.x                                 | Стан             | 4.0.x                                          |
 | ------------------------------------- | ---------------- | ---------------------------------------------- |
@@ -1040,10 +1040,10 @@ $group->addTrace(
 | Phalcon\Cache\Backend\Memory       | Перейменовано на | Phalcon\Cache\Adapter\Memory                     |
 | Phalcon\Cache\Backend\Mongo        | Видалено         |                                                     |
 | Phalcon\Cache\Backend\Redis        | Перейменовано на | Phalcon\Cache\Adapter\Redis                      |
-|                                       | New              | Phalcon\Cache\CacheFactory                        |
+|                                       | Новий            | Phalcon\Cache\CacheFactory                        |
 | Phalcon\Cache\Backend\Xcache       | Видалено         |                                                     |
 | Phalcon\Cache\Exception             | Перейменовано на | Phalcon\Cache\Exception\Exception                |
-|                                       | New              | Phalcon\Cache\Exception\InvalidArgumentException |
+|                                       | Новий            | Phalcon\Cache\Exception\InvalidArgumentException |
 | Phalcon\Cache\Frontend\Base64      | Видалено         |                                                     |
 | Phalcon\Cache\Frontend\Data        | Видалено         |                                                     |
 | Phalcon\Cache\Frontend\Factory     | Видалено         |                                                     |
@@ -1056,11 +1056,11 @@ $group->addTrace(
 
 ### Колекція
 
-| 3.4.x | Стан | 4.0.x                          |
-| ----- | ---- | ------------------------------ |
-|       | New  | Phalcon\Collection            |
-|       | New  | Phalcon\Collection\Exception |
-|       | New  | Phalcon\Collection\ReadOnly  |
+| 3.4.x | Стан  | 4.0.x                          |
+| ----- | ----- | ------------------------------ |
+|       | Новий | Phalcon\Collection            |
+|       | Новий | Phalcon\Collection\Exception |
+|       | Новий | Phalcon\Collection\ReadOnly  |
 
 ### Config
 
@@ -1070,9 +1070,9 @@ $group->addTrace(
 
 ### Container
 
-| 3.4.x | Стан | 4.0.x              |
-| ----- | ---- | ------------------ |
-|       | New  | Phalcon\Container |
+| 3.4.x | Стан  | 4.0.x              |
+| ----- | ----- | ------------------ |
+|       | Новий | Phalcon\Container |
 
 ### Db
 
@@ -1082,29 +1082,29 @@ $group->addTrace(
 | Phalcon\Db\Adapter               | Перейменовано на | Phalcon\Db\Adapter\AbstractAdapter  |
 | Phalcon\Db\Adapter\Pdo          | Перейменовано на | Phalcon\Db\Adapter\Pdo\AbstractPdo |
 | Phalcon\Db\Adapter\Pdo\Factory | Перейменовано на | Phalcon\Db\Adapter\PdoFactory       |
-|                                    | New              | Phalcon\Db\Enum                      |
+|                                    | Новий            | Phalcon\Db\Enum                      |
 
 ### Диспетчер
 
 | 3.4.x               | Стан             | 4.0.x                                   |
 | ------------------- | ---------------- | --------------------------------------- |
 | Phalcon\Dispatcher | Перейменовано на | Phalcon\Dispatcher\AbstractDispatcher |
-|                     | New              | Phalcon\Dispatcher\Exception          |
+|                     | Новий            | Phalcon\Dispatcher\Exception          |
 
 ### Di
 
-| 3.4.x | Стан | 4.0.x                                              |
-| ----- | ---- | -------------------------------------------------- |
-|       | New  | Phalcon\Di\AbstractInjectionAware                |
-|       | New  | Phalcon\Di\Exception\ServiceResolutionException |
+| 3.4.x | Стан  | 4.0.x                                              |
+| ----- | ----- | -------------------------------------------------- |
+|       | Новий | Phalcon\Di\AbstractInjectionAware                |
+|       | Новий | Phalcon\Di\Exception\ServiceResolutionException |
 
 ### Domain
 
-| 3.4.x | Стан | 4.0.x                                    |
-| ----- | ---- | ---------------------------------------- |
-|       | New  | Phalcon\Domain\Payload\Payload        |
-|       | New  | Phalcon\Domain\Payload\PayloadFactory |
-|       | New  | Phalcon\Domain\Payload\Status         |
+| 3.4.x | Стан  | 4.0.x                                    |
+| ----- | ----- | ---------------------------------------- |
+|       | Новий | Phalcon\Domain\Payload\Payload        |
+|       | Новий | Phalcon\Domain\Payload\PayloadFactory |
+|       | Новий | Phalcon\Domain\Payload\Status         |
 
 ### Factory
 
@@ -1114,30 +1114,30 @@ $group->addTrace(
 
 ### Filter
 
-| 3.4.x | Стан | 4.0.x                                  |
-| ----- | ---- | -------------------------------------- |
-|       | New  | Phalcon\Filter\FilterFactory         |
-|       | New  | Phalcon\Filter\Sanitize\AbsInt      |
-|       | New  | Phalcon\Filter\Sanitize\Alnum       |
-|       | New  | Phalcon\Filter\Sanitize\Alpha       |
-|       | New  | Phalcon\Filter\Sanitize\BoolVal     |
-|       | New  | Phalcon\Filter\Sanitize\Email       |
-|       | New  | Phalcon\Filter\Sanitize\FloatVal    |
-|       | New  | Phalcon\Filter\Sanitize\IntVal      |
-|       | New  | Phalcon\Filter\Sanitize\Lower       |
-|       | New  | Phalcon\Filter\Sanitize\LowerFirst  |
-|       | New  | Phalcon\Filter\Sanitize\Regex       |
-|       | New  | Phalcon\Filter\Sanitize\Remove      |
-|       | New  | Phalcon\Filter\Sanitize\Replace     |
-|       | New  | Phalcon\Filter\Sanitize\Special     |
-|       | New  | Phalcon\Filter\Sanitize\SpecialFull |
-|       | New  | Phalcon\Filter\Sanitize\StringVal   |
-|       | New  | Phalcon\Filter\Sanitize\Striptags   |
-|       | New  | Phalcon\Filter\Sanitize\Trim        |
-|       | New  | Phalcon\Filter\Sanitize\Upper       |
-|       | New  | Phalcon\Filter\Sanitize\UpperFirst  |
-|       | New  | Phalcon\Filter\Sanitize\UpperWords  |
-|       | New  | Phalcon\Filter\Sanitize\Url         |
+| 3.4.x | Стан  | 4.0.x                                  |
+| ----- | ----- | -------------------------------------- |
+|       | Новий | Phalcon\Filter\FilterFactory         |
+|       | Новий | Phalcon\Filter\Sanitize\AbsInt      |
+|       | Новий | Phalcon\Filter\Sanitize\Alnum       |
+|       | Новий | Phalcon\Filter\Sanitize\Alpha       |
+|       | Новий | Phalcon\Filter\Sanitize\BoolVal     |
+|       | Новий | Phalcon\Filter\Sanitize\Email       |
+|       | Новий | Phalcon\Filter\Sanitize\FloatVal    |
+|       | Новий | Phalcon\Filter\Sanitize\IntVal      |
+|       | Новий | Phalcon\Filter\Sanitize\Lower       |
+|       | Новий | Phalcon\Filter\Sanitize\LowerFirst  |
+|       | Новий | Phalcon\Filter\Sanitize\Regex       |
+|       | Новий | Phalcon\Filter\Sanitize\Remove      |
+|       | Новий | Phalcon\Filter\Sanitize\Replace     |
+|       | Новий | Phalcon\Filter\Sanitize\Special     |
+|       | Новий | Phalcon\Filter\Sanitize\SpecialFull |
+|       | Новий | Phalcon\Filter\Sanitize\StringVal   |
+|       | Новий | Phalcon\Filter\Sanitize\Striptags   |
+|       | Новий | Phalcon\Filter\Sanitize\Trim        |
+|       | Новий | Phalcon\Filter\Sanitize\Upper       |
+|       | Новий | Phalcon\Filter\Sanitize\UpperFirst  |
+|       | Новий | Phalcon\Filter\Sanitize\UpperWords  |
+|       | Новий | Phalcon\Filter\Sanitize\Url         |
 
 ### Flash
 
@@ -1153,66 +1153,66 @@ $group->addTrace(
 
 ### Helper
 
-| 3.4.x | Стан | 4.0.x                      |
-| ----- | ---- | -------------------------- |
-|       | New  | Phalcon\Helper\Arr       |
-|       | New  | Phalcon\Helper\Exception |
-|       | New  | Phalcon\Helper\Fs        |
-|       | New  | Phalcon\Helper\Json      |
-|       | New  | Phalcon\Helper\Number    |
-|       | New  | Phalcon\Helper\Str       |
+| 3.4.x | Стан  | 4.0.x                      |
+| ----- | ----- | -------------------------- |
+|       | Новий | Phalcon\Helper\Arr       |
+|       | Новий | Phalcon\Helper\Exception |
+|       | Новий | Phalcon\Helper\Fs        |
+|       | Новий | Phalcon\Helper\Json      |
+|       | Новий | Phalcon\Helper\Number    |
+|       | Новий | Phalcon\Helper\Str       |
 
 ### Html
 
-| 3.4.x | Стан | 4.0.x                                      |
-| ----- | ---- | ------------------------------------------ |
-|       | New  | Phalcon\Html\Attributes                  |
-|       | New  | Phalcon\Html\Breadcrumbs                 |
-|       | New  | Phalcon\Html\Exception                   |
-|       | New  | Phalcon\Html\Helper\AbstractHelper      |
-|       | New  | Phalcon\Html\Helper\Anchor              |
-|       | New  | Phalcon\Html\Helper\AnchorRaw           |
-|       | New  | Phalcon\Html\Helper\Body                |
-|       | New  | Phalcon\Html\Helper\Button              |
-|       | New  | Phalcon\Html\Helper\Close               |
-|       | New  | Phalcon\Html\Helper\Element             |
-|       | New  | Phalcon\Html\Helper\ElementRaw          |
-|       | New  | Phalcon\Html\Helper\Form                |
-|       | New  | Phalcon\Html\Helper\Img                 |
-|       | New  | Phalcon\Html\Helper\Label               |
-|       | New  | Phalcon\Html\Helper\TextArea            |
-|       | New  | Phalcon\Html\Link\EvolvableLink         |
-|       | New  | Phalcon\Html\Link\EvolvableLinkProvider |
-|       | New  | Phalcon\Html\Link\Link                  |
-|       | New  | Phalcon\Html\Link\LinkProvider          |
-|       | New  | Phalcon\Html\Link\Serializer\Header    |
-|       | New  | Phalcon\Html\TagFactory                  |
+| 3.4.x | Стан  | 4.0.x                                      |
+| ----- | ----- | ------------------------------------------ |
+|       | Новий | Phalcon\Html\Attributes                  |
+|       | Новий | Phalcon\Html\Breadcrumbs                 |
+|       | Новий | Phalcon\Html\Exception                   |
+|       | Новий | Phalcon\Html\Helper\AbstractHelper      |
+|       | Новий | Phalcon\Html\Helper\Anchor              |
+|       | Новий | Phalcon\Html\Helper\AnchorRaw           |
+|       | Новий | Phalcon\Html\Helper\Body                |
+|       | Новий | Phalcon\Html\Helper\Button              |
+|       | Новий | Phalcon\Html\Helper\Close               |
+|       | Новий | Phalcon\Html\Helper\Element             |
+|       | Новий | Phalcon\Html\Helper\ElementRaw          |
+|       | Новий | Phalcon\Html\Helper\Form                |
+|       | Новий | Phalcon\Html\Helper\Img                 |
+|       | Новий | Phalcon\Html\Helper\Label               |
+|       | Новий | Phalcon\Html\Helper\TextArea            |
+|       | Новий | Phalcon\Html\Link\EvolvableLink         |
+|       | Новий | Phalcon\Html\Link\EvolvableLinkProvider |
+|       | Новий | Phalcon\Html\Link\Link                  |
+|       | Новий | Phalcon\Html\Link\LinkProvider          |
+|       | Новий | Phalcon\Html\Link\Serializer\Header    |
+|       | Новий | Phalcon\Html\TagFactory                  |
 
 ### Http
 
-| 3.4.x | Стан | 4.0.x                                                       |
-| ----- | ---- | ----------------------------------------------------------- |
-|       | New  | Phalcon\Http\Message\AbstractCommon                      |
-|       | New  | Phalcon\Http\Message\AbstractMessage                     |
-|       | New  | Phalcon\Http\Message\AbstractRequest                     |
-|       | New  | Phalcon\Http\Message\Exception\InvalidArgumentException |
-|       | New  | Phalcon\Http\Message\Request                             |
-|       | New  | Phalcon\Http\Message\RequestFactory                      |
-|       | New  | Phalcon\Http\Message\Response                            |
-|       | New  | Phalcon\Http\Message\ResponseFactory                     |
-|       | New  | Phalcon\Http\Message\ServerRequest                       |
-|       | New  | Phalcon\Http\Message\ServerRequestFactory                |
-|       | New  | Phalcon\Http\Message\Stream                              |
-|       | New  | Phalcon\Http\Message\StreamFactory                       |
-|       | New  | Phalcon\Http\Message\Stream\Input                       |
-|       | New  | Phalcon\Http\Message\Stream\Memory                      |
-|       | New  | Phalcon\Http\Message\Stream\Temp                        |
-|       | New  | Phalcon\Http\Message\UploadedFile                        |
-|       | New  | Phalcon\Http\Message\UploadedFileFactory                 |
-|       | New  | Phalcon\Http\Message\Uri                                 |
-|       | New  | Phalcon\Http\Message\UriFactory                          |
-|       | New  | Phalcon\Http\Server\AbstractMiddleware                   |
-|       | New  | Phalcon\Http\Server\AbstractRequestHandler               |
+| 3.4.x | Стан  | 4.0.x                                                       |
+| ----- | ----- | ----------------------------------------------------------- |
+|       | Новий | Phalcon\Http\Message\AbstractCommon                      |
+|       | Новий | Phalcon\Http\Message\AbstractMessage                     |
+|       | Новий | Phalcon\Http\Message\AbstractRequest                     |
+|       | Новий | Phalcon\Http\Message\Exception\InvalidArgumentException |
+|       | Новий | Phalcon\Http\Message\Request                             |
+|       | Новий | Phalcon\Http\Message\RequestFactory                      |
+|       | Новий | Phalcon\Http\Message\Response                            |
+|       | Новий | Phalcon\Http\Message\ResponseFactory                     |
+|       | Новий | Phalcon\Http\Message\ServerRequest                       |
+|       | Новий | Phalcon\Http\Message\ServerRequestFactory                |
+|       | Новий | Phalcon\Http\Message\Stream                              |
+|       | Новий | Phalcon\Http\Message\StreamFactory                       |
+|       | Новий | Phalcon\Http\Message\Stream\Input                       |
+|       | Новий | Phalcon\Http\Message\Stream\Memory                      |
+|       | Новий | Phalcon\Http\Message\Stream\Temp                        |
+|       | Новий | Phalcon\Http\Message\UploadedFile                        |
+|       | Новий | Phalcon\Http\Message\UploadedFileFactory                 |
+|       | Новий | Phalcon\Http\Message\Uri                                 |
+|       | Новий | Phalcon\Http\Message\UriFactory                          |
+|       | Новий | Phalcon\Http\Server\AbstractMiddleware                   |
+|       | Новий | Phalcon\Http\Server\AbstractRequestHandler               |
 
 ### Зображення
 
@@ -1220,14 +1220,14 @@ $group->addTrace(
 | ----------------------- | ---------------- | ---------------------------------------- |
 | Phalcon\Image          | Видалено         |                                          |
 | Phalcon\Image\Adapter | Перейменовано на | Phalcon\Image\Adapter\AbstractAdapter |
-|                         | New              | Phalcon\Image\Enum                     |
+|                         | Новий            | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Перейменовано на | Phalcon\Image\ImageFactory             |
 
 ### Logger
 
 | 3.4.x                               | Стан             | 4.0.x                                         |
 | ----------------------------------- | ---------------- | --------------------------------------------- |
-|                                     | New              | Phalcon\Logger\AdapterFactory               |
+|                                     | Новий            | Phalcon\Logger\AdapterFactory               |
 | Phalcon\Logger\Adapter            | Перейменовано на | Phalcon\Logger\Adapter\AbstractAdapter     |
 | Phalcon\Logger\Adapter\Blackhole | Перейменовано на | Phalcon\Logger\Adapter\Noop                |
 | Phalcon\Logger\Adapter\File      | Перейменовано на | Phalcon\Logger\Adapter\Stream              |
@@ -1240,11 +1240,11 @@ $group->addTrace(
 
 ### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
-| 3.4.x | Стан | 4.0.x                        |
-| ----- | ---- | ---------------------------- |
-|       | New  | Phalcon\Messages\Exception |
-|       | New  | Phalcon\Messages\Message   |
-|       | New  | Phalcon\Messages\Messages  |
+| 3.4.x | Стан  | 4.0.x                        |
+| ----- | ----- | ---------------------------- |
+|       | Новий | Phalcon\Messages\Exception |
+|       | Новий | Phalcon\Messages\Message   |
+|       | Новий | Phalcon\Messages\Messages  |
 
 ### Mvc
 
@@ -1257,7 +1257,7 @@ $group->addTrace(
 | Phalcon\Mvc\Collection\Document                | Видалено         |                                              |
 | Phalcon\Mvc\Collection\Exception               | Перейменовано на | Phalcon\Collection\Exception               |
 | Phalcon\Mvc\Collection\Manager                 | Видалено         |                                              |
-|                                                   | New              | Phalcon\Collection\ReadOnly                |
+|                                                   | Новий            | Phalcon\Collection\ReadOnly                |
 | Phalcon\Mvc\Model\Message                      | Перейменовано на | Phalcon\Messages\Message                   |
 | Phalcon\Mvc\Model\MetaData\Apc                | Видалено         |                                              |
 | Phalcon\Mvc\Model\MetaData\Files              | Перейменовано на | Phalcon\Mvc\Model\MetaData\Stream        |
@@ -1288,7 +1288,7 @@ $group->addTrace(
 | --------------------------- | ---------------- | -------------------------------------------- |
 | Phalcon\Paginator\Adapter | Перейменовано на | Phalcon\Paginator\Adapter\AbstractAdapter |
 | Phalcon\Paginator\Factory | Перейменовано на | Phalcon\Paginator\PaginatorFactory         |
-|                             | New              | Phalcon\Paginator\Repository               |
+|                             | Новий            | Phalcon\Paginator\Repository               |
 
 ### Queue
 
@@ -1304,30 +1304,30 @@ $group->addTrace(
 | ----------------------------------- | ---------------- | ------------------------------------------ |
 | Phalcon\Session\Adapter           | Перейменовано на | Phalcon\Session\Adapter\AbstractAdapter |
 | Phalcon\Session\Adapter\Files    | Перейменовано на | Phalcon\Session\Adapter\Stream          |
-|                                     | New              | Phalcon\Session\Adapter\Noop            |
+|                                     | Новий            | Phalcon\Session\Adapter\Noop            |
 | Phalcon\Session\Adapter\Memcache | Видалено         |                                            |
 | Phalcon\Session\Factory           | Перейменовано на | Phalcon\Session\Manager                  |
 
 ### Storage
 
-| 3.4.x | Стан | 4.0.x                                            |
-| ----- | ---- | ------------------------------------------------ |
-|       | New  | Phalcon\Storage\AdapterFactory                 |
-|       | New  | Phalcon\Storage\Adapter\AbstractAdapter       |
-|       | New  | Phalcon\Storage\Adapter\Apcu                  |
-|       | New  | Phalcon\Storage\Adapter\Libmemcached          |
-|       | New  | Phalcon\Storage\Adapter\Memory                |
-|       | New  | Phalcon\Storage\Adapter\Redis                 |
-|       | New  | Phalcon\Storage\Adapter\Stream                |
-|       | New  | Phalcon\Storage\Exception                      |
-|       | New  | Phalcon\Storage\SerializerFactory              |
-|       | New  | Phalcon\Storage\Serializer\AbstractSerializer |
-|       | New  | Phalcon\Storage\Serializer\Base64             |
-|       | New  | Phalcon\Storage\Serializer\Igbinary           |
-|       | New  | Phalcon\Storage\Serializer\Json               |
-|       | New  | Phalcon\Storage\Serializer\Msgpack            |
-|       | New  | Phalcon\Storage\Serializer\None               |
-|       | New  | Phalcon\Storage\Serializer\Php                |
+| 3.4.x | Стан  | 4.0.x                                            |
+| ----- | ----- | ------------------------------------------------ |
+|       | Новий | Phalcon\Storage\AdapterFactory                 |
+|       | Новий | Phalcon\Storage\Adapter\AbstractAdapter       |
+|       | Новий | Phalcon\Storage\Adapter\Apcu                  |
+|       | Новий | Phalcon\Storage\Adapter\Libmemcached          |
+|       | Новий | Phalcon\Storage\Adapter\Memory                |
+|       | Новий | Phalcon\Storage\Adapter\Redis                 |
+|       | Новий | Phalcon\Storage\Adapter\Stream                |
+|       | Новий | Phalcon\Storage\Exception                      |
+|       | Новий | Phalcon\Storage\SerializerFactory              |
+|       | Новий | Phalcon\Storage\Serializer\AbstractSerializer |
+|       | Новий | Phalcon\Storage\Serializer\Base64             |
+|       | Новий | Phalcon\Storage\Serializer\Igbinary           |
+|       | Новий | Phalcon\Storage\Serializer\Json               |
+|       | Новий | Phalcon\Storage\Serializer\Msgpack            |
+|       | Новий | Phalcon\Storage\Serializer\None               |
+|       | Новий | Phalcon\Storage\Serializer\Php                |
 
 ### Переклад
 
@@ -1335,15 +1335,15 @@ $group->addTrace(
 | --------------------------- | ---------------- | -------------------------------------------- |
 | Phalcon\Translate          | Видалено         |                                              |
 | Phalcon\Translate\Adapter | Перейменовано на | Phalcon\Translate\Adapter\AbstractAdapter |
-|                             | New              | Phalcon\Translate\InterpolatorFactory      |
+|                             | Новий            | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Перейменовано на | Phalcon\Translate\TranslateFactory         |
 
 ### Гіперпосилання
 
-| 3.4.x | Стан | 4.0.x                   |
-| ----- | ---- | ----------------------- |
-|       | New  | Phalcon\Url            |
-|       | New  | Phalcon\Url\Exception |
+| 3.4.x | Стан  | 4.0.x                   |
+| ----- | ----- | ----------------------- |
+|       | Новий | Phalcon\Url            |
+|       | Новий | Phalcon\Url\Exception |
 
 ### Валідація
 
@@ -1353,16 +1353,16 @@ $group->addTrace(
 | Phalcon\Validation\Message                 | Перейменовано на | Phalcon\Messages\Message                              |
 | Phalcon\Validation\Message\Group          | Перейменовано на | Phalcon\Messages\Messages                             |
 | Phalcon\Validation\Validator               | Перейменовано на | Phalcon\Validation\AbstractValidator                  |
-|                                              | New              | Phalcon\Validation\AbstractValidatorComposite         |
-|                                              | New              | Phalcon\Validation\Exception                          |
-|                                              | New              | Phalcon\Validation\ValidatorFactory                   |
-|                                              | New              | Phalcon\Validation\Validator\File\AbstractFile      |
-|                                              | New              | Phalcon\Validation\Validator\File\MimeType          |
-|                                              | New              | Phalcon\Validation\Validator\File\Resolution\Equal |
-|                                              | New              | Phalcon\Validation\Validator\File\Resolution\Max   |
-|                                              | New              | Phalcon\Validation\Validator\File\Resolution\Min   |
-|                                              | New              | Phalcon\Validation\Validator\File\Size\Equal       |
-|                                              | New              | Phalcon\Validation\Validator\File\Size\Max         |
-|                                              | New              | Phalcon\Validation\Validator\File\Size\Min         |
-|                                              | New              | Phalcon\Validation\Validator\StringLength\Max       |
-|                                              | New              | Phalcon\Validation\Validator\StringLength\Min       |
+|                                              | Новий            | Phalcon\Validation\AbstractValidatorComposite         |
+|                                              | Новий            | Phalcon\Validation\Exception                          |
+|                                              | Новий            | Phalcon\Validation\ValidatorFactory                   |
+|                                              | Новий            | Phalcon\Validation\Validator\File\AbstractFile      |
+|                                              | Новий            | Phalcon\Validation\Validator\File\MimeType          |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Resolution\Equal |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Resolution\Max   |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Resolution\Min   |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Size\Equal       |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Size\Max         |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Size\Min         |
+|                                              | Новий            | Phalcon\Validation\Validator\StringLength\Max       |
+|                                              | Новий            | Phalcon\Validation\Validator\StringLength\Min       |
