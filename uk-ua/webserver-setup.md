@@ -88,7 +88,7 @@ Phalcon з nginx і PHP-FPM забезпечують потужний набір
 
 ### Конфігурація Phalcon
 
-You can use following potential configuration to setup nginx with Phalcon:
+Ви можете використовувати такі потенційні параметри для налаштування роботи nginx з Phalcon:
 
     server {
         # Port 80 will require nginx to be started with root permissions
