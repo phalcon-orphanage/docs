@@ -294,7 +294,7 @@ tutorial/
 
 [Офіційний сайт lighttpd](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
 
-You can use following potencial configuration to setup lighttpd with Phalcon:
+Ви можете використовувати наступну конфігурацію для налаштування роботи lighttpd із Phalcon:
 
 ```nginx
 server.modules = (
@@ -357,16 +357,16 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 
 ## WAMP
 
-[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](https://www.wampserver.com/en/) є середовищем веб-розробника Windows. Він дозволяє створювати веб-додатки з використанням Apache2, PHP та баз даних MySQL. Нижче наведені детальні інструкції, як встановити Phalcon на WampServer для Windows. Використання останньої версії WampServer є дуже рекомендованим.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **ПРИМІТКА** Починаючи з v4, ви повинні встановити розширення PECL `PSR`. Відвідайте [цю URL-адресу](https://pecl.php.net/package/psr/0.7.0/windows), щоб отримати DLL і виконайте ті ж кроки для встановлення розширення, як і з DLL Phalcon.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **ПРИМІТКА** Шляхи у цьому посібнику мають бути співставними з вашою установкою WAMP
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Завантаження Phalcon
 
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
 
@@ -435,14 +435,14 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **ПРИМІТКА** Починаючи з v4, ви повинні встановити розширення PECL `PSR`. Відвідайте [цю URL-адресу](https://pecl.php.net/package/psr/0.7.0/windows), щоб отримати DLL і виконайте ті ж кроки для встановлення розширення, як і з DLL Phalcon.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **ПРИМІТКА** Шляхи у цьому посібнику мають бути співставними з вашою установкою WAMP
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Завантаження Phalcon
 
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
 
