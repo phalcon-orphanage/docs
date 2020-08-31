@@ -1329,7 +1329,7 @@ $group->addTrace(
 |       | Новий | Phalcon\Storage\Serializer\None               |
 |       | Новий | Phalcon\Storage\Serializer\Php                |
 
-### Переклад
+### Translate
 
 | 3.4.x                       | Стан             | 4.0.x                                        |
 | --------------------------- | ---------------- | -------------------------------------------- |
@@ -1338,14 +1338,14 @@ $group->addTrace(
 |                             | Новий            | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Перейменовано на | Phalcon\Translate\TranslateFactory         |
 
-### Гіперпосилання
+### Url
 
 | 3.4.x | Стан  | 4.0.x                   |
 | ----- | ----- | ----------------------- |
 |       | Новий | Phalcon\Url            |
 |       | Новий | Phalcon\Url\Exception |
 
-### Валідація
+### Validation
 
 | 3.4.x                                        | Стан             | 4.0.x                                                   |
 | -------------------------------------------- | ---------------- | ------------------------------------------------------- |
