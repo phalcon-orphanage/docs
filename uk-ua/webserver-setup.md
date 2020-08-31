@@ -313,22 +313,22 @@ server.username             = "www-data"
 server.groupname            = "www-data"
 server.port                 = 80
 
-# strict parsing and normalization of URL for consistency and security
+# чіткий парсинг та нормалізація URL для цілісності та безпеки
 # https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_http-parseoptsDetails
-# (might need to explicitly set "url-path-2f-decode" = "disable"
-#  if a specific application is encoding URLs inside url-path)
+# (може потребувати явної установки "url-path-2f-decode" = "disable"
+#якщо конкретний продукт кодує URLs всередині url-path)
 server.http-parseopts = (
-  "header-strict"           => "enable",# default
-  "host-strict"             => "enable",# default
-  "host-normalize"          => "enable",# default
-  "url-normalize-unreserved"=> "enable",# recommended highly
-  "url-normalize-required"  => "enable",# recommended
-  "url-ctrls-reject"        => "enable",# recommended
-  "url-path-2f-decode"      => "enable",# recommended highly (unless breaks app)
+  "header-strict"           => "enable",# за замовчуванням
+  "host-strict"             => "enable",# за замовчування
+  "host-normalize"          => "enable",# за замовчування
+  "url-normalize-unreserved"=> "enable",# дуже рекомендовано
+  "url-normalize-required"  => "enable",# рекомендовано
+  "url-ctrls-reject"        => "enable",# рекомендовано
+  "url-path-2f-decode"      => "enable",# дуже рекомендовано (щоб запобігти зламу продукту)
  #"url-path-2f-reject"      => "enable",
-  "url-path-dotseg-remove"  => "enable",# recommended highly (unless breaks app)
+  "url-path-dotseg-remove"  => "enable",# дуже рекомендовано (щоб запобігти зламу продукту)
  #"url-path-dotseg-reject"  => "enable",
- #"url-query-20-plus"       => "enable",# consistency in query string
+ #"url-query-20-plus"       => "enable",# цілісність стрічки запиту
 )
 
 index-file.names            = ( "index.php", "index.html" )
@@ -338,7 +338,7 @@ static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 compress.cache-dir          = "/var/cache/lighttpd/compress/"
 compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
 
-# default listening port for IPv6 falls back to the IPv4 port
+# прослуховування портів IPv6 за замовчуванням змінюється на порти IPv4
 include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
 include_shell "/usr/share/lighttpd/create-mime.conf.pl"
 include "/etc/lighttpd/conf-enabled/*.conf"
@@ -351,7 +351,7 @@ server.modules += (
 )
 
 url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_url=$1" )
-# or
+# або
 #url.rewrite-if-not-file = ( "/" => "/index.php?_rl=$1" )
 ```
 
