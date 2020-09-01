@@ -101,7 +101,7 @@ protected excluded;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, array $adapters = [] );
@@ -280,7 +280,7 @@ protected queue;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __destruct();
@@ -344,7 +344,7 @@ Phalcon\Logger\AdapterInterface
 
 Interface for Phalcon\Logger adapters
 
-## Methods
+## Методи
 
 ```php
 public function add( Item $item ): AdapterInterface;
@@ -419,7 +419,7 @@ $logger->error("This is another error");
 $logger->close();
 ```
 
-## Methods
+## Методи
 
 ```php
 public function close(): bool;
@@ -486,7 +486,7 @@ protected options;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, array $options = [] );
@@ -570,7 +570,7 @@ protected option = 0;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, array $options = [] );
@@ -602,7 +602,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $services = [] );
@@ -654,7 +654,7 @@ protected dateFormat;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getDateFormat(): string
@@ -688,7 +688,7 @@ Phalcon\Logger\FormatterInterface
 
 This interface must be implemented by formatters in Phalcon\Logger
 
-## Methods
+## Методи
 
 ```php
 public function format( Item $item ): string | array;
@@ -706,7 +706,7 @@ Phalcon\Logger\Formatter\Json
 
 Formats messages using JSON encoding
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $dateFormat = string );
@@ -742,7 +742,7 @@ protected format;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $format = string, string $dateFormat = string );
@@ -813,7 +813,7 @@ protected type;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $message, string $name, int $type, int $time = int, mixed $context = [] );
@@ -861,7 +861,7 @@ private adapterFactory;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterFactory $factory );
