@@ -368,72 +368,72 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 
 ### Завантаження Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+Для того, щоб Phalcon працював на Windows, вам потрібно встановити правильну версію, яка відповідає архітектурі та збірці вашого РНР розширення. Завантажте сторінку `phpinfo` за допомогою WAMP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+Перевірте визначення `архітектури` і `збірки розширення РНР`. Це дозволить вам завантажити коректну DLL. У наведеному вище прикладі ви повинні завантажити файл:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
+який відповідатиме `x86`, `vc15` і `TS` що означає *Thread Safe*. Якщо ваша система повідомляє про `NTS` (*Non Thread Safe*), то ви повинні завантажити цю DLL.
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMP installation.
+WAMP має 32 і 64 бітові версії. З розділу завантажень ви можете завантажити Phalcon DLL, який відповідає встановленому у вас WAMP.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Після завантаження бібліотеки Phalcon ви матимете zip-файл як показано нижче:
 
 ![](/assets/images/content/webserver-zip-icon.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Розархівуйте цей файл, щоб отримати Phalcon DLL:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php7.2.18\ext` (assuming your WAMP installation installed PHP 7.2.18).
+Скопіюйте файл `php_phalcon.dll` в папку розширень PHP. Якщо WAMP встановлено у теці `C:\wamp`, розширення повинне бути в `C:\wamp\bin\php\php7.2.18\ext` (припустимо, що ваша версія WAMP має встановлену PHP 7.2.18).
 
 ![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+Відредагуйте файл `php.ini`, він розташований у `C:\wamp\bin\php\php7.2.18\php.ini`. Він може бути змінений у блокноті або подібній програмі. Ми рекомендуємо Notepad++, щоб уникнути проблем з закінченням рядків. Додайте в кінець файлу:
 
 ```ini
  extension=php_phalcon.dll
 ```
 
-and save it.
+та збережіть його.
 
 ![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
 
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
+Також відредагуйте файл `php.ini`, який розташований у `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Додайте в кінець файлу:
 
 ```ini
 extension=php_phalcon.dll 
 ```
 
-and save it.
+та збережіть його.
 
-> **NOTE**: The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
+> **ПРИМІТКА**: Зазначені вище шляхи можуть відрізнятись залежно від місця установки та версії apache вашого веб сервера. Налаштуйте його відповідно.
 {: .alert .alert-warning }
 
 > 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
+> **ПРИМІТКА**: Як зазначено вище, розширення `PSR` має бути встановлене та завантажуватись до старту Phalcon. Додайте `extension=php_psr.dll` рядок перед відповідною стрічкою Phalcon, як показано на зображенні вище.
 {: .alert .alert-warning }
 
 ![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
+Перезапустіть веб-сервер Apache. Зробіть один клік по іконці WampServer в системному треї. Оберіть `Перезавантажити всі сервіси` у спливаючому меню. Зверніть увагу на те, що значок у треї знову стане зеленим.
 
 ![](/assets/images/content/webserver-wamp-manager.png)
 
-Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
+Відкрийте свій браузер, щоб перейти до https://localhost. З'явиться вітальна сторінка WAMP. Перевірите розділ `завантажені розширення`, щоб переконатися, що Phalcon був завантажений.
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
-> **Congratulations! You are now phlying with Phalcon.**
+> **Вітаємо! Тепер ви літаєте разом із Phalcon.**
 {: .alert .alert-info }
 
 ## XAMPP
 
-[XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
+[XAMPP](https://www.apachefriends.org/download.html) дистрибутив Apache, що легко встановлюється та містить MySQL, PHP і Perl. Як тільки ви завантажите XAMPP, все, що буде потрібно - це розпакувати його і почати ним користуватись. Нижче наведені детальні інструкції для встановлення Phalcon на XAMPP для Windows. Використання останньої версії XAMPP настійно рекомендується.
 
 > **ПРИМІТКА** Починаючи з v4, ви повинні встановити розширення PECL `PSR`. Відвідайте [цю URL-адресу](https://pecl.php.net/package/psr/0.7.0/windows), щоб отримати DLL і виконайте ті ж кроки для встановлення розширення, як і з DLL Phalcon.
 {: .alert .alert-warning }
@@ -444,24 +444,24 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ### Завантаження Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
+Для того, щоб Phalcon працював на Windows, вам потрібно встановити правильну версію, яка відповідає архітектурі та збірці вашого РНР розширення. Load up the `phpinfo` page provided by XAMPP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+Перевірте визначення `архітектури` і `збірки розширення РНР`. Це дозволить вам завантажити коректну DLL. У наведеному вище прикладі ви повинні завантажити файл:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
+який відповідатиме `x86`, `vc15` і `TS` що означає *Thread Safe*. Якщо ваша система повідомляє про `NTS` (*Non Thread Safe*), то ви повинні завантажити цю DLL.
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Після завантаження бібліотеки Phalcon ви матимете zip-файл як показано нижче:
 
 ![](/assets/images/content/webserver-zip-icon.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Розархівуйте цей файл, щоб отримати Phalcon DLL:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
@@ -469,15 +469,15 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Він може бути змінений у блокноті або подібній програмі. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Додайте в кінець файлу:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-and save it.
+та збережіть його.
 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
+> **ПРИМІТКА**: Як зазначено вище, розширення `PSR` має бути встановлене та завантажуватись до старту Phalcon. Додайте `extension=php_psr.dll` рядок перед відповідною стрічкою Phalcon, як показано на зображенні вище.
 {: .alert .alert-warning }
 
 ![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
@@ -490,7 +490,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> **Congratulations! You are now phlying with Phalcon.**
+> **Вітаємо! Тепер ви літаєте разом із Phalcon.**
 {: .alert .alert-info }
 
 
