@@ -73,7 +73,7 @@ protected eventsManager;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getActiveAccess(): string
@@ -119,7 +119,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Interface for Phalcon\Acl adapters
 
-## Methods
+## Методи
 
 ```php
 public function addComponent( mixed $componentObject, mixed $accessList ): bool;
@@ -394,7 +394,7 @@ protected rolesNames;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct();
@@ -607,7 +607,7 @@ private name;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -635,7 +635,7 @@ public function getName(): string
 
 Interface for classes which could be used in allow method as RESOURCE
 
-## Methods
+## Методи
 
 ```php
 public function getComponentName(): string;
@@ -651,7 +651,7 @@ Returns component name
 
 Interface for Phalcon\Acl\Component
 
-## Methods
+## Методи
 
 ```php
 public function __toString(): string;
@@ -721,7 +721,7 @@ private description;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -749,7 +749,7 @@ public function getName(): string
 
 Interface for classes which could be used in allow method as ROLE
 
-## Methods
+## Методи
 
 ```php
 public function getRoleName(): string;
@@ -765,7 +765,7 @@ Returns role name
 
 Interface for Phalcon\Acl\Role
 
-## Methods
+## Методи
 
 ```php
 public function __toString(): string;
