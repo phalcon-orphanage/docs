@@ -84,7 +84,7 @@ Before submitting **new functionality**, please open a [NFR](new-feature-request
 - Unit Tests
 - Documentation or Usage Examples
 
-## Getting Support
+## Отримання допомоги
 
 If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
 
