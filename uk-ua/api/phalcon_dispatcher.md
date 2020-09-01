@@ -119,7 +119,7 @@ protected returnedValue;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] );
@@ -367,7 +367,7 @@ protected function toCamelCase( string $input ): string;
 
 Interface for Phalcon\Dispatcher\AbstractDispatcher
 
-## Methods
+## Методи
 
 ```php
 public function dispatch(): object | bool;
