@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Performance'
-keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
+title: 'Продуктивність'
+keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode, продуктивність'
 ---
 
-# Performance
+# Продуктивність
 
 * * *
 
@@ -14,41 +14,41 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 
 ## Огляд
 
-A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
+Погано написана програма завжди матиме низьку продуктивність. Найпоширеніший спосіб для розробників підвищити продуктивність своїх продуктів:
 
-> just throw more hardware to it
+> просто забезпечити вищу потужність обладнання для нього
 {: .alert .alert-info }
 
-The problem with the above approach is two fold. For starters, in most cases the owner is the one that will incur the additional costs. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
+Проблема наведеного вище підходу має два недоліка. На початку в більшості випадків власник понесе додаткові витрати. Друга проблема полягає в тому, що настане момент, коли не можна буде більше покращити обладнання і єдиною альтернативою залишиться використання балансерів, докера, групування серверів і тощо, що тільки примножить витрати.
 
-The problem will remain: *the poorly written application*
+Але залишиться проблема - *погано написана програма*
 
-In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfills its requirements. Nothing beats a good design. After that, there are many aspects to consider: - server hardware - clients connecting (location, browsers) - network latency - database hardware
+Щоб прискорити вашу програму, потрібно переконатися в тому, що вона написана найкращим чином для виконання поставлених завдань. Ніщо не може бути кращим добре продуманого дизайну. Після цього слід братись за інші аспекти: - апаратне забезпечення сервера - маршрутизація клієнтських підключень (місце розташування, браузери) - затримки мережі - обладнання бази даних
 
-and many more. In this article we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
+і багато іншого. У цій статті ми спробуємо розглянути деякі сценарії, які можуть забезпечити краще розуміння того, де ваш додаток є дуже повільним.
 
-> **NOTE** These are **recommendations** and good practices. You are by no means obligated to follow the advice on this document, and by no means is this list exhaustive. Your performance enhancing strategies rely primarily on the needs of your application.
+> **ПРИМІТКА** Це **рекомендації** і хороші практики. Ви ні в якому разі не зобов'язані дотримуватися цих порад, і аж ніяк їх список не є вичерпним. Ваші стратегії підвищення продуктивності базуються насамперед на потребах вашого продукту.
 {: .alert .alert-danger }
 
-## Server
+## Сервер
 
-[Profiling](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture on what is really going on at any given time in your application, and thus guide you to areas where you application needs attention. Profiling should be continuous in a production application.
+[Профілювання](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) - це форма динамічного аналізу програм, яка пропонує метрики, що відповідають вашому продукту. Профілювання показує справжню картину того, що насправді відбувається в будь-який час у програмі, і таким чином направляйте вас до областей, де потрібна ваша увага. Профілювання має бути безперервним у виробничій програмі.
 
-It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
+Це також створює додаткові витрати, що слід врахувати. Найбільш детальне профілювання відбувається з кожним запитом, але все це залежатиме від вашого трафіку. Ми, звичайно, не хочемо збільшувати навантаження на сервер тільки тому, що ми профілюємо додаток. Типовий спосіб профілювання - це один запит на 100 або 1 на 1000. Через деякий час буде достатньо даних для того, щоб зробити висновки щодо того, де відбувається уповільнення, чому виникли піки тощо.
 
 ### XDebug
 
-[XDebug](https://xdebug.org/docs) offers a very handy profiler right out of the box. All you have to do is install the extension and enable profiling in your `php.ini`:
+[XDebug](https://xdebug.org/docs) пропонує дуже зручний профайлер прямо з коробки. Вам потрібно лише встановити розширення та увімкнути профілювання у вашому `php.ini`:
 
 ```ini
 xdebug.profiler_enable = On
 ```
 
-Using a tool such as [Webgrind](https://github.com/jokkedk/webgrind) will allow you to connect to [XDebug](https://xdebug.org/docs) and get very valuable information as to what is going on with your code. [Webgrind](https://github.com/jokkedk/webgrind) offers statistics on which methods are slower than others and other statistics.
+Використання інструменту, наприклад [Webgrind](https://github.com/jokkedk/webgrind) дозволить вам підключитись до [XDebug](https://xdebug.org/docs) і отримати дуже цінну інформацію про те, що відбувається з вашим кодом. [Webgrind](https://github.com/jokkedk/webgrind) пропонує статистику, які методи повільніші за інші, та іншу статистику.
 
 ### Xhprof
 
-[Xhprof](https://github.com/facebook/xhprof) is another extension to profile PHP applications. To enable it, all you need is to add the following line to the start of the bootstrap file:
+[Xhprof](https://github.com/facebook/xhprof) -- інше розширення для PHP додатків. Щоб увімкнути його, вам потрібно додати наступний рядок на початок файлу bootstrap:
 
 ```php
 <?php
@@ -56,7 +56,7 @@ Using a tool such as [Webgrind](https://github.com/jokkedk/webgrind) will allow 
 xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 ```
 
-Then at the end of the file save the profiled data:
+Потім в кінці цього ж файлу збережіть профільовані дані:
 
 ```php
 <?php
@@ -73,15 +73,15 @@ $run_id = $xhprof_runs->save_run($xhprof_data, 'xhprof_testing');
 echo "https://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 ```
 
-Xhprof provides a built-in HTML viewer to analyze the profiled data:
+Xhprof пропонує вбудований HTML оглядач для аналізу профільованих даних:
 
 ![](/assets/images/content/performance-xhprof-2.jpg)
 
 ![](/assets/images/content/performance-xhprof-1.jpg)
 
-As mentioned above, profiling can increase the load on your server. In the case of [Xhprof](https://github.com/facebook/xhprof), you can introduce a conditional that would start profiling only after X requests.
+Як зазначено вище, профілювання може збільшити навантаження на ваш сервер. У випадку використання [Xhprof](https://github.com/facebook/xhprof)ви можете встановити умову, що запуск профілювання буде здійснюватись лише після X запитів.
 
-### SQL Statements
+### SQL-інструкції
 
 Almost all RDBMs offer tools to identify slow SQL statements. Identifying and fixing slow queries is very important in terms of performance on the server side. MariaDB / MySql / AuroraDb offer configuration settings that enable a `slow-query` log. The database then keeps its own metrics and whenever a query takes long to complete it will be logged in the `slow-query` log. The log can then be analyzed by the development team and adjustments can be made.
 
