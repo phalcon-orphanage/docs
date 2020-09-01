@@ -80,7 +80,7 @@ protected static _default;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __call( string $method, array $arguments = [] ): mixed | null;
@@ -344,7 +344,7 @@ protected container;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getDI(): DiInterface;
@@ -366,7 +366,7 @@ Sets the dependency injector
 
 Interface for Phalcon\Di
 
-## Methods
+## Методи
 
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
@@ -476,7 +476,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 
-## Methods
+## Методи
 
 ```php
 public function __construct();
@@ -494,7 +494,7 @@ Phalcon\Di\FactoryDefault\Cli
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
 
-## Methods
+## Методи
 
 ```php
 public function __construct();
@@ -524,7 +524,7 @@ protected container;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __get( string $propertyName ): mixed | null;
@@ -558,7 +558,7 @@ Sets the dependency injector
 
 This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
 
-## Methods
+## Методи
 
 ```php
 public function getDI(): DiInterface;
@@ -610,7 +610,7 @@ protected sharedInstance;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 final public function __construct( mixed $definition, bool $shared = bool );
@@ -682,7 +682,7 @@ Phalcon\Di\Service\Builder
 
 This class builds instances based on complex definitions
 
-## Methods
+## Методи
 
 ```php
 public function build( DiInterface $container, array $definition, mixed $parameters = null );
@@ -698,7 +698,7 @@ Builds a service using a complex service definition
 
 Represents a service in the services container
 
-## Methods
+## Методи
 
 ```php
 public function getDefinition(): mixed;
@@ -776,7 +776,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 }
 ```
 
-## Methods
+## Методи
 
 ```php
 public function register( DiInterface $di ): void;
