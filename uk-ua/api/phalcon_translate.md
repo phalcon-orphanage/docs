@@ -42,7 +42,7 @@ protected interpolatorFactory;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -100,7 +100,7 @@ Phalcon\Translate\Adapter\AdapterInterface
 
 Interface for Phalcon\Translate adapters
 
-## Methods
+## Методи
 
 ```php
 public function exists( string $index ): bool;
@@ -140,7 +140,7 @@ protected translate;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -208,7 +208,7 @@ protected locale;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -342,7 +342,7 @@ private triggerError = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -390,7 +390,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -410,7 +410,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -428,7 +428,7 @@ Phalcon\Translate\InterpolatorInterface
 
 Interface for Phalcon\Translate interpolators
 
-## Methods
+## Методи
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -463,7 +463,7 @@ private services;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $services = [] );
@@ -503,7 +503,7 @@ private interpolator;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $services = [] );
