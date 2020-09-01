@@ -88,20 +88,20 @@ Phalcon з nginx і PHP-FPM забезпечують потужний набір
 
 ### Конфігурація Phalcon
 
-You can use following potential configuration to setup nginx with Phalcon:
+Ви можете використовувати такі потенційні параметри для налаштування роботи nginx з Phalcon:
 
     server {
-        # Port 80 will require nginx to be started with root permissions
-        # Depending on how you install nginx to use port 80 you will need
-        # to start the server with `sudo` ports about 1000 do not require
-        # root privileges
-        # listen      80;
+        # Порт 80 потребує старту nginx з root-правами
+        # Залежно від того, як ви встановлюєте nginx, щоб використовувати порт 80 вам буде необхідно
+        # стартувати сервер із `sudo`, порти порядку 1000 не потребують
+        # root прав
+        # слухаємо порт  80;
     
         listen        8000;
         server_name   default;
     
         ##########################
-        # In production require SSL
+        # У виробництві вимагається використання SSL
         # listen 443 ssl default_server;
     
         # ssl on;
@@ -110,12 +110,12 @@ You can use following potential configuration to setup nginx with Phalcon:
         # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
         # ssl_prefer_server_ciphers   on;
     
-        # These locations depend on where you store your certs
+        # Це розташування залежить від того, де ви зберігаєте свої сертифікати
         # ssl_certificate        /var/nginx/certs/default.cert;
         # ssl_certificate_key    /var/nginx/certs/default.key;
         ##########################
     
-        # This is the folder that index.php is in
+        # Це тека, де лежить index.php
         root /var/www/default/public;
         index index.php index.html index.htm;
     
@@ -123,25 +123,25 @@ You can use following potential configuration to setup nginx with Phalcon:
         client_max_body_size 100M;
         fastcgi_read_timeout 1800;
     
-        # Represents the root of the domain
+        # Є кореневим каталогом домена
         # https://localhost:8000/[index.php]
         location / {
-            # Matches URLS `$_GET['_url']`
+            # Збігається з URL `$_GET['_url']`
             try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
     
-        # When the HTTP request does not match the above
-        # and the file ends in .php
+        # Коли запит HTTP не такий, як вище
+        # а файл закінчується на .php
         location ~ [^/]\.php(/|$) {
             # try_files $uri =404;
     
-            # Ubuntu and PHP7.0-fpm in socket mode
-            # This path is dependent on the version of PHP install
+            # Ubuntu та PHP7.0-fpm в режимі socket
+            # Цей шлях залежить від версії встановленого PHP
             fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
     
     
-            # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
-            # You will need to configure FPM to listen on a standard port
+            # Якщо альтернативно ви використовуєте PHP-FPM в TCP режимі (вимагається у Windows)
+            # Вам необхідно налаштувати FPM для прослуховування стандартного порта
             # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
             # fastcgi_pass  127.0.0.1:9000;
     
@@ -155,7 +155,7 @@ You can use following potential configuration to setup nginx with Phalcon:
     
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-            # and set php.ini cgi.fix_pathinfo=0
+            # та встановити php.ini cgi.fix_pathinfo=0
     
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         }
@@ -172,9 +172,9 @@ You can use following potential configuration to setup nginx with Phalcon:
     }
     
 
-### Start
+### Запуск
 
-Depending on your system, the command to start nginx could be one of the following:
+Залежно від вашої системи, команда для запуску nginx може бути однією з таких:
 
 ```bash
 start nginx
@@ -184,11 +184,11 @@ service nginx start
 
 ## Apache
 
-[Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](https://httpd.apache.org/) є популярним і добре відомим веб-сервером, доступним на багатьох платформах.
 
 ### Конфігурація Phalcon
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
+Нижче наведено потенційні установки, які ви можете використовувати для налаштування Apache із Phalcon. Ці нотатки в основному зфокусовані на конфігурації модуля `mod_rewrite`, що дозволяє використовувати дружні URL і компонент [маршрутизатора](routing). Типова структура каталогів продукту:
 
 ```bash
 tutorial/
@@ -203,9 +203,9 @@ tutorial/
     index.php
 ```
 
-**Document root** The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files. The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`).
+**Коренева тека** Найпоширеніший випадок - коли продукт встановлюють в каталозі під кореневою текою. У такому випадку ми можемо використовувати `.htaccess` файли. Перший буде використаний для приховування коду продукта, переадресовуючи усі запити до кореневої теки продукта (`public/`).
 
-> **NOTE**: Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> **ПРИМІТКА**: Зауважте, що використання файлів `.htaccess` вимагає, щоб у налаштуваннях вашого apache було встановлено опцію `AllowOverride All`.
  {: .alert .alert-warning}
 
 # tutorial/.htaccess
@@ -217,7 +217,7 @@ tutorial/
     </IfModule>
     
 
-A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
+Другий файл `.htaccess` розташований в каталозі `public/` та переадресовує усі запити URI до файлу `public/index.php`:
 
     # tutorial/public/.htaccess
     
@@ -229,7 +229,7 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
     </IfModule>
     
 
-**International Characters** For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+**Міжнародні символи** Для користувачів, які використовують перську літеру 'م' (meem) в параметрах uri є проблема з `mod_rewrite`. Щоб виправити проблему вам потрібно змінити ваш файл `.htaccess` наступним чином:
 
     # tutorial/public/.htaccess
     
@@ -241,11 +241,11 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
     </IfModule>
     
 
-If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
+Якщо ваші URI містять символи, відмінні від латинських, може знадобитися здійснити вищевказані зміни, щоб дозволити `mod_rewrite` точного визначати ваші маршрути.
 
-#### Apache Configuration
+#### Налаштування Apache
 
-If you do not want to use `.htaccess` files, you can move the relevant directives to apache's main configuration file:
+Якщо ви не хочете використовувати `.htaccess` файли, ви можете перенести відповідні команди у головний файл конфігурації apache:
 
     <IfModule mod_rewrite.c>
     
@@ -265,9 +265,9 @@ If you do not want to use `.htaccess` files, you can move the relevant directive
     </IfModule>
     
 
-#### Virtual Hosts
+#### Віртуальні хости
 
-The configuration below is for when you want to install your application in a virtual host:
+Налаштування, зазначені нижче, призначені для установки власного продукту на віртуальний хост:
 
     <VirtualHost *:80>
     
@@ -288,13 +288,13 @@ The configuration below is for when you want to install your application in a vi
 
 ## Lighttpd
 
-[lighttpd](https://redmine.lighttpd.net/) (pronounced "lighty") is an open-source web server optimized for speed-critical environments while remaining standards-compliant, secure and flexible. It was originally written by Jan Kneschke as a proof-of-concept of the c10k problem – how to handle 10,000 connections in parallel on one server, but has gained worldwide popularity. Its name is a portmanteau of "light" and "httpd".
+[lighttpd](https://redmine.lighttpd.net/) (звучить, як "lighty") є веб-сервером з відкритим вихідним кодом, оптимізованим для швидкісних критичних середовищ, при цьому відповідає стандартам, залишається безпечним та гнучким. Спочатку його було написано Яном Кнешке як концепт рішення проблеми c10k - як опрацювати 10 000 підключень паралельно на одному сервері, але отримав популярність по всьому світу. Його ім'я є поєднанням слів "light" та "httpd".
 
-### Install lighttpd
+### Установка lighttpd
 
-[lighttpd Official Site](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
+[Офіційний сайт lighttpd](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
 
-You can use following potencial configuration to setup lighttpd with Phalcon:
+Ви можете використовувати наступну конфігурацію для налаштування роботи lighttpd із Phalcon:
 
 ```nginx
 server.modules = (
@@ -313,22 +313,22 @@ server.username             = "www-data"
 server.groupname            = "www-data"
 server.port                 = 80
 
-# strict parsing and normalization of URL for consistency and security
+# чіткий парсинг та нормалізація URL для цілісності та безпеки
 # https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_http-parseoptsDetails
-# (might need to explicitly set "url-path-2f-decode" = "disable"
-#  if a specific application is encoding URLs inside url-path)
+# (може потребувати явної установки "url-path-2f-decode" = "disable"
+#якщо конкретний продукт кодує URLs всередині url-path)
 server.http-parseopts = (
-  "header-strict"           => "enable",# default
-  "host-strict"             => "enable",# default
-  "host-normalize"          => "enable",# default
-  "url-normalize-unreserved"=> "enable",# recommended highly
-  "url-normalize-required"  => "enable",# recommended
-  "url-ctrls-reject"        => "enable",# recommended
-  "url-path-2f-decode"      => "enable",# recommended highly (unless breaks app)
+  "header-strict"           => "enable",# за замовчуванням
+  "host-strict"             => "enable",# за замовчування
+  "host-normalize"          => "enable",# за замовчування
+  "url-normalize-unreserved"=> "enable",# дуже рекомендовано
+  "url-normalize-required"  => "enable",# рекомендовано
+  "url-ctrls-reject"        => "enable",# рекомендовано
+  "url-path-2f-decode"      => "enable",# дуже рекомендовано (щоб запобігти зламу продукту)
  #"url-path-2f-reject"      => "enable",
-  "url-path-dotseg-remove"  => "enable",# recommended highly (unless breaks app)
+  "url-path-dotseg-remove"  => "enable",# дуже рекомендовано (щоб запобігти зламу продукту)
  #"url-path-dotseg-reject"  => "enable",
- #"url-query-20-plus"       => "enable",# consistency in query string
+ #"url-query-20-plus"       => "enable",# цілісність стрічки запиту
 )
 
 index-file.names            = ( "index.php", "index.html" )
@@ -338,7 +338,7 @@ static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 compress.cache-dir          = "/var/cache/lighttpd/compress/"
 compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
 
-# default listening port for IPv6 falls back to the IPv4 port
+# прослуховування портів IPv6 за замовчуванням змінюється на порти IPv4
 include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
 include_shell "/usr/share/lighttpd/create-mime.conf.pl"
 include "/etc/lighttpd/conf-enabled/*.conf"
@@ -351,22 +351,22 @@ server.modules += (
 )
 
 url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_url=$1" )
-# or
+# або
 #url.rewrite-if-not-file = ( "/" => "/index.php?_rl=$1" )
 ```
 
 ## WAMP
 
-[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](https://www.wampserver.com/en/) є середовищем веб-розробника Windows. Він дозволяє створювати веб-додатки з використанням Apache2, PHP та баз даних MySQL. Нижче наведені детальні інструкції, як встановити Phalcon на WampServer для Windows. Використання останньої версії WampServer є дуже рекомендованим.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **ПРИМІТКА** Починаючи з v4, ви повинні встановити розширення PECL `PSR`. Відвідайте [цю URL-адресу](https://pecl.php.net/package/psr/0.7.0/windows), щоб отримати DLL і виконайте ті ж кроки для встановлення розширення, як і з DLL Phalcon.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **ПРИМІТКА** Шляхи у цьому посібнику мають бути співставними з вашою установкою WAMP
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Завантаження Phalcon
 
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
 
@@ -435,14 +435,14 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **ПРИМІТКА** Починаючи з v4, ви повинні встановити розширення PECL `PSR`. Відвідайте [цю URL-адресу](https://pecl.php.net/package/psr/0.7.0/windows), щоб отримати DLL і виконайте ті ж кроки для встановлення розширення, як і з DLL Phalcon.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **ПРИМІТКА** Шляхи у цьому посібнику мають бути співставними з вашою установкою WAMP
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Завантаження Phalcon
 
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
 

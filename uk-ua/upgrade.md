@@ -936,8 +936,8 @@ $group->addTrace(
 ## Tag
 
 - Додано `renderTitle()`, який виводить назву, взяту у `<title>` теги.
-- Змінено `getTitle`. Він повертає лише текст. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
-- Changed `textArea` to use `htmlspecialchars` to prevent XSS injection.
+- Змінено `getTitle`. Він повертає лише текст. А також приймає логічні значення `prepend`, `append` для додавання на початку чи в кінці заголовка відповідного тексту.
+- Змінено `textArea`, щоб зробити можливим використання `htmlspecialchars` для запобігання XSS ін'єкціям.
 
 * * *
 
@@ -945,29 +945,29 @@ $group->addTrace(
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Str Documentation](helpers#str)
+> Використання: [Документація Str](helpers#str)
 {: .alert .alert-info }
 
-The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
+Компонент `Phalcon\Text` було видалено на користь `Phalcon\Helper\Str`. Функціональність, запропонована `Phalcon\Text` в v3 відтворена та посилена в новому класі: `Phalcon\Helper\Str`.
 
 * * *
 
-## Валідація
+## Validation
 
 ### Validation\Message
 
-- Removed `Phalcon\Validation\Message` and `Phalcon\Mvc\Model\Message` in favor of `Phalcon\Messages\Message`
-- Removed `Phalcon\Validation\MessageInterface` and `Phalcon\Mvc\Model\MessageInterface` in favor of `Phalcon\Messages\MessageInterface`
-- Removed `Phalcon\Validation\Message\Group` in favor of `Phalcon\Messages\Messages`
-- Validator messages have been moved inside each validator
+- Видалено `Phalcon\Validation\Message` та `Phalcon\Mvc\Model\Message` на користь `Phalcon\Messages\Message`
+- Видалено `Phalcon\Validation\MessageInterface` і `Phalcon\Mvc\Model\MessageInterface` на користь `Phalcon\Messages\MessageInterface`
+- Видалено `Phalcon\Validation\Message\Group` на користь `Phalcon\Messages\Messages`
+- Повідомлення про перевірку переміщені всередину кожного валідатора
 
 ### Validation\Validator
 
-- Removed `isSetOption`
+- Вилучено параметр `isSetOption`
 
 ### Validation\Validator\Ip
 
-- Added `Phalcon\Validation\Validator\Ip`, class used to validate ip address fields. It allows to validate a field selecting IPv4 or IPv6, allowing private or reserved ranges and empty values if necessary.
+- Додано `Phalcon\Validation\Validator\Ip`, цей клас використовується для перевірки полів з IP-адресами. Він дозволяє перевіряти поле, обравши IPv4 або IPv6, допускаючи приватні або зарезервовані діапазони та пусті значення у разі потреби.
 
 * * *
 
@@ -975,324 +975,324 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [View Documentation](views)
+> Використання: [Документація Views](views)
 {: .alert .alert-info }
 
-View caching along with the `viewCache` service have been removed from the framework because they were incompatible with the new Cache component. Developers can easily utilize a *view cache* from external services such as Varnish, Cloudflare etc. Additionally, developers can cache fragments by either using the `Phalcon\Mvc\View\Simple::render()` or the `Phalcon\Mvc\View::toString()`. Those two methods return the produced HTML that can be cached in the cache backend of your choice.
+Кешування View разом з сервісом `viewCache` було видалено з фреймворку, тому що вони несумісні з новим компонентом кешу. Розробники можуть легко використовувати *view cache* із зовнішніх сервісів, таких як Varnish, Cloudflare і т. д. Крім того, розробники можуть кешувати фрагменти, використовуючи `Phalcon\Mvc\View\Simple:render()` або `Phalcon\Mvc\View:toString()`. Ці два методи повертають згенерований HTML, який може бути кешований на сервері за вашим бажанням.
 
 * * *
 
-## Гіперпосилання
+## Url
 
 > Статус: **необхідні зміни**
 > 
-> Usage: [Url Documentation](url)
+> Використання: [Документація Url](url)
 {: .alert .alert-info }
 
-The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functionality remains the same.
+Компонент `Phalcon\Mvc\Url` було перейменовано на `Phalcon\Url`. Функціонал залишився без змін.
 
-## Cheat Sheet
+## Порівняння змін
 
 ### Acl
 
-| 3.4.x                  | State      | 4.0.x                                  |
-| ---------------------- | ---------- | -------------------------------------- |
-| Phalcon\Acl           | Видалено   |                                        |
-| Phalcon\Acl\Adapter  | Renamed to | Phalcon\Acl\Adapter\AbstractAdapter |
-| Phalcon\Acl\Resource | Renamed to | Phalcon\Acl\Component                |
-|                        | New        | Phalcon\Acl\Enum                     |
+| 3.4.x                  | Стан             | 4.0.x                                  |
+| ---------------------- | ---------------- | -------------------------------------- |
+| Phalcon\Acl           | Видалено         |                                        |
+| Phalcon\Acl\Adapter  | Перейменовано на | Phalcon\Acl\Adapter\AbstractAdapter |
+| Phalcon\Acl\Resource | Перейменовано на | Phalcon\Acl\Component                |
+|                        | Новий            | Phalcon\Acl\Enum                     |
 
-### Примітки
+### Annotations
 
-| 3.4.x                                 | State      | 4.0.x                                          |
-| ------------------------------------- | ---------- | ---------------------------------------------- |
-| Phalcon\Annotations\Adapter         | Renamed to | Phalcon\Annotations\Adapter\AbstractAdapter |
-| Phalcon\Annotations\Adapter\Apc    | Видалено   |                                                |
-| Phalcon\Annotations\Adapter\Files  | Renamed to | Phalcon\Annotations\Adapter\Stream          |
-| Phalcon\Annotations\Adapter\Xcache | Видалено   |                                                |
-| Phalcon\Annotations\Factory         | Renamed to | Phalcon\Annotations\AnnotationsFactory       |
+| 3.4.x                                 | Стан             | 4.0.x                                          |
+| ------------------------------------- | ---------------- | ---------------------------------------------- |
+| Phalcon\Annotations\Adapter         | Перейменовано на | Phalcon\Annotations\Adapter\AbstractAdapter |
+| Phalcon\Annotations\Adapter\Apc    | Видалено         |                                                |
+| Phalcon\Annotations\Adapter\Files  | Перейменовано на | Phalcon\Annotations\Adapter\Stream          |
+| Phalcon\Annotations\Adapter\Xcache | Видалено         |                                                |
+| Phalcon\Annotations\Factory         | Перейменовано на | Phalcon\Annotations\AnnotationsFactory       |
 
 ### Application
 
-| 3.4.x                | State      | 4.0.x                                     |
-| -------------------- | ---------- | ----------------------------------------- |
-| Phalcon\Application | Renamed to | Phalcon\Application\AbstractApplication |
+| 3.4.x                | Стан             | 4.0.x                                     |
+| -------------------- | ---------------- | ----------------------------------------- |
+| Phalcon\Application | Перейменовано на | Phalcon\Application\AbstractApplication |
 
 ### Assets
 
-| 3.4.x                          | State      | 4.0.x                       |
-| ------------------------------ | ---------- | --------------------------- |
-| Phalcon\Assets\Resource      | Renamed to | Phalcon\Assets\Asset      |
-| Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css |
-| Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
+| 3.4.x                          | Стан             | 4.0.x                       |
+| ------------------------------ | ---------------- | --------------------------- |
+| Phalcon\Assets\Resource      | Перейменовано на | Phalcon\Assets\Asset      |
+| Phalcon\Assets\Resource\Css | Перейменовано на | Phalcon\Assets\Asset\Css |
+| Phalcon\Assets\Resource\Js  | Перейменовано на | Phalcon\Assets\Asset\Js  |
 
 ### Cache
 
-| 3.4.x                                 | State      | 4.0.x                                               |
-| ------------------------------------- | ---------- | --------------------------------------------------- |
-| Phalcon\Cache\Backend\Apc          | Видалено   |                                                     |
-| Phalcon\Cache\Backend               | Renamed to | Phalcon\Cache                                      |
-| Phalcon\Cache\Backend\Factory      | Renamed to | Phalcon\Cache\AdapterFactory                      |
-| Phalcon\Cache\Backend\Apcu         | Renamed to | Phalcon\Cache\Adapter\Apcu                       |
-| Phalcon\Cache\Backend\File         | Renamed to | Phalcon\Cache\Adapter\Stream                     |
-| Phalcon\Cache\Backend\Libmemcached | Renamed to | Phalcon\Cache\Adapter\Libmemcached               |
-| Phalcon\Cache\Backend\Memcache     | Видалено   |                                                     |
-| Phalcon\Cache\Backend\Memory       | Renamed to | Phalcon\Cache\Adapter\Memory                     |
-| Phalcon\Cache\Backend\Mongo        | Видалено   |                                                     |
-| Phalcon\Cache\Backend\Redis        | Renamed to | Phalcon\Cache\Adapter\Redis                      |
-|                                       | New        | Phalcon\Cache\CacheFactory                        |
-| Phalcon\Cache\Backend\Xcache       | Видалено   |                                                     |
-| Phalcon\Cache\Exception             | Renamed to | Phalcon\Cache\Exception\Exception                |
-|                                       | New        | Phalcon\Cache\Exception\InvalidArgumentException |
-| Phalcon\Cache\Frontend\Base64      | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\Data        | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\Factory     | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\Igbinary    | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\Json        | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\Msgpack     | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\None        | Видалено   |                                                     |
-| Phalcon\Cache\Frontend\Output      | Видалено   |                                                     |
-| Phalcon\Cache\Multiple              | Видалено   |                                                     |
+| 3.4.x                                 | Стан             | 4.0.x                                               |
+| ------------------------------------- | ---------------- | --------------------------------------------------- |
+| Phalcon\Cache\Backend\Apc          | Видалено         |                                                     |
+| Phalcon\Cache\Backend               | Перейменовано на | Phalcon\Cache                                      |
+| Phalcon\Cache\Backend\Factory      | Перейменовано на | Phalcon\Cache\AdapterFactory                      |
+| Phalcon\Cache\Backend\Apcu         | Перейменовано на | Phalcon\Cache\Adapter\Apcu                       |
+| Phalcon\Cache\Backend\File         | Перейменовано на | Phalcon\Cache\Adapter\Stream                     |
+| Phalcon\Cache\Backend\Libmemcached | Перейменовано на | Phalcon\Cache\Adapter\Libmemcached               |
+| Phalcon\Cache\Backend\Memcache     | Видалено         |                                                     |
+| Phalcon\Cache\Backend\Memory       | Перейменовано на | Phalcon\Cache\Adapter\Memory                     |
+| Phalcon\Cache\Backend\Mongo        | Видалено         |                                                     |
+| Phalcon\Cache\Backend\Redis        | Перейменовано на | Phalcon\Cache\Adapter\Redis                      |
+|                                       | Новий            | Phalcon\Cache\CacheFactory                        |
+| Phalcon\Cache\Backend\Xcache       | Видалено         |                                                     |
+| Phalcon\Cache\Exception             | Перейменовано на | Phalcon\Cache\Exception\Exception                |
+|                                       | Новий            | Phalcon\Cache\Exception\InvalidArgumentException |
+| Phalcon\Cache\Frontend\Base64      | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\Data        | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\Factory     | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\Igbinary    | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\Json        | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\Msgpack     | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\None        | Видалено         |                                                     |
+| Phalcon\Cache\Frontend\Output      | Видалено         |                                                     |
+| Phalcon\Cache\Multiple              | Видалено         |                                                     |
 
 ### Колекція
 
-| 3.4.x | State | 4.0.x                          |
+| 3.4.x | Стан  | 4.0.x                          |
 | ----- | ----- | ------------------------------ |
-|       | New   | Phalcon\Collection            |
-|       | New   | Phalcon\Collection\Exception |
-|       | New   | Phalcon\Collection\ReadOnly  |
+|       | Новий | Phalcon\Collection            |
+|       | Новий | Phalcon\Collection\Exception |
+|       | Новий | Phalcon\Collection\ReadOnly  |
 
 ### Config
 
-| 3.4.x                    | State      | 4.0.x                          |
-| ------------------------ | ---------- | ------------------------------ |
-| Phalcon\Config\Factory | Renamed to | Phalcon\Config\ConfigFactory |
+| 3.4.x                    | Стан             | 4.0.x                          |
+| ------------------------ | ---------------- | ------------------------------ |
+| Phalcon\Config\Factory | Перейменовано на | Phalcon\Config\ConfigFactory |
 
 ### Container
 
-| 3.4.x | State | 4.0.x              |
+| 3.4.x | Стан  | 4.0.x              |
 | ----- | ----- | ------------------ |
-|       | New   | Phalcon\Container |
+|       | Новий | Phalcon\Container |
 
 ### Db
 
-| 3.4.x                              | State      | 4.0.x                                  |
-| ---------------------------------- | ---------- | -------------------------------------- |
-| Phalcon\Db                        | Renamed to | Phalcon\Db\AbstractDb                |
-| Phalcon\Db\Adapter               | Renamed to | Phalcon\Db\Adapter\AbstractAdapter  |
-| Phalcon\Db\Adapter\Pdo          | Renamed to | Phalcon\Db\Adapter\Pdo\AbstractPdo |
-| Phalcon\Db\Adapter\Pdo\Factory | Renamed to | Phalcon\Db\Adapter\PdoFactory       |
-|                                    | New        | Phalcon\Db\Enum                      |
+| 3.4.x                              | Стан             | 4.0.x                                  |
+| ---------------------------------- | ---------------- | -------------------------------------- |
+| Phalcon\Db                        | Перейменовано на | Phalcon\Db\AbstractDb                |
+| Phalcon\Db\Adapter               | Перейменовано на | Phalcon\Db\Adapter\AbstractAdapter  |
+| Phalcon\Db\Adapter\Pdo          | Перейменовано на | Phalcon\Db\Adapter\Pdo\AbstractPdo |
+| Phalcon\Db\Adapter\Pdo\Factory | Перейменовано на | Phalcon\Db\Adapter\PdoFactory       |
+|                                    | Новий            | Phalcon\Db\Enum                      |
 
-### Диспетчер
+### Dispatcher
 
-| 3.4.x               | State      | 4.0.x                                   |
-| ------------------- | ---------- | --------------------------------------- |
-| Phalcon\Dispatcher | Renamed to | Phalcon\Dispatcher\AbstractDispatcher |
-|                     | New        | Phalcon\Dispatcher\Exception          |
+| 3.4.x               | Стан             | 4.0.x                                   |
+| ------------------- | ---------------- | --------------------------------------- |
+| Phalcon\Dispatcher | Перейменовано на | Phalcon\Dispatcher\AbstractDispatcher |
+|                     | Новий            | Phalcon\Dispatcher\Exception          |
 
 ### Di
 
-| 3.4.x | State | 4.0.x                                              |
+| 3.4.x | Стан  | 4.0.x                                              |
 | ----- | ----- | -------------------------------------------------- |
-|       | New   | Phalcon\Di\AbstractInjectionAware                |
-|       | New   | Phalcon\Di\Exception\ServiceResolutionException |
+|       | Новий | Phalcon\Di\AbstractInjectionAware                |
+|       | Новий | Phalcon\Di\Exception\ServiceResolutionException |
 
 ### Domain
 
-| 3.4.x | State | 4.0.x                                    |
+| 3.4.x | Стан  | 4.0.x                                    |
 | ----- | ----- | ---------------------------------------- |
-|       | New   | Phalcon\Domain\Payload\Payload        |
-|       | New   | Phalcon\Domain\Payload\PayloadFactory |
-|       | New   | Phalcon\Domain\Payload\Status         |
+|       | Новий | Phalcon\Domain\Payload\Payload        |
+|       | Новий | Phalcon\Domain\Payload\PayloadFactory |
+|       | Новий | Phalcon\Domain\Payload\Status         |
 
 ### Factory
 
-| 3.4.x            | State      | 4.0.x                             |
-| ---------------- | ---------- | --------------------------------- |
-| Phalcon\Factory | Renamed to | Phalcon\Factory\AbstractFactory |
+| 3.4.x            | Стан             | 4.0.x                             |
+| ---------------- | ---------------- | --------------------------------- |
+| Phalcon\Factory | Перейменовано на | Phalcon\Factory\AbstractFactory |
 
 ### Filter
 
-| 3.4.x | State | 4.0.x                                  |
+| 3.4.x | Стан  | 4.0.x                                  |
 | ----- | ----- | -------------------------------------- |
-|       | New   | Phalcon\Filter\FilterFactory         |
-|       | New   | Phalcon\Filter\Sanitize\AbsInt      |
-|       | New   | Phalcon\Filter\Sanitize\Alnum       |
-|       | New   | Phalcon\Filter\Sanitize\Alpha       |
-|       | New   | Phalcon\Filter\Sanitize\BoolVal     |
-|       | New   | Phalcon\Filter\Sanitize\Email       |
-|       | New   | Phalcon\Filter\Sanitize\FloatVal    |
-|       | New   | Phalcon\Filter\Sanitize\IntVal      |
-|       | New   | Phalcon\Filter\Sanitize\Lower       |
-|       | New   | Phalcon\Filter\Sanitize\LowerFirst  |
-|       | New   | Phalcon\Filter\Sanitize\Regex       |
-|       | New   | Phalcon\Filter\Sanitize\Remove      |
-|       | New   | Phalcon\Filter\Sanitize\Replace     |
-|       | New   | Phalcon\Filter\Sanitize\Special     |
-|       | New   | Phalcon\Filter\Sanitize\SpecialFull |
-|       | New   | Phalcon\Filter\Sanitize\StringVal   |
-|       | New   | Phalcon\Filter\Sanitize\Striptags   |
-|       | New   | Phalcon\Filter\Sanitize\Trim        |
-|       | New   | Phalcon\Filter\Sanitize\Upper       |
-|       | New   | Phalcon\Filter\Sanitize\UpperFirst  |
-|       | New   | Phalcon\Filter\Sanitize\UpperWords  |
-|       | New   | Phalcon\Filter\Sanitize\Url         |
+|       | Новий | Phalcon\Filter\FilterFactory         |
+|       | Новий | Phalcon\Filter\Sanitize\AbsInt      |
+|       | Новий | Phalcon\Filter\Sanitize\Alnum       |
+|       | Новий | Phalcon\Filter\Sanitize\Alpha       |
+|       | Новий | Phalcon\Filter\Sanitize\BoolVal     |
+|       | Новий | Phalcon\Filter\Sanitize\Email       |
+|       | Новий | Phalcon\Filter\Sanitize\FloatVal    |
+|       | Новий | Phalcon\Filter\Sanitize\IntVal      |
+|       | Новий | Phalcon\Filter\Sanitize\Lower       |
+|       | Новий | Phalcon\Filter\Sanitize\LowerFirst  |
+|       | Новий | Phalcon\Filter\Sanitize\Regex       |
+|       | Новий | Phalcon\Filter\Sanitize\Remove      |
+|       | Новий | Phalcon\Filter\Sanitize\Replace     |
+|       | Новий | Phalcon\Filter\Sanitize\Special     |
+|       | Новий | Phalcon\Filter\Sanitize\SpecialFull |
+|       | Новий | Phalcon\Filter\Sanitize\StringVal   |
+|       | Новий | Phalcon\Filter\Sanitize\Striptags   |
+|       | Новий | Phalcon\Filter\Sanitize\Trim        |
+|       | Новий | Phalcon\Filter\Sanitize\Upper       |
+|       | Новий | Phalcon\Filter\Sanitize\UpperFirst  |
+|       | Новий | Phalcon\Filter\Sanitize\UpperWords  |
+|       | Новий | Phalcon\Filter\Sanitize\Url         |
 
 ### Flash
 
-| 3.4.x          | State      | 4.0.x                         |
-| -------------- | ---------- | ----------------------------- |
-| Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
+| 3.4.x          | Стан             | 4.0.x                         |
+| -------------- | ---------------- | ----------------------------- |
+| Phalcon\Flash | Перейменовано на | Phalcon\Flash\AbstractFlash |
 
-### Форми
+### Forms
 
-| 3.4.x                   | State      | 4.0.x                                    |
-| ----------------------- | ---------- | ---------------------------------------- |
-| Phalcon\Forms\Element | Renamed to | Phalcon\Forms\Element\AbstractElement |
+| 3.4.x                   | Стан             | 4.0.x                                    |
+| ----------------------- | ---------------- | ---------------------------------------- |
+| Phalcon\Forms\Element | Перейменовано на | Phalcon\Forms\Element\AbstractElement |
 
 ### Helper
 
-| 3.4.x | State | 4.0.x                      |
+| 3.4.x | Стан  | 4.0.x                      |
 | ----- | ----- | -------------------------- |
-|       | New   | Phalcon\Helper\Arr       |
-|       | New   | Phalcon\Helper\Exception |
-|       | New   | Phalcon\Helper\Fs        |
-|       | New   | Phalcon\Helper\Json      |
-|       | New   | Phalcon\Helper\Number    |
-|       | New   | Phalcon\Helper\Str       |
+|       | Новий | Phalcon\Helper\Arr       |
+|       | Новий | Phalcon\Helper\Exception |
+|       | Новий | Phalcon\Helper\Fs        |
+|       | Новий | Phalcon\Helper\Json      |
+|       | Новий | Phalcon\Helper\Number    |
+|       | Новий | Phalcon\Helper\Str       |
 
 ### Html
 
-| 3.4.x | State | 4.0.x                                      |
+| 3.4.x | Стан  | 4.0.x                                      |
 | ----- | ----- | ------------------------------------------ |
-|       | New   | Phalcon\Html\Attributes                  |
-|       | New   | Phalcon\Html\Breadcrumbs                 |
-|       | New   | Phalcon\Html\Exception                   |
-|       | New   | Phalcon\Html\Helper\AbstractHelper      |
-|       | New   | Phalcon\Html\Helper\Anchor              |
-|       | New   | Phalcon\Html\Helper\AnchorRaw           |
-|       | New   | Phalcon\Html\Helper\Body                |
-|       | New   | Phalcon\Html\Helper\Button              |
-|       | New   | Phalcon\Html\Helper\Close               |
-|       | New   | Phalcon\Html\Helper\Element             |
-|       | New   | Phalcon\Html\Helper\ElementRaw          |
-|       | New   | Phalcon\Html\Helper\Form                |
-|       | New   | Phalcon\Html\Helper\Img                 |
-|       | New   | Phalcon\Html\Helper\Label               |
-|       | New   | Phalcon\Html\Helper\TextArea            |
-|       | New   | Phalcon\Html\Link\EvolvableLink         |
-|       | New   | Phalcon\Html\Link\EvolvableLinkProvider |
-|       | New   | Phalcon\Html\Link\Link                  |
-|       | New   | Phalcon\Html\Link\LinkProvider          |
-|       | New   | Phalcon\Html\Link\Serializer\Header    |
-|       | New   | Phalcon\Html\TagFactory                  |
+|       | Новий | Phalcon\Html\Attributes                  |
+|       | Новий | Phalcon\Html\Breadcrumbs                 |
+|       | Новий | Phalcon\Html\Exception                   |
+|       | Новий | Phalcon\Html\Helper\AbstractHelper      |
+|       | Новий | Phalcon\Html\Helper\Anchor              |
+|       | Новий | Phalcon\Html\Helper\AnchorRaw           |
+|       | Новий | Phalcon\Html\Helper\Body                |
+|       | Новий | Phalcon\Html\Helper\Button              |
+|       | Новий | Phalcon\Html\Helper\Close               |
+|       | Новий | Phalcon\Html\Helper\Element             |
+|       | Новий | Phalcon\Html\Helper\ElementRaw          |
+|       | Новий | Phalcon\Html\Helper\Form                |
+|       | Новий | Phalcon\Html\Helper\Img                 |
+|       | Новий | Phalcon\Html\Helper\Label               |
+|       | Новий | Phalcon\Html\Helper\TextArea            |
+|       | Новий | Phalcon\Html\Link\EvolvableLink         |
+|       | Новий | Phalcon\Html\Link\EvolvableLinkProvider |
+|       | Новий | Phalcon\Html\Link\Link                  |
+|       | Новий | Phalcon\Html\Link\LinkProvider          |
+|       | Новий | Phalcon\Html\Link\Serializer\Header    |
+|       | Новий | Phalcon\Html\TagFactory                  |
 
 ### Http
 
-| 3.4.x | State | 4.0.x                                                       |
+| 3.4.x | Стан  | 4.0.x                                                       |
 | ----- | ----- | ----------------------------------------------------------- |
-|       | New   | Phalcon\Http\Message\AbstractCommon                      |
-|       | New   | Phalcon\Http\Message\AbstractMessage                     |
-|       | New   | Phalcon\Http\Message\AbstractRequest                     |
-|       | New   | Phalcon\Http\Message\Exception\InvalidArgumentException |
-|       | New   | Phalcon\Http\Message\Request                             |
-|       | New   | Phalcon\Http\Message\RequestFactory                      |
-|       | New   | Phalcon\Http\Message\Response                            |
-|       | New   | Phalcon\Http\Message\ResponseFactory                     |
-|       | New   | Phalcon\Http\Message\ServerRequest                       |
-|       | New   | Phalcon\Http\Message\ServerRequestFactory                |
-|       | New   | Phalcon\Http\Message\Stream                              |
-|       | New   | Phalcon\Http\Message\StreamFactory                       |
-|       | New   | Phalcon\Http\Message\Stream\Input                       |
-|       | New   | Phalcon\Http\Message\Stream\Memory                      |
-|       | New   | Phalcon\Http\Message\Stream\Temp                        |
-|       | New   | Phalcon\Http\Message\UploadedFile                        |
-|       | New   | Phalcon\Http\Message\UploadedFileFactory                 |
-|       | New   | Phalcon\Http\Message\Uri                                 |
-|       | New   | Phalcon\Http\Message\UriFactory                          |
-|       | New   | Phalcon\Http\Server\AbstractMiddleware                   |
-|       | New   | Phalcon\Http\Server\AbstractRequestHandler               |
+|       | Новий | Phalcon\Http\Message\AbstractCommon                      |
+|       | Новий | Phalcon\Http\Message\AbstractMessage                     |
+|       | Новий | Phalcon\Http\Message\AbstractRequest                     |
+|       | Новий | Phalcon\Http\Message\Exception\InvalidArgumentException |
+|       | Новий | Phalcon\Http\Message\Request                             |
+|       | Новий | Phalcon\Http\Message\RequestFactory                      |
+|       | Новий | Phalcon\Http\Message\Response                            |
+|       | Новий | Phalcon\Http\Message\ResponseFactory                     |
+|       | Новий | Phalcon\Http\Message\ServerRequest                       |
+|       | Новий | Phalcon\Http\Message\ServerRequestFactory                |
+|       | Новий | Phalcon\Http\Message\Stream                              |
+|       | Новий | Phalcon\Http\Message\StreamFactory                       |
+|       | Новий | Phalcon\Http\Message\Stream\Input                       |
+|       | Новий | Phalcon\Http\Message\Stream\Memory                      |
+|       | Новий | Phalcon\Http\Message\Stream\Temp                        |
+|       | Новий | Phalcon\Http\Message\UploadedFile                        |
+|       | Новий | Phalcon\Http\Message\UploadedFileFactory                 |
+|       | Новий | Phalcon\Http\Message\Uri                                 |
+|       | Новий | Phalcon\Http\Message\UriFactory                          |
+|       | Новий | Phalcon\Http\Server\AbstractMiddleware                   |
+|       | Новий | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Зображення
+### Image
 
-| 3.4.x                   | State      | 4.0.x                                    |
-| ----------------------- | ---------- | ---------------------------------------- |
-| Phalcon\Image          | Видалено   |                                          |
-| Phalcon\Image\Adapter | Renamed to | Phalcon\Image\Adapter\AbstractAdapter |
-|                         | New        | Phalcon\Image\Enum                     |
-| Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
+| 3.4.x                   | Стан             | 4.0.x                                    |
+| ----------------------- | ---------------- | ---------------------------------------- |
+| Phalcon\Image          | Видалено         |                                          |
+| Phalcon\Image\Adapter | Перейменовано на | Phalcon\Image\Adapter\AbstractAdapter |
+|                         | Новий            | Phalcon\Image\Enum                     |
+| Phalcon\Image\Factory | Перейменовано на | Phalcon\Image\ImageFactory             |
 
 ### Logger
 
-| 3.4.x                               | State      | 4.0.x                                         |
-| ----------------------------------- | ---------- | --------------------------------------------- |
-|                                     | New        | Phalcon\Logger\AdapterFactory               |
-| Phalcon\Logger\Adapter            | Renamed to | Phalcon\Logger\Adapter\AbstractAdapter     |
-| Phalcon\Logger\Adapter\Blackhole | Renamed to | Phalcon\Logger\Adapter\Noop                |
-| Phalcon\Logger\Adapter\File      | Renamed to | Phalcon\Logger\Adapter\Stream              |
-| Phalcon\Logger\Adapter\Firephp   | Видалено   |                                               |
-| Phalcon\Logger\Factory            | Renamed to | Phalcon\Logger\LoggerFactory                |
-| Phalcon\Logger\Formatter          | Renamed to | Phalcon\Logger\Formatter\AbstractFormatter |
-| Phalcon\Logger\Formatter\Firephp | Видалено   |                                               |
-| Phalcon\Logger\Formatter\Syslog  | Видалено   |                                               |
-| Phalcon\Logger\Multiple           | Видалено   |                                               |
+| 3.4.x                               | Стан             | 4.0.x                                         |
+| ----------------------------------- | ---------------- | --------------------------------------------- |
+|                                     | Новий            | Phalcon\Logger\AdapterFactory               |
+| Phalcon\Logger\Adapter            | Перейменовано на | Phalcon\Logger\Adapter\AbstractAdapter     |
+| Phalcon\Logger\Adapter\Blackhole | Перейменовано на | Phalcon\Logger\Adapter\Noop                |
+| Phalcon\Logger\Adapter\File      | Перейменовано на | Phalcon\Logger\Adapter\Stream              |
+| Phalcon\Logger\Adapter\Firephp   | Видалено         |                                               |
+| Phalcon\Logger\Factory            | Перейменовано на | Phalcon\Logger\LoggerFactory                |
+| Phalcon\Logger\Formatter          | Перейменовано на | Phalcon\Logger\Formatter\AbstractFormatter |
+| Phalcon\Logger\Formatter\Firephp | Видалено         |                                               |
+| Phalcon\Logger\Formatter\Syslog  | Видалено         |                                               |
+| Phalcon\Logger\Multiple           | Видалено         |                                               |
 
-### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
+### Message (новий у V4, колишній Phalcon\Validation\Message у 3.4)
 
-| 3.4.x | State | 4.0.x                        |
+| 3.4.x | Стан  | 4.0.x                        |
 | ----- | ----- | ---------------------------- |
-|       | New   | Phalcon\Messages\Exception |
-|       | New   | Phalcon\Messages\Message   |
-|       | New   | Phalcon\Messages\Messages  |
+|       | Новий | Phalcon\Messages\Exception |
+|       | Новий | Phalcon\Messages\Message   |
+|       | Новий | Phalcon\Messages\Messages  |
 
 ### Mvc
 
-| 3.4.x                                             | State      | 4.0.x                                        |
-| ------------------------------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Mvc\Collection                          | Renamed to | Phalcon\Collection                          |
-| Phalcon\Mvc\Collection\Behavior                | Видалено   |                                              |
-| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Видалено   |                                              |
-| Phalcon\Mvc\Collection\Behavior\Timestampable | Видалено   |                                              |
-| Phalcon\Mvc\Collection\Document                | Видалено   |                                              |
-| Phalcon\Mvc\Collection\Exception               | Renamed to | Phalcon\Collection\Exception               |
-| Phalcon\Mvc\Collection\Manager                 | Видалено   |                                              |
-|                                                   | New        | Phalcon\Collection\ReadOnly                |
-| Phalcon\Mvc\Model\Message                      | Renamed to | Phalcon\Messages\Message                   |
-| Phalcon\Mvc\Model\MetaData\Apc                | Видалено   |                                              |
-| Phalcon\Mvc\Model\MetaData\Files              | Renamed to | Phalcon\Mvc\Model\MetaData\Stream        |
-| Phalcon\Mvc\Model\MetaData\Memcache           | Видалено   |                                              |
-| Phalcon\Mvc\Model\MetaData\Session            | Видалено   |                                              |
-| Phalcon\Mvc\Model\MetaData\Xcache             | Видалено   |                                              |
-| Phalcon\Mvc\Model\Validator                    | Renamed to | Phalcon\Validation\Validator               |
-| Phalcon\Mvc\Model\Validator\Email             | Renamed to | Phalcon\Validation\Validator\Email        |
-| Phalcon\Mvc\Model\Validator\Exclusionin       | Renamed to | Phalcon\Validation\Validator\ExclusionIn  |
-| Phalcon\Mvc\Model\Validator\Inclusionin       | Renamed to | Phalcon\Validation\Validator\InclusionIn  |
-| Phalcon\Mvc\Model\Validator\Ip                | Renamed to | Phalcon\Validation\Validator\Ip           |
-| Phalcon\Mvc\Model\Validator\Numericality      | Renamed to | Phalcon\Validation\Validator\Numericality |
-| Phalcon\Mvc\Model\Validator\PresenceOf        | Renamed to | Phalcon\Validation\Validator\PresenceOf   |
-| Phalcon\Mvc\Model\Validator\Regex             | Renamed to | Phalcon\Validation\Validator\Regex        |
-| Phalcon\Mvc\Model\Validator\StringLength      | Renamed to | Phalcon\Validation\Validator\StringLength |
-| Phalcon\Mvc\Model\Validator\Uniqueness        | Renamed to | Phalcon\Validation\Validator\Uniqueness   |
-| Phalcon\Mvc\Model\Validator\Url               | Renamed to | Phalcon\Validation\Validator\Url          |
-| Phalcon\Mvc\Url                                 | Renamed to | Phalcon\Url                                 |
-| Phalcon\Mvc\Url\Exception                      | Renamed to | Phalcon\Url\Exception                      |
-| Phalcon\Mvc\User\Component                     | Renamed to | Phalcon\Di\Injectable                      |
-| Phalcon\Mvc\User\Module                        | Renamed to | Phalcon\Di\Injectable                      |
-| Phalcon\Mvc\User\Plugin                        | Renamed to | Phalcon\Di\Injectable                      |
-| Phalcon\Mvc\View\Engine                        | Renamed to | Phalcon\Mvc\View\Engine\AbstractEngine   |
+| 3.4.x                                             | Стан             | 4.0.x                                        |
+| ------------------------------------------------- | ---------------- | -------------------------------------------- |
+| Phalcon\Mvc\Collection                          | Перейменовано на | Phalcon\Collection                          |
+| Phalcon\Mvc\Collection\Behavior                | Видалено         |                                              |
+| Phalcon\Mvc\Collection\Behavior\SoftDelete    | Видалено         |                                              |
+| Phalcon\Mvc\Collection\Behavior\Timestampable | Видалено         |                                              |
+| Phalcon\Mvc\Collection\Document                | Видалено         |                                              |
+| Phalcon\Mvc\Collection\Exception               | Перейменовано на | Phalcon\Collection\Exception               |
+| Phalcon\Mvc\Collection\Manager                 | Видалено         |                                              |
+|                                                   | Новий            | Phalcon\Collection\ReadOnly                |
+| Phalcon\Mvc\Model\Message                      | Перейменовано на | Phalcon\Messages\Message                   |
+| Phalcon\Mvc\Model\MetaData\Apc                | Видалено         |                                              |
+| Phalcon\Mvc\Model\MetaData\Files              | Перейменовано на | Phalcon\Mvc\Model\MetaData\Stream        |
+| Phalcon\Mvc\Model\MetaData\Memcache           | Видалено         |                                              |
+| Phalcon\Mvc\Model\MetaData\Session            | Видалено         |                                              |
+| Phalcon\Mvc\Model\MetaData\Xcache             | Видалено         |                                              |
+| Phalcon\Mvc\Model\Validator                    | Перейменовано на | Phalcon\Validation\Validator               |
+| Phalcon\Mvc\Model\Validator\Email             | Перейменовано на | Phalcon\Validation\Validator\Email        |
+| Phalcon\Mvc\Model\Validator\Exclusionin       | Перейменовано на | Phalcon\Validation\Validator\ExclusionIn  |
+| Phalcon\Mvc\Model\Validator\Inclusionin       | Перейменовано на | Phalcon\Validation\Validator\InclusionIn  |
+| Phalcon\Mvc\Model\Validator\Ip                | Перейменовано на | Phalcon\Validation\Validator\Ip           |
+| Phalcon\Mvc\Model\Validator\Numericality      | Перейменовано на | Phalcon\Validation\Validator\Numericality |
+| Phalcon\Mvc\Model\Validator\PresenceOf        | Перейменовано на | Phalcon\Validation\Validator\PresenceOf   |
+| Phalcon\Mvc\Model\Validator\Regex             | Перейменовано на | Phalcon\Validation\Validator\Regex        |
+| Phalcon\Mvc\Model\Validator\StringLength      | Перейменовано на | Phalcon\Validation\Validator\StringLength |
+| Phalcon\Mvc\Model\Validator\Uniqueness        | Перейменовано на | Phalcon\Validation\Validator\Uniqueness   |
+| Phalcon\Mvc\Model\Validator\Url               | Перейменовано на | Phalcon\Validation\Validator\Url          |
+| Phalcon\Mvc\Url                                 | Перейменовано на | Phalcon\Url                                 |
+| Phalcon\Mvc\Url\Exception                      | Перейменовано на | Phalcon\Url\Exception                      |
+| Phalcon\Mvc\User\Component                     | Перейменовано на | Phalcon\Di\Injectable                      |
+| Phalcon\Mvc\User\Module                        | Перейменовано на | Phalcon\Di\Injectable                      |
+| Phalcon\Mvc\User\Plugin                        | Перейменовано на | Phalcon\Di\Injectable                      |
+| Phalcon\Mvc\View\Engine                        | Перейменовано на | Phalcon\Mvc\View\Engine\AbstractEngine   |
 
 ### Paginator
 
-| 3.4.x                       | State      | 4.0.x                                        |
-| --------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Paginator\Adapter | Renamed to | Phalcon\Paginator\Adapter\AbstractAdapter |
-| Phalcon\Paginator\Factory | Renamed to | Phalcon\Paginator\PaginatorFactory         |
-|                             | New        | Phalcon\Paginator\Repository               |
+| 3.4.x                       | Стан             | 4.0.x                                        |
+| --------------------------- | ---------------- | -------------------------------------------- |
+| Phalcon\Paginator\Adapter | Перейменовано на | Phalcon\Paginator\Adapter\AbstractAdapter |
+| Phalcon\Paginator\Factory | Перейменовано на | Phalcon\Paginator\PaginatorFactory         |
+|                             | Новий            | Phalcon\Paginator\Repository               |
 
 ### Queue
 
-| 3.4.x                                | State    | 4.0.x |
+| 3.4.x                                | Стан     | 4.0.x |
 | ------------------------------------ | -------- | ----- |
 | Phalcon\Queue\Beanstalk            | Видалено |       |
 | Phalcon\Queue\Beanstalk\Exception | Видалено |       |
@@ -1300,69 +1300,69 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Session
 
-| 3.4.x                               | State      | 4.0.x                                      |
-| ----------------------------------- | ---------- | ------------------------------------------ |
-| Phalcon\Session\Adapter           | Renamed to | Phalcon\Session\Adapter\AbstractAdapter |
-| Phalcon\Session\Adapter\Files    | Renamed to | Phalcon\Session\Adapter\Stream          |
-|                                     | New        | Phalcon\Session\Adapter\Noop            |
-| Phalcon\Session\Adapter\Memcache | Видалено   |                                            |
-| Phalcon\Session\Factory           | Renamed to | Phalcon\Session\Manager                  |
+| 3.4.x                               | Стан             | 4.0.x                                      |
+| ----------------------------------- | ---------------- | ------------------------------------------ |
+| Phalcon\Session\Adapter           | Перейменовано на | Phalcon\Session\Adapter\AbstractAdapter |
+| Phalcon\Session\Adapter\Files    | Перейменовано на | Phalcon\Session\Adapter\Stream          |
+|                                     | Новий            | Phalcon\Session\Adapter\Noop            |
+| Phalcon\Session\Adapter\Memcache | Видалено         |                                            |
+| Phalcon\Session\Factory           | Перейменовано на | Phalcon\Session\Manager                  |
 
 ### Storage
 
-| 3.4.x | State | 4.0.x                                            |
+| 3.4.x | Стан  | 4.0.x                                            |
 | ----- | ----- | ------------------------------------------------ |
-|       | New   | Phalcon\Storage\AdapterFactory                 |
-|       | New   | Phalcon\Storage\Adapter\AbstractAdapter       |
-|       | New   | Phalcon\Storage\Adapter\Apcu                  |
-|       | New   | Phalcon\Storage\Adapter\Libmemcached          |
-|       | New   | Phalcon\Storage\Adapter\Memory                |
-|       | New   | Phalcon\Storage\Adapter\Redis                 |
-|       | New   | Phalcon\Storage\Adapter\Stream                |
-|       | New   | Phalcon\Storage\Exception                      |
-|       | New   | Phalcon\Storage\SerializerFactory              |
-|       | New   | Phalcon\Storage\Serializer\AbstractSerializer |
-|       | New   | Phalcon\Storage\Serializer\Base64             |
-|       | New   | Phalcon\Storage\Serializer\Igbinary           |
-|       | New   | Phalcon\Storage\Serializer\Json               |
-|       | New   | Phalcon\Storage\Serializer\Msgpack            |
-|       | New   | Phalcon\Storage\Serializer\None               |
-|       | New   | Phalcon\Storage\Serializer\Php                |
+|       | Новий | Phalcon\Storage\AdapterFactory                 |
+|       | Новий | Phalcon\Storage\Adapter\AbstractAdapter       |
+|       | Новий | Phalcon\Storage\Adapter\Apcu                  |
+|       | Новий | Phalcon\Storage\Adapter\Libmemcached          |
+|       | Новий | Phalcon\Storage\Adapter\Memory                |
+|       | Новий | Phalcon\Storage\Adapter\Redis                 |
+|       | Новий | Phalcon\Storage\Adapter\Stream                |
+|       | Новий | Phalcon\Storage\Exception                      |
+|       | Новий | Phalcon\Storage\SerializerFactory              |
+|       | Новий | Phalcon\Storage\Serializer\AbstractSerializer |
+|       | Новий | Phalcon\Storage\Serializer\Base64             |
+|       | Новий | Phalcon\Storage\Serializer\Igbinary           |
+|       | Новий | Phalcon\Storage\Serializer\Json               |
+|       | Новий | Phalcon\Storage\Serializer\Msgpack            |
+|       | Новий | Phalcon\Storage\Serializer\None               |
+|       | Новий | Phalcon\Storage\Serializer\Php                |
 
-### Переклад
+### Translate
 
-| 3.4.x                       | State      | 4.0.x                                        |
-| --------------------------- | ---------- | -------------------------------------------- |
-| Phalcon\Translate          | Видалено   |                                              |
-| Phalcon\Translate\Adapter | Renamed to | Phalcon\Translate\Adapter\AbstractAdapter |
-|                             | New        | Phalcon\Translate\InterpolatorFactory      |
-| Phalcon\Translate\Factory | Renamed to | Phalcon\Translate\TranslateFactory         |
+| 3.4.x                       | Стан             | 4.0.x                                        |
+| --------------------------- | ---------------- | -------------------------------------------- |
+| Phalcon\Translate          | Видалено         |                                              |
+| Phalcon\Translate\Adapter | Перейменовано на | Phalcon\Translate\Adapter\AbstractAdapter |
+|                             | Новий            | Phalcon\Translate\InterpolatorFactory      |
+| Phalcon\Translate\Factory | Перейменовано на | Phalcon\Translate\TranslateFactory         |
 
-### Гіперпосилання
+### Url
 
-| 3.4.x | State | 4.0.x                   |
+| 3.4.x | Стан  | 4.0.x                   |
 | ----- | ----- | ----------------------- |
-|       | New   | Phalcon\Url            |
-|       | New   | Phalcon\Url\Exception |
+|       | Новий | Phalcon\Url            |
+|       | Новий | Phalcon\Url\Exception |
 
-### Валідація
+### Validation
 
-| 3.4.x                                        | State      | 4.0.x                                                   |
-| -------------------------------------------- | ---------- | ------------------------------------------------------- |
-| Phalcon\Validation\CombinedFieldsValidator | Renamed to | Phalcon\Validation\AbstractCombinedFieldsValidator    |
-| Phalcon\Validation\Message                 | Renamed to | Phalcon\Messages\Message                              |
-| Phalcon\Validation\Message\Group          | Renamed to | Phalcon\Messages\Messages                             |
-| Phalcon\Validation\Validator               | Renamed to | Phalcon\Validation\AbstractValidator                  |
-|                                              | New        | Phalcon\Validation\AbstractValidatorComposite         |
-|                                              | New        | Phalcon\Validation\Exception                          |
-|                                              | New        | Phalcon\Validation\ValidatorFactory                   |
-|                                              | New        | Phalcon\Validation\Validator\File\AbstractFile      |
-|                                              | New        | Phalcon\Validation\Validator\File\MimeType          |
-|                                              | New        | Phalcon\Validation\Validator\File\Resolution\Equal |
-|                                              | New        | Phalcon\Validation\Validator\File\Resolution\Max   |
-|                                              | New        | Phalcon\Validation\Validator\File\Resolution\Min   |
-|                                              | New        | Phalcon\Validation\Validator\File\Size\Equal       |
-|                                              | New        | Phalcon\Validation\Validator\File\Size\Max         |
-|                                              | New        | Phalcon\Validation\Validator\File\Size\Min         |
-|                                              | New        | Phalcon\Validation\Validator\StringLength\Max       |
-|                                              | New        | Phalcon\Validation\Validator\StringLength\Min       |
+| 3.4.x                                        | Стан             | 4.0.x                                                   |
+| -------------------------------------------- | ---------------- | ------------------------------------------------------- |
+| Phalcon\Validation\CombinedFieldsValidator | Перейменовано на | Phalcon\Validation\AbstractCombinedFieldsValidator    |
+| Phalcon\Validation\Message                 | Перейменовано на | Phalcon\Messages\Message                              |
+| Phalcon\Validation\Message\Group          | Перейменовано на | Phalcon\Messages\Messages                             |
+| Phalcon\Validation\Validator               | Перейменовано на | Phalcon\Validation\AbstractValidator                  |
+|                                              | Новий            | Phalcon\Validation\AbstractValidatorComposite         |
+|                                              | Новий            | Phalcon\Validation\Exception                          |
+|                                              | Новий            | Phalcon\Validation\ValidatorFactory                   |
+|                                              | Новий            | Phalcon\Validation\Validator\File\AbstractFile      |
+|                                              | Новий            | Phalcon\Validation\Validator\File\MimeType          |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Resolution\Equal |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Resolution\Max   |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Resolution\Min   |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Size\Equal       |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Size\Max         |
+|                                              | Новий            | Phalcon\Validation\Validator\File\Size\Min         |
+|                                              | Новий            | Phalcon\Validation\Validator\StringLength\Max       |
+|                                              | Новий            | Phalcon\Validation\Validator\StringLength\Min       |
