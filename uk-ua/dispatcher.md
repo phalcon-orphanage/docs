@@ -34,7 +34,7 @@ $dispatcher->setParams([]);
 $controller = $dispatcher->dispatch();
 ```
 
-## Methods
+## Методи
 
 ```php
 public function callActionMethod(
