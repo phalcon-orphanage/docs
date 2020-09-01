@@ -38,7 +38,7 @@ title: 'Phalcon\Html'
 
 This class helps to work with HTML Attributes
 
-## Methods
+## Методи
 
 ```php
 public function __toString(): string;
@@ -62,7 +62,7 @@ Render attributes as HTML attributes
 - 
 - Interface Phalcon\Html\Attributes\AttributesInterface */
 
-## Methods
+## Методи
 
 ```php
 public function getAttributes(): Attributes;
@@ -86,7 +86,7 @@ Set Attributes
 - 
 - Interface Phalcon\Html\Attributes\RenderInterface */
 
-## Methods
+## Методи
 
 ```php
 public function render(): string;
@@ -130,7 +130,7 @@ private template = <dt><a href=\"%link%\">%label%</a></dt>;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function add( string $label, string $link = string ): Breadcrumbs;
@@ -223,7 +223,7 @@ protected escaper;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( EscaperInterface $escaper );
@@ -271,7 +271,7 @@ Phalcon\Html\Helper\Anchor
 
 Creates an anchor
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $href, string $text, array $attributes = [] ): string;
@@ -289,7 +289,7 @@ Phalcon\Html\Helper\AnchorRaw
 
 Creates a raw anchor
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $href, string $text, array $attributes = [] ): string;
@@ -307,7 +307,7 @@ Phalcon\Html\Helper\Body
 
 Creates a body tag
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -325,7 +325,7 @@ Phalcon\Html\Helper\Button
 
 Creates a button tag
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $text, array $attributes = [] ): string;
@@ -343,7 +343,7 @@ Phalcon\Html\Helper\Close
 
 Creates a closing tag
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $tag ): string;
@@ -359,7 +359,7 @@ Phalcon\Html\Helper\Address
 
 Creates an element
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [] ): string;
@@ -377,7 +377,7 @@ Phalcon\Html\Helper\ElementRaw
 
 Creates an element raw
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [] ): string;
@@ -393,7 +393,7 @@ Phalcon\Html\Helper\Form
 
 Creates a form opening tag
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -411,7 +411,7 @@ Phalcon\Html\Helper\Img
 
 Creates am img tag
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $src, array $attributes = [] ): string;
@@ -427,7 +427,7 @@ Phalcon\Html\Helper\Label
 
 Creates a label
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -443,7 +443,7 @@ Phalcon\Html\Helper\TextArea
 
 Creates a textarea tag
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $text, array $attributes = [] ): string;
@@ -461,7 +461,7 @@ Class Phalcon\Http\Link\EvolvableLink
 
 @property array attributes @property string href @property array rels @property bool templated
 
-## Methods
+## Методи
 
 ```php
 public function withAttribute( mixed $attribute, mixed $value );
@@ -511,7 +511,7 @@ Class Phalcon\Http\Link\LinkProvider
 
 @property LinkInterface[] links
 
-## Methods
+## Методи
 
 ```php
 public function withLink( LinkInterface $link );
@@ -564,7 +564,7 @@ protected templated = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $rel = string, string $href = string, array $attributes = [] );
@@ -634,7 +634,7 @@ protected links;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $links = [] );
@@ -672,7 +672,7 @@ Returns the object hash key
 
 Class Phalcon\Http\Link\Serializer\Header
 
-## Methods
+## Методи
 
 ```php
 public function serialize( array $links ): string | null;
@@ -688,7 +688,7 @@ Serializes all the passed links to a HTTP link header
 
 Class Phalcon\Http\Link\Serializer\SerializerInterface
 
-## Methods
+## Методи
 
 ```php
 public function serialize( array $links ): string | null;
@@ -714,7 +714,7 @@ private escaper;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( EscaperInterface $escaper, array $services = [] );
