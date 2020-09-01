@@ -25,7 +25,7 @@ const VERSION_SPECIAL = 3;
 const VERSION_SPECIAL_NUMBER = 4;
 ```
 
-## Methods
+## Методи
 
 ```php
 public static function get(): string;
