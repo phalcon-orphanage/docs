@@ -56,7 +56,7 @@ protected staticBaseUri;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( RouterInterface $router = null );
@@ -190,7 +190,7 @@ Exceptions thrown in Phalcon\Url will use this class
 
 Interface for Phalcon\Url\UrlInterface
 
-## Methods
+## Методи
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
