@@ -87,7 +87,7 @@ protected registered = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function autoLoad( string $className ): bool;
