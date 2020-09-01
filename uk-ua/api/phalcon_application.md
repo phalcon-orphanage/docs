@@ -41,7 +41,7 @@ protected modules;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( DiInterface $container = null );
