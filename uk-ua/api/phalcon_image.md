@@ -70,7 +70,7 @@ protected width;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
@@ -198,7 +198,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
@@ -276,7 +276,7 @@ protected static checked = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
@@ -386,7 +386,7 @@ protected static version = 0;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
@@ -556,7 +556,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 Phalcon\Image/ImageFactory
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $services = [] );
