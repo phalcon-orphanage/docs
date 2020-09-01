@@ -74,7 +74,7 @@ try {
 }
 ```
 
-## Methods
+## Методи
 
 ```php
 public static function setup( array $options ): void;
@@ -169,7 +169,7 @@ protected type;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $descriptor );
@@ -738,7 +738,7 @@ var_dump(
 
 Interface for Phalcon\Db adapters
 
-## Methods
+## Методи
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
@@ -1210,7 +1210,7 @@ protected pdo;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $descriptor );
@@ -1498,7 +1498,7 @@ protected type = mysql;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
@@ -1585,7 +1585,7 @@ protected type = pgsql;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $descriptor );
@@ -1709,7 +1709,7 @@ protected type = sqlite;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $descriptor );
@@ -1798,7 +1798,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $services = [] );
@@ -1995,7 +1995,7 @@ protected unsigned = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, array $definition );
@@ -2093,7 +2093,7 @@ Returns true if number column is unsigned
 
 Interface for Phalcon\Db\Column
 
-## Methods
+## Методи
 
 ```php
 public function getAfterPosition(): string;
@@ -2210,7 +2210,7 @@ protected customFunctions;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function createSavepoint( string $name ): string;
@@ -2505,7 +2505,7 @@ protected escapeChar = `;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2705,7 +2705,7 @@ protected escapeChar = \";
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2895,7 +2895,7 @@ protected escapeChar = \";
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3091,7 +3091,7 @@ Generates SQL checking for the existence of a schema.view
 
 Interface for Phalcon\Db dialects
 
-## Methods
+## Методи
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3393,7 +3393,7 @@ protected type;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, array $columns, string $type = string );
@@ -3421,7 +3421,7 @@ public function getType(): string
 
 Interface for Phalcon\Db\Index
 
-## Methods
+## Методи
 
 ```php
 public function getColumns(): array;
@@ -3520,7 +3520,7 @@ protected totalSeconds = 0;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getLastProfile(): Item;
@@ -3612,7 +3612,7 @@ protected sqlVariables;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getFinalTime(): double
@@ -3691,7 +3691,7 @@ protected value;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $value );
@@ -3794,7 +3794,7 @@ protected onUpdate;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $name, array $definition );
@@ -3842,7 +3842,7 @@ public function getSchemaName(): string
 
 Interface for Phalcon\Db\Reference
 
-## Methods
+## Методи
 
 ```php
 public function getColumns(): array;
@@ -3947,7 +3947,7 @@ protected sqlStatement;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null );
@@ -4085,7 +4085,7 @@ $result->setFetchMode(
 
 Interface for Phalcon\Db\Result objects
 
-## Methods
+## Методи
 
 ```php
 public function dataSeek( long $number );
