@@ -83,64 +83,64 @@ Xhprof пропонує вбудований HTML оглядач для анал
 
 ### SQL-інструкції
 
-Almost all RDBMs offer tools to identify slow SQL statements. Identifying and fixing slow queries is very important in terms of performance on the server side. MariaDB / MySql / AuroraDb offer configuration settings that enable a `slow-query` log. The database then keeps its own metrics and whenever a query takes long to complete it will be logged in the `slow-query` log. The log can then be analyzed by the development team and adjustments can be made.
+Майже всі RDBM пропонують інструменти для визначення повільних SQL-команд. Визначення та виправлення повільних запитів дуже важливо з точки зору продуктивності на стороні сервера. MariaDB / MySql / AuroraDb пропонують налаштування, що дозволяють вести журнал `slow-query`. Після цього база даних зберігає власні метрики, і коли запиту буде потрібно більше часу для завершення, запис про нього буде зроблено в `slow-query` журналі. Цей журнал може бути проаналізовано командою розробників, щоб зробити відповідні правки у коді.
 
-To enable this feature you will need to add this to `my.cnf` (don't forget to restart your database server)
+Щоб увімкнути цю функцію, вам потрібно буде додати це до `my.cnf` (не забудьте перезапустити ваш сервер бази даних)
 
 ```ini
 log-slow-queries = /var/log/slow-queries.log
 long_query_time = 1.5
 ```
 
-## Client
+## Клієнт
 
-Another area to focus on is the client. Improving the loading of assets such as images, stylesheets, javascript files can significantly improve performance and enhance user experience. There are a number of tools that can help with identifying bottlenecks on the client:
+Іншою зоною, що потребує уваги розробника є клієнт. Поліпшення завантаження активів, таких як зображення, таблиці стилів, файли javascript, може значно підвищити продуктивність та покращити користувацький досвід. Є ряд інструментів, які можуть допомогти з ідентифікацією вузьких місць на стороні клієнта:
 
-### Browsers
+### Браузери
 
-Most modern browsers have tools to profile a page's loading time. Those are easily called *web inspectors* or *developer tools*. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the current page (files), how much time it took and the total loading time:
+Більшість сучасних браузерів мають інструменти для обліку часу завантаження сторінки. Вони називаються *веб-інспекторами* або *інструментами розробника*. Наприклад, при використанні будь-якого браузера на базі Chromium чи Brave, ви можете проінспектувати сторінку, а інструменти розробника покажуть купу всього, що завантажилось для поточної сторінки (файли), скільки часу пройшло і загальний час завантаження:
 
 ![](/assets/images/content/performance-chrome-1.jpg)
 
-A relatively easy fix for increasing client performance is to set the correct headers for assets so that they expire in the future vs. being loaded from the server on every request. Additionally, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) providers can help with distributing assets from their distribution centers that are closest to the client originating the request.
+Потенційно легке рішення для підвищення продуктивності на стороні клієнта — встановити правильні заголовки ресурсів так, щоб їх термін використання вичерпався якомога пізніше у майбутньому на противагу повторному їх завантаження із сервера щоразу, як здійснюється запит. Крім того, [постачальники CDN](https://en.wikipedia.org/wiki/Content_delivery_network) можуть допомогти з постачанням ресурсів з дата-центрів, що розташовані ближче до клієнта, який здійснює запит.
 
 ### Yahoo! YSlow
 
-[YSlow](https://developer.yahoo.com/yslow) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](https://developer.yahoo.com/performance/rules.html)
+[YSlow](https://developer.yahoo.com/yslow) аналізує веб-сторінки і пропонує способи поліпшити їхню продуктивність на основі набору [правил для високопродуктивних веб-сторінок](https://developer.yahoo.com/performance/rules.html)
 
 ![](/assets/images/content/performance-yslow-1.jpg)
 
 ## PHP
 
-PHP is becoming faster with every new version. Using the latest version improves the performance of your applications and also of Phalcon.
+PHP стає швидшим з кожною новою версією. Використання останньої версії покращує продуктивність ваших продуктів, а також Phalcon.
 
-### Bytecode Cache
+### Байт-код кеш
 
-[OPcache](https://php.net/manual/en/book.opcache.php) as many other bytecode caches helps applications reduce the overhead of read, tokenize and parse PHP files in each request. The interpreted results are kept in RAM between requests as long as PHP runs as fcgi (fpm) or mod_php. OPcache is bundled with php starting 5.5.0. To check if it is activated, look for the following entry in php.ini:
+[OPcache](https://php.net/manual/en/book.opcache.php), як і більшість інших байт-код кешів, допомагає програмам зменшити накладні витрати на читання, маркування і аналіз вмісту PHP файлів у кожному запиті. Результати інтерпретації зберігаються в оперативній пам'яті між запитами до тих пір, поки PHP запускається як fcgi (fpm) або mod_php. OPcache включено до php починаючи з версії 5.5.0. Щоб перевірити чи його активовано, перевірте такий запис в php.ini:
 
 ```ini
 opcache.enable = On
 opcache.memory_consumption = 128    ;default
 ```
 
-Furthermore, the amount of memory available for opcode caching needs to be enough to hold all files of your applications. The default of 128MB is usually enough for even larger codebases.
+Разом з тим, кількість доступної пам'яті для кешування opcode має бути достатньою для зберігання всіх файлів вашого продукту. Значення за замовчуванням 128 МБ зазвичай достатньє для навіть великих кодових баз.
 
-### Serverside cache
+### Сервісний кеш
 
-[APCu](https://php.net/manual/en/book.apcu.php) can be used to cache the results of computational expensive operations or otherwise slow data sources like webservices with high latency. What makes a result cacheable is another topic, as a rule of thumb: the operations needs to be executed often and yield identical results. Make sure to measure through profiling that the optimizations actually improved execution time.
+[APCu](https://php.net/manual/en/book.apcu.php) можна використовувати для кешування операцій, що потребують значних розрахунків, або ж для повільних джерел даних, таких як веб-сервіси з високою затримкою. Інше питання, як визначити чи потрібно кешувати результат, - для цього є практичне правило: якщо відповідні операції мають часто виконуватись, а їх результат ідентичний. Переконайтеся за допомогою профілювання (інспектування), що така оптимізація фактично покращила час виконання запиту.
 
 ```ini
 apc.enabled = On
 apc.shm_size = 32M  ;default
 ```
 
-As with the aforementioned opcache, make sure, the amount of RAM available suits your application. Alternatives to APCu would be [Redis](https://redis.io/) or [Memcached](https://memcached.org/) - although they need extra processes running on your server or another machine.
+Як і з вищезгаданим opcache, переконайтеся, що кількість оперативної пам'яті достатня для вашого продукту. Альтернативами APCu можуть бути [Redis](https://redis.io/) або [Memcached](https://memcached.org/), однак, для них необхідно запустити додаткові процеси на вашому сервері або іншій машині.
 
-## Slow Tasks
+## Повільні завдання
 
-Based on the requirements of your application, there maybe times that you will need to perform long running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is: - The application initiates a task by sending a message to a queue service - The user sees a message that the task has been scheduled - In the background (or different server), worker scripts peek at the queue - When a message arrives, the worker script detects the type of message and calls the relevant task script - Once the task finishes, the user is notified that their data is ready.
+Виходячи з потреб вашого продукту, може бути час, коли необхідно буде виконувати окремі завдання протягом тривалого часу. Прикладами таких завдань можуть бути: обробка відео, оптимізація зображень, надсилання електронних листів, генерування PDF-документів тощо. Ці завдання повинні бути виконані за допомогою фонових завдань. Звичайний процес: - додаток ініціює завдання, надіславши повідомлення диспетчеру черги - користувач бачить повідомлення, що завдання заплановане до виконання - у фоновому режимі (або на іншому сервері) робочий скрипт періодично перевіряє чергу виконання - коли приходить повідомлення, робочий скрипт визначає тип повідомлення і викликає відповідний сервіс для виконання завдання - після завершення завдання, користувач отримує повідомлення про те, що його дані готові.
 
-The above is a simplistic view of how a queue service for background processing works, but can offer ideas on how background tasks can be executed. There are also a variety of queue services available that you can leverage using the relevant PHP libraries:
+Це спрощене уявлення про те, як працює черга фонових процесів, але можна запропонувати і кращі ідеї про те, як мають бути виконані фонові завдання. Також є безліч сервісів черг, які можна використовувати за допомогою відповідних бібліотек PHP:
 
 * [NATS](https://nats.io)
 * [RabbitMQ](https://www.rabbitmq.com/)
@@ -149,6 +149,6 @@ The above is a simplistic view of how a queue service for background processing 
 * [SQS](https://aws.amazon.com/sqs/)
 * [ZeroMQ](https://www.zeromq.org/)
 
-## Page Speed
+## Швидкість сторінки
 
-[mod_pagespeed](https://www.modpagespeed.com/) speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available for nginx) automatically applies web performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring you to modify your existing content or workflow.
+[mod_pagespeed](https://www.modpagespeed.com/) пришвидшує роботу вашого сайту і зменшує час завантаження сторінки. Цей модуль Apache HTTP-сервера з відкритим вихідним кодом (також доступний для nginx) автоматично застосовує кращі практики веб продуктивності до сторінок і пов'язаних з ними ресурсами (CSS, JavaScript, зображення), не вимагаючи від вас змінити існуючий контент або робочий процес.
