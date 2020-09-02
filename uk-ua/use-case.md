@@ -2,77 +2,77 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Use Case'
-keywords: 'use case, examples'
+title: 'Способи використання'
+keywords: 'use case, examples, приклади, способи використання'
 ---
 
-# Use Case
+# Способи використання
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Throughout this documentation we are going to assume that we are building an accounting application.
+В межах цієї документації ми будемо припускати, що ми створюємо бухгалтерський додаток.
 
-## Requirements
+## Вимоги
 
-- MVC application using [Phalcon\Mvc\Application](application)
-- Store data in a database (MariaDB/MySQL)
-- Offer a UI for users to work 
-    - Login page
-    - Administration area 
-        - Cache management
-        - Permissions
-        - Products CRUD
-        - Users CRUD
-    - Accounting department area 
-        - Invoices
-        - Customers
-        - Payments
-    - Customer portal area 
-        - Invoices (view)
-        - Payment
-        - Reports
+- Додаток MVC через використання [Phalcon\Mvc\Application](application)
+- Зберігати дані в базі даних (MariaDB/MySQL)
+- Запропонувати користувачам інтерфейс для роботи 
+    - Сторінка авторизації
+    - Адміністративна зона 
+        - Управління кешем
+        - Права доступу
+        - CRUD продуктів
+        - CRUD користувачів
+    - Зона бухгалтерського підрозділу 
+        - Рахунки
+        - Клієнти
+        - Платежі
+    - Клієнтська зона порталу 
+        - Рахунки (перегляд)
+        - Оплата
+        - Звіти
 
-## Groups - User Roles
+## Групи - Ролі користувачів
 
-| Group          | Description                                        |
-| -------------- | -------------------------------------------------- |
-| Guests         | Users that are not logged in, visitors to the site |
-| Customers      | Users that have purchased products                 |
-| Accounting     | Users of the accounting department                 |
-| Managers       | Accounting department managers                     |
-| Administrators | Full access to the whole application               |
+| Група          | Опис                                                   |
+| -------------- | ------------------------------------------------------ |
+| Гості          | Неавторизовані користувачі, звичайні відвідувачі сайту |
+| Клієнти        | Користувачі, які придбали товари                       |
+| Бухгалтерія    | Користувачі бухгалтерського відділу                    |
+| Менеджери      | Керівники бухгалтерського відділу                      |
+| Адміністратори | Повний доступ до всієї програми                        |
 
-## Endpoints
+## Кінцеві точки
 
-| Endpoint                          | Description                                                  |
-| --------------------------------- | ------------------------------------------------------------ |
-| `/login`                          | Path `/session/login`. Presents the login screen             |
-| `/logout`                         | Path `/session/logout`. Logs user out, redirects to `/login` |
-| `/portal/invoices/list`           | List invoices for the currently logged in customer           |
-| `/portal/invoices/view/{0-9}`     | View invoice for the currently logged in customer            |
-| `/portal/invoices/pay/{0-9}`      | Pay invoice (payment gateway)                                |
-| `/portal/reports/list`            | List available reports for the logged in customer            |
-| `/portal/reports/view/{0-9}`      | View report for this customer                                |
-| `/accounting/invoices/add`        | Add new invoice                                              |
-| `/accounting/invoices/edit/{0-9}` | Edit an invoice                                              |
-| `/accounting/invoices/view/{0-9}` | View an invoice                                              |
-| `/accounting/invoices/list`       | List all invoices                                            |
-| `/accounting/invoices/void/{0-9}` | Void an invoice                                              |
-| `/admin/cache/view`               | View all cache items                                         |
-| `/admin/cache/delete/{0-9}`       | Delete a cache item                                          |
-| `/admin/cache/void`               | Void the whole cache                                         |
-| `/admin/permissions/list`         | Show the current permissions                                 |
-| `/admin/permissions/add`          | Add a new permission                                         |
-| `/admin/permissions/edit/{0-9}`   | Edit a permission                                            |
-| `/admin/products/list`            | List all products                                            |
-| `/admin/products/add`             | Add a product                                                |
-| `/admin/products/edit/{0-9}`      | Edit a product                                               |
-| `/admin/products/delete/{0-9}`    | Delete a product                                             |
-| `/admin/products/view/{0-9}`      | View a product                                               |
-| `/admin/users/list`               | List all users                                               |
-| `/admin/users/add`                | Add a user                                                   |
-| `/admin/users/edit/{0-9}`         | Edit a user                                                  |
-| `/admin/users/delete/{0-9}`       | Delete a user                                                |
-| `/admin/users/view/{0-9}`         | View a user                                                  |
+| Кінцева точка                     | Опис                                                                                             |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `/login`                          | Шлях `/session/login`. Відкриває сторінку авторизації                                            |
+| `/logout`                         | Шлях `/session/logout`. Завершення робочої сесії користувача з перенаправленням його на `/login` |
+| `/portal/invoices/list`           | Список рахунків для користувача, що увійшов у систему                                            |
+| `/portal/invoices/view/{0-9}`     | Перегляд рахунка-фактури користувачем, що увійшов у систему                                      |
+| `/portal/invoices/pay/{0-9}`      | Оплата рахунка (платіжний шлюз)                                                                  |
+| `/portal/reports/list`            | Список доступних звітів для авторизованого користувача                                           |
+| `/portal/reports/view/{0-9}`      | Перегляд звіту цим користувачем                                                                  |
+| `/accounting/invoices/add`        | Додавання нового рахунка                                                                         |
+| `/accounting/invoices/edit/{0-9}` | Редагування рахунка                                                                              |
+| `/accounting/invoices/view/{0-9}` | Перегляд рахунка-фактури                                                                         |
+| `/accounting/invoices/list`       | Список усіх рахунків                                                                             |
+| `/accounting/invoices/void/{0-9}` | Анулювати рахунок                                                                                |
+| `/admin/cache/view`               | Перегляд всіх елементів кешу                                                                     |
+| `/admin/cache/delete/{0-9}`       | Видалення елемента кешу                                                                          |
+| `/admin/cache/void`               | Очистити весь кеш                                                                                |
+| `/admin/permissions/list`         | Показати поточні дозволи                                                                         |
+| `/admin/permissions/add`          | Додати новий дозвіл                                                                              |
+| `/admin/permissions/edit/{0-9}`   | Редагувати дозвіл                                                                                |
+| `/admin/products/list`            | Список всіх товарів                                                                              |
+| `/admin/products/add`             | Додати товар                                                                                     |
+| `/admin/products/edit/{0-9}`      | Редагувати продукт                                                                               |
+| `/admin/products/delete/{0-9}`    | Видалити товар                                                                                   |
+| `/admin/products/view/{0-9}`      | Переглянути товар                                                                                |
+| `/admin/users/list`               | Список всіх користувачів                                                                         |
+| `/admin/users/add`                | Додати користувача                                                                               |
+| `/admin/users/edit/{0-9}`         | Редагувати користувача                                                                           |
+| `/admin/users/delete/{0-9}`       | Видалення користувача                                                                            |
+| `/admin/users/view/{0-9}`         | Переглянути користувача                                                                          |
