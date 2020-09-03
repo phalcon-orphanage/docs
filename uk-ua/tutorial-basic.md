@@ -24,7 +24,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, нав
 
 ## Файлова структура
 
-One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
+Однією з головних особливостей Phalcon є слабка зв'язаність. Через це ви можете використати будь-яку структуру каталогів, яка вам зручна. У цьому посібнику ми будемо використовувати *стандартну* структуру каталогів, що зазвичай використовується в MVC застосунках.
 
 ```text
 .
@@ -43,10 +43,10 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
         └── js
 ```
 
-> **NOTE**: Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the <installation> page and complete the installation prior to continuing with this tutorial.
+> **ПРИМІТКА**: Оскільки весь код, який пропонує Phalcon, зібрано у розширенні (яке ви завантажили на вашому веб-сервері), ви не побачите папку `vendor`, яка містить код Phalcon. Все, що вам потрібно, знаходиться в пам'яті. Якщо Ви ще не встановили розширення, перейдіть на сторінку [установка](installation) і завершіть встановлення перед тим, як продовжувати виконувати вказівки цього посібника.
 {: .alert .alert-warning }
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
+Якщо це все абсолютно нове для вас, рекомендується також встановити [Phalcon Devtools](devtools). DevTools доповнює вбудований веб-сервер PHP, що дозволяє вам запустити ваш продукт майже миттєво. Якщо ви виберете цю опцію, то вам знадобиться файл `.htrouter.php` в кореневому каталозі вашого проекту з наступним змістом:
 
 ```php
 <?php
@@ -64,25 +64,25 @@ $_GET['_url'] = $_SERVER['REQUEST_URI'];
 require_once __DIR__ . '/public/index.php';
 ```
 
-In the case of our tutorial, this file must be located in the `tutorial` directory.
+У випадку цього посібника цей файл повинен знаходитися в каталозі `tutorial`.
 
-You can also use nginX, apache, cherokee or other web servers. You can check the [webserver setup](webserver-setup) page for instructions.
+Ви також можете використовувати nginX, apache, cherokee або інші веб-сервери. Ви можете відвідати [сторінку налаштування веб-сервера](webserver-setup) для отримання інструкцій.
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well define application behavior.
+Перший файл, який потрібно створити - це файл bootstrap. Цей файл працює як вхідна точка і базова конфігурація для вашого продукту. У цьому файлі можна реалізувати ініціалізацію компонентів, а також визначити поведінку програми.
 
-This file handles 3 things:
+Цей файл виконує три завдання:
 
-- Registration of component autoloaders
-- Configuring Services and registering them with the Dependency Injection context
-- Resolving the application's HTTP requests
+- Реєстрація автозавантажувачів компонентів
+- Налаштування сервісів та реєстрація їх у контейнері управління залежностями (Dependency Injection)
+- Забезпечення виконання HTTP запитів вашого продукту
 
-### Autoloader
+### Автозавантажувач
 
-We are going to use [Phalcon\Loader](loader) a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
+Ми збираємося використовувати [Phalcon\Loader](loader) як [PSR-4](https://www.php-fig.org/psr/psr-4/) сумісний завантажувач файлів. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
 
-To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](loader):
+Для початку, давайте зареєструємо каталоги `контролерів` нашої програми і `моделей`, за допомогою [Phalcon\Loader](loader):
 
 `public/index.php`
 
@@ -107,23 +107,23 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-### Dependency Management
+### Керування залежностями
 
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound complex but Phalcon ensures that their use is simple, practical and efficient. Phalcon's IoC container consists of the following concepts:
+Оскільки Phalcon є слабко зв'язаним, сервіси реєструються в менеджері залежностей фреймворка, тому вони можуть бути автоматично вставлені в компоненти і послуги, загорнуті в [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) контейнер. Часто ви стикатиметесь з терміном DI, який означає впровадження залежностей (Dependency Injection). Впровадження залежностей та Інверсія контролю (IoC) можуть звучати складно, але Phalcon гарантує, що їх використання є простим, практичним та ефективним. Контейнер IoC Phalcon містить такі концепції:
 
-- Service Container: a "bag" where we globally store the services that our application needs to function.
-- Service or Component: Data processing object which will be injected into components
+- Сервіс-контейнер - "сховище", де ми зберігаємо сервіси, які наш продукт потребує для функціонування.
+- Послуга або компонент - об'єкт обробки даних, який буде включено до компонентів
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
+Кожен раз, коли фреймворк потребує компонента або послугу, він буде звертатися до контейнера використовуючи певне ім'я сервісу. Таким чином, ми маємо простий спосіб отримання об'єктів, необхідних для нашої програми, таких як логер, з'єднання бази даних і тощо.
 
-> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](di) covering many use cases.
+> **ПРИМІТКА**: Якщо вас цікавлять деталі, то ознайомтесь із статтею [Мартіна Фавлера](https://martinfowler.com/articles/injection.html). Також ми маємо [чудовий посібник](di), що охоплює багато випадків використання.
 {: .alert .alert-warning }
 
 ### Factory Default
 
-The [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) is a variant of [Phalcon\Di](api/Phalcon_Di). To make things easier, it will automatically register most of the components that are required by an application and come with Phalcon as standard. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container initially and later on customize it to fit your needs.
+[Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) є варіантом [Phalcon\Di](api/Phalcon_Di). Щоб спростити роботу, він автоматично зареєструє більшість компонентів, що необхідні для продукту та стандартно поставляється з Phalcon. Хоч і рекомендується налаштовувати служби вручну, ви можете використовувати [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) спочатку та пізніше налаштувати його відповідно до ваших потреб.
 
-Services can be registered in several ways, but for our tutorial, we will use an [anonymous function](https://php.net/manual/en/functions.anonymous.php):
+Сервіси можуть бути зареєстровані кількома способами, але для нашого посібника, ми будемо використовувати [анонімну функцію](https://php.net/manual/en/functions.anonymous.php):
 
 `public/index.php`
 
@@ -136,7 +136,7 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 ```
 
-Now we need to register the *view* service, setting the directory where the framework will find the view files. As the views do not correspond to classes, they cannot be automatically loaded by our autoloader.
+Тепер нам потрібно зареєструвати службу *view*, встановивши каталог, де фреймворк знайде файли подання. Оскільки представлення не належать до класів, вони не можуть бути автоматично завантажені нашим автозавантажувачем.
 
 `public/index.php`
 
@@ -158,7 +158,7 @@ $container->set(
 );
 ```
 
-Now we need to register a base URI, that will offer the functionality to create all URIs by Phalcon. The component will ensure that whether you run your application through the top directory or a subdirectory, all your URIs will be correct. For this tutorial our base path is `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate hyperlinks.
+Тепер нам потрібно зареєструвати базову URI, яка надасть можливість створення всіх URL-адрес за допомогою Phalcon. Цей компонент буде гарантувати, що якщо ви запускатимете програму через верхній каталог або підкаталог, всі ваші URI будуть правильними. Для цього навчального посібника наш базовий шлях є `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate hyperlinks.
 
 `public/index.php`
 
