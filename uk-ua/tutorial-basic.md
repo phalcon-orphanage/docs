@@ -158,7 +158,7 @@ $container->set(
 );
 ```
 
-Тепер нам потрібно зареєструвати базову URI, яка надасть можливість створення всіх URL-адрес за допомогою Phalcon. Цей компонент буде гарантувати, що якщо ви запускатимете програму через верхній каталог або підкаталог, всі ваші URI будуть правильними. Для цього навчального посібника наш базовий шлях є `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate hyperlinks.
+Тепер нам потрібно зареєструвати базову URI, яка надасть можливість створення всіх URL-адрес за допомогою Phalcon. Цей компонент буде гарантувати, що якщо ви запускатимете програму через верхній каталог або підкаталог, всі ваші URI будуть правильними. Для цього навчального посібника наш базовий шлях є `/`. Це матиме значення пізніше у цьому посібнику, коли ми використовуватимемо клас `Phalcon\Tag` для генерування гіперпосилань.
 
 `public/index.php`
 
@@ -180,9 +180,9 @@ $container->set(
 );
 ```
 
-### Handling the Application Request
+### Обробка запитів додатка
 
-In order to handle any requests, the [Phalcon\Mvc\Application](application) object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
+Для того, щоб обробляти будь-які запити, об'єкти [Phalcon\Mvc\Application](application) використовуються для виконання усієї важкої для нас роботи. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
 
 `public/index.php`
 
