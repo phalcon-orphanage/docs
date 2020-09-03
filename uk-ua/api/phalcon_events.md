@@ -71,7 +71,7 @@ protected type;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $type, object $source, mixed $data = null, bool $cancelable = bool );
@@ -143,7 +143,7 @@ Phalcon\Events\EventInterface
 
 Interface for Phalcon\Events\Event class
 
-## Methods
+## Методи
 
 ```php
 public function getData(): mixed;
@@ -197,7 +197,7 @@ Phalcon\Events\EventsAwareInterface
 
 This interface must for those classes that accept an EventsManager and dispatch events
 
-## Methods
+## Методи
 
 ```php
 public function getEventsManager(): ManagerInterface | null;
@@ -258,7 +258,7 @@ protected responses;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function arePrioritiesEnabled(): bool;
@@ -346,7 +346,7 @@ Phalcon\Events\ManagerInterface
 
 Interface for Phalcon\Events managers.
 
-## Methods
+## Методи
 
 ```php
 public function attach( string $eventType, mixed $handler ): void;

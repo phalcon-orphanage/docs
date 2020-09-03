@@ -85,7 +85,7 @@ if (false === $result) {
 | OP_UPDATE                |       2       |
 | TRANSACTION_INDEX        | 'transaction' |
 
-## Methods
+## Методи
 
 ```php
 final public function __construct(

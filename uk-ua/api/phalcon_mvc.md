@@ -148,7 +148,7 @@ protected sendHeaders = true;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function handle( string $uri ): ResponseInterface | bool;
@@ -225,7 +225,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 }
 ```
 
-## Methods
+## Методи
 
 ```php
 final public function __construct();
@@ -243,7 +243,7 @@ Phalcon\Mvc\Controller\BindModelInterface
 
 Interface for Phalcon\Mvc\Controller
 
-## Methods
+## Методи
 
 ```php
 public static function getModelName(): string;
@@ -297,7 +297,7 @@ protected handlerSuffix = Controller;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function forward( array $forward ): void;
@@ -451,7 +451,7 @@ Phalcon\Mvc\DispatcherInterface
 
 Interface for Phalcon\Mvc\Dispatcher
 
-## Methods
+## Методи
 
 ```php
 public function getActiveController(): ControllerInterface;
@@ -499,7 +499,7 @@ Phalcon\Mvc\EntityInterface
 
 Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 
-## Methods
+## Методи
 
 ```php
 public function readAttribute( string $attribute ): mixed | null;
@@ -586,7 +586,7 @@ protected stopped;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( DiInterface $container = null );
@@ -876,7 +876,7 @@ protected prefix;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function delete( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
@@ -999,7 +999,7 @@ Phalcon\Mvc\Micro\CollectionInterface
 
 Interface for Phalcon\Mvc\Micro\Collection
 
-## Methods
+## Методи
 
 ```php
 public function delete( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
@@ -1120,7 +1120,7 @@ protected definition;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $definition );
@@ -1146,7 +1146,7 @@ public function getDefinition()
 
 Allows to implement Phalcon\Mvc\Micro middleware in classes
 
-## Methods
+## Методи
 
 ```php
 public function call( Micro $application );
@@ -1256,7 +1256,7 @@ protected uniqueTypes;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __call( string $method, array $arguments );
@@ -2688,7 +2688,7 @@ protected options;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2730,7 +2730,7 @@ Phalcon\Mvc\Model\Behavior\SoftDelete
 
 Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
-## Methods
+## Методи
 
 ```php
 public function notify( string $type, ModelInterface $model );
@@ -2748,7 +2748,7 @@ Phalcon\Mvc\Model\Behavior\Timestampable
 
 Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
-## Methods
+## Методи
 
 ```php
 public function notify( string $type, ModelInterface $model );
@@ -2766,7 +2766,7 @@ Phalcon\Mvc\Model\BehaviorInterface
 
 Interface for Phalcon\Mvc\Model\Behavior
 
-## Methods
+## Методи
 
 ```php
 public function missingMethod( ModelInterface $model, string $method, array $arguments = [] );
@@ -2817,7 +2817,7 @@ protected originalValues;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterInterface $cache = null );
@@ -2879,7 +2879,7 @@ Phalcon\Mvc\Model\Binder\BindableInterface
 
 Interface for bindable classes
 
-## Methods
+## Методи
 
 ```php
 public function getModelName(): string | array;
@@ -2897,7 +2897,7 @@ Phalcon\Mvc\Model\BinderInterface
 
 Interface for Phalcon\Mvc\Model\Binder
 
-## Methods
+## Методи
 
 ```php
 public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName = null ): array;
@@ -2963,7 +2963,7 @@ protected params;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
@@ -3298,7 +3298,7 @@ Phalcon\Mvc\Model\CriteriaInterface
 
 Interface for Phalcon\Mvc\Model\Criteria
 
-## Methods
+## Методи
 
 ```php
 public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
@@ -3697,7 +3697,7 @@ protected reusable;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __destruct();
@@ -4131,7 +4131,7 @@ Phalcon\Mvc\Model\ManagerInterface
 
 Interface for Phalcon\Mvc\Model\Manager
 
-## Methods
+## Методи
 
 ```php
 public function addBehavior( ModelInterface $model, BehaviorInterface $behavior ): void;
@@ -4505,7 +4505,7 @@ protected strategy;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getAttributes( ModelInterface $model ): array;
@@ -4926,7 +4926,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = null );
@@ -4946,7 +4946,7 @@ Stores model meta-data in the Memcache.
 
 By default meta-data is stored for 48 hours (172800 seconds)
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -4970,7 +4970,7 @@ Phalcon\Mvc\Model\MetaData\Memory
 
 Stores model meta-data in memory. Data will be erased when the request finishes
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $options = null );
@@ -5016,7 +5016,7 @@ $metaData = new Redis(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -5042,7 +5042,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 final public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
@@ -5066,7 +5066,7 @@ Phalcon\Mvc\Model\MetaData\Strategy\Introspection
 
 Queries the table meta-data in order to introspect the model's metadata
 
-## Methods
+## Методи
 
 ```php
 final public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
@@ -5092,7 +5092,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
@@ -5134,7 +5134,7 @@ protected metaDataDir = ./;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $options = null );
@@ -5164,7 +5164,7 @@ Phalcon\Mvc\Model\MetaDataInterface
 
 Interface for Phalcon\Mvc\Model\MetaData
 
-## Methods
+## Методи
 
 ```php
 public function getAttributes( ModelInterface $model ): array;
@@ -5486,7 +5486,7 @@ protected _transaction;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $phql = null, DiInterface $container = null, array $options = [] );
@@ -5884,7 +5884,7 @@ protected sharedLock;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $params = null, DiInterface $container = null );
@@ -6469,7 +6469,7 @@ const OPERATOR_AND = and;
 const OPERATOR_OR = or;
 ```
 
-## Methods
+## Методи
 
 ```php
 public function addFrom( string $model, string $alias = null ): BuilderInterface;
@@ -6728,7 +6728,7 @@ $intermediate = Lang::parsePHQL(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public static function parsePHQL( string $phql ): array;
@@ -6776,7 +6776,7 @@ protected success;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( bool $success, ModelInterface $model = null );
@@ -6812,7 +6812,7 @@ Phalcon\Mvc\Model\Query\StatusInterface
 
 Interface for Phalcon\Mvc\Model\Query\Status
 
-## Methods
+## Методи
 
 ```php
 public function getMessages(): MessageInterface[];
@@ -6842,7 +6842,7 @@ Phalcon\Mvc\Model\QueryInterface
 
 Interface for Phalcon\Mvc\Model\Query
 
-## Methods
+## Методи
 
 ```php
 public function cache( array $cacheOptions ): QueryInterface;
@@ -6974,7 +6974,7 @@ protected type;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] );
@@ -7082,7 +7082,7 @@ Phalcon\Mvc\Model\RelationInterface
 
 Interface for Phalcon\Mvc\Model\Relation
 
-## Methods
+## Методи
 
 ```php
 public function getFields();
@@ -7184,7 +7184,7 @@ Phalcon\Mvc\Model\ResultInterface
 
 All single objects passed as base objects to Resultsets must implement this interface
 
-## Methods
+## Методи
 
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
@@ -7281,7 +7281,7 @@ protected result;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $result, AdapterInterface $cache = null );
@@ -7467,7 +7467,7 @@ protected disableHydration = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null );
@@ -7525,7 +7525,7 @@ protected keepSnapshots = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null );
@@ -7567,7 +7567,7 @@ Phalcon\Mvc\Model\ResultsetInterface
 
 Interface for Phalcon\Mvc\Model\Resultset
 
-## Methods
+## Методи
 
 ```php
 public function delete( Closure $conditionCallback = null ): bool;
@@ -7667,7 +7667,7 @@ Phalcon\Mvc\Model\Row
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
-## Methods
+## Методи
 
 ```php
 public function jsonSerialize(): array;
@@ -7806,7 +7806,7 @@ protected rollbackThrowException = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( DiInterface $container, bool $autoBegin = bool, string $service = string );
@@ -7914,7 +7914,7 @@ protected record;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $message, ModelInterface $record = null );
@@ -8007,7 +8007,7 @@ protected transactions;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( DiInterface $container = null );
@@ -8121,7 +8121,7 @@ Phalcon\Mvc\Model\Transaction\ManagerInterface
 
 Interface for Phalcon\Mvc\Model\Transaction\Manager
 
-## Methods
+## Методи
 
 ```php
 public function collectTransactions(): void;
@@ -8205,7 +8205,7 @@ Phalcon\Mvc\Model\TransactionInterface
 
 Interface for Phalcon\Mvc\Model\Transaction
 
-## Methods
+## Методи
 
 ```php
 public function begin(): bool;
@@ -8300,7 +8300,7 @@ protected model;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( ModelInterface $model, array $validationMessages );
@@ -8330,7 +8330,7 @@ Phalcon\Mvc\ModelInterface
 
 Interface for Phalcon\Mvc\Model
 
-## Methods
+## Методи
 
 ```php
 public function appendMessage( MessageInterface $message ): ModelInterface;
@@ -8576,7 +8576,7 @@ Phalcon\Mvc\ModuleDefinitionInterface
 
 This interface must be implemented by class module definitions
 
-## Methods
+## Методи
 
 ```php
 public function registerAutoloaders( DiInterface $container = null );
@@ -8692,7 +8692,7 @@ protected wasMatched = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( bool $defaultRoutes = bool );
@@ -9031,7 +9031,7 @@ protected routePrefix;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function addModuleResource( string $module, string $handler, string $prefix = null ): Annotations;
@@ -9164,7 +9164,7 @@ protected routes;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( mixed $paths = null );
@@ -9359,7 +9359,7 @@ $blog->add(
 $router->mount($blog);
 ```
 
-## Methods
+## Методи
 
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
@@ -9542,7 +9542,7 @@ protected static uniqueId = 0;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $pattern, mixed $paths = null, mixed $httpMethods = null );
@@ -9779,7 +9779,7 @@ Phalcon\Mvc\Router\RouteInterface
 
 Interface for Phalcon\Mvc\Router\Route
 
-## Methods
+## Методи
 
 ```php
 public function compilePattern( string $pattern ): string;
@@ -9885,7 +9885,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 Interface for Phalcon\Mvc\Router
 
-## Methods
+## Методи
 
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
@@ -10180,7 +10180,7 @@ protected viewParams;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -10665,7 +10665,7 @@ protected view;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( ViewBaseInterface $view, DiInterface $container = null );
@@ -10699,7 +10699,7 @@ Renders a partial inside another view
 
 Interface for Phalcon\Mvc\View engine adapters
 
-## Methods
+## Методи
 
 ```php
 public function getContent(): string;
@@ -10727,7 +10727,7 @@ Renders a view using the template engine
 
 Adapter to use PHP itself as templating engine
 
-## Methods
+## Методи
 
 ```php
 public function render( string $path, mixed $params, bool $mustClean = bool );
@@ -10760,7 +10760,7 @@ protected options;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function callMacro( string $name, array $arguments = [] ): mixed;
@@ -10918,7 +10918,7 @@ protected view;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( ViewBaseInterface $view = null );
@@ -11235,7 +11235,7 @@ protected statement;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $message = string, array $statement = [], int $code = int, \Exception $previous = null );
@@ -11325,7 +11325,7 @@ protected viewParams;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -11514,7 +11514,7 @@ Phalcon\Mvc\ViewInterface
 
 Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
-## Methods
+## Методи
 
 ```php
 public function getContent(): string;
@@ -11574,7 +11574,7 @@ Phalcon\Mvc\ViewInterface
 
 Interface for Phalcon\Mvc\View
 
-## Methods
+## Методи
 
 ```php
 public function cleanTemplateAfter();

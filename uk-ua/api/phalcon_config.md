@@ -57,7 +57,7 @@ protected pathDelimiter;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getPathDelimiter(): string;
@@ -179,7 +179,7 @@ $config = new Grouped(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $arrayConfig, string $defaultAdapter = string );
@@ -231,7 +231,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $filePath, mixed $mode = null );
@@ -276,7 +276,7 @@ echo $config->phalcon->baseuri;
 echo $config->models->metadata;
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $filePath );
@@ -324,7 +324,7 @@ echo $config->phalcon->controllersDir;
 echo $config->database->username;
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $filePath );
@@ -374,7 +374,7 @@ echo $config->phalcon->baseuri;
 echo $config->models->metadata;
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $filePath, array $callbacks = null );
@@ -401,7 +401,7 @@ $options = [
 $config = (new ConfigFactory())->load($options);
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $services = [] );

@@ -35,7 +35,7 @@ protected services;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 protected function checkConfig( mixed $config ): array;

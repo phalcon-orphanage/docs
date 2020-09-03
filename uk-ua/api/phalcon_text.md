@@ -26,7 +26,7 @@ const RANDOM_NOZERO = 4;
 const RANDOM_NUMERIC = 3;
 ```
 
-## Methods
+## Методи
 
 ```php
 public static function camelize( string $text, mixed $delimiter = null ): string;

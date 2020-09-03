@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Tutorial - Basic'
-keywords: 'tutorial, basic tutorial, step by step, mvc'
+title: 'Посібник - основи'
+keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, навчання, основи, крок за кроком'
 ---
 
-# Tutorial - Basic
+# Посібник - основи
 
 * * *
 
@@ -14,15 +14,15 @@ keywords: 'tutorial, basic tutorial, step by step, mvc'
 
 ## Огляд
 
-Throughout this tutorial, we will create an application with a simple registration form, while introducing the main design aspects of Phalcon.
+В цьому посібнику ми створимо програму з простою реєстраційною формою, розкриваючи основні аспекти дизайну Phalcon.
 
-This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. Once developed, you can use this application and extend it to suit your needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe> 
+Цей посібник охоплює реалізацію простого MVC додатку, показуючи, як швидко і легко це можна зробити за допомогою Phalcon. Після розробки ви можете скористатися цим додатком і розширити його для задоволення ваших потреб. Код в цьому посібнику також може використовуватися як майданчик для вивчення інших понять та ідей Phalcon. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe> 
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](devtools).
+Якщо ви хочете просто почати роботу, ви можете пропустити це і створити проект Phalcon автоматично за допомогою наших [інструментів розробника](devtools).
 
-The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get stuck or have questions, please visit us on [Discord](https://phalcon.io/discord) or in our [Forum](https://phalcon.io/forum).
+Найкращий спосіб використовувати цей посібник - вникнути в основи та спробувати насолодитись процесом. Ви можете отримати повний код [тут](https://github.com/phalcon/tutorial). Якщо ви зіткнулися з труднощами або маєте запитання, будь ласка звертайтеся до нас у [Discord](https://phalcon.io/discord) чи напишіть нам на нашому [форумі](https://phalcon.io/forum).
 
-## File Structure
+## Файлова структура
 
 One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
 

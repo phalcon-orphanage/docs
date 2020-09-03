@@ -15,7 +15,7 @@ title: 'Phalcon\Kernel'
 
 This class allows to change the internal behavior of the framework in runtime
 
-## Methods
+## Методи
 
 ```php
 public static function preComputeHashKey( string $key );

@@ -105,7 +105,7 @@ private localRequest;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( SessionInterface $session = null, RequestInterface $request = null );
@@ -298,7 +298,7 @@ This class partially borrows SecureRandom library from Ruby
 
 @link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
-## Methods
+## Методи
 
 ```php
 public function base58( int $len = null ): string;

@@ -67,7 +67,7 @@ protected output;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getException(): Throwable | null;
@@ -139,7 +139,7 @@ Sets the payload status.
 
 Factory to create payload objects
 
-## Methods
+## Методи
 
 ```php
 public function newInstance(): PayloadInterface;
@@ -163,7 +163,7 @@ This interface is used for consumers
 
 This interface is used for consumers (read only)
 
-## Methods
+## Методи
 
 ```php
 public function getException(): Throwable | null;
@@ -234,7 +234,7 @@ const UPDATED = UPDATED;
 const VALID = VALID;
 ```
 
-## Methods
+## Методи
 
 ```php
 final private function __construct();
@@ -250,7 +250,7 @@ Instantiation not allowed.
 
 This interface is used for consumers (write)
 
-## Methods
+## Методи
 
 ```php
 public function setException( Throwable $exception ): PayloadInterface;

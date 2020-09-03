@@ -60,7 +60,7 @@ protected uri = https://assets.phalcon.io/debug/4.0.x/;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function clearVars(): Debug;
@@ -224,7 +224,7 @@ protected styles;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $styles = [], bool $detailed = bool );

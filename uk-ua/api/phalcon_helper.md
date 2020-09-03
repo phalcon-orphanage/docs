@@ -20,7 +20,7 @@ title: 'Phalcon\Helper'
 
 This class offers quick array functions throughout the framework
 
-## Methods
+## Методи
 
 ```php
 final public static function chunk( array $collection, int $size, bool $preserveKeys = bool ): array;
@@ -164,7 +164,7 @@ Exceptions thrown in Phalcon\Helper will use this class
 
 This class offers file operation helper
 
-## Methods
+## Методи
 
 ```php
 final public static function basename( string $uri, mixed $suffix = null ): string;
@@ -180,7 +180,7 @@ Gets the filename from a given path, Same as PHP's basename() but has non-ASCII 
 
 This class offers a wrapper for JSON methods to serialize and unserialize
 
-## Methods
+## Методи
 
 ```php
 final public static function decode( string $data, bool $associative = bool, int $depth = int, int $options = int ): mixed;
@@ -229,7 +229,7 @@ Phalcon\Helper\number
 
 This class offers numeric functions for the framework
 
-## Methods
+## Методи
 
 ```php
 final public static function between( int $value, int $from, int $to ): bool;
@@ -256,7 +256,7 @@ const RANDOM_NOZERO = 4;
 const RANDOM_NUMERIC = 3;
 ```
 
-## Methods
+## Методи
 
 ```php
 final public static function camelize( string $text, mixed $delimiter = null ): string;

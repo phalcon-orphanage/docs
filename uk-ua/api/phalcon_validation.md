@@ -83,7 +83,7 @@ protected values;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $validators = [] );
@@ -233,7 +233,7 @@ protected options;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -325,7 +325,7 @@ protected validators;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function getValidators(): array
@@ -353,7 +353,7 @@ Exceptions thrown in Phalcon\Validation\* classes will use this class
 
 Interface for the Phalcon\Validation component
 
-## Methods
+## Методи
 
 ```php
 public function add( string $field, ValidatorInterface $validator ): ValidationInterface;
@@ -486,7 +486,7 @@ protected template = Field :field must contain only letters and numbers;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -547,7 +547,7 @@ protected template = Field :field must contain only letters;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -618,7 +618,7 @@ protected template = Field :field must be within the range of :min to :max;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -689,7 +689,7 @@ protected template = Field :field must match the callback function;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -755,7 +755,7 @@ protected template = Field :field must be the same as :with;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -822,7 +822,7 @@ protected template = Field :field is not valid for a credit card number;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -888,7 +888,7 @@ protected template = Field :field is not a valid date;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -949,7 +949,7 @@ protected template = Field :field must be numeric;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1010,7 +1010,7 @@ protected template = Field :field must be an email address;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1090,7 +1090,7 @@ protected template = Field :field must not be a part of list: :domain;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1176,7 +1176,7 @@ $validator->add(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1248,7 +1248,7 @@ protected messageValid = Field :field is not valid;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function checkUpload( Validation $validation, mixed $field ): bool;
@@ -1371,7 +1371,7 @@ protected template = File :field must be of type: :types;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1431,7 +1431,7 @@ protected template = The resolution of the field :field has to be equal :resolut
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1502,7 +1502,7 @@ protected template = File :field exceeds the maximum resolution of :resolution;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1573,7 +1573,7 @@ protected template = File :field can not have the minimum resolution of :resolut
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1644,7 +1644,7 @@ protected template = File :field does not have the exact :size file size;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1715,7 +1715,7 @@ protected template = File :field exceeds the size of :size;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1786,7 +1786,7 @@ protected template = File :field can not have the minimum size of :size;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1852,7 +1852,7 @@ protected template = Field :field does not have the expected value;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -1918,7 +1918,7 @@ protected template = Field :field must be a part of list: :domain;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2003,7 +2003,7 @@ protected template = Field :field must be a valid IP address;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2064,7 +2064,7 @@ protected template = Field :field does not have a valid numeric format;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2125,7 +2125,7 @@ protected template = Field :field is required;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2191,7 +2191,7 @@ protected template = Field :field does not match the required format;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2269,7 +2269,7 @@ $validation->add(
 );
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2334,7 +2334,7 @@ protected template = Field :field must not exceed :max characters long;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2405,7 +2405,7 @@ protected template = Field :field must be at least :min characters long;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2507,7 +2507,7 @@ private columnMap;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2584,7 +2584,7 @@ protected template = Field :field must be a url;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $options = [] );
@@ -2606,7 +2606,7 @@ Executes the validation
 
 This is a base class for combined fields validators
 
-## Methods
+## Методи
 
 ```php
 public function getValidators(): array;
@@ -2632,7 +2632,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $services = [] );
@@ -2658,7 +2658,7 @@ protected function getAdapters(): array;
 
 Interface for Phalcon\Validation\AbstractValidator
 
-## Methods
+## Методи
 
 ```php
 public function getOption( string $key, mixed $defaultValue = null ): mixed;

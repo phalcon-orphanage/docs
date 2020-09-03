@@ -25,7 +25,7 @@ protected container;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( DiInterface $container );

@@ -60,7 +60,7 @@ protected metaData;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
@@ -140,7 +140,7 @@ Phalcon\Messages\MessageInterface
 
 Interface for Phalcon\Messages\MessageInterface
 
-## Methods
+## Методи
 
 ```php
 public function __toString(): string;
@@ -231,7 +231,7 @@ protected messages;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $messages = [] );

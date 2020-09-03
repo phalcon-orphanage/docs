@@ -1826,7 +1826,7 @@ $builder = new Builder($params);
 * `getQuery()` - `QueryInterface` - Returns the query built
 * `getWhere()` - `string | array` - Return the conditions for the query
 
-### Methods
+### Методи
 
 ```php
 public function addFrom(

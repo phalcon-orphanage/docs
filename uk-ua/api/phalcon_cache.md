@@ -37,7 +37,7 @@ protected adapter;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterInterface $adapter );
@@ -175,7 +175,7 @@ private serializerFactory;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $services = [] );
@@ -213,7 +213,7 @@ protected adapterFactory;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( AdapterFactory $factory );

@@ -80,7 +80,7 @@ protected services;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( array $mapper = [] );
@@ -140,7 +140,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методи
 
 ```php
 public function newInstance(): FilterInterface;
@@ -160,7 +160,7 @@ protected function getAdapters(): array;
 
 Lazy loads, stores and exposes sanitizer objects
 
-## Methods
+## Методи
 
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
@@ -178,7 +178,7 @@ Phalcon\Filter\Sanitize\AbsInt
 
 Sanitizes a value to absolute integer
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -196,7 +196,7 @@ Phalcon\Filter\Sanitize\Alnum
 
 Sanitizes a value to an alphanumeric value
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -214,7 +214,7 @@ Phalcon\Filter\Sanitize\Alpha
 
 Sanitizes a value to an alpha value
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -232,7 +232,7 @@ Phalcon\Filter\Sanitize\BoolVal
 
 Sanitizes a value to boolean
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -250,7 +250,7 @@ Phalcon\Filter\Sanitize\Email
 
 Sanitizes an email string
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -268,7 +268,7 @@ Phalcon\Filter\Sanitize\FloatVal
 
 Sanitizes a value to float
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -286,7 +286,7 @@ Phalcon\Filter\Sanitize\IntVal
 
 Sanitizes a value to integer
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -304,7 +304,7 @@ Phalcon\Filter\Sanitize\Lower
 
 Sanitizes a value to lowercase
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -322,7 +322,7 @@ Phalcon\Filter\Sanitize\LowerFirst
 
 Sanitizes a value to lcfirst
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -340,7 +340,7 @@ Phalcon\Filter\Sanitize\Regex
 
 Sanitizes a value performing preg_replace
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input, mixed $pattern, mixed $replace );
@@ -358,7 +358,7 @@ Phalcon\Filter\Sanitize\Remove
 
 Sanitizes a value removing parts of a string
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input, mixed $replace );
@@ -376,7 +376,7 @@ Phalcon\Filter\Sanitize\Replace
 
 Sanitizes a value replacing parts of a string
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input, mixed $from, mixed $to );
@@ -394,7 +394,7 @@ Phalcon\Filter\Sanitize\Special
 
 Sanitizes a value special characters
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -412,7 +412,7 @@ Phalcon\Filter\Sanitize\SpecialFull
 
 Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -430,7 +430,7 @@ Phalcon\Filter\Sanitize\String
 
 Sanitizes a value to string
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );
@@ -448,7 +448,7 @@ Phalcon\Filter\Sanitize\Striptags
 
 Sanitizes a value striptags
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -466,7 +466,7 @@ Phalcon\Filter\Sanitize\Trim
 
 Sanitizes a value removing leading and trailing spaces
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -484,7 +484,7 @@ Phalcon\Filter\Sanitize\Upper
 
 Sanitizes a value to uppercase
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -502,7 +502,7 @@ Phalcon\Filter\Sanitize\UpperFirst
 
 Sanitizes a value to ucfirst
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -520,7 +520,7 @@ Phalcon\Filter\Sanitize\UpperWords
 
 Sanitizes a value to uppercase the first character of each word
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( string $input );
@@ -538,7 +538,7 @@ Phalcon\Filter\Sanitize\Url
 
 Sanitizes a value url
 
-## Methods
+## Методи
 
 ```php
 public function __invoke( mixed $input );

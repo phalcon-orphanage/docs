@@ -41,7 +41,7 @@ protected options;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function handle( array $arguments = null );
@@ -113,7 +113,7 @@ protected options;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] ): mixed;
@@ -215,7 +215,7 @@ Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 Interface for Phalcon\Cli\Dispatcher
 
-## Methods
+## Методи
 
 ```php
 public function getActiveTask(): TaskInterface;
@@ -338,7 +338,7 @@ protected wasMatched = false;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( bool $defaultRoutes = bool );
@@ -515,7 +515,7 @@ protected static uniqueId = 0;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( string $pattern, mixed $paths = null );
@@ -652,7 +652,7 @@ $router->add(
 
 Interface for Phalcon\Cli\Router\Route
 
-## Methods
+## Методи
 
 ```php
 public function compilePattern( string $pattern ): string;
@@ -746,7 +746,7 @@ Sets the route's name
 
 Interface for Phalcon\Cli\Router
 
-## Methods
+## Методи
 
 ```php
 public function add( string $pattern, mixed $paths = null ): RouteInterface;
@@ -878,7 +878,7 @@ protected eventsManager;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 final public function __construct();

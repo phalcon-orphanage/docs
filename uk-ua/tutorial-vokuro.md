@@ -491,7 +491,7 @@ The available providers are:
 
 | Provider                 | Description                                       |
 | ------------------------ | ------------------------------------------------- |
-| `AclProvider`            | Permissions                                       |
+| `AclProvider`            | Права доступу                                     |
 | `AuthProvider`           | Authentication                                    |
 | `ConfigProvider`         | Configuration values                              |
 | `CryptProvider`          | Encryption                                        |
@@ -618,30 +618,30 @@ to
 
 The available controllers, actions and routes for Vökuró are:
 
-| Controller    | Action           | Route                     | Description                                 |
-| ------------- | ---------------- | ------------------------- | ------------------------------------------- |
-| `About`       | `index`          | `/about`                  | Shows the `about` page                      |
-| `Index`       | `index`          | `/`                       | Default action - home page                  |
-| `Permissions` | `index`          | `/permissions`            | View/change permissions for a profile level |
-| `Privacy`     | `index`          | `/privacy`                | View the privacy page                       |
-| `Profiles`    | `index`          | `/profiles`               | View profiles default page                  |
-| `Profiles`    | `create`         | `/profiles/create`        | Create profile                              |
-| `Profiles`    | `delete`         | `/profiles/delete`        | Delete profile                              |
-| `Profiles`    | `edit`           | `/profiles/edit`          | Edit profile                                |
-| `Profiles`    | `search`         | `/profiles/search`        | Search profiles                             |
-| `Session`     | `index`          | `/session`                | Session default action                      |
-| `Session`     | `forgotPassword` | `/session/forgotPassword` | Forget password                             |
-| `Session`     | `login`          | `/session/login`          | Login                                       |
-| `Session`     | `logout`         | `/session/logout`         | Logout                                      |
-| `Session`     | `signup`         | `/session/signup`         | Signup                                      |
-| `Terms`       | `index`          | `/terms`                  | View the terms page                         |
-| `UserControl` | `confirmEmail`   | `/confirm`                | Confirm email                               |
-| `UserControl` | `resetPassword`  | `/reset-password`         | Reset password                              |
-| `Users`       | `index`          | `/users`                  | Users default screen                        |
-| `Users`       | `changePassword` | `/users/changePassword`   | Change user password                        |
-| `Users`       | `create`         | `/users/create`           | Create user                                 |
-| `Users`       | `delete`         | `/users/delete`           | Delete user                                 |
-| `Users`       | `edit`           | `/users/edit`             | Edit user                                   |
+| Controller      | Action           | Route                     | Description                                 |
+| --------------- | ---------------- | ------------------------- | ------------------------------------------- |
+| `About`         | `index`          | `/about`                  | Shows the `about` page                      |
+| `Index`         | `index`          | `/`                       | Default action - home page                  |
+| `Права доступу` | `index`          | `/permissions`            | View/change permissions for a profile level |
+| `Privacy`       | `index`          | `/privacy`                | View the privacy page                       |
+| `Profiles`      | `index`          | `/profiles`               | View profiles default page                  |
+| `Profiles`      | `create`         | `/profiles/create`        | Create profile                              |
+| `Profiles`      | `delete`         | `/profiles/delete`        | Delete profile                              |
+| `Profiles`      | `edit`           | `/profiles/edit`          | Edit profile                                |
+| `Profiles`      | `search`         | `/profiles/search`        | Search profiles                             |
+| `Session`       | `index`          | `/session`                | Session default action                      |
+| `Session`       | `forgotPassword` | `/session/forgotPassword` | Forget password                             |
+| `Session`       | `login`          | `/session/login`          | Login                                       |
+| `Session`       | `logout`         | `/session/logout`         | Logout                                      |
+| `Session`       | `signup`         | `/session/signup`         | Signup                                      |
+| `Terms`         | `index`          | `/terms`                  | View the terms page                         |
+| `UserControl`   | `confirmEmail`   | `/confirm`                | Confirm email                               |
+| `UserControl`   | `resetPassword`  | `/reset-password`         | Reset password                              |
+| `Users`         | `index`          | `/users`                  | Users default screen                        |
+| `Users`         | `changePassword` | `/users/changePassword`   | Change user password                        |
+| `Users`         | `create`         | `/users/create`           | Create user                                 |
+| `Users`         | `delete`         | `/users/delete`           | Delete user                                 |
+| `Users`         | `edit`           | `/users/edit`             | Edit user                                   |
 
 ## Views
 
@@ -670,28 +670,28 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | Вигляд                         | Description                                 |
-| ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
-| `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
-| `Index`       | `index`          | `/index/index.volt`            | Default action - home page                  |
-| `Permissions` | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
-| `Privacy`     | `index`          | `/privacy/index.volt`          | View the privacy page                       |
-| `Profiles`    | `index`          | `/profiles/index.volt`         | View profiles default page                  |
-| `Profiles`    | `create`         | `/profiles/create.volt`        | Create profile                              |
-| `Profiles`    | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
-| `Profiles`    | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
-| `Profiles`    | `search`         | `/profiles/search.volt`        | Search profiles                             |
-| `Session`     | `index`          | `/session/index.volt`          | Session default action                      |
-| `Session`     | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
-| `Session`     | `login`          | `/session/login.volt`          | Login                                       |
-| `Session`     | `logout`         | `/session/logout.volt`         | Logout                                      |
-| `Session`     | `signup`         | `/session/signup.volt`         | Signup                                      |
-| `Terms`       | `index`          | `/terms/index.volt`            | View the terms page                         |
-| `Users`       | `index`          | `/users/index.volt`            | Users default screen                        |
-| `Users`       | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
-| `Users`       | `create`         | `/users/create.volt`           | Create user                                 |
-| `Users`       | `delete`         | `/users/delete.volt`           | Delete user                                 |
-| `Users`       | `edit`           | `/users/edit.volt`             | Edit user                                   |
+| Controller      | Action           | Вигляд                         | Description                                 |
+| --------------- | ---------------- | ------------------------------ | ------------------------------------------- |
+| `About`         | `index`          | `/about/index.volt`            | Shows the `about` page                      |
+| `Index`         | `index`          | `/index/index.volt`            | Default action - home page                  |
+| `Права доступу` | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
+| `Privacy`       | `index`          | `/privacy/index.volt`          | View the privacy page                       |
+| `Profiles`      | `index`          | `/profiles/index.volt`         | View profiles default page                  |
+| `Profiles`      | `create`         | `/profiles/create.volt`        | Create profile                              |
+| `Profiles`      | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
+| `Profiles`      | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
+| `Profiles`      | `search`         | `/profiles/search.volt`        | Search profiles                             |
+| `Session`       | `index`          | `/session/index.volt`          | Session default action                      |
+| `Session`       | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
+| `Session`       | `login`          | `/session/login.volt`          | Login                                       |
+| `Session`       | `logout`         | `/session/logout.volt`         | Logout                                      |
+| `Session`       | `signup`         | `/session/signup.volt`         | Signup                                      |
+| `Terms`         | `index`          | `/terms/index.volt`            | View the terms page                         |
+| `Users`         | `index`          | `/users/index.volt`            | Users default screen                        |
+| `Users`         | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
+| `Users`         | `create`         | `/users/create.volt`           | Create user                                 |
+| `Users`         | `delete`         | `/users/delete.volt`           | Delete user                                 |
+| `Users`         | `edit`           | `/users/edit.volt`             | Edit user                                   |
 
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 

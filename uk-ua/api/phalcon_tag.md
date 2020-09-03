@@ -74,7 +74,7 @@ protected static urlService;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public static function appendTitle( mixed $title ): void;
@@ -442,7 +442,7 @@ Phalcon\Tag\Select
 
 Generates a SELECT HTML tag using a static array of values or a Phalcon\Mvc\Model resultset
 
-## Methods
+## Методи
 
 ```php
 public static function selectField( mixed $parameters, mixed $data = null ): string;

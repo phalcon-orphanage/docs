@@ -19,7 +19,7 @@ keywords: 'database, migrations, schema, tables, columns'
 
 https://github.com/phalcon/migrations
 
-## Requirements
+## Вимоги
 
 * PHP >= 7.2
 * Phalcon >= 4.0.5

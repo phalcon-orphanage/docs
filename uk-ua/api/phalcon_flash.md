@@ -69,7 +69,7 @@ protected sessionService;
 
 ```
 
-## Methods
+## Методи
 
 ```php
 public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
@@ -195,7 +195,7 @@ $flash->warning("Hey, this is important");
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 
-## Methods
+## Методи
 
 ```php
 public function message( string $type, mixed $message ): string | null;
@@ -227,7 +227,7 @@ Phalcon\FlashInterface
 
 Interface for Phalcon\Flash
 
-## Methods
+## Методи
 
 ```php
 public function error( string $message ): string;
@@ -267,7 +267,7 @@ Shows a HTML warning message
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Methods
+## Методи
 
 ```php
 public function clear(): void;
