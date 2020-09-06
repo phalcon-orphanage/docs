@@ -182,7 +182,7 @@ $container->set(
 
 ### Обробка запитів додатка
 
-Для того, щоб обробляти будь-які запити, об'єкти [Phalcon\Mvc\Application](application) використовуються для виконання усієї важкої для нас роботи. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
+Для того, щоб обробляти будь-які запити, використовуєтьс об'єкт [Phalcon\Mvc\Application](application), який виконує всі самі важкі завдання. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
 
 `public/index.php`
 
