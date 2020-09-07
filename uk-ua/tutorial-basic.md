@@ -373,14 +373,14 @@ echo $this->tag->linkTo(
 
 Для створення посилання для тегу `<a>`, ми використовуємо компонент [Phalcon\Tag](tag). Це допоміжний інструмент, який пропонує простий спосіб побудови HTML-тегів з урахуванням правил фреймворку. Цей клас також є сервісом, зареєстрованим у Dependency Injector, тому ми можемо використовувати `$this->tag` для доступу до його функціональності.
 
-> **ПРИМІТКА**: `Phalcon\Tag` вже зареєстрований у контейнері DI, оскільки ми використали `Phalcon\Di\FactoryDefault`. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **ПРИМІТКА**: `Phalcon\Tag` вже зареєстрований у контейнері DI, оскільки ми використали `Phalcon\Di\FactoryDefault`. Якщо ви вирішили реєструвати усі сервіси самостійно, то потрібно зареєструвати у цьому контейнері кожен такий сервіс, щоб зробити його доступним у вашому продукті.
 {: .alert .alert-info }
 
-The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
+Компонент [Phalcon\Tag](tag) також використовує раніше зареєстрований [Phalcon\Uri](uri) компонент для правильного створення URI. Більш детальну статтю стосовно генерування HTML [можна знайти тут](tag).
 
 ![](/assets/images/content/tutorial-basic-2.png)
 
-And the Signup controller is (`app/controllers/SignupController.php`):
+А контролер реєстрації - (`app/controllers/SignupController.php`):
 
 `app/controllers/SignupController.php`
 
@@ -398,17 +398,17 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+Порожня дія індексу забезпечує безпосередній перехід до файлу подання з визначенням форми (`app/views/signup/index.phtml`):
 
 `app/views/signup/index.phtml`
 
 ```html
-<h2>Sign up using this form</h2>
+<h2> Зареєструйтесь, використовуючи цю форму</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">Name</label>
+        <label for="name">Ім'я</label>
         <?php echo $this->tag->textField("name"); ?>
     </p>
 
@@ -418,25 +418,25 @@ The empty index action gives the clean pass to a view with the form definition (
     </p>
 
     <p>
-        <?php echo $this->tag->submitButton("Register"); ?>
+        <?php echo $this->tag->submitButton("Зареєструватися"); ?>
     </p>
 
 </form>
 ```
 
-Viewing the form in your browser will display the following:
+Перегляд форми у вашому браузері покаже наступне:
 
 ![](/assets/images/content/tutorial-basic-3.png)
 
-As mentioned above, the [Phalcon\Tag](tag) utility class, exposes useful methods allowing you to build form HTML elements with ease. The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application. The `Phalcon\Tag::textField()` creates a text HTML element with the name as the passed parameter, while the `Phalcon\Tag::submitButton()` creates a submit HTML button.
+Як зазначено вище, клас інструментів [Phalcon\Tag](tag) пропонує корисні методи, що дозволяють з легкістю створювати форми HTML-елементів. `Phalcon\Tag::form()` метод отримує лише один параметр - відносний URI до контролера/дії в додатку. `Phalcon\Tag::textField()` створює текстовий елемент HTML з іменем як переданим параметром, тоді як `Phalcon\Tag::submitButton()` створює HTML кнопку відправки даних форми.
 
-By clicking the *Register* button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
+Натискаючи кнопку *Зареєструватись*, ви отримаєте повідомлення від фреймворка про виняткову ситуацію, причиною якої є відсутність дії `register` у контролері `signup`. Наш `public/index.php` згенерує цей виняток:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+Реалізація цього методу дозволить уникнути виняткової ситуації:
 
 `app/controllers/SignupController.php`
 
@@ -459,15 +459,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the *Register* button again, you will see a blank page. We will be adding a view a little later that provides useful feedback. But first, we should work on the code to store the user's inputs in a database.
+Тепер якщо ви знову натиснете кнопку *Зареєструватися*, то побачите чисту сторінку. Трохи пізніше ми додамо подання, що міститиме корисний відгук. Але спочатку ми маємо написати код для зберігання записів користувачів у базі даних.
 
-According to MVC guidelines, database interactions must be done through models to ensure clean, object-oriented code.
+Відповідно до рекомендацій MVC, взаємодії з базами даних повинні здійснюватися за допомогою моделей для гарантування чистого об'єктно-орієнтованого коду.
 
-## Creating a Model
+## Створення моделі
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon пропонує перший ORM для PHP повністю написаний на мові C. Замість того, щоб підвищити складність розробки, він спрощує її.
 
-Before creating our first model, we need to create a database table using a database access tool or the database command line utility. For this tutorial we are using MySQL as our database, A simple table to store registered users can be created as follows:
+Перед створенням нашої першої моделі, нам потрібно створити таблицю баз даних використовуючи інструмент доступу до бази даних або командний рядок бази даних. Для цього навчального посібника ми використовуємо MySQL як нашу базу даних. Просту таблицю для зберігання зареєстрованих користувачів можна створити наступним чином:
 
 `create_users_table.sql`
 
@@ -481,7 +481,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the *users* table:
+Модель має розташовуватись у каталозі `app/models` (`app/models/Users.php`). Карта моделі для таблиці *users*:
 
 `app/models/Users.php`
 
@@ -498,12 +498,12 @@ class Users extends Model
 }
 ```
 
-> **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
+> **ПРИМІТКА**: Зверніть увагу на те, що публічні властивості моделі відповідають іменам полів у нашій таблиці. 
 {: .alert .alert-info }
 
-## Setting a Database Connection
+## Встановлення підключення до бази даних
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has, that can be used throughout our application:
+Для того, щоб використовувати з'єднання з базою даних і за потреби отримати доступ до даних через наші моделі, ми повинні це визначити в нашому процесі завантаження. Зв'язок з базою даних - це ще один сервіс нашого додатка, який у ньому може використовуватися:
 
 `public/index.php`
 
