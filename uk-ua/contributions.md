@@ -2,8 +2,8 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Contributing'
-keywords: 'contributing, nfr, pull request, pr, new feature request'
+title: 'Участь у розвитку'
+keywords: 'contributing, nfr, pull request, pr, new feature request, участь у розвитку фреймворка, звф, вдосконалення функціоналу'
 ---
 
 # Участь у розвитку фреймворка
@@ -12,36 +12,36 @@ keywords: 'contributing, nfr, pull request, pr, new feature request'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-# Contributing to Phalcon
+# Участь у розвитку Phalcon
 
-Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
+Phalcon - проект з відкритим вихідним кодом, який значною мірою залежить від зусиль добровольців та пожертв. Ми будемо вдячні за будь-яку допомогу у розвитку фреймворка!
 
-Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
+Будь ласка, виділіть кілька хвилин, щоб переглянути цей документ, зрозуміти процес участі у розвитку і зробити його максимально ефективним для всіх. Дотримуючись цих інструкцій, ми можемо досягти швидшого розв'язання проблем, кращої комунікації, що дозволить усім нам отримати найкращий результат!
 
-The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub](https://github.com). You can browse our repositories in our [organization page](https://github.com/phalcon).
+Вихідний код Phalcon (разом з документацією, веб-сайтами і т. д.) зберігається на [GitHub](https://github.com). Ви можете переглядати наші репозиторії на [організаційній сторінці](https://github.com/phalcon).
 
-If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
+Якщо ви бажаєте зробити внесок у Phalcon - можете зробити [запит на вдосконалення функціоналу на GitHub](https://help.github.com/articles/using-pull-requests/).
 
-When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be:
+Щоб допомогти вам створити запит на вдосконалення функціоналу і описати пропозицію, ми маємо зручний шаблон. Буде дуже важливим і корисним для спільноти, якщо до запиту ви додасте детальний опис способу відтворення проблеми чи реалізації пропозиції. Кожен запит буде розглянуто ключовими розробниками, (кимось, хто має право об'єднувати pull-запити). Виходячи з типу та змісту запиту, він може бути:
 
-- merged immediately or 
-- put on hold, where the reviewer requires changes (styling, tests etc.)
-- put on hold, if discussion is necessary (community, core team etc.)
-- rejected
+- включений до плану розвитку фреймворка невідкладно 
+- відкладений у чергу, якщо автор вимагає менш пріоритетних змін (оформлення, тести тощо)
+- відкладений, якщо потрібне широке обговорення (спільнота, ключові розробники тощо)
+- відхилений
 
-> **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
+> **ПРИМІТКА**: Будь ласка переконайтеся, що цільова гілка, у якій ви залишаєте запит, - правильна, а ви актуалізували ваш код до останньої версії фреймворка. Запити на вдосконалення функціоналу до гілки **master** заборонені
 {:.alert .alert-danger}
 
 ## Документація
 
-If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
+Якщо програмування на Zephir може здатися страшним, то є багато інших сфер, де ви можете допомогти. Ви завжди можете перевірити документацію на предмет наявності будь-яких помилок. Ви також можете розширити документацію іншими прикладами на відповідних сторінках.
 
-All you have to do is go to our [docs](https://crowdin.com/project/phalcon-documentation) repository, fork it, make the changes and send us a pull request.
+Все, що вам потрібно зробити, це перейти до нашого репозиторію [документації](https://crowdin.com/project/phalcon-documentation), створити змінений дублікат його змісту та зробити запит на вдосконалення функціоналу (pull request).
 
-> **NOTE**: Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
+> **ПРИМІТКА**: Зверніть увагу на те, що зміни до репозиторію `docs` дозволено вносити **лише** до англомовних документів (папка `en`).
 {:.alert .alert-warning}
 
-## Translations
+## Переклади
 
 If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin](https://crowdin.com). Our project is located [here](https://crowdin.com/project/phalcon-documentation). If your language is not listed, please send us a message so that we can add it.
 
