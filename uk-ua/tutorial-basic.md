@@ -182,7 +182,7 @@ $container->set(
 
 ### Обробка запитів додатка
 
-Для того, щоб обробляти будь-які запити, об'єкти [Phalcon\Mvc\Application](application) використовуються для виконання усієї важкої для нас роботи. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
+Для того, щоб обробляти будь-які запити, використовуєтьс об'єкт [Phalcon\Mvc\Application](application), який виконує всі самі важкі завдання. Цей компонент прийме запит користувача, визначить шляхи, скоординує дії контролера та виведе візуальне подання результатів обробки запиту.
 
 `public/index.php`
 
@@ -202,9 +202,9 @@ $response = $application->handle(
 $response->send();
 ```
 
-### Putting Everything Together
+### А тепер зберемо все разом
 
-The `tutorial/public/index.php` file should look like:
+Файл `tutorial/public/index.php` повинен виглядати так:
 
 `public/index.php`
 
@@ -217,11 +217,11 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Url;
 
-// Define some absolute path constants to aid in locating resources
+// Визначимо деякі константи абсолютних шляхів, щоб забезпечити визначення розташування ресурсів
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Register an autoloader
+// Реєструємо автозавантажувач
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -256,7 +256,7 @@ $container->set(
 $application = new Application($container);
 
 try {
-    // Handle the request
+    // Опрацьовуємо запити
     $response = $application->handle(
         $_SERVER["REQUEST_URI"]
     );
@@ -267,11 +267,11 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
+Як ви бачите, файл bootstrap дуже короткий і нам не потрібно включати до нього будь-які додаткові файли. Ви маєте змогу створити гнучкий MVC додаток менш ніж за 30 рядків коду.
 
-## Creating a Controller
+## Створення контролера
 
-By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
+За замовчуванням Phalcon буде шукати контролер з назвою `IndexController`. Це початкова точка, коли в запиті не було додано жодного контролера чи дії (наприклад, `https://localhost/`). `IndexController` та його `IndexAction` повинен бути схожим на такий приклад:
 
 `app/controllers/IndexController.php`
 
@@ -284,43 +284,43 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        return '<h1>Hello!</h1>';
+        return '<h1>Привіт!</h1>';
     }
 }
 ```
 
-The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. For more information you can read our document about <controllers>. If you access the application from your browser, you should see something like this:
+Класи контролера повинні містити суфікс `Controller`, а дії контролера повинні мати суфікс `Action`. Для отримання додаткової інформації ви можете прочитати наш документ про [контролери](controllers). Якщо ви спробуєте отримати досту до вашого продукта через браузер, то побачите щось на зразок цього:
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
-> **Congratulations, you are Phlying with Phalcon!**
+> **Вітаємо, ви літаєте із Phalcon!**
 {: .alert .alert-info }
 
-## Sending Output to a View
+## Відправка результату до View
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller.
+Виведення результату на екран безпосередньо з контролера часом потрібне, але не бажане, і це підтвердять більшість пуристів MVC спільноти. Всі результати мають передаватись компоненту view, який відповідальний за виведення інформації на екран. Phalcon шукатиме view з такою ж назвою, як і остання виконана дія, в папці з ім'ям контролера, якому така дія належить.
 
-Therefore in our case if the URL is:
+Таким чином, у нашому випадку якщо URL-адреса:
 
 ```php
 http://localhost/
 ```
 
-will invoke the `IndexController` and `indexAction`, and it will search the view:
+буде викликано `IndexController` і `indexAction`, який буде шукати подання:
 
 ```php
 /views/index/index.phtml
 ```
 
-If found it will parse it and send the output on screen. Our view then will have the following contents:
+Якщо такий файл існує, його буде зчитано і виведено результат на екран. Наш view в такому разі матиме вміст:
 
 `app/views/index/index.phtml`
 
 ```php
-<?php echo "<h1>Hello!</h1>";
+<?php echo "<h1>Привіт!</h1>";
 ```
 
-and since we moved the `echo` from our controller action to the view, it will be empty now:
+і оскільки ми перемістили `echo` з нашої дії контролера у подання, то дія буде порожньою:
 
 `app/controllers/IndexController.php`
 
@@ -338,18 +338,18 @@ class IndexController extends Controller
 }
 ```
 
-The browser output will remain the same. The `Phalcon\Mvc\View` component is automatically created when the action execution has ended. You can read more about views in Phalcon [here](views).
+Виведена браузером інформація не зміниться. Компонент `Phalcon\Mvc\View` автоматично створюється по завершенню виконання дії. Інформацію про подання у Phalcon ви можете почитати [тут](views).
 
-## Designing a Sign-up Form
+## Створення форми реєстрації
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named *signup*. The goal is to allow users to sign up to our application.
+Тепер ми змінимо файл подання `index.phtml`, щоб додати посилання на новий контролер з назвою *signup*. Мета - дозволити користувачам зареєструватися у нашому додатку.
 
 `app/views/index/index.phtml`
 
 ```php
 <?php
 
-echo "<h1>Hello!</h1>";
+echo "<h1>Привіт!</h1>";
 
 echo PHP_EOL;
 
@@ -357,23 +357,23 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     'signup',
-    'Sign Up Here!'
+    'Зареєструватись тут!'
 );
 ```
 
-The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new controller:
+Згенерований HTML код показує посилання (`&lt;a&gt;</code), що веде до нового контролера:</p>
 
-`app/views/index/index.phtml` (rendered)
+<p><code>app/views/index/index.phtml` (зчитано)
 
 ```html
-<h1>Hello!</h1>
+<h1>Привіт!</h1>
 
-<a href="/signup">Sign Up Here!</a>
+<a href="/signup">Зареєструватись тут!</a>
 ```
 
-To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector so we can use `$this->tag` to access its functionality.
+Для створення посилання для тегу `<a>`, ми використовуємо компонент [Phalcon\Tag](tag). Це допоміжний інструмент, який пропонує простий спосіб побудови HTML-тегів з урахуванням правил фреймворку. Цей клас також є сервісом, зареєстрованим у Dependency Injector, тому ми можемо використовувати `$this->tag` для доступу до його функціональності.
 
-> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **ПРИМІТКА**: `Phalcon\Tag` вже зареєстрований у контейнері DI, оскільки ми використали `Phalcon\Di\FactoryDefault`. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
 {: .alert .alert-info }
 
 The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
