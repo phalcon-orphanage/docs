@@ -2,11 +2,11 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Tutorial - Vökuró'
-keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
+title: 'Навчальний посібник - Vökuró'
+keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, навчальний посібник vokuro, крок за кроком, безпека, дозволи'
 ---
 
-# Tutorial - Vökuró
+# Навчальний посібник - Vökuró
 
 * * *
 
@@ -14,9 +14,9 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 
 ## Vökuró
 
-[Vökuró](https://github.com/phalcon/vokuro) is a sample application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
+[Vökuró](https://github.com/phalcon/vokuro) - це приклад програми, що відтворює типовий веб-продукт, написаний на Phalcon. Цей додаток орієнтується на: - Авторизацію користувача (безпека) - Реєстрацію користувача (безпека) - Права доступу користувачів - Керування користувачами
 
-> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
+> **ПРИМІТКА**: Ви можете використовувати Vökuró як базу для розробки вашого продукту та його приведення до ваших потреб. Це аж ніяк не ідеальний продукт, який точно не відповідає усім потребам.
 {: .alert .alert-info }
 
 > 
