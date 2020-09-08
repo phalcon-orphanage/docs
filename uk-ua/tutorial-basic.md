@@ -373,14 +373,14 @@ echo $this->tag->linkTo(
 
 Для створення посилання для тегу `<a>`, ми використовуємо компонент [Phalcon\Tag](tag). Це допоміжний інструмент, який пропонує простий спосіб побудови HTML-тегів з урахуванням правил фреймворку. Цей клас також є сервісом, зареєстрованим у Dependency Injector, тому ми можемо використовувати `$this->tag` для доступу до його функціональності.
 
-> **ПРИМІТКА**: `Phalcon\Tag` вже зареєстрований у контейнері DI, оскільки ми використали `Phalcon\Di\FactoryDefault`. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **ПРИМІТКА**: `Phalcon\Tag` вже зареєстрований у контейнері DI, оскільки ми використали `Phalcon\Di\FactoryDefault`. Якщо ви вирішили реєструвати усі сервіси самостійно, то потрібно зареєструвати у цьому контейнері кожен такий сервіс, щоб зробити його доступним у вашому продукті.
 {: .alert .alert-info }
 
-The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
+Компонент [Phalcon\Tag](tag) також використовує раніше зареєстрований [Phalcon\Uri](uri) компонент для правильного створення URI. Більш детальну статтю стосовно генерування HTML [можна знайти тут](tag).
 
 ![](/assets/images/content/tutorial-basic-2.png)
 
-And the Signup controller is (`app/controllers/SignupController.php`):
+А контролер реєстрації - (`app/controllers/SignupController.php`):
 
 `app/controllers/SignupController.php`
 
@@ -398,17 +398,17 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+Порожня дія індексу забезпечує безпосередній перехід до файлу подання з визначенням форми (`app/views/signup/index.phtml`):
 
 `app/views/signup/index.phtml`
 
 ```html
-<h2>Sign up using this form</h2>
+<h2> Зареєструйтесь, використовуючи цю форму</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">Name</label>
+        <label for="name">Ім'я</label>
         <?php echo $this->tag->textField("name"); ?>
     </p>
 
@@ -418,25 +418,25 @@ The empty index action gives the clean pass to a view with the form definition (
     </p>
 
     <p>
-        <?php echo $this->tag->submitButton("Register"); ?>
+        <?php echo $this->tag->submitButton("Зареєструватися"); ?>
     </p>
 
 </form>
 ```
 
-Viewing the form in your browser will display the following:
+Перегляд форми у вашому браузері покаже наступне:
 
 ![](/assets/images/content/tutorial-basic-3.png)
 
-As mentioned above, the [Phalcon\Tag](tag) utility class, exposes useful methods allowing you to build form HTML elements with ease. The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application. The `Phalcon\Tag::textField()` creates a text HTML element with the name as the passed parameter, while the `Phalcon\Tag::submitButton()` creates a submit HTML button.
+Як зазначено вище, клас інструментів [Phalcon\Tag](tag) пропонує корисні методи, що дозволяють з легкістю створювати форми HTML-елементів. `Phalcon\Tag::form()` метод отримує лише один параметр - відносний URI до контролера/дії в додатку. `Phalcon\Tag::textField()` створює текстовий елемент HTML з іменем як переданим параметром, тоді як `Phalcon\Tag::submitButton()` створює HTML кнопку відправки даних форми.
 
-By clicking the *Register* button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
+Натискаючи кнопку *Зареєструватись*, ви отримаєте повідомлення від фреймворка про виняткову ситуацію, причиною якої є відсутність дії `register` у контролері `signup`. Наш `public/index.php` згенерує цей виняток:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+Реалізація цього методу дозволить уникнути виняткової ситуації:
 
 `app/controllers/SignupController.php`
 
@@ -459,15 +459,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the *Register* button again, you will see a blank page. We will be adding a view a little later that provides useful feedback. But first, we should work on the code to store the user's inputs in a database.
+Тепер якщо ви знову натиснете кнопку *Зареєструватися*, то побачите чисту сторінку. Трохи пізніше ми додамо подання, що міститиме корисний відгук. Але спочатку ми маємо написати код для зберігання записів користувачів у базі даних.
 
-According to MVC guidelines, database interactions must be done through models to ensure clean, object-oriented code.
+Відповідно до рекомендацій MVC, взаємодії з базами даних повинні здійснюватися за допомогою моделей для гарантування чистого об'єктно-орієнтованого коду.
 
-## Creating a Model
+## Створення моделі
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon пропонує перший ORM для PHP повністю написаний на мові C. Замість того, щоб підвищити складність розробки, він спрощує її.
 
-Before creating our first model, we need to create a database table using a database access tool or the database command line utility. For this tutorial we are using MySQL as our database, A simple table to store registered users can be created as follows:
+Перед створенням нашої першої моделі, нам потрібно створити таблицю баз даних використовуючи інструмент доступу до бази даних або командний рядок бази даних. Для цього навчального посібника ми використовуємо MySQL як нашу базу даних. Просту таблицю для зберігання зареєстрованих користувачів можна створити наступним чином:
 
 `create_users_table.sql`
 
@@ -481,7 +481,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the *users* table:
+Модель має розташовуватись у каталозі `app/models` (`app/models/Users.php`). Карта моделі для таблиці *users*:
 
 `app/models/Users.php`
 
@@ -498,12 +498,12 @@ class Users extends Model
 }
 ```
 
-> **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
+> **ПРИМІТКА**: Зверніть увагу на те, що публічні властивості моделі відповідають іменам полів у нашій таблиці. 
 {: .alert .alert-info }
 
-## Setting a Database Connection
+## Встановлення підключення до бази даних
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has, that can be used throughout our application:
+Для того, щоб використовувати з'єднання з базою даних і за потреби отримати доступ до даних через наші моделі, ми повинні це визначити в нашому процесі завантаження. Зв'язок з базою даних - це ще один сервіс нашого додатка, який у ньому може використовуватися:
 
 `public/index.php`
 
@@ -527,9 +527,9 @@ $container->set(
 );
 ```
 
-Adjust the code snippet above as appropriate for your database.
+Змініть вищевказаний фрагмент коду відповідно до налаштувань доступу до вашої бази даних.
 
-With the correct database parameters, our model is ready to interact with the rest of the application so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the *save* operation.
+З правильними параметрами бази даних наша модель готова до взаємодії з рештою додатку і таким чином ми вже можемо зберегти записи користувача. Спочатку - давайте знайдемо хвилинку і створимо подання для `SignupController::registerAction()`, яке буде відображати повідомлення про результат операції *save*.
 
 `app/views/signup/register.phtml`
 
@@ -538,12 +538,12 @@ With the correct database parameters, our model is ready to interact with the re
     <?php echo $message; ?>
 </div>
 
-<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+<?php echo $this->tag->linkTo(['/', 'Назад на головну', 'class' => 'btn btn-primary']); ?>
 ```
 
-Note that we have added some css styling in the code above. We will cover including the stylesheet in the [Styling](#styling) section below.
+Зауважте, що ми додали деякі CSS стилі в зазначений код. Ми розкриємо вміст таблиці стилів нижче у розділі [Оформлення](#styling).
 
-## Storing Data using Models
+## Зберігання даних за допомогою моделей
 
 `app/controllers/SignupController.php`
 
@@ -563,7 +563,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        //assign value from the form to $user
+        //присвоєння значень з форми змінній $user
         $user->assign(
             $this->request->getPost(),
             [
@@ -572,40 +572,40 @@ class SignupController extends Controller
             ]
         );
 
-        // Store and check for errors
+        // Перевірка на наявність помилок та збереження
         $success = $user->save();
 
-        // passing the result to the view
+        // виведення результату для перегляду
         $this->view->success = $success;
 
         if ($success) {
-            $message = "Thanks for registering!";
+            $message = "Дякуємо за реєстрацію!";
         } else {
-            $message = "Sorry, the following problems were generated:<br>"
+            $message = "Вибачте, було ідентифіковано такі проблеми:<br>"
                      . implode('<br>', $user->getMessages());
         }
 
-        // passing a message to the view
+        // передача повідомлення поданню
         $this->view->message = $message;
     }
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object using the `Users` class we created earlier. We will use this class to manage the record of a user. As mentioned above, the class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a `boolean` value which indicates whether the save was successful or not.
+На початку `registerAction` ми створили порожній об'єкт користувача, використовуючи клас користувачів `Users`, який ми створили раніше. Ми будемо використовувати цей клас для керування записами користувача. Як було зазначено вище, публічні властивості класу ведуть до полів таблиці `users` у нашій базі даних. Вставлення відповідних значень до нового запису і виклик `save()` збереже дані цього запису у базі даних. Метод `save()` повертає значення `boolean`, яке сигналізує про успіх чи невдачу операції збереження.
 
-The ORM will automatically escape the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORM автоматично обріже записи, аби уникнути SQL ін'єкцій, тому нам потрібно лише передати запит методу `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we do not enter any of the required fields in the sign-up form our screen will look like this:
+Додаткова перевірка відбувається автоматично в усіх полях, що визначені як не null (обов’язкові). Якщо ми не заповнимо жодного з обов'язкових полів у реєстраційній формі, наш екран виглядатиме схоже на це:
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
-## List the Registered Users
+## Список зареєстрованих користувачів
 
-Now we will need to get and display all the registered users in our database
+Тепер нам потрібно буде відобразити всіх зареєстрованих користувачів у нашій базі даних
 
-The first thing that we are going to do in our `indexAction` of the`IndexController` is to show the result of the search of all the users, which is done simply by calling the static method `find()` on our model (`Users::find()`).
+Перше, що ми зробимо в `indexAction` контролера `IndexController` - це показати результат пошуку всіх користувачів, що робиться просто шляхом виклику статичного методу `find()` в нашій моделі (`Users::find()`).
 
-`indexAction` would change as follows:
+`indexAction` буде змінено так:
 
 `app/controllers/IndexController.php`
 
@@ -617,7 +617,7 @@ use Phalcon\Mvc\Controller;
 class IndexController extends Controller
 {
     /**
-     * Welcome and user list
+     * Вітання та список користувачів
      */
     public function indexAction()
     {
@@ -626,35 +626,35 @@ class IndexController extends Controller
 }
 ```
 
-> **NOTE**: We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
+> **ПРИМІТКА**: Ми присвоюємо результат операції `find` магічній властивості об'єкта `view`. Це вставляє у цю змінну присвоєні їй дані та робить їх доступними у нашому поданні
 {: .alert .alert-info } 
 
-In our view file `views/index/index.phtml` we can use the `$users` variable as follows:
+У нашому файлі подання `views/index/index.phtml` ми можемо використовувати змінну `$users` так:
 
-The view will look like this:
+Ураховуючи все вищезазначене, наше подання виглядатиме приблизно так:
 
 `views/index/index.phtml`
 
 ```html
 <?php
 
-echo "<h1>Hello!</h1>";
+echo "<h1>Привіт!</h1>";
 
-echo $this->tag->linkTo(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+echo $this->tag->linkTo(["signup", "Зареєструватися!", 'class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>
     <table class="table table-bordered table-hover">
         <thead class="thead-light">
         <tr>
-            <th>#</th>
-            <th>Name</th>
+            <th>N п/п</th>
+            <th>Ім'я</th>
             <th>Email</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
-            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+            <td colspan="3"> Кількість користувачів: <?php echo $users->count(); ?></td>
         </tr>
         </tfoot>
         <tbody>
@@ -671,13 +671,13 @@ if ($users->count() > 0) {
 }
 ```
 
-As you can see our variables `$users` can be iterated and counted. You can get more information on how models operate in our document about [models](db-models).
+Як ви можете побачити наші значення змінної `$users` можуть бути виведені неодноразово та пораховані. Ви можете отримати більше інформації про те, як функціонують моделі, в нашому документі про [моделі](db-models).
 
 ![](/assets/images/content/tutorial-basic-5.png)
 
-## Styling
+## Оформлення
 
-We can now add small design touches to our application. We can add the [Bootstrap CSS](https://getbootstrap.com/) in our code so that it is used throughout our views. We will add an `index.phtml` file in the`views` folder, with the following content:
+Тепер ми можемо трохи покращити зовнішній вигляд нашої програми. Ми можемо додати [Bootstrap CSS](https://getbootstrap.com/) у наш код для того, щоб він використовувався на наших поданнях. Ми додамо файл `index.phtml` до теки`views` з таким змістом:
 
 `app/views/index.phtml`
 
@@ -686,7 +686,7 @@ We can now add small design touches to our application. We can add the [Bootstra
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Phalcon Tutorial</title>
+    <title>Посібник Phalcon</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -697,12 +697,12 @@ We can now add small design touches to our application. We can add the [Bootstra
 </html>
 ```
 
-In the above template, the most important line is the call to the `getContent()` method. This method returns all the content that has been generated from our view. Our application will now show:
+У наведеному вище шаблоні найважливіший рядок це виклик метода `getContent()`. Цей метод повертає весь вміст, створений нашим поданням. Тепер наш додаток показуватиме:
 
 ![](/assets/images/content/tutorial-basic-6.png)
 
-## Conclusion
+## Підсумок
 
-As you can see, it is easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time you will enjoy a nice performance boost.
+Як бачите, почати будувати застосунок за допомогою Phalcon досить просто. Оскільки Phalcon це розширення, завантажене в пам'ять, обсяг коду вашого проекту буде мінімальним, тоді як вам сподобається гарний приріст продуктивності.
 
-If you are ready to learn more check out the [Vökuró Tutorial](tutorial-vokuro) next.
+Якщо ви готові ще більше дізнатися, то перейдіть далі до [Посібника Vökuró](tutorial-vokuro).

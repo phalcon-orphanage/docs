@@ -3,27 +3,27 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 title: 'Стандарти кодування'
-keywords: 'coding standard, zephir'
+keywords: 'coding standard, zephir, стандарти кодування'
 ---
 
-# Phalcon Coding Standard
+# Стандарти кодування Phalcon
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Last update: 2019-07-04
+Останнє оновлення: 2019-07-04
 
-Phalcon is written in [Zephir](https://zephir-lang.com), a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
+Phalcon написано мовою [Zephir](https://zephir-lang.com), яку створила команда Phalcon і активно розвиває. Тому не існує встановлених стандартів кодування, яких можуть дотримуватись розробники, якщо бажають.
 
-In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a variant of [PSR-12](https://www.php-fig.org/psr/psr-12/) developed by [PHP-FIG](https://www.php-fig.org/)
+У цьому документі ми розкриємо стандарти кодування, які використовує Phalcon для редагування файлів Zephir. Стандарт кодування - це варіант [PSR-12](https://www.php-fig.org/psr/psr-12/), розроблений [PHP-FIG](https://www.php-fig.org/)
 
-## Files
+## Файли
 
-- Files must use only UTF-8 without BOM.
-- File names must be named StudlyCaps.
-- All files must use the Unix LF (linefeed) line ending.
-- All files must end with a single blank line.
+- Файли мають використовувати лише UTF-8 без BOM.
+- Імена файлів повинні називатися по принципу StudlyCaps (великі літери виділяють істотні складові суті файла).
+- Всі файли повинні використовувати кінець рядка за правилами Unix LF (linefeed).
+- Всі файли мають закінчуватися одним пустим рядком.
 - Folders are also named StudlyCaps and the folder/subfolder tree follows the namespace of the class.
 
 ```php
