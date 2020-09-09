@@ -43,19 +43,19 @@ Phalcon - проект з відкритим вихідним кодом, яки
 
 ## Переклади
 
-If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin](https://crowdin.com). Our project is located [here](https://crowdin.com/project/phalcon-documentation). If your language is not listed, please send us a message so that we can add it.
+Якщо ви бажаєте допомогти у розвитку Phalcon, перекладаючи наші документи своєю рідною мовою, ви можете скористатися відмінним сервісом наших друзів - [Crowdin](https://crowdin.com). Наш проект розташований [тут](https://crowdin.com/project/phalcon-documentation). Якщо вашої мови немає в списку доступних для перекладу, надішліть нам повідомлення, щоб ми могли додати її.
 
-## Questions and Support
+## Питання та підтримка
 
-> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/forum) or our [Discord](https://phalcon.io/discord) server.
+> **ПРИМІТКА**: Ми приймаємо лише звіти про помилки, запити на вдосконалення функціоналу та запити на злиття на GitHub. Для обговорення тем, що стосуються використання фреймворку чи подання запитів щодо підтримки, будь ласка, відвідайте [офіційний форум](https://phalcon.io/forum) або наш [сервер Discord](https://phalcon.io/discord).
 {:.alert .alert-danger}
 
-## Bug Report Checklist
+## Занесення помилок до контрольного списку
 
-- Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
-- Only bugs found in the latest released version of Phalcon will be addressed.
-- We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
+- Переконайтеся, що ви використовуєте останню версію Phalcon перед створенням запиту на GitHub.
+- Будуть виправлятись помилки, знайдені лише в останній версії Phalcon.
+- Ми розробили зручний шаблон для створення запитів, що допоможе надати ключовим розробникам якомога більше інформації щодо відтворення та розв'язання проблеми. Можливість відтворити помилку значно скоротить час пошуку причини та її усунення. Скрипти навіть невдалих тестів будуть дуже корисні. Будь ласка, ознайомтесь з додатковою інформацією про те, як створити [відтворювані тести](reproducible-tests).
+- До вашого звіту включіть, будь ласка, додаткову інформацію, таку як версія ОС, версія PHP, версія Phalcon, web-сервер, пам'ять тощо.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
 
 ### Generating a Backtrace
