@@ -65,33 +65,33 @@ Phalcon - проект з відкритим вихідним кодом, яки
 Будь ласка, перегляньте наступні посилання з інструкціями щодо генерування зворотного трасування:
 
 - [Створення зворотного трасування gdb](https://bugs.php.net/bugs-generating-backtrace.php)
-- [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [Створення зворотного трасування за допомогою компілятора на Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [Символи налагодження](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [Збірка РНР](http://www.phpinternalsbook.com/build_system/building_php.html)
 
-## Pull Request Checklist
+## Контрольний список запитів на злиття
 
-- Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
-- Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
-- Since Phalcon is written in [Zephir](https://zephir-lang.com), please do not submit commits that modify the C generated files directly
-- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
-- Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
-- More information [here](new-pull-request).
+- Запити на злиття в гілку `master` не приймаються. Будь ласка, створіть виправлену копію репозиторію та створіть свою гілку з необхідної гілки-джерела, наприклад `4.0.x` і якщо потрібно перпбащуйте гілку перед тим, як надіслати запит на злиття. Якщо мають місце колізії, ми попросимо вас повторно перебазувати вашу гілку.
+- Додайте тести до вашого запиту на злиття або налаштуйте існуючі. Це дуже важливо, оскільки допомагає обґрунтувати ваш запит на злиття. Будь ласка, перегляньте нашу [тестову сторінку](testing-environment), щоб дізнатися більше про те, як налаштувати тестове середовище і як написати тести.
+- Оскільки Phalcon пишеться на [Zephir](https://zephir-lang.com), будь ласка, не надсилайте коміти, що змінюють файли C безпосередньо
+- Phalcon слідує певному стилю кодування. Будь ласка, встановіть `editorconfig` плагін у вашому улюбленому IDE, щоб скористатися переванами наданого `. ditorconfig` файлу, який поставляється з репозиторію, а тому не потрібно хвилюватися за стандарти кодування. Всі тести (PHP код), слідують стандарту [PSR-2](https://www.php-fig.org/psr/)
+- Видаліть будь-яку зміну файлів `ext/kernel`, `*.zep.c` та `*.zep.h` перед надсиланням запиту на злиття
+- Більше інформації [тут](new-pull-request).
 
-Before submitting **new functionality**, please open a [NFR](new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Перед надсиланням запиту щодо **нового функціоналу**, будь ласка, відкрийте [ЗНФ](new-feature-request) як нову проблему на GitHub, щоб обговорити наслідки додавання такого функціоналу або зміни в базовому розширенні. Як тільки новий функціонал буде погоджено, переконайтеся, що ваш PR містить таке:
 
-- An update to the `CHANGELOG.md`
-- Unit Tests
-- Documentation or Usage Examples
+- Оновлення до `CHANGELOG.md`
+- Юніт-тести
+- Приклади використання або документація
 
 ## Отримання допомоги
 
-If you have any questions about how to use Phalcon, please see the [support page](https://phalcon.io/support).
+Якщо у вас виникло питання по використанню Phalcon, почитайте, будь ласка, [сторінку підтримки](https://phalcon.io/support).
 
-## Requesting Features
+## Запити на новий функціонал
 
-If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
+Якщо ви надумали поділитись думками щодо виправлень чи нового функціоналу, заповніть будь ласка [ЗНФ](new-feature-request).
 
-Thanks!
+Дякуємо!
 
-<3 Phalcon Team
+<3 Команда Phalcon
