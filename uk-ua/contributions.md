@@ -56,15 +56,15 @@ Phalcon - проект з відкритим вихідним кодом, яки
 - Будуть виправлятись помилки, знайдені лише в останній версії Phalcon.
 - Ми розробили зручний шаблон для створення запитів, що допоможе надати ключовим розробникам якомога більше інформації щодо відтворення та розв'язання проблеми. Можливість відтворити помилку значно скоротить час пошуку причини та її усунення. Скрипти навіть невдалих тестів будуть дуже корисні. Будь ласка, ознайомтесь з додатковою інформацією про те, як створити [відтворювані тести](reproducible-tests).
 - До вашого звіту включіть, будь ласка, додаткову інформацію, таку як версія ОС, версія PHP, версія Phalcon, web-сервер, пам'ять тощо.
-- If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
+- Якщо ви надсилаєте звіт про помилку [Несправності сегментації](https://en.wikipedia.org/wiki/Segmentation_fault), то нам знадобиться ще результат вашого зворотного трасування. Будь ласка, ознайомтесь із розділом про [створення зворотного трасування](#generating-a-backtrace) для додаткової інформації.
 
-### Generating a Backtrace
+### Створення зворотного трасування
 
-Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
+Іноді через помилку [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) Phalcon може викликати збої деяких ваших процесів веб-сервера. Щоб допомогти нам знайти причину цієї сегментаційної помилки, нам знадобляться результати зворотного трасування проблемної ситуації.
 
-Please check the following links for instructions on how to generate the backtrace:
+Будь ласка, перегляньте наступні посилання з інструкціями щодо генерування зворотного трасування:
 
-- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Створення зворотного трасування gdb](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
 - [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
