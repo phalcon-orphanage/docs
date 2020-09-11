@@ -26,7 +26,7 @@ title: 'Phalcon\Cli'
 
 This component allows to create CLI applications using Phalcon
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -88,7 +88,7 @@ $dispatcher->setParams([]);
 $handle = $dispatcher->dispatch();
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -293,7 +293,7 @@ $router->handle(
 echo $router->getTaskName();
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -477,7 +477,7 @@ This class represents every route added to the router
 const DEFAULT_DELIMITER =  ;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -870,7 +870,7 @@ class HelloTask extends \Phalcon\Cli\Task
 }
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
