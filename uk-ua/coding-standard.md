@@ -24,7 +24,7 @@ Phalcon написано мовою [Zephir](https://zephir-lang.com), яку с
 - Імена файлів повинні називатися по принципу StudlyCaps (великі літери виділяють істотні складові суті файла).
 - Всі файли повинні використовувати кінець рядка за правилами Unix LF (linefeed).
 - Всі файли мають закінчуватися одним пустим рядком.
-- Folders are also named StudlyCaps and the folder/subfolder tree follows the namespace of the class.
+- Теки теж називаються по принципу StudlyCaps, а дерево директорії/підкаталога слідують за простором імен класу.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -41,25 +41,25 @@ class Memory extends Adapter
 }
 ```
 
-- Code must use 4 spaces for indenting, not tabs.
-- Lines should be 80 characters or less. The hard limit on line length is 120 characters.
-- There must be one blank line after the namespace declaration, and there must be one blank line after the block of use declarations.
-- There must not be trailing whitespace at the end of non-blank lines.
-- Blank lines may be added to improve readability and to indicate related blocks of code.
-- There must not be more than one statement per line.
+- Код має використовувати 4 пробіли для відступу, а не таби.
+- Рядки повинні містити 80 символів або менше. Жорсткий ліміт на довжину рядка 120 символів.
+- Має бути по одному порожньому рядку після декларування простору імен та після блоку оголошень використання "use".
+- У кінці непорожніх ліній не повинно бути пробілів.
+- Порожні лінії можуть бути додані для поліпшення читабельності та виділення пов'язаних блоків коду.
+- У кожному рядку повинно бути не більш одного твердження.
 
-## Classes
+## Класи
 
-- Class names must be declared in StudlyCaps.
-- Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
-- Abstract classes must be prefixed by `Abstract`
-- Interfaces must be suffixed by `Interface`
+- Імена класів повинні бути оголошені по принципу StudlyCaps.
+- Відкриваючі дужки класів повинні розташовуватися у наступному рядку, а закриваючі дужки - у наступному рядку після тіла.
+- Абстрактні класи повинні бути попередньо визначені за допомогою `Abstract`
+- Інтерфейси повинні мати суфікс `Interface`
 
-### Constants
+### Константи
 
-- Class constants must be declared in all upper case with underscore separators.
-- Class constants must appear at the top of the class.
-- Class constants must be sorted alphabetically by constant name.
+- Класові константи мають бути задекларовані у верхньому регістрі з роздільниками підкреслення.
+- Константи класу повинні з'явитись на початку вмісту класу.
+- Константи класу потрібно відсортувати по алфавіту за іменем.
 
 ```php
 namespace Phalcon\Acl;
@@ -71,13 +71,13 @@ class Enum
 }
 ```
 
-### Properties
+### Властивості
 
-- Class properties must be declared in camelCase.
-- Class properties must be sorted alphabetically based on name.
-- Whenever possible, properties must have a default value.
-- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration.
-- Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
+- Властивості класу повинні бути оголошені у верблюжому (горбатому) регістрі.
+- Властивості класу мають бути відсортовані в алфавітному порядку за назвою.
+- Завжди, коли це можливо, властивості повинні мати значення за замовчуванням.
+- Коли це можливо, властивості повинні мати док-блок, який визначає їх тип за допомогою декларації `@var`.
+- Властивості не повинні мати підкресленням `_` на початку назви. Єдиний виняток допускається, якщо назва властивості є зарезервованим ключовим словом, наприклад `default`, `namespace` і т. д.
 
 ```php
 namespace Phalcon\Acl\Adapter;
@@ -97,12 +97,12 @@ class Memory extends Adapter
 
 ### Методи
 
-- Method names must be declared in camelCase.
-- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
-- Method names must not be prefixed with underscore `_`.
-- All methods must have a return type. If the method does not return anything it should be marked `void`
-- Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
-- Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the visibility; `static` must be declared after the visibility.
+- Імена методів мають бути задекларовані у верблюжому (горбатому) регістрі.
+- Методи мають бути відсортовані в алфавітному порядку і починатись з визначення їх видимості. Порядок є таким: `public`, `protected` і `private`. `__construct`, якщо визначено, має бути вгорі вмісту класу.
+- Назви методів не повинні містити підкреслювання `_` на початку.
+- Всі методи повинні мати тип повернення. Якщо метод не повертає нічого, він має бути позначений як `void`
+- Відкриття дужок методів має відбуватися на наступному рядку після їх декларування, а закриття дужок - на наступному рядку після їх тіла.
+- Видимість має бути оголошена у всіх властивостях та методах; `abstract` та `final` мають бути оголошені перед видимістю; `static` повинна бути оголошена після видимості.
 
 ```php
 abstract public function getElement() -> var;
@@ -112,9 +112,9 @@ final public function getElement() -> var;
 public static function getElement() -> var;
 ```
 
-- Control structure keywords must have one space after them; method and function calls must not.
-- Opening braces for control structures must go on the same line, and closing braces must go on the next line after the body.
-- Control structures such as `if` must not have parentheses around the conditional, unless it is a complex one.
+- Ключові слова контрольної структури повинні мати один пробіл після них, а виклики метода та функції навпаки не повинні.
+- Відкриття дужок для контрольних структур має відбуватися в тому ж рядку, а закриття дужок має відбуватися у наступному рядку після тіла.
+- Контрольні структури, такі як `if` не повинні містити круглих дужок навколо умови, якщо тільки це не складна умова.
 
 ```php
 if typeof variable === "array" {
@@ -122,11 +122,11 @@ if typeof variable === "array" {
 }
 ```
 
-### Method Arguments
+### Аргументи методу
 
-- In the argument list, there must not be a space before each comma, and there must be one space after each comma.
-- Each method must have its type declared before it
-- Method arguments with default values must go at the end of the argument list.
+- У списку аргументів не має бути пробілу перед кожною комою, але після кожної коми має бути один пробіл.
+- Кожен метод повинен мати свій тип оголошений перед ним
+- Аргументи методу зі значеннями за замовчуванням повинні йти в кінці списку аргументів.
 
 ```php
 public function setElement(string! name, var value) -> void;
