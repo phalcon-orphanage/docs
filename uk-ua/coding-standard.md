@@ -132,8 +132,8 @@ if typeof variable === "array" {
 public function setElement(string! name, var value) -> void;
 ```
 
-- Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list must be on the next line, and there must be only one argument per line.
+- Списки аргументів МОЖНА розділяти на кілька рядків, де кожен наступний рядок відступає на один крок. Якщо так робити, то перший елемент списку повинен бути у наступному рядку, і має бути лише один аргумент на рядок.
 
-### PHP Files
+### PHP файли
 
-PHP files such as tests must follow [PSR-12](https://www.php-fig.org/psr/psr-12/).
+PHP файли, такі як тести, повинні слідувати [PSR-12](https://www.php-fig.org/psr/psr-12/).
