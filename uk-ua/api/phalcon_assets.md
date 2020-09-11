@@ -32,7 +32,7 @@ Represents an asset asset
 $asset = new \Phalcon\Assets\Asset("js", "javascripts/jquery.js");
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -316,7 +316,7 @@ Sets the asset's type.
 
 Represents a collection of assets
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -718,7 +718,7 @@ Represents an inline asset
 $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -833,7 +833,7 @@ Phalcon\Assets\Manager
 
 Manages collections of CSS/JavaScript assets
 
-## Properties
+## Властивості
 
 ```php
 //
