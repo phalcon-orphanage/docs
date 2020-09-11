@@ -36,7 +36,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -267,7 +267,7 @@ Stores data in the adapter
 
 Apcu adapter
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -347,7 +347,7 @@ Stores data in the adapter
 
 Libmemcached adapter
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -427,7 +427,7 @@ Stores data in the adapter
 
 Memory adapter
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -512,7 +512,7 @@ Stores data in the adapter
 
 Redis adapter
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -592,7 +592,7 @@ Stores data in the adapter
 
 Stream adapter
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -681,7 +681,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -731,7 +731,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Властивості
 
 ```php
 /**
