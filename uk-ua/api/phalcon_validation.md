@@ -54,7 +54,7 @@ title: 'Phalcon\Validation'
 
 Allows to validate data using custom or built-in validators
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -211,7 +211,7 @@ This is a base class for combined fields validators
 
 This is a base class for validators
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -315,7 +315,7 @@ Prepares a label for the field.
 
 This is a base class for combined fields validators
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -478,7 +478,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -539,7 +539,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -610,7 +610,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -681,7 +681,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -747,7 +747,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -814,7 +814,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -880,7 +880,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -941,7 +941,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1002,7 +1002,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1082,7 +1082,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1228,7 +1228,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -1363,7 +1363,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1423,7 +1423,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1494,7 +1494,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1565,7 +1565,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1636,7 +1636,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1707,7 +1707,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1778,7 +1778,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1844,7 +1844,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1910,7 +1910,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1995,7 +1995,7 @@ const VERSION_4 = FILTER_FLAG_IPV4;
 const VERSION_6 = FILTER_FLAG_IPV6;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2056,7 +2056,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2117,7 +2117,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2183,7 +2183,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2326,7 +2326,7 @@ $validation->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2397,7 +2397,7 @@ $validation->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2496,7 +2496,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2576,7 +2576,7 @@ $validator->add(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
