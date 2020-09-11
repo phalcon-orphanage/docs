@@ -27,7 +27,7 @@ This file is part of the Phalcon.
 
 For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -111,7 +111,7 @@ $session = new Manager();
 $session->setAdapter(new Noop());
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -233,7 +233,7 @@ $files = new Stream(
 $session->setAdapter($files);
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -290,7 +290,7 @@ $user->name = "Kimbra Johnson";
 $user->age  = 22;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -368,7 +368,7 @@ Phalcon\Session\Manager
 
 Session manager class
 
-## Properties
+## Властивості
 
 ```php
 /**
