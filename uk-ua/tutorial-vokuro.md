@@ -20,58 +20,58 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, 
 {: .alert .alert-info }
 
 > 
-> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+> **ПРИМІТКА**: Цей посібник орієнтований на тих, хто уже знайомий зі схемою дизайну Model-View-Controller (MVC). (дивіться посилання у кінці цього посібника)
 {: .alert .alert-warning }
 
 > 
-> **NOTE**: Note the code below has been formatted to increase readability
+> **ПРИМІТКА**: Зауважте, що вказаний нижче код був відформатований для збільшення читабельності
 {: .alert .alert-warning }
 
 ## Встановлення
 
-### Downloading
+### Завантаження
 
-In order to install the application, you can either clone or download it from [GitHub](https://github.com/phalcon/vokuro). You can visit the GitHub page, download the application and then unzip it to a directory on your machine. Alternatively you can use `git clone`:
+Для того, щоб встановити додаток, ви можете клонувати або завантажити його з [GitHub](https://github.com/phalcon/vokuro). Ви можете відвідати сторінку GitHub, завантажити додаток і потім розпакувати його в каталог на вашому комп'ютері. Крім того, ви можете використовувати `git clone`:
 
 ```bash
 git clone https://github.com/phalcon/vokuro
 ```
 
-### Extensions
+### Розширення
 
-There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
+Для запуску Vökuró необхідно виконати певні умови. Ви повинні мати встановлений на вашій машині PHP >= 7.2 з такими розширеннями: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
 
-Phalcon needs to be installed. Head over to the <installation> page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
+Phalcon повинен бути встановлений. Перейдіть на сторінку [встановлення](installation), якщо вам потрібна допомога з встановленням Phalcon. Зверніть увагу, що Phalcon v4 потребує встановленого PSR розширення та його завантаження **перед** Phalcon. Щоб встановити PSR, ви можете скористатись сторінкою [php-psr](https://github.com/jbboehr/php-psr) на GitHub.
 
-Finally, you will also need to ensure that you have updated the composer packages (see section below).
+Нарешті, вам також потрібно буде переконатися, що ви оновили пакети композера (див. розділ нижче).
 
-### Run
+### Старт
 
-If all the above requirements are satisfied, you can run the application using PHP's built-in web server by issuing the following command on a terminal:
+Якщо всі вищезазначені вимоги задоволені, ви можете запустити додаток за допомогою локального PHP веб-сервера, виконавши таку команду в терміналі:
 
 ```bash
 php -S localhost:8080 -t public/ .htrouter.php
 ```
 
-The above command will start serving the site for `localhost` at the port `8080`. You can change those settings to suit your needs. Alternatively you can set up your site in Apache or nginX using a virtual host. Please consult the relevant documentation on how to set up a virtual host for these web servers.
+Ця команда запустить сайт для `localhost` з портом `8080`. Ви можете змінити ці налаштування відповідно до ваших потреб. Крім того, ви можете налаштувати свій сайт в Apache або nginX за допомогою віртуального хоста. Будь ласка, зверніться до відповідної документації, щоб налаштувати віртуальний хост для цих веб-серверів.
 
 ### Docker
 
-In the `resources` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application. To use the `Dockerfile` we need to decide the name of our dockerized application. For the purposes of this tutorial, we will use `phalcon-tutorial-vokuro`.
+У папці `resources` ви знайдете `Dockerfile`, який дозволяє швидко налаштувати середовище і запустити програму. Щоб використовувати `Dockerfile` нам потрібно визначити назву нашого докеризованого додатка. Для цілей цього посібника ми використаємо `phalcon-tutorial-vokuro`.
 
-From the root of the application we need to compile the project (you only need to do this once):
+З кореню додатка ми повинні компілювати проект (вам потрібно це робити лише раз):
 
 ```bash
 $ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
 ```
 
-and then run it
+а потім запустіть його
 
 ```bash
 $ docker run -it --rm phalcon-tutorial-vokuro bash
 ```
 
-This will enter us in the dockerized environment. To check the PHP version:
+Це дозволить нам отримати доступ до докеризованого середовища. Щоб перевірити версію PHP:
 
 ```bash
 root@c7b43060b115:/code $ php -v
@@ -82,7 +82,7 @@ Zend Engine v3.3.9, Copyright (c) 1998-2018 Zend Technologies
     with Zend OPcache v7.3.9, Copyright (c) 1999-2018, by Zend Technologies
 ```
 
-and Phalcon:
+та Phalcon:
 
 ```bash
 root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
@@ -90,20 +90,20 @@ root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
 4.0.0
 ```
 
-You now have a dockerized environment with all the necessary components to run Vökuró.
+Тепер ви маєте докеризоване середовище з усіма необхідними компонентами, щоб запустити Vökuró.
 
 ### Nanobox
 
-In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. All you have to do is copy the file to the root of your directory and run `nanobox run php-server`. Once the application is set up for the first time, you will be able to navigate to the IP address presented on screen and work with the application.
+In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. Вам потрібно просто скопіювати файл в кореневий каталог і запустити `nanobox run php-server`. Після налаштування додатка ви зможете перейти за IP-адресою, що відображається на екрані та працювати з цим додатком.
 
-For more information on how to set up nanobox, check our \[Environments Nanobox\]\[environments-nanobox\] page as well as the [Nanobox Guides](https://guides.nanobox.io/php/) page
+Для отримання додаткової інформації про те, як налаштувати nanobox, ознайомтесь з нашими сторінками \[Середовища Nanobox\]\[environments-nanobox\] та посібника[Nanobox](https://guides.nanobox.io/php/)
 
-> **NOTE**: In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
+> **ПРИМІТКА**: У цьому посібнику ми припускаємо, що ваш додаток було скопійовано чи клоновано у теку з назвою `vokuro`.
 {: .alert .alert-info }
 
-## Structure
+## Структура
 
-Looking at the structure of the application we have the following:
+Погляньте на структуру додатка:
 
 ```bash
 vokuro/
@@ -134,10 +134,10 @@ vokuro/
     vendor
 ```
 
-| Directory         | Description                                           |
+| Каталог           | Опис                                                  |
 | ----------------- | ----------------------------------------------------- |
-| `.ci`             | Files necessary for setting services for the CI       |
-| `configs`         | Configuration files                                   |
+| `.ci`             | Файли, необхідні для налаштування служб для CI        |
+| `налаштування`    | Файли конфігурації                                    |
 | `db`              | Holds the migrations for the database                 |
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |

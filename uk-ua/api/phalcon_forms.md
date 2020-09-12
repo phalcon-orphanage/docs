@@ -31,7 +31,7 @@ title: 'Phalcon\Forms'
 
 This is a base class for form elements
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -605,7 +605,7 @@ Phalcon\Forms\Element\Select
 
 Component SELECT (choice) for forms
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -711,7 +711,7 @@ Exceptions thrown in Phalcon\Forms will use this class
 
 This component allows to build forms using an object-oriented interface
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -965,7 +965,7 @@ Check if the current element in the iterator is valid
 
 Forms Manager
 
-## Properties
+## Властивості
 
 ```php
 //

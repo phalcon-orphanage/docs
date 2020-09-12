@@ -30,7 +30,7 @@ Phalcon\Messages\Message
 
 Stores a message from various components
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -216,7 +216,7 @@ Sets message type
 
 Represents a collection of messages
 
-## Properties
+## Властивості
 
 ```php
 /**

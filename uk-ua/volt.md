@@ -1685,7 +1685,7 @@ Built-in filters can be overridden adding a function with the same name. The exa
 $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
-### Extensions
+### Розширення
 
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of instructions, change the behavior of an expression or operator, add functions/filters, and more.
 

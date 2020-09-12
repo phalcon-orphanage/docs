@@ -20,7 +20,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 {: .alert .alert-info }
 
 > 
-> **NOTE**: Note the code below has been formatted to increase readability
+> **ПРИМІТКА**: Зауважте, що вказаний нижче код був відформатований для збільшення читабельності
 {: .alert .alert-warning }
 
 ## Structure

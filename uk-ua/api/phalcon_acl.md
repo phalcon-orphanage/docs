@@ -25,7 +25,7 @@ title: 'Phalcon\Acl'
 
 Adapter for Phalcon\Acl adapters
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -702,7 +702,7 @@ Class for exceptions thrown by Phalcon\Acl
 
 This class defines role entity and its description
 
-## Properties
+## Властивості
 
 ```php
 /**

@@ -27,7 +27,7 @@ Phalcon\Translate\Adapter
 
 Base class for Phalcon\Translate adapters
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -130,7 +130,7 @@ Phalcon\Translate\Adapter\Csv
 
 Allows to define translation lists using CSV file
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -183,7 +183,7 @@ $adapter = new Gettext(
 
 Allows translate using gettext
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -327,7 +327,7 @@ Phalcon\Translate\Adapter\NativeArray
 
 Allows to define translation lists using PHP arrays
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -448,7 +448,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -493,7 +493,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Properties
+## Властивості
 
 ```php
 /**

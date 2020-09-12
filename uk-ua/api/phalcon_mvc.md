@@ -134,7 +134,7 @@ $application = new MyApp();
 $application->main();
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -283,7 +283,7 @@ $dispatcher->setParams([]);
 $controller = $dispatcher->dispatch();
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -536,7 +536,7 @@ $app->get(
 $app->handle("/say/welcome/Phalcon");
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -859,7 +859,7 @@ $collection->get("/posts/edit/{id}", "edit");
 $app->mount($collection);
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1109,7 +1109,7 @@ Phalcon\Mvc\Micro\LazyLoader
 
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -1201,7 +1201,7 @@ const OP_UPDATE = 2;
 const TRANSACTION_INDEX = transaction;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -2678,7 +2678,7 @@ Phalcon\Mvc\Model\Behavior
 
 This is an optional base class for ORM behaviors
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -2790,7 +2790,7 @@ Phalcon\Mvc\Model\Binding
 
 This is an class for binding models into params for handler
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -2943,7 +2943,7 @@ $robots = Robots::query()
     ->execute();
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -3579,7 +3579,7 @@ $di->set(
 $robot = new Robots($di);
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -4483,7 +4483,7 @@ const MODELS_PRIMARY_KEY = 1;
 const MODELS_REVERSE_COLUMN_MAP = 1;
 ```
 
-## Properties
+## Властивості
 
 ```php
 /**
@@ -5126,7 +5126,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -5404,7 +5404,7 @@ const TYPE_SELECT = 309;
 const TYPE_UPDATE = 300;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -5827,7 +5827,7 @@ $params = [
 $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -6765,7 +6765,7 @@ if ($status->success()) {
 }
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -6945,7 +6945,7 @@ const HAS_ONE_THROUGH = 3;
 const NO_ACTION = 0;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -7244,7 +7244,7 @@ const TYPE_RESULT_FULL = 0;
 const TYPE_RESULT_PARTIAL = 1;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -7453,7 +7453,7 @@ Phalcon\Mvc\Model\Resultset\Complex
 
 Complex resultsets may include complete objects and scalar values. This class builds every complex row as it is required
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -7509,7 +7509,7 @@ Phalcon\Mvc\Model\Resultset\Simple
 
 Simple resultsets only contains a complete objects This class builds every complete object as it is required
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -7777,7 +7777,7 @@ try {
 }
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -7906,7 +7906,7 @@ Phalcon\Mvc\Model\Transaction\Failed
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -7982,7 +7982,7 @@ try {
 }
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -8289,7 +8289,7 @@ Phalcon\Mvc\Model\ValidationFailed
 
 This exception is generated when a model fails to save a record Phalcon\Mvc\Model must be set up to have this behavior
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -8627,7 +8627,7 @@ const POSITION_FIRST = 0;
 const POSITION_LAST = 1;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -9014,7 +9014,7 @@ $di->setShared(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -9144,7 +9144,7 @@ $blog->add(
 $router->mount($blog);
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -9501,7 +9501,7 @@ Phalcon\Mvc\Router\Route
 
 This class represents every route added to the router
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -10106,7 +10106,7 @@ const LEVEL_MAIN_LAYOUT = 5;
 const LEVEL_NO_RENDER = 0;
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -10657,7 +10657,7 @@ Loads registered template engines, if none is registered it will use Phalcon\Mvc
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\Mvc\View component.
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -10743,7 +10743,7 @@ Renders a view using the template engine
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -10850,7 +10850,7 @@ $compiler->compile("views/partials/header.volt");
 require $compiler->getCompiledTemplatePath();
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -11227,7 +11227,7 @@ Compiles a block of statements
 
 Class for exceptions thrown by Phalcon\Mvc\View
 
-## Properties
+## Властивості
 
 ```php
 //
@@ -11289,7 +11289,7 @@ echo $view->render(
 );
 ```
 
-## Properties
+## Властивості
 
 ```php
 //
