@@ -134,32 +134,32 @@ vokuro/
     vendor
 ```
 
-| Каталог           | Опис                                                  |
-| ----------------- | ----------------------------------------------------- |
-| `.ci`             | Файли, необхідні для налаштування служб для CI        |
-| `configs`         | Файли конфігурації                                    |
-| `db`              | Holds the migrations for the database                 |
-| `public`          | Entry point for the application, css, js, images      |
-| `resources`       | Docker/nanobox files for setting the application      |
-| `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Контролери                                            |
-| `src/Forms`       | Форми                                                 |
-| `src/Models`      | Database Models                                       |
-| `src/Plugins`     | Plugins                                               |
-| `src/Providers`   | Providers: setting services in the DI container       |
-| `tests`           | Tests                                                 |
-| `themes`          | Themes/views for easy customization                   |
-| `themes/vokuro`   | Default theme for the application                     |
-| `var`             | Various supporting files                              |
-| `var/cache`       | Cache files                                           |
-| `var/logs`        | Logs                                                  |
-| `vendor`          | Vendor/composer based libraries                       |
+| Каталог           | Опис                                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| `.ci`             | Файли, необхідні для налаштування служб для CI                      |
+| `configs`         | Файли конфігурації                                                  |
+| `db`              | Містить файли міграції для бази даних                               |
+| `public`          | Точка входу в додаток, місце зберігання файлів css, js та зображень |
+| `resources`       | Файли Docker/nanobox для налаштування додатка                       |
+| `src`             | Місце розташування всіх основних файлів (контролери, форми тощо)    |
+| `src/Controllers` | Контролери                                                          |
+| `src/Forms`       | Форми                                                               |
+| `src/Models`      | Моделі бази даних                                                   |
+| `src/Plugins`     | Плагіни                                                             |
+| `src/Providers`   | Постачальники: налаштування сервісів у контейнері DI                |
+| `tests`           | Тести                                                               |
+| `themes`          | Теми/подання для легкого налаштування                               |
+| `themes/vokuro`   | Тема додатку за замовчуванням                                       |
+| `var`             | Різні допоміжні файли                                               |
+| `var/cache`       | Файли кешу                                                          |
+| `var/logs`        | Журнали                                                             |
+| `vendor`          | Бібліотеки сторонній постачальників/композера                       |
 
-## Configuration
+## Налаштування
 
 ### `.env`
 
-[Vökuró](https://github.com/phalcon/vokuro) uses the popular [Dotenv](https://github.com/vlucas/phpdotenv) library by Vance Lucas. The library utilizes a `.env` file located in your root folder, which holds configuration parameters such as the database server host, username, password etc. There is a `.env.example` file that comes with Vökuró that you can copy and rename to `.env` and then edit it to match your environment. You need to do this first so that your application can run properly.
+[Vökuró](https://github.com/phalcon/vokuro) використовує популярну бібліотеку [Dotenv](https://github.com/vlucas/phpdotenv) від Vance Lucas. Бібліотека використовує `.env` файл розташований в кореневій теці, який містить параметри конфігурації, такі як сервер бази даних, ім'я користувача, пароль тощо. Там є файл `.env.example`, який постачається з Vökuró, який можна скопіювати та перейменувати на `.env` а потім відредагувати його у відповідності до умов вашого середовища. You need to do this first so that your application can run properly.
 
 The available options are:
 
