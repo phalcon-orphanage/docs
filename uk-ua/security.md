@@ -228,7 +228,7 @@ Adding a [captcha](https://en.wikipedia.org/wiki/ReCAPTCHA) to the form is also 
 
 **getDefaultHash() / setDefaultHash()**
 
-Getter and setter for the default hash that the component will use. By default the hash is set to `CRYPT_DEFAULT` (`0`). The available options are:
+Getter and setter for the default hash that the component will use. By default the hash is set to `CRYPT_DEFAULT` (`0`). Доступні варіанти:
 
 * `CRYPT_BLOWFISH_A`
 * `CRYPT_BLOWFISH_X`
