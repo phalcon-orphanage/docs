@@ -94,7 +94,7 @@ root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
 
 ### Nanobox
 
-In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. Вам потрібно просто скопіювати файл в кореневий каталог і запустити `nanobox run php-server`. Після налаштування додатка ви зможете перейти за IP-адресою, що відображається на екрані та працювати з цим додатком.
+У теці `resources` ви також знайдете файл `boxfile.yml`, що дозволяє використовувати nanobox для швидкого налаштування середовища. Вам потрібно просто скопіювати файл в кореневий каталог і запустити `nanobox run php-server`. Після налаштування додатка ви зможете перейти за IP-адресою, що відображається на екрані та працювати з цим додатком.
 
 Для отримання додаткової інформації про те, як налаштувати nanobox, ознайомтесь з нашими сторінками \[Середовища Nanobox\]\[environments-nanobox\] та посібника[Nanobox](https://guides.nanobox.io/php/)
 
@@ -137,7 +137,7 @@ vokuro/
 | Каталог           | Опис                                                  |
 | ----------------- | ----------------------------------------------------- |
 | `.ci`             | Файли, необхідні для налаштування служб для CI        |
-| `налаштування`    | Файли конфігурації                                    |
+| `configs`         | Файли конфігурації                                    |
 | `db`              | Holds the migrations for the database                 |
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
