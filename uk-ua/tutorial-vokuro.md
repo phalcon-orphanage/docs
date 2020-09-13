@@ -94,7 +94,7 @@ root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
 
 ### Nanobox
 
-In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. Вам потрібно просто скопіювати файл в кореневий каталог і запустити `nanobox run php-server`. Після налаштування додатка ви зможете перейти за IP-адресою, що відображається на екрані та працювати з цим додатком.
+У теці `resources` ви також знайдете файл `boxfile.yml`, що дозволяє використовувати nanobox для швидкого налаштування середовища. Вам потрібно просто скопіювати файл в кореневий каталог і запустити `nanobox run php-server`. Після налаштування додатка ви зможете перейти за IP-адресою, що відображається на екрані та працювати з цим додатком.
 
 Для отримання додаткової інформації про те, як налаштувати nanobox, ознайомтесь з нашими сторінками \[Середовища Nanobox\]\[environments-nanobox\] та посібника[Nanobox](https://guides.nanobox.io/php/)
 
@@ -134,95 +134,95 @@ vokuro/
     vendor
 ```
 
-| Каталог           | Опис                                                  |
-| ----------------- | ----------------------------------------------------- |
-| `.ci`             | Файли, необхідні для налаштування служб для CI        |
-| `налаштування`    | Файли конфігурації                                    |
-| `db`              | Holds the migrations for the database                 |
-| `public`          | Entry point for the application, css, js, images      |
-| `resources`       | Docker/nanobox files for setting the application      |
-| `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Контролери                                            |
-| `src/Forms`       | Форми                                                 |
-| `src/Models`      | Database Models                                       |
-| `src/Plugins`     | Plugins                                               |
-| `src/Providers`   | Providers: setting services in the DI container       |
-| `tests`           | Tests                                                 |
-| `themes`          | Themes/views for easy customization                   |
-| `themes/vokuro`   | Default theme for the application                     |
-| `var`             | Various supporting files                              |
-| `var/cache`       | Cache files                                           |
-| `var/logs`        | Logs                                                  |
-| `vendor`          | Vendor/composer based libraries                       |
+| Каталог           | Опис                                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| `.ci`             | Файли, необхідні для налаштування служб для CI                      |
+| `configs`         | Файли конфігурації                                                  |
+| `db`              | Містить файли міграції для бази даних                               |
+| `public`          | Точка входу в додаток, місце зберігання файлів css, js та зображень |
+| `resources`       | Файли Docker/nanobox для налаштування додатка                       |
+| `src`             | Місце розташування всіх основних файлів (контролери, форми тощо)    |
+| `src/Controllers` | Контролери                                                          |
+| `src/Forms`       | Форми                                                               |
+| `src/Models`      | Моделі бази даних                                                   |
+| `src/Plugins`     | Плагіни                                                             |
+| `src/Providers`   | Постачальники: налаштування сервісів у контейнері DI                |
+| `tests`           | Тести                                                               |
+| `themes`          | Теми/подання для легкого налаштування                               |
+| `themes/vokuro`   | Тема додатку за замовчуванням                                       |
+| `var`             | Різні допоміжні файли                                               |
+| `var/cache`       | Файли кешу                                                          |
+| `var/logs`        | Журнали                                                             |
+| `vendor`          | Бібліотеки сторонній постачальників/композера                       |
 
-## Configuration
+## Налаштування
 
 ### `.env`
 
-[Vökuró](https://github.com/phalcon/vokuro) uses the popular [Dotenv](https://github.com/vlucas/phpdotenv) library by Vance Lucas. The library utilizes a `.env` file located in your root folder, which holds configuration parameters such as the database server host, username, password etc. There is a `.env.example` file that comes with Vökuró that you can copy and rename to `.env` and then edit it to match your environment. You need to do this first so that your application can run properly.
+[Vökuró](https://github.com/phalcon/vokuro) використовує популярну бібліотеку [Dotenv](https://github.com/vlucas/phpdotenv) від Vance Lucas. Бібліотека використовує `.env` файл розташований в кореневій теці, який містить параметри конфігурації, такі як сервер бази даних, ім'я користувача, пароль тощо. Там є файл `.env.example`, який постачається з Vökuró, який можна скопіювати та перейменувати на `.env` а потім відредагувати його у відповідності до умов вашого середовища. Ви повинні зробити це спочатку, щоб ваш додаток міг працювати належним чином.
 
-The available options are:
+Доступні варіанти:
 
-| Option               | Description                                                                                                                                                             |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](crypt) component to produce passwords and any additional security features                                  |
-| `APP_BASE_URI`       | Usually `/` if your web server points directly to the Vökuró directory. If you have installed Vökuró in a sub directory, you can adjust the base URI                    |
-| `APP_PUBLIC_URL`     | The public URL of the application. This is used for the emails.                                                                                                         |
-| `DB_ADAPTER`         | The database adapter. The available adapters are: `mysql`, `pgsql`, `sqlite`. Please ensure that the relevant extensions for the database are installed in your system. |
-| `DB_HOST`            | The database host                                                                                                                                                       |
-| `DB_PORT`            | The database port                                                                                                                                                       |
-| `DB_USERNAME`        | The database username                                                                                                                                                   |
-| `DB_PASSWORD`        | The database password                                                                                                                                                   |
-| `DB_NAME`            | The database name                                                                                                                                                       |
-| `MAIL_FROM_NAME`     | The FROM name when sending emails                                                                                                                                       |
-| `MAIL_FROM_EMAIL`    | The FROM email when sending emails                                                                                                                                      |
-| `MAIL_SMTP_SERVER`   | The SMTP server                                                                                                                                                         |
-| `MAIL_SMTP_PORT`     | The SMTP port                                                                                                                                                           |
-| `MAIL_SMTP_SECURITY` | The SMTP security (e.g. `tls`)                                                                                                                                          |
-| `MAIL_SMTP_USERNAME` | The SMTP username                                                                                                                                                       |
-| `MAIL_SMTP_PASSWORD` | The SMTP password                                                                                                                                                       |
-| `CODECEPTION_URL`    | The Codeception server for tests. If you run the tests locally this should be `127.0.0.1`                                                                               |
-| `CODECEPTION_PORT`   | The Codeception port                                                                                                                                                    |
+| Опція                | Опис                                                                                                                                                            |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `APP_CRYPT_SALT`     | Випадковий і довгий рядок, який використовується компонентом [Phalcon\Crypt](crypt) для створення паролів та будь-яких додаткових функцій безпеки              |
+| `APP_BASE_URI`       | Зазвичай `/`, якщо ваш веб-сервер спрямовує запити безпосередньо у каталог Vökuró. Якщо ви встановили Vökuró в підкаталозі, ви можете відкоригувати базовий URI |
+| `APP_PUBLIC_URL`     | Публічний URL додатку. Використовується для електронних листів.                                                                                                 |
+| `DB_ADAPTER`         | Адаптер бази даних. Доступні адаптери: `mysql`, `pgsql`, `sqlite`. Будь ласка, переконайтеся, що в вашій системі встановлені відповідні розширення бази даних.  |
+| `DB_HOST`            | Хост бази даних                                                                                                                                                 |
+| `DB_PORT`            | Порт бази даних                                                                                                                                                 |
+| `DB_USERNAME`        | Ім'я користувача бази даних                                                                                                                                     |
+| `DB_PASSWORD`        | Пароль бази даних                                                                                                                                               |
+| `DB_NAME`            | Ім'я бази даних                                                                                                                                                 |
+| `MAIL_FROM_NAME`     | Ім'я FROM при надсиланні електронної пошти                                                                                                                      |
+| `MAIL_FROM_EMAIL`    | FROM email при надсиланні електронної пошти                                                                                                                     |
+| `MAIL_SMTP_SERVER`   | Сервер SMTP                                                                                                                                                     |
+| `MAIL_SMTP_PORT`     | SMTP порт                                                                                                                                                       |
+| `MAIL_SMTP_SECURITY` | Безпека SMTP (наприклад, `tls`)                                                                                                                                 |
+| `MAIL_SMTP_USERNAME` | Ім'я користувача SMTP                                                                                                                                           |
+| `MAIL_SMTP_PASSWORD` | Пароль до SMTP                                                                                                                                                  |
+| `CODECEPTION_URL`    | Сервер Codection для випробувань. Якщо ви запускаєте тести локально, це має бути `127.0.0.1`                                                                    |
+| `CODECEPTION_PORT`   | Порт Codeception                                                                                                                                                |
 
-Once the configuration file is in place, visiting the IP address will present a screen similar to this:
+Після того, як файл конфігурації буде збережено, перехід у браузері за цією IP-адресою відобразить щось схоже на це:
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
 ### `База данних`
 
-You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
+Також потрібно ініціалізувати базу даних. [Vökuró](https://github.com/phalcon/vokuro) використовує популярну бібліотеку [Phinx](https://github.com/cakephp/phinx) від Rob Morgan (тепер Фонд Cake Foundation). Бібліотека використовує власний файл конфігурації (`phinx.php`), але для Vökuró вам не потрібно змінювати будь-які параметри, оскільки `phinx.php` читає файл `.env`, щоб отримати налаштування конфігурації. Це дозволяє вам встановити параметри конфігурації в одному місці.
 
-We will now need to run the migrations. To check the status of our database:
+Тепер нам потрібно буде розпочати міграцію. Щоб перевірити статус нашої бази даних:
 
 ```bash
 /app $ ./vendor/bin/phinx status
 ```
 
-You will see the following screen:
+Ви побачите цей екран:
 
 ![](/assets/images/content/tutorial-vokuro-2.png)
 
-To initialize the database we need to run the migrations:
+Щоб ініціалізувати базу даних, нам потрібно запустити міграції:
 
 ```bash
 /app $ ./vendor/bin/phinx migrate
 ```
 
-The screen will show the operation:
+Екран відображатиме дію:
 
 ![](/assets/images/content/tutorial-vokuro-3.png)
 
-And the `status` command will now show all green:
+А команда `status` тепер покаже всі зелені:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### Config
+### Налаштування
 
 **acl.php**
 
-Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of *routes* that controls which routes are visible to only logged in users.
+Заглянувши у папку `config/`, ви помітите чотири файли. Вам не потрібно змінювати ці файли, щоб запустити додаток, але якщо ви хочете їх змінити, то це саме те місце, де вони розташовані. Файл `acl.php` повертає масив *routes*, який контролює, які маршрути видимі тільки для зареєстрованих користувачів.
 
-The current setup will require a user to be logged in, if they visit these routes:
+Поточне налаштування вимагає, щоб користувач увійшов у систему, якщо хоче отрисати доступ до таких маршрутів:
 
 - `users/index`
 - `users/search`
@@ -237,46 +237,46 @@ The current setup will require a user to be logged in, if they visit these route
 - `profiles/delete`
 - `permissions/index`
 
-If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism.
+Якщо ви використовуєте Vökuró як відправну точку для вашого власного продукту, то вам потрібно буде змінити цей файл, щоб додавати чи видалити маршрути, щоб переконатися, що ваші захищені маршрути доступні після авторизації.
 
-> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
+> **ПРИМІТКА**: Зберігання приватних маршрутів у масиві ефективне і просте в обслуговуванні для невеликої та середньої програми. Як тільки ваш додаток почне зростати, ви можете розглянути іншу техніку зберігання своїх приватних иаршрутів, наприклад: база даних з механізмом кешування.
 {: .alert .alert-info }
 
 **config.php**
 
-This file holds all configuration parameters that Vökuró needs. Usually you will not need to change this file, since the elements of the array are set by the `.env` file and [Dotenv](https://github.com/vlucas/phpdotenv). However, you might want to change the location of your logs or other paths, should you decide to change the directory structure.
+Цей файл містить всі параметри конфігурації, які потрібно Vökuró. Зазвичай вам не потрібно змінювати цей файл, так як елементи масиву встановлено `.env` файлом і [Dotenv](https://github.com/vlucas/phpdotenv). Однак, ви можете захотіти змінити місцезнаходження своїх журналів чи інші шляхи, вирішите змінити структуру каталогів.
 
-One of the elements you might want to consider when working with Vökuró on your local machine is the `useMail` and set it to `false`. This will instruct Vökuró not to try to connect to a mail server and send an email when a user registers on the site.
+Одним з елементів, які ви можете захотіти змінити у роботі з Vökuró на своїй локальній машині є `useMail` та встановити його на `false`. Це вкаже Vökuró, не намагатися підключатися до поштового сервера, щоб надіслати повідомлення при реєстрації користувача на сайті.
 
 **providers.php**
 
-This file contains all the providers that Vökuró needs. This is a list of classes in the application, that registers the particular class in the DI container. If you need to register new components to your DI container, you can add them to the array of this file.
+Цей файл містить всіх постачальників, які потрібні Vökuró. Це список класів нашого додатку, що реєструє певні класи у контейнері DI. Якщо вам потрібно зареєструвати нові компоненти у контейнері DI, ви можете додати їх до масиву цього файлу.
 
 **routes.php**
 
-This file contains the routes that Vökuró understands. The router already registers the default routes, so any routes defined in `routes.php` are specific ones. You can add any non standard routes you need, when customizing Vökuró, in this file. As a reminder, the default routes are:
+У цьому файлі містяться маршрути, які розуміє Vökuró. Роутер уже зареєстрував маршрути за замовчуванням, тому будь-які маршрутизатори, визначені в `routes.php` є специфічними і нетиповими. Ви можете додати в цей файл будь-які нестандартні маршрути при налаштуванні Vökuró. На всякий випадок нагадаємо маршрути за замовчуванням:
 
 ```bash
 /:controller/:action/:parameters
 ```
 
-### Providers
+### Постачальники
 
-As mentioned above, Vökuró uses classes called Providers in order to register services in the DI container. This is just one way to register services in the DI container, nothing stops you from putting all these registrations in a single file.
+Як було зазначено вище, Vökuró використовує класи під назвою Providers для реєстрації послуг у контейнері DI. Це один зі способів реєстрації послуг в контейнері DI, ніщо не заважає вам помістити всі ці реєстрації в один файл.
 
-For Vökuró we decided to use one file per service as well as a `providers.php` (see above) as the registration configuration array for these services. This allows us to have much smaller chunks of code, organized in a separate file per service, as well as an array that allows us to register or unregister/disable a service without removing files. All we need to do is change the `providers.php` array.
+Для Vökuró ми вирішили використовувати окремі файли для кожного сервісу, та файл `providers.php` (див. вище) в якості реєстраційного масиву конфігурації для цих сервісів. Це дозволяє нам мати набагато менші фрагменти коду, організовані в окремих файлах для різних сервісів, а також масив який дозволяє нам реєструвати чи відключати службу без видалення файлів. Все, що нам потрібно - це змінити масив `providers.php`.
 
-The provider classes are located in `src/Providers`. Each of the provider classes implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface. For more information, see the bootstrapping section below.
+Класи постачальників розташовані в `src/Providers`. Кожен із класів постачальників реалізує інтерфейс [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface). Для отримання додаткової інформації дивіться нижче у розділі завантажувача.
 
 ## Composer
 
-[Vökuró](https://github.com/phalcon/vokuro) uses [composer](https://getcomposer.org) to download and install supplemental PHP libraries. The libraries used are:
+[Vökuró](https://github.com/phalcon/vokuro) використовує [композер](https://getcomposer.org) для завантаження і встановлення PHP бібліотек. Бібліотеки, що використовуються:
 
 - [Dotenv](https://github.com/vlucas/phpdotenv)
 - [Phinx](https://github.com/cakephp/phinx)
 - [Swift Mailer](https://swiftmailer.symfony.com)
 
-Looking at `composer.json` the required packages are:
+Глянувши у `composer.json`, бачимо, що необхідні такі пакунки:
 
 ```json
 "require": {
@@ -289,27 +289,27 @@ Looking at `composer.json` the required packages are:
 }
 ```
 
-If this is a fresh installation you can run
+Якщо це нова установка, ви можете запустити
 
 ```bash
 composer install
 ```
 
-of if you want to upgrade the existing installations of the above packages:
+або якщо ви хочете оновити вже встановлені вищезгадані пакети:
 
 ```bash
 composer update
 ```
 
-For more information about composer, you can visit their [documentation](https://getcomposer.org) page.
+Для отримання додаткової інформації про композер, ви можете відвідати сторінку його [документації](https://getcomposer.org).
 
-## Bootstrapping
+## Завантажувач
 
-### Entry
+### Точка входу
 
-The entry point of our application is `public/index.php`. This file contains the necessary code that bootstraps the application and runs it. It also serves as a single point of entry to our application, making things much easier for us when we want to trap errors, protect files etc.
+Вхідною точкою нашого додатку є `public/index.php`. У цьому файлі міститься необхідний код, який збирає і завантажує додаток. Він також служить єдиною точкою входу до нашого додатка, спрощує нам відловлювання помилок, захист файлів тощо.
 
-Let's look at the code:
+Давайте поглянемо на код:
 
 ```php
 <?php
@@ -323,12 +323,12 @@ try {
     require_once $rootPath . '/vendor/autoload.php';
 
     /**
-     * Load .env configurations
+     * Завантаження .env конфігурації
      */
     Dotenv\Dotenv::create($rootPath)->load();
 
     /**
-     * Run Vökuró!
+     * Запуск Vökuró!
      */
     echo (new VokuroApplication($rootPath))->run();
 } catch (Exception $e) {
@@ -337,11 +337,11 @@ try {
 }
 ```
 
-First of all we ensure that we have full error reporting. You can of course change this if you wish, or rework the code where error reporting is controlled by an entry in your `.env` file.
+Перш за все, ми пересвідчуємось, що маємо повноцінне звітування про помилки. Звісно, ви можете змінити це, якщо бажаєте, або переписати код, щоб звітування про помилки контролювалось через записи у вашому `.env` файлі.
 
-A `try`/`catch` block wraps all operations. This ensures that all errors are caught and displayed on screen.
+Блок `try`/`catch` згортає усі операції. Це гарантує, що на екрані з'являться всі помилки.
 
-> **NOTE** You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
+> **ПРИМІТКА** Вам потрібно буде переробити код для підвищення безпеки. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
 {: .alert .alert-danger }
 
 We ensure that we have access to all the supporting libraries by loading composer's autoloader. In the `composer.json` we have also defined the `autoload` entry, directing the autoloader to load any `Vokuro` namespaced classes from the `src` folder.

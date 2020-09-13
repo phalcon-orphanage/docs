@@ -1063,7 +1063,7 @@ The following example shows how to use operators:
 {% endraw %}
 ```
 
-## Tests
+## Тести
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 

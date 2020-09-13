@@ -603,7 +603,7 @@ and then run the following command:
     $(which php) -S localhost:8000 -t / .htrouter.php
     
 
-## Tests
+## Тести
 
 There are numerous testing suites that you can use to test this application. We will use [curl](https://en.wikipedia.org/wiki/CURL) on every route, to verify proper operation.
 
