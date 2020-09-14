@@ -630,7 +630,7 @@ foreach ($products as $product) {
 
 The prefix `get` is used to `find()`/`findFirst()` related records.
 
-| Type             | Implicit Method | Returns                                                              |
+| Type             | Implicit Method | Результат                                                            |
 | ---------------- | --------------- | -------------------------------------------------------------------- |
 | Belongs-To       | `findFirst`     | Model instance of the related record directly                        |
 | Has-One          | `findFirst`     | Model instance of the related record directly                        |
