@@ -165,7 +165,7 @@ final public static function get(
 
 Retrieves an element from an array. If the element exists its value is returned. If not, the `defaultValue` is returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
 
-- `array`
+- `масив`
 - `bool`
 - `boolean`
 - `double`
