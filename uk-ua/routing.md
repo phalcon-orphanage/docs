@@ -1347,7 +1347,7 @@ Only methods marked with valid annotations are used as routes. The available ann
 | `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Option('/invoices/info')`        |
 | `Post`        | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
 | `Put`         | Restrict the HTTP method to `PUT`                                              | `@Put('/invoices/save')`           |
-| `Route`       | Mark a method as a route. Must be placed in a method docblock                  | `@Route('/invoices/show')`         |
+| `Маршрут`     | Mark a method as a route. Must be placed in a method docblock                  | `@Route('/invoices/show')`         |
 | `RoutePrefix` | Prefix to be prepended to each route URI. Must be placed in the class docblock | `@RoutePrefix('/invoices')`        |
 
 For annotations that add routes, the following parameters are supported:
