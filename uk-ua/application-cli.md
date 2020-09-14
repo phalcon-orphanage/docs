@@ -436,7 +436,7 @@ src/frontend/Module.php
 php cli.php
 ```
 
-## Routes
+## Маршрути
 
 The CLI application has its own router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) object, but you can implement your own by using the [Phalcon\Cli\RouterInterface](api/phalcon_cli#cli-routerinterface).
 

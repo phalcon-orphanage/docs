@@ -341,10 +341,10 @@ try {
 
 Блок `try`/`catch` згортає усі операції. Це гарантує, що на екрані з'являться всі помилки.
 
-> **ПРИМІТКА** Вам потрібно буде переробити код для підвищення безпеки. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
+> **ПРИМІТКА** Вам потрібно буде переробити код для підвищення безпеки. Якщо зараз станеться помилка бази даних, код `catch` виведе на екран технічну інформацію щодо доступу до бази даних з інформацією про помилку. Цей код є посібником, та не готовий для повномасштабного виробничого додатку
 {: .alert .alert-danger }
 
-We ensure that we have access to all the supporting libraries by loading composer's autoloader. In the `composer.json` we have also defined the `autoload` entry, directing the autoloader to load any `Vokuro` namespaced classes from the `src` folder.
+Ми впевнені, що маємо доступ до всіх підтримуваних бібліотек, завантажуючи автозавантажувач композера. У `composer.json` ми також визначили запис `autoload`, що забезпечує автозавантаження будь-яких класів з простору імен `Vokuro` з теки `src`.
 
 ```json
 "autoload": {
@@ -357,17 +357,17 @@ We ensure that we have access to all the supporting libraries by loading compose
 }
 ```
 
-Then we load the environment variables as defined in our `.env` file by calling the
+Потім ми завантажуємо змінні середовища, визначені у нашому файлі `.env`, викликаючи
 
 ```php
 Dotenv\Dotenv::create($rootPath)->load();
 ```
 
-Finally, we run our application.
+І нарешті ми запускаємо нашу програму.
 
 ### Application
 
-All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
+Вся логіка програми загорнута в клас `Vokuro\Application`. Давайте подивимося, як це робиться:
 
 ```php
 <?php
@@ -400,7 +400,7 @@ class Application
     protected $di;
 
     /**
-     * Project root path
+     * Кореневий шлях проекту
      *
      * @var string
      */
@@ -423,7 +423,7 @@ class Application
     }
 
     /**
-     * Run Vökuró Application
+     * Запуск Vökuró Application
      *
      * @return string
      * @throws Exception
@@ -438,7 +438,7 @@ class Application
     }
 
     /**
-     * Get Project root path
+     * Отримуємо кореневий шлях проекту
      *
      * @return string
      */
@@ -464,7 +464,7 @@ class Application
                  . '/configs/providers.php';
         if (!file_exists($filename) || !is_readable($filename)) {
             throw new Exception(
-                'File providers.php does not exist or is not readable.'
+                'Файл providers.php не існує або нечитабельний.'
             );
         }
 
@@ -479,57 +479,57 @@ class Application
 
 ```
 
-The constructor of the class first creates a new DI container and store it in a local property. We are using the [Phalcon\Di\FactoryDefault](di) one, which has a lot of services already registered for us.
+Конструктор класу спочатку створює новий контейнер DI та зберігає його в локальній власності. Ми використовуємо [Phalcon\Di\FactoryDefault](di), який містить багато сервісів уже зареєстрованих для нас.
 
-We then create a new [Phalcon\Mvc\Application](application) and store it in a property also. We also store the root path because it is useful throughout the application.
+Потім ми створюємо новий [Phalcon\Mvc\Application](application) та зберігаємо його також у власність. Ми також зберігаємо кореневий шлях, тому що він потрібний кругом у додатку.
 
-We then register this class (the `Vokuro\Application`) in the Di container using the name `bootstrap`. This allows us to have access to this class from any part of our application through the Di container.
+Потім ми реєструємо цей клас ( `Vokuro\Application`) у контейнері Di, використовуючи ім'я `bootstrap`. Це дає нам доступ до цього класу з будь-якої частини нашого застосунку через контейнер DI.
 
-The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
+Останнє, що ми робимо - це реєструємо всіх постачальників. Хоча об'єкт [Phalcon\Di\FactoryDefault](di) має багато сервісів, які вже зареєстровані для нас, нам все ще треба реєструвати постачальників, які відповідають потребам нашої програми. Як зазначено вище, кожен клас постачальника реалізує інтерфейс [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface), тож ми можемо завантажити кожен клас, викликаючи метод `register()` з контейнера Di для реєстрації кожного сервісу. Для цього ми спочатку завантажимо масив конфігурації `config/providers.php`, а потім зв'яжемо записи і зареєструємо кожного провайдера.
 
-The available providers are:
+Доступні постачальники:
 
-| Provider                 | Description                                       |
-| ------------------------ | ------------------------------------------------- |
-| `AclProvider`            | Права доступу                                     |
-| `AuthProvider`           | Authentication                                    |
-| `ConfigProvider`         | Configuration values                              |
-| `CryptProvider`          | Encryption                                        |
-| `DbProvider`             | Database access                                   |
-| `DispatcherProvider`     | Dispatcher - what controller to call for what URL |
-| `FlashProvider`          | Flash messages for feedback to the user           |
-| `LoggerProvider`         | Logger for errors and other information           |
-| `MailProvider`           | Mail support                                      |
-| `ModelsMetadataProvider` | Metadata for models                               |
-| `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Безпека                                           |
-| `SessionBagProvider`     | Session data                                      |
-| `SessionProvider`        | Session data                                      |
-| `UrlProvider`            | URL handling                                      |
-| `ViewProvider`           | Views and view engine                             |
+| Постачальник             | Опис                                                                 |
+| ------------------------ | -------------------------------------------------------------------- |
+| `AclProvider`            | Права доступу                                                        |
+| `AuthProvider`           | Авторизація                                                          |
+| `ConfigProvider`         | Значення конфігурації                                                |
+| `CryptProvider`          | Шифрування                                                           |
+| `DbProvider`             | Доступ до бази даних                                                 |
+| `DispatcherProvider`     | Диспетчер, який використовує контролер для переходу за URL-адресою   |
+| `FlashProvider`          | Флеш-повідомлення для забезпечення зворотного зв'язку з користувачем |
+| `LoggerProvider`         | Реєстратор помилок та іншої інформації                               |
+| `MailProvider`           | Підтримка пошти                                                      |
+| `ModelsMetadataProvider` | Метадані для моделей                                                 |
+| `RouterProvider`         | Маршрути                                                             |
+| `SecurityProvider`       | Безпека                                                              |
+| `SessionBagProvider`     | Дані сесії                                                           |
+| `SessionProvider`        | Дані сесії                                                           |
+| `UrlProvider`            | Обробка URL                                                          |
+| `ViewProvider`           | Подання та двигун, що його формує                                    |
 
-`run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
+`run()` тепер запустить `REQUEST_URI`, обробить його і поверне вміст назад. Внутрішньо програма вираховує маршрут на основі запиту, координує відповідний контролер і подання перед поверненням результату цієї операції назад користувачеві у якості відповіді.
 
 ## База данних
 
-As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
+Як зазначено вище, Vökuró можна встановити з MariaDB/MySQL/Aurora, PostgreSql або SQLite в якості сховища баз даних. Для цілей цього посібника ми використовуємо MariaDB. Таблиці, які використовує програма:
 
-| Table                 | Description                             |
-| --------------------- | --------------------------------------- |
-| `email_confirmations` | Email confirmations for registration    |
-| `failed_logins`       | Failed login attempts                   |
-| `password_changes`    | When a password was changed and by whom |
-| `permissions`         | Permission matrix                       |
-| `phinxlog`            | Phinx migration table                   |
-| `profiles`            | Profile for each user                   |
-| `remember_tokens`     | *Remember Me* functionality tokens      |
-| `reset_passwords`     | Reset password tokens table             |
-| `success_logins`      | Successful login attempts               |
-| `users`               | Users                                   |
+| Таблиця               | Опис                                            |
+| --------------------- | ----------------------------------------------- |
+| `email_confirmations` | Підтвердження електронною поштою для реєстрації |
+| `failed_logins`       | Невдалі спроби входу                            |
+| `password_changes`    | Коли було змінено пароль і ким                  |
+| `permissions`         | Матриця дозволів                                |
+| `phinxlog`            | Міграційна таблиця Phinx                        |
+| `profiles`            | Профіль для кожного користувача                 |
+| `remember_tokens`     | Функціональні токени *Пам'ятати мене*           |
+| `reset_passwords`     | Таблиця токенів скидання паролів                |
+| `success_logins`      | Успішні спроби входу                            |
+| `users`               | Користувачі                                     |
 
 ## Моделі
 
-Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
+Слідуючи шаблону [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller), Vökuró має одну модель для окремої таблиці бази даних (виключаючи `phinxlog`). Моделі дозволяють нам взаємодіяти з таблицями бази даних у легкий об'єктно-орієнтований спосіб. Моделі розташовані в каталозі `/src/Models`, і кожна модель визначає відповідні поля вихідної таблиці та будь-які зв'язки між моделлю та іншими об'єктами. Деякі моделі також втілюють правила перевірки для забезпечення належного збереження даних у базі даних.
 
 ```php
 <?php
@@ -540,9 +540,9 @@ namespace Vokuro\Models;
 use Phalcon\Mvc\Model;
 
 /**
- * SuccessLogins
+ * Успішні авторизації
  *
- * This model registers successfully logins registered users have made
+ * Ця модель реєструє успішні спроби авторизації зареєстрованих користувачів
  */
 class SuccessLogins extends Model
 {
@@ -580,7 +580,7 @@ class SuccessLogins extends Model
 }
 ```
 
-In the model above, we have defined all the fields of the table as public properties for easy access:
+У моделі вище ми визначили всі поля таблиці як публічні властивості для спрощення доступу:
 
 ```php
 echo $successLogin->ipAddress;
@@ -637,11 +637,11 @@ The available controllers, actions and routes for Vökuró are:
 | `Terms`         | `index`          | `/terms`                  | View the terms page                         |
 | `UserControl`   | `confirmEmail`   | `/confirm`                | Confirm email                               |
 | `UserControl`   | `resetPassword`  | `/reset-password`         | Reset password                              |
-| `Users`         | `index`          | `/users`                  | Users default screen                        |
-| `Users`         | `changePassword` | `/users/changePassword`   | Change user password                        |
-| `Users`         | `create`         | `/users/create`           | Create user                                 |
-| `Users`         | `delete`         | `/users/delete`           | Delete user                                 |
-| `Users`         | `edit`           | `/users/edit`             | Edit user                                   |
+| `Користувачі`   | `index`          | `/users`                  | Users default screen                        |
+| `Користувачі`   | `changePassword` | `/users/changePassword`   | Change user password                        |
+| `Користувачі`   | `create`         | `/users/create`           | Create user                                 |
+| `Користувачі`   | `delete`         | `/users/delete`           | Delete user                                 |
+| `Користувачі`   | `edit`           | `/users/edit`             | Edit user                                   |
 
 ## Views
 
@@ -687,11 +687,11 @@ The available views are:
 | `Session`       | `logout`         | `/session/logout.volt`         | Logout                                      |
 | `Session`       | `signup`         | `/session/signup.volt`         | Signup                                      |
 | `Terms`         | `index`          | `/terms/index.volt`            | View the terms page                         |
-| `Users`         | `index`          | `/users/index.volt`            | Users default screen                        |
-| `Users`         | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
-| `Users`         | `create`         | `/users/create.volt`           | Create user                                 |
-| `Users`         | `delete`         | `/users/delete.volt`           | Delete user                                 |
-| `Users`         | `edit`           | `/users/edit.volt`             | Edit user                                   |
+| `Користувачі`   | `index`          | `/users/index.volt`            | Users default screen                        |
+| `Користувачі`   | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
+| `Користувачі`   | `create`         | `/users/create.volt`           | Create user                                 |
+| `Користувачі`   | `delete`         | `/users/delete.volt`           | Delete user                                 |
+| `Користувачі`   | `edit`           | `/users/edit.volt`             | Edit user                                   |
 
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
