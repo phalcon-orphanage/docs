@@ -249,11 +249,6 @@ To populate the databases you will need to run the following script:
 Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception][codeception]. For a basic introduction you can check [this][codeception_introduction] page. Also for the list of the commands, you can check [here][codeception_commands].
 
 We need to first build the Codeception base classes. This needs to happen every time new functionality is introduced in Codeception's helpers.
-The building process requires a `.env` file to be present at the root folder, which can be created or copied from the examples and then customized (if needed) using the following command:
-
-```shell script
-/app $ cp tests/_ci/nanobox/.env.example .env
-```
 
 Now you can run:
 ```shell script
