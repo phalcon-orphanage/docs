@@ -742,12 +742,12 @@ ProfilesController -> createAction
 
 ### Пошта
 
-`Vokuro\Plugins\Mail\Mail` - це обгортка для [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
+`Vokuro\Plugins\Mail\Mail` - це обгортка для [Swift Mailer](https://swiftmailer.symfony.com). Вона повертає два методи `send()` і `getTemplate()`, які дозволяють вам отримати шаблон з подань і заповнити його даними. Отриманий HTML може використовуватись в методі `send()` разом з отримувачем та іншими параметрами для відправлення повідомлення електронною поштою.
 
-> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
+> **ПРИМІТКА**: Зверніть увагу, що цей компонент може бути використаний лише, якщо `useMail` активовано у вашому файлі `.env`. Також потрібно буде забезпечити коректність SMTP сервера та облікових даних.
 {: .alert .alert-info } 
 
-## Sign Up
+## Реєстрація
 
 ### Controller
 
@@ -1006,7 +1006,7 @@ In the `initialize` method we are setting up all the HTML elements we need. Thes
 | `confirmPassword` | `Password` | Password confirmation        |
 | `terms`           | `Check`    | Accept the terms checkbox    |
 | `csrf`            | `Hidden`   | CSRF protection element      |
-| `Sign Up`         | `Submit`   | Submit button                |
+| `Реєстрація`      | `Submit`   | Submit button                |
 
 Adding elements is pretty straight forward:
 
