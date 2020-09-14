@@ -330,7 +330,7 @@ $cookie  = new Cookie(
 > **NOTE**: If your DI container contains the `session` service, the cookies will be stored in the session automatically. If not, they will not be stored, and you are responsible to persist them if you wish to.
 {: .alert .alert-info } 
 
-### Encryption
+### Шифрування
 
 The cookies collection is automatically registered as part of the `response` service that is registered in the DI container. By default, cookies are automatically encrypted prior to sending them to the client and are decrypted when retrieved from the user.
 
