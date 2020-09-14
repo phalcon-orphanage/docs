@@ -586,62 +586,62 @@ class SuccessLogins extends Model
 echo $successLogin->ipAddress;
 ```
 
-> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
+> **ПРИМІТКА**: Зверніть увагу, що імена властивостей точно відображають регістр (верхній/нижній) імен полів у відповідній таблиці.
 {: .alert .alert-warning }
 
-In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
+У методі `initialize()` ми також визначили зв'язок між цією моделлю і `Users`. Ми призначили поля (local/remote), а також `alias` для цього зв'язку. Таким чином, ми можемо отримати доступ до користувача, що має відношення до запису цієї моделі наступним чином:
 
 ```php
 echo $successLogin->user->name;
 ```
 
-> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
+> **ПРИМІТКА**: Не соромтеся відкривати кожен файл моделі та визначати взаємозв'язок між моделями. Перевірте нашу документацію щодо різниці між різними типами відносин
 {: .alert .alert-info }
 
 ## Контролери
 
-Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
+Знову слідуючи шаблону [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller), Vökuró має один контролер для обробки конкретного *батьківського* маршруту. Це означає, що `AboutController` обробляє маршрут `/about`. Всі контролери знаходяться в каталозі `/src/Cotnrollers`.
 
-The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
+Контролер за замовчуванням це `IndexController`. Всі класи контролерів мають суфікс `Controller`. Кожен контролер має методи з суфіксамит`Action`, а дія за замовчуванням - `indexAction`. Таким чином, якщо ви відвідаєте сайт, перейшовши з базовою URL, буде викликано `IndexController`, яким буде виконано дію `indexAction`.
 
-After that, unless you have registered specific routes, the default routes (automatically registered) will try to match:
+Після цього, якщо ви не реєстрували певні специфічні маршрути, маршрути за замовчуванням (автоматично зареєстровані) намагатимуться прив'язувати:
 
 ```bash
 /profiles/search
 ```
 
-to
+до
 
 ```bash
 /src/Controllers/SearchController.php -> searchAction
 ```
 
-The available controllers, actions and routes for Vökuró are:
+Доступні контролери, дії та маршрути для Vökuró:
 
-| Controller      | Action           | Route                     | Description                                 |
-| --------------- | ---------------- | ------------------------- | ------------------------------------------- |
-| `About`         | `index`          | `/about`                  | Shows the `about` page                      |
-| `Index`         | `index`          | `/`                       | Default action - home page                  |
-| `Права доступу` | `index`          | `/permissions`            | View/change permissions for a profile level |
-| `Privacy`       | `index`          | `/privacy`                | View the privacy page                       |
-| `Profiles`      | `index`          | `/profiles`               | View profiles default page                  |
-| `Profiles`      | `create`         | `/profiles/create`        | Create profile                              |
-| `Profiles`      | `delete`         | `/profiles/delete`        | Delete profile                              |
-| `Profiles`      | `edit`           | `/profiles/edit`          | Edit profile                                |
-| `Profiles`      | `search`         | `/profiles/search`        | Search profiles                             |
-| `Session`       | `index`          | `/session`                | Session default action                      |
-| `Session`       | `forgotPassword` | `/session/forgotPassword` | Forget password                             |
-| `Session`       | `login`          | `/session/login`          | Login                                       |
-| `Session`       | `logout`         | `/session/logout`         | Logout                                      |
-| `Session`       | `signup`         | `/session/signup`         | Signup                                      |
-| `Terms`         | `index`          | `/terms`                  | View the terms page                         |
-| `UserControl`   | `confirmEmail`   | `/confirm`                | Confirm email                               |
-| `UserControl`   | `resetPassword`  | `/reset-password`         | Reset password                              |
-| `Користувачі`   | `index`          | `/users`                  | Users default screen                        |
-| `Користувачі`   | `changePassword` | `/users/changePassword`   | Change user password                        |
-| `Користувачі`   | `create`         | `/users/create`           | Create user                                 |
-| `Користувачі`   | `delete`         | `/users/delete`           | Delete user                                 |
-| `Користувачі`   | `edit`           | `/users/edit`             | Edit user                                   |
+| Контролер     | Дія              | Маршрут                   | Опис                                           |
+| ------------- | ---------------- | ------------------------- | ---------------------------------------------- |
+| `About`       | `index`          | `/about`                  | Показує сторінку`Про проект`                   |
+| `Index`       | `index`          | `/`                       | Типова дія - головна сторінка                  |
+| `Permissions` | `index`          | `/permissions`            | Перегляд/зміна дозволів для рівня профілю      |
+| `Privacy`     | `index`          | `/privacy`                | Перегляд сторінки конфіденційності             |
+| `Profiles`    | `index`          | `/profiles`               | Переглянути сторінку за замовчуванням профілів |
+| `Profiles`    | `create`         | `/profiles/create`        | Створити профіль                               |
+| `Profiles`    | `delete`         | `/profiles/delete`        | Видалити профіль                               |
+| `Profiles`    | `edit`           | `/profiles/edit`          | Редагувати профіль                             |
+| `Profiles`    | `search`         | `/profiles/search`        | Пошук профілів                                 |
+| `Session`     | `index`          | `/session`                | Дія сесії за замовчуванням                     |
+| `Session`     | `forgotPassword` | `/session/forgotPassword` | Забули пароль                                  |
+| `Session`     | `login`          | `/session/login`          | Вхід                                           |
+| `Session`     | `logout`         | `/session/logout`         | Вихід                                          |
+| `Session`     | `signup`         | `/session/signup`         | Зареєструватися                                |
+| `Terms`       | `index`          | `/terms`                  | Переглянути сторінку з правилами               |
+| `UserControl` | `confirmEmail`   | `/confirm`                | Підтвердіть електронну пошту                   |
+| `UserControl` | `resetPassword`  | `/reset-password`         | Скидання пароля                                |
+| `Users`       | `index`          | `/users`                  | Екран за замовчуванням для користувачів        |
+| `Users`       | `changePassword` | `/users/changePassword`   | Змінити пароль користувача                     |
+| `Users`       | `create`         | `/users/create`           | Створити користувача                           |
+| `Users`       | `delete`         | `/users/delete`           | Видалити користувача                           |
+| `Users`       | `edit`           | `/users/edit`             | Edit user                                      |
 
 ## Views
 
@@ -670,28 +670,28 @@ and the view is located:
 
 The available views are:
 
-| Controller      | Action           | Вигляд                         | Description                                 |
-| --------------- | ---------------- | ------------------------------ | ------------------------------------------- |
-| `About`         | `index`          | `/about/index.volt`            | Shows the `about` page                      |
-| `Index`         | `index`          | `/index/index.volt`            | Default action - home page                  |
-| `Права доступу` | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
-| `Privacy`       | `index`          | `/privacy/index.volt`          | View the privacy page                       |
-| `Profiles`      | `index`          | `/profiles/index.volt`         | View profiles default page                  |
-| `Profiles`      | `create`         | `/profiles/create.volt`        | Create profile                              |
-| `Profiles`      | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
-| `Profiles`      | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
-| `Profiles`      | `search`         | `/profiles/search.volt`        | Search profiles                             |
-| `Session`       | `index`          | `/session/index.volt`          | Session default action                      |
-| `Session`       | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
-| `Session`       | `login`          | `/session/login.volt`          | Login                                       |
-| `Session`       | `logout`         | `/session/logout.volt`         | Logout                                      |
-| `Session`       | `signup`         | `/session/signup.volt`         | Signup                                      |
-| `Terms`         | `index`          | `/terms/index.volt`            | View the terms page                         |
-| `Користувачі`   | `index`          | `/users/index.volt`            | Users default screen                        |
-| `Користувачі`   | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
-| `Користувачі`   | `create`         | `/users/create.volt`           | Create user                                 |
-| `Користувачі`   | `delete`         | `/users/delete.volt`           | Delete user                                 |
-| `Користувачі`   | `edit`           | `/users/edit.volt`             | Edit user                                   |
+| Controller      | Action           | Вигляд                         | Description                                    |
+| --------------- | ---------------- | ------------------------------ | ---------------------------------------------- |
+| `About`         | `index`          | `/about/index.volt`            | Показує сторінку`Про проект`                   |
+| `Index`         | `index`          | `/index/index.volt`            | Типова дія - головна сторінка                  |
+| `Права доступу` | `index`          | `/permissions/index.volt`      | Перегляд/зміна дозволів для рівня профілю      |
+| `Privacy`       | `index`          | `/privacy/index.volt`          | Перегляд сторінки конфіденційності             |
+| `Profiles`      | `index`          | `/profiles/index.volt`         | Переглянути сторінку за замовчуванням профілів |
+| `Profiles`      | `create`         | `/profiles/create.volt`        | Створити профіль                               |
+| `Profiles`      | `delete`         | `/profiles/delete.volt`        | Видалити профіль                               |
+| `Profiles`      | `edit`           | `/profiles/edit.volt`          | Редагувати профіль                             |
+| `Profiles`      | `search`         | `/profiles/search.volt`        | Пошук профілів                                 |
+| `Session`       | `index`          | `/session/index.volt`          | Дія сесії за замовчуванням                     |
+| `Session`       | `forgotPassword` | `/session/forgotPassword.volt` | Забули пароль                                  |
+| `Session`       | `login`          | `/session/login.volt`          | Вхід                                           |
+| `Session`       | `logout`         | `/session/logout.volt`         | Вихід                                          |
+| `Session`       | `signup`         | `/session/signup.volt`         | Зареєструватися                                |
+| `Terms`         | `index`          | `/terms/index.volt`            | Переглянути сторінку з правилами               |
+| `Користувачі`   | `index`          | `/users/index.volt`            | Екран за замовчуванням для користувачів        |
+| `Користувачі`   | `changePassword` | `/users/changePassword.volt`   | Змінити пароль користувача                     |
+| `Користувачі`   | `create`         | `/users/create.volt`           | Створити користувача                           |
+| `Користувачі`   | `delete`         | `/users/delete.volt`           | Видалити користувача                           |
+| `Користувачі`   | `edit`           | `/users/edit.volt`             | Edit user                                      |
 
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
