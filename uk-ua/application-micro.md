@@ -343,7 +343,7 @@ public function stop()
 
 Stops the middleware execution
 
-## Routes
+## Маршрути
 
 Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application is very easy. Routes are defined as follows:
 
