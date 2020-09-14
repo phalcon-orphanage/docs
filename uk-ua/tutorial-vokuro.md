@@ -641,108 +641,108 @@ echo $successLogin->user->name;
 | `Users`       | `changePassword` | `/users/changePassword`   | Змінити пароль користувача                     |
 | `Users`       | `create`         | `/users/create`           | Створити користувача                           |
 | `Users`       | `delete`         | `/users/delete`           | Видалити користувача                           |
-| `Users`       | `edit`           | `/users/edit`             | Edit user                                      |
+| `Users`       | `edit`           | `/users/edit`             | Редагувати користувача                         |
 
-## Views
+## Подання
 
-The last element of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern is the views. Vökuró uses [Volt](volt) as the view engine for its views.
+Останній елемент шаблону [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) це відображення або подання візуалізованого результату обробки запиту користувача. Vökuró використовує [Volt](volt) як генератор подання для його відображень.
 
-> **NOTE**: Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
+> **ПРИМІТКА**: Взагалі то, хтось може сподіватись знайти теку `views` у каталозі `/src`. Однак, Vökuró використовує трохи інший підхід, зберігаючи всі файли подань у `/themes/vokuro`. 
 {: .alert .alert-info }
 
-The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
+Каталог подань містить теки, що відповідають кожному контролеру. Всередині кожної з цих тек є файли `.volt`, що створені для відображення результатів кожної окремої дії. Наприклад, маршрут:
 
 ```bash
 /profiles/create
 ```
 
-maps to:
+веде до:
 
 ```bash
 ProfilesController -> createAction
 ```
 
-and the view is located:
+і у поданнях розташований:
 
 ```bash
 /themes/vokuro/profiles/create.volt
 ```
 
-The available views are:
+Доступні подання:
 
-| Controller      | Action           | Вигляд                         | Description                                    |
-| --------------- | ---------------- | ------------------------------ | ---------------------------------------------- |
-| `About`         | `index`          | `/about/index.volt`            | Показує сторінку`Про проект`                   |
-| `Index`         | `index`          | `/index/index.volt`            | Типова дія - головна сторінка                  |
-| `Права доступу` | `index`          | `/permissions/index.volt`      | Перегляд/зміна дозволів для рівня профілю      |
-| `Privacy`       | `index`          | `/privacy/index.volt`          | Перегляд сторінки конфіденційності             |
-| `Profiles`      | `index`          | `/profiles/index.volt`         | Переглянути сторінку за замовчуванням профілів |
-| `Profiles`      | `create`         | `/profiles/create.volt`        | Створити профіль                               |
-| `Profiles`      | `delete`         | `/profiles/delete.volt`        | Видалити профіль                               |
-| `Profiles`      | `edit`           | `/profiles/edit.volt`          | Редагувати профіль                             |
-| `Profiles`      | `search`         | `/profiles/search.volt`        | Пошук профілів                                 |
-| `Session`       | `index`          | `/session/index.volt`          | Дія сесії за замовчуванням                     |
-| `Session`       | `forgotPassword` | `/session/forgotPassword.volt` | Забули пароль                                  |
-| `Session`       | `login`          | `/session/login.volt`          | Вхід                                           |
-| `Session`       | `logout`         | `/session/logout.volt`         | Вихід                                          |
-| `Session`       | `signup`         | `/session/signup.volt`         | Зареєструватися                                |
-| `Terms`         | `index`          | `/terms/index.volt`            | Переглянути сторінку з правилами               |
-| `Користувачі`   | `index`          | `/users/index.volt`            | Екран за замовчуванням для користувачів        |
-| `Користувачі`   | `changePassword` | `/users/changePassword.volt`   | Змінити пароль користувача                     |
-| `Користувачі`   | `create`         | `/users/create.volt`           | Створити користувача                           |
-| `Користувачі`   | `delete`         | `/users/delete.volt`           | Видалити користувача                           |
-| `Користувачі`   | `edit`           | `/users/edit.volt`             | Edit user                                      |
+| Контролер     | Дія              | Подання                        | Опис                                           |
+| ------------- | ---------------- | ------------------------------ | ---------------------------------------------- |
+| `About`       | `index`          | `/about/index.volt`            | Показує сторінку`Про проект`                   |
+| `Index`       | `index`          | `/index/index.volt`            | Типова дія - головна сторінка                  |
+| `Permissions` | `index`          | `/permissions/index.volt`      | Перегляд/зміна дозволів для рівня профілю      |
+| `Privacy`     | `index`          | `/privacy/index.volt`          | Перегляд сторінки конфіденційності             |
+| `Profiles`    | `index`          | `/profiles/index.volt`         | Переглянути сторінку за замовчуванням профілів |
+| `Profiles`    | `create`         | `/profiles/create.volt`        | Створити профіль                               |
+| `Profiles`    | `delete`         | `/profiles/delete.volt`        | Видалити профіль                               |
+| `Profiles`    | `edit`           | `/profiles/edit.volt`          | Редагувати профіль                             |
+| `Profiles`    | `search`         | `/profiles/search.volt`        | Пошук профілів                                 |
+| `Session`     | `index`          | `/session/index.volt`          | Дія сесії за замовчуванням                     |
+| `Session`     | `forgotPassword` | `/session/forgotPassword.volt` | Забули пароль                                  |
+| `Session`     | `login`          | `/session/login.volt`          | Вхід                                           |
+| `Session`     | `logout`         | `/session/logout.volt`         | Вихід                                          |
+| `Session`     | `signup`         | `/session/signup.volt`         | Зареєструватися                                |
+| `Terms`       | `index`          | `/terms/index.volt`            | Переглянути сторінку з правилами               |
+| `Users`       | `index`          | `/users/index.volt`            | Екран за замовчуванням для користувачів        |
+| `Users`       | `changePassword` | `/users/changePassword.volt`   | Змінити пароль користувача                     |
+| `Users`       | `create`         | `/users/create.volt`           | Створити користувача                           |
+| `Users`       | `delete`         | `/users/delete.volt`           | Видалити користувача                           |
+| `Users`       | `edit`           | `/users/edit.volt`             | Редагувати користувача                         |
 
-The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
+Файл `/index.volt` містить основну схему сторінки, включаючи посилання на стилі, javascript і т. д. Каталог `/layouts` містить різні макети, які використовуються в програмі, для екземпляра `публічного`, якщо користувач не увійшов у систему, і `приватного` подання інформації користувачу, якщо він увійшов у систему. Окремі подання вкладаються у макети та будують кінцеву сторінку.
 
 ## Компоненти
 
-There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
+У Vökuró є кілька компонентів, функціонал яких ви використовуємо по всьому додатку. Всі ці компоненти знаходяться в каталозі `/src/Plugins`.
 
 ### Acl
 
-`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List](https://en.wikipedia.org/wiki/Access-control_list) for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page](acl).
+`Vokuro\Plugins\Acl\Acl` це компонент, який реалізує [список контролю доступу](https://en.wikipedia.org/wiki/Access-control_list) для нашого додатку. ACL контролює, до яких ресурсів має доступ окремий користувач. Більше про ACL можна прочитати на нашій [окремій сторінці](acl).
 
-In this component, We define the resources that are considered *private*. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human readable descriptions for actions used throughout the application.
+У цьому компоненті ми визначаємо ресурси, які вважаються *приватними*. Вони зберігаються у внутрішньому масиві з контролером як ключом та дією як значенням, та визначають, які контролери/дії потребують аутентифікації. Він також вміщує розбірливі описи дій, які використовуються в усій програмі.
 
-The component exposes the following methods:
+Компонент використовує наступні методи:
 
-| Method                                      | Returns      | Description                                                     |
-| ------------------------------------------- | ------------ | --------------------------------------------------------------- |
-| `getActionDescription($action)`             | `string`     | Returns the action description according to its simplified name |
-| `getAcl()`                                  | `ACL object` | Returns the ACL list                                            |
-| `getPermissions(Profiles $profile)`         | `array`      | Returns the permissions assigned to a profile                   |
-| `getResources()`                            | `array`      | Returns all the resources and their actions available           |
-| `isAllowed($profile, $controller, $action)` | `bool`       | Checks if the current profile is allowed to access a resource   |
-| `isPrivate($controllerName)`                | `bool`       | Checks if a controller is private or not                        |
-| `rebuild()`                                 | `ACL object` | Rebuilds the access list into a file                            |
+| Метод                                       | Результат          | Опис                                                                 |
+| ------------------------------------------- | ------------------ | -------------------------------------------------------------------- |
+| `getActionDescription($action)`             | `стрічка`          | Повертає опис дії відповідно до її спрощеного імені                  |
+| `getAcl()`                                  | `об'єкт ACL`       | Повертає список ACL                                                  |
+| `getPermissions(Profiles $profile)`         | `масив`            | Повертає дозволи, надані профілю                                     |
+| `getResources()`                            | `масив`            | Повертає всі доступні ресурси та їх дії                              |
+| `isAllowed($profile, $controller, $action)` | `логічне значення` | Перевіряє, чи дозволено поточному профілю отримати доступ до ресурсу |
+| `isPrivate($controllerName)`                | `логічне значення` | Перевіряє, чи є контролер приватним або ні                           |
+| `rebuild()`                                 | `об'єкт ACL`       | Перебудовує список доступу у файл                                    |
 
 ### Auth
 
-`Vokuro\Plugins\Auth\Auth` is a component that manages authentication and offers identity management in Vökuró.
+`Vokuro\Plugins\Auth\Auth` - це компонент, який керує автентифікацією і здійснює управління ідентифікацією в Vökuró.
 
-The component exposes the following methods:
+Компонент використовує наступні методи:
 
-| Method                                   | Description                                                                            |
-| ---------------------------------------- | -------------------------------------------------------------------------------------- |
-| `check($credentials)`                    | Checks the user credentials                                                            |
-| `saveSuccessLogin($user)`                | Creates the remember me environment settings the related cookies and generating tokens |
-| `registerUserThrottling($userId)`        | Implements login throttling. Reduces the effectiveness of brute force attacks          |
-| `createRememberEnvironment(Users $user)` | Creates the remember me environment settings the related cookies and generating tokens |
-| `hasRememberMe(): bool`                  | Check if the session has a remember me cookie                                          |
-| `loginWithRememberMe(): Response`        | Logs on using the information in the cookies                                           |
-| `checkUserFlags(Users $user)`            | Checks if the user is banned/inactive/suspended                                        |
-| `getIdentity(): array / null`            | Returns the current identity                                                           |
-| `getName(): string`                      | Returns the name of the user                                                           |
-| `remove()`                               | Removes the user identity information from session                                     |
-| `authUserById($id)`                      | Authenticates the user by his/her id                                                   |
-| `getUser(): Users`                       | Get the entity related to user in the active identity                                  |
-| `findFirstByToken($token): int / null`   | Returns the current token user                                                         |
-| `deleteToken(int $userId)`               | Delete the current user token in session                                               |
+| Метод                                    | Опис                                                                                            |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `check($credentials)`                    | Перевіряє облікові дані користувача                                                             |
+| `saveSuccessLogin($user)`                | Створює налаштування середовища "пам'ятати мене" - пов'язані файли cookie і генерування токенів |
+| `registerUserThrottling($userId)`        | Імплементує тротлінг імені користувача. Знижує ефективність атак грубого підбору пароля         |
+| `createRememberEnvironment(Users $user)` | Створює налаштування середовища "пам'ятати мене" - пов'язані файли cookie і генерування токенів |
+| `hasRememberMe(): bool`                  | Перевірте, чи має сесія куки з міткою "пам'ятати мене"                                          |
+| `loginWithRememberMe(): Response`        | Авторизації з використанням інформації у куках                                                  |
+| `checkUserFlags(Users $user)`            | Перевіряє, чи користувач заблокований/неактивний/тимчасово заморожений                          |
+| `getIdentity(): array / null`            | Повертає поточну ідентифікацію                                                                  |
+| `getName(): string`                      | Повертає ім'я користувача                                                                       |
+| `remove()`                               | Видалення інформації про особистість користувача з сесії                                        |
+| `authUserById($id)`                      | Автентифікація користувача за його ідентифікатором                                              |
+| `getUser(): Users`                       | Отримує об'єкт, пов'язаний з користувачем у активній особистості                                |
+| `findFirstByToken($token): int / null`   | Повертає токен поточного користувача                                                            |
+| `deleteToken(int $userId)`               | Видаляє токен поточного користувача з сесії                                                     |
 
-### Mail
+### Пошта
 
-`Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
+`Vokuro\Plugins\Mail\Mail` - це обгортка для [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
 
 > **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
 {: .alert .alert-info } 
