@@ -165,7 +165,7 @@ public function get(
 
 Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
 
-- `array`
+- `масив`
 - `bool`
 - `boolean`
 - `double`

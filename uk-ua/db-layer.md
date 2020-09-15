@@ -1503,7 +1503,7 @@ The following types are available:
 | bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}`    |
 | blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`      |
 | null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`     |
-| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`     |
+| масив     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`     |
 | array-str | Array of `Column::BIND_PARAM_STR` | `{names:array-str}` |
 | array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
