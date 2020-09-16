@@ -142,17 +142,14 @@ Esto significa que la instalación ha sido exitosa y ahora están a su alcance t
 
 Por precaución es preferible actualizar `composer`:
 
-```bash
-composer install
-```
+```shell script /app $ composer install
 
-## Verificación de Zephir
-
-Zephir ya se encuentra instalado en el entorno. Para verificarlo:
-
-```bash
-zephir help
-```
+    <br />## Check Zephir
+    Zephir is already installed in the environment. Just check it:
+    
+    ```shell script
+    /app $ zephir help
+    
 
 Debe aparecer una pantalla similar a la siguiente:
 
@@ -192,174 +189,194 @@ Help:
 
 Phalcon aún no está compilado. Hay que darle las instrucciones a Zephir para que lo haga:
 
-```bash
-zephir fullclean
-zephir build
-```
+```shell script /app $ zephir fullclean /app $ zephir build
 
-## Revisión de las extensiones
-
-Tipo
-
-```bash
-php -m
-```
+    <br />## Check Extensions
+    Type
+    
+    ```shell script
+    /app $ php -m
+    
 
 y se debe recibir:
 
-```bash
-[PHP Modules]
-apcu
-Core
-ctype
-....
-PDO
-pdo_mysql
-pdo_pgsql
-pdo_sqlite
-phalcon
-Phar
-psr
-redis
-...
+```shell script [PHP Modules] apcu Core ctype .... PDO pdo_mysql pdo_pgsql pdo_sqlite phalcon Phar psr redis ...
 
-[Zend Modules]
-Xdebug
-```
+[Zend Modules] Xdebug
 
-Nota: Phalcon v4+ requiere la extensión [PSR](https://github.com/jbboehr/php-psr) que debe ser cargada antes que Phalcon. En este entorno ya se encuentra compilada. Si aparece `Phalcon` en la lista de extensiones, significa que ya ha sido compilado y está listo para ser utilizado.
+    <br />Note that Phalcon v4+ requires the [PSR][psr] extension to be loaded before Phalcon. In this environment we have compiled it for you. Once you see `phalcon` in the list, you have the extension compiled and ready to use.
+    
+    ## Setup databases
+    
+    First, we need to have a `.env` file in the project root.
+    
+    ```shell script
+    /app $ cp tests/_ci/nanobox/.env.example .env
+    
+
+To generate the necessary database schemas, you need to run the relevant script:
+
+```shell script /app $ php tests/_ci/generate-db-schemas.php
+
+    <br />The script looks for classes located under `tests/_data/fixtures/Migrations`.
+    These classes contain the necessary code to create the relevant SQL statements
+    for each RDBMS. You can easily inspect one of those files to understand its
+    structure. Additionally, these migration classes can be instantiated in your
+    tests to clear the target table, insert new records etc. This methodology
+    allows us to create the database schema per RDBMS, which will be loaded
+    automatically from Codeception, but also allows us to clear tables and insert
+    data we need to them so that our tests are more controlled and isolated.
+    
+    If there is a need to add an additional table, all you have to do is create the
+    Phalcon model of course but also create the migration class with the relevant
+    SQL statements. Running the generate script (as seen above) will update the
+    schema file so that Codeception can load it in your RDBMS prior to running the
+    tests.
+    
+    To populate the databases you will need to run the following script:
+    
+    ```shell script
+    /app $ tests/_ci/nanobox/setup-dbs-nanobox.sh
+    
 
 # Pruebas en ejecución
 
-## Unitaria
+## Unit
 
-Con el entorno ya preparado es el momento de ejecutar las pruebas. El *framework* que Phalcon utiliza para hacerlas es [Codeception](https://codeception.com). Para una introducción básica a este *framework* se recomienda leer [esta página](https://codeception.com/docs/01-Introduction). La lista de comandos se encuentra [aquí](https://codeception.com/docs/reference/Commands).
+Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception](https://codeception.com). For a basic introduction you can check [this](https://codeception.com/docs/01-Introduction) page. Also for the list of the commands, you can check [here](https://codeception.com/docs/reference/Commands).
 
-El primer paso es crear las clases base de Codeception. Este paso se debe repetir cada vez que se agrega nueva funcionalidad en los auxiliadores (*helpers*) de Codeception:
+We need to first build the Codeception base classes. This needs to happen every time new functionality is introduced in Codeception's helpers.
+
+Now you can run: ```shell script /app $ vendor/bin/codecept build
+
+    The output should show:
+    ```bash
+    Building Actor classes for suites: cli, database, integration, unit
+     -> CliTesterActions.php generated successfully. 152 methods added
+    \CliTester includes modules: Asserts, Cli, \Helper\Cli, \Helper\Unit
+     -> DatabaseTesterActions.php generated successfully. 252 methods added
+    \DatabaseTester includes modules: Phalcon4, Redis, Asserts, Filesystem, Helper\Database, Helper\Unit
+     -> IntegrationTesterActions.php generated successfully. 251 methods added
+    \IntegrationTester includes modules: Phalcon4, Redis, Asserts, Filesystem, Helper\Integration, Helper\PhalconLibmemcached, Helper\Unit
+     -> UnitTesterActions.php generated successfully. 166 methods added
+    \UnitTester includes modules: Apc, Asserts, Filesystem, Helper\Unit
+    
+
+Now we can run the tests:
+
+```shell script /app $ php vendor/bin/codecept run unit
+
+    <br />This will start running the unit testing suite. You will see a lot of tests and assertions. At the time of this article, we have `Tests: 3235, Assertions: 8244, Skipped: 175` unit tests. The reason for so many skipped tests is because we created test stubs for every component and every method in each component. This was so as to create awareness on what needs to be checked and what components/methods we need to write tests for. Of course some of the test stubs are duplicate or obsolete. Those will be deleted once the relevant component is checked and tests written for it. Our goal is to get as close to 100% code coverage as possible. If we manage to get to 100% that would be great!
+    
+    Execute all tests from a folder:
+    
+    ```shell script
+    /app $ php vendor/bin/codecept run tests/unit/some/folder/
+    
+
+Execute single test:
+
+```shell script /app $ php vendor/bin/codecept run tests/unit/some/folder/some/test/file.php
+
+    <br />## Database
+    To run database related tests you need to run the `database` suite specifying
+    the RDBMS and group:
+    
+    ```shell script
+    /app $ php vendor/bin/codecept run tests/database -g common
+    /app $ php vendor/bin/codecept run tests/database -g mysql --env mysql
+    /app $ php vendor/bin/codecept run tests/database -g sqlite --env sqlite
+    /app $ php vendor/bin/codecept run tests/database -g pgsql --env pgsql
+    
+
+Available options:
+
+```shell script --env mysql --env sqlite --env pgsql
+
+    <br />If you need to access the databases themselves, you will need the connection information. Nanobox creates that for you and stores it in environment variables. You can easily check those variables and if need be write them down.
+    
+    Open a separate terminal and navigate to the same folder where you have nanobox running from and type:
+    
+    ```bash
+    cd ./cphalcon/
+    nanobox info local
+    
+
+You will see an output as the one below:
 
 ```bash
-codecept build
-```
+----------------------------------------------
+cphalcon (dev)              Status: up
+----------------------------------------------
 
-El resultado debe ser:
-
-```bash
-Building Actor classes for suites: cli, integration, unit
- -> CliTesterActions.php generated successfully. 0 methods added
-\CliTester includes modules: Asserts, Cli, \Helper\Cli, \Helper\Unit
- -> IntegrationTesterActions.php generated successfully. 0 methods added
-\IntegrationTester includes modules: Asserts, Filesystem, Helper\Integration, Helper\PhalconLibmemcached, Helper\Unit, Phalcon, Redis
- -> UnitTesterActions.php generated successfully. 0 methods added
-\UnitTester includes modules: Asserts, Filesystem, Redis, Helper\Unit, Helper\PhalconCacheFile, Helper\PhalconLibmemcached
-```
-
-Ahora sí se pueden ejecutar las pruebas:
-
-```bash
-codecept run unit
-```
-
-Se inicia así la ejecución de la suite de prueba unitaria. Aparecerán muchas pruebas y confirmaciones. Por ejemplo, el conteo de pruebas de unidad al escribir este texto es: Pruebas, 2.884; Confirmaciones: 6.987; Omitidas: 1.478. La razón por la cual hay tantas pruebas omitidas es porque se crearon [*stubs*](https://es.wikipedia.org/wiki/Stub) de prueba para cada componente (incluyendo cada uno de sus métodos). De esta manera se resalta qué es lo que se necesita revisar y cuáles son los componentes o métodos para los cuales se deben diseñar las pruebas. Por cierto, varios de los *stubs* de prueba se encuentran duplicados u obsoletos: serán eliminados una vez que el componente relevante sea revisado y las pruebas pertinentes sean creadas. El objetivo de Phalcon es alcanzar el máximo de cobertura del código posible. Si se alcanza el 100% será maravilloso.
-
-## Integración
-
-Las pruebas de integración necesitan acceso a las bases de datos -- que ya se encuentran disponibles en el entorno. Para rellenarlas hay que ejecutar el siguiente código:
-
-```bash
-./tests/_ci/nanobox/setup-dbs-nanobox.sh
-```
-
-Si se quiere acceder a las bases de datos, es necesario proveer los datos de conexión. Nanobox los crea por defecto y guarda en las variables de entorno. Es fácil encontrarlas y, si es necesario, se pueden anotar también.
-
-Basta con abrir una nueva terminal, abrir la carpeta en donde se encuentra la Nanobox que se está ejecutando y escribir:
-
-```bash
-cd ./cphalcon/
-nanobox info local
-```
-
-Aparecerá la siguiente información:
-
-```bash
-----------------------------------------
-cphalcon (dev)              Status: up  
-----------------------------------------
-
-Mount Path: /Work/niden/cphalcon
-Env IP: 172.18.0.2
-
-data.beanstalkd
-  IP      : 172.18.0.4
+Mount Path: /home/niden/cphalcon
+Env IP: 172.20.0.20
 
 data.memcached
-  IP      : 172.18.0.5
+  IP      : 172.20.0.23
 
 data.mongodb
-  IP      : 172.18.0.6
+  IP      : 172.20.0.24
 
 data.mysql
-  IP      : 172.18.0.7
+  IP      : 172.20.0.25
   User(s) :
-    root - MvquBdnJkv
-    nanobox - 12oK9JHiyT
+    root - 9IqTGEVM2M
+    nanobox - yXOMmf71NS
 
 data.postgres
-  IP      : 172.18.0.8
+  IP      : 172.20.0.21
   User(s) :
-    nanobox - ohhtrUaMEu
+    nanobox - exwjG6g6rm
 
 data.redis
-  IP      : 172.18.0.37
+  IP      : 172.20.0.22
 
 Environment Variables
-  DATA_BEANSTALKD_HOST = 172.18.0.4
-  DATA_MEMCACHED_HOST = 172.18.0.5
-  DATA_MONGODB_HOST = 172.18.0.6
-  DATA_MYSQL_ROOT_PASS = MvquBdnJkv
-  DATA_POSTGRES_USER = nanobox
-  DATA_POSTGRES_PASS = ohhtrUaMEu
-  DATA_POSTGRES_USERS = nanobox
-  DATA_REDIS_HOST = 172.18.0.37
-  APP_NAME = dev
-  DATA_MYSQL_NANOBOX_PASS = 12oK9JHiyT
-  DATA_MYSQL_PASS = 12oK9JHiyT
-  DATA_MYSQL_USERS = root nanobox
-  DATA_POSTGRES_HOST = 172.18.0.8
-  DATA_POSTGRES_NANOBOX_PASS = ohhtrUaMEu
-  DATA_MYSQL_HOST = 172.18.0.7
+  DATA_MONGODB_HOST = 172.20.0.24
+  DATA_MYSQL_HOST = 172.20.0.25
+  DATA_MYSQL_ROOT_PASS = 9IqTGEVM2M
   DATA_MYSQL_USER = nanobox
+  DATA_POSTGRES_PASS = exwjG6g6rm
+  APP_NAME = dev
+  DATA_MYSQL_NANOBOX_PASS = yXOMmf71NS
+  DATA_MYSQL_USERS = root nanobox
+  DATA_POSTGRES_HOST = 172.20.0.21
+  DATA_POSTGRES_USER = nanobox
+  DATA_MEMCACHED_HOST = 172.20.0.23
+  DATA_POSTGRES_NANOBOX_PASS = exwjG6g6rm
+  DATA_POSTGRES_USERS = nanobox
+  DATA_REDIS_HOST = 172.20.0.22
+  DATA_MYSQL_PASS = yXOMmf71NS
 
 DNS Aliases
   none
 ```
 
-Con estas variables se puede hacer la conexión con las bases de datos u otros servicios como Mongo, Redis, etc.
+You can use these variables to connect to your databases or other services such as Mongo, Redis etc.
 
 # Desarrollo
 
-Ahora con el editor preferido se puede empezar a desarrollar en Zephir. Se puede crear nueva funcionalidad, corregir errores, escribir pruebas, etc. Si se modifican los archivos `zep` (en la carpeta `phalcon`) será necesario recompilar la extensión:
+You can now open your favorite editor and start developing in Zephir. You can create new functionality, fix issues, write tests etc. Remember though that if you change any of the `zep` files (inside the `phalcon` folder), you will need to recompile the extension:
 
-```bash
-zephir fullclean
-zephir build
-```
+```shell script /app $ zephir fullclean /app $ zephir build
 
-Y luego se pueden seguir ejecutando las pruebas:
+    and then you can run your tests
+    
+    ```shell script
+    /app $ codecept run tests/unit/somefolder/somecestfile:sometest
+    
 
-```bash
-codecept run tests/unit/somefolder/somecestfile:sometest
-```
-
-La documentación de Zephir se encuentra en [Zephir Docs](https://docs.zephir-lang.com).
+For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-lang.com) site.
 
 # Servicios
 
-Los servicios disponibles son: - Memcached - Mongodb - Mysql - Postgresql - Redis
+The available services are: - Memcached - Mongodb - Mysql - Postgresql - Redis
 
-Las extensiones de PHP activas son: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
+The PHP extensions enabled are: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - intl - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - sqlite3 - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
 
-Los volcados de base de datos se encuentran en `pruebas/_data/assets/db/schemas`
+The database dumps are located under `tests/_data/assets/schemas`
 
-Cualquier duda o pregunta puede resolverse en nuestro servidor de [Discord](https://phalcon.io/discord) o en nuestro [Foro](https://forum.phalcon.io).
+If you have any questions, feel free to join us in our [Discord](https://phalcon.io/discord) server or our [Forum](https://forum.phalcon.io).
 
 <3 Phalcon Team
