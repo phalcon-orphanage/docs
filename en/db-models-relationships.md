@@ -334,6 +334,24 @@ class Invoices extends Model
                 ]
             ]
         );
+
+        $this->hasMany(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+                'alias'    => 'customersInactive',
+                'params'   => function() {
+                    return [
+                        'conditions' => 'cst_status_flag = :status:',
+                        'bind'       => [
+                            'status' => 0,
+                         ]
+                    ];
+                }
+            ]
+        );
     }
 }
 ```
