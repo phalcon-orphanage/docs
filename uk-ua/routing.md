@@ -1345,7 +1345,7 @@ Only methods marked with valid annotations are used as routes. The available ann
 | `Delete`      | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
 | `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
 | `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Option('/invoices/info')`        |
-| `Post`        | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
+| `Відправка`   | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
 | `Put`         | Restrict the HTTP method to `PUT`                                              | `@Put('/invoices/save')`           |
 | `Маршрут`     | Mark a method as a route. Must be placed in a method docblock                  | `@Route('/invoices/show')`         |
 | `RoutePrefix` | Prefix to be prepended to each route URI. Must be placed in the class docblock | `@RoutePrefix('/invoices')`        |
