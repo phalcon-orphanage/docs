@@ -810,18 +810,18 @@ class SessionController extends ControllerBase
             - Успіх 
                 - Запис збережено
                 - Показ підтвердження на екрані
-                - Send email (if applicable)
+                - Надсилання пошти (якщо доступно)
 
-### Form
+### Форма
 
-In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen.
+Для того, щоб виконати перевірку наданих користувачем даних, ми використовуємо класи [Phalcon\Forms](forms) та [Phalcon\Validation\*](validation). Ці класи дозволяють нам створювати HTML елементи та додавати до них валідатори. Потім форма передається до подання, де HTML елементи виводяться на екран.
 
-When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
+Коли користувач відправляє інформацію, ми відправляємо надіслані дані назад до форми, де відповідні валідатори перевіряють коректність введення та повертають будь-які потенційні повідомлення про помилки.
 
-> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
+> **ПРИМІТКА**: Всі форми для Vökuró розташовані в `/src/Forms`
 {: .alert .alert-info }
 
-First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
+Спочатку ми створили об'єкт `SignUpForm`. У цьому об’єкті ми визначаємо всі HTML-елементи, які нам потрібні із їх відповідними валідаторами:
 
 ```php
 <?php
@@ -852,12 +852,12 @@ class SignUpForm extends Form
         array $options = []
     ) {
         $name = new Text('name');
-        $name->setLabel('Name');
+        $name->setLabel('Ім/'я');
         $name->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'The name is required',
+                        'message' => 'Ім/'я обов/'язкове',
                     ]
                 ),
             ]
@@ -872,12 +872,12 @@ class SignUpForm extends Form
             [
                 new PresenceOf(
                     [
-                        'message' => 'The e-mail is required',
+                        'message' => 'Потрібно вказати Е-mail',
                     ]
                 ),
                 new Email(
                     [
-                        'message' => 'The e-mail is not valid',
+                        'message' => 'Е-mail неправильний',
                     ]
                 ),
             ]
@@ -885,27 +885,27 @@ class SignUpForm extends Form
 
         $this->add($email);
 
-        // Password
+        // Пароль
         $password = new Password('password');
-        $password->setLabel('Password');
+        $password->setLabel('Пароль');
         $password->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'The password is required',
+                        'message' => 'Потрібно вказати пароль',
                     ]
                 ),
                 new StringLength(
                     [
                         'min'            => 8,
-                        'messageMinimum' => 'Password is too short. ' .
-                                            'Minimum 8 characters',
+                        'messageMinimum' => 'Пароль занадто короткий. ' .
+                                            'Мінімум 8 символів',
                     ]
                 ),
                 new Confirmation(
                     [
-                        'message' => "Password doesn't match " .
-                                     "confirmation",
+                        'message' => "Пароль не збігається " .
+                                     "з підтвердженням",
                         'with'    => 'confirmPassword',
                     ]
                 ),
@@ -914,15 +914,15 @@ class SignUpForm extends Form
 
         $this->add($password);
 
-        // Confirm Password
+        // Підтвердження паролю
         $confirmPassword = new Password('confirmPassword');
-        $confirmPassword->setLabel('Confirm Password');
+        $confirmPassword->setLabel('Підтвердіть пароль');
         $confirmPassword->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'The confirmation password ' .
-                                     'is required',
+                        'message' => 'Підтвердження паролю ' .
+                                     'необхідне',
                     ]
                 ),
             ]
@@ -930,7 +930,7 @@ class SignUpForm extends Form
 
         $this->add($confirmPassword);
 
-        // Remember
+        // Запам'ятати
         $terms = new Check(
             'terms', 
             [
@@ -938,13 +938,13 @@ class SignUpForm extends Form
             ]
         );
 
-        $terms->setLabel('Accept terms and conditions');
+        $terms->setLabel('Прийняти умови користування');
         $terms->addValidator(
             new Identical(
                 [
-                    'value'   => 'yes',
-                    'message' => 'Terms and conditions must be ' .
-                                 'accepted',
+                    'value'   => 'так',
+                    'message' => 'Умови користування необхідно ' .
+                                 'прийняти',
                 ]
             )
         );
@@ -957,7 +957,7 @@ class SignUpForm extends Form
             new Identical(
                 [
                     'value'   => $this->security->getRequestToken(),
-                    'message' => 'CSRF validation failed',
+                    'message' => 'CSRF перевірку не пройдено',
                 ]
             )
         );
@@ -965,10 +965,10 @@ class SignUpForm extends Form
 
         $this->add($csrf);
 
-        // Sign Up
+        // Реєстрація
         $this->add(
             new Submit(
-                'Sign Up', 
+                'Зареєструватися', 
                 [
                     'class' => 'btn btn-success',
                 ]
@@ -977,7 +977,7 @@ class SignUpForm extends Form
     }
 
     /**
-     * Prints messages for a specific element
+     * Виведення повідомлень для специфічних елементів
      *
      * @param string $name
      *
@@ -996,19 +996,19 @@ class SignUpForm extends Form
 }
 ```
 
-In the `initialize` method we are setting up all the HTML elements we need. These elements are:
+У методі `initialize` ми встановлюємо всі необхідні HTML-елементи. Це такі елементи:
 
-| Element           | Type       | Description                  |
-| ----------------- | ---------- | ---------------------------- |
-| `name`            | `Text`     | The name of the user         |
-| `email`           | `Text`     | The email for the account    |
-| `password`        | `Password` | The password for the account |
-| `confirmPassword` | `Password` | Password confirmation        |
-| `terms`           | `Check`    | Accept the terms checkbox    |
-| `csrf`            | `Hidden`   | CSRF protection element      |
-| `Реєстрація`      | `Submit`   | Submit button                |
+| Елемент           | Тип        | Опис                                               |
+| ----------------- | ---------- | -------------------------------------------------- |
+| `name`            | `Text`     | Ім'я користувача                                   |
+| `email`           | `Text`     | Електронна адреса для облікового запису            |
+| `password`        | `Password` | Пароль до облікового запису                        |
+| `confirmPassword` | `Password` | Підтвердження пароля                               |
+| `terms`           | `Check`    | Поставити галочку щодо прийняття умов користування |
+| `csrf`            | `Hidden`   | Елемент захисту CSRF                               |
+| `Реєстрація`      | `Submit`   | Кнопка надсилання                                  |
 
-Adding elements is pretty straight forward:
+Додавання елементів здійснюється поступово:
 
 ```php
 <?php
@@ -1021,12 +1021,12 @@ $email->addValidators(
     [
         new PresenceOf(
             [
-                'message' => 'The e-mail is required',
+                'message' => 'Потрібно вказати е-mail',
             ]
         ),
         new Email(
             [
-                'message' => 'The e-mail is not valid',
+                'message' => 'Е-mail неправильний',
             ]
         ),
     ]
@@ -1035,9 +1035,9 @@ $email->addValidators(
 $this->add($email);
 ```
 
-First we create a `Text` object and set its name to `email`. We also set the label of the element to `E-Mail`. After that we attach various validators on the element. These will be invoked after the user submits data, and that data is passed in the form.
+Спочатку ми створюємо об'єкт `Text` та задаємо в якості його назви `email`. Ми також встановили мітку елемента на `E-Mail`. Після цього ми прикріплюємо різні валідатори до елемента. Вони будуть викликані після того, як користувач відправить дані, які будуть передані у формі.
 
-As we see above, we attach the `PresenceOf` validator on the `email` element with a message `The e-mail is required`. The validator will check if the user has submitted data when they clicked the submit button and will produce the message if the validator fails. The validator checks the passed array (usually `$_POST`) and for this particular element it will check `$_POST['email']`.
+Як ми бачили вище, ми прикріпляємо валідатор `PresenceOf` на елемент `email` із повідомленням `Потрібно вказати e-mail`. The validator will check if the user has submitted data when they clicked the submit button and will produce the message if the validator fails. The validator checks the passed array (usually `$_POST`) and for this particular element it will check `$_POST['email']`.
 
 We also attach the `Email` validator, which is responsible for checking for a valid email address. As you can see the validators belong in an array, so you can easily attach as many validators as you need on any particular element.
 
