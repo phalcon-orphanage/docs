@@ -749,11 +749,11 @@ ProfilesController -> createAction
 
 ## Реєстрація
 
-### Controller
+### Контролер
 
-In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
+Щоб отримати доступ до всіх областей Vökuró, вам потрібно мати обліковий запис. Vökuró дозволяє зареєструватися на сайті, натиснувши кнопку `Створити обліковий запис`.
 
-What this will do is navigate you to the `/session/signup` URL, which in turn will call the `SessionController` and `signupAction`. Let's have a look what is going on in the `signupAction`:
+Це переспрямує вас до URL-адреси `/session/signup`, яка у свою чергу викличе `SessionController` та `signupAction`. Подивимося, що відбувається в `signupAction`:
 
 ```php
 <?php
@@ -779,7 +779,7 @@ use Vokuro\Models\Users;
 class SessionController extends ControllerBase
 {
     /**
-     * Allow a user to signup to the system
+     * Дозволяємо користувачу зареєструватися в системі
      */
     public function signupAction()
     {
@@ -792,24 +792,24 @@ class SessionController extends ControllerBase
 }
 ```
 
-The workflow of the application is:
+Робочий процес додатку:
 
-- Visit `/session/signup` 
-    - Create form, send form to the view, render the form
-- Submit data (not post) 
-    - Form shows again, nothing else happens
-- Submit data (post) 
-    - Errors 
-        - Form validators have errors, send the form to the view, render the form (errors will show)
-    - No errors 
-        - Data is sanitized
-        - New Model created
-        - Data saved in the database 
-            - Error 
-                - Show message on screen and refresh the form
-            - Success 
-                - Record saved
-                - Show confirmation on screen
+- Відвідуємо `/session/signup` 
+    - Створення форми, відправлення форми до подання, візуалізація форми
+- Надання даних (без відправки) 
+    - Форма ще раз відображається, але нічого більше не відбувається
+- Надання даних (відбувається відправка) 
+    - Помилки 
+        - Якщо валідатори форми виявили помилки, то при повторному відображенні форми виводиться інформація про них
+    - Помилок немає 
+        - Дані знешкоджено (приведено у відповідність до шаблону)
+        - Нову модель створено
+        - Дані збережено в базі даних 
+            - Помилка 
+                - Показ повідомлення на екрані і оновлення форми
+            - Успіх 
+                - Запис збережено
+                - Показ підтвердження на екрані
                 - Send email (if applicable)
 
 ### Form
