@@ -1037,19 +1037,19 @@ $this->add($email);
 
 Спочатку ми створюємо об'єкт `Text` та задаємо в якості його назви `email`. Ми також встановили мітку елемента на `E-Mail`. Після цього ми прикріплюємо різні валідатори до елемента. Вони будуть викликані після того, як користувач відправить дані, які будуть передані у формі.
 
-Як ми бачили вище, ми прикріпляємо валідатор `PresenceOf` на елемент `email` із повідомленням `Потрібно вказати e-mail`. The validator will check if the user has submitted data when they clicked the submit button and will produce the message if the validator fails. The validator checks the passed array (usually `$_POST`) and for this particular element it will check `$_POST['email']`.
+Як ми бачили вище, ми прикріпляємо валідатор `PresenceOf` на елемент `email` із повідомленням `Потрібно вказати e-mail`. Валідатор перевіряє, чи користувач надав дані, коли натиснув на кнопку відправки повідомлення, та відображає повідомлення в разі помилки. Валідатор перевіряє переданий масив (як правило, `$_POST`), а для цього конкретного елементу він перевірить `$_POST['email']`.
 
-We also attach the `Email` validator, which is responsible for checking for a valid email address. As you can see the validators belong in an array, so you can easily attach as many validators as you need on any particular element.
+Ми також прикріпляємо валідатор `Email`, відповідальний за перевірку дійсної адреси електронної пошти. Як ви бачите, валідатори розміщуються у масиві, тож ви легко можете прикріпити до будь якого елемента стільки валідаторів, скільки вам потрібно.
 
-The last thing we do is to add the element in the form.
+Останнє, що ми зробимо, це додамо елемент у форму.
 
-You will notice that the `terms` element does not have any validators attached to it, so our form will not check the contents of the element.
+Ви помітите, що елемент `terms` не містить жодного валідатора, підключеного до нього, тому наша форма не буде перевіряти вміст цього елемента.
 
-Special attention to the `password` and `confirmPassword` elements. You will notice that both elements are of type `Password`. The idea is that you need to type your password twice, and the passwords need to match in order to avoid errors.
+Особлива увага до елементів `password` та `confirmPassword`. Ви побачите, що обидва елементи мають тип `Password`. Ідея полягає в тому, що ви повинні ввести пароль двічі, і такі паролі повинні збігатися для того, щоб уникнути помилок.
 
-The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
+Поле `password` має два валідатори для вмісту: `PresenceOf`, що є обов'язковим, і `StringLength`: для того, щоб пароль був більше, ніж 8 символів. Ми також прикріплюємо третій валідатор, що називається `Confirmation`. Цей спеціальний валідатор зв'язує елемент `password` з елементом `confirmPassword`. Коли він доданий для перевірки, то перевірить вміст обох елементів, і якщо вони не ідентичні - буде відображено повідомлення про помилку, наприклад про те, що перевірка буде невдала.
 
-### Вигляд
+### Подання
 
 Now that we have everything set up in our form, we pass the form to the view:
 
