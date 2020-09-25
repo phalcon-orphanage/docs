@@ -126,14 +126,14 @@ You are now inside the environment with all the extensions and services you need
 ## Composer
 Just in case update composer:
 
-```shell script
+```bash
 /app $ composer install
 ```
 
 ## Check Zephir
 Zephir is already installed in the environment. Just check it:
 
-```shell script
+```bash
 /app $ zephir help
 ```
 A screen like the one below should appear:
@@ -173,7 +173,7 @@ Help:
 ## Compile Phalcon
 Phalcon is not compiled yet. We need to instruct Zephir to do that:
 
-```shell script
+```bash
 /app $ zephir fullclean
 /app $ zephir build
 ```
@@ -181,13 +181,13 @@ Phalcon is not compiled yet. We need to instruct Zephir to do that:
 ## Check Extensions
 Type
 
-```shell script
+```bash
 /app $ php -m
 ```
 
 and you will see:
 
-```shell script
+```bash
 [PHP Modules]
 apcu
 Core
@@ -213,13 +213,13 @@ Note that Phalcon v4+ requires the [PSR][psr] extension to be loaded before Phal
 
 First, we need to have a `.env` file in the project root.
 
-```shell script
+```bash
 /app $ cp tests/_ci/nanobox/.env.example .env
 ```
 
 To generate the necessary database schemas, you need to run the relevant script:
 
-```shell script
+```bash
 /app $ php tests/_ci/generate-db-schemas.php
 ```
 
@@ -240,7 +240,7 @@ tests.
 
 To populate the databases you will need to run the following script:
 
-```shell script
+```bash
 /app $ tests/_ci/nanobox/setup-dbs-nanobox.sh
 ```  
 
@@ -251,7 +251,7 @@ Now that the environment is set up, we need to run the tests. The testing framew
 We need to first build the Codeception base classes. This needs to happen every time new functionality is introduced in Codeception's helpers.
 
 Now you can run:
-```shell script
+```bash
 /app $ vendor/bin/codecept build
 ```
 The output should show:
@@ -269,7 +269,7 @@ Building Actor classes for suites: cli, database, integration, unit
 
 Now we can run the tests:
 
-```shell script
+```bash
 /app $ php vendor/bin/codecept run unit
 ```
 
@@ -277,13 +277,13 @@ This will start running the unit testing suite. You will see a lot of tests and 
 
 Execute all tests from a folder:
 
-```shell script
+```bash
 /app $ php vendor/bin/codecept run tests/unit/some/folder/
 ```
 
 Execute single test:
 
-```shell script
+```bash
 /app $ php vendor/bin/codecept run tests/unit/some/folder/some/test/file.php
 ```
 
@@ -291,7 +291,7 @@ Execute single test:
 To run database related tests you need to run the `database` suite specifying
 the RDBMS and group:
 
-```shell script
+```bash
 /app $ php vendor/bin/codecept run tests/database -g common
 /app $ php vendor/bin/codecept run tests/database -g mysql --env mysql
 /app $ php vendor/bin/codecept run tests/database -g sqlite --env sqlite
@@ -300,7 +300,7 @@ the RDBMS and group:
 
 Available options:
 
-```shell script
+```bash
 --env mysql
 --env sqlite
 --env pgsql
@@ -371,13 +371,13 @@ You can use these variables to connect to your databases or other services such 
 # Development
 You can now open your favorite editor and start developing in Zephir. You can create new functionality, fix issues, write tests etc. Remember though that if you change any of the `zep` files (inside the `phalcon` folder), you will need to recompile the extension:
 
-```shell script
+```bash
 /app $ zephir fullclean
 /app $ zephir build
 ```
 and then you can run your tests
 
-```shell script
+```bash
 /app $ codecept run tests/unit/somefolder/somecestfile:sometest
 ```
 

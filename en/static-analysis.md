@@ -106,7 +106,7 @@ If you find that you need to stub additional Phalcon components, add them to the
 
 When you execute `vendor/bin/psalm` in your command-line, you will a get similar output depending on your errors:
 
-```shell script
+```bash
 Scanning files...
 Analyzing files...
 
