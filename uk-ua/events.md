@@ -936,26 +936,26 @@ The events available in Phalcon are:
 | [Micro](application-micro)  | `micro:beforeExecuteRoute`           | Micro                                                   |
 | [Micro](application-micro)  | `micro:beforeHandleRoute`            | Micro                                                   |
 | [Micro](application-micro)  | `micro:beforeNotFound`               | Micro                                                   |
-| [Model](db-models)          | `model:afterCreate`                  | Model                                                   |
-| [Model](db-models)          | `model:afterDelete`                  | Model                                                   |
-| [Model](db-models)          | `model:afterFetch`                   | Model                                                   |
-| [Model](db-models)          | `model:afterSave`                    | Model                                                   |
-| [Model](db-models)          | `model:afterUpdate`                  | Model                                                   |
-| [Model](db-models)          | `model:afterValidation`              | Model                                                   |
-| [Model](db-models)          | `model:afterValidationOnCreate`      | Model                                                   |
-| [Model](db-models)          | `model:afterValidationOnUpdate`      | Model                                                   |
-| [Model](db-models)          | `model:beforeDelete`                 | Model                                                   |
-| [Model](db-models)          | `model:beforeCreate`                 | Model                                                   |
-| [Model](db-models)          | `model:beforeSave`                   | Model                                                   |
-| [Model](db-models)          | `model:beforeUpdate`                 | Model                                                   |
-| [Model](db-models)          | `model:beforeValidation`             | Model                                                   |
-| [Model](db-models)          | `model:beforeValidationOnCreate`     | Model                                                   |
-| [Model](db-models)          | `model:beforeValidationOnUpdate`     | Model                                                   |
-| [Model](db-models)          | `model:notDeleted`                   | Model                                                   |
-| [Model](db-models)          | `model:notSaved`                     | Model                                                   |
-| [Model](db-models)          | `model:onValidationFails`            | Model                                                   |
-| [Model](db-models)          | `model:prepareSave`                  | Model                                                   |
-| [Model](db-models)          | `model:validation`                   | Model                                                   |
+| [Модель](db-models)         | `model:afterCreate`                  | Модель                                                  |
+| [Модель](db-models)         | `model:afterDelete`                  | Модель                                                  |
+| [Модель](db-models)         | `model:afterFetch`                   | Модель                                                  |
+| [Модель](db-models)         | `model:afterSave`                    | Модель                                                  |
+| [Модель](db-models)         | `model:afterUpdate`                  | Модель                                                  |
+| [Модель](db-models)         | `model:afterValidation`              | Модель                                                  |
+| [Модель](db-models)         | `model:afterValidationOnCreate`      | Модель                                                  |
+| [Модель](db-models)         | `model:afterValidationOnUpdate`      | Модель                                                  |
+| [Модель](db-models)         | `model:beforeDelete`                 | Модель                                                  |
+| [Модель](db-models)         | `model:beforeCreate`                 | Модель                                                  |
+| [Модель](db-models)         | `model:beforeSave`                   | Модель                                                  |
+| [Модель](db-models)         | `model:beforeUpdate`                 | Модель                                                  |
+| [Модель](db-models)         | `model:beforeValidation`             | Модель                                                  |
+| [Модель](db-models)         | `model:beforeValidationOnCreate`     | Модель                                                  |
+| [Модель](db-models)         | `model:beforeValidationOnUpdate`     | Модель                                                  |
+| [Модель](db-models)         | `model:notDeleted`                   | Модель                                                  |
+| [Модель](db-models)         | `model:notSaved`                     | Модель                                                  |
+| [Модель](db-models)         | `model:onValidationFails`            | Модель                                                  |
+| [Модель](db-models)         | `model:prepareSave`                  | Модель                                                  |
+| [Модель](db-models)         | `model:validation`                   | Модель                                                  |
 | [Models Manager](db-models) | `modelsManager:afterInitialize`      | Manager, Model                                          |
 | [Запит](request)            | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
 | [Запит](request)            | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |

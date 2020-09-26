@@ -447,7 +447,7 @@ If you retrieve all the columns from a single table, you will get back a fully f
 
 The following examples return identical results:
 
-**Model**
+**Модель**
 
 ```php
 <?php

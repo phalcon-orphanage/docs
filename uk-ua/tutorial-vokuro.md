@@ -749,11 +749,11 @@ ProfilesController -> createAction
 
 ## Реєстрація
 
-### Controller
+### Контролер
 
-In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
+Щоб отримати доступ до всіх областей Vökuró, вам потрібно мати обліковий запис. Vökuró дозволяє зареєструватися на сайті, натиснувши кнопку `Створити обліковий запис`.
 
-What this will do is navigate you to the `/session/signup` URL, which in turn will call the `SessionController` and `signupAction`. Let's have a look what is going on in the `signupAction`:
+Це переспрямує вас до URL-адреси `/session/signup`, яка у свою чергу викличе `SessionController` та `signupAction`. Подивимося, що відбувається в `signupAction`:
 
 ```php
 <?php
@@ -779,7 +779,7 @@ use Vokuro\Models\Users;
 class SessionController extends ControllerBase
 {
     /**
-     * Allow a user to signup to the system
+     * Дозволяємо користувачу зареєструватися в системі
      */
     public function signupAction()
     {
@@ -792,36 +792,36 @@ class SessionController extends ControllerBase
 }
 ```
 
-The workflow of the application is:
+Робочий процес додатку:
 
-- Visit `/session/signup` 
-    - Create form, send form to the view, render the form
-- Submit data (not post) 
-    - Form shows again, nothing else happens
-- Submit data (post) 
-    - Errors 
-        - Form validators have errors, send the form to the view, render the form (errors will show)
-    - No errors 
-        - Data is sanitized
-        - New Model created
-        - Data saved in the database 
-            - Error 
-                - Show message on screen and refresh the form
-            - Success 
-                - Record saved
-                - Show confirmation on screen
-                - Send email (if applicable)
+- Відвідуємо `/session/signup` 
+    - Створення форми, відправлення форми до подання, візуалізація форми
+- Надання даних (без відправки) 
+    - Форма ще раз відображається, але нічого більше не відбувається
+- Надання даних (відбувається відправка) 
+    - Помилки 
+        - Якщо валідатори форми виявили помилки, то при повторному відображенні форми виводиться інформація про них
+    - Помилок немає 
+        - Дані знешкоджено (приведено у відповідність до шаблону)
+        - Нову модель створено
+        - Дані збережено в базі даних 
+            - Помилка 
+                - Показ повідомлення на екрані і оновлення форми
+            - Успіх 
+                - Запис збережено
+                - Показ підтвердження на екрані
+                - Надсилання пошти (якщо доступно)
 
-### Form
+### Форма
 
-In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen.
+Для того, щоб виконати перевірку наданих користувачем даних, ми використовуємо класи [Phalcon\Forms](forms) та [Phalcon\Validation\*](validation). Ці класи дозволяють нам створювати HTML елементи та додавати до них валідатори. Потім форма передається до подання, де HTML елементи виводяться на екран.
 
-When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
+Коли користувач відправляє інформацію, ми відправляємо надіслані дані назад до форми, де відповідні валідатори перевіряють коректність введення та повертають будь-які потенційні повідомлення про помилки.
 
-> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
+> **ПРИМІТКА**: Всі форми для Vökuró розташовані в `/src/Forms`
 {: .alert .alert-info }
 
-First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
+Спочатку ми створили об'єкт `SignUpForm`. У цьому об’єкті ми визначаємо всі HTML-елементи, які нам потрібні із їх відповідними валідаторами:
 
 ```php
 <?php
@@ -852,12 +852,12 @@ class SignUpForm extends Form
         array $options = []
     ) {
         $name = new Text('name');
-        $name->setLabel('Name');
+        $name->setLabel('Ім/'я');
         $name->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'The name is required',
+                        'message' => 'Ім/'я обов/'язкове',
                     ]
                 ),
             ]
@@ -872,12 +872,12 @@ class SignUpForm extends Form
             [
                 new PresenceOf(
                     [
-                        'message' => 'The e-mail is required',
+                        'message' => 'Потрібно вказати Е-mail',
                     ]
                 ),
                 new Email(
                     [
-                        'message' => 'The e-mail is not valid',
+                        'message' => 'Е-mail неправильний',
                     ]
                 ),
             ]
@@ -885,27 +885,27 @@ class SignUpForm extends Form
 
         $this->add($email);
 
-        // Password
+        // Пароль
         $password = new Password('password');
-        $password->setLabel('Password');
+        $password->setLabel('Пароль');
         $password->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'The password is required',
+                        'message' => 'Потрібно вказати пароль',
                     ]
                 ),
                 new StringLength(
                     [
                         'min'            => 8,
-                        'messageMinimum' => 'Password is too short. ' .
-                                            'Minimum 8 characters',
+                        'messageMinimum' => 'Пароль занадто короткий. ' .
+                                            'Мінімум 8 символів',
                     ]
                 ),
                 new Confirmation(
                     [
-                        'message' => "Password doesn't match " .
-                                     "confirmation",
+                        'message' => "Пароль не збігається " .
+                                     "з підтвердженням",
                         'with'    => 'confirmPassword',
                     ]
                 ),
@@ -914,15 +914,15 @@ class SignUpForm extends Form
 
         $this->add($password);
 
-        // Confirm Password
+        // Підтвердження паролю
         $confirmPassword = new Password('confirmPassword');
-        $confirmPassword->setLabel('Confirm Password');
+        $confirmPassword->setLabel('Підтвердіть пароль');
         $confirmPassword->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'The confirmation password ' .
-                                     'is required',
+                        'message' => 'Підтвердження паролю ' .
+                                     'необхідне',
                     ]
                 ),
             ]
@@ -930,7 +930,7 @@ class SignUpForm extends Form
 
         $this->add($confirmPassword);
 
-        // Remember
+        // Запам'ятати
         $terms = new Check(
             'terms', 
             [
@@ -938,13 +938,13 @@ class SignUpForm extends Form
             ]
         );
 
-        $terms->setLabel('Accept terms and conditions');
+        $terms->setLabel('Прийняти умови користування');
         $terms->addValidator(
             new Identical(
                 [
-                    'value'   => 'yes',
-                    'message' => 'Terms and conditions must be ' .
-                                 'accepted',
+                    'value'   => 'так',
+                    'message' => 'Умови користування необхідно ' .
+                                 'прийняти',
                 ]
             )
         );
@@ -957,7 +957,7 @@ class SignUpForm extends Form
             new Identical(
                 [
                     'value'   => $this->security->getRequestToken(),
-                    'message' => 'CSRF validation failed',
+                    'message' => 'CSRF перевірку не пройдено',
                 ]
             )
         );
@@ -965,10 +965,10 @@ class SignUpForm extends Form
 
         $this->add($csrf);
 
-        // Sign Up
+        // Реєстрація
         $this->add(
             new Submit(
-                'Sign Up', 
+                'Зареєструватися', 
                 [
                     'class' => 'btn btn-success',
                 ]
@@ -977,7 +977,7 @@ class SignUpForm extends Form
     }
 
     /**
-     * Prints messages for a specific element
+     * Виведення повідомлень для специфічних елементів
      *
      * @param string $name
      *
@@ -996,19 +996,19 @@ class SignUpForm extends Form
 }
 ```
 
-In the `initialize` method we are setting up all the HTML elements we need. These elements are:
+У методі `initialize` ми встановлюємо всі необхідні HTML-елементи. Це такі елементи:
 
-| Element           | Type       | Description                  |
-| ----------------- | ---------- | ---------------------------- |
-| `name`            | `Text`     | The name of the user         |
-| `email`           | `Text`     | The email for the account    |
-| `password`        | `Password` | The password for the account |
-| `confirmPassword` | `Password` | Password confirmation        |
-| `terms`           | `Check`    | Accept the terms checkbox    |
-| `csrf`            | `Hidden`   | CSRF protection element      |
-| `Реєстрація`      | `Submit`   | Submit button                |
+| Елемент           | Тип        | Опис                                               |
+| ----------------- | ---------- | -------------------------------------------------- |
+| `name`            | `Text`     | Ім'я користувача                                   |
+| `email`           | `Text`     | Електронна адреса для облікового запису            |
+| `password`        | `Password` | Пароль до облікового запису                        |
+| `confirmPassword` | `Password` | Підтвердження пароля                               |
+| `terms`           | `Check`    | Поставити галочку щодо прийняття умов користування |
+| `csrf`            | `Hidden`   | Елемент захисту CSRF                               |
+| `Реєстрація`      | `Submit`   | Кнопка надсилання                                  |
 
-Adding elements is pretty straight forward:
+Додавання елементів здійснюється поступово:
 
 ```php
 <?php
@@ -1021,12 +1021,12 @@ $email->addValidators(
     [
         new PresenceOf(
             [
-                'message' => 'The e-mail is required',
+                'message' => 'Потрібно вказати е-mail',
             ]
         ),
         new Email(
             [
-                'message' => 'The e-mail is not valid',
+                'message' => 'Е-mail неправильний',
             ]
         ),
     ]
@@ -1035,29 +1035,29 @@ $email->addValidators(
 $this->add($email);
 ```
 
-First we create a `Text` object and set its name to `email`. We also set the label of the element to `E-Mail`. After that we attach various validators on the element. These will be invoked after the user submits data, and that data is passed in the form.
+Спочатку ми створюємо об'єкт `Text` та задаємо в якості його назви `email`. Ми також встановили мітку елемента на `E-Mail`. Після цього ми прикріплюємо різні валідатори до елемента. Вони будуть викликані після того, як користувач відправить дані, які будуть передані у формі.
 
-As we see above, we attach the `PresenceOf` validator on the `email` element with a message `The e-mail is required`. The validator will check if the user has submitted data when they clicked the submit button and will produce the message if the validator fails. The validator checks the passed array (usually `$_POST`) and for this particular element it will check `$_POST['email']`.
+Як ми бачили вище, ми прикріпляємо валідатор `PresenceOf` на елемент `email` із повідомленням `Потрібно вказати e-mail`. Валідатор перевіряє, чи користувач надав дані, коли натиснув на кнопку відправки повідомлення, та відображає повідомлення в разі помилки. Валідатор перевіряє переданий масив (як правило, `$_POST`), а для цього конкретного елементу він перевірить `$_POST['email']`.
 
-We also attach the `Email` validator, which is responsible for checking for a valid email address. As you can see the validators belong in an array, so you can easily attach as many validators as you need on any particular element.
+Ми також прикріпляємо валідатор `Email`, відповідальний за перевірку дійсної адреси електронної пошти. Як ви бачите, валідатори розміщуються у масиві, тож ви легко можете прикріпити до будь якого елемента стільки валідаторів, скільки вам потрібно.
 
-The last thing we do is to add the element in the form.
+Останнє, що ми зробимо, це додамо елемент у форму.
 
-You will notice that the `terms` element does not have any validators attached to it, so our form will not check the contents of the element.
+Ви помітите, що елемент `terms` не містить жодного валідатора, підключеного до нього, тому наша форма не буде перевіряти вміст цього елемента.
 
-Special attention to the `password` and `confirmPassword` elements. You will notice that both elements are of type `Password`. The idea is that you need to type your password twice, and the passwords need to match in order to avoid errors.
+Особлива увага до елементів `password` та `confirmPassword`. Ви побачите, що обидва елементи мають тип `Password`. Ідея полягає в тому, що ви повинні ввести пароль двічі, і такі паролі повинні збігатися для того, щоб уникнути помилок.
 
-The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
+Поле `password` має два валідатори для вмісту: `PresenceOf`, що є обов'язковим, і `StringLength`: для того, щоб пароль був більше, ніж 8 символів. Ми також прикріплюємо третій валідатор, що називається `Confirmation`. Цей спеціальний валідатор зв'язує елемент `password` з елементом `confirmPassword`. Коли він доданий для перевірки, то перевірить вміст обох елементів, і якщо вони не ідентичні - буде відображено повідомлення про помилку, наприклад про те, що перевірка буде невдала.
 
-### Вигляд
+### Подання
 
-Now that we have everything set up in our form, we pass the form to the view:
+Тепер, коли у нас є все, що ми передаємо через форму, ми відправлчємо форму поданню для відображення:
 
 ```php
 $this->view->setVar('form', $form);
 ```
 
-Our view now needs to *render* the elements:
+Наше подання тепер має *візуалізувати* такі елементи:
 
 ```twig
 {% raw %}
@@ -1069,7 +1069,7 @@ Our view now needs to *render* the elements:
 %}
 {# ... #}
 
-<h1 class="mt-3">Sign Up</h1>
+<h1 class="mt-3"> Зареєструватися</h1>
 
 <form method="post">
     {# ... #}
@@ -1119,21 +1119,21 @@ Our view now needs to *render* the elements:
 
 <hr>
 
-{{ link_to('session/login', "&larr; Back to Login") }}
+{{ link_to('session/login', "&larr; Назад до входу") }}
 {% endraw %}
 ```
 
-The variable that we set in our view for our `SignUpForm` object is called `form`. We therefore use it directly and call the methods of it. The syntax in Volt is slightly different. In PHP we would use `$form->render()` whereas in Volt we will use `form.render()`.
+Змінна, яку ми встановили у поданні нашого об'єкта `SignUpForm` називається `form`. Тому ми використовуємо її напряму і викликаємо її методи. Синтаксис в Volt дещо відрізняється. В PHP ми б використовували `$form->render()`, тоді як у Volt ми будемо використовувати `form.render()`.
 
-The view contains a conditional at the top, checking whether there have been any errors in our form, and if there were, it attaches the `is-invalid` CSS class to the element. This class puts a nice red border by the element, highlighting the error and showing the message.
+Подання містить спочатку результати перевірки, чи мають місце якісь помилки у нашій формі, і якщо так, то додається клас CSS `is-invalid` до відповідного елемента. Цей клас додає гарну червону рамку до елемента, виділяючи помилку та відображаючи повідомлення.
 
-After that we have regular HTML tags with the relevant styling. In order to display the HTML code of each element we need to call `render()` on the `form` with the relevant element name. Also note that we also call `form.label()` with the same element name, so that we can create respective `<label>` tags.
+Після цього ми маємо звичайні HTML-теги із відповідними стилями. Для того, щоб відобразити HTML-код кожного елементу, нам потрібно викликати `render()` у `form` із зазначенням імені відповідного елемента. Також зверніть увагу, що ми водночас викликаємо `form.label()` з таким самим іменем елемента, щоб створити відповідні теги `<label>`.
 
-At the end of the view we render the `CSRF` hidden field as well as the submit button `Sign Up`.
+У кінці подання ми візуалізуємо приховане поле `CSRF`, а також кнопку `Зареєструватися`.
 
-### Post
+### Відправка
 
-As mentioned above, once the user fills the form and clicks the `Sign Up` button, the form will *self post* i.e. it will post the data on the same controller and action (in our case `/session/signup`). The action now needs to process this posted data:
+Як було зазначено вище, як тільки користувач заповнить форму і клікне кнопку `Зареєструватися`, форма відправить *повідомлення* з даними тому ж контролеру і дії (у нашому випадку `/session/signup`). Відповідній дії тепер необхідно обробити ці надіслані дані:
 
 ```php
 <?php
@@ -1159,7 +1159,7 @@ use Vokuro\Models\Users;
 class SessionController extends ControllerBase
 {
     /**
-     * Allow a user to signup to the system
+     * Дозволяємо користувачу зареєструватись у системі
      */
     public function signupAction()
     {
@@ -1211,25 +1211,25 @@ class SessionController extends ControllerBase
 }
 ```
 
-If the user has submitted data, the following line will evaluate and we will be executing code inside the `if` statement:
+Якщо користувач відправив дані, то наступний рядок буде оцінюватися і ми будемо виконувати код в межах команди `if`:
 
 ```php
 if (true === $this->request->isPost()) {
 ```
 
-Here we are checking the request that came from the user, if it is a `POST`. Now that it is, we need to use the form validators and check if we have any errors. The [Phalcon\Http\Request](request) object, allows us to get that data easily by using:
+Тут ми перевіряємо запит, що надійшов від користувача, чи це `POST`. Тепер, коли це так, ми маємо використати валідатори перевірки форми і переконатись, чи немає ніяких помилок. Об'єкт [Phalcon\Http\Request](request) дозволяє нам отримати ці дані легко через використання:
 
 ```php
 $this->request->getPost()
 ```
 
-We now need to pass this posted data in the form and call `isValid`. This will fire all the validators for each element and if any of them fail, the form will populate the internal messages collection and return `false`
+Тепер нам потрібно передати ці опубліковані дані у формі і викликати `isValid`. Це активує всі валідатори для кожного елемента і якщо якийсь із них зазнає невдачі, форма виведе повідомлення з внутрішньої колекції і поверне `false`
 
 ```php
 if (false !== $form->isValid($this->request->getPost())) {
 ```
 
-If everything is fine, we use again the [Phalcon\Http\Request](request) object to retrieve the submitted data but also sanitize them. The following example strips the tags from the submitted `name` string:
+Якщо все в порядку, ми використовуємо знову об'єкт [Phalcon\Http\Request](request) для отримання поданих даних, а також і для їх приведення у відповідність до встановлених нами вимог. Наведений приклад вирізає теги з надісланої стрічки `name`:
 
 ```php
 $name     = $this
@@ -1238,7 +1238,7 @@ $name     = $this
 ;
 ```
 
-Note that we never store clear text passwords. Instead we use the [Phalcon\Security](security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
+Зверніть увагу, що ми ніколи не зберігаємо точний текст паролів. Натомість ми використовуємо компонент [Phalcon\Security](security) та викликаємо `hash` на ньому, для того, щоб замінити заданий пароль на хеш та зберегти його замість паролю. Таким чином, якщо хтось скомпрометує нашу базу даних, принаймні він не матиме доступу до конкретних текстів паролів.
 
 ```php
 $password = $this
@@ -1247,7 +1247,7 @@ $password = $this
 ;
 ```
 
-We now need to store the supplied data in the database. We do that by creating a new `Users` model, pass the sanitized data into it and then call `save`:
+Тепер нам потрібно зберегти надані дані в базі. Ми це зробимо, створивши нову модель `Users`, передавши до неї приведені у відповідність дані, а потім викликавши `save`:
 
 ```php
 $user = new Users(
@@ -1271,17 +1271,17 @@ if ($user->save()) {
 }
 ```
 
-If the `$user->save()` returns `true`, the user will be forwarded to the home page (`index/index`) and a success message will appear on screen.
+Якщо `$user->save()` повертає `true`, користувач буде переспрямований на головну сторінку (`index/index`), і повідомлення про успіх з'явиться на екрані.
 
-### Model
+### Модель
 
 **Зв'язки**
 
-Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
+Тепер ми маємо перевірити модель `Users`, оскільки там закладена певна логіка, зокрема, події `afterSave` і `beforeValidationOnCreate`.
 
-The core method, the setup if you like happens in the `initialize` method. That is the spot where we set all the [relationships](db-models-relationships) for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model.
+Якщо бажаєте, можна додати базові налаштування через метод `initialize`. Це місце, де ми встановлюємо всі [зв/'язки](db-models-relationships) для цієї моделі. Для класу `Users` ми визначили кілька зв/'язків. Чому ви можете запитати зв/'язки? Phalcon пропонує простий спосіб отримання пов'язаних даних до певної моделі.
 
-If for instance we want to check all the successful logins for a particular user, we can do so with the following code snippet:
+Якщо ми хочемо перевірити всі успішні логіни для конкретного користувача, ми можемо це зробити за допомогою наступного фрагмента коду:
 
 ```php
 <?php
@@ -1309,9 +1309,9 @@ $logins = SuccessLogin::find(
 );
 ```
 
-The above code gets the user with id `7` and then gets all the successful logins from the relevant table for that user.
+Наведений вище код витягує дані користувача з ідентифікатором `7`, а потім отримує усі успішні логіни з відповідної таблиці для цього користувача.
 
-Using relationships we can let Phalcon do all the heavy lifting for us. So the code above becomes:
+Використовуючи зв/'язки, ми можемо дозволити Phalcon виконато для нас всі складні прив'язки і підтягування даних. Отже, наведений вище код:
 
 ```php
 <?php
@@ -1334,16 +1334,16 @@ $logins = $user->successLogins;
 $logins = $user->getRelated('successLogins');
 ```
 
-The last two lines do exactly the same thing. It is a matter of preference which syntax you want to use. Phalcon will query the related table, filtering the related table with the id of the user.
+Останні дві стрічки роблять одне і те ж. Це питання уподобань, який синтаксис ви хочете використовувати. Phalcon відкриє відповідну таблицю та профільтрує її дані за ідентифікатором користувача.
 
-For our `Users` table we define the following relationships:
+Для нашої таблиці `Users` ми визначили наступні зв/'язки:
 
-| Name              | Source field | Target field | Model             |
-| ----------------- | ------------ | ------------ | ----------------- |
-| `passwordChanges` | `id`         | `usersId`    | `PasswordChanges` |
-| `profile`         | `profileId`  | `id`         | `Profiles`        |
-| `resetPasswords`  | `id`         | `usersId`    | `ResetPasswords`  |
-| `successLogins`   | `id`         | `usersId`    | `SuccessLogins`   |
+| Назва             | Базове поле | Пов/'язане поле | Модель            |
+| ----------------- | ----------- | --------------- | ----------------- |
+| `passwordChanges` | `id`        | `usersId`       | `PasswordChanges` |
+| `profile`         | `profileId` | `id`            | `Profiles`        |
+| `resetPasswords`  | `id`        | `usersId`       | `ResetPasswords`  |
+| `successLogins`   | `id`        | `usersId`       | `SuccessLogins`   |
 
 ```php
 <?php
@@ -1356,7 +1356,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
 /**
- * All the users registered in the application
+ * Всі користувачі, зареєстровані на сайті
  */
 class Users extends Model
 {
@@ -1381,8 +1381,8 @@ class Users extends Model
             [
                 'alias'      => 'successLogins',
                 'foreignKey' => [
-                    'message' => 'User cannot be deleted because ' .
-                                 'he/she has activity in the system',
+                    'message' => 'Користувача не може бути видалено через ' .
+                                 'наявність у нього активності в системі',
                 ],
             ]
         );
@@ -1394,8 +1394,8 @@ class Users extends Model
             [
                 'alias'      => 'passwordChanges',
                 'foreignKey' => [
-                    'message' => 'User cannot be deleted because ' .
-                                 'he/she has activity in the system',
+                    'message' => 'Користувач не може бути видалений через ' .
+                                 'наявність у нього активності у системі',
                 ],
             ]
         );
@@ -1406,8 +1406,8 @@ class Users extends Model
             'usersId', [
             'alias'      => 'resetPasswords',
             'foreignKey' => [
-                'message' => 'User cannot be deleted because ' .
-                             'he/she has activity in the system',
+                'message' => 'Користувач не може бути видалений через ' .
+                             'наявність активності у системі',
             ],
         ]);
     }
@@ -1416,15 +1416,15 @@ class Users extends Model
 }
 ```
 
-As you can see in the defined relationships, we have a `belongsTo` and three `hasMany`. All relationships have an alias so that we can access them easier. The `belongsTo` relationship also has the `reusable` flag set to on. This means that if the relationship is called more than once in the same request, Phalcon would perform the database query only the first time and cache the resultset. Any subsequent calls will use the cached resultset.
+Як ви бачите у визначених зв/'язках, ми маємо `belongsTo`, а також три `hasMany`. Усі зв/'язки мають псевдоніми, щоб ми могли легше отримати до них доступ. Відношення `belongsTo` також має активний прапорець `reusable`. Це означає, що якщо у одному запиті викликається зв/'язок більш ніж один раз, Phalcon виконуватиме запит до бази даних лише перший раз і кешуватиме результат. Будь-які наступні запити використовуватимуть кешовані результати.
 
-Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
+Також важливо, що ми визначаємо конкретні повідомлення для зовнішніх ключів. Якщо конкретні зв/'язки будуть порушуватись, то визначене повідомлення буде показане.
 
-**Events**
+**Події**
 
-[Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
+[Phalcon\Mvc\Model](db-models) розроблений, щоб виконувати специфічні <events>. Ці методи подій можуть бути розташовані або в сервісі слухача подій, або в конкретній моделі.
 
-For the `Users` model, we attach code to the `afterSave` and `beforeValidationOnCreate` events.
+Для моделі `Users` ми додаємо код для подій `afterSave` та `beforeValidationOnCreate`.
 
 ```php
 <?php
@@ -1437,7 +1437,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
 /**
- * All the users registered in the application
+ * Всі користувачі, зареєстровані на сайті
  */
 class Users extends Model
 {
@@ -1450,32 +1450,32 @@ class Users extends Model
                 base64_encode(openssl_random_pseudo_bytes(12))
             );
 
-            $this->mustChangePassword = 'Y';
+            $this->mustChangePassword = 'так';
 
             $this->password = $this->getDI()
                                    ->getSecurity()
                                    ->hash($tempPassword)
             ;
         } else {
-            $this->mustChangePassword = 'N';
+            $this->mustChangePassword = 'ні';
         }
 
         if ($this->getDI()->get('config')->useMail) {
-            $this->active = 'N';
+            $this->active = 'ні';
         } else {
-            $this->active = 'Y';
+            $this->active = 'так';
         }
 
-        $this->suspended = 'N';
+        $this->suspended = 'ні';
 
-        $this->banned = 'N';
+        $this->banned = 'ні';
     }
 }
 ```
 
-The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) amd storing it in the `password` property. We also set the flag to change the password.
+Подія `beforeValidationOnCreate` буде виконуватись щоразу, як ми матимемо новий запис (`Create`), перед тим, як буде здійснено будь-яку валідацію. Ми перевіряємо, чи у нас є визначений пароль і, якщо ні, генеруємо випадковий рядок, тоді хешуємо цей рядок, використовуючи [Phalcon\Security](security) та зберігаємо його у власності `password`. Ми також встановлюємо прапорець для зміни пароля.
 
-If the password is not empty, we just set the `mustChangePassword` field to `N`. Finally, we set some defaults on whether the user is `active`, `suspended` or `banned`. This ensures that our record is ready before it is inserted in the database.
+Якщо поле пароля не порожнє, то ми зазначаємо у полі `mustChangePassword` текст `ні`. Нарешті, ми встановили типові значення параметрів `active`, `suspended` або `banned`, залежно від статусу користувача. Це гарантує, що наш запис буде готовий до додавання у базу даних.
 
 ```php
 <?php
@@ -1488,14 +1488,14 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
 /**
- * All the users registered in the application
+ * Всі користувачі, зареєстровані на сайті
  */
 class Users extends Model
 {
     public function afterSave()
     {
         if ($this->getDI()->get('config')->useMail) {
-            if ($this->active == 'N') {
+            if ($this->active == 'ні') {
                 $emailConfirmation          = new EmailConfirmations();
                 $emailConfirmation->usersId = $this->id;
 
@@ -1503,8 +1503,8 @@ class Users extends Model
                     $this->getDI()
                          ->getFlash()
                          ->notice(
-                            'A confirmation mail has ' .
-                            'been sent to ' . $this->email
+                            'Лист підтвердження ' .
+                            'надіслано на ' . $this->email
                         )
                     ;
                 }
@@ -1514,14 +1514,14 @@ class Users extends Model
 }
 ```
 
-The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen.
+Подія `afterSave` виконується одразу після додавання у базу нового запису про користувача. У цій події ми перевіряємо чи електронні скриньки активні (дивіться файл`.env` налаштування `useMail`), і якщо активні, то створюємо новий запис у таблиці `EmailConfirmations`, після чого зберігаємо запис. Як тільки все буде зроблено, на екрані з'явиться сповіщення.
 
-> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
+> **ПРИМІТКА**: Зверніть увагу на те, що модель `EmailConfirmations` також має подію `afterCreate`, яка відповідає за відправку повідомлення на пошту користувача.
 {: .alert .alert=info }
 
 **Валідація**
 
-The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
+Модель також має метод `validate`, який дозволяє нам додати валідатордо будь-якої кількості полей нашої моделі. Для таблиці `Users` на потрібно, щоб `email` був унікальним. Таким чином ми додаємо `Uniqueness` [validator](validation) до неї. Валідатор виконується перед здійсненням будь-якої операції збереження у моделі та буде показано повідомлення в разі невдачі валідації.
 
 ```php
 <?php
@@ -1534,7 +1534,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
 /**
- * All the users registered in the application
+ * Усі користувачі, зареєстровані на сайті
  */
 class Users extends Model
 {
@@ -1546,7 +1546,7 @@ class Users extends Model
             'email', 
             new Uniqueness(
                 [
-                    "message" => "The email is already registered",
+                    "message" => "Такий еmail вже зареєстровано",
                 ]
             )
         );
@@ -1558,20 +1558,20 @@ class Users extends Model
 
 ## Підсумок
 
-Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
+Vökuró це приклад додатку, який ми використовуємо для демонстрації деяких функцій, які пропонує Phalcon. Це, безумовно, не рішення, яке підійде для всіх потреб. Тим не менш, ви можете використовувати його як відправну точку для розробки вашої програми.
 
-## References
+## Посилання
 
-- [Access Control Lists definition](https://en.wikipedia.org/wiki/Access-control_list)
+- [Визначення списків управління доступом](https://en.wikipedia.org/wiki/Access-control_list)
 - [Composer](https://getcomposer.org) 
 - [DotEnv - Vance Lucas](https://github.com/vlucas/phpdotenv)
-- [Model-View-Controller definition](https://en.wikipedia.org/wiki/Model–view–controller)
-- [Nanobox Guides](https://guides.nanobox.io/php/)
+- [Визначення Модель-Подання-Контролер](https://en.wikipedia.org/wiki/Model–view–controller)
+- [Посібники з Нанобоксу](https://guides.nanobox.io/php/)
 - [Phinx - Cake PHP](https://github.com/cakephp/phinx)
-- [PSR Extension](https://github.com/jbboehr/php-psr)
+- [PSR розширення](https://github.com/jbboehr/php-psr)
 - [Swift Mailer](https://swiftmailer.symfony.com)
 - [Phalcon ACL](acl)
-- [Phalcon Forms](forms)
+- [Форми Phalcon](forms)
 - [Phalcon HTTP Response](response)
 - [Phalcon Security](security)
-- [Vökuró - GitHub Repository](https://github.com/phalcon/vokuro)
+- [Vökuró - репозиторій на GitHub](https://github.com/phalcon/vokuro)

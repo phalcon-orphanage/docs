@@ -74,7 +74,7 @@ The methods exposed are:
 - `setLimit(int $limitRows)` - `AdapterInterface` - Set current rows limit
 - `setRepository(RepositoryInterface $repository)` - `AdapterInterface` - Sets current repository for pagination
 
-### Model
+### Модель
 The [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) adapter uses a [Phalcon\Mvc\Model\Resultset](api/phalcon_mvc#mvc-model-resultset) as the source of the data. This is the result of the `find()` method on a model.
 
 ```php
@@ -461,7 +461,7 @@ The `$page` object also contains navigation data:
 ### Factory
 You can instantiate a Paginator class using the `AdapterFactory`.
 
-**Model**
+**Модель**
 ```php
 <?php
 
@@ -532,7 +532,7 @@ $paginator = $factory->newInstance('queryBuilder', $options);
 ### Individual Classes
 An example of the source data that must be used for each adapter:
 
-**Model**
+**Модель**
 ```php
 <?php
 
