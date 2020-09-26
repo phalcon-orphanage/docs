@@ -311,7 +311,7 @@ brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
 brew install phalcon --build-from-source 
 ```
 
-#### Макпорти
+#### MacPorts
 
 ```bash
 sudo port install php72-phalcon
