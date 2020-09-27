@@ -14,49 +14,49 @@ keywords: 'devtools, developer tools, models, controllers'
 
 ## Огляд
 
-These tools help you to generate skeleton code, maintain your database structure and helps to speedup development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
+Ці інструменти допомагають генерувати скелетний код, підтримувати структуру бази даних та сприяють пришвидшенню розробки. Основні компоненти вашого додатка можна створити за допомогою простої команди, що дозволяє легко розробляти програми за допомогою Phalcon.
 
-Phalcon Devtool can be controlled using the cmd line or the web interface.
+Управляти Phalcon Devtool можна за допомогою командного рядка (cmd) або веб-інтерфейсу.
 
 ## Встановлення
 
-Phalcon Devtools can be installed using <composer>. Make sure you have installed first.
+Phalcon Devtools можна встановити за допомогою <composer>. Переконайтесь, що ви встановили composer.
 
-Install Phalcon Devtools globally
+Установка Phalcon Devtools глобально
 
 ```bash
 composer global require phalcon/devtools
 ```
 
-Or only inside your project
+Або лише всередині вашого проекту
 
 ```bash
 composer require phalcon/devtools
 ```
 
-Test your installation by typing: `phalcon`
+Перевірте свою установку, набравши: `phalcon`
 
 ```bash
 $ phalcon
 
 Phalcon DevTools (4.0.0)
 
-Available commands:
-  info             (alias of: i)
-  commands         (alias of: list, enumerate)
-  controller       (alias of: create-controller)
-  module           (alias of: create-module)
-  model            (alias of: create-model)
-  all-models       (alias of: create-all-models)
-  project          (alias of: create-project)
-  scaffold         (alias of: create-scaffold)
-  migration        (alias of: create-migration)
-  webtools         (alias of: create-webtools)
-  serve            (alias of: server)
-  console          (alias of: shell, psysh)
+Доступні команди:
+  info             (синонім: i)
+  commands         (синоніми: list, enumerate)
+  controller       (синонім: create-controller)
+  module           (синонім: create-module)
+  model            (синонім: create-model)
+  all-models       (синонім: create-all-models)
+  project          (синонім: create-project)
+  scaffold         (синонім: create-scaffold)
+  migration        (синонім: create-migration)
+  webtools         (синонім: create-webtools)
+  serve            (синонім: server)
+  console          (синоніми: shell, psysh)
 ```
 
-The devtools are also available as phar download on our github [repository](github_devtools).
+Інструменти devtools також доступні у форматі phar для завантаження у нашому [репозиторії](github_devtools) github.
 
 ## Використання
 
