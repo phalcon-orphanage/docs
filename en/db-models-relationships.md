@@ -301,6 +301,8 @@ Depending on the needs of our application we might want to store data in one tab
 
 Using relationships, you can get only those `Customers` that relate to our `Invoices` that have a certain `cst_status_flag`. Defining that constraint in the relationship allows you to let the model do all the work.
 
+It also accepts a closure, which is evaluated every time before the related records are accessed. This enables the conditions to be automatically updated between queries.
+ 
 ```php
 <?php
 
@@ -335,18 +337,21 @@ class Invoices extends Model
             ]
         );
 
+        $container = $this->getDI();
+
         $this->hasMany(
             'inv_cst_id',
             Customers::class,
             'cst_id',
             [
                 'reusable' => true,
-                'alias'    => 'customersInactive',
-                'params'   => function() {
+                'alias'    => 'customersNearby',
+                'params'   => function() use ($container) {
                     return [
-                        'conditions' => 'cst_status_flag = :status:',
+                        'conditions' => 'cst_location = :location:',
                         'bind'       => [
-                            'status' => 0,
+                            // Location can change between queries
+                            'location' => $container->getShared('myLocationService')->myLocation,
                          ]
                     ];
                 }
