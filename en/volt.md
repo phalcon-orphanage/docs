@@ -1712,11 +1712,15 @@ public function compileAutoEscape(
 Compiles a "autoescape" statement returning PHP code
 
 ```php
+/**
+ * @deprecated Will be removed in 5.0
+ */
 public function compileCache(
     array $statement, 
     bool $extendsMode = false
 ): string
 ```
+(DEPRECATED)
 Compiles a `cache` statement returning PHP code
 
 ```php
@@ -1925,43 +1929,6 @@ The following compilation [events](events) are available to be implemented in ex
 | `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
 | `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
 
-
-## Caching
-With Volt it's easy cache view fragments. This mechanism improves performance, preventing the generated code from being executed by PHP, each time the view is displayed:
-
-```twig
-{%- raw -%}
-{% cache 'sidebar' %}
-    <!-- .... -->
-{% endcache %}
-{% endraw %}
-```
-
-Setting a specific number of seconds (1 hour):
-
-```twig
-{%- raw -%}
-{% cache 'sidebar' 3600 %}
-    <!-- ... -->
-{% endcache %}
-{% endraw %}
-```
-
-Any valid expression can be used as cache key:
-
-```twig
-{%- raw -%}
-{% cache ('article-' ~ post.id) 3600 %}
-
-    <h1>{{ post.title }}</h1>
-
-    <p>{{ post.content }}</p>
-
-{% endcache %}
-{% endraw %}
-```
-
-The caching is done by the [Phalcon\Cache](cache) component via the view component. 
 
 ## Services
 If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
