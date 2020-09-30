@@ -1282,6 +1282,7 @@ The following PHP is generated:
     <?php echo Phalcon\Tag::submitButton('Send'); ?>
 {%- raw -%}
 {{ end_form() }}
+
 {% endraw %}
 ```
 
@@ -1341,7 +1342,8 @@ Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the vi
 <div id='footer'>
     {{ partial('partials/footer') }}
     {{ partial('partials/footer', ['links': links]) }}
-</div>{% endraw %}
+</div>
+{% endraw %}
 ```
 
 A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
@@ -1351,7 +1353,8 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 <div id='footer'>
     {% include 'partials/footer' %}
     {% include 'partials/footer' with ['links': links] %}
-</div>{% endraw %}
+</div>
+{% endraw %}
 ```
 
 ### Include
@@ -1415,8 +1418,7 @@ With template inheritance you can create base templates that can be extended by 
 From other template we could extend the base template replacing the blocks:
 
 ```twig
-{%- raw -%}
-{% extends 'templates/base.volt' %}
+{%- raw -%}{% extends 'templates/base.volt' %}
 
 {% block title %}Index{% endblock %}
 
@@ -1461,8 +1463,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 Extended templates can extend other templates. The following example illustrates this:
 
 ```twig
-{%- raw -%}
-{# main.volt #}
+{%- raw -%}{# main.volt #}
 <!DOCTYPE html>
 <html>
     <head>
@@ -1479,8 +1480,7 @@ Extended templates can extend other templates. The following example illustrates
 Template `layout.volt` extends `main.volt`
 
 ```twig
-{%- raw -%}
-{# layout.volt #}
+{%- raw -%}{# layout.volt #}
 {% extends 'main.volt' %}
 
 {% block content %}
@@ -1800,13 +1800,16 @@ public function compileAutoEscape(
 Compiles a "autoescape" statement returning PHP code
 
 ```php
+/**
+ * @deprecated Will be removed in 5.0
+ */
 public function compileCache(
     array $statement, 
     bool $extendsMode = false
 ): string
 ```
 
-Compiles a `cache` statement returning PHP code
+(DEPRECATED) Compiles a `cache` statement returning PHP code
 
 ```php
 public function compileCall(array $statement, bool $extendsMode)
@@ -2044,41 +2047,6 @@ The following compilation <events> are available to be implemented in extensions
 | `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
 | `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
 | `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
-
-## Caching
-
-With Volt it's easy cache view fragments. This mechanism improves performance, preventing the generated code from being executed by PHP, each time the view is displayed:
-
-```twig
-{%- raw -%}{% cache 'sidebar' %}
-    <!-- .... -->
-{% endcache %}
-{% endraw %}
-```
-
-Setting a specific number of seconds (1 hour):
-
-```twig
-{%- raw -%}{% cache 'sidebar' 3600 %}
-    <!-- ... -->
-{% endcache %}
-{% endraw %}
-```
-
-Any valid expression can be used as cache key:
-
-```twig
-{%- raw -%}{% cache ('article-' ~ post.id) 3600 %}
-
-    <h1>{{ post.title }}</h1>
-
-    <p>{{ post.content }}</p>
-
-{% endcache %}
-{% endraw %}
-```
-
-The caching is done by the [Phalcon\Cache](cache) component via the view component.
 
 ## 서비스
 
