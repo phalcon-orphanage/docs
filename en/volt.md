@@ -1500,7 +1500,7 @@ $compiler->addFunction('shuffle', 'str_shuffle');
 and in Volt:
 
 ```twig
-{% raw %}{{ str_suffle('abcdefg') }}{% endraw %}
+{% raw %}{{ shuffle('abcdefg') }}{% endraw %}
 ```
 
 The example below registers the function with an anonymous function. Here we use `$resolvedArgs` to pass the arguments exactly when calling the method from the view:
