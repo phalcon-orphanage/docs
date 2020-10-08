@@ -2,20 +2,20 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Database Migrations'
-keywords: 'database, migrations, schema, tables, columns'
+title: 'Міграції бази даних'
+keywords: 'database, migrations, schema, tables, columns, база, міграції, схеми, таблиці, стовпці'
 ---
 
-# Database Migrations
+# Міграції бази даних
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
+> **ПРИМІТКА**: Міграції Phalcon були вилучені з DevTools та переміщені в окреме сховище.
 {: .alert .alert-info } 
 
-## Package git repository
+## Git репозиторій
 
 https://github.com/phalcon/migrations
 
@@ -24,22 +24,22 @@ https://github.com/phalcon/migrations
 * PHP >= 7.2
 * Phalcon >= 4.0.5
 
-## Installing via Composer
+## Встановлення за допомогою Composer
 
     composer require --dev phalcon/migrations
     
 
-## Quick start
+## Швидкий старт
 
-What you need for quick start:
+Що вам потрібно для швидкого старту:
 
-* Configuration file in root of your project (you can also pass them as parameters inside CLI environment)
-* Create database tables structure
-* Execute command to generate migrations
+* Файл конфігурації в кореневому каталозі вашого проекту (ви також можете передати їх як параметри в середовищі CLI)
+* Створення структури таблиць бази даних
+* Виконайте команду для створення міграцій
 
-After that you can execute that migrations (run) in another environment to create same DB structure.
+Після цього ви зможете виконати цю міграцію (run) в іншому середовищі для створення такої ж структури БД.
 
-### Create configuration file
+### Створюємо файл конфігурації
 
 ```php
 <?php
