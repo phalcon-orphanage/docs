@@ -58,23 +58,23 @@ return new Config([
     'application' => [
         'logInDb' => true,
         'migrationsDir' => 'db/migrations',
-        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        'migrationsTsBased' => true, // true - використовуємо TIMESTAMP як назву версії, false - використовуємо версії
         'exportDataFromTables' => [
-            // Tables names
-            // Attention! It will export data every new migration
+            // Імена таблиць
+            // Увага! Це експортує дані кожної нової міграції
         ],
     ],
 ]);
 ```
 
-### Generate migrations
+### Генерування міграцій
 
-**Basic generation**
+**Базова генерація**
 
     vendor/bin/phalcon-migrations generate
     
 
-**Generate specific table and export data from it
+**Згенеруйте спеціальну таблицю і експортуйте з неї дані
 
     vendor/bin/phalcon-migrations generate \
         --config=migrations.php \
@@ -83,19 +83,19 @@ return new Config([
         --data=oncreate
     
 
-### Run migrations
+### Запуск міграції
 
     vendor/bin/phalcon-migrations run
     
 
-### List existing migrations
+### Список існуючих міграцій
 
     vendor/bin/phalcon-migrations list
     
 
-## Usage example
+## Приклад використання
 
-**Run migrations from specific migrations directory**
+**Запустити міграції з каталогу міграцій**
 
     use Phalcon\Migrations\Migrations;
     
@@ -116,13 +116,13 @@ return new Config([
     ]);
     
 
-## Migration methods
+## Методи міграції
 
-Each migration is an separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
+Кожна міграція є окремим класом, який працює як сутність для конкретної таблиці бази даних. Всередині кожного класу є різні методи, які можуть виконуватися під час роботи міграції.
 
-Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
+Кожен файл міграції (та клас) може реалізувати конкретні методи, які будуть виконані на основі запитаної операції. У кожному методі немає жодних обмежень за логікою.
 
-The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
+Таблиця нижче показує методи міграції. Вони зберігаються в порядку виконання, першими йдуть актуальніші.
 
 **Running to up**
 
