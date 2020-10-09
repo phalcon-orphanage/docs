@@ -153,27 +153,27 @@ return new Config([
 
 **Опції**
 
-| Дія                      | Опис                                                                                     |
-| ------------------------ | ---------------------------------------------------------------------------------------- |
-| --config=s               | Файл конфігурації                                                                        |
-| --migrations=s           | Папка міграцій. Для вказання декількох каталогів запишіть їх через кому                  |
-| --directory=s            | Каталог, де був створений проект                                                         |
-| --table=s                | Таблиця для міграції. Ім'я таблиці або префікс таблиць з зірочкою. За замовчуванням: всі |
-| --version=s              | Версія для міграції                                                                      |
-| --descr=s                | Опис міграції (використовується для міграцій на основі позначки часу)                    |
-| --data=s                 | Експорт даних \['always' або 'oncreate'\] (Дані імпортуються під час виконання міграції) |
-| --exportDataFromTables=s | Експорт даних з вказаних таблиць, використовуйте розділення комами.                      |
-| --force                  | Примусово перезаписати існуючі міграції                                                  |
-| --ts-based               | Версія міграції на основі часових позначок                                               |
-| --log-in-db              | Зберігати журнал міграції у базі даних, а не у файлі                                     |
-| --dry                    | Attempt requested operation without making changes to system (Generating only)           |
-| --verbose                | Output of debugging information during operation (Running only)                          |
-| --no-auto-increment      | Disable auto increment (Generating only)                                                 |
-| --skip-ref-schema        | Skip referencedSchema inside generated migration (Generating only)                       |
-| --skip-foreign-checks    | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only) |
-| --help                   | Shows this help                                                                          |
+| Дія                      | Опис                                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| --config=s               | Файл конфігурації                                                                         |
+| --migrations=s           | Папка міграцій. Для вказання декількох каталогів запишіть їх через кому                   |
+| --directory=s            | Каталог, де був створений проект                                                          |
+| --table=s                | Таблиця для міграції. Ім'я таблиці або префікс таблиць з зірочкою. За замовчуванням: всі  |
+| --version=s              | Версія для міграції                                                                       |
+| --descr=s                | Опис міграції (використовується для міграцій на основі позначки часу)                     |
+| --data=s                 | Експорт даних \['always' або 'oncreate'\] (Дані імпортуються під час виконання міграції)  |
+| --exportDataFromTables=s | Експорт даних з вказаних таблиць, використовуйте розділення комами.                       |
+| --force                  | Примусово перезаписати існуючі міграції                                                   |
+| --ts-based               | Версія міграції на основі часових позначок                                                |
+| --log-in-db              | Зберігати журнал міграції у базі даних, а не у файлі                                      |
+| --dry                    | Спроба запитуваної операції без внесення змін до системи (лише для створення)             |
+| --verbose                | Вивід інформації для налагодження під час роботи (лише виконання)                         |
+| --no-auto-increment      | Вимкнути автоматичне доповнення (тільки для генерації)                                    |
+| --skip-ref-schema        | Пропустити схему залежностей всередині згенерованої міграції (лише для створення)         |
+| --skip-foreign-checks    | Загорнути запит `SET FOREIGN_KEY_CHECKS` до і після виконання запиту (лише для виконання) |
+| --help                   | Показує цю довідку                                                                        |
 
-## Timestamp based migrations
+## Версія міграції на основі часових позначок
 
 Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment. Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
 
