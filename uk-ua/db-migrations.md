@@ -175,20 +175,20 @@ return new Config([
 
 ## Версія міграції на основі часових позначок
 
-Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment. Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
+Використання цього підходу корисне, коли більше одного розробника бере участь в управлінні структурою бази даних. Використовуйте параметр `'migrationsTsBased' => true` у файлі конфігурації або `--ts-based` в середовищі CLI. Крім того, необхідно вказати суфікс `descr`, це може бути що завгодно, наприклад: семантичні версії.
 
-Current command
+Поточна команда
 
     vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
     
 
-Will produce folder name with such names
+Створить назву теки з такими іменами
 
 * 1582539287636860_1.0.0
 * 1682539471102635_1.0.0
 * 1782539471102635_1.0.0
 
-Migrations will be executed from oldest to newest.
+Міграції будуть виконані від старіших до новіших.
 
-> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
+> **ПРИМІТКА**: Щоразу, коли виконуються міграції, програма сканує всі доступні міграції та їх статус незалежно від їх "віку". Якщо одна чи кілька не були виконані попереднього разу, вони будуть виконані наступного разу.
 {: .alert .alert-info }
