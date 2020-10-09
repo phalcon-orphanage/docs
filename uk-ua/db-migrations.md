@@ -124,22 +124,22 @@ return new Config([
 
 Таблиця нижче показує методи міграції. Вони зберігаються в порядку виконання, від перших до останніх.
 
-**Running to up**
+**Працює догори**
 
-| Method name      | Description                                        |
-| ---------------- | -------------------------------------------------- |
-| morph            | Morph table structure                              |
-| afterCreateTable | Make something immediately after table was created |
-| up               | Table is created and ready to work with            |
-| afterUp          | Extra method to work for some specific cases       |
+| Назва методу     | Опис                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| morph            | Морфологічна структура таблиці                               |
+| afterCreateTable | Виконати щось одразу після створення таблиці                 |
+| up               | Таблиця створена і готова до роботи з нею                    |
+| afterUp          | Додатковий метод для виконання у деяких специфічних випадках |
 
-**Running to down**
+**Працює донизу**
 
-| Method name                         | Description                                                                      |
-| ----------------------------------- | -------------------------------------------------------------------------------- |
-| down                                | Normally you put here table drop or data truncation                              |
-| aferDown                            | Extra method to work after all was cleaned up                                    |
-| morph (**from previous migration**) | As migration was moved backward, there need to be all returned to previous state |
+| Назва методу                       | Опис                                                                             |
+| ---------------------------------- | -------------------------------------------------------------------------------- |
+| down                               | Зазвичай ви тут додаєте видалення таблиці або очищення даних                     |
+| aferDown                           | Додатковий метод для виконання після всіх очищень                                |
+| morph (**з попередньої міграції**) | As migration was moved backward, there need to be all returned to previous state |
 
 ## CLI Arguments and options
 
