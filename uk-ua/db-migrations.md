@@ -135,37 +135,37 @@ return new Config([
 
 **Працює донизу**
 
-| Назва методу                       | Опис                                                                             |
-| ---------------------------------- | -------------------------------------------------------------------------------- |
-| down                               | Зазвичай ви тут додаєте видалення таблиці або очищення даних                     |
-| aferDown                           | Додатковий метод для виконання після всіх очищень                                |
-| morph (**з попередньої міграції**) | As migration was moved backward, there need to be all returned to previous state |
+| Назва методу                       | Опис                                                                                     |
+| ---------------------------------- | ---------------------------------------------------------------------------------------- |
+| down                               | Зазвичай ви тут додаєте видалення таблиці або очищення даних                             |
+| aferDown                           | Додатковий метод для виконання після всіх очищень                                        |
+| morph (**з попередньої міграції**) | Оскільки міграція була переміщена назад, то потрібно все повернути до попереднього стану |
 
-## CLI Arguments and options
+## Параметри і опції CLI
 
-**Arguments**
+**Аргументи**
 
-| Argument | Description                   |
-| -------- | ----------------------------- |
-| generate | Generate a Migration          |
-| run      | Run a Migration               |
-| list     | List all available migrations |
+| Аргумент | Опис                           |
+| -------- | ------------------------------ |
+| generate | Генерування міграції           |
+| run      | Запуск міграції                |
+| list     | Список усіх доступних міграцій |
 
-**Options**
+**Опції**
 
-| Action                   | Description                                                                              |
+| Дія                      | Опис                                                                                     |
 | ------------------------ | ---------------------------------------------------------------------------------------- |
-| --config=s               | Configuration file                                                                       |
-| --migrations=s           | Migrations directory. Use comma separated string to specify multiple directories         |
-| --directory=s            | Directory where the project was created                                                  |
-| --table=s                | Table to migrate. Table name or table prefix with asterisk. Default: all                 |
-| --version=s              | Version to migrate                                                                       |
-| --descr=s                | Migration description (used for timestamp based migration)                               |
-| --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)           |
-| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                            |
-| --force                  | Forces to overwrite existing migrations                                                  |
-| --ts-based               | Timestamp based migration version                                                        |
-| --log-in-db              | Keep migrations log in the database table rather then in file                            |
+| --config=s               | Файл конфігурації                                                                        |
+| --migrations=s           | Папка міграцій. Для вказання декількох каталогів запишіть їх через кому                  |
+| --directory=s            | Каталог, де був створений проект                                                         |
+| --table=s                | Таблиця для міграції. Ім'я таблиці або префікс таблиць з зірочкою. За замовчуванням: всі |
+| --version=s              | Версія для міграції                                                                      |
+| --descr=s                | Опис міграції (використовується для міграцій на основі позначки часу)                    |
+| --data=s                 | Експорт даних \['always' або 'oncreate'\] (Дані імпортуються під час виконання міграції) |
+| --exportDataFromTables=s | Експорт даних з вказаних таблиць, використовуйте розділення комами.                      |
+| --force                  | Примусово перезаписати існуючі міграції                                                  |
+| --ts-based               | Версія міграції на основі часових позначок                                               |
+| --log-in-db              | Зберігати журнал міграції у базі даних, а не у файлі                                     |
 | --dry                    | Attempt requested operation without making changes to system (Generating only)           |
 | --verbose                | Output of debugging information during operation (Running only)                          |
 | --no-auto-increment      | Disable auto increment (Generating only)                                                 |
