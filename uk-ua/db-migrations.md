@@ -2,20 +2,20 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
-title: 'Database Migrations'
-keywords: 'database, migrations, schema, tables, columns'
+title: 'Міграції бази даних'
+keywords: 'database, migrations, schema, tables, columns, база, міграції, схеми, таблиці, стовпці'
 ---
 
-# Database Migrations
+# Міграції бази даних
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
+> **ПРИМІТКА**: Міграції Phalcon були вилучені з DevTools та переміщені в окреме сховище.
 {: .alert .alert-info } 
 
-## Package git repository
+## Git репозиторій
 
 https://github.com/phalcon/migrations
 
@@ -24,22 +24,22 @@ https://github.com/phalcon/migrations
 * PHP >= 7.2
 * Phalcon >= 4.0.5
 
-## Installing via Composer
+## Встановлення за допомогою Composer
 
     composer require --dev phalcon/migrations
     
 
-## Quick start
+## Швидкий старт
 
-What you need for quick start:
+Що вам потрібно для швидкого старту:
 
-* Configuration file in root of your project (you can also pass them as parameters inside CLI environment)
-* Create database tables structure
-* Execute command to generate migrations
+* Файл конфігурації в кореневому каталозі вашого проекту (ви також можете передати їх як параметри в середовищі CLI)
+* Створення структури таблиць бази даних
+* Виконайте команду для створення міграцій
 
-After that you can execute that migrations (run) in another environment to create same DB structure.
+Після цього ви зможете виконати цю міграцію (run) в іншому середовищі для створення такої ж структури БД.
 
-### Create configuration file
+### Створюємо файл конфігурації
 
 ```php
 <?php
@@ -58,23 +58,23 @@ return new Config([
     'application' => [
         'logInDb' => true,
         'migrationsDir' => 'db/migrations',
-        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        'migrationsTsBased' => true, // true - використовуємо TIMESTAMP як назву версії, false - використовуємо версії
         'exportDataFromTables' => [
-            // Tables names
-            // Attention! It will export data every new migration
+            // Імена таблиць
+            // Увага! Це експортує дані кожної нової міграції
         ],
     ],
 ]);
 ```
 
-### Generate migrations
+### Генерування міграцій
 
-**Basic generation**
+**Базова генерація**
 
     vendor/bin/phalcon-migrations generate
     
 
-**Generate specific table and export data from it
+**Згенеруйте спеціальну таблицю і експортуйте з неї дані
 
     vendor/bin/phalcon-migrations generate \
         --config=migrations.php \
@@ -83,19 +83,19 @@ return new Config([
         --data=oncreate
     
 
-### Run migrations
+### Запуск міграції
 
     vendor/bin/phalcon-migrations run
     
 
-### List existing migrations
+### Список існуючих міграцій
 
     vendor/bin/phalcon-migrations list
     
 
-## Usage example
+## Приклад використання
 
-**Run migrations from specific migrations directory**
+**Запустити міграції з каталогу міграцій**
 
     use Phalcon\Migrations\Migrations;
     
@@ -116,79 +116,79 @@ return new Config([
     ]);
     
 
-## Migration methods
+## Методи міграції
 
-Each migration is an separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
+Кожна міграція є окремим класом, який працює як сутність для конкретної таблиці бази даних. Всередині кожного класу є різні методи, які можуть виконуватися під час роботи міграції.
 
-Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
+Кожен файл міграції (та клас) може реалізувати конкретні методи, які будуть виконані на основі запитаної операції. У кожному методі немає жодних обмежень за логікою.
 
-The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
+Таблиця нижче показує методи міграції. Вони зберігаються в порядку виконання, від перших до останніх.
 
-**Running to up**
+**Працює догори**
 
-| Method name      | Description                                        |
-| ---------------- | -------------------------------------------------- |
-| morph            | Morph table structure                              |
-| afterCreateTable | Make something immediately after table was created |
-| up               | Table is created and ready to work with            |
-| afterUp          | Extra method to work for some specific cases       |
+| Назва методу     | Опис                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| morph            | Морфологічна структура таблиці                               |
+| afterCreateTable | Виконати щось одразу після створення таблиці                 |
+| up               | Таблиця створена і готова до роботи з нею                    |
+| afterUp          | Додатковий метод для виконання у деяких специфічних випадках |
 
-**Running to down**
+**Працює донизу**
 
-| Method name                         | Description                                                                      |
-| ----------------------------------- | -------------------------------------------------------------------------------- |
-| down                                | Normally you put here table drop or data truncation                              |
-| aferDown                            | Extra method to work after all was cleaned up                                    |
-| morph (**from previous migration**) | As migration was moved backward, there need to be all returned to previous state |
+| Назва методу                       | Опис                                                                                     |
+| ---------------------------------- | ---------------------------------------------------------------------------------------- |
+| down                               | Зазвичай ви тут додаєте видалення таблиці або очищення даних                             |
+| aferDown                           | Додатковий метод для виконання після всіх очищень                                        |
+| morph (**з попередньої міграції**) | Оскільки міграція була переміщена назад, то потрібно все повернути до попереднього стану |
 
-## CLI Arguments and options
+## Параметри і опції CLI
 
-**Arguments**
+**Аргументи**
 
-| Argument | Description                   |
-| -------- | ----------------------------- |
-| generate | Generate a Migration          |
-| run      | Run a Migration               |
-| list     | List all available migrations |
+| Аргумент | Опис                           |
+| -------- | ------------------------------ |
+| generate | Генерування міграції           |
+| run      | Запуск міграції                |
+| list     | Список усіх доступних міграцій |
 
-**Options**
+**Опції**
 
-| Action                   | Description                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------------- |
-| --config=s               | Configuration file                                                                       |
-| --migrations=s           | Migrations directory. Use comma separated string to specify multiple directories         |
-| --directory=s            | Directory where the project was created                                                  |
-| --table=s                | Table to migrate. Table name or table prefix with asterisk. Default: all                 |
-| --version=s              | Version to migrate                                                                       |
-| --descr=s                | Migration description (used for timestamp based migration)                               |
-| --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)           |
-| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                            |
-| --force                  | Forces to overwrite existing migrations                                                  |
-| --ts-based               | Timestamp based migration version                                                        |
-| --log-in-db              | Keep migrations log in the database table rather then in file                            |
-| --dry                    | Attempt requested operation without making changes to system (Generating only)           |
-| --verbose                | Output of debugging information during operation (Running only)                          |
-| --no-auto-increment      | Disable auto increment (Generating only)                                                 |
-| --skip-ref-schema        | Skip referencedSchema inside generated migration (Generating only)                       |
-| --skip-foreign-checks    | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only) |
-| --help                   | Shows this help                                                                          |
+| Дія                      | Опис                                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| --config=s               | Файл конфігурації                                                                         |
+| --migrations=s           | Папка міграцій. Для вказання декількох каталогів запишіть їх через кому                   |
+| --directory=s            | Каталог, де був створений проект                                                          |
+| --table=s                | Таблиця для міграції. Ім'я таблиці або префікс таблиць з зірочкою. За замовчуванням: всі  |
+| --version=s              | Версія для міграції                                                                       |
+| --descr=s                | Опис міграції (використовується для міграцій на основі позначки часу)                     |
+| --data=s                 | Експорт даних \['always' або 'oncreate'\] (Дані імпортуються під час виконання міграції)  |
+| --exportDataFromTables=s | Експорт даних з вказаних таблиць, використовуйте розділення комами.                       |
+| --force                  | Примусово перезаписати існуючі міграції                                                   |
+| --ts-based               | Версія міграції на основі часових позначок                                                |
+| --log-in-db              | Зберігати журнал міграції у базі даних, а не у файлі                                      |
+| --dry                    | Спроба запитуваної операції без внесення змін до системи (лише для створення)             |
+| --verbose                | Вивід інформації для налагодження під час роботи (лише виконання)                         |
+| --no-auto-increment      | Вимкнути автоматичне доповнення (тільки для генерації)                                    |
+| --skip-ref-schema        | Пропустити схему залежностей всередині згенерованої міграції (лише для створення)         |
+| --skip-foreign-checks    | Загорнути запит `SET FOREIGN_KEY_CHECKS` до і після виконання запиту (лише для виконання) |
+| --help                   | Показує цю довідку                                                                        |
 
-## Timestamp based migrations
+## Версія міграції на основі часових позначок
 
-Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment. Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
+Використання цього підходу корисне, коли більше одного розробника бере участь в управлінні структурою бази даних. Використовуйте параметр `'migrationsTsBased' => true` у файлі конфігурації або `--ts-based` в середовищі CLI. Крім того, необхідно вказати суфікс `descr`, це може бути що завгодно, наприклад: семантичні версії.
 
-Current command
+Поточна команда
 
     vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
     
 
-Will produce folder name with such names
+Створить назву теки з такими іменами
 
 * 1582539287636860_1.0.0
 * 1682539471102635_1.0.0
 * 1782539471102635_1.0.0
 
-Migrations will be executed from oldest to newest.
+Міграції будуть виконані від старіших до новіших.
 
-> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
+> **ПРИМІТКА**: Щоразу, коли виконуються міграції, програма сканує всі доступні міграції та їх статус незалежно від їх "віку". Якщо одна чи кілька не були виконані попереднього разу, вони будуть виконані наступного разу.
 {: .alert .alert-info }
