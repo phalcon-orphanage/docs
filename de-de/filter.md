@@ -443,9 +443,7 @@ $locator = $factory->newInstance();
 
 $locator->set(
     'ipv4',
-    function () {
-        return new Ipv4();
-    }
+    new Ipv4()
 );
 
 // Sanitize with the 'ipv4' filter
