@@ -343,7 +343,7 @@ class SessionController extends ControllerBase
                 ]
             );
 
-            if (false !== $user) {
+            if (null !== $user) {
                 $this->_registerSession($user);
 
                 $this->flash->success(
@@ -438,7 +438,7 @@ If the user is found, then we register the user in the session (log the user in)
 ```php
 <?php
 
-if (false !== $user) {
+if (null !== $user) {
     $this->_registerSession($user);
 
     $this->flash->success(
@@ -1519,7 +1519,7 @@ if (true !== $form->isValid($data, $product)) {
     $messages = $form->getMessages();
 
     foreach ($messages as $message) {
-        $this->flash->error($message);
+        $this->flash->error($message->getMessage());
     }
 
     return $this->dispatcher->forward(
@@ -1544,7 +1544,7 @@ if ($product->save() === false) {
     $messages = $product->getMessages();
 
     foreach ($messages as $message) {
-        $this->flash->error($message);
+        $this->flash->error($message->getMessage());
     }
 
     return $this->dispatcher->forward(
@@ -1581,7 +1581,7 @@ public function editAction($id)
     if (true !== $this->request->isPost()) {
         $product = Products::findFirstById($id);
 
-        if (false !== $product) {
+        if (null !== $product) {
             $this->flash->error(
                 'Product was not found'
             );
@@ -1623,7 +1623,7 @@ public function saveAction()
     $id      = $this->request->getPost('id', 'int');
     $product = Products::findFirstById($id);
 
-    if (false !== $product) {
+    if (null !== $product) {
         $this->flash->error(
             'Product does not exist'
         );
@@ -1643,7 +1643,7 @@ public function saveAction()
         $messages = $form->getMessages();
 
         foreach ($messages as $message) {
-            $this->flash->error($message);
+            $this->flash->error($message->getMessage());
         }
 
         return $this->dispatcher->forward(
@@ -1658,7 +1658,7 @@ public function saveAction()
         $messages = $product->getMessages();
 
         foreach ($messages as $message) {
-            $this->flash->error($message);
+            $this->flash->error($message->getMessage());
         }
 
         return $this->dispatcher->forward(
