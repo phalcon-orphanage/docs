@@ -357,7 +357,7 @@ class SessionController extends ControllerBase
                 ]
             );
 
-            if (false !== $user) {
+            if (null !== $user) {
                 $this->_registerSession($user);
 
                 $this->flash->success(
@@ -452,7 +452,7 @@ $user = Users::findFirst(
 ```php
 <?php
 
-if (false !== $user) {
+if (null !== $user) {
     $this->_registerSession($user);
 
     $this->flash->success(
@@ -1550,7 +1550,7 @@ if (true !== $form->isValid($data, $product)) {
     $messages = $form->getMessages();
 
     foreach ($messages as $message) {
-        $this->flash->error($message);
+        $this->flash->error($message->getMessage());
     }
 
     return $this->dispatcher->forward(
@@ -1575,7 +1575,7 @@ if ($product->save() === false) {
     $messages = $product->getMessages();
 
     foreach ($messages as $message) {
-        $this->flash->error($message);
+        $this->flash->error($message->getMessage());
     }
 
     return $this->dispatcher->forward(
@@ -1612,9 +1612,9 @@ public function editAction($id)
     if (true !== $this->request->isPost()) {
         $product = Products::findFirstById($id);
 
-        if (false !== $product) {
+        if (null !== $product) {
             $this->flash->error(
-                '상품을 찾을 수 없습니다'
+                'Product was not found'
             );
 
             return $this->dispatcher->forward(
@@ -1654,9 +1654,9 @@ public function saveAction()
     $id      = $this->request->getPost('id', 'int');
     $product = Products::findFirstById($id);
 
-    if (false !== $product) {
+    if (null !== $product) {
         $this->flash->error(
-            '상품이 존재하지 않습니다'
+            'Product does not exist'
         );
 
         return $this->dispatcher->forward(
@@ -1674,7 +1674,7 @@ public function saveAction()
         $messages = $form->getMessages();
 
         foreach ($messages as $message) {
-            $this->flash->error($message);
+            $this->flash->error($message->getMessage());
         }
 
         return $this->dispatcher->forward(
@@ -1689,7 +1689,7 @@ public function saveAction()
         $messages = $product->getMessages();
 
         foreach ($messages as $message) {
-            $this->flash->error($message);
+            $this->flash->error($message->getMessage());
         }
 
         return $this->dispatcher->forward(
@@ -1703,7 +1703,7 @@ public function saveAction()
     $form->clear();
 
     $this->flash->success(
-        '상품이 성공적으로 업데이트 되었습니다'
+        'Product was updated successfully'
     );
 
     return $this->dispatcher->forward(
