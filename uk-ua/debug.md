@@ -36,7 +36,7 @@ try {
 }
 ```
 
-Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://secure.php.net/manual/en/language.exceptions.php). Using the Phalcon exception allows you to distinguish whether the exception was thrown from Phalcon related code or elsewhere.
+Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. [Phalcon\Exception](api/Phalcon_Exception) є розширенням стандартного класу РНР [Exception](https://secure.php.net/manual/en/language.exceptions.php). Використання винятків Phalcon дозволяє відрізнити чи їх спричинив код Phalcon, чи щось інше.
 
 The [Exception class](https://secure.php.net/manual/en/language.exceptions.php), exposes the following:
 
