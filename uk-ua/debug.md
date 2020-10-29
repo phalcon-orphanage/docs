@@ -16,7 +16,7 @@ keywords: 'debug, debugging, error handling, відлагодження'
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP пропонує інструменти для налагодження застосунків зі сповіщеннями, попередженнями, помилками та винятками. Клас [винятки](https://secure.php.net/manual/en/language.exceptions.php) надає інформацію, таку як файл, рядок, повідомлення, числовий код, трасування і т. д. про те, де сталася помилка. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
+PHP пропонує інструменти для налагодження застосунків зі сповіщеннями, попередженнями, помилками та винятками. Клас [винятки](https://secure.php.net/manual/en/language.exceptions.php) надає інформацію, таку як файл, рядок, повідомлення, числовий код, трасування тощо, про те, де сталася помилка. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
 
 Despite being written in C, Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP based frameworks offer.
 
