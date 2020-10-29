@@ -98,11 +98,11 @@
             },
             {
                 "text": "Міграції",
-                "url": "/db-міграції"
+                "url": "/db-migrations"
             },
             {
                 "text": "Юніт-тестування",
-                "url": "/unit-тестування"
+                "url": "/unit-testing"
             }
         ]
     },
@@ -191,7 +191,7 @@
                 "url": "/loader"
             },
             {
-                "text": "Logger",
+                "text": "Журнал",
                 "url": "/logger"
             }
         ]
@@ -250,7 +250,7 @@
             },
             {
                 "text": "Міграції",
-                "url": "/db-міграції"
+                "url": "/db-migrations"
             }
         ]
     },
