@@ -62,7 +62,7 @@ Phalcon DevTools (4.0.0)
 
 ### Available Commands
 
-You can get a list of available commands in Phalcon tools by typing: `phalcon commands`
+Ви можете отримати список доступних команд в інструментах Phalcon, набравши: `phalcon commands`
 
 ```bash
 $ phalcon commands
@@ -84,7 +84,7 @@ Available commands:
   console          (alias of: shell, psysh)
 ```
 
-### Generating a Project Skeleton
+### Створення скелету проекту
 
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
