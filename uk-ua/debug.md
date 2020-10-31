@@ -16,13 +16,13 @@ keywords: 'debug, debugging, error handling, відлагодження'
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP пропонує інструменти для налагодження застосунків зі сповіщеннями, попередженнями, помилками та винятками. Клас [винятки](https://secure.php.net/manual/en/language.exceptions.php) надає інформацію, таку як файл, рядок, повідомлення, числовий код, трасування і т. д. про те, де сталася помилка. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
+PHP пропонує інструменти для налагодження застосунків зі сповіщеннями, попередженнями, помилками та винятками. Клас [винятки](https://secure.php.net/manual/en/language.exceptions.php) надає інформацію, таку як файл, рядок, повідомлення, числовий код, трасування, про те, де сталася помилка тощо. Фреймворки об'єктно-орієнтованого програмування на зразок Phalcon головним чином використовують цей клас, щоб прикріпити цю функціональність та надавати інформацію розробнику чи користувачеві.
 
-Despite being written in C, Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP based frameworks offer.
+Незважаючи на те, що він написаний у C, Phalcon виконує методи в PHP, забезпечуючи ті ж можливості, що й інші PHP-фреймворки.
 
-## Exceptions
+## Винятки
 
-A very common way to control the flow of errors in your application (intentional or otherwise) is to use a `try`/`catch` block to catch exceptions. There are plenty of examples in our documentation demonstrating such blocks.
+Дуже поширений спосіб керування потоком помилок у вашому застосунку (навмисне чи інакше) це використання поєднання `try`/`catch`, щоб відловити винятки. У нашій документації достатньо прикладів, що демонструють таке поєднання.
 
 ```php
 <?php
@@ -36,9 +36,9 @@ try {
 }
 ```
 
-Any exception thrown within the block is captured in the variable `$ex`. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://secure.php.net/manual/en/language.exceptions.php). Using the Phalcon exception allows you to distinguish whether the exception was thrown from Phalcon related code or elsewhere.
+Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. [Phalcon\Exception](api/Phalcon_Exception) є розширенням стандартного класу РНР [Exception](https://secure.php.net/manual/en/language.exceptions.php). Використання винятків Phalcon дозволяє відрізнити чи їх спричинив код Phalcon, чи щось інше.
 
-The [Exception class](https://secure.php.net/manual/en/language.exceptions.php), exposes the following:
+[Клас винятків](https://secure.php.net/manual/en/language.exceptions.php) розкриває таке:
 
 ```php
 <?php
@@ -90,7 +90,7 @@ class Exception
 }
 ```
 
-You can use the same method calls when using the [Phalcon\Exception](api/Phalcon_Exception):
+Ви можете використовувати ті самі виклики метода при використанні [Phalcon\Exception](api/Phalcon_Exception):
 
 ```php
 <?php
@@ -109,7 +109,7 @@ try {
 }
 ```
 
-It's therefore easy to find which file and line of the application's code generated the exception, as well as the components involved in generating the exception:
+Досить легко знайти файл і рядок коду програми, що призвели до винятку, а також компоненти, які беруть участь у формуванні винятку:
 
 ```html
 PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
@@ -136,22 +136,22 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. The exception information contains parameters and method calls that were involved in the call that generated the exception fragment above. [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
+Як продемонстровано вище, не має значення що Phalcon скомпільований як PHP-розширення. Інформація винятка містить параметри та виклики методів, які породжували фрагмент винятка вище. [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) надає додаткову інформацію, якщо це необхідно.
 
-## Constructor
+## Конструктор
 
-[Phalcon\Debug](api/phalcon_debug#debug) provides visual aids as well as additional information for developers to easily locate errors produced in an application.
+[Phalcon\Debug](api/phalcon_debug#debug) надає візуальну допомогу, а також додаткову інформацію розробникам, щоб легко знаходити помилки, що виникають в додатку.
 
-> **NOTE** Please make sure that this component is not used in production environments, as it can reveal information about your server to attackers
+> **ПРИМІТКА** Будь ласка, переконайтеся, що цей компонент не використовується в виробничих середовищах, так як він може викрити інформацію про ваш сервер та код продукту зловмисникам
 {: .alert .alert-danger }
 
-The following screencast explains how it works:
+Наступний демонстраційний ролик пояснює, як він працює:
 
 <div align='center'>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Mk5ObSQmGpQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-To enable it, add the following to your bootstrap:
+Щоб активувати його, додайте до вашого bootstrap такий код:
 
 ```php
 <?php
@@ -163,7 +163,7 @@ $debug = new Debug();
 $debug->listen();
 ```
 
-or using a shorter syntax:
+або коротший синтаксис:
 
 ```php
 <?php
@@ -171,15 +171,15 @@ or using a shorter syntax:
 (new \Phalcon\Debug())->listen();
 ```
 
-> **NOTE**: Any `try`/`catch` blocks must be removed or disabled to make this component work properly.
+> **ПРИМІТКА**: будь-яке поєднання ` try ` / ` catch ` потрібно видалити або деактивувати, щоб цей компонент працював належним чином.
 {: .alert .alert-warning }
 
-By default the component will listen for uncaught exceptions but not low severity errors (warnings, notices etc.). You can modify this behavior by passing relevant parameters in `listen()`
+За замовчуванням компонент буде слухати необроблені винятки, але не з низькою серйозністю помилки (попередження, повідомлення тощо). Ви можете змінити цю поведінку, передаючи відповідні параметри в `listen()`
 
 - `exceptions` - boolean 
 - `lowSeverity` - boolean
 
-In the example below, do not listen to uncaught exceptions but listen to non silent notices or warnings (low severity):
+У прикладі нижче не прослуховуються необроблені винятки, але слухаються сповіщення або попередження (низька серйозність):
 
 ```php
 <?php
@@ -191,7 +191,7 @@ $debug = new Debug();
 $debug->listen(false, true);
 ```
 
-If your application flow is different, or do not wish to pass the parameters on `listen()`, you can always use `listenExceptions()` and `listenLowSeverity()`:
+Якщо ваш потік додатку інший, або не хочете вказувати додаткові параметри у `listen()`, ви завжди можете використовувати `listenExceptions()` і `listenLowSeverity()`:
 
 ```php
 <?php
@@ -206,31 +206,31 @@ $debug
     ->listen();
 ```
 
-> **NOTE**: The `listenExceptions()` and `listenLowSeverity()` are **ON** switches. If you wish to switch listening to exceptions or low severity errors **OFF** you need to pass `false` in the `listen()` method.
+> **ПРИМІТКА**: Перемикачі ` listenExceptions() ` та ` listenLowSeverity() ` мають параметр ** ON **. Якщо ви хочете змінити параметр прослуховування винятків або помилок низької серйозності на **OFF**, вам потрібно вказати параметр `false` у методі `listen()`.
 {: .alert .alert-info } 
 
-## Getters
+## Гетери (збирачі)
 
-There are a few getters available that offer information about the component. Extending those could also change the behavior of the component visually.
+Існує декілька збирачів, які надають інформацію про компонент. Розширюючи їх, можливо також змінити візуальну поведінку цього компонента.
 
-- `getCssSources()` - `string` Returns the stylesheets used to display the contents on screen
-- `getJsSources()` - `string` Returns the javascript files used to display the contents on screen
-- `getVersion()` - `string` Returns the link to the current version documentation
+- `getCssSources()` - `стрічка` повертає таблиці стилів, які використовуються для відображення вмісту на екрані`</li>
+<li><code>getJsSources()` - `стрічка` повертає файли javascript, які використовуються для відображення вмісту на екрані
+- `getVersion()` - `стрічка` повертає посилання на документацію поточної версії
 
-Extending the component and overriding the `getCssSources()` for instance to return different CSS HTML directives will change the appearance of the output on screen. The output CSS classes are based on [Bootstrap CSS](https://getbootstrap.com/).
+Розширення компонента і перевизначення `getCssSources()`, наприклад, щоб повернути різні директиви CSS HTML, змінять зовнішній вигляд відображення на екрані. Вихідні класи CSS засновані на [Bootstrap CSS](https://getbootstrap.com/).
 
-## Setters
+## Сетери (установлювачі)
 
-[Phalcon\Debug](api/phalcon_debug#debug) also offers some setters to better customize the output when an error occurs in your application.
+[Phalcon\Debug](api/phalcon_debug#debug) також пропонує деякі установлювачі для більш персоніфікованого відображення при виникненні помилки в вашому додатку.
 
-- `setShowBackTrace(bool $showBackTrace)` - Show/hide the exception's backtrace
-- `setShowFileFragment(bool $showFileFragment)` - Show/Hide the file fragment in the output (related to the exception)
-- `setShowFiles(bool $showFiles)` - Show/Hide the files in the backtrace
-- `setUri(string $uri)` - The base URI for static resources (see also the Getters section for customization of the component)
+- `setShowBackTrace(bool $showBackTrace)` - показати/приховати зворотнє трасування винятку
+- `setShowFileFragment(bool $showFileFragment)` - показати/приховати фрагмент файлу при відображенні (пов'язаний із винятком)
+- `setShowFiles(bool $showFiles)` - показати/приховати файли у даних зворотного трасування
+- `setUri(string $uri)` - базова URI для статичних ресурсів (також див. розділ Геттери (збирачі) для налаштування компонента)
 
-## Variables
+## Змінні
 
-You can also use the `debugVar()` method, to inject any additional variables you want to present in the output. These are usually application specific variables. An example might be to show timing information for your application.
+Ви також можете використовувати метод `debugVar()` для внесення будь-яких додаткових змінних, які ви хочете показати у відображенні. Це зазвичай власні змінні додатка. Прикладом може бути показ часової інформації для вашого додатку.
 
 ```php
 <?php
@@ -245,9 +245,9 @@ $debug
     ->listen();
 ```
 
-To clear the variable stack, you can call `clearVars()`.
+Щоб очистити стек змінних, можна викликати `clearVars()`.
 
-Finally you can halt execution of your application and trigger showing a backtrace by calling `halt()`
+Нарешті ви можете зупинити виконання вашого додатку і запустити показ інформації зворотного трасування викликом `halt()`
 
 ```php
 <?php
