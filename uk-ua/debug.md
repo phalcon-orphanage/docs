@@ -265,9 +265,9 @@ if (12345 === $password) {
 }
 ```
 
-## Blacklisting Output
+## Результат додавання до чорного списку
 
-As mentioned above, the component **must not** be enabled in production environments. Since Phalcon cannot control this behavior, there is a built-in blacklisting feature that allows the developer to blacklist certain pieces of information that they do not wish to be displayed on screen, just in case. These are elements of the `$_REQUEST` and `$_SERVER` arrays.
+Як згадувалося вище, цей компонент ** не повинен бути ** увімкненим у виробничих середовищах. Оскільки Phalcon не може контролювати таку поведінку, є вбудована функція додавання у чорний список, яка дозволяє розробнику додавати до нього деякі частини інформації, які він не бажає, щоб відображались на екрані, про всяк випадок. Це елементи масивів `$_REQUEST` і `$_SERVER`.
 
 ```php
 <?php
@@ -287,20 +287,20 @@ $debug
     ->listen();
 ```
 
-In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostname` from `$_SERVER`. You can always add more elements not to be displayed, that exist in these two superglobals. This is particularly useful in case you forget to disable the component in your production environment. It is bad practice to leave it enabled but if you forget, at least certain key pieces of information about your host will not be visible to potential hackers.
+У наведеному вище прикладі ми ніколи не показуватимемо змінну `some` із `$_REQUEST`, а також `hostname` з `$_SERVER`. Ви завжди можете додати більше елементів, які не повинні відображатись та існують у цих двох глобальних змінних. Це особливо корисно, якщо ви забудете відключити компонент у вашому виробничому середовищі. Погана практика - залишати її увімкненою, але якщо ви забули, то принаймні певні ключові фрагменти інформації про ваш хост не будуть видимі для потенційних хакерів.
 
-> **NOTE**: The keys of the array elements to be hidden are case insensitive
+> **ПРИМІТКА**: Ключі елементів масиву, які потрібно приховати, не чутливі до регістру
 {: .alert .alert-info }
 
-## Handlers
+## Обробники
 
-In order to catch exceptions and low severity errors, [Phalcon\Debug](api/phalcon_debug#debug) makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. Most developers that use this component will never need to extend these methods. However, if you wish you can do so by extending the component and overriding these methods to manipulate the exception and return the output you require.
+Для того, щоб відловити винятки та помилки низької серйозності, [Phalcon\Debug](api/phalcon_debug#debug) використовує `oncaughtException()` і `onUncaughtLowSeverity()`. Більшість розробників, які використовують цей компонент, ніколи не потребують розширення цих методів. Проте, якщо ви хочете, то можете це зробити, розширивши компонент і перевизначивши ці методи, щоб маніпулювати винятком та отримати потрібний результат.
 
-These two methods are being set as exception handlers using PHP's [set_exception_handler](https://www.php.net/manual/en/function.set-exception-handler.php). When calling `listenExceptions()` the `onUncaughtException()` is registered, while when calling `listenLowSeverity()` the `onUncaughtLowSeverity` is registered.
+Ці два методи використовуються як обробники винятків за допомогою методу PHP [set_exception_handler](https://www.php.net/manual/en/function.set-exception-handler.php). При виклику `listenExceptions()` зареєструється `oncaughtException()`, тоді як виклик `listenLowSeverity()` зареєструє `oncaughtLowSeverity`.
 
-## Reflection and Introspection
+## Відображення та самоаналіз
 
-Phalcon classes do not differ from any other PHP classes and therefore you can use the [Reflection API](https://php.net/manual/en/book.reflection.php) or simply print any object to display its contents and state:
+Класи Phalcon не відрізняються від будь-яких інших класів PHP, тому ви можете використовувати [Reflection API](https://php.net/manual/en/book.reflection.php) або просто надрукувати будь-який об'єкт, щоб відобразити його вміст і стан:
 
 ```php
 <?php
@@ -312,7 +312,7 @@ $router = new Router();
 print_r($router);
 ```
 
-The above example prints the following:
+Наведений вище приклад покаже наступне:
 
 ```html
 Phalcon\Mvc\Router Object
@@ -369,14 +369,14 @@ Phalcon\Mvc\Router Object
 
 ## Xdebug
 
-[Xdebug](https://xdebug.org) is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
+[Xdebug](https://xdebug.org) це чудовий інструмент, який доповнює відлагодження програм PHP. Це також розширення C для PHP, і ви можете використовувати його разом з Phalcon без додаткової конфігурації чи побічних ефектів.
 
-Once you have Xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
+Після встановлення Xdebug ви можете використовувати його API, щоб отримати більш детальну інформацію про винятки і повідомлення.
 
-> **NOTE**: We highly recommend using the latest version of Xdebug for a better compatibility with Phalcon
+> **ПРИМІТКА**: Ми наполегливо рекомендуємо використовувати останню версію Xdebug для кращої сумісності з Phalcon
 {: .alert .alert-warning }
 
-The following example implements [xdebug_print_function_stack](https://xdebug.org/docs/stack_trace) to stop the execution and generate a backtrace:
+Наступний приклад втілює [xdebug_print_function_stack](https://xdebug.org/docs/stack_trace), щоб зупинити виконання та згенерувати зворотне трасування:
 
 ```php
 <?php
@@ -408,7 +408,7 @@ class SignupController extends Controller
 }
 ```
 
-For the above example, Xdebug will also show us the variables in the local scope as well as a backtrace:
+Xdebug у вище наведеному прикладі покаже нам змінні в локальній області, а також дані зворотного трасування:
 
 ```html
 Xdebug: stop here! in /app/app/controllers/SignupController.php
@@ -424,6 +424,6 @@ Call Stack:
         /app/app/controllers/SignupController.php:19
 ```
 
-Xdebug offers several ways to get debug and trace information regarding the execution of your application using Phalcon. You can check the [XDebug documentation](https://xdebug.org/docs) for more information.
+Xdebug пропонує декілька способів для отримання інформації налагодження та зворотного трасування стосовно виконання вашої програми за допомогою Phalcon. Ви можете ознайомитись із [документацією XDebug](https://xdebug.org/docs) для отримання додаткової інформації.
 
-To set up Xdebug for PHPStorm you can check [this](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html) article.
+Щоб налаштувати Xdebug для PHPStorm ви можете почитати цю [статтю](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html).
