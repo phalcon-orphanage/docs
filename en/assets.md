@@ -205,9 +205,9 @@ class IndexController extends Controller
 
         $js1 = new Js('js/jquery.js');
         $js2 = new Js('js/bootstrap.min.js');
-        $this->assets->addAsset($css1);
-
-        $this->assets->addAssetByType('css', $css2);
+        
+        $this->assets->addAsset($js1);
+        $this->assets->addAssetByType('js', $js2);
     }
 }
 ```
