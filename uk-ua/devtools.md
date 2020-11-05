@@ -356,50 +356,50 @@ class Users extends \Phalcon\Mvc\Model
 phalcon model --help
 ```
 
-### Scaffold a CRUD
+### Генерування CRUD
 
-Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
+Генерування - це швидкий спосіб створити деякі основні частини додатку. Якщо ви хочете створити моделі, представлення та контролери для нового ресурсу в одній операції, використовуйте інструмент генерування.
 
-Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `users`:
+Після генерації коду, він повинен бути налаштований для задоволення ваших потреб. Багато розробників уникають генерації, обирають писати всі або більшість своїх вихідних кодів з нуля. Згенерований код може слугувати довідником, щоб краще зрозуміти як працює фреймворк або розробка прототипів. Наведений нижче код показує генерацію на основі таблиці `users`:
 
 ```bash
 $ phalcon scaffold --table-name users
 ```
 
-The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
+Генератор побудує декілька файлів у вашому застосунку, а також створить деякі папки. Ось короткий огляд того, що буде згенеровано:
 
-| File                                  | Purpose                      |
-| ------------------------------------- | ---------------------------- |
-| `app/controllers/UsersController.php` | The Products controller      |
-| `app/models/Users.php`                | The Products model           |
-| `app/views/layout/users.phtml`        | Controller layout for Users  |
-| `app/views/products/search.phtml`     | View for the action `search` |
-| `app/views/products/new.phtml`        | View for the action `new`    |
-| `app/views/products/edit.phtml`       | View for the action `edit`   |
+| Файл                                  | Призначення                           |
+| ------------------------------------- | ------------------------------------- |
+| `app/controllers/UsersController.php` | Контролер користувачів (продуктів)    |
+| `app/models/Users.php`                | Модель даних користувачів (продуктів) |
+| `app/views/layout/users.phtml`        | Шаблон контролера для користувачів    |
+| `app/views/products/search.phtml`     | Представлення для дії `search`        |
+| `app/views/products/new.phtml`        | Представлення для дії `new`           |
+| `app/views/products/edit.phtml`       | Представлення для дії `edit`          |
 
-When browsing the recently generated controller, you will see a search form and a link to create a new Product:
+Переглядаючи щойно згенерований контролер, ви побачите форму пошуку та посилання на створення нового продукту:
 
 ![](/assets/images/content/devtools-usage-03.png)
 
-The `create page` allows you to create products applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
+`Створити сторінку` дозволяє створювати продукти із виконанням перевірок, що визначені у моделі продуктів. Phalcon автоматично перевіряє поля на предмет їх заповнення, попереджаючи, якщо воно обов'язкове.
 
 ![](/assets/images/content/devtools-usage-04.png)
 
-After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
+Після виконання пошуку, відповідний компонент розділить отримані результати на окремі сторінки. Використовуйте посилання "Редагувати" або "Видалити" перед кожним результатом для виконання таких дій.
 
 ![](/assets/images/content/devtools-usage-05.png)
 
-### Web Interface to Tools
+### Веб-інтерфейс для інструментів
 
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
+Також, якщо бажаєте, можна використати інструменти розробника Phalcon через веб-інтерфейс. Перегляньте наступний ролик, щоб з'ясувати, як це працює:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen mark="crwd-mark"></iframe>
 </div>
 
-### Integrating Tools with PhpStorm IDE
+### Поєднання інструментів з PhpStorm IDE
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+Нижче показаний ролик про те, як поєднати інструменти розробника з [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). Налаштування можуть бути легко адаптовані для інших IDE під PHP.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
