@@ -75,9 +75,9 @@ tests/Unit/
 
 ### Phalcon Incubator Test
 
-Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
+Phalcon надає тестову бібліотеку, яка містить декілька абстрактних класів, які можна використовувати для завантаження Unit тестів. Ці файли існують у репозиторії [Phalcon Incubator Test](https://github.com/phalcon/incubator-test).
 
-You can use the Incubator test library by adding it as a dependency:
+Ви можете використати бібліотеку тестів Incubator, додавши її як залежність:
 
 ```bash
 composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
@@ -93,11 +93,11 @@ composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 }
 ```
 
-## Creating a Unit Test
+## Створення Unit тесту
 
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Завжди розумно автоматично завантажувати ваші класи за допомогою просторів імен. Конфігурація нижче передбачає, що ви використовуєте PSR-4 для автоматичного завантаження класів проекту через конфігурацію composer. Якщо так робити, то автозавантажувача перевірятиме, чи правильні файли завантажені, тому все, що вам залишиться зробити - це створити файли проекту і phpunit буде запускати тести для вас.
 
-This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
+Цей приклад не містить файла конфігурації, оскільки більшість випадків вам слід придумати самостійно, залежно від особливостей вашого проекту. Якщо він вам буде потрібен, то можете додати його до `DI` в `AbstractUnitTest`.
 
 ### Abstract Unit Test
 First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
