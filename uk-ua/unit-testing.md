@@ -7,15 +7,15 @@ layout: default language: 'uk-ua' version: '4.0' title: 'Юніт-тестува
 
 ## Огляд
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Написання правильних тестів може допомогти у написанні кращого програмного забезпечення. Якщо ви правильно визначите потенційні проблемні ситуації для тестування, то зможете уникнути більшості функціональних помилок і краще підтримуватимете ваше програмне забезпечення.
 
-## Integrating PHPUnit with Phalcon
+## Поєднання PHPUnit з Phalcon
 
 ```bash
 composer require --dev phpunit/phpunit:^9.0
 ```
 
-or by manually adding it to `composer.json`:
+або додавши вручну у `composer.json`:
 
 ```json
 {
@@ -25,7 +25,7 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
+Як тільки PHPUnit буде встановлено, створіть теку з назвою `tests` у корені проекту, у яку додайте теку з назвою `Unit`:
 
 ```
 app/
@@ -34,9 +34,9 @@ public/
 tests/Unit/
 ```
 
-### Configure Test Namespace
+### Налаштування простору імен для тестів
 
-In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
+Для того щоб автоматично завантажити наш тестовий каталог, ми повинні додати наш тестовий простір імен в composer. Додайте нижче зазначений код до composer та змініть його відповідно до ваших потреб.
 
 ```json
 {
@@ -48,11 +48,11 @@ In order to autoload our test directory, we must add our test namespace to compo
 }
 ```
 
-Now, create a `phpunit.xml` file as follows:
+Тепер створіть файл `phpunit.xml` наступним чином:
 
-### The `phpunit.xml` file
+### Файл `phpunit.xml`
 
-Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
+Змініть зазначений нижче код `phpunit.xml`, щоб він відповідав вашим потребам, і збережіть його в кореневій теці вашого проекту. Це дозволить запускати всі тести з теки `tests/Unit`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -83,7 +83,7 @@ You can use the Incubator test library by adding it as a dependency:
 composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 ```
 
-or by manually adding it to `composer.json`:
+або додавши вручну у `composer.json`:
 
 ```json
 {
