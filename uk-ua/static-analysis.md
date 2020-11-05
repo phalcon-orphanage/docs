@@ -20,7 +20,7 @@ Using a static analysis tool in your project can dramatically increase your code
 composer require --dev vimeo/psalm:^3.11
 ```
 
-or by manually adding it to `composer.json`:
+або додавши вручну у `composer.json`:
 
 ```json
 {
@@ -40,7 +40,7 @@ You can use the IDE Stubs library by adding it as a dependency:
 composer require --dev phalcon/ide-stubs:^v4.0
 ```
 
-or by manually adding it to `composer.json`:
+або додавши вручну у `composer.json`:
 
 ```json
 {
