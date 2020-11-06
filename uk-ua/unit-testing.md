@@ -99,8 +99,8 @@ composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 
 Цей приклад не містить файла конфігурації, оскільки більшість випадків вам слід придумати самостійно, залежно від особливостей вашого проекту. Якщо він вам буде потрібен, то можете додати його до `DI` в `AbstractUnitTest`.
 
-### Abstract Unit Test
-First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
+### Абстрактний юніт-тест
+Спочатку створіть базовий юніт тест під назвою `AbstractUnitTest.php` у теці `tests/Unit`:
 
 ```php
 <?php
@@ -134,16 +134,16 @@ abstract class AbstractUnitTest extends UnitTestCase
     {
         if (!$this->loaded) {
             throw new IncompleteTestError(
-                "Please run parent::setUp()."
+                "Будь ласка запустіть parent::setUp()."
             );
         }
     }
 }
 ```
 
-### Your First Test
+### Ваш перший тест
 
-Create the test below and save it in your `tests/Unit` directory.
+Створіть зазначений нижче тест і збережіть його у теці `tests/Unit`.
 
 ```php
 <?php
@@ -159,32 +159,32 @@ class UnitTest extends AbstractUnitTest
         $this->assertEquals(
             "roman",
             "roman",
-            "This will pass"
+            "Цей буде успішним"
         );
 
         $this->assertEquals(
             "hope",
             "ava",
-            "This will fail"
+            "Цей буде невдалим"
         );
     }
 }
 ```
 
-If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
+Якщо вам потрібно змінити метод `setUp`, то важливо викликати батьківський метод також, а інакше Phalcon не ініціюється правильно.
 ```php
     protected function setUp(): void
     {
         parent::setUp();
 
-        //some setup mocks
+        //Деякі базові видозміни
     }
 
 ```
 
-### Running Unit Tests
+### Запуск юніт-тестів
 
-When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
+Коли ви виконаєте `vendor/bin/phpunit` в командному рядку, то отримаєте такий результат:
 
 ```bash
 $ phpunit
@@ -196,11 +196,11 @@ Configuration: /var/www//phpunit.xml
 
 Time: 3 ms, Memory: 3.25Mb
 
-There was 1 failure:
+Мала місце 1 помилка:
 
 1) Test\Unit\UnitTest::testTestCase
-This will fail
-Failed asserting that two strings are equal.
+Цей буде невдалим
+Хибне твердження, що тих дві стрічки однакові.
 --- Expected
 +++ Actual
 @@ @@
@@ -213,8 +213,8 @@ FAILURES!
 Tests: 1, Assertions: 2, Failures: 1.
 ```
 
-## Resources
-- [PHPUnit Documentation](https://phpunit.de/documentation.html)
-- [Getting Started with TDD in PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
-- [Writing Great Unit Tests](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
-- [What Is Mocking In PHP Unit Testing](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)
+## Ресурси
+- [Документація з PHPUnit](https://phpunit.de/documentation.html)
+- [Початок роботи з TDD в PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
+- [Виписування видатних юніт-тестів](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
+- [Що таке Mocking в PHP-тестуванні одиниць](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)
