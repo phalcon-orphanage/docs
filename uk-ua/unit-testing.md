@@ -7,15 +7,15 @@ layout: default language: 'uk-ua' version: '4.0' title: 'Юніт-тестува
 
 ## Огляд
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Написання правильних тестів може допомогти у написанні кращого програмного забезпечення. Якщо ви правильно визначите потенційні проблемні ситуації для тестування, то зможете уникнути більшості функціональних помилок і краще підтримуватимете ваше програмне забезпечення.
 
-## Integrating PHPUnit with Phalcon
+## Поєднання PHPUnit з Phalcon
 
 ```bash
 composer require --dev phpunit/phpunit:^9.0
 ```
 
-or by manually adding it to `composer.json`:
+або додавши вручну у `composer.json`:
 
 ```json
 {
@@ -25,7 +25,7 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
+Як тільки PHPUnit буде встановлено, створіть теку з назвою `tests` у корені проекту, у яку додайте теку з назвою `Unit`:
 
 ```
 app/
@@ -34,9 +34,9 @@ public/
 tests/Unit/
 ```
 
-### Configure Test Namespace
+### Налаштування простору імен для тестів
 
-In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
+Для того щоб автоматично завантажити наш тестовий каталог, ми повинні додати наш тестовий простір імен в composer. Додайте нижче зазначений код до composer та змініть його відповідно до ваших потреб.
 
 ```json
 {
@@ -48,11 +48,11 @@ In order to autoload our test directory, we must add our test namespace to compo
 }
 ```
 
-Now, create a `phpunit.xml` file as follows:
+Тепер створіть файл `phpunit.xml` наступним чином:
 
-### The `phpunit.xml` file
+### Файл `phpunit.xml`
 
-Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
+Змініть зазначений нижче код `phpunit.xml`, щоб він відповідав вашим потребам, і збережіть його в кореневій теці вашого проекту. Це дозволить запускати всі тести з теки `tests/Unit`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -75,15 +75,15 @@ Modify the `phpunit.xml` below to fit your needs and save it in your project roo
 
 ### Phalcon Incubator Test
 
-Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
+Phalcon надає тестову бібліотеку, яка містить декілька абстрактних класів, які можна використовувати для завантаження Unit тестів. Ці файли існують у репозиторії [Phalcon Incubator Test](https://github.com/phalcon/incubator-test).
 
-You can use the Incubator test library by adding it as a dependency:
+Ви можете використати бібліотеку тестів Incubator, додавши її як залежність:
 
 ```bash
 composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 ```
 
-or by manually adding it to `composer.json`:
+або додавши вручну у `composer.json`:
 
 ```json
 {
@@ -93,14 +93,14 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-## Creating a Unit Test
+## Створення Unit тесту
 
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Завжди розумно автоматично завантажувати ваші класи за допомогою просторів імен. Конфігурація нижче передбачає, що ви використовуєте PSR-4 для автоматичного завантаження класів проекту через конфігурацію composer. Якщо так робити, то автозавантажувача перевірятиме, чи правильні файли завантажені, тому все, що вам залишиться зробити - це створити файли проекту і phpunit буде запускати тести для вас.
 
-This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
+Цей приклад не містить файла конфігурації, оскільки більшість випадків вам слід придумати самостійно, залежно від особливостей вашого проекту. Якщо він вам буде потрібен, то можете додати його до `DI` в `AbstractUnitTest`.
 
-### Abstract Unit Test
-First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
+### Абстрактний юніт-тест
+Спочатку створіть базовий юніт тест під назвою `AbstractUnitTest.php` у теці `tests/Unit`:
 
 ```php
 <?php
@@ -134,16 +134,16 @@ abstract class AbstractUnitTest extends UnitTestCase
     {
         if (!$this->loaded) {
             throw new IncompleteTestError(
-                "Please run parent::setUp()."
+                "Будь ласка запустіть parent::setUp()."
             );
         }
     }
 }
 ```
 
-### Your First Test
+### Ваш перший тест
 
-Create the test below and save it in your `tests/Unit` directory.
+Створіть зазначений нижче тест і збережіть його у теці `tests/Unit`.
 
 ```php
 <?php
@@ -159,32 +159,32 @@ class UnitTest extends AbstractUnitTest
         $this->assertEquals(
             "roman",
             "roman",
-            "This will pass"
+            "Цей буде успішним"
         );
 
         $this->assertEquals(
             "hope",
             "ava",
-            "This will fail"
+            "Цей буде невдалим"
         );
     }
 }
 ```
 
-If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
+Якщо вам потрібно змінити метод `setUp`, то важливо викликати батьківський метод також, а інакше Phalcon не ініціюється правильно.
 ```php
     protected function setUp(): void
     {
         parent::setUp();
 
-        //some setup mocks
+        //Деякі базові видозміни
     }
 
 ```
 
-### Running Unit Tests
+### Запуск юніт-тестів
 
-When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
+Коли ви виконаєте `vendor/bin/phpunit` в командному рядку, то отримаєте такий результат:
 
 ```bash
 $ phpunit
@@ -196,11 +196,11 @@ Configuration: /var/www//phpunit.xml
 
 Time: 3 ms, Memory: 3.25Mb
 
-There was 1 failure:
+Мала місце 1 помилка:
 
 1) Test\Unit\UnitTest::testTestCase
-This will fail
-Failed asserting that two strings are equal.
+Цей буде невдалим
+Хибне твердження, що тих дві стрічки однакові.
 --- Expected
 +++ Actual
 @@ @@
@@ -213,8 +213,8 @@ FAILURES!
 Tests: 1, Assertions: 2, Failures: 1.
 ```
 
-## Resources
-- [PHPUnit Documentation](https://phpunit.de/documentation.html)
-- [Getting Started with TDD in PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
-- [Writing Great Unit Tests](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
-- [What Is Mocking In PHP Unit Testing](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)
+## Ресурси
+- [Документація з PHPUnit](https://phpunit.de/documentation.html)
+- [Початок роботи з TDD в PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
+- [Виписування видатних юніт-тестів](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
+- [Що таке Mocking в PHP-тестуванні одиниць](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)

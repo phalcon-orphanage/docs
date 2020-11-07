@@ -614,7 +614,7 @@ The default rendering engine for the view component is PHP. As a result all view
 
 Assuming that the views directory is `app/views`, the view component will find automatically the following 3 view files:
 
-| Name              | File                             | Description                                                                                         |
+| Name              | Файл                             | Description                                                                                         |
 | ----------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
 | Action View       | app/views/invoices/view.phtml    | Action related view. It only will be rendered when the `view` action is executed.                   |
 | Controller Layout | app/views/layouts/invoices.phtml | Controller related view. It will be rendered for every action executed in the `InvoicesController`. |
