@@ -705,9 +705,9 @@ $connection = new MySQL(
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\PdoFactory;
+use Phalcon\Db\Adapter\PdoFactory;
 
-$factory    = PdoFactory();
+$factory    = new PdoFactory();
 $connection = $factory
     ->newInstance(
         'mysql',
@@ -740,7 +740,7 @@ You can also use the `load()` method to create an adapter using a configuration 
 
 use Phalcon\Config\Adapter\Ini;
 use Phalcon\Di;
-use Phalcon\Db\Adapter\Pdo\Factory;
+use Phalcon\Db\Adapter\PdoFactory;
 
 $container = new Di();
 
@@ -751,7 +751,7 @@ $container->set('config', $config);
 $container->set(
     'db', 
     function () {
-        return (new Factory())->load($this->config->database);
+        return (new PdoFactory())->load($this->config->database);
     }
 );
 ```
