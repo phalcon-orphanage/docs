@@ -140,7 +140,7 @@ Our API provides information about `robots`, these data are stored in a database
 namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
+use Phalcon\Messages\Message;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness
 use Phalcon\Validation\Validator\InclusionIn;
@@ -185,10 +185,8 @@ class Robots extends Model
             );
         }
 
-        // Check if any messages have been produced
-        if ($this->validationHasFailed() === true) {
-            return false;
-        }
+        // Validate the validator
+        return $this->validate($validator);
     }
 }
 ```
