@@ -176,10 +176,9 @@ class Robots extends Model
                 new Message('The year cannot be less than zero')
             );
         }
-
-        if ($this->validationHasFailed() === true) {
-            return false;
-        }
+        
+        // Validate the validator
+        return $this->validate($validator);
     }
 }
 ```
