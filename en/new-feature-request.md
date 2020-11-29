@@ -2,13 +2,19 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'New Feature Request'
+keywords: 'new feature request, nfr'
 ---
 # New Feature Request
 <hr/>
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
+[List of NFRs](new-feature-request-list)
 
 A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
 A NFR contains:
+
 * Suggested syntax
 * Suggested class names and methods
 * A description detailing the usage
@@ -16,9 +22,11 @@ A NFR contains:
 * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
 
 In the following cases a new feature request will be rejected **if**:
+
 * The feature makes the framework slow
 * The feature does not provide any additional value to the framework
 * The NFR is not clear, bad documentation, unclear explanation, etc.
+* The NFR has not been discussed with the Team or voted by the community
 * The NFR does not follow the current guidelines/philosophy of the framework
 * The NFR affects/breaks applications developed in current/older versions of the framework
 * The original poster does not provide feedback/input when requested

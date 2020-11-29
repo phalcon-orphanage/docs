@@ -2,17 +2,42 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
+title: 'Запит на вдосконалення функціоналу'
+keywords: 'запит на вдосконалення функціоналу'
 ---
-# New Feature Request
+
+# Запит на вдосконалення функціоналу
 
 * * *
 
-A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-A NFR contains: * Suggested syntax * Suggested class names and methods * A description detailing the usage * How it can benefit the framework and the community * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
+[Список ЗНФ](new-feature-request-list)
 
-In the following cases a new feature request will be rejected **if**: * The feature makes the framework slow * The feature does not provide any additional value to the framework * The NFR is not clear, bad documentation, unclear explanation, etc. * The NFR does not follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster does not provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) * Uses static methods - (not allowed)
+ЗНФ - це стисло задокументоване пояснення як нова функція повинна працювати та як її реалізувати, викладене таким чином, щоб ключові та інші розробники Phalcon однозначно зрозуміли вашу пропозицію, та змогли її втілити.
 
-To send a NFR you do not need to provide Zephir or C code or develop the feature. New Feature requests explain the goal of the intended implementation and start a discussion on how best to implement it.
+ЗНФ містить:
 
-All NFRs should be posted as a new issue on [GitHub](https://github.com/phalcon/cphalcon/issues). Please make sure to use the prefix `[NFR]` in the title of your issue.
+* Пропонований синтаксис
+* Запропоновані імена класів і методи
+* Опис особливостей використання
+* Яку користь це принесе спільноті та фреймворку
+* Якщо ця функція вже впроваджена в інших фреймворках, тоді надати коротке пояснення того, як це було реалізовано і його переваги
+
+Запит на вдосконалення функціоналу буде відхилено **, якщо**:
+
+* Функція робить фреймворк повільним
+* Функція не створює додаткової цінності (переваг) фреймворку
+* ЗНФ незрозумілий, неякісна документація, незрозуміле пояснення тощо.
+* ЗНФ не обговорювався з командою чи не має голосів на підтримку від спільноти
+* ЗНФ не відповідає стратегії розвитку/філософії фреймворка
+* ЗНФ негативно вплине/поламає продукти, розроблені на базі актуальної чи попередніх версій фреймворка
+* З автором ЗНФ відсутній зворотній зв'язок/реакція на запитання чи уточнення з боку спільноти і розробників
+* Технічно неможливо це реалізувати
+* Він може бути використаний тільки в стадіях розробки/тестування
+* Представлені/запропоновані класи/компоненти не відповідають [Принципу однозначної відповідальності](https://en.wikipedia.org/wiki/Single_responsibility_principle)
+* Використовує статичні методи - (не дозволено)
+
+Щоб надіслати ЗНФ вам не потрібно надавати готовий код у Zephir або C, або розробляти готову функцію завчасно. Запити на новий функціонал покликані пояснити мету такої реалізації та ініціювати дискусію про те, як найкраще реалізувати такий функціонал.
+
+Всі ЗНФ мають бути додані в якості нової проблеми на [GitHub](https://github.com/phalcon/cphalcon/issues). Будь ласка, не забувайте використовувати префікс `[NFR]` у назві вашого запиту.

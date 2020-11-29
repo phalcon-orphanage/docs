@@ -4,7 +4,7 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Εισαγωγή",
                 "url": "/introduction"
             },
             {
@@ -39,11 +39,11 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Δημιουργία Οπισθοεντοπισμού",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Αναπαραγώγιμες Δοκιμές",
                 "url": "/reproducible-tests"
             },
             {
@@ -51,7 +51,7 @@
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "Πρότυπο Κωδικοποίησης",
                 "url": "/coding-standard"
             }
         ]
@@ -75,6 +75,10 @@
         "url": "",
         "menu": [
             {
+                "text": "Devilbox",
+                "url": "/environments-devilbox"
+            },
+            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
             }
@@ -89,8 +93,16 @@
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Εντοπισμός σφαλμάτων",
                 "url": "/debug"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
+            },
+            {
+                "text": "Unit Testing",
+                "url": "/unit-testing"
             }
         ]
     },
@@ -99,7 +111,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "Βασικό",
                 "url": "/tutorial-basic"
             },
             {
@@ -115,11 +127,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Περίπτωση Χρήσης",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "Απόδοση",
                 "url": "/performance"
             }
         ]
@@ -145,7 +157,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI Κοντέινερ",
                 "url": "/di"
             },
             {
@@ -153,7 +165,7 @@
                 "url": "/mvc"
             },
             {
-                "text": "Namespaces",
+                "text": "Χώροι ονομάτων",
                 "url": "/namespaces"
             }
         ]
@@ -167,7 +179,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Ρυθμίσεις",
                 "url": "/config"
             },
             {
@@ -201,40 +213,44 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Μοντέλα",
                 "url": "/db-models"
             },
             {
-                "text": "Behaviors",
+                "text": "Συμπεριφορές",
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Γεγονότα",
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Μεταδεδομένα",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Σχέσεις",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Συναλλαγές",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Επικυρωτές",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "Σελιδοποίηση",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -243,7 +259,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Πόροι",
                 "url": "/assets"
             },
             {
@@ -263,7 +279,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -285,7 +301,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Ελεγκτές",
                 "url": "/controllers"
             },
             {
@@ -297,11 +313,11 @@
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Φίλτρα",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Δρομολόγηση",
                 "url": "/routing"
             },
             {
@@ -337,7 +353,7 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Ασφάλεια",
         "url": "",
         "menu": [
             {
@@ -345,7 +361,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Ασφάλεια",
                 "url": "/security"
             }
         ]
@@ -359,12 +375,44 @@
                 "url": "/logger"
             },
             {
-                "text": "PSR-0, PSR-4 Loader",
+                "text": "PSR-0, PSR-4 Φορτωτής",
                 "url": "/loader"
             },
             {
-                "text": "PSR-7 Request",
+                "text": "PSR-7 HTTP Request",
                 "url": "/http-request"
+            },
+            {
+                "text": "PSR-7 HTTP Response",
+                "url": "/http-response"
+            },
+            {
+                "text": "PSR-7 HTTP Server Request",
+                "url": "/http-server-request"
+            },
+            {
+                "text": "PSR-7 HTTP Stream",
+                "url": "/http-stream"
+            },
+            {
+                "text": "PSR-7 HTTP UploadedFile",
+                "url": "/http-uploaded-file"
+            },
+            {
+                "text": "PSR-7 HTTP Uri",
+                "url": "/http-uri"
+            },
+            {
+                "text": "PSR-11 Container",
+                "url": "/container"
+            },
+            {
+                "text": "PSR-13 HTML Links",
+                "url": "/html-link"
+            },
+            {
+                "text": "PSR-17 HTTP Factories",
+                "url": "/http-factories"
             }
         ]
     },
@@ -373,29 +421,37 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Διεθνοποίηση",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Μετάφραση",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "Εργαλεία",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Συλλογή",
                 "url": "/collection"
             },
             {
-                "text": "Helper",
+                "text": "Τομέας",
+                "url": "/domain"
+            },
+            {
+                "text": "HTML",
+                "url": "/html"
+            },
+            {
+                "text": "Βοηθοί",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "Μητρώο",
                 "url": "/registry"
             }
         ]

@@ -2,22 +2,72 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Configuración de Servidor Web'
+keywords: 'servidor web, servidor web, apache, nginx, lighttpd, xampp, wamp, cherokee, servidor integrado php'
 ---
+
 # Configuración de Servidor Web
 
 * * *
 
-## Overview
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
+## Preámbulo
+
+Para que funcione la ruta de una aplicación de Phalcon necesitará configurar su servidor web de forma que procese las redirecciones correctamente. A continuación hay instrucciones para los servidores web populares:
+
+## PHP *Built-in*
+
+El servidor web integrado de PHP no es recomiendo para aplicaciones en producción. Puedes usarlo muy fácilmente para propósitos de desarrollo. La sintaxis es:
+
+```bash
+$(which php) -S <host>:<port> -t <directory> <setup file>
+```
+
+Si tu aplicación tiene su punto de entrada en `/public/index.php` o su proyecto ha sido creado por [Phalcon Devtools](devtools), entonces puedes iniciar el servidor web con el siguiente comando:
+
+```bash
+$(which php) -S localhost:8000 -t public .htrouter.php
+```
+
+El comando anterior lo hace:
+
+- `$(which php)` insertará la ruta absoluta a su PHP binario
+- `-S localhost:8000` invoca el modo de servidor con `host:puerto` proporcionado
+- `-t public` define el directorio raíz de los servidores, es necesario para php para las solicitudes de ruta a activos como JS, CSS e imágenes en el directorio público
+- `.htrouter.php` el punto de entrada que será evaluado para cada solicitud
+
+El archivo `.htrouter.php` debe contener:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+$uri = urldecode(
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);
+
+if ($uri !== '/' && file_exists(__DIR__ . '/public' . $uri)) {
+    return false;
+}
+
+$_GET['_url'] = $_SERVER['REQUEST_URI'];
+
+require_once __DIR__ . '/public/index.php';
+```
+
+Si tu punto de entrada no es `public/index.php`, entonces ajusta el archivo `.htrouter.php` consecuentemente (la última línea) así como la llamada al *script*. También puede cambiar el puerto si lo desea, así como la interfaz de red a la que se une.
+
+Después de ejecutar el comando anterior, al navegar a `http://localhost:8000/` mostrará su sitio.
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
+Generalmente se usa [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) para procesar archivos PHP. Hoy en día PHP-FPM está incluído en todas las distribuciones Linux.
 
-On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+En **Windows** PHP-FPM está en el archivo de distribución de PHP. El archivo `php-cgi.exe` puede utilizarse para iniciar el proceso y establecer las opciones. Windows no soporta sockets unix por lo que este script empezará fast-cgi en TCP en el puerto `9000`.
 
-Create the file `php-fcgi.bat` with the following contents:
+Crear el archivo `php-fcgi.bat` con el siguiente contenido:
 
 ```bat
 @ECHO OFF
@@ -26,135 +76,122 @@ set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
-## PHP Built-In Webserver (For Developers)
+## nginx
 
-To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
+[nginx](https://wiki.nginx.org/Main) es un servidor y proxy inverso gratuito y de código abierto de alto desempeño, así como un servidor proxy para IMAP/POP3. A diferencia de los tradicionales servidores, nginx no se basa en hilos para procesar las solicitudes. En lugar de esto, utiliza una arquitectura basada en eventos (asíncrona) que es más escalable. Esta arquitectura utiliza pequeñas cantidades de memoria, pero más importante, predecibles bajo carga.
 
-### Configuración de Phalcon
-
-To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file: [.htrouter[[htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php).
-
-If you created your application with [Phalcon-Devtools](devtools) this file should already exist in the root directory of your project and you can start the server with the following command:
-
-```bash
-$(which php) -S localhost:8000 -t public .htrouter.php
-```
-
-The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
-
-Then point your browser to https://localhost:8000/ to check if everything is working.
-
-## Nginx
-
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
-
-Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+Phalcon con nginx y PHP-FPM proveen un set de herramientas poderoso para ofrecer el mejor desempeño para tus aplicaciones PHP.
 
 ### Instalar Nginx
 
-[NginX Offical Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[Sitio oficial de nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
 ### Configuración de Phalcon
 
-You can use following potential configuration to setup Nginx with Phalcon:
+Puede utilizar la siguiente configuración posible para configurar Nginx con Phalcon:
 
-```nginx
-server {
-    # Port 80 will require Nginx to be started with root permissions
-    # Depending on how you install Nginx to use port 80 you will need
-    # to start the server with `sudo` ports about 1000 do not require
-    # root privileges
-    # listen      80;
-
-    listen        8000;
-    server_name   default;
-
-    ##########################
-    # In production require SSL
-    # listen 443 ssl default_server;
-
-    # ssl on;
-    # ssl_session_timeout  5m;
-    # ssl_protocols  SSLv2 SSLv3 TLSv1;
-    # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
-    # ssl_prefer_server_ciphers   on;
-
-    # These locations depend on where you store your certs
-    # ssl_certificate        /var/nginx/certs/default.cert;
-    # ssl_certificate_key    /var/nginx/certs/default.key;
-    ##########################
-
-    # This is the folder that index.php is in
-    root /var/www/default/public;
-    index index.php index.html index.htm;
-
-    charset utf-8;
-    client_max_body_size 100M;
-    fastcgi_read_timeout 1800;
-
-    # Represents the root of the domain
-    # https://localhost:8000/[index.php]
-    location / {
-        # Matches URLS `$_GET['_url']`
-        try_files $uri $uri/ /index.php?_url=$uri&$args;
-    }
-
-    # When the HTTP request does not match the above
-    # and the file ends in .php
-    location ~ [^/]\.php(/|$) {
-        # try_files $uri =404;
-
-        # Ubuntu and PHP7.0-fpm in socket mode
-        # This path is dependent on the version of PHP install
-        fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
-
-
-        # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
-        # You will need to configure FPM to listen on a standard port
-        # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
-        # fastcgi_pass  127.0.0.1:9000;
-
-        fastcgi_index /index.php;
-
-        include fastcgi_params;
-        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-        if (!-f $document_root$fastcgi_script_name) {
-            return 404;
+    server {
+        # Port 80 will require nginx to be started with root permissions
+        # Depending on how you install nginx to use port 80 you will need
+        # to start the server with `sudo` ports about 1000 do not require
+        # root privileges
+        # listen      80;
+    
+        listen        8000;
+        server_name   default;
+    
+        ##########################
+        # In production require SSL
+        # listen 443 ssl default_server;
+    
+        # ssl on;
+        # ssl_session_timeout  5m;
+        # ssl_protocols  SSLv2 SSLv3 TLSv1;
+        # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+        # ssl_prefer_server_ciphers   on;
+    
+        # These locations depend on where you store your certs
+        # ssl_certificate        /var/nginx/certs/default.cert;
+        # ssl_certificate_key    /var/nginx/certs/default.key;
+        ##########################
+    
+        # This is the folder that index.php is in
+        root /var/www/default/public;
+        index index.php index.html index.htm;
+    
+        charset utf-8;
+        client_max_body_size 100M;
+        fastcgi_read_timeout 1800;
+    
+        # Represents the root of the domain
+        # https://localhost:8000/[index.php]
+        location / {
+            # Matches URLS `$_GET['_url']`
+            try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
-
-        fastcgi_param PATH_INFO       $fastcgi_path_info;
-        # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-        # and set php.ini cgi.fix_pathinfo=0
-
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    
+        # When the HTTP request does not match the above
+        # and the file ends in .php
+        location ~ [^/]\.php(/|$) {
+            # try_files $uri =404;
+    
+            # Ubuntu and PHP7.0-fpm in socket mode
+            # This path is dependent on the version of PHP install
+            fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
+    
+    
+            # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
+            # You will need to configure FPM to listen on a standard port
+            # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
+            # fastcgi_pass  127.0.0.1:9000;
+    
+            fastcgi_index /index.php;
+    
+            include fastcgi_params;
+            fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+            if (!-f $document_root$fastcgi_script_name) {
+                return 404;
+            }
+    
+            fastcgi_param PATH_INFO       $fastcgi_path_info;
+            # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+            # and set php.ini cgi.fix_pathinfo=0
+    
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+    
+        location ~ /\.ht {
+            deny all;
+        }
+    
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires       max;
+            log_not_found off;
+            access_log    off;
+        }
     }
+    
 
-    location ~ /\.ht {
-        deny all;
-    }
+### Comienzar
 
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-        expires       max;
-        log_not_found off;
-        access_log    off;
-    }
-}
+Dependiendo de su sistema, el comando para iniciar *nginx* podría ser uno de los siguientes:
+
+```bash
+start nginx
+/etc/init.d/nginx start
+service nginx start
 ```
-
-### Iniciar Nginx
-
-Usually `start nginx` from the command line but this depends on your installation method.
 
 ## Apache
 
-[Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](https://httpd.apache.org/) es un servidor web popular y bien conocido disponible en muchas plataformas.
 
 ### Configuración de Phalcon
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). Commonly an application has the following structure:
+Las siguientes son posibles configuraciones que puedes usar para configurar Apache con Phalcon. Estas notas están principalmente enfocadas a la configuración del módulo `mod_rewrite` permitiendo usar URLs amigables y el [componente router](routing). Una estructura de directorio común para una aplicación es:
 
 ```bash
-test/
+tutorial/
   app/
     controllers/
     models/
@@ -166,161 +203,271 @@ test/
     index.php
 ```
 
-#### Raíz de documentos
+**Raíz de documentos** El caso más común es que una aplicación se instale en un directorio bajo la raíz del documento. Si ese es el caso, podemos usar archivos `.htaccess`. La primera se utilizará para ocultar el código de la aplicación reenviando todas las solicitudes a la raíz de documentos de la aplicación (`public/`).
 
-This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
-
-> Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> **NOTA:** Tenga en cuenta que la utilización de archivos `.htaccess` requiere que la instalación de apache tenga la opción `AllowOverride All`.
  {: .alert .alert-warning}
 
-```apacheconfig
-# test/.htaccess
-
-<IfModule mod_rewrite.c>
-    RewriteEngine on
-    RewriteRule   ^$ public/    [L]
-    RewriteRule   ((?s).*) public/$1 [L]
-</IfModule>
-```
-
-A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
-
-```apacheconfig
-# test/public/.htaccess
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond   %{REQUEST_FILENAME} !-d
-    RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
-</IfModule>
-```
-
-For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
-
-```apacheconfig
-# test/public/.htaccess
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond   %{REQUEST_FILENAME} !-d
-    RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
-</IfModule>
-```
-
-If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
-
-#### Configuración de Apache
-
-If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
-
-```apacheconfig
-<IfModule mod_rewrite.c>
-
-    <Directory "/var/www/test">
+# tutorial/.htaccess
+    
+    <IfModule mod_rewrite.c>
         RewriteEngine on
-        RewriteRule  ^$ public/    [L]
-        RewriteRule  ((?s).*) public/$1 [L]
-    </Directory>
+        RewriteRule   ^$ public/    [L]
+        RewriteRule   ((?s).*) public/$1 [L]
+    </IfModule>
+    
 
-    <Directory "/var/www/test/public">
+Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este reescribe todas las URIs hacia el archivo `public/index.php`:
+
+    # tutorial/public/.htaccess
+    
+    <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond   %{REQUEST_FILENAME} !-d
         RewriteCond   %{REQUEST_FILENAME} !-f
         RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
-    </Directory>
+    </IfModule>
+    
 
-</IfModule>
-```
+**Caracteres Internacionales** Para los usuarios que usan la letra persa 'م' (meem) en los parámetros uri, existe un problema con `mod_rewrite`. Para permitir que la coincidencia funcione como lo hace con los caracteres en inglés, deberá cambiar su archivo `.htaccess`:
+
+    # tutorial/public/.htaccess
+    
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond   %{REQUEST_FILENAME} !-d
+        RewriteCond   %{REQUEST_FILENAME} !-f
+        RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
+    </IfModule>
+    
+
+Si su uri contiene caracteres distintos al inglés, puede que necesite recurrir al cambio anterior para permitir que `mod_rewrite` coincida exactamente con su ruta.
+
+#### Configuración de Apache
+
+Si no desea utilizar archivos `.htaccess`, puede mover las directivas al archivo principal de configuración de Apache:
+
+    <IfModule mod_rewrite.c>
+    
+        <Directory "/var/www/test">
+            RewriteEngine on
+            RewriteRule  ^$ public/    [L]
+            RewriteRule  ((?s).*) public/$1 [L]
+        </Directory>
+    
+        <Directory "/var/www/tutorial/public">
+            RewriteEngine On
+            RewriteCond   %{REQUEST_FILENAME} !-d
+            RewriteCond   %{REQUEST_FILENAME} !-f
+            RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+        </Directory>
+    
+    </IfModule>
+    
 
 #### Hosts virtuales
 
-And this second configuration allows you to install a Phalcon application in a virtual host:
+La siguiente configuración es para cuando quiera instalar su aplicación en un host virtual:
 
-```apacheconfig
-<VirtualHost *:80>
+    <VirtualHost *:80>
+    
+        ServerAdmin    admin@example.host
+        DocumentRoot   "/var/vhosts/tutorial/public"
+        DirectoryIndex index.php
+        ServerName     example.host
+        ServerAlias    www.example.host
+    
+        <Directory "/var/vhosts/tutorial/public">
+            Options       All
+            AllowOverride All
+            Require       all granted
+        </Directory>
+    
+    </VirtualHost>
+    
 
-    ServerAdmin    admin@example.host
-    DocumentRoot   "/var/vhosts/test/public"
-    DirectoryIndex index.php
-    ServerName     example.host
-    ServerAlias    www.example.host
+## Lighttpd
 
-    <Directory "/var/vhosts/test/public">
-        Options       All
-        AllowOverride All
-        Require       all granted
-    </Directory>
+[lighttpd](https://redmine.lighttpd.net/) (pronunciado "*lighty*", en español "ligereza") es un servidor web de código abierto optimizado para entornos críticos de velocidad, al tiempo que se mantienen estándares, seguridad y flexibilidad. Originalmente fue escrito por Jan Kneschke como una prueba del concepto del problema del c10k – cómo manejar 10.000 conexiones en paralelo en un servidor, pero ha ganado popularidad mundial. Su nombre es una combinación de "light" y "httpd".
 
-</VirtualHost>
+### Instalar lighttpd
+
+[Sitio oficial de lighttpd](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
+
+Puede utilizar la siguiente configuración posible para configurar lighttpd con Phalcon:
+
+```nginx
+server.modules = (
+        "mod_indexfile",
+        "mod_access",
+        "mod_alias",
+        "mod_redirect",
+        "mod_rewrite",
+)
+
+server.document-root        = "/var/www/html/public"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.username             = "www-data"
+server.groupname            = "www-data"
+server.port                 = 80
+
+# strict parsing and normalization of URL for consistency and security
+# https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_http-parseoptsDetails
+# (might need to explicitly set "url-path-2f-decode" = "disable"
+#  if a specific application is encoding URLs inside url-path)
+server.http-parseopts = (
+  "header-strict"           => "enable",# default
+  "host-strict"             => "enable",# default
+  "host-normalize"          => "enable",# default
+  "url-normalize-unreserved"=> "enable",# recommended highly
+  "url-normalize-required"  => "enable",# recommended
+  "url-ctrls-reject"        => "enable",# recommended
+  "url-path-2f-decode"      => "enable",# recommended highly (unless breaks app)
+ #"url-path-2f-reject"      => "enable",
+  "url-path-dotseg-remove"  => "enable",# recommended highly (unless breaks app)
+ #"url-path-dotseg-reject"  => "enable",
+ #"url-query-20-plus"       => "enable",# consistency in query string
+)
+
+index-file.names            = ( "index.php", "index.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.conf.pl"
+include "/etc/lighttpd/conf-enabled/*.conf"
+
+#server.compat-module-load   = "disable"
+server.modules += (
+        "mod_compress",
+        "mod_dirlisting",
+        "mod_staticfile",
+)
+
+url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_url=$1" )
+# or
+#url.rewrite-if-not-file = ( "/" => "/index.php?_rl=$1" )
 ```
 
 ## WAMP
 
-[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](https://www.wampserver.com/en/) es un entorno de desarrollo web para Windows. Te permite crear aplicaciones web con Apache2, PHP y una base de datos MySQL. A continuación te mostramos las instrucciones detalladas para instalar Phalcon en un servidor Wamp para Windows. Utilizar la última versión de WAMP Server es lo mas recomendable.
 
-### Download Phalcon
+> **NOTA** Desde v4, debe instalar la extensión `PSR` desde PECL. Visita [esta URL](https://pecl.php.net/package/psr/0.7.0/windows) para obtener las DLL y seguir los mismos pasos para instalar la extensión al igual que con las DLL de Phalcon.
+{: .alert .alert-warning }
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
+> 
+> **NOTA** Las rutas de esta guía deben ser relativas, de acuerdo a tu instalación de WAMP
+{: .alert .alert-warning }
+
+### Descargar Phalcon
+
+Para que Phalcon funcione en Windows, debe instalar la versión correcta que coincida con su arquitectura y extensión construida. Carga la página `phpinfo` proporcionada por WAMP:
+
+![](/assets/images/content/webserver-architecture.png)
+
+Compruebe los valores de `Architecture` y `Extension Build`. Esto le permitirá descargar la DLL correcta. En el ejemplo anterior debería descargar el archivo:
+
+    phalcon_x86_vc15_php7.2_4.0.0+4237.zip
+    
+
+que coincidirá con `x86`, `vc15` y `TS` que es *Thread Safe*. Si su sistema reporta `NTS` (*Non Thread Safe*) entonces debería descargar esa DLL.
+
+WAMP tiene dos versiones 32 y 64 bits. De la sección de descargas, puedes descargar la DLL de Phalcon que se adapte a tu instalación WAMP.
 
 Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
-![](/assets/images/content/webserver-xampp-1.png)
+![](/assets/images/content/webserver-zip-icon.png)
 
 Descomprime la biblioteca del archivo para obtener la DLL de Phalcon:
 
-![](/assets/images/content/webserver-xampp-2.png)
+![](/assets/images/content/webserver-extracted-dlls.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12).
+Copia el archivo `php_phalcon.dll` en la carpeta de extensiones de PHP. Si WAMP está instalado en la carpeta `C:\wamp`, la extensión debe ser ubicada en `C:\wamp\bin\php\php7.2.18\ext` (suponiendo que tu instalación de WAMP tiene instalado PHP 7.2.18).
 
-![](/assets/images/content/webserver-wamp-1.png)
+![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend Notepad++ to avoid issues with line endings. Agrega esto al final del archivo:
+Edita el archivo `php.ini`, se encuentra en `C:\wamp\bin\php\php7.2.18\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. Te recomendamos *Notepad++* para evitar problemas con los caracteres de fin de línea. Agrega esto al final del archivo:
 
-```ini extension=php_phalcon.dll
+```ini
+ extension=php_phalcon.dll
+```
 
-    <br />y guarda los cambios.
-    
-    ![](/assets/images/content/webserver-wamp-2.png)
-    
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
-    
-    ```ini
-    extension=php_phalcon.dll 
-    
+and save it.
 
-y guarda los cambios.
+![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
+
+Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agrega esto al final del archivo:
+
+```ini
+extension=php_phalcon.dll 
+```
+
+and save it.
+
+> **NOTA**: La ruta anterior se puede diferir dependiendo de la instalación de apache que tengas para tu servidor web. Ajústelo en consecuencia.
+{: .alert .alert-warning }
+
+> 
+> **NOTA**: Como se mencionó anteriormente la extensión `PSR` necesita ser instalada y cargada antes de Phalcon. Agregue la línea `extension=php_psr.dll` antes de la línea de Phalcon, como se muestra en la imagen anterior.
+{: .alert .alert-warning }
+
+![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
 
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
-![](/assets/images/content/webserver-wamp-3.png)
+![](/assets/images/content/webserver-wamp-manager.png)
 
-Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
+Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
 
-![](/assets/images/content/webserver-wamp-4.png)
+![](/assets/images/content/webserver-wamp-phalcon.png)
 
-Congratulations! You are now phlying with Phalcon.
+> **¡Felicitaciones! Ahora está volando con Phalcon.**
+{: .alert .alert-info }
 
 ## XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-### Download Phalcon
+> **NOTA** Desde v4, debe instalar la extensión `PSR` desde PECL. Visita [esta URL](https://pecl.php.net/package/psr/0.7.0/windows) para obtener las DLL y seguir los mismos pasos para instalar la extensión al igual que con las DLL de Phalcon.
+{: .alert .alert-warning }
+
+> 
+> **NOTA** Las rutas de esta guía deben ser relativas, de acuerdo a tu instalación de WAMP
+{: .alert .alert-warning }
+
+### Descargar Phalcon
+
+Para que Phalcon funcione en Windows, debe instalar la versión correcta que coincida con su arquitectura y extensión construida. Load up the `phpinfo` page provided by XAMPP:
+
+![](/assets/images/content/webserver-architecture.png)
+
+Compruebe los valores de `Architecture` y `Extension Build`. Esto le permitirá descargar la DLL correcta. En el ejemplo anterior debería descargar el archivo:
+
+    phalcon_x86_vc15_php7.2_4.0.0+4237.zip
+    
+
+que coincidirá con `x86`, `vc15` y `TS` que es *Thread Safe*. Si su sistema reporta `NTS` (*Non Thread Safe*) entonces debería descargar esa DLL.
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
 Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
-![](/assets/images/content/webserver-xampp-1.png)
+![](/assets/images/content/webserver-zip-icon.png)
 
 Descomprime la biblioteca del archivo para obtener la DLL de Phalcon:
 
-![](/assets/images/content/webserver-xampp-2.png)
+![](/assets/images/content/webserver-extracted-dlls.png)
 
 Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
-![](/assets/images/content/webserver-xampp-3.png)
+![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
 
 Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Agrega esto al final del archivo:
 
@@ -328,35 +475,24 @@ Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Puedes editarl
 extension=php_phalcon.dll
 ```
 
-y guarda los cambios.
+and save it.
 
-![](/assets/images/content/webserver-xampp-4.png)
+> **NOTA**: Como se mencionó anteriormente la extensión `PSR` necesita ser instalada y cargada antes de Phalcon. Agregue la línea `extension=php_psr.dll` antes de la línea de Phalcon, como se muestra en la imagen anterior.
+{: .alert .alert-warning }
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
+![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
 
-![](/assets/images/content/webserver-xampp-5.png)
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
-Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
+![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-![](/assets/images/content/webserver-xampp-6.png)
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the Phalcon extension has been loaded correctly.
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-![](/assets/images/content/webserver-xampp-7.png)
+> **¡Felicitaciones! Ahora está volando con Phalcon.**
+{: .alert .alert-info }
 
-If you can see the phalcon version in the `phpinfo()` output, congratulations!, You are now phlying with Phalcon.
-
-### Screencast
-
-The following screencast is a step by step guide to install Phalcon on Windows:
-
-<div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
-          frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
-  </iframe>
-</div>
 
 ## Cherokee
 
@@ -386,7 +522,7 @@ Normally this behavior does not require additional settings. Add another behavio
 
 ![](/assets/images/content/webserver-cherokee-5.jpg)
 
-In the 'Handler' tab choose `List & Send` as handler:
+In the `Handler` tab choose `List & Send` as handler:
 
 ![](/assets/images/content/webserver-cherokee-7.jpg)
 

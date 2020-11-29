@@ -2,77 +2,79 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Espacios de nombres'
+keywords: 'namespaces, namespaced classes'
 ---
+
 # Espacios de nombres
 
 * * *
 
-## Trabajando con Espacios de Nombres
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Los [Espacios de Nombres](https://php.net/manual/en/language.namespaces.php) se pueden utilizar para evitar colisiones de nombres de clase; esto significa que si tienes dos controladores en una aplicación con el mismo nombre, se puede utilizar un espacio de nombres para diferenciarlos. Los espacios de nombres también son útiles para crear paquetes o módulos.
+## Resumen
 
-## Configurando el framework
+[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
 
-El uso de espacios de nombres tiene algunas implicaciones al cargar el controlador apropiado. Para ajustar el comportamiento del framework a espacios de nombres, es necesario realizar una o todas las siguientes tareas:
+## Activation
 
-Usar una estrategia de autocarga que tome en cuenta los espacios de nombres, por ejemplo utilizando [Phalcon\Loader](api/Phalcon_Loader):
+If you decided to use namespaces for your application, you will need to instruct your autoloader on where your namespaces reside. This is the most common way to distinguish between namespaces in your application. If you chose to use the [Phalcon\Loader](loader) component, then you will need to register your namespaces accordingly:
 
 ```php
 <?php
 
 $loader->registerNamespaces(
     [
-       'Store\Admin\Controllers' => '../bundles/admin/controllers/',
-       'Store\Admin\Models'      => '../bundles/admin/models/',
+       'MyApp\Admin\Controllers' => '/app/web/admin/controllers/',
+       'MyApp\Admin\Models'      => '/app/web/admin/models/',
     ]
 );
 ```
 
-Especifíquelo en las rutas como un parámetro separado en las rutas de la ruta:
+You can also specify the namespace when defining your routes, using the [Router](routing) component:
 
 ```php
 <?php
 
 $router->add(
-    '/admin/users/my-profile',
+    '/admin/invoices/list',
     [
-        'namespace'  => 'Store\Admin',
-        'controller' => 'Users',
-        'action'     => 'profile',
+        'namespace'  => 'MyApp\Admin',
+        'controller' => 'Invoices',
+        'action'     => 'list',
     ]
 );
 ```
 
-Pasandolo como parte de la ruta:
+or passing it as part of the route as a parameter
 
 ```php
 <?php
 
 $router->add(
-    '/:namespace/admin/users/my-profile',
+    '/:namespace/invoices/list',
     [
         'namespace'  => 1,
-        'controller' => 'Users',
-        'action'     => 'profile',
+        'controller' => 'Invoices',
+        'action'     => 'list',
     ]
 );
 ```
 
-Si sólo está trabajando con el mismo espacio de nombres para cada controlador de la aplicación, entonces se puede definir un espacio de nombres predeterminado en el [despachador](dispatcher), haciendo esto, no necesita especificar un nombre de clase completo en la ruta del router:
+Finally, if you are only working with the same namespace for every controller, you can define a default namespace in your [Dispatcher](dispatcher). Doing so, you will not need to specify the full class in the router path:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Dispatcher;
 
-// Registrando un despachador
 $di->set(
     'dispatcher',
     function () {
         $dispatcher = new Dispatcher();
 
         $dispatcher->setDefaultNamespace(
-            'Store\Admin\Controllers'
+            'MyApp\Admin\Controllers'
         );
 
         return $dispatcher;
@@ -80,77 +82,79 @@ $di->set(
 );
 ```
 
-## Controladores en espacios de nombres
+## Controladores
 
-En el ejemplo siguiente se muestra cómo implementar un controlador que utiliza espacios de nombres:
+The following example shows how to implement a controller that uses namespaces:
 
 ```php
 <?php
 
-namespace Store\Admin\Controllers;
+namespace MyApp\Admin\Controllers;
 
 use Phalcon\Mvc\Controller;
 
-class UsersController extends Controller
+class InvoicesController extends Controller
 {
     public function indexAction()
     {
 
     }
 
-    public function profileAction()
+    public function listAction()
     {
 
     }
 }
 ```
 
-## Modelos en Espacios de Nombres
+## Modelos
 
-Tener en cuenta lo siguiente al utilizar modelos en los espacios de nombres:
+The following example shows a model that is namespaced:
 
 ```php
 <?php
 
-namespace Store\Models;
+namespace MyApp\Admin\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
 
 }
 ```
 
-Si los modelos tienen relaciones también debe incluir el espacio de nombres:
+If models have relationships they must include the namespace too:
 
 ```php
 <?php
 
-namespace Store\Models;
+namespace MyApp\Admin\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
         $this->hasMany(
-            'id',
-            'Store\Models\Parts',
-            'robots_id',
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
             [
-                'alias' => 'parts',
+                'alias' => 'customers',
             ]
         );
     }
 }
 ```
 
-En PHQL también debe escribir las declaraciones incluyendo los espacios de nombres:
+In PHQL you must write the statements including namespaces:
 
 ```php
 <?php
 
-$phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
+$phql = 'SELECT i.* '
+      . 'FROM MyApp\Admin\Models\Invoices i '
+      . 'JOIN MyApp\Admin\Models\Customers c';
 ```

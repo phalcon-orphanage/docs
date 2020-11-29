@@ -2,15 +2,20 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
+title: 'Αναπαραγώγιμες Δοκιμές'
+keywords: 'tests, testing, reproducible tests'
 ---
-# Reproducible Tests
+
+# Αναπαραγώγιμες Δοκιμές
 
 * * *
 
-> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
+> **NOTE**: If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
 {:.alert .alert-info}
 
-## Creating a small script
+## Creating a Small Script
 
 A small PHP file can be used to showcase how to reproduce the issue:
 
@@ -23,7 +28,6 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Files;
 use Phalcon\Http\Response\Cookies;
 
-
 $container = new FactoryDefault();
 
 // Register your custom services
@@ -34,7 +38,9 @@ $container['session'] = function() {
             'save_path' => '/tmp',
          ]
     );
+
     $session->setHandler($adapter);
+
     $session->start();
 
     return $session;
@@ -42,6 +48,7 @@ $container['session'] = function() {
 
 $container['cookies'] = function() {
     $cookies = new Cookies();
+
     $cookies->useEncryption(false);
 
     return $cookies;
@@ -52,12 +59,20 @@ class SomeClass extends Injectable
     public function someMethod()
     {
         $cookies = $this->getDI()->getCookies();
-        $cookies->set('mycookie', 'test', time() + 3600, '/');
+
+        $cookies->set(
+            'mycookie',
+            'test',
+            time() + 3600,
+            '/'
+        );
     }
 }
 
 $class = new MyClass();
+
 $class->setDI($container);
+
 $class->someMethod();
 
 $container['cookies']->send();
@@ -66,9 +81,9 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-### Database
+### Βάση Δεδομένων
 
-> Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
+> **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}
 
 ```php
@@ -97,9 +112,9 @@ $container->setShared(
 $result = $container['db']->query('SELECT * FROM customers');
 ```
 
-### Single/Multi-Module applications
+### Single/Multi-Module Applications
 
-> Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules
+> **NOTE**: Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules
 {:.alert .alert-info}
 
 ```php
@@ -113,6 +128,7 @@ $container = new FactoryDefault();
 // other services
 
 $application = new Application();
+
 $application->setDI($container);
 
 // register modules if any
@@ -139,6 +155,7 @@ $container = new FactoryDefault();
 // other services
 
 $application = new Application();
+
 $application->setDI($container);
 
 class IndexController extends Controller
@@ -159,7 +176,7 @@ $response = $application->handle(
 echo $response->getContent();
 ```
 
-### Micro application
+### Micro Application
 
 For micro applications, you can use the skeleton script below:
 
@@ -184,7 +201,7 @@ $application->handle(
 
 ### ORM
 
-> You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository).
+> **NOTE**: You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository).
 {:.alert .alert-info}
 
 ```php
@@ -211,13 +228,9 @@ $connection    = new Connection(
 $connection->setEventsManager($eventsManager);
 
 $eventsManager->attach(
-    'db',
+    'db:beforeQuery',
     function ($event, $connection) {
-        switch ($event->getType()) {
-            case 'beforeQuery':
-                echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
-                break;
-        }
+        echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
     }
 );
 
@@ -239,8 +252,10 @@ class User extends Model
 
     public static function createNewUserReturnId()
     {
-        $newUser        = new User();
+        $newUser = new User();
+
         $newUser->email = 'test';
+
         if (false === $newUser->save()) {
             return false;
         }

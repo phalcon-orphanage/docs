@@ -1,188 +1,139 @@
----
-layout: default
-language: 'tr-tr'
-version: '4.0'
----
-**This article reflects v3.4 and has not yet been revised**
+- - -
+layout: default language: 'en' version: '4.0' title: 'Unit Testing' keywords: 'unit testing, phpunit, phalcon'
+- - -
+# Unit Testing
+<hr />
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-<a name='overview'></a>
-
-# Genel Bakış
+## Genel Bakış
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
-<a name='integration'></a>
-
 ## Integrating PHPUnit with Phalcon
 
-If you don't already have phpunit installed, you can do it by using the following composer command:
-
 ```bash
-composer require phpunit/phpunit:^5.0
-```
-
-or by manually adding it to `composer.json`:
-
-```json
-<br />{
-    "require-dev": {
-        "phpunit/phpunit": "^5.0"
-    }
-}
-```
-
-Once PHPUnit is installed create a directory called `tests` in project root directory:
-
-    app/
-    public/
-    tests/
-    
-
-Next, we need a 'helper' file to bootstrap the application for unit testing.
-
-<a name='unit-helper'></a>
-
-## The PHPUnit helper file
-
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
-
-```php
-<?php
-
-use Phalcon\Di;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
-
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
-define("ROOT_PATH", __DIR__);
-
-set_include_path(
-    ROOT_PATH . PATH_SEPARATOR . get_include_path()
-);
-
-// Required for phalcon/incubator
-include __DIR__ . "/../vendor/autoload.php";
-
-// Use the application autoloader to autoload the classes
-// Autoload the dependencies found in composer
-$loader = new Loader();
-
-$loader->registerDirs(
-    [
-        ROOT_PATH,
-    ]
-);
-
-$loader->register();
-
-$di = new FactoryDefault();
-
-Di::reset();
-
-// Add any needed services to the DI here
-
-Di::setDefault($di);
-```
-
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
-
-To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
-
-You can use the Incubator library by adding it as a dependency:
-
-```bash
-composer require phalcon/incubator
+composer require --dev phpunit/phpunit:^9.0
 ```
 
 or by manually adding it to `composer.json`:
 
 ```json
 {
-    "require": {
-        "phalcon/incubator": "^3.0"
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
     }
 }
 ```
 
-You can also clone the repository using the repo link above.
+Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
 
-<a name='phpunit-config'></a>
+```
+app/
+src/
+public/
+tests/Unit/
+```
 
-## The `phpunit.xml` file
+### Configure Test Namespace
+
+In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
+
+```json
+{
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    }
+}
+```
 
 Now, create a `phpunit.xml` file as follows:
+
+### The `phpunit.xml` file
+
+Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="./TestHelper.php"
-         backupGlobals="false"
+<phpunit backupGlobals="false"
          backupStaticAttributes="false"
          verbose="true"
-         colors="false"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
-         syntaxCheck="true">
+         stopOnFailure="false">
 
-    <testsuite name="Phalcon - Testsuite">
-        <directory>./</directory>
+    <testsuite name="Phalcon - Unit Test">
+        <directory>./tests/Unit</directory>
     </testsuite>
 </phpunit>
 ```
 
-Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+### Phalcon Incubator Test
 
-<a name='sample'></a>
+Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
 
-## Sample Unit Test
+You can use the Incubator test library by adding it as a dependency:
 
-To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+```bash
+composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
+```
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the `DI` to get the `UnitTestCase` file.
+or by manually adding it to `composer.json`:
 
-First create a base Unit Test called `UnitTestCase.php` in your `tests` directory:
+```json
+{
+    "require-dev": {
+        "phalcon/incubator-test": "^v1.0.0-alpha.1"
+    }
+}
+```
+
+## Creating a Unit Test
+
+It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+
+This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
+
+### Abstract Unit Test
+First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
 
 ```php
 <?php
 
+declare(strict_types=1);
+
+namespace Tests\Unit;
+
 use Phalcon\Di;
-use Phalcon\Test\UnitTestCase as PhalconTestCase;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Incubator\Test\PHPUnit\UnitTestCase;
+use PHPUnit\Framework\IncompleteTestError;
 
-abstract class UnitTestCase extends PhalconTestCase
+abstract class AbstractUnitTest extends UnitTestCase
 {
-    /**
-     * @var bool
-     */
-    private $_loaded = false;
+    private bool $loaded = false;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        // Load any additional services that might be required during testing
-        $di = Di::getDefault();
+        $di = new FactoryDefault();
 
-        // Get any DI components here. If you have a config, be sure to pass it to the parent
+        Di::reset();
+        Di::setDefault($di);
 
-        $this->setDi($di);
-
-        $this->_loaded = true;
+        $this->loaded = true;
     }
 
-    /**
-     * Check if the test case is setup properly
-     *
-     * @throws \PHPUnit_Framework_IncompleteTestError;
-     */
     public function __destruct()
     {
-        if (!$this->_loaded) {
-            throw new \PHPUnit_Framework_IncompleteTestError(
+        if (!$this->loaded) {
+            throw new IncompleteTestError(
                 "Please run parent::setUp()."
             );
         }
@@ -190,60 +141,80 @@ abstract class UnitTestCase extends PhalconTestCase
 }
 ```
 
-It's always a good idea to separate your Unit Tests in namespaces. For this test we will create the namespace 'Test'. So create a file called `tests\Test\UnitTest.php`:
+### Your First Test
+
+Create the test below and save it in your `tests/Unit` directory.
 
 ```php
 <?php
 
-namespace Test;
+declare(strict_types=1);
 
-/**
- * Class UnitTest
- */
-class UnitTest extends \UnitTestCase
+namespace Tests\Unit;
+
+class UnitTest extends AbstractUnitTest
 {
-    public function testTestCase()
+    public function testTestCase(): void
     {
         $this->assertEquals(
-            "works",
-            "works",
-            "This is OK"
+            "roman",
+            "roman",
+            "This will pass"
         );
 
         $this->assertEquals(
-            "works",
-            "works1",
+            "hope",
+            "ava",
             "This will fail"
         );
     }
 }
 ```
 
-Now when you execute `phpunit` in your command-line from the `tests` directory you will get the following output:
+If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
+```php
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        //some setup mocks
+    }
+
+```
+
+### Running Unit Tests
+
+When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
 
 ```bash
 $ phpunit
-PHPUnit 3.7.23 by Sebastian Bergmann.
+PHPUnit 9.1.4 by Sebastian Bergmann and contributors.
 
-Configuration read from /var/www/tests/phpunit.xml
+Runtime:       PHP 7.4.5 with Xdebug 2.9.5
+Configuration: /var/www//phpunit.xml
 
-Time: 3 ms, Memory: 4.05Mb
+
+Time: 3 ms, Memory: 3.25Mb
 
 There was 1 failure:
 
-1) Test\UnitTest::testTestCase
+1) Test\Unit\UnitTest::testTestCase
 This will fail
 Failed asserting that two strings are equal.
 --- Expected
 +++ Actual
 @@ @@
--'works'
-+'works1'
+-'hope'
++'ava'
 
-/var/www/tests/Test/UnitTest.php:25
+/var/www/tests/Unit/UnitTest.php:25
 
 FAILURES!
 Tests: 1, Assertions: 2, Failures: 1.
 ```
 
-Now you can start building your Unit Tests. You can view a [good guide here](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/). We also recommend reading the PHPUnit documentation if you're not familiar with PHPUnit.
+## Resources
+- [PHPUnit Documentation](https://phpunit.de/documentation.html)
+- [Getting Started with TDD in PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
+- [Writing Great Unit Tests](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
+- [What Is Mocking In PHP Unit Testing](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)

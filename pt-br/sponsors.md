@@ -1,38 +1,17 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
+title: 'Patrocinadores'
+keywords: 'patrocinadores, opencollective, apoiadores'
 ---
-# Sponsors and Supporters
 
-* * *
+# Torne-se um Patrocinador
 
-# Becoming a sponsor
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.
+Para aqueles que desejam patrocinar o nosso trabalho e promover o desenvolvimento da Phalcon, oferecemos várias opções de patrocínio que servirão em qualquer orçamento. Patrocinar nosso trabalho nos permite dedicar mais tempo ao projeto, oferecer respostas mais rápidas a bugs e recursos e garantir a estabilidade do projeto.
 
-<a href="https://phalcon.link/fund">
-<button class="btn button-small btn-danger">
-    Become a Patron!
-</button>
-</a>
+# Patrocinadores e Apoiadores
 
-# Sponsors and Supporters
-
-<a href="https://pdffiller.com/" target="_blank">
-    <img src="https://assets.phalconphp.com/phalcon/images/backers/pdffiller-240x60.png" alt="PDFFiller" />
-</a>
-
-* * *
-
-<a href="https://mctekk.com/" target="_blank">
-    <img src="https://assets.phalconphp.com/phalcon/images/backers/mctekk-240x60.png" alt="MCTekk" />
-</a>
-
-* * *
-
-<a href="https://abits.com/" target="_blank">
-    <img src="https://assets.phalconphp.com/phalcon/images/backers/abits-240x60.png" alt="Abits" />
-</a>
-
-* * *
+{% include sponsors.html %}

@@ -2,12 +2,15 @@
 layout: default
 language: 'cs-cz'
 version: '4.0'
-upgrade: ''
-category: 'collection'
+title: 'Collection'
+keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
-# Collection Component
+
+# Collection
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 
@@ -55,6 +58,29 @@ $data = [
 ];
 
 $collection = new Collection($data);
+```
+
+## Case sensitivity
+
+When instantiating the object you can specify a second `bool` parameter, which will control the key searching in the object. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element in a case sensitive manner.
+
+```php
+<?php
+
+use Phalcon\Collection;
+
+$data = [
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
+];
+
+$collection = new Collection($data, false);
+
+echo $collection->has('COLORS'); // false
 ```
 
 ## Reusing
@@ -130,56 +156,27 @@ echo $collection->get('year', 1776, true); // 1776
 ```
 
 ```php
-public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
+public function get(
+    string $element, 
+    mixed $defaultValue = null, 
+    string $cast = null
+):  mixed
 ```
 
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
 
-## Get
+- `array`
+- `bool`
+- `boolean`
+- `double`
+- `float`
+- `int`
+- `integer`
+- `null`
+- `object`
+- `string`
 
-As mentioned above, `Phalcon\Collection` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
-
-- Property
-- `__get()`
-- array based get (`$collection[$element]`)
-- `offsetGet()`
-- `get()`
-
-The fastest way is by using the property syntax:
-
-```php
-<?php
-
-use Phalcon\Collection;
-
-$data = [
-    'colors' => [
-        'red',
-        'white',
-        'blue',
-    ],
-    'year'   => 1776,
-];
-
-$collection = new Collection($data);
-
-echo $collection->year;                    // 1776
-```
-
-You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
-
-```php
-echo $collection->__get('year');           // 1776
-echo $collection['year'];                  // 1776
-echo $collection->offsetGet('year');       // 1776
-echo $collection->get('year', 1776, true); // 1776
-```
-
-```php
-public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
-```
-
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+The collection object also offers two more getters `getKeys` and `getValues` `getKeys( bool $insensitive = true )` returns all the keys stored internally in the collection. By default, it will return the keys case insensitive manner i.e. all lowercase. If `false` is passed in the call, it will return the keys exactly as they have been stored. `getValues` returns the values stored in the internal collection.
 
 ## Has
 
@@ -222,14 +219,7 @@ echo $collection->has('year', true);      // true
 ```
 
 ```php
-public function has(string $element, bool $insensitive = true):  bool
-```
-
-Using `has()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
-
-```php
-echo $collection->has('YEAR', true);      // true
-echo $collection->has('YEAR', false);     // false
+public function has(string $element):  bool
 ```
 
 ## Set
@@ -311,14 +301,7 @@ $collection->remove('year');
 ```
 
 ```php
-public function remove(string $element, bool $insensitive = true):  void
-```
-
-Using `remove()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
-
-```php
-$collection->remove('YEAR', true);
-$collection->remove('YEAR', false);
+public function remove(string $element):  void
 ```
 
 ## Iteration
@@ -331,12 +314,9 @@ Since the collection object implements `\IteratorAggregate`, you can iterate thr
 use Phalcon\Collection;
 
 $data = [
-    'colors' => [
-        'red',
-        'white',
-        'blue',
-    ],
-    'year'   => 1776,
+   'red',
+   'white',
+   'blue'
 ];
 
 $collection = new Collection($data);
@@ -459,4 +439,29 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
     "year": 1776
 }
 */
+```
+
+## Read Only
+
+Phalcon also offers a component that can be used in a read-only fashion. `Phalcon\Collection\ReadOnly` can serve as a collection in your application that can only be populated with initial data but not allowing its contents to be changed throughout the application.
+
+```php
+<?php
+
+use Phalcon\Collection\ReadOnly;
+
+$data = [
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
+];
+
+$collection = new ReadOnly($data);
+
+echo $collection->toJson();    // ["red","white","blue"],"year":1776}
+
+$collection->set('colors', ['red']); // Exception
 ```

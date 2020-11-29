@@ -2,257 +2,193 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
+title: 'Database Migrations'
+keywords: 'database, migrations, schema, tables, columns'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
 
 # Database Migrations
 
-Migrations are a convenient way for you to alter your database in a structured and organized manner.
+* * *
 
-<h5 class='alert alert-danger'>Migrations are available in <a href="/4.0/en/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
+> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
+{: .alert .alert-info } 
 
-When a migration is generated a set of classes are created to describe how your database is structured at that particular moment. These classes can be used to synchronize the schema structure on remote databases setting your database ready to work with the new changes that your application implements. Migrations describe these transformations using plain PHP.
+## Package git repository
 
-<div align='center'>
-    <iframe src='https://player.vimeo.com/video/41381817' width='500' height='281' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
+https://github.com/phalcon/migrations
 
-<a name='chema-dumping'></a>
+## Requirements
 
-## Schema Dumping
+* PHP >= 7.2
+* Phalcon >= 4.0.5
 
-The [Phalcon Developer Tools](/4.0/en/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
+## Installing via Composer
 
-The available options for generating migrations are:
+    composer require --dev phalcon/migrations
+    
 
-![](/assets/images/content/migrations-1.png)
+## Quick start
 
-Running this script without any parameters will simply dump every object (tables and views) from your database into migration classes.
+What you need for quick start:
 
-Each migration has a version identifier associated with it. The version number allows us to identify if the migration is newer or older than the current 'version' of our database. Versions will also inform Phalcon of the running order when executing a migration.
+* Configuration file in root of your project (you can also pass them as parameters inside CLI environment)
+* Create database tables structure
+* Execute command to generate migrations
 
-![](/assets/images/content/migrations-2.png)
+After that you can execute that migrations (run) in another environment to create same DB structure.
 
-When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
-
-By default [Phalcon Developer Tools](/4.0/en/devtools-usage) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
-
-![](/assets/images/content/migrations-2.png)
-
-<a name='class-anatomy'></a>
-
-## Migration Class Anatomy
-
-Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
-
-`up()` also contains the `magic` method `morphTable()`. The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
+### Create configuration file
 
 ```php
 <?php
 
-use Phalcon\Db\Column as Column;
-use Phalcon\Db\Index as Index;
-use Phalcon\Db\Reference as Reference;
-use Phalcon\Mvc\Model\Migration;
+use Phalcon\Config;
 
-class ProductsMigration_100 extends Migration
-{
-    public function up()
-    {
-        $this->morphTable(
-            'products',
-            [
-                'columns' => [
-                    new Column(
-                        'id',
-                        [
-                            'type'          => Column::TYPE_INTEGER,
-                            'size'          => 10,
-                            'unsigned'      => true,
-                            'notNull'       => true,
-                            'autoIncrement' => true,
-                            'first'         => true,
-                        ]
-                    ),
-                    new Column(
-                        'product_types_id',
-                        [
-                            'type'     => Column::TYPE_INTEGER,
-                            'size'     => 10,
-                            'unsigned' => true,
-                            'notNull'  => true,
-                            'after'    => 'id',
-                        ]
-                    ),
-                    new Column(
-                        'name',
-                        [
-                            'type'    => Column::TYPE_VARCHAR,
-                            'size'    => 70,
-                            'notNull' => true,
-                            'after'   => 'product_types_id',
-                        ]
-                    ),
-                    new Column(
-                        'price',
-                        [
-                            'type'    => Column::TYPE_DECIMAL,
-                            'size'    => 16,
-                            'scale'   => 2,
-                            'notNull' => true,
-                            'after'   => 'name',
-                        ]
-                    ),
-                ],
-                'indexes' => [
-                    new Index(
-                        'PRIMARY',
-                        [
-                            'id',
-                        ]
-                    ),
-                    new Index(
-                        'product_types_id',
-                        [
-                            'product_types_id',
-                        ]
-                    ),
-                ],
-                'references' => [
-                    new Reference(
-                        'products_ibfk_1',
-                        [
-                            'referencedSchema'  => 'invo',
-                            'referencedTable'   => 'product_types',
-                            'columns'           => ['product_types_id'],
-                            'referencedColumns' => ['id'],
-                        ]
-                    ),
-                ],
-                'options' => [
-                    'TABLE_TYPE'      => 'BASE TABLE',
-                    'ENGINE'          => 'InnoDB',
-                    'TABLE_COLLATION' => 'utf8_general_ci',
-                ],
-            ]
-        );
-    }
-}
+return new Config([
+    'database' => [
+        'adapter' => 'mysql',
+        'host' => '127.0.0.1',
+        'username' => 'root',
+        'password' => '',
+        'dbname' => 'db-name',
+        'charset' => 'utf8',
+    ],
+    'application' => [
+        'logInDb' => true,
+        'migrationsDir' => 'db/migrations',
+        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        'exportDataFromTables' => [
+            // Tables names
+            // Attention! It will export data every new migration
+        ],
+    ],
+]);
 ```
 
-The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
+### Generate migrations
 
-| Index        | Description                                                                                                                                 | Optional |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns                                                                                                        |  Hayır   |
-| `indexes`    | An array with a set of table indexes.                                                                                                       |   Evet   |
-| `references` | An array with a set of table references (foreign keys).                                                                                     |   Evet   |
-| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Evet   |
+**Basic generation**
 
-<a name='class-anatomy-columns'></a>
+    vendor/bin/phalcon-migrations generate
+    
 
-### Defining Columns
+**Generate specific table and export data from it
 
-[Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
+    vendor/bin/phalcon-migrations generate \
+        --config=migrations.php \
+        --table=users \
+        --exportDataFromTables=users \
+        --data=oncreate
+    
 
-| Option          | Description                                                                                                                                | Optional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |  Hayır   |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Evet   |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Evet   |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Evet   |
-| `notNull`       | Column can store null values?                                                                                                              |   Evet   |
-| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Evet   |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Evet   |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Evet   |
-| `after`         | Column must be placed after indicated column                                                                                               |   Evet   |
+### Run migrations
 
-Database migrations support the following database column types:
+    vendor/bin/phalcon-migrations run
+    
 
-* `Phalcon\Db\Column::TYPE_INTEGER`
-* `Phalcon\Db\Column::TYPE_VARCHAR`
-* `Phalcon\Db\Column::TYPE_CHAR`
-* `Phalcon\Db\Column::TYPE_DATE`
-* `Phalcon\Db\Column::TYPE_DATETIME`
-* `Phalcon\Db\Column::TYPE_TIMESTAMP`
-* `Phalcon\Db\Column::TYPE_DECIMAL`
-* `Phalcon\Db\Column::TYPE_TEXT`
-* `Phalcon\Db\Column::TYPE_BOOLEAN`
-* `Phalcon\Db\Column::TYPE_FLOAT`
-* `Phalcon\Db\Column::TYPE_DOUBLE`
-* `Phalcon\Db\Column::TYPE_TINYBLOB`
-* `Phalcon\Db\Column::TYPE_BLOB`
-* `Phalcon\Db\Column::TYPE_MEDIUMBLOB`
-* `Phalcon\Db\Column::TYPE_LONGBLOB`
-* `Phalcon\Db\Column::TYPE_JSON`
-* `Phalcon\Db\Column::TYPE_JSONB`
-* `Phalcon\Db\Column::TYPE_BIGINTEGER`
+### List existing migrations
 
-<a name='class-anatomy-indexes'></a>
+    vendor/bin/phalcon-migrations list
+    
 
-### Defining Indexes
+## Usage example
 
-[Phalcon\Db\Index](api/Phalcon_Db_Index) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
+**Run migrations from specific migrations directory**
 
-<a name='class-anatomy-references'></a>
-
-### Defining References
-
-[Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
-
-| Index               | Description                                                                                         | Optional | Implemented in   |
-| ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
-| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |  Hayır   | All              |
-| `columns`           | An array with the name of the columns at the table that have the reference                          |  Hayır   | All              |
-| `referencedColumns` | An array with the name of the columns at the referenced table                                       |  Hayır   | All              |
-| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |   Evet   | All              |
-| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |   Evet   | MySQL PostgreSQL |
-| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |   Evet   | MySQL PostgreSQL |
-
-<a name='writing'></a>
-
-## Writing Migrations
-
-Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/db-layer).
-
-```php
-<?php
-
-use Phalcon\Mvc\Model\Migration;
-
-class ProductsMigration_100 extends Migration
-{
-    public function up()
-    {
-        // ...
-
-        self::$_connection->insert(
-            'products',
-            [
-                'Malabar spinach',
-                14.50,
+    use Phalcon\Migrations\Migrations;
+    
+    $migration = new Migrations();
+    $migration::run([
+        'migrationsDir' => [
+            __DIR__ . '/migrations',
+        ],
+        'config' => [
+            'database' => [
+                'adapter' => 'Mysql',
+                'host' => 'phalcon-db-mysql',
+                'username' => 'root',
+                'password' => 'root',
+                'dbname' => 'vokuro',
             ],
-            [
-                'name',
-                'price',
-            ]
-        );
-    }
-}
-```
+        ]
+    ]);
+    
 
-<a name='running'></a>
+## Migration methods
 
-## Running Migrations
+Each migration is an separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
 
-Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
+Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
 
-![](/assets/images/content/migrations-4.png)
+The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
 
-![](/assets/images/content/migrations-5.png)
+**Running to up**
 
-Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version.
+| Method name      | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| morph            | Morph table structure                              |
+| afterCreateTable | Make something immediately after table was created |
+| up               | Table is created and ready to work with            |
+| afterUp          | Extra method to work for some specific cases       |
+
+**Running to down**
+
+| Method name                         | Description                                                                      |
+| ----------------------------------- | -------------------------------------------------------------------------------- |
+| down                                | Normally you put here table drop or data truncation                              |
+| aferDown                            | Extra method to work after all was cleaned up                                    |
+| morph (**from previous migration**) | As migration was moved backward, there need to be all returned to previous state |
+
+## CLI Arguments and options
+
+**Arguments**
+
+| Argument | Description                   |
+| -------- | ----------------------------- |
+| generate | Generate a Migration          |
+| run      | Run a Migration               |
+| list     | List all available migrations |
+
+**Options**
+
+| Eylem                    | Description                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------- |
+| --config=s               | Configuration file                                                                       |
+| --migrations=s           | Migrations directory. Use comma separated string to specify multiple directories         |
+| --directory=s            | Directory where the project was created                                                  |
+| --table=s                | Table to migrate. Table name or table prefix with asterisk. Default: all                 |
+| --version=s              | Version to migrate                                                                       |
+| --descr=s                | Migration description (used for timestamp based migration)                               |
+| --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)           |
+| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                            |
+| --force                  | Forces to overwrite existing migrations                                                  |
+| --ts-based               | Timestamp based migration version                                                        |
+| --log-in-db              | Keep migrations log in the database table rather then in file                            |
+| --dry                    | Attempt requested operation without making changes to system (Generating only)           |
+| --verbose                | Output of debugging information during operation (Running only)                          |
+| --no-auto-increment      | Disable auto increment (Generating only)                                                 |
+| --skip-ref-schema        | Skip referencedSchema inside generated migration (Generating only)                       |
+| --skip-foreign-checks    | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only) |
+| --help                   | Shows this help                                                                          |
+
+## Timestamp based migrations
+
+Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment. Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
+
+Current command
+
+    vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
+    
+
+Will produce folder name with such names
+
+* 1582539287636860_1.0.0
+* 1682539471102635_1.0.0
+* 1782539471102635_1.0.0
+
+Migrations will be executed from oldest to newest.
+
+> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
+{: .alert .alert-info }

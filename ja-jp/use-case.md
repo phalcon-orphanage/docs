@@ -2,16 +2,21 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
+title: '使用例'
+keywords: 'use case, examples'
 ---
-# Use Case
+
+# 使用例
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
 ## Requirements
 
-- MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
+- MVC application using [Phalcon\Mvc\Application](application)
 - Store data in a database (MariaDB/MySQL)
 - Offer a UI for users to work 
     - Login page
@@ -29,7 +34,7 @@ Throughout this documentation we are going to assume that we are building an acc
         - Payment
         - Reports
 
-## Groups - User roles
+## Groups - User Roles
 
 | Group          | Description                                        |
 | -------------- | -------------------------------------------------- |

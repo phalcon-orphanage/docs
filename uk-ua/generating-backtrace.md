@@ -2,14 +2,21 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
+title: 'Створення зворотного трасування'
+keywords: 'backtrace, debugging, segmentation faults, зворотне трасування, відлагодження, виловлювання помилок'
 ---
-# Generating a backtrace
+
+# Створення зворотного трасування
 
 * * *
 
-Sometimes due to segmentation faults, Phalcon could crash some of your web server processes. Please help us to identify the problem by adding a crash backtrace to your bug report.
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Please follow this guide to understand how to generate the backtrace.
+Phalcon скомпільований у C-розширення, завантажене на ваш веб-сервер. Через це помилки призводять до порушення сегментації, що призводить до аварійного завершення деяких процесів вашого веб-сервера.
+
+Щоб полагодити ці порушення сегментації, необхідне відстеження активності процесів. Створення трасування активності процесів потребує спеціальної збірки php та потрібно зробити деякі кроки для створення сліду, який дозволяє команді Phalcon налагоджувати цю поведінку.
+
+Будь ласка, ознайомтеся з цим посібником, щоб зрозуміти, як створити зворотне трасування.
 
 <https://bugs.php.net/bugs-generating-backtrace.php>
 

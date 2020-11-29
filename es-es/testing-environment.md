@@ -2,54 +2,59 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Entorno de prueba'
+keywords: 'probando el entorno, codeception, nanobox, testing, phpunit, tests'
 ---
-# Testing Environment
+
+# Entorno de prueba
 
 * * *
 
-# Overview
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir](https://zephir-lang.com), which has a very similar syntax to PHP or Javascript. In [2003](https://blog.phalconphp.com/post/phalcon-2-0-the-future) we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.
+# Preámbulo
 
-# The problem
+La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. Esto se debía principalmente a que la mayoría de desarrolladores no sabe programar en C. Por este motivo se creo [Zephir](https://zephir-lang.com), un nuevo lenguaje con una sintaxis similar a la de PHP o JavaScript. En 2003 se presentó [este plan](https://blog.phalcon.io/post/phalcon-2-0-the-future) y algunos meses después se lanzó Zephir y Phalcon fue completamente reescrito en él. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.
 
-Having a framework that is rich in features requires a development environment that will offer all those features and related services. For instance one needs to install `MySQL`, `Postgresql` and `Sqlite` to be able to check whether functionality in the ORM will be the same when using any of these adapters for your database needs. Additionally the relevant extensions for PHP have to be installed in the development system.
+# El problema
 
-When looking at all the functionality that Phalcon offers, just to run the testing suite, one needs a great number of extensions as well as services installed (Redis, Memcached, Beanstalkd etc.)
+Un *framework* rico en características necesita un entorno de desarrollo con todos los servicios necesarios para utilizarlas. Por ejemplo, es necesario tener instalados `MySQL`, `Postgresql` y `Sqlite` para comprobar que la funcionalidad del Mapeo objeto-relacional (ORM, por sus siglas en inglés) será igual en todos los adaptadores según la base de datos que necesite la aplicación. También deben estar instaladas todas las extensiones relevantes de PHP.
 
-If one considers the PHP version also (PHP 7.2, 7.3 etc.), developing for Phalcon is not an easy task, because of all these prerequisites.
+Dada toda la funcionalidad que Phalcon ofrece, sólo para ejecutar la suite de pruebas se necesita tener instalado un gran número de extensiones y servicios (Redis, Memcached, Beanstalkd, etc.)
 
-# Solution
+El problema se vuelve más complejo aún si se piensa además en todas las versiones de PHP (7.2, 7.3, etc.) que se deben probar; con todos estos pre requisitos, el desarrollo de Phalcon no es en definitiva una tarea fácil.
 
-We have tried in the past to create a development environment based on docker, but after a while, maintaining this environment was very taxing for the core team.
+# La solución
 
-Recently however, we have redoubled our efforts to create this environment and we decided to use [nanobox](https://nanobox.io). For those that do not know, nanobox is a "wrapper" to docker which creates a unique environment in your machine, ready to use. The environment is folder based so you could potentially have two folders where you have cloned Phalcon, and use the PHP 7.2 on one and the 7.3 on the other. Each of those environments is completely isolated. We have been using nanobox for a while now and it is working extremely well.
+Originalmente se ensayó a crear un entorno de desarrollo basado en Docker, pero después de cierto tiempo, la manutención de este entorno se volvió muy exigente para el equipo principal.
+
+Sin embargo recientemente, se decidió redoblar los esfuerzos y recrear este entorno mediante el uso de [nanobox](https://nanobox.io). Nanobox es un *envoltorio* sobre Docker que crea un entorno de desarrollo único en el PC, listo para usar. El entorno se vale del sistema de carpetas y archivos, entonces es posible tener dos carpetas donde se ha clonado Phalcon y ejecutar PHP 7.2 en una y 7.3 en la otra. Cada uno de dichos entornos está completamente aislado. Hasta la fecha, Nanobox funciona muy bien.
 
 # Instalación
 
-You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here](https://docs.docker.com/engine/installation/).
+El primer paso es tener Docker instalado. Si necesita ayuda, aquí puede encontrar las [instrucciones de instalación](https://docs.docker.com/engine/installation/).
 
-Go to <https://nanobox.io> and create an account if you do not have one already, so that you can download the nanobox installation file for your platform.
+El segundo es ir a <https://nanobox.io> y crear una cuenta o ingresar con una existente para descargar la versión de Nanobox indicada para su sistema operativo.
 
-Once the file is downloaded, install it.
+El tercer paso es instalar la versión descargada.
 
-# Running the environment
+# Ejecución del entorno
 
-## Fork the repository
+## Clonación (*fork*) del repositorio
 
-Fork the [cphalcon](https://github.com/phalcon/cphalcon) to your github account, if you have not done so already. Visit the [cphalcon](https://github.com/phalcon/cphalcon) page on your browser and click the `Fork` button at the top right of the screen.
+Es necesario clonar (*fork*) [cphalcon](https://github.com/phalcon/cphalcon) en su cuenta de Github (si aún no se ha hecho): En la página [cphalcon](https://github.com/phalcon/cphalcon) dé un clic al botón `Fork` en la parte superior derecha de la pantalla.
 
-## Clone the fork
+## Copia del *fork*
 
-Now you will need to clone the forked repository to a folder of your choice. The example below assumes that the github account is `niden` - change it to your own.
+Ahora es necesario clonar el *fork* en una carpeta cualquiera del PC. En el siguiente ejemplo se utiliza como cuenta de Github `niden` (debe ser remplazada por la apropiada):
 
 ```bash
 git clone git@github.com:niden/cphalcon
 ```
 
-## Copy the boxfile
+## Copia del *boxfile*
 
-Nanobox reads a file called `boxfile.yml` and located in the root of your folder. There are two files supplied in Phalcon that you can use to develop with. One for PHP 7.2 and one for 7.3. Copy one of them to the root of the folder you have cloned your repository.
+Nanobox lee un archivo llamado `boxfile.yml`, ubicado en la raíz de la carpeta. Phalcon ofrece dos archivos para facilitar el desarrollo: uno para PHP 7.2 y otro para 7.3. Se debe copiar alguno de ellos a la raíz de la carpeta en la que se clonó el repositorio.
 
 ```bash
 cd ./cphalcon
@@ -57,17 +62,17 @@ cp -v ./tests/_ci/nanobox/boxfile.7.2.yml ./boxfile.yml
 
 ```
 
-You will now end up with a `boxfile.yml` file at the root of your project.
+Aparecerá entonces el archivo `boxfile.hml` en la raíz de la carpeta del proyecto.
 
-## Configure nanobox
+## Configuración de Nanobox
 
-Now we need to run nanobox for the first time. Since this will be the first time you run nanobox, it will ask you to configure it. The installation is very simple
+Ahora se puede ejecutar Nanobox. Por ser la primera vez, es necesario seguir los pasos de configuración, muy sencillos:
 
 ```bash
 nanobox run
 ```
 
-It will ask you to log in first. Type your nanobox username and password, the same credentials you used when creating the nanobox account, so that you can download the installation file.
+Ahora se debe iniciar la sesión utilizando los mismos nombre de usuario y contraseña de la cuenta de Nanobox para poder iniciar la descarga del archivo de instalación.
 
 ```bash
 $ nanobox login
@@ -75,9 +80,9 @@ Nanobox Username: niden
 Nanobox Password: 
 ```
 
-You will also need to configure nanobox. The next step is to decide how you want nanobox to work. There are two options * a lightweight VM (Virtualbox) * docker native
+También es necesario configurar Nanobox. Se debe escoger cómo se quiere que trabaje. Hay dos opciones: * Máquina Virtual (VM, por sus siglas en inglés) liviana utilizando Virtualbox * Docker nativo
 
-It is highly recommended you use docker (hence the requirement above to ensure that you have docker installed).
+Se recomienda escoger la opción **b**, *Docker nativo* (de aquí que se aconsejara instalar Docker desde el principio) como respuesta al final de los siguientes párrafos en la terminal, después de `Answer`:
 
 ```bash
 CONFIGURE NANOBOX
@@ -98,11 +103,11 @@ How would you like to run nanobox?
 Answer: 
 ```
 
-## Run nanobox
+## Ejecución de Nanobox
 
-After finishing the configuration, you will see nanobox trying to download a lot of packages and containers. This is normal and it is going to take a while depending on the connection speed you have. After packages and containers are downloaded, subsequent runs will use cached copies of those packages (unless there is an update).
+Terminada la configuración, Nanobox empezará a descargar un montón de paquetes y contenedores. Esto es normal y tardará un poco según la velocidad de conexión del sistema. Finalizada la descarga, todas las ejecuciones posteriores utilizarán estos paquetes y contenedores (salvo que haya alguna actualización disponible).
 
-Once the whole process finishes, you will end up with a screen that looks like this:
+Al terminar el proceso de instalación, aparecerá una ventana similar a esta:
 
 ```bash
 Preparing environment :
@@ -131,14 +136,14 @@ Preparing environment :
 --------------------------------------------------------------------------------
 ```
 
-You are now inside the environment with all the extensions and services you need. Please note that the IP shown will most likely be different than the one displayed above.
+Esto significa que la instalación ha sido exitosa y ahora están a su alcance todas las extensiones y servicios necesarios. Nota: Es probable que la IP `172.18.0.2` que aparece al final del ejemplo sea diferente en su sistema.
 
 ## Composer
 
-Just in case update composer:
+Por precaución es preferible actualizar `composer`:
 
 ```bash
-composer install
+/app $ composer install
 ```
 
 ## Check Zephir
@@ -146,10 +151,10 @@ composer install
 Zephir is already installed in the environment. Just check it:
 
 ```bash
-zephir help
+/app $ zephir help
 ```
 
-A screen like the one below should appear:
+Debe aparecer una pantalla similar a la siguiente:
 
 ```bash
 Usage:
@@ -183,24 +188,24 @@ Help:
   To display the list of available commands, please use the list command.
 ```
 
-## Compilar Phalcon
+## Compilación de Phalcon
 
-Phalcon is not compiled yet. We need to instruct Zephir to do that:
+Phalcon aún no está compilado. Hay que darle las instrucciones a Zephir para que lo haga:
 
 ```bash
-zephir fullclean
-zephir build
+/app $ zephir fullclean
+/app $ zephir build
 ```
 
-## Check extensions
+## Check Extensions
 
 Tipo
 
 ```bash
-php -m
+/app $ php -m
 ```
 
-and you will see:
+y se debe recibir:
 
 ```bash
 [PHP Modules]
@@ -224,44 +229,95 @@ Xdebug
 
 Note that Phalcon v4+ requires the [PSR](https://github.com/jbboehr/php-psr) extension to be loaded before Phalcon. In this environment we have compiled it for you. Once you see `phalcon` in the list, you have the extension compiled and ready to use.
 
-# Running tests
+## Setup databases
+
+First, we need to have a `.env` file in the project root.
+
+```bash
+/app $ cp tests/_ci/nanobox/.env.example .env
+```
+
+To generate the necessary database schemas, you need to run the relevant script:
+
+```bash
+/app $ php tests/_ci/generate-db-schemas.php
+```
+
+The script looks for classes located under `tests/_data/fixtures/Migrations`. These classes contain the necessary code to create the relevant SQL statements for each RDBMS. You can easily inspect one of those files to understand its structure. Additionally, these migration classes can be instantiated in your tests to clear the target table, insert new records etc. This methodology allows us to create the database schema per RDBMS, which will be loaded automatically from Codeception, but also allows us to clear tables and insert data we need to them so that our tests are more controlled and isolated.
+
+If there is a need to add an additional table, all you have to do is create the Phalcon model of course but also create the migration class with the relevant SQL statements. Running the generate script (as seen above) will update the schema file so that Codeception can load it in your RDBMS prior to running the tests.
+
+To populate the databases you will need to run the following script:
+
+```bash
+/app $ tests/_ci/nanobox/setup-dbs-nanobox.sh
+```
+
+# Pruebas en ejecución
 
 ## Unit
 
-Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception](https://codeception.com). For a basic introduction you can check [this](http://codeception.com/docs/01-Introduction) page. Also for the list of the commands, you can check [here](http://codeception.com/docs/reference/Commands).
+Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception](https://codeception.com). For a basic introduction you can check [this](https://codeception.com/docs/01-Introduction) page. Also for the list of the commands, you can check [here](https://codeception.com/docs/reference/Commands).
 
 We need to first build the Codeception base classes. This needs to happen every time new functionality is introduced in Codeception's helpers.
 
+Now you can run:
+
 ```bash
-codecept build
+/app $ vendor/bin/codecept build
 ```
 
 The output should show:
 
 ```bash
-Building Actor classes for suites: cli, integration, unit
- -> CliTesterActions.php generated successfully. 0 methods added
+Building Actor classes for suites: cli, database, integration, unit
+ -> CliTesterActions.php generated successfully. 152 methods added
 \CliTester includes modules: Asserts, Cli, \Helper\Cli, \Helper\Unit
- -> IntegrationTesterActions.php generated successfully. 0 methods added
-\IntegrationTester includes modules: Asserts, Filesystem, Helper\Integration, Helper\PhalconLibmemcached, Helper\Unit, Phalcon, Redis
- -> UnitTesterActions.php generated successfully. 0 methods added
-\UnitTester includes modules: Asserts, Filesystem, Redis, Helper\Unit, Helper\PhalconCacheFile, Helper\PhalconLibmemcached
+ -> DatabaseTesterActions.php generated successfully. 252 methods added
+\DatabaseTester includes modules: Phalcon4, Redis, Asserts, Filesystem, Helper\Database, Helper\Unit
+ -> IntegrationTesterActions.php generated successfully. 251 methods added
+\IntegrationTester includes modules: Phalcon4, Redis, Asserts, Filesystem, Helper\Integration, Helper\PhalconLibmemcached, Helper\Unit
+ -> UnitTesterActions.php generated successfully. 166 methods added
+\UnitTester includes modules: Apc, Asserts, Filesystem, Helper\Unit
 ```
 
 Now we can run the tests:
 
 ```bash
-codecept run unit
+/app $ php vendor/bin/codecept run unit
 ```
 
-This will start running the unit testing suite. You will see a lot of tests and assertions. At the time of this blog post, we have `Tests: 2884, Assertions: 6987, Skipped: 1478` unit tests. The reason for so many skipped tests is because we created test stubs for every component and every method in each component. This was so as to create awareness on what needs to be checked and what components/methods we need to write tests for. Of course some of the test stubs are duplicate or obsolete. Those will be deleted once the relevant component is checked and tests written for it. Our goal is to get as close to 100% code coverage as possible. If we manage to get to 100% that would be great!
+This will start running the unit testing suite. You will see a lot of tests and assertions. At the time of this article, we have `Tests: 3235, Assertions: 8244, Skipped: 175` unit tests. The reason for so many skipped tests is because we created test stubs for every component and every method in each component. This was so as to create awareness on what needs to be checked and what components/methods we need to write tests for. Of course some of the test stubs are duplicate or obsolete. Those will be deleted once the relevant component is checked and tests written for it. Our goal is to get as close to 100% code coverage as possible. If we manage to get to 100% that would be great!
 
-## Integration
-
-Integration tests need to access the databases. These databases are already available in the environment. To populate the databases you will need to run the following script:
+Execute all tests from a folder:
 
 ```bash
-./tests/_ci/nanobox/setup-dbs-nanobox.sh
+/app $ php vendor/bin/codecept run tests/unit/some/folder/
+```
+
+Execute single test:
+
+```bash
+/app $ php vendor/bin/codecept run tests/unit/some/folder/some/test/file.php
+```
+
+## Base de Datos
+
+To run database related tests you need to run the `database` suite specifying the RDBMS and group:
+
+```bash
+/app $ php vendor/bin/codecept run tests/database -g common
+/app $ php vendor/bin/codecept run tests/database -g mysql --env mysql
+/app $ php vendor/bin/codecept run tests/database -g sqlite --env sqlite
+/app $ php vendor/bin/codecept run tests/database -g pgsql --env pgsql
+```
+
+Available options:
+
+```bash
+--env mysql
+--env sqlite
+--env pgsql
 ```
 
 If you need to access the databases themselves, you will need the connection information. Nanobox creates that for you and stores it in environment variables. You can easily check those variables and if need be write them down.
@@ -276,53 +332,49 @@ nanobox info local
 You will see an output as the one below:
 
 ```bash
-----------------------------------------
-cphalcon (dev)              Status: up  
-----------------------------------------
+----------------------------------------------
+cphalcon (dev)              Status: up
+----------------------------------------------
 
-Mount Path: /Work/niden/cphalcon
-Env IP: 172.18.0.2
-
-data.beanstalkd
-  IP      : 172.18.0.4
+Mount Path: /home/niden/cphalcon
+Env IP: 172.20.0.20
 
 data.memcached
-  IP      : 172.18.0.5
+  IP      : 172.20.0.23
 
 data.mongodb
-  IP      : 172.18.0.6
+  IP      : 172.20.0.24
 
 data.mysql
-  IP      : 172.18.0.7
+  IP      : 172.20.0.25
   User(s) :
-    root - MvquBdnJkv
-    nanobox - 12oK9JHiyT
+    root - 9IqTGEVM2M
+    nanobox - yXOMmf71NS
 
 data.postgres
-  IP      : 172.18.0.8
+  IP      : 172.20.0.21
   User(s) :
-    nanobox - ohhtrUaMEu
+    nanobox - exwjG6g6rm
 
 data.redis
-  IP      : 172.18.0.37
+  IP      : 172.20.0.22
 
 Environment Variables
-  DATA_BEANSTALKD_HOST = 172.18.0.4
-  DATA_MEMCACHED_HOST = 172.18.0.5
-  DATA_MONGODB_HOST = 172.18.0.6
-  DATA_MYSQL_ROOT_PASS = MvquBdnJkv
-  DATA_POSTGRES_USER = nanobox
-  DATA_POSTGRES_PASS = ohhtrUaMEu
-  DATA_POSTGRES_USERS = nanobox
-  DATA_REDIS_HOST = 172.18.0.37
-  APP_NAME = dev
-  DATA_MYSQL_NANOBOX_PASS = 12oK9JHiyT
-  DATA_MYSQL_PASS = 12oK9JHiyT
-  DATA_MYSQL_USERS = root nanobox
-  DATA_POSTGRES_HOST = 172.18.0.8
-  DATA_POSTGRES_NANOBOX_PASS = ohhtrUaMEu
-  DATA_MYSQL_HOST = 172.18.0.7
+  DATA_MONGODB_HOST = 172.20.0.24
+  DATA_MYSQL_HOST = 172.20.0.25
+  DATA_MYSQL_ROOT_PASS = 9IqTGEVM2M
   DATA_MYSQL_USER = nanobox
+  DATA_POSTGRES_PASS = exwjG6g6rm
+  APP_NAME = dev
+  DATA_MYSQL_NANOBOX_PASS = yXOMmf71NS
+  DATA_MYSQL_USERS = root nanobox
+  DATA_POSTGRES_HOST = 172.20.0.21
+  DATA_POSTGRES_USER = nanobox
+  DATA_MEMCACHED_HOST = 172.20.0.23
+  DATA_POSTGRES_NANOBOX_PASS = exwjG6g6rm
+  DATA_POSTGRES_USERS = nanobox
+  DATA_REDIS_HOST = 172.20.0.22
+  DATA_MYSQL_PASS = yXOMmf71NS
 
 DNS Aliases
   none
@@ -330,19 +382,19 @@ DNS Aliases
 
 You can use these variables to connect to your databases or other services such as Mongo, Redis etc.
 
-# Development
+# Desarrollo
 
 You can now open your favorite editor and start developing in Zephir. You can create new functionality, fix issues, write tests etc. Remember though that if you change any of the `zep` files (inside the `phalcon` folder), you will need to recompile the extension:
 
 ```bash
-zephir fullclean
-zephir build
+/app $ zephir fullclean
+/app $ zephir build
 ```
 
 and then you can run your tests
 
 ```bash
-codecept run tests/unit/somefolder/somecestfile:sometest
+/app $ codecept run tests/unit/somefolder/somecestfile:sometest
 ```
 
 For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-lang.com) site.
@@ -351,10 +403,10 @@ For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-la
 
 The available services are: - Memcached - Mongodb - Mysql - Postgresql - Redis
 
-The PHP extensions enabled are: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
+The PHP extensions enabled are: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - intl - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - sqlite3 - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
 
-The database dumps are located under `tests/_data/assets/db/schemas`
+The database dumps are located under `tests/_data/assets/schemas`
 
-If you have any questions, feel free to join us in our [Discord](https://phalcon.link/discord) server or our [Forum](https://forum.phalconphp.com).
+If you have any questions, feel free to join us in our [Discord](https://phalcon.io/discord) server or our [Forum](https://forum.phalcon.io).
 
 <3 Phalcon Team

@@ -2,16 +2,19 @@
 layout: default
 language: 'pl-pl'
 version: '4.0'
-upgrade: ''
-category: 'collection'
+title: 'Registry'
+keywords: 'registry'
 ---
+
 # Registry Component
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
 ## Overview
 
-`Phalcon\Registry` is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
+[Phalcon\Registry](api/phalcon_registry#registry) is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -59,7 +62,7 @@ $collection = new Registry($data);
 
 ## Reusing
 
-You can also reuse the component, by repopulating it. `Phalcon\Registry` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
+You can also reuse the component, by repopulating it. [Phalcon\Registry](api/phalcon_registry#registry) exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -84,6 +87,7 @@ $data = [
 ];
 
 $collection->clear();
+
 $collection->init($data);
 
 echo $collection->count(); // 1
@@ -91,7 +95,7 @@ echo $collection->count(); // 1
 
 ## Get
 
-As mentioned above, `Phalcon\Registry` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+As mentioned above, [Phalcon\Registry](api/phalcon_registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 
 - Property
 - `__get()`
@@ -117,7 +121,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->year;                    // 1776
+echo $collection->year; // 1776
 ```
 
 You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
@@ -130,56 +134,25 @@ echo $collection->get('year', 1776, true); // 1776
 ```
 
 ```php
-public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
+public function get(
+    string $element, 
+    mixed $defaultValue = null, 
+    string $cast = null
+):  mixed
 ```
 
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
 
-## Get
-
-As mentioned above, `Phalcon\Registry` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
-
-- Property
-- `__get()`
-- array based get (`$collection[$element]`)
-- `offsetGet()`
-- `get()`
-
-The fastest way is by using the property syntax:
-
-```php
-<?php
-
-use Phalcon\Registry;
-
-$data = [
-    'colors' => [
-        'red',
-        'white',
-        'blue',
-    ],
-    'year'   => 1776,
-];
-
-$collection = new Registry($data);
-
-echo $collection->year;                    // 1776
-```
-
-You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
-
-```php
-echo $collection->__get('year');           // 1776
-echo $collection['year'];                  // 1776
-echo $collection->offsetGet('year');       // 1776
-echo $collection->get('year', 1776, true); // 1776
-```
-
-```php
-public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
-```
-
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+- `array`
+- `bool`
+- `boolean`
+- `double`
+- `float`
+- `int`
+- `integer`
+- `null`
+- `object`
+- `string`
 
 ## Has
 
@@ -187,7 +160,7 @@ To check whether an element exists or not in the collection, you can use the fol
 
 - `isset()` on the property
 - `__isset()`
-- array based isset (`isset($coollection[$element])`)
+- array based isset (`isset($collection[$element])`)
 - `offsetExists()`
 - `has()`
 
@@ -222,14 +195,7 @@ echo $collection->has('year', true);      // true
 ```
 
 ```php
-public function has(string $element, bool $insensitive = true):  bool
-```
-
-Using `has()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
-
-```php
-echo $collection->has('YEAR', true);      // true
-echo $collection->has('YEAR', false);     // false
+public function has(string $element):  bool
 ```
 
 ## Set
@@ -311,14 +277,7 @@ $collection->remove('year');
 ```
 
 ```php
-public function remove(string $element, bool $insensitive = true):  void
-```
-
-Using `remove()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
-
-```php
-$collection->remove('YEAR', true);
-$collection->remove('YEAR', false);
+public function remove(string $element):  void
 ```
 
 ## Iteration
@@ -366,7 +325,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->count();    // 2
+echo $collection->count(); // 2
 ```
 
 ## Serialization
@@ -399,7 +358,7 @@ echo $collection->jsonSerialize(); // $data
 
 ## Transformations
 
-`Phalcon\Registry` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
+[Phalcon\Registry](api/phalcon_registry#registry) also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
 ```php
 <?php
@@ -417,7 +376,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->toArray();  // $data
+echo $collection->toArray(); // $data
 ```
 
 `toJson(int $options)` returns a JSON representation of the object. It uses `json_encode` internally and accepts a parameter, which represents the flags that `json_encode` accepts. By default the options are set up with the value 74, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
@@ -446,7 +405,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->toJson();    // ["red","white","blue"],"year":1776}
+echo $collection->toJson(); // ["red","white","blue"],"year":1776}
 
 echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 /**

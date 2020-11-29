@@ -2,180 +2,1576 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
+title: 'Навчальний посібник - Vökuró'
+keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, навчальний посібник vokuro, крок за кроком, безпека, дозволи'
 ---
-# Tutorial - Vökuró
+
+# Навчальний посібник - Vökuró
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+
 ## Vökuró
 
-Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
+[Vökuró](https://github.com/phalcon/vokuro) - це приклад програми, що відтворює типовий веб-продукт, написаний на Phalcon. Цей додаток орієнтується на: - Авторизацію користувача (безпека) - Реєстрацію користувача (безпека) - Права доступу користувачів - Керування користувачами
 
-## Project Structure
+> **ПРИМІТКА**: Ви можете використовувати Vökuró як базу для розробки вашого продукту та його приведення до ваших потреб. Це аж ніяк не ідеальний продукт, який точно не відповідає усім потребам.
+{: .alert .alert-info }
 
-Once you clone the project in your document root you'll see the following structure:
+> 
+> **ПРИМІТКА**: Цей посібник орієнтований на тих, хто уже знайомий зі схемою дизайну Model-View-Controller (MVC). (дивіться посилання у кінці цього посібника)
+{: .alert .alert-warning }
+
+> 
+> **ПРИМІТКА**: Зауважте, що вказаний нижче код був відформатований для збільшення читабельності
+{: .alert .alert-warning }
+
+## Встановлення
+
+### Завантаження
+
+Для того, щоб встановити додаток, ви можете клонувати або завантажити його з [GitHub](https://github.com/phalcon/vokuro). Ви можете відвідати сторінку GitHub, завантажити додаток і потім розпакувати його в каталог на вашому комп'ютері. Крім того, ви можете використовувати `git clone`:
+
+```bash
+git clone https://github.com/phalcon/vokuro
+```
+
+### Розширення
+
+Для запуску Vökuró необхідно виконати певні умови. Ви повинні мати встановлений на вашій машині PHP >= 7.2 з такими розширеннями: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
+
+Phalcon повинен бути встановлений. Перейдіть на сторінку [встановлення](installation), якщо вам потрібна допомога з встановленням Phalcon. Зверніть увагу, що Phalcon v4 потребує встановленого PSR розширення та його завантаження **перед** Phalcon. Щоб встановити PSR, ви можете скористатись сторінкою [php-psr](https://github.com/jbboehr/php-psr) на GitHub.
+
+Нарешті, вам також потрібно буде переконатися, що ви оновили пакети композера (див. розділ нижче).
+
+### Старт
+
+Якщо всі вищезазначені вимоги задоволені, ви можете запустити додаток за допомогою локального PHP веб-сервера, виконавши таку команду в терміналі:
+
+```bash
+php -S localhost:8080 -t public/ .htrouter.php
+```
+
+Ця команда запустить сайт для `localhost` з портом `8080`. Ви можете змінити ці налаштування відповідно до ваших потреб. Крім того, ви можете налаштувати свій сайт в Apache або nginX за допомогою віртуального хоста. Будь ласка, зверніться до відповідної документації, щоб налаштувати віртуальний хост для цих веб-серверів.
+
+### Docker
+
+У папці `resources` ви знайдете `Dockerfile`, який дозволяє швидко налаштувати середовище і запустити програму. Щоб використовувати `Dockerfile` нам потрібно визначити назву нашого докеризованого додатка. Для цілей цього посібника ми використаємо `phalcon-tutorial-vokuro`.
+
+З кореню додатка ми повинні компілювати проект (вам потрібно це робити лише раз):
+
+```bash
+$ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
+```
+
+а потім запустіть його
+
+```bash
+$ docker run -it --rm phalcon-tutorial-vokuro bash
+```
+
+Це дозволить нам отримати доступ до докеризованого середовища. Щоб перевірити версію PHP:
+
+```bash
+root@c7b43060b115:/code $ php -v
+
+PHP 7.3.9 (cli) (built: Sep 12 2019 10:08:33) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.9, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.9, Copyright (c) 1999-2018, by Zend Technologies
+```
+
+та Phalcon:
+
+```bash
+root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
+
+4.0.0
+```
+
+Тепер ви маєте докеризоване середовище з усіма необхідними компонентами, щоб запустити Vökuró.
+
+### Nanobox
+
+У теці `resources` ви також знайдете файл `boxfile.yml`, що дозволяє використовувати nanobox для швидкого налаштування середовища. Вам потрібно просто скопіювати файл в кореневий каталог і запустити `nanobox run php-server`. Після налаштування додатка ви зможете перейти за IP-адресою, що відображається на екрані та працювати з цим додатком.
+
+Для отримання додаткової інформації про те, як налаштувати nanobox, ознайомтесь з нашими сторінками \[Середовища Nanobox\]\[environments-nanobox\] та посібника[Nanobox](https://guides.nanobox.io/php/)
+
+> **ПРИМІТКА**: У цьому посібнику ми припускаємо, що ваш додаток було скопійовано чи клоновано у теку з назвою `vokuro`.
+{: .alert .alert-info }
+
+## Структура
+
+Погляньте на структуру додатка:
 
 ```bash
 vokuro/
-    app/
-        config/
-        controllers/
-        forms/
-        library/
-        models/
-        views/
-    cache/
-    public/
-        css/
-        img/
-    schemas/
+    .ci
+    configs
+    db
+        migrations
+        seeds
+    public
+    resources
+    src
+        Controllers
+        Forms
+        Models
+        Phalcon
+        Plugins
+        Providers
+    tests
+    themes
+        vokuro
+    var
+        cache
+            acl
+            metaData
+            session
+            volt
+        logs
+    vendor
 ```
 
-This project follows a quite similar structure to INVO. Once you open the application in your browser `https://localhost/vokuro` you'll see something like this:
+| Каталог           | Опис                                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| `.ci`             | Файли, необхідні для налаштування служб для CI                      |
+| `configs`         | Файли конфігурації                                                  |
+| `db`              | Містить файли міграції для бази даних                               |
+| `public`          | Точка входу в додаток, місце зберігання файлів css, js та зображень |
+| `resources`       | Файли Docker/nanobox для налаштування додатка                       |
+| `src`             | Місце розташування всіх основних файлів (контролери, форми тощо)    |
+| `src/Controllers` | Контролери                                                          |
+| `src/Forms`       | Форми                                                               |
+| `src/Models`      | Моделі бази даних                                                   |
+| `src/Plugins`     | Плагіни                                                             |
+| `src/Providers`   | Постачальники: налаштування сервісів у контейнері DI                |
+| `tests`           | Тести                                                               |
+| `themes`          | Теми/подання для легкого налаштування                               |
+| `themes/vokuro`   | Тема додатку за замовчуванням                                       |
+| `var`             | Різні допоміжні файли                                               |
+| `var/cache`       | Файли кешу                                                          |
+| `var/logs`        | Журнали                                                             |
+| `vendor`          | Бібліотеки сторонній постачальників/композера                       |
+
+## Налаштування
+
+### `.env`
+
+[Vökuró](https://github.com/phalcon/vokuro) використовує популярну бібліотеку [Dotenv](https://github.com/vlucas/phpdotenv) від Vance Lucas. Бібліотека використовує `.env` файл розташований в кореневій теці, який містить параметри конфігурації, такі як сервер бази даних, ім'я користувача, пароль тощо. Там є файл `.env.example`, який постачається з Vökuró, який можна скопіювати та перейменувати на `.env` а потім відредагувати його у відповідності до умов вашого середовища. Ви повинні зробити це спочатку, щоб ваш додаток міг працювати належним чином.
+
+Доступні варіанти:
+
+| Опція                | Опис                                                                                                                                                            |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `APP_CRYPT_SALT`     | Випадковий і довгий рядок, який використовується компонентом [Phalcon\Crypt](crypt) для створення паролів та будь-яких додаткових функцій безпеки              |
+| `APP_BASE_URI`       | Зазвичай `/`, якщо ваш веб-сервер спрямовує запити безпосередньо у каталог Vökuró. Якщо ви встановили Vökuró в підкаталозі, ви можете відкоригувати базовий URI |
+| `APP_PUBLIC_URL`     | Публічний URL додатку. Використовується для електронних листів.                                                                                                 |
+| `DB_ADAPTER`         | Адаптер бази даних. Доступні адаптери: `mysql`, `pgsql`, `sqlite`. Будь ласка, переконайтеся, що в вашій системі встановлені відповідні розширення бази даних.  |
+| `DB_HOST`            | Хост бази даних                                                                                                                                                 |
+| `DB_PORT`            | Порт бази даних                                                                                                                                                 |
+| `DB_USERNAME`        | Ім'я користувача бази даних                                                                                                                                     |
+| `DB_PASSWORD`        | Пароль бази даних                                                                                                                                               |
+| `DB_NAME`            | Ім'я бази даних                                                                                                                                                 |
+| `MAIL_FROM_NAME`     | Ім'я FROM при надсиланні електронної пошти                                                                                                                      |
+| `MAIL_FROM_EMAIL`    | FROM email при надсиланні електронної пошти                                                                                                                     |
+| `MAIL_SMTP_SERVER`   | Сервер SMTP                                                                                                                                                     |
+| `MAIL_SMTP_PORT`     | SMTP порт                                                                                                                                                       |
+| `MAIL_SMTP_SECURITY` | Безпека SMTP (наприклад, `tls`)                                                                                                                                 |
+| `MAIL_SMTP_USERNAME` | Ім'я користувача SMTP                                                                                                                                           |
+| `MAIL_SMTP_PASSWORD` | Пароль до SMTP                                                                                                                                                  |
+| `CODECEPTION_URL`    | Сервер Codection для випробувань. Якщо ви запускаєте тести локально, це має бути `127.0.0.1`                                                                    |
+| `CODECEPTION_PORT`   | Порт Codeception                                                                                                                                                |
+
+Після того, як файл конфігурації буде збережено, перехід у браузері за цією IP-адресою відобразить щось схоже на це:
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-The application is divided into two parts, a frontend, where visitors can sign up the service and a backend where administrative users can manage registered users. Both frontend and backend are combined in a single module.
+### `База данних`
 
-## Load Classes and Dependencies
+Також потрібно ініціалізувати базу даних. [Vökuró](https://github.com/phalcon/vokuro) використовує популярну бібліотеку [Phinx](https://github.com/cakephp/phinx) від Rob Morgan (тепер Фонд Cake Foundation). Бібліотека використовує власний файл конфігурації (`phinx.php`), але для Vökuró вам не потрібно змінювати будь-які параметри, оскільки `phinx.php` читає файл `.env`, щоб отримати налаштування конфігурації. Це дозволяє вам встановити параметри конфігурації в одному місці.
 
-This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org). Assuming you have it correctly installed, type the following command in the console:
+Тепер нам потрібно буде розпочати міграцію. Щоб перевірити статус нашої бази даних:
 
 ```bash
-cd vokuro
+/app $ ./vendor/bin/phinx status
+```
+
+Ви побачите цей екран:
+
+![](/assets/images/content/tutorial-vokuro-2.png)
+
+Щоб ініціалізувати базу даних, нам потрібно запустити міграції:
+
+```bash
+/app $ ./vendor/bin/phinx migrate
+```
+
+Екран відображатиме дію:
+
+![](/assets/images/content/tutorial-vokuro-3.png)
+
+А команда `status` тепер покаже всі зелені:
+
+![](/assets/images/content/tutorial-vokuro-4.png)
+
+### Налаштування
+
+**acl.php**
+
+Заглянувши у папку `config/`, ви помітите чотири файли. Вам не потрібно змінювати ці файли, щоб запустити додаток, але якщо ви хочете їх змінити, то це саме те місце, де вони розташовані. Файл `acl.php` повертає масив *routes*, який контролює, які маршрути видимі тільки для зареєстрованих користувачів.
+
+Поточне налаштування вимагає, щоб користувач увійшов у систему, якщо хоче отрисати доступ до таких маршрутів:
+
+- `users/index`
+- `users/search`
+- `users/edit`
+- `users/create`
+- `users/delete`
+- `users/changePassword`
+- `profiles/index`
+- `profiles/search`
+- `profiles/edit`
+- `profiles/create`
+- `profiles/delete`
+- `permissions/index`
+
+Якщо ви використовуєте Vökuró як відправну точку для вашого власного продукту, то вам потрібно буде змінити цей файл, щоб додавати чи видалити маршрути, щоб переконатися, що ваші захищені маршрути доступні після авторизації.
+
+> **ПРИМІТКА**: Зберігання приватних маршрутів у масиві ефективне і просте в обслуговуванні для невеликої та середньої програми. Як тільки ваш додаток почне зростати, ви можете розглянути іншу техніку зберігання своїх приватних иаршрутів, наприклад: база даних з механізмом кешування.
+{: .alert .alert-info }
+
+**config.php**
+
+Цей файл містить всі параметри конфігурації, які потрібно Vökuró. Зазвичай вам не потрібно змінювати цей файл, так як елементи масиву встановлено `.env` файлом і [Dotenv](https://github.com/vlucas/phpdotenv). Однак, ви можете захотіти змінити місцезнаходження своїх журналів чи інші шляхи, вирішите змінити структуру каталогів.
+
+Одним з елементів, які ви можете захотіти змінити у роботі з Vökuró на своїй локальній машині є `useMail` та встановити його на `false`. Це вкаже Vökuró, не намагатися підключатися до поштового сервера, щоб надіслати повідомлення при реєстрації користувача на сайті.
+
+**providers.php**
+
+Цей файл містить всіх постачальників, які потрібні Vökuró. Це список класів нашого додатку, що реєструє певні класи у контейнері DI. Якщо вам потрібно зареєструвати нові компоненти у контейнері DI, ви можете додати їх до масиву цього файлу.
+
+**routes.php**
+
+У цьому файлі містяться маршрути, які розуміє Vökuró. Роутер уже зареєстрував маршрути за замовчуванням, тому будь-які маршрутизатори, визначені в `routes.php` є специфічними і нетиповими. Ви можете додати в цей файл будь-які нестандартні маршрути при налаштуванні Vökuró. На всякий випадок нагадаємо маршрути за замовчуванням:
+
+```bash
+/:controller/:action/:parameters
+```
+
+### Постачальники
+
+Як було зазначено вище, Vökuró використовує класи під назвою Providers для реєстрації послуг у контейнері DI. Це один зі способів реєстрації послуг в контейнері DI, ніщо не заважає вам помістити всі ці реєстрації в один файл.
+
+Для Vökuró ми вирішили використовувати окремі файли для кожного сервісу, та файл `providers.php` (див. вище) в якості реєстраційного масиву конфігурації для цих сервісів. Це дозволяє нам мати набагато менші фрагменти коду, організовані в окремих файлах для різних сервісів, а також масив який дозволяє нам реєструвати чи відключати службу без видалення файлів. Все, що нам потрібно - це змінити масив `providers.php`.
+
+Класи постачальників розташовані в `src/Providers`. Кожен із класів постачальників реалізує інтерфейс [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface). Для отримання додаткової інформації дивіться нижче у розділі завантажувача.
+
+## Composer
+
+[Vökuró](https://github.com/phalcon/vokuro) використовує [композер](https://getcomposer.org) для завантаження і встановлення PHP бібліотек. Бібліотеки, що використовуються:
+
+- [Dotenv](https://github.com/vlucas/phpdotenv)
+- [Phinx](https://github.com/cakephp/phinx)
+- [Swift Mailer](https://swiftmailer.symfony.com)
+
+Глянувши у `composer.json`, бачимо, що необхідні такі пакунки:
+
+```json
+"require": {
+    "php": ">=7.2",
+    "ext-openssl": "*",
+    "ext-phalcon": "~4.0.0-beta.2",
+    "robmorgan/phinx": "^0.11.1",
+    "swiftmailer/swiftmailer": "^5.4",
+    "vlucas/phpdotenv": "^3.4"
+}
+```
+
+Якщо це нова установка, ви можете запустити
+
+```bash
 composer install
 ```
 
-Vökuró sends emails to confirm the sign up of registered users using Swift, the `composer.json` looks like:
+або якщо ви хочете оновити вже встановлені вищезгадані пакети:
+
+```bash
+composer update
+```
+
+Для отримання додаткової інформації про композер, ви можете відвідати сторінку його [документації](https://getcomposer.org).
+
+## Завантажувач
+
+### Точка входу
+
+Вхідною точкою нашого додатку є `public/index.php`. У цьому файлі міститься необхідний код, який збирає і завантажує додаток. Він також служить єдиною точкою входу до нашого додатка, спрощує нам відловлювання помилок, захист файлів тощо.
+
+Давайте поглянемо на код:
+
+```php
+<?php
+
+use Vokuro\Application as VokuroApplication;
+
+error_reporting(E_ALL);
+$rootPath = dirname(__DIR__);
+
+try {
+    require_once $rootPath . '/vendor/autoload.php';
+
+    /**
+     * Завантаження .env конфігурації
+     */
+    Dotenv\Dotenv::create($rootPath)->load();
+
+    /**
+     * Запуск Vökuró!
+     */
+    echo (new VokuroApplication($rootPath))->run();
+} catch (Exception $e) {
+    echo $e->getMessage(), '<br>';
+    echo nl2br(htmlentities($e->getTraceAsString()));
+}
+```
+
+Перш за все, ми пересвідчуємось, що маємо повноцінне звітування про помилки. Звісно, ви можете змінити це, якщо бажаєте, або переписати код, щоб звітування про помилки контролювалось через записи у вашому `.env` файлі.
+
+Блок `try`/`catch` згортає усі операції. Це гарантує, що на екрані з'являться всі помилки.
+
+> **ПРИМІТКА** Вам потрібно буде переробити код для підвищення безпеки. Якщо зараз станеться помилка бази даних, код `catch` виведе на екран технічну інформацію щодо доступу до бази даних з інформацією про помилку. Цей код є посібником, та не готовий для повномасштабного виробничого додатку
+{: .alert .alert-danger }
+
+Ми впевнені, що маємо доступ до всіх підтримуваних бібліотек, завантажуючи автозавантажувач композера. У `composer.json` ми також визначили запис `autoload`, що забезпечує автозавантаження будь-яких класів з простору імен `Vokuro` з теки `src`.
 
 ```json
+"autoload": {
+    "psr-4": {
+        "Vokuro\\": "app/"
+    },
+    "files": [
+        "app/Helpers.php"
+    ]
+}
+```
+
+Потім ми завантажуємо змінні середовища, визначені у нашому файлі `.env`, викликаючи
+
+```php
+Dotenv\Dotenv::create($rootPath)->load();
+```
+
+І нарешті ми запускаємо нашу програму.
+
+### Application
+
+Вся логіка програми загорнута в клас `Vokuro\Application`. Давайте подивимося, як це робиться:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro;
+
+use Exception;
+use Phalcon\Application\AbstractApplication;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\Mvc\Application as MvcApplication;
+
+/**
+ * Vökuró Application
+ */
+class Application
 {
-    "require" : {
-        "php": ">=5.5.0",
-        "ext-phalcon": ">=3.0.0",
-        "swiftmailer/swiftmailer": "^5.4",
-        "amazonwebservices/aws-sdk-for-php": "~1.0"
+    const APPLICATION_PROVIDER = 'bootstrap';
+
+    /**
+     * @var AbstractApplication
+     */
+    protected $app;
+
+    /**
+     * @var DiInterface
+     */
+    protected $di;
+
+    /**
+     * Кореневий шлях проекту
+     *
+     * @var string
+     */
+    protected $rootPath;
+
+    /**
+     * @param string $rootPath
+     *
+     * @throws Exception
+     */
+    public function __construct(string $rootPath)
+    {
+        $this->di       = new FactoryDefault();
+        $this->app      = $this->createApplication();
+        $this->rootPath = $rootPath;
+
+        $this->di->setShared(self::APPLICATION_PROVIDER, $this);
+
+        $this->initializeProviders();
+    }
+
+    /**
+     * Запуск Vökuró Application
+     *
+     * @return string
+     * @throws Exception
+     */
+    public function run(): string
+    {
+        return (string) $this
+            ->app
+            ->handle($_SERVER['REQUEST_URI'])
+            ->getContent()
+        ;
+    }
+
+    /**
+     * Отримуємо кореневий шлях проекту
+     *
+     * @return string
+     */
+    public function getRootPath(): string
+    {
+        return $this->rootPath;
+    }
+
+    /**
+     * @return AbstractApplication
+     */
+    protected function createApplication(): AbstractApplication
+    {
+        return new MvcApplication($this->di);
+    }
+
+    /**
+     * @throws Exception
+     */
+    protected function initializeProviders(): void
+    {
+        $filename = $this->rootPath 
+                 . '/configs/providers.php';
+        if (!file_exists($filename) || !is_readable($filename)) {
+            throw new Exception(
+                'Файл providers.php не існує або нечитабельний.'
+            );
+        }
+
+        $providers = include_once $filename;
+        foreach ($providers as $providerClass) {
+            /** @var ServiceProviderInterface $provider */
+            $provider = new $providerClass;
+            $provider->register($this->di);
+        }
+    }
+}
+
+```
+
+Конструктор класу спочатку створює новий контейнер DI та зберігає його в локальній власності. Ми використовуємо [Phalcon\Di\FactoryDefault](di), який містить багато сервісів уже зареєстрованих для нас.
+
+Потім ми створюємо новий [Phalcon\Mvc\Application](application) та зберігаємо його також у власність. Ми також зберігаємо кореневий шлях, тому що він потрібний кругом у додатку.
+
+Потім ми реєструємо цей клас ( `Vokuro\Application`) у контейнері Di, використовуючи ім'я `bootstrap`. Це дає нам доступ до цього класу з будь-якої частини нашого застосунку через контейнер DI.
+
+Останнє, що ми робимо - це реєструємо всіх постачальників. Хоча об'єкт [Phalcon\Di\FactoryDefault](di) має багато сервісів, які вже зареєстровані для нас, нам все ще треба реєструвати постачальників, які відповідають потребам нашої програми. Як зазначено вище, кожен клас постачальника реалізує інтерфейс [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface), тож ми можемо завантажити кожен клас, викликаючи метод `register()` з контейнера Di для реєстрації кожного сервісу. Для цього ми спочатку завантажимо масив конфігурації `config/providers.php`, а потім зв'яжемо записи і зареєструємо кожного провайдера.
+
+Доступні постачальники:
+
+| Постачальник             | Опис                                                                 |
+| ------------------------ | -------------------------------------------------------------------- |
+| `AclProvider`            | Права доступу                                                        |
+| `AuthProvider`           | Авторизація                                                          |
+| `ConfigProvider`         | Значення конфігурації                                                |
+| `CryptProvider`          | Шифрування                                                           |
+| `DbProvider`             | Доступ до бази даних                                                 |
+| `DispatcherProvider`     | Диспетчер, який використовує контролер для переходу за URL-адресою   |
+| `FlashProvider`          | Флеш-повідомлення для забезпечення зворотного зв'язку з користувачем |
+| `LoggerProvider`         | Реєстратор помилок та іншої інформації                               |
+| `MailProvider`           | Підтримка пошти                                                      |
+| `ModelsMetadataProvider` | Метадані для моделей                                                 |
+| `RouterProvider`         | Маршрути                                                             |
+| `SecurityProvider`       | Безпека                                                              |
+| `SessionBagProvider`     | Дані сесії                                                           |
+| `SessionProvider`        | Дані сесії                                                           |
+| `UrlProvider`            | Обробка URL                                                          |
+| `ViewProvider`           | Подання та двигун, що його формує                                    |
+
+`run()` тепер запустить `REQUEST_URI`, обробить його і поверне вміст назад. Внутрішньо програма вираховує маршрут на основі запиту, координує відповідний контролер і подання перед поверненням результату цієї операції назад користувачеві у якості відповіді.
+
+## База данних
+
+Як зазначено вище, Vökuró можна встановити з MariaDB/MySQL/Aurora, PostgreSql або SQLite в якості сховища баз даних. Для цілей цього посібника ми використовуємо MariaDB. Таблиці, які використовує програма:
+
+| Таблиця               | Опис                                            |
+| --------------------- | ----------------------------------------------- |
+| `email_confirmations` | Підтвердження електронною поштою для реєстрації |
+| `failed_logins`       | Невдалі спроби входу                            |
+| `password_changes`    | Коли було змінено пароль і ким                  |
+| `permissions`         | Матриця дозволів                                |
+| `phinxlog`            | Міграційна таблиця Phinx                        |
+| `profiles`            | Профіль для кожного користувача                 |
+| `remember_tokens`     | Функціональні токени *Пам'ятати мене*           |
+| `reset_passwords`     | Таблиця токенів скидання паролів                |
+| `success_logins`      | Успішні спроби входу                            |
+| `users`               | Користувачі                                     |
+
+## Моделі
+
+Слідуючи шаблону [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller), Vökuró має одну модель для окремої таблиці бази даних (виключаючи `phinxlog`). Моделі дозволяють нам взаємодіяти з таблицями бази даних у легкий об'єктно-орієнтований спосіб. Моделі розташовані в каталозі `/src/Models`, і кожна модель визначає відповідні поля вихідної таблиці та будь-які зв'язки між моделлю та іншими об'єктами. Деякі моделі також втілюють правила перевірки для забезпечення належного збереження даних у базі даних.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+
+/**
+ * Успішні авторизації
+ *
+ * Ця модель реєструє успішні спроби авторизації зареєстрованих користувачів
+ */
+class SuccessLogins extends Model
+{
+    /**
+     * @var integer
+     */
+    public $id;
+
+    /**
+     * @var integer
+     */
+    public $usersId;
+
+    /**
+     * @var string
+     */
+    public $ipAddress;
+
+    /**
+     * @var string
+     */
+    public $userAgent;
+
+    public function initialize()
+    {
+        $this->belongsTo(
+            'usersId', 
+            Users::class, 
+            'id', 
+            [
+                'alias' => 'user',
+            ]
+        );
     }
 }
 ```
 
-Now, there is a file called `app/config/loader.php` where all the auto-loading stuff is set up. At the end of this file you can see that the composer autoloader is included enabling the application to autoload any of the classes in the downloaded dependencies:
+У моделі вище ми визначили всі поля таблиці як публічні властивості для спрощення доступу:
 
 ```php
-<?php
-
-// ...
-
-// Use composer autoloader to load vendor classes
-require_once BASE_PATH . '/vendor/autoload.php';
+echo $successLogin->ipAddress;
 ```
 
-Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models which is the recommended practice to structure a project. This way the autoloader looks slightly different than the one we saw before (`app/config/loader.php`):
+> **ПРИМІТКА**: Зверніть увагу, що імена властивостей точно відображають регістр (верхній/нижній) імен полів у відповідній таблиці.
+{: .alert .alert-warning }
+
+У методі `initialize()` ми також визначили зв'язок між цією моделлю і `Users`. Ми призначили поля (local/remote), а також `alias` для цього зв'язку. Таким чином, ми можемо отримати доступ до користувача, що має відношення до запису цієї моделі наступним чином:
 
 ```php
-<?php
-
-use Phalcon\Loader;
-
-$loader = new Loader();
-
-$loader->registerNamespaces(
-    [
-        'Vokuro\Models'      => $config->application->modelsDir,
-        'Vokuro\Controllers' => $config->application->controllersDir,
-        'Vokuro\Forms'       => $config->application->formsDir,
-        'Vokuro'             => $config->application->libraryDir,
-    ]
-);
-
-$loader->register();
-
-// ...
+echo $successLogin->user->name;
 ```
 
-Instead of using `registerDirectories()`, we use `registerNamespaces()`. Every namespace points to a directory defined in the configuration file (app/config/config.php). For instance the namespace `Vokuro\Controllers` points to `app/controllers` so all the classes required by the application within this namespace requires it in its definition:
+> **ПРИМІТКА**: Не соромтеся відкривати кожен файл моделі та визначати взаємозв'язок між моделями. Перевірте нашу документацію щодо різниці між різними типами відносин
+{: .alert .alert-info }
+
+## Контролери
+
+Знову слідуючи шаблону [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller), Vökuró має один контролер для обробки конкретного *батьківського* маршруту. Це означає, що `AboutController` обробляє маршрут `/about`. Всі контролери знаходяться в каталозі `/src/Cotnrollers`.
+
+Контролер за замовчуванням це `IndexController`. Всі класи контролерів мають суфікс `Controller`. Кожен контролер має методи з суфіксамит`Action`, а дія за замовчуванням - `indexAction`. Таким чином, якщо ви відвідаєте сайт, перейшовши з базовою URL, буде викликано `IndexController`, яким буде виконано дію `indexAction`.
+
+Після цього, якщо ви не реєстрували певні специфічні маршрути, маршрути за замовчуванням (автоматично зареєстровані) намагатимуться прив'язувати:
+
+```bash
+/profiles/search
+```
+
+до
+
+```bash
+/src/Controllers/SearchController.php -> searchAction
+```
+
+Доступні контролери, дії та маршрути для Vökuró:
+
+| Контролер     | Дія              | Маршрут                   | Опис                                           |
+| ------------- | ---------------- | ------------------------- | ---------------------------------------------- |
+| `About`       | `index`          | `/about`                  | Показує сторінку`Про проект`                   |
+| `Index`       | `index`          | `/`                       | Типова дія - головна сторінка                  |
+| `Permissions` | `index`          | `/permissions`            | Перегляд/зміна дозволів для рівня профілю      |
+| `Privacy`     | `index`          | `/privacy`                | Перегляд сторінки конфіденційності             |
+| `Profiles`    | `index`          | `/profiles`               | Переглянути сторінку за замовчуванням профілів |
+| `Profiles`    | `create`         | `/profiles/create`        | Створити профіль                               |
+| `Profiles`    | `delete`         | `/profiles/delete`        | Видалити профіль                               |
+| `Profiles`    | `edit`           | `/profiles/edit`          | Редагувати профіль                             |
+| `Profiles`    | `search`         | `/profiles/search`        | Пошук профілів                                 |
+| `Session`     | `index`          | `/session`                | Дія сесії за замовчуванням                     |
+| `Session`     | `forgotPassword` | `/session/forgotPassword` | Забули пароль                                  |
+| `Session`     | `login`          | `/session/login`          | Вхід                                           |
+| `Session`     | `logout`         | `/session/logout`         | Вихід                                          |
+| `Session`     | `signup`         | `/session/signup`         | Зареєструватися                                |
+| `Terms`       | `index`          | `/terms`                  | Переглянути сторінку з правилами               |
+| `UserControl` | `confirmEmail`   | `/confirm`                | Підтвердіть електронну пошту                   |
+| `UserControl` | `resetPassword`  | `/reset-password`         | Скидання пароля                                |
+| `Users`       | `index`          | `/users`                  | Екран за замовчуванням для користувачів        |
+| `Users`       | `changePassword` | `/users/changePassword`   | Змінити пароль користувача                     |
+| `Users`       | `create`         | `/users/create`           | Створити користувача                           |
+| `Users`       | `delete`         | `/users/delete`           | Видалити користувача                           |
+| `Users`       | `edit`           | `/users/edit`             | Редагувати користувача                         |
+
+## Подання
+
+Останній елемент шаблону [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) це відображення або подання візуалізованого результату обробки запиту користувача. Vökuró використовує [Volt](volt) як генератор подання для його відображень.
+
+> **ПРИМІТКА**: Взагалі то, хтось може сподіватись знайти теку `views` у каталозі `/src`. Однак, Vökuró використовує трохи інший підхід, зберігаючи всі файли подань у `/themes/vokuro`. 
+{: .alert .alert-info }
+
+Каталог подань містить теки, що відповідають кожному контролеру. Всередині кожної з цих тек є файли `.volt`, що створені для відображення результатів кожної окремої дії. Наприклад, маршрут:
+
+```bash
+/profiles/create
+```
+
+веде до:
+
+```bash
+ProfilesController -> createAction
+```
+
+і у поданнях розташований:
+
+```bash
+/themes/vokuro/profiles/create.volt
+```
+
+Доступні подання:
+
+| Контролер     | Дія              | Подання                        | Опис                                           |
+| ------------- | ---------------- | ------------------------------ | ---------------------------------------------- |
+| `About`       | `index`          | `/about/index.volt`            | Показує сторінку`Про проект`                   |
+| `Index`       | `index`          | `/index/index.volt`            | Типова дія - головна сторінка                  |
+| `Permissions` | `index`          | `/permissions/index.volt`      | Перегляд/зміна дозволів для рівня профілю      |
+| `Privacy`     | `index`          | `/privacy/index.volt`          | Перегляд сторінки конфіденційності             |
+| `Profiles`    | `index`          | `/profiles/index.volt`         | Переглянути сторінку за замовчуванням профілів |
+| `Profiles`    | `create`         | `/profiles/create.volt`        | Створити профіль                               |
+| `Profiles`    | `delete`         | `/profiles/delete.volt`        | Видалити профіль                               |
+| `Profiles`    | `edit`           | `/profiles/edit.volt`          | Редагувати профіль                             |
+| `Profiles`    | `search`         | `/profiles/search.volt`        | Пошук профілів                                 |
+| `Session`     | `index`          | `/session/index.volt`          | Дія сесії за замовчуванням                     |
+| `Session`     | `forgotPassword` | `/session/forgotPassword.volt` | Забули пароль                                  |
+| `Session`     | `login`          | `/session/login.volt`          | Вхід                                           |
+| `Session`     | `logout`         | `/session/logout.volt`         | Вихід                                          |
+| `Session`     | `signup`         | `/session/signup.volt`         | Зареєструватися                                |
+| `Terms`       | `index`          | `/terms/index.volt`            | Переглянути сторінку з правилами               |
+| `Users`       | `index`          | `/users/index.volt`            | Екран за замовчуванням для користувачів        |
+| `Users`       | `changePassword` | `/users/changePassword.volt`   | Змінити пароль користувача                     |
+| `Users`       | `create`         | `/users/create.volt`           | Створити користувача                           |
+| `Users`       | `delete`         | `/users/delete.volt`           | Видалити користувача                           |
+| `Users`       | `edit`           | `/users/edit.volt`             | Редагувати користувача                         |
+
+Файл `/index.volt` містить основну схему сторінки, включаючи посилання на стилі, javascript і т. д. Каталог `/layouts` містить різні макети, які використовуються в програмі, для екземпляра `публічного`, якщо користувач не увійшов у систему, і `приватного` подання інформації користувачу, якщо він увійшов у систему. Окремі подання вкладаються у макети та будують кінцеву сторінку.
+
+## Компоненти
+
+У Vökuró є кілька компонентів, функціонал яких ви використовуємо по всьому додатку. Всі ці компоненти знаходяться в каталозі `/src/Plugins`.
+
+### Acl
+
+`Vokuro\Plugins\Acl\Acl` це компонент, який реалізує [список контролю доступу](https://en.wikipedia.org/wiki/Access-control_list) для нашого додатку. ACL контролює, до яких ресурсів має доступ окремий користувач. Більше про ACL можна прочитати на нашій [окремій сторінці](acl).
+
+У цьому компоненті ми визначаємо ресурси, які вважаються *приватними*. Вони зберігаються у внутрішньому масиві з контролером як ключом та дією як значенням, та визначають, які контролери/дії потребують аутентифікації. Він також вміщує розбірливі описи дій, які використовуються в усій програмі.
+
+Компонент використовує наступні методи:
+
+| Метод                                       | Результат          | Опис                                                                 |
+| ------------------------------------------- | ------------------ | -------------------------------------------------------------------- |
+| `getActionDescription($action)`             | `стрічка`          | Повертає опис дії відповідно до її спрощеного імені                  |
+| `getAcl()`                                  | `об'єкт ACL`       | Повертає список ACL                                                  |
+| `getPermissions(Profiles $profile)`         | `масив`            | Повертає дозволи, надані профілю                                     |
+| `getResources()`                            | `масив`            | Повертає всі доступні ресурси та їх дії                              |
+| `isAllowed($profile, $controller, $action)` | `логічне значення` | Перевіряє, чи дозволено поточному профілю отримати доступ до ресурсу |
+| `isPrivate($controllerName)`                | `логічне значення` | Перевіряє, чи є контролер приватним або ні                           |
+| `rebuild()`                                 | `об'єкт ACL`       | Перебудовує список доступу у файл                                    |
+
+### Auth
+
+`Vokuro\Plugins\Auth\Auth` - це компонент, який керує автентифікацією і здійснює управління ідентифікацією в Vökuró.
+
+Компонент використовує наступні методи:
+
+| Метод                                    | Опис                                                                                            |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `check($credentials)`                    | Перевіряє облікові дані користувача                                                             |
+| `saveSuccessLogin($user)`                | Створює налаштування середовища "пам'ятати мене" - пов'язані файли cookie і генерування токенів |
+| `registerUserThrottling($userId)`        | Імплементує тротлінг імені користувача. Знижує ефективність атак грубого підбору пароля         |
+| `createRememberEnvironment(Users $user)` | Створює налаштування середовища "пам'ятати мене" - пов'язані файли cookie і генерування токенів |
+| `hasRememberMe(): bool`                  | Перевірте, чи має сесія куки з міткою "пам'ятати мене"                                          |
+| `loginWithRememberMe(): Response`        | Авторизації з використанням інформації у куках                                                  |
+| `checkUserFlags(Users $user)`            | Перевіряє, чи користувач заблокований/неактивний/тимчасово заморожений                          |
+| `getIdentity(): array / null`            | Повертає поточну ідентифікацію                                                                  |
+| `getName(): string`                      | Повертає ім'я користувача                                                                       |
+| `remove()`                               | Видалення інформації про особистість користувача з сесії                                        |
+| `authUserById($id)`                      | Автентифікація користувача за його ідентифікатором                                              |
+| `getUser(): Users`                       | Отримує об'єкт, пов'язаний з користувачем у активній особистості                                |
+| `findFirstByToken($token): int / null`   | Повертає токен поточного користувача                                                            |
+| `deleteToken(int $userId)`               | Видаляє токен поточного користувача з сесії                                                     |
+
+### Пошта
+
+`Vokuro\Plugins\Mail\Mail` - це обгортка для [Swift Mailer](https://swiftmailer.symfony.com). Вона повертає два методи `send()` і `getTemplate()`, які дозволяють вам отримати шаблон з подань і заповнити його даними. Отриманий HTML може використовуватись в методі `send()` разом з отримувачем та іншими параметрами для відправлення повідомлення електронною поштою.
+
+> **ПРИМІТКА**: Зверніть увагу, що цей компонент може бути використаний лише, якщо `useMail` активовано у вашому файлі `.env`. Також потрібно буде забезпечити коректність SMTP сервера та облікових даних.
+{: .alert .alert-info } 
+
+## Реєстрація
+
+### Контролер
+
+Щоб отримати доступ до всіх областей Vökuró, вам потрібно мати обліковий запис. Vökuró дозволяє зареєструватися на сайті, натиснувши кнопку `Створити обліковий запис`.
+
+Це переспрямує вас до URL-адреси `/session/signup`, яка у свою чергу викличе `SessionController` та `signupAction`. Подивимося, що відбувається в `signupAction`:
 
 ```php
 <?php
+declare(strict_types=1);
 
 namespace Vokuro\Controllers;
 
-class AboutController extends ControllerBase
-{
-    // ...
-}
-```
-
-## Sign Up
-
-First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
-
-```php
-<?php
-
-namespace Vokuro\Controllers;
-
+use Phalcon\Flash\Direct;
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Security;
+use Phalcon\Mvc\View;
 use Vokuro\Forms\SignUpForm;
+use Vokuro\Models\Users;
 
+/**
+ * @property Dispatcher $dispatcher
+ * @property Direct     $flash
+ * @property Request    $request
+ * @property Security   $security
+ * @property View       $view
+ */
 class SessionController extends ControllerBase
 {
+    /**
+     * Дозволяємо користувачу зареєструватися в системі
+     */
     public function signupAction()
     {
         $form = new SignUpForm();
 
-        // ...
+        // ....
 
-        $this->view->form = $form;
+        $this->view->setVar('form', $form);
     }
 }
 ```
 
-This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
+Робочий процес додатку:
+
+- Відвідуємо `/session/signup` 
+    - Створення форми, відправлення форми до подання, візуалізація форми
+- Надання даних (без відправки) 
+    - Форма ще раз відображається, але нічого більше не відбувається
+- Надання даних (відбувається відправка) 
+    - Помилки 
+        - Якщо валідатори форми виявили помилки, то при повторному відображенні форми виводиться інформація про них
+    - Помилок немає 
+        - Дані знешкоджено (приведено у відповідність до шаблону)
+        - Нову модель створено
+        - Дані збережено в базі даних 
+            - Помилка 
+                - Показ повідомлення на екрані і оновлення форми
+            - Успіх 
+                - Запис збережено
+                - Показ підтвердження на екрані
+                - Надсилання пошти (якщо доступно)
+
+### Форма
+
+Для того, щоб виконати перевірку наданих користувачем даних, ми використовуємо класи [Phalcon\Forms](forms) та [Phalcon\Validation\*](validation). Ці класи дозволяють нам створювати HTML елементи та додавати до них валідатори. Потім форма передається до подання, де HTML елементи виводяться на екран.
+
+Коли користувач відправляє інформацію, ми відправляємо надіслані дані назад до форми, де відповідні валідатори перевіряють коректність введення та повертають будь-які потенційні повідомлення про помилки.
+
+> **ПРИМІТКА**: Всі форми для Vökuró розташовані в `/src/Forms`
+{: .alert .alert-info }
+
+Спочатку ми створили об'єкт `SignUpForm`. У цьому об’єкті ми визначаємо всі HTML-елементи, які нам потрібні із їх відповідними валідаторами:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Forms;
+
+use Phalcon\Forms\Element\Check;
+use Phalcon\Forms\Element\Hidden;
+use Phalcon\Forms\Element\Password;
+use Phalcon\Forms\Element\Submit;
+use Phalcon\Forms\Element\Text;
+use Phalcon\Forms\Form;
+use Phalcon\Validation\Validator\Confirmation;
+use Phalcon\Validation\Validator\Email;
+use Phalcon\Validation\Validator\Identical;
+use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\StringLength;
+
+class SignUpForm extends Form
+{
+    /**
+     * @param string|null $entity
+     * @param array       $options
+     */
+    public function initialize(
+        string $entity = null, 
+        array $options = []
+    ) {
+        $name = new Text('name');
+        $name->setLabel('Ім/'я');
+        $name->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'Ім/'я обов/'язкове',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($name);
+
+        // Email
+        $email = new Text('email');
+        $email->setLabel('E-Mail');
+        $email->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'Потрібно вказати Е-mail',
+                    ]
+                ),
+                new Email(
+                    [
+                        'message' => 'Е-mail неправильний',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($email);
+
+        // Пароль
+        $password = new Password('password');
+        $password->setLabel('Пароль');
+        $password->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'Потрібно вказати пароль',
+                    ]
+                ),
+                new StringLength(
+                    [
+                        'min'            => 8,
+                        'messageMinimum' => 'Пароль занадто короткий. ' .
+                                            'Мінімум 8 символів',
+                    ]
+                ),
+                new Confirmation(
+                    [
+                        'message' => "Пароль не збігається " .
+                                     "з підтвердженням",
+                        'with'    => 'confirmPassword',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($password);
+
+        // Підтвердження паролю
+        $confirmPassword = new Password('confirmPassword');
+        $confirmPassword->setLabel('Підтвердіть пароль');
+        $confirmPassword->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'Підтвердження паролю ' .
+                                     'необхідне',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($confirmPassword);
+
+        // Запам'ятати
+        $terms = new Check(
+            'terms', 
+            [
+                'value' => 'yes',
+            ]
+        );
+
+        $terms->setLabel('Прийняти умови користування');
+        $terms->addValidator(
+            new Identical(
+                [
+                    'value'   => 'так',
+                    'message' => 'Умови користування необхідно ' .
+                                 'прийняти',
+                ]
+            )
+        );
+
+        $this->add($terms);
+
+        // CSRF
+        $csrf = new Hidden('csrf');
+        $csrf->addValidator(
+            new Identical(
+                [
+                    'value'   => $this->security->getRequestToken(),
+                    'message' => 'CSRF перевірку не пройдено',
+                ]
+            )
+        );
+        $csrf->clear();
+
+        $this->add($csrf);
+
+        // Реєстрація
+        $this->add(
+            new Submit(
+                'Зареєструватися', 
+                [
+                    'class' => 'btn btn-success',
+                ]
+            )
+        );
+    }
+
+    /**
+     * Виведення повідомлень для специфічних елементів
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    public function messages(string $name)
+    {
+        if ($this->hasMessagesFor($name)) {
+            foreach ($this->getMessagesFor($name) as $message) {
+                return $message;
+            }
+        }
+
+        return '';
+    }
+}
+```
+
+У методі `initialize` ми встановлюємо всі необхідні HTML-елементи. Це такі елементи:
+
+| Елемент           | Тип        | Опис                                               |
+| ----------------- | ---------- | -------------------------------------------------- |
+| `name`            | `Text`     | Ім'я користувача                                   |
+| `email`           | `Text`     | Електронна адреса для облікового запису            |
+| `password`        | `Password` | Пароль до облікового запису                        |
+| `confirmPassword` | `Password` | Підтвердження пароля                               |
+| `terms`           | `Check`    | Поставити галочку щодо прийняття умов користування |
+| `csrf`            | `Hidden`   | Елемент захисту CSRF                               |
+| `Реєстрація`      | `Submit`   | Кнопка надсилання                                  |
+
+Додавання елементів здійснюється поступово:
+
+```php
+<?php
+declare(strict_types=1);
+
+// Email
+$email = new Text('email');
+$email->setLabel('E-Mail');
+$email->addValidators(
+    [
+        new PresenceOf(
+            [
+                'message' => 'Потрібно вказати е-mail',
+            ]
+        ),
+        new Email(
+            [
+                'message' => 'Е-mail неправильний',
+            ]
+        ),
+    ]
+);
+
+$this->add($email);
+```
+
+Спочатку ми створюємо об'єкт `Text` та задаємо в якості його назви `email`. Ми також встановили мітку елемента на `E-Mail`. Після цього ми прикріплюємо різні валідатори до елемента. Вони будуть викликані після того, як користувач відправить дані, які будуть передані у формі.
+
+Як ми бачили вище, ми прикріпляємо валідатор `PresenceOf` на елемент `email` із повідомленням `Потрібно вказати e-mail`. Валідатор перевіряє, чи користувач надав дані, коли натиснув на кнопку відправки повідомлення, та відображає повідомлення в разі помилки. Валідатор перевіряє переданий масив (як правило, `$_POST`), а для цього конкретного елементу він перевірить `$_POST['email']`.
+
+Ми також прикріпляємо валідатор `Email`, відповідальний за перевірку дійсної адреси електронної пошти. Як ви бачите, валідатори розміщуються у масиві, тож ви легко можете прикріпити до будь якого елемента стільки валідаторів, скільки вам потрібно.
+
+Останнє, що ми зробимо, це додамо елемент у форму.
+
+Ви помітите, що елемент `terms` не містить жодного валідатора, підключеного до нього, тому наша форма не буде перевіряти вміст цього елемента.
+
+Особлива увага до елементів `password` та `confirmPassword`. Ви побачите, що обидва елементи мають тип `Password`. Ідея полягає в тому, що ви повинні ввести пароль двічі, і такі паролі повинні збігатися для того, щоб уникнути помилок.
+
+Поле `password` має два валідатори для вмісту: `PresenceOf`, що є обов'язковим, і `StringLength`: для того, щоб пароль був більше, ніж 8 символів. Ми також прикріплюємо третій валідатор, що називається `Confirmation`. Цей спеціальний валідатор зв'язує елемент `password` з елементом `confirmPassword`. Коли він доданий для перевірки, то перевірить вміст обох елементів, і якщо вони не ідентичні - буде відображено повідомлення про помилку, наприклад про те, що перевірка буде невдала.
+
+### Подання
+
+Тепер, коли у нас є все, що ми передаємо через форму, ми відправлчємо форму поданню для відображення:
+
+```php
+$this->view->setVar('form', $form);
+```
+
+Наше подання тепер має *візуалізувати* такі елементи:
 
 ```twig
 {% raw %}
-{{ form('class': 'form-search') }}
+{# ... #}
+{% 
+    set isEmailValidClass = form.messages('email') ? 
+        'form-control is-invalid' : 
+        'form-control' 
+%}
+{# ... #}
 
-    <h2>
-        Sign Up
-    </h2>
+<h1 class="mt-3"> Зареєструватися</h1>
 
-    <p>{{ form.label('name') }}</p>
-    <p>
-        {{ form.render('name') }}
-        {{ form.messages('name') }}
-    </p>
+<form method="post">
+    {# ... #}
 
-    <p>{{ form.label('email') }}</p>
-    <p>
-        {{ form.render('email') }}
-        {{ form.messages('email') }}
-    </p>
+    <div class="form-group row">
+        {{ 
+            form.label(
+                'email', 
+                [
+                    'class': 'col-sm-2 col-form-label'
+                ]
+            ) 
+        }}
+        <div class="col-sm-10">
+            {{ 
+                form.render(
+                    'email', 
+                    [
+                        'class': isEmailValidClass, 
+                        'placeholder': 'Email'
+                    ]
+                ) 
+            }}
+            <div class="invalid-feedback">
+                {{ form.messages('email') }}
+            </div>
+        </div>
+    </div>
 
-    <p>{{ form.label('password') }}</p>
-    <p>
-        {{ form.render('password') }}
-        {{ form.messages('password') }}
-    </p>
+    {# ... #}
+    <div class="form-group row">
+        <div class="col-sm-10">
+            {{ 
+                form.render(
+                    'csrf', 
+                    [
+                        'value': security.getToken()
+                    ]
+                ) 
+            }}
+            {{ form.messages('csrf') }}
 
-    <p>{{ form.label('confirmPassword') }}</p>
-    <p>
-        {{ form.render('confirmPassword') }}
-        {{ form.messages('confirmPassword') }}
-    </p>
+            {{ form.render('Sign Up') }}
+        </div>
+    </div>
+</form>
 
-    <p>
-        {{ form.render('terms') }} {{ form.label('terms') }}
-        {{ form.messages('terms') }}
-    </p>
+<hr>
 
-    <p>{{ form.render('Sign Up') }}</p>
-
-    {{ form.render('csrf', ['value': security.getToken()]) }}
-    {{ form.messages('csrf') }}
-
-    <hr>
-
-{{ endForm() }}
+{{ link_to('session/login', "&larr; Назад до входу") }}
 {% endraw %}
 ```
+
+Змінна, яку ми встановили у поданні нашого об'єкта `SignUpForm` називається `form`. Тому ми використовуємо її напряму і викликаємо її методи. Синтаксис в Volt дещо відрізняється. В PHP ми б використовували `$form->render()`, тоді як у Volt ми будемо використовувати `form.render()`.
+
+Подання містить спочатку результати перевірки, чи мають місце якісь помилки у нашій формі, і якщо так, то додається клас CSS `is-invalid` до відповідного елемента. Цей клас додає гарну червону рамку до елемента, виділяючи помилку та відображаючи повідомлення.
+
+Після цього ми маємо звичайні HTML-теги із відповідними стилями. Для того, щоб відобразити HTML-код кожного елементу, нам потрібно викликати `render()` у `form` із зазначенням імені відповідного елемента. Також зверніть увагу, що ми водночас викликаємо `form.label()` з таким самим іменем елемента, щоб створити відповідні теги `<label>`.
+
+У кінці подання ми візуалізуємо приховане поле `CSRF`, а також кнопку `Зареєструватися`.
+
+### Відправка
+
+Як було зазначено вище, як тільки користувач заповнить форму і клікне кнопку `Зареєструватися`, форма відправить *повідомлення* з даними тому ж контролеру і дії (у нашому випадку `/session/signup`). Відповідній дії тепер необхідно обробити ці надіслані дані:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Controllers;
+
+use Phalcon\Flash\Direct;
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Security;
+use Phalcon\Mvc\View;
+use Vokuro\Forms\SignUpForm;
+use Vokuro\Models\Users;
+
+/**
+ * @property Dispatcher $dispatcher
+ * @property Direct     $flash
+ * @property Request    $request
+ * @property Security   $security
+ * @property View       $view
+ */
+class SessionController extends ControllerBase
+{
+    /**
+     * Дозволяємо користувачу зареєструватись у системі
+     */
+    public function signupAction()
+    {
+        $form = new SignUpForm();
+
+        if (true === $this->request->isPost()) {
+            if (false !== $form->isValid($this->request->getPost())) {
+                $name     = $this
+                    ->request
+                    ->getPost('name', 'striptags')
+                ;
+                $email    = $this
+                    ->request
+                    ->getPost('email')
+                ;
+                $password = $this
+                    ->request
+                    ->getPost('password')
+                ;
+                $password = $this
+                    ->security
+                    ->hash($password)
+                ;
+
+                $user = new Users(
+                    [
+                        'name'       => $name,
+                        'email'      => $email,
+                        'password'   => $password,
+                        'profilesId' => 2,
+                    ]
+                );
+
+                if ($user->save()) {
+                    return $this->dispatcher->forward([
+                        'controller' => 'index',
+                        'action'     => 'index',
+                    ]);
+                }
+
+                foreach ($user->getMessages() as $message) {
+                    $this->flash->error((string) $message);
+                }
+            }
+        }
+
+        $this->view->setVar('form', $form);
+    }
+}
+```
+
+Якщо користувач відправив дані, то наступний рядок буде оцінюватися і ми будемо виконувати код в межах команди `if`:
+
+```php
+if (true === $this->request->isPost()) {
+```
+
+Тут ми перевіряємо запит, що надійшов від користувача, чи це `POST`. Тепер, коли це так, ми маємо використати валідатори перевірки форми і переконатись, чи немає ніяких помилок. Об'єкт [Phalcon\Http\Request](request) дозволяє нам отримати ці дані легко через використання:
+
+```php
+$this->request->getPost()
+```
+
+Тепер нам потрібно передати ці опубліковані дані у формі і викликати `isValid`. Це активує всі валідатори для кожного елемента і якщо якийсь із них зазнає невдачі, форма виведе повідомлення з внутрішньої колекції і поверне `false`
+
+```php
+if (false !== $form->isValid($this->request->getPost())) {
+```
+
+Якщо все в порядку, ми використовуємо знову об'єкт [Phalcon\Http\Request](request) для отримання поданих даних, а також і для їх приведення у відповідність до встановлених нами вимог. Наведений приклад вирізає теги з надісланої стрічки `name`:
+
+```php
+$name     = $this
+    ->request
+    ->getPost('name', 'striptags')
+;
+```
+
+Зверніть увагу, що ми ніколи не зберігаємо точний текст паролів. Натомість ми використовуємо компонент [Phalcon\Security](security) та викликаємо `hash` на ньому, для того, щоб замінити заданий пароль на хеш та зберегти його замість паролю. Таким чином, якщо хтось скомпрометує нашу базу даних, принаймні він не матиме доступу до конкретних текстів паролів.
+
+```php
+$password = $this
+    ->security
+    ->hash($password)
+;
+```
+
+Тепер нам потрібно зберегти надані дані в базі. Ми це зробимо, створивши нову модель `Users`, передавши до неї приведені у відповідність дані, а потім викликавши `save`:
+
+```php
+$user = new Users(
+    [
+        'name'       => $name,
+        'email'      => $email,
+        'password'   => $password,
+        'profilesId' => 2,
+    ]
+);
+
+if ($user->save()) {
+    return $this
+        ->dispatcher
+        ->forward(
+            [
+                'controller' => 'index',
+                'action'     => 'index',
+            ]
+        );
+}
+```
+
+Якщо `$user->save()` повертає `true`, користувач буде переспрямований на головну сторінку (`index/index`), і повідомлення про успіх з'явиться на екрані.
+
+### Модель
+
+**Зв'язки**
+
+Тепер ми маємо перевірити модель `Users`, оскільки там закладена певна логіка, зокрема, події `afterSave` і `beforeValidationOnCreate`.
+
+Якщо бажаєте, можна додати базові налаштування через метод `initialize`. Це місце, де ми встановлюємо всі [зв/'язки](db-models-relationships) для цієї моделі. Для класу `Users` ми визначили кілька зв/'язків. Чому ви можете запитати зв/'язки? Phalcon пропонує простий спосіб отримання пов'язаних даних до певної моделі.
+
+Якщо ми хочемо перевірити всі успішні логіни для конкретного користувача, ми можемо це зробити за допомогою наступного фрагмента коду:
+
+```php
+<?php
+declare(strict_types=1);
+
+use Vokuro\Models\SuccessLogins;
+use Vokuro\Models\Users;
+
+$user = Users::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 7,
+        ] 
+    ]
+);
+
+$logins = SuccessLogin::find(
+    [
+        'conditions' => 'userId = :userId:',
+        'bind'       => [
+            'userId' => 7,
+        ] 
+    ]
+);
+```
+
+Наведений вище код витягує дані користувача з ідентифікатором `7`, а потім отримує усі успішні логіни з відповідної таблиці для цього користувача.
+
+Використовуючи зв/'язки, ми можемо дозволити Phalcon виконато для нас всі складні прив'язки і підтягування даних. Отже, наведений вище код:
+
+```php
+<?php
+declare(strict_types=1);
+
+use Vokuro\Models\SuccessLogins;
+use Vokuro\Models\Users;
+
+$user = Users::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 7,
+        ] 
+    ]
+);
+
+$logins = $user->successLogins;
+
+$logins = $user->getRelated('successLogins');
+```
+
+Останні дві стрічки роблять одне і те ж. Це питання уподобань, який синтаксис ви хочете використовувати. Phalcon відкриє відповідну таблицю та профільтрує її дані за ідентифікатором користувача.
+
+Для нашої таблиці `Users` ми визначили наступні зв/'язки:
+
+| Назва             | Базове поле | Пов/'язане поле | Модель            |
+| ----------------- | ----------- | --------------- | ----------------- |
+| `passwordChanges` | `id`        | `usersId`       | `PasswordChanges` |
+| `profile`         | `profileId` | `id`            | `Profiles`        |
+| `resetPasswords`  | `id`        | `usersId`       | `ResetPasswords`  |
+| `successLogins`   | `id`        | `usersId`       | `SuccessLogins`   |
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * Всі користувачі, зареєстровані на сайті
+ */
+class Users extends Model
+{
+    // ...
+
+    public function initialize()
+    {
+        $this->belongsTo(
+            'profilesId', 
+            Profiles::class, 
+            'id', 
+            [
+                'alias'    => 'profile',
+                'reusable' => true,
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            SuccessLogins::class, 
+            'usersId', 
+            [
+                'alias'      => 'successLogins',
+                'foreignKey' => [
+                    'message' => 'Користувача не може бути видалено через ' .
+                                 'наявність у нього активності в системі',
+                ],
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            PasswordChanges::class, 
+            'usersId', 
+            [
+                'alias'      => 'passwordChanges',
+                'foreignKey' => [
+                    'message' => 'Користувач не може бути видалений через ' .
+                                 'наявність у нього активності у системі',
+                ],
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            ResetPasswords::class, 
+            'usersId', [
+            'alias'      => 'resetPasswords',
+            'foreignKey' => [
+                'message' => 'Користувач не може бути видалений через ' .
+                             'наявність активності у системі',
+            ],
+        ]);
+    }
+
+    // ...
+}
+```
+
+Як ви бачите у визначених зв/'язках, ми маємо `belongsTo`, а також три `hasMany`. Усі зв/'язки мають псевдоніми, щоб ми могли легше отримати до них доступ. Відношення `belongsTo` також має активний прапорець `reusable`. Це означає, що якщо у одному запиті викликається зв/'язок більш ніж один раз, Phalcon виконуватиме запит до бази даних лише перший раз і кешуватиме результат. Будь-які наступні запити використовуватимуть кешовані результати.
+
+Також важливо, що ми визначаємо конкретні повідомлення для зовнішніх ключів. Якщо конкретні зв/'язки будуть порушуватись, то визначене повідомлення буде показане.
+
+**Події**
+
+[Phalcon\Mvc\Model](db-models) розроблений, щоб виконувати специфічні <events>. Ці методи подій можуть бути розташовані або в сервісі слухача подій, або в конкретній моделі.
+
+Для моделі `Users` ми додаємо код для подій `afterSave` та `beforeValidationOnCreate`.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * Всі користувачі, зареєстровані на сайті
+ */
+class Users extends Model
+{
+    public function beforeValidationOnCreate()
+    {
+        if (true === empty($this->password)) {
+            $tempPassword = preg_replace(
+                '/[^a-zA-Z0-9]/', 
+                '', 
+                base64_encode(openssl_random_pseudo_bytes(12))
+            );
+
+            $this->mustChangePassword = 'так';
+
+            $this->password = $this->getDI()
+                                   ->getSecurity()
+                                   ->hash($tempPassword)
+            ;
+        } else {
+            $this->mustChangePassword = 'ні';
+        }
+
+        if ($this->getDI()->get('config')->useMail) {
+            $this->active = 'ні';
+        } else {
+            $this->active = 'так';
+        }
+
+        $this->suspended = 'ні';
+
+        $this->banned = 'ні';
+    }
+}
+```
+
+Подія `beforeValidationOnCreate` буде виконуватись щоразу, як ми матимемо новий запис (`Create`), перед тим, як буде здійснено будь-яку валідацію. Ми перевіряємо, чи у нас є визначений пароль і, якщо ні, генеруємо випадковий рядок, тоді хешуємо цей рядок, використовуючи [Phalcon\Security](security) та зберігаємо його у власності `password`. Ми також встановлюємо прапорець для зміни пароля.
+
+Якщо поле пароля не порожнє, то ми зазначаємо у полі `mustChangePassword` текст `ні`. Нарешті, ми встановили типові значення параметрів `active`, `suspended` або `banned`, залежно від статусу користувача. Це гарантує, що наш запис буде готовий до додавання у базу даних.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * Всі користувачі, зареєстровані на сайті
+ */
+class Users extends Model
+{
+    public function afterSave()
+    {
+        if ($this->getDI()->get('config')->useMail) {
+            if ($this->active == 'ні') {
+                $emailConfirmation          = new EmailConfirmations();
+                $emailConfirmation->usersId = $this->id;
+
+                if ($emailConfirmation->save()) {
+                    $this->getDI()
+                         ->getFlash()
+                         ->notice(
+                            'Лист підтвердження ' .
+                            'надіслано на ' . $this->email
+                        )
+                    ;
+                }
+            }
+        }
+    }
+}
+```
+
+Подія `afterSave` виконується одразу після додавання у базу нового запису про користувача. У цій події ми перевіряємо чи електронні скриньки активні (дивіться файл`.env` налаштування `useMail`), і якщо активні, то створюємо новий запис у таблиці `EmailConfirmations`, після чого зберігаємо запис. Як тільки все буде зроблено, на екрані з'явиться сповіщення.
+
+> **ПРИМІТКА**: Зверніть увагу на те, що модель `EmailConfirmations` також має подію `afterCreate`, яка відповідає за відправку повідомлення на пошту користувача.
+{: .alert .alert=info }
+
+**Валідація**
+
+Модель також має метод `validate`, який дозволяє нам додати валідатордо будь-якої кількості полей нашої моделі. Для таблиці `Users` на потрібно, щоб `email` був унікальним. Таким чином ми додаємо `Uniqueness` [validator](validation) до неї. Валідатор виконується перед здійсненням будь-якої операції збереження у моделі та буде показано повідомлення в разі невдачі валідації.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * Усі користувачі, зареєстровані на сайті
+ */
+class Users extends Model
+{
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'email', 
+            new Uniqueness(
+                [
+                    "message" => "Такий еmail вже зареєстровано",
+                ]
+            )
+        );
+
+        return $this->validate($validator);
+    }
+}
+```
+
+## Підсумок
+
+Vökuró це приклад додатку, який ми використовуємо для демонстрації деяких функцій, які пропонує Phalcon. Це, безумовно, не рішення, яке підійде для всіх потреб. Тим не менш, ви можете використовувати його як відправну точку для розробки вашої програми.
+
+## Посилання
+
+- [Визначення списків управління доступом](https://en.wikipedia.org/wiki/Access-control_list)
+- [Composer](https://getcomposer.org) 
+- [DotEnv - Vance Lucas](https://github.com/vlucas/phpdotenv)
+- [Визначення Модель-Подання-Контролер](https://en.wikipedia.org/wiki/Model–view–controller)
+- [Посібники з Нанобоксу](https://guides.nanobox.io/php/)
+- [Phinx - Cake PHP](https://github.com/cakephp/phinx)
+- [PSR розширення](https://github.com/jbboehr/php-psr)
+- [Swift Mailer](https://swiftmailer.symfony.com)
+- [Phalcon ACL](acl)
+- [Форми Phalcon](forms)
+- [Phalcon HTTP Response](response)
+- [Phalcon Security](security)
+- [Vökuró - репозиторій на GitHub](https://github.com/phalcon/vokuro)

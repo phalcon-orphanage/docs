@@ -2,23 +2,30 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
-category: 'http-request'
+title: 'HTTP Request (PSR-7)'
+keywords: 'psr-7, http, http request'
 ---
+
 # HTTP Request (PSR-7)
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
 ## Overview
 
-`Phalcon\Http\Message\Request` is an implementation of the PSR-7 HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/psr/psr-7/).
+[Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
-![](/assets/images/implements-psr--7-orange.svg) ![](/assets/images/implements-psr--17-orange.svg)
+![](/assets/images/implements-psr--7-blue.svg)
 
-Applications often need to send requests to external endpoints. To achieve this you can use the `Phalcon\Http\Message\Request` object. In return, our application will receive back a response object.
+This implementation has been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) object. In return, our application will receive back a response object.
 
 > **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
 {: .alert .alert-info }
 
+> 
+> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -27,7 +34,7 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Uri;
 
 $request = new Request();
-$uri     = new Uri('https://api.phalconphp.com/companies/1');
+$uri     = new Uri('https://api.phalcon.io/companies/1');
 
 $jwtToken = 'abc.def.ghi';
 
@@ -40,7 +47,7 @@ $request = $request
 $result = $httpClient->send($request);
 ```
 
-We are creating a new `Phalcon\Http\Message\Request` object and a new [Phalcon\Http\Message\Uri](http-uri) object with the target URL. Following that we define the method (`POST`) and additional headers that we need to send with our request. The client then sends the request by using the request object. In the above example, `$httpClient` is the client of your choice which implements PSR-7.
+We are creating a new [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) object and a new [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) object with the target URL. Following that we define the method (`POST`) and additional headers that we need to send with our request. The client then sends the request by using the request object.
 
 The above example can be implemented by only using the constructor parameters:
 
@@ -53,7 +60,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -64,53 +71,31 @@ $request = new Request(
 $result = $httpClient->send($request);
 ```
 
-The `Request` object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+The [Request](api/phalcon_http#http-message-request) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
 ## Constructor
 
 ```php
 public function __construct(
-    [string $method = "GET" [, mixed $uri = null [, mixed $body = "php://temp" [, array $headers = [] ]]]]
+    [string $method = "GET" 
+    [, mixed $uri = null 
+    [, mixed $body = "php://temp" 
+    [, array $headers = [] ]]]]
 )
 ```
 
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
 
-### `method`
-
-It defaults to `GET`. The supported methods are:
-
-- `GET` 
-- `CONNECT` 
-- `DELETE` 
-- `HEAD` 
-- `OPTIONS` 
-- `PATCH` 
-- `POST` 
-- `PUT` 
-- `TRACE` 
-
-### `uri`
-
-An instance of `Phalcon\Http\Message\Uri` or a URL.
-
-### `body`
-
-It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an `\InvalidArgumentException` is thrown
-
-### `headers`
-
-A key value array, with key as the header name and value as the header value.
+- `method` - defaults to `GET`. The supported methods are: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
+- `uri` - An instance of [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) or a URL.
+- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
+- `headers` - A key value array, with key as the header name and value as the header value.
 
 ## Getters
 
-There are several getters for the object.
+### `getBody()`
 
-```php
-public function getBody(): StreamInterface
-```
-
-Returns the body
+Returns the body as a `StreamInterface` object
 
 ```php
 <?php
@@ -119,12 +104,12 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     $stream,
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -132,16 +117,12 @@ $request = new Request(
     ]
 );
 
-echo $request->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $request->getBody(); // '/assets/stream/mit.txt'
 ```
 
-* * *
+### `getHeader()`
 
-```php
-public function getMethod(): string
-```
-
-Returns the method
+Returns an array of all the header values of the passed case insensitive header name. If the string parameter representing the header name requested is not present, an empty array is returned.
 
 ```php
 <?php
@@ -152,91 +133,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
-    'php://memory',
-    [
-        'Authorization' => 'Bearer ' . $jwtToken,
-        'Content-Type'  => 'application/json',
-    ]
-);
-
-echo $request->getMethod(); // POST
-```
-
-* * *
-
-```php
-public function getProtocolVersion(): string
-```
-
-Returns the protocol version (default `1.1`)
-
-```php
-<?php
-
-use Phalcon\Http\Message\Request;
-
-$jwtToken = 'abc.def.ghi';
-
-$request = new Request(
-    'POST',
-    'https://api.phalconphp.com/companies/1',
-    'php://memory',
-    [
-        'Authorization' => 'Bearer ' . $jwtToken,
-        'Content-Type'  => 'application/json',
-    ]
-);
-
-echo $request->getProtocolVersion(); // '1.1'
-```
-
-* * *
-
-```php
-public function getUri(): UriInterface
-```
-
-Returns the Uri
-
-```php
-<?php
-
-use Phalcon\Http\Message\Request;
-
-$jwtToken = 'abc.def.ghi';
-
-$request = new Request(
-    'POST',
-    'https://api.phalconphp.com/companies/1',
-    'php://memory',
-    [
-        'Authorization' => 'Bearer ' . $jwtToken,
-        'Content-Type'  => 'application/json',
-    ]
-);
-
-echo $request->getUri(); // UriInterface : https://api.phalconphp.com/companies/1
-```
-
-* * *
-
-```php
-public function getHeader( mixed $name ): array
-```
-
-Returns an array of all the header values of the passed case insensitive header name. If the header is not present, an empty array is returned.
-
-```php
-<?php
-
-use Phalcon\Http\Message\Request;
-
-$jwtToken = 'abc.def.ghi';
-
-$request = new Request(
-    'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -248,13 +145,9 @@ echo $request->getHeader('content-Type'); // ['application/json']
 echo $request->getHeader('unknown');      // []
 ```
 
-* * *
+### `getHeaderLine()`
 
-```php
-public function getHeaderLine( mixed $name ): string
-```
-
-Returns all of the header values of the given case-insensitive header name as a string concatenated together using a comma. If the header does not appear in the message, an empty string is returned.
+Returns all of the header values of the given case-insensitive header name as a string concatenated together using a comma. If the string parameter representing the header name requested, an empty string is returned.
 
 ```php
 <?php
@@ -265,7 +158,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -279,13 +172,9 @@ $request = new Request(
 echo $request->getHeaderLine('content-Type'); // 'application/json,application/html'
 ```
 
-* * *
+### `getHeaders()`
 
-```php
-public function getHeaders(): array
-```
-
-Returns all the message header values. The keys represent the header name as it will be sent over the wire, and each value is an array of strings associated with the header. While header names are not case-sensitive, this method preserves the exact case in which headers were originally specified.
+Returns an array with all the message header values. The keys represent the header name as it will be sent over the wire, and each value is an array of strings associated with the header. While header names are not case-sensitive, this method preserves the exact case in which headers were originally specified.
 
 ```php
 <?php
@@ -296,7 +185,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -320,13 +209,9 @@ var_dump(
 
 ```
 
-* * *
+### `getMethod()`
 
-```php
-public function getRequestTarget(): string
-```
-
-Retrieves the message's request-target either as it will appear (for clients), as it appeared at request (for servers), or as it was specified for the instance (see `withRequestTarget()`). In most cases, this will be the origin-form of the composed URI, unless a value was provided to the concrete implementation (see `withRequestTarget()`).
+Returns the method as a string
 
 ```php
 <?php
@@ -337,35 +222,83 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
-        'Content-Type'  => [
-            'application/json',
-            'application/html',
-        ],
+        'Content-Type'  => 'application/json',
     ]
 );
 
-var_dump(
-    $request->getHeaders()
-);
-// [
-//     'Authorization' => 'Bearer abc.def.ghi',
-//     'Content-Type'  => [
-//         'application/json',
-//         'application/html',
-//     ],
-// ]
-
+echo $request->getMethod(); // POST
 ```
 
-* * *
+### `getProtocolVersion()`
+
+Returns the protocol version as as string (default `1.1`)
 
 ```php
-public function hasHeader( mixed name ): bool
+<?php
+
+use Phalcon\Http\Message\Request;
+
+$jwtToken = 'abc.def.ghi';
+
+$request = new Request(
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
+);
+
+echo $request->getProtocolVersion(); // '1.1'
 ```
+
+### `getRequestTarget()`
+
+Returns a string representing the message's request-target either as it will appear (for clients), as it appeared at request (for servers), or as it was specified for the instance (see `withRequestTarget()`). In most cases, this will be the origin-form of the composed URI, unless a value was provided to the concrete implementation (see `withRequestTarget()`).
+
+```php
+<?php
+
+use Phalcon\Http\Message\Request;
+
+$request = new Request();
+$request = $request->withRequestTarget('/test');
+
+echo $request->getRequestTarget(); // '/test'
+```
+
+### `getUri()`
+
+Returns the Uri as a `UriInterface` object
+
+```php
+<?php
+
+use Phalcon\Http\Message\Request;
+
+$jwtToken = 'abc.def.ghi';
+
+$request = new Request(
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
+);
+
+echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
+```
+
+## Existence
+
+### `hasHeader()`
 
 Checks if a header exists by the given case-insensitive name. Returns `true` if the header has been found, `false` otherwise
 
@@ -378,7 +311,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -396,11 +329,9 @@ echo $request->hasHeader('content-type'); // true
 
 The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
 
-```php
-public function withAddedHeader( string $name, string|string[] $value ): Request
-```
+### `withAddedHeader()`
 
-Returns an instance with the specified header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws `\InvalidArgumentException` for invalid header names or values.
+Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
 
 ```php
 <?php
@@ -411,7 +342,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -431,7 +362,13 @@ var_dump(
 //     ],
 // ]
 
-$clone = $request->withAddedHeader('Content-Type', ['application/html']);
+$clone = $request
+    ->withAddedHeader(
+        'Content-Type', 
+        [
+            'application/html'
+        ]
+    );
 
 var_dump(
     $clone->getHeaders()
@@ -445,13 +382,9 @@ var_dump(
 // ]
 ```
 
-* * *
+### `withBody()`
 
-```php
-public function withBody( StreamInterface body ): Request
-```
-
-Returns an instance with the specified message body. Throws `\InvalidArgumentException` when the body is not valid.
+Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
 
 ```php
 <?php
@@ -460,12 +393,12 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -475,16 +408,12 @@ $request = new Request(
 
 $clone = $request->withBody($stream);
 
-echo $clone->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $clone->getBody(); // '/assets/stream/mit.txt'
 ```
 
-* * *
+### `withHeader()`
 
-```php
-public function withHeader(var name, var value): Request
-```
-
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws `\InvalidArgumentException` for invalid header names or values.
+Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
 
 ```php
 <?php
@@ -495,7 +424,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -527,13 +456,9 @@ var_dump(
 // ]
 ```
 
-* * *
+### `withMethod()`
 
-```php
-public function withMethod( string $method ): Request
-```
-
-Return an instance with the provided HTTP method. Throws `\InvalidArgumentException` for invalid HTTP methods.
+Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid HTTP methods.
 
 ```php
 <?php
@@ -544,7 +469,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,
@@ -559,13 +484,9 @@ $clone = $request->withMethod('GET');
 echo $clone->getMethod(); // GET
 ```
 
-* * *
+### `withProtocolVersion()`
 
-```php
-public function withProtocolVersion( string $version ): Request
-```
-
-Returns an instance with the specified HTTP protocol version.
+Returns an instance with the specified HTTP protocol version (as string).
 
 ```php
 <?php
@@ -581,11 +502,7 @@ $clone = $request->withProtocolVersion('2.0');
 echo $clone->getProtocolVersion(); // '2.0'
 ```
 
-* * *
-
-```php
-public function withRequestTarget( mixed $requestTarget ): Request
-```
+### `withRequestTarget()`
 
 Returns an instance with the specific request-target.
 
@@ -603,39 +520,31 @@ $clone = $request->withRequestTarget('/test');
 echo $clone->getRequestTarget(); // '/test'
 ```
 
-* * *
+### `withUri()`
 
-```php
-public function withUri( UriInterface $uri, bool $preserveHost = false ): Request
-```
-
-Returns an instance with the provided URI. This method updates the Host header of the returned request by default if the URI contains a host component. If the URI does not contain a host component, any pre-existing Host header will be carried over to the returned request.
+Returns an instance with the provided `UriInterface` URI. This method updates the `Host` header of the returned request by default if the URI contains a host component. If the URI does not contain a host component, any pre-existing Host header will be carried over to the returned request.
 
 You can opt-in to preserving the original state of the Host header by setting `$preserveHost` to `true`. When `$preserveHost` is set to `true`, this method interacts with the Host header in the following ways:
 
-- If the Host header is missing or empty, and the new URI contains a host component, this method MUST update the Host header in the returned request.
-- If the Host header is missing or empty, and the new URI does not contain a host component, this method MUST NOT update the Host header in the returned request.
-- If a Host header is present and non-empty, this method will not update the Host header in the returned request.
+- If the Host header is missing or empty, and the new URI contains a host component, this method will update the `Host` header in the returned request.
+- If the Host header is missing or empty, and the new URI does not contain a host component, this method will not update the `Host` header in the returned request.
+- If a Host header is present and non-empty, this method will not update the `Host` header in the returned request.
 
 ```php
 <?php
 
 use Phalcon\Http\Message\Request;
 
-$query   = 'https://phalconphp.com';
+$query   = 'https://phalcon.io';
 $uri     = new Uri($query);
 $request = new Request();
 
 $clone = $request->withUri($uri);
 
-echo $clone->getRequestTarget(); // 'https://phalconphp.com'
+echo $clone->getRequestTarget(); // 'https://phalcon.io'
 ```
 
-* * *
-
-```php
-public function withoutHeader( string $name ): Request
-```
+### `withoutHeader()`
 
 Return an instance without the specified header.
 
@@ -648,7 +557,7 @@ $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' . $jwtToken,

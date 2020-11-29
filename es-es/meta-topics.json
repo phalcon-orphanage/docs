@@ -27,7 +27,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Controladores",
+                "text": "Resumen",
                 "url": "/contributions"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Guía para Pruebas",
+                "text": "Entorno de prueba",
                 "url": "/testing-environment"
             },
             {
@@ -75,6 +75,10 @@
         "url": "",
         "menu": [
             {
+                "text": "Devilbox",
+                "url": "/environments-devilbox"
+            },
+            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
             }
@@ -91,6 +95,14 @@
             {
                 "text": "Depuración",
                 "url": "/debug"
+            },
+            {
+                "text": "Migraciones",
+                "url": "/db-migrations"
+            },
+            {
+                "text": "Pruebas Unitarias",
+                "url": "/unit-testing"
             }
         ]
     },
@@ -235,6 +247,10 @@
             {
                 "text": "Paginación",
                 "url": "/db-pagination"
+            },
+            {
+                "text": "Migraciones",
+                "url": "/db-migrations"
             }
         ]
     },
@@ -255,7 +271,7 @@
                 "url": "/forms"
             },
             {
-                "text": "Imágenes",
+                "text": "Imagen",
                 "url": "/image"
             },
             {
@@ -363,8 +379,40 @@
                 "url": "/loader"
             },
             {
-                "text": "Peticiones PSR-7",
+                "text": "PSR-7 HTTP Request",
                 "url": "/http-request"
+            },
+            {
+                "text": "PSR-7 HTTP Response",
+                "url": "/http-response"
+            },
+            {
+                "text": "PSR-7 HTTP Server Request",
+                "url": "/http-server-request"
+            },
+            {
+                "text": "PSR-7 HTTP Stream",
+                "url": "/http-stream"
+            },
+            {
+                "text": "PSR-7 HTTP UploadedFile",
+                "url": "/http-uploaded-file"
+            },
+            {
+                "text": "PSR-7 HTTP Uri",
+                "url": "/http-uri"
+            },
+            {
+                "text": "PSR-11 Container",
+                "url": "/container"
+            },
+            {
+                "text": "PSR-13 HTML Links",
+                "url": "/html-link"
+            },
+            {
+                "text": "PSR-17 HTTP Factories",
+                "url": "/http-factories"
             }
         ]
     },
@@ -387,11 +435,19 @@
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Coleccion",
                 "url": "/collection"
             },
             {
-                "text": "Ayudantes",
+                "text": "Dominio",
+                "url": "/domain"
+            },
+            {
+                "text": "HTML",
+                "url": "/html"
+            },
+            {
+                "text": "Ayudantes (Helpers)",
                 "url": "/helper"
             },
             {

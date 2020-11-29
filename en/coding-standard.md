@@ -2,15 +2,18 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Coding Standard'
+keywords: 'coding standard, zephir'
 ---
 # Phalcon Coding Standard
 <hr />
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Last update: 2019-03-28
+Last update: 2019-07-04
 
 Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
 
-In this document we outline the coding standard that Phalcon is using. The coding standard is a combination of [PSR-1][psr-1] and [PSR-2][psr-2] developed by [PHP-FIG][php-fig] 
+In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a variant of [PSR-12][psr-12] developed by [PHP-FIG][php-fig] 
 
 ## Files
 * Files must use only UTF-8 without BOM.
@@ -19,7 +22,7 @@ In this document we outline the coding standard that Phalcon is using. The codin
 - All files must end with a single blank line.
 - Folders are also named StudlyCaps and the folder/subfolder tree follows the namespace of the class.
 
-```bash
+```php
 phalcon/Acl/Adapter/Memory.zep
 ```
 
@@ -44,6 +47,8 @@ class Memory extends Adapter
 ## Classes
 - Class names must be declared in StudlyCaps.
 - Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
+- Abstract classes must be prefixed by `Abstract`
+- Interfaces must be suffixed by `Interface`
 
 ### Constants
 - Class constants must be declared in all upper case with underscore separators.
@@ -51,9 +56,9 @@ class Memory extends Adapter
 - Class constants must be sorted alphabetically by constant name.
 
 ```php
-namespace Phalcon;
+namespace Phalcon\Acl;
 
-abstract class Acl
+class Enum
 {
     const ALLOW = 1;
     const DENY  = 0;
@@ -64,7 +69,7 @@ abstract class Acl
 - Class properties must be declared in camelCase.
 - Class properties must be sorted alphabetically based on name.
 - Whenever possible, properties must have a default value.
-- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration
+- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration.
 - Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
 
 ```php
@@ -85,7 +90,7 @@ class Memory extends Adapter
 
 ### Methods
 - Method names must be declared in camelCase.
-- Methods must be sorted alphabetically based on their visibility. The order is `public`, `portected` and `private`. `__construct` if defined must be at the top of the class. 
+- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
 - Method names must not be prefixed with underscore `_`.
 - All methods must have a return type. If the method does not return anything it should be marked `void`
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
@@ -120,9 +125,10 @@ public function setElement(string! name, var value) -> void;
 
 - Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list must be on the next line, and there must be only one argument per line.
 
+### PHP Files
+PHP files such as tests must follow [PSR-12][psr-12].
 
 
 [php-fig]: https://www.php-fig.org/
-[psr-1]: https://www.php-fig.org/psr/psr-1/
-[psr-2]: https://www.php-fig.org/psr/psr-2/
+[psr-12]: https://www.php-fig.org/psr/psr-12/
 [zephir]: https://zephir-lang.com

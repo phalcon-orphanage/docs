@@ -2,14 +2,17 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Use Case'
+keywords: 'use case, examples'
 ---
 # Use Case
 <hr/>
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application. 
 
 ## Requirements
-- MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
+- MVC application using [Phalcon\Mvc\Application][application]
 - Store data in a database (MariaDB/MySQL)
 - Offer a UI for users to work
     - Login page
@@ -27,7 +30,8 @@ Throughout this documentation we are going to assume that we are building an acc
         - Payment
         - Reports
 
-## Groups - User roles
+## Groups - User Roles
+
 | Group          | Description                                        |
 |----------------|----------------------------------------------------|
 | Guests         | Users that are not logged in, visitors to the site |
@@ -37,6 +41,7 @@ Throughout this documentation we are going to assume that we are building an acc
 | Administrators | Full access to the whole application               |
 
 ## Endpoints
+
 | Endpoint                          | Description                                                  |
 |-----------------------------------|--------------------------------------------------------------|
 | `/login`                          | Path `/session/login`. Presents the login screen             |
@@ -67,3 +72,5 @@ Throughout this documentation we are going to assume that we are building an acc
 | `/admin/users/edit/{0-9}`         | Edit a user                                                  |
 | `/admin/users/delete/{0-9}`       | Delete a user                                                |
 | `/admin/users/view/{0-9}`         | View a user                                                  |
+
+[application]: application

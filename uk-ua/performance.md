@@ -2,34 +2,53 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
+title: 'Продуктивність'
+keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode, продуктивність'
 ---
-# Performance
+
+# Продуктивність
 
 * * *
 
-## Increasing Performance
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
+## Огляд
 
-## Profiling on the Server
+Погано написана програма завжди матиме низьку продуктивність. Найпоширеніший спосіб для розробників підвищити продуктивність своїх продуктів:
 
-Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
+> просто забезпечити вищу потужність обладнання для нього
+{: .alert .alert-info }
 
-Profiling with XDebug
+Проблема наведеного вище підходу має два недоліка. На початку в більшості випадків власник понесе додаткові витрати. Друга проблема полягає в тому, що настане момент, коли не можна буде більше покращити обладнання і єдиною альтернативою залишиться використання балансерів, докера, групування серверів і тощо, що тільки примножить витрати.
 
-[XDebug](https://xdebug.org/docs) provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
+Але залишиться проблема - *погано написана програма*
+
+Щоб прискорити вашу програму, потрібно переконатися в тому, що вона написана найкращим чином для виконання поставлених завдань. Ніщо не може бути кращим добре продуманого дизайну. Після цього слід братись за інші аспекти: - апаратне забезпечення сервера - маршрутизація клієнтських підключень (місце розташування, браузери) - затримки мережі - обладнання бази даних
+
+і багато іншого. У цій статті ми спробуємо розглянути деякі сценарії, які можуть забезпечити краще розуміння того, де ваш додаток є дуже повільним.
+
+> **ПРИМІТКА** Це **рекомендації** і хороші практики. Ви ні в якому разі не зобов'язані дотримуватися цих порад, і аж ніяк їх список не є вичерпним. Ваші стратегії підвищення продуктивності базуються насамперед на потребах вашого продукту.
+{: .alert .alert-danger }
+
+## Сервер
+
+[Профілювання](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) - це форма динамічного аналізу програм, яка пропонує метрики, що відповідають вашому продукту. Профілювання показує справжню картину того, що насправді відбувається в будь-який час у програмі, і таким чином направляйте вас до областей, де потрібна ваша увага. Профілювання має бути безперервним у виробничій програмі.
+
+Це також створює додаткові витрати, що слід врахувати. Найбільш детальне профілювання відбувається з кожним запитом, але все це залежатиме від вашого трафіку. Ми, звичайно, не хочемо збільшувати навантаження на сервер тільки тому, що ми профілюємо додаток. Типовий спосіб профілювання - це один запит на 100 або 1 на 1000. Через деякий час буде достатньо даних для того, щоб зробити висновки щодо того, де відбувається уповільнення, чому виникли піки тощо.
+
+### XDebug
+
+[XDebug](https://xdebug.org/docs) пропонує дуже зручний профайлер прямо з коробки. Вам потрібно лише встановити розширення та увімкнути профілювання у вашому `php.ini`:
 
 ```ini
 xdebug.profiler_enable = On
 ```
 
-Using a tool like [Webgrind](https://github.com/jokkedk/webgrind) you can see which functions/methods are slower than others:
+Використання інструменту, наприклад [Webgrind](https://github.com/jokkedk/webgrind) дозволить вам підключитись до [XDebug](https://xdebug.org/docs) і отримати дуже цінну інформацію про те, що відбувається з вашим кодом. [Webgrind](https://github.com/jokkedk/webgrind) пропонує статистику, які методи повільніші за інші, та іншу статистику.
 
-![](/assets/images/content/performance-webgrind.jpg)
+### Xhprof
 
-### Profiling with Xhprof
-
-[Xhprof](https://github.com/facebook/xhprof) is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
+[Xhprof](https://github.com/facebook/xhprof) -- інше розширення для PHP додатків. Щоб увімкнути його, вам потрібно додати наступний рядок на початок файлу bootstrap:
 
 ```php
 <?php
@@ -37,7 +56,7 @@ Using a tool like [Webgrind](https://github.com/jokkedk/webgrind) you can see wh
 xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 ```
 
-Then at the end of the file save the profiled data:
+Потім в кінці цього ж файлу збережіть профільовані дані:
 
 ```php
 <?php
@@ -54,73 +73,82 @@ $run_id = $xhprof_runs->save_run($xhprof_data, 'xhprof_testing');
 echo "https://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 ```
 
-Xhprof provides a built-in HTML viewer to analyze the profiled data:
+Xhprof пропонує вбудований HTML оглядач для аналізу профільованих даних:
 
 ![](/assets/images/content/performance-xhprof-2.jpg)
 
 ![](/assets/images/content/performance-xhprof-1.jpg)
 
-### Profiling SQL Statements
+Як зазначено вище, профілювання може збільшити навантаження на ваш сервер. У випадку використання [Xhprof](https://github.com/facebook/xhprof)ви можете встановити умову, що запуск профілювання буде здійснюватись лише після X запитів.
 
-Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
+### SQL-інструкції
+
+Майже всі RDBM пропонують інструменти для визначення повільних SQL-команд. Визначення та виправлення повільних запитів дуже важливо з точки зору продуктивності на стороні сервера. MariaDB / MySql / AuroraDb пропонують налаштування, що дозволяють вести журнал `slow-query`. Після цього база даних зберігає власні метрики, і коли запиту буде потрібно більше часу для завершення, запис про нього буде зроблено в `slow-query` журналі. Цей журнал може бути проаналізовано командою розробників, щоб зробити відповідні правки у коді.
+
+Щоб увімкнути цю функцію, вам потрібно буде додати це до `my.cnf` (не забудьте перезапустити ваш сервер бази даних)
 
 ```ini
 log-slow-queries = /var/log/slow-queries.log
 long_query_time = 1.5
 ```
 
-## Profile on the Client
+## Клієнт
 
-Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance. The following tools are useful to detect common bottlenecks in the client side:
+Іншою зоною, що потребує уваги розробника є клієнт. Поліпшення завантаження активів, таких як зображення, таблиці стилів, файли javascript, може значно підвищити продуктивність та покращити користувацький досвід. Є ряд інструментів, які можуть допомогти з ідентифікацією вузьких місць на стороні клієнта:
 
-### Profile with Chrome/Firefox
+### Браузери
 
-Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the loading of the different resources required by a single page:
+Більшість сучасних браузерів мають інструменти для обліку часу завантаження сторінки. Вони називаються *веб-інспекторами* або *інструментами розробника*. Наприклад, при використанні будь-якого браузера на базі Chromium чи Brave, ви можете проінспектувати сторінку, а інструменти розробника покажуть купу всього, що завантажилось для поточної сторінки (файли), скільки часу пройшло і загальний час завантаження:
 
 ![](/assets/images/content/performance-chrome-1.jpg)
 
-[Firebug](https://getfirebug.com) provides a similar functionality:
-
-![](/assets/images/content/performance-firefox-1.jpg)
+Потенційно легке рішення для підвищення продуктивності на стороні клієнта — встановити правильні заголовки ресурсів так, щоб їх термін використання вичерпався якомога пізніше у майбутньому на противагу повторному їх завантаження із сервера щоразу, як здійснюється запит. Крім того, [постачальники CDN](https://en.wikipedia.org/wiki/Content_delivery_network) можуть допомогти з постачанням ресурсів з дата-центрів, що розташовані ближче до клієнта, який здійснює запит.
 
 ### Yahoo! YSlow
 
-[YSlow](https://developer.yahoo.com/yslow) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](https://developer.yahoo.com/performance/rules.html)
+[YSlow](https://developer.yahoo.com/yslow) аналізує веб-сторінки і пропонує способи поліпшити їхню продуктивність на основі набору [правил для високопродуктивних веб-сторінок](https://developer.yahoo.com/performance/rules.html)
 
 ![](/assets/images/content/performance-yslow-1.jpg)
 
-<a name='profiling-client-speed-tracer'></a>
+## PHP
 
-### Profile with Speed Tracer
+PHP стає швидшим з кожною новою версією. Використання останньої версії покращує продуктивність ваших продуктів, а також Phalcon.
 
-[Speed Tracer](https://developers.google.com/web-toolkit/speedtracer) is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
+### Байт-код кеш
 
-![](/assets/images/content/performance-speed-tracer.jpg)
+[OPcache](https://php.net/manual/en/book.opcache.php), як і більшість інших байт-код кешів, допомагає програмам зменшити накладні витрати на читання, маркування і аналіз вмісту PHP файлів у кожному запиті. Результати інтерпретації зберігаються в оперативній пам'яті між запитами до тих пір, поки PHP запускається як fcgi (fpm) або mod_php. OPcache включено до php починаючи з версії 5.5.0. Щоб перевірити чи його активовано, перевірте такий запис в php.ini:
 
-This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing, Javascript evaluation and CSS styling.
+```ini
+opcache.enable = On
+opcache.memory_consumption = 128    ;default
+```
 
-## Use a recent PHP version
+Разом з тим, кількість доступної пам'яті для кешування opcode має бути достатньою для зберігання всіх файлів вашого продукту. Значення за замовчуванням 128 МБ зазвичай достатньє для навіть великих кодових баз.
 
-PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
+### Сервісний кеш
 
-## Use a PHP Bytecode Cache
-
-[APCu](https://php.net/manual/en/book.apcu.php) as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
+[APCu](https://php.net/manual/en/book.apcu.php) можна використовувати для кешування операцій, що потребують значних розрахунків, або ж для повільних джерел даних, таких як веб-сервіси з високою затримкою. Інше питання, як визначити чи потрібно кешувати результат, - для цього є практичне правило: якщо відповідні операції мають часто виконуватись, а їх результат ідентичний. Переконайтеся за допомогою профілювання (інспектування), що така оптимізація фактично покращила час виконання запиту.
 
 ```ini
 apc.enabled = On
+apc.shm_size = 32M  ;default
 ```
 
-## Do blocking work in the background
+Як і з вищезгаданим opcache, переконайтеся, що кількість оперативної пам'яті достатня для вашого продукту. Альтернативами APCu можуть бути [Redis](https://redis.io/) або [Memcached](https://memcached.org/), однак, для них необхідно запустити додаткові процеси на вашому сервері або іншій машині.
 
-Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
+## Повільні завдання
 
-* [Redis](https://redis.io/)
+Виходячи з потреб вашого продукту, може бути час, коли необхідно буде виконувати окремі завдання протягом тривалого часу. Прикладами таких завдань можуть бути: обробка відео, оптимізація зображень, надсилання електронних листів, генерування PDF-документів тощо. Ці завдання повинні бути виконані за допомогою фонових завдань. Звичайний процес: - додаток ініціює завдання, надіславши повідомлення диспетчеру черги - користувач бачить повідомлення, що завдання заплановане до виконання - у фоновому режимі (або на іншому сервері) робочий скрипт періодично перевіряє чергу виконання - коли приходить повідомлення, робочий скрипт визначає тип повідомлення і викликає відповідний сервіс для виконання завдання - після завершення завдання, користувач отримує повідомлення про те, що його дані готові.
+
+Це спрощене уявлення про те, як працює черга фонових процесів, але можна запропонувати і кращі ідеї про те, як мають бути виконані фонові завдання. Також є безліч сервісів черг, які можна використовувати за допомогою відповідних бібліотек PHP:
+
+* [NATS](https://nats.io)
 * [RabbitMQ](https://www.rabbitmq.com/)
+* [Redis](https://redis.io/)
 * [Resque](https://github.com/chrisboulton/php-resque)
-* [Gearman](https://gearman.org/)
+* [SQS](https://aws.amazon.com/sqs/)
 * [ZeroMQ](https://www.zeromq.org/)
 
-## Google Page Speed
+## Швидкість сторінки
 
-[mod_pagespeed](https://developers.google.com/speed/pagespeed/mod) speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available for nginx as [ngx_pagespeed](https://developers.google.com/speed/pagespeed/ngx) automatically applies web performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
+[mod_pagespeed](https://www.modpagespeed.com/) пришвидшує роботу вашого сайту і зменшує час завантаження сторінки. Цей модуль Apache HTTP-сервера з відкритим вихідним кодом (також доступний для nginx) автоматично застосовує кращі практики веб продуктивності до сторінок і пов'язаних з ними ресурсами (CSS, JavaScript, зображення), не вимагаючи від вас змінити існуючий контент або робочий процес.
