@@ -1027,7 +1027,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 |    演算子     | Description                          |
 |:----------:| ------------------------------------ |
-|   `または`    | 左または右のオペランドがtrueと評価された場合はtrueを返します。  |
+|    `or`    | 左または右のオペランドがtrueと評価された場合はtrueを返します。  |
 |   `and`    | 左と右の両方のオペランドがtrueと評価された場合はtrueを返します。 |
 |   `not`    | 式を否定します                              |
 | `( expr )` | 式のグルーピング                             |
