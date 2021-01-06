@@ -29,7 +29,7 @@ $stream = new Stream($fileName, 'rb');
 echo $stream->getContents(); // 'The MIT License (MIT) ...'
 ```
 
-## Constructor
+## Κατασκευαστής
 
 ```php
 public function __construct(
