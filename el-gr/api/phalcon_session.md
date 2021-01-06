@@ -89,7 +89,7 @@ Phalcon\Session\Adapter\Libmemcached
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 <h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
@@ -148,7 +148,7 @@ protected ttl = 8600;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function close(): bool;
@@ -206,7 +206,7 @@ Phalcon\Session\Adapter\Redis
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 <h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
@@ -249,7 +249,7 @@ private path = ;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function destroy( mixed $id ): bool;
