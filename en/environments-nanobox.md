@@ -6,7 +6,7 @@ title: 'Environments - Nanobox'
 keywords: 'environment, nanobox, docker'
 ---
 # Environments
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

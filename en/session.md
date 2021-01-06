@@ -6,7 +6,7 @@ title: 'Session'
 keywords: 'session, session manager, session adapters, redis, libmemcached, none, stream'
 ---
 # Session
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

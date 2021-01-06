@@ -6,7 +6,7 @@ title: 'Tutorial - INVO'
 keywords: 'tutorial, invo tutorial, step by step, mvc'
 ---
 # Tutorial - INVO
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Overview

@@ -7,7 +7,7 @@ title: 'HTTP Request'
 keywords: 'http, http request, request'
 ---
 # Request Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

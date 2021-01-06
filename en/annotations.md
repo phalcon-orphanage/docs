@@ -6,7 +6,7 @@ title: 'Annotations'
 keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 # Annotations
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

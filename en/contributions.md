@@ -6,7 +6,7 @@ title: 'Contributing'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 # Contributions
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Contributing to Phalcon

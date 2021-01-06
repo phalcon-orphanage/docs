@@ -6,7 +6,7 @@ title: 'Events Manager'
 keywords: 'events, events manager, hooks'
 ---
 # Events Manager
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

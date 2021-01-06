@@ -7,7 +7,7 @@ title: 'CLI Application'
 keywords: 'cli, command line, application, tasks'
 ---
 # CLI Application
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Overview

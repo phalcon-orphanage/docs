@@ -6,7 +6,7 @@ title: 'Escaper'
 keywords: 'escaper, escape html, escape js, escape css'
 ---
 # Escaper 
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

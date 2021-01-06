@@ -6,7 +6,7 @@ title: 'Web Server Setup'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 # Webserver Setup
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

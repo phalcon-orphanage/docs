@@ -6,7 +6,7 @@ title: 'Html'
 keywords: 'html, attributes, tag, tag factory'
 ---
 # HTML Helpers
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

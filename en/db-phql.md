@@ -6,7 +6,7 @@ title: 'Phalcon Query Language (PHQL)'
 keywords: 'phql, phalcon query language, query language'
 ---
 # Phalcon Query Language (PHQL)
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview 

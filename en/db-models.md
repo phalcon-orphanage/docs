@@ -7,7 +7,7 @@ title: 'Models'
 keywords: 'models, active record'
 ---
 # Models
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

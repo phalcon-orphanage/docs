@@ -6,7 +6,7 @@ title: 'Application'
 keywords: 'application, mvc, controllers'
 ---
 # Application
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

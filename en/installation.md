@@ -6,7 +6,7 @@ title: 'Installation'
 keywords: 'installation, installing Phalcon'
 ---
 # Installation
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Requirements

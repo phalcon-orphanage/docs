@@ -6,7 +6,7 @@ title: 'Database Migrations'
 keywords: 'database, migrations, schema, tables, columns'
 ---
 # Database Migrations
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.

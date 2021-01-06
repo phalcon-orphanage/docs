@@ -6,7 +6,7 @@ title: 'Model Caching'
 keywords: 'models, caching, phql, resultsets, reuse'
 ---
 # Model Caching
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

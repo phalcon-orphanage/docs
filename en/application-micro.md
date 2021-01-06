@@ -6,7 +6,7 @@ title: 'Micro Application'
 keywords: 'application, micro, handlers, api'
 ---
 # Micro Application
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

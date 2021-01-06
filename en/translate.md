@@ -6,7 +6,7 @@ title: 'Translate'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'
 ---
 # Translation Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

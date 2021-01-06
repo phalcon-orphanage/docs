@@ -6,7 +6,7 @@ title: 'Controllers'
 keywords: 'controllers, mvc'
 ---
 # Controllers
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

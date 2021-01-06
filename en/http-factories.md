@@ -6,7 +6,7 @@ title: 'HTTP Factories (PSR-17)'
 keywords: 'psr-17, http, http factories'
 ---
 # HTTP Factories (PSR-17)
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

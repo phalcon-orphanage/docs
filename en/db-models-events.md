@@ -6,7 +6,7 @@ title: 'Model Events'
 keywords: 'models, events, events manager'
 ---
 # Model Events
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

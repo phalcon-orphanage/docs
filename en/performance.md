@@ -6,7 +6,7 @@ title: 'Performance'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---
 # Performance
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

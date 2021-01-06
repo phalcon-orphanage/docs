@@ -6,7 +6,7 @@ title: 'Testing Environment'
 keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 ---
 # Testing Environment
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Overview

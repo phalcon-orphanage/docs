@@ -7,7 +7,7 @@ title: 'URL'
 keywords: 'url, url handling, url generation, static url, dynamic url'
 ---
 # Url Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

@@ -6,7 +6,7 @@ title: 'Devtools'
 keywords: 'devtools, developer tools, models, controllers'
 ---
 # Phalcon Devtools
-<hr/>
+- - -
 ![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview

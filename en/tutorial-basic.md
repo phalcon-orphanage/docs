@@ -6,7 +6,7 @@ title: 'Tutorial - Basic'
 keywords: 'tutorial, basic tutorial, step by step, mvc'
 ---
 # Tutorial - Basic
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Overview

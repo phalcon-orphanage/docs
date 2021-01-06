@@ -7,7 +7,7 @@ title: 'Logger'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 ---
 # Logger
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

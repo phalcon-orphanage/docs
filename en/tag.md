@@ -6,7 +6,7 @@ title: 'Tag'
 keywords: 'tag, helpers, view helpers, html generators'
 ---
 # Tag (View Helpers)
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

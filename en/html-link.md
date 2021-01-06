@@ -6,7 +6,7 @@ title: 'HTML Link (PSR-13)'
 keywords: 'psr-13, http, link, evolvable link'
 ---
 # HTML Link (PSR-13)
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

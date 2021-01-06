@@ -6,7 +6,7 @@ title: 'Crypt'
 keywords: 'crypt, encryption, decryption, ciphers'
 ---
 # Crypt Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

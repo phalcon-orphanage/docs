@@ -7,7 +7,7 @@ upgrade: '#router'
 keywords: 'routing, routes'
 ---
 # Routing Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

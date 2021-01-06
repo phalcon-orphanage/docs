@@ -7,7 +7,7 @@ upgrade: '#views'
 keywords: 'mvc, view, view component, simple view, responses'
 ---
 # Views
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

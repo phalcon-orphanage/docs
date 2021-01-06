@@ -6,7 +6,7 @@ title: 'Dependency Injection Container (PSR-11)'
 keywords: 'psr-11, di, container, dependency injection'
 ---
 # Dependency Injection Container (PSR-11)
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

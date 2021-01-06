@@ -6,7 +6,7 @@ title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4'
 ---
 # Upgrade Guide
-<hr/>
+- - -
 
 # Upgrading to V4
 So you have decided to upgrade to v4! **Congratulations**!!
@@ -57,7 +57,7 @@ Check the module
 php -m | grep phalcon
 ```
 
-<hr/>
+- - -
 
 ## General Notes
 
@@ -68,7 +68,7 @@ php -m | grep phalcon
 - Changed catch `Exception` to `Throwable`
 
 
-<hr/>
+- - -
 
 #Components
 
@@ -120,7 +120,7 @@ echo Enum::DENY;  //prints 0
 
 ```
 
-<hr/>
+- - -
 
 ## Assets
 
@@ -139,7 +139,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 - Renamed `Phalcon\Assets\Manager::addResourceByType` to `Phalcon\Assets\Manager::addAssetByType`
 - Renamed `Phalcon\Assets\Manager::collectionResourcesByType` to `Phalcon\Assets\Manager::collectionAssetsByType`
 
-<hr/>
+- - -
 
 ## Cache
 
@@ -218,7 +218,7 @@ $container->set(
 );
 ```
 
-<hr/>
+- - -
 
 ## CLI
 
@@ -261,17 +261,17 @@ class MainTask extends Task
 ### Cli\DispatcherInterface
 - Added `setOptions`, `getOptions`
 
-<hr/>
+- - -
 
 ## Container
 - Added `Phalcon\Container`, a proxy container class to the `Phalcon\DI` implementing PSR-11
 
-<hr/>
+- - -
 
 ## Debug
 - Removed `Phalcon\Debug::getMajorVersion`
 
-<hr/>
+- - -
 
 ## Db
 - Added global setting `orm.case_insensitive_column_map` to attempt to find value in the column map case-insensitively. Can be also enabled by setting `caseInsensitiveColumnMap` key in `\Phalcon\Mvc\Model::setup()`
@@ -322,7 +322,7 @@ echo Enum::FETCH_ASSOC;
 ### Db\Dialect\Postgresql
 - Changed `addPrimaryKey` to make primary key constraints names unique by prefixing them with the table name.
 
-<hr/>
+- - -
 
 ## DI
 
@@ -332,27 +332,27 @@ echo Enum::FETCH_ASSOC;
 ### Di\Service
 - Changed `Phalcon\Di\Service` constructor to no longer takes the name of the service.
 
-<hr/>
+- - -
 
 ## Dispatcher
 - Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
 - Added `getHandlerSuffix()`, `setHandlerSuffix()`
 
-<hr/>
+- - -
 
 ## Events
 
 ### Events\ManagerInterface
 - Added `hasListeners`
 
-<hr/>
+- - -
 
 ## Flash
 - Added ability to set a custom template for the Flash Messenger.
 - Constructor no longer accepts an array for the CSS classes. You will need to use `setCssClasses()` to set your custom CSS classes for the component
 - The constructor now accepts an optional `Phalcon\Escaper` object, as well as a `Phalcon\Session\Manager` object (in the case of `Phalcon\Flash\Session`), in case you do not wish to use the DI and set it yourself.
 
-<hr/>
+- - -
 
 ## Filter
 
@@ -439,7 +439,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - `FILTER_UPPERFIRST` - sanitize using `ucfirst`
 - `FILTER_UPPERWORDS` - sanitize using `ucwords`
 
-<hr/>
+- - -
 
 ## Forms
 
@@ -447,7 +447,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - `Phalcon\Forms\Form::clear` will no longer call `Phalcon\Forms\Element::clear`, instead it will clear/set default value itself, and `Phalcon\Forms\Element::clear` will now call `Phalcon\Forms\Form::clear` if it’s assigned to the form, otherwise it will just clear itself.
 - `Phalcon\Forms\Form::getValue` will now also try to get the value by calling `Tag::getValue` or element’s `getDefault` method before returning `null`, and `Phalcon\Forms\Element::getValue` calls `Tag::getDefault` only if it’s not added to the form.
 
-<hr/>
+- - -
 
 ## Html
 
@@ -467,7 +467,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - Changed `setHeaders` now merges the headers with any pre-existing ones in the internal collection
 - Added two new events `response::beforeSendHeaders` and `response::afterSendHeaders`
 
-<hr/>
+- - -
 
 ## Image
 
@@ -496,7 +496,7 @@ echo Enum::WIDTH;   // prints  2
 echo Enum::HORIZONTAL; // prints  11
 echo Enum::VERTICAL;   // prints  12
 ```
-<hr/>
+- - -
 
 
 ## Logger
@@ -584,14 +584,14 @@ $logger = new Logger(
 $logger->error('Something went wrong');
 ```
 
-<hr/>
+- - -
 
 ## Messages
 - `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. In the past we had two components, one for validation and one for models. We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages.
     - Changed `Phalcon\Mvc\Model` to use the `Phalcon\Messages\Message` object for its messages
     - Changed `Phalcon\Validation\*` to use the `Phalcon\Messages\Message` object for its messages
 
-<hr/>
+- - -
 
 ### Transactions
 Removed in version 4.0:
@@ -643,7 +643,7 @@ $criteria->limit(10, 5);
 $criteria->limit(10, null);
 ```
 
-<hr/>
+- - -
 
 ## MVC
 
@@ -747,7 +747,7 @@ The options for Volt have changed (the key names). Using the old syntax will pro
 - `path` - The path of the files
 - `prefix` - The prefix of the files
 
-<hr/>
+- - -
 
 ## Paginator
 - `getPaginate` now becomes `paginate`
@@ -789,7 +789,7 @@ $group->addTrace(
 );
 ```
 
-<hr/>
+- - -
 
 ## Security
 - Removed `hasLibreSsl`
@@ -797,7 +797,7 @@ $group->addTrace(
 - Added `setPadding`
 - Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
 
-<hr/>
+- - -
 
 ## Request
 
@@ -809,7 +809,7 @@ $group->addTrace(
 - Added `numFiles` returning `int` - the number of files present in the request
 - Changed `hasFiles` to return `bool` - if the request has files or not
 
-<hr/>
+- - -
 
 ## Session
 > Status: **changes required**
@@ -844,14 +844,14 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 - Now is the single component that offers session manipulation by using adapters (see above). Each adapter implements PHP's `SessionHandlerInterface`
 - Developers can add any adapter that implements `SessionHandlerInterface`
 
-<hr/>
+- - -
 
 ## Tag
 - Added `renderTitle()` that renders the title enclosed in `<title>` tags.
 - Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
 - Changed `textArea` to use `htmlspecialchars` to prevent XSS injection.
 
-<hr/>
+- - -
 
 ## Text
 
@@ -862,7 +862,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
 
-<hr/>
+- - -
 
 ## Validation
 
@@ -878,7 +878,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 ### Validation\Validator\Ip
 - Added `Phalcon\Validation\Validator\Ip`, class used to validate ip address fields. It allows to validate a field selecting IPv4 or IPv6, allowing private or reserved ranges and empty values if necessary.
 
-<hr/>
+- - -
 
 ## Views
 
@@ -889,7 +889,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 View caching along with the `viewCache` service have been removed from the framework because they were incompatible with the new Cache component. Developers can easily utilize a _view cache_ from external services such as Varnish, Cloudflare etc. Additionally, developers can cache fragments by either using the `Phalcon\Mvc\View\Simple::render()` or the `Phalcon\Mvc\View::toString()`. Those two methods return the produced HTML that can be cached in the cache backend of your choice. 
 
-<hr/>
+- - -
 
 ## Url
 

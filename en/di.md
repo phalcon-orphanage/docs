@@ -6,7 +6,7 @@ title: 'Dependency Injection / Service Locator'
 keywords: 'dependency injection, di, ioc, service locator'
 ---
 # Dependency Injection / Service Location
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

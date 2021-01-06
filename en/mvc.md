@@ -6,7 +6,7 @@ title: 'Model View Controller (MVC)'
 keywords: 'model, view, controller, model view controller, mvc'
 ---
 # MVC - Model View Controller
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

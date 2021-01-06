@@ -6,7 +6,7 @@ title: 'Config'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---
 # Config Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

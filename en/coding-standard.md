@@ -6,7 +6,7 @@ title: 'Coding Standard'
 keywords: 'coding standard, zephir'
 ---
 # Phalcon Coding Standard
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Last update: 2019-07-04

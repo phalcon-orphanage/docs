@@ -7,7 +7,7 @@ title: 'Assets'
 keywords: 'assets, js, css'
 ---
 # Assets Management
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

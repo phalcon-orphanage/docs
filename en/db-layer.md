@@ -6,7 +6,7 @@ title: 'Database Abstraction Layer'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---
 # Database Abstraction Layer
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

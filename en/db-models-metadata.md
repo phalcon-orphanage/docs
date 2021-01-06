@@ -6,7 +6,7 @@ title: 'Models Metadata'
 keywords: 'model, caching, metadata, query fields'
 ---
 # Model Metadata
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

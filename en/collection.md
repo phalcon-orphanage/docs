@@ -6,7 +6,7 @@ title: 'Collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 # Collection
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

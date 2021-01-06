@@ -7,7 +7,7 @@ title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
 ---
 # Volt: Template Engine
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
@@ -696,8 +696,7 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
             <li>{{ invoice.inv_title | e }}</li>
         {% endif %}
     {% endfor %}
-</ul>
-{% endraw %}
+</ul>{% endraw %}
 ```
 
 The else clause is also supported:
@@ -713,8 +712,7 @@ The else clause is also supported:
             <li>{{ invoice.inv_title | e }} [NOT PAID]</li>
         {% endif %}
     {% endfor %}
-</ul>
-{% endraw %}
+</ul>{% endraw %}
 ```
 
 The `elseif` control flow structure can be used together with if to emulate a `switch` block:

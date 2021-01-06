@@ -7,7 +7,7 @@ title: 'Filter'
 keywords: 'filter, sanitize'
 ---
 # Filter
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

@@ -6,7 +6,7 @@ title: 'Validation'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 # Validation Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

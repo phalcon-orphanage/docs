@@ -6,7 +6,7 @@ title: 'Loader'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 # Loader
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

@@ -6,7 +6,7 @@ title: 'Pagination'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
 ---
 # Pagination
-<hr/>
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

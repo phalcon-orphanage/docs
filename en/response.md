@@ -6,7 +6,7 @@ title: 'HTTP Response'
 keywords: 'http, http response, response'
 ---
 # Response Component
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
