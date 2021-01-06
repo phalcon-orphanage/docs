@@ -229,7 +229,7 @@ protected escaper;
 public function __construct( EscaperInterface $escaper );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 protected function orderAttributes( array $overrides, array $attributes ): array;
