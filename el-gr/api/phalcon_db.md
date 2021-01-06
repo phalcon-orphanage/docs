@@ -1804,7 +1804,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function __construct( array $services = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function load( mixed $config ): AdapterInterface;
