@@ -45,7 +45,7 @@ $session->setAdapter($files);
 
 First we need to create an adapter object. The object can be one of the adapters distributed with Phalcon (see below) but it can also be an object that implements [SessionHandlerInterface](https://www.php.net/manual/en/class.sessionhandlerinterface.php). Once we instantiate the new [Phalcon\Session\Manager](api/Phalcon_Session#session-manager) object and pass the adapter in it. After that you can start working with the session.
 
-### Constructor
+### Κατασκευαστής
 
 ```php
 public function __construct(array $options = [])

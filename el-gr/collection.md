@@ -39,9 +39,9 @@ $data = [
 $collection = new Collection($data);
 ```
 
-## Constructor
+## Κατασκευαστής
 
-You can construct the object as any other object in PHP. However, the constructor accepts an optional `array` parameter, which will populate the object for you.
+Μπορείτε να κατασκευάσετε το αντικείμενο όπως οποιοδήποτε άλλο αντικείμενο στην PHP. Ωστόσο, ο κατασκευαστής δέχεται μια προαιρετική παράμετρο `array`, η οποία θα συμπληρώσει το αντικείμενο για εσάς.
 
 ```php
 <?php
@@ -60,9 +60,9 @@ $data = [
 $collection = new Collection($data);
 ```
 
-## Case sensitivity
+## Ευαισθησία πεζών-κεφαλαίων
 
-When instantiating the object you can specify a second `bool` parameter, which will control the key searching in the object. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element in a case sensitive manner.
+Όταν εγκαθιστάτε το αντικείμενο μπορείτε να καθορίσετε μια δεύτερη παράμετρο `bool`, η οποία θα ελέγχει το κλειδί που ψάχνει στο αντικείμενο. Από προεπιλογή `$insensitive` έχει οριστεί σε `true`, καθιστώντας τις αναζητήσεις σε περίπτωση συλλογής μη ευαίσθητες. Ο ορισμός αυτής της τιμής σε `false` θα κάνει την αναζήτηση για το στοιχείο με ευαίσθητο τρόπο.
 
 ```php
 <?php
@@ -83,9 +83,9 @@ $collection = new Collection($data, false);
 echo $collection->has('COLORS'); // false
 ```
 
-## Reusing
+## Επαναχρησιμοποίηση
 
-You can also reuse the component, by repopulating it. `Phalcon\Collection` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
+Μπορείτε επίσης να χρησιμοποιήσετε ξανά το στοιχείο, επανατοποθετώντας το. `Phalcon\Collection` εκθέτει τις `clear()` και `init()` μεθόδους, οι οποίες θα καθαρίσουν και θα ξανασυμπληρώσουν τον εσωτερικό πίνακα αντίστοιχα,
 
 ```php
 <?php
@@ -115,17 +115,17 @@ $collection->init($data);
 echo $collection->count(); // 1
 ```
 
-## Get
+## Λήψη
 
-As mentioned above, `Phalcon\Collection` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+Όπως προαναφέρθηκε, το `Phalcon\Collection` υλοποιεί διάφορες διεπαφές, προκειμένου το στοιχείο να καταστεί όσο το δυνατόν πιο ευέλικτο. Η ανάκτηση δεδομένων αποθηκευμένων σε ένα στοιχείο μπορεί να γίνει με τη χρήση:
 
-- Property
+- Ιδιότητα
 - `__get()`
-- array based get (`$collection[$element]`)
+- λήψη από πίνακα (`$collection[$element]`)
 - `offsetGet()`
 - `get()`
 
-The fastest way is by using the property syntax:
+Ο ταχύτερος τρόπος είναι με τη χρήση της σύνταξης ιδιότητας:
 
 ```php
 <?php
@@ -146,7 +146,7 @@ $collection = new Collection($data);
 echo $collection->year;                    // 1776
 ```
 
-You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
+Μπορείς να χρησιμοποιήσεις `__get($element)` αλλά δε συνηστάται καθώς είναι πολύ πιο αργή από τη σύνταξη ιδιότητας. Το ίδιο ισχύει και για το `offsetGet`
 
 ```php
 echo $collection->__get('year');           // 1776
@@ -163,7 +163,7 @@ public function get(
 ):  mixed
 ```
 
-Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
+Η χρήση του `get()` προσφέρει τρεις επιπλέον παραμέτρους. Όταν `$defaultValue` οριστεί στην κλήση και το στοιχείο δεν βρέθηκε, `$defaultValue` θα επιστραφεί. Η παράμετρος `cast` δέχεται μια συμβολοσειρά που καθορίζει τον τύπο της τιμής που θα επιστραφεί. Οι διαθέσιμες τιμές είναι:
 
 - `array`
 - `bool`

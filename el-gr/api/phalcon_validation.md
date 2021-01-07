@@ -492,7 +492,7 @@ protected template = Field :field must contain only letters and numbers;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -553,7 +553,7 @@ protected template = Field :field must contain only letters;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -624,7 +624,7 @@ protected template = Field :field must be within the range of :min to :max;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -695,7 +695,7 @@ protected template = Field :field must match the callback function;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -761,7 +761,7 @@ protected template = Field :field must be the same as :with;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -828,7 +828,7 @@ protected template = Field :field is not valid for a credit card number;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -894,7 +894,7 @@ protected template = Field :field is not a valid date;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -955,7 +955,7 @@ protected template = Field :field must be numeric;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1016,7 +1016,7 @@ protected template = Field :field must be an email address;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1096,7 +1096,7 @@ protected template = Field :field must not be a part of list: :domain;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1182,7 +1182,7 @@ $validator->add(
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 <h1 id="validation-validator-file-abstractfile">Abstract Class Phalcon\Validation\Validator\File\AbstractFile</h1>
 
@@ -1437,7 +1437,7 @@ protected template = The resolution of the field :field has to be equal :resolut
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1508,7 +1508,7 @@ protected template = File :field exceeds the maximum resolution of :resolution;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1579,7 +1579,7 @@ protected template = File :field can not have the minimum resolution of :resolut
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1650,7 +1650,7 @@ protected template = File :field does not have the exact :size file size;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1721,7 +1721,7 @@ protected template = File :field exceeds the size of :size;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1792,7 +1792,7 @@ protected template = File :field can not have the minimum size of :size;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1858,7 +1858,7 @@ protected template = Field :field does not have the expected value;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1924,7 +1924,7 @@ protected template = Field :field must be a part of list: :domain;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2009,7 +2009,7 @@ protected template = Field :field must be a valid IP address;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2070,7 +2070,7 @@ protected template = Field :field does not have a valid numeric format;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2131,7 +2131,7 @@ protected template = Field :field is required;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2197,7 +2197,7 @@ protected template = Field :field does not match the required format;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2275,7 +2275,7 @@ $validation->add(
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 <h1 id="validation-validator-stringlength-max">Class Phalcon\Validation\Validator\StringLength\Max</h1>
 
@@ -2340,7 +2340,7 @@ protected template = Field :field must not exceed :max characters long;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2411,7 +2411,7 @@ protected template = Field :field must be at least :min characters long;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2513,7 +2513,7 @@ private columnMap;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2590,7 +2590,7 @@ protected template = Field :field must be a url;
 public function __construct( array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;

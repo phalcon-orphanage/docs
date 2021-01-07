@@ -39,9 +39,9 @@ $data = [
 $collection = new Registry($data);
 ```
 
-## Constructor
+## Κατασκευαστής
 
-You can construct the object as any other object in PHP. However, the constructor accepts an optional `array` parameter, which will populate the object for you.
+Μπορείτε να κατασκευάσετε το αντικείμενο όπως οποιοδήποτε άλλο αντικείμενο στην PHP. Ωστόσο, ο κατασκευαστής δέχεται μια προαιρετική παράμετρο `array`, η οποία θα συμπληρώσει το αντικείμενο για εσάς.
 
 ```php
 <?php
@@ -97,9 +97,9 @@ echo $collection->count(); // 1
 
 As mentioned above, [Phalcon\Registry](api/phalcon_registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 
-- Property
+- Ιδιότητα
 - `__get()`
-- array based get (`$collection[$element]`)
+- λήψη από πίνακα (`$collection[$element]`)
 - `offsetGet()`
 - `get()`
 

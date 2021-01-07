@@ -97,11 +97,11 @@
                 "url": "/debug"
             },
             {
-                "text": "Migrations",
+                "text": "Μεταβάσεις",
                 "url": "/db-migrations"
             },
             {
-                "text": "Unit Testing",
+                "text": "Τεστ Ενότητας",
                 "url": "/unit-testing"
             }
         ]
@@ -249,7 +249,7 @@
                 "url": "/db-pagination"
             },
             {
-                "text": "Migrations",
+                "text": "Μεταβάσεις",
                 "url": "/db-migrations"
             }
         ]

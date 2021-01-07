@@ -138,7 +138,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 
 As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. The exception information contains parameters and method calls that were involved in the call that generated the exception fragment above. [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
 
-## Constructor
+## Κατασκευαστής
 
 [Phalcon\Debug](api/phalcon_debug#debug) provides visual aids as well as additional information for developers to easily locate errors produced in an application.
 
