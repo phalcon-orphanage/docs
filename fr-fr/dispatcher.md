@@ -20,7 +20,7 @@ The [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) is the component re
 <?php
 
 use Phalcon\Di;
-use Phalcon\Mvc\Dispatcher);
+use Phalcon\Mvc\Dispatcher;
 
 $container  = new Di();
 $dispatcher = new Dispatcher();
@@ -87,7 +87,7 @@ $modules = [
 
 $application->registerModules($modules);
 
-$eventsManager  = $container->getShared("eventsManager");
+$eventsManager = $container->getShared("eventsManager");
 
 $eventsManager->attach(
     "dispatch:beforeForward",
