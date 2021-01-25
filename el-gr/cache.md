@@ -9,7 +9,7 @@ keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, mem
 
 # Μνήμη cache
 
-<hr />
+* * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
