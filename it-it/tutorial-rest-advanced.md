@@ -7,7 +7,7 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---
 
 # Tutorial - REST
-<hr />
+- - -
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
