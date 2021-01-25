@@ -630,7 +630,6 @@ for-loops can also be nested:
 Product: {{ product.prd_title|e }} {{ product.prd_price|e }} USD <br />
     {% endfor %}
 {% endfor %}
-
 {% endraw %}
 ```
 
@@ -643,7 +642,6 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 {% for name, value in numbers %}
     Name: {{ name }} Value: {{ value }} <br />
 {% endfor %}
-
 {% endraw %}
 ```
 
