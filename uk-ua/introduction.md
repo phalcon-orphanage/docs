@@ -35,7 +35,7 @@ Phalcon це повноцінний фреймворк для PHP з відкр�
 
 - Чат - З&В 
   - [Чат Discord](https://phalcon.io/discord)
-  - [Форум](https://phalcon.link/forum)
+  - [Форум](https://phalcon.io/forum)
 - Підтримка 
   - [OpenCollective - Підтримайте нас](https://phalcon.io/fund)
   - [Крамниця - Продажі](https://phalcon.io/store)
