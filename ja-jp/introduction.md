@@ -35,7 +35,7 @@ Phalconは疎結合であり、開発者はアプリケーションに必要な�
 
 - チャット - Q&A 
   - [Discord Chat](https://phalcon.io/discord)
-  - [フォーラム](https://phalcon.link/forum)
+  - [フォーラム](https://phalcon.io/forum)
 - プロジェクトへの援助 
   - [Open Collectiveによる支援](https://phalcon.io/fund)
   - [ストア - グッズの販売](https://phalcon.io/store)
