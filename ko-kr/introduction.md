@@ -35,7 +35,7 @@ Phalcon은 느슨하게 연결되어 있어서, 개발자들이 어플리케이�
 
 - 채팅 - Q&A 
   - [디스코드 챗](https://phalcon.io/discord)
-  - [포럼](https://phalcon.link/forum)
+  - [포럼](https://phalcon.io/forum)
 - 후원 
   - [OpenCollective - 후원하기](https://phalcon.io/fund)
   - [스토어 - 상점](https://phalcon.io/store)
