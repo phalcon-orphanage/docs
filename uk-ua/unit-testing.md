@@ -2,12 +2,12 @@
 layout: default language: 'uk-ua' version: '4.0' title: 'Юніт-тестування' keywords: 'unit testing, phpunit, phalcon, юніт-тести'
 - - -
 # Юніт-тестування
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Огляд
 
-Написання правильних тестів може допомогти у написанні кращого програмного забезпечення. Якщо ви правильно визначите потенційні проблемні ситуації для тестування, то зможете уникнути більшості функціональних помилок і краще підтримуватимете ваше програмне забезпечення.
+Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 ## Поєднання PHPUnit з Phalcon
 
@@ -25,7 +25,7 @@ composer require --dev phpunit/phpunit:^9.0
 }
 ```
 
-Як тільки PHPUnit буде встановлено, створіть теку з назвою `tests` у корені проекту, у яку додайте теку з назвою `Unit`:
+Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
 
 ```
 app/
@@ -36,7 +36,7 @@ tests/Unit/
 
 ### Налаштування простору імен для тестів
 
-Для того щоб автоматично завантажити наш тестовий каталог, ми повинні додати наш тестовий простір імен в composer. Додайте нижче зазначений код до composer та змініть його відповідно до ваших потреб.
+In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
 
 ```json
 {
@@ -48,11 +48,11 @@ tests/Unit/
 }
 ```
 
-Тепер створіть файл `phpunit.xml` наступним чином:
+Now, create a `phpunit.xml` file as follows:
 
 ### Файл `phpunit.xml`
 
-Змініть зазначений нижче код `phpunit.xml`, щоб він відповідав вашим потребам, і збережіть його в кореневій теці вашого проекту. Це дозволить запускати всі тести з теки `tests/Unit`.
+Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -75,9 +75,9 @@ tests/Unit/
 
 ### Phalcon Incubator Test
 
-Phalcon надає тестову бібліотеку, яка містить декілька абстрактних класів, які можна використовувати для завантаження Unit тестів. Ці файли існують у репозиторії [Phalcon Incubator Test](https://github.com/phalcon/incubator-test).
+Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
 
-Ви можете використати бібліотеку тестів Incubator, додавши її як залежність:
+You can use the Incubator test library by adding it as a dependency:
 
 ```bash
 composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
@@ -95,12 +95,12 @@ composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
 
 ## Створення Unit тесту
 
-Завжди розумно автоматично завантажувати ваші класи за допомогою просторів імен. Конфігурація нижче передбачає, що ви використовуєте PSR-4 для автоматичного завантаження класів проекту через конфігурацію composer. Якщо так робити, то автозавантажувача перевірятиме, чи правильні файли завантажені, тому все, що вам залишиться зробити - це створити файли проекту і phpunit буде запускати тести для вас.
+It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
-Цей приклад не містить файла конфігурації, оскільки більшість випадків вам слід придумати самостійно, залежно від особливостей вашого проекту. Якщо він вам буде потрібен, то можете додати його до `DI` в `AbstractUnitTest`.
+This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
 
 ### Абстрактний юніт-тест
-Спочатку створіть базовий юніт тест під назвою `AbstractUnitTest.php` у теці `tests/Unit`:
+First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
 
 ```php
 <?php
@@ -143,7 +143,7 @@ abstract class AbstractUnitTest extends UnitTestCase
 
 ### Ваш перший тест
 
-Створіть зазначений нижче тест і збережіть його у теці `tests/Unit`.
+Create the test below and save it in your `tests/Unit` directory.
 
 ```php
 <?php
@@ -171,7 +171,7 @@ class UnitTest extends AbstractUnitTest
 }
 ```
 
-Якщо вам потрібно змінити метод `setUp`, то важливо викликати батьківський метод також, а інакше Phalcon не ініціюється правильно.
+If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
 ```php
     protected function setUp(): void
     {
@@ -184,7 +184,7 @@ class UnitTest extends AbstractUnitTest
 
 ### Запуск юніт-тестів
 
-Коли ви виконаєте `vendor/bin/phpunit` в командному рядку, то отримаєте такий результат:
+When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
 
 ```bash
 $ phpunit
