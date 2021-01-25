@@ -76,7 +76,7 @@ compared to:
 <?php } ?>
 ```
 
-## Constructor
+## Κατασκευαστής
 
 ```php
 public function __construct(
@@ -1743,7 +1743,7 @@ The [Phalcon\Mvc\View\Engine\Volt\Compiler](api/phalcon_mvc#mvc-view-engine-volt
 public function __construct(ViewBaseInterface $view = null)
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function addExtension(mixed $extension): Compiler

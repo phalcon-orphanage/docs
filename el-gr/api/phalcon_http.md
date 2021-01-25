@@ -1390,7 +1390,7 @@ Typically, an instance will wrap a PHP stream; this interface provides a wrapper
 public function __construct( mixed $mode = string );
 ```
 
-Constructor
+Κατασκευαστής
 
 <h1 id="http-message-stream-temp">Class Phalcon\Http\Message\Stream\Temp</h1>
 
@@ -1408,7 +1408,7 @@ Typically, an instance will wrap a PHP stream; this interface provides a wrapper
 public function __construct( mixed $mode = string );
 ```
 
-Constructor
+Κατασκευαστής
 
 <h1 id="http-message-streamfactory">Final Class Phalcon\Http\Message\StreamFactory</h1>
 

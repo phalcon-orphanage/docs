@@ -283,7 +283,7 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function clear(): bool;
@@ -448,7 +448,7 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function clear(): bool;
@@ -528,7 +528,7 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function clear(): bool;
@@ -747,7 +747,7 @@ protected data;
 public function __construct( mixed $data = null );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function getData(): mixed;

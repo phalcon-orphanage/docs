@@ -81,7 +81,7 @@ $request = new ServerRequest(
 
 The [ServerRequest](api/phalcon_http#http-message-serverrequest) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
-## Constructor
+## Κατασκευαστής
 
 ```php
 public function __construct(

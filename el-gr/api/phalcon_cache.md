@@ -219,7 +219,7 @@ protected adapterFactory;
 public function __construct( AdapterFactory $factory );
 ```
 
-Constructor
+Κατασκευαστής
 
 ```php
 public function load( mixed $config ): mixed;
