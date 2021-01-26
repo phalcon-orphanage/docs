@@ -7,6 +7,6 @@ keywords: 'список запитів на вдосконалення функ�
 ---
 
 # Список запитів на вдосконалення функціоналу
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 

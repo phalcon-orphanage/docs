@@ -7,7 +7,7 @@ keywords: 'psr-7, http, http uploaded file'
 ---
 
 # HTTP Uploaded File (PSR-7)
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview

@@ -35,7 +35,7 @@ Feel free to connect with us using our social media accounts:
 
 - Chat - Q&A 
   - [Discord Chat](https://phalcon.io/discord)
-  - [Forum](https://phalcon.link/forum)
+  - [Forum](https://phalcon.io/forum)
 - Support 
   - [OpenCollective - Support Us](https://phalcon.io/fund)
   - [Store - Merchandise](https://phalcon.io/store)

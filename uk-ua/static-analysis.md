@@ -7,7 +7,7 @@ keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 ---
 
 # Навчальний посібник - Vökuró
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Огляд

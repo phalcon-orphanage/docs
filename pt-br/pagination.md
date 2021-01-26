@@ -7,7 +7,7 @@ keywords: 'pagination, model pagination, db pagination, array pagination, query 
 ---
 
 # Paginação
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral

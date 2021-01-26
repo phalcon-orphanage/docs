@@ -7,7 +7,7 @@ keywords: 'psr-7, http, http response'
 ---
 
 # HTTP Response (PSR-7)
-<hr />
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
