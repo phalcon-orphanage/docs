@@ -52,12 +52,11 @@ If no parameters are passed in the constructor, the component will use the `aes-
 
 use Phalcon\Crypt;
 
-$key = "12345"; // Your luggage combination
-
-$crypt     = new Crypt();
+$key   = "12345"; // Your luggage combination
+$crypt = new Crypt();
 
 $crypt
-    ->setCipher('aes-256-gcm')
+    ->setCipher('aes256')
     ->useSigning(false)
 ;
 
@@ -75,8 +74,7 @@ The `encrypt()` method encrypts a string. The component will use the previously 
 
 use Phalcon\Crypt;
 
-$key = "12345"; // Your luggage combination
-
+$key   = "12345"; // Your luggage combination
 $crypt = new Crypt();
 $crypt->setKey($key);
 
@@ -91,14 +89,16 @@ or using the key as the second parameter
 
 use Phalcon\Crypt;
 
-$key = "12345"; // Your luggage combination
-
+$key       = "12345"; // Your luggage combination
 $crypt     = new Crypt();
 $text      = 'This is the text that you want to encrypt.';
 $encrypted = $crypt->encrypt($text, $key);
 ```
 
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
+
+> **NOTE: If you choose `ccm` or `gcm` related ciphers, you must also supply `authData` for them. An exception will be thrown otherwise.
+{: .alert .alert-warning }
 
 ## Decrypt
 The `decrypt()` method decrypts a string. Similar to `encrypt()` the component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
@@ -108,8 +108,7 @@ The `decrypt()` method decrypts a string. Similar to `encrypt()` the component w
 
 use Phalcon\Crypt;
 
-$key = "12345"; // Your luggage combination
-
+$key   = "12345"; // Your luggage combination
 $crypt = new Crypt();
 $crypt->setKey($key);
 
@@ -124,9 +123,8 @@ or using the key as the second parameter
 
 use Phalcon\Crypt;
 
-$key = "12345"; // Your luggage combination
-
-$crypt     = new Crypt();
+$key   = "12345"; // Your luggage combination
+$crypt = new Crypt();
 $crypt->setKey($key);
 
 $text      = 'T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3';
