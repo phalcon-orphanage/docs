@@ -6,6 +6,7 @@ title: 'Phalcon\Collection'
 ---
 
 - [Phalcon\Collection](#collection)
+- [Phalcon\Collection\CollectionInterface](#collection-collectioninterface)
 - [Phalcon\Collection\Exception](#collection-exception)
 - [Phalcon\Collection\ReadOnly](#collection-readonly)
 
@@ -13,7 +14,7 @@ title: 'Phalcon\Collection'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection.zep)
 
-| Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
+| Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, CollectionInterface, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
 `Phalcon\Collection` is a supercharged object oriented array. It implements:
 
@@ -113,7 +114,7 @@ public function getValues(): array;
 public function has( string $element ): bool;
 ```
 
-Get the element from the collection
+Determines whether an element is present in the collection.
 
 ```php
 public function init( array $data = [] ): void;
@@ -198,6 +199,74 @@ protected function setData( string $element, mixed $value ): void;
 ```
 
 Internal method to set data
+
+<h1 id="collection-collectioninterface">Interface Phalcon\Collection\CollectionInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/CollectionInterface.zep)
+
+| Namespace | Phalcon\Collection |
+
+Phalcon\Collection\CollectionInterface
+
+Interface for Phalcon\Collection class
+
+## Metody
+
+```php
+public function __get( string $element ): mixed;
+```
+
+```php
+public function __isset( string $element ): bool;
+```
+
+```php
+public function __set( string $element, mixed $value ): void;
+```
+
+```php
+public function __unset( string $element ): void;
+```
+
+```php
+public function clear(): void;
+```
+
+```php
+public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
+```
+
+```php
+public function getKeys( bool $insensitive = bool ): array;
+```
+
+```php
+public function getValues(): array;
+```
+
+```php
+public function has( string $element ): bool;
+```
+
+```php
+public function init( array $data = [] ): void;
+```
+
+```php
+public function remove( string $element ): void;
+```
+
+```php
+public function set( string $element, mixed $value ): void;
+```
+
+```php
+public function toArray(): array;
+```
+
+```php
+public function toJson( int $options = int ): string;
+```
 
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
