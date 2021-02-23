@@ -129,6 +129,10 @@ public function onUncaughtLowSeverity( mixed $severity, mixed $message, mixed $f
 Throws an exception when a notice or warning is raised
 
 ```php
+public function renderHtml( \Throwable $exception ): string;
+```
+
+```php
 public function setBlacklist( array $blacklist ): Debug;
 ```
 
