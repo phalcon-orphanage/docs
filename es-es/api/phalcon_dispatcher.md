@@ -126,7 +126,7 @@ public function callActionMethod( mixed $handler, string $actionMethod, array $p
 ```
 
 ```php
-public function dispatch(): object | bool;
+public function dispatch(): mixed | bool;
 ```
 
 Process the results of the router by calling into the appropriate controller action(s) including any routing data or injected parameters.
@@ -370,7 +370,7 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 ## Métodos
 
 ```php
-public function dispatch(): object | bool;
+public function dispatch(): mixed | bool;
 ```
 
 Dispatches a handle action taking into account the routing parameters
