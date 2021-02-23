@@ -553,8 +553,8 @@ class IndexController extends Controller
     public function index()
     {
         try {
-            $signer  = new Hmac();
-            $builder = new Builder($signer);
+            $signer     = new Hmac();
+            $builder    = new Builder($signer);
             $expiry     = strtotime('+1 day');
             $issued     = strtotime('now') + 100;
             $notBefore  = strtotime('-1 day');
