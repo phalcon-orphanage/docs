@@ -23,7 +23,7 @@ title: 'Phalcon\Di'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
@@ -58,6 +58,8 @@ $request = $di->getRequest();
 ```php
 /**
  * List of registered services
+ *
+ * @var ServiceInterface[]
  */
 protected services;
 
@@ -69,12 +71,14 @@ protected sharedInstances;
 /**
  * Events Manager
  *
- * @var ManagerInterface
+ * @var ManagerInterface | null
  */
 protected eventsManager;
 
 /**
  * Latest DI build
+ *
+ * @var DiInterface | null
  */
 protected static _default;
 
@@ -113,7 +117,7 @@ public static function getDefault(): DiInterface | null;
 Return the latest DI created
 
 ```php
-public function getInternalEventsManager(): ManagerInterface;
+public function getInternalEventsManager(): ManagerInterface | null;
 ```
 
 Повертає внутрішній диспетчер подій
@@ -319,7 +323,7 @@ public function setShared( string $name, mixed $definition ): ServiceInterface;
 Registers an "always shared" service in the services container
 
 ```php
-protected function loadFromConfig( Config $config ): void;
+protected function loadFromConfig( ConfigInterface $config ): void;
 ```
 
 Loads services from a Config object.
