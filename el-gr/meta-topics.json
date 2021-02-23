@@ -363,6 +363,10 @@
             {
                 "text": "Ασφάλεια",
                 "url": "/security"
+            },
+            {
+                "text": "JWT",
+                "url": "/security-jwt"
             }
         ]
     },
