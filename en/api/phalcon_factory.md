@@ -13,7 +13,7 @@ title: 'Phalcon\Factory'
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Factory/AbstractFactory.zep)
 
 | Namespace  | Phalcon\Factory |
-| Uses       | Phalcon\Config |
+| Uses       | Phalcon\Config, Phalcon\Config\ConfigInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -46,15 +46,15 @@ Checks the config if it is a valid object
 
 
 ```php
-protected function checkService( string $name ): void;
-```
-Checks if a service exists and throws an exception
-
-
-```php
 abstract protected function getAdapters(): array;
 ```
 Returns the adapters for the factory
+
+
+```php
+protected function getService( string $name ): mixed;
+```
+Checks if a service exists and throws an exception
 
 
 ```php

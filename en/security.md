@@ -505,7 +505,6 @@ Also in your views (Volt syntax)
 [security-exception]: api/phalcon_security#security-exception
 [security-random]: api/phalcon_security#security-random
 [security]: api/phalcon_security#security
-[security-random]: api/phalcon_security#security-random
 [factorydefault]: api/phalcon_di#di-factorydefault
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
 [secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html

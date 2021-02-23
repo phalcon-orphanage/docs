@@ -720,7 +720,7 @@ public function interpolate( string $message, mixed $context = null );
 ```
 Interpolates context values into the message placeholders
 
-@see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
+@see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message
 
 
 ```php
@@ -858,7 +858,8 @@ Represents each item in a logging transaction
 ```php
 /**
  * Log Context
- * @return mixed
+ *      
+ * @var mixed
  */
 protected context;
 
@@ -902,7 +903,7 @@ Phalcon\Logger\Item constructor
 
 
 ```php
-public function getContext()
+public function getContext(): mixed
 ```
 
 
@@ -938,7 +939,7 @@ public function getType(): integer
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/LoggerFactory.zep)
 
 | Namespace  | Phalcon\Logger |
-| Uses       | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger |
+| Uses       | Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr, Phalcon\Logger |
 
 Phalcon\Logger\LoggerFactory
 
