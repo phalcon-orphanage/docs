@@ -89,7 +89,7 @@ public function __construct( array $mapper = [] );
 Key value pairs with name as the key and a callable as the value for the service object
 
 ```php
-public function get( string $name ): object;
+public function get( string $name ): mixed;
 ```
 
 Get a service. If it is not in the mapper array, create a new object, set it and then return it.
