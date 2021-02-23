@@ -13,7 +13,7 @@ title: 'Phalcon\Tag'
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Helper\Str, Phalcon\Helper\Exception, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is a class that you can extend to add more helpers.
 
@@ -249,6 +249,12 @@ public static function passwordField( mixed $parameters ): string;
 ```
 
 Builds a HTML input[type="password"] tag
+
+```php
+public static function preload( mixed $parameters ): string;
+```
+
+Parses the preload element passed and sets the necessary link headers
 
 ```php
 public static function prependTitle( mixed $title ): void;
