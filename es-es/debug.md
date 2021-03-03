@@ -292,7 +292,7 @@ En el ejemplo anterior, nunca mostraremos el elemento `some` del `$_REQUEST` as�
 > **NOTA**: Las claves de los elementos de la matriz a ocultar son insensibles en mayúsculas y minúsculas
 {: .alert .alert-info }
 
-## Gestores
+## Manejadores
 
 Para capturar excepciones y errores de baja gravedad, [Phalcon\Debug](api/phalcon_debug#debug) utiliza `onUncaughtException()` y `onUncaughtLowSeverity()`. La mayoría de los desarrolladores que usan este componente nunca necesitarán extender estos métodos. Sin embargo, si lo desea puede hacerlo extendiendo el componente y sobreescribiendo estos métodos para manipular la excepción y devolver la salida que usted requiera.
 
