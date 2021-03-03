@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Formularios'
-keywords: 'forms, render html, validation, elements'
+keywords: 'forms, renderizar html, validación, elementos'
 ---
 
 # Formularios
@@ -14,7 +14,7 @@ keywords: 'forms, render html, validation, elements'
 
 ## Resumen
 
-Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
+Phalcon ofrece un componente bajo el espacio de nombres `Phalcon\Forms` que ayuda a los desarrolladores a crear y mantener formularios que se pueden usar para renderizar elementos HTML en pantalla además de realizar validaciones sobre los datos introducidos en esos elementos.
 
 ```php
 <?php
@@ -49,7 +49,7 @@ $form->add(
 );
 ```
 
-In the template:
+En la plantilla:
 
 ```php
 <h1>
@@ -89,7 +89,7 @@ In the template:
 </form>
 ```
 
-Each element in the form can be rendered as required by the developer. Internally, [Phalcon\Tag](tag) is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of `render()`:
+Cada elemento del formulario puede ser renderizado por el desarrollador como obligatorio. Internamente, [Phalcon\Tag](tag) se usa para producir el HTML correcto para cada elemento y puede añadir atributos HTML adicionales como segundo parámetro de `render()`:
 
 ```php
 <p>
@@ -108,7 +108,7 @@ Each element in the form can be rendered as required by the developer. Internall
 </p>
 ```
 
-HTML attributes also can be set in the element's definition:
+Los atributos HTML también se pueden definir en la definición del elemento:
 
 ```php
 <?php
@@ -130,7 +130,7 @@ $form->add(
 
 ## Métodos
 
-[Phalcon\Forms\Form](api/phalcon_forms#forms-form) exposes a number of methods that help with setting up a form with the necessary elements so that it can be used for validation, rendering elements etc.
+[Phalcon\Forms\Form](api/phalcon_forms#forms-form) expone un número de métodos que ayudan a configurar un formulario con los elementos necesarios para poder ser usado para la validación, renderizado de elementos, etc.
 
 ```php
 public function __construct(
@@ -139,9 +139,9 @@ public function __construct(
 )
 ```
 
-Constructor. Accepts optionally an `entity` object which will be read internally. If the properties of the object contain properties that match the names of the elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](db-models) or even a `\stdClass`. The second parameter is `userOptions` an optional array with user defined data.
+Constructor. Acepta opcionalmente un objeto `entity` que será leído internamente. Si las propiedades del objeto contienen propiedades que coinciden con los nombres de los elementos definidos en el formulario, esos elementos serán rellenados con los valores de las propiedades correspondientes de la entidad. La entidad puede ser un objeto [Phalcon\Mvc\Model](db-models) o incluso `\stdClass`. El segundo parámetro es `userOptions` un vector opcional con datos definidos por el usuario.
 
-> **NOTE**: If the form has the `initialize` method present, the constructor will call it automatically with the same parameters
+> **NOTA**: Si el formulario tiene presente el método `initialize`, el constructor lo llamará automáticamente con los mismos parámetros
 {: .alert .alert-info }
 
 ```php
@@ -184,7 +184,7 @@ $form->add(
 );
 ```
 
-If the `entity` is passed and it is not an object, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Si se pasa `entity` y no es un objeto, se lanzará [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception).
 
 ```php
 public function add(
@@ -194,7 +194,7 @@ public function add(
 ): Form
 ```
 
-Adds an element to the form. The first parameter is an `ElementInterface` object. The second parameter `position` (if defined) is the name of the existing element we are targeting. The third boolean parameter `type` if set to `true` the new element will be added before the element defined in `position`. If not set or set to `null`/`false`, the new element will be added after the one defined by the `position` parameter.
+Añade un elemento al formulario. El primer parámetro es un objeto `ElementInterface`. El segundo parámetro `position` (si se define) es el nombre del elemento existente al que nos dirigimos. El tercer parámetro booleano `type` es `true` el nuevo elemento será añadido antes del elemento definido en `position`. Si no establece o vale `null`/`false`, el nuevo elemento será añadido después del definido por el parámetro `position`.
 
 ```php
 public function bind(
@@ -204,9 +204,9 @@ public function bind(
 ): Form
 ```
 
-Binds data to the entity. The first parameter `data` is an array of key/values. This usually is the `$_POST` array. The second parameter `entity` is an entity object. If the properties of the entity object contain properties that match the names of the `data`elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](db-models) or even a `\stdClass`. The third parameter `whitelist` is an array of whitelisted elements. Any element in the `whitelist` array that has the same name as an element in the `data` array will be ignored.
+Vincula los datos a la entidad. El primer parámetro `data` es un vector de clave/valores. Usualmente es el vector `$_POST`. El segundo parámetro `entity` es un objeto entidad. Si las propiedades del objeto contienen propiedades que coinciden con los nombres de los elementos de `datos` definidos en el formulario, esos elementos serán rellenados con los valores de las propiedades correspondientes de la entidad. La entidad puede ser un objeto [Phalcon\Mvc\Model](db-models) o incluso `\stdClass`. El tercer parámetro `whitelist` es un vector de elementos permitidos. Cualquier elemento del vector `whitelist` que tiene el mismo nombre que un elemento en el vector `data` será ignorado.
 
-The `bind` method takes the first array (e.g `$_POST`) and an entity object (e.g. `Invoices`). It loops through the array and if it finds an array key that exists in the form, it applies the necessary filters (defined in the form) to the value of the array. After that, it checks the entity object (`Invoices`) and assigns this value to any property that matches the array key. If a method exists as a setter with the same name as an array key, it will be called first (i.e. `name` -> `setName()`). This method allows us to quickly filter input and assign this input to the passed entity object.
+El método `bind` coge el primer vector (ej.`$_POST`) y un objeto entidad (ej. `Facturas`). Itera sobre el vector y si encuentra una clave que exista en el formulario, le aplica los filtros necesarios (definidos en el formulario) al valor del vector. Posteriormente, comprueba el objeto entidad (`Facturas`) y le asigna un valor a cualquier propiedad que coincida con la clave del vector. Si existe un método como setter con el mismo nombre que la clave del vector, se llamará primero (ej. `name` -> `setName()`). Este método permite filtrar rápidamente la entrada de datos y asignarlo al objeto entidad indicado.
 
 ```php
 <?php
@@ -218,13 +218,13 @@ if (true === $form->isValid()) {
 }
 ```
 
-If there are no elements in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Si no hay elementos en el formulario, se lanzará [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception).
 
 ```php
 public function clear(mixed $fields = null): Form
 ```
 
-Clears every element in the form to its default value. If the passed parameter `fields` is a string, only that field will will be cleared. If an array is passed, all elements in the array will be cleared. Finally, if nothing is passed, all fields will be cleared.
+Limpia cada elemento del formulario a su valor por defecto. Si el parámetro pasado `fields` es una cadena, sólo ese elemento será limpiado. Si se indica un vector, todos los elementos del vector serán limpiados. Finally, if nothing is passed, all fields will be cleared.
 
 ```php
 public function count(): int
