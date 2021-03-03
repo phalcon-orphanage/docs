@@ -176,7 +176,7 @@ $response = $application->handle(
 echo $response->getContent();
 ```
 
-### Micro Aplicaciones
+### Micro Aplicación
 
 En caso de que se trate de una microaplicación, se puede utilizar la siguiente estructura:
 
