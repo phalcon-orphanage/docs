@@ -318,7 +318,7 @@ Internal handler to call a queue of events
 public function getListeners( string $type ): array;
 ```
 
-Returns all the attached listeners of a certain type
+Devuelve todos los oyentes adjuntos de cierto tipo
 
 ```php
 public function getResponses(): array;
@@ -330,7 +330,7 @@ Returns all the responses returned by every handler executed by the last 'fire' 
 public function hasListeners( string $type ): bool;
 ```
 
-Check whether certain type of event has listeners
+Comprueba si cierto tipo de evento tiene oyentes
 
 ```php
 public function isCollecting(): bool;
@@ -382,10 +382,10 @@ Fires an event in the events manager causing the active listeners to be notified
 public function getListeners( string $type ): array;
 ```
 
-Returns all the attached listeners of a certain type
+Devuelve todos los oyentes adjuntos de cierto tipo
 
 ```php
 public function hasListeners( string $type ): bool;
 ```
 
-Check whether certain type of event has listeners
+Comprueba si cierto tipo de evento tiene oyentes
