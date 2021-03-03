@@ -351,7 +351,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application 
    Application : (http method): (route url/regex, callable PHP function/handler)
 ```
 
-### Activation
+### Activación
 
 Routing is handled by the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) object.
 
@@ -1729,7 +1729,7 @@ $app->finish(
 
 In the above example we utilize the `finish` event to do some cache cleaning.
 
-### Activation
+### Activación
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
