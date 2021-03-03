@@ -892,7 +892,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+> Actualmente, el binder solo utilizar la clave primaria de los modelos para realizar un `findFirst()`. An example route for the above would be `/posts/show/{1}`
 {: .alert .alert-warning }
 
 ## Not-Found (404)
@@ -1032,19 +1032,19 @@ class ExceptionsPlugin
 
 [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) is able to send events to an [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
 
-| Nombre de evento       | Disparado                                                                                                                   | Can stop |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `afterBinding`         | After models are bound but before executing route                                                                           |    Si    |
-| `afterDispatch`        | After executing the controller/action method.                                                                               |    Si    |
-| `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |    No    |
-| `afterExecuteRoute`    | After executing the controller/action method.                                                                               |    No    |
-| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |    No    |
-| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |    Si    |
-| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |    Si    |
-| `beforeException`      | Before the dispatcher throws any exception                                                                                  |    Si    |
-| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |    Si    |
-| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |    No    |
-| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |    Si    |
+| Nombre de evento       | Disparado                                                                                                                   | Puede detenerse |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:---------------:|
+| `afterBinding`         | After models are bound but before executing route                                                                           |       Si        |
+| `afterDispatch`        | After executing the controller/action method.                                                                               |       Si        |
+| `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |       No        |
+| `afterExecuteRoute`    | After executing the controller/action method.                                                                               |       No        |
+| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |       No        |
+| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |       Si        |
+| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |       Si        |
+| `beforeException`      | Before the dispatcher throws any exception                                                                                  |       Si        |
+| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |       Si        |
+| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |       No        |
+| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |       Si        |
 
 The [INVO](https://github.com/phalcon/invo) sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl)
 
