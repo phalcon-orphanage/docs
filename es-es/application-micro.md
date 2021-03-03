@@ -358,7 +358,7 @@ Routing is handled by the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) objec
 > **NOTE**: Routes must always start with `/`
 {: .alert .alert-warning }
 
-Usually, the starting route for an application is `/`, accessed via the `GET` HTTP method:
+Generalmente, la ruta inicial de una aplicación es `/`, a la que se accede mediante el método HTTP `GET`:
 
 ```php
 <?php
