@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'HTTP Request (PSR-7)'
-keywords: 'psr-7, http, http request'
+title: 'Petición HTTP (PSR-7)'
+keywords: 'psr-7, http, petición http'
 ---
 
-# HTTP Request (PSR-7)
+# Petición HTTP (PSR-7)
 
 * * *
 
@@ -14,17 +14,17 @@ keywords: 'psr-7, http, http request'
 
 ## Resumen
 
-[Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) es una implementación de la interfaz de mensajería HTTP [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-This implementation has been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) object. In return, our application will receive back a response object.
+Esta implementación ha sido creada para establecer un estándar entre las implementaciones de middleware. A menudo, las aplicaciones necesitan enviar peticiones a destinos externos. Para lograrlo, puede usar el objeto [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request). A cambio, nuestra aplicación recibirá un objeto respuesta.
 
-> **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
+> **NOTA** Phalcon no le restringe a usar un cliente HTTP específico. Cualquier cliente compatible PSR-7 funcionará con este componente, con lo que podrá realizar sus peticiones.
 {: .alert .alert-info }
 
 > 
-> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
+> **NOTA**: En los ejemplos siguientes, `$httpClient` es el cliente de tu elección que implementa PSR-7. 
 {: .alert .alert-info }
 
 ```php
@@ -47,9 +47,9 @@ $request = $request
 $result = $httpClient->send($request);
 ```
 
-We are creating a new [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) object and a new [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) object with the target URL. Following that we define the method (`POST`) and additional headers that we need to send with our request. The client then sends the request by using the request object.
+Creamos un nuevo objeto [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) y un nuevo objeto [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) con la URL destino. A continuación, definimos el método (`POST`) y cabeceras adicionales que necesitamos enviar con nuestra petición. El cliente envía la petición usando el objeto petición.
 
-The above example can be implemented by only using the constructor parameters:
+El ejemplo anterior se puede implementar usando únicamente parámetros del constructor:
 
 ```php
 <?php
@@ -71,7 +71,7 @@ $request = new Request(
 $result = $httpClient->send($request);
 ```
 
-The [Request](api/phalcon_http#http-message-request) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+El objeto creado [Request](api/phalcon_http#http-message-request) es inmutable, lo que significa que nunca cambiará. Cualquier llamada a los métodos con prefijo `with*` devolverán un clon del objeto para mantener la inmutabilidad, siguiendo el estándar.
 
 ## Constructor
 
@@ -84,18 +84,18 @@ public function __construct(
 )
 ```
 
-The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
+El constructor acepta parámetros que le permiten crear el objeto con ciertas propiedades rellenadas. Puede definir el método HTTP destino, la URL, el cuerpo y las cabeceras. Todos los parámetros son opcionales.
 
-- `method` - defaults to `GET`. The supported methods are: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
-- `uri` - An instance of [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) or a URL.
-- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
-- `headers` - A key value array, with key as the header name and value as the header value.
+- `method` - Por defecto `GET`. Los métodos soportados son: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
+- `uri` - Una instancia de [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) o una URL.
+- `body` - Por defecto `php://memory`. El método acepta un objeto que implemente la interfaz `StreamInterface` o una cadena como nombre del flujo. El modo por defecto para el flujo es `w+b`. Si se pasa un flujo no válido, se lanzará [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception)
+- `headers` - Un vector clave valor, con la clave como nombre de la cabecera y el valor como valor de la cabecera.
 
 ## Getters
 
 ### `getBody()`
 
-Returns the body as a `StreamInterface` object
+Devuelve el cuerpo como un objeto `StreamInterface`
 
 ```php
 <?php
@@ -122,7 +122,7 @@ echo $request->getBody(); // '/assets/stream/mit.txt'
 
 ### `getHeader()`
 
-Returns an array of all the header values of the passed case insensitive header name. If the string parameter representing the header name requested is not present, an empty array is returned.
+Devuelve un vector con todos los valores del nombre de la cabecera indicada insensible a mayúsculas y minúsculas. Si el parámetro de la cadena que representa el nombre de la cabecera solicitada no existe, se devuelve un vector vacío.
 
 ```php
 <?php
@@ -147,7 +147,7 @@ echo $request->getHeader('unknown');      // []
 
 ### `getHeaderLine()`
 
-Returns all of the header values of the given case-insensitive header name as a string concatenated together using a comma. If the string parameter representing the header name requested, an empty string is returned.
+Devuelve todos los valores del nombre de la cabecera dada insensible a mayúsculas y minúsculas como una cadena concatenada usando coma. Si el parámetro cadena que representa el nombre de la cabecera solicitada no existe, se devuelve una cadena vacía.
 
 ```php
 <?php
@@ -174,7 +174,7 @@ echo $request->getHeaderLine('content-Type'); // 'application/json,application/h
 
 ### `getHeaders()`
 
-Returns an array with all the message header values. The keys represent the header name as it will be sent over the wire, and each value is an array of strings associated with the header. While header names are not case-sensitive, this method preserves the exact case in which headers were originally specified.
+Devuelve un vector con todos los valores de la cabecera del mensaje. Las claves representan el nombre de la cabecera que será enviada, y cada valor es un vector de cadenas asociadas a dicha cabecera. Aunque los nombres de las cabeceras son insensibles a mayúsculas y minúsculas, este método los mantiene tal y como están especificados en las cabeceras originalmente.
 
 ```php
 <?php
@@ -211,7 +211,7 @@ var_dump(
 
 ### `getMethod()`
 
-Returns the method as a string
+Devuelve el método como cadena
 
 ```php
 <?php
@@ -235,7 +235,7 @@ echo $request->getMethod(); // POST
 
 ### `getProtocolVersion()`
 
-Returns the protocol version as as string (default `1.1`)
+Devuelve la versión del protocolo como cadena (por defecto `1.1`)
 
 ```php
 <?php
@@ -259,7 +259,7 @@ echo $request->getProtocolVersion(); // '1.1'
 
 ### `getRequestTarget()`
 
-Returns a string representing the message's request-target either as it will appear (for clients), as it appeared at request (for servers), or as it was specified for the instance (see `withRequestTarget()`). In most cases, this will be the origin-form of the composed URI, unless a value was provided to the concrete implementation (see `withRequestTarget()`).
+Devuelve una cadena que representa el objetivo de la petición del mensaje tal y como aparecerá (para clientes), como apareció en la petición (para servidores), o como fue especificada en la instancia (ver `withRequestTarget()`). En la mayoría de casos, será el el origen del formulario de la URI compuesta, a menos que se especifique un valor para la implementación concreta (ver `withRequestTarget()`).
 
 ```php
 <?php
@@ -274,7 +274,7 @@ echo $request->getRequestTarget(); // '/test'
 
 ### `getUri()`
 
-Returns the Uri as a `UriInterface` object
+Devuelve la Uri como un objeto `UriInterface`
 
 ```php
 <?php
@@ -296,11 +296,11 @@ $request = new Request(
 echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
 
-## Existence
+## Existencia
 
 ### `hasHeader()`
 
-Checks if a header exists by the given case-insensitive name. Returns `true` if the header has been found, `false` otherwise
+Comprueba si existe una cabecera por el nombre dado insensible a mayúsculas y minúsculas. Devuelve `true` si se ha encontrado la cabecera, `false` en caso contrario
 
 ```php
 <?php
@@ -327,11 +327,11 @@ echo $request->hasHeader('content-type'); // true
 
 ## With
 
-The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
+El objeto `Request` es inmutable. Sin embargo, hay una serie de métodos que le permiten inyectar datos en él. El objeto devuelto es un clon del original.
 
 ### `withAddedHeader()`
 
-Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
+Devuelve una instancia con una cabecera adicional añadida con el valor dado. Se mantendrán los valores existentes para la cabecera especificada. El nuevo o nuevos valores serán añadidos a la lista existente. Si la cabecera no existía previamente, será añadida. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) con nombres de cabecera o valores inválidos. Los valores de la cabecera pueden ser una cadena o un vector de cadenas.
 
 ```php
 <?php
@@ -384,7 +384,7 @@ var_dump(
 
 ### `withBody()`
 
-Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
+Devuelve una instancia con el cuerpo del mensaje especificado, que implementa `StreamInterface`. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) cuando el cuerpo no es válido.
 
 ```php
 <?php
@@ -413,7 +413,7 @@ echo $clone->getBody(); // '/assets/stream/mit.txt'
 
 ### `withHeader()`
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
+Devuelve una instancia con el valor proporcionado reemplazando la cabecera especificada. Mientras que los nombres de cabecera son insensibles a mayúsculas, esta función mantendrá las mayúsculas y minúsculas de la cabecera, y se devolverán con `getHeaders()`. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) con nombres de cabecera o valores inválidos.
 
 ```php
 <?php
@@ -458,7 +458,7 @@ var_dump(
 
 ### `withMethod()`
 
-Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid HTTP methods.
+Devuelve una instancia con el método HTTP proporcionado como cadena. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) para métodos HTTP inválidos.
 
 ```php
 <?php
@@ -486,7 +486,7 @@ echo $clone->getMethod(); // GET
 
 ### `withProtocolVersion()`
 
-Returns an instance with the specified HTTP protocol version (as string).
+Devuelve una instancia con la versión del protocolo HTTP especificado (como cadena).
 
 ```php
 <?php
@@ -504,7 +504,7 @@ echo $clone->getProtocolVersion(); // '2.0'
 
 ### `withRequestTarget()`
 
-Returns an instance with the specific request-target.
+Devuelve una instancia con la petición-destino especificada.
 
 ```php
 <?php
@@ -522,13 +522,13 @@ echo $clone->getRequestTarget(); // '/test'
 
 ### `withUri()`
 
-Returns an instance with the provided `UriInterface` URI. This method updates the `Host` header of the returned request by default if the URI contains a host component. If the URI does not contain a host component, any pre-existing Host header will be carried over to the returned request.
+Devuelve una instancia con la URI `UriInterface` proporcionada. Este método por defecto actualiza la cabecera `Host` de la petición devuelta si la URI contiene un componente servidor. Si la URI no contiene un componente servidor, cualquier cabecera `Host` preexistente será transferida a la petición devuelta.
 
-You can opt-in to preserving the original state of the Host header by setting `$preserveHost` to `true`. When `$preserveHost` is set to `true`, this method interacts with the Host header in the following ways:
+Puede optar por preservar el estado original de la cabecera `Host` asignando `true` a `$preserveHost`. Cuando `$preserveHost` es `true`, este método interactúa con la cabecera `Host` de la siguiente manera:
 
-- If the Host header is missing or empty, and the new URI contains a host component, this method will update the `Host` header in the returned request.
-- If the Host header is missing or empty, and the new URI does not contain a host component, this method will not update the `Host` header in the returned request.
-- If a Host header is present and non-empty, this method will not update the `Host` header in the returned request.
+- Si la cabecera `Host` no está o está vacía, y la nueva URI contiene un componente servidor, este método actualizará la cabecera `Host` en la petición devuelta.
+- Si la cabecera `Host` no está o está vacía, y la nueva URI no contiene un componente servidor, este método no actualizará la cabecera `Host` en la petición devuelta.
+- Si la cabecera `Host` está presente y no está vacía, este método no actualizará la cabecera `Host` en la petición devuelta.
 
 ```php
 <?php
@@ -546,7 +546,7 @@ echo $clone->getRequestTarget(); // 'https://phalcon.io'
 
 ### `withoutHeader()`
 
-Return an instance without the specified header.
+Devuelve una instancia sin la cabecera especificada.
 
 ```php
 <?php
