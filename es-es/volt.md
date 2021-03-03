@@ -169,7 +169,7 @@ sort(array $value): array
 
 Ordena una matriz
 
-## Activation
+## Activación
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
