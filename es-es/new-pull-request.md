@@ -2,7 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Nuevo <i>Pull Request (PR)</i>'
+title: 'Nuevo <code>Pull Request (PR)</code>'
 keywords: 'new pull request, pull request, pr'
 ---
 
