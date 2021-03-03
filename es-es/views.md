@@ -544,7 +544,7 @@ public function toString(
 
 Renders the view and returns it as a string
 
-## Activation
+## Activación
 
 You must register the view component in your DI container to enable views in your application.
 
