@@ -423,11 +423,11 @@ class NotificationsAware extends Injectable implements EventsAwareInterface
 
 El componente anterior implementa [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface) y como resultado usa `getEventsManager` y `setEventsManager`. El último método es el que hace el trabajo. En este ejemplo queremos enviar algunas notificaciones a usuarios y queremos disparar un evento antes y después de que se envíe la notificación.
 
-We chose to name the component `notification` and the events are called `beforeSend` and `afterSend`. In the `process` method, you can add any code you need in between the calls to fire the relevant events. Additionally, you can inject more data in this component that would help with your implementation and processing of the notifications.
+Elegimos nombrar al componente `notification` y los eventos se llaman `beforeSend` y `afterSend`. En el método `process`, puede añadir cualquier código que necesite entre las llamadas para disparar los eventos relevantes. Adicionalmente, puede inyectar más datos en este componente que ayudarán con su implementación y procesado de las notificaciones.
 
-### Custom Listener
+### Oyente Personalizado
 
-Now we need to create a listener for this component:
+Ahora necesitamos crear un oyente para este componente:
 
 ```php
 <?php
@@ -468,7 +468,7 @@ class MotificationsListener
 }
 ```
 
-Putting it all together
+Poniendo todo junto
 
 ```php
 <?php
@@ -490,7 +490,7 @@ $eventsManager->attach(
 $component->process();
 ```
 
-When `process` is executed, the two methods in the listener will be executed. Your log will then have the following entries:
+Cuando se ejecuta `process`, se ejecutarán los dos métodos del oyente. Su registro tendrá entonces las siguientes entradas:
 
 ```txt
 [2019-12-25 01:02:03][INFO] Before Notification
@@ -498,9 +498,9 @@ When `process` is executed, the two methods in the listener will be executed. Yo
 [2019-12-25 01:02:03][INFO] After Notification
 ```
 
-### Custom Data
+### Datos Personalizados
 
-Additional data may also be passed when triggering an event using the third parameter of `fire()`:
+Se pueden indicar datos adicionales cuando se dispara un evento usando el tercer parámetro de `fire()`:
 
 ```php
 <?php
@@ -513,7 +513,7 @@ $data = [
 $eventsManager->fire('notifications:afterSend', $this, $data);
 ```
 
-In a listener the third parameter also receives data:
+En un oyente, el tercer parámetro también recibe datos:
 
 ```php
 <?php
@@ -540,9 +540,9 @@ $eventsManager->attach(
 );
 ```
 
-## Propagation
+## Propagación
 
-An events manager can have multiple listeners attached to it. Once an event fires, all listeners that can be notified for the particular event will be notified. This is the default behavior but can be altered if need be by stopping the propagation early:
+Un gestor de eventos puede tener múltiples oyentes adjuntos a él. Una vez se dispara un evento, todos los oyentes que pueden ser notificados para el evento particular serán notificados. Este es el comportamiento por defecto, pero se puede alterar si se necesita parar la propagación antes de tiempo:
 
 ```php
 <?php
@@ -559,11 +559,11 @@ $eventsManager->attach(
 );
 ```
 
-In the above simple example, we stop all events if today is earlier than `2019-01-01`.
+En el ejemplo simple anterior, paramos todos los eventos si hoy es anterior a `2019-01-01`.
 
-## Cancellation
+## Cancelación
 
-By default all events are cancelable. However you might want to set a particular event to not be cancelable, allowing the particular event to fire on all available listeners that implement it.
+Por defecto todos los eventos son cancelables. Sin embargo, podrías querer configurar un evento particular como no cancelable, permitiendo que este evento particular se dispare en todos los oyentes disponibles que lo implementen.
 
 ```php
 <?php
@@ -580,7 +580,7 @@ $eventsManager->attach(
 );
 ```
 
-In the above example, if the event is cancelable, we will stop propagation. You can set a particular event to **not** be cancelable by utilizing the fourth parameter of `fire()`:
+En el ejemplo anterior, si el evento es cancelable, pararemos la propagación. Puede configurar un evento particular para ser **no** cancelable usando el cuarto parámetro de `fire()`:
 
 ```php
 <?php
@@ -588,14 +588,14 @@ In the above example, if the event is cancelable, we will stop propagation. You 
 $eventsManager->fire('notifications:afterSend', $this, $data, false);
 ```
 
-The `afterSend` event will no longer be cancelable and will execute on all listeners that implement it.
+El evento `afterSend` ya no será cancelable y se ejecutará en todos los oyentes que lo implementen.
 
-> **NOTE**: You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object.
+> **NOTA**: Puede parar la ejecución devolviendo `false` en su evento (aunque no siempre). Por ejemplo, si adjunta un evento a `dispatch:beforeDispatchLoop` y su oyente devuelve `false` el proceso de entrega será detenido. Esto es cierto si sólo tiene **un oyente** escuchando al evento `dispatch:beforeDispatchLoop` que devuelve `false`. Si hay dos oyentes adjuntos al evento y el segundo que se ejecuta devuelve `true` entonces el proceso continuará. Si desea evitar que cualquiera de los eventos posteriores se disparen, deberá emitir `stop()` en su oyente del objeto `Event`.
 {: .alert .alert-warning } 
 
-## Priorities
+## Prioridades
 
-When attaching listeners you can set a specific priority. Setting up priorities when attaching listeners to your events manager defines the order in which they are called:
+Cuando adjuntamos oyentes puede especificar una prioridad. Al establecer prioridades cuando adjuntamos oyentes a su gestor de eventos define el orden en el que van a ser llamados:
 
 ```php
 <?php
@@ -623,16 +623,16 @@ $eventsManager->attach(
 ); 
 ```
 
-> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default
+> **NOTA**: Para que las prioridades funcionen se debe llamar a `enablePriorities()` con `true` para activarlas. Por defecto las prioridades están deshabilitadas
 {: .alert .alert-info }
 
 > 
-> **NOTE**: A high priority number means that the listener will be processed before those with lower priorities
+> **NOTA**: Un número de prioridad alto significa que el oyente será procesado antes que otros con prioridades más bajas
 {: .alert .alert-warning }
 
 ## Respuestas
 
-The events manager can also collect any responses returned by each event and return them back using the `getResponses()` method. The method returns an array with the responses:
+El gestor de eventos puede recopilar también cualquier respuesta devuelta por cada evento y devolverlas usando el método `getResponses()`. El método devuelve un vector con las respuestas:
 
 ```php
 <?php
@@ -662,7 +662,7 @@ $eventsManager->fire('custom:custom', null);
 print_r($eventsManager->getResponses());
 ```
 
-The above example produces:
+El ejemplo anterior produce:
 
 ```bash
 [
@@ -671,12 +671,12 @@ The above example produces:
 ]
 ```
 
-> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
+> **NOTA**: Para que las respuestas funcionen se debe llamar `collectResponses()` con `true` para permitir recolectarlas.
 {: .alert .alert-info }
 
-## Exceptions
+## Excepciones
 
-Any exceptions thrown in the Paginator component will be of type [Phalcon\Events\Exception](api/phalcon_events#events-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Cualquier excepción lanzada en el componente `Paginator`será del tipo [Phalcon\Events\Exception](api/phalcon_events#events-exception). Puede usar esta excepción para capturar selectivamente excepciones lanzadas sólo desde este componente.
 
 ```php
 <?php
@@ -696,9 +696,9 @@ try {
 
 ## Controladores
 
-Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
+Los controladores actúan como oyentes ya registrados en el gestor de eventos. Como resultado, sólo necesita crear un método con el mismo nombre que un evento registrado y se lanzará.
 
-For instance if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
+Por ejemplo, si queremos enviar un usuario a la página `/login` si no está conectado, podemos añadir el siguiente código a nuestro controlador principal:
 
 ```php
 <?php
@@ -739,13 +739,13 @@ class BaseController extends Controller
 }
 ```
 
-Execute the code before the router so we can determine if the user is logged in or not. If not, forward them to the login page.
+Ejecuta el código antes del enrutador para poder determinar si el usuario está conectado o no. Si no es así, los enviamos a la página de inicio de sesión.
 
 ## Modelos
 
-Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
+Similar a los Controladores, los Modelos también actúan como oyentes ya registrados en el gestor de eventos. Como resultado, sólo necesita crear un método con el mismo nombre que un evento registrado y se lanzará.
 
-In the following example, we are use the `beforeCreate` event, to automatically calculate an invoice number:
+En el siguiente ejemplo, usamos el evento `beforeCreate`, para calcular automáticamente un número de factura:
 
 ```php
 <?php
@@ -813,7 +813,7 @@ class Invoices extends Model
 
 ## Personalizado
 
-The [Phalcon\Events\ManagerInterface](api/phalcon_events#events-managerinterface) interface must be implemented to create your own events manager replacing the one provided by Phalcon.
+Para sustituir el gestor de eventos proporcionado por Phalcon debe implementar la interfaz [Phalcon\Events\ManagerInterface](api/phalcon_events#events-managerinterface).
 
 ```php
 <?php
@@ -885,9 +885,9 @@ class EventsManager implements ManagerInterface
 }
 ```
 
-## List of Events
+## Lista de Eventos
 
-The events available in Phalcon are:
+Los eventos disponibles en Phalcon son:
 
 | Componente                  | Evento                               | Parámetros                                              |
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
