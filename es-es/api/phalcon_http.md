@@ -550,7 +550,7 @@ public function getUri(): UriInterface
 public function hasHeader( mixed $name ): bool;
 ```
 
-Checks if a header exists by the given case-insensitive name.
+Comprueba si existe una cabecera por el nombre dado insensible a mayúsculas y minúsculas.
 
 ```php
 public function withAddedHeader( mixed $name, mixed $value ): mixed;
@@ -558,7 +558,7 @@ public function withAddedHeader( mixed $name, mixed $value ): mixed;
 
 Return an instance with the specified header appended with the given value.
 
-Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added.
+Se mantendrán los valores existentes para la cabecera especificada. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added.
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new header and/or value.
 
@@ -596,7 +596,7 @@ This method MUST be implemented in such a way as to retain the immutability of t
 public function withoutHeader( mixed $name ): mixed;
 ```
 
-Return an instance without the specified header.
+Devuelve una instancia sin la cabecera especificada.
 
 Header resolution MUST be done without case-sensitivity.
 
