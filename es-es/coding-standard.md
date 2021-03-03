@@ -2,7 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Estándar de codificación'
+title: 'Estándar de Codificación'
 keywords: 'coding standard, zephir'
 ---
 
