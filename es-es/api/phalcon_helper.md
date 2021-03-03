@@ -33,7 +33,7 @@ Black list filter by key: exclude elements of an array by the keys obtained from
 final public static function chunk( array $collection, int $size, bool $preserveKeys = bool ): array;
 ```
 
-Chunks an array into smaller arrays of a specified size.
+Trocea un vector en vectores más pequeños de un determinado tamaño.
 
 ```php
 final public static function filter( array $collection, mixed $method = null ): array;
@@ -45,13 +45,13 @@ Helper method to filter the collection
 final public static function first( array $collection, mixed $method = null ): mixed;
 ```
 
-Returns the first element of the collection. If a callable is passed, the element returned is the first that validates true
+Devuelve el primer elemento de la colección. If a callable is passed, the element returned is the first that validates true
 
 ```php
 final public static function firstKey( array $collection, mixed $method = null ): mixed;
 ```
 
-Returns the key of the first element of the collection. If a callable is passed, the element returned is the first that validates true
+Devuelve la clave del primer elemento de la colección. If a callable is passed, the element returned is the first that validates true
 
 ```php
 final public static function flatten( array $collection, bool $deep = bool ): array;
@@ -81,19 +81,19 @@ Determines whether an element is present in the array.
 final public static function isUnique( array $collection ): bool;
 ```
 
-Checks a flat list for duplicate values. Returns true if duplicate values exist and false if values are all unique.
+Comprueba valores duplicados en una lista plana. Returns true if duplicate values exist and false if values are all unique.
 
 ```php
 final public static function last( array $collection, mixed $method = null ): mixed;
 ```
 
-Returns the last element of the collection. If a callable is passed, the element returned is the first that validates true
+Devuelve el último elemento de la colección. If a callable is passed, the element returned is the first that validates true
 
 ```php
 final public static function lastKey( array $collection, mixed $method = null ): mixed;
 ```
 
-Returns the key of the last element of the collection. If a callable is passed, the element returned is the first that validates true
+Devuelve la clave del último elemento de la colección. If a callable is passed, the element returned is the first that validates true
 
 ```php
 final public static function order( array $collection, mixed $attribute, string $order = string ): array;
@@ -117,7 +117,7 @@ Helper method to set an array element
 final public static function sliceLeft( array $collection, int $elements = int ): array;
 ```
 
-Returns a new array with n elements removed from the right.
+Devuelve un nuevo vector con n elementos eliminados desde la derecha.
 
 ```php
 final public static function sliceRight( array $collection, int $elements = int ): array;
@@ -325,7 +325,7 @@ echo $str;   // /tmp/folder_1/folder_2/folder_3/
 final public static function countVowels( string $text ): int;
 ```
 
-Returns number of vowels in provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string.
+Devuelve el número de vocales de la cadena indicada. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string.
 
 ```php
 final public static function decapitalize( string $text, bool $upperRest = bool, string $encoding = string ): string;
@@ -337,7 +337,7 @@ Decapitalizes the first letter of the string and then adds it with rest of the s
 final public static function decrement( string $text, string $separator = string ): string;
 ```
 
-Removes a number from a string or decrements that number if it already is defined. defined
+Elimina un número de una cadena o decrementa ese número si está definido. defined
 
 ```php
 use Phalcon\Helper\Str;
