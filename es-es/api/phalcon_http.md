@@ -1213,7 +1213,7 @@ Closes the stream when the destructed.
 public function __toString(): string;
 ```
 
-Reads all data from the stream into a string, from the beginning to end.
+Lee todos los datos del flujo en un cadena, de principio a fin.
 
 This method MUST attempt to seek to the beginning of the stream before reading data and read the stream until the end is reached.
 
@@ -1227,15 +1227,15 @@ This method MUST NOT raise an exception in order to conform with PHP's string ca
 public function close(): void;
 ```
 
-Closes the stream and any underlying resources.
+Cierra el flujo y cualquier recurso subyacente.
 
 ```php
 public function detach(): resource | null;
 ```
 
-Separates any underlying resources from the stream.
+Separa cualquier recurso subyacente del flujo.
 
-After the stream has been detached, the stream is in an unusable state.
+Después de que el flujo haya sido desvinculado, el flujo queda en un estado inutilizable.
 
 ```php
 public function eof(): bool;
@@ -1285,13 +1285,13 @@ Returns whether or not the stream is writable.
 public function read( mixed $length ): string;
 ```
 
-Read data from the stream.
+Lee datos desde el flujo.
 
 ```php
 public function rewind(): void;
 ```
 
-Seek to the beginning of the stream.
+Busca el principio del flujo.
 
 If the stream is not seekable, this method will raise an exception; otherwise, it will perform a seek(0).
 
@@ -1299,7 +1299,7 @@ If the stream is not seekable, this method will raise an exception; otherwise, i
 public function seek( mixed $offset, mixed $whence = int ): void;
 ```
 
-Seek to a position in the stream.
+Intenta colocarse en una posición del flujo.
 
 ```php
 public function setStream( mixed $stream, string $mode = string ): void;
@@ -1317,7 +1317,7 @@ Returns the current position of the file read/write pointer
 public function write( mixed $data ): int;
 ```
 
-Write data to the stream.
+Escribe datos al flujo.
 
 <h1 id="http-message-stream-input">Class Phalcon\Http\Message\Stream\Input</h1>
 
@@ -1356,7 +1356,7 @@ Input constructor.
 public function __toString(): string;
 ```
 
-Reads all data from the stream into a string, from the beginning to end.
+Lee todos los datos del flujo en un cadena, de principio a fin.
 
 This method MUST attempt to seek to the beginning of the stream before reading data and read the stream until the end is reached.
 
@@ -1384,7 +1384,7 @@ Returns whether or not the stream is writeable.
 public function read( mixed $length ): string;
 ```
 
-Read data from the stream.
+Lee datos desde el flujo.
 
 <h1 id="http-message-stream-memory">Class Phalcon\Http\Message\Stream\Memory</h1>
 
