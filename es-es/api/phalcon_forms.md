@@ -167,7 +167,7 @@ Returns the value of an option if present
 public function getUserOptions(): array;
 ```
 
-Returns the options for the element
+Devuelve las opciones del elemento
 
 ```php
 public function getValidators(): ValidatorInterface[];
@@ -391,7 +391,7 @@ Returns the value of an option if present
 public function getUserOptions(): array;
 ```
 
-Returns the options for the element
+Devuelve las opciones del elemento
 
 ```php
 public function getValidators(): ValidatorInterface[];
@@ -781,7 +781,7 @@ Returns the number of elements in the form
 public function current(): ElementInterface | bool;
 ```
 
-Returns the current element in the iterator
+Devuelve el elemento actual de la iteración
 
 ```php
 public function get( string $name ): ElementInterface;
@@ -793,7 +793,7 @@ Returns an element added to the form by its name
 public function getAction(): string;
 ```
 
-Returns the form's action
+Devuelve la acción del formulario
 
 ```php
 public function getAttributes(): Attributes;
@@ -805,13 +805,13 @@ Get Form attributes collection
 public function getElements(): ElementInterface[];
 ```
 
-Returns the form elements added to the form
+Devuelve los elementos añadidos al formulario
 
 ```php
 public function getEntity();
 ```
 
-Returns the entity related to the model
+Devuelve la entidad relacionada con el modelo
 
 ```php
 public function getLabel( string $name ): string;
@@ -823,7 +823,7 @@ Returns a label for an element
 public function getMessages(): Messages | array;
 ```
 
-Returns the messages generated in the validation.
+Devuelve los mensajes generados en la validación.
 
 ```php
 if ($form->isValid($_POST) == false) {
@@ -839,7 +839,7 @@ if ($form->isValid($_POST) == false) {
 public function getMessagesFor( string $name ): Messages;
 ```
 
-Returns the messages generated for a specific element
+Devuelve los mensajes generados para un elemento específico
 
 ```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
@@ -851,7 +851,7 @@ Returns the value of an option if present
 public function getUserOptions(): array;
 ```
 
-Returns the options for the element
+Devuelve las opciones del elemento
 
 ```php
 public function getValidation()
@@ -861,19 +861,19 @@ public function getValidation()
 public function getValue( string $name ): mixed | null;
 ```
 
-Gets a value from the internal related entity or from the default value
+Obtiene un valor de la entidad interna relacionada o del valor por defecto
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Check if the form contains an element
+Comprueba si el formulario contiene un elemento
 
 ```php
 public function hasMessagesFor( string $name ): bool;
 ```
 
-Check if messages were generated for a specific element
+Comprueba si se han generado mensajes para un elemento específico
 
 ```php
 public function isValid( mixed $data = null, mixed $entity = null ): bool;
@@ -903,7 +903,7 @@ Mueve el puntero interno de iteración a la siguiente posición
 public function remove( string $name ): bool;
 ```
 
-Removes an element from the form
+Elimina un elemento del formulario
 
 ```php
 public function render( string $name, array $attributes = [] ): string;
@@ -921,19 +921,19 @@ Rebobina el iterador interno
 public function setAction( string $action ): Form;
 ```
 
-Sets the form's action
+Establece la acción del formulario
 
 ```php
 public function setAttributes( Attributes $attributes ): AttributesInterface;
 ```
 
-Set form attributes collection
+Establece la colección de atributos del formulario
 
 ```php
 public function setEntity( mixed $entity ): Form;
 ```
 
-Sets the entity related to the model
+Establece la entidad relacionada con el modelo
 
 ```php
 public function setUserOption( string $option, mixed $value ): Form;
