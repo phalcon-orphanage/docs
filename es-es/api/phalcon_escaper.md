@@ -103,7 +103,7 @@ Escapes a URL. Internally uses rawurlencode
 public function getEncoding(): string;
 ```
 
-Returns the internal encoding used by the escaper
+Devuelve la codificación interna usada por el escapador
 
 ```php
 public function getFlags(): int;
@@ -143,7 +143,7 @@ $escaper->setDoubleEncode(false);
 public function setEncoding( string $encoding ): void;
 ```
 
-Sets the encoding to be used by the escaper
+Configura la codificación a ser usada por el escapador
 
 ```php
 $escaper->setEncoding("utf-8");
@@ -219,13 +219,13 @@ Escapes a URL. Internally uses rawurlencode
 public function getEncoding(): string;
 ```
 
-Returns the internal encoding used by the escaper
+Devuelve la codificación interna usada por el escapador
 
 ```php
 public function setEncoding( string $encoding ): void;
 ```
 
-Sets the encoding to be used by the escaper
+Configura la codificación a ser usada por el escapador
 
 ```php
 public function setHtmlQuoteType( int $quoteType ): void;
