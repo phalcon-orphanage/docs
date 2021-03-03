@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'HTTP Factories (PSR-17)'
-keywords: 'psr-17, http, http factories'
+title: 'Factorías HTTP (PSR-17)'
+keywords: 'psr-17, http, factorías http'
 ---
 
-# HTTP Factories (PSR-17)
+# Factorías HTTP (PSR-17)
 
 * * *
 
@@ -14,15 +14,15 @@ keywords: 'psr-17, http, http factories'
 
 ## Resumen
 
-[Phalcon\Http\Message\RequestFactory](api/phalcon_http#http-message-requestfactory), [Phalcon\Http\Message\ResponseFactory](api/phalcon_http#http-message-responsefactory), [Phalcon\Http\Message\ServerRequestFactory](api/phalcon_http#http-message-serverrequestfactory), [Phalcon\Http\Message\StreamFactory](api/phalcon_http#http-message-streamfactory), [Phalcon\Http\Message\UploadedFileFactory](api/phalcon_http#http-message-uploadedfilefactory), [Phalcon\Http\Message\UriFactory](api/phalcon_http#http-message-urifactory) are the factories implemented of the [PSR-17](https://www.php-fig.org/psr/psr-17/) HTTP messaging interface factories as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\RequestFactory](api/phalcon_http#http-message-requestfactory), [Phalcon\Http\Message\ResponseFactory](api/phalcon_http#http-message-responsefactory), [Phalcon\Http\Message\ServerRequestFactory](api/phalcon_http#http-message-serverrequestfactory), [Phalcon\Http\Message\StreamFactory](api/phalcon_http#http-message-streamfactory), [Phalcon\Http\Message\UploadedFileFactory](api/phalcon_http#http-message-uploadedfilefactory), [Phalcon\Http\Message\UriFactory](api/phalcon_http#http-message-urifactory) son las factorías implementadas por las factorías de la interfaz de mensajería HTTP [PSR-17](https://www.php-fig.org/psr/psr-17/) definido por [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--17-blue.svg)
 
-These components aid in creating HTTP objects as defined by the [PSR-7](https://www.php-fig.org/psr/psr-7/) standard.
+Estos componentes ayudan a crear objetos HTTP según la definición del estándar [PSR-7](https://www.php-fig.org/psr/psr-7/).
 
 ## RequestFactory
 
-The [Phalcon\Http\Message\RequestFactory](api/phalcon_http#http-message-requestfactory) can be used to create [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) objects.
+[Phalcon\Http\Message\RequestFactory](api/phalcon_http#http-message-requestfactory) se puede usar para crear objetos [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request).
 
 ```php
 <?php
@@ -37,11 +37,11 @@ $stream = $factory->createRequest(
 );
 ```
 
-The `createRequest()` method accepts a string as the method (`GET`, `POST` etc.) and the URI and returns back the request object.
+El método `createRequest()` acepta una cadena como método (`GET`, `POST` etc.) y la URI y devuelve el objeto de la petición.
 
 ## ResponseFactory
 
-The [Phalcon\Http\Message\ResponseFactory](api/phalcon_http#http-message-responsefactory) can be used to create [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) objects.
+[Phalcon\Http\Message\ResponseFactory](api/phalcon_http#http-message-responsefactory) se puede usar para crear objetos [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response).
 
 ```php
 <?php
@@ -53,11 +53,11 @@ $factory = new ResponseFactory();
 $stream = $factory->createResponse(200, 'OK');
 ```
 
-The `createResponse()` method accepts an integer which is the response status as well as a string, representing the reason phrase. If no reason is specified, the component will use the default ones as suggested by the HTTP RFCs.
+El método `createResponse()` acepta un entero con el estado de la respuesta así como una cadena, que representa la frase de razón. Si no se específica la razón, el componente usará el valor por defecto sugerido por el RFC de HTTP.
 
 ## ServerRequestFactory
 
-The [Phalcon\Http\Message\ServerRequestFactory](api/phalcon_http#http-message-serverrequestfactory) can be used to create [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) objects.
+[Phalcon\Http\Message\ServerRequestFactory](api/phalcon_http#http-message-serverrequestfactory) se usará para crear objetos [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest).
 
 ```php
 <?php
@@ -75,9 +75,9 @@ $request = $factory->createServerRequest(
 );
 ```
 
-The `createServerRequest()` creates the new object using a method (`GET`, `POST` etc.), a URI and optionally an array of SAPI parameters with which to seed the generated request instance.
+`createServerRequest()` crea el nuevo objeto usando un método (`GET`, `POST` etc.), una URI y opcionalmente un vector de parámetros SAPI con los que configurar la instancia de la petición generada.
 
-In addition to the `createServerRequest()` the factory offers the `load()` method as a helper to create a request by populating it from the superglobals.
+Además de `createServerRequest()`, la factoría ofrece el método `load()` como ayuda para crear una petición rellenándola desde las variables superglobales.
 
 ```php
 <?php
@@ -95,11 +95,11 @@ $request = $factory->load(
 );
 ```
 
-If If any argument is not supplied, the corresponding superglobal will be used.
+Si no se suministra algún argumento, se usará la variable superglobal correspondiente.
 
 ## StreamFactory
 
-The [Phalcon\Http\Message\StreamFactory](api/phalcon_http#http-message-streamfactory) can be used to create [Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream) objects.
+[Phalcon\Http\Message\StreamFactory](api/phalcon_http#http-message-streamfactory) se usará para crear objetos [Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream).
 
 ```php
 <?php
@@ -113,7 +113,7 @@ $stream = $factory->createStream('stream contents');
 
 ## UploadedFileFactory
 
-The [Phalcon\Http\Message\UploadedFileFactory](api/phalcon_http#http-message-uploadedfilefactory) can be used to create [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) objects.
+[Phalcon\Http\Message\UploadedFileFactory](api/phalcon_http#http-message-uploadedfilefactory) se puede usar para crear objetos [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile).
 
 ```php
 <?php
@@ -140,11 +140,11 @@ $file = $factory->createUploadedFile(
 );
 ```
 
-If a size is not provided it will be determined by checking the size of the stream. The `$error` is the PHP file upload error, It defaults to `0`. If provided by the client, you can use the `clientFilename` and `clientMediaType`. Otherwise they can be set to `null`.
+Si no se especifica tamaño se obtendrá comprobando el tamaño del flujo. `$error` es el error de subida de fichero PHP, por defecto `0`. Si se indica por el cliente, puede usar `clientFilename` y `clientMediaType`. De lo contrario valdrán `null`.
 
 ## UriFactory
 
-The [Phalcon\Http\Message\UriFactory](api/phalcon_http#http-message-urifactory) can be used to create [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) objects.
+[Phalcon\Http\Message\UriFactory](api/phalcon_http#http-message-urifactory) se puede usar para crear objetos [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri).
 
 ```php
 <?php
