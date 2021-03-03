@@ -663,7 +663,7 @@ Generates SQL checking for the existence of a schema view
 
 The [Phalcon\Db\AdapterInterface](api/phalcon_db#db-adapter-adapterinterface) interface must be implemented in order to create your own database adapters or extend the existing ones. Additionally you can extend the [Phalcon\Db\AbstractAdapter](api/phalcon_db#db-adapter-abstractadapter) that already has some implementation for your custom adapter.
 
-### Escaping
+### Escape
 
 Escaping identifiers is enabled by default. However, if you need to disable this feature, you can do so using the `setup()` method:
 
