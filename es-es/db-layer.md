@@ -1673,16 +1673,16 @@ try {
 
 The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. Son soportados los siguientes eventos:
 
-| Nombre de evento      | Disparado                           | Can stop |
-| --------------------- | ----------------------------------- |:--------:|
-| `afterQuery`          | After a query is executed           |    No    |
-| `beforeQuery`         | Before a query is executed          |    Si    |
-| `beginTransaction`    | Before a transaction starts         |    No    |
-| `createSavepoint`     | Before a savepoint is created       |    No    |
-| `commitTransaction`   | Before a transaction is committed   |    No    |
-| `releaseSavepoint`    | Before a savepoint is released      |    No    |
-| `rollbackTransaction` | Before a transaction is rolled back |    No    |
-| `rollbackSavepoint`   | Before a savepoint is rolled back   |    No    |
+| Nombre de evento      | Disparado                           | Puede detenerse |
+| --------------------- | ----------------------------------- |:---------------:|
+| `afterQuery`          | After a query is executed           |       No        |
+| `beforeQuery`         | Before a query is executed          |       Si        |
+| `beginTransaction`    | Before a transaction starts         |       No        |
+| `createSavepoint`     | Before a savepoint is created       |       No        |
+| `commitTransaction`   | Before a transaction is committed   |       No        |
+| `releaseSavepoint`    | Before a savepoint is released      |       No        |
+| `rollbackTransaction` | Before a transaction is rolled back |       No        |
+| `rollbackSavepoint`   | Before a savepoint is rolled back   |       No        |
 
 If you bind an [Events Manager](events) to the database connection, all the events with the type `db` will be enabled and fired for the relevant listeners.
 
