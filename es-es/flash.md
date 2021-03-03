@@ -3,11 +3,11 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#flash'
-title: 'Flash Messages'
-keywords: 'flash, flash messages, flash direct, flash session, templates'
+title: 'Mensajes Flash'
+keywords: 'flash, mensajes flash, flash directo, flash sesión, plantillas'
 ---
 
-# Flash Messages
+# Mensajes Flash
 
 * * *
 
@@ -15,11 +15,11 @@ keywords: 'flash, flash messages, flash direct, flash session, templates'
 
 ## Resumen
 
-Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
+Los mensajes flash son usados para notificar al usuario sobre el estado de acciones que ha hecho o simplemente muestra información a los usuarios. Estos tipos de mensajes pueden ser generados usando este componente.
 
 ## Adaptadores
 
-This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface](api/phalcon_flash#flash-flashinterface) interface.
+Este componente usa adaptadores que indican como se muestran los mensajes o se envían a la vista. Hay dos adaptadores disponibles aunque puede crear fácilmente su propio adaptador usando el interfaz [Phalcon\Flash\FlashInterface](api/phalcon_flash#flash-flashinterface).
 
 | Adaptador                                                  | Descripción                                                                                                         |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +28,7 @@ This component uses adapters that dictate how messages are displayed or sent to 
 
 ### Direct
 
-[Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) can be used to directly output messages set in the component. This is useful in instances where you need to show data back to the user in the current request that does not employ any redirects.
+[Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) se puede usar para mostrar directamente los mensajes establecidos en el componente. Esto es útil en casos donde necesita mostrar datos de vuelta al usuario en la petición actual que no emplea ninguna redirección.
 
 ```php
 <?php
@@ -44,7 +44,7 @@ $flash->error('Something went wrong');
 
 ### Session
 
-[Phalcon\Flash\Session](api/phalcon_flash#flash-session) can be used to output messages set in the component. The component transparently stores the messages in the session to be used after a redirect.
+[Phalcon\Flash\Session](api/phalcon_flash#flash-session) se puede usar para mostrar mensajes establecidos en el componente. El componente almacena de forma transparente los mensajes en la sesión para usarse después de una redirección.
 
 ```php
 <?php
@@ -68,22 +68,22 @@ $flash   = new FlashSession($escaper, $session);
 $flash->error('Something went wrong');
 ```
 
-and in your view
+y en su vista
 
 ```php
 <?php echo $flash->output(); ?>
 ```
 
-or when using Volt
+o cuando se usa Volt
 
 ```twig
 {% raw %}{{ flash.output() }}{% endraw %}
 ```
 
-Imagine a login form that you need to validate the username and password and inform the user if their credentials are correct. The [Phalcon\Flash\Session](api/phalcon_flash#flash-session) can be used to perform this task as follows:  
-- User enters credentials and clicks `Login` - The application posts the data to the `loginAction` of our controller - The application checks the data and the combination is not correct - The application stores the `Incorrect Credentials` message in the flash messenger - The application redirects the user back to the login page (`/login`) - The Flash messenger still holds the message `Incorrect Credentials` and will display it on the screen.
+Imagine un formulario de inicio de sesión donde necesita validar el nombre de usuario y contraseña e informar al usuario si sus credenciales son correctas. [Phalcon\Flash\Session](api/phalcon_flash#flash-session) se puede usar para realizar estas tareas como sigue:  
+- El usuario introduce las credenciales y hace click sobre `Login` - La aplicación publica los datos a `loginAction` de nuestro controlador - La aplicación comprueba si los datos y la combinación no son correctos - La aplicación almacena el mensaje `Credenciales Incorrectas` en el mensajero flash - La aplicación redirecciona al usuario de vuelta a la página de login (`/login`) - El mensajero Flash todavía mantiene el mensaje `Credenciales Incorrectas` y lo muestra en pantalla.
 
-The example below displays this behavior in the controller. If an error occurs, whether this is an actual application error or a result of incorrect credentials, the code sets the messages using `$this->flash->error()`.
+El siguiente ejemplo muestra este comportamiento en el controlador. Si ocurre un error, ya sea un error actual de la aplicación o resultado de unas credenciales incorrectas, el código establece los mensajes usando `$this->flash->error()`.
 
 ```php
 <?php
@@ -154,47 +154,47 @@ class SessionController extends Controller
 }
 ```
 
-and in your view
+y en su vista
 
 ```php
 <?php echo $flashSession->output(); ?>
 ```
 
-or when using Volt
+o cuando se usa Volt
 
 ```twig
 {% raw %}{{ flashSession.output() }}{% endraw %}
 ```
 
-> **NOTE**: In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
+> **NOTA**: En el ejemplo anterior, el servicio `flashSession` ya ha sido registrado en el contenedor DI. Para más información sobre esto por favor consulte la sección correspondiente a continuación.
 {: .alert .alert-info }
 
-## Styling
+## Estilo
 
-The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default the component uses the following mapping:
+El componente (independientemente del adaptador) ofrece un estilo automático de los mensajes en pantalla. Esto significa que los mensajes serán envueltos en etiquetas `<div>`. Hay también un mapeo del tipo de mensaje a clase CSS, del que puede sacar partido basándose en la hoja de estilos que use en su aplicación. Por defecto el componente usa el siguiente mapeo:
 
-| Tipo      | Name of CSS class |
-| --------- | ----------------- |
-| `error`   | `errorMessage`    |
-| `notice`  | `noticeMessage`   |
-| `success` | `successMessage`  |
-| `warning` | `warningMessage`  |
+| Tipo      | Nombre de la clase CSS |
+| --------- | ---------------------- |
+| `error`   | `errorMessage`         |
+| `notice`  | `noticeMessage`        |
+| `success` | `successMessage`       |
+| `warning` | `warningMessage`       |
 
-By using the default classes, you can style `errorMessage` accordingly in the stylesheet of your application to make it appear the way you want it to. It is common for error messages to have a red background for instance so that they stand out.
+Usando las clases por defecto, puede estilizar `errorMessage` de acorde a la hoja de estilos de su aplicación para hacer que aparezca de la forma que quiera. Es común que los mensajes de error tengan un fondo rojo, por ejemplo, para que destaquen.
 
-An error message:
+Un mensaje de error:
 
 ```php
 $flash->error('Error message');
 ```
 
-will produce:
+producirá:
 
 ```html
 <div class="errorMessage">Error message</div>
 ```
 
-If you do not wish to use the default classes, you can use the `setCssClasses()` method to replace the mapping of type of message to class name.
+Si no quiere usar las clases por defecto, puede usar el método `setCssClasses()` para reemplazar el mapeo de tipo de mensaje al nombre de clase.
 
 ```php
 <?php
@@ -227,25 +227,25 @@ $cssClasses = [
 $flash->setCssClasses($cssClasses);
 ```
 
-and then calling
+y luego llamar
 
 ```php
 $flash->error('Error message');
 ```
 
-will produce:
+producirá:
 
 ```html
 <div class="alert alert-danger">Error message</div>
 ```
 
-> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTA**: `setCssClasses()` devuelve el objeto para que pueda usarlo en una interfaz más fluida encadenando llamadas.
 {: .alert .alert-info }
 
-The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
+El componente también le permite especificar una plantilla diferente, para que pueda controlar el HTML producido por el componente. `setCustomTemplate()` y `getCustomTemplate()` exponen esta funcionalidad. La plantilla necesita tener dos marcadores de posición:
 
-- `%cssClass%` - where the CSS class will be injected
-- `%message%` - where the message will be injected
+- `%cssClass%` - donde se inyectará la clase CSS
+- `%message%` - donde se inyectará el mensaje
 
 ```php
 <?php
@@ -261,24 +261,24 @@ $template = '<span class="%cssClass%">%message%</span>';
 $flash->setCustomTemplate($template);
 ```
 
-and then calling
+y luego llamar
 
 ```php
 $flash->error('Error message');
 ```
 
-will produce:
+producirá:
 
 ```html
 <span class="myErrorClass">Error message</span>
 ```
 
-> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTA**: `setCustomTemplate()` devuelve el objeto para que pueda usarlo en una interfaz más fluida encadenando llamadas.
 {: .alert .alert-info }
 
-## Messages
+## Mensajes
 
-As mentioned above, the component has different types of messages. To add a message to the component you can call `message()` with the type as well as the message itself. The types of messages are:
+Como se ha mencionado anteriormente, el componente tiene diferentes tipos de mensajes. Para añadir un mensaje al componente puede llamar a `message()` con el tipo y el mensaje propiamente dicho. Los tipos de mensajes son:
 
 - `error`
 - `notice`
@@ -297,7 +297,7 @@ $flash   = new Direct($escaper);
 $flash->message('error', 'Error message');
 ```
 
-While you can pass the type as the first parameter when calling `message()` you can also use the relevant helper methods that do that for you:
+Mientras que puede pasar el tipo como primer parámetro cuando se llama a `message()` también puede usar los métodos de ayuda que lo hacen por usted:
 
 ```php
 <?php
@@ -314,7 +314,7 @@ $flash->success('Success message');
 $flash->warning('Warning message');
 ```
 
-If your application requires it, you might want to clear the messages at some point when building the response. To do so you can use the `clear()` method.
+Si su aplicación lo requiere, podría querer limpiar los mensajes en algún momento cuando construye la respuesta. Para hacerlo puede usar el método `clear()`.
 
 ```php
 <?php
@@ -330,12 +330,12 @@ $flash->error('Error message');
 $flash->clear();
 ```
 
-> **NOTE**: `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
+> **NOTA**: `clear()` funciona solo cuando el volcado implícito está deshabilitado (`setImplicitFlush(false)`)
 {: .alert .alert-info }
 
-## Implicit Flush
+## Volcado Implícito
 
-By default implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
+Por defecto el volcado implícito está establecido a `true`. Sin embargo puede desactivarlo usando `setImplicitFlush(false)`. El propósito de este método es establecer si la salida debe ser volcada implícitamente a la salida o devuelta como una cadena
 
 ```php
 <?php
@@ -356,16 +356,16 @@ echo $flash
 ;
 ```
 
-> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTA**: `setImplicitFlush()` devuelve el objeto para que pueda usarlo de una forma más fluida encadenando llamadas.
 {: .alert .alert-info }
 
 > 
-> **NOTE**: When using the [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
+> **NOTA**: Cuando usa el componente [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct), para mostrar directamente los resultados en la página **debe** establecer `setImplicitFlush()` a `false`.
 {: .alert .alert-warning }
 
-## Escaping
+## Escape
 
-By default, the component will escape the contents of the message. There might be times however that you do not wish to escape the contents of your messages. You can use the `setAutoescape(false)`;
+Por defecto, el componente escapará el contenido del mensaje. Sin embargo, podría haber ocasiones en las que no desee escapar el contenido de sus mensajes. Puede usar `setAutoescape(false)`;
 
 ```php
 <?php
@@ -384,20 +384,20 @@ $flash
 ;
 ```
 
-will produce
+producirá
 
 ```html
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTA**: `setAutoescape()` devuelve el objeto para que pueda usarlo de una forma más fluida encadenando llamadas.
 {: .alert .alert-info }
 
 ## Inyección de Dependencias
 
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session](api/phalcon_flash#flash-session) is already registered for you with the name `flashSession`.
+Si usa el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) ya está registrado con el nombre `flash`. Adicionalmente [Phalcon\Flash\Session](api/phalcon_flash#flash-session) ya está registrado con el nombre `flashSession`.
 
-An example of the registration of the service as well as accessing it is below:
+Un ejemplo del registro del servicio así de cómo acceder a él a continuación:
 
 **Direct**
 
@@ -448,10 +448,10 @@ $container->set(
 );
 ```
 
-> **NOTE** You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
+> **NOTA** No necesita pasar el escapador o la sesión en el constructor. Si usa el contenedor Di y esos servicios ya se han registrado en él, se usarán internamente. Esta es otra forma de instanciar los componentes.
 {: .alert .alert-info }
 
-You can now use the component in a controller (or a component that implements [Phalcon\Di\Injectable](api/phalcon_di#di-injectable))
+Ahora puede usar el componente en un controlador (o un componente que implemente [Phalcon\Di\Injectable](api/phalcon_di#di-injectable))
 
 ```php
 <?php
