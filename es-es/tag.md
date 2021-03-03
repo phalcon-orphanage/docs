@@ -1662,7 +1662,7 @@ $_POST = [
 echo Tag::hasValue('framework'); // 'true'
 ```
 
-## Escaping
+## Escape
 
 [Phalcon\Tag](api/phalcon_tag) automatically escapes text supplied for its helpers. If your application requires it, you can disable automatic escaping by using `setAutoEscape()`.
 
