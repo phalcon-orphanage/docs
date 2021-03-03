@@ -2,38 +2,38 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'HTTP Server Request (PSR-7)'
-keywords: 'psr-7, http, http server request'
+title: 'Petición de Servidor HTTP (PSR-7)'
+keywords: 'psr-7, http, petición servidor http'
 ---
 
-# HTTP Server Request (PSR-7)
+# Petición de Servidor HTTP (PSR-7)
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) es una implementación de la interfaz de mensajería HTTP [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following: These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following:
+Estas implementaciones de interfaz se han creado para establecer un estándar entre implementaciones middleware. Las aplicaciones a menudo necesitan recibir datos de fuentes externas, como de los usuarios que usan la aplicación. [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) representa una petición HTTP entrante del lado del servidor. Por especificación HTTP, esta interfaz incluye propiedades como las siguientes: Estas implementaciones de interfaz se han creado para establecer un estándar entre implementaciones middleware. Las aplicaciones a menudo necesitan recibir datos de fuentes externas, como de los usuarios que usan la aplicación. [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) representa una petición HTTP entrante del lado del servidor. Por la especificación HTTP, esta interfaz incluye propiedades como las siguientes:
 
-- Headers
-- HTTP method
-- Message body
-- Protocol version
+- Cabeceras
+- Método HTTP
+- Cuerpo del mensaje
+- Versión del protocolo
 - URI
 
-Additionally, it encapsulates all data as it has arrived at the application from the CGI and/or PHP environment, including:
+Adicionalmente, encapsula todos los datos que han llegado a la aplicación desde entornos CGI y/o PHP, incluyendo:
 
-- The values represented in `$_SERVER`.
-- Any cookies provided (generally via `$_COOKIE`)
-- Query string arguments (generally via `$_GET`, or as parsed via [parse_str()](https://www.php.net/manual/en/function.parse-str.php))
-- Upload files, if any (as represented by `$_FILES`)
-- Unserialized body parameters (generally from `$_POST`)
+- Los valores representados en `$_SERVER`.
+- Cualquier cookie proporcionada (generalmente mediante `$_COOKIE`)
+- Parámetros de consulta (generalmente mediante `$_GET`, o extraídos mediante [parse_str()](https://www.php.net/manual/en/function.parse-str.php))
+- Subir ficheros, si procede (representados en `$_FILES`)
+- Parámetros del cuerpo no serializados (generalmente desde `$_POST`)
 
-`$_SERVER` values are treated as immutable, as they represent application state at the time of request; as such, no methods are provided to allow modification of those values. The other values provide such methods, as they can be restored from `$_SERVER` or the request body, and may need treatment during the application (e.g., body parameters may be unserialized based on content type).
+Los valores de `$_SERVER` son tratados como inmutables, ya que representan el estado de la aplicación en el momento de la petición; como tal, no se proporcionan métodos para permitir modificar estos valores. Los otros valores proporcionan estos métodos, que pueden ser restaurados desde `$_SERVER` o el cuerpo de la petición, y pueden necesitar tratamiento en la aplicación (ej., los parámetros del cuerpo pueden estar no serializados basados en el tipo de contenido).
 
-Additionally, this interface recognizes the utility of introspecting a request to derive and match additional parameters (e.g., via URI path matching, decrypting cookie values, unserializing non-form-encoded body content, matching authorization headers to users, etc). These parameters are stored in an "attributes" property.
+Además, esta interfaz reconoce la utilidad de introspección de una petición para deducir y emparejar parámetros adicionales (ej: mediante coincidencia en la ruta de una URI, desencriptado de valores en cookies, deserializando contenido del cuerpo no codificado tipo formulario, coincidencia en las cabeceras de autorización de usuarios, etc.). Estos parámetros se almacenen en una propiedad "attributes".
 
 ```php
 <?php
@@ -54,9 +54,9 @@ $request = $request
 ;
 ```
 
-We are creating a new [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) object and a new [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) object with the target URL. Following that we define the method (`GET`), a protocol version, uploaded files and additional headers.
+Estamos creando un nuevo objeto [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) y un nuevo objeto [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) con la URL destino. A continuación definimos el método (`GET`), una versión de protocolo, ficheros subidos y cabeceras adicionales.
 
-The above example can be implemented by only using the constructor parameters:
+El ejemplo anterior puede ser implementado usando únicamente los parámetros del constructor:
 
 ```php
 <?php
@@ -79,7 +79,7 @@ $request = new ServerRequest(
 );
 ```
 
-The [ServerRequest](api/phalcon_http#http-message-serverrequest) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+El objeto creado [ServerRequest](api/phalcon_http#http-message-serverrequest) es inmutable, lo que significa que nunca cambiará. Cualquier llamada a los métodos con prefijo `with*` devolverá un clon del objeto para mantener la inmutabilidad, según el estándar.
 
 ## Constructor
 
@@ -97,18 +97,18 @@ public function __construct(
     [, string protocol = "1.1"]]]]]]]]]]
 )
 ```
-The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
+El constructor acepta parámetros permitiendo crear el objeto con ciertas propiedades rellenadas. Se pueden definir el método HTTP de destino, la URL, el cuerpo y las cabeceras. Todos los parámetros son opcionales.
 
-- `method` - defaults to `GET`. The supported methods are: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
-- `uri` - An instance of [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) or a URL.
-- `serverParams` - A key value array, with key as the server variable name and value as the server value
-- `body` - It defaults to `php://input`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
-- `headers` - A key value array, with key as the header name and value as the header value.
-- `cookies` - A key value array, with key as the cookie name and value as the cookie value.
-- `queryParams` - A key value array, with key as the query parameter name and value as the query parameter value.
-- `uploadFiles` - An array of uploaded files (`$_FILES`)
-- `parsedBody` - The parsed body of the server request
-- `protocol` - A string representing the protocol (`1.0`, `1.1`)
+- `method` - por defecto `GET`. Los métodos soportados son: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
+- `uri` - Una instancia de [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) o una URL.
+- `serverParams` - Un vector clave valor, con la clave como nombre de la variable del servidor y el valor como valor del servidor
+- `body` - Por defecto `php://input`. El método acepta un objeto que implemente el interfaz `StreamInterface` or una cadena como nombre del flujo. El modo por defecto para el flujo es `w+b`. Si se pasa un flujo inválido, se lanzará [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception)
+- `headers` - Un vector clave valor, donde la clave es el nombre de la cabecera y el valor el valor de la cabecera.
+- `cookies` - Un vector clave valor, con la clave como el nombre de la cookie y el valor el valor de la cookie.
+- `queryParams` - Un vector clave valor, con la clave como nombre del parámetro de consulta y el valor como valor del parámetro de consulta.
+- `uploadFiles` - Un vector con los ficheros subidos (`$_FILES`)
+- `parsedBody` - El cuerpo analizado de la petición del servidor
+- `protocol` - Una cadena representando el protocolo (`1.0`, `1.1`)
 
 ```php
 <?php
@@ -135,7 +135,7 @@ $request = new ServerRequest(
 
 ### `getAttribute()`
 
-Returns a single derived request attribute. The method gets a single attribute as produced by `getAttributes()`. The first parameter defines the name of the attribute that we need to retrieve. You can also supply a second variable which will be used as a default, in case the requested attribute name does not exist.
+Devuelve un único atributo de la petición derivada. El método obtiene un único atributo como el producido por `getAttributes()`. El primer parámetro define el nombre del atributo que queremos obtener. También se puede indicar una segunda variable que puede ser usada como valor predeterminado, en caso de que el nombre del atributo solicitado no exista.
 
 ```php
 <?php
@@ -153,7 +153,7 @@ echo $request->getAttribute('three', 'four'); // 'four'
 
 ### `getAttributes()`
 
-Returns an array with all the attributes derived from the request. These request "attributes" may be used to allow injection of any parameters derived from the request: e.g., the results of path match operations; the results of decrypting cookies; the results of unserializing non-form-encoded message bodies; etc. Attributes will be application and request specific, and can be mutable.
+Devuelve un vector con todos los atributos asociados a la petición. Estos "atributos" de la petición se pueden usar para permitir la inyección de cualquier parámetro derivado de la petición: ej., los resultados de operaciones de coincidencia en la ruta; los resultados desencriptando cookies; los resultados de deserializar cuerpos de mensaje no codificados como formulario; etc. Los atributos serán específicos de la aplicación y la petición, y pueden ser mutables.
 
 ```php
 <?php
@@ -176,7 +176,7 @@ var_dump(
 
 ### `getBody()`
 
-Returns the body as a `StreamInterface` object
+Devuelve el cuerpo como un objeto `StreamInterface`
 
 ```php
 <?php
@@ -195,7 +195,7 @@ echo $request->getBody(); // '/assets/stream/mit.txt'
 
 ### `getCookieParams()`
 
-Returns the cookies of the server request. The returned array is compatible with the structure of the `$_COOKIE` superglobal.
+Devuelve los cookies de la petición del servidor. El vector devuelto es compatible con la estructura de la variable superglobal `$_COOKIE`.
 
 ```php
 <?php
@@ -224,7 +224,7 @@ var_dump(
 
 ### `getHeader()`
 
-Returns an array of all the header values of the passed case insensitive header name. If the string parameter representing the header name requested is not present, an empty array is returned.
+Devuelve un vector con todos los valores de los nombres de las cabeceras pasadas insensibles a mayúsculas y minúsculas. Si el parámetro cadena con el nombre de la cabecera solicitada no existe, se devolverá un vector vacío.
 
 ```php
 <?php
@@ -247,7 +247,7 @@ echo $request->getHeader('unknown');      // []
 
 ### `getHeaderLine()`
 
-Returns all of the header values of the given case-insensitive header name as a string concatenated together using a comma. If the string parameter representing the header name requested, an empty string is returned.
+Devuelve el valor de las cabeceras con los nombres de las cabeceras dadas insensibles concatenadas en una cadena usando una coma. Si el parámetro de cadena que representa el nombre de la cabecera solicitada no existe, se devuelve una cadena vacía.
 
 ```php
 <?php
@@ -272,7 +272,7 @@ echo $request->getHeaderLine('content-Type'); // 'application/json,application/h
 
 ### `getHeaders()`
 
-Returns an array with all the message header values. The keys represent the header name as it will be sent over the wire, and each value is an array of strings associated with the header. While header names are not case-sensitive, this method preserves the exact case in which headers were originally specified.
+Devuelve un vector con todos los valores de la cabecera del mensaje. Las claves representan el nombre de la cabecera tal y como serán enviadas, y cada valor es un vector de cadenas asociadas con la cabecera. Mientras que los nombres de las cabeceras no distinguen mayúsculas y minúsculas, este método los mantiene tal y como fueron especificados originalmente.
 
 ```php
 <?php
@@ -306,7 +306,7 @@ var_dump(
 
 ### `getMethod()`
 
-Returns the method as a string
+Devuelve el método como cadena
 
 ```php
 <?php
@@ -320,7 +320,7 @@ echo $request->getMethod(); // POST
 
 ### `getParsedBody()`
 
-Returns any parameters provided in the request body. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method will return the contents of `$_POST`. Otherwise, this method may return any results of unserializing the request body content; as parsing returns structured content, the potential types will be arrays or objects only. If there is no body content, `null` will be returned.
+Devuelve cualquier parámetro proporcionado en el cuerpo de la petición. Si la petición `Content-Type` es `application/x-www-form-urlencoded` o `multipart/form-data`, y el método de la petición es `POST`, este método devolverá el contenido de `$_POST`. Sino, este método puede devolver cualquier resultado de deserializar el contenido del cuerpo de la petición; del análisis devuelve contenido estructurado, los tipos potenciales serán únicamente vectores u objetos. Si no hay contenido en el cuerpo, se devolverá `null`.
 
 ```php
 <?php
@@ -351,7 +351,7 @@ var_dump(
 
 ### `getProtocolVersion()`
 
-Returns the protocol version as as string (default `1.1`)
+Devuelve la versión del protocolo como cadena (por defecto `1.1`)
 
 ```php
 <?php
@@ -365,7 +365,7 @@ echo $request->getProtocolVersion(); // '1.1'
 
 ### `getQueryParams()`
 
-Returns an array with the unserialized query string arguments, if any. Note that the query params might not be in sync with the URI or server parameters. If you need to ensure you are only getting the original values, you may need to parse the query string from `getUri()->getQuery()` or from the `QUERY_STRING` server parameter.
+Devuelve un vector con los parámetros de la cadena de consulta deserializada, si la hay. Hay que tener en cuenta que los parámetros de la consulta podrían no estar sincronizados con los parámetros de la URI o del servidor. Si necesita asegurarse que sólo está obteniendo los valores originales, puedes analizar la cadena de consulta desde `getUri()->getQuery()` o desde el parámetro de servidor `QUERY_STRING`.
 
 ```php
 <?php
@@ -390,7 +390,7 @@ var_dump(
 
 ### `getRequestTarget()`
 
-Returns a string representing the message's request-target either as it will appear (for clients), as it appeared at request (for servers), or as it was specified for the instance (see `withRequestTarget()`). In most cases, this will be the origin-form of the composed URI, unless a value was provided to the concrete implementation (see `withRequestTarget()`).
+Devuelve una cadena que representa el mensaje de la petición destino tal y como aparecerá (para los clientes), como apareció en la petición (para servidores), o como fue especificada en la instancia (ver `withRequestTarget()`). En la mayoría de casos, será la forma original de la URI compuesta, a no ser que se haya proporcionado un valor para la implementación determinada (ver `withRequestTarget()`).
 
 ```php
 <?php
@@ -405,7 +405,7 @@ echo $request->getRequestTarget(); // '/test'
 
 ### `getServerParams()`
 
-Returns an array of data related to the incoming request environment, typically derived from PHP's `$_SERVER` superglobal. This data however is not required to originate from the `$_SERVER` superglobal.
+Devuelve un vector de datos relacionados con el entorno de la petición entrante, normalmente derivado de la variable de PHP superglobal `$_SERVER`. Sin embargo, no se require que estos datos vengan de `$_SERVER`.
 
 ```php
 <?php
@@ -443,7 +443,7 @@ var_dump(
 
 ### `getUploadedFiles()`
 
-Returns an array with upload metadata in a normalized tree, with each leaf is an instance of `Psr\Http\Message\UploadedFileInterface`. These values can derive from the `$_FILES` superglobal or the message body during instantiation or they can be injected using `withUploadedFiles()`. If no data is present, an empty array will be returned.
+Devuelve un vector con los metadatos subidos como un árbol normalizado, donde cada hoja es una instancia de `Psr\Http\Message\UploadedFileInterface`. Estos valores pueden derivar de la variable superglobal `$_FILES` o del cuerpo del mensaje durante la instanciación o puede ser inyectado usando `withUploadedFiles()`. Si no hay datos, se devolverá un vector vacío.
 
 ```php
 <?php
@@ -478,7 +478,7 @@ var_dump(
 
 ### `getUri()`
 
-Returns the Uri as a `UriInterface` object
+De vuelve la Uri como un objeto `UriInterface`
 
 ```php
 <?php
@@ -494,11 +494,11 @@ echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
 
 
-## Existence
+## Existencia
 
 ### `hasHeader()`
 
-Checks if a header exists by the given case-insensitive name. Returns `true` if the header has been found, `false` otherwise
+Comprueba si existe una cabecera mediante el nombre dado sin distinguir mayúsculas y minúsculas. Devuelve `true` si se ha encontrado la cabecera, en caso contrario `false`
 
 ```php
 <?php
@@ -525,11 +525,11 @@ echo $request->hasHeader('content-type'); // true
 ```
 
 ## With
-The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
+El objeto Request es inmutable. Sin embargo, hay un número de métodos que te permiten inyectar data en él. El objeto devuelto es un clon del original.
 
 ### `withAddedHeader()`
 
-Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
+Devuelve una instancia con una cabecera adicional añadida con el valor dado. Se mantendrán los valores existentes para la cabecera especificada. El o los nuevos valores serán añadidos a la lista existente. Si la cabecera no existía previamente, será añadida. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) para nombres de cabecera o valores inválidos. Los valores de la cabecera pueden ser una cadena o un vector de cadenas.
 
 ```php
 <?php
@@ -583,7 +583,7 @@ var_dump(
 
 ### `withAttribute()`
 
-Returns an instance with the specified derived request attribute. This method allows setting a single derived request attribute as described in `getAttributes()`.
+Devuelve una instancia con el atributo especificado de la petición derivada. Este método permite establecer un único atributo de la petición derivada como se describe en `getAttributes()`.
 
 ```php
 <?php
@@ -608,7 +608,7 @@ var_dump(
 
 ### `withBody()`
 
-Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
+Devuelve una instancia con el cuerpo del mensaje especificado que implementa `StreamInterface`. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) cuando el cuerpo no es válido.
 
 ```php
 <?php
@@ -628,7 +628,7 @@ echo $clone->getBody(); // '/assets/stream/mit.txt'
 
 ### `withCookieParams()`
 
-Returns an instance with the specified cookies. The data is not required to come from the `$_COOKIE` superglobal, but it must be compatible with the structure of `$_COOKIE`. Typically, this data will be injected at instantiation. This method does not update the related `Cookie` header of the request instance, nor related values in the server parameters.
+Devuelve una instancia con las cookies especificadas. No es necesario que los datos vengan de la variable superglobal `$_COOKIE` superglobal, pero debe ser compatible con la estructura de `$_COOKIE`. Normalmente, estos datos serán inyectado en la instanciación. Este método no actualiza la cabecera `Cookie` relacionada con la instancia de la petición, ni los valores relacionados con los parámetros del servidor.
 
 ```php
 <?php
@@ -654,7 +654,7 @@ var_dump(
 
 ### `withHeader()`
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
+Devuelve una instancia con el valor proporcionado sustituyendo la cabecera especificada. Mientras que el nombre de las cabeceras no es sensible a mayúsculas y minúsculas, esta función preservará las mayúsculas de la cabecera devueltas por `getHeaders()`. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) para nombre de cabecera o valores inválidos.
 
 ```php
 <?php
@@ -700,7 +700,7 @@ var_dump(
 
 ### `withMethod()`
 
-Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid HTTP methods.
+Devuelve una instancia con el método HTTP proporcionado como cadena. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) para métodos HTTP inválidos.
 
 ```php
 <?php
@@ -718,9 +718,9 @@ echo $clone->getMethod(); // GET
 
 ### `withParsedBody()`
 
-Returns an instance with the specified body parameters. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method should be used only to inject the contents of `$_POST`. The data is not required to come from `$_POST`, but will be the results of unserializing the request body content. Unserialization/parsing returns structured data, and, as such, this method only accepts arrays or objects, or a null value if nothing was available to parse.
+Devuelve una instancia con los parámetros del cuerpo especificados. Si la petición `Content-Type` es `application/x-www-form-urlencoded` o `multipart/form-data`, y el método de la petición es `POST`, este método debería usarse únicamente para inyectar el contenido de `$_POST`. No es necesario que los datos vengan de `$_POST`, sino que serán el resultado de deserializar el contenido del cuerpo de la petición. Deserializado/análisis devuelve datos estructurados, y, como tal, éste método sólo acepta vectores u objetos, o un valor nulo si no hay nada disponible para analizar.
 
-As an example, if content negotiation determines that the request data is a JSON payload, this method could be used to create a request instance with the unserialized parameters. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for unsupported argument types.
+Por ejemplo, si la negociación del contenido detecta que los datos de la petición están en formato JSON, se podría usar este método para crear una instancia de la petición con los parámetros deserializados. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) para tipos de argumento no soportados.
 
 ```php
 <?php
@@ -740,7 +740,7 @@ echo $clone->getParsedBody();
 
 ### `withProtocolVersion()`
 
-Returns an instance with the specified HTTP protocol version (as string).
+Devuelve una instancia con la versión del protocolo HTTP especificado (como cadena).
 
 ```php
 <?php
@@ -758,7 +758,7 @@ echo $clone->getProtocolVersion(); // '2.0'
 
 ### `withQueryParams()`
 
-Returns an instance with the specified query string arguments. These values remain immutable over the course of the incoming request. You can inject these parameters during instantiation, such as from PHP's `$_GET` superglobal, or they can be derived from some other value such as the URI. In cases where the arguments are parsed from the URI, the data is compatible with what PHP's [parse_str()](https://www.php.net/manual/en/function.parse-str.php) would return for purposes of how duplicate query parameters are handled, and how nested sets are handled.
+Devuelve una instancia con los argumentos de la cadena de consulta especificados. Estos valores permanecen inmutables durante el trayecto de la petición entrante. Puede inyectar estos parámetros durante la instanciación, tanto desde la variable superglobal `$_GET`, como obtenido de algún otro valor como de la URI. En los casos donde los argumentos son analizados desde la URI, los datos son compatibles con lo que la función de PHP [parse_str()](https://www.php.net/manual/en/function.parse-str.php) podría devolver para fijarse en cómo se manejan los parámetros de consulta duplicados, y como se manejan los conjuntos anidados.
 
 ```php
 <?php
@@ -784,7 +784,7 @@ var_dump(
 
 ### `withRequestTarget()`
 
-Returns an instance with the specific request-target.
+Devuelve una instancia con la petición-destino especificada.
 
 ```php
 <?php
@@ -802,7 +802,7 @@ echo $clone->getRequestTarget(); // '/test'
 
 ## `withUploadedFiles()`
 
-Creates a new instance with the specified uploaded files. It accepts an array tree of `UploadedFileInterface` instances. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) if an invalid structure is provided.
+Crea una nueva instancia con los ficheros subidos especificados. Acepta un árbol de vectores de instancias `UploadedFileInterface`. Lanza [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) si se indica una estructura inválida.
 
 ```php
 <?php
@@ -848,13 +848,13 @@ var_dump(
 
 ### `withUri()`
 
-Returns an instance with the provided `UriInterface` URI. This method updates the `Host` header of the returned request by default if the URI contains a host component. If the URI does not contain a host component, any pre-existing Host header will be carried over to the returned request.
+Devuelve una instancia con URI `UriInterface` proporcionada. Este método actualiza la cabecera `Host` de la petición devuelta por defecto si la URI contiene el componente servidor. Si la URI no contiene el componente servidor, cualquier cabecera `Host` preexistente será transferida a la petición devuelta.
 
-You can opt-in to preserving the original state of the Host header by setting `$preserveHost` to `true`. When `$preserveHost` is set to `true`, this method interacts with the Host header in the following ways:
+Puedes optar por preservar el estado original de la cabecera `Host` estableciendo `$preserveHost` a `true`. Cuando `$preserveHost` se establece a `true`, este método interactúa con la cabecera `Host` de la siguiente manera:
 
-- If the Host header is missing or empty, and the new URI contains a host component, this method will update the `Host` header in the returned request.
-- If the Host header is missing or empty, and the new URI does not contain a host component, this method will not update the `Host` header in the returned request.
-- If a Host header is present and non-empty, this method will not update the `Host` header in the returned request.
+- Si la cabecera `Host` no está o está vacía, y la nueva URI contiene un componente servidor, éste método actualizará la cabecera `Host` en la petición devuelta.
+- Si la cabecera `Host` no está o está vacía, y la nueva URI no contiene un componente servidor, este método no actualizará la cabecera `Host` en la petición devuelta.
+- Si la cabecera `Host` está presente y no está vacía, este método no actualizará la cabecera `Host` en la petición devuelta.
 
 ```php
 <?php
@@ -872,7 +872,7 @@ echo $clone->getRequestTarget(); // 'https://phalcon.io'
 
 ## `withoutAttribute()`
 
-Returns an instance that removes the specified derived request attribute. This method allows removing a single derived request attribute as described in `getAttributes()`.
+Devuelve una instancia que elimina el atributo especificado de la petición derivada. Este método permite quitar un único atributo de la petición derivada como se describe en `getAttributes()`.
 
 ```php
 <?php
@@ -909,7 +909,7 @@ var_dump(
 
 ### `withoutHeader()`
 
-Return an instance without the specified header.
+Devuelve una instancia sin la cabecera especificada.
 
 ```php
 <?php
