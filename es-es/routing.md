@@ -316,7 +316,7 @@ public function setDefaultAction(
 ): RouterInterface
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultController(
@@ -324,7 +324,7 @@ public function setDefaultController(
 ): RouterInterface
 ```
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 ```php
 public function setDefaultModule(
