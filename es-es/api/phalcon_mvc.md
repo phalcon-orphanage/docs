@@ -417,7 +417,7 @@ Sets the default controller suffix
 public function setDefaultController( string $controllerName );
 ```
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 ```php
 protected function handleException( \Exception $exception );
@@ -487,7 +487,7 @@ Sets the default controller suffix
 public function setDefaultController( string $controllerName );
 ```
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 <h1 id="mvc-entityinterface">Interface Phalcon\Mvc\EntityInterface</h1>
 
@@ -9097,13 +9097,13 @@ Set whether router must remove the extra slashes in the handled routes
 public function setDefaultAction( string $actionName ): RouterInterface;
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultController( string $controllerName ): RouterInterface;
 ```
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 ```php
 public function setDefaultModule( string $moduleName ): RouterInterface;
@@ -10235,13 +10235,13 @@ Mounts a group of routes in the router
 public function setDefaultAction( string $actionName ): RouterInterface;
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultController( string $controllerName ): RouterInterface;
 ```
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 ```php
 public function setDefaultModule( string $moduleName ): RouterInterface;
