@@ -420,7 +420,7 @@ Handles routing information received from command-line arguments
 public function setDefaultAction( string $actionName );
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultModule( string $moduleName );
@@ -432,7 +432,7 @@ Sets the name of the default module
 public function setDefaultTask( string $taskName ): void;
 ```
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 ```php
 public function setDefaults( array $defaults ): Router;
@@ -818,7 +818,7 @@ Handles routing information received from the rewrite engine
 public function setDefaultAction( string $actionName ): void;
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultModule( string $moduleName ): void;
