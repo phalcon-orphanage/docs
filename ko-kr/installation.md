@@ -239,15 +239,15 @@ yum install php72-php-phalcon4
 
 #### FreeBSD
 
-FreeBSD 용의 포팅버전이 있습니다. 설치하시려면 아래의 명령어를 입력해 주세요.
+Binary package (pkg) and compile myself from source (ports) are available for FreeBSD. 설치하시려면 아래의 명령어를 입력해 주세요.
 
-##### pkg_add
+##### pkg
 
 ```bash
-pkg_add -r phalcon4
+pkg install php74-phalcon4
 ```
 
-##### 소스
+##### ports
 
 ```bash
 cd /usr/ports/www/phalcon4
