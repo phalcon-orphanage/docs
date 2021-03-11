@@ -126,7 +126,7 @@ public function callActionMethod( mixed $handler, string $actionMethod, array $p
 ```
 
 ```php
-public function dispatch(): object | bool;
+public function dispatch(): mixed | bool;
 ```
 
 Process the results of the router by calling into the appropriate controller action(s) including any routing data or injected parameters.
@@ -152,19 +152,19 @@ $this->dispatcher->forward(
 public function getActionName(): string;
 ```
 
-Gets the latest dispatched action name
+Obtiene el nombre de la última acción despachada
 
 ```php
 public function getActionSuffix(): string;
 ```
 
-Gets the default action suffix
+Obtiene el sufijo de acción por defecto
 
 ```php
 public function getActiveMethod(): string;
 ```
 
-Returns the current method to be/executed in the dispatcher
+Devuelve el método actual a ser ejecutado en el despachador
 
 ```php
 public function getBoundModels(): array;
@@ -187,7 +187,7 @@ class UserController extends Controller
 public function getDefaultNamespace(): string;
 ```
 
-Returns the default namespace
+Devuelve el espacio de nombres por defecto
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -199,13 +199,13 @@ Devuelve el administrador de eventos interno
 public function getHandlerClass(): string;
 ```
 
-Possible class name that will be located to dispatch the request
+Posible nombre de clase que será localizada para despachar la petición
 
 ```php
 public function getHandlerSuffix(): string;
 ```
 
-Gets the default handler suffix
+Obtiene el sufijo del manejador por defecto
 
 ```php
 public function getModelBinder(): BinderInterface | null;
@@ -217,13 +217,13 @@ Gets model binder
 public function getModuleName(): string;
 ```
 
-Gets the module where the controller class is
+Obtiene el módulo donde está la clase del controlador
 
 ```php
 public function getNamespaceName(): string;
 ```
 
-Gets a namespace to be prepended to the current handler name
+Obtiene el espacio de nombres a anteponer al nombre del manejador actual
 
 ```php
 public function getParam( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
@@ -235,19 +235,19 @@ Gets a param by its name or numeric index
 public function getParams(): array;
 ```
 
-Gets action params
+Obtiene los parámetros de la acción
 
 ```php
 public function getReturnedValue(): mixed;
 ```
 
-Returns value returned by the latest dispatched action
+Devuelve el valor devuelto por la última acción despachada
 
 ```php
 public function hasParam( mixed $param ): bool;
 ```
 
-Check if a param exists
+Comprueba si un parámetro existe
 
 ```php
 public function isFinished(): bool;
@@ -259,25 +259,25 @@ Checks if the dispatch loop is finished or has more pendent controllers/tasks to
 public function setActionName( string $actionName ): void;
 ```
 
-Sets the action name to be dispatched
+Establece el nombre de la acción a despachar
 
 ```php
 public function setActionSuffix( string $actionSuffix ): void;
 ```
 
-Sets the default action suffix
+Establece el sufijo de acción por defecto
 
 ```php
 public function setDefaultAction( string $actionName ): void;
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultNamespace( string $namespaceName ): void;
 ```
 
-Sets the default namespace
+Establece el espacio de nombres por defecto
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
@@ -289,13 +289,13 @@ Establece el administrador de eventos
 public function setHandlerSuffix( string $handlerSuffix ): void;
 ```
 
-Sets the default suffix for the handler
+Establece el sufijo por defecto del manejador
 
 ```php
 public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): DispatcherInterface;
 ```
 
-Enable model binding during dispatch
+Habilita el enlazado de modelos durante el despacho
 
 ```php
 $di->set(
@@ -317,37 +317,37 @@ $di->set(
 public function setModuleName( string $moduleName ): void;
 ```
 
-Sets the module where the controller is (only informative)
+Establece el módulo donde está el controlador (sólo informativo)
 
 ```php
 public function setNamespaceName( string $namespaceName ): void;
 ```
 
-Sets the namespace where the controller class is
+Establece el espacio de nombres donde está la clase controlador
 
 ```php
 public function setParam( mixed $param, mixed $value ): void;
 ```
 
-Set a param by its name or numeric index
+Establece un parámetro por su nombre o índice numérico
 
 ```php
 public function setParams( array $params ): void;
 ```
 
-Sets action params to be dispatched
+Establece los parámetros de la acción a despachar
 
 ```php
 public function setReturnedValue( mixed $value ): void;
 ```
 
-Sets the latest returned value by an action manually
+Establece manualmente el último valor devuelto por una acción
 
 ```php
 public function wasForwarded(): bool;
 ```
 
-Check if the current executed action was forwarded by another one
+Comprueba si la acción ejecutada actual fue reenviada desde otra
 
 ```php
 protected function resolveEmptyProperties(): void;
@@ -370,7 +370,7 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 ## Métodos
 
 ```php
-public function dispatch(): object | bool;
+public function dispatch(): mixed | bool;
 ```
 
 Dispatches a handle action taking into account the routing parameters
@@ -391,13 +391,13 @@ Gets last dispatched action name
 public function getActionSuffix(): string;
 ```
 
-Gets the default action suffix
+Obtiene el sufijo de acción por defecto
 
 ```php
 public function getHandlerSuffix(): string;
 ```
 
-Gets the default handler suffix
+Obtiene el sufijo del manejador por defecto
 
 ```php
 public function getParam( mixed $param, mixed $filters = null ): mixed;
@@ -409,19 +409,19 @@ Gets a param by its name or numeric index
 public function getParams(): array;
 ```
 
-Gets action params
+Obtiene los parámetros de la acción
 
 ```php
 public function getReturnedValue(): mixed;
 ```
 
-Returns value returned by the latest dispatched action
+Devuelve el valor devuelto por la última acción despachada
 
 ```php
 public function hasParam( mixed $param ): bool;
 ```
 
-Check if a param exists
+Comprueba si un parámetro existe
 
 ```php
 public function isFinished(): bool;
@@ -433,31 +433,31 @@ Checks if the dispatch loop is finished or has more pendent controllers/tasks to
 public function setActionName( string $actionName ): void;
 ```
 
-Sets the action name to be dispatched
+Establece el nombre de la acción a despachar
 
 ```php
 public function setActionSuffix( string $actionSuffix ): void;
 ```
 
-Sets the default action suffix
+Establece el sufijo de acción por defecto
 
 ```php
 public function setDefaultAction( string $actionName ): void;
 ```
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 ```php
 public function setDefaultNamespace( string $defaultNamespace ): void;
 ```
 
-Sets the default namespace
+Establece el espacio de nombres por defecto
 
 ```php
 public function setHandlerSuffix( string $handlerSuffix ): void;
 ```
 
-Sets the default suffix for the handler
+Establece el sufijo por defecto del manejador
 
 ```php
 public function setModuleName( string $moduleName ): void;
@@ -475,13 +475,13 @@ Sets the namespace which the controller belongs to
 public function setParam( mixed $param, mixed $value ): void;
 ```
 
-Set a param by its name or numeric index
+Establece un parámetro por su nombre o índice numérico
 
 ```php
 public function setParams( array $params ): void;
 ```
 
-Sets action params to be dispatched
+Establece los parámetros de la acción a despachar
 
 <h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
 

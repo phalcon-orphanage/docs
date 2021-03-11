@@ -21,7 +21,7 @@ title: 'Phalcon\Acl'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
-| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
+| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Enum, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
 Adapter for Phalcon\Acl adapters
 
@@ -31,7 +31,7 @@ Adapter for Phalcon\Acl adapters
 /**
  * Active access which the list is checking if some role can access it
  *
- * @var string
+ * @var string|null
  */
 protected activeAccess;
 
@@ -46,28 +46,28 @@ protected accessGranted = false;
  * Role which the list is checking if it's allowed to certain
  * component/access
  *
- * @var string
+ * @var string|null
  */
 protected activeRole;
 
 /**
  * Component which the list is checking if some role can access it
  *
- * @var string
+ * @var string|null
  */
 protected activeComponent;
 
 /**
  * Default access
  *
- * @var bool
+ * @var int
  */
-protected defaultAccess = false;
+protected defaultAccess;
 
 /**
  * Events manager
  *
- * @var mixed
+ * @var ManagerInterface|null
  */
 protected eventsManager;
 
@@ -76,15 +76,15 @@ protected eventsManager;
 ## Методы
 
 ```php
-public function getActiveAccess(): string
+public function getActiveAccess(): string|null
 ```
 
 ```php
-public function getActiveComponent(): string
+public function getActiveComponent(): string|null
 ```
 
 ```php
-public function getActiveRole(): string
+public function getActiveRole(): string|null
 ```
 
 ```php
@@ -166,19 +166,19 @@ public function dropComponentAccess( string $componentName, mixed $accessList ):
 Removes an access from a component
 
 ```php
-public function getActiveAccess(): string;
+public function getActiveAccess(): null | string;
 ```
 
 Returns the access which the list is checking if some role can access it
 
 ```php
-public function getActiveComponent(): string;
+public function getActiveComponent(): null | string;
 ```
 
 Returns the component which the list is checking if some role can access it
 
 ```php
-public function getActiveRole(): string;
+public function getActiveRole(): null | string;
 ```
 
 Returns the role which the list is checking if it's allowed to certain component/access

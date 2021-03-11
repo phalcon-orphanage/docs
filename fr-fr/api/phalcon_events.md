@@ -294,7 +294,9 @@ Removes all events from the EventsManager
 public function enablePriorities( bool $enablePriorities ): void;
 ```
 
-Set if priorities are enabled in the EventsManager
+Set if priorities are enabled in the EventsManager.
+
+A priority queue of events is a data structure similar to a regular queue of events: we can also put and extract elements from it. The difference is that each element in a priority queue is associated with a value called priority. This value is used to order elements of a queue: elements with higher priority are retrieved before the elements with lower priority.
 
 ```php
 public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
@@ -335,6 +337,10 @@ public function isCollecting(): bool;
 ```
 
 Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
+
+```php
+public function isValidHandler( mixed $handler ): bool;
+```
 
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 

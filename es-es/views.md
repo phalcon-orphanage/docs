@@ -544,7 +544,7 @@ public function toString(
 
 Renders the view and returns it as a string
 
-## Activation
+## Activación
 
 You must register the view component in your DI container to enable views in your application.
 
@@ -1529,13 +1529,13 @@ In the above example, we set up the engine and then echo a rendered template on 
 
 [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are able to send events to an [Events Manager](events) if it is present. Events are triggered using the type `view`. If an event returns `false` it can stop the active operation. Son soportados los siguientes eventos:
 
-| Nombre de evento   | Disparado                           | Can stop |
-| ------------------ | ----------------------------------- |:--------:|
-| `afterRender`      | After completing the render process |    No    |
-| `afterRenderView`  | After rendering an existing view    |    No    |
-| `beforeRender`     | Before starting the render process  |    Si    |
-| `beforeRenderView` | Before rendering an existing view   |    Si    |
-| `notFoundView`     | When a view was not found           |    No    |
+| Nombre de evento   | Disparado                           | Puede detenerse |
+| ------------------ | ----------------------------------- |:---------------:|
+| `afterRender`      | After completing the render process |       No        |
+| `afterRenderView`  | After rendering an existing view    |       No        |
+| `beforeRender`     | Before starting the render process  |       Si        |
+| `beforeRenderView` | Before rendering an existing view   |       Si        |
+| `notFoundView`     | When a view was not found           |       No        |
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 

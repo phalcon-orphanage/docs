@@ -169,7 +169,7 @@ sort(array $value): array
 
 Ordena una matriz
 
-## Activation
+## Activación
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -301,7 +301,7 @@ The following options are available in Volt:
 | `always`     | `false`        | Whether templates must be compiled in each request or when they change                                                   |
 | `extension`  | `.php`         | An additional extension appended to the compiled PHP file                                                                |
 | `path`       | `./`           | A writeable path where the compiled PHP templates will be placed                                                         |
-| `separator`  | `%%`           | Replace directory separators `/` and `` with this separator in order to create a single file in the compiled directory |
+| `separator`  | `%%`           | Replace directory separators `/` and `\` with this separator in order to create a single file in the compiled directory |
 | `prefix`     | `null`         | Prepend a prefix to the templates in the compilation path                                                                |
 | `stat`       | `true`         | Whether Phalcon must check if there are differences between the template file and its compiled path                      |
 

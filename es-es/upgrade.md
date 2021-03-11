@@ -1054,7 +1054,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Cache\Frontend\Output      | Eliminado    |                                                     |
 | Phalcon\Cache\Multiple              | Eliminado    |                                                     |
 
-### Coleccion
+### Colección
 
 | 3.4.x | Estado | 4.0.x                          |
 | ----- | ------ | ------------------------------ |

@@ -66,7 +66,7 @@ INVO uses the standard route that is built-in with the [Router](routing) compone
 
 The custom route `/session/register` executes the controller `SessionController` and its action `registerAction`.
 
-## Configuration
+## Configuración
 
 INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
 

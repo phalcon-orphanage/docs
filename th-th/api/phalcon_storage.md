@@ -423,7 +423,7 @@ Stores data in the adapter
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Memory.zep)
 
-| Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
 Memory adapter
 
@@ -431,7 +431,7 @@ Memory adapter
 
 ```php
 /**
- * @var Collection
+ * @var Collection|CollectionInterface
  */
 protected data;
 

@@ -199,7 +199,7 @@ Returns the available adapters
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/CacheFactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Helper\Arr |
+| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr |
 
 Creates a new Cache class
 

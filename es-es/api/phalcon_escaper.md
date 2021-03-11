@@ -42,15 +42,26 @@ protected doubleEncode = true;
  */
 protected encoding = utf-8;
 
-//
-protected htmlEscapeMap;
-
-//
-protected htmlQuoteType = 3;
+/**
+ * @var int
+ */
+protected flags = 3;
 
 ```
 
 ## Métodos
+
+```php
+public function attributes( string $attribute = null ): string;
+```
+
+Escapes a HTML attribute string
+
+```php
+public function css( string $input ): string;
+```
+
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 ```php
 final public function detectEncoding( string $str ): string | null;
@@ -92,7 +103,25 @@ Escapes a URL. Internally uses rawurlencode
 public function getEncoding(): string;
 ```
 
-Returns the internal encoding used by the escaper
+Devuelve la codificación interna usada por el escapador
+
+```php
+public function getFlags(): int;
+```
+
+Returns the current flags for htmlspecialchars
+
+```php
+public function html( string $input = null ): string;
+```
+
+Escapes a HTML string. Internally uses htmlspecialchars
+
+```php
+public function js( string $input ): string;
+```
+
+Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 ```php
 final public function normalizeEncoding( string $str ): string;
@@ -114,14 +143,24 @@ $escaper->setDoubleEncode(false);
 public function setEncoding( string $encoding ): void;
 ```
 
-Sets the encoding to be used by the escaper
+Configura la codificación a ser usada por el escapador
 
 ```php
 $escaper->setEncoding("utf-8");
 ```
 
 ```php
-public function setHtmlQuoteType( int $quoteType ): void;
+public function setFlags( int $flags ): Escaper;
+```
+
+Sets the HTML quoting type for htmlspecialchars
+
+```php
+$escaper->setFlags(ENT_XHTML);
+```
+
+```php
+public function setHtmlQuoteType( int $flags ): void;
 ```
 
 Sets the HTML quoting type for htmlspecialchars
@@ -129,6 +168,12 @@ Sets the HTML quoting type for htmlspecialchars
 ```php
 $escaper->setHtmlQuoteType(ENT_XHTML);
 ```
+
+```php
+public function url( string $url ): string;
+```
+
+Escapes a URL. Internally uses rawurlencode
 
 <h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
@@ -174,13 +219,13 @@ Escapes a URL. Internally uses rawurlencode
 public function getEncoding(): string;
 ```
 
-Returns the internal encoding used by the escaper
+Devuelve la codificación interna usada por el escapador
 
 ```php
 public function setEncoding( string $encoding ): void;
 ```
 
-Sets the encoding to be used by the escaper
+Configura la codificación a ser usada por el escapador
 
 ```php
 public function setHtmlQuoteType( int $quoteType ): void;

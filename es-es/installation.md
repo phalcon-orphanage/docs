@@ -12,7 +12,7 @@ keywords: 'instalación, instalación de Phalcon'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Requerimentos
+## Requerimientos
 
 ### PHP 7.2
 
@@ -20,7 +20,7 @@ Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 ha sido publicado hace 2 
 
 ### PSR
 
-Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este repositorio de GitHub](https://github.com/jbboehr/php-psr). Las instrucciones de instalación están disponibles en el `README` del repositorio. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
+Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este](https://github.com/jbboehr/php-psr) repositorio de GitHub. Las instrucciones de instalación están disponibles en el `README` del repositorio. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitará añadir esta línea:
 
 ```ini
 extension=psr.so
@@ -223,7 +223,7 @@ sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### Additional RPMs
+##### RPMs Adicionales
 
 **Remi**
 
@@ -359,7 +359,7 @@ Las DLL disponibles son:
 |     x86      |   7.x   | Thread safe           |
 |     x86      |   7.x   | Non Thread safe (NTS) |
 
-Editar el archivo `php.ini` y luego añadir al final:
+Editar el archivo `php.ini` y añadir al final:
 
 ```ini
 extension=php_phalcon.dll
@@ -371,16 +371,16 @@ Reinicie su servidor Web.
 
 Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
 
-#### Requerimentos
+#### Requerimientos
 
 * Recursos de desarrollo de PHP 7.2.x/7.3.x
 * Compilador GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-#### Compilation
+#### Compilación
 
-Descarga la última `zephir.phar` desde [aquí](https://github.com/phalcon/zephir/releases). Añada a una carpeta a la que puede acceder su sistema.
+Descarga el último `zephir.phar` desde [aquí](https://github.com/phalcon/zephir/releases). Añada a una carpeta a la que pueda acceder su sistema.
 
 Clonar el repositorio
 

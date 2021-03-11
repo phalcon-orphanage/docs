@@ -6,6 +6,7 @@ title: 'Phalcon\Helper'
 ---
 
 * [Phalcon\Helper\Arr](#helper-arr)
+* [Phalcon\Helper\Base64](#helper-base64)
 * [Phalcon\Helper\Exception](#helper-exception)
 * [Phalcon\Helper\Fs](#helper-fs)
 * [Phalcon\Helper\Json](#helper-json)
@@ -21,6 +22,12 @@ title: 'Phalcon\Helper'
 This class offers quick array functions throughout the framework
 
 ## Méthodes
+
+```php
+final public static function blackList( array $collection, array $blackList ): array;
+```
+
+Black list filter by key: exclude elements of an array by the keys obtained from the elements of a blacklist
 
 ```php
 final public static function chunk( array $collection, int $size, bool $preserveKeys = bool ): array;
@@ -68,7 +75,7 @@ Groups the elements of an array based on the passed callable
 final public static function has( array $collection, mixed $index ): bool;
 ```
 
-Helper method to get an array element or a default
+Determines whether an element is present in the array.
 
 ```php
 final public static function isUnique( array $collection ): bool;
@@ -147,6 +154,30 @@ final public static function whiteList( array $collection, array $whiteList ): a
 ```
 
 White list filter by key: obtain elements of an array filtering by the keys obtained from the elements of a whitelist
+
+<h1 id="helper-base64">Class Phalcon\Helper\Base64</h1>
+
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Base64.zep)
+
+| Namespace | Phalcon\Helper |
+
+Phalcon\Helper\Base64
+
+This class offers quick string base64 functions
+
+## Méthodes
+
+```php
+final public static function decodeUrl( string $input ): string;
+```
+
+Decode a Base64 Url string to a json string
+
+```php
+final public static function encodeUrl( string $input ): string;
+```
+
+Encode a json string in Base64 Url format.
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
@@ -384,6 +415,12 @@ final public static function firstBetween( string $text, string $start, string $
 ```
 
 Returns the first string there is between the strings from the parameter start and end.
+
+```php
+final public static function friendly( string $text, string $separator = string, bool $lowercase = bool, mixed $replace = null ): string;
+```
+
+Changes a text to a URL friendly one
 
 ```php
 final public static function humanize( string $text ): string;

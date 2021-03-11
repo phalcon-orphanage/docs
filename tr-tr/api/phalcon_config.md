@@ -12,13 +12,14 @@ title: 'Phalcon\Config'
 * [Phalcon\Config\Adapter\Php](#config-adapter-php)
 * [Phalcon\Config\Adapter\Yaml](#config-adapter-yaml)
 * [Phalcon\Config\ConfigFactory](#config-configfactory)
+* [Phalcon\Config\ConfigInterface](#config-configinterface)
 * [Phalcon\Config\Exception](#config-exception)
 
 <h1 id="config">Class Phalcon\Config</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Collection, Phalcon\Config\Exception | | Extends | Collection |
+| Namespace | Phalcon | | Uses | Phalcon\Collection, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception | | Extends | Collection | | Implements | ConfigInterface |
 
 `Phalcon\Config` is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
@@ -66,7 +67,7 @@ public function getPathDelimiter(): string;
 Gets the default path delimiter
 
 ```php
-public function merge( mixed $toMerge ): Config;
+public function merge( mixed $toMerge ): ConfigInterface;
 ```
 
 Merges a configuration into the current one
@@ -94,7 +95,7 @@ echo $config->path("unknown.path", "default", ".");
 ```
 
 ```php
-public function setPathDelimiter( string $delimiter = null ): Config;
+public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 ```
 
 Sets the default path delimiter
@@ -127,7 +128,7 @@ Sets the collection data
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
 
-| Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory | | Extends | Config |
+| Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\ConfigFactory, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception, Phalcon\Factory\Exception | | Extends | Config |
 
 Reads multiple files (or arrays) and merges them all together.
 
@@ -386,7 +387,7 @@ Phalcon\Config\Adapter\Yaml constructor
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
 
-| Namespace | Phalcon\Config | | Uses | Phalcon\Config, Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Config | | Uses | Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
 
@@ -410,13 +411,13 @@ public function __construct( array $services = [] );
 ConfigFactory constructor.
 
 ```php
-public function load( mixed $config ): object;
+public function load( mixed $config ): ConfigInterface;
 ```
 
 Load a config to create a new instance
 
 ```php
-public function newInstance( string $name, string $fileName, mixed $params = null ): object;
+public function newInstance( string $name, string $fileName, mixed $params = null ): ConfigInterface;
 ```
 
 Returns a new Config instance
@@ -426,6 +427,34 @@ protected function getAdapters(): array;
 ```
 
 Returns the adapters for the factory
+
+<h1 id="config-configinterface">Interface Phalcon\Config\ConfigInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigInterface.zep)
+
+| Namespace | Phalcon\Config | | Uses | Phalcon\Collection\CollectionInterface | | Extends | CollectionInterface |
+
+Phalcon\Config\ConfigInterface
+
+Interface for Phalcon\Config class
+
+## Methods
+
+```php
+public function getPathDelimiter(): string;
+```
+
+```php
+public function merge( mixed $toMerge ): ConfigInterface;
+```
+
+```php
+public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
+```
+
+```php
+public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
+```
 
 <h1 id="config-exception">Class Phalcon\Config\Exception</h1>
 

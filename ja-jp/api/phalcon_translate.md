@@ -440,28 +440,13 @@ Replaces placeholders by the values passed
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/InterpolatorFactory.zep)
 
-| Namespace | Phalcon\Translate | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends | AbstractFactory |
+| Namespace | Phalcon\Translate | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Interpolator\InterpolatorInterface | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
 (c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
-
-## Properties
-
-```php
-/**
- * @var array
- */
-private mapper;
-
-/**
- * @var array
- */
-private services;
-
-```
 
 ## メソッド
 
@@ -472,7 +457,7 @@ public function __construct( array $services = [] );
 AdapterFactory コンストラクタ
 
 ```php
-public function newInstance( string $name ): AdapterInterface;
+public function newInstance( string $name ): InterpolatorInterface;
 ```
 
 このアダプターの新しいインスタンスを作成

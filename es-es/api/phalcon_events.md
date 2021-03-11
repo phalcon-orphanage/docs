@@ -294,7 +294,9 @@ Removes all events from the EventsManager
 public function enablePriorities( bool $enablePriorities ): void;
 ```
 
-Set if priorities are enabled in the EventsManager
+Set if priorities are enabled in the EventsManager.
+
+A priority queue of events is a data structure similar to a regular queue of events: we can also put and extract elements from it. The difference is that each element in a priority queue is associated with a value called priority. This value is used to order elements of a queue: elements with higher priority are retrieved before the elements with lower priority.
 
 ```php
 public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
@@ -316,7 +318,7 @@ Internal handler to call a queue of events
 public function getListeners( string $type ): array;
 ```
 
-Returns all the attached listeners of a certain type
+Devuelve todos los oyentes adjuntos de cierto tipo
 
 ```php
 public function getResponses(): array;
@@ -328,13 +330,17 @@ Returns all the responses returned by every handler executed by the last 'fire' 
 public function hasListeners( string $type ): bool;
 ```
 
-Check whether certain type of event has listeners
+Comprueba si cierto tipo de evento tiene oyentes
 
 ```php
 public function isCollecting(): bool;
 ```
 
 Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
+
+```php
+public function isValidHandler( mixed $handler ): bool;
+```
 
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
@@ -376,10 +382,10 @@ Fires an event in the events manager causing the active listeners to be notified
 public function getListeners( string $type ): array;
 ```
 
-Returns all the attached listeners of a certain type
+Devuelve todos los oyentes adjuntos de cierto tipo
 
 ```php
 public function hasListeners( string $type ): bool;
 ```
 
-Check whether certain type of event has listeners
+Comprueba si cierto tipo de evento tiene oyentes

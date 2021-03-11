@@ -2,20 +2,20 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'HTTP Uploaded File (PSR-7)'
-keywords: 'psr-7, http, http uploaded file'
+title: 'Fichero Subido HTTP (PSR-7)'
+keywords: 'psr-7, http, fichero subido http'
 ---
 
-# HTTP Uploaded File (PSR-7)
+# Fichero Subido HTTP (PSR-7)
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) es una implementación de la interfaz de mensajería [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-The [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) is a value object class that stores information for the uploaded files to your application. making it easier to work with. There are several limitations when using just the `$_FILES` superglobal, which the [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) resolves. The [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) object allows you to retrieve all the uploaded files in a normalized structure, which each leaf is a [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) object.
+[Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) es un clase que almacena información sobre los ficheros subidos a tu aplicación. facilita el trabajo. Hay varias limitaciones cuando se usa únicamente la variable superglobal `$_FILES`, que resuelve [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile). El objeto [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) te permite obtener todos los ficheros subidos en una estructura normalizada, donde cada hoja es un objeto [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile).
 
 ```php
 <?php
@@ -32,7 +32,7 @@ $file = new UploadedFile(
 echo $file->getClientFilename(); // 'phalcon.txt'
 ```
 
-We are creating a new [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) using the memory stream, with size `0`, specifying that there was no upload error (`UPLOAD_ERR_OK`) and the name of the file is `phalcon.txt`. This information is available to us when working with the [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) object automatically.
+Estamos creando un nuevo [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) usando el flujo de memoria, con tamaño `0`, indicando que no hay ningún error de subida (`UPLOAD_ERR_OK`) y el nombre del fichero es `phalcon.txt`. Esta información está disponible automáticamente cuando trabajamos con el objeto [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest).
 
 ## Constructor
 
@@ -45,19 +45,19 @@ public function __construct(
     [, string clientMediaType = null ]]]] 
 )
 ```
-The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the stream, the size of the file, if any error occurred during the upload, the client file name as well as the client media type.
+El constructor acepta parámetros que permiten crear el objeto con ciertas propiedades rellenadas. Se puede definir el flujo, el tamaño del fichero, si ha habido algún error en la subida, el nombre del fichero así como el tipo de medio.
 
-- `stream` - A valid stream for the file (`StreamInterface`, `string`)
-- `size` - The size of the file
-- `error` - An upload error (see the `UPLOAD_ERR_*`PHP [constants](https://php.net/manual/en/features.file-upload.errors.php))
-- `clientFilename` - The name of the uploaded file from the client
-- `clientMediaType` - The media type of the uploaded file from the client
+- `stream` - Un flujo válido para el fichero (`StreamInterface`, `string`)
+- `size` - El tamaño del fichero
+- `error` - Un error de subida (ver las [constantes](https://php.net/manual/en/features.file-upload.errors.php) PHP `UPLOAD_ERR_*`)
+- `clientFilename` - El nombre del fichero subido desde el cliente
+- `clientMediaType` - El tipo de medio del fichero subido desde el cliente
 
 ## Getters
 
 ### `getClientFilename()`
 
-Returns the filename sent by the client. You should not trust the value returned by this method. The client could very well send a malicious filename with the intent to corrupt or hack your application. The value returned is the value stored in the `name` key in the `$_FILES` array.
+Devuelve el nombre del fichero enviado por el cliente. No debería confiar en el valor devuelto por este método. El cliente podría enviar perfectamente un nombre de fichero malicioso con la intención de corromper o hackear su aplicación. El valor devuelto es el valor almacenado en la clave `name` del vector `$_FILES`.
 
 ```php
 <?php
@@ -76,7 +76,7 @@ echo $file->getClientFilename(); // 'phalcon.txt'
 
 ### `getClientMediaType()`
 
-Returns the media type sent by the client. You should not trust the value returned by this method. The client could very well send a malicious filename with the intent to corrupt or hack your application. The value returned is the value stored in the `type` key in the `$_FILES` array.
+Devuelve el tipo de medio enviado por el cliente. No debería confiar en el valor devuelto por este método. El cliente podría enviar perfectamente un nombre de fichero malicioso con la intención de corromper o hackear su aplicación. El valor devuelto es el valor almacenado en la clave `type` del vector `$_FILES`.
 
 ```php
 <?php
@@ -96,7 +96,7 @@ echo $file->getClientMediaType(); // 'application/text'
 
 ### `getError()`
 
- Returns the error associated with the uploaded file. The value is PHP's `UPLOAD_ERR_*` [constants](https://php.net/manual/en/features.file-upload.errors.php). If the file was uploaded successfully, the method will return `UPLOAD_ERR_OK`. The value returned is the value stored in the `error` key in the `$_FILES` array.
+ Devuelve el error asociado al fichero subido. El valor es de alguna [constante](https://php.net/manual/en/features.file-upload.errors.php) PHP `UPLOAD_ERR_*`. Si el fichero se ha subido correctamente, el método devolverá `UPLOAD_ERR_OK`. El valor devuelto es el valor almacenado en la clave `error` del vector `$_FILES`.
 
 ```php
 <?php
@@ -116,7 +116,7 @@ echo $file->getError(); // UPLOAD_ERR_OK
 
 ### `getSize()`
 
-Returns the size of the uploaded file. The value returned is the value stored in the `size` key in the `$_FILES` array if available.
+Devuelve el tamaño del fichero subido. El valor devuelto es el valor almacenado en la clave `size` del vector `$_FILES` si está disponible.
 
 ```php
 <?php
@@ -135,9 +135,9 @@ echo $file->getSize(); // 1234
 
 ### `getStream()`
 
-Returns the stream representing the uploaded file. The method returns a `StreamInterface` instance. The purpose of this method is to allow utilizing native PHP stream functionality to manipulate the file upload, such as [stream_copy_to_stream()](https://www.php.net/manual/en/function.stream-copy-to-stream.php) (though the result will need to be decorated in a native PHP stream wrapper to work with such functions).
+Devuelve el flujo que representa al fichero subido. El método devuelve una instancia `StreamInterface`. El propósito de este método es permitir utilizar la funcionalidad nativa de flujo de PHP para manipular la carga de archivos, tales como [stream_copy_to_stream()](https://www.php.net/manual/en/function.stream-copy-to-stream.php) (aunque el resultado necesitará ser decorado en un contenedor nativo de flujo de PHP para trabajar con tales funciones).
 
-If the `moveTo()` method has been called previously, a [Phalcon\Http\Message\Exception\InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) exception will be thrown.
+Si el método `moveTo()` ha sido llamado anteriormente, se lanzará una excepción [Phalcon\Http\Message\Exception\InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception).
 
 ```php
 <?php
@@ -159,11 +159,11 @@ echo $file->getStream(); // '/assets/stream/mit.txt'
 ```
 
 ## `moveTo()`
-Moves the uploaded file to a new location. This method should be used as an alternative to [move_uploaded_file()](https://www.php.net/manual/en/function.move-uploaded-file.php). This method is guaranteed to work in both SAPI and non-SAPI environments.
+Mueve el fichero subido a una nueva ubicación. Este método debe utilizarse como alternativa a [move_uploaded_file()](https://www.php.net/manual/en/function.move-uploaded-file.php). Este método funciona tanto en entornos SAPI como no-SAPI.
 
-The parameter `$targetPath` can be an absolute or relative path. When calling this method, the original file or stream will be removed. As noted above, if this method is called more than once, any subsequent calls will raise a [Phalcon\Http\Message\Exception\InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) exception.
+El parámetro `$targetPath` puede ser una ruta absoluta o relativa. Cuando se llama a este método, el fichero o flujo original se elimina. Como se ha mencionado anteriormente, si este método se llama más de una vez, cualquier llamada posterior generará una excepción [Phalcon\Http\Message\Exception\InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception).
 
-The method performs necessary checks internally so that permissions are properly maintained. If you need to to move the file to a stream, you will need to use `getStream()`, since SAPI operations cannot guarantee writing stream destinations.
+El método realiza las comprobaciones necesarias internamente para que los permisos se mantengan correctamente. Si necesitas mover el fichero a un flujo, necesitas usar `getStream()`, ya que las operaciones SAPI no pueden garantizar la escritura en flujos de destino.
 
 ```php
 <?php

@@ -666,7 +666,7 @@ public function interpolate( string $message, mixed $context = null );
 
 Interpolates context values into the message placeholders
 
-@see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
+@see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message
 
 ```php
 public function setDateFormat( string $dateFormat )
@@ -779,7 +779,8 @@ Represents each item in a logging transaction
 ```php
 /**
  * Log Context
- * @return mixed
+ *      
+ * @var mixed
  */
 protected context;
 
@@ -822,7 +823,7 @@ public function __construct( string $message, string $name, int $type, int $time
 Phalcon\Logger\Item constructor @todo Remove the time or change the signature to an array
 
 ```php
-public function getContext()
+public function getContext(): mixed
 ```
 
 ```php
@@ -845,7 +846,7 @@ public function getType(): integer
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/LoggerFactory.zep)
 
-| Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger |
+| Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr, Phalcon\Logger |
 
 Phalcon\Logger\LoggerFactory
 

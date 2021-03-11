@@ -111,7 +111,7 @@ Returns the iterator of the class
 final public function has( string $element ): bool;
 ```
 
-Get the element from the collection
+Determines whether an element is present in the collection.
 
 ```php
 final public function init( array $data = [] ): void;

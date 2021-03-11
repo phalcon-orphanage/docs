@@ -7,6 +7,20 @@ title: 'Phalcon\Security'
 
 - [Phalcon\Security](#security)
 - [Phalcon\Security\Exception](#security-exception)
+- [Phalcon\Security\JWT\Builder](#security-jwt-builder)
+- [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException](#security-jwt-exceptions-unsupportedalgorithmexception)
+- [Phalcon\Security\JWT\Exceptions\ValidatorException](#security-jwt-exceptions-validatorexception)
+- [Phalcon\Security\JWT\Signer\AbstractSigner](#security-jwt-signer-abstractsigner)
+- [Phalcon\Security\JWT\Signer\Hmac](#security-jwt-signer-hmac)
+- [Phalcon\Security\JWT\Signer\None](#security-jwt-signer-none)
+- [Phalcon\Security\JWT\Signer\SignerInterface](#security-jwt-signer-signerinterface)
+- [Phalcon\Security\JWT\Token\AbstractItem](#security-jwt-token-abstractitem)
+- [Phalcon\Security\JWT\Token\Enum](#security-jwt-token-enum)
+- [Phalcon\Security\JWT\Token\Item](#security-jwt-token-item)
+- [Phalcon\Security\JWT\Token\Parser](#security-jwt-token-parser)
+- [Phalcon\Security\JWT\Token\Signature](#security-jwt-token-signature)
+- [Phalcon\Security\JWT\Token\Token](#security-jwt-token-token)
+- [Phalcon\Security\JWT\Validator](#security-jwt-validator)
 - [Phalcon\Security\Random](#security-random)
 
 <h1 id="security">Class Phalcon\Security</h1>
@@ -229,6 +243,577 @@ Phalcon\Security\Exception
 
 Exceptions thrown in Phalcon\Security will use this class
 
+<h1 id="security-jwt-builder">Class Phalcon\Security\JWT\Builder</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Builder.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT | | Uses | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Base64, Phalcon\Helper\Json, Phalcon\Security\JWT\Exceptions\ValidatorException, Phalcon\Security\JWT\Signer\SignerInterface, Phalcon\Security\JWT\Token\Enum, Phalcon\Security\JWT\Token\Item, Phalcon\Security\JWT\Token\Signature, Phalcon\Security\JWT\Token\Token |
+
+Class Builder
+
+@property CollectionInterface $claims @property CollectionInterface $jose @property string $passphrase @property SignerInterface $signer
+
+@link https://tools.ietf.org/html/rfc7519
+
+## Propiedades
+
+```php
+/**
+ * @var CollectionInterface
+ */
+private claims;
+
+/**
+ * @var CollectionInterface
+ */
+private jose;
+
+/**
+ * @var string
+ */
+private passphrase;
+
+/**
+ * @var SignerInterface
+ */
+private signer;
+
+```
+
+## Métodos
+
+```php
+public function __construct( SignerInterface $signer );
+```
+
+Builder constructor.
+
+```php
+public function getAudience();
+```
+
+```php
+public function getClaims(): array;
+```
+
+```php
+public function getContentType(): string | null;
+```
+
+```php
+public function getExpirationTime(): int | null;
+```
+
+```php
+public function getHeaders(): array;
+```
+
+```php
+public function getId(): string | null;
+```
+
+```php
+public function getIssuedAt(): int | null;
+```
+
+```php
+public function getIssuer(): string | null;
+```
+
+```php
+public function getNotBefore(): int | null;
+```
+
+```php
+public function getPassphrase(): string;
+```
+
+```php
+public function getSubject(): string | null;
+```
+
+```php
+public function getToken(): Token;
+```
+
+```php
+public function init(): Builder;
+```
+
+```php
+public function setAudience( mixed $audience ): Builder;
+```
+
+The "aud" (audience) claim identifies the recipients that the JWT is intended for. Each principal intended to process the JWT MUST identify itself with a value in the audience claim. If the principal processing the claim does not identify itself with a value in the "aud" claim when this claim is present, then the JWT MUST be rejected. In the general case, the "aud" value is an array of case- sensitive strings, each containing a StringOrURI value. In the special case when the JWT has one audience, the "aud" value MAY be a single case-sensitive string containing a StringOrURI value. The interpretation of audience values is generally application specific. Use of this claim is OPTIONAL.
+
+```php
+public function setContentType( string $contentType ): Builder;
+```
+
+Sets the content type header 'cty'
+
+```php
+public function setExpirationTime( int $timestamp ): Builder;
+```
+
+The "exp" (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing. The processing of the "exp" claim requires that the current date/time MUST be before the expiration date/time listed in the "exp" claim. Implementers MAY provide for some small leeway, usually no more than a few minutes, to account for clock skew. Its value MUST be a number containing a NumericDate value. Use of this claim is OPTIONAL.
+
+```php
+public function setId( string $id ): Builder;
+```
+
+The "jti" (JWT ID) claim provides a unique identifier for the JWT. The identifier value MUST be assigned in a manner that ensures that there is a negligible probability that the same value will be accidentally assigned to a different data object; if the application uses multiple issuers, collisions MUST be prevented among values produced by different issuers as well. The "jti" claim can be used to prevent the JWT from being replayed. The "jti" value is a case- sensitive string. Use of this claim is OPTIONAL.
+
+```php
+public function setIssuedAt( int $timestamp ): Builder;
+```
+
+The "iat" (issued at) claim identifies the time at which the JWT was issued. This claim can be used to determine the age of the JWT. Its value MUST be a number containing a NumericDate value. Use of this claim is OPTIONAL.
+
+```php
+public function setIssuer( string $issuer ): Builder;
+```
+
+The "iss" (issuer) claim identifies the principal that issued the JWT. The processing of this claim is generally application specific. The "iss" value is a case-sensitive string containing a StringOrURI value. Use of this claim is OPTIONAL.
+
+```php
+public function setNotBefore( int $timestamp ): Builder;
+```
+
+The "nbf" (not before) claim identifies the time before which the JWT MUST NOT be accepted for processing. The processing of the "nbf" claim requires that the current date/time MUST be after or equal to the not-before date/time listed in the "nbf" claim. Implementers MAY provide for some small leeway, usually no more than a few minutes, to account for clock skew. Its value MUST be a number containing a NumericDate value. Use of this claim is OPTIONAL.
+
+```php
+public function setPassphrase( string $passphrase ): Builder;
+```
+
+```php
+public function setSubject( string $subject ): Builder;
+```
+
+The "sub" (subject) claim identifies the principal that is the subject of the JWT. The claims in a JWT are normally statements about the subject. The subject value MUST either be scoped to be locally unique in the context of the issuer or be globally unique. The processing of this claim is generally application specific. The "sub" value is a case-sensitive string containing a StringOrURI value. Use of this claim is OPTIONAL.
+
+<h1 id="security-jwt-exceptions-unsupportedalgorithmexception">Class Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Exceptions | | Uses | Exception, Throwable | | Extends | Exception | | Implements | Throwable |
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
+
+For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+
+<h1 id="security-jwt-exceptions-validatorexception">Class Phalcon\Security\JWT\Exceptions\ValidatorException</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Exceptions/ValidatorException.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Exceptions | | Uses | Exception, Throwable | | Extends | Exception | | Implements | Throwable |
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
+
+For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+
+<h1 id="security-jwt-signer-abstractsigner">Abstract Class Phalcon\Security\JWT\Signer\AbstractSigner</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/AbstractSigner.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Signer | | Implements | SignerInterface |
+
+Class AbstractSigner
+
+@property string $algo
+
+## Propiedades
+
+```php
+/**
+ * @var string
+ */
+protected algorithm;
+
+```
+
+## Métodos
+
+```php
+public function getAlgorithm(): string
+```
+
+<h1 id="security-jwt-signer-hmac">Class Phalcon\Security\JWT\Signer\Hmac</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/Hmac.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Signer | | Uses | Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException | | Extends | AbstractSigner |
+
+Class Hmac
+
+## Métodos
+
+```php
+public function __construct( string $algo = string );
+```
+
+Hmac constructor.
+
+```php
+public function getAlgHeader(): string;
+```
+
+Return the value that is used for the "alg" header
+
+```php
+public function sign( string $payload, string $passphrase ): string;
+```
+
+Sign a payload using the passphrase
+
+```php
+public function verify( string $source, string $payload, string $passphrase ): bool;
+```
+
+Verify a passed source with a payload and passphrase
+
+<h1 id="security-jwt-signer-none">Class Phalcon\Security\JWT\Signer\None</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/None.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Signer | | Implements | SignerInterface |
+
+Class None
+
+## Métodos
+
+```php
+public function getAlgHeader(): string;
+```
+
+Return the value that is used for the "alg" header
+
+```php
+public function getAlgorithm(): string;
+```
+
+Return the algorithm used
+
+```php
+public function sign( string $payload, string $passphrase ): string;
+```
+
+Sign a payload using the passphrase
+
+```php
+public function verify( string $source, string $payload, string $passphrase ): bool;
+```
+
+Verify a passed source with a payload and passphrase
+
+<h1 id="security-jwt-signer-signerinterface">Interface Phalcon\Security\JWT\Signer\SignerInterface</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/SignerInterface.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Signer |
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
+
+For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+
+## Métodos
+
+```php
+public function getAlgHeader(): string;
+```
+
+Return the value that is used for the "alg" header
+
+```php
+public function getAlgorithm(): string;
+```
+
+Return the algorithm used
+
+```php
+public function sign( string $payload, string $passphrase ): string;
+```
+
+Sign a payload using the passphrase
+
+```php
+public function verify( string $source, string $payload, string $passphrase ): bool;
+```
+
+Verify a passed source with a payload and passphrase
+
+<h1 id="security-jwt-token-abstractitem">Abstract Class Phalcon\Security\JWT\Token\AbstractItem</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/AbstractItem.zep)
+
+| Namespace | Phalcon\Security\JWT\Token |
+
+Class AbstractItem
+
+@property array $data
+
+## Propiedades
+
+```php
+/**
+ * @var array
+ */
+protected data;
+
+```
+
+## Métodos
+
+```php
+public function getEncoded(): string;
+```
+
+<h1 id="security-jwt-token-enum">Class Phalcon\Security\JWT\Token\Enum</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Enum.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Token |
+
+Class Enum
+
+@link https://tools.ietf.org/html/rfc7519
+
+## Constantes
+
+```php
+const ALGO            = 'alg';
+const AUDIENCE        = 'aud';
+const CONTENT_TYPE    = 'cty';
+const EXPIRATION_TIME = 'exp';
+const ID              = 'jti';
+const ISSUED_AT       = 'iat';
+const ISSUER          = 'iss';
+const NOT_BEFORE      = 'nbf';
+const SUBJECT         = 'sub';
+const TYPE            = 'typ';
+```
+
+<h1 id="security-jwt-token-item">Class Phalcon\Security\JWT\Token\Item</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Item.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Token | | Extends | AbstractItem |
+
+Class Item
+
+## Métodos
+
+```php
+public function __construct( array $payload, string $encoded );
+```
+
+Item constructor.
+
+```php
+public function get( string $name, mixed $defaultValue = null ): mixed | null;
+```
+
+```php
+public function getPayload(): array;
+```
+
+```php
+public function has( string $name ): bool;
+```
+
+<h1 id="security-jwt-token-parser">Class Phalcon\Security\JWT\Token\Parser</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Parser.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Token | | Uses | InvalidArgumentException, Phalcon\Helper\Arr, Phalcon\Helper\Base64, Phalcon\Helper\Json |
+
+Class Parser
+
+## Métodos
+
+```php
+public function parse( string $token ): Token;
+```
+
+Parse a token and return it
+
+<h1 id="security-jwt-token-signature">Class Phalcon\Security\JWT\Token\Signature</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Signature.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Token | | Extends | AbstractItem |
+
+Class Item
+
+## Métodos
+
+```php
+public function __construct( string $hash = string, string $encoded = string );
+```
+
+Signature constructor.
+
+```php
+public function getHash(): string;
+```
+
+<h1 id="security-jwt-token-token">Class Phalcon\Security\JWT\Token\Token</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Token.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT\Token |
+
+Class Token
+
+@property Item $claims @property Item $headers @property Signature $signature
+
+@link https://tools.ietf.org/html/rfc7519
+
+## Propiedades
+
+```php
+/**
+ * @var Item
+ */
+private claims;
+
+/**
+ * @var Item
+ */
+private headers;
+
+/**
+ * @var Signature
+ */
+private signature;
+
+```
+
+## Métodos
+
+```php
+public function __construct( Item $headers, Item $claims, Signature $signature );
+```
+
+Token constructor.
+
+```php
+public function getClaims(): Item
+```
+
+```php
+public function getHeaders(): Item
+```
+
+```php
+public function getPayload(): string;
+```
+
+```php
+public function getSignature(): Signature
+```
+
+```php
+public function getToken(): string;
+```
+
+<h1 id="security-jwt-validator">Class Phalcon\Security\JWT\Validator</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Validator.zep)
+
+![](/assets/images/version-4.1.svg)
+
+| Namespace | Phalcon\Security\JWT | | Uses | Phalcon\Security\JWT\Exceptions\ValidatorException, Phalcon\Security\JWT\Signer\SignerInterface, Phalcon\Security\JWT\Token\Enum, Phalcon\Security\JWT\Token\Token |
+
+Class Validator
+
+@property int $timeShift @property Token $token
+
+## Propiedades
+
+```php
+/**
+ * @var int
+ */
+private timeShift = 0;
+
+/**
+ * @var Token
+ */
+private token;
+
+```
+
+## Métodos
+
+```php
+public function __construct( Token $token, int $timeShift = int );
+```
+
+Validator constructor.
+
+```php
+public function setToken( Token $token ): Validator;
+```
+
+```php
+public function validateAudience( string $audience ): Validator;
+```
+
+```php
+public function validateExpiration( int $timestamp ): Validator;
+```
+
+```php
+public function validateId( string $id ): Validator;
+```
+
+```php
+public function validateIssuedAt( int $timestamp ): Validator;
+```
+
+```php
+public function validateIssuer( string $issuer ): Validator;
+```
+
+```php
+public function validateNotBefore( int $timestamp ): Validator;
+```
+
+```php
+public function validateSignature( SignerInterface $signer, string $passphrase ): Validator;
+```
+
 <h1 id="security-random">Class Phalcon\Security\Random</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Random.zep)
@@ -296,7 +881,7 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-@link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
+@link http://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
 ## Métodos
 

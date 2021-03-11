@@ -674,7 +674,7 @@ As you can see our variables `$users` can be iterated and counted. You can get m
 
 ![](/assets/images/content/tutorial-basic-5.png)
 
-## Styling
+## Estilo
 
 We can now add small design touches to our application. We can add the [Bootstrap CSS](https://getbootstrap.com/) in our code so that it is used throughout our views. We will add an `index.phtml` file in the`views` folder, with the following content:
 

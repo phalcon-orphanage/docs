@@ -2,20 +2,20 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'HTTP Response (PSR-7)'
-keywords: 'psr-7, http, http stream'
+title: 'Respuesta HTTP (PSR-7)'
+keywords: 'psr-7, http, flujo http'
 ---
 
-# HTTP Response (PSR-7)
+# Respuesta HTTP (PSR-7)
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream) es una implementación del interfaz de mensajería HTTP [PSR-7](https://www.php-fig.org/psr/psr-7/) definido por [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-This class describes a data stream. Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
+Esta clase describe un flujo de datos. Normalmente, una instancia envuelve un flujo PHP, este interfaz provee una envoltura sobre la mayoría de operaciones comunes, incluyendo la serialización de todo el flujo a una cadena.
 
 ```php
 <?php
@@ -37,18 +37,18 @@ public function __construct(
     string $mode = "rb"
 )
 ```
-The first parameter can be a string representing the location of the file on the file system or storage area. It can also be a resource, as returned by a method such as [fopen](https://www.php.net/manual/en/function.fopen.php). The second parameter is the open mode for the stream. The default mode is `rb`. For a list of available modes, you can check the documentation for [fopen](https://www.php.net/manual/en/function.fopen.php).
+El primer parámetro puede ser una cadena que indique la ubicación del archivo en el sistema de ficheros o área de almacenamiento. También puede ser un recurso, como el devuelto por un método como [fopen](https://www.php.net/manual/en/function.fopen.php). El segundo parámetro es el modo de apertura del flujo. El modo por defecto es `rb`. Para una lista de modos disponibles, se puede consultar la documentación de [fopen](https://www.php.net/manual/en/function.fopen.php).
 
-- `stream` - string or resource
-- `mode` - A string representing the mode the file is to be opened.
+- `stream` - cadena o recurso
+- `mode` - Cadena que indica el modo en el que el archivo es abierto.
 
-If there is an error, a `RuntimeException` will be thrown.
+Si hay un error, se lanzará un `RuntimeException`.
 
 ## Getters
 ### `__toString()`
-Reads all data from the stream into a string, from the beginning to end. The method will first try to `seek()` to the beginning of the stream before reading the data and read the stream until the end is reached.
+Lee todos los datos del flujo en un cadena, de principio a fin. El método intentará primero `seek()` al principio del flujo antes de leer los datos y leer el flujo hasta que se alcance el final.
 
-> **NOTE** Calling this method on large files will result in a large amount of data being loaded in memory 
+> **NOTA** Llamar a este método en archivos grandes provocará que una gran cantidad de datos se carguen en memoria 
 > 
 > {: .alert .alert-danger }
 
@@ -65,7 +65,7 @@ echo (string) $stream; // 'The MIT License (MIT) ...'
 ```
 
 ### `getContents()`
-Returns a string with the remaining contents in a string. If the stream cannot be read or an error occurs, a `RuntimeException` will be thrown.
+Devuelve una cadena con el contenido restante. Si el flujo no se puede leer o ocurre algún error, se lanzará `RuntimeException`.
 
 ```php
 <?php
@@ -80,7 +80,7 @@ echo $stream->getContents(); // 'The MIT License (MIT) ...'
 ```
 
 ### `getMetadata()`
-Returns the stream metadata as an associative array. If the parameter `$key` is defined, the relevant string element will be returned. The method is a wrapper for PHP's [stream_get_meta_data()](https://php.net/manual/en/function.stream-get-meta-data.php) function. If the key is not found, the method will return `null`.
+Devuelve los metadatos del flujo como un vector asociativo. Si el parámetro `$key` se define, se devolverá la cadena del elemento relevante. El método es una envoltura de la función PHP [stream_get_meta_data()](https://php.net/manual/en/function.stream-get-meta-data.php). Si no se encuentra la clave, el método devolverá `null`.
 
 ```php
 <?php
@@ -112,7 +112,7 @@ echo $stream->getMetadata('unknown');      // null
 ```
 
 ### `getSize()`
-Returns the size of the stream. If it is not known, `null` will be returned
+Devuelve el tamaño del flujo. Si no se conoce, se devolverá `null`
 
 ```php
 <?php
@@ -128,7 +128,7 @@ echo $stream->getSize(); // 1087
 
 ## Is
 ### `isSeekable()`
-Returns `true` if the stream is seekable, `false` otherwise.
+Devuelve `true` si el flujo es consultable, `false` en caso contrario.
 
 ```php
 <?php
@@ -143,7 +143,7 @@ echo $stream->isSeekable(); // 'true'
 ```
 
 ### `isReadable()`
-Returns `true` if the stream is readable, `false` otherwise.
+Devuelve `true` si el flujo es legible, `false` en caso contrario.
 
 ```php
 <?php
@@ -158,7 +158,7 @@ echo $stream->isReadable(); // 'false'
 ```
 
 ### `isWritable()`
-Returns `true` if the stream is writable, `false` otherwise.
+Devuelve `true` si el flujo es escribible, `false` en caso contrario.
 
 ```php
 <?php
@@ -173,7 +173,7 @@ echo $stream->isWritable(); // 'false'
 ```
 
 ## `close()`
-Closes the stream and any underlying resources.
+Cierra el flujo y cualquier recurso subyacente.
 
 ```php
 <?php
@@ -188,7 +188,7 @@ $stream->close();
 ```
 
 ## `detach()`
-Separates any underlying resources from the stream. After the stream has been detached, the stream is in an unusable state. Calling this method on a closed/detached stream will return `null`
+Separa cualquier recurso subyacente del flujo. Después de que el flujo haya sido desvinculado, el flujo queda en un estado inutilizable. Llamar a este método en un flujo cerrado/desvinculado devolverá `null`
 
 ```php
 <?php
@@ -204,7 +204,7 @@ echo $stream->detach(); // null
 ```
 
 ## `eof()`
-Returns `true` if the stream is at the end of the stream, `false` otherwise.
+Devuelve `true` si flujo está al final del flujo, `false` en caso contrario.
 
 ```php
 <?php
@@ -223,7 +223,7 @@ echo $stream->eof(); // true
 ```
 
 ## `read()`
-Read data from the stream. The method accepts an integer specifying the number of bytes from the object and return them. The method could return less number of bytes than specified if the end of the stream is defined. If no more data is available an empty string will be returned. If an error occurs, a `RuntimeException` will be thrown.
+Lee datos desde el flujo. El método acepta un entero que indique el número de bytes del objeto y los devuelva. El método podría devolver un número menor de bytes que el especificado si se alcanza el final del flujo. Si no hay más datos disponibles se devolverá una cadena vacía. Si ocurre algún error, se lanzará `RuntimeException`.
 
 ```php
 <?php
@@ -238,7 +238,7 @@ echo $stream->read(15); // 'The MIT License'
 ```
 
 ## `rewind()`
-Seek to the beginning of the stream. Uses [fseek()](https://www.php.net/manual/en/function.fseek.php) calling `seek(0)` internally. If the stream is not seekable, a `RuntimeException` will be thrown.
+Busca el principio del flujo. Usa internamente [fseek()](https://www.php.net/manual/en/function.fseek.php) llamando `seek(0)`. Si el flujo no es consultable, se lanzará `RuntimeException`.
 
 ```php
 <?php
@@ -256,14 +256,14 @@ echo $stream->read(3); // 'The'
 ```
 
 ## `seek()`
-Seek to a position in the stream. Uses [fseek()](https://www.php.net/manual/en/function.fseek.php) internally. It accepts:
-- `offset` - `int` The stream offset
-- `whence` - `int` Specifies how the cursor position will be calculated based on the seek offset. Valid values are identical to the built-in PHP $whence values for [fseek()](https://www.php.net/manual/en/function.fseek.php).
-    - `SEEK_SET` Set position equal to offset bytes
-    - `SEEK_CUR` Set position to current location plus offset
-    - `SEEK_END` Set position to end-of-stream plus offset.
+Intenta colocarse en una posición del flujo. Usa internamente [fseek()](https://www.php.net/manual/en/function.fseek.php). Acepta:
+- `offset` - `int` Desplazamiento sobre el flujo
+- `whence` - `int` Especifica como se calculará la posición del cursor teniendo en cuenta el desplazamiento buscado. Los valores correctos son idénticos a los que vienen de serie en PHP como valores de $whence para [fseek()](https://www.php.net/manual/en/function.fseek.php).
+    - `SEEK_SET` Establece la posición igual a los bytes de desplazamiento
+    - `SEEK_CUR` Establece la posición en la ubicación actual más el desplazamiento
+    - `SEEK_END` Establece la posición al final del flujo más el desplazamiento.
 
-If an error occurs, a `RuntimeException` will be thrown.
+Si ocurre algún error, se lanzará `RuntimeException`.
 
 ```php
 <?php
@@ -281,7 +281,7 @@ echo $stream->read(3); // 'The'
 ```
 
 ## `tell()`
-Returns the current position of the file read/write pointer as an integer. If an error occurs, a `RuntimeException` will be thrown.
+Devuelve la posición actual del puntero de lectura/escritura como entero. Si ocurre algún error, se lanzará `RuntimeException`.
 
 ```php
 <?php
@@ -297,7 +297,7 @@ echo $stream->tell(); // 8
 ```
 
 ## `write()`
-Write data to the stream. It accepts a `string` parameter as the contents to be written. The method returns the number of bytes written to the stream as an integer. If an error occurs, a `RuntimeException` will be thrown.
+Escribe datos al flujo. Acepta un parámetro `cadena` como contenido a ser escrito. El método devuelve el número de bytes escritos al flujo como entero. Si ocurre algún error, se lanzará `RuntimeException`.
 
 ```php
 <?php

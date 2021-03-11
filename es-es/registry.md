@@ -141,7 +141,7 @@ public function get(
 ):  mixed
 ```
 
-Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. El parámetro `cast` acepta una cadena que define a qué tipo será convertido el valor devuelto. Los valores disponibles son:
 
 - `array`
 - `bool`

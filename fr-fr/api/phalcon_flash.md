@@ -84,7 +84,7 @@ public function clear(): void;
 Clears accumulated messages when implicit flush is disabled
 
 ```php
-public function error( string $message ): string;
+public function error( string $message ): string | null;
 ```
 
 Shows a HTML error message
@@ -112,7 +112,7 @@ public function getEscaperService(): EscaperInterface;
 Returns the Escaper Service
 
 ```php
-public function notice( string $message ): string;
+public function notice( string $message ): string | null;
 ```
 
 Shows a HTML notice/information message
@@ -168,7 +168,7 @@ public function setImplicitFlush( bool $implicitFlush ): FlashInterface;
 Set whether the output must be implicitly flushed to the output or returned as string
 
 ```php
-public function success( string $message ): string;
+public function success( string $message ): string | null;
 ```
 
 Shows a HTML success message
@@ -178,7 +178,7 @@ $flash->success("The process was finished successfully");
 ```
 
 ```php
-public function warning( string $message ): string;
+public function warning( string $message ): string | null;
 ```
 
 Shows a HTML warning message
@@ -193,7 +193,7 @@ $flash->warning("Hey, this is important");
 
 | Namespace | Phalcon\Flash | | Extends | AbstractFlash |
 
-This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
+This is an implementation of the Phalcon\Flash\FlashInterface that immediately outputs any message passed to it.
 
 ## Méthodes
 
@@ -215,7 +215,7 @@ Prints the messages accumulated in the flasher
 
 | Namespace | Phalcon\Flash | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Flash will use this class
+Exceptions thrown in Phalcon\Flash calsses will use this class
 
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
@@ -223,14 +223,14 @@ Exceptions thrown in Phalcon\Flash will use this class
 
 | Namespace | Phalcon\Flash |
 
-Phalcon\FlashInterface
+Phalcon\Flash\FlashInterface
 
-Interface for Phalcon\Flash
+Interface for Phalcon\Flash classes
 
 ## Méthodes
 
 ```php
-public function error( string $message ): string;
+public function error( string $message ): string | null;
 ```
 
 Shows a HTML error message
@@ -242,19 +242,19 @@ public function message( string $type, string $message ): string | null;
 Outputs a message
 
 ```php
-public function notice( string $message ): string;
+public function notice( string $message ): string | null;
 ```
 
 Shows a HTML notice/information message
 
 ```php
-public function success( string $message ): string;
+public function success( string $message ): string | null;
 ```
 
 Shows a HTML success message
 
 ```php
-public function warning( string $message ): string;
+public function warning( string $message ): string | null;
 ```
 
 Shows a HTML warning message
@@ -265,7 +265,7 @@ Shows a HTML warning message
 
 | Namespace | Phalcon\Flash | | Uses | Phalcon\Di\DiInterface, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
 
-Temporarily stores the messages in session, then messages can be printed in the next request
+This is an implementation of the Phalcon\Flash\FlashInterface that temporarily stores the messages in session, then messages can be printed in the next request.
 
 ## Méthodes
 
