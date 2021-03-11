@@ -257,7 +257,7 @@ public function getPreviousNamespaceName(): string
 Gets previous dispatched namespace name
 
 ```php
-public function getReturnedValue(): var
+public function getReturnedValue(): mixed
 ```
 
 Returns value returned by the latest dispatched action
@@ -515,48 +515,49 @@ A `forward` action accepts the following parameters:
 
 By using events or hook points available by the [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher), you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance you might want your URLs to be:
 
-``` https://domain.com/controller/key1/value1/key2/value
+    https://domain.com/controller/key1/value1/key2/value
+    
 
-    Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to the desired schema:
-    
-    ```php
-    <?php
-    
-    use Phalcon\Dispatcher;
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
-    use Phalcon\Events\Event;
-    use Phalcon\Events\Manager;
-    
-    $container->set(
-        'dispatcher',
-        function () {
-            $eventsManager = new Manager();
-    
-            $eventsManager->attach(
-                'dispatch:beforeDispatchLoop',
-                function (Event $event, $dispatcher) {
-                    $params    = $dispatcher->getParams();
-                    $keyParams = [];
-    
-                    foreach ($params as $index => $value) {
-                        if ($index & 1) {
-                            $key = $params[$index - 1];
-    
-                            $keyParams[$key] = $value;
-                        }
+Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to the desired schema:
+
+```php
+<?php
+
+use Phalcon\Dispatcher;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager;
+
+$container->set(
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
+
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $params    = $dispatcher->getParams();
+                $keyParams = [];
+
+                foreach ($params as $index => $value) {
+                    if ($index & 1) {
+                        $key = $params[$index - 1];
+
+                        $keyParams[$key] = $value;
                     }
-    
-                    $dispatcher->setParams($keyParams);
                 }
-            );
-    
-            $dispatcher = new MvcDispatcher();
-            $dispatcher->setEventsManager($eventsManager);
-    
-            return $dispatcher;
-        }
-    );
-    
+
+                $dispatcher->setParams($keyParams);
+            }
+        );
+
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    }
+);
+```
 
 If the desired schema is:
 
@@ -990,7 +991,7 @@ $container->setShared(
 );
 ```
 
-We cam move this method in a plugin class:
+We can move this method in a plugin class:
 
 ```php
 <?php
