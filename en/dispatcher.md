@@ -230,7 +230,7 @@ public function getPreviousNamespaceName(): string
 Gets previous dispatched namespace name
 
 ```php
-public function getReturnedValue(): var
+public function getReturnedValue(): mixed
 ```
 Returns value returned by the latest dispatched action
 
@@ -463,9 +463,10 @@ A `forward` action accepts the following parameters:
 ### Preparing
 By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance you might want your URLs to be:
  
- ```
- https://domain.com/controller/key1/value1/key2/value
 ```
+https://domain.com/controller/key1/value1/key2/value
+```
+
 Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to the desired schema:
 
 ```php
@@ -933,7 +934,7 @@ $container->setShared(
 );
 ```
 
-We cam move this method in a plugin class:
+We can move this method in a plugin class:
 
 ```php
 <?php
