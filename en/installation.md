@@ -210,15 +210,14 @@ Additional versions are available both architecture specific (x86/x64) as well a
 
 
 #### FreeBSD
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+Binary package (pkg) and compile myself from source (ports) are available for FreeBSD. To install it you will need to issue the following commands:
 
-##### pkg_add
-
+##### pkg
 ```bash
-pkg_add -r phalcon4
+pkg install php74-phalcon4
 ```
 
-##### Source
+##### ports
 ```bash
 cd /usr/ports/www/phalcon4
 
