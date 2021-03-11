@@ -491,30 +491,16 @@ Replaces placeholders by the values passed
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/InterpolatorFactory.zep)
 
 | Namespace  | Phalcon\Translate |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface |
+| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Interpolator\InterpolatorInterface |
 | Extends    | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+For the full copyright and license information, please view the
+LICENSE.txt file that was distributed with this source code.
 
-
-## Properties
-```php
-/**
- * @var array
- */
-private mapper;
-
-/**
- * @var array
- */
-private services;
-
-```
 
 ## Methods
 
@@ -525,7 +511,7 @@ AdapterFactory constructor.
 
 
 ```php
-public function newInstance( string $name ): AdapterInterface;
+public function newInstance( string $name ): InterpolatorInterface;
 ```
 Create a new instance of the adapter
 

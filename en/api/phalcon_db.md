@@ -142,6 +142,13 @@ protected dialectType;
 protected eventsManager;
 
 /**
+ * The real SQL statement - what was executed
+ *
+ * @var string
+ */
+protected realSqlStatement;
+
+/**
  * Active SQL Bind Types
  *
  * @var array
@@ -463,6 +470,8 @@ $success = $connection->insert(
 );
 ```
 
+@todo Return NULL if this is not supported by the adapter
+
 
 ```php
 public function getDescriptor(): array;
@@ -649,6 +658,15 @@ public function supportSequences(): bool;
 ```
 Check whether the database system requires a sequence to produce
 auto-numeric values
+
+
+```php
+public function supportsDefaultValue(): bool;
+```
+Check whether the database system support the DEFAULT
+keyword (SQLite does not support it)
+
+@deprecated Will re removed in the next version
 
 
 ```php
@@ -983,6 +1001,30 @@ Return the default identity value to insert in an identity column
 
 
 ```php
+public function getDefaultValue(): RawValue;
+```
+Returns the default value to make the RBDM use the default value declared
+in the table definition
+
+```php
+// Inserting a new robot with a valid default value for the column 'year'
+$success = $connection->insert(
+    "robots",
+    [
+        "Astro Boy",
+        $connection->getDefaultValue()
+    ],
+    [
+        "name",
+        "year",
+    ]
+);
+```
+
+@todo Return NULL if this is not supported by the adapter
+
+
+```php
 public function getDescriptor(): array;
 ```
 Return descriptor used to connect to the active database
@@ -1154,6 +1196,14 @@ public function supportSequences(): bool;
 ```
 Check whether the database system requires a sequence to produce
 auto-numeric values
+
+
+```php
+public function supportsDefaultValue(): bool;
+```
+SQLite does not support the DEFAULT keyword
+
+@deprecated Will re removed in the next version
 
 
 ```php
@@ -1513,6 +1563,14 @@ abstract protected function getDsnDefaults(): array;
 Returns PDO adapter DSN defaults as a key-value map.
 
 
+```php
+protected function prepareRealSql( string $statement, array $parameters ): void;
+```
+Constructs the SQL statement (with parameters)
+
+@see https://stackoverflow.com/a/8403150
+
+
 
 
 <h1 id="db-adapter-pdo-mysql">Class Phalcon\Db\Adapter\Pdo\Mysql</h1>
@@ -1844,6 +1902,14 @@ $success = $connection->insert(
 
 
 ```php
+public function supportsDefaultValue(): bool;
+```
+SQLite does not support the DEFAULT keyword
+
+@deprecated Will re removed in the next version
+
+
+```php
 public function useExplicitIdValue(): bool;
 ```
 Check whether the database system requires an explicit value for identity
@@ -1924,6 +1990,7 @@ $column = new Column(
         "notNull"       => true,
         "autoIncrement" => true,
         "first"         => true,
+        "comment"       => "",
     ]
 );
 
@@ -1975,7 +2042,7 @@ const TYPE_VARCHAR = 2;
 /**
  * Column Position
  *
- * @var string
+ * @var string|null
  */
 protected after;
 
@@ -2016,6 +2083,13 @@ protected isNumeric = false;
 protected name;
 
 /**
+ * Column's comment
+ *
+ * @var string
+ */
+protected comment;
+
+/**
  * Column not nullable?
  *
  * Default SQL definition is NOT NULL.
@@ -2039,7 +2113,7 @@ protected scale = 0;
 /**
  * Integer column size
  *
- * @var int
+ * @var int | string
  */
 protected size = 0;
 
@@ -2082,7 +2156,7 @@ Phalcon\Db\Column constructor
 
 
 ```php
-public function getAfterPosition(): string;
+public function getAfterPosition(): string | null;
 ```
 Check whether field absolute to position in table
 
@@ -2091,6 +2165,12 @@ Check whether field absolute to position in table
 public function getBindType(): int;
 ```
 Returns the type of bind handling
+
+
+```php
+public function getComment(): string
+```
+
 
 
 ```php
@@ -2106,7 +2186,7 @@ public function getScale(): int
 
 
 ```php
-public function getSize(): int
+public function getSize(): int | string
 ```
 
 
@@ -2191,7 +2271,7 @@ Interface for Phalcon\Db\Column
 ## Methods
 
 ```php
-public function getAfterPosition(): string;
+public function getAfterPosition(): string | null;
 ```
 Check whether field absolute to position in table
 
@@ -2221,7 +2301,7 @@ Returns column scale
 
 
 ```php
-public function getSize(): int;
+public function getSize(): int | string;
 ```
 Returns column size
 

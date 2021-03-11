@@ -1212,6 +1212,12 @@ public function getDefinition()
 
 
 
+```php
+public function getHandler()
+```
+
+
+
 
 
 <h1 id="mvc-micro-middlewareinterface">Interface Phalcon\Mvc\Micro\MiddlewareInterface</h1>
@@ -1497,10 +1503,14 @@ $robot->assign(
 
 
 ```php
-public static function average( mixed $parameters = null ): double;
+public static function average( mixed $parameters = null ): double | ResultsetInterface;
 ```
 Returns the average value on a column for a result-set of rows matching
-the specified conditions
+the specified conditions.
+
+Returned value will be a float for simple queries or a ResultsetInterface
+instance for when the GROUP condition is used. The results will
+contain the average of each group.
 
 ```php
 // What's the average price of robots?
@@ -1565,9 +1575,13 @@ Returns an hydrated result based on the data and the column map
 
 
 ```php
-public static function count( mixed $parameters = null ): int;
+public static function count( mixed $parameters = null ): int | ResultsetInterface;
 ```
-Counts how many records match the specified conditions
+Counts how many records match the specified conditions.
+
+Returns an integer for simple queries or a ResultsetInterface
+instance for when the GROUP condition is used. The results will
+contain the count of each group.
 
 ```php
 // How many robots are there?
@@ -1808,7 +1822,7 @@ $transaction2->rollback();
 
 
 ```php
-public static function findFirst( mixed $parameters = null ): ModelInterface | bool;
+public static function findFirst( mixed $parameters = null ): ModelInterface | null;
 ```
 Query the first record that matches the specified conditions
 
@@ -1915,9 +1929,9 @@ in the database or not
 
 
 ```php
-public function getEventsManager(): EventsManagerInterface;
+public function getEventsManager(): EventsManagerInterface | null;
 ```
-Returns the custom events manager
+Returns the custom events manager or null if there is no custom events manager
 
 
 ```php
@@ -2327,7 +2341,7 @@ Skips the current operation forcing a success state
 
 
 ```php
-public static function sum( mixed $parameters = null ): double;
+public static function sum( mixed $parameters = null ): double | ResultsetInterface;
 ```
 Calculates the sum on a column for a result-set of rows that match the
 specified conditions
@@ -2438,6 +2452,9 @@ protected function _cancelOperation();
 ```
 Cancel the current operation
 
+@todo Remove in v5.0
+@deprecated Use cancelOperation()
+
 
 ```php
 final protected function _checkForeignKeysRestrict(): bool;
@@ -2466,17 +2483,26 @@ protected function _doLowInsert( MetaDataInterface $metaData, AdapterInterface $
 ```
 Sends a pre-build INSERT SQL statement to the relational database system
 
+@todo Remove in v5.0
+@deprecated Use doLowInsert()
+
 
 ```php
 protected function _doLowUpdate( MetaDataInterface $metaData, AdapterInterface $connection, mixed $table ): bool;
 ```
 Sends a pre-build UPDATE SQL statement to the relational database system
 
+@todo Remove in v5.0
+@deprecated Use doLowUpdate()
+
 
 ```php
 protected function _exists( MetaDataInterface $metaData, AdapterInterface $connection ): bool;
 ```
 Checks whether the current record already exists
+
+@todo Remove in v5.0
+@deprecated Use exists()
 
 
 ```php
@@ -2485,11 +2511,17 @@ protected function _getRelatedRecords( string $modelName, string $method, array 
 Returns related records defined relations depending on the method name.
 Returns false if the relation is non-existent.
 
+@todo Remove in v5.0
+@deprecated Use getRelatedRecords()
+
 
 ```php
 protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
 ```
 Generate a PHQL SELECT statement for an aggregate
+
+@todo Remove in v5.0
+@deprecated Use groupResult()
 
 
 ```php
@@ -2503,11 +2535,17 @@ protected function _postSave( bool $success, bool $exists ): bool;
 ```
 Executes internal events after save a record
 
+@todo Remove in v5.0
+@deprecated Use postSave()
+
 
 ```php
 protected function _postSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
 ```
 Save the related records assigned in the has-one/has-many relations
+
+@todo Remove in v5.0
+@deprecated Use postSaveRelatedRecords()
 
 
 ```php
@@ -2515,11 +2553,17 @@ protected function _preSave( MetaDataInterface $metaData, bool $exists, mixed $i
 ```
 Executes internal hooks before save a record
 
+@todo Remove in v5.0
+@deprecated Use preSave()
+
 
 ```php
 protected function _preSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
 ```
 Saves related records that must be stored prior to save the master record
+
+@todo Remove in v5.0
+@deprecated Use preSaveRelatedRecords()
 
 
 ```php
@@ -2561,6 +2605,50 @@ class RobotsParts extends \Phalcon\Mvc\Model
     }
 }
 ```
+
+
+```php
+protected function cancelOperation();
+```
+Cancel the current operation
+
+
+```php
+protected function collectRelatedToSave(): array;
+```
+Collects previously queried (belongs-to, has-one and has-one-through)
+related records along with freshly added one
+
+
+```php
+protected function doLowInsert( MetaDataInterface $metaData, AdapterInterface $connection, mixed $table, mixed $identityField ): bool;
+```
+Sends a pre-build INSERT SQL statement to the relational database system
+
+
+```php
+protected function doLowUpdate( MetaDataInterface $metaData, AdapterInterface $connection, mixed $table ): bool;
+```
+Sends a pre-build UPDATE SQL statement to the relational database system
+
+
+```php
+protected function exists( MetaDataInterface $metaData, AdapterInterface $connection ): bool;
+```
+Checks whether the current record already exists
+
+
+```php
+protected function getRelatedRecords( string $modelName, string $method, array $arguments );
+```
+Returns related records defined relations depending on the method name.
+Returns false if the relation is non-existent.
+
+
+```php
+protected static function groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
+```
+Generate a PHQL SELECT statement for an aggregate
 
 
 ```php
@@ -2669,6 +2757,30 @@ class Robots extends Model
     }
 }
 ```
+
+
+```php
+protected function postSave( bool $success, bool $exists ): bool;
+```
+Executes internal events after save a record
+
+
+```php
+protected function postSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
+```
+Save the related records assigned in the has-one/has-many relations
+
+
+```php
+protected function preSave( MetaDataInterface $metaData, bool $exists, mixed $identityField ): bool;
+```
+Executes internal hooks before save a record
+
+
+```php
+protected function preSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
+```
+Saves related records that must be stored prior to save the master record
 
 
 ```php
@@ -2940,7 +3052,7 @@ This method receives the notifications from the EventsManager
 | Uses       | Closure, Phalcon\Mvc\Controller\BindModelInterface, Phalcon\Mvc\Model\Binder\BindableInterface, Phalcon\Cache\Adapter\AdapterInterface, ReflectionFunction, ReflectionMethod |
 | Implements | BinderInterface |
 
-Phalcon\Mvc\Model\Binding
+Phalcon\Mvc\Model\Binder
 
 This is an class for binding models into params for handler
 
@@ -3010,7 +3122,7 @@ Gets cache instance
 
 
 ```php
-protected function findBoundModel( mixed $paramValue, string $className ): object | bool;
+protected function findBoundModel( mixed $paramValue, string $className ): mixed | bool;
 ```
 Find the model by param value.
 
@@ -3233,7 +3345,7 @@ Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 
 
 ```php
-public function getColumns(): string | null;
+public function getColumns(): string | array | null;
 ```
 Returns the columns to be queried
 
@@ -3263,11 +3375,13 @@ Returns the having clause in the criteria
 
 
 ```php
-public function getLimit(): string | null;
+public function getLimit(): int | array | null;
 ```
-Returns the limit parameter in the criteria, which will be an integer if
-limit was set without an offset, an array with 'number' and 'offset' keys
-if an offset was set with the limit, or null if limit has not been set.
+Returns the limit parameter in the criteria, which will be
+
+- An integer if 'limit' was set without an 'offset'
+- An array with 'number' and 'offset' keys if an offset was set with the limit
+- NULL if limit has not been set
 
 
 ```php
@@ -3543,7 +3657,7 @@ Sets the "for_update" parameter to the criteria
 
 
 ```php
-public function getColumns(): string | null;
+public function getColumns(): string | array | null;
 ```
 Returns the columns to be queried
 
@@ -3567,11 +3681,13 @@ Returns the having clause in the criteria
 
 
 ```php
-public function getLimit(): string | null;
+public function getLimit(): int | array | null;
 ```
-Returns the limit parameter in the criteria, which will be an integer if
-limit was set without an offset, an array with 'number' and 'offset' keys
-if an offset was set with the limit, or null if limit has not been set.
+Returns the limit parameter in the criteria, which will be
+
+- An integer if 'limit' was set without an 'offset'
+- An array with 'number' and 'offset' keys if an offset was set with the limit
+- NULL if limit has not been set
 
 
 ```php
@@ -3722,7 +3838,7 @@ Sets the "shared_lock" parameter to the criteria
 
 
 ```php
-public function where( string $conditions ): CriteriaInterface;
+public function where( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Sets the conditions parameter in the criteria
 
@@ -3747,7 +3863,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Manager.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface |
+| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
 | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Model\Manager
@@ -3906,6 +4022,9 @@ public function _getConnectionService( ModelInterface $model, mixed $connectionS
 Returns the connection service name used to read or write data related to
 a model depending on the connection services
 
+@todo Remove in v5.0
+@deprecated Use getConnectionService()
+
 
 ```php
 public function addBehavior( ModelInterface $model, BehaviorInterface $behavior ): void;
@@ -3962,9 +4081,29 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 
 ```php
-public function executeQuery( string $phql, mixed $placeholders = null, mixed $types = null ): QueryInterface;
+public function executeQuery( string $phql, mixed $placeholders = null, mixed $types = null ): mixed;
 ```
 Creates a Phalcon\Mvc\Model\Query and execute it
+
+```php
+$model = new Robots();
+$manager = $model->getModelsManager();
+
+// \Phalcon\Mvc\Model\Resultset\Simple
+$manager->executeQuery('SELECTFROM Robots');
+
+// \Phalcon\Mvc\Model\Resultset\Complex
+$manager->executeQuery('SELECT COUNT(type) FROM Robots GROUP BY type');
+
+// \Phalcon\Mvc\Model\Query\StatusInterface
+$manager->executeQuery('INSERT INTO Robots (id) VALUES (1)');
+
+// \Phalcon\Mvc\Model\Query\StatusInterface
+$manager->executeQuery('UPDATE Robots SET id = 0 WHERE id = :id:', ['id' => 1]);
+
+// \Phalcon\Mvc\Model\Query\StatusInterface
+$manager->executeQuery('DELETE FROM Robots WHERE id = :id:', ['id' => 1]);
+```
 
 
 ```php
@@ -4016,9 +4155,16 @@ Gets belongsTo related records from a model
 
 
 ```php
-public function getCustomEventsManager( ModelInterface $model ): EventsManagerInterface | bool;
+public function getConnectionService( ModelInterface $model, mixed $connectionServices ): string;
 ```
-Returns a custom events manager related to a model
+Returns the connection service name used to read or write data related to
+a model depending on the connection services
+
+
+```php
+public function getCustomEventsManager( ModelInterface $model ): EventsManagerInterface | null;
+```
+Returns a custom events manager related to a model or null if there is no related events manager
 
 
 ```php
@@ -4314,11 +4460,20 @@ protected function _getConnection( ModelInterface $model, mixed $connectionServi
 ```
 Returns the connection to read or write data related to a model depending on the connection services.
 
+@todo Remove in v5.0
+@deprecated Use getConnection()
+
 
 ```php
 final protected function _mergeFindParameters( mixed $findParamsOne, mixed $findParamsTwo ): array;
 ```
 Merge two arrays of find parameters
+
+
+```php
+protected function getConnection( ModelInterface $model, mixed $connectionServices ): AdapterInterface;
+```
+Returns the connection to read or write data related to a model depending on the connection services.
 
 
 
@@ -4328,7 +4483,7 @@ Merge two arrays of find parameters
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface |
+| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
 
 Phalcon\Mvc\Model\ManagerInterface
 
@@ -4386,7 +4541,7 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 
 ```php
-public function executeQuery( string $phql, mixed $placeholders = null ): QueryInterface;
+public function executeQuery( string $phql, mixed $placeholders = null, mixed $types = null ): mixed;
 ```
 Creates a Phalcon\Mvc\Model\Query and execute it
 
@@ -4777,7 +4932,7 @@ print_r(
 
 
 ```php
-public function getColumnMap( ModelInterface $model ): array;
+public function getColumnMap( ModelInterface $model ): array | null;
 ```
 Returns the column map if any
 
@@ -4909,7 +5064,7 @@ print_r(
 
 
 ```php
-public function getReverseColumnMap( ModelInterface $model ): array;
+public function getReverseColumnMap( ModelInterface $model ): array | null;
 ```
 Returns the reverse column map if any
 
@@ -5449,7 +5604,7 @@ Returns attributes and their bind data types
 
 
 ```php
-public function getColumnMap( ModelInterface $model ): array;
+public function getColumnMap( ModelInterface $model ): array | null;
 ```
 Returns the column map if any
 
@@ -5503,7 +5658,7 @@ Returns an array of fields which are part of the primary key
 
 
 ```php
-public function getReverseColumnMap( ModelInterface $model ): array;
+public function getReverseColumnMap( ModelInterface $model ): array | null;
 ```
 Returns the reverse column map if any
 
@@ -6005,6 +6160,9 @@ final protected function _getRelatedRecords( ModelInterface $model, array $inter
 ```
 Query the records on which the UPDATE/DELETE operation will be done
 
+@todo Remove in v5.0
+@deprecated Use getRelatedRecords()
+
 
 ```php
 final protected function _getSelectColumn( array $column ): array;
@@ -6057,6 +6215,12 @@ protected function getReadConnection( ModelInterface $model, array $intermediate
 ```
 Gets the read connection from the model if there is no transaction set
 inside the query object
+
+
+```php
+final protected function getRelatedRecords( ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes ): ResultsetInterface;
+```
+Query the records on which the UPDATE/DELETE operation will be done
 
 
 ```php
@@ -7584,7 +7748,7 @@ protected activeRow;
 protected cache;
 
 //
-protected count;
+protected count = 0;
 
 //
 protected errorMessages;
@@ -7654,9 +7818,29 @@ Returns the associated cache for the resultset
 
 
 ```php
-public function getFirst(): ModelInterface | null;
+public function getFirst(): mixed | null;
 ```
 Get first row in the resultset
+
+```php
+$model = new Robots();
+$manager = $model->getModelsManager();
+
+// \Robots
+$manager->createQuery('SELECTFROM Robots')
+        ->execute()
+        ->getFirst();
+
+// \Phalcon\Mvc\Model\Row
+$manager->createQuery('SELECT r.id FROM Robots AS r')
+        ->execute()
+        ->getFirst();
+
+// NULL
+$manager->createQuery('SELECT r.id FROM Robots AS r WHERE r.name = "NON-EXISTENT"')
+        ->execute()
+        ->getFirst();
+```
 
 
 ```php
@@ -7950,7 +8134,7 @@ Returns the associated cache for the resultset
 
 
 ```php
-public function getFirst(): ModelInterface | null;
+public function getFirst(): mixed | null;
 ```
 Get first row in the resultset
 
@@ -8749,7 +8933,7 @@ Assigns values to a model from an array
 
 
 ```php
-public static function average( mixed $parameters = null ): double;
+public static function average( mixed $parameters = null ): double | ResultsetInterface;
 ```
 Allows to calculate the average value on a column matching the specified
 conditions
@@ -8774,9 +8958,13 @@ Returns an hydrated result based on the data and the column map
 
 
 ```php
-public static function count( mixed $parameters = null ): int;
+public static function count( mixed $parameters = null ): int | ResultsetInterface;
 ```
 Allows to count how many records match the specified conditions
+
+Returns an integer for simple queries or a ResultsetInterface
+instance for when the GROUP condition is used. The results will
+contain the count of each group.
 
 
 ```php
@@ -8800,7 +8988,7 @@ Allows to query a set of records that match the specified conditions
 
 
 ```php
-public static function findFirst( mixed $parameters = null ): ModelInterface | bool;
+public static function findFirst( mixed $parameters = null ): mixed | null;
 ```
 Allows to query the first record that match the specified conditions
 
@@ -8966,7 +9154,7 @@ Skips the current operation forcing a success state
 
 
 ```php
-public static function sum( mixed $parameters = null ): double;
+public static function sum( mixed $parameters = null ): double | ResultsetInterface;
 ```
 Allows to calculate a sum on a column that match the specified conditions
 
@@ -9113,9 +9301,6 @@ protected removeExtraSlashes;
 
 //
 protected routes;
-
-//
-protected uriSource;
 
 //
 protected wasMatched = false;
@@ -9467,6 +9652,9 @@ $di->setShared(
 protected actionSuffix = Action;
 
 //
+protected actionPreformatCallback;
+
+//
 protected controllerSuffix = Controller;
 
 //
@@ -9495,6 +9683,12 @@ A resource is a class that contains routing annotations
 
 
 ```php
+public function getActionPreformatCallback();
+```
+
+
+
+```php
 public function getResources(): array;
 ```
 Return the registered resources
@@ -9516,6 +9710,29 @@ Checks for annotations in the public methods of the controller
 public function processControllerAnnotation( string $handler, Annotation $annotation );
 ```
 Checks for annotations in the controller docblock
+
+
+```php
+public function setActionPreformatCallback( mixed $callback = null );
+```
+Sets the action preformat callback
+$action here already without suffix 'Action'
+
+```php
+// Array as callback
+$annotationRouter->setActionPreformatCallback([Text::class, 'uncamelize']);
+
+// Function as callback
+$annotationRouter->setActionPreformatCallback(function(action){
+    return action;
+});
+
+// String as callback
+$annotationRouter->setActionPreformatCallback('strtolower');
+
+// If empty method constructor called [null], sets uncamelize with - delimiter
+$annotationRouter->setActionPreformatCallback();
+```
 
 
 ```php
@@ -11494,6 +11711,9 @@ Compiles a "autoescape" statement returning PHP code
 public function compileCache( array $statement, bool $extendsMode = bool ): string;
 ```
 Compiles a "cache" statement returning PHP code
+
+@deprecated Will be removed in 5.0
+@todo Remove this in the next major version
 
 
 ```php

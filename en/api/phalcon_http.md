@@ -448,13 +448,13 @@ Checks the element passed if it is a string
 
 
 ```php
-final protected function cloneInstance( mixed $element, string $property ): object;
+final protected function cloneInstance( mixed $element, string $property ): mixed;
 ```
 Returns a new instance having set the parameter
 
 
 ```php
-final protected function processWith( mixed $element, string $property ): object;
+final protected function processWith( mixed $element, string $property ): mixed;
 ```
 Checks the element passed; assigns it to the property and returns a
 clone of the object back
@@ -467,7 +467,7 @@ clone of the object back
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractMessage.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
+| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
 | Extends    | AbstractCommon |
 
 Message methods
@@ -483,7 +483,7 @@ Message methods
 protected body;
 
 /**
- * @var Collection
+ * @var Collection|CollectionInterface
  */
 protected headers;
 
@@ -592,7 +592,7 @@ Checks if a header exists by the given case-insensitive name.
 
 
 ```php
-public function withAddedHeader( mixed $name, mixed $value ): object;
+public function withAddedHeader( mixed $name, mixed $value ): mixed;
 ```
 Return an instance with the specified header appended with the given
 value.
@@ -607,7 +607,7 @@ new header and/or value.
 
 
 ```php
-public function withBody( StreamInterface $body ): object;
+public function withBody( StreamInterface $body ): mixed;
 ```
 Return an instance with the specified message body.
 
@@ -619,7 +619,7 @@ new body stream.
 
 
 ```php
-public function withHeader( mixed $name, mixed $value ): object;
+public function withHeader( mixed $name, mixed $value ): mixed;
 ```
 Return an instance with the provided value replacing the specified
 header.
@@ -633,7 +633,7 @@ new and/or updated header and value.
 
 
 ```php
-public function withProtocolVersion( mixed $version ): object;
+public function withProtocolVersion( mixed $version ): mixed;
 ```
 Return an instance with the specified HTTP protocol version.
 
@@ -646,7 +646,7 @@ new protocol version.
 
 
 ```php
-public function withoutHeader( mixed $name ): object;
+public function withoutHeader( mixed $name ): mixed;
 ```
 Return an instance without the specified header.
 
@@ -658,11 +658,11 @@ the named header.
 
 
 ```php
-final protected function checkHeaderHost( Collection $collection ): Collection;
+final protected function checkHeaderHost( CollectionInterface $collection ): CollectionInterface;
 ```
 Ensure Host is the first header.
 
-@see: https://tools.ietf.org/html/rfc7230#section-5.4
+@see: http://tools.ietf.org/html/rfc7230#section-5.4
 
 
 ```php
@@ -670,7 +670,7 @@ final protected function checkHeaderName( mixed $name ): void;
 ```
 Check the name of the header. Throw exception if not valid
 
-@see https://tools.ietf.org/html/rfc7230#section-3.2
+@see http://tools.ietf.org/html/rfc7230#section-3.2
 
 
 ```php
@@ -734,7 +734,7 @@ Return the host and if applicable the port
 
 
 ```php
-final protected function populateHeaderCollection( array $headers ): Collection;
+final protected function populateHeaderCollection( array $headers ): CollectionInterface;
 ```
 Populates the header collection
 
@@ -746,7 +746,7 @@ Set a valid stream
 
 
 ```php
-final protected function processHeaders( mixed $headers ): Collection;
+final protected function processHeaders( mixed $headers ): CollectionInterface;
 ```
 Sets the headers
 
@@ -764,7 +764,7 @@ Checks the protocol
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractRequest.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface |
+| Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface |
 | Extends    | AbstractMessage |
 
 Request methods
@@ -791,7 +791,7 @@ protected requestTarget;
  *
  * This method MUST return a UriInterface instance.
  *
- * @see https://tools.ietf.org/html/rfc3986#section-4.3
+ * @see http://tools.ietf.org/html/rfc3986#section-4.3
  *
  * @var UriInterface
  */
@@ -828,7 +828,7 @@ public function getUri(): UriInterface
 
 
 ```php
-public function withMethod( mixed $method ): object;
+public function withMethod( mixed $method ): mixed;
 ```
 Return an instance with the provided HTTP method.
 
@@ -842,7 +842,7 @@ changed request method.
 
 
 ```php
-public function withRequestTarget( mixed $requestTarget ): object;
+public function withRequestTarget( mixed $requestTarget ): mixed;
 ```
 Return an instance with the specific request-target.
 
@@ -855,12 +855,12 @@ This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 changed request target.
 
-@see https://tools.ietf.org/html/rfc7230#section-5.3 (for the various
+@see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
     request-target forms allowed in request messages)
 
 
 ```php
-public function withUri( UriInterface $uri, mixed $preserveHost = bool ): object;
+public function withUri( UriInterface $uri, mixed $preserveHost = bool ): mixed;
 ```
 Returns an instance with the provided URI.
 
@@ -887,7 +887,7 @@ This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 new UriInterface instance.
 
-@see https://tools.ietf.org/html/rfc3986#section-4.3
+@see http://tools.ietf.org/html/rfc3986#section-4.3
 
 
 ```php
@@ -989,12 +989,12 @@ PSR-7 Response
  * listed in the IANA HTTP Status Code Registry) for the response's
  * status code.
  *
- * @see https://tools.ietf.org/html/rfc7231#section-6
- * @see https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+ * @see http://tools.ietf.org/html/rfc7231#section-6
+ * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
  *
  * @var string
  */
-private reasonPhrase = ;
+protected reasonPhrase = ;
 
 /**
  * Gets the response status code.
@@ -1004,7 +1004,7 @@ private reasonPhrase = ;
  *
  * @var int
  */
-private statusCode = 200;
+protected statusCode = 200;
 
 ```
 
@@ -1042,8 +1042,20 @@ This method MUST be implemented in such a way as to retain the
 immutability of the message, and MUST return an instance that has the
 updated status and reason phrase.
 
-@see https://tools.ietf.org/html/rfc7231#section-6
-@see https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+@see http://tools.ietf.org/html/rfc7231#section-6
+@see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+
+
+```php
+protected function getPhrases(): array;
+```
+Returns the list of status codes available
+
+
+```php
+protected function processCode( mixed $code, mixed $phrase = string ): void;
+```
+Set a valid status code and phrase
 
 
 
@@ -1074,7 +1086,7 @@ Create a new response.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequest.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface |
+| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface |
 | Extends    | AbstractRequest |
 | Implements | ServerRequestInterface |
 
@@ -1084,9 +1096,9 @@ PSR-7 ServerRequest
 ## Properties
 ```php
 /**
- * @var Collection
+ * @var Collection|CollectionInterface
  */
-private attributes;
+protected attributes;
 
 /**
  * Retrieve cookies.
@@ -1098,7 +1110,7 @@ private attributes;
  *
  * @var array
  */
-private cookieParams;
+protected cookieParams;
 
 /**
  * Retrieve any parameters provided in the request body.
@@ -1114,7 +1126,7 @@ private cookieParams;
  *
  * @var mixed
  */
-private parsedBody;
+protected parsedBody;
 
 /**
  * Retrieve query string arguments.
@@ -1128,7 +1140,7 @@ private parsedBody;
  *
  * @var array
  */
-private queryParams;
+protected queryParams;
 
 /**
  * Retrieve server parameters.
@@ -1139,7 +1151,7 @@ private queryParams;
  *
  * @var array
  */
-private serverParams;
+protected serverParams;
 
 /**
  * Retrieve normalized file upload data.
@@ -1152,7 +1164,7 @@ private serverParams;
  *
  * @var array
  */
-private uploadedFiles;
+protected uploadedFiles;
 
 ```
 
@@ -1325,7 +1337,7 @@ the attribute.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequestFactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface |
+| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface |
 | Implements | ServerRequestFactoryInterface |
 
 PSR-17 ServerRequestFactory
@@ -1413,7 +1425,7 @@ Warning: This could attempt to load a large amount of data into memory.
 This method MUST NOT raise an exception in order to conform with PHP's
 string casting operations.
 
-@see https://php.net/manual/en/language.oop5.magic.php#object.tostring
+@see http://php.net/manual/en/language.oop5.magic.php#object.tostring
 
 
 ```php
@@ -1566,7 +1578,7 @@ Warning: This could attempt to load a large amount of data into memory.
 This method MUST NOT raise an exception in order to conform with PHP's
 string casting operations.
 
-@see https://php.net/manual/en/language.oop5.magic.php#object.tostring
+@see http://php.net/manual/en/language.oop5.magic.php#object.tostring
 
 
 ```php
@@ -1743,7 +1755,7 @@ private clientMediaType;
  * Implementations SHOULD return the value stored in the 'error' key of
  * the file in the $_FILES array.
  *
- * @see https://php.net/manual/en/features.file-upload.errors.php
+ * @see http://php.net/manual/en/features.file-upload.errors.php
  *
  * @var int
  */
@@ -1850,8 +1862,8 @@ used to ensure permissions and upload status are verified correctly.
 If you wish to move to a stream, use getStream(), as SAPI operations
 cannot guarantee writing to stream destinations.
 
-@see https://php.net/is_uploaded_file
-@see https://php.net/move_uploaded_file
+@see http://php.net/is_uploaded_file
+@see http://php.net/move_uploaded_file
 
 
 
@@ -1877,8 +1889,8 @@ Create a new uploaded file.
 If a size is not provided it will be determined by checking the size of
 the stream.
 
-@link https://php.net/manual/features.file-upload.post-method.php
-@link https://php.net/manual/features.file-upload.errors.php
+@link http://php.net/manual/features.file-upload.post-method.php
+@link http://php.net/manual/features.file-upload.errors.php
 
 
 
@@ -1902,7 +1914,7 @@ PSR-7 Uri
  *
  * @return string
  */
-private fragment = ;
+protected fragment = ;
 
 /**
  * Retrieve the host component of the URI.
@@ -1912,23 +1924,23 @@ private fragment = ;
  * The value returned MUST be normalized to lowercase, per RFC 3986
  * Section 3.2.2.
  *
- * @see https://tools.ietf.org/html/rfc3986#section-3.2.2
+ * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
  *
  * @return string
  */
-private host = ;
+protected host = ;
 
 /**
  * @var string
  */
-private pass = ;
+protected pass = ;
 
 /**
  * Returns the path of the URL
  *
  * @return string
  */
-private path = ;
+protected path = ;
 
 /**
  * Retrieve the port component of the URI.
@@ -1945,14 +1957,14 @@ private path = ;
  *
  * @return int|null
  */
-private port;
+protected port;
 
 /**
  * Returns the query of the URL
  *
  * @return string
  */
-private query = ;
+protected query = ;
 
 /**
  * Retrieve the scheme component of the URI.
@@ -1969,12 +1981,12 @@ private query = ;
  *
  * @return string
  */
-private scheme = https;
+protected scheme = https;
 
 /**
  * @var string
  */
-private user = ;
+protected user = ;
 
 ```
 
@@ -2338,7 +2350,7 @@ Retrieves a query/get value always sanitized with the preset filters
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -2453,6 +2465,20 @@ $userEmail = $request->getPost("user_email");
 // Returns value from $_POST["user_email"] with sanitizing
 $userEmail = $request->getPost("user_email", "email");
 ```
+
+
+```php
+public function getPreferredIsoLocaleVariant(): string;
+```
+Gets the preferred ISO locale variant.
+
+Gets the preferred locale accepted by the client from the
+"Accept-Language" request HTTP header and returns the
+base part of it i.e. `en` instead of `en-US`.
+
+Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
+
+@link https://www.iso.org/standard/50707.html
 
 
 ```php
@@ -3059,7 +3085,7 @@ $_SERVER["PHP_AUTH_DIGEST"]
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -3443,7 +3469,7 @@ protected statusCodes;
 ## Methods
 
 ```php
-public function __construct( mixed $content = null, mixed $code = null, mixed $status = null );
+public function __construct( string $content = null, mixed $code = null, mixed $status = null );
 ```
 Phalcon\Http\Response constructor
 
@@ -3890,7 +3916,7 @@ $cookies->set(
 
 
 ```php
-public function setSignKey( string $signKey = null ): CookieInterface;
+public function setSignKey( string $signKey = null ): CookiesInterface;
 ```
 Sets the cookie's sign key.
 
@@ -4018,7 +4044,7 @@ Gets a header value from the internal bag
 ```php
 public function has( string $name ): bool;
 ```
-Sets a header to be sent at the end of the request
+Checks if a header exists
 
 
 ```php
@@ -4081,7 +4107,7 @@ Gets a header value from the internal bag
 ```php
 public function has( string $name ): bool;
 ```
-Returns true if the header is set, false otherwise
+Checks if a header exists
 
 
 ```php

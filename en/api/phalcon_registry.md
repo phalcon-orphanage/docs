@@ -126,7 +126,7 @@ Returns the iterator of the class
 ```php
 final public function has( string $element ): bool;
 ```
-Get the element from the collection
+Determines whether an element is present in the collection.
 
 
 ```php

@@ -85,7 +85,7 @@ Write
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory |
+| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr |
 | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Libmemcached
@@ -212,7 +212,7 @@ Helper method to get the name prefixed
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory |
+| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr |
 | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Redis
@@ -366,7 +366,7 @@ Returns the DependencyInjector container
 ```php
 public function init( array $data = [] ): void;
 ```
-Removes a property from the internal bag
+Initialize internal array
 
 
 ```php

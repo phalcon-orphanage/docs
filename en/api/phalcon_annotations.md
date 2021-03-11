@@ -308,14 +308,14 @@ protected arguments;
 /**
  * Annotation ExprArguments
  *
- * @var string
+ * @var array
  */
 protected exprArguments;
 
 /**
  * Annotation Name
  *
- * @var string
+ * @var string|null
  */
 protected name;
 
@@ -330,7 +330,7 @@ Phalcon\Annotations\Annotation constructor
 
 
 ```php
-public function getArgument( mixed $position );
+public function getArgument( mixed $position ): mixed | null;
 ```
 Returns an argument in a specific position
 
@@ -354,13 +354,13 @@ Resolves an annotation expression
 
 
 ```php
-public function getName(): string;
+public function getName(): null | string;
 ```
 Returns the annotation's name
 
 
 ```php
-public function getNamedArgument( string $name );
+public function getNamedArgument( string $name ): mixed | null;
 ```
 Returns a named argument
 

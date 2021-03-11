@@ -120,7 +120,7 @@ public function getData()
 
 
 ```php
-public function getEntity(): object;
+public function getEntity(): mixed;
 ```
 Returns the bound entity
 
@@ -221,7 +221,7 @@ This is a base class for combined fields validators
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Validation/AbstractValidator.zep)
 
 | Namespace  | Phalcon\Validation |
-| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation |
+| Uses       | Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation |
 | Implements | ValidatorInterface |
 
 This is a base class for validators
@@ -415,7 +415,7 @@ The entity is used to obtain the validation values
 
 
 ```php
-public function getEntity(): object;
+public function getEntity(): mixed;
 ```
 Returns the bound entity
 
@@ -2865,7 +2865,7 @@ protected function getAdapters(): array;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Validation/ValidatorInterface.zep)
 
 | Namespace  | Phalcon\Validation |
-| Uses       | Phalcon\Collection, Phalcon\Validation |
+| Uses       | Phalcon\Validation |
 
 Interface for Phalcon\Validation\AbstractValidator
 

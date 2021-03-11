@@ -11,7 +11,6 @@ keywords: 'new feature request list, nfr list'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 
-
 | Votes | Description                                                                                                                                                                                                          |
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 025   | [**ORM**: Many to Many behaviour - save related #2871](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456526)                                                                                      |
@@ -109,4 +108,3 @@ keywords: 'new feature request list, nfr list'
 | 000   | [**Session**: Need the lock for redis session #13738](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464989)                                                                                       |
 | 000   | [**Validation**: Why not to use ioc/factory style for validators like filters? #13567](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464179)                                                      |
 | 000   | [**Volt Compiler**: Allow \Phalcon\Mvc\View\Engine\Volt to accept Phalcon\Mvc\View\Engine\Volt\Compiler in the constructor #2700](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456153) |
-
