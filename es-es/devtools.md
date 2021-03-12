@@ -20,7 +20,7 @@ Phalcon Devtool can be controlled using the cmd line or the web interface.
 
 ## Instalación
 
-Phalcon Devtools can be installed using <composer>. Make sure you have installed first.
+Se pueden instalar las *Devtools* de Phalcon usando <composer>. Make sure you have installed first.
 
 Install Phalcon Devtools globally
 
@@ -369,8 +369,8 @@ The scaffold generator will build several files in your application, along with 
 
 | Archivo                               | Propósito                    |
 | ------------------------------------- | ---------------------------- |
-| `app/controllers/UsersController.php` | El controlador de Productos  |
-| `app/models/Users.php`                | El modelo de productos       |
+| `app/controllers/UsersController.php` | El controlador de Usuarios   |
+| `app/models/Users.php`                | El modelo de Usuarios        |
 | `app/views/layout/users.phtml`        | Controller layout for Users  |
 | `app/views/products/search.phtml`     | View for the action `search` |
 | `app/views/products/new.phtml`        | View for the action `new`    |
