@@ -518,7 +518,7 @@ Usando eventos o puntos de enganche disponibles mediante [Phalcon\Mvc\Dispatcher
     https://domain.com/controller/key1/value1/key2/value
     
 
-Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to the desired schema:
+Ya que los parámetros se pasan a la acciones en el orden en el que fueron definidos en la URL, puede transformarlos al esquema deseado:
 
 ```php
 <?php
@@ -991,7 +991,7 @@ $container->setShared(
 );
 ```
 
-We can move this method in a plugin class:
+Podemos mover este método a una clase plugin:
 
 ```php
 <?php
