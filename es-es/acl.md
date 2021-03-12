@@ -23,9 +23,9 @@ In short, ACLs have two objects: The object that needs access, and the object th
 > 
 > Una aplicación contable necesita tener diferentes grupos de usuarios que tengan acceso a varias áreas de la aplicación.
 > 
-> **Rol** - Acceso al Administrador - Acceso al Departamento de Contabilidad - Acceso al Gestor - Acceso al Invitado
+> **Role** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
 > 
-> **Componente** - Página de inicio de sesión - Página de administración - Página de facturas - Página de reportes
+> **Componente** - Página de inicio de sesión - Página de administración - Página de facturas - Página de informes
 {:.alert .alert-info}
 
 As seen above in the use case, an [Role](api/Phalcon_Acl#acl-role) is defined as who needs to access a particular [Component](api/Phalcon_Acl#acl-component) i.e. an area of the application. A [Component](api/Phalcon_Acl#acl-component) is defined as the area of the application that needs to be accessed.
