@@ -68,7 +68,7 @@ The [Phalcon\Acl\Enum](api/Phalcon_Acl#acl-enum) class offers two constants that
 
 You can use these constants to define access levels for your ACL.
 
-## Agregando Roles
+## Añadir Roles
 
 As mentioned above, a [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) is an object that can or cannot access a set of [Component](api/Phalcon_Acl#acl-component) in the access list.
 
@@ -106,7 +106,7 @@ $acl->addRole('manager');
 $acl->addRole('guest');
 ```
 
-## Agregando Componentes
+## Añadir Componentes
 
 A [Component](api/Phalcon_Acl#acl-component) is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component](api/Phalcon_Acl#acl-component) class can be used to define components in the application. Also it is important to add related actions to a component so that the ACL can understand what it should control.
 
