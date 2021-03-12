@@ -127,7 +127,7 @@ public function addComponent( mixed $componentObject, mixed $accessList ): bool;
 
 Adds a component to the ACL list
 
-Access names can be a particular action, by example search, update, delete, etc or a list of them
+Los nombres de acceso pueden ser una acción particular, por ejemplo buscar, actualizar, eliminar, etc o una lista de ellos
 
 ```php
 public function addComponentAccess( string $componentName, mixed $accessList ): bool;
@@ -408,7 +408,7 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 
 Adds a component to the ACL list
 
-Access names can be a particular action, by example search, update, delete, etc or a list of them
+Los nombres de acceso pueden ser una acción particular, por ejemplo buscar, actualizar, eliminar, etc o una lista de ellos
 
 Ejemplo:
 
