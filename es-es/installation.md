@@ -239,7 +239,7 @@ Versiones adicionales están disponibles para cada arquitectura específica (x86
 
 #### FreeBSD
 
-Binary package (pkg) and compile myself from source (ports) are available for FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
+El paquete binario (pkg) y compilarlo desde el código fuente (*ports*) están disponibles para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
 
 ##### pkg
 
