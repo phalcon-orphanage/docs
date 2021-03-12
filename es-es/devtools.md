@@ -369,7 +369,7 @@ The scaffold generator will build several files in your application, along with 
 
 | Archivo                               | Propósito                    |
 | ------------------------------------- | ---------------------------- |
-| `app/controllers/UsersController.php` | El controlador de productos  |
+| `app/controllers/UsersController.php` | El controlador de Productos  |
 | `app/models/Users.php`                | El modelo de productos       |
 | `app/views/layout/users.phtml`        | Controller layout for Users  |
 | `app/views/products/search.phtml`     | View for the action `search` |
