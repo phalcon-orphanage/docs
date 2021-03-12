@@ -239,15 +239,15 @@ Versiones adicionales están disponibles para cada arquitectura específica (x86
 
 #### FreeBSD
 
-Un puerto está disponible para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
+Binary package (pkg) and compile myself from source (ports) are available for FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
 
-##### pkg_add
+##### pkg
 
 ```bash
-pkg_add -r phalcon4
+pkg install php74-phalcon4
 ```
 
-##### Codigo fuente
+##### ports
 
 ```bash
 cd /usr/ports/www/phalcon4

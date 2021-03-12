@@ -257,7 +257,7 @@ public function getPreviousNamespaceName(): string
 Obtiene el espacio de nombres despachado anterior
 
 ```php
-public function getReturnedValue(): var
+public function getReturnedValue(): mixed
 ```
 
 Devuelve el valor devuelto por la última acción despachada
@@ -515,48 +515,49 @@ Una acción `forward` acepta los siguientes parámetros:
 
 Usando eventos o puntos de enganche disponibles mediante [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher), puede fácilmente ajustar su aplicación para aceptar cualquier esquema de URL que se adapte a su aplicación. Esto es particularmente útil cuando actualiza su aplicación y quiere transformar algunas URLs antiguas. Por ejemplo, podría querer que sus URLs fuesen:
 
-``` https://domain.com/controller/key1/value1/key2/value
+    https://domain.com/controller/key1/value1/key2/value
+    
 
-    Ya que los parámetros se pasan en el orden en el que fueron definidos en la URL a las acciones, puede transformarlos al esquema deseado:
-    
-    ```php
-    <?php
-    
-    use Phalcon\Dispatcher;
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
-    use Phalcon\Events\Event;
-    use Phalcon\Events\Manager;
-    
-    $container->set(
-        'dispatcher',
-        function () {
-            $eventsManager = new Manager();
-    
-            $eventsManager->attach(
-                'dispatch:beforeDispatchLoop',
-                function (Event $event, $dispatcher) {
-                    $params    = $dispatcher->getParams();
-                    $keyParams = [];
-    
-                    foreach ($params as $index => $value) {
-                        if ($index & 1) {
-                            $key = $params[$index - 1];
-    
-                            $keyParams[$key] = $value;
-                        }
+Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to the desired schema:
+
+```php
+<?php
+
+use Phalcon\Dispatcher;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager;
+
+$container->set(
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
+
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $params    = $dispatcher->getParams();
+                $keyParams = [];
+
+                foreach ($params as $index => $value) {
+                    if ($index & 1) {
+                        $key = $params[$index - 1];
+
+                        $keyParams[$key] = $value;
                     }
-    
-                    $dispatcher->setParams($keyParams);
                 }
-            );
-    
-            $dispatcher = new MvcDispatcher();
-            $dispatcher->setEventsManager($eventsManager);
-    
-            return $dispatcher;
-        }
-    );
-    
+
+                $dispatcher->setParams($keyParams);
+            }
+        );
+
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    }
+);
+```
 
 Si el esquema deseado es:
 
@@ -990,7 +991,7 @@ $container->setShared(
 );
 ```
 
-Podemos mover este método a una clase plugin:
+We can move this method in a plugin class:
 
 ```php
 <?php
