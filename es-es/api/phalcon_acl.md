@@ -181,7 +181,7 @@ Returns the component which the list is checking if some role can access it
 public function getActiveRole(): null | string;
 ```
 
-Returns the role which the list is checking if it's allowed to certain component/access
+Devuelve el rol que la lista está comprobando si está permitido para cierto componente/acceso
 
 ```php
 public function getComponents(): ComponentInterface[];
