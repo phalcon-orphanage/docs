@@ -23,9 +23,9 @@ In short, ACLs have two objects: The object that needs access, and the object th
 > 
 > Una aplicación contable necesita tener diferentes grupos de usuarios que tengan acceso a varias áreas de la aplicación.
 > 
-> **Rol** - Acceso al Administrador - Acceso al Departamento de Contabilidad - Acceso al Gestor - Acceso al Invitado
+> **Role** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
 > 
-> **Componente** - Página de inicio de sesión - Página de administración - Página de facturas - Página de reportes
+> **Componente** - Página de inicio de sesión - Página de administración - Página de facturas - Página de informes
 {:.alert .alert-info}
 
 As seen above in the use case, an [Role](api/Phalcon_Acl#acl-role) is defined as who needs to access a particular [Component](api/Phalcon_Acl#acl-component) i.e. an area of the application. A [Component](api/Phalcon_Acl#acl-component) is defined as the area of the application that needs to be accessed.
@@ -68,7 +68,7 @@ The [Phalcon\Acl\Enum](api/Phalcon_Acl#acl-enum) class offers two constants that
 
 You can use these constants to define access levels for your ACL.
 
-## Agregando Roles
+## Añadir Roles
 
 As mentioned above, a [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) is an object that can or cannot access a set of [Component](api/Phalcon_Acl#acl-component) in the access list.
 
@@ -106,7 +106,7 @@ $acl->addRole('manager');
 $acl->addRole('guest');
 ```
 
-## Agregando Componentes
+## Añadir Componentes
 
 A [Component](api/Phalcon_Acl#acl-component) is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component](api/Phalcon_Acl#acl-component) class can be used to define components in the application. Also it is important to add related actions to a component so that the ACL can understand what it should control.
 
@@ -651,7 +651,7 @@ $acl->isAllowed($admin, $reports, 'list');
 
 The second call for `$levelTwo` evaluates `true` since the `getUserId()` returns `2` which in turn is evaluated in our custom function. Also note that in the custom function for `allow()` the objects are automatically bound, providing all the data necessary for the custom function to work. The custom function can accept any number of additional parameters. The order of the parameters defined in the `function()` constructor does not matter, because the objects will be automatically discovered and bound.
 
-## Herencia de roles
+## Herencia de Roles
 
 To remove duplication and increase efficiency in your application, the ACL offers inheritance in roles. This means that you can define one [Phalcon\Acl\Role](api/Phalcon_Acl#acl-role) as a base and after that inherit from it offering access to supersets or subsets of components. To use role inheritance, you need, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
