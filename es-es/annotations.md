@@ -74,7 +74,7 @@ También, una anotación se puede colocar en cualquier parte de un docblock:
  */
 ```
 
-The parser is highly flexible, the following docblock is valid:
+El analizador es altamente flexible, el siguiente docblock es válido:
 
 ```php
 <?php
