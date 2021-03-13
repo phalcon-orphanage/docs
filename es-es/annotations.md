@@ -24,21 +24,21 @@ Annotations are read from docblocks in classes, methods and properties. An annot
 <?php
 
 /**
- * Descripción de la clase
+ * This is the class description
  *
  * @AmazingClass(true)
  */
 class Example
 {
     /**
-     * Esta es una propiedad con una característica especial
+     * This a property with a special feature
      *
      * @SpecialFeature
      */
     protected $someProperty;
 
     /**
-     * Este es un método
+     * This is a method
      *
      * @SpecialFeature
      */
@@ -49,7 +49,7 @@ class Example
 }
 ```
 
-An annotation has the following syntax:
+Una anotación tiene la siguiente sintaxis:
 
 ```php
 /**
@@ -58,7 +58,7 @@ An annotation has the following syntax:
  */
 ```
 
-Also, an annotation can be placed at any part of a docblock:
+También, una anotación se puede colocar en cualquier parte de un docblock:
 
 ```php
 <?php
