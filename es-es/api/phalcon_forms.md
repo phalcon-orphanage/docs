@@ -775,7 +775,7 @@ Clears every element in the form to its default value
 public function count(): int;
 ```
 
-Returns the number of elements in the form
+Devuelve el número de elementos en la colección
 
 ```php
 public function current(): ElementInterface | bool;
@@ -955,7 +955,7 @@ public function setValidation( $validation )
 public function valid(): bool;
 ```
 
-Check if the current element in the iterator is valid
+Comprueba si el elemento actual en el iterador es válido
 
 <h1 id="forms-manager">Class Phalcon\Forms\Manager</h1>
 
