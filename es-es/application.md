@@ -50,7 +50,7 @@ Constructor. Accepts a DI container with relevant services
 public function getDefaultModule(): string
 ```
 
-Returns the default module name
+Devuelve el nombre de módulo por defecto
 
 ```php
 public function getEventsManager(): ManagerInterface
@@ -64,13 +64,13 @@ public function getModule(
 ): array | object
 ```
 
-Gets the module definition registered in the application via module name
+Obtiene la definición de módulo registrada en la aplicación a través del nombre del módulo
 
 ```php
 public function getModules(): array
 ```
 
-Return the modules registered in the application
+Devuelve los módulos registrados en la aplicación
 
 ```php
 public function registerModules(
@@ -79,7 +79,7 @@ public function registerModules(
 ): AbstractApplication
 ```
 
-Register an array of modules present in the application
+Registra un vector de módulos presente en la aplicación
 
 ```php
 $this->registerModules(
@@ -102,7 +102,7 @@ public function setDefaultModule(
 ): AbstractApplication
 ```
 
-Sets the module name to be used if the router doesn't return a valid module
+Establece el nombre del módulo que se utilizará si el router no devuelve un módulo válido
 
 ```php
 public function setEventsManager(
