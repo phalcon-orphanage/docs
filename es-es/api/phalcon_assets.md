@@ -552,7 +552,7 @@ Sets if all filtered assets in the collection must be joined in a single result 
 public function key(): int;
 ```
 
-Devuelve la llave/posición actual del iterador
+Devuelve la clave/posición actual del iterador
 
 ```php
 public function next(): void;
