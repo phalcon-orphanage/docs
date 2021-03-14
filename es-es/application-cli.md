@@ -3,11 +3,11 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#cli'
-title: 'CLI Application'
-keywords: 'cli, command line, application, tasks'
+title: 'Aplicación CLI'
+keywords: 'cli, línea de comandos, aplicación, tareas'
 ---
 
-# CLI Application
+# Aplicación CLI
 
 * * *
 
@@ -15,27 +15,27 @@ keywords: 'cli, command line, application, tasks'
 
 # Resumen
 
-CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on screen) and can be run more than one at a time. Some of the common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
+CLI significa Interfaz de Línea de Comandos (*Command Line Interface* en inglés). Las aplicaciones CLI se ejecutan desde la línea de comandos o un indicador de *shell*. Uno de los beneficios de las aplicaciones CLI es que no tienen una capa de vista (sólo potencialmente muestran la salida por pantalla) y se pueden ejecutar más de una vez al mismo tiempo. Alguno de los usos comunes son tareas de cron, scripts de manipulación, scripts de importación de datos, utilidades de comandos y más.
 
-## Structure
+## Estructura
 
-You can create a CLI application in Phalcon, using the [Phalcon\Cli\Console](api/phalcon_cli#cli-console) class. This class extends from the main abstract application class, and uses a directory in which the Task scripts are located. Task scripts are classes that extend [Phalcon\Cli\Task](api/phalcon_cli#cli-task) and contain the code that we need executed.
+Puede crear una aplicación CLI Phalcon, usando la clase [Phalcon\Cli\Console](api/phalcon_cli#cli-console). Esta clase extiende desde la clase abstracta de aplicación, y usa un directorio en el que se localizan los scripts de Tareas. Los scripts de tareas son clases que extienden [Phalcon\Cli\Task](api/phalcon_cli#cli-task) y contienen el código que necesitamos ejecutar.
 
-The directory structure of a CLI application can look like this:
+La estructura del directorio de una aplicación CLI puede parecerse a:
 
 ```bash
 src/tasks/MainTask.php
 php cli.php
 ```
 
-In the above example, the `cli.php` is the entry point of our application, while the `src/tasks` directory contains all the task classes that handle each command.
+En el ejemplo anterior, `cli.php` es el punto de entrada a nuestra aplicación, mientras que el directorio `src/tasks` contiene todas las clases de tareas que manejan cada comando.
 
-> **NOTE**: Each task file and class **must** be suffixed with `Task`. The default task (if no parameters have been passed) is `MainTask` and the default method to be executed inside a task is `main` 
+> **NOTA**: Cada fichero de tareas y clase **debe** tener el sufijo `Task`. La tarea por defecto (si no se pasan parámetros) es `MainTask` y el método por defecto que se ejecuta dentro de una tareas es `main` 
 {: .alert .alert-info }
 
-## Bootstrap
+## Manos a la obra
 
-As seen above, the entry point of our CLI application is the `cli.php`. In that script, we need to bootstrap our application with relevant services, directives etc. This is similar to the all familiar `index.php` that we use for MVC applications.
+Como se ha visto anteriormente, el punto de entrada de nuestra aplicación CLI es `cli.php`. En ese script, necesitamos arrancar nuestra aplicación con servicios relevantes, directivas, etc. Esto es similar al familiar `index.php` que usamos para las aplicaciones MVC.
 
 ```php
 <?php
@@ -91,11 +91,11 @@ try {
 }
 ```
 
-Let's look at the code above in more detail.
+Veamos el código anterior en más detalle.
 
-First we need to create all the necessary services for our CLI application. We are going to create a loader to autoload our tasks, the CLI application, a dispatcher and a CLI Console application. These are the minimum amount of services that we need to instantiate to create a CLI application.
+Primero necesitamos crear todos los servicios necesarios para nuestra aplicación CLI. Vamos a crear un cargador para autocargar nuestras tareas, la aplicación CLI, un despachador y una aplicación de Consola CLI. Estos son la cantidad mínima de servicios que necesitamos instanciar para crear una aplicación CLI.
 
-**Loader**
+**Cargador**
 
 ```php
 $loader = new Loader();
@@ -107,9 +107,9 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-Create the Phalcon autoloader and register the namespace to point to the `src/` directory.
+Crea el autocargador de Phalcon y registra el espacio de nombres para apuntar al directorio `src/`.
 
-> **NOTE**: If you decided to use the Composer autoloader in your `composer.json`, you do not need to register the loader in this application
+> **NOTA**: Si decide usar el autocargador de Composer en su `composer.json`, no necesita registrar el cargador en esta aplicación
 {: .alert .alert-info }
 
 **DI**
@@ -118,9 +118,9 @@ Create the Phalcon autoloader and register the namespace to point to the `src/` 
 $container  = new CliDI();
 ```
 
-We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli](api/phalcon_di#di-factorydefault-cli) container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di](api/phalcon_di#di) and register the services you need, one after another.
+Necesitamos un contenedor de Inyección de Dependencias. Puede usar el contenedor [Phalcon\Di\FactoryDefault\Cli](api/phalcon_di#di-factorydefault-cli), que ya tiene servicios registrados para usted. Alternativamente, siempre puede usar [Phalcon\Di](api/phalcon_di#di) y registrar los servicios que necesite, uno tras otro.
 
-**Dispatcher**
+**Despachador**
 
 ```php
 $dispatcher = new Dispatcher();
@@ -129,23 +129,23 @@ $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 ```
 
-CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
+Las aplicaciones CLI necesitan un despachador específico. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) ofrece la misma funcionalidad que el despachador principal de las aplicaciones MVC, pero adaptado a las aplicaciones CLI. Como era de esperar, instanciamos el objeto despachador, establecemos nuestro espacio de nombres por defecto y luego lo registramos en el contenedor DI.
 
-**Application**
+**Aplicación**
 
 ```php
 $console = new Console($container);
 ```
 
-As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console](api/phalcon_cli#cli-console) class. Here we instantiate it and pass in it the DI container.
+Como se ha mencionado anteriormente, una aplicación CLI se maneja por la clase [Phalcon\Cli\Console](api/phalcon_cli#cli-console). Aquí la instanciamos y pasamos al contenedor DI.
 
-**Arguments** Our application needs arguments. These come in the form of :
+**Argumentos** Nuestra aplicación necesita argumentos. Estos vienen de la siguiente forma:
 
 ```bash
 php ./cli.php argument1 argument2 argument3 ...
 ```
 
-The first argument relates to the task to be executed. The second is the action and after that follow the parameters we need to pass.
+El primer argumento es relativo a la tarea a ejecutar. The second is the action and after that follow the parameters we need to pass.
 
 ```php
 $arguments = [];
