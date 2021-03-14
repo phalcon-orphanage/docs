@@ -294,7 +294,7 @@ echo json_encode($data);
 public function key(): int;
 ```
 
-Devuelve la llave/posición actual del iterador
+Devuelve la clave/posición actual del iterador
 
 ```php
 public function next(): void;
