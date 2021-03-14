@@ -2200,7 +2200,7 @@ foreach ($fileList as $file) {
 echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 ```
 
-## External Resources
+## Recursos externos
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Phosphorum](https://forum.phalcon.io), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
