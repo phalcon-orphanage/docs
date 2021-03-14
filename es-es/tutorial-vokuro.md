@@ -101,7 +101,7 @@ For more information on how to set up nanobox, check our \[Environments Nanobox\
 > **NOTE**: In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
 {: .alert .alert-info }
 
-## Structure
+## Estructura
 
 Looking at the structure of the application we have the following:
 
