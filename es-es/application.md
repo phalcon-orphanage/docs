@@ -3,10 +3,10 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Application'
-keywords: 'application, mvc, controllers'
+keywords: 'aplicación, mvc, controladores'
 ---
 
-# Application
+# Aplicación
 
 * * *
 
@@ -14,7 +14,7 @@ keywords: 'application, mvc, controllers'
 
 ## Resumen
 
-[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.
+[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) es un componente que encapsula todas las operaciones complejas tras instanciar cada componente necesario para ejecutar una aplicación MVC. Esta es una aplicación de pila completa (*full stack*) integrada con todos los servicios adicionales necesarios para permitir que el patrón MVC funcione como se desee.
 
 ```php
 <?php
@@ -44,7 +44,7 @@ public function __construct(
 )
 ```
 
-Constructor. Accepts a DI container with relevant services
+Constructor. Acepta un contenedor DI con los servicios relevantes
 
 ```php
 public function getDefaultModule(): string
@@ -118,7 +118,7 @@ public function handle(
 ): ResponseInterface | bool
 ```
 
-Handles a MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI`]`)
+Gestiona una petición MVC. Acepta la URL del servidor (normalmente `$_SERVER['REQUEST_URI`]`)
 
 ```php
 public function sendCookiesOnHandleRequest(
@@ -126,7 +126,7 @@ public function sendCookiesOnHandleRequest(
 ): Application
 ```
 
-Enables or disables sending cookies by each request handling
+Habilita o deshabilita el envío de cookies para cada gestión de solicitud
 
 ```php
 public function sendHeadersOnHandleRequest(
@@ -134,7 +134,7 @@ public function sendHeadersOnHandleRequest(
 ): Application
 ```
 
-Enables or disables sending headers by each request handling
+Habilita o deshabilita el envío de cabeceras para cada gestión de solicitud
 
 ```php
 public function useImplicitView(
@@ -142,11 +142,11 @@ public function useImplicitView(
 ): Application
 ```
 
-This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component using this method
+Está habilitado por defecto. La vista está almacenando implícitamente en *buffer* toda la salida. Puede deshabilitar completamente el componente vista usando este método
 
 ## Activación
 
-[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) performs all the work necessary to glue all the necessary components together so that the application can run. There are several ways that you can bootstrap your application. The most common way to bootstrap the application is:
+[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) realiza todo el trabajo necesario para unir todos los componentes necesarios para que se pueda ejecutar la aplicación. Hay varias maneras de arrancar su aplicación. La manera más común para arrancar la aplicación es:
 
 ```php
 <?php
@@ -172,7 +172,7 @@ try {
 }
 ```
 
-The core of all the work of the controller occurs when `handle()` is invoked:
+El núcleo de todo el trabajo del controlador ocurre cuando se invoca `handle()`:
 
 ```php
 <?php
@@ -182,9 +182,9 @@ $response = $application->handle(
 );
 ```
 
-## Manual Bootstrapping
+## Arranque manual
 
-If you do not wish to use [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application), the code above can be changed as follows:
+Si no desea usar [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application), el código anterior se puede modificar de la siguiente manera:
 
 ```php
 <?php
@@ -241,7 +241,7 @@ $response->setContent(
 $response->send();
 ```
 
-The following replacement of [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) does not have the `view`, making it suitable for REST API applications:
+El siguiente reemplazo de [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) no tiene la `vista`, haciéndola apropiada para aplicaciones API REST:
 
 ```php
 <?php
@@ -281,7 +281,7 @@ if ($response instanceof ResponseInterface) {
 }
 ```
 
-Another way that catches exceptions generated in the dispatcher forwarding to other actions consequently is as follows:
+Otra forma de capturar las excepciones generadas en la redirección a otras acciones en el despachador es la siguiente:
 
 ```php
 <?php
@@ -330,15 +330,15 @@ if ($response instanceof ResponseInterface) {
 }
 ```
 
-Depending on your application needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality. The bootstrapping method you choose depends on the needs of your application.
+Dependiendo de las necesidades de su aplicación, podría querer tener el control total de lo que se debe instanciar o no, o sustituir ciertos componentes por los suyos propios para extender la funcionalidad predeterminada. El método de arranque que elija depende de las necesidades de su aplicación.
 
-## Single - Multi Module
+## Único - Multi Módulo
 
-[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) offers two ways of MVC structures: Single and Multi module.
+[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) ofrece dos formas de estructuras MVC: Único y Multi módulo.
 
-### Single Module
+### Módulo Único
 
-Single module MVC applications consist of one module only. Namespaces can be used but are not necessary. The structure of such application is usually as follows:
+Las aplicaciones MVC de módulo único consisten en un sólo módulo. El espacio de nombres se puede usar pero no es necesario. La estructura de dicha aplicación suele ser la siguiente:
 
     single/
         app/
@@ -351,7 +351,7 @@ Single module MVC applications consist of one module only. Namespaces can be use
             js/
     
 
-If namespaces are not used, the following bootstrap file could be used:
+Si no se usa espacio de nombres, se podría usar el siguiente fichero de arranque:
 
 ```php
 <?php
@@ -398,7 +398,7 @@ try {
 }
 ```
 
-If namespaces are used, the bootstrap changes slightly:
+Si se usa espacio de nombres, el arranque cambia claramente:
 
 ```php
 <?php
@@ -458,9 +458,9 @@ try {
 }
 ```
 
-### Multi Module
+### Multi Módulo
 
-A multi-module application uses the same document root for more than one module. Modules are groups of components/files that offer functionality but increase maintainability and isolate functionality if necessary. Each module must implement the [Phalcon\Mvc\ModuleDefinitionInterface](api/phalcon_mvc#mvc-moduledefinitioninterface), to ensure proper functionality. A sample directory structure can be seen below:
+Una aplicación multi-módulo usa la misma raíz de documentos (*document root*) para más de un módulo. Los módulos son grupos de componentes/ficheros que ofrecen funcionalidad pero incrementan el mantenimiento y aíslan la funcionalidad si es necesario. Cada módulo debe implementar [Phalcon\Mvc\ModuleDefinitionInterface](api/phalcon_mvc#mvc-moduledefinitioninterface), para asegurar una correcta funcionalidad. Una estructura de directorio de ejemplo puede verse a continuación:
 
     multiple/
       apps/
@@ -480,7 +480,7 @@ A multi-module application uses the same document root for more than one module.
         js/
     
 
-Each subdirectory in `apps/` directory have its own MVC structure. A `Module.php` file is present in each module directory, to configure specific settings of each module, such as autoloaders, custom services etc.
+Cada subdirectorio en el directorio `apps/` tiene su propia estructura MVC. Existe un fichero `Module.php` en cada directorio de módulo, para configurar ajustes específicos de cada módulo, como autocargadores, servicios personalizados, etc.
 
 ```php
 <?php
@@ -541,7 +541,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-A slightly modified bootstrap file is required for a a multi module MVC architecture
+Se requiere un archivo de arranque ligeramente modificado para una arquitectura MVC multimódulo
 
 ```php
 <?php
@@ -615,7 +615,7 @@ try {
 }
 ```
 
-If you want to keep the module configuration in your bootstrap file, you can use an anonymous function to register the module.
+Si quiere mantener la configuración del módulo en su fichero de arranque, puede usar una función anónima para registrar el módulo.
 
 ```php
 <?php
@@ -656,15 +656,15 @@ $application->registerModules(
 );
 ```
 
-When [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup.
+Cuando [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) tiene módulos registrados, es esencial que cada ruta coincidente devuelva un módulo válido. Cada módulo registrado tiene una clase asociada que expone métodos para la configuración del módulo.
 
-Module definition classes must implement two methods: - `registerAutoloaders()` and - `registerServices()`
+Las clases de definición de módulo deben implementar dos métodos: - `registerAutoloaders()` y - `registerServices()`
 
-These will be called by the [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) accordingly.
+En consecuencia, se llamarán desde [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application).
 
-## Exceptions
+## Excepciones
 
-Any exceptions thrown in the [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) component will be of type [Phalcon\Mvc\Application\Exception](api/phalcon_mvc#mvc-application-exception) or [Phalcon\Application\Exception](api/phalcon_application#application-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Cualquier excepción lanzada en el componente [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) será del tipo [Phalcon\Mvc\Application\Exception](api/phalcon_mvc#mvc-application-exception) o [Phalcon\Application\Exception](api/phalcon_application#application-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas por este componente.
 
 ```php
 <?php
@@ -697,15 +697,15 @@ try {
 
 ## Eventos
 
-[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. Son soportados los siguientes eventos:
+[Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) es capaz de enviar eventos al [EventsManager](events) (si existe). Los eventos son disparados usando el tipo `application`. Se soportan los siguientes eventos:
 
-| Nombre de evento      | Disparado                                                                   |
+| Nombre de Evento      | Disparado                                                                   |
 | --------------------- | --------------------------------------------------------------------------- |
 | `boot`                | Cuando la aplicación gestiona su primer solicitud                           |
 | `beforeStartModule`   | Antes de inicializar un módulo, sólo cuando los módulos están registrados   |
 | `afterStartModule`    | Después de inicializar un módulo, sólo cuando los módulos están registrados |
-| `beforeHandleRequest` | Antes de ejecutar el bucle dispatch                                         |
-| `afterHandleRequest`  | Después de ejecutar el bucle dispatch                                       |
+| `beforeHandleRequest` | Antes de ejecutar el bucle de despacho                                      |
+| `afterHandleRequest`  | Después de ejecutar el bucle de despacho                                    |
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 
@@ -727,6 +727,6 @@ $manager->attach(
 );
 ```
 
-## External Resources
+## Recursos externos
 
-* [MVC examples on GitHub](https://github.com/phalcon/mvc)
+* [Ejemplos MVC en GitHub](https://github.com/phalcon/mvc)
