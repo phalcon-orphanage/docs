@@ -7,7 +7,7 @@ title: 'Recursos Activos'
 keywords: 'assets, js, css'
 ---
 
-# Gestión de Activos (Assets)
+# Gestión de Recursos (Assets)
 
 * * *
 
