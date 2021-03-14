@@ -595,7 +595,7 @@ $router->add(
 
 The first position must be skipped because it is used for the named parameter `year`.
 
-### Modules
+### Módulos
 
 You can define routes with modules in the path. This is specially suitable to multi-module applications. You can define a default route that includes a module wildcard.
 
