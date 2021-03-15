@@ -532,7 +532,7 @@ $image = $factory->load($options);
 
 ## Exceptions
 
-Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception](api/phalcon_image#image-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception](api/phalcon_image#image-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
