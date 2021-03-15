@@ -265,7 +265,7 @@ Stores data in the adapter
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
-Apcu adapter
+Adaptador Apcu
 
 ## Propiedades
 
@@ -345,7 +345,7 @@ Stores data in the adapter
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
-Libmemcached adapter
+Adaptador Libmemcached
 
 ## Propiedades
 
@@ -425,7 +425,7 @@ Stores data in the adapter
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
-Memory adapter
+Adaptador de Memoria
 
 ## Propiedades
 
@@ -510,7 +510,7 @@ Stores data in the adapter
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
-Redis adapter
+Adaptador Redis
 
 ## Propiedades
 
@@ -590,7 +590,7 @@ Stores data in the adapter
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | FilesystemIterator, Iterator, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface, RecursiveDirectoryIterator, RecursiveIteratorIterator | | Extends | AbstractAdapter |
 
-Stream adapter
+Adaptador de Flujo
 
 ## Propiedades
 
