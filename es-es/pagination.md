@@ -358,8 +358,8 @@ options.page = 1
 
 The configuration expects an element `adapter` for the relevant adapter and an `options` array with the necessary options for the adapter.
 
-## Exception
-Any exceptions thrown in the Paginator component will be of type [Phalcon\Paginator\Exception](api/phalcon_paginator#paginator-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+## Excepción
+Any exceptions thrown in the Paginator component will be of type [Phalcon\Paginator\Exception](api/phalcon_paginator#paginator-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 
 ```php
