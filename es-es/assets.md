@@ -692,7 +692,7 @@ Lo anterior resultará en el siguiente script como salida (asumiendo que su fich
 
 ## Mejorar el Rendimiento
 
-Hay muchas formas de optimizar el procesamiento de los recursos. One method is to allow your web server to handle the assets, thus improving response time. First we need to set up the Assets Manager. We will use a base controller, but you can use the manager anywhere you need to, accessing it from the Di container:
+Hay muchas formas de optimizar el procesamiento de los recursos. Un método es permitir al servidor web gestionar los recursos, mejorando así el tiempo de respuesta. Primero necesitamos configurar el Gestor de Recursos. Usaremos un controlador base, pero puede usar el gestor donde lo necesite, accediendo a él desde el contenedor Di:
 
 ```php
 <?php
@@ -720,7 +720,7 @@ class ControllerBase extends Controller
 }
 ```
 
-Then we need to configure the routing:
+Necesitamos configurar el enrutamiento:
 
 ```php
 <?php
@@ -745,7 +745,7 @@ $router->addGet(
 // Other routes...
 ```
 
-Finally, we need to create a controller to handle asset requests:
+Finalmente, necesitamos crear un controlador para gestionar las peticiones de recursos:
 
 ```php
 <?php
@@ -805,7 +805,7 @@ class AssetsController extends ControllerBase
 }
 ```
 
-If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
+Si existen recursos precompilados en el sistema de ficheros deben ser servidos directamente por el servidor web. Así que para obtener beneficios de los recursos estáticos debemos actualizar la configuración de nuestro servidor. Usaremos un ejemplo de configuración para Nginx. Para Apache será un poco diferente:
 
 ```nginx
 location ~ ^/assets/ {
@@ -828,12 +828,12 @@ location @phalcon {
 
 ```
 
-# Other Configuration Directives
+# Otras Directivas de Configuración
 
-We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
+Necesitamos crear los directorios `assets/js` y `assets/css` en la raíz de documentos de la aplicación (ej. `public`).
 
-Every time the application requests assets such as `/assets/js/global.js` the application will check whether the asset exists. If yes, it will be handled by the web server. Alternatively it will be redirected to the `AssetsController` for handling from the application.
+Cada vez que la aplicación solicite recursos como `/assets/js/global.js` la aplicación comprobará si el recurso existe. En caso afirmativo, será gestionado por el servidor web. Alternativamente será redirigido a `AssetsController` para la gestión desde la aplicación.
 
-We do not recommend to use the above example in production environments and for high load applications. However, the example does show what is possible using this component. The implementation you choose depends on the needs of your application.
+No recomendamos el uso del ejemplo anterior en entornos de producción y aplicaciones de alta carga. Sin embargo, el ejemplo muestra lo que es posible hacer usando este componente. La implementación que elija depende de las necesidades de su aplicación.
 
-In most cases, your web server, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) or services such as [Varnish HTTP Cache](https://varnish-cache.org/) would be more preferable.
+En la mayoría de casos, su servidor web, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) o servicios como [Varnish HTTP Cache](https://varnish-cache.org/) serían más preferibles.
