@@ -14,7 +14,7 @@ title: 'Phalcon\Application'
 
 | Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
 
-Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
+Clase base para Phalcon\Cli\Console y Phalcon\Mvc\Application.
 
 ## Propiedades
 
@@ -47,13 +47,13 @@ protected modules;
 public function __construct( DiInterface $container = null );
 ```
 
-Phalcon\AbstractApplication constructor
+Constructor Phalcon\AbstractApplication
 
 ```php
 public function getDefaultModule(): string;
 ```
 
-Returns the default module name
+Devuelve el nombre de módulo por defecto
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -65,19 +65,19 @@ Devuelve el administrador de eventos interno
 public function getModule( string $name ): array | object;
 ```
 
-Gets the module definition registered in the application via module name
+Obtiene la definición de módulo registrada en la aplicación a través del nombre del módulo
 
 ```php
 public function getModules(): array;
 ```
 
-Return the modules registered in the application
+Devuelve los módulos registrados en la aplicación
 
 ```php
 public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
 
-Register an array of modules present in the application
+Registra un vector de módulos presente en la aplicación
 
 ```php
 $this->registerModules(
@@ -98,7 +98,7 @@ $this->registerModules(
 public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
 
-Sets the module name to be used if the router doesn't return a valid module
+Establece el nombre del módulo que se utilizará si el router no devuelve un módulo válido
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
@@ -112,4 +112,4 @@ Establece el administrador de eventos
 
 | Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Application class will use this class
+Las excepciones lanzadas en la clase Phalcon\Application usarán esta clase

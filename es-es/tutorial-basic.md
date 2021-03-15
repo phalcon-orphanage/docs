@@ -68,7 +68,7 @@ In the case of our tutorial, this file must be located in the `tutorial` directo
 
 You can also use nginX, apache, cherokee or other web servers. You can check the [webserver setup](webserver-setup) page for instructions.
 
-## Bootstrap
+## Manos a la obra
 
 The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well define application behavior.
 

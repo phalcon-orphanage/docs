@@ -23,7 +23,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 > **NOTE**: Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
-## Structure
+## Estructura
 
 You can clone the repository to your machine (or download it) from [GitHub](https://github.com/phalcon/invo). Once you clone it (or download and unzip it) you will end up with the following directory structure:
 
