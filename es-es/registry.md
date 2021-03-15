@@ -198,7 +198,7 @@ echo $collection->has('year', true);      // true
 public function has(string $element):  bool
 ```
 
-## Set
+## Establecer
 
 Para establecer un elemento en la colección, puede utilizar lo siguiente:
 
