@@ -124,7 +124,7 @@ $factory  = new ConfigFactory();
 $config = $factory->load($fileName);
 ```
 
-## Exceptions
+## Excepciones
 
 Any exceptions thrown in the [Phalcon\Config](api/phalcon_config) component will be of type [Phalcon\Config\Exception](api/phalcon_config#config-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
@@ -358,7 +358,7 @@ For additional information, you can check the [Phalcon\Collection](api/phalcon_c
 
 Other than the base component [Phalcon\Config](api/phalcon_config), which accepts a string (file name and path) or a native PHP array, there are several available adapters that can read different file types and load the configuration from them.
 
-The available adapters are:
+Los adaptadores disponibles son:
 
 | Clase                                                                          | Descripción                                                                                         |
 | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
