@@ -335,7 +335,7 @@ The above code will prefix all the paths with `/data/app/`.
 > **NOTE**: The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 {: .alert .alert-info }
 
-## Exceptions
+## Excepciones
 
 Any exceptions thrown in the [Phalcon\Url](api/phalcon_url#url) component will be of type [Phalcon\Url\Exception](api/phalcon_url#url-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
