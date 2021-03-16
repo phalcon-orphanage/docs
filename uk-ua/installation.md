@@ -32,6 +32,9 @@ extension=psr.so
 extension=phalcon.so
 ```
 
+> **NOTE**: You will need the PSR 1.0 extension installed.
+{: .alert .alert-danger }
+
 Деякі дистрибутиви додають числовий префікс до `ini` файлів для управління черговістю завантаження розширень. Якщо це має місце у вашій системі, вкажіть вище число для Phalcon (наприклад, `50-phalcon.ini`).
 
 Використання Pecl передбачає автоматичне встановлення цього розширення.
@@ -48,7 +51,7 @@ Phalcon спроектований таким чином, щоб для забе
 
 ### Програмне забезпечення
 
-> **ПРИМІТКА**: Завжди намагайтесь тестувати і використовувати у роботі лише останні версії Phalcon та PHP, оскільки вони передбачають виправлення відомих помилок, покращення безпеки та продуктивності.
+> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 {: .alert .alert-danger }
 
 Окрім PHP 7.2 або новішої, в залежності від потреб вашого застосунку та компонентів, які вам потрібні, може виникнути потреба в установленні таких розширень:
@@ -65,7 +68,7 @@ Phalcon спроектований таким чином, щоб для забе
 * [Розширення Mbstring](https://php.net/manual/en/book.mbstring.php)
 * [Memcached](https://php.net/manual/en/book.memcached.php) або інші відповідні адаптери в залежності від вашої політики використання кешу
 
-> **ПРИМІТКА**: Установка цих пакунків може відрізнятись, залежно від операційної системи вашого сервера чи менеджера пакунків, яким ви користуєтесь. Будь ласка, користуйтесь відповідною документацією про те, як встановити ці розширення.
+> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
 {: .alert .alert-info }
 
 Для пакету `libpcre3-dev` ви можете використовувати наступні команди:
