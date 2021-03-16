@@ -239,7 +239,7 @@ Returns all the keys stored
 public function getPrefix(): string;
 ```
 
-Returns the prefix for the keys
+Devuelve el prefijo de las claves
 
 ```php
 public function has( string $key ): bool;
