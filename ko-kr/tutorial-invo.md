@@ -30,16 +30,16 @@ keywords: 'tutorial, invo tutorial, step by step, mvc, 자습서'
 ```bash
 └── invo
     ├── app
-    │   ├── config
-    │   ├── controllers
-    │   ├── forms
-    │   ├── library
-    │   ├── logs
-    │   ├── models
-    │   ├── plugins
-    │   └── views
+    │   ├── config
+    │   ├── controllers
+    │   ├── forms
+    │   ├── library
+    │   ├── logs
+    │   ├── models
+    │   ├── plugins
+    │   └── views
     ├── cache
-    │   └── volt
+    │   └── volt
     ├── docs
     │── public
     │   ├── css
@@ -801,18 +801,18 @@ INVO에서는 회사(companies), 상품(products), 상품타입(types of product
 ```bash
 └── invo
     └── app
-        ├── controllers
-        │   └── ProductsController.php
-        ├── forms
-        │   └── ProductsForm.php
-        ├── models
-        │   └── Products.php
-        └── views
-            └── products
-                ├── edit.volt
-                ├── index.volt
-                ├── new.volt
-                └── search.volt
+        ├── controllers
+        │   └── ProductsController.php
+        ├── forms
+        │   └── ProductsForm.php
+        ├── models
+        │   └── Products.php
+        └── views
+            └── products
+                ├── edit.volt
+                ├── index.volt
+                ├── new.volt
+                └── search.volt
 ```
 
 회사(companies) 등의 다른 데이터들의 경우, 관련파일들(접두어로 `Company`를 붙임) 이 위에서와 동일한 디렉토리에 위치합니다.
