@@ -9014,7 +9014,7 @@ public function getKeyRouteNames()
 public function getMatchedRoute(): RouteInterface;
 ```
 
-Returns the route that matches the handled URI
+Devuelve la ruta que coincide con el URI gestionado
 
 ```php
 public function getMatches(): array;
@@ -10175,7 +10175,7 @@ Returns processed controller name
 public function getMatchedRoute(): RouteInterface;
 ```
 
-Returns the route that matches the handled URI
+Devuelve la ruta que coincide con el URI gestionado
 
 ```php
 public function getMatches(): array;
