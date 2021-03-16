@@ -30,12 +30,12 @@ Uma das principais características do Phalcon é a sua baixa dependência. Por 
 .
 └── tutorial
     ├── app
-    │   ├── controllers
-    │   │   ├── IndexController.php
-    │   │   └── SignupController.php
-    │   ├── models
-    │   │   └── Users.php
-    │   └── views
+    │   ├── controllers
+    │   │   ├── IndexController.php
+    │   │   └── SignupController.php
+    │   ├── models
+    │   │   └── Users.php
+    │   └── views
     └── public
         ├── css
         ├── img
