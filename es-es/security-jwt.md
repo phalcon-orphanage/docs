@@ -174,7 +174,7 @@ use Phalcon\Security\JWT\Signer\Hmac;
 $signer  = new Hmac();
 ```
 
-**Nada**
+**None**
 
 This signer is provided mostly for development purposes. You should always sign your JWT tokens.
 
