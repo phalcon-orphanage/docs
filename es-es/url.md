@@ -337,7 +337,7 @@ The above code will prefix all the paths with `/data/app/`.
 
 ## Exceptions
 
-Any exceptions thrown in the [Phalcon\Url](api/phalcon_url#url) component will be of type [Phalcon\Url\Exception](api/phalcon_url#url-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the [Phalcon\Url](api/phalcon_url#url) component will be of type [Phalcon\Url\Exception](api/phalcon_url#url-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php

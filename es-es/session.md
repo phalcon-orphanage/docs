@@ -102,7 +102,7 @@ $session
 $session->destroy();
 ```
 
-### Exists
+### Existe
 
 To check if your session has started, you can use `exists()`
 
@@ -293,7 +293,7 @@ $session->setOptions(
 
 In the above example, after `setOptions()` is called with a new `uniqueId`, data will be stored using `id-2` now and anything stored before that will not be accessible until you change the key back to `id-1`.
 
-### Set
+### Establecer
 
 You can use `set()` to store contents in your session. The method accepts a `string` as the name of the element and the value to be stored.. The component also supports the magic setter so you can set it as a property of the manager.
 

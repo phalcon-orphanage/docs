@@ -126,7 +126,7 @@ $config = $factory->load($fileName);
 
 ## Exceptions
 
-Any exceptions thrown in the [Phalcon\Config](api/phalcon_config) component will be of type [Phalcon\Config\Exception](api/phalcon_config#config-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the [Phalcon\Config](api/phalcon_config) component will be of type [Phalcon\Config\Exception](api/phalcon_config#config-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
@@ -340,7 +340,7 @@ Phalcon\Config Object
 
 Using `has()` you can determine if a particular key exists in the collection.
 
-### Set
+### Establecer
 
 The component also supports `set()` which allows you to programmatically add or change loaded data.
 

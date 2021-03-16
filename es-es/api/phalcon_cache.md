@@ -23,7 +23,7 @@ title: 'Phalcon\Cache'
 
 | Namespace | Phalcon | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable | | Implements | CacheInterface |
 
-This component offers caching capabilities for your application. Phalcon\Cache implements PSR-16.
+Este componente ofrece capacidades de caché para su aplicación. Phalcon\Cache implementa PSR-16.
 
 ## Propiedades
 
@@ -49,25 +49,25 @@ Constructor.
 public function clear(): bool;
 ```
 
-Wipes clean the entire cache's keys.
+Limpia las claves de todo el caché.
 
 ```php
 public function delete( mixed $key ): bool;
 ```
 
-Delete an item from the cache by its unique key.
+Elimina un elemento del caché por su clave única.
 
 ```php
 public function deleteMultiple( mixed $keys ): bool;
 ```
 
-Deletes multiple cache items in a single operation.
+Elimina múltiples elementos del caché en una única operación.
 
 ```php
 public function get( mixed $key, mixed $defaultValue = null ): mixed;
 ```
 
-Fetches a value from the cache.
+Obtiene un valor del caché.
 
 ```php
 public function getAdapter(): AdapterInterface
@@ -77,37 +77,37 @@ public function getAdapter(): AdapterInterface
 public function getMultiple( mixed $keys, mixed $defaultValue = null ): mixed;
 ```
 
-Obtains multiple cache items by their unique keys.
+Obtiene múltiples elementos del caché usando sus claves únicas.
 
 ```php
 public function has( mixed $key ): bool;
 ```
 
-Determines whether an item is present in the cache.
+Determina si un elemento está presente en el caché.
 
 ```php
 public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
+Almacena datos en el caché, referenciados únicamente por una clave con un tiempo TTL de expiración opcional.
 
 ```php
 public function setMultiple( mixed $values, mixed $ttl = null ): bool;
 ```
 
-Persists a set of key => value pairs in the cache, with an optional TTL.
+Almacena un conjunto de pares clave => valor en el cache, con un opcional TTL.
 
 ```php
 protected function checkKey( mixed $key ): void;
 ```
 
-Checks the key. If it contains invalid characters an exception is thrown
+Comprueba la clave. Si contiene caracteres inválidos lanzará una excepción
 
 ```php
 protected function checkKeys( mixed $keys ): void;
 ```
 
-Checks the key. If it contains invalid characters an exception is thrown
+Comprueba la clave. Si contiene caracteres inválidos lanzará una excepción
 
 <h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
 
@@ -115,7 +115,7 @@ Checks the key. If it contains invalid characters an exception is thrown
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface | | Extends | StorageAdapterInterface |
 
-Interface for Phalcon\Cache adapters
+Interfaz para adaptadores Phalcon\Cache
 
 <h1 id="cache-adapter-apcu">Class Phalcon\Cache\Adapter\Apcu</h1>
 
@@ -123,7 +123,7 @@ Interface for Phalcon\Cache adapters
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Apcu | | Extends | StorageApcu | | Implements | CacheAdapterInterface |
 
-Apcu adapter
+Adaptador Apcu
 
 <h1 id="cache-adapter-libmemcached">Class Phalcon\Cache\Adapter\Libmemcached</h1>
 
@@ -131,7 +131,7 @@ Apcu adapter
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Libmemcached | | Extends | StorageLibmemcached | | Implements | CacheAdapterInterface |
 
-Libmemcached adapter
+Adaptador Libmemcached
 
 <h1 id="cache-adapter-memory">Class Phalcon\Cache\Adapter\Memory</h1>
 
@@ -139,7 +139,7 @@ Libmemcached adapter
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Memory | | Extends | StorageMemory | | Implements | CacheAdapterInterface |
 
-Memory adapter
+Adaptador de Memoria
 
 <h1 id="cache-adapter-redis">Class Phalcon\Cache\Adapter\Redis</h1>
 
@@ -147,7 +147,7 @@ Memory adapter
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Redis | | Extends | StorageRedis | | Implements | CacheAdapterInterface |
 
-Redis adapter
+Adaptador Redis
 
 <h1 id="cache-adapter-stream">Class Phalcon\Cache\Adapter\Stream</h1>
 
@@ -155,7 +155,7 @@ Redis adapter
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Stream | | Extends | StorageStream | | Implements | CacheAdapterInterface |
 
-Stream adapter
+Adaptador de Flujo
 
 <h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
 
@@ -163,7 +163,7 @@ Stream adapter
 
 | Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
 
-Factory to create Cache adapters
+Fábrica para crear adaptadores de Cache
 
 ## Propiedades
 
@@ -181,19 +181,19 @@ private serializerFactory;
 public function __construct( SerializerFactory $factory = null, array $services = [] );
 ```
 
-AdapterFactory constructor.
+Constructor AdapterFactory.
 
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+Crea una nueva instancia del adaptador
 
 ```php
 protected function getAdapters(): array;
 ```
 
-Returns the available adapters
+Devuelve los adaptadores disponibles
 
 <h1 id="cache-cachefactory">Class Phalcon\Cache\CacheFactory</h1>
 
@@ -201,7 +201,7 @@ Returns the available adapters
 
 | Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr |
 
-Creates a new Cache class
+Crea una nueva clase Cache
 
 ## Propiedades
 
@@ -225,13 +225,13 @@ Constructor
 public function load( mixed $config ): mixed;
 ```
 
-Factory to create an instance from a Config object
+Fábrica para crear una instancia desde un objeto Config
 
 ```php
 public function newInstance( string $name, array $options = [] ): CacheInterface;
 ```
 
-Constructs a new Cache instance.
+Construye una nueva instancia Cache.
 
 <h1 id="cache-exception-exception">Class Phalcon\Cache\Exception\Exception</h1>
 
@@ -239,7 +239,7 @@ Constructs a new Cache instance.
 
 | Namespace | Phalcon\Cache\Exception | | Extends | \Phalcon\Exception | | Implements | \Psr\SimpleCache\CacheException |
 
-Exceptions thrown in Phalcon\Cache will use this class
+Las excepciones lanzadas en Phalcon\Cache usarán esta clase
 
 <h1 id="cache-exception-invalidargumentexception">Class Phalcon\Cache\Exception\InvalidArgumentException</h1>
 
@@ -247,4 +247,4 @@ Exceptions thrown in Phalcon\Cache will use this class
 
 | Namespace | Phalcon\Cache\Exception | | Extends | \Phalcon\Exception | | Implements | \Psr\SimpleCache\InvalidArgumentException |
 
-Exceptions thrown in Phalcon\Cache will use this class
+Las excepciones lanzadas en Phalcon\Cache usarán esta clase

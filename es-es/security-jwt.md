@@ -537,7 +537,7 @@ $validator
 
 ## Exceptions
 
-Any exceptions thrown in the Security component will be of the namespace `Phalcon\Security\JWT\*`. You can use this exception to selectively catch exceptions thrown only from this component. There are two exceptions raised. First if you supply the wrong algoritm string when instantiating the [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
+Any exceptions thrown in the Security component will be of the namespace `Phalcon\Security\JWT\*`. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. There are two exceptions raised. First if you supply the wrong algoritm string when instantiating the [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
 
 The second exception is thrown when validating a JWT. This exception is [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 

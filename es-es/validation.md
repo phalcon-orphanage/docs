@@ -2044,7 +2044,7 @@ class CompanyValidation extends Validation
 
 ## Exceptions
 
-Any exceptions thrown in the `Phalcon\Validator` namespace will be of type [Phalcon\Validation\Exception](api/phalcon_validation#validation-exception) or [Phalcon\Validation\Validator\Exception](api/phalcon_validation#validation-validator-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Validator` namespace will be of type [Phalcon\Validation\Exception](api/phalcon_validation#validation-exception) or [Phalcon\Validation\Validator\Exception](api/phalcon_validation#validation-validator-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php

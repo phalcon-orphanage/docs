@@ -1886,7 +1886,7 @@ Create a new instance of the adapter
 protected function getAdapters(): array;
 ```
 
-Returns the available adapters
+Devuelve los adaptadores disponibles
 
 <h1 id="db-column">Class Phalcon\Db\Column</h1>
 
