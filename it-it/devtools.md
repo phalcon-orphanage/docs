@@ -369,8 +369,8 @@ The scaffold generator will build several files in your application, along with 
 
 | File                                  | Purpose                      |
 | ------------------------------------- | ---------------------------- |
-| `app/controllers/UsersController.php` | The Products controller      |
-| `app/models/Users.php`                | The Products model           |
+| `app/controllers/UsersController.php` | The Users controller         |
+| `app/models/Users.php`                | The Users model              |
 | `app/views/layout/users.phtml`        | Controller layout for Users  |
 | `app/views/products/search.phtml`     | View for the action `search` |
 | `app/views/products/new.phtml`        | View for the action `new`    |
