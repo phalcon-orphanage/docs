@@ -32,6 +32,9 @@ antes de
 extension=phalcon.so
 ```
 
+> **NOTE**: You will need the PSR 1.0 extension installed.
+{: .alert .alert-danger }
+
 Como alternativa, algumas distribuições adicionam um prefixo de número nos arquivos `ini`. Se for esse o caso, escolha um número alto para Phalcon (ex.: `50-phalcon.ini`).
 
 Usando Pecl esta extensão será instalada automaticamente.
@@ -48,7 +51,7 @@ Nós hospedamos nosso site e blog nos últimos anos em uma VM na Amazon com 512M
 
 ### Software
 
-> **NOTA**: Você sempre deve tentar usar a versão mais recente do Phalcon e PHP pois ambos corrigem bugs, aprimoram a segurança bem como a performance.
+> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 {: .alert .alert-danger }
 
 Juntamente com PHP 7.2 ou superior, dependendo das necessidades da sua aplicação e dos componentes do Phalcon que você precisa, talvez seja necessário instalar as seguintes extensões:
@@ -65,7 +68,7 @@ Juntamente com PHP 7.2 ou superior, dependendo das necessidades da sua aplicaç�
 * [Mbstring](https://php.net/manual/en/book.mbstring.php)
 * [Memcached](https://php.net/manual/en/book.memcached.php) ou outro adaptador de cache relevante, dependendo do seu uso de cache
 
-> **NOTA**: a instalação desses pacotes irá variar de acordo com o seu sistema operacional, bem como o gerenciador de pacotes que você usa (se houver). Por favor, consulte a documentação relevante sobre como instalar essas extensões.
+> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
 {: .alert .alert-info }
 
 Para o pacote `libpcre3-dev` você pode usar os seguintes comandos:
