@@ -1220,7 +1220,7 @@ class Products extends Model
 
 The code above allows you to delete all the related record if the primary record is deleted (cascade delete).
 
-## Operations
+## Operaciones
 
 You can perform operations using relationships, if a resultset returns complete objects.
 
