@@ -381,7 +381,7 @@ Gets last dispatched controller name
 public function getLastController(): ControllerInterface;
 ```
 
-Returns the latest dispatched controller
+Devuelve el último controlador despachado
 
 ```php
 public function getPreviousActionName(): string;
@@ -469,7 +469,7 @@ Gets last dispatched controller name
 public function getLastController(): ControllerInterface;
 ```
 
-Returns the latest dispatched controller
+Devuelve el último controlador despachado
 
 ```php
 public function setControllerName( string $controllerName );
@@ -9020,7 +9020,7 @@ Devuelve la ruta que coincide con el URI gestionado
 public function getMatches(): array;
 ```
 
-Returns the sub expressions in the regular expression matched
+Devuelve las sub expresiones en la expresión regular combinada
 
 ```php
 public function getModuleName(): string;
@@ -9044,25 +9044,25 @@ Returns the processed parameters
 public function getRouteById( mixed $id ): RouteInterface | bool;
 ```
 
-Returns a route object by its id
+Devuelve un objeto de ruta por su identidad
 
 ```php
 public function getRouteByName( string $name ): RouteInterface | bool;
 ```
 
-Returns a route object by its name
+Devuelve un objeto de ruta por su nombre
 
 ```php
 public function getRoutes(): RouteInterface[];
 ```
 
-Returns all the routes defined in the router
+Devuelve todas las rutas definidas en el enrutador
 
 ```php
 public function handle( string $uri ): void;
 ```
 
-Handles routing information received from the rewrite engine
+Gestiona la información de enrutamiento recibida del motor de reescritura
 
 ```php
 // Passing a URL
@@ -9109,7 +9109,7 @@ Establece el nombre predeterminado del controlador
 public function setDefaultModule( string $moduleName ): RouterInterface;
 ```
 
-Sets the name of the default module
+Establece el nombre del módulo predeterminado
 
 ```php
 public function setDefaultNamespace( string $namespaceName ): RouterInterface;
@@ -9121,7 +9121,7 @@ Sets the name of the default namespace
 public function setDefaults( array $defaults ): RouterInterface;
 ```
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here. This method must not be used to set a 404 route
+Establece un vector de rutas por defecto. Si a una ruta le falta el camino el enrutador usará el definido aquí. No se debe usar este método para establecer una ruta 404
 
 ```php
 $router->setDefaults(
@@ -9150,7 +9150,7 @@ public function setKeyRouteNames( $keyRouteNames )
 public function wasMatched(): bool;
 ```
 
-Checks if the router matches any of the defined routes
+Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 <h1 id="mvc-router-annotations">Class Phalcon\Mvc\Router\Annotations</h1>
 
@@ -9370,7 +9370,7 @@ Phalcon\Mvc\Router\Group constructor
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 
-Adds a route to the router on any HTTP method
+Añade una ruta al enrutador en cualquier método HTTP
 
 ```php
 $router->add("/about", "About::index");
@@ -9440,7 +9440,7 @@ Adds a route to the router that only match if the HTTP method is TRACE
 public function beforeMatch( callable $beforeMatch ): GroupInterface;
 ```
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
+Establece una llamada de retorno que se llama si la ruta coincide. El desarrollador puede implementar cualquier condición arbitraria aquí. Si la función de retorno devuelve `false` la ruta será tratada como no coincidente
 
 ```php
 public function clear(): void;
@@ -9452,7 +9452,7 @@ Removes all the pre-defined routes
 public function getBeforeMatch(): callable;
 ```
 
-Returns the 'before match' callback if any
+Devuelve la función de retorno *'before match'* si la hay
 
 ```php
 public function getHostname(): string;
@@ -9559,7 +9559,7 @@ $router->mount($blog);
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 
-Adds a route to the router on any HTTP method
+Añade una ruta al enrutador en cualquier método HTTP
 
 ```php
 router->add("/about", "About::index");
@@ -9629,7 +9629,7 @@ Adds a route to the router that only match if the HTTP method is TRACE
 public function beforeMatch( callable $beforeMatch ): GroupInterface;
 ```
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
+Establece una llamada de retorno que se llama si la ruta coincide. El desarrollador puede implementar cualquier condición arbitraria aquí. Si la función de retorno devuelve `false` la ruta será tratada como no coincidente
 
 ```php
 public function clear(): void;
@@ -9641,7 +9641,7 @@ Removes all the pre-defined routes
 public function getBeforeMatch(): callable;
 ```
 
-Returns the 'before match' callback if any
+Devuelve la función de retorno *'before match'* si la hay
 
 ```php
 public function getHostname(): string;
@@ -9693,7 +9693,7 @@ Set a common uri prefix for all the routes in this group
 
 Phalcon\Mvc\Router\Route
 
-This class represents every route added to the router
+Esta clase representa cada ruta agregada al enrutador
 
 ## Propiedades
 
@@ -9748,7 +9748,7 @@ Phalcon\Mvc\Router\Route constructor
 public function beforeMatch( mixed $callback ): RouteInterface;
 ```
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
+Establece una llamada de retorno que se llama si la ruta coincide. El desarrollador puede implementar cualquier condición arbitraria aquí. Si la función de retorno devuelve `false` la ruta será tratada como no coincidente
 
 ```php
 $router->add(
@@ -9785,25 +9785,25 @@ public function convert( string $name, mixed $converter ): RouteInterface;
 public function extractNamedParams( string $pattern ): array | bool;
 ```
 
-Extracts parameters from a string
+Extrae parámetros de una cadena
 
 ```php
 public function getBeforeMatch(): callable;
 ```
 
-Returns the 'before match' callback if any
+Devuelve la función de retorno *'before match'* si la hay
 
 ```php
 public function getCompiledPattern(): string;
 ```
 
-Returns the route's compiled pattern
+Devuelve el patrón compilado de la ruta
 
 ```php
 public function getConverters(): array;
 ```
 
-Returns the router converter
+Devuelve el convertidor del router
 
 ```php
 public function getGroup(): GroupInterface | null;
@@ -9837,31 +9837,31 @@ Returns the 'match' callback if any
 public function getName(): string;
 ```
 
-Returns the route's name
+Devuelve el nombre de la ruta
 
 ```php
 public function getPaths(): array;
 ```
 
-Returns the paths
+Devuelve las rutas
 
 ```php
 public function getPattern(): string;
 ```
 
-Returns the route's pattern
+Devuelve el patrón de la ruta
 
 ```php
 public function getReversedPaths(): array;
 ```
 
-Returns the paths using positions as keys and names as values
+Devuelve las rutas usando posiciones como claves y nombres como valores
 
 ```php
 public function getRouteId(): string;
 ```
 
-Returns the route's id
+Devuelve la identidad de la ruta
 
 ```php
 public static function getRoutePaths( mixed $paths = null ): array;
@@ -9890,13 +9890,13 @@ $router->add(
 public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
-Reconfigure the route adding a new pattern and a set of paths
+Reconfigura la ruta agregando un nuevo patrón y un conjunto de rutas
 
 ```php
 public static function reset(): void;
 ```
 
-Resets the internal route id generator
+Restablece el generador de identificador de ruta interno
 
 ```php
 public function setGroup( GroupInterface $group ): RouteInterface;
@@ -9935,7 +9935,7 @@ $route->setHttpMethods(
 public function setName( string $name ): RouteInterface;
 ```
 
-Sets the route's name
+Establece el nombre de la ruta
 
 ```php
 $router->add(
@@ -9991,7 +9991,7 @@ Adds a converter to perform an additional transformation for certain parameter.
 public function getCompiledPattern(): string;
 ```
 
-Returns the route's pattern
+Devuelve el patrón de la ruta
 
 ```php
 public function getHostname(): string;
@@ -10009,43 +10009,43 @@ Returns the HTTP methods that constraint matching the route
 public function getName(): string;
 ```
 
-Returns the route's name
+Devuelve el nombre de la ruta
 
 ```php
 public function getPaths(): array;
 ```
 
-Returns the paths
+Devuelve las rutas
 
 ```php
 public function getPattern(): string;
 ```
 
-Returns the route's pattern
+Devuelve el patrón de la ruta
 
 ```php
 public function getReversedPaths(): array;
 ```
 
-Returns the paths using positions as keys and names as values
+Devuelve las rutas usando posiciones como claves y nombres como valores
 
 ```php
 public function getRouteId(): string;
 ```
 
-Returns the route's id
+Devuelve la identidad de la ruta
 
 ```php
 public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
-Reconfigure the route adding a new pattern and a set of paths
+Reconfigura la ruta agregando un nuevo patrón y un conjunto de rutas
 
 ```php
 public static function reset(): void;
 ```
 
-Resets the internal route id generator
+Restablece el generador de identificador de ruta interno
 
 ```php
 public function setHostname( string $hostname ): RouteInterface;
@@ -10063,7 +10063,7 @@ Sets a set of HTTP methods that constraint the matching of the route
 public function setName( string $name ): RouteInterface;
 ```
 
-Sets the route's name
+Establece el nombre de la ruta
 
 ```php
 public function via( mixed $httpMethods ): RouteInterface;
@@ -10085,7 +10085,7 @@ Interface for Phalcon\Mvc\Router
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 
-Adds a route to the router on any HTTP method
+Añade una ruta al enrutador en cualquier método HTTP
 
 ```php
 public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
@@ -10163,7 +10163,7 @@ Removes all the defined routes
 public function getActionName(): string;
 ```
 
-Returns processed action name
+Devuelve el nombre de la acción procesada
 
 ```php
 public function getControllerName(): string;
@@ -10181,13 +10181,13 @@ Devuelve la ruta que coincide con el URI gestionado
 public function getMatches(): array;
 ```
 
-Return the sub expressions in the regular expression matched
+Devuelve las subexpresiones coincidentes en la expresión regular
 
 ```php
 public function getModuleName(): string;
 ```
 
-Returns processed module name
+Devuelve el nombre del módulo procesado
 
 ```php
 public function getNamespaceName(): string;
@@ -10199,31 +10199,31 @@ Returns processed namespace name
 public function getParams(): array;
 ```
 
-Returns processed extra params
+Devuelve los parámetros extra procesados
 
 ```php
 public function getRouteById( mixed $id ): RouteInterface | bool;
 ```
 
-Returns a route object by its id
+Devuelve un objeto de ruta por su identidad
 
 ```php
 public function getRouteByName( string $name ): RouteInterface | bool;
 ```
 
-Returns a route object by its name
+Devuelve un objeto de ruta por su nombre
 
 ```php
 public function getRoutes(): RouteInterface[];
 ```
 
-Return all the routes defined in the router
+Devuelve todas las rutas definidas en el enrutador
 
 ```php
 public function handle( string $uri ): void;
 ```
 
-Handles routing information received from the rewrite engine
+Gestiona la información de enrutamiento recibida del motor de reescritura
 
 ```php
 public function mount( GroupInterface $group ): RouterInterface;
@@ -10247,19 +10247,19 @@ Establece el nombre predeterminado del controlador
 public function setDefaultModule( string $moduleName ): RouterInterface;
 ```
 
-Sets the name of the default module
+Establece el nombre del módulo predeterminado
 
 ```php
 public function setDefaults( array $defaults ): RouterInterface;
 ```
 
-Sets an array of default paths
+Establece un vector de rutas por defecto
 
 ```php
 public function wasMatched(): bool;
 ```
 
-Check if the router matches any of the defined routes
+Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 <h1 id="mvc-view">Class Phalcon\Mvc\View</h1>
 
