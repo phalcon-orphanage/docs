@@ -30,12 +30,12 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, нав
 .
 └── tutorial
     ├── app
-    │   ├── controllers
-    │   │   ├── IndexController.php
-    │   │   └── SignupController.php
-    │   ├── models
-    │   │   └── Users.php
-    │   └── views
+    │   ├── controllers
+    │   │   ├── IndexController.php
+    │   │   └── SignupController.php
+    │   ├── models
+    │   │   └── Users.php
+    │   └── views
     └── public
         ├── css
         ├── img
