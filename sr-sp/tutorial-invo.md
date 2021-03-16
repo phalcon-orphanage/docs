@@ -30,16 +30,16 @@ You can clone the repository to your machine (or download it) from [GitHub](http
 ```bash
 └── invo
     ├── app
-    │   ├── config
-    │   ├── controllers
-    │   ├── forms
-    │   ├── library
-    │   ├── logs
-    │   ├── models
-    │   ├── plugins
-    │   └── views
+    │   ├── config
+    │   ├── controllers
+    │   ├── forms
+    │   ├── library
+    │   ├── logs
+    │   ├── models
+    │   ├── plugins
+    │   └── views
     ├── cache
-    │   └── volt
+    │   └── volt
     ├── docs
     │── public
     │   ├── css
@@ -801,18 +801,18 @@ We have a simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_d
 ```bash
 └── invo
     └── app
-        ├── controllers
-        │   └── ProductsController.php
-        ├── forms
-        │   └── ProductsForm.php
-        ├── models
-        │   └── Products.php
-        └── views
-            └── products
-                ├── edit.volt
-                ├── index.volt
-                ├── new.volt
-                └── search.volt
+        ├── controllers
+        │   └── ProductsController.php
+        ├── forms
+        │   └── ProductsForm.php
+        ├── models
+        │   └── Products.php
+        └── views
+            └── products
+                ├── edit.volt
+                ├── index.volt
+                ├── new.volt
+                └── search.volt
 ```
 
 For other areas (such as companies for instance), the relevant files (prefixed with `Company`) can be found in the same directories as shown above.
