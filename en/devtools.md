@@ -341,14 +341,14 @@ $ phalcon scaffold --table-name users
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| File                                     | Purpose                        |
-|------------------------------------------|--------------------------------|
-| `app/controllers/UsersController.php`    | The Products controller        |
-| `app/models/Users.php`                   | The Products model             |
-| `app/views/layout/users.phtml   `        | Controller layout for Users    |
-| `app/views/products/search.phtml`        | View for the action `search`   |
-| `app/views/products/new.phtml`           | View for the action `new`      |
-| `app/views/products/edit.phtml`          | View for the action `edit`     |
+| File                                     | Purpose                      |
+|------------------------------------------|------------------------------|
+| `app/controllers/UsersController.php`    | The Users controller         |
+| `app/models/Users.php`                   | The Users model              |
+| `app/views/layout/users.phtml   `        | Controller layout for Users  |
+| `app/views/products/search.phtml`        | View for the action `search` |
+| `app/views/products/new.phtml`           | View for the action `new`    |
+| `app/views/products/edit.phtml`          | View for the action `edit`   |
 
 When browsing the recently generated controller, you will see a search form and a link to create a new Product:
 

@@ -27,12 +27,12 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
 .
 └── tutorial
     ├── app
-    │   ├── controllers
-    │   │   ├── IndexController.php
-    │   │   └── SignupController.php
-    │   ├── models
-    │   │   └── Users.php
-    │   └── views
+    │   ├── controllers
+    │   │   ├── IndexController.php
+    │   │   └── SignupController.php
+    │   ├── models
+    │   │   └── Users.php
+    │   └── views
     └── public
         ├── css
         ├── img
