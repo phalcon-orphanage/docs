@@ -234,7 +234,7 @@ The `JSON` serializer uses `json_encode` and `json_decode`. The target system mu
 
 Similar to `igbinary` the `msgpack` serializer uses `msgpack_pack` and `msgpack_unpack` for serializing and unserializing data. This, along with `igbinary` is one of the fastest and most efficient serializers. However, it requires that the [msgpack](https://msgpack.org/) PHP extension is loaded on the target system.
 
-### `Nada`
+### `None`
 
 This serializer does not transform the data at all. Both its `serialize` and `unserialize` get and set the data without altering it.
 
