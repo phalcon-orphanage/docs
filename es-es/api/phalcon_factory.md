@@ -47,7 +47,7 @@ Checks the config if it is a valid object
 abstract protected function getAdapters(): array;
 ```
 
-Returns the adapters for the factory
+Devuelve los adaptadores de la fábrica
 
 ```php
 protected function getService( string $name ): mixed;
