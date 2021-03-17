@@ -222,13 +222,13 @@ Returns the processed controller name
 public function getMatchedRoute(): RouteInterface
 ```
 
-Returns the route that matches the handled URI
+Devuelve la ruta que coincide con el URI gestionado
 
 ```php
 public function getMatches(): array
 ```
 
-Returns the sub expressions in the regular expression matched
+Devuelve las sub expresiones en la expresión regular combinada
 
 ```php
 public function getModuleName(): string
@@ -254,7 +254,7 @@ public function getRouteById(
 ): RouteInterface | bool
 ```
 
-Returns a route object by its id
+Devuelve un objeto de ruta por su identidad
 
 ```php
 public function getRouteByName(
@@ -262,19 +262,19 @@ public function getRouteByName(
 ): RouteInterface | bool
 ```
 
-Returns a route object by its name
+Devuelve un objeto de ruta por su nombre
 
 ```php
 public function getRoutes(): RouteInterface[]
 ```
 
-Returns all the routes defined in the router
+Devuelve todas las rutas definidas en el enrutador
 
 ```php
 public function handle(string $uri): void
 ```
 
-Handles routing information received from the rewrite engine
+Gestiona la información de enrutamiento recibida del motor de reescritura
 
 ```php
 $router->handle("/posts/edit/1");
@@ -332,7 +332,7 @@ public function setDefaultModule(
 ): RouterInterface
 ```
 
-Sets the name of the default module
+Establece el nombre del módulo predeterminado
 
 ```php
 public function setDefaultNamespace(
@@ -348,7 +348,7 @@ public function setDefaults(
 ): RouterInterface
 ```
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here. This method must not be used to set a 404 route
+Establece un vector de rutas por defecto. If a route is missing a path the router will use the defined here. This method must not be used to set a 404 route
 
 ```php
 $router->setDefaults(
@@ -369,7 +369,7 @@ Returns an array of default parameters
 public function wasMatched(): bool
 ```
 
-Checks if the router matches any of the defined routes
+Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 ## Defining Routes
 

@@ -232,7 +232,7 @@ $container->set(
 $app = new Micro($container);
 ```
 
-## Operations
+## Operaciones
 
 ### Get
 

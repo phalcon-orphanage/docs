@@ -32,6 +32,9 @@ extension=psr.so
 extension=phalcon.so
 ```
 
+> **NOTE**: You will need the PSR 1.0 extension installed.
+{: .alert .alert-danger }
+
 または、一部のディストリビューションでは、` ini `ファイル名に数字のプレフィックスが追加されます。 その場合は、Phalconに大きい数値を指定してください(例：` 50-phalcon.ini `)。
 
 Peclを使用する場合は、この拡張機能が自動的にインストールされます。
@@ -48,7 +51,7 @@ Phalconは、高いパフォーマンスを提供しつつ、可能な限り少�
 
 ### ソフトウェア
 
-> **NOTE**: バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。
+> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 {: .alert .alert-danger }
 
 PHP 7.2または以降のバージョンと共に、あなたのアプリケーションとPhalconコンポーネントに応じて、次の拡張機能をインストールする必要があります。
@@ -65,7 +68,7 @@ PHP 7.2または以降のバージョンと共に、あなたのアプリケー�
 * [Mbstring](https://php.net/manual/ja/book.mbstring.php) 拡張機能
 * [Memcached](https://php.net/manual/ja/book.memcached.php) 、またはキャッシュの使用状況に応じた他のキャッシュアダプター
 
-> **NOTE**: これらのパッケージのインストールは、オペレーティングシステムと(存在する場合に) 使用するパッケージマネージャーによって異なります。 これらの拡張機能のインストール方法については関連ドキュメントを参照してください。
+> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
 {: .alert .alert-info }
 
 `libpcre3-dev`パッケージでは、次のコマンドを使用できます。
@@ -155,7 +158,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> **NOTE**: ディストリビューションを変更したり安定板とNightly版を切り替えるといった事情がなければ、この作業の実施は一度だけしか必要ありません。
+> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
 ##### Phalcon のインストール
@@ -210,7 +213,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> **NOTE**: ディストリビューションを変更したり安定板とNightly版を切り替えるといった事情がなければ、この作業の実施は一度だけしか必要ありません。
+> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
 

@@ -32,6 +32,9 @@ phalcon 익스텐션보다 위에 위치해야 함
 extension=phalcon.so
 ```
 
+> **NOTE**: You will need the PSR 1.0 extension installed.
+{: .alert .alert-danger }
+
 일부 배포판의 경우 `ini` 파일명에 접두어로 숫자를 붙이는 경우가 있습니다. 그런 경우, Phalcon 에는 높은 숫자를 할당해 주세요 ( 예. `50-phalcon.ini`).
 
 Pecl을 사용하면 이 익스텐션은 자동으로 설치됩니다.
@@ -48,7 +51,7 @@ Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스�
 
 ### 소프트웨어
 
-> **주의**: 버그 해결, 보안 강화 뿐만이 아니라 성능향상을 위해서라도 Phalcon과 PHP는 가능한 항상 최신버전을 사용해야 합니다.
+> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 {: .alert .alert-danger }
 
 어플리케이션의 요구사항과 필요한 Phalcon 컴포넌트에 따라, PHP 7.2 이상을 사용해야 하는 것 외에도 다음의 익스텐션들을 추가해야 할 수 있습니다.
@@ -65,7 +68,7 @@ Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스�
 * [Mbstring](https://php.net/manual/en/book.mbstring.php) 익스텐션
 * 캐시 사용 여부 및 방식에 따라 [Memcached](https://php.net/manual/en/book.memcached.php) 혹은 관련된 다른 캐시 어댑터
 
-> **주의**: 이 패키지들의 설치는 사용중인 운영체제와 (있다면) 패키지관리자에 따라 달라질 수 있습니다. 이 익스텐션들의 설치방법에 대해서는 관련문서를 참조 해주세요.
+> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
 {: .alert .alert-info }
 
 `libpcre3-dev` 패키지의 경우에 다음의 명령어를 사용하시면 됩니다:
@@ -155,7 +158,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> **주의**: 이 버전의 경우에는 배포판을 변경하거나 Stable 릴리즈에서 nightly 빌드로 전환 하는 경우가 아니라면 최초 한번만 실행하시면 됩니다.
+> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
 ##### Phalcon 설치
@@ -210,7 +213,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> **주의**: 이 버전의 경우에는 배포판을 변경하거나 Stable 릴리즈에서 nightly 빌드로 전환 하는 경우가 아니라면 최초 한번만 실행하시면 됩니다.
+> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
 

@@ -56,7 +56,7 @@ Each adapter offers getters to provide information about the component: - `getHe
 
 [Phalcon\Image\Adapters\Imagick](api/phalcon_image#image-adapter-imagick) utilizes the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
-## Operations
+## Operaciones
 
 ### `background()`
 
@@ -530,7 +530,7 @@ $options = [
 $image = $factory->load($options);
 ```
 
-## Exceptions
+## Excepciones
 
 Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception](api/phalcon_image#image-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 

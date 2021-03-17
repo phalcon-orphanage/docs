@@ -493,9 +493,9 @@ class Custom extends SessionHandlerInterface
 }
 ```
 
-## Exceptions
+## Excepciones
 
-Any exceptions thrown in the Session component will be of type [Phalcon\Session\Exception](api/Phalcon_Session#session-exception). It is thrown any session operation is not completed correctly. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Session component will be of type [Phalcon\Session\Exception](api/Phalcon_Session#session-exception). It is thrown any session operation is not completed correctly. Puede usar estas excepciones para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php

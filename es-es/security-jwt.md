@@ -174,7 +174,7 @@ use Phalcon\Security\JWT\Signer\Hmac;
 $signer  = new Hmac();
 ```
 
-**Nada**
+**None**
 
 This signer is provided mostly for development purposes. You should always sign your JWT tokens.
 
@@ -535,7 +535,7 @@ $validator
 ;
 ```
 
-## Exceptions
+## Excepciones
 
 Any exceptions thrown in the Security component will be of the namespace `Phalcon\Security\JWT\*`. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. There are two exceptions raised. First if you supply the wrong algoritm string when instantiating the [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
 

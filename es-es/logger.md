@@ -586,7 +586,7 @@ $logger->info($message, $context);
 
 The formatter classes above accept a [Phalcon\Logger\Item](api/phalcon_logger#logger-item) object. The object contains all the necessary data required for the logging process. It is used as a transport of data from the logger to the formatter.
 
-## Exceptions
+## Excepciones
 
 Any exceptions thrown in the Logger component will be of type [Phalcon\Logger\Exception](api/phalcon_logger#logger-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 

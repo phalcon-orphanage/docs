@@ -148,9 +148,9 @@ The `encryptBase64()` can be used to encrypt a string in a URL friendly way. It 
 
 The `decryptBase64()` can be used to decrypt a string in a URL friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL *friendly* characters such as `+` or `/`.
 
-## Exceptions
+## Excepciones
 
-Exceptions thrown in the [Phalcon\Crypt](api/phalcon_crypt#crypt) component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch](api/phalcon_crypt#crypt-mismatch) will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Exceptions thrown in the [Phalcon\Crypt](api/phalcon_crypt#crypt) component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch](api/phalcon_crypt#crypt-mismatch) will be thrown. Puede usar estas excepciones para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php

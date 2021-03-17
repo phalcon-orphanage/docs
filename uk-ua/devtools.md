@@ -368,14 +368,14 @@ $ phalcon scaffold --table-name users
 
 Генератор побудує декілька файлів у вашому застосунку, а також створить деякі папки. Ось короткий огляд того, що буде згенеровано:
 
-| Файл                                  | Призначення                           |
-| ------------------------------------- | ------------------------------------- |
-| `app/controllers/UsersController.php` | Контролер користувачів (продуктів)    |
-| `app/models/Users.php`                | Модель даних користувачів (продуктів) |
-| `app/views/layout/users.phtml`        | Шаблон контролера для користувачів    |
-| `app/views/products/search.phtml`     | Представлення для дії `search`        |
-| `app/views/products/new.phtml`        | Представлення для дії `new`           |
-| `app/views/products/edit.phtml`       | Представлення для дії `edit`          |
+| Файл                                  | Призначення                        |
+| ------------------------------------- | ---------------------------------- |
+| `app/controllers/UsersController.php` | The Users controller               |
+| `app/models/Users.php`                | The Users model                    |
+| `app/views/layout/users.phtml`        | Шаблон контролера для користувачів |
+| `app/views/products/search.phtml`     | Представлення для дії `search`     |
+| `app/views/products/new.phtml`        | Представлення для дії `new`        |
+| `app/views/products/edit.phtml`       | Представлення для дії `edit`       |
 
 Переглядаючи щойно згенерований контролер, ви побачите форму пошуку та посилання на створення нового продукту:
 
