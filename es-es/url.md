@@ -365,9 +365,9 @@ The \[Phalcon\UrlInterface\]\[url-interface\] is available if you wish to implem
 
 ## Inyección de Dependencias
 
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Url](api/phalcon_url#url) is already registered for you. However you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Url](api/phalcon_url#url) is already registered for you. However you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
 
-An example of the registration of the service as well as accessing it is below:
+A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
 ```php
 <?php
