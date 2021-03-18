@@ -712,7 +712,7 @@ There are two abstract classes that offer useful functionality when creating cus
 
 ## Inyección de Dependencias
 
-You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container. An example of the registration of the service as well as accessing it is below:
+You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container. A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
 ```php
 <?php
