@@ -13,7 +13,7 @@ title: 'Phalcon\Container'
 
 | Namespace | Phalcon | | Uses | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
 
-PSR-11 Wrapper for `Phalcon\Di`
+Envoltura PSR-11 para `Phalcon\Di`
 
 ## Propiedades
 
@@ -31,16 +31,16 @@ protected container;
 public function __construct( DiInterface $container );
 ```
 
-Phalcon\Container constructor
+Constructor Phalcon\Container
 
 ```php
 public function get( mixed $name ): mixed;
 ```
 
-Return the service
+Devuelve el servicio
 
 ```php
 public function has( mixed $name ): bool;
 ```
 
-Whether a service exists or not in the container
+Si el servicio existe o no en el contenedor
