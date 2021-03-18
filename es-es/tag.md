@@ -1698,7 +1698,7 @@ echo Tag::textField(
 
 If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Tag](api/phalcon_tag) is already registered for you with the name `tag`.
 
-An example of the registration of the service as well as accessing it is below:
+A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
 **Direct**
 
