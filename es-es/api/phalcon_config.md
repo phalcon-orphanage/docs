@@ -21,7 +21,7 @@ title: 'Phalcon\Config'
 
 | Namespace | Phalcon | | Uses | Phalcon\Collection, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception | | Extends | Collection | | Implements | ConfigInterface |
 
-`Phalcon\Config` is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
+`Phalcon\Config` está diseñado para simplificar el acceso a, y el uso de, los datos de configuración de las aplicaciones. Proporciona una propiedad de objeto anidado basada en interfaz de usuario para acceder a estos datos de configuración dentro del código de la aplicación.
 
 ```php
 $config = new \Phalcon\Config(
@@ -64,13 +64,13 @@ protected pathDelimiter;
 public function getPathDelimiter(): string;
 ```
 
-Gets the default path delimiter
+Devuelve el delimitador de ruta por defecto
 
 ```php
 public function merge( mixed $toMerge ): ConfigInterface;
 ```
 
-Merges a configuration into the current one
+Combina una configuración con la actual
 
 ```php
 $appConfig = new \Phalcon\Config(
@@ -88,7 +88,7 @@ $globalConfig->merge($appConfig);
 public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
 ```
 
-Returns a value from current config using a dot separated path.
+Devuelve un valor de la configuración actual usando una ruta separada por puntos.
 
 ```php
 echo $config->path("unknown.path", "default", ".");
@@ -98,13 +98,13 @@ echo $config->path("unknown.path", "default", ".");
 public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 ```
 
-Sets the default path delimiter
+Establece el delimitador de la ruta predeterminada
 
 ```php
 public function toArray(): array;
 ```
 
-Converts recursively the object to an array
+Convierte recursivamente el objeto a un vector
 
 ```php
 print_r(
@@ -116,13 +116,13 @@ print_r(
 final protected function internalMerge( array $source, array $target ): array;
 ```
 
-Performs a merge recursively
+Ejecuta una combinación recursivamente
 
 ```php
 protected function setData( mixed $element, mixed $value ): void;
 ```
 
-Sets the collection data
+Establece los datos de la colección
 
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
@@ -130,9 +130,9 @@ Sets the collection data
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\ConfigFactory, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception, Phalcon\Factory\Exception | | Extends | Config |
 
-Reads multiple files (or arrays) and merges them all together.
+Lee múltiples ficheros (o vectores) y los combina todos juntos.
 
-See `Phalcon\Config\Factory::load` To load Config Adapter class using 'adapter' option.
+Ver `Phalcon\Config\Factory::load` para cargar la clase `Config Adapter` usando la opción *'adapter'*.
 
 ```php
 use Phalcon\Config\Adapter\Grouped;
@@ -186,7 +186,7 @@ $config = new Grouped(
 public function __construct( array $arrayConfig, string $defaultAdapter = string );
 ```
 
-Phalcon\Config\Adapter\Grouped constructor
+Constructor Phalcon\Config\Adapter\Grouped
 
 <h1 id="config-adapter-ini">Class Phalcon\Config\Adapter\Ini</h1>
 
@@ -194,9 +194,9 @@ Phalcon\Config\Adapter\Grouped constructor
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\Exception | | Extends | Config |
 
-Reads ini files and converts them to Phalcon\Config objects.
+Lee ficheros ini y los convierte a objetos Phalcon\Config.
 
-Given the next configuration file:
+Dado el siguiente fichero de configuración:
 
 ```ini
 [database]
@@ -212,7 +212,7 @@ modelsDir = "../app/models/"
 viewsDir = "../app/views/"
 ```
 
-You can read it as follows:
+Puede leerlo de la siguiente manera:
 
 ```php
 use Phalcon\Config\Adapter\Ini;
@@ -223,7 +223,7 @@ echo $config->phalcon->controllersDir;
 echo $config->database->username;
 ```
 
-PHP constants may also be parsed in the ini file, so if you define a constant as an ini value before calling the constructor, the constant's value will be integrated into the results. To use it this way you must specify the optional second parameter as `INI_SCANNER_NORMAL` when calling the constructor:
+Las constantes PHP también se pueden analizar en el fichero ini, así que si define una constante como un valor ini antes de llamar al constructor, el valor de la constante será integrada en los resultados. Para usarlo de esta forma debe especificar el segundo parámetro opcional como `INI_SCANNER_NORMAL` cuando llame al constructor:
 
 ```php
 $config = new \Phalcon\Config\Adapter\Ini(
@@ -238,19 +238,19 @@ $config = new \Phalcon\Config\Adapter\Ini(
 public function __construct( string $filePath, mixed $mode = null );
 ```
 
-Ini constructor.
+Constructor Ini.
 
 ```php
 protected function cast( mixed $ini ): bool | null | double | int | string;
 ```
 
-We have to cast values manually because parse_ini_file() has a poor implementation.
+Tenemos que convertir valores manualmente porque parse_ini_file() tiene una implementación pobre.
 
 ```php
 protected function parseIniString( string $path, mixed $value ): array;
 ```
 
-Build multidimensional array from string
+Construye un vector multidimensional desde una cadena
 
 <h1 id="config-adapter-json">Class Phalcon\Config\Adapter\Json</h1>
 
@@ -258,15 +258,15 @@ Build multidimensional array from string
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Helper\Json | | Extends | Config |
 
-Reads JSON files and converts them to Phalcon\Config objects.
+Lee ficheros JSON y los convierte a objetos Phalcon\Config.
 
-Given the following configuration file:
+Dado el siguiente fichero de configuración:
 
 ```json
 {"phalcon":{"baseuri":"\/phalcon\/"},"models":{"metadata":"memory"}}
 ```
 
-You can read it as follows:
+Puede leerlo de la siguiente manera:
 
 ```php
 use Phalcon\Config\Adapter\Json;
@@ -283,7 +283,7 @@ echo $config->models->metadata;
 public function __construct( string $filePath );
 ```
 
-Phalcon\Config\Adapter\Json constructor
+Constructor Phalcon\Config\Adapter\Json
 
 <h1 id="config-adapter-php">Class Phalcon\Config\Adapter\Php</h1>
 
@@ -291,9 +291,9 @@ Phalcon\Config\Adapter\Json constructor
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config | | Extends | Config |
 
-Reads php files and converts them to Phalcon\Config objects.
+Lee ficheros php y los convierte a objetos Phalcon\Config.
 
-Given the next configuration file:
+Dado el siguiente fichero de configuración:
 
 ```php
 <?php
@@ -314,7 +314,7 @@ return [
 ];
 ```
 
-You can read it as follows:
+Puede leerlo de la siguiente manera:
 
 ```php
 use Phalcon\Config\Adapter\Php;
@@ -331,7 +331,7 @@ echo $config->database->username;
 public function __construct( string $filePath );
 ```
 
-Phalcon\Config\Adapter\Php constructor
+Constructor Phalcon\Config\Adapter\Php
 
 <h1 id="config-adapter-yaml">Class Phalcon\Config\Adapter\Yaml</h1>
 
@@ -339,9 +339,9 @@ Phalcon\Config\Adapter\Php constructor
 
 | Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Config\Exception | | Extends | Config |
 
-Reads YAML files and converts them to Phalcon\Config objects.
+Lee ficheros YAML y los convierte a objetos Phalcon\Config.
 
-Given the following configuration file:
+Dado el siguiente fichero de configuración:
 
 ```yaml
 phalcon:
@@ -351,7 +351,7 @@ models:
   metadata: memory
 ```
 
-You can read it as follows:
+Puede leerlo de la siguiente manera:
 
 ```php
 define(
@@ -381,7 +381,7 @@ echo $config->models->metadata;
 public function __construct( string $filePath, array $callbacks = null );
 ```
 
-Phalcon\Config\Adapter\Yaml constructor
+Constructor Phalcon\Config\Adapter\Yaml
 
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
@@ -389,7 +389,7 @@ Phalcon\Config\Adapter\Yaml constructor
 
 | Namespace | Phalcon\Config | | Uses | Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
-Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
+Carga la clase `Config Adapter` usando la opción 'adapter', si no se proporciona ninguna extensión será añadirá al filePath
 
 ```php
 use Phalcon\Config\ConfigFactory;
@@ -408,25 +408,25 @@ $config = (new ConfigFactory())->load($options);
 public function __construct( array $services = [] );
 ```
 
-ConfigFactory constructor.
+Constructor ConfigFactory.
 
 ```php
 public function load( mixed $config ): ConfigInterface;
 ```
 
-Load a config to create a new instance
+Carga una configuración para crear una nueva instancia
 
 ```php
 public function newInstance( string $name, string $fileName, mixed $params = null ): ConfigInterface;
 ```
 
-Returns a new Config instance
+Devuelve una nueva instancia de configuración
 
 ```php
 protected function getAdapters(): array;
 ```
 
-Returns the adapters for the factory
+Devuelve los adaptadores de la fábrica
 
 <h1 id="config-configinterface">Interface Phalcon\Config\ConfigInterface</h1>
 
@@ -436,7 +436,7 @@ Returns the adapters for the factory
 
 Phalcon\Config\ConfigInterface
 
-Interface for Phalcon\Config class
+Interfaz para la clase Phalcon\Config
 
 ## Métodos
 
@@ -462,4 +462,4 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 
 | Namespace | Phalcon\Config | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Config will use this class
+Las excepciones lanzadas en Phalcon\Config usarán esta clase

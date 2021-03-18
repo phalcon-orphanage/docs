@@ -61,31 +61,31 @@ Constructor
 final public function __get( string $element ): mixed;
 ```
 
-Magic getter to get an element from the collection
+*Getter* mágico para obtener un elemento de la colección
 
 ```php
 final public function __isset( string $element ): bool;
 ```
 
-Magic isset to check whether an element exists or not
+*Isset* mágico para comprobar si un elemento existe o no
 
 ```php
 final public function __set( string $element, mixed $value ): void;
 ```
 
-Magic setter to assign values to an element
+*Setter* mágico para asignar valores a un elemento
 
 ```php
 final public function __unset( string $element ): void;
 ```
 
-Magic unset to remove an element from the collection
+*Unset* mágico para eliminar un elemento de la colección
 
 ```php
 final public function clear(): void;
 ```
 
-Clears the internal collection
+Limpia la colección interna
 
 ```php
 final public function count(): int;
@@ -99,19 +99,19 @@ Count elements of an object
 final public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 
-Get the element from the collection
+Obtiene el elemento de la colección
 
 ```php
 final public function getIterator(): Traversable;
 ```
 
-Returns the iterator of the class
+Devuelve el iterador de la clase
 
 ```php
 final public function has( string $element ): bool;
 ```
 
-Determines whether an element is present in the collection.
+Determina si un elemento está presente en la colección.
 
 ```php
 final public function init( array $data = [] ): void;
