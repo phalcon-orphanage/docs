@@ -492,7 +492,7 @@ class MyController extends Controller
 }
 ```
 
-Also in your views (Volt syntax)
+También en sus vistas (sintaxis Volt)
 
 ```twig
 {% raw %}{{ security.getToken() }}{% endraw %}
