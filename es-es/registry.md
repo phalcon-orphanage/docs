@@ -328,7 +328,7 @@ $collection = new Registry($data);
 echo $collection->count(); // 2
 ```
 
-## Serialization
+## Serialización
 
 Las interfaces `\Serializable` y `\JsonSerializable` exponen métodos que le permiten serializar y deserializar un objeto. `serialize()` y `unserialize()` utilizan las funciones `serialize` y `unserialize` de PHP. `jsonSerialize()` devuelve un arreglo que puede ser usado con `json_encode()` para serializar el objeto.
 

@@ -47,7 +47,7 @@ Se usa para guardar los mensajes en el registro del sistema (*Syslog*). El compo
 
 Este adaptador es un agujero negro: ¡Envía mensajes al *infinito y más allá!* Se usa especialmente para pruebas --o para hacerle una broma a un colega.
 
-## Factory
+## Fábrica (Factory)
 
 You can use the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/phalcon_logger#logger-adapterfactory):
 
@@ -702,7 +702,7 @@ $logger  = new Logger(
 $logger->error('Algo falló');
 ```
 
-### Custom Adapters
+### Adaptadores Personalizados
 
 The [Phalcon\Logger\AdapterInterface](api/phalcon_logger#logger-adapter-adapterinterface) interface must be implemented in order to create your own logger adapters or extend the existing ones. You can also take advantage of the functionality in [Phalcon\Logger\Adapter\AbstractAdapter](api/phalcon_logger#logger-adapter-abstractadapter) abstract class.
 
@@ -712,7 +712,7 @@ There are two abstract classes that offer useful functionality when creating cus
 
 ## Inyección de Dependencias
 
-You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container. An example of the registration of the service as well as accessing it is below:
+You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container. A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
 ```php
 <?php

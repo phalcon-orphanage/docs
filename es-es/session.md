@@ -541,7 +541,7 @@ $user->password = 12345;
 
 ## Inyección de Dependencias
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container you can register your session manager. An example of the registration of the service as well as accessing it is below:
+If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container you can register your session manager. A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
 ```php
 <?php

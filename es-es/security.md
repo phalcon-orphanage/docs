@@ -444,9 +444,9 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ## Inyección de Dependencias
 
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Security](api/phalcon_security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Security](api/phalcon_security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
 
-An example of the registration of the service as well as accessing it is below:
+A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
 ```php
 <?php
@@ -492,7 +492,7 @@ class MyController extends Controller
 }
 ```
 
-Also in your views (Volt syntax)
+También en sus vistas (sintaxis Volt)
 
 ```twig
 {% raw %}{{ security.getToken() }}{% endraw %}
