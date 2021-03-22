@@ -36,7 +36,7 @@ title: 'Phalcon\DataMapper'
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Connection\AbstractConnection, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | AbstractConnection |
 
-Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
+Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
 
 @property array             $arguments @property PDO               $pdo @property ProfilerInterface $profiler
 
@@ -57,25 +57,25 @@ public function __construct( string $dsn, string $username = null, string $passw
 ```
 Constructor.
 
-This overrides the parent so that it can take connection attributes as a constructor parameter, and set them after connection.
+Esto anula al padre así pues puede tomar atributos de conexión como parámetro del constructor, y establecerlos después de la conexión.
 
 
 ```php
 public function __debugInfo(): array;
 ```
-The purpose of this method is to hide sensitive data from stack traces.
+El propósito de este método es ocultar datos sensibles de la pila de seguimiento.
 
 
 ```php
 public function connect(): void;
 ```
-Connects to the database.
+Conecta a la base de datos.
 
 
 ```php
 public function disconnect(): void;
 ```
-Disconnects from the database.
+Desconecta de la base de datos.
 
 
 
@@ -86,7 +86,7 @@ Disconnects from the database.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Implements | ConnectionInterface |
 
-Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
+Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
 
 @property PDO               $pdo @property ProfilerInterface $profiler
 
@@ -110,223 +110,223 @@ protected profiler;
 ```php
 public function __call( mixed $name, array $arguments );
 ```
-Proxies to PDO methods created for specific drivers; in particular, `sqlite` and `pgsql`.
+Proxies para métodos PDO creados para drivers específicos; en particular, `sqlite` y `pgsql`.
 
 
 ```php
 public function beginTransaction(): bool;
 ```
-Begins a transaction. If the profiler is enabled, the operation will be recorded.
+Inicia una transacción. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function commit(): bool;
 ```
-Commits the existing transaction. If the profiler is enabled, the operation will be recorded.
+Confirma la transacción existente. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 abstract public function connect(): void;
 ```
-Connects to the database.
+Conecta a la base de datos.
 
 
 ```php
 abstract public function disconnect(): void;
 ```
-Disconnects from the database.
+Desconecta de la base de datos.
 
 
 ```php
 public function errorCode(): string | null;
 ```
-Gets the most recent error code.
+Obtiene el código de error más reciente.
 
 
 ```php
 public function errorInfo(): array;
 ```
-Gets the most recent error info.
+Obtiene la información del error más reciente.
 
 
 ```php
 public function exec( string $statement ): int;
 ```
-Executes an SQL statement and returns the number of affected rows. If the profiler is enabled, the operation will be recorded.
+Ejecuta una sentencia SQL y devuelve el número de filas afectadas. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function fetchAffected( string $statement, array $values = [] ): int;
 ```
-Performs a statement and returns the number of affected rows.
+Ejecuta una sentencia y devuelve el número de filas afectadas.
 
 
 ```php
 public function fetchAll( string $statement, array $values = [] ): array;
 ```
-Fetches a sequential array of rows from the database; the rows are returned as associative arrays.
+Obtiene un vector secuencial de filas desde la base de datos; las filas se devuelven como vectores asociativos.
 
 
 ```php
 public function fetchAssoc( string $statement, array $values = [] ): array;
 ```
-Fetches an associative array of rows from the database; the rows are returned as associative arrays, and the array of rows is keyed on the first column of each row.
+Obtiene un vector asociativo de filas desde la base de datos; las filas son devuelvas como vectores asociativos, y el vector de filas se mete en la primera columna de cada fila.
 
-If multiple rows have the same first column value, the last row with that value will overwrite earlier rows. This method is more resource intensive and should be avoided if possible.
+Si hay múltiples filas que tengan el mismo valor de primera columna, la última fila con ese valor sobreescribirá las filas anteriores. Este método es más intensivo en recursos y debería evitarse si es posible.
 
 
 ```php
 public function fetchColumn( string $statement, array $values = [], int $column = int ): array;
 ```
-Fetches a column of rows as a sequential array (default first one).
+Obtiene una columna de filas como vector secuencial (por defecto la primera).
 
 
 ```php
 public function fetchGroup( string $statement, array $values = [], int $flags = static-constant-access ): array;
 ```
-Fetches multiple from the database as an associative array. The first column will be the index key. The default flags are PDO::FETCH_ASSOC | PDO::FETCH_GROUP
+Obtiene múltiples desde la base de datos como vector asociativo. La primera columna será la clave del índice. Las banderas predeterminadas son PDO::FETCH_ASSOC | PDO::FETCH_GROUP
 
 
 ```php
 public function fetchObject( string $statement, array $values = [], string $className = string, array $arguments = [] ): object;
 ```
-Fetches one row from the database as an object where the column values are mapped to object properties.
+Obtiene una fila de la base de datos como un objeto donde los valores de las columnas están mapeados como propiedades del objeto.
 
-Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object returned is `\stdClass`
+Ya que PDO inyecta los valores de las propiedades antes de invocar al constructor, cualquier inicialización de valores predeterminados que potencialmente tenga en el constructor de su objeto, anulará los valores que se hayan inyectado por `fetchObject`. El objeto predeterminado devuelto es `\stdClass`
 
 
 ```php
 public function fetchObjects( string $statement, array $values = [], string $className = string, array $arguments = [] ): array;
 ```
-Fetches a sequential array of rows from the database; the rows are returned as objects where the column values are mapped to object properties.
+Obtiene un vector secuencial de filas desde la base de datos, las filas son devueltas como objetos donde los valores de las columnas están mapeadas a propiedades del objeto.
 
-Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object returned is `\stdClass`
+Ya que PDO inyecta los valores de las propiedades antes de invocar al constructor, cualquier inicialización de valores predeterminados que potencialmente tenga en el constructor de su objeto, anulará los valores que se hayan inyectado por `fetchObject`. El objeto predeterminado devuelto es `\stdClass`
 
 
 ```php
 public function fetchOne( string $statement, array $values = [] ): array;
 ```
-Fetches one row from the database as an associative array.
+Obtiene una fila desde la base de datos como un vector asociativo.
 
 
 ```php
 public function fetchPairs( string $statement, array $values = [] ): array;
 ```
-Fetches an associative array of rows as key-value pairs (first column is the key, second column is the value).
+Obtiene un vector asociativo de filas como pares clave-valor (primera columna es la clave, la segunda columna es el valor).
 
 
 ```php
 public function fetchValue( string $statement, array $values = [] );
 ```
-Fetches the very first value (i.e., first column of the first row).
+Obtiene el primer valor (por ejemplo, primera columna de la primera fila).
 
 
 ```php
 public function getAdapter(): \PDO;
 ```
-Return the inner PDO (if any)
+Devuelve el PDO interno (si existe)
 
 
 ```php
 public function getAttribute( int $attribute ): mixed;
 ```
-Retrieve a database connection attribute
+Recupera un atributo de conexión de base de datos
 
 
 ```php
 public static function getAvailableDrivers(): array;
 ```
-Return an array of available PDO drivers (empty array if none available)
+Devuelve un vector de drivers PDO disponibles (vector vacío si no hay ninguno)
 
 
 ```php
 public function getDriverName(): string;
 ```
-Return the driver name
+Devuelve el nombre del driver
 
 
 ```php
 public function getProfiler(): ProfilerInterface;
 ```
-Returns the Profiler instance.
+Devuelve la instancia del Perfilador.
 
 
 ```php
 public function getQuoteNames( string $driver = string ): array;
 ```
-Gets the quote parameters based on the driver
+Obtiene los parámetros de entrecomillado basado en el constructor
 
 
 ```php
 public function inTransaction(): bool;
 ```
-Is a transaction currently active? If the profiler is enabled, the operation will be recorded. If the profiler is enabled, the operation will be recorded.
+¿Hay activa actualmente alguna transacción? Si el perfilador está habilitado, se grabará la operación. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function isConnected(): bool;
 ```
-Is the PDO connection active?
+¿Está activa la conexión PDO?
 
 
 ```php
 public function lastInsertId( string $name = null ): string;
 ```
-Returns the last inserted autoincrement sequence value. If the profiler is enabled, the operation will be recorded.
+Devuelve el último valor insertado de la secuencia de autoincremento. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function perform( string $statement, array $values = [] ): \PDOStatement;
 ```
-Performs a query with bound values and returns the resulting PDOStatement; array values will be passed through `quote()` and their respective placeholders will be replaced in the query string. If the profiler is enabled, the operation will be recorded.
+Ejecuta una consulta con parámetros enlazados y devuelve el PDOStatement resultante; los valores del vector serán pasados a través de `quote()` y sus respectivos marcadores de posición serán reemplazados en la cadena de consulta. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function prepare( string $statement, array $options = [] ): \PDOStatement | bool;
 ```
-Prepares an SQL statement for execution.
+Prepara una sentencia SQL para la ejecución.
 
 
 ```php
 public function query( string $statement ): \PDOStatement | bool;
 ```
-Queries the database and returns a PDOStatement. If the profiler is enabled, the operation will be recorded.
+Consulta la base de datos y devuelve un PDOStatement. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function quote( mixed $value, int $type = static-constant-access ): string;
 ```
-Quotes a value for use in an SQL statement. This differs from `PDO::quote()` in that it will convert an array into a string of comma-separated quoted values. The default type is `PDO::PARAM_STR`
+Entrecomilla un valor para usarlo en una sentencia SQL. Esto difiere de `PDO::quote()` en que convertirá un vector en una cadena de valores entrecomillados separados por coma. El tipo predeterminado es `PDO::PARAM_STR`
 
 
 ```php
 public function rollBack(): bool;
 ```
-Rolls back the current transaction, and restores autocommit mode. If the profiler is enabled, the operation will be recorded.
+Deshace la transacción actual, y restaura el modo de autoconfirmación. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function setAttribute( int $attribute, mixed $value ): bool;
 ```
-Set a database connection attribute
+Establece un atributo de conexión de base de datos
 
 
 ```php
 public function setProfiler( ProfilerInterface $profiler );
 ```
-Sets the Profiler instance.
+Establece una instancia Perfilador.
 
 
 ```php
 protected function fetchData( string $method, array $arguments, string $statement, array $values = [] ): array;
 ```
-Helper method to get data from PDO based on the method passed
+Método de ayuda para obtener datos de PDO basado en el método pasado
 
 
 ```php
 protected function performBind( \PDOStatement $statement, mixed $name, mixed $arguments ): void;
 ```
-Bind a value using the proper PDO::PARAM_* type.
+Vincula un valor usando el tipo PDO::PARAM_* apropiado.
 
 
 
@@ -337,7 +337,7 @@ Bind a value using the proper PDO::PARAM_* type.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | PdoInterface |
 
-Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
+Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
 
 @property array             $args @property PDO               $pdo @property ProfilerInterface $profiler @property array             $quote
 
@@ -347,109 +347,109 @@ Provides array quoting, profiling, a new `perform()` method, new `fetch*()` meth
 ```php
 public function connect(): void;
 ```
-Connects to the database.
+Conecta a la base de datos.
 
 
 ```php
 public function disconnect(): void;
 ```
-Disconnects from the database.
+Desconecta de la base de datos.
 
 
 ```php
 public function fetchAffected( string $statement, array $values = [] ): int;
 ```
-Performs a statement and returns the number of affected rows.
+Ejecuta una sentencia y devuelve el número de filas afectadas.
 
 
 ```php
 public function fetchAll( string $statement, array $values = [] ): array;
 ```
-Fetches a sequential array of rows from the database; the rows are returned as associative arrays.
+Obtiene un vector secuencial de filas desde la base de datos; las filas se devuelven como vectores asociativos.
 
 
 ```php
 public function fetchAssoc( string $statement, array $values = [] ): array;
 ```
-Fetches an associative array of rows from the database; the rows are returned as associative arrays, and the array of rows is keyed on the first column of each row.
+Obtiene un vector asociativo de filas desde la base de datos; las filas son devuelvas como vectores asociativos, y el vector de filas se mete en la primera columna de cada fila.
 
-If multiple rows have the same first column value, the last row with that value will overwrite earlier rows. This method is more resource intensive and should be avoided if possible.
+Si hay múltiples filas que tengan el mismo valor de primera columna, la última fila con ese valor sobreescribirá las filas anteriores. Este método es más intensivo en recursos y debería evitarse si es posible.
 
 
 ```php
 public function fetchColumn( string $statement, array $values = [], int $column = int ): array;
 ```
-Fetches a column of rows as a sequential array (default first one).
+Obtiene una columna de filas como vector secuencial (por defecto la primera).
 
 
 ```php
 public function fetchGroup( string $statement, array $values = [], int $flags = static-constant-access ): array;
 ```
-Fetches multiple from the database as an associative array. The first column will be the index key. The default flags are PDO::FETCH_ASSOC | PDO::FETCH_GROUP
+Obtiene múltiples desde la base de datos como vector asociativo. La primera columna será la clave del índice. Las banderas predeterminadas son PDO::FETCH_ASSOC | PDO::FETCH_GROUP
 
 
 ```php
 public function fetchObject( string $statement, array $values = [], string $className = string, array $arguments = [] ): object;
 ```
-Fetches one row from the database as an object where the column values are mapped to object properties.
+Obtiene una fila de la base de datos como un objeto donde los valores de las columnas están mapeados como propiedades del objeto.
 
-Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object returned is `\stdClass`
+Ya que PDO inyecta los valores de las propiedades antes de invocar al constructor, cualquier inicialización de valores predeterminados que potencialmente tenga en el constructor de su objeto, anulará los valores que se hayan inyectado por `fetchObject`. El objeto predeterminado devuelto es `\stdClass`
 
 
 ```php
 public function fetchObjects( string $statement, array $values = [], string $className = string, array $arguments = [] ): array;
 ```
-Fetches a sequential array of rows from the database; the rows are returned as objects where the column values are mapped to object properties.
+Obtiene un vector secuencial de filas desde la base de datos, las filas son devueltas como objetos donde los valores de las columnas están mapeadas a propiedades del objeto.
 
-Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object returned is `\stdClass`
+Ya que PDO inyecta los valores de las propiedades antes de invocar al constructor, cualquier inicialización de valores predeterminados que potencialmente tenga en el constructor de su objeto, anulará los valores que se hayan inyectado por `fetchObject`. El objeto predeterminado devuelto es `\stdClass`
 
 
 ```php
 public function fetchOne( string $statement, array $values = [] ): array;
 ```
-Fetches one row from the database as an associative array.
+Obtiene una fila desde la base de datos como un vector asociativo.
 
 
 ```php
 public function fetchPairs( string $statement, array $values = [] ): array;
 ```
-Fetches an associative array of rows as key-value pairs (first column is the key, second column is the value).
+Obtiene un vector asociativo de filas como pares clave-valor (primera columna es la clave, la segunda columna es el valor).
 
 
 ```php
 public function fetchValue( string $statement, array $values = [] ): mixed;
 ```
-Fetches the very first value (i.e., first column of the first row).
+Obtiene el primer valor (por ejemplo, primera columna de la primera fila).
 
 
 ```php
 public function getAdapter(): \PDO;
 ```
-Return the inner PDO (if any)
+Devuelve el PDO interno (si existe)
 
 
 ```php
 public function getProfiler(): ProfilerInterface;
 ```
-Returns the Profiler instance.
+Devuelve la instancia del Perfilador.
 
 
 ```php
 public function isConnected(): bool;
 ```
-Is the PDO connection active?
+¿Está activa la conexión PDO?
 
 
 ```php
 public function perform( string $statement, array $values = [] ): \PDOStatement;
 ```
-Performs a query with bound values and returns the resulting PDOStatement; array values will be passed through `quote()` and their respective placeholders will be replaced in the query string. If the profiler is enabled, the operation will be recorded.
+Ejecuta una consulta con parámetros enlazados y devuelve el PDOStatement resultante; los valores del vector serán pasados a través de `quote()` y sus respectivos marcadores de posición serán reemplazados en la cadena de consulta. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function setProfiler( ProfilerInterface $profiler );
 ```
-Sets the Profiler instance.
+Establece una instancia Perfilador.
 
 
 
@@ -460,7 +460,7 @@ Sets the Profiler instance.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotDisconnect, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | AbstractConnection |
 
-Decorates an existing PDO instance with the extended methods.
+Decora una instancia PDO existente con los métodos extendidos.
 
 
 ## Métodos
@@ -470,19 +470,19 @@ public function __construct( \PDO $pdo, ProfilerInterface $profiler = null );
 ```
 Constructor.
 
-This overrides the parent so that it can take an existing PDO instance and decorate it with the extended methods.
+Esto anula el padre así pues puede tomar una instancia PDO existente y decorarla con los métodos extendidos.
 
 
 ```php
 public function connect(): void;
 ```
-Connects to the database.
+Conecta a la base de datos.
 
 
 ```php
 public function disconnect(): void;
 ```
-Disconnects from the database; disallowed with decorated PDO connections.
+Desconecta de la base de datos, no permitido con conexiones PDO decoradas.
 
 @throws CannotDisconnect
 
@@ -495,7 +495,7 @@ Disconnects from the database; disallowed with decorated PDO connections.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection |
 
-An interface to the native PDO object.
+Un interfaz al objeto PDO nativo.
 
 
 ## Métodos
@@ -503,85 +503,85 @@ An interface to the native PDO object.
 ```php
 public function beginTransaction(): bool;
 ```
-Begins a transaction. If the profiler is enabled, the operation will be recorded.
+Inicia una transacción. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function commit(): bool;
 ```
-Commits the existing transaction. If the profiler is enabled, the operation will be recorded.
+Confirma la transacción existente. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function errorCode(): null | string;
 ```
-Gets the most recent error code.
+Obtiene el código de error más reciente.
 
 
 ```php
 public function errorInfo(): array;
 ```
-Gets the most recent error info.
+Obtiene la información del error más reciente.
 
 
 ```php
 public function exec( string $statement ): int;
 ```
-Executes an SQL statement and returns the number of affected rows. If the profiler is enabled, the operation will be recorded.
+Ejecuta una sentencia SQL y devuelve el número de filas afectadas. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function getAttribute( int $attribute ): mixed;
 ```
-Retrieve a database connection attribute
+Recupera un atributo de conexión de base de datos
 
 
 ```php
 public static function getAvailableDrivers(): array;
 ```
-Return an array of available PDO drivers (empty array if none available)
+Devuelve un vector de drivers PDO disponibles (vector vacío si no hay ninguno)
 
 
 ```php
 public function inTransaction(): bool;
 ```
-Is a transaction currently active? If the profiler is enabled, the operation will be recorded. If the profiler is enabled, the operation will be recorded.
+¿Hay activa actualmente alguna transacción? Si el perfilador está habilitado, se grabará la operación. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function lastInsertId( string $name = null ): string;
 ```
-Returns the last inserted autoincrement sequence value. If the profiler is enabled, the operation will be recorded.
+Devuelve el último valor insertado de la secuencia de autoincremento. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function prepare( string $statement, array $options = [] ): \PDOStatement | bool;
 ```
-Prepares an SQL statement for execution.
+Prepara una sentencia SQL para la ejecución.
 
 
 ```php
 public function query( string $statement ): \PDOStatement | bool;
 ```
-Queries the database and returns a PDOStatement. If the profiler is enabled, the operation will be recorded.
+Consulta la base de datos y devuelve un PDOStatement. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function quote( mixed $value, int $type = static-constant-access ): string;
 ```
-Quotes a value for use in an SQL statement. This differs from `PDO::quote()` in that it will convert an array into a string of comma-separated quoted values. The default type is `PDO::PARAM_STR`
+Entrecomilla un valor para usarlo en una sentencia SQL. Esto difiere de `PDO::quote()` en que convertirá un vector en una cadena de valores entrecomillados separados por coma. El tipo predeterminado es `PDO::PARAM_STR`
 
 
 ```php
 public function rollBack(): bool;
 ```
-Rolls back the current transaction, and restores autocommit mode. If the profiler is enabled, the operation will be recorded.
+Deshace la transacción actual, y restaura el modo de autoconfirmación. Si el perfilador está habilitado, se grabará la operación.
 
 
 ```php
 public function setAttribute( int $attribute, mixed $value ): bool;
 ```
-Set a database connection attribute
+Establece un atributo de conexión de base de datos
 
 
 
@@ -592,7 +592,7 @@ Set a database connection attribute
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | Phalcon\DataMapper\Pdo\Connection\ConnectionInterface, Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound | | Implements | ConnectionLocatorInterface |
 
-Manages Connection instances for default, read, and write connections.
+Gestiona instancias de conexión predeterminadas, de lectura y escritura.
 
 @property callable $master @property array    $read @property array    $write
 
@@ -640,43 +640,43 @@ Constructor.
 ```php
 public function getMaster(): ConnectionInterface;
 ```
-Returns the default connection object.
+Devuelve el objeto de conexión predeterminado.
 
 
 ```php
 public function getRead( string $name = string ): ConnectionInterface;
 ```
-Returns a read connection by name; if no name is given, picks a random connection; if no read connections are present, returns the default connection.
+Devuelve una conexión de lectura por nombre; si no se da un nombre, se coge una conexión aleatoria; si no hay conexiones de lectura presentes, se devuelve la conexión por defecto.
 
 
 ```php
 public function getWrite( string $name = string ): ConnectionInterface;
 ```
-Returns a write connection by name; if no name is given, picks a random connection; if no write connections are present, returns the default connection.
+Devuelve una conexión de escritura por nombre; si no se da un nombre, se coge una conexión aleatoria; si no hay conexiones de escritura presentes, se devuelve la conexión por defecto.
 
 
 ```php
 public function setMaster( ConnectionInterface $callableObject ): ConnectionLocatorInterface;
 ```
-Sets the default connection factory.
+Establece la fábrica de conexión predeterminada.
 
 
 ```php
 public function setRead( string $name, callable $callableObject ): ConnectionLocatorInterface;
 ```
-Sets a read connection factory by name.
+Establece una fábrica de conexión de lectura por nombre.
 
 
 ```php
 public function setWrite( string $name, callable $callableObject ): ConnectionLocatorInterface;
 ```
-Sets a write connection factory by name.
+Establece una fábrica de conexión de escritura por nombre.
 
 
 ```php
 protected function getConnection( string $type, string $name = string ): ConnectionInterface;
 ```
-Returns a connection by name.
+Devuelve una conexión por nombre.
 
 
 
@@ -687,7 +687,7 @@ Returns a connection by name.
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | Phalcon\DataMapper\Pdo\Connection\ConnectionInterface |
 
-Locates PDO connections for default, read, and write databases.
+Localiza conexiones de bases de datos PDO predeterminadas, de lectura, y escritura.
 
 
 ## Métodos
@@ -695,37 +695,37 @@ Locates PDO connections for default, read, and write databases.
 ```php
 public function getMaster(): ConnectionInterface;
 ```
-Returns the default connection object.
+Devuelve el objeto de conexión predeterminado.
 
 
 ```php
 public function getRead( string $name = string ): ConnectionInterface;
 ```
-Returns a read connection by name; if no name is given, picks a random connection; if no read connections are present, returns the default connection.
+Devuelve una conexión de lectura por nombre; si no se da un nombre, se coge una conexión aleatoria; si no hay conexiones de lectura presentes, se devuelve la conexión por defecto.
 
 
 ```php
 public function getWrite( string $name = string ): ConnectionInterface;
 ```
-Returns a write connection by name; if no name is given, picks a random connection; if no write connections are present, returns the default connection.
+Devuelve una conexión de escritura por nombre; si no se da un nombre, se coge una conexión aleatoria; si no hay conexiones de escritura presentes, se devuelve la conexión por defecto.
 
 
 ```php
 public function setMaster( ConnectionInterface $callableObject ): ConnectionLocatorInterface;
 ```
-Sets the default connection registry entry.
+Establece la entrada de registro de conexión por defecto.
 
 
 ```php
 public function setRead( string $name, callable $callableObject ): ConnectionLocatorInterface;
 ```
-Sets a read connection registry entry by name.
+Establece la entrada de registro de conexión de lectura por nombre.
 
 
 ```php
 public function setWrite( string $name, callable $callableObject ): ConnectionLocatorInterface;
 ```
-Sets a write connection registry entry by name.
+Establece la entrada de registro de conexión de escritura por nombre.
 
 
 
@@ -736,7 +736,7 @@ Sets a write connection registry entry by name.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Exception | | Extends    | Exception |
 
-ExtendedPdo could not disconnect; e.g., because its PDO connection was created externally and then injected.
+No se puede desconectar ExtendedPdo; por ejemplo, porque su conexión PDO fue creada externamente e inyectada posteriormente.
 
 
 
@@ -746,7 +746,7 @@ ExtendedPdo could not disconnect; e.g., because its PDO connection was created e
 
 | Namespace  | Phalcon\DataMapper\Pdo\Exception | | Extends    | Exception |
 
-Locator could not find a named connection.
+El localizador no puede encontrar una conexión nombrada.
 
 
 
@@ -756,7 +756,7 @@ Locator could not find a named connection.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Exception | | Extends    | \Exception |
 
-Base Exception class
+Clase de Excepción Base
 
 
 
@@ -766,7 +766,7 @@ Base Exception class
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Psr\Log\AbstractLogger | | Extends    | AbstractLogger |
 
-A naive memory-based logger.
+Un registrador ingenuo basado en memoria.
 
 @property array $messages
 
@@ -785,13 +785,13 @@ protected messages;
 ```php
 public function getMessages();
 ```
-Returns the logged messages.
+Devuelve los mensajes registrados.
 
 
 ```php
 public function log( mixed $level, mixed $message, array $context = [] );
 ```
-Logs a message.
+Registra un mensaje.
 
 
 
@@ -802,7 +802,7 @@ Logs a message.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Helper\Json, Psr\Log\LoggerInterface, Psr\Log\LogLevel | | Implements | ProfilerInterface |
 
-Sends query profiles to a logger.
+Envía los perfiles de consulta a un registrador.
 
 @property bool            $active @property array           $context @property string          $logFormat @property string          $logLevel @property LoggerInterface $logger
 
@@ -847,55 +847,55 @@ Constructor.
 ```php
 public function finish( string $statement = null, array $values = [] ): void;
 ```
-Finishes and logs a profile entry.
+Finaliza y registra una entrada de perfil.
 
 
 ```php
 public function getLogFormat(): string;
 ```
-Returns the log message format string, with placeholders.
+Devuelve la cadena de formato de mensaje de registro, con marcadores de posición.
 
 
 ```php
 public function getLogLevel(): string;
 ```
-Returns the level at which to log profile messages.
+Devuelve el nivel al que registrar mensajes de perfil.
 
 
 ```php
 public function getLogger(): LoggerInterface;
 ```
-Returns the underlying logger instance.
+Devuelve la instancia del registrador subyacente.
 
 
 ```php
 public function isActive(): bool;
 ```
-Returns true if logging is active.
+Devuelve `true` si el registrador está activo.
 
 
 ```php
 public function setActive( bool $active ): ProfilerInterface;
 ```
-Enable or disable profiler logging.
+Habilita o deshabilita el registro del perfilador.
 
 
 ```php
 public function setLogFormat( string $logFormat ): ProfilerInterface;
 ```
-Sets the log message format string, with placeholders.
+Establece la cadena de formato de mensaje del registrador, con marcadores de posición.
 
 
 ```php
 public function setLogLevel( string $logLevel ): ProfilerInterface;
 ```
-Level at which to log profile messages.
+Nivel al que registrar los mensajes del perfilador.
 
 
 ```php
 public function start( string $method ): void;
 ```
-Starts a profile entry.
+Inicia una entrada de perfil.
 
 
 
@@ -906,7 +906,7 @@ Starts a profile entry.
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Psr\Log\LoggerInterface |
 
-Interface to send query profiles to a logger.
+Interfaz para enviar perfiles de consultas a un registrador.
 
 
 ## Métodos
@@ -914,55 +914,55 @@ Interface to send query profiles to a logger.
 ```php
 public function finish( string $statement = null, array $values = [] ): void;
 ```
-Finishes and logs a profile entry.
+Finaliza y registra una entrada de perfil.
 
 
 ```php
 public function getLogFormat(): string;
 ```
-Returns the log message format string, with placeholders.
+Devuelve la cadena de formato de mensaje de registro, con marcadores de posición.
 
 
 ```php
 public function getLogLevel(): string;
 ```
-Returns the level at which to log profile messages.
+Devuelve el nivel al que registrar mensajes de perfil.
 
 
 ```php
 public function getLogger(): LoggerInterface;
 ```
-Returns the underlying logger instance.
+Devuelve la instancia del registrador subyacente.
 
 
 ```php
 public function isActive(): bool;
 ```
-Returns true if logging is active.
+Devuelve `true` si el registrador está activo.
 
 
 ```php
 public function setActive( bool $active ): ProfilerInterface;
 ```
-Enable or disable profiler logging.
+Habilita o deshabilita el registro del perfilador.
 
 
 ```php
 public function setLogFormat( string $logFormat ): ProfilerInterface;
 ```
-Sets the log message format string, with placeholders.
+Establece la cadena de formato de mensaje del registrador, con marcadores de posición.
 
 
 ```php
 public function setLogLevel( string $logLevel ): ProfilerInterface;
 ```
-Level at which to log profile messages.
+Nivel al que registrar los mensajes del perfilador.
 
 
 ```php
 public function start( string $method ): void;
 ```
-Starts a profile entry.
+Inicia una entrada de perfil.
 
 
 
