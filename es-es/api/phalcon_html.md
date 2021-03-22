@@ -1095,7 +1095,7 @@ protected type = search;
 </p>
 
 <p>
-  Class Select
+  Clase Select
 </p>
 
 <p>
