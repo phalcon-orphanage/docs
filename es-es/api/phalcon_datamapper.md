@@ -973,7 +973,7 @@ Inicia una entrada de perfil.
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\Helper\Arr | | Extends    | AbstractQuery |
 
-Class AbstractConditions
+Clase AbstractConditions
 
 
 ## Métodos
@@ -981,43 +981,43 @@ Class AbstractConditions
 ```php
 public function andWhere( string $condition, mixed $value = null, int $type = int ): AbstractConditions;
 ```
-Sets a `AND` for a `WHERE` condition
+Establece un `AND` para una condición `WHERE`
 
 
 ```php
 public function appendWhere( string $condition, mixed $value = null, int $type = int ): AbstractConditions;
 ```
-Concatenates to the most recent `WHERE` clause
+Concatena a la cláusula `WHERE` más reciente
 
 
 ```php
 public function limit( int $limit ): AbstractConditions;
 ```
-Sets the `LIMIT` clause
+Establece la cláusula `LIMIT`
 
 
 ```php
 public function offset( int $offset ): AbstractConditions;
 ```
-Sets the `OFFSET` clause
+Establece la cláusula `OFFSET`
 
 
 ```php
 public function orWhere( string $condition, mixed $value = null, int $type = int ): AbstractConditions;
 ```
-Sets a `OR` for a `WHERE` condition
+Establece un `OR` para una condición `WHERE`
 
 
 ```php
 public function orderBy( mixed $orderBy ): AbstractConditions;
 ```
-Sets the `ORDER BY`
+Establece el `ORDER BY`
 
 
 ```php
 public function where( string $condition, mixed $value = null, int $type = int ): AbstractConditions;
 ```
-Sets a `WHERE` condition
+Establece la condición `WHERE`
 
 
 ```php
@@ -1027,55 +1027,55 @@ public function whereEquals( array $columnsValues ): AbstractConditions;
 ```php
 protected function addCondition( string $store, string $andor, string $condition, mixed $value = null, int $type = int ): void;
 ```
-Appends a conditional
+Añade un condicional
 
 
 ```php
 protected function appendCondition( string $store, string $condition, mixed $value = null, int $type = int ): void;
 ```
-Concatenates a conditional
+Concatena un condicional
 
 
 ```php
 protected function buildBy( string $type ): string;
 ```
-Builds a `BY` list
+Construye una lista `BY`
 
 
 ```php
 protected function buildCondition( string $type ): string;
 ```
-Builds the conditional string
+Construye una cadena condicional
 
 
 ```php
 protected function buildLimit(): string;
 ```
-Builds the `LIMIT` clause
+Construye la cláusula `LIMIT`
 
 
 ```php
 protected function buildLimitCommon(): string;
 ```
-Builds the `LIMIT` clause for all drivers
+Construye la cláusula `LIMIT` para todos los drivers
 
 
 ```php
 protected function buildLimitEarly(): string;
 ```
-Builds the early `LIMIT` clause - MS SQLServer
+Construye la cláusula `LIMIT` temprana - MS SQLServer
 
 
 ```php
 protected function buildLimitSqlsrv(): string;
 ```
-Builds the `LIMIT` clause for MSSQLServer
+Construye la cláusula `LIMIT` para MSSQLServer
 
 
 ```php
 protected function processValue( string $store, mixed $data ): void;
 ```
-Processes a value (array or string) and merges it with the store
+Procesa un valor (vector o cadena) y lo combina con el almacén
 
 
 
@@ -1086,7 +1086,7 @@ Processes a value (array or string) and merges it with the store
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection |
 
-Class AbstractQuery
+Clase AbstractQuery
 
 @property Bind       $bind @property Connection $connection @property array      $store
 
@@ -1115,79 +1115,79 @@ protected store;
 ```php
 public function __construct( Connection $connection, Bind $bind );
 ```
-AbstractQuery constructor.
+Constructor AbstractQuery.
 
 
 ```php
 public function bindInline( mixed $value, int $type = int ): string;
 ```
-Binds a value inline
+Vincula un valor en línea
 
 
 ```php
 public function bindValue( string $key, mixed $value, int $type = int ): AbstractQuery;
 ```
-Binds a value - auto-detects the type if necessary
+Vincula un valor - autodetecta el tipo si es necesario
 
 
 ```php
 public function bindValues( array $values ): AbstractQuery;
 ```
-Binds an array of values
+Vincula un vector de valores
 
 
 ```php
 public function getBindValues(): array;
 ```
-Returns all the bound values
+Devuelve todos los valores enlazados
 
 
 ```php
 abstract public function getStatement(): string;
 ```
-Return the generated statement
+Devuelve la sentencia generada
 
 
 ```php
 public function perform();
 ```
-Performs a statement in the connection
+Ejecuta una sentencia en la conexión
 
 
 ```php
 public function quoteIdentifier( string $name, int $type = static-constant-access ): string;
 ```
-Quotes the identifier
+Entrecomilla el identificador
 
 
 ```php
 public function reset();
 ```
-Resets the internal array
+Resetea el vector interno
 
 
 ```php
 public function setFlag( string $flag, bool $enable = bool ): void;
 ```
-Sets a flag for the query such as "DISTINCT"
+Establece una bandera para la consulta como "DISTINCT"
 
 
 ```php
 protected function buildFlags();
 ```
-Builds the flags statement(s)
+Construye la(s) sentencia(s) de las banderas
 
 
 ```php
 protected function buildReturning(): string;
 ```
-Builds the `RETURNING` clause
+Construye la cláusula `RETURNING`
 
 
 ```php
 protected function indent( array $collection, string $glue = string ): string;
 ```
-Indents a collection
+Sangrar una colección
 
 
 
@@ -1198,7 +1198,7 @@ Indents a collection
 
 | Namespace  | Phalcon\DataMapper\Query |
 
-Class Bind
+Clase Bind
 
 @property int   $inlineCount @property array $store
 
@@ -1226,37 +1226,37 @@ public function bindInline( mixed $value, int $type = int ): string;
 ```php
 public function remove( string $key ): void;
 ```
-Removes a value from the store
+Elimina un valor del almacén
 
 
 ```php
 public function setValue( string $key, mixed $value, int $type = int ): void;
 ```
-Sets a value
+Establece un valor
 
 
 ```php
 public function setValues( array $values, int $type = int ): void;
 ```
-Sets values from an array
+Establece valores desde un vector
 
 
 ```php
 public function toArray(): array;
 ```
-Returns the internal collection
+Devuelve la colección interna
 
 
 ```php
 protected function getType( mixed $value ): int;
 ```
-Auto detects the PDO type
+Autodetecta el tipo PDO
 
 
 ```php
 protected function inlineArray( array $data, int $type ): string;
 ```
-Processes an array - if passed as an `inline` parameter
+Procesa un vector - si se pasa como un parámetro `inline`
 
 
 
@@ -1267,13 +1267,13 @@ Processes an array - if passed as an `inline` parameter
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractConditions |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
-Implementation of this file has been influenced by AtlasPHP
+La implementación de este archivo ha sido influenciada por AtlasPHP
 
 @link    https://github.com/atlasphp/Atlas.Query @license https://github.com/atlasphp/Atlas.Qyert/blob/1.x/LICENSE.md
 
@@ -1283,13 +1283,13 @@ Implementation of this file has been influenced by AtlasPHP
 ```php
 public function __construct( Connection $connection, Bind $bind );
 ```
-Delete constructor.
+Constructor de Delete.
 
 
 ```php
 public function from( string $table ): Delete;
 ```
-Adds table(s) in the query
+Añade tabla(a) en la consulta
 
 
 ```php
@@ -1299,13 +1299,13 @@ public function getStatement(): string;
 ```php
 public function reset(): void;
 ```
-Resets the internal store
+Resetea el almacén interno
 
 
 ```php
 public function returning( array $columns ): Delete;
 ```
-Adds the `RETURNING` clause
+Añade la cláusula `RETURNING`
 
 
 
@@ -1316,7 +1316,7 @@ Adds the `RETURNING` clause
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractQuery |
 
-Class Insert
+Clase Insert
 
 
 ## Métodos
@@ -1324,25 +1324,25 @@ Class Insert
 ```php
 public function __construct( Connection $connection, Bind $bind );
 ```
-Insert constructor.
+Constructor Insert.
 
 
 ```php
 public function column( string $column, mixed $value = null, int $type = int ): Insert;
 ```
-Sets a column for the `INSERT` query
+Establece una columna para la consulta `INSERT`
 
 
 ```php
 public function columns( array $columns ): Insert;
 ```
-Mass sets columns and values for the `INSERT`
+En masa establece columnas y valores para el `INSERT`
 
 
 ```php
 public function getLastInsertId( string $name = null ): string;
 ```
-Returns the id of the last inserted record
+Devuelve el id del último registro insertado
 
 
 ```php
@@ -1352,25 +1352,25 @@ public function getStatement(): string;
 ```php
 public function into( string $table ): Insert;
 ```
-Adds table(s) in the query
+Añade tabla(a) en la consulta
 
 
 ```php
 public function reset(): void;
 ```
-Resets the internal store
+Resetea el almacén interno
 
 
 ```php
 public function returning( array $columns ): Insert;
 ```
-Adds the `RETURNING` clause
+Añade la cláusula `RETURNING`
 
 
 ```php
 public function set( string $column, mixed $value = null ): Insert;
 ```
-Sets a column = value condition
+Establece una condición columna = valor
 
 
 
@@ -1381,7 +1381,7 @@ Sets a column = value condition
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection |
 
-Class QueryFactory
+Clase QueryFactory
 
 @property string $class
 
@@ -1400,37 +1400,37 @@ protected selectClass = ;
 ```php
 public function __construct( string $selectClass = string );
 ```
-QueryFactory constructor.
+Constructor QueryFactory.
 
 
 ```php
 public function newBind(): Bind;
 ```
-Create a new Bind object
+Crea un nuevo objeto Bind
 
 
 ```php
 public function newDelete( Connection $connection ): Delete;
 ```
-Create a new Delete object
+Crea un nuevo objeto Delete
 
 
 ```php
 public function newInsert( Connection $connection ): Insert;
 ```
-Create a new Insert object
+Crea un nuevo objeto Insert
 
 
 ```php
 public function newSelect( Connection $connection ): Select;
 ```
-Create a new Select object
+Crea un nuevo objeto Select
 
 
 ```php
 public function newUpdate( Connection $connection ): Update;
 ```
-Create a new Update object
+Crea un nuevo objeto Update
 
 
 
@@ -1441,7 +1441,7 @@ Create a new Update object
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException, Phalcon\Helper\Arr | | Extends    | AbstractConditions |
 
-Class Select
+Clase Select
 
 @property string $asAlias @property bool   $forUpdate
 
@@ -1475,37 +1475,37 @@ protected forUpdate = false;
 ```php
 public function __call( string $method, array $params );
 ```
-Proxied methods to the connection
+Métodos proxies a la conexión
 
 
 ```php
 public function andHaving( string $condition, mixed $value = null, int $type = int ): Select;
 ```
-Sets a `AND` for a `HAVING` condition
+Establece un `AND` para una condición `HAVING`
 
 
 ```php
 public function appendHaving( string $condition, mixed $value = null, int $type = int ): Select;
 ```
-Concatenates to the most recent `HAVING` clause
+Concatena a la cláusula `HAVING` más reciente
 
 
 ```php
 public function appendJoin( string $condition, mixed $value = null, int $type = int ): Select;
 ```
-Concatenates to the most recent `JOIN` clause
+Concatena a la cláusula `JOIN` más reciente
 
 
 ```php
 public function asAlias( string $asAlias ): Select;
 ```
-The `AS` statement for the query - useful in sub-queries
+La sentencia `AS` para la consulta - útil en subconsultas
 
 
 ```php
 public function columns(): Select;
 ```
-The columns to select from. If a key is set in an array element, the key will be used as the alias
+Las columnas de las que seleccionar. Si la clave se establece en un elemento vector, la clave será usada como el alias
 
 
 ```php
@@ -1515,79 +1515,79 @@ public function distinct( bool $enable = bool ): Select;
 ```php
 public function forUpdate( bool $enable = bool ): Select;
 ```
-Enable the `FOR UPDATE` for the query
+Habilita `FOR UPDATE` para la consulta
 
 
 ```php
 public function from( string $table ): Select;
 ```
-Adds table(s) in the query
+Añade tabla(a) en la consulta
 
 
 ```php
 public function getStatement(): string;
 ```
-Returns the compiled SQL statement
+Devuelve la sentencia SQL compilada
 
 
 ```php
 public function groupBy( mixed $groupBy ): Select;
 ```
-Sets the `GROUP BY`
+Establece el `GROUP BY`
 
 
 ```php
 public function hasColumns(): bool;
 ```
-Whether the query has columns or not
+Si la consulta tiene columnas o no
 
 
 ```php
 public function having( string $condition, mixed $value = null, int $type = int ): Select;
 ```
-Sets a `HAVING` condition
+Establece una condición `HAVING`
 
 
 ```php
 public function join( string $join, string $table, string $condition, mixed $value = null, int $type = int ): Select;
 ```
-Sets a 'JOIN' condition
+Establece una condición 'JOIN'
 
 
 ```php
 public function orHaving( string $condition, mixed $value = null, int $type = int ): Select;
 ```
-Sets a `OR` for a `HAVING` condition
+Establece un `OR` para una condición `HAVING`
 
 
 ```php
 public function reset(): Select;
 ```
-Resets the internal collections
+Resetea las colecciones internas
 
 
 ```php
 public function subSelect(): Select;
 ```
-Start a sub-select
+Inicia una subconsulta
 
 
 ```php
 public function union(): Select;
 ```
-Start a `UNION`
+Inicia un `UNION`
 
 
 ```php
 public function unionAll(): Select;
 ```
-Start a `UNION ALL`
+Inicia un `UNION ALL`
 
 
 ```php
 protected function getCurrentStatement( string $suffix = string ): string;
 ```
-Statement builder
+Constructor de sentencias
 
 
 
@@ -1598,7 +1598,7 @@ Statement builder
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractConditions |
 
-Class Update
+Clase Update
 
 
 ## Métodos
@@ -1606,25 +1606,25 @@ Class Update
 ```php
 public function __construct( Connection $connection, Bind $bind );
 ```
-Update constructor.
+Constructor Update.
 
 
 ```php
 public function column( string $column, mixed $value = null, int $type = int ): Update;
 ```
-Sets a column for the `UPDATE` query
+Establece una columna para la consulta `UPDATE`
 
 
 ```php
 public function columns( array $columns ): Update;
 ```
-Mass sets columns and values for the `UPDATE`
+En masa establece columnas y valores para el `UPDATE`
 
 
 ```php
 public function from( string $table ): Update;
 ```
-Adds table(s) in the query
+Añade tabla(a) en la consulta
 
 
 ```php
@@ -1634,24 +1634,24 @@ public function getStatement(): string;
 ```php
 public function hasColumns(): bool;
 ```
-Whether the query has columns or not
+Si la consulta tiene columnas o no
 
 
 ```php
 public function reset(): void;
 ```
-Resets the internal store
+Resetea el almacén interno
 
 
 ```php
 public function returning( array $columns ): Update;
 ```
-Adds the `RETURNING` clause
+Añade la cláusula `RETURNING`
 
 
 ```php
 public function set( string $column, mixed $value = null ): Update;
 ```
-Sets a column = value condition
+Establece una condición columna = valor
 
 
