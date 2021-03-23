@@ -677,7 +677,7 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 );
 ```
 
-## Factory
+## Fábrica (Factory)
 
 ### `newInstance()`
 
