@@ -4029,13 +4029,13 @@ protected sqlStatement;
 public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null );
 ```
 
-Phalcon\Db\Result\Pdo constructor
+Constructor Phalcon\Db\Result\Pdo
 
 ```php
 public function dataSeek( long $number ): void;
 ```
 
-Moves internal resultset cursor to another position letting us to fetch a certain row
+Mueve el cursor del conjunto de resultados interno a otra posición permitiéndonos obtener una fila determinada
 
 ```php
 $result = $connection->query(
@@ -4053,13 +4053,13 @@ $row = $result->fetch();
 public function execute(): bool;
 ```
 
-Allows to execute the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the beginning
+Permite ejecutar la sentencia otra vez. Algunos sistemas de base de datos no soportan cursores desplazables. Por lo tanto, como los cursores sólo son hacia delante, necesitamos ejecutar el cursos otra vez para obtener filas desde el principio
 
 ```php
 public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null, mixed $cursorOffset = null );
 ```
 
-Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
+Obtiene un vector/objeto de cadenas que corresponden a las filas obtenidas, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 $result = $connection->query("SELECTFROM robots ORDER BY name");
@@ -4077,7 +4077,7 @@ while ($robot = $result->fetch()) {
 public function fetchAll( mixed $fetchStyle = null, mixed $fetchArgument = null, mixed $ctorArgs = null ): array;
 ```
 
-Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
+Devuelve un vector de vectores que contiene todos los registros del resultado Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 $result = $connection->query(
@@ -4091,7 +4091,7 @@ $robots = $result->fetchAll();
 public function fetchArray();
 ```
 
-Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
+Devuelve un vector de cadenas que corresponden a la fila obtenida, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 $result = $connection->query("SELECTFROM robots ORDER BY name");
@@ -4109,13 +4109,13 @@ while ($robot = result->fetchArray()) {
 public function getInternalResult(): \PDOStatement;
 ```
 
-Gets the internal PDO result object
+Obtiene el objeto de resultado PDO interno
 
 ```php
 public function numRows(): int;
 ```
 
-Gets number of rows returned by a resultset
+Obtiene el número de filas devueltas por un conjunto de resultados
 
 ```php
 $result = $connection->query(
@@ -4129,7 +4129,7 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 public function setFetchMode( int $fetchMode, mixed $colNoOrClassNameOrObject = null, mixed $ctorargs = null ): bool;
 ```
 
-Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+Cambia el modo de obtención que afecta a Phalcon\Db\Result\Pdo::fetch()
 
 ```php
 // Return array with integer indexes
@@ -4159,7 +4159,7 @@ $result->setFetchMode(
 
 | Namespace | Phalcon\Db |
 
-Interface for Phalcon\Db\Result objects
+Interfaz para objetos Phalcon\Db\Result
 
 ## Métodos
 
@@ -4167,46 +4167,46 @@ Interface for Phalcon\Db\Result objects
 public function dataSeek( long $number );
 ```
 
-Moves internal resultset cursor to another position letting us to fetch a certain row
+Mueve el cursor del conjunto de resultados interno a otra posición permitiéndonos obtener una fila determinada
 
 ```php
 public function execute(): bool;
 ```
 
-Allows to execute the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the beginning
+Permite ejecutar la sentencia otra vez. Algunos sistemas de base de datos no soportan cursores desplazables. Por lo tanto, como los cursores sólo son hacia delante, necesitamos ejecutar el cursos otra vez para obtener filas desde el principio
 
 ```php
 public function fetch(): mixed;
 ```
 
-Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
+Obtiene un vector/objeto de cadenas que corresponden a las filas obtenidas, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 public function fetchAll(): array;
 ```
 
-Returns an array of arrays containing all the records in the result. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
+Devuelve un vector de vectores que contienen todos los registros de un resultado. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 public function fetchArray(): mixed;
 ```
 
-Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
+Devuelve un vector de cadenas que corresponden a la fila obtenida, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 public function getInternalResult(): \PDOStatement;
 ```
 
-Gets the internal PDO result object
+Obtiene el objeto de resultado PDO interno
 
 ```php
 public function numRows(): int;
 ```
 
-Gets number of rows returned by a resultset
+Obtiene el número de filas devueltas por un conjunto de resultados
 
 ```php
 public function setFetchMode( int $fetchMode ): bool;
 ```
 
-Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+Cambia el modo de obtención que afecta a Phalcon\Db\Result\Pdo::fetch()
