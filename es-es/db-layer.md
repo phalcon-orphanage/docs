@@ -87,7 +87,7 @@ public function addColumn(
 ): bool
 ```
 
-Adds a column to a table
+Añade una columna a una tabla
 
 ```php
 public function addIndex(
@@ -97,7 +97,7 @@ public function addIndex(
 ): bool
 ```
 
-Adds an index to a table
+Añade un índice a una tabla
 
 ```php
 public function addForeignKey(
@@ -107,7 +107,7 @@ public function addForeignKey(
 ): bool
 ```
 
-Adds a foreign key to a table
+Añade una clave ajena a una tabla
 
 ```php
 public function addPrimaryKey(
@@ -117,7 +117,7 @@ public function addPrimaryKey(
 ): bool
 ```
 
-Adds a primary key to a table
+Añade una clave primaria a una tabla
 
 ```php
 public function affectedRows(): int
@@ -161,7 +161,7 @@ public function createSavepoint(
 ): bool
 ```
 
-Creates a new savepoint
+Crea un nuevo punto de guardado
 
 public function createTable( string $tableName, string $schemaName, array $definition ): bool
 
@@ -175,7 +175,7 @@ public function createTable( string $tableName, string $schemaName, array $defin
     ): bool
     
 
-Creates a view
+Crea una vista
 
 ```php
 public function delete(
@@ -204,7 +204,7 @@ public function describeIndexes(
 ): IndexInterface[]
 ```
 
-Lists table indexes
+Lista los índices de la tabla
 
 ```php
 public function describeReferences(
@@ -213,7 +213,7 @@ public function describeReferences(
 ): ReferenceInterface[]
 ```
 
-Lists table references
+Lista las referencias de la tabla
 
 ```php
 public function dropColumn(
@@ -223,7 +223,7 @@ public function dropColumn(
 ): bool
 ```
 
-Drops a column from a table
+Elimina una columna de una tabla
 
 ```php
 public function dropForeignKey(
@@ -233,7 +233,7 @@ public function dropForeignKey(
 ): bool
 ```
 
-Drops a foreign key from a table
+Elimina una clave ajena de una tabla
 
 ```php
 public function dropIndex(
@@ -243,7 +243,7 @@ public function dropIndex(
 ): bool
 ```
 
-Drop an index from a table
+Elimina un índice de una tabla
 
 ```php
 public function dropPrimaryKey(
@@ -262,7 +262,7 @@ public function dropTable(
 ): bool
 ```
 
-Drops a table from a schema/database
+Elimina una tabla de un esquema/base de datos
 
 ```php
 public function dropView(
@@ -272,7 +272,7 @@ public function dropView(
 ): bool
 ```
 
-Drops a view
+Elimina una vista
 
 ```php
 public function escapeIdentifier(
@@ -305,7 +305,7 @@ public function fetchAll(
 ): array
 ```
 
-Dumps the complete result of a query into an array
+Vuelca el resultado completo de una consulta en un vector
 
 ```php
 public function fetchColumn(
@@ -315,7 +315,7 @@ public function fetchColumn(
 ): string | bool
 ```
 
-Returns the n'th field of first row in a SQL query result
+Devuelve el n-ésimo campo de la primera fila en un resultado de consulta SQL
 
 ```php
 $invoicesCount = $connection
@@ -339,7 +339,7 @@ public function fetchOne(
 ): array
 ```
 
-Returns the first row in a SQL query result
+Devuelve la primera fila en un resultado de consulta SQL
 
 ```php
 public function forUpdate(
@@ -347,7 +347,7 @@ public function forUpdate(
 ): string
 ```
 
-Returns a SQL modified with a FOR UPDATE clause
+Devuelve un SQL modificado con una cláusula *FOR UPDATE*
 
 ```php
 public function getColumnDefinition(
@@ -355,7 +355,7 @@ public function getColumnDefinition(
 ): string
 ```
 
-Returns the SQL column definition from a column
+Devuelve la definición de columna SQL para una columna
 
 ```php
 public function getColumnList(
@@ -363,13 +363,13 @@ public function getColumnList(
 ): string
 ```
 
-Gets a list of columns
+Obtiene una lista de columnas
 
 ```php
 public function getConnectionId(): string
 ```
 
-Gets the active connection unique identifier
+Obtiene el identificador único de conexión activo
 
 ```php
 public function getDescriptor(): array
@@ -417,19 +417,19 @@ Active SQL statement in the object without replace bound parameters
 public function getSQLStatement(): string
 ```
 
-Active SQL statement in the object
+Sentencia SQL activa en el objeto
 
 ```php
 public function getSQLBindTypes(): array
 ```
 
-Active SQL statement in the object
+Sentencia SQL activa en el objeto
 
 ```php
 public function getSQLVariables(): array
 ```
 
-Active SQL statement in the object
+Sentencia SQL activa en el objeto
 
 ```php
 public function getType(): string
