@@ -232,7 +232,7 @@ use Phalcon\Image\Enum;
 
 $image = new Gd('image.jpg');
 
-$image->resize(300, null, Enum::HEIGHT);
+$image->resize(null, 300, Enum::HEIGHT);
 
 $image->save('resize-height-image.jpg');
 ```
@@ -487,7 +487,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-## Factory
+## Fábrica (Factory)
 
 ### `newInstance`
 
