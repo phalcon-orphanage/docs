@@ -1588,7 +1588,7 @@ Another implementation is to use getter and setter functions, which control whic
 
 The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set or retrieved for the model, which is impossible when using public properties.
 
-Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
+Additionally, getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
 
 ```php
 <?php
@@ -1600,12 +1600,12 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-    private $inv_id;
-    private $inv_cst_id;
-    private $inv_status_flag;
-    private $inv_title;
-    private $inv_total;
-    private $inv_created_at;
+    protected $inv_id;
+    protected $inv_cst_id;
+    protected $inv_status_flag;
+    protected $inv_title;
+    protected $inv_total;
+    protected $inv_created_at;
 
     public function getId(): int
     {
@@ -1680,14 +1680,18 @@ class Invoices extends Model
 }
 ```
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. You will need to decide which strategy is best for you depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
+Public properties provide less complexity in development. However, getters/setters can heavily increase the testability, extensibility and maintainability of applications. You will need to decide which strategy is best for you depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
 > **NOTE**: Underscores in property names can be problematic when using getters and setters.
 {: .alert .alert-warning }
 
+> 
+> **NOTE**: When using the getters/setters approach, you will need to define your properties as `protected`.
+{: .alert .alert-warning }
+
 If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.).
 
-The ORM expects camel case naming and underscores are commonly removed. It is therefore recommended to name your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+The ORM expects camel case naming and underscores are commonly removed. It is therefore recommended naming your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
 ## Records To Objects
 
