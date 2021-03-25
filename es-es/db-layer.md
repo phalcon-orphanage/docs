@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Capa de abstracción de base de datos'
+title: 'Capa de Abstracción de Base de Datos'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---
 
-# Capa de abstracción de base de datos
+# Capa de Abstracción de Base de Datos
 
 * * *
 
@@ -24,7 +24,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 | Clase                                                                             | Descripción                                                                                                                                                                                                                                                |
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Db\Adapter\Pdo\Mysql](api/phalcon_db#db-adapter-pdo-mysql)           | Es el sistema de gestión de bases de datos relacionales (RDBMS) más utilizado en el mundo. se ejecuta como un servidor que provee acceso a usuarios a un número de bases de datos                                                                          |
+| [Phalcon\Db\Adapter\Pdo\Mysql](api/phalcon_db#db-adapter-pdo-mysql)           | Es el sistema de gestión de bases de datos relacionales (RDBMS) más utilizado en el mundo que se ejecuta como un servidor que provee acceso multiusuario a un número de bases de datos                                                                     |
 | [Phalcon\Db\Adapter\Pdo\Postgresql](api/phalcon_db#db-adapter-pdo-postgresql) | PostgreSQL es un sistema de base de datos relacional de código abierto muy potente. Tiene más de 15 años de desarrollo activo y una arquitectura probada que se ha ganado una sólida reputación por la fiabilidad, la integridad y exactitud de los datos. |
 | [Phalcon\Db\Adapter\Pdo\Sqlite](api/phalcon_db#db-adapter-pdo-sqlite)         | SQLite es una biblioteca de software que implementa un motor de base de datos SQL transaccional independiente, sin servidor, sin configuración                                                                                                             |
 
