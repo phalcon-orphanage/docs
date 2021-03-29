@@ -2,44 +2,44 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Database Migrations'
-keywords: 'database, migrations, schema, tables, columns'
+title: 'Migraciones de Bases de Datos'
+keywords: 'base de datos, migraciones, esquema, tablas, columnas'
 ---
 
-# Database Migrations
+# Migraciones de Bases de Datos
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
+> **NOTA**: Las migraciones de Phalcon se han quitado de DevTools y se han movido a un repositorio separado.
 {: .alert .alert-info } 
 
-## Package git repository
+## Repositorio git del paquete
 
 https://github.com/phalcon/migrations
 
-## Requerimentos
+## Requerimientos
 
 * PHP >= 7.2
 * Phalcon >= 4.0.5
 
-## Installing via Composer
+## Instalación vía Composer
 
     composer require --dev phalcon/migrations
     
 
-## Quick start
+## Inicio rápido
 
-What you need for quick start:
+Lo que necesita para un inicio rápido:
 
-* Configuration file in root of your project (you can also pass them as parameters inside CLI environment)
-* Create database tables structure
-* Execute command to generate migrations
+* Fichero de configuración en la raíz de su proyecto (también puede pasarlos como parámetros dentro del entorno CLI)
+* Crear estructura de tablas de la base de datos
+* Ejecutar comando para generar las migraciones
 
-After that you can execute that migrations (run) in another environment to create same DB structure.
+Después de eso puede ejecutar esas migraciones (run) en otro entorno para crear la misma estructura de BD.
 
-### Create configuration file
+### Crear fichero de configuración
 
 ```php
 <?php
@@ -67,14 +67,14 @@ return new Config([
 ]);
 ```
 
-### Generate migrations
+### Generar migraciones
 
-**Basic generation**
+**Generación básica**
 
     vendor/bin/phalcon-migrations generate
     
 
-**Generate specific table and export data from it
+**Genera una tabla específica y exporta sus datos
 
     vendor/bin/phalcon-migrations generate \
         --config=migrations.php \
@@ -83,19 +83,19 @@ return new Config([
         --data=oncreate
     
 
-### Run migrations
+### Ejecutar migraciones
 
     vendor/bin/phalcon-migrations run
     
 
-### List existing migrations
+### Listar migraciones existentes
 
     vendor/bin/phalcon-migrations list
     
 
-## Usage example
+## Ejemplo de uso
 
-**Run migrations from specific migrations directory**
+**Ejecutar migraciones desde directorio de migraciones específico**
 
     use Phalcon\Migrations\Migrations;
     
@@ -116,79 +116,79 @@ return new Config([
     ]);
     
 
-## Migration methods
+## Métodos de migración
 
-Each migration is an separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
+Cada migración está en una clase separada que trabaja como entidad para una tabla de base de datos específica. Dentro de cada clase hay diferentes métodos que pueden ocurrir durante la ejecución de la migración.
 
-Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
+Cada fichero de migración (y clase) puede implementar métodos específicos, que serán ejecutados según la operación solicitada. No hay restricciones sobre la lógica encapsulada en cada método.
 
-The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
+Las tablas siguiente muestran los métodos de la Clase `Migration`. Se almacenan por orden de ejecución, del más antiguo al más reciente.
 
-**Running to up**
+**Ejecutándose hacia arriba**
 
-| Method name      | Descripción                                        |
-| ---------------- | -------------------------------------------------- |
-| morph            | Morph table structure                              |
-| afterCreateTable | Make something immediately after table was created |
-| up               | Table is created and ready to work with            |
-| afterUp          | Extra method to work for some specific cases       |
+| Nombre del método | Descripción                                             |
+| ----------------- | ------------------------------------------------------- |
+| morph             | Estructura morfológica de la tabla                      |
+| afterCreateTable  | Hace algo inmediatamente después de crear la tabla      |
+| up                | Tabla creada y lista para trabajar con ella             |
+| afterUp           | Método extra para trabajar en algunos casos específicos |
 
-**Running to down**
+**Ejecutándose hacia abajo**
 
-| Method name                         | Descripción                                                                      |
-| ----------------------------------- | -------------------------------------------------------------------------------- |
-| down                                | Normally you put here table drop or data truncation                              |
-| aferDown                            | Extra method to work after all was cleaned up                                    |
-| morph (**from previous migration**) | As migration was moved backward, there need to be all returned to previous state |
+| Nombre del método                 | Descripción                                                                                        |
+| --------------------------------- | -------------------------------------------------------------------------------------------------- |
+| down                              | Normalmente se pone aquí eliminación de la tabla o truncamiento de datos                           |
+| afterDown                         | Método extra para trabajar después de que todo se haya limpiado                                    |
+| morph (**de migración anterior**) | Como la migración ha sido movida hacia atrás, es necesario que todo se devuelva al estado anterior |
 
-## CLI Arguments and options
+## Argumentos y opciones CLI
 
-**Arguments**
+**Argumentos**
 
-| Argument | Descripción                   |
-| -------- | ----------------------------- |
-| generate | Generate a Migration          |
-| run      | Run a Migration               |
-| list     | List all available migrations |
+| Argumento | Descripción                             |
+| --------- | --------------------------------------- |
+| generate  | Genera una Migración                    |
+| run       | Ejecuta una Migración                   |
+| list      | Lista todas las migraciones disponibles |
 
-**Options**
+**Opciones**
 
-| Action                   | Descripción                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------------- |
-| --config=s               | Configuration file                                                                       |
-| --migrations=s           | Migrations directory. Use comma separated string to specify multiple directories         |
-| --directory=s            | Directory where the project was created                                                  |
-| --table=s                | Table to migrate. Table name or table prefix with asterisk. Default: all                 |
-| --version=s              | Version to migrate                                                                       |
-| --descr=s                | Migration description (used for timestamp based migration)                               |
-| --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)           |
-| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                            |
-| --force                  | Forces to overwrite existing migrations                                                  |
-| --ts-based               | Timestamp based migration version                                                        |
-| --log-in-db              | Keep migrations log in the database table rather then in file                            |
-| --dry                    | Attempt requested operation without making changes to system (Generating only)           |
-| --verbose                | Output of debugging information during operation (Running only)                          |
-| --no-auto-increment      | Disable auto increment (Generating only)                                                 |
-| --skip-ref-schema        | Skip referencedSchema inside generated migration (Generating only)                       |
-| --skip-foreign-checks    | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only) |
-| --help                   | Shows this help                                                                          |
+| Acción                   | Descripción                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| --config=s               | Fichero de configuración                                                                                            |
+| --migrations=s           | Directorio de migraciones. Use cadena separada por comas para especificar múltiples directorios                     |
+| --directory=s            | Directorio donde se creó el proyecto                                                                                |
+| --table=s                | Tabla a migrar. Nombre de la tabla o prefijo de tabla con asterisco. Por defecto: todas                             |
+| --version=s              | Versión a migrar                                                                                                    |
+| --descr=s                | Descripción de la migración (usado para migraciones basadas en marcas de tiempo)                                    |
+| --data=s                 | Exportar datos \['always' o 'oncreate'\] (Los datos se importan durante la ejecución de la migración)               |
+| --exportDataFromTables=s | Exportar datos de tablas específicas, usar cadena separadas por comas.                                              |
+| --force                  | Fuerza a sobreescribir migraciones existentes                                                                       |
+| --ts-based               | Versión de migraciones basadas en marcas de tiempo                                                                  |
+| --log-in-db              | Mantiene el registro de migraciones en la tabla de base de datos en lugar de en fichero                             |
+| --dry                    | Intenta la operación solicitada sin hacer cambios en el sistema (sólo generando)                                    |
+| --verbose                | Muestra información de depuración durante la operación (sólo ejecutando)                                            |
+| --no-auto-increment      | Deshabilita autoincremento (sólo generando)                                                                         |
+| --skip-ref-schema        | Omitir referencedSchema en la migración generada (sólo generando)                                                   |
+| --skip-foreign-checks    | Envuelve la consulta con `SET FOREIGN_KEY_CHECKS` antes y después de la ejecución de una consulta (sólo ejecutando) |
+| --help                   | Muestra esta ayuda                                                                                                  |
 
-## Timestamp based migrations
+## Migraciones basadas en marcas de tiempo
 
-Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment. Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
+El uso de este enfoque es útil cuando más de un desarrollador está participando en la gestión de la estructura de base de datos. Use `'migrationsTsBased' => true` en el fichero de configuración o la opción `--ts-based` en el entorno CLI. También, necesita especificar el sufijo `descr`, que podría ser cualquier cosa que quiera, por ejemplo: versión semántica.
 
-Current command
+Comando actual
 
     vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
     
 
-Will produce folder name with such names
+Producirá el nombre de carpeta con tales nombres
 
 * 1582539287636860_1.0.0
 * 1682539471102635_1.0.0
 * 1782539471102635_1.0.0
 
-Migrations will be executed from oldest to newest.
+Las migraciones se ejecutarán de la más antigua a la más reciente.
 
-> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
+> **NOTA**: Cuando se ejecuten las migraciones, las aplicación escanea todas las migraciones disponibles y su estado independientemente de su "edad". Si una o más no fueron ejecutadas en una ejecución anterior, serán ejecutadas en la siguiente ejecución.
 {: .alert .alert-info }
