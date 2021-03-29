@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Model Behaviors'
-keywords: 'models, behaviors'
+title: 'Comportamientos en Modelos (Behaviors)'
+keywords: 'modelos, comportamientos'
 ---
 
-# Model Behaviors
+# Comportamientos en Modelos (Behaviors)
 
 * * *
 
@@ -14,11 +14,11 @@ keywords: 'models, behaviors'
 
 ## Resumen
 
-[Behaviors](api/phalcon_mvc#mvc-model-behavior) are shared constructs that several models may adopt in order to re-use code. Although you can use [traits](https://php.net/manual/en/language.oop5.traits.php) to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
+Los [Comportamientos](api/phalcon_mvc#mvc-model-behavior) son construcciones compartidas que varios modelos pueden adoptar para reutilizar código. Aunque puede usar [traits](https://php.net/manual/en/language.oop5.traits.php) para reutilizar código, los comportamientos tienen varios beneficios que los hacen más atractivos. Los `Traits` requieren que use exactamente los mismos nombres de campos para que el código común funcione. Los Comportamientos son más flexibles.
 
-The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement behaviors.
+El ORM proporciona un API para implementar los comportamientos en sus modelos. Además, puede usar los eventos y las llamadas de retorno vistas anteriormente como alternativa para implementar los comportamientos.
 
-A behavior must be added in the model initializer, a model can have zero or more behaviors:
+Un comportamiento se debe añadir en el inicializador del modelo, un modelo puede tener ninguno o más comportamientos:
 
 ```php
 <?php
@@ -64,18 +64,18 @@ class Invoices extends Model
 }
 ```
 
-## Built In
+## Integrado
 
-The following built-in behaviors are provided by the framework:
+El framework proporciona los siguientes comportamientos integrados:
 
-| Nombre                                                            | Descripción                                                                                                |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [SoftDelete](api/phalcon_mvc#mvc-model-behavior-softdelete)       | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
-| [Timestampable](api/phalcon_mvc#mvc-model-behavior-timestampable) | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| Nombre                                                            | Descripción                                                                                                              |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [SoftDelete](api/phalcon_mvc#mvc-model-behavior-softdelete)       | En lugar de borrar permanentemente un registro, marca el registro como borrado cambiando el valor de una columna bandera |
+| [Timestampable](api/phalcon_mvc#mvc-model-behavior-timestampable) | Le permite actualizar automáticamente un atributo del modelo guardando la fecha cuando un registro se crea o actualiza   |
 
 ## Timestampable
 
-This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
+Este comportamiento recibe un vector de opciones, la clave del primer nivel debe ser un nombre de evento que indica cuando se debe asignar la columna:
 
 ```php
 <?php
@@ -97,7 +97,7 @@ public function initialize()
 }
 ```
 
-Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as the format of the [date](https://php.net/manual/en/function.date.php) function. `format` can also be an anonymous function offering additional functionality to generate any kind of timestamp string:
+Cada evento puede tener sus propias opciones, `field` es el nombre de la columna que se debe actualizar, si `format` es una cadena se usará como formato de la función [date](https://php.net/manual/en/function.date.php). `format` puede ser una función anónima que ofrece funcionalidad adicional para generar cualquier tipo de cadena de marca de tiempo:
 
 ```php
 <?php
@@ -127,11 +127,11 @@ public function initialize()
 }
 ```
 
-If the option `format` is omitted a timestamp using the PHP's function [time](https://php.net/manual/en/function.time.php), will be used.
+Si se omite la opción `format` se usará una marca de tiempo generada con la función PHP [time](https://php.net/manual/en/function.time.php).
 
 ## SoftDelete
 
-This behavior can be used as follows:
+Este comportamiento se puede usar como sigue:
 
 ```php
 <?php
@@ -178,7 +178,7 @@ class Invoices extends Model
 }
 ```
 
-This behavior accepts two options: `field` and `value`, `field` determines what field must be updated and `value` the value to be deleted. Assuming that our table has the following rows:
+Este comportamiento acepta dos opciones: `field` y `value`, `field` determina el campo a ser actualizado y `value` el valor para estar borrado. Suponiendo que nuestra tabla tiene las siguientes filas:
 
 ```sql
 mysql> select * from co_invoices;
@@ -191,7 +191,7 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-If we delete any of the two records the status will be updated instead of delete the record:
+Si borramos cualquiera de los dos registros se actualizará el estado en lugar de borrar el registro:
 
 ```php
 <?php
@@ -199,7 +199,7 @@ If we delete any of the two records the status will be updated instead of delete
 Invoices::findFirst(2)->delete();
 ```
 
-The operation will result in the following data in the table:
+La operación provocará los siguientes datos en la tabla:
 
 ```sql
 mysql> select * from co_invoices;
@@ -212,14 +212,14 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-> **NOTE**: You will need to ensure to specify the *deleted* condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
+> **NOTA**: Deberá asegurarse de especificar la condición *deleted* para filtrar sus registros con lo que podrá obtener de vuelta los resultados borrados o no borrados. Este comportamiento no soporta filtrado automático.
 {: .alert .alert-warning }
 
 ## Personalizado
 
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) or extend [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior) which exposes most of the methods required for implementing custom behaviors.
+El ORM proporciona un API para crear sus propios comportamientos. Un comportamiento debe ser una clase que implemente [Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) o extienda [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior) que expone la mayoría de métodos necesarios para implementar comportamientos personalizados.
 
-The [Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) requires two methods to be present in your custom behavior:
+[Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) requiere que estén presentes dos métodos en su comportamiento personalizado:
 
 ```php
 public function missingMethod(
@@ -229,7 +229,7 @@ public function missingMethod(
 )
 ```
 
-This methods acts as a fallback when a missing method is called on the model
+Este método actúa como respaldo cuando se llama un método inexistente en el modelo
 
 ```php
 public function notify(
@@ -238,14 +238,14 @@ public function notify(
 )
 ```
 
-This method receives the notifications from the [Events Manager](events).
+Este método recibe las notificaciones del [Events Manager](events).
 
-Additionally if you extend [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior), you have access to:
+Adicionalmente, si extiende [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior), tiene acceso a:
 
-- `getOptions(string $eventName = null)` - Returns the behavior options related to an event
-- `mustTakeAction(string $eventName)` - `bool` - Checks whether the behavior must take action on certain event
+- `getOptions(string $eventName = null)` - Devuelve las opciones del comportamiento relativas a un evento
+- `mustTakeAction(string $eventName)` - `bool` - Comprueba si el comportamiento debe realizar acciones sobre un cierto evento
 
-The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is performed operations on a model:
+El siguiente comportamiento es un ejemplo, implementa el comportamiento `Blameable` que ayuda a identificar el usuario que ha ejecutado operaciones sobre el modelo:
 
 ```php
 <?php
@@ -281,7 +281,7 @@ class Blameable extends Behavior
 }
 ```
 
-The above is a very simple behavior, but it illustrates how to create a behavior. Adding the behavior to a model is illustrated below:
+Lo anterior es un comportamiento muy simple, pero ilustra como crear un comportamiento. Añadir el comportamiento a un modelo se ilustra a continuación:
 
 ```php
 <?php
@@ -299,7 +299,7 @@ class Invoices extends Model
 }
 ```
 
-A behavior is also capable of intercepting missing methods on your models, and offering functionality for them:
+Un comportamiento también es capaz de interceptar métodos inexistentes en sus modelos, y ofrecer funcionalidad para ellos:
 
 ```php
 <?php
@@ -323,7 +323,7 @@ class Sluggable extends Behavior
 }
 ```
 
-Calling that method on a model that implements `Sluggable` returns a SEO friendly title:
+Llamar a ese método en un modelo que implementa `Sluggable` devuelve un título amigable SEO:
 
 ```php
 <?php
@@ -331,9 +331,9 @@ Calling that method on a model that implements `Sluggable` returns a SEO friendl
 $title = $invoice->getSlug();
 ```
 
-## Traits
+## Rasgos (Traits)
 
-You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the `Timestampable` behavior:
+Puede usar [Rasgos](https://php.net/manual/en/language.oop5.traits.php) para reutilizar código en sus clases, esta es otra manera de implementar comportamientos personalizados. El siguiente rasgo implementa una versión simple del comportamiento `Timestampable`:
 
 ```php
 <?php
@@ -352,7 +352,7 @@ trait Timestampable
 }
 ```
 
-Then you can use it in your model as follows:
+Entonces puede usarlo en su modelo de la siguiente manera:
 
 ```php
 <?php
@@ -365,7 +365,7 @@ class Invoices extends Model
 }
 ```
 
-> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
+> **NOTA**: Puede usar rasgos en lugar de comportamientos, pero requerirán que todos los campos afectados por el comportamiento tengan el mismo nombre. También, si implementa un método de evento en un rasgo (ej. `beforeCreate`) no podrá tenerlo también en su modelo ya que los dos producirán un error.
 {: .alert .alert-info }
 
 
