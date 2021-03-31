@@ -613,7 +613,7 @@ echo $successLogin->user->name;
 до
 
 ```bash
-/src/Controllers/SearchController.php -> searchAction
+/src/Controllers/ProfilesController.php -> searchAction
 ```
 
 Доступні контролери, дії та маршрути для Vökuró:
