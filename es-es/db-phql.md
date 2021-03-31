@@ -993,7 +993,7 @@ $results  = $this
 echo $results['invoice_total'], PHP_EOL;
 ```
 
-### Conditions
+### Condiciones
 
 Conditions allow us to filter the set of records we want to query using the `WHERE` keyword.
 
