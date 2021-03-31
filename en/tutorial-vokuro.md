@@ -612,7 +612,7 @@ After that, unless you have registered specific routes, the default routes (auto
 to
 
 ```bash
-/src/Controllers/SearchController.php -> searchAction
+/src/Controllers/ProfilesController.php -> searchAction
 ```
 
 The available controllers, actions and routes for Vökuró are:
