@@ -500,7 +500,7 @@ The operation is very similar to the one we use when inserting data. If the upda
 
 If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
 
-## Delete
+## Eliminar
 
 Delete is nearly identical to the `update` process. For this operation we are using the `delete()` HTTP method and the endpoint `/api/robots/{id:[0-9]+}`. The passed `id` parameter in the URL is the id of the robot to be deleted.
 
