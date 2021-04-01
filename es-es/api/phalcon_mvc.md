@@ -4649,7 +4649,7 @@ protected strategy;
 public function getAttributes( ModelInterface $model ): array;
 ```
 
-Returns table attributes names (fields)
+Devuelve los nombres de los atributos de la tabla (campos)
 
 ```php
 print_r(
@@ -4691,7 +4691,7 @@ print_r(
 public function getBindTypes( ModelInterface $model ): array;
 ```
 
-Returns attributes and their bind data types
+Devuelve los atributos y sus tipos de datos de enlace
 
 ```php
 print_r(
@@ -4705,7 +4705,7 @@ print_r(
 public function getColumnMap( ModelInterface $model ): array | null;
 ```
 
-Returns the column map if any
+Devuelve el mapa de columnas si lo hay
 
 ```php
 print_r(
@@ -4725,7 +4725,7 @@ Returns the DependencyInjector container
 public function getDataTypes( ModelInterface $model ): array;
 ```
 
-Returns attributes and their data types
+Devuelve los atributos y sus tipos de datos
 
 ```php
 print_r(
@@ -4739,7 +4739,7 @@ print_r(
 public function getDataTypesNumeric( ModelInterface $model ): array;
 ```
 
-Returns attributes which types are numerical
+Devuelve los atributos con tipos numéricos
 
 ```php
 print_r(
@@ -4753,7 +4753,7 @@ print_r(
 public function getDefaultValues( ModelInterface $model ): array;
 ```
 
-Returns attributes (which have default values) and their default values
+Devuelve los atributos (que tienen valores por defecto) y sus valores por defecto
 
 ```php
 print_r(
@@ -4767,7 +4767,7 @@ print_r(
 public function getEmptyStringAttributes( ModelInterface $model ): array;
 ```
 
-Returns attributes allow empty strings
+Devuelve atributos que permiten cadenas vacías
 
 ```php
 print_r(
@@ -4781,7 +4781,7 @@ print_r(
 public function getIdentityField( ModelInterface $model ): string | null;
 ```
 
-Returns the name of identity field (if one is present)
+Devuelve el nombre del campo identidad (si hay uno presente)
 
 ```php
 print_r(
@@ -4795,7 +4795,7 @@ print_r(
 public function getNonPrimaryKeyAttributes( ModelInterface $model ): array;
 ```
 
-Returns an array of fields which are not part of the primary key
+Devuelve un vector de campos que no forman parte de la clave primaria
 
 ```php
 print_r(
@@ -4809,7 +4809,7 @@ print_r(
 public function getNotNullAttributes( ModelInterface $model ): array;
 ```
 
-Returns an array of not null attributes
+Devuelve un vector de atributos no nulos
 
 ```php
 print_r(
@@ -4823,7 +4823,7 @@ print_r(
 public function getPrimaryKeyAttributes( ModelInterface $model ): array;
 ```
 
-Returns an array of fields which are part of the primary key
+Devuelve un vector de campos que forman parte de la clave primaria
 
 ```php
 print_r(
@@ -4837,7 +4837,7 @@ print_r(
 public function getReverseColumnMap( ModelInterface $model ): array | null;
 ```
 
-Returns the reverse column map if any
+Devuelve el mapa de columnas inverso si existe
 
 ```php
 print_r(
@@ -4851,13 +4851,13 @@ print_r(
 public function getStrategy(): StrategyInterface;
 ```
 
-Return the strategy to obtain the meta-data
+Devuelve la estrategia para obtener los metadatos
 
 ```php
 public function hasAttribute( ModelInterface $model, string $attribute ): bool;
 ```
 
-Check if a model has certain attribute
+Comprueba si un modelo tiene cierto atributo
 
 ```php
 var_dump(
@@ -4872,7 +4872,7 @@ var_dump(
 public function isEmpty(): bool;
 ```
 
-Checks if the internal meta-data container is empty
+Comprueba si el contenedor de metadatos interno está vacío
 
 ```php
 var_dump(
@@ -4884,13 +4884,13 @@ var_dump(
 public function read( string $key ): array | null;
 ```
 
-Reads metadata from the adapter
+Lee los metadatos del adaptador
 
 ```php
 final public function readColumnMap( ModelInterface $model ): array | null;
 ```
 
-Reads the ordered/reversed column map for certain model
+Lee el mapa de columnas ordenado/inverso para cierto modelo
 
 ```php
 print_r(
@@ -4919,7 +4919,7 @@ print_r(
 final public function readMetaData( ModelInterface $model ): array;
 ```
 
-Reads the complete meta-data for certain model
+Lee los metadatos completos para cierto modelo
 
 ```php
 print_r(
@@ -4933,7 +4933,7 @@ print_r(
 final public function readMetaDataIndex( ModelInterface $model, int $index );
 ```
 
-Reads meta-data for certain model
+Lee los metadatos para cierto modelo
 
 ```php
 print_r(
@@ -4948,7 +4948,7 @@ print_r(
 public function reset(): void;
 ```
 
-Resets internal meta-data in order to regenerate it
+Resetea los metadatos internos para regenerarlos
 
 ```php
 $metaData->reset();
@@ -4958,7 +4958,7 @@ $metaData->reset();
 public function setAutomaticCreateAttributes( ModelInterface $model, array $attributes ): void;
 ```
 
-Set the attributes that must be ignored from the INSERT SQL generation
+Establece los atributos que se deben ignorar en la generación SQL del `INSERT`
 
 ```php
 $metaData->setAutomaticCreateAttributes(
@@ -4973,7 +4973,7 @@ $metaData->setAutomaticCreateAttributes(
 public function setAutomaticUpdateAttributes( ModelInterface $model, array $attributes ): void;
 ```
 
-Set the attributes that must be ignored from the UPDATE SQL generation
+Establece los atributos que se deben ignorar en la generación SQL del `UPDATE`
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
@@ -4994,7 +4994,7 @@ Sets the DependencyInjector container
 public function setEmptyStringAttributes( ModelInterface $model, array $attributes ): void;
 ```
 
-Set the attributes that allow empty string values
+Establece los atributos que permiten valores de cadena vacía
 
 ```php
 $metaData->setEmptyStringAttributes(
@@ -5009,19 +5009,19 @@ $metaData->setEmptyStringAttributes(
 public function setStrategy( StrategyInterface $strategy ): void;
 ```
 
-Set the meta-data extraction strategy
+Establece la estrategia de extracción de metadatos
 
 ```php
 public function write( string $key, array $data ): void;
 ```
 
-Writes the metadata to adapter
+Escribe los metadatos al adaptador
 
 ```php
 final public function writeMetaDataIndex( ModelInterface $model, int $index, mixed $data ): void;
 ```
 
-Writes meta-data for certain model using a MODEL_* constant
+Escribe metadatos para cierto modelo usando una constante `MODEL_*`
 
 ```php
 print_r(
@@ -5039,7 +5039,7 @@ print_r(
 final protected function initialize( ModelInterface $model, mixed $key, mixed $table, mixed $schema );
 ```
 
-Initialize the metadata for certain table
+Inicializa los metadatos para cierta tabla
 
 <h1 id="mvc-model-metadata-apcu">Class Phalcon\Mvc\Model\MetaData\Apcu</h1>
 
@@ -5308,7 +5308,7 @@ Interface for Phalcon\Mvc\Model\MetaData
 public function getAttributes( ModelInterface $model ): array;
 ```
 
-Returns table attributes names (fields)
+Devuelve los nombres de los atributos de la tabla (campos)
 
 ```php
 public function getAutomaticCreateAttributes( ModelInterface $model ): array;
@@ -5326,85 +5326,85 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 public function getBindTypes( ModelInterface $model ): array;
 ```
 
-Returns attributes and their bind data types
+Devuelve los atributos y sus tipos de datos de enlace
 
 ```php
 public function getColumnMap( ModelInterface $model ): array | null;
 ```
 
-Returns the column map if any
+Devuelve el mapa de columnas si lo hay
 
 ```php
 public function getDataTypes( ModelInterface $model ): array;
 ```
 
-Returns attributes and their data types
+Devuelve los atributos y sus tipos de datos
 
 ```php
 public function getDataTypesNumeric( ModelInterface $model ): array;
 ```
 
-Returns attributes which types are numerical
+Devuelve los atributos con tipos numéricos
 
 ```php
 public function getDefaultValues( ModelInterface $model ): array;
 ```
 
-Returns attributes (which have default values) and their default values
+Devuelve los atributos (que tienen valores por defecto) y sus valores por defecto
 
 ```php
 public function getEmptyStringAttributes( ModelInterface $model ): array;
 ```
 
-Returns attributes allow empty strings
+Devuelve atributos que permiten cadenas vacías
 
 ```php
 public function getIdentityField( ModelInterface $model ): string | null;
 ```
 
-Returns the name of identity field (if one is present)
+Devuelve el nombre del campo identidad (si hay uno presente)
 
 ```php
 public function getNonPrimaryKeyAttributes( ModelInterface $model ): array;
 ```
 
-Returns an array of fields which are not part of the primary key
+Devuelve un vector de campos que no forman parte de la clave primaria
 
 ```php
 public function getNotNullAttributes( ModelInterface $model ): array;
 ```
 
-Returns an array of not null attributes
+Devuelve un vector de atributos no nulos
 
 ```php
 public function getPrimaryKeyAttributes( ModelInterface $model ): array;
 ```
 
-Returns an array of fields which are part of the primary key
+Devuelve un vector de campos que forman parte de la clave primaria
 
 ```php
 public function getReverseColumnMap( ModelInterface $model ): array | null;
 ```
 
-Returns the reverse column map if any
+Devuelve el mapa de columnas inverso si existe
 
 ```php
 public function getStrategy(): StrategyInterface;
 ```
 
-Return the strategy to obtain the meta-data
+Devuelve la estrategia para obtener los metadatos
 
 ```php
 public function hasAttribute( ModelInterface $model, string $attribute ): bool;
 ```
 
-Check if a model has certain attribute
+Comprueba si un modelo tiene cierto atributo
 
 ```php
 public function isEmpty(): bool;
 ```
 
-Checks if the internal meta-data container is empty
+Comprueba si el contenedor de metadatos interno está vacío
 
 ```php
 public function read( string $key ): array | null;
@@ -5416,7 +5416,7 @@ Reads meta-data from the adapter
 public function readColumnMap( ModelInterface $model ): array | null;
 ```
 
-Reads the ordered/reversed column map for certain model
+Lee el mapa de columnas ordenado/inverso para cierto modelo
 
 ```php
 public function readColumnMapIndex( ModelInterface $model, int $index );
@@ -5428,7 +5428,7 @@ Reads column-map information for certain model using a MODEL_* constant
 public function readMetaData( ModelInterface $model ): array;
 ```
 
-Reads meta-data for certain model
+Lee los metadatos para cierto modelo
 
 ```php
 public function readMetaDataIndex( ModelInterface $model, int $index ): mixed;
@@ -5440,31 +5440,31 @@ Reads meta-data for certain model using a MODEL_* constant
 public function reset();
 ```
 
-Resets internal meta-data in order to regenerate it
+Resetea los metadatos internos para regenerarlos
 
 ```php
 public function setAutomaticCreateAttributes( ModelInterface $model, array $attributes );
 ```
 
-Set the attributes that must be ignored from the INSERT SQL generation
+Establece los atributos que se deben ignorar en la generación SQL del `INSERT`
 
 ```php
 public function setAutomaticUpdateAttributes( ModelInterface $model, array $attributes );
 ```
 
-Set the attributes that must be ignored from the UPDATE SQL generation
+Establece los atributos que se deben ignorar en la generación SQL del `UPDATE`
 
 ```php
 public function setEmptyStringAttributes( ModelInterface $model, array $attributes ): void;
 ```
 
-Set the attributes that allow empty string values
+Establece los atributos que permiten valores de cadena vacía
 
 ```php
 public function setStrategy( StrategyInterface $strategy );
 ```
 
-Set the meta-data extraction strategy
+Establece la estrategia de extracción de metadatos
 
 ```php
 public function write( string $key, array $data ): void;
@@ -5476,7 +5476,7 @@ Writes meta-data to the adapter
 public function writeMetaDataIndex( ModelInterface $model, int $index, mixed $data );
 ```
 
-Writes meta-data for certain model using a MODEL_* constant
+Escribe metadatos para cierto modelo usando una constante `MODEL_*`
 
 <h1 id="mvc-model-query">Class Phalcon\Mvc\Model\Query</h1>
 

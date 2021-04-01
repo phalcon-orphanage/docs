@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Model Validation'
-keywords: 'models, validation, uniqueness, inclusionin'
+title: 'Validación del Modelo'
+keywords: 'modelos, validación, unicidad, inclusión'
 ---
 
-# Model Validation
+# Validación del Modelo
 
 * * *
 
@@ -14,7 +14,7 @@ keywords: 'models, validation, uniqueness, inclusionin'
 
 ## Resumen
 
-[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) provides several events to validate data and implement business rules.
+[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) proporciona varios eventos para validar datos e implementar reglas de negocio.
 
 ```php
 <?php
@@ -45,11 +45,11 @@ class Customers extends Model
 }
 ```
 
-## Data Integrity
+## Integridad de Datos
 
-Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforce your business rules.
+La integridad de datos es esencial en cada aplicación. Puede implementar validadores en sus modelos para introducir otra capa de validación, de modo que se pueda asegurar que los datos que se almacenan en su base de datos cumplen sus reglas de negocio.
 
-The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation](validation) namespace.
+El eventos especial `validation` nos permite llamar validadores integrados sobre el registro. Phalcon expone validadores integrados adicionales que se pueden usar en esta fase de validación. Todos los validadores disponibles están bajo el espacio de nombres [Phalcon\Validation](validation).
 
 ```php
 <?php
@@ -95,16 +95,16 @@ class Invoices extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn](api/phalcon_validation#validation-validator-inclusionin). It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
+El ejemplo anterior realiza una validación usando el validador integrado [Phalcon\Validation\Validator\InclusionIn](api/phalcon_validation#validation-validator-inclusionin). Comprueba el valor del campo `inv_status_flag` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá `false`.
 
-> **NOTE**: For more information on validators, see the [Validation documentation](validation)
+> **NOTA**: Para más información sobre validadores, ver la [documentación de Validación](validation)
 {: .alert .alert-warning }
 
-## Messages
+## Mensajes
 
-[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) utilizes the [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) collection to store any validation messages that have been generated during the validation process.
+[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) usa la colección [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) para almacenar cualquier mensaje de validación que se haya generado durante el proceso de validación.
 
-Each message is an instance of [Phalcon\Messages\Message](api/phalcon_messages#messages-message) and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides additional information such as the field name that generated the message or the message type:
+Cada mensaje es una instancia de [Phalcon\Messages\Message](api/phalcon_messages#messages-message) y el conjunto de mensajes generado se puede recuperar con el método `getMessages()`. Cada mensaje proporciona información adicional como el nombre del campo que ha generado el mensaje o el tipo de mensaje:
 
 ```php
 <?php
@@ -120,17 +120,17 @@ if (false === $invoice->save()) {
 }
 ```
 
-[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) can generate the following types of validation messages:
+[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) puede generar los siguientes tipos de mensajes de validación:
 
-| Tipo                   | Generated when                                                                                                         |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `ConstraintViolation`  | A field, part of a virtual foreign key, is trying to insert/update a value that does not exist in the referenced model |
-| `InvalidCreateAttempt` | Trying to create a record that already exists                                                                          |
-| `InvalidUpdateAttempt` | Trying to update a record that does not exist                                                                          |
-| `InvalidValue`         | A validator failed because of an invalid value                                                                         |
-| `PresenceOf`           | A field with a non `null` attribute on the database is trying to insert/update a `null` value                          |
+| Tipo                   | Generado cuando                                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `ConstraintViolation`  | Un campo, parte de una clave ajena virtual, está intentando insertar/actualizar un valor que no existe en el modelo referenciado |
+| `InvalidCreateAttempt` | Se Intenta crear un registro que ya existe                                                                                       |
+| `InvalidUpdateAttempt` | Se intenta actualizar un registro que no existe                                                                                  |
+| `InvalidValue`         | Un validador falla a causa de un valor inválido                                                                                  |
+| `PresenceOf`           | Un campo con un atributo no `nulo` en la base de datos está intentando insertar/actualizar un valor `nulo`                       |
 
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+El método `getMessages()` se puede anular en un modelo para reemplazar/traducir los mensajes por defecto generados automáticamente por el ORM:
 
 ```php
 <?php
@@ -170,9 +170,9 @@ class Invoices extends Model
 }
 ```
 
-## Failed Events
+## Eventos Fallidos
 
-Additional events are available when the data validation process finds any inconsistencies:
+Hay disponibles eventos adicionales cuando el proceso de validación de datos encuentra cualquier inconsistencia:
 
 | Operación                     | Nombre              | Explicación                                                                  |
 | ----------------------------- | ------------------- | ---------------------------------------------------------------------------- |
@@ -181,7 +181,7 @@ Additional events are available when the data validation process finds any incon
 
 ## Personalizado
 
-The <validation> document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
+El documento de [validación](validation) explica en detalle cómo puede crear sus propios validadores. Puede usar dichos validadores y reutilizarlos entre varios modelos. Un validador también puede ser tan simple como:
 
 ```php
 <?php

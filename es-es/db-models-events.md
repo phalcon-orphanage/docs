@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Model Events'
-keywords: 'models, events, events manager'
+title: 'Eventos del Modelo'
+keywords: 'modelos, eventos, gestor de eventos'
 ---
 
-# Model Events
+# Eventos del Modelo
 
 * * *
 
@@ -14,34 +14,34 @@ keywords: 'models, events, events manager'
 
 ## Resumen
 
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model-query) and their order of execution:
+Los modelos le permiten implementar eventos que se lanzarán al realizar un `insert/update/delete`, que se pueden usar para definir las reglas de negocio. Se soportan los siguiente eventos por [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model-query) y su orden de ejecución:
 
-| Operación     | Nombre                     | Stop? | Explicación                                                                                           |
-| ------------- | -------------------------- |:-----:| ----------------------------------------------------------------------------------------------------- |
-| Insert        | `afterCreate`              |  No   | Runs after creating a record                                                                          |
-| Delete        | `afterDelete`              |  No   | Runs after deleting records                                                                           |
-| Fetch         | `afterFetch`               |  No   | Runs after fetching records                                                                           |
-| Insert/Update | `afterSave`                |  No   | Runs after saving a record                                                                            |
-| Update        | `afterUpdate`              |  No   | Runs after updating a record                                                                          |
-| Insert/Update | `afterValidation`          |  Si   | Is executed after the fields are validated for not `null`/empty strings or foreign keys               |
-| Insert        | `afterValidationOnCreate`  |  Si   | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an insert  |
-| Update        | `afterValidationOnUpdate`  |  Si   | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an update  |
-| Insert        | `beforeCreate`             |  Si   | Runs before creating a record                                                                         |
-| Delete        | `beforeDelete`             |  Si   | Runs before deleting records                                                                          |
-| Insert/Update | `beforeSave`               |  Si   | Runs before saving a record                                                                           |
-| Update        | `beforeUpdate`             |  Si   | Runs before updating a record                                                                         |
-| Insert/Update | `beforeValidation`         |  Si   | Is executed before the fields are validated for not `null`/empty strings or foreign keys              |
-| Insert        | `beforeValidationOnCreate` |  Si   | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an insert |
-| Update        | `beforeValidationOnUpdate` |  Si   | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an update |
-| Delete        | `notDeleted`               |  No   | Runs when records are not deleted (fail)                                                              |
-| Save          | `notSaved`                 |  No   | Runs when records are not saved (fail)                                                                |
-| Insert/Update | `onValidationFails`        |  Si   | Is executed after an integrity validator fails                                                        |
-| Insert/Update | `prepareSave`              |  No   | Is executed before saving and allows data manipulation                                                |
-| Insert/Update | `validation`               |  Si   | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
+| Operación           | Nombre                     | Detiene? | Explicación                                                                                                  |
+| ------------------- | -------------------------- |:--------:| ------------------------------------------------------------------------------------------------------------ |
+| Insertar            | `afterCreate`              |    No    | Se ejecuta después de crear un registro                                                                      |
+| Eliminar            | `afterDelete`              |    No    | Se ejecuta después de borrar registros                                                                       |
+| Obtener             | `afterFetch`               |    No    | Se ejecuta después de obtener registros                                                                      |
+| Insertar/Actualizar | `afterSave`                |    No    | Se ejecuta después de guardar un registro                                                                    |
+| Actualizar          | `afterUpdate`              |    No    | Se ejecuta después de actualizar un registro                                                                 |
+| Insertar/Actualizar | `afterValidation`          |    Si    | Se ejecuta después de que se validen los campos no nulos/cadenas vacías o llaves ajenas                      |
+| Insertar            | `afterValidationOnCreate`  |    Si    | Se ejecuta después de que se validen los campos no nulos/cadenas vacías o llaves ajenas en una inserción     |
+| Actualizar          | `afterValidationOnUpdate`  |    Si    | Se ejecuta después de que se validen los campos no nulos/cadenas vacías o claves ajenas en una actualización |
+| Insertar            | `beforeCreate`             |    Si    | Se ejecuta antes de crear un registro                                                                        |
+| Eliminar            | `beforeDelete`             |    Si    | Se ejecuta antes de eliminar registros                                                                       |
+| Insertar/Actualizar | `beforeSave`               |    Si    | Se ejecuta antes de guardar un registro                                                                      |
+| Actualizar          | `beforeUpdate`             |    Si    | Se ejecuta antes de actualizar un registro                                                                   |
+| Insertar/Actualizar | `beforeValidation`         |    Si    | Se ejecuta antes de que se validen los campos no nulos/cadenas vacías o claves ajenas                        |
+| Insertar            | `beforeValidationOnCreate` |    Si    | Se ejecuta antes de que se validen los campos no nulos/cadenas vacías o claves ajenas                        |
+| Actualizar          | `beforeValidationOnUpdate` |    Si    | Se ejecuta antes de que se validen los campos no nulos/cadenas vacías o claves ajenas en una actualización   |
+| Eliminar            | `notDeleted`               |    No    | Se ejecuta cuando los registros no se eliminan (falla)                                                       |
+| Guardar             | `notSaved`                 |    No    | Se ejecuta cuando los registros no se guardan (falla)                                                        |
+| Insertar/Actualizar | `onValidationFails`        |    Si    | Se ejecuta después de que un validador de integridad falle                                                   |
+| Insertar/Actualizar | `prepareSave`              |    No    | Se ejecuta antes de guardar y permite manipular datos                                                        |
+| Insertar/Actualizar | `validation`               |    Si    | Se ejecuta antes de que se validen los campos no nulos/cadenas vacías o claves ajenas en una actualización   |
 
 ### Eventos
 
-Models act as listeners to the events manager. Therefore we only need to implement the events above in the models directly as public methods:
+Los modelos actúan como oyentes del gestor de eventos. Por lo tanto, sólo necesitamos implementar los eventos anteriores directamente en los modelos como métodos públicos:
 
 ```php
 <?php
@@ -102,7 +102,7 @@ class Invoices extends Model
 
 ```
 
-Events can be used to assign values before performing an operation, for example:
+Los eventos se pueden usar para asignar valores antes de ejecutar una operación, por ejemplo:
 
 ```php
 <?php
@@ -169,9 +169,9 @@ class Invoices extends Model
 }
 ```
 
-### Custom Events Manager
+### Gestor de Eventos Personalizado
 
-Additionally, this component is integrated with [Phalcon\Events\Manager](api/phalcon_events#events-manager), this means we can create listeners that run when an event is triggered.
+Además, este componente está integrado con [Phalcon\Events\Manager](api/phalcon_events#events-manager), esto significa que podemos crear oyentes que se ejecuten cuando se dispare un evento.
 
 ```php
 <?php
@@ -243,7 +243,7 @@ class Invoices extends Model
 }
 ```
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `Invoices` are saved:
+En el ejemplo anterior, el Gestor de Eventos sólo actúa como puente entre un objeto y un oyente (la función anónima). Los eventos se dispararán hacia el oyente cuando se guarde `Invoices`:
 
 ```php
 <?php
@@ -257,7 +257,7 @@ $invoice->inv_title = 'Invoice for ACME Inc.';
 $invoice->save();
 ```
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager when setting it in the DI container:
+Si queremos que todos los objetos creados en nuestra aplicación usen el mismo Gestor de Eventos, necesitamos asignarlo al Gestor de Modelos cuando lo configuramos en el contenedor DI:
 
 ```php
 <?php
@@ -295,11 +295,11 @@ $container->setShared(
 );
 ```
 
-If a listener returns false that will stop the operation that is executing currently.
+Si un oyente devuelve `false`, detendrá la operación que se está ejecutando actualmente.
 
-## Logging SQL Statements
+## Registrar Sentencias SQL
 
-When using high-level abstraction components such as [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) is supported internally by [Phalcon\Db](api/phalcon_db). [Phalcon\Logger](logger) interacts with [Phalcon\Db](api/phalcon_db), providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+Cuando se usa componentes de abstracción de alto nivel como [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) para acceder a la base de datos, es difícil de entender qué sentencias se envían finalmente al sistema de base de datos. [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) se soporta internamente por [Phalcon\Db](api/phalcon_db). [Phalcon\Logger](logger) interactúa con [Phalcon\Db](api/phalcon_db), proporcionando capacidades de registro sobre la capa de abstracción de base de datos, lo que nos permite registrar sentencias SQL a medida que suceden.
 
 ```php
 <?php
@@ -348,7 +348,7 @@ $container->set(
 );
 ```
 
-As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
+Como los modelos acceden a la conexión de base de datos por defecto, todas las sentencias SQL que se envían al sistema de base de datos se registran en el fichero:
 
 ```php
 <?php
@@ -365,13 +365,13 @@ if ($invoice->save() === false) {
 }
 ```
 
-As above, the file */storage/logs/db.log* will contain something like this:
+Como se ve arriba, el fichero */storage/logs/db.log* contendrá algo parecido a esto:
 
 > `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO co_invoices` `(inv_cst_id, inv_title, inv_total) VALUES (10, 'Invoice for ACME Inc.', 10000)`
 
 ## Perfilando sentencias SQL
 
-Using the [Phalcon\Db](api/phalcon_db), the underlying component of [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model), it is possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. Analyzing the logs will help in identifying bottlenecks in your SQL code:
+Usando [Phalcon\Db](api/phalcon_db), el componente subyacente de [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model), es posible perfilar las sentencias SQL generadas por el ORM para analizar el rendimiento de las operaciones de la base de datos. Analizar los registros ayudará a identificar cuellos de botella en su código SQL:
 
 ```php
 <?php
@@ -428,7 +428,7 @@ $container->set(
 );
 ```
 
-Profiling some queries:
+Perfilando algunas consultas:
 
 ```php
 <?php
@@ -466,4 +466,4 @@ foreach ($profiles as $profile) {
 }
 ```
 
-Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
+Cada perfil generado contiene la duración en milisegundos que cada instrucción consume para completarse, así como también la sentencia SQL generada.

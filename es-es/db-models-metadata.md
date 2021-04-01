@@ -3,10 +3,10 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Metadatos de modelos'
-keywords: 'model, caching, metadata, query fields'
+keywords: 'modelo, caché, metadatos, campos de consulta'
 ---
 
-# Model Metadata
+# Metadatos de Modelo
 
 * * *
 
@@ -14,9 +14,9 @@ keywords: 'model, caching, metadata, query fields'
 
 ## Resumen
 
-When using [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model) classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
+Cuando usamos clases [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model), que corresponden a tablas actuales en la base de datos, Phalcon necesita saber información esencial sobre esas tablas, como campos, tipos de datos, claves primarias y ajenas, así como relaciones. El objeto [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) ofrece esta funcionalidad, transparentemente consulta la base de datos y genera los datos necesarios desde el esquema de base de datos. Los datos se pueden almacenar en un almacén de datos (tipo Redis, APCu, etc.) para asegurar que la base de datos no se consulta por el esquema cada vez que se ejecuta una consulta.
 
-> **NOTE**: During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
+> **NOTA**: Durante los despliegues a producción, por favor asegúrese que siempre invalida el caché metaData para que los cambios de la base de datos que se propagaron durante su despliegue estén disponibles en su aplicación. El caché metaData se reconstruirá con todos los cambios necesarios.
 {: .alert .alert-warning } 
 
 
@@ -38,7 +38,7 @@ $dataTypes = $metadata->getDataTypes($invoice);
 print_r($dataTypes);
 ```
 
-The above code will print the field names and also the fields to field types array. We use `attributes` as an alias of `fields`.
+El código anterior imprimirá los nombres de los campos y también los campos al vector de tipos de campo. Usamos `attributes` como un alias de `fields`.
 
 ```php
 [
@@ -68,24 +68,24 @@ The above code will print the field names and also the fields to field types arr
 
 ## Constantes
 
-[Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) exposes a number of constants that can be used to retrieve attributes from the internal collection.
+[Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) expone un número de constantes que se pueden usar para obtener atributos de la colección interna.
 
-| Nombre                            | Descripción                                                                |
-| --------------------------------- | -------------------------------------------------------------------------- |
-| `MODELS_ATTRIBUTES`               | Every column in the mapped table                                           |
-| `MODELS_AUTOMATIC_DEFAULT_INSERT` | Fields that must be ignored from `INSERT` SQL statements                   |
-| `MODELS_AUTOMATIC_DEFAULT_UPDATE` | Fields that must be ignored from `UPDATE` SQL statements                   |
-| `MODELS_COLUMN_MAP`               | Column map (aliases)                                                       |
-| `MODELS_DATA_TYPES`               | Every column and its data type                                             |
-| `MODELS_DATA_TYPES_BIND`          | How every column must be bound/casted                                      |
-| `MODELS_DATA_TYPES_NUMERIC`       | The columns that have numeric data types                                   |
-| `MODELS_DEFAULT_VALUES`           | Default values for columns                                                 |
-| `MODELS_EMPTY_STRING_VALUES`      | Columns that allow empty strings                                           |
-| `MODELS_IDENTITY_COLUMN`          | The identity column. `false` if the model does not have an identity column |
-| `MODELS_NON_PRIMARY_KEY`          | Every column that is not part of the primary key                           |
-| `MODELS_NOT_NULL`                 | Every column that does not allow `null` values                             |
-| `MODELS_PRIMARY_KEY`              | Every column part of the primary key                                       |
-| `MODELS_REVERSE_COLUMN_MAP`       | Reverse column map (aliases)                                               |
+| Nombre                            | Descripción                                                                   |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| `MODELS_ATTRIBUTES`               | Cada columna en la tabla mapeada                                              |
+| `MODELS_AUTOMATIC_DEFAULT_INSERT` | Campos que se deben ignorar de las sentencias SQL `INSERT`                    |
+| `MODELS_AUTOMATIC_DEFAULT_UPDATE` | Campos que se deben ignorar de las sentencias SQL `UPDATE`                    |
+| `MODELS_COLUMN_MAP`               | Mapa de columna (alias)                                                       |
+| `MODELS_DATA_TYPES`               | Cada columna y su tipo de datos                                               |
+| `MODELS_DATA_TYPES_BIND`          | Como se debe vincular/convertir cada columna                                  |
+| `MODELS_DATA_TYPES_NUMERIC`       | Las columnas que tienen tipos de datos numéricos                              |
+| `MODELS_DEFAULT_VALUES`           | Valores por defecto para las columnas                                         |
+| `MODELS_EMPTY_STRING_VALUES`      | Columnas que permiten cadenas vacías                                          |
+| `MODELS_IDENTITY_COLUMN`          | La columna identidad. `false` si el modelo no tiene ninguna columna identidad |
+| `MODELS_NON_PRIMARY_KEY`          | Cada columna que no sea parte de la clave primaria                            |
+| `MODELS_NOT_NULL`                 | Cada columna que no permita valores `null`                                    |
+| `MODELS_PRIMARY_KEY`              | Cada columna que sea parte de la clave primaria                               |
+| `MODELS_REVERSE_COLUMN_MAP`       | Mapa de columna inverso (alias)                                               |
 
 ## Métodos
 
@@ -93,7 +93,7 @@ The above code will print the field names and also the fields to field types arr
 public function getAttributes(ModelInterface $model): array
 ```
 
-Returns table attributes names (fields)
+Devuelve los nombres de los atributos de la tabla (campos)
 
 ```php
 print_r(
@@ -109,7 +109,7 @@ public function getAutomaticCreateAttributes(
 ): array
 ```
 
-Returns attributes that must be ignored from the `INSERT` SQL generation
+Devuelve los atributos que deben ser ignorados de la generación SQL del `INSERT`
 
 ```php
 print_r(
@@ -125,7 +125,7 @@ public function getAutomaticUpdateAttributes(
 ): array
 ```
 
-Returns attributes that must be ignored from the `UPDATE` SQL generation
+Devuelve los atributos que deben ser ignorados de la generación SQL del `UPDATE`
 
 ```php
 print_r(
@@ -139,7 +139,7 @@ print_r(
 public function getBindTypes(ModelInterface $model): array
 ```
 
-Returns attributes and their bind data types
+Devuelve los atributos y sus tipos de datos de enlace
 
 ```php
 print_r(
@@ -153,7 +153,7 @@ print_r(
 public function getColumnMap(ModelInterface $model): array
 ```
 
-Returns the column map if any
+Devuelve el mapa de columnas si lo hay
 
 ```php
 print_r(
@@ -167,7 +167,7 @@ print_r(
 public function getDefaultValues(ModelInterface $model): array
 ```
 
-Returns attributes (which have default values) and their default values
+Devuelve los atributos (que tienen valores por defecto) y sus valores por defecto
 
 ```php
  print_r(
@@ -181,7 +181,7 @@ Returns attributes (which have default values) and their default values
 public function getDataTypes(ModelInterface $model): array
 ```
 
-Returns attributes and their data types
+Devuelve los atributos y sus tipos de datos
 
 ```php
 print_r(
@@ -195,7 +195,7 @@ print_r(
 public function getDataTypesNumeric(ModelInterface $model): array
 ```
 
-Returns attributes which types are numerical
+Devuelve los atributos con tipos numéricos
 
 ```php
 print_r(
@@ -211,7 +211,7 @@ public function getEmptyStringAttributes(
 ): array
 ```
 
-Returns attributes allow empty strings
+Devuelve atributos que permiten cadenas vacías
 
 ```php
 print_r(
@@ -225,7 +225,7 @@ print_r(
 public function getIdentityField(ModelInterface $model): string
 ```
 
-Returns the name of identity field (if one is present)
+Devuelve el nombre del campo identidad (si hay uno presente)
 
 ```php
 print_r(
@@ -241,7 +241,7 @@ public function getNonPrimaryKeyAttributes(
 ): array
 ```
 
-Returns an array of fields which are not part of the primary key
+Devuelve un vector de campos que no forman parte de la clave primaria
 
 ```php
 print_r(
@@ -255,7 +255,7 @@ print_r(
 public function getNotNullAttributes(ModelInterface $model): array
 ```
 
-Returns an array of not null attributes
+Devuelve un vector de atributos no nulos
 
 ```php
 print_r(
@@ -271,7 +271,7 @@ public function getPrimaryKeyAttributes(
 ): array
 ```
 
-Returns an array of fields which are part of the primary key
+Devuelve un vector de campos que forman parte de la clave primaria
 
 ```php
 print_r(
@@ -287,7 +287,7 @@ public function getReverseColumnMap(
 ): array
 ```
 
-Returns the reverse column map if any
+Devuelve el mapa de columnas inverso si existe
 
 ```php
 print_r(
@@ -301,7 +301,7 @@ print_r(
 public function getStrategy(): StrategyInterface
 ```
 
-Return the strategy to obtain the meta-data
+Devuelve la estrategia para obtener los metadatos
 
 ```php
 public function hasAttribute(
@@ -310,7 +310,7 @@ public function hasAttribute(
 ): bool
 ```
 
-Check if a model has certain attribute
+Comprueba si un modelo tiene cierto atributo
 
 ```php
 print_r(
@@ -325,7 +325,7 @@ print_r(
 public function isEmpty(): bool
 ```
 
-Checks if the internal meta-data container is empty
+Comprueba si el contenedor de metadatos interno está vacío
 
 ```php
 print_r(
@@ -337,7 +337,7 @@ print_r(
 public function read(string $key): array | null
 ```
 
-Reads metadata from the adapter
+Lee los metadatos del adaptador
 
 ```php
 final public function readColumnMap(
@@ -345,7 +345,7 @@ final public function readColumnMap(
 ): array | null
 ```
 
-Reads the ordered/reversed column map for certain model
+Lee el mapa de columnas ordenado/inverso para cierto modelo
 
 ```php
 print_r(
@@ -362,7 +362,7 @@ final public function readColumnMapIndex(
 )
 ```
 
-Reads column-map information for certain model using a `MODEL_*` constant
+Lee información del mapa de columnas para cierto modelo usando la constante `MODEL_*`
 
 ```php
 print_r(
@@ -377,7 +377,7 @@ print_r(
 final public function readMetaData(ModelInterface $model): array
 ```
 
-Reads the complete meta-data for certain model
+Lee los metadatos completos para cierto modelo
 
 ```php
 print_r(
@@ -394,7 +394,7 @@ final public function readMetaDataIndex(
 )
 ```
 
-Reads meta-data for certain model
+Lee los metadatos para cierto modelo
 
 ```php
 print_r(
@@ -409,7 +409,7 @@ print_r(
 public function reset(): void
 ```
 
-Resets internal meta-data in order to regenerate it
+Resetea los metadatos internos para regenerarlos
 
 ```php
  $metaData->reset();
@@ -422,7 +422,7 @@ public function setAutomaticCreateAttributes(
 ): void
 ```
 
-Set the attributes that must be ignored from the INSERT SQL generation
+Establece los atributos que se deben ignorar en la generación SQL del `INSERT`
 
 ```php
 $metaData->setAutomaticCreateAttributes(
@@ -440,7 +440,7 @@ public function setAutomaticUpdateAttributes(
 ): void
 ```
 
-Set the attributes that must be ignored from the UPDATE SQL generation
+Establece los atributos que se deben ignorar en la generación SQL del `UPDATE`
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
@@ -458,7 +458,7 @@ public function setEmptyStringAttributes(
 ): void
 ```
 
-Set the attributes that allow empty string values
+Establece los atributos que permiten valores de cadena vacía
 
 ```php
 $metaData->setEmptyStringAttributes(
@@ -473,13 +473,13 @@ $metaData->setEmptyStringAttributes(
 public function setStrategy(StrategyInterface $strategy): void
 ```
 
-Set the meta-data extraction strategy
+Establece la estrategia de extracción de metadatos
 
 ```php
 public function write(string $key, array $data): void
 ```
 
-Writes the metadata to adapter
+Escribe los metadatos al adaptador
 
 ```php
 final public function writeMetaDataIndex(
@@ -489,7 +489,7 @@ final public function writeMetaDataIndex(
 ): void
 ```
 
-Writes meta-data for certain model using a MODEL_* constant
+Escribe metadatos para cierto modelo usando una constante `MODEL_*`
 
 ```php
 print_r(
@@ -512,30 +512,30 @@ final protected function initialize(
 )
 ```
 
-Initialize the metadata for certain table
+Inicializa los metadatos para cierta tabla
 
 ## Adaptadores
 
-Retrieving the metadata is an expensive database operation and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
+Obtener los metadatos es una operación de base de datos costosa y ciertamente no queremos ejecutarla cada vez que se ejecute una consulta. Sin embargo, podemos usar uno de los muchos adaptadores disponibles para almacenar en caché los metadatos.
 
-> **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) adapter is recommended so that any changes to the database can be reflected immediately. 
+> **NOTA**: Para desarrollo local, el adaptador [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) se recomienda para que cualquier cambio en la base de datos se refleje inmediatamente. 
 {: .alert .alert-info }
  
-| Adaptador                                                                                       | Descripción                                                                                                                                  |
-| ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. (production) |
-| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. (production)                                |
-| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | This adapter uses memory. The metadata is cached only during the request. (development)                                                      |
-| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | This adapter uses [Redis](https://redis.io) to store the table metadata. (production)                                                        |
-| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | This adapter uses plain files to store metadata. (not for production)                                                                        |
+| Adaptador                                                                                       | Descripción                                                                                                                                            |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | Este adaptador usa [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) para almacenar los metadatos de la tabla. (producción) |
+| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | Este adaptador usa [Memcached Server](https://www.memcached.org) para almacenar los metadatos de la tabla. (producción)                                |
+| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | Este adaptador usa la memoria. Los metadatos se almacenan en caché sólo durante la petición. (desarrollo)                                              |
+| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | Este adaptador usa [Redis](https://redis.io) para almacenar los metadatos de la tabla. (producción)                                                    |
+| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | Este adaptador usa ficheros planos para almacenar los metadatos. (no para producción)                                                                  |
 
 ### APCu
 
-This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
+Este adaptador usa [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) para almacenar los metadatos de la tabla. La extensión debe estar presente en su sistema para que funcione este caché de metadatos. Si el servidor se reinicia, los datos se perderán. Este adaptador es apropiado para aplicaciones en producción.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
+El adaptador recibe una clase [Phalcon\Cache\AdapterFactory](cache#adapter-factory) para instanciar el objeto de caché relevante. También puede pasar un vector con opciones adicionales para que el caché opere.
 
-The default prefix is `ph-mm-apcu-` and the lifetime is `172,000` (48 hours).
+El prefijo predeterminado es `ph-mm-apcu-` y el tiempo de vida es `172.000` (48 horas).
 
 ```php
 <?php
@@ -563,11 +563,11 @@ $container->set(
 
 ### Libmemcached
 
-This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. The extension must be present in your system for this metadata cache to work. This adapter is suitable for production applications.
+Este adaptador usa [Memcached Server](https://www.memcached.org) para almacenar los metadatos de la tabla. La extensión debe estar presente en su sistema para que funcione este caché de metadatos. Este adaptador es apropiado para aplicaciones en producción.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
+El adaptador recibe una clase [Phalcon\Cache\AdapterFactory](cache#adapter-factory) para instanciar el objeto de caché relevante. También puede pasar un vector con opciones adicionales para que el caché opere.
 
-The default prefix is `ph-mm-memc-` and the lifetime is `172,000` (48 hours). The `persistenId` is preset to `php-mm-mcid-`.
+El prefijo predeterminado es `ph-mm-memc-` y el tiempo de vida es `172.000` (48 horas). `persistenId` está preconfigurado a `php-mm-mcid-`.
 
 ```php
 <?php
@@ -602,7 +602,7 @@ $container->set(
 
 ### Memory
 
-This adapter uses the server's memory to store the metadata cache. The cache is available only during the request, and then the cache is lost. This cache is more suitable for development, since it accommodates the frequent changes in the database during development.
+Este adaptador usa la memoria del servidor para almacenar el caché de metadatos. El cache está disponible sólo durante la petición, y después el caché se pierde. Este caché es más apropiado para desarrollo, ya que se adapta a los cambios frecuentes en la base de datos durante el desarrollo.
 
 ```php
 <?php
@@ -621,11 +621,11 @@ $container->set(
 
 ### Redis
 
-This adapter uses the [Redis](https://redis.io) to store the table metadata. The extension must be present in your system for this metadata cache to work. This adapter is suitable for production applications.
+Este adaptador usa [Redis](https://redis.io) para almacenar los metadatos de la tabla. La extensión debe estar presente en su sistema para que funcione este caché de metadatos. Este adaptador es apropiado para aplicaciones en producción.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
+El adaptador recibe una clase [Phalcon\Cache\AdapterFactory](cache#adapter-factory) para instanciar el objeto de caché relevante. También puede pasar un vector con opciones adicionales para que el caché opere.
 
-The default prefix is `ph-mm-reds-` and the lifetime is `172,000` (48 hours).
+El prefijo predeterminado es `ph-mm-reds-` y el tiempo de vida es `172.000` (48 horas).
 
 ```php
 <?php
@@ -654,11 +654,11 @@ $container->set(
 );
 ```
 
-### Stream (flujo)
+### Flujo (Stream)
 
-This adapter uses the file system to store the table metadata. This adapter is suitable for production applications but not recommended since it introduces an increase in I/O.
+Este adaptador usa el sistema de ficheros para almacenar los metadatos de la tabla. Este adaptador es apropiado para aplicaciones de producción pero no es recomendable ya que introduce un aumento de E/S.
 
-The adapter can accept a `metaDadaDir` option with a directory on where the metadata will be stored. The default directory is the current directory.
+El adaptador puede aceptar una opción `metaDataDir` con un directorio donde almacenar los metadatos. El directorio por defecto es el directorio actual.
 
 ```php
 <?php
@@ -679,15 +679,15 @@ $container->set(
 );
 ```
 
-You can use the `orm.exception_on_failed_metadata_save` option in your `php.ini` file to force the component to throw an exception if there is an error storing the metadata or if the target directory is not writeable.
+Puede usar la opción `orm.exception_on_failed_metadata_save` en su fichero `php.ini` para forzar que el componente lance una excepción si hay algún error almacenando los metadatos o si el directorio destino no es escribible.
 
 ```ini
 orm.exception_on_failed_metadata_save = true
 ```
 
-## Strategies
+## Estrategias
 
-The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
+La estrategia por defecto para obtener los metadatos del modelo es la introspección de la base de datos. Utilizando esta estrategia, el esquema de información se usa para identificar los campos de una tabla, su clave primaria, campos nulos, tipos de datos, etc.
 
 ```php
 <?php
@@ -717,13 +717,13 @@ $container->set(
 );
 ```
 
-### Introspection
+### Introspección
 
-This strategy does not require any customization and is implicitly used by all the metadata adapters.
+Esta estrategia no necesita ninguna personalización y se usa implícitamente por todos los adaptadores de metadatos.
 
 ### Anotaciones
 
-This strategy makes use of <annotations> to describe the columns in a model.
+Esta estrategia hace uso de [anotaciones](annotations) para describir las columnas de un modelo.
 
 ```php
 <?php
@@ -756,30 +756,30 @@ class Invoices extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
+Las anotaciones deben colocarse en propiedades que se asignan a columnas en la fuente mapeada. Las propiedades sin la anotación `@Column` se gestionan como atributos de clase simples.
 
-The following annotations are supported:
+Se soportan las siguientes anotaciones:
 
-| Nombre      | Descripción                                       |
-| ----------- | ------------------------------------------------- |
-| `@Primary`  | Mark the field as part of the table's primary key |
-| `@Identity` | The field is an auto_increment/serial column      |
-| `@Column`   | This marks an attribute as a mapped column        |
+| Nombre      | Descripción                                                |
+| ----------- | ---------------------------------------------------------- |
+| `@Primary`  | Marca el campo como parte de la clave primaria de la tabla |
+| `@Identity` | El campo es una columna `auto_increment/serial`            |
+| `@Column`   | Esto marca un atributo como una columna mapeada            |
 
-The annotation `@Column` supports the following parameters:
+La anotación `@Column` soporta los siguientes parámetros:
 
-| Nombre               | Descripción                                                                                                                                                                                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `column`             | Real column name                                                                                                                                                                                               |
-| `type`               | The column's type: `char`, `biginteger`, `blob`, `boolean`, `date`, `datetime`, `decimal`, `integer`, `float`, `json`, `longblob`, `mediumblob`, `timestamp`, `tinyblob`, `text`, `varchar`/`string` (default) |
-| `length`             | The column's length if any                                                                                                                                                                                     |
-| `nullable`           | Set whether the column accepts `null` values or not                                                                                                                                                            |
-| `skip_on_insert`     | Skip this column on insert                                                                                                                                                                                     |
-| `skip_on_update`     | Skip this column on updates                                                                                                                                                                                    |
-| `allow_empty_string` | Column allow empty strings                                                                                                                                                                                     |
-| `default`            | Default value                                                                                                                                                                                                  |
+| Nombre               | Descripción                                                                                                                                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `column`             | Nombre de la columna real                                                                                                                                                                                                 |
+| `type`               | El tipo de la columna: `char`, `biginteger`, `blob`, `boolean`, `date`, `datetime`, `decimal`, `integer`, `float`, `json`, `longblob`, `mediumblob`, `timestamp`, `tinyblob`, `text`, `varchar`/`string` (predeterminado) |
+| `length`             | El tamaño de la columna si hay                                                                                                                                                                                            |
+| `nullable`           | Establece si la columna acepta valores `null` o no                                                                                                                                                                        |
+| `skip_on_insert`     | Omite esta columna al insertar                                                                                                                                                                                            |
+| `skip_on_update`     | Omite esta columna al actualizar                                                                                                                                                                                          |
+| `allow_empty_string` | La columna permite cadenas vacías                                                                                                                                                                                         |
+| `default`            | Valor por defecto                                                                                                                                                                                                         |
 
-The annotations strategy could be set up as follows:
+La estrategia de anotaciones se podría configurar de la siguiente manera:
 
 ```php
 <?php
@@ -811,9 +811,9 @@ $container->set(
 
 ### Manual
 
-Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically. However, you have the option to define the metadata manually. This strategy overrides any strategy that has been set on the metadata manager. Columns added, modified or removed from the mapped table must be manually updated in the model for everything to work properly.
+Usando las estrategias de introspección presentadas anteriormente, Phalcon puede obtener los metadatos de cada modelo automáticamente. Sin embargo, tiene la opción de definir los metadatos manualmente. Esta estrategia anula cualquier estrategia que se haya configurado en el gestor de metadatos. Las columnas añadidas, modificadas o eliminadas de la tabla mapeada se deben actualizar manualmente en el modelo para que todo funcione correctamente.
 
-To set the metadata, we use the `metaData` method in a model:
+Para configurar los metadatos, usamos el método `metaData` en un modelo:
 
 ```php
 <?php
@@ -929,7 +929,7 @@ class Invoices extends Model
 
 ### Personalizado
 
-Phalcon offers the [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface](api/Phalcon_Mvc#mvc-model-metadata-strategyinterface) interface, allowing you to create your own Strategy class.
+Phalcon ofrece el interfaz [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface](api/Phalcon_Mvc#mvc-model-metadata-strategyinterface), que le permite crear su propia clase de Estrategia.
 
 ```php
 <?php
