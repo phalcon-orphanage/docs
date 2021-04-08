@@ -21,7 +21,7 @@ The [Phalcon\Http\Message\Uri][http-message-uri] returns a value object represen
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getHost(); // 'd.phalcon.ld'
 ```
@@ -49,7 +49,7 @@ Returns the string representation of the URI. Depending on which components of t
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo (string) $uri; 
 // 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag'
@@ -71,7 +71,7 @@ If the port is not set, or is one of the standard for the scheme, it will not be
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getAuthority(); // 'usr:pass@d.phalcon.ld:8080'
 ```
@@ -86,7 +86,7 @@ Returns a string representing the fragment of the URI. If no fragment is present
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getFragment(); // 'frag'
 ```
@@ -101,7 +101,7 @@ Returns a string representing the host component of the URI. If no host is prese
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getHost(); // 'd.phalcon.ld'
 ```
@@ -116,7 +116,7 @@ Returns a string representing the path component of the URI. The path can either
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPath(); // '/action'
 ```
@@ -131,7 +131,7 @@ Returns an integer representing the port component of the URI. If the port is pr
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPort(); // 8080
 ```
@@ -146,7 +146,7 @@ Returns a string representing the query of the URI. If no query is present, an e
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getQuery(); // '/par=val'
 ```
@@ -161,7 +161,7 @@ Returns a string representing the scheme of the URI. If the scheme is not presen
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getScheme(); // 'https'
 ```
@@ -176,7 +176,7 @@ Returns a string representation of the user information of the URI. If no user i
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getUserInfo(); // 'usr:pass'
 ```
@@ -194,7 +194,7 @@ Returns an instance with the new fragment. An empty fragment supplied will remov
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getFragment(); // 'frag'
 
@@ -213,7 +213,7 @@ Returns an instance with the new host. An empty host supplied will remove the ho
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getHost(); // 'd.phalcon.ld'
 
@@ -232,7 +232,7 @@ Returns an instance with the new path. An empty path supplied will remove the pa
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPath(); // '/action'
 
@@ -251,7 +251,7 @@ Returns an instance with the new port. A `null` port supplied will remove the po
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPort(); // 8080
 
@@ -270,7 +270,7 @@ Returns an instance with the new query. An empty query supplied will remove the 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getQuery(); // 'par=val'
 
@@ -289,7 +289,7 @@ Returns an instance with the new scheme. An empty scheme supplied will remove th
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getScheme(); // 'https'
 
@@ -308,7 +308,7 @@ Returns an instance with the new user information. The password is optional. If 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getUserInfo(); // 'usr:pass'
 
