@@ -35,15 +35,16 @@ $router->add(
 $router->handle(
     $_SERVER["REQUEST_URI"]
 );
-````
+```
 
 ## Constants
-There are two constants available for the [Phalcon\Mvc\Router][mvc-router] component that are used to define the position of the route in the processing stack.
+
+There are two constants available for the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component that are used to define the position of the route in the processing stack.
 
 - `POSITION_FIRST`
 - `POSITION_LAST`
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct(
@@ -401,12 +402,11 @@ $router->add(
 $router->handle(
     $_SERVER["REQUEST_URI"]
 );
-````
-
+```
 
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In the above example, for the URI `/admin/invoices/list`, the `InvoicesController` will be loaded and the `listAction` will be called. It is important to remember that the router does not execute the controller and action, it only collects this information and then forwards it to the [Phalcon\Mvc\Dispatcher](dispatcher) which executes them.
 
-An application can have many paths and defining routes one by one can be a cumbersome task. [Phalcon\Mvc\Router][mvc-router] offers an easier way to register routes.
+An application can have many paths and defining routes one by one can be a cumbersome task. [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) offers an easier way to register routes.
 
 ```php
 <?php
@@ -1059,7 +1059,7 @@ $route->beforeMatch(
 );
 ```
 
-The above will check if the request has been made with AJAX and return false if it was not
+The above will check if the request has been made with AJAX and return `false` if it was not
 
 You can create a filter class, to allow you to inject the same functionality in different routes.
 

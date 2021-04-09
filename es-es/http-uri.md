@@ -22,7 +22,7 @@ keywords: 'psr-7, http, http uri'
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getHost(); // 'd.phalcon.ld'
 ```
@@ -50,7 +50,7 @@ Devuelve la representación de la URI como cadena. Dependiendo de qué component
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo (string) $uri; 
 // 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag'
@@ -72,7 +72,7 @@ Si el puerto no está definido, o es uno de los estándar del esquema, no será 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getAuthority(); // 'usr:pass@d.phalcon.ld:8080'
 ```
@@ -87,7 +87,7 @@ Devuelve una cadena que representa el fragmento de la URI. Si no hay fragmento, 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getFragment(); // 'frag'
 ```
@@ -102,7 +102,7 @@ Devuelve una cadena que representa el nombre de servidor de la URI. Si no hay se
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getHost(); // 'd.phalcon.ld'
 ```
@@ -117,7 +117,7 @@ Devuelve una cadena que representa la ruta de la URI. La ruta puede estar vacía
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPath(); // '/action'
 ```
@@ -132,7 +132,7 @@ Devuelve un entero que representa el puerto de la URI. Si el puerto está presen
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPort(); // 8080
 ```
@@ -147,7 +147,7 @@ Devuelve una cadena que representa los parámetros de la URI. Si no hay parámet
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getQuery(); // '/par=val'
 ```
@@ -162,7 +162,7 @@ Devuelve una cadena que representa el protocolo de la URI. Si el protocolo no es
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getScheme(); // 'https'
 ```
@@ -177,7 +177,7 @@ Devuelve una cadena que representa la información del usuario de la URI. Si no 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getUserInfo(); // 'usr:pass'
 ```
@@ -195,7 +195,7 @@ Devuelve una instancia con el nuevo fragmento. Introducir un fragmento vacío el
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getFragment(); // 'frag'
 
@@ -214,7 +214,7 @@ Devuelve una instancia con el nuevo servidor. Introducir un servidor vacío elim
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getHost(); // 'd.phalcon.ld'
 
@@ -233,7 +233,7 @@ Devuelve una instancia con la nueva ruta. Introducir una ruta vacía eliminará 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPath(); // '/action'
 
@@ -252,7 +252,7 @@ Devuelve una instancia con el nuevo puerto. Introducir un puerto `null` eliminar
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getPort(); // 8080
 
@@ -271,7 +271,7 @@ Devuelve una instancia con los nuevos parámetros. Introducir unos parámetros v
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getQuery(); // 'par=val'
 
@@ -290,7 +290,7 @@ Devuelve una instancia con el nuevo protocolo. Introducir un protocolo vacío el
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getScheme(); // 'https'
 
@@ -309,7 +309,7 @@ Devuelve una instancia con la nueva información del usuario. La contraseña es 
 use Phalcon\Http\Message\Uri;
 
 $query = 'https://usr:pass@d.phalcon.ld:8080/action?par=val#frag';
-$uri   = new Uri();
+$uri   = new Uri($query);
 
 echo $uri->getUserInfo(); // 'usr:pass'
 
