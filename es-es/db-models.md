@@ -3341,8 +3341,8 @@ Consider the following when renaming your columns:
 
 The independent column map allows you to:
 
-- Escribir aplicaciones que utilizan sus propios convenciones
-- Eliminar prefijos/sufijos del proveedor en tu código
+- Escribir aplicaciones que utilizan sus propias convenciones
+- Eliminar prefijos/sufijos del proveedor en su código
 - Change column names without changes your application code
 
 ## Record Snapshots
