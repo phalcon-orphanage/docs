@@ -1290,19 +1290,19 @@ Magic method to get related records using the relation alias as a property
 public function __isset( string $property ): bool;
 ```
 
-Magic method to check if a property is a valid relation
+Método mágico que comprueba si una propiedad es una relación válida
 
 ```php
 public function __set( string $property, mixed $value );
 ```
 
-Magic method to assign values to the the model
+Método mágico para asignar valores a el modelo
 
 ```php
 public function addBehavior( BehaviorInterface $behavior ): void;
 ```
 
-Setups a behavior in a model
+Configura un comportamiento en un modelo
 
 ```php
 use Phalcon\Mvc\Model;
@@ -1341,7 +1341,7 @@ class Robots extends Model
 public function appendMessage( MessageInterface $message ): ModelInterface;
 ```
 
-Appends a customized message on the validation process
+Añade un mensaje personalizado a un proceso de validación
 
 ```php
 use Phalcon\Mvc\Model;
@@ -1442,7 +1442,7 @@ echo "The average price of mechanical robots is ", $average, "\n";
 public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
 ```
 
-Assigns values to a model from an array returning a new model
+Asigna valores a un modelo desde un vector devolviendo un nuevo modelo
 
 ```php
 $robot = Phalcon\Mvc\Model::cloneResult(
@@ -1476,7 +1476,7 @@ $robot = \Phalcon\Mvc\Model::cloneResultMap(
 public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
 ```
 
-Returns an hydrated result based on the data and the column map
+Devuelve un resultado hidratado basado en los datos y el mapa de columnas
 
 ```php
 public static function count( mixed $parameters = null ): int | ResultsetInterface;
@@ -1532,7 +1532,7 @@ $robot->create();
 public function delete(): bool;
 ```
 
-Deletes a model instance. Returning true on success or false otherwise.
+Borra una instancia del modelo. Devuelve `true` en caso de éxito o `false` en caso contrario.
 
 ```php
 $robot = Robots::findFirst("id=100");
@@ -1805,7 +1805,7 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public function getChangedFields(): array;
 ```
 
-Returns a list of changed values.
+Devuelve una lista de valores cambiados.
 
 ```php
 $robots = Robots::findFirst();
@@ -1833,7 +1833,7 @@ Returns the custom events manager or null if there is no custom events manager
 public function getMessages( mixed $filter = null ): MessageInterface[];
 ```
 
-Returns array of validation messages
+Devuelve un vector de mensajes de validación
 
 ```php
 $robot = new Robots();
@@ -1859,7 +1859,7 @@ if ($robot->save() === false) {
 public function getModelsManager(): ManagerInterface;
 ```
 
-Returns the models manager related to the entity instance
+Devuelve el gestor de modelos relacionado con la instancia de la entidad
 
 ```php
 public function getModelsMetaData(): MetaDataInterface;
@@ -1871,7 +1871,7 @@ public function getModelsMetaData(): MetaDataInterface;
 public function getOldSnapshotData(): array;
 ```
 
-Returns the internal old snapshot data
+Devuelve los datos de instantánea internos antiguos
 
 ```php
 public function getOperationMade(): int;
@@ -1883,7 +1883,7 @@ Returns the type of the latest operation performed by the ORM Returns one of the
 final public function getReadConnection(): AdapterInterface;
 ```
 
-Gets the connection used to read data for the model
+Obtiene la conexión usada para leer datos del modelo
 
 ```php
 final public function getReadConnectionService(): string;
@@ -1901,19 +1901,19 @@ Returns related records based on defined relations
 final public function getSchema(): string;
 ```
 
-Returns schema name where the mapped table is located
+Devuelve el nombre del esquema donde se encuentra la tabla mapeada
 
 ```php
 public function getSnapshotData(): array;
 ```
 
-Returns the internal snapshot data
+Devuelve los datos de instantánea internos
 
 ```php
 final public function getSource(): string;
 ```
 
-Returns the table name mapped in the model
+Devuelve el nombre de tabla mapeado en el modelo
 
 ```php
 public function getTransaction()
@@ -1923,7 +1923,7 @@ public function getTransaction()
 public function getUpdatedFields(): array;
 ```
 
-Returns a list of updated values.
+Devuelve una lista de valores actualizados.
 
 ```php
 $robots = Robots::findFirst();
@@ -1942,7 +1942,7 @@ print_r($robots->getUpdatedFields()); // ["deleted"]
 final public function getWriteConnection(): AdapterInterface;
 ```
 
-Gets the connection used to write data to the model
+Obtiene la conexión usada para escribir datos al modelo
 
 ```php
 final public function getWriteConnectionService(): string;
@@ -1976,7 +1976,7 @@ $hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
 public function hasSnapshotData(): bool;
 ```
 
-Checks if the object has internal snapshot data
+Comprueba si el objeto tiene datos de instantánea internos
 
 ```php
 public function hasUpdated( mixed $fieldName = null, bool $allFields = bool ): bool;
@@ -1988,7 +1988,7 @@ Check if a specific attribute was updated This only works if the model is keepin
 public function isRelationshipLoaded( string $relationshipAlias ): bool;
 ```
 
-Checks if saved related records have already been loaded.
+Comprueba si los registros relacionados guardados ya se han cargado.
 
 Only returns true if the records were previously fetched through the model without any additional parameters.
 
@@ -2074,7 +2074,7 @@ echo "The minimum robot id of mechanical robots is ", $id;
 public static function query( DiInterface $container = null ): CriteriaInterface;
 ```
 
-Create a criteria for a specific model
+Crea un criterio para un modelo específico
 
 ```php
 public function readAttribute( string $attribute ): mixed | null;
@@ -2090,13 +2090,13 @@ echo $robot->readAttribute("name");
 public function refresh(): ModelInterface;
 ```
 
-Refreshes the model attributes re-querying the record from the database
+Refresca los atributos del modelo consultando otra vez el registro desde la base de datos
 
 ```php
 public function save(): bool;
 ```
 
-Inserts or updates a model instance. Returning true on success or false otherwise.
+Inserta o actualiza una instancia de modelo. Returning true on success or false otherwise.
 
 ```php
 // Creating a new robot
@@ -2126,7 +2126,7 @@ Serializes the object ignoring connections, services, related objects or static 
 final public function setConnectionService( string $connectionService ): void;
 ```
 
-Sets the DependencyInjection connection service name
+Establece el nombre del servicio de conexión *DependencyInjection*
 
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
@@ -2138,31 +2138,31 @@ Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 public function setEventsManager( EventsManagerInterface $eventsManager );
 ```
 
-Sets a custom events manager
+Establece un gestor de eventos personalizado
 
 ```php
 public function setOldSnapshotData( array $data, mixed $columnMap = null );
 ```
 
-Sets the record's old snapshot data. This method is used internally to set old snapshot data when the model was set up to keep snapshot data
+Establece los datos viejos de instantánea del registro. This method is used internally to set old snapshot data when the model was set up to keep snapshot data
 
 ```php
 final public function setReadConnectionService( string $connectionService ): void;
 ```
 
-Sets the DependencyInjection connection service name used to read data
+Establece el nombre de servicio de conexión *DependencyInjection* usado para leer datos
 
 ```php
 public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 ```
 
-Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
+Establece los datos de instantánea del registro. This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
 ```php
 public function setTransaction( TransactionInterface $transaction ): ModelInterface;
 ```
 
-Sets a transaction related to the Model instance
+Establece una transacción relacionada con la instancia del modelo
 
 ```php
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
@@ -2204,7 +2204,7 @@ try {
 final public function setWriteConnectionService( string $connectionService ): void;
 ```
 
-Sets the DependencyInjection connection service name used to write data
+Establece el nombre de servicio de conexión *DependencyInjection* usado para escribir datos
 
 ```php
 public static function setup( array $options ): void;
@@ -2261,13 +2261,13 @@ print_r(
 public function unserialize( mixed $data );
 ```
 
-Unserializes the object from a serialized string
+Deserializa el objeto desde una cadena serializada
 
 ```php
 public function update(): bool;
 ```
 
-Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or false otherwise.
+Actualiza una instancia de modelo. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or false otherwise.
 
 ```php
 // Updating a robot name
@@ -2282,7 +2282,7 @@ $robot->update();
 public function validationHasFailed(): bool;
 ```
 
-Check whether validation process has generated any messages
+Comprueba si el proceso de validación ha generado algún mensaje
 
 ```php
 use Phalcon\Mvc\Model;
@@ -2450,7 +2450,7 @@ class Robots extends \Phalcon\Mvc\Model
 protected function belongsTo( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 
-Setup a reverse 1-1 or n-1 relation between two models
+Configura una relación 1-1 inversa o n-1 entre dos modelos
 
 ```php
 class RobotsParts extends \Phalcon\Mvc\Model
@@ -2512,7 +2512,7 @@ Generate a PHQL SELECT statement for an aggregate
 protected function hasMany( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 
-Setup a 1-n relation between two models
+Configura una relación 1-n entre dos modelos
 
 ```php
 class Robots extends \Phalcon\Mvc\Model
@@ -2556,7 +2556,7 @@ class Robots extends \Phalcon\Mvc\Model
 protected function hasOne( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 
-Setup a 1-1 relation between two models
+Configura una relación 1-1 entre dos modelos
 
 ```php
 class Robots extends \Phalcon\Mvc\Model
@@ -2600,7 +2600,7 @@ class Robots extends \Phalcon\Mvc\Model
 protected function keepSnapshots( bool $keepSnapshot ): void;
 ```
 
-Sets if the model must keep the original record snapshot in memory
+Configura si el modelo debe mantener la instantánea del registro original en memoria
 
 ```php
 use Phalcon\Mvc\Model;
@@ -2642,13 +2642,13 @@ Saves related records that must be stored prior to save the master record
 final protected function setSchema( string $schema ): ModelInterface;
 ```
 
-Sets schema name where the mapped table is located
+Establece el nombre del esquema donde se ubica la tabla mapeada
 
 ```php
 final protected function setSource( string $source ): ModelInterface;
 ```
 
-Sets the table name to which model should be mapped
+Establece el nombre de tabla al que se debe mapear el modelo
 
 ```php
 protected function skipAttributes( array $attributes );
@@ -2714,7 +2714,7 @@ class Robots extends \Phalcon\Mvc\Model
 protected function useDynamicUpdate( bool $dynamicUpdate ): void;
 ```
 
-Sets if a model must use dynamic update instead of the all-field update
+Establece si el modelo debe usar actualización dinámica en vez de actualizar todos los campos
 
 ```php
 use Phalcon\Mvc\Model;
@@ -2732,7 +2732,7 @@ class Robots extends Model
 protected function validate( ValidationInterface $validator ): bool;
 ```
 
-Executes validators on every validation call
+Ejecuta los validadores en cada llamada de validación
 
 ```php
 use Phalcon\Mvc\Model;
@@ -3843,7 +3843,7 @@ Setups a relation n-m between two models
 public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 
-Setup a 1-1 relation between two models
+Configura una relación 1-1 entre dos modelos
 
 ```php
 public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
@@ -4237,7 +4237,7 @@ Sets write connection service for a model
 public function useDynamicUpdate( ModelInterface $model, bool $dynamicUpdate ): void;
 ```
 
-Sets if a model must use dynamic update instead of the all-field update
+Establece si el modelo debe usar actualización dinámica en vez de actualizar todos los campos
 
 ```php
 protected function _getConnection( ModelInterface $model, mixed $connectionServices ): AdapterInterface;
@@ -4299,7 +4299,7 @@ Setups a relation n-m between two models
 public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 
-Setup a 1-1 relation between two models
+Configura una relación 1-1 entre dos modelos
 
 ```php
 public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
@@ -4576,7 +4576,7 @@ Sets write connection service for a model
 public function useDynamicUpdate( ModelInterface $model, bool $dynamicUpdate ): void;
 ```
 
-Sets if a model must use dynamic update instead of the all-field update
+Establece si el modelo debe usar actualización dinámica en vez de actualizar todos los campos
 
 <h1 id="mvc-model-metadata">Abstract Class Phalcon\Mvc\Model\MetaData</h1>
 
@@ -8502,7 +8502,7 @@ Interface for Phalcon\Mvc\Model
 public function appendMessage( MessageInterface $message ): ModelInterface;
 ```
 
-Appends a customized message on the validation process
+Añade un mensaje personalizado a un proceso de validación
 
 ```php
 public function assign( array $data, mixed $whiteList = null, mixed $dataColumnMap = null ): ModelInterface;
@@ -8520,19 +8520,19 @@ Allows to calculate the average value on a column matching the specified conditi
 public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
 ```
 
-Assigns values to a model from an array returning a new model
+Asigna valores a un modelo desde un vector devolviendo un nuevo modelo
 
 ```php
 public static function cloneResultMap( mixed $base, array $data, mixed $columnMap, int $dirtyState = int, bool $keepSnapshots = null ): ModelInterface;
 ```
 
-Assigns values to a model from an array returning a new model
+Asigna valores a un modelo desde un vector devolviendo un nuevo modelo
 
 ```php
 public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
 ```
 
-Returns an hydrated result based on the data and the column map
+Devuelve un resultado hidratado basado en los datos y el mapa de columnas
 
 ```php
 public static function count( mixed $parameters = null ): int | ResultsetInterface;
@@ -8552,7 +8552,7 @@ Inserts a model instance. If the instance already exists in the persistence it w
 public function delete(): bool;
 ```
 
-Deletes a model instance. Returning true on success or false otherwise.
+Borra una instancia del modelo. Devuelve `true` en caso de éxito o `false` en caso contrario.
 
 ```php
 public static function find( mixed $parameters = null ): ResultsetInterface;
@@ -8588,7 +8588,7 @@ Returns one of the DIRTY_STATE_* constants telling if the record exists in the d
 public function getMessages(): MessageInterface[];
 ```
 
-Returns array of validation messages
+Devuelve un vector de mensajes de validación
 
 ```php
 public function getModelsMetaData(): MetaDataInterface;
@@ -8660,19 +8660,19 @@ Allows to get the minimum value of a column that match the specified conditions
 public static function query( DiInterface $container = null ): CriteriaInterface;
 ```
 
-Create a criteria for a specific model
+Crea un criterio para un modelo específico
 
 ```php
 public function refresh(): ModelInterface;
 ```
 
-Refreshes the model attributes re-querying the record from the database
+Refresca los atributos del modelo consultando otra vez el registro desde la base de datos
 
 ```php
 public function save(): bool;
 ```
 
-Inserts or updates a model instance. Returning true on success or false otherwise.
+Inserta o actualiza una instancia de modelo. Returning true on success or false otherwise.
 
 ```php
 public function setConnectionService( string $connectionService ): void;
@@ -8696,13 +8696,13 @@ Sets the DependencyInjection connection service used to read data
 public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 ```
 
-Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
+Establece los datos de instantánea del registro. This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
 ```php
 public function setTransaction( TransactionInterface $transaction ): ModelInterface;
 ```
 
-Sets a transaction related to the Model instance
+Establece una transacción relacionada con la instancia del modelo
 
 ```php
 public function setWriteConnectionService( string $connectionService ): void;
@@ -8726,13 +8726,13 @@ Allows to calculate a sum on a column that match the specified conditions
 public function update(): bool;
 ```
 
-Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or false otherwise.
+Actualiza una instancia de modelo. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or false otherwise.
 
 ```php
 public function validationHasFailed(): bool;
 ```
 
-Check whether validation process has generated any messages
+Comprueba si el proceso de validación ha generado algún mensaje
 
 <h1 id="mvc-moduledefinitioninterface">Interface Phalcon\Mvc\ModuleDefinitionInterface</h1>
 
