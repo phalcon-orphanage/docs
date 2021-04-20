@@ -22,8 +22,8 @@ The parser first checks the syntax of the PHQL statement to be parsed, then buil
 
 In PHQL, we have implemented a set of features to make your access to databases more securely:
 
-* Los parámetros enlazados son parte del lenguaje PHQL que lo ayudara a proteger su código
-* PHQL solo permite una sentencia SQL para ser ejecutada por llamada, previniendo de inyecciones
+* Los parámetros enlazados son parte del lenguaje PHQL que lo ayudará a proteger su código
+* PHQL sólo permite una sentencia SQL para ser ejecutada por llamada, previniendo de inyecciones
 * PHQL ignora todos los comentarios SQL que generalmente se utilizan en las inyecciones SQL
 * PHQL sólo permite declaraciones de manipulación de datos, evitando alterar o borrar tablas y bases de datos por error o desde el exterior sin autorización
 * PHQL implementa una abstracción de alto nivel que permite manejar tablas como modelos y campos como atributos de clase
@@ -146,7 +146,7 @@ class Invoices extends Controller
 }
 ```
 
-## Models Manager
+## Gestor de Modelos
 
 We can also utilize the [Phalcon\Mvc\Model\Manager](api/phalcon_mvc#mvc-model-manager) which is injected in the DI container:
 
