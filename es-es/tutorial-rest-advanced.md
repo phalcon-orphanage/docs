@@ -538,7 +538,7 @@ $app->put(
 );
 ```
 
-## Deleting Data
+## Borrar datos
 The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted `index.php`:
 
 ```php
