@@ -1307,22 +1307,20 @@ $container->set(
 );
 
 $container->set(
-    'MyOtherComponent',
+    'IndexController',
     function () {
         return new AnotherComponent();
     }
 );
 
-$component = $container->get('MyOtherComponent');
+$component = $container->get('IndexController');
 ```
 
-En el ejemplo anterior estamos *sustituyendo* el `IndexController` con un componente de nuestra elección. También
-
-Puede ajustar su código para que siempre instancie sus clases usando el contenedor de servicios, incluso si no están registradas como servicios. El contenedor recurrirá al autocargador que ha definido para cargar la clase misma. Usando esta técnica, puede reemplazar cualquier clase en el futuro implementando una definición diferente para ella.
+In the above example we are *replacing* the `IndexController` with another component of our choosing. Also you can adjust your code to always instantiate your classes using the service container, even if they are not registered as services. The container will fall back to the autoloader you have defined to load the class itself. By using this technique, you can replace any class in the future by implementing a different definition for it.
 
 ## Inyección Automática
 
-Si una clase o componente requiere que el propio *DI* localice los servicios, el *DI* puede inyectarse automáticamente a sí mismo en las instancias que crea. Para aprovechar esto, todo lo que necesita es implementar [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) en sus clases:
+If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates. To take advantage of this, all you need is to implement the [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) in your classes:
 
 ```php
 <?php
@@ -1349,7 +1347,7 @@ class InvoiceComponent implements InjectionAwareInterface
 }
 ```
 
-Entonces, una vez que el servicio se resuelve, `$container` se pasa a `setDi()` automáticamente:
+Then once the service is resolved, the `$container` will be passed to `setDi()` automatically:
 
 ```php
 <?php
@@ -1362,7 +1360,7 @@ $invoiceComponent = $container->get('inv-component');
 > **NOTA** `: $invoiceComponent->setDi($container) se llama automáticamente)
 {: .alert .alert-info }
 
-Si le conviene también puede extender la clase [Phalcon\Di\AbstractInjectionAware](api/phalcon_di#di-abstractinjectionaware) que contiene el código anterior y expone la propiedad protegida `$container` para su uso.
+For your convenience you can also extend the [Phalcon\Di\AbstractInjectionAware](api/phalcon_di#di-abstractinjectionaware) class which contains the above code and exposes the protected `$container` property for you to use.
 
 ```php
 <?php
@@ -1378,7 +1376,7 @@ class InvoiceComponent extends AbstractInjectionAware
 
 ## Organización de Servicios en Ficheros
 
-Puede organizar mejor su aplicación moviendo el registro de servicios a ficheros individuales en vez de registrarlos todos en el arranque de la aplicación:
+You can better organize your application by moving the service registration to individual files instead of register everything in the application's bootstrap:
 
 ```php
 <?php
@@ -1391,7 +1389,7 @@ $container->set(
 );
 ```
 
-Luego, en el fichero (`'/app/config/routes.php'`) devuelve el objeto resuelto:
+Then in the file (`'/app/config/routes.php'`) return the object resolved:
 
 ```php
 <?php
@@ -1407,7 +1405,7 @@ return $router;
 
 ## Acceso Estático
 
-[Phalcon\Di](api/phalcon_di#di) ofrece el método estático conveniente `getDefault()`, que devuelve el último contenedor creado. Esto le permite acceder al contenedor incluso desde clases estáticas:
+The [Phalcon\Di](api/phalcon_di#di) offers the convenient `getDefault()` static method, which returns the latest container created. This allows you to access the container even from static classes:
 
 ```php
 <?php
@@ -1425,7 +1423,7 @@ class InvoicesComponent
 
 ## Proveedores de Servicio
 
-Otra forma de registro de servicios es poniendo cada servicio en su propio fichero y registrando todos los servicios uno tras otro con un simple bucle. Cada fichero contendrá una clase o `Provider` que implementa [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface). La razón por la que podría querer hacer esto es tener ficheros pequeños, cada uno gestionando un registro de servicio lo que ofrece una gran flexibilidad, código corto y finalmente la habilidad de añadir o quitar servicios cuando lo desee, sin tener que pasar por un archivo grande como el de arranque.
+Another method of registering services is by putting each service in its own file and registering all the services one after another with a simple loop. Each file will contain a class or `Provider` that implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface). The reason you might want to do this is to have tiny files, each handling one service registration which will offer great flexibility, short code and finally the ability to add/remove services whenever you wish to, without having to sift through a large file such as your bootstap.
 
 **Ejemplo**
 
@@ -1562,7 +1560,7 @@ class LoggerProvider implements ServiceProviderInterface { use LoggerTrait;
 
 ## Factory Default
 
-Para comodidad de los desarrolladores, [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) está disponible con varios servicios preestablecidos para usted. Nada le impide registrar uno por uno todos los servicios que requiere su aplicación. Sin embargo, puede usar [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), que contiene una lista de servicios listos para usar. La lista de servicios registrados le permite tener un contenedor adecuado para una aplicación *full stack*.
+For convenience to developers, the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) is available with several preset services for you. Nothing stops you from registering all the services your application requires one by one. However, you can use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), which contains a list of services ready to be used. The list of services registered allows you to have a container suitable for a full stack application.
 
 > **NOTA** Ya que los servicios siempre se cargan perezosamente, instanciar el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) no consumirá más memoria que [Phalcon\Di](api/phalcon_di#di).
 {: .alert .alert-info }
@@ -1575,7 +1573,7 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 ```
 
-Los servicios registrados en [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) son:
+The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) are:
 
 | Nombre               | Objeto                                                              | Compartido | Descripción                              |
 | -------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------- |
@@ -1603,11 +1601,11 @@ Los servicios registrados en [Phalcon\Di\FactoryDefault](api/phalcon_di#di-facto
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Si         | Gestor de Transacciones de Base de Datos |
 | `url`                | [Phalcon\Url](url)                                                 | Si         | Generación de URL                        |
 
-Los nombres anteriores se usan en todo el *framework*. Por ejemplo, el servicio `db` se usa en el servicio `transactionManager`. Puede sustituir estos componentes con los que prefiera simplemente registrando su componente con el mismo nombre que los listados anteriormente.
+The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 
 ## Excepciones
 
-Cualquier excepción lanzada en el contenedor *DI* será [Phalcon\Di\Exception](api/phalcon_di#di-exception) o [Phalcon\Di\ServiceResolutionException](api/phalcon_di#di-exception-serviceresolutionexception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Any exceptions thrown in the DI container will be either [Phalcon\Di\Exception](api/phalcon_di#di-exception) or [Phalcon\Di\ServiceResolutionException](api/phalcon_di#di-exception-serviceresolutionexception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
@@ -1625,4 +1623,4 @@ try {
 
 ## Personalización
 
-Se debe implementar el interfaz [Phalcon\Di\DiInterface](api/phalcon_di#di-diinterface) para crear su propio *DI* que sustituya o extienda al proporcionado por Phalcon. También puede utilizar [Phalcon\Di\ServiceInterface](api/phalcon_di#di-serviceinterface) para crear sus propias implementaciones de servicios y cómo se resuelven en el contenedor *DI*.
+The [Phalcon\Di\DiInterface](api/phalcon_di#di-diinterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one. You can also utilize the [Phalcon\Di\ServiceInterface](api/phalcon_di#di-serviceinterface) to create your own implementations of services and how they resolve in the DI container.
