@@ -1269,17 +1269,16 @@ $container->set(
 );
 
 $container->set(
-    'MyOtherComponent',
+    'IndexController',
     function () {
         return new AnotherComponent();
     }
 );
 
-$component = $container->get('MyOtherComponent');
+$component = $container->get('IndexController');
 ```
-In the above example we are _replacing_ the `IndexController` with a component of our choosing. Also 
-
-You can adjust your code to always instantiate your classes using the service container, even if they are not registered as services. The container will fall back to the autoloader you have defined to load the class itself. By using this technique, you can replace any class in the future by implementing a different definition for it.
+In the above example we are _replacing_ the `IndexController` with another component of our choosing. 
+Also you can adjust your code to always instantiate your classes using the service container, even if they are not registered as services. The container will fall back to the autoloader you have defined to load the class itself. By using this technique, you can replace any class in the future by implementing a different definition for it.
 
 ## Automatic Injecting
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates. To take advantage of this, all you need is to implement the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] in your classes:
