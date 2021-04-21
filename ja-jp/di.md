@@ -1307,18 +1307,16 @@ $container->set(
 );
 
 $container->set(
-    'MyOtherComponent',
+    'IndexController',
     function () {
         return new AnotherComponent();
     }
 );
 
-$component = $container->get('MyOtherComponent');
+$component = $container->get('IndexController');
 ```
 
-In the above example we are *replacing* the `IndexController` with a component of our choosing. Also
-
-You can adjust your code to always instantiate your classes using the service container, even if they are not registered as services. The container will fall back to the autoloader you have defined to load the class itself. By using this technique, you can replace any class in the future by implementing a different definition for it.
+In the above example we are *replacing* the `IndexController` with another component of our choosing. Also you can adjust your code to always instantiate your classes using the service container, even if they are not registered as services. The container will fall back to the autoloader you have defined to load the class itself. By using this technique, you can replace any class in the future by implementing a different definition for it.
 
 ## Automatic Injecting
 
