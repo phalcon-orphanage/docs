@@ -369,8 +369,8 @@ El generador del andamio construirá varios ficheros en su aplicación, además 
 
 | Archivo                               | Propósito                           |
 | ------------------------------------- | ----------------------------------- |
-| `app/controllers/UsersController.php` | The Users controller                |
-| `app/models/Users.php`                | The Users model                     |
+| `app/controllers/UsersController.php` | El controlador de Usuarios          |
+| `app/models/Users.php`                | El modelo de Usuarios               |
 | `app/views/layout/users.phtml`        | Disposición de la vista de Usuarios |
 | `app/views/products/search.phtml`     | Vista para la acción `search`       |
 | `app/views/products/new.phtml`        | Vista para la acción `new`          |
