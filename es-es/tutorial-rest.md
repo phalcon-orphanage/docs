@@ -368,7 +368,7 @@ $app->get(
 );
 ```
 
-### Insert
+### Insertar
 
 Our design allows users to submit data so that we can insert them in the database. The HTTP method used is `post()` to the `/api/robots` endpoint. We expect the data to be submitted as a JSON string.
 
@@ -437,7 +437,7 @@ After we run the query against our database, using PHQL, we create a brand new `
 
 If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
 
-## Update
+## Actualizar
 
 Updating data is similar to inserting. For this operation we are using the `put()` HTTP method and the endpoint `/api/robots/{id:[0-9]+}`. The passed `id` parameter in the URL is the id of the robot to be updated. The data submitted is in JSON format.
 

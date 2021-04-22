@@ -576,7 +576,7 @@ $loader->register();
 
 In the above example, when the autoloader starts scanning the `app/models` folder for the `MyApp\Models` namespace, it will stop the operation.
 
-## Troubleshooting
+## Resolución de problemas
 
 Some things to keep in mind when using the autoloader:
 

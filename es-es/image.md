@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Imagen'
-keywords: 'image, gd, imagick'
+keywords: 'imagen, gd, imagick'
 ---
 
 # Imagen
@@ -14,22 +14,22 @@ keywords: 'image, gd, imagick'
 
 ## Resumen
 
-The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
+El espacio de nombres `Phalcon\Image` expone el adaptador que ofrece la funcionalidad de manipulación de imagen. Estos adaptadores están diseñados para permitir múltiples operaciones a realizar sobre la misma imagen.
 
 ## Adaptadores
 
-This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
+Este componente usa adaptadores que ofrecen métodos para manipular imágenes. Puede crear fácilmente su propio adaptador usando [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
 
-| Clase                                                                       | Descripción                                                                          |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
-| [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
+| Clase                                                                       | Descripción                                                                         |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd)           | Requiere la [extensión PHP GD](https://php.net/manual/en/book.image.php)            |
+| [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick) | Requiere la [extensión PHP ImageMagick](https://php.net/manual/en/book.imagick.php) |
 
 ## Constantes
 
-[Phalcon\Image\Enum](api/phalcon_image#image-enum) holds constants for image resizing and flipping. The available constants are:
+[Phalcon\Image\Enum](api/phalcon_image#image-enum) mantiene constantes para redimensionar y voltear la imagen. Las constantes disponibles son:
 
-**Resize**
+**Redimensionar**
 
 - `AUTO`
 - `HEIGHT`
@@ -39,28 +39,28 @@ This component uses adapters that offer methods to manipulate images. You can ea
 - `TENSILE`
 - `WIDTH`
 
-**Flip**
+**Dar la vuelta**
 
 - `HORIZONTAL`
 - `VERTICAL`
 
 ## Getters
 
-Each adapter offers getters to provide information about the component: - `getHeight()` - `int` - Returns the image height - `getImage()` - `mixed` - Returns the image - `getMime()` - `string` - Returns the image mime type - `getRealpath()` - `string` - Returns the real path where the image is located - `getType()` - `int` - Returns the image type (This is driver dependent) - `getWidth()` - `int` - Returns the image width
+Cada adaptador ofrece *getters* para proporcionar información sobre el componente: - `getHeight()` - `int` - Devuelve la altura de la imagen - `getImage()` - `mixed` - Devuelve la imagen - `getMime()` - `string` - Devuelve el tipo mime de la imagen - `getRealpath()` - `string` - Devuelve la ruta real en la que se ubica la imagen - `getType()` - `int` - Devuelve el tipo de imagen (Esto depende del driver) - `getWidth()` - `int` - Devuelve la anchura de la imagen
 
 ## GD
 
-[Phalcon\Image\Adapters\Gd](api/phalcon_image#image-adapter-gd) utilizes the [GD PHP extension](https://php.net/manual/en/book.image.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
+[Phalcon\Image\Adapters\Gd](api/phalcon_image#image-adapter-gd) usa la [extensión PHP GD](https://php.net/manual/en/book.image.php). Para poder usar este adaptador, debe estar presente la extensión en su sistema. El adaptador ofrece todos los métodos descritos a continuación en la sección de operaciones.
 
 ## Imagick
 
-[Phalcon\Image\Adapters\Imagick](api/phalcon_image#image-adapter-imagick) utilizes the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
+[Phalcon\Image\Adapters\Imagick](api/phalcon_image#image-adapter-imagick) usa la [extensión PHP ImageMagick](https://php.net/manual/en/book.imagick.php). Para poder usar este adaptador, debe estar presente la extensión en su sistema. El adaptador ofrece todos los métodos descritos a continuación en la sección de operaciones.
 
 ## Operaciones
 
 ### `background()`
 
-Sets the background color for the image. The available parameters are: - `color` - `string` - the color in hex format - `opacity` - `int` - the opacity (optional - default `100`).
+Establece el color de fondo para la imagen. Los parámetros disponibles son: - `color` - `string` - El color en formato hexadecimal - `opacity` - `int` - la opacidad (opcional - por defecto `100`).
 
 ```php
 <?php
@@ -76,7 +76,7 @@ $image->save('background-image.jpg');
 
 ### `blur()`
 
-Blurs the image. The passed integer parameter specifies the radius for the blur operation. The range is between 0 (no effect) and 100 (very blurry):
+Desenfoca la imagen. El parámetro entero pasado especifica el radio para la operación de desenfoque. El rango está entre 0 (no efecto) y 100 (muy borroso):
 
 ```php
 <?php
@@ -92,9 +92,9 @@ $image->save('blur-image.jpg');
 
 ### `crop()`
 
-You can crop images programmatically. The `crop()` method accepts the following parameters: - `width` - `int` - the width - `height` - `int` - the height - `offsetX` - `int` - the X offset (optional) - `offsetY` - `int` - the Y offset (optional)
+Puede recortar imágenes programáticamente. El método `crop()` acepta los siguientes parámetros: - `width` - `int` - la anchura - `height` - `int` - la altura - `offsetX` - `int` - el desplazamiento X (opcional) - `offsetY` - `int` - el desplazamiento Y (opcional)
 
-The following example crops 100px by 100px from the center of the image:
+El siguiente ejemplo recorta 100px por 100px desde el centro de la imagen:
 
 ```php
 <?php
@@ -115,7 +115,7 @@ $image->save('crop-image.jpg');
 
 ### `flip()`
 
-You can flip an image horizontally or vertically. The `flip()` method accepts an integer, signifying the direction. You can use the constants for this operation:
+Puede dar la vuelta a una imagen horizontal o verticalmente. El método `flip()` acepta un entero, que representa la dirección. Puede usar las constantes para esta operación:
 
 - `Phalcon\Image\Enum::HORIZONTAL`
 - `Phalcon\Image\Enum::VERTICAL`
@@ -135,7 +135,7 @@ $image->save('flip-image.jpg');
 
 ### `liquidRescale()`
 
-This method is only available in the [Phalcon\Image\Imagick](api/phalcon_image#image-adapter-imagick) adapter. It uses the [liquid](https://www.php.net/manual/en/imagick.liquidrescaleimage.php) rescaling method to rescale the image. The method accepts the following parameters: - `width` - `int` - the new width - `height` - `int` - the new height - `deltaX` - `int` - How much the seam can traverse on x-axis. Passing `0` causes the seams to be straight. (optional - default `0`) - `rigidity` - `int` - Introduces a bias for non-straight seams. (optional - default `0`).
+Este método sólo está disponible en el adaptador [Phalcon\Image\Imagick](api/phalcon_image#image-adapter-imagick). Usa el método de reescalado [liquid](https://www.php.net/manual/en/imagick.liquidrescaleimage.php) para reescalar la imagen. El método acepta los siguientes parámetros: - `width` - `int` - la nueva anchura - `height` - `int` - la nueva altura - `deltaX` - `int` - Cuánto puede atravesar la costura en el eje X. Pasando `0` causa que las costuras sean rectas. (opcional - por defecto `0`) - `rigidity` - `int` - Introduce un sesgo para costuras no rectas. (optional - por defecto `0`).
 
 ```php
 <?php
@@ -151,7 +151,7 @@ $image->save('liquidrescale-image.jpg');
 
 ### `mask()`
 
-Creates a composite image from two images. Accepts the first image as a parameter.
+Crea una imagen compuesta a partir de dos imágenes. Acepta la primera imagen como parámetro.
 
 ```php
 <?php
@@ -168,7 +168,7 @@ $front->save('mask-image.jpg');
 
 ### `pixelate()`
 
-Adds pixelation to the image. The method accepts a single integer parameter. The higher the number, the more pixelated the image becomes:
+Añade pixelación a la imagen. El método acepta un único parámetro entero. Cuanto mayor sea el número, más pixelada se vuelve la imagen:
 
 ```php
 <?php
@@ -184,7 +184,7 @@ $image->save('pixelate-image.jpg');
 
 ### `reflection()`
 
-Adds reflection to the image. The method accepts the following parameters: - `height` - `int` - the height - `opacity` - `int` - the opacity (optional - default `100`) - `fadeIn` - `bool` - whether to fade in or not (optional - default `false`)
+Añade reflejo a la imagen. El método acepta los siguientes parámetros: - `height` - `int` - la altura - `opacity` - `int` - la opacidad (opcional - por defecto `100`) - `fadeIn` - `bool` - si desvanecer o no (opcional - por defecto `false`)
 
 ```php
 <?php
@@ -200,7 +200,7 @@ $image->save('reflection-image.jpg');
 
 ### `render()`
 
-Renders the image and returns it back as a binary string. The method accepts the following parameters: - `ext` - `string` - the extension (optional) - `quality` - `int` - the quality of the image (optional - default `100`)
+Renderiza la imagen y la devuelve como una cadena binaria. El método acepta los siguientes parámetros: - `ext` - `string` - la extensión (opcional) - `quality` - `int` - la calidad de la imagen (opcional - por defecto `100`)
 
 ```php
 <?php
@@ -216,13 +216,13 @@ echo $image->render('jpg', 90);
 
 ### `resize()`
 
-Resizes the image based on the passed parameters. The method accepts the following parameters: - `width` - `int` - the width (optional) - `height` - `int` - the height (optional) - `master` - `int` - constant signifying the resizing method (default `AUTO`) - `Phalcon\Image\Enum::AUTO` - `Phalcon\Image\Enum::HEIGHT` - `Phalcon\Image\Enum::INVERSE` - `Phalcon\Image\Enum::NONE` - `Phalcon\Image\Enum::PRECISE` - `Phalcon\Image\Enum::TENSILE` - `Phalcon\Image\Enum::WIDTH`
+Redimensiona la imagen basada en los parámetros pasados. El método acepta los siguiente parámetros: - `width` - `int` - la anchura (opcional) - `height` - `int` - la altura (opcional) - `master` - `int` - constante que representa el método de redimensionado (por defecto `AUTO`) - `Phalcon\Image\Enum::AUTO` - `Phalcon\Image\Enum::HEIGHT` - `Phalcon\Image\Enum::INVERSE` - `Phalcon\Image\Enum::NONE` - `Phalcon\Image\Enum::PRECISE` - `Phalcon\Image\Enum::TENSILE` - `Phalcon\Image\Enum::WIDTH`
 
-If any of the parameters are not correct, a [Phalcon\Image\Exception](api/phalcon_image#image-exception) will be thrown.
+Si alguno de los parámetros no es correcto, se lanzará [Phalcon\Image\Exception](api/phalcon_image#image-exception).
 
 **HEIGHT**
 
-The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
+La anchura se generará automáticamente para mantener las mismas proporciones; si especifica un anchura, será ignorada.
 
 ```php
 <?php
@@ -239,7 +239,7 @@ $image->save('resize-height-image.jpg');
 
 **INVERSE**
 
-Resizes and inverts the width and height passed
+Redimensiona e invierte la anchura y altura pasadas
 
 ```php
 <?php
@@ -256,10 +256,10 @@ $image->save('resize-inverse-image.jpg');
 
 **NONE**
 
-- The `NONE` constant ignores the original image's ratio.
-- Neither width and height are required.
-- If a dimension is not specified, the original dimension will be used.
-- If the new proportions differ from the original proportions, the image may be distorted and stretched.
+- La constante `NONE` ignora el ratio original de la imagen.
+- Ni la anchura ni la altura son necesarias.
+- Si no se especifica una dimensión, se usará la dimensión original.
+- Si las nuevas proporciones difieren de las proporciones originales, la imagen se puede distorsionar y estirar.
 
 ```php
 <?php
@@ -276,9 +276,9 @@ $image->save('resize-none-image.jpg');
 
 **TENSILE**
 
-- Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
-- Both width and height are required.
-- If the new proportions differ from the original proportions, the image may be distorted and stretched.
+- Similar a la constante `NONE`, la constante `TENSILE` ignora el ratio de la imagen original.
+- Se requiere tanto anchura como altura.
+- Si las nuevas proporciones difieren de las proporciones originales, la imagen se puede distorsionar y estirar.
 
 ```php
 <?php
@@ -295,7 +295,7 @@ $image->save('resize-tensile-image.jpg');
 
 **WIDTH**
 
-The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
+La altura se generará automáticamente para mantener las mismas proporciones; si especifica una altura, se ignorará.
 
 ```php
 <?php
@@ -312,9 +312,9 @@ $image->save('resize-width-image.jpg');
 
 ### `rotate()`
 
-Rotates an image based on the given degrees. Positive numbers rotate the image clockwise while negative counter clockwise.
+Rota una imagen basándose en los grados dados. Los números positivos rotan la imagen en el sentido de las agujas del reloj, mientras que los negativos en el sentido contrario a las agujas del reloj.
 
-The following example rotates an image by 90 degrees clockwise
+El ejemplo siguiente rota una imagen 90 grados en el sentido de las agujas del reloj
 
 ```php
 <?php
@@ -330,11 +330,11 @@ $image->save('rotate-image.jpg');
 
 ### `save()`
 
-After manipulating your image, you will most likely want to save it. If you wish to just get the result of the manipulations back as a string, you can use the `render()` method.
+Después de manipular su imagen, probablemente querrá guardarla. Si sólo desea obtener de vuelta el resultado de la manipulación como una cadena, puede usar el método `render()`.
 
-The `save()` method accepts the filename and quality as parameters: - `file` - `string` - the target file name (optional) - `quality` - `int` - the quality of the image (optional - default `-1`)
+El método `save()` acepta el nombre del fichero y calidad como parámetros: - `file` - `string` - el nombre del fichero destino (opcional) - `quality` - `int` - la calidad de la imagen (opcional - por defecto `-1`)
 
-If a file name is not specified, the manipulated image will overwrite the original image.
+Si no se especifica un nombre de fichero, la imagen manipulada sobreescribirá la imagen original.
 
 ```php
 <?php
@@ -348,7 +348,7 @@ $image->rotate(90);
 $image->save();
 ```
 
-When specifying a file name, the manipulated image will be saved with that name, leaving the original image unchanged.
+Al especificar un nombre de fichero, la imagen manipulada se guardará con ese nombre, dejando la imagen original intacta.
 
 ```php
 <?php
@@ -362,7 +362,7 @@ $image->rotate(90);
 $image->save('rotate-image.jpg');
 ```
 
-You can also change the format of the image using a different extension. This functionality depends on the adapter you are working with.
+También puede cambiar el formato de la imagen usando una extensión distinta. Esta funcionalidad depende del adaptador con el que esté trabajando.
 
 ```php
 <?php
@@ -376,7 +376,7 @@ $image->rotate(90);
 $image->save('rotate-image.png');
 ```
 
-When saving as a JPEG, you can also specify the quality as the second parameter:
+Cuando guarda como JPEG, también puede especificar la calidad como segundo parámetro:
 
 ```php
 <?php
@@ -392,7 +392,7 @@ $image->save('rotate-image.jpg', 90);
 
 ### `sharpen()`
 
-Sharpens the image. The passed integer parameter specifies the amount for the blur operation. The range is between 0 (no effect) and 100 (very sharp):
+Ajusta la nitidez de la imagen. El parámetro entero pasado especifica la cantidad para la operación de ajuste. El rango está entre 0 (sin efecto) y 100 (muy nítido):
 
 ```php
 <?php
@@ -408,7 +408,7 @@ $image->save('sharpen-image.jpg');
 
 ### `text()`
 
-You can add text to your image by calling `text()`. The available parameters are: - `text` - `string` - the text - `offsetX` - `int`/`false` - the X offset, `false` to disable - `offsetY` - `int`/`false` - the Y offset, `false` to disable - `opacity` - `int` - the opacity of the text (optional - default `100`) - `color` - `string` - the color for the text (optional - default `"000000"`) - `size` - `int` - the size of the font for the text (optional - default `12`) - `fontfile` - `string` - the font file to be used for the text (optional)
+Puede añadir texto a su imagen llamando a `text()`. Los parámetros disponibles son: - `text` - `string` - el texto - `offsetX` - `int`/`false` - el desplazamiento X, `false` para deshabilitar - `offsetY` - `int`/`false` - el desplazamiento Y, `false` para deshabilitar - `opacity` - `int` - la opacidad del texto (opcional - por defecto `100`) - `color` - `string` - el color del texto (opcional - por defecto `"000000"`) - `size` - `int` - el tamaño de la fuente del texto (opcional - por defecto `12`) - `fontfile` - `string` - el fichero fuente a usar para el texto (opcional)
 
 ```php
 <?php
@@ -432,9 +432,9 @@ $image->save('text-image.jpg');
 
 ### `watermark()`
 
-Adds a watermark to an image. The available parameters are: - `watermark` - `AdapterInterface` - the image to use for the watermark - `offsetX` - `int` - the X offset (optional) - `offsetY` - `int` - the Y offset (optional) - `opacity` - `int` - the opacity of the text (optional - default `100`)
+Añade una marca de agua a una imagen. Los parámetros disponibles son: - `watermark` - `AdapterInterface` - la imagen a usar para la marca de agua - `offsetX` - `int` - el desplazamiento X (opcional) - `offsetY` - `int` - el desplazamiento Y (opcional) - `opacity` - `int` - la opacidad de la imagen (opcional - por defecto `100`)
 
-The following example puts the watermark at the top left corner of the image:
+El ejemplo siguiente pone la marca de agua en la esquina superior izquierda de la imagen:
 
 ```php
 <?php
@@ -458,7 +458,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-You can also manipulate the watermarked image before applying it to the main image. In the following example we resize, rotate and sharpen the watermark and put it at the bottom right corner with a 10px margin:
+También puede manipular la imagen de marca de agua antes de aplicarla a la imagen principal. En el siguiente ejemplo redimensionamos, rotamos y afinamos la imagen de agua y la colocamos en la esquina inferior derecha con un margen de 10px:
 
 ```php
 <?php
@@ -491,12 +491,12 @@ $image->save('watermark-image.jpg');
 
 ### `newInstance`
 
-The [Phalcon\Image\ImageFactory](api/phalcon_image#image-imagefactory) offers an easy way to create image adapter objects. There are two adapters already preset for you:
+[Phalcon\Image\ImageFactory](api/phalcon_image#image-imagefactory) ofrece una forma fácil de crear objetos adaptadores de imagen. Ya hay dos adaptadores preestablecidos para usted:
 
 - `gd`- [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd) 
 - `imagick` - [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick)
 
-Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always returns a new instance of [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
+Llamar `newInstance()` con la clave relevante así como parámetros devolverá el adaptador relevante. La fábrica siempre devuelve una nueva instancia de [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
 
 ```php
 <?php
@@ -508,11 +508,11 @@ $factory = new ImageFactory();
 $image = $factory->newInstance('gd', 'image.jpg');
 ```
 
-The available parameters for `newInstance()` are: - `name` - `string` - the name of the adapter - `file` - `string` - the file name - `width` - `int` - the width of the image (optional) - `height` - `int` - the height of the image (optional)
+Los parámetros disponibles para `newInstance()` son: - `name` - `string` - el nombre del adaptador - `file` - `string` - el nombre del fichero - `width` - `int` - la anchura de la imagen (opcional) - `height` - `int` - la altura de la imagen (opcional)
 
 ### `load`
 
-The Image Factory also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config](config) object, with directives that are used to set up the image adapter. The object requires the `adapter` element, as well as the `file` element. `width` and `height` can also be set as options.
+La Fábrica de Imágenes también ofrece el método `load`, que acepta un objeto de configuración. Este objeto puede ser un vector o un objeto [Phalcon\Config](config), con las directivas a usar para configurar el adaptador de imagen. El objeto requiere el elemento `adapter`, así como el elemento `file`. `width` y `height` también se pueden configurar como opciones.
 
 ```php
 <?php
@@ -532,7 +532,7 @@ $image = $factory->load($options);
 
 ## Excepciones
 
-Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception](api/phalcon_image#image-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Cualquier excepción lanzada en los componentes Imagen serán del tipo [Phalcon\Image\Exception](api/phalcon_image#image-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
@@ -559,7 +559,7 @@ class IndexController extends Controller
 
 ## Personalizado
 
-The [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface) interface must be implemented in order to create your own image adapters or extend the existing ones. You can then easily add it to the [Phalcon\Image\ImageFactory](api/phalcon_image#image-imagefactory).
+Se debe implementar la interfaz [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface) para poder crear sus propios adaptadores de imagen o extender los existentes. Entonces puede fácilmente añadirlo a [Phalcon\Image\ImageFactory](api/phalcon_image#image-imagefactory).
 
 ```php
 <?php
