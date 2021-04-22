@@ -402,7 +402,7 @@ $image->save('rotate-image.jpg', 90);
 ```
 
 ### `sharpen()`
-Sharpens the image. The passed integer parameter specifies the amount for the blur operation. The range is between 0 (no effect) and 100 (very sharp):
+Sharpens the image. The passed integer parameter specifies the amount for the sharpen operation. The range is between 0 (no effect) and 100 (very sharp):
 
 ```php
 <?php
