@@ -451,7 +451,7 @@ Adds a watermark to an image. The available parameters are:
 - `watermark` - `AdapterInterface` - the image to use for the watermark
 - `offsetX` - `int` - the X offset (optional)
 - `offsetY` - `int` - the Y offset (optional) 
-- `opacity` - `int` - the opacity of the text (optional - default `100`)
+- `opacity` - `int` - the opacity of the image (optional - default `100`)
 
 The following example puts the watermark at the top left corner of the image:
 
