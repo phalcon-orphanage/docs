@@ -392,7 +392,7 @@ $image->save('rotate-image.jpg', 90);
 
 ### `sharpen()`
 
-Sharpens the image. The passed integer parameter specifies the amount for the blur operation. The range is between 0 (no effect) and 100 (very sharp):
+Sharpens the image. The passed integer parameter specifies the amount for the sharpen operation. The range is between 0 (no effect) and 100 (very sharp):
 
 ```php
 <?php
@@ -432,7 +432,7 @@ $image->save('text-image.jpg');
 
 ### `watermark()`
 
-Adds a watermark to an image. The available parameters are: - `watermark` - `AdapterInterface` - the image to use for the watermark - `offsetX` - `int` - the X offset (optional) - `offsetY` - `int` - the Y offset (optional) - `opacity` - `int` - the opacity of the text (optional - default `100`)
+Adds a watermark to an image. The available parameters are: - `watermark` - `AdapterInterface` - the image to use for the watermark - `offsetX` - `int` - the X offset (optional) - `offsetY` - `int` - the Y offset (optional) - `opacity` - `int` - the opacity of the image (optional - default `100`)
 
 The following example puts the watermark at the top left corner of the image:
 
