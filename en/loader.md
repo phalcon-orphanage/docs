@@ -206,7 +206,7 @@ If you need to check what classes are registered in the autoloader, you can use 
 ```
 
 ## Classes
-Another way to let [Phalcon\Loader][loader] know where your classes are components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
+Another way to let [Phalcon\Loader][loader] know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
 
 The method accepts an array, where the key is the namespaced class and the value is the location of the file that contains the class. As expected, this is the fastest way to autoload a class, since the autoloader does not need to do file scans or stats to find the files references.
 
@@ -262,7 +262,7 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerNamespaces()` with the previous one.
+The above example merges the second declaration of `registerClasses()` with the previous one.
 
 If you need to check what classes are registered in the autoloader, you can use the `getClasses()` getter, which returns the array of the registered classes. For the example above, `getClasses()` returns:
 
