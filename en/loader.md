@@ -482,7 +482,7 @@ The following events are available:
 
 | Event              | Description                                                                             | Can stop operation? |
 |--------------------|-----------------------------------------------------------------------------------------|---------------------|
-| `afterCheckClass`  | Fires at the end of the end of the auto load process when the class has not been found. | No                  |
+| `afterCheckClass`  | Fires at the end of the auto load process when the class has not been found. | No                  |
 | `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class.         | Yes                 |
 | `beforeCheckPath`  | Fires before checking a directory for a class file.                                     | Yes                 |
 | `pathFound`        | Fires when the loader locates a class file or a file in a registered directory          | Yes                 |
