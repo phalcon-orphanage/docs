@@ -202,7 +202,7 @@ $loader->register();
 
 El ejemplo anterior une la segunda declaración de `registerNamespaces()` con la anterior.
 
-Si necesita comprobar qué clases están registradas en el autocargador, puede usar el *getter* `getNamespaces()`, que devuelve el vector de los espacios de nombres registrados. Para el ejemplo anterior, `getNamespaces()` devuelve:
+If you need to check what namespaces are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. Para el ejemplo anterior, `getNamespaces()` devuelve:
 
 ```php
 [
@@ -214,7 +214,7 @@ Si necesita comprobar qué clases están registradas en el autocargador, puede u
 
 ## Clases
 
-Otra forma de permitir a [Phalcon\Loader](api/phalcon_loader#loader) conocer donde se ubican sus componentes/clases, para que el autocargador pueda cargarlas apropiadamente, es usando `registerClasses()`.
+Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
 
 El método acepta un vector, donde la clave es la clase con el espacio de nombres y el valor es la ubicación del fichero que contiene la clase. Como era de esperar, esta es la manera más rápida de autocargar una clase, ya que el autocargador no necesita escanear o sacar estadísticas de ficheros para encontrar las referencias de los ficheros.
 
@@ -270,7 +270,7 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-El ejemplo anterior une la segunda declaración de `registerNamespaces()` con la anterior.
+The above example merges the second declaration of `registerClasses()` with the previous one.
 
 Si necesita comprobar qué clases están registradas en el autocargador, puede usar el *getter* `getClasses()`, que devuelve el vector de las clases registradas. Para el ejemplo anterior, `getClasses()` devuelve:
 
@@ -307,7 +307,7 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-Estos ficheros se cargan automáticamente cuando se llama al método `register()`.
+These files are automatically loaded when the `register()` method is called.
 
 El método `registerFiles()` también acepta un segundo parámetro `merge`. Por defecto es `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerFiles()` para que las definiciones de clase se unan.
 
@@ -336,7 +336,7 @@ $loader->register();
 
 El ejemplo anterior une la segunda declaración de `registerFiles()` con la anterior.
 
-Si necesita comprobar qué clases están registradas en el autocargador, puede usar el *getter* `getFiles()`, que devuelve el vector de los ficheros registrados. Para el ejemplo anterior, `getFiles()` devuelve:
+If you need to check what files are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. Para el ejemplo anterior, `getFiles()` devuelve:
 
 ```php
 [
@@ -401,7 +401,7 @@ $loader->register();
 
 El ejemplo anterior une la segunda declaración de `registerDirs()` con la anterior.
 
-Si necesita comprobar qué directorios están registrados en el autocargador, puede usar el *getter* `getDirs()`, que devuelve el vector de los directorios registrados. Para el ejemplo anterior, `getDirs()` devuelve:
+If you need to check what directories are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered directories. Para el ejemplo anterior, `getDirs()` devuelve:
 
 ```php
 [
@@ -495,7 +495,7 @@ Los siguientes eventos están disponibles:
 
 | Evento             | Descripción                                                                                         | ¿Detiene la operación? |
 | ------------------ | --------------------------------------------------------------------------------------------------- | ---------------------- |
-| `afterCheckClass`  | Se dispara al final del proceso de autocarga cuando la clase no ha sido encontrada.                 | No                     |
+| `afterCheckClass`  | Fires at the end of the auto load process when the class has not been found.                        | No                     |
 | `beforeCheckClass` | Se dispara al principio del proceso de autocarga, antes de comprobar la clase.                      | Si                     |
 | `beforeCheckPath`  | Se dispara antes de comprobar un directorio por un fichero de clase.                                | Si                     |
 | `pathFound`        | Se dispara cuando el cargador localiza un fichero de clase o un fichero en un directorio registrado | Si                     |
