@@ -202,7 +202,7 @@ $loader->register();
 
 The above example merges the second declaration of `registerNamespaces()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. For the example above, `getNamespaces()` returns:
+If you need to check what namespaces are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. For the example above, `getNamespaces()` returns:
 
 ```php
 [
@@ -214,7 +214,7 @@ If you need to check what classes are registered in the autoloader, you can use 
 
 ## Classes
 
-Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your classes are components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
+Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
 
 The method accepts an array, where the key is the namespaced class and the value is the location of the file that contains the class. As expected, this is the fastest way to autoload a class, since the autoloader does not need to do file scans or stats to find the files references.
 
@@ -270,7 +270,7 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerNamespaces()` with the previous one.
+The above example merges the second declaration of `registerClasses()` with the previous one.
 
 If you need to check what classes are registered in the autoloader, you can use the `getClasses()` getter, which returns the array of the registered classes. For the example above, `getClasses()` returns:
 
@@ -307,7 +307,7 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-These files are automatically loaded when the `register()` method is called..
+These files are automatically loaded when the `register()` method is called.
 
 The `registerFiles()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerFiles()` so that the file definitions are merged.
 
@@ -336,7 +336,7 @@ $loader->register();
 
 The above example merges the second declaration of `registerFiles()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. For the example above, `getFiles()` returns:
+If you need to check what files are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. For the example above, `getFiles()` returns:
 
 ```php
 [
@@ -401,7 +401,7 @@ $loader->register();
 
 The above example merges the second declaration of `registerDirs()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered classes. For the example above, `getDirs()` returns:
+If you need to check what directories are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered directories. For the example above, `getDirs()` returns:
 
 ```php
 [
@@ -493,12 +493,12 @@ The \[Events Manager\]\[events\] component offers hooks that can be implemented 
 
 The following events are available:
 
-| Event              | 描述                                                                                      | Can stop operation? |
-| ------------------ | --------------------------------------------------------------------------------------- | ------------------- |
-| `afterCheckClass`  | Fires at the end of the end of the auto load process when the class has not been found. | 否                   |
-| `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class.         | 是的                  |
-| `beforeCheckPath`  | Fires before checking a directory for a class file.                                     | 是的                  |
-| `pathFound`        | Fires when the loader locates a class file or a file in a registered directory          | 是的                  |
+| Event              | 描述                                                                              | Can stop operation? |
+| ------------------ | ------------------------------------------------------------------------------- | ------------------- |
+| `afterCheckClass`  | Fires at the end of the auto load process when the class has not been found.    | 否                   |
+| `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class. | 是的                  |
+| `beforeCheckPath`  | Fires before checking a directory for a class file.                             | 是的                  |
+| `pathFound`        | Fires when the loader locates a class file or a file in a registered directory  | 是的                  |
 
 In the following example, the `EventsManager` is working with the class loader, offering additional information on the operation flow:
 
