@@ -298,7 +298,7 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-These files are automatically loaded when the `register()` method is called..
+These files are automatically loaded when the `register()` method is called.
 
 The `registerFiles()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerFiles()` so that the file definitions are merged. 
 
