@@ -392,7 +392,7 @@ $image->save('rotate-image.jpg', 90);
 
 ### `sharpen()`
 
-Ajusta la nitidez de la imagen. El parámetro entero pasado especifica la cantidad para la operación de ajuste. El rango está entre 0 (sin efecto) y 100 (muy nítido):
+Ajusta la nitidez de la imagen. El parámetro entero pasado especifica la cantidad para la operación de afinado. El rango está entre 0 (sin efecto) y 100 (muy nítido):
 
 ```php
 <?php
