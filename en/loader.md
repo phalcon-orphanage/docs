@@ -195,7 +195,7 @@ $loader->register();
 
 The above example merges the second declaration of `registerNamespaces()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. For the example above, `getNamespaces()` returns:
+If you need to check what namespaces are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. For the example above, `getNamespaces()` returns:
 
 ```php
 [
@@ -327,7 +327,7 @@ $loader->register();
 
 The above example merges the second declaration of `registerFiles()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. For the example above, `getFiles()` returns:
+If you need to check what files are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. For the example above, `getFiles()` returns:
 
 ```php
 [
@@ -391,7 +391,7 @@ $loader->register();
 
 The above example merges the second declaration of `registerDirs()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered classes. For the example above, `getDirs()` returns:
+If you need to check what directories are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered classes. For the example above, `getDirs()` returns:
 
 ```php
 [
