@@ -392,7 +392,7 @@ $image->save('rotate-image.jpg', 90);
 
 ### `sharpen()`
 
-Ajusta la nitidez de la imagen. The passed integer parameter specifies the amount for the sharpen operation. El rango está entre 0 (sin efecto) y 100 (muy nítido):
+Ajusta la nitidez de la imagen. El parámetro entero pasado especifica la cantidad para la operación de afinado. El rango está entre 0 (sin efecto) y 100 (muy nítido):
 
 ```php
 <?php
@@ -432,7 +432,7 @@ $image->save('text-image.jpg');
 
 ### `watermark()`
 
-Añade una marca de agua a una imagen. The available parameters are: - `watermark` - `AdapterInterface` - the image to use for the watermark - `offsetX` - `int` - the X offset (optional) - `offsetY` - `int` - the Y offset (optional) - `opacity` - `int` - the opacity of the image (optional - default `100`)
+Añade una marca de agua a una imagen. Los parámetros disponibles son: - `watermark` - `AdapterInterface` - la imagen a usar para la marca de agua - `offsetX` - `int` - el desplazamiento X (opcional) - `offsetY` - `int` - el desplazamiento Y (opcional) - `opacity` - `int` - la opacidad de la imagen (opcional - por defecto `100`)
 
 El ejemplo siguiente pone la marca de agua en la esquina superior izquierda de la imagen:
 
