@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Loader'
-keywords: 'oader, psr-4, autoloading, autoloader'
+keywords: 'cargador, psr-4, autocargar, autocargador'
 ---
 
 # Loader
@@ -14,17 +14,17 @@ keywords: 'oader, psr-4, autoloading, autoloader'
 
 ## Resumen
 
-[Phalcon\Loader](api/phalcon_loader#loader) is an autoloader that implements [PSR-4](https://www.php-fig.org/psr/psr-4/). Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
+[Phalcon\Loader](api/phalcon_loader#loader) es un autocargador que implementa [PSR-4](https://www.php-fig.org/psr/psr-4/). Como cualquier autocargador, dependiendo de su configuración, intentará encontrar los ficheros que su código está buscando en base a fichero, clase, espacio de nombres, etc. Como este componente está escrito en C, ofrece la menor sobrecarga al procesar su configuración, ofreciendo así un aumento de rendimiento.
 
 ![](/assets/images/implements-psr--4-blue.svg)
 
-This component relies on PHP's [autoloading classes](https://secure.php.net/manual/en/language.oop5.autoload.php) capability. If a class defined in the code has not been included yet, a special handler will try to load it. [Phalcon\Loader](api/phalcon_loader#loader) serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
+Este componente se basa en la capacidad de [autocarga de clases](https://secure.php.net/manual/en/language.oop5.autoload.php) de PHP. Si una clase definida en el código todavía no se ha incluido, un manejador especial intentará cargarla. [Phalcon\Loader](api/phalcon_loader#loader) sirve como el manejador especial para esta operación. Al cargar clases en función de la necesidad de carga, el rendimiento general aumenta, ya que las únicas lecturas de archivos se producen para los ficheros necesarios. Esta técnica se llama [inicialización perezosa](https://en.wikipedia.org/wiki/Lazy_initialization).
 
-The component offers options for loading files based on their class, file name, directories on your file system as well as file extensions.
+El componente ofrece opciones para cargar ficheros basados en su clase, nombre de fichero, directorios en su sistema de ficheros así como extensiones de fichero.
 
-## Registration
+## Registro
 
-Usually we would use the [spl_autoload_register()](https://www.php.net/manual/en/function.spl-autoload-register.php) to register a custom autoloader for our application. [Phalcon\Loader](api/phalcon_loader#loader) hides this complexity. After you define all your namespaces, classes, directories and files you will need to call the `register()` function, and the autoloader is ready to be used.
+Generalmente usaríamos [spl_autoload_register()](https://www.php.net/manual/en/function.spl-autoload-register.php) para registrar un autocargador personalizado para nuestra aplicación. [Phalcon\Loader](api/phalcon_loader#loader) oculta esta complejidad. Después defina todos sus espacios de nombres, clases, directorios y ficheros que necesitará llamar a la función `register()`, y el autocargador está listo para usar.
 
 ```php
 <?php
@@ -43,11 +43,11 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-`register()` uses [spl_autoload_register()](https://www.php.net/manual/en/function.spl-autoload-register.php) internally. As a result it accepts also accepts the boolean `prepend` parameter. If supplied and is `true`, the autoloader will be prepended on the autoload queue instead of appended (default behavior).
+`register()` usa [spl_autoload_register()](https://www.php.net/manual/en/function.spl-autoload-register.php) internamente. Como resultado, acepta también el parámetro booleano `prepend`. Si es suministrado y es `true`, el autocargador se añadirá al inicio de la cola de autocarga en lugar de al final (comportamiento predeterminado).
 
-You can always call the `isRegistered()` method to check if your autoloader is registered or not.
+Siempre puede llamar al método `isRegistered()` para comprobar si su autocargador está registrado o no.
 
-> **NOTE**: If there is an error in registering the autoloader, the component will throw an exception.
+> **NOTA**: Si hay un error al registrar el autocargador, el componente lanzará una excepción.
 {: .alert .alert-warning }
 
 
@@ -70,7 +70,7 @@ $loader->register();
 echo $loader->isRegistered(); // true
 ```
 
-Unregistering the autoloader is similarly easy. All you need to do is call `unregister()`.
+Desregistrar el autocargador es igualmente fácil. Todo lo que necesita es llamar a `unregister()`.
 
 ```php
 <?php
@@ -93,11 +93,11 @@ if (true === $loader->isRegistered()) {
 }
 ```
 
-## Security Layer
+## Capa de seguridad
 
-[Phalcon\Loader](api/phalcon_loader#loader) incorporates a security layer, by sanitizing class names by default i.e. removing invalid characters. As such it makes it more difficult for malicious code to be injected in your application.
+[Phalcon\Loader](api/phalcon_loader#loader) incorpora una capa de seguridad, saneando los nombres de las clases por defecto, es decir, eliminando caracteres inválidos. Esto dificulta que se inyecte código malicioso en su aplicación.
 
-Consider the following example:
+Considere el ejemplo siguiente:
 
 ```php
 <?php
@@ -114,7 +114,7 @@ spl_autoload_register(
 );
 ```
 
-The above auto loader lacks any kind of security. If a part of your code accidentally calls the auto loader with a name that points to a script containing malicious code, then your application will be compromised.
+El cargador automático anterior carece de ningún tipo de seguridad. Si una parte de su código accidentalmente llama al autocargador con un nombre que apunta a un *script* que contiene código malicioso, entonces su aplicación se verá comprometida.
 
 ```php
 <?php
@@ -126,15 +126,15 @@ if (class_exists($className)) {
 }
 ```
 
-In the above snippet, if `../processes/important-process.php` is a valid file, that could have been uploaded by a hacker or from a not so careful upload process, then an external user could execute the code without any authorization and subsequently get access to the whole application if not the server.
+En el fragmento anterior, si `../processes/important-process.php` es un fichero válido, podría haber sido subido por un hacker o desde un proceso de subida no tan cuidadoso, entonces un usuario externo podría ejecutar el código sin ninguna autorización y posteriormente obtener acceso a toda la aplicación si no al servidor.
 
-To avoid most of these kind of attacks, [Phalcon\Loader](api/phalcon_loader#loader) removes invalid characters from the class name.
+Para evitar la mayoría de tipos de ataques, [Phalcon\Loader](api/phalcon_loader#loader) elimina caracteres inválidos del nombre de la clase.
 
 ## Espacios de nombres
 
-A very popular way to organize your application is with directories, each representing a particular namespace. [Phalcon\Loader](api/phalcon_loader#loader) can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
+Una forma muy popular de organizar su aplicación es con directorios, cada uno representando un espacio de nombres en particular. [Phalcon\Loader](api/phalcon_loader#loader) puede registrar estos espacios de nombres en el mapeo de directorios y recorrer estos directorios para buscar el fichero que su aplicación necesita.
 
-The `registerNamespaces()` method accepts an array, where keys are the namespaces and values are the actual directories in the file system. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
+El método `registerNamespaces()` acepta un vector, donde las claves son los espacios de nombres y los valores son los directorios actuales en el sistema de ficheros. El separador de espacio de nombres se sustituirá por el separador de directorio cuando el cargador intente encontrar las clases.
 
 ```php
 <?php
@@ -154,27 +154,27 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-In the above example, whenever we reference a controller, the loader will search for it in `app/controllers` and its subdirectories. Similarly for a model the search will occur in `app/models`.
+En el ejemplo anterior, cuando hacemos referencia a un controlador, el cargador lo buscará en `app/controllers` y sus subdirectorios. De forma similar, para un modelo la búsqueda tendrá lugar en `app/models`.
 
-You do not need to register the sub namespaces, if the actual files are located in sub directories that map the namespace naming convention.
+No es necesario registrar los subespacios de nombres, si los archivos reales están ubicados en subdirectorios que asignan la convención de nomenclatura del espacio de nombres.
 
-So for instance the above example defines our `MyApp` namespace to point to `app/library`. If we have a file:
+Así por ejemplo, el ejemplo anterior define nuestro espacio de nombres `MyApp` para apuntar a `app/library`. Si tenemos un fichero:
 
 ```bash
 /app/library/Components/Mail.php
 ```
 
-that has a namespace of:
+que tiene un espacio de nombres de:
 
 ```bash
 MyApp\Components
 ```
 
-then the loader, as defined above, does not need to know about the `MyApp\Components` namespace location, or have it defined in the `registerNamespaces()` declaration.
+entonces el cargador, definido anteriormente, no necesita saber la ubicación del espacio de nombres `MyApp\Components`, o tenerlo definido en la declaración `registerNamespaces()`.
 
-If the component referenced in the code is `MyApp\Components\Mail`, it will assume that it is a sub directory of the root namespace. However, since we specified a different location for the `MyApp\Controllers` and `MyApp\Models` namespaces, the loader will look for those namespaces in the specified directories.
+Si el componente referenciado en el código es `MyApp\Components\Mail`, se asumirá que es un subdirectorio del espacio de nombres raíz. Sin embargo, ya que especificamos una ubicación diferente para los espacios de nombres `MyApp\Controllers` y `MyApp\Models`, el cargador buscará esos espacios de nombres en los directorios especificados.
 
-The `registerNamespaces()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerNamespaces()` so that the namespace definitions are merged.
+El método `registerNamespaces()` también acepta un segundo parámetro `merge`. Por defecto es `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerNamespaces()` para que las definiciones de espacio de nombres se unan.
 
 ```php
 <?php
@@ -200,9 +200,9 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerNamespaces()` with the previous one.
+El ejemplo anterior une la segunda declaración de `registerNamespaces()` con la anterior.
 
-If you need to check what classes are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. For the example above, `getNamespaces()` returns:
+If you need to check what namespaces are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. Para el ejemplo anterior, `getNamespaces()` devuelve:
 
 ```php
 [
@@ -214,11 +214,11 @@ If you need to check what classes are registered in the autoloader, you can use 
 
 ## Clases
 
-Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your classes are components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
+Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
 
-The method accepts an array, where the key is the namespaced class and the value is the location of the file that contains the class. As expected, this is the fastest way to autoload a class, since the autoloader does not need to do file scans or stats to find the files references.
+El método acepta un vector, donde la clave es la clase con el espacio de nombres y el valor es la ubicación del fichero que contiene la clase. Como era de esperar, esta es la manera más rápida de autocargar una clase, ya que el autocargador no necesita escanear o sacar estadísticas de ficheros para encontrar las referencias de los ficheros.
 
-However, using this method can hinder the maintenance of your application. The more your application grows, the more files are added, the easier it becomes to make a mistake while maintaining the list of files used in `registerClasses()`
+Sin embargo, usar este método puede dificultar el mantenimiento de su aplicación. Cuanto más crece su aplicación, más ficheros se añaden, lo más fácil es llegar a cometer un error al mantener la lista de ficheros usados en `registerClasses()`
 
 ```php
 <?php
@@ -240,9 +240,9 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-In the above example, we are defining the relationship between a namespaced class and a file. As you can see, the loader will be as fast as it can be but the list will start growing, the more our application grows, making maintenance difficult. If however your application does not have that many components, there is no reason why you cannot use this method of autoloading components.
+En el ejemplo anterior, estamos definiendo la relación entre una clase con espacio de nombres y un fichero. Como puede ver, el cargador será tan rápido como pueda pero la lista empezará a crecer, cuanto más crece nuestra aplicación, dificultando el mantenimiento. Sin embargo, si su aplicación no tiene demasiados componentes, no hay razón por la que no pueda usar este método de autocarga de componentes.
 
-The `registerClasses()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerClasses()` so that the class definitions are merged.
+El método `registerClasses()` también acepta un segundo parámetro `merge`. Por defecto es `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerClasses()` para que las definiciones de clase se unan.
 
 ```php
 <?php
@@ -270,9 +270,9 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerNamespaces()` with the previous one.
+The above example merges the second declaration of `registerClasses()` with the previous one.
 
-If you need to check what classes are registered in the autoloader, you can use the `getClasses()` getter, which returns the array of the registered classes. For the example above, `getClasses()` returns:
+Si necesita comprobar qué clases están registradas en el autocargador, puede usar el *getter* `getClasses()`, que devuelve el vector de las clases registradas. Para el ejemplo anterior, `getClasses()` devuelve:
 
 ```php
 [
@@ -286,9 +286,9 @@ If you need to check what classes are registered in the autoloader, you can use 
 
 ## Archivos
 
-There are times that you might need to *require* a specific file that contains a class without a namespace or a file that contains some code that you need. An example would be a file that contains handy debugging functions.
+Hay veces que podría necesitar *requerir* un fichero específico que contiene una clase sin un espacio de nombres o un fichero que contiene algún código que necesita. Un ejemplo sería un fichero que contiene funciones de depuración prácticas.
 
-[Phalcon\Loader](api/phalcon_loader#loader) offers `registerFiles()` which is used to *require* such files. It accepts an array, containing the file name and location of each file.
+[Phalcon\Loader](api/phalcon_loader#loader) ofrece `registerFiles()` que se usa para *requerir* estos ficheros. Acepta un vector, que contiene el nombre y localización de cada fichero.
 
 ```php
 <?php
@@ -307,9 +307,9 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-These files are automatically loaded when the `register()` method is called..
+These files are automatically loaded when the `register()` method is called.
 
-The `registerFiles()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerFiles()` so that the file definitions are merged.
+El método `registerFiles()` también acepta un segundo parámetro `merge`. Por defecto es `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerFiles()` para que las definiciones de clase se unan.
 
 ```php
 <?php
@@ -334,9 +334,9 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerFiles()` with the previous one.
+El ejemplo anterior une la segunda declaración de `registerFiles()` con la anterior.
 
-If you need to check what classes are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. For the example above, `getFiles()` returns:
+If you need to check what files are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. Para el ejemplo anterior, `getFiles()` devuelve:
 
 ```php
 [
@@ -345,15 +345,15 @@ If you need to check what classes are registered in the autoloader, you can use 
 ]
 ```
 
-You also have access to the `loadFiles()` method, which will traverse all the files registered and if they exist it will `require` them. This method is automatically called when you call `register()`.
+También tiene acceso al método `loadFiles()`, que recorrerá todos los ficheros registrados y si existen los `requerirá`. Este método se llama automáticamente cuando se llama a `register()`.
 
-## Directories
+## Directorios
 
-Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your application files are is to register directories. When a file needs to be required by the application, the autoloader will scan the registered directories to find the referenced file so that it can require it.
+Otra forma de permitir a [Phalcon\Loader](api/phalcon_loader#loader) conocer donde están los ficheros de su aplicación es registrar directorios. Cuando un fichero necesita ser requerido por la aplicación, el autocargador escaneará los directorios registrados para encontrar el fichero referenciado para poder requerirlo.
 
-The `registerDirs()` method accepts an array with each element being a directory in the file system containing the files that will be required by the application.
+El método `registerDirs()` acepta un vector donde cada elemento es un directorio del sistema de ficheros que contiene los ficheros que serán requeridos por la aplicación.
 
-This type of registration is not recommended in terms of performance. Additionally the order of declared directories matters, since the autoloader tries to locate the files by searching directories sequentially. As a result, the directory that contains the most referenced files should be declared first, etc.
+Este tipo de registro no se recomienda en términos de rendimiento. Adicionalmente, el orden de los directorios declarados importa, ya que el autocargador intenta localizar los archivos buscando directorios secuencialmente. Como resultado, el directorio que contiene los ficheros más referenciados debería declararse primero, etc.
 
 ```php
 <?php
@@ -373,7 +373,7 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-The `registerDirs()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerDirs()` so that the class definitions are merged.
+El método `registerDirs()` también acepta un segundo parámetro `merge`. Por defecto es `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerDirs()` para que las definiciones de clase se unan.
 
 ```php
 <?php
@@ -399,9 +399,9 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerDirs()` with the previous one.
+El ejemplo anterior une la segunda declaración de `registerDirs()` con la anterior.
 
-If you need to check what classes are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered classes. For the example above, `getDirs()` returns:
+If you need to check what directories are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered directories. Para el ejemplo anterior, `getDirs()` devuelve:
 
 ```php
 [
@@ -411,9 +411,9 @@ If you need to check what classes are registered in the autoloader, you can use 
 ]
 ```
 
-## File Extensions
+## Extensiones de Ficheros
 
-When you use the `registerNamespaces()` and `registerDirs()`, [Phalcon\Loader](api/phalcon_loader#loader) automatically assumes that your files will have the `.php` extension. You can change this behavior by using the `setExtensions()` method. The method accepts an array, where each element is the extension to be checked (without the `.`):
+Cuando usa `registerNamespaces()` y `registerDirs()`, [Phalcon\Loader](api/phalcon_loader#loader) asume automáticamente que sus ficheros tendrán la extensión `.php`. Puede cambiar este comportamiento usando el método `setExtensions()`. El método acepta un vector, donde cada elemento es la extensión a comprobar (sin el `.`):
 
 ```php
 <?php
@@ -437,19 +437,19 @@ $loader->registerDirs(
 );
 ```
 
-In the example above, when referencing a file `Mail`, the autoloader will search in `app/functions` for the following files:
+En el ejemplo anterior, cuando se referencia un fichero `Mail`, el autocargador buscará en `app/functions` los siguientes archivos:
 
 * `Mail.php`
 * `Mail.inc`
 * `Mail.phb`
 
-Files are checked in the order that each extension is defined.
+Los ficheros se comprueban en el orden en el que se define cada extensión.
 
-## File Checking Callback
+## Función de Retorno de Comprobación de Fichero
 
-You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback()` method.
+Puede acelerar el cargador configurando un método distinto de llamada de retorno de comprobación de fichero usando el método `setFileCheckingCallback()`.
 
-The default behavior uses [is_file](https://www.php.net/manual/en/function.is-file.php). However you can also use `null` which will not check whether a file exists or not, before loading it or you can use [stream_resolve_include_path](https://www.php.net/manual/en/function.stream-resolve-include-path.php) which is much faster than [is_file](https://www.php.net/manual/en/function.is-file.php) but will cause problems if the target file is removed from the file system.
+El comportamiento predeterminado usa [is_file](https://www.php.net/manual/en/function.is-file.php). Sin embargo, también puede usar `null` que no comprobará si un fichero existe o no, antes de cargarlo o puede usar [stream_resolve_include_path](https://www.php.net/manual/en/function.stream-resolve-include-path.php) que es mucho más rápido que [is_file](https://www.php.net/manual/en/function.is-file.php) pero causará problemas si el fichero de destino se elimina del sistema de ficheros.
 
 ```php
 <?php
@@ -461,7 +461,7 @@ $loader = new Loader();
 $loader->setFileCheckingCallback("is_file");
 ```
 
-Default behavior
+Comportamiento predeterminado
 
 ```php
 <?php
@@ -473,7 +473,7 @@ $loader = new Loader();
 $loader->setFileCheckingCallback("stream_resolve_include_path");
 ```
 
-Faster than `is_file()`, but introduces issues if the file is removed from the filesystem.
+Más rápido que `is_file()`, pero introduce problemas si el fichero se elimina del sistema de ficheros.
 
 ```php
 <?php
@@ -485,22 +485,22 @@ $loader = new Loader();
 $loader->setFileCheckingCallback(null);
 ```
 
-Do not check file existence.
+No comprueba la existencia del fichero.
 
 ## Eventos
 
-The \[Events Manager\]\[events\] component offers hooks that can be implemented to observe or expand the functionality of the loader. The [Phalcon\Loader](api/phalcon_loader#loader) implements the [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface), and therefore the `getEventsManager()` and `setEventsManager()` methods are available.
+El componente \[Gestor de Eventos\]\[events\] ofrece ganchos que se pueden implementar para observar o expandir la funcionalidad del cargador. [Phalcon\Loader](api/phalcon_loader#loader) implementa [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface), y como resultado están disponibles los métodos `getEventsManager()` y `setEventsManager()`.
 
 Los siguientes eventos están disponibles:
 
-| Evento             | Descripción                                                                             | ¿Detiene la operación? |
-| ------------------ | --------------------------------------------------------------------------------------- | ---------------------- |
-| `afterCheckClass`  | Fires at the end of the end of the auto load process when the class has not been found. | No                     |
-| `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class.         | Si                     |
-| `beforeCheckPath`  | Fires before checking a directory for a class file.                                     | Si                     |
-| `pathFound`        | Fires when the loader locates a class file or a file in a registered directory          | Si                     |
+| Evento             | Descripción                                                                                         | ¿Detiene la operación? |
+| ------------------ | --------------------------------------------------------------------------------------------------- | ---------------------- |
+| `afterCheckClass`  | Fires at the end of the auto load process when the class has not been found.                        | No                     |
+| `beforeCheckClass` | Se dispara al principio del proceso de autocarga, antes de comprobar la clase.                      | Si                     |
+| `beforeCheckPath`  | Se dispara antes de comprobar un directorio por un fichero de clase.                                | Si                     |
+| `pathFound`        | Se dispara cuando el cargador localiza un fichero de clase o un fichero en un directorio registrado | Si                     |
 
-In the following example, the `EventsManager` is working with the class loader, offering additional information on the operation flow:
+El el siguiente ejemplo, el `Gestor de Eventos` trabaja con la clase cargador, ofreciendo información adicional en el flujo de operación:
 
 ```php
 <?php
@@ -534,11 +534,11 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-In the above example, we create a new Events Manager object, attach a method to the `loader:beforeCheckPath` event and then set it in our autoloader. Every time the loader loops and looks for a particular file in a specific path, the path will be printed on screen.
+En el ejemplo anterior, creamos un nuevo objeto Gestor de Eventos, adjuntamos un método al evento `loader:beforeCheckPath` y lo registramos en nuestro autocargador. Cada vez que el cargador itere y busque un fichero particular en una ruta específica, la ruta será mostrada por pantalla.
 
-The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. Also you can use the `getfoundPath()` method, which holds the path of the found file during the internal loop.
+`getCheckedPath()` mantiene la ruta que se escanea durante cada iteración del bucle interno. También puede usar el método `getfoundPath()`, que mantiene la ruta del fichero encontrado durante el bucle interno.
 
-For events that can stop operation, all you will need to do is return `false` in the method that is attached to the particular event:
+Para eventos que pueden parar la operación, todo lo que necesitará hacer es devolver `false` en el método adjunto al evento en particular:
 
 ```php
 <?php
@@ -574,12 +574,12 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-In the above example, when the autoloader starts scanning the `app/models` folder for the `MyApp\Models` namespace, it will stop the operation.
+En el ejemplo anterior, cuando el autocargador empieza a escanear la carpeta `app/models` por el espacio de nombres `MyApp\Models`, detendrá la operación.
 
 ## Resolución de problemas
 
-Some things to keep in mind when using the autoloader:
+Algunas cosas a tener en cuenta cuando se usa el autocargador:
 
-* The auto-loading process is case-sensitive
-* Strategies based on namespaces/prefixes are faster than the directories strategy
-* If a bytecode cache, such as [APCu](https://php.net/manual/en/book.apcu.php), is installed, it will be used to get the requested file (an implicit caching of the file is performed)
+* El proceso de carga automática es sensible a mayúsculas y minúsculas
+* Las estrategias basadas en espacios de nombres/prefijos son más rápidas que la estrategia de directorios
+* Si se instala un cache de bytecode, como [APCu](https://php.net/manual/en/book.apcu.php), se usará para obtener el fichero solicitado (se realiza un cacheado implícito del fichero)
