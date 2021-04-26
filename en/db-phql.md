@@ -3029,7 +3029,7 @@ use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
 
 $dialect = new Dialect();
 $dialect->registerCustomFunction(
-    'MATCH_AGAINST',
+    'GROUP_CONCAT',
     function ($dialect, $expression) {
         $arguments = $expression['arguments'];
         if (true !== empty($arguments[2])) {
