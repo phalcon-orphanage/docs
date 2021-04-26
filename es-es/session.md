@@ -426,7 +426,7 @@ $session
     ->start();
 ```
 
-### Stream (flujo)
+### Flujo (Stream)
 
 This adapter is the most common one, storing the session files on the file system. You need to create a [Phalcon\Session\Adapter\Stream](api/Phalcon_Session#session-adapter-stream) adapter with the `savePath` defined in the options. The path needs to be writeable by the web server, otherwise your sessions will not work.
 
