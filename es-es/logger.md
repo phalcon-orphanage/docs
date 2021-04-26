@@ -35,7 +35,7 @@ El componente registro hace uso de diversos adaptadores para guardar los mensaje
 | [Phalcon\Logger\Adapter\Stream](api/phalcon_logger#logger-adapter-stream) | Logs messages on a file stream              |
 | [Phalcon\Logger\Adapter\Syslog](api/phalcon_logger#logger-adapter-syslog) | Logs messages to the Syslog                 |
 
-### Stream (flujo)
+### Flujo (Stream)
 
 Se usa para registrar mensajes en un archivo de flujo. Combina los adaptadores de v3 `Stream` y `File`. Es el de uso más extendido: llevar el registro en un archivo del sistema de archivos.
 
@@ -615,7 +615,7 @@ try {
 
 ## Ejemplos
 
-### Stream (flujo)
+### Flujo (Stream)
 
 Para registrar en un archivo:
 
