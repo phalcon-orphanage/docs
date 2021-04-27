@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Model View Controller (MVC)'
-keywords: 'model, view, controller, model view controller, mvc'
+title: 'Modelo Vista Controlador (MVC)'
+keywords: 'modelo, vista, controlador, modelo vista controlador, mvc'
 ---
 
-# MVC - Model View Controller
+# MVC - Modelo Vista Controlador
 
 * * *
 
@@ -14,25 +14,25 @@ keywords: 'model, view, controller, model view controller, mvc'
 
 ## Resumen
 
-Model View Controller ([MVC](https://en.wikipedia.org/wiki/Model–view–controller)) is a software architectural pattern, which divides the application logic into three interconnected elements, separating internal representations of information of the application.
+Modelo Vista Controlador ([MVC](https://en.wikipedia.org/wiki/Model–view–controller)) es un patrón de arquitectura de *software*, que divide la lógica de la aplicación en tres elementos interconectados, separando representaciones internas de la información de la aplicación.
 
-Phalcon offers the object-oriented classes, necessary to implement the Model View Controller in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon ofrece las clases orientadas a objetos, necesarias para implementar el Modelo Vista Controlador en su aplicación. Este patrón de diseño es ampliamente utilizado por otros *frameworks* web y aplicaciones de escritorio.
 
-MVC benefits include:
+Los beneficios de MVC incluyen:
 
 * Aislamiento de la lógica de negocio de la interfaz de usuario y la capa de base de datos
 * Deja claro a cual parte de esta arquitectura pertenece cada tipo de código para facilitar el mantenimiento
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in Zephir, which is translated to C, offering a high performance implementation of the MVC pattern in PHP applications.
+Si decide usar MVC, cada petición a los recursos de su aplicación será gestionada por la arquitectura MVC. Las clases de Phalcon están escritas en Zephir, que se traduce a C, ofreciendo una implementación de alto rendimiento del patrón MVC en aplicaciones PHP.
 
 ## Modelos
 
-Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos. [more...](db-models)
+Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos. [más...](db-models)
 
 ## Vistas
 
-Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas llevan a cabo el trabajo de proveer datos al navegador web u otra herramienta que es usada para hacer solicitudes desde su aplicación. [more...](views)
+Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente con la presentación de datos. Las vistas llevan a cabo el trabajo de proveer datos al navegador web u otra herramienta que es usada para hacer solicitudes desde su aplicación. [más...](views)
 
 ## Controladores
 
-The controllers provide the *flow* between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [more...](controllers)
+Los controladores proporcional el *flujo* entre modelos y vistas. Los controladores son los responsables de procesar las peticiones entrantes desde el navegador web, solicitar datos a los modelos, y pasar esos datos a las vistas para su presentación. [más...](controllers)
