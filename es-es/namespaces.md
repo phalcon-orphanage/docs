@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Espacios de nombres'
-keywords: 'namespaces, namespaced classes'
+keywords: 'espacios de nombres, clases con espacios de nombres'
 ---
 
 # Espacios de nombres
@@ -14,11 +14,11 @@ keywords: 'namespaces, namespaced classes'
 
 ## Resumen
 
-[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
+Los [Espacios de nombres](https://php.net/manual/en/language.namespaces.php) se pueden usar para evitar colisiones de nombres de clase. Esto significa que si tiene dos controladores en una aplicación con el mismo nombre, se puede usar un espacio de nombres para ayudar a PHP a entender que son dos clases diferentes. Los espacios de nombres también son útiles cuando se crean paquetes o módulos.
 
 ## Activación
 
-If you decided to use namespaces for your application, you will need to instruct your autoloader on where your namespaces reside. This is the most common way to distinguish between namespaces in your application. If you chose to use the [Phalcon\Loader](loader) component, then you will need to register your namespaces accordingly:
+Si decide usar espacios de nombres para su aplicación, necesitará instruir a su autocargador sobre dónde residen sus espacios de nombres. Esta es la forma más común de distinguir entre espacios de nombres en su aplicación. Si elige usar el componente [Phalcon\Loader](loader), entonces necesitará registrar sus espacios de nombres apropiadamente:
 
 ```php
 <?php
@@ -31,7 +31,7 @@ $loader->registerNamespaces(
 );
 ```
 
-You can also specify the namespace when defining your routes, using the [Router](routing) component:
+También puede especificar el espacio de nombres cuando define sus rutas, usando el componente [Router](routing):
 
 ```php
 <?php
@@ -46,7 +46,7 @@ $router->add(
 );
 ```
 
-or passing it as part of the route as a parameter
+o pasándolo como parte de la ruta como parámetro
 
 ```php
 <?php
@@ -61,7 +61,7 @@ $router->add(
 );
 ```
 
-Finally, if you are only working with the same namespace for every controller, you can define a default namespace in your [Dispatcher](dispatcher). Doing so, you will not need to specify the full class in the router path:
+Finalmente, si solo trabaja con el mismo espacio de nombres para todos los controladores, puede definir un espacio de nombres por defecto en su [Despachador](dispatcher). Al hacerlo, no necesitará especificar la clase completa en la ruta del enrutador:
 
 ```php
 <?php
@@ -84,7 +84,7 @@ $di->set(
 
 ## Controladores
 
-The following example shows how to implement a controller that uses namespaces:
+El siguiente ejemplo muestra como implementar un controlador que usa espacio de nombres:
 
 ```php
 <?php
@@ -109,7 +109,7 @@ class InvoicesController extends Controller
 
 ## Modelos
 
-The following example shows a model that is namespaced:
+El siguiente ejemplo muestra un modelo con espacio de nombres:
 
 ```php
 <?php
@@ -124,7 +124,7 @@ class Invoices extends Model
 }
 ```
 
-If models have relationships they must include the namespace too:
+Si los modelos tienen relaciones también deberán incluir el espacio de nombres:
 
 ```php
 <?php
@@ -149,7 +149,7 @@ class Invoices extends Model
 }
 ```
 
-In PHQL you must write the statements including namespaces:
+En PHQL, debe escribir la sentencia incluyendo los espacios de nombres:
 
 ```php
 <?php
