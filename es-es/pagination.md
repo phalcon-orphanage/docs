@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Paginación'
-keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
+keywords: 'paginación, paginación modelos, paginación bd, paginación vector, paginación consulta'
 ---
 
 # Paginación
@@ -11,7 +11,7 @@ keywords: 'pagination, model pagination, db pagination, array pagination, query 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-A paginator is a component which helps with splitting a large amount of data gradually. An example would be displaying all the posts of a blog, 5 at a time. The Phalcon Paginator accepts parameters and based on those returns the relevant _slice_ of the whole resultset so that the developer can present the paginated data.
+Un paginador es un componente que ayuda a dividir una gran cantidad de datos gradualmente. Un ejemplo sería mostrar todos los mensajes de un blog, 5 cada vez. El Paginador de Phalcon acepta parámetros y basado en ellos devuelve la _porción_ correspondiente de todo el conjunto de resultados para que el desarrollador pueda presentar los datos paginados.
 
  ```php
 <?php 
@@ -36,18 +36,18 @@ $paginator   = new NativeArray(
 $paginate = $paginator->paginate();
  ```
 
-The example above uses an array as the source, and limits the results to 2 records at a time. It will return elements with id `3` and `4` because the `page` has been set to `2`.
+El ejemplo anterior usa un vector como fuente, y limita los resultados a 2 registros cada vez. Devolverá los elementos con id `3` y `4` porque `page` se ha establecido a `2`.
 
 ## Adaptadores
-For the source of the data, the component uses adapters. It comes with the following adapters:
+Para la fuente de datos, el componente usa adaptadores. Viene con los siguientes adaptadores:
 
-| Adaptador                                                                                         | Descripción                                                                                                |
-| ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model)               | Use a [Phalcon\Mvc\Model\Resultset](api/phalcon_mvc#mvc-model-resultset) object as source data.         |
-| [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray)   | Usa un vector PHP como origen de datos                                                                     |
-| [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object as source data |
+| Adaptador                                                                                         | Descripción                                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model)               | Usa un objeto [Phalcon\Mvc\Model\Resultset](api/phalcon_mvc#mvc-model-resultset) como fuente de datos.         |
+| [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray)   | Usa un vector PHP como origen de datos                                                                            |
+| [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) | Usa un objeto [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) como fuente de datos |
 
-> **NOTE**: Since PDO does not support scrollable cursors, [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) should not be used to paginate a large number of records 
+> **NOTA**: Como PDO no soporta cursores desplazables, no debería usarse [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) para paginar un gran número de registros 
 > 
 > {: .alert .alert-warning}
 
@@ -57,25 +57,25 @@ For the source of the data, the component uses adapters. It comes with the follo
 public function __construct(array $config)
 ```
 
-Every adapter requires options to operate properly. These options are passed as a key/value array in the constructor of the adapter.
+Cada adaptador requiere opciones para funcionar correctamente. Estas opciones se pasan como vector clave/valor en el constructor del adaptador.
 
-- `builder` - Used only for the [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) to pass the builder object
-- `data` - The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray) adapter)
-- `limit` - `int` - The size of the page slice. If `limit` is negative, an exception will be thrown.
-- `model` - The data to paginate. ([Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) adapter)
-- `page` - `int` - The current page
-- `repository` - [Phalcon\Paginator\RepositoryInterface](api/phalcon_paginator#paginator-repositoryinterface) - A repository object setting up the resultset. For more about repositories see below.
+- `builder` - Usado sólo por el [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) para pasar el objeto constructor
+- `data` - Los datos a paginar. (adaptador [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray))
+- `limit` - `int` - El tamaño de la porción de página. Si `limit` es negativo, se lanzará una excepción.
+- `model` - Los datos a paginar. (adaptador [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model))
+- `page` - `int` - La página actual
+- `repository` - [Phalcon\Paginator\RepositoryInterface](api/phalcon_paginator#paginator-repositoryinterface) - Un objeto repositorio que configura el conjunto de resultados. Para más información sobre repositorios ver a continuación.
 
-The methods exposed are:
+Los métodos expuestos son:
 
-- `getLimit()` - `int` - Get current rows limit
-- `getRepository(array $properties = null)` - `RepositoryInterface` - Gets current repository for pagination
-- `setCurrentPage(int $page)` - `AdapterInterface` - Set the current page number
-- `setLimit(int $limitRows)` - `AdapterInterface` - Set current rows limit
-- `setRepository(RepositoryInterface $repository)` - `AdapterInterface` - Sets current repository for pagination
+- `getLimit()` - `int` - Obtiene el límite de filas actual
+- `getRepository(array $properties = null)` - `RepositoryInterface` - Obtiene el repositorio actual para la paginación
+- `setCurrentPage(int $page)` - `AdapterInterface` - Establece el número de página actual
+- `setLimit(int $limitRows)` - `AdapterInterface` - Establece el límite de filas actual
+- `setRepository(RepositoryInterface $repository)` - `AdapterInterface` - Establece el repositorio actual para la paginación
 
-### Model
-The [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) adapter uses a [Phalcon\Mvc\Model\Resultset](api/phalcon_mvc#mvc-model-resultset) as the source of the data. This is the result of the `find()` method on a model.
+### Modelo
+El adaptador [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) usa un [Phalcon\Mvc\Model\Resultset](api/phalcon_mvc#mvc-model-resultset) como fuente de datos. Este ese el resultado del método `find()` en un modelo.
 
 ```php
 <?php
@@ -102,10 +102,10 @@ $paginator   = new Model(
 $paginate = $paginator->paginate();
 ```
 
-The array accepts `model` for the model class to be used. The method `find()` will be called on it. Additionally this adapter can accept `parameters` as the array that `find()` can use with all the relevant conditionals required.
+El vector acepta `model` para la clase de modelo a usar. Se llamará al método `find()` sobre él. Adicionalmente este adaptador puede aceptar `parámetros` como el vector que puede usar `find()` con todas las condiciones relevantes requeridas.
 
-### Array
-The [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray) accepts a PHP array as the source of the data.
+### Vector
+[Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray) acepta un vector PHP como fuente de datos.
 
 ```php
 <?php
@@ -130,8 +130,8 @@ $paginator   = new NativeArray(
 $paginate = $paginator->paginate();
 ```
 
-### Query Builder
-The [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) adapter uses a [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object to perform a PHQL query against the database.
+### Constructor de Consultas
+El adaptador [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) usa un objeto [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) para realizar una consulta PHQL contra la base de datos.
 
 ```php
 <?php
@@ -157,8 +157,8 @@ $paginator = new QueryBuilder(
 $paginate = $paginator->paginate();
 ```
 
-## Repository
-The `paginate()` method does all the work to paginate the data. It returns a [Phalcon\Paginator\Repository](api/phalcon_paginator#paginator-repository) object which stores all the necessary elements for the pagination. The object exposes the following constants:
+## Repositorio
+El método `paginate()` hace todo el trabajo para paginar los datos. Devuelve un objeto [Phalcon\Paginator\Repository](api/phalcon_paginator#paginator-repository) que almacena todos los elementos necesarios para la paginación. El objeto expone las siguientes constantes:
 
 - `PROPERTY_CURRENT_PAGE`  = "current";
 - `PROPERTY_FIRST_PAGE`    = "first";
@@ -170,21 +170,21 @@ The `paginate()` method does all the work to paginate the data. It returns a [Ph
 - `PROPERTY_TOTAL_ITEMS`   = "total_items";
 
 ### Métodos
-The methods exposed are:
+Los métodos expuestos son:
 
-- `getAliases()` - `array` - Gets the aliases for properties repository
-- `getCurrent()` - `int` - Gets number of the current page
-- `getFirst()` - `int` - Gets number of the first page
-- `getItems()` - `mixed` - Gets the items on the current page
-- `getLast()` - `int` - Gets number of the last page
-- `getLimit()` - `int` - Gets current rows limit
-- `getNext()` - `int` - Gets number of the next page
-- `getPrevious()` - `int` - Gets number of the previous page
-- `getTotalItems()` - `int` - Gets the total number of items
-- `setAliases(array $aliases)` - `RepositoryInterface` - Sets the aliases for properties repository
-- `setProperties(array $properties)` - `RepositoryInterface` - Sets values for properties of the repository
+- `getAliases()` - `array` - Obtiene los alias para el repositorio de propiedades
+- `getCurrent()` - `int` - Obtiene el número de la página actual
+- `getFirst()` - `int` - Obtiene el número de la primera página
+- `getItems()` - `mixed` - Obtiene los elementos de la página actual
+- `getLast()` - `int` - Obtiene el número de la última página
+- `getLimit()` - `int` - Obtiene el límite de filas actual
+- `getNext()` - `int` - Obtiene el número de la siguiente página
+- `getPrevious()` - `int` - Obtiene el número de la página anterior
+- `getTotalItems()` - `int` - Obtiene el número total de elementos
+- `setAliases(array $aliases)` - `RepositoryInterface` - Establece los alias para el repositorio de propiedades
+- `setProperties(array $properties)` - `RepositoryInterface` - Establece los valores para las propiedades del repositorio
 
-You can access the data by using the methods above or use the magic properties as defined in the constants:
+Puede acceder a los datos usando los métodos anteriores o usar las propiedades mágicas como las definidas en las constantes:
 
 ```php
 <?php
@@ -236,8 +236,8 @@ echo $paginate->getTotalItems(); // 5
 echo $paginate->total_items;     // 5 
 ```
 
-### Aliases
-If you want to use your own names for each magic property the Repository object exposes, you can use the `setAliases()` method to do so.
+### Alias
+Si quiere usar sus propios nombres para cada propiedad mágica que el objeto Repositorio expone, puede usar el método `setAliases()` para hacerlo.
 
 ```php
 <?php
@@ -283,17 +283,17 @@ echo $paginate->myNextPage;      // 3
 echo $paginate->myTotalItems;    // 1
 ```
 
-You can also create your custom repository class by implementing the [Phalcon\Paginator\RepositoryInterface](api/phalcon_paginator#paginator-repositoryinterface) interface.
+También puede usar su clase repositorio personalizada implementando la interfaz [Phalcon\Paginator\RepositoryInterface](api/phalcon_paginator#paginator-repositoryinterface).
 
 ## Fábrica (Factory)
-You can use the Pagination Factory class to instantiate a new paginator object. The names of the services are:
+Puede usar la clase Fábrica de Paginación para instanciar un nuevo objeto paginador. Los nombres del servicio son:
 
 - `model` - [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model)
 - `nativeArray` - [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray)
 - `queryBuilder` - [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder)
 
-### New Instance
-One method that you can use is `newInstance()`:
+### Nueva Instancia
+Un método que puede usar es `newInstance()`:
 
 ```php
 <?php
@@ -320,8 +320,8 @@ $paginator = $factory->newInstance('queryBuilder');
 
 ```
 
-### Load
-Loads Paginator Adapter class using `adapter` option. The configuration passed can be an array or a [Phalcon\Config](config) object with the necessary entries for the class to be instantiated.
+### Cargar
+Carga la clase Adaptador de Paginador usando la opción `adapter`. La configuración pasada puede ser un vector o un objeto [Phalcon\Config](config) con las entradas necesarias para que se instancie la clase.
 
 ```php
 <?php
@@ -347,7 +347,7 @@ $options = [
 $paginator = (new PaginatorFactory())->load($options);
 ```
 
-A sample configuration object is:
+Un objeto de configuración de ejemplo es:
 
 ```ini
 [paginator]
@@ -356,10 +356,10 @@ options.limit = 20
 options.page = 1
 ```
 
-The configuration expects an element `adapter` for the relevant adapter and an `options` array with the necessary options for the adapter.
+La configuración espera un elemento `adapter` para el adaptador relevante y un vector `options` con las opciones necesarias para el adaptador.
 
 ## Excepción
-Any exceptions thrown in the Paginator component will be of type [Phalcon\Paginator\Exception](api/phalcon_paginator#paginator-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Cualquier excepción lanzada en el componente Paginador será del tipo [Phalcon\Paginator\Exception](api/phalcon_paginator#paginator-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 
 ```php
@@ -391,9 +391,9 @@ try {
 ```
 
 ## Ejemplos
-In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
+En el ejemplo anterior, el paginador usará el resultado de una consulta de un modelo como su fuente de datos, y limitará los datos mostrados a 10 registros por página:
 
-### Full
+### Completo
 ```php
 <?php
 
@@ -428,7 +428,7 @@ class InvoicesController extends Controller
 }
 ```
 
-In the example above `$currentPage` contains an integer, user supplied variable, for the page to be displayed. The `$paginator->paginate()` returns a [Phalcon\Paginator\Repository](api/phalcon_paginator#paginator-repository) object that contains the paginated data. It can be used for generating the pagination in a view for instance:
+En el ejemplo anterior `$currentPage` contiene un entero, variable proporcionada por el usuario, con la página a mostrar. `$paginator->paginate()` devuelve un objeto [Phalcon\Paginator\Repository](api/phalcon_paginator#paginator-repository) que contiene los datos paginados. Se puede usar para generar la paginación en una vista por ejemplo:
 
 ```php
 <table>
@@ -447,7 +447,7 @@ In the example above `$currentPage` contains an integer, user supplied variable,
 </table>
 ```
 
-The `$page` object also contains navigation data:
+El objeto `$page` también contiene datos de navegación:
 
 ```php
 <a href="/invoices/list">First</a>
@@ -459,9 +459,9 @@ The `$page` object also contains navigation data:
 ```
 
 ### Fábrica (Factory)
-You can instantiate a Paginator class using the `AdapterFactory`.
+Puede instanciar una clase Paginador usando `AdapterFactory`.
 
-**Model**
+**Modelo**
 ```php
 <?php
 
@@ -480,7 +480,7 @@ $options     = [
 $paginator = $factory->newInstance('model', $options);
 ```
 
-**Array**
+**Vector**
 ```php
 <?php
 
@@ -529,10 +529,10 @@ $options = [
 $paginator = $factory->newInstance('queryBuilder', $options);
 ```
 
-### Individual Classes
-An example of the source data that must be used for each adapter:
+### Clases Individuales
+Un ejemplo de fuente de datos que se debe usar para cada adaptador:
 
-**Model**
+**Modelo**
 ```php
 <?php
 
@@ -548,7 +548,7 @@ $paginator   = new PaginatorModel(
 );
 ```
 
-**Array**
+**Vector**
 ```php
 <?php
 
@@ -570,7 +570,7 @@ $paginator   = new PaginatorArray(
 );
 ```
 
-**Query Builder**
+**Constructor de Consultas**
 ```php
 <?php
 
@@ -595,7 +595,7 @@ $paginator = new PaginatorQueryBuilder(
 ```
 
 ## Personalizado
-The [Phalcon\Paginator\AdapterInterface](api/phalcon_paginator#paginator-adapter-adapterinterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+Se debe implementar la interfaz [Phalcon\Paginator\AdapterInterface](api/phalcon_paginator#paginator-adapter-adapterinterface) para crear sus propios adaptadores de paginador o extender los existentes:
 
 ```php
 <?php
