@@ -88,7 +88,7 @@ Almost all RDBMs offer tools to identify slow SQL statements. Identifying and fi
 To enable this feature you will need to add this to `my.cnf` (don't forget to restart your database server)
 
 ```ini
-log-slow-queries = /var/log/slow-queries.log
+log-slow-queries = /var/log/consultas-lentas.log
 long_query_time = 1.5
 ```
 
