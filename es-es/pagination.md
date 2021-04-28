@@ -44,7 +44,7 @@ For the source of the data, the component uses adapters. It comes with the follo
 | Adaptador                                                                                         | Descripción                                                                                                |
 | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model)               | Use a [Phalcon\Mvc\Model\Resultset](api/phalcon_mvc#mvc-model-resultset) object as source data.         |
-| [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray)   | Usa un array PHP como origen de datos                                                                      |
+| [Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray)   | Usa un vector PHP como origen de datos                                                                     |
 | [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object as source data |
 
 > **NOTE**: Since PDO does not support scrollable cursors, [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) should not be used to paginate a large number of records 
