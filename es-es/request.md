@@ -388,7 +388,7 @@ Some methods:
 $ipAddress = $request->getServerAddress();
 ```
 
-Get the servers's IP address. Por ejemplo, `192.168.0.100`
+Get the servers's IP address. ej. `192.168.0.100`
 
 ```php
 $ipAddress = $request->getClientAddress();
@@ -412,13 +412,13 @@ Get the best acceptable content by the browser. ie text/xml
 $charset = $request->getBestCharset();
 ```
 
-Get the best charset accepted by the browser. Por ejemplo, `utf-8`
+Get the best charset accepted by the browser. ej. `utf-8`
 
 ```php
 $language = $request->getBestLanguage();
 ```
 
-Get the best language accepted configured in the browser. Por ejemplo, `en-us`
+Get the best language accepted configured in the browser. ej. `en-us`
 
 ### Método
 
