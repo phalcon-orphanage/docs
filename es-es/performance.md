@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Rendimiento'
-keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
+keywords: 'rendimiento, perfilado, xdebug, xhprof, yslow, bytecode'
 ---
 
 # Rendimiento
@@ -14,41 +14,41 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 
 ## Resumen
 
-A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
+Una aplicación mal escrita siempre tendrá un rendimiento malo. Una forma muy común para que los desarrolladores incrementen el rendimiento de su aplicación es:
 
-> just throw more hardware to it
+> justo lanzarle más *hardware*
 {: .alert .alert-info }
 
-The problem with the above approach is two fold. For starters, in most cases the owner is the one that will incur the additional costs. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
+El problema con el enfoque anterior es doble. Para empezar, en la mayoría de casos el propietario es el que incurrirá en la costes adicionales. La segunda cuestión es que llega un momento en que uno ya no puede actualizar el *hardware* y tendrá que recurrir a los balanceadores de carga, enjambres docker, etc. lo que disparará los costes.
 
-The problem will remain: *the poorly written application*
+El problema permanecerá: *la aplicación mal escrita*
 
-In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfills its requirements. Nothing beats a good design. After that, there are many aspects to consider: - server hardware - clients connecting (location, browsers) - network latency - database hardware
+Para acelerar su aplicación, primero necesita asegurarse de que su aplicación esté escrita de la mejor forma posible que cumpla con sus requisitos. Nada supera a un buen diseño. Después de eso, hay muchos aspectos a considerar: - *hardware* del servidor - clientes que se conectan (localización, navegadores) - latencia de la red - *hardware* de la base de datos
 
-and many more. In this article we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
+y muchos más. En este artículo intentaremos destacar algunos escenarios que podrían proporcionar más información sobre dónde su aplicación es realmente lenta.
 
-> **NOTE** These are **recommendations** and good practices. You are by no means obligated to follow the advice on this document, and by no means is this list exhaustive. Your performance enhancing strategies rely primarily on the needs of your application.
+> **NOTA** Estas son **recomendaciones** y buenas prácticas. De ninguna manera está obligado a seguir los consejos de este documento, y de ninguna manera esta lista es exhaustiva. Sus estrategias de mejora de rendimiento dependen principalmente de las necesidades de su aplicación.
 {: .alert .alert-danger }
 
-## Server
+## Servidor
 
-[Profiling](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture on what is really going on at any given time in your application, and thus guide you to areas where you application needs attention. Profiling should be continuous in a production application.
+[Perfilado](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) es una forma de análisis de aplicación dinámico que ofrece métricas sobre su aplicación. El perfilado ofrece la imagen real sobre qué esta ocurriendo realmente en cualquier momento en su aplicación, y de este modo le conduce a las áreas en las que su aplicación necesita atención. El perfilado debería ser continuo en una aplicación en producción.
 
-It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
+Tiene una sobrecarga, por lo que hay que tenerlo en cuenta. La mayoría de perfilados más detallados se hacen en cada petición pero todo dependerá de su tráfico. Desde luego no queremos incrementar la carga del servidor sólo porque estamos perfilando la aplicación. Una forma común de perfilar es una petición por cada 100 o una por cada 1.000. Después de un tiempo tendrá suficientes datos para sacar conclusiones sobre dónde hay lentitudes, por qué ocurren los picos, etc.
 
 ### Xdebug
 
-[XDebug](https://xdebug.org/docs) offers a very handy profiler right out of the box. All you have to do is install the extension and enable profiling in your `php.ini`:
+[XDebug](https://xdebug.org/docs) ofrece un perfilador muy práctico desde el primer momento. Todo lo que tiene que hacer es instalar la extensión y habilitar el perfilador en su `php.ini`:
 
 ```ini
 xdebug.profiler_enable = On
 ```
 
-Using a tool such as [Webgrind](https://github.com/jokkedk/webgrind) will allow you to connect to [XDebug](https://xdebug.org/docs) and get very valuable information as to what is going on with your code. [Webgrind](https://github.com/jokkedk/webgrind) offers statistics on which methods are slower than others and other statistics.
+Usando una herramienta como [Webgrind](https://github.com/jokkedk/webgrind) le permitirá conectar a [XDebug](https://xdebug.org/docs) y obtener información muy valiosa sobre lo que está pasando con su código. [Webgrind](https://github.com/jokkedk/webgrind) ofrece estadísticas sobre qué métodos son más lentos que otros y otras estadísticas.
 
 ### Xhprof
 
-[Xhprof](https://github.com/facebook/xhprof) is another extension to profile PHP applications. To enable it, all you need is to add the following line to the start of the bootstrap file:
+[Xhprof](https://github.com/facebook/xhprof) es otra extensión para perfilar aplicaciones PHP. Para habilitarla, todo lo que necesita es añadir la siguiente línea al inicio de su fichero de arranque:
 
 ```php
 <?php
@@ -56,7 +56,7 @@ Using a tool such as [Webgrind](https://github.com/jokkedk/webgrind) will allow 
 xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 ```
 
-Then at the end of the file save the profiled data:
+Entonces, al final del fichero guardar los datos perfilados:
 
 ```php
 <?php
@@ -73,74 +73,74 @@ $run_id = $xhprof_runs->save_run($xhprof_data, 'xhprof_testing');
 echo "https://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 ```
 
-Xhprof provides a built-in HTML viewer to analyze the profiled data:
+Xhprof proporciona un visor HTML integrado para analizar los datos perfilados:
 
 ![](/assets/images/content/performance-xhprof-2.jpg)
 
 ![](/assets/images/content/performance-xhprof-1.jpg)
 
-As mentioned above, profiling can increase the load on your server. In the case of [Xhprof](https://github.com/facebook/xhprof), you can introduce a conditional that would start profiling only after X requests.
+Como se ha mencionado arriba, el perfilado puede incrementar la carga de su servidor. En el caso de [Xhprof](https://github.com/facebook/xhprof), puede introducir un condicional que iniciaría el perfilado sólo después de X peticiones.
 
-### SQL Statements
+### Sentencias SQL
 
-Almost all RDBMs offer tools to identify slow SQL statements. Identifying and fixing slow queries is very important in terms of performance on the server side. MariaDB / MySql / AuroraDb offer configuration settings that enable a `slow-query` log. The database then keeps its own metrics and whenever a query takes long to complete it will be logged in the `slow-query` log. The log can then be analyzed by the development team and adjustments can be made.
+Casi todos los RDBMs ofrecen herramientas para identificar sentencias SQL lentas. Identificar y solucionar consultas lentas es muy importante en términos de rendimiento en el lado del servidor. MariaDB / MySql / AuroraDb ofrecen ajustes de configuración que activan un registro `consultas-lentas`. La base de datos mantiene sus propias métricas y cada vez que una consulta tarda en completarse será registrada en el registro `consultas-lentas`. El registro se puede analizar por el equipo de desarrollo y se pueden realizar los ajustes.
 
-To enable this feature you will need to add this to `my.cnf` (don't forget to restart your database server)
+Para activar esta característica necesitará añadir esto a `my.cnf` (no olvide reiniciar su servidor de base de datos)
 
 ```ini
-log-slow-queries = /var/log/slow-queries.log
+log-slow-queries = /var/log/consultas-lentas.log
 long_query_time = 1.5
 ```
 
-## Client
+## Cliente
 
-Another area to focus on is the client. Improving the loading of assets such as images, stylesheets, javascript files can significantly improve performance and enhance user experience. There are a number of tools that can help with identifying bottlenecks on the client:
+Otro área en la que concentrarse es el cliente. Mejorar la carga de recursos como imágenes, hojas de estilo, ficheros javascript pueden mejorar significativamente el rendimiento y mejorar la experiencia de usuario. Hay una serie de herramientas que pueden ayudar a identificar cuellos de botella en el cliente:
 
-### Browsers
+### Navegadores
 
-Most modern browsers have tools to profile a page's loading time. Those are easily called *web inspectors* or *developer tools*. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the current page (files), how much time it took and the total loading time:
+La mayoría de navegadores modernos tienen herramientas para perfilar el tiempo de carga de una página. Estos se llaman fácilmente *inspectores web* o *herramientas de desarrollador*. Por ejemplo cuando usa Brave o cualquier navegador basado en Chromium puede inspeccionar la página y las herramientas de desarrollador mostrarán una cascada de lo que ha cargado para la página actual (ficheros), cuanto tiempo ha tardado y el tiempo total de carga:
 
 ![](/assets/images/content/performance-chrome-1.jpg)
 
-A relatively easy fix for increasing client performance is to set the correct headers for assets so that they expire in the future vs. being loaded from the server on every request. Additionally, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) providers can help with distributing assets from their distribution centers that are closest to the client originating the request.
+Una solución relativamente sencilla para incrementar el rendimiento del cliente es establecer las cabeceras correctas para los recursos de manera que caduquen en el futuro vs. se carguen desde el servidor en cada petición. Además, los proveedores [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) pueden ayudar en la distribución de los recursos desde sus centros de distribución más cercanos al cliente que origina la petición.
 
 ### Yahoo! YSlow
 
-[YSlow](https://developer.yahoo.com/yslow) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](https://developer.yahoo.com/performance/rules.html)
+[YSlow](https://developer.yahoo.com/yslow) analiza las páginas web y sugiere formas de mejorar su rendimiento basado en un conjunto de [reglas para páginas web de alto rendimiento](https://developer.yahoo.com/performance/rules.html)
 
 ![](/assets/images/content/performance-yslow-1.jpg)
 
 ## PHP
 
-PHP is becoming faster with every new version. Using the latest version improves the performance of your applications and also of Phalcon.
+PHP se está volviendo más rápido con cada nueva versión. Usando la última versión mejora el rendimiento de su aplicación y también de Phalcon.
 
-### Bytecode Cache
+### Caché Bytecode
 
-[OPcache](https://php.net/manual/en/book.opcache.php) as many other bytecode caches helps applications reduce the overhead of read, tokenize and parse PHP files in each request. The interpreted results are kept in RAM between requests as long as PHP runs as fcgi (fpm) or mod_php. OPcache is bundled with php starting 5.5.0. To check if it is activated, look for the following entry in php.ini:
+[OPcache](https://php.net/manual/en/book.opcache.php) como muchos otros cachés de bytecode ayuda a las aplicaciones a reducir la sobrecarga de lectura, tokenización y análisis de ficheros PHP en cada petición. Los resultados interpretados se mantienen en RAM entre peticiones siempre y cuando PHP se ejecute como fcgi (fpm) o mod_php. OPcache está empaquetado con php empezando en 5.5.0. Para comprobar si está activado, busque la siguiente entrada en php.ini:
 
 ```ini
 opcache.enable = On
 opcache.memory_consumption = 128    ;default
 ```
 
-Furthermore, the amount of memory available for opcode caching needs to be enough to hold all files of your applications. The default of 128MB is usually enough for even larger codebases.
+Además, la cantidad de memoria disponible para el cacheado opcode necesita ser suficiente para almacenar todos los archivos de sus aplicaciones. El valor por defecto de 128M suele ser suficiente para códigos incluso más grandes.
 
-### Serverside cache
+### Caché en el lado del Servidor
 
-[APCu](https://php.net/manual/en/book.apcu.php) can be used to cache the results of computational expensive operations or otherwise slow data sources like webservices with high latency. What makes a result cacheable is another topic, as a rule of thumb: the operations needs to be executed often and yield identical results. Make sure to measure through profiling that the optimizations actually improved execution time.
+Se puede usar [APCu](https://php.net/manual/en/book.apcu.php) para cachear los resultados de operaciones de cálculo costosas o fuentes de datos lentas como servicios web con alta latencia. Lo que hace a un resultado cacheable es otro tema, como regla general: las operaciones que se deben ejecutar a menudo y producir resultados idénticos. Asegúrese de medir mediante un perfilador que las optimizaciones realmente mejoran el tiempo de ejecución.
 
 ```ini
 apc.enabled = On
 apc.shm_size = 32M  ;default
 ```
 
-As with the aforementioned opcache, make sure, the amount of RAM available suits your application. Alternatives to APCu would be [Redis](https://redis.io/) or [Memcached](https://memcached.org/) - although they need extra processes running on your server or another machine.
+Al igual que con el opcache mencionado anteriormente, asegúrese que la cantidad de RAM disponible se adapta a su aplicación. Alternativas a APCu serían [Redis](https://redis.io/) o [Memcached](https://memcached.org/) - aunque necesitan procesos adicionales ejecutándose en su servidor u otra máquina.
 
-## Slow Tasks
+## Tareas Lentas
 
-Based on the requirements of your application, there maybe times that you will need to perform long running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is: - The application initiates a task by sending a message to a queue service - The user sees a message that the task has been scheduled - In the background (or different server), worker scripts peek at the queue - When a message arrives, the worker script detects the type of message and calls the relevant task script - Once the task finishes, the user is notified that their data is ready.
+Basado en los requisitos de su aplicación, puede haber veces que necesite realizar tareas de ejecución largas. Ejemplos de estas tareas podrían ser procesamiento de vídeo, optimización de imágenes, envío de emails, generación de documentos PDF, etc. Estas tareas se deberían procesar usando tareas en segundo plano. El proceso normal es: - La aplicación inicia una tarea enviando un mensaje al servicio de colas - El usuario ve un mensaje de que la tarea ha sido programada - En segundo plano (o servidor diferente), los *scripts* trabajadores revisan la cola - Cuando llega un mensaje, el *script* trabajador detecta el tipo de mensaje y llama a *script* de la tarea relevante - Una vez que finaliza la tarea, se notifica al usuario de que sus datos están listos.
 
-The above is a simplistic view of how a queue service for background processing works, but can offer ideas on how background tasks can be executed. There are also a variety of queue services available that you can leverage using the relevant PHP libraries:
+Lo anterior es una visión simplificada de como un servicio de colas para procesamiento en segundo plano funciona, pero puede ofrecer una idea de cómo se pueden ejecutar tareas en segundo plano. También hay una variedad de servicios de cola disponibles que puede aprovechar usando las librerías PHP relevantes:
 
 * [NATS](https://nats.io)
 * [RabbitMQ](https://www.rabbitmq.com/)
@@ -149,6 +149,6 @@ The above is a simplistic view of how a queue service for background processing 
 * [SQS](https://aws.amazon.com/sqs/)
 * [ZeroMQ](https://www.zeromq.org/)
 
-## Page Speed
+## Velocidad de Página
 
-[mod_pagespeed](https://www.modpagespeed.com/) speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available for nginx) automatically applies web performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring you to modify your existing content or workflow.
+[mod_pagespeed](https://www.modpagespeed.com/) acelera su sitio y reduce el tiempo de carga de la página. Es un módulo del servidor HTTP Apache de código abierto (también disponible para nginx) automáticamente aplica las mejores prácticas de rendimiento web a las páginas, y recursos asociados (CSS, JavaScript, imágenes) sin requerirle que modifique su contenido o flujo de trabajo existente.

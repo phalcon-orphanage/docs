@@ -383,39 +383,39 @@
                 "url": "/loader"
             },
             {
-                "text": "PSR-7 HTTP Request",
+                "text": "PSR-7 Petición HTTP",
                 "url": "/http-request"
             },
             {
-                "text": "PSR-7 HTTP Response",
+                "text": "PSR-7 Respuesta HTTP",
                 "url": "/http-response"
             },
             {
-                "text": "PSR-7 HTTP Server Request",
+                "text": "PSR-7 Petición Servidor HTTP",
                 "url": "/http-server-request"
             },
             {
-                "text": "PSR-7 HTTP Stream",
+                "text": "PSR-7 Flujo HTTP",
                 "url": "/http-stream"
             },
             {
-                "text": "PSR-7 HTTP UploadedFile",
+                "text": "PSR-7 Fichero Subido HTTP",
                 "url": "/http-uploaded-file"
             },
             {
-                "text": "PSR-7 HTTP Uri",
+                "text": "PSR-7 Uri HTTP",
                 "url": "/http-uri"
             },
             {
-                "text": "PSR-11 Container",
+                "text": "PSR-11 Contenedor",
                 "url": "/container"
             },
             {
-                "text": "PSR-13 HTML Links",
+                "text": "PSR-13 Enlaces HTML",
                 "url": "/html-link"
             },
             {
-                "text": "PSR-17 HTTP Factories",
+                "text": "PSR-17 Fábricas HTTP",
                 "url": "/http-factories"
             }
         ]
