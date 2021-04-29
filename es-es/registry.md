@@ -280,7 +280,7 @@ $collection->remove('year');
 public function remove(string $element):  void
 ```
 
-## Iteration
+## Iteración
 
 Dado que el objeto de colección implementa `\IteratorAggregate`, puedes iterar con facilidad a través del objeto. El método `getIterator()` devuelve un objeto `ArrayIterator()`
 
@@ -305,7 +305,7 @@ foreach ($collection as $key => $value) {
 }
 ```
 
-## Count
+## Contar
 
 La implementación de la interfaz `\Countable` expone el método `count()`, que almacena el número de elementos en la colección.
 
