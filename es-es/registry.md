@@ -60,7 +60,7 @@ $data = [
 $collection = new Registry($data);
 ```
 
-## Reusing
+## Reutilización
 
 También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Registry](api/phalcon_registry#registry) exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
@@ -93,7 +93,7 @@ $collection->init($data);
 echo $collection->count(); // 1
 ```
 
-## Get
+## Obtener
 
 As mentioned above, [Phalcon\Registry](api/phalcon_registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 
