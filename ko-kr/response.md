@@ -263,12 +263,12 @@ $response->setHeaders($headers);
 The [Phalcon\Http\Response\Headers](api/phalcon_http#http-response-headers) object offers the following methods, allowing you to manipulate headers:
 
 * `get( string $name ): string | bool` - Gets a header value from the object
-* `has( string $name ): bool` - Sets a header to be sent at the end of the request
-* `remove( string $header )` - Removes a header to be sent at the end of the request
+* `has( string $name ): bool` - Checks if a header already exists in the reponse
+* `remove( string $header )` - Removes a header from the response
 * `reset()` - Resets all headers
 * `send(): bool` - Sends the headers to the client
-* `set( string $name, string $value )` - Sets a header to be sent at the end of the request
-* `setRaw( string $header )` Sets a raw header to be sent at the end of the request
+* `set( string $name, string $value )` - Sets a header to be sent at the end of the response
+* `setRaw( string $header )` Sets a raw header to be sent at the end of the response
 * `toArray(): array` - Returns the current headers as an array
 
 ```php
