@@ -240,7 +240,7 @@ echo config('app-name', 'default', '-');     // PHALCON
 echo config('app-unknown', 'default', '-');  // default
 ```
 
-#### Get
+#### Obtener
 
 Finalmente puede usar el método `get()` y encadenarlo para recorrer los objetos anidados:
 
