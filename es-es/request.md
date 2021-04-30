@@ -288,7 +288,7 @@ These methods accept the same parameters as the `getPost()`, `getPut()` and `get
 
 ## Controladores
 
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Http\Request](api/phalcon_http#http-request) is already registered for you. El lugar más común para acceder el ambiente de la petición es en una acción de un controlador. To access the [Phalcon\Http\Request](api/phalcon_http#http-request) object from a controller you will need to use the `$this->request` public property of the controller:
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Http\Request](api/phalcon_http#http-request) is already registered for you. El lugar más común para acceder el entorno de la petición es en una acción de un controlador. To access the [Phalcon\Http\Request](api/phalcon_http#http-request) object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
 <?php
@@ -321,7 +321,7 @@ class PostsController extends Controller
 
 ## Checking Operations
 
-The [Phalcon\Http\Request](api/phalcon_http#http-request) component contains a number of methods that help you check the current operation. Por ejemplo, si quieres comprobar si se ha realizado una solicitud en particular usando AJAX, puedes hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`. - `isAjax()`: comprueba si solicitud ha sido formulada utilizando AJAX - `isConnect()`: comprueba si el método HTTP es CONNECT - `isDelete()`: comprueba si método HTTP es DELETE - `isGet()`: comprueba si método HTTP es GET - `isHead()`: comprueba si método HTTP es HEAD - `isMethod()`: comprueba si el método HTTP coincide con ninguno de los métodos pasados - `isOptions()`: comprueba si el método HTTP es OPTIONS - `isPatch()`: comprueba si el método HTTP es PATCH - `isPost()`: comprueba si método HTTP es POST - `isPurge()`: comprueba si el método HTTP es PURGE (soporte para Squid y Varnish) - `isPut()`: comprueba si el método HTTP se PUT - `isSecure()`: comprueba si solicitud ha sido formulada con alguna capa segura - `isSoap()`: comprueba si solicitud ha sido formulada con SOAP - `isTrace()`: comprueba si método HTTP es TRACE - `isValidHttpMethod()`: comprueba si un método es un método HTTP válido
+The [Phalcon\Http\Request](api/phalcon_http#http-request) component contains a number of methods that help you check the current operation. Por ejemplo, si quiere comprobar si se ha realizado una solicitud en particular usando AJAX, puede hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`. - `isAjax()`: comprueba si solicitud ha sido formulada utilizando AJAX - `isConnect()`: comprueba si el método HTTP es CONNECT - `isDelete()`: comprueba si método HTTP es DELETE - `isGet()`: comprueba si método HTTP es GET - `isHead()`: comprueba si método HTTP es HEAD - `isMethod()`: comprueba si el método HTTP coincide con ninguno de los métodos pasados - `isOptions()`: comprueba si el método HTTP es OPTIONS - `isPatch()`: comprueba si el método HTTP es PATCH - `isPost()`: comprueba si método HTTP es POST - `isPurge()`: comprueba si el método HTTP es PURGE (soporte para Squid y Varnish) - `isPut()`: comprueba si el método HTTP se PUT - `isSecure()`: comprueba si solicitud ha sido formulada con alguna capa segura - `isSoap()`: comprueba si solicitud ha sido formulada con SOAP - `isTrace()`: comprueba si método HTTP es TRACE - `isValidHttpMethod()`: comprueba si un método es un método HTTP válido
 
 ## Checking Existence
 
@@ -388,7 +388,7 @@ Some methods:
 $ipAddress = $request->getServerAddress();
 ```
 
-Get the servers's IP address. Por ejemplo, `192.168.0.100`
+Get the servers's IP address. ej. `192.168.0.100`
 
 ```php
 $ipAddress = $request->getClientAddress();
@@ -412,13 +412,13 @@ Get the best acceptable content by the browser. ie text/xml
 $charset = $request->getBestCharset();
 ```
 
-Get the best charset accepted by the browser. Por ejemplo, `utf-8`
+Get the best charset accepted by the browser. ej. `utf-8`
 
 ```php
 $language = $request->getBestLanguage();
 ```
 
-Get the best language accepted configured in the browser. Por ejemplo, `en-us`
+Get the best language accepted configured in the browser. ej. `en-us`
 
 ### Método
 
