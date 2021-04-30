@@ -559,7 +559,7 @@ Puede usar los eventos `request:beforeAuthorizationResolve` y `request:afterAuth
 
 `request:beforeAuthorizationResolve` recibe el vector `SERVER` con la clave `server` como segundo parámetro del evento.
 
-`request:afterAuthorizationResolve` recibe el vector `SERVER` con la clave `server` así como las cabeceras con la clave `headers`.
+The `request:afterAuthorizationResolve` receives the `SERVER` array with the key `server` as well as the headers with the key `headers`.
 
 Se requiere una resolución personalizada de autorizaciones.
 
