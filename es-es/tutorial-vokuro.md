@@ -492,7 +492,7 @@ The available providers are:
 | Provider                 | Descripción                                       |
 | ------------------------ | ------------------------------------------------- |
 | `AclProvider`            | Permissions                                       |
-| `AuthProvider`           | Authentication                                    |
+| `AuthProvider`           | Autenticación                                     |
 | `ConfigProvider`         | Configuration values                              |
 | `CryptProvider`          | Encryption                                        |
 | `DbProvider`             | Database access                                   |
