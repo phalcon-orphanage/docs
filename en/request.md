@@ -585,7 +585,7 @@ You can use the `request:beforeAuthorizationResolve` and `request:afterAuthoriza
 
 The `request:beforeAuthorizationResolve` receives the `SERVER` array with the key `server` as the second parameter of the event. 
 
-The `request:afterAuthorizationResolve` receives the `SERVER` array with the key `server` as well as the headers with the hey `headers`.
+The `request:afterAuthorizationResolve` receives the `SERVER` array with the key `server` as well as the headers with the key `headers`.
 
 A custom authorization resolver is required.
 
