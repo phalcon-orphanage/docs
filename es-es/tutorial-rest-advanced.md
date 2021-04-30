@@ -68,7 +68,7 @@ Setting up the
 
 ## Middleware
 ### 404
-### Authentication
+### Autenticación
 ### Tokens
 ### Verification
 ### Validación
