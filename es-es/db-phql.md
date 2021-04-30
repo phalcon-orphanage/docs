@@ -866,7 +866,7 @@ $results  = $this
 echo $results['invoice_average'], PHP_EOL;
 ```
 
-**Count**
+**Contar**
 
 ¿Cuántas facturas tiene cada cliente?
 
