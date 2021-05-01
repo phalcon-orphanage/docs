@@ -234,7 +234,7 @@ $app = new Micro($container);
 
 ## Operaciones
 
-### Get
+### Obtener
 
 The first `handler` that we will implement is the one that retrieves data from the database, when the request is made using the `GET` HTTP method. The endpoint will return all the records from the database using a PHQL query and returning the results in JSON.
 

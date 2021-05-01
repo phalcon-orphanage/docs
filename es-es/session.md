@@ -158,7 +158,7 @@ $session
 $session->regenerateId();
 ```
 
-### Get
+### Obtener
 
 You can use `get()` to retrieve the contents stored in the session for a particular element passed as a string parameter. The component also supports the magic getter so you can retrieve it as a property of the manager.
 

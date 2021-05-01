@@ -1343,7 +1343,7 @@ Only methods marked with valid annotations are used as routes. The available ann
 | Annotation    | Descripción                                                                    | Uso                                |
 | ------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
 | `Eliminar`    | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
-| `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
+| `Obtener`     | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
 | `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Option('/invoices/info')`        |
 | `Post`        | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
 | `Put`         | Restrict the HTTP method to `PUT`                                              | `@Put('/invoices/save')`           |

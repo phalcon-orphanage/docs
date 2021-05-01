@@ -75,7 +75,7 @@ if (true !== $response->isSent()) {
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available: - `getContent(): string` - Returns the HTTP response body. - `getHeaders(): HeadersInterface` - Returns the headers object, containing headers set by the user. - `getReasonPhrase(): string | null` - Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) document. - `getStatusCode(): int | null` - Returns the status code (e.g. `200`).
 
-## Content
+## Contenido
 
 There are a number of methods available that allow you to set the content or body of the response. `setContent()` is the most frequently used method.
 
@@ -263,12 +263,12 @@ $response->setHeaders($headers);
 The [Phalcon\Http\Response\Headers](api/phalcon_http#http-response-headers) object offers the following methods, allowing you to manipulate headers:
 
 * `get( string $name ): string | bool` - Gets a header value from the object
-* `has( string $name ): bool` - Sets a header to be sent at the end of the request
-* `remove( string $header )` - Removes a header to be sent at the end of the request
+* `has( string $name ): bool` - Checks if a header already exists in the reponse
+* `remove( string $header )` - Removes a header from the response
 * `reset()` - Resets all headers
 * `send(): bool` - Sends the headers to the client
-* `set( string $name, string $value )` - Sets a header to be sent at the end of the request
-* `setRaw( string $header )` Sets a raw header to be sent at the end of the request
+* `set( string $name, string $value )` - Sets a header to be sent at the end of the response
+* `setRaw( string $header )` Sets a raw header to be sent at the end of the response
 * `toArray(): array` - Returns the current headers as an array
 
 ```php
@@ -710,7 +710,7 @@ class PostsController extends Controller
 
 ## Eventos
 
-The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
+The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. Como resultado `getEventsManager()` y `setEventsManager()` están disponibles para usar.
 
 | Evento              | Descripción                             | Can stop operation |
 | ------------------- | --------------------------------------- |:------------------:|
