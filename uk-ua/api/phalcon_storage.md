@@ -546,7 +546,7 @@ Decrements a stored number
 public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Deletes data from the adapter
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
@@ -582,7 +582,7 @@ Increments a stored number
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Stores data in the adapter. If no ttl is given, the default value will be used (3600s at the moment).
 
 <h1 id="storage-adapter-stream">Class Phalcon\Storage\Adapter\Stream</h1>
 
