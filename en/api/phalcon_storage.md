@@ -576,7 +576,7 @@ Decrements a stored number
 ```php
 public function delete( string $key ): bool;
 ```
-Reads data from the adapter
+Deletes data from the adapter
 
 
 ```php
@@ -614,7 +614,7 @@ Increments a stored number
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
-Stores data in the adapter
+Stores data in the adapter. If no ttl is given, the default value will be used (3600s at the moment). 
 
 
 
