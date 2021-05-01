@@ -776,6 +776,8 @@ If you are working on a large application, there is no need to mount all the col
                 ;
 
                 $app->mount($users);
+                
+                break;
 
             case "invoices":
                 $invoices = new MicroCollection();
@@ -795,7 +797,9 @@ If you are working on a large application, there is no need to mount all the col
                     )
                 ;
 
-                $app->mount($invoices);            
+                $app->mount($invoices);   
+                
+                break;
 
             case "products": 
                 $products = new MicroCollection();
@@ -815,6 +819,8 @@ If you are working on a large application, there is no need to mount all the col
                     )
 
                 $app->mount($products);  
+                
+                break;
 
             default: 
             //do nothing (or something)
