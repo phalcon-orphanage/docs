@@ -650,7 +650,7 @@ $app->mount($users);
 $invoices = new MicroCollection();
 $invoices
     ->setHandler(new InvoicesController())
-    ->setPrefix('/users')
+    ->setPrefix('/invoices')
     ->get(
         '/get/{id}', 
         'get'
@@ -713,7 +713,7 @@ $invoices
         InvoicesController::class,
         true
     )
-    ->setPrefix('/users')
+    ->setPrefix('/invoices')
     ->get(
         '/get/{id}', 
         'get'
