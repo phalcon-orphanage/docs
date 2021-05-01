@@ -1527,7 +1527,7 @@ In the above example, we set up the engine and then echo a rendered template on 
 
 ## Eventos
 
-[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are able to send events to an [Events Manager](events) if it is present. Events are triggered using the type `view`. If an event returns `false` it can stop the active operation. Son soportados los siguientes eventos:
+[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are able to send events to an [Events Manager](events) if it is present. Events are triggered using the type `view`. If an event returns `false` it can stop the active operation. Se soportan los siguientes eventos:
 
 | Nombre de evento   | Disparado                           | Puede detenerse |
 | ------------------ | ----------------------------------- |:---------------:|
