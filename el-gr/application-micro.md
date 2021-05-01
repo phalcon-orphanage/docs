@@ -701,7 +701,7 @@ $app->mount($users);
 $invoices = new MicroCollection();
 $invoices
     ->setHandler(new InvoicesController())
-    ->setPrefix('/users')
+    ->setPrefix('/invoices')
     ->get(
         '/get/{id}', 
         'get'
@@ -765,7 +765,7 @@ $invoices
         InvoicesController::class,
         true
     )
-    ->setPrefix('/users')
+    ->setPrefix('/invoices')
     ->get(
         '/get/{id}', 
         'get'
@@ -793,9 +793,88 @@ $products
         '/add/{payload}', 
         'add'
     )
+
+$app->mount($products);   
 ```
 
 Using this simple change in implementation, all handlers remain non instantiated until requested by a caller. Therefore whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
+
+#### Extra performance tip
+
+If you are working on a large application, there is no need to mount all the collections, even if they are lazy loaded: Phalcon will use regex to match the routes. To speed up the routing process it is possible to run a *pre-filter* like this, using the previous example:
+
+```php
+        $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
+        $path = $uri->getPath();
+        $parts = explode("/", $path);
+        $collection = $parts[1];
+
+        switch ($collection) {
+            case "users":
+                $users = new MicroCollection();
+                $users
+                    ->setHandler(
+                        UsersController::class,
+                        true
+                    )
+                    ->setPrefix('/users')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+                ;
+
+                $app->mount($users);
+
+            case "invoices":
+                $invoices = new MicroCollection();
+                $invoices
+                    ->setHandler(
+                        InvoicesController::class,
+                        true
+                    )
+                    ->setPrefix('/invoices')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+                ;
+
+                $app->mount($invoices);            
+
+            case "products": 
+                $products = new MicroCollection();
+                $products
+                    ->setHandler(
+                        ProductsController::class,
+                        true
+                    )
+                    ->setPrefix('/products')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+
+                $app->mount($products);  
+
+            default: 
+            //do nothing (or something)
+        }
+```
+
+In this way, Phalcon can handle tens (or hundreds) of routes without regex performance penalty: using `explode()` is faster than regex.
 
 #### Not found (404)
 
@@ -1868,7 +1947,7 @@ class CacheMiddleware implements MiddlewareInterface
 
 The [events](#events) that are triggered for our application also trigger inside a class that implements the [Phalcon\Mvc\Micro\MiddlewareInterface](api/phalcon_mvc#mvc-micro-middlewareinterface). This offers great flexibility and power for developers since we can interact with the request process.
 
-**Παράδειγμα API**
+**API example**
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1881,7 +1960,7 @@ The middleware that we will use are:
 * Αίτηση
 * Ανταπόκριση
 
-**Firewall Ενδιάμεσο Λογισμικό (Middleware)**
+**Firewall Middleware**
 
 This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
 
@@ -1993,7 +2072,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 }
 ```
 
-**Αντικατεύθυνσης Ενδιάμεσο Λογισμικό (Middleware)**
+**Redirect Middleware**
 
 We attach this middleware again to the `before` event of our Micro application because we do not want the request to proceed if the requested endpoint needs to be redirected.
 
@@ -2051,7 +2130,7 @@ class RedirectMiddleware implements MiddlewareInterface
 }
 ```
 
-#### CORS Ενδιάμεσο Λογισμικό (Middleware)
+#### CORS Middleware
 
 Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
 
@@ -2125,7 +2204,7 @@ class CORSMiddleware implements MiddlewareInterface
 }
 ```
 
-**Αίτησης Ενδιάμεσο Λογισμικό (Middleware)**
+**Request Middleware**
 
 This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
 
@@ -2188,7 +2267,7 @@ class RequestMiddleware implements MiddlewareInterface
 }
 ```
 
-**Ανταπόκρισης Ενδιάμεσο Λογισμικό (Middleware)**
+**Response Middleware**
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
