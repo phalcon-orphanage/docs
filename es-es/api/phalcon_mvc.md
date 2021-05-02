@@ -894,19 +894,19 @@ Maps a route to a handler that only matches if the HTTP method is GET.
 public function getHandler(): mixed;
 ```
 
-Devuelve el gestor principal
+Returns the main handler
 
 ```php
 public function getHandlers(): array;
 ```
 
-Devuelve los gestores registrados
+Returns the registered handlers
 
 ```php
 public function getPrefix(): string;
 ```
 
-Devuelve el prefijo de la colección (si hay alguno)
+Returns the collection prefix if any
 
 ```php
 public function head( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
@@ -918,19 +918,19 @@ Maps a route to a handler that only matches if the HTTP method is HEAD.
 public function isLazy(): bool;
 ```
 
-Devuelve si el gestor principal debe ser cargado de forma diferida
+Returns if the main handler must be lazy loaded
 
 ```php
 public function map( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 
-Asigna una ruta a un gestor.
+Maps a route to a handler.
 
 ```php
 public function mapVia( string $routePattern, mixed $handler, mixed $method, string $name = null ): CollectionInterface;
 ```
 
-Asigna una ruta a un gestor a través de métodos.
+Maps a route to a handler via methods.
 
 ```php
 $collection->mapVia(
@@ -969,19 +969,19 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
 ```
 
-Configura el gestor principal.
+Sets the main handler.
 
 ```php
 public function setLazy( bool $lazy ): CollectionInterface;
 ```
 
-Establece si el gestor principal debe ser cargado de forma diferida
+Sets if the main handler must be lazy loaded
 
 ```php
 public function setPrefix( string $prefix ): CollectionInterface;
 ```
 
-Configura un prefijo para todas las rutas agregadas a la colección
+Sets a prefix for all routes added to the collection
 
 ```php
 protected function addMap( mixed $method, string $routePattern, mixed $handler, string $name );
@@ -1017,19 +1017,19 @@ Maps a route to a handler that only matches if the HTTP method is GET
 public function getHandler(): mixed;
 ```
 
-Devuelve el gestor principal
+Returns the main handler
 
 ```php
 public function getHandlers(): array;
 ```
 
-Devuelve los gestores registrados
+Returns the registered handlers
 
 ```php
 public function getPrefix(): string;
 ```
 
-Devuelve el prefijo de la colección (si hay alguno)
+Returns the collection prefix if any
 
 ```php
 public function head( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
@@ -1041,7 +1041,7 @@ Asigna una ruta a un controlador que solo coincide si el método HTTP es HEAD
 public function isLazy(): bool;
 ```
 
-Devuelve si el gestor principal debe ser cargado de forma diferida
+Returns if the main handler must be lazy loaded
 
 ```php
 public function map( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
@@ -1083,13 +1083,13 @@ Sets the main handler
 public function setLazy( bool $lazy ): CollectionInterface;
 ```
 
-Establece si el gestor principal debe ser cargado de forma diferida
+Sets if the main handler must be lazy loaded
 
 ```php
 public function setPrefix( string $prefix ): CollectionInterface;
 ```
 
-Configura un prefijo para todas las rutas agregadas a la colección
+Sets a prefix for all routes added to the collection
 
 <h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
 

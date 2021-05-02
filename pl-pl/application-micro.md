@@ -699,7 +699,7 @@ $app->mount($users);
 $invoices = new MicroCollection();
 $invoices
     ->setHandler(new InvoicesController())
-    ->setPrefix('/users')
+    ->setPrefix('/invoices')
     ->get(
         '/get/{id}', 
         'get'
@@ -763,7 +763,7 @@ $invoices
         InvoicesController::class,
         true
     )
-    ->setPrefix('/users')
+    ->setPrefix('/invoices')
     ->get(
         '/get/{id}', 
         'get'
@@ -791,9 +791,94 @@ $products
         '/add/{payload}', 
         'add'
     )
+
+$app->mount($products);   
 ```
 
 Using this simple change in implementation, all handlers remain non instantiated until requested by a caller. Therefore whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
+
+#### Extra performance tip
+
+If you are working on a large application, there is no need to mount all the collections, even if they are lazy loaded: Phalcon will use regex to match the routes. To speed up the routing process it is possible to run a *pre-filter* like this, using the previous example:
+
+```php
+        $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
+        $path = $uri->getPath();
+        $parts = explode("/", $path);
+        $collection = $parts[1];
+
+        switch ($collection) {
+            case "users":
+                $users = new MicroCollection();
+                $users
+                    ->setHandler(
+                        UsersController::class,
+                        true
+                    )
+                    ->setPrefix('/users')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+                ;
+
+                $app->mount($users);
+
+                break;
+
+            case "invoices":
+                $invoices = new MicroCollection();
+                $invoices
+                    ->setHandler(
+                        InvoicesController::class,
+                        true
+                    )
+                    ->setPrefix('/invoices')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+                ;
+
+                $app->mount($invoices);   
+
+                break;
+
+            case "products": 
+                $products = new MicroCollection();
+                $products
+                    ->setHandler(
+                        ProductsController::class,
+                        true
+                    )
+                    ->setPrefix('/products')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+
+                $app->mount($products);  
+
+                break;
+
+            default: 
+            //do nothing (or something)
+        }
+```
+
+In this way, Phalcon can handle tens (or hundreds) of routes without regex performance penalty: using `explode()` is faster than regex.
 
 #### Not found (404)
 
