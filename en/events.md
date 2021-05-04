@@ -629,7 +629,7 @@ $eventsManager->attach(
     }
 );
 
-$eventsManager->fire('custom:custom', null);
+$eventsManager->fire('custom:custom', $eventsManager, null);
 
 print_r($eventsManager->getResponses());
 ```
