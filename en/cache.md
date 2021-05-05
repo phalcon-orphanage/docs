@@ -232,7 +232,7 @@ namespace MyApp\Storage\Serializer;
 
 use Phalcon\Storage\SerializerInterface;
 
-class Garble extends SerializerInterface
+class Garble implements SerializerInterface
 {
     /**
      * Data storage
