@@ -584,7 +584,7 @@ namespace MyApp\Cache\Adapter;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
 
-class Custom extends AdapterInterface
+class Custom implements AdapterInterface
 {
     /**
      * Flushes/clears the cache
