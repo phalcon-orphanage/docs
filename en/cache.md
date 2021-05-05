@@ -232,7 +232,7 @@ namespace MyApp\Storage\Serializer;
 
 use Phalcon\Storage\SerializerInterface;
 
-class Garble extends SerializerInterface
+class Garble implements SerializerInterface
 {
     /**
      * Data storage
@@ -584,7 +584,7 @@ namespace MyApp\Cache\Adapter;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
 
-class Custom extends AdapterInterface
+class Custom implements AdapterInterface
 {
     /**
      * Flushes/clears the cache
