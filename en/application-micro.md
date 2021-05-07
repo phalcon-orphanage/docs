@@ -1753,7 +1753,7 @@ $app->after(
 );
 ```
 
-You can also use classes and attach them to the Events Manager as listener. Using this approach offers more flexibility are reduces the bootstrap file size, since the middleware logic is encapsulated in one file per middleware.
+You can also use classes and attach them to the Events Manager as listener. Using this approach offers more flexibility and reduces the bootstrap file size, since the middleware logic is encapsulated in one file per middleware.
 
 ```php
 <?php
@@ -1939,7 +1939,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 **Not Found (404) Middleware**
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try to match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
 ```php
 <?php
