@@ -1963,7 +1963,7 @@ The middleware that we will use are:
 * No Encontrado
 * Redirección
 * CORS
-* Consulta
+* Petición
 * Respuesta
 
 **Middleware Cortafuegos**
