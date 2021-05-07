@@ -1959,14 +1959,14 @@ Assume that we have an API that we have implemented with the Micro application. 
 
 The middleware that we will use are:
 
-* Firewall
-* NotFound
-* Redirect
+* Cortafuegos
+* No Encontrado
+* Redirección
 * CORS
 * Consulta
 * Respuesta
 
-**Firewall Middleware**
+**Middleware Cortafuegos**
 
 This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
 
