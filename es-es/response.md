@@ -306,7 +306,7 @@ Para obtener las cookies configuradas por el usuario puede usar el método `getC
 
 ### `SameSite`
 
-Si está usando PHP 7.3 o posterior puede configurar `SameSite` como un elemento del vector `options` (último parámetro del constructor) o usando `setOptions()`. Si es su responsabilidad asignar un valor válido para `SameSite` (como `Strict`, `Lax` etc.) >
+Si está usando PHP 7.3 o posterior puede configurar `SameSite` como un elemento del vector `options` (último parámetro del constructor) o usando `setOptions()`. It is your responsibility to assign a valid value for `SameSite` (such as `Strict`, `Lax` etc.)
 
 ```php
 <?php
