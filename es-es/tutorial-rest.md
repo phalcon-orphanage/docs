@@ -28,7 +28,7 @@ In this tutorial, you will learn how to create a simple application that provide
 
 The API consists of the following methods:
 
-| Método   | URL                        | Action                                     |
+| Método   | URL                        | Acción                                     |
 | -------- | -------------------------- | ------------------------------------------ |
 | `GET`    | `/api/robots`              | Get all robots                             |
 | `GET`    | `/api/robots/search/Astro` | Searches robots with 'Astro' in their name |
