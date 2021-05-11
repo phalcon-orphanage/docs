@@ -577,9 +577,9 @@ Phalcon automatically passes the execution to the view component as soon as a pa
 | Server Address    | `127.0.0.1` |
 | ----------------- | ----------- |
 | Phalcon Directory | `admin`     |
-| Controller        | `invoices`  |
-| Action            | `view`      |
-| Parameter         | `12345`     |
+| Controlador       | `invoices`  |
+| Acción            | `view`      |
+| Parámetro         | `12345`     |
 
 The dispatcher will look for a `InvoicesController` and its action `viewAction`. A simple controller file for this example:
 
