@@ -177,7 +177,7 @@ public function attach(
 ```
  Attach Route object to the routes stack.
 
- ```php
+```php
 use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Router\Route;
 
