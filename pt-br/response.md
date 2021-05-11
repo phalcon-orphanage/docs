@@ -306,7 +306,7 @@ To get the cookies set by the user you can use the `getCookies()` method on the 
 
 ### `SameSite`
 
-If you are using PHP 7.3 or later you can set the `SameSite` as an element to the `options` array (last parameter of the constructor) or by using `setOptions()`. It is your responsibility to assign a valid value for `SameSite` (such as `Strict`, `Lax` etc.) >
+If you are using PHP 7.3 or later you can set the `SameSite` as an element to the `options` array (last parameter of the constructor) or by using `setOptions()`. It is your responsibility to assign a valid value for `SameSite` (such as `Strict`, `Lax` etc.)
 
 ```php
 <?php

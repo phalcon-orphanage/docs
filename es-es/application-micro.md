@@ -1848,7 +1848,7 @@ $app->after(
 );
 ```
 
-También puede usar clases y adjuntarlas al Gestor de Eventos como oyente. Using this approach offers more flexibility and reduces the bootstrap file size, since the middleware logic is encapsulated in one file per middleware.
+También puede usar clases y adjuntarlas al Gestor de Eventos como oyente. Usar este enfoque ofrece más flexibilidad y reduce el tamaño de fichero de arranque, ya que la lógica *middleware* está encapsulada en un fichero por *middleware*.
 
 ```php
 <?php
@@ -2036,7 +2036,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 **Middleware No Encontrado (404)**
 
-Cuando se procesa este *middleware*, significa que la IP solicitante puede acceder a nuestra aplicación. The application will try to match the route and if not found the `beforeNotFound` event will fire. Entonces detendremos el procesamiento y devolveremos al usuario la respuesta 404 relevante. Este *middleware* se adjunta al evento `before` de nuestra aplicación Micro
+Cuando se procesa este *middleware*, significa que la IP solicitante puede acceder a nuestra aplicación. La aplicación intentará hacer coincidir la ruta y si no la encuentra disparará el evento `beforeNotFound`. Entonces detendremos el procesamiento y devolveremos al usuario la respuesta 404 relevante. Este *middleware* se adjunta al evento `before` de nuestra aplicación Micro
 
 ```php
 <?php
