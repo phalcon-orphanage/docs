@@ -427,7 +427,7 @@ $router->add(
 
 In the example above, we are using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/customers/view/12345/1`) would produce:
 
-| Controller  | Action | Parameter | Parameter |
+| Controlador | Acción | Parámetro | Parámetro |
 |:-----------:|:------:|:---------:|:---------:|
 | `customers` | `view` |  `12345`  |    `1`    |
 
@@ -619,9 +619,9 @@ $router->add(
 
 With the above route, you need to always have the module name as part of your URL. For example, for the following URL: `/admin/invoices/view/12345`, will be processed as:
 
-| Módulo  | Controller | Action | Parameter |
-|:-------:|:----------:|:------:|:---------:|
-| `admin` | `invoices` | `view` |  `12345`  |
+| Módulo  | Controlador | Acción | Parámetro |
+|:-------:|:-----------:|:------:|:---------:|
+| `admin` | `invoices`  | `view` |  `12345`  |
 
 Or you can bind specific routes to specific modules:
 
@@ -933,7 +933,7 @@ echo $url->get(
 
 For example, for a URL like this `https://dev.phalcon.od/download/linux/ubuntu.html`, this router will translate it as follows:
 
-|      Controller      |    Action     |   Parameter   |
+|     Controlador      |    Acción     |   Parámetro   |
 |:--------------------:|:-------------:|:-------------:|
 | `DownloadController` | `linuxAction` | `ubuntu.html` |
 
