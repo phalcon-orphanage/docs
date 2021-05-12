@@ -840,7 +840,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-| Action         | Descripción                                                                                             |
+| Acción         | Descripción                                                                                             |
 | -------------- | ------------------------------------------------------------------------------------------------------- |
 | `createAction` | Creates a product based on the data entered in the `new` action                                         |
 | `deleteAction` | Deletes an existing product                                                                             |

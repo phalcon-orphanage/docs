@@ -193,17 +193,29 @@ public function attach(
 
 ルートオブジェクトをルートスタックに付与します。
 
-```php use Phalcon\Mvc\Router; use Phalcon\Mvc\Router\Route;
+```php
+use Phalcon\Mvc\Router;
+use Phalcon\Mvc\Router\Route;
 
-class CustomRoute extends Route { // ... }
+class CustomRoute extends Route {
+     // ...
+}
 
 $router = new Router();
 
-$router->attach( new CustomRoute( "/about", "About::index", ["GET", "HEAD"] ), Router::POSITION_FIRST );
+$router->attach(
+    new CustomRoute(
+        "/about", 
+        "About::index", 
+        ["GET", "HEAD"]
+    ),
+    Router::POSITION_FIRST
+);
+```
 
-    <br />```php
-    public function clear(): void
-    
+```php
+public function clear(): void
+```
 
 Removes all the pre-defined routes
 

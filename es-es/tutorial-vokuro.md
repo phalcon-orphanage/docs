@@ -618,7 +618,7 @@ a
 
 The available controllers, actions and routes for Vökuró are:
 
-| Controller    | Action           | Route                     | Descripción                                 |
+| Controlador   | Acción           | Route                     | Descripción                                 |
 | ------------- | ---------------- | ------------------------- | ------------------------------------------- |
 | `About`       | `index`          | `/about`                  | Shows the `about` page                      |
 | `Índice`      | `index`          | `/`                       | Default action - home page                  |
@@ -670,7 +670,7 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | Vistas                         | Descripción                                 |
+| Controlador   | Acción           | Vistas                         | Descripción                                 |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Índice`      | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -749,7 +749,7 @@ The component exposes the following methods:
 
 ## Sign Up
 
-### Controller
+### Controlador
 
 In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
 
