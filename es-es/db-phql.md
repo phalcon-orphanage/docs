@@ -1758,15 +1758,16 @@ Si crea un objeto [Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-bu
 
 * `bind` - `array` - vector de datos a enlazar
 * `bindTypes` - `array` - Tipos de parámetro PDO
+* `container` - DI 
 * `columns` - `array | string` - columnas a seleccionar 
 * `conditions` - `array | string` - condiciones (where)
-* `distinct` - `string` - columnas distintas 
+* `distinct` - `string` - distinguir columnas 
 * `for_update` - `bool` - para actualizar o no
 * `group` - `array` - agrupar por columnas
 * `having` - `string` - teniendo columnas
-* `joins` - `array` - clases de modelo usadas para uniones
+* `joins` - `array` - clases de modelos usadas en joins
 * `limit` - `array | int` - límite para los registros (ej. `20` o `[20, 20]`)
-* `models` - `array` - clases de modelo usadas
+* `models` - `array` - clases de modelos usadas
 * `offset` - `int` - el desplazamiento
 * `order` - `array | string` - columnas de orden
 * `shared_lock` - `bool` - emite bloque compartido o no
@@ -1776,8 +1777,13 @@ Si crea un objeto [Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-bu
 
 use PDO;
 use Phalcon\Mvc\Model\Query\Builder;
+use Phalcon\Di\FactoryDefault as Di;
+
+/* DI is mandatory to use the Query Builder */
+$di = new Di();
 
 $params = [
+    "container" => $di,
     "models"     => [
         Users::class,
     ],
