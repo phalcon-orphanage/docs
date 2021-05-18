@@ -399,17 +399,17 @@ Edita el archivo `php.ini`, se encuentra en `C:\wamp\bin\php\php7.2.18\php.ini`.
  extension=php_phalcon.dll
 ```
 
-and save it.
+y guardarlo.
 
 ![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
 
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agrega esto al final del archivo:
+También, editar el fichero `php.ini`, que se ubica en `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agrega esto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll 
 ```
 
-and save it.
+y guardarlo.
 
 > **NOTA**: La ruta anterior se puede diferir dependiendo de la instalación de apache que tengas para tu servidor web. Ajústelo en consecuencia.
 {: .alert .alert-warning }
@@ -420,11 +420,11 @@ and save it.
 
 ![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
+Reinicia el Servidor Web Apache. Haga un solo click en el icono de WampServer en la bandeja del sistema. Elija `Reiniciar Todos los Servicios` del menú pop-up. Compruebe que el icono de la bandeja se vuelve verde de nuevo.
 
 ![](/assets/images/content/webserver-wamp-manager.png)
 
-Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
+Abra su navegador web y navegue a https://localhost. Aparecerá la página de bienvenida de WAMP. Compruebe la sección `extensiones cargadas` para asegurarse que Phalcon se ha cargado.
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
@@ -433,7 +433,7 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ## XAMPP
 
-[XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
+[XAMPP](https://www.apachefriends.org/download.html) es una distribución Apache fácil de instalar que contiene MySQL, PHP y Perl. Una vez descargado XAMPP, todo lo que tiene que hacer es extraerlo y empezar a usarlo. Abajo hay instrucciones detalladas de cómo instalar Phalcon en XAMPP para Windows. Se recomienda encarecidamente usar la última versión de XAMPP.
 
 > **NOTA** Desde v4, debe instalar la extensión `PSR` desde PECL. Visita [esta URL](https://pecl.php.net/package/psr/0.7.0/windows) para obtener las DLL y seguir los mismos pasos para instalar la extensión al igual que con las DLL de Phalcon.
 {: .alert .alert-warning }
@@ -444,7 +444,7 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ### Descargar Phalcon
 
-Para que Phalcon funcione en Windows, debe instalar la versión correcta que coincida con su arquitectura y extensión construida. Load up the `phpinfo` page provided by XAMPP:
+Para que Phalcon funcione en Windows, debe instalar la versión correcta que coincida con su arquitectura y extensión construida. Carga la página `phpinfo` proporcionada por XAMPP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
@@ -455,7 +455,7 @@ Compruebe los valores de `Architecture` y `Extension Build`. Esto le permitirá 
 
 que coincidirá con `x86`, `vc15` y `TS` que es *Thread Safe*. Si su sistema reporta `NTS` (*Non Thread Safe*) entonces debería descargar esa DLL.
 
-XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
+XAMPP siempre libera versiones de 32 bit de Apache y PHP. Necesitará descargar la versión x86 de Phalcon para Windows desde la sección de descarga.
 
 Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
@@ -465,28 +465,28 @@ Descomprime la biblioteca del archivo para obtener la DLL de Phalcon:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
+Copie el fichero `php_phalcon.dll` al directorio de extensiones PHP. Si ha instalado XAMPP en la carpeta `C:\xampp`, la extensión necesita estar en `C:\xampp\php\ext`
 
 ![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Agrega esto al final del archivo:
+Edite el fichero `php.ini`, ubicado en `C:\xampp\php\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. Recomendamos [Notepad++](https://notepad-plus-plus.org/) para evitar problemas con los finales de línea. Agrega esto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-and save it.
+y guardarlo.
 
 > **NOTA**: Como se mencionó anteriormente la extensión `PSR` necesita ser instalada y cargada antes de Phalcon. Agregue la línea `extension=php_psr.dll` antes de la línea de Phalcon, como se muestra en la imagen anterior.
 {: .alert .alert-warning }
 
 ![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
+Reinicia el Servidor Web Apache desde el Centro de Control de XAMPP. Esto cargará la nueva configuración PHP. Abra su navegador web para navegar a `https://localhost`. Aparecerá la página de bienvenida de XAMPP. Haga click en el enlace `phpinfo()`.
 
 ![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the Phalcon extension has been loaded correctly.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) mostrará una cantidad significativa de información en pantalla sobre el estado actual de PHP. Desplázese hacia abajo para comprobar si la extensión Phalcon se ha cargado correctamente.
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
@@ -496,44 +496,44 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ## Cherokee
 
-[Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
+[Cherokee](https://www.cherokee-project.com/) es un servidor web de alto rendimiento. Es muy rápido, flexible y fácil de configurar.
 
 ### Configuración de Phalcon
 
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
+Cherokee proporciona un interfaz gráfico amigable para configurar casi todos los ajustes disponibles en el servidor web.
 
-Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
+Inicia el administrador cherokee ejecutando como root `/path-to-cherokee/sbin/cherokee-admin`
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-Create a new virtual host by clicking on `vServers`, then add a new virtual server:
+Cree un nuevo virtual host haciendo click sobre `vServers`, entonces añada un nuevo servidor virtual:
 
 ![](/assets/images/content/webserver-cherokee-2.jpg)
 
-The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
+El servidor virtual añadido recientemente aparecerá en la barra izquierda de la pantalla. En la pestaña `Comportamientos` verá un conjunto de comportamientos por defecto para este servidor virtual. Haga click en el botón `Gestión de Reglas`. Elimine las etiquetadas como `Directory /cherokee_themes` y `Directory /icons`:
 
 ![](/assets/images/content/webserver-cherokee-3.jpg)
 
-Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
+Añada el comportamiento `Lenguaje PHP` usando el asistente. Este comportamiento le permite ejecutar aplicaciones PHP:
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
+Normalmente este comportamiento no requiere ajustes adicionales. Añada otro comportamiento, esta vez en la sección `Configuración Manual`. En `Tipo de Regla` elija `Existe Fichero`, luego asegúrese que está activa la opción `Coincidir con cualquier archivo`:
 
 ![](/assets/images/content/webserver-cherokee-5.jpg)
 
-In the `Handler` tab choose `List & Send` as handler:
+En la pestaña `Manejador` elegir `Listar & Enviar` como manejador:
 
 ![](/assets/images/content/webserver-cherokee-7.jpg)
 
-Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
+Editar el comportamiento `Predeterminado` para activar el motor URL-rewrite. Cambie el manejador a `Redirección`, luego añada la siguiente expresión regular al motor `^(.*)$`:
 
 ![](/assets/images/content/webserver-cherokee-6.jpg)
 
-Finally, make sure the behaviors have the following order:
+Finalmente, asegúrese que los comportamientos están en el siguiente orden:
 
 ![](/assets/images/content/webserver-cherokee-8.jpg)
 
-Execute the application in a browser:
+Ejecute la aplicación en un navegador:
 
 ![](/assets/images/content/webserver-cherokee-9.jpg)
