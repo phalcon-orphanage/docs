@@ -343,7 +343,7 @@ Sets the issuer (`iss`).
 ```php
 public function setNotBefore(int $timestamp): Builder
 ```
-Sets the audience (`nbf`). If the `$timestamp` is greater than the current time, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Sets the not before time (`nbf`). If the `$timestamp` is greater than the current time, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
 ```php
 public function setSubject(string $subject): Builder
