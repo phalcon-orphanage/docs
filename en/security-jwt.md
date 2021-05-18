@@ -149,7 +149,7 @@ class Enum
 
 ### Signature
 
-[Phalcon\Security\JWT\Token\Signature][security-jwt-token-signature] is similar to the [Phalcon\Security\JWT\Token\Item][security-jwt-token-item], but it only holds teh signature hash as well as its encoded value.
+[Phalcon\Security\JWT\Token\Signature][security-jwt-token-signature] is similar to the [Phalcon\Security\JWT\Token\Item][security-jwt-token-item], but it only holds the signature hash as well as its encoded value.
 
 ### Token
 
