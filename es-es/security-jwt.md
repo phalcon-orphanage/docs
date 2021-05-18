@@ -345,7 +345,7 @@ Establece el emisor (`iss`).
 ```php
 public function setNotBefore(int $timestamp): Builder
 ```
-Establece la audiencia (`nbf`). Si `$timestamp` es mayor que la hora actual, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
+Sets el tiempo no anterior (`nbf`). Si `$timestamp` es mayor que la hora actual, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function setSubject(string $subject): Builder
@@ -555,8 +555,8 @@ class IndexController extends Controller
     public function index()
     {
         try {
-            $signer  = new Hmac();
-            $builder = new Builder($signer);
+            $signer     = new Hmac();
+            $builder    = new Builder($signer);
             $expiry     = strtotime('+1 day');
             $issued     = strtotime('now') + 100;
             $notBefore  = strtotime('-1 day');
