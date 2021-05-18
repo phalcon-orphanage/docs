@@ -2,27 +2,27 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Security - JWT'
-keywords: 'security, hashing, passwords, jwt, rfc7519'
+title: 'Seguridad - JWT'
+keywords: 'seguridad, hash, contraseñas, jwt, rfc7519'
 ---
 
-# Security - JSON Web Tokens (JWT)
+# Seguridad - Tokens Web JSON (JWT)
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-4.1.svg)
 
 ## Resumen
 
-> **NOTE**: Currently, only symmetric algorithms are supported 
+> **NOTA**: Actualmente, sólo se soportan algoritmos simétricos 
 > 
 > {: .alert .alert-info }
 
-`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. These components are:
+`Phalcon\Security\JWT` es un espacio de nombres que contiene componentes que le permiten emitir, analizar y validar Tokens Web JSON como se describe en [RFC 7915][rfc-7519]. Estos componentes son:
 
 - Builder ([Phalcon\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser])
 - Validator ([Phalcon\Security\JWT\Validator][security-jwt-validator])
 
-An example of using the component is:
+Un ejemplo de uso del componente es:
 
 ```php
 <?php
@@ -110,15 +110,15 @@ $validator
 ;
 ```
 
-The above example gives a general view on how the component can be used to generate, parse and validate JSON Web Tokens.
+El ejemplo anterior da una vista general de cómo se puede usar el componente para generar, analizar y validar Tokens Web JSON.
 
-## Objects
+## Objetos
 
-There are several utility components that live in the `Phalcon\Security\JWT\Token` namespace, that help with the issuing, parsing and validating JWT tokens
+Hay varios componentes de utilidad bajo el espacio de nombres `Phalcon\Security\JWT\Token`, que ayudan con la emisión, análisis y validación de tokens JWT
 
 ### Enum
 
-[Phalcon\Security\JWT\Token\Enum][security-jwt-token-enum] is a class that contains several constants. These constants are the strings defined in [RFC 7915][rfc-7519]. You can use them if you wish or instead use their string equivalents.
+[Phalcon\Security\JWT\Token\Enum][security-jwt-token-enum] es una clase que contiene varias constantes. Estas constantes son cadenas definidas en [RFC 7915][rfc-7519]. Puede usarlas si desea o en su lugar usar sus cadenas equivalentes.
 
 ```php
 <?php
@@ -147,24 +147,24 @@ class Enum
 
 ### Item
 
-[Phalcon\Security\JWT\Token\Item][security-jwt-token-item] is used internally to store a payload as well as its encoded state. Such payload can be the claims data or the headers data. By using this component, we can easily extract the necessary information for each Token.
+[Phalcon\Security\JWT\Token\Item][security-jwt-token-item] se usa internamente para almacenar una carga útil así como su estado codificado. Tal carga útil puede ser los datos de los reclamos o los datos de cabecera. Al usar este componente, podemos extraer fácilmente la información necesaria de cada Token.
 
 ### Signature
 
-[Phalcon\Security\JWT\Token\Signature][security-jwt-token-signature] is similar to the [Phalcon\Security\JWT\Token\Item][security-jwt-token-item], but it only holds teh signature hash as well as its encoded value.
+[Phalcon\Security\JWT\Token\Signature][security-jwt-token-signature] es similar a [Phalcon\Security\JWT\Token\Item][security-jwt-token-item], pero este sólo mantiene el hash de la firma así como su valor codificado.
 
 ### Token
 
-[Phalcon\Security\JWT\Token\Token][security-jwt-token-token] is the component responsible for storing and calculating the JWT token. It accepts the headers, claims (as [Phalcon\Security\JWT\Token\Item][security-jwt-token-item] objects) and signature objects in its constructor and exposes:
+[Phalcon\Security\JWT\Token\Token][security-jwt-token-token] es el componente responsable de almacenar y calcular el token JWT. Acepta las cabeceras, reclamaciones (como objetos [Phalcon\Security\JWT\Token\Item][security-jwt-token-item]) y objetos de firma en su constructor y expone:
 
-* `getPayload`: Returns the payload
-* `getToken`: Returns the token
+* `getPayload`: Devuelve la carga útil
+* `getToken`: Devuelve el token
 
-For a token `abcd.efgh.ijkl`, `getPayload` will return `abcd.efgh` and `getToken` will return `abcd.efgh.ijkl`.
+Para un token `abcd.efgh.ijkl`, `getPayload` devolverá `abcd.efgh` y `getToken` devolverá `abcd.efgh.ijkl`.
 
 ### Signer
 
-In order to create a JWT token, we need to supply a Signing algorithm. By default, the builder uses "none" ([Phalcon\Security\JWT\Signer\None][security-jwt-signer-none]). You can however use the HMAC signer ([Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). Also, for further customization, you can utilize the supplied [Phalcon\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface] interface.
+Para crear un token JWT, necesitamos suministrar un algoritmo de Firma. Por defecto, el constructor usa "none" ([Phalcon\Security\JWT\Signer\None][security-jwt-signer-none]). Pero puede usar el firmante HMAC ([Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). También, para más personalización, puede usar el interfaz proporcionado [Phalcon\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface].
 
 ```php
 <?php
@@ -176,11 +176,11 @@ $signer  = new Hmac();
 
 **None**
 
-This signer is provided mostly for development purposes. You should always sign your JWT tokens.
+El firmante se proporciona principalmente para propósitos de desarrollo. Siempre debería firmar sus tokens JWT.
 
 **HMAC**
 
-The HMAC signer supports the `sha512`, `sha384`, and `sha256` algorithms. If none is supplied, the `sha512` is automatically selected. If you supply a different algorithm, a [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception] will be raised. The algorithm is set in the constructor.
+El firmante HMAC soporta los algoritmos `sha512`, `sha384`, y `sha256`. Si no se proporciona ninguno, se seleccionará automáticamente `sha512`. Si proporciona un algoritmo diferente, se lanzará [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception]. El algoritmo se establece en el constructor.
 
 
 ```php
@@ -195,15 +195,15 @@ $signer  = new Hmac('sha256');
 $signer  = new Hmac('sha111'); // exception
 ```
 
-The component utilizes the \[hmac_equals\]\[hmac_equals\] and \[hash_hmac\]\[hash_hmac\] PHP methods internally to verify and sign the payload. It exposes the following methods:
+El componente usa internamente los métodos PHP \[hmac_equals\]\[hmac_equals\] y \[hash_hmac\]\[hash_hmac\] para verificar y firmar la carga útil. Expone los siguientes métodos:
 
 ```php
 public function getAlgHeader(): string
 ```
 
-Returns a string identifying the algorithm. For the HMAC algoritms it will return:
+Devuelve una cadena que identifica el algoritmo. Para el algoritmo HMAC devolverá:
 
-| Algorithm | `getAlgHeader` |
+| Algoritmo | `getAlgHeader` |
 | --------- | -------------- |
 | `sha512`  | `HS512`        |
 | `sha384`  | `HS384`        |
@@ -213,19 +213,19 @@ Returns a string identifying the algorithm. For the HMAC algoritms it will retur
 public function sign(string $payload, string $passphrase): string
 ```
 
-Returns the hash of the payload using the passphrase
+Devuelve el hash de la carga útil usando la frase secreta
 
 ```php
 public function verify(string $source, string $payload, string $passphrase): bool
 ```
 
-Verifies that the hashed source string is the same as the hash of the payload with the passphrase.
+Verifica que el hash de la cadena original es el mismo que el hash de la carga útil con la frase secreta.
 
-## Issuing Tokens
+## Emisión de Tokens
 
-A Builder component ([Phalcon\Security\JWT\Builder][security-jwt-builder]) is available, utilizing chained methods, and ready to be used to create JWT tokens. All you have to do is instantiate the Builder object, configure your token and call `getToken()`. This will return a [Phalcon\Security\Token\Token][security-jwt-token-token] object which contains all the necessary information for your token. When instantiating the builder component, you have to supply the signer class. In the example below we use the [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] signer.
+Está disponible un componente `Builder` ([Phalcon\Security\JWT\Builder][security-jwt-builder]), utilizando métodos encadenados, y listo para usar para crear tokens JWT. Todo lo que tiene que hacer es instanciar el objeto `Builder`, configurar su token y llamar `getToken()`. Esto devolverá un objeto [Phalcon\Security\Token\Token][security-jwt-token-token] que contiene todo la información necesaria para su token. Al instanciar el componente constructor, debe proporcionar la clase de firmante. En el siguiente ejemplo usamos el firmante [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac].
 
-All setters in this component are chainable.
+Todos los *setters* de este componente son encadenables.
 
 ```php
 <?php
@@ -250,117 +250,117 @@ Constructor
 ```php
 public function init(): Builder
 ```
-Initializes the object - useful when you want to reuse the same builder
+Inicializa el objeto - útil cuando quiere reutilizar el mismo constructor
 
 ```php
 public function getAudience()
 ```
-Returns the `aud` contents
+Obtiene el contenido de `aud`
 
 ```php
 public function getClaims(): array
 ```
-Returns the claims as an array
+Obtiene los reclamos como vector
 
 ```php
 public function getContentType(): ?string
 ```
-Returns the content type (`cty` - headers)
+Devuelve el tipo de contenido (`cty` - cabeceras)
 
 ```php
 public function getExpirationTime(): ?int
 ```
-Returns the `exp` contents
+Devuelve el contenido de `exp`
 
 ```php
 public function getHeaders(): array
 ```
-Returns the headers as an array
+Devuelve las cabeceras como vector
 
 ```php
 public function getId(): ?string
 ```
-Returns the `jti` contents (ID of this JWT)
+Devuelve el contenido de `jti` (ID de este JWT)
 
 ```php
 public function getIssuedAt(): ?int
 ```
-Returns the `iat` contents
+Devuelve el contenido de `iat`
 
 ```php
 public function getIssuer(): ?string
 ```
-Returns the `iss` contents
+Devuelve el contenido de `iss`
 
 ```php
 public function getNotBefore(): ?int
 ```
-Returns the `nbf` contents
+Devuelve el contenido de `nbf`
 
 ```php
 public function getSubject(): ?string
 ```
-Returns the `sub` contents
+Devuelve el contenido de `sub`
 
 ```php
 public function getToken(): Token
 ```
-Returns the token
+Devuelve el token
 
 ```php
 public function getPassphrase(): string
 ```
-Returns the supplied passphrase
+Devuelve la frase secreta proporcionada
 
 ```php
 public function setAudience($audience): Builder
 ```
-Sets the audience (`aud`). If the parameter passed is not an array or a string, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Establece la audiencia (`aud`). Si el parámetro pasado no es un vector o cadena, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function setContentType(string $contentType): Builder
 ```
-Sets the content type (`cty` - headers)
+Establece el tipo de contenido (`cty` - cabeceras)
 
 ```php
 public function setExpirationTime(int $timestamp): Builder
 ```
-Sets the audience (`exp`). If the `$timestamp` is less than the current time, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Establece la audiencia (`exp`). Si `$timestamp` es menor que la hora actual, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function setId(string $id): Builder
 ```
-Sets the id (`jti`).
+Establece el id (`jti`).
 
 ```php
 public function setIssuedAt(int $timestamp): Builder
 ```
-Sets the issued at time (`iat`).
+Establece el emitido a la hora (`iat`).
 
 ```php
 public function setIssuer(string $issuer): Builder
 ```
-Sets the issuer (`iss`).
+Establece el emisor (`iss`).
 
 ```php
 public function setNotBefore(int $timestamp): Builder
 ```
-Sets the audience (`nbf`). If the `$timestamp` is greater than the current time, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Establece la audiencia (`nbf`). Si `$timestamp` es mayor que la hora actual, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function setSubject(string $subject): Builder
 ```
-Sets the subject (`sub`).
+Establece el asunto (`sub`).
 
 ```php
 public function setPassphrase(string $passphrase): Builder
 ```
-Sets the passphrase. If the `$passphrase` is weak, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Establece la frase secreta. Si `$passphrase` es débil, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 private function setClaim(string $name, $value): Builder
 ```
-Sets a claim value in the internal collection.
+Establece un valor de reclamo en la colección interna.
 
 
 ### Ejemplo
@@ -415,11 +415,11 @@ echo $tokenObject->getToken();
 // BPlPyOeEAkMbg
 ```
 
-## Validating Tokens
+## Validación de Tokens
 
-In order to validate a token you will need to create a new [Phalcon\Security\JWT\Validator][security-jwt-validator] object. The object can be constructed using a [Phalcon\Security\JWT\Token\Token][security-jwt-token-token] object and an offset in time to handle time/clock shifts of the sending and receiving computers.
+Para poder validar un token necesitará crear un nuevo objeto [Phalcon\Security\JWT\Validator][security-jwt-validator]. El objeto se puede construir usando un objeto [Phalcon\Security\JWT\Token\Token][security-jwt-token-token] y un desplazamiento en tiempo para gestionar los cambios de hora/reloj de los ordenadores de envío y recepción.
 
-In order to parse the JWT received and convert it to a [Phalcon\Security\JWT\Token\Token][security-jwt-token-token] object, you will need to use a [Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser] object and parse it.
+Para poder analizar el JWT recibido y convertirlo a un objeto [Phalcon\Security\JWT\Token\Token][security-jwt-token-token], necesitará usar un objeto [Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser] y analizarlo.
 
 ```php
 // Parser
@@ -432,7 +432,7 @@ $tokenObject = $parser->parse($tokenReceived);
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 ```
 
-After that, you can start calling the `validate*` methods with the necessary parameters to validate the token received. If no exceptions are thrown, the token is valid.
+Después de esto, puede empezar llamando los métodos `validate*` con los parámetros necesarios para validar el token recibido. Si no se lanzan excepciones, el token es válido.
 
 ### Métodos
 
@@ -444,42 +444,42 @@ Constructor
 ```php
 public function setToken(Token $token): Validator
 ```
-Sets the token object.
+Establece el objeto token.
 
 ```php
 public function validateAudience(string $audience): Validator
 ```
-Validates the audience. If it is not included in the token's `aud`, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida la audiencia. Si no se incluye en el `aud` del token, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function validateExpiration(int $timestamp): Validator
 ```
-Validates the expiration time. If the `exp` value stored in the token is less than now, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida el tiempo de expiración. El valor `exp` almacenado en el token es menor que ahora, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function validateId(string $id): Validator
 ```
-Validates the id. If it is not the same as the `jti` value stored in the token, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida el id. Si no es el mismo que el valor `jti` almacenado en el token, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function validateIssuedAt(int $timestamp): Validator
 ```
-Validates the issued at time. If the `iat` value stored in the token is greater than now, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida el emitido a la hora. Si el valor `iat` almacenado en el token es mayor que ahora, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function validateIssuer(string $issuer): Validator
 ```
-Validates the issuer. If it is not the same as the `iss` value stored in the token, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida el emisor. Si no es el mismo que el valor `iss` almacenado en el token, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function validateNotBefore(int $timestamp): Validator
 ```
-Validates the not before time. If the `nbf` value stored in the token is greater than now, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida el tiempo no anterior. Si el valor `nbf` almacenado es mayor que ahora, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 public function validateSignature(SignerInterface $signer, string $passphrase): Validator
 ```
-Validates the signature of the token. If the signature is not valid, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida al firma del token. Si la firma no es válida, se lanzará [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ### Ejemplo
 
@@ -537,9 +537,9 @@ $validator
 
 ## Excepciones
 
-Any exceptions thrown in the Security component will be of the namespace `Phalcon\Security\JWT\*`. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. There are two exceptions raised. First if you supply the wrong algoritm string when instantiating the [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
+Cualquier excepción lanzada en el componente `Security` será del espacio del nombres `Phalcon\Security\JWT\*`. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. Hay dos excepciones lanzadas. Primera si provee la cadena de algoritmo incorrecta cuando instancia el componente [Phalcon\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]. Esta excepción es [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
 
-The second exception is thrown when validating a JWT. This exception is [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
+La segunda excepción se lanza cuando se valida un JWT. Esta excepción es [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
 ```php
 <?php
