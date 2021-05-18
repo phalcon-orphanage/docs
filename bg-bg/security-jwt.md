@@ -151,7 +151,7 @@ class Enum
 
 ### Signature
 
-[Phalcon\Security\JWT\Token\Signature][security-jwt-token-signature] is similar to the [Phalcon\Security\JWT\Token\Item][security-jwt-token-item], but it only holds teh signature hash as well as its encoded value.
+[Phalcon\Security\JWT\Token\Signature][security-jwt-token-signature] is similar to the [Phalcon\Security\JWT\Token\Item][security-jwt-token-item], but it only holds the signature hash as well as its encoded value.
 
 ### Token
 
@@ -345,7 +345,7 @@ Sets the issuer (`iss`).
 ```php
 public function setNotBefore(int $timestamp): Builder
 ```
-Sets the audience (`nbf`). If the `$timestamp` is greater than the current time, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Sets the not before time (`nbf`). If the `$timestamp` is greater than the current time, a [Phalcon\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
 ```php
 public function setSubject(string $subject): Builder
@@ -555,8 +555,8 @@ class IndexController extends Controller
     public function index()
     {
         try {
-            $signer  = new Hmac();
-            $builder = new Builder($signer);
+            $signer     = new Hmac();
+            $builder    = new Builder($signer);
             $expiry     = strtotime('+1 day');
             $issued     = strtotime('now') + 100;
             $notBefore  = strtotime('-1 day');
