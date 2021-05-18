@@ -1743,6 +1743,7 @@ Whether you create a [Phalcon\Mvc\Query\Builder][mvc-model-query-builder] object
 
 - `bind` - `array` - array of the data to be bound
 - `bindTypes` - `array` - PDO parameter types
+- `container` - DI 
 - `columns` - `array | string` - columns to select 
 - `conditions` - `array | string` - conditions (where)
 - `distinct` - `string` - distinct column 
@@ -1761,8 +1762,13 @@ Whether you create a [Phalcon\Mvc\Query\Builder][mvc-model-query-builder] object
 
 use PDO;
 use Phalcon\Mvc\Model\Query\Builder;
+use Phalcon\Di\FactoryDefault as Di;
+
+/* DI is mandatory to use the Query Builder */
+$di = new Di();
 
 $params = [
+    "container" => $di,
     "models"     => [
         Users::class,
     ],
