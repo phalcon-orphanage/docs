@@ -428,7 +428,7 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
-> **¡Felicitaciones! Ahora está volando con Phalcon.**
+> **¡Felicidades! Ahora está volando con Phalcon.**
 {: .alert .alert-info }
 
 ## XAMPP
@@ -490,7 +490,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> **¡Felicitaciones! Ahora está volando con Phalcon.**
+> **¡Felicidades! Ahora está volando con Phalcon.**
 {: .alert .alert-info }
 
 
