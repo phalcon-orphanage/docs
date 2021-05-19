@@ -1013,7 +1013,7 @@ public function uuid(): string;
 
 Generates a v4 random UUID (Universally Unique IDentifier)
 
-The version 4 UUID is purely random (except the version). It doesn't contain meaningful information such as MAC address, time, etc. See RFC 4122 for details of UUID.
+La versión 4 de UUID es puramente aleatoria (excepto la versión). It doesn't contain meaningful information such as MAC address, time, etc. See RFC 4122 for details of UUID.
 
 This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
 
