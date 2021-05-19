@@ -234,7 +234,7 @@ Getter and setter for the default hash that the component will use. By default t
  
 **hash()**
 
-Hashes as string or password and returns the hashed string back. The second parameter is optional, and allows you to set temporarily a specific `workFactor` or passes which overrides the default one. 
+Hashes a string or password and returns the hashed string back. The second parameter is optional, and allows you to set temporarily a specific `workFactor` or passes which overrides the default one. 
  
 **checkHash()**  
 
