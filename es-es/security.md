@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Seguridad'
-keywords: 'security, hashing, passwords'
+keywords: 'seguridad, hash, contraseñas'
 ---
 
 # Seguridad
@@ -14,22 +14,22 @@ keywords: 'security, hashing, passwords'
 
 ## Preámbulo
 
-> **NOTE**: Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
+> **NOTA**: Requiere que esté presente en el sistema la extensión [openssl](https://php.net/manual/en/book.openssl.php) de PHP
 {: .alert .alert-info }
 
-[Phalcon\Security](api/phalcon_security#security) is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+[Phalcon\Security](api/phalcon_security#security) es un componente que ayuda a los desarrolladores con las tareas comunes relacionadas con la seguridad, como hash de contraseñas y protección *Cross-Site Request Forgery* ([CSRF](https://es.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 ## Hashing de contraseñas
 
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use popular one way hashing methods [md5](https://php.net/manual/en/function.md5.php) and [sha1](https://php.net/manual/en/function.sha1.php). However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
+Almacenar contraseñas en texto plano es una práctica de seguridad mala. Cualquiera con acceso a la base de datos tendrá inmediatamente acceso a las cuentas de todos los usuarios, y podrá realizar actividades no autorizadas. Para prevenir eso, muchas aplicaciones usan métodos de *hashing* unidireccional [md5](https://php.net/manual/en/function.md5.php) y [sha1](https://php.net/manual/en/function.sha1.php). Sin embargo, el hardware evoluciona cada día y los procesadores se vuelven más rápidos, estos algoritmos se están volviendo vulnerables contra ataques de fuerza bruta. Estos ataques también son conocidos como [tablas arcoiris](https://es.wikipedia.org/wiki/Tabla_arco%C3%Adris).
 
-The security component uses [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm) key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of brute force attacks.
+El componente de seguridad usa [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hashing. Gracias al algoritmo de configuración de claves [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm), podemos hacer la encriptación de la contraseña tan `lenta` como queramos. Los algoritmos lentos minimizan el impacto de ataques por fuerza bruta.
 
-[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
+[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), es una función de hash adaptativo basado en el algoritmo criptográfico de cifrado de bloque simétrico Blowfish. También introduce un factor de seguridad o trabajo, que determina cómo de lenta será la función hash para generar el hash. Esto niega efectivamente el uso de técnicas de hashing FPGA o GPU.
 
-Should hardware becomes faster in the future, we can increase the work factor to mitigate this. The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes](https://php.net/manual/en/function.openssl-random-pseudo-bytes.php).
+Si en el futuro el hardware se vuelve más rápido, podemos aumentar el factor de trabajo para mitigar esto. La sal se genera usando bytes pseudo-aleatorios con la función de PHP [openssl_random_pseudo_bytes](https://php.net/manual/en/function.openssl-random-pseudo-bytes.php).
 
-This component offers a simple interface to use the algorithm:
+Este componente ofrece un interfaz simple para usar el algoritmo:
 
 ```php
 <?php
@@ -42,9 +42,9 @@ echo $security->hash('Phalcon');
 // $2y$08$ZUFGUUk5c3VpcHFoVUFXeOYoA4NPFEP4G9gcm6rdo3jFPaNFdR2/O
 ```
 
-The hash that was created used the default work factor which is set to `10`. Using a higher work factor will take a bit more time to calculate the hash.
+El hash creado usó el factor de trabajo predeterminado, que está establecido en `10`. Usar un factor de trabajo más alto tomará un poco más de tiempo para calcular el hash.
 
-We can now check if a value sent to us by a user through the UI of our application, is identical to our hashed string:
+Ahora podemos comprobar si un valor enviado a nosotros por un usuario, a través del interfaz de usuario de nuestra aplicación, es idéntico a nuestra cadena hash:
 
 ```php
 <?php
@@ -59,7 +59,7 @@ $hashed = $security->hash('Phalcon');
 echo $security->checkHash($password, $hashed); // true / false
 ```
 
-The above example simply shows how the `checkHash()` can be used. In production applications we will definitely need to sanitize input and also we need to store the hashed password in a data store such as a database. Using controllers, the above example can be shown as:
+El ejemplo anterior simplemente muestra cómo se puede usar `checkHash()`. En aplicaciones de producción definitivamente necesitaremos sanear la entrada y también necesitaremos almacenar las contraseñas cifradas en un almacén de datos como una base de datos. Usando controladores, el ejemplo anterior se podría mostrar como:
 
 ```php
 <?php
@@ -126,36 +126,36 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTE** The code snippet above is incomplete and **must not be used as is for production applications**
+> **NOTA** El fragmento de código anterior está incompleto y **no debe usarse tal cual para aplicaciones en producción**
 {: .alert .alert-danger }
 
-The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security](api/phalcon_security#security) component so that we do not save it as plain text in our database.
+El `registerAction()` anterior acepta datos publicados desde el interfaz del usuario. Se limpian con el filtro `string` y entonces crea un nuevo objeto del modelo `User`. Entonces asigna los datos pasados a las propiedades relevantes antes de guardarlos. Tenga en cuenta que para la contraseña, usamos el método `hash()` del componente [Phalcon\Security](api/phalcon_security#security) para no guardarlo como texto plano en nuestra base de datos.
 
-The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security](api/phalcon_security#security) component, to assess whether the supplied password hashed is the same as the one stored in the database.
+El `loginAction()` acepta datos publicados desde la interfaz de usuario y entonces intenta encontrar el usuario en la base de datos basándose en el campo `login`. Si el usuario existe, usará el método `checkHash()` del componente [Phacon\Security](api/phalcon_security#security), para evaluar si la contraseña cifrada proporcionada es la misma que la almacenada en la base de datos.
 
-> **NOTE**: You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
+> **NOTA**: No necesita cifrar la contraseña proporcionada (primer parámetro) cuando usa `checkHash()` - el componente lo hará por usted.
 {: .alert .alert-info }
 
-If the password is not correct, you can then inform the user that something is wrong with the credentials. It is always a good idea not to provide specific information about your users to people that want to hack your site. So for instance our example above can produce two messages:
+Si la contraseña no es correcta, entonces puede informar al usuario de que algo está mal con las credenciales. Siempre es una buena idea no proporcionar información específica sobre sus usuarios a gente que quiere hackear su sitio. Así que por ejemplo, en nuestro ejemplo anterior podemos producir dos mensajes:
 
-* User not found in the database
-* Password is incorrect
+* Usuario no encontrado en la base de datos
+* La contraseña es incorrecta
 
-Separating the error messages is not a good idea. If a hacker that is using brute force attack detects the second message, they can stop trying to guess the `login` and concentrate on the password, thus increasing their chances of gaining access. A more appropriate message for both potential error conditions could be
+Separar los mensajes de error no es una buena idea. Si un hacker que usa un ataque por fuerza bruta detecta el segundo mensaje, puede parar de intentar adivinar el `login` y concentrarse en la contraseña, lo que incrementa sus posibilidades de obtener el acceso. Un mensaje más apropiado para ambas posibles condiciones de error podía ser
 
-`Invalid Login/Password combination`
+`Combinación Usuario/Contraseña inválida`
 
-Finally you will notice in the example that when the user is not found, we call:
+Finalmente, notará en el ejemplo que cuando el usuario no se encuentra, llamamos:
 
 ```php
 $this->security->hash(rand());
 ```
 
-This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
+Esto se hace para proteger contra ataques temporales. Independientemente de si un usuario existe o no, el script tomará aproximadamente la misma cantidad de tiempo para ejecutarse, ya que está calculando el hash otra vez, aunque nunca usemos ese resultado.
 
 ## Excepciones
 
-Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception](api/phalcon_security#security-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
+Cualquier excepción lanzada en el componente `Security` será del tipo [Phalcon\Security\Exception](api/phalcon_security#security-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. Las excepciones se pueden lanzar si el algoritmo de hashing es desconocido, si el servicio `session` no está presente en el contenedor Di, etc.
 
 ```php
 <?php
@@ -176,11 +176,11 @@ class IndexController extends Controller
 }
 ```
 
-## CSRF Protection
+## Protección CSRF
 
-Cross-Site Request Forgery (CSRF) is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
+Cross-Site Request Forgery (CSRF) es otro ataque común contra sitios y aplicaciones web. Los formularios destinados a realizar tareas como registro de usuarios o añadir comentarios son vulnerables a este ataque.
 
-The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
+La idea es prevenir que los valores del formulario sean enviados fuera de nuestra aplicación. Para solucionar esto, se puede generar un [nonce aleatorio](https://en.wikipedia.org/wiki/Cryptographic_nonce) (token) en cada formulario, añadir el token en la sesión y luego validar el token una vez que el formulario envía los datos de regreso a nuestra aplicación, comparando el token almacenado en la sesión con el enviado por el formulario:
 
 ```php
 <form method='post' action='session/login'>
@@ -193,7 +193,7 @@ The idea is to prevent the form values from being sent outside our application. 
 </form>
 ```
 
-Then in the controller's action you can check if the CSRF token is valid:
+Posteriormente, en la acción del controlador puede comprobar si el token CSRF es válido:
 
 ```php
 <?php
@@ -217,18 +217,18 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTE**: It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work.
+> **NOTA**: Es importante recordar que necesitará tener registrado un servicio `session` válido en su contenedor de Inyección de Dependencias. De lo contrario, el `checkToken()` no funcionará.
 {: .alert .alert-warning }
 
-Adding a [captcha](https://en.wikipedia.org/wiki/ReCAPTCHA) to the form is also recommended to completely avoid the risks of this attack.
+También se recomienda añadir un [captcha](https://es.wikipedia.org/wiki/ReCAPTCHA) al formulario para evitar completamente los riesgos de este ataque.
 
-## Functionality
+## Funcionalidad
 
 ### Hash
 
 **getDefaultHash() / setDefaultHash()**
 
-Getter and setter for the default hash that the component will use. By default the hash is set to `CRYPT_DEFAULT` (`0`). The available options are:
+*Getter* y *setter* que usará el componente para el hash predeterminado. Por defecto, el hash está establecido en `CRYPT_DEFAULT` (`0`). Las opciones disponibles son:
 
 * `CRYPT_BLOWFISH_A`
 * `CRYPT_BLOWFISH_X`
@@ -240,69 +240,69 @@ Getter and setter for the default hash that the component will use. By default t
 
 **hash()**
 
-Hashes as string or password and returns the hashed string back. The second parameter is optional, and allows you to set temporarily a specific `workFactor` or passes which overrides the default one.
+Cifra una cadena o contraseña y devuelve la cadena cifrada de vuelta. El segundo parámetro es opcional, y le permite establecer temporalmente un `factorTrabajo` específico o pasarlo, que sobreescribirá el predeterminado.
 
 **checkHash()**
 
-Accepts a string (usually the password), an already hashed string (the hashed password) and an optional minimum password length. It checks them both and returns `true` if they are identical and `false` otherwise.
+Acepta una cadena (normalmente la contraseña), y una cadena ya cifrada (la contraseña cifrada) y un tamaño de contraseña mínimo opcional. Los comprueba ambos y devuelve `true` si son idénticos y `false` en caso contrario.
 
 **isLegacyHash()**
 
-Returns `true` if the passed hashed string is a valid [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) hash.
+Devuelve `true` si la cadena cifrada pasada es un hash [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) válido.
 
 ### HMAC
 
 **computeHmac()**
 
-Generates a keyed hash value using the HMAC method. It uses PHP's [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php) method internally, therefore all the parameters it accepts are the same as the [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php).
+Genera un valor hash clave usando el método HMAC. Internamente usa el método de PHP [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php), por lo tanto todos los parámetros que acepta son los mismos que para [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php).
 
 ### Aleatorio
 
 **`getRandom()`**
 
-Returns a [Phalcon\Security\Random](api/phalcon_security#security-random) object, which is secure random number generator instance. The component is explained in detail below.
+Devuelve un objeto [Phalcon\Security\Random](api/phalcon_security#security-random), que es una instancia segura del generador de números aleatorios. El componente se explica en detalle a continuación.
 
 **`getRandomBytes()` / `setRandomBytes()`**
 
-Getter and setter methods to specify he number of bytes to be generated by the openssl pseudo random generator. It defaults to `16`.
+Métodos *getter* y *setter* para especificar el número de bytes a ser generados por el pseudo generador aleatorio openssl. Por defecto es `16`.
 
 **`getSaltBytes()`**
 
-Generates a pseudo random string to be used as a salt for passwords. It uses the `getRandomBytes()` value for the length of the string. It can however be overridden by the passed numeric parameter.
+Genera una pseudo cadena aleatoria para usar como sal para contraseñas. Usa el valor de `getRandomBytes()` para el tamaño de la cadena. Sin embargo, se puede sobreescribir por el parámetro numérico pasado.
 
 ### Token
 
 **`getToken()`**
 
-Generates a pseudo random token value to be used as input's value in a CSRF check.
+Genera un pseudo valor aleatorio de token a usar como valor de campo en una comprobación CSRF.
 
 **`getTokenKey()`**
 
-Generates a pseudo random token key to be used as input's name in a CSRF check.
+Genera una pseudo clave aleatoria de token a usar como nombre de campo en una comprobación CSRF.
 
 **`getRequestToken()`**
 
-Returns the value of the CSRF token for the current request.
+Devuelve el valor del token CSRF para la petición actual.
 
 **`checkToken()`**
 
-Check if the CSRF token sent in the request is the same that the current in session. The first parameter is the token key and the second one the token value. It also accepts a third boolean parameter `destroyIfValid` which if set to `true` will destroy the token if the method returns `true`.
+Comprueba si el token CSRF enviado en la petición es el mismo que el actual en sesión. El primer parámetro es la clave del token y el segundo el valor del token. También acepta un tercer parámetro booleano `destroyIfValid` que si se establece a `true` destruirá el token si el método devuelve `true`.
 
 **`getSessionToken()`**
 
-Returns the value of the CSRF token in session
+Devuelve el valor del token CSRF en sesión
 
 **`destroyToken()`**
 
-Removes the value of the CSRF token and key from session
+Elimina el valor y clave del token CSRF de la sesión
 
 ## Aleatorio
 
-The [Phalcon\Security\Random](api/phalcon_security#security-random) class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom](https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html) library from Ruby.
+La clase [Phalcon\Security\Random](api/phalcon_security#security-random) hace realmente fácil generar muchos tipos de datos aleatorios a usarse en sales, nuevas contraseñas de usuario, claves de sesión, claves complicadas, sistemas de encriptación, etc. Esta clase toma prestada parcialmente la librería [SecureRandom](https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html) de Ruby.
 
-It supports following secure random number generators: * random_bytes * libsodium * openssl, libressl * /dev/urandom
+Soporta los siguientes generadores seguros de números aleatorios: * random_bytes * libsodium * openssl, libressl * /dev/urandom
 
-To utilize the above you will need to ensure that the generators are available in your system. For instance to use `openssl` your PHP installation needs to support it.
+Para utilizar lo anterior necesitará asegurarse que los generadores están disponibles en su sistema. Por ejemplo, para usar `openssl` su aplicación PHP necesita soportarla.
 
 ```php
 <?php
@@ -322,9 +322,9 @@ echo $random->base58();      // 4kUgL2pdQMSCQtjE
 
 **`base58()`**
 
-Generates a random `base58` string. If the `$len` parameter is not specified, `16` is assumed. Puede ser más grande en el futuro. The result may contain alphanumeric characters except `0` (zero), `O` (capital `o`), `I` (capital `i`) and `l` (lower case `L`).
+Genera una cadena `base58` aleatoria. Si no se especifica el parámetro `$len`, se asume `16`. Puede ser más grande en el futuro. El resultado puede contener caracteres alfanuméricos excepto `0` (zero), `O` (`o` mayúscula), `I` (`i` mayúscula) y `l` (`L` minúscula).
 
-It is similar to `base64()` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
+Es similar a `base64()` pero se ha modificado para evitar tanto caracteres no alfanuméricos como letras que podrían parecer ambiguas cuando se muestran.
 
 ```php
 <?php
@@ -338,7 +338,7 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 **`base62()`**
 
-Generates a random `base62` string. If the `$len` parameter is not specified, `16` is assumed. Puede ser más grande en el futuro. It is similar to `base58()` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is `[A-Za-z0-9]`
+Genera una cadena `base62` aleatoria. Si no se especifica el parámetro `$len`, se asume `16`. Puede ser más grande en el futuro. Es similar a `base58()` pero se ha modificado para proporcionar un valor más largo que se pueda usar de forma segura en URLs sin necesidad de tomar en consideración caracteres extra porque son `[A-Za-z0-9]`
 
 ```php
 <?php
@@ -352,9 +352,9 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 
 **`base64()`**
 
-Generates a random `base64` string. If the `$len` parameter is not specified, `16` is assumed. Puede ser más grande en el futuro. The length of the result string is usually greater of `$len`. The size formula is:
+Genera una cadena `base64` aleatoria. Si no se especifica el parámetro `$len`, se asume `16`. Puede ser más grande en el futuro. El tamaño de la cadena resultante suele ser mayor de `$len`. La fórmula de tamaño es:
 
-`4 * ($len / 3)` rounded up to a multiple of 4.
+`4 * ($len / 3)` redondeado hasta un múltiplo de 4.
 
 ```php
 <?php
@@ -368,9 +368,9 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 **`base64Safe()`**
 
-Generates a URL safe random `base64` string. If the `$len` parameter is not specified, `16` is assumed. Puede ser más grande en el futuro. The length of the result string is usually greater of `$len`.
+Genera una cadena `base64` aleatoria segura para URL. Si no se especifica el parámetro `$len`, se asume `16`. Puede ser más grande en el futuro. El tamaño de la cadena resultante suele ser mayor de `$len`.
 
-By default, padding is not generated because `=` may be used as a URL delimiter. The result may contain `A-Z`, `a-z`, `0-9`, `-` and `_`. `=` is also used if `$padding` is `true`. See [RFC 3548](https://www.ietf.org/rfc/rfc3548.txt) for the definition of URL-safe `base64`.
+Por defecto, no se genera relleno porque `=` se puede usar como delimitador de URL. El resultado puede contener `A-Z`, `a-z`, `0-9`, `-` y `_`. `=` también se usa si `$padding` es `true`. Vea [RFC 3548](https://www.ietf.org/rfc/rfc3548.txt) para la definición de URL-segura `base64`.
 
 ```php
 <?php
@@ -384,7 +384,7 @@ echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 
 **`bytes()`**
 
-Generates a random binary string and accepts as input an integer representing the length in bytes to be returned. If `$len` is not specified, `16` is assumed. Puede ser más grande en el futuro. The result may contain any byte: `x00` - `xFF`.
+Genera una cadena binaria aleatoria y acepta como entrada un entero que representa el tamaño en bytes a devolver. Si no se especifica `$len`, se asume `16`. Puede ser más grande en el futuro. El resultado puede contener cualquier byte: `x00` - `xFF`.
 
 ```php
 <?php
@@ -400,7 +400,7 @@ var_dump(bin2hex($bytes));
 
 **`hex()`**
 
-Generates a random hex string. If `$len` is not specified, 16 is assumed. Puede ser más grande en el futuro. The length of the result string is usually greater of `$len`.
+Genera una cadena hexadecimal aleatoria. Si no se especifica `$len`, se sume 16. Puede ser más grande en el futuro. El tamaño de la cadena resultante suele ser mayor de `$len`.
 
 ```php
 <?php
@@ -414,7 +414,7 @@ echo $random->hex(10); // a29f470508d5ccb8e289
 
 **`number()`**
 
-Generates a random number between `0` and `$len`. Returns an integer: `0 <= result <= $len`.
+Genera un número aleatorio entre `0` y `$len`. Devuelve un entero: `0 <= result <= $len`.
 
 ```php
 <?php
@@ -428,9 +428,9 @@ echo $random->number(16); // 8
 
 **`uuid()`**
 
-Generates a v4 random UUID (Universally Unique IDentifier). The version 4 UUID is purely random (except the version). It doesn't contain meaningful information such as MAC address, time, etc. See [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt) for details of UUID.
+Genera un UUID (*Universally Unique IDentifier*) aleatorio v4. La versión 4 de UUID es puramente aleatoria (excepto la versión). No contiene información significativa como dirección MAC, hora, etc. Vea [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt) para más detalles sobre UUID.
 
-This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` where x is any hexadecimal digit and `y` is one of `8`, `9`, `A`, or `B` (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`). *
+Este algoritmo establece el número de versión (4 bits) así como dos bits reservados. Todos los demás bits (los 122 bits restantes) se establecen usando una fuente de datos aleatoria o pseudoaleatoria. Las UUIDs Version 4 tienen la forma `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` donde x es cualquier dígito hexadecimal e `y` es uno de `8`, `9`, `A`, o `B` (ej., `f47ac10b-58cc-4372-a567-0e02b2c3d479`). *
 
 ```php
 <?php
@@ -444,7 +444,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ## Inyección de Dependencias
 
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Security](api/phalcon_security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
+Si usa el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), [Phalcon\Security](api/phalcon_security#security) ya está registrado para usted. Sin embargo, podría querer sobreescribir el registro predeterminado para establecer su propio `workFactor()`. Alternativamente, si no usa [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) y en su lugar está usando [Phalcon\Di](di) el registro es el mismo. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
 
 A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
@@ -470,9 +470,9 @@ $container->set(
 );
 ```
 
-In the above example, the `setWorkFactor()` sets the password hashing factor to 12 rounds.
+En el ejemplo anterior, `setWorkFactor()` establece el factor de cifrado de contraseña a 12 rondas.
 
-The component is now available in your controllers using the `security` key
+El componente ahora está disponible en sus controladores usando la clave `security`
 
 ```php
 <?php
