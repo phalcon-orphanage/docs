@@ -22,7 +22,7 @@ Sessions are used in PHP to persist data between requests. This enables develope
 
 ## Manager
 
-[Phalcon\Session\Manager](api/Phalcon_Session#session-manager) is a component that allows you to manipulate sessions in your application. This manager accepts a an adapter which is the way the data will be communicated to a particular store.
+[Phalcon\Session\Manager](api/Phalcon_Session#session-manager) is a component that allows you to manipulate sessions in your application. This manager accepts an adapter which is the way the data will be communicated to a particular store.
 
 > **NOTE**: PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a *handler* in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
 {: .alert .alert-warning }
@@ -295,7 +295,7 @@ In the above example, after `setOptions()` is called with a new `uniqueId`, data
 
 ### Set
 
-You can use `set()` to store contents in your session. The method accepts a `string` as the name of the element and the value to be stored.. The component also supports the magic setter so you can set it as a property of the manager.
+You can use `set()` to store contents in your session. The method accepts a `string` as the name of the element and the value to be stored. The component also supports the magic setter so you can set it as a property of the manager.
 
 ```php
 <?php
@@ -450,7 +450,7 @@ $session
 
 ### Custom
 
-The adapters implement PHP's [SessionHandlerInterface](https://www.php.net/manual/en/class.sessionhandlerinterface.php). As a result you can create any adapter you need by extending this interface. You can also use any adapter that implements this interface and set the adapter to [Phalcon\Session\Manager](api/Phalcon_Session#session-manager). There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/).
+The adapters implement PHP's [SessionHandlerInterface](https://www.php.net/manual/en/class.sessionhandlerinterface.php). As a result you can create any adapter you need by extending this interface. You can also use any adapter that implements this interface and set the adapter to [Phalcon\Session\Manager](api/Phalcon_Session#session-manager). There are more adapters available for this component in the [Phalcon Incubator](https://github.com/phalcon/incubator/).
 
 ```php
 <?php
@@ -495,7 +495,7 @@ class Custom extends SessionHandlerInterface
 
 ## Exceptions
 
-Any exceptions thrown in the Session component will be of type [Phalcon\Session\Exception](api/Phalcon_Session#session-exception). It is thrown any session operation is not completed correctly. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Session component will be of type [Phalcon\Session\Exception](api/Phalcon_Session#session-exception). It is thrown if any session operation is not completed correctly. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
