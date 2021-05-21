@@ -6,7 +6,7 @@ title: 'Static Analysis'
 keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 ---
 
-# Tutorial - Vökuró
+# Static Analysis
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
