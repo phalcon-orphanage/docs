@@ -6,7 +6,7 @@ title: 'Análisis Estático'
 keywords: 'análisis estático, analizador estático, vimeo, psalm, phalcon'
 ---
 
-# Tutorial - Vökuró
+# Análisis Estático
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
