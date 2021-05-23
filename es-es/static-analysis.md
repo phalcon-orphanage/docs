@@ -2,19 +2,19 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Static Analysis'
-keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
+title: 'Análisis Estático'
+keywords: 'análisis estático, analizador estático, vimeo, psalm, phalcon'
 ---
 
-# Tutorial - Vökuró
+# Análisis Estático
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Resumen
 
-Using a static analysis tool in your project can dramatically increase your code quality and highlight potential bugs before they are exposed.
+Usar una herramienta de análisis estático en su proyecto puede incrementar dramáticamente su calidad de código y resaltar posibles errores que estén expuestos.
 
-## Integrating Psalm with Phalcon
+## Integrar Psalm con Phalcon
 
 ```bash
 composer require --dev vimeo/psalm:^3.11
@@ -30,11 +30,11 @@ o agregando manualmente al archivo `composer.json`:
 }
 ```
 
-### Phalcon IDE Stubs
+### Stubs IDE Phalcon
 
-Phalcon provides a stub library that provides support for most IDEs. Psalm requires these stubs in order to properly analyze the codebase. These files exist in the [Phalcon IDE Stubs](https://github.com/phalcon/ide-stubs) repository.
+Phalcon proporciona una librería *stub* que proporciona soporte para la mayoría de IDEs. Psalm requiere estos *stubs* para poder analizar correctamente el código base. Estos ficheros existen en el repositorio [Phalcon IDE Stubs](https://github.com/phalcon/ide-stubs).
 
-You can use the IDE Stubs library by adding it as a dependency:
+Puede usar la librería *IDE Stubs* añadiéndola como dependencia:
 
 ```bash
 composer require --dev phalcon/ide-stubs:^v4.0
@@ -50,15 +50,15 @@ o agregando manualmente al archivo `composer.json`:
 }
 ```
 
-## Initializing Psalm
+## Inicializar Psalm
 
-Run the command `vendor/bin/psalm --init` in the root of your project to initialize Psalm. Psalm will create a default project configuration file called `psalm.xml` at the root of your project.
+Ejecuta el comando `vendor/bin/psalm --init` en la raíz de su proyecto para inicializar Psalm. Psalm creará un fichero de configuración de proyecto predeterminado llamado `psalm.xml` en la raíz de su proyecto.
 
-### Sample Configuration with Phalcon Stubs
+### Configuración de ejemplo con *Phalcon Stubs*
 
-The configuration file below serves as a good base to use in your project. Replace the contents in `psalm.xml` with the contents below and update any parameters applicable to your project settings.
+El siguiente fichero de configuración sirve como una buena base para usar en su proyecto. Sustituya los contenidos de `psalm.xml` con los contenidos de abajo y actualice cualquier parámetro aplicable a los ajustes de su proyecto.
 
-If you find that you need to stub additional Phalcon components, add them to the stub section of the configuration with the full path to their location in the `ide-stubs` package.
+Si encuentra que necesita *stubs* de componentes Phalcon adicionales, añádalos a la sección *stub* de la configuración con la ruta completa de su localización en el paquete `ide-stubs`.
 
 ```xml
 <?xml version="1.0"?>
@@ -103,9 +103,9 @@ If you find that you need to stub additional Phalcon components, add them to the
 </psalm>
 ```
 
-### Running Psalm
+### Ejecutar Psalm
 
-When you execute `vendor/bin/psalm` in your command-line, you will a get similar output depending on your errors:
+Cuando ejecute `vendor/bin/psalm` en su línea de comandos, obtendrá una salida similar dependiendo de sus errores:
 
 ```bash
 Scanning files...
@@ -121,9 +121,9 @@ Checks took 0.80 seconds and used 214.993MB of memory
 Psalm was able to infer types for 92.9630% of the codebase
 ```
 
-Fix your errors, and re-run Psalm!
+¡Corrija sus errores y vuelva a ejecutar Psalm!
 
 ## Recursos
-- [Psalm Documentation](https://psalm.dev/docs/)
-- [Static Analysis with Psalm PHP](https://www.twilio.com/blog/static-analysis-with-psalm-php)
-- [What Is Static Code Analysis?](https://www.perforce.com/blog/sca/what-static-analysis)
+- [Documentación Psalm](https://psalm.dev/docs/)
+- [Análisis Estático con Psalm PHP](https://www.twilio.com/blog/static-analysis-with-psalm-php)
+- [¿Qué es el Análisis Estático de Código?](https://www.perforce.com/blog/sca/what-static-analysis)
