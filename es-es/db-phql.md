@@ -509,7 +509,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-El resultado devuelto es un objeto [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple). Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas solicitadas.
+El resultado devuelto es un objeto [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple). However, each element is a standard object that only contain the two columns that were requested.
 
 Estos valores que no representan objetos completos son lo que llamamos escalares. PHQL permite consultar todos los tipos de escalares: campos, funciones, literales, expresiones, etc..:
 
