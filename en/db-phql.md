@@ -2092,7 +2092,7 @@ $builder->innerJoin(
 
 $builder->innerJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
@@ -2138,15 +2138,16 @@ $builder->join(
     "Invoices.inv_cst_id = Customers.cst_id"
 );
 
+//If model `Invoices` has an alias, use it accordingly in the following two examples:
 $builder->join(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 
 $builder->join(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c",
     "INNER"
 );
@@ -2175,7 +2176,7 @@ $builder->leftJoin(
 
 $builder->leftJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
@@ -2383,7 +2384,7 @@ $builder->rightJoin(
 
 $builder->rightJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
