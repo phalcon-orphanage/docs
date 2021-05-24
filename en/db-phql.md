@@ -502,7 +502,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-The returned result is a [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] object. However, However, each element is a standard object that only contain the two columns that were requested.
+The returned result is a [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] object. However, each element is a standard object that only contain the two columns that were requested.
 
 These values that do not represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
