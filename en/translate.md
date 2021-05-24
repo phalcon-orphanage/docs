@@ -580,7 +580,7 @@ $translator->_(
 ); // Hello Henry, good night !
 ```
 
-### AssociatedArray
+### IndexedArray
 [Phalcon\Translate\Interpolator\IndexedArray][indexedarray] is another option that you can use as the interpolator. This interpolator follows the [sprintf][sprintf] convention.
 
 ```php
