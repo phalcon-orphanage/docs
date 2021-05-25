@@ -342,7 +342,7 @@ The browser output will remain the same. The `Phalcon\Mvc\View` component is aut
 
 ## Designing a Sign-up Form
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named *signup*. The goal is to allow users to sign up to our application.
+Ahora cambiaremos el fichero de vista `index.phtml`, para añadir un enlace a un nuevo controlador llamado *signup*. The goal is to allow users to sign up to our application.
 
 `app/views/index/index.phtml`
 
