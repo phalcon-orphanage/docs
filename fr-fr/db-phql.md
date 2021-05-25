@@ -509,7 +509,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-The returned result is a [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple) object. However, However, each element is a standard object that only contain the two columns that were requested.
+The returned result is a [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple) object. However, each element is a standard object that only contain the two columns that were requested.
 
 These values that do not represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
@@ -2120,7 +2120,7 @@ $builder->innerJoin(
 
 $builder->innerJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
@@ -2167,15 +2167,16 @@ $builder->join(
     "Invoices.inv_cst_id = Customers.cst_id"
 );
 
+//If model `Invoices` has an alias, use it accordingly in the following two examples:
 $builder->join(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 
 $builder->join(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c",
     "INNER"
 );
@@ -2205,7 +2206,7 @@ $builder->leftJoin(
 
 $builder->leftJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
@@ -2422,7 +2423,7 @@ $builder->rightJoin(
 
 $builder->rightJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```

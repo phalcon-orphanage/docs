@@ -509,7 +509,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-El resultado devuelto es un objeto [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple). Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas solicitadas.
+El resultado devuelto es un objeto [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple). Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas que fueron solicitadas.
 
 Estos valores que no representan objetos completos son lo que llamamos escalares. PHQL permite consultar todos los tipos de escalares: campos, funciones, literales, expresiones, etc..:
 
@@ -2120,7 +2120,7 @@ $builder->innerJoin(
 
 $builder->innerJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
@@ -2167,15 +2167,16 @@ $builder->join(
     "Invoices.inv_cst_id = Customers.cst_id"
 );
 
+//If model `Invoices` has an alias, use it accordingly in the following two examples:
 $builder->join(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 
 $builder->join(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c",
     "INNER"
 );
@@ -2205,7 +2206,7 @@ $builder->leftJoin(
 
 $builder->leftJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
@@ -2422,7 +2423,7 @@ $builder->rightJoin(
 
 $builder->rightJoin(
     Customers::class,
-    "Invoices.inv_cst_id = Customers.cst_id",
+    "Invoices.inv_cst_id = c.cst_id",
     "c"
 );
 ```
