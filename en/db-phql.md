@@ -2113,6 +2113,13 @@ $builder->inWhere(
     "Invoices.inv_id",
     [1, 3, 5]
 );
+
+//Using OPERATOR_OR:
+$builder->inWhere(
+    "Invoices.inv_id",
+    [1, 3, 5],
+    \Phalcon\Mvc\Model\Query\BuilderInterface::OPERATOR_OR
+);
 ```
 
 ```php
