@@ -817,11 +817,11 @@ SELECT
     co_products.prd_title 
 FROM 
     co_invoices
-JOIN JOIN
+JOIN
     co_invoices_x_products 
 ON 
     co_invoices.inv_id = co_invoices_x_products.ixp_inv_id
-JOIN JOIN
+JOIN
     co_products 
 ON 
     co_invoices_x_products.ixp_prd_id = co_products.prd_id
