@@ -1,5 +1,5 @@
 - - -
-layout: default language: 'en' version: '4.0' title: 'Unit Testing' keywords: 'unit testing, phpunit, phalcon'
+layout: default language: 'en' version: '4.0' title: 'Pruebas Unitarias' keywords: 'pruebas unitarias, phpunit, phalcon'
 - - -
 # Pruebas Unitarias
 - - -
@@ -7,7 +7,7 @@ layout: default language: 'en' version: '4.0' title: 'Unit Testing' keywords: 'u
 
 ## Preámbulo
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Escribir pruebas adecuadas puede ayudar a escribir mejor software. Si configura correctamente los casos de prueba puede eliminar la mayoría de errores funcionales y mantener mejor su software.
 
 ## Integrando PHPUnit con Phalcon
 
@@ -25,7 +25,7 @@ o agregando manualmente al archivo `composer.json`:
 }
 ```
 
-Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
+Una vez que PHPUnit está instalado, cree un directorio llamado `tests` en el directorio raíz del proyecto con un subdirectorio llamado `Unit`:
 
 ```
 app/
@@ -36,7 +36,7 @@ tests/Unit/
 
 ### Configurar el espacio de nombres de prueba
 
-In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
+Para autocargar nuestro directorio de pruebas, debemos añadir nuestro espacio de nombres de prueba a composer. Añada lo siguiente a composer y modifíquelo según sus necesidades.
 
 ```json
 {
@@ -48,11 +48,11 @@ In order to autoload our test directory, we must add our test namespace to compo
 }
 ```
 
-Now, create a `phpunit.xml` file as follows:
+Ahora, cree un fichero `phpunit.xml` como sigue:
 
 ### El archivo `phpunit.xml`
 
-Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
+Modifique el siguiente `phpunit.xml` para cubrir sus necesidades y guárdelo en el directorio raíz de su proyecto. Esto ejecutará cualquier prueba bajo el directorio `tests/Unit`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -75,9 +75,9 @@ Modify the `phpunit.xml` below to fit your needs and save it in your project roo
 
 ### Phalcon Incubator Test
 
-Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
+Phalcon proporciona una librería de pruebas que proporciona algunas clases abstractas que puede usar para arrancar las Pruebas Unitarias. Estos ficheros existen en el repositorio [Phalcon Incubator Test](https://github.com/phalcon/incubator-test).
 
-You can use the Incubator test library by adding it as a dependency:
+Puede usar la librería de pruebas de Incubator añadiéndola como dependencia:
 
 ```bash
 composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
@@ -95,12 +95,12 @@ o agregando manualmente al archivo `composer.json`:
 
 ## Creando una prueba unitaria
 
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Siempre es aconsejable autocargar sus clases usando espacios de nombres. La configuración siguiente asume que está usando PSR-4 para autocargar las clases de su proyecto vía configuración de composer. Entonces, el autocargador se asegurará de que se carguen los ficheros apropiados, por lo que todo lo que necesita es crear los ficheros y phpunit ejecutará las pruebas por usted.
 
-This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
+Este ejemplo no contiene un archivo de configuración, ya que la mayoría de los casos debería estar simulando sus dependencias. Si necesita uno, puede añadir al `DI` en el `AbstractUnitTest`.
 
 ### Prueba Unitaria Abstracta
-First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
+Primero cree una Prueba Unitaria base llamada `AbstractUnitTest.php` en su directorio `tests/Unit`:
 
 ```php
 <?php
@@ -143,7 +143,7 @@ abstract class AbstractUnitTest extends UnitTestCase
 
 ### Tu Primera Prueba
 
-Create the test below and save it in your `tests/Unit` directory.
+Cree la prueba siguiente y guárdela en su directorio `tests/Unit`.
 
 ```php
 <?php
@@ -171,7 +171,7 @@ class UnitTest extends AbstractUnitTest
 }
 ```
 
-If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
+Si necesita sobrecargar el método `setUp`, es importante llamar al padre o Phalcon no se inicializará correctamente.
 ```php
     protected function setUp(): void
     {
@@ -184,7 +184,7 @@ If you need to overload the `setUp` method, it is important you call the parent 
 
 ### Ejecución de Pruebas Unitarias
 
-When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
+Cuando ejecute `vendor/bin/phpunit` en su línea de comandos, obtendrá la siguiente salida:
 
 ```bash
 $ phpunit
