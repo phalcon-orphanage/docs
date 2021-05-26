@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Caso de Uso'
-keywords: 'use case, examples'
+keywords: 'caso de uso, ejemplos'
 ---
 
 # Caso de Uso
@@ -12,67 +12,67 @@ keywords: 'use case, examples'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Throughout this documentation we are going to assume that we are building an accounting application.
+A través de esta documentación vamos a asumir que estamos construyendo una aplicación contable.
 
 ## Requerimentos
 
-- MVC application using [Phalcon\Mvc\Application](application)
-- Store data in a database (MariaDB/MySQL)
-- Offer a UI for users to work 
-    - Login page
-    - Administration area 
-        - Cache management
-        - Permissions
-        - Products CRUD
-        - Users CRUD
-    - Accounting department area 
-        - Invoices
-        - Customers
-        - Payments
-    - Customer portal area 
-        - Invoices (view)
-        - Payment
-        - Reports
+- Aplicación MVC usando [Phalcon\Mvc\Application](application)
+- Almacenar datos en una base de datos (MariaDB/MySQL)
+- Ofrecer una UI para que trabajen los usuarios 
+    - Página de Login
+    - Área de administración 
+        - Gestión de caché
+        - Permisos
+        - CRUD de productos
+        - CRUD de usuarios
+    - Área de departamento de contabilidad 
+        - Facturas
+        - Clientes
+        - Pagos
+    - Área portal del cliente 
+        - Facturas (vista)
+        - Pago
+        - Informes
 
-## Groups - User Roles
+## Grupos - Roles de Usuario
 
-| Group          | Descripción                                        |
-| -------------- | -------------------------------------------------- |
-| Guests         | Users that are not logged in, visitors to the site |
-| Customers      | Users that have purchased products                 |
-| Accounting     | Users of the accounting department                 |
-| Managers       | Accounting department managers                     |
-| Administrators | Full access to the whole application               |
+| Grupo           | Descripción                                            |
+| --------------- | ------------------------------------------------------ |
+| Invitados       | Usuarios que no están conectados, visitantes del sitio |
+| Clientes        | Usuarios que han comprado productos                    |
+| Contabilidad    | Usuarios del departamento de contabilidad              |
+| Gestores        | Gestores del departamento de contabilidad              |
+| Administradores | Acceso total a toda la aplicación                      |
 
-## Endpoints
+## Puntos Finales
 
-| Endpoint                          | Descripción                                                  |
-| --------------------------------- | ------------------------------------------------------------ |
-| `/login`                          | Path `/session/login`. Presents the login screen             |
-| `/logout`                         | Path `/session/logout`. Logs user out, redirects to `/login` |
-| `/portal/invoices/list`           | List invoices for the currently logged in customer           |
-| `/portal/invoices/view/{0-9}`     | View invoice for the currently logged in customer            |
-| `/portal/invoices/pay/{0-9}`      | Pay invoice (payment gateway)                                |
-| `/portal/reports/list`            | List available reports for the logged in customer            |
-| `/portal/reports/view/{0-9}`      | View report for this customer                                |
-| `/accounting/invoices/add`        | Add new invoice                                              |
-| `/accounting/invoices/edit/{0-9}` | Edit an invoice                                              |
-| `/accounting/invoices/view/{0-9}` | View an invoice                                              |
-| `/accounting/invoices/list`       | List all invoices                                            |
-| `/accounting/invoices/void/{0-9}` | Void an invoice                                              |
-| `/admin/cache/view`               | View all cache items                                         |
-| `/admin/cache/delete/{0-9}`       | Delete a cache item                                          |
-| `/admin/cache/void`               | Void the whole cache                                         |
-| `/admin/permissions/list`         | Show the current permissions                                 |
-| `/admin/permissions/add`          | Add a new permission                                         |
-| `/admin/permissions/edit/{0-9}`   | Edit a permission                                            |
-| `/admin/products/list`            | List all products                                            |
-| `/admin/products/add`             | Add a product                                                |
-| `/admin/products/edit/{0-9}`      | Edit a product                                               |
-| `/admin/products/delete/{0-9}`    | Delete a product                                             |
-| `/admin/products/view/{0-9}`      | View a product                                               |
-| `/admin/users/list`               | List all users                                               |
-| `/admin/users/add`                | Add a user                                                   |
-| `/admin/users/edit/{0-9}`         | Edit a user                                                  |
-| `/admin/users/delete/{0-9}`       | Delete a user                                                |
-| `/admin/users/view/{0-9}`         | View a user                                                  |
+| Punto Final                       | Descripción                                                              |
+| --------------------------------- | ------------------------------------------------------------------------ |
+| `/login`                          | Ruta `/session/login`. Presenta la página de inicio de sesión            |
+| `/logout`                         | Ruta `/session/logout`. Cierra la sesión de usuario, redirige a `/login` |
+| `/portal/invoices/list`           | Lista facturas para el cliente conectado actualmente                     |
+| `/portal/invoices/view/{0-9}`     | Ver factura para el cliente conectado actualmente                        |
+| `/portal/invoices/pay/{0-9}`      | Pagar factura (pasarela de pago)                                         |
+| `/portal/reports/list`            | Lista informes disponibles para el cliente conectado                     |
+| `/portal/reports/view/{0-9}`      | Ver informe para este cliente                                            |
+| `/accounting/invoices/add`        | Añadir nueva factura                                                     |
+| `/accounting/invoices/edit/{0-9}` | Editar una factura                                                       |
+| `/accounting/invoices/view/{0-9}` | Ver una factura                                                          |
+| `/accounting/invoices/list`       | Listar todas las facturas                                                |
+| `/accounting/invoices/void/{0-9}` | Anular una factura                                                       |
+| `/admin/cache/view`               | Ver todos los elementos de caché                                         |
+| `/admin/cache/delete/{0-9}`       | Borrar un elemento de caché                                              |
+| `/admin/cache/void`               | Anular toda la caché                                                     |
+| `/admin/permissions/list`         | Mostrar los permisos actuales                                            |
+| `/admin/permissions/add`          | Añadir un nuevo permiso                                                  |
+| `/admin/permissions/edit/{0-9}`   | Editar un permiso                                                        |
+| `/admin/products/list`            | Listar todos los productos                                               |
+| `/admin/products/add`             | Añadir un producto                                                       |
+| `/admin/products/edit/{0-9}`      | Editar un producto                                                       |
+| `/admin/products/delete/{0-9}`    | Borrar un producto                                                       |
+| `/admin/products/view/{0-9}`      | Ver un producto                                                          |
+| `/admin/users/list`               | Listar todos los usuarios                                                |
+| `/admin/users/add`                | Añadir un usuario                                                        |
+| `/admin/users/edit/{0-9}`         | Editar un usuario                                                        |
+| `/admin/users/delete/{0-9}`       | Borrar un usuario                                                        |
+| `/admin/users/view/{0-9}`         | Ver un usuario                                                           |
