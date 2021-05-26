@@ -671,7 +671,7 @@ if ($users->count() > 0) {
 }
 ```
 
-As you can see our variables `$users` can be iterated and counted. You can get more information on how models operate in our document about [models](db-models).
+As you can see our variable `$users` can be iterated and counted. You can get more information on how models operate in our document about [models](db-models).
 
 ![](/assets/images/content/tutorial-basic-5.png)
 
