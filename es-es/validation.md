@@ -139,7 +139,7 @@ public function getValue(
 ): mixed | null
 ```
 
-Gets a value to validate in the array/object data source
+Obtiene un valor a validar en la fuente de datos vector/objeto
 
 ```php
 public function rule(
