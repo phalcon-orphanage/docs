@@ -445,7 +445,7 @@ Validate a set of data according to a set of rules
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Check for alphanumeric character(s)
+Comprobar caracter(es) alfanumérico(s)
 
 ```php
 use Phalcon\Validation;
@@ -506,7 +506,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Check for alphabetic character(s)
+Verifica uno o varios caracteres alfabéticos
 
 ```php
 use Phalcon\Validation;
@@ -567,7 +567,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.
+Valida que un valor está entre un rango inclusivo de dos valores. For a value x, the test is passed if minimum<=x<=maximum.
 
 ```php
 use Phalcon\Validation;
@@ -709,7 +709,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks that two values have the same value
+Comprueba si dos valores tienen el mismo valor
 
 ```php
 use Phalcon\Validation;
@@ -781,7 +781,7 @@ Compare strings
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks if a value has a valid credit card number
+Comprueba si un valor tiene un número de tarjeta de crédito válido
 
 ```php
 use Phalcon\Validation;
@@ -842,7 +842,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | DateTime, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks if a value is a valid date
+Verifica si un valor es una fecha válida
 
 ```php
 use Phalcon\Validation;
@@ -908,7 +908,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Check for numeric character(s)
+Comprueba caracter(es) numérico(s)
 
 ```php
 use Phalcon\Validation;
@@ -969,7 +969,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks if a value has a correct e-mail format
+Verifica si un valor tiene un formato de correo electrónico correcto
 
 ```php
 use Phalcon\Validation;
@@ -1038,7 +1038,7 @@ Exceptions thrown in Phalcon\Validation\Validator\* classes will use this class
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
-Check if a value is not included into a list of values
+Comprueba si un valor no está incluido en una lista de valores
 
 ```php
 use Phalcon\Validation;
@@ -1110,7 +1110,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidatorComposite, Phalcon\Validation\Validator\File\MimeType, Phalcon\Validation\Validator\File\Resolution\Equal, Phalcon\Validation\Validator\File\Resolution\Max, Phalcon\Validation\Validator\File\Resolution\Min, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\Size\Min | | Extends | AbstractValidatorComposite |
 
-Checks if a value has a correct file
+Verifica si un valor tiene un archivo correcto
 
 ```php
 use Phalcon\Validation;
@@ -1190,7 +1190,7 @@ Constructor
 
 | Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks if a value has a correct file
+Verifica si un valor tiene un archivo correcto
 
 ```php
 use Phalcon\Validation;
@@ -1316,7 +1316,7 @@ public function setMessageValid( $messageValid )
 
 | Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception | | Extends | AbstractFile |
 
-Checks if a value has a correct file mime type
+Comprueba si un valor tiene un tipo de medio de fichero correcto
 
 ```php
 use Phalcon\Validation;
@@ -1385,7 +1385,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
-Checks if a file has the right resolution
+Comprueba si un fichero tiene una resolución correcta
 
 ```php
 use Phalcon\Validation;
@@ -1451,7 +1451,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
-Checks if a file has the right resolution
+Comprueba si un fichero tiene una resolución correcta
 
 ```php
 use Phalcon\Validation;
@@ -1522,7 +1522,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
-Checks if a file has the right resolution
+Comprueba si un fichero tiene una resolución correcta
 
 ```php
 use Phalcon\Validation;
@@ -1593,7 +1593,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
-Checks if a value has a correct file
+Verifica si un valor tiene un archivo correcto
 
 ```php
 use Phalcon\Validation;
@@ -1664,7 +1664,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
-Checks if a value has a correct file
+Verifica si un valor tiene un archivo correcto
 
 ```php
 use Phalcon\Validation;
@@ -1735,7 +1735,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
-Checks if a value has a correct file
+Verifica si un valor tiene un archivo correcto
 
 ```php
 use Phalcon\Validation;
@@ -1806,7 +1806,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks if a value is identical to other
+Verifica si un valor es idéntico a otro
 
 ```php
 use Phalcon\Validation;
@@ -1872,7 +1872,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
-Check if a value is included into a list of values
+Comprueba si un valor está incluido en una lista de valores
 
 ```php
 use Phalcon\Validation;
