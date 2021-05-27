@@ -1938,7 +1938,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Messages\Message | | Extends | AbstractValidator |
 
-Check for IP addresses
+Comprueba direcciones IP
 
 ```php
 use Phalcon\Validation\Validator\Ip as IpValidator;
@@ -2023,7 +2023,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Check for a valid numeric value
+Comprueba que haya un valor numérico válido
 
 ```php
 use Phalcon\Validation;
@@ -2425,7 +2425,7 @@ Executes the validation
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Validation, Phalcon\Validation\AbstractCombinedFieldsValidator, Phalcon\Validation\Exception | | Extends | AbstractCombinedFieldsValidator |
 
-Check that a field is unique in the related table
+Comprueba que un campo sea único en la tabla relacionada
 
 ```php
 use Phalcon\Validation;
@@ -2444,7 +2444,7 @@ $validator->add(
 );
 ```
 
-Different attribute from the field:
+Atributo diferente del campo:
 
 ```php
 $validator->add(
@@ -2467,7 +2467,7 @@ $validator->add(
 );
 ```
 
-Combination of fields in model:
+Combinación de campos en el modelo:
 
 ```php
 $validator->add(
@@ -2479,7 +2479,7 @@ $validator->add(
 );
 ```
 
-It is possible to convert values before validation. This is useful in situations where values need to be converted to do the database lookup:
+Es posible convertir valores antes de la validación. This is useful in situations where values need to be converted to do the database lookup:
 
 ```php
 $validator->add(
@@ -2543,7 +2543,7 @@ Uniqueness method used for model
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Checks if a value has a url format
+Comprueba si un valor tiene un formato de url
 
 ```php
 use Phalcon\Validation;
