@@ -104,7 +104,7 @@ baseUri        = /invo/
 
 Phalcon does not have a convention for defining settings. Sections help us to organize the options based on groups that makes sense for our application. In our file there are two questions that will be used later on: `application` and `database`.
 
-## Autoloader
+## Autocargador
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 

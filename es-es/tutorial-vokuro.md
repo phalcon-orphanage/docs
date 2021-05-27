@@ -491,7 +491,7 @@ The available providers are:
 
 | Provider                 | Descripción                                       |
 | ------------------------ | ------------------------------------------------- |
-| `AclProvider`            | Permissions                                       |
+| `AclProvider`            | Permisos                                          |
 | `AuthProvider`           | Autenticación                                     |
 | `ConfigProvider`         | Configuration values                              |
 | `CryptProvider`          | Encryption                                        |
@@ -622,7 +622,7 @@ The available controllers, actions and routes for Vökuró are:
 | ------------- | ---------------- | ------------------------- | ------------------------------------------- |
 | `About`       | `index`          | `/about`                  | Shows the `about` page                      |
 | `Índice`      | `index`          | `/`                       | Default action - home page                  |
-| `Permissions` | `index`          | `/permissions`            | View/change permissions for a profile level |
+| `Permisos`    | `index`          | `/permissions`            | View/change permissions for a profile level |
 | `Privacy`     | `index`          | `/privacy`                | View the privacy page                       |
 | `Profiles`    | `index`          | `/profiles`               | View profiles default page                  |
 | `Profiles`    | `create`         | `/profiles/create`        | Create profile                              |
@@ -670,28 +670,28 @@ and the view is located:
 
 The available views are:
 
-| Controlador   | Acción           | Vistas                         | Descripción                                 |
-| ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
-| `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
-| `Índice`      | `index`          | `/index/index.volt`            | Default action - home page                  |
-| `Permissions` | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
-| `Privacy`     | `index`          | `/privacy/index.volt`          | View the privacy page                       |
-| `Profiles`    | `index`          | `/profiles/index.volt`         | View profiles default page                  |
-| `Profiles`    | `create`         | `/profiles/create.volt`        | Create profile                              |
-| `Profiles`    | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
-| `Profiles`    | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
-| `Profiles`    | `search`         | `/profiles/search.volt`        | Search profiles                             |
-| `Session`     | `index`          | `/session/index.volt`          | Session default action                      |
-| `Session`     | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
-| `Session`     | `login`          | `/session/login.volt`          | Login                                       |
-| `Session`     | `logout`         | `/session/logout.volt`         | Logout                                      |
-| `Session`     | `signup`         | `/session/signup.volt`         | Signup                                      |
-| `Terms`       | `index`          | `/terms/index.volt`            | View the terms page                         |
-| `Users`       | `index`          | `/users/index.volt`            | Users default screen                        |
-| `Users`       | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
-| `Users`       | `create`         | `/users/create.volt`           | Create user                                 |
-| `Users`       | `delete`         | `/users/delete.volt`           | Delete user                                 |
-| `Users`       | `edit`           | `/users/edit.volt`             | Edit user                                   |
+| Controlador | Acción           | Vistas                         | Descripción                                 |
+| ----------- | ---------------- | ------------------------------ | ------------------------------------------- |
+| `About`     | `index`          | `/about/index.volt`            | Shows the `about` page                      |
+| `Índice`    | `index`          | `/index/index.volt`            | Default action - home page                  |
+| `Permisos`  | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
+| `Privacy`   | `index`          | `/privacy/index.volt`          | View the privacy page                       |
+| `Profiles`  | `index`          | `/profiles/index.volt`         | View profiles default page                  |
+| `Profiles`  | `create`         | `/profiles/create.volt`        | Create profile                              |
+| `Profiles`  | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
+| `Profiles`  | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
+| `Profiles`  | `search`         | `/profiles/search.volt`        | Search profiles                             |
+| `Session`   | `index`          | `/session/index.volt`          | Session default action                      |
+| `Session`   | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
+| `Session`   | `login`          | `/session/login.volt`          | Login                                       |
+| `Session`   | `logout`         | `/session/logout.volt`         | Logout                                      |
+| `Session`   | `signup`         | `/session/signup.volt`         | Signup                                      |
+| `Terms`     | `index`          | `/terms/index.volt`            | View the terms page                         |
+| `Users`     | `index`          | `/users/index.volt`            | Users default screen                        |
+| `Users`     | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
+| `Users`     | `create`         | `/users/create.volt`           | Create user                                 |
+| `Users`     | `delete`         | `/users/delete.volt`           | Delete user                                 |
+| `Users`     | `edit`           | `/users/edit.volt`             | Edit user                                   |
 
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
@@ -1556,7 +1556,7 @@ class Users extends Model
 }
 ```
 
-## Conclusion
+## Conclusión
 
 Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 

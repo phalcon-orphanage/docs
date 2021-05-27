@@ -825,11 +825,11 @@ SELECT
     co_products.prd_title 
 FROM 
     co_invoices
-JOIN JOIN
+JOIN
     co_invoices_x_products 
 ON 
     co_invoices.inv_id = co_invoices_x_products.ixp_inv_id
-JOIN JOIN
+JOIN
     co_products 
 ON 
     co_invoices_x_products.ixp_prd_id = co_products.prd_id
@@ -1707,7 +1707,7 @@ if (false === $result->success()) {
 
 ## Constructor de Consultas
 
-[Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) es un constructor muy práctico que le permite construir sentencias PHQL de una forma orientada a objetos. La mayoría de métodos devuelven el objeto constructor, permitiéndole usar una interfaz fluida y lo suficiente flexible para permitirle añadir condicionales si lo necesita, sin tener que crear sentencias `if` complejas y concatenaciones de cadenas al construir la sentencia PHQL.
+[Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) is a very handy builder that allows you to construct PHQL statements in an object oriented way. La mayoría de métodos devuelven el objeto constructor, permitiéndole usar una interfaz fluida y lo suficiente flexible para permitirle añadir condicionales si lo necesita, sin tener que crear sentencias `if` complejas y concatenaciones de cadenas al construir la sentencia PHQL.
 
 La consulta PHQL:
 
@@ -1754,7 +1754,7 @@ $invoices = $this
 
 ### Parámetros
 
-Si crea un objeto [Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) directamente o usa el método `createBuilder` del Gestor de Modelos, siempre puede usar la interfaz fluida para construir su consulta o pasar un vector con los parámetros en el constructor. Las claves del vector son:
+Whether you create a [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. Las claves del vector son:
 
 * `bind` - `array` - vector de datos a enlazar
 * `bindTypes` - `array` - Tipos de parámetro PDO
@@ -2141,6 +2141,13 @@ Añade una condición `IN` en la cláusula actual de condiciones `WHERE`. El mé
 $builder->inWhere(
     "Invoices.inv_id",
     [1, 3, 5]
+);
+
+//Using OPERATOR_OR:
+$builder->inWhere(
+    "Invoices.inv_id",
+    [1, 3, 5],
+    \Phalcon\Mvc\Model\Query\BuilderInterface::OPERATOR_OR
 );
 ```
 

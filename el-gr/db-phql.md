@@ -825,11 +825,11 @@ SELECT
     co_products.prd_title 
 FROM 
     co_invoices
-JOIN JOIN
+JOIN
     co_invoices_x_products 
 ON 
     co_invoices.inv_id = co_invoices_x_products.ixp_inv_id
-JOIN JOIN
+JOIN
     co_products 
 ON 
     co_invoices_x_products.ixp_prd_id = co_products.prd_id
@@ -1707,7 +1707,7 @@ if (false === $result->success()) {
 
 ## Query Builder
 
-[Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) is a very handy builder that allows you to construct PHQL statements in an object oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
+[Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) is a very handy builder that allows you to construct PHQL statements in an object oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
 
 The PHQL query:
 
@@ -1754,7 +1754,7 @@ $invoices = $this
 
 ### Παράμετροι
 
-Whether you create a [Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
+Whether you create a [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
 
 * `bind` - `array` - array of the data to be bound
 * `bindTypes` - `array` - PDO parameter types
@@ -2141,6 +2141,13 @@ Appends an `IN` condition to the current `WHERE` conditions clause. The method a
 $builder->inWhere(
     "Invoices.inv_id",
     [1, 3, 5]
+);
+
+//Using OPERATOR_OR:
+$builder->inWhere(
+    "Invoices.inv_id",
+    [1, 3, 5],
+    \Phalcon\Mvc\Model\Query\BuilderInterface::OPERATOR_OR
 );
 ```
 
