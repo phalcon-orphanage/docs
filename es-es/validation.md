@@ -273,8 +273,8 @@ Phalcon ofrece un conjunto de validadores integrados para este componente:
 | [Phalcon\Validation\Validator\File](api/phalcon_validation#validation-validator-file)                                     | Archivo                         |
 | [Phalcon\Validation\Validator\File\MimeType](api/phalcon_validation#validation-validator-file-mimetype)                  | Tipo de medio del fichero       |
 | [Phalcon\Validation\Validator\File\Resolution\Equal](api/phalcon_validation#validation-validator-file-resolution-equal) | Igual resolución del Fichero    |
-| [Phalcon\Validation\Validator\File\Resolution\Max](api/phalcon_validation#validation-validator-file-resolution-max)     | Maximum resolution of File      |
-| [Phalcon\Validation\Validator\File\Resolution\Min](api/phalcon_validation#validation-validator-file-resolution-min)     | Minimum resolution of File      |
+| [Phalcon\Validation\Validator\File\Resolution\Max](api/phalcon_validation#validation-validator-file-resolution-max)     | Resolución máxima del Fichero   |
+| [Phalcon\Validation\Validator\File\Resolution\Min](api/phalcon_validation#validation-validator-file-resolution-min)     | Resolución mínima del Fichero   |
 | [Phalcon\Validation\Validator\File\Size\Equal](api/phalcon_validation#validation-validator-file-size-equal)             | Tamaño de Fichero Igual         |
 | [Phalcon\Validation\Validator\File\Size\Max](api/phalcon_validation#validation-validator-file-size-max)                 | Máximo Tamaño de Fichero        |
 | [Phalcon\Validation\Validator\File\Size\Min](api/phalcon_validation#validation-validator-file-size-min)                 | Mínimo Tamaño de Fichero        |
@@ -366,7 +366,7 @@ $validator->add(
 
 ### Between
 
-Valida que un valor está entre un rango inclusivo de dos valores. The validation passes if for a value `L`, minimum is less or equal than `L` and `L` is less or equal than the maximum. Los límites están incluidos en esta validación. La fórmula es:
+Valida que un valor está entre un rango inclusivo de dos valores. La validación pasa si para un valor `L`, el mínimo es menor o igual que `L` y `L` es menor o igual que el máximo. Los límites están incluidos en esta validación. La fórmula es:
 
     mínimo <= valor <= máximo
     
