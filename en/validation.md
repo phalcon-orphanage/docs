@@ -127,7 +127,7 @@ public function getValue(
     string $field
 ): mixed | null
 ```
-Gets the a value to validate in the array/object data source
+Gets a value to validate in the array/object data source
 
 ```php
 public function rule(
@@ -253,8 +253,8 @@ Phalcon offers a set of built-in validators for this component:
 | [Phalcon\Validation\Validator\File][validation-validator-file]                                   | File                       |
 | [Phalcon\Validation\Validator\File\MimeType][validation-validator-file-mimetype]                 | Mimetype File              |
 | [Phalcon\Validation\Validator\File\Resolution\Equal][validation-validator-file-resolution-equal] | Equal resolution of File   |
-| [Phalcon\Validation\Validator\File\Resolution\Max][validation-validator-file-resolution-max]     | Minimum resolution of File |
-| [Phalcon\Validation\Validator\File\Resolution\Min][validation-validator-file-resolution-min]     | Maximum resolution of File |
+| [Phalcon\Validation\Validator\File\Resolution\Max][validation-validator-file-resolution-max]     | Maximum resolution of File |
+| [Phalcon\Validation\Validator\File\Resolution\Min][validation-validator-file-resolution-min]     | Minimum resolution of File |
 | [Phalcon\Validation\Validator\File\Size\Equal][validation-validator-file-size-equal]             | Equal File Size            |
 | [Phalcon\Validation\Validator\File\Size\Max][validation-validator-file-size-max]                 | Maximum File Size          |
 | [Phalcon\Validation\Validator\File\Size\Min][validation-validator-file-size-min]                 | Minimum File Size          |
@@ -343,7 +343,7 @@ $validator->add(
 ```
 
 ### Between
-Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, minimum is less or equal than `L` and `L` less than equal than the maximum. The boundaries are included in this validation. The formula is:
+Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, minimum is less or equal than `L` and `L` is less or equal than the maximum. The boundaries are included in this validation. The formula is:
 
 ```
 minimum <= value <= maximum
