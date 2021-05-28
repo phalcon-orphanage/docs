@@ -915,7 +915,7 @@ Additionally, you can use compound assignment operators:
 
 The following operators are available:
 
-| Operator | Descripción                  |
+| Operador | Descripción                  |
 | -------- | ---------------------------- |
 | `=`      | Asignación estándar          |
 | `+=`     | Asignación de adición        |
@@ -961,7 +961,7 @@ The following literals are supported:
 | `true`                 | Constant `true` is the boolean `true` value                                           |
 | `null`                 | Constant `null` is the `null` value                                                   |
 
-### Arrays
+### Vectores
 
 You can create arrays by enclosing a list of values in square brackets:
 
@@ -995,7 +995,7 @@ Curly braces also can be used to define arrays or hashes:
 
 You may make calculations in templates using the following operators:
 
-| Operator | Descripción                                                                                    |
+| Operador | Descripción                                                                                    |
 |:--------:| ---------------------------------------------------------------------------------------------- |
 |   `+`    | Perform an adding operation. `{%- raw -%}{{ 2 + 3 }}{% endraw %}` returns 5                    |
 |   `-`    | Perform a subtraction operation `{%- raw -%}{{ 2 - 3 }}{% endraw %}` returns -1                |
@@ -1007,12 +1007,12 @@ You may make calculations in templates using the following operators:
 
 The following comparison operators are available:
 
-|  Operator  | Descripción                                                                       |
+|  Operador  | Descripción                                                                       |
 |:----------:| --------------------------------------------------------------------------------- |
-|    `==`    | Comprobar si ambos operandos son iguales                                          |
-|    `!=`    | Comprobar si ambos operandos no son iguales                                       |
-| `<>` | Comprobar si ambos operandos no son iguales                                       |
-|   `>`   | Compruebe si el operando izquierdo es mayor que el operando derecho               |
+|    `==`    | Comprueba si ambos operandos son iguales                                          |
+|    `!=`    | Comprueba si ambos operandos no son iguales                                       |
+| `<>` | Comprueba si ambos operandos no son iguales                                       |
+|   `>`   | Comprueba si el operando izquierdo es mayor que el operando derecho               |
 |   `<`   | Compruebe si el operando izquierdo es menor que el operando derecho               |
 |  `<=`   | Compruebe si el operando de la izquierda es menor o igual que el operando derecho |
 |  `>=`   | Compruebe si el operando izquierdo es mayor o igual que el operando derecho       |
@@ -1023,7 +1023,7 @@ The following comparison operators are available:
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
-|  Operator  | Descripción                                                                   |
+|  Operador  | Descripción                                                                   |
 |:----------:| ----------------------------------------------------------------------------- |
 |    `o`     | Devuelve true si el operando de la derecha o la izquierda se evalúa como true |
 |   `and`    | Devuelve true si los operandos izquierdo y derecho se evalúan como verdadero  |
@@ -1034,7 +1034,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 Additional operators seen the following operators are available:
 
-| Operator          | Descripción                                                                                        |
+| Operador          | Descripción                                                                                        |
 | ----------------- | -------------------------------------------------------------------------------------------------- |
 | `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
 | `|`               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello'|uppercase }}{% endraw %}` |
