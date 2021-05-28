@@ -3,11 +3,11 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#volt'
-title: 'Volt: Template Engine'
+title: 'Volt: Motor de plantillas'
 keywords: 'volt, template engine, php generation, view data'
 ---
 
-# Volt: Template Engine
+# Volt: Motor de plantillas
 
 * * *
 
@@ -15,17 +15,17 @@ keywords: 'volt, template engine, php generation, view data'
 
 ## Resumen
 
-Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
+Volt es un motor de plantillas ultrarrápido y de diseño amigable, escrito en C para PHP. Ofrece un conjunto de ayudantes para escribir las vistas fácilmente. Volt está altamente integrado con otros componentes de Phalcon, pero puede ser utilizado como un componente independiente en su aplicación.
 
 ![](/assets/images/content/views-volt.png)
 
-Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko).
+Volt está inspirado en [Jinja](https://github.com/pallets/jinja), originalmente creado por [Armin Ronacher](https://github.com/mitsuhiko).
 
-Many developers will be in familiar territory, using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to, while working with Phalcon.
+Muchos desarrolladores estarán en territorio familiar al utilizar la misma sintaxis que han estado utilizando con motores de plantillas similares. La sintaxis y características de Volt se han mejorado con más elementos y, por supuesto, con el rendimiento al que los desarrolladores han estado acostumbrados mientras trabajan con Phalcon.
 
-## Syntax
+## Sintaxis
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Las vistas de Volt se compilan a código PHP puro, así que, básicamente ahorran el esfuerzo de escribir el código PHP manualmente:
 
 ```twig
 {% raw %}
@@ -51,7 +51,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% endfor %}{% endraw %}
 ```
 
-compared to:
+comparado con:
 
 ```php
 <?php foreach ($invoices as $invoice) { ?>
@@ -85,11 +85,11 @@ public function __construct(
 )
 ```
 
-The constructor accepts a [Phalcon\Mvc\View](views) or any component that implements the `ViewBaseInterface`, and a DI container.
+El constructor acepta un [Phalcon\Mvc\View](views) o cualquier componente que implemente la `ViewBaseInterface`, y un contenedor DI.
 
 ## Métodos
 
-There are several methods available in Volt. In most cases, only a handful of them are used in modern day applications.
+Hay varios métodos disponibles en Volt. En la mayoría de los casos, sólo un puñado de ellos se utilizan en aplicaciones modernas.
 
 ```php
 callMacro(string $name, array $arguments = []): mixed
@@ -113,7 +113,7 @@ Devuelve el compilador del Volt
 getContent(): string
 ```
 
-Returns cached output on another view stage
+Devuelve la salida almacenada en caché en otra etapa de visualización
 
 ```php
 getOptions(): array
@@ -125,7 +125,7 @@ Obtener las opciones de Volt
 getView(): ViewBaseInterface
 ```
 
-Returns the view component related to the adapter
+Devuelve el componente de vista relacionados con el adaptador
 
 ```php
 isIncluded(mixed $needle, mixed $haystack): bool
@@ -137,19 +137,19 @@ Comprueba si se incluye la aguja en el pajar
 length(mixed $item): int
 ```
 
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+Filtro de longitud. Si se pasa un objeto o matriz se realiza un `count()`, de lo contrario realiza un `strlen()<code>/`mb_strlen()</code>
 
 ```php
 partial(string $partialPath, mixed $params = null): string
 ```
 
-Renders a partial inside another view
+Representa una vista parcial dentro de otro punto de vista
 
 ```php
 render(string $templatePath, mixed $params, bool $mustClean = false)
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 ```php
 setOptions(array $options)
@@ -171,7 +171,7 @@ Ordena una matriz
 
 ## Activación
 
-As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
+Como con otros motores de plantillas, se puede registrar Volt en el componente de la vista, usando una nueva extensión o reusar el estándar `phtml`:
 
 ```php
 <?php
@@ -221,7 +221,7 @@ $container->set(
 );
 ```
 
-To use the standard `.phtml` extension:
+Para utilizar la extensión estándar `phtml`:
 
 ```php
 <?php
@@ -233,7 +233,7 @@ $view->registerEngines(
 );
 ```
 
-You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
+No tienes que especificar el servicio Volt en el DI; también puede utilizar el motor de Volt con la configuración predeterminada:
 
 ```php
 <?php
@@ -248,7 +248,7 @@ $view->registerEngines(
 );
 ```
 
-If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
+Si no quieres reutilizar Volt como un servicio, puedes pasar una función anónima para registrar el motor en lugar de un nombre de servicio:
 
 ```php
 <?php
@@ -293,23 +293,23 @@ $container->set(
 );
 ```
 
-The following options are available in Volt:
+Las siguientes opciones están disponibles en Volt:
 
-| Opción       | Predeterminado | Descripción                                                                                                              |
-| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `autoescape` | `false`        | Enables autoescape HTML globally                                                                                         |
-| `always`     | `false`        | Whether templates must be compiled in each request or when they change                                                   |
-| `extension`  | `.php`         | An additional extension appended to the compiled PHP file                                                                |
-| `path`       | `./`           | A writeable path where the compiled PHP templates will be placed                                                         |
-| `separator`  | `%%`           | Replace directory separators `/` and `\` with this separator in order to create a single file in the compiled directory |
-| `prefix`     | `null`         | Prepend a prefix to the templates in the compilation path                                                                |
-| `stat`       | `true`         | Whether Phalcon must check if there are differences between the template file and its compiled path                      |
+| Opción       | Predeterminado | Descripción                                                                                                                          |
+| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `autoescape` | `false`        | Habilita el autoescape HTML globalmente                                                                                              |
+| `always`     | `false`        | Si se deben compilar las plantillas en cada petición o cuando cambian                                                                |
+| `extension`  | `.php`         | Extensión adicional añadida al fichero PHP compilado                                                                                 |
+| `path`       | `./`           | Una ruta escribible donde se colocarán las plantillas PHP compiladas                                                                 |
+| `separator`  | `%%`           | Sustituye los separadores de directorio `/` and `\` con este separador para poder crear un único fichero en el directorio compilado |
+| `prefix`     | `null`         | Antepone un prefijo a las plantillas en la ruta de compilación                                                                       |
+| `stat`       | `true`         | Si Phalcon debe comprobar si hay diferencias entre el fichero de plantilla y su ruta compilada                                       |
 
-The compilation path is generated according to the options above. You however, have total freedom in defining the compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the relative path to the template in the predefined views directory.
+La ruta de compilación se genera de acuerdo a las opciones anteriores. Sin embargo, tiene total libertad para definir la ruta de compilación como una función anónima, incluyendo la lógica usada para generarla. La función anónima recibe la ruta relativa a la plantilla en el directorio de vistas predefinidas.
 
-**Appending extensions**
+**Añadir extensiones**
 
-Append the `.php` extension to the template path, leaving the compiled templates in the same directory:
+Añadir la extensión `.php` a la ruta de plantilla, dejando las plantillas compiladas en el mismo directorio:
 
 ```php
 <?php
@@ -323,9 +323,9 @@ $volt->setOptions(
 );
 ```
 
-**Different directories**
+**Directorios diferentes**
 
-The following example will create the same structure in a different directory
+El siguiente ejemplo creará la misma estructura en directorios diferentes
 
 ```php
 <?php
@@ -351,16 +351,16 @@ $volt->setOptions(
 
 ## Uso
 
-Volt uses specific delimiters for its syntax. `
+Volt usa delimitadores específicos para su sintaxis. `
 {%- raw -%}
 {% ... %}
 {% endraw %}
-` is used to execute statements such as for-loops or assign values and `
+` se usa para ejecutar sentencias como bucles-for o asignar valores y `
 {%- raw -%}
 {{ ... }}{% endraw %}
-` prints the result of an expression to the template. The view files can also contain PHP and HTML should you choose to.
+` imprime el resultado de una expresión en la plantilla. Los ficheros de vistas también pueden contener PHP y HTML si así lo desea.
 
-Below is a sample template that illustrates a few basics:
+Abajo se muestra un ejemplo de plantilla que ilustra unos pocos conceptos básicos:
 
 ```twig
 {%- raw -%}
@@ -393,7 +393,7 @@ Below is a sample template that illustrates a few basics:
 </html>{% endraw %}
 ```
 
-Using [Phalcon\Mvc\View](view) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `showNavigation`, `menu`, `title` and `post`:
+Usando [Phalcon\Mvc\View](view) puede pasar variables desde el controlador a las vistas. En el ejemplo anterior, se pasaron cuatro variables a la vista: `showNavigation`, `menu`, `title` y `post`:
 
 ```php
 <?php
@@ -428,7 +428,7 @@ class PostsController extends Controller
 }
 ```
 
-> **NOTE** The placeholders for Volt `
+> **NOTA** Los marcadores de posición para Volt `
 {% raw %}{{{% endraw %}
 `, `
 {% raw %}}}
@@ -436,13 +436,13 @@ class PostsController extends Controller
 `, `
 {% raw %}{%
 {% endraw %}
-` and `{% raw %}%}{% endraw %}
-` cannot be changed or set. 
+` y `{% raw %}%}{% endraw %}
+` no se pueden cambiar o establecer. 
 {: .alert .alert-warning }
 
 ### Vue.js
 
-If you are using [Vue](https://vuejs.org) you will need to change the interpolators in Vue itself:
+Si usa [Vue](https://vuejs.org) necesitará cambiar los interpoladores del propio Vue:
 
 ```javascript
 new Vue(
@@ -456,7 +456,7 @@ new Vue(
 
 ### Angular
 
-If you are using [Angular](https://angular.io) you can set the interpolators as follows:
+Si usa [Angular](https://angular.io) puede configurar los interpoladores como sigue:
 
 ```javascript
   var myApp = angular.module('myApp', []);
@@ -471,7 +471,7 @@ If you are using [Angular](https://angular.io) you can set the interpolators as 
 
 ## Variables
 
-Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
+Las variables de objetos pueden tener atributos, que se pueden acceder utilizando la sintaxis: `foo.bar`. Si usted está pasando un array, tiene que usar la sintaxis de corchete: `foo ['bar']`
 
 ```twig
 {%- raw -%}
@@ -482,7 +482,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 ## Filtros
 
-Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
+Las variables pueden ser formateadas o modificación mediante filtros. El operador de tubería o pleca `|` se utiliza para aplicar filtros a las variables:
 
 ```twig
 {%- raw -%}
@@ -492,37 +492,37 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 {% endraw %}
 ```
 
-The available built-in filters are:
+Los filtros incorporados disponibles son:
 
-| Filtro             | Descripción                                                                                                                                     |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Applies the [`abs`](https://php.net/manual/en/function.abs.php) PHP function to a value.                                                        |
-| `capitalize`       | Capitalizes a string by applying the [`ucwords`](https://php.net/manual/en/function.ucwords.php) PHP function to the value                      |
-| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                                        |
-| `default`          | Sets a default value in case the evaluated expression is empty, not set or evaluates to falsy value                                             |
-| `e`                | Applies [`Phalcon\Escaper->escapeHtml()`](escaper) to the value                                                                             |
-| `escape`           | Applies [`Phalcon\Escaper->escapeHtml()`](escaper) to the value                                                                             |
-| `escape_attr`      | Applies [`Phalcon\Escaper->escapeHtmlAttr()`](escaper) to the value                                                                         |
-| `escape_css`       | Applies [`Phalcon\Escaper->escapeCss()`](escaper) to the value                                                                              |
-| `escape_js`        | Applies [`Phalcon\Escaper->escapeJs()`](escaper) to the value                                                                               |
-| `format`           | Formats a string using [`sprintf`](https://php.net/manual/en/function.sprintf.php)                                                              |
-| `json_encode`      | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                             |
-| `json_decode`      | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation                     |
-| `join`             | Joins the array parts using a separator [`join`](https://php.net/manual/en/function.join.php)                                                   |
-| `keys`             | Returns the array keys using [`array_keys`](https://php.net/manual/en/function.array-keys)                                                      |
-| `left_trim`        | Applies the [`ltrim`](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                            |
-| `length`           | Counts the string length or how many items are in an array or object, equivalent of [`count`](https://www.php.net/manual/en/function.count.php) |
-| `lower`            | Cambiar una cadena a minúsculas                                                                                                                 |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [`nl2br`](https://php.net/manual/en/function.nl2br.php)           |
-| `right_trim`       | Applies the [`rtrim`](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                            |
-| `slashes`          | Applies the [`addslashes`](https://php.net/manual/en/function.addslashes.php) PHP function to the value.                                        |
-| `slice`            | Slices strings, arrays or traversable objects                                                                                                   |
-| `sort`             | Sorts an array using the PHP function [`asort`](https://php.net/manual/en/function.asort.php)                                                   |
-| `stripslashes`     | Applies the [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes            |
-| `striptags`        | Applies the [`striptags`](https://php.net/manual/en/function.strip-tags.php) PHP function to the value. Removing HTML tags                      |
-| `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                              |
-| `upper`            | Applies the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function to the value.                                    |
-| `url_encode`       | Applies the [`urlencode`](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                           |
+| Filtro             | Descripción                                                                                                                                              |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `abs`              | Aplica la función PHP [`abs`](https://php.net/manual/en/function.abs.php) a un valor.                                                                    |
+| `capitalize`       | Capitaliza una cadena aplicando la función PHP [`ucwords`](https://php.net/manual/en/function.ucwords.php) al valor                                      |
+| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                                                 |
+| `default`          | Establece un valor por defecto en caso de que la expresión evaluada esté vacía, no establecida o evalúa a un valor falso                                 |
+| `e`                | Aplica [`Phalcon\Escaper->escapeHtml()`](escaper) al valor                                                                                           |
+| `escape`           | Aplica [`Phalcon\Escaper->escapeHtml()`](escaper) al valor                                                                                           |
+| `escape_attr`      | Aplica [`Phalcon\Escaper->escapeHtmlAttr()`](escaper) al valor                                                                                       |
+| `escape_css`       | Aplica [`Phalcon\Escaper->escapeCss()`](escaper) al valor                                                                                            |
+| `escape_js`        | Aplica [`Phalcon\Escaper->escapeJs()`](escaper) al valor                                                                                             |
+| `format`           | Formatea una cadena usando [`sprintf`](https://php.net/manual/en/function.sprintf.php)                                                                   |
+| `json_encode`      | Convierte un valor en su representación [JSON](https://php.net/manual/en/function.json-encode.php)                                                       |
+| `json_decode`      | Convierte un valor desde su representación [JSON](https://php.net/manual/en/function.json-encode.php) a una representación PHP                           |
+| `join`             | Une las partes del vector usando un separador [`join`](https://php.net/manual/en/function.join.php)                                                      |
+| `keys`             | Devuelve las claves del vector usando [`array_keys`](https://php.net/manual/en/function.array-keys)                                                      |
+| `left_trim`        | Aplica la función PHP [`ltrim`](https://php.net/manual/en/function.ltrim.php) al valor. Elimina los espacios extra                                       |
+| `length`           | Cuenta la longitud de la cadena o cuantos elementos hay en un vector u objeto, equivalente a [`count`](https://www.php.net/manual/en/function.count.php) |
+| `lower`            | Cambiar una cadena a minúsculas                                                                                                                          |
+| `nl2br`            | Cambia nuevas líneas `\n` por roturas de línea (`<br />`). Uses the PHP function [`nl2br`](https://php.net/manual/en/function.nl2br.php)          |
+| `right_trim`       | Aplica la función PHP [`rtrim`](https://php.net/manual/en/function.rtrim.php) al valor. Elimina los espacios extra                                       |
+| `slashes`          | Aplica la función PHP [`addslashes`](https://php.net/manual/en/function.addslashes.php) al valor.                                                        |
+| `slice`            | Corta cadenas, vectores u objetos atravesables                                                                                                           |
+| `sort`             | Ordena un vector usando la función PHP [`asort`](https://php.net/manual/en/function.asort.php)                                                           |
+| `stripslashes`     | Aplica la función PHP [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) al valor. Elimina comillas escapadas                         |
+| `striptags`        | Aplica la función PHP [`striptags`](https://php.net/manual/en/function.strip-tags.php) al valor. Elimina etiquetas HTML                                  |
+| `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Elimina los espacios extra                                  |
+| `upper`            | Applies the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function to the value.                                             |
+| `url_encode`       | Applies the [`urlencode`](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                                    |
 
 **Ejemplos**
 
@@ -586,12 +586,12 @@ The available built-in filters are:
 {% endraw %}
 ```
 
-## Comments
+## Comentarios
 
-Comments may also be added to a template using the `
+Los comnetarios se pueden añadir a una plantilla usando los delimitadores `
 {%- raw -%}
 {# ... #}{% endraw %}
-` delimiters. All text inside them is just ignored in the final output:
+`. Todo el texto entre ellos simplemente se ignorará en la salida final:
 
 ```twig
 {%- raw -%}
@@ -600,13 +600,13 @@ Comments may also be added to a template using the `
 #}{% endraw %}
 ```
 
-## Control Structures
+## Estructuras de Control
 
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt proporciona un conjunto de estructuras de control básicas pero poderosas para usar en las plantillas:
 
 ### For
 
-Loop over each item in a sequence. The following example shows how to traverse a set of `invoices` and print each title:
+Itera sobre cada elemento de una secuencia. The following example shows how to traverse a set of `invoices` and print each title:
 
 ```twig
 {%- raw -%}
@@ -633,7 +633,7 @@ Product: {{ product.prd_title|e }} {{ product.prd_price|e }} USD <br />
 {% endraw %}
 ```
 
-You can get the element `keys` as in the PHP counterpart using the following syntax:
+Puede obtener el elemento `keys` como en la homóloga en PHP usando la siguiente sintaxis:
 
 ```twig
 {%- raw -%}
@@ -645,7 +645,7 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 {% endraw %}
 ```
 
-An `if` evaluation can be optionally set:
+Se puede establecer opcionalmente una evaluación `if`:
 
 ```twig
 {%- raw -%}
@@ -661,7 +661,7 @@ An `if` evaluation can be optionally set:
 {% endraw %}
 ```
 
-If an `else` is defined inside the `for`, it will be executed if the expression in the iterator result in zero iterations:
+Si se define un `else` dentro del `for`, se ejecutará si la expresión en el iterador resulta en cero iteraciones:
 
 ```twig
 {%- raw -%}
@@ -674,7 +674,7 @@ If an `else` is defined inside the `for`, it will be executed if the expression 
 {% endraw %}
 ```
 
-Alternative syntax:
+Sintaxis alternativa:
 
 ```twig
 {%- raw -%}
@@ -687,7 +687,7 @@ Alternative syntax:
 {% endraw %}
 ```
 
-### Loops
+### Bucles
 
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
@@ -717,7 +717,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 
 ### If
 
-As PHP, an `if` statement checks if an expression is evaluated as true or false:
+Como en PHP, una declaración `if` comprueba si una expresión se evalúa como verdadera o falsa:
 
 ```twig
 {%- raw -%}
@@ -731,7 +731,7 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 </ul>{% endraw %}
 ```
 
-The else clause is also supported:
+También se admite la cláusula `else`:
 
 ```twig
 {%- raw -%}
