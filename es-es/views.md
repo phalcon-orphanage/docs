@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 title: 'Vistas'
 upgrade: '#views'
-keywords: 'mvc, view, view component, simple view, responses'
+keywords: 'mvc, vista, componente vista, vista simple, respuestas'
 ---
 
 # Vistas
@@ -15,9 +15,9 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 ## Resumen
 
-Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Views format the content that you need to send back to the user/web browser that initiated the request.
+Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas formatean el contenido que necesita devolver al usuario/navegador web que inició la petición.
 
-[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are responsible for the managing the view layer of your MVC application.
+[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) y [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) son responsables de la gestión de la capa de vista de su aplicación MVC.
 
 ```php
 <?php
@@ -39,16 +39,16 @@ class InvoicesController extends Controller
 
 ## Constantes
 
-There are several constants that control the behavior of the rendering process once set in the view
+Hay varias constantes que controlan el comportamiento del proceso de renderizado una vez establecido en la vista
 
-| Constante               | Descripción                                   |
-| ----------------------- | --------------------------------------------- |
-| `LEVEL_ACTION_VIEW`     | Render Level: To the action view              |
-| `LEVEL_BEFORE_TEMPLATE` | Render Level: To the templates "before"       |
-| `LEVEL_LAYOUT`          | Render Level: To the controller layout        |
-| `LEVEL_MAIN_LAYOUT`     | Render Level: To the main layout              |
-| `LEVEL_NO_RENDER`       | Render Level: No render any view              |
-| `LEVEL_AFTER_TEMPLATE`  | Render Level: Render to the templates "after" |
+| Constante               | Descripción                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| `LEVEL_ACTION_VIEW`     | Nivel de Renderizado: A la vista de la acción                |
+| `LEVEL_BEFORE_TEMPLATE` | Nivel de Renderizado: A las plantillas "anterior"            |
+| `LEVEL_LAYOUT`          | Nivel de Renderizado: A la disposición del controlador       |
+| `LEVEL_MAIN_LAYOUT`     | Nivel de Renderizado: A la disposición principal             |
+| `LEVEL_NO_RENDER`       | Nivel de Renderizado: No renderiza ninguna vista             |
+| `LEVEL_AFTER_TEMPLATE`  | Nivel de Renderizado: Renderiza a las plantillas "posterior" |
 
 ## Métodos
 
@@ -56,13 +56,13 @@ There are several constants that control the behavior of the rendering process o
 public function __construct(array options = [])
 ```
 
-Phalcon\Mvc\View constructor
+Constructor Phalcon\Mvc\View
 
 ```php
 public function __get(string $key): mixed | null
 ```
 
-Magic method to retrieve a variable passed to the view
+Método mágico para obtener las variables pasadas a la vista
 
 ```php
 echo $this->view->invoices;
@@ -72,7 +72,7 @@ echo $this->view->invoices;
 public function __isset(string $key): bool
 ```
 
-Magic method to retrieve if a variable is set in the view
+Método mágico para obtener si una variable está establecida en la vista
 
 ```php
 echo isset($this->view->invoices);
@@ -82,7 +82,7 @@ echo isset($this->view->invoices);
 public function __set(string $key, var value)
 ```
 
-Magic method to pass variables to the views
+Método mágico para pasar variables a las vistas
 
 ```php
 $this->view->invoices = $invoices;
@@ -92,19 +92,19 @@ $this->view->invoices = $invoices;
 public function cleanTemplateAfter(): View
 ```
 
-Resets any template before layouts
+Reestablece cualquier plantilla anterior de la disposición
 
 ```php
 public function cleanTemplateBefore(): View
 ```
 
-Resets any "template before" layouts
+Restablece cualquier disposición de "plantilla anterior"
 
 ```php
 public function disableLevel(mixed $level): ViewInterface
 ```
 
-Disables a specific level of rendering
+Deshabilita un nivel específico de renderizado
 
 ```php
 $this->view->disableLevel(
@@ -112,85 +112,85 @@ $this->view->disableLevel(
 );
 ```
 
-Render all levels except ACTION level
+Renderiza todos los niveles excepto el nivel `ACTION`
 
 ```php
 public function disable(): View
 ```
 
-Disables the auto-rendering process
+Deshabilita el proceso de auto-renderizado
 
 ```php
 public function enable(): View
 ```
 
-Enables the auto-rendering process
+Habilita el proceso de auto-renderizado
 
 ```php
 public function exists(string $view): bool
 ```
 
-Checks whether view exists
+Comprueba si existe la vista
 
 ```php
 public function finish(): View
 ```
 
-Finishes the render process by stopping the output buffering
+Finaliza el proceso de renderizado deteniendo el búfer de salida
 
 ```php
 public function getActionName(): string
 ```
 
-Gets the name of the action rendered
+Obtiene el nombre de la acción renderizada
 
 ```php
 public function getActiveRenderPath(): string | array
 ```
 
-Returns the path (or paths) of the views that are currently rendered
+Devuelve la ruta (o rutas) de las vistas que se están renderizando actualmente
 
 ```php
 public function getBasePath(): string
 ```
 
-Gets base path
+Obtiene la ruta base
 
 ```php
 public function getContent(): string
 ```
 
-Returns output from another view stage
+Devuelve la salida desde otra etapa de vista
 
 ```php
 public function getControllerName(): string
 ```
 
-Gets the name of the controller rendered
+Obtiene el nombre del controlador renderizado
 
 ```php
 public function getLayout(): string
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getLayoutsDir(): string
 ```
 
-Gets the current layouts sub-directory
+Obtiene los diseños actuales del subdirectorio
 
 ```php
 public function getMainView(): string
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getParamsToView(): array
 ```
 
-Returns parameters to views
+Obtiene los parámetros de las vistas
 
 ```php
 public function getPartial(
@@ -199,13 +199,13 @@ public function getPartial(
 ): string
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 echo $this->getPartial("shared/footer");
 ```
 
-Retrieve the contents of a partial
+Recupera los contenidos de una parcial
 
 ```php
 echo $this->getPartial(
@@ -216,13 +216,13 @@ echo $this->getPartial(
 );
 ```
 
-Retrieve the contents of a partial with arguments
+Recupera los contenidos de una parcial con argumentos
 
 ```php
 public function getPartialsDir(): string
 ```
 
-Gets the current partials sub-directory
+Obtiene el subdirectorio actual de parciales
 
 ```php
 public function getRender(
@@ -233,7 +233,7 @@ public function getRender(
 ): string
 ```
 
-Perform the automatic rendering returning the output as a string
+Realiza el renderizado automático devolviendo la salida como una cadena
 
 ```php
 $template = $this->view->getRender(
@@ -249,7 +249,7 @@ $template = $this->view->getRender(
 public function getVar(string $key)
 ```
 
-Returns a parameter previously set in the view
+Devuelve un parámetro previamente establecido en la vista
 
 ```php
 public function getViewsDir(): string | array
@@ -276,7 +276,7 @@ public function partial(
 )
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 $this->partial("shared/footer");
