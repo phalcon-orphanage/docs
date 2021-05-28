@@ -1371,10 +1371,10 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| Tipo      | Descripción                                                                                                                                                                                                                                                            |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `partial` | allows you to include templates made in Volt and in other template engines. As well allows you to pass an expression like a variable allowing to include the content of other view dynamically. It's better if the content that you have to include changes frequently |
-| `include` | copies the compiled content into the view which improves the performance. Only allows to include templates made with Volt. Requires an existing template at compile time                                                                                               |
+| Tipo      | Descripción                                                                                                                                                                                                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `partial` | le permite incluir plantillas hechas en Volt y en otros motores de plantillas. También permite pasar de una expresión como una variable permitiendo incluir el contenido de otra vista dinámicamente. Es mejor si el contenido que usted tiene que incluir cambia con frecuencia |
+| `include` | copia el contenido compilado en la vista, mejorando el rendimiento. Sólo permite incluir plantillas creadas con Volt. Requiere de una plantilla existente en tiempo de compilación                                                                                               |
 
 ## Inheritance
 
