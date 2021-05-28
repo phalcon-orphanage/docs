@@ -1573,7 +1573,7 @@ $compiler = $volt->getCompiler();
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-and in Volt:
+y en Volt:
 
 ```twig
 {% raw %}{{ shuffle('abcdefg') }}{% endraw %}
@@ -1592,7 +1592,7 @@ $compiler->addFunction(
 );
 ```
 
-and in Volt:
+y en Volt:
 
 ```twig
 {% raw %}{{ widget('param1', 'param2') }}{% endraw %}
@@ -1619,7 +1619,7 @@ $compiler->addFunction(
 );
 ```
 
-and in Volt:
+y en Volt:
 
 ```twig
 {% raw %}{{ repeat('Apples', 'Oranges') }}{% endraw %}
