@@ -1108,7 +1108,7 @@ class InvoicesController extends Controller
 }
 ```
 
-This is different to the `render` that [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) implementation, which uses controllers and actions as parameters:
+This is different to the `render` that [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) implements, which uses controllers and actions as parameters:
 
 ```php
 <?php
@@ -1388,7 +1388,7 @@ class CustomEngine extends AbstractEngine
     } }
 ```
 
-You can now replace the template engine with your own in the view setup part of your code. You can always use more than one engine at a time. To achieve this you need to call `Phalcon\Mvc\View::registerEngines()` which accepts an array with setup instructions on which engines are registered. The key of each engine is th extension of the files you need to process. You cannot register two engines with the same key.
+You can now replace the template engine with your own in the view setup part of your code. You can always use more than one engine at a time. To achieve this you need to call `Phalcon\Mvc\View::registerEngines()` which accepts an array with setup instructions on which engines are registered. The key of each engine is the extension of the files you need to process. You cannot register two engines with the same key.
 
 The order that the template engines are defined with `Phalcon\Mvc\View::registerEngines()` defines the priority of execution. If [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) finds two views with the same name but different extensions, it will only render the first one.
 
