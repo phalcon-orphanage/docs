@@ -1108,7 +1108,7 @@ class InvoicesController extends Controller
 }
 ```
 
-Esto es diferente a la implementación `render` de [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view), que usa controladores y acciones como parámetros:
+This is different to the `render` that [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) implements, which uses controllers and actions as parameters:
 
 ```php
 <?php
@@ -1389,7 +1389,7 @@ class CustomEngine extends AbstractEngine
 }
 ```
 
-Ahora puede reemplazar el motor de plantillas con el suyo en la parte de su código de configuración de la vista. Siempre puede usar más de un motor al mismo tiempo. Para lograr esto necesita llamar a `Phalcon\Mvc\View::registerEngines()` que acepta un vector con las instrucciones de configuración de los motores a registrar. La clave de cada motor es la extensión de los ficheros que necesita procesar. No puede registrar dos motores con la misma clave.
+Ahora puede reemplazar el motor de plantillas con el suyo en la parte de su código de configuración de la vista. Siempre puede usar más de un motor al mismo tiempo. Para lograr esto necesita llamar a `Phalcon\Mvc\View::registerEngines()` que acepta un vector con las instrucciones de configuración de los motores a registrar. The key of each engine is the extension of the files you need to process. No puede registrar dos motores con la misma clave.
 
 El orden en el que se definen los motores de plantillas con `Phalcon\Mvc\View::registerEngines()` establece la prioridad de ejecución. Si [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) encuentra dos vistas con el mismo nombre pero diferentes extensiones, solo renderizará la primera.
 
