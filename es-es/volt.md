@@ -1013,11 +1013,11 @@ The following comparison operators are available:
 |    `!=`    | Comprueba si ambos operandos no son iguales                                       |
 | `<>` | Comprueba si ambos operandos no son iguales                                       |
 |   `>`   | Comprueba si el operando izquierdo es mayor que el operando derecho               |
-|   `<`   | Compruebe si el operando izquierdo es menor que el operando derecho               |
-|  `<=`   | Compruebe si el operando de la izquierda es menor o igual que el operando derecho |
-|  `>=`   | Compruebe si el operando izquierdo es mayor o igual que el operando derecho       |
-|   `===`    | Compruebe si ambos operandos son idénticos                                        |
-|   `!==`    | Comprobar si ambos operandos no son identicos                                     |
+|   `<`   | Comprueba si el operando izquierdo es menor que el operando derecho               |
+|  `<=`   | Comprueba si el operando de la izquierda es menor o igual que el operando derecho |
+|  `>=`   | Comprueba si el operando izquierdo es mayor o igual que el operando derecho       |
+|   `===`    | Comprueba si ambos operandos son idénticos                                        |
+|   `!==`    | Comprueba si ambos operandos no son idénticos                                     |
 
 ### Logic
 
