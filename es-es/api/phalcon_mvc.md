@@ -10871,19 +10871,19 @@ Phalcon\Mvc\View\Engine constructor
 public function getContent(): string;
 ```
 
-Returns cached output on another view stage
+Devuelve la salida almacenada en caché en otra etapa de visualización
 
 ```php
 public function getView(): ViewBaseInterface;
 ```
 
-Returns the view component related to the adapter
+Devuelve el componente de vista relacionados con el adaptador
 
 ```php
 public function partial( string $partialPath, mixed $params = null ): void;
 ```
 
-Renders a partial inside another view
+Representa una vista parcial dentro de otro punto de vista
 
 <h1 id="mvc-view-engine-engineinterface">Interface Phalcon\Mvc\View\Engine\EngineInterface</h1>
 
@@ -10899,19 +10899,19 @@ Interface for Phalcon\Mvc\View engine adapters
 public function getContent(): string;
 ```
 
-Returns cached output on another view stage
+Devuelve la salida almacenada en caché en otra etapa de visualización
 
 ```php
 public function partial( string $partialPath, mixed $params = null ): void;
 ```
 
-Renders a partial inside another view
+Representa una vista parcial dentro de otro punto de vista
 
 ```php
 public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 <h1 id="mvc-view-engine-php">Class Phalcon\Mvc\View\Engine\Php</h1>
 
@@ -10927,7 +10927,7 @@ Adapter to use PHP itself as templating engine
 public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 <h1 id="mvc-view-engine-volt">Class Phalcon\Mvc\View\Engine\Volt</h1>
 
@@ -10996,13 +10996,13 @@ Comprueba si se incluye la aguja en el pajar
 public function length( mixed $item ): int;
 ```
 
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+Filtro de longitud. Si se pasa un objeto o matriz se realiza un `count()`, de lo contrario realiza un `strlen()<code>/`mb_strlen()</code>
 
 ```php
 public function render( string $templatePath, mixed $params, bool $mustClean = bool );
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
