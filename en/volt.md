@@ -1302,8 +1302,8 @@ Keep the following points in mind when choosing to use the `partial` function or
 
 | Type          | Description 
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `partial`     | allows you to include templates made in Volt and in other template engines as well allows you to pass an expression like a variable allowing to include the content of other view dynamically is better if the content that you have to include changes frequently |
-| `includes`    | copies the compiled content into the view which improves the performance only allows to include templates made with Volt requires an existing template at compile time                                                                                                |
+| `partial`     | allows you to include templates made in Volt and in other template engines. As well allows you to pass an expression like a variable allowing to include the content of other view dynamically. It's better if the content that you have to include changes frequently |
+| `includes`    | copies the compiled content into the view which improves the performance. Only allows to include templates made with Volt. Requires an existing template at compile time                                                                                                |
 
 ## Inheritance
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
