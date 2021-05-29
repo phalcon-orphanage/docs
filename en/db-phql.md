@@ -3020,8 +3020,8 @@ Now you can use this function in PHQL and it internally translates to the correc
 ```php
 
 $phql = "SELECT *
-   FROM Invoices
-   WHERE MATCH_AGAINST(inv_title, :pattern:)";
+         FROM Invoices
+         WHERE MATCH_AGAINST(inv_title, :pattern:)";
 
 $invoices = $modelsManager
     ->executeQuery(
@@ -3043,29 +3043,28 @@ use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
 
 $dialect = new Dialect();
 $dialect->registerCustomFunction(
-    'GROUP_CONCAT',
+    'GROUPCONCAT',
     function ($dialect, $expression) {
         $arguments = $expression['arguments'];
         if (true !== empty($arguments[2])) {
             return sprintf(
-                " GROUP_CONCAT(DISTINCT %s SEPARATOR %s)",
+                " GROUP_CONCAT(DISTINCT %s ORDER BY %s SEPARATOR %s)",
                 $dialect->getSqlExpression($arguments[0]),
-                $dialect->getSqlExpression($arguments[1])
+                $dialect->getSqlExpression($arguments[1]),
+                $dialect->getSqlExpression($arguments[2]),
             );
-        }
-
-        if (true !== empty($arguments[1])) {
+        } elseif (true !== empty($arguments[1])) {
             return sprintf(
                 " GROUP_CONCAT(%s SEPARATOR %s)",
                 $dialect->getSqlExpression($arguments[0]),
                 $dialect->getSqlExpression($arguments[1])
             );
+        } else {
+            return sprintf(
+                " GROUP_CONCAT(%s)",
+                $dialect->getSqlExpression($arguments[0])
+            );
         }
-
-        return sprintf(
-            " GROUP_CONCAT(%s)",
-            $dialect->getSqlExpression($arguments[0])
-        );
     }
 );
 
@@ -3084,23 +3083,20 @@ Now you can use this function in PHQL and it internally translates to the correc
 
 ```php
 
-$phql = "SELECT *
-   FROM Invoices
-   WHERE GROUP_CONCAT(inv_title, :first:, :separator:, :distinct:)";
+$phql = "SELECT GROUPCONCAT(inv_title, inv_title, :separator:)
+         FROM Invoices";
 
 $invoices = $modelsManager
     ->executeQuery(
         $phql, 
         [
-            'pattern'   => $pattern,
-            'separator' => $separator,
-            'distinct'  => $distinct,
+            'separator' => $separator
         ]
     )
 ;
 ```
 
-The above will create a `GROUP_CONCAT` based on the parameters passed to the method. If three parameters passed we will have a `GROUP_CONCAT` with a `DISTINCT` and `SEPARATOR`, if two parameters passed we will have a `GROUP_CONCAT` with `SEPARATOR` and if only one parameter passed just a `GROUP_CONCAT`
+The above will create a `GROUP_CONCAT` based on the parameters passed to the method. If three parameters passed we will have a `GROUP_CONCAT` with a `DISTINCT`, `ORDER BY` and `SEPARATOR`, if two parameters passed we will have a `GROUP_CONCAT` with `SEPARATOR` and if only one parameter passed just a `GROUP_CONCAT`
 
 ## Caching
 PHQL queries can be cached. You can also check the [Models Caching](db-models-cache) document for more information.
