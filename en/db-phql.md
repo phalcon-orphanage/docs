@@ -3090,7 +3090,7 @@ $invoices = $modelsManager
     ->executeQuery(
         $phql, 
         [
-            'separator' => $separator
+            'separator' => ", "
         ]
     )
 ;
