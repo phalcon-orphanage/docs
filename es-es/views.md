@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 title: 'Vistas'
 upgrade: '#views'
-keywords: 'mvc, view, view component, simple view, responses'
+keywords: 'mvc, vista, componente vista, vista simple, respuestas'
 ---
 
 # Vistas
@@ -15,9 +15,9 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 ## Resumen
 
-Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Views format the content that you need to send back to the user/web browser that initiated the request.
+Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas formatean el contenido que necesita devolver al usuario/navegador web que inició la petición.
 
-[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are responsible for the managing the view layer of your MVC application.
+[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) y [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) son responsables de la gestión de la capa de vista de su aplicación MVC.
 
 ```php
 <?php
@@ -39,16 +39,16 @@ class InvoicesController extends Controller
 
 ## Constantes
 
-There are several constants that control the behavior of the rendering process once set in the view
+Hay varias constantes que controlan el comportamiento del proceso de renderizado una vez establecido en la vista
 
-| Constante               | Descripción                                   |
-| ----------------------- | --------------------------------------------- |
-| `LEVEL_ACTION_VIEW`     | Render Level: To the action view              |
-| `LEVEL_BEFORE_TEMPLATE` | Render Level: To the templates "before"       |
-| `LEVEL_LAYOUT`          | Render Level: To the controller layout        |
-| `LEVEL_MAIN_LAYOUT`     | Render Level: To the main layout              |
-| `LEVEL_NO_RENDER`       | Render Level: No render any view              |
-| `LEVEL_AFTER_TEMPLATE`  | Render Level: Render to the templates "after" |
+| Constante               | Descripción                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| `LEVEL_ACTION_VIEW`     | Nivel de Renderizado: A la vista de la acción                |
+| `LEVEL_BEFORE_TEMPLATE` | Nivel de Renderizado: A las plantillas "anterior"            |
+| `LEVEL_LAYOUT`          | Nivel de Renderizado: A la disposición del controlador       |
+| `LEVEL_MAIN_LAYOUT`     | Nivel de Renderizado: A la disposición principal             |
+| `LEVEL_NO_RENDER`       | Nivel de Renderizado: No renderiza ninguna vista             |
+| `LEVEL_AFTER_TEMPLATE`  | Nivel de Renderizado: Renderiza a las plantillas "posterior" |
 
 ## Métodos
 
@@ -56,13 +56,13 @@ There are several constants that control the behavior of the rendering process o
 public function __construct(array options = [])
 ```
 
-Phalcon\Mvc\View constructor
+Constructor Phalcon\Mvc\View
 
 ```php
 public function __get(string $key): mixed | null
 ```
 
-Magic method to retrieve a variable passed to the view
+Método mágico para obtener las variables pasadas a la vista
 
 ```php
 echo $this->view->invoices;
@@ -72,7 +72,7 @@ echo $this->view->invoices;
 public function __isset(string $key): bool
 ```
 
-Magic method to retrieve if a variable is set in the view
+Método mágico para obtener si una variable está establecida en la vista
 
 ```php
 echo isset($this->view->invoices);
@@ -82,7 +82,7 @@ echo isset($this->view->invoices);
 public function __set(string $key, var value)
 ```
 
-Magic method to pass variables to the views
+Método mágico para pasar variables a las vistas
 
 ```php
 $this->view->invoices = $invoices;
@@ -92,19 +92,19 @@ $this->view->invoices = $invoices;
 public function cleanTemplateAfter(): View
 ```
 
-Resets any template before layouts
+Reestablece cualquier plantilla anterior de la disposición
 
 ```php
 public function cleanTemplateBefore(): View
 ```
 
-Resets any "template before" layouts
+Restablece cualquier disposición de "plantilla anterior"
 
 ```php
 public function disableLevel(mixed $level): ViewInterface
 ```
 
-Disables a specific level of rendering
+Deshabilita un nivel específico de renderizado
 
 ```php
 $this->view->disableLevel(
@@ -112,85 +112,85 @@ $this->view->disableLevel(
 );
 ```
 
-Render all levels except ACTION level
+Renderiza todos los niveles excepto el nivel `ACTION`
 
 ```php
 public function disable(): View
 ```
 
-Disables the auto-rendering process
+Deshabilita el proceso de auto-renderizado
 
 ```php
 public function enable(): View
 ```
 
-Enables the auto-rendering process
+Habilita el proceso de auto-renderizado
 
 ```php
 public function exists(string $view): bool
 ```
 
-Checks whether view exists
+Comprueba si existe la vista
 
 ```php
 public function finish(): View
 ```
 
-Finishes the render process by stopping the output buffering
+Finaliza el proceso de renderizado deteniendo el búfer de salida
 
 ```php
 public function getActionName(): string
 ```
 
-Gets the name of the action rendered
+Obtiene el nombre de la acción renderizada
 
 ```php
 public function getActiveRenderPath(): string | array
 ```
 
-Returns the path (or paths) of the views that are currently rendered
+Devuelve la ruta (o rutas) de las vistas que se están renderizando actualmente
 
 ```php
 public function getBasePath(): string
 ```
 
-Gets base path
+Obtiene la ruta base
 
 ```php
 public function getContent(): string
 ```
 
-Returns output from another view stage
+Devuelve la salida desde otra etapa de vista
 
 ```php
 public function getControllerName(): string
 ```
 
-Gets the name of the controller rendered
+Obtiene el nombre del controlador renderizado
 
 ```php
 public function getLayout(): string
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getLayoutsDir(): string
 ```
 
-Gets the current layouts sub-directory
+Obtiene los diseños actuales del subdirectorio
 
 ```php
 public function getMainView(): string
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getParamsToView(): array
 ```
 
-Returns parameters to views
+Obtiene los parámetros de las vistas
 
 ```php
 public function getPartial(
@@ -199,13 +199,13 @@ public function getPartial(
 ): string
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 echo $this->getPartial("shared/footer");
 ```
 
-Retrieve the contents of a partial
+Recupera los contenidos de una parcial
 
 ```php
 echo $this->getPartial(
@@ -216,13 +216,13 @@ echo $this->getPartial(
 );
 ```
 
-Retrieve the contents of a partial with arguments
+Recupera los contenidos de una parcial con argumentos
 
 ```php
 public function getPartialsDir(): string
 ```
 
-Gets the current partials sub-directory
+Obtiene el subdirectorio actual de parciales
 
 ```php
 public function getRender(
@@ -233,7 +233,7 @@ public function getRender(
 ): string
 ```
 
-Perform the automatic rendering returning the output as a string
+Realiza el renderizado automático devolviendo la salida como una cadena
 
 ```php
 $template = $this->view->getRender(
@@ -249,25 +249,25 @@ $template = $this->view->getRender(
 public function getVar(string $key)
 ```
 
-Returns a parameter previously set in the view
+Devuelve un parámetro previamente establecido en la vista
 
 ```php
 public function getViewsDir(): string | array
 ```
 
-Gets views directory
+Devuelve el directorio de las vistas
 
 ```php
 protected function getViewsDirs(): array
 ```
 
-Gets views directories
+Devuelve los directorios de las vistas
 
 ```php
 public function isDisabled(): bool
 ```
 
-Whether automatic rendering is enabled
+Si está habilitado el renderizado automático
 
 ```php
 public function partial(
@@ -276,13 +276,13 @@ public function partial(
 )
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 $this->partial("shared/footer");
 ```
 
-Show a partial inside another view
+Muestra una parcial dentro de otra vista
 
 ```php
 $this->partial(
@@ -293,13 +293,13 @@ $this->partial(
 );
 ```
 
-Show a partial inside another view with parameters
+Muestra una parcial dentro de otra vista con parámetros
 
 ```php
 public function pick(var renderView): View
 ```
 
-Choose a different view to render instead of last-controller/last-action
+Elige una vista diferente a renderizar en vez del último-controlador/última-acción
 
 ```php
 use Phalcon\Mvc\Controller;
@@ -321,7 +321,7 @@ public function registerEngines(
 ): View
 ```
 
-Register templating engines
+Registra motores de plantillas
 
 ```php
 $this->view->registerEngines(
@@ -341,7 +341,7 @@ public function render(
 ): View | bool
 ```
 
-Executes render process from dispatching data
+Ejecuta el proceso de renderizado desde los datos de despacho
 
 ```php
 $view
@@ -351,13 +351,13 @@ $view
 ;
 ```
 
-Shows recent posts view (app/views/posts/recent.phtml)
+Muestra la vista de mensajes reciente (app/views/posts/recent.phtml)
 
 ```php
 public function reset(): View
 ```
 
-Resets the view component to its factory default values
+Resetea el componente vista a sus valores predeterminados de fábrica
 
 ```php
 public function setBasePath(
@@ -365,7 +365,7 @@ public function setBasePath(
 ): View
 ```
 
-Sets base path. Depending of your platform, always add a trailing slash or backslash
+Establece la ruta base. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 $view->setBasePath(__DIR__ . "/");
@@ -377,7 +377,7 @@ public function setContent(
 ): View
 ```
 
-Externally sets the view content
+Establece externamente el contenido de la vista
 
 ```php
 $this->view->setContent(
@@ -391,7 +391,7 @@ public function setLayout(
 ): View
 ```
 
-Change the layout to be used instead of using the name of the latest controller name
+Cambia la disposición a usar en vez de usar el nombre del último nombre de controlador
 
 ```php
 $this->view->setLayout("main");
@@ -403,7 +403,7 @@ public function setLayoutsDir(
 ): View
 ```
 
-Sets the layouts subdirectory. It must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece el subdirectorio de disposiciones. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 $view->setLayoutsDir(
@@ -417,13 +417,13 @@ public function setMainView(
 ): View
 ```
 
-Sets default view name. Must be a file without extension in the views directory
+Establece el nombre de la vista predeterminada. Debe ser un fichero sin extensión en el directorio de vistas
 
 ```php
 $this->view->setMainView("base");
 ```
 
-Renders as main view views-dir/base.phtml
+Renderiza como vista principal views-dir/base.phtml
 
 ```php
 public function setPartialsDir(
@@ -431,7 +431,7 @@ public function setPartialsDir(
 ): View
 ```
 
-Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece un subdirectorio de parciales. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 $view->setPartialsDir(
@@ -446,7 +446,7 @@ public function setParamToView(
 ): View
 ```
 
-Adds parameters to views (alias of setVar)
+Añade parámetros a las vistas (alias de setVar)
 
 ```php
 $this
@@ -461,7 +461,7 @@ public function setRenderLevel(
 ): ViewInterface
 ```
 
-Sets the render level for the view
+Establece el nivel de renderizado de la vista
 
 ```php
 $this->view->setRenderLevel(
@@ -469,7 +469,7 @@ $this->view->setRenderLevel(
 );
 ```
 
-Render the view related to the controller only
+Renderiza solo la vista relacionada con el controlador
 
 ```php
 public function setTemplateAfter(
@@ -477,7 +477,7 @@ public function setTemplateAfter(
 ): View
 ```
 
-Sets a "template after" controller layout
+Establece una disposición de controlador "plantilla posterior"
 
 ```php
 public function setTemplateBefore(
@@ -485,7 +485,7 @@ public function setTemplateBefore(
 ): View
 ```
 
-Sets a template before the controller layout
+Establece una plantilla anterior a la disposición del controlador
 
 ```php
 public function setVar(
@@ -494,7 +494,7 @@ public function setVar(
 ): View
 ```
 
-Set a single view parameter
+Establece un parámetro de vista único
 
 ```php
 $this
@@ -510,7 +510,7 @@ public function setVars(
 ): View
 ```
 
-Set all the render params
+Establece todos los parámetros de renderizado
 
 ```php
 $this->view->setVars(
@@ -526,13 +526,13 @@ public function setViewsDir(
 ): View
 ```
 
-Sets the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece el directorio de las vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 public function start(): View
 ```
 
-Starts rendering process enabling the output buffering
+Inicia el proceso de renderizado habilitando el búfer de salida
 
 ```php
 public function toString(
@@ -542,11 +542,11 @@ public function toString(
 ): string
 ```
 
-Renders the view and returns it as a string
+Renderiza la vista y la devuelve como una cadena
 
 ## Activación
 
-You must register the view component in your DI container to enable views in your application.
+Debe registrar el componente vista en su contenedor DI para habilitar las vistas en su aplicación.
 
 ```php
 <?php
@@ -568,20 +568,20 @@ $container->set(
 );
 ```
 
-If no engine is defined, the [Phalcon\Mvc\View\Engine\Php](api/phalcon_mvc#mvc-view-engine-php) will be automatically registered for you. These are files that contain both PHP and HTML code and have the extension `.phtml`. For more information regarding the [Volt](volt) template engine, please check the relevant document.
+Si no se define un motor, se registrará [Phalcon\Mvc\View\Engine\Php](api/phalcon_mvc#mvc-view-engine-php) automáticamente por usted. Estos son ficheros que contienen tanto código PHP como HTML y tienen la extensión `.phtml`. Para más información sobre el motor de plantilla [Volt](volt), consulte el documento correspondiente.
 
-## Views in Controllers
+## Vistas en Controladores
 
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://dev.phalcon.ld/admin/invoices/view/12345*, Phalcon will parse the URL as follows:
+Phalcon automáticamente pasa la ejecución al componente vista tan pronto como un controlador particular haya completado su ciclo. El componente vista buscará en la carpeta vistas por una carpeta llamada con el mismo nombre del último controlador ejecutado y luego por un fichero llamado como la última acción ejecutada. Por ejemplo, si se hace una petición a la URL *https://dev.phalcon.ld/admin/invoices/view/12345*, Phalcon analizará la URL como sigue:
 
-| Server Address    | `127.0.0.1` |
-| ----------------- | ----------- |
-| Phalcon Directory | `admin`     |
-| Controlador       | `invoices`  |
-| Acción            | `view`      |
-| Parámetro         | `12345`     |
+| Dirección del Servidor | `127.0.0.1` |
+| ---------------------- | ----------- |
+| Directorio Phalcon     | `admin`     |
+| Controlador            | `invoices`  |
+| Acción                 | `view`      |
+| Parámetro              | `12345`     |
 
-The dispatcher will look for a `InvoicesController` and its action `viewAction`. A simple controller file for this example:
+El despachador buscará un `InvoicesController` y su acción `viewAction`. Un fichero de controlador simple para este ejemplo:
 
 ```php
 <?php
@@ -601,26 +601,26 @@ class InvoicesController extends Controller
 }
 ```
 
-The `setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates how to pass the `$invoiceId` parameter to the respective view template.
+El método `setVar()` nos permite crear variables de la vista bajo demanda, por lo que se pueden usar en la plantilla de la vista. El ejemplo anterior demuestra cómo pasar el parámetro `$invoiceId` a la respectiva plantilla de vista.
 
-## Hierarchical Rendering
+## Renderizado Jerárquico
 
-[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) is the default component for rendering views in Phalcon and supports a hierarchy of files. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
+[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) es el componente predeterminado para renderizar vistas en Phalcon y soporta una jerarquía de ficheros. Esta jerarquía permite puntos de composición común (vistas usadas normalmente), así como carpetas con el nombre del controlador definiendo sus respectivas plantillas de vistas.
 
-The default rendering engine for the view component is PHP. As a result all view related files need to have the `.phtml` extension. Para el ejemplo anterior:
+El motor de renderizado por defecto para el componente vista es PHP. Como resultado, todos los ficheros relacionados con las vistas necesitan tener la extensión `.phtml`. Para el ejemplo anterior:
 
     https://dev.phalcon.ld/admin/invoices/view/12345
     
 
-Assuming that the views directory is `app/views`, the view component will find automatically the following 3 view files:
+Asumiendo que el directorio de vistas es `app/views`, el componente vista automáticamente encontrará los 3 siguientes ficheros de vistas:
 
-| Nombre            | Archivo                          | Descripción                                                                                         |
-| ----------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Action View       | app/views/invoices/view.phtml    | Action related view. It only will be rendered when the `view` action is executed.                   |
-| Controller Layout | app/views/layouts/invoices.phtml | Controller related view. It will be rendered for every action executed in the `InvoicesController`. |
-| Main Layout       | app/views/index.phtml            | Application related view. It shows on every controller/action of the application                    |
+| Nombre                     | Archivo                          | Descripción                                                                                                   |
+| -------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Vista de la Acción         | app/views/invoices/view.phtml    | Vista relacionada con la acción. Sólo será renderizada cuando la acción `view` se ejecute.                    |
+| Disposición de Controlador | app/views/layouts/invoices.phtml | Vista relacionada con el controlador. Será renderizada para cada acción ejecutada en el `InvoicesController`. |
+| Disposición Principal      | app/views/index.phtml            | Vista relacionada con la Aplicación. Se mostrará en cada controlador/acción de la aplicación                  |
 
-You are not required to implement all of the files mentioned above. [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
+No está obligado a implementar todos los ficheros mencionados arriba. [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) simplemente se moverá al siguiente nivel de la vista en la jerarquía de ficheros. Si los tres ficheros de vista se implementan, entonces se procesarán como sigue:
 
 ```php
 <!-- app/views/invoices/view.phtml -->
@@ -653,14 +653,14 @@ You are not required to implement all of the files mentioned above. [Phalcon\Mvc
 </html>
 ```
 
-> **NOTE**: The call to `$this->getContent()` instructs [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) on where to inject the contents of the previous view executed in the hierarchy.
+> **NOTA**: La llamada a `$this->getContent()` indica a [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) donde inyectar los contenidos de la vista previa ejecutada en la jerarquía.
 {: .alert .alert-info }
 
-For the example above, the output will be:
+Para el ejemplo anterior, la salida será:
 
 ![](/assets/images/content/views-layout.png)
 
-The generated HTML will be:
+El HTML generado será:
 
 ```php
 <html>
@@ -684,11 +684,11 @@ The generated HTML will be:
 </html>
 ```
 
-### Templates
+### Plantillas
 
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
+Las plantillas son vistas que se pueden usar para compartir código de vista común. Ellas actúan como disposiciones del controlador, así que necesita colocarlas en el directorio de disposiciones.
 
-Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the main layout (`layouts/posts.phtml`):
+Las plantillas se pueden renderizar antes de la disposición (usando `$this->view->setTemplateBefore()`) o se pueden renderizar después de la disposición (usando `this->view->setTemplateAfter()`). En el siguiente ejemplo la plantilla (`layouts/common.phtml`) se renderiza después de la disposición principal (`layouts/posts.phtml`):
 
 ```php
 <?php
@@ -766,7 +766,7 @@ class InvoicesController extends Controller
 </article>
 ```
 
-The final output will be the following:
+La salida final será la siguiente:
 
 ```php
 <!-- app/views/index.phtml -->
@@ -809,7 +809,7 @@ The final output will be the following:
 </html>
 ```
 
-If we had used `$this->view->setTemplateBefore('common')`, this would be the final output:
+Si hubiésemos usado `$this->view->setTemplateBefore('common')`, este sería la salida final:
 
 ```php
 <!-- app/views/index.phtml -->
@@ -852,11 +852,11 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 </html>
 ```
 
-### Render Levels
+### Niveles de Renderizado
 
-As seen above, [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) supports a view hierarchy. You might need to control the level of rendering produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
+Como se ha visto anteriormente, [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) soporta una jerarquía de vistas. Podría necesitar controlar el nivel de renderizado producido por el componente vista. El método `Phalcon\Mvc\View::setRenderLevel()` ofrece esta funcionalidad.
 
-This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.
+Este método se puede invocar desde el controlador o desde una capa de vista superior para interferir en el proceso de renderizado.
 
 ```php
 <?php
@@ -887,20 +887,20 @@ class InvoicesController extends Controller
 }
 ```
 
-The available render levels are:
+Los niveles de renderizado disponibles son:
 
-| Class Constant          | Descripción                                                              | Order |
-| ----------------------- | ------------------------------------------------------------------------ |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
+| Constante de Clase      | Descripción                                                                 | Orden |
+| ----------------------- | --------------------------------------------------------------------------- |:-----:|
+| `LEVEL_NO_RENDER`       | Indica que se evite generar ningún tipo de presentación.                    |       |
+| `LEVEL_ACTION_VIEW`     | Genera la presentación a la vista asociada a la acción.                     |   1   |
+| `LEVEL_BEFORE_TEMPLATE` | Genera plantillas de presentación antes que el diseño del controlador.      |   2   |
+| `LEVEL_LAYOUT`          | Genera la presentación en el diseño del controlador.                        |   3   |
+| `LEVEL_AFTER_TEMPLATE`  | Genera la presentación a las plantillas después del diseño del controlador. |   4   |
+| `LEVEL_MAIN_LAYOUT`     | Genera la presentación del diseño principal. Fichero views/index.phtml      |   5   |
 
-### Disabling Render Levels
+### Deshabilitar Niveles de Renderizado
 
-You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
+Puedes deshabilitar niveles de renderizado temporal o permanentemente. Un nivel podría deshabilitarse permanentemente si no se utiliza en toda la aplicación:
 
 ```php
 <?php
@@ -926,7 +926,7 @@ $container->set(
 );
 ```
 
-Or disable temporarily in some part of the application:
+O deshabilitarlo temporalmente en alguna parte de la aplicación:
 
 ```php
 <?php
@@ -948,9 +948,9 @@ class InvoicesController extends Controller
 }
 ```
 
-### Disabling the View
+### Deshabilitar la Vista
 
-If your controller does not produce any output for the view (or not even have one) you may disable the view component avoiding unnecessary processing:
+Si su controlador no produce ninguna salida en la vista (o ni siquiera tiene una) puede deshabilitar el componente vista evitando un procesamiento innecesario:
 
 ```php
 <?php
@@ -970,7 +970,7 @@ class InvoicesController extends Controller
 }
 ```
 
-Alternatively, you can return `false` to produce the same effect:
+Alternativamente, puede devolver `false` para producir el mismo efecto:
 
 ```php
 <?php
@@ -990,7 +990,7 @@ class InvoicesController extends Controller
 }
 ```
 
-You can return a `response` object to avoid disable the view manually:
+Puede devolver un objeto `response` para evitar deshabilitar la vista manualmente:
 
 ```php
 <?php
@@ -1015,13 +1015,13 @@ class InvoicesController extends Controller
 }
 ```
 
-## Simple Rendering
+## Renderizado Simple
 
-[Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) is an alternative component to [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view). It keeps most of the philosophy of [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) but lacks of a hierarchy of files which is, in fact, the main feature of its counterpart.
+[Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) es un componente alternativo a [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view). Mantiene la mayoría de la filosofía de [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) pero carece de jerarquía de ficheros que es, de hecho, la característica principal de su homóloga.
 
-This component allows you to have control of when a view is rendered and its location. In addition, this component can leverage of view inheritance available in template engines such as [Volt](volt) and others.
+Este componente le permite tener el control de cuando se renderiza una vista y su ubicación. Además, este componente puede aprovechar la herencia de vista disponible en motores de plantillas como [Volt](volt) y otros.
 
-The default component must be replaced in the service container:
+El componente por defecto se debe reemplazar en el contenedor de servicio:
 
 ```php
 <?php
@@ -1041,7 +1041,7 @@ $container->set(
 );
 ```
 
-Automatic rendering must be disabled in [Phalcon\Mvc\Application](application) (if needed):
+El renderizado automático se debe deshabilitar en [Phalcon\Mvc\Application](application) (si es necesario):
 
 ```php
 <?php
@@ -1065,7 +1065,7 @@ try {
 }
 ```
 
-To render a view it is necessary to call the render method explicitly indicating the relative path to the view you want to display:
+Para renderizar una vista es necesario llamar explícitamente al método de renderizado indicando la ruta relativa a la vista que quieres mostrar:
 
 ```php
 <?php
@@ -1108,7 +1108,7 @@ class InvoicesController extends Controller
 }
 ```
 
-This is different to the `render` that [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) implementation, which uses controllers and actions as parameters:
+Esto es diferente a la implementación `render` de [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view), que usa controladores y acciones como parámetros:
 
 ```php
 <?php
@@ -1129,9 +1129,9 @@ $simpleView = new Simple();
 echo $simpleView->render('invoices/view', $params);
 ```
 
-### Picking Views
+### Selección de Vistas
 
-As mentioned above, when [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) is managed by [Phalcon\Mvc\Application](application), the view rendered is the one related with the last controller and action executed. You could override this by using the `pick()` method:
+Como se ha mencionado arriba, cuando [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) se gestiona por [Phalcon\Mvc\Application](application), la vista renderizada es una relacionada con el último controlador y acción ejecutados. Podría sobreescribir esto usando el método `pick()`:
 
 ```php
 <?php
@@ -1167,11 +1167,11 @@ class InvoicesController extends Controller
 }
 ```
 
-## Partials
+## Parciales
 
-Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
+Las plantillas parciales son otra forma de romper el proceso de renderizado en trozos más sencillos y manejables que se pueden reutilizar por diferentes partes de la aplicación. Con un parcial, puede mover el código para renderizar una pieza particular de una respuesta a su propio fichero.
 
-One way to use partials is to treat them as HTML fragments that can be injected wherever needed with any necessary parameters:
+Una forma de usar parciales es tratarlas como fragmentos HTML que se pueden inyectar donde se necesite con cualquier parámetro necesario:
 
 ```php
 <div class='top'>
@@ -1190,7 +1190,7 @@ One way to use partials is to treat them as HTML fragments that can be injected 
 </div>
 ```
 
-The `partial()` method does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
+El método `partial()` acepta un segundo parámetro como un vector de variables/parámetros que sólo existirá en el ámbito del parcial:
 
 ```php
 <?php 
@@ -1204,9 +1204,9 @@ The `partial()` method does accept a second parameter as an array of variables/p
 ?>
 ```
 
-## Values
+## Valores
 
-[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) is available in each controller using the view variable (`$this->view`). You can use that object to set variables directly to the view from a controller action by using the `setVar()` method.
+[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) está disponible en cada controlador usando la variable de vista (`$this->view`). Puede usar ese objeto para establecer variables directamente a la vista desde una acción de controlador usando el método `setVar()`.
 
 ```php
 <?php
@@ -1245,7 +1245,7 @@ class InvoicesController extends Controller
 }
 ```
 
-A variable with the name of the first parameter of `setVar()` will be created in the view, ready to be used. The variable can be of any type, from a simple `string`, `integer` etc. variable to a more complex structure such as `array`, collection etc.
+Una variable con el nombre del primer parámetro de `setVar()` se creará e la vista, lista para usar. La variable puede ser de cualquier tipo, desde una simple variable `cadena`, `entero` etc. a estructuras más complejas como `vector`, colección, etc.
 
 ```php
 <h1>
@@ -1263,13 +1263,13 @@ A variable with the name of the first parameter of `setVar()` will be created in
 </div>
 ```
 
-## Template Engines
+## Motores de Plantillas
 
-Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called [Volt](volt) that help with view development while not sacrificing processing speed.
+Los Motores de Plantillas ayuda a los diseñadores a crear vistas sin el uso de una sintaxis complicada. Phalcon incluye un motor de plantillas poderoso y rápido llamado [Volt](volt) que ayuda con el desarrollo de la vista sin sacrificar la velocidad de procesamiento.
 
 ### PHP
 
-The [Phalcon\Mvc\View\Engine\Php](api/phalcon_mvc#mvc-view-engine-php) is the default template engine, if none has been specified.
+[Phalcon\Mvc\View\Engine\Php](api/phalcon_mvc#mvc-view-engine-php) es el motor de plantillas predeterminado, si no se ha especificado ninguno.
 
 ```php
 <?php
@@ -1291,7 +1291,7 @@ $container->set(
 
 ### Volt
 
-You might want to use [Volt](volt) as your template engine. To set it up you need to register the engine and pass it to the view component.
+Podría querer usar [Volt](volt) como su motor de plantillas. Para configurarlo necesita registrar el motor y pasarlo al componente vista.
 
 ```php
 <?php
@@ -1343,15 +1343,15 @@ $container->set(
 
 ### Mustache/Twig/Smarty
 
-If you like to use [Mustache](https://github.com/bobthecow/mustache.php), [Twig](https://twig.symfony.com/) or [Smarty](https://www.smarty.net/) as your template engine, you can visit our [incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine) repository for examples on how to activate these engines in your application
+Si le gusta usar [Mustache](https://github.com/bobthecow/mustache.php), [Twig](https://twig.symfony.com/) o [Smarty](https://www.smarty.net/) como motor de plantillas, puede visitar nuestro repositorio [incubadora](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine) para ejemplos de cómo activar estos motores en su aplicación
 
 ### Personalizado
 
-When using an external template engine, [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) provides exactly the same view hierarchy and it is still possible to access the API inside these templates. If you want to create your own template engine, you can leverage the API to perform the operations you need.
+Cuando usamos un motor de plantillas externo, [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) proporciona exactamente la misma jerarquía de vista y es todavía posible acceder al API dentro de esas plantillas. Si quiere crear su propio motor de plantillas, puede aprovechar el API para realizar las operaciones que necesite.
 
-A template engine adapter is a class that acts as bridge between [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and the template engine itself. Usually it only needs two methods implemented: `__construct()` and `render()`. The first one receives the [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) instance that creates the engine adapter and the DI container used by the application.
+Un adaptador de motor de plantillas es una clase que actúa de puente entre [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) y el propio motor de plantillas. Normalmente, solo necesita dos métodos implementados: `__construct()` y `render()`. El primero recibe la instancia [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) que crea el adaptador del motor y el contenedor DI usado por la aplicación.
 
-The method `render()` accepts an absolute path to the view file and the view parameters set using `$this->view->setVar()`. You could read or require it when it's necessary.
+El método `render()` acepta una ruta absoluta al fichero de vista y el conjunto de parámetros de la vista usando `$this->view->setVar()`. Podría leerlo o requerirlo cuando fuese necesario.
 
 ```php
 <?php
@@ -1389,9 +1389,9 @@ class CustomEngine extends AbstractEngine
 }
 ```
 
-You can now replace the template engine with your own in the view setup part of your code. You can always use more than one engine at a time. To achieve this you need to call `Phalcon\Mvc\View::registerEngines()` which accepts an array with setup instructions on which engines are registered. The key of each engine is th extension of the files you need to process. You cannot register two engines with the same key.
+Ahora puede reemplazar el motor de plantillas con el suyo en la parte de su código de configuración de la vista. Siempre puede usar más de un motor al mismo tiempo. Para lograr esto necesita llamar a `Phalcon\Mvc\View::registerEngines()` que acepta un vector con las instrucciones de configuración de los motores a registrar. La clave de cada motor es la extensión de los ficheros que necesita procesar. No puede registrar dos motores con la misma clave.
 
-The order that the template engines are defined with `Phalcon\Mvc\View::registerEngines()` defines the priority of execution. If [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) finds two views with the same name but different extensions, it will only render the first one.
+El orden en el que se definen los motores de plantillas con `Phalcon\Mvc\View::registerEngines()` establece la prioridad de ejecución. Si [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) encuentra dos vistas con el mismo nombre pero diferentes extensiones, solo renderizará la primera.
 
 ```php
 <?php
@@ -1427,7 +1427,7 @@ $container->set(
 
 ## Inyección de Dependencias
 
-Since our view is registered in our Dependency Injection container, the services available in the container are also available in the view. Each service is available by a property with the same name as the defined service.
+Dado que nuestra vista se registra en nuestro contenedor de Inyección de Dependencias, los servicios disponibles en el contenedor también están disponibles en la vista. Cada servicio está disponible desde una propiedad con el mismo nombre que el servicio definido.
 
 ```js
 <script type='text/javascript'>
@@ -1442,15 +1442,15 @@ $.ajax({
 </script>
 ```
 
-In the example above, we are utilizing the [Phalcon\Url](url) component in our javascript code, to correctly set up the URL in our application. The service is available in the view by accessing `$this->url`.
+En el ejemplo anterior, usamos el componente [Phalcon\Url](url) en nuestro código javascript, para configurar correctamente la URL en nuestra aplicación. El servicio está disponible en la vista accediendo a `$this->url`.
 
-## Stand Alone
+## Independiente
 
-You can also use the view as a *glue* component in your application. You will only need to have the proper setup and then use the view to return processed results back.
+También puede usar la vista como un componente *pegamento* en su aplicación. Solo necesitará tener la configuración adecuada y luego usar la vista para devolver los resultados procesados.
 
-### Hierarchical Rendering
+### Renderizado Jerárquico
 
-Once you set up the view with the options that are necessary for your application, you can pass variables to it, as seen above, then call `start()`, `render()` and `finish()`. This will allow the view to compile the data and prepare it for you. You can print the content produced by calling `getContent()`.
+Una vez configurada la vista con las opciones que necesita su aplicación, puede pasarle variables, como se ha visto arriba, luego llame a `start()`, `render()` y `finish()`. Esto permitirá a la vista compilar los datos y prepararlos para usted. Puede imprimir el contenido producido llamando a `getContent()`.
 
 ```php
 <?php
@@ -1473,7 +1473,7 @@ $view->finish();
 echo $view->getContent();
 ```
 
-Or using a shorter syntax:
+O usando una sintaxis más corta:
 
 ```php
 <?php
@@ -1499,9 +1499,9 @@ echo $view->getRender(
 );
 ```
 
-### Simple Rendering
+### Renderizado Simple
 
-You can also use the much smaller [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) as a stand alone component. This component is extremely useful when you want to render a template that is not always tied to your application structure. An example is rendering HTML code required by emails.
+También puede usar el mucho más pequeño [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) como componente independiente. Este componente es extremadamente útil cuando quiere renderizar una plantilla que no siempre está ligada a la estructura de su aplicación. Un ejemplo es renderizar código HTML requerido por emails.
 
 ```php
 <?php
@@ -1523,19 +1523,19 @@ echo $view->render(
 );
 ```
 
-In the above example, we set up the engine and then echo a rendered template on screen (`templates/welcome`). We can also send parameters to the template by issuing an array as the second parameter. The keys are the names of the variables.
+En el ejemplo anterior, configuramos el motor y luego mostramos una plantilla renderizada por pantalla (`templates/welcome`). También podemos enviar parámetros a la plantilla emitiendo un vector como segundo parámetro. Las claves son los nombres de las variables.
 
 ## Eventos
 
-[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) and [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) are able to send events to an [Events Manager](events) if it is present. Events are triggered using the type `view`. If an event returns `false` it can stop the active operation. Se soportan los siguientes eventos:
+[Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) y [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) son capaces de enviar eventos a un [Gestor de Eventos](events) si está presente. Los eventos se disparan usando el tipo `view`. Si un evento devuelve `false` puede parar la operación activa. Se soportan los siguientes eventos:
 
-| Nombre de evento   | Disparado                           | Puede detenerse |
-| ------------------ | ----------------------------------- |:---------------:|
-| `afterRender`      | After completing the render process |       No        |
-| `afterRenderView`  | After rendering an existing view    |       No        |
-| `beforeRender`     | Before starting the render process  |       Si        |
-| `beforeRenderView` | Before rendering an existing view   |       Si        |
-| `notFoundView`     | When a view was not found           |       No        |
+| Nombre de evento   | Disparado                                      | Puede detenerse |
+| ------------------ | ---------------------------------------------- |:---------------:|
+| `afterRender`      | Después de completar el proceso de renderizado |       No        |
+| `afterRenderView`  | Después de renderizar una vista existente      |       No        |
+| `beforeRender`     | Antes de iniciar el proceso de renderizado     |       Si        |
+| `beforeRenderView` | Antes de renderizar una vista existente        |       Si        |
+| `notFoundView`     | Cuando no se encuentra una vista               |       No        |
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 
@@ -1573,7 +1573,7 @@ $container->set(
 );
 ```
 
-The following example demonstrates how you can create a plugin that *tidies up* your HTML produced by the render process using [Tidy](https://secure.php.net/manual/en/book.tidy.php).
+El ejemplo siguiente muestra cómo puede crear un plugin que *ordena* su HTML producido por el proceso de renderizado usando [Tidy](https://secure.php.net/manual/en/book.tidy.php).
 
 ```php
 <?php
@@ -1606,7 +1606,7 @@ class TidyPlugin
 }
 ```
 
-and we can now attach it to our events manager:
+y ahora podemos adjuntarlo a nuestro gestor de eventos:
 
 ```php
 <?php
@@ -1619,7 +1619,7 @@ $manager->attach(
 
 ## Excepciones
 
-Any exceptions thrown in the view components ([Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) or [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple)) will be of type [Phalcon\Mvc\Exception](api/phalcon_mvc#mvc-view-exception) or [Phalcon\View\Engine\Volt\Exception](api/phalcon_mvc#mvc-view-engine-volt-exception) if you are using [Volt](volt). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Cualquier excepción lanzada en los componentes de vista ([Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) o [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple)) serán del tipo [Phalcon\Mvc\Exception](api/phalcon_mvc#mvc-view-exception) o [Phalcon\View\Engine\Volt\Exception](api/phalcon_mvc#mvc-view-engine-volt-exception) si está usando [Volt](volt). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php

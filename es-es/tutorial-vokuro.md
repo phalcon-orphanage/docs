@@ -147,7 +147,7 @@ vokuro/
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
 | `src/Providers`   | Providers: setting services in the DI container       |
-| `tests`           | Tests                                                 |
+| `tests`           | Pruebas                                               |
 | `themes`          | Themes/views for easy customization                   |
 | `themes/vokuro`   | Default theme for the application                     |
 | `var`             | Various supporting files                              |

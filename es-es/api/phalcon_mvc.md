@@ -10380,13 +10380,13 @@ protected viewParams;
 public function __construct( array $options = [] );
 ```
 
-Phalcon\Mvc\View constructor
+Constructor Phalcon\Mvc\View
 
 ```php
 public function __get( string $key ): mixed | null;
 ```
 
-Magic method to retrieve a variable passed to the view
+Método mágico para obtener las variables pasadas a la vista
 
 ```php
 echo $this->view->products;
@@ -10396,7 +10396,7 @@ echo $this->view->products;
 public function __isset( string $key ): bool;
 ```
 
-Magic method to retrieve if a variable is set in the view
+Método mágico para obtener si una variable está establecida en la vista
 
 ```php
 echo isset($this->view->products);
@@ -10406,7 +10406,7 @@ echo isset($this->view->products);
 public function __set( string $key, mixed $value );
 ```
 
-Magic method to pass variables to the views
+Método mágico para pasar variables a las vistas
 
 ```php
 $this->view->products = $products;
@@ -10416,25 +10416,25 @@ $this->view->products = $products;
 public function cleanTemplateAfter(): View;
 ```
 
-Resets any template before layouts
+Reestablece cualquier plantilla anterior de la disposición
 
 ```php
 public function cleanTemplateBefore(): View;
 ```
 
-Resets any "template before" layouts
+Restablece cualquier disposición de "plantilla anterior"
 
 ```php
 public function disable(): View;
 ```
 
-Disables the auto-rendering process
+Deshabilita el proceso de auto-renderizado
 
 ```php
 public function disableLevel( mixed $level ): ViewInterface;
 ```
 
-Disables a specific level of rendering
+Deshabilita un nivel específico de renderizado
 
 ```php
 // Render all levels except ACTION level
@@ -10447,49 +10447,49 @@ $this->view->disableLevel(
 public function enable(): View;
 ```
 
-Enables the auto-rendering process
+Habilita el proceso de auto-renderizado
 
 ```php
 public function exists( string $view ): bool;
 ```
 
-Checks whether view exists
+Comprueba si existe la vista
 
 ```php
 public function finish(): View;
 ```
 
-Finishes the render process by stopping the output buffering
+Finaliza el proceso de renderizado deteniendo el búfer de salida
 
 ```php
 public function getActionName(): string;
 ```
 
-Gets the name of the action rendered
+Obtiene el nombre de la acción renderizada
 
 ```php
 public function getActiveRenderPath(): string | array;
 ```
 
-Returns the path (or paths) of the views that are currently rendered
+Devuelve la ruta (o rutas) de las vistas que se están renderizando actualmente
 
 ```php
 public function getBasePath(): string;
 ```
 
-Gets base path
+Obtiene la ruta base
 
 ```php
 public function getContent(): string;
 ```
 
-Returns output from another view stage
+Devuelve la salida desde otra etapa de vista
 
 ```php
 public function getControllerName(): string;
 ```
 
-Gets the name of the controller rendered
+Obtiene el nombre del controlador renderizado
 
 ```php
 public function getCurrentRenderLevel()
@@ -10505,31 +10505,31 @@ Devuelve el administrador de eventos interno
 public function getLayout(): string;
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getLayoutsDir(): string;
 ```
 
-Gets the current layouts sub-directory
+Obtiene los diseños actuales del subdirectorio
 
 ```php
 public function getMainView(): string;
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getParamsToView(): array;
 ```
 
-Returns parameters to views
+Obtiene los parámetros de las vistas
 
 ```php
 public function getPartial( string $partialPath, mixed $params = null ): string;
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 // Retrieve the contents of a partial
@@ -10550,7 +10550,7 @@ echo $this->getPartial(
 public function getPartialsDir(): string;
 ```
 
-Gets the current partials sub-directory
+Obtiene el subdirectorio actual de parciales
 
 ```php
 public function getRegisteredEngines()
@@ -10560,7 +10560,7 @@ public function getRegisteredEngines()
 public function getRender( string $controllerName, string $actionName, array $params = [], mixed $configCallback = null ): string;
 ```
 
-Perform the automatic rendering returning the output as a string
+Realiza el renderizado automático devolviendo la salida como una cadena
 
 ```php
 $template = $this->view->getRender(
@@ -10580,25 +10580,25 @@ public function getRenderLevel()
 public function getVar( string $key );
 ```
 
-Returns a parameter previously set in the view
+Devuelve un parámetro previamente establecido en la vista
 
 ```php
 public function getViewsDir(): string | array;
 ```
 
-Gets views directory
+Devuelve el directorio de las vistas
 
 ```php
 public function isDisabled(): bool;
 ```
 
-Whether automatic rendering is enabled
+Si está habilitado el renderizado automático
 
 ```php
 public function partial( string $partialPath, mixed $params = null );
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 // Show a partial inside another view
@@ -10619,7 +10619,7 @@ $this->partial(
 public function pick( mixed $renderView ): View;
 ```
 
-Choose a different view to render instead of last-controller/last-action
+Elige una vista diferente a renderizar en vez del último-controlador/última-acción
 
 ```php
 use Phalcon\Mvc\Controller;
@@ -10646,7 +10646,7 @@ Processes the view and templates; Fires events if needed
 public function registerEngines( array $engines ): View;
 ```
 
-Register templating engines
+Registra motores de plantillas
 
 ```php
 $this->view->registerEngines(
@@ -10662,7 +10662,7 @@ $this->view->registerEngines(
 public function render( string $controllerName, string $actionName, array $params = [] ): View | bool;
 ```
 
-Executes render process from dispatching data
+Ejecuta el proceso de renderizado desde los datos de despacho
 
 ```php
 // Shows recent posts view (app/views/posts/recent.phtml)
@@ -10673,13 +10673,13 @@ $view->start()->render("posts", "recent")->finish();
 public function reset(): View;
 ```
 
-Resets the view component to its factory default values
+Resetea el componente vista a sus valores predeterminados de fábrica
 
 ```php
 public function setBasePath( string $basePath ): View;
 ```
 
-Sets base path. Depending of your platform, always add a trailing slash or backslash
+Establece la ruta base. Depending of your platform, always add a trailing slash or backslash
 
 ```php
 $view->setBasePath(__DIR__ . "/");
@@ -10689,7 +10689,7 @@ $view->setBasePath(__DIR__ . "/");
 public function setContent( string $content ): View;
 ```
 
-Externally sets the view content
+Establece externamente el contenido de la vista
 
 ```php
 $this->view->setContent("<h1>hello</h1>");
@@ -10725,7 +10725,7 @@ $view->setLayoutsDir("../common/layouts/");
 public function setMainView( string $viewPath ): View;
 ```
 
-Sets default view name. Must be a file without extension in the views directory
+Establece el nombre de la vista predeterminada. Must be a file without extension in the views directory
 
 ```php
 // Renders as main view views-dir/base.phtml
@@ -10736,7 +10736,7 @@ $this->view->setMainView("base");
 public function setParamToView( string $key, mixed $value ): View;
 ```
 
-Adds parameters to views (alias of setVar)
+Añade parámetros a las vistas (alias de setVar)
 
 ```php
 $this->view->setParamToView("products", $products);
@@ -10746,7 +10746,7 @@ $this->view->setParamToView("products", $products);
 public function setPartialsDir( string $partialsDir ): View;
 ```
 
-Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece un subdirectorio de parciales. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
 
 ```php
 $view->setPartialsDir("../common/partials/");
@@ -10756,7 +10756,7 @@ $view->setPartialsDir("../common/partials/");
 public function setRenderLevel( int $level ): ViewInterface;
 ```
 
-Sets the render level for the view
+Establece el nivel de renderizado de la vista
 
 ```php
 // Render the view related to the controller only
@@ -10769,19 +10769,19 @@ $this->view->setRenderLevel(
 public function setTemplateAfter( mixed $templateAfter ): View;
 ```
 
-Sets a "template after" controller layout
+Establece una disposición de controlador "plantilla posterior"
 
 ```php
 public function setTemplateBefore( mixed $templateBefore ): View;
 ```
 
-Sets a template before the controller layout
+Establece una plantilla anterior a la disposición del controlador
 
 ```php
 public function setVar( string $key, mixed $value ): View;
 ```
 
-Set a single view parameter
+Establece un parámetro de vista único
 
 ```php
 $this->view->setVar("products", $products);
@@ -10791,7 +10791,7 @@ $this->view->setVar("products", $products);
 public function setVars( array $params, bool $merge = bool ): View;
 ```
 
-Set all the render params
+Establece todos los parámetros de renderizado
 
 ```php
 $this->view->setVars(
@@ -10805,19 +10805,19 @@ $this->view->setVars(
 public function setViewsDir( mixed $viewsDir ): View;
 ```
 
-Sets the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece el directorio de las vistas. Depending of your platform, always add a trailing slash or backslash
 
 ```php
 public function start(): View;
 ```
 
-Starts rendering process enabling the output buffering
+Inicia el proceso de renderizado habilitando el búfer de salida
 
 ```php
 public function toString( string $controllerName, string $actionName, array $params = [] ): string;
 ```
 
-Renders the view and returns it as a string
+Renderiza la vista y la devuelve como una cadena
 
 ```php
 protected function engineRender( array $engines, string $viewPath, bool $silence, bool $mustClean = bool );
@@ -10829,7 +10829,7 @@ Checks whether view exists on registered extensions and render it
 protected function getViewsDirs(): array;
 ```
 
-Gets views directories
+Devuelve los directorios de las vistas
 
 ```php
 final protected function isAbsolutePath( string $path );
@@ -10871,19 +10871,19 @@ Phalcon\Mvc\View\Engine constructor
 public function getContent(): string;
 ```
 
-Returns cached output on another view stage
+Devuelve la salida almacenada en caché en otra etapa de visualización
 
 ```php
 public function getView(): ViewBaseInterface;
 ```
 
-Returns the view component related to the adapter
+Devuelve el componente de vista relacionados con el adaptador
 
 ```php
 public function partial( string $partialPath, mixed $params = null ): void;
 ```
 
-Renders a partial inside another view
+Representa una vista parcial dentro de otro punto de vista
 
 <h1 id="mvc-view-engine-engineinterface">Interface Phalcon\Mvc\View\Engine\EngineInterface</h1>
 
@@ -10899,19 +10899,19 @@ Interface for Phalcon\Mvc\View engine adapters
 public function getContent(): string;
 ```
 
-Returns cached output on another view stage
+Devuelve la salida almacenada en caché en otra etapa de visualización
 
 ```php
 public function partial( string $partialPath, mixed $params = null ): void;
 ```
 
-Renders a partial inside another view
+Representa una vista parcial dentro de otro punto de vista
 
 ```php
 public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 <h1 id="mvc-view-engine-php">Class Phalcon\Mvc\View\Engine\Php</h1>
 
@@ -10927,7 +10927,7 @@ Adapter to use PHP itself as templating engine
 public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 <h1 id="mvc-view-engine-volt">Class Phalcon\Mvc\View\Engine\Volt</h1>
 
@@ -10996,13 +10996,13 @@ Comprueba si se incluye la aguja en el pajar
 public function length( mixed $item ): int;
 ```
 
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+Filtro de longitud. Si se pasa un objeto o matriz se realiza un `count()`, de lo contrario realiza un `strlen()<code>/`mb_strlen()</code>
 
 ```php
 public function render( string $templatePath, mixed $params, bool $mustClean = bool );
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
@@ -11533,7 +11533,7 @@ Phalcon\Mvc\View\Simple constructor
 public function __get( string $key ): mixed | null;
 ```
 
-Magic method to retrieve a variable passed to the view
+Método mágico para obtener las variables pasadas a la vista
 
 ```php
 echo $this->view->products;
@@ -11543,7 +11543,7 @@ echo $this->view->products;
 public function __set( string $key, mixed $value );
 ```
 
-Magic method to pass variables to the views
+Método mágico para pasar variables a las vistas
 
 ```php
 $this->view->products = $products;
@@ -11559,7 +11559,7 @@ Returns the path of the view that is currently rendered
 public function getContent(): string;
 ```
 
-Returns output from another view stage
+Devuelve la salida desde otra etapa de vista
 
 ```php
 public function getEventsManager(): ManagerInterface | null;
@@ -11571,7 +11571,7 @@ Devuelve el administrador de eventos interno
 public function getParamsToView(): array;
 ```
 
-Returns parameters to views
+Obtiene los parámetros de las vistas
 
 ```php
 public function getRegisteredEngines(): array|null
@@ -11581,19 +11581,19 @@ public function getRegisteredEngines(): array|null
 public function getVar( string $key ): mixed | null;
 ```
 
-Returns a parameter previously set in the view
+Devuelve un parámetro previamente establecido en la vista
 
 ```php
 public function getViewsDir(): string;
 ```
 
-Gets views directory
+Devuelve el directorio de las vistas
 
 ```php
 public function partial( string $partialPath, mixed $params = null );
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 // Show a partial inside another view
@@ -11614,7 +11614,7 @@ $this->partial(
 public function registerEngines( array $engines );
 ```
 
-Register templating engines
+Registra motores de plantillas
 
 ```php
 $this->view->registerEngines(
@@ -11636,7 +11636,7 @@ Renders a view
 public function setContent( string $content ): Simple;
 ```
 
-Externally sets the view content
+Establece externamente el contenido de la vista
 
 ```php
 $this->view->setContent("<h1>hello</h1>");
@@ -11652,7 +11652,7 @@ Establece el administrador de eventos
 public function setParamToView( string $key, mixed $value ): Simple;
 ```
 
-Adds parameters to views (alias of setVar)
+Añade parámetros a las vistas (alias de setVar)
 
 ```php
 $this->view->setParamToView("products", $products);
@@ -11662,7 +11662,7 @@ $this->view->setParamToView("products", $products);
 public function setVar( string $key, mixed $value ): Simple;
 ```
 
-Set a single view parameter
+Establece un parámetro de vista único
 
 ```php
 $this->view->setVar("products", $products);
@@ -11672,7 +11672,7 @@ $this->view->setVar("products", $products);
 public function setVars( array $params, bool $merge = bool ): Simple;
 ```
 
-Set all the render params
+Establece todos los parámetros de renderizado
 
 ```php
 $this->view->setVars(
@@ -11722,31 +11722,31 @@ Returns cached output from another view stage
 public function getParamsToView(): array;
 ```
 
-Returns parameters to views
+Obtiene los parámetros de las vistas
 
 ```php
 public function getViewsDir(): string | array;
 ```
 
-Gets views directory
+Devuelve el directorio de las vistas
 
 ```php
 public function partial( string $partialPath, mixed $params = null );
 ```
 
-Renders a partial view
+Renderiza una vista parcial
 
 ```php
 public function setContent( string $content );
 ```
 
-Externally sets the view content
+Establece externamente el contenido de la vista
 
 ```php
 public function setParamToView( string $key, mixed $value );
 ```
 
-Adds parameters to views (alias of setVar)
+Añade parámetros a las vistas (alias de setVar)
 
 ```php
 public function setVar( string $key, mixed $value );
@@ -11776,37 +11776,37 @@ Interface for Phalcon\Mvc\View
 public function cleanTemplateAfter();
 ```
 
-Resets any template before layouts
+Reestablece cualquier plantilla anterior de la disposición
 
 ```php
 public function cleanTemplateBefore();
 ```
 
-Resets any template before layouts
+Reestablece cualquier plantilla anterior de la disposición
 
 ```php
 public function disable();
 ```
 
-Disables the auto-rendering process
+Deshabilita el proceso de auto-renderizado
 
 ```php
 public function enable();
 ```
 
-Enables the auto-rendering process
+Habilita el proceso de auto-renderizado
 
 ```php
 public function finish();
 ```
 
-Finishes the render process by stopping the output buffering
+Finaliza el proceso de renderizado deteniendo el búfer de salida
 
 ```php
 public function getActionName(): string;
 ```
 
-Gets the name of the action rendered
+Obtiene el nombre de la acción renderizada
 
 ```php
 public function getActiveRenderPath(): string | array;
@@ -11818,37 +11818,37 @@ Returns the path of the view that is currently rendered
 public function getBasePath(): string;
 ```
 
-Gets base path
+Obtiene la ruta base
 
 ```php
 public function getControllerName(): string;
 ```
 
-Gets the name of the controller rendered
+Obtiene el nombre del controlador renderizado
 
 ```php
 public function getLayout(): string;
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getLayoutsDir(): string;
 ```
 
-Gets the current layouts sub-directory
+Obtiene los diseños actuales del subdirectorio
 
 ```php
 public function getMainView(): string;
 ```
 
-Returns the name of the main view
+Obtiene el nombre de la vista principal
 
 ```php
 public function getPartialsDir(): string;
 ```
 
-Gets the current partials sub-directory
+Obtiene el subdirectorio actual de parciales
 
 ```php
 public function isDisabled(): bool;
@@ -11866,25 +11866,25 @@ Choose a view different to render than last-controller/last-action
 public function registerEngines( array $engines );
 ```
 
-Register templating engines
+Registra motores de plantillas
 
 ```php
 public function render( string $controllerName, string $actionName, array $params = [] ): ViewInterface | bool;
 ```
 
-Executes render process from dispatching data
+Ejecuta el proceso de renderizado desde los datos de despacho
 
 ```php
 public function reset();
 ```
 
-Resets the view component to its factory default values
+Resetea el componente vista a sus valores predeterminados de fábrica
 
 ```php
 public function setBasePath( string $basePath );
 ```
 
-Sets base path. Depending of your platform, always add a trailing slash or backslash
+Establece la ruta base. Depending of your platform, always add a trailing slash or backslash
 
 ```php
 public function setLayout( string $layout );
@@ -11902,19 +11902,19 @@ Sets the layouts sub-directory. Must be a directory under the views directory. D
 public function setMainView( string $viewPath );
 ```
 
-Sets default view name. Must be a file without extension in the views directory
+Establece el nombre de la vista predeterminada. Must be a file without extension in the views directory
 
 ```php
 public function setPartialsDir( string $partialsDir );
 ```
 
-Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece un subdirectorio de parciales. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
 
 ```php
 public function setRenderLevel( int $level ): ViewInterface;
 ```
 
-Sets the render level for the view
+Establece el nivel de renderizado de la vista
 
 ```php
 public function setTemplateAfter( mixed $templateAfter );
@@ -11932,4 +11932,4 @@ Appends template before controller layout
 public function start();
 ```
 
-Starts rendering process enabling the output buffering
+Inicia el proceso de renderizado habilitando el búfer de salida

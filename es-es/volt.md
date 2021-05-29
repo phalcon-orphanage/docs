@@ -3,11 +3,11 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#volt'
-title: 'Volt: Template Engine'
+title: 'Volt: Motor de plantillas'
 keywords: 'volt, template engine, php generation, view data'
 ---
 
-# Volt: Template Engine
+# Volt: Motor de plantillas
 
 * * *
 
@@ -15,17 +15,17 @@ keywords: 'volt, template engine, php generation, view data'
 
 ## Resumen
 
-Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
+Volt es un motor de plantillas ultrarrápido y de diseño amigable, escrito en C para PHP. Ofrece un conjunto de ayudantes para escribir las vistas fácilmente. Volt está altamente integrado con otros componentes de Phalcon, pero puede ser utilizado como un componente independiente en su aplicación.
 
 ![](/assets/images/content/views-volt.png)
 
-Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko).
+Volt está inspirado en [Jinja](https://github.com/pallets/jinja), originalmente creado por [Armin Ronacher](https://github.com/mitsuhiko).
 
-Many developers will be in familiar territory, using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to, while working with Phalcon.
+Muchos desarrolladores estarán en territorio familiar al utilizar la misma sintaxis que han estado utilizando con motores de plantillas similares. La sintaxis y características de Volt se han mejorado con más elementos y, por supuesto, con el rendimiento al que los desarrolladores han estado acostumbrados mientras trabajan con Phalcon.
 
-## Syntax
+## Sintaxis
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Las vistas de Volt se compilan a código PHP puro, así que, básicamente ahorran el esfuerzo de escribir el código PHP manualmente:
 
 ```twig
 {% raw %}
@@ -51,7 +51,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% endfor %}{% endraw %}
 ```
 
-compared to:
+comparado con:
 
 ```php
 <?php foreach ($invoices as $invoice) { ?>
@@ -85,11 +85,11 @@ public function __construct(
 )
 ```
 
-The constructor accepts a [Phalcon\Mvc\View](views) or any component that implements the `ViewBaseInterface`, and a DI container.
+El constructor acepta un [Phalcon\Mvc\View](views) o cualquier componente que implemente la `ViewBaseInterface`, y un contenedor DI.
 
 ## Métodos
 
-There are several methods available in Volt. In most cases, only a handful of them are used in modern day applications.
+Hay varios métodos disponibles en Volt. En la mayoría de los casos, sólo un puñado de ellos se utilizan en aplicaciones modernas.
 
 ```php
 callMacro(string $name, array $arguments = []): mixed
@@ -113,7 +113,7 @@ Devuelve el compilador del Volt
 getContent(): string
 ```
 
-Returns cached output on another view stage
+Devuelve la salida almacenada en caché en otra etapa de visualización
 
 ```php
 getOptions(): array
@@ -125,7 +125,7 @@ Obtener las opciones de Volt
 getView(): ViewBaseInterface
 ```
 
-Returns the view component related to the adapter
+Devuelve el componente de vista relacionados con el adaptador
 
 ```php
 isIncluded(mixed $needle, mixed $haystack): bool
@@ -137,19 +137,19 @@ Comprueba si se incluye la aguja en el pajar
 length(mixed $item): int
 ```
 
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+Filtro de longitud. Si se pasa un objeto o matriz se realiza un `count()`, de lo contrario realiza un `strlen()<code>/`mb_strlen()</code>
 
 ```php
 partial(string $partialPath, mixed $params = null): string
 ```
 
-Renders a partial inside another view
+Representa una vista parcial dentro de otro punto de vista
 
 ```php
 render(string $templatePath, mixed $params, bool $mustClean = false)
 ```
 
-Renders a view using the template engine
+Renderiza una vista utilizando el motor de plantillas
 
 ```php
 setOptions(array $options)
@@ -171,7 +171,7 @@ Ordena una matriz
 
 ## Activación
 
-As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
+Como con otros motores de plantillas, se puede registrar Volt en el componente de la vista, usando una nueva extensión o reusar el estándar `phtml`:
 
 ```php
 <?php
@@ -221,7 +221,7 @@ $container->set(
 );
 ```
 
-To use the standard `.phtml` extension:
+Para utilizar la extensión estándar `phtml`:
 
 ```php
 <?php
@@ -233,7 +233,7 @@ $view->registerEngines(
 );
 ```
 
-You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
+No tienes que especificar el servicio Volt en el DI; también puede utilizar el motor de Volt con la configuración predeterminada:
 
 ```php
 <?php
@@ -248,7 +248,7 @@ $view->registerEngines(
 );
 ```
 
-If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
+Si no quieres reutilizar Volt como un servicio, puedes pasar una función anónima para registrar el motor en lugar de un nombre de servicio:
 
 ```php
 <?php
@@ -293,23 +293,23 @@ $container->set(
 );
 ```
 
-The following options are available in Volt:
+Las siguientes opciones están disponibles en Volt:
 
-| Opción       | Predeterminado | Descripción                                                                                                              |
-| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `autoescape` | `false`        | Enables autoescape HTML globally                                                                                         |
-| `always`     | `false`        | Whether templates must be compiled in each request or when they change                                                   |
-| `extension`  | `.php`         | An additional extension appended to the compiled PHP file                                                                |
-| `path`       | `./`           | A writeable path where the compiled PHP templates will be placed                                                         |
-| `separator`  | `%%`           | Replace directory separators `/` and `\` with this separator in order to create a single file in the compiled directory |
-| `prefix`     | `null`         | Prepend a prefix to the templates in the compilation path                                                                |
-| `stat`       | `true`         | Whether Phalcon must check if there are differences between the template file and its compiled path                      |
+| Opción       | Predeterminado | Descripción                                                                                                                          |
+| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `autoescape` | `false`        | Habilita el autoescape HTML globalmente                                                                                              |
+| `always`     | `false`        | Si se deben compilar las plantillas en cada petición o cuando cambian                                                                |
+| `extension`  | `.php`         | Extensión adicional añadida al fichero PHP compilado                                                                                 |
+| `path`       | `./`           | Una ruta escribible donde se colocarán las plantillas PHP compiladas                                                                 |
+| `separator`  | `%%`           | Sustituye los separadores de directorio `/` and `\` con este separador para poder crear un único fichero en el directorio compilado |
+| `prefix`     | `null`         | Antepone un prefijo a las plantillas en la ruta de compilación                                                                       |
+| `stat`       | `true`         | Si Phalcon debe comprobar si hay diferencias entre el fichero de plantilla y su ruta compilada                                       |
 
-The compilation path is generated according to the options above. You however, have total freedom in defining the compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the relative path to the template in the predefined views directory.
+La ruta de compilación se genera de acuerdo a las opciones anteriores. Sin embargo, tiene total libertad para definir la ruta de compilación como una función anónima, incluyendo la lógica usada para generarla. La función anónima recibe la ruta relativa a la plantilla en el directorio de vistas predefinidas.
 
-**Appending extensions**
+**Añadir extensiones**
 
-Append the `.php` extension to the template path, leaving the compiled templates in the same directory:
+Añadir la extensión `.php` a la ruta de plantilla, dejando las plantillas compiladas en el mismo directorio:
 
 ```php
 <?php
@@ -323,9 +323,9 @@ $volt->setOptions(
 );
 ```
 
-**Different directories**
+**Directorios diferentes**
 
-The following example will create the same structure in a different directory
+El siguiente ejemplo creará la misma estructura en directorios diferentes
 
 ```php
 <?php
@@ -351,16 +351,16 @@ $volt->setOptions(
 
 ## Uso
 
-Volt uses specific delimiters for its syntax. `
+Volt usa delimitadores específicos para su sintaxis. `
 {%- raw -%}
 {% ... %}
 {% endraw %}
-` is used to execute statements such as for-loops or assign values and `
+` se usa para ejecutar sentencias como bucles-for o asignar valores y `
 {%- raw -%}
 {{ ... }}{% endraw %}
-` prints the result of an expression to the template. The view files can also contain PHP and HTML should you choose to.
+` imprime el resultado de una expresión en la plantilla. Los ficheros de vistas también pueden contener PHP y HTML si así lo desea.
 
-Below is a sample template that illustrates a few basics:
+Abajo se muestra un ejemplo de plantilla que ilustra unos pocos conceptos básicos:
 
 ```twig
 {%- raw -%}
@@ -393,7 +393,7 @@ Below is a sample template that illustrates a few basics:
 </html>{% endraw %}
 ```
 
-Using [Phalcon\Mvc\View](view) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `showNavigation`, `menu`, `title` and `post`:
+Usando [Phalcon\Mvc\View](view) puede pasar variables desde el controlador a las vistas. En el ejemplo anterior, se pasaron cuatro variables a la vista: `showNavigation`, `menu`, `title` y `post`:
 
 ```php
 <?php
@@ -428,7 +428,7 @@ class PostsController extends Controller
 }
 ```
 
-> **NOTE** The placeholders for Volt `
+> **NOTA** Los marcadores de posición para Volt `
 {% raw %}{{{% endraw %}
 `, `
 {% raw %}}}
@@ -436,13 +436,13 @@ class PostsController extends Controller
 `, `
 {% raw %}{%
 {% endraw %}
-` and `{% raw %}%}{% endraw %}
-` cannot be changed or set. 
+` y `{% raw %}%}{% endraw %}
+` no se pueden cambiar o establecer. 
 {: .alert .alert-warning }
 
 ### Vue.js
 
-If you are using [Vue](https://vuejs.org) you will need to change the interpolators in Vue itself:
+Si usa [Vue](https://vuejs.org) necesitará cambiar los interpoladores del propio Vue:
 
 ```javascript
 new Vue(
@@ -456,7 +456,7 @@ new Vue(
 
 ### Angular
 
-If you are using [Angular](https://angular.io) you can set the interpolators as follows:
+Si usa [Angular](https://angular.io) puede configurar los interpoladores como sigue:
 
 ```javascript
   var myApp = angular.module('myApp', []);
@@ -471,7 +471,7 @@ If you are using [Angular](https://angular.io) you can set the interpolators as 
 
 ## Variables
 
-Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
+Las variables de objetos pueden tener atributos, que se pueden acceder utilizando la sintaxis: `foo.bar`. Si usted está pasando un array, tiene que usar la sintaxis de corchete: `foo ['bar']`
 
 ```twig
 {%- raw -%}
@@ -482,7 +482,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 ## Filtros
 
-Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
+Las variables pueden ser formateadas o modificación mediante filtros. El operador de tubería o pleca `|` se utiliza para aplicar filtros a las variables:
 
 ```twig
 {%- raw -%}
@@ -492,37 +492,37 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 {% endraw %}
 ```
 
-The available built-in filters are:
+Los filtros incorporados disponibles son:
 
-| Filtro             | Descripción                                                                                                                                     |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Applies the [`abs`](https://php.net/manual/en/function.abs.php) PHP function to a value.                                                        |
-| `capitalize`       | Capitalizes a string by applying the [`ucwords`](https://php.net/manual/en/function.ucwords.php) PHP function to the value                      |
-| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                                        |
-| `default`          | Sets a default value in case the evaluated expression is empty, not set or evaluates to falsy value                                             |
-| `e`                | Applies [`Phalcon\Escaper->escapeHtml()`](escaper) to the value                                                                             |
-| `escape`           | Applies [`Phalcon\Escaper->escapeHtml()`](escaper) to the value                                                                             |
-| `escape_attr`      | Applies [`Phalcon\Escaper->escapeHtmlAttr()`](escaper) to the value                                                                         |
-| `escape_css`       | Applies [`Phalcon\Escaper->escapeCss()`](escaper) to the value                                                                              |
-| `escape_js`        | Applies [`Phalcon\Escaper->escapeJs()`](escaper) to the value                                                                               |
-| `format`           | Formats a string using [`sprintf`](https://php.net/manual/en/function.sprintf.php)                                                              |
-| `json_encode`      | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                             |
-| `json_decode`      | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation                     |
-| `join`             | Joins the array parts using a separator [`join`](https://php.net/manual/en/function.join.php)                                                   |
-| `keys`             | Returns the array keys using [`array_keys`](https://php.net/manual/en/function.array-keys)                                                      |
-| `left_trim`        | Applies the [`ltrim`](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                            |
-| `length`           | Counts the string length or how many items are in an array or object, equivalent of [`count`](https://www.php.net/manual/en/function.count.php) |
-| `lower`            | Cambiar una cadena a minúsculas                                                                                                                 |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [`nl2br`](https://php.net/manual/en/function.nl2br.php)           |
-| `right_trim`       | Applies the [`rtrim`](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                            |
-| `slashes`          | Applies the [`addslashes`](https://php.net/manual/en/function.addslashes.php) PHP function to the value.                                        |
-| `slice`            | Slices strings, arrays or traversable objects                                                                                                   |
-| `sort`             | Sorts an array using the PHP function [`asort`](https://php.net/manual/en/function.asort.php)                                                   |
-| `stripslashes`     | Applies the [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes            |
-| `striptags`        | Applies the [`striptags`](https://php.net/manual/en/function.strip-tags.php) PHP function to the value. Removing HTML tags                      |
-| `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                              |
-| `upper`            | Applies the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function to the value.                                    |
-| `url_encode`       | Applies the [`urlencode`](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                           |
+| Filtro             | Descripción                                                                                                                                              |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `abs`              | Aplica la función PHP [`abs`](https://php.net/manual/en/function.abs.php) a un valor.                                                                    |
+| `capitalize`       | Capitaliza una cadena aplicando la función PHP [`ucwords`](https://php.net/manual/en/function.ucwords.php) al valor                                      |
+| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                                                 |
+| `default`          | Establece un valor por defecto en caso de que la expresión evaluada esté vacía, no establecida o evalúa a un valor falso                                 |
+| `e`                | Aplica [`Phalcon\Escaper->escapeHtml()`](escaper) al valor                                                                                           |
+| `escape`           | Aplica [`Phalcon\Escaper->escapeHtml()`](escaper) al valor                                                                                           |
+| `escape_attr`      | Aplica [`Phalcon\Escaper->escapeHtmlAttr()`](escaper) al valor                                                                                       |
+| `escape_css`       | Aplica [`Phalcon\Escaper->escapeCss()`](escaper) al valor                                                                                            |
+| `escape_js`        | Aplica [`Phalcon\Escaper->escapeJs()`](escaper) al valor                                                                                             |
+| `format`           | Formatea una cadena usando [`sprintf`](https://php.net/manual/en/function.sprintf.php)                                                                   |
+| `json_encode`      | Convierte un valor en su representación [JSON](https://php.net/manual/en/function.json-encode.php)                                                       |
+| `json_decode`      | Convierte un valor desde su representación [JSON](https://php.net/manual/en/function.json-encode.php) a una representación PHP                           |
+| `join`             | Une las partes del vector usando un separador [`join`](https://php.net/manual/en/function.join.php)                                                      |
+| `keys`             | Devuelve las claves del vector usando [`array_keys`](https://php.net/manual/en/function.array-keys)                                                      |
+| `left_trim`        | Aplica la función PHP [`ltrim`](https://php.net/manual/en/function.ltrim.php) al valor. Elimina los espacios extra                                       |
+| `length`           | Cuenta la longitud de la cadena o cuantos elementos hay en un vector u objeto, equivalente a [`count`](https://www.php.net/manual/en/function.count.php) |
+| `lower`            | Cambiar una cadena a minúsculas                                                                                                                          |
+| `nl2br`            | Cambia nuevas líneas `\n` por roturas de línea (`<br />`). Uses the PHP function [`nl2br`](https://php.net/manual/en/function.nl2br.php)          |
+| `right_trim`       | Aplica la función PHP [`rtrim`](https://php.net/manual/en/function.rtrim.php) al valor. Elimina los espacios extra                                       |
+| `slashes`          | Aplica la función PHP [`addslashes`](https://php.net/manual/en/function.addslashes.php) al valor.                                                        |
+| `slice`            | Corta cadenas, vectores u objetos atravesables                                                                                                           |
+| `sort`             | Ordena un vector usando la función PHP [`asort`](https://php.net/manual/en/function.asort.php)                                                           |
+| `stripslashes`     | Aplica la función PHP [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) al valor. Elimina comillas escapadas                         |
+| `striptags`        | Aplica la función PHP [`striptags`](https://php.net/manual/en/function.strip-tags.php) al valor. Elimina etiquetas HTML                                  |
+| `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Elimina los espacios extra                                  |
+| `upper`            | Applies the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function to the value.                                             |
+| `url_encode`       | Aplica la función PHP [`urlencode`](https://php.net/manual/en/function.urlencode.php) al valor                                                           |
 
 **Ejemplos**
 
@@ -586,12 +586,12 @@ The available built-in filters are:
 {% endraw %}
 ```
 
-## Comments
+## Comentarios
 
-Comments may also be added to a template using the `
+Los comnetarios se pueden añadir a una plantilla usando los delimitadores `
 {%- raw -%}
 {# ... #}{% endraw %}
-` delimiters. All text inside them is just ignored in the final output:
+`. Todo el texto entre ellos simplemente se ignorará en la salida final:
 
 ```twig
 {%- raw -%}
@@ -600,13 +600,13 @@ Comments may also be added to a template using the `
 #}{% endraw %}
 ```
 
-## Control Structures
+## Estructuras de Control
 
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt proporciona un conjunto de estructuras de control básicas pero poderosas para usar en las plantillas:
 
 ### For
 
-Loop over each item in a sequence. The following example shows how to traverse a set of `invoices` and print each title:
+Itera sobre cada elemento de una secuencia. El ejemplo siguiente muestra cómo recorrer un conjunto de `invoices` y mostrar cada título:
 
 ```twig
 {%- raw -%}
@@ -620,7 +620,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
 </ul>{% endraw %}
 ```
 
-for-loops can also be nested:
+los bucles-for también se pueden anidar:
 
 ```twig
 {%- raw -%}
@@ -633,7 +633,7 @@ Product: {{ product.prd_title|e }} {{ product.prd_price|e }} USD <br />
 {% endraw %}
 ```
 
-You can get the element `keys` as in the PHP counterpart using the following syntax:
+Puede obtener el elemento `keys` como en la homóloga en PHP usando la siguiente sintaxis:
 
 ```twig
 {%- raw -%}
@@ -645,7 +645,7 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 {% endraw %}
 ```
 
-An `if` evaluation can be optionally set:
+Se puede establecer opcionalmente una evaluación `if`:
 
 ```twig
 {%- raw -%}
@@ -661,7 +661,7 @@ An `if` evaluation can be optionally set:
 {% endraw %}
 ```
 
-If an `else` is defined inside the `for`, it will be executed if the expression in the iterator result in zero iterations:
+Si se define un `else` dentro del `for`, se ejecutará si la expresión en el iterador resulta en cero iteraciones:
 
 ```twig
 {%- raw -%}
@@ -674,7 +674,7 @@ If an `else` is defined inside the `for`, it will be executed if the expression 
 {% endraw %}
 ```
 
-Alternative syntax:
+Sintaxis alternativa:
 
 ```twig
 {%- raw -%}
@@ -687,9 +687,9 @@ Alternative syntax:
 {% endraw %}
 ```
 
-### Loops
+### Bucles
 
-The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
+Las declaraciones de `break` y `continue` pueden utilizarse para salir de un bucle o forzar una iteración en el bloque actual:
 
 ```twig
 {%- raw -%}
@@ -717,7 +717,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 
 ### If
 
-As PHP, an `if` statement checks if an expression is evaluated as true or false:
+Como en PHP, una declaración `if` comprueba si una expresión se evalúa como verdadera o falsa:
 
 ```twig
 {%- raw -%}
@@ -731,7 +731,7 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 </ul>{% endraw %}
 ```
 
-The else clause is also supported:
+También se admite la cláusula `else`:
 
 ```twig
 {%- raw -%}
@@ -747,7 +747,7 @@ The else clause is also supported:
 </ul>{% endraw %}
 ```
 
-The `elseif` control flow structure can be used together with if to emulate a `switch` block:
+La estructura de flujo de control `elseif` se puede usar junto con `if` para emular un bloque `switch`:
 
 ```twig
 {%- raw -%}
@@ -763,7 +763,7 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 
 ### Switch
 
-An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
+Una alternativa a la sentencia `if` es `switch`, que le permite crear rutas de ejecución lógicas en su aplicación:
 
 ```twig
 {%- raw -%}
@@ -782,9 +782,9 @@ An alternative to the `if` statement is `switch`, allowing you to create logical
 {% endraw %}
 ```
 
-The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](https://php.net/control-structures.alternative-syntax).
+La sentencia `switch` ejecuta sentencia a sentencia, por lo que la sentencia `break` es necesaria en algunos casos. Cualquier salida (incluyendo espacios) entre una sentencia en blanco y el primer `case` resultará en error de sintaxis. Por lo tanto, las líneas vacías y los espacios en blanco se pueden limpiar para reducir el número de errores [ver aquí](https://php.net/control-structures.alternative-syntax).
 
-**`case` without `switch`**
+**`case` sin `switch`**
 
 ```twig
 {%- raw -%}
@@ -792,9 +792,9 @@ The `switch` statement executes statement by statement, therefore the `break` st
 {% endraw %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+Lanzará `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 
-**`switch` without `endswitch`**
+**`switch` sin `endswitch`**
 
 ```twig
 {%- raw -%}
@@ -802,9 +802,9 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 {% endraw %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+Lanzará `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
 
-**`default` without `switch`**
+**`default` sin `switch`**
 
 ```twig
 {%- raw -%}
@@ -812,10 +812,10 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 {% endraw %}
 ```
 
-Will not throw an error because `default` is a reserved word for filters like `{%- raw -%}{{ EXPRESSION | default(VALUE) }}{% endraw %}
-` but in this case the expression will only output an empty char `''` .
+No lanzará un error porque `default` es una palabra reservada para filtros como `{%- raw -%}{{ EXPRESSION | default(VALUE) }}{% endraw %}
+` pero en este caso la expresión solo mostrará un caracter vacío `''`.
 
-**nested `switch`**
+**`switch` anidado**
 
 ```twig
 {%- raw -%}
@@ -826,9 +826,9 @@ Will not throw an error because `default` is a reserved word for filters like `{
 {% endraw %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+Lanzará `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
-**a `switch` without an expression**
+**un `switch` sin una expresión**
 
 ```twig
 {%- raw -%}
@@ -839,23 +839,23 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {% endraw %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token
+Lanzará `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token
 {%- raw -%}
 %}{% endraw %} in ... on line ...`
 
-### Loop Context
+### Contexto de Bucle
 
-A special variable is available inside `for` loops providing you information about
+Una variable especial está disponible dentro de bucles `for` para proporcionarle información sobre
 
-| Variable         | Descripción                                                   |
-| ---------------- | ------------------------------------------------------------- |
-| `loop.first`     | True if in the first iteration.                               |
-| `loop.index`     | The current iteration of the loop. (1 indexed)                |
-| `loop.index0`    | The current iteration of the loop. (0 indexed)                |
-| `loop.length`    | The number of items to iterate                                |
-| `loop.last`      | True if in the last iteration.                                |
-| `loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
-| `loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
+| Variable         | Descripción                                                    |
+| ---------------- | -------------------------------------------------------------- |
+| `loop.first`     | True if in the first iteration.                                |
+| `loop.index`     | La iteración actual del bucle. (indexado 1)                    |
+| `loop.index0`    | La iteración actual del bucle. (indexado 0)                    |
+| `loop.length`    | El número de elementos a iterar                                |
+| `loop.last`      | Verdadero si está en la última iteración.                      |
+| `loop.revindex`  | El número de iteraciones desde el final del bucle (indexado 1) |
+| `loop.revindex0` | The number of iterations from the end of the loop (0 indexed)  |
 
 Ejemplo:
 
@@ -883,9 +883,9 @@ Ejemplo:
 {% endraw %}
 ```
 
-## Assignments
+## Asignaciones
 
-Variables may be changed in a template using the instruction `set`:
+Las variables pueden cambiar en una plantilla usando la instrucción `set`:
 
 ```twig
 {%- raw -%}
@@ -895,7 +895,7 @@ Variables may be changed in a template using the instruction `set`:
 {% endraw %}
 ```
 
-Multiple assignments are allowed in the same instruction:
+Se permiten las asignaciones múltiples en la misma instrucción:
 
 ```twig
 {%- raw -%}
@@ -903,7 +903,7 @@ Multiple assignments are allowed in the same instruction:
 {% endraw %}
 ```
 
-Additionally, you can use compound assignment operators:
+Además, puede usar operaciones de asignación compuestos:
 
 ```twig
 {%- raw -%}
@@ -913,9 +913,9 @@ Additionally, you can use compound assignment operators:
 {% endraw %}
 ```
 
-The following operators are available:
+Los siguientes operadores están disponibles:
 
-| Operator | Descripción                  |
+| Operador | Descripción                  |
 | -------- | ---------------------------- |
 | `=`      | Asignación estándar          |
 | `+=`     | Asignación de adición        |
@@ -923,16 +923,16 @@ The following operators are available:
 | `\*=`  | Asignación de multiplicación |
 | `/=`     | Asignación de división       |
 
-## Expressions
+## Expresiones
 
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `
+Volt proporciona un conjunto básico de expresiones, incluyendo literales y operadores comunes. Se puede evaluar e imprimir una expresión usando los delimitadores `
 {%- raw -%}
 {{
 {% endraw %}
-` and `
+` y `
 {%- raw -%}
 }}{% endraw %}
-` delimiters:
+`:
 
 ```twig
 {%- raw -%}
@@ -940,7 +940,7 @@ Volt provides a basic set of expression support, including literals and common o
 {% endraw %}
 ```
 
-If an expression needs to be evaluated without be printed the `do` statement can be used:
+Si una expresión necesita ser evaluada sin imprimirse se puede usar la sentencia `do`:
 
 ```twig
 {%- raw -%}
@@ -948,20 +948,20 @@ If an expression needs to be evaluated without be printed the `do` statement can
 {% endraw %}
 ```
 
-### Literals
+### Literales
 
-The following literals are supported:
+Se soportan los siguientes literales:
 
 | Filtro                 | Descripción                                                                           |
 | ---------------------- | ------------------------------------------------------------------------------------- |
 | `'esto es una cadena'` | Los textos entre doble comillas simples o dobles se tratan como cadenas de caracteres |
 | `100.25`               | Los números con parte decimal se tratan como dobles/flotadores                        |
 | `100`                  | Los número sin parte decimal se tratan como enteros                                   |
-| `false`                | Constant `false` is the boolean `false` value                                         |
+| `false`                | La constante `false` es el valor booleano `false`                                     |
 | `true`                 | Constant `true` is the boolean `true` value                                           |
 | `null`                 | Constant `null` is the `null` value                                                   |
 
-### Arrays
+### Vectores
 
 You can create arrays by enclosing a list of values in square brackets:
 
@@ -981,7 +981,7 @@ You can create arrays by enclosing a list of values in square brackets:
 {% endraw %}
 ```
 
-Curly braces also can be used to define arrays or hashes:
+Las llaves también se usan para definir vectores o `hashes`:
 
 ```twig
 {%- raw -%}
@@ -991,58 +991,58 @@ Curly braces also can be used to define arrays or hashes:
 {% endraw %}
 ```
 
-### Math
+### Matemáticas
 
 You may make calculations in templates using the following operators:
 
-| Operator | Descripción                                                                                    |
-|:--------:| ---------------------------------------------------------------------------------------------- |
-|   `+`    | Perform an adding operation. `{%- raw -%}{{ 2 + 3 }}{% endraw %}` returns 5                    |
-|   `-`    | Perform a subtraction operation `{%- raw -%}{{ 2 - 3 }}{% endraw %}` returns -1                |
-|   `*`    | Perform a multiplication operation `{%- raw -%}{{ 2 * 3 }}{% endraw %}` returns 6              |
-|   `/`    | Perform a division operation `{%- raw -%}{{ 10 / 2 }}{% endraw %}` returns 5                   |
-|   `%`    | Calculate the remainder of an integer division `{%- raw -%}{{ 10 % 3 }}{% endraw %}` returns 1 |
+| Operador | Descripción                                                                              |
+|:--------:| ---------------------------------------------------------------------------------------- |
+|   `+`    | Realiza una operación de suma. `{%- raw -%}{{ 2 + 3 }}{% endraw %}` devuelve 5           |
+|   `-`    | Realiza una operación de resta `{%- raw -%}{{ 2 - 3 }}{% endraw %}` devuelve -1          |
+|   `*`    | Realiza una operación de multiplicación `{%- raw -%}{{ 2 * 3 }}{% endraw %}` devuelve 6  |
+|   `/`    | Perform a division operation `{%- raw -%}{{ 10 / 2 }}{% endraw %}` returns 5             |
+|   `%`    | Calcula el resto de una división entera `{%- raw -%}{{ 10 % 3 }}{% endraw %}` devuelve 1 |
 
 ### Comparisons
 
-The following comparison operators are available:
+Están disponibles los siguientes operadores de comparación:
 
-|  Operator  | Descripción                                                                       |
+|  Operador  | Descripción                                                                       |
 |:----------:| --------------------------------------------------------------------------------- |
-|    `==`    | Comprobar si ambos operandos son iguales                                          |
-|    `!=`    | Comprobar si ambos operandos no son iguales                                       |
-| `<>` | Comprobar si ambos operandos no son iguales                                       |
-|   `>`   | Compruebe si el operando izquierdo es mayor que el operando derecho               |
-|   `<`   | Compruebe si el operando izquierdo es menor que el operando derecho               |
-|  `<=`   | Compruebe si el operando de la izquierda es menor o igual que el operando derecho |
-|  `>=`   | Compruebe si el operando izquierdo es mayor o igual que el operando derecho       |
-|   `===`    | Compruebe si ambos operandos son idénticos                                        |
-|   `!==`    | Comprobar si ambos operandos no son identicos                                     |
+|    `==`    | Comprueba si ambos operandos son iguales                                          |
+|    `!=`    | Comprueba si ambos operandos no son iguales                                       |
+| `<>` | Comprueba si ambos operandos no son iguales                                       |
+|   `>`   | Comprueba si el operando izquierdo es mayor que el operando derecho               |
+|   `<`   | Comprueba si el operando izquierdo es menor que el operando derecho               |
+|  `<=`   | Comprueba si el operando de la izquierda es menor o igual que el operando derecho |
+|  `>=`   | Comprueba si el operando izquierdo es mayor o igual que el operando derecho       |
+|   `===`    | Comprueba si ambos operandos son idénticos                                        |
+|   `!==`    | Comprueba si ambos operandos no son idénticos                                     |
 
 ### Logic
 
-Logic operators are useful in the `if` expression evaluation to combine multiple tests:
+Los operadores lógicos son útiles en la evaluación de la expresión `if` para combinar múltiples pruebas:
 
-|  Operator  | Descripción                                                                   |
+|  Operador  | Descripción                                                                   |
 |:----------:| ----------------------------------------------------------------------------- |
 |    `o`     | Devuelve true si el operando de la derecha o la izquierda se evalúa como true |
 |   `and`    | Devuelve true si los operandos izquierdo y derecho se evalúan como verdadero  |
 |   `not`    | Niega una expresión                                                           |
 | `( expr )` | Las expresiones se agrupan entre paréntesis                                   |
 
-### Other Operators
+### Otros operadores
 
-Additional operators seen the following operators are available:
+También están disponibles otros operadores:
 
-| Operator          | Descripción                                                                                        |
+| Operador          | Descripción                                                                                        |
 | ----------------- | -------------------------------------------------------------------------------------------------- |
-| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
+| `~`               | Concatena ambos operandos `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                        |
 | `|`               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello'|uppercase }}{% endraw %}` |
 | `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`       |
 | `is`              | Alias de == (igual), también realiza pruebas                                                       |
 | `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`              |
 | `is not`          | Alias de != (no iguales)                                                                           |
-| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                             |
+| `'a' ? 'b' : 'c'` | Operador ternario. El mismo que el operador ternario de PHP                                        |
 | `++`              | Incrementa un valor                                                                                |
 | `--`              | Decrementa un valor                                                                                |
 
@@ -1061,9 +1061,9 @@ The following example shows how to use operators:
 {% endraw %}
 ```
 
-## Tests
+## Pruebas
 
-Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
+Las pruebas de pueden usar para comprobar si una variable tiene un valor esperado válido. Se usa el operador `is` para realizar las pruebas:
 
 ```twig
 {%- raw -%}
@@ -1078,22 +1078,22 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% endraw %}
 ```
 
-The following built-in tests are available in Volt:
+Están disponibles las siguientes pruebas integradas en Volt:
 
-| Prueba        | Descripción                                                          |
-| ------------- | -------------------------------------------------------------------- |
-| `defined`     | Comprueba si una variable esta definida (`isset()`)                  |
-| `divisibleby` | Comprueba si un valor es divisible por otro valor                    |
-| `empty`       | Comprueba si una variable está vacía                                 |
-| `even`        | Comprueba si un valor numérico es par                                |
-| `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
-| `numeric`     | Comprueba si el valor es numérico                                    |
-| `odd`         | Comprueba si un valor numérico es impar                              |
-| `sameas`      | Comprueba si un valor es idéntico a otro valor                       |
-| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)   |
-| `type`        | Comprueba si un valor es del tipo especificado                       |
+| Prueba        | Descripción                                                              |
+| ------------- | ------------------------------------------------------------------------ |
+| `defined`     | Comprueba si una variable esta definida (`isset()`)                      |
+| `divisibleby` | Comprueba si un valor es divisible por otro valor                        |
+| `empty`       | Comprueba si una variable está vacía                                     |
+| `even`        | Comprueba si un valor numérico es par                                    |
+| `iterable`    | Comprueba si un valor es iterable. Can be traversed by a 'for' statement |
+| `numeric`     | Comprueba si el valor es numérico                                        |
+| `odd`         | Comprueba si un valor numérico es impar                                  |
+| `sameas`      | Comprueba si un valor es idéntico a otro valor                           |
+| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)       |
+| `type`        | Comprueba si un valor es del tipo especificado                           |
 
-More examples:
+Más ejemplos:
 
 ```twig
 
@@ -1146,7 +1146,7 @@ More examples:
 
 ## Macros
 
-Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
+Las macros pueden utilizarse para reutilizar la lógica de una plantilla, actúan como funciones PHP, pueden recibir parámetros y devolver valores:
 
 ```twig
 {%- raw -%}
@@ -1174,7 +1174,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {% endraw %}
 ```
 
-When calling macros, parameters can be passed by name:
+Al llamar a las macros, se pueden pasar parámetros por nombre:
 
 ```twig
 {%- raw -%}
@@ -1210,7 +1210,7 @@ Macros can return values:
 {% endraw %}
 ```
 
-And receive optional parameters:
+Y recibir parámetros opcionales:
 
 ```twig
 {%- raw -%}
@@ -1224,9 +1224,9 @@ And receive optional parameters:
 {% endraw %}
 ```
 
-## Tag Helpers
+## Ayudantes de Etiquetas
 
-Volt is highly integrated with [Phalcon\Tag](tag), so it's easy to use the helpers provided by that component in a Volt template:
+Volt está altamente integrado con [Phalcon\Tag](tag), por lo que es fácil utilizar los ayudantes proporcionados por el componente en una plantilla Volt:
 
 ```twig
 {%- raw -%}
@@ -1261,7 +1261,7 @@ Volt is highly integrated with [Phalcon\Tag](tag), so it's easy to use the helpe
 {% endraw %}
 ```
 
-The following PHP is generated:
+Se genera el siguiente PHP:
 
 ```php
 <?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
@@ -1284,7 +1284,7 @@ The following PHP is generated:
 {% endraw %}
 ```
 
-To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncamelized version of the method:
+Para llamar a un ayudante [Phalcon\Tag](api/Phalcon_Tag), sólo necesita llamar a una versión no camelizada del método:
 
 | Método                            | Función en Volt      |
 | --------------------------------- | -------------------- |
@@ -1310,28 +1310,28 @@ To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncame
 | `Phalcon\Tag::textArea`          | `text_area`          |
 | `Phalcon\Tag::textField`         | `text_field`         |
 
-## Functions
+## Funciones
 
-The following built-in functions are available in Volt:
+Las siguientes funciones integradas están disponibles en Volt:
 
-| Nombre        | Descripción                                                 |
-| ------------- | ----------------------------------------------------------- |
-| `constant`    | Reads a PHP constant                                        |
-| `content`     | Includes the content produced in a previous rendering stage |
-| `date`        | Calls the PHP function with the same name                   |
-| `dump`        | Calls the PHP function `var_dump()`                         |
-| `get_content` | Same as `content`                                           |
-| `partial`     | Dynamically loads a partial view in the current template    |
-| `static_url`  | Generate a static url using the `url` service               |
-| `super`       | Render the contents of the parent block                     |
-| `time`        | Calls the PHP function with the same name                   |
-| `url`         | Generate a URL using the `url` service                      |
-| `version`     | Returns the current version of the framework                |
-| `version_id`  | Returns the current version id of the framework             |
+| Nombre        | Descripción                                                  |
+| ------------- | ------------------------------------------------------------ |
+| `constant`    | Reads a PHP constant                                         |
+| `content`     | Includes the content produced in a previous rendering stage  |
+| `date`        | Llama a la función PHP con el mismo nombre                   |
+| `dump`        | Llama a la función PHP `var_dump()`                          |
+| `get_content` | Lo mismo que `content`                                       |
+| `partial`     | Dinámicamente carga una vista parcial en la plantilla actual |
+| `static_url`  | Genera una url estática usando el servicio `url`             |
+| `super`       | Renderiza el contenido del bloque padre                      |
+| `time`        | Llama a la función PHP con el mismo nombre                   |
+| `url`         | Generate a URL using the `url` service                       |
+| `version`     | Devuelve la versión actual del framework                     |
+| `version_id`  | Devuelve el ID de la versión actual del framework            |
 
 ## Vistas
 
-Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the view hierarchy and include partials as well:
+Además, Volt está integrado con [Phalcon\Mvc\View](view), puedes jugar con la jerarquía de la vista y también incluir parciales:
 
 ```twig
 {%- raw -%}
@@ -1344,7 +1344,7 @@ Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the vi
 {% endraw %}
 ```
 
-A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
+Una vista parcial es incluida en tiempo de ejecución, Volt también proporciona `include`, esto compila el contenido de una vista y devuelve su contenido como parte de la vista en el que se incluye:
 
 ```twig
 {%- raw -%}
@@ -1355,7 +1355,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {% endraw %}
 ```
 
-### Include
+### Incluir
 
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -1371,12 +1371,12 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| Tipo      | Descripción                                                                                                                                                                                                                                                        |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `partial` | allows you to include templates made in Volt and in other template engines as well allows you to pass an expression like a variable allowing to include the content of other view dynamically is better if the content that you have to include changes frequently |
-| `include` | copies the compiled content into the view which improves the performance only allows to include templates made with Volt requires an existing template at compile time                                                                                             |
+| Tipo      | Descripción                                                                                                                                                                                                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `partial` | le permite incluir plantillas hechas en Volt y en otros motores de plantillas. También permite pasar de una expresión como una variable permitiendo incluir el contenido de otra vista dinámicamente. Es mejor si el contenido que usted tiene que incluir cambia con frecuencia |
+| `include` | copia el contenido compilado en la vista, mejorando el rendimiento. Sólo permite incluir plantillas creadas con Volt. Requiere de una plantilla existente en tiempo de compilación                                                                                               |
 
-## Inheritance
+## Herencia
 
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
@@ -1555,7 +1555,7 @@ Unlike other template engines, Volt itself is not required to run the compiled t
 
 The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
 
-### Functions
+### Funciones
 
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two options, returning a simple string or using an anonymous function. Whichever option you use, you must return a valid PHP string expression.
 
@@ -1573,7 +1573,7 @@ $compiler = $volt->getCompiler();
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-and in Volt:
+y en Volt:
 
 ```twig
 {% raw %}{{ shuffle('abcdefg') }}{% endraw %}
@@ -1592,7 +1592,7 @@ $compiler->addFunction(
 );
 ```
 
-and in Volt:
+y en Volt:
 
 ```twig
 {% raw %}{{ widget('param1', 'param2') }}{% endraw %}
@@ -1619,7 +1619,7 @@ $compiler->addFunction(
 );
 ```
 
-and in Volt:
+y en Volt:
 
 ```twig
 {% raw %}{{ repeat('Apples', 'Oranges') }}{% endraw %}
