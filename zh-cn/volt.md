@@ -1967,13 +1967,13 @@ Returns the registered extensions
 public function getFilters(): array
 ```
 
-Register the registered user filters
+Returns the registered user filters
 
 ```php
 public function getFunctions(): array
 ```
 
-Register the registered user functions
+Returns the registered user functions
 
 ```php
 public function getOption(string $option): string
@@ -2039,12 +2039,12 @@ Set a unique prefix to be used as prefix for compiled variables
 
 The following compilation <events> are available to be implemented in extensions:
 
-| Event/Method        | 描述                                                                                                     |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
-| `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Event/Method        | 描述                                                                                                    |
+| ------------------- | ----------------------------------------------------------------------------------------------------- |
+| `compileFunction`   | Triggered before trying to compile any function call in a template                                    |
+| `compileFilter`     | Triggered before trying to compile any filter call in a template                                      |
+| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators    |
+| `compileStatement`  | Triggered before trying to compile any statement. This allows the developer to override any statement |
 
 ## Services
 
