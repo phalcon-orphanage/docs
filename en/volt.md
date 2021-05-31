@@ -1859,12 +1859,12 @@ Returns the registered extensions
 ```php
 public function getFilters(): array
 ```
-Register the registered user filters
+Returns the registered user filters
 
 ```php
 public function getFunctions(): array
 ```
-Register the registered user functions
+Returns the registered user functions
 
 ```php
 public function getOption(string $option): string
@@ -1925,7 +1925,7 @@ The following compilation [events](events) are available to be implemented in ex
 | `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
 | `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
 | `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| `compileStatement`  | Triggered before trying to compile any statement. This allows the developer to override any statement |
 
 
 ## Services
