@@ -299,7 +299,7 @@ If this is a fresh installation you can run
 composer install
 ```
 
-of if you want to upgrade the existing installations of the above packages:
+or if you want to upgrade the existing installations of the above packages:
 
 ```bash
 composer update
