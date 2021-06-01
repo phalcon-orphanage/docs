@@ -37,7 +37,7 @@ In order to install the application, you can either clone or download it from [G
 git clone https://github.com/phalcon/vokuro
 ```
 
-### Extensions
+### Extensiones
 
 There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
 

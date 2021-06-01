@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 upgrade: '#volt'
 title: 'Volt: Motor de plantillas'
-keywords: 'volt, template engine, php generation, view data'
+keywords: 'volt, motor de plantillas, generación php, datos de vista'
 ---
 
 # Volt: Motor de plantillas
@@ -513,15 +513,15 @@ Los filtros incorporados disponibles son:
 | `left_trim`        | Aplica la función PHP [`ltrim`](https://php.net/manual/en/function.ltrim.php) al valor. Elimina los espacios extra                                       |
 | `length`           | Cuenta la longitud de la cadena o cuantos elementos hay en un vector u objeto, equivalente a [`count`](https://www.php.net/manual/en/function.count.php) |
 | `lower`            | Cambiar una cadena a minúsculas                                                                                                                          |
-| `nl2br`            | Cambia nuevas líneas `\n` por roturas de línea (`<br />`). Uses the PHP function [`nl2br`](https://php.net/manual/en/function.nl2br.php)          |
+| `nl2br`            | Cambia nuevas líneas `\n` por roturas de línea (`<br />`). Usa la función PHP [`nl2br`](https://php.net/manual/en/function.nl2br.php)             |
 | `right_trim`       | Aplica la función PHP [`rtrim`](https://php.net/manual/en/function.rtrim.php) al valor. Elimina los espacios extra                                       |
 | `slashes`          | Aplica la función PHP [`addslashes`](https://php.net/manual/en/function.addslashes.php) al valor.                                                        |
 | `slice`            | Corta cadenas, vectores u objetos atravesables                                                                                                           |
 | `sort`             | Ordena un vector usando la función PHP [`asort`](https://php.net/manual/en/function.asort.php)                                                           |
 | `stripslashes`     | Aplica la función PHP [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) al valor. Elimina comillas escapadas                         |
 | `striptags`        | Aplica la función PHP [`striptags`](https://php.net/manual/en/function.strip-tags.php) al valor. Elimina etiquetas HTML                                  |
-| `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Elimina los espacios extra                                  |
-| `upper`            | Applies the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function to the value.                                             |
+| `trim`             | Aplica la función PHP [`trim`](https://php.net/manual/en/function.trim.php) al valor. Elimina los espacios extra                                         |
+| `upper`            | Aplica la función PHP [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) al valor.                                                    |
 | `url_encode`       | Aplica la función PHP [`urlencode`](https://php.net/manual/en/function.urlencode.php) al valor                                                           |
 
 **Ejemplos**
@@ -849,13 +849,13 @@ Una variable especial está disponible dentro de bucles `for` para proporcionarl
 
 | Variable         | Descripción                                                    |
 | ---------------- | -------------------------------------------------------------- |
-| `loop.first`     | True if in the first iteration.                                |
+| `loop.first`     | Verdadero si es la primera iteración.                          |
 | `loop.index`     | La iteración actual del bucle. (indexado 1)                    |
 | `loop.index0`    | La iteración actual del bucle. (indexado 0)                    |
 | `loop.length`    | El número de elementos a iterar                                |
 | `loop.last`      | Verdadero si está en la última iteración.                      |
 | `loop.revindex`  | El número de iteraciones desde el final del bucle (indexado 1) |
-| `loop.revindex0` | The number of iterations from the end of the loop (0 indexed)  |
+| `loop.revindex0` | El número de iteraciones desde el final del bucle (indexado 0) |
 
 Ejemplo:
 
@@ -958,12 +958,12 @@ Se soportan los siguientes literales:
 | `100.25`               | Los números con parte decimal se tratan como dobles/flotadores                        |
 | `100`                  | Los número sin parte decimal se tratan como enteros                                   |
 | `false`                | La constante `false` es el valor booleano `false`                                     |
-| `true`                 | Constant `true` is the boolean `true` value                                           |
-| `null`                 | Constant `null` is the `null` value                                                   |
+| `true`                 | La constante `true` es el valor booleano `true`                                       |
+| `null`                 | La constante `null` es el valor `null`                                                |
 
 ### Vectores
 
-You can create arrays by enclosing a list of values in square brackets:
+Puede crear vectores encerrando una lista de valores entre corchetes cuadrados:
 
 ```twig
 {%- raw -%}
@@ -993,17 +993,17 @@ Las llaves también se usan para definir vectores o `hashes`:
 
 ### Matemáticas
 
-You may make calculations in templates using the following operators:
+Puede hacer cálculos en las plantillas usando los siguientes operadores:
 
 | Operador | Descripción                                                                              |
 |:--------:| ---------------------------------------------------------------------------------------- |
 |   `+`    | Realiza una operación de suma. `{%- raw -%}{{ 2 + 3 }}{% endraw %}` devuelve 5           |
 |   `-`    | Realiza una operación de resta `{%- raw -%}{{ 2 - 3 }}{% endraw %}` devuelve -1          |
 |   `*`    | Realiza una operación de multiplicación `{%- raw -%}{{ 2 * 3 }}{% endraw %}` devuelve 6  |
-|   `/`    | Perform a division operation `{%- raw -%}{{ 10 / 2 }}{% endraw %}` returns 5             |
+|   `/`    | Realiza una operación de división `{%- raw -%}{{ 10 / 2 }}{% endraw %}` devuelve 5       |
 |   `%`    | Calcula el resto de una división entera `{%- raw -%}{{ 10 % 3 }}{% endraw %}` devuelve 1 |
 
-### Comparisons
+### Comparaciones
 
 Están disponibles los siguientes operadores de comparación:
 
@@ -1019,7 +1019,7 @@ Están disponibles los siguientes operadores de comparación:
 |   `===`    | Comprueba si ambos operandos son idénticos                                        |
 |   `!==`    | Comprueba si ambos operandos no son idénticos                                     |
 
-### Logic
+### Lógica
 
 Los operadores lógicos son útiles en la evaluación de la expresión `if` para combinar múltiples pruebas:
 
@@ -1034,19 +1034,19 @@ Los operadores lógicos son útiles en la evaluación de la expresión `if` para
 
 También están disponibles otros operadores:
 
-| Operador          | Descripción                                                                                        |
-| ----------------- | -------------------------------------------------------------------------------------------------- |
-| `~`               | Concatena ambos operandos `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                        |
-| `|`               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello'|uppercase }}{% endraw %}` |
-| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`       |
-| `is`              | Alias de == (igual), también realiza pruebas                                                       |
-| `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`              |
-| `is not`          | Alias de != (no iguales)                                                                           |
-| `'a' ? 'b' : 'c'` | Operador ternario. El mismo que el operador ternario de PHP                                        |
-| `++`              | Incrementa un valor                                                                                |
-| `--`              | Decrementa un valor                                                                                |
+| Operador          | Descripción                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `~`               | Concatena ambos operandos `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                                   |
+| `|`               | Aplica un filtro en el operando de la derecha a la izquierda `{%- raw -%}{{ 'hello'|uppercase }}{% endraw %}` |
+| `..`              | Crea un rango `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`                    |
+| `is`              | Alias de == (igual), también realiza pruebas                                                                  |
+| `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`                         |
+| `is not`          | Alias de != (no iguales)                                                                                      |
+| `'a' ? 'b' : 'c'` | Operador ternario. El mismo que el operador ternario de PHP                                                   |
+| `++`              | Incrementa un valor                                                                                           |
+| `--`              | Decrementa un valor                                                                                           |
 
-The following example shows how to use operators:
+El ejemplo siguiente muestra cómo usar los operadores:
 
 ```twig
 {%- raw -%}
@@ -1080,18 +1080,18 @@ Las pruebas de pueden usar para comprobar si una variable tiene un valor esperad
 
 Están disponibles las siguientes pruebas integradas en Volt:
 
-| Prueba        | Descripción                                                              |
-| ------------- | ------------------------------------------------------------------------ |
-| `defined`     | Comprueba si una variable esta definida (`isset()`)                      |
-| `divisibleby` | Comprueba si un valor es divisible por otro valor                        |
-| `empty`       | Comprueba si una variable está vacía                                     |
-| `even`        | Comprueba si un valor numérico es par                                    |
-| `iterable`    | Comprueba si un valor es iterable. Can be traversed by a 'for' statement |
-| `numeric`     | Comprueba si el valor es numérico                                        |
-| `odd`         | Comprueba si un valor numérico es impar                                  |
-| `sameas`      | Comprueba si un valor es idéntico a otro valor                           |
-| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)       |
-| `type`        | Comprueba si un valor es del tipo especificado                           |
+| Prueba        | Descripción                                                                  |
+| ------------- | ---------------------------------------------------------------------------- |
+| `defined`     | Comprueba si una variable esta definida (`isset()`)                          |
+| `divisibleby` | Comprueba si un valor es divisible por otro valor                            |
+| `empty`       | Comprueba si una variable está vacía                                         |
+| `even`        | Comprueba si un valor numérico es par                                        |
+| `iterable`    | Comprueba si un valor es iterable. Se puede recorrer con una sentencia 'for' |
+| `numeric`     | Comprueba si el valor es numérico                                            |
+| `odd`         | Comprueba si un valor numérico es impar                                      |
+| `sameas`      | Comprueba si un valor es idéntico a otro valor                               |
+| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)           |
+| `type`        | Comprueba si un valor es del tipo especificado                               |
 
 Más ejemplos:
 
@@ -1314,20 +1314,20 @@ Para llamar a un ayudante [Phalcon\Tag](api/Phalcon_Tag), sólo necesita llamar 
 
 Las siguientes funciones integradas están disponibles en Volt:
 
-| Nombre        | Descripción                                                  |
-| ------------- | ------------------------------------------------------------ |
-| `constant`    | Reads a PHP constant                                         |
-| `content`     | Includes the content produced in a previous rendering stage  |
-| `date`        | Llama a la función PHP con el mismo nombre                   |
-| `dump`        | Llama a la función PHP `var_dump()`                          |
-| `get_content` | Lo mismo que `content`                                       |
-| `partial`     | Dinámicamente carga una vista parcial en la plantilla actual |
-| `static_url`  | Genera una url estática usando el servicio `url`             |
-| `super`       | Renderiza el contenido del bloque padre                      |
-| `time`        | Llama a la función PHP con el mismo nombre                   |
-| `url`         | Generate a URL using the `url` service                       |
-| `version`     | Devuelve la versión actual del framework                     |
-| `version_id`  | Devuelve el ID de la versión actual del framework            |
+| Nombre        | Descripción                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| `constant`    | Lee una constante PHP                                              |
+| `content`     | Incluye el contenido producido en la etapa de renderizado anterior |
+| `date`        | Llama a la función PHP con el mismo nombre                         |
+| `dump`        | Llama a la función PHP `var_dump()`                                |
+| `get_content` | Lo mismo que `content`                                             |
+| `partial`     | Dinámicamente carga una vista parcial en la plantilla actual       |
+| `static_url`  | Genera una url estática usando el servicio `url`                   |
+| `super`       | Renderiza el contenido del bloque padre                            |
+| `time`        | Llama a la función PHP con el mismo nombre                         |
+| `url`         | Genera una URL usando el servicio `url`                            |
+| `version`     | Devuelve la versión actual del framework                           |
+| `version_id`  | Devuelve el ID de la versión actual del framework                  |
 
 ## Vistas
 
@@ -1357,7 +1357,7 @@ Una vista parcial es incluida en tiempo de ejecución, Volt también proporciona
 
 ### Incluir
 
-`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
+`include` tiene un comportamiento especial que nos ayudará a mejorar el rendimiento un poco cuando usamos Volt, si especifica la extensión cuando incluye el fichero y existe cuando la plantilla se compila, Volt puede incluir el contenido de la plantilla en la plantilla padre donde está incluido. Las plantillas no se incrustarán si el `include` tiene variables pasadas con `with`:
 
 ```twig
 {%- raw -%}
@@ -1367,9 +1367,9 @@ Una vista parcial es incluida en tiempo de ejecución, Volt también proporciona
 {% endraw %}
 ```
 
-### Partial Vs Include
+### Parcial Vs Incluir
 
-Keep the following points in mind when choosing to use the `partial` function or `include`:
+Tenga los siguientes puntos en mente cuando elija usar la función `partial` o `include`:
 
 | Tipo      | Descripción                                                                                                                                                                                                                                                                      |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1378,7 +1378,7 @@ Keep the following points in mind when choosing to use the `partial` function or
 
 ## Herencia
 
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
+Con la herencia de plantillas puede crear plantillas base que pueden ser extendidas por otras plantillas, permitiéndole reutilizar código. Una plantilla base define *bloques* que se pueden sobreescribir por una plantilla hija. Supongamos que tenemos la siguiente plantilla base:
 
 ```twig
 {%- raw -%}
@@ -1413,7 +1413,7 @@ With template inheritance you can create base templates that can be extended by 
 {% endraw %}
 ```
 
-From other template we could extend the base template replacing the blocks:
+Desde otra plantilla podríamos extender la plantilla base reemplazando los bloques:
 
 ```twig
 {%- raw -%}{% extends 'templates/base.volt' %}
@@ -1431,7 +1431,7 @@ From other template we could extend the base template replacing the blocks:
 {% endraw %}
 ```
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+No todos los bloques deben ser reemplazados en la plantilla hija, sólo aquellos que lo necesiten. La salida final producida será la siguiente:
 
 ```html
 <!DOCTYPE html>
@@ -1456,9 +1456,9 @@ Not all blocks must be replaced at a child template, only those that are needed.
 </html>
 ```
 
-### Multiple Inheritance
+### Herencia múltiple
 
-Extended templates can extend other templates. The following example illustrates this:
+Las plantillas extendidas pueden extender otras plantillas. El ejemplo siguiente ilustra esto:
 
 ```twig
 {%- raw -%}{# main.volt #}
@@ -1475,7 +1475,7 @@ Extended templates can extend other templates. The following example illustrates
 {% endraw %}
 ```
 
-Template `layout.volt` extends `main.volt`
+La plantilla `layout.volt` extiende `main.volt`
 
 ```twig
 {%- raw -%}{# layout.volt #}
@@ -1489,7 +1489,7 @@ Template `layout.volt` extends `main.volt`
 {% endraw %}
 ```
 
-Finally a view that extends `layout.volt`:
+Finalmente una vista que extiende `layout.volt`:
 
 ```twig
 {%- raw -%}{# index.volt #}
@@ -1506,7 +1506,7 @@ Finally a view that extends `layout.volt`:
 {% endraw %}
 ```
 
-Rendering `index.volt` produces:
+Al renderizar `index.volt` produce:
 
 ```html
 <!DOCTYPE html>
@@ -1528,14 +1528,14 @@ Rendering `index.volt` produces:
 </html>
 ```
 
-Note the call to the function `super()`. With that function it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Fíjese en la llamada a la función `super()`. Con esa función es posible renderizar los contenidos del bloque padre. Como parciales, la ruta establecida en `extends` es una ruta relativa bajo el directorio actual de vistas (ej. `app/views/`).
 
-> **NOTE**: By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
+> **NOTA**: Por defecto, y por razones de rendimiento, Volt solo comprueba por cambios en las plantillas hijas para saber cuando recompilar otra vez a PHP plano, por lo que se recomienda inicializar Volt con la opción `'always' => true`. Así, las plantillas se compilan siempre teniendo en cuenta los cambios en las plantillas padre.
 {: .alert .alert-warning }
 
-## Autoescape Mode
+## Modo Autoescape
 
-You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+Puede habilitar el autoescape de todas las variables impresas en un bloque usando el modo autoescape:
 
 ```twig
 {%- raw -%}
@@ -1549,17 +1549,17 @@ Manually escaped: {{ invoice.inv_title|e }}
 {% endraw %}
 ```
 
-## Extending Volt
+## Extender Volt
 
-Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
+A diferencia de otros motores de plantillas, Volt en sí mismo no está obligado a ejecutar las plantillas compiladas. Una vez que se compilan las plantillas no hay ninguna dependencia con Volt. Con independencia del rendimiento en mente, Volt sólo actúa como un compilador de plantillas PHP.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+El compilador de Volt permite ser ampliado, añadiéndole más funciones, tests o filtros a los ya existentes.
 
 ### Funciones
 
-Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two options, returning a simple string or using an anonymous function. Whichever option you use, you must return a valid PHP string expression.
+Las funciones actúan como funciones normales de PHP, un nombre de cadena válida se requiere como nombre de la función. Las funciones se pueden agregar mediante dos opciones, retornando una cadena simple o utilizando una función anónima. Cualquiera que sea la opción que utilice, debe devolver una expresión de cadena de texto PHP válida.
 
-The following example binds the function name `shuffle` in Volt to the PHP function `str_shuffle`:
+El siguiente ejemplo vincula el nombre de función `shuffle` en Volt a la función PHP `str_shuffle`:
 
 ```php
 <?php
@@ -1579,7 +1579,7 @@ y en Volt:
 {% raw %}{{ shuffle('abcdefg') }}{% endraw %}
 ```
 
-The example below registers the function with an anonymous function. Here we use `$resolvedArgs` to pass the arguments exactly when calling the method from the view:
+El ejemplo a continuación registra la función con una función anónima. Aquí usamos `$resolvedArgs` para pasar los argumentos exactamente al llamar al método desde la vista:
 
 ```php
 <?php
@@ -1598,7 +1598,7 @@ y en Volt:
 {% raw %}{{ widget('param1', 'param2') }}{% endraw %}
 ```
 
-You can also treat the arguments independently and also check for unresolved parameters. In the example below, we retrieve the first parameter and then check for the existence of a second parameter. If present, we store it, otherwise we use the default `10`. Finally we call the `str_repeat` PHP method on the first and second parameter.
+También puede tratar los argumentos de forma independiente y también comprobar si hay parámetros sin resolver. En el ejemplo siguiente, recuperamos el primer parámetro y luego comprobamos la existencia de un segundo parámetro. Si está presente, lo almacenamos, de lo contrario usaremos el valor predeterminado `10`. Finalmente llamamos al método PHP `str_repeat` en el primer y segundo parámetro.
 
 ```php
 <?php
@@ -1625,7 +1625,7 @@ y en Volt:
 {% raw %}{{ repeat('Apples', 'Oranges') }}{% endraw %}
 ```
 
-You can also check the availability of functions in your system and call them if present. In the following example we will call `mb_stripos` if the `mbstring` extension is present. If present, then `mb_stripos` will be called, otherwise `stripos`:
+También puede comprobar la disponibilidad de funciones en su sistema y llamarlas si está presente. En el siguiente ejemplo llamaremos a `mb_stripos` si la extensión `mbstring` está presente. Si está presente, entonces `mb_stripos` será llamado, de lo contrario `stripos`:
 
 ```php
 <?php
@@ -1642,7 +1642,7 @@ $compiler->addFunction(
 );
 ```
 
-You can also override built-in functions by using the same name in the defined function. In the example below, we *replace* the built-in Volt function `dump()` with PHP's `print_r`.
+También puede sobreescribir funciones integradas usando el mismo nombre en la función definida. En el ejemplo siguiente, *reemplazamos* la función integrada de Volt `dump()` con PHP `print_r`.
 
 ```php
 <?php
@@ -1652,9 +1652,9 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filtros
 
-A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as with the functions.
+Un filtro tiene la siguiente forma en una plantilla: `leftExpr|name(optional-args)`. Agregar nuevos filtros es similar a lo visto en las funciones.
 
-Add a new filter called `hash` using the `sha1` method:
+Añadir un nuevo filtro llamado `hash` usando el método `sha1`:
 
 ```php
 <?php
@@ -1662,7 +1662,7 @@ Add a new filter called `hash` using the `sha1` method:
 $compiler->addFilter('hash', 'sha1');
 ```
 
-Add a new filter called `int`:
+Añade un nuevo filtro llamado `int`:
 
 ```php
 <?php
@@ -1675,7 +1675,7 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden adding a function with the same name. The example below will replace the built-in `capitalize` filter with PHP's [lcfirst](https://php.net/manual/en/function.lcfirst.php) function:
+Los filtros incorporados se pueden reemplazar agregando una función con el mismo nombre. El siguiente ejemplo reemplazará el filtro integrado `capitalize` con la función [lcfirst](https://php.net/manual/en/function.lcfirst.php) de PHP:
 
 ```php
 <?php
@@ -1683,11 +1683,11 @@ Built-in filters can be overridden adding a function with the same name. The exa
 $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
-### Extensions
+### Extensiones
 
-With extensions the developer has more flexibility to extend the template engine, and override the compilation of instructions, change the behavior of an expression or operator, add functions/filters, and more.
+Con las extensiones, el desarrollador tiene más flexibilidad para extender el motor de plantillas, y sobreescribir la compilación de instrucciones, cambiar el comportamiento de una expresión u operador, añadir funciones/filtros, y más.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+Una extensión es una clase que implementa los eventos disparados por Volt como un método de sí mismo. Por ejemplo, la clase siguiente permite usar cualquier función PHP en Volt:
 
 ```php
 <?php
@@ -1705,9 +1705,9 @@ class PhpFunctionExtension
 }
 ```
 
-The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call the PHP function from the template. Events in extensions must return valid PHP code, which will be used as result of the compilation instead of code generated by Volt. If an event does not return a string the compilation is done using the default behavior provided by the engine.
+La clase anterior implementa el método `compileFunction` que se invoca antes de cualquier intento de compilar una llamada de función en cualquier plantilla. El propósito de la extensión es verificar si una función a compilar es una función PHP que permite llamar a la función PHP desde la plantilla. Los eventos en extensiones deben devolver código PHP válido, que se usará como resultado de la compilación en lugar del código generado por Volt. Si un evento no devuelve una cadena, la compilación se hace usando el comportamiento predeterminado proporcionado por el motor.
 
-Volt extensions must be in registered in the compiler making them available in compile time:
+Las extensiones Volt se deben registrar en el compilador, haciéndolas disponibles en tiempo de compilación:
 
 ```php
 <?php
@@ -1719,9 +1719,9 @@ $compiler->addExtension(
 );
 ```
 
-### Compiler
+### Compilador
 
-The Volt compiler depends on the Volt parser. The parser parses the Volt templates and creates an Intermediate Representation (IR) from it. The compiler uses that representation and produces the compiled PHP code.
+El compilador Volt depende del analizador Volt. El analizador analiza las plantillas Volt y crea una Representación Intermedia (IR) de ellas. El compilador usa esa representación y produce el código PHP compilado.
 
 ```php
 <?php
@@ -1735,7 +1735,7 @@ $compiler->compile("views/partials/header.volt");
 require $compiler->getCompiledTemplatePath();
 ```
 
-The [Phalcon\Mvc\View\Engine\Volt\Compiler](api/phalcon_mvc#mvc-view-engine-volt-compiler) offers a number of methods that can be extended to suit your application needs.
+[Phalcon\Mvc\View\Engine\Volt\Compiler](api/phalcon_mvc#mvc-view-engine-volt-compiler) ofrece un número de métodos que se pueden extender para satisfacer las necesidades de su aplicación.
 
 ```php
 public function __construct(ViewBaseInterface $view = null)
@@ -1747,7 +1747,7 @@ Constructor
 public function addExtension(mixed $extension): Compiler
 ```
 
-Registers an extension
+Registra una extensión
 
 ```php
 public function addFilter(
@@ -1756,7 +1756,7 @@ public function addFilter(
 ): Compiler
 ```
 
-Register a new filter
+Registra un nuevo filtro
 
 ```php
 public function addFunction(
@@ -1765,13 +1765,13 @@ public function addFunction(
 ): Compiler
 ```
 
-Register a new function
+Registra una nueva función
 
 ```php
 public function attributeReader(array $expr): string
 ```
 
-Resolves attribute reading
+Resuelve la lectura de atributos
 
 ```php
 public function compile(
@@ -1780,7 +1780,7 @@ public function compile(
 )
 ```
 
-Compiles a template into a file applying the compiler options. This method does not return the compiled path if the template was not compiled
+Compila una plantilla en un fichero aplicando las opciones del compilador. Este método no devuelve la ruta compilada si la plantilla no se compiló
 
 ```php
 $compiler->compile("views/layouts/main.volt");
@@ -1795,7 +1795,7 @@ public function compileAutoEscape(
 ): string
 ```
 
-Compiles a "autoescape" statement returning PHP code
+Compila una sentencia "autoescape" devolviendo código PHP
 
 ```php
 /**
@@ -1807,13 +1807,13 @@ public function compileCache(
 ): string
 ```
 
-(DEPRECATED) Compiles a `cache` statement returning PHP code
+(DEPRECATED) Compila una sentencia `cache` devolviendo código PHP
 
 ```php
 public function compileCall(array $statement, bool $extendsMode)
 ```
 
-Compiles calls to macros
+Compila llamadas a macros
 
 ```php
 public function compileCase(
@@ -1822,25 +1822,25 @@ public function compileCase(
 ): string
 ```
 
-Compiles a `case`/`default` clause returning PHP code
+Compila una cláusula `case`/`default` devolviendo código PHP
 
 ```php
 public function compileDo(array $statement): string
 ```
 
-Compiles a `do` statement returning PHP code
+Compila una sentencia `do` devolviendo código PHP
 
 ```php
 public function compileEcho(array $statement): string
 ```
 
-Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
+Compila una sentencia {% raw %}`{{` `}}`{% endraw %} devolviendo código PHP
 
 ```php
 public function compileElseIf(array $statement): string
 ```
 
-Compiles a `elseif` statement returning PHP code
+Compila una sentencia `elseif` devolviendo código PHP
 
 ```php
 public function compileFile(
@@ -1850,7 +1850,7 @@ public function compileFile(
 ): string | array
 ```
 
-Compiles a template into a file also creating the destination path
+Compila una plantilla en un fichero, también creando la ruta destino
 
 ```php
 $compiler->compileFile(
@@ -1866,13 +1866,13 @@ public function compileForeach(
 ): string
 ```
 
-Compiles a `foreach` statement returning PHP code
+Compila una sentencia `foreach` devolviendo código PHP
 
 ```php
 public function compileForElse(): string
 ```
 
-Compiles a `forelse` statement returning PHP code
+Compila una sentencia `forelse` devolviendo código PHP
 
 ```php
 public function compileIf(
@@ -1881,13 +1881,13 @@ public function compileIf(
 ): string
 ```
 
-Compiles a `if` statement returning PHP code
+Compila una sentencia `if` devolviendo código PHP
 
 ```php
 public function compileInclude(array $statement): string
 ```
 
-Compiles a `include` statement returning PHP code
+Compila una sentencia `include` devolviendo código PHP
 
 ```php
 public function compileMacro(
@@ -1896,19 +1896,19 @@ public function compileMacro(
 ): string
 ```
 
-Compiles a macro
+Compila una macro
 
 ```php
 public function compileReturn(array $statement): string
 ```
 
-Compiles a `return` statement returning PHP code
+Compila una sentencia `return` devolviendo código PHP
 
 ```php
 public function compileSet(array $statement): string
 ```
 
-Compiles a setter statement (assignment of value to variable) returning PHP code
+Compila una sentencia *setter* (asignación de valor a variable) devolviendo código PHP
 
 ```php
 public function compileString(
@@ -1917,7 +1917,7 @@ public function compileString(
 ): string
 ```
 
-Compiles a template into a string
+Compila una plantilla en una cadena
 
 ```php
 echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
@@ -1930,13 +1930,13 @@ public function compileSwitch(
 ): string
 ```
 
-Compiles a `switch` statement returning PHP code
+Compila una sentencia `switch` devolviendo código PHP
 
 ```php
 final public function expression(array $expr): string
 ```
 
-Resolves an expression node in an AST volt tree
+Resuelve un nodo de expresión en un árbol AST de Volt
 
 ```php
 final public function fireExtensionEvent(
@@ -1949,61 +1949,61 @@ final public function fireExtensionEvent(
 public function functionCall(array $expr): string
 ```
 
-Resolves function intermediate code into PHP function calls
+Resuelve el código intermedio de funciones en llamadas a funciones PHP
 
 ```php
 public function getCompiledTemplatePath(): string
 ```
 
-Returns the path to the last compiled template
+Devuelve la ruta a la última plantilla compilada
 
 ```php
 public function getExtensions(): array
 ```
 
-Returns the registered extensions
+Devuelve las extensiones registradas
 
 ```php
 public function getFilters(): array
 ```
 
-Register the registered user filters
+Returns the registered user filters
 
 ```php
 public function getFunctions(): array
 ```
 
-Register the registered user functions
+Returns the registered user functions
 
 ```php
 public function getOption(string $option): string
 ```
 
-Returns an option of the compiler
+Devuelve una opción del compilador
 
 ```php
 public function getOptions(): array
 ```
 
-Returns the compiler options
+Devuelve las opciones del compilador
 
 ```php
 public function getTemplatePath(): string
 ```
 
-Returns the path that is currently being compiled
+Devuelve la ruta que está siendo compilada actualmente
 
 ```php
 public function getUniquePrefix(): string
 ```
 
-Return a unique prefix to be used as prefix for compiled variables and contexts
+Devuelve un prefijo único a usar como prefijo de las variables y contextos compilados
 
 ```php
 public function parse(string $viewCode): array
 ```
 
-Parses a Volt template returning its intermediate representation
+Analiza una plantilla Volt devolviendo su representación intermedia
 
 ```php
 print_r(
@@ -2015,40 +2015,40 @@ print_r(
 public function resolveTest(array $test, string $left): string
 ```
 
-Resolves filter intermediate code into a valid PHP expression
+Resuelve el código intermedio de filtro en una expresión PHP válida
 
 ```php
 public function setOption(string $option, mixed $value)
 ```
 
-Sets a single compiler option
+Establece una única opción del compilador
 
 ```php
 public function setOptions(array $options)
 ```
 
-Sets the compiler options
+Establece las opciones del compilador
 
 ```php
 public function setUniquePrefix(string $prefix): Compiler
 ```
 
-Set a unique prefix to be used as prefix for compiled variables
+Establece un prefijo único a usar como prefijo de las variables compiladas
 
 ## Eventos
 
-The following compilation <events> are available to be implemented in extensions:
+Están disponibles los siguientes [eventos](events) de compilación para ser implementados en extensiones:
 
-| Event/Method        | Descripción                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
-| `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Evento/Método       | Descripción                                                                                                       |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `compileFunction`   | Disparado antes de intentar compilar cualquier llamada de función en una plantilla                                |
+| `compileFilter`     | Disparado antes de intentar compilar ningún llamada de filtro en una plantilla                                    |
+| `resolveExpression` | Disparado antes de intentar compilar ninguna expresión. Esto permite al desarrollador sobreescribir operadores    |
+| `compileStatement`  | Triggered before trying to compile any statement. Esto permite al desarrollador sobreescribir cualquier sentencia |
 
 ## Servicios
 
-If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
+Si un contenedor de servicios (DI) está disponible en Volt. Cualquier servicio registrado en el contendedor DI está disponible en Volt, con una variable del mismo nombre con el que está registrado el servicio. En el ejemplo siguiente usamos el servicio `flash`, así como `security`:
 
 ```twig
 {%- raw -%}
@@ -2057,11 +2057,11 @@ If a service container (DI) is available for Volt. Any registered service in the
 {% endraw %}
 ```
 
-## Stand-alone
+## Independiente
 
-You can use Volt as a stand along component in any application.
+Puede usar Volt como componente independiente en cualquier aplicación.
 
-Register the compiler and set some options:
+Registre el compilador y establezca algunas opciones:
 
 ```php
 <?php
@@ -2076,7 +2076,7 @@ $compiler->setOptions(
 );
 ```
 
-Compilation of templates or strings:
+Compilación de plantillas o cadenas:
 
 ```php
 <?php
@@ -2095,7 +2095,7 @@ $compiler->compile(
 );
 ```
 
-You can finally include the compiled template if needed:
+Finalmente puede incluir la plantilla compilada si es necesario:
 
 ```php
 <?php
@@ -2103,11 +2103,11 @@ You can finally include the compiled template if needed:
 require $compiler->getCompiledTemplatePath();
 ```
 
-## Compiling
+## Compilar
 
-Every time you deploy your application to production, you will need to delete the pre-compiled `.volt` files, so that any changes you made in your templates are displayed to your users. A very easy way to do this is to clean the `volt/` folder using a CLI script or manually delete all files.
+Cada vez que despliega su aplicación a producción, necesitará eliminar los ficheros `.volt` precompilados, para que se muestre cualquier cambio hecho en sus plantillas a los usuarios. Una forma muy fácil de hacer esto es limpiar la carpeta `volt/` usando un *script* CLI o eliminar manualmente todos los ficheros.
 
-If we assume that your `volt` path is located at: `/app/storage/cache/volt/` then the following script will allow you to clear that folder anytime you run it, usually after a deployment.
+Si asumimos que su ruta `volt` se localiza en: `/app/storage/cache/volt/` entonces el siguiente *script* le permitirá limpiar esa carpeta cada vez lo ejecute, normalmente después de un despliegue.
 
 ```php
 <?php
@@ -2142,17 +2142,17 @@ foreach ($fileList as $file) {
 echo PHP_EOL . 'Folder cleared' . PHP_EOL;
 ```
 
-In the example above, we use PHP's [RecursiveDirectoryIterator](https://www.php.net/manual/en/class.recursivedirectoryiterator.php) and [RecursiveIteratorIterator](https://www.php.net/manual/en/class.recursiveiteratoriterator.php) to iterate through a folder recursively and create a list of files in the `$fileList` array. After that, we iterate through that array and [unlink](https://www.php.net/manual/en/function.unlink.php) each file in turn.
+En el ejemplo anterior, usamos [RecursiveDirectoryIterator](https://www.php.net/manual/en/class.recursivedirectoryiterator.php) y [RecursiveIteratorIterator](https://www.php.net/manual/en/class.recursiveiteratoriterator.php) de PHP para iterar a través de la carpeta recursivamente y crear una lista de ficheros en el vector `$fileList`. Después de eso, iteramos a través del vector y [eliminamos](https://www.php.net/manual/en/function.unlink.php) cada fichero por turno.
 
-As mentioned above, based on the options provided during setup, Volt can check whether the compiled files exist and generate them accordingly. Additionally, Volt can check if the files have been changed and if yes, generate them.
+Como hemos mencionado antes, basado en las opciones proporcionadas durante la configuración, Volt puede comprobar si los ficheros compilados existen y generarlos en consecuencia. Adicionalmente, Volt puede comprobar si los ficheros han cambiado, y en caso afirmativo regenerarlos.
 
-These checks are performed when the `always` and `stat` options are set to `true`. For any project, checking the file system multiple times per request (one time per Volt file), is consuming resources. Additionally, you need to ensure that the folder used by Volt to compile the templates is writeable by your web server.
+Estas comprobaciones se realizan cuando las opciones `always` y `stat` están establecidas a `true`. Para cualquier proyecto, comprobar el sistema de ficheros muchas veces por petición (una vez por fichero Volt), está consumiendo recursos. Adicionalmente, necesita asegurarse de que la carpeta usada para Volt para compilar las plantillas es escribible por su servidor web.
 
-You can create a script or a CLI task (using the [CLI Application](application-cli)) to compile and save all the Volt files when you deploy code. This way, you will be able to instruct Volt not to compile or stat each file in turn, increasing performance. Additionally, since these files are compiled during the deployment process, the volt folder will not need to be writeable, increasing security. Since the compiled Volt templates are phtml fragments, not allowing the web server to generate executable code is always a good idea.
+Puede crear un *script* o una tarea CLI (usando la [Aplicación CLI](application-cli)) para compilar y guardar todos los ficheros cuando despliegue el código. De esta manera, será capaz de instruir a Volt que no compile o registre cada fichero por turno, incrementando el rendimiento. Adicionalmente, ya que estos ficheros se compilan durante el proceso de despliegue, la carpeta volt no necesitará ser escribible, incrementando la seguridad. Ya que las plantillas Volt compiladas son fragmentos phtml, no permitir al servidor web generar código ejecutable es siempre una buena idea.
 
-Remember this script will be executed at the command line, but in order to compile our templates we will need to bootstrap our web application. In the example below, we will need to get the DI container that has all the services registered for our web application. Then we can use the Volt compiler to compile all the templates to the relevant folder.
+Recuerde que este *script* será ejecutado en línea de comandos, pero para compilar nuestras plantillas necesitaremos arrancar nuestra aplicación web. En el ejemplo siguiente, necesitaremos obtener el contenedor DI que tiene todos los servicios registrados para nuestra aplicación web. Luego podemos usar el compilador Volt para compilar todas las plantillas a la carpeta correspondiente.
 
-In the example below, we assume that we have a `Bootstrap\Web` class that is responsible for setting up all of our services for the Web application. The class returns the DI container using `getContainer()`. Your implementation might vary.
+En el ejemplo siguiente, asumimos que tenemos una clase `Bootstrap\Web` que es la responsable de configurar todos nuestros servicios para la aplicación Web. La clase devuelve el contenedor DI usando `getContainer()`. Su implementación podría variar.
 
 ```php
 <?php
@@ -2202,6 +2202,6 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 
 ## Recursos externos
 
-* A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Phosphorum](https://forum.phalcon.io), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
-* [Vökuró](tutorial-vokuro), is another sample application that uses Volt, [GitHub](https://github.com/phalcon/vokuro)
+* Un paquete para Sublime/Textmate está disponible [aquí](https://github.com/phalcon/volt-sublime-textmate)
+* [Phosphorum](https://forum.phalcon.io), el foro de Phalcon, también usa Volt, [GitHub](https://github.com/phalcon/forum)
+* [Vökuró](tutorial-vokuro), es otro ejemplo de aplicación que usa Volt, [GitHub](https://github.com/phalcon/vokuro)

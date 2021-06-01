@@ -11142,7 +11142,7 @@ Register a new function in the compiler
 public function attributeReader( array $expr ): string;
 ```
 
-Resolves attribute reading
+Resuelve la lectura de atributos
 
 ```php
 public function compile( string $templatePath, bool $extendsMode = bool );
@@ -11160,7 +11160,7 @@ require $compiler->getCompiledTemplatePath();
 public function compileAutoEscape( array $statement, bool $extendsMode ): string;
 ```
 
-Compiles a "autoescape" statement returning PHP code
+Compila una sentencia "autoescape" devolviendo código PHP
 
 ```php
 public function compileCache( array $statement, bool $extendsMode = bool ): string;
@@ -11174,7 +11174,7 @@ Compiles a "cache" statement returning PHP code
 public function compileCall( array $statement, bool $extendsMode );
 ```
 
-Compiles calls to macros
+Compila llamadas a macros
 
 ```php
 public function compileCase( array $statement, bool $caseClause = bool ): string;
@@ -11192,7 +11192,7 @@ Compiles a "do" statement returning PHP code
 public function compileEcho( array $statement ): string;
 ```
 
-Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
+Compila una sentencia {% raw %}`{{` `}}`{% endraw %} devolviendo código PHP
 
 ```php
 public function compileElseIf( array $statement ): string;
@@ -11259,7 +11259,7 @@ Compiles a "set" statement returning PHP code
 public function compileString( string $viewCode, bool $extendsMode = bool ): string;
 ```
 
-Compiles a template into a string
+Compila una plantilla en una cadena
 
 ```php
 echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
@@ -11275,7 +11275,7 @@ Compiles a 'switch' statement returning PHP code
 final public function expression( array $expr ): string;
 ```
 
-Resolves an expression node in an AST volt tree
+Resuelve un nodo de expresión en un árbol AST de Volt
 
 ```php
 final public function fireExtensionEvent( string $name, mixed $arguments = null );
@@ -11287,13 +11287,13 @@ Fires an event to registered extensions
 public function functionCall( array $expr ): string;
 ```
 
-Resolves function intermediate code into PHP function calls
+Resuelve el código intermedio de funciones en llamadas a funciones PHP
 
 ```php
 public function getCompiledTemplatePath(): string;
 ```
 
-Returns the path to the last compiled template
+Devuelve la ruta a la última plantilla compilada
 
 ```php
 public function getDI(): DiInterface;
@@ -11329,13 +11329,13 @@ Returns a compiler's option
 public function getOptions(): array;
 ```
 
-Returns the compiler options
+Devuelve las opciones del compilador
 
 ```php
 public function getTemplatePath(): string;
 ```
 
-Returns the path that is currently being compiled
+Devuelve la ruta que está siendo compilada actualmente
 
 ```php
 public function getUniquePrefix(): string;
@@ -11347,7 +11347,7 @@ Return a unique prefix to be used as prefix for compiled variables and contexts
 public function parse( string $viewCode );
 ```
 
-Parses a Volt template returning its intermediate representation
+Analiza una plantilla Volt devolviendo su representación intermedia
 
 ```php
 print_r(
@@ -11359,7 +11359,7 @@ print_r(
 public function resolveTest( array $test, string $left ): string;
 ```
 
-Resolves filter intermediate code into a valid PHP expression
+Resuelve el código intermedio de filtro en una expresión PHP válida
 
 ```php
 public function setDI( DiInterface $container ): void;
@@ -11371,19 +11371,19 @@ Sets the dependency injector
 public function setOption( string $option, mixed $value );
 ```
 
-Sets a single compiler option
+Establece una única opción del compilador
 
 ```php
 public function setOptions( array $options );
 ```
 
-Sets the compiler options
+Establece las opciones del compilador
 
 ```php
 public function setUniquePrefix( string $prefix ): Compiler;
 ```
 
-Set a unique prefix to be used as prefix for compiled variables
+Establece un prefijo único a usar como prefijo de las variables compiladas
 
 ```php
 protected function compileSource( string $viewCode, bool $extendsMode = bool ): string;
