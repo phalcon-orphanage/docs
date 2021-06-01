@@ -295,7 +295,7 @@ vokuro/
 composer install
 ```
 
-або якщо ви хочете оновити вже встановлені вищезгадані пакети:
+or if you want to upgrade the existing installations of the above packages:
 
 ```bash
 composer update
