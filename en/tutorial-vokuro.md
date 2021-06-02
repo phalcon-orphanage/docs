@@ -726,7 +726,7 @@ The component exposes the following methods:
 | `registerUserThrottling($userId)`        | Implements login throttling. Reduces the effectiveness of brute force attacks          |
 | `createRememberEnvironment(Users $user)` | Creates the remember me environment settings the related cookies and generating tokens |
 | `hasRememberMe(): bool`                  | Check if the session has a remember me cookie                                          |
-| `loginWithRememberMe(): Response`        | Logs on using the information in the cookies                                           |
+| `loginWithRememberMe(): Response`        | Logs in using the information in the cookies                                           |
 | `checkUserFlags(Users $user)`            | Checks if the user is banned/inactive/suspended                                        |
 | `getIdentity(): array / null`            | Returns the current identity                                                           |
 | `getName(): string`                      | Returns the name of the user                                                           |
