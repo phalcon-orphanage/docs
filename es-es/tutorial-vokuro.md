@@ -1273,7 +1273,7 @@ if ($user->save()) {
 
 If the `$user->save()` returns `true`, the user will be forwarded to the home page (`index/index`) and a success message will appear on screen.
 
-### Model
+### Modelo
 
 **Relaciones**
 
@@ -1338,7 +1338,7 @@ The last two lines do exactly the same thing. It is a matter of preference which
 
 For our `Users` table we define the following relationships:
 
-| Nombre            | Source field | Target field | Model             |
+| Nombre            | Source field | Target field | Modelo            |
 | ----------------- | ------------ | ------------ | ----------------- |
 | `passwordChanges` | `id`         | `usersId`    | `PasswordChanges` |
 | `profile`         | `profileId`  | `id`         | `Profiles`        |
