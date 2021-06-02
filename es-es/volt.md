@@ -1967,13 +1967,13 @@ Devuelve las extensiones registradas
 public function getFilters(): array
 ```
 
-Returns the registered user filters
+Devuelve los filtros de usuario registrados
 
 ```php
 public function getFunctions(): array
 ```
 
-Returns the registered user functions
+Devuelve las funciones de usuario registradas
 
 ```php
 public function getOption(string $option): string
@@ -2039,12 +2039,12 @@ Establece un prefijo único a usar como prefijo de las variables compiladas
 
 Están disponibles los siguientes [eventos](events) de compilación para ser implementados en extensiones:
 
-| Evento/Método       | Descripción                                                                                                       |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `compileFunction`   | Disparado antes de intentar compilar cualquier llamada de función en una plantilla                                |
-| `compileFilter`     | Disparado antes de intentar compilar ningún llamada de filtro en una plantilla                                    |
-| `resolveExpression` | Disparado antes de intentar compilar ninguna expresión. Esto permite al desarrollador sobreescribir operadores    |
-| `compileStatement`  | Triggered before trying to compile any statement. Esto permite al desarrollador sobreescribir cualquier sentencia |
+| Evento/Método       | Descripción                                                                                                             |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `compileFunction`   | Disparado antes de intentar compilar cualquier llamada de función en una plantilla                                      |
+| `compileFilter`     | Disparado antes de intentar compilar ningún llamada de filtro en una plantilla                                          |
+| `resolveExpression` | Disparado antes de intentar compilar ninguna expresión. Esto permite al desarrollador sobreescribir operadores          |
+| `compileStatement`  | Disparado antes de intentar compilar ninguna sentencia. Esto permite al desarrollador sobreescribir cualquier sentencia |
 
 ## Servicios
 
