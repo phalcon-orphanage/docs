@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Tutorial - REST'
-keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
+keywords: 'tutorial, tutorial rest, api, rest, paso a paso, micro'
 ---
 
 # Tutorial - REST
@@ -87,7 +87,7 @@ In this tutorial, we will explain how to create a simple application that provid
 * `DELETE` para borrar datos
 
 ## Defining the API
-The API consists of the following methods:
+La API consiste en los siguientes métodos:
 
 | Método   | URL                      | Acción                                         |
 | -------- | ------------------------ | ---------------------------------------------- |
@@ -111,7 +111,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
+Primero, necesitamos un fichero `.htaccess` que contenta todas las reglas para reescribir las URIs de la petición al fichero `index.php` (punto de entrada de la aplicación):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -121,7 +121,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the req
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`. The file is created as follows:
+La mayor parte de nuestro código se colocará en `index.php`. The file is created as follows:
 
 ```php
 <?php
@@ -664,7 +664,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Try to insert a new robot with the name of an existing robot:
+Intente insertar un nuevo robot con el nombre de un robot existente:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
