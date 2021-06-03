@@ -730,7 +730,7 @@ El componente expone los siguientes métodos:
 | `registerUserThrottling($userId)`        | Implementa el bloqueo de acceso. Reduce la efectividad de ataques de fuerza bruta      |
 | `createRememberEnvironment(Users $user)` | Crea la configuración del entorno recuérdame, las cookies relacionadas y genera tokens |
 | `hasRememberMe(): bool`                  | Comprueba si la sesión tiene una cookie recuérdame                                     |
-| `loginWithRememberMe(): Response`        | Logs in using the information in the cookies                                           |
+| `loginWithRememberMe(): Response`        | Inicia sesión utilizando la información en las cookies                                 |
 | `checkUserFlags(Users $user)`            | Comprueba si el usuario está baneado/inactivo/suspenddo                                |
 | `getIdentity(): array / null`            | Devuelve la identidad actual                                                           |
 | `getName(): string`                      | Devuelve el nombre del usuario                                                         |
@@ -1473,7 +1473,7 @@ class Users extends Model
 }
 ```
 
-`beforeValidationOnCreate` disparará cada vez que tenemos un nuevo registro (`Create`), antes de que ocurra alguna validación. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) and storing it in the `password` property. También activamos el parámetro para cambiar la contraseña.
+`beforeValidationOnCreate` disparará cada vez que tenemos un nuevo registro (`Create`), antes de que ocurra alguna validación. Comprobamos si hemos definido una contraseña o no, generaremos una cadena aleatoria, luego haremos *hash* de esa cadena usando [Phalcon\Security](security) y la almacena en la propiedad `password`. También activamos el parámetro para cambiar la contraseña.
 
 Si la contraseña no está vacía, solo establecemos el campo `mustChangePassword` a `N`. Finalmente, establecemos algunos valores predeterminados sobre si el usuario está `active` (activo), `suspended` (suspendido) o `banned` (baneado). Esto asegura que nuestro registro está listo antes de ser insertado en la base de datos.
 
