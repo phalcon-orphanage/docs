@@ -689,9 +689,9 @@ Las vistas disponibles son:
 | `Terms`       | `index`          | `/terms/index.volt`            | Ver la página de términos                 |
 | `Users`       | `index`          | `/users/index.volt`            | Pantalla predeterminada de usuarios       |
 | `Users`       | `changePassword` | `/users/changePassword.volt`   | Cambiar contraseña de usuario             |
-| `Usuarios`    | `create`         | `/users/create.volt`           | Crear usuario                             |
-| `Usuarios`    | `delete`         | `/users/delete.volt`           | Eliminar usuario                          |
-| `Usuarios`    | `edit`           | `/users/edit.volt`             | Editar usuario                            |
+| `Users`       | `create`         | `/users/create.volt`           | Crear usuario                             |
+| `Users`       | `delete`         | `/users/delete.volt`           | Eliminar usuario                          |
+| `Users`       | `edit`           | `/users/edit.volt`             | Editar usuario                            |
 
 El fichero `/index.volt` contiene el diseño principal de la página, incluyendo hojas de estilo, referencias javascript, etc. El directorio `/layouts` contiene diferentes diseños que se usan en la aplicación, por ejemplo uno `public` si el usuario no está conectado, y uno `private` para los usuarios conectados. Las vistas individuales se inyectan en los diseños y construyen la página final.
 
@@ -710,12 +710,12 @@ El componente expone los siguientes métodos:
 | Método                                      | Devuelve     | Descripción                                                        |
 | ------------------------------------------- | ------------ | ------------------------------------------------------------------ |
 | `getActionDescription($action)`             | `string`     | Devuelve la descripción de la acción según su nombre simplificado  |
-| `getAcl()`                                  | `ACL object` | Devuelve la lista ACL                                              |
+| `getAcl()`                                  | `Objeto ACL` | Devuelve la lista ACL                                              |
 | `getPermissions(Profiles $profile)`         | `array`      | Devuelve los permisos asignados a un perfil                        |
 | `getResources()`                            | `array`      | Devuelve todos los recursos y sus acciones disponibles             |
 | `isAllowed($profile, $controller, $action)` | `bool`       | Comprueba si el perfil actual tiene permitido acceder a un recurso |
 | `isPrivate($controllerName)`                | `bool`       | Comprueba si un controlador es privado o no                        |
-| `rebuild()`                                 | `ACL object` | Reconstruye la lista de acceso en un fichero                       |
+| `rebuild()`                                 | `Objeto ACL` | Reconstruye la lista de acceso en un fichero                       |
 
 ### Auth
 
@@ -1006,7 +1006,7 @@ En el método `initialize` estamos configurando todos los elementos HTML que nec
 | `confirmPassword` | `Password` | Confirmación de la contraseña |
 | `terms`           | `Check`    | Acepta la casilla de términos |
 | `csrf`            | `Hidden`   | Elemento de protección CSRF   |
-| `Registro`        | `Submit`   | Botón de enviar               |
+| `Sign Up`         | `Submit`   | Botón de enviar               |
 
 Añadir elementos es bastante sencillo:
 
@@ -1561,16 +1561,16 @@ Vökuró es una aplicación de ejemplo que usamos para demostrar algunas de las 
 
 ## Referencias
 
-- [Access Control Lists definition](https://en.wikipedia.org/wiki/Access-control_list)
+- [Definición de Listas de Control de Acceso](https://es.wikipedia.org/wiki/Lista_de_control_de_acceso)
 - [Composer](https://getcomposer.org) 
 - [DotEnv - Vance Lucas](https://github.com/vlucas/phpdotenv)
-- [Model-View-Controller definition](https://en.wikipedia.org/wiki/Model–view–controller)
-- [Nanobox Guides](https://guides.nanobox.io/php/)
+- [Definición Modelo-Vista-Controlador](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador)
+- [Guías Nanobox](https://guides.nanobox.io/php/)
 - [Phinx - Cake PHP](https://github.com/cakephp/phinx)
-- [PSR Extension](https://github.com/jbboehr/php-psr)
+- [Extensión PSR](https://github.com/jbboehr/php-psr)
 - [Swift Mailer](https://swiftmailer.symfony.com)
-- [Phalcon ACL](acl)
-- [Phalcon Forms](forms)
-- [Phalcon HTTP Response](response)
-- [Phalcon Security](security)
+- [ACL Phalcon](acl)
+- [Formularios Phalcon](forms)
+- [Respuesta HTTP Phalcon](response)
+- [Seguridad Phalcon](security)
 - [Vökuró - Repositorio GitHub](https://github.com/phalcon/vokuro)
