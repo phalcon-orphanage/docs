@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Tutorial - Vökuró'
-keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
+keywords: 'tutorial, tutorial vokuro, paso a paso, mvc, seguridad, permisos'
 ---
 
 # Tutorial - Vökuró
@@ -14,24 +14,24 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 
 ## Vökuró
 
-[Vökuró](https://github.com/phalcon/vokuro) is a sample application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
+[Vökuró](https://github.com/phalcon/vokuro) es una aplicación de ejemplo, que muestra una aplicación web típica escrita en Phalcon. Esta aplicación se centra en: - Inicio de Sesión de Usuario (seguridad) - Registro de Usuario (seguridad) - Permisos de Usuario - Gestión de Usuarios
 
-> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
+> **NOTA**: Puede usar Vökuró como punto de partida para su aplicación y mejorarla aún más para cumplir con sus necesidades. No significa que ésta sea una aplicación perfecta y se ajuste a todas las necesidades.
 {: .alert .alert-info }
 
 > 
-> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+> **NOTA**: Este tutorial asume que está familiarizado con los conceptos del patrón de diseño Modelo Vista Controlador. (ver Referencias al final de este tutorial)
 {: .alert .alert-warning }
 
 > 
-> **NOTE**: Note the code below has been formatted to increase readability
+> **NOTA**: Tenga en cuenta que el código siguiente se ha formateado para aumentar la legibilidad
 {: .alert .alert-warning }
 
 ## Instalación
 
-### Downloading
+### Descarga
 
-In order to install the application, you can either clone or download it from [GitHub](https://github.com/phalcon/vokuro). You can visit the GitHub page, download the application and then unzip it to a directory on your machine. Alternatively you can use `git clone`:
+Para poder instalar la aplicación, puede clonarla o descargarla desde [GitHub](https://github.com/phalcon/vokuro). Puede visitar la página de GitHub, descargar la aplicación y luego descomprimirla a un directorio de su máquina. Alternativamente, puede usar `git clone`:
 
 ```bash
 git clone https://github.com/phalcon/vokuro
@@ -39,39 +39,39 @@ git clone https://github.com/phalcon/vokuro
 
 ### Extensiones
 
-There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
+Hay algunos prerrequisitos para que Vökuró funcione. Necesitará tener instalado PHP >= 7.2 en su máquina y las siguientes extensiones: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
 
-Phalcon needs to be installed. Head over to the <installation> page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
+Se necesita instalar Phalcon. Diríjase a la página [instalación](installation) si necesita ayuda con la instalación de Phalcon. Tenga en cuenta que Phalcon v4 requiere tener instalada la extensión PSR y cargada **antes** que Phalcon. Para instalar PSR puede consultar la página de GitHub [php-psr](https://github.com/jbboehr/php-psr).
 
-Finally, you will also need to ensure that you have updated the composer packages (see section below).
+Finalmente, también necesitará asegurarse que ha actualizado los paquetes de *composer* (ver sección más abajo).
 
-### Run
+### Ejecutar
 
-If all the above requirements are satisfied, you can run the application using PHP's built-in web server by issuing the following command on a terminal:
+Si todos los requerimientos anteriores son satisfechos, puede ejecutar la aplicación usando el servidor web integrado de PHP ejecutando el siguiente comando en un terminal:
 
 ```bash
 php -S localhost:8080 -t public/ .htrouter.php
 ```
 
-The above command will start serving the site for `localhost` at the port `8080`. You can change those settings to suit your needs. Alternatively you can set up your site in Apache or nginX using a virtual host. Please consult the relevant documentation on how to set up a virtual host for these web servers.
+El comando anterior empezará a servir el sitio para `localhost` en el puerto `8080`. Puede cambiar estos ajustes para que cumplan sus necesidades. Alternativamente, puede configurar su sitio en Apache o nginX usando un *virtual host*. Por favor, consulte la documentación correspondiente de cómo configurar un *virtual host* para estos servidores web.
 
 ### Docker
 
-In the `resources` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application. To use the `Dockerfile` we need to decide the name of our dockerized application. For the purposes of this tutorial, we will use `phalcon-tutorial-vokuro`.
+En la carpeta `resources` encontrará un `Dockerfile` que le permite configurar rápidamente el entorno y ejecutar la aplicación. Para usar el `Dockerfile` necesitamos decidir el nombre de nuestra aplicación dockerizada. Para los propósitos de este tutorial, usaremos `phalcon-tutorial-vokuro`.
 
-From the root of the application we need to compile the project (you only need to do this once):
+Desde la raíz de la aplicación necesitamos compilar el proyecto (sólo necesita hacer esto una vez):
 
 ```bash
 $ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
 ```
 
-and then run it
+y ejecutarla
 
 ```bash
 $ docker run -it --rm phalcon-tutorial-vokuro bash
 ```
 
-This will enter us in the dockerized environment. To check the PHP version:
+Esto nos introducirá en el entorno dockerizado. Para comprobar la versión PHP:
 
 ```bash
 root@c7b43060b115:/code $ php -v
@@ -90,20 +90,20 @@ root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
 4.0.0
 ```
 
-You now have a dockerized environment with all the necessary components to run Vökuró.
+Ahora tiene un entorno dockerizado con todo los componentes necesarios para ejecutar Vökuró.
 
 ### Nanobox
 
-In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. All you have to do is copy the file to the root of your directory and run `nanobox run php-server`. Once the application is set up for the first time, you will be able to navigate to the IP address presented on screen and work with the application.
+En la carpeta `resources` también encontrará un fichero `boxfile.yml` que le permite usar nanobox para configurar el entorno rápidamente. Todo lo que tiene que hacer es copiar el fichero en la raíz de su directorio y ejecutar `nanobox run php-server`. Una vez que la aplicación está configurada por primera vez, será capaz de navegar a la dirección IP presentada en pantalla y trabajar con la aplicación.
 
-For more information on how to set up nanobox, check our \[Environments Nanobox\]\[environments-nanobox\] page as well as the [Nanobox Guides](https://guides.nanobox.io/php/) page
+Para más información de cómo configurar nanobox, consulte la página \[Entornos Nanobox\]\[environments-nanobox\] así como la página [Nanobox Guides](https://guides.nanobox.io/php/)
 
-> **NOTE**: In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
+> **NOTA**: En este tutorial, asumimos que su aplicación se ha descargado o clonado en un directorio llamado `vokuro`.
 {: .alert .alert-info }
 
 ## Estructura
 
-Looking at the structure of the application we have the following:
+Buscando en la estructura de la aplicación tenemos lo siguiente:
 
 ```bash
 vokuro/
@@ -134,85 +134,85 @@ vokuro/
     vendor
 ```
 
-| Directory         | Descripción                                           |
-| ----------------- | ----------------------------------------------------- |
-| `.ci`             | Files necessary for setting services for the CI       |
-| `configs`         | Configuration files                                   |
-| `db`              | Holds the migrations for the database                 |
-| `public`          | Entry point for the application, css, js, images      |
-| `resources`       | Docker/nanobox files for setting the application      |
-| `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Controladores                                         |
-| `src/Forms`       | Formularios                                           |
-| `src/Models`      | Database Models                                       |
-| `src/Plugins`     | Plugins                                               |
-| `src/Providers`   | Providers: setting services in the DI container       |
-| `tests`           | Pruebas                                               |
-| `themes`          | Themes/views for easy customization                   |
-| `themes/vokuro`   | Default theme for the application                     |
-| `var`             | Various supporting files                              |
-| `var/cache`       | Cache files                                           |
-| `var/logs`        | Logs                                                  |
-| `vendor`          | Vendor/composer based libraries                       |
+| Directorio        | Descripción                                                   |
+| ----------------- | ------------------------------------------------------------- |
+| `.ci`             | Ficheros necesarios para configurar los servicios del CI      |
+| `configs`         | Ficheros de configuración                                     |
+| `db`              | Guarda las migraciones de la base de datos                    |
+| `public`          | Punto de entrada para la aplicación, css, js, imágenes        |
+| `resources`       | Ficheros Docker/nanobox para configurar la aplicación         |
+| `src`             | Donde reside la aplicación (controladores, formularios, etc.) |
+| `src/Controllers` | Controladores                                                 |
+| `src/Forms`       | Formularios                                                   |
+| `src/Models`      | Modelos de la Base de Datos                                   |
+| `src/Plugins`     | Plugins                                                       |
+| `src/Providers`   | Proveedores: configuración de servicios en el contenedor DI   |
+| `tests`           | Pruebas                                                       |
+| `themes`          | Temas/vistas para una fácil personalización                   |
+| `themes/vokuro`   | Tema predeterminado para la aplicación                        |
+| `var`             | Varios ficheros de soporte                                    |
+| `var/cache`       | Ficheros de caché                                             |
+| `var/logs`        | Logs                                                          |
+| `vendor`          | Librerías basadas en vendor/composer                          |
 
 ## Configuración
 
 ### `.env`
 
-[Vökuró](https://github.com/phalcon/vokuro) uses the popular [Dotenv](https://github.com/vlucas/phpdotenv) library by Vance Lucas. The library utilizes a `.env` file located in your root folder, which holds configuration parameters such as the database server host, username, password etc. There is a `.env.example` file that comes with Vökuró that you can copy and rename to `.env` and then edit it to match your environment. You need to do this first so that your application can run properly.
+[Vökuró](https://github.com/phalcon/vokuro) usa la librería popular [Dotenv](https://github.com/vlucas/phpdotenv) de Vance Lucas. La librería usa un fichero `.env` ubicado en su carpeta raíz, que contiene parámetros de configuración como el nombre del servidor de base de datos, nombre de usuario, contraseña, etc. Hay un fichero `.env.example` que viene con Vökuró que puede copiar y renombrar a `.env` y luego editarlo para que coincida con su entorno. Necesita hacer esto primero para que su aplicación pueda funcionar correctamente.
 
-The available options are:
+Las opciones disponibles son:
 
-| Opción               | Descripción                                                                                                                                                             |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](crypt) component to produce passwords and any additional security features                                  |
-| `APP_BASE_URI`       | Usually `/` if your web server points directly to the Vökuró directory. If you have installed Vökuró in a sub directory, you can adjust the base URI                    |
-| `APP_PUBLIC_URL`     | The public URL of the application. This is used for the emails.                                                                                                         |
-| `DB_ADAPTER`         | The database adapter. The available adapters are: `mysql`, `pgsql`, `sqlite`. Please ensure that the relevant extensions for the database are installed in your system. |
-| `DB_HOST`            | The database host                                                                                                                                                       |
-| `DB_PORT`            | The database port                                                                                                                                                       |
-| `DB_USERNAME`        | The database username                                                                                                                                                   |
-| `DB_PASSWORD`        | The database password                                                                                                                                                   |
-| `DB_NAME`            | The database name                                                                                                                                                       |
-| `MAIL_FROM_NAME`     | The FROM name when sending emails                                                                                                                                       |
-| `MAIL_FROM_EMAIL`    | The FROM email when sending emails                                                                                                                                      |
-| `MAIL_SMTP_SERVER`   | The SMTP server                                                                                                                                                         |
-| `MAIL_SMTP_PORT`     | The SMTP port                                                                                                                                                           |
-| `MAIL_SMTP_SECURITY` | The SMTP security (e.g. `tls`)                                                                                                                                          |
-| `MAIL_SMTP_USERNAME` | The SMTP username                                                                                                                                                       |
-| `MAIL_SMTP_PASSWORD` | The SMTP password                                                                                                                                                       |
-| `CODECEPTION_URL`    | The Codeception server for tests. If you run the tests locally this should be `127.0.0.1`                                                                               |
-| `CODECEPTION_PORT`   | The Codeception port                                                                                                                                                    |
+| Opción               | Descripción                                                                                                                                                                                                    |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `APP_CRYPT_SALT`     | Cadena aleatoria y larga que se usa por el componente [Phalcon\Crypt](crypt) para producir contraseñas y cualquier otra característica de seguridad adicional                                                 |
+| `APP_BASE_URI`       | Usualmente `/` si su servidor web apunta directamente al directorio Vökuró. Si tiene instalado Vökuró en un subdirectorio, puede ajustar la URI base                                                           |
+| `APP_PUBLIC_URL`     | La URL pública de la aplicación. Se usa para los emails.                                                                                                                                                       |
+| `DB_ADAPTER`         | El adaptador de base de datos. Los adaptadores disponibles son: `mysql`, `pgsql`, `sqlite`. Por favor, asegúrese de que tiene instaladas en su sistema las extensiones correspondientes para la base de datos. |
+| `DB_HOST`            | El servidor de base de datos                                                                                                                                                                                   |
+| `DB_PORT`            | El puerto de la base de datos                                                                                                                                                                                  |
+| `DB_USERNAME`        | El nombre de usuario de la base de datos                                                                                                                                                                       |
+| `DB_PASSWORD`        | La contraseña de la base de datos                                                                                                                                                                              |
+| `DB_NAME`            | El nombre de la base de datos                                                                                                                                                                                  |
+| `MAIL_FROM_NAME`     | El nombre *DE* al enviar *emails*                                                                                                                                                                              |
+| `MAIL_FROM_EMAIL`    | El email *DE* al enviar *emails*                                                                                                                                                                               |
+| `MAIL_SMTP_SERVER`   | El servidor SMTP                                                                                                                                                                                               |
+| `MAIL_SMTP_PORT`     | El puerto SMTP                                                                                                                                                                                                 |
+| `MAIL_SMTP_SECURITY` | La seguridad SMTP (ej. `tls`)                                                                                                                                                                                  |
+| `MAIL_SMTP_USERNAME` | El nombre de usuario del SMTP                                                                                                                                                                                  |
+| `MAIL_SMTP_PASSWORD` | La contraseña del SMTP                                                                                                                                                                                         |
+| `CODECEPTION_URL`    | El servidor Codeception para pruebas. Si ejecuta las pruebas localmente este debería ser `127.0.0.1`                                                                                                           |
+| `CODECEPTION_PORT`   | El puerto Codeception                                                                                                                                                                                          |
 
-Once the configuration file is in place, visiting the IP address will present a screen similar to this:
+Una vez que el fichero de configuración está en su lugar, al visitar la dirección IP se presentará en pantalla algo similar a esto:
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
 ### `Base de Datos`
 
-You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
+También necesita inicializar la base de datos. [Vökuró](https://github.com/phalcon/vokuro) usa la popular librería [Phinx](https://github.com/cakephp/phinx) de Rob Morgan (ahora la Cake Foundation). La librería usa su propio fichero de configuración (`phinx.php`), pero para Vökuró no necesita realizar ningún ajuste ya que `phinx.php` lee el fichero `.env` para recuperar los ajustes de configuración. Esto le permite establecer sus parámetros de configuración en un solo lugar.
 
-We will now need to run the migrations. To check the status of our database:
+Ahora necesitaremos ejecutar las migraciones. Para comprobar el estado de nuestra base de datos:
 
 ```bash
 /app $ ./vendor/bin/phinx status
 ```
 
-You will see the following screen:
+Verá la siguiente pantalla:
 
 ![](/assets/images/content/tutorial-vokuro-2.png)
 
-To initialize the database we need to run the migrations:
+Para inicializar la base de datos necesita ejecutar las migraciones:
 
 ```bash
 /app $ ./vendor/bin/phinx migrate
 ```
 
-The screen will show the operation:
+La pantalla mostrará la operación:
 
 ![](/assets/images/content/tutorial-vokuro-3.png)
 
-And the `status` command will now show all green:
+Y el comando `status` ahora mostrará todo verde:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
@@ -220,9 +220,9 @@ And the `status` command will now show all green:
 
 **acl.php**
 
-Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of *routes* that controls which routes are visible to only logged in users.
+Buscando en la carpeta `config/`, observará cuatro ficheros. No hay necesidad de cambiar estos ficheros para iniciar la aplicación, pero si desea personalizarla, éste es el lugar a visitar. El fichero `acl.php` devuelve un vector de *rutas* que controlan qué rutas son visibles sólo para usuarios conectados.
 
-The current setup will require a user to be logged in, if they visit these routes:
+La configuración actual requerirá que un usuario se conecte, si visita estas rutas:
 
 - `users/index`
 - `users/search`
@@ -237,46 +237,46 @@ The current setup will require a user to be logged in, if they visit these route
 - `profiles/delete`
 - `permissions/index`
 
-If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism.
+Si usa Vökuró como punto de partida para su propia aplicación, necesitará modificar este fichero para añadir o quitar rutas, para asegurarse de que sus rutas protegidas estén detrás del mecanismo de inicio de sesión.
 
-> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
+> **NOTA**: Mantener las rutas privadas en un vector es eficiente y fácil de mantener para una aplicación pequeña o mediana. Una vez su aplicación empieza a crecer, podría necesitar considerar una técnica diferente para mantener sus rutas privadas como la base de datos con un mecanismo de caché.
 {: .alert .alert-info }
 
 **config.php**
 
-This file holds all configuration parameters that Vökuró needs. Usually you will not need to change this file, since the elements of the array are set by the `.env` file and [Dotenv](https://github.com/vlucas/phpdotenv). However, you might want to change the location of your logs or other paths, should you decide to change the directory structure.
+Este fichero mantiene todos los parámetros de configuración que necesita Vökuró. Normalmente no necesitará cambiar este fichero, ya que los elementos del vector están configurados en el fichero `.env` y [Dotenv](https://github.com/vlucas/phpdotenv). Sin embargo, podría querer cambiar la localización de sus logs u otras rutas, si decide cambiar la estructura de directorios.
 
-One of the elements you might want to consider when working with Vökuró on your local machine is the `useMail` and set it to `false`. This will instruct Vökuró not to try to connect to a mail server and send an email when a user registers on the site.
+Uno de los elementos que podría querer considerar cuando trabaje con Vökuró en su máquina local es `useMail` y establecerlo a `false`. Esto indicará a Vökuró que no intente conectar a un servidor de correo y enviar un email cuando un usuario se registre en el sitio.
 
 **providers.php**
 
-This file contains all the providers that Vökuró needs. This is a list of classes in the application, that registers the particular class in the DI container. If you need to register new components to your DI container, you can add them to the array of this file.
+Este fichero contiene todos los proveedores que necesita Vökuró. Esto es una lista de clases de la aplicación, que registra la clase particular en el contenedor DI. Si necesita registrar nuevos componentes en su contenedor DI, puede añadirlos al vector de este fichero.
 
 **routes.php**
 
-This file contains the routes that Vökuró understands. The router already registers the default routes, so any routes defined in `routes.php` are specific ones. You can add any non standard routes you need, when customizing Vökuró, in this file. As a reminder, the default routes are:
+Este fichero contiene las rutas que Vökuró entiende. El enrutador ya registra las rutas predeterminadas, por lo que cualquier ruta definida en `routes.php` es específica. Puede añadir cualquier ruta no estándar que necesite, al personalizar Vökuró, en este fichero. Como recordatorio, las rutas predeterminadas son:
 
 ```bash
 /:controller/:action/:parameters
 ```
 
-### Providers
+### Proveedores
 
-As mentioned above, Vökuró uses classes called Providers in order to register services in the DI container. This is just one way to register services in the DI container, nothing stops you from putting all these registrations in a single file.
+Como se ha mencionado antes, Vökuró usa clases llamadas Proveedores para registrar servicios en el contenedor DI. Esto sólo es una forma de registrar servicios en el contenedor DI, nada le impide poner todos estos registros en un solo fichero.
 
-For Vökuró we decided to use one file per service as well as a `providers.php` (see above) as the registration configuration array for these services. This allows us to have much smaller chunks of code, organized in a separate file per service, as well as an array that allows us to register or unregister/disable a service without removing files. All we need to do is change the `providers.php` array.
+Para Vökuró decidimos usar un fichero por servicio así como un `providers.php` (ver arriba) como vector de configuración de registro para estos servicios. Esto nos permite tener trozos de código mucho más pequeños, organizados en ficheros separados por servicio, así como un vector que nos permite registrar o desregistrar/desactivar un servicio sin eliminar ficheros. Todo lo que necesitamos hacer es cambiar el vector `providers.php`.
 
-The provider classes are located in `src/Providers`. Each of the provider classes implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface. For more information, see the bootstrapping section below.
+Las clases proveedor se encuentran en `src/Providers`. Cada una de las clases proveedor implementa el interfaz [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface). Para más información, ver la sección de arranque a continuación.
 
 ## Composer
 
-[Vökuró](https://github.com/phalcon/vokuro) uses [composer](https://getcomposer.org) to download and install supplemental PHP libraries. The libraries used are:
+[Vökuró](https://github.com/phalcon/vokuro) usa [composer](https://getcomposer.org) para descargar e instalar librerías PHP adicionales. Las librerías usadas son:
 
 - [Dotenv](https://github.com/vlucas/phpdotenv)
 - [Phinx](https://github.com/cakephp/phinx)
 - [Swift Mailer](https://swiftmailer.symfony.com)
 
-Looking at `composer.json` the required packages are:
+Mirando en `composer.json` los paquetes requeridos son:
 
 ```json
 "require": {
@@ -289,27 +289,27 @@ Looking at `composer.json` the required packages are:
 }
 ```
 
-If this is a fresh installation you can run
+Si es una instalación nueva puede ejecutar
 
 ```bash
 composer install
 ```
 
-or if you want to upgrade the existing installations of the above packages:
+o si desea actualizar las instalaciones existentes de los paquetes anteriores:
 
 ```bash
 composer update
 ```
 
-For more information about composer, you can visit their [documentation](https://getcomposer.org) page.
+Para más información sobre *composer*, puede visitar su página de [documentación](https://getcomposer.org).
 
-## Bootstrapping
+## Arranque
 
-### Entry
+### Entrada
 
-The entry point of our application is `public/index.php`. This file contains the necessary code that bootstraps the application and runs it. It also serves as a single point of entry to our application, making things much easier for us when we want to trap errors, protect files etc.
+El punto de entrada a nuestra aplicación es `public/index.php`. Este fichero contiene el código necesario que inicia la aplicación y la ejecuta. También sirve como punto único de entrada de nuestra aplicación, haciendo las cosas mucho más fáciles para nosotros cuando queremos capturar errores, proteger ficheros, etc.
 
-Let's look at the code:
+Veamos el código:
 
 ```php
 <?php
@@ -337,14 +337,14 @@ try {
 }
 ```
 
-First of all we ensure that we have full error reporting. You can of course change this if you wish, or rework the code where error reporting is controlled by an entry in your `.env` file.
+En primer lugar, nos aseguramos que tenemos el reporte de errores al máximo. Por supuesto, puede cambiar esto si lo desea, o sustituir el código donde se controla el reporte de errores por una entrada en su fichero `.env`.
 
-A `try`/`catch` block wraps all operations. This ensures that all errors are caught and displayed on screen.
+Un bloque `try`/`catch` envuelve todas las operaciones. Esto asegura que todos los errores sean capturados y mostrados por pantalla.
 
-> **NOTE** You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
+> **NOTA** Necesitará sustituir el código para mejorar la seguridad. Actualmente, si ocurre algún error con la base de datos, el código `catch` mostrará en pantalla las credenciales de la base de datos con la excepción. Este código está pensado como un tutorial, no como una aplicación en producción a escala completa
 {: .alert .alert-danger }
 
-We ensure that we have access to all the supporting libraries by loading composer's autoloader. In the `composer.json` we have also defined the `autoload` entry, directing the autoloader to load any `Vokuro` namespaced classes from the `src` folder.
+Nos aseguramos que tenemos acceso a todas las librerías de soporte cargando el autocargador de *composer*. En `composer.json` también tenemos definida la entrada `autoload`, dirigiendo al autocargador a cargar cualquier clase con espacio de nombres `Vokuro` desde la carpeta `src`.
 
 ```json
 "autoload": {
@@ -357,17 +357,17 @@ We ensure that we have access to all the supporting libraries by loading compose
 }
 ```
 
-Then we load the environment variables as defined in our `.env` file by calling the
+Entonces cargaremos las variables de entorno definidas en nuestro fichero `.env` llamando
 
 ```php
 Dotenv\Dotenv::create($rootPath)->load();
 ```
 
-Finally, we run our application.
+Finalmente, ejecutamos nuestra aplicación.
 
-### Application
+### Aplicación
 
-All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
+Toda la lógica de aplicación está envuelta en la clase `Vokuro\Application`. Veamos como se hace esto:
 
 ```php
 <?php
@@ -479,57 +479,57 @@ class Application
 
 ```
 
-The constructor of the class first creates a new DI container and store it in a local property. We are using the [Phalcon\Di\FactoryDefault](di) one, which has a lot of services already registered for us.
+El constructor de la clase crea primero un nuevo contenedor DI y lo almacena en una propiedad local. Estamos usando [Phalcon\Di\FactoryDefault](di), que tiene muchos servicios ya registrados por nosotros.
 
-We then create a new [Phalcon\Mvc\Application](application) and store it in a property also. We also store the root path because it is useful throughout the application.
+Entonces creamos un nuevo [Phalcon\Mvc\Application](application) y lo almacenamos también en una propiedad. También almacenamos la ruta raíz porque es útil a lo largo de la aplicación.
 
-We then register this class (the `Vokuro\Application`) in the Di container using the name `bootstrap`. This allows us to have access to this class from any part of our application through the Di container.
+Luego registramos est clase (`Vokuro\Application`) en el contenedor Di usando el nombre `bootstrap`. Esto nos permite tener acceso a esta clase desde cualquier parte de nuestra aplicación a través del contenedor Di.
 
-The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
+Lo último que hacemos es registrar todos los proveedores. Aunque el objeto [Phalcon\Di\FactoryDefault](di) tiene muchos servicios ya registrados para nosotros, todavía necesitamos registrar proveedores que cubran las necesidades de nuestra aplicación. Como hemos mencionado anteriormente, cada clase proveedor implementa el interfaz [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface), por lo que podemos cargar cada clase y llamar al método `register()` con el contenedor Di para registrar cada servicio. Por lo tanto, primero cargamos el vector de configuración `config/providers.php` y luego iteramos sobre las entradas y registramos cada proveedor por orden.
 
-The available providers are:
+Los proveedores disponibles son:
 
-| Provider                 | Descripción                                       |
+| Proveedor                | Descripción                                       |
 | ------------------------ | ------------------------------------------------- |
 | `AclProvider`            | Permisos                                          |
 | `AuthProvider`           | Autenticación                                     |
-| `ConfigProvider`         | Configuration values                              |
-| `CryptProvider`          | Encryption                                        |
-| `DbProvider`             | Database access                                   |
-| `DispatcherProvider`     | Dispatcher - what controller to call for what URL |
-| `FlashProvider`          | Flash messages for feedback to the user           |
-| `LoggerProvider`         | Logger for errors and other information           |
-| `MailProvider`           | Mail support                                      |
-| `ModelsMetadataProvider` | Metadata for models                               |
-| `RouterProvider`         | Routes                                            |
+| `ConfigProvider`         | Valores de configuración                          |
+| `CryptProvider`          | Encriptación                                      |
+| `DbProvider`             | Acceso a base de datos                            |
+| `DispatcherProvider`     | Despachador - qué controlador llamar para qué URL |
+| `FlashProvider`          | Mensajes flash para retroalimentar al usuario     |
+| `LoggerProvider`         | Registrador de errores y otra información         |
+| `MailProvider`           | Soporte de email                                  |
+| `ModelsMetadataProvider` | Metadatos para modelos                            |
+| `RouterProvider`         | Rutas                                             |
 | `SecurityProvider`       | Seguridad                                         |
-| `SessionBagProvider`     | Session data                                      |
-| `SessionProvider`        | Session data                                      |
-| `UrlProvider`            | URL handling                                      |
-| `ViewProvider`           | Views and view engine                             |
+| `SessionBagProvider`     | Datos de sesión                                   |
+| `SessionProvider`        | Datos de sesión                                   |
+| `UrlProvider`            | Gestión de URL                                    |
+| `ViewProvider`           | Vistas y motor de vistas                          |
 
-`run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
+`run()` ahora gestionará `REQUEST_URI`, y devolverá el contenido de vuelta. Internamente, la aplicación calculará la ruta basándose en la petición, y despachará el controlador y vista correspondientes, antes de devolver el resultado de esta operación de vuelta al usuario como respuesta.
 
 ## Base de Datos
 
-As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
+Como hemos mencionado anteriormente, Vökuró se puede instalar con MariaDB/MySQL/Aurora, PostgreSql o SQLite como almacén de base de datos. Para los propósitos de este tutorial, usamos MariaDB. Las tablas que usa la aplicación son:
 
-| Table                 | Descripción                             |
-| --------------------- | --------------------------------------- |
-| `email_confirmations` | Email confirmations for registration    |
-| `failed_logins`       | Failed login attempts                   |
-| `password_changes`    | When a password was changed and by whom |
-| `permissions`         | Permission matrix                       |
-| `phinxlog`            | Phinx migration table                   |
-| `profiles`            | Profile for each user                   |
-| `remember_tokens`     | *Remember Me* functionality tokens      |
-| `reset_passwords`     | Reset password tokens table             |
-| `success_logins`      | Successful login attempts               |
-| `users`               | Users                                   |
+| Tabla                 | Descripción                               |
+| --------------------- | ----------------------------------------- |
+| `email_confirmations` | Confirmaciones de email de registro       |
+| `failed_logins`       | Intentos de inicio de sesión fallidos     |
+| `password_changes`    | Cuando cambia una contraseña y por quién  |
+| `permissions`         | Vector de permisos                        |
+| `phinxlog`            | Tabla de migraciones de Phinx             |
+| `profiles`            | Perfil de cada usuario                    |
+| `remember_tokens`     | Tokens de la funcionalidad *Recuérdame*   |
+| `reset_passwords`     | Tabla de tokens de reseteo de contraseñas |
+| `success_logins`      | Intentos de inicio de sesión correctos    |
+| `users`               | Usuarios                                  |
 
 ## Modelos
 
-Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
+Siguiendo el patrón [Modelo-Vista-Controlador](https://en.wikipedia.org/wiki/Model–view–controller), Vökuró tiene un modelo por tabla de base de datos (excluyendo `phinxlog`). Los modelos nos permiten interactuar con las tablas de la base de datos de una forma orientada a objetos sencilla. Los modelos se localizan en el directorio `/src/Models`, y cada modelo define los campos relevantes, tabla origen así como cualquier relación entre este modelo y los otros. Algunos modelos también implementan reglas de validación para asegurarse que los datos se almacenan correctamente en la base de datos.
 
 ```php
 <?php
@@ -580,31 +580,31 @@ class SuccessLogins extends Model
 }
 ```
 
-In the model above, we have defined all the fields of the table as public properties for easy access:
+En el modelo anterior, hemos definido todos los campos de la tabla como propiedades públicas para un acceso fácil:
 
 ```php
 echo $successLogin->ipAddress;
 ```
 
-> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
+> **NOTA**: Si se ha dado cuenta, los nombres de propiedad mapean exactamente las mayúsculas/minúsculas de los nombres de campo en la tabla correspondiente.
 {: .alert .alert-warning }
 
-In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
+En el método `initialize()`, también definimos las relaciones entre este modelo y el modelo `Users`. Asignamos los campos (local/remoto) así como un `alias` para esta relación. Por lo tanto, ahora podemos acceder al usuario relacionado con un registro de este modelo como sigue:
 
 ```php
 echo $successLogin->user->name;
 ```
 
-> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
+> **NOTA**: Es libre de abrir cada fichero de modelo e identificar las relaciones entre modelos. Consulta nuestra documentación para la diferencia entre los distintos tipos de relaciones
 {: .alert .alert-info }
 
 ## Controladores
 
-Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
+Otra vez siguiendo el patrón [Modelo-Vista-Controlador](https://en.wikipedia.org/wiki/Model–view–controller), Vökuro tiene un controlador para gestionar una ruta *padre* específica. Esto significa que `AboutController` gestiona la ruta `/about`. Todos los controladores se localizan en el directorio `/src/Cotnrollers`.
 
-The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
+El controlador predeterminado es `IndexController`. Todas las clases controlador tienen el sufijo `Controller`. Cada controlador tiene métodos con el sufijo `Action` y la acción predeterminada es `indexAction`. Por lo tanto, si visita el sitio con sólo la URL, se llamará `IndexController` y se ejecutará `indexAction`.
 
-After that, unless you have registered specific routes, the default routes (automatically registered) will try to match:
+Después de eso, a no ser que tenga rutas específicas registradas, las rutas predeterminadas (automáticamente registradas) intentarán encajar:
 
 ```bash
 /profiles/search
@@ -616,144 +616,144 @@ a
 /src/Controllers/ProfilesController.php -> searchAction
 ```
 
-The available controllers, actions and routes for Vökuró are:
+Los controladores, acciones y rutas disponibles para Vökuró son:
 
-| Controlador   | Acción           | Route                     | Descripción                                 |
-| ------------- | ---------------- | ------------------------- | ------------------------------------------- |
-| `About`       | `index`          | `/about`                  | Shows the `about` page                      |
-| `Índice`      | `index`          | `/`                       | Default action - home page                  |
-| `Permisos`    | `index`          | `/permissions`            | View/change permissions for a profile level |
-| `Privacy`     | `index`          | `/privacy`                | View the privacy page                       |
-| `Profiles`    | `index`          | `/profiles`               | View profiles default page                  |
-| `Profiles`    | `create`         | `/profiles/create`        | Create profile                              |
-| `Profiles`    | `delete`         | `/profiles/delete`        | Delete profile                              |
-| `Profiles`    | `edit`           | `/profiles/edit`          | Edit profile                                |
-| `Profiles`    | `search`         | `/profiles/search`        | Search profiles                             |
-| `Session`     | `index`          | `/session`                | Session default action                      |
-| `Session`     | `forgotPassword` | `/session/forgotPassword` | Forget password                             |
-| `Session`     | `login`          | `/session/login`          | Login                                       |
-| `Session`     | `logout`         | `/session/logout`         | Logout                                      |
-| `Session`     | `signup`         | `/session/signup`         | Signup                                      |
-| `Terms`       | `index`          | `/terms`                  | View the terms page                         |
-| `UserControl` | `confirmEmail`   | `/confirm`                | Confirm email                               |
-| `UserControl` | `resetPassword`  | `/reset-password`         | Reset password                              |
-| `Users`       | `index`          | `/users`                  | Users default screen                        |
-| `Users`       | `changePassword` | `/users/changePassword`   | Change user password                        |
-| `Users`       | `create`         | `/users/create`           | Create user                                 |
-| `Users`       | `delete`         | `/users/delete`           | Delete user                                 |
-| `Users`       | `edit`           | `/users/edit`             | Edit user                                   |
+| Controlador   | Acción           | Ruta                      | Descripción                               |
+| ------------- | ---------------- | ------------------------- | ----------------------------------------- |
+| `About`       | `index`          | `/about`                  | Muestra la página `about`                 |
+| `Índice`      | `index`          | `/`                       | Acción predeterminada - página de inicio  |
+| `Permissions` | `index`          | `/permissions`            | Ver/cambiar permisos para un nivel perfil |
+| `Privacy`     | `index`          | `/privacy`                | Ver la página de privacidad               |
+| `Profiles`    | `index`          | `/profiles`               | Ver página predeterminada de perfiles     |
+| `Profiles`    | `create`         | `/profiles/create`        | Crear perfil                              |
+| `Profiles`    | `delete`         | `/profiles/delete`        | Eliminar perfil                           |
+| `Profiles`    | `edit`           | `/profiles/edit`          | Editar perfil                             |
+| `Profiles`    | `search`         | `/profiles/search`        | Buscar perfiles                           |
+| `Session`     | `index`          | `/session`                | Acción predeterminada de sesión           |
+| `Session`     | `forgotPassword` | `/session/forgotPassword` | Ha olvidado la contraseña                 |
+| `Session`     | `login`          | `/session/login`          | Inicio de sesión                          |
+| `Session`     | `logout`         | `/session/logout`         | Cerrar sesión                             |
+| `Session`     | `signup`         | `/session/signup`         | Registro                                  |
+| `Terms`       | `index`          | `/terms`                  | Ver la página de términos                 |
+| `UserControl` | `confirmEmail`   | `/confirm`                | Confirmar email                           |
+| `UserControl` | `resetPassword`  | `/reset-password`         | Resetear contraseña                       |
+| `Users`       | `index`          | `/users`                  | Pantalla predeterminada de usuarios       |
+| `Users`       | `changePassword` | `/users/changePassword`   | Cambiar contraseña de usuario             |
+| `Users`       | `create`         | `/users/create`           | Crear usuario                             |
+| `Users`       | `delete`         | `/users/delete`           | Eliminar usuario                          |
+| `Users`       | `edit`           | `/users/edit`             | Editar usuario                            |
 
 ## Vistas
 
-The last element of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern is the views. Vökuró uses [Volt](volt) as the view engine for its views.
+El último elemento del patrón [Modelo-Vista-Controlador](https://en.wikipedia.org/wiki/Model–view–controller) son las vistas. Vökuró usa [Volt](volt) como el motor de vista para sus vistas.
 
-> **NOTE**: Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
+> **NOTA**: Generalmente, uno esperaría ver una carpeta `views` bajo la carpeta `/src`. Vökuró usa un enfoque diferente, almacenando todas los ficheros de las vistas bajo `/themes/vokuro`. 
 {: .alert .alert-info }
 
-The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
+El directorio de vistas contiene directorios que mapean a cada controlador. Dentro de cada uno de esos directorios, se mapean ficheros `.volt` a cada acción. Así por ejemplo la ruta:
 
 ```bash
 /profiles/create
 ```
 
-maps to:
+mapea a:
 
 ```bash
 ProfilesController -> createAction
 ```
 
-and the view is located:
+y la vista se localiza en:
 
 ```bash
 /themes/vokuro/profiles/create.volt
 ```
 
-The available views are:
+Las vistas disponibles son:
 
-| Controlador | Acción           | Vistas                         | Descripción                                 |
-| ----------- | ---------------- | ------------------------------ | ------------------------------------------- |
-| `About`     | `index`          | `/about/index.volt`            | Shows the `about` page                      |
-| `Índice`    | `index`          | `/index/index.volt`            | Default action - home page                  |
-| `Permisos`  | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
-| `Privacy`   | `index`          | `/privacy/index.volt`          | View the privacy page                       |
-| `Profiles`  | `index`          | `/profiles/index.volt`         | View profiles default page                  |
-| `Profiles`  | `create`         | `/profiles/create.volt`        | Create profile                              |
-| `Profiles`  | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
-| `Profiles`  | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
-| `Profiles`  | `search`         | `/profiles/search.volt`        | Search profiles                             |
-| `Session`   | `index`          | `/session/index.volt`          | Session default action                      |
-| `Session`   | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
-| `Session`   | `login`          | `/session/login.volt`          | Login                                       |
-| `Session`   | `logout`         | `/session/logout.volt`         | Logout                                      |
-| `Session`   | `signup`         | `/session/signup.volt`         | Signup                                      |
-| `Terms`     | `index`          | `/terms/index.volt`            | View the terms page                         |
-| `Users`     | `index`          | `/users/index.volt`            | Users default screen                        |
-| `Users`     | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
-| `Users`     | `create`         | `/users/create.volt`           | Create user                                 |
-| `Users`     | `delete`         | `/users/delete.volt`           | Delete user                                 |
-| `Users`     | `edit`           | `/users/edit.volt`             | Edit user                                   |
+| Controlador   | Acción           | Vistas                         | Descripción                               |
+| ------------- | ---------------- | ------------------------------ | ----------------------------------------- |
+| `About`       | `index`          | `/about/index.volt`            | Muestra la página `about`                 |
+| `Índice`      | `index`          | `/index/index.volt`            | Acción predeterminada - página de inicio  |
+| `Permissions` | `index`          | `/permissions/index.volt`      | Ver/cambiar permisos para un nivel perfil |
+| `Privacy`     | `index`          | `/privacy/index.volt`          | Ver la página de privacidad               |
+| `Profiles`    | `index`          | `/profiles/index.volt`         | Ver página predeterminada de perfiles     |
+| `Profiles`    | `create`         | `/profiles/create.volt`        | Crear perfil                              |
+| `Profiles`    | `delete`         | `/profiles/delete.volt`        | Eliminar perfil                           |
+| `Profiles`    | `edit`           | `/profiles/edit.volt`          | Editar perfil                             |
+| `Profiles`    | `search`         | `/profiles/search.volt`        | Buscar perfiles                           |
+| `Session`     | `index`          | `/session/index.volt`          | Acción predeterminada de sesión           |
+| `Session`     | `forgotPassword` | `/session/forgotPassword.volt` | Ha olvidado la contraseña                 |
+| `Session`     | `login`          | `/session/login.volt`          | Inicio de sesión                          |
+| `Session`     | `logout`         | `/session/logout.volt`         | Logout                                    |
+| `Session`     | `signup`         | `/session/signup.volt`         | Registro                                  |
+| `Terms`       | `index`          | `/terms/index.volt`            | Ver la página de términos                 |
+| `Users`       | `index`          | `/users/index.volt`            | Pantalla predeterminada de usuarios       |
+| `Users`       | `changePassword` | `/users/changePassword.volt`   | Cambiar contraseña de usuario             |
+| `Usuarios`    | `create`         | `/users/create.volt`           | Crear usuario                             |
+| `Usuarios`    | `delete`         | `/users/delete.volt`           | Eliminar usuario                          |
+| `Usuarios`    | `edit`           | `/users/edit.volt`             | Editar usuario                            |
 
-The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
+El fichero `/index.volt` contiene el diseño principal de la página, incluyendo hojas de estilo, referencias javascript, etc. El directorio `/layouts` contiene diferentes diseños que se usan en la aplicación, por ejemplo uno `public` si el usuario no está conectado, y uno `private` para los usuarios conectados. Las vistas individuales se inyectan en los diseños y construyen la página final.
 
-## Components
+## Componentes
 
-There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
+Hay varios componentes que usamos en Vökuró, ofreciendo funcionalidad a lo largo de la aplicación. Todos estos componentes se localizan en el directorio `/src/Plugins`.
 
 ### Acl
 
-`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List](https://en.wikipedia.org/wiki/Access-control_list) for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page](acl).
+`Vokuro\Plugins\Acl\Acl` es un componente que implementa una [Lista de Control de Acceso](https://en.wikipedia.org/wiki/Access-control_list) para nuestra aplicación. La ACL controla qué usuario tiene acceso a qué recurso. Puede leer más sobre ACL en nuestra [página dedicada](acl).
 
-In this component, We define the resources that are considered *private*. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human readable descriptions for actions used throughout the application.
+En este componente, definimos los recursos que son considerados *privados*. Estos se mantienen en un vector interno con el controlador como clave y la acción como el valor, e identificamos qué controlador/acción requiere autenticación. Eso también mantiene descripciones legibles para humanos en las acciones usadas a través de la aplicación.
 
-The component exposes the following methods:
+El componente expone los siguientes métodos:
 
-| Método                                      | Returns      | Descripción                                                     |
-| ------------------------------------------- | ------------ | --------------------------------------------------------------- |
-| `getActionDescription($action)`             | `string`     | Returns the action description according to its simplified name |
-| `getAcl()`                                  | `ACL object` | Returns the ACL list                                            |
-| `getPermissions(Profiles $profile)`         | `array`      | Returns the permissions assigned to a profile                   |
-| `getResources()`                            | `array`      | Returns all the resources and their actions available           |
-| `isAllowed($profile, $controller, $action)` | `bool`       | Checks if the current profile is allowed to access a resource   |
-| `isPrivate($controllerName)`                | `bool`       | Checks if a controller is private or not                        |
-| `rebuild()`                                 | `ACL object` | Rebuilds the access list into a file                            |
+| Método                                      | Devuelve     | Descripción                                                        |
+| ------------------------------------------- | ------------ | ------------------------------------------------------------------ |
+| `getActionDescription($action)`             | `string`     | Devuelve la descripción de la acción según su nombre simplificado  |
+| `getAcl()`                                  | `ACL object` | Devuelve la lista ACL                                              |
+| `getPermissions(Profiles $profile)`         | `array`      | Devuelve los permisos asignados a un perfil                        |
+| `getResources()`                            | `array`      | Devuelve todos los recursos y sus acciones disponibles             |
+| `isAllowed($profile, $controller, $action)` | `bool`       | Comprueba si el perfil actual tiene permitido acceder a un recurso |
+| `isPrivate($controllerName)`                | `bool`       | Comprueba si un controlador es privado o no                        |
+| `rebuild()`                                 | `ACL object` | Reconstruye la lista de acceso en un fichero                       |
 
 ### Auth
 
-`Vokuro\Plugins\Auth\Auth` is a component that manages authentication and offers identity management in Vökuró.
+`Vokuro\Plugins\Auth\Auth` es un componente que gestiona la autenticación y ofrece gestión de identidad en Vökuró.
 
-The component exposes the following methods:
+El componente expone los siguientes métodos:
 
 | Método                                   | Descripción                                                                            |
 | ---------------------------------------- | -------------------------------------------------------------------------------------- |
-| `check($credentials)`                    | Checks the user credentials                                                            |
-| `saveSuccessLogin($user)`                | Creates the remember me environment settings the related cookies and generating tokens |
-| `registerUserThrottling($userId)`        | Implements login throttling. Reduces the effectiveness of brute force attacks          |
-| `createRememberEnvironment(Users $user)` | Creates the remember me environment settings the related cookies and generating tokens |
-| `hasRememberMe(): bool`                  | Check if the session has a remember me cookie                                          |
-| `loginWithRememberMe(): Response`        | Logs on using the information in the cookies                                           |
-| `checkUserFlags(Users $user)`            | Checks if the user is banned/inactive/suspended                                        |
-| `getIdentity(): array / null`            | Returns the current identity                                                           |
-| `getName(): string`                      | Returns the name of the user                                                           |
-| `remove()`                               | Removes the user identity information from session                                     |
-| `authUserById($id)`                      | Authenticates the user by his/her id                                                   |
-| `getUser(): Users`                       | Get the entity related to user in the active identity                                  |
-| `findFirstByToken($token): int / null`   | Returns the current token user                                                         |
-| `deleteToken(int $userId)`               | Delete the current user token in session                                               |
+| `check($credentials)`                    | Comprueba las credenciales de usuario                                                  |
+| `saveSuccessLogin($user)`                | Crea la configuración del entorno recuérdame, las cookies relacionadas y genera tokens |
+| `registerUserThrottling($userId)`        | Implementa el bloqueo de acceso. Reduce la efectividad de ataques de fuerza bruta      |
+| `createRememberEnvironment(Users $user)` | Crea la configuración del entorno recuérdame, las cookies relacionadas y genera tokens |
+| `hasRememberMe(): bool`                  | Comprueba si la sesión tiene una cookie recuérdame                                     |
+| `loginWithRememberMe(): Response`        | Se conecta usando la información de las cookies                                        |
+| `checkUserFlags(Users $user)`            | Comprueba si el usuario está baneado/inactivo/suspenddo                                |
+| `getIdentity(): array / null`            | Devuelve la identidad actual                                                           |
+| `getName(): string`                      | Devuelve el nombre del usuario                                                         |
+| `remove()`                               | Elimina la información de identidad del usuario de la sesión                           |
+| `authUserById($id)`                      | Autentica al usuario por su id                                                         |
+| `getUser(): Users`                       | Obtiene la entidad relacionada con el usuario de la identidad activa                   |
+| `findFirstByToken($token): int / null`   | Devuelve el usuario del token actual                                                   |
+| `deleteToken(int $userId)`               | Elimina el token del usuario actual de la sesión                                       |
 
 ### Mail
 
-`Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
+`Vokuro\Plugins\Mail\Mail` es un envoltorio de [Swift Mailer](https://swiftmailer.symfony.com). Expone dos métodos `send()` y `getTemplate()` que le permite obtener una plantilla desde las vistas y rellenarla con datos. El HTML resultante se puede usar en el método `send()` junto con el destinatario y otros parámetros para enviar el mensaje de email.
 
-> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
+> **NOTA**: Tenga en cuenta que este componente se usa sólo si `useMail` está habilitado en su fichero `.env`. También necesitará asegurarse de que el servidor SMTP y las credenciales son válidos.
 {: .alert .alert-info } 
 
-## Sign Up
+## Registro
 
 ### Controlador
 
-In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
+Para poder acceder a todas las áreas de Vökuró necesita tener una cuenta. Vökuró le permite registrarse en el sitio haciendo click en el botón `Crear una Cuenta`.
 
-What this will do is navigate you to the `/session/signup` URL, which in turn will call the `SessionController` and `signupAction`. Let's have a look what is going on in the `signupAction`:
+Lo que esto hará es llevarle a la URL `/session/signup`, que a su vez llamará a `SessionController` y `signupAction`. Echemos un vistazo a lo que está ocurriendo en `signupAction`:
 
 ```php
 <?php
@@ -792,36 +792,36 @@ class SessionController extends ControllerBase
 }
 ```
 
-The workflow of the application is:
+El flujo de trabajo de la aplicación es:
 
-- Visit `/session/signup` 
-    - Create form, send form to the view, render the form
-- Submit data (not post) 
-    - Form shows again, nothing else happens
-- Submit data (post) 
-    - Errors 
-        - Form validators have errors, send the form to the view, render the form (errors will show)
-    - No errors 
-        - Data is sanitized
-        - New Model created
-        - Data saved in the database 
+- Visita `/session/signup` 
+    - Crea formulario, envía formulario a la vista, renderiza el formulario
+- Envía datos (no post) 
+    - El formulario se muestra de nuevo, no ocurre nada más
+- Envía datos (post) 
+    - Errores 
+        - Validadores del formulario tiene errores, envía el formulario a la vista, renderiza el formulario (se mostrarán los errores)
+    - Sin errores 
+        - Se sanean los datos
+        - Se crea nuevo modelo
+        - Se guardan datos en la base de datos 
             - Error 
-                - Show message on screen and refresh the form
-            - Success 
-                - Record saved
-                - Show confirmation on screen
-                - Send email (if applicable)
+                - Se muestra mensaje en pantalla y actualiza el formulario
+            - Éxito 
+                - Registro guardado
+                - Muestra confirmación en pantalla
+                - Envía email (si corresponde)
 
 ### Form
 
-In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen.
+Para tener validación de los datos facilitados por el usuario, usamos las clases [Phalcon\Forms\Form](forms) y [Phalcon\Validation\*](validation). Estas clases nos permiten crear elementos HTML y adjuntarles validadores. El formulario se pasa entonces a la vista, donde los elementos HTML actuales se renderizan en la pantalla.
 
-When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
+Cuando el usuario envía la información, envía los datos publicados de vuelta al formulario y los validadores correspondientes validan la entrada y devuelven cualquier posible mensaje de error.
 
-> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
+> **NOTE**: Todos los formularios de Vökuró se localizan en `/src/Forms`
 {: .alert .alert-info }
 
-First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
+Primero creamos un objeto `SignUpForm`. En ese objeto definimos todos los elementos HTML que necesitamos con sus respectivos validadores:
 
 ```php
 <?php
@@ -996,19 +996,19 @@ class SignUpForm extends Form
 }
 ```
 
-In the `initialize` method we are setting up all the HTML elements we need. These elements are:
+En el método `initialize` estamos configurando todos los elementos HTML que necesitamos. Estos elementos son:
 
-| Element           | Tipo       | Descripción                  |
-| ----------------- | ---------- | ---------------------------- |
-| `name`            | `Text`     | The name of the user         |
-| `email`           | `Text`     | The email for the account    |
-| `password`        | `Password` | The password for the account |
-| `confirmPassword` | `Password` | Password confirmation        |
-| `terms`           | `Check`    | Accept the terms checkbox    |
-| `csrf`            | `Hidden`   | CSRF protection element      |
-| `Sign Up`         | `Submit`   | Submit button                |
+| Elemento          | Tipo       | Descripción                   |
+| ----------------- | ---------- | ----------------------------- |
+| `name`            | `Text`     | El nombre del usuario         |
+| `email`           | `Text`     | El email de la cuenta         |
+| `password`        | `Password` | La contraseña para la cuenta  |
+| `confirmPassword` | `Password` | Confirmación de la contraseña |
+| `terms`           | `Check`    | Acepta la casilla de términos |
+| `csrf`            | `Hidden`   | Elemento de protección CSRF   |
+| `Registro`        | `Submit`   | Botón de enviar               |
 
-Adding elements is pretty straight forward:
+Añadir elementos es bastante sencillo:
 
 ```php
 <?php
@@ -1035,29 +1035,29 @@ $email->addValidators(
 $this->add($email);
 ```
 
-First we create a `Text` object and set its name to `email`. We also set the label of the element to `E-Mail`. After that we attach various validators on the element. These will be invoked after the user submits data, and that data is passed in the form.
+Primero creamos un objeto `Text` y establecemos su nombre a `email`. También establecemos la etiqueta del elemento a `E-Mail`. Después de eso adjuntamos varios validadores al elemento. Estos se invocarán después de que el usuario envíe los datos, y los datos se pasen en el formulario.
 
-As we see above, we attach the `PresenceOf` validator on the `email` element with a message `The e-mail is required`. The validator will check if the user has submitted data when they clicked the submit button and will produce the message if the validator fails. The validator checks the passed array (usually `$_POST`) and for this particular element it will check `$_POST['email']`.
+Como vemos arriba, adjuntamos el validador `PresenceOf` en el elemento `email` con un mensaje `The e-mail is required`. El validador comprobará si el usuario ha enviado los datos cuando hace click en el botón enviar y producirá el mensaje si el validador falla. El validador comprueba el vector pasado (normalmente `$_POST`) y para este elemento particular comprobará `$_POST['email']`.
 
-We also attach the `Email` validator, which is responsible for checking for a valid email address. As you can see the validators belong in an array, so you can easily attach as many validators as you need on any particular element.
+También adjunta el validador `Email`, que es responsable de comprobar si una dirección de email es válida. Como puede ver los validadores residen en un vector, por lo que fácilmente puede adjuntar tantos validadores como necesite.
 
-The last thing we do is to add the element in the form.
+Lo último que hacemos es añadir el elemento en el formulario.
 
-You will notice that the `terms` element does not have any validators attached to it, so our form will not check the contents of the element.
+Tenga en cuenta que el elemento `terms` no tiene ningún validador adjunto a él, por lo que nuestro formulario no comprobará los contenidos del elemento.
 
-Special attention to the `password` and `confirmPassword` elements. You will notice that both elements are of type `Password`. The idea is that you need to type your password twice, and the passwords need to match in order to avoid errors.
+Atención especial a los elementos `password` and `confirmPassword`. Notará que ambos elementos son del tipo `Password`. La idea es que necesita escribir la contraseña dos veces, y las contraseñas deben coincidir para evitar errores.
 
-The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
+El campo `password` tiene dos validadores de contenido: `PresenceOf` es decir, es requerido y `StringLength`: necesitamos que la contraseña tenga más de 8 caracteres. También adjuntamos un tercer validador llamado `Confirmation`. Este validador especial vincula el elemento `password` con el elemento `confirmPassword`. Cuando se activa para validarlos comprueba los contenidos de ambos elementos y si no son idénticos, aparecerá el mensaje de error, y la validación fallará.
 
 ### Vistas
 
-Now that we have everything set up in our form, we pass the form to the view:
+Ahora que tenemos todo configurado en nuestro formulario, pasamos el formulario a la vista:
 
 ```php
 $this->view->setVar('form', $form);
 ```
 
-Our view now needs to *render* the elements:
+Nuestra vista ahora necesita *renderizar* los elementos:
 
 ```twig
 {% raw %}
@@ -1123,17 +1123,17 @@ Our view now needs to *render* the elements:
 {% endraw %}
 ```
 
-The variable that we set in our view for our `SignUpForm` object is called `form`. We therefore use it directly and call the methods of it. The syntax in Volt is slightly different. In PHP we would use `$form->render()` whereas in Volt we will use `form.render()`.
+La variable que establecemos en nuestra vista para nuestro objeto `SignUpForm` se llama `form`. Por lo tanto, la usamos directamente y llamamos a sus métodos. La sintaxis en Volt es ligeramente diferente. En PHP usaríamos `$form->render()` mientras que en Volt usaremos `form.render()`.
 
-The view contains a conditional at the top, checking whether there have been any errors in our form, and if there were, it attaches the `is-invalid` CSS class to the element. This class puts a nice red border by the element, highlighting the error and showing the message.
+Las vistas contienen un condicional en la parte superior, que comprueba si ha habido algún error en nuestro formulario, en cuyo caso, adjunta la clase CSS `is-invalid` al elemento. Esta clase pone un bonito borde rojo en el elemento, resaltando el error y mostrando el mensaje.
 
-After that we have regular HTML tags with the relevant styling. In order to display the HTML code of each element we need to call `render()` on the `form` with the relevant element name. Also note that we also call `form.label()` with the same element name, so that we can create respective `<label>` tags.
+Después de eso tenemos etiquetas HTML regulares con el estilo correspondiente. Para mostrar el código HTML de cada elemento necesitamos llamar `render()` sobre `form` con el nombre de elemento correspondiente. También tenga en cuenta que llamamos `form.label()` con el mismo nombre de elemento, para poder crear las etiquetas `<label>` correspondientes.
 
-At the end of the view we render the `CSRF` hidden field as well as the submit button `Sign Up`.
+Al final de la vista renderizamos el campo oculto `CSRF` así como el botón de enviar `Sign Up`.
 
 ### Post
 
-As mentioned above, once the user fills the form and clicks the `Sign Up` button, the form will *self post* i.e. it will post the data on the same controller and action (in our case `/session/signup`). The action now needs to process this posted data:
+Como mencionamos antes, una vez que el usuario rellena el formulario y hace click en el botón `Sign Up`, el formulario se *autopublicará*, es decir, enviará los datos al mismo controlador y acción (en nuestro caso `/session/signup`). La acción ahora necesita procesar los datos publicados:
 
 ```php
 <?php
@@ -1211,25 +1211,25 @@ class SessionController extends ControllerBase
 }
 ```
 
-If the user has submitted data, the following line will evaluate and we will be executing code inside the `if` statement:
+Si el usuario ha enviado datos, la siguiente línea evaluará y estaremos ejecutando código dentro de la sentencia `if`:
 
 ```php
 if (true === $this->request->isPost()) {
 ```
 
-Here we are checking the request that came from the user, if it is a `POST`. Now that it is, we need to use the form validators and check if we have any errors. The [Phalcon\Http\Request](request) object, allows us to get that data easily by using:
+Aquí estamos comprobando la petición que llegó del usuario, si es un `POST`. Ahora que lo es, necesitamos usar los validadores del formulario y comprobar si tenemos algún error. El objeto [Phalcon\Http\Request](request), nos permite obtener esos datos fácilmente usando:
 
 ```php
 $this->request->getPost()
 ```
 
-We now need to pass this posted data in the form and call `isValid`. This will fire all the validators for each element and if any of them fail, the form will populate the internal messages collection and return `false`
+Ahora necesitamos pasar estos datos publicados en el formulario y llamar `isValid`. Esto disparará todos los validadores de cada elemento y si alguno de ellos falla, el formulario rellenará la colección de mensajes internos y devolverá `false`
 
 ```php
 if (false !== $form->isValid($this->request->getPost())) {
 ```
 
-If everything is fine, we use again the [Phalcon\Http\Request](request) object to retrieve the submitted data but also sanitize them. The following example strips the tags from the submitted `name` string:
+Si todo es correcto, usamos otra vez el objeto [Phalcon\Http\Request](request) para recuperar los datos publicados y además sanearlos. El siguiente ejemplo elimina las etiquetas de la cadena `name` enviada:
 
 ```php
 $name     = $this
@@ -1238,7 +1238,7 @@ $name     = $this
 ;
 ```
 
-Note that we never store clear text passwords. Instead we use the [Phalcon\Security](security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
+Tenga en cuenta que nunca almacenamos contraseñas en texto plano. En su lugar, usamos el componente [Phalcon\Security](security) y llamamos `hash` sobre él, para transformar las contraseñas proporcionadas a un hash unidireccional y almacenarlo en su lugar. De esta forma, si alguien compromete nuestra base de datos, al menos no tendrá acceso a las contraseñas en texto plano.
 
 ```php
 $password = $this
@@ -1247,7 +1247,7 @@ $password = $this
 ;
 ```
 
-We now need to store the supplied data in the database. We do that by creating a new `Users` model, pass the sanitized data into it and then call `save`:
+Ahora necesitamos almacenar los datos proporcionados en la base de datos. Hacemos eso creando un nuevo modelo `Users`, le pasamos los datos saneados y llamamos a `save`:
 
 ```php
 $user = new Users(
@@ -1271,17 +1271,17 @@ if ($user->save()) {
 }
 ```
 
-If the `$user->save()` returns `true`, the user will be forwarded to the home page (`index/index`) and a success message will appear on screen.
+Si `$user->save()` devuelve `true`, el usuario será enviado a la página de inicio (`index/index`) y le aparecerá en pantalla un mensaje de éxito.
 
 ### Modelo
 
 **Relaciones**
 
-Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
+Ahora necesitamos comprobar el modelo `Users`, ya que hay alguna lógica que hemos aplicado aquí, en particular los eventos `afterSave` y `beforeValidationOnCreate`.
 
-The core method, the setup if you like happens in the `initialize` method. That is the spot where we set all the [relationships](db-models-relationships) for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model.
+El método principal, la configuración si le gusta ocurre en el método `initialize`. Ese es el lugar donde establecemos todas las [relaciones](db-models-relationships) del modelo. Para la clase `Users` tenemos varias relaciones definidas. Podría preguntar, ¿porqué relaciones? Phalcon ofrece una forma fácil de recuperar datos relacionados con un modelo particular.
 
-If for instance we want to check all the successful logins for a particular user, we can do so with the following code snippet:
+Si por ejemplo quiere comprobar todos los inicios de sesión correctos para un usuario particular, puede hacerlo con el siguiente fragmento de código:
 
 ```php
 <?php
@@ -1309,9 +1309,9 @@ $logins = SuccessLogin::find(
 );
 ```
 
-The above code gets the user with id `7` and then gets all the successful logins from the relevant table for that user.
+El código anterior obtiene el usuario con id `7` y luego obtiene todos los inicios de sesión correctos de la tabla correspondiente para ese usuario.
 
-Using relationships we can let Phalcon do all the heavy lifting for us. So the code above becomes:
+Usando las relaciones podemos dejar que Phalcon haga todo el trabajo pesado por nosotros. Con lo que el código anterior sería:
 
 ```php
 <?php
@@ -1334,16 +1334,16 @@ $logins = $user->successLogins;
 $logins = $user->getRelated('successLogins');
 ```
 
-The last two lines do exactly the same thing. It is a matter of preference which syntax you want to use. Phalcon will query the related table, filtering the related table with the id of the user.
+Las últimas dos líneas hacen exactamente lo mismo. Es una cuestión de preferencia qué sintaxis quiere usar. Phalcon consultará la tabla relacionada, filtrando la tabla relacionada con el id del usuario.
 
-For our `Users` table we define the following relationships:
+Para nuestra tabla `Users` definimos las siguientes relaciones:
 
-| Nombre            | Source field | Target field | Modelo            |
-| ----------------- | ------------ | ------------ | ----------------- |
-| `passwordChanges` | `id`         | `usersId`    | `PasswordChanges` |
-| `profile`         | `profileId`  | `id`         | `Profiles`        |
-| `resetPasswords`  | `id`         | `usersId`    | `ResetPasswords`  |
-| `successLogins`   | `id`         | `usersId`    | `SuccessLogins`   |
+| Nombre            | Campo origen | Campo destino | Modelo            |
+| ----------------- | ------------ | ------------- | ----------------- |
+| `passwordChanges` | `id`         | `usersId`     | `PasswordChanges` |
+| `profile`         | `profileId`  | `id`          | `Profiles`        |
+| `resetPasswords`  | `id`         | `usersId`     | `ResetPasswords`  |
+| `successLogins`   | `id`         | `usersId`     | `SuccessLogins`   |
 
 ```php
 <?php
@@ -1416,15 +1416,15 @@ class Users extends Model
 }
 ```
 
-As you can see in the defined relationships, we have a `belongsTo` and three `hasMany`. All relationships have an alias so that we can access them easier. The `belongsTo` relationship also has the `reusable` flag set to on. This means that if the relationship is called more than once in the same request, Phalcon would perform the database query only the first time and cache the resultset. Any subsequent calls will use the cached resultset.
+Como puede ver en las relaciones definidas, tenemos un `belongsTo` y tres `hasMany`. Todas las relaciones tienen un alias para que podamos acceder a ellas más fácilmente. La relación `belongsTo` también tiene el parámetro `reusable` activo. Esto significa que si la relación se llama más de una vez en la misma petición, Phalcon realizaría la consulta a la base de datos sólo la primera vez y cachearía el conjunto de resultados. Cualquier llamada posterior usará el conjunto de resultados cacheado.
 
-Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
+También destacar que hemos definido mensajes específicos para claves ajenas. Si se infringe la relación particular, se generará el mensaje definido.
 
 **Eventos**
 
-[Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
+[Phalcon\Mvc\Model](db-models) está diseñado para disparar [eventos](events) específicos. Estos métodos de eventos se pueden localizar en un oyente o en el propio modelo.
 
-For the `Users` model, we attach code to the `afterSave` and `beforeValidationOnCreate` events.
+Para el modelo `Users`, adjuntamos código a los eventos `afterSave` y `beforeValidationOnCreate`.
 
 ```php
 <?php
@@ -1473,9 +1473,9 @@ class Users extends Model
 }
 ```
 
-The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) amd storing it in the `password` property. We also set the flag to change the password.
+`beforeValidationOnCreate` disparará cada vez que tenemos un nuevo registro (`Create`), antes de que ocurra alguna validación. Comprobamos si hemos definido una contraseña o no, generaremos una cadena aleatoria, luego haremos *hash* de esa cadena usando [Phalcon\Security](security) y la almacena en la propiedad `password`. También activamos el parámetro para cambiar la contraseña.
 
-If the password is not empty, we just set the `mustChangePassword` field to `N`. Finally, we set some defaults on whether the user is `active`, `suspended` or `banned`. This ensures that our record is ready before it is inserted in the database.
+Si la contraseña no está vacía, solo establecemos el campo `mustChangePassword` a `N`. Finalmente, establecemos algunos valores predeterminados sobre si el usuario está `active` (activo), `suspended` (suspendido) o `banned` (baneado). Esto asegura que nuestro registro está listo antes de ser insertado en la base de datos.
 
 ```php
 <?php
@@ -1514,14 +1514,13 @@ class Users extends Model
 }
 ```
 
-The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen.
+El evento `afterSave` se dispara justo después de guardar un registro en la base de datos. En este evento comprobamos si los emails están habilitados (ver ajuste `useMail` del fichero `.env`), y si están activos creamos un nuevo registro en la tabla `EmailConfirmations` y guardamos el registro. Una vez que se ha hecho todo, aparecerá un aviso en pantalla.
 
-> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
-{: .alert .alert=info }
+> **NOTA**: Tenga en cuenta que el modelo `EmailConfirmations` también tiene un evento `afterCreate`, que es responsable de enviar el email al usuario. {: .alert .alert-info }
 
 **Validación**
 
-The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
+El modelo también tiene el método `validate` que nos permite adjuntar un validador a cualquier número de campos de nuestro modelo. Para la tabla `Users`, necesitamos que el `email` sea único. Para lo cual, le adjuntamos el [validador](validation) `Uniqueness`. El validador se disparará justo antes de que se realice cualquier operación de guardado en el modelo y se devolverá el mensaje si la validación falla.
 
 ```php
 <?php
@@ -1558,7 +1557,7 @@ class Users extends Model
 
 ## Conclusión
 
-Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
+Vökuró es una aplicación de ejemplo que usamos para demostrar algunas de las características que Phalcon ofrece. Definitivamente, no es una solución que cubra todas las necesidades. Sin embargo, puede usarla como punto de partida para desarrollar su aplicación.
 
 ## Referencias
 
@@ -1574,4 +1573,4 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Phalcon Forms](forms)
 - [Phalcon HTTP Response](response)
 - [Phalcon Security](security)
-- [Vökuró - GitHub Repository](https://github.com/phalcon/vokuro)
+- [Vökuró - Repositorio GitHub](https://github.com/phalcon/vokuro)
