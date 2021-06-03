@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Tutorial - REST'
-keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
+keywords: 'tutorial, tutorial rest, api, rest, paso a paso, micro'
 ---
 
 # Tutorial - REST
@@ -14,32 +14,32 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 
 ## Resumen
 
-In this tutorial, you will learn how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using different HTTP methods:
+En este tutorial, aprenderá cómo crear una aplicación simple que ofrezca un API [RESTful](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional) usando diferentes métodos HTTP:
 
 * `GET` para recuperar y buscar datos
 * `POST` para agregar datos
 * `PUT` para actualizar datos
 * `DELETE` para borrar datos
 
-> **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. You can also have a look at the <rest-api> project. 
+> **NOTA**: Esta es sólo una aplicación de ejemplo. Carece de muchas características como autenticación, autorización, saneamiento de la entrada y gestión de errores, por nombras algunas. Por favor, úsela como un *set* de construcción para su aplicación, o como tutorial para comprender cómo puede construir un API REST con Phalcon. También puede echar un vistazo al proyecto <rest-api>. 
 {: .alert .alert-warning }
 
 ## Métodos
 
-The API consists of the following methods:
+La API consiste en los siguientes métodos:
 
-| Método   | URL                        | Acción                                     |
-| -------- | -------------------------- | ------------------------------------------ |
-| `GET`    | `/api/robots`              | Get all robots                             |
-| `GET`    | `/api/robots/search/Astro` | Searches robots with 'Astro' in their name |
-| `GET`    | `/api/robots/2`            | Get robots based on primary key            |
-| `POST`   | `/api/robots`              | Add robot                                  |
-| `PUT`    | `/api/robots/2`            | Update robot based on primary key          |
-| `DELETE` | `/api/robots/2`            | Delete robot based on primary key          |
+| Método   | URL                        | Acción                                      |
+| -------- | -------------------------- | ------------------------------------------- |
+| `GET`    | `/api/robots`              | Obtiene todos los robots                    |
+| `GET`    | `/api/robots/search/Astro` | Buscar robots con 'Astro' en su nombre      |
+| `GET`    | `/api/robots/2`            | Obtiene robots basados en la clave primaria |
+| `POST`   | `/api/robots`              | Añade robot                                 |
+| `PUT`    | `/api/robots/2`            | Actualiza robot basado en la clave primaria |
+| `DELETE` | `/api/robots/2`            | Elimina robot basado en la clave primaria   |
 
-## Application
+## Aplicación
 
-As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) application for our needs. The structure of the application is as follows:
+Como la aplicación es sencilla, no implementaremos ningún entorno MVC completo para desarrollarla. En este caso, usaremos una [aplicación micro](application-micro) para nuestras necesidades. La estructura de la aplicación es la siguiente:
 
 ```php
 my-rest-api/
@@ -49,7 +49,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
+Primero, necesitamos un fichero `.htaccess` que contenta todas las reglas para reescribir las URIs de la petición al fichero `index.php` (punto de entrada de la aplicación):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -59,7 +59,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the req
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`.
+La mayor parte de nuestro código se colocará en `index.php`.
 
 ```php
 <?php
@@ -73,7 +73,7 @@ $app->handle(
 );
 ```
 
-Now we need to create the routes, so that the application can understand what to do when end users interact with our application. The `index.php` file changes to:
+Ahora necesitamos crear las rutas, para que la aplicación pueda entender qué hacer cuando los usuarios finales interactúan con nuestra aplicación. El fichero `index.php` cambia a:
 
 ```php
 <?php
@@ -124,18 +124,18 @@ $app->handle(
 );
 ```
 
-As we add the routes, we use the actual HTTP methods as the names of the methods called in the application object. This allows us to easily define listening points for the application based on those HTTP methods.
+A medida que añadimos las rutas, usamos los métodos HTTP reales como nombres de los métodos llamados en el objeto aplicación. Esto nos permite fácilmente definir puntos de escucha para la aplicación basados en esos métodos HTTP.
 
-The first parameter of each method call is the route and the second is the handler i.e. what do we do when the user calls that route. In our example we have anonymous functions defined for each handler. For the following route:
+El primer parámetro de cada método de llamada es la ruta y el segundo es el manejador, es decir, qué hacemos cuando el usuario llama a esa ruta. En nuestro ejemplo tenemos funciones anónimas definidas para cada manejador. Para la siguiente ruta:
 
     /api/robots/{id:[0-9]+}
     
 
-we explicitly set the `id` parameter to be a number. When a defined route matches the requested URI, then the corresponding handler (anonymous function) will be executed.
+explícitamente establecemos el parámetro `id` para que sea un número. Cuando una ruta definida coincide con la URI solicitada, entonces se ejecuta el manejador (función anónima) correspondiente.
 
 ## Modelos
 
-For this application we store and manipulate `Robots` in the database. To access the table we need a model. The class below, allows us to access each record of the table in an object oriented manner. We have also implemented business rules, using built-in validators. By doing so, we have high confidence that the data saved will meet the requirements of our application. This model file needs to be created in the `my-rest-api/models` directory.
+Para esta aplicación almacenamos y manipulamos `Robots` en la base de datos. Para acceder a la tabla necesitamos un modelo. La clase siguiente nos permite acceder a cada registro de la tabla de una forma orientada a objetos. También hemos implementado reglas de negocio, usando validadores integrados. Al hacerlo, tenemos una gran confianza de que los datos guardados cumplen los requerimientos de nuestra aplicación. Este fichero de modelo se debe crear en el directorio `my-rest-api/models`.
 
 ```php
 <?php
@@ -190,13 +190,13 @@ class Robots extends Model
 }
 ```
 
-We attach three validators to the model. The first one checks the type of the robot. It must be `droid`, `mechanical` or `virtual`. Any other value will make the validator return `false` and the operation (insert/update) will fail. The second validator checks the uniqueness of the name for our robot. The last validator checks the `year` field to be a positive number.
+Adjuntamos tres validadores al modelo. El primero comprueba el tipo de robot. Que debe ser `droid`, `mechanical` o `virtual`. Cualquier otro valor hará que el validador devuelva `false` y la operación (insert/update) fallará. El segundo validador comprueba la unicidad del nombre de nuestro robot. El último validador comprueba el campo `year` para que sea un número positivo.
 
 ## Base de Datos
 
-We need to connect our application to the database. For this example we are going to use the popular MariaDB or similar variants such as MySQL, Aurora etc. In addition to the database setup, we are going to set up the autoloader, so that our application is aware of where to search for files required.
+Necesitamos conectar nuestra aplicación a la base de datos. Para este ejemplo vamos a usar la popular MariaDB o variantes similares como MySQL, Aurora, etc. Además de la configuración de base de datos, vamos a configurar el autocargador, para que nuestra aplicación sepa donde buscar los ficheros requeridos.
 
-These changes need to be made in the `index.php` file.
+Estos cambios deben hacerse en el fichero `index.php`.
 
 ```php
 <?php
@@ -236,9 +236,9 @@ $app = new Micro($container);
 
 ### Obtener
 
-The first `handler` that we will implement is the one that retrieves data from the database, when the request is made using the `GET` HTTP method. The endpoint will return all the records from the database using a PHQL query and returning the results in JSON.
+El primer `manejador` que implementaremos es el que obtiene datos de la base de datos, cuando se hace la petición usando el método HTTP `GET`. El punto de acceso devolverá todos los registros de la base de datos usando una consulta PHQL y devolverá los resultados en JSON.
 
-The handler for `get()` and `/api/robots` becomes:
+El manejador para `get()` y `/api/robots` se hace:
 
 ```php
 <?php
@@ -270,11 +270,11 @@ $app->get(
 );
 ```
 
-[PHQL](db-phql), allows us to write queries using a high level, object oriented SQL dialect, that internally translates your query to the correct SQL statements depending on the database system used. The `use` statement in the anonymous function offers object injection from the local scope to the anonymous function.
+[PHQL](db-phql), nos permite escribir consultas usando un dialecto SQL de alto nivel, orientado a objetos, que internamente traduce sus consultas a las sentencias SQL correctas dependiendo del sistema de base de datos usado. La sentencia `use` en la función anónima ofrece inyección de objetos desde el ámbito local a la función anónima.
 
-### Get - Text
+### Obtener - Texto
 
-We can get robots using their name or part of their name. This search feature will also be a `get()` as far as HTTP method is concerned and it will tie to the `/api/robots/search/{name}` endpoint. The implementation is similar to the one above. We just need to change the query slightly.
+Podemos obtener robots usando su nombre o una parte de su nombre. Esta característica de búsqueda también será un `get()` en lo que respecta al método HTTP y se vinculará al punto de acceso `/api/robots/search/{name}`. La implementación es similar a la anterior. Sólo necesitamos cambiar ligeramente la consulta.
 
 ```php
 <?php
@@ -314,11 +314,11 @@ $app->get(
 );
 ```
 
-### Get - `id`
+### Obtener - `id`
 
-To get a robot by using their `id` is similar to the above operations. We will just need to adjust the query that we run against the database. The HTTP method used will also be `get()` and the endpoint will be `/api/robots/{id:[0-9]+}`. For this handler, we are also reporting back if a robot has not been found.
+Para obtener un robot usando su `id` es similar a las operaciones anteriores. Sólo necesitaremos ajustar la consulta que ejecutamos contra la base de datos. El método HTTP usado será también `get()` y el punto de acceso será `/api/robots/{id:[0-9]+}`. Para este manejador, también reportamos de vuelta si el robot no se ha encontrado.
 
-The `index.php` changes again:
+El `index.php` cambia otra vez:
 
 ```php
 <?php
@@ -370,7 +370,7 @@ $app->get(
 
 ### Insertar
 
-Our design allows users to submit data so that we can insert them in the database. The HTTP method used is `post()` to the `/api/robots` endpoint. We expect the data to be submitted as a JSON string.
+Nuestro diseño permite a los usuarios enviar datos que podamos insertar en la base de datos. El método HTTP usado es `post()` al punto de acceso `/api/robots`. Esperamos que los datos se envíen como una cadena JSON.
 
 ```php
 <?php
@@ -433,13 +433,13 @@ $app->post(
 );
 ```
 
-After we run the query against our database, using PHQL, we create a brand new `Response` object. If the query was executed correctly, we manipulate the response to have a status code of `201` and text `Created`. We finally update the `id` of the recently created record, and send the robot back with the response.
+Después de ejecutar la consulta contra nuestra base de datos, usando PHQL, creamos un nuevo objeto `Response`. Si la consulta se ejecuta correctamente, manipulamos la respuesta para tener un código de estado de `201` y un texto `Created`. Finalmente, actualizamos el `id` del registro creado recientemente, y enviamos el robot de vuelta con la respuesta.
 
-If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
+Si algo sale mal, cambiamos el código de estado de la respuesta a `409` con el texto `Conflict` y recopilamos todos los errores que se han producido en la operación de base de datos. Entonces enviamos esos mensajes de error de vuelta con la respuesta.
 
 ## Actualizar
 
-Updating data is similar to inserting. For this operation we are using the `put()` HTTP method and the endpoint `/api/robots/{id:[0-9]+}`. The passed `id` parameter in the URL is the id of the robot to be updated. The data submitted is in JSON format.
+Actualizar datos es similar a insertarlos. Para esta operación usamos el método HTTP `put()` y el punto de acceso `/api/robots/{id:[0-9]+}`. El parámetro `id` pasado en la URL es el id del robot a actualizar. Los datos enviados están en formato JSON.
 
 ```php
 <?php
@@ -496,15 +496,15 @@ $app->put(
 );
 ```
 
-The operation is very similar to the one we use when inserting data. If the update operation is successful, we send back a JSON payload with `OK`.
+La operación es muy similar a la que hemos usado al insertar datos. Si la operación de actualización es correcta, enviamos de vuelta una carga útil JSON con `OK`.
 
-If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
+Si algo sale mal, cambiamos el código de estado de la respuesta a `409` con el texto `Conflict` y recopilamos todos los errores que se han producido en la operación de base de datos. Entonces enviamos esos mensajes de error de vuelta con la respuesta.
 
 ## Eliminar
 
-Delete is nearly identical to the `update` process. For this operation we are using the `delete()` HTTP method and the endpoint `/api/robots/{id:[0-9]+}`. The passed `id` parameter in the URL is the id of the robot to be deleted.
+Eliminar es prácticamente idéntico al proceso de `actualizar`. Para esta operación usamos el método HTTP `delete()` y el punto de acceso `/api/robots/{id:[0-9]+}`. El parámetro `id` pasado en la URL es el id del robot a borrar.
 
-The `index.php` changes again:
+El `index.php` cambia otra vez:
 
 ```php
 <?php
@@ -558,13 +558,13 @@ $app->delete(
 );
 ```
 
-If the delete operation is successful, we send back a JSON payload with `OK`.
+Si la operación de borrado es correcta, devolvemos una carga útil JSON con `OK`.
 
-If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
+Si algo sale mal, cambiamos el código de estado de la respuesta a `409` con el texto `Conflict` y recopilamos todos los errores que se han producido en la operación de base de datos. Entonces enviamos esos mensajes de error de vuelta con la respuesta.
 
-## Schema
+## Esquema
 
-In order to create the table in our database, we need to use the following SQL queries:
+Para crear la tabla en nuestra base de datos, necesitamos usar las siguientes consultas SQL:
 
     create database `robotics`;
     
@@ -577,9 +577,9 @@ In order to create the table in our database, we need to use the following SQL q
     )
     
 
-## Run
+## Ejecutar
 
-You can of course set up your web server to run your application. For setup instructions you can check the [webserver setup](webserver-setup) document. If you want to use the built-in PHP server, you will need to create a file called `.htrouter` as follows:
+Por supuesto, puede configurar su servidor web para ejecutar su aplicación. Para instrucciones de configuración puede consultar el documento [configuración de servidor web](webserver-setup). Si quiere usar el servidor PHP integrado, necesitará crear un fichero llamado `.htrouter` como sigue:
 
 ```php
 <?php
@@ -597,16 +597,16 @@ $_GET['_url'] = $_SERVER['REQUEST_URI'];
 require_once __DIR__ . '/index.php';
 ```
 
-and then run the following command:
+y luego ejecutar el siguiente comando:
 
     $(which php) -S localhost:8000 -t / .htrouter.php
     
 
 ## Pruebas
 
-There are numerous testing suites that you can use to test this application. We will use [curl](https://en.wikipedia.org/wiki/CURL) on every route, to verify proper operation.
+Hay numerosas suites de pruebas que puede usar para testear esta aplicación. Usaremos [curl](https://en.wikipedia.org/wiki/CURL) en cada ruta, para verificar la operación apropiada.
 
-**Get** all the robots:
+**Obtener** todos los robots:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots
@@ -620,7 +620,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-**Search** a robot by its name:
+**Buscar** un robot por su nombre:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
@@ -634,7 +634,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-**Get** a robot by its id:
+**Obtener** un robot por su id:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/3
@@ -648,7 +648,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-**Insert** a new robot:
+**Insertar** un nuevo robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' \
@@ -663,7 +663,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Try to insert a new robot with the name of an existing robot:
+Intente insertar un nuevo robot con el nombre de un robot existente:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' \
@@ -678,7 +678,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-**Update** a robot with an unknown type:
+**Actualizar** un robot con un tipo desconocido:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}' \
@@ -694,7 +694,7 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-**Delete** a robot:
+**Eliminar** un robot:
 
 ```bash
 curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
