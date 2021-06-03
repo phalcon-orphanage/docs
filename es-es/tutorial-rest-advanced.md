@@ -33,13 +33,13 @@ The application needs a minimum of PHP 7.2 and the following extensions availabl
 
 The remaining dependencies for the project are installed using composer.
 
-## Providers
+## Proveedores
 Setting up the
 
 
 ## Controladores
 ## Modelos
-## Routes
+## Rutas
 
 | Método | Descripción                                                                       |
 |:------:| --------------------------------------------------------------------------------- |
