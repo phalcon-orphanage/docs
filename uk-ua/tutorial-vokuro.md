@@ -730,7 +730,7 @@ ProfilesController -> createAction
 | `registerUserThrottling($userId)`        | Імплементує тротлінг імені користувача. Знижує ефективність атак грубого підбору пароля         |
 | `createRememberEnvironment(Users $user)` | Створює налаштування середовища "пам'ятати мене" - пов'язані файли cookie і генерування токенів |
 | `hasRememberMe(): bool`                  | Перевірте, чи має сесія куки з міткою "пам'ятати мене"                                          |
-| `loginWithRememberMe(): Response`        | Авторизації з використанням інформації у куках                                                  |
+| `loginWithRememberMe(): Response`        | Logs in using the information in the cookies                                                    |
 | `checkUserFlags(Users $user)`            | Перевіряє, чи користувач заблокований/неактивний/тимчасово заморожений                          |
 | `getIdentity(): array / null`            | Повертає поточну ідентифікацію                                                                  |
 | `getName(): string`                      | Повертає ім'я користувача                                                                       |
@@ -1473,7 +1473,7 @@ class Users extends Model
 }
 ```
 
-Подія `beforeValidationOnCreate` буде виконуватись щоразу, як ми матимемо новий запис (`Create`), перед тим, як буде здійснено будь-яку валідацію. Ми перевіряємо, чи у нас є визначений пароль і, якщо ні, генеруємо випадковий рядок, тоді хешуємо цей рядок, використовуючи [Phalcon\Security](security) та зберігаємо його у власності `password`. Ми також встановлюємо прапорець для зміни пароля.
+Подія `beforeValidationOnCreate` буде виконуватись щоразу, як ми матимемо новий запис (`Create`), перед тим, як буде здійснено будь-яку валідацію. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) and storing it in the `password` property. Ми також встановлюємо прапорець для зміни пароля.
 
 Якщо поле пароля не порожнє, то ми зазначаємо у полі `mustChangePassword` текст `ні`. Нарешті, ми встановили типові значення параметрів `active`, `suspended` або `banned`, залежно від статусу користувача. Це гарантує, що наш запис буде готовий до додавання у базу даних.
 
@@ -1517,7 +1517,7 @@ class Users extends Model
 Подія `afterSave` виконується одразу після додавання у базу нового запису про користувача. У цій події ми перевіряємо чи електронні скриньки активні (дивіться файл`.env` налаштування `useMail`), і якщо активні, то створюємо новий запис у таблиці `EmailConfirmations`, після чого зберігаємо запис. Як тільки все буде зроблено, на екрані з'явиться сповіщення.
 
 > **ПРИМІТКА**: Зверніть увагу на те, що модель `EmailConfirmations` також має подію `afterCreate`, яка відповідає за відправку повідомлення на пошту користувача.
-{: .alert .alert=info }
+{: .alert .alert-info }
 
 **Валідація**
 
