@@ -3142,7 +3142,7 @@ $invoices = $modelsManager
 ;
 ```
 
-Lo anterior creará un `GROUP_CONCAT` basado en los parámetros pasados al método. If three parameters passed we will have a `GROUP_CONCAT` with a `DISTINCT`, `ORDER BY` and `SEPARATOR`, if two parameters passed we will have a `GROUP_CONCAT` with `SEPARATOR` and if only one parameter passed just a `GROUP_CONCAT`
+Lo anterior creará un `GROUP_CONCAT` basado en los parámetros pasados al método. Si se pasan tres parámetros tendremos un `GROUP_CONCAT` con un `DISTINCT`, `ORDER BY` y `SEPARATOR`, si se pasan dos parámetros tendremos un `GROUP_CONCAT` con `SEPARATOR` y si sólo se pasa un parámetro sólo un `GROUP_CONCAT`
 
 ## Caché
 
