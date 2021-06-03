@@ -936,26 +936,26 @@ Los eventos disponibles en Phalcon son:
 | [Micro](application-micro)     | `micro:beforeExecuteRoute`           | Micro                                                   |
 | [Micro](application-micro)     | `micro:beforeHandleRoute`            | Micro                                                   |
 | [Micro](application-micro)     | `micro:beforeNotFound`               | Micro                                                   |
-| [Model](db-models)             | `model:afterCreate`                  | Model                                                   |
-| [Model](db-models)             | `model:afterDelete`                  | Model                                                   |
-| [Model](db-models)             | `model:afterFetch`                   | Model                                                   |
-| [Model](db-models)             | `model:afterSave`                    | Model                                                   |
-| [Model](db-models)             | `model:afterUpdate`                  | Model                                                   |
-| [Model](db-models)             | `model:afterValidation`              | Model                                                   |
-| [Model](db-models)             | `model:afterValidationOnCreate`      | Model                                                   |
-| [Model](db-models)             | `model:afterValidationOnUpdate`      | Model                                                   |
-| [Model](db-models)             | `model:beforeDelete`                 | Model                                                   |
-| [Model](db-models)             | `model:beforeCreate`                 | Model                                                   |
-| [Model](db-models)             | `model:beforeSave`                   | Model                                                   |
-| [Model](db-models)             | `model:beforeUpdate`                 | Model                                                   |
-| [Model](db-models)             | `model:beforeValidation`             | Model                                                   |
-| [Model](db-models)             | `model:beforeValidationOnCreate`     | Model                                                   |
-| [Model](db-models)             | `model:beforeValidationOnUpdate`     | Model                                                   |
-| [Model](db-models)             | `model:notDeleted`                   | Model                                                   |
-| [Model](db-models)             | `model:notSaved`                     | Model                                                   |
-| [Model](db-models)             | `model:onValidationFails`            | Model                                                   |
-| [Model](db-models)             | `model:prepareSave`                  | Model                                                   |
-| [Model](db-models)             | `model:validation`                   | Model                                                   |
+| [Modelo](db-models)            | `model:afterCreate`                  | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterDelete`                  | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterFetch`                   | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterSave`                    | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterUpdate`                  | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterValidation`              | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterValidationOnCreate`      | Modelo                                                  |
+| [Modelo](db-models)            | `model:afterValidationOnUpdate`      | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeDelete`                 | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeCreate`                 | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeSave`                   | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeUpdate`                 | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeValidation`             | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeValidationOnCreate`     | Modelo                                                  |
+| [Modelo](db-models)            | `model:beforeValidationOnUpdate`     | Modelo                                                  |
+| [Modelo](db-models)            | `model:notDeleted`                   | Modelo                                                  |
+| [Modelo](db-models)            | `model:notSaved`                     | Modelo                                                  |
+| [Modelo](db-models)            | `model:onValidationFails`            | Modelo                                                  |
+| [Modelo](db-models)            | `model:prepareSave`                  | Modelo                                                  |
+| [Modelo](db-models)            | `model:validation`                   | Modelo                                                  |
 | [Gestor de Modelos](db-models) | `modelsManager:afterInitialize`      | Manager, Model                                          |
 | [Consulta](request)            | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
 | [Consulta](request)            | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
