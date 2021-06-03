@@ -39,7 +39,7 @@ The API consists of the following methods:
 
 ## アプリケーション
 
-As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) application for our needs. The structure of the application is as follows:
+As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) for our needs. The structure of the application is as follows:
 
 ```php
 my-rest-api/
