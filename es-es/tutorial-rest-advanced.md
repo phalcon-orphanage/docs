@@ -334,7 +334,7 @@ $app->get(
 
 [PHQL](db-phql), nos permite escribir consultas usando un dialecto SQL de alto nivel orientado a objetos que internamente traduce a sentencias SQL válidas dependiendo del sistema de base de datos que estemos usando. La cláusula `use` en las funciones anónimas nos permite pasar algunas variables del ámbito global al local más fácilmente.
 
-The searching by name handler would look like:
+La búsqueda por gestor de nombre se vería como:
 
 ```php
 <?php
@@ -366,7 +366,7 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not:
+Buscando por el campo `id` es bastante similar, en este caso, también estamos notificando si el robot se ha encontrado o no:
 
 ```php
 <?php
@@ -415,7 +415,7 @@ $app->get(
 ```
 
 ## Insertando Datos
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
+Tomando los datos como una cadena JSON insertada en el cuerpo de la solicitud, también utilizamos PHQL para la inserción:
 
 ```php
 <?php
@@ -480,7 +480,7 @@ $app->post(
 ```
 
 ## Actualizando Datos
-La actualización de los datos es similar a la inserción. The `id` passed as parameter indicates what robot must be updated:
+La actualización de los datos es similar a la inserción. El `id` pasado como parámetro indica qué robot debe ser actualizado:
 
 ```php
 <?php
@@ -539,7 +539,7 @@ $app->put(
 ```
 
 ## Borrando datos
-El borrado de datos es similar a la actualización. The `id` passed as parameter indicates what robot must be deleted:
+El borrado de datos es similar a la actualización. El `id` pasado como parámetro indica qué robot debe ser borrado:
 
 ```php
 <?php
