@@ -247,7 +247,7 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 ```
 
-서비스를 덮어 써야하는 경우 일부 서비스의 정의를 재정의해야합니다. `session` 또는 `url`을 사용하여 위에서와 같이 다시 설정하면됩니다. 이것이 `$container`변수가 존재하는 이유입니다.
+If any services need to be overwritten we could just set it again as we did above with `session` or `url`. 이것이 `$container`변수가 존재하는 이유입니다.
 
 ## 로그인
 
