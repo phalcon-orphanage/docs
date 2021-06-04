@@ -730,7 +730,7 @@ El componente expone los siguientes métodos:
 | `registerUserThrottling($userId)`        | Implementa el bloqueo de acceso. Reduce la efectividad de ataques de fuerza bruta      |
 | `createRememberEnvironment(Users $user)` | Crea la configuración del entorno recuérdame, las cookies relacionadas y genera tokens |
 | `hasRememberMe(): bool`                  | Comprueba si la sesión tiene una cookie recuérdame                                     |
-| `loginWithRememberMe(): Response`        | Se conecta usando la información de las cookies                                        |
+| `loginWithRememberMe(): Response`        | Inicia sesión utilizando la información en las cookies                                 |
 | `checkUserFlags(Users $user)`            | Comprueba si el usuario está baneado/inactivo/suspenddo                                |
 | `getIdentity(): array / null`            | Devuelve la identidad actual                                                           |
 | `getName(): string`                      | Devuelve el nombre del usuario                                                         |
@@ -1516,7 +1516,8 @@ class Users extends Model
 
 El evento `afterSave` se dispara justo después de guardar un registro en la base de datos. En este evento comprobamos si los emails están habilitados (ver ajuste `useMail` del fichero `.env`), y si están activos creamos un nuevo registro en la tabla `EmailConfirmations` y guardamos el registro. Una vez que se ha hecho todo, aparecerá un aviso en pantalla.
 
-> **NOTA**: Tenga en cuenta que el modelo `EmailConfirmations` también tiene un evento `afterCreate`, que es responsable de enviar el email al usuario. {: .alert .alert-info }
+> **NOTA**: Tenga en cuenta que el modelo `EmailConfirmations` también tiene un evento `afterCreate`, que es responsable de enviar el email al usuario.
+{: .alert .alert-info }
 
 **Validación**
 

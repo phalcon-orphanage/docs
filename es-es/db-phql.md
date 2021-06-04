@@ -3067,8 +3067,8 @@ Ahora puede usar esta función en PHQL y se traduce internamente al SQL correcto
 
 ```php
 <br />$phql = "SELECT *
-   FROM Invoices
-   WHERE MATCH_AGAINST(inv_title, :pattern:)";
+         FROM Invoices
+         WHERE MATCH_AGAINST(inv_title, :pattern:)";
 
 $invoices = $modelsManager
     ->executeQuery(
@@ -3090,29 +3090,28 @@ use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
 
 $dialect = new Dialect();
 $dialect->registerCustomFunction(
-    'GROUP_CONCAT',
+    'GROUPCONCAT',
     function ($dialect, $expression) {
         $arguments = $expression['arguments'];
         if (true !== empty($arguments[2])) {
             return sprintf(
-                " GROUP_CONCAT(DISTINCT %s SEPARATOR %s)",
+                " GROUP_CONCAT(DISTINCT %s ORDER BY %s SEPARATOR %s)",
                 $dialect->getSqlExpression($arguments[0]),
-                $dialect->getSqlExpression($arguments[1])
+                $dialect->getSqlExpression($arguments[1]),
+                $dialect->getSqlExpression($arguments[2]),
             );
-        }
-
-        if (true !== empty($arguments[1])) {
+        } elseif (true !== empty($arguments[1])) {
             return sprintf(
                 " GROUP_CONCAT(%s SEPARATOR %s)",
                 $dialect->getSqlExpression($arguments[0]),
                 $dialect->getSqlExpression($arguments[1])
             );
+        } else {
+            return sprintf(
+                " GROUP_CONCAT(%s)",
+                $dialect->getSqlExpression($arguments[0])
+            );
         }
-
-        return sprintf(
-            " GROUP_CONCAT(%s)",
-            $dialect->getSqlExpression($arguments[0])
-        );
     }
 );
 
@@ -3130,23 +3129,20 @@ $connection = new Connection(
 Ahora puede usar esta función en PHQL y se traduce internamente al SQL correcto usando la función personalizada:
 
 ```php
-<br />$phql = "SELECT *
-   FROM Invoices
-   WHERE GROUP_CONCAT(inv_title, :first:, :separator:, :distinct:)";
+<br />$phql = "SELECT GROUPCONCAT(inv_title, inv_title, :separator:)
+         FROM Invoices";
 
 $invoices = $modelsManager
     ->executeQuery(
         $phql, 
         [
-            'pattern'   => $pattern,
-            'separator' => $separator,
-            'distinct'  => $distinct,
+            'separator' => ", "
         ]
     )
 ;
 ```
 
-Lo anterior creará un `GROUP_CONCAT` basado en los parámetros pasados al método. Si se pasan tres parámetros tendremos un `GROUP_CONCAT` con un `DISTINCT` y `SEPARATOR`, si se pasan dos parámetros tendremos un `GROUP_CONCAT` con `SEPARATOR` y si sólo se pasa un parámetro sólo un `GROUP_CONCAT`
+Lo anterior creará un `GROUP_CONCAT` basado en los parámetros pasados al método. Si se pasan tres parámetros tendremos un `GROUP_CONCAT` con un `DISTINCT`, `ORDER BY` y `SEPARATOR`, si se pasan dos parámetros tendremos un `GROUP_CONCAT` con `SEPARATOR` y si sólo se pasa un parámetro sólo un `GROUP_CONCAT`
 
 ## Caché
 

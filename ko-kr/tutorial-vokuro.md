@@ -730,7 +730,7 @@ The component exposes the following methods:
 | `registerUserThrottling($userId)`        | Implements login throttling. Reduces the effectiveness of brute force attacks          |
 | `createRememberEnvironment(Users $user)` | Creates the remember me environment settings the related cookies and generating tokens |
 | `hasRememberMe(): bool`                  | Check if the session has a remember me cookie                                          |
-| `loginWithRememberMe(): Response`        | Logs on using the information in the cookies                                           |
+| `loginWithRememberMe(): Response`        | Logs in using the information in the cookies                                           |
 | `checkUserFlags(Users $user)`            | Checks if the user is banned/inactive/suspended                                        |
 | `getIdentity(): array / null`            | Returns the current identity                                                           |
 | `getName(): string`                      | Returns the name of the user                                                           |
@@ -1473,7 +1473,7 @@ class Users extends Model
 }
 ```
 
-The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) amd storing it in the `password` property. We also set the flag to change the password.
+The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) and storing it in the `password` property. We also set the flag to change the password.
 
 If the password is not empty, we just set the `mustChangePassword` field to `N`. Finally, we set some defaults on whether the user is `active`, `suspended` or `banned`. This ensures that our record is ready before it is inserted in the database.
 
@@ -1517,7 +1517,7 @@ class Users extends Model
 The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen.
 
 > **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
-{: .alert .alert=info }
+{: .alert .alert-info }
 
 **유효성 검사**
 
