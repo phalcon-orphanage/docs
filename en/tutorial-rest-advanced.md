@@ -304,7 +304,7 @@ $app = new Micro($di);
 ```
 
 ## Retrieving Data
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. `index.php`
+The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON.
 
 ```php
 <?php
@@ -333,7 +333,7 @@ $app->get(
 
 [PHQL](db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
-The searching by name handler would look like `index.php`:
+The searching by name handler would look like:
 
 ```php
 <?php
@@ -365,7 +365,7 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not `index.php`:
+Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not:
 
 ```php
 <?php
@@ -414,7 +414,7 @@ $app->get(
 ```
 
 ## Inserting Data
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion `index.php`:
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
 
 ```php
 <?php
@@ -479,7 +479,7 @@ $app->post(
 ```
 
 ## Updating Data
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated `index.php`:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated:
 
 ```php
 <?php
@@ -538,7 +538,7 @@ $app->put(
 ```
 
 ## Deleting Data
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted `index.php`:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted:
 
 ```php
 <?php
