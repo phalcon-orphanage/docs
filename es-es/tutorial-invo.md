@@ -247,7 +247,7 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 ```
 
-If any services need to be overwritten we need to override the definition of some service we could just set it again as we did above with `session` or `url`. This is the reason for the existence of the variable `$container`.
+Si es necesario sobrescribir algún servicio, podríamos configurarlo de nuevo como lo hicimos anteriormente con `session` o `url`. This is the reason for the existence of the variable `$container`.
 
 ## Log in
 
