@@ -1008,7 +1008,7 @@ $type = new Select(
 );
 ```
 
-En el fragmento de código anterior, añadimos un campo HTML oculto que contiene el `id` del producto, si es aplicable. También obtenemos todos los tipos de productos usando `ProductTypes::find()` y luego usamos ese conjunto de resultados para rellenar el elemento HTML `select` usando el componente [Phalcon\Tag](tag) y su método `select()`. Once the form is passed to the view, it can be rendered and presented to the user:
+En el fragmento de código anterior, añadimos un campo HTML oculto que contiene el `id` del producto, si es aplicable. También obtenemos todos los tipos de productos usando `ProductTypes::find()` y luego usamos ese conjunto de resultados para rellenar el elemento HTML `select` usando el componente [Phalcon\Tag](tag) y su método `select()`. Una vez que el formulario se pasa a la vista, se puede renderizar y mostrar al usuario:
 
 ```twig
 {% raw %}
@@ -1042,7 +1042,7 @@ En el fragmento de código anterior, añadimos un campo HTML oculto que contiene
 {% endraw %}
 ```
 
-This produces the following HTML:
+Esto produce el siguiente HTML:
 
 ```html
 <form action='/invo/products/search' method='post'>
@@ -1102,11 +1102,11 @@ This produces the following HTML:
 </form>
 ```
 
-When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
+Cuando se envía el formulario, se ejecuta la acción `search` en el controlador realizando la búsqueda basada en los datos introducidos por el usuario.
 
-## Search
+## Búsqueda
 
-The `search` action has two operations. When accessed using the HTTP method `POST`, it performs the search based on the data sent from the form. When it is accessed using the HTTP method `GET`, it moves the current page in the paginator. To check which HTTP method has been used, we use the [Request](request) component:
+La acción `search` tiene dos operaciones. Cuando accede usando el método HTTP `POST`, realiza la búsqueda basada en los datos enviados desde el formulario. Cuando se accede usando el método HTTP `GET`, se mueve a la página actual en el paginador. Para comprobar qué método HTTP se ha usado, usamos el componente [Request](request):
 
 ```php
 <?php
@@ -1123,7 +1123,7 @@ public function searchAction()
 }
 ```
 
-With the help of [Phalcon\Mvc\Model\Criteria](api/phalcon_mvc#mvc-model-criteria), we can create the search conditions based on the data types and values sent from the form:
+Con la ayuda de [Phalcon\Mvc\Model\Criteria](api/phalcon_mvc#mvc-model-criteria), podemos crear las condiciones de búsqueda basadas en el tipo de datos y valores enviados desde el formulario:
 
 ```php
 <?php
@@ -1135,14 +1135,14 @@ $query = Criteria::fromInput(
 );
 ```
 
-This method verifies which values are different from '' (empty string) and `null` and takes them into account to create the search criteria:
+Este método verifica qué valores son diferentes de '' (cadena vacía) y `null` y los tiene en cuenta para crear los criterios de búsqueda:
 
-- If the field data type is `text` or similar (`char`, `varchar`, `text`, etc.) It uses an SQL `like` operator to filter the results.
-- If the data type is not `text` or similar, it will use the operator `=`.
+- Si el tipo de datos del campo es `text` o similar (`char`, `varchar`, `text`, etc.) Usa un operador SQL `like` para filtrar los resultados.
+- Si el tipo de datos no es `text` o similar, usará el operador `=`.
 
-Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
+Además, `Criteria` ignora todas las variables `$_POST` que no coinciden con ningún campo de la tabla. Los valores se escapan automáticamente usando `parámetros vinculados`.
 
-Now, we store the produced parameters in the controller's session bag:
+Ahora, almacenamos los parámetros producidos en la bolsa de sesión del controlador:
 
 ```php
 <?php
@@ -1150,9 +1150,9 @@ Now, we store the produced parameters in the controller's session bag:
 $this->persistent->searchParams = $query->getParams();
 ```
 
-A session bag, (`persistent` property) is a special attribute in a controller that persists data between requests using the session service. When accessed, this attribute injects a [Phalcon\Session\Bag](session#persistent-data) instance that is independent in each controller.
+Una bolsa de sesión, (propiedad `persistent`) es un atributo especial en un controlador que persiste los datos entre peticiones usando el servicio sesión. Cuando se accede, este atributo inyecta una instancia [Phalcon\Session\Bag](session#persistent-data) que depende de cada controlador.
 
-Then, based on the built params we perform the query:
+Luego, basándonos en los parámetros construidos realizamos la consulta:
 
 ```php
 <?php
@@ -1173,7 +1173,7 @@ if (count($products) === 0) {
 }
 ```
 
-If the search does not return any product, we forward the user to the `index` action again. If the search returns results, we pass them to a paginator object so that we can navigate through chunks of resultsets:
+Si la búsqueda no devuelve ningún producto, redirigiremos al usuario a la acción `index` otra vez. Si la búsqueda devuelve resultados, los pasamos a un objeto paginador para que podamos navegar a través de fragmentos del conjunto de resultados:
 
 ```php
 <?php
@@ -1193,9 +1193,9 @@ $paginator = new Paginator(
 $page = $paginator->paginate();
 ```
 
-The [paginator](pagination) object receives the results obtained by the search. We also set a limit (results per page) as well as the page number. Finally we call `paginate()` to get the appropriate chunk of the resultset back.
+El objeto [paginator](pagination) recibe los resultados obtenidos por la búsqueda. También establecemos un límite (resultados por página) así como el número de página. Finalmente, llamamos `paginate()` para obtener de vuelta el fragmento del conjunto de resultados correspondiente.
 
-We then pass the returned page to view:
+A continuación, pasamos la página devuelta a la vista:
 
 ```php
 <?php
@@ -1203,7 +1203,7 @@ We then pass the returned page to view:
 $this->view->page = $page;
 ```
 
-In the view (`app/views/products/search.volt`), we traverse the results corresponding to the current page, showing every row in the current page to the user:
+En la vista (`app/views/products/search.volt`), recorremos los resultados correspondientes a la vista actual, mostrando cada fila de la página actual al usuario:
 
 ```twig
 {% raw %}
@@ -1298,9 +1298,9 @@ In the view (`app/views/products/search.volt`), we traverse the results correspo
 {% endraw %}
 ```
 
-Looking at the code above it is worth mentioning:
+Al mirar el código anterior, cabe mencionar:
 
-The active items in the current page are traversed using a Volt's `for`. Volt provides a simpler syntax for a PHP `foreach`.
+Los elementos activos de la página actual se recorren usando un `for` de Volt. Volt proporciona una sintaxis más simple para un `foreach` de PHP.
 
 ```twig
 {% raw %}
@@ -1308,13 +1308,13 @@ The active items in the current page are traversed using a Volt's `for`. Volt pr
 {% endraw %}
 ```
 
-Which in PHP is the same as:
+Que en PHP es lo mismo que:
 
 ```php
 <?php foreach ($page->items as $product) { ?>
 ```
 
-The whole `for` block is:
+El bloque `for` completo es:
 
 ```twig
 {% raw %}
@@ -1334,12 +1334,12 @@ The whole `for` block is:
 {% endraw %}
 ```
 
-- `1` - Executed before the first product in the loop
-- `2` - Executed for every product of page.items
-- `3` - Executed after the last product is loop
-- `4` - Executed if page.items does not have any products
+- `1` - Ejecutado antes del primer producto en el bucle
+- `2` - Ejecutado para cada producto de page.items
+- `3` - Ejecutado después del último producto en el bucle
+- `4` - Ejecutado si page.items no tiene ningún producto
 
-Now you can go back to the view and find out what every block is doing. Every field in `product` is printed accordingly:
+Ahora puede volver a la vista y averiguar qué hace cada bloque. Cada campo de `product` se imprime respectivamente:
 
 ```twig
 {% raw %}
@@ -1375,7 +1375,7 @@ Now you can go back to the view and find out what every block is doing. Every fi
 {% endraw %}
 ```
 
-As we seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.productTypes.name`. To understand this part, we have to check the Products model (`app/models/Products.php`):
+Como hemos visto antes, usar `product.id` es lo mismo que en PHP haciendo: `$product->id`, hemos hecho lo mismo con `product.name` y así sucesivamente. Otros campos se renderizan de forma diferente, por ejemplo, prestemos atención a `product.productTypes.name`. Para comprender esta parte, tenemos que comprobar el modelo *Products* (`app/models/Products.php`):
 
 ```php
 <?php
@@ -1405,7 +1405,7 @@ class Products extends Model
 }
 ```
 
-A model can have a method called `initialize()`, this method is called once per request and it serves the ORM to initialize a model. In this case, `Products` is initialized by defining that this model has a one-to-many relationship to another model called `ProductTypes`.
+Un modelo puede tener un método llamado `initialize()`, este método se llama una vez por petición y sirve al ORM para inicializar un modelo. En este caso, `Products` se inicializa definiendo que este modelo tiene una relación uno-a-muchos con otro modelo llamado `ProductTypes`.
 
 ```php
 <?php
@@ -1420,7 +1420,7 @@ $this->belongsTo(
 );
 ```
 
-Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
+Lo que significa, el atributo local `product_types_id` en `Products` tiene una relación uno-a-muchos con el modelo `ProductTypes` en su atributo `id`. Al definir esta relación, podemos acceder al nombre del tipo de producto usando:
 
 ```twig
 {% raw %}
@@ -1428,7 +1428,7 @@ Which means, the local attribute `product_types_id` in `Products` has an one-to-
 {% endraw %}
 ```
 
-The field `price` is printed by its formatted using a Volt filter:
+El campo `price` se imprime con su formato usando el filtro de Volt:
 
 ```twig
 {% raw %}
@@ -1436,13 +1436,13 @@ The field `price` is printed by its formatted using a Volt filter:
 {% endraw %}
 ```
 
-In plain PHP, this would be:
+En PHP plano, esto sería:
 
 ```php
 <?php echo sprintf('%.2f', $product->price) ?>
 ```
 
-Printing whether the product is active or not uses a helper method:
+Imprimir si el producto está activo o no usa un método ayudante:
 
 ```php
 {% raw %}
@@ -1450,13 +1450,13 @@ Printing whether the product is active or not uses a helper method:
 {% endraw %}
 ```
 
-This method is implemented in the model.
+Este método se implementa en el modelo.
 
-## Create/Update
+## Crear/Actualizar
 
-When creating and updating records, we use the `new` and `edit` views. The data entered by the user is sent to the `create` and `save` actions that perform actions of *creating* and *updating* products, respectively.
+Cuando creamos y actualizamos registros, usamos las vistas `new` y `edit`. Los datos introducidos por el usuario se envían a las acciones `create` y `save` que realizan las acciones de *crear* y *actualizar* productos, respectivamente.
 
-In the creation case, we get the data submitted and assign them to a new `Products` instance:
+En la página de creación, obtenemos los datos enviados y los asignamos a una nueva instancia `Products`:
 
 ```php
 <?php
@@ -1504,7 +1504,7 @@ public function createAction()
 }
 ```
 
-As seen earlier, when we were creating the form, there were some filters assigned to the relevant elements. When the data is passed to the form, these filters are invoked and they sanitize the supplied input. Although this filtering is optional, it is always a good practice. Added to this, the ORM also escapes the supplied data and performs additional casting according to the column types:
+Como se ha visto anteriormente, cuando estábamos creando el formulario, había algunos filtros asignados a los elementos pertinentes. Cuando los datos se pasan al formulario, se invocan estos filtros que sanean la entrada proporcionada. Aunque este filtrado es opcional, siempre es una buena práctica. Como añadido, el ORM también escapa los datos proporcionados y realiza una conversión de tipos adicional según los tipos de columna:
 
 ```php
 <?php
@@ -1533,7 +1533,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-Upon saving the data, we will know whether the business rules and validations implemented in the `ProductsForm` pass (`app/forms/ProductsForm.php`):
+Al guardar los datos, sabremos si las reglas de negocio y los validadores implementados en `ProductsForm` se superan (`app/forms/ProductsForm.php`):
 
 ```php
 <?php
@@ -1562,9 +1562,9 @@ if (true !== $form->isValid($data, $product)) {
 }
 ```
 
-Calling `$form->isValid()` invokes all the validators set in the form. If the validation does not pass, the `$messages` variable will contain the relevant messages of the failed validations.
+Llamar a `$form->isValid()` invoca todos los validadores establecidos en el formulario. Si no se pasa la validación, la variable `$messages` contendrá los mensajes relevantes de las validaciones fallidas.
 
-If there are no validation errors, we can save the record:
+Si no hay errores de validación, podemos guardar el registro:
 
 ```php
 <?php
@@ -1600,9 +1600,9 @@ return $this->dispatcher->forward(
 );
 ```
 
-We are checking the result of the `save()` method on the model and if errors occurred, they will be present in the `$messages` variable and the user will be sent back to the `products/new` action with error messages displayed. If everything is OK, the form is cleared and the user is redirected to the `products/index` with the relevant success message.
+Estamos comprobando los resultados del método `save()` en el modelo y si ocurren errores, estarán presentes en la variable `$messages` y el usuario será devuelto a la acción `products/new` con los mensajes de error mostrados. Si todo es OK, el formulario se limpiará y el usuario será redirigido a `products/inde` con el mensaje de éxito correspondiente.
 
-In the case of updating a product, we must first get the relevant record from the database and then populate the form with the existing data:
+En el caso de actualizar un producto, primero debemos obtener el registro correspondiente desde la base de datos y luego rellenar el formulario con los datos existentes:
 
 ```php
 <?php
@@ -1635,7 +1635,7 @@ public function editAction($id)
 }
 ```
 
-The data found is bound to the form by passing the model as first parameter. Because of this, the user can change any value and then sent it back to the database through to the `save` action:
+Los datos encontrados se enlazan al formulario pasando el modelo como primer parámetro. Debido a esto, el usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de datos a través de la acción `save`:
 
 ```php
 <?php
@@ -1715,11 +1715,11 @@ public function saveAction()
 }
 ```
 
-## Components
+## Componentes
 
-The UI has been create with the [Bootstrap](https://getbootstrap.com) library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+La UI (Interfaz de Usuario) se ha creado con la librería [Bootstrap](https://getbootstrap.com). Algunos elementos, como la barra de navegación cambia según el estado de la aplicación. Por ejemplo, en la esquina superior derecha, el enlace `Log in / Sign Up` cambia a `Log out` si un usuario ha iniciado sesión en la aplicación.
 
-This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
+Esta parte de la aplicación se implementa en el componente `Elements` (`app/library/Elements.php`).
 
 ```php
 <?php
@@ -1740,7 +1740,7 @@ class Elements extends Injectable
 }
 ```
 
-This class extends the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable). It is not necessary to do so but extending this component allows us to access all the application services. We are going to register this user component in the services container:
+Esta clase extiende [Phalcon\Di\Injectable](api/phalcon_di#di-injectable). No es necesario hacerlo, pero extender este componente nos permite acceder a todos los servicios de la aplicación. Vamos a registrar este componente de usuario en el contenedor de servicios:
 
 ```php
 <?php
@@ -1753,7 +1753,7 @@ $container->set(
 );
 ```
 
-Since this component is registered in the DI container, we can access it directly in the view, using a property with the same name as the one used to register the service:
+Ya que este componente esta registrado en el contenedor DI, podemos acceder a él directamente en la vista, usando una propiedad con el mismo nombre que el usado para registrar el servicio:
 
 ```twig
 {% raw %}
@@ -1787,7 +1787,7 @@ Since this component is registered in the DI container, we can access it directl
 {% endraw %}
 ```
 
-The important part is:
+La parte importante es:
 
 ```twig
 {% raw %}
@@ -1795,9 +1795,9 @@ The important part is:
 {% endraw %}
 ```
 
-## Dynamic Titles
+## Títulos Dinámicos
 
-When you navigate through the application, you will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller (`initialize()` method):
+Cuando navega por la aplicación, verá que el título cambia dinámicamente indicando dónde estamos trabajando actualmente. Esto se consigue en cada controlador (método `initialize()`):
 
 ```php
 <?php
@@ -1817,7 +1817,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-Note, that the method `parent::initialize()` is also called, it adds more data to the title:
+Tenga en cuenta, que también se llama al método `parent::initialize()`, que añade más datos al título:
 
 ```php
 <?php
@@ -1835,9 +1835,9 @@ class ControllerBase extends Controller
 }
 ```
 
-The above code prepends the application name to the title
+El código anterior antepone el nombre de la aplicación al título
 
-Finally, the title is printed in the main view (`app/views/index.volt`):
+Finalmente, el título se prime en la vista principal (`app/views/index.volt`):
 
 ```php
 <!DOCTYPE html>
