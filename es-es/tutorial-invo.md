@@ -317,7 +317,7 @@ El siguiente formulario simple (`app/views/session/index.volt`) produce el HTML 
 {% endraw %}
 ```
 
-Estamos usando [Volt](volt) como nuestro motor de plantillas en lugar de PHP. This is a built-in template engine inspired by [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) providing a simple and user friendly syntax to create templates. Si ha trabajado con [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) o [Twig](https://twig.symfony.com/) en el pasado, verá muchas similitudes.
+Estamos usando [Volt](volt) como nuestro motor de plantillas en lugar de PHP. Este es un motor de plantillas integrado inspirado en [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) que proporciona una sintaxis simple y amigable con el usuario para crear plantillas. Si ha trabajado con [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) o [Twig](https://twig.symfony.com/) en el pasado, verá muchas similitudes.
 
 La función `SessionController::startAction` (`app/controllers/SessionController.php`) valida los datos enviados desde el formulario, y también comprueba que el usuario sea válido en la base datos:
 
@@ -1336,7 +1336,7 @@ El bloque `for` completo es:
 
 - `1` - Ejecutado antes del primer producto en el bucle
 - `2` - Ejecutado para cada producto de page.items
-- `3` - Executed after the last product in the loop
+- `3` - Ejecutado después del último producto en el bucle
 - `4` - Ejecutado si page.items no tiene ningún producto
 
 Ahora puede volver a la vista y averiguar qué hace cada bloque. Cada campo de `product` se imprime respectivamente:
