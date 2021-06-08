@@ -15,7 +15,7 @@ title: 'Phalcon\Dispatcher'
 
 | Namespace | Phalcon\Dispatcher | | Uses | Exception, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Extends | AbstractInjectionAware | | Implements | DispatcherInterface, EventsAwareInterface |
 
-This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
+Esta es la clase base para Phalcon\Mvc\Dispatcher y Phalcon\Cli\Dispatcher. Esta clase no puede se instanciada directamente, puedes usarla para crear tus propios despachadores.
 
 ## Propiedades
 
@@ -129,13 +129,13 @@ public function callActionMethod( mixed $handler, string $actionMethod, array $p
 public function dispatch(): mixed | bool;
 ```
 
-Process the results of the router by calling into the appropriate controller action(s) including any routing data or injected parameters.
+Procesa los resultados del enrutador llamando a la(s) acción(es) apropiadas del controlador incluyendo cualquier dato de enrutado o parámetros inyectados.
 
 ```php
 public function forward( array $forward ): void;
 ```
 
-Forwards the execution flow to another controller/action.
+Reenvía el flujo de ejecución a otro controlador/acción.
 
 ```php
 $this->dispatcher->forward(
@@ -211,7 +211,7 @@ Obtiene el sufijo del manejador por defecto
 public function getModelBinder(): BinderInterface | null;
 ```
 
-Gets model binder
+Obtiene el enlazador del modelo
 
 ```php
 public function getModuleName(): string;
@@ -229,7 +229,7 @@ Obtiene el espacio de nombres a anteponer al nombre del manejador actual
 public function getParam( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 
-Gets a param by its name or numeric index
+Obtiene un parámetro por su nombre o índice numérico
 
 ```php
 public function getParams(): array;
@@ -253,7 +253,7 @@ Comprueba si un parámetro existe
 public function isFinished(): bool;
 ```
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+Comprueba si el bucle de despacho se ha terminado o tiene más controladores/tareas pendientes de despachar
 
 ```php
 public function setActionName( string $actionName ): void;
@@ -353,7 +353,7 @@ Comprueba si la acción ejecutada actual fue reenviada desde otra
 protected function resolveEmptyProperties(): void;
 ```
 
-Set empty properties to their defaults (where defaults are available)
+Establece propiedades vacías a sus valores por defecto (donde existan valores por defecto disponibles)
 
 ```php
 protected function toCamelCase( string $input ): string;
@@ -373,19 +373,19 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 public function dispatch(): mixed | bool;
 ```
 
-Dispatches a handle action taking into account the routing parameters
+Despacha una acción de manejo teniendo en cuenta los parámetros de enrutado
 
 ```php
 public function forward( array $forward ): void;
 ```
 
-Forwards the execution flow to another controller/action
+Reenvía el flujo de ejecución a otro controlador/acción
 
 ```php
 public function getActionName(): string;
 ```
 
-Gets last dispatched action name
+Obtiene el nombre de la última acción despachada
 
 ```php
 public function getActionSuffix(): string;
@@ -403,7 +403,7 @@ Obtiene el sufijo del manejador por defecto
 public function getParam( mixed $param, mixed $filters = null ): mixed;
 ```
 
-Gets a param by its name or numeric index
+Obtiene un parámetro por su nombre o índice numérico
 
 ```php
 public function getParams(): array;
@@ -427,7 +427,7 @@ Comprueba si un parámetro existe
 public function isFinished(): bool;
 ```
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+Comprueba si el bucle de despacho se ha terminado o tiene más controladores/tareas pendientes de despachar
 
 ```php
 public function setActionName( string $actionName ): void;
@@ -463,13 +463,13 @@ Establece el sufijo por defecto del manejador
 public function setModuleName( string $moduleName ): void;
 ```
 
-Sets the module name which the application belongs to
+Establece el nombre del módulo al que pertenece la aplicación
 
 ```php
 public function setNamespaceName( string $namespaceName ): void;
 ```
 
-Sets the namespace which the controller belongs to
+Establece el espacio de nombres al que pertenece el controlador
 
 ```php
 public function setParam( mixed $param, mixed $value ): void;
@@ -489,7 +489,7 @@ Establece los parámetros de la acción a despachar
 
 | Namespace | Phalcon\Dispatcher | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Dispatcher/* will use this class
+Las excepciones lanzadas en Phalcon\Dispatcher/* usarán esta clase
 
 ## Constantes
 
