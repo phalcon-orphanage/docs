@@ -25,13 +25,13 @@ title: 'Phalcon\Di'
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
-Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
+Phalcon\Di es un componente que implementa Inyección de Dependencias/Localización de Servicios y es en si mismo un contenedor para ellos.
 
-Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
+Como Phalcon es altamente desacoplado, Phalcon\Di es esencial para integrar los diferentes componentes del framework. El desarrollador puede usar también este componente para inyectar dependencias y gestionar instancias globales de las diferentes clases usadas en la aplicación.
 
-Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
+Básicamente, este componente implementa el patrón `Inversión de Control`. Aplicando esto, los objetos no reciben sus dependencias usando *setters* o constructores, sino solicitando un servicio de inyección de dependencias. Esto reduce la complejidad general, ya que sólo hay una forma de obtener las dependencias requeridas desde un componente.
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+Además, este patrón incrementa la testabilidad en el código, ya que lo hace menos propenso a errores.
 
 ```php
 use Phalcon\Di;
@@ -90,31 +90,31 @@ protected static _default;
 public function __call( string $method, array $arguments = [] ): mixed | null;
 ```
 
-Magic method to get or set services using setters/getters
+Método mágico para obtener o establecer servicios usando *setters*/*getters*
 
 ```php
 public function __construct();
 ```
 
-Phalcon\Di constructor
+Constructor Phalcon\Di
 
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Intenta registrar un servicio en el contenedor de servicios Sólo será exitoso si no ha sido registrado ningún servicio previamente con el mismo nombre
 
 ```php
 public function get( string $name, mixed $parameters = null ): mixed;
 ```
 
-Resolves the service based on its configuration
+Resuelve el servicio según su configuración
 
 ```php
 public static function getDefault(): DiInterface | null;
 ```
 
-Return the latest DI created
+Devuelve el último DI creado
 
 ```php
 public function getInternalEventsManager(): ManagerInterface | null;
@@ -126,43 +126,43 @@ Devuelve el administrador de eventos interno
 public function getRaw( string $name ): mixed;
 ```
 
-Returns a service definition without resolving
+Devuelve una definición de servicio sin resolver
 
 ```php
 public function getService( string $name ): ServiceInterface;
 ```
 
-Returns a Phalcon\Di\Service instance
+Devuelve una instancia Phalcon\Di\Service
 
 ```php
 public function getServices(): ServiceInterface[];
 ```
 
-Return the services registered in the DI
+Devuelve los servicios registrados en el DI
 
 ```php
 public function getShared( string $name, mixed $parameters = null ): mixed;
 ```
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+Resuelve un servicio, el servicio resuelto se almacena en el DI, las siguientes peticiones de este servicio devolverán la misma instancia
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Check whether the DI contains a service by a name
+Comprueba si el DI contiene un servicio por un nombre
 
 ```php
 public function loadFromPhp( string $filePath ): void;
 ```
 
-Loads services from a php config file.
+Carga servicios desde un fichero de configuración php.
 
 ```php
 $di->loadFromPhp("path/services.php");
 ```
 
-And the services can be specified in the file as:
+Y los servicios se pueden especificar en un fichero como:
 
 ```php
 return [
@@ -191,7 +191,7 @@ return [
 public function loadFromYaml( string $filePath, array $callbacks = null ): void;
 ```
 
-Loads services from a yaml file.
+Carga servicios desde un fichero yaml.
 
 ```php
 $di->loadFromYaml(
@@ -204,7 +204,7 @@ $di->loadFromYaml(
 );
 ```
 
-And the services can be specified in the file as:
+Y los servicios se pueden especificar en un fichero como:
 
 ```php
 myComponent:
@@ -228,13 +228,13 @@ user:
 public function offsetExists( mixed $name ): bool;
 ```
 
-Check if a service is registered using the array syntax
+Comprueba si un servicio está registrando usando la sintaxis vector
 
 ```php
 public function offsetGet( mixed $name ): mixed;
 ```
 
-Allows to obtain a shared service using the array syntax
+Permite obtener un servicio compartido usando la sintaxis vector
 
 ```php
 var_dump($di["request"]);
@@ -244,7 +244,7 @@ var_dump($di["request"]);
 public function offsetSet( mixed $name, mixed $definition ): void;
 ```
 
-Allows to register a shared service using the array syntax
+Permite registrar un servicio compartido usando la sintaxis vector
 
 ```php
 $di["request"] = new \Phalcon\Http\Request();
@@ -254,13 +254,13 @@ $di["request"] = new \Phalcon\Http\Request();
 public function offsetUnset( mixed $name ): void;
 ```
 
-Removes a service from the services container using the array syntax
+Elimina un servicio del contenedor de servicios usando la sintaxis vector
 
 ```php
 public function register( ServiceProviderInterface $provider ): void;
 ```
 
-Registers a service provider.
+Registra un proveedor de servicios.
 
 ```php
 use Phalcon\Di\DiInterface;
@@ -284,49 +284,49 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function remove( string $name ): void;
 ```
 
-Removes a service in the services container It also removes any shared instance created for the service
+Elimina un servicio en el contenedor de servicios También elimina cualquier instancia compartida creada para el servicio
 
 ```php
 public static function reset(): void;
 ```
 
-Resets the internal default DI
+Resetea el *DI* interno predeterminado
 
 ```php
 public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 
-Registers a service in the services container
+Registra un servicio en el contenedor de servicios
 
 ```php
 public static function setDefault( DiInterface $container ): void;
 ```
 
-Set a default dependency injection container to be obtained into static methods
+Establece un contenedor de inyección de dependencias predeterminado para ser obtenido en métodos estáticos
 
 ```php
 public function setInternalEventsManager( ManagerInterface $eventsManager );
 ```
 
-Sets the internal event manager
+Establece el gestor de eventos interno
 
 ```php
 public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
-Sets a service using a raw Phalcon\Di\Service definition
+Establece un servicio usando una definición `Phalcon\Di\Service` sin procesar
 
 ```php
 public function setShared( string $name, mixed $definition ): ServiceInterface;
 ```
 
-Registers an "always shared" service in the services container
+Registra un servicio "siempre compartido" en el contenedor de servicios
 
 ```php
 protected function loadFromConfig( ConfigInterface $config ): void;
 ```
 
-Loads services from a Config object.
+Carga servicios desde un objeto `Config`.
 
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
@@ -334,7 +334,7 @@ Loads services from a Config object.
 
 | Namespace | Phalcon\Di | | Implements | InjectionAwareInterface |
 
-This abstract class offers common access to the DI in a class
+Esta clase abstracta ofrece acceso común al DI en una clase
 
 ## Propiedades
 
@@ -354,13 +354,13 @@ protected container;
 public function getDI(): DiInterface;
 ```
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
@@ -368,7 +368,7 @@ Sets the dependency injector
 
 | Namespace | Phalcon\Di | | Uses | ArrayAccess | | Extends | ArrayAccess |
 
-Interface for Phalcon\Di
+Interfaz para Phalcon\Di
 
 ## Métodos
 
@@ -376,85 +376,85 @@ Interface for Phalcon\Di
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Intenta registrar un servicio en el contenedor de servicios Sólo será exitoso si no ha sido registrado ningún servicio previamente con el mismo nombre
 
 ```php
 public function get( string $name, mixed $parameters = null ): mixed;
 ```
 
-Resolves the service based on its configuration
+Resuelve el servicio según su configuración
 
 ```php
 public static function getDefault(): DiInterface | null;
 ```
 
-Return the last DI created
+Devuelve el último DI creado
 
 ```php
 public function getRaw( string $name ): mixed;
 ```
 
-Returns a service definition without resolving
+Devuelve una definición de servicio sin resolver
 
 ```php
 public function getService( string $name ): ServiceInterface;
 ```
 
-Returns the corresponding Phalcon\Di\Service instance for a service
+Devuelve la correspondiente instancia Phalcon\Di\Service para un servicio
 
 ```php
 public function getServices(): ServiceInterface[];
 ```
 
-Return the services registered in the DI
+Devuelve los servicios registrados en el DI
 
 ```php
 public function getShared( string $name, mixed $parameters = null ): mixed;
 ```
 
-Returns a shared service based on their configuration
+Devuelve un servicio compartido según su configuración
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Check whether the DI contains a service by a name
+Comprueba si el DI contiene un servicio por un nombre
 
 ```php
 public function remove( string $name ): void;
 ```
 
-Removes a service in the services container
+Devuelve un servicio del contenedor de servicios
 
 ```php
 public static function reset(): void;
 ```
 
-Resets the internal default DI
+Resetea el *DI* interno predeterminado
 
 ```php
 public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 
-Registers a service in the services container
+Registra un servicio en el contenedor de servicios
 
 ```php
 public static function setDefault( DiInterface $container ): void;
 ```
 
-Set a default dependency injection container to be obtained into static methods
+Establece un contenedor de inyección de dependencias predeterminado para ser obtenido en métodos estáticos
 
 ```php
 public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
-Sets a service using a raw Phalcon\Di\Service definition
+Establece un servicio usando una definición `Phalcon\Di\Service` sin procesar
 
 ```php
 public function setShared( string $name, mixed $definition ): ServiceInterface;
 ```
 
-Registers an "always shared" service in the services container
+Registra un servicio "siempre compartido" en el contenedor de servicios
 
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
@@ -462,7 +462,7 @@ Registers an "always shared" service in the services container
 
 | Namespace | Phalcon\Di | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Di will use this class
+Las excepciones lanzadas en Phalcon\Di usarán esta clase
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
@@ -478,7 +478,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Filter\FilterFactory | | Extends | \Phalcon\Di |
 
-This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
+Esta es una variante del estándar Phalcon\Di. Por defecto, registra automáticamente todos los servicios proporcionados por el framework. Gracias a esto, el desarrollador no necesita registrar cada servicio individualmente proporcionando un framework de pila completa
 
 ## Métodos
 
@@ -486,7 +486,7 @@ This is a variant of the standard Phalcon\Di. By default it automatically regist
 public function __construct();
 ```
 
-Phalcon\Di\FactoryDefault constructor
+Constructor Phalcon\Di\FactoryDefault
 
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
@@ -496,7 +496,7 @@ Phalcon\Di\FactoryDefault constructor
 
 Phalcon\Di\FactoryDefault\Cli
 
-This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
+Esta es una variante del estándar Phalcon\Di. Por defecto, registra automáticamente todos los servicios proporcionados por el framework. Gracias a esto, el desarrollador no necesita registrar cada servicio individualmente. Esta clase es especialmente apropiada para aplicaciones CLI
 
 ## Métodos
 
@@ -504,7 +504,7 @@ This is a variant of the standard Phalcon\Di. By default it automatically regist
 public function __construct();
 ```
 
-Phalcon\Di\FactoryDefault\Cli constructor
+Constructor Phalcon\Di\FactoryDefault\Cli
 
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
@@ -512,7 +512,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
 
-This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
+Esta clase permite acceder a servicios en el contenedor de servicios simplemente accediendo a una propiedad pública con el mismo nombre que el servicio registrado
 
 @property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router @property \Phalcon\Url|\Phalcon\Url\UrlInterface $url @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies @property \Phalcon\Filter $filter @property \Phalcon\Flash\Direct $flash @property \Phalcon\Flash\Session $flashSession @property \Phalcon\Session\ManagerInterface $session @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager @property \Phalcon\Db\Adapter\AdapterInterface $db @property \Phalcon\Security $security @property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt @property \Phalcon\Tag $tag @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager @property \Phalcon\Assets\Manager $assets @property \Phalcon\Di|\Phalcon\Di\DiInterface $di @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
 
@@ -534,25 +534,25 @@ protected container;
 public function __get( string $propertyName ): mixed | null;
 ```
 
-Magic method __get
+Método mágico __get
 
 ```php
 public function __isset( string $name ): bool;
 ```
 
-Magic method __isset
+Método mágico __isset
 
 ```php
 public function getDI(): DiInterface;
 ```
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the dependency injector
+Configura el inyector de dependencias
 
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
@@ -560,7 +560,7 @@ Sets the dependency injector
 
 | Namespace | Phalcon\Di |
 
-This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
+Esta interfaz se debe implementar en aquellas clases que usan internamente el Phalcon\Di que las crea
 
 ## Métodos
 
@@ -568,13 +568,13 @@ This interface must be implemented in those classes that uses internally the Pha
 public function getDI(): DiInterface;
 ```
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
@@ -582,7 +582,7 @@ Sets the dependency injector
 
 | Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
-Represents individually a service in the services container
+Representa individualmente a un servicio en el contenedor de servicios
 
 ```php
 $service = new \Phalcon\Di\Service(
@@ -626,55 +626,55 @@ Phalcon\Di\Service
 public function getDefinition(): mixed;
 ```
 
-Returns the service definition
+Obtiene la definición del servicio
 
 ```php
 public function getParameter( int $position );
 ```
 
-Returns a parameter in a specific position
+Obtiene un parámetro en una posición específica
 
 ```php
 public function isResolved(): bool;
 ```
 
-Returns true if the service was resolved
+Devuelve `true` si se resolvió el servicio
 
 ```php
 public function isShared(): bool;
 ```
 
-Check whether the service is shared or not
+Comprueba si el servicio es compartido o no
 
 ```php
 public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 
-Resolves the service
+Resuelve el servicio
 
 ```php
 public function setDefinition( mixed $definition ): void;
 ```
 
-Set the service definition
+Establece la definición del servicio
 
 ```php
 public function setParameter( int $position, array $parameter ): ServiceInterface;
 ```
 
-Changes a parameter in the definition without resolve the service
+Cambia un parámetro en la definición sin resolver el servicio
 
 ```php
 public function setShared( bool $shared ): void;
 ```
 
-Sets if the service is shared or not
+Establece si el servicio es compartido o no
 
 ```php
 public function setSharedInstance( mixed $sharedInstance ): void;
 ```
 
-Sets/Resets the shared instance related to the service
+Establece/Reestablece la instancia compartida relacionada con el servicio
 
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
@@ -684,7 +684,7 @@ Sets/Resets the shared instance related to the service
 
 Phalcon\Di\Service\Builder
 
-This class builds instances based on complex definitions
+Esta clase construye instancias según definiciones complejas
 
 ## Métodos
 
@@ -692,7 +692,7 @@ This class builds instances based on complex definitions
 public function build( DiInterface $container, array $definition, mixed $parameters = null );
 ```
 
-Builds a service using a complex service definition
+Construye un servicio usando una definición de servicio compleja
 
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
@@ -700,7 +700,7 @@ Builds a service using a complex service definition
 
 | Namespace | Phalcon\Di |
 
-Represents a service in the services container
+Representa un servicio en el contenedor de servicios
 
 ## Métodos
 
@@ -708,49 +708,49 @@ Represents a service in the services container
 public function getDefinition(): mixed;
 ```
 
-Returns the service definition
+Devuelve la definición del servicio
 
 ```php
 public function getParameter( int $position );
 ```
 
-Returns a parameter in a specific position
+Devuelve un parámetro en una posición específica
 
 ```php
 public function isResolved(): bool;
 ```
 
-Returns true if the service was resolved
+Devuelve `true` si se resolvió el servicio
 
 ```php
 public function isShared(): bool;
 ```
 
-Check whether the service is shared or not
+Comprueba si el servicio es compartido o no
 
 ```php
 public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 
-Resolves the service
+Resuelve el servicio
 
 ```php
 public function setDefinition( mixed $definition );
 ```
 
-Set the service definition
+Establece la definición del servicio
 
 ```php
 public function setParameter( int $position, array $parameter ): ServiceInterface;
 ```
 
-Changes a parameter in the definition without resolve the service
+Cambia un parámetro en la definición sin resolver el servicio
 
 ```php
 public function setShared( bool $shared );
 ```
 
-Sets if the service is shared or not
+Establece si el servicio es compartido o no
 
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
@@ -758,7 +758,7 @@ Sets if the service is shared or not
 
 | Namespace | Phalcon\Di |
 
-Should be implemented by service providers, or such components, which register a service in the service container.
+Se debería implementar por proveedores de servicio, o aquellos componentes que registran un servicio en el contenedor de servicios.
 
 ```php
 namespace Acme;
@@ -786,4 +786,4 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function register( DiInterface $di ): void;
 ```
 
-Registers a service provider.
+Registra un proveedor de servicios.

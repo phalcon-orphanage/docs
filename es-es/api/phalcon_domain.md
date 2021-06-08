@@ -18,7 +18,7 @@ title: 'Phalcon\Domain'
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable | | Implements | PayloadInterface |
 
-Holds the payload
+Mantiene la carga útil
 
 ## Propiedades
 
@@ -73,7 +73,7 @@ protected output;
 public function getException(): Throwable | null;
 ```
 
-Gets the potential exception thrown in the domain layer
+Obtiene la excepción potencial lanzada en la capa de dominio
 
 ```php
 public function getExtras(): mixed
@@ -99,37 +99,37 @@ public function getStatus(): mixed
 public function setException( Throwable $exception ): PayloadInterface;
 ```
 
-Sets an exception thrown in the domain
+Establece una excepción lanzada en el dominio
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
 
-Sets arbitrary extra domain information.
+Establece información adicional del dominio arbitraria.
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
 
-Sets the domain input.
+Establece la entrada del dominio.
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
 
-Sets the domain messages.
+Establece los mensajes del dominio.
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
 
-Sets the domain output.
+Establece la salida del dominio.
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 
-Sets the payload status.
+Establece el estado de la carga útil.
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
@@ -137,7 +137,7 @@ Sets the payload status.
 
 | Namespace | Phalcon\Domain\Payload |
 
-Factory to create payload objects
+Factoría para crear objetos de carga útil
 
 ## Métodos
 
@@ -145,7 +145,7 @@ Factory to create payload objects
 public function newInstance(): PayloadInterface;
 ```
 
-Instantiate a new object
+Instancia un nuevo objeto
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
@@ -153,7 +153,7 @@ Instantiate a new object
 
 | Namespace | Phalcon\Domain\Payload | | Extends | ReadableInterface |
 
-This interface is used for consumers
+Esta interfaz se usa para consumidores
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
@@ -161,7 +161,7 @@ This interface is used for consumers
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
-This interface is used for consumers (read only)
+Esta interfaz se usa para consumidores (sólo lectura)
 
 ## Métodos
 
@@ -169,37 +169,37 @@ This interface is used for consumers (read only)
 public function getException(): Throwable | null;
 ```
 
-Gets the potential exception thrown in the domain layer
+Obtiene la excepción potencial lanzada en la capa de dominio
 
 ```php
 public function getExtras(): mixed;
 ```
 
-Gets arbitrary extra values produced by the domain layer.
+Obtiene los valores adicionales arbitrarios producidos por la capa de dominio.
 
 ```php
 public function getInput(): mixed;
 ```
 
-Gets the input received by the domain layer.
+Obtiene la entrada recibida por la capa de dominio.
 
 ```php
 public function getMessages(): mixed;
 ```
 
-Gets the messages produced by the domain layer.
+Obtiene los mensajes producidos por la capa de dominio.
 
 ```php
 public function getOutput(): mixed;
 ```
 
-Gets the output produced from the domain layer.
+Obtiene la salida producida desde la capa de dominio.
 
 ```php
 public function getStatus(): mixed;
 ```
 
-Gets the status of this payload.
+Obtiene el estado de esta carga útil.
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
@@ -207,7 +207,7 @@ Gets the status of this payload.
 
 | Namespace | Phalcon\Domain\Payload |
 
-Holds the status codes for the payload
+Mantiene los códigos de estado de la carga útil
 
 ## Constantes
 
@@ -240,7 +240,7 @@ const VALID = VALID;
 final private function __construct();
 ```
 
-Instantiation not allowed.
+Instanciación no permitida.
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
@@ -248,7 +248,7 @@ Instantiation not allowed.
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
-This interface is used for consumers (write)
+Esta interfaz se usa para consumidores (escritura)
 
 ## Métodos
 
@@ -256,34 +256,34 @@ This interface is used for consumers (write)
 public function setException( Throwable $exception ): PayloadInterface;
 ```
 
-Sets an exception produced by the domain layer.
+Establece una excepción producida por la capa de dominio.
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
 
-Sets arbitrary extra values produced by the domain layer.
+Establece valores adicionales arbitrarios producidos por la capa de dominio.
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
 
-Sets the input received by the domain layer.
+Establece la entrada recibida por la capa de dominio.
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
 
-Sets the messages produced by the domain layer.
+Establece los mensajes producidos por la capa de dominio.
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
 
-Sets the output produced from the domain layer.
+Establece la salida producida desde la capa de dominio.
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 
-Sets the status of this payload.
+Establece el estado de esta carga útil.

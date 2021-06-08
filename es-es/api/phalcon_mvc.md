@@ -11299,7 +11299,7 @@ Devuelve la ruta a la última plantilla compilada
 public function getDI(): DiInterface;
 ```
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 ```php
 public function getExtensions(): array;
@@ -11365,7 +11365,7 @@ Resuelve el código intermedio de filtro en una expresión PHP válida
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 ```php
 public function setOption( string $option, mixed $value );
