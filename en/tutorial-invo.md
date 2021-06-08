@@ -303,7 +303,7 @@ The following simple form (`app/views/session/index.volt`) produces the necessar
 {% endraw %}
 ```
 
-We are using [Volt](volt) as our template engine instead of PHP. This is a built-in template engine inspired by [Jinja][jinja]_ providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
+We are using [Volt](volt) as our template engine instead of PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) validates the data submitted from the form, and also checks for a valid user in the database:
 
@@ -1307,7 +1307,7 @@ The whole `for` block is:
 
 - `1` - Executed before the first product in the loop
 - `2` - Executed for every product of page.items
-- `3` - Executed after the last product is loop
+- `3` - Executed after the last product in the loop
 - `4` - Executed if page.items does not have any products
 
 
