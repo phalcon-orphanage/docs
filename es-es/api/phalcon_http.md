@@ -3085,7 +3085,7 @@ Returns cookies set by the user
 public function getDI(): DiInterface;
 ```
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -3242,7 +3242,7 @@ Sets a cookies bag for the response externally
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 ```php
 public function setEtag( string $etag ): ResponseInterface;
