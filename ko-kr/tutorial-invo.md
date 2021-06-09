@@ -317,7 +317,7 @@ $container->set(
 {% endraw %}
 ```
 
-템플릿 엔진으로 PHP 대신에 [Volt](volt)를 사용하고 있습니다. 템플릿을 생성하는데 있어서 간단하고 사용자에게 친숙한 문법을 제공하는 이 템플릿 엔진은 Phalcon에 기본 내장되어 있으며 [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) 에서 영감을 얻었습니다. 과거에 [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) 혹은 [Twig](https://twig.symfony.com/) 을 사용해본 경험이 있다면, 많은 유사성을 알아차리실 것입니다.
+템플릿 엔진으로 PHP 대신에 [Volt](volt)를 사용하고 있습니다. This is a built-in template engine inspired by [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) providing a simple and user friendly syntax to create templates. 과거에 [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) 혹은 [Twig](https://twig.symfony.com/) 을 사용해본 경험이 있다면, 많은 유사성을 알아차리실 것입니다.
 
 `SessionController::startAction` 함수 (`app/controllers/SessionController.php`) 는 form에서 제출된 데이터를 검증하고, 데이터베이스에서 유효한 사용자를 확인합니다:
 
@@ -1336,7 +1336,7 @@ $this->view->page = $page;
 
 - `1` - 루프(loop) 내에서 첫번째 product 값 이전에 실행
 - `2` - page.items 의 모든 product에 대해 실행
-- `3` - 루프 내에서 마지막 product 다음에 실행
+- `3` - Executed after the last product in the loop
 - `4` - page.iems 배열 내에 product 가 하나도 없을때 실행
 
 이제 뷰로 돌아가서 각각의 블록이 어떤 역할을 하는지 알아봅시다. `product`안의 모든 필드가 적절히 print 됩니다:
