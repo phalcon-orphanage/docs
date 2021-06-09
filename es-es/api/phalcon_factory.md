@@ -14,11 +14,11 @@ title: 'Phalcon\Factory'
 
 | Namespace | Phalcon\Factory | | Uses | Phalcon\Config, Phalcon\Config\ConfigInterface |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Propiedades
 
@@ -41,25 +41,25 @@ protected services;
 protected function checkConfig( mixed $config ): array;
 ```
 
-Checks the config if it is a valid object
+Comprueba la configuración si es un objeto válido
 
 ```php
 abstract protected function getAdapters(): array;
 ```
 
-Devuelve los adaptadores de la fábrica
+Devuelve los adaptadores de la factoría
 
 ```php
 protected function getService( string $name ): mixed;
 ```
 
-Checks if a service exists and throws an exception
+Comprueba si un servicio existe y lanza una excepción
 
 ```php
 protected function init( array $services = [] ): void;
 ```
 
-AdapterFactory constructor.
+Constructor AdapterFactory.
 
 <h1 id="factory-exception">Class Phalcon\Factory\Exception</h1>
 
@@ -67,8 +67,8 @@ AdapterFactory constructor.
 
 | Namespace | Phalcon\Factory | | Extends | \Phalcon\Exception |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
