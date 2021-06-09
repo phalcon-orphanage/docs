@@ -15,7 +15,7 @@ title: 'Phalcon\Exception'
 
 Phalcon\Exception
 
-All framework exceptions should use or extend this exception
+Todas las excepciones del framework deberían usar o extender esta excepción
 
 ## Métodos
 
