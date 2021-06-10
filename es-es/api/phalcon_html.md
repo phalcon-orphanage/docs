@@ -68,7 +68,7 @@ title: 'Phalcon\Html'
 
 | Namespace | Phalcon\Html | | Uses | Phalcon\Collection, Phalcon\Html\Attributes\RenderInterface, Phalcon\Tag | | Extends | Collection | | Implements | RenderInterface |
 
-This class helps to work with HTML Attributes
+Esta clase ayuda a trabajar con atributos HTML
 
 ## Métodos
 
@@ -76,13 +76,13 @@ This class helps to work with HTML Attributes
 public function __toString(): string;
 ```
 
-Alias of the render method
+Alias del método `render`
 
 ```php
 public function render(): string;
 ```
 
-Render attributes as HTML attributes
+Renderiza atributos como atributos HTML
 
 <h1 id="html-attributes-attributesinterface">Interface Phalcon\Html\Attributes\AttributesInterface</h1>
 
@@ -100,13 +100,13 @@ Render attributes as HTML attributes
 public function getAttributes(): Attributes;
 ```
 
-Get Attributes
+Obtiene atributos
 
 ```php
 public function setAttributes( Attributes $attributes ): AttributesInterface;
 ```
 
-Set Attributes
+Establece atributos
 
 <h1 id="html-attributes-renderinterface">Interface Phalcon\Html\Attributes\RenderInterface</h1>
 
@@ -124,7 +124,7 @@ Set Attributes
 public function render(): string;
 ```
 
-Generate a string represetation
+Genera una representación de cadena
 
 <h1 id="html-breadcrumbs">Class Phalcon\Html\Breadcrumbs</h1>
 
@@ -134,7 +134,7 @@ Generate a string represetation
 
 Phalcon\Html\Breadcrumbs
 
-This component offers an easy way to create breadcrumbs for your application. The resulting HTML when calling `render()` will have each breadcrumb enclosed in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
+Este componente ofrece una forma fácil de crear migas de pan para su aplicación. El HTML resultante cuando llama a `render()` tendrá cada miga de pan encerrada en etiquetas `<dt>`, mientras que la cadena entera está encerrada en etiquetas `<dl>`.
 
 ## Propiedades
 
@@ -168,7 +168,7 @@ private template = <dt><a href=\"%link%\">%label%</a></dt>;
 public function add( string $label, string $link = string ): Breadcrumbs;
 ```
 
-Adds a new crumb.
+Añade una nueva miga.
 
 ```php
 // Adding a crumb with a link
@@ -182,7 +182,7 @@ $breadcrumbs->add("Users");
 public function clear(): void;
 ```
 
-Clears the crumbs
+Limpia las migas
 
 ```php
 $breadcrumbs->clear()
@@ -196,7 +196,7 @@ public function getSeparator(): string
 public function remove( string $link ): void;
 ```
 
-Removes crumb by url.
+Elimina una miga por url.
 
 ```php
 $breadcrumbs->remove("/admin/user/create");
@@ -209,7 +209,7 @@ $breadcrumbs->remove();
 public function render(): string;
 ```
 
-Renders and outputs breadcrumbs based on previously set template.
+Renderiza y muestra las migas de pan basadas en una plantilla configurada previamente.
 
 ```php
 echo $breadcrumbs->render();
@@ -223,7 +223,7 @@ public function setSeparator( string $separator )
 public function toArray(): array;
 ```
 
-Returns the internal breadcrumbs array
+Devuelve el vector de migas de pan interno
 
 <h1 id="html-exception">Class Phalcon\Html\Exception</h1>
 
@@ -233,7 +233,7 @@ Returns the internal breadcrumbs array
 
 Phalcon\Html\Tag\Exception
 
-Exceptions thrown in Phalcon\Html\Tag will use this class
+Las excepciones lanzadas en Phalcon\Html\Tag usarán esta clase
 
 <h1 id="html-helper-abstracthelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
 
@@ -276,19 +276,19 @@ protected indentLevel = 1;
 public function __construct( EscaperInterface $escaper );
 ```
 
-AbstractHelper constructor.
+Constructor AbstractHelper.
 
 ```php
 protected function close( string $tag, bool $raw = bool ): string;
 ```
 
-Produces a closing tag
+Produce una etiqueta de cierre
 
 ```php
 protected function indent(): string;
 ```
 
-Replicates the indent x times as per indentLevel
+Replica la sangría x veces según el `indentLevel`
 
 ```php
 protected function orderAttributes( array $overrides, array $attributes ): array;
@@ -718,7 +718,7 @@ protected type = checkbox;
 </code></pre>
 
 <p>
-  AbstractHelper constructor.
+  Constructor AbstractHelper.
 </p>
 
 <pre><code class="php">public function __toString();
