@@ -19,7 +19,7 @@ title: 'Phalcon\Helper'
 
 | Namespace | Phalcon\Helper | | Uses | stdClass |
 
-This class offers quick array functions throughout the framework
+Esta clase ofrece funciones de vector rápidas en todo el framework
 
 ## Métodos
 
@@ -27,7 +27,7 @@ This class offers quick array functions throughout the framework
 final public static function blackList( array $collection, array $blackList ): array;
 ```
 
-Black list filter by key: exclude elements of an array by the keys obtained from the elements of a blacklist
+Filtro de lista negra por clave: excluye elementos de un vector por las claves obtenidas de los elementos de una lista negra
 
 ```php
 final public static function chunk( array $collection, int $size, bool $preserveKeys = bool ): array;
@@ -39,79 +39,79 @@ Trocea un vector en vectores más pequeños de un determinado tamaño.
 final public static function filter( array $collection, mixed $method = null ): array;
 ```
 
-Helper method to filter the collection
+Método ayudante para filtrar la colección
 
 ```php
 final public static function first( array $collection, mixed $method = null ): mixed;
 ```
 
-Devuelve el primer elemento de la colección. If a callable is passed, the element returned is the first that validates true
+Devuelve el primer elemento de la colección. Si se pasa una invocable, el elemento devuelto es el primero que valida a `true`
 
 ```php
 final public static function firstKey( array $collection, mixed $method = null ): mixed;
 ```
 
-Devuelve la clave del primer elemento de la colección. If a callable is passed, the element returned is the first that validates true
+Devuelve la clave del primer elemento de la colección. Si se indica una invocable, el elemento devuelto es el primero que valida a `true`
 
 ```php
 final public static function flatten( array $collection, bool $deep = bool ): array;
 ```
 
-Flattens an array up to the one level depth, unless `$deep` is set to `true`
+Aplana un vector hasta un nivel de profundidad, a no ser que `$deep` se establezca a `true`
 
 ```php
 final public static function get( array $collection, mixed $index, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 
-Helper method to get an array element or a default
+Método ayudante para obtener un elemento vector o un valor por defecto
 
 ```php
 final public static function group( array $collection, mixed $method ): array;
 ```
 
-Groups the elements of an array based on the passed callable
+Agrupa los elementos de un vector según el invocable pasado
 
 ```php
 final public static function has( array $collection, mixed $index ): bool;
 ```
 
-Determines whether an element is present in the array.
+Determina si un elemento está presente en el vector.
 
 ```php
 final public static function isUnique( array $collection ): bool;
 ```
 
-Comprueba valores duplicados en una lista plana. Returns true if duplicate values exist and false if values are all unique.
+Comprueba valores duplicados en una lista plana. Devuelve `true` si existen valores duplicados y `false` si todos los valores son únicos.
 
 ```php
 final public static function last( array $collection, mixed $method = null ): mixed;
 ```
 
-Devuelve el último elemento de la colección. If a callable is passed, the element returned is the first that validates true
+Devuelve el último elemento de la colección. Si se pasa una invocable, el elemento devuelto es el primero que valida a `true`
 
 ```php
 final public static function lastKey( array $collection, mixed $method = null ): mixed;
 ```
 
-Devuelve la clave del último elemento de la colección. If a callable is passed, the element returned is the first that validates true
+Devuelve la clave del último elemento de la colección. Si se indica una invocable, el elemento devuelto es el primero que valida a `true`
 
 ```php
 final public static function order( array $collection, mixed $attribute, string $order = string ): array;
 ```
 
-Sorts a collection of arrays or objects by key
+Ordena una colección de vectores u objetos por clave
 
 ```php
 final public static function pluck( array $collection, string $element ): array;
 ```
 
-Retrieves all of the values for a given key:
+Recupera todos los valores para una clave dada:
 
 ```php
 final public static function set( array $collection, mixed $value, mixed $index = null ): array;
 ```
 
-Helper method to set an array element
+Método ayudante para establecer un elemento de vector
 
 ```php
 final public static function sliceLeft( array $collection, int $elements = int ): array;
@@ -123,37 +123,37 @@ Devuelve un nuevo vector con n elementos eliminados desde la derecha.
 final public static function sliceRight( array $collection, int $elements = int ): array;
 ```
 
-Returns a new array with the X elements from the right
+Devuelve un nuevo vector con los X elementos desde la derecha
 
 ```php
 final public static function split( array $collection ): array;
 ```
 
-Returns a new array with keys of the passed array as one element and values as another
+Devuelve un nuevo vector con las claves del vector indicado como un elemento y los valores en otro
 
 ```php
 final public static function toObject( array $collection );
 ```
 
-Returns the passed array as an object
+Devuelve el vector pasado como un objeto
 
 ```php
 final public static function validateAll( array $collection, mixed $method = null ): bool;
 ```
 
-Returns true if the provided function returns true for all elements of the collection, false otherwise.
+Devuelve `true` si la función indicada devuelve `true` para todos los elementos de la colección, `false` en caso contrario.
 
 ```php
 final public static function validateAny( array $collection, mixed $method = null ): bool;
 ```
 
-Returns true if the provided function returns true for at least one element of the collection, false otherwise.
+Devuelve `true` si la función indicada devuelve `true` para al menos un elemento de la colección, `false` en caso contrario.
 
 ```php
 final public static function whiteList( array $collection, array $whiteList ): array;
 ```
 
-White list filter by key: obtain elements of an array filtering by the keys obtained from the elements of a whitelist
+Filtro de lista blanca por clave: obtiene elementos de un vector filtrando por claves obtenidas de los elementos de una lista blanca
 
 <h1 id="helper-base64">Class Phalcon\Helper\Base64</h1>
 
@@ -163,7 +163,7 @@ White list filter by key: obtain elements of an array filtering by the keys obta
 
 Phalcon\Helper\Base64
 
-This class offers quick string base64 functions
+Esta clase ofrece funciones base64 de cadena rápidas
 
 ## Métodos
 
@@ -171,13 +171,13 @@ This class offers quick string base64 functions
 final public static function decodeUrl( string $input ): string;
 ```
 
-Decode a Base64 Url string to a json string
+Decodifica una cadena Url Base64 a una cadena json
 
 ```php
 final public static function encodeUrl( string $input ): string;
 ```
 
-Encode a json string in Base64 Url format.
+Codifica una cadena json a formato Url Base64.
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
@@ -185,7 +185,7 @@ Encode a json string in Base64 Url format.
 
 | Namespace | Phalcon\Helper | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Helper will use this class
+Las excepciones lanzadas en Phalcon\Helper usarán esta clase
 
 <h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
 
@@ -193,7 +193,7 @@ Exceptions thrown in Phalcon\Helper will use this class
 
 | Namespace | Phalcon\Helper |
 
-This class offers file operation helper
+Esta clase ofrece ayuda para operaciones de ficheros
 
 ## Métodos
 
@@ -201,7 +201,7 @@ This class offers file operation helper
 final public static function basename( string $uri, mixed $suffix = null ): string;
 ```
 
-Gets the filename from a given path, Same as PHP's basename() but has non-ASCII support. PHP's basename() does not properly support streams or filenames beginning with a non-US-ASCII character. see https://bugs.php.net/bug.php?id=37738
+Obtiene el nombre del fichero desde la ruta dada, lo mismo que basename() de PHP pero tiene soporte no-ASCII. basename() de PHP no soporta apropiadamente flujos o nombres de fichero que empiecen con un carácter no-US-ASCII. see https://bugs.php.net/bug.php?id=37738
 
 <h1 id="helper-json">Class Phalcon\Helper\Json</h1>
 
@@ -209,7 +209,7 @@ Gets the filename from a given path, Same as PHP's basename() but has non-ASCII 
 
 | Namespace | Phalcon\Helper | | Uses | InvalidArgumentException |
 
-This class offers a wrapper for JSON methods to serialize and unserialize
+Esta clase ofrece una envoltura de los métodos JSON para serializar y deserializar
 
 ## Métodos
 
@@ -217,7 +217,7 @@ This class offers a wrapper for JSON methods to serialize and unserialize
 final public static function decode( string $data, bool $associative = bool, int $depth = int, int $options = int ): mixed;
 ```
 
-Decodes a string using `json_decode` and throws an exception if the JSON data cannot be decoded
+Decodifica una cadena usando `json_decode` y lanza una excepción si los datos JSON no se han podido decodificar
 
 ```php
 use Phalcon\Helper\Json;
@@ -236,7 +236,7 @@ var_dump(Json::decode($data));
 final public static function encode( mixed $data, int $options = int, int $depth = int ): string;
 ```
 
-Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
+Codifica una cadena usando `json_encode` y lanza una excepción si los datos JSON no se han podido codificar
 
 ```php
 use Phalcon\Helper\Json;
@@ -258,7 +258,7 @@ echo Json::encode($data);
 
 Phalcon\Helper\number
 
-This class offers numeric functions for the framework
+Esta clase ofrece funciones numéricas para el framework
 
 ## Métodos
 
@@ -266,7 +266,7 @@ This class offers numeric functions for the framework
 final public static function between( int $value, int $from, int $to ): bool;
 ```
 
-Helper method to get an array element or a default
+Método ayudante para obtener un elemento vector o un valor por defecto
 
 <h1 id="helper-str">Class Phalcon\Helper\Str</h1>
 
@@ -274,7 +274,7 @@ Helper method to get an array element or a default
 
 | Namespace | Phalcon\Helper | | Uses | RuntimeException |
 
-This class offers quick string functions throughout the framework
+Esta clase ofrece funciones de cadena rápidas en todo el framework
 
 ## Constantes
 
@@ -293,7 +293,7 @@ const RANDOM_NUMERIC = 3;
 final public static function camelize( string $text, mixed $delimiter = null ): string;
 ```
 
-Converts strings to camelize style
+Convierte cadenas a estilo `camelize`
 
 ```php
 use Phalcon\Helper\Str;
@@ -307,7 +307,7 @@ echo Str::camelize("co_co-bon_go", "_-");    // CoCoBonGo
 final public static function concat(): string;
 ```
 
-Concatenates strings using the separator only once without duplication in places concatenation
+Concatena cadenas usando el separador sólo una vez sin duplicación en los lugares de la concatenación
 
 ```php
 $str = Phalcon\Helper\Str::concat(
@@ -325,13 +325,13 @@ echo $str;   // /tmp/folder_1/folder_2/folder_3/
 final public static function countVowels( string $text ): int;
 ```
 
-Devuelve el número de vocales de la cadena indicada. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string.
+Devuelve el número de vocales de la cadena indicada. Usa una expresión regular para contar el número de vocales (A, E, I, O, U) en una cadena.
 
 ```php
 final public static function decapitalize( string $text, bool $upperRest = bool, string $encoding = string ): string;
 ```
 
-Decapitalizes the first letter of the string and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
+Decapitaliza la primera letra de una cadena y luego la añade con el resto de la cadena. Omita el parámetro `upperRest` para mantener el resto de la cadena intacta, o establezcalo a `true` para convertir a mayúsculas.
 
 ```php
 final public static function decrement( string $text, string $separator = string ): string;
@@ -350,7 +350,7 @@ echo Str::decrement("a_2");  // "a_1"
 final public static function dirFromFile( string $file ): string;
 ```
 
-Accepts a file name (without extension) and returns a calculated directory structure with the filename in the end
+Acepta un nombre de fichero (sin extensión) y devuelve una estructura de directorios calculada con el nombre del fichero al final
 
 ```php
 use Phalcon\Helper\Str;
@@ -362,7 +362,7 @@ echo Str::dirFromFile("file1234.jpg"); // fi/le/12/
 final public static function dirSeparator( string $directory ): string;
 ```
 
-Accepts a directory name and ensures that it ends with DIRECTORY_SEPARATOR
+Acepta un nombre de directorio y se asegura que termina con DIRECTORY_SEPARATOR
 
 ```php
 use Phalcon\Helper\Str;
@@ -374,7 +374,7 @@ echo Str::dirSeparator("/home/phalcon"); // /home/phalcon/
 final public static function dynamic( string $text, string $leftDelimiter = string, string $rightDelimiter = string, string $separator = string ): string;
 ```
 
-Generates random text in accordance with the template
+Genera texto aleatorio según la plantilla
 
 ```php
 use Phalcon\Helper\Str;
@@ -400,7 +400,7 @@ echo Str::dynamic(
 final public static function endsWith( string $text, string $end, bool $ignoreCase = bool ): bool;
 ```
 
-Check if a string ends with a given string
+Comprueba si una cadena termina con una cadena dada
 
 ```php
 use Phalcon\Helper\Str;
@@ -414,19 +414,19 @@ echo Str::endsWith("Hello", "LLO");          // true
 final public static function firstBetween( string $text, string $start, string $end ): string;
 ```
 
-Returns the first string there is between the strings from the parameter start and end.
+Devuelve la primera cadena que hay entre las cadenas desde el parámetro `start` y `end`.
 
 ```php
 final public static function friendly( string $text, string $separator = string, bool $lowercase = bool, mixed $replace = null ): string;
 ```
 
-Changes a text to a URL friendly one
+Cambia un texto a una URL amigable
 
 ```php
 final public static function humanize( string $text ): string;
 ```
 
-Makes an underscored or dashed phrase human-readable
+Transforma una frase separada con guiones bajos o medios legible para humanos
 
 ```php
 use Phalcon\Helper\Str;
@@ -439,13 +439,13 @@ echo Str::humanize("five_cats");     // "five cats"
 final public static function includes( string $needle, string $haystack ): bool;
 ```
 
-Lets you determine whether or not a string includes another string.
+Le permite determinar si una cadena incluye o no a otra cadena.
 
 ```php
 final public static function increment( string $text, string $separator = string ): string;
 ```
 
-Adds a number to a string or increment that number if it already is defined
+Añade un número a una cadena o incrementa ese número si ya está definido
 
 ```php
 use Phalcon\Helper\Str;
@@ -458,31 +458,31 @@ echo Str::increment("a_1");  // "a_2"
 final public static function isAnagram( string $first, string $second ): bool;
 ```
 
-Compare two strings and returns true if both strings are anagram, false otherwise.
+Compara dos cadenas y devuelve `true` si ambas cadenas son anagrama, `false` en caso contrario.
 
 ```php
 final public static function isLower( string $text, string $encoding = string ): bool;
 ```
 
-Returns true if the given string is lower case, false otherwise.
+Devuelve `true` si la cadena dada está en minúsculas, `false` en caso contrario.
 
 ```php
 final public static function isPalindrome( string $text ): bool;
 ```
 
-Returns true if the given string is a palindrome, false otherwise.
+Devuelve `true` si la cadena dada es un palíndromo, `false` en caso contrario.
 
 ```php
 final public static function isUpper( string $text, string $encoding = string ): bool;
 ```
 
-Returns true if the given string is upper case, false otherwise.
+Devuelve `true` si la cadena dada está en mayúsculas, `false` en caso contrario.
 
 ```php
 final public static function lower( string $text, string $encoding = string ): string;
 ```
 
-Lowercases a string, this function makes use of the mbstring extension if available
+Convierte una cadena a minúsculas, esta función hace uso de la extensión mbstring si está disponible
 
 ```php
 echo Phalcon\Helper\Str::lower("HELLO"); // hello
@@ -492,7 +492,7 @@ echo Phalcon\Helper\Str::lower("HELLO"); // hello
 final public static function random( int $type = int, long $length = int ): string;
 ```
 
-Generates a random string based on the given type. Type is one of the RANDOM_* constants
+Genera una cadena aleatoria basada en el tipo dado. El tipo es una de las constantes RANDOM_*
 
 ```php
 use Phalcon\Helper\Str;
@@ -504,7 +504,7 @@ echo Str::random(Str::RANDOM_ALNUM); // "aloiwkqz"
 final public static function reduceSlashes( string $text ): string;
 ```
 
-Reduces multiple slashes in a string to single slashes
+Reduce múltiples barras de una cadena a sólo una barra
 
 ```php
 // foo/bar/baz
@@ -518,7 +518,7 @@ echo Phalcon\Helper\Str::reduceSlashes("http://foo.bar///baz/buz");
 final public static function startsWith( string $text, string $start, bool $ignoreCase = bool ): bool;
 ```
 
-Check if a string starts with a given string
+Comprueba si una cadena empieza con una cadena dada
 
 ```php
 use Phalcon\Helper\Str;
@@ -532,7 +532,7 @@ echo Str::startsWith("Hello", "he");         // true
 final public static function uncamelize( string $text, mixed $delimiter = null ): string;
 ```
 
-Uncamelize strings which are camelized
+Decameliza cadenas que están camelizadas
 
 ```php
 use Phalcon\Helper\Str;
@@ -545,7 +545,7 @@ echo Str::uncamelize("CocoBongo", "-");  // coco-bongo
 final public static function underscore( string $text ): string;
 ```
 
-Makes a phrase underscored instead of spaced
+Transforma una frase separada por guiones bajos en lugar de espacios
 
 ```php
 use Phalcon\Helper\Str;
@@ -558,7 +558,7 @@ echo Str::underscore("Awesome Phalcon"); // "Awesome_Phalcon"
 final public static function upper( string $text, string $encoding = string ): string;
 ```
 
-Uppercases a string, this function makes use of the mbstring extension if available
+Convierte una cadena de texto a mayúsculas, esta función hace uso de la extensión mbstring si está disponible
 
 ```php
 echo Phalcon\Helper\Str::upper("hello"); // HELLO
