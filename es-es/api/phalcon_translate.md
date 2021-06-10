@@ -454,7 +454,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function __construct( array $services = [] );
 ```
 
-AdapterFactory constructor.
+Constructor AdapterFactory.
 
 ```php
 public function newInstance( string $name ): InterpolatorInterface;
@@ -494,7 +494,7 @@ private interpolator;
 public function __construct( InterpolatorFactory $interpolator, array $services = [] );
 ```
 
-AdapterFactory constructor.
+Constructor AdapterFactory.
 
 ```php
 public function load( mixed $config ): mixed;

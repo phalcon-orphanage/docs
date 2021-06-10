@@ -37,7 +37,7 @@ title: 'Phalcon\Filter'
 
 | Namespace | Phalcon | | Uses | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface | | Implements | FilterInterface |
 
-Lazy loads, stores and exposes sanitizer objects
+Carga perezosamente, almacena y expone objetos saneadores
 
 ## Constantes
 
@@ -86,37 +86,37 @@ protected services;
 public function __construct( array $mapper = [] );
 ```
 
-Key value pairs with name as the key and a callable as the value for the service object
+Pares clave valor con el nombre como clave y una llamada de retorno como valor para el objeto servicio
 
 ```php
 public function get( string $name ): mixed;
 ```
 
-Get a service. If it is not in the mapper array, create a new object, set it and then return it.
+Obtiene un servicio. Si no está en el vector mapeador, crea un nuevo objeto, lo establece y luego lo devuelve.
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Checks if a service exists in the map array
+Comprueba si un servicio existe en el vector mapa
 
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
 
-Sanitizes a value with a specified single or set of sanitizers
+Sanea un valor con un único o conjunto de saneadores especificados
 
 ```php
 public function set( string $name, callable $service ): void;
 ```
 
-Set a new service to the mapper array
+Establece un nuevo servicio en el vector mapeador
 
 ```php
 protected function init( array $mapper ): void;
 ```
 
-Loads the objects in the internal mapper array
+Carga los objetos en el vector mapeador interno
 
 <h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
 
@@ -126,7 +126,7 @@ Loads the objects in the internal mapper array
 
 Phalcon\Filter\Exception
 
-Exceptions thrown in Phalcon\Filter will use this class
+Las excepciones lanzadas en Phalcon\Filter usarán esta clase
 
 <h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
@@ -134,11 +134,11 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 | Namespace | Phalcon\Filter | | Uses | Phalcon\Filter |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -146,7 +146,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function newInstance(): FilterInterface;
 ```
 
-Returns a Locator object with all the helpers defined in anonymous functions
+Devuelve un objeto Localizador con todos los ayudantes definidos en funciones anónimas
 
 ```php
 protected function getAdapters(): array;
@@ -158,7 +158,7 @@ protected function getAdapters(): array;
 
 | Namespace | Phalcon\Filter |
 
-Lazy loads, stores and exposes sanitizer objects
+Carga perezosamente, almacena y expone objetos saneadores
 
 ## Métodos
 
@@ -166,7 +166,7 @@ Lazy loads, stores and exposes sanitizer objects
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
 
-Sanitizes a value with a specified single or set of sanitizers
+Sanea un valor con un único o conjunto de saneadores especificados
 
 <h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
 
@@ -176,7 +176,7 @@ Sanitizes a value with a specified single or set of sanitizers
 
 Phalcon\Filter\Sanitize\AbsInt
 
-Sanitizes a value to absolute integer
+Sanea un valor a un entero absoluto
 
 ## Métodos
 
@@ -194,7 +194,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\Alnum
 
-Sanitizes a value to an alphanumeric value
+Sanea un valor a un valor alfanumérico
 
 ## Métodos
 
@@ -212,7 +212,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\Alpha
 
-Sanitizes a value to an alpha value
+Sanea un valor a un valor alfabético
 
 ## Métodos
 
@@ -230,7 +230,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\BoolVal
 
-Sanitizes a value to boolean
+Sanea un valor a booleano
 
 ## Métodos
 
@@ -248,7 +248,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\Email
 
-Sanitizes an email string
+Sanea una cadena email
 
 ## Métodos
 
@@ -266,7 +266,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\FloatVal
 
-Sanitizes a value to float
+Sane a un valor a real
 
 ## Métodos
 
@@ -284,7 +284,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\IntVal
 
-Sanitizes a value to integer
+Sanea un valor a entero
 
 ## Métodos
 
@@ -302,7 +302,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\Lower
 
-Sanitizes a value to lowercase
+Sanea un valor a minúsculas
 
 ## Métodos
 
@@ -320,7 +320,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\LowerFirst
 
-Sanitizes a value to lcfirst
+Sanea un valor a `lcfirst`
 
 ## Métodos
 
@@ -338,7 +338,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\Regex
 
-Sanitizes a value performing preg_replace
+Sanea un valor realizando `preg_replace`
 
 ## Métodos
 
@@ -356,7 +356,7 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 Phalcon\Filter\Sanitize\Remove
 
-Sanitizes a value removing parts of a string
+Sanea un valor eliminando partes de una cadena
 
 ## Métodos
 
@@ -374,7 +374,7 @@ public function __invoke( mixed $input, mixed $replace );
 
 Phalcon\Filter\Sanitize\Replace
 
-Sanitizes a value replacing parts of a string
+Sanea un valor sustituyendo partes de una cadena
 
 ## Métodos
 
@@ -392,7 +392,7 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 Phalcon\Filter\Sanitize\Special
 
-Sanitizes a value special characters
+Sanea caracteres especiales de un valor
 
 ## Métodos
 
@@ -410,7 +410,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\SpecialFull
 
-Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
+Sanee caracteres especiales de un valor (htmlspecialchars() y ENT_QUOTES)
 
 ## Métodos
 
@@ -428,7 +428,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\String
 
-Sanitizes a value to string
+Sanea un valor a cadena
 
 ## Métodos
 
@@ -446,7 +446,7 @@ public function __invoke( mixed $input );
 
 Phalcon\Filter\Sanitize\Striptags
 
-Sanitizes a value striptags
+Sanea un valor a `striptags`
 
 ## Métodos
 
@@ -464,7 +464,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\Trim
 
-Sanitizes a value removing leading and trailing spaces
+Sanea un valor eliminando espacios iniciales y finales
 
 ## Métodos
 
@@ -482,7 +482,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\Upper
 
-Sanitizes a value to uppercase
+Sanea un valor a mayúsculas
 
 ## Métodos
 
@@ -500,7 +500,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\UpperFirst
 
-Sanitizes a value to ucfirst
+Sanea un valor a `ucfirst`
 
 ## Métodos
 
@@ -518,7 +518,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\UpperWords
 
-Sanitizes a value to uppercase the first character of each word
+Sanea un valor a mayúsculas el primer carácter de cada palabra
 
 ## Métodos
 
@@ -536,7 +536,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\Url
 
-Sanitizes a value url
+Sanea un valor url
 
 ## Métodos
 

@@ -17,9 +17,9 @@ title: 'Phalcon\Escaper'
 
 Phalcon\Escaper
 
-Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
+Escapa diferentes tipos de texto asegurándolos. Al usar este componente puede prevenir ataques XSS.
 
-This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.
+Este componente sólo trabaja con UTF-8. La extensión PREG necesita ser compilada con el soporte UTF-8.
 
 ```php
 $escaper = new \Phalcon\Escaper();
@@ -55,49 +55,49 @@ protected flags = 3;
 public function attributes( string $attribute = null ): string;
 ```
 
-Escapes a HTML attribute string
+Escapa una cadena de atributo HTML
 
 ```php
 public function css( string $input ): string;
 ```
 
-Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+Escapa cadenas CSS reemplazando caracteres no alfanuméricos por su representación hexadecimal escapada
 
 ```php
 final public function detectEncoding( string $str ): string | null;
 ```
 
-Detect the character encoding of a string to be handled by an encoder. Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
+Detecta la codificación de caracteres de una cadena a ser gestionada por un codificador. Gestión especial para chr(172) y chr(128) a chr(159) que fallan al ser detectados por mb_detect_encoding()
 
 ```php
 public function escapeCss( string $css ): string;
 ```
 
-Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+Escapa cadenas CSS reemplazando caracteres no alfanuméricos por su representación hexadecimal escapada
 
 ```php
 public function escapeHtml( string $text = null ): string;
 ```
 
-Escapes a HTML string. Internally uses htmlspecialchars
+Escapa una cadena HTML. Internamente usa htmlspecialchars
 
 ```php
 public function escapeHtmlAttr( string $attribute = null ): string;
 ```
 
-Escapes a HTML attribute string
+Escapa una cadena de atributo HTML
 
 ```php
 public function escapeJs( string $js ): string;
 ```
 
-Escape JavaScript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+Escapa cadenas JavaScript reemplazando caracteres no alfanuméricos por su representación hexadecimal escapada
 
 ```php
 public function escapeUrl( string $url ): string;
 ```
 
-Escapes a URL. Internally uses rawurlencode
+Escapa una URL. Internamente usa rawurlencode
 
 ```php
 public function getEncoding(): string;
@@ -109,31 +109,31 @@ Devuelve la codificación interna usada por el escapador
 public function getFlags(): int;
 ```
 
-Returns the current flags for htmlspecialchars
+Devuelve los parámetros actuales para htmlspecialchars
 
 ```php
 public function html( string $input = null ): string;
 ```
 
-Escapes a HTML string. Internally uses htmlspecialchars
+Escapa una cadena HTML. Internamente usa htmlspecialchars
 
 ```php
 public function js( string $input ): string;
 ```
 
-Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+Escapa cadenas javascript reemplazando caracteres no alfanuméricos por su representación hexadecimal escapada
 
 ```php
 final public function normalizeEncoding( string $str ): string;
 ```
 
-Utility to normalize a string's encoding to UTF-32.
+Utilidad para normalizar la codificación de una cadena a UTF-32.
 
 ```php
 public function setDoubleEncode( bool $doubleEncode ): void;
 ```
 
-Sets the double_encode to be used by the escaper
+Establece el double_encode para ser usado por el escapador
 
 ```php
 $escaper->setDoubleEncode(false);
@@ -153,7 +153,7 @@ $escaper->setEncoding("utf-8");
 public function setFlags( int $flags ): Escaper;
 ```
 
-Sets the HTML quoting type for htmlspecialchars
+Establece el tipo de comillas HTML para htmlspecialchars
 
 ```php
 $escaper->setFlags(ENT_XHTML);
@@ -163,7 +163,7 @@ $escaper->setFlags(ENT_XHTML);
 public function setHtmlQuoteType( int $flags ): void;
 ```
 
-Sets the HTML quoting type for htmlspecialchars
+Establece el tipo de comillas HTML para htmlspecialchars
 
 ```php
 $escaper->setHtmlQuoteType(ENT_XHTML);
@@ -173,7 +173,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 public function url( string $url ): string;
 ```
 
-Escapes a URL. Internally uses rawurlencode
+Escapa una URL. Internamente usa rawurlencode
 
 <h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
@@ -181,7 +181,7 @@ Escapes a URL. Internally uses rawurlencode
 
 | Namespace | Phalcon\Escaper |
 
-Interface for Phalcon\Escaper
+Interfaz para Phalcon\Escaper
 
 ## Métodos
 
@@ -189,31 +189,31 @@ Interface for Phalcon\Escaper
 public function escapeCss( string $css ): string;
 ```
 
-Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal representation
+Escapa cadenas CSS reemplazando caracteres no alfanuméricos por su representación hexadecimal
 
 ```php
 public function escapeHtml( string $text ): string;
 ```
 
-Escapes a HTML string
+Escapa una cadena HTML
 
 ```php
 public function escapeHtmlAttr( string $text ): string;
 ```
 
-Escapes a HTML attribute string
+Escapa una cadena de atributo HTML
 
 ```php
 public function escapeJs( string $js ): string;
 ```
 
-Escape Javascript strings by replacing non-alphanumeric chars by their hexadecimal representation
+Escapa cadenas Javascript reemplazando caracteres no alfanuméricos por su representación hexadecimal
 
 ```php
 public function escapeUrl( string $url ): string;
 ```
 
-Escapes a URL. Internally uses rawurlencode
+Escapa una URL. Internamente usa rawurlencode
 
 ```php
 public function getEncoding(): string;
@@ -231,7 +231,7 @@ Configura la codificación a ser usada por el escapador
 public function setHtmlQuoteType( int $quoteType ): void;
 ```
 
-Sets the HTML quoting type for htmlspecialchars
+Establece el tipo de comillas HTML para htmlspecialchars
 
 <h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
 
@@ -239,4 +239,4 @@ Sets the HTML quoting type for htmlspecialchars
 
 | Namespace | Phalcon\Escaper | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Escaper will use this class
+Las excepciones lanzadas en Phalcon\Escaper usarán esta clase

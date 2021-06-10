@@ -608,7 +608,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function __construct( array $services = [] );
 ```
 
-AdapterFactory constructor.
+Constructor AdapterFactory.
 
 ```php
 public function newInstance( string $name, string $fileName, array $options = [] ): AdapterInterface;

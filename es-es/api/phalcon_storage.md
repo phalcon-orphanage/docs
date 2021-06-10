@@ -697,7 +697,7 @@ private serializerFactory;
 public function __construct( SerializerFactory $factory, array $services = [] );
 ```
 
-AdapterFactory constructor.
+Constructor AdapterFactory.
 
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;

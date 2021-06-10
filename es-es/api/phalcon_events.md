@@ -20,7 +20,7 @@ title: 'Phalcon\Events'
 
 Phalcon\Events\Event
 
-This class offers contextual information of a fired event in the EventsManager
+Esta clase ofrece información contextual de un evento disparado en el `EventsManager`
 
 ```php
 Phalcon\Events\Event;
@@ -77,7 +77,7 @@ protected type;
 public function __construct( string $type, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
-Phalcon\Events\Event constructor
+Constructor Phalcon\Events\Event
 
 ```php
 public function getData(): mixed
@@ -95,7 +95,7 @@ public function getType(): string
 public function isCancelable(): bool;
 ```
 
-Check whether the event is cancelable.
+Comprueba si el evento es cancelable.
 
 ```php
 if ($event->isCancelable()) {
@@ -107,25 +107,25 @@ if ($event->isCancelable()) {
 public function isStopped(): bool;
 ```
 
-Check whether the event is currently stopped.
+Comprueba si el evento esta parado actualmente.
 
 ```php
 public function setData( mixed $data = null ): EventInterface;
 ```
 
-Sets event data.
+Establece datos del evento.
 
 ```php
 public function setType( string $type ): EventInterface;
 ```
 
-Sets event type.
+Establece el tipo de evento.
 
 ```php
 public function stop(): EventInterface;
 ```
 
-Stops the event preventing propagation.
+Detiene el evento evitando la propagación.
 
 ```php
 if ($event->isCancelable()) {
@@ -141,7 +141,7 @@ if ($event->isCancelable()) {
 
 Phalcon\Events\EventInterface
 
-Interface for Phalcon\Events\Event class
+Interfaz para la clase Phalcon\Events\Event
 
 ## Métodos
 
@@ -149,43 +149,43 @@ Interface for Phalcon\Events\Event class
 public function getData(): mixed;
 ```
 
-Gets event data
+Obtiene los datos del evento
 
 ```php
 public function getType(): mixed;
 ```
 
-Gets event type
+Obtiene el tipo de evento
 
 ```php
 public function isCancelable(): bool;
 ```
 
-Check whether the event is cancelable
+Comprueba si el evento es cancelable
 
 ```php
 public function isStopped(): bool;
 ```
 
-Check whether the event is currently stopped
+Comprueba si el evento está parado actualmente
 
 ```php
 public function setData( mixed $data = null ): EventInterface;
 ```
 
-Sets event data
+Establece los datos del evento
 
 ```php
 public function setType( string $type ): EventInterface;
 ```
 
-Sets event type
+Establece el tipo de evento
 
 ```php
 public function stop(): EventInterface;
 ```
 
-Stops the event preventing propagation
+Detiene el evento evitando la propagación
 
 <h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
@@ -195,7 +195,7 @@ Stops the event preventing propagation
 
 Phalcon\Events\EventsAwareInterface
 
-This interface must for those classes that accept an EventsManager and dispatch events
+Este interfaz debe ser para aquellas clases que acepten un EventsManager y despachan eventos
 
 ## Métodos
 
@@ -219,7 +219,7 @@ Establece el administrador de eventos
 
 Phalcon\Events\Exception
 
-Exceptions thrown in Phalcon\Events will use this class
+Las excepciones lanzadas en Phalcon\Events usarán esta clase
 
 <h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
@@ -229,7 +229,7 @@ Exceptions thrown in Phalcon\Events will use this class
 
 Phalcon\Events\Manager
 
-Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
+El Gestor de Eventos de Phalcon, ofrece una forma fácil de interceptar y manipular, si es necesario, el flujo normal de operación. Con el `EventsManager`, el desarrollador puede crear anclajes o plugins que ofrecerán monitorización de datos, manipulación, ejecución condicional y mucho más.
 
 ## Constantes
 
@@ -264,45 +264,45 @@ protected responses;
 public function arePrioritiesEnabled(): bool;
 ```
 
-Returns if priorities are enabled
+Devuelve si las prioridades están habilitadas
 
 ```php
 public function attach( string $eventType, mixed $handler, int $priority = static-constant-access ): void;
 ```
 
-Attach a listener to the events manager
+Adjunta un oyente al gestor de eventos
 
 ```php
 public function collectResponses( bool $collect ): void;
 ```
 
-Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
+Le dice al gestor de eventos si necesita recopilar todas las respuestas devueltas por cada oyente registrado en un único disparo
 
 ```php
 public function detach( string $eventType, mixed $handler ): void;
 ```
 
-Detach the listener from the events manager
+Separa el oyente del gestor de eventos
 
 ```php
 public function detachAll( string $type = null ): void;
 ```
 
-Removes all events from the EventsManager
+Elimina todos los eventos del `EventsManager`
 
 ```php
 public function enablePriorities( bool $enablePriorities ): void;
 ```
 
-Set if priorities are enabled in the EventsManager.
+Establece si las prioridades están habilitadas en el `EventsManager`.
 
-A priority queue of events is a data structure similar to a regular queue of events: we can also put and extract elements from it. The difference is that each element in a priority queue is associated with a value called priority. This value is used to order elements of a queue: elements with higher priority are retrieved before the elements with lower priority.
+Una cola de prioridad de eventos es una estructura de datos similar a las colas regulares de eventos: también podemos añadir y sacar elementos de ella. La diferencia está en que cada elemento de una cola de prioridad está asociado a un valor llamado prioridad. Este valor se usa para ordenar los elementos de una cola: elementos con una prioridad mayor se sacan antes que los elementos con una prioridad menor.
 
 ```php
 public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
-Fires an event in the events manager causing the active listeners to be notified about it
+Dispara un evento en el gestor de eventos que causa que los oyentes activos sean notificados al respecto
 
 ```php
 $eventsManager->fire("db", $connection);
@@ -312,7 +312,7 @@ $eventsManager->fire("db", $connection);
 final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
 ```
 
-Internal handler to call a queue of events
+Gestor interno para llamar a una cola de eventos
 
 ```php
 public function getListeners( string $type ): array;
@@ -324,7 +324,7 @@ Devuelve todos los oyentes adjuntos de cierto tipo
 public function getResponses(): array;
 ```
 
-Returns all the responses returned by every handler executed by the last 'fire' executed
+Devuelve todas las respuestas devueltas por cada manejador ejecutado por el último 'disparo' ejecutado
 
 ```php
 public function hasListeners( string $type ): bool;
@@ -336,7 +336,7 @@ Comprueba si cierto tipo de evento tiene oyentes
 public function isCollecting(): bool;
 ```
 
-Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
+Comprueba si el gestor de eventos está recopilando todas las respuestas devueltas por cada oyente registrado en un único disparo
 
 ```php
 public function isValidHandler( mixed $handler ): bool;
@@ -350,7 +350,7 @@ public function isValidHandler( mixed $handler ): bool;
 
 Phalcon\Events\ManagerInterface
 
-Interface for Phalcon\Events managers.
+Interfaz para gestores de Phalcon\Events.
 
 ## Métodos
 
@@ -358,25 +358,25 @@ Interface for Phalcon\Events managers.
 public function attach( string $eventType, mixed $handler ): void;
 ```
 
-Attach a listener to the events manager
+Adjunta un oyente al gestor de eventos
 
 ```php
 public function detach( string $eventType, mixed $handler ): void;
 ```
 
-Detach the listener from the events manager
+Separa el oyente del gestor de eventos
 
 ```php
 public function detachAll( string $type = null ): void;
 ```
 
-Removes all events from the EventsManager
+Elimina todos los eventos del `EventsManager`
 
 ```php
 public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
-Fires an event in the events manager causing the active listeners to be notified about it
+Dispara un evento en el gestor de eventos que causa que los oyentes activos sean notificados al respecto
 
 ```php
 public function getListeners( string $type ): array;
