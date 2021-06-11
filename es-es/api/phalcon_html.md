@@ -585,15 +585,7 @@ Produce una etiqueta <a></p>
 </code></pre>
 
 <p>
-  Produce una etiqueta
-</p>
-
-<p>
-  <
-</p>
-
-<p>
-  <code>&lt;form&gt;</code>.
+  Produce a <code>&lt;form&gt;</code> tag.
 </p>
 
 <h1 id="html-helper-img">Class Phalcon\Html\Helper\Img</h1>
@@ -618,7 +610,7 @@ Produce una etiqueta <a></p>
 </code></pre>
 
 <p>
-  Produce una etiqueta <img />.
+  Produce a <img /> tag.
 </p>
 
 <h1 id="html-helper-input-abstractinput">Abstract Class Phalcon\Html\Helper\Input\AbstractInput</h1>
@@ -666,14 +658,14 @@ protected attributes;
 </code></pre>
 
 <p>
-  Devuelve el HTML para la entrada.
+  Returns the HTML for the input.
 </p>
 
 <pre><code class="php">public function setValue( string $value = null ): AbstractInput;
 </code></pre>
 
 <p>
-  Establece el valor del elemento
+  Sets the value of the element
 </p>
 
 <h1 id="html-helper-input-checkbox">Class Phalcon\Html\Helper\Input\Checkbox</h1>
@@ -725,14 +717,14 @@ protected type = checkbox;
 </code></pre>
 
 <p>
-  Devuelve el HTML para la entrada.
+  Returns the HTML for the input.
 </p>
 
 <pre><code class="php">public function label( array $attributes = [] ): Checkbox;
 </code></pre>
 
 <p>
-  Adjunta una etiqueta al elemento
+  Attaches a label to the element
 </p>
 
 <h1 id="html-helper-input-color">Class Phalcon\Html\Helper\Input\Color</h1>
@@ -941,7 +933,7 @@ protected type = image;
 </code></pre>
 
 <p>
-  Establece el tipo de la entrada
+  Sets the type of the input
 </p>
 
 <h1 id="html-helper-input-month">Class Phalcon\Html\Helper\Input\Month</h1>
@@ -1131,21 +1123,21 @@ protected selected = ;
 </code></pre>
 
 <p>
-  Añade un elemento a la lista
+  Add an element to the list
 </p>
 
 <pre><code class="php">public function addPlaceholder( string $text, mixed $value = null, array $attributes = [], bool $raw = bool ): Select;
 </code></pre>
 
 <p>
-  Añade un elemento a la lista
+  Add an element to the list
 </p>
 
 <pre><code class="php">public function optGroup( string $label = null, array $attributes = [] ): Select;
 </code></pre>
 
 <p>
-  Crea un grupo de opciones
+  Creates an option group
 </p>
 
 <pre><code class="php">public function selected( string $selected ): Select;
@@ -1253,7 +1245,7 @@ protected type = textarea;
 </code></pre>
 
 <p>
-  Devuelve el HTML para la entrada.
+  Returns the HTML for the input.
 </p>
 
 <h1 id="html-helper-input-time">Class Phalcon\Html\Helper\Input\Time</h1>
@@ -1347,7 +1339,7 @@ protected type = week;
 </code></pre>
 
 <p>
-  Produce una etiqueta <code>&lt;label&gt;</code>.
+  Produce a <code>&lt;label&gt;</code> tag.
 </p>
 
 <h1 id="html-helper-link">Class Phalcon\Html\Helper\Link</h1>
@@ -1372,7 +1364,7 @@ protected type = week;
 </code></pre>
 
 <p>
-  Añade un elemento a la lista
+  Add an element to the list
 </p>
 
 <pre><code class="php">protected function getTag(): string;
@@ -1400,7 +1392,7 @@ protected type = week;
 </code></pre>
 
 <p>
-  Añade un elemento a la lista
+  Add an element to the list
 </p>
 
 <pre><code class="php">public function addHttp( string $httpEquiv, string $content ): Meta;
@@ -1437,7 +1429,7 @@ protected type = week;
 </code></pre>
 
 <p>
-  Añade un elemento a la lista
+  Add an element to the list
 </p>
 
 <pre><code class="php">protected function getTag(): string;
@@ -1465,7 +1457,7 @@ protected type = week;
 </code></pre>
 
 <p>
-  Devuelve los atributos necesarios
+  Returns the necessary attributes
 </p>
 
 <pre><code class="php">protected function getTag(): string;
@@ -1493,14 +1485,14 @@ protected type = week;
 </code></pre>
 
 <p>
-  Añade un elemento a la lista
+  Add an element to the list
 </p>
 
 <pre><code class="php">protected function getAttributes( string $href, array $attributes ): array;
 </code></pre>
 
 <p>
-  Devuelve los atributos necesarios
+  Returns the necessary attributes
 </p>
 
 <pre><code class="php">protected function getTag(): string;
@@ -1558,42 +1550,42 @@ protected separator = ;
 </code></pre>
 
 <p>
-  Establece el separador y devuelve el objeto de vuelta
+  Sets the separator and returns the object back
 </p>
 
 <pre><code class="php">public function __toString();
 </code></pre>
 
 <p>
-  Devuelve las etiquetas de título
+  Returns the title tags
 </p>
 
 <pre><code class="php">public function append( string $text, bool $raw = bool ): Title;
 </code></pre>
 
 <p>
-  Añade texto al título de documento actual
+  Appends text to current document title
 </p>
 
 <pre><code class="php">public function get(): string;
 </code></pre>
 
 <p>
-  Devuelve el título
+  Returns the title
 </p>
 
 <pre><code class="php">public function prepend( string $text, bool $raw = bool ): Title;
 </code></pre>
 
 <p>
-  Antepone texto al título de documento actual
+  Prepends text to current document title
 </p>
 
 <pre><code class="php">public function set( string $text, bool $raw = bool ): Title;
 </code></pre>
 
 <p>
-  Establece el título
+  Sets the title
 </p>
 
 <h1 id="html-helper-ul">Class Phalcon\Html\Helper\Ul</h1>
@@ -1643,51 +1635,51 @@ protected separator = ;
 </code></pre>
 
 <p>
-  Devuelve una instancia con el atributo especificado añadido.
+  Returns an instance with the specified attribute added.
 </p>
 
 <p>
-  Si el atributo especificado ya está presente, lo sobreescribirá con el nuevo valor.
+  If the specified attribute is already present, it will be overwritten with the new value.
 </p>
 
 <pre><code class="php">public function withHref( mixed $href );
 </code></pre>
 
 <p>
-  Devuelve una instancia con el <code>href</code> especificado.
+  Returns an instance with the specified href.
 </p>
 
 <pre><code class="php">public function withRel( mixed $rel );
 </code></pre>
 
 <p>
-  Devuelve una instancia con la relación especificada incluida.
+  Returns an instance with the specified relationship included.
 </p>
 
 <p>
-  Si el <code>rel</code> especificado ya está presente, este método DEBE devolver normalmente sin errores, pero sin añadir el <code>rel</code> una segunda vez.
+  If the specified rel is already present, this method MUST return normally without errors, but without adding the rel a second time.
 </p>
 
 <pre><code class="php">public function withoutAttribute( mixed $attribute );
 </code></pre>
 
 <p>
-  Devuelve una instancia con el atributo especificado excluido.
+  Returns an instance with the specified attribute excluded.
 </p>
 
 <p>
-  Si el atributo especificado no está presente, este método DEBE devolver normalmente sin errores.
+  If the specified attribute is not present, this method MUST return normally without errors.
 </p>
 
 <pre><code class="php">public function withoutRel( mixed $rel );
 </code></pre>
 
 <p>
-  Devuelve una instancia con la relación especificada excluida.
+  Returns an instance with the specified relationship excluded.
 </p>
 
 <p>
-  Si el <code>rel</code> especificado no está presente, este método DEBE devolver normalmente sin errores.
+  If the specified rel is not present, this method MUST return normally without errors.
 </p>
 
 <h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
@@ -1716,22 +1708,22 @@ protected separator = ;
 </code></pre>
 
 <p>
-  Devuelve una instancia con el enlace especificado incluido.
+  Returns an instance with the specified link included.
 </p>
 
 <p>
-  Si el enlace especificado ya está presente, este método DEBE devolver normalmente sin errores. El enlace está presente si el enlace es === idéntico a un objeto enlace que ya está en la colección.
+  If the specified link is already present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
 </p>
 
 <pre><code class="php">public function withoutLink( LinkInterface $link );
 </code></pre>
 
 <p>
-  Devuelve una instancia con el enlace especificado eliminado.
+  Returns an instance with the specified link removed.
 </p>
 
 <p>
-  Si el enlace especificado no está presente, este método DEBE devolver normalmente sin errores. El enlace está presente si el enlace es === idéntico a un objeto enlace que ya está en la colección.
+  If the specified link is not present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
 </p>
 
 <h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
@@ -1786,25 +1778,25 @@ protected templated = false;
 </code></pre>
 
 <p>
-  Constructor <code>Link</code>.
+  Link constructor.
 </p>
 
 <pre><code class="php">public function getAttributes();
 </code></pre>
 
 <p>
-  Devuelve una lista de atributos que describen la URI de destino.
+  Returns a list of attributes that describe the target URI.
 </p>
 
 <pre><code class="php">public function getHref();
 </code></pre>
 
 <p>
-  Devuelve el destino del enlace.
+  Returns the target of the link.
 </p>
 
 <p>
-  El enlace destino debe ser uno de:
+  The target link must be one of:
 </p>
 
 <ul>
@@ -1820,32 +1812,32 @@ protected templated = false;
 </ul>
 
 <p>
-  Si se devuelve una plantilla de URI, <code>isTemplated()</code> DEBE devolver <code>true</code>.
+  If a URI template is returned, isTemplated() MUST return True.
 </p>
 
 <pre><code class="php">public function getRels();
 </code></pre>
 
 <p>
-  Devuelve el/los tipo/s de relación del enlace.
+  Returns the relationship type(s) of the link.
 </p>
 
 <p>
-  Este método devuelve 0 o más tipos de relación para un enlace, expresados como un vector de cadenas.
+  This method returns 0 or more relationship types for a link, expressed as an array of strings.
 </p>
 
 <pre><code class="php">public function isTemplated();
 </code></pre>
 
 <p>
-  Devuelve si esto es un enlace de plantilla o no.
+  Returns whether or not this is a templated link.
 </p>
 
 <pre><code class="php">protected function hrefIsTemplated( string $href ): bool;
 </code></pre>
 
 <p>
-  Determina si un <code>href</code> es un enlace de plantilla o no.
+  Determines if a href is a templated link or not.
 </p>
 
 <p>
@@ -1889,34 +1881,36 @@ protected links;
 </code></pre>
 
 <p>
-  Constructor <code>LinkProvider</code>.
+  LinkProvider constructor.
 </p>
 
 <pre><code class="php">public function getLinks();
 </code></pre>
 
 <p>
-  Devuelve un iterable de objetos <code>LinkInterface</code>.
+  Returns an iterable of LinkInterface objects.
 </p>
 
 <p>
-  El iterable puede ser un vector o cualquier objeto <code>\Traversable</code> de PHP. Si no hay enlaces disponibles, se DEBE devolver un vector vacío o <code>\Traversable</code>.
+  El iterable puede ser un vector o cualquier objeto <code>\Traversable</code> de PHP. If no links are available, an empty array or \Traversable MUST be returned.
 </p>
 
 <pre><code class="php">public function getLinksByRel( mixed $rel );
 </code></pre>
 
 <p>
-  Devuelve un iterable de objetos <code>LinkInterface&lt;code> que tiene una relación específica.&lt;/p>
+  Returns an iterable of LinkInterface objects that have a specific relationship.
+</p>
 
-&lt;p>El iterable puede ser un vector o cualquier objeto &lt;code>\Traversable</code> de PHP. Si no hay enlaces disponibles con esa relación, se DEBE devolver un vector vacío o <code>\Traversable</code>.
+<p>
+  El iterable puede ser un vector o cualquier objeto <code>\Traversable</code> de PHP. If no links with that relationship are available, an empty array or \Traversable MUST be returned.
 </p>
 
 <pre><code class="php">protected function getKey( LinkInterface $link ): string;
 </code></pre>
 
 <p>
-  Devuelve la clave hash del objeto
+  Returns the object hash key
 </p>
 
 <h1 id="html-link-serializer-header">Class Phalcon\Html\Link\Serializer\Header</h1>
@@ -1941,7 +1935,7 @@ protected links;
 </code></pre>
 
 <p>
-  Serializa todos los enlaces pasados a una cabecera de enlaces HTTP
+  Serializes all the passed links to a HTTP link header
 </p>
 
 <h1 id="html-link-serializer-serializerinterface">Interface Phalcon\Html\Link\Serializer\SerializerInterface</h1>
@@ -1966,7 +1960,7 @@ protected links;
 </code></pre>
 
 <p>
-  Método serializador
+  Serializer method
 </p>
 
 <h1 id="html-tagfactory">Class Phalcon\Html\TagFactory</h1>
@@ -1980,7 +1974,7 @@ protected links;
 </p>
 
 <p>
-  Implementación de <code>ServiceLocator</code> para ayudantes de <code>Tag</code>
+  ServiceLocator implementation for Tag helpers
 </p>
 
 <h2>
@@ -2002,7 +1996,7 @@ private escaper;
 </code></pre>
 
 <p>
-  Constructor <code>TagFactory</code>.
+  TagFactory constructor.
 </p>
 
 <pre><code class="php">public function newInstance( string $name ): mixed;
