@@ -234,7 +234,7 @@ Prints the messages accumulated in the flasher
 | Namespace  | Phalcon\Flash |
 | Extends    | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Flash calsses will use this class
+Exceptions thrown in Phalcon\Flash classes will use this class
 
 
 
