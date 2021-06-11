@@ -336,7 +336,7 @@ Check whether certain type of event has listeners
 public function isCollecting(): bool;
 ```
 
-Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
+Check if the events manager is collecting all the responses returned by every registered listener in a single fire
 
 ```php
 public function isValidHandler( mixed $handler ): bool;
