@@ -215,7 +215,7 @@ Imprime los mensajes acumulados en el flasheador
 
 | Namespace | Phalcon\Flash | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Flash classes will use this class
+Las excepciones lanzadas por Phalcon\Flash usarán esta clase
 
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
