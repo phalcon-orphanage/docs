@@ -585,15 +585,7 @@ Produce a <a> tag</p>
 </code></pre>
 
 <p>
-  Produce a
-</p>
-
-<p>
-  <
-</p>
-
-<p>
-  form> tag.
+  Produce a <code>&lt;form&gt;</code> tag.
 </p>
 
 <h1 id="html-helper-img">Class Phalcon\Html\Helper\Img</h1>
@@ -1687,7 +1679,7 @@ protected separator = ;
 </p>
 
 <p>
-  If the specified rel is already not present, this method MUST return normally without errors.
+  If the specified rel is not present, this method MUST return normally without errors.
 </p>
 
 <h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
