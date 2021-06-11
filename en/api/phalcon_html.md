@@ -609,7 +609,7 @@ Class Form
 ```php
 public function __invoke( array $attributes = [] ): string;
 ```
-Produce a <form> tag.
+Produce a `<form>` tag.
 
 
 
@@ -1556,7 +1556,7 @@ public function withoutRel( mixed $rel );
 ```
 Returns an instance with the specified relationship excluded.
 
-If the specified rel is already not present, this method MUST return
+If the specified rel is not present, this method MUST return
 normally without errors.
 
 
