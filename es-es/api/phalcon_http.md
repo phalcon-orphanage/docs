@@ -48,7 +48,7 @@ title: 'Phalcon\Http'
 
 | Namespace | Phalcon\Http | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Helper\Arr, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | CookieInterface |
 
-Provide OO wrappers to manage a HTTP cookie.
+Proporciona envolturas OO para gestionar una cookie HTTP.
 
 ## Propiedades
 
@@ -125,135 +125,135 @@ protected value;
 public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool, array $options = [] );
 ```
 
-Phalcon\Http\Cookie constructor.
+Constructor Phalcon\Http\Cookie.
 
 ```php
 public function __toString(): string;
 ```
 
-Magic __toString method converts the cookie's value to string
+Método mágico __toString convierte el valor de la cookie a cadena
 
 ```php
 public function delete();
 ```
 
-Deletes the cookie by setting an expire time in the past
+Elimina la cookie estableciendo un tiempo de caducidad en el pasado
 
 ```php
 public function getDomain(): string;
 ```
 
-Returns the domain that the cookie is available to
+Devuelve el dominio para el que la cookie está disponible
 
 ```php
 public function getExpiration(): string;
 ```
 
-Returns the current expiration time
+Devuelve el tiempo de caducidad actual
 
 ```php
 public function getHttpOnly(): bool;
 ```
 
-Returns if the cookie is accessible only through the HTTP protocol
+Devuelve si la cookie está accesible sólo mediante el protocolo HTTP
 
 ```php
 public function getName(): string;
 ```
 
-Returns the current cookie's name
+Devuelve el nombre actual de la cookie
 
 ```php
 public function getOptions(): array;
 ```
 
-Returns the current cookie's options
+Devuelve las opciones actuales de la cookie
 
 ```php
 public function getPath(): string;
 ```
 
-Returns the current cookie's path
+Devuelve la ruta actual de la cookie
 
 ```php
 public function getSecure(): bool;
 ```
 
-Returns whether the cookie must only be sent when the connection is secure (HTTPS)
+Devuelve si la cookie debe ser enviada solo cuando la conexión es segura (HTTPS)
 
 ```php
 public function getValue( mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 
-Returns the cookie's value.
+Devuelve el valor de la cookie.
 
 ```php
 public function isUsingEncryption(): bool;
 ```
 
-Check if the cookie is using implicit encryption
+Comprueba si la cookie está usando encriptación implícita
 
 ```php
 public function restore(): CookieInterface;
 ```
 
-Reads the cookie-related info from the SESSION to restore the cookie as it was set.
+Lee la información relacionada con las cookie desde la SESSION para restaurar la cookie tal como fue configurada.
 
-This method is automatically called internally so normally you don't need to call it.
+Este método se llama de forma automática internamente, por lo que normalmente no necesita llamarlo.
 
 ```php
 public function send(): CookieInterface;
 ```
 
-Sends the cookie to the HTTP client.
+Envía la cookie al cliente HTTP.
 
-Stores the cookie definition in session.
+Almacena la definición de la cookie en sesión.
 
 ```php
 public function setDomain( string $domain ): CookieInterface;
 ```
 
-Sets the domain that the cookie is available to
+Establece el dominio para el que está disponible la cookie
 
 ```php
 public function setExpiration( int $expire ): CookieInterface;
 ```
 
-Sets the cookie's expiration time
+Establece el tiempo de caducidad de la cookie
 
 ```php
 public function setHttpOnly( bool $httpOnly ): CookieInterface;
 ```
 
-Sets if the cookie is accessible only through the HTTP protocol
+Establece si la cookie está accesible sólo mediante el protocolo HTTP
 
 ```php
 public function setOptions( array $options ): CookieInterface;
 ```
 
-Sets the cookie's options
+Establece las opciones de la cookie
 
 ```php
 public function setPath( string $path ): CookieInterface;
 ```
 
-Sets the cookie's path
+Establece la ruta de la cookie
 
 ```php
 public function setSecure( bool $secure ): CookieInterface;
 ```
 
-Sets if the cookie must only be sent when the connection is secure (HTTPS)
+Establece si la cookie se debe enviar solo cuando la conexión es segura (HTTPS)
 
 ```php
 public function setSignKey( string $signKey = null ): CookieInterface;
 ```
 
-Sets the cookie's sign key.
+Establece la clave de firma de la cookie.
 
-The `$signKey' MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
+`$signKey' DEBE tener al menos 32 caracteres de longitud y generarse usando un generador pseudoaleatorio seguro criptográficamente.
 
-Use NULL to disable cookie signing.
+Use NULL para deshabilitar la firma de cookies.
 
 @see \Phalcon\Security\Random @throws \Phalcon\Http\Cookie\Exception
 
@@ -261,19 +261,19 @@ Use NULL to disable cookie signing.
 public function setValue( mixed $value ): CookieInterface;
 ```
 
-Sets the cookie's value
+Establece el valor de la cookie
 
 ```php
 public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
 
-Sets if the cookie must be encrypted/decrypted automatically
+Establece si la cookie se debe encriptar/desencriptar automáticamente
 
 ```php
 protected function assertSignKeyIsLongEnough( string $signKey ): void;
 ```
 
-Assert the cookie's key is enough long.
+Afirma que la clave de la cookie es suficientemente larga.
 
 @throws \Phalcon\Http\Cookie\Exception
 
@@ -283,7 +283,7 @@ Assert the cookie's key is enough long.
 
 | Namespace | Phalcon\Http\Cookie |
 
-Interface for Phalcon\Http\Cookie
+Interfaz para Phalcon\Http\Cookie
 
 ## Métodos
 
@@ -291,115 +291,115 @@ Interface for Phalcon\Http\Cookie
 public function delete();
 ```
 
-Deletes the cookie
+Elimina la cookie
 
 ```php
 public function getDomain(): string;
 ```
 
-Returns the domain that the cookie is available to
+Devuelve el dominio para el que la cookie está disponible
 
 ```php
 public function getExpiration(): string;
 ```
 
-Returns the current expiration time
+Devuelve el tiempo de caducidad actual
 
 ```php
 public function getHttpOnly(): bool;
 ```
 
-Returns if the cookie is accessible only through the HTTP protocol
+Devuelve si la cookie está accesible sólo mediante el protocolo HTTP
 
 ```php
 public function getName(): string;
 ```
 
-Returns the current cookie's name
+Devuelve el nombre actual de la cookie
 
 ```php
 public function getOptions(): array;
 ```
 
-Returns the current cookie's options
+Devuelve las opciones actuales de la cookie
 
 ```php
 public function getPath(): string;
 ```
 
-Returns the current cookie's path
+Devuelve la ruta actual de la cookie
 
 ```php
 public function getSecure(): bool;
 ```
 
-Returns whether the cookie must only be sent when the connection is secure (HTTPS)
+Devuelve si la cookie debe ser enviada solo cuando la conexión es segura (HTTPS)
 
 ```php
 public function getValue( mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 
-Returns the cookie's value.
+Devuelve el valor de la cookie.
 
 ```php
 public function isUsingEncryption(): bool;
 ```
 
-Check if the cookie is using implicit encryption
+Comprueba si la cookie está usando encriptación implícita
 
 ```php
 public function send(): CookieInterface;
 ```
 
-Sends the cookie to the HTTP client
+Envía la cookie al cliente HTTP
 
 ```php
 public function setDomain( string $domain ): CookieInterface;
 ```
 
-Sets the domain that the cookie is available to
+Establece el dominio para el que está disponible la cookie
 
 ```php
 public function setExpiration( int $expire ): CookieInterface;
 ```
 
-Sets the cookie's expiration time
+Establece el tiempo de caducidad de la cookie
 
 ```php
 public function setHttpOnly( bool $httpOnly ): CookieInterface;
 ```
 
-Sets if the cookie is accessible only through the HTTP protocol
+Establece si la cookie está accesible sólo mediante el protocolo HTTP
 
 ```php
 public function setOptions( array $options ): CookieInterface;
 ```
 
-Sets the cookie's options
+Establece las opciones de la cookie
 
 ```php
 public function setPath( string $path ): CookieInterface;
 ```
 
-Sets the cookie's expiration time
+Establece el tiempo de caducidad de la cookie
 
 ```php
 public function setSecure( bool $secure ): CookieInterface;
 ```
 
-Sets if the cookie must only be sent when the connection is secure (HTTPS)
+Establece si la cookie se debe enviar solo cuando la conexión es segura (HTTPS)
 
 ```php
 public function setValue( mixed $value ): CookieInterface;
 ```
 
-Sets the cookie's value
+Establece el valor de la cookie
 
 ```php
 public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
 
-Sets if the cookie must be encrypted/decrypted automatically
+Establece si la cookie se debe encriptar/desencriptar automáticamente
 
 <h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
 
@@ -409,7 +409,7 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 Phalcon\Http\Cookie\Exception
 
-Exceptions thrown in Phalcon\Http\Cookie will use this class.
+Las excepciones lanzadas en Phalcon\Http\Cookie usarán esta clase.
 
 <h1 id="http-message-abstractcommon">Abstract Class Phalcon\Http\Message\AbstractCommon</h1>
 
@@ -417,7 +417,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 | Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Exception\InvalidArgumentException |
 
-Common methods
+Métodos comunes
 
 ## Métodos
 
@@ -425,19 +425,19 @@ Common methods
 final protected function checkStringParameter( mixed $element ): void;
 ```
 
-Checks the element passed if it is a string
+Comprueba el elemento pasado si es una cadena
 
 ```php
 final protected function cloneInstance( mixed $element, string $property ): mixed;
 ```
 
-Returns a new instance having set the parameter
+Devuelve una nueva instancia al establecer el parámetro
 
 ```php
 final protected function processWith( mixed $element, string $property ): mixed;
 ```
 
-Checks the element passed; assigns it to the property and returns a clone of the object back
+Comprueba el elemento pasado; lo asigna a la propiedad y devuelve un clon del objeto de vuelta
 
 <h1 id="http-message-abstractmessage">Abstract Class Phalcon\Http\Message\AbstractMessage</h1>
 
@@ -445,7 +445,7 @@ Checks the element passed; assigns it to the property and returns a clone of the
 
 | Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface | | Extends | AbstractCommon |
 
-Message methods
+Métodos de mensaje
 
 ## Propiedades
 
@@ -497,31 +497,31 @@ public function getBody(): StreamInterface
 public function getHeader( mixed $name ): array;
 ```
 
-Retrieves a message header value by the given case-insensitive name.
+Recupera un valor de cabecera de mensaje por el nombre dado insensible a mayúsculas y minúsculas.
 
-This method returns an array of all the header values of the given case-insensitive header name.
+Este método devuelve un vector de todos los valores de cabecera del nombre de cabecera dado insensible a mayúsculas y minúsculas.
 
-If the header does not appear in the message, this method MUST return an empty array.
+Si la cabecera no aparece en el mensaje, este método DEBE devolver un vector vacío.
 
 ```php
 public function getHeaderLine( mixed $name ): string;
 ```
 
-Retrieves a comma-separated string of the values for a single header.
+Obtiene una cadena separada por comas de los valores para una única cabecera.
 
-This method returns all of the header values of the given case-insensitive header name as a string concatenated together using a comma.
+Este método devuelve todos los valores de cabecera de un nombre de cabecera dado insensible a mayúsculas y minúsculas como una cadena concatenada junta usando una coma.
 
-NOTE: Not all header values may be appropriately represented using comma concatenation. For such headers, use getHeader() instead and supply your own delimiter when concatenating.
+NOTA: No todos los valores de cabecera pueden ser representados apropiadamente usando la concatenación por coma. Para esas cabeceras, use getHeader() en su lugar y proporcione su propio delimitador al concatenar.
 
-If the header does not appear in the message, this method MUST return an empty string.
+Si la cabecera no aparece en el mensaje, este método DEBE devolver una cadena vacía.
 
 ```php
 public function getHeaders(): array;
 ```
 
-Retrieves all message header values.
+Obtiene todos los valores de cabecera del mensaje.
 
-The keys represent the header name as it will be sent over the wire, and each value is an array of strings associated with the header.
+Las claves representan el nombre de la cabecera tal y como se enviarán, y cada valor es un vector de cadenas asociadas con la cabecera.
 
     // Represent the headers as a string
     foreach ($message->getHeaders() as $name => $values) {
@@ -536,7 +536,7 @@ The keys represent the header name as it will be sent over the wire, and each va
     }
     
 
-While header names are not case-sensitive, getHeaders() will preserve the exact case in which headers were originally specified.
+Mientras que los nombres de la cabecera son insensibles a mayúsculas, getHeaders() preservará intactas las mayúsculas y minúsculas en el que las cabeceras fueron especificadas originalmente.
 
 ```php
 public function getProtocolVersion(): string
@@ -556,41 +556,41 @@ Comprueba si existe una cabecera por el nombre dado insensible a mayúsculas y m
 public function withAddedHeader( mixed $name, mixed $value ): mixed;
 ```
 
-Return an instance with the specified header appended with the given value.
+Devuelve una instancia con la cabecera especificada añadida con el valor dado.
 
-Se mantendrán los valores existentes para la cabecera especificada. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added.
+Se mantendrán los valores existentes para la cabecera especificada. El/los nuevo/s valor/es será/n añadido/s a la lista existente. Si la cabecera no existía previamente, será añadida.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new header and/or value.
+Este método DEBE ser implementado de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga la nueva cabecera y/o valor.
 
 ```php
 public function withBody( StreamInterface $body ): mixed;
 ```
 
-Return an instance with the specified message body.
+Devuelve una instancia con el cuerpo de mensaje especificado.
 
-The body MUST be a StreamInterface object.
+El cuerpo DEBE ser un objeto `StreamInterface`.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return a new instance that has the new body stream.
+Este método DEBE ser implementado de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una nueva instancia con el nuevo flujo de cuerpo.
 
 ```php
 public function withHeader( mixed $name, mixed $value ): mixed;
 ```
 
-Return an instance with the provided value replacing the specified header.
+Devuelve una instancia con el valor proporcionado reemplazando la cabecera especificada.
 
-While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from getHeaders().
+Mientras que los nombres de cabecera son insensibles a mayúsculas, esta función mantendrá las mayúsculas y minúsculas de la cabecera, y se devolverán con getHeaders().
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new and/or updated header and value.
+Este método DEBE ser implementado de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga la nueva y/o actualizada cabecera y valor.
 
 ```php
 public function withProtocolVersion( mixed $version ): mixed;
 ```
 
-Return an instance with the specified HTTP protocol version.
+Devuelve una instancia con la versión de protocolo HTTP especificada.
 
-The version string MUST contain only the HTTP version number (e.g., '1.1', '1.0').
+La cadena de versión DEBE contener sólo el número de versión HTTP (ej, '1.1', '1.0').
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new protocol version.
+Este método DEBE ser implementado de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga la nueva versión de protocolo.
 
 ```php
 public function withoutHeader( mixed $name ): mixed;
@@ -598,15 +598,15 @@ public function withoutHeader( mixed $name ): mixed;
 
 Devuelve una instancia sin la cabecera especificada.
 
-Header resolution MUST be done without case-sensitivity.
+La resolución de cabecera se DEBE hacer sin sensibilidad a mayúsculas y minúsculas.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that removes the named header.
+Este método DEBE implementarse de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que elimine la cabecera nombrada.
 
 ```php
 final protected function checkHeaderHost( CollectionInterface $collection ): CollectionInterface;
 ```
 
-Ensure Host is the first header.
+Asegura que `Host` es la primera cabecera.
 
 @see: http://tools.ietf.org/html/rfc7230#section-5.4
 
@@ -614,7 +614,7 @@ Ensure Host is the first header.
 final protected function checkHeaderName( mixed $name ): void;
 ```
 
-Check the name of the header. Throw exception if not valid
+Comprueba el nombre de la cabecera. Lanza excepción si no es válida
 
 @see http://tools.ietf.org/html/rfc7230#section-3.2
 
@@ -622,9 +622,9 @@ Check the name of the header. Throw exception if not valid
 final protected function checkHeaderValue( mixed $value ): void;
 ```
 
-Validates a header value
+Valida un valor de cabecera
 
-Most HTTP header field values are defined using common syntax components (token, quoted-string, and comment) separated by whitespace or specific delimiting characters. Delimiters are chosen from the set of US-ASCII visual characters not allowed in a token (DQUOTE and '(),/:;<=>?@[\]{}').
+La mayoría de los valores de campo de cabecera se definen usando componentes de sintaxis común (token, cadena entre comillas, y comentario) separados por espacios en blanco o caracteres específicos de delimitación. Los delimitadores se eligen del conjunto de caracteres visuales US-ASCII no permitidos en un token (DQUOTE and '(),/:;<=>?@[\]{}').
 
     token          = 1*tchar
     
@@ -634,25 +634,25 @@ Most HTTP header field values are defined using common syntax components (token,
                    ; any VCHAR, except delimiters
     
 
-A string of text is parsed as a single value if it is quoted using double-quote marks.
+Una cadena de texto se analiza como un valor único si escribe usando comillas dobles.
 
     quoted-string  = DQUOTE( qdtext / quoted-pair ) DQUOTE
     qdtext         = HTAB / SP /%x21 / %x23-5B / %x5D-7E / obs-text
     obs-text       = %x80-FF
     
 
-Comments can be included in some HTTP header fields by surrounding the comment text with parentheses. Comments are only allowed in fields containing 'comment' as part of their field value definition.
+Los comentarios se pueden incluir en algunos campos de cabecera HTTP rodeando el texto del comentario con paréntesis. Los comentarios sólo se permiten en campos que contienen 'comment' como parte de su definición del valor de campo.
 
     comment        = '('( ctext / quoted-pair / comment ) ')'
     ctext          = HTAB / SP / %x21-27 / %x2A-5B / %x5D-7E / obs-text
     
 
-The backslash octet ('\') can be used as a single-octet quoting mechanism within quoted-string and comment constructs. Recipients that process the value of a quoted-string MUST handle a quoted-pair as if it were replaced by the octet following the backslash.
+El octeto de barra inversa ('\') se puede usar como mecanismo de cita de un sólo octeto en construcciones de cadenas-entrecomilladas y comentarios. Los recipientes que procesan el valor de una cadena entrecomillada DEBE gestionar un par entrecomillado como si fuera sustituido por el octeto que sigue a la barra invertida.
 
     quoted-pair    = '\' ( HTAB / SP / VCHAR / obs-text )
     
 
-A sender SHOULD NOT generate a quoted-pair in a quoted-string except where necessary to quote DQUOTE and backslash octets occurring within that string. A sender SHOULD NOT generate a quoted-pair in a comment except where necessary to quote parentheses ['(' and ')'] and backslash octets occurring within that comment.
+Un remitente NO DEBERÍA generar un par entrecomillado en una cadena entrecomillada excepto donde sea necesario entrecomillar octetos de DQUOTE y barra invertida que ocurran dentro de esa cadena. Un remitente NO DEBERÍA generar un par entrecomillado en un comentario excepto donde sea necesario entrecomillar paréntesis ['(' y ')'] y octetos de barra invertida que ocurran dentro de ese comentario.
 
 @see https://tools.ietf.org/html/rfc7230#section-3.2.6
 
@@ -660,37 +660,37 @@ A sender SHOULD NOT generate a quoted-pair in a quoted-string except where neces
 final protected function getHeaderValue( mixed $values ): array;
 ```
 
-Returns the header values checked for validity
+Devuelve los valores de cabecera comprobados para su validez
 
 ```php
 final protected function getUriHost( UriInterface $uri ): string;
 ```
 
-Return the host and if applicable the port
+Devuelve el servidor, y, si es aplicable, el puerto
 
 ```php
 final protected function populateHeaderCollection( array $headers ): CollectionInterface;
 ```
 
-Populates the header collection
+Rellena la colección de cabeceras
 
 ```php
 final protected function processBody( mixed $body = string, string $mode = string ): StreamInterface;
 ```
 
-Set a valid stream
+Establece un flujo válido
 
 ```php
 final protected function processHeaders( mixed $headers ): CollectionInterface;
 ```
 
-Sets the headers
+Establece las cabeceras
 
 ```php
 final protected function processProtocol( mixed $protocol = string ): string;
 ```
 
-Checks the protocol
+Comprueba el protocolo
 
 <h1 id="http-message-abstractrequest">Abstract Class Phalcon\Http\Message\AbstractRequest</h1>
 
@@ -698,7 +698,7 @@ Checks the protocol
 
 | Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends | AbstractMessage |
 
-Request methods
+Métodos de solicitud
 
 ## Propiedades
 
@@ -740,11 +740,11 @@ public function getMethod(): string
 public function getRequestTarget(): string;
 ```
 
-Retrieves the message's request target.
+Obtiene el destino de la petición del mensaje.
 
-Retrieves the message's request-target either as it will appear (for clients), as it appeared at request (for servers), or as it was specified for the instance (see withRequestTarget()).
+Obtiene el destino de la petición del mensaje tal y como aparecerá (para clientes), como apareció en la petición (para servidores), o como fue especificado por la instancia (ver withRequestTarget()).
 
-In most cases, this will be the origin-form of the composed URI, unless a value was provided to the concrete implementation (see withRequestTarget() below).
+En la mayoría de casos, esta será la forma original de la URL compuesta, a no ser que se proporcione un valor para la implementación concreta (ver withRequestTarget() más abajo).
 
 ```php
 public function getUri(): UriInterface
@@ -754,21 +754,21 @@ public function getUri(): UriInterface
 public function withMethod( mixed $method ): mixed;
 ```
 
-Return an instance with the provided HTTP method.
+Devuelve una instancia con el método HTTP proporcionado.
 
-While HTTP method names are typically all uppercase characters, HTTP method names are case-sensitive and thus implementations SHOULD NOT modify the given string.
+Mientras que los nombres de método HTTP son típicamente todos caracteres mayúsculas, los nombres de método HTTP son sensibles a mayúsculas y minúsculas y por lo tanto las implementaciones NO DEBERÍAN modificar la cadena dada.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the changed request method.
+Este método DEBE ser implementado de tal manera que conserve al inmutabilidad del mensaje, y DEBE devolver una instancia que tenga el método de petición cambiado.
 
 ```php
 public function withRequestTarget( mixed $requestTarget ): mixed;
 ```
 
-Return an instance with the specific request-target.
+Devuelve una instancia con el destino especificado de la petición.
 
-If the request needs a non-origin-form request-target — e.g., for specifying an absolute-form, authority-form, or asterisk-form — this method may be used to create an instance with the specified request-target, verbatim.
+Si la petición necesita un destino de petición no en la forma original — ej., para especificar una forma absoluta, una forma de autoridad, o una forma de asterisco — este método se podría usar para crear una instancia con el destino de petición especificado, literalmente.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the changed request target.
+Este método se DEBE implementar de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga el destino de la petición cambiado.
 
 @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various request-target forms allowed in request messages)
 
@@ -776,17 +776,17 @@ This method MUST be implemented in such a way as to retain the immutability of t
 public function withUri( UriInterface $uri, mixed $preserveHost = bool ): mixed;
 ```
 
-Returns an instance with the provided URI.
+Devuelve una instancia con la URL proporcionada.
 
-This method MUST update the Host header of the returned request by default if the URI contains a host component. If the URI does not contain a host component, any pre-existing Host header MUST be carried over to the returned request.
+Este método DEBE actualizar la cabecera `Host` de la petición devuelta por defecto si la URI contiene un componente servidor. If the URI does not contain a host component, any pre-existing Host header MUST be carried over to the returned request.
 
-You can opt-in to preserving the original state of the Host header by setting `$preserveHost` to `true`. When `$preserveHost` is set to `true`, this method interacts with the Host header in the following ways:
+Puede optar por preservar el estado original de la cabecera `Host` estableciendo `$preserveHost` a `true`. Cuando `$preserveHost` se establece a `true`, este método interactúa con la cabecera `Host` de la siguiente manera:
 
-- If the Host header is missing or empty, and the new URI contains a host component, this method MUST update the Host header in the returned request.
-- If the Host header is missing or empty, and the new URI does not contain a host component, this method MUST NOT update the Host header in the returned request.
-- If a Host header is present and non-empty, this method MUST NOT update the Host header in the returned request.
+- Si la cabecera `Host`no está o está vacía, y la nueva URI contiene un componente servidor, este método DEBE actualizar la cabecera `Host` en la petición devuelta.
+- Si la cabecera `Host` no está o está vacía, y la nueva URI no contiene un componente servidor, este método NO DEBE actualizar la cabecera `Host` en la petición devuelta.
+- Si una cabecera Host está presente y no está vacía, este método NO DEBE actualizar la cabecera `Host` en la petición devuelta.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new UriInterface instance.
+Este método se DEBE implementar de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga la nueva instancia UriInterface.
 
 @see http://tools.ietf.org/html/rfc3986#section-4.3
 
@@ -794,13 +794,13 @@ This method MUST be implemented in such a way as to retain the immutability of t
 final protected function processMethod( mixed $method = string ): string;
 ```
 
-Check the method
+Comprueba el método
 
 ```php
 final protected function processUri( mixed $uri ): UriInterface;
 ```
 
-Sets a valid Uri
+Establece una Uri válida
 
 <h1 id="http-message-exception-invalidargumentexception">Class Phalcon\Http\Message\Exception\InvalidArgumentException</h1>
 
@@ -808,11 +808,11 @@ Sets a valid Uri
 
 | Namespace | Phalcon\Http\Message\Exception | | Uses | Throwable | | Extends | \InvalidArgumentException | | Implements | Throwable |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 <h1 id="http-message-request">Final Class Phalcon\Http\Message\Request</h1>
 
@@ -828,7 +828,7 @@ PSR-7 Request
 public function __construct( string $method = string, mixed $uri = null, mixed $body = string, mixed $headers = [] );
 ```
 
-Request constructor.
+Constructor Request.
 
 <h1 id="http-message-requestfactory">Final Class Phalcon\Http\Message\RequestFactory</h1>
 
@@ -844,7 +844,7 @@ PSR-17 RequestFactory
 public function createRequest( string $method, mixed $uri ): RequestInterface;
 ```
 
-Create a new request.
+Crea una nueva petición.
 
 <h1 id="http-message-response">Final Class Phalcon\Http\Message\Response</h1>
 
@@ -892,7 +892,7 @@ protected statusCode = 200;
 public function __construct( mixed $body = string, int $code = int, array $headers = [] );
 ```
 
-Response constructor.
+Constructor Response.
 
 ```php
 public function getReasonPhrase(): string
@@ -906,11 +906,11 @@ public function getStatusCode(): int
 public function withStatus( mixed $code, mixed $reasonPhrase = string ): Response;
 ```
 
-Return an instance with the specified status code and, optionally, reason phrase.
+Devuelve una instancia con el código de estado especificado y, opcionalmente, la frase de razón.
 
-If no reason phrase is specified, implementations MAY choose to default to the RFC 7231 or IANA recommended reason phrase for the response's status code.
+Si no se especifica una frase de razón, las implementaciones PUEDEN elegir por defecto la frase de razón recomendada por RFC 7231 o IANA para el código de estado de la respuesta.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated status and reason phrase.
+Este método DEBE implementarse de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tiene el estado y frase de razón actualizados.
 
 @see http://tools.ietf.org/html/rfc7231#section-6 @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 
@@ -918,13 +918,13 @@ This method MUST be implemented in such a way as to retain the immutability of t
 protected function getPhrases(): array;
 ```
 
-Returns the list of status codes available
+Devuelve la lista de códigos de estado disponibles
 
 ```php
 protected function processCode( mixed $code, mixed $phrase = string ): void;
 ```
 
-Set a valid status code and phrase
+Establece un código de estado y frase válidos
 
 <h1 id="http-message-responsefactory">Final Class Phalcon\Http\Message\ResponseFactory</h1>
 
@@ -940,7 +940,7 @@ PSR-17 ResponseFactory
 public function createResponse( int $code = int, string $reasonPhrase = string ): ResponseInterface;
 ```
 
-Create a new response.
+Crea una nueva respuesta.
 
 <h1 id="http-message-serverrequest">Final Class Phalcon\Http\Message\ServerRequest</h1>
 
@@ -1032,25 +1032,25 @@ protected uploadedFiles;
 public function __construct( string $method = string, mixed $uri = null, array $serverParams = [], mixed $body = string, mixed $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], mixed $parsedBody = null, string $protocol = string );
 ```
 
-ServerRequest constructor.
+Constructor ServerRequest.
 
 ```php
 public function getAttribute( mixed $name, mixed $defaultValue = null ): mixed;
 ```
 
-Retrieve a single derived request attribute.
+Devuelve un único atributo de la petición derivada.
 
-Retrieves a single derived request attribute as described in getAttributes(). If the attribute has not been previously set, returns the default value as provided.
+Rescupera un único atributo de la petición derivada como se describe en getAttributes(). Si el atributo no se ha establecido previamente, devuelve el valor predeterminado tal como se haya proporcionado.
 
-This method obviates the need for a hasAttribute() method, as it allows specifying a default value to return if the attribute is not found.
+Este método evita la necesidad del método hasAttribute(), ya que permite especificar un valor predeterminado a devolver si el atributo no se encuentra.
 
 ```php
 public function getAttributes(): array;
 ```
 
-Retrieve attributes derived from the request.
+Recupera atributos derivados de la petición.
 
-The request 'attributes' may be used to allow injection of any parameters derived from the request: e.g., the results of path match operations; the results of decrypting cookies; the results of deserializing non-form-encoded message bodies; etc. Attributes will be application and request specific, and CAN be mutable.
+Los 'atributos' de la petición se pueden usar para permitir la inyección de cualquier parámetro derivado de la petición: ej, los resultados de operaciones de coincidencia de rutas; los resultados de desencriptar cookies; los resultados de deserializar cuerpos de mensajes no-codificado-form; etc. Los atributos serán específicos de la aplicación y la petición, y PUEDEN ser mutables.
 
 ```php
 public function getCookieParams(): array
@@ -1076,69 +1076,69 @@ public function getUploadedFiles(): array
 public function withAttribute( mixed $name, mixed $value ): ServerRequest;
 ```
 
-Return an instance with the specified derived request attribute.
+Devuelve una instancia con el atributo especificado de la petición derivada.
 
-This method allows setting a single derived request attribute as described in getAttributes().
+Este método permite establecer un único atributo de la petición derivada como se describe en getAttributes().
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated attribute.
+Este método se DEBE implementar de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga el atributo actualizado.
 
 ```php
 public function withCookieParams( array $cookies ): ServerRequest;
 ```
 
-Return an instance with the specified cookies.
+Devuelve una instancia con las cookies especificadas.
 
-The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST be compatible with the structure of $_COOKIE. Typically, this data will be injected at instantiation.
+NO ES NECESARIO que los datos vengan del superglobal $_COOKIE, pero DEBEN ser compatibles con la estructura de $_COOKIE. Normalmente, estos datos serán inyectados en la instanciación.
 
-This method MUST NOT update the related Cookie header of the request instance, nor related values in the server params.
+Este método NO DEBE actualizar la cabecera `Cookie` relacionada de la petición, ni los valores relacionados en los parámetros del servidor.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated cookie values.
+Este método se DEBE implementar de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga los valores de cookie actualizados.
 
 ```php
 public function withParsedBody( mixed $data ): ServerRequest;
 ```
 
-Return an instance with the specified body parameters.
+Devuelve una instancia con los parámetros del cuerpo especificados.
 
-These MAY be injected during instantiation.
+Estos se PUEDE inyectar durante la instanciación.
 
-If the request Content-Type is either application/x-www-form-urlencoded or multipart/form-data, and the request method is POST, use this method ONLY to inject the contents of $_POST.
+Si el `Content-Type` de la petición es `application/x-www-form-urlencoded` o `multipart/form-data`, y el método de la petición es POST, use este método SOLO para inyectar los contenidos de $_POST.
 
-The data IS NOT REQUIRED to come from $_POST, but MUST be the results of deserializing the request body content. Deserialization/parsing returns structured data, and, as such, this method ONLY accepts arrays or objects, or a null value if nothing was available to parse.
+NO ES NECESARIO que los datos vengan de $_POST, pero DEBEN ser el resultado de deserializar el contenido del cuerpo de la petición. La deserialización/análisis devuelve datos estructurados, y, como tal, este método SOLO acepta vectores u objetos, o un valor nulo si no hay nada disponible para analizar.
 
-As an example, if content negotiation determines that the request data is a JSON payload, this method could be used to create a request instance with the deserialized parameters.
+Como ejemplo, si la negociación de contenido determina que los datos solicitados son una carga útil JSON, este método se podría usar para crear una instancia de petición con los parámetros deserializados.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated body parameters.
+Este método se DEBE implementar de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga los parámetros del cuerpo actualizados.
 
 ```php
 public function withQueryParams( array $query ): ServerRequest;
 ```
 
-Return an instance with the specified query string arguments.
+Devuelve una instancia con los argumentos de cadena de la consulta especificados.
 
-These values SHOULD remain immutable over the course of the incoming request. They MAY be injected during instantiation, such as from PHP's $_GET superglobal, or MAY be derived from some other value such as the URI. In cases where the arguments are parsed from the URI, the data MUST be compatible with what PHP's parse_str() would return for purposes of how duplicate query parameters are handled, and how nested sets are handled.
+Estos valores DEBERÍAN permanecer inmutables durante el transcurso de la petición entrante. Se PUEDEN inyectar durante la instanciación, como por ejemplo desde el superglobal $_GET de PHP, o se PUEDEN derivar desde algún otro valor como la URI. En los casos donde los argumentos son analizados desde la URI, los datos DEBEN ser compatibles con lo que la función `parse_str()` de PHP devolvería para fijarse en cómo se manejan los parámetros de consulta duplicados, y como se manejan los conjuntos anidados.
 
-Setting query string arguments MUST NOT change the URI stored by the request, nor the values in the server params.
+Establecer argumentos de cadena de consulta NO DEBE cambiar la URI almacenada por la petición, ni los valores en los parámetros del servidor.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated query string arguments.
+Este método se DEBE implementar de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga los argumentos de cadena de consulta actualizados.
 
 ```php
 public function withUploadedFiles( array $uploadedFiles ): ServerRequest;
 ```
 
-Create a new instance with the specified uploaded files.
+Crea una nueva instancia con los ficheros subidos especificados.
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated body parameters.
+Este método se DEBE implementar de tal forma que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que tenga los parámetros del cuerpo actualizados.
 
 ```php
 public function withoutAttribute( mixed $name ): ServerRequest;
 ```
 
-Return an instance that removes the specified derived request attribute.
+Devuelve una instancia que elimina el atributo especificado de la petición derivada.
 
-This method allows removing a single derived request attribute as described in getAttributes().
+Este método permite eliminar un único atributo de la petición derivada como se describe en getAttributes().
 
-This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that removes the attribute.
+Este método se DEBE implementar de tal manera que conserve la inmutabilidad del mensaje, y DEBE devolver una instancia que elimine el atributo.
 
 <h1 id="http-message-serverrequestfactory">Class Phalcon\Http\Message\ServerRequestFactory</h1>
 
@@ -1154,23 +1154,23 @@ PSR-17 ServerRequestFactory
 public function createServerRequest( string $method, mixed $uri, array $serverParams = [] ): ServerRequestInterface;
 ```
 
-Create a new server request.
+Crea una nueva petición de servidor.
 
-Note that server-params are taken precisely as given - no parsing/processing of the given values is performed, and, in particular, no attempt is made to determine the HTTP method or URI, which must be provided explicitly.
+Tenga en cuenta que los parámetros de servidor se toman exactamente tal como se dan - no se realiza ningún análisis/procesamiento de los valores dados, y, en particular, no se intenta determinar el método HTTP o URI, que se debe proporcionar explícitamente.
 
 ```php
 public function load( array $server = null, array $get = null, array $post = null, array $cookies = null, array $files = null ): ServerRequest;
 ```
 
-Create a request from the supplied superglobal values.
+Crea una petición a partir de los valores superglobales proporcionados.
 
-If any argument is not supplied, the corresponding superglobal value will be used.
+Si no se proporciona algún argumento, se usará el valor superglobal correspondiente.
 
 ```php
 protected function getHeaders();
 ```
 
-Returns the apache_request_headers if it exists
+Devuelve el apache_request_headers si existe
 
 <h1 id="http-message-stream">Class Phalcon\Http\Message\Stream</h1>
 
@@ -1201,13 +1201,13 @@ protected stream;
 public function __construct( mixed $stream, string $mode = string );
 ```
 
-Stream constructor.
+Constructor Stream.
 
 ```php
 public function __destruct();
 ```
 
-Closes the stream when the destructed.
+Cierra el flujo cuando se destruye.
 
 ```php
 public function __toString(): string;
@@ -1215,11 +1215,11 @@ public function __toString(): string;
 
 Lee todos los datos del flujo en un cadena, de principio a fin.
 
-This method MUST attempt to seek to the beginning of the stream before reading data and read the stream until the end is reached.
+Este método DEBE intentar buscar el principio del flujo antes de leer datos y leer el flujo hasta alcanzar el final.
 
-Warning: This could attempt to load a large amount of data into memory.
+Advertencia: Esto podría intentar cargar una gran cantidad de datos en memoria.
 
-This method MUST NOT raise an exception in order to conform with PHP's string casting operations.
+Este método NO DEBE lanzar una excepción para cumplir con las operaciones de *casting* de cadena de PHP.
 
 @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
 
@@ -1241,45 +1241,45 @@ Después de que el flujo haya sido desvinculado, el flujo queda en un estado inu
 public function eof(): bool;
 ```
 
-Returns true if the stream is at the end of the stream.
+Devuelve `true` si el flujo está al final del flujo.
 
 ```php
 public function getContents(): string;
 ```
 
-Returns the remaining contents in a string
+Devuelve el contenido restante en una cadena
 
 ```php
 public function getMetadata( mixed $key = null );
 ```
 
-Get stream metadata as an associative array or retrieve a specific key.
+Obtiene metadatos del flujo como vector asociativo u obtiene una clave específica.
 
-The keys returned are identical to the keys returned from PHP's stream_get_meta_data() function.
+Las claves devueltas son idénticas a las claves devueltas por la función stream_get_meta_data() de PHP.
 
 ```php
 public function getSize(): null | int;
 ```
 
-Get the size of the stream if known.
+Obtiene el tamaño del flujo si se conoce.
 
 ```php
 public function isReadable(): bool;
 ```
 
-Returns whether or not the stream is readable.
+Devuelve si el flujo es legible o no.
 
 ```php
 public function isSeekable(): bool;
 ```
 
-Returns whether or not the stream is seekable.
+Devuelve si el flujo es buscable o no.
 
 ```php
 public function isWritable(): bool;
 ```
 
-Returns whether or not the stream is writable.
+Devuelve si el flujo es escribible o no.
 
 ```php
 public function read( mixed $length ): string;
@@ -1293,7 +1293,7 @@ public function rewind(): void;
 
 Busca el principio del flujo.
 
-If the stream is not seekable, this method will raise an exception; otherwise, it will perform a seek(0).
+Si el flujo no se puede buscar, éste método lanzará una excepción; de lo contrario, realizará un seek(0).
 
 ```php
 public function seek( mixed $offset, mixed $whence = int ): void;
@@ -1305,13 +1305,13 @@ Intenta colocarse en una posición del flujo.
 public function setStream( mixed $stream, string $mode = string ): void;
 ```
 
-Sets the stream - existing instance
+Establece el flujo - instancia existente
 
 ```php
 public function tell(): int;
 ```
 
-Returns the current position of the file read/write pointer
+Devuelve la posición actual del puntero de lectura/escritura del fichero
 
 ```php
 public function write( mixed $data ): int;
@@ -1325,9 +1325,9 @@ Escribe datos al flujo.
 
 | Namespace | Phalcon\Http\Message\Stream | | Uses | Phalcon\Http\Message\Stream | | Extends | Stream |
 
-Describes a data stream from "php://input"
+Describe un flujo de datos de "php://input"
 
-Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
+Por lo general, una instancia envolverá un flujo PHP; esta interfaz proporciona una envoltura sobre las operaciones más comunes, incluyendo la serialización de todo el flujo a una cadena.
 
 ## Propiedades
 
@@ -1350,7 +1350,7 @@ private eof = false;
 public function __construct();
 ```
 
-Input constructor.
+Constructor Input.
 
 ```php
 public function __toString(): string;
@@ -1358,11 +1358,11 @@ public function __toString(): string;
 
 Lee todos los datos del flujo en un cadena, de principio a fin.
 
-This method MUST attempt to seek to the beginning of the stream before reading data and read the stream until the end is reached.
+Este método DEBE intentar buscar el principio del flujo antes de leer datos y leer el flujo hasta alcanzar el final.
 
-Warning: This could attempt to load a large amount of data into memory.
+Advertencia: Esto podría intentar cargar una gran cantidad de datos en memoria.
 
-This method MUST NOT raise an exception in order to conform with PHP's string casting operations.
+Este método NO DEBE lanzar una excepción para cumplir con las operaciones de *casting* de cadena de PHP.
 
 @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
 
@@ -1370,7 +1370,7 @@ This method MUST NOT raise an exception in order to conform with PHP's string ca
 public function getContents( int $length = int ): string;
 ```
 
-Returns the remaining contents in a string
+Devuelve el contenido restante en una cadena
 
 @throws RuntimeException if unable to read. @throws RuntimeException if error occurs while reading.
 
@@ -1378,7 +1378,7 @@ Returns the remaining contents in a string
 public function isWritable(): bool;
 ```
 
-Returns whether or not the stream is writeable.
+Devuelve si el flujo es escribible o no.
 
 ```php
 public function read( mixed $length ): string;
@@ -1392,9 +1392,9 @@ Lee datos desde el flujo.
 
 | Namespace | Phalcon\Http\Message\Stream | | Uses | Phalcon\Http\Message\Stream | | Extends | Stream |
 
-Describes a data stream from "php://memory"
+Describe un flujo de datos de "php://memory"
 
-Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
+Por lo general, una instancia envolverá un flujo PHP; esta interfaz proporciona una envoltura sobre las operaciones más comunes, incluyendo la serialización de todo el flujo a una cadena.
 
 ## Métodos
 
@@ -1410,9 +1410,9 @@ Constructor
 
 | Namespace | Phalcon\Http\Message\Stream | | Uses | Phalcon\Http\Message\Stream | | Extends | Stream |
 
-Describes a data stream from "php://temp"
+Describe un flujo de datos de "php://temp"
 
-Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
+Por lo general, una instancia envolverá un flujo PHP; esta interfaz proporciona una envoltura sobre las operaciones más comunes, incluyendo la serialización de todo el flujo a una cadena.
 
 ## Métodos
 
@@ -1436,27 +1436,27 @@ PSR-17 StreamFactory
 public function createStream( string $content = string ): StreamInterface;
 ```
 
-Create a new stream from a string.
+Crea un nuevo flujo a partir de una cadena.
 
-The stream SHOULD be created with a temporary resource.
+El flujo se DEBERÍA crear con un recurso temporal.
 
 ```php
 public function createStreamFromFile( string $filename, string $mode = string ): StreamInterface;
 ```
 
-Create a stream from an existing file.
+Crea un flujo desde un fichero existente.
 
-The file MUST be opened using the given mode, which may be any mode supported by the `fopen` function.
+El fichero se DEBE abrir usando el modo dado, que puede ser cualquier modo soportado por la función `fopen`.
 
-The `$filename` MAY be any string supported by `fopen()`.
+`$filename` PUEDE ser cualquier cadena soportada por `fopen()`.
 
 ```php
 public function createStreamFromResource( mixed $phpResource ): StreamInterface;
 ```
 
-Create a new stream from an existing resource.
+Crea un nuevo flujo desde un recurso existente.
 
-The stream MUST be readable and may be writable.
+El flujo DEBE ser legible y puede ser escribible.
 
 <h1 id="http-message-uploadedfile">Final Class Phalcon\Http\Message\UploadedFile</h1>
 
@@ -1554,7 +1554,7 @@ private stream;
 public function __construct( mixed $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null );
 ```
 
-UploadedFile constructor.
+Constructor UploadedFile.
 
 ```php
 public function getClientFilename(): string | null
@@ -1576,29 +1576,29 @@ public function getSize(): int | null
 public function getStream(): mixed;
 ```
 
-Retrieve a stream representing the uploaded file.
+Devuelve un flujo que representa al fichero subido.
 
-This method MUST return a StreamInterface instance, representing the uploaded file. The purpose of this method is to allow utilizing native PHP stream functionality to manipulate the file upload, such as stream_copy_to_stream() (though the result will need to be decorated in a native PHP stream wrapper to work with such functions).
+Este método DEBE devolver una instancia `StreamInterface`, que representa al fichero subido. El propósito de este método es permitir utilizar funcionalidad de flujo de PHP nativa para manipular la subida de ficheros, tal como stream_copy_to_stream() (aunque el resultado necesitará ser decorado en un contenedor nativo de flujo de PHP para trabajar con tales funciones).
 
-If the moveTo() method has been called previously, this method MUST raise an exception.
+Si se ha llamado anteriormente al método moveTo(), este método DEBE lanzar una excepción.
 
 ```php
 public function moveTo( mixed $targetPath ): void;
 ```
 
-Move the uploaded file to a new location.
+Mueve un fichero subido a una nueva ubicación.
 
-Use this method as an alternative to move_uploaded_file(). This method is guaranteed to work in both SAPI and non-SAPI environments. Implementations must determine which environment they are in, and use the appropriate method (move_uploaded_file(), rename(), or a stream operation) to perform the operation.
+Use este método como alternativa a move_uploaded_file(). Se garantiza que este método funciona tanto en entornos SAPI como no SAPI. Las implementaciones debe determinar en qué entorno están, y usar el método apropiado (move_uploaded_file(), rename(), o una operación de flujo) para realizar la operación.
 
-$targetPath may be an absolute path, or a relative path. If it is a relative path, resolution should be the same as used by PHP's rename() function.
+$targetPath puede ser una ruta absoluta, o una ruta relativa. Si es una ruta relativa, la resolución debería ser la misma que la usada por la función `rename()` de PHP.
 
-The original file or stream MUST be removed on completion.
+El fichero original o flujo se DEBE eliminar al completarse.
 
-If this method is called more than once, any subsequent calls MUST raise an exception.
+Si este método se llama más de una vez, cualquier llamada posterior DEBE lanzar una excepción.
 
-When used in an SAPI environment where $_FILES is populated, when writing files via moveTo(), is_uploaded_file() and move_uploaded_file() SHOULD be used to ensure permissions and upload status are verified correctly.
+Cuando se usa un entorno SAPI donde se rellena $_FILES, cuando se escriben los ficheros vía moveTo(), is_uploaded_file() y move_uploaded_file() se DEBERÍAN usar para asegurar que los permisos y el estado de subida son verificados correctamente.
 
-If you wish to move to a stream, use getStream(), as SAPI operations cannot guarantee writing to stream destinations.
+Si desea moverse a un flujo, use getStream(), ya que las operaciones SAPI no pueden garantizar la escritura a destinos de flujo.
 
 @see http://php.net/is_uploaded_file @see http://php.net/move_uploaded_file
 
@@ -1616,9 +1616,9 @@ PSR-17 UploadedFileFactory
 public function createUploadedFile( StreamInterface $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null ): UploadedFileInterface;
 ```
 
-Create a new uploaded file.
+Crea un nuevo fichero subido.
 
-If a size is not provided it will be determined by checking the size of the stream.
+Si no se proporciona un tamaño, se determinará comprobando el tamaño del flujo.
 
 @link http://php.net/manual/features.file-upload.post-method.php @link http://php.net/manual/features.file-upload.errors.php
 
@@ -1720,21 +1720,21 @@ protected user = ;
 public function __construct( string $uri = string );
 ```
 
-Uri constructor.
+Constructor Uri.
 
 ```php
 public function __toString(): string;
 ```
 
-Return the string representation as a URI reference.
+Devuelve la representación de cadena como referencia URI.
 
-Depending on which components of the URI are present, the resulting string is either a full URI or relative reference according to RFC 3986, Section 4.1. The method concatenates the various components of the URI, using the appropriate delimiters
+Dependiendo de qué componentes de la URI estén presentes, la cadena resultante es una referencia completa o relativa de URI según RFC 3986, Sección 4.1. Este método concatena los distintos componentes de la URI, usando los delimitadores apropiados
 
 ```php
 public function getAuthority(): string;
 ```
 
-Retrieve the authority component of the URI.
+Obtiene el componente autoridad de la URI.
 
 ```php
 public function getFragment()
@@ -1764,91 +1764,91 @@ public function getScheme()
 public function getUserInfo(): string;
 ```
 
-Retrieve the user information component of the URI.
+Devuelve el componente de información de usuario de la URI.
 
-If no user information is present, this method MUST return an empty string.
+Si no está presente la información de usuario, este método DEBE devolver una cadena vacía.
 
-If a user is present in the URI, this will return that value; additionally, if the password is also present, it will be appended to the user value, with a colon (":") separating the values.
+Si un usuario está presente en la URI, se devolverá ese valor; adicionalmente, si la contraseña también está presente, se añadirá al valor del usuario, con dos puntos (":") separando los valores.
 
-The trailing "@" character is not part of the user information and MUST NOT be added.
+El caracter "@" final no es parte de la información de usuario y NO DEBE ser añadido.
 
 ```php
 public function withFragment( mixed $fragment ): Uri;
 ```
 
-Return an instance with the specified URI fragment.
+Devuelve una instancia con el fragmento de URI especificado.
 
-This method MUST retain the state of the current instance, and return an instance that contains the specified URI fragment.
+Este método DEBE mantener el estado de la instancia actual, y devolver una instancia que contenga el fragmento URI especificado.
 
-Users can provide both encoded and decoded fragment characters. Implementations ensure the correct encoding as outlined in getFragment().
+Los usuarios pueden proporcionar tanto caracteres de fragmento codificados como decodificados. Las implementaciones aseguran la correcta codificación como se describe en `getFragment()`.
 
-An empty fragment value is equivalent to removing the fragment.
+Un valor de fragmento vacío es equivalente a eliminar el fragmento.
 
 ```php
 public function withHost( mixed $host ): Uri;
 ```
 
-Return an instance with the specified host.
+Devuelve una instancia con el servidor especificado.
 
-This method MUST retain the state of the current instance, and return an instance that contains the specified host.
+Este método DEBE conservar el estado de la instancia actual, y devolver una instancia que contenga el servidor especificado.
 
-An empty host value is equivalent to removing the host.
+Un valor de servidor vacío es equivalente a eliminar el servidor.
 
 ```php
 public function withPath( mixed $path ): Uri;
 ```
 
-Return an instance with the specified path.
+Devuelve una instancia con la ruta especificada.
 
-This method MUST retain the state of the current instance, and return an instance that contains the specified path.
+Este método DEBE conservar el estado de la instancia actual, y devolver una instancia que contenga la ruta especificada.
 
-The path can either be empty or absolute (starting with a slash) or rootless (not starting with a slash). Implementations MUST support all three syntaxes.
+La ruta puede estar vacía o ser absoluta (empezando con una barra) o sin raíz (no empezando con una barra). Las implementaciones DEBEN soportar las tres sintaxis.
 
-If an HTTP path is intended to be host-relative rather than path-relative then it must begin with a slash ("/"). HTTP paths not starting with a slash are assumed to be relative to some base path known to the application or consumer.
+Si una ruta HTTP está destinada a ser relativa al servidor en lugar de relativa a la ruta entonces debe empezar con una barra ("/"). Las rutas HTTP que no empiezan con una barra son relativas a alguna ruta base conocida por la aplicación o consumidor.
 
-Users can provide both encoded and decoded path characters. Implementations ensure the correct encoding as outlined in getPath().
+Los usuarios pueden proporcionar tanto caracteres de ruta codificados como decodificados. Las implementaciones se aseguran de la correcta codificación como se describe en `getPath()`.
 
 ```php
 public function withPort( mixed $port ): Uri;
 ```
 
-Return an instance with the specified port.
+Devuelve una instancia con el puerto especificado.
 
-This method MUST retain the state of the current instance, and return an instance that contains the specified port.
+Este método DEBE conservar el estado de la instancia actual, y devolver una instancia que contenga el puerto especificado.
 
-Implementations MUST raise an exception for ports outside the established TCP and UDP port ranges.
+Las implementaciones DEBEN lanzar una excepción para puertos fuera de los rangos de puertos TCP y UDP establecidos.
 
-A null value provided for the port is equivalent to removing the port information.
+Un valor nulo proporcionado para el puerto es equivalente a eliminar la información del puerto.
 
 ```php
 public function withQuery( mixed $query ): Uri;
 ```
 
-Return an instance with the specified query string.
+Devuelve una instancia con la cadena de consulta especificada.
 
-This method MUST retain the state of the current instance, and return an instance that contains the specified query string.
+Este método DEBE conservar el estado de la instancia actual, y devolver una instancia que contenga la cadena de consulta especificada.
 
-Users can provide both encoded and decoded query characters. Implementations ensure the correct encoding as outlined in getQuery().
+Los usuarios pueden proporcionar tanto caracteres de consulta codificados como decodificados. Las implementaciones aseguran la correcta codificación como se describe en `getQuery()`.
 
-An empty query string value is equivalent to removing the query string.
+Una cadena de consulta vacía es equivalente a eliminar la cadena de consulta.
 
 ```php
 public function withScheme( mixed $scheme ): Uri;
 ```
 
-Return an instance with the specified scheme.
+Devuelve una instancia con el esquema especificado.
 
-This method MUST retain the state of the current instance, and return an instance that contains the specified scheme.
+Este método DEBE conservar el estado de la instancia actual, y devolver una instancia que contenga el esquema especificado.
 
-Implementations MUST support the schemes "http" and "https" case insensitively, and MAY accommodate other schemes if required.
+Las implementaciones DEBEN soportar los esquemas "http" y "https" insensibles a mayúsculas y minúsculas, y PUEDEN incluir otros esquemas si se requiere.
 
-An empty scheme is equivalent to removing the scheme.
+Un esquema vacío es equivalente a eliminar el esquema.
 
 ```php
 public function withUserInfo( mixed $user, mixed $password = null ): Uri;
 ```
 
-Return an instance with the specified user information.
+Devuelve una instancia con la información de usuario especificada.
 
 <h1 id="http-message-urifactory">Final Class Phalcon\Http\Message\UriFactory</h1>
 
@@ -1864,7 +1864,7 @@ PSR-17 UriFactory
 public function createUri( string $uri = string ): UriInterface;
 ```
 
-Returns a Locator object with all the helpers defined in anonynous functions
+Devuelve un objeto Localizador con todos los ayudantes definidos en funciones anónimas
 
 <h1 id="http-request">Class Phalcon\Http\Request</h1>
 
@@ -1872,9 +1872,9 @@ Returns a Locator object with all the helpers defined in anonynous functions
 
 | Namespace | Phalcon\Http | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Helper\Json, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass | | Extends | AbstractInjectionAware | | Implements | RequestInterface |
 
-Encapsulates request information for easy and secure access from application controllers.
+Encapsula la información de la solicitud para un acceso fácil y seguro desde los controladores de la aplicación.
 
-The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.
+El objeto de solicitud es un objeto de valor simple que se pasa entre las clases del despachador y controlador. Empaqueta el entorno de solicitud HTTP.
 
 ```php
 use Phalcon\Http\Request;
@@ -1930,7 +1930,7 @@ private strictHostCheck = false;
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned
+Obtiene una variable del superglobal $_REQUEST aplicando filtros si es necesario. Si no se pasan parámetros se devuelve el superglobal $_REQUEST
 
 ```php
 // Returns value from $_REQUEST["user_email"] without sanitizing
@@ -1944,91 +1944,91 @@ $userEmail = $request->get("user_email", "email");
 public function getAcceptableContent(): array;
 ```
 
-Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Obtiene un vector con tipos mime y su calidad aceptada por el navegador/cliente desde _SERVER["HTTP_ACCEPT"]
 
 ```php
 public function getBasicAuth(): array | null;
 ```
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
+Obtiene información de autenticación aceptada por el navegador/cliente desde $_SERVER["PHP_AUTH_USER"]
 
 ```php
 public function getBestAccept(): string;
 ```
 
-Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Obtiene el mejor tipo mime aceptado por el navegador/cliente desde _SERVER["HTTP_ACCEPT"]
 
 ```php
 public function getBestCharset(): string;
 ```
 
-Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Obtiene el mejor conjunto de caracteres aceptado por el navegador/cliente desde _SERVER["HTTP_ACCEPT_CHARSET"]
 
 ```php
 public function getBestLanguage(): string;
 ```
 
-Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Obtiene el mejor idioma aceptado por el navegador/cliente desde _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 ```php
 public function getClientAddress( bool $trustForwardedHeader = bool ): string | bool;
 ```
 
-Gets most possible client IPv4 Address. This method searches in `$_SERVER["REMOTE_ADDR"]` and optionally in `$_SERVER["HTTP_X_FORWARDED_FOR"]`
+Obtiene la mayoría posible de direcciones IPv4 de clientes. Este método busca en `$_SERVER["REMOTE_ADDR"]` y opcionalmente en `$_SERVER["HTTP_X_FORWARDED_FOR"]`
 
 ```php
 public function getClientCharsets(): array;
 ```
 
-Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Obtiene un vector del conjunto de caracteres y su calidad aceptada por el navegador/cliente desde _SERVER["HTTP_ACCEPT_CHARSET"]
 
 ```php
 public function getContentType(): string | null;
 ```
 
-Gets content type which request has been made
+Obtiene el tipo de contenido en el que se hizo la solicitud
 
 ```php
 public function getDigestAuth(): array;
 ```
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+Obtiene información de autenticación aceptada por el navegador/cliente desde $_SERVER["PHP_AUTH_DIGEST"]
 
 ```php
 public function getFilteredPost( string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Retrieves a post value always sanitized with the preset filters
+Obtiene un valor `post` siempre saneado con los filtros preestablecidos
 
 ```php
 public function getFilteredPut( string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Retrieves a put value always sanitized with the preset filters
+Obtiene un valor `put` siempre saneado con los filtros preestablecidos
 
 ```php
 public function getFilteredQuery( string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Retrieves a query/get value always sanitized with the preset filters
+Obtiene una valor de consulta o `get` siempre saneado con los filtros preestablecidos
 
 ```php
 public function getHTTPReferer(): string;
 ```
 
-Gets web page that refers active request. ie: http://www.google.com
+Obtiene la página web de referencia en la petición activa. ie: http://www.google.com
 
 ```php
 final public function getHeader( string $header ): string;
 ```
 
-Gets HTTP header from request data
+Obtiene la cabecera HTTP de los datos de la solicitud
 
 ```php
 public function getHeaders(): array;
 ```
 
-Returns the available headers in the request
+Devuelve las cabeceras disponibles en la petición
 
 <code>
 $_SERVER = [
@@ -2045,17 +2045,17 @@ $_SERVER = [
 public function getHttpHost(): string;
 ```
 
-Gets host name used by the request.
+Obtiene el nombre de servidor usado por la petición.
 
-`Request::getHttpHost` trying to find host name in following order:
+`Request::getHttpHost` intenta encontrar el nombre del servidor en el siguiente orden:
 
 - `$_SERVER["HTTP_HOST"]`
 - `$_SERVER["SERVER_NAME"]`
 - `$_SERVER["SERVER_ADDR"]`
 
-Optionally `Request::getHttpHost` validates and clean host name. The `Request::$strictHostCheck` can be used to validate host name.
+Opcionalmente `Request::getHttpHost` valida y limpia el nombre del servidor. Se puede usar `Request::$strictHostCheck` para validar el nombre del servidor.
 
-Note: validation and cleaning have a negative performance impact because they use regular expressions.
+Nota: la validación y limpieza pueden tener un impacto negativo en el rendimiento porque usan expresiones regulares.
 
 ```php
 use Phalcon\Http\Request;
@@ -2084,37 +2084,37 @@ public function getHttpMethodParameterOverride(): bool
 public function getJsonRawBody( bool $associative = bool ): \stdClass | array | bool;
 ```
 
-Gets decoded JSON HTTP raw request body
+Obtiene el cuerpo de la petición HTTP sin procesar decodificado en JSON
 
 ```php
 public function getLanguages(): array;
 ```
 
-Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Obtiene el vector de idiomas y su calidad aceptada por el navegador/cliente desde _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 ```php
 final public function getMethod(): string;
 ```
 
-Gets HTTP method which request has been made
+Obtiene el método HTTP en el que se ha hecho la petición
 
-If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method.
+Si se establece la cabecera X-HTTP-Method-Override, y el método es POST, entonces se usa para determinar el método HTTP previsto "real".
 
-The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called.
+El parámetro de petición _method también se puede usar para determinar el método HTTP, pero sólo si se ha llamado a setHttpMethodParameterOverride(true).
 
-The method is always an uppercased string.
+El método siempre es una cadena en mayúscula.
 
 ```php
 public function getPort(): int;
 ```
 
-Gets information about the port on which the request is made.
+Obtiene información sobre el puerto en el cual se realizó la solicitud.
 
 ```php
 public function getPost( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned
+Obtiene una variable del superglobal $_POST aplicando filtros si es necesario. Si no se proporcionan parámetros se devuelve el superglobal $_POST
 
 ```php
 // Returns value from $_POST["user_email"] without sanitizing
@@ -2128,11 +2128,11 @@ $userEmail = $request->getPost("user_email", "email");
 public function getPreferredIsoLocaleVariant(): string;
 ```
 
-Gets the preferred ISO locale variant.
+Obtiene la variante de configuración regional ISO preferida.
 
-Gets the preferred locale accepted by the client from the "Accept-Language" request HTTP header and returns the base part of it i.e. `en` instead of `en-US`.
+Obtiene la variante de configuración regional preferida aceptada por el cliente desde la cabecera HTTP de la solicitud "Accept-Language" y devuelve parte de su base, ej. `en` en vez de `en-US`.
 
-Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
+Nota: Este método depende de la cabecera `$_SERVER["HTTP_ACCEPT_LANGUAGE"]`.
 
 @link https://www.iso.org/standard/50707.html
 
@@ -2140,7 +2140,7 @@ Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
 public function getPut( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets a variable from put request
+Obtiene una variable de la solicitud `put`
 
 ```php
 // Returns value from $_PUT["user_email"] without sanitizing
@@ -2154,7 +2154,7 @@ $userEmail = $request->getPut("user_email", "email");
 public function getQuery( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned
+Obtiene una variable del superglobal $_GET aplicando filtros si es necesario. Si no se proporcionan parámetros se devuelve el superglobal $_GET
 
 ```php
 // Returns value from $_GET["id"] without sanitizing
@@ -2171,37 +2171,37 @@ $id = $request->getQuery("id", null, 150);
 public function getRawBody(): string;
 ```
 
-Gets HTTP raw request body
+Obtiene el cuerpo de solicitud HTTP sin procesar
 
 ```php
 public function getScheme(): string;
 ```
 
-Gets HTTP schema (http/https)
+Obtiene el esquema HTTP (http/https)
 
 ```php
 public function getServer( string $name ): string | null;
 ```
 
-Gets variable from $_SERVER superglobal
+Obtiene una variable del superglobal $_SERVER
 
 ```php
 public function getServerAddress(): string;
 ```
 
-Gets active server address IP
+Obtiene la IP de la dirección del servidor activo
 
 ```php
 public function getServerName(): string;
 ```
 
-Gets active server name
+Obtiene el nombre del servidor activo
 
 ```php
 final public function getURI( bool $onlyPath = bool ): string;
 ```
 
-Gets HTTP URI which request has been made to
+Obtiene el HTTP URI en el cual se hizo la solicitud
 
 ```php
 // Returns /some/path?with=queryParams
@@ -2215,157 +2215,157 @@ $uri = $request->getURI(true);
 public function getUploadedFiles( bool $onlySuccessful = bool, bool $namedKeys = bool ): FileInterface[];
 ```
 
-Gets attached files as Phalcon\Http\Request\File instances
+Obtiene los archivos adjuntos como instancias Phalcon\Http\Request\File
 
 ```php
 public function getUserAgent(): string;
 ```
 
-Gets HTTP user agent used to made the request
+Obtiene el agente de usuario HTTP utilizado para hacer la solicitud
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Checks whether $_REQUEST superglobal has certain index
+Comprueba si el superglobal $_REQUEST tiene un determinado índice
 
 ```php
 public function hasFiles(): bool;
 ```
 
-Returns if the request has files or not
+Devuelve si la solicitud tiene archivos o no
 
 ```php
 final public function hasHeader( string $header ): bool;
 ```
 
-Checks whether headers has certain index
+Comprueba si las cabeceras tienen un cierto índice
 
 ```php
 public function hasPost( string $name ): bool;
 ```
 
-Checks whether $_POST superglobal has certain index
+Comprueba si el superglobal $_POST tiene un cierto índice
 
 ```php
 public function hasPut( string $name ): bool;
 ```
 
-Checks whether the PUT data has certain index
+Comprueba si los datos PUT tienen un cierto índice
 
 ```php
 public function hasQuery( string $name ): bool;
 ```
 
-Checks whether $_GET superglobal has certain index
+Comprueba si el superglobal $_GET tiene un cierto índice
 
 ```php
 final public function hasServer( string $name ): bool;
 ```
 
-Checks whether $_SERVER superglobal has certain index
+Comprueba si el superglobal $_SERVER tiene un cierto índice
 
 ```php
 public function isAjax(): bool;
 ```
 
-Checks whether request has been made using ajax
+Comprueba si la petición se ha hecho usando ajax
 
 ```php
 public function isConnect(): bool;
 ```
 
-Checks whether HTTP method is CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
+Comprueba si el método HTTP es CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
 
 ```php
 public function isDelete(): bool;
 ```
 
-Checks whether HTTP method is DELETE. if _SERVER["REQUEST_METHOD"]==="DELETE"
+Comprueba si el método HTTP es DELETE. if _SERVER["REQUEST_METHOD"]==="DELETE"
 
 ```php
 public function isGet(): bool;
 ```
 
-Checks whether HTTP method is GET. if _SERVER["REQUEST_METHOD"]==="GET"
+Comprueba si el método HTTP es GET. if _SERVER["REQUEST_METHOD"]==="GET"
 
 ```php
 public function isHead(): bool;
 ```
 
-Checks whether HTTP method is HEAD. if _SERVER["REQUEST_METHOD"]==="HEAD"
+Comprueba si el método HTTP es HEAD. if _SERVER["REQUEST_METHOD"]==="HEAD"
 
 ```php
 public function isMethod( mixed $methods, bool $strict = bool ): bool;
 ```
 
-Check if HTTP method match any of the passed methods When strict is true it checks if validated methods are real HTTP methods
+Comprueba si el método HTTP coincide con cualquiera de los métodos pasados. Cuando `strict` es `true` comprueba si los métodos validados son métodos HTTP reales
 
 ```php
 public function isOptions(): bool;
 ```
 
-Checks whether HTTP method is OPTIONS. if _SERVER["REQUEST_METHOD"]==="OPTIONS"
+Comprueba si el método HTTP es OPTIONS. if _SERVER["REQUEST_METHOD"]==="OPTIONS"
 
 ```php
 public function isPatch(): bool;
 ```
 
-Checks whether HTTP method is PATCH. if _SERVER["REQUEST_METHOD"]==="PATCH"
+Comprueba si el método HTTP es PATCH. if _SERVER["REQUEST_METHOD"]==="PATCH"
 
 ```php
 public function isPost(): bool;
 ```
 
-Checks whether HTTP method is POST. if _SERVER["REQUEST_METHOD"]==="POST"
+Comprueba si el método HTTP es POST. if _SERVER["REQUEST_METHOD"]==="POST"
 
 ```php
 public function isPurge(): bool;
 ```
 
-Checks whether HTTP method is PURGE (Squid and Varnish support). if _SERVER["REQUEST_METHOD"]==="PURGE"
+Comprueba si el método HTTP es PURGE (soporte Squid y Varnish). if _SERVER["REQUEST_METHOD"]==="PURGE"
 
 ```php
 public function isPut(): bool;
 ```
 
-Checks whether HTTP method is PUT. if _SERVER["REQUEST_METHOD"]==="PUT"
+Comprueba si el método HTTP es PUT. if _SERVER["REQUEST_METHOD"]==="PUT"
 
 ```php
 public function isSecure(): bool;
 ```
 
-Checks whether request has been made using any secure layer
+Comprueba si la petición se ha hecho usando alguna capa segura
 
 ```php
 public function isSoap(): bool;
 ```
 
-Checks whether request has been made using SOAP
+Comprueba si la petición se ha hecho usando SOAP
 
 ```php
 public function isStrictHostCheck(): bool;
 ```
 
-Checks if the `Request::getHttpHost` method will be use strict validation of host name or not
+Comprueba si el método `Request::getHttpHost` usará validación estricta del nombre del servidor o no
 
 ```php
 public function isTrace(): bool;
 ```
 
-Checks whether HTTP method is TRACE. if _SERVER["REQUEST_METHOD"]==="TRACE"
+Comprueba si el método HTTP es TRACE. if _SERVER["REQUEST_METHOD"]==="TRACE"
 
 ```php
 public function isValidHttpMethod( string $method ): bool;
 ```
 
-Checks if a method is a valid HTTP method
+Comprueba si un método es un método HTTP válido
 
 ```php
 public function numFiles( bool $onlySuccessful = bool ): long;
 ```
 
-Returns the number of files available
+Devuelve el número de archivos disponibles
 
 ```php
 public function setHttpMethodParameterOverride( bool $httpMethodParameterOverride )
@@ -2375,25 +2375,25 @@ public function setHttpMethodParameterOverride( bool $httpMethodParameterOverrid
 public function setParameterFilters( string $name, array $filters = [], array $scope = [] ): RequestInterface;
 ```
 
-Sets automatic sanitizers/filters for a particular field and for particular methods
+Establece saneadores/filtros automáticos para un campo particular y para métodos particulares
 
 ```php
 public function setStrictHostCheck( bool $flag = bool ): RequestInterface;
 ```
 
-Sets if the `Request::getHttpHost` method must be use strict validation of host name or not
+Establece si el método `Request::getHttpHost` debe usar validación estricta del nombre de servidor o no
 
 ```php
 final protected function getBestQuality( array $qualityParts, string $name ): string;
 ```
 
-Process a request header and return the one with best quality
+Procesa una cabecera de solicitud y devuelve la de mejor calidad
 
 ```php
 final protected function getHelper( array $source, string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Helper to get data from superglobals, applying filters if needed. If no parameters are given the superglobal is returned.
+Ayudante para obtener datos de los superglobales, aplicando filtros si es necesario. Si no se dan parámetros se devuelve el superglobal.
 
 ```php
 final protected function getQualityHeader( string $serverIndex, string $name ): array;
@@ -2622,7 +2622,7 @@ Interface for Phalcon\Http\Request
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned
+Obtiene una variable del superglobal $_REQUEST aplicando filtros si es necesario. Si no se pasan parámetros se devuelve el superglobal $_REQUEST
 
 ```php
 // Returns value from $_REQUEST["user_email"] without sanitizing
@@ -2636,73 +2636,73 @@ $userEmail = $request->get("user_email", "email");
 public function getAcceptableContent(): array;
 ```
 
-Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Obtiene un vector con tipos mime y su calidad aceptada por el navegador/cliente desde _SERVER["HTTP_ACCEPT"]
 
 ```php
 public function getBasicAuth(): array | null;
 ```
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
+Obtiene información de autenticación aceptada por el navegador/cliente desde $_SERVER["PHP_AUTH_USER"]
 
 ```php
 public function getBestAccept(): string;
 ```
 
-Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Obtiene el mejor tipo mime aceptado por el navegador/cliente desde _SERVER["HTTP_ACCEPT"]
 
 ```php
 public function getBestCharset(): string;
 ```
 
-Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Obtiene el mejor conjunto de caracteres aceptado por el navegador/cliente desde _SERVER["HTTP_ACCEPT_CHARSET"]
 
 ```php
 public function getBestLanguage(): string;
 ```
 
-Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Obtiene el mejor idioma aceptado por el navegador/cliente desde _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 ```php
 public function getClientAddress( bool $trustForwardedHeader = bool ): string | bool;
 ```
 
-Gets most possible client IPv4 Address. This method searches in $_SERVER["REMOTE_ADDR"] and optionally in $_SERVER["HTTP_X_FORWARDED_FOR"]
+Obtiene la mayoría posible de direcciones IPv4 de clientes. This method searches in $_SERVER["REMOTE_ADDR"] and optionally in $_SERVER["HTTP_X_FORWARDED_FOR"]
 
 ```php
 public function getClientCharsets(): array;
 ```
 
-Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Obtiene un vector del conjunto de caracteres y su calidad aceptada por el navegador/cliente desde _SERVER["HTTP_ACCEPT_CHARSET"]
 
 ```php
 public function getContentType(): string | null;
 ```
 
-Gets content type which request has been made
+Obtiene el tipo de contenido en el que se hizo la solicitud
 
 ```php
 public function getDigestAuth(): array;
 ```
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+Obtiene información de autenticación aceptada por el navegador/cliente desde $_SERVER["PHP_AUTH_DIGEST"]
 
 ```php
 public function getHTTPReferer(): string;
 ```
 
-Gets web page that refers active request. ie: http://www.google.com
+Obtiene la página web de referencia en la petición activa. ie: http://www.google.com
 
 ```php
 public function getHeader( string $header ): string;
 ```
 
-Gets HTTP header from request data
+Obtiene la cabecera HTTP de los datos de la solicitud
 
 ```php
 public function getHeaders(): array;
 ```
 
-Returns the available headers in the request
+Devuelve las cabeceras disponibles en la petición
 
 ```php
 $_SERVER = [
@@ -2719,17 +2719,17 @@ echo $headers["Authorization"]; // Basic cGhhbGNvbjpzZWNyZXQ=
 public function getHttpHost(): string;
 ```
 
-Gets host name used by the request.
+Obtiene el nombre de servidor usado por la petición.
 
-`Request::getHttpHost` trying to find host name in following order:
+`Request::getHttpHost` intenta encontrar el nombre del servidor en el siguiente orden:
 
 - `$_SERVER["HTTP_HOST"]`
 - `$_SERVER["SERVER_NAME"]`
 - `$_SERVER["SERVER_ADDR"]`
 
-Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name.
+Opcionalmente `Request::getHttpHost` valida y limpia el nombre del servidor. The `Request::$_strictHostCheck` can be used to validate host name.
 
-Note: validation and cleaning have a negative performance impact because they use regular expressions.
+Nota: la validación y limpieza pueden tener un impacto negativo en el rendimiento porque usan expresiones regulares.
 
 ```php
 use Phalcon\Http\Request;
@@ -2754,25 +2754,25 @@ $request->getHttpHost(); // example.com
 public function getJsonRawBody( bool $associative = bool ): stdClass | array | bool;
 ```
 
-Gets decoded JSON HTTP raw request body
+Obtiene el cuerpo de la petición HTTP sin procesar decodificado en JSON
 
 ```php
 public function getLanguages(): array;
 ```
 
-Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Obtiene el vector de idiomas y su calidad aceptada por el navegador/cliente desde _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 ```php
 public function getMethod(): string;
 ```
 
-Gets HTTP method which request has been made
+Obtiene el método HTTP en el que se ha hecho la petición
 
-If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method.
+Si se establece la cabecera X-HTTP-Method-Override, y el método es POST, entonces se usa para determinar el método HTTP previsto "real".
 
-The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called.
+El parámetro de petición _method también se puede usar para determinar el método HTTP, pero sólo si se ha llamado a setHttpMethodParameterOverride(true).
 
-The method is always an uppercased string.
+El método siempre es una cadena en mayúscula.
 
 ```php
 public function getPort(): int;
@@ -2784,7 +2784,7 @@ Gets information about the port on which the request is made
 public function getPost( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned
+Obtiene una variable del superglobal $_POST aplicando filtros si es necesario. Si no se proporcionan parámetros se devuelve el superglobal $_POST
 
 ```php
 // Returns value from $_POST["user_email"] without sanitizing
@@ -2798,7 +2798,7 @@ $userEmail = $request->getPost("user_email", "email");
 public function getPut( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets a variable from put request
+Obtiene una variable de la solicitud `put`
 
 ```php
 // Returns value from $_PUT["user_email"] without sanitizing
@@ -2812,7 +2812,7 @@ $userEmail = $request->getPut("user_email", "email");
 public function getQuery( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 
-Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned
+Obtiene una variable del superglobal $_GET aplicando filtros si es necesario. Si no se proporcionan parámetros se devuelve el superglobal $_GET
 
 ```php
 // Returns value from $_GET["id"] without sanitizing
@@ -2829,37 +2829,37 @@ $id = $request->getQuery("id", null, 150);
 public function getRawBody(): string;
 ```
 
-Gets HTTP raw request body
+Obtiene el cuerpo de solicitud HTTP sin procesar
 
 ```php
 public function getScheme(): string;
 ```
 
-Gets HTTP schema (http/https)
+Obtiene el esquema HTTP (http/https)
 
 ```php
 public function getServer( string $name ): string | null;
 ```
 
-Gets variable from $_SERVER superglobal
+Obtiene una variable del superglobal $_SERVER
 
 ```php
 public function getServerAddress(): string;
 ```
 
-Gets active server address IP
+Obtiene la IP de la dirección del servidor activo
 
 ```php
 public function getServerName(): string;
 ```
 
-Gets active server name
+Obtiene el nombre del servidor activo
 
 ```php
 public function getURI( bool $onlyPath = bool ): string;
 ```
 
-Gets HTTP URI which request has been made to
+Obtiene el HTTP URI en el cual se hizo la solicitud
 
 ```php
 // Returns /some/path?with=queryParams
@@ -2879,13 +2879,13 @@ Gets attached files as Phalcon\Http\Request\FileInterface compatible instances
 public function getUserAgent(): string;
 ```
 
-Gets HTTP user agent used to made the request
+Obtiene el agente de usuario HTTP utilizado para hacer la solicitud
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Checks whether $_REQUEST superglobal has certain index
+Comprueba si el superglobal $_REQUEST tiene un determinado índice
 
 ```php
 public function hasFiles(): bool;
@@ -2897,31 +2897,31 @@ Checks whether request include attached files
 public function hasHeader( string $header ): bool;
 ```
 
-Checks whether headers has certain index
+Comprueba si las cabeceras tienen un cierto índice
 
 ```php
 public function hasPost( string $name ): bool;
 ```
 
-Checks whether $_POST superglobal has certain index
+Comprueba si el superglobal $_POST tiene un cierto índice
 
 ```php
 public function hasPut( string $name ): bool;
 ```
 
-Checks whether the PUT data has certain index
+Comprueba si los datos PUT tienen un cierto índice
 
 ```php
 public function hasQuery( string $name ): bool;
 ```
 
-Checks whether $_GET superglobal has certain index
+Comprueba si el superglobal $_GET tiene un cierto índice
 
 ```php
 public function hasServer( string $name ): bool;
 ```
 
-Checks whether $_SERVER superglobal has certain index
+Comprueba si el superglobal $_SERVER tiene un cierto índice
 
 ```php
 public function isAjax(): bool;
@@ -2933,25 +2933,25 @@ Checks whether request has been made using ajax. Checks if $_SERVER["HTTP_X_REQU
 public function isConnect(): bool;
 ```
 
-Checks whether HTTP method is CONNECT. if $_SERVER["REQUEST_METHOD"] === "CONNECT"
+Comprueba si el método HTTP es CONNECT. if $_SERVER["REQUEST_METHOD"] === "CONNECT"
 
 ```php
 public function isDelete(): bool;
 ```
 
-Checks whether HTTP method is DELETE. if $_SERVER["REQUEST_METHOD"] === "DELETE"
+Comprueba si el método HTTP es DELETE. if $_SERVER["REQUEST_METHOD"] === "DELETE"
 
 ```php
 public function isGet(): bool;
 ```
 
-Checks whether HTTP method is GET. if $_SERVER["REQUEST_METHOD"] === "GET"
+Comprueba si el método HTTP es GET. if $_SERVER["REQUEST_METHOD"] === "GET"
 
 ```php
 public function isHead(): bool;
 ```
 
-Checks whether HTTP method is HEAD. if $_SERVER["REQUEST_METHOD"] === "HEAD"
+Comprueba si el método HTTP es HEAD. if $_SERVER["REQUEST_METHOD"] === "HEAD"
 
 ```php
 public function isMethod( mixed $methods, bool $strict = bool ): bool;
@@ -2963,49 +2963,49 @@ Check if HTTP method match any of the passed methods
 public function isOptions(): bool;
 ```
 
-Checks whether HTTP method is OPTIONS. if $_SERVER["REQUEST_METHOD"] === "OPTIONS"
+Comprueba si el método HTTP es OPTIONS. if $_SERVER["REQUEST_METHOD"] === "OPTIONS"
 
 ```php
 public function isPost(): bool;
 ```
 
-Checks whether HTTP method is POST. if $_SERVER["REQUEST_METHOD"] === "POST"
+Comprueba si el método HTTP es POST. if $_SERVER["REQUEST_METHOD"] === "POST"
 
 ```php
 public function isPurge(): bool;
 ```
 
-Checks whether HTTP method is PURGE (Squid and Varnish support). if $_SERVER["REQUEST_METHOD"] === "PURGE"
+Comprueba si el método HTTP es PURGE (soporte Squid y Varnish). if $_SERVER["REQUEST_METHOD"] === "PURGE"
 
 ```php
 public function isPut(): bool;
 ```
 
-Checks whether HTTP method is PUT. if $_SERVER["REQUEST_METHOD"] === "PUT"
+Comprueba si el método HTTP es PUT. if $_SERVER["REQUEST_METHOD"] === "PUT"
 
 ```php
 public function isSecure(): bool;
 ```
 
-Checks whether request has been made using any secure layer
+Comprueba si la petición se ha hecho usando alguna capa segura
 
 ```php
 public function isSoap(): bool;
 ```
 
-Checks whether request has been made using SOAP
+Comprueba si la petición se ha hecho usando SOAP
 
 ```php
 public function isTrace(): bool;
 ```
 
-Checks whether HTTP method is TRACE. if $_SERVER["REQUEST_METHOD"] === "TRACE"
+Comprueba si el método HTTP es TRACE. if $_SERVER["REQUEST_METHOD"] === "TRACE"
 
 ```php
 public function numFiles( bool $onlySuccessful = bool ): long;
 ```
 
-Returns the number of files available
+Devuelve el número de archivos disponibles
 
 <h1 id="http-response">Class Phalcon\Http\Response</h1>
 
@@ -3495,11 +3495,11 @@ $cookies->set(
 public function setSignKey( string $signKey = null ): CookiesInterface;
 ```
 
-Sets the cookie's sign key.
+Establece la clave de firma de la cookie.
 
-The `$signKey' MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
+`$signKey' DEBE tener al menos 32 caracteres de longitud y generarse usando un generador pseudoaleatorio seguro criptográficamente.
 
-Use NULL to disable cookie signing.
+Use NULL para deshabilitar la firma de cookies.
 
 @see \Phalcon\Security\Random
 
