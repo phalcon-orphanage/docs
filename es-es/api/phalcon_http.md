@@ -2399,25 +2399,25 @@ Ayudante para obtener datos de los superglobales, aplicando filtros si es necesa
 final protected function getQualityHeader( string $serverIndex, string $name ): array;
 ```
 
-Process a request header and return an array of values with their qualities
+Procesa una cabecera de petición y devuelve un vector de valores con sus calidades
 
 ```php
 final protected function hasFileHelper( mixed $data, bool $onlySuccessful ): long;
 ```
 
-Recursively counts file in an array of files
+Cuenta recursivamente ficheros en un vector de ficheros
 
 ```php
 protected function resolveAuthorizationHeaders(): array;
 ```
 
-Resolve authorization headers.
+Resuelve cabeceras de autorización.
 
 ```php
 final protected function smoothFiles( array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix ): array;
 ```
 
-Smooth out $_FILES to have plain array with all files uploaded
+Simplifica $_FILES para tener un vector simple con todos los ficheros subidos
 
 <h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
 
@@ -2427,7 +2427,7 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 Phalcon\Http\Request\Exception
 
-Exceptions thrown in Phalcon\Http\Request will use this class
+Las excepciones lanzadas en Phalcon\Http\Request usarán esta clase
 
 <h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
 
@@ -2437,7 +2437,7 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 Phalcon\Http\Request\File
 
-Provides OO wrappers to the $_FILES superglobal
+Provee envolturas OO al superglobal $_FILES
 
 ```php
 use Phalcon\Mvc\Controller;
@@ -2498,7 +2498,7 @@ protected type;
 public function __construct( array $file, mixed $key = null );
 ```
 
-Phalcon\Http\Request\File constructor
+Constructor Phalcon\Http\Request\File
 
 ```php
 public function getError(): string|null
@@ -2516,43 +2516,43 @@ public function getKey(): string|null
 public function getName(): string;
 ```
 
-Returns the real name of the uploaded file
+Devuelve el nombre real del fichero subido
 
 ```php
 public function getRealType(): string;
 ```
 
-Gets the real mime type of the upload file using finfo
+Obtiene el tipo mime real del fichero subido usando finfo
 
 ```php
 public function getSize(): int;
 ```
 
-Returns the file size of the uploaded file
+Devuelve el tamaño de fichero del fichero subido
 
 ```php
 public function getTempName(): string;
 ```
 
-Returns the temporary name of the uploaded file
+Devuelve el nombre temporal del fichero subido
 
 ```php
 public function getType(): string;
 ```
 
-Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
+Devuelve el tipo mime notificado por el navegador. Este tipo mime no es completamente seguro, use getRealType() en su lugar
 
 ```php
 public function isUploadedFile(): bool;
 ```
 
-Checks whether the file has been uploaded via Post.
+Comprueba si el fichero se ha subido mediante Post.
 
 ```php
 public function moveTo( string $destination ): bool;
 ```
 
-Moves the temporary file to a destination within the application
+Mueve el fichero temporal a una ubicación dentro de la aplicación
 
 <h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
 
@@ -2562,7 +2562,7 @@ Moves the temporary file to a destination within the application
 
 Phalcon\Http\Request\FileInterface
 
-Interface for Phalcon\Http\Request\File
+Interfaz para Phalcon\Http\Request\File
 
 ## Métodos
 
@@ -2570,43 +2570,43 @@ Interface for Phalcon\Http\Request\File
 public function getError(): string | null;
 ```
 
-Returns the error if any
+Devuelve el error, si lo hay
 
 ```php
 public function getName(): string;
 ```
 
-Returns the real name of the uploaded file
+Devuelve el nombre real del fichero subido
 
 ```php
 public function getRealType(): string;
 ```
 
-Gets the real mime type of the upload file using finfo
+Obtiene el tipo mime real del fichero subido usando finfo
 
 ```php
 public function getSize(): int;
 ```
 
-Returns the file size of the uploaded file
+Devuelve el tamaño de fichero del fichero subido
 
 ```php
 public function getTempName(): string;
 ```
 
-Returns the temporal name of the uploaded file
+Devuelve el nombre temporal del fichero subido
 
 ```php
 public function getType(): string;
 ```
 
-Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
+Devuelve el tipo mime notificado por el navegador. Este tipo mime no es completamente seguro, use getRealType() en su lugar
 
 ```php
 public function moveTo( string $destination ): bool;
 ```
 
-Move the temporary file to a destination
+Mueve el fichero temporal a una ubicación
 
 <h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
 
@@ -2614,7 +2614,7 @@ Move the temporary file to a destination
 
 | Namespace | Phalcon\Http | | Uses | Phalcon\Http\Request\FileInterface, stdClass |
 
-Interface for Phalcon\Http\Request
+Interfaz para Phalcon\Http\Request
 
 ## Métodos
 
@@ -2666,7 +2666,7 @@ Obtiene el mejor idioma aceptado por el navegador/cliente desde _SERVER["HTTP_AC
 public function getClientAddress( bool $trustForwardedHeader = bool ): string | bool;
 ```
 
-Obtiene la mayoría posible de direcciones IPv4 de clientes. This method searches in $_SERVER["REMOTE_ADDR"] and optionally in $_SERVER["HTTP_X_FORWARDED_FOR"]
+Obtiene la mayoría posible de direcciones IPv4 de clientes. Este método busca en $_SERVER["REMOTE_ADDR"] y opcionalmente en $_SERVER["HTTP_X_FORWARDED_FOR"]
 
 ```php
 public function getClientCharsets(): array;
@@ -2727,7 +2727,7 @@ Obtiene el nombre de servidor usado por la petición.
 - `$_SERVER["SERVER_NAME"]`
 - `$_SERVER["SERVER_ADDR"]`
 
-Opcionalmente `Request::getHttpHost` valida y limpia el nombre del servidor. The `Request::$_strictHostCheck` can be used to validate host name.
+Opcionalmente `Request::getHttpHost` valida y limpia el nombre del servidor. `Request::$_strictHostCheck` se puede usar para validar el nombre de servidor.
 
 Nota: la validación y limpieza pueden tener un impacto negativo en el rendimiento porque usan expresiones regulares.
 
@@ -2778,7 +2778,7 @@ El método siempre es una cadena en mayúscula.
 public function getPort(): int;
 ```
 
-Gets information about the port on which the request is made
+Obtiene información sobre el puerto en el que se ha hecho la petición
 
 ```php
 public function getPost( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -2873,7 +2873,7 @@ $uri = $request->getURI(true);
 public function getUploadedFiles( bool $onlySuccessful = bool, bool $namedKeys = bool ): FileInterface[];
 ```
 
-Gets attached files as Phalcon\Http\Request\FileInterface compatible instances
+Obtiene los archivos adjuntos como instancias compatibles con Phalcon\Http\Request\FileInterface
 
 ```php
 public function getUserAgent(): string;
@@ -2891,7 +2891,7 @@ Comprueba si el superglobal $_REQUEST tiene un determinado índice
 public function hasFiles(): bool;
 ```
 
-Checks whether request include attached files
+Comprueba si la petición incluye ficheros adjuntos
 
 ```php
 public function hasHeader( string $header ): bool;
@@ -2927,7 +2927,7 @@ Comprueba si el superglobal $_SERVER tiene un cierto índice
 public function isAjax(): bool;
 ```
 
-Checks whether request has been made using ajax. Checks if $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest"
+Comprueba si la petición se ha hecho usando ajax. Comprueba si $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest"
 
 ```php
 public function isConnect(): bool;
@@ -2957,7 +2957,7 @@ Comprueba si el método HTTP es HEAD. if $_SERVER["REQUEST_METHOD"] === "HEAD"
 public function isMethod( mixed $methods, bool $strict = bool ): bool;
 ```
 
-Check if HTTP method match any of the passed methods
+Comprueba si el método HTTP coincide con alguno de los métodos pasados
 
 ```php
 public function isOptions(): bool;
@@ -3013,7 +3013,7 @@ Devuelve el número de archivos disponibles
 
 | Namespace | Phalcon\Http | | Uses | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Helper\Fs, Phalcon\Helper\Json, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface |
 
-Part of the HTTP cycle is return responses to the clients. Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.
+Parte del ciclo HTTP es devolver respuestas a los clientes. Phalcon\HTTP\Response es el componente Phalcon responsable de realizar esta tarea. Las respuestas HTTP suelen estar compuestas por cabeceras y cuerpo.
 
 ```php
 $response = new \Phalcon\Http\Response();
@@ -3061,25 +3061,25 @@ protected statusCodes;
 public function __construct( string $content = null, mixed $code = null, mixed $status = null );
 ```
 
-Phalcon\Http\Response constructor
+Constructor Phalcon\Http\Response
 
 ```php
 public function appendContent( mixed $content ): ResponseInterface;
 ```
 
-Appends a string to the HTTP response body
+Añade una cadena al cuerpo de respuesta HTTP
 
 ```php
 public function getContent(): string;
 ```
 
-Gets the HTTP response body
+Obtiene el cuerpo de la respuesta HTTP
 
 ```php
 public function getCookies(): CookiesInterface;
 ```
 
-Returns cookies set by the user
+Devuelve las cookies establecidas por el usuario
 
 ```php
 public function getDI(): DiInterface;
@@ -3097,13 +3097,13 @@ Devuelve el administrador de eventos interno
 public function getHeaders(): HeadersInterface;
 ```
 
-Returns headers set by the user
+Devuelve las cabeceras establecidas por el usuario
 
 ```php
 public function getReasonPhrase(): string | null;
 ```
 
-Returns the reason phrase
+Devuelve la frase de razón
 
 ```php
 echo $response->getReasonPhrase();
@@ -3113,7 +3113,7 @@ echo $response->getReasonPhrase();
 public function getStatusCode(): int | null;
 ```
 
-Returns the status code
+Devuelve el código de estado
 
 ```php
 echo $response->getStatusCode();
@@ -3123,7 +3123,7 @@ echo $response->getStatusCode();
 public function hasHeader( string $name ): bool;
 ```
 
-Checks if a header exists
+Comprueba si existe una cabecera
 
 ```php
 $response->hasHeader("Content-Type");
@@ -3133,13 +3133,13 @@ $response->hasHeader("Content-Type");
 public function isSent(): bool;
 ```
 
-Check if the response is already sent
+Comprueba si la respuesta ya se ha enviado
 
 ```php
 public function redirect( mixed $location = null, bool $externalRedirect = bool, int $statusCode = int ): ResponseInterface;
 ```
 
-Redirect by HTTP to another action or URL
+Redirige por HTTP a otra acción o URL
 
 ```php
 // Using a string redirect (internal/external)
@@ -3161,7 +3161,7 @@ $response->redirect(
 public function removeHeader( string $name ): ResponseInterface;
 ```
 
-Remove a header in the response
+Elimina una cabecera en la respuesta
 
 ```php
 $response->removeHeader("Expires");
@@ -3171,31 +3171,31 @@ $response->removeHeader("Expires");
 public function resetHeaders(): ResponseInterface;
 ```
 
-Resets all the established headers
+Resetea todas las cabeceras establecidas
 
 ```php
 public function send(): ResponseInterface;
 ```
 
-Prints out HTTP response to the client
+Muestra la respuesta HTTP al cliente
 
 ```php
 public function sendCookies(): ResponseInterface;
 ```
 
-Sends cookies to the client
+Envía las cookies al cliente
 
 ```php
 public function sendHeaders(): ResponseInterface | bool;
 ```
 
-Sends headers to the client
+Envía las cabeceras al cliente
 
 ```php
 public function setCache( int $minutes ): ResponseInterface;
 ```
 
-Sets Cache headers to use HTTP cache
+Establece las cabeceras de caché para usar la caché HTTP
 
 ```php
 $this->response->setCache(60);
@@ -3205,7 +3205,7 @@ $this->response->setCache(60);
 public function setContent( string $content ): ResponseInterface;
 ```
 
-Sets HTTP response body
+Establece el cuerpo de respuesta HTTP
 
 ```php
 $response->setContent("<h1>Hello!</h1>");
@@ -3215,7 +3215,7 @@ $response->setContent("<h1>Hello!</h1>");
 public function setContentLength( int $contentLength ): ResponseInterface;
 ```
 
-Sets the response content-length
+Establece la longitud del contenido de la respuesta
 
 ```php
 $response->setContentLength(2048);
@@ -3225,7 +3225,7 @@ $response->setContentLength(2048);
 public function setContentType( string $contentType, mixed $charset = null ): ResponseInterface;
 ```
 
-Sets the response content-type mime, optionally the charset
+Establece el tipo mime del contenido de la respuesta, opcionalmente el conjunto de caracteres
 
 ```php
 $response->setContentType("application/pdf");
@@ -3236,7 +3236,7 @@ $response->setContentType("text/plain", "UTF-8");
 public function setCookies( CookiesInterface $cookies ): ResponseInterface;
 ```
 
-Sets a cookies bag for the response externally
+Establece externamente una bolsa de cookies para la respuesta
 
 ```php
 public function setDI( DiInterface $container ): void;
@@ -3248,7 +3248,7 @@ Configura el inyector de dependencia
 public function setEtag( string $etag ): ResponseInterface;
 ```
 
-Set a custom ETag
+Establece un ETag personalizado
 
 ```php
 $response->setEtag(
@@ -3268,7 +3268,7 @@ Establece el administrador de eventos
 public function setExpires( DateTime $datetime ): ResponseInterface;
 ```
 
-Sets an Expires header in the response that allows to use the HTTP cache
+Establece una cabecera `Expires` en la respuesta que permite usar el caché HTTP
 
 ```php
 $this->response->setExpires(
@@ -3280,13 +3280,13 @@ $this->response->setExpires(
 public function setFileToSend( string $filePath, mixed $attachmentName = null, mixed $attachment = bool ): ResponseInterface;
 ```
 
-Sets an attached file to be sent at the end of the request
+Establece un fichero adjunto a enviar al final de la petición
 
 ```php
 public function setHeader( string $name, mixed $value ): ResponseInterface;
 ```
 
-Overwrites a header in the response
+Sobreescribe una cabecera en la respuesta
 
 ```php
 $response->setHeader("Content-Type", "text/plain");
@@ -3296,13 +3296,13 @@ $response->setHeader("Content-Type", "text/plain");
 public function setHeaders( HeadersInterface $headers ): ResponseInterface;
 ```
 
-Sets a headers bag for the response externally
+Establece externamente una bolsa de cabeceras para la respuesta
 
 ```php
 public function setJsonContent( mixed $content, int $jsonOptions = int, int $depth = int ): ResponseInterface;
 ```
 
-Sets HTTP response body. The parameter is automatically converted to JSON and also sets default header: Content-Type: "application/json; charset=UTF-8"
+Establece el cuerpo de respuesta HTTP. El parámetro se convierte automáticamente a JSON y también establece la cabecera predeterminada: Content-Type: "application/json; charset=UTF-8"
 
 ```php
 $response->setJsonContent(
@@ -3316,7 +3316,7 @@ $response->setJsonContent(
 public function setLastModified( DateTime $datetime ): ResponseInterface;
 ```
 
-Sets Last-Modified header
+Establece la cabecera Last-Modified
 
 ```php
 $this->response->setLastModified(
@@ -3328,13 +3328,13 @@ $this->response->setLastModified(
 public function setNotModified(): ResponseInterface;
 ```
 
-Sends a Not-Modified response
+Envía una respuesta Not-Modified
 
 ```php
 public function setRawHeader( string $header ): ResponseInterface;
 ```
 
-Send a raw header to the response
+Envía una cabecera en bruto a la respuesta
 
 ```php
 $response->setRawHeader("HTTP/1.1 404 Not Found");
@@ -3344,7 +3344,7 @@ $response->setRawHeader("HTTP/1.1 404 Not Found");
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 
-Sets the HTTP response code
+Establece el código de respuesta HTTP
 
 ```php
 $response->setStatusCode(404, "Not Found");
@@ -3358,9 +3358,9 @@ $response->setStatusCode(404, "Not Found");
 
 Phalcon\Http\Response\Cookies
 
-This class is a bag to manage the cookies.
+Esta clase es una bolsa para gestionar las cookies.
 
-A cookies bag is automatically registered as part of the 'response' service in the DI. By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. To set sign key used to generate a message authentication code use `Phalcon\Http\Response\Cookies::setSignKey()`.
+Una bolsa de cookies se registra automáticamente como parte del servicio 'response' en el DI. Por defecto, las cookies automáticamente se encriptan antes de enviarse al cliente y son desencriptadas cuando se recuperan desde el usuario. Para establecer la clave de firma a usar para generar un código de autenticación de mensaje use `Phalcon\Http\Response\Cookies::setSignKey()`.
 
 ```php
 use Phalcon\Di;
@@ -3425,57 +3425,57 @@ protected useEncryption = true;
 public function __construct( bool $useEncryption = bool, string $signKey = null );
 ```
 
-Phalcon\Http\Response\Cookies constructor
+Constructor Phalcon\Http\Response\Cookies
 
 ```php
 public function delete( string $name ): bool;
 ```
 
-Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
+Elimina una cookie por su nombre Este método no elimina las cookies del superglobal _COOKIE
 
 ```php
 public function get( string $name ): CookieInterface;
 ```
 
-Gets a cookie from the bag
+Obtiene una cookie de la bolsa
 
 ```php
 public function getCookies(): array;
 ```
 
-Gets all cookies from the bag
+Obtiene todas las cookies de la bolsa
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
+Comprueba si una cookie está definida en la bolsa o existe en el superglobal _COOKIE
 
 ```php
 public function isUsingEncryption(): bool;
 ```
 
-Returns if the bag is automatically encrypting/decrypting cookies
+Devuelve si la bolsa está encriptando/desencriptando cookies automáticamente
 
 ```php
 public function reset(): CookiesInterface;
 ```
 
-Reset set cookies
+Resetea las cookies establecidas
 
 ```php
 public function send(): bool;
 ```
 
-Sends the cookies to the client Cookies aren't sent if headers are sent in the current request
+Envía las cookies al cliente Las cookies no se envían si ya se han enviado las cabeceras en la petición actual
 
 ```php
 public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] ): CookiesInterface;
 ```
 
-Sets a cookie to be sent at the end of the request.
+Establece una cookie a enviar al final de la petición.
 
-This method overrides any cookie set before with the same name.
+Este método sobreescribe cualquier cookie establecida antes con el mismo nombre.
 
 ```php
 use Phalcon\Http\Response\Cookies;
@@ -3507,7 +3507,7 @@ Use NULL para deshabilitar la firma de cookies.
 public function useEncryption( bool $useEncryption ): CookiesInterface;
 ```
 
-Set if cookies in the bag must be automatically encrypted/decrypted
+Establece si las cookies de la bolsa se deben encriptar/desencriptar automáticamente
 
 <h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
 
@@ -3517,7 +3517,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 Phalcon\Http\Response\CookiesInterface
 
-Interface for Phalcon\Http\Response\Cookies
+Interfaz para Phalcon\Http\Response\Cookies
 
 ## Métodos
 
@@ -3525,49 +3525,49 @@ Interface for Phalcon\Http\Response\Cookies
 public function delete( string $name ): bool;
 ```
 
-Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
+Elimina una cookie por su nombre Este método no elimina las cookies del superglobal _COOKIE
 
 ```php
 public function get( string $name ): CookieInterface;
 ```
 
-Gets a cookie from the bag
+Obtiene una cookie de la bolsa
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
+Comprueba si una cookie está definida en la bolsa o existe en el superglobal _COOKIE
 
 ```php
 public function isUsingEncryption(): bool;
 ```
 
-Returns if the bag is automatically encrypting/decrypting cookies
+Devuelve si la bolsa está encriptando/desencriptando cookies automáticamente
 
 ```php
 public function reset(): CookiesInterface;
 ```
 
-Reset set cookies
+Resetea las cookies establecidas
 
 ```php
 public function send(): bool;
 ```
 
-Sends the cookies to the client
+Envía las cookies al cliente
 
 ```php
 public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] ): CookiesInterface;
 ```
 
-Sets a cookie to be sent at the end of the request
+Establece una cookie para ser enviada al final de la petición
 
 ```php
 public function useEncryption( bool $useEncryption ): CookiesInterface;
 ```
 
-Set if cookies in the bag must be automatically encrypted/decrypted
+Establece si las cookies de la bolsa se deben encriptar/desencriptar automáticamente
 
 <h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
 
@@ -3577,7 +3577,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 Phalcon\Http\Response\Exception
 
-Exceptions thrown in Phalcon\Http\Response will use this class.
+Las excepciones lanzadas en Phalcon\Http\Response usarán esta clase.
 
 <h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
 
@@ -3587,7 +3587,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 Phalcon\Http\Response\Headers
 
-This class is a bag to manage the response headers
+Esta clase es una bolsa para gestionar las cabeceras de la respuesta
 
 ## Propiedades
 
@@ -3603,49 +3603,49 @@ protected headers;
 public function get( string $name ): string | bool;
 ```
 
-Gets a header value from the internal bag
+Obtiene un valor de cabecera desde la bolsa interna
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Checks if a header exists
+Comprueba si existe una cabecera
 
 ```php
 public function remove( string $header ): HeadersInterface;
 ```
 
-Removes a header to be sent at the end of the request
+Elimina una cabecera que será enviada al final de la solicitud
 
 ```php
 public function reset();
 ```
 
-Reset set headers
+Resetea las cabeceras establecidas
 
 ```php
 public function send(): bool;
 ```
 
-Sends the headers to the client
+Envía las cabeceras al cliente
 
 ```php
 public function set( string $name, string $value ): HeadersInterface;
 ```
 
-Sets a header to be sent at the end of the request
+Establece una cabecera para enviar al final de la petición
 
 ```php
 public function setRaw( string $header ): HeadersInterface;
 ```
 
-Sets a raw header to be sent at the end of the request
+Establece una cabecera en bruto para enviar al final de la petición
 
 ```php
 public function toArray(): array;
 ```
 
-Returns the current headers as an array
+Devuelve las cabeceras actuales como un vector
 
 <h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
 
@@ -3655,7 +3655,7 @@ Returns the current headers as an array
 
 Phalcon\Http\Response\HeadersInterface
 
-Interface for Phalcon\Http\Response\Headers compatible bags
+Interfaz para bolsas compatibles con Phalcon\Http\Response\Headers
 
 ## Métodos
 
@@ -3663,37 +3663,37 @@ Interface for Phalcon\Http\Response\Headers compatible bags
 public function get( string $name ): string | bool;
 ```
 
-Gets a header value from the internal bag
+Obtiene un valor de cabecera desde la bolsa interna
 
 ```php
 public function has( string $name ): bool;
 ```
 
-Checks if a header exists
+Comprueba si existe una cabecera
 
 ```php
 public function reset();
 ```
 
-Reset set headers
+Resetea las cabeceras establecidas
 
 ```php
 public function send(): bool;
 ```
 
-Sends the headers to the client
+Envía las cabeceras al cliente
 
 ```php
 public function set( string $name, string $value );
 ```
 
-Sets a header to be sent at the end of the request
+Establece una cabecera para enviar al final de la petición
 
 ```php
 public function setRaw( string $header );
 ```
 
-Sets a raw header to be sent at the end of the request
+Establece una cabecera en bruto para enviar al final de la petición
 
 <h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
 
@@ -3703,7 +3703,7 @@ Sets a raw header to be sent at the end of the request
 
 Phalcon\Http\Response
 
-Interface for Phalcon\Http\Response
+Interfaz para Phalcon\Http\Response
 
 ## Métodos
 
@@ -3711,109 +3711,109 @@ Interface for Phalcon\Http\Response
 public function appendContent( mixed $content ): ResponseInterface;
 ```
 
-Appends a string to the HTTP response body
+Añade una cadena al cuerpo de respuesta HTTP
 
 ```php
 public function getContent(): string;
 ```
 
-Gets the HTTP response body
+Obtiene el cuerpo de la respuesta HTTP
 
 ```php
 public function getHeaders(): HeadersInterface;
 ```
 
-Returns headers set by the user
+Devuelve las cabeceras establecidas por el usuario
 
 ```php
 public function getStatusCode(): int | null;
 ```
 
-Returns the status code
+Devuelve el código de estado
 
 ```php
 public function hasHeader( string $name ): bool;
 ```
 
-Checks if a header exists
+Comprueba si existe una cabecera
 
 ```php
 public function isSent(): bool;
 ```
 
-Checks if the response was already sent
+Comprueba si la respuesta ya se ha enviado
 
 ```php
 public function redirect( mixed $location = null, bool $externalRedirect = bool, int $statusCode = int ): ResponseInterface;
 ```
 
-Redirect by HTTP to another action or URL
+Redirige por HTTP a otra acción o URL
 
 ```php
 public function resetHeaders(): ResponseInterface;
 ```
 
-Resets all the established headers
+Resetea todas las cabeceras establecidas
 
 ```php
 public function send(): ResponseInterface;
 ```
 
-Prints out HTTP response to the client
+Muestra la respuesta HTTP al cliente
 
 ```php
 public function sendCookies(): ResponseInterface;
 ```
 
-Sends cookies to the client
+Envía las cookies al cliente
 
 ```php
 public function sendHeaders(): ResponseInterface | bool;
 ```
 
-Sends headers to the client
+Envía las cabeceras al cliente
 
 ```php
 public function setContent( string $content ): ResponseInterface;
 ```
 
-Sets HTTP response body
+Establece el cuerpo de respuesta HTTP
 
 ```php
 public function setContentLength( int $contentLength ): ResponseInterface;
 ```
 
-Sets the response content-length
+Establece la longitud del contenido de la respuesta
 
 ```php
 public function setContentType( string $contentType, mixed $charset = null ): ResponseInterface;
 ```
 
-Sets the response content-type mime, optionally the charset
+Establece el tipo mime del contenido de la respuesta, opcionalmente el conjunto de caracteres
 
 ```php
 public function setExpires( DateTime $datetime ): ResponseInterface;
 ```
 
-Sets output expire time header
+Establece la salida de la cabecera de tiempo de expiración
 
 ```php
 public function setFileToSend( string $filePath, mixed $attachmentName = null ): ResponseInterface;
 ```
 
-Sets an attached file to be sent at the end of the request
+Establece un fichero adjunto a enviar al final de la petición
 
 ```php
 public function setHeader( string $name, mixed $value ): ResponseInterface;
 ```
 
-Overwrites a header in the response
+Sobreescribe una cabecera en la respuesta
 
 ```php
 public function setJsonContent( mixed $content ): ResponseInterface;
 ```
 
-Sets HTTP response body. The parameter is automatically converted to JSON
+Establece el cuerpo de respuesta HTTP. El parámetro se convierte automáticamente a JSON
 
 ```php
 $response->setJsonContent(
@@ -3827,19 +3827,19 @@ $response->setJsonContent(
 public function setNotModified(): ResponseInterface;
 ```
 
-Sends a Not-Modified response
+Envía una respuesta Not-Modified
 
 ```php
 public function setRawHeader( string $header ): ResponseInterface;
 ```
 
-Send a raw header to the response
+Envía una cabecera en bruto a la respuesta
 
 ```php
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 
-Sets the HTTP response code
+Establece el código de respuesta HTTP
 
 <h1 id="http-server-abstractmiddleware">Abstract Class Phalcon\Http\Server\AbstractMiddleware</h1>
 
@@ -3847,9 +3847,9 @@ Sets the HTTP response code
 
 | Namespace | Phalcon\Http\Server | | Uses | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Server\MiddlewareInterface, Psr\Http\Server\RequestHandlerInterface | | Implements | MiddlewareInterface |
 
-Participant in processing a server request and response.
+Participante en el procesamiento de una petición y respuesta del servidor.
 
-An HTTP middleware component participates in processing an HTTP message: by acting on the request, generating the response, or forwarding the request to a subsequent middleware and possibly acting on its response.
+Un componente `middleware` HTTP participa en el procesamiento de un mensaje HTTP: actuando en la petición, generando la respuesta, o reenviando la petición a un `middleware` posterior y posiblemente actuando en su respuesta.
 
 ## Métodos
 
@@ -3857,9 +3857,9 @@ An HTTP middleware component participates in processing an HTTP message: by acti
 abstract public function process( ServerRequestInterface $request, RequestHandlerInterface $handler ): ResponseInterface;
 ```
 
-Process an incoming server request.
+Procesa una petición de servidor entrante.
 
-Processes an incoming server request in order to produce a response. If unable to produce the response itself, it may delegate to the provided request handler to do so.
+Procesa una petición de servidor entrante para producir una respuesta. Si es incapaz de producir una respuesta por sí mismo, puede delegar al gestor de la solicitud proporcionado para hacerlo.
 
 <h1 id="http-server-abstractrequesthandler">Abstract Class Phalcon\Http\Server\AbstractRequestHandler</h1>
 
@@ -3867,9 +3867,9 @@ Processes an incoming server request in order to produce a response. If unable t
 
 | Namespace | Phalcon\Http\Server | | Uses | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Server\RequestHandlerInterface | | Implements | RequestHandlerInterface |
 
-Handles a server request and produces a response.
+Gestiona una petición del servidor y produce una respuesta.
 
-An HTTP request handler process an HTTP request in order to produce an HTTP response.
+Una gestor de petición HTTP procesa una petición HTTP para producir una respuesta HTTP.
 
 ## Métodos
 
@@ -3877,6 +3877,6 @@ An HTTP request handler process an HTTP request in order to produce an HTTP resp
 abstract public function handle( ServerRequestInterface $request ): ResponseInterface;
 ```
 
-Handles a request and produces a response.
+Gestiona una petición y produce una respuesta.
 
-May call other collaborating code to generate the response.
+Puede llamar a otro código colaborador para generar la respuesta.
