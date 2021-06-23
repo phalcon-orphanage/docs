@@ -424,7 +424,7 @@ Sets the limit for a particular resource in megabytes
 protected function processBackground( int $r, int $g, int $b, int $opacity );
 ```
 
-Execute a background.
+Ejecuta un fondo.
 
 ```php
 protected function processBlur( int $radius );
