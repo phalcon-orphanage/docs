@@ -13,7 +13,7 @@ title: 'Phalcon\Version'
 
 | Namespace | Phalcon |
 
-This class allows to get the installed version of the framework
+Esta clase permite obtener la versión instalada del framework
 
 ## Constantes
 
@@ -31,7 +31,7 @@ const VERSION_SPECIAL_NUMBER = 4;
 public static function get(): string;
 ```
 
-Returns the active version (string)
+Devuelve la versión activa (cadena)
 
 ```php
 echo Phalcon\Version::get();
@@ -41,7 +41,7 @@ echo Phalcon\Version::get();
 public static function getId(): string;
 ```
 
-Returns the numeric active version
+Devuelve la versión activa en formato numérico
 
 ```php
 echo Phalcon\Version::getId();
@@ -51,7 +51,7 @@ echo Phalcon\Version::getId();
 public static function getPart( int $part ): string;
 ```
 
-Returns a specific part of the version. If the wrong parameter is passed it will return the full version
+Devuelve una parte específica de la versión. Si se pasa el parámetro incorrecto devolverá la versión completa
 
 ```php
 echo Phalcon\Version::getPart(
@@ -63,16 +63,16 @@ echo Phalcon\Version::getPart(
 protected static function _getVersion(): array;
 ```
 
-Area where the version number is set. The format is as follows: ABBCCDE
+Área donde se encuentra el número de versión. El formato es el siguiente: ABBCCDE
 
-A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Special release version i.e. RC1, Beta2 etc.
+A - Versión mayor B - Versión media (dos dígitos) C - Versión mínima (dos dígitos) D - Lanzamiento especial: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Versión del lanzamiento especial, ej. RC1, Beta2 etc.
 
-@todo Remove in v5 @deprecated Use getVersion()
+@todo Eliminar en v5 @deprecated Usar getVersion()
 
 ```php
 protected static function getVersion(): array;
 ```
 
-Area where the version number is set. The format is as follows: ABBCCDE
+Área donde se encuentra el número de versión. El formato es el siguiente: ABBCCDE
 
-A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Special release version i.e. RC1, Beta2 etc.
+A - Versión mayor B - Versión media (dos dígitos) C - Versión mínima (dos dígitos) D - Lanzamiento especial: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Versión del lanzamiento especial, ej. RC1, Beta2 etc.
