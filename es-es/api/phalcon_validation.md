@@ -2638,13 +2638,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function __construct( array $services = [] );
 ```
 
-TagFactory constructor.
+Constructor TagFactory.
 
 ```php
 public function newInstance( string $name ): ValidatorInterface;
 ```
 
-Creates a new instance
+Crea una nueva instancia
 
 ```php
 protected function getAdapters(): array;
