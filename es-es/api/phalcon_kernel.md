@@ -13,7 +13,7 @@ title: 'Phalcon\Kernel'
 
 | Namespace | Phalcon |
 
-This class allows to change the internal behavior of the framework in runtime
+Esta clase permite cambiar el comportamiento interno del framework en tiempo de ejecución
 
 ## Métodos
 
@@ -21,4 +21,4 @@ This class allows to change the internal behavior of the framework in runtime
 public static function preComputeHashKey( string $key );
 ```
 
-Produces a pre-computed hash key based on a string. This function produces different numbers in 32bit/64bit processors
+Produce una clave hash precalculada basada en una cadena. Esta función produce diferentes números en procesadores de 32bit/64bit
