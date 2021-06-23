@@ -328,7 +328,7 @@ Returns the DependencyInjector container
 public function init( array $data = [] ): void;
 ```
 
-Initialize internal array
+Inicializa el vector interno
 
 ```php
 public function remove( string $element ): void;
