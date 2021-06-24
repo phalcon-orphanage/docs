@@ -15,7 +15,7 @@ title: 'Phalcon\Registry'
 
 Phalcon\Registry
 
-A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
+Un registro es un contenedor para almacenar objetos y valores en el espacio de la aplicación. Al almacenar el valor en un registro, el mismo objeto siempre está disponible en toda la aplicación.
 
 ```php
 $registry = new \Phalcon\Registry();
@@ -41,13 +41,13 @@ unset($registry->something);
 unset($registry["something"]);
 ```
 
-In addition to ArrayAccess, Phalcon\Registry also implements Countable (count($registry) will return the number of elements in the registry), Serializable and Iterator (you can iterate over the registry using a foreach loop) interfaces. For PHP 5.4 and higher, JsonSerializable interface is implemented.
+Además de ArrayAccess, Phalcon\Registry también implementa los interfaces Countable (count ($registry) devolverá la cantidad de elementos en el registro), Serializable e Iterator (puede iterar sobre el registro utilizando un bucle foreach). Para PHP 5.4 y superior, se implementa la interfaz JsonSerializable.
 
-Phalcon\Registry is very fast (it is typically faster than any userspace implementation of the registry); however, this comes at a price: Phalcon\Registry is a final class and cannot be inherited from.
+Phalcon\\Registry es muy rápido (generalmente es más rápido que cualquier implementación del registro en el espacio de usuario); sin embargo, esto tiene un precio: Phalcon\Registry es una clase final y no se puede heredar.
 
-Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc, it is not recommended to invoke them manually (these methods exist mainly to match the interfaces the registry implements): $registry->__get("property") is several times slower than $registry->property.
+Aunque Phalcon\\Registry expone métodos como __get(), offsetGet(), count() etc, no se recomienda invocarlos manualmente (estos métodos existen principalmente para hacer coincidir las interfaces que implementa el registro): $registry->__get("property") es varias veces más lento que $registry->property.
 
-Internally all the magic methods (and interfaces except JsonSerializable) are implemented using object handlers or similar techniques: this allows to bypass relatively slow method calls.
+Internamente todos los métodos mágicos (e interfaces excepto JsonSerializable) se implementan utilizando manejadores de objetos o técnicas similares: esto permite eludir llamadas a métodos relativamente lentas.
 
 ## Métodos
 
@@ -91,7 +91,7 @@ Limpia la colección interna
 final public function count(): int;
 ```
 
-Count elements of an object
+Cuenta los elementos de un objeto
 
 @link https://php.net/manual/en/countable.count.php
 
@@ -117,13 +117,13 @@ Determina si un elemento está presente en la colección.
 final public function init( array $data = [] ): void;
 ```
 
-Initialize internal array
+Inicializa el vector interno
 
 ```php
 final public function jsonSerialize(): array;
 ```
 
-Specify data which should be serialized to JSON
+Especifica los datos que deben ser serializados a JSON
 
 @link https://php.net/manual/en/jsonserializable.jsonserialize.php
 
@@ -131,7 +131,7 @@ Specify data which should be serialized to JSON
 final public function offsetExists( mixed $element ): bool;
 ```
 
-Whether a offset exists
+Si existe un desplazamiento
 
 @link https://php.net/manual/en/arrayaccess.offsetexists.php
 
@@ -139,7 +139,7 @@ Whether a offset exists
 final public function offsetGet( mixed $element ): mixed;
 ```
 
-Offset to retrieve
+Desplazamiento a obtener
 
 @link https://php.net/manual/en/arrayaccess.offsetget.php
 
@@ -147,7 +147,7 @@ Offset to retrieve
 final public function offsetSet( mixed $element, mixed $value ): void;
 ```
 
-Offset to set
+Desplazamiento a establecer
 
 @link https://php.net/manual/en/arrayaccess.offsetset.php
 
@@ -155,7 +155,7 @@ Offset to set
 final public function offsetUnset( mixed $element ): void;
 ```
 
-Offset to unset
+Desplazamiento a deconfigurar
 
 @link https://php.net/manual/en/arrayaccess.offsetunset.php
 
@@ -163,13 +163,13 @@ Offset to unset
 final public function remove( string $element ): void;
 ```
 
-Delete the element from the collection
+Elimina el elemento de la colección
 
 ```php
 final public function serialize(): string;
 ```
 
-String representation of object
+Representación del objeto como cadena de texto
 
 @link https://php.net/manual/en/serializable.serialize.php
 
@@ -177,21 +177,21 @@ String representation of object
 final public function set( string $element, mixed $value ): void;
 ```
 
-Set an element in the collection
+Establece un elemento en la colección
 
 ```php
 final public function toArray(): array;
 ```
 
-Returns the object in an array format
+Devuelve el objeto en un formato vector
 
 ```php
 final public function toJson( int $options = int ): string;
 ```
 
-Returns the object in a JSON format
+Devuelve el objeto en un formato JSON
 
-The default string uses the following options for json_encode
+La cadena predeterminada usa las siguientes opciones para *json_encode*
 
 JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
 
@@ -201,6 +201,6 @@ JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
 final public function unserialize( mixed $serialized ): void;
 ```
 
-Constructs the object
+Construye el objeto
 
 @link https://php.net/manual/en/serializable.unserialize.php

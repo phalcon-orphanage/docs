@@ -14,7 +14,7 @@ title: 'Phalcon\Loader'
 
 | Namespace | Phalcon | | Uses | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | EventsAwareInterface |
 
-This component helps to load your project classes automatically based on some conventions
+Este componente ayuda a cargar automáticamente las clases de tu proyecto basándose en algunas convenciones
 
 ```php
 use Phalcon\Loader;
@@ -93,25 +93,25 @@ protected registered = false;
 public function autoLoad( string $className ): bool;
 ```
 
-Autoloads the registered classes
+Carga automáticamente las clases registradas
 
 ```php
 public function getCheckedPath(): string;
 ```
 
-Get the path the loader is checking for a path
+Obtiene la ruta que está revisando el cargador para un ruta específica
 
 ```php
 public function getClasses(): array;
 ```
 
-Returns the class-map currently registered in the autoloader
+Devuelve el mapa de clases que actualmente tiene registrado el auto cargador
 
 ```php
 public function getDirs(): array;
 ```
 
-Returns the directories currently registered in the autoloader
+Devuelve los directorios registrados actualmente en el autocargador
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -123,61 +123,61 @@ Devuelve el administrador de eventos interno
 public function getExtensions(): array;
 ```
 
-Returns the file extensions registered in the loader
+Devuelve las extensiones de archivo registradas en el cargador
 
 ```php
 public function getFiles(): array;
 ```
 
-Returns the files currently registered in the autoloader
+Devuelve los archivos registrados actualmente en el auto cargador
 
 ```php
 public function getFoundPath(): string;
 ```
 
-Get the path when a class was found
+Obtiene la ruta cuando una clase fue encontrada
 
 ```php
 public function getNamespaces(): array;
 ```
 
-Returns the namespaces currently registered in the autoloader
+Devuelve los espacios de nombres registrados actualmente en el autocargador
 
 ```php
 public function loadFiles(): void;
 ```
 
-Checks if a file exists and then adds the file by doing virtual require
+Comprueba si un archivo existe y a continuación añade el archivo haciendo un `require` virtual
 
 ```php
 public function register( bool $prepend = bool ): Loader;
 ```
 
-Register the autoload method
+Registrar el método de autocarga
 
 ```php
 public function registerClasses( array $classes, bool $merge = bool ): Loader;
 ```
 
-Register classes and their locations
+Registra las clases y sus ubicaciones
 
 ```php
 public function registerDirs( array $directories, bool $merge = bool ): Loader;
 ```
 
-Register directories in which "not found" classes could be found
+Registra los directorios en los que se pueden localizar las clases "no encontradas"
 
 ```php
 public function registerFiles( array $files, bool $merge = bool ): Loader;
 ```
 
-Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
+Registra ficheros que son "no clases" por lo tanto necesitan un "require". Esto es muy útil para incluir archivos que solo tienen funciones
 
 ```php
 public function registerNamespaces( array $namespaces, bool $merge = bool ): Loader;
 ```
 
-Register namespaces and their related directories
+Registra los espacios de nombres y sus directorios relacionados
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
@@ -189,13 +189,13 @@ Establece el administrador de eventos
 public function setExtensions( array $extensions ): Loader;
 ```
 
-Sets an array of file extensions that the loader must try in each attempt to locate the file
+Establece un conjunto de extensiones de fichero que el cargador debe probar en cada intento de localizar el fichero
 
 ```php
 public function setFileCheckingCallback( mixed $callback = null ): Loader;
 ```
 
-Sets the file check callback.
+Establece la función de retorno de la comprobación de fichero.
 
 ```php
 // Default behavior.
@@ -213,7 +213,7 @@ $loader->setFileCheckingCallback(null);
 public function unregister(): Loader;
 ```
 
-Unregister the autoload method
+Anula el registro del método de autocarga
 
 ```php
 protected function prepareNamespace( array $namespaceName ): array;
@@ -227,4 +227,4 @@ protected function prepareNamespace( array $namespaceName ): array;
 
 Phalcon\Loader\Exception
 
-Exceptions thrown in Phalcon\Loader will use this class
+Las excepciones lanzadas en Phalcon\Loader usarán esta clase

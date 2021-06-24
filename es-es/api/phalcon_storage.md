@@ -195,7 +195,7 @@ Initializes the serializer
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Storage\Serializer\SerializerInterface |
 
-Interface for Phalcon\Logger adapters
+Interfaz para adaptadores Phalcon\Logger
 
 ## Métodos
 
