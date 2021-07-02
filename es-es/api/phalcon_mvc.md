@@ -2010,7 +2010,7 @@ var_dump($robot->isRelationshipLoaded('robotsParts')); // false
 public function jsonSerialize(): array;
 ```
 
-Serializes the object for json_encode
+Serializa el objeto por json_encode
 
    ```php
    echo json_encode($robot);
@@ -7839,7 +7839,7 @@ This component allows Phalcon\Mvc\Model to return rows without an associated ent
 public function jsonSerialize(): array;
 ```
 
-Serializes the object for json_encode
+Serializa el objeto por json_encode
 
 ```php
 public function offsetExists( mixed $index ): bool;
