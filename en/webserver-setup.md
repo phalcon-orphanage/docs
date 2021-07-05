@@ -77,6 +77,9 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
 ### Install nginx
+
+[How to install NGINX on Ubuntu/Debian](https://www.armanism.com/blog/install-nginx-on-ubuntu)
+
 [nginx Official Site][nginx_installation]
 
 ### Phalcon Configuration
