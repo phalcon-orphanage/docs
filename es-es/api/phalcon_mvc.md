@@ -6078,7 +6078,7 @@ $builder->andHaving(
 public function andWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 
-Appends a condition to the current WHERE conditions using a AND operator
+Añade una condición a las condiciones WHERE actuales usando un operador AND
 
 ```php
 $builder->andWhere("name = 'Peter'");
@@ -6096,13 +6096,13 @@ $builder->andWhere(
 final public function autoescape( string $identifier ): string;
 ```
 
-Automatically escapes identifiers but only if they need to be escaped.
+Escapa automáticamente los identificadores, pero sólo si necesitan ser escapados.
 
 ```php
 public function betweenHaving( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends a BETWEEN condition to the current HAVING conditions clause
+Añade una condición BETWEEN a la cláusula actual de condiciones HAVING
 
 ```php
 $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
@@ -6112,7 +6112,7 @@ $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
 public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends a BETWEEN condition to the current WHERE conditions
+Añade una condición BETWEEN a las condiciones WHERE actuales
 
 ```php
 $builder->betweenWhere("price", 100.25, 200.50);
@@ -6157,7 +6157,7 @@ $builder->distinct(null);
 public function forUpdate( bool $forUpdate ): BuilderInterface;
 ```
 
-Sets a FOR UPDATE clause
+Establece una cláusula FOR UPDATE
 
 ```php
 $builder->forUpdate(true);
@@ -6167,7 +6167,7 @@ $builder->forUpdate(true);
 public function from( mixed $models ): BuilderInterface;
 ```
 
-Sets the models who makes part of the query
+Establece los modelos que forman parte de la consulta
 
 ```php
 $builder->from(
@@ -6205,7 +6205,7 @@ Devuelve tipos de enlace por defecto
 public function getColumns();
 ```
 
-Return the columns to be queried
+Devuelve las columnas a ser consultadas
 
 ```php
 public function getDI(): DiInterface;
@@ -6217,79 +6217,79 @@ Devuelve el contenedor DependencyInjector
 public function getDistinct(): bool;
 ```
 
-Returns SELECT DISTINCT / SELECT ALL flag
+Devuelve la bandera SELECT DISTINCT / SELECT ALL
 
 ```php
 public function getFrom();
 ```
 
-Return the models who makes part of the query
+Devuelve los modelos que forman parte de la consulta
 
 ```php
 public function getGroupBy(): array;
 ```
 
-Returns the GROUP BY clause
+Devuelve la cláusula GROUP BY
 
 ```php
 public function getHaving(): string;
 ```
 
-Return the current having clause
+Devuelve la cláusula `having` actual
 
 ```php
 public function getJoins(): array;
 ```
 
-Return join parts of the query
+Devuelve las partes `join` de la consulta
 
 ```php
 public function getLimit();
 ```
 
-Returns the current LIMIT clause
+Devuelve la cláusula LIMIT actual
 
 ```php
 public function getModels(): string | array | null;
 ```
 
-Returns the models involved in the query
+Devuelve los modelos involucrados en la consulta
 
 ```php
 public function getOffset(): int;
 ```
 
-Returns the current OFFSET clause
+Devuelve la cláusula OFFSET actual
 
 ```php
 public function getOrderBy();
 ```
 
-Returns the set ORDER BY clause
+Devuelve la cláusula ORDER BY establecida
 
 ```php
 final public function getPhql(): string;
 ```
 
-Returns a PHQL statement built based on the builder parameters
+Devuelve una sentencia PHQL construida basada en los parámetros del constructor
 
 ```php
 public function getQuery(): QueryInterface;
 ```
 
-Returns the query built
+Devuelve la consulta construida
 
 ```php
 public function getWhere();
 ```
 
-Return the conditions for the query
+Devolver las condiciones de la consulta
 
 ```php
 public function groupBy( mixed $group ): BuilderInterface;
 ```
 
-Sets a GROUP BY clause
+Establece una cláusula GROUP BY
 
 ```php
 $builder->groupBy(
@@ -6303,7 +6303,7 @@ $builder->groupBy(
 public function having( mixed $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 
-Sets the HAVING condition clause
+Establece la cláusula de condición HAVING
 
 ```php
 $builder->having("SUM(Robots.price) > 0");
@@ -6320,7 +6320,7 @@ $builder->having(
 public function inHaving( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends an IN condition to the current HAVING conditions clause
+Añade una condición IN a la cláusula actual HAVING
 
 ```php
 $builder->inHaving("SUM(Robots.price)", [100, 200]);
@@ -6330,7 +6330,7 @@ $builder->inHaving("SUM(Robots.price)", [100, 200]);
 public function inWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends an IN condition to the current WHERE conditions
+Añade una condición IN a las condiciones WHERE actuales
 
 ```php
 $builder->inWhere(
@@ -6369,7 +6369,7 @@ $builder->innerJoin(
 public function join( string $model, string $conditions = null, string $alias = null, string $type = null ): BuilderInterface;
 ```
 
-Adds an :type: join (by default type - INNER) to the query
+Añade un :type: join (por defecto - INNER) a la consulta
 
 ```php
 // Inner Join model 'Robots' with automatic conditions and alias
@@ -6417,7 +6417,7 @@ $builder->leftJoin(
 public function limit( int $limit, mixed $offset = null ): BuilderInterface;
 ```
 
-Sets a LIMIT clause, optionally an offset clause
+Establece una cláusula LIMIT, opcionalmente una cláusula de desplazamiento
 
 ```php
 $builder->limit(100);
@@ -6656,7 +6656,7 @@ $builder->distinct(null);
 public function forUpdate( bool $forUpdate ): BuilderInterface;
 ```
 
-Sets a FOR UPDATE clause
+Establece una cláusula FOR UPDATE
 
 ```php
 $builder->forUpdate(true);
@@ -6666,7 +6666,7 @@ $builder->forUpdate(true);
 public function from( mixed $models ): BuilderInterface;
 ```
 
-Sets the models who makes part of the query
+Establece los modelos que forman parte de la consulta
 
 ```php
 public function getBindParams(): array;
@@ -6684,25 +6684,25 @@ Devuelve tipos de enlace por defecto
 public function getColumns();
 ```
 
-Return the columns to be queried
+Devuelve las columnas a ser consultadas
 
 ```php
 public function getDistinct(): bool;
 ```
 
-Returns SELECT DISTINCT / SELECT ALL flag
+Devuelve la bandera SELECT DISTINCT / SELECT ALL
 
 ```php
 public function getFrom();
 ```
 
-Return the models who makes part of the query
+Devuelve los modelos que forman parte de la consulta
 
 ```php
 public function getGroupBy(): array;
 ```
 
-Returns the GROUP BY clause
+Devuelve la cláusula GROUP BY
 
 ```php
 public function getHaving(): string;
@@ -6714,25 +6714,25 @@ Returns the HAVING condition clause
 public function getJoins(): array;
 ```
 
-Return join parts of the query
+Devuelve las partes `join` de la consulta
 
 ```php
 public function getLimit();
 ```
 
-Returns the current LIMIT clause
+Devuelve la cláusula LIMIT actual
 
 ```php
 public function getModels(): string | array | null;
 ```
 
-Returns the models involved in the query
+Devuelve los modelos involucrados en la consulta
 
 ```php
 public function getOffset(): int;
 ```
 
-Returns the current OFFSET clause
+Devuelve la cláusula OFFSET actual
 
 ```php
 public function getOrderBy();
@@ -6744,25 +6744,25 @@ Return the set ORDER BY clause
 public function getPhql(): string;
 ```
 
-Returns a PHQL statement built based on the builder parameters
+Devuelve una sentencia PHQL construida basada en los parámetros del constructor
 
 ```php
 public function getQuery(): QueryInterface;
 ```
 
-Returns the query built
+Devuelve la consulta construida
 
 ```php
 public function getWhere();
 ```
 
-Return the conditions for the query
+Devolver las condiciones de la consulta
 
 ```php
 public function groupBy( mixed $group ): BuilderInterface;
 ```
 
-Sets a GROUP BY clause
+Establece una cláusula GROUP BY
 
 ```php
 public function having( string $having ): BuilderInterface;
@@ -6786,7 +6786,7 @@ Añade un `INNER join` a la consulta
 public function join( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 
-Adds an :type: join (by default type - INNER) to the query
+Añade un :type: join (por defecto - INNER) a la consulta
 
 ```php
 public function leftJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
