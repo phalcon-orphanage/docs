@@ -95,7 +95,7 @@ title: 'Phalcon\Mvc'
 
 Phalcon\Mvc\Application
 
-This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
+Este componente encapsula todas las operaciones complejas tras instanciar cada componente necesario e integrarlo con el resto para permitir al patrón MVC operar de la manera deseada.
 
 ```php
 use Phalcon\Mvc\Application;
@@ -154,25 +154,25 @@ protected sendHeaders = true;
 public function handle( string $uri ): ResponseInterface | bool;
 ```
 
-Handles a MVC request
+Maneja una petición MVC
 
 ```php
 public function sendCookiesOnHandleRequest( bool $sendCookies ): Application;
 ```
 
-Enables or disables sending cookies by each request handling
+Habilita o deshabilita el envío de cookies para cada gestión de petición
 
 ```php
 public function sendHeadersOnHandleRequest( bool $sendHeaders ): Application;
 ```
 
-Enables or disables sending headers by each request handling
+Habilita o deshabilita el envío de cabeceras para cada gestión de petición
 
 ```php
 public function useImplicitView( bool $implicitView ): Application;
 ```
 
-By default. The view is implicitly buffering all the output You can full disable the view component using this method
+Por defecto. La vista almacena implícitamente todas las salidas. Puede deshabilitar por completo el componente de vista utilizando este método
 
 <h1 id="mvc-application-exception">Class Phalcon\Mvc\Application\Exception</h1>
 
@@ -182,7 +182,7 @@ By default. The view is implicitly buffering all the output You can full disable
 
 Phalcon\Mvc\Application\Exception
 
-Exceptions thrown in Phalcon\Mvc\Application class will use this class
+Las excepciones lanzadas en la clase Phalcon\Mvc\Application usarán esta clase
 
 <h1 id="mvc-controller">Abstract Class Phalcon\Mvc\Controller</h1>
 
@@ -192,9 +192,9 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 Phalcon\Mvc\Controller
 
-Every application controller should extend this class that encapsulates all the controller functionality
+Cada controlador de aplicación debería extender esta clase que encapsula toda la funcionalidad del controlador
 
-The controllers provide the “flow” between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.
+El controlador proporciona el "flujo" entre modelos y vistas. Los controladores son responsables de procesar las peticiones entrantes desde el navegador web, solicitando los datos a los modelos, y pasando esos datos a las vistas para su presentación.
 
 ```php
 <?php
@@ -231,7 +231,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 final public function __construct();
 ```
 
-Phalcon\Mvc\Controller constructor
+Constructor Phalcon\Mvc\Controller
 
 <h1 id="mvc-controller-bindmodelinterface">Interface Phalcon\Mvc\Controller\BindModelInterface</h1>
 
@@ -241,7 +241,7 @@ Phalcon\Mvc\Controller constructor
 
 Phalcon\Mvc\Controller\BindModelInterface
 
-Interface for Phalcon\Mvc\Controller
+Interfaz para Phalcon\Mvc\Controller
 
 ## Métodos
 
@@ -249,7 +249,7 @@ Interface for Phalcon\Mvc\Controller
 public static function getModelName(): string;
 ```
 
-Return the model name associated with this controller
+Devuelve el nombre del modelo asociado con este controlador
 
 <h1 id="mvc-controllerinterface">Interface Phalcon\Mvc\ControllerInterface</h1>
 
@@ -259,7 +259,7 @@ Return the model name associated with this controller
 
 Phalcon\Mvc\ControllerInterface
 
-Interface for controller handlers
+Interfaz para manejadores de controlador
 
 <h1 id="mvc-dispatcher">Class Phalcon\Mvc\Dispatcher</h1>
 
@@ -267,7 +267,7 @@ Interface for controller handlers
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Mvc\Dispatcher\Exception, Phalcon\Events\ManagerInterface, Phalcon\Http\ResponseInterface, Phalcon\Dispatcher\AbstractDispatcher | | Extends | BaseDispatcher | | Implements | DispatcherInterface |
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
+Despachar es el proceso de tomar el objeto de solicitud, extraer el nombre del módulo, el nombre de controlador, el nombre de la acción, y los parámetros opcionales que contenga, y luego instanciar un controlador y llamar una acción de ese controlador.
 
 ```php
 $di = new \Phalcon\Di();
@@ -303,7 +303,7 @@ protected handlerSuffix = Controller;
 public function forward( array $forward ): void;
 ```
 
-Forwards the execution flow to another controller/action.
+Reenvía el flujo de ejecución a otro controlador/acción.
 
 ```php
 use Phalcon\Events\Event;
@@ -363,19 +363,19 @@ $this->dispatcher->forward(
 public function getActiveController(): ControllerInterface;
 ```
 
-Returns the active controller in the dispatcher
+Devuelve el controlador activo en el despachador
 
 ```php
 public function getControllerClass(): string;
 ```
 
-Possible controller class name that will be located to dispatch the request
+Posible nombre de la clase del controlador que será localizada para despachar la petición
 
 ```php
 public function getControllerName(): string;
 ```
 
-Gets last dispatched controller name
+Obtiene el nombre del último controlador despachado
 
 ```php
 public function getLastController(): ControllerInterface;
@@ -387,31 +387,31 @@ Devuelve el último controlador despachado
 public function getPreviousActionName(): string;
 ```
 
-Gets previous dispatched action name
+Obtiene el nombre de la acción despachada anterior
 
 ```php
 public function getPreviousControllerName(): string;
 ```
 
-Gets previous dispatched controller name
+Obtiene el nombre del controlador despachado anterior
 
 ```php
 public function getPreviousNamespaceName(): string;
 ```
 
-Gets previous dispatched namespace name
+Obtiene el espacio de nombres despachado anterior
 
 ```php
 public function setControllerName( string $controllerName );
 ```
 
-Sets the controller name to be dispatched
+Establece el nombre del controlador a despachar
 
 ```php
 public function setControllerSuffix( string $controllerSuffix );
 ```
 
-Sets the default controller suffix
+Establece el sufijo de controlador por defecto
 
 ```php
 public function setDefaultController( string $controllerName );
@@ -423,13 +423,13 @@ Establece el nombre predeterminado del controlador
 protected function handleException( \Exception $exception );
 ```
 
-Handles a user exception
+Gestiona una excepción de usuario
 
 ```php
 protected function throwDispatchException( string $message, int $exceptionCode = int );
 ```
 
-Throws an internal exception
+Lanza una excepción interna
 
 <h1 id="mvc-dispatcher-exception">Class Phalcon\Mvc\Dispatcher\Exception</h1>
 
@@ -439,7 +439,7 @@ Throws an internal exception
 
 Phalcon\Mvc\Dispatcher\Exception
 
-Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
+Las excepciones lanzadas en Phalcon\Mvc\Dispatcher usarán esta clase
 
 <h1 id="mvc-dispatcherinterface">Interface Phalcon\Mvc\DispatcherInterface</h1>
 
@@ -449,7 +449,7 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 Phalcon\Mvc\DispatcherInterface
 
-Interface for Phalcon\Mvc\Dispatcher
+Interfaz para Phalcon\Mvc\Dispatcher
 
 ## Métodos
 
@@ -457,13 +457,13 @@ Interface for Phalcon\Mvc\Dispatcher
 public function getActiveController(): ControllerInterface;
 ```
 
-Returns the active controller in the dispatcher
+Devuelve el controlador activo en el despachador
 
 ```php
 public function getControllerName(): string;
 ```
 
-Gets last dispatched controller name
+Obtiene el nombre del último controlador despachado
 
 ```php
 public function getLastController(): ControllerInterface;
@@ -475,13 +475,13 @@ Devuelve el último controlador despachado
 public function setControllerName( string $controllerName );
 ```
 
-Sets the controller name to be dispatched
+Establece el nombre del controlador a despachar
 
 ```php
 public function setControllerSuffix( string $controllerSuffix );
 ```
 
-Sets the default controller suffix
+Establece el sufijo de controlador por defecto
 
 ```php
 public function setDefaultController( string $controllerName );
@@ -497,7 +497,7 @@ Establece el nombre predeterminado del controlador
 
 Phalcon\Mvc\EntityInterface
 
-Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
+Interfaz para Phalcon\Mvc\Collection y Phalcon\Mvc\Model
 
 ## Métodos
 
@@ -505,13 +505,13 @@ Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 public function readAttribute( string $attribute ): mixed | null;
 ```
 
-Reads an attribute value by its name
+Lee un valor de atributo por su nombre
 
 ```php
 public function writeAttribute( string $attribute, mixed $value );
 ```
 
-Writes an attribute value by its name
+Escribe un valor de atributo por su nombre
 
 <h1 id="mvc-micro">Class Phalcon\Mvc\Micro</h1>
 
@@ -521,7 +521,7 @@ Writes an attribute value by its name
 
 Phalcon\Mvc\Micro
 
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
+Con Phalcon se pueden crear aplicaciones "Micro-Framework like". Al hacer esto, solo se necesita escribir una cantidad mínima de código para crear una aplicación PHP. Las aplicaciones Micro son adecuadas de una manera práctica para aplicaciones pequeñas, APIs y prototipos.
 
 ```php
 $app = new \Phalcon\Mvc\Micro();
@@ -592,55 +592,55 @@ protected stopped;
 public function __construct( DiInterface $container = null );
 ```
 
-Phalcon\Mvc\Micro constructor
+Constructor Phalcon\Mvc\Micro
 
 ```php
 public function after( mixed $handler ): Micro;
 ```
 
-Appends an 'after' middleware to be called after execute the route
+Añade un software intermedio "after" para ser llamado después de ejecutar la ruta
 
 ```php
 public function afterBinding( mixed $handler ): Micro;
 ```
 
-Appends a afterBinding middleware to be called after model binding
+Añade un software intermedio afterBinding para ser llamado después del enlace del modelo
 
 ```php
 public function before( mixed $handler ): Micro;
 ```
 
-Appends a before middleware to be called before execute the route
+Anexa un software intermedio before para ser llamado antes de ejecutar la ruta
 
 ```php
 public function delete( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is DELETE
+Asigna una ruta a un manejador que sólo coincide si el método HTTP es DELETE
 
 ```php
 public function error( mixed $handler ): Micro;
 ```
 
-Sets a handler that will be called when an exception is thrown handling the route
+Configura un controlador que será llamado cuando se lance una excepción al gestionar la ruta
 
 ```php
 public function finish( mixed $handler ): Micro;
 ```
 
-Appends a 'finish' middleware to be called when the request is finished
+Añade un software intermedio "finish" para ser llamado cuando finalice la solicitud
 
 ```php
 public function get( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is GET
+Asigna una ruta a un manejador que solo coincide si el método HTTP es GET
 
 ```php
 public function getActiveHandler();
 ```
 
-Return the handler that will be called for the matched route
+Devuelve el controlador que será llamado para la ruta coincidente
 
 ```php
 public function getBoundModels(): array;
@@ -664,7 +664,7 @@ Devuelve los gestores internos adjuntos a la aplicación
 public function getModelBinder(): BinderInterface | null;
 ```
 
-Gets model binder
+Obtiene el enlazador del modelo
 
 ```php
 public function getReturnedValue();
@@ -724,19 +724,19 @@ Monta una colección de gestores
 public function notFound( mixed $handler ): Micro;
 ```
 
-Sets a handler that will be called when the router doesn't match any of the defined routes
+Configura un controlador que será llamado cuando la ruta no coincida con ninguna de las rutas definidas
 
 ```php
 public function offsetExists( mixed $alias ): bool;
 ```
 
-Check if a service is registered in the internal services container using the array syntax
+Comprueba si un servicio está registrado en el contenedor de servicios interno utilizando la sintaxis de vector
 
 ```php
 public function offsetGet( mixed $alias ): mixed;
 ```
 
-Allows to obtain a shared service in the internal services container using the array syntax
+Permite obtener un servicio compartido en el contenedor de servicios interno utilizando la sintaxis de vector
 
 ```php
 var_dump(
@@ -748,7 +748,7 @@ var_dump(
 public function offsetSet( mixed $alias, mixed $definition ): void;
 ```
 
-Allows to register a shared service in the internal services container using the array syntax
+Permite registrar un servicio compartido en el contenedor de servicios interno utilizando la sintaxis de vector
 
 ```php
    $app["request"] = new \Phalcon\Http\Request();
@@ -758,31 +758,31 @@ Allows to register a shared service in the internal services container using the
 public function offsetUnset( mixed $alias ): void;
 ```
 
-Removes a service from the internal services container using the array syntax
+Elimina un servicio del contenedor de servicios interno utilizando la sintaxis de vector
 
 ```php
 public function options( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
+Asigna una ruta a un controlador que solo coincide si el método HTTP es OPTIONS
 
 ```php
 public function patch( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is PATCH
+Asigna una ruta a un controlador que solo coincide si el método HTTP es PATCH
 
 ```php
 public function post( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is POST
+Asigna una ruta a un controlador que solo coincide si el método HTTP es POST
 
 ```php
 public function put( string $routePattern, mixed $handler ): RouteInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is PUT
+Asigna una ruta a un controlador que solo coincide si el método HTTP es PUT
 
 ```php
 public function setActiveHandler( mixed $activeHandler );
@@ -794,7 +794,7 @@ Configura externamente el gestor que debe ser llamado por la ruta coincidente
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
@@ -1005,13 +1005,13 @@ Interface for Phalcon\Mvc\Micro\Collection
 public function delete( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is DELETE
+Asigna una ruta a un manejador que sólo coincide si el método HTTP es DELETE
 
 ```php
 public function get( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is GET
+Asigna una ruta a un manejador que solo coincide si el método HTTP es GET
 
 ```php
 public function getHandler(): mixed;
@@ -1053,25 +1053,25 @@ Maps a route to a handler
 public function options( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
+Asigna una ruta a un controlador que solo coincide si el método HTTP es OPTIONS
 
 ```php
 public function patch( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is PATCH
+Asigna una ruta a un controlador que solo coincide si el método HTTP es PATCH
 
 ```php
 public function post( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is POST
+Asigna una ruta a un controlador que solo coincide si el método HTTP es POST
 
 ```php
 public function put( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 
-Maps a route to a handler that only matches if the HTTP method is PUT
+Asigna una ruta a un controlador que solo coincide si el método HTTP es PUT
 
 ```php
 public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
@@ -2080,7 +2080,7 @@ Crea un criterio para un modelo específico
 public function readAttribute( string $attribute ): mixed | null;
 ```
 
-Reads an attribute value by its name
+Lee un valor de atributo por su nombre
 
 ```php
 echo $robot->readAttribute("name");
@@ -2316,7 +2316,7 @@ class Subscriptors extends Model
 public function writeAttribute( string $attribute, mixed $value ): void;
 ```
 
-Writes an attribute value by its name
+Escribe un valor de atributo por su nombre
 
 ```php
 $robot->writeAttribute("name", "Rosey");
@@ -3366,7 +3366,7 @@ $criteria->rightJoin(
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 ```php
 public function setModelName( string $modelName ): CriteriaInterface;
@@ -4170,7 +4170,7 @@ Sets a custom events manager for a specific model
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 ```php
 public function setEventsManager( EventsManagerInterface $eventsManager ): void;
@@ -4988,7 +4988,7 @@ $metaData->setAutomaticUpdateAttributes(
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 ```php
 public function setEmptyStringAttributes( ModelInterface $model, array $attributes ): void;
@@ -6552,7 +6552,7 @@ Set default bind types
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 ```php
 public function where( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
@@ -7869,7 +7869,7 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 public function readAttribute( string $attribute );
 ```
 
-Reads an attribute value by its name
+Lee un valor de atributo por su nombre
 
 ```php
 echo $robot->readAttribute("name");
@@ -7891,7 +7891,7 @@ Returns the instance as an array representation
 public function writeAttribute( string $attribute, mixed $value ): void;
 ```
 
-Writes an attribute value by its name
+Escribe un valor de atributo por su nombre
 
 ```php
 $robot->writeAttribute("name", "Rosey");
