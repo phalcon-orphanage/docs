@@ -322,7 +322,7 @@ Destroys the session bag
 public function getDI(): DiInterface;
 ```
 
-Returns the DependencyInjector container
+Devuelve el contenedor DependencyInjector
 
 ```php
 public function init( array $data = [] ): void;
@@ -346,7 +346,7 @@ Sets a value in the session bag
 public function setDI( DiInterface $container ): void;
 ```
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 <h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
