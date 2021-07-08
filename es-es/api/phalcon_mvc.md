@@ -8546,7 +8546,7 @@ Devuelve un entero para consultas simples o una instancia de ResultsetInterface 
 public function create(): bool;
 ```
 
-Inserta una instancia de modelo. If the instance already exists in the persistence it will throw an exception. Returning true on success or false otherwise.
+Inserta una instancia de modelo. If the instance already exists in the persistence it will throw an exception. Devuelve `true` en caso de éxito o `false` en caso contrario.
 
 ```php
 public function delete(): bool;
@@ -8726,7 +8726,7 @@ Allows to calculate a sum on a column that match the specified conditions
 public function update(): bool;
 ```
 
-Actualiza una instancia de modelo. Si la instancia no existe en la persistencia lanzará una excepción. Returning true on success or false otherwise.
+Actualiza una instancia de modelo. Si la instancia no existe en la persistencia lanzará una excepción. Devuelve `true` en caso de éxito o `false` en caso contrario.
 
 ```php
 public function validationHasFailed(): bool;
