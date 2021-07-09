@@ -6429,7 +6429,7 @@ $builder->limit("100", "20");
 public function notBetweenHaving( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends a NOT BETWEEN condition to the current HAVING conditions clause
+Añade una condición NOT BETWEEN a la cláusula actual de condiciones HAVING
 
 ```php
 $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
@@ -6439,7 +6439,7 @@ $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
 public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends a NOT BETWEEN condition to the current WHERE conditions
+Añade una condición BETWEEN a las condiciones WHERE actuales
 
 ```php
 $builder->notBetweenWhere("price", 100.25, 200.50);
@@ -6449,7 +6449,7 @@ $builder->notBetweenWhere("price", 100.25, 200.50);
 public function notInHaving( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends a NOT IN condition to the current HAVING conditions clause
+Añade una condición NOT IN a la cláusula actual de condiciones HAVING
 
 ```php
 $builder->notInHaving("SUM(Robots.price)", [100, 200]);
@@ -6459,7 +6459,7 @@ $builder->notInHaving("SUM(Robots.price)", [100, 200]);
 public function notInWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 
-Appends a NOT IN condition to the current WHERE conditions
+Añade una condición NOT IN a las condiciones WHERE actuales
 
 ```php
 $builder->notInWhere("id", [1, 2, 3]);
@@ -6469,7 +6469,7 @@ $builder->notInWhere("id", [1, 2, 3]);
 public function offset( int $offset ): BuilderInterface;
 ```
 
-Sets an OFFSET clause
+Establece una cláusula OFFSET
 
 ```php
 $builder->offset(30);
@@ -6479,7 +6479,7 @@ $builder->offset(30);
 public function orHaving( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 
-Appends a condition to the current HAVING conditions clause using an OR operator
+Añade una condición a la cláusula actual de condiciones HAVING usando un operador OR
 
 ```php
 $builder->orHaving("SUM(Robots.price) > 0");
@@ -6514,7 +6514,7 @@ $builder->orWhere(
 public function orderBy( mixed $orderBy ): BuilderInterface;
 ```
 
-Sets an ORDER BY condition clause
+Establece una cláusula de condición ORDER BY
 
 ```php
 $builder->orderBy("Robots.name");
@@ -6546,7 +6546,7 @@ Establece parámetros de enlace por defecto
 public function setBindTypes( array $bindTypes, bool $merge = bool ): BuilderInterface;
 ```
 
-Set default bind types
+Establece los tipos de enlace predeterminados
 
 ```php
 public function setDI( DiInterface $container ): void;
@@ -6558,7 +6558,7 @@ Configura el contenedor DependencyInjector
 public function where( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 
-Sets the query WHERE conditions
+Establece las condiciones WHERE de la consulta
 
 ```php
 $builder->where(100);
@@ -6578,25 +6578,25 @@ $builder->where(
 protected function conditionBetween( string $clause, string $operator, string $expr, mixed $minimum, mixed $maximum ): BuilderInterface;
 ```
 
-Appends a BETWEEN condition
+Añade una condición BETWEEN
 
 ```php
 protected function conditionIn( string $clause, string $operator, string $expr, array $values ): BuilderInterface;
 ```
 
-Appends an IN condition
+Añade una condición IN
 
 ```php
 protected function conditionNotBetween( string $clause, string $operator, string $expr, mixed $minimum, mixed $maximum ): BuilderInterface;
 ```
 
-Appends a NOT BETWEEN condition
+Añade una condición NOT BETWEEN
 
 ```php
 protected function conditionNotIn( string $clause, string $operator, string $expr, array $values ): BuilderInterface;
 ```
 
-Appends a NOT IN condition
+Añade una condición NOT IN
 
 <h1 id="mvc-model-query-builderinterface">Interface Phalcon\Mvc\Model\Query\BuilderInterface</h1>
 
@@ -6606,7 +6606,7 @@ Appends a NOT IN condition
 
 Phalcon\Mvc\Model\Query\BuilderInterface
 
-Interface for Phalcon\Mvc\Model\Query\Builder
+Interfaz para Phalcon\Mvc\Model\Query\Builder
 
 ## Constantes
 
@@ -6627,7 +6627,7 @@ Añade un modelo para que tome parte en la consulta
 public function andWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 
-Appends a condition to the current conditions using a AND operator
+Añade una condición a las condiciones actuales usando un operador AND
 
 ```php
 public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
@@ -6708,7 +6708,7 @@ Devuelve la cláusula GROUP BY
 public function getHaving(): string;
 ```
 
-Returns the HAVING condition clause
+Devuelve la cláusula de condición HAVING
 
 ```php
 public function getJoins(): array;
@@ -6738,7 +6738,7 @@ Devuelve la cláusula OFFSET actual
 public function getOrderBy();
 ```
 
-Return the set ORDER BY clause
+Devuelve la cláusula ORDER BY establecida
 
 ```php
 public function getPhql(): string;
@@ -6768,7 +6768,7 @@ Establece una cláusula GROUP BY
 public function having( string $having ): BuilderInterface;
 ```
 
-Sets a HAVING condition clause
+Establece la cláusula de condición HAVING
 
 ```php
 public function inWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
@@ -6798,7 +6798,7 @@ Añade un `LEFT join` a la consulta
 public function limit( int $limit, mixed $offset = null ): BuilderInterface;
 ```
 
-Sets a LIMIT clause
+Establece una cláusula LIMIT
 
 ```php
 public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
@@ -6816,7 +6816,7 @@ Añade una condición NOT IN a las condiciones actuales
 public function offset( int $offset ): BuilderInterface;
 ```
 
-Sets an OFFSET clause
+Establece una cláusula OFFSET
 
 ```php
 public function orWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
@@ -6828,7 +6828,7 @@ Añade una condición a las condiciones actuales usando un operador OR
 public function orderBy( string $orderBy ): BuilderInterface;
 ```
 
-Sets an ORDER BY condition clause
+Establece una cláusula de condición ORDER BY
 
 ```php
 public function rightJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
@@ -6846,13 +6846,13 @@ Establece parámetros de enlace por defecto
 public function setBindTypes( array $bindTypes, bool $merge = bool ): BuilderInterface;
 ```
 
-Set default bind types
+Establece los tipos de enlace predeterminados
 
 ```php
 public function where( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 
-Sets conditions for the query
+Establece las condiciones para la consulta
 
 <h1 id="mvc-model-query-lang">Abstract Class Phalcon\Mvc\Model\Query\Lang</h1>
 
@@ -6862,9 +6862,9 @@ Sets conditions for the query
 
 Phalcon\Mvc\Model\Query\Lang
 
-PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS. It allows Phalcon to offer a unified SQL language to the developer, while internally doing all the work of translating PHQL instructions to the most optimal SQL instructions depending on the RDBMS type associated with a model.
+PHQL está implementado como un analizador (escrito en C) que traduce la sintaxis en la del RDBMS destino. Permite a Phalcon ofrecer un lenguaje SQL unificado al desarrollador, mientras internamente está haciendo todo el trabajo de traducir las instrucciones de PHQL a las instrucciones SQL más óptimas dependiendo del tipo RDBMS asociado con un modelo.
 
-To achieve the highest performance possible, we wrote a parser that uses the same technology as SQLite. This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
+Para lograr el mayor rendimiento posible, escribimos un analizador que utiliza la misma tecnología que SQLite. Esta tecnología proporciona un analizador pequeño en memoria con una huella en memoria muy baja que también es segura en hilos.
 
 ```php
 use Phalcon\Mvc\Model\Query\Lang;
@@ -6880,7 +6880,7 @@ $intermediate = Lang::parsePHQL(
 public static function parsePHQL( string $phql ): array;
 ```
 
-Parses a PHQL statement returning an intermediate representation (IR)
+Analiza una sentencia PHQL devolviendo una representación intermedia (IR)
 
 <h1 id="mvc-model-query-status">Class Phalcon\Mvc\Model\Query\Status</h1>
 
@@ -6890,7 +6890,7 @@ Parses a PHQL statement returning an intermediate representation (IR)
 
 Phalcon\Mvc\Model\Query\Status
 
-This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails
+Esta clase representa el estado devuelto por una sentencia PHQL como INSERT, UPDATE o DELETE. Ofrece información del contexto y los mensajes relacionados producidos por el modelo que finalmente ejecuta las operaciones cuando falla
 
 ```php
 $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
@@ -6934,19 +6934,19 @@ Phalcon\Mvc\Model\Query\Status
 public function getMessages(): MessageInterface[];
 ```
 
-Returns the messages produced because of a failed operation
+Devuelve los mensajes producidos debido a una operación fallida
 
 ```php
 public function getModel(): ModelInterface;
 ```
 
-Returns the model that executed the action
+Devuelve el modelo que ejecutó la acción
 
 ```php
 public function success(): bool;
 ```
 
-Allows to check if the executed operation was successful
+Permite comprobar si la operación ejecutada fue exitosa
 
 <h1 id="mvc-model-query-statusinterface">Interface Phalcon\Mvc\Model\Query\StatusInterface</h1>
 
@@ -6956,7 +6956,7 @@ Allows to check if the executed operation was successful
 
 Phalcon\Mvc\Model\Query\StatusInterface
 
-Interface for Phalcon\Mvc\Model\Query\Status
+Interfaz para Phalcon\Mvc\Model\Query\Status
 
 ## Métodos
 
@@ -6964,19 +6964,19 @@ Interface for Phalcon\Mvc\Model\Query\Status
 public function getMessages(): MessageInterface[];
 ```
 
-Returns the messages produced by an operation failed
+Devuelve los mensajes producidos por una operación fallida
 
 ```php
 public function getModel(): ModelInterface;
 ```
 
-Returns the model which executed the action
+Devuelve el modelo que ejecutó la acción
 
 ```php
 public function success(): bool;
 ```
 
-Allows to check if the executed operation was successful
+Permite comprobar si la operación ejecutada fue exitosa
 
 <h1 id="mvc-model-queryinterface">Interface Phalcon\Mvc\Model\QueryInterface</h1>
 
@@ -6986,7 +6986,7 @@ Allows to check if the executed operation was successful
 
 Phalcon\Mvc\Model\QueryInterface
 
-Interface for Phalcon\Mvc\Model\Query
+Interfaz para Phalcon\Mvc\Model\Query
 
 ## Métodos
 
@@ -7030,19 +7030,19 @@ Ejecuta la consulta devolviendo el primer resultado
 public function getSql(): array;
 ```
 
-Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
+Devuelve el SQL a ser generado por el PHQL interno (solo funciona en sentencias SELECT)
 
 ```php
 public function getUniqueRow(): bool;
 ```
 
-Check if the query is programmed to get only the first row in the resultset
+Comprueba si la consulta está programada para obtener solo la primera fila en el conjunto de resultados
 
 ```php
 public function parse(): array;
 ```
 
-Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another intermediate representation that could be executed by Phalcon\Mvc\Model\Query
+Analiza el código intermedio producido por Phalcon\Mvc\Model\Query\Lang generando otra representación intermedia que podría ser ejecutada por Phalcon\Mvc\Model\Query
 
 ```php
 public function setBindParams( array $bindParams, bool $merge = bool ): QueryInterface;
@@ -7066,7 +7066,7 @@ Establece cláusula SHARED LOCK
 public function setUniqueRow( bool $uniqueRow ): QueryInterface;
 ```
 
-Tells to the query if only the first row in the resultset must be returned
+Indica a la consulta si se debe devolver sólo el primer registro del conjunto de resultados
 
 <h1 id="mvc-model-relation">Class Phalcon\Mvc\Model\Relation</h1>
 
@@ -7076,7 +7076,7 @@ Tells to the query if only the first row in the resultset must be returned
 
 Phalcon\Mvc\Model\Relation
 
-This class represents a relationship between two models
+Esta clase representa una relación entre dos modelos
 
 ## Constantes
 
@@ -7126,97 +7126,97 @@ protected type;
 public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] );
 ```
 
-Phalcon\Mvc\Model\Relation constructor
+Constructor Phalcon\Mvc\Model\Relation
 
 ```php
 public function getFields();
 ```
 
-Returns the fields
+Devuelve los campos
 
 ```php
 public function getForeignKey();
 ```
 
-Returns the foreign key configuration
+Devuelve la configuración de clave ajena
 
 ```php
 public function getIntermediateFields();
 ```
 
-Gets the intermediate fields for has-*-through relations
+Obtiene los campos intermedios para las relaciones has-*-through
 
 ```php
 public function getIntermediateModel(): string;
 ```
 
-Gets the intermediate model for has-*-through relations
+Obtiene el modelo intermedio para las relaciones has-*-through
 
 ```php
 public function getIntermediateReferencedFields();
 ```
 
-Gets the intermediate referenced fields for has-*-through relations
+Obtiene los campos intermedios referenciados para las relaciones has-*-through
 
 ```php
 public function getOption( string $name );
 ```
 
-Returns an option by the specified name If the option doesn't exist null is returned
+Devuelve una opción por el nombre especificado Si la opción no existe se devuelve null
 
 ```php
 public function getOptions(): array;
 ```
 
-Returns the options
+Devuelve las opciones
 
 ```php
 public function getParams();
 ```
 
-Returns parameters that must be always used when the related records are obtained
+Devuelve parámetros que deben utilizarse siempre cuando se obtengan los registros relacionados
 
 ```php
 public function getReferencedFields();
 ```
 
-Returns the referenced fields
+Devuelve los campos referenciados
 
 ```php
 public function getReferencedModel(): string;
 ```
 
-Returns the referenced model
+Devuelve el modelo referenciado
 
 ```php
 public function getType(): int;
 ```
 
-Returns the relation type
+Devuelve el tipo de relación
 
 ```php
 public function isForeignKey(): bool;
 ```
 
-Check whether the relation act as a foreign key
+Comprueba si la relación actúa como una clave ajena
 
 ```php
 public function isReusable(): bool;
 ```
 
-Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+Comprobar si los registros devueltos al obtener belongs-to/has-many están implícitamente almacenados en caché durante la solicitud actual
 
 ```php
 public function isThrough(): bool;
 ```
 
-Check whether the relation is a 'many-to-many' relation or not
+Comprueba si la relación es una relación 'muchos-a-muchos' o no
 
 ```php
 public function setIntermediateRelation( mixed $intermediateFields, string $intermediateModel, mixed $intermediateReferencedFields );
 ```
 
-Sets the intermediate model data for has-*-through relations
+Establece los datos intermedios del modelo para las relaciones has-*-through
 
 <h1 id="mvc-model-relationinterface">Interface Phalcon\Mvc\Model\RelationInterface</h1>
 
@@ -7226,7 +7226,7 @@ Sets the intermediate model data for has-*-through relations
 
 Phalcon\Mvc\Model\RelationInterface
 
-Interface for Phalcon\Mvc\Model\Relation
+Interfaz para Phalcon\Mvc\Model\Relation
 
 ## Métodos
 
@@ -7234,91 +7234,91 @@ Interface for Phalcon\Mvc\Model\Relation
 public function getFields();
 ```
 
-Returns the fields
+Devuelve los campos
 
 ```php
 public function getForeignKey();
 ```
 
-Returns the foreign key configuration
+Devuelve la configuración de clave ajena
 
 ```php
 public function getIntermediateFields();
 ```
 
-Gets the intermediate fields for has-*-through relations
+Obtiene los campos intermedios para las relaciones has-*-through
 
 ```php
 public function getIntermediateModel(): string;
 ```
 
-Gets the intermediate model for has-*-through relations
+Obtiene el modelo intermedio para las relaciones has-*-through
 
 ```php
 public function getIntermediateReferencedFields();
 ```
 
-Gets the intermediate referenced fields for has-*-through relations
+Obtiene los campos intermedios referenciados para las relaciones has-*-through
 
 ```php
 public function getOption( string $name );
 ```
 
-Returns an option by the specified name If the option doesn't exist null is returned
+Devuelve una opción por el nombre especificado Si la opción no existe se devuelve null
 
 ```php
 public function getOptions(): array;
 ```
 
-Returns the options
+Devuelve las opciones
 
 ```php
 public function getParams();
 ```
 
-Returns parameters that must be always used when the related records are obtained
+Devuelve parámetros que deben utilizarse siempre cuando se obtengan los registros relacionados
 
 ```php
 public function getReferencedFields();
 ```
 
-Returns the referenced fields
+Devuelve los campos referenciados
 
 ```php
 public function getReferencedModel(): string;
 ```
 
-Returns the referenced model
+Devuelve el modelo referenciado
 
 ```php
 public function getType(): int;
 ```
 
-Returns the relations type
+Devuelve los tipos de relación
 
 ```php
 public function isForeignKey(): bool;
 ```
 
-Check whether the relation act as a foreign key
+Comprueba si la relación actúa como una clave ajena
 
 ```php
 public function isReusable(): bool;
 ```
 
-Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+Comprobar si los registros devueltos al obtener belongs-to/has-many están implícitamente almacenados en caché durante la solicitud actual
 
 ```php
 public function isThrough(): bool;
 ```
 
-Check whether the relation is a 'many-to-many' relation or not
+Comprueba si la relación es una relación 'muchos-a-muchos' o no
 
 ```php
 public function setIntermediateRelation( mixed $intermediateFields, string $intermediateModel, mixed $intermediateReferencedFields );
 ```
 
-Sets the intermediate model data for has-*-through relations
+Establece los datos intermedios del modelo para las relaciones has-*-through
 
 <h1 id="mvc-model-resultinterface">Interface Phalcon\Mvc\Model\ResultInterface</h1>
 
@@ -7328,7 +7328,7 @@ Sets the intermediate model data for has-*-through relations
 
 Phalcon\Mvc\Model\ResultInterface
 
-All single objects passed as base objects to Resultsets must implement this interface
+Todos los objetos individuales pasados como objetos base a Resultsets deben implementar esta interfaz
 
 ## Métodos
 
@@ -7336,7 +7336,7 @@ All single objects passed as base objects to Resultsets must implement this inte
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
 ```
 
-Sets the object's state
+Establece el estado del objeto
 
 <h1 id="mvc-model-resultset">Abstract Class Phalcon\Mvc\Model\Resultset</h1>
 
@@ -7346,7 +7346,7 @@ Sets the object's state
 
 Phalcon\Mvc\Model\Resultset
 
-This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.
+Este componente permite que Phalcon\Mvc\Model devuelva conjuntos de resultados grandes con el consumo mínimo de memoria Los Resultsets pueden ser recorridos usando una instrucción estándar para cada uno o un tiempo. Si un conjunto de resultados se serializa volcará todos los registros en un gran vector. Entonces la deserialización recuperará las filas como estaban antes de serializar.
 
 ```php
 <br />// Using a standard foreach
@@ -7433,25 +7433,25 @@ protected result;
 public function __construct( mixed $result, AdapterInterface $cache = null );
 ```
 
-Phalcon\Mvc\Model\Resultset constructor
+Constructor Phalcon\Mvc\Model\Resultset
 
 ```php
 final public function count(): int;
 ```
 
-Counts how many rows are in the resultset
+Cuenta cuántos registros hay en el conjunto de resultados
 
 ```php
 public function delete( Closure $conditionCallback = null ): bool;
 ```
 
-Deletes every record in the resultset
+Elimina todos los registros del conjunto de resultados
 
 ```php
 public function filter( callable $filter ): ModelInterface[];
 ```
 
-Filters a resultset returning only those the developer requires
+Filtra un conjunto de resultados devolviendo sólo aquellos que el desarrollador requiera
 
 ```php
 $filtered = $robots->filter(
@@ -7467,13 +7467,13 @@ $filtered = $robots->filter(
 public function getCache(): AdapterInterface;
 ```
 
-Returns the associated cache for the resultset
+Devuelve el caché asociado para el conjunto de resultados
 
 ```php
 public function getFirst(): mixed | null;
 ```
 
-Get first row in the resultset
+Obtener la primera fila del conjunto de resultados
 
 ```php
 $model = new Robots();
@@ -7499,37 +7499,37 @@ $manager->createQuery('SELECT r.id FROM Robots AS r WHERE r.name = "NON-EXISTENT
 public function getHydrateMode(): int;
 ```
 
-Returns the current hydration mode
+Devuelve el modo de hidratación actual
 
 ```php
 public function getLast(): ModelInterface | null;
 ```
 
-Get last row in the resultset
+Obtener la última fila del conjunto de resultados
 
 ```php
 public function getMessages(): MessageInterface[];
 ```
 
-Returns the error messages produced by a batch operation
+Devuelve los mensajes de error producidos por una operación por lotes
 
 ```php
 public function getType(): int;
 ```
 
-Returns the internal type of data retrieval that the resultset is using
+Devuelve el tipo interno de recuperación de datos que el conjunto de resultados está usando
 
 ```php
 public function isFresh(): bool;
 ```
 
-Tell if the resultset if fresh or an old one cached
+Indica si el conjunto de resultados es fresco o un caché antiguo
 
 ```php
 public function jsonSerialize(): array;
 ```
 
-Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present
+Devuelve objetos de modelo serializados como vector por json_encode. Llama jsonSerialize en cada objeto si está presente
 
 ```php
 $robots = Robots::find();
@@ -7541,73 +7541,73 @@ echo json_encode($robots);
 public function key(): int | null;
 ```
 
-Gets pointer number of active row in the resultset
+Obtiene el número de puntero del registro activo en el conjunto de resultados
 
 ```php
 public function next(): void;
 ```
 
-Moves cursor to next row in the resultset
+Mueve el cursor a la siguiente fila del conjunto de resultados
 
 ```php
 public function offsetExists( mixed $index ): bool;
 ```
 
-Checks whether offset exists in the resultset
+Comprueba si existe un offset en el conjunto de resultados
 
 ```php
 public function offsetGet( mixed $index ): ModelInterface | bool;
 ```
 
-Gets row in a specific position of the resultset
+Obtiene un registro de una posición específica del conjunto de resultados
 
 ```php
 public function offsetSet( mixed $index, mixed $value ): void;
 ```
 
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Los conjuntos de resultados no se pueden cambiar. Sólo se ha implementado para cumplir con la definición de la interfaz ArrayAccess
 
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
 
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Los conjuntos de resultados no se pueden cambiar. Sólo se ha implementado para cumplir con la definición de la interfaz ArrayAccess
 
 ```php
 final public function rewind(): void;
 ```
 
-Rewinds resultset to its beginning
+Rebobina el conjunto de resultados a su inicio
 
 ```php
 final public function seek( mixed $position ): void;
 ```
 
-Changes the internal pointer to a specific position in the resultset. Set the new position if required, and then set this->row
+Cambia el puntero interno a una posición específica en el conjunto de resultados. Establece la nueva posición si es necesario, y luego establece this->row
 
 ```php
 public function setHydrateMode( int $hydrateMode ): ResultsetInterface;
 ```
 
-Sets the hydration mode in the resultset
+Establece el modo de hidratación en el conjunto de resultados
 
 ```php
 public function setIsFresh( bool $isFresh ): ResultsetInterface;
 ```
 
-Set if the resultset is fresh or an old one cached
+Establece si el conjunto de resultados es fresco o un caché antiguo
 
 ```php
 public function update( mixed $data, Closure $conditionCallback = null ): bool;
 ```
 
-Updates every record in the resultset
+Actualiza cada registro en el conjunto de resultados
 
 ```php
 public function valid(): bool;
 ```
 
-Check whether internal resource has rows to fetch
+Comprobar si el recurso interno tiene filas para recuperar
 
 <h1 id="mvc-model-resultset-complex">Class Phalcon\Mvc\Model\Resultset\Complex</h1>
 
@@ -7617,7 +7617,7 @@ Check whether internal resource has rows to fetch
 
 Phalcon\Mvc\Model\Resultset\Complex
 
-Complex resultsets may include complete objects and scalar values. This class builds every complex row as it is required
+Los conjuntos de resultados complejos pueden incluir objetos completos y valores escalares. Esta clase construye cada registro complejo ya que se requiere
 
 ## Propiedades
 
@@ -7639,31 +7639,31 @@ protected disableHydration = false;
 public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null );
 ```
 
-Phalcon\Mvc\Model\Resultset\Complex constructor
+Constructor Phalcon\Mvc\Model\Resultset\Complex
 
 ```php
 final public function current(): ModelInterface | bool;
 ```
 
-Returns current row in the resultset
+Devuelve la fila actual en el conjunto de resultados
 
 ```php
 public function serialize(): string;
 ```
 
-Serializing a resultset will dump all related rows into a big array
+Serializar un conjunto de resultados extraerá todas las filas relacionadas en un vector grande
 
 ```php
 public function toArray(): array;
 ```
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Devuelve un conjunto de resultados completo como un vector, si el conjunto de resultados tiene un gran número de filas podría consumir más memoria de la que consume actualmente.
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Deserializar un conjunto de resultados sólo permitirá trabajar en las filas presentes en el estado guardado
 
 <h1 id="mvc-model-resultset-simple">Class Phalcon\Mvc\Model\Resultset\Simple</h1>
 
@@ -7673,7 +7673,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 Phalcon\Mvc\Model\Resultset\Simple
 
-Simple resultsets only contains a complete objects This class builds every complete object as it is required
+Los conjuntos de resultados simples solo contienen un objeto completo Esta clase construye cada objeto completo como es requerido
 
 ## Propiedades
 
@@ -7697,31 +7697,31 @@ protected keepSnapshots = false;
 public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null );
 ```
 
-Phalcon\Mvc\Model\Resultset\Simple constructor
+Constructor Phalcon\Mvc\Model\Resultset\Simple
 
 ```php
 final public function current(): ModelInterface | null;
 ```
 
-Returns current row in the resultset
+Devuelve la fila actual en el conjunto de resultados
 
 ```php
 public function serialize(): string;
 ```
 
-Serializing a resultset will dump all related rows into a big array
+Serializar un conjunto de resultados extraerá todas las filas relacionadas en un vector grande
 
 ```php
 public function toArray( bool $renameColumns = bool ): array;
 ```
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
+Devuelve un conjunto de resultados completo como un vector, si el conjunto de resultados tiene un gran número de filas podría consumir más memoria de la que consume actualmente. Exportar el conjunto de resultados a un vector no podría ser más rápido con un gran número de registros
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Deserializar un conjunto de resultados solo permitirá trabajar en las filas presentes en el estado guardado
 
 <h1 id="mvc-model-resultsetinterface">Interface Phalcon\Mvc\Model\ResultsetInterface</h1>
 
@@ -7731,7 +7731,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 Phalcon\Mvc\Model\ResultsetInterface
 
-Interface for Phalcon\Mvc\Model\Resultset
+Interfaz para Phalcon\Mvc\Model\Resultset
 
 ## Métodos
 
@@ -7739,13 +7739,13 @@ Interface for Phalcon\Mvc\Model\Resultset
 public function delete( Closure $conditionCallback = null ): bool;
 ```
 
-Deletes every record in the resultset
+Elimina todos los registros del conjunto de resultados
 
 ```php
 public function filter( callable $filter ): ModelInterface[];
 ```
 
-Filters a resultset returning only those the developer requires
+Filtra un conjunto de resultados devolviendo sólo aquellos que el desarrollador requiera
 
 ```php
 $filtered = $robots->filter(
@@ -7761,67 +7761,67 @@ $filtered = $robots->filter(
 public function getCache(): AdapterInterface;
 ```
 
-Returns the associated cache for the resultset
+Devuelve el caché asociado para el conjunto de resultados
 
 ```php
 public function getFirst(): mixed | null;
 ```
 
-Get first row in the resultset
+Obtener la primera fila del conjunto de resultados
 
 ```php
 public function getHydrateMode(): int;
 ```
 
-Returns the current hydration mode
+Devuelve el modo de hidratación actual
 
 ```php
 public function getLast(): ModelInterface | null;
 ```
 
-Get last row in the resultset
+Obtener la última fila del conjunto de resultados
 
 ```php
 public function getMessages(): MessageInterface[];
 ```
 
-Returns the error messages produced by a batch operation
+Devuelve los mensajes de error producidos por una operación por lotes
 
 ```php
 public function getType(): int;
 ```
 
-Returns the internal type of data retrieval that the resultset is using
+Devuelve el tipo interno de recuperación de datos que el conjunto de resultados está usando
 
 ```php
 public function isFresh(): bool;
 ```
 
-Tell if the resultset if fresh or an old one cached
+Indica si el conjunto de resultados es fresco o un caché antiguo
 
 ```php
 public function setHydrateMode( int $hydrateMode ): ResultsetInterface;
 ```
 
-Sets the hydration mode in the resultset
+Establece el modo de hidratación en el conjunto de resultados
 
 ```php
 public function setIsFresh( bool $isFresh ): ResultsetInterface;
 ```
 
-Set if the resultset is fresh or an old one cached
+Establece si el conjunto de resultados es fresco o un caché antiguo
 
 ```php
 public function toArray(): array;
 ```
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Devuelve un conjunto de resultados completo como un vector, si el conjunto de resultados tiene un gran número de filas podría consumir más memoria de la que consume actualmente.
 
 ```php
 public function update( mixed $data, Closure $conditionCallback = null ): bool;
 ```
 
-Updates every record in the resultset
+Actualiza cada registro en el conjunto de resultados
 
 <h1 id="mvc-model-row">Class Phalcon\Mvc\Model\Row</h1>
 
@@ -7831,7 +7831,7 @@ Updates every record in the resultset
 
 Phalcon\Mvc\Model\Row
 
-This component allows Phalcon\Mvc\Model to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
+Este componente permite a Phalcon\Mvc\Model devolver filas sin una entidad asociada. Este objeto implementa la interfaz ArrayAccess para permitir el acceso al objeto como objeto->x o array[x].
 
 ## Métodos
 
@@ -7845,25 +7845,25 @@ Serializa el objeto por json_encode
 public function offsetExists( mixed $index ): bool;
 ```
 
-Checks whether offset exists in the row
+Comprueba si existe un desplazamiento en la fila
 
 ```php
 public function offsetGet( mixed $index ): mixed;
 ```
 
-Gets a record in a specific position of the row
+Obtiene un registro en una posición específica de la fila
 
 ```php
 public function offsetSet( mixed $index, mixed $value ): void;
 ```
 
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Las filas no se pueden cambiar. Sólo se ha implementado para cumplir con la definición de la interfaz ArrayAccess
 
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
 
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Las filas no se pueden cambiar. Sólo se ha implementado para cumplir con la definición de la interfaz ArrayAccess
 
 ```php
 public function readAttribute( string $attribute );
@@ -7879,7 +7879,7 @@ echo $robot->readAttribute("name");
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
 ```
 
-Set the current object's state
+Establece el estado del objeto actual
 
 ```php
 public function toArray(): array;
@@ -7905,7 +7905,7 @@ $robot->writeAttribute("name", "Rosey");
 
 Phalcon\Mvc\Model\Transaction
 
-Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
+Las transacciones son bloques protectores donde las sentencias SQL solo son permanentes si todas pueden tener éxito como una acción atómica. Phalcon\Transaction está destinado a ser usado con Phalcon_Model_Base. Phalcon Transactions se debería crear usando Phalcon\Transaction\Manager.
 
 ```php
 use Phalcon\Mvc\Model\Transaction\Failed;
@@ -7978,79 +7978,79 @@ protected rollbackThrowException = false;
 public function __construct( DiInterface $container, bool $autoBegin = bool, string $service = string );
 ```
 
-Phalcon\Mvc\Model\Transaction constructor
+Constructor Phalcon\Mvc\Model\Transaction
 
 ```php
 public function begin(): bool;
 ```
 
-Starts the transaction
+Inicia la transacción
 
 ```php
 public function commit(): bool;
 ```
 
-Commits the transaction
+Confirma la transacción
 
 ```php
 public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface;
 ```
 
-Returns the connection related to transaction
+Devuelve la conexión relacionada con la transacción
 
 ```php
 public function getMessages(): array;
 ```
 
-Returns validations messages from last save try
+Devuelve mensajes de validación desde el último intento de guardado
 
 ```php
 public function isManaged(): bool;
 ```
 
-Checks whether transaction is managed by a transaction manager
+Comprueba si la transacción es administrada por un gestor de transacciones
 
 ```php
 public function isValid(): bool;
 ```
 
-Checks whether internal connection is under an active transaction
+Comprueba si la conexión interna está bajo una transacción activa
 
 ```php
 public function rollback( string $rollbackMessage = null, ModelInterface $rollbackRecord = null ): bool;
 ```
 
-Rollbacks the transaction
+Deshace la transacción
 
 ```php
 public function setIsNewTransaction( bool $isNew ): void;
 ```
 
-Sets if is a reused transaction or new once
+Establece si es una transacción reutilizada o nueva
 
 ```php
 public function setRollbackOnAbort( bool $rollbackOnAbort ): void;
 ```
 
-Sets flag to rollback on abort the HTTP connection
+Establece la opción de cancelación al abortar la conexión HTTP
 
 ```php
 public function setRollbackedRecord( ModelInterface $record ): void;
 ```
 
-Sets object which generates rollback action
+Establece el objeto que genera la acción de deshacer
 
 ```php
 public function setTransactionManager( ManagerInterface $manager ): void;
 ```
 
-Sets transaction manager related to the transaction
+Establece el gestor de transacciones relacionado con la transacción
 
 ```php
 public function throwRollbackException( bool $status ): TransactionInterface;
 ```
 
-Enables throwing exception
+Permite lanzar excepciones
 
 <h1 id="mvc-model-transaction-exception">Class Phalcon\Mvc\Model\Transaction\Exception</h1>
 
@@ -8060,7 +8060,7 @@ Enables throwing exception
 
 Phalcon\Mvc\Model\Transaction\Exception
 
-Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
+Las excepciones lanzadas en Phalcon\Mvc\Model\Transaction usarán esta clase
 
 <h1 id="mvc-model-transaction-failed">Class Phalcon\Mvc\Model\Transaction\Failed</h1>
 
@@ -8070,7 +8070,7 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 Phalcon\Mvc\Model\Transaction\Failed
 
-This class will be thrown to exit a try/catch block for isolated transactions
+Esta clase será lanzada para salir de un bloque try/catch para transacciones aisladas
 
 ## Propiedades
 
@@ -8086,19 +8086,19 @@ protected record;
 public function __construct( string $message, ModelInterface $record = null );
 ```
 
-Phalcon\Mvc\Model\Transaction\Failed constructor
+Constructor Phalcon\Mvc\Model\Transaction\Failed
 
 ```php
 public function getRecord(): ModelInterface;
 ```
 
-Returns validation record messages which stop the transaction
+Devuelve mensajes de validación de registro que detienen la transacción
 
 ```php
 public function getRecordMessages(): MessageInterface[];
 ```
 
-Returns validation record messages which stop the transaction
+Devuelve mensajes de validación de registro que detienen la transacción
 
 <h1 id="mvc-model-transaction-manager">Class Phalcon\Mvc\Model\Transaction\Manager</h1>
 
@@ -8108,9 +8108,9 @@ Returns validation record messages which stop the transaction
 
 Phalcon\Mvc\Model\Transaction\Manager
 
-A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.
+Una transacción actúa en una única conexión de base de datos. Si tienes múltiples bases de datos específicas de clase, la transacción no protegerá la interacción entre ellas.
 
-This class manages the objects that compose a transaction. A transaction produces a unique connection that is passed to every object part of the transaction.
+Esta clase administra los objetos que componen una transacción. Una transacción produce una conexión única que se pasa a cada objeto parte de la transacción.
 
 ```php
 use Phalcon\Mvc\Model\Transaction\Failed;
@@ -8179,25 +8179,25 @@ protected transactions;
 public function __construct( DiInterface $container = null );
 ```
 
-Phalcon\Mvc\Model\Transaction\Manager constructor
+Constructor Phalcon\Mvc\Model\Transaction\Manager
 
 ```php
 public function collectTransactions(): void;
 ```
 
-Remove all the transactions from the manager
+Eliminar todas las transacciones del gestor
 
 ```php
 public function commit();
 ```
 
-Commits active transactions within the manager
+Confirma las transacciones activas dentro del gestor
 
 ```php
 public function get( bool $autoBegin = bool ): TransactionInterface;
 ```
 
-Returns a new \Phalcon\Mvc\Model\Transaction or an already created once This method registers a shutdown function to rollback active connections
+Devuelve una nueva \Phalcon\Mvc\Model\Transaction o una ya creada Este método registra una función de apagado para deshacer las conexiones activas
 
 ```php
 public function getDI(): DiInterface;
@@ -8209,49 +8209,49 @@ Devuelve el contenedor de inyección de dependencias
 public function getDbService(): string;
 ```
 
-Returns the database service used to isolate the transaction
+Devuelve el servicio de base de datos usado para aislar la transacción
 
 ```php
 public function getOrCreateTransaction( bool $autoBegin = bool ): TransactionInterface;
 ```
 
-Create/Returns a new transaction or an existing one
+Crear/Devuelve una nueva transacción o una existente
 
 ```php
 public function getRollbackPendent(): bool;
 ```
 
-Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+Compruebe si el gestor de transacciones está registrando una función de apagado para limpiar transacciones pendientes
 
 ```php
 public function has(): bool;
 ```
 
-Checks whether the manager has an active transaction
+Comprueba si el gestor tiene una transacción activa
 
 ```php
 public function notifyCommit( TransactionInterface $transaction ): void;
 ```
 
-Notifies the manager about a committed transaction
+Notifica al gestor sobre una transacción confirmada
 
 ```php
 public function notifyRollback( TransactionInterface $transaction ): void;
 ```
 
-Notifies the manager about a rollbacked transaction
+Notifica al gestor sobre una transacción deshecha
 
 ```php
 public function rollback( bool $collect = bool ): void;
 ```
 
-Rollbacks active transactions within the manager Collect will remove the transaction from the manager
+Deshace las transacciones activas dentro del gestor La recogida eliminará la transacción del gestor
 
 ```php
 public function rollbackPendent(): void;
 ```
 
-Rollbacks active transactions within the manager
+Deshace las transacciones activas dentro del gestor
 
 ```php
 public function setDI( DiInterface $container ): void;
@@ -8263,19 +8263,19 @@ Establece el contenedor de inyección de dependencias
 public function setDbService( string $service ): ManagerInterface;
 ```
 
-Sets the database service used to run the isolated transactions
+Establece el servicio de base de datos usado para ejecutar las transacciones aisladas
 
 ```php
 public function setRollbackPendent( bool $rollbackPendent ): ManagerInterface;
 ```
 
-Set if the transaction manager must register a shutdown function to clean up pendent transactions
+Establece si el gestor de transacciones debe registrar una función de apagado para limpiar transacciones pendientes
 
 ```php
 protected function collectTransaction( TransactionInterface $transaction ): void;
 ```
 
-Removes transactions from the TransactionManager
+Elimina las transacciones del TransactionManager
 
 <h1 id="mvc-model-transaction-managerinterface">Interface Phalcon\Mvc\Model\Transaction\ManagerInterface</h1>
 
@@ -8285,7 +8285,7 @@ Removes transactions from the TransactionManager
 
 Phalcon\Mvc\Model\Transaction\ManagerInterface
 
-Interface for Phalcon\Mvc\Model\Transaction\Manager
+Interfaz para Phalcon\Mvc\Model\Transaction\Manager
 
 ## Métodos
 
@@ -8293,73 +8293,73 @@ Interface for Phalcon\Mvc\Model\Transaction\Manager
 public function collectTransactions(): void;
 ```
 
-Remove all the transactions from the manager
+Eliminar todas las transacciones del gestor
 
 ```php
 public function commit();
 ```
 
-Commits active transactions within the manager
+Confirma las transacciones activas dentro del gestor
 
 ```php
 public function get( bool $autoBegin = bool ): TransactionInterface;
 ```
 
-Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
+Devuelve un nuevo \Phalcon\Mvc\Model\Transaction o uno ya creado
 
 ```php
 public function getDbService(): string;
 ```
 
-Returns the database service used to isolate the transaction
+Devuelve el servicio de base de datos usado para aislar la transacción
 
 ```php
 public function getRollbackPendent(): bool;
 ```
 
-Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+Compruebe si el gestor de transacciones está registrando una función de apagado para limpiar transacciones pendientes
 
 ```php
 public function has(): bool;
 ```
 
-Checks whether manager has an active transaction
+Comprueba si el gestor tiene una transacción activa
 
 ```php
 public function notifyCommit( TransactionInterface $transaction ): void;
 ```
 
-Notifies the manager about a committed transaction
+Notifica al gestor sobre una transacción confirmada
 
 ```php
 public function notifyRollback( TransactionInterface $transaction ): void;
 ```
 
-Notifies the manager about a rollbacked transaction
+Notifica al gestor sobre una transacción deshecha
 
 ```php
 public function rollback( bool $collect = bool ): void;
 ```
 
-Rollbacks active transactions within the manager Collect will remove transaction from the manager
+Deshace las transacciones activas dentro del gestor La recogida eliminará la transacción del gestor
 
 ```php
 public function rollbackPendent(): void;
 ```
 
-Rollbacks active transactions within the manager
+Deshace las transacciones activas dentro del gestor
 
 ```php
 public function setDbService( string $service ): ManagerInterface;
 ```
 
-Sets the database service used to run the isolated transactions
+Establece el servicio de base de datos usado para ejecutar las transacciones aisladas
 
 ```php
 public function setRollbackPendent( bool $rollbackPendent ): ManagerInterface;
 ```
 
-Set if the transaction manager must register a shutdown function to clean up pendent transactions
+Establece si el gestor de transacciones debe registrar una función de apagado para limpiar transacciones pendientes
 
 <h1 id="mvc-model-transactioninterface">Interface Phalcon\Mvc\Model\TransactionInterface</h1>
 
@@ -8369,7 +8369,7 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 Phalcon\Mvc\Model\TransactionInterface
 
-Interface for Phalcon\Mvc\Model\Transaction
+Interfaz para Phalcon\Mvc\Model\Transaction
 
 ## Métodos
 
@@ -8377,73 +8377,73 @@ Interface for Phalcon\Mvc\Model\Transaction
 public function begin(): bool;
 ```
 
-Starts the transaction
+Inicia la transacción
 
 ```php
 public function commit(): bool;
 ```
 
-Commits the transaction
+Confirma la transacción
 
 ```php
 public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface;
 ```
 
-Returns connection related to transaction
+Devuelve la conexión relacionada con la transacción
 
 ```php
 public function getMessages(): array;
 ```
 
-Returns validations messages from last save try
+Devuelve mensajes de validación desde el último intento de guardado
 
 ```php
 public function isManaged(): bool;
 ```
 
-Checks whether transaction is managed by a transaction manager
+Comprueba si la transacción es administrada por un gestor de transacciones
 
 ```php
 public function isValid(): bool;
 ```
 
-Checks whether internal connection is under an active transaction
+Comprueba si la conexión interna está bajo una transacción activa
 
 ```php
 public function rollback( string $rollbackMessage = null, ModelInterface $rollbackRecord = null ): bool;
 ```
 
-Rollbacks the transaction
+Deshace la transacción
 
 ```php
 public function setIsNewTransaction( bool $isNew ): void;
 ```
 
-Sets if is a reused transaction or new once
+Establece si es una transacción reutilizada o nueva
 
 ```php
 public function setRollbackOnAbort( bool $rollbackOnAbort ): void;
 ```
 
-Sets flag to rollback on abort the HTTP connection
+Establece la opción de cancelación al abortar la conexión HTTP
 
 ```php
 public function setRollbackedRecord( ModelInterface $record ): void;
 ```
 
-Sets object which generates rollback action
+Establece el objeto que genera la acción de deshacer
 
 ```php
 public function setTransactionManager( ManagerInterface $manager ): void;
 ```
 
-Sets transaction manager related to the transaction
+Establece el gestor de transacciones relacionado con la transacción
 
 ```php
 public function throwRollbackException( bool $status ): TransactionInterface;
 ```
 
-Enables throwing exception
+Permite lanzar excepciones
 
 <h1 id="mvc-model-validationfailed">Class Phalcon\Mvc\Model\ValidationFailed</h1>
 
@@ -8453,7 +8453,7 @@ Enables throwing exception
 
 Phalcon\Mvc\Model\ValidationFailed
 
-This exception is generated when a model fails to save a record Phalcon\Mvc\Model must be set up to have this behavior
+Esta excepción se genera cuando un modelo falla al guardar un registro Se debe configurar Phalcon\Mvc\Model para tener este comportamiento
 
 ## Propiedades
 
@@ -8472,19 +8472,19 @@ protected model;
 public function __construct( ModelInterface $model, array $validationMessages );
 ```
 
-Phalcon\Mvc\Model\ValidationFailed constructor
+Constructor Phalcon\Mvc\Model\ValidationFailed
 
 ```php
 public function getMessages(): Message[];
 ```
 
-Returns the complete group of messages produced in the validation
+Devuelve el grupo completo de mensajes producidos en la validación
 
 ```php
 public function getModel(): ModelInterface;
 ```
 
-Returns the model that generated the messages
+Devuelve el modelo que generó los mensajes
 
 <h1 id="mvc-modelinterface">Interface Phalcon\Mvc\ModelInterface</h1>
 
@@ -8494,7 +8494,7 @@ Returns the model that generated the messages
 
 Phalcon\Mvc\ModelInterface
 
-Interface for Phalcon\Mvc\Model
+Interfaz para Phalcon\Mvc\Model
 
 ## Métodos
 
@@ -8514,7 +8514,7 @@ Asigna valores a un modelo desde un vector
 public static function average( mixed $parameters = null ): double | ResultsetInterface;
 ```
 
-Allows to calculate the average value on a column matching the specified conditions
+Permite calcular el valor promedio de una columna que coincida con las condiciones especificadas
 
 ```php
 public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
@@ -8538,7 +8538,7 @@ Devuelve un resultado hidratado basado en los datos y el mapa de columnas
 public static function count( mixed $parameters = null ): int | ResultsetInterface;
 ```
 
-Allows to count how many records match the specified conditions
+Permite contar cuántos registros coinciden con las condiciones especificadas
 
 Devuelve un entero para consultas simples o una instancia de ResultsetInterface para cuando se utiliza la condición GROUP. Los resultados contendrán el contador de cada grupo.
 
@@ -8546,7 +8546,7 @@ Devuelve un entero para consultas simples o una instancia de ResultsetInterface 
 public function create(): bool;
 ```
 
-Inserta una instancia de modelo. If the instance already exists in the persistence it will throw an exception. Returning true on success or false otherwise.
+Inserta una instancia de modelo. Si la instancia ya existe en la persistencia lanzará una excepción. Devuelve `true` en caso de éxito o `false` en caso contrario.
 
 ```php
 public function delete(): bool;
@@ -8558,13 +8558,13 @@ Borra una instancia del modelo. Devuelve `true` en caso de éxito o `false` en c
 public static function find( mixed $parameters = null ): ResultsetInterface;
 ```
 
-Allows to query a set of records that match the specified conditions
+Permite consultar un conjunto de registros que coinciden con las condiciones especificadas
 
 ```php
 public static function findFirst( mixed $parameters = null ): mixed | null;
 ```
 
-Allows to query the first record that match the specified conditions
+Permite consultar el primer registro que coincide con las condiciones especificadas
 
 ```php
 public function fireEvent( string $eventName ): bool;
@@ -8576,7 +8576,7 @@ Dispara un evento, llama implícitamente a comportamientos y se notifica a los o
 public function fireEventCancel( string $eventName ): bool;
 ```
 
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified. This method stops if one of the callbacks/listeners returns bool false
+Dispara un evento, llama implícitamente a comportamientos y se notifica a los oyentes del gestor de eventos. Este método se detiene si alguna de las funciones de retorno/oyentes devuelve false
 
 ```php
 public function getDirtyState(): int;
@@ -8594,7 +8594,7 @@ Devuelve un vector de mensajes de validación
 public function getModelsMetaData(): MetaDataInterface;
 ```
 
-Returns the models meta-data service related to the entity instance.
+Devuelve el servicio de metadatos de los modelos relacionados a la instancia de entidad.
 
 ```php
 public function getOperationMade(): int;
@@ -8606,13 +8606,13 @@ Devuelve el tipo de la operación realizada por el ORM más reciente. Devuelve u
 public function getReadConnection(): AdapterInterface;
 ```
 
-Gets internal database connection
+Obtiene la conexión interna de base de datos
 
 ```php
 public function getReadConnectionService(): string;
 ```
 
-Returns DependencyInjection connection service used to read data
+Devuelve el servicio de conexión DependencyInjection usado para leer datos
 
 ```php
 public function getRelated( string $alias, mixed $arguments = null );
@@ -8624,37 +8624,37 @@ Devuelve registros relacionados basados en relaciones definidas
 public function getSchema(): string;
 ```
 
-Returns schema name where table mapped is located
+Devuelve el nombre del esquema donde se encuentra la tabla mapeada
 
 ```php
 public function getSource(): string;
 ```
 
-Returns table name mapped in the model
+Devuelve el nombre de tabla mapeado en el modelo
 
 ```php
 public function getWriteConnection(): AdapterInterface;
 ```
 
-Gets internal database connection
+Obtiene la conexión interna de base de datos
 
 ```php
 public function getWriteConnectionService(): string;
 ```
 
-Returns DependencyInjection connection service used to write data
+Devuelve el servicio de conexión DependencyInjection usado para escribir datos
 
 ```php
 public static function maximum( mixed $parameters = null ): mixed;
 ```
 
-Allows to get the maximum value of a column that match the specified conditions
+Permite obtener el valor máximo de una columna que coincida con las condiciones especificadas
 
 ```php
 public static function minimum( mixed $parameters = null ): mixed;
 ```
 
-Allows to get the minimum value of a column that match the specified conditions
+Permite obtener el valor mínimo de una columna que coincida con las condiciones especificadas
 
 ```php
 public static function query( DiInterface $container = null ): CriteriaInterface;
@@ -8678,25 +8678,25 @@ Inserta o actualiza una instancia de modelo. Devuelve `true` en caso de éxito o
 public function setConnectionService( string $connectionService ): void;
 ```
 
-Sets both read/write connection services
+Establecer ambos servicios de conexión de lectura/escritura
 
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
 ```
 
-Sets the dirty state of the object using one of the DIRTY_STATE_* constants
+Establece el estado de suciedad del objeto usando una de las constantes DIRTY_STATE_*
 
 ```php
 public function setReadConnectionService( string $connectionService ): void;
 ```
 
-Sets the DependencyInjection connection service used to read data
+Establece el servicio de conexión DependencyInjection usado para leer datos
 
 ```php
 public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 ```
 
-Establece los datos de instantánea del registro. This method is used internally to set snapshot data when the model was set up to keep snapshot data
+Establece los datos de instantánea del registro. Este método se usa internamente para establecer los datos de instantánea cuando el modelo fue configurado para mantener datos de instantánea
 
 ```php
 public function setTransaction( TransactionInterface $transaction ): ModelInterface;
@@ -8708,7 +8708,7 @@ Establece una transacción relacionada con la instancia del modelo
 public function setWriteConnectionService( string $connectionService ): void;
 ```
 
-Sets the DependencyInjection connection service used to write data
+Establece el servicio de conexión DependencyInjection usado para escribir datos
 
 ```php
 public function skipOperation( bool $skip ): void;
@@ -8720,13 +8720,13 @@ Omite la operación actual forzando un estado de éxito
 public static function sum( mixed $parameters = null ): double | ResultsetInterface;
 ```
 
-Allows to calculate a sum on a column that match the specified conditions
+Permite calcular una suma sobre una columna que coincida con las condiciones especificadas
 
 ```php
 public function update(): bool;
 ```
 
-Actualiza una instancia de modelo. Si la instancia no existe en la persistencia lanzará una excepción. Returning true on success or false otherwise.
+Actualiza una instancia de modelo. Si la instancia no existe en la persistencia lanzará una excepción. Devuelve `true` en caso de éxito o `false` en caso contrario.
 
 ```php
 public function validationHasFailed(): bool;
@@ -8742,7 +8742,7 @@ Comprueba si el proceso de validación ha generado algún mensaje
 
 Phalcon\Mvc\ModuleDefinitionInterface
 
-This interface must be implemented by class module definitions
+Se debe implementar esta interfaz por definiciones de módulo de clase
 
 ## Métodos
 
@@ -8750,13 +8750,13 @@ This interface must be implemented by class module definitions
 public function registerAutoloaders( DiInterface $container = null );
 ```
 
-Registers an autoloader related to the module
+Registra un autocargador relacionado con el módulo
 
 ```php
 public function registerServices( DiInterface $container );
 ```
 
-Registers services related to the module
+Registrar servicios relacionados con el módulo
 
 <h1 id="mvc-router">Class Phalcon\Mvc\Router</h1>
 
@@ -8766,7 +8766,7 @@ Registers services related to the module
 
 Phalcon\Mvc\Router
 
-Phalcon\Mvc\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
+Phalcon\Mvc\Router es el enrutador estándar del framework. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
 
 ```php
 use Phalcon\Mvc\Router;
