@@ -193,7 +193,7 @@ use Phalcon\Tag;
 
 Tag::setTitle('Rocks');
 
-echo Tag::getTitle(); // 'Phalcon'
+echo Tag::getTitle(); // 'Rocks'
 
 Tag::prependTitle('Phalcon ');
 Tag::prependTitle('Framework ');
