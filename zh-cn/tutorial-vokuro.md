@@ -62,7 +62,7 @@ In the `resources` folder you will find a `Dockerfile` which allows you to quick
 From the root of the application we need to compile the project (you only need to do this once):
 
 ```bash
-$ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
+$ docker build -t phalcon-tutorial-vokuro -f docker/Dockerfile .
 ```
 
 and then run it

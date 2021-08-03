@@ -62,7 +62,7 @@ php -S localhost:8080 -t public/ .htrouter.php
 З кореню додатка ми повинні компілювати проект (вам потрібно це робити лише раз):
 
 ```bash
-$ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
+$ docker build -t phalcon-tutorial-vokuro -f docker/Dockerfile .
 ```
 
 а потім запустіть його

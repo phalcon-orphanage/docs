@@ -62,7 +62,7 @@ En la carpeta `resources` encontrará un `Dockerfile` que le permite configurar 
 Desde la raíz de la aplicación necesitamos compilar el proyecto (sólo necesita hacer esto una vez):
 
 ```bash
-$ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
+$ docker build -t phalcon-tutorial-vokuro -f docker/Dockerfile .
 ```
 
 y ejecutarla
