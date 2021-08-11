@@ -64,6 +64,11 @@ $dispatcher = new Dispatcher();
 $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 
+$container->setShared('config', function () {
+    return include 'app/config/config.php';
+});
+
+
 $console = new Console($container);
 
 $arguments = [];
@@ -131,7 +136,19 @@ $container->setShared('dispatcher', $dispatcher);
 
 Las aplicaciones CLI necesitan un despachador específico. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) ofrece la misma funcionalidad que el despachador principal de las aplicaciones MVC, pero adaptado a las aplicaciones CLI. Como era de esperar, instanciamos el objeto despachador, establecemos nuestro espacio de nombres por defecto y luego lo registramos en el contenedor DI.
 
-**Aplicación**
+**Configuración**
+
+```php
+$container->setShared('config', function () {
+    return include 'app/config/config.php';
+});
+```
+
+El fragmento anterior es opcional, pero le permitirá acceder a cualquier configuración que haya configurado.
+
+Asegúrese de actualizar la ruta de inclusión para estar relativa a donde está su archivo `cli.php`.
+
+**Application**
 
 ```php
 $console = new Console($container);
