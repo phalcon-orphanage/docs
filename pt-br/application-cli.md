@@ -64,6 +64,11 @@ $dispatcher = new Dispatcher();
 $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 
+$container->setShared('config', function () {
+    return include 'app/config/config.php';
+});
+
+
 $console = new Console($container);
 
 $arguments = [];
@@ -130,6 +135,18 @@ $container->setShared('dispatcher', $dispatcher);
 ```
 
 CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
+
+**Config**
+
+```php
+$container->setShared('config', function () {
+    return include 'app/config/config.php';
+});
+```
+
+The above snippet is optional but will allow you to access any configuration settings you have set up.
+
+Make sure to update the include path to be relative to where your `cli.php` file is.
 
 **Aplicação**
 
