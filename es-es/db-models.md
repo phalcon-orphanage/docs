@@ -1565,6 +1565,11 @@ class Invoices extends Model
 
 **Propiedades vs. Setters/Getters**
 
+> NOTE: The model class uses some properties internally for services. The names of those properties are reserved and cannot be used as fields in the database. Please keep that in mind when naming the fields of your tables. If there are collisions, your models will not update properly.
+> 
+> `container` `dirtyState` `dirtyRelated` `errorMessages` `modelsManager` `modelsMetaData` `related` `operationMade` `oldSnapshot` `skipped` `snapshot` `transaction` `uniqueKey` `uniqueParams` `uniqueTypes`
+{: .alert .alert-warning }
+
 Los modelos se pueden implementar con propiedades públicas, lo que significa que cualquier propiedad se puede leer y actualizar desde cualquier parte del código que ha instanciado esa clase de modelo:
 
 ```php
@@ -1683,11 +1688,11 @@ class Invoices extends Model
 
 Las propiedades públicas proporcionan menos complejidad en desarrollo. Sin embargo, *getters*/*setters* pueden incrementar en gran medida la testabilidad, extensión y mantenimiento de las aplicaciones. Necesitará elegir qué estrategia es la mejor para usted dependiendo de las necesidades de la aplicación. El ORM es compatible con ambos esquemas de definición de propiedades.
 
-> **NOTA**: Los guiones bajos en nombres de propiedades pueden ser problemáticos cuando se usan *getters* y *setters*.
+> **NOTE**: Underscores in property names can be problematic when using getters and setters.
 {: .alert .alert-warning }
 
 > 
-> **NOTA**: Cuando usa el enfoque *getters*/*setters*, necesitará definir sus propiedades como `protected`.
+> **NOTE**: When using the getters/setters approach, you will need to define your properties as `protected`.
 {: .alert .alert-warning }
 
 Si usa guiones bajos en los nombres de sus propiedades, deberá seguir usando *camel case* en sus declaraciones *getter*/*setter* para usar con métodos mágicos. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.).
@@ -1812,7 +1817,7 @@ $invoice = Invoices::findFirst('inv_id = 3');
 
 También puede pasar una cadena con una cláusula `WHERE`. En el ejemplo anterior obtenemos el mismo registro, indicando al ORM que nos dé un registro con `inv_cst_id = 3`
 
-> **NOTA**: Si la clave primaria de la tabla no es numérica, utilice condición. Vea ejemplos a continuación.
+> **NOTE**: If primary key of table is not numeric, use condition. See examples below.
  {: .alert .alert-warning }
 
 ```php
@@ -1831,7 +1836,7 @@ $invoice = Invoices::findFirst([
 ]);
 ```
 
-> **NOTA**: si no usa parámetros vinculados en sus condiciones, PHQL creará un nuevo plan internamente, por lo tanto consumirá más memoria. ¡Se recomienda encarecidamente el uso de parámetros vinculados!
+> **NOTE**: If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
  {: .alert .alert-warning }
 
 ```php
@@ -1845,7 +1850,7 @@ $invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 
 ### Parámetros
 
-> **NOTA**: Se recomienda encarecidamente el uso de sintaxis vector con `conditions` y `bind` para protegerse de inyecciones SQL, especialmente cuando los criterios llegan de la entrada del usuario. Para más información consulte la sección [Parámetros de Vinculación](#binding-parameters)`.
+> **NOTE**: It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. For more information check the [Binding Parameters](#binding-parameters)` section.
 {: .alert .alert-warning }
 
 Ambos métodos `find()` y `findFirst()` aceptan un vector asociativo especificando los criterios de búsqueda.
@@ -1953,7 +1958,7 @@ $invoices = Invoices::find(
 
 Devuelve columnas específicas en el modelo.
 
-> **NOTA**: Cuando se usa esta opción se devuelve un objeto incompleto, y por lo tanto no puede llamar a métodos como `update()`, `getRelated()` etc.
+> **NOTE**: When using this option an incomplete object is returned, and therefore you cannot call methods such as `update()`, `getRelated()` etc.
 {: .alert .alert-info }
 
 ```php
@@ -2215,7 +2220,7 @@ use MyApp\Models\Invoices;
 $invoices = Invoices::findByInvTotal(100);
 ```
 
-> **NOTA**: Los nombres de las propiedades se cambian a *camel case* si tienen guiones bajos. `inv_total` se convierte en `InvTotal`
+> **NOTE**: The property names are changed to camel case if they have underscores. `inv_total` becomes `InvTotal`
 {: .alert .alert-info }
 
 También puede pasar parámetros en un vector como segundo parámetro. Estos parámetros son los mismos que los que se pueden pasar en el método `find`.
@@ -2283,7 +2288,7 @@ $name  = 'Darth Vader';
 $guest = Guestbook::findFirstByName($name);
 ```
 
-> **NOTA**: Tenga en cuneta que usamos `Name` en la llamada del método y le pasamos la variable `$name`, que contiene el nombre que estamos buscando en nuestra tabla. Tenga en cuenta también que cuando encontramos una coincidencia con nuestra consulta, también tendremos disponibles todas las demás propiedades.
+> **NOTE**: Notice that we used `Name` in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
 {: .alert .alert-info }
 
 ### Resultados del modelo
@@ -2341,7 +2346,7 @@ $invoice = $invoices->getLast();
 
 Los conjuntos de resultados de Phalcon emulan cursores desplazables. Puede obtener cualquier fila justo al acceder a su posición, o buscando el puntero interno a una posición específica.
 
-> **NOTA**: Algunos sistemas de bases de datos no soportan cursores desplazables. Esto obliga a Phalcon a volver a ejecutar la consulta, para poder rebobinar el cursor hasta el principio y obtener el registro de la posición solicitada. Del mismo modo, si un conjunto de resultados se recorre múltiples veces, la consulta se debe ejecutar el mismo número de veces.
+> **NOTE**: Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 {: .alert .alert-info }
 
 Almacenar grandes resultados de consulta en memoria consumirá muchos recursos. Sin embargo, puede ordenar a Phalcon que obtenga los datos en trozos de filas, reduciendo así la necesidad de volver a ejecutar la solicitud en muchos casos. Puede conseguir esto estableciendo el valor de configuración de `orm.resultset_prefetch_records`. Esto se puede hacer en `php.ini` o en el `setup()` del modelo. Puede encontrar más información sobre esto en la sección [características](#disablingenabling-features).
@@ -2459,7 +2464,7 @@ El ejemplo anterior devolverá sólo las facturas pagadas de nuestra tabla (`inv
 
 También se soportan los parámetros enlazados en [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model). Se recomienda usar esta metodología para eliminar la posibilidad de que su código sea sujeto de ataques de inyección SQL. Se soportan tanto marcadores `string` como `integer`.
 
-> **NOTA**: Cuando usa marcadores `integer` debe prefijarlos con `?` (`?0`, `?1`). Cuando usa marcadores `string` debe encerrar la cadena entre `:` (`:name:`, `:total:`). 
+> **NOTE**: When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). When using `string` placeholders you must enclose the string in `:` (`:name:`, `:total:`). 
 {: .alert .alert-info }
 
 Algunos ejemplos:
@@ -2533,12 +2538,12 @@ $invoices = Invoices::find(
 );
 ```
 
-> **NOTA**: Como el tipo de enlace por defecto es `Phalcon\Db\Column::BIND_PARAM_STR`, no se necesita especificar el parámetro 'bindTypes' si todas las columnas son cadenas
+> **NOTE**: Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are strings
 {: .alert .alert-info }
 
 También puede enlazar vectores en los parámetros, especialmente cuando usa la palabra clave SQL `IN`.
 
-> **NOTA**: Necesita usar un vector basado en cero para vectores sin elementos faltantes 
+> **NOTE**: You need to use a zero based array for arrays without missing elements 
 {: .alert .alert-info }
 
 ```php
@@ -2571,7 +2576,7 @@ $invoices = Invoices::find(
 );
 ```
 
-> **NOTA**: Los parámetros enlazados están disponibles para todos los métodos de consulta como `find()` y `findFirst()` pero también para métodos de cálculo como `count()`, `sum()`, `average()` etc.
+> **NOTE**: Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
 {: .alert .alert-info }
 
 Si están usando *buscadores* e.g. `find()`, `findFirst()`, etc., puede inyectar los parámetros enlazados cuando usa la sintaxis de cadena para el primer parámetro en vez de usar el elemento de vector `conditions`. También cuando usa `findFirstBy*` se enlazan los parámetros automáticamente.
@@ -2878,7 +2883,7 @@ $invoice->assign($_POST);
 $result = $invoice->save();
 ```
 
-> **NOTA**: Sin precauciones, la asignación masiva podría permitir a los atacantes establecer el valor de cualquier columna de la base de datos. Utilice esta característica sólo si quiere permitir al usuario insertar/actualizar cada columna en el modelo, incluso si esos campos no se han enviado en el formulario.
+> **NOTE**: Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
 {: .alert .alert-danger }
 
 Puede configurar un parámetro adicional en `assign` para establecer una lista blanca de los campos que sólo deben tenerse en cuenta cuando se hace la asignación masiva:
@@ -2903,7 +2908,7 @@ $invoice->assign(
 $result = $invoice->save();
 ```
 
-> **NOTA**: En aplicaciones realmente ocupadas, puede usar `create` o `update` para las respectivas operaciones. Usando estos dos métodos en vez de `save`, nos aseguramos de que los datos serán guardados o no en la base de datos, ya que estos lanzarán excepciones en `create` si el registro ya existe, y en `update` si el registro no existe.
+> **NOTE**: On really busy applications, you can use `create` or `update` for the respective operations. By using those two methods instead of save, we ensure that data will be saved or not in the database, since those throw exceptions on `create` if the record already exists, and on `update` if the record does not exist.
 {: .alert .alert-info }
 
 ```php
@@ -3002,7 +3007,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-> **NOTA**: Consulte la sección [transacciones](#transactions) sobre cómo puede borrar todos los registros de un bucle con una operación
+> **NOTE**: Check the [transactions](#transactions) section on how you can delete all the records in a loop with one operation
 {: .alert .alert-info }
 
 ## Modos de Hidratación
@@ -3227,7 +3232,7 @@ class Invoices extends Model
 }
 ```
 
-> **NOTA**: Nunca usar [Phalcon\Db\RawValue](api/phalcon_db#db-rawvalue) para asignar datos externos (como entrada del usuario) o datos variables. El valor de estos campos se ignora cuando se enlazan los parámetros a la consulta. Así que se podrían usar para inyecciones SQL.
+> **NOTE**: Never use a [Phalcon\Db\RawValue](api/phalcon_db#db-rawvalue) to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.
 {: .alert .alert-warning }
 
 ## Actualización Dinámica
@@ -3286,7 +3291,7 @@ class Invoices extends Model
 }
 ```
 
-> **NOTA**: En el vector definido en el mapa de columnas, las claves son los nombres actuales de los campos en la base de datos, y los valores son los campos *virtuales* que podemos usar en nuestro código
+> **NOTE**: In the array defined in the column map, the keys are the actual names of the fields in the database, and the values are the *virtual* fields we can use in your code
 {: .alert .alert-info }
 
 Ahora podemos usar esos campos *virtuales* (o mapa de columnas) en nuestro código:
@@ -3903,7 +3908,7 @@ Opciones `ini`:
     ; phalcon..orm.virtual_foreign_keys = true
     
 
-> **NOTA** `Phalcon\Mvc\Model::assign()` (se usa también al crear/actualizar/guardar un modelo) siempre usa *setters* si existen cuando se pasan argumentos de datos, incluso cuando son obligatorios o necesarios. Esto añadirá una sobrecarga adicional a su aplicación. Puede cambiar este comportamiento añadiendo `phalcon.orm.disable_assign_setters = 1` a su fichero ini, con esto se usará simplemente `$this->property = value`.
+> **NOTE** `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.
 {: .alert .alert-warning }
 
 ## Componente Independiente
