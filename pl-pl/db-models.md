@@ -1566,7 +1566,7 @@ class Invoices extends Model
 
 > NOTE: The model class uses some properties internally for services. The names of those properties are reserved and cannot be used as fields in the database. Please keep that in mind when naming the fields of your tables. If there are collisions, your models will not update properly.
 > 
-> `container` `dirtyState` `dirtyRelated` `errorMessages` `modelsManager` `modelsMetaData` `related` `operationMade` `oldSnapshot` `skipped` `snapshot` `transaction` `uniqueKey` `uniqueParams` `uniqueTypes`
+> `container`, `dirtyState`, `dirtyRelated`, `errorMessages`, `modelsManager`, `modelsMetaData`, `related`, `operationMade`, `oldSnapshot`, `skipped`, `snapshot`, `transaction`, `uniqueKey`, `uniqueParams`, `uniqueTypes`
 {: .alert .alert-warning }
 
 Models can be implemented with public properties, meaning that each property can be read and updated updated from any part of the code that has instantiated that model class:
