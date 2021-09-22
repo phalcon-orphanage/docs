@@ -2024,7 +2024,7 @@ $connection->dropTable('co_invoices', 'gonano');
 ```
 Drop the table `co_invoices` from the database `gonano`
 
-[pdo_quote]: https://secure.php.net/manual/en/pdo.quote.php
+[pdo_quote]: https://www.php.net/manual/en/pdo.quote.php
 [nested_transactions]: https://en.wikipedia.org/wiki/Nested_transaction
 [db-abstractdb]: api/phalcon_db#db-abstractdb
 [db-adapter-abstractadapter]: api/phalcon_db#db-adapter-abstractadapter
