@@ -1295,7 +1295,7 @@ $success = $connection->query(
 
 Enlazando con marcadores de posición nombrados
 
-Cuando se usan marcadores de posición numéricos, necesitará definirlos como enteros, ej. `1` o `2`. En este caso `'1'` o `'2'` se consideran cadenas y no números, con lo que el marcador de posición no se podría reemplazar correctamente. With any adapter, data are automatically escaped using [PDO Quote](https://www.php.net/manual/en/pdo.quote.php). Esta función tiene en cuenta el conjunto de caracteres de la conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en su configuración del servidor de base de datos, ya que un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
+Cuando se usan marcadores de posición numéricos, necesitará definirlos como enteros, ej. `1` o `2`. En este caso `'1'` o `'2'` se consideran cadenas y no números, con lo que el marcador de posición no se podría reemplazar correctamente. Con cualquier adaptador, los datos se escapan automáticamente usando [PDO Quote](https://www.php.net/manual/en/pdo.quote.php). Esta función tiene en cuenta el conjunto de caracteres de la conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en su configuración del servidor de base de datos, ya que un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
 Además, puede pasar sus parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados se pasan directamente a PDO:
 
