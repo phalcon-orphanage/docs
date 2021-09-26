@@ -1582,5 +1582,5 @@ try {
 [mvc-viewinterface]: api/phalcon_mvc#mvc-viewinterface
 [mustache]: https://github.com/bobthecow/mustache.php
 [smarty]: https://www.smarty.net/
-[tidy]: https://secure.php.net/manual/en/book.tidy.php
+[tidy]: https://www.php.net/manual/en/book.tidy.php
 [twig]: https://twig.symfony.com/
