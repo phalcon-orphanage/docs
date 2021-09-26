@@ -1573,7 +1573,7 @@ $container->set(
 );
 ```
 
-El ejemplo siguiente muestra cómo puede crear un plugin que *ordena* su HTML producido por el proceso de renderizado usando [Tidy](https://secure.php.net/manual/en/book.tidy.php).
+The following example demonstrates how you can create a plugin that *tidies up* your HTML produced by the render process using [Tidy](https://www.php.net/manual/en/book.tidy.php).
 
 ```php
 <?php
