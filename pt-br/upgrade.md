@@ -20,7 +20,7 @@ Phalcon v4 contém muitas alterações em componentes, incluindo alterações na
 
 ### PHP 7.2
 
-Phalcon v4 suporta apenas PHP 7.2 e superior. O PHP 7.1 foi liberado há 2 anos e o seu [suporte](https://secure.php.net/supported-versions.php) expirou. Então, nós decidimos utilizar apenas as versões do PHP que são suportadas.
+Phalcon v4 suporta apenas PHP 7.2 e superior. PHP 7.1 was released 2 years ago and its [active support](https://www.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 <a name='psr'></a>
 
