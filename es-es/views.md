@@ -1573,7 +1573,7 @@ $container->set(
 );
 ```
 
-The following example demonstrates how you can create a plugin that *tidies up* your HTML produced by the render process using [Tidy](https://www.php.net/manual/en/book.tidy.php).
+El ejemplo siguiente demuestra cómo puede crear un plugin que *organiza* su HTML producido por el proceso de renderizado usando [Tidy](https://www.php.net/manual/en/book.tidy.php).
 
 ```php
 <?php
