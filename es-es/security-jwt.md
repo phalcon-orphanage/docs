@@ -16,7 +16,7 @@ keywords: 'seguridad, hash, contraseñas, jwt, rfc7519'
 > 
 > {: .alert .alert-info }
 
-`Phalcon\Security\JWT` es un espacio de nombres que contiene componentes que le permiten emitir, analizar y validar Tokens Web JSON como se describe en [RFC 7915][rfc-7519]. Estos componentes son:
+`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. Estos componentes son:
 
 - Builder ([Phalcon\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser])
@@ -118,7 +118,7 @@ Hay varios componentes de utilidad bajo el espacio de nombres `Phalcon\Security\
 
 ### Enum
 
-[Phalcon\Security\JWT\Token\Enum][security-jwt-token-enum] es una clase que contiene varias constantes. Estas constantes son cadenas definidas en [RFC 7915][rfc-7519]. Puede usarlas si desea o en su lugar usar sus cadenas equivalentes.
+[Phalcon\Security\JWT\Token\Enum][security-jwt-token-enum] es una clase que contiene varias constantes. These constants are the strings defined in [RFC 7915][rfc-7519]. Puede usarlas si desea o en su lugar usar sus cadenas equivalentes.
 
 ```php
 <?php
@@ -583,7 +583,7 @@ class IndexController extends Controller
 }
 ```
 
-[rfc-7519]: https://tools.ietf.org/html/rfc7519
+[rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 [security-jwt-builder]: api/phalcon_security#security-jwt-builder
 [security-jwt-exceptions-unsupportedalgorithmexception]: api/phalcon_security#security-jwt-exceptions-unsupportedalgorithmexception
 [security-jwt-exceptions-validatorexception]: api/phalcon_security#security-jwt-exceptions-validatorexception
