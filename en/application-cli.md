@@ -294,6 +294,39 @@ php cli.php users add 4 5
 9
 ```
 
+Parameters can also be accessed through the [Phalcon\Cli\Dispatcher][cli-dispatcher] which is helpful when passing flags in, or an unknown number of parameters.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Tasks;
+
+use Phalcon\Cli\Task;
+
+class UsersTask extends Task
+{
+    public function mainAction()
+    {
+        print_r( $this->dispatcher->getParams() );
+    }
+
+}
+```
+
+Running this will then output:
+
+```bash
+php cli.php users main additional parameters
+
+Array
+(
+    [0] => additional
+    [1] => parameters
+)
+```
+
 ## Chain
 You can also chain tasks. To run them one after another, we need to make a small change in our bootstrap: we need to register our application in the DI container:
 
