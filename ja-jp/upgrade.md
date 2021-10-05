@@ -20,7 +20,7 @@ Phalcon v4 には、インターフェイスへの変更、厳格なタイプ、
 
 ### PHP 7.2
 
-Phalcon v4 は、 PHP 7.2 もしくはそれ以降のバージョンのみをサポートしています。 2年前にリリースされたPHP 7.1は、[サポート](https://secure.php.net/supported-versions.php)が失効したため、継続的にサポートされているPHPバージョンに従うことにしました。
+Phalcon v4 は、 PHP 7.2 もしくはそれ以降のバージョンのみをサポートしています。 PHP 7.1 was released 2 years ago and its [active support](https://www.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 <a name='psr'></a>
 

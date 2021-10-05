@@ -1565,6 +1565,11 @@ class Invoices extends Model
 
 **Propiedades vs. Setters/Getters**
 
+> NOTA: La clase modelo utiliza algunas propiedades internamente para los servicios. Los nombres de estas propiedades están reservados y no se pueden utilizar como campos en la base de datos. Por favor, tenga esto en cuenta al nombrar los campos de sus tablas. Si hay colisiones, sus modelos no se actualizarán correctamente.
+> 
+> `container`, `dirtyState`, `dirtyRelated`, `errorMessages`, `modelsManager`, `modelsMetaData`, `related`, `operationMade`, `oldSnapshot`, `skipped`, `snapshot`, `transaction`, `uniqueKey`, `uniqueParams`, `uniqueTypes`
+{: .alert .alert-warning }
+
 Los modelos se pueden implementar con propiedades públicas, lo que significa que cualquier propiedad se puede leer y actualizar desde cualquier parte del código que ha instanciado esa clase de modelo:
 
 ```php
@@ -1812,7 +1817,7 @@ $invoice = Invoices::findFirst('inv_id = 3');
 
 También puede pasar una cadena con una cláusula `WHERE`. En el ejemplo anterior obtenemos el mismo registro, indicando al ORM que nos dé un registro con `inv_cst_id = 3`
 
-> **NOTA**: Si la clave primaria de la tabla no es numérica, utilice condición. Vea ejemplos a continuación.
+> **NOTA**: Si la clave primaria de la tabla no es numérica, utilice `condition`. Vea ejemplos a continuación.
  {: .alert .alert-warning }
 
 ```php
@@ -2283,7 +2288,7 @@ $name  = 'Darth Vader';
 $guest = Guestbook::findFirstByName($name);
 ```
 
-> **NOTA**: Tenga en cuneta que usamos `Name` en la llamada del método y le pasamos la variable `$name`, que contiene el nombre que estamos buscando en nuestra tabla. Tenga en cuenta también que cuando encontramos una coincidencia con nuestra consulta, también tendremos disponibles todas las demás propiedades.
+> **NOTA**: Tenga en cuenta que usamos `Name` en la llamada del método y le pasamos la variable `$name`, que contiene el nombre que estamos buscando en nuestra tabla. Tenga en cuenta también que cuando encontramos una coincidencia con nuestra consulta, también tendremos disponibles todas las demás propiedades.
 {: .alert .alert-info }
 
 ### Resultados del modelo
@@ -3227,7 +3232,7 @@ class Invoices extends Model
 }
 ```
 
-> **NOTA**: Nunca usar [Phalcon\Db\RawValue](api/phalcon_db#db-rawvalue) para asignar datos externos (como entrada del usuario) o datos variables. El valor de estos campos se ignora cuando se enlazan los parámetros a la consulta. Así que se podrían usar para inyecciones SQL.
+> **NOTA**: Nunca use [Phalcon\Db\RawValue](api/phalcon_db#db-rawvalue) para asignar datos externos (como entrada del usuario) o datos variables. El valor de estos campos se ignora cuando se enlazan los parámetros a la consulta. Así que se podrían usar para inyecciones SQL.
 {: .alert .alert-warning }
 
 ## Actualización Dinámica

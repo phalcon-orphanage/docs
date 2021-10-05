@@ -583,7 +583,7 @@ class IndexController extends Controller
 }
 ```
 
-[rfc-7519]: https://tools.ietf.org/html/rfc7519
+[rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 [security-jwt-builder]: api/phalcon_security#security-jwt-builder
 [security-jwt-exceptions-unsupportedalgorithmexception]: api/phalcon_security#security-jwt-exceptions-unsupportedalgorithmexception
 [security-jwt-exceptions-validatorexception]: api/phalcon_security#security-jwt-exceptions-validatorexception

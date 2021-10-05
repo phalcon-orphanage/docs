@@ -709,7 +709,7 @@ $logger = $container->getShared('logger');
 
 ```
 
-[date-formats]: https://secure.php.net/manual/en/function.date.php
+[date-formats]: https://www.php.net/manual/en/function.date.php
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 [logger-logger]: api/phalcon_logger#logger-logger
 [logger-adapter-noop]: api/phalcon_logger#logger-adapter-noop

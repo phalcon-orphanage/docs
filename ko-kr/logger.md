@@ -462,7 +462,7 @@ The default date format is:
 "D, d M y H:i:s O"
 ```
 
-If the default format of the message does not fit the needs of your application you can change it using the `setDateFormat()` method. The method accepts a string with characters that correspond to date formats. For all available formats, please consult [this page](https://secure.php.net/manual/en/function.date.php).
+If the default format of the message does not fit the needs of your application you can change it using the `setDateFormat()` method. The method accepts a string with characters that correspond to date formats. For all available formats, please consult [this page](https://www.php.net/manual/en/function.date.php).
 
 ```php
 <?php
@@ -514,7 +514,7 @@ The default date format is:
 "D, d M y H:i:s O"
 ```
 
-If the default format of the message does not fit the needs of your application you can change it using the `setDateFormat()` method. The method accepts a string with characters that correspond to date formats. For all available formats, please consult [this page](https://secure.php.net/manual/en/function.date.php).
+If the default format of the message does not fit the needs of your application you can change it using the `setDateFormat()` method. The method accepts a string with characters that correspond to date formats. For all available formats, please consult [this page](https://www.php.net/manual/en/function.date.php).
 
 ```php
 <?php

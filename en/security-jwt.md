@@ -581,7 +581,7 @@ class IndexController extends Controller
 }
 ```
 
-[rfc-7519]: https://tools.ietf.org/html/rfc7519
+[rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
 [hash-equals]: https://www.php.net/manual/en/function.hash-hmac.php
 [security-jwt-builder]: api/phalcon_security#security-jwt-builder

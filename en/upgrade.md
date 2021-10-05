@@ -1279,7 +1279,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                                            | New        | Phalcon\Validation\Validator\StringLength\Min      |
 
 
-[php-support]: https://secure.php.net/supported-versions.php
+[php-support]: https://www.php.net/supported-versions.php
 [psr-3]: https://www.php-fig.org/psr/psr-3/
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [psr-extension]: https://github.com/jbboehr/php-psr

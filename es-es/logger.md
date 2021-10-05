@@ -462,7 +462,7 @@ El formato predeterminado es:
 "D, d M y H:i:s O"
 ```
 
-En caso de que el formato predeterminado no se ajuste a las necesidades de la aplicación, se puede personalizar mediante el método `setFormat()`. El método acepta una cadena de caracteres que corresponden a formatos de fecha. Para ver todos los formatos disponibles siga este [enlace](https://secure.php.net/manual/es/function.date.php).
+En caso de que el formato predeterminado no se ajuste a las necesidades de la aplicación, se puede personalizar mediante el método `setFormat()`. El método acepta una cadena de caracteres que corresponden a formatos de fecha. Para todos los formatos disponibles, por favor consulte [esta página](https://www.php.net/manual/en/function.date.php).
 
 ```php
 <?php
@@ -514,7 +514,7 @@ El formato predeterminado es:
 "D, d M y H:i:s O"
 ```
 
-En caso de que el formato predeterminado no se ajuste a las necesidades de la aplicación, se puede personalizar mediante el método `setFormat()`. El método acepta una cadena de caracteres que corresponden a formatos de fecha. Para ver todos los formatos disponibles siga este [enlace](https://secure.php.net/manual/es/function.date.php).
+En caso de que el formato predeterminado no se ajuste a las necesidades de la aplicación, se puede personalizar mediante el método `setFormat()`. El método acepta una cadena de caracteres que corresponden a formatos de fecha. Para todos los formatos disponibles, por favor consulte [esta página](https://www.php.net/manual/en/function.date.php).
 
 ```php
 <?php
