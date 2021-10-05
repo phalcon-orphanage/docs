@@ -310,9 +310,42 @@ php cli.php users add 4 5
 9
 ```
 
+Parameters can also be accessed through the [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) which is helpful when passing flags in, or an unknown number of parameters.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Tasks;
+
+use Phalcon\Cli\Task;
+
+class UsersTask extends Task
+{
+    public function mainAction()
+    {
+        print_r( $this->dispatcher->getParams() );
+    }
+
+}
+```
+
+Running this will then output:
+
+```bash
+php cli.php users main additional parameters
+
+Array
+(
+    [0] => additional
+    [1] => parameters
+)
+```
+
 ## Cadena
 
-También podemos encadenar tareas. Para ejecutarlas una tras otra, necesitamos hacer un pequeño cambio en nuestro arranque: necesitamos registrar nuestra aplicación en el contenedor DI:
+You can also chain tasks. To run them one after another, we need to make a small change in our bootstrap: we need to register our application in the DI container:
 
 ```php
 // ...
@@ -323,9 +356,9 @@ $arguments = [];
 // ...
 ```
 
-Ahora que la aplicación de consola está en el contenedor DI, podemos acceder a ella desde cualquier tarea.
+Now that the console application is inside the DI container, we can access it from any task.
 
-Supongamos que queremos llamar `printAction()` desde la tarea `Users`, todo lo que tenemos que hacer es llamarla usando el contenedor.
+Assume we want to call the `printAction()` from the `Users` task, all we have to do is call it using the container.
 
 ```php
 <?php
@@ -359,13 +392,13 @@ class UsersTask extends Task
 }
 ```
 
-Esta técnica le permite ejecutar cualquier tarea y cualquier acción desde cualquier otra tarea. Sin embargo, no es recomendable porque podría provocar pesadillas de mantenimiento. Es mejor extender [Phalcon\Cli\Task](api/phalcon_cli#cli-task) e implementar su lógica allí.
+This technique allows you to run any task and any action from any other task. However, it is not recommended because it could lead to maintenance nightmares. It is better to extend [Phalcon\Cli\Task](api/phalcon_cli#cli-task) and implement your logic there.
 
 ## Módulos
 
-Las aplicaciones CLI también puede gestionar diferentes módulos, igual que en aplicaciones MVC. Puede registrar diferentes módulos en su aplicación CLI, para manejar diferentes rutas de su aplicación CLI. Esto permite una mejor organización de su código y la agrupación de tareas.
+CLI applications can also handle different modules, the same as MVC applications. You can register different modules in your CLI application, to handle different paths of your CLI application. This allows for better organization of your code and grouping of tasks.
 
-La aplicación CLI ofrece los siguientes métodos:
+The CLI application offers the following methods:
 
 - `getDefaultModule` - `string` - Devuelve el nombre del módulo predeterminado
 - `getModule(string $name)` - `array`/`object` - Obtiene la definición del módulo registrado en la aplicación vía nombre de módulo
@@ -373,7 +406,7 @@ La aplicación CLI ofrece los siguientes métodos:
 - `registerModules(array $modules, bool $merge = false)` - `AbstractApplication` - Registra un vector de módulos presente en la aplicación
 - `setDefaultModule(string $defaultModule)` - `AbstractApplication` - Establece el nombre del módulo a ser usado si el router no devuelve un módulo valido
 
-Puede registrar un módulo `frontend` y `backend` para su aplicación de consola como sigue:
+You can register a `frontend` and `backend` module for your console application as follows:
 
 ```php
 <?php
@@ -444,7 +477,7 @@ try {
 }
 ```
 
-El código anterior asume que ha estructurado sus directorios para contener los módulos en los directorios `frontend` y `backend`.
+The above code assumes that you have structured your directories to contain modules in the `frontend` and `backend` directories.
 
 ```bash
 src/
@@ -455,11 +488,11 @@ php cli.php
 
 ## Rutas
 
-La aplicación CLI tiene su propio router. Por defecto la aplicación CLI de Phalcon usa el objeto [Phalcon\Cli\Router](api/phalcon_cli#cli-router), pero puede implementar el suyo propio usando [Phalcon\Cli\RouterInterface](api/phalcon_cli#cli-routerinterface).
+The CLI application has its own router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) object, but you can implement your own by using the [Phalcon\Cli\RouterInterface](api/phalcon_cli#cli-routerinterface).
 
-Similar a la aplicación MVC, [Phalcon\Cli\Router](api/phalcon_cli#cli-router) usa objetos [Phalcon\Cli\Router\Route](api/phalcon_cli#cli-router-route) para almacenar la información de las rutas. Siempre puede implementar sus propios objetos implementando [Phalcon\Cli\Router\RouteInterface](api/phalcon_cli#cli-router-routeinterface).
+Similar to a MVC application, the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) uses [Phalcon\Cli\Router\Route](api/phalcon_cli#cli-router-route) objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface](api/phalcon_cli#cli-router-routeinterface).
 
-Las rutas aceptan los parámetros regex esperados como `a-zA-Z0-9` etc. También hay comodines adicionales que puede aprovechar:
+The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There are also additional placeholders that you can take advantage of:
 
 | Marcador     | Descripción                                         |
 | ------------ | --------------------------------------------------- |
@@ -470,12 +503,12 @@ Las rutas aceptan los parámetros regex esperados como `a-zA-Z0-9` etc. También
 | `:params`    | Cualquier parámetros                                |
 | `:int`       | Si es un parámetro entero de ruta                   |
 
-[Phalcon\Cli\Router](api/phalcon_cli#cli-router) viene con dos rutas predefinidas, con lo que funciona de inmediato. Estas son:
+The [Phalcon\Cli\Router](api/phalcon_cli#cli-router) comes with two predefined routes, so that it works right out of the box. Estas son:
 
 - `/:task/:action`
 - `/:task/:action/:params`
 
-Si no desea usar las rutas predeterminadas, todo lo que tiene que hacer es pasar `false` en el objeto [Phalcon\Cli\Router](api/phalcon_cli#cli-router) en su construcción.
+If you do not wish to use the default routes, all you have to do is pass `false` in the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) object upon construction.
 
 ```php
 <?php
@@ -487,11 +520,11 @@ use Phalcon\Cli\Router;
 $router = new Router(false);
 ```
 
-Para más información sobre rutas y clases de rutas, puede consultar la página [Enrutamiento](routing).
+For more information regarding routes and the route classes, you can check the [Routing](routing) page.
 
 ## Eventos
 
-Las aplicaciones CLI también consideran los [eventos](events). Puede usar los métodos `setEventsManager` y `getEventsManager` para acceder al gestor de eventos.
+CLI applications are also <events> aware. You can use the `setEventsManager` and `getEventsManager` methods to access the events manager.
 
 Los siguientes eventos están disponibles:
 
@@ -503,4 +536,4 @@ Los siguientes eventos están disponibles:
 | `beforeStartModule` |   Si    | Llamado antes de procesar un módulo (si se usan módulos)   |
 | `boot`              |   Si    | Llamado cuando al aplicación arranca                       |
 
-Si usa [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) también puede sacar provecho del evento `beforeException`, que puede detener las operaciones y se dispara desde el objeto despachador.
+If you use the [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) you can also take advantage of the `beforeException` event, which can stop operations and is fired from the dispatcher object.
