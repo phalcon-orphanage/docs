@@ -1486,5 +1486,5 @@ $router->add(
 [mvc-router-route]: api/phalcon_mvc#mvc-router-route
 [mvc-router-routeinterface]: api/phalcon_mvc#mvc-router-routeinterface
 [mvc-routerinterface]: api/phalcon_mvc#mvc-routerinterface
-[pcre]: https://secure.php.net/manual/en/book.pcre.php
+[pcre]: https://www.php.net/manual/en/book.pcre.php
 [transformers]: https://transformers.hasbro.com/en-us
