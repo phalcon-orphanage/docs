@@ -443,7 +443,7 @@ In the example above, we are using wildcards to make a route valid for many URIs
 |:-----------:|:--------:|:--------:|:--------:|
 | `customers` |  `view`  | `12345`  |   `1`    |
 
-The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php).
+The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://www.php.net/manual/en/book.pcre.php).
 
 > **NOTE**: It is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 {: .alert .alert-info }
