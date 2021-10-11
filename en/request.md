@@ -687,13 +687,13 @@ Credentials: a87421000492aa874209af8bc028
 ```
 
 [aws-auth]: https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html
-[cookie]: https://secure.php.net/manual/en/reserved.variables.cookies.php
-[get]: https://secure.php.net/manual/en/reserved.variables.get.php
+[cookie]: https://www.php.net/manual/en/reserved.variables.cookies.php
+[get]: https://www.php.net/manual/en/reserved.variables.get.php
 [iana]: https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
-[php-uploads]: https://secure.php.net/manual/en/ini.core.php#ini.file-uploads
-[post]: https://secure.php.net/manual/en/reserved.variables.post.php
-[request]: https://secure.php.net/manual/en/reserved.variables.request.php
-[server]: https://secure.php.net/manual/en/reserved.variables.server.php
+[php-uploads]: https://www.php.net/manual/en/ini.core.php#ini.file-uploads
+[post]: https://www.php.net/manual/en/reserved.variables.post.php
+[request]: https://www.php.net/manual/en/reserved.variables.request.php
+[server]: https://www.php.net/manual/en/reserved.variables.server.php
 [sql-injection]: https://en.wikipedia.org/wiki/SQL_injection
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 [http-cookie]: api/phalcon_http#http-cookie
