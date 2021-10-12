@@ -35,9 +35,9 @@ if (true === $request->isPost()) {
 
 ## Getting Values
 
-PHP automatically fills the superglobal arrays [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
+PHP automatically fills the superglobal arrays [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
-[Phalcon\Http\Request](api/phalcon_http#http-request) allows you to access the values stored in the [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) arrays and sanitize or filter them with the <filter> service.
+[Phalcon\Http\Request](api/phalcon_http#http-request) allows you to access the values stored in the [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) arrays and sanitize or filter them with the <filter> service.
 
 There are 5 methods that allow you to retrieve submitted data from a request: - `get()` - `getQuery()` - `getPost()` - `getPut()` - `getServer()`
 
@@ -63,7 +63,7 @@ $request->get(
 
 ### $_REQUEST
 
-The [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) superglobal contains an associative array that contains the contents of [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_COOKIE](https://secure.php.net/manual/en/reserved.variables.cookies.php). You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/phalcon_http#http-request) object as follows:
+The [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) superglobal contains an associative array that contains the contents of [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) and [$_COOKIE](https://www.php.net/manual/en/reserved.variables.cookies.php). You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/phalcon_http#http-request) object as follows:
 
 **Examples** Get the `userEmail` field from the `$_REQUEST` superglobal:
 
@@ -103,7 +103,7 @@ $email = $request->get('userEmail', null, 'some@example.com');
 
 ### $_GET
 
-The [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php) superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the `getQuery()` method as follows:
+The [$_GET](https://www.php.net/manual/en/reserved.variables.get.php) superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the `getQuery()` method as follows:
 
 **Examples** Get the `userEmail` field from the `$_GET` superglobal:
 
@@ -143,7 +143,7 @@ $email = $request->getQuery('userEmail', null, 'some@example.com');
 
 ### $_POST
 
-The [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows:
+The [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows:
 
 **Examples** Get the `userEmail` field from the `$_POST` superglobal:
 
@@ -223,7 +223,7 @@ $email = $request->getPut('userEmail', null, 'some@example.com');
 
 ### $_SERVER
 
-The [$_SERVER](https://secure.php.net/manual/en/reserved.variables.server.php) superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the `getServer()` method as follows:
+The [$_SERVER](https://www.php.net/manual/en/reserved.variables.server.php) superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the `getServer()` method as follows:
 
 **Examples** Get the `SERVER_NAME` value from the `$_SERVER` superglobal:
 
@@ -484,7 +484,7 @@ Optionally `getHttpHost()` validates and performs a strict check on the host nam
 
 ## Uploaded Files
 
-Another common task is file uploading. [Phalcon\Http\Request](api/phalcon_http#http-request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads](https://secure.php.net/manual/en/ini.core.php#ini.file-uploads)).
+Another common task is file uploading. [Phalcon\Http\Request](api/phalcon_http#http-request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads](https://www.php.net/manual/en/ini.core.php#ini.file-uploads)).
 
 ```php
 <?php
