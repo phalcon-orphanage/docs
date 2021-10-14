@@ -310,7 +310,7 @@ php cli.php users add 4 5
 9
 ```
 
-Parameters can also be accessed through the [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) which is helpful when passing flags in, or an unknown number of parameters.
+También se puede acceder a los parámetros a través del [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher), que es útil cuando se pasan banderas o un número desconocido de parámetros.
 
 ```php
 <?php
