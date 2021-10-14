@@ -443,7 +443,7 @@ En el ejemplo anterior, usamos comodines para hacer una ruta válida para muchas
 |:-----------:|:------:|:---------:|:---------:|
 | `customers` | `view` |  `12345`  |    `1`    |
 
-El método `add()` recibe un patrón que, opcionalmente, puede tener marcadores de posición predefinidos y modificadores de expresiones regulares. Todos los patrones de enrutamiento deben empezar con un carácter de barra diagonal (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://www.php.net/manual/en/book.pcre.php).
+El método `add()` recibe un patrón que, opcionalmente, puede tener marcadores de posición predefinidos y modificadores de expresiones regulares. Todos los patrones de enrutamiento deben empezar con un carácter de barra diagonal (`/`). La sintaxis de expresión regular usada es la misma que en las [expresiones regulares PCRE](https://www.php.net/manual/en/book.pcre.php).
 
 > **NOTA**: No es necesario añadir delimitadores de expresiones regulares. Todos los patrones de ruta son insensibles a mayúsculas y minúsculas.
 {: .alert .alert-info }
