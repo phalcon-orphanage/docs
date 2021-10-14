@@ -8766,7 +8766,7 @@ Registrar servicios relacionados con el módulo
 
 Phalcon\Mvc\Router
 
-Phalcon\Mvc\Router es el enrutador estándar del framework. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
+Phalcon\Mvc\Router es el enrutador estándar del framework. Enrutamiento es el proceso de tomar un punto final URI (la parte del URI que viene después de la URL base) y descomponerlo en parámetros para determinar qué módulo, controlador y acción de ese controlador debería recibir la solicitud
 
 ```php
 use Phalcon\Mvc\Router;
@@ -8863,13 +8863,13 @@ protected wasMatched = false;
 public function __construct( bool $defaultRoutes = bool );
 ```
 
-Phalcon\Mvc\Router constructor
+Constructor Phalcon\Mvc\Router
 
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router without any HTTP constraint
+Añade una ruta al enrutador sin ninguna restricción HTTP
 
 ```php
 use Phalcon\Mvc\Router;
@@ -8894,67 +8894,67 @@ $router->add(
 public function addConnect( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is CONNECT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es CONNECT
 
 ```php
 public function addDelete( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is DELETE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es DELETE
 
 ```php
 public function addGet( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is GET
+Añade una ruta al enrutador que sólo coincide si el método HTTP es GET
 
 ```php
 public function addHead( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is HEAD
+Añade una ruta al enrutador que sólo coincide si el método HTTP es HEAD
 
 ```php
 public function addOptions( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Add a route to the router that only match if the HTTP method is OPTIONS
+Añade una ruta al enrutador que sólo coincide si el método HTTP es OPTIONS
 
 ```php
 public function addPatch( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PATCH
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PATCH
 
 ```php
 public function addPost( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is POST
+Añade una ruta al enrutador que sólo coincide si el método HTTP es POST
 
 ```php
 public function addPurge( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PURGE (soporte Squid y Varnish)
 
 ```php
 public function addPut( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PUT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PUT
 
 ```php
 public function addTrace( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is TRACE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es TRACE
 
 ```php
 public function attach( RouteInterface $route, mixed $position = static-constant-access ): RouterInterface;
 ```
 
-Attach Route object to the routes stack.
+Adjunta un objeto `Route` a la pila de rutas.
 
 ```php
 use Phalcon\Mvc\Router;
@@ -8976,25 +8976,25 @@ $router->attach(
 public function clear(): void;
 ```
 
-Removes all the pre-defined routes
+Elimina todas las rutas predefinidas
 
 ```php
 public function getActionName(): string;
 ```
 
-Returns the processed action name
+Devuelve el nombre de la acción procesada
 
 ```php
 public function getControllerName(): string;
 ```
 
-Returns the processed controller name
+Devuelve el nombre del controlador procesado
 
 ```php
 public function getDefaults(): array;
 ```
 
-Returns an array of default parameters
+Devuelve un vector de parámetros predeterminados
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -9026,19 +9026,19 @@ Devuelve las sub expresiones en la expresión regular combinada
 public function getModuleName(): string;
 ```
 
-Returns the processed module name
+Devuelve el nombre del módulo procesado
 
 ```php
 public function getNamespaceName(): string;
 ```
 
-Returns the processed namespace name
+Devuelve el nombre del espacio de nombres procesado
 
 ```php
 public function getParams(): array;
 ```
 
-Returns the processed parameters
+Devuelve los parámetros procesados
 
 ```php
 public function getRouteById( mixed $id ): RouteInterface | bool;
@@ -9079,19 +9079,19 @@ Devuelve si el nombre del controlador no debe ser roto
 public function mount( GroupInterface $group ): RouterInterface;
 ```
 
-Mounts a group of routes in the router
+Monta un grupo de rutas en el enrutador
 
 ```php
 public function notFound( mixed $paths ): RouterInterface;
 ```
 
-Set a group of paths to be returned when none of the defined routes are matched
+Establece un grupo de rutas que se devolverán cuando ninguna de las rutas definidas coincidan
 
 ```php
 public function removeExtraSlashes( bool $remove ): RouterInterface;
 ```
 
-Set whether router must remove the extra slashes in the handled routes
+Establece si el enrutador debe eliminar las barras adicionales en las rutas gestionadas
 
 ```php
 public function setDefaultAction( string $actionName ): RouterInterface;
@@ -9115,7 +9115,7 @@ Establece el nombre del módulo predeterminado
 public function setDefaultNamespace( string $namespaceName ): RouterInterface;
 ```
 
-Sets the name of the default namespace
+Establece el nombre del espacio de nombres predeterminado
 
 ```php
 public function setDefaults( array $defaults ): RouterInterface;
@@ -9160,7 +9160,7 @@ Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 Phalcon\Mvc\Router\Annotations
 
-A router that reads routes annotations from classes/resources
+Un enrutador que lee anotaciones de rutas desde clases/recursos
 
 ```php
 use Phalcon\Mvc\Router\Annotations;
@@ -9205,13 +9205,13 @@ protected routePrefix;
 public function addModuleResource( string $module, string $handler, string $prefix = null ): Annotations;
 ```
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
+Añade un recurso al manejador de anotaciones. Un recurso es una clase que contiene anotaciones de enrutamiento. La clase se encuentra en un módulo
 
 ```php
 public function addResource( string $handler, string $prefix = null ): Annotations;
 ```
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations
+Añade un recurso al manejador de anotaciones. Un recurso es una clase que contiene anotaciones de enrutamiento
 
 ```php
 public function getActionPreformatCallback();
@@ -9221,31 +9221,31 @@ public function getActionPreformatCallback();
 public function getResources(): array;
 ```
 
-Return the registered resources
+Devuelve los recursos registrados
 
 ```php
 public function handle( string $uri ): void;
 ```
 
-Produce the routing parameters from the rewrite information
+Produce los parámetros de enrutamiento desde la información de reescritura
 
 ```php
 public function processActionAnnotation( string $module, string $namespaceName, string $controller, string $action, Annotation $annotation );
 ```
 
-Checks for annotations in the public methods of the controller
+Comprueba las anotaciones en los métodos públicos del controlador
 
 ```php
 public function processControllerAnnotation( string $handler, Annotation $annotation );
 ```
 
-Checks for annotations in the controller docblock
+Comprueba las anotaciones en el docblock del controlador
 
 ```php
 public function setActionPreformatCallback( mixed $callback = null );
 ```
 
-Sets the action preformat callback $action here already without suffix 'Action'
+Establece aquí la llamada de retorno de preformato de la acción $action ya sin el sufijo 'Action'
 
 ```php
 // Array as callback
@@ -9267,13 +9267,13 @@ $annotationRouter->setActionPreformatCallback();
 public function setActionSuffix( string $actionSuffix );
 ```
 
-Changes the action method suffix
+Cambia el sufijo del método de acción
 
 ```php
 public function setControllerSuffix( string $controllerSuffix );
 ```
 
-Changes the controller class suffix
+Cambia el sufijo de la clase del controlador
 
 <h1 id="mvc-router-exception">Class Phalcon\Mvc\Router\Exception</h1>
 
@@ -9283,7 +9283,7 @@ Changes the controller class suffix
 
 Phalcon\Mvc\Router\Exception
 
-Exceptions thrown in Phalcon\Mvc\Router will use this class
+Las excepciones lanzadas en Phalcon\Mvc\Router usarán esta clase
 
 <h1 id="mvc-router-group">Class Phalcon\Mvc\Router\Group</h1>
 
@@ -9293,7 +9293,7 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 Phalcon\Mvc\Router\Group
 
-Helper class to create a group of routes with common attributes
+Clase auxiliar para crear un grupo de rutas con atributos comunes
 
 ```php
 $router = new \Phalcon\Mvc\Router();
@@ -9364,7 +9364,7 @@ protected routes;
 public function __construct( mixed $paths = null );
 ```
 
-Phalcon\Mvc\Router\Group constructor
+Constructor Phalcon\Mvc\Router\Group
 
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
@@ -9380,61 +9380,61 @@ $router->add("/about", "About::index");
 public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is CONNECT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es CONNECT
 
 ```php
 public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is DELETE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es DELETE
 
 ```php
 public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is GET
+Añade una ruta al enrutador que sólo coincide si el método HTTP es GET
 
 ```php
 public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is HEAD
+Añade una ruta al enrutador que sólo coincide si el método HTTP es HEAD
 
 ```php
 public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Add a route to the router that only match if the HTTP method is OPTIONS
+Añade una ruta al enrutador que sólo coincide si el método HTTP es OPTIONS
 
 ```php
 public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PATCH
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PATCH
 
 ```php
 public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is POST
+Añade una ruta al enrutador que sólo coincide si el método HTTP es POST
 
 ```php
 public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PURGE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PURGE
 
 ```php
 public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PUT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PUT
 
 ```php
 public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is TRACE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es TRACE
 
 ```php
 public function beforeMatch( callable $beforeMatch ): GroupInterface;
@@ -9446,7 +9446,7 @@ Establece una llamada de retorno que se llama si la ruta coincide. El desarrolla
 public function clear(): void;
 ```
 
-Removes all the pre-defined routes
+Elimina todas las rutas predefinidas
 
 ```php
 public function getBeforeMatch(): callable;
@@ -9458,49 +9458,49 @@ Devuelve la función de retorno *'before match'* si la hay
 public function getHostname(): string;
 ```
 
-Returns the hostname restriction
+Devuelve la restricción del nombre de host
 
 ```php
 public function getPaths(): array | string;
 ```
 
-Returns the common paths defined for this group
+Devuelve las rutas comunes definidas para este grupo
 
 ```php
 public function getPrefix(): string;
 ```
 
-Returns the common prefix for all the routes
+Devuelve el prefijo común para todas las rutas
 
 ```php
 public function getRoutes(): RouteInterface[];
 ```
 
-Returns the routes added to the group
+Devuelve las rutas añadidas al grupo
 
 ```php
 public function setHostname( string $hostname ): GroupInterface;
 ```
 
-Set a hostname restriction for all the routes in the group
+Establece una restricción de nombre de host para todas las rutas del grupo
 
 ```php
 public function setPaths( mixed $paths ): GroupInterface;
 ```
 
-Set common paths for all the routes in the group
+Establece rutas comunes para todas las rutas del grupo
 
 ```php
 public function setPrefix( string $prefix ): GroupInterface;
 ```
 
-Set a common uri prefix for all the routes in this group
+Establece un prefijo de uri común para todas las rutas de este grupo
 
 ```php
 protected function addRoute( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 
-Adds a route applying the common attributes
+Añade una ruta aplicando los atributos comunes
 
 <h1 id="mvc-router-groupinterface">Interface Phalcon\Mvc\Router\GroupInterface</h1>
 
@@ -9569,61 +9569,61 @@ router->add("/about", "About::index");
 public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is CONNECT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es CONNECT
 
 ```php
 public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is DELETE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es DELETE
 
 ```php
 public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is GET
+Añade una ruta al enrutador que sólo coincide si el método HTTP es GET
 
 ```php
 public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is HEAD
+Añade una ruta al enrutador que sólo coincide si el método HTTP es HEAD
 
 ```php
 public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Add a route to the router that only match if the HTTP method is OPTIONS
+Añade una ruta al enrutador que sólo coincide si el método HTTP es OPTIONS
 
 ```php
 public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PATCH
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PATCH
 
 ```php
 public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is POST
+Añade una ruta al enrutador que sólo coincide si el método HTTP es POST
 
 ```php
 public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PURGE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PURGE
 
 ```php
 public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PUT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PUT
 
 ```php
 public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is TRACE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es TRACE
 
 ```php
 public function beforeMatch( callable $beforeMatch ): GroupInterface;
@@ -9635,7 +9635,7 @@ Establece una llamada de retorno que se llama si la ruta coincide. El desarrolla
 public function clear(): void;
 ```
 
-Removes all the pre-defined routes
+Elimina todas las rutas predefinidas
 
 ```php
 public function getBeforeMatch(): callable;
@@ -9647,43 +9647,43 @@ Devuelve la función de retorno *'before match'* si la hay
 public function getHostname(): string;
 ```
 
-Returns the hostname restriction
+Devuelve la restricción del nombre de host
 
 ```php
 public function getPaths(): array | string;
 ```
 
-Returns the common paths defined for this group
+Devuelve las rutas comunes definidas para este grupo
 
 ```php
 public function getPrefix(): string;
 ```
 
-Returns the common prefix for all the routes
+Devuelve el prefijo común para todas las rutas
 
 ```php
 public function getRoutes(): RouteInterface[];
 ```
 
-Returns the routes added to the group
+Devuelve las rutas añadidas al grupo
 
 ```php
 public function setHostname( string $hostname ): GroupInterface;
 ```
 
-Set a hostname restriction for all the routes in the group
+Establece una restricción de nombre de host para todas las rutas del grupo
 
 ```php
 public function setPaths( mixed $paths ): GroupInterface;
 ```
 
-Set common paths for all the routes in the group
+Establece rutas comunes para todas las rutas del grupo
 
 ```php
 public function setPrefix( string $prefix ): GroupInterface;
 ```
 
-Set a common uri prefix for all the routes in this group
+Establece un prefijo de uri común para todas las rutas de este grupo
 
 <h1 id="mvc-router-route">Class Phalcon\Mvc\Router\Route</h1>
 
@@ -9742,7 +9742,7 @@ protected static uniqueId = 0;
 public function __construct( string $pattern, mixed $paths = null, mixed $httpMethods = null );
 ```
 
-Phalcon\Mvc\Router\Route constructor
+Constructor Phalcon\Mvc\Router\Route
 
 ```php
 public function beforeMatch( mixed $callback ): RouteInterface;
@@ -9773,7 +9773,7 @@ $router->add(
 public function compilePattern( string $pattern ): string;
 ```
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
+Reemplaza los marcadores de posición del patrón devolviendo una expresión regular PCRE válida
 
 ```php
 public function convert( string $name, mixed $converter ): RouteInterface;
@@ -9809,19 +9809,19 @@ Devuelve el convertidor del router
 public function getGroup(): GroupInterface | null;
 ```
 
-Returns the group associated with the route
+Devuelve el grupo asociado con la ruta
 
 ```php
 public function getHostname(): string;
 ```
 
-Returns the hostname restriction if any
+Devuelve la restricción del nombre de host si hay
 
 ```php
 public function getHttpMethods(): array | string;
 ```
 
-Returns the HTTP methods that constraint matching the route
+Devuelve los métodos HTTP que coinciden con la ruta
 
 ```php
 public function getId()
@@ -9831,7 +9831,7 @@ public function getId()
 public function getMatch(): callable;
 ```
 
-Returns the 'match' callback if any
+Devuelve la función de retorno *'match'* si la hay
 
 ```php
 public function getName(): string;
@@ -9867,13 +9867,13 @@ Devuelve la identidad de la ruta
 public static function getRoutePaths( mixed $paths = null ): array;
 ```
 
-Returns routePaths
+Devuelve routePaths
 
 ```php
 public function match( mixed $callback ): RouteInterface;
 ```
 
-Allows to set a callback to handle the request directly in the route
+Permite establecer un función de retorno para manejar la solicitud directamente en la ruta
 
 ```php
 $router->add(
@@ -9902,13 +9902,13 @@ Restablece el generador de identificador de ruta interno
 public function setGroup( GroupInterface $group ): RouteInterface;
 ```
 
-Sets the group associated with the route
+Establece el grupo asociado a la ruta
 
 ```php
 public function setHostname( string $hostname ): RouteInterface;
 ```
 
-Sets a hostname restriction to the route
+Establece una restricción de nombre de host a la ruta
 
 ```php
 $route->setHostname("localhost");
@@ -9918,7 +9918,7 @@ $route->setHostname("localhost");
 public function setHttpMethods( mixed $httpMethods ): RouteInterface;
 ```
 
-Sets a set of HTTP methods that constraint the matching of the route (alias of via)
+Establece un conjunto de métodos HTTP que restringen la coincidencia de la ruta (alias de via)
 
 ```php
 $route->setHttpMethods("GET");
@@ -9950,7 +9950,7 @@ $router->add(
 public function via( mixed $httpMethods ): RouteInterface;
 ```
 
-Set one or more HTTP methods that constraint the matching of the route
+Establece uno o más métodos HTTP que restringen la coincidencia de la ruta
 
 ```php
 $route->via("GET");
@@ -9979,13 +9979,13 @@ Interface for Phalcon\Mvc\Router\Route
 public function compilePattern( string $pattern ): string;
 ```
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
+Reemplaza los marcadores de posición del patrón devolviendo una expresión regular PCRE válida
 
 ```php
 public function convert( string $name, mixed $converter ): RouteInterface;
 ```
 
-Adds a converter to perform an additional transformation for certain parameter.
+Agrega un convertidor para realizar una transformación adicional para cierto parámetro.
 
 ```php
 public function getCompiledPattern(): string;
@@ -9997,13 +9997,13 @@ Devuelve el patrón de la ruta
 public function getHostname(): string;
 ```
 
-Returns the hostname restriction if any
+Devuelve la restricción del nombre de host si hay
 
 ```php
 public function getHttpMethods(): string | array;
 ```
 
-Returns the HTTP methods that constraint matching the route
+Devuelve los métodos HTTP que coinciden con la ruta
 
 ```php
 public function getName(): string;
@@ -10051,13 +10051,13 @@ Restablece el generador de identificador de ruta interno
 public function setHostname( string $hostname ): RouteInterface;
 ```
 
-Sets a hostname restriction to the route
+Establece una restricción de nombre de host a la ruta
 
 ```php
 public function setHttpMethods( mixed $httpMethods ): RouteInterface;
 ```
 
-Sets a set of HTTP methods that constraint the matching of the route
+Establece un conjunto de métodos HTTP que restringen la coincidencia de la ruta
 
 ```php
 public function setName( string $name ): RouteInterface;
@@ -10069,7 +10069,7 @@ Establece el nombre de la ruta
 public function via( mixed $httpMethods ): RouteInterface;
 ```
 
-Set one or more HTTP methods that constraint the matching of the route
+Establece uno o más métodos HTTP que restringen la coincidencia de la ruta
 
 <h1 id="mvc-routerinterface">Interface Phalcon\Mvc\RouterInterface</h1>
 
@@ -10077,7 +10077,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 | Namespace | Phalcon\Mvc | | Uses | Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Router\GroupInterface |
 
-Interface for Phalcon\Mvc\Router
+Interfaz para Phalcon\Mvc\Router
 
 ## Métodos
 
@@ -10091,73 +10091,73 @@ Añade una ruta al enrutador en cualquier método HTTP
 public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is CONNECT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es CONNECT
 
 ```php
 public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is DELETE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es DELETE
 
 ```php
 public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is GET
+Añade una ruta al enrutador que sólo coincide si el método HTTP es GET
 
 ```php
 public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is HEAD
+Añade una ruta al enrutador que sólo coincide si el método HTTP es HEAD
 
 ```php
 public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Add a route to the router that only match if the HTTP method is OPTIONS
+Añade una ruta al enrutador que sólo coincide si el método HTTP es OPTIONS
 
 ```php
 public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PATCH
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PATCH
 
 ```php
 public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is POST
+Añade una ruta al enrutador que sólo coincide si el método HTTP es POST
 
 ```php
 public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PURGE (soporte Squid y Varnish)
 
 ```php
 public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is PUT
+Añade una ruta al enrutador que sólo coincide si el método HTTP es PUT
 
 ```php
 public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
-Adds a route to the router that only match if the HTTP method is TRACE
+Añade una ruta al enrutador que sólo coincide si el método HTTP es TRACE
 
 ```php
 public function attach( RouteInterface $route, mixed $position = static-constant-access ): RouterInterface;
 ```
 
-Attach Route object to the routes stack.
+Adjunta un objeto `Route` a la pila de rutas.
 
 ```php
 public function clear(): void;
 ```
 
-Removes all the defined routes
+Elimina todas las rutas definidas
 
 ```php
 public function getActionName(): string;
@@ -10169,7 +10169,7 @@ Devuelve el nombre de la acción procesada
 public function getControllerName(): string;
 ```
 
-Returns processed controller name
+Devuelve el nombre del controlador procesado
 
 ```php
 public function getMatchedRoute(): RouteInterface;
@@ -10193,7 +10193,7 @@ Devuelve el nombre del módulo procesado
 public function getNamespaceName(): string;
 ```
 
-Returns processed namespace name
+Devuelve el nombre del espacio de nombres procesado
 
 ```php
 public function getParams(): array;
@@ -10229,7 +10229,7 @@ Gestiona la información de enrutamiento recibida del motor de reescritura
 public function mount( GroupInterface $group ): RouterInterface;
 ```
 
-Mounts a group of routes in the router
+Monta un grupo de rutas en el enrutador
 
 ```php
 public function setDefaultAction( string $actionName ): RouterInterface;
@@ -10269,7 +10269,7 @@ Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 Phalcon\Mvc\View
 
-Phalcon\Mvc\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.
+Phalcon\Mvc\View es una clase para trabajar con la porción "vista" del patrón modelo-vista-controlador. Es decir, existe para ayudar a mantener el script de vistas separado de los scripts de modelos y controladores. Proporciona un sistema de ayudantes, filtros de salida y escape de variables.
 
 ```php
 use Phalcon\Mvc\View;
@@ -10640,7 +10640,7 @@ class ProductsController extends Controller
 public function processRender( string $controllerName, string $actionName, array $params = [], bool $fireEvents = bool ): bool;
 ```
 
-Processes the view and templates; Fires events if needed
+Procesa la vista y las plantillas; Dispara eventos si es necesario
 
 ```php
 public function registerEngines( array $engines ): View;
@@ -10679,7 +10679,7 @@ Resetea el componente vista a sus valores predeterminados de fábrica
 public function setBasePath( string $basePath ): View;
 ```
 
-Establece la ruta base. Depending of your platform, always add a trailing slash or backslash
+Establece la ruta base. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 $view->setBasePath(__DIR__ . "/");
@@ -10705,7 +10705,7 @@ Establece el administrador de eventos
 public function setLayout( string $layout ): View;
 ```
 
-Change the layout to be used instead of using the name of the latest controller name
+Cambia la disposición a usar en vez de usar el nombre del último nombre de controlador
 
 ```php
 $this->view->setLayout("main");
@@ -10715,7 +10715,7 @@ $this->view->setLayout("main");
 public function setLayoutsDir( string $layoutsDir ): View;
 ```
 
-Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece el subdirectorio de disposiciones. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 $view->setLayoutsDir("../common/layouts/");
@@ -10725,7 +10725,7 @@ $view->setLayoutsDir("../common/layouts/");
 public function setMainView( string $viewPath ): View;
 ```
 
-Establece el nombre de la vista predeterminada. Must be a file without extension in the views directory
+Establece el nombre de la vista predeterminada. Debe ser un fichero sin extensión en el directorio de vistas
 
 ```php
 // Renders as main view views-dir/base.phtml
@@ -10746,7 +10746,7 @@ $this->view->setParamToView("products", $products);
 public function setPartialsDir( string $partialsDir ): View;
 ```
 
-Establece un subdirectorio de parciales. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece un subdirectorio de parciales. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 $view->setPartialsDir("../common/partials/");
@@ -10805,7 +10805,7 @@ $this->view->setVars(
 public function setViewsDir( mixed $viewsDir ): View;
 ```
 
-Establece el directorio de las vistas. Depending of your platform, always add a trailing slash or backslash
+Establece el directorio de las vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 public function start(): View;
@@ -10823,7 +10823,7 @@ Renderiza la vista y la devuelve como una cadena
 protected function engineRender( array $engines, string $viewPath, bool $silence, bool $mustClean = bool );
 ```
 
-Checks whether view exists on registered extensions and render it
+Comprueba si la vista existe en las extensiones registradas y la renderiza
 
 ```php
 protected function getViewsDirs(): array;
@@ -10835,13 +10835,13 @@ Devuelve los directorios de las vistas
 final protected function isAbsolutePath( string $path );
 ```
 
-Checks if a path is absolute or not
+Comprueba si una ruta es absoluta o no
 
 ```php
 protected function loadTemplateEngines(): array;
 ```
 
-Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php
+Carga motores de plantilla registrados, si no hay ninguno registrado usará Phalcon\Mvc\View\Engine\Php
 
 <h1 id="mvc-view-engine-abstractengine">Abstract Class Phalcon\Mvc\View\Engine\AbstractEngine</h1>
 
@@ -10849,7 +10849,7 @@ Loads registered template engines, if none is registered it will use Phalcon\Mvc
 
 | Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\ViewBaseInterface | | Extends | Injectable | | Implements | EngineInterface |
 
-All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\Mvc\View component.
+Todos los adaptadores del motor de plantillas deben heredar esta clase. Esto proporciona interfaz básica entre el motor y el componente Phalcon\Mvc\View.
 
 ## Propiedades
 
@@ -10865,7 +10865,7 @@ protected view;
 public function __construct( ViewBaseInterface $view, DiInterface $container = null );
 ```
 
-Phalcon\Mvc\View\Engine constructor
+Constructor Phalcon\Mvc\View\Engine
 
 ```php
 public function getContent(): string;
@@ -10891,7 +10891,7 @@ Representa una vista parcial dentro de otro punto de vista
 
 | Namespace | Phalcon\Mvc\View\Engine |
 
-Interface for Phalcon\Mvc\View engine adapters
+Interfaz para los adaptadores de motor Phalcon\Mvc\View
 
 ## Métodos
 
@@ -10919,7 +10919,7 @@ Renderiza una vista utilizando el motor de plantillas
 
 | Namespace | Phalcon\Mvc\View\Engine | | Extends | AbstractEngine |
 
-Adapter to use PHP itself as templating engine
+Adaptador para utilizar el mismo PHP como motor de plantillas
 
 ## Métodos
 
@@ -10935,7 +10935,7 @@ Renderiza una vista utilizando el motor de plantillas
 
 | Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception | | Extends | AbstractEngine | | Implements | EventsAwareInterface |
 
-Designer friendly and fast template engine for PHP written in Zephir/C
+Diseñador fácil y rápido motor de plantillas para PHP escrito en Zephir/C
 
 ## Propiedades
 
@@ -11034,7 +11034,7 @@ Ordena una matriz
 
 | Namespace | Phalcon\Mvc\View\Engine\Volt | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
 
-This class reads and compiles Volt templates into PHP plain code
+Esta clase lee y compila plantillas Volt a código PHP plano
 
 ```php
 $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
@@ -11124,19 +11124,19 @@ Phalcon\Mvc\View\Engine\Volt\Compiler
 public function addExtension( mixed $extension ): Compiler;
 ```
 
-Registers a Volt's extension
+Registra una extensión de Volt
 
 ```php
 public function addFilter( string $name, mixed $definition ): Compiler;
 ```
 
-Register a new filter in the compiler
+Registra un nuevo filtro en el compilador
 
 ```php
 public function addFunction( string $name, mixed $definition ): Compiler;
 ```
 
-Register a new function in the compiler
+Registra una nueva función en el compilador
 
 ```php
 public function attributeReader( array $expr ): string;
@@ -11148,7 +11148,7 @@ Resuelve la lectura de atributos
 public function compile( string $templatePath, bool $extendsMode = bool );
 ```
 
-Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled
+Compila una plantilla en un archivo aplicando las opciones del compilador Este método no devuelve la ruta compilada si la plantilla no fue compilada
 
 ```php
 $compiler->compile("views/layouts/main.volt");
@@ -11166,7 +11166,7 @@ Compila una sentencia "autoescape" devolviendo código PHP
 public function compileCache( array $statement, bool $extendsMode = bool ): string;
 ```
 
-Compiles a "cache" statement returning PHP code
+Compila una sentencia "cache" devolviendo código PHP
 
 @deprecated Will be removed in 5.0 @todo Remove this in the next major version
 
@@ -11180,13 +11180,13 @@ Compila llamadas a macros
 public function compileCase( array $statement, bool $caseClause = bool ): string;
 ```
 
-Compiles a "case"/"default" clause returning PHP code
+Compila una cláusula "case"/"default" devolviendo código PHP
 
 ```php
 public function compileDo( array $statement ): string;
 ```
 
-Compiles a "do" statement returning PHP code
+Compila una sentencia "do" devolviendo código PHP
 
 ```php
 public function compileEcho( array $statement ): string;
@@ -11198,13 +11198,13 @@ Compila una sentencia {% raw %}`{{` `}}`{% endraw %} devolviendo código PHP
 public function compileElseIf( array $statement ): string;
 ```
 
-Compiles a "elseif" statement returning PHP code
+Compila una sentencia "elseif" devolviendo código PHP
 
 ```php
 public function compileFile( string $path, string $compiledPath, bool $extendsMode = bool );
 ```
 
-Compiles a template into a file forcing the destination path
+Compila una plantilla en un fichero forzando la ruta destino
 
 ```php
 $compiler->compileFile(
@@ -11217,43 +11217,43 @@ $compiler->compileFile(
 public function compileForElse(): string;
 ```
 
-Generates a 'forelse' PHP code
+Genera un código PHP 'forelse'
 
 ```php
 public function compileForeach( array $statement, bool $extendsMode = bool ): string;
 ```
 
-Compiles a "foreach" intermediate code representation into plain PHP code
+Compila una representación intermedia de código "foreach" en código PHP plano
 
 ```php
 public function compileIf( array $statement, bool $extendsMode = bool ): string;
 ```
 
-Compiles a 'if' statement returning PHP code
+Compila una sentencia 'if' devolviendo código PHP
 
 ```php
 public function compileInclude( array $statement ): string;
 ```
 
-Compiles a 'include' statement returning PHP code
+Compila una sentencia 'include' devolviendo código PHP
 
 ```php
 public function compileMacro( array $statement, bool $extendsMode ): string;
 ```
 
-Compiles macros
+Compila macros
 
 ```php
 public function compileReturn( array $statement ): string;
 ```
 
-Compiles a "return" statement returning PHP code
+Compila una sentencia "return" devolviendo código PHP
 
 ```php
 public function compileSet( array $statement ): string;
 ```
 
-Compiles a "set" statement returning PHP code
+Compila una sentencia "set" devolviendo código PHP
 
 ```php
 public function compileString( string $viewCode, bool $extendsMode = bool ): string;
@@ -11269,7 +11269,7 @@ echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
 public function compileSwitch( array $statement, bool $extendsMode = bool ): string;
 ```
 
-Compiles a 'switch' statement returning PHP code
+Compila una sentencia 'switch' devolviendo código PHP
 
 ```php
 final public function expression( array $expr ): string;
@@ -11281,7 +11281,7 @@ Resuelve un nodo de expresión en un árbol AST de Volt
 final public function fireExtensionEvent( string $name, mixed $arguments = null );
 ```
 
-Fires an event to registered extensions
+Dispara un evento a las extensiones registradas
 
 ```php
 public function functionCall( array $expr ): string;
@@ -11305,25 +11305,25 @@ Devuelve el inyector de dependencias interno
 public function getExtensions(): array;
 ```
 
-Returns the list of extensions registered in Volt
+Devuelve la lista de extensiones registradas en Volt
 
 ```php
 public function getFilters(): array;
 ```
 
-Register the user registered filters
+Devuelve los filtros registrados por el usuario
 
 ```php
 public function getFunctions(): array;
 ```
 
-Register the user registered functions
+Devuelve las funciones registradas por el usuario
 
 ```php
 public function getOption( string $option );
 ```
 
-Returns a compiler's option
+Devuelve la opción de un compilador
 
 ```php
 public function getOptions(): array;
@@ -11341,7 +11341,7 @@ Devuelve la ruta que está siendo compilada actualmente
 public function getUniquePrefix(): string;
 ```
 
-Return a unique prefix to be used as prefix for compiled variables and contexts
+Devuelve un prefijo único a usar como prefijo de las variables y contextos compilados
 
 ```php
 public function parse( string $viewCode );
@@ -11389,31 +11389,31 @@ Establece un prefijo único a usar como prefijo de las variables compiladas
 protected function compileSource( string $viewCode, bool $extendsMode = bool ): string;
 ```
 
-Compiles a Volt source code returning a PHP plain version
+Compila un código fuente Volt devolviendo una versión plana en PHP
 
 ```php
 protected function getFinalPath( string $path );
 ```
 
-Gets the final path with VIEW
+Obtiene la ruta final con VIEW
 
 ```php
 final protected function resolveFilter( array $filter, string $left ): string;
 ```
 
-Resolves filter intermediate code into PHP function calls
+Resuelve filtrar código intermedio en llamadas a funciones PHP
 
 ```php
 final protected function statementList( array $statements, bool $extendsMode = bool ): string;
 ```
 
-Traverses a statement list compiling each of its nodes
+Recorre una lista de sentencias compilando cada uno de sus nodos
 
 ```php
 final protected function statementListOrExtends( mixed $statements );
 ```
 
-Compiles a block of statements
+Compila un bloque de sentencias
 
 <h1 id="mvc-view-engine-volt-exception">Class Phalcon\Mvc\View\Engine\Volt\Exception</h1>
 
@@ -11421,7 +11421,7 @@ Compiles a block of statements
 
 | Namespace | Phalcon\Mvc\View\Engine\Volt | | Uses | Phalcon\Mvc\View\Exception | | Extends | BaseException |
 
-Class for exceptions thrown by Phalcon\Mvc\View
+Clase para excepciones lanzadas por Phalcon\Mvc\View
 
 ## Propiedades
 
@@ -11441,7 +11441,7 @@ public function __construct( string $message = string, array $statement = [], in
 public function getStatement(): array;
 ```
 
-Gets currently parsed statement (if any).
+Obtiene la instrucción analizada (si existe).
 
 <h1 id="mvc-view-exception">Class Phalcon\Mvc\View\Exception</h1>
 
@@ -11451,7 +11451,7 @@ Gets currently parsed statement (if any).
 
 Phalcon\Mvc\View\Exception
 
-Class for exceptions thrown by Phalcon\Mvc\View
+Clase para excepciones lanzadas por Phalcon\Mvc\View
 
 <h1 id="mvc-view-simple">Class Phalcon\Mvc\View\Simple</h1>
 
@@ -11461,7 +11461,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 Phalcon\Mvc\View\Simple
 
-This component allows to render views without hierarchical levels
+Este componente permite renderizar vistas sin niveles jerárquicos
 
 ```php
 use Phalcon\Mvc\View\Simple as View;
@@ -11527,7 +11527,7 @@ protected viewParams;
 public function __construct( array $options = [] );
 ```
 
-Phalcon\Mvc\View\Simple constructor
+Constructor Phalcon\Mvc\View\Simple
 
 ```php
 public function __get( string $key ): mixed | null;
@@ -11553,7 +11553,7 @@ $this->view->products = $products;
 public function getActiveRenderPath(): string;
 ```
 
-Returns the path of the view that is currently rendered
+Devuelve la ruta de la vista que actualmente se está renderizando
 
 ```php
 public function getContent(): string;
@@ -11630,7 +11630,7 @@ $this->view->registerEngines(
 public function render( string $path, array $params = [] ): string;
 ```
 
-Renders a view
+Renderiza una vista
 
 ```php
 public function setContent( string $content ): Simple;
@@ -11686,19 +11686,19 @@ $this->view->setVars(
 public function setViewsDir( string $viewsDir );
 ```
 
-Sets views directory
+Establece el directorio de las vistas
 
 ```php
 final protected function internalRender( string $path, mixed $params );
 ```
 
-Tries to render the view with every engine registered in the component
+Intenta renderizar la vista con cada motor registrado en el componente
 
 ```php
 protected function loadTemplateEngines(): array;
 ```
 
-Loads registered template engines, if none are registered it will use Phalcon\Mvc\View\Engine\Php
+Carga los motores de plantilla registrados, si no hay ninguno registrado usará Phalcon\Mvc\View\Engine\Php
 
 <h1 id="mvc-viewbaseinterface">Interface Phalcon\Mvc\ViewBaseInterface</h1>
 
@@ -11708,7 +11708,7 @@ Loads registered template engines, if none are registered it will use Phalcon\Mv
 
 Phalcon\Mvc\ViewInterface
 
-Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
+Interfaz para Phalcon\Mvc\View y Phalcon\Mvc\View\Simple
 
 ## Métodos
 
@@ -11716,7 +11716,7 @@ Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 public function getContent(): string;
 ```
 
-Returns cached output from another view stage
+Devuelve la salida almacenada en caché desde otra etapa de vista
 
 ```php
 public function getParamsToView(): array;
@@ -11752,13 +11752,13 @@ Añade parámetros a las vistas (alias de setVar)
 public function setVar( string $key, mixed $value );
 ```
 
-Adds parameters to views
+Añade parámetros a las vistas
 
 ```php
 public function setViewsDir( string $viewsDir );
 ```
 
-Sets views directory. Depending of your platform, always add a trailing slash or backslash
+Establece el directorio de las vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 <h1 id="mvc-viewinterface">Interface Phalcon\Mvc\ViewInterface</h1>
 
@@ -11768,7 +11768,7 @@ Sets views directory. Depending of your platform, always add a trailing slash or
 
 Phalcon\Mvc\ViewInterface
 
-Interface for Phalcon\Mvc\View
+Interfaz para Phalcon\Mvc\View
 
 ## Métodos
 
@@ -11812,7 +11812,7 @@ Obtiene el nombre de la acción renderizada
 public function getActiveRenderPath(): string | array;
 ```
 
-Returns the path of the view that is currently rendered
+Devuelve la ruta de la vista que actualmente se está renderizando
 
 ```php
 public function getBasePath(): string;
@@ -11854,13 +11854,13 @@ Obtiene el subdirectorio actual de parciales
 public function isDisabled(): bool;
 ```
 
-Whether the automatic rendering is disabled
+Si está deshabilitado el renderizado automático
 
 ```php
 public function pick( string $renderView );
 ```
 
-Choose a view different to render than last-controller/last-action
+Elige una vista diferente a renderizar en vez del último-controlador/última-acción
 
 ```php
 public function registerEngines( array $engines );
@@ -11884,31 +11884,31 @@ Resetea el componente vista a sus valores predeterminados de fábrica
 public function setBasePath( string $basePath );
 ```
 
-Establece la ruta base. Depending of your platform, always add a trailing slash or backslash
+Establece la ruta base. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 public function setLayout( string $layout );
 ```
 
-Change the layout to be used instead of using the name of the latest controller name
+Cambia la disposición a usar en vez de usar el nombre del último nombre de controlador
 
 ```php
 public function setLayoutsDir( string $layoutsDir );
 ```
 
-Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece el subdirectorio de disposiciones. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 public function setMainView( string $viewPath );
 ```
 
-Establece el nombre de la vista predeterminada. Must be a file without extension in the views directory
+Establece el nombre de la vista predeterminada. Debe ser un fichero sin extensión en el directorio de vistas
 
 ```php
 public function setPartialsDir( string $partialsDir );
 ```
 
-Establece un subdirectorio de parciales. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Establece un subdirectorio de parciales. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
 
 ```php
 public function setRenderLevel( int $level ): ViewInterface;
@@ -11920,13 +11920,13 @@ Establece el nivel de renderizado de la vista
 public function setTemplateAfter( mixed $templateAfter );
 ```
 
-Appends template after controller layout
+Añade la plantilla después del diseño del controlador
 
 ```php
 public function setTemplateBefore( mixed $templateBefore );
 ```
 
-Appends template before controller layout
+Añade la plantilla antes del diseño del controlador
 
 ```php
 public function start();

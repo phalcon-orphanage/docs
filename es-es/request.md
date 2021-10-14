@@ -35,9 +35,9 @@ if (true === $request->isPost()) {
 
 ## Obteniendo Valores
 
-PHP automatically fills the superglobal arrays [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) depending on the type of the request. Estos vectores contienen los valores presentes en los formularios enviados o los parámetros enviados vía URL. Las variables en los vectores nunca se sanean y pueden contener caracteres ilegales o incluso código malicioso, lo que puede permitir ataques de [inyección SQL](https://en.wikipedia.org/wiki/SQL_injection) o [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting).
+PHP automáticamente rellena los vectores superglobales [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) y [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) dependiendo del tipo de la petición. Estos vectores contienen los valores presentes en los formularios enviados o los parámetros enviados vía URL. Las variables en los vectores nunca se sanean y pueden contener caracteres ilegales o incluso código malicioso, lo que puede permitir ataques de [inyección SQL](https://en.wikipedia.org/wiki/SQL_injection) o [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting).
 
-[Phalcon\Http\Request](api/phalcon_http#http-request) allows you to access the values stored in the [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) arrays and sanitize or filter them with the <filter> service.
+[Phalcon\Http\Request](api/phalcon_http#http-request) le permite acceder a los valores almacenados en los vectores [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) y [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) y sanearlos o filtrarlos con el servicio <filter>.
 
 Hay 5 métodos que le permiten recuperar los datos enviados en una petición: - `get()` - `getQuery()` - `getPost()` - `getPut()` - `getServer()`
 
@@ -63,7 +63,7 @@ $request->get(
 
 ### $_REQUEST
 
-The [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) superglobal contains an associative array that contains the contents of [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) and [$_COOKIE](https://www.php.net/manual/en/reserved.variables.cookies.php). Puede recuperar los datos almacenados en el vector llamando al método `get()` en el objeto [Phalcon\Http\Request](api/phalcon_http#http-request) de la siguiente manera:
+El superglobal [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) contiene un vector asociativo que contiene el contenido de [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) y [$_COOKIE](https://www.php.net/manual/en/reserved.variables.cookies.php). Puede recuperar los datos almacenados en el vector llamando al método `get()` en el objeto [Phalcon\Http\Request](api/phalcon_http#http-request) de la siguiente manera:
 
 **Ejemplos** Obtiene el campo `userEmail` del superglobal `$_REQUEST`:
 
@@ -103,7 +103,7 @@ $email = $request->get('userEmail', null, 'some@example.com');
 
 ### $_GET
 
-The [$_GET](https://www.php.net/manual/en/reserved.variables.get.php) superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). Puede recuperar los datos almacenados en el vector llamando al método `getQuery()` de la siguiente manera:
+El superglobal [$_GET](https://www.php.net/manual/en/reserved.variables.get.php) contiene un vector asociativo que contiene las variables pasadas al *script* actual a través de parámetros en la URL (también conocido como cadena de consulta). Puede recuperar los datos almacenados en el vector llamando al método `getQuery()` de la siguiente manera:
 
 **Ejemplos** Obtiene el campo `userEmail` del superglobal `$_GET`:
 
@@ -143,7 +143,7 @@ $email = $request->getQuery('userEmail', null, 'some@example.com');
 
 ### $_POST
 
-The [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. Puede recuperar los datos almacenados en el vector llamando al método `getPost()` de la siguiente manera:
+El superglobal [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) contiene un vector asociativo que contiene las variables pasadas al *script* actual mediante el método HTTP POST cuando se usa `application/x-www-form-urlencoded` o `multipart/form-data` como HTTP `Content-Type` en la petición. Puede recuperar los datos almacenados en el vector llamando al método `getPost()` de la siguiente manera:
 
 **Ejemplos** Obtiene el campo `userEmail` del superglobal `$_POST`:
 
@@ -223,7 +223,7 @@ $email = $request->getPut('userEmail', null, 'some@example.com');
 
 ### $_SERVER
 
-The [$_SERVER](https://www.php.net/manual/en/reserved.variables.server.php) superglobal contains an array containing information such as headers, paths, and script locations. Puede recuperar los datos almacenados en el vector llamando al método `getServer()` de la siguiente manera:
+El superglobal [$_SERVER](https://www.php.net/manual/en/reserved.variables.server.php) contiene un vector que contiene información como cabeceras, rutas, y ubicaciones de *script*. Puede recuperar los datos almacenados en el vector llamando al método `getServer()` de la siguiente manera:
 
 **Ejemplos** Obtiene el valor de `SERVER_NAME` del superglobal `$_SERVER`:
 
@@ -484,7 +484,7 @@ Opcionalmente `getHttpHost()` valida y realizar una comprobación estricta del n
 
 ## Ficheros Subidos
 
-Otra tarea común es la subida de ficheros. [Phalcon\Http\Request](api/phalcon_http#http-request) ofrece una forma de trabajar con ficheros orientada a objeto. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads](https://www.php.net/manual/en/ini.core.php#ini.file-uploads)).
+Otra tarea común es la subida de ficheros. [Phalcon\Http\Request](api/phalcon_http#http-request) ofrece una forma de trabajar con ficheros orientada a objeto. Para que funcione todo el proceso de subida, necesitará hacer los cambios necesarios en su `php.ini` (ver [subidas-php](https://www.php.net/manual/en/ini.core.php#ini.file-uploads)).
 
 ```php
 <?php
