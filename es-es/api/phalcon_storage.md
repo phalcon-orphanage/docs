@@ -703,7 +703,7 @@ Constructor AdapterFactory.
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+Crea una nueva instancia del adaptador
 
 ```php
 protected function getAdapters(): array;
