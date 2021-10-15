@@ -56,37 +56,37 @@ protected repository;
 public function __construct( array $config );
 ```
 
-Phalcon\Paginator\Adapter\AbstractAdapter constructor
+Constructor Phalcon\Paginator\Adapter\AbstractAdapter
 
 ```php
 public function getLimit(): int;
 ```
 
-Get current rows limit
+Obtener el límite actual de filas
 
 ```php
 public function setCurrentPage( int $page ): AdapterInterface;
 ```
 
-Set the current page number
+Establece el número de página actual
 
 ```php
 public function setLimit( int $limitRows ): AdapterInterface;
 ```
 
-Set current rows limit
+Establece el límite de filas actual
 
 ```php
 public function setRepository( RepositoryInterface $repository ): AdapterInterface;
 ```
 
-Sets current repository for pagination
+Establece el repositorio actual para la paginación
 
 ```php
 protected function getRepository( array $properties = null ): RepositoryInterface;
 ```
 
-Gets current repository for pagination
+Obtiene el repositorio actual para la paginación
 
 <h1 id="paginator-adapter-adapterinterface">Interface Phalcon\Paginator\Adapter\AdapterInterface</h1>
 
@@ -96,7 +96,7 @@ Gets current repository for pagination
 
 Phalcon\Paginator\AdapterInterface
 
-Interface for Phalcon\Paginator adapters
+Interfaz para adaptadores Phalcon\Paginator
 
 ## Métodos
 
@@ -104,25 +104,25 @@ Interface for Phalcon\Paginator adapters
 public function getLimit(): int;
 ```
 
-Get current rows limit
+Obtener el límite actual de filas
 
 ```php
 public function paginate(): RepositoryInterface;
 ```
 
-Returns a slice of the resultset to show in the pagination
+Devuelve un segmento del conjunto de resultados para mostrar en la paginación
 
 ```php
 public function setCurrentPage( int $page );
 ```
 
-Set the current page number
+Establece el número de página actual
 
 ```php
 public function setLimit( int $limit );
 ```
 
-Set current rows limit
+Establece el límite de filas actual
 
 <h1 id="paginator-adapter-model">Class Phalcon\Paginator\Adapter\Model</h1>
 
@@ -201,7 +201,7 @@ $paginate = $paginator->paginate();
 public function paginate(): RepositoryInterface;
 ```
 
-Returns a slice of the resultset to show in the pagination
+Devuelve un segmento del conjunto de resultados para mostrar en la paginación
 
 <h1 id="paginator-adapter-nativearray">Class Phalcon\Paginator\Adapter\NativeArray</h1>
 
@@ -211,7 +211,7 @@ Returns a slice of the resultset to show in the pagination
 
 Phalcon\Paginator\Adapter\NativeArray
 
-Pagination using a PHP array as source of data
+Paginación usando un vector PHP como origen de datos
 
 ```php
 use Phalcon\Paginator\Adapter\NativeArray;
@@ -237,7 +237,7 @@ $paginator = new NativeArray(
 public function paginate(): RepositoryInterface;
 ```
 
-Returns a slice of the resultset to show in the pagination
+Devuelve un segmento del conjunto de resultados para mostrar en la paginación
 
 <h1 id="paginator-adapter-querybuilder">Class Phalcon\Paginator\Adapter\QueryBuilder</h1>
 
@@ -247,7 +247,7 @@ Returns a slice of the resultset to show in the pagination
 
 Phalcon\Paginator\Adapter\QueryBuilder
 
-Pagination using a PHQL query builder as source of data
+Paginación usando un constructor de consultas PHQL como origen de datos
 
 ```php
 use Phalcon\Paginator\Adapter\QueryBuilder;
@@ -293,25 +293,25 @@ Phalcon\Paginator\Adapter\QueryBuilder
 public function getCurrentPage(): int;
 ```
 
-Get the current page number
+Obtiene el número de página actual
 
 ```php
 public function getQueryBuilder(): Builder;
 ```
 
-Get query builder object
+Obtiene el objeto constructor de consultas
 
 ```php
 public function paginate(): RepositoryInterface;
 ```
 
-Returns a slice of the resultset to show in the pagination
+Devuelve un segmento del conjunto de resultados para mostrar en la paginación
 
 ```php
 public function setQueryBuilder( Builder $builder ): QueryBuilder;
 ```
 
-Set query builder object
+Establece el objeto constructor de consultas
 
 <h1 id="paginator-exception">Class Phalcon\Paginator\Exception</h1>
 
@@ -321,7 +321,7 @@ Set query builder object
 
 Phalcon\Paginator\Exception
 
-Exceptions thrown in Phalcon\Paginator will use this class
+Las excepciones lanzadas en Phalcon\Paginator usarán esta clase
 
 <h1 id="paginator-paginatorfactory">Class Phalcon\Paginator\PaginatorFactory</h1>
 
@@ -329,11 +329,11 @@ Exceptions thrown in Phalcon\Paginator will use this class
 
 | Namespace | Phalcon\Paginator | | Uses | Phalcon\Paginator\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -347,7 +347,7 @@ Constructor AdapterFactory.
 public function load( mixed $config ): AdapterInterface;
 ```
 
-Factory to create an instance from a Config object
+Factoría para crear una instancia desde un objeto Config
 
 ```php
 use Phalcon\Paginator\PaginatorFactory;
@@ -373,7 +373,7 @@ $paginator = (new PaginatorFactory())->load($options);
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+Crea una nueva instancia del adaptador
 
 ```php
 protected function getAdapters(): array;
@@ -387,7 +387,7 @@ protected function getAdapters(): array;
 
 Phalcon\Paginator\Repository
 
-Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
+Repositorio del estado actual Phalcon\Paginator\AdapterInterface::paginate()
 
 ## Propiedades
 
@@ -470,7 +470,7 @@ public function getTotalItems(): int;
 public function jsonSerialize(): array;
 ```
 
-See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
+Ver [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
 
 ```php
 public function setAliases( array $aliases ): RepositoryInterface;
@@ -488,13 +488,13 @@ public function setProperties( array $properties ): RepositoryInterface;
 protected function getProperty( string $property, mixed $defaultValue = null ): mixed;
 ```
 
-Gets value of property by name
+Obtiene el valor de la propiedad por nombre
 
 ```php
 protected function getRealNameProperty( string $property ): string;
 ```
 
-Resolve alias property name
+Resuelve el alias del nombre de propiedad
 
 <h1 id="paginator-repositoryinterface">Interface Phalcon\Paginator\RepositoryInterface</h1>
 
@@ -504,7 +504,7 @@ Resolve alias property name
 
 Phalcon\Paginator\RepositoryInterface
 
-Interface for the repository of current state Phalcon\Paginator\AdapterInterface::paginate()
+Interfaz para el repositorio del estado actual Phalcon\Paginator\AdapterInterface::paginate()
 
 ## Constantes
 
@@ -525,64 +525,64 @@ const PROPERTY_TOTAL_ITEMS = total_items;
 public function getAliases(): array;
 ```
 
-Gets the aliases for properties repository
+Obtiene los alias del repositorio de propiedades
 
 ```php
 public function getCurrent(): int;
 ```
 
-Gets number of the current page
+Obtiene el número de la página actual
 
 ```php
 public function getFirst(): int;
 ```
 
-Gets number of the first page
+Obtiene el número de la primera página
 
 ```php
 public function getItems(): mixed;
 ```
 
-Gets the items on the current page
+Obtiene los elementos de la página actual
 
 ```php
 public function getLast(): int;
 ```
 
-Gets number of the last page
+Obtiene el número de la última página
 
 ```php
 public function getLimit(): int;
 ```
 
-Gets current rows limit
+Obtiene el límite actual de filas
 
 ```php
 public function getNext(): int;
 ```
 
-Gets number of the next page
+Obtiene el número de la siguiente página
 
 ```php
 public function getPrevious(): int;
 ```
 
-Gets number of the previous page
+Obtiene el número de la página anterior
 
 ```php
 public function getTotalItems(): int;
 ```
 
-Gets the total number of items
+Obtiene el número total de elementos
 
 ```php
 public function setAliases( array $aliases ): RepositoryInterface;
 ```
 
-Sets the aliases for properties repository
+Establece los alias del repositorio de propiedades
 
 ```php
 public function setProperties( array $properties ): RepositoryInterface;
 ```
 
-Sets values for properties of the repository
+Establece valores para las propiedades del repositorio
