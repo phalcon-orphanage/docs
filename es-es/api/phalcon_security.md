@@ -631,7 +631,7 @@ Class Item
 public function __construct( array $payload, string $encoded );
 ```
 
-Item constructor.
+Constructor Item.
 
 ```php
 public function get( string $name, mixed $defaultValue = null ): mixed | null;
@@ -661,7 +661,7 @@ Class Parser
 public function parse( string $token ): Token;
 ```
 
-Parse a token and return it
+Analiza un token y lo devuelve
 
 <h1 id="security-jwt-token-signature">Class Phalcon\Security\JWT\Token\Signature</h1>
 
@@ -679,7 +679,7 @@ Class Item
 public function __construct( string $hash = string, string $encoded = string );
 ```
 
-Signature constructor.
+Constructor Signature.
 
 ```php
 public function getHash(): string;
@@ -725,7 +725,7 @@ private signature;
 public function __construct( Item $headers, Item $claims, Signature $signature );
 ```
 
-Token constructor.
+Constructor Token.
 
 ```php
 public function getClaims(): Item
@@ -780,7 +780,7 @@ private token;
 public function __construct( Token $token, int $timeShift = int );
 ```
 
-Validator constructor.
+Constructor Validator.
 
 ```php
 public function setToken( Token $token ): Validator;
@@ -822,11 +822,11 @@ public function validateSignature( SignerInterface $signer, string $passphrase )
 
 Phalcon\Security\Random
 
-Secure random number generator class.
+Clase generadora segura de números aleatorios.
 
-Provides secure random number generator which is suitable for generating session key in HTTP cookies, etc.
+Proporciona un generador seguro de números aleatorios que es adecuado para generar clave de sesión en cookies HTTP, etc.
 
-`Phalcon\Security\Random` could be mainly useful for:
+`Phalcon\Security\Random` podría ser útil principalmente para:
 
 - Generación de claves (por ejemplo, generación de claves complicadas)
 - Generando contraseñas aleatorias para nuevas cuentas de usuario
@@ -879,7 +879,7 @@ echo $random->base58(24); // qoXcgmw4A9dys26HaNEdCRj9
 echo $random->base58(7);  // 774SJD3vgP
 ```
 
-This class partially borrows SecureRandom library from Ruby
+Esta clase toma prestada parcialmente la librería SecureRandom de Ruby
 
 @link http://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
@@ -889,11 +889,11 @@ This class partially borrows SecureRandom library from Ruby
 public function base58( int $len = null ): string;
 ```
 
-Generates a random base58 string
+Genera una cadena base58 aleatoria
 
-If $len is not specified, 16 is assumed. Puede ser más grande en el futuro. The result may contain alphanumeric characters except 0, O, I and l.
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. El resultado puede contener caracteres alfanuméricos excepto 0, O, I y l.
 
-It is similar to `Phalcon\Security\Random::base64()` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
+Es similar a `Phalcon\Security\Random:base64()` pero se ha modificado para evitar tanto los caracteres no alfanuméricos como letras que pueden parecer ambiguas cuando se imprimen.
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -907,11 +907,11 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 public function base62( int $len = null ): string;
 ```
 
-Generates a random base62 string
+Genera una cadena base62 aleatoria
 
-If $len is not specified, 16 is assumed. Puede ser más grande en el futuro.
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro.
 
-It is similar to `Phalcon\Security\Random::base58()` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
+Es similar a `Phalcon\Security\Random:base58()` pero se ha modificado para proporcionar el mayor valor que se puede utilizar de forma segura en las URLs sin necesidad de tener en cuenta los caracteres adicionales porque es [A-Za-z0-9].
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -925,9 +925,9 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 public function base64( int $len = null ): string;
 ```
 
-Generates a random base64 string
+Genera una cadena base64 aleatoria
 
-If $len is not specified, 16 is assumed. Puede ser más grande en el futuro. The length of the result string is usually greater of $len. Size formula: 4($len / 3) rounded up to a multiple of 4.
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len. Fórmula del tamaño: 4 * ($len / 3) y redondeado a un múltiplo de 4.
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -941,11 +941,11 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 public function base64Safe( int $len = null, bool $padding = bool ): string;
 ```
 
-Generates a random URL-safe base64 string
+Genera una cadena base64 de URL segura aleatoria
 
-If $len is not specified, 16 is assumed. Puede ser más grande en el futuro. The length of the result string is usually greater of $len.
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len.
 
-By default, padding is not generated because "=" may be used as a URL delimiter. The result may contain A-Z, a-z, 0-9, "-" and "_". "=" is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64.
+Por defecto, el relleno no se genera porque "=" se puede usar como un delimitador de URL. El resultado puede contener A-Z, a-z, 0-9, "-" y "_". "=" también se usa si $padding es verdadero. Consulte RFC 3548 para la definición de base64 segura para URL.
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -959,11 +959,11 @@ echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 public function bytes( int $len = int ): string;
 ```
 
-Generates a random binary string
+Genera una cadena binaria aleatoria
 
-The `Random::bytes` method returns a string and accepts as input an int representing the length in bytes to be returned.
+El método `Random::bytes` devuelve una cadena y acepta como entrada un entero representando la longitud en bytes a devolver.
 
-If $len is not specified, 16 is assumed. Puede ser más grande en el futuro. The result may contain any byte: "x00" - "xFF".
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. El resultado puede contener cualquier byte: "x00" - "xFF".
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -979,9 +979,9 @@ var_dump(bin2hex($bytes));
 public function hex( int $len = null ): string;
 ```
 
-Generates a random hex string
+Genera una cadena hexadecimal aleatoria
 
-If $len is not specified, 16 is assumed. Puede ser más grande en el futuro. The length of the result string is usually greater of $len.
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len.
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -995,9 +995,9 @@ echo $random->hex(10); // a29f470508d5ccb8e289
 public function number( int $len ): int;
 ```
 
-Generates a random number between 0 and $len
+Genera un número aleatorio entre 0 y $len
 
-Returns an integer: 0 <= result <= $len.
+Devuelve un entero: 0 <= result <= $len.
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -1011,11 +1011,11 @@ echo $random->number(16); // 8
 public function uuid(): string;
 ```
 
-Generates a v4 random UUID (Universally Unique IDentifier)
+Genera un UUID aleatorio v4 (IDentificador Único Universal)
 
-La versión 4 de UUID es puramente aleatoria (excepto la versión). It doesn't contain meaningful information such as MAC address, time, etc. See RFC 4122 for details of UUID.
+La versión 4 de UUID es puramente aleatoria (excepto la versión). No contiene información significativa como dirección MAC, hora, etc. Ver RFC 4122 para detalles del UUID.
 
-This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
+Este algoritmo establece el número de versión (4 bits) así como dos bits reservados. Todos los demás bits (los 122 bits restantes) se establecen usando una fuente de datos aleatoria o pseudoaleatoria. Los UUID de versión 4 tienen la forma xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx donde x es cualquier dígito hexadecimal e y es uno de 8, 9, A o B (p. ej., f47ac10b-58cc-4372-a567-0e02b2c3d479).
 
 ```php
 $random = new \Phalcon\Security\Random();
@@ -1029,8 +1029,8 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 protected function base( string $alphabet, int $base, mixed $n = null ): string;
 ```
 
-Generates a random string based on the number ($base) of characters ($alphabet).
+Genera una cadena aleatoria basada en el número ($base) de caracteres ($alphabet).
 
-If $n is not specified, 16 is assumed. Puede ser más grande en el futuro.
+Si $n no se especifica, se asume 16. Puede ser más grande en el futuro.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
