@@ -460,7 +460,7 @@ Constructor AdapterFactory.
 public function newInstance( string $name ): InterpolatorInterface;
 ```
 
-Create a new instance of the adapter
+Crea una nueva instancia del adaptador
 
 ```php
 protected function getAdapters(): array;
@@ -500,13 +500,13 @@ Constructor AdapterFactory.
 public function load( mixed $config ): mixed;
 ```
 
-Factory to create an instance from a Config object
+Factoría para crear una instancia desde un objeto Config
 
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
-Create a new instance of the adapter
+Crea una nueva instancia del adaptador
 
 ```php
 protected function getAdapters(): array;
