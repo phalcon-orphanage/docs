@@ -106,7 +106,7 @@ long_query_time = 1.5
 
 ### Yahoo! YSlow
 
-[YSlow](https://developer.yahoo.com/yslow) аналізує веб-сторінки і пропонує способи поліпшити їхню продуктивність на основі набору [правил для високопродуктивних веб-сторінок](https://developer.yahoo.com/performance/rules.html)
+[YSlow](http://yslow.org/) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](https://developer.yahoo.com/performance/rules.html)
 
 ![](/assets/images/content/performance-yslow-1.jpg)
 
