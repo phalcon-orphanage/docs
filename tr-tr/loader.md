@@ -18,7 +18,7 @@ keywords: 'oader, psr-4, autoloading, autoloader'
 
 ![](/assets/images/implements-psr--4-blue.svg)
 
-This component relies on PHP's [autoloading classes](https://secure.php.net/manual/en/language.oop5.autoload.php) capability. If a class defined in the code has not been included yet, a special handler will try to load it. [Phalcon\Loader](api/phalcon_loader#loader) serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
+This component relies on PHP's [autoloading classes](https://www.php.net/manual/en/language.oop5.autoload.php) capability. If a class defined in the code has not been included yet, a special handler will try to load it. [Phalcon\Loader](api/phalcon_loader#loader) serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
 
 The component offers options for loading files based on their class, file name, directories on your file system as well as file extensions.
 
