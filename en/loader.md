@@ -575,7 +575,7 @@ Some things to keep in mind when using the autoloader:
 [spl-autoload-unregister]: https://www.php.net/manual/en/function.spl-autoload-unregister.php
 [is_file]: https://www.php.net/manual/en/function.is-file.php
 [stream_resolve_include_path]: https://www.php.net/manual/en/function.stream-resolve-include-path.php
-[autoloading]: https://secure.php.net/manual/en/language.oop5.autoload.php
+[autoloading]: https://www.php.net/manual/en/language.oop5.autoload.php
 [lazy_initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
 [psr-4]: https://www.php-fig.org/psr/psr-4/
 [apcu]: https://php.net/manual/en/book.apcu.php
