@@ -18,7 +18,7 @@ keywords: 'cargador, psr-4, autocargar, autocargador'
 
 ![](/assets/images/implements-psr--4-blue.svg)
 
-Este componente se basa en la capacidad de [autocarga de clases](https://secure.php.net/manual/en/language.oop5.autoload.php) de PHP. Si una clase definida en el código todavía no se ha incluido, un manejador especial intentará cargarla. [Phalcon\Loader](api/phalcon_loader#loader) sirve como el manejador especial para esta operación. Al cargar clases en función de la necesidad de carga, el rendimiento general aumenta, ya que las únicas lecturas de archivos se producen para los ficheros necesarios. Esta técnica se llama [inicialización perezosa](https://en.wikipedia.org/wiki/Lazy_initialization).
+This component relies on PHP's [autoloading classes](https://www.php.net/manual/en/language.oop5.autoload.php) capability. Si una clase definida en el código todavía no se ha incluido, un manejador especial intentará cargarla. [Phalcon\Loader](api/phalcon_loader#loader) sirve como el manejador especial para esta operación. Al cargar clases en función de la necesidad de carga, el rendimiento general aumenta, ya que las únicas lecturas de archivos se producen para los ficheros necesarios. Esta técnica se llama [inicialización perezosa](https://en.wikipedia.org/wiki/Lazy_initialization).
 
 El componente ofrece opciones para cargar ficheros basados en su clase, nombre de fichero, directorios en su sistema de ficheros así como extensiones de fichero.
 
