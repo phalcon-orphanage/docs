@@ -420,14 +420,14 @@ The plesk control panel doesn't have Phalcon support but you can find installati
 
 [plesk]: https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-
 [cpanel-phalcon]: https://github.com/CpanelInc/scl-phalcon
-[curl]: https://secure.php.net/manual/en/book.curl.php
+[curl]: https://www.php.net/manual/en/book.curl.php
 [download]: https://phalcon.io/en/download/windows
-[fileinfo]: https://secure.php.net/manual/en/book.fileinfo.php
-[gettext]: https://secure.php.net/manual/en/book.gettext.php
-[gd2]: https://secure.php.net/manual/en/book.image.php
+[fileinfo]: https://www.php.net/manual/en/book.fileinfo.php
+[gettext]: https://www.php.net/manual/en/book.gettext.php
+[gd2]: https://www.php.net/manual/en/book.image.php
 [gentoo-overlay]: https://github.com/smoke/phalcon-gentoo-overlay
-[imagick]: https://secure.php.net/manual/en/book.imagick.php
-[json]: https://secure.php.net/manual/en/book.json.php
+[imagick]: https://www.php.net/manual/en/book.imagick.php
+[json]: https://www.php.net/manual/en/book.json.php
 [mbstring]: https://php.net/manual/en/book.mbstring.php
 [memcached]: https://php.net/manual/en/book.memcached.php 
 [mysql]: https://php.net/manual/en/ref.pdo-mysql.php
@@ -436,7 +436,7 @@ The plesk control panel doesn't have Phalcon support but you can find installati
 [packagecloud]: https://packagecloud.io/phalcon
 [pcre]: https://www.pcre.org/
 [pdo]: https://php.net/manual/en/book.pdo.php
-[php-support]: https://secure.php.net/supported-versions.php
+[php-support]: https://www.php.net/supported-versions.php
 [postgresql]: https://php.net/manual/en/ref.pdo-pgsql.php
 [psr-3]: https://www.php-fig.org/psr/psr-3/
 [psr-extension]: https://github.com/jbboehr/php-psr
