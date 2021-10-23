@@ -16,7 +16,7 @@ keywords: 'instalación, instalación de Phalcon'
 
 ### PHP 7.2
 
-Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 ha sido publicado hace 2 años y su [soporte activo](https://secure.php.net/supported-versions.php) ha caducado, así que decidimos seguir activamente las versiones soportadas de PHP.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 has been released 2 years ago and its [active support](https://www.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 ### PSR
 
@@ -56,12 +56,12 @@ Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de A
 
 Junto con PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de los componentes de Phalcon que necesites, podrías necesitar instalar algunas de las siguientes extensiones:
 
-* [curl](https://secure.php.net/manual/en/book.curl.php)
-* [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
-* [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (para usar la clase [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd))
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (para usar la clase [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick))
-* [json](https://secure.php.net/manual/en/book.json.php)
+* [curl](https://www.php.net/manual/en/book.curl.php)
+* [fileinfo](https://www.php.net/manual/en/book.fileinfo.php)
+* [gettext](https://www.php.net/manual/en/book.gettext.php)
+* [gd2](https://www.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
+* [imagick](https://www.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [json](https://www.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (en macOS)
 * La extensión [PDO](https://php.net/manual/en/book.pdo.php), así como la extensión específica pertinente a su RDBMS ([MySQL](https://php.net/manual/en/ref.pdo-mysql.php),[PostgreSQL](https://php.net/manual/en/ref.pdo-pgsql.php),etc.)
 * La extensión [OpenSSL](https://php.net/manual/en/book.openssl.php)
