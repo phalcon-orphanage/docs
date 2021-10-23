@@ -16,7 +16,7 @@ keywords: 'встановлення, встановлення Phalcon'
 
 ### PHP 7.2
 
-Phalcon v4 підтримує тільки PHP 7.2 або вище. PHP 7.1 випущено понад 2 роки тому і [активна підтримка](https://secure.php.net/supported-versions.php) цієї версії уже припинена, тому ми вирішили працювати лише з версіями PHP, що активно підтримуються.
+Phalcon v4 підтримує тільки PHP 7.2 або вище. PHP 7.1 has been released 2 years ago and its [active support](https://www.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 ### PSR
 
@@ -56,12 +56,12 @@ Phalcon спроектований таким чином, щоб для забе
 
 Окрім PHP 7.2 або новішої, в залежності від потреб вашого застосунку та компонентів, які вам потрібні, може виникнути потреба в установленні таких розширень:
 
-* [curl](https://secure.php.net/manual/en/book.curl.php)
-* [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
-* [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (для використання класу [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd))
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (для використання класу[Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick))
-* [json](https://secure.php.net/manual/en/book.json.php)
+* [curl](https://www.php.net/manual/en/book.curl.php)
+* [fileinfo](https://www.php.net/manual/en/book.fileinfo.php)
+* [gettext](https://www.php.net/manual/en/book.gettext.php)
+* [gd2](https://www.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
+* [imagick](https://www.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [json](https://www.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [Розширення PDO](https://php.net/manual/en/book.pdo.php) або інше розширення, що відповідає вашій RDBMS (наприклад [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) і т. д.)
 * [Розширення OpenSSL](https://php.net/manual/en/book.openssl.php)
