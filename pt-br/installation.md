@@ -16,7 +16,7 @@ keywords: 'instalação, instalando o Phalcon'
 
 ### PHP 7.2
 
-Phalcon v4 suporta apenas PHP 7.2 e superior. O PHP 7.1 foi liberado há 2 anos e o seu [suporte](https://secure.php.net/supported-versions.php) expirou. Então, nós decidimos utilizar apenas as versões do PHP que são suportadas.
+Phalcon v4 suporta apenas PHP 7.2 e superior. PHP 7.1 has been released 2 years ago and its [active support](https://www.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 ### PSR
 
@@ -56,12 +56,12 @@ Nós hospedamos nosso site e blog nos últimos anos em uma VM na Amazon com 512M
 
 Juntamente com PHP 7.2 ou superior, dependendo das necessidades da sua aplicação e dos componentes do Phalcon que você precisa, talvez seja necessário instalar as seguintes extensões:
 
-* [curl](https://secure.php.net/manual/en/book.curl.php)
-* [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
-* [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (para usar a classe [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd))
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (para usar a classe [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick))
-* [json](https://secure.php.net/manual/en/book.json.php)
+* [curl](https://www.php.net/manual/en/book.curl.php)
+* [fileinfo](https://www.php.net/manual/en/book.fileinfo.php)
+* [gettext](https://www.php.net/manual/en/book.gettext.php)
+* [gd2](https://www.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
+* [imagick](https://www.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [json](https://www.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [PDO](https://php.net/manual/en/book.pdo.php) bem como as extensões relevantes do SGDB específico (ex. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSQL](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php)
