@@ -566,9 +566,29 @@ El serializador integrado [Igbinary](https://github.com/igbinary/igbinary7) sól
 > **NOTA**: Si `defaultSerializer` o el serializador seleccionado para `Redis` se soporta como serializador integrado (`NONE`, `PHP`, `IGBINARY`, `MSGPACK`), se usará el integrado, dando lugar a una mayor velocidad y una menor utilización de recursos.
 {: .alert .alert-info }
 
+**NOTE** `increment` - `decrement`
+
+At this point in time there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a number:
+
+The way to store numbers and use the `increment` (or `decrement`) is to either remove the internal serializer for `Redis`
+
+```php
+$cache->getAdapter()->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_NONE);
+```
+
+or you could use `increment` instead of using `set` at the first setting of the value to the key:
+
+```php
+$cache->delete('my-key');
+$cache->increment('my-key', 2);
+echo $cache->get('my-key');      // 2
+$cache->increment('my-key', 3);
+echo $cache->get('my-key');      // 3
+```
+
 ### `Stream (flujo)`
 
-Este adaptador es el más simple de configurar ya que usa el sistema de archivos del sistema de destino (sólo requiere una ruta de caché que sea escribible). Es uno de los adaptadores de caché más lentos, ya que los datos se tienen que escribir en el sistema de archivos. Cada fichero creado corresponde a una clave almacenada. El fichero contiene metadatos adicionales para calcular el tiempo de vida del elemento de caché, resultando en lecturas y escrituras adicionales en el sistema de archivos.
+This adapter is the simplest to setup since it uses the target system's file system (it only requires a cache path that is writeable). It is one of the slowest cache adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the cache element, resulting in additional reads and writes to the file system.
 
 | Opción              | Predeterminado |
 | ------------------- | -------------- |
@@ -578,12 +598,12 @@ Este adaptador es el más simple de configurar ya que usa el sistema de archivos
 | `prefix`            | `phstrm-`      |
 | `storageDir`        |                |
 
-Si no se define `storageDir` se lanzará `Phalcon\Storage\Exception`.
+If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
 > **NOTA**: El adaptador usa lógica para almacenar los ficheros en subdirectorios separados basados en el nombre de la clave pasada, lo que evita el límite `demasiados ficheros en una carpeta` presente en sistemas basados en Windows o Linux.
 {: .alert .alert-info }
 
-El siguiente ejemplo demuestra cómo crear un nuevo adaptador de caché `Stream`, que usará el serializador [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) y un tiempo de vida predeterminado de 7200. Almacenará los datos cacheados en `/data/storage/cache`.
+The following example demonstrates how to create a new `Stream` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will store the cached data in `/data/storage/cache`.
 
 ```php
 <?php
@@ -606,7 +626,7 @@ El ejemplo anterior usó un objeto [Phalcon\Storage\SerializerFactory](api/phalc
 
 ### Personalizado
 
-Phalcon también ofrece [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface) que se puede implementar en una clase personalizada. La clase puede ofrecer la funcionalidad de adaptador de caché que necesite.
+Phalcon also offers the [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface) which can be implemented in a custom class. The class can offer the cache adapter functionality you require.
 
 ```php
 <?php
@@ -717,9 +737,9 @@ $custom->set('my-key', $data);
 
 ## Fábrica de Adaptadores
 
-Aunque todas las clases de adaptadores se pueden instanciar usando la palabra clave `new`, Phalcon ofrece la clase [Phalcon\Cache\AdapterFactory](api/phalcon_cache#cache-adapterfactory), para que pueda instanciar fácilmente las clases de adaptadores de caché. Todos los adaptadores de arriba están registrados en la fábrica y son cargados perezosamente cuando se llaman. La fábrica también le permite registrar clases de adaptadores adicionales (personalizadas). Lo único a considerar es elegir el nombre del adaptador en comparación con los existentes. Si define el mismo nombre, sobreescribirá el integrado. Los objetos son cacheados en la fábrica, así que si llama al método `newInstance()` con los mismos parámetros durante la misma petición, recibirá el mismo objeto de vuelta.
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Cache\AdapterFactory](api/phalcon_cache#cache-adapterfactory) class, so that you can easily instantiate cache adapter classes. Todos los adaptadores de arriba están registrados en la fábrica y son cargados perezosamente cuando se llaman. The factory also allows you to register additional (custom) adapter classes. Lo único a considerar es elegir el nombre del adaptador en comparación con los existentes. Si define el mismo nombre, sobreescribirá el integrado. Los objetos son cacheados en la fábrica, así que si llama al método `newInstance()` con los mismos parámetros durante la misma petición, recibirá el mismo objeto de vuelta.
 
-The siguiente ejemplo muestra como puede crear un adaptador de caché `Apcu` con la palabra clave `new` o la fábrica:
+The example below shows how you can create a `Apcu` cache adapter with the `new` keyword or the factory:
 
 ```php
 <?php
@@ -755,7 +775,7 @@ $options = [
 $adapter = $adapterFactory->newInstance('apcu', $options);
 ```
 
-Los parámetros que puede usar para la fábrica son: * `apcu` para [Phalcon\Cache\Adapter\Apcu](api/phalcon_cache#cache-adapter-apcu)  
-* `libmemcached` para [Phalcon\Cache\Adapter\Libmemcached](api/phalcon_cache#cache-adapter-libmemcached) * `memory` para [Phalcon\Cache\Adapter\Memory](api/phalcon_cache#cache-adapter-memory)  
-* `redis` para [Phalcon\Cache\Adapter\Redis](api/phalcon_cache#cache-adapter-redis)  
-* `stream` para [Phalcon\Cache\Adapter\Stream](api/phalcon_cache#cache-adapter-stream)
+The parameters you can use for the factory are: * `apcu` for [Phalcon\Cache\Adapter\Apcu](api/phalcon_cache#cache-adapter-apcu)  
+* `libmemcached` for [Phalcon\Cache\Adapter\Libmemcached](api/phalcon_cache#cache-adapter-libmemcached) * `memory` for [Phalcon\Cache\Adapter\Memory](api/phalcon_cache#cache-adapter-memory)  
+* `redis` for [Phalcon\Cache\Adapter\Redis](api/phalcon_cache#cache-adapter-redis)  
+* `stream` for [Phalcon\Cache\Adapter\Stream](api/phalcon_cache#cache-adapter-stream)
