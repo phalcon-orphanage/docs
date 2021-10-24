@@ -16,7 +16,7 @@ keywords: '설치, Phalcon 설치, 팔콘설치'
 
 ### PHP 7.2
 
-Phalcon v4는 PHP 7.2 이상만 지원합니다. PHP 7.1이 출시된 지 2년이 지났고 [기술지원(active support)](https://secure.php.net/supported-versions.php) 도 이제는 끝난 상황이라, 기술지원이 되는 PHP버전을 따르기로 결정했습니다.
+Phalcon v4는 PHP 7.2 이상만 지원합니다. PHP 7.1 has been released 2 years ago and its [active support](https://www.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 ### PSR
 
@@ -56,12 +56,12 @@ Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스�
 
 어플리케이션의 요구사항과 필요한 Phalcon 컴포넌트에 따라, PHP 7.2 이상을 사용해야 하는 것 외에도 다음의 익스텐션들을 추가해야 할 수 있습니다.
 
-* [curl](https://secure.php.net/manual/en/book.curl.php)
-* [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
-* [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) ( [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) 클래스 사용시 필요)
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) ( [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) 클래스 사용시 필요)
-* [json](https://secure.php.net/manual/en/book.json.php)
+* [curl](https://www.php.net/manual/en/book.curl.php)
+* [fileinfo](https://www.php.net/manual/en/book.fileinfo.php)
+* [gettext](https://www.php.net/manual/en/book.gettext.php)
+* [gd2](https://www.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
+* [imagick](https://www.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [json](https://www.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [PDO](https://php.net/manual/en/book.pdo.php) 익스텐션과 사용해야할 특정 RDBMS 익스텐션 (즉, [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) 등)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) 익스텐션
