@@ -537,6 +537,26 @@ The [igbinary][igbinary] and built-in serializer is only available if `igbinary`
 > **NOTE**: If the `defaultSerializer` or the selected serializer for `Redis` is supported as a built-in serializer (`NONE`, `PHP`, `IGBINARY`, `MSGPACK`), the built-in one will be used, resulting in more speed and less resource utilization.
 {: .alert .alert-info }
 
+**NOTE** `increment` - `decrement`
+
+At this point in time there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a number: 
+
+The way to store numbers and use the `increment` (or `decrement`) is to either remove the internal serializer for `Redis`
+
+```php
+$cache->getAdapter()->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_NONE);
+```
+
+or you could use `increment` instead of using `set` at the first setting of the value to the key:
+
+```php
+$cache->delete('my-key');
+$cache->increment('my-key', 2);
+echo $cache->get('my-key');      // 2
+$cache->increment('my-key', 3);
+echo $cache->get('my-key');      // 3
+```
+
 ### `Stream`
 This adapter is the simplest to setup since it uses the target system's file system (it only requires a cache path that is writeable). It is one of the slowest cache adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the cache element, resulting in additional reads and writes to the file system.
 
