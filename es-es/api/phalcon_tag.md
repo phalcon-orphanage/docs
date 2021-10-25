@@ -15,7 +15,7 @@ title: 'Phalcon\Tag'
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Helper\Str, Phalcon\Helper\Exception, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
 
-Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is a class that you can extend to add more helpers.
+Phalcon\Tag es diseñada para simplificar la construcción de etiquetas HTML. Esta provee un conjunto de auxiliares para generar HTML de una forma dinámica. Este componente es una clase que puede ser extendida para añadir más auxiliares (helpers).
 
 ## Constantes
 
@@ -80,315 +80,315 @@ protected static urlService;
 public static function appendTitle( mixed $title ): void;
 ```
 
-Appends a text to current document title
+Añade un texto al final del título del documento actual
 
 ```php
 public static function checkField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="check"] tag
+Construye una etiqueta input[type="check"] de HTML
 
 ```php
 public static function colorField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="color"] tag
+Construye una etiqueta input[type="color"] de HTML
 
 ```php
 public static function dateField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="date"] tag
+Construye una etiqueta input[type="date"] de HTML
 
 ```php
 public static function dateTimeField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="datetime"] tag
+Construye una etiqueta input[type="datetime"] de HTML
 
 ```php
 public static function dateTimeLocalField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="datetime-local"] tag
+Construye una etiqueta input[type="datetime-local"] de HTML
 
 ```php
 public static function displayTo( string $id, mixed $value ): void;
 ```
 
-Alias of Phalcon\Tag::setDefault()
+Alias de Phalcon\Tag::setDefault()
 
 ```php
 public static function emailField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="email"] tag
+Construye una etiqueta input[type="email"] de HTML
 
 ```php
 public static function endForm(): string;
 ```
 
-Builds a HTML close FORM tag
+Construye una etiqueta HTML para cerrar una etiqueta FORM
 
 ```php
 public static function fileField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="file"] tag
+Construye una etiqueta Input[type="file"] de HTML
 
 ```php
 public static function form( mixed $parameters ): string;
 ```
 
-Builds a HTML FORM tag
+Construye una etiqueta FORM de HTML
 
 ```php
 public static function friendlyTitle( string $text, string $separator = string, bool $lowercase = bool, mixed $replace = null ): string;
 ```
 
-Converts texts into URL-friendly titles
+Convierte textos en títulos URL-amigables
 
 ```php
 public static function getDI(): DiInterface;
 ```
 
-Internally gets the request dispatcher
+Internamente obtiene el despachador de solicitudes
 
 ```php
 public static function getDocType(): string;
 ```
 
-Get the document type declaration of content
+Obtiene la declaración de tipo del documento de contenido
 
 ```php
 public static function getEscaper( array $params ): EscaperInterface | null;
 ```
 
-Obtains the 'escaper' service if required
+Obtiene el servicio 'escaper' si es necesario
 
 ```php
 public static function getEscaperService(): EscaperInterface;
 ```
 
-Returns an Escaper service from the default DI
+Devuelve un servicio Escaper del DI predeterminado
 
 ```php
 public static function getTitle( bool $prepend = bool, bool $append = bool ): string;
 ```
 
-Gets the current document title. The title will be automatically escaped.
+Devuelve el título del documento actual. El título será escapado automáticamente.
 
 ```php
 public static function getTitleSeparator(): string;
 ```
 
-Gets the current document title separator
+Obtiene el separador de título del documento actual
 
 ```php
 public static function getUrlService(): UrlInterface;
 ```
 
-Returns a URL service from the default DI
+Devuelve un servicio de URL del DI predeterminado
 
 ```php
 public static function getValue( mixed $name, array $params = [] );
 ```
 
-Every helper calls this function to check whether a component has a predefined value using Phalcon\Tag::setDefault() or value from $_POST
+Todos los ayudantes llaman a esta función para verificar si un componente tiene un valor predefinido mediante Phalcon\Tag::setDefault o un valor desde $_POST
 
 ```php
 public static function hasValue( mixed $name ): bool;
 ```
 
-Check if a helper has a default value set using Phalcon\Tag::setDefault() or value from $_POST
+Comprueba si un ayudante tiene un valor predeterminado establecido usando Phalcon\Tag::setDefault o un valor desde $_POST
 
 ```php
 public static function hiddenField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="hidden"] tag
+Construye una etiqueta Input[type="hidden"] de HTML
 
 ```php
 public static function image( mixed $parameters = null, bool $local = bool ): string;
 ```
 
-Builds HTML IMG tags
+Construye etiquetas IMG de HTML
 
 ```php
 public static function imageInput( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="image"] tag
+Construye una etiqueta input[type="image"] de HTML
 
 ```php
 public static function javascriptInclude( mixed $parameters = null, bool $local = bool ): string;
 ```
 
-Builds a SCRIPT[type="javascript"] tag
+Construye una etiqueta SCRIPT[type="javascript"]
 
 ```php
 public static function linkTo( mixed $parameters, mixed $text = null, mixed $local = bool ): string;
 ```
 
-Builds a HTML A tag using framework conventions
+Construye un etiqueta HTML A usando convenciones del framework
 
 ```php
 public static function monthField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="month"] tag
+Construye una etiqueta input[type="month"] de HTML
 
 ```php
 public static function numericField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="number"] tag
+Construye una etiqueta input[type="number"] de HTML
 
 ```php
 public static function passwordField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="password"] tag
+Construye una etiqueta Input[type="password"] de HTML
 
 ```php
 public static function preload( mixed $parameters ): string;
 ```
 
-Parses the preload element passed and sets the necessary link headers
+Analiza el elemento de precarga pasado y establece las cabeceras de enlace necesarias
 
 ```php
 public static function prependTitle( mixed $title ): void;
 ```
 
-Prepends a text to current document title
+Antepone un texto al título del documento actual
 
 ```php
 public static function radioField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="radio"] tag
+Construye una etiqueta input[type="radio"] de HTML
 
 ```php
 public static function rangeField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="range"] tag
+Construye una etiqueta input[type="range"] de HTML
 
 ```php
 public static function renderAttributes( string $code, array $attributes ): string;
 ```
 
-Renders parameters keeping order in their HTML attributes
+Construye parámetros manteniendo el orden en sus atributos HTML
 
 ```php
 public static function renderTitle( bool $prepend = bool, bool $append = bool ): string;
 ```
 
-Renders the title with title tags. The title is automatically escaped
+Renderiza el título con etiquetas de título. El título se escapa automáticamente
 
 ```php
 deprecated public static function resetInput(): void;
 ```
 
-Resets the request and internal values to avoid those fields will have any default value.
+Restablece los valores solicitados y los valores internos para evitar que los campos tengan cualquier valor por defecto.
 
-@deprecated Will be removed in 4.0.0
+@deprecated será eliminado en 4.0.0
 
 ```php
 public static function searchField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="search"] tag
+Construye una etiqueta Input[type="search"] de HTML
 
 ```php
 public static function select( mixed $parameters, mixed $data = null ): string;
 ```
 
-Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
+Construye una etiqueta SELECT de HTML usando un conjunto de resultados de Phalcon\Mvc\Model como opciones
 
 ```php
 public static function selectStatic( mixed $parameters, mixed $data = null ): string;
 ```
 
-Builds a HTML SELECT tag using a PHP array for options
+Construye una etiqueta SELECT de HTML usando un vector de PHP para las opciones
 
 ```php
 public static function setAutoescape( bool $autoescape ): void;
 ```
 
-Set autoescape mode in generated HTML
+Establece el modo autoescapado en el HTML generado
 
 ```php
 public static function setDI( DiInterface $container ): void;
 ```
 
-Sets the dependency injector container.
+Establece el contenedor de inyección de dependencias.
 
 ```php
 public static function setDefault( string $id, mixed $value ): void;
 ```
 
-Assigns default values to generated tags by helpers
+Asigna valores predeterminados a las etiquetas generadas por los ayudantes
 
 ```php
 public static function setDefaults( array $values, bool $merge = bool ): void;
 ```
 
-Assigns default values to generated tags by helpers
+Asigna valores predeterminados a las etiquetas generadas por los ayudantes
 
 ```php
 public static function setDocType( int $doctype ): void;
 ```
 
-Set the document type of content
+Establece el tipo del documento de contenido
 
 ```php
 public static function setTitle( string $title ): void;
 ```
 
-Set the title of view content
+Establece el título del contenido de la vista
 
 ```php
 public static function setTitleSeparator( string $titleSeparator ): void;
 ```
 
-Set the title separator of view content
+Establece el separador de título del contenido de la vista
 
 ```php
 public static function stylesheetLink( mixed $parameters = null, bool $local = bool ): string;
 ```
 
-Builds a LINK[rel="stylesheet"] tag
+Construye una etiqueta LINK[rel="stylesheet"]
 
 ```php
 public static function submitButton( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="submit"] tag
+Construye una etiqueta input[type="submit"] de HTML
 
 ```php
 public static function tagHtml( string $tagName, mixed $parameters = null, bool $selfClose = bool, bool $onlyStart = bool, bool $useEol = bool ): string;
 ```
 
-Builds a HTML tag
+Construye una etiqueta HTML
 
 ```php
 public static function tagHtmlClose( string $tagName, bool $useEol = bool ): string;
 ```
 
-Builds a HTML tag closing tag
+Construye una etiqueta HTML de cierre
 
 ```php
 public static function telField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="tel"] tag
+Construye una etiqueta input[type="tel"] de HTML
 
 ```php
 public static function textArea( mixed $parameters ): string;
 ```
 
-Builds a HTML TEXTAREA tag
+Construye una etiqueta TEXTAREA de HTML
 
 @paraym array parameters = [ 'id' => '', 'name' => '', 'value' => '', 'class' => '' ]
 
@@ -396,37 +396,37 @@ Builds a HTML TEXTAREA tag
 public static function textField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="text"] tag
+Construye una etiqueta input[type="text"] de HTML
 
 ```php
 public static function timeField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="time"] tag
+Construye una etiqueta Input[type="time"] de HTML
 
 ```php
 public static function urlField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="url"] tag
+Construye una etiqueta input[type="url"] de HTML
 
 ```php
 public static function weekField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="week"] tag
+Construye una etiqueta input[type="week"] de HTML
 
 ```php
 static final protected function inputField( string $type, mixed $parameters, bool $asValue = bool ): string;
 ```
 
-Builds generic INPUT tags
+Construye etiquetas INPUT genéricas
 
 ```php
 static final protected function inputFieldChecked( string $type, mixed $parameters ): string;
 ```
 
-Builds INPUT tags that implements the checked attribute
+Construye etiquetas INPUT que implementan el atributo checked
 
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
@@ -436,7 +436,7 @@ Builds INPUT tags that implements the checked attribute
 
 Phalcon\Tag\Exception
 
-Exceptions thrown in Phalcon\Tag will use this class
+Las excepciones lanzadas en Phalcon\Tag usarán esta clase
 
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
@@ -446,7 +446,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 Phalcon\Tag\Select
 
-Generates a SELECT HTML tag using a static array of values or a Phalcon\Mvc\Model resultset
+Genera una etiqueta SELECT en HTML utilizando un vector estático de valores o un conjunto de resultados de Phalcon\Mvc\Model
 
 ## Métodos
 
@@ -454,4 +454,4 @@ Generates a SELECT HTML tag using a static array of values or a Phalcon\Mvc\Mode
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 
-Generates a SELECT tag
+Genera una etiqueta SELECT
