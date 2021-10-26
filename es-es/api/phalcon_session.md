@@ -21,11 +21,11 @@ title: 'Phalcon\Session'
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface | | Implements | SessionHandlerInterface |
 
-This file is part of the Phalcon.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.com>
 
-For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE que se distribuyó con este código fuente.
 
 ## Propiedades
 
@@ -43,37 +43,37 @@ protected adapter;
 public function close(): bool;
 ```
 
-Close
+Cerrar
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
 
-Destroy
+Destruir
 
 ```php
 public function gc( mixed $maxlifetime ): bool;
 ```
 
-Garbage Collector
+Recolección de basura (GC)
 
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
 
-Open
+Abrir
 
 ```php
 public function read( mixed $id ): string;
 ```
 
-Read
+Leer
 
 ```php
 public function write( mixed $id, mixed $data ): bool;
 ```
 
-Write
+Escribir
 
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
@@ -99,7 +99,7 @@ Constructor
 
 Phalcon\Session\Adapter\Noop
 
-This is an "empty" or null adapter. It can be used for testing or any other purpose that no session needs to be invoked
+Este es un adaptador "vacío" o nulo. It can be used for testing or any other purpose that no session needs to be invoked
 
 ```php
 <?php
@@ -154,43 +154,43 @@ Constructor
 public function close(): bool;
 ```
 
-Close
+Cerrar
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
 
-Destroy
+Destruir
 
 ```php
 public function gc( mixed $maxlifetime ): bool;
 ```
 
-Garbage Collector
+Recolección de basura (GC)
 
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
 
-Open
+Abrir
 
 ```php
 public function read( mixed $id ): string;
 ```
 
-Read
+Leer
 
 ```php
 public function write( mixed $id, mixed $data ): bool;
 ```
 
-Write
+Escribir
 
 ```php
 protected function getPrefixedName( mixed $name ): string;
 ```
 
-Helper method to get the name prefixed
+Método auxiliar para obtener el prefijo del nombre
 
 <h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
@@ -216,7 +216,7 @@ Constructor
 
 Phalcon\Session\Adapter\Stream
 
-This is the file based adapter. It stores sessions in a file based system
+Este es el adaptador basado en ficheros. Almacena sesiones en un sistema basado en ficheros
 
 ```php
 <?php
@@ -263,7 +263,7 @@ public function gc( mixed $maxlifetime ): bool;
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
 
-Ignore the savePath and use local defined path
+Ignora savePath y usa la ruta local definida
 
 ```php
 public function read( mixed $id ): string;
@@ -281,7 +281,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 Phalcon\Session\Bag
 
-This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application
+Este componente ayuda a separar los datos de sesión en "namespaces". Trabajando de esta forma puede crear fácilmente grupos de variables de sesión en la aplicación
 
 ```php
 $user = new \Phalcon\Session\Bag("user");
@@ -310,13 +310,13 @@ private session;
 public function __construct( string $name );
 ```
 
-Phalcon\Session\Bag constructor
+Constructor Phalcon\Session\Bag
 
 ```php
 public function clear(): void;
 ```
 
-Destroys the session bag
+Destruye la bolsa de la sesión
 
 ```php
 public function getDI(): DiInterface;
@@ -334,13 +334,13 @@ Inicializa el vector interno
 public function remove( string $element ): void;
 ```
 
-Removes a property from the internal bag
+Elimina una propiedad de la bolsa interna
 
 ```php
 public function set( string $element, mixed $value ): void;
 ```
 
-Sets a value in the session bag
+Establece un valor en la bolsa de sesión
 
 ```php
 public function setDI( DiInterface $container ): void;
@@ -356,7 +356,7 @@ Configura el contenedor DependencyInjector
 
 Phalcon\Session\Exception
 
-Exceptions thrown in Phalcon\Session will use this class
+Las excepciones lanzadas en Phalcon\Session usarán esta clase
 
 <h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
@@ -366,7 +366,7 @@ Exceptions thrown in Phalcon\Session will use this class
 
 Phalcon\Session\Manager
 
-Session manager class
+Clase gestor de sesiones
 
 ## Propiedades
 
@@ -399,133 +399,133 @@ private uniqueId = ;
 public function __construct( array $options = [] );
 ```
 
-Manager constructor.
+Constructor del gestor.
 
 ```php
 public function __get( string $key ): mixed;
 ```
 
-Alias: Gets a session variable from an application context
+Alias: obtiene una variable de sesión de un contexto de aplicación
 
 ```php
 public function __isset( string $key ): bool;
 ```
 
-Alias: Check whether a session variable is set in an application context
+Alias: comprueba si una variable de sesión se ha establecido en un contexto de aplicación
 
 ```php
 public function __set( string $key, mixed $value ): void;
 ```
 
-Alias: Sets a session variable in an application context
+Alias: establece una variable de sesión en un contexto de aplicación
 
 ```php
 public function __unset( string $key ): void;
 ```
 
-Alias: Removes a session variable from an application context
+Alias: elimina una variable de sesión de un contexto de aplicación
 
 ```php
 public function destroy(): void;
 ```
 
-Destroy/end a session
+Destruir/finalizar una sesión
 
 ```php
 public function exists(): bool;
 ```
 
-Check whether the session has been started
+Comprueba si la sesión ha sido iniciada
 
 ```php
 public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
 ```
 
-Gets a session variable from an application context
+Obtiene una variable de sesión de un contexto de aplicación
 
 ```php
 public function getAdapter(): SessionHandlerInterface;
 ```
 
-Returns the stored session adapter
+Devuelve el adaptador de sesión almacenado
 
 ```php
 public function getId(): string;
 ```
 
-Returns the session id
+Devuelve el id de sesión
 
 ```php
 public function getName(): string;
 ```
 
-Returns the name of the session
+Devuelve el nombre de la sesión
 
 ```php
 public function getOptions(): array;
 ```
 
-Get internal options
+Obtiene opciones internas
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Check whether a session variable is set in an application context
+Comprueba si una variable de sesión se ha establecido en un contexto de aplicación
 
 ```php
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 
-Regenerates the session id using the adapter.
+Regenera el identificador de sesión usando el adaptador.
 
 ```php
 public function remove( string $key ): void;
 ```
 
-Removes a session variable from an application context
+Elimina una variable de sesión de un contexto de aplicación
 
 ```php
 public function set( string $key, mixed $value ): void;
 ```
 
-Sets a session variable in an application context
+Establece una variable de sesión en un contexto de aplicación
 
 ```php
 public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
 
-Set the adapter for the session
+Establece el adaptador para la sesión
 
 ```php
 public function setId( string $id ): ManagerInterface;
 ```
 
-Set session Id
+Establece el Id de la sesión
 
 ```php
 public function setName( string $name ): ManagerInterface;
 ```
 
-Set the session name. Throw exception if the session has started and do not allow poop names
+Establece el nombre de la sesión. Lanzar una excepción si la sesión ha iniciado y no permite nombres malos
 
 ```php
 public function setOptions( array $options ): void;
 ```
 
-Sets session's options
+Establece las opciones de la sesión
 
 ```php
 public function start(): bool;
 ```
 
-Starts the session (if headers are already sent the session will not be started)
+Inicia la sesión (si las cabeceras ya se enviaron, la sesión no iniciará)
 
 ```php
 public function status(): int;
 ```
 
-Returns the status of the current session.
+Devuelve el estado de la sesión actual.
 
 <h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
@@ -535,7 +535,7 @@ Returns the status of the current session.
 
 Phalcon\Session
 
-Interface for the Phalcon\Session\Manager
+Interfaz para Phalcon\Session\Manager
 
 ## Constantes
 
@@ -551,109 +551,109 @@ const SESSION_NONE = 1;
 public function __get( string $key ): mixed;
 ```
 
-Alias: Gets a session variable from an application context
+Alias: obtiene una variable de sesión de un contexto de aplicación
 
 ```php
 public function __isset( string $key ): bool;
 ```
 
-Alias: Check whether a session variable is set in an application context
+Alias: comprueba si una variable de sesión se ha establecido en un contexto de aplicación
 
 ```php
 public function __set( string $key, mixed $value ): void;
 ```
 
-Alias: Sets a session variable in an application context
+Alias: establece una variable de sesión en un contexto de aplicación
 
 ```php
 public function __unset( string $key ): void;
 ```
 
-Alias: Removes a session variable from an application context
+Alias: elimina una variable de sesión de un contexto de aplicación
 
 ```php
 public function destroy(): void;
 ```
 
-Destroy/end a session
+Destruir/finalizar una sesión
 
 ```php
 public function exists(): bool;
 ```
 
-Check whether the session has been started
+Comprueba si la sesión ha sido iniciada
 
 ```php
 public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
 ```
 
-Gets a session variable from an application context
+Obtiene una variable de sesión de un contexto de aplicación
 
 ```php
 public function getAdapter(): SessionHandlerInterface;
 ```
 
-Returns the stored session adapter
+Devuelve el adaptador de sesión almacenado
 
 ```php
 public function getId(): string;
 ```
 
-Returns the session id
+Devuelve el id de sesión
 
 ```php
 public function getName(): string;
 ```
 
-Returns the name of the session
+Devuelve el nombre de la sesión
 
 ```php
 public function getOptions(): array;
 ```
 
-Get internal options
+Obtiene opciones internas
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Check whether a session variable is set in an application context
+Comprueba si una variable de sesión se ha establecido en un contexto de aplicación
 
 ```php
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 
-Regenerates the session id using the adapter.
+Regenera el identificador de sesión usando el adaptador.
 
 ```php
 public function remove( string $key ): void;
 ```
 
-Removes a session variable from an application context
+Elimina una variable de sesión de un contexto de aplicación
 
 ```php
 public function set( string $key, mixed $value ): void;
 ```
 
-Sets a session variable in an application context
+Establece una variable de sesión en un contexto de aplicación
 
 ```php
 public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
 
-Set the adapter for the session
+Establece el adaptador para la sesión
 
 ```php
 public function setId( string $id ): ManagerInterface;
 ```
 
-Set session Id
+Establece el Id de la sesión
 
 ```php
 public function setName( string $name ): ManagerInterface;
 ```
 
-Set the session name. Throw exception if the session has started and do not allow poop names
+Establece el nombre de la sesión. Throw exception if the session has started and do not allow poop names
 
 @throws InvalidArgumentException
 
@@ -661,7 +661,7 @@ Set the session name. Throw exception if the session has started and do not allo
 public function setOptions( array $options ): void;
 ```
 
-Sets session's options
+Establece las opciones de la sesión
 
 ```php
 public function start(): bool;
@@ -673,4 +673,4 @@ Starts the session (if headers are already sent the session will not be started)
 public function status(): int;
 ```
 
-Returns the status of the current session.
+Devuelve el estado de la sesión actual.
