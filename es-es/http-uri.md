@@ -14,7 +14,7 @@ keywords: 'psr-7, http, http uri'
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-[Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) devuelve un objeto que representa una URI. El objeto representa una URI definida en por [RFC 3986](https://tools.ietf.org/html/rfc3986), que provee métodos para la mayoría de operaciones comunes. El uso principal de este componente es para peticiones HTTP pero puede ser usado en otros contextos.
+[Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) devuelve un objeto que representa una URI. The object represents a URI as defined in [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), providing methods for the most common operations. El uso principal de este componente es para peticiones HTTP pero puede ser usado en otros contextos.
 
 ```php
 <?php
@@ -42,7 +42,7 @@ El constructor acepta una cadena opcional, que representa la URI. Si se especifi
 
 ### `__toString()`
 
-Devuelve la representación de la URI como cadena. Dependiendo de qué componentes de la URI están presentes, la cadena resultante es una URI completa o una referencia relativa según [RFC 3986](https://tools.ietf.org/html/rfc3986), Sección 4.1. El método concatena los diversos componentes de la URI.
+Devuelve la representación de la URI como cadena. Depending on which components of the URI are present, the resulting string is either a full URI or relative reference according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), Section 4.1. The method concatenates the various components of the URI.
 
 ```php
 <?php
