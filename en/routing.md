@@ -695,7 +695,7 @@ $route->convert(
     }
 );
 ```
-In the above example, the action name allows dashes, therefore an action can be `/products/new-ipod-nano-4-generation`. The `convert` method will change the action to `newipodnano4generation`
+In the above example, the parameter's name allows dashes, therefore a URL can be `/products/new-ipod-nano-generation`. The `convert` method will change the parameter to `newipodnanogeneration`.
 
 Another use case for converters is when binding a model to a route. This allows the model to be passed into the defined action directly.
 
