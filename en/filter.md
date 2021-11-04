@@ -505,23 +505,23 @@ $locator->set(
 $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
 
-[absint]: https://secure.php.net/manual/en/function.absint.php
+[absint]: https://www.php.net/manual/en/function.absint.php
 [filter]: https://www.php.net/manual/en/book.filter.php
-[filter_var]: https://secure.php.net/manual/en/function.filter-var.php
-[intval]: https://secure.php.net/manual/en/function.intval.php 
-[invoke]: https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke
-[lcfirst]: https://secure.php.net/manual/en/function.lcfirst.php
-[mb_convert_case]: https://secure.php.net/manual/en/function.mb-convert-case.php
-[mbstring]: https://secure.php.net/manual/en/book.mbstring.php
-[preg_replace]: https://secure.php.net/manual/en/function.preg-replace.php
+[filter_var]: https://www.php.net/manual/en/function.filter-var.php
+[intval]: https://www.php.net/manual/en/function.intval.php
+[invoke]: https://www.php.net/manual/en/language.oop5.magic.php#object.invoke
+[lcfirst]: https://www.php.net/manual/en/function.lcfirst.php
+[mb_convert_case]: https://www.php.net/manual/en/function.mb-convert-case.php
+[mbstring]: https://www.php.net/manual/en/book.mbstring.php
+[preg_replace]: https://www.php.net/manual/en/function.preg-replace.php
 [strip_tags]: https://www.php.net/manual/en/function.strip-tags.php
-[str_replace]: https://secure.php.net/manual/en/function.str-replace.php 
-[strtolower]: https://secure.php.net/manual/en/function.strtolower.php 
-[strtoupper]: https://secure.php.net/manual/en/function.strtoupper.php 
+[str_replace]: https://www.php.net/manual/en/function.str-replace.php
+[strtolower]: https://www.php.net/manual/en/function.strtolower.php
+[strtoupper]: https://www.php.net/manual/en/function.strtoupper.php
 [trim]: https://www.php.net/manual/en/function.trim.php
-[ucfirst]: https://secure.php.net/manual/en/function.ucfirst.php
-[ucwords]: https://secure.php.net/manual/en/function.ucwords.php
-[utf8_decode]: https://secure.php.net/manual/en/function.utf8-decode.php
+[ucfirst]: https://www.php.net/manual/en/function.ucfirst.php
+[ucwords]: https://www.php.net/manual/en/function.ucwords.php
+[utf8_decode]: https://www.php.net/manual/en/function.utf8-decode.php
 [filter-exception]: api/phalcon_filter#filter-exception
 [filter-filter]: api/phalcon_filter#filter
 [filter-filterfactory]: api/phalcon_filter#filter-filterfactory
