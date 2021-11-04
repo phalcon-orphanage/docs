@@ -376,14 +376,16 @@ $response->setCookies($cookies);
 > **NOTA**: Las cookies pueden contener estructuras complejas como información de servicio, conjuntos de resultados, etc. Como resultado, enviar cookies sin encriptación a clientes podría exponer detalles de la aplicación que puede ser usada por los atacantes para comprometer la aplicación y el sistema subyacente. Si no desea usar encriptación, podría enviar sólo identificadores únicos que se podrían vincular a una tabla de base de datos que almacena información más compleja que puede usar su aplicación. 
 {: .alert .alert-danger }
 
+### Métodos
+
 Hay varios métodos disponibles para ayudarle a recuperar datos del componente:
 
-* `delete( string $name ): bool` - Elimina una cookie por nombre. Este método no elimina las cookies del superglobal `$_COOKIE`
-* `get( string $name ): CookieInterface` - Obtiene una cookie por nombre
+* `delete( string $name ): bool` - Elimina una cookie por nombre. This method **does not remove** cookies from the `$_COOKIE` superglobal
+* `get( string $name ): CookieInterface` - Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise.
 * `getCookies(): array` - Devuelve un vector con todas las cookies disponibles en el objeto
-* `has( string $name ): bool` - Comprueba si una cookie está definida en la bolsa o existe en el superglobal `$_COOKIE`
-* `isUsingEncryption(): bool` - Comprueba si la bolsa está encriptando/desencriptando cookies automáticamente.
-* `reset(): CookiesInterface` - Resetea todas las cookies
+* `has( string $name ): bool` - Checks the internal cookie collection **or** the `$_COOKIE` superglobal. It returns `true` if the cookie exists in either collections, `false` otherwise.
+* `isUsingEncryption(): bool` - Returns if the collection is automatically encrypting/decrypting cookies.
+* `reset(): CookiesInterface` - Reset all set cookies from the internal collection
 * `send(): bool` - Envía todas las cookies al cliente. Las cookies no se envían si las cabeceras ya se han enviado durante la petición actual
 * `setSignKey( string $signKey = null ): CookieInterface` - Establece la clave de firma de cookies. Si se establece en `NULL` se deshabilita la firma.
 * `useEncryption( bool $useEncryption ): CookiesInterface` - Establece si las cookies en la bolsa se deben encriptar/desencriptar automáticamente
@@ -528,7 +530,7 @@ Una de las formas más fáciles de mejorar el rendimiento de su aplicación y re
 
 El Caché HTTP se implementa configurando ciertas cabeceras en la respuesta. El caché se establece (usando las cabeceras) en la primera visita del usuario a nuestra aplicación. Las siguientes cabeceras ayudan con el Caché HTTP: * `Expires:` - Establece la fecha de expiración de la página. Una vez que expira la página, el navegador solicitará una copia fresca de la página vs. usar la cacheada. * `Cache-Control:` - Cuánto tiempo se considera que una página es *fresca* en el navegador. * `Last-Modified:` - Cuándo fue la última vez que esta página fue modificada por la aplicación (evita recargar). * `ETag:` - También conocido como *entity tag*, es un identificador único para cada página, creado usando la marca de tiempo de modificación. * `304:` - Envía un `not modified` de vuelta
 
-### `Expira`
+### `Expires`
 
 La fecha de expiración es una de las formas más fáciles y efectivas de cachear una página en el cliente (navegador). A partir de la fecha actual añadimos la cantidad de tiempo en que la página se almacenará en el caché del navegador. El navegador no solicitará una copia de esta página hasta que el tiempo expire.
 
