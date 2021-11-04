@@ -743,7 +743,7 @@ $route->convert(
 );
 ```
 
-En el ejemplo anterior, el nombre de la acción permite guiones, por lo tanto una acción puede ser `/products/new-ipod-nano-4-generation`. El método `convert` cambiará la acción a `newipodnano4generation`
+In the above example, the parameter's name allows dashes, therefore a URL can be `/products/new-ipod-nano-generation`. The `convert` method will change the parameter to `newipodnanogeneration`.
 
 Otro caso de uso para convertidores es cuando se vincula un modelo a una ruta. Esto permite que el modelo se pase directamente a la acción definida.
 
