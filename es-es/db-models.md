@@ -3876,36 +3876,38 @@ Las opciones disponibles son:
 | `events`                        |     `true`     | Llamadas de retorno, *hooks* y notificaciones de eventos desde todos los modelos |
 | `exceptionOnFailedMetaDataSave` |    `false`     | Lanza una excepción cuando hay un error al guardar metadatos                     |
 | `exceptionOnFailedSave`         |    `false`     | Lanza una excepción cuando falla `save()`                                        |
-| `ignoreUnknownColumns`          |    `false`     | Ignora columnas desconocidas en el modelo                                        |
-| `lateStateBinding`              |    `false`     | Enlace de estado tardío del método`Phalcon\Mvc\Model::cloneResultMap()`        |
-| `notNullValidations`            |     `true`     | Valida automáticamente las columnas no `null` presentes                          |
-| `phqlLiterals`                  |     `true`     | Literales en el analizador PHQL                                                  |
-| `prefetchRecords`               |      `0`       | El número de registros a precargar cuando se obtienen datos desde el ORM         |
-| `updateSnapshotOnSave`          |     `true`     | Actualizar instantáneas en `save()`                                              |
-| `virtualForeignKeys`            |     `true`     | Claves ajenas virtuales                                                          |
+| `forceCasting`                  |    `false`     | Force casting bound parameters to their native types                             |
+| `ignoreUnknownColumns`          |    `false`     | Ignore unknown columns on the model                                              |
+| `lateStateBinding`              |    `false`     | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method         |
+| `notNullValidations`            |     `true`     | Automatically validate the not `null` columns present                            |
+| `phqlLiterals`                  |     `true`     | Literals in the PHQL parser                                                      |
+| `prefetchRecords`               |      `0`       | The number of records to prefetch when getting data from the ORM                 |
+| `updateSnapshotOnSave`          |     `true`     | Update snapshots on `save()`                                                     |
+| `virtualForeignKeys`            |     `true`     | Virtual foreign keys                                                             |
 
 Opciones `ini`:
 
-    ; phalcon..orm.ast_cache = null
-    ; phalcon..orm.cache_level = 3
-    ; phalcon..orm.case_insensitive_column_map = false
-    ; phalcon..orm.cast_last_insert_id_to_int = false
-    ; phalcon..orm.cast_on_hydrate = false
-    ; phalcon..orm.column_renaming = true
-    ; phalcon..orm.disable_assign_setters = false
-    ; phalcon..orm.enable_implicit_joins = true
-    ; phalcon..orm.enable_literals = true
-    ; phalcon..orm.events = true
-    ; phalcon..orm.exception_on_failed_metadata_save = true
-    ; phalcon..orm.exception_on_failed_save = false
-    ; phalcon..orm.ignore_unknown_columns = false
-    ; phalcon..orm.late_state_binding = false
-    ; phalcon..orm.not_null_validations = true
+    ; phalcon.orm.ast_cache = null
+    ; phalcon.orm.cache_level = 3
+    ; phalcon.orm.case_insensitive_column_map = false
+    ; phalcon.orm.cast_last_insert_id_to_int = false
+    ; phalcon.orm.cast_on_hydrate = false
+    ; phalcon.orm.column_renaming = true
+    ; phalcon.orm.disable_assign_setters = false
+    ; phalcon.orm.enable_implicit_joins = true
+    ; phalcon.orm.enable_literals = true
+    ; phalcon.orm.events = true
+    ; phalcon.orm.exception_on_failed_metadata_save = true
+    ; phalcon.orm.exception_on_failed_save = false
+    ; phalcon.orm.force_casting = false
+    ; phalcon.orm.ignore_unknown_columns = false
+    ; phalcon.orm.late_state_binding = false
+    ; phalcon.orm.not_null_validations = true
     ; phalcon.orm.parser_cache = null,
-    ; phalcon..orm.resultset_prefetch_records = 0
-    ; phalcon..orm.unique_cache_id = 3
-    ; phalcon..orm.update_snapshot_on_save = true
-    ; phalcon..orm.virtual_foreign_keys = true
+    ; phalcon.orm.resultset_prefetch_records = 0
+    ; phalcon.orm.unique_cache_id = 3
+    ; phalcon.orm.update_snapshot_on_save = true
+    ; phalcon.orm.virtual_foreign_keys = true
     
 
 > **NOTA** `Phalcon\Mvc\Model::assign()` (se usa también al crear/actualizar/guardar un modelo) siempre usa *setters* si existen cuando se pasan argumentos de datos, incluso cuando son obligatorios o necesarios. Esto añadirá una sobrecarga adicional a su aplicación. Puede cambiar este comportamiento añadiendo `phalcon.orm.disable_assign_setters = 1` a su fichero ini, con esto se usará simplemente `$this->property = value`.

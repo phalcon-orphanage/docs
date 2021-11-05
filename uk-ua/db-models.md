@@ -3876,6 +3876,7 @@ Model::setup(
 | `events`                        | `true`  | Callbacks, hooks and event notifications from all the models             |
 | `exceptionOnFailedMetaDataSave` | `false` | Throw an exception when there is a failed meta-data save                 |
 | `exceptionOnFailedSave`         | `false` | Throw an exception when there is a failed `save()`                       |
+| `forceCasting`                  | `false` | Force casting bound parameters to their native types                     |
 | `ignoreUnknownColumns`          | `false` | Ignore unknown columns on the model                                      |
 | `lateStateBinding`              | `false` | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |
 | `notNullValidations`            | `true`  | Automatically validate the not `null` columns present                    |
@@ -3886,26 +3887,27 @@ Model::setup(
 
 `ini` options:
 
-    ; phalcon..orm.ast_cache = null
-    ; phalcon..orm.cache_level = 3
-    ; phalcon..orm.case_insensitive_column_map = false
-    ; phalcon..orm.cast_last_insert_id_to_int = false
-    ; phalcon..orm.cast_on_hydrate = false
-    ; phalcon..orm.column_renaming = true
-    ; phalcon..orm.disable_assign_setters = false
-    ; phalcon..orm.enable_implicit_joins = true
-    ; phalcon..orm.enable_literals = true
-    ; phalcon..orm.events = true
-    ; phalcon..orm.exception_on_failed_metadata_save = true
-    ; phalcon..orm.exception_on_failed_save = false
-    ; phalcon..orm.ignore_unknown_columns = false
-    ; phalcon..orm.late_state_binding = false
-    ; phalcon..orm.not_null_validations = true
+    ; phalcon.orm.ast_cache = null
+    ; phalcon.orm.cache_level = 3
+    ; phalcon.orm.case_insensitive_column_map = false
+    ; phalcon.orm.cast_last_insert_id_to_int = false
+    ; phalcon.orm.cast_on_hydrate = false
+    ; phalcon.orm.column_renaming = true
+    ; phalcon.orm.disable_assign_setters = false
+    ; phalcon.orm.enable_implicit_joins = true
+    ; phalcon.orm.enable_literals = true
+    ; phalcon.orm.events = true
+    ; phalcon.orm.exception_on_failed_metadata_save = true
+    ; phalcon.orm.exception_on_failed_save = false
+    ; phalcon.orm.force_casting = false
+    ; phalcon.orm.ignore_unknown_columns = false
+    ; phalcon.orm.late_state_binding = false
+    ; phalcon.orm.not_null_validations = true
     ; phalcon.orm.parser_cache = null,
-    ; phalcon..orm.resultset_prefetch_records = 0
-    ; phalcon..orm.unique_cache_id = 3
-    ; phalcon..orm.update_snapshot_on_save = true
-    ; phalcon..orm.virtual_foreign_keys = true
+    ; phalcon.orm.resultset_prefetch_records = 0
+    ; phalcon.orm.unique_cache_id = 3
+    ; phalcon.orm.update_snapshot_on_save = true
+    ; phalcon.orm.virtual_foreign_keys = true
     
 
 > **NOTE** `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.

@@ -376,14 +376,16 @@ $response->setCookies($cookies);
 > **NOTE**: Cookies can contain complex structures such as service information, resultsets etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
 {: .alert .alert-danger }
 
+### Méthodes
+
 There are several methods available to help you retrieve data from the component:
 
-* `delete( string $name ): bool` - Deletes a cookie by name. This method does not removes cookies from the `$_COOKIE` superglobal
-* `get( string $name ): CookieInterface` - Gets a cookie by name
+* `delete( string $name ): bool` - Deletes a cookie by name. This method **does not remove** cookies from the `$_COOKIE` superglobal
+* `get( string $name ): CookieInterface` - Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise.
 * `getCookies(): array` - Returns an array of all available cookies in the object
-* `has( string $name ): bool` - Check if a cookie is defined in the bag or exists in the `$_COOKIE` superglobal
-* `isUsingEncryption(): bool` - Returns if the bag is automatically encrypting/decrypting cookies.
-* `reset(): CookiesInterface` - Reset all set cookies
+* `has( string $name ): bool` - Checks the internal cookie collection **or** the `$_COOKIE` superglobal. It returns `true` if the cookie exists in either collections, `false` otherwise.
+* `isUsingEncryption(): bool` - Returns if the collection is automatically encrypting/decrypting cookies.
+* `reset(): CookiesInterface` - Reset all set cookies from the internal collection
 * `send(): bool` - Sends all the cookies to the client. Cookies are not sent if headers are already sent during the current request
 * `setSignKey( string $signKey = null ): CookieInterface` - Sets the cookie's sign key. If set to `NULL` the signing is disabled.
 * `useEncryption( bool $useEncryption ): CookiesInterface` - Set if cookies in the bag must be automatically encrypted/decrypted
