@@ -391,7 +391,7 @@ class Custom extends EscaperInterface
 [zephir]: https://zephir-lang.com
 [htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
 [mb_detect_encoding]: https://www.php.net/manual/en/function.mb-detect-encoding.php
-[mbstring]: https://secure.php.net/manual/en/book.mbstring.php
+[mbstring]: https://www.php.net/manual/en/book.mbstring.php
 [owasp]: https://www.owasp.org
-[xss]: https://www.owasp.org/index.php/XSS
-[xss_cheat_sheet]: https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
+[xss]: https://owasp.org/www-community/attacks/xss/
+[xss_cheat_sheet]: https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
