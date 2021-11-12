@@ -1640,6 +1640,74 @@ $validator->add(
 );
 ```
 
+#### Using except for fields (SQL operation "value NOT IN (except)")
+
+Single field
+
+```php
+<?php
+
+$validator->add(
+    "cst_email",
+    new Uniqueness(
+        [
+            "except" => "name@email.com"
+        ]
+    )
+);
+```
+
+Multiple fields with keys (each except will be applied to value it defined by key)
+
+```php
+<?php
+
+$validator->add(
+    ["cst_email", "cst_phone"],
+    new Uniqueness(
+        [
+            "except" => [
+                "cst_email" => "name@email.com",
+                "cst_phone" => "82918304-3843",
+            ]
+        ]
+    )
+);
+```
+
+Multiple fields without keys (each except will be applied to all values recursively)
+
+```php
+<?php
+
+$validator->add(
+    ["cst_email", "cmp_email"],
+    new Uniqueness(
+        [
+            "except" => [
+                "name@email.com",
+                "company@email.com",
+            ],
+        ]
+    )
+);
+```
+
+Multiple fields with single except (except will be applied to all values recursively)
+
+```php
+<?php
+
+$validator->add(
+    ["cst_email", "cmp_email"],
+    new Uniqueness(
+        [
+            "except" => "name@email.com",
+        ]
+    )
+);
+```
+
 ### Url
 
 Comprueba si un valor tiene un formato de url
@@ -1677,7 +1745,7 @@ $validator->add(
 );
 ```
 
-También puede pasar la opción `flags` en el vector, definiendo `FILTER_FLAG_PATH_REQUIRED` o `FILTER_FLAG_QUERY_REQUIRED` si es necesario.
+You can also pass the `flags` option in the array, defining `FILTER_FLAG_PATH_REQUIRED` or `FILTER_FLAG_QUERY_REQUIRED` if necessary.
 
 ```php
 <?php
@@ -1740,7 +1808,7 @@ $messages = $validation->validate(
 
 ### Validadores Personalizados
 
-Puede crear sus propios validadores implementando [Phalcon\Validation\ValidatorInterface](api/phalcon_validation#validation-validatorinterface) o [Phalcon\Validation\Validator\CompositeInterface](api/phalcon_validation#validation-validatorcompositeinterface). También puede extender [Phalcon\Validation\AbstractCombinedFieldsValidator](api/phalcon_validation#validation-abstractcombinedfieldsvalidator), [Phalcon\Validation\AbstractValidator](api/phalcon_validation#validation-abstractvalidator) o [Phalcon\Validation\AbstractValidatorComposite](api/phalcon_validation#validation-abstractvalidatorcomposite).
+You can create your own validators by implementing the [Phalcon\Validation\ValidatorInterface](api/phalcon_validation#validation-validatorinterface) or [Phalcon\Validation\Validator\CompositeInterface](api/phalcon_validation#validation-validatorcompositeinterface). You can also extend the [Phalcon\Validation\AbstractCombinedFieldsValidator](api/phalcon_validation#validation-abstractcombinedfieldsvalidator), [Phalcon\Validation\AbstractValidator](api/phalcon_validation#validation-abstractvalidator) or [Phalcon\Validation\AbstractValidatorComposite](api/phalcon_validation#validation-abstractvalidatorcomposite).
 
 ```php
 <?php
@@ -1782,13 +1850,13 @@ class IpValidator extends AbstractValidator
 }
 ```
 
-Es importante que los validadores devuelvan un valor `booleano` válido que indique si la validación es correcta o no.
+It is important that validators return a valid `boolean` value indicating if the validation was successful or not.
 
 ## Messages
 
-[Phalcon\Validation](api/phalcon_validation#validation) utiliza la colección [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages), que proporciona una manera flexible de mostrar o almacenar los mensajes de validación generados durante el proceso de validación.
+[Phalcon\Validation](api/phalcon_validation#validation) utilizes the [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) collection, providing a flexible way to output or store the validation messages generated during the validation processes.
 
-Cada mensaje consiste en una instancia de la clase [Phalcon\Messages\Message](api/phalcon_messages#messages-message). El conjunto de mensajes generados se puede recuperar con el método `getMessages()`. Cada mensaje proporciona información ampliada como el campo que ha generado el mensaje o el tipo de mensaje:
+Each message consists of an instance of the class [Phalcon\Messages\Message](api/phalcon_messages#messages-message). The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information such as the field that generated the message or the message type:
 
 ```php
 <?php
@@ -1804,7 +1872,7 @@ if (count($messages)) {
 }
 ```
 
-Puede pasar un parámetro `message` para cambiar/traducir el mensaje predeterminado en cada validador. También puede usar el marcador de posición `:field` en el mensaje que será reemplazado por la etiqueta del campo:
+You can pass a `message` parameter to change/translate the default message in each validator. You can also use the placeholder `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
@@ -1821,7 +1889,7 @@ $validation->add(
 );
 ```
 
-Por defecto, el método `getMessages()` devuelve todos los mensajes generados durante la validación. Puede filtrar los mensajes para un campo específico usando el método `filter()`:
+By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
 
 ```php
 <?php
@@ -1839,7 +1907,7 @@ if (count($messages)) {
 
 ## Filtrado de datos
 
-Los datos se pueden filtrar antes de la validación, garantizando que datos maliciosos o incorrectos no sean validados.
+Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
 ```php
 <?php
@@ -1870,11 +1938,11 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-El filtrado y saneado se realizan usando el componente <filter>. Puede añadir más filtros a este componente o usar los ya integrados.
+Filtering and sanitizing is performed using the <filter> component. You can add more filters to this component or use the built-in ones.
 
 ## Eventos
 
-Cuando los validadores se organizan en clases, puede implementar los métodos `beforeValidation()` y `afterValidation()` para realizar comprobaciones adicionales, filtros, limpieza, etc. Si el método `beforeValidation()` devuelve `false` la validación se cancela automáticamente:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
 ```php
 <?php
@@ -1917,7 +1985,7 @@ class LoginValidation extends Validation
 
 ## Cancelando Validaciones
 
-Por defecto todos los validadores asignados a un campo se prueban independientemente de si uno de ellos ha fallado o no. Puede cambiar este comportamiento indicando al componente de validación qué validador puede parar la validación:
+By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
 <?php
@@ -1959,9 +2027,9 @@ $validation->add(
 );
 ```
 
-El primer validador tiene la opción `cancelOnFail` con un valor `true`, por lo tanto, si ese validador falla los validadores restantes en la cadena no se ejecutarán.
+The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
 
-Si está creando validadores personalizados, puede parar la cadena de validación dinámicamente, estableciendo la opción `cancelOnFail`:
+If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
 ```php
 <?php
@@ -1986,7 +2054,7 @@ class MyValidator extends Validator
 
 ## Valores Vacíos
 
-Puede pasar la opción `allowEmpty` a cualquiera de los validadores integrados para ignorar valores vacíos.
+You can pass the option `allowEmpty` to any of the built-in validators to ignore empty values.
 
 ```php
 <?php
@@ -2010,7 +2078,7 @@ $validation->add(
 
 ## Validación Recursiva
 
-También puede ejecutar instancias de validación de otra forma mediante el método `afterValidation()`. En este ejemplo, validando la instancia `CompanyValidation` también comprobará la instancia `PhoneValidation`:
+You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
 ```php
 <?php
@@ -2044,7 +2112,7 @@ class CompanyValidation extends Validation
 
 ## Excepciones
 
-Cualquier excepción lanzada en el espacio de nombres `Phalcon\Validator` será del tipo [Phalcon\Validation\Exception](api/phalcon_validation#validation-exception) o [Phalcon\Validation\Validator\Exception](api/phalcon_validation#validation-validator-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Any exceptions thrown in the `Phalcon\Validator` namespace will be of type [Phalcon\Validation\Exception](api/phalcon_validation#validation-exception) or [Phalcon\Validation\Validator\Exception](api/phalcon_validation#validation-validator-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php

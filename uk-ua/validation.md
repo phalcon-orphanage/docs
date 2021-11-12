@@ -1640,6 +1640,74 @@ $validator->add(
 );
 ```
 
+#### Using except for fields (SQL operation "value NOT IN (except)")
+
+Single field
+
+```php
+<?php
+
+$validator->add(
+    "cst_email",
+    new Uniqueness(
+        [
+            "except" => "name@email.com"
+        ]
+    )
+);
+```
+
+Multiple fields with keys (each except will be applied to value it defined by key)
+
+```php
+<?php
+
+$validator->add(
+    ["cst_email", "cst_phone"],
+    new Uniqueness(
+        [
+            "except" => [
+                "cst_email" => "name@email.com",
+                "cst_phone" => "82918304-3843",
+            ]
+        ]
+    )
+);
+```
+
+Multiple fields without keys (each except will be applied to all values recursively)
+
+```php
+<?php
+
+$validator->add(
+    ["cst_email", "cmp_email"],
+    new Uniqueness(
+        [
+            "except" => [
+                "name@email.com",
+                "company@email.com",
+            ],
+        ]
+    )
+);
+```
+
+Multiple fields with single except (except will be applied to all values recursively)
+
+```php
+<?php
+
+$validator->add(
+    ["cst_email", "cmp_email"],
+    new Uniqueness(
+        [
+            "except" => "name@email.com",
+        ]
+    )
+);
+```
+
 ### Гіперпосилання
 
 Checks if a value has a url format
