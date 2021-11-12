@@ -420,8 +420,8 @@ To set up Xdebug for PHPStorm you can check [this][phpstorm-xdebug] article.
 [debug]: api/phalcon_debug#debug
 [debug-dump]: api/phalcon_debug#debug-dump
 [debug-exception]: api/phalcon_debug#debug-exception
-[exception]: https://secure.php.net/manual/en/language.exceptions.php
-[exception_gettrace]: https://secure.php.net/manual/en/exception.gettrace.php
+[exception]: https://www.php.net/manual/en/language.exceptions.php
+[exception_gettrace]: https://www.php.net/manual/en/exception.gettrace.php
 [phalcon-exception]: api/Phalcon_Exception
 [phpstorm-xdebug]: https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
 [reflection_api]: https://php.net/manual/en/book.reflection.php
