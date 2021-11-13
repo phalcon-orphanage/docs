@@ -16,7 +16,7 @@ keywords: 'debug, debugging, error handling'
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP offers tools to debug applications with notices, warnings, errors and exceptions. The [Exception class](https://secure.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. of where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
+PHP offers tools to debug applications with notices, warnings, errors and exceptions. The [Exception class](https://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. of where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
 
 Despite being written in C, Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP based frameworks offer.
 
@@ -36,9 +36,9 @@ try {
 }
 ```
 
-Any exception thrown within the block is captured in the variable `$ex`. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://secure.php.net/manual/en/language.exceptions.php). Using the Phalcon exception allows you to distinguish whether the exception was thrown from Phalcon related code or elsewhere.
+Any exception thrown within the block is captured in the variable `$ex`. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://www.php.net/manual/en/language.exceptions.php). Using the Phalcon exception allows you to distinguish whether the exception was thrown from Phalcon related code or elsewhere.
 
-The [Exception class](https://secure.php.net/manual/en/language.exceptions.php), exposes the following:
+The [Exception class](https://www.php.net/manual/en/language.exceptions.php), exposes the following:
 
 ```php
 <?php
@@ -136,7 +136,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. The exception information contains parameters and method calls that were involved in the call that generated the exception fragment above. [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
+As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. The exception information contains parameters and method calls that were involved in the call that generated the exception fragment above. [Exception::getTrace()](https://www.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
 
 ## Κατασκευαστής
 
