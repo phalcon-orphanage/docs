@@ -16,7 +16,7 @@ keywords: 'debug, debugging, error handling, відлагодження'
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP пропонує інструменти для налагодження застосунків зі сповіщеннями, попередженнями, помилками та винятками. Клас [винятки](https://secure.php.net/manual/en/language.exceptions.php) надає інформацію, таку як файл, рядок, повідомлення, числовий код, трасування, про те, де сталася помилка тощо. Фреймворки об'єктно-орієнтованого програмування на зразок Phalcon головним чином використовують цей клас, щоб прикріпити цю функціональність та надавати інформацію розробнику чи користувачеві.
+PHP пропонує інструменти для налагодження застосунків зі сповіщеннями, попередженнями, помилками та винятками. The [Exception class](https://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. про те, де сталася помилка тощо. Фреймворки об'єктно-орієнтованого програмування на зразок Phalcon головним чином використовують цей клас, щоб прикріпити цю функціональність та надавати інформацію розробнику чи користувачеві.
 
 Незважаючи на те, що він написаний у C, Phalcon виконує методи в PHP, забезпечуючи ті ж можливості, що й інші PHP-фреймворки.
 
@@ -36,9 +36,9 @@ try {
 }
 ```
 
-Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. [Phalcon\Exception](api/Phalcon_Exception) є розширенням стандартного класу РНР [Exception](https://secure.php.net/manual/en/language.exceptions.php). Використання винятків Phalcon дозволяє відрізнити чи їх спричинив код Phalcon, чи щось інше.
+Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://www.php.net/manual/en/language.exceptions.php). Використання винятків Phalcon дозволяє відрізнити чи їх спричинив код Phalcon, чи щось інше.
 
-[Клас винятків](https://secure.php.net/manual/en/language.exceptions.php) розкриває таке:
+The [Exception class](https://www.php.net/manual/en/language.exceptions.php), exposes the following:
 
 ```php
 <?php
@@ -136,7 +136,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-Як продемонстровано вище, не має значення що Phalcon скомпільований як PHP-розширення. Інформація винятка містить параметри та виклики методів, які породжували фрагмент винятка вище. [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) надає додаткову інформацію, якщо це необхідно.
+Як продемонстровано вище, не має значення що Phalcon скомпільований як PHP-розширення. Інформація винятка містить параметри та виклики методів, які породжували фрагмент винятка вище. [Exception::getTrace()](https://www.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
 
 ## Конструктор
 

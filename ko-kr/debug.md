@@ -16,7 +16,7 @@ keywords: 'debug, debugging, error handling, 디버그, 디버깅, 오류, 오�
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP는 알림, 경고, 오류와 예외 등으로 어플리케이션을 디버그 할 수 있는 도구를 제공합니다. [Exception 클래스](https://secure.php.net/manual/en/language.exceptions.php) 는 파일, 라인, 메시지, 숫자로된 코드, 백트레이스 등 오류가 발생한 곳의 정보를 제공합니다. Phalcon과 같은 OOP 프레임워크는 이 기능을 캡슐화 하고 개발자나 사용자에게 정보를 제공하기 위해 주로 이 클래스를 사용합니다.
+PHP는 알림, 경고, 오류와 예외 등으로 어플리케이션을 디버그 할 수 있는 도구를 제공합니다. The [Exception class](https://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. 발생한 곳의 정보를 제공합니다. Phalcon과 같은 OOP 프레임워크는 이 기능을 캡슐화 하고 개발자나 사용자에게 정보를 제공하기 위해 주로 이 클래스를 사용합니다.
 
 Phalcon은 C 로 작성되어 있지만, 다른 PHP기반의 프레임워크가 제공하는 것과 동일한 디버깅 기능의 메서드를 PHP 사용자 환경 하에서 실행합니다.
 
@@ -36,9 +36,9 @@ try {
 }
 ```
 
-블록 내에서 throw 된 모든 예외는 `$ex` 변수에 저장됩니다. [Phalcon\Exception](api/Phalcon_Exception) 은 [Exception 클래스](https://secure.php.net/manual/en/language.exceptions.php)를 확장시킨 클래스입니다. 이 Phalcon 의 exception을 사용하면 Phalcon에서 예외가 발생했는지 혹은 다른곳에서 발생했는지 구분할 수 있도록 해 줍니다.
+블록 내에서 throw 된 모든 예외는 `$ex` 변수에 저장됩니다. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://www.php.net/manual/en/language.exceptions.php). 이 Phalcon 의 exception을 사용하면 Phalcon에서 예외가 발생했는지 혹은 다른곳에서 발생했는지 구분할 수 있도록 해 줍니다.
 
-[Exception 클래스는](https://secure.php.net/manual/en/language.exceptions.php) 다음의 메서드를 사용할 수 있습니다:
+The [Exception class](https://www.php.net/manual/en/language.exceptions.php), exposes the following:
 
 ```php
 <?php
@@ -136,7 +136,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. 예외에 대한 정보는 예외를 발생시킨 부분과 관련된 파라미터와 메서드 호출에 대한 정보를 포함하고 있습니다. 필요한 경우 [Exception::getTrace()](https://secure.php.net/manual/en/exception.gettrace.php) 가 추가적인 정보를 제공합니다.
+As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. 예외에 대한 정보는 예외를 발생시킨 부분과 관련된 파라미터와 메서드 호출에 대한 정보를 포함하고 있습니다. [Exception::getTrace()](https://www.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
 
 ## 생성자
 
