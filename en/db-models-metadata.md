@@ -912,7 +912,7 @@ class MyStrategy StrategyInterface
 
 ```
 
-[apcu]: https://secure.php.net/manual/en/book.apc.php
+[apcu]: https://www.php.net/manual/en/book.apcu.php
 [memcached]: https://www.memcached.org
 [redis]: https://redis.io
 [mvc-model]: api/Phalcon_Mvc#mvc-model
