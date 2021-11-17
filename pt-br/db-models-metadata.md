@@ -521,17 +521,17 @@ Retrieving the metadata is an expensive database operation and we certainly do n
 > **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) adapter is recommended so that any changes to the database can be reflected immediately. 
 {: .alert .alert-info }
  
-| Adapter                                                                                         | Description                                                                                                                                  |
-| ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. (production) |
-| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. (production)                                |
-| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | This adapter uses memory. The metadata is cached only during the request. (development)                                                      |
-| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | This adapter uses [Redis](https://redis.io) to store the table metadata. (production)                                                        |
-| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | This adapter uses plain files to store metadata. (not for production)                                                                        |
+| Adapter                                                                                         | Description                                                                                                                                |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) to store the table metadata. (production) |
+| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. (production)                              |
+| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | This adapter uses memory. The metadata is cached only during the request. (development)                                                    |
+| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | This adapter uses [Redis](https://redis.io) to store the table metadata. (production)                                                      |
+| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | This adapter uses plain files to store metadata. (not for production)                                                                      |
 
 ### APCu
 
-This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
+This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
 
 The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
