@@ -186,7 +186,7 @@ Remplaza en la entrada el parámetro `$from` con el parámetro `$to`. Internamen
 Special( mixed $input ): string
 ```
 
-Escapa los caracteres HTML, `'"<>&` y ASCII con valor inferior a 32 de la entrada. Internally it uses [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
+Escapa los caracteres HTML, `'"<>&` y ASCII con valor inferior a 32 de la entrada. Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
 
 #### `specialFull`
 
@@ -194,7 +194,7 @@ Escapa los caracteres HTML, `'"<>&` y ASCII con valor inferior a 32 de la entrad
 SpecialFull( mixed $input ): string
 ```
 
-Convierte todos los caracteres especiales de la entrada a entidades HTML (incluidos comillas y apóstrofes). Internally it uses [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
+Convierte todos los caracteres especiales de la entrada a entidades HTML (incluidos comillas y apóstrofes). Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
 
 #### `string`
 
@@ -202,7 +202,7 @@ Convierte todos los caracteres especiales de la entrada a entidades HTML (inclui
 StringVal( mixed $input ): string
 ```
 
-Elimina las etiquetas y codifica las entidades HTML, incluyendo las comillas y apóstrofes. Internally it uses [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
+Elimina las etiquetas y codifica las entidades HTML, incluyendo las comillas y apóstrofes. Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
 
 #### `striptags`
 
@@ -226,7 +226,7 @@ Elimina los espacios en blanco al inicio y final de la entrada. Internamente usa
 Upper( mixed $input ): string
 ```
 
-Capitaliza todos los caracteres. If the [`mbstring`](https://www.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [`mb_convert_case`](https://www.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function, with [`utf8_decode`](https://www.php.net/manual/en/function.utf8-decode.php).
+Capitaliza todos los caracteres. Si está cargada la extensión [`mbstring`](https://www.php.net/manual/en/book.mbstring.php), usará [`mb_convert_case`](https://www.php.net/manual/en/function.mb-convert-case.php) para realizar la transformación. Como alternativa usa la función PHP [`strtoupper`](https://www.php.net/manual/es/function.strtoupper.php), con [`utf8_decode`](https://www.php.net/manual/es/function.utf8-decode.php).
 
 #### `upperFirst`
 
@@ -234,7 +234,7 @@ Capitaliza todos los caracteres. If the [`mbstring`](https://www.php.net/manual/
 UpperFirst( mixed $input ): string
 ```
 
-Capitaliza el primer carácter de la entrada. Internally it uses [`ucfirst`](https://www.php.net/manual/en/function.ucfirst.php).
+Capitaliza el primer carácter de la entrada. Internamente usa [`ucfirst`](https://www.php.net/manual/en/function.ucfirst.php).
 
 #### `upperWords`
 
@@ -242,7 +242,7 @@ Capitaliza el primer carácter de la entrada. Internally it uses [`ucfirst`](htt
 UpperWords( mixed $input ): string
 ```
 
-Capitaliza la primera letra de cada palabra. Internally it uses [`ucwords`](https://www.php.net/manual/en/function.ucwords.php).
+Capitaliza la primera letra de cada palabra. Internamente usa [`ucwords`](https://www.php.net/manual/en/function.ucwords.php).
 
 #### `url`
 
@@ -507,7 +507,7 @@ class ProductsController extends Controller
 
 ## Saneador Personalizado
 
-Se puede implementar un limpiador personalizado como función anónima. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke](https://www.php.net/manual/en/language.oop5.magic.php#object.invoke) method with the relevant parameters.
+Se puede implementar un limpiador personalizado como función anónima. Sin embargo, si prefieres usar una clase como saneador, todo lo que necesitas hacer es hacerlo de una manera invocable, implementando el método [__invoke](https://www.php.net/manual/en/language.oop5.magic.php#object.invoke) con los parámetros relevantes.
 
 ```php
 <?php
