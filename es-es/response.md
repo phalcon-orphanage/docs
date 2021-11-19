@@ -380,7 +380,7 @@ $response->setCookies($cookies);
 
 Hay varios métodos disponibles para ayudarle a recuperar datos del componente:
 
-* `delete( string $name ): bool` - Elimina una cookie por nombre. This method **does not remove** cookies from the `$_COOKIE` superglobal
+* `delete( string $name ): bool` - Elimina una cookie por nombre. Este método **no elimina** las cookies del superglobal `$_COOKIE`
 * `get( string $name ): CookieInterface` - Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise.
 * `getCookies(): array` - Devuelve un vector con todas las cookies disponibles en el objeto
 * `has( string $name ): bool` - Checks the internal cookie collection **or** the `$_COOKIE` superglobal. It returns `true` if the cookie exists in either collections, `false` otherwise.
