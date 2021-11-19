@@ -381,11 +381,11 @@ $response->setCookies($cookies);
 Hay varios métodos disponibles para ayudarle a recuperar datos del componente:
 
 * `delete( string $name ): bool` - Elimina una cookie por nombre. Este método **no elimina** las cookies del superglobal `$_COOKIE`
-* `get( string $name ): CookieInterface` - Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise.
+* `get( string $name ): CookieInterface` - Obtiene una cookie por nombre. Comprueba la colección interna y si se encuentra la cookie, la devolverá. Si no se encuentra, recogerá la cookie del superglobal, creará un objeto y luego lo devolverá. **no** lo almacenará en la colección interna porque de lo contrario se enviará dos veces.
 * `getCookies(): array` - Devuelve un vector con todas las cookies disponibles en el objeto
-* `has( string $name ): bool` - Checks the internal cookie collection **or** the `$_COOKIE` superglobal. It returns `true` if the cookie exists in either collections, `false` otherwise.
-* `isUsingEncryption(): bool` - Returns if the collection is automatically encrypting/decrypting cookies.
-* `reset(): CookiesInterface` - Reset all set cookies from the internal collection
+* `has( string $name ): bool` - Comprueba la colección interna de cookies **o** el superglobal `$_COOKIE`. Devuelve `true` si la cookie existe en alguna colección, `false` en caso contrario.
+* `isUsingEncryption(): bool` - Comprueba si la colección está encriptando/desencriptando cookies automáticamente.
+* `reset(): CookiesInterface` - Restablece todas las cookies configuradas de la colección interna
 * `send(): bool` - Envía todas las cookies al cliente. Las cookies no se envían si las cabeceras ya se han enviado durante la petición actual
 * `setSignKey( string $signKey = null ): CookieInterface` - Establece la clave de firma de cookies. Si se establece en `NULL` se deshabilita la firma.
 * `useEncryption( bool $useEncryption ): CookiesInterface` - Establece si las cookies en la bolsa se deben encriptar/desencriptar automáticamente
