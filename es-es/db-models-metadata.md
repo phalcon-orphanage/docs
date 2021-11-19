@@ -521,17 +521,17 @@ Obtener los metadatos es una operación de base de datos costosa y ciertamente n
 > **NOTA**: Para desarrollo local, el adaptador [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) se recomienda para que cualquier cambio en la base de datos se refleje inmediatamente. 
 {: .alert .alert-info }
  
-| Adaptador                                                                                       | Descripción                                                                                                                                |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) to store the table metadata. (producción) |
-| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | Este adaptador usa [Memcached Server](https://www.memcached.org) para almacenar los metadatos de la tabla. (producción)                    |
-| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | Este adaptador usa la memoria. Los metadatos se almacenan en caché sólo durante la petición. (desarrollo)                                  |
-| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | Este adaptador usa [Redis](https://redis.io) para almacenar los metadatos de la tabla. (producción)                                        |
-| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | Este adaptador usa ficheros planos para almacenar los metadatos. (no para producción)                                                      |
+| Adaptador                                                                                       | Descripción                                                                                                                                          |
+| ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | Este adaptador usa [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) para almacenar los metadatos de la tabla. (producción) |
+| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | Este adaptador usa [Memcached Server](https://www.memcached.org) para almacenar los metadatos de la tabla. (producción)                              |
+| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | Este adaptador usa la memoria. Los metadatos se almacenan en caché sólo durante la petición. (desarrollo)                                            |
+| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | Este adaptador usa [Redis](https://redis.io) para almacenar los metadatos de la tabla. (producción)                                                  |
+| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | Este adaptador usa ficheros planos para almacenar los metadatos. (no para producción)                                                                |
 
 ### APCu
 
-This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) to store the table metadata. La extensión debe estar presente en su sistema para que funcione este caché de metadatos. Si el servidor se reinicia, los datos se perderán. Este adaptador es apropiado para aplicaciones en producción.
+Este adaptador usa [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) para almacenar los metadatos de la tabla. La extensión debe estar presente en su sistema para que funcione este caché de metadatos. Si el servidor se reinicia, los datos se perderán. Este adaptador es apropiado para aplicaciones en producción.
 
 El adaptador recibe una clase [Phalcon\Cache\AdapterFactory](cache#adapter-factory) para instanciar el objeto de caché relevante. También puede pasar un vector con opciones adicionales para que el caché opere.
 
