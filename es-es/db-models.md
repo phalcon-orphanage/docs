@@ -3876,14 +3876,14 @@ Las opciones disponibles son:
 | `events`                        |     `true`     | Llamadas de retorno, *hooks* y notificaciones de eventos desde todos los modelos |
 | `exceptionOnFailedMetaDataSave` |    `false`     | Lanza una excepción cuando hay un error al guardar metadatos                     |
 | `exceptionOnFailedSave`         |    `false`     | Lanza una excepción cuando falla `save()`                                        |
-| `forceCasting`                  |    `false`     | Force casting bound parameters to their native types                             |
-| `ignoreUnknownColumns`          |    `false`     | Ignore unknown columns on the model                                              |
-| `lateStateBinding`              |    `false`     | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method         |
-| `notNullValidations`            |     `true`     | Automatically validate the not `null` columns present                            |
-| `phqlLiterals`                  |     `true`     | Literals in the PHQL parser                                                      |
-| `prefetchRecords`               |      `0`       | The number of records to prefetch when getting data from the ORM                 |
-| `updateSnapshotOnSave`          |     `true`     | Update snapshots on `save()`                                                     |
-| `virtualForeignKeys`            |     `true`     | Virtual foreign keys                                                             |
+| `forceCasting`                  |    `false`     | Forzar los parámetros enlazados a sus tipos nativos                              |
+| `ignoreUnknownColumns`          |    `false`     | Ignora columnas desconocidas en el modelo                                        |
+| `lateStateBinding`              |    `false`     | Enlace de estado tardío del método`Phalcon\Mvc\Model::cloneResultMap()`        |
+| `notNullValidations`            |     `true`     | Valida automáticamente las columnas no `null` presentes                          |
+| `phqlLiterals`                  |     `true`     | Literales en el analizador PHQL                                                  |
+| `prefetchRecords`               |      `0`       | El número de registros a precargar cuando se obtienen datos desde el ORM         |
+| `updateSnapshotOnSave`          |     `true`     | Actualizar instantáneas en `save()`                                              |
+| `virtualForeignKeys`            |     `true`     | Claves ajenas virtuales                                                          |
 
 Opciones `ini`:
 
