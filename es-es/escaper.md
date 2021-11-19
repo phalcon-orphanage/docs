@@ -14,9 +14,9 @@ keywords: 'escapador, escapar html, escapar js, escapar css'
 
 ## Resumen
 
-Websites and web applications are vulnerable to [XSS](https://owasp.org/www-community/attacks/xss/) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/phalcon_escaper#escaper) proporciona escape contextual y está escrito en [Zephir](https://zephir-lang.com), provocando la sobrecarga mínima cuando al escapar distintos tipos de textos.
+Sitios y aplicaciones web son vulnerables a ataques [XSS](https://owasp.org/www-community/attacks/xss/) y aunque PHP proporciona funcionalidad de escape, en algunos contextos no es suficiente o adecuada. [Phalcon\Escaper](api/phalcon_escaper#escaper) proporciona escape contextual y está escrito en [Zephir](https://zephir-lang.com), provocando la sobrecarga mínima cuando al escapar distintos tipos de textos.
 
-We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) created by the [OWASP](https://www.owasp.org). Additionally, this component relies on [mbstring](https://www.php.net/manual/en/book.mbstring.php) to support almost any charset. Para ilustrar cómo funciona este componente y por qué es importante, considere el siguiente ejemplo:
+Hemos diseñado este componente basado en la [Hoja de Trucos de Prevención de XSS (Cross Site Scripting)](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) creada por la [OWASP](https://www.owasp.org). Además, este componente se basa en la extensión [mbstring](https://www.php.net/manual/en/book.mbstring.php) para soportar casi cualquier conjunto de caracteres. Para ilustrar cómo funciona este componente y por qué es importante, considere el siguiente ejemplo:
 
 ```php
 <?php
