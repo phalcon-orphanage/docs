@@ -277,9 +277,9 @@ class SecretsController extends Controller
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
 
-[base64]: https://secure.php.net/manual/en/function.base64-encode.php
-[cipher_methods]: https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php
-[openssl]: https://secure.php.net/manual/en/book.openssl.php
+[base64]: https://www.php.net/manual/en/function.base64-encode.php
+[cipher_methods]: https://www.php.net/manual/en/function.openssl-get-cipher-methods.php
+[openssl]: https://www.php.net/manual/en/book.openssl.php
 [suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
 [crypt]: api/phalcon_crypt#crypt
 [crypt-cryptinterface]: api/phalcon_crypt#crypt-cryptinterface
