@@ -14,7 +14,7 @@ keywords: 'crypt, encriptación, desencriptación, cifrados'
 
 ## Resumen
 
-> **NOTA**: Requiere que la extensión PHP [openssl](https://secure.php.net/manual/en/book.openssl.php) esté presente en el sistema
+> **NOTE**: Requires PHP's [openssl](https://www.php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }
 
 > 
@@ -23,7 +23,7 @@ keywords: 'crypt, encriptación, desencriptación, cifrados'
 > `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
 {: .alert .alert-danger }
 
-Phalcon proporciona servicios de encriptación vía componente [Phalcon\Crypt](api/phalcon_crypt#crypt). Esta clase ofrece envolturas simples orientadas a objeto a la librería de encriptación PHP [openssl](https://secure.php.net/manual/en/book.openssl.php).
+Phalcon proporciona servicios de encriptación vía componente [Phalcon\Crypt](api/phalcon_crypt#crypt). This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
 Por defecto, este componente usa el cifrado `AES-256-CFB`.
 
