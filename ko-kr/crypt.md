@@ -14,7 +14,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 
 ## 개요
 
-> **NOTE**: Requires PHP's [openssl](https://secure.php.net/manual/en/book.openssl.php) extension to be present in the system
+> **NOTE**: Requires PHP's [openssl](https://www.php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }
 
 > 
@@ -23,7 +23,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 > `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
 {: .alert .alert-danger }
 
-Phalcon provides encryption facilities via the [Phalcon\Crypt](api/phalcon_crypt#crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon provides encryption facilities via the [Phalcon\Crypt](api/phalcon_crypt#crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
 By default, this component utilizes the `AES-256-CFB` cipher.
 
