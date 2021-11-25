@@ -25,7 +25,7 @@ title: 'Phalcon\Translate'
 
 Phalcon\Translate\Adapter
 
-Base class for Phalcon\Translate adapters
+Clase base para adaptadores Phalcon\Translate
 
 ## Propiedades
 
@@ -52,43 +52,43 @@ public function __construct( InterpolatorFactory $interpolator, array $options )
 public function _( string $translateKey, array $placeholders = [] ): string;
 ```
 
-Returns the translation string of the given key (alias of method 't')
+Devuelve la cadena de traducción de la clave dada (alias del método 't')
 
 ```php
 public function offsetExists( mixed $translateKey ): bool;
 ```
 
-Check whether a translation key exists
+Comprueba si existe una clave de traducción
 
 ```php
 public function offsetGet( mixed $translateKey ): mixed;
 ```
 
-Returns the translation related to the given key
+Devuelve la traducción relacionada con la clave proporcionada
 
 ```php
 public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 
-Sets a translation value
+Establece un valor de traducción
 
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
 
-Unsets a translation from the dictionary
+Anula una traducción del diccionario
 
 ```php
 public function t( string $translateKey, array $placeholders = [] ): string;
 ```
 
-Returns the translation string of the given key
+Devuelve la cadena de traducción de la clave dada
 
 ```php
 protected function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 
-Replaces placeholders by the values passed
+Reemplaza los marcadores de posición por los valores pasados
 
 <h1 id="translate-adapter-adapterinterface">Interface Phalcon\Translate\Adapter\AdapterInterface</h1>
 
@@ -98,7 +98,7 @@ Replaces placeholders by the values passed
 
 Phalcon\Translate\Adapter\AdapterInterface
 
-Interface for Phalcon\Translate adapters
+Interfaz para adaptadores Phalcon\Translate
 
 ## Métodos
 
@@ -106,19 +106,19 @@ Interface for Phalcon\Translate adapters
 public function exists( string $index ): bool;
 ```
 
-Check whether is defined a translation key in the internal array
+Comprueba si una clave de traducción está definida en el vector interno
 
 ```php
 public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 
-Returns the translation related to the given key
+Devuelve la traducción relacionada con la clave proporcionada
 
 ```php
 public function t( string $translateKey, array $placeholders = [] ): string;
 ```
 
-Returns the translation string of the given key
+Devuelve la cadena de traducción de la clave dada
 
 <h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
 
@@ -128,7 +128,7 @@ Returns the translation string of the given key
 
 Phalcon\Translate\Adapter\Csv
 
-Allows to define translation lists using CSV file
+Permite definir listas de traducciones usando un fichero CSV
 
 ## Propiedades
 
@@ -146,19 +146,19 @@ protected translate;
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
 
-Phalcon\Translate\Adapter\Csv constructor
+Constructor Phalcon\Translate\Adapter\Csv
 
 ```php
 public function exists( string $index ): bool;
 ```
 
-Check whether is defined a translation key in the internal array
+Comprueba si una clave de traducción está definida en el vector interno
 
 ```php
 public function query( string $index, array $placeholders = [] ): string;
 ```
 
-Returns the translation related to the given key
+Devuelve la traducción relacionada con la clave proporcionada
 
 <h1 id="translate-adapter-gettext">Class Phalcon\Translate\Adapter\Gettext</h1>
 
@@ -181,7 +181,7 @@ $adapter = new Gettext(
 );
 ```
 
-Allows translate using gettext
+Permite traducir usando gettext
 
 ## Propiedades
 
@@ -214,13 +214,13 @@ protected locale;
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
 
-Phalcon\Translate\Adapter\Gettext constructor
+Constructor Phalcon\Translate\Adapter\Gettext
 
 ```php
 public function exists( string $index ): bool;
 ```
 
-Check whether is defined a translation key in the internal array
+Comprueba si una clave de traducción está definida en el vector interno
 
 ```php
 public function getCategory(): int
@@ -242,13 +242,13 @@ public function getLocale(): string
 public function nquery( string $msgid1, string $msgid2, int $count, array $placeholders = [], string $domain = null ): string;
 ```
 
-The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
+La versión plural de gettext(). Algunos idiomas tienen mas de una forma para los mensajes en plural y dependen del contador.
 
 ```php
 public function query( string $index, array $placeholders = [] ): string;
 ```
 
-Returns the translation related to the given key.
+Devuelve la traducción relacionada con la clave dada.
 
 ```php
 $translator->query("你好 %name%！", ["name" => "Phalcon"]);
@@ -258,19 +258,19 @@ $translator->query("你好 %name%！", ["name" => "Phalcon"]);
 public function resetDomain(): string;
 ```
 
-Sets the default domain
+Establece el dominio por defecto
 
 ```php
 public function setDefaultDomain( string $domain ): void;
 ```
 
-Sets the domain default to search within when calls are made to gettext()
+Establece el dominio por defecto para buscar dentro de él cuando se realicen llamadas a gettext()
 
 ```php
 public function setDirectory( mixed $directory ): void;
 ```
 
-Sets the path for a domain
+Establece la ruta para un dominio
 
 ```php
 // Set the directory path
@@ -289,13 +289,13 @@ $gettext->setDirectory(
 public function setDomain( mixed $domain ): string;
 ```
 
-Changes the current domain (i.e. the translation file)
+Cambia el dominio actual (es decir, el archivo de traducción)
 
 ```php
 public function setLocale( int $category, string $locale ): string | bool;
 ```
 
-Sets locale information
+Establece la información de configuración regional
 
 ```php
 // Set locale to Dutch
@@ -309,13 +309,13 @@ $gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
 protected function getOptionsDefault(): array;
 ```
 
-Gets default options
+Devuelve las opciones por defecto
 
 ```php
 protected function prepareOptions( array $options ): void;
 ```
 
-Validator for constructor
+Validador para el constructor
 
 <h1 id="translate-adapter-nativearray">Class Phalcon\Translate\Adapter\NativeArray</h1>
 
@@ -325,7 +325,7 @@ Validator for constructor
 
 Phalcon\Translate\Adapter\NativeArray
 
-Allows to define translation lists using PHP arrays
+Permite definir listas de traducción usando vectores PHP
 
 ## Propiedades
 
@@ -348,25 +348,25 @@ private triggerError = false;
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
 
-Phalcon\Translate\Adapter\NativeArray constructor
+Constructor Phalcon\Translate\Adapter\NativeArray
 
 ```php
 public function exists( string $index ): bool;
 ```
 
-Check whether is defined a translation key in the internal array
+Comprueba si una clave de traducción está definida en el vector interno
 
 ```php
 public function notFound( string $index ): string;
 ```
 
-Whenever a key is not found this method will be called
+Siempre que no se encuentre una clave, se llamará a este método
 
 ```php
 public function query( string $index, array $placeholders = [] ): string;
 ```
 
-Returns the translation related to the given key
+Devuelve la traducción relacionada con la clave proporcionada
 
 <h1 id="translate-exception">Class Phalcon\Translate\Exception</h1>
 
@@ -376,7 +376,7 @@ Returns the translation related to the given key
 
 Phalcon\Translate\Exception
 
-Class for exceptions thrown by Phalcon\Translate
+Clase para excepciones lanzadas por Phalcon\Translate
 
 <h1 id="translate-interpolator-associativearray">Class Phalcon\Translate\Interpolator\AssociativeArray</h1>
 
@@ -384,11 +384,11 @@ Class for exceptions thrown by Phalcon\Translate
 
 | Namespace | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -396,7 +396,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 
-Replaces placeholders by the values passed
+Reemplaza los marcadores de posición por los valores pasados
 
 <h1 id="translate-interpolator-indexedarray">Class Phalcon\Translate\Interpolator\IndexedArray</h1>
 
@@ -404,11 +404,11 @@ Replaces placeholders by the values passed
 
 | Namespace | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -416,7 +416,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 
-Replaces placeholders by the values passed
+Reemplaza los marcadores de posición por los valores pasados
 
 <h1 id="translate-interpolator-interpolatorinterface">Interface Phalcon\Translate\Interpolator\InterpolatorInterface</h1>
 
@@ -426,7 +426,7 @@ Replaces placeholders by the values passed
 
 Phalcon\Translate\InterpolatorInterface
 
-Interface for Phalcon\Translate interpolators
+Interfaz para interpoladores Phalcon\Translate
 
 ## Métodos
 
@@ -434,7 +434,7 @@ Interface for Phalcon\Translate interpolators
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 
-Replaces placeholders by the values passed
+Reemplaza los marcadores de posición por los valores pasados
 
 <h1 id="translate-interpolatorfactory">Class Phalcon\Translate\InterpolatorFactory</h1>
 
