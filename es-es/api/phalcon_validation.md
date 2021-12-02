@@ -52,7 +52,7 @@ title: 'Phalcon\Validation'
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator | | Extends | Injectable | | Implements | ValidationInterface |
 
-Allows to validate data using custom or built-in validators
+Permite validar datos usando validadores personalizados o integrados
 
 ## Propiedades
 
@@ -89,25 +89,25 @@ protected values;
 public function __construct( array $validators = [] );
 ```
 
-Phalcon\Validation constructor
+Constructor Phalcon\Validation
 
 ```php
 public function add( mixed $field, ValidatorInterface $validator ): ValidationInterface;
 ```
 
-Adds a validator to a field
+Añade un validador a un campo
 
 ```php
 public function appendMessage( MessageInterface $message ): ValidationInterface;
 ```
 
-Appends a message to the messages list
+Añade un mensaje a la lista de mensajes
 
 ```php
 public function bind( mixed $entity, mixed $data ): ValidationInterface;
 ```
 
-Assigns the data to an entity The entity is used to obtain the validation values
+Asigna los datos a una entidad Se usa la entidad para obtener los valores de validación
 
 ```php
 public function getData()
@@ -117,67 +117,67 @@ public function getData()
 public function getEntity(): mixed;
 ```
 
-Returns the bound entity
+Devuelve la entidad enlazada
 
 ```php
 public function getFilters( string $field = null ): mixed | null;
 ```
 
-Returns all the filters or a specific one
+Devuelve todos los filtros o uno específico
 
 ```php
 public function getLabel( mixed $field ): string;
 ```
 
-Get label for field
+Obtiene la etiqueta de un campo
 
 ```php
 public function getMessages(): Messages;
 ```
 
-Returns the registered validators
+Devuelve los validadores registrados
 
 ```php
 public function getValidators(): array;
 ```
 
-Returns the validators added to the validation
+Devuelve los validadores añadidos a la validación
 
 ```php
 public function getValue( string $field ): mixed | null;
 ```
 
-Gets the a value to validate in the array/object data source
+Obtiene un valor a validar en la fuente de datos vector/objeto
 
 ```php
 public function rule( mixed $field, ValidatorInterface $validator ): ValidationInterface;
 ```
 
-Alias of `add` method
+Alias del método `add`
 
 ```php
 public function rules( mixed $field, array $validators ): ValidationInterface;
 ```
 
-Adds the validators to a field
+Añade los validadores a un campo
 
 ```php
 public function setEntity( mixed $entity ): void;
 ```
 
-Sets the bound entity
+Establece la entidad enlazada
 
 ```php
 public function setFilters( mixed $field, mixed $filters ): ValidationInterface;
 ```
 
-Adds filters to the field
+Añade filtros al campo
 
 ```php
 public function setLabels( array $labels ): void;
 ```
 
-Adds labels for fields
+Añade etiquetas a los campos
 
 ```php
 public function setValidators( $validators )
@@ -187,13 +187,13 @@ public function setValidators( $validators )
 public function validate( mixed $data = null, mixed $entity = null ): Messages;
 ```
 
-Validate a set of data according to a set of rules
+Valida un conjunto de datos según un conjunto de reglas
 
 ```php
 protected function preChecking( mixed $field, ValidatorInterface $validator ): bool;
 ```
 
-Internal validations, if it returns true, then skip the current validator
+Validaciones internas, que si devuelven verdadero, entonces omiten el validador actual
 
 <h1 id="validation-abstractcombinedfieldsvalidator">Abstract Class Phalcon\Validation\AbstractCombinedFieldsValidator</h1>
 
@@ -201,7 +201,7 @@ Internal validations, if it returns true, then skip the current validator
 
 | Namespace | Phalcon\Validation | | Extends | AbstractValidator |
 
-This is a base class for combined fields validators
+Esta es una clase base para validadores de campos combinados
 
 <h1 id="validation-abstractvalidator">Abstract Class Phalcon\Validation\AbstractValidator</h1>
 
@@ -209,7 +209,7 @@ This is a base class for combined fields validators
 
 | Namespace | Phalcon\Validation | | Uses | Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation | | Implements | ValidatorInterface |
 
-This is a base class for validators
+Esta es una clase base para validadores
 
 ## Propiedades
 
@@ -239,7 +239,7 @@ protected options;
 public function __construct( array $options = [] );
 ```
 
-Phalcon\Validation\Validator constructor
+Constructor Phalcon\Validation\Validator
 
 ```php
 public function getOption( string $key, mixed $defaultValue = null ): mixed;
@@ -251,43 +251,43 @@ Devuelve una opción en las opciones del validador. Devuelve null si la opción 
 public function getTemplate( string $field = null ): string;
 ```
 
-Get the template message
+Obtiene el mensaje plantilla
 
 ```php
 public function getTemplates(): array;
 ```
 
-Get templates collection object
+Obtiene el objeto colección de plantillas
 
 ```php
 public function hasOption( string $key ): bool;
 ```
 
-Checks if an option is defined
+Comprueba si una opción está definida
 
 ```php
 public function messageFactory( Validation $validation, mixed $field, array $replacements = [] ): Message;
 ```
 
-Create a default message by factory
+Crear un mensaje predeterminado por factoría
 
 ```php
 public function setOption( string $key, mixed $value ): void;
 ```
 
-Sets an option in the validator
+Configura una opción en el validador
 
 ```php
 public function setTemplate( string $template ): ValidatorInterface;
 ```
 
-Set a new template message
+Establece un nuevo mensaje de plantilla
 
 ```php
 public function setTemplates( array $templates ): ValidatorInterface;
 ```
 
-Clear current templates and set new from an array,
+Limpia las plantillas actuales y establece nuevas desde un vector,
 
 ```php
 abstract public function validate( Validation $validation, mixed $field ): bool;
@@ -299,13 +299,13 @@ Ejecuta la validación
 protected function prepareCode( string $field ): int | null;
 ```
 
-Prepares a validation code.
+Prepara un código de validación.
 
 ```php
 protected function prepareLabel( Validation $validation, string $field ): mixed;
 ```
 
-Prepares a label for the field.
+Prepara una etiqueta para el campo.
 
 <h1 id="validation-abstractvalidatorcomposite">Abstract Class Phalcon\Validation\AbstractValidatorComposite</h1>
 
@@ -313,7 +313,7 @@ Prepares a label for the field.
 
 | Namespace | Phalcon\Validation | | Uses | Phalcon\Validation | | Extends | AbstractValidator | | Implements | ValidatorCompositeInterface |
 
-This is a base class for combined fields validators
+Esta es una clase base para validadores de campos combinados
 
 ## Propiedades
 
@@ -343,7 +343,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Validation\* classes will use this class
+Las excepciones lanzadas en las clases Phalcon\Validation\* usarán esta clase
 
 <h1 id="validation-validationinterface">Interface Phalcon\Validation\ValidationInterface</h1>
 
@@ -351,7 +351,7 @@ Exceptions thrown in Phalcon\Validation\* classes will use this class
 
 | Namespace | Phalcon\Validation | | Uses | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
 
-Interface for the Phalcon\Validation component
+Interfaz para el componente Phalcon\Validation
 
 ## Métodos
 
@@ -359,13 +359,13 @@ Interface for the Phalcon\Validation component
 public function add( string $field, ValidatorInterface $validator ): ValidationInterface;
 ```
 
-Adds a validator to a field
+Añade un validador a un campo
 
 ```php
 public function appendMessage( MessageInterface $message ): ValidationInterface;
 ```
 
-Appends a message to the messages list
+Añade un mensaje a la lista de mensajes
 
 ```php
 public function bind( mixed $entity, mixed $data ): ValidationInterface;
@@ -377,67 +377,67 @@ Assigns the data to an entity The entity is used to obtain the validation values
 public function getEntity(): mixed;
 ```
 
-Returns the bound entity
+Devuelve la entidad enlazada
 
 ```php
 public function getFilters( string $field = null ): mixed | null;
 ```
 
-Returns all the filters or a specific one
+Devuelve todos los filtros o uno específico
 
 ```php
 public function getLabel( string $field ): string;
 ```
 
-Get label for field
+Obtiene la etiqueta de un campo
 
 ```php
 public function getMessages(): Messages;
 ```
 
-Returns the registered validators
+Devuelve los validadores registrados
 
 ```php
 public function getValidators(): array;
 ```
 
-Returns the validators added to the validation
+Devuelve los validadores añadidos a la validación
 
 ```php
 public function getValue( string $field ): mixed | null;
 ```
 
-Gets the a value to validate in the array/object data source
+Obtiene un valor a validar en la fuente de datos vector/objeto
 
 ```php
 public function rule( string $field, ValidatorInterface $validator ): ValidationInterface;
 ```
 
-Alias of `add` method
+Alias del método `add`
 
 ```php
 public function rules( string $field, array $validators ): ValidationInterface;
 ```
 
-Adds the validators to a field
+Añade los validadores a un campo
 
 ```php
 public function setFilters( string $field, mixed $filters ): ValidationInterface;
 ```
 
-Adds filters to the field
+Añade filtros al campo
 
 ```php
 public function setLabels( array $labels ): void;
 ```
 
-Adds labels for fields
+Añade etiquetas a los campos
 
 ```php
 public function validate( mixed $data = null, mixed $entity = null ): Messages;
 ```
 
-Validate a set of data according to a set of rules
+Valida un conjunto de datos según un conjunto de reglas
 
 <h1 id="validation-validator-alnum">Class Phalcon\Validation\Validator\Alnum</h1>
 
@@ -567,7 +567,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Valida que un valor está entre un rango inclusivo de dos valores. For a value x, the test is passed if minimum<=x<=maximum.
+Valida que un valor está entre un rango inclusivo de dos valores. Para un valor x, la prueba pasa si mínimo<=x<=máximo.
 
 ```php
 use Phalcon\Validation;
@@ -638,7 +638,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Calls user function for validation
+Llama a la función del usuario para la validación
 
 ```php
 use Phalcon\Validation;
@@ -773,7 +773,7 @@ Ejecuta la validación
 final protected function compare( string $a, string $b ): bool;
 ```
 
-Compare strings
+Comparar cadenas
 
 <h1 id="validation-validator-creditcard">Class Phalcon\Validation\Validator\CreditCard</h1>
 
@@ -1030,7 +1030,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Validation\Validator\* classes will use this class
+Las excepciones lanzadas en las clases Phalcon\Validation\Validator\* usarán esta clase
 
 <h1 id="validation-validator-exclusionin">Class Phalcon\Validation\Validator\ExclusionIn</h1>
 
@@ -1254,31 +1254,31 @@ protected messageValid = Field :field is not valid;
 public function checkUpload( Validation $validation, mixed $field ): bool;
 ```
 
-Check upload
+Comprueba subida
 
 ```php
 public function checkUploadIsEmpty( Validation $validation, mixed $field ): bool;
 ```
 
-Check if upload is empty
+Comprobar si la subida está vacía
 
 ```php
 public function checkUploadIsValid( Validation $validation, mixed $field ): bool;
 ```
 
-Check if upload is valid
+Comprobar si la subida es válida
 
 ```php
 public function checkUploadMaxSize( Validation $validation, mixed $field ): bool;
 ```
 
-Check if uploaded file is larger than PHP allowed size
+Comprueba si el archivo subido es mayor que el tamaño permitido por PHP
 
 ```php
 public function getFileSizeInBytes( string $size ): double;
 ```
 
-Convert a string like "2.5MB" in bytes
+Convierte una cadena como "2.5MB" en bytes
 
 ```php
 public function getMessageFileEmpty()
@@ -1296,7 +1296,7 @@ public function getMessageValid()
 public function isAllowEmpty( Validation $validation, string $field ): bool;
 ```
 
-Check on empty
+Comprueba si se permite vacío
 
 ```php
 public function setMessageFileEmpty( $messageFileEmpty )
@@ -2604,7 +2604,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation | | Uses | Phalcon\Validation |
 
-This is a base class for combined fields validators
+Esta es una clase base para validadores de campos combinados
 
 ## Métodos
 
@@ -2670,7 +2670,7 @@ Devuelve una opción en las opciones del validador. Devuelve null si la opción 
 public function getTemplate( string $field ): string;
 ```
 
-Get the template message
+Obtiene el mensaje plantilla
 
 ```php
 public function getTemplates(): array;
@@ -2682,13 +2682,13 @@ Get message templates
 public function hasOption( string $key ): bool;
 ```
 
-Checks if an option is defined
+Comprueba si una opción está definida
 
 ```php
 public function setTemplate( string $template ): ValidatorInterface;
 ```
 
-Set a new template message
+Establece un nuevo mensaje de plantilla
 
 ```php
 public function setTemplates( array $templates ): ValidatorInterface;
