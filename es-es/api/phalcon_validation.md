@@ -293,7 +293,7 @@ Clear current templates and set new from an array,
 abstract public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 ```php
 protected function prepareCode( string $field ): int | null;
@@ -335,7 +335,7 @@ public function getValidators(): array
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-exception">Class Phalcon\Validation\Exception</h1>
 
@@ -498,7 +498,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-alpha">Class Phalcon\Validation\Validator\Alpha</h1>
 
@@ -559,7 +559,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-between">Class Phalcon\Validation\Validator\Between</h1>
 
@@ -630,7 +630,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-callback">Class Phalcon\Validation\Validator\Callback</h1>
 
@@ -701,7 +701,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-confirmation">Class Phalcon\Validation\Validator\Confirmation</h1>
 
@@ -767,7 +767,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 ```php
 final protected function compare( string $a, string $b ): bool;
@@ -834,7 +834,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-date">Class Phalcon\Validation\Validator\Date</h1>
 
@@ -900,7 +900,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-digit">Class Phalcon\Validation\Validator\Digit</h1>
 
@@ -961,7 +961,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-email">Class Phalcon\Validation\Validator\Email</h1>
 
@@ -1022,7 +1022,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-exception">Class Phalcon\Validation\Validator\Exception</h1>
 
@@ -1102,7 +1102,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file">Class Phalcon\Validation\Validator\File</h1>
 
@@ -1377,7 +1377,7 @@ protected template = File :field must be of type: :types;
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file-resolution-equal">Class Phalcon\Validation\Validator\File\Resolution\Equal</h1>
 
@@ -1443,7 +1443,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file-resolution-max">Class Phalcon\Validation\Validator\File\Resolution\Max</h1>
 
@@ -1514,7 +1514,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file-resolution-min">Class Phalcon\Validation\Validator\File\Resolution\Min</h1>
 
@@ -1585,7 +1585,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file-size-equal">Class Phalcon\Validation\Validator\File\Size\Equal</h1>
 
@@ -1656,7 +1656,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file-size-max">Class Phalcon\Validation\Validator\File\Size\Max</h1>
 
@@ -1727,7 +1727,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-file-size-min">Class Phalcon\Validation\Validator\File\Size\Min</h1>
 
@@ -1798,7 +1798,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-identical">Class Phalcon\Validation\Validator\Identical</h1>
 
@@ -1864,7 +1864,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-inclusionin">Class Phalcon\Validation\Validator\InclusionIn</h1>
 
@@ -1930,7 +1930,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-ip">Class Phalcon\Validation\Validator\Ip</h1>
 
@@ -2015,7 +2015,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-numericality">Class Phalcon\Validation\Validator\Numericality</h1>
 
@@ -2076,7 +2076,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-presenceof">Class Phalcon\Validation\Validator\PresenceOf</h1>
 
@@ -2137,7 +2137,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-regex">Class Phalcon\Validation\Validator\Regex</h1>
 
@@ -2203,7 +2203,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-stringlength">Class Phalcon\Validation\Validator\StringLength</h1>
 
@@ -2346,7 +2346,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-stringlength-min">Class Phalcon\Validation\Validator\StringLength\Min</h1>
 
@@ -2417,7 +2417,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validator-uniqueness">Class Phalcon\Validation\Validator\Uniqueness</h1>
 
@@ -2519,7 +2519,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 ```php
 protected function getColumnNameReal( mixed $record, string $field ): string;
@@ -2596,7 +2596,7 @@ Constructor
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validatorcompositeinterface">Interface Phalcon\Validation\ValidatorCompositeInterface</h1>
 
@@ -2612,13 +2612,13 @@ This is a base class for combined fields validators
 public function getValidators(): array;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
 
 <h1 id="validation-validatorfactory">Class Phalcon\Validation\ValidatorFactory</h1>
 
@@ -2700,4 +2700,4 @@ Clear current template and set new from an array,
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 
-Executes the validation
+Ejecuta la validación
