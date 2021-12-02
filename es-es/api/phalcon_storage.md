@@ -227,7 +227,7 @@ Lee datos desde el adaptador
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the backend server(s)
+Devuelve el adaptador ya conectado o conecta al/los servidor/es de *backend*
 
 ```php
 public function getKeys( string $prefix = string ): array;
@@ -313,7 +313,7 @@ Lee datos desde el adaptador
 public function getAdapter(): mixed;
 ```
 
-Always returns null
+Siempre devuelve nulo
 
 ```php
 public function getKeys( string $prefix = string ): array;
@@ -363,7 +363,7 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Libmemcached constructor.
+Constructor Libmemcached.
 
 ```php
 public function clear(): bool;
@@ -393,7 +393,7 @@ Lee datos desde el adaptador
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the Memcached server(s)
+Devuelve el adaptador ya conectado o conecta al/los servidor/es de Memcached
 
 ```php
 public function getKeys( string $prefix = string ): array;
@@ -478,7 +478,7 @@ Lee datos desde el adaptador
 public function getAdapter(): mixed;
 ```
 
-Always returns null
+Siempre devuelve nulo
 
 ```php
 public function getKeys( string $prefix = string ): array;
@@ -558,13 +558,13 @@ Lee datos desde el adaptador
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the Redis server(s)
+Devuelve el adaptador ya conectado o conecta al/los servidor/es de Redis
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Gets the keys from the adapter. Accepts an optional prefix which will filter the keys returned
+Obtiene las claves del adaptador. Acepta un prefijo opcional que filtrará las claves devueltas
 
 ```php
 public function has( string $key ): bool;
@@ -582,7 +582,7 @@ Incrementa un número almacenado
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter. If no ttl is given, the default value will be used (3600s at the moment).
+Almacena datos en el adaptador. Si no se da ningún ttl, se usará el valor por defecto (3600s en este momento).
 
 <h1 id="storage-adapter-stream">Class Phalcon\Storage\Adapter\Stream</h1>
 
@@ -613,7 +613,7 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Stream constructor.
+Constructor Stream.
 
 ```php
 public function clear(): bool;
@@ -643,7 +643,7 @@ Lee datos desde el adaptador
 public function getAdapter(): mixed;
 ```
 
-Always returns null
+Siempre devuelve nulo
 
 ```php
 public function getKeys( string $prefix = string ): array;
@@ -655,7 +655,7 @@ Almacena datos en el adaptador
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache and is not expired
+Comprueba si un elemento existe en el caché y no ha expirado
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
@@ -717,7 +717,7 @@ protected function getAdapters(): array;
 
 Phalcon\Storage\Exception
 
-Exceptions thrown in Phalcon\Storage will use this class
+Las excepciones lanzadas en Phalcon\Storage usarán esta clase
 
 <h1 id="storage-serializer-abstractserializer">Abstract Class Phalcon\Storage\Serializer\AbstractSerializer</h1>
 
@@ -761,7 +761,7 @@ public function setData( mixed $data ): void;
 protected function isSerializable( mixed $data ): bool;
 ```
 
-If this returns true, then the data returns back as is
+Si devuelve verdadero, entonces los datos se devuelven tal cual
 
 <h1 id="storage-serializer-base64">Class Phalcon\Storage\Serializer\Base64</h1>
 
@@ -781,13 +781,13 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-igbinary">Class Phalcon\Storage\Serializer\Igbinary</h1>
 
@@ -807,13 +807,13 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-json">Class Phalcon\Storage\Serializer\Json</h1>
 
@@ -833,13 +833,13 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-msgpack">Class Phalcon\Storage\Serializer\Msgpack</h1>
 
@@ -859,13 +859,13 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function serialize(): string | null;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-none">Class Phalcon\Storage\Serializer\None</h1>
 
@@ -885,13 +885,13 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-php">Class Phalcon\Storage\Serializer\Php</h1>
 
@@ -911,13 +911,13 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-serializerinterface">Interface Phalcon\Storage\Serializer\SerializerInterface</h1>
 
@@ -959,7 +959,7 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 public function __construct( array $services = [] );
 ```
 
-SerializerFactory constructor.
+Constructor SerializerFactory.
 
 ```php
 public function newInstance( string $name ): SerializerInterface;
