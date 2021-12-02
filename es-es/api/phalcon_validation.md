@@ -1518,7 +1518,7 @@ Ejecuta la validación
 
 <h1 id="validation-validator-file-resolution-min">Class Phalcon\Validation\Validator\File\Resolution\Min</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Validation/Validator/File/Resolution/Min.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Validation/Validator/File/Resolution/Max.zep)
 
 | Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
@@ -2084,7 +2084,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Validates that a value is not null or empty string
+Valida que un valor no sea nulo ni cadena vacía
 
 ```php
 use Phalcon\Validation;
@@ -2145,7 +2145,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
-Allows validate if the value of a field matches a regular expression
+Permite validar si el valor de un campo coincide con una expresión regular
 
 ```php
 use Phalcon\Validation;
@@ -2211,7 +2211,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\AbstractValidator, Phalcon\Validation\AbstractValidatorComposite, Phalcon\Validation\Validator\StringLength\Max, Phalcon\Validation\Validator\StringLength\Min, Phalcon\Validation\Exception | | Extends | AbstractValidatorComposite |
 
-Validates that a string has the specified maximum and minimum constraints The test is passed if for a string's length L, min<=L<=max, i.e. L must be at least min, and at most max. Since Phalcon v4.0 this validator works like a container
+Valida que una cadena tenga las limitaciones máximas y mínimas especificadas. Pasa la prueba si para una longitud de la cadena L, min<=L<=max, es decir, L debe estar entre los valores mínimos y máximos. Desde Phalcon v4.0 este validador funciona como un contenedor
 
 ```php
 use Phalcon\Validation;
@@ -2283,7 +2283,7 @@ Constructor
 
 | Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
-Validates that a string has the specified maximum constraints The test is passed if for a string's length L, L<=max, i.e. L must be at most max.
+Valida que una cadena tenga las restricciones máximas especificadas La prueba se pasa si para la longitud de una cadena L, L<=max, es decir, L debe ser como mucho el máximo.
 
 ```php
 use Phalcon\Validation;
@@ -2354,7 +2354,7 @@ Ejecuta la validación
 
 | Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
-Validates that a string has the specified minimum constraints The test is passed if for a string's length L, min<=L, i.e. L must be at least min.
+Valida que una cadena tenga las restricciones mínimas especificadas La prueba se pasa si para la longitud de una cadena L, min<=L, es decir, L debe ser al menos min.
 
 ```php
 use Phalcon\Validation;
@@ -2458,7 +2458,7 @@ $validator->add(
 );
 ```
 
-In model:
+En el modelo:
 
 ```php
 $validator->add(
@@ -2479,7 +2479,7 @@ $validator->add(
 );
 ```
 
-Es posible convertir valores antes de la validación. This is useful in situations where values need to be converted to do the database lookup:
+Es posible convertir valores antes de la validación. Esto es útil en situaciones donde los valores necesitan convertirse para hacer la búsqueda en la base de datos:
 
 ```php
 $validator->add(
@@ -2525,7 +2525,7 @@ Ejecuta la validación
 protected function getColumnNameReal( mixed $record, string $field ): string;
 ```
 
-The column map is used in the case to get real column name
+En este caso se usa el mapa de columnas para obtener el nombre de columna real
 
 ```php
 protected function isUniqueness( Validation $validation, mixed $field ): bool;
@@ -2535,7 +2535,7 @@ protected function isUniqueness( Validation $validation, mixed $field ): bool;
 protected function isUniquenessModel( mixed $record, array $field, array $values );
 ```
 
-Uniqueness method used for model
+Método de unicidad utilizado para el modelo
 
 <h1 id="validation-validator-url">Class Phalcon\Validation\Validator\Url</h1>
 
@@ -2656,7 +2656,7 @@ protected function getAdapters(): array;
 
 | Namespace | Phalcon\Validation | | Uses | Phalcon\Validation |
 
-Interface for Phalcon\Validation\AbstractValidator
+Interfaz para Phalcon\Validation\AbstractValidator
 
 ## Métodos
 
@@ -2664,7 +2664,7 @@ Interface for Phalcon\Validation\AbstractValidator
 public function getOption( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Devuelve una opción en las opciones del validador. Devuelve null si la opción no ha sido configurada
+Devuelve una opción en las opciones del validador. Devuelve `null` si la opción no ha sido configurada
 
 ```php
 public function getTemplate( string $field ): string;
@@ -2676,7 +2676,7 @@ Obtiene el mensaje plantilla
 public function getTemplates(): array;
 ```
 
-Get message templates
+Obtiene las plantillas de mensaje
 
 ```php
 public function hasOption( string $key ): bool;
@@ -2694,7 +2694,7 @@ Establece un nuevo mensaje de plantilla
 public function setTemplates( array $templates ): ValidatorInterface;
 ```
 
-Clear current template and set new from an array,
+Limpia la plantilla actual y establece una nueva desde un vector,
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
