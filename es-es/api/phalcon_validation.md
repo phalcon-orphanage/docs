@@ -245,7 +245,7 @@ Phalcon\Validation\Validator constructor
 public function getOption( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Devuelve una opción en las opciones del validador. Devuelve null si la opción no ha sido configurada
 
 ```php
 public function getTemplate( string $field = null ): string;
@@ -2664,7 +2664,7 @@ Interface for Phalcon\Validation\AbstractValidator
 public function getOption( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Devuelve una opción en las opciones del validador. Devuelve null si la opción no ha sido configurada
 
 ```php
 public function getTemplate( string $field ): string;
