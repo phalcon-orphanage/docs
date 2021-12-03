@@ -30,11 +30,11 @@ title: 'Phalcon\Storage'
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Implements | AdapterInterface |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Propiedades
 
@@ -85,37 +85,37 @@ protected serializerFactory;
 protected function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Sets parameters based on options
+Establece parámetros basándose en opciones
 
 ```php
 abstract public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 abstract public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 abstract public function delete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Borra datos desde el adaptador
 
 ```php
 abstract public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 abstract public function getAdapter(): mixed;
 ```
 
-Returns the adapter - connects to the storage if not connected
+Devuelve el adaptador - se conecta al almacenamiento si no está conectado
 
 ```php
 public function getDefaultSerializer(): string
@@ -125,7 +125,7 @@ public function getDefaultSerializer(): string
 abstract public function getKeys( string $prefix = string ): array;
 ```
 
-Returns all the keys stored
+Devuelve todas las claves almacenadas
 
 ```php
 public function getPrefix(): string
@@ -135,19 +135,19 @@ public function getPrefix(): string
 abstract public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache
+Comprueba si un elemento existe en el caché
 
 ```php
 abstract public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 abstract public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 ```php
 public function setDefaultSerializer( string $defaultSerializer )
@@ -157,37 +157,37 @@ public function setDefaultSerializer( string $defaultSerializer )
 protected function getFilteredKeys( mixed $keys, string $prefix ): array;
 ```
 
-Filters the keys array based on global and passed prefix
+Filtra el vector de claves basado en global y el prefijo pasado
 
 ```php
 protected function getPrefixedKey( mixed $key ): string;
 ```
 
-Returns the key requested, prefixed
+Devuelve la clave solicitada, prefijada
 
 ```php
 protected function getSerializedData( mixed $content ): mixed;
 ```
 
-Returns serialized data
+Devuelve datos serializados
 
 ```php
 protected function getTtl( mixed $ttl ): int;
 ```
 
-Calculates the TTL for a cache item
+Calcula el TTL para un elemento de caché
 
 ```php
 protected function getUnserializedData( mixed $content, mixed $defaultValue = null ): mixed;
 ```
 
-Returns unserialized data
+Devuelve datos sin serializar
 
 ```php
 protected function initSerializer(): void;
 ```
 
-Initializes the serializer
+Inicializa el serializador
 
 <h1 id="storage-adapter-adapterinterface">Interface Phalcon\Storage\Adapter\AdapterInterface</h1>
 
@@ -203,37 +203,37 @@ Interfaz para adaptadores Phalcon\Logger
 public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Borra datos desde el adaptador
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the backend server(s)
+Devuelve el adaptador ya conectado o conecta al/los servidor/es de *backend*
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Returns all the keys stored
+Devuelve todas las claves almacenadas
 
 ```php
 public function getPrefix(): string;
@@ -245,19 +245,19 @@ Devuelve el prefijo de las claves
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache
+Comprueba si un elemento existe en el caché
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 <h1 id="storage-adapter-apcu">Class Phalcon\Storage\Adapter\Apcu</h1>
 
@@ -289,55 +289,55 @@ Constructor
 public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Always returns null
+Siempre devuelve nulo
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache
+Comprueba si un elemento existe en el caché
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 <h1 id="storage-adapter-libmemcached">Class Phalcon\Storage\Adapter\Libmemcached</h1>
 
@@ -363,61 +363,61 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Libmemcached constructor.
+Constructor Libmemcached.
 
 ```php
 public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the Memcached server(s)
+Devuelve el adaptador ya conectado o conecta al/los servidor/es de Memcached
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache
+Comprueba si un elemento existe en el caché
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 <h1 id="storage-adapter-memory">Class Phalcon\Storage\Adapter\Memory</h1>
 
@@ -454,55 +454,55 @@ Constructor
 public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Always returns null
+Siempre devuelve nulo
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache
+Comprueba si un elemento existe en el caché
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 <h1 id="storage-adapter-redis">Class Phalcon\Storage\Adapter\Redis</h1>
 
@@ -534,55 +534,55 @@ Constructor
 public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Borra datos desde el adaptador
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the Redis server(s)
+Devuelve el adaptador ya conectado o conecta al/los servidor/es de Redis
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Gets the keys from the adapter. Accepts an optional prefix which will filter the keys returned
+Obtiene las claves del adaptador. Acepta un prefijo opcional que filtrará las claves devueltas
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache
+Comprueba si un elemento existe en el caché
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter. If no ttl is given, the default value will be used (3600s at the moment).
+Almacena datos en el adaptador. Si no se da ningún ttl, se usará el valor por defecto (3600s en este momento).
 
 <h1 id="storage-adapter-stream">Class Phalcon\Storage\Adapter\Stream</h1>
 
@@ -613,61 +613,61 @@ protected options;
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
-Stream constructor.
+Constructor Stream.
 
 ```php
 public function clear(): bool;
 ```
 
-Flushes/clears the cache
+Vacía/Limpia la caché
 
 ```php
 public function decrement( string $key, int $value = int ): int | bool;
 ```
 
-Decrements a stored number
+Decrementa el número almacenado
 
 ```php
 public function delete( string $key ): bool;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
-Reads data from the adapter
+Lee datos desde el adaptador
 
 ```php
 public function getAdapter(): mixed;
 ```
 
-Always returns null
+Siempre devuelve nulo
 
 ```php
 public function getKeys( string $prefix = string ): array;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 ```php
 public function has( string $key ): bool;
 ```
 
-Checks if an element exists in the cache and is not expired
+Comprueba si un elemento existe en el caché y no ha expirado
 
 ```php
 public function increment( string $key, int $value = int ): int | bool;
 ```
 
-Increments a stored number
+Incrementa un número almacenado
 
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
-Stores data in the adapter
+Almacena datos en el adaptador
 
 <h1 id="storage-adapterfactory">Class Phalcon\Storage\AdapterFactory</h1>
 
@@ -675,11 +675,11 @@ Stores data in the adapter
 
 | Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Propiedades
 
@@ -717,7 +717,7 @@ protected function getAdapters(): array;
 
 Phalcon\Storage\Exception
 
-Exceptions thrown in Phalcon\Storage will use this class
+Las excepciones lanzadas en Phalcon\Storage usarán esta clase
 
 <h1 id="storage-serializer-abstractserializer">Abstract Class Phalcon\Storage\Serializer\AbstractSerializer</h1>
 
@@ -725,11 +725,11 @@ Exceptions thrown in Phalcon\Storage will use this class
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Exception | | Implements | SerializerInterface |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Propiedades
 
@@ -761,7 +761,7 @@ public function setData( mixed $data ): void;
 protected function isSerializable( mixed $data ): bool;
 ```
 
-If this returns true, then the data returns back as is
+Si devuelve verdadero, entonces los datos se devuelven tal cual
 
 <h1 id="storage-serializer-base64">Class Phalcon\Storage\Serializer\Base64</h1>
 
@@ -769,11 +769,11 @@ If this returns true, then the data returns back as is
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -781,13 +781,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-igbinary">Class Phalcon\Storage\Serializer\Igbinary</h1>
 
@@ -795,11 +795,11 @@ Unserializes data
 
 | Namespace | Phalcon\Storage\Serializer | | Extends | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -807,13 +807,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-json">Class Phalcon\Storage\Serializer\Json</h1>
 
@@ -821,11 +821,11 @@ Unserializes data
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, JsonSerializable, Phalcon\Helper\Json | | Extends | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -833,13 +833,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-msgpack">Class Phalcon\Storage\Serializer\Msgpack</h1>
 
@@ -847,11 +847,11 @@ Unserializes data
 
 | Namespace | Phalcon\Storage\Serializer | | Extends | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -859,13 +859,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function serialize(): string | null;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-none">Class Phalcon\Storage\Serializer\None</h1>
 
@@ -873,11 +873,11 @@ Unserializes data
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -885,13 +885,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-php">Class Phalcon\Storage\Serializer\Php</h1>
 
@@ -899,11 +899,11 @@ Unserializes data
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, Phalcon\Storage\Exception | | Extends | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -911,13 +911,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function serialize(): string;
 ```
 
-Serializes data
+Serializa los datos
 
 ```php
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializes data
+Deserializa los datos
 
 <h1 id="storage-serializer-serializerinterface">Interface Phalcon\Storage\Serializer\SerializerInterface</h1>
 
@@ -925,11 +925,11 @@ Unserializes data
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | Serializable | | Extends | Serializable |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -947,11 +947,11 @@ public function setData( mixed $data ): void;
 
 | Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractFactory |
 
-This file is part of the Phalcon Framework.
+Este fichero es parte del Framework Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -959,7 +959,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function __construct( array $services = [] );
 ```
 
-SerializerFactory constructor.
+Constructor SerializerFactory.
 
 ```php
 public function newInstance( string $name ): SerializerInterface;

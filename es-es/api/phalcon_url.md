@@ -15,7 +15,7 @@ title: 'Phalcon\Url'
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface | | Extends | AbstractInjectionAware | | Implements | UrlInterface |
 
-This components helps in the generation of: URIs, URLs and Paths
+Estos componentes ayudan en la generación de: URIs, URLs y rutas
 
 ```php
 // Generate a URL appending the URI to the base URI
@@ -66,7 +66,7 @@ public function __construct( RouterInterface $router = null );
 public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
 ```
 
-Generates a URL
+Genera una URL
 
 ```php
 // Generate a URL appending the URI to the base URI
@@ -102,19 +102,19 @@ echo $url->get(
 public function getBasePath(): string;
 ```
 
-Returns the base path
+Devuelve la ruta base
 
 ```php
 public function getBaseUri(): string;
 ```
 
-Returns the prefix for all the generated urls. By default /
+Devuelve el prefijo para todas las urls generadas. Por defecto /
 
 ```php
 public function getStatic( mixed $uri = null ): string;
 ```
 
-Generates a URL for a static resource
+Genera una URL para un recurso estático
 
 ```php
 // Generate a URL for a static resource
@@ -132,19 +132,19 @@ echo $url->getStatic(
 public function getStaticBaseUri(): string;
 ```
 
-Returns the prefix for all the generated static urls. By default /
+Devuelve el prefijo para todas las urls estáticas generadas. Por defecto /
 
 ```php
 public function path( string $path = null ): string;
 ```
 
-Generates a local path
+Genera una ruta local
 
 ```php
 public function setBasePath( string $basePath ): UrlInterface;
 ```
 
-Sets a base path for all the generated paths
+Establece una ruta base para todas las rutas generadas
 
 ```php
 $url->setBasePath("/var/www/htdocs/");
@@ -154,7 +154,7 @@ $url->setBasePath("/var/www/htdocs/");
 public function setBaseUri( string $baseUri ): UrlInterface;
 ```
 
-Sets a prefix for all the URIs to be generated
+Establece un prefijo para todas las URIs a generar
 
 ```php
 $url->setBaseUri("/invo/");
@@ -166,7 +166,7 @@ $url->setBaseUri("/invo/index.php/");
 public function setStaticBaseUri( string $staticBaseUri ): UrlInterface;
 ```
 
-Sets a prefix for all static URLs generated
+Establece un prefijo para todas las URLs estáticas generadas
 
 ```php
 $url->setStaticBaseUri("/invo/");
@@ -180,7 +180,7 @@ $url->setStaticBaseUri("/invo/");
 
 Phalcon\Url\Exception
 
-Exceptions thrown in Phalcon\Url will use this class
+Las excepciones lanzadas en Phalcon\Url usarán esta clase
 
 <h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
 
@@ -188,7 +188,7 @@ Exceptions thrown in Phalcon\Url will use this class
 
 | Namespace | Phalcon\Url |
 
-Interface for Phalcon\Url\UrlInterface
+Interfaz para Phalcon\Url\UrlInterface
 
 ## Métodos
 
@@ -196,34 +196,34 @@ Interface for Phalcon\Url\UrlInterface
 public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
 ```
 
-Generates a URL
+Genera una URL
 
 ```php
 public function getBasePath(): string;
 ```
 
-Returns a base path
+Devuelve una ruta base
 
 ```php
 public function getBaseUri(): string;
 ```
 
-Returns the prefix for all the generated urls. By default /
+Devuelve el prefijo para todas las urls generadas. Por defecto /
 
 ```php
 public function path( string $path = null ): string;
 ```
 
-Generates a local path
+Genera una ruta local
 
 ```php
 public function setBasePath( string $basePath ): UrlInterface;
 ```
 
-Sets a base paths for all the generated paths
+Establece una ruta base para todas las rutas generadas
 
 ```php
 public function setBaseUri( string $baseUri ): UrlInterface;
 ```
 
-Sets a prefix to all the urls generated
+Establece un prefijo para todas las urls generadas
