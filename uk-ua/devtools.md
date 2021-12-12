@@ -7,35 +7,28 @@ keywords: 'devtools, developer tools, models, controllers'
 ---
 
 # Phalcon Devtools
-
-* * *
-
+- - -
 ![](/assets/images/document-status-under-review-red.svg)
 
 ## Огляд
-
 Ці інструменти допомагають генерувати скелетний код, підтримувати структуру бази даних та сприяють пришвидшенню розробки. Основні компоненти вашого додатка можна створити за допомогою простої команди, що дозволяє легко розробляти програми за допомогою Phalcon.
 
 Управляти Phalcon Devtool можна за допомогою командного рядка (cmd) або веб-інтерфейсу.
 
 ## Встановлення
 
-Phalcon Devtools можна встановити за допомогою <composer>. Переконайтесь, що ви встановили composer.
+Phalcon Devtools можна встановити за допомогою [composer](composer). Переконайтесь, що ви встановили composer.
 
 Установка Phalcon Devtools глобально
-
 ```bash
 composer global require phalcon/devtools
 ```
-
 Або лише всередині вашого проекту
-
 ```bash
 composer require phalcon/devtools
 ```
 
 Перевірте свою установку, набравши: `phalcon`
-
 ```bash
 $ phalcon
 
@@ -59,9 +52,7 @@ Phalcon DevTools (4.0.0)
 Інструменти devtools також доступні у форматі phar для завантаження у нашому [репозиторії](github_devtools) github.
 
 ## Використання
-
 ### Доступні команди
-
 Ви можете отримати список доступних команд в інструментах Phalcon, набравши: `phalcon commands`
 
 ```bash
@@ -85,7 +76,6 @@ Available commands:
 ```
 
 ### Створення скелету проекту
-
 Ви можете використовувати інструменти Phalcon для створення типового скелета проекту для ваших додатків на основі фреймворка Phalcon. За замовчуванням генератор скелета проекту використовуватиме mod_rewrite для Apache. Наберіть таку команду в кореневій папці проекту:
 
 ```bash
@@ -133,7 +123,6 @@ Phalcon DevTools (4.0.0)
 ![](/assets/images/content/v4/devtools-store-localhost.png)
 
 ### Створення контролерів
-
 Команда `create-controller` генерує скелетні структури контролерів. Важливо викликати цю команду в каталозі, у якому вже є проєкт Phalcon.
 
 ```bash
@@ -159,8 +148,7 @@ class TestController extends \Phalcon\Mvc\Controller
 ```
 
 ### Підготовка налаштувань бази даних
-
-Коли проект згенеровано за допомогою інструментів розробника, файл конфігурації можна знайти в `app/config/config.php`. Для створення моделей або їх типових структур потрібно змінити параметри, які використовуються для підключення до бази даних.
+Коли проект згенеровано за допомогою інструментів розробника,  файл конфігурації можна знайти в `app/config/config.php`. Для створення моделей або їх типових структур потрібно змінити параметри, які використовуються для підключення до бази даних.
 
 Змініть розділ налаштувань доступу до бази даних у вашому файлі config.php:
 
@@ -198,7 +186,6 @@ return new \Phalcon\Config([
 ```
 
 ### Створення моделей
-
 Існує кілька способів створити моделі. Ви можете створити всі моделі з підключення до бази даних за замовчуванням або деякі вибірково. Моделі можуть використовувати публічні атрибути для представлення полів або установлювачі (сетери)/збирачі (ґеттери).
 
 ```bash
@@ -223,13 +210,10 @@ return new \Phalcon\Config([
 ```
 
 Найпростіший спосіб створити модель для таблиці з назвою users:
-
 ```bash
 $ phalcon model users
 ```
-
 Якщо ваша база даних виглядає так:
-
 ```sql
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -247,7 +231,6 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 ```
-
 Це призведе до
 
 ```php
@@ -261,41 +244,36 @@ class Users extends \Phalcon\Mvc\Model
 
     /**
      *
-
      * @var integer
      */
     public $id;
 
     /**
      *
-
      * @var string
      */
     public $name;
 
     /**
      *
-
      * @var string
      */
     public $email;
 
     /**
      *
-
      * @var string
      */
     public $password;
 
     /**
      *
-
      * @var string
      */
     public $active;
 
     /**
-     * Перевірка та бізнес логіка
+     * Validations and business logic
      *
      * @return boolean
      */
@@ -308,7 +286,7 @@ class Users extends \Phalcon\Mvc\Model
             new EmailValidator(
                 [
                     'model'   => $this,
-                    'message' => 'Будь ласка вкажіть правильну email-адресу',
+                    'message' => 'Please enter a correct email address',
                 ]
             )
         );
@@ -317,7 +295,7 @@ class Users extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Метод ініціалізації моделі.
+     * Initialize method for model.
      */
     public function initialize()
     {
@@ -349,15 +327,12 @@ class Users extends \Phalcon\Mvc\Model
 
 }
 ```
-
 Варіанти створення різних типів креслень моделі можна знайти за допомогою
-
 ```bash
 phalcon model --help
 ```
 
 ### Генерування CRUD
-
 Генерування - це швидкий спосіб створити деякі основні частини додатку. Якщо ви хочете створити моделі, представлення та контролери для нового ресурсу в одній операції, використовуйте інструмент генерування.
 
 Після генерації коду, він повинен бути налаштований для задоволення ваших потреб. Багато розробників уникають генерації, обирають писати всі або більшість своїх вихідних кодів з нуля. Згенерований код може слугувати довідником, щоб краще зрозуміти як працює фреймворк або розробка прототипів. Наведений нижче код показує генерацію на основі таблиці `users`:
@@ -390,17 +365,16 @@ $ phalcon scaffold --table-name users
 ![](/assets/images/content/devtools-usage-05.png)
 
 ### Веб-інтерфейс для інструментів
-
 Також, якщо бажаєте, можна використати інструменти розробника Phalcon через веб-інтерфейс. Перегляньте наступний ролик, щоб з'ясувати, як це працює:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen mark="crwd-mark"></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 ### Поєднання інструментів з PhpStorm IDE
-
-Нижче показаний ролик про те, як поєднати інструменти розробника з [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). Налаштування можуть бути легко адаптовані для інших IDE під PHP.
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE][phpstorm]. Налаштування можуть бути легко адаптовані для інших IDE під PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
+[phpstorm]: https://www.jetbrains.com/phpstorm/
