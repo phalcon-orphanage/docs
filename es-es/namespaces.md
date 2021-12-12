@@ -7,17 +7,13 @@ keywords: 'espacios de nombres, clases con espacios de nombres'
 ---
 
 # Espacios de nombres
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-Los [Espacios de nombres](https://php.net/manual/en/language.namespaces.php) se pueden usar para evitar colisiones de nombres de clase. Esto significa que si tiene dos controladores en una aplicación con el mismo nombre, se puede usar un espacio de nombres para ayudar a PHP a entender que son dos clases diferentes. Los espacios de nombres también son útiles cuando se crean paquetes o módulos.
+[Namespaces][namespaces] can be used to avoid class name collisions. Esto significa que si tiene dos controladores en una aplicación con el mismo nombre, se puede usar un espacio de nombres para ayudar a PHP a entender que son dos clases diferentes. Los espacios de nombres también son útiles cuando se crean paquetes o módulos.
 
 ## Activación
-
 Si decide usar espacios de nombres para su aplicación, necesitará instruir a su autocargador sobre dónde residen sus espacios de nombres. Esta es la forma más común de distinguir entre espacios de nombres en su aplicación. Si elige usar el componente [Phalcon\Loader](loader), entonces necesitará registrar sus espacios de nombres apropiadamente:
 
 ```php
@@ -83,7 +79,6 @@ $di->set(
 ```
 
 ## Controladores
-
 El siguiente ejemplo muestra como implementar un controlador que usa espacio de nombres:
 
 ```php
@@ -108,7 +103,6 @@ class InvoicesController extends Controller
 ```
 
 ## Modelos
-
 El siguiente ejemplo muestra un modelo con espacio de nombres:
 
 ```php
@@ -158,3 +152,5 @@ $phql = 'SELECT i.* '
       . 'FROM MyApp\Admin\Models\Invoices i '
       . 'JOIN MyApp\Admin\Models\Customers c';
 ```
+
+[namespaces]: https://php.net/manual/en/language.namespaces.php 
