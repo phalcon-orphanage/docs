@@ -11,7 +11,7 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
-The `REST API` application is an application that shows how you can create a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API utilizing Phalcon. In this tutorial, we will use the [Micro](application-micro) application. We will also utilize \[Phinx\]\[phinx\] for our database migrations, \[JSON Web Tokens (JWT)\]\[jwt\] for authentication as well as \[JSON API\]\[jsonapi\] for the structured responses.
+The `REST API` application is an application that shows how you can create a [RESTful][restful] API utilizing Phalcon. In this tutorial, we will use the [Micro](application-micro) application. We will also utilize \[Phinx\]\[phinx\] for our database migrations, \[JSON Web Tokens (JWT)\]\[jwt\] for authentication as well as \[JSON API\]\[jsonapi\] for the structured responses.
 
 ## Instalação
 ## Structure
@@ -79,7 +79,7 @@ Setting up the
 
 
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:
 
 * `GET` to retrieve and search data
 * `POST` to add data
@@ -605,7 +605,7 @@ CREATE TABLE `robotics`.`robots` (
 ```
 
 ## Testing our Application
-Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+Using [curl][curl] we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:
 
@@ -708,3 +708,6 @@ Content-Type: text/html; charset=UTF-8
 
 {"status":"OK"}
 ```
+
+[restful]: https://en.wikipedia.org/wiki/Representational_state_transfer
+[curl]: https://en.wikipedia.org/wiki/CURL
