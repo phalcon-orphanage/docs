@@ -7,14 +7,11 @@ keywords: 'registro'
 ---
 
 # Componente Registro
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-[Phalcon\Registry](api/phalcon_registry#registry) es un vector orientado a objeto. Extiende [Phalcon\Collection](collection) pero no puede ser extendido a sí mismo, ya que todos sus métodos están declarados como `final`. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
+[Phalcon\Registry][registry] is an object oriented array. Extiende [Phalcon\Collection](collection) pero no puede ser extendido a sí mismo, ya que todos sus métodos están declarados como `final`. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -40,7 +37,6 @@ $collection = new Registry($data);
 ```
 
 ## Constructor
-
 Puede construir el objeto como cualquier otro objeto en PHP. Sin embargo, el constructor acepta un parámetro opcional `array`, que rellenará el objeto por usted.
 
 ```php
@@ -61,8 +57,7 @@ $collection = new Registry($data);
 ```
 
 ## Reutilización
-
-También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Registry](api/phalcon_registry#registry) expone los métodos `clear()` y `init()`, que limpiarán y rellenarán el vector interno respectivamente,
+También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Registry][registry] exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -94,12 +89,10 @@ echo $collection->count(); // 1
 ```
 
 ## Obtener
-
-Como se ha mencionado antes, [Phalcon\Registry](api/phalcon_registry#registry) implementa varios interfaces, para hacer al componente lo más flexible posible. Recuperar datos almacenados en un elemento se puede hacer usando:
-
+As mentioned above, [Phalcon\Registry][registry] implements several interfaces, in order to make the component as flexible as possible. Recuperar datos almacenados en un elemento se puede hacer usando:
 - Propiedad
 - `__get()`
-- acceso como vector (`$collection[$element]`)
+- Acceso como arreglo (`$collection[$element]`)
 - `offsetGet()`
 - `get()`
 
@@ -154,10 +147,8 @@ Usar `get()` ofrece tres parámetros extra. Cuando se define `$defaultValue` en 
 - `object`
 - `string`
 
-## Tiene
-
+## Has
 Para comprobar si un elemento existe o no en la colección, puede usar lo siguiente:
-
 - `isset()` en la propiedad
 - `__isset()`
 - isset basado en vector (`isset($collection[$element])`)
@@ -199,12 +190,10 @@ public function has(string $element):  bool
 ```
 
 ## Establecer
-
 Para establecer un elemento en la colección, puede utilizar lo siguiente:
-
 - asignar el valor a la propiedad
 - `__set()`
-- asignación basado en vector 
+- asignación basado en vector
 - `offsetSet()`
 - `set()`
 
@@ -238,12 +227,10 @@ $collection->set('year', 1776);
 ```
 
 ## Eliminar
-
 Para eliminar un elemento en la colección, puede utilizar lo siguiente:
-
 - desestablecer la propiedad
 - `__unset()`
-- desestablecer basado en vector 
+- desestablecer basado en vector
 - `offsetUnset()`
 - `remove()`
 
@@ -281,7 +268,6 @@ public function remove(string $element):  void
 ```
 
 ## Iteración
-
 Dado que el objeto de colección implementa `\IteratorAggregate`, puedes iterar con facilidad a través del objeto. El método `getIterator()` devuelve un objeto `ArrayIterator()`
 
 ```php
@@ -306,7 +292,6 @@ foreach ($collection as $key => $value) {
 ```
 
 ## Contar
-
 La implementación de la interfaz `\Countable` expone el método `count()`, que almacena el número de elementos en la colección.
 
 ```php
@@ -329,8 +314,7 @@ echo $collection->count(); // 2
 ```
 
 ## Serialización
-
-Las interfaces `\Serializable` y `\JsonSerializable` exponen métodos que le permiten serializar y deserializar un objeto. `serialize()` y `unserialize()` utilizan las funciones `serialize` y `unserialize` de PHP. `jsonSerialize()` devuelve un vector que puede ser usado con `json_encode()` para serializar el objeto.
+Las interfaces `\Serializable` y `\JsonSerializable` exponen métodos que le permiten serializar y deserializar un objeto. `serialize()` y `unserialize()` utilizan las funciones `serialize` y `unserialize` de PHP. `jsonSerialize()` devuelve un arreglo que puede ser usado con `json_encode()` para serializar el objeto.
 
 ```php
 <?php
@@ -357,8 +341,8 @@ echo $collection->jsonSerialize(); // $data
 ```
 
 ## Transformaciones
+[Phalcon\Registry][registry] also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` devuelve el objeto transformado como un arreglo. Este método devuelve el mismo *array* que `jsonSerialize()`.
 
-[Phalcon\Registry](api/phalcon_registry#registry) también expone dos métodos de transformación: `toArray()` y `toJson(int $options)`. `toArray()` devuelve el objeto transformado como un vector. Este método devuelve el mismo vector que `jsonSerialize()`.
 
 ```php
 <?php
@@ -380,7 +364,6 @@ echo $collection->toArray(); // $data
 ```
 
 `toJson(int $options)` devuelve una representación JSON del objeto. Utiliza `json_encode()` internamente y acepta un parámetro, que representa las banderas que `json_encode` acepta. Por defecto, las opciones se configuran con el valor `74`, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) que se traduce a:
-
 - `JSON_HEX_TAG`
 - `JSON_HEX_APOS`
 - `JSON_HEX_AMP`
@@ -419,3 +402,5 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 }
 */
 ```
+
+[registry]: api/phalcon_registry#registry
