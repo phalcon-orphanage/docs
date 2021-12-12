@@ -7,14 +7,11 @@ keywords: 'validation, validating forms, validating models, validating data'
 ---
 
 # Validation Component
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-
-[Phalcon\Validation](api/phalcon_validation#validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+[Phalcon\Validation][validation] is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
 The following example shows its basic usage:
 
@@ -65,6 +62,7 @@ if (count($messages)) {
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
+
 ## Methods
 
 ```php
@@ -79,7 +77,6 @@ public function add(
     ValidatorInterface $validator
 ): ValidationInterface
 ```
-
 Adds a validator to a field
 
 ```php
@@ -87,7 +84,6 @@ public function appendMessage(
     MessageInterface $message
 ): ValidationInterface
 ```
-
 Appends a message to the messages list
 
 ```php
@@ -96,13 +92,11 @@ public function bind(
     array | object $$data
 ): ValidationInterface
 ```
-
 Assigns the data to an entity. The entity is used to obtain the validation values
 
 ```php
 public function getEntity(): object
 ```
-
 Returns the bound entity
 
 ```php
@@ -110,7 +104,6 @@ public function getFilters(
     string $field = null
 ): mixed | null
 ```
-
 Returns all the filters or a specific one
 
 ```php
@@ -118,19 +111,16 @@ public function getLabel(
     string $field
 ): string
 ```
-
 Get label for field
 
 ```php
 public function getMessages(): Messages
 ```
-
 Returns the registered validators
 
 ```php
 public function getValidators(): array
 ```
-
 Returns the validators added to the validation
 
 ```php
@@ -138,7 +128,6 @@ public function getValue(
     string $field
 ): mixed | null
 ```
-
 Gets a value to validate in the array/object data source
 
 ```php
@@ -147,7 +136,6 @@ public function rule(
     ValidatorInterface $validator
 ): ValidationInterface
 ```
-
 Alias of `add` method
 
 ```php
@@ -156,7 +144,6 @@ public function rules(
     array $validators
 ): ValidationInterface
 ```
-
 Adds the validators to a field
 
 ```php
@@ -164,7 +151,6 @@ public function setEntity(
     object $entity
 ): void
 ```
-
 Sets the bound entity
 
 ```php
@@ -173,7 +159,6 @@ public function setFilters(
     array | string $filters
 ): ValidationInterface
 ```
-
 Adds filters to the field
 
 ```php
@@ -181,7 +166,6 @@ public function setLabels(
     array $labels
 ): void
 ```
-
 Adds labels for fields
 
 ```php
@@ -190,12 +174,10 @@ public function validate(
     object $entity = null
 ): Messages
 ```
-
 Validate a set of data according to a set of rules
 
 ## Activation
-
-Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/phalcon_validation#validation) object. You can put your validations in a separate file for better code reuse and organization.
+Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation][validation] object. You can put your validations in a separate file for better code reuse and organization.
 
 ```php
 <?php
@@ -255,43 +237,41 @@ if (count($messages)) {
 ```
 
 ## Επικυρωτές
-
 Phalcon offers a set of built-in validators for this component:
 
-| Class                                                                                                                        | Validates                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| [Phalcon\Validation\Validator\Alnum](api/phalcon_validation#validation-validator-alnum)                                   | Alphanumeric character(s)  |
-| [Phalcon\Validation\Validator\Alpha](api/phalcon_validation#validation-validator-alpha)                                   | Alphabet character(s).     |
-| [Phalcon\Validation\Validator\Between](api/phalcon_validation#validation-validator-between)                               | Between two values         |
-| [Phalcon\Validation\Validator\Callback](api/phalcon_validation#validation-validator-callback)                             | Callback function          |
-| [Phalcon\Validation\Validator\Confirmation](api/phalcon_validation#validation-validator-confirmation)                     | Identical field values     |
-| [Phalcon\Validation\Validator\CreditCard](api/phalcon_validation#validation-validator-creditcard)                         | Credit card number         |
-| [Phalcon\Validation\Validator\Date](api/phalcon_validation#validation-validator-date)                                     | Date.                      |
-| [Phalcon\Validation\Validator\Digit](api/phalcon_validation#validation-validator-digit)                                   | Numeric character(s).      |
-| [Phalcon\Validation\Validator\Email](api/phalcon_validation#validation-validator-email)                                   | Email                      |
-| [Phalcon\Validation\Validator\ExclusionIn](api/phalcon_validation#validation-validator-exclusionin)                       | Not within value set       |
-| [Phalcon\Validation\Validator\File](api/phalcon_validation#validation-validator-file)                                     | File                       |
-| [Phalcon\Validation\Validator\File\MimeType](api/phalcon_validation#validation-validator-file-mimetype)                  | Mimetype File              |
-| [Phalcon\Validation\Validator\File\Resolution\Equal](api/phalcon_validation#validation-validator-file-resolution-equal) | Equal resolution of File   |
-| [Phalcon\Validation\Validator\File\Resolution\Max](api/phalcon_validation#validation-validator-file-resolution-max)     | Maximum resolution of File |
-| [Phalcon\Validation\Validator\File\Resolution\Min](api/phalcon_validation#validation-validator-file-resolution-min)     | Minimum resolution of File |
-| [Phalcon\Validation\Validator\File\Size\Equal](api/phalcon_validation#validation-validator-file-size-equal)             | Equal File Size            |
-| [Phalcon\Validation\Validator\File\Size\Max](api/phalcon_validation#validation-validator-file-size-max)                 | Maximum File Size          |
-| [Phalcon\Validation\Validator\File\Size\Min](api/phalcon_validation#validation-validator-file-size-min)                 | Minimum File Size          |
-| [Phalcon\Validation\Validator\Identical](api/phalcon_validation#validation-validator-identical)                           | Equal specific value       |
-| [Phalcon\Validation\Validator\InclusionIn](api/phalcon_validation#validation-validator-inclusionin)                       | Within value set           |
-| [Phalcon\Validation\Validator\Ip](api/phalcon_validation#validation-validator-ip)                                         | IP                         |
-| [Phalcon\Validation\Validator\Numericality](api/phalcon_validation#validation-validator-numericality)                     | Numeric Value              |
-| [Phalcon\Validation\Validator\PresenceOf](api/phalcon_validation#validation-validator-presenceof)                         | Not `null` or empty        |
-| [Phalcon\Validation\Validator\Regex](api/phalcon_validation#validation-validator-regex)                                   | Regex                      |
-| [Phalcon\Validation\Validator\StringLength](api/phalcon_validation#validation-validator-stringlength)                     | Length                     |
-| [Phalcon\Validation\Validator\StringLength\Max](api/phalcon_validation#validation-validator-stringlength-max)            | Maximum Length             |
-| [Phalcon\Validation\Validator\StringLength\Min](api/phalcon_validation#validation-validator-stringlength-min)            | Minimum Length             |
-| [Phalcon\Validation\Validator\Uniqueness](api/phalcon_validation#validation-validator-uniqueness)                         | Unique in Model            |
-| [Phalcon\Validation\Validator\Url](api/phalcon_validation#validation-validator-url)                                       | URL                        |
+| Class                                                                                                 | Validates                  |
+| ----------------------------------------------------------------------------------------------------- | -------------------------- |
+| [Phalcon\Validation\Validator\Alnum][validation-validator-alnum]                                   | Alphanumeric character(s)  |
+| [Phalcon\Validation\Validator\Alpha][validation-validator-alpha]                                   | Alphabet character(s).     |
+| [Phalcon\Validation\Validator\Between][validation-validator-between]                               | Between two values         |
+| [Phalcon\Validation\Validator\Callback][validation-validator-callback]                             | Callback function          |
+| [Phalcon\Validation\Validator\Confirmation][validation-validator-confirmation]                     | Identical field values     |
+| [Phalcon\Validation\Validator\CreditCard][validation-validator-creditcard]                         | Credit card number         |
+| [Phalcon\Validation\Validator\Date][validation-validator-date]                                     | Date.                      |
+| [Phalcon\Validation\Validator\Digit][validation-validator-digit]                                   | Numeric character(s).      |
+| [Phalcon\Validation\Validator\Email][validation-validator-email]                                   | Email                      |
+| [Phalcon\Validation\Validator\ExclusionIn][validation-validator-exclusionin]                       | Not within value set       |
+| [Phalcon\Validation\Validator\File][validation-validator-file]                                     | File                       |
+| [Phalcon\Validation\Validator\File\MimeType][validation-validator-file-mimetype]                  | Mimetype File              |
+| [Phalcon\Validation\Validator\File\Resolution\Equal][validation-validator-file-resolution-equal] | Equal resolution of File   |
+| [Phalcon\Validation\Validator\File\Resolution\Max][validation-validator-file-resolution-max]     | Maximum resolution of File |
+| [Phalcon\Validation\Validator\File\Resolution\Min][validation-validator-file-resolution-min]     | Minimum resolution of File |
+| [Phalcon\Validation\Validator\File\Size\Equal][validation-validator-file-size-equal]             | Equal File Size            |
+| [Phalcon\Validation\Validator\File\Size\Max][validation-validator-file-size-max]                 | Maximum File Size          |
+| [Phalcon\Validation\Validator\File\Size\Min][validation-validator-file-size-min]                 | Minimum File Size          |
+| [Phalcon\Validation\Validator\Identical][validation-validator-identical]                           | Equal specific value       |
+| [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]                       | Within value set           |
+| [Phalcon\Validation\Validator\Ip][validation-validator-ip]                                         | IP                         |
+| [Phalcon\Validation\Validator\Numericality][validation-validator-numericality]                     | Numeric Value              |
+| [Phalcon\Validation\Validator\PresenceOf][validation-validator-presenceof]                         | Not `null` or empty        |
+| [Phalcon\Validation\Validator\Regex][validation-validator-regex]                                   | Regex                      |
+| [Phalcon\Validation\Validator\StringLength][validation-validator-stringlength]                     | Length                     |
+| [Phalcon\Validation\Validator\StringLength\Max][validation-validator-stringlength-max]            | Maximum Length             |
+| [Phalcon\Validation\Validator\StringLength\Min][validation-validator-stringlength-min]            | Minimum Length             |
+| [Phalcon\Validation\Validator\Uniqueness][validation-validator-uniqueness]                         | Unique in Model            |
+| [Phalcon\Validation\Validator\Url][validation-validator-url]                                       | URL                        |
 
 ### Alnum
-
 Check for alphanumeric character(s)
 
 ```php
@@ -328,7 +308,6 @@ $validator->add(
 ```
 
 ### Alpha
-
 Check for alphabetic character(s)
 
 ```php
@@ -365,11 +344,11 @@ $validator->add(
 ```
 
 ### Between
-
 Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, minimum is less or equal than `L` and `L` is less or equal than the maximum. The boundaries are included in this validation. The formula is:
 
-    minimum <= value <= maximum
-    
+```
+minimum <= value <= maximum
+```
 
 ```php
 <?php
@@ -415,7 +394,6 @@ $validator->add(
 ```
 
 ### Callback
-
 By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
 ```php
@@ -524,7 +502,6 @@ $validator->add(
 ```
 
 ### Confirmation
-
 Checks that two values have the same value
 
 ```php
@@ -564,9 +541,7 @@ $validator->add(
     )
 );
 ```
-
 ### CreditCard
-
 Checks if a value has a valid credit card number
 
 ```php
@@ -603,7 +578,6 @@ $validator->add(
 ```
 
 ### Date
-
 Checks if a value is a valid date
 
 ```php
@@ -645,7 +619,6 @@ $validator->add(
 ```
 
 ### Digit
-
 Check for numeric character(s)
 
 ```php
@@ -682,7 +655,6 @@ $validator->add(
 ```
 
 ### Email
-
 Checks if a value has a correct e-mail format
 
 ```php
@@ -719,7 +691,6 @@ $validator->add(
 ```
 
 ### ExclusionIn
-
 Check if a value is not included into a list of values
 
 ```php
@@ -767,7 +738,6 @@ $validator->add(
 ```
 
 ### File
-
 Checks if a value has a correct file
 
 ```php
@@ -837,7 +807,6 @@ $validator->add(
 ```
 
 ### File MimeType
-
 Checks if a value has a correct file mime type
 
 ```php
@@ -888,7 +857,6 @@ $validator->add(
 ```
 
 ### File Resolution Equal
-
 Checks if a file has the right resolution
 
 ```php
@@ -930,7 +898,6 @@ $validator->add(
 ```
 
 ### File Resolution Max
-
 Checks if a file has the right resolution
 
 ```php
@@ -977,7 +944,6 @@ $validator->add(
 ```
 
 ### File Resolution Min
-
 Checks if a file has the right resolution
 
 ```php
@@ -1024,7 +990,6 @@ $validator->add(
 ```
 
 ### File Size Equal
-
 Checks if a value has a correct file
 
 ```php
@@ -1071,7 +1036,6 @@ $validator->add(
 ```
 
 ### File Size Max
-
 Checks if a value has a correct file
 
 ```php
@@ -1118,7 +1082,6 @@ $validator->add(
 ```
 
 ### File Size Min
-
 Checks if a value has a correct file
 
 ```php
@@ -1165,7 +1128,6 @@ $validator->add(
 ```
 
 ### Identical
-
 Checks if a value is identical to other
 
 ```php
@@ -1207,7 +1169,6 @@ $validator->add(
 ```
 
 ### InclusionIn
-
 Check if a value is included into a list of values
 
 ```php
@@ -1249,7 +1210,6 @@ $validator->add(
 ```
 
 ### Ip
-
 Check for IP addresses
 
 ```php
@@ -1309,7 +1269,6 @@ $validator->add(
 ```
 
 ### Numericality
-
 Check for a valid numeric value
 
 ```php
@@ -1367,7 +1326,6 @@ $validation->add(
 ```
 
 ### Regex
-
 Validates a field based on a regex pattern.
 
 ```php
@@ -1390,11 +1348,11 @@ $validation->add(
 ```
 
 ### StringLength
-
 Validates that a string has the specified maximum and minimum constraints. The validation passes if for a string length `L`, minimum is less or equal than `L` and `L` is less or equal than the maximum. The boundaries are included in this validation. The formula is:
 
-    minimum <= string length <= maximum
-    
+```
+minimum <= string length <= maximum
+```
 
 This validator works like a container.
 
@@ -1457,11 +1415,11 @@ $validation->add(
 ```
 
 ### StringLength Max
-
 Validates that a string has the specified maximum constraints. The validation passes if for a string length `L` it is less or equal than the maximum. The formula is:
 
-    string length <= maximum
-    
+```
+string length <= maximum
+```
 
 ```php
 <?php
@@ -1507,11 +1465,11 @@ $validation->add(
 ```
 
 ### StringLength Min
-
 Validates that a string has the specified minimum constraints. The validation passes if for a string length `L` it is more or equal than the minimum. The formula is:
 
-    minimum <= string length 
-    
+```
+minimum <= string length 
+```
 
 ```php
 <?php
@@ -1557,7 +1515,6 @@ $validation->add(
 ```
 
 ### Uniqueness
-
 Check that a field is unique in the related table
 
 ```php
@@ -1641,9 +1598,7 @@ $validator->add(
 ```
 
 #### Using except for fields (SQL operation "value NOT IN (except)")
-
 Single field
-
 ```php
 <?php
 
@@ -1656,9 +1611,7 @@ $validator->add(
     )
 );
 ```
-
 Multiple fields with keys (each except will be applied to value it defined by key)
-
 ```php
 <?php
 
@@ -1674,9 +1627,7 @@ $validator->add(
     )
 );
 ```
-
 Multiple fields without keys (each except will be applied to all values recursively)
-
 ```php
 <?php
 
@@ -1692,9 +1643,7 @@ $validator->add(
     )
 );
 ```
-
 Multiple fields with single except (except will be applied to all values recursively)
-
 ```php
 <?php
 
@@ -1709,7 +1658,6 @@ $validator->add(
 ```
 
 ### Διεύθυνση URL
-
 Checks if a value has a url format
 
 ```php
@@ -1807,8 +1755,7 @@ $messages = $validation->validate(
 ```
 
 ### Custom Validators
-
-You can create your own validators by implementing the [Phalcon\Validation\ValidatorInterface](api/phalcon_validation#validation-validatorinterface) or [Phalcon\Validation\Validator\CompositeInterface](api/phalcon_validation#validation-validatorcompositeinterface). You can also extend the [Phalcon\Validation\AbstractCombinedFieldsValidator](api/phalcon_validation#validation-abstractcombinedfieldsvalidator), [Phalcon\Validation\AbstractValidator](api/phalcon_validation#validation-abstractvalidator) or [Phalcon\Validation\AbstractValidatorComposite](api/phalcon_validation#validation-abstractvalidatorcomposite).
+You can create your own validators by implementing the [Phalcon\Validation\ValidatorInterface][validation-validatorinterface] or [Phalcon\Validation\Validator\CompositeInterface][validation-validatorcompositeinterface]. You can also extend the [Phalcon\Validation\AbstractCombinedFieldsValidator][validation-abstractcombinedfieldsvalidator], [Phalcon\Validation\AbstractValidator][validation-abstractvalidator] or [Phalcon\Validation\AbstractValidatorComposite][validation-abstractvalidatorcomposite].
 
 ```php
 <?php
@@ -1853,10 +1800,9 @@ class IpValidator extends AbstractValidator
 It is important that validators return a valid `boolean` value indicating if the validation was successful or not.
 
 ## Messages
+[Phalcon\Validation][validation] utilizes the [Phalcon\Messages\Messages][messages-messages] collection, providing a flexible way to output or store the validation messages generated during the validation processes.
 
-[Phalcon\Validation](api/phalcon_validation#validation) utilizes the [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) collection, providing a flexible way to output or store the validation messages generated during the validation processes.
-
-Each message consists of an instance of the class [Phalcon\Messages\Message](api/phalcon_messages#messages-message). The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information such as the field that generated the message or the message type:
+Each message consists of an instance of the class [Phalcon\Messages\Message][messages-message]. The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information such as the field that generated the message or the message type:
 
 ```php
 <?php
@@ -1906,7 +1852,6 @@ if (count($messages)) {
 ```
 
 ## Filtering of Data
-
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
 ```php
@@ -1938,10 +1883,9 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the <filter> component. You can add more filters to this component or use the built-in ones.
+Filtering and sanitizing is performed using the [filter](filter) component. You can add more filters to this component or use the built-in ones.
 
 ## Γεγονότα
-
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
 ```php
@@ -1984,7 +1928,6 @@ class LoginValidation extends Validation
 ```
 
 ## Cancelling Validations
-
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
@@ -2053,7 +1996,6 @@ class MyValidator extends Validator
 ```
 
 ## Empty Values
-
 You can pass the option `allowEmpty` to any of the built-in validators to ignore empty values.
 
 ```php
@@ -2077,7 +2019,6 @@ $validation->add(
 ```
 
 ## Recursive Validation
-
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
 ```php
@@ -2111,8 +2052,7 @@ class CompanyValidation extends Validation
 ```
 
 ## Exceptions
-
-Any exceptions thrown in the `Phalcon\Validator` namespace will be of type [Phalcon\Validation\Exception](api/phalcon_validation#validation-exception) or [Phalcon\Validation\Validator\Exception](api/phalcon_validation#validation-validator-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Validator` namespace will be of type [Phalcon\Validation\Exception][validation-exception] or [Phalcon\Validation\Validator\Exception][validation-validator-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -2137,3 +2077,45 @@ try {
     echo $ex->getMessage();
 }
 ```
+
+
+[messages-message]: api/phalcon_messages#messages-message
+[messages-messages]: api/phalcon_messages#messages-messages
+[validation]: api/phalcon_validation#validation
+[validation-abstractcombinedfieldsvalidator]: api/phalcon_validation#validation-abstractcombinedfieldsvalidator
+[validation-abstractvalidator]: api/phalcon_validation#validation-abstractvalidator
+[validation-abstractvalidatorcomposite]: api/phalcon_validation#validation-abstractvalidatorcomposite
+[validation-exception]: api/phalcon_validation#validation-exception
+[validation-validator-alnum]: api/phalcon_validation#validation-validator-alnum
+[validation-validator-alpha]: api/phalcon_validation#validation-validator-alpha
+[validation-validator-between]: api/phalcon_validation#validation-validator-between
+[validation-validator-callback]: api/phalcon_validation#validation-validator-callback
+[validation-validator-confirmation]: api/phalcon_validation#validation-validator-confirmation
+[validation-validator-creditcard]: api/phalcon_validation#validation-validator-creditcard
+[validation-validator-date]: api/phalcon_validation#validation-validator-date
+[validation-validator-digit]: api/phalcon_validation#validation-validator-digit
+[validation-validator-email]: api/phalcon_validation#validation-validator-email
+[validation-validator-exception]: api/phalcon_validation#validation-validator-exception
+[validation-validator-exclusionin]: api/phalcon_validation#validation-validator-exclusionin
+[validation-validator-file]: api/phalcon_validation#validation-validator-file
+[validation-validator-file-mimetype]: api/phalcon_validation#validation-validator-file-mimetype
+[validation-validator-file-resolution-equal]: api/phalcon_validation#validation-validator-file-resolution-equal
+[validation-validator-file-resolution-max]: api/phalcon_validation#validation-validator-file-resolution-max
+[validation-validator-file-resolution-min]: api/phalcon_validation#validation-validator-file-resolution-min
+[validation-validator-file-size-equal]: api/phalcon_validation#validation-validator-file-size-equal
+[validation-validator-file-size-max]: api/phalcon_validation#validation-validator-file-size-max
+[validation-validator-file-size-min]: api/phalcon_validation#validation-validator-file-size-min
+[validation-validator-identical]: api/phalcon_validation#validation-validator-identical
+[validation-validator-inclusionin]: api/phalcon_validation#validation-validator-inclusionin
+[validation-validator-ip]: api/phalcon_validation#validation-validator-ip
+[validation-validator-numericality]: api/phalcon_validation#validation-validator-numericality
+[validation-validator-presenceof]: api/phalcon_validation#validation-validator-presenceof
+[validation-validator-regex]: api/phalcon_validation#validation-validator-regex
+[validation-validator-stringlength]: api/phalcon_validation#validation-validator-stringlength
+[validation-validator-stringlength-max]: api/phalcon_validation#validation-validator-stringlength-max
+[validation-validator-stringlength-min]: api/phalcon_validation#validation-validator-stringlength-min
+[validation-validator-uniqueness]: api/phalcon_validation#validation-validator-uniqueness
+[validation-validator-url]: api/phalcon_validation#validation-validator-url
+[validation-validatorcompositeinterface]: api/phalcon_validation#validation-validatorcompositeinterface
+[validation-validatorinterface]: api/phalcon_validation#validation-validatorinterface
+        
