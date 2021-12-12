@@ -11,7 +11,7 @@ keywords: 'tutorial, tutorial rest, api, rest, paso a paso, micro'
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-La aplicación `REST API` es una aplicación que muestra cómo puede crear una API [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) usando Phalcon. En este tutorial, usamos la aplicación [Micro](application-micro). También usaremos \[Phinx\]\[phinx\] para las migraciones de nuestra base de datos, \[JSON Web Tokens (JWT)\]\[jwt\] para autenticación así como \[JSON API\]\[jsonapi\] para las respuestas estructuradas.
+The `REST API` application is an application that shows how you can create a [RESTful][restful] API utilizing Phalcon. En este tutorial, usamos la aplicación [Micro](application-micro). También usaremos \[Phinx\]\[phinx\] para las migraciones de nuestra base de datos, \[JSON Web Tokens (JWT)\]\[jwt\] para autenticación así como \[JSON API\]\[jsonapi\] para las respuestas estructuradas.
 
 ## Instalación
 ## Estructura
@@ -79,7 +79,7 @@ Configurando el
 
 
 
-En este tutorial, explicaremos cómo crear una aplicación simple que proporcione una API [RESTful](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional) usando los diferentes métodos HTTP:
+In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:
 
 * `GET` para recuperar y buscar datos
 * `POST` para agregar datos
@@ -538,7 +538,7 @@ $app->put(
 );
 ```
 
-## Borrando datos
+## Borrar datos
 El borrado de datos es similar a la actualización. El `id` pasado como parámetro indica qué robot debe ser borrado:
 
 ```php
@@ -605,7 +605,7 @@ CREATE TABLE `robotics`.`robots` (
 ```
 
 ## Probando nuestra Aplicación
-Usando [curl](https://es.wikipedia.org/wiki/CURL) prbaremos cada ruta de nuestra aplicación verificando su correcto funcionamiento.
+Using [curl][curl] we'll test every route in our application verifying its proper operation.
 
 Obtener todos los robots:
 
@@ -664,7 +664,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Intentar insertar un nuevo robot con el nombre de un robot existente:
+Intente insertar un nuevo robot con el nombre de un robot existente:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -708,3 +708,6 @@ Content-Type: text/html; charset=UTF-8
 
 {"status":"OK"}
 ```
+
+[restful]: https://en.wikipedia.org/wiki/Representational_state_transfer
+[curl]: https://en.wikipedia.org/wiki/CURL
