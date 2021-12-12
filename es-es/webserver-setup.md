@@ -455,7 +455,7 @@ Compruebe los valores de `Architecture` y `Extension Build`. Esto le permitirá 
 
 que coincidirá con `x86`, `vc15` y `TS` que es *Thread Safe*. Si su sistema reporta `NTS` (*Non Thread Safe*) entonces debería descargar esa DLL.
 
-XAMPP siempre libera versiones de 32 bit de Apache y PHP. Necesitará descargar la versión x86 de Phalcon para Windows desde la sección de descarga.
+Notice that XAMPP offers both 32 and 64 bit versions of Apache and PHP (5.6+): Phalcon has dlls for both, just choose the right dll for the installed version.
 
 Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
