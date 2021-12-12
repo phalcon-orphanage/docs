@@ -7,16 +7,13 @@ keywords: 'phql, lenguaje consulta phalcon, lenguaje consulta'
 ---
 
 # Lenguaje de consulta de Phalcon (PHQL)
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 Phalcon Query Language, PhalconQL o simplemente PHQL es un dialecto SQL de alto nivel, orientado a objetos, que le permite escribir consultas usando un lenguaje estándar como SQL. PHQL está implementado como un analizador (escrito en C) que traduce la sintaxis en la del RDBMS destino.
 
-Para conseguir el mayor rendimiento posible, Phalcon proporciona un analizador que usa la misma tecnología que [SQLite](https://en.wikipedia.org/wiki/Lemon_Parser_Generator). Esta tecnología proporciona un analizador pequeño en memoria con una huella en memoria muy baja que también es segura en hilos.
+To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite][sqlite]. Esta tecnología proporciona un analizador pequeño en memoria con una huella en memoria muy baja que también es segura en hilos.
 
 El analizador primero comprueba la sintaxis de la sentencia PHQL a ser analizada, luego construye una representación intermedia de la sentencia y finalmente la convierte al dialecto SQL respectivo del RDBMS de destino.
 
@@ -99,8 +96,7 @@ class Customers extends Model
 ```
 
 ## Consulta
-
-Las consultas PHQL se pueden crear simplemente instanciando la clase [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query):
+PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query][mvc-model-query]:
 
 ```php
 <?php
@@ -116,7 +112,7 @@ $query     = new Query(
 $invoices = $query->execute();
 ```
 
-[Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query) requiere que el segundo parámetro del constructor sea el contenedor DI. Al llamar el código anterior desde el controlador o cualquier clase que extiende [Phalcon\Di\Injectable](api/phalcon_di#di-injectable), puede usar:
+The [Phalcon\Mvc\Model\Query][mvc-model-query] requires the second parameter of the constructor to be the DI container. When calling the above code from a controller or any class that extends the [Phalcon\Di\Injectable][di-injectable], you can use:
 
 ```php
 <?php
@@ -147,8 +143,7 @@ class Invoices extends Controller
 ```
 
 ## Gestor de Modelos
-
-También podemos usar [Phalcon\Mvc\Model\Manager](api/phalcon_mvc#mvc-model-manager) que está inyectado en el contenedor DI:
+We can also utilize the [Phalcon\Mvc\Model\Manager][mvc-model-manager] which is injected in the DI container:
 
 ```php
 <?php
@@ -282,7 +277,6 @@ class Invoices extends Controller
 ```
 
 ## Select
-
 Como el familiar SQL, PHQL permite seleccionar registros usando la sentencia `SELECT`, excepto que en lugar de especificar tablas, usamos las clases del modelo:
 
 **Modelos**
@@ -403,11 +397,12 @@ WHERE
     i.inv_status_flag = 1  
 ```
 
-Lo anterior *acorta* el espacio de nombres completo para el modelo, sustituyéndolo con un alias.
+The above _shortens_ the whole namespace for the model, replacing it with an alias.
 
 **Subconsultas**
 
 PHQL también soporta subconsultas. La sintaxis es similar a la ofrecida por PDO.
+
 
 ```sql
 SELECT 
@@ -440,10 +435,9 @@ WHERE inv_cst_id IN (
 ```
 
 ### Resultados
-
 Dependiendo de las columnas que consultemos así como las tablas, los tipos de resultados variarán.
 
-Si recupera todas las columnas de una única tabla, obtendrá de vuelta un objeto [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple) completamente funcional. El objeto devuelto es un *completo* y se puede modificar y volver a guardar en la base de datos porque representa un registro completo de la tabla asociada.
+If you retrieve all the columns from a single table, you will get back a fully functional [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] object back. The object returned is a _complete_ and can be modified and re-saved in the database because they represent a complete record of the associated table.
 
 Los siguientes ejemplos devuelven resultados idénticos:
 
@@ -487,7 +481,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-Cualquier consulta que use columnas específicas no devuelve objetos *completos*, y por lo tanto no se pueden realizar sobre ellos las operaciones de base de datos. Sin embargo, son mucho más pequeños que sus contrapartes completas y ofrecen micro optimizaciones en su código.
+Any queries that use specific columns do not return _complete_ objects, and therefore database operations cannot be performed on them. Sin embargo, son mucho más pequeños que sus contrapartes completas y ofrecen micro optimizaciones en su código.
 
 ```php
 <?php
@@ -509,7 +503,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-El resultado devuelto es un objeto [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple). Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas que fueron solicitadas.
+The returned result is a [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] object. Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas que fueron solicitadas.
 
 Estos valores que no representan objetos completos son lo que llamamos escalares. PHQL permite consultar todos los tipos de escalares: campos, funciones, literales, expresiones, etc..:
 
@@ -552,7 +546,7 @@ $invoices  = $this
 ;
 ```
 
-El resultado en este caso es un objeto [Phalcon\Mvc\Model\Resultset\Complex](api/phalcon_mvc#mvc-model-resultset-complex). Esto permite el acceso a objetos completos y escalares a la vez:
+The result in this case is a [Phalcon\Mvc\Model\Resultset\Complex][mvc-model-resultset-complex] object. Esto permite el acceso a objetos completos y escalares a la vez:
 
 ```php
 <?php
@@ -648,7 +642,6 @@ foreach ($invoices as $invoice) {
 Tenga en cuenta que estamos seleccionando una columna del modelo `Customers` y necesitamos crear un alias (`name_last`) para que se convierta en un escalar en nuestro conjunto de resultados.
 
 ### Uniones (Joins)
-
 Es fácil solicitar registros desde múltiples modelos usando PHQL. Se soportan la mayoría de tipos de uniones. Como definimos las relaciones en los modelos, PHQL añade estas condiciones automáticamente:
 
 ```php
@@ -683,18 +676,19 @@ foreach ($records as $record) {
 }
 ```
 
-> **NOTA**: Por defecto, se asume `INNER JOIN`. 
-{: .alert .alert-info }
+> **NOTE**: By default, an `INNER JOIN` is assumed. 
+> 
+> {: .alert .alert-info }
 
 Puede especificar los siguientes tipos de uniones en su consulta:
 
-* `CROSS JOIN`
-* `LEFT JOIN`
-* `LEFT OUTER JOIN`
-* `INNER JOIN`
-* `JOIN`
-* `RIGHT JOIN`
-* `RIGHT OUTER JOIN`
+- `CROSS JOIN`
+- `LEFT JOIN`
+- `LEFT OUTER JOIN`
+- `INNER JOIN`
+- `JOIN`
+- `RIGHT JOIN`
+- `RIGHT OUTER JOIN`
 
 El analizador PHQL automáticamente resolverá las condiciones de la operación `JOIN`, en función de las relaciones configuradas en el `initialize()` de cada modelo. Estas son llamadas a `hasMany`, `hasOne`, `belongsTo` etc.
 
@@ -725,7 +719,7 @@ $records  = $this
 ;
 ```
 
-También, se pueden crear las uniones usando múltiples tablas en la cláusula `FROM`, usando la sintaxis *join* alternativa:
+Also, the joins can be created using multiple tables in the `FROM` clause, using the alternative _join_ syntax:
 
 ```php
 <?php
@@ -840,7 +834,6 @@ ORDER BY
 ```
 
 ### Agregaciones
-
 Los siguientes ejemplos muestran como usar agregaciones en PHQL:
 
 **Average**
@@ -899,7 +892,7 @@ foreach ($records as $record) {
 
 **Count Distinct**
 
-¿Cuántas facturas distintas tiene cada cliente?
+¿Cuántas facturas tiene cada cliente?
 
 ```php
 <?php
@@ -994,7 +987,6 @@ echo $results['invoice_total'], PHP_EOL;
 ```
 
 ### Condiciones
-
 Las condiciones nos permiten filtrar el conjunto de registros que queremos consultar usando la palabra clave `WHERE`.
 
 Selecciona un registro con una única comparación numérica:
@@ -1222,7 +1214,6 @@ $records  = $this
 ```
 
 ## Insertar
-
 Con PHQL es posible insertar datos usando la sentencia familiar `INSERT`:
 
 Insertar datos sin columnas:
@@ -1417,7 +1408,6 @@ if (false === $result->success()) {
 Como intentamos insertar un número negativo para `inv_total` el `beforeCreate` se invoca antes de guardar el registro. Como resultado, la operación falla y se envían de vuelta los mensajes de error correspondientes.
 
 ## Actualizar
-
 Actualizar filas usa las mismas reglas que insertar filas. Para esa operación usamos el comando `UPDATE`. Al igual que cuando insertamos filas, cuando un registro se actualiza los eventos relacionados con la operación de actualización se ejecutarán para cada fila.
 
 Actualizar una columna
@@ -1589,7 +1579,6 @@ foreach ($invoices as $invoice) {
 ```
 
 ## Borrar datos
-
 Similar a la actualización de registros, borrar registros usa las mismas reglas. Para esa operación usamos el comando `DELETE`. Cuando se borra un registro los eventos relacionados a la operación de borrado se ejecutarán para cada fila.
 
 Borrar una fila
@@ -1706,8 +1695,7 @@ if (false === $result->success()) {
 ```
 
 ## Constructor de Consultas
-
-[Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) es un constructor muy práctico que le permite construir sentencias PHQL de una forma orientada a objetos. La mayoría de métodos devuelven el objeto constructor, permitiéndole usar una interfaz fluida y lo suficiente flexible para permitirle añadir condicionales si lo necesita, sin tener que crear sentencias `if` complejas y concatenaciones de cadenas al construir la sentencia PHQL.
+[Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] is a very handy builder that allows you to construct PHQL statements in an object oriented way. La mayoría de métodos devuelven el objeto constructor, permitiéndole usar una interfaz fluida y lo suficiente flexible para permitirle añadir condicionales si lo necesita, sin tener que crear sentencias `if` complejas y concatenaciones de cadenas al construir la sentencia PHQL.
 
 La consulta PHQL:
 
@@ -1753,24 +1741,23 @@ $invoices = $this
 ```
 
 ### Parámetros
+Whether you create a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. Las claves del vector son:
 
-Si crea un objeto [Phalcon\Mvc\Model\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) directamente o usa el método `createBuilder` del Gestor de Modelos, siempre puede usar la interfaz fluida para construir su consulta o pasar un vector con los parámetros en el constructor. Las claves del vector son:
-
-* `bind` - `array` - vector de datos a enlazar
-* `bindTypes` - `array` - Tipos de parámetro PDO
-* `container` - DI 
-* `columns` - `array | string` - columnas a seleccionar 
-* `conditions` - `array | string` - condiciones (where)
-* `distinct` - `string` - distinguir columnas 
-* `for_update` - `bool` - para actualizar o no
-* `group` - `array` - agrupar por columnas
-* `having` - `string` - teniendo columnas
-* `joins` - `array` - clases de modelos usadas en joins
-* `limit` - `array | int` - límite para los registros (ej. `20` o `[20, 20]`)
-* `models` - `array` - clases de modelos usadas
-* `offset` - `int` - el desplazamiento
-* `order` - `array | string` - columnas de orden
-* `shared_lock` - `bool` - emite bloque compartido o no
+- `bind` - `array` - vector de datos a enlazar
+- `bindTypes` - `array` - Tipos de parámetro PDO
+- `container` - DI
+- `columns` - `array | string` - columnas a seleccionar
+- `conditions` - `array | string` - condiciones (where)
+- `distinct` - `string` - distinguir columnas
+- `for_update` - `bool` - para actualizar o no
+- `group` - `array` - agrupar por columnas
+- `having` - `string` - teniendo columnas
+- `joins` - `array` - clases de modelos usadas en joins
+- `limit` - `array | int` - límite para los registros (ej. `20` o `[20, 20]`)
+- `models` - `array` - clases de modelos usadas
+- `offset` - `int` - el desplazamiento
+- `order` - `array | string` - columnas de orden
+- `shared_lock` - `bool` - emite bloque compartido o no
 
 ```php
 <?php
@@ -1815,22 +1802,22 @@ $builder = new Builder($params);
 
 ### Getters
 
-* `autoescape(string $identifier)` - `string` - Automáticamente escapa identificadores pero solo si necesitan ser escapados.
-* `getBindParams(): array` - Devuelve los parámetros de enlace predeterminados
-* `getBindTypes(): array` - Devuelve los [tipos de enlace](https://www.php.net/manual/en/pdo.constants.php) predeterminados
-* `getColumns()` - `string | array` - Devuelve las columnas a consultar
-* `getDistinct()` - `bool` - Devuelve la cláusula `SELECT DISTINCT` / `SELECT ALL` 
-* `getFrom()` - `string | array` - Devuelve los modelos para la consulta
-* `getGroupBy()` - `array` - Devuelve la cláusula `GROUP BY`
-* `getHaving()` - `string` - Devuelve la cláusula `HAVING`
-* `getJoins()` - `array` - Devuelve las partes `JOIN` de la consulta
-* `getLimit()` - `string | array` - Devuelve la cláusula `LIMIT` actual
-* `getModels()` - `string | array | null` - Devuelve los modelos involucrados en la consulta
-* `getOffset()` - `int` - Devuelve la cláusula `OFFSET` actual
-* `getOrderBy()` - `string / array` - Devuelve la cláusula `ORDER BY`
-* `getPhql()` - `string` - Devuelve la sentencia PHQL generada
-* `getQuery()` - `QueryInterface` - Devuelve la consulta construida
-* `getWhere()` - `string | array` - Devuelve las condiciones de la consulta
+- `autoescape(string $identifier)` - `string` - Automáticamente escapa identificadores pero solo si necesitan ser escapados.
+- `getBindParams(): array` - Devuelve los parámetros de enlace predeterminados
+- `getBindTypes(): array` - Returns default [bind types][pdo-constants]
+- `getColumns()` - `string | array` - Devuelve las columnas a consultar
+- `getDistinct()` - `bool` - Devuelve la cláusula `SELECT DISTINCT` / `SELECT ALL`
+- `getFrom()` - `string | array` - Devuelve los modelos para la consulta
+- `getGroupBy()` - `array` - Devuelve la cláusula `GROUP BY`
+- `getHaving()` - `string` - Devuelve la cláusula `HAVING`
+- `getJoins()` - `array` - Devuelve las partes `JOIN` de la consulta
+- `getLimit()` - `string | array` - Devuelve la cláusula `LIMIT` actual
+- `getModels()` - `string | array | null` - Devuelve los modelos involucrados en la consulta
+- `getOffset()` - `int` - Devuelve la cláusula `OFFSET` actual
+- `getOrderBy()` - `string / array` - Devuelve la cláusula `ORDER BY`
+- `getPhql()` - `string` - Devuelve la sentencia PHQL generada
+- `getQuery()` - `QueryInterface` - Devuelve la consulta construida
+- `getWhere()` - `string | array` - Devuelve las condiciones de la consulta
 
 ### Métodos
 
@@ -1840,7 +1827,6 @@ public function addFrom(
     string $alias = null
 ): BuilderInterface
 ```
-
 Añade un modelo. El primer parámetro es el modelo mientras que el segundo es el alias para el modelo.
 
 ```php
@@ -1863,8 +1849,7 @@ public function andHaving(
     array $bindTypes = []
 ): BuilderInterface
 ```
-
-Añade una condición a la cláusula actual de condiciones `HAVING` usando un operador `AND`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Añade una condición a la cláusula actual de condiciones `HAVING` usando un operador `AND`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -1889,8 +1874,7 @@ public function andWhere(
     array $bindTypes = []
 ): BuilderInterface
 ```
-
-Añade una condición a la cláusula actual de condiciones `WHERE` usando un operador `AND`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre del parámetro enlazado como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Añade una condición a la cláusula actual de condiciones `WHERE` usando un operador `AND`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -1916,7 +1900,6 @@ public function betweenHaving(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `BETWEEN` a la cláusula actual de condiciones `HAVING`. El método acepta la expresión, mínimo y máximo, así como el operador para el `BETWEEN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -1937,7 +1920,6 @@ public function betweenWhere(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `BETWEEN` a la cláusula actual de condiciones `WHERE`. El método acepta la expresión, mínimo y máximo, así como el operador para el `BETWEEN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -1953,8 +1935,7 @@ $builder->betweenWhere(
 ```php
 public function columns(mixed $columns): BuilderInterface
 ```
-
-Establece las columnas a consultar. El método acepta tanto un `string` como un `array`. Si especifica un vector con `claves` específicas, se usarán como alias para las columnas relevantes.
+Establece las columnas a consultar. Este método acepta un `string` o un `array`. Si especifica un vector con `claves` específicas, se usarán como alias para las columnas relevantes.
 
 ```php
 <?php
@@ -1982,7 +1963,6 @@ $builder->columns(
 ```php
 public function distinct(mixed $distinct): BuilderInterface
 ```
-
 Establece el indicador `SELECT DISTINCT` / `SELECT ALL`
 
 ```php
@@ -1995,7 +1975,6 @@ $builder->distinct(null);
 ```php
 public function forUpdate(bool $forUpdate): BuilderInterface
 ```
-
 Establece una cláusula `FOR UPDATE`
 
 ```php
@@ -2007,8 +1986,7 @@ $builder->forUpdate(true);
 ```php
 public function from(mixed $models): BuilderInterface
 ```
-
-Establece los modelos para la consulta. El método acepta tanto un `string` como un `array`. Si especifica un vector con `claves` específicas, se usarán como alias para los modelos relevantes.
+Establece los modelos para la consulta. Este método acepta un `string` o un `array`. Si especifica un vector con `claves` específicas, se usarán como alias para los modelos relevantes.
 
 ```php
 <?php
@@ -2035,7 +2013,6 @@ $builder->from(
 ```php
 public function groupBy(mixed $group): BuilderInterface
 ```
-
 Añade una condición `GROUP BY` al constructor.
 
 ```php
@@ -2055,8 +2032,7 @@ public function having(
     array $bindTypes = []
 ): BuilderInterface
 ```
-
-Establece la cláusula de condición `HAVING`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Establece la cláusula de condición `HAVING`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -2081,7 +2057,6 @@ public function inHaving(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `IN` a la cláusula actual de condición `HAVING`. El método acepta la expresión, un vector con los valores del `IN` así como el operador para el `IN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -2103,7 +2078,6 @@ public function innerJoin(
     string $alias = null
 ): BuilderInterface
 ```
-
 Añade un `INNER` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias.
 
 ```php
@@ -2132,7 +2106,6 @@ public function inWhere(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `IN` en la cláusula actual de condiciones `WHERE`. El método acepta la expresión, un vector con los valores para la cláusula `IN` así como el operador para el `IN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -2196,7 +2169,6 @@ public function leftJoin(
     string $alias = null
 ): BuilderInterface
 ```
-
 Añade un `LEFT` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias.
 
 ```php
@@ -2224,7 +2196,6 @@ public function limit(
     mixed $offset = null
 ): BuilderInterface
 ```
-
 Configura una cláusula `LIMIT`, y opcionalmente una cláusula de desplazamiento como segundo parámetro
 
 ```php
@@ -2235,6 +2206,7 @@ $builder->limit(100, 20);
 $builder->limit("100", "20");
 ```
 
+
 ```php
 public function notBetweenHaving(
     string $expr, 
@@ -2243,7 +2215,6 @@ public function notBetweenHaving(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `NOT BETWEEN` a la cláusula actual de condiciones `HAVING`. El método acepta la expresión, mínimo y máximo así como el operador para el `NOT BETWEEN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -2264,7 +2235,6 @@ public function notBetweenWhere(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `NOT BETWEEN` a la cláusula actual de condiciones `WHERE`. El método acepta la expresión, mínimo y máximo así como el operador para el `NOT BETWEEN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -2284,7 +2254,6 @@ public function notInHaving(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `NOT IN` a la cláusula actual de condiciones `HAVING`. El método acepta la expresión, un vector con los valores del `IN` así como el operador para el `NOT IN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -2306,7 +2275,6 @@ public function notInWhere(
     string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
-
 Añade una condición `NOT IN` a la cláusula actual de condiciones `WHERE`. El método acepta la expresión, un vector con los valores para la cláusula `IN` así como el operador para el `NOT IN` (`OPERATOR_AND` o `OPERATOR_OR`)
 
 ```php
@@ -2321,7 +2289,6 @@ $builder->notInWhere(
 ```php
 public function offset(int $offset): BuilderInterface
 ```
-
 Configura una cláusula `OFFSET`
 
 ```php
@@ -2333,7 +2300,6 @@ $builder->offset(30);
 ```php
 public function orderBy(mixed $orderBy): BuilderInterface
 ```
-
 Configura una cláusula de condición `ORDER BY`. El parámetro puede ser una cadena o un vector. También puede añadir un sufijo en cada columna con `ASC` o `DESC` para definir la dirección del orden.
 
 ```php
@@ -2361,8 +2327,7 @@ public function orHaving(
     array $bindTypes = []
 ): BuilderInterface
 ```
-
-Añade una condición a la cláusula actual de condición `HAVING` usando un operador `OR`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Añade una condición a la cláusula actual de condición `HAVING` usando un operador `OR`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -2387,8 +2352,7 @@ public function orWhere(
     array $bindTypes = []
 ): BuilderInterface
 ```
-
-Añade una condición a la cláusula actual de condición `WHERE` usando un operador `OR`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Añade una condición a la cláusula actual de condición `WHERE` usando un operador `OR`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -2413,7 +2377,6 @@ public function rightJoin(
     string $alias = null
 ): BuilderInterface
 ```
-
 Añade un `RIGHT` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias.
 
 ```php
@@ -2441,7 +2404,6 @@ public function setBindParams(
     bool $merge = false
 ): BuilderInterface
 ```
-
 Establece los parámetros de enlace predeterminados. El primer parámetro es un vector, donde la clave es el nombre o el número del parámetro de enlace. El segundo parámetro es un booleano, que indica al componente que combine los parámetros proporcionados con la pila existente o no.
 
 ```php
@@ -2475,8 +2437,7 @@ public function setBindTypes(
     bool $merge = false
 ): BuilderInterface
 ```
-
-Establece los tipos de enlace predeterminados. El primer parámetro es un vector, donde la clave es el nombre o el número del parámetro de enlace. El segundo parámetro es un booleano, que indica al componente que combine los parámetros proporcionados con la pila existente o no. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Establece los tipos de enlace predeterminados. El primer parámetro es un vector, donde la clave es el nombre o el número del parámetro de enlace. El segundo parámetro es un booleano, que indica al componente que combine los parámetros proporcionados con la pila existente o no. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -2519,8 +2480,7 @@ public function where(
     array $bindTypes = []
 ): BuilderInterface
 ```
-
-Configura la cláusula de condición `WHERE`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. Los tipos enlazados son [constantes PDO](https://www.php.net/manual/en/pdo.constants.php).
+Configura la cláusula de condición `WHERE`. El primer parámetro es la expresión. El segundo parámetro es un vector con el nombre de los parámetros enlazados como clave. El último parámetro es un vector que define el tipo enlazado para cada parámetro. The bound types are [PDO constants][pdo-constants].
 
 ```php
 <?php
@@ -2539,7 +2499,6 @@ $builder->where(
 ```
 
 ### Ejemplos
-
 ```php
 <?php
 
@@ -2912,7 +2871,6 @@ $builder
 ```
 
 ### Parámetros Enlazados
-
 Los parámetros enlazados, en el generador de consultas, se pueden establecer cuando se construye la consulta o cuando se van a ejecutar:
 
 ```php
@@ -2954,15 +2912,15 @@ $invoices = $this
 ```
 
 ## Deshabilitar Literales en PHQL
-
 Los literales se pueden deshabilitar en PHQL. Esto significa que no se podrán usar cadenas, números o valores booleanos en PHQL. Tendrá que usar parámetros enlazados en su lugar.
 
-> **NOTA**: Deshabilitar los literales incrementa la seguridad de sus sentencias de base de datos y reduce la posibilidad de inyecciones SQL.
-{: .alert .alert-info }
-
+> **NOTE**: Disabling literals increases the security of your database statements and reduces the possibility of SQL injections. 
 > 
-> **NOTA**: Este ajuste se puede configurar globalmente para todos los modelos. Por favor, consulte el documento de [modelos](db-models) para ver cómo y configuración adicional.
-{: .alert .alert-info }
+> {: .alert .alert-info }
+
+> **NOTE**: This setting can be set globally for all models. Por favor, consulte el documento de [modelos](db-models) para ver cómo y configuración adicional. 
+> 
+> {: .alert .alert-info }
 
 La siguiente consulta podría conducir potencialmente a una inyección SQL:
 
@@ -3012,7 +2970,6 @@ Model::setup(
 Puede (y debe) usar parámetros enlazados tanto si se han deshabilitado los literales como si no.
 
 ## Palabras Reservadas
-
 PHQL usa internamente algunas palabras reservadas. Si quiere usar alguna de ellas como atributos o nombres de modelo, necesitará escaparlas usando los delimitadores de escape compatibles con la base de datos `[` y `]`:
 
 ```php
@@ -3028,7 +2985,6 @@ $result = $manager->executeQuery($phql);
 Los delimitadores se traducen dinámicamente a delimitadores válidos dependiendo del sistema de base de datos al que se conecta la aplicación.
 
 ## Dialecto Personalizado
-
 Debido a las diferencias en los dialectos SQL basados en el RDBMS de su elección, no se soportan todos los métodos. Sin embargo, puede extender el dialecto, de modo que pueda usar funciones adicionales que soporte su RDBMS.
 
 Para el siguiente ejemplo, usamos el método `MATCH_AGAINST` para MySQL.
@@ -3066,7 +3022,8 @@ $connection = new Connection(
 Ahora puede usar esta función en PHQL y se traduce internamente al SQL correcto usando la función personalizada:
 
 ```php
-<br />$phql = "SELECT *
+
+$phql = "SELECT *
          FROM Invoices
          WHERE MATCH_AGAINST(inv_title, :pattern:)";
 
@@ -3129,7 +3086,8 @@ $connection = new Connection(
 Ahora puede usar esta función en PHQL y se traduce internamente al SQL correcto usando la función personalizada:
 
 ```php
-<br />$phql = "SELECT GROUPCONCAT(inv_title, inv_title, :separator:)
+
+$phql = "SELECT GROUPCONCAT(inv_title, inv_title, :separator:)
          FROM Invoices";
 
 $invoices = $modelsManager
@@ -3145,7 +3103,6 @@ $invoices = $modelsManager
 Lo anterior creará un `GROUP_CONCAT` basado en los parámetros pasados al método. Si se pasan tres parámetros tendremos un `GROUP_CONCAT` con un `DISTINCT`, `ORDER BY` y `SEPARATOR`, si se pasan dos parámetros tendremos un `GROUP_CONCAT` con `SEPARATOR` y si sólo se pasa un parámetro sólo un `GROUP_CONCAT`
 
 ## Caché
-
 Las consultas PHQL se pueden cachear. También puede consultar el documento [Caché de Modelos](db-models-cache) para más información.
 
 ```php
@@ -3172,7 +3129,6 @@ $invoice = $query->execute(
 ```
 
 ## Ciclo de Vida
-
 Al ser un lenguaje de alto nivel, PHQL da a los desarrolladores la habilidad de personalizar diferentes aspectos para satisfacer sus necesidades. Lo siguiente es el ciclo de vida de cada sentencia PHQL ejecutada:
 
 * El PHQL se analiza y convierte a una Representación Intermedia (IR) que es independiente del SQL implementado por el sistema de base de datos
@@ -3180,7 +3136,6 @@ Al ser un lenguaje de alto nivel, PHQL da a los desarrolladores la habilidad de 
 * Las sentencias PHQL se analizan una vez y se cachean en memoria. Las ejecuciones posteriores de la misma sentencia resultan en una ejecución ligeramente más rápida
 
 ## SQL en Bruto
-
 Un sistema de base de datos podría ofrecer extensiones SQL específicas que no se soportan por PHQL, en este caso, un SQL en bruto puede ser apropiado:
 
 ```php
@@ -3247,10 +3202,19 @@ $robots = Invoices::findByRawSql(
 ```
 
 ## Resolución de problemas
-
 Algunas cosas a tener en cuenta al usar PHQL:
 
 * La clases son sensibles a mayúsculas y minúsculas, si una clase no se define con el mismo nombre con el que se creó podría conducir a comportamientos inesperados en sistemas operativos con un sistema de ficheros sensible a mayúsculas y minúsculas, como Linux.
 * Se debe definir en la conexión el conjunto de caracteres correcto para enlazar parámetros correctamente.
 * Las clases con alias no se reemplazan por las clases con espacios de nombres completos, ya que esto solo ocurre en el código PHP y no dentro de cadenas.
 * Si el renombrado de columnas está habilitado para evitar, usar alias de columnas con el mismo nombre que las columnas a renombrar, podría confundir al resolutor de consultas.
+
+[di-injectable]: api/phalcon_di#di-injectable
+[mvc-model-manager]: api/phalcon_mvc#mvc-model-manager
+[mvc-model-query]: api/phalcon_mvc#mvc-model-query
+[mvc-model-query-builder]: api/phalcon_mvc#mvc-model-query-builder
+[mvc-model-resultset-complex]: api/phalcon_mvc#mvc-model-resultset-complex
+[mvc-model-resultset-simple]: api/phalcon_mvc#mvc-model-resultset-simple
+[pdo-constants]: https://www.php.net/manual/en/pdo.constants.php
+[pdo-constants]: https://www.php.net/manual/en/pdo.constants.php
+[sqlite]: https://en.wikipedia.org/wiki/Lemon_Parser_Generator
