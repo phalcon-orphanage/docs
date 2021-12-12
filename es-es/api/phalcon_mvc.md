@@ -5178,7 +5178,7 @@ Este fichero es parte del *Framework* Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
@@ -5228,7 +5228,7 @@ Este fichero es parte del *Framework* Phalcon.
 
 (c) Phalcon Team <team@phalcon.io>
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
 
 ## Métodos
 
