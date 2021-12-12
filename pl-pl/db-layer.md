@@ -7,75 +7,89 @@ keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---
 
 # Database Abstraction Layer
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-
-The components under the `Phalcon\Db` namespace are the ones responsible for powering the [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) class - the `Model` in MVC for the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+The components under the `Phalcon\Db` namespace are the ones responsible for powering the  [Phalcon\Mvc\Model][mvc-model] class - the `Model` in MVC for the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
 This component allows for a lower level database manipulation than using traditional models.
 
 ## Adapters
-
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
-| Klasa                                                                             | Description                                                                                                                                                                                                                          |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Phalcon\Db\Adapter\Pdo\Mysql](api/phalcon_db#db-adapter-pdo-mysql)           | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
-| [Phalcon\Db\Adapter\Pdo\Postgresql](api/phalcon_db#db-adapter-pdo-postgresql) | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| [Phalcon\Db\Adapter\Pdo\Sqlite](api/phalcon_db#db-adapter-pdo-sqlite)         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+| Klasa                                                              | Description                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Phalcon\Db\Adapter\Pdo\Mysql][db-adapter-pdo-mysql]           | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
+| [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql] | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
+| [Phalcon\Db\Adapter\Pdo\Sqlite][db-adapter-pdo-sqlite]         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+
 
 ### Constants
+The [Phalcon\Db\Enum][db-enum] class exposes a number of constants that can be used on the DB layer.
+- `FETCH_ASSOC`      = `\Pdo::FETCH_ASSOC`
+- `FETCH_BOTH`       = `\Pdo::FETCH_BOTH`
+- `FETCH_BOUND`      = `\Pdo::FETCH_BOUND`
+- `FETCH_CLASS`      = `\Pdo::FETCH_CLASS`
+- `FETCH_CLASSTYPE`  = `\Pdo::FETCH_CLASSTYPE`
+- `FETCH_COLUMN`     = `\Pdo::FETCH_COLUMN`
+- `FETCH_FUNC`       = `\Pdo::FETCH_FUNC`
+- `FETCH_GROUP`      = `\Pdo::FETCH_GROUP`
+- `FETCH_INTO`       = `\Pdo::FETCH_INTO`
+- `FETCH_KEY_PAIR`   = `\Pdo::FETCH_KEY_PAIR`
+- `FETCH_LAZY`       = `\Pdo::FETCH_LAZY`
+- `FETCH_NAMED`      = `\Pdo::FETCH_NAMED`
+- `FETCH_NUM`        = `\Pdo::FETCH_NUM`
+- `FETCH_OBJ`        = `\Pdo::FETCH_OBJ`
+- `FETCH_PROPS_LATE` = `\Pdo::FETCH_PROPS_LATE`
+- `FETCH_SERIALIZE`  = `\Pdo::FETCH_SERIALIZE`
+- `FETCH_UNIQUE`     = `\Pdo::FETCH_UNIQUE`
 
-The [Phalcon\Db\Enum](api/phalcon_db#db-enum) class exposes a number of constants that can be used on the DB layer. - `FETCH_ASSOC` = `\Pdo::FETCH_ASSOC` - `FETCH_BOTH` = `\Pdo::FETCH_BOTH` - `FETCH_BOUND` = `\Pdo::FETCH_BOUND` - `FETCH_CLASS` = `\Pdo::FETCH_CLASS` - `FETCH_CLASSTYPE` = `\Pdo::FETCH_CLASSTYPE` - `FETCH_COLUMN` = `\Pdo::FETCH_COLUMN` - `FETCH_FUNC` = `\Pdo::FETCH_FUNC` - `FETCH_GROUP` = `\Pdo::FETCH_GROUP` - `FETCH_INTO` = `\Pdo::FETCH_INTO` - `FETCH_KEY_PAIR` = `\Pdo::FETCH_KEY_PAIR` - `FETCH_LAZY` = `\Pdo::FETCH_LAZY` - `FETCH_NAMED` = `\Pdo::FETCH_NAMED` - `FETCH_NUM` = `\Pdo::FETCH_NUM` - `FETCH_OBJ` = `\Pdo::FETCH_OBJ` - `FETCH_PROPS_LATE` = `\Pdo::FETCH_PROPS_LATE` - `FETCH_SERIALIZE` = `\Pdo::FETCH_SERIALIZE` - `FETCH_UNIQUE` = `\Pdo::FETCH_UNIQUE`
-
-Additional constants are available in the [Phalcon\Db\Column](api/phalcon_db#db-column) object. This object is used to describe a column (or field) in a database table. These constants also define which types are supported by the ORM.
+Additional constants are available in the [Phalcon\Db\Column][db-column] object. This object is used to describe a column (or field) in a database table. These constants also define which types are supported by the ORM.
 
 **Bind Types**
 
-* `BIND_PARAM_BLOB` - Blob
-* `BIND_PARAM_BOOL` - Bool
-* `BIND_PARAM_DECIMAL` - Decimal
-* `BIND_PARAM_INT` - Integer
-* `BIND_PARAM_NULL` - Null
-* `BIND_PARAM_STR` - String
-* `BIND_SKIP` - Skip binding
+- `BIND_PARAM_BLOB` - Blob
+- `BIND_PARAM_BOOL` - Bool
+- `BIND_PARAM_DECIMAL` - Decimal
+- `BIND_PARAM_INT` - Integer
+- `BIND_PARAM_NULL` - Null
+- `BIND_PARAM_STR` - String
+- `BIND_SKIP` - Skip binding
 
 **Column Types**
 
-* `TYPE_BIGINTEGER` - Big integer
-* `TYPE_BIT` - Bit
-* `TYPE_BLOB` - Blob
-* `TYPE_BOOLEAN` - Boolean
-* `TYPE_CHAR` - Char
-* `TYPE_DATE` - Date
-* `TYPE_DATETIME` - Datetime
-* `TYPE_DECIMAL` - Decimal
-* `TYPE_DOUBLE` - Double
-* `TYPE_ENUM` - Enum
-* `TYPE_FLOAT` - Float
-* `TYPE_INTEGER` - Integer
-* `TYPE_JSON` - JSON
-* `TYPE_JSONB` - JSONB
-* `TYPE_LONGBLOB` - Long Blob
-* `TYPE_LONGTEXT` - Long Text
-* `TYPE_MEDIUMBLOB` - Medium Blob
-* `TYPE_MEDIUMINTEGER` - Medium Integer
-* `TYPE_MEDIUMTEXT` - Medium Text
-* `TYPE_SMALLINTEGER` - Small Integer
-* `TYPE_TEXT` - Text
-* `TYPE_TIME` - Time
-* `TYPE_TIMESTAMP` - Timestamp
-* `TYPE_TINYBLOB` - Tiny Blob
-* `TYPE_TINYINTEGER` - Tiny Integer
-* `TYPE_TINYTEXT` - Tiny Text
-* `TYPE_VARCHAR` - Varchar
+- `TYPE_BIGINTEGER` - Big integer
+- `TYPE_BIT` - Bit
+- `TYPE_BLOB` - Blob
+- `TYPE_BOOLEAN` - Boolean
+- `TYPE_CHAR` - Char
+- `TYPE_DATE` - Date
+- `TYPE_DATETIME` - Datetime
+- `TYPE_DECIMAL` - Decimal
+- `TYPE_DOUBLE` - Double
+- `TYPE_ENUM` - Enum
+- `TYPE_FLOAT` - Float
+- `TYPE_INTEGER` - Integer
+- `TYPE_JSON` - JSON
+- `TYPE_JSONB` - JSONB
+- `TYPE_LONGBLOB` - Long Blob
+- `TYPE_LONGTEXT` - Long Text
+- `TYPE_MEDIUMBLOB` - Medium Blob
+- `TYPE_MEDIUMINTEGER` - Medium Integer
+- `TYPE_MEDIUMTEXT` - Medium Text
+- `TYPE_SMALLINTEGER` - Small Integer
+- `TYPE_TEXT` - Text
+- `TYPE_TIME` - Time
+- `TYPE_TIMESTAMP` - Timestamp
+- `TYPE_TINYBLOB` - Tiny Blob
+- `TYPE_TINYINTEGER` - Tiny Integer
+- `TYPE_TINYTEXT` - Tiny Text
+- `TYPE_VARCHAR` - Varchar
 
-> **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
-{: .alert .alert-info }
+> **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite). 
+> 
+> {: .alert .alert-info }
 
 ### Metody
 
@@ -86,7 +100,6 @@ public function addColumn(
     ColumnInterface $column
 ): bool
 ```
-
 Adds a column to a table
 
 ```php
@@ -96,7 +109,6 @@ public function addIndex(
     IndexInterface $index
 ): bool
 ```
-
 Adds an index to a table
 
 ```php
@@ -106,7 +118,6 @@ public function addForeignKey(
     ReferenceInterface $reference
 ): bool
 ```
-
 Adds a foreign key to a table
 
 ```php
@@ -116,13 +127,11 @@ public function addPrimaryKey(
     IndexInterface $index
 ): bool
 ```
-
 Adds a primary key to a table
 
 ```php
 public function affectedRows(): int
 ```
-
 Returns the number of affected rows by the last `INSERT`/`UPDATE`/`DELETE` reported by the database system
 
 ```php
@@ -130,13 +139,11 @@ public function begin(
     bool $nesting = true
 ): bool
 ```
-
 Starts a transaction in the connection
 
 ```php
 public function close(): bool
 ```
-
 Closes active connection returning success. Phalcon automatically closes and destroys active connections
 
 ```php
@@ -144,7 +151,6 @@ public function commit(
     bool $nesting = true
 ): bool
 ```
-
 Commits the active transaction in the connection
 
 ```php
@@ -152,29 +158,26 @@ public function connect(
     array $descriptor = null
 ): bool
 ```
-
-This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo](api/phalcon_db#db-adapter-pdo-abstractpdo) constructor. Call it when you need to restore a database connection
+ This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo][db-adapter-pdo-abstractpdo] constructor. Call it when you need to restore a database connection
 
 ```php
 public function createSavepoint(
     string $name
 ): bool
 ```
-
 Creates a new savepoint
 
 public function createTable( string $tableName, string $schemaName, array $definition ): bool
+```
+Creates a table
 
-    Creates a table
-    
-    ```php
-    public function createView(
-        string $viewName, 
-        array $definition, 
-        string $schemaName = null
-    ): bool
-    
-
+```php
+public function createView(
+    string $viewName, 
+    array $definition, 
+    string $schemaName = null
+): bool
+```
 Creates a view
 
 ```php
@@ -185,7 +188,6 @@ public function delete(
     mixed $dataTypes = null
 ): bool
 ```
-
 Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
@@ -194,7 +196,6 @@ public function describeColumns(
     string $schema = null
 ): ColumnInterface[]
 ```
-
 Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
@@ -203,7 +204,6 @@ public function describeIndexes(
         string $schema = null
 ): IndexInterface[]
 ```
-
 Lists table indexes
 
 ```php
@@ -212,7 +212,6 @@ public function describeReferences(
     string $schema = null
 ): ReferenceInterface[]
 ```
-
 Lists table references
 
 ```php
@@ -222,7 +221,6 @@ public function dropColumn(
     string $columnName
 ): bool
 ```
-
 Drops a column from a table
 
 ```php
@@ -232,7 +230,6 @@ public function dropForeignKey(
     string $referenceName
 ): bool
 ```
-
 Drops a foreign key from a table
 
 ```php
@@ -242,7 +239,6 @@ public function dropIndex(
     string $indexName
 ): bool
 ```
-
 Drop an index from a table
 
 ```php
@@ -251,7 +247,6 @@ public function dropPrimaryKey(
     string $schemaName
 ): bool
 ```
-
 Drops primary key from a table
 
 ```php
@@ -261,7 +256,6 @@ public function dropTable(
     bool $ifExists = true
 ): bool
 ```
-
 Drops a table from a schema/database
 
 ```php
@@ -271,7 +265,6 @@ public function dropView(
     bool $ifExists = true
 ): bool
 ```
-
 Drops a view
 
 ```php
@@ -279,7 +272,6 @@ public function escapeIdentifier(
     mixed identifier
 ): string
 ```
-
 Escapes a column/table/schema name.
 
 ```php
@@ -294,7 +286,6 @@ public function execute(
     mixed $dataTypes = null
 ): bool
 ```
-
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server does not return any rows
 
 ```php
@@ -304,7 +295,6 @@ public function fetchAll(
     mixed $placeholders = null
 ): array
 ```
-
 Dumps the complete result of a query into an array
 
 ```php
@@ -314,7 +304,6 @@ public function fetchColumn(
     mixed $column = 0
 ): string | bool
 ```
-
 Returns the n'th field of first row in a SQL query result
 
 ```php
@@ -338,7 +327,6 @@ public function fetchOne(
     mixed $placeholders = null
 ): array
 ```
-
 Returns the first row in a SQL query result
 
 ```php
@@ -346,7 +334,6 @@ public function forUpdate(
     string $sqlQuery
 ): string
 ```
-
 Returns a SQL modified with a FOR UPDATE clause
 
 ```php
@@ -354,7 +341,6 @@ public function getColumnDefinition(
     ColumnInterface $column
 ): string
 ```
-
 Returns the SQL column definition from a column
 
 ```php
@@ -362,79 +348,66 @@ public function getColumnList(
     mixed $columnList
 ): string
 ```
-
 Gets a list of columns
 
 ```php
 public function getConnectionId(): string
 ```
-
 Gets the active connection unique identifier
 
 ```php
 public function getDescriptor(): array
 ```
-
 Return descriptor used to connect to the active database
 
 ```php
 public function getDialect(): DialectInterface
 ```
-
 Returns internal dialect instance
 
 ```php
 public function getDialectType(): string
 ```
-
 Returns the name of the dialect used
 
 ```php
 public function getDefaultIdValue(): RawValue
 ```
-
 Return the default identity value to insert in an identity column
 
 ```php
 public function getInternalHandler(): \PDO
 ```
-
 Return internal PDO handler
 
 ```php
 public function getNestedTransactionSavepointName(): string
 ```
-
 Returns the savepoint name to use for nested transactions
 
 ```php
 public function getRealSQLStatement(): string
 ```
-
 Active SQL statement in the object without replace bound parameters
 
 ```php
 public function getSQLStatement(): string
 ```
-
 Active SQL statement in the object
 
 ```php
 public function getSQLBindTypes(): array
 ```
-
 Active SQL statement in the object
 
 ```php
 public function getSQLVariables(): array
 ```
-
 Active SQL statement in the object
 
 ```php
 public function getType(): string
 ```
-
 Returns type of database system the adapter is used for
 
 ```php
@@ -445,7 +418,6 @@ public function insert(
     mixed $dataTypes = null
 ): bool
 ```
-
 Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
@@ -455,7 +427,6 @@ public function insertAsDict(
     mixed $dataTypes = null
 ): bool
 ```
-
 Inserts data into a table using custom RBDM SQL syntax
 
 ```php
@@ -478,13 +449,11 @@ VALUES
 ```php
 public function isNestedTransactionsWithSavepoints(): bool
 ```
-
 Returns if nested transactions should use savepoints
 
 ```php
 public function isUnderTransaction(): bool
 ```
-
 Checks whether connection is under database transaction
 
 ```php
@@ -492,7 +461,6 @@ public function lastInsertId(
     mixed $sequenceName = null
 )
 ```
-
 Returns insert id for the auto_increment column inserted in the last SQL statement
 
 ```php
@@ -501,7 +469,6 @@ public function limit(
     int $number
 ): string
 ```
-
 Appends a LIMIT clause to sqlQuery argument
 
 ```php
@@ -509,7 +476,6 @@ public function listTables(
     string $schemaName = null
 ): array
 ```
-
 List all tables on a database
 
 ```php
@@ -517,7 +483,6 @@ public function listViews(
     string $schemaName = null
 ): array
 ```
-
 List all views on a database
 
 ```php
@@ -528,7 +493,6 @@ public function modifyColumn(
     ColumnInterface $currentColumn = null
 ): bool
 ```
-
 Modifies a table column based on a definition
 
 ```php
@@ -538,7 +502,6 @@ public function query(
     mixed $dataTypes = null
 ): ResultInterface | bool
 ```
-
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server returns rows
 
 ```php
@@ -546,7 +509,6 @@ public function releaseSavepoint(
     string $name
 ): bool
 ```
-
 Releases given savepoint
 
 ```php
@@ -554,7 +516,6 @@ public function rollback(
     bool $nesting = true
 ): bool
 ```
-
 Rollbacks the active transaction in the connection
 
 ```php
@@ -562,7 +523,6 @@ public function rollbackSavepoint(
     string $name
 ): bool
 ```
-
 Rollbacks given savepoint
 
 ```php
@@ -570,7 +530,6 @@ public function sharedLock(
     string $sqlQuery
 ): string
 ```
-
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
@@ -578,13 +537,11 @@ public function setNestedTransactionsWithSavepoints(
     bool $nestedTransactionsWithSavepoints
 ): AdapterInterface
 ```
-
 Set if nested transactions should use savepoints
 
 ```php
 public function supportSequences(): bool
 ```
-
 Check whether the database system requires a sequence to produce auto-numeric values
 
 ```php
@@ -593,7 +550,6 @@ public function tableExists(
     string $schemaName = null
 ): bool
 ```
-
 Generates SQL checking for the existence of a schema.table
 
 ```php
@@ -602,7 +558,6 @@ public function tableOptions(
     string $schemaName = null
 ): array
 ```
-
 Gets creation options from a table
 
 ```php
@@ -614,7 +569,6 @@ public function update(
     mixed $dataTypes = null
 ): bool
 ```
-
 Updates data on a table using custom RDBMS SQL syntax
 
 ```php
@@ -625,7 +579,6 @@ public function updateAsDict(
     mixed $dataTypes = null
 ): bool
 ```
-
 Updates data on a table using custom RBDM SQL syntax. Another, more convenient syntax
 
 ```php
@@ -647,7 +600,6 @@ WHERE   inv_id = 1
 ```php
 public function useExplicitIdValue(): bool
 ```
-
 Check whether the database system requires an explicit value for identity columns
 
 ```php
@@ -656,15 +608,12 @@ public function viewExists(
     string $schemaName = null
 ): bool
 ```
-
 Generates SQL checking for the existence of a schema view
 
 ### Custom
-
-The [Phalcon\Db\AdapterInterface](api/phalcon_db#db-adapter-adapterinterface) interface must be implemented in order to create your own database adapters or extend the existing ones. Additionally you can extend the [Phalcon\Db\AbstractAdapter](api/phalcon_db#db-adapter-abstractadapter) that already has some implementation for your custom adapter.
+The [Phalcon\Db\AdapterInterface][db-adapter-adapterinterface] interface must be implemented in order to create your own database adapters or extend the existing ones. Additionally you can extend the [Phalcon\Db\AbstractAdapter][db-adapter-abstractadapter] that already has some implementation for your custom adapter.
 
 ### Escaping
-
 Escaping identifiers is enabled by default. However, if you need to disable this feature, you can do so using the `setup()` method:
 
 ```php
@@ -678,12 +627,13 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 ```
 
 ## Factory
-
 ### `newInstance()`
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory][db-adapter-pdofactory] class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory](api/phalcon_db#db-adapter-pdofactory) class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
-
-The reserved names are: - `mysql` - [Phalcon\Db\Adapter\Pdo\Mysql](api/phalcon_db#db-adapter-pdo-mysql) - `postgresql` - [Phalcon\Db\Adapter\Pdo\Postgresql](api/phalcon_db#db-adapter-pdo-postgresql) - `sqlite` - [Phalcon\Db\Adapter\Pdo\Sqlite](api/phalcon_db#db-adapter-pdo-sqlite)
+The reserved names are:
+- `mysql` - [Phalcon\Db\Adapter\Pdo\Mysql][db-adapter-pdo-mysql]
+- `postgresql` - [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql]
+- `sqlite` - [Phalcon\Db\Adapter\Pdo\Sqlite][db-adapter-pdo-sqlite]
 
 The example below shows how you can create a MySQL adapter with the `new` keyword or the factory:
 
@@ -722,18 +672,18 @@ $connection = $factory
 ```
 
 ### `load()`
-
 You can also use the `load()` method to create an adapter using a configuration object or an array. The example below uses a `ini` file to instantiate the database connection using `load()`.
 
-    [database]
-    host = TEST_DB_MYSQL_HOST
-    username = TEST_DB_MYSQL_USER
-    password = TEST_DB_MYSQL_PASSWD
-    dbname = TEST_DB_MYSQL_NAME
-    port = TEST_DB_MYSQL_PORT
-    charset = TEST_DB_MYSQL_CHARSET
-    adapter = mysql
-    
+```
+[database]
+host = TEST_DB_MYSQL_HOST
+username = TEST_DB_MYSQL_USER
+password = TEST_DB_MYSQL_PASSWD
+dbname = TEST_DB_MYSQL_NAME
+port = TEST_DB_MYSQL_PORT
+charset = TEST_DB_MYSQL_CHARSET
+adapter = mysql
+```
 
 ```php
 <?php
@@ -757,20 +707,17 @@ $container->set(
 ```
 
 ## Dialects
-
 ### Built In
+Phalcon encapsulates the specific details of each database engine in dialects. [Phalcon\Db\Dialect][db-dialect] provides common functions and SQL generator to the adapters.
 
-Phalcon encapsulates the specific details of each database engine in dialects. [Phalcon\Db\Dialect](api/phalcon_db#db-dialect) provides common functions and SQL generator to the adapters.
-
-| Klasa                                                                    | Description                                         |
-| ------------------------------------------------------------------------ | --------------------------------------------------- |
-| [Phalcon\Db\Dialect\Mysql](api/phalcon_db#db-dialect-mysql)           | SQL specific dialect for MySQL database system      |
-| [Phalcon\Db\Dialect\Postgresql](api/phalcon_db#db-dialect-postgresql) | SQL specific dialect for PostgreSQL database system |
-| [Phalcon\Db\Dialect\Sqlite](api/phalcon_db#db-dialect-sqlite)         | SQL specific dialect for SQLite database system     |
+| Klasa                                                     | Description                                         |
+| --------------------------------------------------------- | --------------------------------------------------- |
+| [Phalcon\Db\Dialect\Mysql][db-dialect-mysql]           | SQL specific dialect for MySQL database system      |
+| [Phalcon\Db\Dialect\Postgresql][db-dialect-postgresql] | SQL specific dialect for PostgreSQL database system |
+| [Phalcon\Db\Dialect\Sqlite][db-dialect-sqlite]         | SQL specific dialect for SQLite database system     |
 
 ### Custom
-
-The [Phalcon\Db\DialectInterface](api/phalcon_db#db-dialectinterface) interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand. For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+The [Phalcon\Db\DialectInterface][db-dialectinterface] interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand. For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
 
 We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
 
@@ -823,11 +770,11 @@ $posts = $modelsManager->executeQuery(
 );
 ```
 
-> **NOTE**: There are more examples on how to extend PHQL in the [PHQL](db-phql) document.
-{: .alert .alert-info }
+> **NOTE**: There are more examples on how to extend PHQL in the [PHQL](db-phql) document. 
+> 
+> {: .alert .alert-info }
 
 ## Connect
-
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
 | Adapter      | Parametr     | Status   |
@@ -901,7 +848,6 @@ $connection = new Mysql(
 ```
 
 ## Create
-
 To insert a row in the database, you can use raw SQL or use the methods present by the adapter:
 
 ```php
@@ -915,7 +861,6 @@ VALUES
 ";
 $success = $connection->execute($sql);
 ```
-
 Raw SQL
 
 ```php
@@ -935,7 +880,6 @@ $success = $connection->execute(
     ]
 );
 ```
-
 Placeholders
 
 ```php
@@ -953,7 +897,6 @@ $success = $connection->insert(
     ]
 );
 ```
-
 Dynamic generation
 
 ```php
@@ -967,11 +910,9 @@ $success = $connection->insertAsDict(
     ]
 );
 ```
-
 Dynamic generation (alternative syntax)
 
 ## Update
-
 To update a row in the database, you can use raw SQL or use the methods present by the adapter:
 
 ```php
@@ -988,7 +929,6 @@ WHERE
 ";
 $success = $connection->execute($sql);
 ```
-
 Raw SQL
 
 ```php
@@ -1012,7 +952,6 @@ $success = $connection->execute(
     ]
 );
 ```
-
 Placeholders
 
 ```php
@@ -1031,11 +970,11 @@ $success = $connection->update(
     'inv_id = 4'
 );
 ```
-
 Dynamic generation
 
-> **NOTE**: With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped!
-{: .alert .alert-danger }
+> **NOTE**: With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped! 
+> 
+> {: .alert .alert-danger }
 
 ```php
 <?php
@@ -1049,11 +988,11 @@ $success = $connection->updateAsDict(
     'inv_id = 4'
 );
 ```
-
 Dynamic generation (alternative syntax)
 
-> **NOTE**: With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped!
-{: .alert .alert-danger }
+> **NOTE**: With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped! 
+> 
+> {: .alert .alert-danger }
 
 ```php
 <?php
@@ -1079,7 +1018,6 @@ $success = $connection->update(
     ]
 );
 ```
-
 With conditionals escaped
 
 ```php
@@ -1102,7 +1040,6 @@ $success = $connection->updateAsDict(
     ]
 );
 ```
-
 With conditionals escaped (alternative syntax)
 
 ## Delete
@@ -1118,7 +1055,6 @@ WHERE
 ';
 $success = $connection->execute($sql);
 ```
-
 Raw SQL
 
 ```php
@@ -1137,7 +1073,6 @@ $success = $connection->execute(
     ]
 );
 ```
-
 Placeholders
 
 ```php
@@ -1151,11 +1086,9 @@ $success = $connection->delete(
     ]
 );
 ```
-
 Dynamic generation
 
 ## Parameters
-
 The `Phalcon\Db` adapters provide several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 ```php
@@ -1215,7 +1148,7 @@ while ($invoice = $result->fetch()) {
 }
 ```
 
-The `query()` method returns an instance of [Phalcon\Db\Result\Pdo](api/phalcon_db#db-result-pdo). These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+The `query()` method returns an instance of [Phalcon\Db\Result\Pdo][db-result-pdo]. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 ```php
 <?php
@@ -1243,7 +1176,6 @@ echo $result->numRows();
 ```
 
 ### Binding
-
 Bound parameters are also supported. Although there is a minimal performance impact by using bound parameters, you are highly encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported.
 
 ```php
@@ -1268,7 +1200,6 @@ $result = $connection->query(
     ]
 );
 ```
-
 Binding with numeric placeholders
 
 ```php
@@ -1292,10 +1223,9 @@ $success = $connection->query(
     ]
 );
 ```
-
 Binding with named placeholders
 
-When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter, data are automatically escaped using [PDO Quote](https://www.php.net/manual/en/pdo.quote.php). This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter, data are automatically escaped using [PDO Quote][pdo_quote]. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
 Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
@@ -1321,11 +1251,9 @@ $result = $connection->query(
     ]
 );
 ```
-
 Binding with PDO placeholders
 
 ### Typed
-
 Placeholders allowed you to bind parameters to avoid SQL injections:
 
 ```php
@@ -1508,7 +1436,6 @@ The following types are available:
 | array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
 ### Cast
-
 By default, bound parameters are not casted in the PHP userland to the specified bind types. This option allows you to make Phalcon cast values before binding them with PDO. A common scenario is when passing a string to a `LIMIT`/`OFFSET` placeholder:
 
 ```php
@@ -1535,12 +1462,13 @@ $invoices = $modelsManager->executeQuery(
 
 This causes the following exception:
 
-    Fatal error: Uncaught exception 'PDOException' with message 
-    'SQLSTATE[42000]: Syntax error or access violation: 1064. 
-    You have an error in your SQL syntax; check the manual that 
-    corresponds to your MySQL server version for the right
-    syntax to use near ''100'' at line 1' in ....
-    
+```
+Fatal error: Uncaught exception 'PDOException' with message 
+'SQLSTATE[42000]: Syntax error or access violation: 1064. 
+You have an error in your SQL syntax; check the manual that 
+corresponds to your MySQL server version for the right
+syntax to use near ''100'' at line 1' in ....
+```
 
 This happens because `'100'` is a string variable. It is easily fixable by casting the value to integer first:
 
@@ -1588,7 +1516,6 @@ The following actions are performed according to the bind type specified:
 | `Column::BIND_PARAM_DECIMAL` | Cast the value as a native PHP double  |
 
 ### Hydration
-
 Values returned from the database system are always represented as string values by PDO, no matter if the value belongs to a `numeric` or `boolean` type column. This happens because some column types cannot be represented with its corresponding PHP native types due to their size limitations. For instance, a `BIGINT` in MySQL can store large integer numbers that cannot be represented as a 32bit integer in PHP. Because of that, PDO and the ORM by default, make the safe decision of leaving all values as strings.
 
 You can set up the ORM to automatically cast those types to their corresponding PHP native types:
@@ -1616,11 +1543,11 @@ if (11 === $invoice->inv_id) {
 }
 ```
 
-> **NOTE**: If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model.
-{: .alert .alert-info }
+> **NOTE**: If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model. 
+> 
+> {: .alert .alert-info }
 
 ## Transactions
-
 Working with transactions is supported the same way as with with PDO. Using transactions increases performance in most database systems and also ensures data integrity:
 
 ```php
@@ -1639,7 +1566,7 @@ try {
 }
 ```
 
-In addition to standard transactions, the adapters offer provides built-in support for [nested transactions](https://en.wikipedia.org/wiki/Nested_transaction), if the database system used supports them. When you call `begin()` for a second time a nested transaction is created:
+In addition to standard transactions, the adapters offer provides built-in support for [nested transactions][nested_transactions], if the database system used supports them. When you call `begin()` for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -1670,7 +1597,6 @@ try {
 ```
 
 ## Events
-
 The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 
 | Event Name            | Triggered                           | Can stop |
@@ -1683,6 +1609,7 @@ The adapters also send events to an [Events Manager](events) if it is present. I
 | `releaseSavepoint`    | Before a savepoint is released      |   Nie    |
 | `rollbackTransaction` | Before a transaction is rolled back |   Nie    |
 | `rollbackSavepoint`   | Before a savepoint is rolled back   |   Nie    |
+
 
 If you bind an [Events Manager](events) to the database connection, all the events with the type `db` will be enabled and fired for the relevant listeners.
 
@@ -1730,8 +1657,7 @@ $manager->attach(
 ```
 
 ## Profiling
-
-The adapter includes the [Phalcon\Db\Profiler](api/phalcon_db#db-profiler) component, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+The adapter includes the [Phalcon\Db\Profiler][db-profiler] component, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
 ```php
 <?php
@@ -1776,7 +1702,7 @@ echo 'SQL Statement: ', $profile->getSQLStatement(), PHP_EOL,
      'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), PHP_EOL;
 ```
 
-You can also create your own profile class based on the [Phalcon\Db\Profiler](api/phalcon_db#db-profiler) class to record real time statistics of the statements that are sent to the database:
+You can also create your own profile class based on the [Phalcon\Db\Profiler][db-profiler] class to record real time statistics of the statements that are sent to the database:
 
 ```php
 <?php
@@ -1805,7 +1731,6 @@ $manager->attach('db', $listener);
 ```
 
 ## Logging
-
 Using high-level abstraction components such as the `Phalcon\Db` adapters to access the database, makes it difficult to understand which statements are sent to the database system. The [Phalcon\Logger](logger) component interacts with the `Phalcon\Db` adapters offering logging capabilities on the database abstraction level.
 
 ```php
@@ -1869,24 +1794,24 @@ $connection->insert(
 
 As above, the file `/storage/logs/queries.log` will contain something like this:
 
-    [2019-12-25 01:02:03][INFO] INSERT INTO `co_invoices` 
-        SET (`inv_cst_id`, `inv_title`) 
-        VALUES (1, 'Invoice for ACME Inc.')
-    
+```
+[2019-12-25 01:02:03][INFO] INSERT INTO `co_invoices` 
+    SET (`inv_cst_id`, `inv_title`) 
+    VALUES (1, 'Invoice for ACME Inc.')
+```
 
 The listener will also work with models and their operations. It will also include all bound parameters that the query uses at the end of the logged statement.
 
-    [2019-12-25 01:02:03][INFO] SELECT `co_customers`.`cst_id`, 
-        ...,
-        FROM `co_customers` 
-        WHERE LOWER(`co_customers`.`cst_email`) = :cst_email 
-        LIMIT :APL0 - [{"emp_email":"team@phalcon.ld","APL0":1}]
-    
+```
+[2019-12-25 01:02:03][INFO] SELECT `co_customers`.`cst_id`, 
+    ...,
+    FROM `co_customers` 
+    WHERE LOWER(`co_customers`.`cst_email`) = :cst_email 
+    LIMIT :APL0 - [{"emp_email":"team@phalcon.ld","APL0":1}]
+```
 
 ## Tables
-
 ### Describe
-
 The `Phalcon\Db` adapters also provide methods to retrieve detailed information about tables and views:
 
 ```php
@@ -1894,7 +1819,6 @@ The `Phalcon\Db` adapters also provide methods to retrieve detailed information 
 
 $tables = $connection->listTables('gonano');
 ```
-
 Get tables on the `gonano` database
 
 ```php
@@ -1902,7 +1826,6 @@ Get tables on the `gonano` database
 
 $exists = $connection->tableExists('co_invoices');
 ```
-
 Check if there is a table called `co_invoices` in the database?
 
 ```php
@@ -1913,7 +1836,6 @@ foreach ($fields as $field) {
     echo 'Column Type: ', $field['Type'];
 }
 ```
-
 Print the name and data types of the `co_invoices` table
 
 ```php
@@ -1926,7 +1848,6 @@ foreach ($indexes as $index) {
     );
 }
 ```
-
 Print the indexes in the `co_invoices` table
 
 ```php
@@ -1939,7 +1860,6 @@ foreach ($references as $reference) {
     );
 }
 ```
-
 Print the foreign keys on the 'co_invoices' table
 
 A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
@@ -1955,7 +1875,6 @@ Methods to get information about views are also implemented for every supported 
 
 $tables = $connection->listViews('gonano');
 ```
-
 Get views on the `gonano` database
 
 ```php
@@ -1963,11 +1882,9 @@ Get views on the `gonano` database
 
 $exists = $connection->viewExists('vw_invoices');
 ```
-
 Check if there is a view `vw_invoices` in the database
 
 ### Create
-
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` adapters offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 An example on how to create a table is shown below:
@@ -2013,7 +1930,7 @@ $connection->createTable(
 );
 ```
 
-The `createTable` method accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column](api/phalcon_db#db-column). The table below shows the options available to define a column:
+The `createTable` method accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column][db-column]. The table below shows the options available to define a column:
 
 | Opcja           | Description                                                                                                             | Optional |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------- |:--------:|
@@ -2026,7 +1943,7 @@ The `createTable` method accepts an associative array describing the table. Colu
 | `primary`       | `true` if the column is part of the table's primary key                                                                 |   Tak    |
 | `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                         |   Tak    |
 | `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                               |   Tak    |
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/phalcon_db#db-column) constant (see below for a list)                  |   Nie    |
+| `type`          | Column type. Must be a [Phalcon\Db\Column][db-column] constant (see below for a list)                                 |   Nie    |
 | `unsigned`      | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                   |   Tak    |
 
 The following database column types are supported by the adapters:
@@ -2041,16 +1958,15 @@ The following database column types are supported by the adapters:
 
 The associative array passed in `createTable()` can have the following keys:
 
-| Indeks       | Description                                                                                                | Optional |
-| ------------ | ---------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with columns defined with [Phalcon\Db\Column](api/phalcon_db#db-column)                         |   Nie    |
-| `indexes`    | An array with indexes defined with [Phalcon\Db\Index](api/phalcon_db#db-index)                           |   Tak    |
-| `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference](api/phalcon_db#db-reference) |   Tak    |
-| `options`    | An array with creation options. (specific to the database system)                                          |   Tak    |
+| Indeks       | Description                                                                                 | Optional |
+| ------------ | ------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | An array with columns defined with [Phalcon\Db\Column][db-column]                         |   Nie    |
+| `indexes`    | An array with indexes defined with [Phalcon\Db\Index][db-index]                           |   Tak    |
+| `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference][db-reference] |   Tak    |
+| `options`    | An array with creation options. (specific to the database system)                           |   Tak    |
 
 ### Alter
-
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow you to modify existing columns or adding columns between two existing ones. [Phalcon\Db](api/phalcon_db#db-column) is limited by these constraints.
+As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow you to modify existing columns or adding columns between two existing ones. [Phalcon\Db][db-column] is limited by these constraints.
 
 ```php
 <?php
@@ -2094,7 +2010,6 @@ $connection->dropColumn(
 ```
 
 ### Drop
-
 To drop an existing table from the current database, use the `dropTable` method. To drop an table from a custom database, you can use the second parameter to set the database name.
 
 ```php
@@ -2102,7 +2017,6 @@ To drop an existing table from the current database, use the `dropTable` method.
 
 $connection->dropTable('co_invoices');
 ```
-
 Drop the table `co_invoices` from active database
 
 ```php
@@ -2110,5 +2024,27 @@ Drop the table `co_invoices` from active database
 
 $connection->dropTable('co_invoices', 'gonano');
 ```
-
 Drop the table `co_invoices` from the database `gonano`
+
+[pdo_quote]: https://www.php.net/manual/en/pdo.quote.php
+[nested_transactions]: https://en.wikipedia.org/wiki/Nested_transaction
+[db-adapter-abstractadapter]: api/phalcon_db#db-adapter-abstractadapter
+[db-adapter-adapterinterface]: api/phalcon_db#db-adapter-adapterinterface
+[db-adapter-pdo-abstractpdo]: api/phalcon_db#db-adapter-pdo-abstractpdo
+[db-adapter-pdo-mysql]: api/phalcon_db#db-adapter-pdo-mysql
+[db-adapter-pdo-postgresql]: api/phalcon_db#db-adapter-pdo-postgresql
+[db-adapter-pdo-sqlite]: api/phalcon_db#db-adapter-pdo-sqlite
+[db-adapter-pdofactory]: api/phalcon_db#db-adapter-pdofactory
+[db-column]: api/phalcon_db#db-column
+[db-column]: api/phalcon_db#db-column
+[db-dialect]: api/phalcon_db#db-dialect
+[db-dialect-mysql]: api/phalcon_db#db-dialect-mysql
+[db-dialect-postgresql]: api/phalcon_db#db-dialect-postgresql
+[db-dialect-sqlite]: api/phalcon_db#db-dialect-sqlite
+[db-dialectinterface]: api/phalcon_db#db-dialectinterface
+[db-enum]: api/phalcon_db#db-enum
+[db-index]: api/phalcon_db#db-index
+[db-profiler]: api/phalcon_db#db-profiler
+[db-reference]: api/phalcon_db#db-reference
+[db-result-pdo]: api/phalcon_db#db-result-pdo
+[mvc-model]: api/phalcon_mvc#mvc-model
