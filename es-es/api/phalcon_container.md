@@ -11,12 +11,12 @@ title: 'Phalcon\Container'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Container.zep)
 
-| Namespace | Phalcon | | Uses | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
+| Namespace  | Phalcon | | Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
 
 Envoltura PSR-11 para `Phalcon\Di`
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var DiInterface
@@ -30,17 +30,18 @@ protected container;
 ```php
 public function __construct( DiInterface $container );
 ```
-
 Constructor Phalcon\Container
+
 
 ```php
 public function get( mixed $name ): mixed;
 ```
-
 Devuelve el servicio
+
 
 ```php
 public function has( mixed $name ): bool;
 ```
-
 Si el servicio existe o no en el contenedor
+
+
