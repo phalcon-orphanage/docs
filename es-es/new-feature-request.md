@@ -7,9 +7,7 @@ keywords: 'Solicitud de Nueva Funcionalidad, nfr'
 ---
 
 # Solicitud de Nueva Funcionalidad
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 [Lista de Solicitudes de Nuevas Funcionalidades](new-feature-request-list)
@@ -24,7 +22,7 @@ Una solicitud de nueva funcionalidad contiene:
 * Cómo puede beneficiar al *framework* y a la comunidad
 * Si la función ya está implementada en otros frameworks, una breve explicación de lo que fue implementado y sus ventajas
 
-En los siguientes casos se rechazará una solicitud de nueva característica **si**:
+In the following cases a new feature request will be rejected **if**:
 
 * Una característica que haga al framework más lento
 * La característica que no proporcione ningún valor adicional al framework
