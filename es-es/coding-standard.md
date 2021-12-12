@@ -2,29 +2,26 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Estándar de Codificación'
+title: 'Estándar de codificación'
 keywords: 'coding standard, zephir'
 ---
 
 # Estándar de Código de Phalcon
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Última actualización: 04-07-2019
 
-Phalcon está escrito en [Zephir](https://zephir-lang.com), un lenguaje creado por el equipo de Phalcon y que se encuentra en continuo desarrollo. Por ello, aunque los desarrolladores quisieran seguirlo, no hay todavía ningún estándar de código establecido.
+Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invented and is actively developing. Por ello, aunque los desarrolladores quisieran seguirlo, no hay todavía ningún estándar de código establecido.
 
-En este documento se describe el estándar de código que utiliza Phalcon para editar archivos de Zephir. El estándar de código es una variante de [PSR-12](https://www.php-fig.org/psr/psr-12/) desarrollada por [PHP-FIG](https://www.php-fig.org/)
+En este documento se describe el estándar de código que utiliza Phalcon para editar archivos de Zephir. The coding standard is a variant of [PSR-12][psr-12] developed by [PHP-FIG][php-fig]
 
 ## Archivos
-
-- Los archivos deben usar solo UTF-8 sin [BOM (*marca de orden de bytes*)](https://es.wikipedia.org/wiki/Marca_de_orden_de_bytes).
+* Los archivos deben usar solo UTF-8 sin [BOM (*marca de orden de bytes*)](https://es.wikipedia.org/wiki/Marca_de_orden_de_bytes).
 - Los nombres de los archivos deben estar en formato [StudlyCaps](https://en.wikipedia.org/wiki/Studly_caps).
 - Todos los archivos deben usar el final de línea de Unix LF (*linefeed*).
 - Todos los archivos deben terminar con una única línea en blanco.
-- Los nombres de las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (*namespace*) de la clase.
+- Los nombres de  las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (*namespace*) de la clase.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -49,14 +46,12 @@ class Memory extends Adapter
 - No debe haber más de una declaración por línea.
 
 ## Clases
-
 - Los nombres de las clases deben estar en formato StudlyCaps.
 - La llave de apertura de las clases debe ir en la línea siguiente a la declaración, y la de cierre en la línea siguiente del cuerpo.
 - Las clases abstractas deben tener el prefijo `Abstract`
 - Las interfaces deben tener el sufijo `Interface`
 
 ### Constantes
-
 - Las constantes de clase deben declararse en mayúscula utilizando el guion bajo como separador.
 - Las constantes de clase deben aparecer en la parte superior.
 - Las constantes de clase deben estar en orden alfabético.
@@ -72,11 +67,10 @@ class Enum
 ```
 
 ### Propiedades
-
 - Las propiedades de clase deben ser declaradas en formato camelCase.
 - Las propiedades de clase deben estar en orden alfabético.
 - Siempre que sea posible, las propiedades deben tener un valor predeterminado.
-- Siempre que sea posible, las propiedades deben tener un bloque de documentación (*docblock*) que defina su tipo mediante la declaración `@var`.
+- Siempre que sea posible, las propiedades deben tener un bloque de documentación (*docblock*) que defina su tipo mediante la declaración  `@var`.
 - Las propiedades no deben usar como prefijo un guion bajo `_`. La única excepción es si el nombre de la propiedad es una palabra reservada como `default`, `namespace`, etc.
 
 ```php
@@ -96,7 +90,6 @@ class Memory extends Adapter
 ```
 
 ### Métodos
-
 - Los nombres de los métodos deben ser declarados en formato camelCase.
 - Los métodos deben estar en orden alfabético según su visibilidad. El orden es `public`, `protected` y `private`. Si se define `__construct` debe aparecer al principio de la clase.
 - Los nombres de los métodos no deben usar como prefijo un guion bajo `_`.
@@ -123,7 +116,6 @@ if typeof variable === "array" {
 ```
 
 ### Argumentos de los métodos
-
 - En la lista de argumentos no debe haber un espacio en blanco antes de cada coma, pero sí después de cada una de ellas.
 - El tipo de cada método debe declararse al principio.
 - Los argumentos de los métodos con valores predeterminados deben ir al final de la lista de argumentos.
@@ -135,5 +127,9 @@ public function setElement(string! name, var value) -> void;
 - La lista de argumentos se puede dividir en múltiples líneas, cada una con su respectiva sangría. Al hacerlo así, el primer elemento de la lista debe estar en la línea siguiente, y solo debe haber un argumento por línea.
 
 ### Archivos PHP
+PHP files such as tests must follow [PSR-12][psr-12].
 
-Los archivos PHP tales como los tests deben seguir la especificación [PSR-12](https://www.php-fig.org/psr/psr-12/).
+
+[php-fig]: https://www.php-fig.org/
+[psr-12]: https://www.php-fig.org/psr/psr-12/
+[zephir]: https://zephir-lang.com
