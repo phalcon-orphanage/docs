@@ -1,6 +1,11 @@
-- - -
-layout: default language: 'en' version: '4.0' title: 'Unit Testing' keywords: 'unit testing, phpunit, phalcon'
-- - -
+---
+layout: default
+language: 'fr-fr'
+version: '4.0'
+title: 'Unit Testing'
+keywords: 'unit testing, phpunit, phalcon'
+---
+
 # Unit Testing
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
@@ -180,7 +185,7 @@ If you need to overload the `setUp` method, it is important you call the parent 
         //some setup mocks
     }
 
-```
+````
 
 ### Running Unit Tests
 
