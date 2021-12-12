@@ -7,16 +7,13 @@ keywords: 'escaper, escape html, escape js, escape css'
 ---
 
 # エスケープ
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
+Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper][escaper] provides contextual escaping and is written in [Zephir][zephir], providing the minimal overhead when escaping different kinds of texts.
 
-Websites and web applications are vulnerable to [XSS](https://owasp.org/www-community/attacks/xss/) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/phalcon_escaper#escaper) provides contextual escaping and is written in [Zephir](https://zephir-lang.com), providing the minimal overhead when escaping different kinds of texts.
-
-We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) created by the [OWASP](https://www.owasp.org). Additionally, this component relies on [mbstring](https://www.php.net/manual/en/book.mbstring.php) to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
+We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
 
 ```php
 <?php
@@ -43,7 +40,6 @@ echo $escaper->escapeJs($js);
 ```
 
 ## HTML
-
 You can escape text prior to printing it to your views using `escapeHtml()`. Without escaping you could potentially echo unsafe data in your HTML output.
 
 ```php
@@ -59,20 +55,17 @@ echo $escaper->escapeHtml($title);
 ```
 
 HTML syntax:
-
 ```html
 <?php echo $this->escaper->escapeHtml($title); ?>
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ title | escape }}{% endraw %}
 ```
 
 ## HTML Attributes
-
-Escaping attributes is different than escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses [htmlspecialchars](https://www.php.net/manual/en/function.htmlspecialchars.php) internally. This kind of escaping is intended escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `escapeHtmlAttr() method`
+Escaping attributes is different than escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses [htmlspecialchars][htmlspecialchars] internally. This kind of escaping is intended escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `escapeHtmlAttr() method`
 
 ```php
 <?php
@@ -87,19 +80,16 @@ echo $escaper->escapeHtmlAttr($attr);
 ```
 
 HTML syntax:
-
 ```html
 <?php echo $this->escaper->escapeHtmlAttr($attr); ?>
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ attr | escape_attr }}{% endraw %}
 ```
 
 ## URLs
-
 `escapeUrl()` can be used to escape attributes such as `href` or `url`:
 
 ```php
@@ -115,13 +105,11 @@ echo $escaper->escapeHtmlAttr($url);
 ```
 
 HTML syntax:
-
 ```html
 <?php echo $this->escaper->escapeHtmlAttr($url); ?>
 ```
 
 ## CSS
-
 CSS identifiers/values can be escaped by using `escapeCss()`:
 
 ```php
@@ -137,19 +125,16 @@ echo $escaper->escapeCss($css);
 ```
 
 HTML syntax:
-
 ```html
 <?php echo $this->escaper->escapeCss($css); ?>
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ css | escape_css }}{% endraw %}
 ```
 
 ## JavaScript
-
 Content printed into javascript code must be properly escaped. `escapeJs()` helps with this task:
 
 ```php
@@ -165,24 +150,20 @@ echo $escaper->escapeJs($js);
 ```
 
 HTML syntax:
-
 ```html
 <?php echo $this->escaper->escapeJs($js); ?>
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ js | escape_js }}{% endraw %}
 ```
 
 ## Encoding
-
-[Phalcon\Escape](api/phalcon_escaper#escaper) also offers methods regarding the encoding of the text to be escaped.
+[Phalcon\Escape][escaper] also offers methods regarding the encoding of the text to be escaped.
 
 ### `detectEncoding()`
-
-Detects the character encoding of a string to be handled by an encoder. Special-handling for `chr(172)` and `chr(128)` to `chr(159)` which fail to be detected [mb_detect_encoding](https://www.php.net/manual/en/function.mb-detect-encoding.php). The method returns a `string` with the detected encoding or `null`
+Detects the character encoding of a string to be handled by an encoder. Special-handling for `chr(172)` and `chr(128)` to `chr(159)` which fail to be detected [mb_detect_encoding][mb_detect_encoding]. The method returns a `string` with the detected encoding or `null`
 
 ```php
 <?php
@@ -195,7 +176,6 @@ echo $escaper->detectEncoding('ḂḃĊċḊḋḞḟĠġṀṁ'); // UTF-8
 ```
 
 ### `getEncoding()`
-
 Returns the internal encoding used by the escaper
 
 ```php
@@ -209,7 +189,6 @@ echo $escaper->getEncoding();
 ```
 
 ### `normalizeEncoding()`
-
 Utility method that normalizes a string's encoding to UTF-32.
 
 ```php
@@ -223,7 +202,6 @@ echo $escaper->normalizeEncoding('ḂḃĊċḊḋḞḟĠġṀṁ');
 ```
 
 ### `setEncoding()`
-
 Sets the encoding to be used by the escaper
 
 ```php
@@ -239,7 +217,6 @@ echo $escaper->getEncoding(); // 'utf-8'
 ```
 
 ### `setDoubleEncode()`
-
 Sets the escaper to use double encoding or not (default `true`)
 
 ```php
@@ -253,8 +230,17 @@ $escaper->setDoubleEncode(false);
 ```
 
 ### `setHtmlQuoteType()`
-
-You can set the quote type to be used by the escaper. The passed variable is one of the constants that [htmlspecialchars](https://www.php.net/manual/en/function.htmlspecialchars.php) accepts: - `ENT_COMPAT` - `ENT_QUOTES` - `ENT_NOQUOTES` - `ENT_IGNORE` - `ENT_SUBSTITUTE` - `ENT_DISALLOWED` - `ENT_HTML401` - `ENT_XML1` - `ENT_XHTML` - `ENT_HTML5`
+You can set the quote type to be used by the escaper. The passed variable is one of the constants that [htmlspecialchars][htmlspecialchars] accepts:
+- `ENT_COMPAT`
+- `ENT_QUOTES`
+- `ENT_NOQUOTES`
+- `ENT_IGNORE`
+- `ENT_SUBSTITUTE`
+- `ENT_DISALLOWED`
+- `ENT_HTML401`
+- `ENT_XML1`
+- `ENT_XHTML`
+- `ENT_HTML5`
 
 ```php
 <?php
@@ -267,8 +253,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 ```
 
 ## Exceptions
-
-Any exceptions thrown in the Escaper component will be of type [Phalcon\Escaper\Exception](api/phalcon_escaper#escaper-exception). It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Escaper component will be of type [Phalcon\Escaper\Exception][escaper-exception]. It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -294,8 +279,7 @@ class IndexController extends Controller
 ```
 
 ## 依存性の注入
-
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Escaper](api/phalcon_escaper#escaper) is already registered for you with the name `escaper`.
+If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Escaper][escaper] is already registered for you with the name `escaper`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -345,8 +329,7 @@ class InvoicesController extends Controller
 ```
 
 ## Custom
-
-Phalcon also offers the [Phalcon\Escaper\EscaperInterface](api/phalcon_escaper#escaper-escaperinterface) which can be implemented in a custom class. The class can offer the escaper functionality you require.
+Phalcon also offers the [Phalcon\Escaper\EscaperInterface][escaper-escaperinterface] which can be implemented in a custom class. The class can offer the escaper functionality you require.
 
 ```php
 <?php
@@ -401,3 +384,16 @@ class Custom extends EscaperInterface
     public function setHtmlQuoteType(int $quoteType): void;
 }
 ```
+
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[escaper]: api/phalcon_escaper#escaper
+[escaper]: api/phalcon_escaper#escaper
+[escaper-escaperinterface]: api/phalcon_escaper#escaper-escaperinterface
+[escaper-exception]: api/phalcon_escaper#escaper-exception
+[zephir]: https://zephir-lang.com
+[htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
+[mb_detect_encoding]: https://www.php.net/manual/en/function.mb-detect-encoding.php
+[mbstring]: https://www.php.net/manual/en/book.mbstring.php
+[owasp]: https://www.owasp.org
+[xss]: https://owasp.org/www-community/attacks/xss/
+[xss_cheat_sheet]: https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
