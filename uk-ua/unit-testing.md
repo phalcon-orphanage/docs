@@ -1,6 +1,11 @@
-- - -
-layout: default language: 'uk-ua' version: '4.0' title: 'Юніт-тестування' keywords: 'unit testing, phpunit, phalcon, юніт-тести'
-- - -
+---
+layout: default
+language: 'uk-ua'
+version: '4.0'
+title: 'Юніт-тестування'
+keywords: 'unit testing, phpunit, phalcon'
+---
+
 # Юніт-тестування
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
@@ -177,12 +182,12 @@ If you need to overload the `setUp` method, it is important you call the parent 
     {
         parent::setUp();
 
-        //Деякі базові видозміни
+        //some setup mocks
     }
 
-```
+````
 
-### Запуск юніт-тестів
+### Running Unit Tests
 
 When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
 
