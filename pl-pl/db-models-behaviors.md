@@ -7,14 +7,11 @@ keywords: 'models, behaviors'
 ---
 
 # Model Behaviors
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-
-[Behaviors](api/phalcon_mvc#mvc-model-behavior) are shared constructs that several models may adopt in order to re-use code. Although you can use [traits](https://php.net/manual/en/language.oop5.traits.php) to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
+[Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to re-use code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
 
 The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement behaviors.
 
@@ -65,16 +62,14 @@ class Invoices extends Model
 ```
 
 ## Built In
-
 The following built-in behaviors are provided by the framework:
 
-| Nazwa                                                             | Description                                                                                                |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [SoftDelete](api/phalcon_mvc#mvc-model-behavior-softdelete)       | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
-| [Timestampable](api/phalcon_mvc#mvc-model-behavior-timestampable) | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| Nazwa                                             | Description                                                                                                |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [SoftDelete][mvc-model-behavior-softdelete]       | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+| [Timestampable][mvc-model-behavior-timestampable] | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
 
 ## Timestampable
-
 This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 ```php
@@ -97,7 +92,7 @@ public function initialize()
 }
 ```
 
-Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as the format of the [date](https://php.net/manual/en/function.date.php) function. `format` can also be an anonymous function offering additional functionality to generate any kind of timestamp string:
+Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as the format of the [date][date] function. `format` can also be an anonymous function offering additional functionality to generate any kind of timestamp string:
 
 ```php
 <?php
@@ -127,10 +122,9 @@ public function initialize()
 }
 ```
 
-If the option `format` is omitted a timestamp using the PHP's function [time](https://php.net/manual/en/function.time.php), will be used.
+If the option `format` is omitted a timestamp using the PHP's function [time][time], will be used.
 
 ## SoftDelete
-
 This behavior can be used as follows:
 
 ```php
@@ -212,16 +206,16 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-> **NOTE**: You will need to ensure to specify the *deleted* condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
-{: .alert .alert-warning }
+> **NOTE**: You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering. 
+> 
+> {: .alert .alert-warning }
 
 ## Custom
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing custom behaviors.
 
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) or extend [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior) which exposes most of the methods required for implementing custom behaviors.
+The [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] requires two methods to be present in your custom behavior:
 
-The [Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) requires two methods to be present in your custom behavior:
-
-```php
+```php 
 public function missingMethod(
     ModelInterface $model, 
     string $method, 
@@ -240,7 +234,7 @@ public function notify(
 
 This method receives the notifications from the [Events Manager](events).
 
-Additionally if you extend [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior), you have access to:
+Additionally if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
 
 - `getOptions(string $eventName = null)` - Returns the behavior options related to an event
 - `mustTakeAction(string $eventName)` - `bool` - Checks whether the behavior must take action on certain event
@@ -332,8 +326,7 @@ $title = $invoice->getSlug();
 ```
 
 ## Traits
-
-You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the `Timestampable` behavior:
+You can use [Traits][traits] to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the `Timestampable` behavior:
 
 ```php
 <?php
@@ -365,7 +358,17 @@ class Invoices extends Model
 }
 ```
 
-> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
-{: .alert .alert-info }
+> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error. 
+> 
+> {: .alert .alert-info }
 
 
+[date]: https://php.net/manual/en/function.date.php
+[mvc-model-behavior]: api/phalcon_mvc#mvc-model-behavior
+[mvc-model-behavior]: api/phalcon_mvc#mvc-model-behavior
+[mvc-model-behavior-softdelete]: api/phalcon_mvc#mvc-model-behavior-softdelete
+[mvc-model-behavior-timestampable]: api/phalcon_mvc#mvc-model-behavior-timestampable
+[mvc-model-behaviorinterface]: api/phalcon_mvc#mvc-model-behaviorinterface
+[time]: https://php.net/manual/en/function.time.php
+[traits]: https://php.net/manual/en/language.oop5.traits.php
+[traits]: https://php.net/manual/en/language.oop5.traits.php
