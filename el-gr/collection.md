@@ -7,13 +7,10 @@ keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializea
 ---
 
 # Συλλογή
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-
 `Phalcon\Collection` είναι μια συστοιχία με πρόσβαση σαν αντικείμενο. Προσφέρει ταχύτητα, καθώς και υλοποιήσεις διαφόρων PHP interfaces. Αυτά είναι:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
@@ -40,7 +37,6 @@ $collection = new Collection($data);
 ```
 
 ## Κατασκευαστής
-
 Μπορείτε να κατασκευάσετε το αντικείμενο όπως οποιοδήποτε άλλο αντικείμενο στην PHP. Ωστόσο, ο κατασκευαστής δέχεται μια προαιρετική παράμετρο `array`, η οποία θα συμπληρώσει το αντικείμενο για εσάς.
 
 ```php
@@ -61,7 +57,6 @@ $collection = new Collection($data);
 ```
 
 ## Ευαισθησία πεζών-κεφαλαίων
-
 Όταν εγκαθιστάτε το αντικείμενο μπορείτε να καθορίσετε μια δεύτερη παράμετρο `bool`, η οποία θα ελέγχει το κλειδί που ψάχνει στο αντικείμενο. Από προεπιλογή `$insensitive` έχει οριστεί σε `true`, καθιστώντας τις αναζητήσεις σε περίπτωση συλλογής μη ευαίσθητες. Ο ορισμός αυτής της τιμής σε `false` θα κάνει την αναζήτηση για το στοιχείο με ευαίσθητο τρόπο.
 
 ```php
@@ -83,9 +78,8 @@ $collection = new Collection($data, false);
 echo $collection->has('COLORS'); // false
 ```
 
-## Επαναχρησιμοποίηση
-
-Μπορείτε επίσης να χρησιμοποιήσετε ξανά το στοιχείο, επανατοποθετώντας το. `Phalcon\Collection` εκθέτει τις `clear()` και `init()` μεθόδους, οι οποίες θα καθαρίσουν και θα ξανασυμπληρώσουν τον εσωτερικό πίνακα αντίστοιχα,
+## Reusing
+You can also reuse the component, by repopulating it. `Phalcon\Collection` εκθέτει τις `clear()` και `init()` μεθόδους, οι οποίες θα καθαρίσουν και θα ξανασυμπληρώσουν τον εσωτερικό πίνακα αντίστοιχα,
 
 ```php
 <?php
@@ -115,17 +109,15 @@ $collection->init($data);
 echo $collection->count(); // 1
 ```
 
-## Λήψη
-
-Όπως προαναφέρθηκε, το `Phalcon\Collection` υλοποιεί διάφορες διεπαφές, προκειμένου το στοιχείο να καταστεί όσο το δυνατόν πιο ευέλικτο. Η ανάκτηση δεδομένων αποθηκευμένων σε ένα στοιχείο μπορεί να γίνει με τη χρήση:
-
+## Get
+Όπως προαναφέρθηκε, το `Phalcon\Collection` υλοποιεί διάφορες διεπαφές, προκειμένου το στοιχείο να καταστεί όσο το δυνατόν πιο ευέλικτο. Retrieving data stored in an element can be done by using:
 - Ιδιότητα
 - `__get()`
 - λήψη από πίνακα (`$collection[$element]`)
 - `offsetGet()`
 - `get()`
 
-Ο ταχύτερος τρόπος είναι με τη χρήση της σύνταξης ιδιότητας:
+The fastest way is by using the property syntax:
 
 ```php
 <?php
@@ -146,7 +138,7 @@ $collection = new Collection($data);
 echo $collection->year;                    // 1776
 ```
 
-Μπορείς να χρησιμοποιήσεις `__get($element)` αλλά δε συνηστάται καθώς είναι πολύ πιο αργή από τη σύνταξη ιδιότητας. Το ίδιο ισχύει και για το `offsetGet`
+You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
 
 ```php
 echo $collection->__get('year');           // 1776
@@ -163,7 +155,7 @@ public function get(
 ):  mixed
 ```
 
-Η χρήση του `get()` προσφέρει τρεις επιπλέον παραμέτρους. Όταν `$defaultValue` οριστεί στην κλήση και το στοιχείο δεν βρέθηκε, `$defaultValue` θα επιστραφεί. Η παράμετρος `cast` δέχεται μια συμβολοσειρά που καθορίζει τον τύπο της τιμής που θα επιστραφεί. Οι διαθέσιμες τιμές είναι:
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned.  The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
 
 - `array`
 - `bool`
@@ -179,9 +171,7 @@ public function get(
 The collection object also offers two more getters `getKeys` and `getValues` `getKeys( bool $insensitive = true )` returns all the keys stored internally in the collection. By default, it will return the keys case insensitive manner i.e. all lowercase. If `false` is passed in the call, it will return the keys exactly as they have been stored. `getValues` returns the values stored in the internal collection.
 
 ## Has
-
 To check whether an element exists or not in the collection, you can use the following:
-
 - `isset()` on the property
 - `__isset()`
 - array based isset (`isset($coollection[$element])`)
@@ -223,12 +213,10 @@ public function has(string $element):  bool
 ```
 
 ## Set
-
 To set an element in the collection, you can use the following:
-
 - assign the value to the property
 - `__set()`
-- array based assignment 
+- array based assignment
 - `offsetSet()`
 - `set()`
 
@@ -262,12 +250,10 @@ $collection->set('year', 1776);
 ```
 
 ## Remove
-
 To remove an element in the collection, you can use the following:
-
 - unset the property
 - `__unset()`
-- array based unset 
+- array based unset
 - `offsetUnset()`
 - `remove()`
 
@@ -305,7 +291,6 @@ public function remove(string $element):  void
 ```
 
 ## Iteration
-
 Since the collection object implements `\IteratorAggregate`, you can iterate through the object with ease. The method `getIterator()` returns an `ArrayIterator()` object
 
 ```php
@@ -327,7 +312,6 @@ foreach ($collection as $key => $value) {
 ```
 
 ## Count
-
 The implementation of the `\Countable` interface exposes the `count()` method, which stores the number of elements in the collection.
 
 ```php
@@ -350,7 +334,6 @@ echo $collection->count();    // 2
 ```
 
 ## Serialization
-
 The `\Serializable` and `\JsonSerializable` interfaces expose methods that allow you to serialize and unserialize the object. `serialize()` and `unserialize()` use PHP's `serialize` and `unserialize` functions. `jsonSerialize()` returns an array which can be used with `json_encode` to serialize the object.
 
 ```php
@@ -378,8 +361,8 @@ echo $collection->jsonSerialize(); // $data
 ```
 
 ## Μεταμορφώσεις
-
 `Phalcon\Collection` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
+
 
 ```php
 <?php
@@ -401,7 +384,6 @@ echo $collection->toArray();  // $data
 ```
 
 `toJson(int $options)` returns a JSON representation of the object. It uses `json_encode` internally and accepts a parameter, which represents the flags that `json_encode` accepts. By default the options are set up with the value 74, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
-
 - `JSON_HEX_TAG`
 - `JSON_HEX_APOS`
 - `JSON_HEX_AMP`
@@ -442,7 +424,6 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 ```
 
 ## Read Only
-
 Phalcon also offers a component that can be used in a read-only fashion. `Phalcon\Collection\ReadOnly` can serve as a collection in your application that can only be populated with initial data but not allowing its contents to be changed throughout the application.
 
 ```php
