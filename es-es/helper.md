@@ -8,21 +8,16 @@ keywords: 'ayudantes, vector, cadena, sistema de ficheros, numero, utilidades'
 ---
 
 # Componente Ayudante
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 `Phalcon\Helper` un componente que expone las clases ayudantes y métodos estáticos usados por el framework.
 
 ## Arr
-
-[Phalcon\Helper\Arr](api/phalcon_helper#helper-arr) expone métodos estáticos que ofrecen un acceso rápido a funcionalidades comunes cuando se trabaja con vectores.
+[Phalcon\Helper\Arr][helper-arr] exposes static methods that offer quick access to common functionality when working with arrays.
 
 ### `chunk`
-
 ```php
 final public static function chunk(
     array $collection, 
@@ -30,7 +25,6 @@ final public static function chunk(
     bool $preserveKeys = false
 ): array
 ```
-
 Trocea un vector en vectores más pequeños de un determinado tamaño.
 
 ```php
@@ -57,14 +51,12 @@ $chunks = Arr::chunk($source, 2);
 ```
 
 ### first
-
 ```php
 final public static function first(
     array $collection, 
     mixed $method = null
 ): var
 ```
-
 Devuelve el primer elemento de la colección. Si se indica una invocable, el elemento devuelto es el primero que valida a `true`
 
 ```php
@@ -90,14 +82,12 @@ echo $result; // 'Framework'
 ```
 
 ### `firstKey`
-
 ```php
 final public static function firstKey(
     array $collection, 
     mixed $method = null
 ): var
 ```
-
 Devuelve la clave del primer elemento de la colección. Si se indica una invocable, el elemento devuelto es el primero que valida a `true`
 
 ```php
@@ -123,16 +113,13 @@ echo $result; // 3
 ```
 
 ### `flatten`
-
 ```php
 final public static function flatten(
     array $collection, 
     bool $deep = false
 ): array
 ```
-
 Aplana un vector hasta tener un sólo nivel de profundidad. Si `$deep` se configura a `true`, recorre todos los elementos y los aplana todos.
-
 ```php
 <?php
 
@@ -153,7 +140,6 @@ var_dump(
 ```
 
 ### `get`
-
 ```php
 final public static function get(
     array $collection, 
@@ -162,7 +148,6 @@ final public static function get(
     string $cast = null
 ): mixed
 ```
-
 Recupera un elemento de un vector. Si el elemento existe se devuelve su valor. Si no, se devuelve `defaultValue`. El parámetro `cast` acepta una cadena que define a qué tipo será convertido el valor devuelto. Los valores disponibles son:
 
 - `array`
@@ -175,6 +160,7 @@ Recupera un elemento de un vector. Si el elemento existe se devuelve su valor. S
 - `null`
 - `object`
 - `string`
+
 
 ```php
 <?php
@@ -196,16 +182,13 @@ echo Arr::get($data, 'unknown', 1776, 'string'); // '1776'
 ```
 
 ### `group`
-
 ```php
 final public static function group(
     array $collection, 
     mixed $method
 ): array
 ```
-
 Agrupa los elementos de un vector basándose en la invocable indicada y devuelve el vector con los elementos agrupados. La invocable puede ser una cadena con el nombre del elemento, una llamable o un método disponible. El vector puede contener subvectores como elementos u objetos con propiedades relevantes.
-
 ```php
 <?php
 
@@ -286,11 +269,9 @@ var_dump($result);
 ```
 
 ### `has`
-
 ```php
 final public static function has(array $collection, mixed $index): bool
 ```
-
 Comprueba si un elemento existe en un vector. Devuelve `true` si se encuentra, `false` en caso contrario.
 
 ```php
@@ -312,13 +293,10 @@ echo Arr::has($data, 'unknown');       // false
 ```
 
 ### `isUnique`
-
 ```php
 final public static function isUnique(array $collection): bool
 ```
-
 Comprueba valores duplicados en una lista plana. Devuelve `true` si existen valores duplicados y `false` si todos los valores son únicos.
-
 ```php
 <?php
 
@@ -340,14 +318,12 @@ $result = Arr::isUnique($collection); // false
 ```
 
 ### `last`
-
 ```php
 final public static function last(
     array $collection, 
     mixed $method = null
 ): var
 ```
-
 Devuelve el último elemento de la colección. Si se indica una invocable, el elemento devuelto es el último que valida `true`
 
 ```php
@@ -373,14 +349,12 @@ echo $result; // 'Phalcon'
 ```
 
 ### `lastKey`
-
 ```php
 final public static function lastKey(
     array $collection, 
     mixed $method = null
 ): var
 ```
-
 Devuelve la clave del último elemento de la colección. Si se indica una invocable, el elemento devuelto es el último que valida `true`
 
 ```php
@@ -406,7 +380,6 @@ echo $result; // 1
 ```
 
 ### `order`
-
 ```php
 final public static function order(
     array $collection, 
@@ -414,9 +387,7 @@ final public static function order(
     string $order = 'asc'
 ): array
 ```
-
 Ordena una colección de vectores u objetos por `attribute` y devuelve el vector ordenado. El tercer parámetro controla el sentido de la ordenación.
-
 ```php
 <?php
 
@@ -446,16 +417,13 @@ var_dump($result);
 ```
 
 ### `pluck`
-
 ```php
 final public static function pluck(
     array $collection, 
     string element
 ): array
 ```
-
 Recupera todos los valores para una clave dada, devolviéndolos como un vector
-
 ```php
 <?php
 
@@ -475,7 +443,6 @@ var_dump($result);
 ```
 
 ### `set`
-
 ```php
 final public static function set(
     array $collection, 
@@ -483,9 +450,7 @@ final public static function set(
     mixed $index = null
 ): array
 ```
-
 Establece un elemento vector y devuelve un nuevo vector. El tercer parámetro es el índice/clave.
-
 ```php
 <?php
 
@@ -510,16 +475,13 @@ var_dump($result);
 ```
 
 ### `sliceLeft`
-
 ```php
 final public static function sliceLeft(
     array $collection, 
     int $elements = 1
 ): array
 ```
-
 Devuelve un nuevo vector con n elementos eliminados desde la izquierda.
-
 ```php
 <?php
 
@@ -548,16 +510,13 @@ var_dump($result);
 ```
 
 ### `sliceRight`
-
 ```php
 final public static function sliceRight(
     array $collection, 
     int $elements = 1
 ): array
 ```
-
 Devuelve un nuevo vector con n elementos eliminados desde la derecha.
-
 ```php
 <?php
 
@@ -586,13 +545,10 @@ var_dump($result);
 ```
 
 ### `split`
-
 ```php
 final public static function split(array $collection): array
 ```
-
 Devuelve un nuevo vector con las claves del vector indicado como un elemento y los valores en otro.
-
 ```php
 <?php
 
@@ -612,11 +568,9 @@ var_dump($result);
 ```
 
 ### `toObject`
-
 ```php
 final public static function toObject(array $collection)
 ```
-
 Convierte un vector a un objeto
 
 ```php
@@ -638,16 +592,13 @@ var_dump($result);
 ```
 
 ### `validateAll`
-
 ```php
 final public static function validateAll(
     array $collection, 
     mixed $method
 ): bool
 ```
-
 Devuelve `true` si la función indicada devuelve `true` para todos los elementos de la colección, `false` en caso contrario.
-
 ```php
 <?php
 
@@ -665,16 +616,13 @@ var_dump($result); // true
 ```
 
 ### `validateAny`
-
 ```php
 final public static function validateAny(
     array $collection, 
     mixed $method
 ): bool
 ```
-
 Devuelve `true` si la función indicada devuelve `true` para al menos un elemento de la colección, `false` en caso contrario.
-
 ```php
 <?php
 
@@ -692,16 +640,13 @@ var_dump($result); // true
 ```
 
 ### `whiteList`
-
 ```php
 final public static function whiteList(
     array $collection, 
     array $whiteList 
 ): array
 ```
-
 Devuelve un subconjunto del vector, elementos de lista blanca por clave. El vector devuelto contiene sólo los elementos del vector original que tiene claves idénticas al vector lista blanca pasado como parámetro.
-
 ```php
 <?php
 
@@ -726,15 +671,12 @@ var_dump($result);
 ```
 
 ## Excepción
-
-Cualquier excepción lanzada en los componentes `Phalcon\Helper\*` serán de este tipo: [Phalcon\Helper\Exception](api/phalcon_helper#helper-exception)
+Any exceptions thrown in the `Phalcon\Helper\*` components will be of this type: [Phalcon\Helper\Exception][helper-exception]
 
 ## Fs
-
-[Phalcon\Helper\Fs](api/phalcon_helper#helper-fs) expone métodos estáticos que ofrecen métodos de ayuda para operaciones con ficheros
+[Phalcon\Helper\Fs][helper-fs] exposes static methods that offer file operation helper methods
 
 ### `basename`
-
 ```php
 final public static function basename(
     int $uri, 
@@ -742,7 +684,7 @@ final public static function basename(
 ) -> string
 ```
 
-Obtiene el nombre de fichero de una ruta dada, Este método es similar a la función PHP [basename()](https://www.php.net/manual/en/function.basename.php) pero con soporte de caracteres no-ASCII. La función de PHP [basename()](https://www.php.net/manual/en/function.basename.php) no soporta correctamente flujos o nombres de archivo que empiecen con un carácter no-US-ASCII.
+Gets the filename from a given path, This method is similar to PHP's [basename()][basename] but has non-ASCII character support. PHP's [basename()][basename] does not properly support streams or filenames beginning with a non-US-ASCII character.
 
 ```php
 <?php
@@ -761,10 +703,8 @@ $file = '/root/ελληνικά.txt';
 
 echo Fs::basename($file); // 'ελληνικά.txt';
 ```
-
 ## Json
-
-[Phalcon\Helper\Json](api/phalcon_helper#helper-json) actúa como una envoltura de los métodos PHP `json_encode` y `json_decode`, comprobando errores y lanzando excepciones en consecuencia.
+[Phalcon\Helper\Json][helper-json] acts as a wrapper to `json_encode` and `json_decode` PHP methods, checking for errors and raising exceptions accordingly.
 
 ### `decode`
 
@@ -793,7 +733,6 @@ var_dump(Json::decode($data));
 ```
 
 ### `encode`
-
 ```php
 final public static function encode(
     $data,
@@ -801,7 +740,6 @@ final public static function encode(
     int $options = 0
 ): string
 ```
-
 Codifica una cadena usando `json_encode` y lanza una excepción si los datos JSON no se han podido codificar
 
 ```php
@@ -817,11 +755,9 @@ echo Json::encode($data);
 ```
 
 ## Number
-
-[Phalcon\Helper\Number](api/phalcon_helper#helper-number) expone métodos estáticos que ofrecen un acceso rápido a funcionalidades comunes cuando se trabaja con números.
+[Phalcon\Helper\Number][helper-number] exposes static methods that offer quick access to common functionality when working with numbers.
 
 ### `between`
-
 ```php
 final public static function between(
     int $value, 
@@ -848,17 +784,13 @@ echo Number::between($value, $min, $max);   // false
 ```
 
 ## Str
-
-[Phalcon\Helper\Str](api/phalcon_helper#helper-str) expone métodos estáticos que ofrecen manipulaciones ágiles sobre cadenas.
+[Phalcon\Helper\Str][helper-str] exposes static methods that offer quick manipulations to strings.
 
 ### `camelize`
-
 ```php
 final public static function camelize(string $text, mixed $delimiter = null): string
 ```
-
-Convierte una cadena a estilo camelize
-
+Convierte las cadenas a estilo camelize
 ```php
 <?php
 
@@ -870,7 +802,6 @@ echo Str::camelize('co_co-bon_go', '_-'); // CoCoBonGo
 ```
 
 ### `concat`
-
 ```php
 final public static function concat(
     string $separator, 
@@ -879,9 +810,7 @@ final public static function concat(
     [, string $x] ... 
 ): string
 ```
-
 Concatena cadenas usando el separador sólo una vez, quitando delimitadores duplicados. El primer parámetro es el separador, los siguientes son las cadenas a concatenar. Los parámetros mínimos obligatorios son tres.
-
 ```php
 <?php
 
@@ -900,13 +829,10 @@ echo $folder; // /tmp/folder_1/folder_2/folder_3/
 ```
 
 ### `countVowels`
-
 ```php
 final public static function countVowels(string $text): int
 ```
-
 Devuelve el número de vocales de la cadena indicada. Usa una expresión regular para contar el número de vocales (A, E, I, O, U) en una cadena.
-
 ```php
 <?php
 
@@ -918,7 +844,6 @@ echo Str::countVowels($source); // 8
 ```
 
 ### `decapitalize`
-
 ```php
 final public static function decapitalize(
     string $text, 
@@ -926,9 +851,7 @@ final public static function decapitalize(
     string $encoding = 'UTF-8'
 ): string
 ```
-
 Convierte a minúscula la primera letra de la cadena y luego la añade. Si el parámetro `upperRest` se establece a `false` el resto de la cadena permanecece intacto, en caso contrario se convertirá a mayúsculas. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa. El último parámetro es la codificación que usarán los métodos `mbstring`. Por defecto `UTF-8`.
-
 ```php
 <?php
 
@@ -941,16 +864,13 @@ echo Str::decapitalize($source, true); // bEETLEJUICE
 ```
 
 ### decrement
-
 ```php
 final public static function decrement(
     string $text, 
     string $separator = '_'
 ): string
 ```
-
 Elimina un número de una cadena o decrementa ese número si está definido.
-
 ```php
 <?php
 
@@ -961,11 +881,9 @@ echo Str::decrement('a_2'); // 'a_1'
 ```
 
 ### `dirFromFile`
-
 ```php
 final public static function dirFromFile(string $file): string
 ```
-
 Acepta un nombre de fichero (sin extension) y devuelve una estructura de directorio calculada con el nombre del fichero al final
 
 ```php
@@ -977,11 +895,9 @@ echo Str::dirFromFile("file1234.jpg"); // fi/le/12/
 ```
 
 ### `dirSeparator`
-
 ```php
 final public static function dirSeparator(string $directory): string
 ```
-
 Acepta un nombre de directorio y se asegura que termina con `DIRECTORY_SEPARATOR`
 
 ```php
@@ -993,7 +909,6 @@ echo Str::dirSeparator("/home/phalcon"); // /home/phalcon/
 ```
 
 ### `dynamic`
-
 ```php
 final public static function dynamic(
     string $text,
@@ -1002,9 +917,7 @@ final public static function dynamic(
     string $separator = '|'
 ): string
 ```
-
 Genera texto aleatorio basado en la plantilla. La plantilla necesita separadores y delimitadores para los diferentes valores. Los valores por defecto para éstos se pueden anular con los parámetros del método.
-
 ```php
 <?php
 
@@ -1016,7 +929,6 @@ echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo!
 ```
 
 ### `endsWith`
-
 ```php
 final public static function endsWith(
     string $text, 
@@ -1024,9 +936,7 @@ final public static function endsWith(
     bool $ignoreCase = true
 ): bool
 ```
-
 Devuelve `true` si una cadena termina con la cadena dada. Si el último parámetro es `true` (por defecto), la búsqueda se hace de una forma insensible a mayúsculas y minúsculas.
-
 ```php
 <?php
 
@@ -1038,7 +948,6 @@ echo Str::endsWith('Hello', 'LLO');        // true
 ```
 
 ### `firstBetween`
-
 ```php
 final public static function firstBetween(
     string $haystack,
@@ -1046,9 +955,7 @@ final public static function firstBetween(
     string $end
 ): string
 ```
-
-Devuelve la primera cadena que hay entre las cadenas de los parámetros `start` y `end`. El método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa.
-
+Devuelve la primera cadena que hay entre las cadenas de los parámetros `start` y `end`. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa.
 ```php
 <?php
 
@@ -1060,13 +967,10 @@ echo Str::firstBetween($source, '[', ']'); // custom
 ```
 
 ### `humanize`
-
 ```php
 final public static function humanize(string $text): string
 ```
-
 Transforma una frase separada con guiones bajos o medios legible para humanos
-
 ```php
 <?php
 
@@ -1076,17 +980,14 @@ echo Str::humanize('start-a-horse'); // 'start a horse'
 echo Str::humanize('five_cats');     // 'five cats'
 ```
 
-### `includes`
-
+### `include`
 ```php
 final public static function includes(
     string $needle, 
     string $haystack
 ): bool
 ```
-
 Comprueba si una cadena está incluida en otra. Devuelve `true` si está incluida, `false` en caso contrario. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa.
-
 ```php
 <?php
 
@@ -1097,16 +998,13 @@ echo Str::includes('end', 'start-a-horse'); // false
 ```
 
 ### `increment`
-
 ```php
 final public static function increment(
     string $text, 
     string $separator = '_'
 ): string
 ```
-
 Añade un número a una cadena o lo incrementa si el número ya existe.
-
 ```php
 <?php
 
@@ -1117,16 +1015,13 @@ echo Str::increment('a_1'); // 'a_2'
 ```
 
 ### `isAnagram`
-
 ```php
 final public static function isAnagram(
     string $first, 
     string $second
 ): bool
 ```
-
 Compara dos cadenas y devuelve `true` si ambas cadenas son anagramas, `false` en caso contrario.
-
 ```php
 <?php
 
@@ -1136,16 +1031,13 @@ echo Str::isAnagram('rail safety', 'fairy tales'); // true
 ```
 
 ### `isLower`
-
 ```php
 final public static function isLower(
     string $text, 
     string $encoding = 'UTF-8'
 ):  bool
 ```
-
 Devuelve `true` si la cadena dada está en minúsculas, `false` en caso contrario. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa. El último parámetro es la codificación que usarán los métodos `mbstring`. Por defecto `UTF-8`.
-
 ```php
 <?php
 
@@ -1156,13 +1048,10 @@ echo Str::isLower('Phalcon Framework'); // false
 ```
 
 ### `isPalindrome`
-
 ```php
 final public static function isPalindrome(string $text): bool
 ```
-
 Devuelve `true` si la cadena dada es un palíndromo, `false` en caso contrario.
-
 ```php
 <?php
 
@@ -1172,16 +1061,13 @@ echo Str::isPalindrome('racecar'); // true
 ```
 
 ### `isUpper`
-
 ```php
 final public static function isUpper(
     string $text, 
     string $encoding = 'UTF-8'
 ):  bool
 ```
-
 Devuelve `true` si la cadena dada está en mayúsculas, `false` en caso contrario. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa. El último parámetro es la codificación que usarán los métodos `mbstring`. Por defecto `UTF-8`.
-
 ```php
 <?php
 
@@ -1192,16 +1078,13 @@ echo Str::isUpper('Phalcon Framework'); // false
 ```
 
 ### `lower`
-
 ```php
 final public static function lower(
     string $text, 
     string $encoding = 'UTF-8'
 ): string
 ```
-
 Convierte una cadena a minúscula. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa. El último parámetro es la codificación que usarán los métodos `mbstring`. Por defecto `UTF-8`.
-
 ```php
 <?php
 
@@ -1211,14 +1094,12 @@ echo Str::lower('PHALCON FRAMEWORK'); // phalcon framework
 ```
 
 ### `random`
-
 ```php
 final public static function random(
     int $type = 0, 
     long $length = 8
 ): string
 ```
-
 Genera una cadena aleatoria basada en el tipo dado. El primer parámetro es una de las constantes `RANDOM_*`. El segundo parámetro especifica el tamaño de la cadena (por defecto 8).
 
 | Constante         | Descripción                                                                                                |
@@ -1239,13 +1120,10 @@ echo Str::random(Str::RANDOM_ALNUM); // 'aloiwkqz'
 ```
 
 ### `reduceSlashes`
-
 ```php
 final public static function reduceSlashes(string $text): string
 ```
-
 Reduce múltiples barras de una cadena a sólo una barra. Si está presente el esquema (`https://`, `ftp://` no se cambiará)
-
 ```php
 <?php
 
@@ -1259,7 +1137,6 @@ echo Str::reduceSlashes('ftp//foo.bar///baz/buz');   // ftp/foo.bar/baz/buz
 ```
 
 ### `startsWith`
-
 ```php
 final public static function startsWith(
     string $text, 
@@ -1267,9 +1144,7 @@ final public static function startsWith(
     bool $ignoreCase = true
 ): bool
 ```
-
 Devuelve `true` si una cadena empieza por una cadena dada. Si el último parámetro es `true` (por defecto), la búsqueda se hace de una forma insensible a mayúsculas y minúsculas.
-
 ```php
 <?php
 
@@ -1281,16 +1156,13 @@ echo Str::startsWith('Hello', 'he');        // true
 ```
 
 ### `uncamelize`
-
 ```php
 final public static function uncamelize(
     string $text,   
     mixed $delimiter = null
 ): string
 ```
-
-Convierte en texto normal, cadenas de texto en estilo camelcase
-
+Decameliza cadenas que están camelizadas
 ```php
 <?php
 
@@ -1301,13 +1173,10 @@ echo Str::uncamelize('CocoBongo', '-'); // coco-bongo
 ```
 
 ### `underscore`
-
 ```php
 final public static function underscore(string $text): string
 ```
-
 Transforma una frase separada por guiones bajos en lugar de espacios.
-
 ```php
 <?php
 
@@ -1318,16 +1187,13 @@ echo Str::underscore('Awesome Phalcon'); // 'Awesome_Phalcon'
 ```
 
 ### `upper`
-
 ```php
 final public static function upper(
     string $text, 
     string $encoding = 'UTF-8'
 ): string
 ```
-
 Convierte una cadena a mayúscula. Este método intentará usar métodos proporcionados por la extensión `mbstring` y usar el equivalente PHP como alternativa. El último parámetro es la codificación que usarán los métodos `mbstring`. Por defecto `UTF-8`.
-
 ```php
 <?php
 
@@ -1335,3 +1201,11 @@ use Phalcon\Helper\Str;
 
 echo Str::upper('phalcon framework'); // PHALCON FRAMEWORK
 ```
+
+[basename]: https://www.php.net/manual/en/function.basename.php
+[helper-arr]: api/phalcon_helper#helper-arr
+[helper-exception]: api/phalcon_helper#helper-exception
+[helper-fs]: api/phalcon_helper#helper-fs
+[helper-json]: api/phalcon_helper#helper-json
+[helper-number]: api/phalcon_helper#helper-number
+[helper-str]: api/phalcon_helper#helper-str
