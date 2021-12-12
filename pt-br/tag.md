@@ -7,35 +7,32 @@ keywords: 'tag, helpers, view helpers, html generators'
 ---
 
 # Tag (View Helpers)
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
-
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
 This component can be used in a plain HTML+PHP view or in a [Volt](volt) template.
 
-> **NOTE**: This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular.
-{: .alert .alert-warning } 
+> **NOTE**: This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular. 
+> 
+> {: .alert .alert-warning }
 
 ## DocType
-
 You can set the doctype for your page using `setDocType()`. The method accepts one of the available constants, generating the necessary `<doctype>` HTML. The method returns the `Tag` component and thus the call can be chained.
 
-- `HTML32` 
-- `HTML401_STRICT` 
+- `HTML32`
+- `HTML401_STRICT`
 - `HTML401_TRANSITIONAL`
-- `HTML401_FRAMESET` 
-- `HTML5` 
-- `XHTML10_STRICT` 
+- `HTML401_FRAMESET`
+- `HTML5`
+- `XHTML10_STRICT`
 - `XHTML10_TRANSITIONAL`
-- `XHTML10_FRAMESET` 
-- `XHTML11` 
-- `XHTML20` 
-- `XHTML5` 
+- `XHTML10_FRAMESET`
+- `XHTML11`
+- `XHTML20`
+- `XHTML5`
 
 ```php
 <?php
@@ -73,15 +70,14 @@ or in Volt:
 ```
 
 ## Title
-
-[Phalcon\Tag](api/phalcon_tag) offers methods to set the tag of the resulting page or HTML sent to the user. There are several methods available:
+[Phalcon\Tag][tag] offers methods to set the tag of the resulting page or HTML sent to the user. There are several methods available:
 
 ### `appendTitle()`
-
 Appends text to the current title. The method accepts either a `string` or an `array`.
 
-> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced.
-{: .alert .alert-info }
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced. 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -109,10 +105,14 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 ```
 
 ### `friendlyTitle()`
+Converts text to URL-friendly strings. It accepts the following parameters:
+- `text` - The text to be processed
+- `parameters` - Array of parameters to generate the friendly title
 
-Converts text to URL-friendly strings. It accepts the following parameters: - `text` - The text to be processed - `parameters` - Array of parameters to generate the friendly title
-
-The parameters can be: - `lowercase` - `bool` Whether to convert everything to lowercase or not - `separator` - `string` - The separator. Defaults to `-` - `replace` - `array` - Key value array to replace characters with others. This uses \[str_replace\]\[str_replace\] internally for this replacement
+The parameters can be:
+- `lowercase` - `bool` Whether to convert everything to lowercase or not
+- `separator` - `string` - The separator. Defaults to `-`
+- `replace` - `array` - Key value array to replace characters with others. This uses \[str_replace\]\[str_replace\] internally for this replacement
 
 ```php
 <?php
@@ -145,10 +145,11 @@ echo Tag::friendlyTitle(
 ```
 
 ### `getTitle()`
+Returns the current title. The title is automatically escaped. The method accepts two parameters:
+ - `prepend` - `bool` Whether to output any text set with `prependTitle()`
+ - `append` - `bool` Whether to output any text set with `appendTitle()`
 
-Returns the current title. The title is automatically escaped. The method accepts two parameters: - `prepend` - `bool` Whether to output any text set with `prependTitle()` - `append` - `bool` Whether to output any text set with `appendTitle()`
-
-Both parameters are `true` by default.
+ Both parameters are `true` by default.
 
 ```php
 <?php
@@ -168,7 +169,6 @@ echo Tag::getTitle(false, false); // 'World';
 ```
 
 ### `getTitleSeparator()`
-
 Returns the current title separator. The default value is an empty string.
 
 ```php
@@ -180,11 +180,11 @@ echo Tag::getTitleSeparator(); // ''
 ```
 
 ### `prependTitle()`
-
 Prepends text to the current title. The method accepts either a `string` or an `array`.
 
-> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced.
-{: .alert .alert-info }
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced. 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -212,10 +212,11 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 ```
 
 ### `renderTitle()`
+Returns the current title wrapped in `<title>` tags. The title is automatically escaped. The method accepts two parameters:
+ - `prepend` - `bool` Whether to output any text set with `prependTitle()`
+ - `append` - `bool` Whether to output any text set with `appendTitle()`
 
-Returns the current title wrapped in `<title>` tags. The title is automatically escaped. The method accepts two parameters: - `prepend` - `bool` Whether to output any text set with `prependTitle()` - `append` - `bool` Whether to output any text set with `appendTitle()`
-
-Both parameters are `true` by default.
+ Both parameters are `true` by default.
 
 ```php
 <?php
@@ -239,7 +240,6 @@ echo Tag::renderTitle(false, false);
 ```
 
 ### `setTitle()`
-
 Sets the title text.
 
 ```php
@@ -251,7 +251,6 @@ Tag::setTitle('World');
 ```
 
 ### `setTitleSeparator()`
-
 Set the separator of the title.
 
 ```php
@@ -263,9 +262,7 @@ Tag::setTitleSeparator(' ');
 ```
 
 ## Input
-
 ### `checkField()`
-
 Builds a HTML `input[type='check']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -284,7 +281,6 @@ echo Tag::checkField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->checkField(
     [
@@ -295,13 +291,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ check_field('terms', 'value': 'Y') }}{% endraw %}
 ```
 
 ### `colorField()`
-
 Builds a HTML `input[type='color']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -320,7 +314,6 @@ echo Tag::colorField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->colorField(
     [
@@ -331,13 +324,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ color_field('background', 'class': 'myclass') }}{% endraw %}
 ```
 
 ### `dateField()`
-
 Builds a HTML `input[type='date']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -356,7 +347,6 @@ echo Tag::dateField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->dateField(
     [
@@ -367,13 +357,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ date_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
 
 ### `dateTimeField()`
-
 Builds a HTML `input[type='datetime']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -393,7 +381,6 @@ echo Tag::dateTimeField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->dateTimeField(
     [
@@ -404,13 +391,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ date_time_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
 
 ### `dateTimeLocalField()`
-
 Builds a HTML `input[type='datetime-local']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -430,7 +415,6 @@ echo Tag::dateTimeLocalField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->dateTimeLocalField(
     [
@@ -441,13 +425,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ date_time_local_field('born', 'value': '1980-01-01 01:02:03') }}{% endraw %}
 ```
 
 ### `fileField()`
-
 Builds a HTML `input[type='file']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -466,7 +448,6 @@ echo Tag::fileField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->fileField(
     [
@@ -477,13 +458,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ file_field('document', 'class': 'input') }}{% endraw %}
 ```
 
 ### `hiddenField()`
-
 Builds a HTML `input[type='hidden']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -502,7 +481,6 @@ echo Tag::hiddenField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->hiddenField(
     [
@@ -513,13 +491,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ hidden_field('id', 'value': '1234') }}{% endraw %}
 ```
 
 ### `imageInput()`
-
 Builds a HTML `input[type='image']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -537,7 +513,6 @@ echo Tag::imageInput(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->imageInput(
     [
@@ -547,13 +522,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ image_input('src': '/img/button.png') }}{% endraw %}
 ```
 
 ### `monthField()`
-
 Builds a HTML `input[type='month']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -572,7 +545,6 @@ echo Tag::monthField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->monthField(
     [
@@ -583,13 +555,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ month_field('month', 'value': '04') }}{% endraw %}
 ```
 
 ### `numericField()`
-
 Builds a HTML `input[type='number']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -609,7 +579,6 @@ echo Tag::numericField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->numericField(
     [
@@ -621,13 +590,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ numeric_field('price', 'min': '1', 'max': '5') }}{% endraw %}
 ```
 
 ### `radioField()`
-
 Builds a HTML `input[type='radio']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -646,7 +613,6 @@ echo Tag::radioField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->radioField(
     [
@@ -657,13 +623,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ radio_field('gender', 'value': 'Male') }}{% endraw %}
 ```
 
 ### `rangeField()`
-
 Builds a HTML `input[type='range']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -683,7 +647,6 @@ echo Tag::rangeField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->rangeField(
     [
@@ -695,13 +658,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ range_field('points', 'min': '0', 'max': '10') }}{% endraw %}
 ```
 
 ### `searchField()`
-
 Builds a HTML `input[type='search']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -720,7 +681,6 @@ echo Tag::searchField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->searchField(
     [
@@ -731,13 +691,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ search_field('search', 'q': 'startsearch') }}{% endraw %}
 ```
 
 ### `submitButton()`
-
 Builds a HTML `input[type='submit']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -755,7 +713,6 @@ echo Tag::submitButton(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->submitButton(
     [
@@ -765,13 +722,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ submit_button('Save') }}{% endraw %}
 ```
 
 ### `telField()`
-
 Builds a HTML `input[type='tel']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -790,7 +745,6 @@ echo Tag::telField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->telField(
     [
@@ -801,13 +755,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ tel_field('mobile', 'size': '12') }}{% endraw %}
 ```
 
 ### `passwordField()`
-
 Builds a HTML `input[type='text']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -826,7 +778,6 @@ echo Tag::textField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->textField(
     [
@@ -837,13 +788,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ text_field('name', 'size': '30') }}{% endraw %}
 ```
 
 ### `timeField()`
-
 Builds a HTML `input[type='time']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -862,7 +811,6 @@ echo Tag::timeField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->timeField(
     [
@@ -873,13 +821,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ time_field('start', 'size': '5') }}{% endraw %}
 ```
 
 ### `urlField()`
-
 Builds a HTML `input[type='url']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -897,7 +843,6 @@ echo Tag::urlField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->urlField(
     [
@@ -907,13 +852,11 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ url_field('homepage') }}{% endraw %}
 ```
 
 ### `weekField()`
-
 Builds a HTML `input[type='week']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
@@ -932,7 +875,6 @@ echo Tag::weekField(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->weekField(
     [
@@ -943,7 +885,6 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ week_field('week', 'size': '2') }}{% endraw %}
 ```
@@ -951,7 +892,6 @@ Volt syntax:
 ## Elements
 
 ### `image()`
-
 Builds a HTML image tag. Accepts an array with the attributes of the element. The first element of the array is the src of the element. The method accepts a second boolean parameter, signifying whether this resource is local or not.
 
 ```php
@@ -977,7 +917,6 @@ echo Tag::image(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->image(
     [
@@ -993,15 +932,21 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ image('img/hello.gif', 'alt': 'alternative text') }}
 {{ image('http://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
 ```
 
 ### `select()`
-
-`select()` is a helper that allows you to create a `<select>` element based on a `Phalcon\Mvc\Model` resultset. You will need to have a valid database connection set up in your DI container for this method to produce the correct HTML. The component requires parameters and data to operate. - `parameters` - `string`/`array`. If a string is passed, it will be the name of the element. If an array is passed, the first element will be the name of the element. There available parameters are: - `id` - `string` - sets the id of the element - `using` - `array` - **required** a two element array defining the key and value fields of the model to populate the select - `useEmpty` - `bool` - defaults to `false`. If set, it will add an *empty* option to the select box - `emptyText` - `string` - the text to display for the *empty* option (i.e. *Choose an option*) - `emptyValue` - `string`/`number` - the value to assign for the *empty* option - any additional HTML attributes in a key/value format - `data` - `Resultset` the resultset from the model operation.
+`select()` is a helper that allows you to create a `<select>` element based on a `Phalcon\Mvc\Model` resultset. You will need to have a valid database connection set up in your DI container for this method to produce the correct HTML. The component requires parameters and data to operate.
+- `parameters` - `string`/`array`. If a string is passed, it will be the name of the element. If an array is passed, the first element will be the name of the element. There available parameters are:
+    - `id` - `string` - sets the id of the element
+    - `using` - `array` - **required** a two element array defining the key and value fields of the model to populate the select
+    - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
+    - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
+    - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
+    - any additional HTML attributes in a key/value format
+- `data` - `Resultset` the resultset from the model operation.
 
 ```php
 <?php
@@ -1041,7 +986,6 @@ echo Tag::select(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->select(
     [
@@ -1059,7 +1003,6 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ select(
     [
@@ -1077,8 +1020,14 @@ Volt syntax:
 ```
 
 ### `selectStatic()`
-
-This helper is similar to `select()`, but it uses a PHP array as the source. The component requires parameters and data to operate. - `parameters` - `string`/`array`. If a string is passed, it will be the name of the element. If an array is passed, the first element will be the name of the element. There available parameters are: - `id` - `string` - sets the id of the element - `useEmpty` - `bool` - defaults to `false`. If set, it will add an *empty* option to the select box - `emptyText` - `string` - the text to display for the *empty* option (i.e. *Choose an option*) - `emptyValue` - `string`/`number` - the value to assign for the *empty* option - any additional HTML attributes in a key/value format - `data` - `array` the array of data with key as the id and value as the text
+This helper is similar to `select()`, but it uses a PHP array as the source. The component requires parameters and data to operate.
+- `parameters` - `string`/`array`. If a string is passed, it will be the name of the element. If an array is passed, the first element will be the name of the element. There available parameters are:
+    - `id` - `string` - sets the id of the element
+    - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
+    - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
+    - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
+    - any additional HTML attributes in a key/value format
+- `data` - `array` the array of data with key as the id and value as the text
 
 ```php
 <?php
@@ -1110,7 +1059,6 @@ echo Tag::selectStatic(
 ```
 
 HTML syntax:
-
 ```php
 <?php echo $this->tag->selectStatic(
     [
@@ -1124,7 +1072,6 @@ HTML syntax:
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}{{ select(
     [
@@ -1138,10 +1085,14 @@ Volt syntax:
 ```
 
 ### `tagHtml()`
+Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper. The accompanying `tagHtmlClose()` can be used to _close_ the tag if necessary.
 
-Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper. The accompanying `tagHtmlClose()` can be used to *close* the tag if necessary.
-
-The `tagHtml()` accepts the following parameters - `name` - `string` - the name of the element - `attributes` - `array` - any attributes - `selfClose` - `bool` - whether this is a self closing element or not - `onlyStart` - `bool` - whether to produce only the *opening* part of the tag (i.e. `<tag>` vs. `<tag></tag>`) - `useEol` - `bool` - add a `PHP_EOL` at the end of the generated string or not
+The `tagHtml()` accepts the following parameters
+- `name` - `string` - the name of the element
+- `attributes` - `array` - any attributes
+- `selfClose` - `bool` - whether this is a self closing element or not
+- `onlyStart` - `bool` - whether to produce only the _opening_ part of the tag (i.e. `<tag>` vs. `<tag></tag>`)
+- `useEol` - `bool` - add a `PHP_EOL` at the end of the generated string or not
 
 ```php
 <?php
@@ -1169,7 +1120,6 @@ echo Tag::tagHtmlClose('canvas');
 ```
 
 HTML syntax:
-
 ```php
 <?php 
 
@@ -1192,7 +1142,6 @@ echo $this->tag->tagHtmlClose('canvas');
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}
 {{ tag_html('canvas', ['id': 'canvas1', width': '300', 'class': 'cnvclass'], false, true, true) }}
@@ -1200,13 +1149,10 @@ Volt syntax:
 {{ tag_html_close('canvas') }}
 {% endraw %}
 ```
-
 ## Assets
-
-[Phalcon\Tag](api/phalcon_tag) offers helper methods to generate stylesheet and javascript HTML tags.
+[Phalcon\Tag][tag] offers helper methods to generate stylesheet and javascript HTML tags.
 
 ### `stylesheetLink()`
-
 The first parameter a `string` or an `array` is the parameters necessary to construct the element. The second parameter is a boolean, dictating whether the link is pointing to a local asset or a remote.
 
 ```php
@@ -1280,7 +1226,6 @@ Volt Syntax:
 ```
 
 ### `javascriptInclude()`
-
 The first parameter a `string` or an `array` is the parameters necessary to construct the element. The second parameter is a boolean, dictating whether the link is pointing to a local asset or a remote.
 
 ```php
@@ -1352,8 +1297,16 @@ Volt Syntax:
 ```
 
 ## Links
+A common task in any web application is to show links that help with the navigation from one area to another. [Phalcon\Tag][tag] offers `linkTo()` to help with this task. The method accepts three parameters.
+- `parameters` - `array`/`string` - The attributes and parameters of the element. If a string is passed it will be treated as the target URL for the link. If an array is passed, the following elements can be sent:
+    - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element
+    - `query` - the base query for the URL
+    - `text` - the text of the link
+    - `local` - whether this is a local or remote link
+    - additional key/value attributes for the link
+- `text` - `string` - the text of the link
+- `local` - `bool` - whether this is a local or remote link
 
-A common task in any web application is to show links that help with the navigation from one area to another. [Phalcon\Tag](api/phalcon_tag) offers `linkTo()` to help with this task. The method accepts three parameters. - `parameters` - `array`/`string` - The attributes and parameters of the element. If a string is passed it will be treated as the target URL for the link. If an array is passed, the following elements can be sent: - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element - `query` - the base query for the URL - `text` - the text of the link - `local` - whether this is a local or remote link - additional key/value attributes for the link - `text` - `string` - the text of the link - `local` - `bool` - whether this is a local or remote link
 
 ```php
 <?php
@@ -1386,7 +1339,6 @@ echo Tag::linkTo('https://phalcon.io/', 'Phalcon', false);
 ```
 
 HTML syntax:
-
 ```php
 <?php 
 
@@ -1414,7 +1366,6 @@ echo $this->tag->linkTo('https://phalcon.io/', 'Phalcon', false);
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
@@ -1433,7 +1384,7 @@ Volt syntax:
 ) }}{% endraw %}
 ```
 
-If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag](api/phalcon_tag) will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
+If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
 
 ```php
 <?php
@@ -1453,7 +1404,6 @@ echo Tag::linkTo(
 ```
 
 HTML syntax:
-
 ```php
 <?php 
 
@@ -1472,7 +1422,6 @@ echo $this->tag->linkTo(
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
@@ -1488,8 +1437,7 @@ Volt syntax:
 ```
 
 ## Formulários
-
-Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/phalcon_tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
+Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag][tag] offers the `form()` and `endForm()` methods, which create `<form>` elements.
 
 ```php
 <?php
@@ -1514,7 +1462,6 @@ echo Tag::endForm();
 ```
 
 HTML syntax:
-
 ```php
 <?php 
 
@@ -1533,7 +1480,6 @@ echo $this->tag->endForm();
 ```
 
 Volt syntax:
-
 ```twig
 {% raw %}
 {{ form(
@@ -1550,10 +1496,8 @@ Volt syntax:
 Phalcon also provides a [form builder](forms) to create forms in an object-oriented manner.
 
 ## Data
-
 ### `setDefault()`
-
-You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag](api/phalcon_tag). The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
+You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag][tag]. The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
 
 ```php
 <?php
@@ -1574,7 +1518,6 @@ echo Tag::textField(
 ```
 
 ### `setDefaults()`
-
 `setDefaults()` allows you to specify more than one value to be set in elements of your form, by passing a key value array. The method can be called more than one time and each time it is called it will overwrite the data set in the previous call. You can however specify the second parameter as `true` so that the values are merged.
 
 ```php
@@ -1611,7 +1554,6 @@ echo Tag::textField(
 ```
 
 ### `getValue()`
-
 This method is called from every helper in this component, to find whether a value has been set for an element wither by having used `setDefault()` before or in the `$_POST` superglobal.
 
 ```php
@@ -1637,7 +1579,6 @@ echo Tag::getValue('framework'); // 'Phalcon'
 ```
 
 ### `hasValue()`
-
 This method checks if a `value` in an element has already been set using `setDefault()` or is in the `$_POST` superglobal.
 
 ```php
@@ -1663,8 +1604,7 @@ echo Tag::hasValue('framework'); // 'true'
 ```
 
 ## Escaping
-
-[Phalcon\Tag](api/phalcon_tag) automatically escapes text supplied for its helpers. If your application requires it, you can disable automatic escaping by using `setAutoEscape()`.
+[Phalcon\Tag][tag] automatically escapes text supplied for its helpers. If your application requires it, you can disable automatic escaping by using `setAutoEscape()`.
 
 ```php
 <?php
@@ -1695,8 +1635,7 @@ echo Tag::textField(
 ```
 
 ## Dependency Injection
-
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Tag](api/phalcon_tag) is already registered for you with the name `tag`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Tag][tag] is already registered for you with the name `tag`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -1720,7 +1659,7 @@ $container->set(
 
 You can always implement your own `tag` helper and register it in the place of `tag` in the Di container.
 
-Accessing the service from any component that implements the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) is as simple as accessing the `tag` property.
+Accessing the service from any component that implements the [Phalcon\Di\Injectable][injectable] is as simple as accessing the `tag` property.
 
 ```php
 <?php
@@ -1741,13 +1680,12 @@ class SessionController extends Controller
 ```
 
 ## Custom
-
 You can easily extend this functionality and create your own helpers.
 
 - First create a new directory in your application's file system that the helper files will be stored.
 - Name it something that will represent it. For instance in this example we use `customhelpers`.
 - Create a file called `MyTags.php` in your `customhelpers` directory.
-- Extend the [Phalcon\Tag](api/phalcon_tag) class and implement your own methods.
+- Extend the [Phalcon\Tag][tag] class and implement your own methods.
 
 ```php
 <?php
@@ -1867,4 +1805,8 @@ echo MyTags::audioField(
 ?>
 ```
 
-You can also check out [Volt](volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag](api/phalcon_tag).
+You can also check out [Volt](volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag][tag].
+
+[factorydefault]: api/phalcon_di#di-factorydefault
+[injectable]: api/phalcon_di#di-injectable
+[tag]: api/phalcon_tag
