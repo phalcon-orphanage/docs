@@ -7,16 +7,14 @@ keywords: 'tests, testing, reproducible tests'
 ---
 
 # Αναπαραγώγιμες Δοκιμές
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
-{:.alert .alert-info}
+> **NOTE**: If you have found a bug, you can open an issue in [GitHub][issues]. Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist][gist] to post any code you want to share with us. 
+> 
+> {:.alert .alert-info}
 
 ## Creating a Small Script
-
 A small PHP file can be used to showcase how to reproduce the issue:
 
 ```php
@@ -83,8 +81,9 @@ var_dump($_COOKIE);
 
 ### Βάση Δεδομένων
 
-> **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
-{:.alert .alert-info}
+> **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. 
+> 
+> {:.alert .alert-info}
 
 ```php
 <?php
@@ -114,8 +113,9 @@ $result = $container['db']->query('SELECT * FROM customers');
 
 ### Single/Multi-Module Applications
 
-> **NOTE**: Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules
-{:.alert .alert-info}
+> **NOTE**: Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules 
+> 
+> {:.alert .alert-info}
 
 ```php
 <?php
@@ -177,7 +177,6 @@ echo $response->getContent();
 ```
 
 ### Micro Application
-
 For micro applications, you can use the skeleton script below:
 
 ```php
@@ -200,9 +199,9 @@ $application->handle(
 ```
 
 ### ORM
-
-> **NOTE**: You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository).
-{:.alert .alert-info}
+> **NOTE**: You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). 
+> 
+> {:.alert .alert-info}
 
 ```php
 <?php
@@ -266,3 +265,6 @@ class User extends Model
 
 echo User::createNewUserReturnId();
 ```
+
+[issues]: https://github.com/phalcon/cphalcon/issues
+[gist]: https://gist.github.com/
