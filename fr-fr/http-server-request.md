@@ -11,11 +11,11 @@ keywords: 'psr-7, http, http server request'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Vue d'ensemble
-[Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\ServerRequest][http-message-serverrequest] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following: These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following:
+These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following: These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following:
 
 - Headers
 - HTTP method
@@ -27,7 +27,7 @@ Additionally, it encapsulates all data as it has arrived at the application from
 
 - The values represented in `$_SERVER`.
 - Any cookies provided (generally via `$_COOKIE`)
-- Query string arguments (generally via `$_GET`, or as parsed via [parse_str()](https://www.php.net/manual/en/function.parse-str.php))
+- Query string arguments (generally via `$_GET`, or as parsed via [parse_str()][parse-str])
 - Upload files, if any (as represented by `$_FILES`)
 - Unserialized body parameters (generally from `$_POST`)
 
@@ -54,7 +54,7 @@ $request = $request
 ;
 ```
 
-We are creating a new [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) object and a new [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) object with the target URL. Following that we define the method (`GET`), a protocol version, uploaded files and additional headers.
+We are creating a new [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] object and a new [Phalcon\Http\Message\Uri][http-message-uri] object with the target URL. Following that we define the method (`GET`), a protocol version, uploaded files and additional headers.
 
 The above example can be implemented by only using the constructor parameters:
 
@@ -79,7 +79,7 @@ $request = new ServerRequest(
 );
 ```
 
-The [ServerRequest](api/phalcon_http#http-message-serverrequest) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+The [ServerRequest][http-message-serverrequest] object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
 ## Constructor
 
@@ -100,9 +100,9 @@ public function __construct(
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
 
 - `method` - defaults to `GET`. The supported methods are: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
-- `uri` - An instance of [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) or a URL.
+- `uri` - An instance of [Phalcon\Http\Message\Uri][http-message-uri] or a URL.
 - `serverParams` - A key value array, with key as the server variable name and value as the server value
-- `body` - It defaults to `php://input`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
+- `body` - It defaults to `php://input`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException][http-message-exception-invalidargumentexception] is thrown
 - `headers` - A key value array, with key as the header name and value as the header value.
 - `cookies` - A key value array, with key as the cookie name and value as the cookie value.
 - `queryParams` - A key value array, with key as the query parameter name and value as the query parameter value.
@@ -529,7 +529,7 @@ The Request object is immutable. However there are a number of methods that allo
 
 ### `withAddedHeader()`
 
-Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
+Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid header names or values. The header values can be a string or an array of strings.
 
 ```php
 <?php
@@ -608,7 +608,7 @@ var_dump(
 
 ### `withBody()`
 
-Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
+Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] when the body is not valid.
 
 ```php
 <?php
@@ -654,7 +654,7 @@ var_dump(
 
 ### `withHeader()`
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
+Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid header names or values.
 
 ```php
 <?php
@@ -700,7 +700,7 @@ var_dump(
 
 ### `withMethod()`
 
-Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid HTTP methods.
+Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid HTTP methods.
 
 ```php
 <?php
@@ -720,7 +720,7 @@ echo $clone->getMethod(); // GET
 
 Returns an instance with the specified body parameters. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method should be used only to inject the contents of `$_POST`. The data is not required to come from `$_POST`, but will be the results of unserializing the request body content. Unserialization/parsing returns structured data, and, as such, this method only accepts arrays or objects, or a null value if nothing was available to parse.
 
-As an example, if content negotiation determines that the request data is a JSON payload, this method could be used to create a request instance with the unserialized parameters. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for unsupported argument types.
+As an example, if content negotiation determines that the request data is a JSON payload, this method could be used to create a request instance with the unserialized parameters. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for unsupported argument types.
 
 ```php
 <?php
@@ -758,7 +758,7 @@ echo $clone->getProtocolVersion(); // '2.0'
 
 ### `withQueryParams()`
 
-Returns an instance with the specified query string arguments. These values remain immutable over the course of the incoming request. You can inject these parameters during instantiation, such as from PHP's `$_GET` superglobal, or they can be derived from some other value such as the URI. In cases where the arguments are parsed from the URI, the data is compatible with what PHP's [parse_str()](https://www.php.net/manual/en/function.parse-str.php) would return for purposes of how duplicate query parameters are handled, and how nested sets are handled.
+Returns an instance with the specified query string arguments. These values remain immutable over the course of the incoming request. You can inject these parameters during instantiation, such as from PHP's `$_GET` superglobal, or they can be derived from some other value such as the URI. In cases where the arguments are parsed from the URI, the data is compatible with what PHP's [parse_str()][parse-str] would return for purposes of how duplicate query parameters are handled, and how nested sets are handled.
 
 ```php
 <?php
@@ -802,7 +802,7 @@ echo $clone->getRequestTarget(); // '/test'
 
 ## `withUploadedFiles()`
 
-Creates a new instance with the specified uploaded files. It accepts an array tree of `UploadedFileInterface` instances. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) if an invalid structure is provided.
+Creates a new instance with the specified uploaded files. It accepts an array tree of `UploadedFileInterface` instances. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] if an invalid structure is provided.
 
 ```php
 <?php
@@ -950,3 +950,12 @@ var_dump(
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 ```
+
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-serverrequest]: api/phalcon_http#http-message-serverrequest
+[http-message-serverrequest]: api/phalcon_http#http-message-serverrequest
+[http-message-uri]: api/phalcon_http#http-message-uri
+[parse-str]: https://www.php.net/manual/en/function.parse-str.php
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception
