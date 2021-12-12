@@ -7,17 +7,13 @@ keywords: 'namespaces, namespaced classes'
 ---
 
 # 名前空間
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
-
-[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
+[Namespaces][namespaces] can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
 
 ## 機能の有効化
-
 If you decided to use namespaces for your application, you will need to instruct your autoloader on where your namespaces reside. This is the most common way to distinguish between namespaces in your application. If you chose to use the [Phalcon\Loader](loader) component, then you will need to register your namespaces accordingly:
 
 ```php
@@ -83,7 +79,6 @@ $di->set(
 ```
 
 ## コントローラ
-
 The following example shows how to implement a controller that uses namespaces:
 
 ```php
@@ -108,7 +103,6 @@ class InvoicesController extends Controller
 ```
 
 ## モデル
-
 The following example shows a model that is namespaced:
 
 ```php
@@ -158,3 +152,5 @@ $phql = 'SELECT i.* '
       . 'FROM MyApp\Admin\Models\Invoices i '
       . 'JOIN MyApp\Admin\Models\Customers c';
 ```
+
+[namespaces]: https://php.net/manual/en/language.namespaces.php 
