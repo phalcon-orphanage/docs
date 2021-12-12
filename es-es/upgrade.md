@@ -7,26 +7,21 @@ keywords: 'upgrade, v3, v4'
 ---
 
 # Guía de Actualización
-
-* * *
+- - -
 
 # Actualizando a V4
-
-Así que ha decidido hacer la actualización a v4, **¡felicitaciones!**
+Así que ha decidido hacer la actualización a v4, **Congratulations**!!
 
 Phalcon v4 trae muchos cambios en los componentes, interfaces, tipos estrictos, adición y eliminación de componentes. El objetivo de esta guía es ayudarle a actualizar una aplicación existente en Phalcon a la v4. Se delinearán las áreas en las cuales se debe poner atención para hacer los cambios necesarios, de tal manera que el código se siga ejecutando con la misma armonía que en v3. A pesar de que los cambios son considerables, la tarea de actualización será más metódica que abrumadora.
 
 ## Requerimentos
-
 ### PHP 7.2
-
-Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 fue publicado hace 2 años y su [soporte activo](https://www.php.net/supported-versions.php) ha caducado, así que decidimos seguir activamente las versiones soportadas de PHP.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 was released 2 years ago and its [active support][php-support] has lapsed, so we decided to follow actively supported PHP versions.
 
 <a name='psr'></a>
 
 ### PSR (Recomendaciones Estándar de PHP)
-
-Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este repositorio de GitHub](https://github.com/jbboehr/php-psr). Las instrucciones de instalación están disponibles en el archivo `README` del repositorio. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
+Phalcon requiere la extensión PSR. The extension can be downloaded and compiled from [this][psr-extension] GitHub repository. Las instrucciones de instalación están disponibles en el archivo `README` del repositorio. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
 
 ```ini
 extension=psr.so
@@ -41,8 +36,7 @@ extension=phalcon.so
 Alternativamente algunas distribuciones añaden un prefijo numérico en los archivos `ini`. Si ese es el caso, elija un número alto para Phalcon (por ejemplo `50-phalcon.ini`).
 
 ### Instalación
-
-Descarga la última `zephir.phar` desde [aquí](https://github.com/phalcon/zephir/releases). Añada a una carpeta a la que puede acceder su sistema.
+Download the latest `zephir.phar` from [here][zephir-phar]. Añada a una carpeta a la que puede acceder su sistema.
 
 Clonar el repositorio
 
@@ -65,44 +59,41 @@ Comprueba el módulo
 php -m | grep phalcon
 ```
 
-* * *
+- - -
 
 ## Notas generales
 
 ### Aplicaciones
-
 - `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` y `Phalcon\Mvc\Router` ahora deben tener una URI para procesar
 
 ### Excepciones
-
 - `Exception` se a cambiado por `Throwable`
 
-* * *
+
+- - -
 
 # Components
 
 ## ACL
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación ACL](acl)
-{: .alert .alert-info }
+> Usage: [ACL Documentation](acl) 
+> 
+> {: .alert .alert-info }
 
 En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y componentes. La funcionalidad sigue siendo la misma que en versiones anteriores.
 
 ### Resumen
-
 Los componentes necesarios para trabajar con ACL han sido renombrados. En particular `Resource` ha sido renombrado a `Component` en todas las interfaces, clases y métodos relevantes que utiliza este componente.
 
 - Añadido `Phalcon\Acl\Adapter\AbstractAdapter`
 - Añadido `Acl\Enum`
 
 - Eliminado `Phalcon\Acl`
-
 - Eliminado `Phalcon\Acl\Adapter`
 
 - Renombrado `Phalcon\Acl\Resource` a `Phalcon\Acl\Component`
-
 - Renombrado `Phalcon\Acl\ResourceInterface` a `Phalcon\Acl\ComponentInterface`
 - Renombrado `Phalcon\Acl\ResourceAware` a `Phalcon\Acl\ComponentAware`
 - Renombrado `Phalcon\Acl\AdapterInterface::isResource` a `Phalcon\Acl\AdapterInterface::isComponent`
@@ -119,14 +110,11 @@ Los componentes necesarios para trabajar con ACL han sido renombrados. En partic
 - Renombrado `Phalcon\Acl\Adapter\Memory::getResources` a `Phalcon\Acl\Adapter\Memory::getComponents`
 
 ### Acl\Adapter\Memory
-
 - Añadido `getActiveKey`, `activeFunctionCustomArgumentsCount` y `getActiveFunction` para obtener la última clave, número de argumentos personalizados y la función usada para adquirir el acceso
 - Añadido soporte a `addOpertion` para múltiples heredados
 
 ### Acl\Enum (Constantes)
-
 Ejemplo:
-
 ```php
 use Phalcon\Acl\Enum;
 
@@ -135,14 +123,15 @@ echo Enum::DENY;  //imprime 0
 
 ```
 
-* * *
+- - -
 
-## Assets
+## Recursos Activos
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documención de Assets](assets)
-{: .alert .alert-info }
+> Usage: [Assets Documentation](assets) 
+> 
+> {: .alert .alert-info }
 
 Los filtros CSS y JS se han eliminado del componente [Assets](assets). Debido a limitaciones de licencia, se han eliminado los minizadores de CSS y JS (filtros) para la v4. En futuras versiones con la ayuda de la comunidad podemos volver a introducir estos filtros. Usted siempre puede implementar los suyos propios implementando `Phalcon\Assets\FilterInterface`.
 
@@ -154,14 +143,15 @@ Los filtros CSS y JS se han eliminado del componente [Assets](assets). Debido a 
 - Renombrado `Phalcon\Assets\Manager::addResourceByType` a `Phalcon\Assets\Manager::addAssetByType`
 - Renombrado `Phalcon\Assets\Manager::collectionResourcesByType` a `Phalcon\Assets\Manager::collectionAssetsByType`
 
-* * *
+- - -
 
 ## Cache
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Cache](cache)
-{: .alert .alert-info }
+> Usage: [Cache Documentation](cache) 
+> 
+> {: .alert .alert-info }
 
 Los adaptadores `xcache`, `apc` y `memcache` han sido deprecados y eliminados. Los dos primeros no soportan PHP 7.2+. `apc` ha sido reemplazado por `apcu` y `memcache` puede ser reemplazado por el `libmemcached`.
 
@@ -174,13 +164,13 @@ Los adaptadores `xcache`, `apc` y `memcache` han sido deprecados y eliminados. L
 - Eliminado `Phalcon\Mvc\Model\Metadata\Memcache`
 - Eliminado `Phalcon\Mvc\Model\Metadata\Xcache`
 
-El componente `Cache` ha sido reescrito para cumplir con el [PSR-16](https://www.php-fig.org/psr/psr-16/). Esto permite que se utilice [Phalcon\Cache](api/Phalcon_Cache) en cualquier aplicación que utilice [PSR-16](https://www.php-fig.org/psr/psr-16/), no solo en aplicaciones basadas en Phalcon.
+The `Cache` component has been rewritten to comply with [PSR-16][psr-16]. This allows you to use the [Phalcon\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16][psr-16] cache, not just Phalcon based ones.
 
 En la v3, la caché se dividió en dos componentes, el Frontend y el Backend. Esto creó un poco de confusión, pero era funcional. Para crear un componente de caché primero tenías que crear el Frontend y luego inyectarlo al Backend correspondiente (que actuaba como adaptador también).
 
 Ahora en la v4, hemos reescrito el componente completamente. Primero creamos una clase `Storage` que es la base de las clases de caché. Creamos clases Serializer cuya única responsabilidad es serializar y desserializar los datos antes de guardarlos en el adaptador de caché y después de recuperarlos. Estas clases son inyectadas (basadas en la elección del desarrollador) a un objeto Adapter que se conecta a un backend (`Memcached`, `Redis` etc.), mientras cumple con una interfaz común de adaptador.
 
-La clase Cache implementa [PSR-16](https://www.php-fig.org/psr/psr-16/) y acepta un adaptador en su constructor, que a su vez está haciendo todo el trabajo pesado con la conexión al almacenamiento y la manipulación de datos.
+The Cache class implements [PSR-16][psr-16] and accepts an adapter in its constructor, which in turn is doing all the heavy lifting with connecting to the back end and manipulating data.
 
 Para una explicación más detallada sobre cómo funciona el nuevo componente de Caché, por favor visite la página correspondiente en nuestra documentación.
 
@@ -233,17 +223,17 @@ $container->set(
 );
 ```
 
-* * *
+- - -
 
 ## CLI
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de CLI](cli)
-{: .alert .alert-info }
+> Usage: [CLI Documentation](cli) 
+> 
+> {: .alert .alert-info }
 
 ### Parámetros
-
 Los parámetros ahora se comportan de la misma manera que los controladores MVC. Mientras que anteriormente todos existían en la propiedad `$params`, ahora puede nombrarlos apropiadamente:
 
 ```php
@@ -265,39 +255,31 @@ class MainTask extends Task
     }
 }
 ```
-
 ### Cli\Console
-
 - Eliminado `Phalcon\Cli\Console::addModules` a favor de `Phalcon\Cli\Console::registerModules`
 
 ### Cli\Router\RouteInterface
-
 - Añadido `delimiter`, `getDelimiter`
 
 ### Cli\Dispatcher
-
 - Añadido `getTaskSuffix()`, `setTaskSuffix()`
 
 ### Cli\DispatcherInterface
-
 - Añadido `setOptions`, `getOptions`
 
-* * *
+- - -
 
 ## Container
-
 - Añadido `Phalcon\Container`, una clase proxy del `Phalcon\DI` implementando PSR-11
 
-* * *
+- - -
 
-## Debug
-
+## Depuración
 - Eliminado `Phalcon\Debug::getMajorVersion`
 
-* * *
+- - -
 
 ## Db
-
 - Se añadió el ajuste global `orm.case_insensitive_column_map` para intentar encontrar el valor, en el mapa de columnas, siendo insensiblemente mayúsculas. También se puede activar configurando la clave `caseInsensitiveColumnMap` en `\Phalcon\Mvc\Model::setup()`
 - Eliminado el espacio de nombres `Phalcon\Db`. Reemplazado por `Phalcon\Db\AbstractDb` para los métodos necesarios y `Phalcon\Db\Enum` para las constantes, por ejemplo:
 
@@ -308,12 +290,10 @@ echo Enum::FETCH_ASSOC;
 ```
 
 ### Db\AdapterInterface
-
 - Añadido `fetchColumn`, `insertAsDict`, `updateAsDict`
 
 ### Db\Adapter\Pdo
-
-- Se han añadido más tipos de columnas para el adaptador Mysql. Soporte de adaptadores 
+- Se han añadido más tipos de columnas para el adaptador Mysql. Soporte de adaptadores
     - `TYPE_BIGINTEGER`
     - `TYPE_BIT`
     - `TYPE_BLOB`
@@ -343,69 +323,61 @@ echo Enum::FETCH_ASSOC;
     - `TYPE_VARCHAR` Algunos adaptadores no soportan ciertos tipos. Por ejemplo, `JSON` no es compatible con `Sqlite`. Se cambiará automáticamente a `VARCHAR`.
 
 ### Db\DialectInterface
-
 - Añadido `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
 
 ### Db\Dialect\Postgresql
-
 - Se modificó `addPrimaryKey` para hacer que los nombres de restricciones de clave primaria sean únicos prefijándolos con el nombre de la tabla.
 
-* * *
+- - -
 
 ## DI
 
 ### Di\ServiceInterface
-
 - Añadido `getParameter`, `isResolved`
 
 ### Di\Service
-
 - Se cambió el constructor del `Phalcon\Di\Service` para que dejara de tomar el nombre del servicio.
 
-* * *
+- - -
 
 ## Dispatcher
-
 - Eliminado `Phalcon\Dispatcher::setModelBinding()` a favor de `Phalcon\Dispatcher::setModelBinder()`
 - Añadido `getHandlerSuffix()`, `setHandlerSuffix()`
 
-* * *
+- - -
 
-## Events
+## Eventos
 
 ### Events\ManagerInterface
-
 - Añadido `hasListeners`
 
-* * *
+- - -
 
 ## Flash
-
 - Se ha añadido la capacidad de establecer una plantilla personalizada para el mensajero Flash.
 - El constructor ya no acepta un array para las clases CSS. Se necesitará usar `setCssClasses()` para establecer tus clases CSS personalizadas para el componente
 - El constructor ahora acepta un objeto opcional `Phalcon\Escaper`, así como un objeto `Phalcon\Session\Manager` (en el caso de `Phalcon\Flash\Session`), en caso de que no desee utilizar el DI y establecerlo usted mismo.
 
-* * *
+- - -
 
-## Filter
+## Filtro
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Filters](filter)
-{: .alert .alert-info }
+> Usage: [Filter Documentation](filter) 
+> 
+> {: .alert .alert-info }
 
 El componente `Filter` ha sido reescrito, utilizando un localizador de servicios. Cada sanitizador está ahora encerrado en su propia clase y cargado de forma perezosa para proporcionar el máximo rendimiento y el menor uso de recursos posible.
 
 ### Resumen
-
-La clase `Phalcon\Filter` ha sido reescrita para actuar como un localizador de servicios para diferentes *sanitizadores*. Este objeto le permite limpiar la entrada, como antes, al usar el método `sanitize()`.
+The `Phalcon\Filter` class has been rewritten to act as a service locator for different _sanitizers_. Este objeto le permite limpiar la entrada, como antes, al usar el método `sanitize()`.
 
 Los valores saneados se convierten automáticamente a los tipos relevantes. Este es el comportamiento predeterminado para los filtros `int`, `bool` y `float`.
 
 Al instanciar el objeto de filtro, no tiene precargado ningún saneador. Entonces tienes dos opciones:
 
 #### Cargar todos los sanitizadores por defecto
-
 Puede cargar todos los sanitizadores suministrados utilizando el componente [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory).
 
 ```php
@@ -416,21 +388,17 @@ use Phalcon\Filter\FilterFactory;
 $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
-
 Llamando a `newInstance()` devolverá un objeto [Phalcon\Filter](api/Phalcon_Filter#filter) con todos los limpiadores registrados. Los sanitizadores están cargados perezosamente, por lo que se instanciaran sólo cuando se les llame desde el localizador.
 
 #### Cargar solo los sanitizadores que quieras
-
 Puede instanciar el componente [Phalcon\Filter](api/Phalcon_Filter#filter) y utilizar el método `set()` para establecer todos los limpiadores que necesite. o pasar un array en el constructor con los limpiadores que desea registrar.
 
 ### Usando `FactoryDefault`
-
 Si utiliza el contenedor [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault), entonces el [Phalcon\Filter](api/Phalcon_Filter#filter) se carga automáticamente en el contenedor. Luego puede continuar usando el servicio en sus controladores o componentes como lo hacia antes. El nombre del servicio del DI es `filter`, como antes.
 
 También los componentes que utilizan el servicio de filtros, como el objeto [Request](api/phalcon_http#http-request), utilizan de forma transparente el nuevo localizador de filtros. No se requieren cambios adicionales para esos componentes.
 
 ### Usando un `DI` personalizado
-
 Si usted mismo ha configurado todos los servicios en el [Phalcon\Di](api/Phalcon_Di) y necesita el servicio de filtro, necesitarás cambiar su registro de la siguiente manera:
 
 ```php
@@ -450,15 +418,14 @@ $container->set(
 );
 ```
 
-> **NOTA**: Tenga en cuenta que incluso si registra el servicio de filtro manualmente, el **nombre** del servicio debe ser **filter** para que otros componentes puedan usarlo
-{: .alert .alert-warning }
+> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it 
+> 
+> {: .alert .alert-warning }
 
 ### Constantes
-
 Las constantes de la v3 en `Phalcon\Filter` han cambiado.
 
 #### Eliminado
-
 - `FILTER_INT_CAST` (`int!`)
 - `FILTER_FLOAT_CAST` (`float!`)
 
@@ -467,7 +434,6 @@ Por defecto, el servicio de sanitizadores convierten el valor al tipo apropiado 
 - `FILTER_APHANUM` ha sido removido, reemplazado por `FILTER_ALNUM`
 
 #### Cambiado
-
 - `FILTER_SPECIAL_CHARS` ha sido eliminado, reemplazado por `FILTER_SPECIAL`
 - `FILTER_ALNUM` reemplaza a `FILTER_ALPHANUM`
 - `FILTER_ALPHA` sanitiza solo caracteres alfabéticos
@@ -481,40 +447,35 @@ Por defecto, el servicio de sanitizadores convierten el valor al tipo apropiado 
 - `FILTER_UPPERFIRST` sanitiza utilizando `ucfirst`
 - `FILTER_UPPERWORDS` sanitiza utilizando `ucwords`
 
-* * *
+- - -
 
-## Forms
+## Formularios
 
 ### Forms\Form
-
 - `Phalcon\Forms\Form::clear` ya no llamará `Phalcon\Forms\Element::clear`, en su lugar limpiará/establecerá el valor por defecto en sí mismo, y `Phalcon\Forms\Element::clear` ahora llamará a `Phalcon\Forms\Form::clear` si está asignado al formulario, de lo contrario, se limpiara a si mismo.
 - `Phalcon\Forms\Form::getValue` ahora también intentará obtener el valor llamando `Tag::getValue` o el método `getDefault` del elemento antes de devolver `null`, y `Phalcon\Forms\Element::getValue` llama a `Tag::getDefault` solo si no se añade al formulario.
 
-* * *
+- - -
 
 ## Html
 
 ### Html\Breadcrumbs
-
 - Añadido `Phalcon\Html\Breadcrumbs`, un componente que crea código HTML para migas de pan.
 
 ### Html\Tag
-
 - Añadido `Phalcon\Html\Tag`, un componente que crea elementos HTML. Reemplazará a `Phalcon\Tag` en una versión futura. Este componente no utiliza llamadas a métodos estáticos.
 
 ### Http\RequestInterface
-
 - Eliminado `isSecureRequest` a favor de `isSecure`
 - Eliminado `isSoapRequested` a favor de `isSoap`
 
 ### Http\Response
-
 - Se añadió el método `hasHeader()` a `Phalcon\Http\Response` para proporcionar la capacidad de comprobar si existe un encabezado.
 - Añadido `Phalcon\Http\Response\Cookies::getCookies`
 - Modificado `setHeaders` ahora combina los encabezados con los preexistentes en la colección interna
 - Se añadieron dos nuevos eventos `response::beforeSendHeaders` y `response::afterSendHeaders`
 
-* * *
+- - -
 
 ## Imagen
 
@@ -524,9 +485,7 @@ Por defecto, el servicio de sanitizadores convierten el valor al tipo apropiado 
 - Eliminado `Phalcon\Image`
 
 ## Image\Enum (Constantes)
-
 Ejemplo:
-
 ```php
 <?php
 
@@ -545,21 +504,22 @@ echo Enum::WIDTH;   // imprime   2
 echo Enum::HORIZONTAL; // imprime 11
 echo Enum::VERTICAL;   // imprime 12
 ```
+- - -
 
-* * *
 
 ## Logger
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Logger](logger)
-{: .alert .alert-info }
+> Usage: [Logger Documentation](logger) 
+> 
+> {: .alert .alert-info }
 
-El componente `Logger` ha sido reescrito para cumplir con el [PSR-3](https://www.php-fig.org/psr/psr-3/). Esto le permite utilizar el [Phalcon\Logger](api/Phalcon_Logger) para cualquier aplicación que utilice un registro [PSR-3](https://www.php-fig.org/psr/psr-3/) y no solo las basadas en Phalcon.
+The `Logger` component has been rewritten to comply with [PSR-3][psr-3]. This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3][psr-3] logger, not just Phalcon based ones.
 
 En Phalcon v3.x el componente trae incorporado el adaptador. Esto en esencia significa que cuando se inicia el objeto de registro, el desarrollador está en realidad creando un adaptador (de archivo, flujo, etc.) con capacidad de registro.
 
-En Phalcon v4 el componente se reescribió de tal manera que se dedica a la función de registro y acepta uno o más adaptadores que serán los responsables de las tareas de registro. Así se logra la compatibilidad con [PSR-3](https://www.php-fig.org/psr/psr-3/), se separan las responsabilidades del componente y se logra la funcionalidad de registro múltiple: fácilmente se puede agregar más de un adaptador al componente, cada uno realizando su propio registro. Con esta implementación se redujo el código del registro y se supimió el componente `Logger\Multiple`.
+En Phalcon v4 el componente se reescribió de tal manera que se dedica a la función de registro y acepta uno o más adaptadores que serán los responsables de las tareas de registro. This immediately offers compatibility with [PSR-3][psr-3] and separates the responsibilities of the component.  y se logra la funcionalidad de registro múltiple: fácilmente se puede agregar más de un adaptador al componente, cada uno realizando su propio registro. Con esta implementación se redujo el código del registro y se supimió el componente `Logger\Multiple`.
 
 ### Crear un componente Logger
 
@@ -608,7 +568,6 @@ $container->set(
 ```
 
 ### Multiples Loggers
-
 El componente `Phalcon\Logger\Multiple` ha sido eliminado. Puede lograr la misma funcionalidad usando el componente logger y registrando más de un adaptador:
 
 ```php
@@ -634,38 +593,35 @@ $logger = new Logger(
 $logger->error('Algo falló');
 ```
 
-* * *
+- - -
 
 ## Messages
-
-- `Phalcon\Messages\Message` y su colección `Phalcon\Messages\Messages` son nuevos componentes que manejan mensajes para modelos y validación. En el pasado teníamos dos componentes, uno para la validación y otro para los modelos. Hemos fusionado estos dos, así que deberías volver a obtener una `MessageInterface[]` al llamar a `save` en un modelo o al recuperar mensajes de validación. 
+- `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. En el pasado teníamos dos componentes, uno para la validación y otro para los modelos. Hemos fusionado estos dos, así que deberías volver a obtener una `MessageInterface[]` al llamar a `save` en un modelo o al recuperar mensajes de validación.
     - Modificado `Phalcon\Mvc\Model` para usar el objeto `Phalcon\Messages\Message` para sus mensajes
     - Modificado `Phalcon\Validation\*` para usar el objeto `Phalcon\Messages\Message` para sus mensajes
 
-* * *
+- - -
 
 ### Transacciones
-
 Eliminado en la versión 4.0:
 
 - Eliminado `$logger->begin()`
 - Eliminado `$logger->commit()`
 
 ### Nivel de registro
-
 - Eliminado `$logger->setLogLevel()`
 
-## Models
+## Modelos
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Modelos](db-models)
-{: .alert .alert-info }
+> Usage: [Models Documentation](db-models) 
+> 
+> {: .alert .alert-info }
 
 - Ya no puede asignar datos a los modelos al guardarlos
 
 ### Inicialización
-
 El método `getSource()` ha sido marcado como `final`. Como tal, ya no puede sobreescribir este método en su modelo para establecer la tabla/fuente correspondiente del RDBMS. En su lugar, ahora puede utilizar el método `initialize()` y `setSource()` para establecer la fuente de su modelo.
 
 ```php
@@ -684,11 +640,9 @@ class Users
 ```
 
 ### Guardar
-
-El método `save()` ya no acepta parámetros para establecer datos. En su lugar, puede usar el método `assign`.
+El método `save()` ya no acepta parámetros para establecer datos. Puede usar `assign` en su lugar.
 
 ### Criteria
-
 El segundo parámetro de `Criteria::limit()` ('offset') ahora debe ser un entero o nulo. Anteriormente no existía ningún tipo de requisito.
 
 ```php
@@ -699,26 +653,24 @@ $criteria->limit(10, 5);
 $criteria->limit(10, null);
 ```
 
-* * *
+- - -
 
 ## MVC
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación del MVC](mvc)
-{: .alert .alert-info }
+> Usage: [MVC Documentation](mvc) 
+> 
+> {: .alert .alert-info }
 
 ### Mvc\Collection
-
 - Eliminado `Phalcon\Mvc\Collection::validationHasFailed`
 - Llamada eliminada `Phalcon\Mvc\Collection::validate` con un objeto de tipo `Phalcon\Mvc\Model\ValidatorInterface`
 
 ### Mvc\Micro\Lazyloader
-
 - Se ha eliminado `__call` a favor de `callMethod`
 
 ### Mvc\Model
-
 - Eliminado `Phalcon\Model::reset`
 - Se añadió `isRelationshipLoaded` para comprobar si la relación está cargada
 - Cambiado en el método `Phalcon\Model::assign` el orden de los parámetros a `$data`, `$whiteList`, `$dataColumnMap`
@@ -726,17 +678,14 @@ $criteria->limit(10, null);
 - Cambiado `Phalcon\Model::getRelated()` para devolver `null` para una relación "uno a uno" si no se encontró ningún registro
 
 ### Mvc\Model\Criteria
-
 - Eliminado `addWhere`
 - Eliminado `order`
 - Eliminado `order` a favor del `orderBy`
 
 ### Mvc\Model\CriteriaInterface
-
 - Añadido `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
 
 ### Mvc\Model\Manager
-
 - `load` ya no reutiliza modelos ya inicializados
 - Eliminado `Phalcon\Model\Manager::registerNamespaceAlias()`
 - Eliminado `Phalcon\Model\Manager::getNamespaceAlias()`
@@ -747,76 +696,59 @@ $criteria->limit(10, null);
 - El armado de `Phalcon\Mvc\Model\Manager::getHasManyRecords()` ha cambiado
 
 ### Mvc\Model\ManagerInterface
-
 - Añadido `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
 - Eliminado `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
 - Eliminado `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
 
 ### Mvc\Model\MessageInterface
-
 - Añadido `setModel`, `getModel`, `setCode`, `getCode`
 
 ### Mvc\Model\QueryInterface
-
 - Añadido `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
 
 ### Mvc\Model\Query\BuilderInterface
-
 - Añadido `offset`
 
 ### Mvc\Model\Query\Builder
-
 - Añadido soporte para enlazar parámetros. El Query Builder tiene los mismos métodos que `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` y `setBindTypes`.
 - Se ha cambiado `addFrom` para eliminar el tercer parámetro `$with`
 
 ### Mvc\Model\Query\BuilderInterface
-
 - Añadido `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
 
 ### Mvc\Model\RelationInterface
-
 - Añadido `getParams`
 
 ### Mvc\Model\ResultsetInterface
-
 - Añadido `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
 
 ### Mvc\Model\Transaction\ManagerInterface
-
 - Añadido `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
 
 ### Mvc\Model\Validator*
-
 - Eliminado `Phalcon\Mvc\Model\Validator\*` a favor de `Phalcon\Validation\Validator\*`
 
 ### Mvc\ModelInterface
-
 - Añadido `getModelsMetaData`
 
 ### Mvc\Router
-
 - Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
 
 ### Mvc\RouterInterface
-
 - Añadido `attach`
 
 ### Mvc\Router\RouteInterface
-
 - Añadido `convert` para que la llamada `add` devuelva una instancia que tiene el método `convert`
 
 ### Mvc\Router\RouteInterface
-
 - Añadido el gestor de respuesta a `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, para permitir el uso de un gestor de respuesta personalizado.
 
 ### Mvc\User
-
 - Eliminado `Phalcon\Mvc\User\Component`, utilizar `Phalcon\Di\Injectable` en su lugar
 - Eliminado `Phalcon\Mvc\User\Module`, utilizar `Phalcon\Di\Injectable` en su lugar
 - Eliminado `Phalcon\Mvc\User\Plugin`, utilizar `Phalcon\Di\Injectable` en su lugar
 
 ### Mvc\View\Engine\Volt
-
 Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxis antigua producirá una advertencia de deprecado. Las nuevas opciones son:
 
 - `always` - Siempre compila
@@ -826,17 +758,15 @@ Las opciones para Volt han cambiado (los nombres de las claves). Usar la sintaxi
 - `path` - La ruta de los archivos
 - `prefix` - El prefijo de los archivos
 
-* * *
+- - -
 
 ## Paginator
-
 - `getPaginate` ahora se convierte en `paginate`
 - `$before` es eliminado y reemplazado por `$previous`
 - `$total_pages` es eliminado ya que contiene la misma información que `$last`
 - Añadido `Phalcon\Paginator\RepositoryInterface` para el repositorio del estado actual del `paginator` y también opcionalmente establece los alias para el repositorio de propiedades
 
 ## Router
-
 - Se ha eliminado `getRewriteUri()`. La URI necesita ser pasada en el método `handle` del objeto de la aplicación.
 - Puedes añadir `CONNECT`, `PURGE`, `TRACE` a las rutas al grupo enrutador. Funcionan del mismo modo que funcionan en el Router:
 
@@ -870,37 +800,34 @@ $group->addTrace(
 );
 ```
 
-* * *
+- - -
 
-## Security
-
+## Seguridad
 - Eliminado `hasLibreSsl`
 - Eliminado `getSslVersionNumber`
 - Añadido `setPadding`
 - Se ha añadido un retenedor para que el token actual se utilice durante las comprobaciones, así que cuando `getToken` es llamado el token usado para verificaciones no cambia
 
-* * *
+- - -
 
-## Request
+## Consulta
 
 ### Http\Request
-
 - Añadido `numFiles` retornando `int` - el número de archivos presentes en la solicitud
 - Se ha cambiado `hasFiles` para devolver `bool` - si la solicitud tiene archivos o no
 
 ### Http\RequestInterface
-
 - Añadido `numFiles` retornando `int` - el número de archivos presentes en la solicitud
 - Se ha cambiado `hasFiles` para devolver `bool` - si la solicitud tiene archivos o no
 
-* * *
+- - -
 
 ## Session
-
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Session](session)
-{: .alert .alert-info }
+> Usage: [Session Documentation](session) 
+> 
+> {: .alert .alert-info }
 
 `Session` y `Session\Bag` ya no se cargan por defecto en `Phalcon\DI\FactoryDefault`. `Session` fue refactorizada.
 
@@ -917,7 +844,6 @@ $group->addTrace(
 - Eliminado `Phalcon\Session\Factory`
 
 ### Session\Adapter
-
 Cada adaptador implementa `SessionHandlerInterface` de PHP. Los adaptadores disponibles son:
 
 - `Phalcon\Session\Adapter\AbstractAdapter`
@@ -927,69 +853,68 @@ Cada adaptador implementa `SessionHandlerInterface` de PHP. Los adaptadores disp
 - `Phalcon\Session\Adapter\Stream`
 
 ### Session\Manager
-
 - Ahora es el único componente que ofrece manipulación de sesión mediante el uso de adaptadores (ver arriba). Cada adaptador implementa `SessionHandlerInterface` de PHP
 - Los desarrolladores pueden añadir cualquier adaptador que implemente `SessionHandlerInterface`
 
-* * *
+- - -
 
 ## Tag
-
 - Añadido `renderTitle()` que renderiza el título encerrado entre etiquetas `<title>`.
 - Se ha cambiado `getTitle`. Sólo devuelve el texto del título. Acepta `prepend`, `append` booleanos para agregar un prefijo o sufijo al título.
 - Se ha cambiado `textArea` para usar `htmlspecialchars` para prevenir la inyección XSS.
 
-* * *
+- - -
 
 ## Text
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Str](helpers#str)
-{: .alert .alert-info }
+> Usage: [Str Documentation](helpers#str) 
+> 
+> {: .alert .alert-info }
 
 El componente `Phalcon\Text` se ha eliminado a favor del `Phalcon\Helper\Str`. La funcionalidad ofrecida por `Phalcon\Text` en v3 es replicada y mejorada en la nueva clase: `Phalcon\Helper\Str`.
 
-* * *
+- - -
 
-## Validation
+## Validación
 
 ### Validation\Message
-
 - Eliminado `Phalcon\Validation\Message` y `Phalcon\Mvc\Model\Message` a favor de `Phalcon\Messages\Message`
 - Eliminado `Phalcon\Validation\MessageInterface` y `Phalcon\Mvc\Model\MessageInterface` a favor de `Phalcon\Messages\MessageInterface`
 - Eliminado `Phalcon\Validation\Message\Group` a favor de `Phalcon\Messages\Messages`
 - Los mensajes del validador se han movido dentro de cada validador
 
 ### Validation\Validator
-
 - Eliminado `isSetOption`
 
 ### Validation\Validator\Ip
-
 - Añadido `Phalcon\Validation\Validator\Ip`, clase utilizada para validar campos de dirección ip. Permite validar un campo seleccionando IPv4 o IPv6, permitiendo rangos privados o reservados y valores vacíos si es necesario.
 
-* * *
+- - -
 
-## Views
+## Vistas
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de View](views)
-{: .alert .alert-info }
+> Usage: [View Documentation](views) 
+> 
+> {: .alert .alert-info }
 
-La caché de vista junto con el servicio de `viewCache` se han eliminado del framework porque eran incompatibles con el nuevo componente de caché. Los desarrolladores pueden utilizar fácilmente un *caché de vista* de servicios externos como Varnish, Cloudflare, etc. Además, los desarrolladores pueden almacenar fragmentos en caché utilizando `Phalcon\Mvc\View\Simple::render()` o el `Phalcon\Mvc\View::toString()`. Estos dos métodos devuelven el HTML producido que puede ser almacenado en caché en el backend de tu elección.
+La caché de vista junto con el servicio de `viewCache` se han eliminado del framework porque eran incompatibles con el nuevo componente de caché. Developers can easily utilize a _view cache_ from external services such as Varnish, Cloudflare etc. Además, los desarrolladores pueden almacenar fragmentos en caché utilizando `Phalcon\Mvc\View\Simple::render()` o el `Phalcon\Mvc\View::toString()`. Estos dos métodos devuelven el HTML producido que puede ser almacenado en caché en el backend de tu elección.
 
-* * *
+- - -
 
 ## Url
 
-> Estado: **cambios requeridos**
+> Status: **changes required**
 > 
-> Uso: [Documentación de Url](url)
-{: .alert .alert-info }
+> Usage: [Url Documentation](url) 
+> 
+> {: .alert .alert-info }
 
 El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcionalidad sigue siendo la misma.
+
 
 ## Cheat Sheet
 
@@ -1002,7 +927,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Acl\Resource | Renombrado a | Phalcon\Acl\Component                |
 |                        | Nuevo        | Phalcon\Acl\Enum                     |
 
-### Annotations
+### Anotaciones
 
 | 3.4.x                                 | Estado       | 4.0.x                                          |
 | ------------------------------------- | ------------ | ---------------------------------------------- |
@@ -1018,7 +943,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | -------------------- | ------------ | ----------------------------------------- |
 | Phalcon\Application | Renombrado a | Phalcon\Application\AbstractApplication |
 
-### Assets
+### Recursos Activos
 
 | 3.4.x                          | Estado       | 4.0.x                       |
 | ------------------------------ | ------------ | --------------------------- |
@@ -1054,7 +979,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Cache\Frontend\Output      | Eliminado    |                                                     |
 | Phalcon\Cache\Multiple              | Eliminado    |                                                     |
 
-### Colección
+### Coleccion
 
 | 3.4.x | Estado | 4.0.x                          |
 | ----- | ------ | ------------------------------ |
@@ -1062,7 +987,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Collection\Exception |
 |       | Nuevo  | Phalcon\Collection\ReadOnly  |
 
-### Config
+### Configuración
 
 | 3.4.x                    | Estado       | 4.0.x                          |
 | ------------------------ | ------------ | ------------------------------ |
@@ -1106,13 +1031,13 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Domain\Payload\PayloadFactory |
 |       | Nuevo  | Phalcon\Domain\Payload\Status         |
 
-### Factory
+### Fábrica (Factory)
 
 | 3.4.x            | Estado       | 4.0.x                             |
 | ---------------- | ------------ | --------------------------------- |
 | Phalcon\Factory | Renombrado a | Phalcon\Factory\AbstractFactory |
 
-### Filter
+### Filtro
 
 | 3.4.x | Estado | 4.0.x                                  |
 | ----- | ------ | -------------------------------------- |
@@ -1145,13 +1070,13 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | -------------- | ------------ | ----------------------------- |
 | Phalcon\Flash | Renombrado a | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### Formularios
 
 | 3.4.x                   | Estado       | 4.0.x                                    |
 | ----------------------- | ------------ | ---------------------------------------- |
 | Phalcon\Forms\Element | Renombrado a | Phalcon\Forms\Element\AbstractElement |
 
-### Helper
+### Ayudantes
 
 | 3.4.x | Estado | 4.0.x                      |
 | ----- | ------ | -------------------------- |
@@ -1214,7 +1139,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | Nuevo  | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Image
+### Imagen
 
 | 3.4.x                   | Estado       | 4.0.x                                    |
 | ----------------------- | ------------ | ---------------------------------------- |
@@ -1237,6 +1162,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 | Phalcon\Logger\Formatter\Firephp | Eliminado    |                                               |
 | Phalcon\Logger\Formatter\Syslog  | Eliminado    |                                               |
 | Phalcon\Logger\Multiple           | Eliminado    |                                               |
+
 
 ### Message (nuevo en V4, Anteriormente Phalcon\Validation\Message en 3.4)
 
@@ -1284,11 +1210,11 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 
 ### Paginator
 
-| 3.4.x                       | Estado       | 4.0.x                                |
-| --------------------------- | ------------ | ------------------------------------ |
-| Phalcon\Paginator\Adapter | Renombrado a | Phalcon\Paginator\Adapter          |
-| Phalcon\Paginator\Factory | Renombrado a | Phalcon\Paginator\PaginatorFactory |
-|                             | Nuevo        | Phalcon\Paginator\Repository       |
+| 3.4.x                       | Estado       | 4.0.x                                        |
+| --------------------------- | ------------ | -------------------------------------------- |
+| Phalcon\Paginator\Adapter | Renombrado a | Phalcon\Paginator\Adapter\AbstractAdapter |
+| Phalcon\Paginator\Factory | Renombrado a | Phalcon\Paginator\PaginatorFactory         |
+|                             | Nuevo        | Phalcon\Paginator\Repository               |
 
 ### Queue
 
@@ -1329,7 +1255,7 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |       | Nuevo  | Phalcon\Storage\Serializer\None               |
 |       | Nuevo  | Phalcon\Storage\Serializer\Php                |
 
-### Translate
+### Traducciones
 
 | 3.4.x                       | Estado       | 4.0.x                                        |
 | --------------------------- | ------------ | -------------------------------------------- |
@@ -1366,3 +1292,10 @@ El componente `Phalcon\Mvc\Url` ha sido renombrado a `Phalcon\Url`. La funcional
 |                                              | Nuevo        | Phalcon\Validation\Validator\File\Size\Min         |
 |                                              | Nuevo        | Phalcon\Validation\Validator\StringLength\Max       |
 |                                              | Nuevo        | Phalcon\Validation\Validator\StringLength\Min       |
+
+
+[php-support]: https://www.php.net/supported-versions.php
+[psr-3]: https://www.php-fig.org/psr/psr-3/
+[psr-16]: https://www.php-fig.org/psr/psr-16/
+[psr-extension]: https://github.com/jbboehr/php-psr
+[zephir-phar]: https://github.com/phalcon/zephir/releases
