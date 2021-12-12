@@ -11,7 +11,7 @@ keywords: 'psr-7, http, flujo http'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream) es una implementación del interfaz de mensajería HTTP [PSR-7](https://www.php-fig.org/psr/psr-7/) definido por [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Stream][http-message-stream] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
@@ -37,7 +37,7 @@ public function __construct(
     string $mode = "rb"
 )
 ```
-El primer parámetro puede ser una cadena que indique la ubicación del archivo en el sistema de ficheros o área de almacenamiento. También puede ser un recurso, como el devuelto por un método como [fopen](https://www.php.net/manual/en/function.fopen.php). El segundo parámetro es el modo de apertura del flujo. El modo por defecto es `rb`. Para una lista de modos disponibles, se puede consultar la documentación de [fopen](https://www.php.net/manual/en/function.fopen.php).
+El primer parámetro puede ser una cadena que indique la ubicación del archivo en el sistema de ficheros o área de almacenamiento. It can also be a resource, as returned by a method such as [fopen][fopen]. El segundo parámetro es el modo de apertura del flujo. El modo por defecto es `rb`. For a list of available modes, you can check the documentation for [fopen][fopen].
 
 - `stream` - cadena o recurso
 - `mode` - Cadena que indica el modo en el que el archivo es abierto.
@@ -80,7 +80,7 @@ echo $stream->getContents(); // 'The MIT License (MIT) ...'
 ```
 
 ### `getMetadata()`
-Devuelve los metadatos del flujo como un vector asociativo. Si el parámetro `$key` se define, se devolverá la cadena del elemento relevante. El método es una envoltura de la función PHP [stream_get_meta_data()](https://php.net/manual/en/function.stream-get-meta-data.php). Si no se encuentra la clave, el método devolverá `null`.
+Devuelve los metadatos del flujo como un vector asociativo. Si el parámetro `$key` se define, se devolverá la cadena del elemento relevante. The method is a wrapper for PHP's [stream_get_meta_data()][stream-get-meta-data] function. Si no se encuentra la clave, el método devolverá `null`.
 
 ```php
 <?php
@@ -238,7 +238,7 @@ echo $stream->read(15); // 'The MIT License'
 ```
 
 ## `rewind()`
-Busca el principio del flujo. Usa internamente [fseek()](https://www.php.net/manual/en/function.fseek.php) llamando `seek(0)`. Si el flujo no es consultable, se lanzará `RuntimeException`.
+Busca el principio del flujo. Uses [fseek()][fseek] calling `seek(0)` internally. Si el flujo no es consultable, se lanzará `RuntimeException`.
 
 ```php
 <?php
@@ -256,9 +256,9 @@ echo $stream->read(3); // 'The'
 ```
 
 ## `seek()`
-Intenta colocarse en una posición del flujo. Usa internamente [fseek()](https://www.php.net/manual/en/function.fseek.php). Acepta:
+Intenta colocarse en una posición del flujo. Uses [fseek()][fseek] internally. Acepta:
 - `offset` - `int` Desplazamiento sobre el flujo
-- `whence` - `int` Especifica como se calculará la posición del cursor teniendo en cuenta el desplazamiento buscado. Los valores correctos son idénticos a los que vienen de serie en PHP como valores de $whence para [fseek()](https://www.php.net/manual/en/function.fseek.php).
+- `whence` - `int` Especifica como se calculará la posición del cursor teniendo en cuenta el desplazamiento buscado. Valid values are identical to the built-in PHP $whence values for [fseek()][fseek].
     - `SEEK_SET` Establece la posición igual a los bytes de desplazamiento
     - `SEEK_CUR` Establece la posición en la ubicación actual más el desplazamiento
     - `SEEK_END` Establece la posición al final del flujo más el desplazamiento.
@@ -311,3 +311,10 @@ $source = 'The above copyright notice and this permission '
 
 echo $stream->write($source); // 126
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-stream]: api/phalcon_http#http-message-stream
+[fopen]: https://www.php.net/manual/en/function.fopen.php
+[stream-get-meta-data]: https://php.net/manual/en/function.stream-get-meta-data.php
+[fseek]: https://www.php.net/manual/en/function.fseek.php
