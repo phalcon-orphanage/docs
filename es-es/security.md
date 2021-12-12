@@ -7,27 +7,25 @@ keywords: 'seguridad, hash, contraseñas'
 ---
 
 # Seguridad
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Preámbulo
+## Resumen
 
-> **NOTA**: Requiere que esté presente en el sistema la extensión [openssl](https://php.net/manual/en/book.openssl.php) de PHP
-{: .alert .alert-info }
+> **NOTE**: Requires PHP's [openssl][openssl] extension to be present in the system 
+> 
+> {: .alert .alert-info }
 
-[Phalcon\Security](api/phalcon_security#security) es un componente que ayuda a los desarrolladores con las tareas comunes relacionadas con la seguridad, como hash de contraseñas y protección *Cross-Site Request Forgery* ([CSRF](https://es.wikipedia.org/wiki/Cross-site_request_forgery)).
+[Phalcon\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
 ## Hashing de contraseñas
+Almacenar contraseñas en texto plano es una práctica de seguridad mala. Cualquiera con acceso a la base de datos tendrá inmediatamente acceso a las cuentas de todos los usuarios, y podrá realizar actividades no autorizadas. To combat that, many applications use popular one way hashing methods [md5][md5] and [sha1][sha1]. Sin embargo, el hardware evoluciona cada día y los procesadores se vuelven más rápidos, estos algoritmos se están volviendo vulnerables contra ataques de fuerza bruta. These attacks are also known as [rainbow tables][rainbow-tables].
 
-Almacenar contraseñas en texto plano es una práctica de seguridad mala. Cualquiera con acceso a la base de datos tendrá inmediatamente acceso a las cuentas de todos los usuarios, y podrá realizar actividades no autorizadas. Para prevenir eso, muchas aplicaciones usan métodos de *hashing* unidireccional [md5](https://php.net/manual/en/function.md5.php) y [sha1](https://php.net/manual/en/function.sha1.php). Sin embargo, el hardware evoluciona cada día y los procesadores se vuelven más rápidos, estos algoritmos se están volviendo vulnerables contra ataques de fuerza bruta. Estos ataques también son conocidos como [tablas arcoiris](https://es.wikipedia.org/wiki/Tabla_arco%C3%Adris).
+The security component uses [bcrypt][bcrypt] as the hashing algorithm. Thanks to the [Eksblowfish][eksblowfish] key setup algorithm, we can make the password encryption as `slow` as we want. Los algoritmos lentos minimizan el impacto de ataques por fuerza bruta.
 
-El componente de seguridad usa [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hashing. Gracias al algoritmo de configuración de claves [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm), podemos hacer la encriptación de la contraseña tan `lenta` como queramos. Los algoritmos lentos minimizan el impacto de ataques por fuerza bruta.
+[Bcrypt][bcrypt], is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. También introduce un factor de seguridad o trabajo, que determina cómo de lenta será la función hash para generar el hash. Esto niega efectivamente el uso de técnicas de hashing FPGA o GPU.
 
-[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), es una función de hash adaptativo basado en el algoritmo criptográfico de cifrado de bloque simétrico Blowfish. También introduce un factor de seguridad o trabajo, que determina cómo de lenta será la función hash para generar el hash. Esto niega efectivamente el uso de técnicas de hashing FPGA o GPU.
-
-Si en el futuro el hardware se vuelve más rápido, podemos aumentar el factor de trabajo para mitigar esto. La sal se genera usando bytes pseudo-aleatorios con la función de PHP [openssl_random_pseudo_bytes](https://php.net/manual/en/function.openssl-random-pseudo-bytes.php).
+Si en el futuro el hardware se vuelve más rápido, podemos aumentar el factor de trabajo para mitigar esto. The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes][openssl-random-pseudo-bytes].
 
 Este componente ofrece un interfaz simple para usar el algoritmo:
 
@@ -126,20 +124,22 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTA** El fragmento de código anterior está incompleto y **no debe usarse tal cual para aplicaciones en producción**
-{: .alert .alert-danger }
+> **NOTE** The code snippet above is incomplete and **must not be used as is for production applications** 
+> 
+> {: .alert .alert-danger }
 
-El `registerAction()` anterior acepta datos publicados desde el interfaz del usuario. Se limpian con el filtro `string` y entonces crea un nuevo objeto del modelo `User`. Entonces asigna los datos pasados a las propiedades relevantes antes de guardarlos. Tenga en cuenta que para la contraseña, usamos el método `hash()` del componente [Phalcon\Security](api/phalcon_security#security) para no guardarlo como texto plano en nuestra base de datos.
+El `registerAction()` anterior acepta datos publicados desde el interfaz del usuario. Se limpian con el filtro `string` y entonces crea un nuevo objeto del modelo `User`. Entonces asigna los datos pasados a las propiedades relevantes antes de guardarlos. Notice that for the password, we use the `hash()` method of the [Phalcon\Security][security] component so that we do not save it as plain text in our database.
 
-El `loginAction()` acepta datos publicados desde la interfaz de usuario y entonces intenta encontrar el usuario en la base de datos basándose en el campo `login`. Si el usuario existe, usará el método `checkHash()` del componente [Phacon\Security](api/phalcon_security#security), para evaluar si la contraseña cifrada proporcionada es la misma que la almacenada en la base de datos.
+El `loginAction()` acepta datos publicados desde la interfaz de usuario y entonces intenta encontrar el usuario en la base de datos basándose en el campo `login`. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database.
 
-> **NOTA**: No necesita cifrar la contraseña proporcionada (primer parámetro) cuando usa `checkHash()` - el componente lo hará por usted.
-{: .alert .alert-info }
+> **NOTE**: You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you. 
+> 
+> {: .alert .alert-info }
 
 Si la contraseña no es correcta, entonces puede informar al usuario de que algo está mal con las credenciales. Siempre es una buena idea no proporcionar información específica sobre sus usuarios a gente que quiere hackear su sitio. Así que por ejemplo, en nuestro ejemplo anterior podemos producir dos mensajes:
 
-* Usuario no encontrado en la base de datos
-* La contraseña es incorrecta
+- Usuario no encontrado en la base de datos
+- La contraseña es incorrecta
 
 Separar los mensajes de error no es una buena idea. Si un hacker que usa un ataque por fuerza bruta detecta el segundo mensaje, puede parar de intentar adivinar el `login` y concentrarse en la contraseña, lo que incrementa sus posibilidades de obtener el acceso. Un mensaje más apropiado para ambas posibles condiciones de error podía ser
 
@@ -154,8 +154,7 @@ $this->security->hash(rand());
 Esto se hace para proteger contra ataques temporales. Independientemente de si un usuario existe o no, el script tomará aproximadamente la misma cantidad de tiempo para ejecutarse, ya que está calculando el hash otra vez, aunque nunca usemos ese resultado.
 
 ## Excepciones
-
-Cualquier excepción lanzada en el componente `Security` será del tipo [Phalcon\Security\Exception](api/phalcon_security#security-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. Las excepciones se pueden lanzar si el algoritmo de hashing es desconocido, si el servicio `session` no está presente en el contenedor Di, etc.
+Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception][security-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. Las excepciones se pueden lanzar si el algoritmo de hashing es desconocido, si el servicio `session` no está presente en el contenedor Di, etc.
 
 ```php
 <?php
@@ -177,10 +176,9 @@ class IndexController extends Controller
 ```
 
 ## Protección CSRF
-
 Cross-Site Request Forgery (CSRF) es otro ataque común contra sitios y aplicaciones web. Los formularios destinados a realizar tareas como registro de usuarios o añadir comentarios son vulnerables a este ataque.
 
-La idea es prevenir que los valores del formulario sean enviados fuera de nuestra aplicación. Para solucionar esto, se puede generar un [nonce aleatorio](https://en.wikipedia.org/wiki/Cryptographic_nonce) (token) en cada formulario, añadir el token en la sesión y luego validar el token una vez que el formulario envía los datos de regreso a nuestra aplicación, comparando el token almacenado en la sesión con el enviado por el formulario:
+La idea es prevenir que los valores del formulario sean enviados fuera de nuestra aplicación. To fix this, we generate a [random nonce][random-nonce] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
 ```php
 <form method='post' action='session/login'>
@@ -217,10 +215,11 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTA**: Es importante recordar que necesitará tener registrado un servicio `session` válido en su contenedor de Inyección de Dependencias. De lo contrario, el `checkToken()` no funcionará.
-{: .alert .alert-warning }
+> **NOTE**: It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. De lo contrario, el `checkToken()` no funcionará. 
+> 
+> {: .alert .alert-warning }
 
-También se recomienda añadir un [captcha](https://es.wikipedia.org/wiki/ReCAPTCHA) al formulario para evitar completamente los riesgos de este ataque.
+Adding a [captcha][captcha] to the form is also recommended to completely avoid the risks of this attack.
 
 ## Funcionalidad
 
@@ -248,19 +247,18 @@ Acepta una cadena (normalmente la contraseña), y una cadena ya cifrada (la cont
 
 **isLegacyHash()**
 
-Devuelve `true` si la cadena cifrada pasada es un hash [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) válido.
+Returns `true` if the passed hashed string is a valid [bcrypt][bcrypt] hash.
 
 ### HMAC
 
 **computeHmac()**
 
-Genera un valor hash clave usando el método HMAC. Internamente usa el método de PHP [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php), por lo tanto todos los parámetros que acepta son los mismos que para [`hash_hmac`](https://www.php.net/manual/en/function.hash-hmac.php).
+Genera un valor hash clave usando el método HMAC. It uses PHP's [`hash_hmac`][hash-hmac] method internally, therefore all the parameters it accepts are the same as the [`hash_hmac`][hash-hmac].
 
 ### Aleatorio
-
 **`getRandom()`**
 
-Devuelve un objeto [Phalcon\Security\Random](api/phalcon_security#security-random), que es una instancia segura del generador de números aleatorios. El componente se explica en detalle a continuación.
+Returns a [Phalcon\Security\Random][security-random] object, which is secure random number generator instance. El componente se explica en detalle a continuación.
 
 **`getRandomBytes()` / `setRandomBytes()`**
 
@@ -271,7 +269,6 @@ Métodos *getter* y *setter* para especificar el número de bytes a ser generado
 Genera una pseudo cadena aleatoria para usar como sal para contraseñas. Usa el valor de `getRandomBytes()` para el tamaño de la cadena. Sin embargo, se puede sobreescribir por el parámetro numérico pasado.
 
 ### Token
-
 **`getToken()`**
 
 Genera un pseudo valor aleatorio de token a usar como valor de campo en una comprobación CSRF.
@@ -297,10 +294,13 @@ Devuelve el valor del token CSRF en sesión
 Elimina el valor y clave del token CSRF de la sesión
 
 ## Aleatorio
+The [Phalcon\Security\Random][security-random] class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom][secure-random] library from Ruby.
 
-La clase [Phalcon\Security\Random](api/phalcon_security#security-random) hace realmente fácil generar muchos tipos de datos aleatorios a usarse en sales, nuevas contraseñas de usuario, claves de sesión, claves complicadas, sistemas de encriptación, etc. Esta clase toma prestada parcialmente la librería [SecureRandom](https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html) de Ruby.
-
-Soporta los siguientes generadores seguros de números aleatorios: * random_bytes * libsodium * openssl, libressl * /dev/urandom
+It supports following secure random number generators:
+* random_bytes
+* libsodium
+* openssl, libressl
+* /dev/urandom
 
 Para utilizar lo anterior necesitará asegurarse que los generadores están disponibles en su sistema. Por ejemplo, para usar `openssl` su aplicación PHP necesita soportarla.
 
@@ -370,7 +370,7 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 Genera una cadena `base64` aleatoria segura para URL. Si no se especifica el parámetro `$len`, se asume `16`. Puede ser más grande en el futuro. El tamaño de la cadena resultante suele ser mayor de `$len`.
 
-Por defecto, no se genera relleno porque `=` se puede usar como delimitador de URL. El resultado puede contener `A-Z`, `a-z`, `0-9`, `-` y `_`. `=` también se usa si `$padding` es `true`. Vea [RFC 3548](https://www.ietf.org/rfc/rfc3548.txt) para la definición de URL-segura `base64`.
+Por defecto, no se genera relleno porque `=` se puede usar como delimitador de URL. El resultado puede contener `A-Z`, `a-z`, `0-9`, `-` y `_`. `=` también se usa si `$padding` es `true`. See [RFC 3548][rfc-3548] for the definition of URL-safe `base64`.
 
 ```php
 <?php
@@ -428,10 +428,10 @@ echo $random->number(16); // 8
 
 **`uuid()`**
 
-Genera un UUID (*Universally Unique IDentifier*) aleatorio v4. La versión 4 de UUID es puramente aleatoria (excepto la versión). No contiene información significativa como dirección MAC, hora, etc. Vea [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt) para más detalles sobre UUID.
+Genera un UUID (*Universally Unique IDentifier*) aleatorio v4. La versión 4 de UUID es puramente aleatoria (excepto la versión). No contiene información significativa como dirección MAC, hora, etc. See [RFC 4122][rfc-4122] for details of UUID.
 
-Este algoritmo establece el número de versión (4 bits) así como dos bits reservados. Todos los demás bits (los 122 bits restantes) se establecen usando una fuente de datos aleatoria o pseudoaleatoria. Las UUIDs Version 4 tienen la forma `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` donde x es cualquier dígito hexadecimal e `y` es uno de `8`, `9`, `A`, o `B` (ej., `f47ac10b-58cc-4372-a567-0e02b2c3d479`). *
-
+Este algoritmo establece el número de versión (4 bits) así como dos bits reservados. Todos los demás bits (los 122 bits restantes) se establecen usando una fuente de datos aleatoria o pseudoaleatoria. Las UUIDs Version 4 tienen la forma `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` donde x es cualquier dígito hexadecimal e `y` es uno de `8`, `9`, `A`, o `B` (ej., `f47ac10b-58cc-4372-a567-0e02b2c3d479`).
+*
 ```php
 <?php
 
@@ -443,8 +443,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 ```
 
 ## Inyección de Dependencias
-
-Si usa el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), [Phalcon\Security](api/phalcon_security#security) ya está registrado para usted. Sin embargo, podría querer sobreescribir el registro predeterminado para establecer su propio `workFactor()`. Alternativamente, si no usa [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) y en su lugar está usando [Phalcon\Di](di) el registro es el mismo. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Security][security] is already registered for you. Sin embargo, podría querer sobreescribir el registro predeterminado para establecer su propio `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di](di) the registration is the same. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
 
 A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
@@ -469,7 +468,6 @@ $container->set(
     true
 );
 ```
-
 En el ejemplo anterior, `setWorkFactor()` establece el factor de cifrado de contraseña a 12 rondas.
 
 El componente ahora está disponible en sus controladores usando la clave `security`
@@ -497,3 +495,27 @@ También en sus vistas (sintaxis Volt)
 ```twig
 {% raw %}{{ security.getToken() }}{% endraw %}
 ```
+
+
+[bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
+
+
+[bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
+[captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA
+[eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
+[md5]: https://php.net/manual/en/function.md5.php
+[openssl]: https://php.net/manual/en/book.openssl.php
+[openssl-random-pseudo-bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
+[random-nonce]: https://en.wikipedia.org/wiki/Cryptographic_nonce
+[rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
+[sha1]: https://php.net/manual/en/function.sha1.php
+[wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
+[security-exception]: api/phalcon_security#security-exception
+[security-random]: api/phalcon_security#security-random
+[security]: api/phalcon_security#security
+[security]: api/phalcon_security#security
+[factorydefault]: api/phalcon_di#di-factorydefault
+[hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
+[secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
+[rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt
+[rfc-4122]: https://www.ietf.org/rfc/rfc4122.txt
