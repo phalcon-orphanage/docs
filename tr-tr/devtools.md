@@ -7,35 +7,28 @@ keywords: 'devtools, developer tools, models, controllers'
 ---
 
 # Phalcon Devtools
-
-* * *
-
+- - -
 ![](/assets/images/document-status-under-review-red.svg)
 
 ## Genel Bakış
-
 These tools help you to generate skeleton code, maintain your database structure and helps to speedup development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
 Phalcon Devtool can be controlled using the cmd line or the web interface.
 
 ## Installation
 
-Phalcon Devtools can be installed using <composer>. Make sure you have installed first.
+Phalcon Devtools can be installed using [composer](composer). Make sure you have installed first.
 
 Install Phalcon Devtools globally
-
 ```bash
 composer global require phalcon/devtools
 ```
-
 Or only inside your project
-
 ```bash
 composer require phalcon/devtools
 ```
 
 Test your installation by typing: `phalcon`
-
 ```bash
 $ phalcon
 
@@ -59,9 +52,7 @@ Available commands:
 The devtools are also available as phar download on our github [repository](github_devtools).
 
 ## Kullanım
-
 ### Available Commands
-
 You can get a list of available commands in Phalcon tools by typing: `phalcon commands`
 
 ```bash
@@ -85,7 +76,6 @@ Available commands:
 ```
 
 ### Generating a Project Skeleton
-
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
 ```bash
@@ -132,7 +122,6 @@ Accessing the project from the web server will show you:
 ![](/assets/images/content/v4/devtools-store-localhost.png)
 
 ### Generating Controllers
-
 The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
 
 ```bash
@@ -158,7 +147,6 @@ class TestController extends \Phalcon\Mvc\Controller
 ```
 
 ### Preparing Database Settings
-
 When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
 Change the database section in your config.php file:
@@ -197,7 +185,6 @@ return new \Phalcon\Config([
 ```
 
 ### Generating Models
-
 There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
 
 ```bash
@@ -222,13 +209,10 @@ Options:
 ```
 
 The simplest way to generate a model for a table called users is:
-
 ```bash
 $ phalcon model users
 ```
-
 If your database looks like this:
-
 ```sql
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -246,7 +230,6 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 ```
-
 It will result in
 
 ```php
@@ -260,35 +243,30 @@ class Users extends \Phalcon\Mvc\Model
 
     /**
      *
-
      * @var integer
      */
     public $id;
 
     /**
      *
-
      * @var string
      */
     public $name;
 
     /**
      *
-
      * @var string
      */
     public $email;
 
     /**
      *
-
      * @var string
      */
     public $password;
 
     /**
      *
-
      * @var string
      */
     public $active;
@@ -348,15 +326,12 @@ class Users extends \Phalcon\Mvc\Model
 
 }
 ```
-
 Options for generating different type of model blueprints can be found using
-
 ```bash
 phalcon model --help
 ```
 
 ### Scaffold a CRUD
-
 Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
 
 Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `users`:
@@ -389,17 +364,16 @@ After performing a search, a pager component is available to show paged results.
 ![](/assets/images/content/devtools-usage-05.png)
 
 ### Web Interface to Tools
-
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen mark="crwd-mark"></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 ### Integrating Tools with PhpStorm IDE
-
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE][phpstorm]. The configuration steps could be easily adapted to other IDEs for PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
+[phpstorm]: https://www.jetbrains.com/phpstorm/
