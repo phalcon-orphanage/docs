@@ -127,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Приклад застосування",
+                "text": "Use case",
                 "url": "/use-case"
             },
             {
@@ -361,7 +361,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Безпека",
                 "url": "/security"
             },
             {
@@ -425,7 +425,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Інтернаціоналізація",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {
@@ -443,7 +443,7 @@
                 "url": "/collection"
             },
             {
-                "text": "Домен",
+                "text": "Domain",
                 "url": "/domain"
             },
             {
@@ -455,7 +455,7 @@
                 "url": "/helper"
             },
             {
-                "text": "Реєстр",
+                "text": "Registry",
                 "url": "/registry"
             }
         ]
