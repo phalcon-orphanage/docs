@@ -14,7 +14,7 @@ keywords: 'html, attributes, tag, factoría tag'
 Este espacio de nombres contiene componentes que ayudan a generar HTML.
 
 ## Atributos
-[Phalcon\Html\Attributes](api/phalcon_html#html-attributes) es un contenedor de [Phalcon\Collection](collection). Además contiene dos métodos más `render()` y `__toString()`. `render()` usa [Phalcon\Tag](tag) internamente para renderizar los atributos que tiene un elemento HTML. Estos atributos HTML son definidos en el propio objeto.
+The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](collection). Además contiene dos métodos más `render()` y `__toString()`. `render()` usa [Phalcon\Tag](tag) internamente para renderizar los atributos que tiene un elemento HTML. Estos atributos HTML son definidos en el propio objeto.
 
 El componente se puede usar por si mismo si quieres recopilar atributos HTML en un objeto y luego renderizarlos (devolviéndolos como una cadena) en un formato `clave=valor`.
 
@@ -30,7 +30,7 @@ Inicio / Admin / Facturas / Viendo Factura [1234]
 ```
 Cada una de las palabras anteriores (excepto la última) son enlaces a sus respectivas páginas. De esta forma, el usuario puede navegar rápidamente hacia las diferentes áreas sin tener que volver atrás o usar otro menú.
 
-[Phalcon\Html\Breadcrumbs](api/phalcon_html#html-breadcrumbs) ofrece funcionalidad para añadir texto y URLs. El HTML resultante cuando se llama a `render()` tendrá cada miga de pan encerrada en etiquetas `<dt>`, mientras que la cadena global lo estará en etiquetas `<dl>`.
+[Phalcon\Html\Breadcrumbs][html-breadcrumbs] offers functionality to add text and URLs. El HTML resultante cuando se llama a `render()` tendrá cada miga de pan encerrada en etiquetas `<dt>`, mientras que la cadena global lo estará en etiquetas `<dl>`.
 
 ### Métodos
 ```php
@@ -39,7 +39,7 @@ public function add(
     string $link = ""
 ): Breadcrumbs
 ```
-Añade una nueva miga de pan.
+Añade una nueva miga.
 
 En el ejemplo posterior, añade una miga con un enlace y luego añade una miga sin enlace (normalmente el último)
 
@@ -67,7 +67,7 @@ Devuelve el separador usado para las migas de pan
 ```
 public function remove(string $link): void
 ```
-Elimina migas mediante url.
+Elimina una miga por url.
 
 En el ejemplo posterior elimina una miga mediante URL y también elimina una miga sin url (último enlace)
 
@@ -109,7 +109,7 @@ public function toArray(): array
 Devuelve el vector de migas de pan interno
 
 ## TagFactory
-[Phalcon\Html\TagFactory](api/phalcon_html#html-tagfactory) es un componente que genera etiquetas HTML. Este componente crea una nueva clase localizador con etiquetas HTML predefinidas adjuntas a él. Cada clase etiqueta es cargada de forma perezosa para maximizar el rendimiento. Para instanciar la factoría y obtener un ayudante etiqueta, necesita llamar a `newInstance()`.
+[Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. Este componente crea una nueva clase localizador con etiquetas HTML predefinidas adjuntas a él. Cada clase etiqueta es cargada de forma perezosa para maximizar el rendimiento. Para instanciar la factoría y obtener un ayudante etiqueta, necesita llamar a `newInstance()`.
 
 ```php
 <?php
@@ -123,29 +123,29 @@ $anchor  = $factory->newInstance('a');
 ```
 Los nombres registrados para los respectivos ayudantes son:
 
-| Nombre       | Descripción                                                                                                |
-| ------------ | ---------------------------------------------------------------------------------------------------------- |
-| `a`          | [Phalcon\Html\Helper\Anchor](api/phalcon_html#html-helper-anchor) - etiqueta `<a>`                |
-| `aRaw`       | [Phalcon\Html\Helper\AnchorRaw](api/phalcon_html#html-helper-anchorraw) - etiqueta en bruto `<a>` |
-| `body`       | [Phalcon\Html\Helper\Body](api/phalcon_html#html-helper-body) - etiqueta `<body>`                 |
-| `button`     | [Phalcon\Html\Helper\Button](api/phalcon_html#html-helper-button) - etiqueta `<button>`           |
-| `close`      | [Phalcon\Html\Helper\Close](api/phalcon_html#html-helper-close) - etiqueta de cierre                    |
-| `element`    | [Phalcon\Html\Helper\Element](api/phalcon_html#html-helper-element) - cualquier elemento                |
-| `elementRaw` | [Phalcon\Html\Helper\ElementRaw](api/phalcon_html#html-helper-elementraw) - cualquier etiqueta en bruto |
-| `form`       | [Phalcon\Html\Helper\Form](api/phalcon_html#html-helper-form) - etiqueta `<form>`                 |
-| `img`        | [Phalcon\Html\Helper\Img](api/phalcon_html#html-helper-img) - etiqueta `<img>`                    |
-| `label`      | [Phalcon\Html\Helper\Label](api/phalcon_html#html-helper-label) - etiqueta `<label>`              |
-| `textarea`   | [Phalcon\Html\Helper\TextArea](api/phalcon_html#html-helper-textarea) - etiqueta `<textarea>`     |
+| Nombre       | Descripción                                                                      |
+| ------------ | -------------------------------------------------------------------------------- |
+| `a`          | [Phalcon\Html\Helper\Anchor][html-helper-anchor] - `<a>` tag            |
+| `aRaw`       | [Phalcon\Html\Helper\AnchorRaw][html-helper-anchorraw] - `<a>` tag raw  |
+| `body`       | [Phalcon\Html\Helper\Body][html-helper-body] - `<body>` tag             |
+| `button`     | [Phalcon\Html\Helper\Button][html-helper-button] - `<button>` tag       |
+| `close`      | [Phalcon\Html\Helper\Close][html-helper-close] - close tag                    |
+| `element`    | [Phalcon\Html\Helper\Element][html-helper-element] - any tag                  |
+| `elementRaw` | [Phalcon\Html\Helper\ElementRaw][html-helper-elementraw] - any tag raw        |
+| `form`       | [Phalcon\Html\Helper\Form][html-helper-form] - `<form>` tag             |
+| `img`        | [Phalcon\Html\Helper\Img][html-helper-img] - `<img>` tag                |
+| `label`      | [Phalcon\Html\Helper\Label][html-helper-label] - `<label>` tag          |
+| `textarea`   | [Phalcon\Html\Helper\TextArea][html-helper-textarea] - `<textarea>` tag |
 
 ### Ayudantes
-Todas los ayudantes usados por [Phalcon\Html\TagFactory](api/phalcon_html#html-tagfactory) se localizan bajo el espacio de nombres `Phalcon\Html\Helper`. Puede crear cada una de estas clases individualmente si lo desea, o puede usar la factoría de etiquetas tal y como se muestra arriba. Además de los ayudantes `*Raw`, si el ayudante requiere texto, automáticamente será escapado usando [Phalcon\Escaper](escaper).
+All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. Puede crear cada una de estas clases individualmente si lo desea, o puede usar la factoría de etiquetas tal y como se muestra arriba. Además de los ayudantes `*Raw`, si el ayudante requiere texto, automáticamente será escapado usando [Phalcon\Escaper](escaper).
 
 > **NOTA**: El código y la salida inferior han sido formateados por legibilidad 
 > 
 > {: .alert .alert-info }
 
 ### `a`
-[Phalcon\Html\Helper\Anchor](api/phalcon_html#html-helper-anchor) crea una etiqueta HTML ancla. El componente acepta `href` como cadena, `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\Anchor][html-helper-anchor] creates anchor HTML tags. El componente acepta `href` como una cadena, `text` como una cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -171,7 +171,7 @@ echo $anchor('/myurl', 'click<>me', $options);
 ```
 
 ### `aRaw`
-[Phalcon\Html\Helper\AchorRaw](api/phalcon_html#html-helper-anchorraw) crea etiquetas ancla HTML en bruto, es decir, el texto no será escapado. El componente acepta `href` como una cadena, `text` como una cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\AchorRaw][html-helper-anchorraw] creates raw anchor HTML tags, i.e. the text will not be escaped. El componente acepta `href` como una cadena, `text` como una cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -197,7 +197,7 @@ echo $anchor('/myurl', 'click<>me', $options);
 ```
 
 ### `body`
-[Phalcon\Html\Helper\Body](api/phalcon_html#html-helper-body) crea una etiqueta `<body>`. El componente acepta opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\Body][html-helper-body] creates a `<body>` tag. El componente acepta opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -220,7 +220,7 @@ echo $anchor($options);
 > {: .alert .alert-info }
 
 ### `button`
-[Phalcon\Html\Helper\Button](api/phalcon_html#html-helper-button) crea etiquetas HTML `<button>`. El component acepta `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\Button][html-helper-button] creates `<button>` HTML tags. El component acepta `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -246,7 +246,7 @@ echo $anchor('click<>me', $options);
 ```
 
 ### `close`
-[Phalcon\Html\Helper\Close](api/phalcon_html#html-helper-close) crea las etiquetas de cierre. El componente acepta el `name` de la etiqueta a cerrar.
+[Phalcon\Html\Helper\Close][html-helper-close] creates the closing HTML tags. El componente acepta el `name` de la etiqueta a cerrar.
 
 ```php
 <?php
@@ -262,7 +262,7 @@ echo $anchor('form');
 ```
 
 ### `element`
-[Phalcon\Html\Helper\Element](api/phalcon_html#html-helper-element) crea etiquetas HTML basadas en el parámetro `name` indicado. El componente acepta `name` como cadena, `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\Element][html-helper-element] creates HTML tags based on the passed `name` parameter. El componente acepta `name` como cadena, `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -288,7 +288,7 @@ echo $anchor('address', 'click<>me', $options);
 ```
 
 ### `elementRaw`
-[Phalcon\Html\Helper\ElementRaw](api/phalcon_html#html-helper-elementraw) crea etiquetas HTML en bruto, es decir, el texto no será escapado. La etiqueta creada se basa en el parámetro `name` indicado. El componente acepta `name` como cadena, `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\ElementRaw][html-helper-elementraw] creates raw HTML tags, i.e. the text will not be escaped. La etiqueta creada se basa en el parámetro `name` indicado. El componente acepta `name` como cadena, `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -314,7 +314,7 @@ echo $anchor('address', 'click<>me', $options);
 ```
 
 ### `form`
-[Phalcon\Html\Helper\Form](api/phalcon_html#html-helper-form) crea etiquetas HTML `<form>`. El componente acepta un vector con todos los atributos que necesita el ancla. Por defecto el formulario tiene `method` `post` y `enctype` `multipart/form-data`.
+[Phalcon\Html\Helper\Form][html-helper-form] creates `<form>` HTML tags. El componente acepta un vector con todos los atributos que necesita el ancla. Por defecto el formulario tiene `method` `post` y `enctype` `multipart/form-data`.
 
 ```php
 <?php
@@ -346,7 +346,7 @@ echo $anchor($options);
 > {: .alert .alert-info }
 
 ### `img`
-[Phalcon\Html\Helper\Img](api/phalcon_html#html-helper-img) crea etiquetas HTML `<img>`. El componente acepta `src` como una cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\Img][html-helper-img] creates `<img>` HTML tags. El componente acepta `src` como una cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -371,7 +371,7 @@ echo $anchor('/my-url', $options);
 ```
 
 ### `label`
-[Phalcon\Html\Helper\Label](api/phalcon_html#html-helper-label) crea etiquetas HTML `<label>`. El componente acepta opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\Label][html-helper-label] creates `<label>` HTML tags. El componente acepta opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -399,7 +399,7 @@ echo $anchor($options);
 > {: .alert .alert-info }
 
 ### `textarea`
-[Phalcon\Html\Helper\TextArea](api/phalcon_html#html-helper-textarea) crea etiquetas HTML `<textarea>`. El component acepta `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
+[Phalcon\Html\Helper\TextArea][html-helper-textarea] creates `<textarea>` HTML tags. El component acepta `text` como cadena y opcionalmente un vector con todos los atributos que necesita el ancla.
 
 ```php
 <?php
@@ -427,3 +427,19 @@ echo $anchor('click<>me', $options);
 > **NOTA**: Habrá más ayudantes disponibles en futuras versiones de Phalcon. El objetivo es reemplazar totalmente el objeto [Phalcon\Tag](tag) con pequeñas clases de ayuda HTML. 
 > 
 > {: .alert .alert-info }
+
+[html-attributes]: api/phalcon_html#html-attributes
+[html-breadcrumbs]: api/phalcon_html#html-breadcrumbs
+[html-helper-anchor]: api/phalcon_html#html-helper-anchor
+[html-helper-anchorraw]: api/phalcon_html#html-helper-anchorraw
+[html-helper-anchorraw]: api/phalcon_html#html-helper-anchorraw
+[html-helper-body]: api/phalcon_html#html-helper-body
+[html-helper-button]: api/phalcon_html#html-helper-button
+[html-helper-close]: api/phalcon_html#html-helper-close
+[html-helper-element]: api/phalcon_html#html-helper-element
+[html-helper-elementraw]: api/phalcon_html#html-helper-elementraw
+[html-helper-form]: api/phalcon_html#html-helper-form
+[html-helper-img]: api/phalcon_html#html-helper-img
+[html-helper-label]: api/phalcon_html#html-helper-label
+[html-helper-textarea]: api/phalcon_html#html-helper-textarea
+[html-tagfactory]: api/phalcon_html#html-tagfactory
