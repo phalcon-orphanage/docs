@@ -753,7 +753,7 @@ Los parámetros que puede usar para la fábrica son:
 * `stream` for [Phalcon\Cache\Adapter\Stream][cache-adapter-stream]
 
 [psr-16]: https://www.php-fig.org/psr/psr-16/
-[serializable]: https://secure.php.net/manual/en/class.serializable.php
+[serializable]: https://www.php.net/manual/en/class.serializable.php
 [igbinary]: https://github.com/igbinary/igbinary7
 [msgpack]: https://msgpack.org/
 [apcu]: https://www.php.net/manual/en/book.apcu.php
