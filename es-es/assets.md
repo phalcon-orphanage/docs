@@ -8,16 +8,13 @@ keywords: 'recursos, js, css'
 ---
 
 # Gestión de Recursos (Assets)
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 `Phalcon\Assets` es un componente que le permite gestionar recursos estáticos como hojas de estilo CSS o librerías JavaScript en una aplicación web.
 
-[Phalcon\Assets\Manager](api/phalcon_assets#assets-manager) es el componente que puede usar para registrar sus recursos y usarlos a lo largo de su aplicación. Si está usando el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), el Gestor de Recursos ya está registrado para usted. Puede acceder a él usando la clave `assets` desde su contenedor Di.
+[Phalcon\Assets\Manager][assets-manager] is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the Assets Manager is already registered for you. Puede acceder a él usando la clave `assets` desde su contenedor Di.
 
 ```php
 <?php
@@ -29,8 +26,14 @@ $manager   = $container->get('assets')
 ```
 
 ## Recursos Activos
-
-Los recursos se pueden añadir al gestor o una colección usando las clases relativas a `Asset`. La clase [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset). El objeto acepta los datos necesarios para crear el recurso. * `type`: puede ser `css`, `js` o alguna cosa más, dependiendo de si quiere extender la funcionalidad del componente. * `path` : la ruta del recurso * `local`: si es un recurso local o no * `filter`: cualquier filtro adjunto a este recurso * `attributes`: atributos relativos al recurso * `version`: versión del recurso * `autoVersion`: permite al componente autoversionar este recurso o no
+Los recursos se pueden añadir al gestor o una colección usando las clases relativas a `Asset`. The [Phalcon\Assets\Asset][asset] class. El objeto acepta los datos necesarios para crear el recurso.
+* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+* `path` : the path of the asset
+* `local`: whether this is a local asset or not
+* `filter`: any filter attached to this asset
+* `attributes`: attributes relative to the asset
+* `version`: version of the asset
+* `autoVersion`: let the component auto version this asset or not
 
 ```php
 <?php
@@ -49,8 +52,7 @@ $asset = new Asset(
 ```
 
 #### CSS
-
-También puede usar la clase [Phalcon\Assets\Asset\Css](api/phalcon_assets#assets-asset-css) para crear un recurso CSS. Esta clase es una clase ayudante que extiende la clase [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset) e internamente establece el primer parámetro a `css`.
+You can also use the [Phalcon\Assets\Asset\Css][asset-css] class to create a CSS asset. This class is a helper class that extends the [Phalcon\Assets\Asset][asset] class and internally sets the first parameter to `css`.
 
 ```php
 <?php
@@ -68,8 +70,7 @@ $asset = new Css(
 ```
 
 #### JS
-
-También puede usar la clase [Phalcon\Assets\Asset\Js](api/phalcon_assets#assets-asset-js) para crear un recurso JS. Esta clase es una clase ayudante que extiende la clase [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset) e internamente establece el primer parámetro a `js`.
+You can also use the [Phalcon\Assets\Asset\Js][asset-js] class to create a JS asset. This class is a helper class that extends the [Phalcon\Assets\Asset][asset] class and internally sets the first parameter to `js`.
 
 ```php
 <?php
@@ -87,8 +88,11 @@ $asset = new Js(
 ```
 
 ### En Línea
-
-Hay veces que la aplicación necesita generar CSS o JS para ser inyectado en la vista. Puede usar la clase [Phalcon\Assets\Inline](api/phalcon_assets#assets-inline) para generar este contenido. El objeto se puede crear con los siguientes parámetros: * `type`: puede ser `css`, `js` o alguna cosa más, dependiendo de si quiere extender la funcionalidad del componente. * `content`: el contenido a inyectar * `filter`: cualquier filtro adjunto a este recurso * `attributes`: atributos relativos al recurso
+Hay veces que la aplicación necesita generar CSS o JS para ser inyectado en la vista. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
+* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+* `content`: the content to be injected
+* `filter`: any filter attached to this asset
+* `attributes`: attributes relative to the asset
 
 ```php
 <?php
@@ -100,10 +104,8 @@ $asset = new Inline(
     '.spinner {color: blue; }'
 );
 ```
-
 #### CSS
-
-También puede usar la clase [Phalcon\Assets\Inline\Css](api/phalcon_assets#assets-inline-css) para crear un recurso de CSS en línea. Esta clase es una clase ayudante que extiende la clase [Phalcon\Assets\Inline](api/phalcon_assets#assets-inline) e internamente establece el primer parámetro a `css`.
+You can also use the [Phalcon\Assets\Inline\Css][asset-inline-css] class to create an inline CSS asset. This class is a helper class that extends the [Phalcon\Assets\Inline][asset-inline] class and internally sets the first parameter to `css`.
 
 ```php
 <?php
@@ -116,8 +118,7 @@ $asset = new Css(
 ```
 
 #### JS
-
-También puede usar la clase [Phalcon\Assets\Inline\Js](api/phalcon_assets#assets-inline-js) para crear un recurso JS en línea. Esta clase es una clase ayudante que extiende la clase [Phalcon\Assets\Inline](api/phalcon_assets#assets-inline) e internamente establece el primer parámetro a `js`.
+You can also use the [Phalcon\Assets\Inline\Js][asset-inline-js] class to create an inline JS asset. This class is a helper class that extends the [Phalcon\Assets\Inline][asset-inline] class and internally sets the first parameter to `js`.
 
 ```php
 <?php
@@ -130,12 +131,10 @@ $asset = new Js(
 ```
 
 ### Personalizado
-
-Implementar [Phalcon\Assets\AssetInterface](api/phalcon_assets#assets-assetinterface) le permite crear diferentes clases de recursos que se pueden gestionar por el Gestor de Recursos.
+Implementing the [Phalcon\Assets\AssetInterface][asset-interface] enables you to create different asset classes that can be handled by the Asset Manager.
 
 ## Excepción
-
-Cualquier excepción lanzada desde el componente Gestor de Recursos será del tipo [Phalcon\Assets\Exception](api/phalcon_assets#assets-exception). Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Any exceptions thrown in the Assets Manager component will be of type [Phalcon\Assets\Exception][asset-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
@@ -160,9 +159,7 @@ class IndexController extends Controller
 ```
 
 ## Añadir Recursos
-
 ### Archivos
-
 Los recursos soportan dos recursos incorporados: recursos CSS y JavaScript. También puede crear otros tipos de recurso si lo necesita. El gestor de recursos almacena internamente dos colecciones de recursos por defecto - una para JavaScript y otra para CSS.
 
 Fácilmente puede añadir recursos a estas colecciones:
@@ -190,7 +187,6 @@ class IndexController extends Controller
 Para un mejor rendimiento en la carga de la página, se recomienda colocar enlaces JavaScript al final del HTML en vez de en el elemento `<head>`. Sin embargo, esto podría no ser siempre factible en base a los ficheros Javascript que necesite cargar y sus dependencias.
 
 También puede añadir recursos al gestor usando objetos `Asset`:
-
 ```php
 <?php
 
@@ -218,7 +214,6 @@ class IndexController extends Controller
 ```
 
 ### En Línea
-
 También puede añadir recursos en línea al gestor. Los recursos en línea representan cadenas de CSS o JS que necesitan ser inyectadas en sus vistas dinámicamente (no desde un fichero de recursos). `addInlineCode()`, `addInlineCodeByType()`, `addInlineCss()` y `addInlineJs()` están disponibles para su uso.
 
 ```php
@@ -250,10 +245,9 @@ $manager
 ```
 
 ## Recursos Locales/Remotos
+Los recursos locales son aquellos que se proveen por la propia aplicación y están ubicados en una localización pública (normalmente `public`). The URLs for local assets are generated using the [url][url] service.
 
-Los recursos locales son aquellos que se proveen por la propia aplicación y están ubicados en una localización pública (normalmente `public`). Las URLs para los recursos locales se generan usando el servicio <url>.
-
-Los recursos remotos son tales como librerías comunes como [jQuery](https://jquery.com), [Bootstrap](https://getbootstrap.com), etc. que son proporcionados por un [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
+Remote assets are those such as common libraries like [jQuery][jquery], [Bootstrap][bootstrap], etc. that are provided by a [CDN][cdn].
 
 El segundo parámetro de `addCss()` y `addJs()` significa si el recurso es local o no (`true` es local, `false` es remoto). Por defecto, el gestor de recursos asumirá que el recurso es local:
 
@@ -273,8 +267,7 @@ public function indexAction()
 ```
 
 ## Colecciones
-
-[Phalcon\Assets\Collections](api/phalcon_assets#assets-collection) son objetos que agrupan recursos de un mismo tipo. El gestor de recursos implícitamente crea dos colecciones: `css` y `js`. Puede crear colecciones adicionales para agrupar recursos específicos y facilitar la colocación de esos recursos en las vistas:
+[Phalcon\Assets\Collections][collections] are objects that group assets of the same type. El gestor de recursos implícitamente crea dos colecciones: `css` y `js`. Puede crear colecciones adicionales para agrupar recursos específicos y facilitar la colocación de esos recursos en las vistas:
 
 ```php
 <?php
@@ -293,10 +286,9 @@ $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
 ### Obtener
+The _getter_ methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. El gestor ofrece `get()`, `getCollection()`, `getCss()` y `getJs()`. Estos métodos devolverán la colección que almacena el gestor. `getCss()` y `getJs()` devolverán las colecciones incorporadas preregistradas.
 
-Los métodos *getter* expuestos por el componente, le permiten obtener la colección desde cualquier sitio de su código y manipularla de acuerdo a sus necesidades. El gestor ofrece `get()`, `getCollection()`, `getCss()` y `getJs()`. Estos métodos devolverán la colección que almacena el gestor. `getCss()` y `getJs()` devolverán las colecciones incorporadas preregistradas.
-
-El método `collection()` actúa como un *creator* y *getter* al mismo tiempo. Le permite crear una colección y obtenerla para que le puedas añadir recursos. `getCss()` y `getJs()` realizan la misma función, es decir, crean la colección si no existe y la devuelven. Estas dos colecciones establecen las colecciones predefinidas `css` y `js` en el gestor.
+The `collection()` method acts as a _creator_ and _getter_ at the same time. Le permite crear una colección y obtenerla para que le puedas añadir recursos. `getCss()` y `getJs()` realizan la misma función, es decir, crean la colección si no existe y la devuelven. Estas dos colecciones establecen las colecciones predefinidas `css` y `js` en el gestor.
 
 ```php
 <?php
@@ -307,9 +299,7 @@ $headerCollection = $this->assets->get('headerJs');
 ```
 
 ### Existe
-
 El método `exists` le permite comprobar si una colección particular existe en el gestor;
-
 ```php
 <?php
 
@@ -319,7 +309,6 @@ echo $this->assets->has('headerJs'); // true
 ```
 
 ### Establecer
-
 Si las colecciones incorporadas `css` y `js` no son suficientes para sus necesidades, puede adjuntar una nueva colección al gestor usando `set()`.
 
 ```php
@@ -333,8 +322,7 @@ $this->assets->set('outputJs', $collection);
 ```
 
 ## Prefijos de URL
-
-Las colecciones pueden ser prefijadas por URL, permitiéndole cambiar el prefijo fácilmente basado en las necesidades de su aplicación. Un ejemplo de esto puede ser cambiar de entornos locales a producción y usar diferentes URL [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) URL para sus recursos:
+Las colecciones pueden ser prefijadas por URL, permitiéndole cambiar el prefijo fácilmente basado en las necesidades de su aplicación. An example of this can be changing from local to production environments and using a different [CDN][cdn] URL for your assets:
 
 ```php
 <?php
@@ -366,12 +354,10 @@ $headerCollection = $this
 ```
 
 ### Filtros Incorporados
-
-Los recursos se pueden filtrar, es decir, manipular antes de su salida a la vista. Aunque Phalcon v3 ofrecía minificadores para JavaScript y CSS, limitaciones en la licencia no nos permiten continuar usando estas librerías. Para v4 sólo ofrecemos el filtro [Phalcon\Assets\Filters\None](api/phalcon_assets#assets-filters-none) (que no cambia el contenido del recurso) y la interfaz [Phalcon\Assets\FilterInterface](api/phalcon_assets#assets-filterinterface), que ofrece la posibilidad de crear filtros personalizados.
+Los recursos se pueden filtrar, es decir, manipular antes de su salida a la vista. Aunque Phalcon v3 ofrecía minificadores para JavaScript y CSS, limitaciones en la licencia no nos permiten continuar usando estas librerías. For v4 we are offering only the [Phalcon\Assets\Filters\None][filter-none] filter (which does not change the asset contents) and the [Phalcon\Assets\FilterInterface][filter-interface] interface, offering the ability to create custom filters.
 
 ### Filtros Personalizados
-
-Crear filtros personalizados es muy fácil. Puede usar esta extensibilidad para aprovechar las herramientas existentes y más avanzadas de filtro/minificación como [YUI](https://yui.github.io/yuicompressor), [Sass](https://sass-lang.com), [Closure](https://developers.google.com/closure/compiler), etc.:
+Crear filtros personalizados es muy fácil. You can use this extensibility to take advantage of existing and more advanced filtering/minification tools like [YUI][yui], [Sass][sass], [Closure][closure], etc.:
 
 ```php
 <?php
@@ -474,8 +460,7 @@ class LicenseStamper implements FilterInterface
 ```
 
 ## Salida
-
-Después de que todos los recursos se hayan añadido a sus respectivas colecciones, puede usar los métodos de salida para *imprimir* HTML en sus vistas. Estos métodos son `output()`, `outputCss()`, `outputJs()`, `outputInline()`, `outputInlineCss()` y `outputInlineJs()`.
+After all the assets have been added to their relevant collections you can use the output methods to _print_ HTML in your views. Estos métodos son `output()`, `outputCss()`, `outputJs()`, `outputInline()`, `outputInlineCss()` y `outputInlineJs()`.
 
 Para mostrar ficheros:
 
@@ -533,6 +518,7 @@ Sintaxis Volt:
 
 Para mostrar en línea:
 
+
 ```php
 <?php
 
@@ -582,7 +568,6 @@ Sintaxis Volt:
     </body>
 <html>
 ```
-
 Las líneas anteriores se traducirán a:
 
 ```html
@@ -602,7 +587,6 @@ Las líneas anteriores se traducirán a:
 ```
 
 ## Salida Personalizada
-
 Los métodos `outputJs()` y `outputCss()` están disponibles para generar el código HTML necesario de acuerdo a cada tipo de recurso. Puede sobreescribir este método o imprimir manualmente los recursos de la siguiente manera:
 
 ```php
@@ -620,8 +604,7 @@ foreach ($jsCollection as $asset) {
 ```
 
 ## Salida Implícita Vs Explícita
-
-Hay veces que podría necesitar mostrar implícitamente la salida del gestor. Para hacer esto, puede usar el método`useImplicitOutput()`. Llamando a `output()` después *mostrará* el HTML por pantalla.
+Hay veces que podría necesitar mostrar implícitamente la salida del gestor. Para hacer esto, puede usar el método`useImplicitOutput()`. Calling `output()` after that will _echo_ the HTML on the screen.
 
 ```php
 <?php
@@ -635,11 +618,9 @@ $this
 ```
 
 ## Versionado
-
-Los componentes `Assets` también soportan versionado (automático o manual). El versionado de recursos también se conoce como [cache busting](https://www.keycdn.com/support/what-is-cache-busting). En resumen, los ficheros CSS y JS se pueden cachear fácilmente a nivel de navegador. Como tal, cualquier actualización que se suba al sistema de producción con una versión, podría incluir ficheros CSS y JS actualizados. Ya que los navegadores cachean esos recursos, el contenido actualizado no se entregará al navegador del usuario inmediatamente, resultando en una potencial pérdida de funcionalidad. Versionando los recursos, nos aseguramos de que los navegadores son instruidos para descargar de nuevo los ficheros de recursos y por tanto recibir el último código CSS y JS desde el servidor.
+Los componentes `Assets` también soportan versionado (automático o manual). Versioning of assets is also known as [cache busting][cache-busting]. En resumen, los ficheros CSS y JS se pueden cachear fácilmente a nivel de navegador. Como tal, cualquier actualización que se suba al sistema de producción con una versión, podría incluir ficheros CSS y JS actualizados. Ya que los navegadores cachean esos recursos, el contenido actualizado no se entregará al navegador del usuario inmediatamente, resultando en una potencial pérdida de funcionalidad. Versionando los recursos, nos aseguramos de que los navegadores son instruidos para descargar de nuevo los ficheros de recursos y por tanto recibir el último código CSS y JS desde el servidor.
 
 Para añadir un número de versión a sus recursos, necesita añadir la cadena de versión mientras crea el objeto de recurso:
-
 ```php
 <?php
 
@@ -663,9 +644,7 @@ Lo anterior resulta en el siguiente script como salida:
 Entonces puede almacenar la versión en su fichero de configuración y en cualquier otro almacenamiento y actualizarla cuando se publique una nueva versión en producción.
 
 ### Autoversionado
-
 También puede usar la fecha del fichero del recurso para controlar el versionado de sus recursos.
-
 ```php
 <?php
 
@@ -680,18 +659,16 @@ $asset = new Css(
     true
 );
 ```
-
 Lo anterior resultará en el siguiente script como salida (asumiendo que su fichero fuera modificado el 20 de Mayo de 2019): Asumiendo que su fichero fue modificado por última vez el 20 de Mayo, la versión
-
 ```html
 <link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
 
-> **NOTA** No se recomienda usar la característica de autoversionado en entornos de producción, ya que Phalcon necesita leer la fecha de modificación del fichero de recurso para cada petición. Esto resultará en operaciones de lectura innecesarias en el sistema de ficheros. 
-{: .alert .alert-warning }
+> **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. Esto resultará en operaciones de lectura innecesarias en el sistema de ficheros. 
+> 
+> {: .alert .alert-warning }
 
 ## Mejorar el Rendimiento
-
 Hay muchas formas de optimizar el procesamiento de los recursos. Un método es permitir al servidor web gestionar los recursos, mejorando así el tiempo de respuesta. Primero necesitamos configurar el Gestor de Recursos. Usaremos un controlador base, pero puede usar el gestor donde lo necesite, accediendo a él desde el contenedor Di:
 
 ```php
@@ -827,13 +804,35 @@ location @phalcon {
 }
 
 ```
-
 # Otras Directivas de Configuración
 
-Necesitamos crear los directorios `assets/js` y `assets/css` en la raíz de documentos de la aplicación (ej. `public`).
+We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
 Cada vez que la aplicación solicite recursos como `/assets/js/global.js` la aplicación comprobará si el recurso existe. En caso afirmativo, será gestionado por el servidor web. Alternativamente será redirigido a `AssetsController` para la gestión desde la aplicación.
 
 No recomendamos el uso del ejemplo anterior en entornos de producción y aplicaciones de alta carga. Sin embargo, el ejemplo muestra lo que es posible hacer usando este componente. La implementación que elija depende de las necesidades de su aplicación.
 
-En la mayoría de casos, su servidor web, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) o servicios como [Varnish HTTP Cache](https://varnish-cache.org/) serían más preferibles.
+In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cache][varnish] would be more preferable.
+
+[jquery]: https://jquery.com
+[bootstrap]: https://getbootstrap.com
+[cdn]: https://en.wikipedia.org/wiki/Content_delivery_network
+[yui]: https://yui.github.io/yuicompressor
+[sass]: https://sass-lang.com
+[closure]: https://developers.google.com/closure/compiler
+[url]: url
+[collections]: api/phalcon_assets#assets-collection
+[filter-interface]: api/phalcon_assets#assets-filterinterface
+[filter-none]: api/phalcon_assets#assets-filters-none
+[varnish]: https://varnish-cache.org/
+[asset]: api/phalcon_assets#assets-asset
+[asset-css]: api/phalcon_assets#assets-asset-css
+[asset-js]: api/phalcon_assets#assets-asset-js
+[asset-interface]: api/phalcon_assets#assets-assetinterface
+[asset-inline]: api/phalcon_assets#assets-inline
+[asset-inline-css]: api/phalcon_assets#assets-inline-css
+[asset-inline-js]: api/phalcon_assets#assets-inline-js
+[asset-exception]: api/phalcon_assets#assets-exception
+[assets-manager]: api/phalcon_assets#assets-manager
+[cache-busting]: https://www.keycdn.com/support/what-is-cache-busting
+[di-factorydefault]: api/phalcon_di#di-factorydefault
