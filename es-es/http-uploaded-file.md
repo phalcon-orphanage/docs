@@ -11,11 +11,11 @@ keywords: 'psr-7, http, fichero subido http'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) es una implementación de la interfaz de mensajería [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-[Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) es un clase que almacena información sobre los ficheros subidos a tu aplicación. facilita el trabajo. Hay varias limitaciones cuando se usa únicamente la variable superglobal `$_FILES`, que resuelve [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile). El objeto [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) te permite obtener todos los ficheros subidos en una estructura normalizada, donde cada hoja es un objeto [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile).
+The [Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] is a value object class that stores information for the uploaded files to your application. facilita el trabajo. There are several limitations when using just the `$_FILES` superglobal, which the [Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] resolves. The [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] object allows you to retrieve all the uploaded files in a normalized structure, which each leaf is a [Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] object.
 
 ```php
 <?php
@@ -32,7 +32,7 @@ $file = new UploadedFile(
 echo $file->getClientFilename(); // 'phalcon.txt'
 ```
 
-Estamos creando un nuevo [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) usando el flujo de memoria, con tamaño `0`, indicando que no hay ningún error de subida (`UPLOAD_ERR_OK`) y el nombre del fichero es `phalcon.txt`. Esta información está disponible automáticamente cuando trabajamos con el objeto [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest).
+We are creating a new [Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] using the memory stream, with size `0`, specifying that there was no upload error (`UPLOAD_ERR_OK`) and the name of the file is `phalcon.txt`. This information is available to us when working with the [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] object automatically.
 
 ## Constructor
 
@@ -45,11 +45,11 @@ public function __construct(
     [, string clientMediaType = null ]]]] 
 )
 ```
-El constructor acepta parámetros que permiten crear el objeto con ciertas propiedades rellenadas. Se puede definir el flujo, el tamaño del fichero, si ha habido algún error en la subida, el nombre del fichero así como el tipo de medio.
+El constructor acepta parámetros que le permiten crear el objeto con ciertas propiedades rellenadas. Se puede definir el flujo, el tamaño del fichero, si ha habido algún error en la subida, el nombre del fichero así como el tipo de medio.
 
 - `stream` - Un flujo válido para el fichero (`StreamInterface`, `string`)
 - `size` - El tamaño del fichero
-- `error` - Un error de subida (ver las [constantes](https://php.net/manual/en/features.file-upload.errors.php) PHP `UPLOAD_ERR_*`)
+- `error` - An upload error (see the `UPLOAD_ERR_*`PHP [constants][upload-errors])
 - `clientFilename` - El nombre del fichero subido desde el cliente
 - `clientMediaType` - El tipo de medio del fichero subido desde el cliente
 
@@ -96,7 +96,7 @@ echo $file->getClientMediaType(); // 'application/text'
 
 ### `getError()`
 
- Devuelve el error asociado al fichero subido. El valor es de alguna [constante](https://php.net/manual/en/features.file-upload.errors.php) PHP `UPLOAD_ERR_*`. Si el fichero se ha subido correctamente, el método devolverá `UPLOAD_ERR_OK`. El valor devuelto es el valor almacenado en la clave `error` del vector `$_FILES`.
+ Devuelve el error asociado al fichero subido. The value is PHP's `UPLOAD_ERR_*` [constants][upload-errors]. Si el fichero se ha subido correctamente, el método devolverá `UPLOAD_ERR_OK`. El valor devuelto es el valor almacenado en la clave `error` del vector `$_FILES`.
 
 ```php
 <?php
@@ -135,9 +135,9 @@ echo $file->getSize(); // 1234
 
 ### `getStream()`
 
-Devuelve el flujo que representa al fichero subido. El método devuelve una instancia `StreamInterface`. El propósito de este método es permitir utilizar la funcionalidad nativa de flujo de PHP para manipular la carga de archivos, tales como [stream_copy_to_stream()](https://www.php.net/manual/en/function.stream-copy-to-stream.php) (aunque el resultado necesitará ser decorado en un contenedor nativo de flujo de PHP para trabajar con tales funciones).
+Devuelve el flujo que representa al fichero subido. El método devuelve una instancia `StreamInterface`. The purpose of this method is to allow utilizing native PHP stream functionality to manipulate the file upload, such as [stream_copy_to_stream()][stream-copy-to-stream] (though the result will need to be decorated in a native PHP stream wrapper to work with such functions).
 
-Si el método `moveTo()` ha sido llamado anteriormente, se lanzará una excepción [Phalcon\Http\Message\Exception\InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception).
+If the `moveTo()` method has been called previously, a [Phalcon\Http\Message\Exception\InvalidArgumentException][http-message-exception-invalidargumentexception] exception will be thrown.
 
 ```php
 <?php
@@ -159,9 +159,9 @@ echo $file->getStream(); // '/assets/stream/mit.txt'
 ```
 
 ## `moveTo()`
-Mueve el fichero subido a una nueva ubicación. Este método debe utilizarse como alternativa a [move_uploaded_file()](https://www.php.net/manual/en/function.move-uploaded-file.php). Este método funciona tanto en entornos SAPI como no-SAPI.
+Mueve el fichero subido a una nueva ubicación. This method should be used as an alternative to [move_uploaded_file()][move-uploaded-file]. Este método funciona tanto en entornos SAPI como no-SAPI.
 
-El parámetro `$targetPath` puede ser una ruta absoluta o relativa. Cuando se llama a este método, el fichero o flujo original se elimina. Como se ha mencionado anteriormente, si este método se llama más de una vez, cualquier llamada posterior generará una excepción [Phalcon\Http\Message\Exception\InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception).
+El parámetro `$targetPath` puede ser una ruta absoluta o relativa. Cuando se llama a este método, el fichero o flujo original se elimina. As noted above, if this method is called more than once, any subsequent calls will raise a [Phalcon\Http\Message\Exception\InvalidArgumentException][http-message-exception-invalidargumentexception] exception.
 
 El método realiza las comprobaciones necesarias internamente para que los permisos se mantengan correctamente. Si necesitas mover el fichero a un flujo, necesitas usar `getStream()`, ya que las operaciones SAPI no pueden garantizar la escritura en flujos de destino.
 
@@ -183,3 +183,12 @@ $file = new UploadedFile(
 
 $file->moveTo('/storage/files/');
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-serverrequest]: api/phalcon_http#http-message-serverrequest
+[http-message-uploadedfile]: api/phalcon_http#http-message-uploadedfile
+[upload-errors]: https://php.net/manual/en/features.file-upload.errors.php
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception
+[move-uploaded-file]: https://www.php.net/manual/en/function.move-uploaded-file.php
+[stream-copy-to-stream]: https://www.php.net/manual/en/function.stream-copy-to-stream.php
