@@ -11,11 +11,11 @@ keywords: 'psr-7, http, http response'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
-[Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Response][http-message-response] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-[Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) is a representation of an outgoing, server-side response. As per the HTTP specification, this interface includes properties for each of the following:
+[Phalcon\Http\Message\Response][http-message-response] is a representation of an outgoing, server-side response. As per the HTTP specification, this interface includes properties for each of the following:
  - Protocol version
  - Status code and reason phrase
  - Headers
@@ -68,7 +68,7 @@ $response = $response
 $result = $httpClient->send($response);
 ```
 
-We are creating a new [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) object with a payload represented as JSON, the necessary headers and the status code. The client then sends the response back using the request object.
+We are creating a new [Phalcon\Http\Message\Response][http-message-response] object with a payload represented as JSON, the necessary headers and the status code. The client then sends the response back using the request object.
 
 The above example can be implemented by only using the constructor parameters:
 
@@ -98,7 +98,7 @@ $request = new Response(
 $result = $httpClient->send($request);
 ```
 
-The [Response](api/phalcon_http#http-message-response) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+The [Response][http-message-response] object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
 ## Constructor
 
@@ -111,7 +111,7 @@ public function __construct(
 ```
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the body, status code as well as the headers. All parameters are optional.
 
-- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
+- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException][http-message-exception-invalidargumentexception] is thrown
 - `code`  - An integer representing the status code for the response. It defaults to `200`.
 - `headers`  - A key value array, with key as the header name and value as the header value.
 
@@ -272,7 +272,7 @@ echo $response->getProtocolVersion(); // '1.1'
 
 ### `getReasonPhrase()`
 
-Returns the response reason phrase associated with the status code. Because a reason phrase is not a required element in a response status line, the reason phrase value may be empty. The return string comes from the IANA HTTP Status Code Registry, as defined in the [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6).
+Returns the response reason phrase associated with the status code. Because a reason phrase is not a required element in a response status line, the reason phrase value may be empty. The return string comes from the IANA HTTP Status Code Registry, as defined in the [RFC 7231][rfc-7231].
 
 ```php
 <?php
@@ -381,7 +381,7 @@ The Request object is immutable. However there are a number of methods that allo
 
 ### `withAddedHeader()`
 
-Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
+Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid header names or values. The header values can be a string or an array of strings.
 
 ```php
 <?php
@@ -430,7 +430,7 @@ var_dump(
 
 ### `withBody()`
 
-Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
+Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] when the body is not valid.
 
 ```php
 <?php
@@ -458,7 +458,7 @@ echo $clone->getBody(); // '/assets/stream/mit.txt'
 
 ### `withHeader()`
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
+Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid header names or values.
 
 ```php
 <?php
@@ -519,7 +519,7 @@ echo $clone->getProtocolVersion(); // '2.0'
 
 ### `withStatus()`
 
-Return an instance with the specified status code and, optionally, reason phrase. If no reason is defined, the reason string will come from the IANA HTTP Status Code Registry, as defined in the [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6).
+Return an instance with the specified status code and, optionally, reason phrase. If no reason is defined, the reason string will come from the IANA HTTP Status Code Registry, as defined in the [RFC 7231][rfc-7231].
 
 ```php
 <?php
@@ -602,3 +602,10 @@ var_dump(
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-response]: api/phalcon_http#http-message-response
+[http-message-response]: api/phalcon_http#http-message-response
+[rfc-7231]: https://tools.ietf.org/html/rfc7231#section-6
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception
