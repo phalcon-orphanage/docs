@@ -211,7 +211,7 @@ class IndexController extends Controller
 
 ## Serializers
 
-The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable](https://secure.php.net/manual/en/class.serializable.php) interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
+The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable](https://www.php.net/manual/en/class.serializable.php) interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
 
 > **NOTE**: The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However the developer might want to use something more efficient such as [igbinary](https://github.com/igbinary/igbinary7) which is faster and achieves a better compression. 
 {: .alert .alert-info }
