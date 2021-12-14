@@ -11,14 +11,18 @@ title: 'Phalcon\Exception'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Exception.zep)
 
-| Namespace | Phalcon | | Extends | \Exception | | Implements | \Throwable |
+| Namespace  | Phalcon | | Extends    | \Exception | | Implements | \Throwable |
 
 Phalcon\Exception
 
 Todas las excepciones del framework deberían usar o extender esta excepción
+
 
 ## Métodos
 
 ```php
 public static function containerServiceNotFound( string $service ): string;
 ```
+
+
+
