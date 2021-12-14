@@ -21,12 +21,12 @@ title: 'Phalcon\Cache'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable | | Implements | CacheInterface |
+| Namespace  | Phalcon | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable | | Implements | CacheInterface |
 
 This component offers caching capabilities for your application. Phalcon\Cache implements PSR-16.
 
-## Properties
 
+## Properties
 ```php
 /**
  * The adapter
@@ -42,32 +42,32 @@ protected adapter;
 ```php
 public function __construct( AdapterInterface $adapter );
 ```
-
 Constructor.
+
 
 ```php
 public function clear(): bool;
 ```
-
 Wipes clean the entire cache's keys.
+
 
 ```php
 public function delete( mixed $key ): bool;
 ```
-
 Delete an item from the cache by its unique key.
+
 
 ```php
 public function deleteMultiple( mixed $keys ): bool;
 ```
-
 Deletes multiple cache items in a single operation.
+
 
 ```php
 public function get( mixed $key, mixed $defaultValue = null ): mixed;
 ```
-
 Fetches a value from the cache.
+
 
 ```php
 public function getAdapter(): AdapterInterface
@@ -76,97 +76,111 @@ public function getAdapter(): AdapterInterface
 ```php
 public function getMultiple( mixed $keys, mixed $defaultValue = null ): mixed;
 ```
-
 Obtains multiple cache items by their unique keys.
+
 
 ```php
 public function has( mixed $key ): bool;
 ```
-
 Determines whether an item is present in the cache.
+
 
 ```php
 public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
 ```
-
 Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
+
 
 ```php
 public function setMultiple( mixed $values, mixed $ttl = null ): bool;
 ```
-
 Persists a set of key => value pairs in the cache, with an optional TTL.
+
 
 ```php
 protected function checkKey( mixed $key ): void;
 ```
-
 Checks the key. If it contains invalid characters an exception is thrown
+
 
 ```php
 protected function checkKeys( mixed $keys ): void;
 ```
-
 Checks the key. If it contains invalid characters an exception is thrown
+
+
+
 
 <h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/AdapterInterface.zep)
 
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface | | Extends | StorageAdapterInterface |
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Storage\Adapter\AdapterInterface | | Extends    | StorageAdapterInterface |
 
 Interface for Phalcon\Cache adapters
+
+
 
 <h1 id="cache-adapter-apcu">Class Phalcon\Cache\Adapter\Apcu</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Apcu.zep)
 
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Apcu | | Extends | StorageApcu | | Implements | CacheAdapterInterface |
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Apcu | | Extends    | StorageApcu | | Implements | CacheAdapterInterface |
 
 Apcu adapter
+
+
 
 <h1 id="cache-adapter-libmemcached">Class Phalcon\Cache\Adapter\Libmemcached</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Libmemcached.zep)
 
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Libmemcached | | Extends | StorageLibmemcached | | Implements | CacheAdapterInterface |
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Libmemcached | | Extends    | StorageLibmemcached | | Implements | CacheAdapterInterface |
 
 Libmemcached adapter
+
+
 
 <h1 id="cache-adapter-memory">Class Phalcon\Cache\Adapter\Memory</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Memory.zep)
 
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Memory | | Extends | StorageMemory | | Implements | CacheAdapterInterface |
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Memory | | Extends    | StorageMemory | | Implements | CacheAdapterInterface |
 
 Memory adapter
+
+
 
 <h1 id="cache-adapter-redis">Class Phalcon\Cache\Adapter\Redis</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Redis.zep)
 
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Redis | | Extends | StorageRedis | | Implements | CacheAdapterInterface |
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Redis | | Extends    | StorageRedis | | Implements | CacheAdapterInterface |
 
 Redis adapter
+
+
 
 <h1 id="cache-adapter-stream">Class Phalcon\Cache\Adapter\Stream</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Adapter/Stream.zep)
 
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Stream | | Extends | StorageStream | | Implements | CacheAdapterInterface |
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Stream | | Extends    | StorageStream | | Implements | CacheAdapterInterface |
 
 Stream adapter
+
+
 
 <h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/AdapterFactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
+| Namespace  | Phalcon\Cache | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends    | AbstractFactory |
 
 Factory to create Cache adapters
 
-## Properties
 
+## Properties
 ```php
 /**
  * @var SerializerFactory
@@ -180,31 +194,33 @@ private serializerFactory;
 ```php
 public function __construct( SerializerFactory $factory = null, array $services = [] );
 ```
-
 AdapterFactory コンストラクタ
+
 
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
-
 このアダプターの新しいインスタンスを作成
+
 
 ```php
 protected function getAdapters(): array;
 ```
-
 Returns the available adapters
+
+
+
 
 <h1 id="cache-cachefactory">Class Phalcon\Cache\CacheFactory</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/CacheFactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr |
+| Namespace  | Phalcon\Cache | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr |
 
 Creates a new Cache class
 
-## Properties
 
+## Properties
 ```php
 /**
  * @var AdapterFactory
@@ -218,33 +234,38 @@ protected adapterFactory;
 ```php
 public function __construct( AdapterFactory $factory );
 ```
-
 Constructor
+
 
 ```php
 public function load( mixed $config ): mixed;
 ```
-
 Factory to create an instance from a Config object
+
 
 ```php
 public function newInstance( string $name, array $options = [] ): CacheInterface;
 ```
-
 Constructs a new Cache instance.
+
+
+
 
 <h1 id="cache-exception-exception">Class Phalcon\Cache\Exception\Exception</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Exception/Exception.zep)
 
-| Namespace | Phalcon\Cache\Exception | | Extends | \Phalcon\Exception | | Implements | \Psr\SimpleCache\CacheException |
+| Namespace  | Phalcon\Cache\Exception | | Extends    | \Phalcon\Exception | | Implements | \Psr\SimpleCache\CacheException |
 
 Exceptions thrown in Phalcon\Cache will use this class
+
+
 
 <h1 id="cache-exception-invalidargumentexception">Class Phalcon\Cache\Exception\InvalidArgumentException</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Exception/InvalidArgumentException.zep)
 
-| Namespace | Phalcon\Cache\Exception | | Extends | \Phalcon\Exception | | Implements | \Psr\SimpleCache\InvalidArgumentException |
+| Namespace  | Phalcon\Cache\Exception | | Extends    | \Phalcon\Exception | | Implements | \Psr\SimpleCache\InvalidArgumentException |
 
 Exceptions thrown in Phalcon\Cache will use this class
+
