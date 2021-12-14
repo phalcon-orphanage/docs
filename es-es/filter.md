@@ -8,24 +8,20 @@ keywords: 'filtro, sanear'
 ---
 
 # Filtro
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 Sanear la entrada del usuario es una parte crítica del desarrollo de software. Confiar o descuidar el saneamiento de la entrada del usuario podría provocar un acceso no autorizado al contenido de su aplicación, principalmente a los datos de usuarios, o incluso al servidor donde su aplicación se aloja.
 
 ![](/assets/images/content/filter-sql.png)
 
 [Imagen completa en XKCD](https://xkcd.com/327)
 
-Se puede lograr el saneado del contenido usando las clases [Phalcon\Filter](api/phalcon_filter#filter) y [Phalcon\Filter\FilterFactory](api/phalcon_filter#filter-filterfactory).
+Sanitizing content can be achieved using the [Phalcon\Filter][filter-filter] and [Phalcon\Filter\FilterFactory][filter-filterfactory] classes.
 
 ## FilterFactory
-
-Este componente crea un nuevo localizador con filtros predefinidos adjuntos a él. Cada filtro se carga perezosamente para un rendimiento máximo. Para instanciar la fábrica y recuperar [Phalcon\Filter](api/phalcon_filter#filter) con los saneadores establecidos necesita llamar a `newInstance()`
+Este componente crea un nuevo localizador con filtros predefinidos adjuntos a él. Cada filtro se carga perezosamente para un rendimiento máximo. To instantiate the factory and retrieve the [Phalcon\Filter][filter-filter] with the preset sanitizers you need to call `newInstance()`
 
 ```php
 <?php
@@ -40,8 +36,7 @@ $locator = $factory->newInstance();
 Ahora puede usar el localizador donde lo necesite y sanear el contenido según las necesidades de su aplicación.
 
 ## Filtro
-
-El componente [Phalcon\Filter](api/phalcon_filter#filter) implementa un servicio de localización y se puede usar como componente independiente, sin tener que inicializar los filtros incorporados.
+The [Phalcon\Filter][filter-filter] component implements a locator service and can be used as a stand alone component, without initializing the built-in filters.
 
 ```php
 <?php
@@ -58,46 +53,40 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> **NOTA**: El contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) ya tiene un objeto [Phalcon\Filter](api/phalcon_filter#filter) cargado con los saneadores predefinidos. Se puede acceder al componente utilizando el nombre del filtro (`filter`).
-{: .alert .alert-info }
+> **NOTE**: The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter][filter-filter] object loaded with the predefined sanitizers. Se puede acceder al componente utilizando el nombre del filtro (`filter`). 
+> 
+> {: .alert .alert-info }
 
 ## Incorporado
 
-> **NOTA**: Cuando sea apropiado, los saneadores convertirán el valor al tipo apropiado. Por ejemplo el saneador `absint` eliminará cualquier carácter no numérico de la entrada, la convertirá a entero y devolverá su valor absoluto.
-{: .alert .alert-warning }
+> **NOTE**: Where appropriate, the sanitizers will cast the value to the type expected. Por ejemplo el saneador `absint` eliminará cualquier carácter no numérico de la entrada, la convertirá a entero y devolverá su valor absoluto. 
+> 
+> {: .alert .alert-warning }
 
 A continuación se enlistan los filtros predeterminados del componente. (N. del T.: se preserva la palabra inglesa *mixed* [mixto], para definir que el filtro acepta como entrada [`$input`] tanto cadenas de caracteres [`string`] como matrices [`array`]):
 
 #### `absint`
-
 ```php
 AbsInt( mixed $input ): int
 ```
-
-Elimina todos los caracteres no numéricos, convierte el valor a íntegro y devuelve su valor absoluto. Internamente usa [`filter_var`] para la parte entera, [`intval`](https://www.php.net/manual/en/function.intval.php) para la conversión de tipos y [`absint`](https://www.php.net/manual/en/function.absint.php).
+Elimina todos los caracteres no numéricos, convierte el valor a íntegro y devuelve su valor absoluto. Internally it uses [`filter_var`] for the integer part, [`intval`][intval] for casting and [`absint`][absint].
 
 #### `alnum`
-
 ```php
 Alnum( mixed $input ): string | array
 ```
-
-Elimina todos los caracteres que no son números o que no pertenecen al alfabeto. Usa [`preg_replace`](https://www.php.net/manual/en/function.preg-replace.php) que también admite vectores de cadenas como parámetros.
+Elimina todos los caracteres que no son números o que no pertenecen al alfabeto. It uses [`preg_replace`][preg_replace] which can also accept arrays of strings as the parameters.
 
 #### `alpha`
-
 ```php
 Alpha( mixed $input ): string | array
 ```
-
-Elimina todos los caracteres que no pertenecen al alfabeto. Usa [preg_replace](https://www.php.net/manual/en/function.preg-replace.php) que también admite vectores de cadenas como parámetros.
+Elimina todos los caracteres que no pertenecen al alfabeto. It uses [preg_replace][preg_replace] which can also accept arrays of strings as the parameters.
 
 #### `bool`
-
 ```php
 BoolVal( mixed $input ): bool
 ```
-
 Convierte el valor a "booleano" (verdadero o falso).
 
 Devuelve `true` (verdadero) si el valor es:
@@ -117,139 +106,105 @@ Devuelve `false` (falso) si el valor es:
 * `0`
 
 #### `email`
-
 ```php
 Email( mixed $input ): string
 ```
-
-Elimina todos los caracteres excepto letras, digitos y los caracteres ``!#$%&*+-/=?^_`{\|}~@.[]``. Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php) con `FILTER_FLAG_EMAIL_UNICODE`.
+Elimina todos los caracteres excepto letras, digitos y los caracteres  ``!#$%&*+-/=?^_`{\|}~@.[]``. Internally it uses [`filter_var`][filter_var] with `FILTER_FLAG_EMAIL_UNICODE`.
 
 #### `float`
-
 ```php
 FloatVal( mixed $input ): float
 ```
-
-Elimina todos los caracteres excepto dígitos, punto, signos más y menos, y convierte el valor a `double` (número con coma flotante de doble precisión). Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php) y `(double)`.
+Elimina todos los caracteres excepto dígitos, punto, signos más y menos, y convierte el valor a `double` (número con coma flotante de doble precisión). Internally it uses [`filter_var`][filter_var] and `(double)`.
 
 #### `int`
-
 ```php
 IntVal( mixed $input ): int
 ```
-
-Elimina todos los caracteres excepto dígitos, signos más y menos y convierte el valor a entero. Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php) y `(int)`.
+Elimina todos los caracteres excepto dígitos, signos más y menos y convierte el valor a entero. Internally it uses [`filter_var`][filter_var] and `(int)`.
 
 #### `lower`
-
 ```php
 Lower( mixed $input ): string
 ```
-
-Convierte todos los caracteres a minúscula. Si está cargada la extensión [`mbstring`](https://www.php.net/manual/en/book.mbstring.php), usará [mb_convert_case](https://www.php.net/manual/en/function.mb-convert-case.php) para realizar la transformación. Como alternativa usa la función PHP [`strtolower`](https://www.php.net/manual/es/function.strtolower.php), con [utf8_decode](https://www.php.net/manual/es/function.utf8-decode.php).
+Convierte todos los caracteres a minúscula. If the [`mbstring`][mbstring] extension is loaded, it will use [mb_convert_case][mb_convert_case] to perform the transformation. As a fallback it uses the [`strtolower`][strtolower] PHP function, with [utf8_decode][utf8_decode].
 
 #### `lowerFirst`
-
 ```php
 LowerFirst( mixed $input ): string
 ```
-
-Convierte el primer carácter de la entrada a minúscula. Internamente usa [`lcfirst`](https://www.php.net/manual/en/function.lcfirst.php).
+Convierte el primer carácter de la entrada a minúscula. Internally it uses [`lcfirst`][lcfirst].
 
 #### `regex`
-
 ```php
 Regex( mixed $input, mixed $pattern, mixed $replace ): string
 ```
-
-Realiza una operación de remplazo regex utilizando un patrón (`$pattern`) y texto de remplazo (`$replace`) como parámetros. Internamente usa [`preg_replace`](https://www.php.net/manual/en/function.preg-replace.php).
+Realiza una operación de remplazo regex utilizando un patrón (`$pattern`) y texto de remplazo (`$replace`) como parámetros. Internally it uses [`preg_replace`][preg_replace].
 
 #### `remove`
-
 ```php
 Remove( mixed $input, mixed $replace ): string
 ```
-
-Elimina contenido de la entrada sustituyendo el parámetro de remplazo (`$remove`) con una cadena vacía. Internamente usa [`str_replace`](https://www.php.net/manual/en/function.str-replace.php).
+Elimina contenido de la entrada sustituyendo el parámetro de remplazo (`$remove`) con una cadena vacía. Internally it uses [`str_replace`][str_replace].
 
 #### `replace`
-
 ```php
 Replace( mixed $input, mixed $from, mixed $to ): string
 ```
-
-Remplaza en la entrada el parámetro `$from` con el parámetro `$to`. Internamente usa [`str_replace`](https://www.php.net/manual/en/function.str-replace.php).
+Remplaza en la entrada el parámetro `$from` con el parámetro `$to`. Internally it uses [`str_replace`][str_replace].
 
 #### `special`
-
 ```php
 Special( mixed $input ): string
 ```
-
-Escapa los caracteres HTML, `'"<>&` y ASCII con valor inferior a 32 de la entrada. Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
+Escapa los caracteres HTML, `'"<>&` y ASCII con valor inferior a 32 de la entrada. Internally it uses [`filter_var`][filter_var].
 
 #### `specialFull`
-
 ```php
 SpecialFull( mixed $input ): string
 ```
-
-Convierte todos los caracteres especiales de la entrada a entidades HTML (incluidos comillas y apóstrofes). Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
+Convierte todos los caracteres especiales de la entrada a entidades HTML (incluidos comillas y apóstrofes). Internally it uses [`filter_var`][filter_var].
 
 #### `string`
-
 ```php
 StringVal( mixed $input ): string
 ```
-
-Elimina las etiquetas y codifica las entidades HTML, incluyendo las comillas y apóstrofes. Internamente usa [`filter_var`](https://www.php.net/manual/en/function.filter-var.php).
+Elimina las etiquetas y codifica las entidades HTML, incluyendo las comillas y apóstrofes. Internally it uses [`filter_var`][filter_var].
 
 #### `striptags`
-
 ```php
 StripTags( mixed $input ): int
 ```
-
-Elimina todas las etiquetas HTML y PHP de la entrada. Internamente usa [`strip_tags`](https://www.php.net/manual/en/function.strip-tags.php).
+Elimina todas las etiquetas HTML y PHP de la entrada. Internally it uses [`strip_tags`][strip_tags].
 
 #### `trim`
-
 ```php
 Trim( mixed $input ): string
 ```
-
-Elimina los espacios en blanco al inicio y final de la entrada. Internamente usa [`trim`](https://www.php.net/manual/en/function.trim.php).
+Elimina los espacios en blanco al inicio y final de la entrada. Internally it uses [`trim`][trim].
 
 #### `upper`
-
 ```php
 Upper( mixed $input ): string
 ```
-
-Capitaliza todos los caracteres. Si está cargada la extensión [`mbstring`](https://www.php.net/manual/en/book.mbstring.php), usará [`mb_convert_case`](https://www.php.net/manual/en/function.mb-convert-case.php) para realizar la transformación. Como alternativa usa la función PHP [`strtoupper`](https://www.php.net/manual/es/function.strtoupper.php), con [`utf8_decode`](https://www.php.net/manual/es/function.utf8-decode.php).
+Capitaliza todos los caracteres. If the [`mbstring`][mbstring] extension is loaded, it will use [`mb_convert_case`][mb_convert_case] to perform the transformation. As a fallback it uses the [`strtoupper`][strtoupper] PHP function, with [`utf8_decode`][utf8_decode].
 
 #### `upperFirst`
-
 ```php
 UpperFirst( mixed $input ): string
 ```
-
-Capitaliza el primer carácter de la entrada. Internamente usa [`ucfirst`](https://www.php.net/manual/en/function.ucfirst.php).
+Capitaliza el primer carácter de la entrada. Internally it uses [`ucfirst`][ucfirst].
 
 #### `upperWords`
-
 ```php
 UpperWords( mixed $input ): string
 ```
-
-Capitaliza la primera letra de cada palabra. Internamente usa [`ucwords`](https://www.php.net/manual/en/function.ucwords.php).
+Capitaliza la primera letra de cada palabra. Internally it uses [`ucwords`][ucwords].
 
 #### `url`
-
 ```php
 Url( mixed $input ): string
 ```
-
 Listado resumido de constantes disponibles para definir el tipo de limpieza a realizar:
 
 ```php
@@ -279,7 +234,6 @@ const FILTER_URL         = 'url';
 ```
 
 ## Saneamiento de Datos
-
 Es el proceso de desinfección o saneamiento que elimina caracteres específicos de un valor, bien por ser innecesarios o bien por ser indeseados por el usuario o aplicación. Al desinfectar la entrada nos aseguramos que la integridad de las aplicaciones permanecerá intacta.
 
 ```php
@@ -304,8 +258,7 @@ $locator->sanitize('!100a019.01a', 'float');
 ```
 
 ## Controladores
-
-Puede acceder al objeto [Phalcon\Filter](api/phalcon_filter#filter) desde sus controladores al acceder a los datos de la entrada `GET` o `POST` (a través del objeto de la petición). El primer parámetro es el nombre de la variable que se desea obtener; el segundo es el filtro que se desea aplicar. El segundo parámetro también puede ser una matriz con todos los limpiadores a utilizar.
+You can access the [Phalcon\Filter][filter-filter] object from your controllers when accessing `GET` or `POST` input data (through the request object). El primer parámetro es el nombre de la variable que se desea obtener; el segundo es el filtro que se desea aplicar. El segundo parámetro también puede ser una matriz con todos los limpiadores a utilizar.
 
 ```php
 <?php
@@ -336,8 +289,7 @@ class ProductsController extends Controller
 ```
 
 ## Parámetros de la Acción
-
-Si usa [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) como contenedor DI, [Phalcon\Filter](api/phalcon_filter#filter) está registrado con los saneadores por defecto. Para emplearlo se utiliza la palabra clave `filter`. Si no usa el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), necesita configurar el servicio, para que esté accesible en sus controladores.
+If you have used the [Phalcon\Di\FactoryDefault][factorydefault] as your DI container, the [Phalcon\Filter][filter-filter] is already registered for you with the default sanitizers. Para emplearlo se utiliza la palabra clave `filter`. If you do not use the [Phalcon\Di\FactoryDefault][factorydefault] container, you will need to set the service up in it, so that it can be accessible in your controllers.
 
 A continuación un ejemplo de cómo limpiar los valores pasados a las acciones del controlador:
 
@@ -362,8 +314,7 @@ class ProductsController extends Controller
 ```
 
 ## Filtrado de Datos
-
-[Phalcon\Filter](api/phalcon_filter#filter) filtra y sanea los datos, dependiendo de los saneadores usados. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. La descripción de cada saneador (ver [Saneadores Incorporados](#built-in-sanitizers)) puede ayudarle a entender y usar los saneadores acorde a sus necesidades.
+The [Phalcon\Filter][filter-filter] both filters and sanitizes data, depending on the sanitizers used. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. La descripción de cada saneador (ver [Saneadores Incorporados](#built-in-sanitizers)) puede ayudarle a entender y usar los saneadores acorde a sus necesidades.
 
 ```php
 <?php
@@ -381,9 +332,9 @@ $locator->sanitize('<h1>Hello</h1>', 'striptags');
 $locator->sanitize('  Hello   ', 'trim');
 ```
 
-## Añadir Saneadores
 
-Puede añadir sus propios saneadores a [Phalcon\Filter](api/phalcon_filter#filter). El nuevo limpiador puede ser una función anónima cuando se inicializa el localizador:
+## Añadir Saneadores
+You can add your own sanitizers to [Phalcon\Filter][filter-filter]. El nuevo limpiador puede ser una función anónima cuando se inicializa el localizador:
 
 ```php
 <?php
@@ -401,7 +352,7 @@ $locator = new Filter($services);
 $sanitized = $locator->sanitize($value, 'md5');
 ```
 
-Si ya tiene un objeto localizador de filtro instanciado (si ha usado [Phalcon\Filter\FilterFactory](api/phalcon_filter#filter-filterfactory) y `newInstance()` por ejemplo), entonces puede simplemente añadir el filtro personalizado:
+If you already have an instantiated filter locator object (for instance if you have used the [Phalcon\Filter\FilterFactory][filter-filterfactory] and `newInstance()`), then you can simply add the custom filter:
 
 ```php
 <?php
@@ -450,9 +401,9 @@ $locator->set(
 $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
 
-## Combinación de limpiadores
 
-Hay ocasiones en las que usar un solo limpiador no es suficiente para sanear los datos. Un caso muy común, por ejemplo, es el uso de los limpiadores `striptags` y `trim` para las entradas de texto. El componente [Phalcon\Filter](api/phalcon_filter#filter) ofrece la habilidad de aceptar un vector con el nombre de los saneadores a aplicar sobre los valores de la entrada. Por ejemplo:
+## Combinación de limpiadores
+Hay ocasiones en las que usar un solo limpiador no es suficiente para sanear los datos. Un caso muy común, por ejemplo, es el uso de los limpiadores `striptags` y `trim` para las entradas de texto. The [Phalcon\Filter][filter-filter] component offers the ability to accept an array of names for sanitizers to be applied on the input value. Por ejemplo:
 
 ```php
 <?php
@@ -506,8 +457,7 @@ class ProductsController extends Controller
 ```
 
 ## Saneador Personalizado
-
-Se puede implementar un limpiador personalizado como función anónima. Sin embargo, si prefieres usar una clase como saneador, todo lo que necesitas hacer es hacerlo de una manera invocable, implementando el método [__invoke](https://www.php.net/manual/en/language.oop5.magic.php#object.invoke) con los parámetros relevantes.
+Se puede implementar un limpiador personalizado como función anónima. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke][invoke] method with the relevant parameters.
 
 ```php
 <?php
@@ -557,3 +507,26 @@ $locator->set(
 // Sanitize with the 'ipv4' filter
 $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
+
+[absint]: https://www.php.net/manual/en/function.absint.php
+[filter_var]: https://www.php.net/manual/en/function.filter-var.php
+[intval]: https://www.php.net/manual/en/function.intval.php
+[invoke]: https://www.php.net/manual/en/language.oop5.magic.php#object.invoke
+[lcfirst]: https://www.php.net/manual/en/function.lcfirst.php
+[mb_convert_case]: https://www.php.net/manual/en/function.mb-convert-case.php
+[mb_convert_case]: https://www.php.net/manual/en/function.mb-convert-case.php
+[mbstring]: https://www.php.net/manual/en/book.mbstring.php
+[preg_replace]: https://www.php.net/manual/en/function.preg-replace.php
+[preg_replace]: https://www.php.net/manual/en/function.preg-replace.php
+[strip_tags]: https://www.php.net/manual/en/function.strip-tags.php
+[str_replace]: https://www.php.net/manual/en/function.str-replace.php
+[strtolower]: https://www.php.net/manual/en/function.strtolower.php
+[strtoupper]: https://www.php.net/manual/en/function.strtoupper.php
+[trim]: https://www.php.net/manual/en/function.trim.php
+[ucfirst]: https://www.php.net/manual/en/function.ucfirst.php
+[ucwords]: https://www.php.net/manual/en/function.ucwords.php
+[utf8_decode]: https://www.php.net/manual/en/function.utf8-decode.php
+[utf8_decode]: https://www.php.net/manual/en/function.utf8-decode.php
+[filter-filter]: api/phalcon_filter#filter
+[filter-filterfactory]: api/phalcon_filter#filter-filterfactory
+[factorydefault]: api/phalcon_di#di-factorydefault
