@@ -7,13 +7,10 @@ keywords: 'forms, render html, validation, elements'
 ---
 
 # Forms
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
 
 ```php
@@ -129,8 +126,7 @@ $form->add(
 ```
 
 ## Methods
-
-[Phalcon\Forms\Form](api/phalcon_forms#forms-form) exposes a number of methods that help with setting up a form with the necessary elements so that it can be used for validation, rendering elements etc.
+[Phalcon\Forms\Form][forms-form] exposes a number of methods that help with setting up a form with the necessary elements so that it can be used for validation, rendering elements etc.
 
 ```php
 public function __construct(
@@ -138,11 +134,11 @@ public function __construct(
     array $userOptions = []
 )
 ```
-
 Constructor. Accepts optionally an `entity` object which will be read internally. If the properties of the object contain properties that match the names of the elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](db-models) or even a `\stdClass`. The second parameter is `userOptions` an optional array with user defined data.
 
-> **NOTE**: If the form has the `initialize` method present, the constructor will call it automatically with the same parameters
-{: .alert .alert-info }
+> **NOTE**: If the form has the `initialize` method present, the constructor will call it automatically with the same parameters 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -184,7 +180,8 @@ $form->add(
 );
 ```
 
-If the `entity` is passed and it is not an object, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+If the `entity` is passed and it is not an object, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
+
 
 ```php
 public function add(
@@ -193,8 +190,8 @@ public function add(
     bool $type = null
 ): Form
 ```
-
 Adds an element to the form. The first parameter is an `ElementInterface` object. The second parameter `position` (if defined) is the name of the existing element we are targeting. The third boolean parameter `type` if set to `true` the new element will be added before the element defined in `position`. If not set or set to `null`/`false`, the new element will be added after the one defined by the `position` parameter.
+
 
 ```php
 public function bind(
@@ -203,10 +200,9 @@ public function bind(
     array $whitelist = []
 ): Form
 ```
-
 Binds data to the entity. The first parameter `data` is an array of key/values. This usually is the `$_POST` array. The second parameter `entity` is an entity object. If the properties of the entity object contain properties that match the names of the `data`elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](db-models) or even a `\stdClass`. The third parameter `whitelist` is an array of whitelisted elements. Any element in the `whitelist` array that has the same name as an element in the `data` array will be ignored.
 
-The `bind` method takes the first array (e.g `$_POST`) and an entity object (e.g. `Invoices`). It loops through the array and if it finds an array key that exists in the form, it applies the necessary filters (defined in the form) to the value of the array. After that, it checks the entity object (`Invoices`) and assigns this value to any property that matches the array key. If a method exists as a setter with the same name as an array key, it will be called first (i.e. `name` -> `setName()`). This method allows us to quickly filter input and assign this input to the passed entity object.
+The `bind` method takes the first array (e.g `$_POST`) and an entity object (e.g. `Invoices`). It loops through the array and if it finds an array key that exists in the form, it applies the necessary filters (defined in the form) to the value of the array. After that, it checks the entity object (`Invoices`) and assigns this value to any property that matches the array key. If a method exists as a setter with the same name as an array key, it will be called first (i.e. `name` -> `setName()`).  This method allows us to quickly filter input and assign this input to the passed entity object.
 
 ```php
 <?php
@@ -218,66 +214,56 @@ if (true === $form->isValid()) {
 }
 ```
 
-If there are no elements in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+If there are no elements in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ```php
 public function clear(mixed $fields = null): Form
 ```
-
 Clears every element in the form to its default value. If the passed parameter `fields` is a string, only that field will will be cleared. If an array is passed, all elements in the array will be cleared. Finally, if nothing is passed, all fields will be cleared.
 
 ```php
 public function count(): int
 ```
-
 Returns the number of elements in the form
 
 ```php
 public function current(): ElementInterface | bool
 ```
-
 Returns the current element in the iterator
 
 ```php
 public function get(string $name): ElementInterface
 ```
-
-Returns an element added to the form by its name. If the element is not found in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Returns an element added to the form by its name. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ```php
 public function getAction(): string
 ```
-
 Returns the form's action
 
 ```php
 public function getAttributes(): Attributes
 ```
-
-Returns the form's attributes collection. The object returned is [Phalcon\Html\Attributes](api/phalcon_html#html-attributes).
+Returns the form's attributes collection. The object returned is [Phalcon\Html\Attributes][html-attributes].
 
 ```php
 public function getElements(): ElementInterface[]
 ```
-
 Returns the form elements added to the form
 
 ```php
 public function getEntity()
 ```
-
 Returns the entity related to the model
 
 ```php
 public function getLabel(string $name): string
 ```
-
-Returns a label for an element. If the element is not found in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Returns a label for an element. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ```php
 public function getMessages(): Messages | array
 ```
-
 Returns the messages generated in the validation.
 
 ```php
@@ -292,13 +278,11 @@ if (false === $form->isValid($_POST)) {
 ```php
 public function getMessagesFor(string $name): Messages
 ```
-
 Returns the messages generated for a specific element
 
 ```php
 public function getValidation(): ValidationInterface
 ```
-
 Returns the validator object registered in the form
 
 ```php
@@ -307,31 +291,26 @@ public function getUserOption(
     mixed defaultValue = null
 ): mixed
 ```
-
 Returns the value of an option if present. If the option is not present the `defaultValue` will be returned.
 
 ```php
 public function getUserOptions(): array
 ```
-
 Returns the options for the element
 
 ```php
 public function getValue(string $name): mixed | null
 ```
-
 Gets a value from the internal related entity or from the default value
 
 ```php
 public function has(string $name): bool
 ```
-
 Check if the form contains an element
 
 ```php
 public function hasMessagesFor(string $name): bool
 ```
-
 Check if messages were generated for a specific element
 
 ```php
@@ -340,15 +319,21 @@ public function isValid(
     object $entity = null
 ): bool
 ```
-
 Validates the form. The first element is the data that has been provided by the user. This is usually the `$_POST` array.
 
-The second optional parameter is `entity` (object). If passed, internally the component will call `bind()` which will: - Loop through the passed `data` - Check if the element from the `data` exists (with the same name) in the `entity` - If yes, check the form's whitelist array. If the element exists there, it will not be changed - The value of the element (from the `data` array) will be sanitized based on the defined filters (if any) - Call any setters on the `entity` if present - Assign the value to the property with the same name on the `entity`.
+The second optional parameter is `entity` (object). If passed, internally the component will call `bind()` which will:
+- Loop through the passed `data`
+- Check if the element from the `data` exists (with the same name) in the `entity`
+- If yes, check the form's whitelist array. If the element exists there, it will not be changed
+- The value of the element (from the `data` array) will be sanitized based on the defined filters (if any)
+- Call any setters on the `entity` if present
+- Assign the value to the property with the same name on the `entity`.
 
 Once the `bind()` process finishes, the modified `entity` will be passed in the `beforeValidation` event (if events are enabled) and after that all the validators will be called on the form using the modified `entity` object.
 
-> **NOTE**: Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, so as to keep a copy of the original object
-{: .alert .alert-info }
+> **NOTE**: Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, so as to keep a copy of the original object 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -367,7 +352,6 @@ if (true === $form->isValid($_POST, $customer)) {
 ```php
 public function key(): int
 ```
-
 Returns the current position/key in the iterator
 
 ```php
@@ -376,13 +360,11 @@ public function label(
     array $attributes = null
 ): string
 ```
-
-Generate the label of an element added to the form including HTML. The first parameter is the name of the element while the second one is an array with optional parameters that need to be added to the `<label>` HTML tag. Such parameter can be CSS classes for instance. If the element is not found in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Generate the label of an element added to the form including HTML. The first parameter is the name of the element while the second one is an array with optional parameters that need to be added to the `<label>` HTML tag. Such parameter can be CSS classes for instance. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ```php
 public function next(): void
 ```
-
 Moves the internal iteration pointer to the next position
 
 ```php
@@ -391,31 +373,26 @@ public function render(
     array attributes = []
 ): string
 ```
-
-Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for the element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for the element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ```php
 public function remove(string $name): bool
 ```
-
 Removes an element from the form
 
 ```php
 public function rewind(): void
 ```
-
 Rewinds the internal iterator
 
 ```php
 public function setAction(string $action): Form
 ```
-
 Sets the form's action
 
 ```php
 public function setEntity(object $entity): Form
 ```
-
 Sets the entity related to the model
 
 ```php
@@ -423,7 +400,6 @@ public function setAttributes(
     Attributes> $attributes
 ): AttributesInterface
 ```
-
 Set form attributes collection
 
 ```php
@@ -431,7 +407,6 @@ public function setValidation(
     ValidationInterface $validation
 );
 ```
-
 Sets the validation object in the form.
 
 ```php
@@ -440,23 +415,19 @@ public function setUserOption(
     mixed $value
 ): Form
 ```
-
 Sets a user defined option for the form
 
 ```php
 public function setUserOptions(array $options): Form
 ```
-
 Sets user defined options for the form
 
 ```php
 public function valid(): bool
 ```
-
 Returns if the current element in the iterator is valid or not
 
 ## Initialization
-
 Forms can be initialized outside the form class by adding elements to it. However you can reuse code or organize your form classes by implementing forms in their own classes:
 
 ```php
@@ -556,11 +527,9 @@ $form = new CustomersForm(
     ]
 );
 ```
-
-The code above will check the `options` array during the `initialize` method. The code will check for the `mode` element in the array and if not present it will default to `view`. If the `mode` is `edit`, we are going to add a [Phalcon\Forms\Element\Hidden](api/phalcon_forms#forms-element-hidden) element with the entity's ID in the form. By using the `options` array we can create reusable forms and also pass in our form additional data that could be required.
+The code above will check the `options` array during the `initialize` method. The code will check for the `mode` element in the array and if not present it will default to `view`. If the `mode` is `edit`, we are going to add a [Phalcon\Forms\Element\Hidden][forms-element-hidden] element with the entity's ID in the form. By using the `options` array we can create reusable forms and also pass in our form additional data that could be required.
 
 ## Entities
-
 An entity such as a [Phalcon\Mvc\Model](db-models), a PHP class or even a `\stdClass` object can be passed to the form in order to set default values, or to assign the values from the form to the object.
 
 ```php
@@ -678,36 +647,36 @@ class Preferences
     }
 }
 ```
-
 For the above entity class, the `getReceiveEmails` and `getTimezone` methods will be used instead of the `receiveEmails` and `timezone` properties.
 
-## Elements
 
+## Elements
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                                                          | Description                                 |
-| ----------------------------------------------------------------------------- | ------------------------------------------- |
-| [Phalcon\Forms\Element\Check](api/phalcon_forms#forms-element-check)       | Generate `input[type=check]` elements       |
-| [Phalcon\Forms\Element\Date](api/phalcon_forms#forms-element-date)         | Generate `input[type=date]` elements        |
-| [Phalcon\Forms\Element\Email](api/phalcon_forms#forms-element-email)       | Generate `input[type=email]` elements       |
-| [Phalcon\Forms\Element\File](api/phalcon_forms#forms-element-file)         | Generate `input[type=file]` elements        |
-| [Phalcon\Forms\Element\Hidden](api/phalcon_forms#forms-element-hidden)     | Generate `input[type=hidden]` elements      |
-| [Phalcon\Forms\Element\Numeric](api/phalcon_forms#forms-element-numeric)   | Generate `input[type=number]` elements      |
-| [Phalcon\Forms\Element\Password](api/phalcon_forms#forms-element-password) | Generate `input[type=password]` elements    |
-| [Phalcon\Forms\Element\Radio](api/phalcon_forms#forms-element-radio)       | Generate `radio` elements                   |
-| [Phalcon\Forms\Element\Select](api/phalcon_forms#forms-element-select)     | Generate `select` elements based on choices |
-| [Phalcon\Forms\Element\Submit](api/phalcon_forms#forms-element-submit)     | Generate `input[type=submit]` elements      |
-| [Phalcon\Forms\Element\Text](api/phalcon_forms#forms-element-text)         | Generate `input[type=text]` elements        |
-| [Phalcon\Forms\Element\TextArea](api/phalcon_forms#forms-element-textarea) | Generate `textarea` elements                |
+| Name                                                        | Description                                 |
+| ----------------------------------------------------------- | ------------------------------------------- |
+| [Phalcon\Forms\Element\Check][forms-element-check]       | Generate `input[type=check]` elements       |
+| [Phalcon\Forms\Element\Date][forms-element-date]         | Generate `input[type=date]` elements        |
+| [Phalcon\Forms\Element\Email][forms-element-email]       | Generate `input[type=email]` elements       |
+| [Phalcon\Forms\Element\File][forms-element-file]         | Generate `input[type=file]` elements        |
+| [Phalcon\Forms\Element\Hidden][forms-element-hidden]     | Generate `input[type=hidden]` elements      |
+| [Phalcon\Forms\Element\Numeric][forms-element-numeric]   | Generate `input[type=number]` elements      |
+| [Phalcon\Forms\Element\Password][forms-element-password] | Generate `input[type=password]` elements    |
+| [Phalcon\Forms\Element\Radio][forms-element-radio]       | Generate `radio` elements                   |
+| [Phalcon\Forms\Element\Select][forms-element-select]     | Generate `select` elements based on choices |
+| [Phalcon\Forms\Element\Submit][forms-element-submit]     | Generate `input[type=submit]` elements      |
+| [Phalcon\Forms\Element\Text][forms-element-text]         | Generate `input[type=text]` elements        |
+| [Phalcon\Forms\Element\TextArea][forms-element-textarea] | Generate `textarea` elements                |
 
 These elements use the [Phalcon\Tag](tag) component transparently.
 
-> **NOTE**: For more information regarding HTML elements, you can check our [Tag document](tag)
-{: .alert .alert-info }
+> **NOTE**: For more information regarding HTML elements, you can check our [Tag document](tag) 
+> 
+> {: .alert .alert-info }
 
-The [Phalcon\Forms\Element\Select](api/phalcon_forms#forms-element-select) supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
+The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
 
-You can also create your own elements by extending the [Phalcon\Forms\Element\ElementInterface](api/phalcon_forms#forms-element-elementinterface) interface.
+You can also create your own elements by extending the [Phalcon\Forms\Element\ElementInterface][forms-element-elementinterface] interface.
 
 ```php
 <?php
@@ -726,7 +695,6 @@ class MyElement extends Element
 ```
 
 ## Filtering
-
 A form is also able to filter data before it is validated. You can set filters in each element:
 
 ```php
@@ -753,12 +721,12 @@ $email->setFilters(
 $form->add($email);
 ```
 
-> **NOTE**: For more information regarding filters, you can check our [Filter document](filters)
-{: .alert .alert-info }
+> **NOTE**: For more information regarding filters, you can check our [Filter document](filters) 
+> 
+> {: .alert .alert-info }
 
 ## Validation
-
-Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
+Phalcon forms are integrated with the [validation](validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -820,7 +788,6 @@ foreach ($messages as $message) {
 ```
 
 ## Rendering
-
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 ```php
@@ -916,7 +883,6 @@ echo $element->renderDecorated('nameFirst');
 ```
 
 ## Events
-
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 
 ```php
@@ -934,8 +900,7 @@ class ContactForm extends Form
 ```
 
 ## Manager
-
-This component provides the [Phalcon\Forms\Manager](api/phalcon_forms#forms-manager) that can be used by the developer to register forms and access them via the service locator:
+This component provides the [Phalcon\Forms\Manager][forms-manager] that can be used by the developer to register forms and access them via the service locator:
 
 ```php
 <?php
@@ -976,11 +941,10 @@ $loginForm = $this->forms->get('login');
 echo $loginForm->render();
 ```
 
-If a form is not found in the manager, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+If a form is not found in the manager, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ## Exceptions
-
-Any exceptions thrown in the `Phalcon\Forms` namespace will be [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception). You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Forms` namespace will be [Phalcon\Forms\Exception][forms-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -1006,8 +970,7 @@ class IndexController extends Controller
 ```
 
 ## Dependency Injection
-
-[Phalcon\Forms\Form](api/phalcon_forms#forms-form) extends [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) so you have access to the application services if needed:
+[Phalcon\Forms\Form][forms-form] extends [Phalcon\Di\Injectable][di-injectable] so you have access to the application services if needed:
 
 ```php
 <?php
@@ -1050,5 +1013,23 @@ class ContactForm extends Form
 ```
 
 ## Additional Resources
-
 * [Vökuró](https://github.com/phalcon/vokuro), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
+
+[di-injectable]: api/phalcon_di#di-injectable
+[forms-element-check]: api/phalcon_forms#forms-element-check
+[forms-element-date]: api/phalcon_forms#forms-element-date
+[forms-element-elementinterface]: api/phalcon_forms#forms-element-elementinterface
+[forms-element-email]: api/phalcon_forms#forms-element-email
+[forms-element-file]: api/phalcon_forms#forms-element-file
+[forms-element-hidden]: api/phalcon_forms#forms-element-hidden
+[forms-element-numeric]: api/phalcon_forms#forms-element-numeric
+[forms-element-password]: api/phalcon_forms#forms-element-password
+[forms-element-radio]: api/phalcon_forms#forms-element-radio
+[forms-element-select]: api/phalcon_forms#forms-element-select
+[forms-element-submit]: api/phalcon_forms#forms-element-submit
+[forms-element-text]: api/phalcon_forms#forms-element-text
+[forms-element-textarea]: api/phalcon_forms#forms-element-textarea
+[forms-exception]: api/phalcon_forms#forms-exception
+[forms-form]: api/phalcon_forms#forms-form
+[forms-manager]: api/phalcon_forms#forms-manager
+[html-attributes]: api/phalcon_html#html-attributes
