@@ -7,22 +7,18 @@ keywords: 'modelos, caché, phql, conjuntos de resultados, reutilización'
 ---
 
 # Caché de Modelos
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 En la mayoría de aplicaciones, hay datos que cambian con poca frecuencia. Uno de los cuellos de botella más comunes en términos de rendimiento es el acceso a los datos de una base de datos. Primero tenemos una capa de complejidad que permite a PHP comunicarse con la base de datos y entonces tenemos una capa de complejidad y un potencial cuello de botella en la propia base de datos, cuando intentamos analizar la consulta enviada y devolver los datos de vuelta (especialmente cuando la consulta contiene múltiples uniones y sentencias de agrupación).
 
 Implementando algunas capas de caché, reduce el número de conexiones y búsquedas a la base de datos. Esto asegurará que los datos serán consultados a la base de datos sólo cuando sea absolutamente necesario. Este artículo muestra algunas áreas donde el cache podría incrementar el rendimiento.
 
 ## Resultados
-
 Una técnica bien establecida para evitar consultar la base de datos en cada petición, es cachear los conjuntos de resultados que no cambian frecuentemente, usando un sistema con acceso rápido (normalmente memoria).
 
-Cuando [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) necesite un servicio para cachear conjuntos de resultados, lo solicitará al Contenedor de Inyección de Dependencias. El nombre del servicio se llama `modelsCache`. Phalcon ofrece un componente <cache> que puede almacenar cualquier tipo de dato. Integrar este servicio en su código requiere un objeto [Cache](cache).
+When [Phalcon\Mvc\Model][mvc-model] requires a service to cache resultsets, it will request it from the Dependency Injection Container. El nombre del servicio se llama `modelsCache`. Phalcon ofrece un componente [cache](cache) que puede almacenar cualquier tipo de dato. Integrar este servicio en su código requiere un objeto [Cache](cache).
 
 ```php
 <?php
@@ -52,18 +48,18 @@ $container->set(
 );
 ```
 
-> **NOTA**: Es obligatorio usar un serializador que pueda serializar y deserializar apropiadamente objetos sin cambiar su estado. `Php` e `Igbinary` son estos serializadores. `Json` convertirá los objetos a `stdClass` y los conjuntos de resultados `Simples`/`Complejos` se convertirán a vector. Elegir un serializador que no puede almacenar objetos apropiadamente producirá errores cuando se restaure el caché para sus modelos.
-{: .alert .alert-warning }
+> **NOTE**: It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` e `Igbinary` son estos serializadores. `Json` convertirá los objetos a `stdClass` y los conjuntos de resultados `Simples`/`Complejos` se convertirán a vector. Elegir un serializador que no puede almacenar objetos apropiadamente producirá errores cuando se restaure el caché para sus modelos. 
+> 
+> {: .alert .alert-warning }
 
 
-Tiene el control completo de cómo crear y personalizar el componente caché antes de registrarlo. Puede comprobar el documento <cache> para ver varias opciones y personalizaciones disponibles al crear el componente caché.
+Tiene el control completo de cómo crear y personalizar el componente caché antes de registrarlo. Puede comprobar el documento [cache](cache) para ver varias opciones y personalizaciones disponibles al crear el componente caché.
 
 Una vez que el componente caché está correctamente configurado, los conjuntos de resultados se pueden cachear usando el elemento `cache` en los comandos de consulta para modelos como `find`, `findFirst` etc.
 
 ```php
 $invoices = Invoices::find();
 ```
-
 No usa caché
 
 ```php
@@ -75,7 +71,6 @@ $invoices = Invoices::find(
     ]
 );
 ```
-
 Cachea este conjunto de resultados usando como clave `my-cache`. Este resultado espirará en 7200 segundos, configurado al establecer el servicio cache
 
 ```php
@@ -88,7 +83,6 @@ $invoices = Invoices::find(
     ]
 );
 ```
-
 Cachea el conjunto de resultados durante 5 minutos usando como clave `my-cache`.
 
 ```php
@@ -101,11 +95,9 @@ $invoices = Invoices::find(
     ]
 );
 ```
-
 Cachea el conjunto de resultados usando como clave `my-cache` pero ahora usa el servicio `cache` del contenedor DI en vez del `modelsCache`
 
 ## Relaciones
-
 También puede cachear conjuntos de resultados que son devueltos mediante relaciones.
 
 ```php
@@ -142,7 +134,6 @@ $invoices = $customer->getInvoices(
     ]
 );
 ```
-
 En el ejemplo anterior llamamos al método `getRelated` sobre un modelo `Customer` para obtener las facturas mediante la relación `invoices`. También pasamos el vector con las opciones necesarias para cachear el conjunto de resultados durante 5 minutos, usando como clave `my-key`.
 
 También podemos usar el método mágico `getInvoices` que es `get` con el nombre de la relación, en este caso `invoices`.
@@ -151,12 +142,12 @@ Cuando se necesita invalidar un conjunto de resultados cacheado, puede simplemen
 
 Qué conjuntos de resultados cachear y durante cuanto tiempo dependerá de las necesidades de su aplicación. Los conjuntos de resultados que cambien frecuentemente no deberían ser cacheados, ya que los resultados de cache se invalidarán rápidamente con cambios posteriores en los registros subyacentes que representan estos conjuntos de resultados.
 
-> **NOTA**: La caché de datos viene con el coste de compilar y almacenar esos datos en caché. Siempre debería aprovechar ese coste de procesamiento cuando formule su estrategia de caché. Qué datos son cacheados y durante cuanto tiempo depende de las necesidades de su aplicación.
-{: .alert .alert-info }
+> **NOTE**: Caching data comes with the cost of compiling and storing that data in the cache. Siempre debería aprovechar ese coste de procesamiento cuando formule su estrategia de caché. Qué datos son cacheados y durante cuanto tiempo depende de las necesidades de su aplicación. 
+> 
+> {: .alert .alert-info }
 
 ## Forzando el caché
-
-Anteriormente vimos como [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) se integra con el componente de caché provisto por el framework. Para hacer cacheable un registro/conjunto de resultados pasamos la clave `cache` en el vector de parámetros:
+Earlier we saw how [Phalcon\Mvc\Model][mvc-model] integrates with the caching component provided by the framework. Para hacer cacheable un registro/conjunto de resultados pasamos la clave `cache` en el vector de parámetros:
 
 ```php
 <?php
@@ -316,7 +307,6 @@ class Invoices extends AbstractCachable
 ```
 
 ## Consultas PHQL
-
 Independientemente de la sintaxis usada para crearlas, todas las consultas en el ORM son manejadas internamente usando [PHQL](db-phql). Este lenguaje le da mucha más libertad para crear todo tipo de consultas. Por supuesto, estas consultas pueden ser cacheadas:
 
 ```php
@@ -343,7 +333,6 @@ $invoice = $query->execute(
 ```
 
 ## Relaciones Reutilizables
-
 Algunos modelos pueden tener relaciones con otros modelos. Esto nos permite comprobar fácilmente los registros que se relacionan con las instancias en memoria:
 
 ```php
@@ -383,7 +372,6 @@ foreach ($invoices as $invoice) {
     echo $customer->cst_name, PHP_EOL;
 }
 ```
-
 Un cliente puede tener más de una factura. Por lo tanto en este ejemplo, el mismo registro de cliente podría ser innecesariamente consultado varias veces. Para evitar esto, podemos establecer la relación como `reusable`. Esto indicará a Phalcon que cachee el registro relacionado en memoria la primera vez que se accede, y las llamadas siguientes al mismo registro devolverá los datos de la entidad cacheada desde memoria.
 
 ```php
@@ -410,11 +398,11 @@ class Invoices extends Model
 
 Tenga en cuenta que este tipo de caché trabaja solo con memoria, lo que significa que los datos cacheados son liberados cuando la solicitud termina.
 
-> **NOTA** El ejemplo anterior es **sólo para demostración** y no se debería usar en su código porque introduce el problema [N+1](https://leanpub.com/sn1php)
-{: .alert .alert-danger }
+> **NOTE** The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem 
+> 
+> {: .alert .alert-danger }
 
 ## Registros Relacionados
-
 Cuando un registro relacionado se consulta, el ORM internamente construye la condición apropiada y obtiene los registros requeridos usando `find()`/`findFirst()` en el modelo destino de acuerdo con la siguiente tabla:
 
 | Tipo       | Método        | Descripción                                                                    |
@@ -466,7 +454,6 @@ class Invoices extends Model
 ```
 
 ## Registros Relacionados Recursivamente
-
 En este escenario, asumimos que cada vez que consultamos un conjunto de resultados, también obtenemos sus registros asociados. Imagine esto como una forma de carga ansiosa. Si almacenamos los registros encontrados, junto con sus entidades relacionadas, en algunas instancias, podríamos reducir la sobrecarga necesaria para obtener todas las entidades:
 
 ```php
@@ -552,8 +539,9 @@ class Invoices extends Model
 
 Obtener todas las facturas también iterará a través del conjunto de resultados y obtendrá todos los registros relacionados `Customer`, almacenándolos en el conjunto de resultados usando la propiedad `customer`. Una vez que se completa la operación, el conjunto de resultados completo se almacena en caché. Cualquier llamada posterior a `find` en `Invoices` usará el conjunto de resultados cacheado sin tocar la base de datos.
 
-> **NOTA**: Necesita asegurarse que tiene una estrategia para invalidar el caché cuando los registros subyacentes en la base de datos cambian para obtener siempre los datos correctos en sus consultas.
-{: .alert .alert-warning }
+> **NOTE**: You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries. 
+> 
+> {: .alert .alert-warning }
 
 Lo anterior también se puede ejecutar usando PHQL:
 
@@ -624,7 +612,6 @@ class Invoices extends Model
 ```
 
 ## Condiciones
-
 Una de las estrategias que podemos emplear es el cacheo condicional. Ya que cada *backend* de caché tiene sus fortalezas y debilidades, podríamos decidir que el *backend* de cache podría ser determinado por el valor de la clave primaria del modelo cuando se accede:
 
 | Tipo          | Cache Backend |
@@ -727,7 +714,7 @@ class CustomQueryBuilder extends QueryBuilder
 }
 ```
 
-En lugar de devolver directamente un [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query), nuestro constructor personalizado devuelve una instancia `CustomQuery`:
+Instead of directly returning a [Phalcon\Mvc\Model\Query][mvc-model-query], our custom builder returns a `CustomQuery` instance:
 
 ```php
 <?php
@@ -784,8 +771,7 @@ class CustomQuery extends ModelQuery
     }
 }
 ```
-
-En el fragmento de código anterior llamamos al método `parse()` de [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query) para poder obtener la representación intermedia de la propia consulta PHQL. A continuación, nos aseguramos de procesar todos los parámetros y tipos (si se pasan). Entonces, comprobamos si se proporcionan algunas condiciones en el elemento `where` de la representación intermedia. Los campos en las condiciones también pueden tener un `order`. Necesitamos comprobar recursivamente el árbol de condiciones para encontrar la información que estamos buscando.
+In the above code snippet we call the `parse()` method from the [Phalcon\Mvc\Model\Query][mvc-model-query] in order to get the intermediate representation of the PHQL query itself. A continuación, nos aseguramos de procesar todos los parámetros y tipos (si se pasan). Entonces, comprobamos si se proporcionan algunas condiciones en el elemento `where` de la representación intermedia. Los campos en las condiciones también pueden tener un `order`. Necesitamos comprobar recursivamente el árbol de condiciones para encontrar la información que estamos buscando.
 
 Estamos usando el ayudante `CustomNodeVisitor` que comprueba recursivamente las condiciones buscando campos que devolverán el rango a ser usado en el caché.
 
@@ -898,7 +884,6 @@ class Invoices extends Model
 ```
 
 ## Plan de Ejecución PHQL
-
 Como en la mayoría de sistemas de bases de datos modernas PHQL cachea internamente el plan de ejecución, por lo que si la misma sentencia se ejecuta varias veces, PHQL reutiliza el plan generado previamente mejorando el rendimiento. Para aprovechar esta característica, es altamente recomendado construir todos nuestras sentencias SQL pasando parámetros variables como parámetros enlazados:
 
 ```php
@@ -961,4 +946,10 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-Los planes de ejecución para consultas que implican [sentencias preparadas](https://en.wikipedia.org/wiki/Prepared_statement) también son cacheadas por la mayoría de sistemas de bases de datos, reduciendo el tiempo total de ejecución, también protegiendo su aplicación contra [Inyecciones SQL](https://en.wikipedia.org/wiki/SQL_injection).
+Execution plans for queries involving [prepared statements][prepared_statements] are also cached by most database systems reducing the overall execution time, also protecting your application against [SQL Injections][sql_injections].
+
+[mvc-model]: api/phalcon_mvc#mvc-model
+[mvc-model-query]: api/phalcon_mvc#mvc-model-query
+[prepared_statements]: https://en.wikipedia.org/wiki/Prepared_statement
+[sql_injections]: https://en.wikipedia.org/wiki/SQL_injection
+[n-1]: https://leanpub.com/sn1php
