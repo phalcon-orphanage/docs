@@ -1,11 +1,16 @@
-- - -
-layout: default language: 'en' version: '4.0' title: 'Pruebas Unitarias' keywords: 'pruebas unitarias, phpunit, phalcon'
-- - -
+---
+layout: default
+language: 'es-es'
+version: '4.0'
+title: 'Pruebas Unitarias'
+keywords: 'unit testing, phpunit, phalcon'
+---
+
 # Pruebas Unitarias
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-## Preámbulo
+## Resumen
 
 Escribir pruebas adecuadas puede ayudar a escribir mejor software. Si configura correctamente los casos de prueba puede eliminar la mayoría de errores funcionales y mantener mejor su software.
 
@@ -180,11 +185,11 @@ Si necesita sobrecargar el método `setUp`, es importante llamar al padre o Phal
         //some setup mocks
     }
 
-```
+````
 
-### Ejecución de Pruebas Unitarias
+### Running Unit Tests
 
-Cuando ejecute `vendor/bin/phpunit` en su línea de comandos, obtendrá la siguiente salida:
+When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
 
 ```bash
 $ phpunit
