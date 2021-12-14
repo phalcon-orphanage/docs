@@ -7,25 +7,22 @@ keywords: 'tutorial, tutorial invo, paso a paso, mvc'
 ---
 
 # Tutorial - INVO
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Resumen
+[INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. Muestra como se gestionan ciertas tareas por Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. La aplicación no genera facturas reales, sino que sirve como ejemplo de cómo se implementan estas tareas usando Phalcon.
 
-[INVO](https://github.com/phalcon/invo) es una aplicación pequeña que permite a los usuarios generar facturas, gestionar clientes y productos así como registro e inicio de sesión. Muestra como se gestionan ciertas tareas por Phalcon. En la parte del cliente, se usa [Bootstrap](https://getbootstrap.com) para el UI (Interfaz de Usuario). La aplicación no genera facturas reales, sino que sirve como ejemplo de cómo se implementan estas tareas usando Phalcon.
-
-> **NOTA**: Se recomienda que abra la aplicación en su editor favorito para poder seguir este tutorial más fácilmente. 
-{: .alert .alert-info }
-
+> **NOTE**: It is recommended that you open the application in your favorite editor so that you can follow this tutorial easier. 
 > 
-> **NOTA**: Tenga en cuenta que el código siguiente se ha formateado para aumentar la legibilidad
-{: .alert .alert-warning }
+> {: .alert .alert-info }
+
+> **NOTE**: Note the code below has been formatted to increase readability 
+> 
+> {: .alert .alert-warning }
 
 ## Estructura
-
-Puede clonar el repositorio en su máquina (o descargarlo) desde [GitHub](https://github.com/phalcon/invo). Una vez clonado (o descargado y descomprimido) terminará con la siguiente estructura de directorios:
+You can clone the repository to your machine (or download it) from [GitHub][github_invo]. Una vez clonado (o descargado y descomprimido) terminará con la siguiente estructura de directorios:
 
 ```bash
 └── invo
@@ -48,7 +45,6 @@ Puede clonar el repositorio en su máquina (o descargarlo) desde [GitHub](https:
     │   └── js
     └── schemas
 ```
-
 Ya que Phalcon no impone una estructura de directorios en particular, la estructura particular es sólo nuestra implementación. Necesita configurar su servidor web con instrucciones de la página [configuración del servidor web](webserver-setup).
 
 Una vez que la aplicación está configurada, puede abrirla en su navegador navegando a la siguiente URL `https://localhost/invo`. Verá una pantalla similar a la siguiente:
@@ -57,17 +53,16 @@ Una vez que la aplicación está configurada, puede abrirla en su navegador nave
 
 La aplicación está dividida en dos partes: un *frontend* y un *backend*. El *frontend* es un área pública donde los visitantes pueden recibir información sobre INVO y solicitar información de contacto. El *backend* es un área administrativa donde los usuarios registrados pueden gestionar sus productos y clientes.
 
-## Enrutamiento
-
+## Ruteo
 INVO usa la ruta estándar que está integrada en el componente [Router](routing). Estas rutas coinciden con el siguiente patrón:
 
-    /:controller/:action/:params
-    
+```
+/:controller/:action/:params
+```
 
 La ruta personalizada `/session/register` ejecuta el controlador `SessionController` y su acción `registerAction`.
 
 ## Configuración
-
 INVO tiene un fichero de configuración que establece parámetros generales de la aplicación. Este fichero se localiza en `app/config/config.ini` y se carga en las líneas iniciales del arranque de la aplicación (`public/index.php`):
 
 ```php
@@ -105,7 +100,6 @@ baseUri        = /invo/
 Phalcon no tiene una convención para definir los ajustes. Las secciones nos ayudan a organizar las opciones basadas en grupos que tienen sentido para nuestra aplicación. En nuestro fichero hay dos cuestiones que se usarán más tarde en: `application` y `database`.
 
 ## Autocargador
-
 La segunda parte que aparece en el fichero de arranque (`public/index.php`) es el autocargador:
 
 ```php
@@ -133,12 +127,13 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-> **NOTA**: El código anterior ha registrado los directorios que fueron definidos en el fichero de configuración. El único directorio que no se ha registrado es `viewsDir` porque contiene ficheros HTML + PHP pero sin clases. 
-{: .alert .alert-info }
-
+> **NOTE**: The above code has registered the directories that were defined in the configuration file. El único directorio que no se ha registrado es `viewsDir` porque contiene ficheros HTML + PHP pero sin clases. 
 > 
-> **NOTA**: Usamos una constante llamada `APP_PATH`. Esta constante se define en el arranque (`public/index.php`) para permitirnos tener una referencia a la raíz de nuestro proyecto:
-{: .alert .alert-info }
+> {: .alert .alert-info }
+
+> **NOTE**: We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project: 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -149,7 +144,6 @@ define('APP_PATH', realpath('..') . '/');
 ```
 
 ## Servicios
-
 Otro fichero requerido en el arranque es (`app/config/services.php`). Este fichero nos permite organizar los servicios que usa INVO y los registra en el contenedor DI.
 
 ```php
@@ -180,7 +174,6 @@ $container->set(
 ```
 
 ## Gestión de Petición
-
 Si saltamos al final del fichero (`public/index.php`), la petición se gestiona finalmente por [Phalcon\Mvc\Application](application), que inicializa todos los servicios necesarios para ejecutar la aplicación.
 
 ```php
@@ -200,7 +193,6 @@ $response->send();
 ```
 
 ## Inyección de Dependencias
-
 En la primera línea del bloque de código anterior, el constructor de la clase [Application](application) recibe la variable `$container` como argumento.
 
 Ya que Phalcon es altamente desacoplado, necesitamos el contenedor para ser capaces de acceder a los servicios registrados desde él en diferentes partes de la aplicación. El componente en cuestión es [Phalcon\Di](di). Es un contenedor de servicios, también permite realizar inyección de dependencias y localización de servicios, instanciando todos los componentes que se necesitan por la aplicación.
@@ -250,7 +242,6 @@ $container = new FactoryDefault();
 Si es necesario sobrescribir algún servicio, podríamos configurarlo de nuevo como lo hicimos anteriormente con `session` o `url`. Esta es la razón de la existencia de la variable `$container`.
 
 ## Inicio de Sesión
-
 Una página `de inicio de sesión` nos permitirá trabajar con los controladores del *backend*. La separación entre controladores del *backend* y los del *frontend* es arbitraria. Todos los controladores se localizan en el mismo directorio (`app/controllers/`).
 
 ![](/assets/images/content/tutorial-invo-2.png)
@@ -281,7 +272,7 @@ $container->set(
 );
 ```
 
-Aquí, devolvemos una instancia del adaptador de conexión MySQL. También podemos añadir funcionalidad adicional, como añadir un <logger>, un [profiler](db-models-events#profiling-sql-statements) para medir tiempos de ejecución o incluso cambiar el adaptador a un RMBMS diferente.
+Aquí, devolvemos una instancia del adaptador de conexión MySQL. También podemos añadir funcionalidad adicional, como añadir un [logger](logger), un [profiler](db-models-events#profiling-sql-statements) para medir tiempos de ejecución o incluso cambiar el adaptador a un RMBMS diferente.
 
 El siguiente formulario simple (`app/views/session/index.volt`) produce el HTML necesario para que los usuarios puedan enviar la información de inicio de sesión. Parte del código HTML se ha eliminado para mejorar la legibilidad:
 
@@ -317,7 +308,7 @@ El siguiente formulario simple (`app/views/session/index.volt`) produce el HTML 
 {% endraw %}
 ```
 
-Estamos usando [Volt](volt) como nuestro motor de plantillas en lugar de PHP. Este es un motor de plantillas integrado inspirado en [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) que proporciona una sintaxis simple y amigable con el usuario para crear plantillas. Si ha trabajado con [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) o [Twig](https://twig.symfony.com/) en el pasado, verá muchas similitudes.
+Estamos usando [Volt](volt) como nuestro motor de plantillas en lugar de PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
 
 La función `SessionController::startAction` (`app/controllers/SessionController.php`) valida los datos enviados desde el formulario, y también comprueba que el usuario sea válido en la base datos:
 
@@ -387,7 +378,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-En la primera inspección del código, observará que se accede a varias propiedades públicas en el controlador, como `$this->flash`, `$this->request` o `$this->session`. Los [controladores](controllers) en Phalcon se vinculan automáticamente al contenedor [Phalcon\Di](di) y como resultado, todos los servicios registrados están presentes en cada controlador como propiedades con el mismo nombre que el nombre de cada servicio. Si el servicio se accede por primera vez, será automáticamente instanciado y devuelto a la persona que lo invoca. Adicionalmente, estos servicios se establecen como *compartidos* para que se devuelva la misma instancia, no importa cuantas veces accedamos a la propiedad/servicio en la misma petición. Hay servicios definidos en el contenedor de servicios desde antes (`app/config/services.php`) y, por supuesto, puede cambiar este comportamiento al configurar estos servicios.
+En la primera inspección del código, observará que se accede a varias propiedades públicas en el controlador, como `$this->flash`, `$this->request` o `$this->session`. Los [controladores](controllers) en Phalcon se vinculan automáticamente al contenedor [Phalcon\Di](di) y como resultado, todos los servicios registrados están presentes en cada controlador como propiedades con el mismo nombre que el nombre de cada servicio. Si el servicio se accede por primera vez, será automáticamente instanciado y devuelto a la persona que lo invoca. Additionally these services are set as _shared_ so the same instance will be returned back, no matter how many times we access the property/service in the same request. Hay servicios definidos en el contenedor de servicios desde antes (`app/config/services.php`) y, por supuesto, puede cambiar este comportamiento al configurar estos servicios.
 
 Por ejemplo, aquí invocamos el servicio `session` y luego almacenamos la identidad del usuario en la variable `auth`:
 
@@ -403,8 +394,9 @@ $this->session->set(
 );
 ```
 
-> **NOTA**: Para más información sobre servicios Di, consulte el documento [Inyección de Dependencias](di).
-{: .alert .alert-info }
+> **NOTE**: For more information about Di services, please check the [Dependency Injection](di) document. 
+> 
+> {: .alert .alert-info }
 
 `startAction` primero comprueba si los datos se han enviado usando `POST`. Si no, el usuario será redirigido otra vez al mismo formulario. Comprobamos si el formulario se ha enviado vía `POST` usando el método `isPost()` en el objeto `request`.
 
@@ -442,10 +434,9 @@ $user = Users::findFirst(
     ]
 );
 ```
+> **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. Esto reemplaza con seguridad los valores para esas columnas sin correr el riesgo de una inyección SQL.
 
-> **NOTA**: Tenga en cuenta, el uso de 'parámetros vinculados', marcadores de posición `:email:` y `:password:` se colocan donde deberían estar los valores, luego los valores se *enlazan* usando el parámetro `bind`. Esto reemplaza con seguridad los valores para esas columnas sin correr el riesgo de una inyección SQL.
-
-Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. La aplicación almacena contraseñas como *hashes*, usando el método [sha1](https://php.net/manual/en/function.sha1.php). Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. El componente [Phalcon\Security](security) ofrece métodos apropiados para reforzar el algoritmo usado para sus *hashes*.
+Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. El componente [Phalcon\Security](security) ofrece métodos apropiados para reforzar el algoritmo usado para sus *hashes*.
 
 Si se encuentra el usuario, entonces registramos el usuario en la sesión (el usuario inicia sesión) y lo reenviamos al panel de control (controlador `Invoices`, acción `index`) mostrando un mensaje de bienvenida.
 
@@ -482,8 +473,7 @@ return $this->dispatcher->forward(
 ```
 
 ## Seguridad del *Backend*
-
-El *backend* es un área privada donde sólo tienen acceso los usuarios registrados. Por lo tanto, hay que comprobar que sólo los usuarios registrados tienen acceso a esos controladores. Si no ha iniciado sesión e intenta acceder a un área *privada* verá un mensaje similar al siguiente:
+El *backend* es un área privada donde sólo tienen acceso los usuarios registrados. Por lo tanto, hay que comprobar que sólo los usuarios registrados tienen acceso a esos controladores. If you are not logged in and try to access a _private_ area you will see a message like the one below:
 
 ![](/assets/images/content/tutorial-invo-3.png)
 
@@ -511,13 +501,11 @@ $container->set(
     }
 );
 ```
-
-Ahora que el despachador está registrado, necesitamos aprovechar la ventaja de un *hook* disponible para interceptar el flujo de ejecución y ejecutar nuestras comprobaciones de verificación. Los *Hooks* se llaman *Eventos* en Phalcon y para poder acceder o habilitarlos, necesitamos registrar un componente [Gestor de Eventos](events) en nuestra aplicación para que pueda *disparar* esos eventos en nuestra aplicación.
+Now that the dispatcher is registered, we need to take advantage of a _hook_ available to intercept the flow of execution and perform our verification checks. Hooks are called Events in Phalcon and in order to access or enable them, we need to register an [Events Manager](events) component in our application so that it can _fire_ those events in our application.
 
 Al crear un [Gestor de Eventos](events) y adjuntar código específico a los eventos del `despachador`, ahora tenemos mucha más flexibilidad y podemos adjuntar nuestro código al bucle u operación del despachador.
 
 ### Eventos
-
 El [Gestor de Eventos](events) nos permite adjuntar oyentes a un tipo de evento particular. El tipo de evento al que nos adjuntamos es `dispatch`. El código siguiente adjunta oyentes a los eventos `beforeExecuteRoute` y `beforeException`. Usamos estos eventos para comprobar páginas 404 y también realizar comprobaciones de acceso permitido en nuestra aplicación.
 
 ```php
@@ -593,8 +581,7 @@ class SecurityPlugin extends Injectable
     }
 }
 ```
-
-Los métodos de eventos siempre reciben el evento actual como primer parámetro. Este es un objeto [Phalcon\Events\Event](api/phalcon_events#events-event) que contendrá información sobre el evento como su tipo y otra información relacionada. Para este evento particular, el segundo parámetro será el objeto que ha producido el propio evento (`$containerspatcher`). No es obligatorio que las clases de plugins extiendan la clase [Phalcon\Di\Injectable](api/phalcon_di#di-injectable), pero al hacerlo ganan un acceso más fácil a los servicios disponibles en la aplicación.
+Los métodos de eventos siempre reciben el evento actual como primer parámetro. This is a [Phalcon\Events\Event][events-event] object which will contain information regarding the event such as its type and other related information. Para este evento particular, el segundo parámetro será el objeto que ha producido el propio evento (`$containerspatcher`). It is not mandatory that plugins classes extend the class [Phalcon\Di\Injectable][di-injectable], but by doing this they gain easier access to the services available in the application.
 
 Ahora tenemos la estructura para empezar a verificar el rol en la sesión actual. Podemos comprobar si el usuario tiene acceso al usar la [ACL](acl). Si el usuario no tiene acceso, le redirigiremos a la pantalla de inicio.
 
@@ -644,7 +631,6 @@ class SecurityPlugin extends Plugin
     }
 }
 ```
-
 Primero obtenemos el valor `auth` del servicio `session`. Si estamos conectados, entonces ya se ha establecido por nosotros durante el proceso de inicio de sesión. Si no, somos sólo un invitado.
 
 A continuación, obtenemos el nombre del controlador y la acción, y también recuperamos la Lista de Control de Acceso (ACL). Comprobamos si el usuario `isAllowed` usando la combinación `rol` - `controlador` - `acción`. En caso afirmativo, el método terminará el proceso.
@@ -652,7 +638,6 @@ A continuación, obtenemos el nombre del controlador y la acción, y también re
 Si no tenemos acceso, entonces el método devolverá `false` parando la ejecución, justo después de reenviar al usuario a la página de inicio.
 
 ### ACL
-
 En el ejemplo anterior hemos obtenido la ACL usando el método `$this->getAcl()`. Para construir la ACL necesitamos hacer lo siguiente:
 
 ```php
@@ -677,7 +662,6 @@ foreach ($roles as $role) {
     $acl->addRole($role);
 }
 ```
-
 Primero creamos un nuevo objeto `Phalcon\Acl\Adapter\Memory`. Aunque el acceso predeterminado es `DENY` todavía lo establecemos en nuestra lista usando `setDefaultAction()`. Después de eso, necesitamos configurar nuestros roles. Para INVO tenemos `guests` (usuarios que no han iniciado sesión) y `users`. Registramos esos roles usando `addRole` en la lista.
 
 Ahora que los roles están definidos, necesitamos configurar los componentes para la lista. Los componentes ACL mapean a las áreas de nuestra aplicación (controlador/acción). Al hacerlo, podemos controlar qué rol puede acceder a qué componente.
@@ -763,7 +747,6 @@ foreach ($publicComponents as $componentName => $actions) {
     );
 }
 ```
-
 Como hemos visto arriba, primero registramos las áreas privadas de nuestra aplicación (*backend*) y luego las públicas (*frontend*). Los vectores creados tienen la clave como nombre del controlador mientras que los valores son las acciones correspondientes. Hacemos lo mismo con los componentes públicos.
 
 Ahora que los roles y componentes están registrados, necesitamos enlazarlos para que la ACL esté completa. El rol `Users` tiene acceso a los componentes públicos (*frontend*) y privados (*backend*), mientras que `Guests` sólo tiene acceso a los componentes públicos (*frontend*).
@@ -793,10 +776,10 @@ foreach ($privateComponents as $resource => $actions) {
 ```
 
 ## CRUD
-
 La porción de *backend* de una aplicación es el código que proporciona formularios y lógica, permitiendo a los usuarios manipular datos, es decir, realizar operaciones CRUD. Exploraremos cómo INVO gestiona esta tarea y también mostraremos el uso de formularios, validadores, paginadores y más.
 
-Tenemos una implementación [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (*Create*, *Read*, *Update* y *Delete*) simple en INVO, para manipular datos (empresas, productos y tipos de productos). Para los productos se usan los siguientes ficheros:
+We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, so as to manipulate data (companies, products, types of products). Para los productos se usan los siguientes ficheros:
+
 
 ```bash
 └── invo
@@ -814,7 +797,6 @@ Tenemos una implementación [CRUD](https://en.wikipedia.org/wiki/Create,_read,_u
                 ├── new.volt
                 └── search.volt
 ```
-
 Para otras áreas (como compañías por ejemplo), los ficheros correspondientes (prefijados con `Company`) se pueden encontrar en los mismos directorios que los mostrados arriba.
 
 Cada controlador tiene las siguientes acciones:
@@ -851,7 +833,6 @@ class ProductsController extends ControllerBase
 | `searchAction` | Ejecuta `search` basado en los criterios enviados desde `index`. Devuelve un paginador para los resultados |
 
 ## Formulario de Búsqueda
-
 Nuestras operaciones CRUD empiezan con el formulario de búsqueda. Este formulario muestra cada campo que tiene la tabla (`products`), permitiendo al usuario introducir los criterios de búsqueda para cada campo. La tabla `products` tiene una relación con la tabla `products_types`. En este caso, previamente hemos consultado los registros de la tabla `product_types` para ofrecer criterios de búsqueda para este campo:
 
 ```php
@@ -864,7 +845,6 @@ public function indexAction()
     $this->view->form = new ProductsForm();
 }
 ```
-
 Se pasa a la vista una instancia del formulario `ProductsForm` (`app/forms/ProductsForm.php`). Este formulario define los campos que son visibles para el usuario:
 
 ```php
@@ -977,7 +957,6 @@ $name->addValidators(
 
 $this->add($name);
 ```
-
 Primero creamos el elemento. Luego le adjuntamos una etiqueta, adjuntamos filtros, para poder realizar el saneado de los datos. A continuación, aplicamos los validadores sobre el elemento y finalmente añadimos el elemento al formulario.
 
 Se usan también otros elementos en este formulario:
@@ -1007,7 +986,6 @@ $type = new Select(
     ]
 );
 ```
-
 En el fragmento de código anterior, añadimos un campo HTML oculto que contiene el `id` del producto, si es aplicable. También obtenemos todos los tipos de productos usando `ProductTypes::find()` y luego usamos ese conjunto de resultados para rellenar el elemento HTML `select` usando el componente [Phalcon\Tag](tag) y su método `select()`. Una vez que el formulario se pasa a la vista, se puede renderizar y mostrar al usuario:
 
 ```twig
@@ -1105,7 +1083,6 @@ Esto produce el siguiente HTML:
 Cuando se envía el formulario, se ejecuta la acción `search` en el controlador realizando la búsqueda basada en los datos introducidos por el usuario.
 
 ## Búsqueda
-
 La acción `search` tiene dos operaciones. Cuando accede usando el método HTTP `POST`, realiza la búsqueda basada en los datos enviados desde el formulario. Cuando se accede usando el método HTTP `GET`, se mueve a la página actual en el paginador. Para comprobar qué método HTTP se ha usado, usamos el componente [Request](request):
 
 ```php
@@ -1123,7 +1100,7 @@ public function searchAction()
 }
 ```
 
-Con la ayuda de [Phalcon\Mvc\Model\Criteria](api/phalcon_mvc#mvc-model-criteria), podemos crear las condiciones de búsqueda basadas en el tipo de datos y valores enviados desde el formulario:
+With the help of [Phalcon\Mvc\Model\Criteria][mvc-model-criteria], we can create the search conditions based on the data types and values sent from the form:
 
 ```php
 <?php
@@ -1137,8 +1114,8 @@ $query = Criteria::fromInput(
 
 Este método verifica qué valores son diferentes de '' (cadena vacía) y `null` y los tiene en cuenta para crear los criterios de búsqueda:
 
-- Si el tipo de datos del campo es `text` o similar (`char`, `varchar`, `text`, etc.) Usa un operador SQL `like` para filtrar los resultados.
-- Si el tipo de datos no es `text` o similar, usará el operador `=`.
+* If the field data type is `text` or similar (`char`, `varchar`, `text`, etc.) It uses an SQL `like` operator to filter the results.
+* Si el tipo de datos no es `text` o similar, usará el operador `=`.
 
 Además, `Criteria` ignora todas las variables `$_POST` que no coinciden con ningún campo de la tabla. Los valores se escapan automáticamente usando `parámetros vinculados`.
 
@@ -1192,7 +1169,6 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-
 El objeto [paginator](pagination) recibe los resultados obtenidos por la búsqueda. También establecemos un límite (resultados por página) así como el número de página. Finalmente, llamamos `paginate()` para obtener de vuelta el fragmento del conjunto de resultados correspondiente.
 
 A continuación, pasamos la página devuelta a la vista:
@@ -1339,6 +1315,7 @@ El bloque `for` completo es:
 - `3` - Ejecutado después del último producto en el bucle
 - `4` - Ejecutado si page.items no tiene ningún producto
 
+
 Ahora puede volver a la vista y averiguar qué hace cada bloque. Cada campo de `product` se imprime respectivamente:
 
 ```twig
@@ -1419,7 +1396,6 @@ $this->belongsTo(
     ]
 );
 ```
-
 Lo que significa, el atributo local `product_types_id` en `Products` tiene una relación uno-a-muchos con el modelo `ProductTypes` en su atributo `id`. Al definir esta relación, podemos acceder al nombre del tipo de producto usando:
 
 ```twig
@@ -1453,8 +1429,7 @@ Imprimir si el producto está activo o no usa un método ayudante:
 Este método se implementa en el modelo.
 
 ## Crear/Actualizar
-
-Cuando creamos y actualizamos registros, usamos las vistas `new` y `edit`. Los datos introducidos por el usuario se envían a las acciones `create` y `save` que realizan las acciones de *crear* y *actualizar* productos, respectivamente.
+Cuando creamos y actualizamos registros, usamos las vistas `new` y `edit`. The data entered by the user is sent to the `create` and `save` actions that perform actions of _creating_ and _updating_ products, respectively.
 
 En la página de creación, obtenemos los datos enviados y los asignamos a una nueva instancia `Products`:
 
@@ -1503,7 +1478,6 @@ public function createAction()
     // ...
 }
 ```
-
 Como se ha visto anteriormente, cuando estábamos creando el formulario, había algunos filtros asignados a los elementos pertinentes. Cuando los datos se pasan al formulario, se invocan estos filtros que sanean la entrada proporcionada. Aunque este filtrado es opcional, siempre es una buena práctica. Como añadido, el ORM también escapa los datos proporcionados y realiza una conversión de tipos adicional según los tipos de columna:
 
 ```php
@@ -1715,9 +1689,8 @@ public function saveAction()
 }
 ```
 
-## Componentes
-
-La UI (Interfaz de Usuario) se ha creado con la librería [Bootstrap](https://getbootstrap.com). Algunos elementos, como la barra de navegación cambia según el estado de la aplicación. Por ejemplo, en la esquina superior derecha, el enlace `Log in / Sign Up` cambia a `Log out` si un usuario ha iniciado sesión en la aplicación.
+## Components
+The UI has been create with the [Bootstrap][bootstrap] library. Algunos elementos, como la barra de navegación cambia según el estado de la aplicación. Por ejemplo, en la esquina superior derecha, el enlace `Log in / Sign Up` cambia a `Log out` si un usuario ha iniciado sesión en la aplicación.
 
 Esta parte de la aplicación se implementa en el componente `Elements` (`app/library/Elements.php`).
 
@@ -1740,7 +1713,7 @@ class Elements extends Injectable
 }
 ```
 
-Esta clase extiende [Phalcon\Di\Injectable](api/phalcon_di#di-injectable). No es necesario hacerlo, pero extender este componente nos permite acceder a todos los servicios de la aplicación. Vamos a registrar este componente de usuario en el contenedor de servicios:
+This class extends the [Phalcon\Di\Injectable][di-injectable]. No es necesario hacerlo, pero extender este componente nos permite acceder a todos los servicios de la aplicación. Vamos a registrar este componente de usuario en el contenedor de servicios:
 
 ```php
 <?php
@@ -1796,7 +1769,6 @@ La parte importante es:
 ```
 
 ## Títulos Dinámicos
-
 Cuando navega por la aplicación, verá que el título cambia dinámicamente indicando dónde estamos trabajando actualmente. Esto se consigue en cada controlador (método `initialize()`):
 
 ```php
@@ -1834,7 +1806,6 @@ class ControllerBase extends Controller
     // ...
 }
 ```
-
 El código anterior antepone el nombre de la aplicación al título
 
 Finalmente, el título se prime en la vista principal (`app/views/index.volt`):
@@ -1849,3 +1820,15 @@ Finalmente, el título se prime en la vista principal (`app/views/index.volt`):
     <!-- ... -->
 </html>
 ```
+
+[github_invo]: https://github.com/phalcon/invo
+
+[github_invo]: https://github.com/phalcon/invo
+[bootstrap]: https://getbootstrap.com
+[sha1]: https://php.net/manual/en/function.sha1.php
+[crud]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+[jinja]: https://jinja.palletsprojects.com/en/2.10.x/
+[twig]: https://twig.symfony.com/
+[events-event]: api/phalcon_events#events-event
+[di-injectable]: api/phalcon_di#di-injectable
+[mvc-model-criteria]: api/phalcon_mvc#mvc-model-criteria
