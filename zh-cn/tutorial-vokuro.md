@@ -7,46 +7,60 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 ---
 
 # Tutorial - Vökuró
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Vökuró
+[Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
+- User Login (security)
+- User Signup (security)
+- User Permissions
+- User management
 
-[Vökuró](https://github.com/phalcon/vokuro) is a sample application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
-
-> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
-{: .alert .alert-info }
-
+> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs. 
 > 
-> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
-{: .alert .alert-warning }
+> {: .alert .alert-info }
 
+> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial) 
 > 
-> **NOTE**: Note the code below has been formatted to increase readability
-{: .alert .alert-warning }
+> {: .alert .alert-warning }
+
+> **NOTE**: Note the code below has been formatted to increase readability 
+> 
+> {: .alert .alert-warning }
 
 ## Installation
-
 ### Downloading
-
-In order to install the application, you can either clone or download it from [GitHub](https://github.com/phalcon/vokuro). You can visit the GitHub page, download the application and then unzip it to a directory on your machine. Alternatively you can use `git clone`:
+In order to install the application, you can either clone or download it from [GitHub][github_vokuro]. You can visit the GitHub page, download the application and then unzip it to a directory on your machine. Alternatively you can use `git clone`:
 
 ```bash
 git clone https://github.com/phalcon/vokuro
 ```
 
 ### Extensions
+There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions:
+- ctype
+- curl
+- dom
+- json
+- iconv
+- mbstring
+- memcached
+- opcache
+- openssl
+- pdo
+- pdo_mysql
+- psr
+- session
+- simplexml
+- xml
+- xmlwriter
 
-There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
-
-Phalcon needs to be installed. Head over to the <installation> page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
+Phalcon needs to be installed. Head over to the [installation](installation) page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr][psr] GitHub page.
 
 Finally, you will also need to ensure that you have updated the composer packages (see section below).
 
 ### Run
-
 If all the above requirements are satisfied, you can run the application using PHP's built-in web server by issuing the following command on a terminal:
 
 ```bash
@@ -56,7 +70,6 @@ php -S localhost:8080 -t public/ .htrouter.php
 The above command will start serving the site for `localhost` at the port `8080`. You can change those settings to suit your needs. Alternatively you can set up your site in Apache or nginX using a virtual host. Please consult the relevant documentation on how to set up a virtual host for these web servers.
 
 ### Docker
-
 In the `resources` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application. To use the `Dockerfile` we need to decide the name of our dockerized application. For the purposes of this tutorial, we will use `phalcon-tutorial-vokuro`.
 
 From the root of the application we need to compile the project (you only need to do this once):
@@ -93,16 +106,15 @@ root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
 You now have a dockerized environment with all the necessary components to run Vökuró.
 
 ### Nanobox
-
 In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. All you have to do is copy the file to the root of your directory and run `nanobox run php-server`. Once the application is set up for the first time, you will be able to navigate to the IP address presented on screen and work with the application.
 
-For more information on how to set up nanobox, check our \[Environments Nanobox\]\[environments-nanobox\] page as well as the [Nanobox Guides](https://guides.nanobox.io/php/) page
+For more information on how to set up nanobox, check our \[Environments Nanobox\]\[environments-nanobox\] page as well as the [Nanobox Guides][nanobox-guides] page
 
-> **NOTE**: In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
-{: .alert .alert-info }
+> **NOTE**: In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`. 
+> 
+> {: .alert .alert-info }
 
 ## 结构
-
 Looking at the structure of the application we have the following:
 
 ```bash
@@ -155,11 +167,11 @@ vokuro/
 | `var/logs`        | Logs                                                  |
 | `vendor`          | Vendor/composer based libraries                       |
 
+
 ## Configuration
 
 ### `.env`
-
-[Vökuró](https://github.com/phalcon/vokuro) uses the popular [Dotenv](https://github.com/vlucas/phpdotenv) library by Vance Lucas. The library utilizes a `.env` file located in your root folder, which holds configuration parameters such as the database server host, username, password etc. There is a `.env.example` file that comes with Vökuró that you can copy and rename to `.env` and then edit it to match your environment. You need to do this first so that your application can run properly.
+[Vökuró][github_vokuro] uses the popular [Dotenv][dotenv] library by Vance Lucas. The library utilizes a `.env` file located in your root folder, which holds configuration parameters such as the database server host, username, password etc. There is a `.env.example` file that comes with Vökuró that you can copy and rename to `.env` and then edit it to match your environment. You need to do this first so that your application can run properly.
 
 The available options are:
 
@@ -184,13 +196,13 @@ The available options are:
 | `CODECEPTION_URL`    | The Codeception server for tests. If you run the tests locally this should be `127.0.0.1`                                                                               |
 | `CODECEPTION_PORT`   | The Codeception port                                                                                                                                                    |
 
+
 Once the configuration file is in place, visiting the IP address will present a screen similar to this:
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
 ### `Database`
-
-You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
+You also need to initialize the database. [Vökuró][github_vokuro] uses the popular library [Phinx][phinx] by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
 
 We will now need to run the migrations. To check the status of our database:
 
@@ -217,10 +229,9 @@ And the `status` command will now show all green:
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
 ### Config
-
 **acl.php**
 
-Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of *routes* that controls which routes are visible to only logged in users.
+Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of _routes_ that controls which routes are visible to only logged in users.
 
 The current setup will require a user to be logged in, if they visit these routes:
 
@@ -239,12 +250,13 @@ The current setup will require a user to be logged in, if they visit these route
 
 If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism.
 
-> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
-{: .alert .alert-info }
+> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism. 
+> 
+> {: .alert .alert-info }
 
 **config.php**
 
-This file holds all configuration parameters that Vökuró needs. Usually you will not need to change this file, since the elements of the array are set by the `.env` file and [Dotenv](https://github.com/vlucas/phpdotenv). However, you might want to change the location of your logs or other paths, should you decide to change the directory structure.
+This file holds all configuration parameters that Vökuró needs. Usually you will not need to change this file, since the elements of the array are set by the `.env` file and [Dotenv][dotenv]. However, you might want to change the location of your logs or other paths, should you decide to change the directory structure.
 
 One of the elements you might want to consider when working with Vökuró on your local machine is the `useMail` and set it to `false`. This will instruct Vökuró not to try to connect to a mail server and send an email when a user registers on the site.
 
@@ -261,20 +273,18 @@ This file contains the routes that Vökuró understands. The router already regi
 ```
 
 ### Providers
-
 As mentioned above, Vökuró uses classes called Providers in order to register services in the DI container. This is just one way to register services in the DI container, nothing stops you from putting all these registrations in a single file.
 
 For Vökuró we decided to use one file per service as well as a `providers.php` (see above) as the registration configuration array for these services. This allows us to have much smaller chunks of code, organized in a separate file per service, as well as an array that allows us to register or unregister/disable a service without removing files. All we need to do is change the `providers.php` array.
 
-The provider classes are located in `src/Providers`. Each of the provider classes implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface. For more information, see the bootstrapping section below.
+The provider classes are located in `src/Providers`. Each of the provider classes implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface. For more information, see the bootstrapping section below.
 
 ## Composer
+[Vökuró][github_vokuro] uses [composer][composer] to download and install supplemental PHP libraries. The libraries used are:
 
-[Vökuró](https://github.com/phalcon/vokuro) uses [composer](https://getcomposer.org) to download and install supplemental PHP libraries. The libraries used are:
-
-- [Dotenv](https://github.com/vlucas/phpdotenv)
-- [Phinx](https://github.com/cakephp/phinx)
-- [Swift Mailer](https://swiftmailer.symfony.com)
+- [Dotenv][dotenv]
+- [Phinx][phinx]
+- [Swift Mailer][swiftmailer]
 
 Looking at `composer.json` the required packages are:
 
@@ -301,12 +311,10 @@ or if you want to upgrade the existing installations of the above packages:
 composer update
 ```
 
-For more information about composer, you can visit their [documentation](https://getcomposer.org) page.
+For more information about composer, you can visit their [documentation][composer] page.
 
 ## Bootstrapping
-
 ### Entry
-
 The entry point of our application is `public/index.php`. This file contains the necessary code that bootstraps the application and runs it. It also serves as a single point of entry to our application, making things much easier for us when we want to trap errors, protect files etc.
 
 Let's look at the code:
@@ -341,8 +349,9 @@ First of all we ensure that we have full error reporting. You can of course chan
 
 A `try`/`catch` block wraps all operations. This ensures that all errors are caught and displayed on screen.
 
-> **NOTE** You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
-{: .alert .alert-danger }
+> **NOTE** You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application 
+> 
+> {: .alert .alert-danger }
 
 We ensure that we have access to all the supporting libraries by loading composer's autoloader. In the `composer.json` we have also defined the `autoload` entry, directing the autoloader to load any `Vokuro` namespaced classes from the `src` folder.
 
@@ -366,7 +375,6 @@ Dotenv\Dotenv::create($rootPath)->load();
 Finally, we run our application.
 
 ### Application
-
 All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
 
 ```php
@@ -485,7 +493,7 @@ We then create a new [Phalcon\Mvc\Application](application) and store it in a pr
 
 We then register this class (the `Vokuro\Application`) in the Di container using the name `bootstrap`. This allows us to have access to this class from any part of our application through the Di container.
 
-The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
+The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
 
 The available providers are:
 
@@ -508,10 +516,10 @@ The available providers are:
 | `UrlProvider`            | URL handling                                      |
 | `ViewProvider`           | Views and view engine                             |
 
+
 `run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
 
 ## Database
-
 As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
 
 | Table                 | 描述                                      |
@@ -522,14 +530,13 @@ As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, Postgre
 | `permissions`         | Permission matrix                       |
 | `phinxlog`            | Phinx migration table                   |
 | `profiles`            | Profile for each user                   |
-| `remember_tokens`     | *Remember Me* functionality tokens      |
+| `remember_tokens`     | _Remember Me_ functionality tokens      |
 | `reset_passwords`     | Reset password tokens table             |
 | `success_logins`      | Successful login attempts               |
 | `users`               | Users                                   |
 
 ## Models
-
-Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
+Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
 
 ```php
 <?php
@@ -586,8 +593,9 @@ In the model above, we have defined all the fields of the table as public proper
 echo $successLogin->ipAddress;
 ```
 
-> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
-{: .alert .alert-warning }
+> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table. 
+> 
+> {: .alert .alert-warning }
 
 In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
 
@@ -595,12 +603,12 @@ In the `initialize()` method, we also define a relationship between this model a
 echo $successLogin->user->name;
 ```
 
-> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
-{: .alert .alert-info }
+> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships 
+> 
+> {: .alert .alert-info }
 
 ## Controllers
-
-Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
+Again following the [Model-View-Controller][mvc] pattern, Vökuró has one controller to handle a specific _parent_ route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
 
 The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
 
@@ -643,12 +651,13 @@ The available controllers, actions and routes for Vökuró are:
 | `Users`       | `delete`         | `/users/delete`           | Delete user                                 |
 | `Users`       | `edit`           | `/users/edit`             | Edit user                                   |
 
-## Views
 
-The last element of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern is the views. Vökuró uses [Volt](volt) as the view engine for its views.
+## Views
+The last element of the [Model-View-Controller][mvc] pattern is the views. Vökuró uses [Volt](volt) as the view engine for its views.
 
 > **NOTE**: Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
-{: .alert .alert-info }
+> 
+> {: .alert .alert-info }
 
 The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
 
@@ -696,14 +705,12 @@ The available views are:
 The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
 ## Components
-
 There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
 
 ### Acl
+`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List][acl] for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page](acl).
 
-`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List](https://en.wikipedia.org/wiki/Access-control_list) for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page](acl).
-
-In this component, We define the resources that are considered *private*. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human readable descriptions for actions used throughout the application.
+In this component, We define the resources that are considered _private_. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human readable descriptions for actions used throughout the application.
 
 The component exposes the following methods:
 
@@ -718,7 +725,6 @@ The component exposes the following methods:
 | `rebuild()`                                 | `ACL object` | Rebuilds the access list into a file                            |
 
 ### Auth
-
 `Vokuro\Plugins\Auth\Auth` is a component that manages authentication and offers identity management in Vökuró.
 
 The component exposes the following methods:
@@ -741,14 +747,13 @@ The component exposes the following methods:
 | `deleteToken(int $userId)`               | Delete the current user token in session                                               |
 
 ### Mail
+`Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer][swiftmailer]. It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
 
-`Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
-
-> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
-{: .alert .alert-info } 
+> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid. 
+> 
+> {: .alert .alert-info }
 
 ## Sign Up
-
 ### Controller
 
 In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
@@ -794,20 +799,20 @@ class SessionController extends ControllerBase
 
 The workflow of the application is:
 
-- Visit `/session/signup` 
+- Visit `/session/signup`
     - Create form, send form to the view, render the form
-- Submit data (not post) 
+- Submit data (not post)
     - Form shows again, nothing else happens
-- Submit data (post) 
-    - Errors 
+- Submit data (post)
+    - Errors
         - Form validators have errors, send the form to the view, render the form (errors will show)
-    - No errors 
+    - No errors
         - Data is sanitized
         - New Model created
-        - Data saved in the database 
-            - Error 
+        - Data saved in the database
+            - Error
                 - Show message on screen and refresh the form
-            - Success 
+            - Success
                 - Record saved
                 - Show confirmation on screen
                 - Send email (if applicable)
@@ -818,8 +823,9 @@ In order to have validation for user supplied data, we are utilizing the [Phalco
 
 When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
 
-> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
-{: .alert .alert-info }
+> **NOTE**: All the forms for Vökuró are located in `/src/Forms` 
+> 
+> {: .alert .alert-info }
 
 First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
 
@@ -1057,7 +1063,7 @@ Now that we have everything set up in our form, we pass the form to the view:
 $this->view->setVar('form', $form);
 ```
 
-Our view now needs to *render* the elements:
+Our view now needs to _render_ the elements:
 
 ```twig
 {% raw %}
@@ -1132,8 +1138,7 @@ After that we have regular HTML tags with the relevant styling. In order to disp
 At the end of the view we render the `CSRF` hidden field as well as the submit button `Sign Up`.
 
 ### Post
-
-As mentioned above, once the user fills the form and clicks the `Sign Up` button, the form will *self post* i.e. it will post the data on the same controller and action (in our case `/session/signup`). The action now needs to process this posted data:
+As mentioned above, once the user fills the form and clicks the `Sign Up` button, the form will _self post_ i.e. it will post the data on the same controller and action (in our case `/session/signup`). The action now needs to process this posted data:
 
 ```php
 <?php
@@ -1422,9 +1427,10 @@ Also notable is that we define specific messages for foreign keys. If the partic
 
 **Events**
 
-[Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
+[Phalcon\Mvc\Model](db-models) is designed to fire specific [events](events). These event methods can be located either in a listener or in the same model.
 
 For the `Users` model, we attach code to the `afterSave` and `beforeValidationOnCreate` events.
+
 
 ```php
 <?php
@@ -1516,12 +1522,14 @@ class Users extends Model
 
 The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen.
 
-> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
-{: .alert .alert-info }
+> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user. 
+> 
+> {: .alert .alert-info }
 
 **Validation**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
+
 
 ```php
 <?php
@@ -1557,21 +1565,43 @@ class Users extends Model
 ```
 
 ## Conclusion
-
 Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 
 ## References
 
-- [Access Control Lists definition](https://en.wikipedia.org/wiki/Access-control_list)
-- [Composer](https://getcomposer.org) 
-- [DotEnv - Vance Lucas](https://github.com/vlucas/phpdotenv)
-- [Model-View-Controller definition](https://en.wikipedia.org/wiki/Model–view–controller)
-- [Nanobox Guides](https://guides.nanobox.io/php/)
-- [Phinx - Cake PHP](https://github.com/cakephp/phinx)
-- [PSR Extension](https://github.com/jbboehr/php-psr)
-- [Swift Mailer](https://swiftmailer.symfony.com)
+- [Access Control Lists definition][acl]
+- [Composer][composer]
+- [DotEnv - Vance Lucas][dotenv]
+- [Model-View-Controller definition][mvc]
+- [Nanobox Guides][nanobox-guides]
+- [Phinx - Cake PHP][phinx]
+- [PSR Extension][psr]
+- [Swift Mailer][swiftmailer]
 - [Phalcon ACL](acl)
 - [Phalcon Forms](forms)
 - [Phalcon HTTP Response](response)
 - [Phalcon Security](security)
-- [Vökuró - GitHub Repository](https://github.com/phalcon/vokuro)
+- [Vökuró - GitHub Repository][github_vokuro]
+
+
+[acl]: https://en.wikipedia.org/wiki/Access-control_list
+
+
+[acl]: https://en.wikipedia.org/wiki/Access-control_list
+[composer]: https://getcomposer.org
+[composer]: https://getcomposer.org
+[composer]: https://getcomposer.org
+[di-serviceproviderinterface]: api/phalcon_di#di-serviceproviderinterface
+[dotenv]: https://github.com/vlucas/phpdotenv
+[dotenv]: https://github.com/vlucas/phpdotenv
+[github_vokuro]: https://github.com/phalcon/vokuro
+[github_vokuro]: https://github.com/phalcon/vokuro
+[github_vokuro]: https://github.com/phalcon/vokuro
+[mvc]: https://en.wikipedia.org/wiki/Model–view–controller
+[mvc]: https://en.wikipedia.org/wiki/Model–view–controller
+[nanobox-guides]: https://guides.nanobox.io/php/
+[phinx]: https://github.com/cakephp/phinx
+[phinx]: https://github.com/cakephp/phinx
+[psr]: https://github.com/jbboehr/php-psr
+[psr]: https://github.com/jbboehr/php-psr
+[swiftmailer]: https://swiftmailer.symfony.com
