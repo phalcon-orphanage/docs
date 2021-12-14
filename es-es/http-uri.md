@@ -10,11 +10,11 @@ keywords: 'psr-7, http, http uri'
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-[Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) es una implementación de la interfaz de mensajería HTTP [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Uri][http-message-uri] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-[Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) devuelve un objeto que representa una URI. El objeto representa una URI definida en [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), que provee métodos para la mayoría de operaciones comunes. El uso principal de este componente es para peticiones HTTP pero puede ser usado en otros contextos.
+The [Phalcon\Http\Message\Uri][http-message-uri] returns a value object representing a URI. The object represents a URI as defined in [RFC 3986][rfc3986], providing methods for the most common operations. El uso principal de este componente es para peticiones HTTP pero puede ser usado en otros contextos.
 
 ```php
 <?php
@@ -27,7 +27,7 @@ $uri   = new Uri($query);
 echo $uri->getHost(); // 'd.phalcon.ld'
 ```
 
-El objeto [Uri](api/phalcon_http#http-message-uri) creado es inmutable, lo que significa que nunca va a cambiar. Cualquier llamada a métodos con prefijo `with*` devolverán un clon del objeto para mantener la inmutabilidad, según el estándar.
+The [Uri][http-message-uri] object created is immutable, meaning it will never change. Cualquier llamada a los métodos con prefijo `with*` devolverán un clon del objeto para mantener la inmutabilidad, siguiendo el estándar.
 
 ## Constructor
 
@@ -42,7 +42,7 @@ El constructor acepta una cadena opcional, que representa la URI. Si se especifi
 
 ### `__toString()`
 
-Devuelve la representación de la URI como cadena. Dependiendo de qué componentes de la URI están presentes, la cadena resultante es una URI completa o una referencia relativa según [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986), Sección 4.1. El método concatena los diversos componentes de la URI.
+Devuelve la representación de la URI como cadena. Depending on which components of the URI are present, the resulting string is either a full URI or relative reference according to [RFC 3986][rfc3986], Section 4.1. The method concatenates the various components of the URI.
 
 ```php
 <?php
@@ -183,7 +183,7 @@ echo $uri->getUserInfo(); // 'usr:pass'
 ```
 
 ## With
-El objeto Request es inmutable. Sin embargo, hay una serie de métodos en los que se permite inyectar datos. El objeto devuelto es un clon del original.
+El objeto `Request` es inmutable. Sin embargo, hay una serie de métodos que le permiten inyectar datos en él. El objeto devuelto es un clon del original.
 
 ### `withFragment()`
 
@@ -317,3 +317,9 @@ $clone = $uri->withUserInfo('phalcon', 'notsecret');
 
 echo $clone->getUserInfo(); // 'phalcon:notsecret'
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-uri]: api/phalcon_http#http-message-uri
+[http-message-uri]: api/phalcon_http#http-message-uri
+[rfc3986]: https://datatracker.ietf.org/doc/html/rfc3986
