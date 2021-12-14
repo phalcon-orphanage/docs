@@ -5,67 +5,69 @@ version: '4.0'
 ---
 
 # Model Relationships
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
-
 [Database normalization](db-normalization) is a process where data is split into different tables and links are created between those tables, in order to increase flexibility, reduce data redundancy and improve data integrity. Relationships are defined in the `initialize` method of each model.
 
-The following types of relationships are available: - one to one
+The following types of relationships are available:
+- one to one
 
-    hasOne(
-        string|array $fields, 
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array $options = null
-    )
-    
-    hasOneThrough(
-        string|array $fields, 
-        string $intermediateModel, 
-        string|array $intermediateFields, 
-        string|array $intermediateReferencedFields,
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array $options = null
-    )
-    
+```
+hasOne(
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
+)
+
+hasOneThrough(
+    string|array $fields, 
+    string $intermediateModel, 
+    string|array $intermediateFields, 
+    string|array $intermediateReferencedFields,
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
+)
+```
 
 - one to many
 
-    hasMany(
-        string|array $fields, 
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array options = null
-    )
-    
+```
+hasMany(
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array options = null
+)
+```
 
 - many to one
 
-    belongsTo(
-        string|array $fields, 
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array options = null
-    )
-    
+```
+belongsTo(
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array options = null
+)
+```
 
 - many to many
 
-    hasManyToMany(
-        string|array $fields, 
-        string $intermediateModel, 
-        string|array $intermediateFields, 
-        string|array $intermediateReferencedFields,
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array $options = null
-    )
-    
+```
+hasManyToMany(
+    string|array $fields, 
+    string $intermediateModel, 
+    string|array $intermediateFields, 
+    string|array $intermediateReferencedFields,
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
+)
+```
 
 Relationships can be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
 
@@ -95,19 +97,16 @@ class Invoices extends Model
 ```
 
 ## Unidirectional
-
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 ## Bidirectional
-
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 ## Setup
+In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasMany()`, `hasManyToMany()`, `hasOne()` and  `hasOneThrough()`, define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters:
 
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasMany()`, `hasManyToMany()`, `hasOne()` and `hasOneThrough()`, define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters:
-
-- local fields 
-- referenced model 
+- local fields
+- referenced model
 - referenced fields
 
 | メソッド            | Description                |
@@ -145,10 +144,10 @@ create table co_products
 );
 ```
 
-- The model `Invoices` has many `InvoicesProducts`.
-- The model `Products` has many `InvoicesProducts`.
-- The model `InvoicesProducts` belongs to both `Invoices` and `Products` models as a many-to-one relation.
-- The model `Invoices` has a relation many-to-many to `Products` through `InvoicesProducts`.
+* The model `Invoices` has many `InvoicesProducts`.
+* The model `Products` has many `InvoicesProducts`.
+* The model `InvoicesProducts` belongs to both `Invoices` and `Products` models as a many-to-one relation.
+* The model `Invoices` has a relation many-to-many to `Products` through `InvoicesProducts`.
 
 ![](/assets/images/content/models-relationships-erd-1.png)
 
@@ -314,8 +313,7 @@ class Invoices extends Model
 ```
 
 ## Parameters
-
-Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the *status* of the customer (e.g. active, inactive, etc.).
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the _status_ of the customer (e.g. active, inactive, etc.).
 
 Using relationships, you can get only those `Customers` that relate to our `Invoices` that have a certain `cst_status_flag`. Defining that constraint in the relationship allows you to let the model do all the work.
 
@@ -380,7 +378,6 @@ class Invoices extends Model
 ```
 
 ## Multiple Fields
-
 There are times, where relationships need to be defined on a combination of fields and not only one. Consider the following example:
 
 ```php
@@ -455,11 +452,11 @@ class Products extends Model
 }
 ```
 
-> **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
-{: .alert .alert-info }
+> **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models. 
+> 
+> {: .alert .alert-info }
 
 ## Accessing
-
 There are several ways that we can access the relationships of a model.
 
 - Magic `__get`, `__set`
@@ -467,7 +464,6 @@ There are several ways that we can access the relationships of a model.
 - `getRelated`
 
 ### `__get()`
-
 You can use the magic method to access the relationship. Assigning an `alias` to the relationship simplifies accessing the related data. The name of the property is the same as the one defined in the `alias`.
 
 ```php
@@ -513,8 +509,7 @@ foreach ($invoice->products as $product) {
 Using the magic `__get` allows you to access the relationship directly but does not offer additional functionality such as filtering or ordering on the relationship.
 
 ### `get*()`
-
-You can access the same relationship by using a getter method, starting with *get* and using the name of the relationship.
+You can access the same relationship by using a getter method, starting with _get_ and using the name of the relationship.
 
 ```php
 <?php
@@ -555,7 +550,6 @@ foreach ($invoice->getProducts() as $product) {
     echo $invoice->prd_name;
 }
 ```
-
 This magic getter also allows us to perform certain operations when accessing the relationship such as ordering the relationship:
 
 ```php
@@ -579,8 +573,8 @@ foreach ($products as $product) {
     echo $invoice->prd_name;
 }
 ```
-
 You can also add additional conditionals in the relationship:
+
 
 ```php
 <?php
@@ -679,7 +673,6 @@ echo $invoice->countProducts();
 ```
 
 ### `getRelated()`
-
 You can access the same relationship by using `getRelated()` and defining which relationship you want to get.
 
 ```php
@@ -717,7 +710,6 @@ foreach ($invoice->getRelated('products') as $product) {
     echo $invoice->prd_name;
 }
 ```
-
 The second parameter of `getRelated()` is an array that offers additional options to be set such as filtering and ordering.
 
 ```php
@@ -748,7 +740,6 @@ foreach ($products as $product) {
 ```
 
 ## Aliases
-
 Accessing a relationship cam be achieved by using the name of the remote table. Due to naming conventions, this might not be that easy and could lead to confusion. As seen above, you can define an `alias` to the relationship.
 
 ```php
@@ -858,36 +849,35 @@ class Parts extends Model
     }
 }
 ```
-
 In the example above, we have a `Part` that has a relationship with one or more `Part` objects. Each `Part` can consist of other parts that construct it. As a result we end up with a self join relationship. For a telephone `Part` we have the following children:
 
-    <?php
-    
-    $phone = Parts::findFirst(....);
-    
-    echo $phone->getChildren();
-    
-    // --- Cover
-    // --- Battery
-    // --- Charger
-    
+```
+<?php
 
+$phone = Parts::findFirst(....);
+
+echo $phone->getChildren();
+
+// --- Cover
+// --- Battery
+// --- Charger
+```
 and each of those parts has the telephone as a parent:
+```
+<?php
+$charger = Parts::findFirst(....);
 
-    <?php
-    $charger = Parts::findFirst(....);
-    
-    echo $phone->getParent();
-    
-    // Phone
-    
+echo $phone->getParent();
+
+// Phone
+```
 
 ## Caching
-
 Accessing related data can significantly increase the number of queries in your database. You can reduce this load as much as possible, by utilizing the `reusable` option in your relationship. Setting this option to `true` will instruct Phalcon to cache the results of the relationship the first time it is accessed, so that subsequent calls to the same relationship can use the cached resultset and not request the data again from the database. This cache is active during the same request.
 
-> **NOTE**: You are encouraged to use the `reusable` option as often as possible in your relationships
-{: .alert .alert-info }
+> **NOTE**: You are encouraged to use the `reusable` option as often as possible in your relationships 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -915,7 +905,6 @@ class Invoices extends Model
 ```
 
 ## Autocompletion
-
 Most IDEs and editors with auto-completion capabilities can not detect the correct types when using magic getters (both methods and properties). To address this issue, you can use the class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
 ```php
@@ -960,7 +949,6 @@ class Invoices extends Model
 ```
 
 ## Conditionals
-
 You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
 
 ```php
@@ -1077,7 +1065,6 @@ $unpaidInvoices = $company->getRelated(
 ```
 
 ## Virtual Foreign Keys
-
 By default, relationships do not have any constraints attached to them, to check related data when adding, updating or deleting records. You can however attach validations to your relationships, to ensure integrity of data. This can be done with the last parameter of the relationship related method.
 
 The cross table `InvoicesProducts` can be slightly changed to demonstrate this functionality:
@@ -1204,11 +1191,10 @@ class InvoicesProducts extends Model
 ```
 
 ### Cascade/Restrict
+Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data. You can define these constraints that mimic the RDBMS functionality for `CASCADE` and `RESTRICT` by using the `action` option in `foreignKey`. The [Phalcon\Mvc\Model\Relation][mvc-model-relation] underlying object offers two constants:
 
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data. You can define these constraints that mimic the RDBMS functionality for `CASCADE` and `RESTRICT` by using the `action` option in `foreignKey`. The [Phalcon\Mvc\Model\Relation](api/phalcon_mvc#mvc-model-relation) underlying object offers two constants:
-
-- `Relation::ACTION_CASCADE` 
-- `Relation::ACTION_RESTRICT` 
+- `Relation::ACTION_CASCADE`
+- `Relation::ACTION_RESTRICT`
 
 ```php
 <?php
@@ -1244,11 +1230,9 @@ class Products extends Model
 The code above allows you to delete all the related record if the primary record is deleted (cascade delete).
 
 ## Operations
-
 You can perform operations using relationships, if a resultset returns complete objects.
 
 ### Save
-
 Magic properties can be used to store a record and its related properties:
 
 ```php
@@ -1309,7 +1293,7 @@ $customer->save();
 
 The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship of the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
 
-Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an **update**, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
+Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
 
 Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
 
@@ -1317,13 +1301,13 @@ Saving data with the above syntax will implicitly create a transaction and commi
 > 
 > - `Phalcon\Mvc\Model::beforeSave()`
 > - `Phalcon\Mvc\Model::beforeCreate()`
-> - `Phalcon\Mvc\Model::beforeUpdate()`
-{: .alert .alert-warning }
+> - `Phalcon\Mvc\Model::beforeUpdate()` 
+>     
+>     {: .alert .alert-warning }
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 ### Update
-
 Instead of doing this:
 
 ```php
@@ -1379,7 +1363,6 @@ $customer->getInvoices()->update(
 ```
 
 ### Delete
-
 Instead of doing this:
 
 ```php
@@ -1419,3 +1402,5 @@ $customer->getInvoices()->delete(
     }
 );
 ```
+
+[mvc-model-relation]: api/phalcon_mvc#mvc-model-relation
