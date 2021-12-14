@@ -371,7 +371,7 @@
         ]
     },
     {
-        "text": "PSR",
+        "text": "PSR (Recomendaciones Estándar de PHP)",
         "url": "",
         "menu": [
             {
@@ -443,7 +443,7 @@
                 "url": "/collection"
             },
             {
-                "text": "Dominio",
+                "text": "Domain",
                 "url": "/domain"
             },
             {
@@ -451,7 +451,7 @@
                 "url": "/html"
             },
             {
-                "text": "Ayudantes (Helpers)",
+                "text": "Ayudantes",
                 "url": "/helper"
             },
             {
