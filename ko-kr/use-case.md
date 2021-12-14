@@ -7,29 +7,26 @@ keywords: 'use case, examples'
 ---
 
 # Use Case
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
 ## Requirements
-
-- MVC application using [Phalcon\Mvc\Application](application)
+- MVC application using [Phalcon\Mvc\Application][application]
 - Store data in a database (MariaDB/MySQL)
-- Offer a UI for users to work 
+- Offer a UI for users to work
     - Login page
-    - Administration area 
+    - Administration area
         - Cache management
         - Permissions
         - Products CRUD
         - Users CRUD
-    - Accounting department area 
+    - Accounting department area
         - Invoices
         - Customers
         - Payments
-    - Customer portal area 
+    - Customer portal area
         - Invoices (view)
         - Payment
         - Reports
@@ -76,3 +73,5 @@ Throughout this documentation we are going to assume that we are building an acc
 | `/admin/users/edit/{0-9}`         | Edit a user                                                  |
 | `/admin/users/delete/{0-9}`       | Delete a user                                                |
 | `/admin/users/view/{0-9}`         | View a user                                                  |
+
+[application]: application
