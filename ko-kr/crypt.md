@@ -7,33 +7,32 @@ keywords: 'crypt, encryption, decryption, ciphers'
 ---
 
 # Crypt Component
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 
-> **NOTE**: Requires PHP's [openssl](https://www.php.net/manual/en/book.openssl.php) extension to be present in the system
-{: .alert .alert-info }
-
+> **NOTE**: Requires PHP's [openssl][openssl] extension to be present in the system 
 > 
-> **DOES NOT** support insecure algorithms with modes:
-> 
-> `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
-{: .alert .alert-danger }
+> {: .alert .alert-info }
 
-Phalcon provides encryption facilities via the [Phalcon\Crypt](api/phalcon_crypt#crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
+> **DOES NOT** support insecure algorithms with modes: 
+> 
+> `des*`, `rc2*`, `rc4*`, `des*`, `*ecb` 
+> 
+> {: .alert .alert-danger }
+
+Phalcon provides encryption facilities via the [Phalcon\Crypt][crypt] component. This class offers simple object-oriented wrappers to the [openssl][openssl] PHP's encryption library.
 
 By default, this component utilizes the `AES-256-CFB` cipher.
 
-The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
-> **NOTE**: You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
-{: .alert .alert-warning }
+> **NOTE**: You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes. 
+> 
+> {: .alert .alert-warning }
 
 ## Basic Usage
-
 This component is designed to be very simple to use:
 
 ```php
@@ -72,7 +71,6 @@ echo $crypt->decrypt($encrypted, $key);
 ```
 
 ## Encrypt
-
 The `encrypt()` method encrypts a string. The component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
 
 ```php
@@ -103,11 +101,11 @@ $encrypted = $crypt->encrypt($text, $key);
 
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
-> **NOTE: If you choose `ccm` or `gcm` related ciphers, you must also supply `authData` for them. An exception will be thrown otherwise.
-{: .alert .alert-warning }
+> **NOTE: If you choose `ccm` or `gcm` related ciphers, you must also supply `authData` for them. An exception will be thrown otherwise. 
+> 
+> {: .alert .alert-warning }
 
 ## Decrypt
-
 The `decrypt()` method decrypts a string. Similar to `encrypt()` the component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
 
 ```php
@@ -141,16 +139,13 @@ $encrypted = $crypt->decrypt($text, $key);
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
 ## Base64 Encrypt
-
-The `encryptBase64()` can be used to encrypt a string in a URL friendly way. It uses `encrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for non URL *friendly* characters such as `+` or `/`.
+The `encryptBase64()` can be used to encrypt a string in a URL friendly way. It uses `encrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for non URL _friendly_ characters such as `+` or `/`.
 
 ## Base64 Decrypt
-
-The `decryptBase64()` can be used to decrypt a string in a URL friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL *friendly* characters such as `+` or `/`.
+The `decryptBase64()` can be used to decrypt a string in a URL friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_  characters such as `+` or `/`.
 
 ## Exceptions
-
-Exceptions thrown in the [Phalcon\Crypt](api/phalcon_crypt#crypt) component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch](api/phalcon_crypt#crypt-mismatch) will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Exceptions thrown in the [Phalcon\Crypt][crypt] component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -173,37 +168,32 @@ class IndexController extends Controller
 ```
 
 ## Functionality
-
 ### Ciphers
-
 The getter `getCipher()` returns the currently selected cipher. If none has been explicitly defined either by the setter `setCipher()` or the constructor of the object the `aes-256-cfb` is selected by default. The `aes-256-gcm` is the preferable cipher.
 
-You can always get an array of all the available ciphers for your system by calling `getAvailableCiphers()`.
+You can always get an array of all the available ciphers for your system by calling  `getAvailableCiphers()`.
 
 ### Hash Algorithm
-
 The getter `getHashAlgo()` returns the hashing algorithm use by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a \[Phalcon\Crypt\Exception\]\[crypt=exception\] will be thrown.
 
-You can always get an array of all the available hashing algorithms for your system by calling `getAvailableHashAlgos()`.
+You can always get an array of all the available hashing algorithms for your system by calling  `getAvailableHashAlgos()`.
 
 ### Keys
-
 The component offers a getter and a setter for the key to be used. Once the key is set, it will be used for any encrypting or decrypting operation (provided that the `key` parameter is not defined when using these methods).
 
 * `getKey()`: Returns the encryption key.
 * `setKey()` Sets the encryption key.
 
-> You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher.
+> You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
 > 
-> Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security) component, which can offer a strong key by hashing a string.
-{: .alert .alert-danger }
+> Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security) component, which can offer a strong key by hashing a string. 
+> 
+> {: .alert .alert-danger }
 
 ### Signing
-
 To instruct the component to use signing or not, `useSigning` is available. It accepts a boolean which sets a flag internally, specifying whether signing will be used or not.
 
 ### Auth Data
-
 If the cipher selected is of type `gcm` or `ccm` (what the cipher name ends with), auth data is required for the component to correctly encrypt or decrypt data. The methods available for this operation are:
 
 * `setAuthTag()`
@@ -211,7 +201,6 @@ If the cipher selected is of type `gcm` or `ccm` (what the cipher name ends with
 * `setAuthTagLength()` - defaults to `16`
 
 ### Padding
-
 You can also set the padding used by the component by using `setPadding()`. By default the component will use `PADDING_DEFAULT`. The available padding constants are:
 
 * `PADDING_ANSI_X_923`
@@ -223,8 +212,7 @@ You can also set the padding used by the component by using `setPadding()`. By d
 * `PADDING_ZERO`
 
 ## 의존성 주입(Dependency Injection)
-
-As with most Phalcon components, you can store the [Phalcon\Crypt](api/phalcon_crypt#crypt) object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+As with most Phalcon components, you can store the [Phalcon\Crypt][crypt] object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -294,3 +282,9 @@ class SecretsController extends Controller
 * [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
+
+[openssl]: https://www.php.net/manual/en/book.openssl.php
+[suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
+[crypt]: api/phalcon_crypt#crypt
+[crypt-mismatch]: api/phalcon_crypt#crypt-mismatch
+
