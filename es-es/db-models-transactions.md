@@ -7,19 +7,15 @@ keywords: 'modelos, transacciones'
 ---
 
 # Transacciones en modelos
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 Cuando un proceso ejecuta múltiples operaciones de bases de datos, es importante realizar todas esas operaciones como una sola unidad de trabajo. De esta forma, si una de las operaciones falla, no terminaremos con datos corruptos o registros huérfanos. Las transacciones de base de datos ofrecen esta funcionalidad, y aseguran que todas las operaciones de base de datos han sido ejecutadas correctamente antes de almacenar los datos en la base de datos.
 
 Las transacciones en Phalcon le permite confirmar todas las operaciones si se ejecutaron correctamente o deshacer todas las operaciones si algo ha ido mal.
 
 ## Manual
-
 Si una aplicación sólo usa una conexión y las transacciones no son muy complejas, una transacción se puede crear iniciando una transacción en la conexión y si todo está bien confirmar la transacción o deshacerla:
 
 ```php
@@ -75,7 +71,6 @@ class InvoicesController extends Controller
 ```
 
 ## Implícito
-
 Se pueden usar las relaciones existentes para almacenar registros en sus instancias relacionadas. Una operación como esta implícitamente crea una transacción para asegurar que los datos son correctamente almacenados:
 
 ```php
@@ -99,7 +94,6 @@ $customer->save();
 ```
 
 ## Aislado
-
 Las transacciones aisladas se ejecutan en una nueva conexión asegurando que todo el SQL generado, las comprobaciones de claves ajenas virtuales y reglas de negocio están aisladas de la conexión principal. Este tipo de transacción requiere un gestor de transacciones que globalmente gestione cada transacción creada, asegurándose de que son correctamente deshechas o confirmadas antes de terminar la petición:
 
 ```php
@@ -194,10 +188,10 @@ try {
 ```
 
 ## Excepciones
-
-Cualquier excepción lanzada en el componente *Transaction* será del tipo [Phalcon\Mvc\Model\Transaction\Exception](api/phalcon_mvc#mvc-model-transaction-exception) o [Phalcon\Mvc\Model\Transaction\Failed](api/phalcon_mvc#mvc-model-transaction-failed). Puede usar estas excepciones para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. Puede usar estas excepciones para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 Además, puede lanzar una excepción si la operación deshacer no se ejecuta correctamente, usando el método `throwRollbackException(true)`.
+
 
 ```php
 <?php
@@ -244,7 +238,6 @@ try {
 ```
 
 ## Inyección de Dependencias
-
 Las transacciones se reutilizan sin importar de donde se recupera el objeto transacción. Se genera una nueva transacción sólo cuando se realiza un `commit()` o `rollback()`. Puede usar el contenedor de servicio para crear un gestor de transacciones global para toda la aplicación:
 
 ```php
@@ -286,7 +279,9 @@ class ProductsController extends Controller
 }
 ```
 
-> **NOTA**: Mientras que una transacción esté activa, el gestor de transacciones siempre devolverá la misma transacción en toda la aplicación.
-{: .alert .alert-info }
+> **NOTE**: While a transaction is active, the transaction manager will always return the same transaction across the application. 
+> 
+> {: .alert .alert-info }
 
-
+[mvc-model-transaction-exception]: api/phalcon_mvc#mvc-model-transaction-exception
+[mvc-model-transaction-failed]: api/phalcon_mvc#mvc-model-transaction-failed
