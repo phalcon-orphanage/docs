@@ -7,35 +7,28 @@ keywords: 'devtools, herramientas de desarrollo, modelos, controladores'
 ---
 
 # Devtools de Phalcon
-
-* * *
-
+- - -
 ![](/assets/images/document-status-under-review-red.svg)
 
 ## Resumen
-
 Estas herramientas le ayudarán a generar código esqueleto, a mantener su estructura de base de datos y a acelerar el desarrollo. Los componentes principales de su aplicación se pueden generar con un comando simple, permitiéndole desarrollar aplicaciones fácilmente usando Phalcon.
 
 Las *Devtool* de Phalcon se pueden controlar usando la línea de comandos o el interfaz web.
 
 ## Instalación
 
-Se pueden instalar las *Devtools* de Phalcon usando <composer>. Primero asegúrese de que las ha instalado.
+Se pueden instalar las *Devtools* de Phalcon usando [composer](composer). Primero asegúrese de que las ha instalado.
 
 Instalar las *Devtools* de Phalcon globalmente
-
 ```bash
 composer global require phalcon/devtools
 ```
-
 O sólo en su proyecto
-
 ```bash
 composer require phalcon/devtools
 ```
 
 Compruebe su instalación escribiendo: `phalcon`
-
 ```bash
 $ phalcon
 
@@ -59,9 +52,7 @@ Available commands:
 Las *devtools* también están disponibles como descarga *phar* en nuestro [repositorio](github_devtools) git.
 
 ## Uso
-
 ### Comandos Disponibles
-
 Puede obtener un listado de los comandos disponibles en las herramientas Phalcon escribiendo: `phalcon commands`
 
 ```bash
@@ -85,7 +76,6 @@ Available commands:
 ```
 
 ### Generando un Esqueleto de Proyecto
-
 Puede usar las herramientas de Phalcon para generar esqueletos de proyecto predefinidos para sus aplicaciones con el *framework* Phalcon. Por defecto el generador de esqueletos de proyecto usarán mod_rewrite de Apache. Escriba el siguiente comando en el *document root* de su servidor web:
 
 ```bash
@@ -132,7 +122,6 @@ Acceder al proyecto desde el servidor web le mostrará:
 ![](/assets/images/content/v4/devtools-store-localhost.png)
 
 ### Generación de Controladores
-
 El comando `create-controller` genera estructuras esqueleto de controlador. Es importante invocar este comando dentro de un directorio que ya tenga un proyecto Phalcon.
 
 ```bash
@@ -158,7 +147,6 @@ class TestController extends \Phalcon\Mvc\Controller
 ```
 
 ### Preparación de Ajustes de Base de Datos
-
 Cuando se genera un proyecto usando las herramientas de desarrollo. Se puede encontrar un fichero de configuración en `app/config/config.php`. Para generar modelos o andamios, necesitará cambiar los ajustes usados para conectar con su base de datos.
 
 Cambie la sección de base de datos de su fichero config.php:
@@ -197,7 +185,6 @@ return new \Phalcon\Config([
 ```
 
 ### Generación de Modelos
-
 Hay varias maneras de crear modelos. Puede crear todos los modelos de la conexión de base de datos por defecto o algunos específicamente. Los modelos pueden tener atributos públicos como representación de los campos o se pueden usar *setters*/*getters*.
 
 ```bash
@@ -222,13 +209,10 @@ Opciones:
 ```
 
 La manera más simple de generar un modelo para una tabla llamada *users* es:
-
 ```bash
 $ phalcon model users
 ```
-
 Si su base de datos se ve así:
-
 ```sql
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -246,7 +230,6 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 ```
-
 Resultará en
 
 ```php
@@ -260,35 +243,30 @@ class Users extends \Phalcon\Mvc\Model
 
     /**
      *
-
      * @var integer
      */
     public $id;
 
     /**
      *
-
      * @var string
      */
     public $name;
 
     /**
      *
-
      * @var string
      */
     public $email;
 
     /**
      *
-
      * @var string
      */
     public $password;
 
     /**
      *
-
      * @var string
      */
     public $active;
@@ -348,15 +326,12 @@ class Users extends \Phalcon\Mvc\Model
 
 }
 ```
-
 Opciones para generar diferentes tipos de formatos de modelo se pueden encontrar usando
-
 ```bash
 phalcon model --help
 ```
 
 ### Andamiaje CRUD
-
 El *scaffolding* o andamiaje es una forma rápida de generar algunas de las piezas principales de una aplicación. Si quiere crear modelos, vistas y controladores para un nuevo recurso en una sola operación, el andamiaje es la herramienta para este trabajo.
 
 Una vez se genera el código, debe adaptarlo para cumplir con sus necesidades. Muchos desarrolladores evitan completamente el andamiaje, optando por escribir todo o la mayoría de su código fuente desde cero. El código generado puede servir como guía para comprender mejor cómo trabaja el framework o los prototipos de desarrollo. El siguiente código muestra un andamio basado en la tabla `users`:
@@ -389,17 +364,16 @@ Después de realizar una búsqueda, hay un componente de paginado disponible par
 ![](/assets/images/content/devtools-usage-05.png)
 
 ### Interfaz Web a las Herramientas
-
 También, si lo prefiere, es posible usar las Herramientas de Desarrollo de Phalcon desde un interfaz web. Eche un vistazo al siguiente videotutorial para descubrir como funciona:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen mark="crwd-mark"></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 ### Integrar Herramientas en IDE PhpStorm
-
-El siguiente videotutorial muestra como integrar las herramientas de desarrollo con el [IDE PhpStorm](https://www.jetbrains.com/phpstorm/). Los pasos de configuración podrían adaptarse fácilmente a otros IDEs para PHP.
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE][phpstorm]. Los pasos de configuración podrían adaptarse fácilmente a otros IDEs para PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
+[phpstorm]: https://www.jetbrains.com/phpstorm/
