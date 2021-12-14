@@ -7,25 +7,23 @@ keywords: 'psr-7, http, http request'
 ---
 
 # HTTP Request (PSR-7)
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-
-[Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Request][http-message-request] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-This implementation has been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) object. In return, our application will receive back a response object.
+This implementation has been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request][http-message-request] object. In return, our application will receive back a response object.
 
-> **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
-{: .alert .alert-info }
-
+> **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests. 
 > 
+> {: .alert .alert-info }
+
 > **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
-{: .alert .alert-info }
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -47,7 +45,7 @@ $request = $request
 $result = $httpClient->send($request);
 ```
 
-We are creating a new [Phalcon\Http\Message\Request](api/phalcon_http#http-message-request) object and a new [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) object with the target URL. Following that we define the method (`POST`) and additional headers that we need to send with our request. The client then sends the request by using the request object.
+We are creating a new [Phalcon\Http\Message\Request][http-message-request] object and a new [Phalcon\Http\Message\Uri][http-message-uri] object with the target URL. Following that we define the method (`POST`) and additional headers that we need to send with our request. The client then sends the request by using the request object.
 
 The above example can be implemented by only using the constructor parameters:
 
@@ -71,7 +69,7 @@ $request = new Request(
 $result = $httpClient->send($request);
 ```
 
-The [Request](api/phalcon_http#http-message-request) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+The [Request][http-message-request] object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
 ## Κατασκευαστής
 
@@ -83,13 +81,12 @@ public function __construct(
     [, array $headers = [] ]]]]
 )
 ```
-
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
 
 - `method` - defaults to `GET`. The supported methods are: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
-- `uri` - An instance of [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) or a URL.
-- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
-- `headers` - A key value array, with key as the header name and value as the header value.
+- `uri` - An instance of [Phalcon\Http\Message\Uri][http-message-uri] or a URL.
+- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException][http-message-exception-invalidargumentexception] is thrown
+- `headers`  - A key value array, with key as the header name and value as the header value.
 
 ## Getters
 
@@ -296,6 +293,7 @@ $request = new Request(
 echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
 
+
 ## Existence
 
 ### `hasHeader()`
@@ -326,12 +324,11 @@ echo $request->hasHeader('content-type'); // true
 ```
 
 ## With
-
 The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
 
 ### `withAddedHeader()`
 
-Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
+Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid header names or values. The header values can be a string or an array of strings.
 
 ```php
 <?php
@@ -384,7 +381,7 @@ var_dump(
 
 ### `withBody()`
 
-Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
+Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] when the body is not valid.
 
 ```php
 <?php
@@ -413,7 +410,7 @@ echo $clone->getBody(); // '/assets/stream/mit.txt'
 
 ### `withHeader()`
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
+Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid header names or values.
 
 ```php
 <?php
@@ -458,7 +455,7 @@ var_dump(
 
 ### `withMethod()`
 
-Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid HTTP methods.
+Return an instance with the provided HTTP method as a string. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for invalid HTTP methods.
 
 ```php
 <?php
@@ -586,3 +583,10 @@ var_dump(
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-request]: api/phalcon_http#http-message-request
+[http-message-request]: api/phalcon_http#http-message-request
+[http-message-uri]: api/phalcon_http#http-message-uri
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception
