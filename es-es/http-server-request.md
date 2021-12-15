@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Petición de Servidor HTTP (PSR-7)'
 keywords: 'psr-7, http, petición servidor http'
 ---
