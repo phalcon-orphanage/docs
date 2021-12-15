@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: '再現テスト'
 keywords: 'tests, testing, reproducible tests'
 ---
