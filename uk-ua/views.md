@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Views'
 upgrade: '#views'
 keywords: 'mvc, view, view component, simple view, responses'
