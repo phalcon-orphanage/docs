@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 upgrade: '#models'
 title: 'モデル'
 keywords: 'models, active record'
