@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '디버그'
 keywords: 'debug, debugging, error handling, 디버그, 디버깅, 오류, 오류처리, 에러'
 ---
