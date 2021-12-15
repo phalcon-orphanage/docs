@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ru-ru'
-version: '4.0'
+version: '5.0'
 title: 'Производительность'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---
