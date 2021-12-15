@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'zh-cn'
-version: '4.0'
+version: '5.0'
 title: 'Routing'
 upgrade: '#router'
 keywords: 'routing, routes'
