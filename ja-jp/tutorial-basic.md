@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: 'チュートリアル - 基本編'
 keywords: 'チュートリアル, チュートリアル基本編, 基本, ステップバイステップ, tutorial, step by step, mvc'
 ---
