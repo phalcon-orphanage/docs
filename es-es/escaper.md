@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Escaper'
 keywords: 'escapador, escapar html, escapar js, escapar css'
 ---
