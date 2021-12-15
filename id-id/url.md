@@ -2,7 +2,7 @@
 layout: default
 language: 'id-id'
 upgrade: '#url'
-version: '4.0'
+version: '5.0'
 title: 'URL'
 keywords: 'url, url handling, url generation, static url, dynamic url'
 ---
