@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ru-ru'
-version: '4.0'
+version: '5.0'
 title: 'Tutorial - REST'
 keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---

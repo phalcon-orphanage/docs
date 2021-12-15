@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ru-ru'
-version: '4.0'
+version: '5.0'
 upgrade: '#logger'
 title: 'Журналирование'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'

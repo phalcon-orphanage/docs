@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Enlace HTML (PSR-13)'
 keywords: 'psr-13, http, enlace, enlace evolutivo'
 ---

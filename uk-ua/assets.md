@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 upgrade: '#assets'
 title: 'Assets'
 keywords: 'assets, js, css'

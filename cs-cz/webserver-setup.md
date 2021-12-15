@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '4.0'
+version: '5.0'
 title: 'Web Server Setup'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---

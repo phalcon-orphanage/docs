@@ -2,7 +2,7 @@
 layout: default
 language: 'es-es'
 upgrade: '#url'
-version: '4.0'
+version: '5.0'
 title: 'URL'
 keywords: 'url, gestión url, generación url, url estática, url dinámica'
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 upgrade: '#volt'
 title: 'Volt: Motor de plantillas'
 keywords: 'volt, motor de plantillas, generación php, datos de vista'

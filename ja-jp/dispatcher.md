@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: 'ディスパッチャー'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'zh-cn'
-version: '4.0'
+version: '5.0'
 title: '微型应用'
 keywords: 'application, micro, handlers, api'
 ---

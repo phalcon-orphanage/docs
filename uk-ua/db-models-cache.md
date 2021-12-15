@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Model Caching'
 keywords: 'models, caching, phql, resultsets, reuse'
 ---

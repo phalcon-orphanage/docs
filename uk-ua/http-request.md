@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'HTTP Request (PSR-7)'
 keywords: 'psr-7, http, http request'
 ---

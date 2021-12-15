@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: 'ローダー'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---

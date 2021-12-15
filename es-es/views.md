@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Vistas'
 upgrade: '#views'
 keywords: 'mvc, vista, componente vista, vista simple, respuestas'

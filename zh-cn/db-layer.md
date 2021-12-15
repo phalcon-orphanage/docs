@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'zh-cn'
-version: '4.0'
+version: '5.0'
 title: 'Database Abstraction Layer'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---

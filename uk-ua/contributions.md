@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Участь у розвитку'
 keywords: 'contributing, nfr, pull request, pr, new feature request, участь у розвитку фреймворка, звф, вдосконалення функціоналу'
 ---

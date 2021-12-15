@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 upgrade: '#cli'
 title: 'Aplicación CLI'
 keywords: 'cli, línea de comandos, aplicación, tareas'

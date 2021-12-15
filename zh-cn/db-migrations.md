@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'zh-cn'
-version: '4.0'
+version: '5.0'
 title: '数据库迁移'
 keywords: 'database, migrations, schema, tables, columns'
 ---

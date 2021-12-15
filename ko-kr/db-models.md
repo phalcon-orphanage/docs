@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 upgrade: '#models'
 title: '모델'
 keywords: 'models, active record'

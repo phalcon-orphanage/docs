@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Навчальний посібник - Vökuró'
 keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, навчальний посібник vokuro, крок за кроком, безпека, дозволи'
 ---

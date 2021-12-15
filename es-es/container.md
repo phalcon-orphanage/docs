@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Contenedor de inyección de dependencias (PSR-11)'
 keywords: 'psr-11, di, contenedor, inyección de dependencias'
 ---

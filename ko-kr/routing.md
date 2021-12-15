@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '라우팅'
 upgrade: '#router'
 keywords: 'routing, routes'

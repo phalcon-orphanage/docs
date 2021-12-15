@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '기여하기'
 keywords: 'contributing, nfr, pull request, pr, new feature request, 기여하기, 새로운 기능 요청'
 ---

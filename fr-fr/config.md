@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'fr-fr'
-version: '4.0'
+version: '5.0'
 title: 'Config'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---

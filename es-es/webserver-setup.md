@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Configuración de Servidor Web'
 keywords: 'servidor web, servidor web, apache, nginx, lighttpd, xampp, wamp, cherokee, servidor integrado php'
 ---

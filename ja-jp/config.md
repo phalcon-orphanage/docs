@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: '設定'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---

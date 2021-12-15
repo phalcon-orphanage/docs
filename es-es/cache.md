@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 upgrade: '#cache'
 title: 'Cache'
 keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serializar, redis, memcached, apcu, fábrica, memory, stream'

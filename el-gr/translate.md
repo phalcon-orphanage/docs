@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'el-gr'
-version: '4.0'
+version: '5.0'
 title: 'Μετάφραση'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'
 ---

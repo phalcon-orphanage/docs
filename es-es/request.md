@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 upgrade: '#request'
 title: 'Petición HTTP'
 keywords: 'http, petición http, petición'

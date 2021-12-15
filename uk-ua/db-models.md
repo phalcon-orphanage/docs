@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 upgrade: '#models'
 title: 'Моделі'
 keywords: 'models, active record'

@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'it-it'
-version: '4.0'
+version: '5.0'
 title: 'Queueing'
 keywords: 'queue, nats, beanstalk, redis'
 ---

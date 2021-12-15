@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Inyector de Dependencias / Localizador de Servicios'
 keywords: 'inyección de dependencias, di, ioc, localizador servicios'
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'id-id'
-version: '4.0'
+version: '5.0'
 title: 'Installation'
 keywords: 'installation, installing Phalcon'
 ---

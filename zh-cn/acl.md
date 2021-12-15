@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'zh-cn'
-version: '4.0'
+version: '5.0'
 upgrade: '#acl'
 title: '访问控制列表 (ACL)'
 keywords: 'acl, access control list, permissions'

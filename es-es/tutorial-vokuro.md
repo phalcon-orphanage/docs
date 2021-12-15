@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Tutorial - Vökuró'
 keywords: 'tutorial, tutorial vokuro, paso a paso, mvc, seguridad, permisos'
 ---

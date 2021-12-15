@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '디스패쳐'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '지침서 - 기초'
 keywords: 'tutorial, basic tutorial, step by step, mvc, 지침서, 기초, 튜토리얼'
 ---

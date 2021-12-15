@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 upgrade: '#logger'
 title: 'Журнал'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'

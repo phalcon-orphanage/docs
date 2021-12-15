@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'it-it'
-version: '4.0'
+version: '5.0'
 title: 'Collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---

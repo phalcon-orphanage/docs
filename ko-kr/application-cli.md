@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 upgrade: '#cli'
 title: 'CLI Application'
 keywords: 'cli, command line, application, tasks'

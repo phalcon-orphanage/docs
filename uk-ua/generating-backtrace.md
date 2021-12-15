@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Створення зворотного трасування'
 keywords: 'backtrace, debugging, segmentation faults, зворотне трасування, відлагодження, виловлювання помилок'
 ---

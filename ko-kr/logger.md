@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 upgrade: '#logger'
 title: '로거'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'

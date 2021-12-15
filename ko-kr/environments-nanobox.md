@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '개발환경 - Nanobox'
 keywords: 'environment, nanobox, docker, 개발환경, 환경, 도커'
 ---

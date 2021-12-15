@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 upgrade: '#volt'
 title: 'Volt: テンプレートエンジン'
 keywords: 'volt, template engine, php generation, view data'

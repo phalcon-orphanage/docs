@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Запит на вдосконалення функціоналу'
 keywords: 'запит на вдосконалення функціоналу'
 ---
