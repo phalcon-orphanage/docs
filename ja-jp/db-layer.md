@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: 'データベース抽象化レイヤー'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---
