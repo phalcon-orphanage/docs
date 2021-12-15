@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 upgrade: '#volt'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
