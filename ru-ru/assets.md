@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ru-ru'
-version: '4.0'
+version: '5.0'
 upgrade: '#assets'
 title: 'Медиа-ресурсы'
 keywords: 'assets, js, css'
