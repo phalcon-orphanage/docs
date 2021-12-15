@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'pt-br'
-version: '4.0'
+version: '5.0'
 upgrade: '#models'
 title: 'Models'
 keywords: 'models, active record'
