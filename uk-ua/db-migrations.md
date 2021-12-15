@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'uk-ua'
-version: '4.0'
+version: '5.0'
 title: 'Міграції бази даних'
 keywords: 'database, migrations, schema, tables, columns, база, міграції, схеми, таблиці, стовпці'
 ---
