@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'fa-ir'
-version: '4.0'
+version: '5.0'
 title: 'Testing Environment'
 keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 ---
