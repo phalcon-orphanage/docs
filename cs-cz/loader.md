@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '4.0'
+version: '5.0'
 title: 'Loader'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
