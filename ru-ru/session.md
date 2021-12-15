@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ru-ru'
-version: '4.0'
+version: '5.0'
 title: 'Session'
 keywords: 'session, session manager, session adapters, redis, libmemcached, none, stream'
 ---
