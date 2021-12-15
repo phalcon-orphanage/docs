@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ja-jp'
-version: '4.0'
+version: '5.0'
 title: 'セキュリティ'
 keywords: 'security, hashing, passwords'
 ---
