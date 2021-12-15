@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Lista de Peticiones de Nuevas Características'
 keywords: 'lista peticiones nuevas características, lista nfr'
 ---
