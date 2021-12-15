@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '재현가능한 테스트'
 keywords: 'tests, testing, reproducible tests'
 ---
