@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '설치'
 keywords: '설치, Phalcon 설치, 팔콘설치'
 ---
