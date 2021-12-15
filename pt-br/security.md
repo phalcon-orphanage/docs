@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'pt-br'
-version: '4.0'
+version: '5.0'
 title: 'Segurança'
 keywords: 'security, hashing, passwords'
 ---
