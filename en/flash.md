@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'en'
-version: '4.0'
+version: '5.0'
 upgrade: '#flash'
 title: 'Flash Messages'
 keywords: 'flash, flash messages, flash direct, flash session, templates'

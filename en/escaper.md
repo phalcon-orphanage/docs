@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'en'
-version: '4.0'
+version: '5.0'
 title: 'Escaper'
 keywords: 'escaper, escape html, escape js, escape css'
 ---
