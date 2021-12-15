@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'tr-tr'
-version: '4.0'
+version: '5.0'
 title: 'Yükleyici'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
