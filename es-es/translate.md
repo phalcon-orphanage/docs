@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'es-es'
-version: '4.0'
+version: '5.0'
 title: 'Traducciones'
 keywords: 'traducir, traducciones, adaptadores de traducción, vector nativo, csv, gettest'
 ---
