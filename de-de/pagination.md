@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'de-de'
-version: '4.0'
+version: '5.0'
 title: 'Pagination'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
 ---
