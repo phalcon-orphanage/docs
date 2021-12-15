@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'fr-fr'
-version: '4.0'
+version: '5.0'
 title: 'HTML Link (PSR-13)'
 keywords: 'psr-13, http, link, evolvable link'
 ---
