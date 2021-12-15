@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'el-gr'
-version: '4.0'
+version: '5.0'
 title: 'Φορτωτής'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
