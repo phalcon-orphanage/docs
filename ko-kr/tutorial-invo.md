@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ko-kr'
-version: '4.0'
+version: '5.0'
 title: '자습서 - INVO'
 keywords: 'tutorial, invo tutorial, step by step, mvc, 자습서'
 ---
