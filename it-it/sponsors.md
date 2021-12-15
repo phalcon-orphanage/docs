@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'it-it'
-version: '4.0'
+version: '5.0'
 title: 'Sponsors'
 keywords: 'sponsors, opencollective, supporters'
 ---
