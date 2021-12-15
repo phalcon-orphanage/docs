@@ -7,24 +7,21 @@ keywords: 'controllers, mvc'
 ---
 
 # Controladores
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
+Un controlador es una clase que contiene la lógica de negocio para una aplicación. También es responsable de ejecutar las solicitudes de los usuarios. Controllers have methods called _actions_ that contain such business logic and handle user requests.
 
-Un controlador es una clase que contiene la lógica de negocio para una aplicación. También es responsable de ejecutar las solicitudes de los usuarios. Los controladores tienen métodos llamados *acciones* que contienen esa lógica de negocio y gestionan las solicitudes de los usuarios.
+Una acción es cualquier método público en un controlador con el sufijo `Action`. These _actions_ are accessible by a URL and are responsible for interpreting the request and creating the response. Normalmente las respuestas tienen forma de una vista renderizada, pero también hay otras formas de crear respuestas.
 
-Una acción es cualquier método público en un controlador con el sufijo `Action`. Estas *acciones* están disponibles a través de una URL y son responsables de interpretar la solicitud y crear la respuesta. Normalmente las respuestas tienen forma de una vista renderizada, pero también hay otras formas de crear respuestas.
+Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller][mvc-controller] class.
 
-Los controladores en Phalcon **deben** tener el sufijo `Controller` en su nombre de archivo y de clase y **deben** extender la clase [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller).
+> **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**. 
+> 
+> {: .alert .alert-info }
 
-> **NOTA**: El controlador por defecto (cuando no se ha especificado ninguno en la URL) es **IndexController** y la acción por defecto (cuando no se ha especificado ninguna en la URL) es **indexAction**.
-{: .alert .alert-info }
-
-## Enrutamiento
-
+## Ruteo
 El [enrutamiento](routing) se explica más en detalle en el documento correspondiente. No obstante, el formato de ruta por defecto es:
 
 ```bash
@@ -32,6 +29,7 @@ El [enrutamiento](routing) se explica más en detalle en el documento correspond
 ```
 
 Puedes encontrar más información acerca de los módulos en el documento dedicado a la [aplicación](application). Para una aplicación que no tiene ningún módulo, el formato de ruta por defecto es:
+
 
 ```bash
 /:controller/:action/:parameter1/:parameter2
@@ -45,16 +43,16 @@ https://dev.phalcon.ld/invoices/list/2/25
 
 tendrá:
 
-| Slug       | Descripción    |
-| ---------- | -------------- |
-| `invoices` | **Controller** |
-| `list`     | **Action**     |
-| `2`        | **Parameter1** |
-| `25`       | **Parameter2** |
+| Slug       | Descripción     |
+| ---------- | --------------- |
+| `invoices` | **Controlador** |
+| `list`     | **Acción**      |
+| `2`        | **Parameter1**  |
+| `25`       | **Parameter2**  |
 
 La dirección arriba descrita llamará a `InvoiceController` y `listAction`. Los parámetros estarán disponibles a través de la solicitud [](request) en el controlador y la acción.
 
-Las clases de controlador pueden estar en cualquier carpeta de la aplicación, siempre y cuando el autoloader sepa dónde buscarlas en el momento en el que se las llame. [Phalcon\Loader](loader) tiene numerosas opciones para registrar directorios, espacios de nombres, etc. con el propósito de ayudar a descubrir los controladores.
+Las clases de controlador pueden estar en cualquier carpeta de la aplicación, siempre y cuando el autoloader sepa dónde buscarlas en el momento en el que se las llame. [Phalcon\Loader](loader) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
 
 A continuación un ejemplo de controlador:
 
@@ -78,8 +76,7 @@ class InvoicesController extends Controller
 ```
 
 ## Inicialización
-
-[Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) llama al método `initialize()` (si está presente) primero, antes de que cualquier acción se ejecute en un controlador.
+[Phalcon\Mvc\Controller][mvc-controller] calls the  `initialize()` method (if present) first, before any action is executed on a controller.
 
 ```php
 <?php
@@ -104,13 +101,14 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTA**: No se recomienda el uso del método `__construct()`.
-{: .alert .alert-warning }
-
-
+> **NOTE**: The use of the `__construct()` method is not recommended. 
 > 
-> **NOTA**: El método `initialize()` solo se llama si el evento `beforeExecuteRoute` se ha ejecutado correctamente. Esto es así para asegurar que si tienes el código de verificación de autorización en el evento, `inicialize` nunca será invocado.
-{: .alert .alert-warning }
+> {: .alert .alert-warning }
+
+
+> **NOTE**: The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked 
+> 
+> {: .alert .alert-warning }
 
 Si deseas ejecutar alguna lógica de inicialización justo después de que el objeto del controlador sea construido, entonces puedes implementar el método `onConstruct()`:
 
@@ -128,11 +126,11 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTA**: Ten en cuenta que `onConstruct()` se ejecuta incluso si la acción a ejecutar no existe en el controlador o el usuario no tiene acceso a él (asumiendo que el control de acceso personalizado está implementado en la aplicación).
-{: .alert .alert-warning }
+> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application). 
+> 
+> {: .alert .alert-warning }
 
 ## Dispatch Loop
-
 El dispatch loop se ejecutará dentro del [Dispatcher](dispatcher) hasta que no quede ninguna acción por ejecutar. En los ejemplos anteriores se mostraba el código en una única acción, la cual se ejecutará con la solicitud apropiada.
 
 Podemos utilizar el objeto [Dispatcher](dispatcher) para reenviar la solicitud a un módulo, controlador o acción diferente, creando así un flujo de operaciones más complejo en el dispatch loop.
@@ -198,8 +196,7 @@ Lo anterior es un simple ejemplo de reenvio para los usuarios que no han iniciad
 No hay límite para las llamadas de `reenvío` que puedas tener en tu aplicación. Sin embargo, hay que tener cuidado ya que el reenvío podría conducir a referencias circulares, momento en el cual tu aplicación se detendrá. Si no hay otras acciones que enviar por el dispatch loop, el dispatcher invocará automáticamente la capa de la vista del MVC administrada por [Phalcon\Mvc\View](views).
 
 ## Acciones
-
-Las acciones son métodos que se llaman para ejecutar la funcionalidad necesaria para nuestra aplicación. Las acciones **deben** tener el sufijo `Action` y a su vez deben coincidir con una solicitud de ruta del usuario.
+Las acciones son métodos que se llaman para ejecutar la funcionalidad necesaria para nuestra aplicación. Actions **must** be suffixed by `Action` and they match a route request from the user.
 
 ```php
 <?php
@@ -235,8 +232,7 @@ le dirá al dispatcher que llame al método `listAction` con los parámetros que
 devolverá un `404` - página no encontrada.
 
 ## Parámetros
-
-Los parámetros adicionales del URI se definen como parámetros de la acción, de modo que puedan ser fácilmente accesibles usando variables locales. Cualquier controlador puede extender opcionalmente [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller). De esta manera, el controlador puede acceder fácilmente a los servicios de la aplicación.
+Los parámetros adicionales del URI se definen como parámetros de la acción, de modo que puedan ser fácilmente accesibles usando variables locales. A controller can optionally extend [Phalcon\Mvc\Controller][mvc-controller]. De esta manera, el controlador puede acceder fácilmente a los servicios de la aplicación.
 
 Los parámetros sin ningún valor por defecto son tratados como obligatorios. Establecer los parámetros con valores opcionales se realiza como de costumbre en PHP:
 
@@ -259,21 +255,20 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTA**: Necesitarás añadir código adicional para asegurarte que los datos pasados son del tipo correcto y que o bien utilizan el valor por defecto o tienen un valor correcto. Sinó, acabarás con errores.
-{: .alert .alert-warning }
+> **NOTE**: You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. Sinó, acabarás con errores. 
+> 
+> {: .alert .alert-warning }
 
 Para el ejemplo anterior, la URL para llamar al método es:
 
 ```php
 /invoices/list/2/10
 ```
-
 Sin embargo, tendrás que asegurarte de tener en cuenta una URL como ésta:
 
 ```php
 /invoices/list/wrong-value/another-wrong-value
 ```
-
 En la URL anterior ni el parámetro `$page` ni `$perPage` concordarán con el tipo `int` y por lo tanto se producirá un error. Puede que quieras considerar otra estrategia para contrarrestar esto. Una forma de solucionarlo es eliminar los tipos y asegurarse de que los parámetros se convierten al tipo correcto dentro de la acción:
 
 ```php
@@ -325,7 +320,6 @@ class InvoicesController extends Controller
 Los parámetros anteriores coincidirán con la ruta tal y como fue definida.
 
 ## Eventos
-
 Los controladores funcionan también como *escuchas (listeners)* de los [eventos](events) del *[despachador (dispatcher)](dispatcher)*. Tienen métodos para cada evento, por lo cual se pueden crear *puntos de enganche* antes y después de que las acciones sean ejecutadas:
 
 ```php
@@ -368,13 +362,13 @@ class InvoicesController extends Controller
 ```
 
 ## Solicitud - Respuesta
+If you have already registered a [Request](request) and [Response](response) services to your DI container or have simply instantiated the [Phalcon\Di\FactoryDefault][di-factorydefault] one, you can access these objects as properties in your controller.
 
-Si ya has registrado los servicios de [Solicitud](request) y [Respuesta](response) en el contenedor de DI (Inyección de Dependencias) o simplemente has instanciado el [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) correspondiente, puedes acceder a estos objetos como propiedades en el controlador.
+For [Phalcon\Di\FactoryDefault][di-factorydefault], your objects will be [Phalcon\Http\Request][request] for `request` and [Phalcon\Http\Response][response] for response. La `solicitud` contiene la solicitud del usuario, incluyendo todas las variables establecidas por el método (`GET`, `POST`, etc.) junto con información adicional sobre la solicitud. La `respuesta` contiene datos que necesitamos enviar como `content-type`, código de estado, payload, etc.
 
-Para [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), sus objetos serán [Phalcon\Http\Request](api/phalcon_http#http-request) para la `solicitud` y [Phalcon\Http\Response](api/phalcon_http#http-response) para la respuesta. La `solicitud` contiene la solicitud del usuario, incluyendo todas las variables establecidas por el método (`GET`, `POST`, etc.) junto con información adicional sobre la solicitud. La `respuesta` contiene datos que necesitamos enviar como `content-type`, código de estado, payload, etc.
-
-> **NOTA**: Para acceder a los servicios desde el controlador, necesitarás extender la clase `Phalcon\Mvc\Controller`
-{: .alert .alert-info }
+> **NOTE**: In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -408,7 +402,10 @@ class InvoicesController extends Controller
 }
 ```
 
-El código anterior comprueba primero si la solicitud es una solicitud de tipo `POST`. Si es así, entonces obtiene dos variables del superglobal `$_POST`. La sintaxis que usamos es: - Obtener la variable (`page`) - Si existe, sanearla como un entero - Si no existe, devolver el valor predeterminado `1`
+El código anterior comprueba primero si la solicitud es una solicitud de tipo `POST`. Si es así, entonces obtiene dos variables del superglobal `$_POST`. The syntax we use is:
+- Get the variable (`page`)
+- If it exists, sanitize it to an integer
+- If it does not exist, return the default `1`
 
 Usando esta técnica, nos aseguramos de que toda la entrada esté correctamente saneada y que se establezcan los valores predeterminados.
 
@@ -519,9 +516,8 @@ class InvoicesController extends Controller
 
 En el ejemplo anterior, devolvemos un array desde nuestra acción. El método `afterExecuteRoute` inhabilita la vista, establece el tipo de contenido a JSON, y si la respuesta no ha sido enviada, establece el contenido en formato JSON y envía la respuesta.
 
-## Sesión
-
-Las sesiones nos ayudan a mantener la persistencia de datos entre las solicitudes. Puedes acceder a un [Phalcon\Session\Bag](api/phalcon_session#session-bag) desde cualquier controlador utilizando la propiedad `persistent` para encapsular los datos que necesitan ser persistentes:
+## Session
+Las sesiones nos ayudan a mantener la persistencia de datos entre las solicitudes. You can access a [Phalcon\Session\Bag][session-bag] from any controller using the property `persistent` to encapsulate data that needs to be persistent:
 
 ```php
 <?php
@@ -546,12 +542,12 @@ class UserController extends Controller
 }
 ```
 
-> **NOTA**: Ten en cuenta que el servicio `persistent` se registra automáticamente para cualquier componente (incluyendo los controladores) que extienda la clase `Phalcon\Di\Injectable`
-{: .alert .alert-info }
+> **NOTE**: Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class 
+> 
+> {: .alert .alert-info }
 
 ## Inyección de Dependencias
-
-Puedes crear un controlador como una clase independiente. Sin embargo, puedes extender la clase [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) para que te exponga el contenedor DI completo. Cada servicio estará disponible utilizando su nombre como una propiedad del controlador:
+Puedes crear un controlador como una clase independiente. However you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Cada servicio estará disponible utilizando su nombre como una propiedad del controlador:
 
 ```php
 <?php
@@ -613,7 +609,6 @@ class InvoicesController extends Controller
 En el ejemplo anterior, accedemos a los servicios de `solicitud`, `respuesta` y `vista` que son inyectados automáticamente en nuestro controlador.
 
 ## Servicios como controladores
-
 Los servicios pueden actuar como controladores. Los controladores son clases que siempre son requeridas desde el contenedor DI. Como resultado, cualquier otra clase registrada con el nombre correcto puede reemplazar fácilmente un controlador:
 
 ```php
@@ -629,3 +624,9 @@ $container->set(
     }
 );
 ```
+
+[mvc-controller]: api/phalcon_mvc#mvc-controller
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[request]: api/phalcon_http#http-request
+[response]: api/phalcon_http#http-response
+[session-bag]: api/phalcon_session#session-bag

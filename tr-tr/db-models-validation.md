@@ -7,14 +7,11 @@ keywords: 'models, validation, uniqueness, inclusionin'
 ---
 
 # Model Validation
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
-
-[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) provides several events to validate data and implement business rules.
+[Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules.
 
 ```php
 <?php
@@ -46,7 +43,6 @@ class Customers extends Model
 ```
 
 ## Data Integrity
-
 Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforce your business rules.
 
 The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation](validation) namespace.
@@ -95,16 +91,16 @@ class Invoices extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn](api/phalcon_validation#validation-validator-inclusionin). It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
+The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
 
-> **NOTE**: For more information on validators, see the [Validation documentation](validation)
-{: .alert .alert-warning }
+> **NOTE**: For more information on validators, see the [Validation documentation](validation) 
+> 
+> {: .alert .alert-warning }
 
 ## Messages
+[Phalcon\Mvc\Model][mvc-model] utilizes the [Phalcon\Messages\Messages][messages-messages] collection to store any validation messages that have been generated during the validation process.
 
-[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) utilizes the [Phalcon\Messages\Messages](api/phalcon_messages#messages-messages) collection to store any validation messages that have been generated during the validation process.
-
-Each message is an instance of [Phalcon\Messages\Message](api/phalcon_messages#messages-message) and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides additional information such as the field name that generated the message or the message type:
+Each message is an instance of [Phalcon\Messages\Message][messages-message] and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides additional information such as the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -120,7 +116,7 @@ if (false === $invoice->save()) {
 }
 ```
 
-[Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) can generate the following types of validation messages:
+[Phalcon\Mvc\Model][mvc-model] can generate the following types of validation messages:
 
 | Type                   | Generated when                                                                                                         |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -171,7 +167,6 @@ class Invoices extends Model
 ```
 
 ## Failed Events
-
 Additional events are available when the data validation process finds any inconsistencies:
 
 | Operation                | Name                | Explanation                                                            |
@@ -179,9 +174,9 @@ Additional events are available when the data validation process finds any incon
 | Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
 | Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
 
-## Custom
 
-The <validation> document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
+## Custom
+The [validation](validation) document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
 
 ```php
 <?php
@@ -211,3 +206,8 @@ class Invoices extends Model
     }
 }
 ```
+
+[mvc-model]: api/phalcon_mvc#mvc-model
+[validation-validator-inclusionin]: api/phalcon_validation#validation-validator-inclusionin
+[messages-message]: api/phalcon_messages#messages-message
+[messages-messages]: api/phalcon_messages#messages-messages

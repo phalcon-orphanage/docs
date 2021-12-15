@@ -16,12 +16,12 @@ title: 'Phalcon\Domain'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Throwable | | Implements | PayloadInterface |
+| Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable | | Implements | PayloadInterface |
 
 Mantiene la carga útil
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * Exception if any
@@ -72,8 +72,8 @@ protected output;
 ```php
 public function getException(): Throwable | null;
 ```
-
 Obtiene la excepción potencial lanzada en la capa de dominio
+
 
 ```php
 public function getExtras(): mixed
@@ -98,119 +98,129 @@ public function getStatus(): mixed
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
 ```
-
 Establece una excepción lanzada en el dominio
+
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
-
 Establece información adicional del dominio arbitraria.
+
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
-
 Establece la entrada del dominio.
+
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
-
 Establece los mensajes del dominio.
+
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
-
 Establece la salida del dominio.
+
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
-
 Establece el estado de la carga útil.
+
+
+
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
 
-| Namespace | Phalcon\Domain\Payload |
+| Namespace  | Phalcon\Domain\Payload |
 
 Factoría para crear objetos de carga útil
+
 
 ## Métodos
 
 ```php
 public function newInstance(): PayloadInterface;
 ```
-
 Instancia un nuevo objeto
+
+
+
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Extends | ReadableInterface |
+| Namespace  | Phalcon\Domain\Payload | | Extends    | ReadableInterface |
 
 Esta interfaz se usa para consumidores
+
+
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
+| Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
 Esta interfaz se usa para consumidores (sólo lectura)
+
 
 ## Métodos
 
 ```php
 public function getException(): Throwable | null;
 ```
-
 Obtiene la excepción potencial lanzada en la capa de dominio
+
 
 ```php
 public function getExtras(): mixed;
 ```
-
 Obtiene los valores adicionales arbitrarios producidos por la capa de dominio.
+
 
 ```php
 public function getInput(): mixed;
 ```
-
 Obtiene la entrada recibida por la capa de dominio.
+
 
 ```php
 public function getMessages(): mixed;
 ```
-
 Obtiene los mensajes producidos por la capa de dominio.
+
 
 ```php
 public function getOutput(): mixed;
 ```
-
 Obtiene la salida producida desde la capa de dominio.
+
 
 ```php
 public function getStatus(): mixed;
 ```
-
 Obtiene el estado de esta carga útil.
+
+
+
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
 
-| Namespace | Phalcon\Domain\Payload |
+| Namespace  | Phalcon\Domain\Payload |
 
 Mantiene los códigos de estado de la carga útil
 
-## Constantes
 
+## Constantes
 ```php
 const ACCEPTED = ACCEPTED;
 const AUTHENTICATED = AUTHENTICATED;
@@ -239,51 +249,55 @@ const VALID = VALID;
 ```php
 final private function __construct();
 ```
-
 Instanciación no permitida.
+
+
+
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
+| Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
 Esta interfaz se usa para consumidores (escritura)
+
 
 ## Métodos
 
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
 ```
-
 Establece una excepción producida por la capa de dominio.
+
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
-
 Establece valores adicionales arbitrarios producidos por la capa de dominio.
+
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
-
 Establece la entrada recibida por la capa de dominio.
+
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
-
 Establece los mensajes producidos por la capa de dominio.
+
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
-
 Establece la salida producida desde la capa de dominio.
+
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
-
 Establece el estado de esta carga útil.
+
+

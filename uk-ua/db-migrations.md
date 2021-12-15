@@ -7,13 +7,12 @@ keywords: 'database, migrations, schema, tables, columns, база, міграц
 ---
 
 # Міграції бази даних
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **ПРИМІТКА**: Міграції Phalcon були вилучені з DevTools та переміщені в окреме сховище.
-{: .alert .alert-info } 
+> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
+> 
+> {: .alert .alert-info }
 
 ## Git репозиторій
 
@@ -26,8 +25,9 @@ https://github.com/phalcon/migrations
 
 ## Встановлення за допомогою Composer
 
-    composer require --dev phalcon/migrations
-    
+```
+composer require --dev phalcon/migrations
+```
 
 ## Швидкий старт
 
@@ -71,50 +71,55 @@ return new Config([
 
 **Базова генерація**
 
-    vendor/bin/phalcon-migrations generate
-    
+```
+vendor/bin/phalcon-migrations generate
+```
 
 **Згенеруйте спеціальну таблицю і експортуйте з неї дані
 
-    vendor/bin/phalcon-migrations generate \
-        --config=migrations.php \
-        --table=users \
-        --exportDataFromTables=users \
-        --data=oncreate
-    
+```
+vendor/bin/phalcon-migrations generate \
+    --config=migrations.php \
+    --table=users \
+    --exportDataFromTables=users \
+    --data=oncreate
+```
 
 ### Запуск міграції
 
-    vendor/bin/phalcon-migrations run
-    
+```
+vendor/bin/phalcon-migrations run
+```
 
 ### Список існуючих міграцій
 
-    vendor/bin/phalcon-migrations list
-    
+```
+vendor/bin/phalcon-migrations list
+```
 
 ## Приклад використання
 
 **Запустити міграції з каталогу міграцій**
 
-    use Phalcon\Migrations\Migrations;
-    
-    $migration = new Migrations();
-    $migration::run([
-        'migrationsDir' => [
-            __DIR__ . '/migrations',
+```
+use Phalcon\Migrations\Migrations;
+
+$migration = new Migrations();
+$migration::run([
+    'migrationsDir' => [
+        __DIR__ . '/migrations',
+    ],
+    'config' => [
+        'database' => [
+            'adapter' => 'Mysql',
+            'host' => 'phalcon-db-mysql',
+            'username' => 'root',
+            'password' => 'root',
+            'dbname' => 'vokuro',
         ],
-        'config' => [
-            'database' => [
-                'adapter' => 'Mysql',
-                'host' => 'phalcon-db-mysql',
-                'username' => 'root',
-                'password' => 'root',
-                'dbname' => 'vokuro',
-            ],
-        ]
-    ]);
-    
+    ]
+]);
+```
 
 ## Методи міграції
 
@@ -126,34 +131,35 @@ return new Config([
 
 **Працює догори**
 
-| Назва методу     | Опис                                                         |
+| Назва методу     | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | morph            | Морфологічна структура таблиці                               |
 | afterCreateTable | Виконати щось одразу після створення таблиці                 |
 | up               | Таблиця створена і готова до роботи з нею                    |
 | afterUp          | Додатковий метод для виконання у деяких специфічних випадках |
 
+
 **Працює донизу**
 
-| Назва методу                       | Опис                                                                                     |
-| ---------------------------------- | ---------------------------------------------------------------------------------------- |
-| down                               | Зазвичай ви тут додаєте видалення таблиці або очищення даних                             |
-| aferDown                           | Додатковий метод для виконання після всіх очищень                                        |
-| morph (**з попередньої міграції**) | Оскільки міграція була переміщена назад, то потрібно все повернути до попереднього стану |
+| Назва методу                        | Description                                                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| down                                | Зазвичай ви тут додаєте видалення таблиці або очищення даних                             |
+| aferDown                            | Додатковий метод для виконання після всіх очищень                                        |
+| morph (**from previous migration**) | Оскільки міграція була переміщена назад, то потрібно все повернути до попереднього стану |
 
 ## Параметри і опції CLI
 
 **Аргументи**
 
-| Аргумент | Опис                           |
+| Аргумент | Description                    |
 | -------- | ------------------------------ |
 | generate | Генерування міграції           |
 | run      | Запуск міграції                |
 | list     | Список усіх доступних міграцій |
 
-**Опції**
+**Options**
 
-| Дія                      | Опис                                                                                      |
+| Action                   | Description                                                                               |
 | ------------------------ | ----------------------------------------------------------------------------------------- |
 | --config=s               | Файл конфігурації                                                                         |
 | --migrations=s           | Папка міграцій. Для вказання декількох каталогів запишіть їх через кому                   |
@@ -178,9 +184,9 @@ return new Config([
 Використання цього підходу корисне, коли більше одного розробника бере участь в управлінні структурою бази даних. Використовуйте параметр `'migrationsTsBased' => true` у файлі конфігурації або `--ts-based` в середовищі CLI. Крім того, необхідно вказати суфікс `descr`, це може бути що завгодно, наприклад: семантичні версії.
 
 Поточна команда
-
-    vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
-    
+```
+vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
+```
 
 Створить назву теки з такими іменами
 
@@ -190,5 +196,6 @@ return new Config([
 
 Міграції будуть виконані від старіших до новіших.
 
-> **ПРИМІТКА**: Щоразу, коли виконуються міграції, програма сканує всі доступні міграції та їх статус незалежно від їх "віку". Якщо одна чи кілька не були виконані попереднього разу, вони будуть виконані наступного разу.
-{: .alert .alert-info }
+> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". Якщо одна чи кілька не були виконані попереднього разу, вони будуть виконані наступного разу. 
+> 
+> {: .alert .alert-info }

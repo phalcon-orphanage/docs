@@ -7,29 +7,26 @@ keywords: 'caso de uso, ejemplos'
 ---
 
 # Caso de Uso
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 A través de esta documentación vamos a asumir que estamos construyendo una aplicación contable.
 
 ## Requerimentos
-
-- Aplicación MVC usando [Phalcon\Mvc\Application](application)
+- MVC application using [Phalcon\Mvc\Application][application]
 - Almacenar datos en una base de datos (MariaDB/MySQL)
-- Ofrecer una UI para que trabajen los usuarios 
+- Ofrecer una UI para que trabajen los usuarios
     - Página de Login
-    - Área de administración 
+    - Área de administración
         - Gestión de caché
         - Permisos
         - CRUD de productos
         - CRUD de usuarios
-    - Área de departamento de contabilidad 
+    - Área de departamento de contabilidad
         - Facturas
         - Clientes
         - Pagos
-    - Área portal del cliente 
+    - Área portal del cliente
         - Facturas (vista)
         - Pago
         - Informes
@@ -76,3 +73,5 @@ A través de esta documentación vamos a asumir que estamos construyendo una apl
 | `/admin/users/edit/{0-9}`         | Editar un usuario                                                        |
 | `/admin/users/delete/{0-9}`       | Borrar un usuario                                                        |
 | `/admin/users/view/{0-9}`         | Ver un usuario                                                           |
+
+[application]: application

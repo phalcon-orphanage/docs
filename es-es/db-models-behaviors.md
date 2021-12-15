@@ -7,14 +7,11 @@ keywords: 'modelos, comportamientos'
 ---
 
 # Comportamientos en Modelos (Behaviors)
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-Los [Comportamientos](api/phalcon_mvc#mvc-model-behavior) son construcciones compartidas que varios modelos pueden adoptar para reutilizar código. Aunque puede usar [traits](https://php.net/manual/en/language.oop5.traits.php) para reutilizar código, los comportamientos tienen varios beneficios que los hacen más atractivos. Los `Traits` requieren que use exactamente los mismos nombres de campos para que el código común funcione. Los Comportamientos son más flexibles.
+[Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to re-use code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Los `Traits` requieren que use exactamente los mismos nombres de campos para que el código común funcione. Los Comportamientos son más flexibles.
 
 El ORM proporciona un API para implementar los comportamientos en sus modelos. Además, puede usar los eventos y las llamadas de retorno vistas anteriormente como alternativa para implementar los comportamientos.
 
@@ -65,16 +62,14 @@ class Invoices extends Model
 ```
 
 ## Integrado
-
 El framework proporciona los siguientes comportamientos integrados:
 
-| Nombre                                                            | Descripción                                                                                                              |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [SoftDelete](api/phalcon_mvc#mvc-model-behavior-softdelete)       | En lugar de borrar permanentemente un registro, marca el registro como borrado cambiando el valor de una columna bandera |
-| [Timestampable](api/phalcon_mvc#mvc-model-behavior-timestampable) | Le permite actualizar automáticamente un atributo del modelo guardando la fecha cuando un registro se crea o actualiza   |
+| Nombre                                            | Descripción                                                                                                              |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [SoftDelete][mvc-model-behavior-softdelete]       | En lugar de borrar permanentemente un registro, marca el registro como borrado cambiando el valor de una columna bandera |
+| [Timestampable][mvc-model-behavior-timestampable] | Le permite actualizar automáticamente un atributo del modelo guardando la fecha cuando un registro se crea o actualiza   |
 
 ## Timestampable
-
 Este comportamiento recibe un vector de opciones, la clave del primer nivel debe ser un nombre de evento que indica cuando se debe asignar la columna:
 
 ```php
@@ -97,7 +92,7 @@ public function initialize()
 }
 ```
 
-Cada evento puede tener sus propias opciones, `field` es el nombre de la columna que se debe actualizar, si `format` es una cadena se usará como formato de la función [date](https://php.net/manual/en/function.date.php). `format` puede ser una función anónima que ofrece funcionalidad adicional para generar cualquier tipo de cadena de marca de tiempo:
+Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as the format of the [date][date] function. `format` puede ser una función anónima que ofrece funcionalidad adicional para generar cualquier tipo de cadena de marca de tiempo:
 
 ```php
 <?php
@@ -127,10 +122,9 @@ public function initialize()
 }
 ```
 
-Si se omite la opción `format` se usará una marca de tiempo generada con la función PHP [time](https://php.net/manual/en/function.time.php).
+If the option `format` is omitted a timestamp using the PHP's function [time][time], will be used.
 
 ## SoftDelete
-
 Este comportamiento se puede usar como sigue:
 
 ```php
@@ -212,16 +206,16 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-> **NOTA**: Deberá asegurarse de especificar la condición *deleted* para filtrar sus registros con lo que podrá obtener de vuelta los resultados borrados o no borrados. Este comportamiento no soporta filtrado automático.
-{: .alert .alert-warning }
+> **NOTE**: You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. Este comportamiento no soporta filtrado automático. 
+> 
+> {: .alert .alert-warning }
 
 ## Personalizado
+El ORM proporciona un API para crear sus propios comportamientos. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing custom behaviors.
 
-El ORM proporciona un API para crear sus propios comportamientos. Un comportamiento debe ser una clase que implemente [Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) o extienda [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior) que expone la mayoría de métodos necesarios para implementar comportamientos personalizados.
+The [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] requires two methods to be present in your custom behavior:
 
-[Phalcon\Mvc\Model\BehaviorInterface](api/phalcon_mvc#mvc-model-behaviorinterface) requiere que estén presentes dos métodos en su comportamiento personalizado:
-
-```php
+```php 
 public function missingMethod(
     ModelInterface $model, 
     string $method, 
@@ -240,7 +234,7 @@ public function notify(
 
 Este método recibe las notificaciones del [Events Manager](events).
 
-Adicionalmente, si extiende [Phalcon\Mvc\Model\Behavior](api/phalcon_mvc#mvc-model-behavior), tiene acceso a:
+Additionally if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
 
 - `getOptions(string $eventName = null)` - Devuelve las opciones del comportamiento relativas a un evento
 - `mustTakeAction(string $eventName)` - `bool` - Comprueba si el comportamiento debe realizar acciones sobre un cierto evento
@@ -332,8 +326,7 @@ $title = $invoice->getSlug();
 ```
 
 ## Rasgos (Traits)
-
-Puede usar [Rasgos](https://php.net/manual/en/language.oop5.traits.php) para reutilizar código en sus clases, esta es otra manera de implementar comportamientos personalizados. El siguiente rasgo implementa una versión simple del comportamiento `Timestampable`:
+You can use [Traits][traits] to re-use code in your classes, this is another way to implement custom behaviors. El siguiente rasgo implementa una versión simple del comportamiento `Timestampable`:
 
 ```php
 <?php
@@ -365,7 +358,17 @@ class Invoices extends Model
 }
 ```
 
-> **NOTA**: Puede usar rasgos en lugar de comportamientos, pero requerirán que todos los campos afectados por el comportamiento tengan el mismo nombre. También, si implementa un método de evento en un rasgo (ej. `beforeCreate`) no podrá tenerlo también en su modelo ya que los dos producirán un error.
-{: .alert .alert-info }
+> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. También, si implementa un método de evento en un rasgo (ej. `beforeCreate`) no podrá tenerlo también en su modelo ya que los dos producirán un error. 
+> 
+> {: .alert .alert-info }
 
 
+[date]: https://php.net/manual/en/function.date.php
+[mvc-model-behavior]: api/phalcon_mvc#mvc-model-behavior
+[mvc-model-behavior]: api/phalcon_mvc#mvc-model-behavior
+[mvc-model-behavior-softdelete]: api/phalcon_mvc#mvc-model-behavior-softdelete
+[mvc-model-behavior-timestampable]: api/phalcon_mvc#mvc-model-behavior-timestampable
+[mvc-model-behaviorinterface]: api/phalcon_mvc#mvc-model-behaviorinterface
+[time]: https://php.net/manual/en/function.time.php
+[traits]: https://php.net/manual/en/language.oop5.traits.php
+[traits]: https://php.net/manual/en/language.oop5.traits.php

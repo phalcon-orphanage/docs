@@ -7,35 +7,32 @@ keywords: 'etiqueta, ayudantes, ayudantes vista, generadores html'
 ---
 
 # Etiqueta (Ayudantes Vista)
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 Escribir y mantener código HTML puede convertirse rápidamente en una tarea tediosa a causa de las convenciones de nombre y numerosos atributos que se deben tener en consideración. Phalcon se ocupa de esta complejidad ofreciendo el componente [Phalcon\Tag](api/Phalcon_Tag) que a su vez ofrece ayudantes para generar marcado HTML.
 
 Este componente se puede usar en una vista plana HTML+PHP o en una plantilla [Volt](volt).
 
-> **NOTA**: Esto ofrece la misma funcionalidad que `Phalcon\Html\TagFactory`. En versiones futuras, este componente será remplazado por el `TagFactory`. La razón de ambos componentes es ofrecer tanto tiempo como sea posible a los desarrolladores para que adapten su código, ya que la generación HTML toca muchas áreas de la aplicación, la vista en particular.
-{: .alert .alert-warning } 
+> **NOTE**: This offers the same functionality as `Phalcon\Html\TagFactory`. En versiones futuras, este componente será remplazado por el `TagFactory`. La razón de ambos componentes es ofrecer tanto tiempo como sea posible a los desarrolladores para que adapten su código, ya que la generación HTML toca muchas áreas de la aplicación, la vista en particular. 
+> 
+> {: .alert .alert-warning }
 
 ## DocType
-
 Puede establecer el *doctype* de su página usando `setDocType()`. El método acepta una de las constantes disponibles, generando el HTML `<doctype>` necesario. El método devuelve el componente `Tag` y por lo tanto la llamada se puede encadenar.
 
-- `HTML32` 
-- `HTML401_STRICT` 
+- `HTML32`
+- `HTML401_STRICT`
 - `HTML401_TRANSITIONAL`
-- `HTML401_FRAMESET` 
-- `HTML5` 
-- `XHTML10_STRICT` 
+- `HTML401_FRAMESET`
+- `HTML5`
+- `XHTML10_STRICT`
 - `XHTML10_TRANSITIONAL`
-- `XHTML10_FRAMESET` 
-- `XHTML11` 
-- `XHTML20` 
-- `XHTML5` 
+- `XHTML10_FRAMESET`
+- `XHTML11`
+- `XHTML20`
+- `XHTML5`
 
 ```php
 <?php
@@ -73,15 +70,14 @@ o en Volt:
 ```
 
 ## Título
-
-[Phalcon\Tag](api/phalcon_tag) ofrece métodos para establecer la etiqueta de la página resultante o HTML enviado al usuario. Hay varios métodos disponibles:
+[Phalcon\Tag][tag] offers methods to set the tag of the resulting page or HTML sent to the user. Hay varios métodos disponibles:
 
 ### `appendTitle()`
-
 Añade texto al título actual. Este método acepta un `string` o un `array`.
 
-> **NOTA**: Si se proporciona un `string`, lo añadirá a la colección interna manteniendo el texto del título adjunto. Si por el contrario proporciona un `array` se reemplazará la colección interna.
-{: .alert .alert-info }
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the append title text. Si por el contrario proporciona un `array` se reemplazará la colección interna. 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -109,10 +105,14 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 ```
 
 ### `friendlyTitle()`
+Convierte texto a cadenas amigables con URL. It accepts the following parameters:
+- `text` - The text to be processed
+- `parameters` - Array of parameters to generate the friendly title
 
-Convierte texto a cadenas amigables con URL. Acepta los siguientes parámetros: - `text` - Texto a procesar - `parameters` - Vector de parámetros para generar el título amigable
-
-Los parámetros pueden ser: - `lowercase` - `bool` Si convertir todo a minúsculas o no - `separator` - `string` - El separador. Por defecto `-` - `replace` - `array` - Vector clave valor para reemplazar caracteres por otros. Esto usa \[str_replace\]\[str_replace\] internamente para este reemplazo
+The parameters can be:
+- `lowercase` - `bool` Whether to convert everything to lowercase or not
+- `separator` - `string` - The separator. Defaults to `-`
+- `replace` - `array` - Key value array to replace characters with others. Esto usa \[str_replace\]\[str_replace\] internamente para este reemplazo
 
 ```php
 <?php
@@ -145,10 +145,11 @@ echo Tag::friendlyTitle(
 ```
 
 ### `getTitle()`
+Devuelve el título actual. El título se escapa automáticamente. The method accepts two parameters:
+ - `prepend` - `bool` Whether to output any text set with `prependTitle()`
+ - `append` - `bool` Whether to output any text set with `appendTitle()`
 
-Devuelve el título actual. El título se escapa automáticamente. El método acepta dos parámetros: - `prepend` - `bool` Si mostrar cualquier texto establecido con `prependTitle()` - `append` - `bool` Si mostrar cualquier texto establecido con `appendTitle()`
-
-Ambos parámetros son `true` por defecto.
+ Ambos parámetros son `true` por defecto.
 
 ```php
 <?php
@@ -168,7 +169,6 @@ echo Tag::getTitle(false, false); // 'World';
 ```
 
 ### `getTitleSeparator()`
-
 Devuelve el separador de título actual. El valor por defecto es una cadena vacía.
 
 ```php
@@ -180,11 +180,11 @@ echo Tag::getTitleSeparator(); // ''
 ```
 
 ### `prependTitle()`
-
 Antepone texto al título actual. Este método acepta un `string` o un `array`.
 
-> **NOTA**: Si se proporciona un `string`, se añadirá a la colección interna manteniendo el texto de título antepuesto. Si por el contrario proporciona un `array` se reemplazará la colección interna.
-{: .alert .alert-info }
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the prepend title text. Si por el contrario proporciona un `array` se reemplazará la colección interna. 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -212,10 +212,11 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 ```
 
 ### `renderTitle()`
+Devuelve el título actual envuelto en etiquetas `<title>`. El título se escapa automáticamente. The method accepts two parameters:
+ - `prepend` - `bool` Whether to output any text set with `prependTitle()`
+ - `append` - `bool` Whether to output any text set with `appendTitle()`
 
-Devuelve el título actual envuelto en etiquetas `<title>`. El título se escapa automáticamente. El método acepta dos parámetros: - `prepend` - `bool` Si mostrar cualquier texto establecido con `prependTitle()` - `append` - `bool` Si mostrar cualquier texto establecido con `appendTitle()`
-
-Ambos parámetros son `true` por defecto.
+ Ambos parámetros son `true` por defecto.
 
 ```php
 <?php
@@ -239,7 +240,6 @@ echo Tag::renderTitle(false, false);
 ```
 
 ### `setTitle()`
-
 Establece el texto del título.
 
 ```php
@@ -251,7 +251,6 @@ Tag::setTitle('World');
 ```
 
 ### `setTitleSeparator()`
-
 Establece el separador del título.
 
 ```php
@@ -263,9 +262,7 @@ Tag::setTitleSeparator(' ');
 ```
 
 ## Entrada
-
 ### `checkField()`
-
 Construye una etiqueta HTML `input[type='check']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -284,7 +281,6 @@ echo Tag::checkField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->checkField(
     [
@@ -295,13 +291,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ check_field('terms', 'value': 'Y') }}{% endraw %}
 ```
 
 ### `colorField()`
-
 Construye una etiqueta HTML `input[type='color']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -320,7 +314,6 @@ echo Tag::colorField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->colorField(
     [
@@ -331,13 +324,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ color_field('background', 'class': 'myclass') }}{% endraw %}
 ```
 
 ### `dateField()`
-
 Construye una etiqueta HTML `input[type='date']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -356,7 +347,6 @@ echo Tag::dateField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->dateField(
     [
@@ -367,13 +357,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ date_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
 
 ### `dateTimeField()`
-
 Construye una etiqueta HTML `input[type='datetime']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -393,7 +381,6 @@ echo Tag::dateTimeField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->dateTimeField(
     [
@@ -404,13 +391,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ date_time_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
 
 ### `dateTimeLocalField()`
-
 Construye una etiqueta HTML `input[type='datetime-local']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -430,7 +415,6 @@ echo Tag::dateTimeLocalField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->dateTimeLocalField(
     [
@@ -441,13 +425,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ date_time_local_field('born', 'value': '1980-01-01 01:02:03') }}{% endraw %}
 ```
 
 ### `fileField()`
-
 Construye una etiqueta HTML `input[type='file']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -466,7 +448,6 @@ echo Tag::fileField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->fileField(
     [
@@ -477,13 +458,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ file_field('document', 'class': 'input') }}{% endraw %}
 ```
 
 ### `hiddenField()`
-
 Construye una etiqueta HTML `input[type='hidden']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -502,7 +481,6 @@ echo Tag::hiddenField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->hiddenField(
     [
@@ -513,13 +491,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ hidden_field('id', 'value': '1234') }}{% endraw %}
 ```
 
 ### `imageInput()`
-
 Construye una etiqueta HTML `input[type='image']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -537,7 +513,6 @@ echo Tag::imageInput(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->imageInput(
     [
@@ -547,13 +522,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ image_input('src': '/img/button.png') }}{% endraw %}
 ```
 
 ### `monthField()`
-
 Construye una etiqueta HTML `input[type='month']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -572,7 +545,6 @@ echo Tag::monthField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->monthField(
     [
@@ -583,13 +555,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ month_field('month', 'value': '04') }}{% endraw %}
 ```
 
 ### `numericField()`
-
 Construye una etiqueta HTML `input[type='number']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -609,7 +579,6 @@ echo Tag::numericField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->numericField(
     [
@@ -621,13 +590,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ numeric_field('price', 'min': '1', 'max': '5') }}{% endraw %}
 ```
 
 ### `radioField()`
-
 Construye una etiqueta HTML `input[type='radio']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -646,7 +613,6 @@ echo Tag::radioField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->radioField(
     [
@@ -657,13 +623,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ radio_field('gender', 'value': 'Male') }}{% endraw %}
 ```
 
 ### `rangeField()`
-
 Construye una etiqueta HTML `input[type='range']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -683,7 +647,6 @@ echo Tag::rangeField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->rangeField(
     [
@@ -695,13 +658,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ range_field('points', 'min': '0', 'max': '10') }}{% endraw %}
 ```
 
 ### `searchField()`
-
 Construye una etiqueta HTML `input[type='search']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -720,7 +681,6 @@ echo Tag::searchField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->searchField(
     [
@@ -731,13 +691,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ search_field('search', 'q': 'startsearch') }}{% endraw %}
 ```
 
 ### `submitButton()`
-
 Construye una etiqueta HTML `input[type='submit']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -755,7 +713,6 @@ echo Tag::submitButton(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->submitButton(
     [
@@ -765,13 +722,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ submit_button('Save') }}{% endraw %}
 ```
 
 ### `telField()`
-
 Construye una etiqueta HTML `input[type='tel']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -790,7 +745,6 @@ echo Tag::telField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->telField(
     [
@@ -801,13 +755,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ tel_field('mobile', 'size': '12') }}{% endraw %}
 ```
 
 ### `passwordField()`
-
 Construye una etiqueta HTML `input[type='text']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -826,7 +778,6 @@ echo Tag::textField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->textField(
     [
@@ -837,13 +788,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ text_field('name', 'size': '30') }}{% endraw %}
 ```
 
 ### `timeField()`
-
 Construye una etiqueta HTML `input[type='time']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -862,7 +811,6 @@ echo Tag::timeField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->timeField(
     [
@@ -873,13 +821,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ time_field('start', 'size': '5') }}{% endraw %}
 ```
 
 ### `urlField()`
-
 Construye una etiqueta HTML `input[type='url']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -897,7 +843,6 @@ echo Tag::urlField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->urlField(
     [
@@ -907,13 +852,11 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ url_field('homepage') }}{% endraw %}
 ```
 
 ### `weekField()`
-
 Construye una etiqueta HTML `input[type='week']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
@@ -932,7 +875,6 @@ echo Tag::weekField(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->weekField(
     [
@@ -943,7 +885,6 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ week_field('week', 'size': '2') }}{% endraw %}
 ```
@@ -951,7 +892,6 @@ Sintaxis Volt:
 ## Elementos
 
 ### `image()`
-
 Construye una etiqueta HTML de imagen. Acepta un vector con los atributos del elemento. El primer elemento del vector es el `src` del elemento. El método acepta un segundo parámetro booleano, que indica si el recurso es local o no.
 
 ```php
@@ -977,7 +917,6 @@ echo Tag::image(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->image(
     [
@@ -993,15 +932,21 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ image('img/hello.gif', 'alt': 'alternative text') }}
 {{ image('http://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
 ```
 
 ### `select()`
-
-`select()` es un ayudante que le permite crear un elemento `<select>` basado en un conjunto de resultados `Phalcon\Mvc\Model`. Necesitará tener una configuración de conexión de base de datos válida en su contenedor DI para que este método produzca HTML correcto. El componente requiere parámetros y datos para funcionar. - `parameters` - `string`/`array`. Si se pasa una cadena, será el nombre del elemento. Si se pasa un vector, el primer elemento será el nombre del elemento. Los parámetros disponibles son: - `id` - `string` - establece el id del elemento - `using` - `array` - **required** un vector de dos elementos que definen campos clave y valor del modelo para rellenar la selección - `useEmpty` - `bool` - defaults to `false`. Si se establece, añadirá una opción *vacía* a la caja de la selección - `emptyText` - `string` - texto a mostrar para la opción *vacía* (ej. *Elija una opción*) - `emptyValue` - `string`/`number` - el valor a asignar para la opción *vacía* - cualquier atributo HTML adicional en formato clave/valor - `data` - `Resultset` el conjunto de resultados de la operación del modelo.
+`select()` es un ayudante que le permite crear un elemento `<select>` basado en un conjunto de resultados `Phalcon\Mvc\Model`. Necesitará tener una configuración de conexión de base de datos válida en su contenedor DI para que este método produzca HTML correcto. El componente requiere parámetros y datos para funcionar.
+- `parameters` - `string`/`array`. Si se pasa una cadena, será el nombre del elemento. Si se pasa un vector, el primer elemento será el nombre del elemento. There available parameters are:
+    - `id` - `string` - sets the id of the element
+    - `using` - `array` - **required** a two element array defining the key and value fields of the model to populate the select
+    - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
+    - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
+    - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
+    - any additional HTML attributes in a key/value format
+- `data` - `Resultset` the resultset from the model operation.
 
 ```php
 <?php
@@ -1041,7 +986,6 @@ echo Tag::select(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->select(
     [
@@ -1059,7 +1003,6 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ select(
     [
@@ -1077,8 +1020,14 @@ Sintaxis Volt:
 ```
 
 ### `selectStatic()`
-
-Este ayudante es similar a `select()`, pero usa un vector PHP como fuente. El componente requiere parámetros y datos para funcionar. - `parameters` - `string`/`array`. Si se pasa una cadena, será el nombre del elemento. Si se pasa un vector, el primer elemento será el nombre del elemento. Los parámetros disponibles son: - `id` - `string` - establece el id del elemento - `useEmpty` - `bool` - por defecto `false`. Si se establece, añadirá una opción *vacía* a la caja de selección - `emptyText` - `string` - el texto a mostrar para la opción *vacía* (ej. *Elija una opción*) - `emptyValue` - `string`/`number` - el valor a asignar para la opción *vacía* - cualquier atributo HTML adicional en formato clave/valor - `data` - `array` el vector de datos con clave como el id y el valor como el texto
+Este ayudante es similar a `select()`, pero usa un vector PHP como fuente. El componente requiere parámetros y datos para funcionar.
+- `parameters` - `string`/`array`. Si se pasa una cadena, será el nombre del elemento. Si se pasa un vector, el primer elemento será el nombre del elemento. There available parameters are:
+    - `id` - `string` - sets the id of the element
+    - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
+    - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
+    - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
+    - any additional HTML attributes in a key/value format
+- `data` - `array` the array of data with key as the id and value as the text
 
 ```php
 <?php
@@ -1110,7 +1059,6 @@ echo Tag::selectStatic(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php echo $this->tag->selectStatic(
     [
@@ -1124,7 +1072,6 @@ Sintaxis HTML:
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}{{ select(
     [
@@ -1138,10 +1085,14 @@ Sintaxis Volt:
 ```
 
 ### `tagHtml()`
+Phalcon ofrece un ayudante HTML genérico que permite la generación de cualquier tipo de elemento HTML. Corresponde al desarrollador producir un nombre de elemento HTML válido para el ayudante. The accompanying `tagHtmlClose()` can be used to _close_ the tag if necessary.
 
-Phalcon ofrece un ayudante HTML genérico que permite la generación de cualquier tipo de elemento HTML. Corresponde al desarrollador producir un nombre de elemento HTML válido para el ayudante. Si se necesita, se puede usar el acompañante `tagHtmlClose()` para *cerrar*.
-
-`tagHtml()` acepta los siguientes parámetros - `name` - `string` - el nombre del elemento - `attributes` - `array` - cualquier atributo - `selfClose` - `bool` - si es un elemento de autocierre o no - `onlyStart` - `bool` - si producir sólo la parte de *apertura* de la etiqueta (ej. `<tag>` vs. `<tag></tag>`) - `useEol` - `bool` - añade un `PHP_EOL` al final de la cadena generada o no
+The `tagHtml()` accepts the following parameters
+- `name` - `string` - the name of the element
+- `attributes` - `array` - any attributes
+- `selfClose` - `bool` - whether this is a self closing element or not
+- `onlyStart` - `bool` - whether to produce only the _opening_ part of the tag (i.e. `<tag>` vs. `<tag></tag>`)
+- `useEol` - `bool` - add a `PHP_EOL` at the end of the generated string or not
 
 ```php
 <?php
@@ -1169,7 +1120,6 @@ echo Tag::tagHtmlClose('canvas');
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php 
 
@@ -1192,7 +1142,6 @@ echo $this->tag->tagHtmlClose('canvas');
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}
 {{ tag_html('canvas', ['id': 'canvas1', width': '300', 'class': 'cnvclass'], false, true, true) }}
@@ -1200,13 +1149,10 @@ Sintaxis Volt:
 {{ tag_html_close('canvas') }}
 {% endraw %}
 ```
-
 ## Recursos Activos
-
-[Phalcon\Tag](api/phalcon_tag) ofrece métodos ayudantes para generar etiquetas HTML de hojas de estilos y javascript.
+[Phalcon\Tag][tag] offers helper methods to generate stylesheet and javascript HTML tags.
 
 ### `stylesheetLink()`
-
 El primer parámetro `string` o `array` son los parámetros necesarios para construir el elemento. El segundo parámetro es un booleano, que indica si el enlace apunta a un recurso local o remoto.
 
 ```php
@@ -1280,7 +1226,6 @@ Sintaxis Volt:
 ```
 
 ### `javascriptInclude()`
-
 El primer parámetro `string` o `array` son los parámetros necesarios para construir el elemento. El segundo parámetro es un booleano, que indica si el enlace apunta a un recurso local o remoto.
 
 ```php
@@ -1352,8 +1297,16 @@ Sintaxis Volt:
 ```
 
 ## Enlaces
+Una tarea común en cualquier aplicación web es mostrar enlaces que ayudan con la navegación de un área a otra. [Phalcon\Tag][tag] offers `linkTo()` to help with this task. El método acepta tres parámetros.
+- `parameters` - `array`/`string` - The attributes and parameters of the element. Si se pasa una cadena se tratará como URL destino del enlace. If an array is passed, the following elements can be sent:
+    - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element
+    - `query` - the base query for the URL
+    - `text` - the text of the link
+    - `local` - whether this is a local or remote link
+    - additional key/value attributes for the link
+- `text` - `string` - the text of the link
+- `local` - `bool` - whether this is a local or remote link
 
-Una tarea común en cualquier aplicación web es mostrar enlaces que ayudan con la navegación de un área a otra. [Phalcon\Tag](api/phalcon_tag) ofrece `linkTo()` para ayudar con esta tarea. El método acepta tres parámetros. - `parameters` - `array`/`string` - Los atributos y parámetros del elemento. Si se pasa una cadena se tratará como URL destino del enlace. Si se pasa un vector, se pueden enviar los siguientes elementos: - `action` - la URL. Si la `action` es un vector, puede referenciar una ruta nombrada definida en sus rutas usando el elemento `for` - `query` - la consulta base para la URL - `text` - el texto del enlace - `local` - si es un enlace local o remoto - atributos clave/valor adicionales para el enlace - `text` - `string` - el texto del enlace - `local` - `bool` - si es un enlace local o remoto
 
 ```php
 <?php
@@ -1386,7 +1339,6 @@ echo Tag::linkTo('https://phalcon.io/', 'Phalcon', false);
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php 
 
@@ -1414,7 +1366,6 @@ echo $this->tag->linkTo('https://phalcon.io/', 'Phalcon', false);
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
@@ -1433,7 +1384,7 @@ Sintaxis Volt:
 ) }}{% endraw %}
 ```
 
-Si tiene rutas nombradas, puede usar la palabra clave `for` en su vector de parámetros para referenciarla. [Phalcon\Tag](api/phalcon_tag) resolverá la ruta internamente y producirá la URL correcta usando [Phalcon\Url](url).
+Si tiene rutas nombradas, puede usar la palabra clave `for` en su vector de parámetros para referenciarla. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
 
 ```php
 <?php
@@ -1453,7 +1404,6 @@ echo Tag::linkTo(
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php 
 
@@ -1472,7 +1422,6 @@ echo $this->tag->linkTo(
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
@@ -1488,8 +1437,7 @@ Sintaxis Volt:
 ```
 
 ## Formularios
-
-Los formularios juegan un rol importante en las aplicaciones web, ya que se usan para recoger datos del usuario. [Phalcon\Tag](api/phalcon_tag) ofrece los métodos `form()` y `endForm()`, que crean elementos `<form>`.
+Los formularios juegan un rol importante en las aplicaciones web, ya que se usan para recoger datos del usuario. [Phalcon\Tag][tag] offers the `form()` and `endForm()` methods, which create `<form>` elements.
 
 ```php
 <?php
@@ -1514,7 +1462,6 @@ echo Tag::endForm();
 ```
 
 Sintaxis HTML:
-
 ```php
 <?php 
 
@@ -1533,7 +1480,6 @@ echo $this->tag->endForm();
 ```
 
 Sintaxis Volt:
-
 ```twig
 {% raw %}
 {{ form(
@@ -1550,10 +1496,8 @@ Sintaxis Volt:
 Phalcon también proporciona un [constructor de formularios](forms) para crear formularios de una forma orientada a objetos.
 
 ## Datos
-
 ### `setDefault()`
-
-Puede usar `setDefault()` para pre rellenar valores para los elementos generados con [Phalcon\Tag](api/phalcon_tag). Los ayudantes de este componente conservarán los valores entre peticiones. De esta forma, puede fácilmente mostrar mensajes de validación sin perder los datos introducidos. Cada ayudante de formulario soporta el parámetro `value`. Con esto, puede especificar un valor para el ayudante directamente. Cuando el parámetro está presente, cualquier valor preestablecido usando `setDefault()` o vía petición serán ignorados.
+You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag][tag]. Los ayudantes de este componente conservarán los valores entre peticiones. De esta forma, puede fácilmente mostrar mensajes de validación sin perder los datos introducidos. Cada ayudante de formulario soporta el parámetro `value`. Con esto, puede especificar un valor para el ayudante directamente. Cuando el parámetro está presente, cualquier valor preestablecido usando `setDefault()` o vía petición serán ignorados.
 
 ```php
 <?php
@@ -1574,7 +1518,6 @@ echo Tag::textField(
 ```
 
 ### `setDefaults()`
-
 `setDefaults()` le permite especificar más de un valor para establecerlo en los elementos de su formulario, pasando un vector clave valor. El método se puede llamar más de una vez y cada vez que se llama sobreescribirá los datos establecidos en la llamada previa. Sin embargo, puede especificar el segundo parámetro como `true` para que los valores sean fusionados.
 
 ```php
@@ -1611,7 +1554,6 @@ echo Tag::textField(
 ```
 
 ### `getValue()`
-
 Este método se llama desde cualquier ayudante de este componente, para encontrar si un valor se ha establecido para un elemento usando `setDefault()` antes o en el superglobal `$_POST`.
 
 ```php
@@ -1637,7 +1579,6 @@ echo Tag::getValue('framework'); // 'Phalcon'
 ```
 
 ### `hasValue()`
-
 Este método comprueba si un `valor` de un elemento ya se ha establecido usando `setDefault()` o está en el superglobal `$_POST`.
 
 ```php
@@ -1663,8 +1604,7 @@ echo Tag::hasValue('framework'); // 'true'
 ```
 
 ## Escape
-
-[Phalcon\Tag](api/phalcon_tag) escapa automáticamente el texto proporcionado por sus ayudantes. Si la aplicación lo requiere, puede deshabilitar el escape automático usando `setAutoEscape()`.
+[Phalcon\Tag][tag] automatically escapes text supplied for its helpers. Si la aplicación lo requiere, puede deshabilitar el escape automático usando `setAutoEscape()`.
 
 ```php
 <?php
@@ -1695,12 +1635,11 @@ echo Tag::textField(
 ```
 
 ## Inyección de Dependencias
-
-Si usa el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), [Phalcon\Tag](api/phalcon_tag) ya está registrado para usted con el nombre `tag`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Tag][tag] is already registered for you with the name `tag`.
 
 A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
-**Directo**
+**Direct**
 
 ```php
 <?php
@@ -1720,7 +1659,7 @@ $container->set(
 
 Siempre puede implementar su propio ayudante `tag` y registrarlo en el lugar de `tag` en el contenedor Di.
 
-Acceder al servicio desde cualquier componente que implemente [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) es tan simple como acceder a la propiedad `tag`.
+Accessing the service from any component that implements the [Phalcon\Di\Injectable][injectable] is as simple as accessing the `tag` property.
 
 ```php
 <?php
@@ -1741,13 +1680,12 @@ class SessionController extends Controller
 ```
 
 ## Personalizado
-
 Fácilmente puede extender esta funcionalidad y crear sus propios ayudantes.
 
 - Primero cree un nuevo directorio en el sistema de ficheros de su aplicación donde se almacenarán los ficheros del ayudante.
 - Nómbrelo con algo que lo represente. Por ejemplo en este ejemplo usamos `customhelpers`.
 - Cree un fichero llamado `MyTags.php` en su directorio `customhelpers`.
-- Extienda la clase [Phalcon\Tag](api/phalcon_tag) e implemente sus propios métodos.
+- Extend the [Phalcon\Tag][tag] class and implement your own methods.
 
 ```php
 <?php
@@ -1867,4 +1805,8 @@ echo MyTags::audioField(
 ?>
 ```
 
-También puede revisar [Volt](volt), un motor de plantillas más rápido para PHP, donde puede usar una sintaxis más amigable con el desarrollador para los ayudantes proporcionados por [Phalcon\Tag](api/phalcon_tag).
+You can also check out [Volt](volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag][tag].
+
+[factorydefault]: api/phalcon_di#di-factorydefault
+[injectable]: api/phalcon_di#di-injectable
+[tag]: api/phalcon_tag

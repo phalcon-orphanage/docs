@@ -8,14 +8,11 @@ keywords: 'http, petición http, petición'
 ---
 
 # Componente Petición
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-[Phalcon\Http\Request](api/phalcon_http#http-request) es un componente que encapsula la petición HTTP actual (normalmente originada por el navegador) y enviada a nuestra aplicación. El objeto [Phalcon\Http\Request](api/phalcon_http#http-request) es un objeto de valor simple que se pasa entre las clases despachador y controlador, envolviendo el entorno de la petición HTTP. También ofrece fácil acceso a la información como datos de la cabecera, ficheros, métodos, variables, etc.
+[Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. También ofrece fácil acceso a la información como datos de la cabecera, ficheros, métodos, variables, etc.
 
 ```php
 <?php
@@ -34,14 +31,23 @@ if (true === $request->isPost()) {
 ```
 
 ## Obteniendo Valores
+PHP automatically fills the superglobal arrays [$_GET][get], [$_POST][post] and [$_REQUEST][request] depending on the type of the request. Estos vectores contienen los valores presentes en los formularios enviados o los parámetros enviados vía URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection][sql-injection] or [Cross Site Scripting (XSS)][xss] attacks.
 
-PHP automáticamente rellena los vectores superglobales [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) y [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) dependiendo del tipo de la petición. Estos vectores contienen los valores presentes en los formularios enviados o los parámetros enviados vía URL. Las variables en los vectores nunca se sanean y pueden contener caracteres ilegales o incluso código malicioso, lo que puede permitir ataques de [inyección SQL](https://en.wikipedia.org/wiki/SQL_injection) o [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting).
+[Phalcon\Http\Request][http-request] allows you to access the values stored in the [$_GET][get], [$_POST][post] and [$_REQUEST][request] arrays and sanitize or filter them with the [filter](filter) service.
 
-[Phalcon\Http\Request](api/phalcon_http#http-request) le permite acceder a los valores almacenados en los vectores [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) y [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) y sanearlos o filtrarlos con el servicio <filter>.
+There are 5 methods that allow you to retrieve submitted data from a request:
+- `get()`
+- `getQuery()`
+- `getPost()`
+- `getPut()`
+- `getServer()`
 
-Hay 5 métodos que le permiten recuperar los datos enviados en una petición: - `get()` - `getQuery()` - `getPost()` - `getPut()` - `getServer()`
-
-Todos (excepto `getServer()`) aceptan los siguientes parámetros: - `name` el nombre del valor a obtener - `filters` (array/string) los saneadores a aplicar al valor - `defaultValue` devuelto si el elemento no está definido (`null`) - `notAllowEmpty` si se esetablece (predeterminado) y el valor está vacío, se devolverá `defaultValue`; en caso contrario `null` - `noRecursive` aplica los saneadores recursivamente en el valor (si el valor es un vector)
+All (except `getServer()`) accept the following parameters:
+- `name` the name of the value to get
+- `filters` (array/string) the sanitizers to apply to the value
+- `defaultValue` returned if the element is not defined (`null`)
+- `notAllowEmpty` if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null`
+- `noRecursive` applies the sanitizers recursively in the value (if value is an array)
 
 ```php
 <?php
@@ -62,10 +68,9 @@ $request->get(
 `getServer()` acepta sólo una variable `name` (string), que representa la variable con el nombre del servidor que necesita recuperar.
 
 ### $_REQUEST
+The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request][http-request] object as follows:
 
-El superglobal [$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php) contiene un vector asociativo que contiene el contenido de [$_GET](https://www.php.net/manual/en/reserved.variables.get.php), [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) y [$_COOKIE](https://www.php.net/manual/en/reserved.variables.cookies.php). Puede recuperar los datos almacenados en el vector llamando al método `get()` en el objeto [Phalcon\Http\Request](api/phalcon_http#http-request) de la siguiente manera:
-
-**Ejemplos** Obtiene el campo `userEmail` del superglobal `$_REQUEST`:
+**Examples** Get the `userEmail` field from the `$_REQUEST` superglobal:
 
 ```php
 <?php
@@ -102,10 +107,9 @@ $email = $request->get('userEmail', null, 'some@example.com');
 ```
 
 ### $_GET
+The [$_GET][get] superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). Puede recuperar los datos almacenados en el vector llamando al método `getQuery()` de la siguiente manera:
 
-El superglobal [$_GET](https://www.php.net/manual/en/reserved.variables.get.php) contiene un vector asociativo que contiene las variables pasadas al *script* actual a través de parámetros en la URL (también conocido como cadena de consulta). Puede recuperar los datos almacenados en el vector llamando al método `getQuery()` de la siguiente manera:
-
-**Ejemplos** Obtiene el campo `userEmail` del superglobal `$_GET`:
+**Examples** Get the `userEmail` field from the `$_GET` superglobal:
 
 ```php
 <?php
@@ -141,11 +145,11 @@ $request = new Request();
 $email = $request->getQuery('userEmail', null, 'some@example.com');
 ```
 
+
 ### $_POST
+The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. Puede recuperar los datos almacenados en el vector llamando al método `getPost()` de la siguiente manera:
 
-El superglobal [$_POST](https://www.php.net/manual/en/reserved.variables.post.php) contiene un vector asociativo que contiene las variables pasadas al *script* actual mediante el método HTTP POST cuando se usa `application/x-www-form-urlencoded` o `multipart/form-data` como HTTP `Content-Type` en la petición. Puede recuperar los datos almacenados en el vector llamando al método `getPost()` de la siguiente manera:
-
-**Ejemplos** Obtiene el campo `userEmail` del superglobal `$_POST`:
+**Examples** Get the `userEmail` field from the `$_POST` superglobal:
 
 ```php
 <?php
@@ -182,10 +186,9 @@ $email = $request->getPost('userEmail', null, 'some@example.com');
 ```
 
 ### Put
-
 El objeto petición analiza el flujo PUT que se ha recibido internamente. Puede recuperar los datos almacenados en el vector llamando al método `getPut()` de la siguiente manera:
 
-**Ejemplos** Obtiene el campo `userEmail` del flujo `PUT`:
+**Examples** Get the `userEmail` field from the `PUT` stream:
 
 ```php
 <?php
@@ -222,10 +225,9 @@ $email = $request->getPut('userEmail', null, 'some@example.com');
 ```
 
 ### $_SERVER
+The [$_SERVER][server] superglobal contains an array containing information such as headers, paths, and script locations. Puede recuperar los datos almacenados en el vector llamando al método `getServer()` de la siguiente manera:
 
-El superglobal [$_SERVER](https://www.php.net/manual/en/reserved.variables.server.php) contiene un vector que contiene información como cabeceras, rutas, y ubicaciones de *script*. Puede recuperar los datos almacenados en el vector llamando al método `getServer()` de la siguiente manera:
-
-**Ejemplos** Obtiene el valor de `SERVER_NAME` del superglobal `$_SERVER`:
+**Examples** Get the `SERVER_NAME` value from the `$_SERVER` superglobal:
 
 ```php
 <?php
@@ -238,10 +240,9 @@ $name = $request->getServer('SERVER_NAME');
 ```
 
 ## Saneadores Preestablecidos
-
 Es relativamente común que ciertos campos usen el mismo nombre a lo largo de su aplicación. Un campo publicado desde un formulario en su aplicación puede tener el mismo nombre y función que otro formulario en un área distinta. Ejemplos de este comportamiento podrían ser los campos `id`, `nombre` etc.
 
-Para facilitar el proceso de saneamiento, cuando recuperamos dichos campos, [Phalcon\Http\Request](api/phalcon_http#http-request) ofrece un método para definir aquellos filtros de saneado basados en los métodos HTTP al configurar el objeto.
+To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request][http-request] offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
 
 ```php
 <?php
@@ -282,13 +283,15 @@ $container->set(
 
 ```
 
-Lo anterior saneará automáticamente cualquier parámetro publicado desde un formulario que tenga un nombre `id` o `name` con sus respectivos filtros. El saneamiento tiene lugar cuando se llama a los siguientes métodos (uno por método HTTP) - `getFilteredPost()` - `getFilteredPut()` - `getFilteredQuery()`
+Lo anterior saneará automáticamente cualquier parámetro publicado desde un formulario que tenga un nombre `id` o `name` con sus respectivos filtros. Sanitization takes place when calling the following methods (one per HTTP method)
+- `getFilteredPost()`
+- `getFilteredPut()`
+- `getFilteredQuery()`
 
 Estos métodos aceptan los mismos parámetros que `getPost()`, `getPut()` y `getQuery()` pero sin el parámetro `$filter`.
 
 ## Controladores
-
-Si usa el contenedor [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), [Phalcon\Http\Request](api/phalcon_http#http-request) ya está registrado para usted. El lugar más común para acceder el entorno de la petición es en una acción de un controlador. Para acceder al objeto [Phalcon\Http\Request](api/phalcon_http#http-request) desde un controlador necesitará usar la propiedad pública `$this->request` del controlador:
+If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Http\Request][http-request] is already registered for you. El lugar más común para acceder el entorno de la petición es en una acción de un controlador. To access the [Phalcon\Http\Request][http-request] object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
 <?php
@@ -320,50 +323,64 @@ class PostsController extends Controller
 ```
 
 ## Operaciones de Comprobación
-
-El componente [Phalcon\Http\Request](api/phalcon_http#http-request) contiene un número de métodos que le ayudan a comprobar la operación actual. Por ejemplo, si quiere comprobar si se ha realizado una solicitud en particular usando AJAX, puede hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`. - `isAjax()`: comprueba si solicitud ha sido formulada utilizando AJAX - `isConnect()`: comprueba si el método HTTP es CONNECT - `isDelete()`: comprueba si método HTTP es DELETE - `isGet()`: comprueba si método HTTP es GET - `isHead()`: comprueba si método HTTP es HEAD - `isMethod()`: comprueba si el método HTTP coincide con ninguno de los métodos pasados - `isOptions()`: comprueba si el método HTTP es OPTIONS - `isPatch()`: comprueba si el método HTTP es PATCH - `isPost()`: comprueba si método HTTP es POST - `isPurge()`: comprueba si el método HTTP es PURGE (soporte para Squid y Varnish) - `isPut()`: comprueba si el método HTTP se PUT - `isSecure()`: comprueba si solicitud ha sido formulada con alguna capa segura - `isSoap()`: comprueba si solicitud ha sido formulada con SOAP - `isTrace()`: comprueba si método HTTP es TRACE - `isValidHttpMethod()`: comprueba si un método es un método HTTP válido
+The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. Por ejemplo, si quiere comprobar si se ha realizado una solicitud en particular usando AJAX, puede hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`.
+- `isAjax()`: Checks whether request has been made using AJAX
+- `isConnect()`: Checks whether HTTP method is CONNECT
+- `isDelete()`: Checks whether HTTP method is DELETE
+- `isGet()`: Checks whether HTTP method is GET
+- `isHead()`: Checks whether HTTP method is HEAD
+- `isMethod()`: Check if HTTP method match any of the passed methods
+- `isOptions()`: Checks whether HTTP method is OPTIONS
+- `isPatch()`: Checks whether HTTP method is PATCH
+- `isPost()`: Checks whether HTTP method is POST
+- `isPurge()`: Checks whether HTTP method is PURGE (Squid and Varnish support)
+- `isPut()`: Checks whether HTTP method is PUT
+- `isSecure()`: Checks whether request has been made using any secure layer
+- `isSoap()`: Checks whether request has been made using SOAP
+- `isTrace()`: Checks whether HTTP method is TRACE
+- `isValidHttpMethod()`: Checks if a method is a valid HTTP method
 
 ## Comprobar Existencia
-
-Hay un número de métodos disponibles que le permiten comprobar la existencia de elementos de la solicitud. Estos métodos llevan el prefijo `has`. Dependiendo del método utilizado, puede comprobar si existe un elemento en el `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, caché PUT y los encabezados de solicitud. - `has()`: Comprueba si el superglobal $_REQUEST tiene un cierto elemento - `hasFiles()`: Comprueba si la petición tiene algún fichero subido - `hasHeader()`: Comprueba si las cabeceras tienen un cierto elemento - `hasPost()`: Comprueba si el superglobal $_POST tiene un cierto elemento - `hasPut()`: Comprueba si los datos PUT tienen un cierto elemento - `hasQuery()`: Comprueba si el superglobal $_GET tiene un cierto elemento - `hasServer()`: Comprueba si el superglobal $_SERVER tiene cierto elemento - `numFiles()`: Devuelve el número de ficheros presentes en la petición
+Hay un número de métodos disponibles que le permiten comprobar la existencia de elementos de la solicitud. Estos métodos llevan el prefijo `has`. Dependiendo del método utilizado, puede comprobar si existe un elemento en el `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, caché PUT y los encabezados de solicitud.
+- `has()`: Checks whether the $_REQUEST superglobal has a certain element
+- `hasFiles()`: Checks whether the request has any uploaded files
+- `hasHeader()`: Checks whether the headers have a certain element
+- `hasPost()`: Checks whether $_POST superglobal has a certain element
+- `hasPut()`: Checks whether the PUT data has a certain element
+- `hasQuery()`: Checks whether $_GET superglobal has a certain element
+- `hasServer()`: Checks whether $_SERVER superglobal has a certain element
+- `numFiles()`: Returns the number of files present in the request
 
 ## Información de la Petición
-
-El objeto [Phalcon\Http\Request](api/phalcon_http#http-request) ofrece métodos que proveen información adicional respecto a la petición.
-
+The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request.
 ### Autenticación
-
-* `getBasicAuth()`: Obtiene información de autenticación aceptada por el navegador/cliente
-* `getDigestAuth()`: Obtiene información de autenticación aceptada por el navegador/cliente
+- `getBasicAuth()`: Obtiene información de autenticación aceptada por el navegador/cliente
+- `getDigestAuth()`: Obtiene información de autenticación aceptada por el navegador/cliente
 
 ### Cliente
-
-* `getClientAddress()`: Obtiene la dirección IPv4 del cliente más probable
-* `getClientCharsets()`: Obtiene un vector de conjuntos de caracteres y sus cualidades aceptado por el navegador/cliente
-* `getUserAgent()`: Obtiene el agente HTTP del usuario usado para hacer la petición
-* `getHTTPReferer()`: Obtiene la página web que hace referencia a la petición activa
+- `getClientAddress()`: Obtiene la dirección IPv4 del cliente más probable
+- `getClientCharsets()`: Obtiene un vector de conjuntos de caracteres y sus cualidades aceptado por el navegador/cliente
+- `getUserAgent()`: Obtiene el agente HTTP del usuario usado para hacer la petición
+- `getHTTPReferer()`: Obtiene la página web que hace referencia a la petición activa
 
 ### Contenido
-
-* `getAcceptableContent()`: Obtiene un vector con tipos mime y sus cualidades aceptadas por el navegador/cliente
-* `getBestAccept()`: Obtiene los mejores tipos mime aceptados por el navegador/cliente
-* `getContentType()`: Obtiene el tipo de contenido que ha enviado la petición
-* `getJsonRawBody()`: Obtiene el JSON sin procesar del cuerpo de la petición HTTP
-* `getRawBody()`: Obtiene el cuerpo de la petición HTTP sin procesar
+- `getAcceptableContent()`: Obtiene un vector con tipos mime y sus cualidades aceptadas por el navegador/cliente
+- `getBestAccept()`: Obtiene los mejores tipos mime aceptados por el navegador/cliente
+- `getContentType()`: Obtiene el tipo de contenido que ha enviado la petición
+- `getJsonRawBody()`: Obtiene el JSON sin procesar del cuerpo de la petición HTTP
+- `getRawBody()`: Obtiene el cuerpo de la petición HTTP sin procesar
 
 ### i18n
-
-* `getBestCharset()`: Obtiene el mejor conjunto de caracteres aceptados por el navegador/cliente
-* `getBestLanguage()`: Obtiene el mejor idioma aceptado por el navegador/cliente
-* `getLanguages()`: Obtiene un vector de idiomas y sus cualidades aceptadas por el navegador/cliente
+- `getBestCharset()`: Obtiene el mejor conjunto de caracteres aceptados por el navegador/cliente
+- `getBestLanguage()`: Obtiene el mejor idioma aceptado por el navegador/cliente
+- `getLanguages()`: Obtiene un vector de idiomas y sus cualidades aceptadas por el navegador/cliente
 
 ### Servidor
-
-* `getPort()`: Obtiene información sobre el puerto sobre el que se ha hecho la petición
-* `getServerAddress()`: Obtiene la dirección IP activa del servidor
-* `getServerName()`: Obtiene el nombre del servidor activo
-* `getScheme()`: Obtiene el esquema HTTP (http/https)
-* `getURI()`: Obtiene la URI HTTP que ha hecho la solicitud. Si se pasa `true` como parámetro, la parte de consulta no se devolverá
+- `getPort()`: Obtiene información sobre el puerto sobre el que se ha hecho la petición
+- `getServerAddress()`: Obtiene la dirección IP activa del servidor
+- `getServerName()`: Obtiene el nombre del servidor activo
+- `getScheme()`: Obtiene el esquema HTTP (http/https)
+- `getURI()`: Obtiene la URI HTTP que ha hecho la solicitud. Si se pasa `true` como parámetro, la parte de consulta no se devolverá
 
 ```php
 <?php
@@ -387,41 +404,35 @@ Algunos métodos:
 ```php
 $ipAddress = $request->getServerAddress();
 ```
-
-Obtiene la dirección IP del servidor. ej. `192.168.0.100`
+Obtiene la dirección IP del servidor. ie. `192.168.0.100`
 
 ```php
 $ipAddress = $request->getClientAddress();
 ```
-
-Obtiene la dirección IP del cliente, ej. `201.245.53.51`
+Get the client's IP address ie. `201.245.53.51`
 
 ```php
 $userAgent = $request->getUserAgent();
 ```
-
 Obtiene el Agente del Usuario (`HTTP_USER_AGENT`)
 
 ```php
 $contentType = $request->getAcceptableContent();
 ```
-
 Obtiene el mejor contenido aceptable por el navegador. ej text/xml
 
 ```php
 $charset = $request->getBestCharset();
 ```
-
-Obtiene el mejor conjunto de caracteres aceptado por el navegador. ej. `utf-8`
+Obtiene el mejor conjunto de caracteres aceptado por el navegador. ie. `utf-8`
 
 ```php
 $language = $request->getBestLanguage();
 ```
+Obtiene el mejor idioma aceptado configurado en el navegador. ie. `en-us`
 
-Obtiene el mejor idioma aceptado configurado en el navegador. ej. `en-us`
 
 ### Método
-
 `getMethod()` devuelve método HTTP que ha hecho la petición. Si la cabecera `X-HTTP-Method-Override` está establecida, y si el método es `POST`, entonces se usa para determinar el método HTTP "real" deseado. El parámetro `_method` de la petición también se puede usar para determinar el método HTTP, se tiene que llamar a `setHttpMethodParameterOverride(true)`. El método siempre devuelve una cadena en mayúsculas.
 
 ```php
@@ -450,12 +461,10 @@ echo $request->getMethod();
 ```
 
 ## Inyección de Dependencias
-
-El objeto [Phalcon\Http\Request](api/phalcon_http#http-request) implementa la interfaz [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface). Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
+The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
 ## Trabajando con Cabeceras
-
-Las cabeceras de solicitud contienen información útil, permitiéndole tomar los pasos necesarios para enviar la respuesta adecuada de vuelta al usuario. [Phalcon\Http\Request](api/phalcon_http#http-request) expone los métodos `getHeader()` y `getHeaders()`.
+Las cabeceras de solicitud contienen información útil, permitiéndole tomar los pasos necesarios para enviar la respuesta adecuada de vuelta al usuario. The [Phalcon\Http\Request][http-request] exposes the `getHeader()` and `getHeaders()` methods.
 
 ```php
 <?php
@@ -478,13 +487,15 @@ $_SERVER["HTTP_HOST"] = "ExAmPlE.com";
 $request->getHttpHost(); // example.com
 ```
 
-El método `getHttpHost()` devolverá el nombre del servidor usado por la petición. El método intentará encontrar el nombre del servidor en el siguiente orden: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]`
+El método `getHttpHost()` devolverá el nombre del servidor usado por la petición. The method will try to find host name in following order:
+- `$_SERVER["HTTP_HOST"]`
+- `$_SERVER["SERVER_NAME"]`
+- `$_SERVER["SERVER_ADDR"]`
 
 Opcionalmente `getHttpHost()` valida y realizar una comprobación estricta del nombre del servidor. Para conseguirlo, puede usar el método `setStrictHostCheck()`.
 
 ## Ficheros Subidos
-
-Otra tarea común es la subida de ficheros. [Phalcon\Http\Request](api/phalcon_http#http-request) ofrece una forma de trabajar con ficheros orientada a objeto. Para que funcione todo el proceso de subida, necesitará hacer los cambios necesarios en su `php.ini` (ver [subidas-php](https://www.php.net/manual/en/ini.core.php#ini.file-uploads)).
+Otra tarea común es la subida de ficheros. [Phalcon\Http\Request][http-request] offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
 
 ```php
 <?php
@@ -517,30 +528,30 @@ class PostsController extends Controller
 }
 ```
 
-Cada objeto devuelto por `Phalcon\Http\Request::getUploadedFiles()` es una instancia de [Phalcon\Http\Request\File](api/phalcon_http#http-request-file) que implementa la clase [Phalcon\Http\Request\FileInterface](api/phalcon_http#http-request-fileinterface). Usar el vector superglobal `$_FILES` ofrece el mismo comportamiento. [Phalcon\Http\Request\File](api/phalcon_http#http-request-file) encapsula sólo la información relacionada con cada fichero subido en la petición.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File][http-request-file] which implements the [Phalcon\Http\Request\FileInterface][http-request-fileinterface] class. Usar el vector superglobal `$_FILES` ofrece el mismo comportamiento. [Phalcon\Http\Request\File][http-request-file] encapsulates only the information related to each file uploaded with the request.
 
-`getUploadedFiles()` acepta dos parámetros. - `$onlySuccessful`: Contiene sólo subidas correctas - `$namedKeys`: Devuelve el vector con claves nombradas obtenidas en el proceso de subida
+`getUploadedFiles()` acepta dos parámetros.
+- `$onlySuccessful`: Contains only successful uploads
+- `$namedKeys`: Returns the array with named keys obtained by the upload process
 
-El método devuelve un vector de objetos [Phalcon\Http\Request\File](api/phalcon_http#http-request-file). Cada objeto ofrece las siguientes propiedades y métodos, que le permiten trabajar con los ficheros subidos:
+The method returns an array of [Phalcon\Http\Request\File][http-request-file] objects. Cada objeto ofrece las siguientes propiedades y métodos, que le permiten trabajar con los ficheros subidos:
 
-* `getError()` (string) - Devuelve cualquier error que haya ocurrido con este fichero
-* `getExtension()` (string) - Devuelve la extensión del fichero
-* `getKey()` (string) - Devuelve la clave interna del fichero
-* `getName()` (string) - Devuelve el nombre real del fichero subido
-* `getRealType()` (string) - Devuelve el tipo mime real del fichero subido usando finfo
-* `getSize()` (int) - Devuelve el tamaño del fichero subido
-* `getTempName()` (string) - Devuelve el nombre temporal del fichero subido
-* `getType()` (string) - Devuelve el tipo mime informado por el navegador. El tipo mime no es completamente seguro, use `getRealType()` en su lugar
-* `isUploadedFile()` (bool) - Comprueba si el fichero ha sido subido vía `POST`.
-* `moveTo(string $destination)` (bool) - Mueve el fichero temporal a un destino dentro de la aplicación
+- `getError()` (string) - Devuelve cualquier error que haya ocurrido con este fichero
+- `getExtension()` (string) - Devuelve la extensión del fichero
+- `getKey()` (string) - Devuelve la clave interna del fichero
+- `getName()` (string) - Devuelve el nombre real del fichero subido
+- `getRealType()` (string) - Devuelve el tipo mime real del fichero subido usando finfo
+- `getSize()` (int) - Devuelve el tamaño del fichero subido
+- `getTempName()` (string) - Devuelve el nombre temporal del fichero subido
+- `getType()` (string) - Devuelve el tipo mime informado por el navegador. El tipo mime no es completamente seguro, use `getRealType()` en su lugar
+- `isUploadedFile()` (bool) - Comprueba si el fichero ha sido subido vía `POST`.
+- `moveTo(string $destination)` (bool) - Mueve el fichero temporal a un destino dentro de la aplicación
 
 ## Inyección de Dependencias
-
-El objeto [Phalcon\Http\Request](api/phalcon_http#http-request) implementa la interfaz [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface). Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
+The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
 ## Eventos
-
-El objeto [Phalcon\Http\Request](api/phalcon_http#http-request) implementa el interfaz [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface). Como resultado `getEventsManager()` y `setEventsManager()` están disponibles para usar.
+ The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. Como resultado `getEventsManager()` y `setEventsManager()` están disponibles para usar.
 
 | Evento                       | Descripción                                                | Puede parar la operación |
 | ---------------------------- | ---------------------------------------------------------- |:------------------------:|
@@ -553,7 +564,18 @@ Cuando se usa la autorización HTTP, la cabecera `Authorization` tiene el siguie
 Authorization: <type> <credentials>
 ```
 
-donde `<type>` es un tipo de autenticación. Un tipo común es `Basic`. Tipos de autenticación adicional se describen en el [registro de esquemas de Autenticación IANA](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) y [Autenticación para servidores AWS (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). En la mayoría de casos el tipo de autenticación es: * `AWS4-HMAC-SHA256` * `Basic` * `Bearer` * `Digest` * `HOBA` * `Mutual` * `Negotiate` * `OAuth` * `SCRAM-SHA-1` * `SCRAM-SHA-256` * `vapid`
+donde `<type>` es un tipo de autenticación. Un tipo común es `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes][iana] and [Authentication for AWS servers (AWS4-HMAC-SHA256)][aws-auth]. In most use cases the authentication type is:
+* `AWS4-HMAC-SHA256`
+* `Básico`
+* `Bearer`
+* `Digest`
+* `HOBA`
+* `Mutual`
+* `Negotiate`
+* `OAuth`
+* `SCRAM-SHA-1`
+* `SCRAM-SHA-256`
+* `vapid`
 
 Puede usar los eventos `request:beforeAuthorizationResolve` y `request:afterAuthorizationResolve` para realizar operaciones adicionales antes o después de que la autorización se resuelva.
 
@@ -564,7 +586,6 @@ Puede usar los eventos `request:beforeAuthorizationResolve` y `request:afterAuth
 Se requiere una resolución personalizada de autorizaciones.
 
 Ejemplo sin usar la resolución personalizada de autorizaciones:
-
 ```php
 <?php
 
@@ -589,7 +610,6 @@ Credentials: Secret
 ```
 
 Ejemplo usando la resolución personalizada de autorización:
-
 ```php
 <?php
 
@@ -661,3 +681,20 @@ Array
 Type: Negotiate
 Credentials: a87421000492aa874209af8bc028
 ```
+
+[aws-auth]: https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html
+[cookie]: https://www.php.net/manual/en/reserved.variables.cookies.php
+[get]: https://www.php.net/manual/en/reserved.variables.get.php
+[iana]: https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
+[php-uploads]: https://www.php.net/manual/en/ini.core.php#ini.file-uploads
+[post]: https://www.php.net/manual/en/reserved.variables.post.php
+[request]: https://www.php.net/manual/en/reserved.variables.request.php
+[server]: https://www.php.net/manual/en/reserved.variables.server.php
+[sql-injection]: https://en.wikipedia.org/wiki/SQL_injection
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+[http-request]: api/phalcon_http#http-request
+[http-request-file]: api/phalcon_http#http-request-file
+[http-request-fileinterface]: api/phalcon_http#http-request-fileinterface
+[di-injectionawareinterface]: api/phalcon_di#di-injectionawareinterface
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface

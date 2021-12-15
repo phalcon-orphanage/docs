@@ -425,7 +425,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Διεθνοποίηση",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {
@@ -443,7 +443,7 @@
                 "url": "/collection"
             },
             {
-                "text": "Τομέας",
+                "text": "Domain",
                 "url": "/domain"
             },
             {
@@ -451,11 +451,11 @@
                 "url": "/html"
             },
             {
-                "text": "Βοηθοί",
+                "text": "Helper",
                 "url": "/helper"
             },
             {
-                "text": "Μητρώο",
+                "text": "Registry",
                 "url": "/registry"
             }
         ]

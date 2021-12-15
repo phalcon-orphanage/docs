@@ -7,17 +7,13 @@ keywords: 'probando el entorno, codeception, nanobox, testing, phpunit, tests'
 ---
 
 # Entorno de prueba
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-# Preámbulo
-
-La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. Esto se debía principalmente a que la mayoría de desarrolladores no sabe programar en C. Por este motivo se creo [Zephir](https://zephir-lang.com), un nuevo lenguaje con una sintaxis similar a la de PHP o JavaScript. En 2003 se presentó [este plan](https://blog.phalcon.io/post/phalcon-2-0-the-future) y algunos meses después se lanzó Zephir y Phalcon fue completamente reescrito en él. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.
+# Resumen
+La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir][zephir], which has a very similar syntax to PHP or Javascript. In [2003][2003] we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.
 
 # El problema
-
 Un *framework* rico en características necesita un entorno de desarrollo con todos los servicios necesarios para utilizarlas. Por ejemplo, es necesario tener instalados `MySQL`, `Postgresql` y `Sqlite` para comprobar que la funcionalidad del Mapeo objeto-relacional (ORM, por sus siglas en inglés) será igual en todos los adaptadores según la base de datos que necesite la aplicación. También deben estar instaladas todas las extensiones relevantes de PHP.
 
 Dada toda la funcionalidad que Phalcon ofrece, sólo para ejecutar la suite de pruebas se necesita tener instalado un gran número de extensiones y servicios (Redis, Memcached, Beanstalkd, etc.)
@@ -25,27 +21,22 @@ Dada toda la funcionalidad que Phalcon ofrece, sólo para ejecutar la suite de p
 El problema se vuelve más complejo aún si se piensa además en todas las versiones de PHP (7.2, 7.3, etc.) que se deben probar; con todos estos pre requisitos, el desarrollo de Phalcon no es en definitiva una tarea fácil.
 
 # La solución
-
 Originalmente se ensayó a crear un entorno de desarrollo basado en Docker, pero después de cierto tiempo, la manutención de este entorno se volvió muy exigente para el equipo principal.
 
-Sin embargo recientemente, se decidió redoblar los esfuerzos y recrear este entorno mediante el uso de [nanobox](https://nanobox.io). Nanobox es un *envoltorio* sobre Docker que crea un entorno de desarrollo único en el PC, listo para usar. El entorno se vale del sistema de carpetas y archivos, entonces es posible tener dos carpetas donde se ha clonado Phalcon y ejecutar PHP 7.2 en una y 7.3 en la otra. Cada uno de dichos entornos está completamente aislado. Hasta la fecha, Nanobox funciona muy bien.
+Recently however, we have redoubled our efforts to create this environment and we decided to use [nanobox][nanobox]. Nanobox es un *envoltorio* sobre Docker que crea un entorno de desarrollo único en el PC, listo para usar. El entorno se vale del sistema de carpetas y archivos, entonces es posible tener dos carpetas donde se ha clonado Phalcon y ejecutar PHP 7.2 en una y 7.3 en la otra. Cada uno de dichos entornos está completamente aislado. Hasta la fecha, Nanobox funciona muy bien.
 
 # Instalación
+El primer paso es tener Docker instalado. Instructions on how to do that, can be found [here][docker_installation].
 
-El primer paso es tener Docker instalado. Si necesita ayuda, aquí puede encontrar las [instrucciones de instalación](https://docs.docker.com/engine/installation/).
-
-El segundo es ir a <https://nanobox.io> y crear una cuenta o ingresar con una existente para descargar la versión de Nanobox indicada para su sistema operativo.
+Go to [https://nanobox.io][nanobox] and create an account if you do not have one already, so that you can download the nanobox installation file for your platform.
 
 El tercer paso es instalar la versión descargada.
 
 # Ejecución del entorno
-
 ## Clonación (*fork*) del repositorio
-
-Es necesario clonar (*fork*) [cphalcon](https://github.com/phalcon/cphalcon) en su cuenta de Github (si aún no se ha hecho): En la página [cphalcon](https://github.com/phalcon/cphalcon) dé un clic al botón `Fork` en la parte superior derecha de la pantalla.
+Fork the [cphalcon][cphalcon] to your github account, if you have not done so already. Visit the [cphalcon][cphalcon] page on your browser and click the `Fork` button at the top right of the screen.
 
 ## Copia del *fork*
-
 Ahora es necesario clonar el *fork* en una carpeta cualquiera del PC. En el siguiente ejemplo se utiliza como cuenta de Github `niden` (debe ser remplazada por la apropiada):
 
 ```bash
@@ -53,26 +44,21 @@ git clone git@github.com:niden/cphalcon
 ```
 
 ## Copia del *boxfile*
-
-Nanobox lee un archivo llamado `boxfile.yml`, ubicado en la raíz de la carpeta. Phalcon ofrece dos archivos para facilitar el desarrollo: uno para PHP 7.2 y otro para 7.3. Se debe copiar alguno de ellos a la raíz de la carpeta en la que se clonó el repositorio.
+Nanobox lee un archivo llamado `boxfile.yml`, ubicado en la raíz de la carpeta. Phalcon ofrece dos archivos para facilitar el desarrollo: One for PHP 7.2 and one for 7.3. Copy one of them to the root of the folder you have cloned your repository.
 
 ```bash
 cd ./cphalcon
 cp -v ./tests/_ci/nanobox/boxfile.7.2.yml ./boxfile.yml
 
 ```
-
 Aparecerá entonces el archivo `boxfile.hml` en la raíz de la carpeta del proyecto.
 
 ## Configuración de Nanobox
-
-Ahora se puede ejecutar Nanobox. Por ser la primera vez, es necesario seguir los pasos de configuración, muy sencillos:
-
+Ahora se puede ejecutar Nanobox. Por ser la primera vez, es necesario seguir los pasos de configuración,  muy sencillos:
 ```bash
 nanobox run
 ```
-
-Ahora se debe iniciar la sesión utilizando los mismos nombre de usuario y contraseña de la cuenta de Nanobox para poder iniciar la descarga del archivo de instalación.
+Ahora se debe iniciar la sesión  utilizando los mismos nombre de usuario y contraseña de la cuenta de Nanobox para poder iniciar la descarga del archivo de instalación.
 
 ```bash
 $ nanobox login
@@ -80,7 +66,9 @@ Nanobox Username: niden
 Nanobox Password: 
 ```
 
-También es necesario configurar Nanobox. Se debe escoger cómo se quiere que trabaje. Hay dos opciones: * Máquina Virtual (VM, por sus siglas en inglés) liviana utilizando Virtualbox * Docker nativo
+También es necesario configurar Nanobox. Se debe escoger cómo se quiere que trabaje. There are two options
+* a lightweight VM (Virtualbox)
+* docker native
 
 Se recomienda escoger la opción **b**, *Docker nativo* (de aquí que se aconsejara instalar Docker desde el principio) como respuesta al final de los siguientes párrafos en la terminal, después de `Answer`:
 
@@ -104,11 +92,9 @@ Answer:
 ```
 
 ## Ejecución de Nanobox
-
 Terminada la configuración, Nanobox empezará a descargar un montón de paquetes y contenedores. Esto es normal y tardará un poco según la velocidad de conexión del sistema. Finalizada la descarga, todas las ejecuciones posteriores utilizarán estos paquetes y contenedores (salvo que haya alguna actualización disponible).
 
 Al terminar el proceso de instalación, aparecerá una ventana similar a esta:
-
 ```bash
 Preparing environment :
 
@@ -139,7 +125,6 @@ Preparing environment :
 Esto significa que la instalación ha sido exitosa y ahora están a su alcance todas las extensiones y servicios necesarios. Nota: Es probable que la IP `172.18.0.2` que aparece al final del ejemplo sea diferente en su sistema.
 
 ## Composer
-
 Por precaución es preferible actualizar `composer`:
 
 ```bash
@@ -147,13 +132,11 @@ Por precaución es preferible actualizar `composer`:
 ```
 
 ## Comprobar Zephir
-
 Zephir ya está instalado en el entorno. Compruébelo:
 
 ```bash
 /app $ zephir help
 ```
-
 Debe aparecer una pantalla similar a la siguiente:
 
 ```bash
@@ -189,7 +172,6 @@ Help:
 ```
 
 ## Compilación de Phalcon
-
 Phalcon aún no está compilado. Hay que darle las instrucciones a Zephir para que lo haga:
 
 ```bash
@@ -198,7 +180,6 @@ Phalcon aún no está compilado. Hay que darle las instrucciones a Zephir para q
 ```
 
 ## Comprobar Extensiones
-
 Tipo
 
 ```bash
@@ -227,7 +208,7 @@ redis
 Xdebug
 ```
 
-Tenga en cuenta que Phalcon v4+ requiere que se cargue la extensión [PSR](https://github.com/jbboehr/php-psr) antes que Phalcon. En este entorno lo hemos compilado para usted. Una vez que vea `phalcon` en la lista, ya tiene la extensión compilada y lista para usar.
+Note that Phalcon v4+ requires the [PSR][psr] extension to be loaded before Phalcon. En este entorno lo hemos compilado para usted. Una vez que vea `phalcon` en la lista, ya tiene la extensión compilada y lista para usar.
 
 ## Configuración de bases de datos
 
@@ -254,21 +235,16 @@ Para rellenar la base de datos necesitará ejecutar el script siguiente:
 ```
 
 # Pruebas en ejecución
-
 ## Unitaria
-
-Ahora que el entorno está configurado, necesitamos ejecutar las pruebas. El framework de pruebas de Phalcon usa [Codeception](https://codeception.com). Para una introducción básica, puede consultar [esta](https://codeception.com/docs/01-Introduction) página. También para la lista de comandos, puede consultar [aquí](https://codeception.com/docs/reference/Commands).
+Ahora que el entorno está configurado, necesitamos ejecutar las pruebas. The testing framework Phalcon uses is [Codeception][codeception]. For a basic introduction you can check [this][codeception_introduction] page. Also for the list of the commands, you can check [here][codeception_commands].
 
 Primero necesitamos construir las clases base de Codeception. Esto debe ocurrir cada vez que se introduce nueva funcionalidad en los ayudantes de Codeception.
 
 Ahora puede ejecutar:
-
 ```bash
 /app $ vendor/bin/codecept build
 ```
-
 La salida debería mostrar:
-
 ```bash
 Building Actor classes for suites: cli, database, integration, unit
  -> CliTesterActions.php generated successfully. 152 methods added
@@ -302,7 +278,6 @@ Ejecutar una única prueba:
 ```
 
 ## Base de Datos
-
 Para ejecutar las pruebas relacionadas con base de datos necesita ejecutar el paquete `database` especificando el RDBMS y grupo:
 
 ```bash
@@ -383,30 +358,82 @@ DNS Aliases
 Puede usar estas variables para conectar a su base de datos u otros servicios como Mongo, Redis, etc.
 
 # Desarrollo
-
 Ahora puede abrir su editor favorito y empezar a desarrollar en Zephir. Puede crear nueva funcionalidad, arreglar problemas, escribir pruebas, etc. No obstante, recuerde que si cambia cualquiera de los ficheros `zep` (dentro del directorio `phalcon`), necesitará recompilar al extensión:
 
 ```bash
 /app $ zephir fullclean
 /app $ zephir build
 ```
-
 y luego puede ejecutar sus pruebas
 
 ```bash
 /app $ codecept run tests/unit/somefolder/somecestfile:sometest
 ```
 
-Para la documentación de Zephir, puede visitar el sitio [Docs Zephir](https://docs.zephir-lang.com).
+For Zephir documentation, you can visit the [Zephir Docs][zephir_docs] site.
 
 # Servicios
+The available services are:
+- Memcached
+- Mongodb
+- Mysql
+- Postgresql
+- Redis
 
-Los servicios disponibles son: - Memcached - Mongodb - Mysql - Postgresql - Redis
-
-Las extensiones PHP habilitadas son: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - intl - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - sqlite3 - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
+The PHP extensions enabled are:
+- apcu
+- ctype
+- curl
+- dom
+- fileinfo
+- gd
+- gmp
+- gettext
+- imagick
+- iconv
+- igbinary
+- intl
+- json
+- memcached
+- mbstring
+- mongodb
+- opcache
+- phar
+- pdo
+- pdo_mysql
+- pdo_pgsql
+- pdo_sqlite
+- redis
+- session
+- simplexml
+- sqlite3
+- tokenizer
+- yaml
+- zephir_parser
+- xdebug
+- xml
+- xmlwriter
+- zip
+- zlib
 
 Los volcados de base de datos están ubicados bajo `tests/_data/assets/schemas`
 
-Si tiene cualquier cuestión, no dude en unirse a nosotros en nuestro servidor [Discord](https://phalcon.io/discord) o nuestro [Foro](https://forum.phalcon.io).
+If you have any questions, feel free to join us in our [Discord][discord] server or our [Forum][forum].
+
 
 <3 Phalcon Team
+
+
+[2003]: https://blog.phalcon.io/post/phalcon-2-0-the-future
+[cphalcon]: https://github.com/phalcon/cphalcon
+[codeception]: https://codeception.com
+[codeception_commands]: https://codeception.com/docs/reference/Commands
+[codeception_introduction]: https://codeception.com/docs/01-Introduction
+[discord]: https://phalcon.io/discord
+[docker_installation]: https://docs.docker.com/engine/installation/
+[forum]: https://forum.phalcon.io
+[nanobox]: https://nanobox.io
+[nanobox]: https://nanobox.io
+[psr]: https://github.com/jbboehr/php-psr
+[zephir]: https://zephir-lang.com
+[zephir_docs]: https://docs.zephir-lang.com

@@ -26,8 +26,8 @@ title: 'Phalcon\Annotations'
 
 Esta es la clase base para adaptadores Phalcon\Annotations
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var array
@@ -46,44 +46,46 @@ protected reader;
 ```php
 public function get( mixed $className ): Reflection;
 ```
-
 Analiza o recupera todas las anotaciones encontradas en una clase
+
 
 ```php
 public function getMethod( string $className, string $methodName ): Collection;
 ```
-
 Devuelve las anotaciones encontradas en un método específico
+
 
 ```php
 public function getMethods( string $className ): array;
 ```
-
 Devuelve las anotaciones encontradas en todos los métodos de la clase
+
 
 ```php
 public function getProperties( string $className ): array;
 ```
+Devuelve las anotaciones encontradas en todos los métodos de la clase
 
-Devuelve las anotaciones encontradas en todas las propiedades de la clase
 
 ```php
 public function getProperty( string $className, string $propertyName ): Collection;
 ```
-
 Devuelve las anotaciones encontradas en un propiedad específica
+
 
 ```php
 public function getReader(): ReaderInterface;
 ```
-
 Devuelve el lector de anotaciones
+
 
 ```php
 public function setReader( ReaderInterface $reader );
 ```
-
 Establece el analizador de anotaciones
+
+
+
 
 <h1 id="annotations-adapter-adapterinterface">Interface Phalcon\Annotations\Adapter\AdapterInterface</h1>
 
@@ -93,49 +95,52 @@ Establece el analizador de anotaciones
 
 Esta interfaz debe ser implementada por adaptadores de Phalcon\Annotations
 
+
 ## Métodos
 
 ```php
 public function get( string $className ): Reflection;
 ```
-
 Analiza o recupera todas las anotaciones encontradas en una clase
+
 
 ```php
 public function getMethod( string $className, string $methodName ): Collection;
 ```
-
 Devuelve las anotaciones encontradas en un método específico
+
 
 ```php
 public function getMethods( string $className ): array;
 ```
-
 Devuelve las anotaciones encontradas en todos los métodos de la clase
+
 
 ```php
 public function getProperties( string $className ): array;
 ```
+Devuelve las anotaciones encontradas en todos los métodos de la clase
 
-Devuelve las anotaciones encontradas en todas las propiedades de la clase
 
 ```php
 public function getProperty( string $className, string $propertyName ): Collection;
 ```
-
 Devuelve las anotaciones encontradas en un propiedad específica
+
 
 ```php
 public function getReader(): ReaderInterface;
 ```
-
 Devuelve el lector de anotaciones
+
 
 ```php
 public function setReader( ReaderInterface $reader );
 ```
-
 Establece el analizador de anotaciones
+
+
+
 
 <h1 id="annotations-adapter-apcu">Class Phalcon\Annotations\Adapter\Apcu</h1>
 
@@ -151,8 +156,8 @@ use Phalcon\Annotations\Adapter\Apcu;
 $annotations = new Apcu();
 ```
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var string
@@ -175,14 +180,16 @@ public function __construct( array $options = [] );
 ```php
 public function read( string $key ): Reflection | bool;
 ```
-
 Lee anotaciones analizadas desde APCu
+
 
 ```php
 public function write( string $key, Reflection $data ): bool;
 ```
-
 Escribe anotaciones analizadas en APCu
+
+
+
 
 <h1 id="annotations-adapter-memory">Class Phalcon\Annotations\Adapter\Memory</h1>
 
@@ -192,8 +199,8 @@ Escribe anotaciones analizadas en APCu
 
 Almacena anotaciones analizadas en memoria. Este adaptador es el adecuado para desarrollo/pruebas
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var mixed
@@ -207,14 +214,16 @@ protected data;
 ```php
 public function read( string $key ): Reflection | bool;
 ```
-
 Lee anotaciones analizadas desde memoria
+
 
 ```php
 public function write( string $key, Reflection $data ): void;
 ```
-
 Escribe anotaciones analizadas en memoria
+
+
+
 
 <h1 id="annotations-adapter-stream">Class Phalcon\Annotations\Adapter\Stream</h1>
 
@@ -234,8 +243,8 @@ $annotations = new Stream(
 );
 ```
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var string
@@ -253,14 +262,16 @@ public function __construct( array $options = [] );
 ```php
 public function read( string $key ): Reflection | bool | int;
 ```
-
 Lee anotaciones analizadas desde ficheros
+
 
 ```php
 public function write( string $key, Reflection $data ): void;
 ```
-
 Escribe anotaciones analizadas en ficheros
+
+
+
 
 <h1 id="annotations-annotation">Class Phalcon\Annotations\Annotation</h1>
 
@@ -270,8 +281,8 @@ Escribe anotaciones analizadas en ficheros
 
 Representa a una sola anotación dentro de una colección de anotaciones
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * Annotation Arguments
@@ -301,62 +312,64 @@ protected name;
 ```php
 public function __construct( array $reflectionData );
 ```
-
 Constructor Phalcon\Annotations\Annotation
+
 
 ```php
 public function getArgument( mixed $position ): mixed | null;
 ```
-
 Devuelve un argumento en una posición específica
+
 
 ```php
 public function getArguments(): array;
 ```
-
 Devuelve los argumentos de la expresión
+
 
 ```php
 public function getExprArguments(): array;
 ```
-
 Devuelve los argumentos de la expresión sin resolver
+
 
 ```php
 public function getExpression( array $expr ): mixed;
 ```
-
 Resuelve una expresión de anotación
+
 
 ```php
 public function getName(): null | string;
 ```
-
 Devuelve el nombre de la anotación
+
 
 ```php
 public function getNamedArgument( string $name ): mixed | null;
 ```
-
 Devuelve el argumento nombrado
+
 
 ```php
 public function getNamedParameter( string $name ): mixed;
 ```
-
 Devuelve el parámetro nombrado
+
 
 ```php
 public function hasArgument( mixed $position ): bool;
 ```
-
 Devuelve un argumento en una posición específica
+
 
 ```php
 public function numberArguments(): int;
 ```
-
 Devuelve el número de argumentos que tiene la anotación
+
+
+
 
 <h1 id="annotations-annotationsfactory">Class Phalcon\Annotations\AnnotationsFactory</h1>
 
@@ -366,13 +379,14 @@ Devuelve el número de argumentos que tiene la anotación
 
 Fábrica para crear componentes de anotaciones
 
+
 ## Métodos
 
 ```php
 public function __construct( array $services = [] );
 ```
-
 Constructor AdapterFactory.
+
 
 ```php
 public function load( mixed $config ): mixed;
@@ -381,14 +395,16 @@ public function load( mixed $config ): mixed;
 ```php
 public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
-
 Crea una nueva instancia del adaptador
+
 
 ```php
 protected function getAdapters(): array;
 ```
-
 Los adaptadores disponibles
+
+
+
 
 <h1 id="annotations-collection">Class Phalcon\Annotations\Collection</h1>
 
@@ -411,8 +427,8 @@ var_dump($classAnnotations->has("Cacheable"));
 $annotation = $classAnnotations->get("Cacheable");
 ```
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var array
@@ -431,68 +447,70 @@ protected position = 0;
 ```php
 public function __construct( array $reflectionData = [] );
 ```
-
 Constructor Phalcon\Annotations\Collection
+
 
 ```php
 public function count(): int;
 ```
-
 Devuelve el número de anotaciones en la colección
+
 
 ```php
 public function current(): Annotation | bool;
 ```
-
 Devuelve la anotación actual en el iterador
+
 
 ```php
 public function get( string $name ): Annotation;
 ```
-
 Devuelve la primera anotación que coincide con un nombre
+
 
 ```php
 public function getAll( string $name ): Annotation[];
 ```
-
 Devuelve todas las anotaciones que coinciden con un nombre
+
 
 ```php
 public function getAnnotations(): Annotation[];
 ```
-
 Devuelve las anotaciones internas como un vector
+
 
 ```php
 public function has( string $name ): bool;
 ```
-
 Comprobar si existe una anotación en una colección
+
 
 ```php
 public function key(): int;
 ```
+Devuelve la clave/posición actual del iterador
 
-Devuelve la clave/posición actual en el iterador
 
 ```php
 public function next(): void;
 ```
+Mueve el puntero interno de iteración a la siguiente posición
 
-Mueve el puntero de iteración interno a la siguiente posición
 
 ```php
 public function rewind(): void;
 ```
-
 Rebobina el iterador interno
+
 
 ```php
 public function valid(): bool;
 ```
-
 Verifica si la anotación actual del iterador es válida
+
+
+
 
 <h1 id="annotations-exception">Class Phalcon\Annotations\Exception</h1>
 
@@ -502,6 +520,8 @@ Verifica si la anotación actual del iterador es válida
 
 Clase para excepciones lanzadas por Phalcon\Annotations
 
+
+
 <h1 id="annotations-reader">Class Phalcon\Annotations\Reader</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Reader.zep)
@@ -510,19 +530,22 @@ Clase para excepciones lanzadas por Phalcon\Annotations
 
 Analiza los docblocks para devolver un vector con las anotaciones encontradas
 
+
 ## Métodos
 
 ```php
 public function parse( string $className ): array;
 ```
-
 Lee las anotaciones de la clase docblocks, sus métodos y/o propiedades
+
 
 ```php
 public static function parseDocBlock( string $docBlock, mixed $file = null, mixed $line = null ): array;
 ```
-
 Procesa un bloque doc en bruto devolviendo las anotaciones encontradas
+
+
+
 
 <h1 id="annotations-readerinterface">Interface Phalcon\Annotations\ReaderInterface</h1>
 
@@ -532,19 +555,22 @@ Procesa un bloque doc en bruto devolviendo las anotaciones encontradas
 
 Analiza los docblocks para devolver un vector con las anotaciones encontradas
 
+
 ## Métodos
 
 ```php
 public function parse( string $className ): array;
 ```
-
 Lee las anotaciones de la clase docblocks, sus métodos y/o propiedades
+
 
 ```php
 public static function parseDocBlock( string $docBlock, mixed $file = null, mixed $line = null ): array;
 ```
-
 Procesa un bloque doc en bruto devolviendo las anotaciones encontradas
+
+
+
 
 <h1 id="annotations-reflection">Class Phalcon\Annotations\Reflection</h1>
 
@@ -569,8 +595,8 @@ $reflection = new Reflection($parsing);
 $classAnnotations = $reflection->getClassAnnotations();
 ```
 
-## Propiedades
 
+## Propiedades
 ```php
 //
 protected classAnnotations;
@@ -593,29 +619,30 @@ protected reflectionData;
 ```php
 public function __construct( array $reflectionData = [] );
 ```
-
 Constructor Phalcon\Annotations\Reflection
+
 
 ```php
 public function getClassAnnotations(): Collection | bool;
 ```
-
 Devuelve las anotaciones encontradas en la clase docblock
+
 
 ```php
 public function getMethodsAnnotations(): Collection[] | bool;
 ```
-
 Devuelve las anotaciones encontradas en los métodos de docblocks
+
 
 ```php
 public function getPropertiesAnnotations(): Collection[] | bool;
 ```
-
 Devuelve las anotaciones encontradas en las propiedades de docblocks
+
 
 ```php
 public function getReflectionData(): array;
 ```
-
 Devuelve las definiciones intermedias del análisis en bruto usadas para construir la reflexión
+
+

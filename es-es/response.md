@@ -7,14 +7,11 @@ keywords: 'http, respuesta http, respuesta'
 ---
 
 # Componente Respuesta
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-[Phalcon\Http\Response](api/phalcon_http#http-response) es un componente que encapsula la respuesta HTTP actual por la aplicación al usuario. La carga útil que se devuelve normalmente son cabeceras y contenido. Tenga en cuenta que esto no es *solo* la carga útil de la respuesta actual. El componente actúa como constructor de la respuesta y como cliente HTTP para enviar la respuesta de vuelta al que llama. Siempre puede usar [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) para una respuesta compatible con PSR-7 y usar un cliente como Guzzle para enviarla de vuelta al que llama.
+[Phalcon\Http\Response][http-response] is a component that encapsulates the actual HTTP response by the application to the user. La carga útil que se devuelve normalmente son cabeceras y contenido. Note that this is not _only_ the actual response payload. El componente actúa como constructor de la respuesta y como cliente HTTP para enviar la respuesta de vuelta al que llama. You can always use the [Phalcon\Http\Message\Response][http-message-response] for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.
 
 ```php
 <?php
@@ -31,7 +28,7 @@ $response->send();
 
 El ejemplo anterior demuestra cómo podemos enviar una página 404 de vuelta al usuario.
 
-El componente implementa los interfaces [Phalcon\Http\ResponseInterface](api/phalcon_http#http-responseinterface), [Phalcon\Di\InjectionAware](api/phalcon_di#di-injectionawareinterface) y [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface).
+The component implements the [Phalcon\Http\ResponseInterface][http-responseinterface], [Phalcon\Di\InjectionAware][di-injectionawareinterface] and [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces.
 
 Después de la instanciación, puede usar el constructor para establecer su contenido, el código así como el estado si lo necesita.
 
@@ -72,11 +69,14 @@ if (true !== $response->isSent()) {
 ```
 
 ## Getters
+The [Phalcon\Http\Response][http-response] offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available:
+- `getContent(): string` - Returns the HTTP response body.
+- `getHeaders(): HeadersInterface` - Returns the headers object, containing headers set by the user.
+- `getReasonPhrase(): string | null` - Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document.
+- `getStatusCode(): int | null` - Returns the status code (e.g. `200`).
 
-[Phalcon\Http\Response](api/phalcon_http#http-response) ofrece varios *getters*, lo que le permite recuperar información sobre la respuesta basándose en las necesidades de su aplicación. Los siguiente *getters* están disponibles: - `getContent(): string` - Devuelve el cuerpo de la respuesta HTTP. - `getHeaders(): HeadersInterface` - Devuelve el objeto de cabeceras, conteniendo las cabeceras establecidas por el usuario. - `getReasonPhrase(): string | null` - Devuelve la frase de razón (ej. `Not Found`). El texto devuelto es uno de los especificados en el documento [Códigos de Estado HTTP IANA](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml). - `getStatusCode(): int | null` - Devuelve el código de estado (ej. `200`).
 
 ## Contenido
-
 Hay un número de métodos disponible que le permiten establecer el contenido o cuerpo de la respuesta. `setContent()` es el método usado más a menudo.
 
 ```php
@@ -93,8 +93,9 @@ $response->send();
 
 También puede acompañarlo con `setContentLength()` que le permite establecer el tamaño o número de bytes que tiene la respuesta, así como `setContentType()` que le dice al destinatario qué tipo de datos es. Esto es especialmente práctico de usar, porque el destinatario (a menudo un navegador) tratará los diferentes tipos de contenido de forma diferente.
 
-> **NOTA**: Todos los *setters* devuelve el objeto de respuesta de vuelta para que sean encadenables, ofreciendo un interfaz más fluido
-{: .alert .alert-info }
+> **NOTE**: All setters return the response object back so they are chainable, offering a more fluent interface 
+> 
+> {: .alert .alert-info }
 
 **Ejemplos**
 
@@ -141,7 +142,7 @@ $response
     ->send();
 ```
 
-Tenga en cuenta que en el ejemplo JSON anterior usamos `setJsonContent()` en lugar de `setContent()`. `setJsonContent()` le permite enviar una carga útil al método y automaticamente establecerá la cabecera del tipo de contenido a `application/json` y llamará `json_encode` sobre la carga útil. También puede pasar opciones y profundidad como los últimos dos parámetros del método, que será usado internamente por [json_encode](https://www.php.net/manual/en/function.json-encode.php):
+Tenga en cuenta que en el ejemplo JSON anterior usamos `setJsonContent()` en lugar de `setContent()`. `setJsonContent()` le permite enviar una carga útil al método y automaticamente establecerá la cabecera del tipo de contenido a `application/json` y llamará `json_encode` sobre la carga útil. You can also pass options and depth as the last two parameters of the method, which will be used by [json_encode][json-encode] internally:
 
 ```php
 <?php
@@ -166,8 +167,7 @@ $response
 Para aplicaciones que necesitan añadir contenido a la respuesta basándose en ciertos criterios (por ejemplo varias sentencias `if`), puede usar el método `appendContent()`, que justo añadirá el nuevo contenido al existente almacenado en el componente.
 
 ## Cabeceras
-
-Las cabeceras HTTP son una parte muy importante de la respuesta HTTP, ya que contienen información sobre la respuesta. Información como el estado, tipo de contenido, cache, etc. está envuelto en las cabeceras. El objeto [Phalcon\Http\Response](api/phalcon_http#http-response) ofrece métodos que le permiten manipular esas cabeceras basadas en el flujo de trabajo y necesidades de su aplicación.
+Las cabeceras HTTP son una parte muy importante de la respuesta HTTP, ya que contienen información sobre la respuesta. Information such as the status, content type, cache etc. is wrapped in the headers. The [Phalcon\Http\Response][http-response] object offers methods that allow you to manipulate those headers based on your application workflow and needs.
 
 Establecer las cabeceras usando el objeto respuesta sólo requiere llamar al método `setHeader()`.
 
@@ -232,7 +232,7 @@ $response->setHeader(
 $response->sendHeaders();
 ```
 
-El objeto [Phalcon\Http\Response](api/phalcon_http#http-response) también envuelve el objeto de colección [Phalcon\Http\Response\Headers](api/phalcon_http#http-response-headers) automáticamente, que ofrece más métodos para manipulación de cabeceras. Puede instanciar un objeto [Phalcon\Http\Response\Headers](api/phalcon_http#http-response-headers) o cualquier objeto que implemente [Phalcon\Http\Response\HeadersInterface](api/phalcon_http#http-response-headersinterface) y entonces establecerlo en la respuesta usando `setHeaders()`:
+The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers][http-response-headers] collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
 
 ```php
 <?php
@@ -257,19 +257,20 @@ $headers
 $response->setHeaders($headers);
 ```
 
-> **NOTA**: Tenga en cuenta que usar `setHeaders()` une las cabeceras pasadas con las ya presentes en el objeto de respuesta. El método no limpiará las cabeceras antes de establecerlas. Para llamar las cabeceras necesita llamar `reset()` primero (o `resetHeaders()` en el objeto respuesta).
-{: .alert .alert-warning }
+> **NOTE**: Note that using `setHeaders()` merges the passed headers with the ones present in the response object already. El método no limpiará las cabeceras antes de establecerlas. Para llamar las cabeceras necesita llamar `reset()` primero (o `resetHeaders()` en el objeto respuesta). 
+> 
+> {: .alert .alert-warning }
 
-El objeto [Phalcon\Http\Response\Headers](api/phalcon_http#http-response-headers) ofrece los siguiente métodos, que le permiten manipular cabeceras:
+The [Phalcon\Http\Response\Headers][http-response-headers] object offers the following methods, allowing you to manipulate headers:
 
-* `get( string $name ): string | bool` - Obtiene un valor de cabecera del objeto
-* `has( string $name ): bool` - Comprueba si una cabecera ya existe en la respuesta
-* `remove( string $header )` - Elimina una cabecera de la respuesta
-* `reset()` - Resetea todas las cabeceras
-* `send(): bool` - Envía las cabeceras al cliente
-* `set( string $name, string $value )` - Configura una cabecera para ser enviada al final de la respuesta
-* `setRaw( string $header )` Configura una cabecera en bruto para ser enviada al final de la respuesta
-* `toArray(): array` - Devuelve las cabeceras actuales como vector
+- `get( string $name ): string | bool` - Obtiene un valor de cabecera del objeto
+- `has( string $name ): bool` - Comprueba si una cabecera ya existe en la respuesta
+- `remove( string $header )` - Elimina una cabecera de la respuesta
+- `reset()` - Resetea todas las cabeceras
+- `send(): bool` - Envía las cabeceras al cliente
+- `set( string $name, string $value )` - Configura una cabecera para ser enviada al final de la respuesta
+- `setRaw( string $header )` Configura una cabecera en bruto para ser enviada al final de la respuesta
+- `toArray(): array` - Devuelve las cabeceras actuales como vector
 
 ```php
 <?php
@@ -285,10 +286,9 @@ $response->setHeaders($headers);
 ```
 
 ## Cookies
+The [Phalcon\Http\Response][http-response] offers a collection to store and manipulate cookies. Entonces puede enviar esas cookies de vuelta con la respuesta.
 
-[Phalcon\Http\Response](api/phalcon_http#http-response) ofrece una colección para almacenar y manipular cookies. Entonces puede enviar esas cookies de vuelta con la respuesta.
-
-Para configurar las cookies, necesitará instanciar un objeto [Phalcon\Http\Response\Cookies](api/phalcon_http#http-response-cookies) o cualquier objeto que implemente [Phalcon\Http\Response\CookiesInterface](api/phalcon_http#http-response-cookiesinterface).
+To set up cookies you will need to instantiate a [Phalcon\Http\Response\Cookies][http-response-cookies] object or any object that implements the [Phalcon\Http\Response\CookiesInterface][http-response-cookiesinterface].
 
 ```php
 <?php
@@ -302,10 +302,9 @@ $cookies  = new Cookies();
 $response->setCookies($cookies);
 ```
 
-Para obtener las cookies configuradas por el usuario puede usar el método `getCookies()` del objeto [Phalcon\Http\Response](api/phalcon_http#http-response). El método devuelve un objeto de colección [Phalcon\Http\Response\Cookies](api/phalcon_http#http-response-cookies). Puede configurar las cookies en el objeto respuesta usando `setCookies()`, como se muestra arriba, y luego usar `sendCookies()` para enviarlas de vuelta al que invocante.
+To get the cookies set by the user you can use the `getCookies()` method on the [Phalcon\Http\Response][http-response] object. The method returns a [Phalcon\Http\Response\Cookies][http-response-cookies] collection object. Puede configurar las cookies en el objeto respuesta usando `setCookies()`, como se muestra arriba, y luego usar `sendCookies()` para enviarlas de vuelta al que invocante.
 
 ### `SameSite`
-
 Si está usando PHP 7.3 o posterior puede configurar `SameSite` como un elemento del vector `options` (último parámetro del constructor) o usando `setOptions()`. Es su responsabilidad asignar un valor válido para `SameSite` (como `Strict`, `Lax` etc.)
 
 ```php
@@ -327,11 +326,11 @@ $cookie  = new Cookie(
 );
 ```
 
-> **NOTA**: Si su contenedor DI contiene el servicio `session`, las cookies se almacenarán en la sesión automáticamente. Si no, no serán almacenadas, y usted será responsable de persistirlas si lo desea.
-{: .alert .alert-info } 
+> **NOTE**: If your DI container contains the `session` service, the cookies will be stored in the session automatically. Si no, no serán almacenadas, y usted será responsable de persistirlas si lo desea. 
+> 
+> {: .alert .alert-info }
 
 ### Encriptación
-
 La colección de cookies se registra automáticamente como parte del servicio `response` que se registra en el contenedor DI. Por defecto, las cookies se encriptan automáticamente antes de enviarlas al cliente y se desencriptan cuando regresan del usuario.
 
 Para poder configurar la clave de firma usada para generar un mensaje puede configurarla en el constructor:
@@ -368,30 +367,38 @@ $cookies->setSignKey($signKey);
 $response->setCookies($cookies);
 ```
 
-> **NOTA**: `signKey` **DEBE** tener al menos 32 caracteres de longitud, y siempre ayuda si se ha generado usando un pseudo generador aleatorio criptográficamente seguro. Siempre puede usar el componente `Crypt` para generar una buena `signKey`.
-{: .alert .alert-danger }
-
-
+> **NOTE**: The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo random generator. Siempre puede usar el componente `Crypt` para generar una buena `signKey`. 
 > 
-> **NOTA**: Las cookies pueden contener estructuras complejas como información de servicio, conjuntos de resultados, etc. Como resultado, enviar cookies sin encriptación a clientes podría exponer detalles de la aplicación que puede ser usada por los atacantes para comprometer la aplicación y el sistema subyacente. Si no desea usar encriptación, podría enviar sólo identificadores únicos que se podrían vincular a una tabla de base de datos que almacena información más compleja que puede usar su aplicación. 
-{: .alert .alert-danger }
+> {: .alert .alert-danger }
+
+
+> **NOTE**: Cookies can contain complex structures such as service information, resultsets etc. Como resultado, enviar cookies sin encriptación a clientes podría exponer detalles de la aplicación que puede ser usada por los atacantes para comprometer la aplicación y el sistema subyacente. Si no desea usar encriptación, podría enviar sólo identificadores únicos que se podrían vincular a una tabla de base de datos que almacena información más compleja que puede usar su aplicación. 
+> 
+> {: .alert .alert-danger }
 
 ### Métodos
 
 Hay varios métodos disponibles para ayudarle a recuperar datos del componente:
 
-* `delete( string $name ): bool` - Elimina una cookie por nombre. Este método **no elimina** las cookies del superglobal `$_COOKIE`
-* `get( string $name ): CookieInterface` - Obtiene una cookie por nombre. Comprueba la colección interna y si se encuentra la cookie, la devolverá. Si no se encuentra, recogerá la cookie del superglobal, creará un objeto y luego lo devolverá. **no** lo almacenará en la colección interna porque de lo contrario se enviará dos veces.
-* `getCookies(): array` - Devuelve un vector con todas las cookies disponibles en el objeto
-* `has( string $name ): bool` - Comprueba la colección interna de cookies **o** el superglobal `$_COOKIE`. Devuelve `true` si la cookie existe en alguna colección, `false` en caso contrario.
-* `isUsingEncryption(): bool` - Comprueba si la colección está encriptando/desencriptando cookies automáticamente.
-* `reset(): CookiesInterface` - Restablece todas las cookies configuradas de la colección interna
-* `send(): bool` - Envía todas las cookies al cliente. Las cookies no se envían si las cabeceras ya se han enviado durante la petición actual
-* `setSignKey( string $signKey = null ): CookieInterface` - Establece la clave de firma de cookies. Si se establece en `NULL` se deshabilita la firma.
-* `useEncryption( bool $useEncryption ): CookiesInterface` - Establece si las cookies en la bolsa se deben encriptar/desencriptar automáticamente
-* `set()` - Configura una cookie para enviarse al final de la petición.
+- `delete( string $name ): bool` - Elimina una cookie por nombre. This method **does not remove** cookies from the `$_COOKIE` superglobal
+- `get( string $name ): CookieInterface` - Obtiene una cookie por nombre. Comprueba la colección interna y si se encuentra la cookie, la devolverá. Si no se encuentra, recogerá la cookie del superglobal, creará un objeto y luego lo devolverá. It **will not** store it in the internal collection because it will be sent twice otherwise.
+- `getCookies(): array` - Devuelve un vector con todas las cookies disponibles en el objeto
+- `has( string $name ): bool` - Checks the internal cookie collection **or** the `$_COOKIE` superglobal. Devuelve `true` si la cookie existe en alguna colección, `false` en caso contrario.
+- `isUsingEncryption(): bool` - Comprueba si la colección está encriptando/desencriptando cookies automáticamente.
+- `reset(): CookiesInterface` - Restablece todas las cookies configuradas de la colección interna
+- `send(): bool` - Envía todas las cookies al cliente. Las cookies no se envían si las cabeceras ya se han enviado durante la petición actual
+- `setSignKey( string $signKey = null ): CookieInterface` - Establece la clave de firma de cookies. Si se establece en `NULL` se deshabilita la firma.
+- `useEncryption( bool $useEncryption ): CookiesInterface` - Establece si las cookies en la bolsa se deben encriptar/desencriptar automáticamente
+- `set()` - Configura una cookie para enviarse al final de la petición.
 
-`set(): CookiesInterface` acepta los parámetros siguientes: - `string $name` - El nombre de la cookie - `mixed $value = null` - El valor de la cookie - `int $expire = 0` - La expiración de la cookie - `string $path = "/"` - La ruta de la cookie - `bool $secure = null` - Si la cookie es segura o no - `string $domain = null` - El dominio de la cookie - `bool $httpOnly = null` - Si establecer sólo http o no
+`set(): CookiesInterface` accepts the following parameters:
+- `string $name` - The name of the cookie
+- `mixed $value = null` - The value of the cookie
+- `int $expire = 0` - The expiration of the cookie
+- `string $path = "/"` - The path of the cookie
+- `bool $secure = null` - Whether the cookie is secure or not
+- `string $domain = null` - The domain of the cookie
+- `bool $httpOnly = null` - Whether to set http only or not
 
 ```php
 <?php
@@ -414,10 +421,12 @@ $cookies->set(
 ```
 
 ## Archivos
-
 El método ayudante `setFileToSend()` le permite fácilmente configurar un fichero para enviarse de vuelta al invocante usando el objeto de respuesta. Esto es particularmente útil cuando queremos introducir la funcionalidad de descarga de ficheros en nuestra aplicación.
 
-El método acepta los siguientes parámetros: - `filePath` - string - La ruta donde reside el fichero - `attachmentName` - string - el nombre con el que el navegador guardará el fichero - `attachment` - bool - si es un adjunto o no (configura cabeceras)
+The method accepts the following parameters:
+- `filePath` - string - The path of where the file is
+- `attachmentName` - string - the name that the browser will save the file as
+- `attachment` - bool - whether this is an attachment or not (sets headers)
 
 ```php
 <?php
@@ -439,16 +448,15 @@ $response
 
 En el ejemplo anterior, establecemos donde viven los ficheros (`/app/storage/files/invoice.pdf`). El segundo parámetro establecerá el nombre del fichero (cuando se descarga por el navegador) a `downloaded.pdf`. El tercer parámetro indica al componente que establezca las cabeceras relevantes para que ocurra la descarga. Estas son:
 
-* `Content-Description: File Transfer`
-* `Content-Type: application/octet-stream"`
-* `Content-Disposition: attachment; filename=downloaded.pdf;"`
-* `Content-Transfer-Encoding: binary"`
+- `Content-Description: File Transfer`
+- `Content-Type: application/octet-stream"`
+- `Content-Disposition: attachment; filename=downloaded.pdf;"`
+- `Content-Transfer-Encoding: binary"`
 
-Cuando se llama a `send()`, se leerá el fichero usando [readfile()](https://www.php.net/manual/en/function.readfile.php) y los contenidos serán enviados de vuelta al invocante.
+When calling `send()`, the file will be read using [readfile()][readfile] and the contents will be sent back to the caller.
 
 ## Redirecciones
-
-Con [Phalcon\Http\Response](api/phalcon_http#http-response) también puede ejecutar redirecciones HTTP.
+With [Phalcon\Http\Response][http-response] you can also execute HTTP redirections.
 
 **Ejemplos**
 
@@ -500,7 +508,7 @@ $response = new Response();
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-Todas las URIs internas son generadas usando el servicio <url> (por defecto [Phalcon\Url](api/phalcon_url)). Este ejemplo demuestra como puede redirigir usando una ruta definida en su aplicación:
+All internal URIs are generated using the [url](url) service (by default [Phalcon\Url][url]). Este ejemplo demuestra como puede redirigir usando una ruta definida en su aplicación:
 
 ```php
 <?php 
@@ -518,20 +526,25 @@ return $response->redirect(
 );
 ```
 
-> **NOTA**: Incluso si hay una vista asociada a la acción actual, no será renderizada ya que `redirect` deshabilita la vista.
-{: .alert .alert-warning }
+> **NOTE**: Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view. 
+> 
+> {: .alert .alert-warning }
 
 ## Caché HTTP
+Una de las formas más fáciles de mejorar el rendimiento de su aplicación y reducir el tráfico es usando el Caché HTTP. The [Phalcon\Http\Response][http-response] object exposes methods that help with this task.
 
-Una de las formas más fáciles de mejorar el rendimiento de su aplicación y reducir el tráfico es usando el Caché HTTP. El objeto [Phalcon\Http\Response](api/phalcon_http#http-response) expone métodos que ayudan con esta tarea.
+> **NOTE**: Depending on the needs of your application, you might not want to control HTTP caching using Phalcon. Hay varios servicios disponibles en Internet que le pueden ayudar con eso y podrían potencialmente ser más baratos y fáciles de mantener (BitMitigate, Varnish, etc.). Implementando Caché HTTP en su aplicación, definitivamente ayudará pero tendrá un pequeño impacto en el rendimiento de su aplicación. Depende de usted decidir qué estrategia es la mejor para su aplicación y audiencia. 
+> 
+> {: .alert .alert-info }
 
-> **NOTA**: Dependiendo de las necesidades de su aplicación, podría no querer controlar el caché HTTP usando Phalcon. Hay varios servicios disponibles en Internet que le pueden ayudar con eso y podrían potencialmente ser más baratos y fáciles de mantener (BitMitigate, Varnish, etc.). Implementando Caché HTTP en su aplicación, definitivamente ayudará pero tendrá un pequeño impacto en el rendimiento de su aplicación. Depende de usted decidir qué estrategia es la mejor para su aplicación y audiencia.
-{: .alert .alert-info } 
-
-El Caché HTTP se implementa configurando ciertas cabeceras en la respuesta. El caché se establece (usando las cabeceras) en la primera visita del usuario a nuestra aplicación. Las siguientes cabeceras ayudan con el Caché HTTP: * `Expires:` - Establece la fecha de expiración de la página. Una vez que expira la página, el navegador solicitará una copia fresca de la página vs. usar la cacheada. * `Cache-Control:` - Cuánto tiempo se considera que una página es *fresca* en el navegador. * `Last-Modified:` - Cuándo fue la última vez que esta página fue modificada por la aplicación (evita recargar). * `ETag:` - También conocido como *entity tag*, es un identificador único para cada página, creado usando la marca de tiempo de modificación. * `304:` - Envía un `not modified` de vuelta
+El Caché HTTP se implementa configurando ciertas cabeceras en la respuesta. El caché se establece (usando las cabeceras) en la primera visita del usuario a nuestra aplicación. The following headers help with HTTP Cache:
+* `Expires:` - Set the expiration date of the page. Once the page expires the browser will request a fresh copy of the page vs. using the cached one.
+* `Cache-Control:` - How long is a page considered _fresh_ in the browser.
+* `Last-Modified:` - When was the last time that this page was modified by the application (avoids reloading).
+* `ETag:` - Also known as _entity tag_, is a unique identifier for each page, created using the modification timestamp.
+* `304:` - Send a `not modified` back
 
 ### `Expires`
-
 La fecha de expiración es una de las formas más fáciles y efectivas de cachear una página en el cliente (navegador). A partir de la fecha actual añadimos la cantidad de tiempo en que la página se almacenará en el caché del navegador. El navegador no solicitará una copia de esta página hasta que el tiempo expire.
 
 ```php
@@ -547,7 +560,7 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-El componente [Phalcon\Http\Response](api/phalcon_http#http-response) automáticamente formatea la fecha a la zona horaria `GMT` como espera la cabecera `Expires` header. Independientemente de la zona horaria de su aplicación, el componente primero convierte el tiempo a `UTC` y luego establece la cabecera `Expires`. Establecer la expiración con una fecha pasada indicará al navegador que siempre solicite una copia fresca de la página. Esto es particularmente útil si queremos forzar que los navegadores del cliente soliciten una nueva copia de nuestra página.
+The [Phalcon\Http\Response][http-response] component automatically formats the date to the `GMT` timezone as expected in an `Expires` header. Independientemente de la zona horaria de su aplicación, el componente primero convierte el tiempo a `UTC` y luego establece la cabecera `Expires`. Establecer la expiración con una fecha pasada indicará al navegador que siempre solicite una copia fresca de la página. Esto es particularmente útil si queremos forzar que los navegadores del cliente soliciten una nueva copia de nuestra página.
 
 ```php
 <?php
@@ -562,11 +575,11 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-> **NOTA**: Los navegadores confían en el reloj de la máquina del cliente para identificar si la fecha ha pasado o no. Por lo tanto, este mecanismo de cacheado tiene algunas limitaciones que el desarrollador debe tener en cuenta (diferentes zonas horarias, desviación del reloj, etc.)
-{: .alert .alert-warning }
+> **NOTE**: Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore this caching mechanism has some limitations that the developer must account for (different timezones, clock skew etc.) 
+> 
+> {: .alert .alert-warning }
 
 ### `Cache-Control`
-
 Esta cabecera proporciona algo mejor para cachear las páginas servidas. Simplemente especificamos un tiempo en segundos, indicando al navegador que nuestro contenido está cacheado durante esa cantidad de tiempo.
 
 ```php
@@ -611,7 +624,6 @@ $response->setHeader(
 ```
 
 ### `Last-Modified`
-
 También podemos usar el método `setLastModified()` para indicar al navegador cuándo una página fue modificada por última vez. Esta cabecera es menos precisa que la cabecera `E-Tag` pero puede usarse como mecanismo de respaldo.
 
 ```php
@@ -627,7 +639,7 @@ $expiryDate->modify('+2 months');
 $response->setLastModified($expiryDate);
 ```
 
-El componente [Phalcon\Http\Response](api/phalcon_http#http-response) automáticamente formatea la fecha a la zona horaria `GMT` como espera la cabecera `Last-Modified`. Independientemente de la zona horaria de su aplicación, el componente primero convierte la fecha a `UTC` y luego establece la cabecera `Last-Modified`. Establecer la expiración con una fecha pasada indicará al navegador que siempre solicite una copia fresca de la página. Esto es particularmente útil si queremos forzar que los navegadores del cliente soliciten una nueva copia de nuestra página.
+The [Phalcon\Http\Response][http-response] component automatically formats the date to the `GMT` timezone as expected in an `Last-Modified` header. Independientemente de la zona horaria de su aplicación, el componente primero convierte la fecha a `UTC` y luego establece la cabecera `Last-Modified`. Establecer la expiración con una fecha pasada indicará al navegador que siempre solicite una copia fresca de la página. Esto es particularmente útil si queremos forzar que los navegadores del cliente soliciten una nueva copia de nuestra página.
 
 ```php
 <?php
@@ -643,7 +655,6 @@ $response->setLastModified($expiryDate);
 ```
 
 ### `E-Tag`
-
 Un `entity-tag` o `E-tag` es un identificador único que ayuda al navegador a identificar si la página ha cambiado o no entre peticiones. El identificador se calcula normalmente teniendo en cuenta la fecha de última modificación, el contenido y otros parámetros de identificación de la página:
 
 ```php
@@ -666,8 +677,8 @@ $response->setHeader('E-Tag', $eTag);
 ```
 
 ### `304`
-
 Generar una respuesta `not-modified` también ayuda con el cacheado, indicando al navegador que los contenidos no se han modificado, y por lo tanto se debería usar la copia de los datos cacheada localmente en el navegador.
+
 
 ```php
 <?php
@@ -681,10 +692,10 @@ $response->setNotModified();
 ```
 
 ## Inyección de Dependencias
+The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
-El objeto [Phalcon\Http\Response](api/phalcon_http#http-response) implementa el interfaz [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface). Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
-Si ha usado el contenedor DI [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) para su aplicación, el servicio ya está registrado para usted. Puede acceder a él usando el nombre `response`. El siguiente ejemplo muestra el uso en un controlador
+If you have used the [Phalcon\Di\FactoryDefault][di-factorydefault] DI container for your application, the service is already registered for you. Puede acceder a él usando el nombre `response`. El siguiente ejemplo muestra el uso en un controlador
 
 ```php
 <?php
@@ -711,10 +722,26 @@ class PostsController extends Controller
 ```
 
 ## Eventos
+ The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. Como resultado `getEventsManager()` y `setEventsManager()` están disponibles para usar.
 
-El objeto [Phalcon\Http\Response](api/phalcon_http#http-response) implementa las interfaces [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface). Como resultado `getEventsManager()` y `setEventsManager()` están disponibles para usar.
 
 | Evento              | Descripción                                       | Puede parar la operación |
 | ------------------- | ------------------------------------------------- |:------------------------:|
 | `afterSendHeaders`  | Se dispara después de que se envíen las cabeceras |            No            |
 | `beforeSendHeaders` | Se dispara antes de que se envíen las cabeceras   |            Si            |
+
+[http-response]: api/phalcon_http#http-response
+[http-response-cookies]: api/phalcon_http#http-response-cookies
+[http-response-cookiesinterface]: api/phalcon_http#http-response-cookiesinterface
+[http-response-headers]: api/phalcon_http#http-response-headers
+[http-response-headersinterface]: api/phalcon_http#http-response-headersinterface
+[http-responseinterface]: api/phalcon_http#http-responseinterface
+[di-injectionawareinterface]: api/phalcon_di#di-injectionawareinterface
+[di-injectionawareinterface]: api/phalcon_di#di-injectionawareinterface
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[url]: api/phalcon_url
+[json-encode]: https://www.php.net/manual/en/function.json-encode.php
+[status-codes]: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+[events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
+[readfile]: https://www.php.net/manual/en/function.readfile.php
+[http-message-response]: api/phalcon_http#http-message-response

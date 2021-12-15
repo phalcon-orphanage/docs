@@ -11,7 +11,7 @@ keywords: 'psr-7, http, http stream'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
-[Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Stream][http-message-stream] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
@@ -37,7 +37,7 @@ public function __construct(
     string $mode = "rb"
 )
 ```
-The first parameter can be a string representing the location of the file on the file system or storage area. It can also be a resource, as returned by a method such as [fopen](https://www.php.net/manual/en/function.fopen.php). The second parameter is the open mode for the stream. The default mode is `rb`. For a list of available modes, you can check the documentation for [fopen](https://www.php.net/manual/en/function.fopen.php).
+The first parameter can be a string representing the location of the file on the file system or storage area. It can also be a resource, as returned by a method such as [fopen][fopen]. The second parameter is the open mode for the stream. The default mode is `rb`. For a list of available modes, you can check the documentation for [fopen][fopen].
 
 - `stream` - string or resource
 - `mode` - A string representing the mode the file is to be opened.
@@ -80,7 +80,7 @@ echo $stream->getContents(); // 'The MIT License (MIT) ...'
 ```
 
 ### `getMetadata()`
-Returns the stream metadata as an associative array. If the parameter `$key` is defined, the relevant string element will be returned. The method is a wrapper for PHP's [stream_get_meta_data()](https://php.net/manual/en/function.stream-get-meta-data.php) function. If the key is not found, the method will return `null`.
+Returns the stream metadata as an associative array. If the parameter `$key` is defined, the relevant string element will be returned. The method is a wrapper for PHP's [stream_get_meta_data()][stream-get-meta-data] function. If the key is not found, the method will return `null`.
 
 ```php
 <?php
@@ -238,7 +238,7 @@ echo $stream->read(15); // 'The MIT License'
 ```
 
 ## `rewind()`
-Seek to the beginning of the stream. Uses [fseek()](https://www.php.net/manual/en/function.fseek.php) calling `seek(0)` internally. If the stream is not seekable, a `RuntimeException` will be thrown.
+Seek to the beginning of the stream. Uses [fseek()][fseek] calling `seek(0)` internally. If the stream is not seekable, a `RuntimeException` will be thrown.
 
 ```php
 <?php
@@ -256,9 +256,9 @@ echo $stream->read(3); // 'The'
 ```
 
 ## `seek()`
-Seek to a position in the stream. Uses [fseek()](https://www.php.net/manual/en/function.fseek.php) internally. It accepts:
+Seek to a position in the stream. Uses [fseek()][fseek] internally. It accepts:
 - `offset` - `int` The stream offset
-- `whence` - `int` Specifies how the cursor position will be calculated based on the seek offset. Valid values are identical to the built-in PHP $whence values for [fseek()](https://www.php.net/manual/en/function.fseek.php).
+- `whence` - `int` Specifies how the cursor position will be calculated based on the seek offset. Valid values are identical to the built-in PHP $whence values for [fseek()][fseek].
     - `SEEK_SET` Set position equal to offset bytes
     - `SEEK_CUR` Set position to current location plus offset
     - `SEEK_END` Set position to end-of-stream plus offset.
@@ -311,3 +311,10 @@ $source = 'The above copyright notice and this permission '
 
 echo $stream->write($source); // 126
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-7]: https://www.php-fig.org/psr/psr-7/
+[http-message-stream]: api/phalcon_http#http-message-stream
+[fopen]: https://www.php.net/manual/en/function.fopen.php
+[stream-get-meta-data]: https://php.net/manual/en/function.stream-get-meta-data.php
+[fseek]: https://www.php.net/manual/en/function.fseek.php

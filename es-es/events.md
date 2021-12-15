@@ -7,14 +7,11 @@ keywords: 'eventos, gestor de eventos, hooks'
 ---
 
 # Gestor de Eventos
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-El propósito de este componente es interceptar la ejecución de componentes en el framework creando *hooks*. Estos *hooks* permiten a los desarrolladores obtener información de estado, manipular datos o cambiar el flujo de ejecución durante el proceso de un componente. El componente consiste en un [Phalcon\Events\Manager](api/phalcon_events#events-manager) que gestiona la propagación y ejecución de eventos. El gestor contiene varios objetos [Phalcon\Events\Event](api/phalcon_events#events-event), que contienen información sobre cada *hook*/evento.
+The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. Estos *hooks* permiten a los desarrolladores obtener información de estado, manipular datos o cambiar el flujo de ejecución durante el proceso de un componente. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
 
 ```php
 <?php
@@ -48,16 +45,14 @@ $connection->query(
 ```
 
 ## Convención de Nombres
+Los eventos Phalcon usan espacios de nombres para evitar colisiones de nombres. Cada componente en Phalcon ocupa un espacio de nombres de eventos diferente y usted es libre de crear el suyo propio como considere oportuno. Los nombre de evento son formateados como `component:event`. For example, as [Phalcon\Db][db] occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-Los eventos Phalcon usan espacios de nombres para evitar colisiones de nombres. Cada componente en Phalcon ocupa un espacio de nombres de eventos diferente y usted es libre de crear el suyo propio como considere oportuno. Los nombre de evento son formateados como `component:event`. Por ejemplo, [Phalcon\Db](api/phalcon_db) ocupa el espacio de nombres `db`, El nombre completo de su evento `afterQuery` es `db:afterQuery`.
-
-Al adjuntar oyentes de eventos al gestor de eventos, puede usar `component` para capturar todos los eventos de ese componente (ej. `db` para capturar todos los eventos [Phalcon\Db](api/phalcon_db)) o `component:event` para dirigirse a un evento específico (ej. `db:afterQuery`).
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 ## Manager
+The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as _a handler_. Independientemente del nombre, la funcionalidad y el propósito son los mismos.
 
-[Phalcon\Events\Manager](api/phalcon_events#events-manager) es el componente principal que gestiona todos los eventos en Phalcon. Diferentes implementaciones en otros *frameworks* se refieren a este componente como *un manejador*. Independientemente del nombre, la funcionalidad y el propósito son los mismos.
-
-El componente envuelve una cola de objetos que usan [SplPriorityQueue](https://www.php.net/manual/en/class.splpriorityqueue.php) internamente. Registra esos objetos con una prioridad (por defecto `100`) y cuando llega el momento, los ejecuta.
+The component wraps a queue of objects using [SplPriorityQueue][splpriorityqueue] internally. Registra esos objetos con una prioridad (por defecto `100`) y cuando llega el momento, los ejecuta.
 
 Los métodos expuestos por el gestor son:
 
@@ -68,79 +63,67 @@ public function attach(
     int $priority = self::DEFAULT_PRIORITY
 )
 ```
-
 Adjunta un oyente al gestor de eventos. El `manejador` es un objeto o `invocable`.
 
 ```php
 public function arePrioritiesEnabled(): bool
 ```
-
 Devuelve si las prioridades están habilitadas
 
 ```php
 public function collectResponses(bool $collect)
 ```
-
 Indica al gestor de eventos si hay que recoger todas las respuestas devueltas por cada oyente registrado en una única llamada `de disparo`
 
 ```php
 public function detach(string $eventType, mixed $handler)
 ```
-
 Separa el oyente del gestor de eventos
 
 ```php
 public function detachAll(string $type = null)
 ```
-
-Separa todos los eventos del `EventsManager`
+Elimina todos los eventos del `EventsManager`
 
 ```php
 public function enablePriorities(bool $enablePriorities)
 ```
-
 Establece si las prioridades están activadas en el gestor de eventos (por defecto `false`).
 
 ```php
 public function fire(string $eventType, mixed $source, mixed $data = null, bool $cancelable = true)
 ```
-
 Dispara un evento en el gestor de eventos causando que los oyentes activos sean notificados al respecto
 
 ```php
 final public function fireQueue(SplPriorityQueue $queue, EventInterface $event): mixed
  ```
-Internal handler to call a queue of events
+Gestor interno para llamar a una cola de eventos
 
 ```php
 public function getListeners(string $type): array
 ```
-
 Devuelve todos los oyentes adjuntos de cierto tipo
 
 ```php
 public function getResponses(): array
 ```
-
 Devuelve todas las respuestas devueltas por cada manejador ejecutado por el último `disparo` ejecutado
 
 ```php
 public function hasListeners(string $type): bool
 ```
-
 Comprueba si cierto tipo de evento tiene oyentes
 
 ```php
 public function isCollecting(): bool
 ```
-
 Comprueba si el gestor de eventos está recogiendo todas las respuestas devueltas por cada oyente registrado en un único `disparo`
 
 ## Uso
+If you are using the [Phalcon\Di\FactoryDefault][di-factorydefaul] DI container, the [Phalcon\Events\Manager][events-manager] is already registered for you with the name `eventsManager`. This is a _global_ events manager. Sin embargo no está restringido a usar sólo éste. Siempre puede crear un gestor separado para gestionar los eventos para cualquier componente que lo requiera.
 
-Si usa el contenedor DI [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), [Phalcon\Events\Manager](api/phalcon_events#events-manager) ya está registrado con el nombre `eventsManager`. Es un gestor de eventos *global*. Sin embargo no está restringido a usar sólo éste. Siempre puede crear un gestor separado para gestionar los eventos para cualquier componente que lo requiera.
-
-El siguiente ejemplo muestra como se puede crear un mecanismo de registro de consultas utilizando el gestor de eventos *global*:
+The following example shows how you can create a query logging mechanism using the _global_ events manager:
 
 ```php
 <?php
@@ -206,13 +189,13 @@ $connection->query(
 );
 ```
 
-En el ejemplo anterior, estamos usando el gestor de eventos para escuchar el evento `afterQuery` producido por el servicio `db`, en este caso MySQL. Usamos el método `attach` para adjuntar nuestro evento al gestor y usar el evento `db:afterQuery`. Añadimos una función anónima como manejador de este evento, que acepta [Phalcon\Events\Event](api/phalcon_events#events-event) como primer parámetro. Este objeto contiene información contextual sobre el evento que ha sido disparado. El objeto de conexión a la base de datos como segundo. Usando la variable de conexión imprimimos la sentencia SQL. Puede pasar un tercer parámetro con datos arbitrarios específicos del evento, o incluso un objeto *logger* en la función anónima que permita registrar tus consultas en un fichero de registro separado.
+En el ejemplo anterior, estamos usando el gestor de eventos para escuchar el evento `afterQuery` producido por el servicio `db`, en este caso MySQL. Usamos el método `attach` para adjuntar nuestro evento al gestor y usar el evento `db:afterQuery`. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. Este objeto contiene información contextual sobre el evento que ha sido disparado. El objeto de conexión a la base de datos como segundo. Usando la variable de conexión imprimimos la sentencia SQL. Puede pasar un tercer parámetro con datos arbitrarios específicos del evento, o incluso un objeto *logger* en la función anónima que permita registrar tus consultas en un fichero de registro separado.
 
-> **NOTA**: Debe asignar explícitamente el Gestor de Eventos a un componente usando el método `setEventsManager()` para que ese componente pueda disparar eventos. Puede crear una nueva instancia de Gestor de Eventos para cada componente o puede asignar el mismo Gestor de Eventos a múltiples componentes ya que la convención de nombres evitará conflictos
-{: .alert .alert-warning }
-  
+> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts 
+> 
+> {: .alert .alert-warning }
+
 ## Gestores
-
 El gestor de eventos conecta un manejador a un evento. Un manejador es una pieza de código que hará algo cuando se dispare el evento. Como se ve en el ejemplo anterior, puede usar una función anónima como manejador:
 
 ```php
@@ -245,7 +228,7 @@ $connection->query(
 );
 ```
 
-También puede crear una clase *listener*, que ofrece más flexibilidad. En un oyente, puede escuchar múltiples eventos e incluso extender \[Phalcon\Di\Injectable\]\[di-injectable\] lo que le dará acceso completo a los servicios del contenedor Di. El ejemplo anterior se puede mejorar implementando el siguiente oyente:
+You can also create a _listener_ class, which offers more flexibility. En un oyente, puede escuchar múltiples eventos e incluso extender \[Phalcon\Di\Injectable\]\[di-injectable\] lo que le dará acceso completo a los servicios del contenedor Di. El ejemplo anterior se puede mejorar implementando el siguiente oyente:
 
 ```php
 <?php
@@ -376,11 +359,9 @@ La función `beforeException` acepta `$event` como primer parámetro, `$dispatch
 Este ejemplo demuestra claramente el poder del gestor de eventos, y como puede alterar el flujo de la aplicación usando oyentes.
 
 ## Eventos: Disparador
-
-Puede crear componentes en su aplicación que lance eventos a un gestor de eventos. Los oyentes adjuntos a esos eventos se invocarán cuando los eventos se disparen. Para crear un componente que lance eventos, necesitamos implementar [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface).
+Puede crear componentes en su aplicación que lance eventos a un gestor de eventos. Los oyentes adjuntos a esos eventos se invocarán cuando los eventos se disparen. In order to create a component that triggers events, we need to implement the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface].
 
 ### Componente Personalizado
-
 Consideremos el siguiente ejemplo:
 
 ```php
@@ -421,12 +402,11 @@ class NotificationsAware extends Injectable implements EventsAwareInterface
 }
 ```
 
-El componente anterior implementa [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface) y como resultado usa `getEventsManager` y `setEventsManager`. El último método es el que hace el trabajo. En este ejemplo queremos enviar algunas notificaciones a usuarios y queremos disparar un evento antes y después de que se envíe la notificación.
+The above component implements the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface] and as a result it uses the `getEventsManager` and `setEventsManager`. El último método es el que hace el trabajo. En este ejemplo queremos enviar algunas notificaciones a usuarios y queremos disparar un evento antes y después de que se envíe la notificación.
 
 Elegimos nombrar al componente `notification` y los eventos se llaman `beforeSend` y `afterSend`. En el método `process`, puede añadir cualquier código que necesite entre las llamadas para disparar los eventos relevantes. Adicionalmente, puede inyectar más datos en este componente que ayudarán con su implementación y procesado de las notificaciones.
 
 ### Oyente Personalizado
-
 Ahora necesitamos crear un oyente para este componente:
 
 ```php
@@ -499,7 +479,6 @@ Cuando se ejecuta `process`, se ejecutarán los dos métodos del oyente. Su regi
 ```
 
 ### Datos Personalizados
-
 Se pueden indicar datos adicionales cuando se dispara un evento usando el tercer parámetro de `fire()`:
 
 ```php
@@ -541,7 +520,6 @@ $eventsManager->attach(
 ```
 
 ## Propagación
-
 Un gestor de eventos puede tener múltiples oyentes adjuntos a él. Una vez se dispara un evento, todos los oyentes que pueden ser notificados para el evento particular serán notificados. Este es el comportamiento por defecto, pero se puede alterar si se necesita parar la propagación antes de tiempo:
 
 ```php
@@ -562,7 +540,6 @@ $eventsManager->attach(
 En el ejemplo simple anterior, paramos todos los eventos si hoy es anterior a `2019-01-01`.
 
 ## Cancelación
-
 Por defecto todos los eventos son cancelables. Sin embargo, podrías querer configurar un evento particular como no cancelable, permitiendo que este evento particular se dispare en todos los oyentes disponibles que lo implementen.
 
 ```php
@@ -580,7 +557,7 @@ $eventsManager->attach(
 );
 ```
 
-En el ejemplo anterior, si el evento es cancelable, pararemos la propagación. Puede configurar un evento particular para ser **no** cancelable usando el cuarto parámetro de `fire()`:
+En el ejemplo anterior, si el evento es cancelable, pararemos la propagación. You can set a particular event to **not** be cancelable by utilizing the fourth parameter of `fire()`:
 
 ```php
 <?php
@@ -590,11 +567,11 @@ $eventsManager->fire('notifications:afterSend', $this, $data, false);
 
 El evento `afterSend` ya no será cancelable y se ejecutará en todos los oyentes que lo implementen.
 
-> **NOTA**: Puede parar la ejecución devolviendo `false` en su evento (aunque no siempre). Por ejemplo, si adjunta un evento a `dispatch:beforeDispatchLoop` y su oyente devuelve `false` el proceso de entrega será detenido. Esto es cierto si sólo tiene **un oyente** escuchando al evento `dispatch:beforeDispatchLoop` que devuelve `false`. Si hay dos oyentes adjuntos al evento y el segundo que se ejecuta devuelve `true` entonces el proceso continuará. Si desea evitar que cualquiera de los eventos posteriores se disparen, deberá emitir `stop()` en su oyente del objeto `Event`.
-{: .alert .alert-warning } 
+> **NOTE**: You can stop the execution by returning `false` in your event (but not always). Por ejemplo, si adjunta un evento a `dispatch:beforeDispatchLoop` y su oyente devuelve `false` el proceso de entrega será detenido. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. Si hay dos oyentes adjuntos al evento y el segundo que se ejecuta devuelve `true` entonces el proceso continuará. Si desea evitar que cualquiera de los eventos posteriores se disparen, deberá emitir `stop()` en su oyente del objeto `Event`. 
+> 
+> {: .alert .alert-warning }
 
 ## Prioridades
-
 Cuando adjuntamos oyentes puede especificar una prioridad. Al establecer prioridades cuando adjuntamos oyentes a su gestor de eventos define el orden en el que van a ser llamados:
 
 ```php
@@ -623,15 +600,15 @@ $eventsManager->attach(
 ); 
 ```
 
-> **NOTA**: Para que las prioridades funcionen se debe llamar a `enablePriorities()` con `true` para activarlas. Por defecto las prioridades están deshabilitadas
-{: .alert .alert-info }
-
+> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default 
 > 
-> **NOTA**: Un número de prioridad alto significa que el oyente será procesado antes que otros con prioridades más bajas
-{: .alert .alert-warning }
+> {: .alert .alert-info }
+
+> **NOTE**: A high priority number means that the listener will be processed before those with lower priorities 
+> 
+> {: .alert .alert-warning }
 
 ## Respuestas
-
 El gestor de eventos puede recopilar también cualquier respuesta devuelta por cada evento y devolverlas usando el método `getResponses()`. El método devuelve un vector con las respuestas:
 
 ```php
@@ -671,12 +648,12 @@ El ejemplo anterior produce:
 ]
 ```
 
-> **NOTA**: Para que las respuestas funcionen se debe llamar `collectResponses()` con `true` para permitir recolectarlas.
-{: .alert .alert-info }
+> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them. 
+> 
+> {: .alert .alert-info }
 
 ## Excepciones
-
-Cualquier excepción lanzada en el componente `Paginator`será del tipo [Phalcon\Events\Exception](api/phalcon_events#events-exception). Puede usar esta excepción para capturar selectivamente excepciones lanzadas sólo desde este componente.
+Any exceptions thrown in the Paginator component will be of type [Phalcon\Events\Exception][events-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
@@ -695,7 +672,6 @@ try {
 ```
 
 ## Controladores
-
 Los controladores actúan como oyentes ya registrados en el gestor de eventos. Como resultado, sólo necesita crear un método con el mismo nombre que un evento registrado y se lanzará.
 
 Por ejemplo, si queremos enviar un usuario a la página `/login` si no está conectado, podemos añadir el siguiente código a nuestro controlador principal:
@@ -738,11 +714,9 @@ class BaseController extends Controller
     }
 }
 ```
-
 Ejecuta el código antes del enrutador para poder determinar si el usuario está conectado o no. Si no es así, los enviamos a la página de inicio de sesión.
 
 ## Modelos
-
 Similar a los Controladores, los Modelos también actúan como oyentes ya registrados en el gestor de eventos. Como resultado, sólo necesita crear un método con el mismo nombre que un evento registrado y se lanzará.
 
 En el siguiente ejemplo, usamos el evento `beforeCreate`, para calcular automáticamente un número de factura:
@@ -812,8 +786,7 @@ class Invoices extends Model
 ```
 
 ## Personalizado
-
-Para sustituir el gestor de eventos proporcionado por Phalcon debe implementar la interfaz [Phalcon\Events\ManagerInterface](api/phalcon_events#events-managerinterface).
+The [Phalcon\Events\ManagerInterface][events-managerinterface] interface must be implemented to create your own events manager replacing the one provided by Phalcon.
 
 ```php
 <?php
@@ -886,7 +859,6 @@ class EventsManager implements ManagerInterface
 ```
 
 ## Lista de Eventos
-
 Los eventos disponibles en Phalcon son:
 
 | Componente                     | Evento                               | Parámetros                                              |
@@ -978,3 +950,14 @@ Los eventos disponibles en Phalcon son:
 | [Volt](volt)                   | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                   | `compileStatement`                   | Volt, [statement]                                       |
 | [Volt](volt)                   | `resolveExpression`                  | Volt, [expression]                                      |
+
+
+[db]: api/phalcon_db
+[di-factorydefaul]: api/phalcon_di#di-factorydefault
+[events-event]: api/phalcon_events#events-event
+[events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
+[events-exception]: api/phalcon_events#events-exception
+[events-manager]: api/phalcon_events#events-manager
+[events-managerinterface]: api/phalcon_events#events-managerinterface
+[splpriorityqueue]: https://www.php.net/manual/en/class.splpriorityqueue.php
+

@@ -7,28 +7,27 @@ keywords: 'entorno, devilbox, docker'
 ---
 
 # Entornos
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-[Devilbox](https://devilbox.org) es una pila PHP acoplada moderna y altamente personalizable que soporta completamente LAMP y MEAN y se ejecuta en la mayoría de plataformas. El objetivo principal es fácilmente cambiar y combinar cualquier versión requerida para el desarrollo local. Soporta un número de proyectos ilimitado para vhosts, certificados SSL y registros DNS que se crean automáticamente. Se admiten proxies inversos por proyecto para garantizar que también se pueda acceder a un servidor de escucha como NodeJS. Las herramientas de desarrollo populares y de correo electrónico también estarán a su servicio. No será necesaria su configuración, ya que todo está preconfigurado.
+The [Devilbox][devilbox] The Devilbox is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. El objetivo principal es fácilmente cambiar y combinar cualquier versión requerida para el desarrollo local. Soporta un número de proyectos ilimitado para vhosts, certificados SSL y registros DNS que se crean automáticamente. Se admiten proxies inversos por proyecto para garantizar que también se pueda acceder a un servidor de escucha como NodeJS. Las herramientas de desarrollo populares y de correo electrónico también estarán a su servicio. No será necesaria su configuración, ya que todo está preconfigurado.
 
 Además, Devilbox proporciona un entorno de desarrollo idéntico y reproducible para diferentes sistemas operativos anfitriones.
 
 Este ejemplo usará `phalcon` para instalar Phalcon desde el contenedor PHP Devilbox. Una vez completados los pasos listados a continuación, tendrá una configuración funcional de Phalcon lista para ser servida a través de http y https.
 
+
 ## Configuración
 
 Se puede usar la siguiente configuración:
 
-| Project name | `my-phalcon` | | VirtualHost directory | `/shared/httpd/my-phalcon` | | Database | n.a. | | `TLD_SUFFIX` | loc | | Project URL | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
+| Project name          | `my-phalcon`                                      | | VirtualHost directory | `/shared/httpd/my-phalcon`                        | | Database              | n.a.                                              | | `TLD_SUFFIX`          | loc                                               | | Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
 
 > * Dentro del contenedor PHP Devilbox, los proyectos siempre están en `/shared/httpd/`.
-> * En su sistema operativo anfitrión, por defecto los proyectos están en `./data/www/` dentro del directorio git de Devilbox. Esta ruta puede ser cambiada mediante `HOST_PATH_HTTPD_DATADIR`.
-{: .alert .alert-info }
+> * En su sistema operativo anfitrión, por defecto los proyectos están en `./data/www/` dentro del directorio git de Devilbox. Esta ruta puede ser cambiada mediante `HOST_PATH_HTTPD_DATADIR`. 
+>     
+>     {: .alert .alert-info }
 
 ## Activación
 
@@ -41,6 +40,7 @@ Su entorno estará listo en seis sencillos pasos:
 - Configurar registro DNS
 - Visitar `http://my-phalcon.loc` en su navegador
 - (Nginx) Crear archivo de configuración personalizado vhost
+
 
 ### Introducir Contenedor PHP
 
@@ -100,14 +100,15 @@ devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
 
 Como puede ver en el listado anterior, la carpeta `htdocs` requerida por el servidor web está apuntando ahora al punto de entrada de su *framework*.
 
-> **NOTA**: Cuando se usa **Docker Toolbox**, necesita **permitir explícitamente** el uso de **enlaces simbólicos**.
-{: .alert .alert-warning }
+> **NOTE**: When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**. 
+> 
+> {: .alert .alert-warning }
 
 ### Registro DNS
 
-Si ya **tiene** Auto DNS configurado, puede omitir esta sección, porque las entradas DNS estarán disponibles automáticamente por el servidor DNS incluido.
+If you **have** Auto DNS configured already, you can skip this section, because DNS entries will be available automatically by the bundled DNS server.
 
-Si **no tiene** configurado Auto DNS, necesitará añadir la siguiente línea al fichero `/etc/hosts` (o `C:\Windows\System32\drivers\etc` en Windows) de su sistema operativo anfitrión:
+If you **do not have** Auto DNS configured, you will need to add the following line to your host operating system `/etc/hosts` file (or `C:\Windows\System32\drivers\etc` on Windows):
 
 ```bash
 127.0.0.1 my-phalcon.loc
@@ -116,6 +117,7 @@ Si **no tiene** configurado Auto DNS, necesitará añadir la siguiente línea al
 ### Abrir Navegador
 
 Abra su navegador y vaya a `http://my-phalcon.loc` o `https://my-phalcon.loc`
+
 
 ### Crear Fichero de Configuración Personalizado Vhost (Sólo Nginx)
 
@@ -133,7 +135,7 @@ a
 
 `try_files $uri $uri/ /index.php?_url=$uri&$args;`
 
-y
+and
 
 `location ~ \.php?$ {`
 
@@ -144,15 +146,31 @@ a
 Guarde el fichero como `nginx.yml` y asegúrese de no usar ningún tabulador en el fichero o devilbox no usará la configuración personalizada. Puede usar `yamllint nginx.yml` desde dentro del shell de Devilbox para comprobar el fichero antes de reiniciar devilbox.
 
 ## Referencias
+- [Devilbox.com][devilbox]
+- [Documentación Devilbox][devilbox-documentation]
+- [HOST_PATH_HTTPD_DATADIR][host-path-httpd-datadir]
+- [Introducir el contenedor PHP][enter-container]
+- [Trabajar dentro de contenedor PHP][work-in-container]
+- [Herramientas disponibles][available-tools]
+- [TLD_SUFFIX][tld-suffix]
+- [Herramientas Docker y Enlaces simbólicos][docker-toolbox-symlinks]
+- [Añadir entrada hosts de proyecto en MacOS][hosts-mac]
+- [Añadir entrada hosts de proyecto en Windows][hosts-windows]
+- [Configurar Auto DNS][auto-dns]
 
-- [Devilbox.com](https://devilbox.org)
-- [Documentación Devilbox](https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html)
-- [HOST_PATH_HTTPD_DATADIR](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html#env-httpd-datadir)
-- [Introducir el contenedor PHP](https://devilbox.readthedocs.io/en/latest/getting-started/enter-the-php-container.html#enter-the-php-container) 
-- [Trabajar dentro de contenedor PHP](https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html#work-inside-the-php-container)
-- [Herramientas disponibles](https://devilbox.readthedocs.io/en/latest/readings/available-tools.html#available-tools) 
-- [TLD_SUFFIX](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html#env-tld-suffix)
-- [Herramientas Docker y Enlaces simbólicos](https://devilbox.readthedocs.io/en/latest/howto/docker-toolbox/docker-toolbox-and-the-devilbox.html#howto-docker-toolbox-and-the-devilbox-windows-symlinks)
-- [Añadir entrada hosts de proyecto en MacOS](https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-mac.html#howto-add-project-hosts-entry-on-mac)
-- [Añadir entrada hosts de proyecto en Windows](https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-win.html#howto-add-project-hosts-entry-on-win)
-- [Configurar Auto DNS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html#setup-auto-dns)
+[devilbox]: https://devilbox.org
+
+[devilbox]: https://devilbox.org
+[devilbox-documentation]: https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html
+[host-path-httpd-datadir]: https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html#env-httpd-datadir
+[enter-container]: https://devilbox.readthedocs.io/en/latest/getting-started/enter-the-php-container.html#enter-the-php-container
+[work-in-container]: https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html#work-inside-the-php-container
+[available-tools]: https://devilbox.readthedocs.io/en/latest/readings/available-tools.html#available-tools
+[tld-suffix]: https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html#env-tld-suffix
+[docker-toolbox-symlinks]: https://devilbox.readthedocs.io/en/latest/howto/docker-toolbox/docker-toolbox-and-the-devilbox.html#howto-docker-toolbox-and-the-devilbox-windows-symlinks
+[hosts-mac]: https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-mac.html#howto-add-project-hosts-entry-on-mac
+[hosts-windows]: https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-win.html#howto-add-project-hosts-entry-on-win
+[auto-dns]: https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html#setup-auto-dns
+
+
+

@@ -7,16 +7,13 @@ keywords: 'domain, adr, payload'
 ---
 
 # Domain
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-The domain component incorporates components that are used for the implementation of the [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) ([ADR](http://pmjones.io/adr/)) pattern and can also be used when implementing [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design).
+The domain component incorporates components that are used for the implementation of the [Action Domain Responder][adr] ([ADR][adr-jones]) pattern and can also be used when implementing [Domain Driven Design][ddd].
 
 ## Payload
-
-The [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) requires a data transfer mechanism between the three layers to serve your application. The [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) is a data transfer object that is used to send data between the three layers of the pattern.
+The [Action Domain Responder][adr] requires a data transfer mechanism between the three layers to serve your application. The [Phalcon\Domain\Payload][payload-payload] is a data transfer object that is used to send data between the three layers of the pattern.
 
 ```php
 <?php
@@ -38,12 +35,12 @@ The properties stored are:
 
 The component offers getters and setters for the above properties.
 
-> **NOTE**: All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
-{: .alert .alert-info }
+> **NOTE**: All the setters return back a [Phalcon\Domain\Payload][payload-payload] object, which allows you to chain calls for a more fluent syntax. 
+> 
+> {: .alert .alert-info }
 
 ## 工厂
-
-[Phalcon\Domain\PayloadFactory](api/phalcon_domain#domain-payload-payloadfactory) is also available, offering an easy way to generate new Payload objects.
+[Phalcon\Domain\PayloadFactory][payload-payloadfactory] is also available, offering an easy way to generate new Payload objects.
 
 ```php
 <?php
@@ -55,7 +52,6 @@ $payload = $payloadFactory->newInstance();
 ```
 
 ## Interfaces
-
 There are three interfaces that you can take advantage of if you wish to extend the object.
 
 * `ReadableInterface`: contains only read methods
@@ -63,34 +59,32 @@ There are three interfaces that you can take advantage of if you wish to extend 
 * `PayloadInterface`: contains both read and write methods
 
 ## Status Values
+The [Phalcon\Domain\Payload\Status][payload-status] class contains several constants to help with the domain status of your Payload objects. You can always extend the class and introduce your own domain statuses, depending on the needs of your application.
 
-The [Phalcon\Domain\Payload\Status](api/phalcon_domain#domain-payload-status) class contains several constants to help with the domain status of your Payload objects. You can always extend the class and introduce your own domain statuses, depending on the needs of your application.
-
-* `ACCEPTED` 
-* `AUTHENTICATED` 
-* `AUTHORIZED` 
-* `CREATED` 
-* `DELETED` 
-* `ERROR` 
-* `FAILURE` 
-* `FOUND` 
-* `NOT_ACCEPTED` 
+* `ACCEPTED`
+* `AUTHENTICATED`
+* `AUTHORIZED`
+* `CREATED`
+* `DELETED`
+* `ERROR`
+* `FAILURE`
+* `FOUND`
+* `NOT_ACCEPTED`
 * `NOT_AUTHENTICATED`
-* `NOT_AUTHORIZED` 
-* `NOT_CREATED` 
-* `NOT_DELETED` 
-* `NOT_FOUND` 
-* `NOT_UPDATED` 
-* `NOT_VALID` 
-* `PROCESSING` 
-* `SUCCESS` 
-* `UPDATED` 
-* `VALID` 
+* `NOT_AUTHORIZED`
+* `NOT_CREATED`
+* `NOT_DELETED`
+* `NOT_FOUND`
+* `NOT_UPDATED`
+* `NOT_VALID`
+* `PROCESSING`
+* `SUCCESS`
+* `UPDATED`
+* `VALID`
 
 These statuses can be used at the display/view layer of your application to process domain objects retrieved via `Payload::getOutput()`.
 
 ## 示例
-
 ```php
 <?php
 
@@ -134,5 +128,15 @@ class ReportsController extends Controller
 
 ## Links
 
-* [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder)
-* [Clarifications to a review of Action Domain Responder](http://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/)
+* [Action Domain Responder][adr]
+* [Clarifications to a review of Action Domain Responder][adr-clarifications]
+
+
+[adr]: https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder
+[adr-jones]: http://pmjones.io/adr/
+[adr-clarifications]: http://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/
+[ddd]: https://en.wikipedia.org/wiki/Domain-driven_design
+[payload-payload]: api/phalcon_domain#domain-payload-payload
+[payload-payloadfactory]: api/phalcon_domain#domain-payload-payloadfactory
+[payload-status]: api/phalcon_domain#domain-payload-status
+   

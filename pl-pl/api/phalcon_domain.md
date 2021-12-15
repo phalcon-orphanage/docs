@@ -16,12 +16,12 @@ title: 'Phalcon\Domain'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Throwable | | Implements | PayloadInterface |
+| Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable | | Implements | PayloadInterface |
 
 Holds the payload
 
-## Properties
 
+## Properties
 ```php
 /**
  * Exception if any
@@ -72,8 +72,8 @@ protected output;
 ```php
 public function getException(): Throwable | null;
 ```
-
 Gets the potential exception thrown in the domain layer
+
 
 ```php
 public function getExtras(): mixed
@@ -98,119 +98,129 @@ public function getStatus(): mixed
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
 ```
-
 Sets an exception thrown in the domain
+
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
-
 Sets arbitrary extra domain information.
+
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
-
 Sets the domain input.
+
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
-
 Sets the domain messages.
+
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
-
 Sets the domain output.
+
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
-
 Sets the payload status.
+
+
+
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
 
-| Namespace | Phalcon\Domain\Payload |
+| Namespace  | Phalcon\Domain\Payload |
 
 Factory to create payload objects
+
 
 ## Metody
 
 ```php
 public function newInstance(): PayloadInterface;
 ```
-
 Instantiate a new object
+
+
+
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Extends | ReadableInterface |
+| Namespace  | Phalcon\Domain\Payload | | Extends    | ReadableInterface |
 
 This interface is used for consumers
+
+
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
+| Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
 This interface is used for consumers (read only)
+
 
 ## Metody
 
 ```php
 public function getException(): Throwable | null;
 ```
-
 Gets the potential exception thrown in the domain layer
+
 
 ```php
 public function getExtras(): mixed;
 ```
-
 Gets arbitrary extra values produced by the domain layer.
+
 
 ```php
 public function getInput(): mixed;
 ```
-
 Gets the input received by the domain layer.
+
 
 ```php
 public function getMessages(): mixed;
 ```
-
 Gets the messages produced by the domain layer.
+
 
 ```php
 public function getOutput(): mixed;
 ```
-
 Gets the output produced from the domain layer.
+
 
 ```php
 public function getStatus(): mixed;
 ```
-
 Gets the status of this payload.
+
+
+
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
 
-| Namespace | Phalcon\Domain\Payload |
+| Namespace  | Phalcon\Domain\Payload |
 
 Holds the status codes for the payload
 
-## Constants
 
+## Constants
 ```php
 const ACCEPTED = ACCEPTED;
 const AUTHENTICATED = AUTHENTICATED;
@@ -239,51 +249,55 @@ const VALID = VALID;
 ```php
 final private function __construct();
 ```
-
 Instantiation not allowed.
+
+
+
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
+| Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
 This interface is used for consumers (write)
+
 
 ## Metody
 
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
 ```
-
 Sets an exception produced by the domain layer.
+
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
 ```
-
 Sets arbitrary extra values produced by the domain layer.
+
 
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
-
 Sets the input received by the domain layer.
+
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
 ```
-
 Sets the messages produced by the domain layer.
+
 
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
-
 Sets the output produced from the domain layer.
+
 
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
-
 Sets the status of this payload.
+
+

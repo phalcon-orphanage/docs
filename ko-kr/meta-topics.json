@@ -127,11 +127,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "활용 예시",
+                "text": "Use case",
                 "url": "/use-case"
             },
             {
-                "text": "성능",
+                "text": "Performance",
                 "url": "/performance"
             }
         ]
@@ -425,7 +425,7 @@
         "url": "",
         "menu": [
             {
-                "text": "다국어 지원",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {
@@ -443,7 +443,7 @@
                 "url": "/collection"
             },
             {
-                "text": "도메인",
+                "text": "Domain",
                 "url": "/domain"
             },
             {
@@ -451,11 +451,11 @@
                 "url": "/html"
             },
             {
-                "text": "헬퍼",
+                "text": "Helper",
                 "url": "/helper"
             },
             {
-                "text": "레지스트리",
+                "text": "Registry",
                 "url": "/registry"
             }
         ]

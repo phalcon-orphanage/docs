@@ -7,25 +7,22 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 ---
 
 # Tutorial - INVO
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Overview
-
-[INVO](https://github.com/phalcon/invo) is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. It showcases how certain tasks are handled by Phalcon. On the client side, [Bootstrap](https://getbootstrap.com) is used for the UI. The application does not generate actual invoices, but serves as an example on how these tasks are implemented using Phalcon.
+[INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. It showcases how certain tasks are handled by Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. The application does not generate actual invoices, but serves as an example on how these tasks are implemented using Phalcon.
 
 > **NOTE**: It is recommended that you open the application in your favorite editor so that you can follow this tutorial easier. 
-{: .alert .alert-info }
-
 > 
-> **NOTE**: Note the code below has been formatted to increase readability
-{: .alert .alert-warning }
+> {: .alert .alert-info }
+
+> **NOTE**: Note the code below has been formatted to increase readability 
+> 
+> {: .alert .alert-warning }
 
 ## Structure
-
-You can clone the repository to your machine (or download it) from [GitHub](https://github.com/phalcon/invo). Once you clone it (or download and unzip it) you will end up with the following directory structure:
+You can clone the repository to your machine (or download it) from [GitHub][github_invo]. Once you clone it (or download and unzip it) you will end up with the following directory structure:
 
 ```bash
 └── invo
@@ -48,7 +45,6 @@ You can clone the repository to your machine (or download it) from [GitHub](http
     │   └── js
     └── schemas
 ```
-
 Since Phalcon does not impose a particular directory structure, the particular structure is just our implementation. You will need to set up your webserver with instructions from the [webserver setup](webserver-setup) page.
 
 Once the application is set up, you can open it in your browser by navigating to the following URL `https://localhost/invo`. You will see a screen similar to the one below:
@@ -58,16 +54,15 @@ Once the application is set up, you can open it in your browser by navigating to
 The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
 
 ## Routing
-
 INVO uses the standard route that is built-in with the [Router](routing) component. These routes match the following pattern:
 
-    /:controller/:action/:params
-    
+```
+/:controller/:action/:params
+```
 
 The custom route `/session/register` executes the controller `SessionController` and its action `registerAction`.
 
 ## Configuration
-
 INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
 
 ```php
@@ -105,7 +100,6 @@ baseUri        = /invo/
 Phalcon does not have a convention for defining settings. Sections help us to organize the options based on groups that makes sense for our application. In our file there are two questions that will be used later on: `application` and `database`.
 
 ## Autoloader
-
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 
 ```php
@@ -134,11 +128,12 @@ $loader->register();
 ```
 
 > **NOTE**: The above code has registered the directories that were defined in the configuration file. The only directory that is not registered is the `viewsDir` because it contains HTML + PHP files but no classes. 
-{: .alert .alert-info }
-
 > 
-> **NOTE**: We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project:
-{: .alert .alert-info }
+> {: .alert .alert-info }
+
+> **NOTE**: We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project: 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -149,7 +144,6 @@ define('APP_PATH', realpath('..') . '/');
 ```
 
 ## Services
-
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses and registers them in the DI container.
 
 ```php
@@ -180,7 +174,6 @@ $container->set(
 ```
 
 ## Request Handling
-
 If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](application), which initializes all the services necessary for the application to run.
 
 ```php
@@ -200,7 +193,6 @@ $response->send();
 ```
 
 ## Dependency Injection
-
 In the first line of the code block above, the [Application](application) class constructor receives the variable `$container` as an argument.
 
 Since Phalcon is highly decoupled, we need the container to be able to access registered services from it in different parts of the application. The component in question is [Phalcon\Di](di). It is a service container, that also performs dependency injection and service location, instantiating all components as they are needed by the application.
@@ -250,7 +242,6 @@ $container = new FactoryDefault();
 If any services need to be overwritten we could just set it again as we did above with `session` or `url`. This is the reason for the existence of the variable `$container`.
 
 ## Log in
-
 A `log in` page will allow us to work with the backend controllers. The separation between backend controllers and frontend ones is arbitrary. All controllers are located in the same directory (`app/controllers/`).
 
 ![](/assets/images/content/tutorial-invo-2.png)
@@ -317,7 +308,7 @@ The following simple form (`app/views/session/index.volt`) produces the necessar
 {% endraw %}
 ```
 
-We are using [Volt](volt) as our template engine instead of PHP. This is a built-in template engine inspired by [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) providing a simple and user friendly syntax to create templates. If you have worked with [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) or [Twig](https://twig.symfony.com/) in the past, you will see many similarities.
+We are using [Volt](volt) as our template engine instead of PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) validates the data submitted from the form, and also checks for a valid user in the database:
 
@@ -387,7 +378,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-At first inspection of the code, you will note that several public properties are accessed in the controller, such as `$this->flash`, `$this->request` or `$this->session`. [Controllers](controllers) in Phalcon are automatically tied to the [Phalcon\Di](di) container and as a result, all the services registered in the container are present in each controller as properties with the same name as the name of each service. If the service is accessed for the first time, it will be automatically instantiated and returned to the caller. Additionally these services are set as *shared* so the same instance will be returned back, no matter how many times we access the property/service in the same request. These are services defined in the services container from earlier (`app/config/services.php`) and you can of course change this behavior when setting up these services.
+At first inspection of the code, you will note that several public properties are accessed in the controller, such as `$this->flash`, `$this->request` or `$this->session`. [Controllers](controllers) in Phalcon are automatically tied to the [Phalcon\Di](di) container and as a result, all the services registered in the container are present in each controller as properties with the same name as the name of each service. If the service is accessed for the first time, it will be automatically instantiated and returned to the caller. Additionally these services are set as _shared_ so the same instance will be returned back, no matter how many times we access the property/service in the same request. These are services defined in the services container from earlier (`app/config/services.php`) and you can of course change this behavior when setting up these services.
 
 For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
 
@@ -403,8 +394,9 @@ $this->session->set(
 );
 ```
 
-> **NOTE**: For more information about Di services, please check the [Dependency Injection](di) document.
-{: .alert .alert-info }
+> **NOTE**: For more information about Di services, please check the [Dependency Injection](di) document. 
+> 
+> {: .alert .alert-info }
 
 The `startAction` first checks if data has been submitted using a `POST`. If not, the user will be redirected again to the same form. We are checking if the form has been submitted via `POST` using the `isPost()` method on the request object.
 
@@ -442,10 +434,9 @@ $user = Users::findFirst(
     ]
 );
 ```
+> **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. This safely replaces the values for those columns without having the risk of a SQL injection.
 
-> **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are *bound* using the parameter `bind`. This safely replaces the values for those columns without having the risk of a SQL injection.
-
-When searching for the user in the database, we are not searching for the password directly using clear text. The application stores passwords as hashes, using the [sha1](https://php.net/manual/en/function.sha1.php) method. Although this methodology is adequate for a tutorial, you might want to consider using a different algorithm for a production application. The [Phalcon\Security](security) component offers convenience methods to strengthen the algorithm used for your hashes.
+When searching for the user in the database, we are not searching for the password directly using clear text. The application stores passwords as hashes, using the [sha1][sha1] method. Although this methodology is adequate for a tutorial, you might want to consider using a different algorithm for a production application. The [Phalcon\Security](security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 If the user is found, then we register the user in the session (log the user in) and forward them to the dashboard (`Invoices` controller, `index` action) showing a welcome message.
 
@@ -482,8 +473,7 @@ return $this->dispatcher->forward(
 ```
 
 ## Backend Security
-
-The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you are not logged in and try to access a *private* area you will see a message like the one below:
+The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you are not logged in and try to access a _private_ area you will see a message like the one below:
 
 ![](/assets/images/content/tutorial-invo-3.png)
 
@@ -511,13 +501,11 @@ $container->set(
     }
 );
 ```
-
-Now that the dispatcher is registered, we need to take advantage of a *hook* available to intercept the flow of execution and perform our verification checks. Hooks are called Events in Phalcon and in order to access or enable them, we need to register an [Events Manager](events) component in our application so that it can *fire* those events in our application.
+Now that the dispatcher is registered, we need to take advantage of a _hook_ available to intercept the flow of execution and perform our verification checks. Hooks are called Events in Phalcon and in order to access or enable them, we need to register an [Events Manager](events) component in our application so that it can _fire_ those events in our application.
 
 By creating an [Events Manager](events) and attaching specific code to the `dispatcher` events, we now have a lot more flexibility and can attach our code to the dispatch loop or operation.
 
 ### Events
-
 The [Events Manager](events) allows us to attach listeners to a particular type of event. The event type that we are attaching to is `dispatch`. The code below attaches listeners to the `beforeExecuteRoute` and `beforeException` events. We utilize these events to check for 404 pages and also perform allowed access checks in our application.
 
 ```php
@@ -561,7 +549,7 @@ $eventsManager->attach(
 );
 ```
 
-When a `beforeException` is triggered then the `NotFoundPlugin` is notified:
+When a `beforeException` is triggered then the `NotFoundPlugin`  is notified:
 
 ```php
 <?php
@@ -592,8 +580,7 @@ class SecurityPlugin extends Injectable
         // ...
     } }
 ```
-
-The event methods always receive the actual event as the first parameter. This is a [Phalcon\Events\Event](api/phalcon_events#events-event) object which will contain information regarding the event such as its type and other related information. For this particular event, the second parameter will be the object that produced the event itself (`$containerspatcher`). It is not mandatory that plugins classes extend the class [Phalcon\Di\Injectable](api/phalcon_di#di-injectable), but by doing this they gain easier access to the services available in the application.
+The event methods always receive the actual event as the first parameter. This is a [Phalcon\Events\Event][events-event] object which will contain information regarding the event such as its type and other related information. For this particular event, the second parameter will be the object that produced the event itself (`$containerspatcher`). It is not mandatory that plugins classes extend the class [Phalcon\Di\Injectable][di-injectable], but by doing this they gain easier access to the services available in the application.
 
 We now have the structure to start verifying the role in the current session. We can check if the user has access to use the [ACL](acl). If the user does not have access, we will redirect them to the home screen.
 
@@ -643,7 +630,6 @@ class SecurityPlugin extends Plugin
     }
 }
 ```
-
 We first get the `auth` value from the `session` service. If we are logged in, then this has been already set for us during the login process. If not, we are just a guest.
 
 Following that we get the name of the controller and the action, and also retrieve the Access Control List (ACL). We check if the user `isAllowed` using the combination `role` - `controller` - `action`. If yes, the method will finish processing.
@@ -651,7 +637,6 @@ Following that we get the name of the controller and the action, and also retrie
 If we do not have access, then the method will return `false` stopping the execution, right after we forward the user to the home page.
 
 ### ACL
-
 In the above example we have obtained the ACL using the method `$this->getAcl()`. To build the ACL we need to do the following:
 
 ```php
@@ -676,7 +661,6 @@ foreach ($roles as $role) {
     $acl->addRole($role);
 }
 ```
-
 First we create a new `Phalcon\Acl\Adapter\Memory` object. Although the default access is `DENY` we still set it in our list by using `setDefaultAction()`. After that we need to set up our roles. For INVO we have `guests` (users that have not been logged in) and `users`. We register those roles by using `addRole` on the list.
 
 Now that the roles are set, we need to set the components for the list. ACL components map to the areas of our application (controller/action). Doing so we can control which role can access which component.
@@ -762,7 +746,6 @@ foreach ($publicComponents as $componentName => $actions) {
     );
 }
 ```
-
 As seen above, we first register the private areas of our application (backend) and then the public ones (frontend). The arrays created have the key as the controller name while the values are the relevant actions. We do the same thing with the public components.
 
 Now that roles and components are registered, we need to link the two so that the ACL is complete. The `Users` role has access to public (frontend) and private (backend) components, while `Guests` only have access to the public (frontend) components.
@@ -792,10 +775,10 @@ foreach ($privateComponents as $resource => $actions) {
 ```
 
 ## CRUD
-
 A backend portion of an application is the code that provides forms and logic, allowing users to manipulate data i.e. perform CRUD operations. We will explore how INVO handles this task and also demonstrate the use of forms, validators, paginators and more.
 
-We have a simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update and Delete) implementation in INVO, so as to manipulate data (companies, products, types of products). For products the following files are used:
+We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, so as to manipulate data (companies, products, types of products). For products the following files are used:
+
 
 ```bash
 └── invo
@@ -813,7 +796,6 @@ We have a simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_d
                 ├── new.volt
                 └── search.volt
 ```
-
 For other areas (such as companies for instance), the relevant files (prefixed with `Company`) can be found in the same directories as shown above.
 
 Each controller has the following actions:
@@ -850,7 +832,6 @@ class ProductsController extends ControllerBase
 | `searchAction` | Execute the `search` based on the criteria sent from the `index`. Returning a paginator for the results |
 
 ## Search Form
-
 Our CRUD operations start with the search form. This form shows each field that the table has (`products`), allowing the user to enter search criteria for each field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in the `product_types` table to offer search criteria for this field:
 
 ```php
@@ -863,7 +844,6 @@ public function indexAction()
     $this->view->form = new ProductsForm();
 }
 ```
-
 An instance of the `ProductsForm` form (`app/forms/ProductsForm.php`) is passed to the view. This form defines the fields that are visible to the user:
 
 ```php
@@ -976,7 +956,6 @@ $name->addValidators(
 
 $this->add($name);
 ```
-
 First we create the element. Then we attach a label to it, attach filters, so that we can perform sanitization of data. Following that we apply an validators on the element and finally add the element to the form.
 
 Other elements are also used in this form:
@@ -1006,7 +985,6 @@ $type = new Select(
     ]
 );
 ```
-
 In the above code snippet, we add a hidden HTML field that holds the `id` of the product if applicable. We also get all the product types by using the `ProductTypes::find()` and then use that resultset to fill the HTML `select` element by using the [Phalcon\Tag](tag) component and its `select()` method. Once the form is passed to the view, it can be rendered and presented to the user:
 
 ```twig
@@ -1104,7 +1082,6 @@ This produces the following HTML:
 When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
 
 ## Search
-
 The `search` action has two operations. When accessed using the HTTP method `POST`, it performs the search based on the data sent from the form. When it is accessed using the HTTP method `GET`, it moves the current page in the paginator. To check which HTTP method has been used, we use the [Request](request) component:
 
 ```php
@@ -1122,7 +1099,7 @@ public function searchAction()
 }
 ```
 
-With the help of [Phalcon\Mvc\Model\Criteria](api/phalcon_mvc#mvc-model-criteria), we can create the search conditions based on the data types and values sent from the form:
+With the help of [Phalcon\Mvc\Model\Criteria][mvc-model-criteria], we can create the search conditions based on the data types and values sent from the form:
 
 ```php
 <?php
@@ -1136,8 +1113,8 @@ $query = Criteria::fromInput(
 
 This method verifies which values are different from '' (empty string) and `null` and takes them into account to create the search criteria:
 
-- If the field data type is `text` or similar (`char`, `varchar`, `text`, etc.) It uses an SQL `like` operator to filter the results.
-- If the data type is not `text` or similar, it will use the operator `=`.
+* If the field data type is `text` or similar (`char`, `varchar`, `text`, etc.) It uses an SQL `like` operator to filter the results.
+* If the data type is not `text` or similar, it will use the operator `=`.
 
 Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
 
@@ -1191,7 +1168,6 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-
 The [paginator](pagination) object receives the results obtained by the search. We also set a limit (results per page) as well as the page number. Finally we call `paginate()` to get the appropriate chunk of the resultset back.
 
 We then pass the returned page to view:
@@ -1338,6 +1314,7 @@ The whole `for` block is:
 - `3` - Executed after the last product in the loop
 - `4` - Executed if page.items does not have any products
 
+
 Now you can go back to the view and find out what every block is doing. Every field in `product` is printed accordingly:
 
 ```twig
@@ -1418,7 +1395,6 @@ $this->belongsTo(
     ]
 );
 ```
-
 Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
 
 ```twig
@@ -1452,8 +1428,7 @@ Printing whether the product is active or not uses a helper method:
 This method is implemented in the model.
 
 ## Create/Update
-
-When creating and updating records, we use the `new` and `edit` views. The data entered by the user is sent to the `create` and `save` actions that perform actions of *creating* and *updating* products, respectively.
+When creating and updating records, we use the `new` and `edit` views. The data entered by the user is sent to the `create` and `save` actions that perform actions of _creating_ and _updating_ products, respectively.
 
 In the creation case, we get the data submitted and assign them to a new `Products` instance:
 
@@ -1502,7 +1477,6 @@ public function createAction()
     // ...
 }
 ```
-
 As seen earlier, when we were creating the form, there were some filters assigned to the relevant elements. When the data is passed to the form, these filters are invoked and they sanitize the supplied input. Although this filtering is optional, it is always a good practice. Added to this, the ORM also escapes the supplied data and performs additional casting according to the column types:
 
 ```php
@@ -1715,8 +1689,7 @@ public function saveAction()
 ```
 
 ## Components
-
-The UI has been create with the [Bootstrap](https://getbootstrap.com) library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+The UI has been create with the [Bootstrap][bootstrap] library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
 This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
 
@@ -1738,7 +1711,7 @@ class Elements extends Injectable
     } }
 ```
 
-This class extends the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable). It is not necessary to do so but extending this component allows us to access all the application services. We are going to register this user component in the services container:
+This class extends the [Phalcon\Di\Injectable][di-injectable]. It is not necessary to do so but extending this component allows us to access all the application services. We are going to register this user component in the services container:
 
 ```php
 <?php
@@ -1794,7 +1767,6 @@ The important part is:
 ```
 
 ## Dynamic Titles
-
 When you navigate through the application, you will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller (`initialize()` method):
 
 ```php
@@ -1832,7 +1804,6 @@ class ControllerBase extends Controller
     // ...
 }
 ```
-
 The above code prepends the application name to the title
 
 Finally, the title is printed in the main view (`app/views/index.volt`):
@@ -1847,3 +1818,15 @@ Finally, the title is printed in the main view (`app/views/index.volt`):
     <!-- ... -->
 </html>
 ```
+
+[github_invo]: https://github.com/phalcon/invo
+
+[github_invo]: https://github.com/phalcon/invo
+[bootstrap]: https://getbootstrap.com
+[sha1]: https://php.net/manual/en/function.sha1.php
+[crud]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+[jinja]: https://jinja.palletsprojects.com/en/2.10.x/
+[twig]: https://twig.symfony.com/
+[events-event]: api/phalcon_events#events-event
+[di-injectable]: api/phalcon_di#di-injectable
+[mvc-model-criteria]: api/phalcon_mvc#mvc-model-criteria

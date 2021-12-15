@@ -7,27 +7,27 @@ keywords: 'base de datos, migraciones, esquema, tablas, columnas'
 ---
 
 # Migraciones de Bases de Datos
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTA**: Las migraciones de Phalcon se han quitado de DevTools y se han movido a un repositorio separado.
-{: .alert .alert-info } 
+> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
+> 
+> {: .alert .alert-info }
 
 ## Repositorio git del paquete
 
 https://github.com/phalcon/migrations
 
-## Requerimientos
+## Requerimentos
 
 * PHP >= 7.2
 * Phalcon >= 4.0.5
 
 ## Instalación vía Composer
 
-    composer require --dev phalcon/migrations
-    
+```
+composer require --dev phalcon/migrations
+```
 
 ## Inicio rápido
 
@@ -71,50 +71,55 @@ return new Config([
 
 **Generación básica**
 
-    vendor/bin/phalcon-migrations generate
-    
+```
+vendor/bin/phalcon-migrations generate
+```
 
 **Genera una tabla específica y exporta sus datos
 
-    vendor/bin/phalcon-migrations generate \
-        --config=migrations.php \
-        --table=users \
-        --exportDataFromTables=users \
-        --data=oncreate
-    
+```
+vendor/bin/phalcon-migrations generate \
+    --config=migrations.php \
+    --table=users \
+    --exportDataFromTables=users \
+    --data=oncreate
+```
 
 ### Ejecutar migraciones
 
-    vendor/bin/phalcon-migrations run
-    
+```
+vendor/bin/phalcon-migrations run
+```
 
 ### Listar migraciones existentes
 
-    vendor/bin/phalcon-migrations list
-    
+```
+vendor/bin/phalcon-migrations list
+```
 
 ## Ejemplo de uso
 
 **Ejecutar migraciones desde directorio de migraciones específico**
 
-    use Phalcon\Migrations\Migrations;
-    
-    $migration = new Migrations();
-    $migration::run([
-        'migrationsDir' => [
-            __DIR__ . '/migrations',
+```
+use Phalcon\Migrations\Migrations;
+
+$migration = new Migrations();
+$migration::run([
+    'migrationsDir' => [
+        __DIR__ . '/migrations',
+    ],
+    'config' => [
+        'database' => [
+            'adapter' => 'Mysql',
+            'host' => 'phalcon-db-mysql',
+            'username' => 'root',
+            'password' => 'root',
+            'dbname' => 'vokuro',
         ],
-        'config' => [
-            'database' => [
-                'adapter' => 'Mysql',
-                'host' => 'phalcon-db-mysql',
-                'username' => 'root',
-                'password' => 'root',
-                'dbname' => 'vokuro',
-            ],
-        ]
-    ]);
-    
+    ]
+]);
+```
 
 ## Métodos de migración
 
@@ -133,13 +138,14 @@ Las tablas siguiente muestran los métodos de la Clase `Migration`. Se almacenan
 | up                | Tabla creada y lista para trabajar con ella             |
 | afterUp           | Método extra para trabajar en algunos casos específicos |
 
+
 **Ejecutándose hacia abajo**
 
-| Nombre del método                 | Descripción                                                                                        |
-| --------------------------------- | -------------------------------------------------------------------------------------------------- |
-| down                              | Normalmente se pone aquí eliminación de la tabla o truncamiento de datos                           |
-| afterDown                         | Método extra para trabajar después de que todo se haya limpiado                                    |
-| morph (**de migración anterior**) | Como la migración ha sido movida hacia atrás, es necesario que todo se devuelva al estado anterior |
+| Nombre del método                   | Descripción                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
+| down                                | Normalmente se pone aquí eliminación de la tabla o truncamiento de datos                           |
+| afterDown                           | Método extra para trabajar después de que todo se haya limpiado                                    |
+| morph (**from previous migration**) | Como la migración ha sido movida hacia atrás, es necesario que todo se devuelva al estado anterior |
 
 ## Argumentos y opciones CLI
 
@@ -178,9 +184,9 @@ Las tablas siguiente muestran los métodos de la Clase `Migration`. Se almacenan
 El uso de este enfoque es útil cuando más de un desarrollador está participando en la gestión de la estructura de base de datos. Use `'migrationsTsBased' => true` en el fichero de configuración o la opción `--ts-based` en el entorno CLI. También, necesita especificar el sufijo `descr`, que podría ser cualquier cosa que quiera, por ejemplo: versión semántica.
 
 Comando actual
-
-    vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
-    
+```
+vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
+```
 
 Producirá el nombre de carpeta con tales nombres
 
@@ -190,5 +196,6 @@ Producirá el nombre de carpeta con tales nombres
 
 Las migraciones se ejecutarán de la más antigua a la más reciente.
 
-> **NOTA**: Cuando se ejecuten las migraciones, las aplicación escanea todas las migraciones disponibles y su estado independientemente de su "edad". Si una o más no fueron ejecutadas en una ejecución anterior, serán ejecutadas en la siguiente ejecución.
-{: .alert .alert-info }
+> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". Si una o más no fueron ejecutadas en una ejecución anterior, serán ejecutadas en la siguiente ejecución. 
+> 
+> {: .alert .alert-info }

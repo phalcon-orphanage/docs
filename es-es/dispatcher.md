@@ -2,19 +2,16 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Despachador'
+title: 'Dispatcher'
 keywords: 'despachador, mvc, bucle de despacho'
 ---
 
 # Componente Despachador
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
-[Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) es el componente responsable de instanciar los controladores y ejecutar las acciones pertinentes en ellos en una aplicación MVC. Despachar es el proceso de tomar el objeto de solicitud, extraer el nombre del módulo, el nombre de controlador, el nombre de la acción, y los parámetros opcionales que contenga, y luego instanciar un controlador y llamar una acción de ese controlador.
+The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Despachar es el proceso de tomar el objeto de solicitud, extraer el nombre del módulo, el nombre de controlador, el nombre de la acción, y los parámetros opcionales que contenga, y luego instanciar un controlador y llamar una acción de ese controlador.
 
 ```php
 <?php
@@ -33,7 +30,6 @@ $dispatcher->setParams([]);
 
 $controller = $dispatcher->dispatch();
 ```
-
 ## Métodos
 
 ```php
@@ -43,13 +39,11 @@ public function callActionMethod(
     array $params = []
 )
 ```
-
 Llama a un método de acción con un manejador y parámetros
 
 ```php
 public function dispatch(): object | bool
 ```
-
 Procesa el resultado del enrutador llamando a la(s) acción(es) apropiadas del controlador incluyendo cualquier dato de enrutado o parámetros inyectados. Devuelve la clase manejadora despachada (el Controlador para el despachamiento Mvc o una Tarea para el despachamiento CLI) o `false` si ocurre una excepción y la operación se detiene devolviendo `false` en el manejador de la excepción. Lanza `Exception` si tiene lugar una excepción no capturada o manejada durante el proceso de despacho.
 
 ```php
@@ -57,7 +51,6 @@ public function forward(
     array $forward
 ): void
 ```
-
 Reenvía el flujo de ejecución a otro controlador/acción.
 
 ```php
@@ -121,32 +114,27 @@ $this->dispatcher->forward(
 ```php
 public function getActionName(): string
 ```
-
 Obtiene el nombre de la última acción despachada
 
 ```php
 public function getActionSuffix(): string
 ```
-
 Obtiene el sufijo de acción por defecto
 
 ```php
 public function getActiveController(): ControllerInterface
 ```
-
 Devuelve el controlador activo en el despachador
 
 ```php
 public function getActiveMethod(): string
 ```
-
 Devuelve el método actual a ser ejecutado en el despachador
 
 ```php
 public function getBoundModels(): array
 ```
-
-Devuelve los modelos vinculados de la instancia del enlazador
+Devuelve los modelos enlazados de la instancia del enlazador
 
 ```php
 <?php
@@ -171,55 +159,46 @@ class InvoicesController extends Controller
 ```php
 public function getControllerClass(): string
 ```
-
 Posible nombre de la clase del controlador que será localizada para despachar la petición
 
 ```php
 public function getControllerName(): string
 ```
-
 Obtiene el nombre del último controlador despachado
 
 ```php
 public function getDefaultNamespace(): string
 ```
-
 Devuelve el espacio de nombres por defecto
 
 ```php
 public function getHandlerClass(): string
 ```
-
 Posible nombre de clase que será localizada para despachar la petición
 
 ```php
 public function getHandlerSuffix(): string
 ```
-
 Obtiene el sufijo del manejador por defecto
 
 ```php
 public function getLastController(): ControllerInterface
 ```
-
 Devuelve el último controlador despachado
 
 ```php
 public function getModelBinder(): BinderInterface | null
 ```
-
 Obtiene el enlazador de modelos
 
 ```php
 public function getModuleName(): string
 ```
-
 Obtiene el módulo donde está la clase del controlador
 
 ```php
 public function getNamespaceName(): string
 ```
-
 Obtiene el espacio de nombres a anteponer al nombre del manejador actual
 
 ```php
@@ -229,37 +208,31 @@ public function getParam(
     mixed $defaultValue = null
 ): mixed
 ```
-
 Obtiene un parámetro por su nombre o índice numérico
 
 ```php
 public function getParams(): array
 ```
-
 Obtiene los parámetros de la acción
 
 ```php
 public function getPreviousActionName(): string
 ```
-
 Obtiene el nombre de la acción despachada anterior
 
 ```php
 public function getPreviousControllerName(): string
 ```
-
 Obtiene el nombre del controlador despachado anterior
 
 ```php
 public function getPreviousNamespaceName(): string
 ```
-
 Obtiene el espacio de nombres despachado anterior
 
 ```php
 public function getReturnedValue(): mixed
 ```
-
 Devuelve el valor devuelto por la última acción despachada
 
 ```php
@@ -267,13 +240,11 @@ public function hasParam(
     mixed $param
 ): bool
 ```
-
 Comprueba si un parámetro existe
 
 ```php
 public function isFinished(): bool
 ```
-
 Comprueba si el bucle de despachado se ha terminado o tiene más controladores/tareas pendientes de despachar
 
 ```php
@@ -281,7 +252,6 @@ public function setActionName(
     string $actionName
 ): void
 ```
-
 Establece el nombre de la acción a despachar
 
 ```php
@@ -289,7 +259,6 @@ public function setActionSuffix(
     string $actionSuffix
 ): void
 ```
-
 Establece el sufijo de acción por defecto
 
 ```php
@@ -297,7 +266,6 @@ public function setControllerName(
     string $controllerName
 )
 ```
-
 Establece el nombre del controlador a despachar
 
 ```php
@@ -305,7 +273,6 @@ public function setControllerSuffix(
     string $controllerSuffix
 )
 ```
-
 Establece el sufijo de controlador por defecto
 
 ```php
@@ -313,7 +280,6 @@ public function setDefaultAction(
     string $actionName
 ): void
 ```
-
 Establece el nombre de acción predeterminado
 
 ```php
@@ -321,7 +287,6 @@ public function setDefaultController(
     string $controllerName
 )
 ```
-
 Establece el nombre predeterminado del controlador
 
 ```php
@@ -329,7 +294,6 @@ public function setDefaultNamespace(
     string $namespaceName
 ): void
 ```
-
 Establece el espacio de nombres por defecto
 
 ```php
@@ -337,7 +301,6 @@ public function setHandlerSuffix(
     string $handlerSuffix
 ): void
 ```
-
 Establece el sufijo por defecto del manejador
 
 ```php
@@ -346,7 +309,6 @@ public function setModelBinder(
     mixed $cache = null
 ): DispatcherInterface
 ```
-
 Habilita el enlazado de modelos durante el despacho
 
 ```php
@@ -370,7 +332,6 @@ public function setModuleName(
     string $moduleName
 ): void
 ```
-
 Establece el módulo donde está el controlador (sólo informativo)
 
 ```php
@@ -378,7 +339,6 @@ public function setNamespaceName(
     string $namespaceName
 ): void
 ```
-
 Establece el espacio de nombres donde está la clase controlador
 
 ```php
@@ -387,7 +347,6 @@ public function setParam(
     mixed $value
 ): void
 ```
-
 Establece un parámetro por su nombre o índice numérico
 
 ```php
@@ -395,7 +354,6 @@ public function setParams(
     array $params
 ): void
 ```
-
 Establece los parámetros de la acción a despachar
 
 ```php
@@ -403,18 +361,15 @@ public function setReturnedValue(
     mixed $value
 ): void
 ```
-
 Establece manualmente el último valor devuelto por una acción
 
 ```php
 public function wasForwarded(): bool
 ```
-
 Comprueba si la acción ejecutada actual fue reenviada desde otra
 
-## Bucle de Despacho
-
-Es un proceso importante que tiene mucho por hacer con el flujo MVC en sí mismo, especialmente con la parte del controlador. El trabajo ocurre dentro del despachador del controlador. Los ficheros del controlador son leídos, cargados e instanciados. Luego se ejecutan las acciones requeridas. Si una acción reenvía el flujo a otro controlador/acción, el despachador del controlador empieza de nuevo. Para ilustrar mejor esto, el siguiente ejemplo muestra aproximadamente el proceso ejecutado en el componente [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher).
+## Dispatch Loop
+Es un proceso importante que tiene mucho por hacer con el flujo MVC en sí mismo, especialmente con la parte del controlador. El trabajo ocurre dentro del despachador del controlador. Los ficheros del controlador son leídos, cargados e instanciados. Luego se ejecutan las acciones requeridas. Si una acción reenvía el flujo a otro controlador/acción, el despachador del controlador empieza de nuevo. To better illustrate this, the following example shows approximately the process performed within the [Phalcon\Mvc\Dispatcher][mvc-dispatcher] component.
 
 ```php
 <?php
@@ -438,11 +393,9 @@ while (true !== $finished) {
     $finished = true;
 }
 ```
-
 El el código anterior, estamos calculando el nombre del controlador, instanciándolo y llamando a la acción relevante. Después de eso terminamos el bucle. El ejemplo está muy simplificado y carece de validaciones, filtros y comprobaciones adicionales, pero demuestra el flujo normal de operación dentro del despachador.
 
 ## Reenvío
-
 El bucle de despacho le permite reenviar el flujo de ejecución a otro controlador/acción. Esto es muy útil en situaciones donde comprobamos si el usuario tiene acceso a ciertas áreas, y si no se le permite es reenviado a otros controladores y acciones, lo que le permite reutilizar código.
 
 ```php
@@ -470,8 +423,9 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTA**: Tenga en cuenta que ejecutar `forward` no es lo mismo que hacer una redirección HTTP. Aunque producen el mismo resultado, la ejecución de `forward` no recargará la página actual, mientras que la redirección HTTP necesita dos peticiones para completar el proceso.
-{: .alert .alert-info }
+> **NOTE**: Keep in mind that performing a `forward` is not the same as making a HTTP redirect. Aunque producen el mismo resultado, la ejecución de `forward` no recargará la página actual, mientras que la redirección HTTP necesita dos peticiones para completar el proceso. 
+> 
+> {: .alert .alert-info }
 
 Ejemplos:
 
@@ -484,7 +438,6 @@ $this->dispatcher->forward(
     ]
 );
 ```
-
 Reenvía el flujo a otra acción en el controlador actual
 
 ```php
@@ -497,7 +450,6 @@ $this->dispatcher->forward(
     ]
 );
 ```
-
 Reenvía el flujo a otra acción en el controlador actual, pasando parámetros
 
 Una acción `forward` acepta los siguientes parámetros:
@@ -510,13 +462,12 @@ Una acción `forward` acepta los siguientes parámetros:
 | `namespace`  | Un espacio de nombres válido del que forma parte el controlador. |
 
 ## Parámetros
-
 ### Preparación
+By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. Esto es particularmente útil cuando actualiza su aplicación y quiere transformar algunas URLs antiguas. Por ejemplo, podría querer que sus URLs fuesen:
 
-Usando eventos o puntos de enganche disponibles mediante [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher), puede fácilmente ajustar su aplicación para aceptar cualquier esquema de URL que se adapte a su aplicación. Esto es particularmente útil cuando actualiza su aplicación y quiere transformar algunas URLs antiguas. Por ejemplo, podría querer que sus URLs fuesen:
-
-    https://domain.com/controller/key1/value1/key2/value
-    
+```
+https://domain.com/controller/key1/value1/key2/value
+```
 
 Ya que los parámetros se pasan a la acciones en el orden en el que fueron definidos en la URL, puede transformarlos al esquema deseado:
 
@@ -561,8 +512,9 @@ $container->set(
 
 Si el esquema deseado es:
 
-    https://example.com/controller/key1:value1/key2:value
-    
+```
+https://example.com/controller/key1:value1/key2:value
+```
 
 puede usar el siguiente código:
 
@@ -606,8 +558,7 @@ $container->set(
 ```
 
 ## Obtención
-
-Cuando una ruta proporciona parámetros con nombres puede obtenerlos en un controlador, vista o cualquier otro componente que extienda [Phalcon\Di\Injectable](api/phalcon_di#di-factorydefault)
+When a route provides named parameters you can receive them in a controller, a view or any other component that extends [Phalcon\Di\Injectable][di-factorydefault]
 
 ```php
 <?php
@@ -635,19 +586,17 @@ class InvoicesController extends Controller
     }
 }
 ```
-
 En el ejemplo anterior, obtenemos `invoiceId` como primer parámetro pasado y automáticamente se sanea como `integer`. El segundo parámetro es `filter`, que es saneado como `string`
 
 ## Acciones
-
 También puede definir un esquema arbitrario para acciones `antes` de que el bucle de despacho sea invocado.
 
 ### Camelizar Nombres
-
 SI la URL original es
 
-    https://example.com/admin/invoices/show-unpaid
-    
+```
+https://example.com/admin/invoices/show-unpaid
+```
 
 y por ejemplo quiere camelizar `show-unpaid` a `ShowUnpaid`, se puede usar para lograrlo `beforeDispatchLoop`.
 
@@ -684,12 +633,12 @@ $container->set(
 ```
 
 ### Filtro Extensiones de Fichero
-
 Si la URL original siempre contiene una extensión `.php`:
 
-    https://example.com/admin/invoices/show-unpaid.php
-    https://example.com/admin/invoices/index.php
-    
+```
+https://example.com/admin/invoices/show-unpaid.php
+https://example.com/admin/invoices/index.php
+```
 
 Puede eliminarla antes de despachar la combinación controlador/acción:
 
@@ -723,11 +672,11 @@ $container->set(
 );
 ```
 
-> **NOTA**: El código anterior se puede usar tal cual o ajustado para ayudar con las transformaciones de URL antiguas u otros casos de uso donde necesitamos manipular el nombre de la acción.
-{: .alert .alert-info }
+> **NOTE**: The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name. 
+> 
+> {: .alert .alert-info }
 
 ### Inyección de Modelo
-
 Hay instancias en las que puede querer inyectar automáticamente instancias del modelo que se han emparejado con los parámetros pasados en la URL.
 
 Nuestro controlador es:
@@ -749,7 +698,6 @@ class InvoicesController extends Controller
     }
 }
 ```
-
 `viewAction` recibe una instancia del modelo `Invoices`. Si intenta ejecutar este método sin ninguna comprobación ni manipulación, la llamada fallará. Sin embargo puede inspeccionar los parámetros pasados antes del bucle de despacho y manipular los parámetros en consecuencia.
 
 ```php
@@ -807,12 +755,11 @@ $container->set(
     }
 );
 ```
-
 En el ejemplo anterior, obtenemos la clase controlador y el método activo desde el despachador. Recorriendo los parámetros, usamos la reflexión para comprobar el método a ejecutar. Calculamos el nombre del modelo y también comprobamos si el parámetro espera un nombre de modelo. Si es así, anulamos el parámetro pasando el modelo encontrado. Si se lanza alguna excepción, podemos manejarla en consecuencia, por ejemplo si la clase o acción no existen, o no se ha encontrado el registro.
 
 El ejemplo anterior se ha simplificado. Puede ajustarlo acorde a sus necesidades e inyectar a una acción cualquier tipo de dependencia o modelo antes de que se ejecute.
 
-El despachador también viene con una opción para manejar esto internamente para todos los modelos pasados en una acción de controlador usando el objeto [Phalcon\Mvc\Model\Binder](api/phalcon_mvc#mvc-model-binder).
+The dispatcher also comes with an option to handle this internally for all models passed into a controller action by using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] object.
 
 ```php
 <?php
@@ -829,10 +776,11 @@ $dispatcher->setModelBinder(
 return $dispatcher;
 ```
 
-> **NOTA**: El componente [Phalcon\Mvc\Model\Binder](api/phalcon_mvc#mvc-model-binder) usa internamente la API de Reflexión de PHP, que consume ciclos de procesamiento adicionales. Por esa razón, tiene la habilidad de usar una instancia de `cache` o un nombre de servicio de cache. Para usar esta característica, puede pasar el nombre del servicio de cache o la instancia como segundo argumento en el método `setModelBinder()` o sólo pasar la instancia de cache en el constructor `Binder`.
-{: .alert .alert-warning }
+> **NOTE**: The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. Por esa razón, tiene la habilidad de usar una instancia de `cache` o un nombre de servicio de cache. Para usar esta característica, puede pasar el nombre del servicio de cache o la instancia como segundo argumento en el método `setModelBinder()` o sólo pasar la instancia de cache en el constructor `Binder`. 
+> 
+> {: .alert .alert-warning }
 
-También, mediante el uso de [Phalcon\Mvc\Model\Binder\BindableInterface](api/phalcon_mvc#mvc-model-binder-bindableinterface) en controladores, puede definir la vinculación de los modelos en los controladores base.
+Also, by using the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface] in controllers, you can define the models binding in base controllers.
 
 En el ejemplo anterior, tenemos un controlador base `CrudController` que extiende desde `InvoicesController`.
 
@@ -855,7 +803,7 @@ class CrudController extends Controller
 }
 ```
 
-En `InvoicesController` definimos con qué modelo está asociado el controlador. Esto se hace implementando [Phalcon\Mvc\Model\Binder\BindableInterface](api/phalcon_mvc#mvc-model-binder-bindableinterface), que hará que el método `getModelName()` esté disponible. Este método se usa para devolver el nombre del modelo. Puede devolver una cadena con un nombre de modelo o un vector asociativo donde la clave es el parámetro nombre.
+En `InvoicesController` definimos con qué modelo está asociado el controlador. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface], which will make the `getModelName()` method available. Este método se usa para devolver el nombre del modelo. Puede devolver una cadena con un nombre de modelo o un vector asociativo donde la clave es el parámetro nombre.
 
 ```php
 <?php
@@ -893,11 +841,11 @@ class InvoicesController extends Controller
 }
 ```
 
-> Actualmente, el vinculador (binder) solo utilizará la clave primaria de los modelos para realizar un `findFirst()`. Una ruta de ejemplo para lo anterior podría ser `/posts/show/{1}`
-{: .alert .alert-warning }
+> Actualmente, el vinculador (binder) solo utilizará la clave primaria de los modelos para realizar un `findFirst()`. An example route for the above would be `/posts/show/{1}` 
+> 
+> {: .alert .alert-warning }
 
 ## No-Encontrado (404)
-
 Si se define un [Gestor de Eventos](events), puede usarlo para interceptar excepciones que se muestran cuando el par controlador/acción no se encuentra.
 
 ```php
@@ -1026,28 +974,28 @@ class ExceptionsPlugin
 }
 ```
 
-> **NOTA**: Sólo las excepciones producidas por el despachador y las excepciones producidas en la acción ejecutada notifican los eventos `beforeExcepcion`. Las excepciones producidas en oyentes o eventos de controlador son redirigidas al último try/catch.
-{: .alert .alert-danger }
+> **NOTE**: Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Las excepciones producidas en oyentes o eventos de controlador son redirigidas al último try/catch. 
+> 
+> {: .alert .alert-danger }
 
 ## Eventos
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to an [Manager](events) if it is present. Los eventos son disparados usando el tipo `dispatch`. Algunos eventos cuando devuelven el booleano `false` podrían detener la operación activa. Se soportan los siguientes eventos:
 
-[Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) es capaz de enviar eventos a un [Gestor](events) si está presente. Los eventos son disparados usando el tipo `dispatch`. Algunos eventos cuando devuelven el booleano `false` podrían detener la operación activa. Se soportan los siguientes eventos:
+| Nombre de evento       | Disparado                                                                                                                   | Puede detenerse |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:---------------:|
+| `afterBinding`         | Después de que los modelos estén enlazados pero antes de ejecutar la ruta                                                   |       Si        |
+| `afterDispatch`        | Después de ejecutar el método controlador/acción.                                                                           |       Si        |
+| `afterDispatchLoop`    | Después de salir del bucle de despacho                                                                                      |       No        |
+| `afterExecuteRoute`    | Después de ejecutar el método controlador/acción.                                                                           |       No        |
+| `afterInitialize`      | Permite inicializar globalmente el controlador en la petición                                                               |       No        |
+| `beforeDispatch`       | Después de entrar en el bucle de despacho. El Despachador sólo conoce la información pasada por el Enrutador.               |       Si        |
+| `beforeDispatchLoop`   | Antes de entrar en el bucle de despacho. El Despachador sólo conoce la información pasada por el Enrutador.                 |       Si        |
+| `beforeException`      | Antes de que el despachador lance cualquier excepción                                                                       |       Si        |
+| `beforeExecuteRoute`   | Antes de ejecutar el método controlador/acción. El Despachador ha inicializado el controlador y conoce si existe la acción. |       Si        |
+| `beforeForward`        | Antes de reenviar al método controlador/acción. (Despachador MVC)                                                           |       No        |
+| `beforeNotFoundAction` | cuando la acción no se ha encontrado en el controlador                                                                      |       Si        |
 
-| Nombre de evento       | Disparado                                                                                                                   | Puede detener |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:-------------:|
-| `afterBinding`         | Después de que los modelos estén enlazados pero antes de ejecutar la ruta                                                   |      Si       |
-| `afterDispatch`        | Después de ejecutar el método controlador/acción.                                                                           |      Si       |
-| `afterDispatchLoop`    | Después de salir del bucle de despacho                                                                                      |      No       |
-| `afterExecuteRoute`    | Después de ejecutar el método controlador/acción.                                                                           |      No       |
-| `afterInitialize`      | Permite inicializar globalmente el controlador en la petición                                                               |      No       |
-| `beforeDispatch`       | Después de entrar en el bucle de despacho. El Despachador sólo conoce la información pasada por el Enrutador.               |      Si       |
-| `beforeDispatchLoop`   | Antes de entrar en el bucle de despacho. El Despachador sólo conoce la información pasada por el Enrutador.                 |      Si       |
-| `beforeException`      | Antes de que el despachador lance cualquier excepción                                                                       |      Si       |
-| `beforeExecuteRoute`   | Antes de ejecutar el método controlador/acción. El Despachador ha inicializado el controlador y conoce si existe la acción. |      Si       |
-| `beforeForward`        | Antes de reenviar al método controlador/acción. (Despachador MVC)                                                           |      No       |
-| `beforeNotFoundAction` | cuando la acción no se ha encontrado en el controlador                                                                      |      Si       |
-
-La aplicación de ejemplo [INVO](https://github.com/phalcon/invo), demuestra cómo puede sacar ventaja del despacho de eventos, implementando un filtro de seguridad con [Acl](acl)
+The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl)
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 
@@ -1103,11 +1051,11 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTA**: Los métodos de oyentes de eventos aceptan un objeto [Phalcon\Events\Event](api/phalcon_events#events-event) como primer parámetro - los métodos en controladores no.
-{: .alert .alert-warning }
+> **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not. 
+> 
+> {: .alert .alert-warning }
 
 ## Gestor de Eventos
-
 Puede usar el evento `dispatcher::beforeForward` para cambiar los módulos y realizar redirecciones más fácilmente.
 
 ```php
@@ -1166,8 +1114,7 @@ echo $dispatcher->getModuleName();
 ```
 
 ## Personalizado
-
-Se debe implementar la interfaz [Phalcon\Mvc\DispatcherInterface](api/phalcon_mvc#mvc-dispatcherinterface) para crear su propio despachador.
+The [Phalcon\Mvc\DispatcherInterface][mvc-dispatcherinterface] interface must be implemented to create your own dispatcher.
 
 ```php
 <?php
@@ -1309,3 +1256,11 @@ class MyDispatcher implements DispatcherInterface
     public function setParams(array $params): void;
 }
 ```
+
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[events-event]: api/phalcon_events#events-event
+[invo]: https://github.com/phalcon/invo
+[mvc-dispatcher]: api/phalcon_mvc#mvc-dispatcher
+[mvc-dispatcherinterface]: api/phalcon_mvc#mvc-dispatcherinterface
+[mvc-model-binder]: api/phalcon_mvc#mvc-model-binder
+[mvc-model-binder-bindableinterface]: api/phalcon_mvc#mvc-model-binder-bindableinterface

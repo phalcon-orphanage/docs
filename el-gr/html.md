@@ -14,7 +14,7 @@ keywords: 'html, attributes, tag, tag factory'
 This namespace contains components that help with the generation of HTML.
 
 ## Attributes
-The [Phalcon\Html\Attributes](api/phalcon_html#html-attributes) is a wrapper of [Phalcon\Collection](collection). It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Tag](tag) internally to render the attributes that a HTML element has. These HTML attributes are defined in the object itself.
+The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](collection). It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Tag](tag) internally to render the attributes that a HTML element has. These HTML attributes are defined in the object itself.
 
 The component can be used on its own if you want to collect HTML attributes in an object and then _render) them (return them as a string) in a `key=value` format.
 
@@ -30,7 +30,7 @@ Home / Admin / Invoices / Viewing Invoice [1234]
 ```
 Each of the words above (apart from the last one) are links to the respective pages. This way the user can quickly navigate back to a different area without having to click the back button or use another menu.
 
-[Phalcon\Html\Breadcrumbs](api/phalcon_html#html-breadcrumbs) offers functionality to add text and URLs. The resulting HTML when calling `render()` will have each breadcrumb enclosed in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
+[Phalcon\Html\Breadcrumbs][html-breadcrumbs] offers functionality to add text and URLs. The resulting HTML when calling `render()` will have each breadcrumb enclosed in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
 ### Methods
 ```php
@@ -109,7 +109,7 @@ public function toArray(): array
 Returns the internal breadcrumbs array
 
 ## TagFactory
-[Phalcon\Html\TagFactory](api/phalcon_html#html-tagfactory) is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()`.
+[Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()`.
 
 ```php
 <?php
@@ -123,29 +123,29 @@ $anchor  = $factory->newInstance('a');
 ```
 The registered names for respective helpers are:
 
-| Name         | Περιγραφή                                                                                         |
-| ------------ | ------------------------------------------------------------------------------------------------- |
-| `a`          | [Phalcon\Html\Helper\Anchor](api/phalcon_html#html-helper-anchor) - `<a>` tag            |
-| `aRaw`       | [Phalcon\Html\Helper\AnchorRaw](api/phalcon_html#html-helper-anchorraw) - `<a>` tag raw  |
-| `body`       | [Phalcon\Html\Helper\Body](api/phalcon_html#html-helper-body) - `<body>` tag             |
-| `button`     | [Phalcon\Html\Helper\Button](api/phalcon_html#html-helper-button) - `<button>` tag       |
-| `close`      | [Phalcon\Html\Helper\Close](api/phalcon_html#html-helper-close) - close tag                    |
-| `element`    | [Phalcon\Html\Helper\Element](api/phalcon_html#html-helper-element) - any tag                  |
-| `elementRaw` | [Phalcon\Html\Helper\ElementRaw](api/phalcon_html#html-helper-elementraw) - any tag raw        |
-| `form`       | [Phalcon\Html\Helper\Form](api/phalcon_html#html-helper-form) - `<form>` tag             |
-| `img`        | [Phalcon\Html\Helper\Img](api/phalcon_html#html-helper-img) - `<img>` tag                |
-| `label`      | [Phalcon\Html\Helper\Label](api/phalcon_html#html-helper-label) - `<label>` tag          |
-| `textarea`   | [Phalcon\Html\Helper\TextArea](api/phalcon_html#html-helper-textarea) - `<textarea>` tag |
+| Name         | Περιγραφή                                                                        |
+| ------------ | -------------------------------------------------------------------------------- |
+| `a`          | [Phalcon\Html\Helper\Anchor][html-helper-anchor] - `<a>` tag            |
+| `aRaw`       | [Phalcon\Html\Helper\AnchorRaw][html-helper-anchorraw] - `<a>` tag raw  |
+| `body`       | [Phalcon\Html\Helper\Body][html-helper-body] - `<body>` tag             |
+| `button`     | [Phalcon\Html\Helper\Button][html-helper-button] - `<button>` tag       |
+| `close`      | [Phalcon\Html\Helper\Close][html-helper-close] - close tag                    |
+| `element`    | [Phalcon\Html\Helper\Element][html-helper-element] - any tag                  |
+| `elementRaw` | [Phalcon\Html\Helper\ElementRaw][html-helper-elementraw] - any tag raw        |
+| `form`       | [Phalcon\Html\Helper\Form][html-helper-form] - `<form>` tag             |
+| `img`        | [Phalcon\Html\Helper\Img][html-helper-img] - `<img>` tag                |
+| `label`      | [Phalcon\Html\Helper\Label][html-helper-label] - `<label>` tag          |
+| `textarea`   | [Phalcon\Html\Helper\TextArea][html-helper-textarea] - `<textarea>` tag |
 
 ### Helpers
-All helpers that are used by the [Phalcon\Html\TagFactory](api/phalcon_html#html-tagfactory) are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](escaper).
+All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](escaper).
 
 > **NOTE**: The code and output below has been formatted for readability 
 > 
 > {: .alert .alert-info }
 
 ### `a`
-[Phalcon\Html\Helper\Anchor](api/phalcon_html#html-helper-anchor) creates anchor HTML tags. The component accepts the `href` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\Anchor][html-helper-anchor] creates anchor HTML tags. The component accepts the `href` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -171,7 +171,7 @@ echo $anchor('/myurl', 'click<>me', $options);
 ```
 
 ### `aRaw`
-[Phalcon\Html\Helper\AchorRaw](api/phalcon_html#html-helper-anchorraw) creates raw anchor HTML tags, i.e. the text will not be escaped. The component accepts the `href` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\AchorRaw][html-helper-anchorraw] creates raw anchor HTML tags, i.e. the text will not be escaped. The component accepts the `href` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -197,7 +197,7 @@ echo $anchor('/myurl', 'click<>me', $options);
 ```
 
 ### `body`
-[Phalcon\Html\Helper\Body](api/phalcon_html#html-helper-body) creates a `<body>` tag. The component accepts optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\Body][html-helper-body] creates a `<body>` tag. The component accepts optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -220,7 +220,7 @@ echo $anchor($options);
 > {: .alert .alert-info }
 
 ### `button`
-[Phalcon\Html\Helper\Button](api/phalcon_html#html-helper-button) creates `<button>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\Button][html-helper-button] creates `<button>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -246,7 +246,7 @@ echo $anchor('click<>me', $options);
 ```
 
 ### `close`
-[Phalcon\Html\Helper\Close](api/phalcon_html#html-helper-close) creates the closing HTML tags. The component accepts the `name` of the tag to close.
+[Phalcon\Html\Helper\Close][html-helper-close] creates the closing HTML tags. The component accepts the `name` of the tag to close.
 
 ```php
 <?php
@@ -262,7 +262,7 @@ echo $anchor('form');
 ```
 
 ### `element`
-[Phalcon\Html\Helper\Element](api/phalcon_html#html-helper-element) creates HTML tags based on the passed `name` parameter. The component accepts the `name` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\Element][html-helper-element] creates HTML tags based on the passed `name` parameter. The component accepts the `name` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -288,7 +288,7 @@ echo $anchor('address', 'click<>me', $options);
 ```
 
 ### `elementRaw`
-[Phalcon\Html\Helper\ElementRaw](api/phalcon_html#html-helper-elementraw) creates raw HTML tags, i.e. the text will not be escaped. The tag created is based on the passed `name` parameter. The component accepts the `name` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\ElementRaw][html-helper-elementraw] creates raw HTML tags, i.e. the text will not be escaped. The tag created is based on the passed `name` parameter. The component accepts the `name` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -314,7 +314,7 @@ echo $anchor('address', 'click<>me', $options);
 ```
 
 ### `form`
-[Phalcon\Html\Helper\Form](api/phalcon_html#html-helper-form) creates `<form>` HTML tags. The component accepts an array with all the attributes that the anchor needs. By default the form has its `method` to `post` and `enctype` to `multipart/form-data`.
+[Phalcon\Html\Helper\Form][html-helper-form] creates `<form>` HTML tags. The component accepts an array with all the attributes that the anchor needs. By default the form has its `method` to `post` and `enctype` to `multipart/form-data`.
 
 ```php
 <?php
@@ -346,7 +346,7 @@ echo $anchor($options);
 > {: .alert .alert-info }
 
 ### `img`
-[Phalcon\Html\Helper\Img](api/phalcon_html#html-helper-img) creates `<img>` HTML tags. The component accepts the `src` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\Img][html-helper-img] creates `<img>` HTML tags. The component accepts the `src` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -371,7 +371,7 @@ echo $anchor('/my-url', $options);
 ```
 
 ### `label`
-[Phalcon\Html\Helper\Label](api/phalcon_html#html-helper-label) creates `<label>` HTML tags. The component accepts optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\Label][html-helper-label] creates `<label>` HTML tags. The component accepts optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -399,7 +399,7 @@ echo $anchor($options);
 > {: .alert .alert-info }
 
 ### `textarea`
-[Phalcon\Html\Helper\TextArea](api/phalcon_html#html-helper-textarea) creates `<textarea>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
+[Phalcon\Html\Helper\TextArea][html-helper-textarea] creates `<textarea>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
 
 ```php
 <?php
@@ -427,3 +427,19 @@ echo $anchor('click<>me', $options);
 > **NOTE**: More helpers will become available in future versions of Phalcon. The goal is to completely replace the [Phalcon\Tag](tag) object with small HTML helper classes. 
 > 
 > {: .alert .alert-info }
+
+[html-attributes]: api/phalcon_html#html-attributes
+[html-breadcrumbs]: api/phalcon_html#html-breadcrumbs
+[html-helper-anchor]: api/phalcon_html#html-helper-anchor
+[html-helper-anchorraw]: api/phalcon_html#html-helper-anchorraw
+[html-helper-anchorraw]: api/phalcon_html#html-helper-anchorraw
+[html-helper-body]: api/phalcon_html#html-helper-body
+[html-helper-button]: api/phalcon_html#html-helper-button
+[html-helper-close]: api/phalcon_html#html-helper-close
+[html-helper-element]: api/phalcon_html#html-helper-element
+[html-helper-elementraw]: api/phalcon_html#html-helper-elementraw
+[html-helper-form]: api/phalcon_html#html-helper-form
+[html-helper-img]: api/phalcon_html#html-helper-img
+[html-helper-label]: api/phalcon_html#html-helper-label
+[html-helper-textarea]: api/phalcon_html#html-helper-textarea
+[html-tagfactory]: api/phalcon_html#html-tagfactory

@@ -7,16 +7,14 @@ keywords: 'pruebas, test, testing, pruebas reproducibles'
 ---
 
 # Pruebas Reproducibles
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTA**: En caso de encontrar un error se puede reportar en [GitHub](https://github.com/phalcon/cphalcon/issues). Acompañado por la descripción del error y todos los detalles posibles de tal manera que el equipo principal pueda reproducirlo. La mejor forma de hacerlo es creando una prueba que falle: así se demuestra el error. Si el error se encuentra en una aplicación de dominio público en un repositorio, es pertinente incluir el enlace. También se puede utilizar un [Gist](https://gist.github.com/) para publicar el código relevante para el equipo principal.
-{:.alert .alert-info}
+> **NOTE**: If you have found a bug, you can open an issue in [GitHub][issues]. Acompañado por la descripción del error y todos los detalles posibles de tal manera que el equipo principal pueda reproducirlo. La mejor forma de hacerlo es creando una prueba que falle: así se demuestra el error. Si el error se encuentra en una aplicación de dominio público en un repositorio, es pertinente incluir el enlace. You can also use a [Gist][gist] to post any code you want to share with us. 
+> 
+> {:.alert .alert-info}
 
 ## Creando un pequeño script
-
 La prueba para demostrar el error se puede crear en unas cuantas líneas de PHP, por ejemplo:
 
 ```php
@@ -83,8 +81,9 @@ var_dump($_COOKIE);
 
 ### Base de Datos
 
-> **NOTA**: Es importante incluir toda la información de registro del servicio de la base de datos (`db`), tales como adaptador, parámetros de conexión, etc.
-{:.alert .alert-info}
+> **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. 
+> 
+> {:.alert .alert-info}
 
 ```php
 <?php
@@ -114,8 +113,9 @@ $result = $container['db']->query('SELECT * FROM customers');
 
 ### Aplicaciones simples o multi módulo
 
-> **NOTA**: Es importante incluir la instancia de `Phalcon\Mvc\Application` que se está utilizando al igual que la forma en que se están registrando los módulos
-{:.alert .alert-info}
+> **NOTE**: Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules 
+> 
+> {:.alert .alert-info}
 
 ```php
 <?php
@@ -176,8 +176,7 @@ $response = $application->handle(
 echo $response->getContent();
 ```
 
-### Micro Aplicación
-
+### Micro Aplicaciones
 En caso de que se trate de una microaplicación, se puede utilizar la siguiente estructura:
 
 ```php
@@ -200,9 +199,9 @@ $application->handle(
 ```
 
 ### Mapeo objeto-relacional (ORM, siglas en inglés)
-
-> **NOTA**: Para la prueba se puede incluir el esquema de la base de datos o, mejor aún, se puede utilizar alguno de los esquemas disponibles en nuestra suite de pruebas ubicada en `tests/_data/assets/db/schemas/` en el repositorio.
-{:.alert .alert-info}
+> **NOTE**: You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). 
+> 
+> {:.alert .alert-info}
 
 ```php
 <?php
@@ -266,3 +265,6 @@ class User extends Model
 
 echo User::createNewUserReturnId();
 ```
+
+[issues]: https://github.com/phalcon/cphalcon/issues
+[gist]: https://gist.github.com/

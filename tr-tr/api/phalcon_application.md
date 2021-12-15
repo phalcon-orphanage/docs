@@ -12,12 +12,12 @@ title: 'Phalcon\Application'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/AbstractApplication.zep)
 
-| Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
+| Namespace  | Phalcon\Application | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends    | Injectable | | Implements | EventsAwareInterface |
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Properties
 
+## Properties
 ```php
 /**
  * @var DiInterface
@@ -46,37 +46,36 @@ protected modules;
 ```php
 public function __construct( DiInterface $container = null );
 ```
-
 Phalcon\AbstractApplication constructor
+
 
 ```php
 public function getDefaultModule(): string;
 ```
-
 Returns the default module name
+
 
 ```php
 public function getEventsManager(): ManagerInterface;
 ```
-
 Returns the internal event manager
+
 
 ```php
 public function getModule( string $name ): array | object;
 ```
-
 Gets the module definition registered in the application via module name
+
 
 ```php
 public function getModules(): array;
 ```
-
 Return the modules registered in the application
+
 
 ```php
 public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
-
 Register an array of modules present in the application
 
 ```php
@@ -94,22 +93,26 @@ $this->registerModules(
 );
 ```
 
+
 ```php
 public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
-
 Sets the module name to be used if the router doesn't return a valid module
+
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
-
 Sets the events manager
+
+
+
 
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/Exception.zep)
 
-| Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
+| Namespace  | Phalcon\Application | | Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Application class will use this class
+

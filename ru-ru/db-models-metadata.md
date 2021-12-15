@@ -7,17 +7,15 @@ keywords: 'model, caching, metadata, query fields'
 ---
 
 # Model Metadata
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
+When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
 
-When using [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model) classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
-
-> **NOTE**: During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
-{: .alert .alert-warning } 
+> **NOTE**: During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes. 
+> 
+> {: .alert .alert-warning }
 
 
 ```php
@@ -67,8 +65,7 @@ The above code will print the field names and also the fields to field types arr
 ```
 
 ## Константы
-
-[Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) exposes a number of constants that can be used to retrieve attributes from the internal collection.
+[Phalcon\Mvc\Model\MetaData][mvc-model-metadata] exposes a number of constants that can be used to retrieve attributes from the internal collection.
 
 | Название                          | Описание                                                                   |
 | --------------------------------- | -------------------------------------------------------------------------- |
@@ -87,12 +84,12 @@ The above code will print the field names and also the fields to field types arr
 | `MODELS_PRIMARY_KEY`              | Every column part of the primary key                                       |
 | `MODELS_REVERSE_COLUMN_MAP`       | Reverse column map (aliases)                                               |
 
+
 ## Методы
 
 ```php
 public function getAttributes(ModelInterface $model): array
 ```
-
 Returns table attributes names (fields)
 
 ```php
@@ -108,7 +105,6 @@ public function getAutomaticCreateAttributes(
     ModelInterface $model
 ): array
 ```
-
 Returns attributes that must be ignored from the `INSERT` SQL generation
 
 ```php
@@ -124,7 +120,6 @@ public function getAutomaticUpdateAttributes(
     ModelInterface $model
 ): array
 ```
-
 Returns attributes that must be ignored from the `UPDATE` SQL generation
 
 ```php
@@ -138,7 +133,6 @@ print_r(
 ```php
 public function getBindTypes(ModelInterface $model): array
 ```
-
 Returns attributes and their bind data types
 
 ```php
@@ -166,7 +160,6 @@ print_r(
 ```php
 public function getDefaultValues(ModelInterface $model): array
 ```
-
 Returns attributes (which have default values) and their default values
 
 ```php
@@ -180,7 +173,6 @@ Returns attributes (which have default values) and their default values
 ```php
 public function getDataTypes(ModelInterface $model): array
 ```
-
 Returns attributes and their data types
 
 ```php
@@ -194,7 +186,6 @@ print_r(
 ```php
 public function getDataTypesNumeric(ModelInterface $model): array
 ```
-
 Returns attributes which types are numerical
 
 ```php
@@ -210,7 +201,6 @@ public function getEmptyStringAttributes(
     ModelInterface $model
 ): array
 ```
-
 Returns attributes allow empty strings
 
 ```php
@@ -224,7 +214,6 @@ print_r(
 ```php
 public function getIdentityField(ModelInterface $model): string
 ```
-
 Returns the name of identity field (if one is present)
 
 ```php
@@ -240,7 +229,6 @@ public function getNonPrimaryKeyAttributes(
     ModelInterface $model
 ): array
 ```
-
 Returns an array of fields which are not part of the primary key
 
 ```php
@@ -254,7 +242,6 @@ print_r(
 ```php
 public function getNotNullAttributes(ModelInterface $model): array
 ```
-
 Returns an array of not null attributes
 
 ```php
@@ -270,7 +257,6 @@ public function getPrimaryKeyAttributes(
     ModelInterface $model
 ): array
 ```
-
 Returns an array of fields which are part of the primary key
 
 ```php
@@ -286,7 +272,6 @@ public function getReverseColumnMap(
     ModelInterface $model
 ): array
 ```
-
 Returns the reverse column map if any
 
 ```php
@@ -300,7 +285,6 @@ print_r(
 ```php
 public function getStrategy(): StrategyInterface
 ```
-
 Return the strategy to obtain the meta-data
 
 ```php
@@ -309,7 +293,6 @@ public function hasAttribute(
     string $attribute
 ): bool
 ```
-
 Check if a model has certain attribute
 
 ```php
@@ -324,7 +307,6 @@ print_r(
 ```php
 public function isEmpty(): bool
 ```
-
 Checks if the internal meta-data container is empty
 
 ```php
@@ -344,7 +326,6 @@ final public function readColumnMap(
     ModelInterface $model
 ): array | null
 ```
-
 Reads the ordered/reversed column map for certain model
 
 ```php
@@ -361,7 +342,6 @@ final public function readColumnMapIndex(
     int $index
 )
 ```
-
 Reads column-map information for certain model using a `MODEL_*` constant
 
 ```php
@@ -376,7 +356,6 @@ print_r(
 ```php
 final public function readMetaData(ModelInterface $model): array
 ```
-
 Reads the complete meta-data for certain model
 
 ```php
@@ -393,7 +372,6 @@ final public function readMetaDataIndex(
     int $index
 )
 ```
-
 Reads meta-data for certain model
 
 ```php
@@ -408,7 +386,6 @@ print_r(
 ```php
 public function reset(): void
 ```
-
 Resets internal meta-data in order to regenerate it
 
 ```php
@@ -421,7 +398,6 @@ public function setAutomaticCreateAttributes(
     array $attributes
 ): void
 ```
-
 Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
@@ -439,7 +415,6 @@ public function setAutomaticUpdateAttributes(
     array $attributes
 ): void
 ```
-
 Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
@@ -457,7 +432,6 @@ public function setEmptyStringAttributes(
     array $attributes
 ): void
 ```
-
 Set the attributes that allow empty string values
 
 ```php
@@ -472,13 +446,11 @@ $metaData->setEmptyStringAttributes(
 ```php
 public function setStrategy(StrategyInterface $strategy): void
 ```
-
 Set the meta-data extraction strategy
 
 ```php
 public function write(string $key, array $data): void
 ```
-
 Writes the metadata to adapter
 
 ```php
@@ -488,7 +460,6 @@ final public function writeMetaDataIndex(
     mixed $data
 ): void
 ```
-
 Writes meta-data for certain model using a MODEL_* constant
 
 ```php
@@ -511,29 +482,27 @@ final protected function initialize(
     mixed $schema
 )
 ```
-
 Initialize the metadata for certain table
 
 ## Adapters
-
 Retrieving the metadata is an expensive database operation and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
 
-> **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) adapter is recommended so that any changes to the database can be reflected immediately. 
-{: .alert .alert-info }
- 
-| Адаптер                                                                                         | Описание                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Phalcon\Mvc\Models\MetaData\Apcu](api/Phalcon_Mvc#mvc-model-metadata-apcu)                 | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) to store the table metadata. (production) |
-| [Phalcon\Mvc\Models\MetaData\Libmemcached](api/Phalcon_Mvc#mvc-model-metadata-libmemcached) | This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. (production)                              |
-| [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory)             | This adapter uses memory. The metadata is cached only during the request. (development)                                                    |
-| [Phalcon\Mvc\Models\MetaData\Redis](api/Phalcon_Mvc#mvc-model-metadata-redis)               | This adapter uses [Redis](https://redis.io) to store the table metadata. (production)                                                      |
-| [Phalcon\Mvc\Models\MetaData\Stream](api/Phalcon_Mvc#mvc-model-metadata-stream)             | This adapter uses plain files to store metadata. (not for production)                                                                      |
+> **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately. 
+> 
+> {: .alert .alert-info }
+
+| Адаптер                                                                         | Описание                                                                                            |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [Phalcon\Mvc\Models\MetaData\Apcu][mvc-model-metadata-apcu]                 | This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. (production) |
+| [Phalcon\Mvc\Models\MetaData\Libmemcached][mvc-model-metadata-libmemcached] | This adapter uses the [Memcached Server][memcached] to store the table metadata. (production)       |
+| [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory]             | This adapter uses memory. The metadata is cached only during the request. (development)             |
+| [Phalcon\Mvc\Models\MetaData\Redis][mvc-model-metadata-redis]               | This adapter uses [Redis][redis] to store the table metadata. (production)                          |
+| [Phalcon\Mvc\Models\MetaData\Stream][mvc-model-metadata-stream]             | This adapter uses plain files to store metadata. (not for production)                               |
 
 ### APCu
+This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
 
-This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apcu.php) to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
-
-The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
+The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
 The default prefix is `ph-mm-apcu-` and the lifetime is `172,000` (48 hours).
 
@@ -562,10 +531,9 @@ $container->set(
 ```
 
 ### Libmemcached
+This adapter uses the [Memcached Server][memcached] to store the table metadata. The extension must be present in your system for this metadata cache to work.  This adapter is suitable for production applications.
 
-This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. The extension must be present in your system for this metadata cache to work. This adapter is suitable for production applications.
-
-The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
+The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
 The default prefix is `ph-mm-memc-` and the lifetime is `172,000` (48 hours). The `persistenId` is preset to `php-mm-mcid-`.
 
@@ -601,7 +569,6 @@ $container->set(
 ```
 
 ### Memory
-
 This adapter uses the server's memory to store the metadata cache. The cache is available only during the request, and then the cache is lost. This cache is more suitable for development, since it accommodates the frequent changes in the database during development.
 
 ```php
@@ -620,10 +587,9 @@ $container->set(
 ```
 
 ### Redis
+This adapter uses the [Redis][redis] to store the table metadata. The extension must be present in your system for this metadata cache to work.  This adapter is suitable for production applications.
 
-This adapter uses the [Redis](https://redis.io) to store the table metadata. The extension must be present in your system for this metadata cache to work. This adapter is suitable for production applications.
-
-The adapter receives a [Phalcon\Cache\AdapterFactory](cache#adapter-factory) class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
+The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
 The default prefix is `ph-mm-reds-` and the lifetime is `172,000` (48 hours).
 
@@ -655,10 +621,10 @@ $container->set(
 ```
 
 ### Stream
-
 This adapter uses the file system to store the table metadata. This adapter is suitable for production applications but not recommended since it introduces an increase in I/O.
 
 The adapter can accept a `metaDadaDir` option with a directory on where the metadata will be stored. The default directory is the current directory.
+
 
 ```php
 <?php
@@ -686,7 +652,6 @@ orm.exception_on_failed_metadata_save = true
 ```
 
 ## Strategies
-
 The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
 
 ```php
@@ -718,12 +683,10 @@ $container->set(
 ```
 
 ### Introspection
-
 This strategy does not require any customization and is implicitly used by all the metadata adapters.
 
 ### Аннотации
-
-This strategy makes use of <annotations> to describe the columns in a model.
+This strategy makes use of [annotations](annotations) to describe the columns in a model.
 
 ```php
 <?php
@@ -810,7 +773,6 @@ $container->set(
 ```
 
 ### Manual
-
 Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically. However, you have the option to define the metadata manually. This strategy overrides any strategy that has been set on the metadata manager. Columns added, modified or removed from the mapped table must be manually updated in the model for everything to work properly.
 
 To set the metadata, we use the `metaData` method in a model:
@@ -928,8 +890,7 @@ class Invoices extends Model
 ```
 
 ### Custom
-
-Phalcon offers the [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface](api/Phalcon_Mvc#mvc-model-metadata-strategyinterface) interface, allowing you to create your own Strategy class.
+Phalcon offers the [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface][mvc-model-metadata-strategyinterface] interface, allowing you to create your own Strategy class.
 
 ```php
 <?php
@@ -953,3 +914,16 @@ class MyStrategy StrategyInterface
 }
 
 ```
+
+[apcu]: https://www.php.net/manual/en/book.apcu.php
+[memcached]: https://www.memcached.org
+[redis]: https://redis.io
+[mvc-model]: api/Phalcon_Mvc#mvc-model
+[mvc-model-metadata]: api/Phalcon_Mvc#mvc-model-metadata
+[mvc-model-metadata-apcu]: api/Phalcon_Mvc#mvc-model-metadata-apcu
+[mvc-model-metadata-libmemcached]: api/Phalcon_Mvc#mvc-model-metadata-libmemcached
+[mvc-model-metadata-memory]: api/Phalcon_Mvc#mvc-model-metadata-memory
+[mvc-model-metadata-redis]: api/Phalcon_Mvc#mvc-model-metadata-redis
+[mvc-model-metadata-strategyinterface]: api/Phalcon_Mvc#mvc-model-metadata-strategyinterface
+[mvc-model-metadata-stream]: api/Phalcon_Mvc#mvc-model-metadata-stream
+[cache-adapter-factory]: cache#adapter-factory

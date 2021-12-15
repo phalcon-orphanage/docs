@@ -7,13 +7,12 @@ keywords: 'database, migrations, schema, tables, columns'
 ---
 
 # Database Migrations
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
-{: .alert .alert-info } 
+> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
+> 
+> {: .alert .alert-info }
 
 ## Package git repository
 
@@ -26,8 +25,9 @@ https://github.com/phalcon/migrations
 
 ## Installing via Composer
 
-    composer require --dev phalcon/migrations
-    
+```
+composer require --dev phalcon/migrations
+```
 
 ## Quick start
 
@@ -71,50 +71,55 @@ return new Config([
 
 **Basic generation**
 
-    vendor/bin/phalcon-migrations generate
-    
+```
+vendor/bin/phalcon-migrations generate
+```
 
 **Generate specific table and export data from it
 
-    vendor/bin/phalcon-migrations generate \
-        --config=migrations.php \
-        --table=users \
-        --exportDataFromTables=users \
-        --data=oncreate
-    
+```
+vendor/bin/phalcon-migrations generate \
+    --config=migrations.php \
+    --table=users \
+    --exportDataFromTables=users \
+    --data=oncreate
+```
 
 ### Run migrations
 
-    vendor/bin/phalcon-migrations run
-    
+```
+vendor/bin/phalcon-migrations run
+```
 
 ### List existing migrations
 
-    vendor/bin/phalcon-migrations list
-    
+```
+vendor/bin/phalcon-migrations list
+```
 
 ## Usage example
 
 **Run migrations from specific migrations directory**
 
-    use Phalcon\Migrations\Migrations;
-    
-    $migration = new Migrations();
-    $migration::run([
-        'migrationsDir' => [
-            __DIR__ . '/migrations',
+```
+use Phalcon\Migrations\Migrations;
+
+$migration = new Migrations();
+$migration::run([
+    'migrationsDir' => [
+        __DIR__ . '/migrations',
+    ],
+    'config' => [
+        'database' => [
+            'adapter' => 'Mysql',
+            'host' => 'phalcon-db-mysql',
+            'username' => 'root',
+            'password' => 'root',
+            'dbname' => 'vokuro',
         ],
-        'config' => [
-            'database' => [
-                'adapter' => 'Mysql',
-                'host' => 'phalcon-db-mysql',
-                'username' => 'root',
-                'password' => 'root',
-                'dbname' => 'vokuro',
-            ],
-        ]
-    ]);
-    
+    ]
+]);
+```
 
 ## Migration methods
 
@@ -132,6 +137,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 | afterCreateTable | Make something immediately after table was created |
 | up               | Table is created and ready to work with            |
 | afterUp          | Extra method to work for some specific cases       |
+
 
 **Running to down**
 
@@ -178,9 +184,9 @@ The tables below show the Migration Class methods. They are stored by order of e
 Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment. Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
 
 Current command
-
-    vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
-    
+```
+vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
+```
 
 Will produce folder name with such names
 
@@ -190,5 +196,6 @@ Will produce folder name with such names
 
 Migrations will be executed from oldest to newest.
 
-> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
-{: .alert .alert-info }
+> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run. 
+> 
+> {: .alert .alert-info }

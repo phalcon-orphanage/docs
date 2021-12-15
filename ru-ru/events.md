@@ -7,14 +7,11 @@ keywords: 'events, events manager, hooks'
 ---
 
 # Events Manager
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
-
-The purpose of this component is to intercept the execution of components in the framework by creating *hooks*. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager](api/phalcon_events#events-manager) that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event](api/phalcon_events#events-event) objects, which contain information about each hook/event.
+The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
 
 ```php
 <?php
@@ -48,16 +45,14 @@ $connection->query(
 ```
 
 ## Naming Convention
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db][db] occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/phalcon_db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
-
-When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db](api/phalcon_db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 ## Manager
+The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as _a handler_. Regardless of the name, the functionality and purpose are the same.
 
-The [Phalcon\Events\Manager](api/phalcon_events#events-manager) is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as *a handler*. Regardless of the name, the functionality and purpose are the same.
-
-The component wraps a queue of objects using [SplPriorityQueue](https://www.php.net/manual/en/class.splpriorityqueue.php) internally. It registers those objects with a priority (default `100`) and then when the time comes, executes them.
+The component wraps a queue of objects using [SplPriorityQueue][splpriorityqueue] internally. It registers those objects with a priority (default `100`) and then when the time comes, executes them.
 
 The methods exposed by the manager are:
 
@@ -68,43 +63,36 @@ public function attach(
     int $priority = self::DEFAULT_PRIORITY
 )
 ```
-
 Attaches a listener to the events manager. The `handler` is an object or a `callable`.
 
 ```php
 public function arePrioritiesEnabled(): bool
 ```
-
 Returns if priorities are enabled
 
 ```php
 public function collectResponses(bool $collect)
 ```
-
 Tells the event manager if it needs to collect all the responses returned by every registered listener in a single `fire` call
 
 ```php
 public function detach(string $eventType, mixed $handler)
 ```
-
 Detach the listener from the events manager
 
 ```php
 public function detachAll(string $type = null)
 ```
-
 Removes all events from the EventsManager
 
 ```php
 public function enablePriorities(bool $enablePriorities)
 ```
-
 Set if priorities are enabled in the events manager (default `false`).
 
 ```php
 public function fire(string $eventType, mixed $source, mixed $data = null, bool $cancelable = true)
 ```
-
 Fires an event in the events manager causing the active listeners to be notified about it
 
 ```php
@@ -115,32 +103,27 @@ Internal handler to call a queue of events
 ```php
 public function getListeners(string $type): array
 ```
-
 Returns all the attached listeners of a certain type
 
 ```php
 public function getResponses(): array
 ```
-
 Returns all the responses returned by every handler executed by the last `fire` executed
 
 ```php
 public function hasListeners(string $type): bool
 ```
-
 Check whether certain type of event has listeners
 
 ```php
 public function isCollecting(): bool
 ```
-
-Check if the events manager is collecting all all the responses returned by every registered listener in a single `fire`
+Check if the events manager is collecting all all the responses returned  by every registered listener in a single `fire`
 
 ## Usage
+If you are using the [Phalcon\Di\FactoryDefault][di-factorydefaul] DI container, the [Phalcon\Events\Manager][events-manager] is already registered for you with the name `eventsManager`. This is a _global_ events manager. However you are not restricted to use only that one. You can always create a separate manager to handle events for any component that you require.
 
-If you are using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) DI container, the [Phalcon\Events\Manager](api/phalcon_events#events-manager) is already registered for you with the name `eventsManager`. This is a *global* events manager. However you are not restricted to use only that one. You can always create a separate manager to handle events for any component that you require.
-
-The following example shows how you can create a query logging mechanism using the *global* events manager:
+The following example shows how you can create a query logging mechanism using the _global_ events manager:
 
 ```php
 <?php
@@ -206,13 +189,13 @@ $connection->query(
 );
 ```
 
-In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event](api/phalcon_events#events-event) as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
+In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
 
-> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
-{: .alert .alert-warning }
-  
+> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts 
+> 
+> {: .alert .alert-warning }
+
 ## Handlers
-
 The events manager wires a handler to an event. A handler is a piece of code that will do something when the event fires. As seen in the above example, you can use an anonymous function as your handler:
 
 ```php
@@ -245,7 +228,7 @@ $connection->query(
 );
 ```
 
-You can also create a *listener* class, which offers more flexibility. In a listener, you can listen to multiple events and even extend \[Phalcon\Di\Injectable\]\[di-injectable\] which will give you fill access to the services of the Di container. The example above can be enhanced by implementing the following listener:
+You can also create a _listener_ class, which offers more flexibility. In a listener, you can listen to multiple events and even extend \[Phalcon\Di\Injectable\]\[di-injectable\] which will give you fill access to the services of the Di container. The example above can be enhanced by implementing the following listener:
 
 ```php
 <?php
@@ -376,11 +359,9 @@ The `beforeException` function accepts the `$event` as the first parameter, the 
 The example demonstrates clearly the power of the events manager, and how you can alter the flow of the application using listeners.
 
 ## Events: Trigger
-
-You can create components in your application that trigger events to an events manager. Listeners attached to those events will be invoked when the events are fired. In order to create a component that triggers events, we need to implement the [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface).
+You can create components in your application that trigger events to an events manager. Listeners attached to those events will be invoked when the events are fired. In order to create a component that triggers events, we need to implement the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface].
 
 ### Custom Component
-
 Let's consider the following example:
 
 ```php
@@ -421,12 +402,11 @@ class NotificationsAware extends Injectable implements EventsAwareInterface
 }
 ```
 
-The above component implements the [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface) and as a result it uses the `getEventsManager` and `setEventsManager`. The last method is what does the work. In this example we want to send some notifications to users and want to fire an event before and after the notification is sent.
+The above component implements the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface] and as a result it uses the `getEventsManager` and `setEventsManager`. The last method is what does the work. In this example we want to send some notifications to users and want to fire an event before and after the notification is sent.
 
 We chose to name the component `notification` and the events are called `beforeSend` and `afterSend`. In the `process` method, you can add any code you need in between the calls to fire the relevant events. Additionally, you can inject more data in this component that would help with your implementation and processing of the notifications.
 
 ### Custom Listener
-
 Now we need to create a listener for this component:
 
 ```php
@@ -499,7 +479,6 @@ When `process` is executed, the two methods in the listener will be executed. Yo
 ```
 
 ### Custom Data
-
 Additional data may also be passed when triggering an event using the third parameter of `fire()`:
 
 ```php
@@ -541,7 +520,6 @@ $eventsManager->attach(
 ```
 
 ## Propagation
-
 An events manager can have multiple listeners attached to it. Once an event fires, all listeners that can be notified for the particular event will be notified. This is the default behavior but can be altered if need be by stopping the propagation early:
 
 ```php
@@ -562,7 +540,6 @@ $eventsManager->attach(
 In the above simple example, we stop all events if today is earlier than `2019-01-01`.
 
 ## Cancellation
-
 By default all events are cancelable. However you might want to set a particular event to not be cancelable, allowing the particular event to fire on all available listeners that implement it.
 
 ```php
@@ -590,11 +567,11 @@ $eventsManager->fire('notifications:afterSend', $this, $data, false);
 
 The `afterSend` event will no longer be cancelable and will execute on all listeners that implement it.
 
-> **NOTE**: You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object.
-{: .alert .alert-warning } 
+> **NOTE**: You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object. 
+> 
+> {: .alert .alert-warning }
 
 ## Priorities
-
 When attaching listeners you can set a specific priority. Setting up priorities when attaching listeners to your events manager defines the order in which they are called:
 
 ```php
@@ -623,15 +600,15 @@ $eventsManager->attach(
 ); 
 ```
 
-> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default
-{: .alert .alert-info }
-
+> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default 
 > 
-> **NOTE**: A high priority number means that the listener will be processed before those with lower priorities
-{: .alert .alert-warning }
+> {: .alert .alert-info }
+
+> **NOTE**: A high priority number means that the listener will be processed before those with lower priorities 
+> 
+> {: .alert .alert-warning }
 
 ## Responses
-
 The events manager can also collect any responses returned by each event and return them back using the `getResponses()` method. The method returns an array with the responses:
 
 ```php
@@ -671,12 +648,12 @@ The above example produces:
 ]
 ```
 
-> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
-{: .alert .alert-info }
+> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them. 
+> 
+> {: .alert .alert-info }
 
 ## Exceptions
-
-Any exceptions thrown in the Paginator component will be of type [Phalcon\Events\Exception](api/phalcon_events#events-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Paginator component will be of type [Phalcon\Events\Exception][events-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -695,7 +672,6 @@ try {
 ```
 
 ## Контроллеры
-
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
 For instance if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
@@ -738,11 +714,9 @@ class BaseController extends Controller
     }
 }
 ```
-
 Execute the code before the router so we can determine if the user is logged in or not. If not, forward them to the login page.
 
 ## Модели
-
 Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
 In the following example, we are use the `beforeCreate` event, to automatically calculate an invoice number:
@@ -812,8 +786,7 @@ class Invoices extends Model
 ```
 
 ## Custom
-
-The [Phalcon\Events\ManagerInterface](api/phalcon_events#events-managerinterface) interface must be implemented to create your own events manager replacing the one provided by Phalcon.
+The [Phalcon\Events\ManagerInterface][events-managerinterface] interface must be implemented to create your own events manager replacing the one provided by Phalcon.
 
 ```php
 <?php
@@ -886,7 +859,6 @@ class EventsManager implements ManagerInterface
 ```
 
 ## List of Events
-
 The events available in Phalcon are:
 
 | Component                   | Событие                              | Parameters                                              |
@@ -923,7 +895,7 @@ The events available in Phalcon are:
 | [Dispatcher](dispatcher)    | `dispatch:beforeDispatchLoop`        | Dispatcher                                              |
 | [Dispatcher](dispatcher)    | `dispatch:beforeException`           | Dispatcher, Exception                                   |
 | [Dispatcher](dispatcher)    | `dispatch:beforeExecuteRoute`        | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
+| [Dispatcher](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [Dispatcher](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
 | [Loader](loader)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Loader](loader)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
@@ -978,3 +950,14 @@ The events available in Phalcon are:
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |
 | [Volt](volt)                | `resolveExpression`                  | Volt, [expression]                                      |
+
+
+[db]: api/phalcon_db
+[di-factorydefaul]: api/phalcon_di#di-factorydefault
+[events-event]: api/phalcon_events#events-event
+[events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
+[events-exception]: api/phalcon_events#events-exception
+[events-manager]: api/phalcon_events#events-manager
+[events-managerinterface]: api/phalcon_events#events-managerinterface
+[splpriorityqueue]: https://www.php.net/manual/en/class.splpriorityqueue.php
+

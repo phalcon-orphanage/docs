@@ -5,67 +5,69 @@ version: '4.0'
 ---
 
 # Relaciones de modelos
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-
 La [normalización de base de datos](db-normalization) es un proceso donde los datos se dividen en diferentes tablas y se crean enlaces entre esas tablas, para incrementar la flexibilidad, reducir la redundancia de datos y mejorar la integridad de los datos. Las relaciones se definen en el método `initialize` de cada modelo.
 
-Están disponibles los siguientes tipos de relaciones: - uno a uno
+The following types of relationships are available:
+- one to one
 
-    hasOne(
-        string|array $fields, 
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array $options = null
-    )
-    
-    hasOneThrough(
-        string|array $fields, 
-        string $intermediateModel, 
-        string|array $intermediateFields, 
-        string|array $intermediateReferencedFields,
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array $options = null
-    )
-    
+```
+hasOne(
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
+)
+
+hasOneThrough(
+    string|array $fields, 
+    string $intermediateModel, 
+    string|array $intermediateFields, 
+    string|array $intermediateReferencedFields,
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
+)
+```
 
 - uno a muchos
 
-    hasMany(
-        string|array $fields, 
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array options = null
-    )
-    
+```
+hasMany(
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array options = null
+)
+```
 
 - muchos a uno
 
-    belongsTo(
-        string|array $fields, 
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array options = null
-    )
-    
+```
+belongsTo(
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array options = null
+)
+```
 
 - muchos a muchos
 
-    hasManyToMany(
-        string|array $fields, 
-        string $intermediateModel, 
-        string|array $intermediateFields, 
-        string|array $intermediateReferencedFields,
-        string $referenceModel, 
-        string|array $referencedFields, 
-        array $options = null
-    )
-    
+```
+hasManyToMany(
+    string|array $fields, 
+    string $intermediateModel, 
+    string|array $intermediateFields, 
+    string|array $intermediateReferencedFields,
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
+)
+```
 
 Las relaciones pueden ser unidireccionales o bidireccionales, y cada una puede ser simple (un modelo uno a uno) o más compleja (una combinación de modelos). El gestor de modelos gestiona restricciones de clave ajena para estas relaciones, la definición de estas ayuda a la integridad referencial así como al acceso fácil y rápido de registros relacionados al modelo. A través de la implementación de relaciones, es fácil acceder a datos en modelos relacionados desde el modelo fuente de una forma fácil y uniforme.
 
@@ -95,19 +97,16 @@ class Invoices extends Model
 ```
 
 ## Unidireccional
-
 Las relaciones unidireccionales son aquellas que son generadas en relación de uno con otro, pero no viceversa.
 
 ## Bidireccional
-
 Las relaciones bidireccionales construyen relaciones en ambos modelos y cada modelo define la relación inversa del otro.
 
 ## Configuración
+En Phalcon, las relaciones se deben definir en el método `initialize()` de un modelo. Los métodos `belongsTo()`, `hasMany()`, `hasManyToMany()`, `hasOne()` y  `hasOneThrough()`, definen la relación entre uno o más campos del modelo actual con los campos de otro modelo. Cada uno de estos métodos requiere 3 parámetros:
 
-En Phalcon, las relaciones se deben definir en el método `initialize()` de un modelo. Los métodos `belongsTo()`, `hasMany()`, `hasManyToMany()`, `hasOne()` y `hasOneThrough()`, definen la relación entre uno o más campos del modelo actual con los campos de otro modelo. Cada uno de estos métodos requiere 3 parámetros:
-
-- campos locales 
-- modelo referenciado 
+- campos locales
+- modelo referenciado
 - campos referenciados
 
 | Método          | Descripción             |
@@ -145,10 +144,10 @@ create table co_products
 );
 ```
 
-- El modelo `Invoices` tiene muchos `InvoicesProducts`.
-- El modelo `Products` tiene muchos `InvoicesProducts`.
-- El modelo `InvoicesProducts` pertenece a ambos modelos `Invoices` y `Products` como una relación muchos-a-uno.
-- El modelo `Invoices` tiene una relación muchos-a-muchos con `Products` a través de `InvoicesProducts`.
+* El modelo `Invoices` tiene muchos `InvoicesProducts`.
+* El modelo `Products` tiene muchos `InvoicesProducts`.
+* El modelo `InvoicesProducts` pertenece a ambos modelos `Invoices` y `Products` como una relación muchos-a-uno.
+* El modelo `Invoices` tiene una relación muchos-a-muchos con `Products` a través de `InvoicesProducts`.
 
 ![](/assets/images/content/models-relationships-erd-1.png)
 
@@ -314,8 +313,7 @@ class Invoices extends Model
 ```
 
 ## Parámetros
-
-Dependiendo de las necesidades de nuestra aplicación podríamos querer almacenar datos en una tabla, que describa distintos comportamientos. Por ejemplo, podríamos querer tener únicamente una tabla llamada `co_customers` que tiene un campo `cst_status_flag` que describe el *estado* del cliente (ej: activo, inactivo, etc.).
+Dependiendo de las necesidades de nuestra aplicación podríamos querer almacenar datos en una tabla, que describa distintos comportamientos. For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the _status_ of the customer (e.g. active, inactive, etc.).
 
 Usando las relaciones, puede obtener únicamente aquellos `Customers` relacionados con nuestras `Invoices` que tienen un `cst_status_flag` determinado. Definir esa restricción en la relación le permite dejar que el modelo haga todo el trabajo.
 
@@ -380,8 +378,7 @@ class Invoices extends Model
 ```
 
 ## Múltiples Campos
-
-Hay veces, donde las relaciones necesitan ser definidas sobre una combinación de campos y no solo uno. Considere el siguiente ejemplo:
+Hay veces, donde las relaciones necesitan ser definidas sobre una combinación de campos y no solo uno. Considere el ejemplo siguiente:
 
 ```php
 <?php
@@ -455,11 +452,11 @@ class Products extends Model
 }
 ```
 
-> **NOTA** Los mapeos de campo en la relación son uno a uno, es decir, el primer campo del vector del modelo fuente corresponde con el primer campo del vector destino, etc. El número de campos debe ser idéntico en ambos modelos fuente y destino.
-{: .alert .alert-info }
+> **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. El número de campos debe ser idéntico en ambos modelos fuente y destino. 
+> 
+> {: .alert .alert-info }
 
 ## Acceso
-
 Hay varias formas de acceder a las relaciones de un modelo.
 
 - Métodos mágicos `__get`, `__set`
@@ -467,7 +464,6 @@ Hay varias formas de acceder a las relaciones de un modelo.
 - `getRelated`
 
 ### `__get()`
-
 Podemos usar el método mágico para acceder a la relación. Asignar un `alias` a la relación simplifica el acceso a los datos relacionados. El nombre de la propiedad es el mismo que el definido en el `alias`.
 
 ```php
@@ -513,8 +509,7 @@ foreach ($invoice->products as $product) {
 Usar el método mágico `__get` le permite acceder a la relación directamente pero no ofrece funcionalidad adicional como filtrado u ordenación sobre la relación.
 
 ### `get*()`
-
-Puede acceder a la misma relación usando un método *getter*, que empieza con *get* y usa el nombre de la relación.
+You can access the same relationship by using a getter method, starting with _get_ and using the name of the relationship.
 
 ```php
 <?php
@@ -555,7 +550,6 @@ foreach ($invoice->getProducts() as $product) {
     echo $invoice->prd_name;
 }
 ```
-
 Este *getter* mágico también nos permite ejecutar ciertas operaciones cuando se accede a la relación como ordenar la relación:
 
 ```php
@@ -579,8 +573,8 @@ foreach ($products as $product) {
     echo $invoice->prd_name;
 }
 ```
-
 También puede añadir condicionales adicionales en la relación:
+
 
 ```php
 <?php
@@ -679,7 +673,6 @@ echo $invoice->countProducts();
 ```
 
 ### `getRelated()`
-
 Puede acceder a la misma relación usando `getRelated()` y definir qué relación quiere obtener.
 
 ```php
@@ -717,7 +710,6 @@ foreach ($invoice->getRelated('products') as $product) {
     echo $invoice->prd_name;
 }
 ```
-
 El segundo parámetro de `getRelated()` es un vector que ofrece opciones adicionales a configurar, como filtrar u ordenar.
 
 ```php
@@ -748,7 +740,6 @@ foreach ($products as $product) {
 ```
 
 ## Alias
-
 Acceder a una relación se puede conseguir usando el nombre de la tabla remota. Debido a la convención de nombres, esto podría no ser tan fácil y podría prestar a confusión. Como se ha visto anteriormente, puede definir un `alias` a la relación.
 
 ```php
@@ -858,36 +849,35 @@ class Parts extends Model
     }
 }
 ```
-
 En el ejemplo anterior, tenemos `Part` que tiene una relación con uno o más objetos `Part`. Cada `Part` puede consistir de otras partes que lo componen. Como resultado terminamos con una relación *self join*. Para un `Part` de teléfono tenemos los siguientes hijos:
 
-    <?php
-    
-    $phone = Parts::findFirst(....);
-    
-    echo $phone->getChildren();
-    
-    // --- Cover
-    // --- Battery
-    // --- Charger
-    
+```
+<?php
 
+$phone = Parts::findFirst(....);
+
+echo $phone->getChildren();
+
+// --- Cover
+// --- Battery
+// --- Charger
+```
 y cada una de esas partes tiene al teléfono como padre:
+```
+<?php
+$charger = Parts::findFirst(....);
 
-    <?php
-    $charger = Parts::findFirst(....);
-    
-    echo $phone->getParent();
-    
-    // Phone
-    
+echo $phone->getParent();
+
+// Phone
+```
 
 ## Caché
-
 Acceder a datos relacionados puede suponer un incremento del número de consultas en su base de datos. Puede reducir esta carga tanto como sea posible, usando la opción `reusable` en su relación. Estableciendo esta opción a `true` indicará a Phalcon que almacene en caché los resultados de la relación la primera vez que se accede, para que las siguientes llamadas a la misma relación puedan usar el conjunto de resultados cacheado y no solicite los datos de nuevo a la base de datos. Este caché está activo durante la misma petición.
 
-> **NOTA**: Se recomienda usar la opción `reusable` tan a menudo como sea posible en sus relaciones
-{: .alert .alert-info }
+> **NOTE**: You are encouraged to use the `reusable` option as often as possible in your relationships 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -915,7 +905,6 @@ class Invoices extends Model
 ```
 
 ## Autocompletado
-
 La mayoría de IDEs y editores con capacidades de autocompletado puede que no detecten los tipos correctos cuando se usan *getters* mágicos (tanto métodos como propiedades). Para abordar este problema, podemos usar la clase docblock que especifica qué acciones mágicas están disponibles, ayudando al IDE a producir un mejor autocompletado:
 
 ```php
@@ -960,7 +949,6 @@ class Invoices extends Model
 ```
 
 ## Condicionales
-
 También puede crear relaciones basadas en condicionales. Cuando consulta basándose en la relación, la condición se añadirá automáticamente a la consulta:
 
 ```php
@@ -1077,7 +1065,6 @@ $unpaidInvoices = $company->getRelated(
 ```
 
 ## Claves Ajenas Virtuales
-
 Por defecto, las relaciones no tienen ninguna restricción adjunta a ellas, para comprobar datos relacionados cuando se añaden, actualizan o borran registros. Sin embargo, puede adjuntar validaciones a sus relaciones, para asegurar la integridad de los datos. Esto se puede hacer con el último parámetro del método relacionado con la relación.
 
 La tabla de cruce `InvoicesProducts` se puede cambiar ligeramente para demostrar esta funcionalidad:
@@ -1204,11 +1191,10 @@ class InvoicesProducts extends Model
 ```
 
 ### Cascada/Restringir
+Las relaciones que actúan como claves ajenas virtuales por defecto restringen la creación/actualización/borrado de registros para mantener la integridad de los datos. Puede definir estas restricciones que imitan la funcionalidad del RDBMS para `CASCADE` y `RESTRICT` usando la opción `action` en `foreignKey`. The [Phalcon\Mvc\Model\Relation][mvc-model-relation] underlying object offers two constants:
 
-Las relaciones que actúan como claves ajenas virtuales por defecto restringen la creación/actualización/borrado de registros para mantener la integridad de los datos. Puede definir estas restricciones que imitan la funcionalidad del RDBMS para `CASCADE` y `RESTRICT` usando la opción `action` en `foreignKey`. El objeto subyacente de [Phalcon\Mvc\Model\Relation](api/phalcon_mvc#mvc-model-relation) ofrece dos constantes:
-
-- `Relation::ACTION_CASCADE` 
-- `Relation::ACTION_RESTRICT` 
+- `Relation::ACTION_CASCADE`
+- `Relation::ACTION_RESTRICT`
 
 ```php
 <?php
@@ -1244,11 +1230,9 @@ class Products extends Model
 El código anterior le permite eliminar todos los registros relacionados si el registro primario se elimina (eliminación en cascada).
 
 ## Operaciones
-
 Puede ejecutar operaciones usando relaciones, si un conjunto de resultados devuelve objetos completos.
 
 ### Guardar
-
 Se pueden usar las propiedades mágicas para almacenar un registro y sus propiedades relacionadas:
 
 ```php
@@ -1309,21 +1293,21 @@ $customer->save();
 
 El código anterior obtiene un cliente de nuestra base de datos. Se crean dos facturas y se asignan a la relación `invoices` del cliente como un vector. Se guarda entonces el registro de cliente, lo que también guarda las dos facturas en la base de datos y las enlaza al cliente.
 
-Aunque la sintaxis anterior es muy útil, no siempre es ideal para usar, especialmente cuando actualiza registros relacionados. Phalcon no sabe qué registros necesitan ser añadidos o eliminados usando un **update**, y como resultado ejecutará un *replace*. En situaciones de actualización, es mejor controlar los datos por si mismo vs. dejar que lo haga el framework.
+Aunque la sintaxis anterior es muy útil, no siempre es ideal para usar, especialmente cuando actualiza registros relacionados. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
 
 Guardar los datos con la sintaxis anterior implícitamente creará una transacción y la confirmará si todo va bien. Los mensajes generados durante el proceso de guardado de toda la transacción se devolverán al usuario para más información.
 
-> **NOTA**: Añadir entidades relacionadas por sobrecarga de los siguientes métodos/eventos **no** es possible:
+> **NOTE**: Adding related entities by overloading the following methods/events is **not** possible:
 > 
 > - `Phalcon\Mvc\Model::beforeSave()`
 > - `Phalcon\Mvc\Model::beforeCreate()`
-> - `Phalcon\Mvc\Model::beforeUpdate()`
-{: .alert .alert-warning }
+> - `Phalcon\Mvc\Model::beforeUpdate()` 
+>     
+>     {: .alert .alert-warning }
 
 Necesita sobrecargar `Phalcon\Mvc\Model::save()` para que esto funcione desde dentro de un modelo.
 
 ### Actualizar
-
 En lugar de hacer esto:
 
 ```php
@@ -1379,7 +1363,6 @@ $customer->getInvoices()->update(
 ```
 
 ### Eliminar
-
 En lugar de hacer esto:
 
 ```php
@@ -1419,3 +1402,5 @@ $customer->getInvoices()->delete(
     }
 );
 ```
+
+[mvc-model-relation]: api/phalcon_mvc#mvc-model-relation

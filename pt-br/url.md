@@ -8,14 +8,11 @@ keywords: 'url, url handling, url generation, static url, dynamic url'
 ---
 
 # Url Component
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
-
-[Phalcon\Url](api/phalcon_url#url) is the component responsible of generate URLs in a Phalcon application. It can also be used to construct URLs based on routes.
+[Phalcon\Url][url] is the component responsible of generate URLs in a Phalcon application. It can also be used to construct URLs based on routes.
 
 ```php
 <?php
@@ -37,12 +34,10 @@ echo $url->get(
 ```
 
 ## Generation
-
-The [Phalcon\Url](api/phalcon_url#url) component can generate URLs that are static as well as dynamic ones. Dynamic URLs can be generated also based on parameters or routes of your application, as defined using the \[Router\]\[routing\] component.
+The [Phalcon\Url][url] component can generate URLs that are static as well as dynamic ones. Dynamic URLs can be generated also based on parameters or routes of your application, as defined using the \[Router\]\[routing\] component.
 
 ## Static URLs
-
-Static URLs are the ones that refer to static resources. Those can be images, CSS/JS assets, videos etc. The [Phalcon\Url](api/phalcon_url#url) component offers an easy way to generate those URLs.
+Static URLs are the ones that refer to static resources. Those can be images, CSS/JS assets, videos etc. The [Phalcon\Url][url] component offers an easy way to generate those URLs.
 
 ```php
 <?php
@@ -86,8 +81,9 @@ echo $url->getStatic('img/logo.png'); // https://assets.phalcon.io/img/logo.png
 
 The above code will prefix all the static assets with `https://assets.phalcon.io`, ensuring that assets in your production environment use the CDN URL, while local development loads them directly from your machine.
 
-> **NOTE**: The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
-{: .alert .alert-info }
+> **NOTE**: The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter 
+> 
+> {: .alert .alert-info }
 
 Finally, depending on the routes you have specified, you can retrieve a static resource which is defined in a named route by passing an array to `getStatic()` and using `for` keyword as a key and the name of the route as a value.
 
@@ -106,8 +102,7 @@ echo $url->getStatic(
 ```
 
 ## Dynamic URLs
-
-Dynamic URLs are URLs that are generated dynamically i.e. based on the routes or URLs of your application. The [Phalcon\Url](api/phalcon_url#url) component offers an easy way to generate those URLs.
+Dynamic URLs are URLs that are generated dynamically i.e. based on the routes or URLs of your application. The [Phalcon\Url][url] component offers an easy way to generate those URLs.
 
 Depending of which directory of your document root your application is installed, it may have a base URI or not. For example, if your document root is `/var/www/htdocs` and your application is installed in `/var/www/htdocs/app` then your baseUri will be `/app/`. If you are using a VirtualHost or your application is installed on the document root, then your base URI is `/`.
 
@@ -151,7 +146,7 @@ echo $url->getBaseUri(); // /portal/
 echo $url->get('invoices/edit/1'); // /portal/invoices/edit/1
 ```
 
-The above code will prefix all the URLs with `/portal/`, allowing you to *group* URLs easier. For instance if you have the `InvoicesController` and you want the URLs to be prefixed with `/portal/`, you can use `setBaseUri()` in the `initialize()` method:
+The above code will prefix all the URLs with `/portal/`, allowing you to _group_ URLs easier. For instance if you have the `InvoicesController` and you want the URLs to be prefixed with `/portal/`, you can use `setBaseUri()` in the `initialize()` method:
 
 ```php
 <?php
@@ -173,16 +168,17 @@ class InvoicesController extends Controller
 
 And now we can generate any URL using `get()` in subsequent actions, that will be prefixed with `/portal/`
 
-> **NOTE**: The trailing slash in the `setBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
-{: .alert .alert-info }
+> **NOTE**: The trailing slash in the `setBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter 
+> 
+> {: .alert .alert-info }
 
 
 ### Rotas
-
 If you are using the [Router](routing) with its default behavior, your application is able to match routes based on the following pattern:
 
-> /:controller/:action/:params
-{: .alert .alert-info }
+> /:controller/:action/:params 
+> 
+> {: .alert .alert-info }
 
 
 Therefore, it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get()`:
@@ -232,10 +228,9 @@ echo $url->get(
 The above will produce `/portal/invoices/edit/1`.
 
 ### mod_rewrite
+Developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Url][url] offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed or you cannot install it yourself.
 
-Developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Url](api/phalcon_url#url) offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed or you cannot install it yourself.
-
-The following example shows you how to replace `mod_rewrite` with [Phalcon\Url](api/phalcon_url#url):
+The following example shows you how to replace `mod_rewrite` with [Phalcon\Url][url]:
 
 ```php
 <?php
@@ -279,11 +274,11 @@ $url->setBaseUri('/app/public/index.php'); // $_SERVER['REQUEST_URI']
 echo $url->get('products/save'); // /app/public/index.php/portal/invoices/save
 ```
 
-> **NOTE**: If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application.
-{: .alert .alert-info }
+> **NOTE**: If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application. 
+> 
+> {: .alert .alert-info }
 
 ### View/Volt
-
 The function `url` is available in volt to generate URLs using this component:
 
 ```twig
@@ -301,8 +296,7 @@ Generate static routes:
 ```
 
 ## Path
-
-Although a `path` is not really a URL, the [Phalcon\Url](api/phalcon_url#url) offers methods that allow you to create paths for your application, the same way as URLs.
+Although a `path` is not really a URL, the [Phalcon\Url][url] offers methods that allow you to create paths for your application, the same way as URLs.
 
 ```php
 <?php
@@ -332,12 +326,12 @@ echo $url->path('storage/config.php'); // /data/app/storage/config.php
 
 The above code will prefix all the paths with `/data/app/`.
 
-> **NOTE**: The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
-{: .alert .alert-info }
+> **NOTE**: The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter 
+> 
+> {: .alert .alert-info }
 
 ## Exceptions
-
-Any exceptions thrown in the [Phalcon\Url](api/phalcon_url#url) component will be of type [Phalcon\Url\Exception](api/phalcon_url#url-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the [Phalcon\Url][url] component will be of type [Phalcon\Url\Exception][url-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -360,12 +354,10 @@ class IndexController extends Controller
 ```
 
 ## Custom
-
 The \[Phalcon\UrlInterface\]\[url-interface\] is available if you wish to implement your own `Url` component. Implementing this interface will ensure that your custom component will work with the Phalcon.
 
 ## Dependency Injection
-
-If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Url](api/phalcon_url#url) is already registered for you. However you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Url][url] is already registered for you. However you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -422,3 +414,7 @@ You can of course access the object the same way as any registered service in th
 ```twig
 {% raw %}{{ url.get('/portal/invoices/link') }}{% endraw %}
 ```
+
+[url]: api/phalcon_url#url
+[url-exception]: api/phalcon_url#url-exception
+[factorydefault]: api/phalcon_di#di-factorydefault

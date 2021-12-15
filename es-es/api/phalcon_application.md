@@ -16,8 +16,8 @@ title: 'Phalcon\Application'
 
 Clase base para Phalcon\Cli\Console y Phalcon\Mvc\Application.
 
-## Propiedades
 
+## Propiedades
 ```php
 /**
  * @var DiInterface
@@ -46,37 +46,36 @@ protected modules;
 ```php
 public function __construct( DiInterface $container = null );
 ```
-
 Constructor Phalcon\AbstractApplication
+
 
 ```php
 public function getDefaultModule(): string;
 ```
-
 Devuelve el nombre de módulo por defecto
+
 
 ```php
 public function getEventsManager(): ManagerInterface;
 ```
-
 Devuelve el administrador de eventos interno
+
 
 ```php
 public function getModule( string $name ): array | object;
 ```
-
 Obtiene la definición de módulo registrada en la aplicación a través del nombre del módulo
+
 
 ```php
 public function getModules(): array;
 ```
-
 Devuelve los módulos registrados en la aplicación
+
 
 ```php
 public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
-
 Registra un vector de módulos presente en la aplicación
 
 ```php
@@ -94,17 +93,20 @@ $this->registerModules(
 );
 ```
 
+
 ```php
 public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
-
 Establece el nombre del módulo que se utilizará si el router no devuelve un módulo válido
+
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
-
 Establece el administrador de eventos
+
+
+
 
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
@@ -113,3 +115,4 @@ Establece el administrador de eventos
 | Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
 
 Las excepciones lanzadas en la clase Phalcon\Application usarán esta clase
+

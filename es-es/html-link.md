@@ -11,18 +11,18 @@ keywords: 'psr-13, http, enlace, enlace evolutivo'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Html\Link\EvolvableLink](api/phalcon_html#html-link-evolvablelink), [Phalcon\Html\Link\EvolvableLinkProvider](api/phalcon_html#html-link-evolvablelinkprovider), [Phalcon\Html\Link\Link](api/phalcon_html#html-link-link) y [Phalcon\Html\Link\LinkProvider](api/phalcon_html#html-link-linkprovider) son clases que implementan las interfaces definidas por [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink], [Phalcon\Html\Link\EvolvableLinkProvider][html-link-evolvablelinkprovider], [Phalcon\Html\Link\Link][html-link-link] and [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] are classes that implement the interfaces as defined by [PHP-FIG][php-fig].
 
 ![](/assets/images/implements-psr--13-blue.svg)
 
-Estos componentes ayudan a crear objetos `Link` según el estándar definido por [PSR-13](https://www.php-fig.org/psr/psr-13/).
+These components aid in creating Link objects as defined by the [PSR-13][psr-13] standard.
 
-> **NOTA**: Este componente no genera ningún enlace HTML. Sólo almacena los enlaces y ofrece métodos definidos según el estándar [PSR-13](https://www.php-fig.org/psr/psr-13/). Necesitará crear sus propios serializadores que analizarán estos objetos y generarán la salida necesaria. Se puede usar el serializador [Phalcon\Html\Link\Serializer\Header](api/phalcon_html#html-link-serializer-header). 
+> **NOTA**: Este componente no genera ningún enlace HTML. It just stores the links and offers methods as defined by the [PSR-13][psr-13] standard. Necesitará crear sus propios serializadores que analizarán estos objetos y generarán la salida necesaria. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use. 
 > 
 > {: .alert .alert-info }
 
 ## Link
-[Phalcon\Html\Link\Link](api/phalcon_html#html-link-link) se usa para crear un enlace y asignarle atributos durante su construcción.
+The [Phalcon\Html\Link\Link][html-link-link] is used to create a link and assign attributes to it upon construction.
 
 ```php
 <?php
@@ -44,7 +44,7 @@ $link = new Link('payment', $href, $attributes);
 ```
 
 ## LinkProvider
-[Phalcon\Html\Link\LinkProvider](api/phalcon_html#html-link-linkprovider) se usa como contenedor de objetos [Phalcon\Html\Link\Link](api/phalcon_html#html-link-link). Puede añadirlos al proveedor y luego acceder a ellos en su conjunto o recuperarlos mediante `rel`.
+The [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] is used as a container of [Phalcon\Html\Link\Link][html-link-link] objects. Puede añadirlos al proveedor y luego acceder a ellos en su conjunto o recuperarlos mediante `rel`.
 
 ```php
 <?php
@@ -69,7 +69,7 @@ var_dump(
 ```
 
 ## EvolvableLink
-Los objetos enlace son inmutables. Sin embargo, hay necesidad de manipularlos en función de las necesidades de su aplicación. [Phalcon\Html\Link\EvolvableLink](api/phalcon_html#html-link-evolvablelink) está disponible, permitiéndole manipular el enlace.
+Los objetos enlace son inmutables. Sin embargo, hay necesidad de manipularlos en función de las necesidades de su aplicación. The [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink] is available, allowing you to manipulate the link.
 
 ```php
 <?php
@@ -94,7 +94,7 @@ var_dump(
 ```
 
 ## EvolvableLinkProvider
-[Phalcon\Html\Link\LinkProvider](api/phalcon_html#html-link-linkprovider) se usa como contenedor de objetos [Phalcon\Html\Link\EvolvableLink](api/phalcon_html#html-link-evolvablelink). Puede añadirlos al proveedor y luego acceder a ellos en su conjunto o recuperarlos mediante `rel`.
+The [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] is used as a container of [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink] objects. Puede añadirlos al proveedor y luego acceder a ellos en su conjunto o recuperarlos mediante `rel`.
 
 ```php
 <?php
@@ -120,7 +120,7 @@ var_dump(
 
 ## Serializadores
 ### Header
-Puede usar un serializador para analizar los objetos `Phalcon\Html\Links` y crear las cabeceras necesarias. Phalcon viene con el serializador [Phalcon\Html\Link\Serializer\Header](api/phalcon_html#html-link-serializer-header), para ayudar con la tarea de serializar enlaces para las cabeceras:
+Puede usar un serializador para analizar los objetos `Phalcon\Html\Links` y crear las cabeceras necesarias. Phalcon comes with the [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer, to help with the task of serializing links for the headers:
 
 ```php
 <?php
@@ -152,7 +152,7 @@ echo $serializer->serialize([$link]);
 ```
 
 ### Personalizado
-Puede crear sus propios serializadores relevantes para enlaces extendiendo [Phalcon\Html\Link\Serializer\SerializerInterface](api/phalcon_html#html-link-serializer-serializerinterface)
+You can create your own serializers for relevant links by extending the [Phalcon\Html\Link\Serializer\SerializerInterface][html-link-serializer-serializerinterface]
 
 ```php
 <?php
@@ -169,3 +169,12 @@ class Custom implements SerializerInterface
     }
 }
 ```
+
+[php-fig]: https://www.php-fig.org/
+[psr-13]: https://www.php-fig.org/psr/psr-13/
+[html-link-evolvablelink]: api/phalcon_html#html-link-evolvablelink
+[html-link-evolvablelinkprovider]: api/phalcon_html#html-link-evolvablelinkprovider
+[html-link-link]: api/phalcon_html#html-link-link
+[html-link-linkprovider]: api/phalcon_html#html-link-linkprovider
+[html-link-serializer-header]: api/phalcon_html#html-link-serializer-header
+[html-link-serializer-serializerinterface]: api/phalcon_html#html-link-serializer-serializerinterface

@@ -7,21 +7,18 @@ keywords: 'debug, debugging, error handling, 디버그, 디버깅, 오류, 오�
 ---
 
 # 디버그
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP는 알림, 경고, 오류와 예외 등으로 어플리케이션을 디버그 할 수 있는 도구를 제공합니다. The [Exception class](https://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. 발생한 곳의 정보를 제공합니다. Phalcon과 같은 OOP 프레임워크는 이 기능을 캡슐화 하고 개발자나 사용자에게 정보를 제공하기 위해 주로 이 클래스를 사용합니다.
+PHP는 알림, 경고, 오류와 예외 등으로 어플리케이션을 디버그 할 수 있는 도구를 제공합니다. The [Exception class][exception] offers information such as the file, line, message, numeric code, backtrace etc. of where an error occurred. Phalcon과 같은 OOP 프레임워크는 이 기능을 캡슐화 하고 개발자나 사용자에게 정보를 제공하기 위해 주로 이 클래스를 사용합니다.
 
 Phalcon은 C 로 작성되어 있지만, 다른 PHP기반의 프레임워크가 제공하는 것과 동일한 디버깅 기능의 메서드를 PHP 사용자 환경 하에서 실행합니다.
 
-## 예외처리
-
+## Exceptions
 어플리케이션에서 오류의 흐름을 제어하는 가장 일반적인 방법은(의도적이든 아니든) 예외처리를 위해 `try`/`catch` 블록을 이용하는 것입니다. 문서에서는 이러한 블록의 예시를 풍부하게 담고 있습니다.
 
 ```php
@@ -36,9 +33,9 @@ try {
 }
 ```
 
-블록 내에서 throw 된 모든 예외는 `$ex` 변수에 저장됩니다. A [Phalcon\Exception](api/Phalcon_Exception) extends the PHP [Exception class](https://www.php.net/manual/en/language.exceptions.php). 이 Phalcon 의 exception을 사용하면 Phalcon에서 예외가 발생했는지 혹은 다른곳에서 발생했는지 구분할 수 있도록 해 줍니다.
+블록 내에서 throw 된 모든 예외는 `$ex` 변수에 저장됩니다. A [Phalcon\Exception][phalcon-exception] extends the PHP [Exception class][exception]. 이 Phalcon 의 exception을 사용하면 Phalcon에서 예외가 발생했는지 혹은 다른곳에서 발생했는지 구분할 수 있도록 해 줍니다.
 
-The [Exception class](https://www.php.net/manual/en/language.exceptions.php), exposes the following:
+The [Exception class][exception], exposes the following:
 
 ```php
 <?php
@@ -90,7 +87,7 @@ class Exception
 }
 ```
 
-[Phalcon\Exception](api/Phalcon_Exception) 을 사용해서 동일한 메서드를 호출 할 수 있습니다:
+You can use the same method calls when using the [Phalcon\Exception][phalcon-exception]:
 
 ```php
 <?php
@@ -136,14 +133,14 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. 예외에 대한 정보는 예외를 발생시킨 부분과 관련된 파라미터와 메서드 호출에 대한 정보를 포함하고 있습니다. [Exception::getTrace()](https://www.php.net/manual/en/exception.gettrace.php) provides additional information if necessary.
+As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. 예외에 대한 정보는 예외를 발생시킨 부분과 관련된 파라미터와 메서드 호출에 대한 정보를 포함하고 있습니다. [Exception::getTrace()][exception_gettrace] provides additional information if necessary.
 
-## 생성자
+## Constructor
+[Phalcon\Debug][debug] provides visual aids as well as additional information for developers to easily locate errors produced in an application.
 
-[Phalcon\Debug](api/phalcon_debug#debug) 클래스는 개발자가 어플리케이션에서 발생한 오류를 쉽게 찾을 수 있도록 추가 정보를 제공할 뿐만 아니라 시각적인 보조도구도 제공합니다..
-
-> **주의** 해커들에게 서버에 대한 정보를 노출할 수 있기 때문에 운영(production)환경에서는 이 컴포넌트를 사용하지 않도록 주의 해주시기 바랍니다.
-{: .alert .alert-danger }
+> **NOTE** Please make sure that this component is not used in production environments, as it can reveal information about your server to attackers 
+> 
+> {: .alert .alert-danger }
 
 어떻게 동작하는지에 대한 설명은 다음 스크린캐스트를 참고해 주세요:
 
@@ -171,12 +168,13 @@ $debug->listen();
 (new \Phalcon\Debug())->listen();
 ```
 
-> **주의**: 이 컴포넌트가 정상적으로 동작하기 위해서는 모든 `try`/`catch` 블록을 제거하거나 비활성화 시켜야 합니다.
-{: .alert .alert-warning }
+> **NOTE**: Any `try`/`catch` blocks must be removed or disabled to make this component work properly. 
+> 
+> {: .alert .alert-warning }
 
 심각도가 낮은 오류(경고, 알림 등) 를 제외한 처리되지 않은 예외를 컴포넌트가 감지하는 것이 기본값입니다. 관련 파라미터를 `listen()` 함수에 넘겨줘서 이 동작을 수정할 수 있습니다.
 
-- `exceptions` - boolean 
+- `exceptions` - boolean
 - `lowSeverity` - boolean
 
 아래의 예제는, 처리되지 않은 예외를 감지하는 것 대신에 (심각도가 낮은) 알림/경고를 감지하도록 수정한 예입니다.
@@ -206,22 +204,21 @@ $debug
     ->listen();
 ```
 
-> **주의**: `listenExceptions()` 와 `listenLowSeverity()` 는 **ON** 스위치입니다. 예외나 저심각도 오류에 대한 감지를 **OFF** 하고자 하신다면 `listen()` 메서드에 `false` 값을 넘겨주셔야 합니다.
-{: .alert .alert-info } 
+> **NOTE**: The `listenExceptions()` and `listenLowSeverity()` are **ON** switches. If you wish to switch listening to exceptions or low severity errors **OFF** you need to pass `false` in the `listen()` method. 
+> 
+> {: .alert .alert-info }
 
 ## Getters
-
 컴포넌트에 대한 정보를 제공하는 몇개의 getter 를 사용할 수 있습니다. 이들을 확장해서 컴포넌트의 동작을 시각적으로 변경하실 수도 있습니다.
 
 - `getCssSources()` - `string` Returns the stylesheets used to display the contents on screen
 - `getJsSources()` - `string` Returns the javascript files used to display the contents on screen
 - `getVersion()` - `string` Returns the link to the current version documentation
 
-예를 들어 이 컴포넌트를 확장해서 다른 CSS HTML 지시자를 반환하도록 `getCssSources()` 를 재정의(overriding) 하면 화면에 표시되는 모습이 바뀌게 되겠지요. 출력되는 CSS클래스는 [Bootstrap CSS](https://getbootstrap.com/) 기반입니다.
+예를 들어 이 컴포넌트를 확장해서 다른 CSS HTML 지시자를 반환하도록 `getCssSources()` 를 재정의(overriding) 하면 화면에 표시되는 모습이 바뀌게 되겠지요. The output CSS classes are based on [Bootstrap CSS][bootstrap].
 
 ## Setters
-
-또한 [Phalcon\Debug](api/phalcon_debug#debug) 클래스는 어플리케이션에서 오류가 발생했을 때, 출력되는 내용을 입맛에 맞게 개선할 수 있도록 몇개의 setter를 제공합니다..
+[Phalcon\Debug][debug] also offers some setters to better customize the output when an error occurs in your application.
 
 - `setShowBackTrace(bool $showBackTrace)` - Show/hide the exception's backtrace
 - `setShowFileFragment(bool $showFileFragment)` - Show/Hide the file fragment in the output (related to the exception)
@@ -229,7 +226,6 @@ $debug
 - `setUri(string $uri)` - The base URI for static resources (see also the Getters section for customization of the component)
 
 ## 변수
-
 `debugVar()` 메서드를 이용하면, 출력 시 같이 표시하고 싶은 추가적인 변수들을 지정할 수도 있습니다. 이 변수들은 주로 어플리케이션에 특정된 변수들입니다. 다음 예제는 어플리케이션에서 동작시간 관련정보를 보여줄 수 있습니다.
 
 ```php
@@ -266,8 +262,7 @@ if (12345 === $password) {
 ```
 
 ## 출력내용 선별제외(블랙리스트)
-
-위에서 언급한 바와 같이, 이 컴포넌트는 **절대** 운영환경에서는 활성화 하시면 안됩니다. 이 동작을 제어할 수 없기 때문에 Phalcon은, 만일의 상황을 대비해서, 화면에 표시되면 안되는 특정 정보를 개발자가 지정해서 최종출력시 제외하는 블랙리스팅 기능이 기본적으로 내장되어 있습니다. 이들은 주로 `$_REQUEST` 와 `$_SERVER` 배열값이 대상이 되겠지요.
+As mentioned above, the component **must not** be enabled in production environments. 이 동작을 제어할 수 없기 때문에 Phalcon은, 만일의 상황을 대비해서, 화면에 표시되면 안되는 특정 정보를 개발자가 지정해서 최종출력시 제외하는 블랙리스팅 기능이 기본적으로 내장되어 있습니다. 이들은 주로 `$_REQUEST` 와 `$_SERVER` 배열값이 대상이 되겠지요.
 
 ```php
 <?php
@@ -289,18 +284,17 @@ $debug
 
 In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostname` from `$_SERVER`. 당연히 이 두 전역변수 배열 내에 존재하는 값이 출력되지 않도록 얼마든지 추가할 수 있습니다. 운영환경에서 컴포넌트 비활성화 하는것을 깜빡한 경우 특히 유용한 사례가 되겠습니다. 하지만 이런걸 깜빡하는 것은 좋지 않은 습관이므로, 최소한 호스트에서 특정 주요 정보는 잠재적 해커에게 결코 노출되지 않도록 하는것이 필요합니다.
 
-> **주의**: 감추고자 하는 배열 요소의 키 값은 대소문자를 구분함
-{: .alert .alert-info }
+> **NOTE**: The keys of the array elements to be hidden are case insensitive 
+> 
+> {: .alert .alert-info }
 
-## 핸들러
+## Handlers
+In order to catch exceptions and low severity errors, [Phalcon\Debug][debug] makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. 이 컴포넌트를 사용하는 대부분의 개발자는 이 메서드들을 확장시킬 필요가 없을 것입니다. 하지만, 필요한 경우 컴포넌트를 상속받아 이 메서드들을 재정의 해서 예외를 처리하고 원하는 출력을 반환할 수 있습니다.
 
-예외와 심각도 낮은 오류를 처리하기 위해, [Phalcon\Debug](api/phalcon_debug#debug) 클래스는 `onUncaughtException()` 과 `onUncaughtLowSeverity()` 를 사용합니다. 이 컴포넌트를 사용하는 대부분의 개발자는 이 메서드들을 확장시킬 필요가 없을 것입니다. 하지만, 필요한 경우 컴포넌트를 상속받아 이 메서드들을 재정의 해서 예외를 처리하고 원하는 출력을 반환할 수 있습니다.
-
-이 두개의 메서드는 PHP의 [set_exception_handler](https://www.php.net/manual/en/function.set-exception-handler.php) 를 사용해서 예외처리기(exception handlers)로 설정하게 됩니다. `listenExceptions()`를 호출 시, `onUncaughtException()` 이벤트가 등록되고, `listenLowSeverity()` 호출하면 `onUncaughtLowSeverity` 이벤트가 등록됩니다..
+These two methods are being set as exception handlers using PHP's [set_exception_handler][set_exception_handler]. `listenExceptions()`를 호출 시, `onUncaughtException()` 이벤트가 등록되고, `listenLowSeverity()` 호출하면 `onUncaughtLowSeverity` 이벤트가 등록됩니다..
 
 ## Reflection과 Introspection
-
-Phalcon 클래스는 일반적인 PHP 클래스와 다르지 않기 때문에 [Reflection API](https://php.net/manual/en/book.reflection.php) 의 사용 혹은 단순한 출력 명령으로도 어떤 객체든 그 내용과 상태를 알 수 있습니다:
+Phalcon classes do not differ from any other PHP classes and therefore you can use the [Reflection API][reflection_api] or simply print any object to display its contents and state:
 
 ```php
 <?php
@@ -368,15 +362,15 @@ Phalcon\Mvc\Router Object
 ```
 
 ## Xdebug
-
-[Xdebug](https://xdebug.org) is an amazing tool that complements the debugging of PHP applications. Xdebug 도 PHP의 C 익스텐션이며, 별도의 설정이나 부작용 없이 Phalcon과 함께 사용할 수 있습니다.
+[Xdebug][xdebug] is an amazing tool that complements the debugging of PHP applications. Xdebug 도 PHP의 C 익스텐션이며, 별도의 설정이나 부작용 없이 Phalcon과 함께 사용할 수 있습니다.
 
 Once you have Xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-> **NOTE**: We highly recommend using the latest version of Xdebug for a better compatibility with Phalcon
-{: .alert .alert-warning }
+> **NOTE**: We highly recommend using the latest version of Xdebug for a better compatibility with Phalcon 
+> 
+> {: .alert .alert-warning }
 
-아래의 코드는 실행을 중단하고 백트레이스를 생성할 수 있는 [xdebug_print_function_stack](https://xdebug.org/docs/stack_trace) 기능을 적용한 예입니다:
+The following example implements [xdebug_print_function_stack][xdebug_print_function_stack] to stop the execution and generate a backtrace:
 
 ```php
 <?php
@@ -424,6 +418,18 @@ Call Stack:
         /app/app/controllers/SignupController.php:19
 ```
 
-Xdebug는 Phalcon을 이용한 어플리케이션 실행 시, 디버깅 및 트레이스 정보를 얻는 몇가지 방법을 제공합니다. 더 자세한 정보는 [XDebug 문서](https://xdebug.org/docs) 를 참조하세요.
+Xdebug는 Phalcon을 이용한 어플리케이션 실행 시, 디버깅 및 트레이스 정보를 얻는 몇가지 방법을 제공합니다. You can check the [XDebug documentation][xdebug_docs] for more information.
 
-PHPStorm 에서 Xdebug를 사용하시려면 [여기](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html) 글을 참조하세요.
+To set up Xdebug for PHPStorm you can check [this][phpstorm-xdebug] article.
+
+[bootstrap]: https://getbootstrap.com/
+[debug]: api/phalcon_debug#debug
+[exception]: https://www.php.net/manual/en/language.exceptions.php
+[exception_gettrace]: https://www.php.net/manual/en/exception.gettrace.php
+[phalcon-exception]: api/Phalcon_Exception
+[phpstorm-xdebug]: https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
+[reflection_api]: https://php.net/manual/en/book.reflection.php
+[set_exception_handler]: https://www.php.net/manual/en/function.set-exception-handler.php
+[xdebug]: https://xdebug.org
+[xdebug_print_function_stack]: https://xdebug.org/docs/stack_trace
+[xdebug_docs]: https://xdebug.org/docs

@@ -7,24 +7,20 @@ keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 
 # Yükleyici
-
-* * *
-
+- - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
-
-[Phalcon\Loader](api/phalcon_loader#loader) is an autoloader that implements [PSR-4](https://www.php-fig.org/psr/psr-4/). Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
+[Phalcon\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
 
 ![](/assets/images/implements-psr--4-blue.svg)
 
-This component relies on PHP's [autoloading classes](https://www.php.net/manual/en/language.oop5.autoload.php) capability. If a class defined in the code has not been included yet, a special handler will try to load it. [Phalcon\Loader](api/phalcon_loader#loader) serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
+This component relies on PHP's [autoloading classes][autoloading] capability. If a class defined in the code has not been included yet, a special handler will try to load it. [Phalcon\Loader][loader] serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization][lazy_initialization].
 
 The component offers options for loading files based on their class, file name, directories on your file system as well as file extensions.
 
 ## Registration
-
-Usually we would use the [spl_autoload_register()](https://www.php.net/manual/en/function.spl-autoload-register.php) to register a custom autoloader for our application. [Phalcon\Loader](api/phalcon_loader#loader) hides this complexity. After you define all your namespaces, classes, directories and files you will need to call the `register()` function, and the autoloader is ready to be used.
+Usually we would use the [spl_autoload_register()][spl-autoload-register] to register a custom autoloader for our application. [Phalcon\Loader][loader] hides this complexity. After you define all your namespaces, classes, directories and files you will need to call the `register()` function, and the autoloader is ready to be used.
 
 ```php
 <?php
@@ -43,12 +39,13 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-`register()` uses [spl_autoload_register()](https://www.php.net/manual/en/function.spl-autoload-register.php) internally. As a result it accepts also accepts the boolean `prepend` parameter. If supplied and is `true`, the autoloader will be prepended on the autoload queue instead of appended (default behavior).
+`register()` uses [spl_autoload_register()][spl-autoload-register] internally. As a result it accepts also accepts the boolean `prepend` parameter. If supplied and is `true`, the autoloader will be prepended on the autoload queue instead of appended (default behavior).
 
 You can always call the `isRegistered()` method to check if your autoloader is registered or not.
 
-> **NOTE**: If there is an error in registering the autoloader, the component will throw an exception.
-{: .alert .alert-warning }
+> **NOTE**: If there is an error in registering the autoloader, the component will throw an exception. 
+> 
+> {: .alert .alert-warning }
 
 
 ```php
@@ -94,8 +91,7 @@ if (true === $loader->isRegistered()) {
 ```
 
 ## Security Layer
-
-[Phalcon\Loader](api/phalcon_loader#loader) incorporates a security layer, by sanitizing class names by default i.e. removing invalid characters. As such it makes it more difficult for malicious code to be injected in your application.
+[Phalcon\Loader][loader] incorporates a security layer, by sanitizing class names by default i.e. removing invalid characters. As such it makes it more difficult for malicious code to be injected in your application.
 
 Consider the following example:
 
@@ -128,11 +124,10 @@ if (class_exists($className)) {
 
 In the above snippet, if `../processes/important-process.php` is a valid file, that could have been uploaded by a hacker or from a not so careful upload process, then an external user could execute the code without any authorization and subsequently get access to the whole application if not the server.
 
-To avoid most of these kind of attacks, [Phalcon\Loader](api/phalcon_loader#loader) removes invalid characters from the class name.
+To avoid most of these kind of attacks, [Phalcon\Loader][loader] removes invalid characters from the class name.
 
 ## Namespaces
-
-A very popular way to organize your application is with directories, each representing a particular namespace. [Phalcon\Loader](api/phalcon_loader#loader) can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
+A very popular way to organize your application is with directories, each representing a particular namespace. [Phalcon\Loader][loader] can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
 
 The `registerNamespaces()` method accepts an array, where keys are the namespaces and values are the actual directories in the file system. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
@@ -213,8 +208,7 @@ If you need to check what namespaces are registered in the autoloader, you can u
 ```
 
 ## Classes
-
-Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
+Another way to let [Phalcon\Loader][loader] know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
 
 The method accepts an array, where the key is the namespaced class and the value is the location of the file that contains the class. As expected, this is the fastest way to autoload a class, since the autoloader does not need to do file scans or stats to find the files references.
 
@@ -285,10 +279,9 @@ If you need to check what classes are registered in the autoloader, you can use 
 ```
 
 ## Files
+There are times that you might need to _require_ a specific file that contains a class without a namespace or a file that contains some code that you need. An example would be a file that contains handy debugging functions.
 
-There are times that you might need to *require* a specific file that contains a class without a namespace or a file that contains some code that you need. An example would be a file that contains handy debugging functions.
-
-[Phalcon\Loader](api/phalcon_loader#loader) offers `registerFiles()` which is used to *require* such files. It accepts an array, containing the file name and location of each file.
+[Phalcon\Loader][loader] offers `registerFiles()` which is used to _require_ such files. It accepts an array, containing the file name and location of each file.
 
 ```php
 <?php
@@ -348,8 +341,7 @@ If you need to check what files are registered in the autoloader, you can use th
 You also have access to the `loadFiles()` method, which will traverse all the files registered and if they exist it will `require` them. This method is automatically called when you call `register()`.
 
 ## Directories
-
-Another way to let [Phalcon\Loader](api/phalcon_loader#loader) know where your application files are is to register directories. When a file needs to be required by the application, the autoloader will scan the registered directories to find the referenced file so that it can require it.
+Another way to let [Phalcon\Loader][loader] know where your application files are is to register directories. When a file needs to be required by the application, the autoloader will scan the registered directories to find the referenced file so that it can require it.
 
 The `registerDirs()` method accepts an array with each element being a directory in the file system containing the files that will be required by the application.
 
@@ -412,8 +404,7 @@ If you need to check what directories are registered in the autoloader, you can 
 ```
 
 ## File Extensions
-
-When you use the `registerNamespaces()` and `registerDirs()`, [Phalcon\Loader](api/phalcon_loader#loader) automatically assumes that your files will have the `.php` extension. You can change this behavior by using the `setExtensions()` method. The method accepts an array, where each element is the extension to be checked (without the `.`):
+When you use the `registerNamespaces()` and `registerDirs()`,  [Phalcon\Loader][loader] automatically assumes that your files will have the `.php` extension. You can change this behavior by using the `setExtensions()` method. The method accepts an array, where each element is the extension to be checked (without the `.`):
 
 ```php
 <?php
@@ -439,17 +430,16 @@ $loader->registerDirs(
 
 In the example above, when referencing a file `Mail`, the autoloader will search in `app/functions` for the following files:
 
-* `Mail.php`
-* `Mail.inc`
-* `Mail.phb`
+- `Mail.php`
+- `Mail.inc`
+- `Mail.phb`
 
 Files are checked in the order that each extension is defined.
 
 ## File Checking Callback
-
 You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback()` method.
 
-The default behavior uses [is_file](https://www.php.net/manual/en/function.is-file.php). However you can also use `null` which will not check whether a file exists or not, before loading it or you can use [stream_resolve_include_path](https://www.php.net/manual/en/function.stream-resolve-include-path.php) which is much faster than [is_file](https://www.php.net/manual/en/function.is-file.php) but will cause problems if the target file is removed from the file system.
+The default behavior uses [is_file][is_file]. However you can also use `null` which will not check whether a file exists or not, before loading it or you can use [stream_resolve_include_path][stream_resolve_include_path] which is much faster than [is_file][is_file] but will cause problems if the target file is removed from the file system.
 
 ```php
 <?php
@@ -488,8 +478,7 @@ $loader->setFileCheckingCallback(null);
 Do not check file existence.
 
 ## Events
-
-The \[Events Manager\]\[events\] component offers hooks that can be implemented to observe or expand the functionality of the loader. The [Phalcon\Loader](api/phalcon_loader#loader) implements the [Phalcon\Events\EventsAwareInterface](api/phalcon_events#events-eventsawareinterface), and therefore the `getEventsManager()` and `setEventsManager()` methods are available.
+The \[Events Manager\]\[events\] component offers hooks that can be implemented to observe or expand the functionality of the loader. The [Phalcon\Loader][loader] implements the [Phalcon\Events\EventsAwareInterface][eventsawareinterface], and therefore the `getEventsManager()` and `setEventsManager()` methods are available.
 
 The following events are available:
 
@@ -538,6 +527,7 @@ In the above example, we create a new Events Manager object, attach a method to 
 
 The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. Also you can use the `getfoundPath()` method, which holds the path of the found file during the internal loop.
 
+
 For events that can stop operation, all you will need to do is return `false` in the method that is attached to the particular event:
 
 ```php
@@ -577,9 +567,20 @@ $loader->register();
 In the above example, when the autoloader starts scanning the `app/models` folder for the `MyApp\Models` namespace, it will stop the operation.
 
 ## Troubleshooting
-
 Some things to keep in mind when using the autoloader:
 
 * The auto-loading process is case-sensitive
 * Strategies based on namespaces/prefixes are faster than the directories strategy
-* If a bytecode cache, such as [APCu](https://php.net/manual/en/book.apcu.php), is installed, it will be used to get the requested file (an implicit caching of the file is performed)
+* If a bytecode cache, such as [APCu][apcu], is installed, it will be used to get the requested file (an implicit caching of the file is performed)
+
+[spl-autoload-register]: https://www.php.net/manual/en/function.spl-autoload-register.php
+[is_file]: https://www.php.net/manual/en/function.is-file.php
+[stream_resolve_include_path]: https://www.php.net/manual/en/function.stream-resolve-include-path.php
+[autoloading]: https://www.php.net/manual/en/language.oop5.autoload.php
+[lazy_initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
+[psr-4]: https://www.php-fig.org/psr/psr-4/
+[apcu]: https://php.net/manual/en/book.apcu.php
+[loader]: api/phalcon_loader#loader
+[eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
+
+
