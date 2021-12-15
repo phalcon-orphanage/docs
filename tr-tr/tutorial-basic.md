@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'tr-tr'
-version: '4.0'
+version: '5.0'
 title: 'Tutorial - Basic'
 keywords: 'tutorial, basic tutorial, step by step, mvc'
 ---
