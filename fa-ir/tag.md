@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'fa-ir'
-version: '4.0'
+version: '5.0'
 title: 'Tag'
 keywords: 'tag, helpers, view helpers, html generators'
 ---
