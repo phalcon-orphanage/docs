@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'ru-ru'
-version: '4.0'
+version: '5.0'
 title: 'Настройка веб-сервера'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
