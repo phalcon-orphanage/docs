@@ -1,7 +1,7 @@
 ---
 layout: default
 language: 'pl-pl'
-version: '4.0'
+version: '5.0'
 title: 'HTTP Response (PSR-7)'
 keywords: 'psr-7, http, http stream'
 ---
