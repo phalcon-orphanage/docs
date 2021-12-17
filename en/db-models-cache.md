@@ -203,7 +203,7 @@ class Invoices extends Model
 
     protected static function generateCacheKey(array $parameters)
     {
-        $uniqueKey = [];
+        $uniqueKey = [Static::class];
 
         foreach ($parameters as $key => $value) {
             if (true === is_scalar($value)) {
@@ -269,7 +269,7 @@ abstract class AbstractCacheable extends Model
 
     protected static function generateCacheKey(array $parameters)
     {
-        $uniqueKey = [];
+        $uniqueKey = [Static::class];
 
         foreach ($parameters as $key => $value) {
             if (true === is_scalar($value)) {
@@ -514,7 +514,7 @@ class Invoices extends Model
 
     protected static function generateCacheKey(array $parameters)
     {
-        $uniqueKey = [];
+        $uniqueKey = [Static::class];
 
         foreach ($parameters as $key => $value) {
             if (true === is_scalar($value)) {
@@ -587,7 +587,7 @@ class Invoices extends Model
 
     protected static function generateCacheKey(array $parameters)
     {
-        $uniqueKey = [];
+        $uniqueKey = [Static::class];
 
         foreach ($parameters as $key => $value) {
             if (true === is_scalar($value)) {
