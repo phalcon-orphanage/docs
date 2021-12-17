@@ -52,7 +52,7 @@ Destruir
 
 
 ```php
-public function gc( mixed $maxlifetime ): bool;
+public function gc( mixed $maxlifetime );
 ```
 Recolección de basura (GC)
 
@@ -75,13 +75,19 @@ public function write( mixed $id, mixed $data ): bool;
 Escribir
 
 
+```php
+protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null ): mixed;
+```
+@todo Remove this when we get traits
+
+
 
 
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
 
-| Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Storage\AdapterFactory | | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Libmemcached
 
@@ -121,6 +127,8 @@ $session->setAdapter(new Noop());
 ```php
 /**
  * The connection of some adapters
+ *
+ * @var null
  */
 protected connection;
 
@@ -168,7 +176,7 @@ Destruir
 
 
 ```php
-public function gc( mixed $maxlifetime ): bool;
+public function gc( mixed $maxlifetime );
 ```
 Recolección de basura (GC)
 
@@ -203,7 +211,7 @@ Método auxiliar para obtener el prefijo del nombre
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
 
-| Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Storage\AdapterFactory | | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Redis
 
@@ -222,7 +230,7 @@ Constructor
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
 
-| Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Helper\Str, Phalcon\Session\Exception | | Extends | Noop |
+| Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Session\Exception | | Extends    | Noop |
 
 Phalcon\Session\Adapter\Stream
 
@@ -266,8 +274,10 @@ public function destroy( mixed $id ): bool;
 ```
 
 ```php
-public function gc( mixed $maxlifetime ): bool;
+public function gc( mixed $maxlifetime );
 ```
+Recolección de basura (GC)
+
 
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
@@ -291,7 +301,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
 
-| Namespace | Phalcon\Session | | Uses | Phalcon\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Extends | Collection | | Implements | InjectionAwareInterface |
+| Namespace  | Phalcon\Session | | Uses       | Phalcon\Support\Collection, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Extends    | Collection | | Implements | InjectionAwareInterface |
 
 Phalcon\Session\Bag
 
@@ -307,13 +317,21 @@ $user->age  = 22;
 
 ## Propiedades
 ```php
-//
+/**
+ * @var DiInterface|null
+ */
 private container;
 
-//
+/**
+ * Session Bag name
+ *
+ * @var string
+ */
 private name;
 
-//
+/**
+ * @var \Phalcon\Session\ManagerInterface
+ */
 private session;
 
 ```
@@ -321,7 +339,7 @@ private session;
 ## Métodos
 
 ```php
-public function __construct( string $name );
+public function __construct( string $name, DiInterface $container = null );
 ```
 Constructor Phalcon\Session\Bag
 
@@ -368,7 +386,7 @@ Configura el contenedor DependencyInjector
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Exception.zep)
 
-| Namespace | Phalcon\Session | | Extends | \Phalcon\Exception |
+| Namespace  | Phalcon\Session | | Extends    | \Exception |
 
 Phalcon\Session\Exception
 
@@ -380,7 +398,7 @@ Las excepciones lanzadas en Phalcon\Session usarán esta clase
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Manager.zep)
 
-| Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr | | Extends | AbstractInjectionAware | | Implements | ManagerInterface |
+| Namespace  | Phalcon\Session | | Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Support\Helper\Arr\Get | | Extends    | AbstractInjectionAware | | Implements | ManagerInterface |
 
 Phalcon\Session\Manager
 
