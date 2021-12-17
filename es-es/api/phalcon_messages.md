@@ -14,9 +14,7 @@ title: 'Phalcon\Messages'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Exception.zep)
 
-| Namespace  | Phalcon\Messages | | Extends    | \Phalcon\Exception |
-
-Phalcon\Validation\Exception
+| Namespace  | Phalcon\Messages | | Extends    | \Exception |
 
 Las excepciones lanzadas en las clases Phalcon\Messages\* usarán esta clase
 
