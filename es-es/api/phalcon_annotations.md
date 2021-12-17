@@ -375,7 +375,7 @@ Devuelve el número de argumentos que tiene la anotación
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/AnnotationsFactory.zep)
 
-| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace  | Phalcon\Annotations | | Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Support\Helper\Arr\Get | | Extends    | AbstractFactory |
 
 Fábrica para crear componentes de anotaciones
 
@@ -399,9 +399,13 @@ Crea una nueva instancia del adaptador
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
-Los adaptadores disponibles
+
+```php
+protected function getServices(): array;
+```
+Devuelve los adaptadores disponibles
 
 
 
@@ -516,7 +520,7 @@ Verifica si la anotación actual del iterador es válida
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Exception.zep)
 
-| Namespace | Phalcon\Annotations | | Extends | \Phalcon\Exception |
+| Namespace  | Phalcon\Annotations | | Extends    | \Exception |
 
 Clase para excepciones lanzadas por Phalcon\Annotations
 
@@ -598,13 +602,22 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ## Propiedades
 ```php
-//
+/**
+ * @var array
+ * TODO: Make always array
+ */
 protected classAnnotations;
 
-//
+/**
+ * @var array
+ * TODO: Make always array
+ */
 protected methodAnnotations;
 
-//
+/**
+ * @var array
+ * TODO: Make always array
+ */
 protected propertyAnnotations;
 
 /**
