@@ -20,7 +20,9 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. Th
 
 ## Властивості
 ```php
-//
+/**
+ * @var object|null
+ */
 protected activeHandler;
 
 /**
@@ -28,7 +30,9 @@ protected activeHandler;
  */
 protected activeMethodMap;
 
-//
+/**
+ * @var string|null
+ */
 protected actionName;
 
 /**
@@ -46,10 +50,14 @@ protected camelCaseMap;
  */
 protected defaultAction = ;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultNamespace;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultHandler;
 
 /**
@@ -57,7 +65,9 @@ protected defaultHandler;
  */
 protected handlerHashes;
 
-//
+/**
+ * @var string|null
+ */
 protected handlerName;
 
 /**
@@ -65,7 +75,9 @@ protected handlerName;
  */
 protected handlerSuffix = ;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
 /**
@@ -83,10 +95,14 @@ protected forwarded = false;
  */
 protected isControllerInitialize = false;
 
-//
+/**
+ * @var mixed|null
+ */
 protected lastHandler;
 
-//
+/**
+ * @var BinderInterface|null
+ */
 protected modelBinder;
 
 /**
@@ -94,10 +110,14 @@ protected modelBinder;
  */
 protected modelBinding = false;
 
-//
+/**
+ * @var string|null
+ */
 protected moduleName;
 
-//
+/**
+ * @var string|null
+ */
 protected namespaceName;
 
 /**
@@ -105,16 +125,24 @@ protected namespaceName;
  */
 protected params;
 
-//
+/**
+ * @var string|null
+ */
 protected previousActionName;
 
-//
+/**
+ * @var string|null
+ */
 protected previousHandlerName;
 
-//
+/**
+ * @var string|null
+ */
 protected previousNamespaceName;
 
-//
+/**
+ * @var string|null
+ */
 protected returnedValue;
 
 ```
@@ -145,7 +173,7 @@ $this->dispatcher->forward(
 );
 ```
 
-@throws \Phalcon\Exception
+@throws PhalconException
 
 
 ```php
@@ -190,7 +218,7 @@ Returns the default namespace
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Повертає внутрішній диспетчер подій
 
@@ -274,7 +302,7 @@ Sets the default action name
 
 
 ```php
-public function setDefaultNamespace( string $namespaceName ): void;
+public function setDefaultNamespace( string $defaultNamespace ): void;
 ```
 Sets the default namespace
 
@@ -494,7 +522,7 @@ Sets action params to be dispatched
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/Exception.zep)
 
-| Namespace  | Phalcon\Dispatcher | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Dispatcher | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
