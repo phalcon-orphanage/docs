@@ -9,19 +9,19 @@ title: 'Phalcon\Acl'
 * [Phalcon\Acl\Adapter\AdapterInterface](#acl-adapter-adapterinterface)
 * [Phalcon\Acl\Adapter\Memory](#acl-adapter-memory)
 * [Phalcon\Acl\Component](#acl-component)
-* [Phalcon\Acl\ComponentAware](#acl-componentaware)
+* [Phalcon\Acl\ComponentAwareInterface](#acl-componentawareinterface)
 * [Phalcon\Acl\ComponentInterface](#acl-componentinterface)
 * [Phalcon\Acl\Enum](#acl-enum)
 * [Phalcon\Acl\Exception](#acl-exception)
 * [Phalcon\Acl\Role](#acl-role)
-* [Phalcon\Acl\RoleAware](#acl-roleaware)
+* [Phalcon\Acl\RoleAwareInterface](#acl-roleawareinterface)
 * [Phalcon\Acl\RoleInterface](#acl-roleinterface)
 
 <h1 id="acl-adapter-abstractadapter">抽象クラス Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
+| Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Events\AbstractEventsAware, Phalcon\Events\EventsAwareInterface | | Extends    | AbstractEventsAware | | Implements | AdapterInterface, EventsAwareInterface |
 
 Phalcon\Acl 用アダプター
 
@@ -64,13 +64,6 @@ protected activeComponent;
  */
 protected defaultAccess;
 
-/**
- * Events manager
- *
- * @var ManagerInterface|null
- */
-protected eventsManager;
-
 ```
 
 ## メソッド
@@ -94,21 +87,9 @@ public function getDefaultAction(): int;
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
-```
-内部イベントマネージャーを返します
-
-
-```php
 public function setDefaultAction( int $defaultAccess ): void;
 ```
 デフォルトのアクセスレベル (Phalcon\Acl::ALLOW または Phalcon\Acl::DENY)をセットします。
-
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-イベントマネージャーをセットします
 
 
 
@@ -125,7 +106,7 @@ Phalcon\Acl adapters用のインターフェース
 ## メソッド
 
 ```php
-public function addComponent( mixed $componentObject, mixed $accessList ): bool;
+public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 アクセス制御リストにコンポーネントを追加します。
 
@@ -139,7 +120,7 @@ public function addComponentAccess( string $componentName, mixed $accessList ): 
 
 
 ```php
-public function addInherit( string $roleName, mixed $roleToInherit ): bool;
+public function addInherit( string $roleName, mixed $roleToInherits ): bool;
 ```
 既存のロールからロールを継承する。
 
@@ -199,6 +180,12 @@ public function getDefaultAction(): int;
 
 
 ```php
+public function getInheritedRoles( string $roleName = string ): array;
+```
+Returns the inherited roles for a passed role name. If no role name has been specified it will return the whole array. If the role has not been found it returns an empty array
+
+
+```php
 public function getNoArgumentsDefaultAction(): int;
 ```
 isAllowedアクションに引数が指定されていなかった際のデフォルトのアクセスレベルを返します。ただしaccessKeyのfuncは存在しているものとします。
@@ -246,7 +233,7 @@ isAllowedアクションに引数が指定されていなかった際のデフ�
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
 
-| Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Acl\RoleAwareInterface, Phalcon\Acl\ComponentAwareInterface, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends    | AbstractAdapter |
 
 メモリ上のアクセス制御リストを管理します
 
@@ -389,13 +376,6 @@ protected roles;
  * @var mixed
  */
 protected roleInherits;
-
-/**
- * Roles Names
- *
- * @var mixed
- */
-protected rolesNames;
 
 ```
 
@@ -540,6 +520,12 @@ public function getComponents(): ComponentInterface[];
 
 
 ```php
+public function getInheritedRoles( string $roleName = string ): array;
+```
+Returns the inherited roles for a passed role name. If no role name has been specified it will return the whole array. If the role has not been found it returns an empty array
+
+
+```php
 public function getNoArgumentsDefaultAction(): int;
 ```
 `isAllowed`アクションに引数が指定されていなかった際のデフォルトのACLアクセスレベルを返します。ただし(呼び出し可能な)`func`の`accessKey`は存在しているものとします。
@@ -636,9 +622,9 @@ public function getName(): string
 
 
 
-<h1 id="acl-componentaware">Phalcon\Acl\ComponentAwareインターフェース</h1>
+<h1 id="acl-componentawareinterface">Interface Phalcon\Acl\ComponentAwareInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentAware.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentAwareInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -706,7 +692,7 @@ const DENY = 0;
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
 
-| Namespace  | Phalcon\Acl | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Acl | | Extends    | \Exception |
 
 Phalcon\Aclがスローする例外のクラス
 
@@ -763,9 +749,9 @@ public function getName(): string
 
 
 
-<h1 id="acl-roleaware">Phalcon\Acl\RoleAwareインターフェース</h1>
+<h1 id="acl-roleawareinterface">Interface Phalcon\Acl\RoleAwareInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleAware.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleAwareInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
