@@ -23,17 +23,17 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 ## Properties
 ```php
 /**
- * @var DiInterface
+ * @var DiInterface|null
  */
 protected container;
 
 /**
- * @var string
+ * @var string|null
  */
 protected defaultModule;
 
 /**
- * @var null | ManagerInterface
+ * @var ManagerInterface|null
  */
 protected eventsManager;
 
@@ -59,7 +59,7 @@ Returns the default module name
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Returns the internal event manager
 
@@ -116,7 +116,7 @@ Sets the events manager
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/Exception.zep)
 
 | Namespace  | Phalcon\Application |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Application class will use this class
 

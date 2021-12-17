@@ -5,7 +5,6 @@ version: '5.0'
 title: 'Phalcon\Cache'
 ---
 
-* [Phalcon\Cache](#cache)
 * [Phalcon\Cache\Adapter\AdapterInterface](#cache-adapter-adapterinterface)
 * [Phalcon\Cache\Adapter\Apcu](#cache-adapter-apcu)
 * [Phalcon\Cache\Adapter\Libmemcached](#cache-adapter-libmemcached)
@@ -13,108 +12,10 @@ title: 'Phalcon\Cache'
 * [Phalcon\Cache\Adapter\Redis](#cache-adapter-redis)
 * [Phalcon\Cache\Adapter\Stream](#cache-adapter-stream)
 * [Phalcon\Cache\AdapterFactory](#cache-adapterfactory)
+* [Phalcon\Cache\Cache](#cache-cache)
 * [Phalcon\Cache\CacheFactory](#cache-cachefactory)
 * [Phalcon\Cache\Exception\Exception](#cache-exception-exception)
 * [Phalcon\Cache\Exception\InvalidArgumentException](#cache-exception-invalidargumentexception)
-
-<h1 id="cache">Class Phalcon\Cache</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache.zep)
-
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable |
-| Implements | CacheInterface |
-
-This component offers caching capabilities for your application.
-Phalcon\Cache implements PSR-16.
-
-
-## Properties
-```php
-/**
- * The adapter
- *
- * @var AdapterInterface
- */
-protected adapter;
-
-```
-
-## Methods
-
-```php
-public function __construct( AdapterInterface $adapter );
-```
-Constructor.
-
-
-```php
-public function clear(): bool;
-```
-Wipes clean the entire cache's keys.
-
-
-```php
-public function delete( mixed $key ): bool;
-```
-Delete an item from the cache by its unique key.
-
-
-```php
-public function deleteMultiple( mixed $keys ): bool;
-```
-Deletes multiple cache items in a single operation.
-
-
-```php
-public function get( mixed $key, mixed $defaultValue = null ): mixed;
-```
-Fetches a value from the cache.
-
-
-```php
-public function getAdapter(): AdapterInterface
-```
-
-
-
-```php
-public function getMultiple( mixed $keys, mixed $defaultValue = null ): mixed;
-```
-Obtains multiple cache items by their unique keys.
-
-
-```php
-public function has( mixed $key ): bool;
-```
-Determines whether an item is present in the cache.
-
-
-```php
-public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
-```
-Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
-
-
-```php
-public function setMultiple( mixed $values, mixed $ttl = null ): bool;
-```
-Persists a set of key => value pairs in the cache, with an optional TTL.
-
-
-```php
-protected function checkKey( mixed $key ): void;
-```
-Checks the key. If it contains invalid characters an exception is thrown
-
-
-```php
-protected function checkKeys( mixed $keys ): void;
-```
-Checks the key. If it contains invalid characters an exception is thrown
-
-
-
 
 <h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
 
@@ -203,6 +104,8 @@ Stream adapter
 
 Factory to create Cache adapters
 
+@property SerializerFactory $serializerFactory
+
 
 ## Properties
 ```php
@@ -216,7 +119,7 @@ private serializerFactory;
 ## Methods
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $services = [] );
+public function __construct( SerializerFactory $factory, array $services = [] );
 ```
 AdapterFactory constructor.
 
@@ -228,9 +131,117 @@ Create a new instance of the adapter
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
+```
+
+
+
+```php
+protected function getServices(): array;
 ```
 Returns the available adapters
+
+
+
+
+<h1 id="cache-cache">Class Phalcon\Cache\Cache</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Cache.zep)
+
+| Namespace  | Phalcon\Cache |
+| Uses       | DateInterval, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable |
+| Implements | CacheInterface |
+
+This component offers caching capabilities for your application.
+Phalcon\Cache implements PSR-16.
+
+@property AdapterInterface $adapter
+
+
+## Properties
+```php
+/**
+ * The adapter
+ *
+ * @var AdapterInterface
+ */
+protected adapter;
+
+```
+
+## Methods
+
+```php
+public function __construct( AdapterInterface $adapter );
+```
+Constructor.
+
+
+```php
+public function clear(): bool;
+```
+Wipes clean the entire cache's keys.
+
+
+```php
+public function delete( mixed $key ): bool;
+```
+Delete an item from the cache by its unique key.
+
+
+```php
+public function deleteMultiple( mixed $keys ): bool;
+```
+Deletes multiple cache items in a single operation.
+
+
+```php
+public function get( mixed $key, mixed $defaultValue = null ): mixed;
+```
+Fetches a value from the cache.
+
+
+```php
+public function getAdapter(): AdapterInterface
+```
+
+
+
+```php
+public function getMultiple( mixed $keys, mixed $defaultValue = null ): mixed;
+```
+Obtains multiple cache items by their unique keys.
+
+
+```php
+public function has( mixed $key ): bool;
+```
+Determines whether an item is present in the cache.
+
+
+```php
+public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
+```
+Persists data in the cache, uniquely referenced by a key with an optional
+expiration TTL time.
+
+
+```php
+public function setMultiple( mixed $values, mixed $ttl = null ): bool;
+```
+Persists a set of key => value pairs in the cache, with an optional TTL.
+
+
+```php
+protected function checkKey( string $key ): void;
+```
+Checks the key. If it contains invalid characters an exception is thrown
+
+
+```php
+protected function checkKeys( mixed $keys ): void;
+```
+Checks the key. If it contains invalid characters an exception is thrown
 
 
 
@@ -240,9 +251,12 @@ Returns the available adapters
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/CacheFactory.zep)
 
 | Namespace  | Phalcon\Cache |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Helper\Arr |
+| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Cache, Phalcon\Cache\Exception\Exception, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractConfigFactory, Psr\SimpleCache\CacheInterface |
+| Extends    | AbstractConfigFactory |
 
 Creates a new Cache class
+
+@property AdapterFactory $adapterFactory;
 
 
 ## Properties
@@ -263,7 +277,7 @@ Constructor
 
 
 ```php
-public function load( mixed $config ): mixed;
+public function load( mixed $config ): CacheInterface;
 ```
 Factory to create an instance from a Config object
 
@@ -274,6 +288,12 @@ public function newInstance( string $name, array $options = [] ): CacheInterface
 Constructs a new Cache instance.
 
 
+```php
+protected function getExceptionClass(): string;
+```
+
+
+
 
 
 <h1 id="cache-exception-exception">Class Phalcon\Cache\Exception\Exception</h1>
@@ -281,7 +301,7 @@ Constructs a new Cache instance.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Exception/Exception.zep)
 
 | Namespace  | Phalcon\Cache\Exception |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 | Implements | \Psr\SimpleCache\CacheException |
 
 Exceptions thrown in Phalcon\Cache will use this class
@@ -293,7 +313,7 @@ Exceptions thrown in Phalcon\Cache will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cache/Exception/InvalidArgumentException.zep)
 
 | Namespace  | Phalcon\Cache\Exception |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 | Implements | \Psr\SimpleCache\InvalidArgumentException |
 
 Exceptions thrown in Phalcon\Cache will use this class

@@ -28,7 +28,7 @@ title: 'Phalcon\Forms'
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/AbstractElement.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | InvalidArgumentException, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation\ValidatorInterface |
+| Uses       | InvalidArgumentException, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Html\TagFactory, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
 | Implements | ElementInterface |
 
 This is a base class for form elements
@@ -36,33 +36,59 @@ This is a base class for form elements
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected attributes;
 
-//
+/**
+ * @var array
+ */
 protected filters;
 
-//
+/**
+ * @var Form|null
+ */
 protected form;
 
-//
+/**
+ * @var string|null
+ */
 protected label;
 
-//
+/**
+ * @var string
+ */
+protected method = inputText;
+
+/**
+ * @var Messages
+ */
 protected messages;
 
-//
+/**
+ * @var string
+ */
 protected name;
 
-//
+/**
+ * @var array
+ */
 protected options;
+
+/**
+ * @var TagFactory|null
+ */
+protected tagFactory;
 
 /**
  * @var array
  */
 protected validators;
 
-//
+/**
+ * @var mixed|null
+ */
 protected value;
 
 ```
@@ -161,6 +187,12 @@ Returns the element name
 
 
 ```php
+public function getTagFactory(): TagFactory | null;
+```
+Returns the tagFactory; throws exception if not present
+
+
+```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 Returns the value of an option if present
@@ -197,10 +229,9 @@ Generate the HTML to label the element
 
 
 ```php
-public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
+public function render( array $attributes = [] ): string;
 ```
-Returns an array of prepared attributes for Phalcon\Tag helpers
-according to the element parameters
+Renders the element widget returning HTML
 
 
 ```php
@@ -253,6 +284,12 @@ Sets the element name
 
 
 ```php
+public function setTagFactory( TagFactory $tagFactory ): AbstractElement;
+```
+Sets the TagFactory
+
+
+```php
 public function setUserOption( string $option, mixed $value ): ElementInterface;
 ```
 Sets an option for the element
@@ -264,6 +301,12 @@ public function setUserOptions( array $options ): ElementInterface;
 Sets options for the element
 
 
+```php
+protected function getLocalTagFactory(): TagFactory;
+```
+Returns the tagFactory; throws exception if not present
+
+
 
 
 <h1 id="forms-element-check">Class Phalcon\Forms\Element\Check</h1>
@@ -271,22 +314,19 @@ Sets options for the element
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Check.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
-
-Phalcon\Forms\Element\Check
 
 Component INPUT[type=check] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputCheckbox;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-date">Class Phalcon\Forms\Element\Date</h1>
@@ -300,14 +340,14 @@ Renders the element widget returning HTML
 Component INPUT[type=date] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputDate;
+
 ```
-Renders the element widget returning html
-
-
 
 
 <h1 id="forms-element-elementinterface">Interface Phalcon\Forms\Element\ElementInterface</h1>
@@ -315,7 +355,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/ElementInterface.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidatorInterface |
+| Uses       | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Filter\Validation\ValidatorInterface |
 
 Interface for Phalcon\Forms\Element classes
 
@@ -438,13 +478,6 @@ Generate the HTML to label the element
 
 
 ```php
-public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
-```
-Returns an array of prepared attributes for Phalcon\Tag helpers
-according to the element's parameters
-
-
-```php
 public function render( array $attributes = [] ): string;
 ```
 Renders the element widget
@@ -526,14 +559,14 @@ Phalcon\Forms\Element\Email
 Component INPUT[type=email] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputEmail;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-file">Class Phalcon\Forms\Element\File</h1>
@@ -547,14 +580,14 @@ Renders the element widget returning HTML
 Component INPUT[type=file] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputFile;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-hidden">Class Phalcon\Forms\Element\Hidden</h1>
@@ -570,14 +603,14 @@ Phalcon\Forms\Element\Hidden
 Component INPUT[type=hidden] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputHidden;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-numeric">Class Phalcon\Forms\Element\Numeric</h1>
@@ -593,14 +626,14 @@ Phalcon\Forms\Element\Numeric
 Component INPUT[type=number] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputNumeric;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-password">Class Phalcon\Forms\Element\Password</h1>
@@ -616,14 +649,14 @@ Phalcon\Forms\Element\Password
 Component INPUT[type=password] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputPassword;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-radio">Class Phalcon\Forms\Element\Radio</h1>
@@ -639,14 +672,14 @@ Phalcon\Forms\Element\Radio
 Component INPUT[type=radio] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputRadio;
+
 ```
-Renders the element widget returning HTML
-
-
 
 
 <h1 id="forms-element-select">Class Phalcon\Forms\Element\Select</h1>
@@ -664,7 +697,9 @@ Component SELECT (choice) for forms
 
 ## Properties
 ```php
-//
+/**
+ * @var object|array|null
+ */
 protected optionsValues;
 
 ```
@@ -672,7 +707,7 @@ protected optionsValues;
 ## Methods
 
 ```php
-public function __construct( string $name, mixed $options = null, mixed $attributes = null );
+public function __construct( string $name, mixed $options = null, array $attributes = [] );
 ```
 Phalcon\Forms\Element constructor
 
@@ -701,6 +736,13 @@ public function setOptions( mixed $options ): ElementInterface;
 Set the choice's options
 
 
+```php
+protected function prepareAttributes( array $attributes = [] ): array;
+```
+Returns an array of prepared attributes for Phalcon\Html\TagFactory
+helpers according to the element parameters
+
+
 
 
 <h1 id="forms-element-submit">Class Phalcon\Forms\Element\Submit</h1>
@@ -714,14 +756,14 @@ Set the choice's options
 Component INPUT[type=submit] for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputSubmit;
+
 ```
-Renders the element widget
-
-
 
 
 <h1 id="forms-element-text">Class Phalcon\Forms\Element\Text</h1>
@@ -729,21 +771,12 @@ Renders the element widget
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Text.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag |
+| Uses       | Phalcon\Forms\Exception |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Text
 
 Component INPUT[type=text] for forms
-
-
-## Methods
-
-```php
-public function render( array $attributes = [] ): string;
-```
-Renders the element widget
-
 
 
 
@@ -758,14 +791,14 @@ Renders the element widget
 Component TEXTAREA for forms
 
 
-## Methods
-
+## Properties
 ```php
-public function render( array $attributes = [] ): string;
+/**
+ * @var string
+ */
+protected method = inputTextarea;
+
 ```
-Renders the element widget
-
-
 
 
 <h1 id="forms-exception">Class Phalcon\Forms\Exception</h1>
@@ -773,7 +806,7 @@ Renders the element widget
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Exception.zep)
 
 | Namespace  | Phalcon\Forms |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Forms will use this class
 
@@ -784,7 +817,7 @@ Exceptions thrown in Phalcon\Forms will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Form.zep)
 
 | Namespace  | Phalcon\Forms |
-| Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface |
+| Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Html\TagFactory, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Filter\Validation, Phalcon\Filter\Validation\ValidationInterface |
 | Extends    | Injectable |
 | Implements | Countable, Iterator, AttributesInterface |
 
@@ -794,33 +827,64 @@ This component allows to build forms using an object-oriented interface
 ## Properties
 ```php
 /**
- * @var Attributes | null
+ * @var AttributesInterface|null
  */
 protected attributes;
 
-//
+/**
+ * @var array
+ */
 protected data;
 
-//
+/**
+ * @var array
+ */
+protected filteredData;
+
+/**
+ * @var array
+ */
 protected elements;
 
-//
+/**
+ * @var array
+ */
 protected elementsIndexed;
 
-//
+/**
+ * @var object|null
+ */
 protected entity;
 
-//
+/**
+ * @var Messages|array|null
+ */
 protected messages;
 
-//
-protected position;
+/**
+ * @var int
+ */
+protected position = 0;
 
-//
+/**
+ * @var array
+ */
 protected options;
 
-//
+/**
+ * @var TagFactory|null
+ */
+protected tagFactory;
+
+/**
+ * @var ValidationInterface|null
+ */
 protected validation;
+
+/**
+ * @var array
+ */
+protected whitelist;
 
 ```
 
@@ -839,7 +903,7 @@ Adds an element to the form
 
 
 ```php
-public function bind( array $data, mixed $entity, mixed $whitelist = null ): Form;
+public function bind( array $data, mixed $entity = null, array $whitelist = [] ): Form;
 ```
 Binds data to the entity
 
@@ -894,6 +958,12 @@ Returns the entity related to the model
 
 
 ```php
+public function getFilteredValue( string $name ): mixed | null;
+```
+Gets a value from the internal filtered data or calls getValue(name)
+
+
+```php
 public function getLabel( string $name ): string;
 ```
 Returns a label for an element
@@ -922,6 +992,12 @@ Returns the messages generated for a specific element
 
 
 ```php
+public function getTagFactory(): TagFactory | null;
+```
+Returns the tagFactory object
+
+
+```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 Returns the value of an option if present
@@ -934,7 +1010,7 @@ Returns the options for the element
 
 
 ```php
-public function getValidation()
+public function getValidation(): ValidationInterface|null
 ```
 
 
@@ -943,6 +1019,12 @@ public function getValidation()
 public function getValue( string $name ): mixed | null;
 ```
 Gets a value from the internal related entity or from the default value
+
+
+```php
+public function getWhitelist(): array
+```
+
 
 
 ```php
@@ -958,7 +1040,7 @@ Check if messages were generated for a specific element
 
 
 ```php
-public function isValid( mixed $data = null, mixed $entity = null ): bool;
+public function isValid( mixed $data = null, mixed $entity = null, array $whitelist = [] ): bool;
 ```
 Validates the form
 
@@ -1019,6 +1101,12 @@ Sets the entity related to the model
 
 
 ```php
+public function setTagFactory( TagFactory $tagFactory ): Form;
+```
+Sets the tagFactory for the form
+
+
+```php
 public function setUserOption( string $option, mixed $value ): Form;
 ```
 Sets an option for the form
@@ -1031,9 +1119,15 @@ Sets options for the element
 
 
 ```php
-public function setValidation( $validation )
+public function setValidation( ValidationInterface $validation ): Form;
 ```
+Sets the default validation
 
+
+```php
+public function setWhitelist( array $whitelist ): Form;
+```
+Sets the default whitelist
 
 
 ```php
@@ -1055,7 +1149,9 @@ Forms Manager
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected forms;
 
 ```

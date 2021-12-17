@@ -27,12 +27,9 @@ title: 'Phalcon\DataMapper'
 * [Phalcon\DataMapper\Query\Select](#datamapper-query-select)
 * [Phalcon\DataMapper\Query\Update](#datamapper-query-update)
 
-
 <h1 id="datamapper-pdo-connection">Class Phalcon\DataMapper\Pdo\Connection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection.zep)
-
-![](/assets/images/version-4.1.svg)
 
 | Namespace  | Phalcon\DataMapper\Pdo |
 | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Connection\AbstractConnection, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface |
@@ -104,7 +101,7 @@ methods
 ## Properties
 ```php
 /**
- * @var PDO
+ * @var \PDO
  */
 protected pdo;
 
@@ -882,15 +879,63 @@ protected messages;
 ## Methods
 
 ```php
-public function getMessages();
+public function alert( mixed $message, array $context = [] );
+```
+
+
+
+```php
+public function critical( mixed $message, array $context = [] );
+```
+
+
+
+```php
+public function debug( mixed $message, array $context = [] );
+```
+
+
+
+```php
+public function emergency( mixed $message, array $context = [] );
+```
+
+
+
+```php
+public function error( mixed $message, array $context = [] );
+```
+
+
+
+```php
+public function getMessages(): array;
 ```
 Returns the logged messages.
+
+
+```php
+public function info( mixed $message, array $context = [] );
+```
+
 
 
 ```php
 public function log( mixed $level, mixed $message, array $context = [] );
 ```
 Logs a message.
+
+
+```php
+public function notice( mixed $message, array $context = [] );
+```
+
+
+
+```php
+public function warning( mixed $message, array $context = [] );
+```
+
 
 
 
@@ -900,7 +945,7 @@ Logs a message.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler |
-| Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Helper\Json, Psr\Log\LoggerInterface, Psr\Log\LogLevel |
+| Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Psr\Log\LoggerInterface, Psr\Log\LogLevel |
 | Implements | ProfilerInterface |
 
 Sends query profiles to a logger.
@@ -1078,7 +1123,6 @@ Starts a profile entry.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/AbstractConditions.zep)
 
 | Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\Helper\Arr |
 | Extends    | AbstractQuery |
 
 Class AbstractConditions
@@ -1567,7 +1611,7 @@ Create a new Update object
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Select.zep)
 
 | Namespace  | Phalcon\DataMapper\Query |
-| Uses       | BadMethodCallException, Phalcon\Helper\Arr |
+| Uses       | BadMethodCallException |
 | Extends    | AbstractConditions |
 
 Class Select

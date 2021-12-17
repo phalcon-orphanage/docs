@@ -5,12 +5,58 @@ version: '5.0'
 title: 'Phalcon\Events'
 ---
 
+* [Phalcon\Events\AbstractEventsAware](#events-abstracteventsaware)
 * [Phalcon\Events\Event](#events-event)
 * [Phalcon\Events\EventInterface](#events-eventinterface)
 * [Phalcon\Events\EventsAwareInterface](#events-eventsawareinterface)
 * [Phalcon\Events\Exception](#events-exception)
 * [Phalcon\Events\Manager](#events-manager)
 * [Phalcon\Events\ManagerInterface](#events-managerinterface)
+
+<h1 id="events-abstracteventsaware">Abstract Class Phalcon\Events\AbstractEventsAware</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/AbstractEventsAware.zep)
+
+| Namespace  | Phalcon\Events |
+| Uses       | Phalcon\Events\ManagerInterface |
+
+Trait EventsAwareTrait
+
+@package Phalcon\Events\Traits
+
+@property ?ManagerInterface $eventsManager
+
+
+## Properties
+```php
+/**
+ * @var ManagerInterface|null
+ */
+protected eventsManager;
+
+```
+
+## Methods
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
+
+
+```php
+protected function fireManagerEvent( string $eventName, mixed $data = null, bool $cancellable = bool ): mixed | bool;
+```
+Helper method to fire an event
+
+
+
 
 <h1 id="events-event">Class Phalcon\Events\Event</h1>
 
@@ -53,7 +99,7 @@ protected data;
 /**
  * Event source
  *
- * @var object
+ * @var object|null
  */
 protected source;
 
@@ -76,7 +122,7 @@ protected type;
 ## Methods
 
 ```php
-public function __construct( string $type, object $source, mixed $data = null, bool $cancelable = bool );
+public function __construct( string $type, mixed $source = null, mixed $data = null, bool $cancelable = bool );
 ```
 Phalcon\Events\Event constructor
 
@@ -88,7 +134,7 @@ public function getData(): mixed
 
 
 ```php
-public function getSource(): object
+public function getSource(): object|null
 ```
 
 
@@ -233,7 +279,7 @@ Sets the events manager
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Exception.zep)
 
 | Namespace  | Phalcon\Events |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Phalcon\Events\Exception
 
@@ -274,10 +320,14 @@ protected collect = false;
  */
 protected enablePriorities = false;
 
-//
+/**
+ * @var array
+ */
 protected events;
 
-//
+/**
+ * @var array
+ */
 protected responses;
 
 ```
@@ -368,7 +418,7 @@ Check whether certain type of event has listeners
 ```php
 public function isCollecting(): bool;
 ```
-Check if the events manager is collecting all the responses returned
+Check if the events manager is collecting all all the responses returned
 by every registered listener in a single fire
 
 

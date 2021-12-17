@@ -29,15 +29,20 @@ title: 'Phalcon\Storage'
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | DateInterval, DateTime, Exception, Phalcon\Storage\Serializer\SerializerInterface, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception |
 | Implements | AdapterInterface |
 
-This file is part of the Phalcon Framework.
+Class AbstractAdapter
 
-(c) Phalcon Team <team@phalcon.io>
+@package Phalcon\Storage\Adapter
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+@property mixed               $adapter
+@property string              $defaultSerializer
+@property int                 $lifetime
+@property array               $options
+@property string              $prefix
+@property SerializerInterface $serializer
+@property SerializerFactory   $serializerFactory
 
 
 ## Properties
@@ -52,7 +57,7 @@ protected adapter;
  *
  * @var string
  */
-protected defaultSerializer = Php;
+protected defaultSerializer = php;
 
 /**
  * Name of the default TTL (time to live)
@@ -62,14 +67,19 @@ protected defaultSerializer = Php;
 protected lifetime = 3600;
 
 /**
+ * @var array
+ */
+protected options;
+
+/**
  * @var string
  */
-protected prefix = ;
+protected prefix = ph-memo-;
 
 /**
  * Serializer
  *
- * @var SerializerInterface
+ * @var SerializerInterface|null
  */
 protected serializer;
 
@@ -87,7 +97,7 @@ protected serializerFactory;
 ```php
 protected function __construct( SerializerFactory $factory, array $options = [] );
 ```
-Sets parameters based on options
+AbstractAdapter constructor.
 
 
 ```php
@@ -115,7 +125,7 @@ Reads data from the adapter
 
 
 ```php
-abstract public function getAdapter(): mixed;
+public function getAdapter(): mixed;
 ```
 Returns the adapter - connects to the storage if not connected
 
@@ -133,9 +143,9 @@ Returns all the keys stored
 
 
 ```php
-public function getPrefix(): string
+public function getPrefix(): string;
 ```
-
+Returns the prefix
 
 
 ```php
@@ -157,9 +167,15 @@ Stores data in the adapter
 
 
 ```php
-public function setDefaultSerializer( string $defaultSerializer )
+public function setDefaultSerializer( string $serializer ): void;
 ```
 
+
+
+```php
+protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null, string $cast = null ): mixed;
+```
+@todo Remove this when we get traits
 
 
 ```php
@@ -196,6 +212,8 @@ Returns unserialized data
 protected function initSerializer(): void;
 ```
 Initializes the serializer
+
+@throws SupportException
 
 
 
@@ -270,7 +288,18 @@ Increments a stored number
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
-Stores data in the adapter
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
+
+
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
 
 
 
@@ -280,18 +309,20 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Apcu.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | APCuIterator, DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception |
 | Extends    | AbstractAdapter |
 
 Apcu adapter
+
+@property array $options
 
 
 ## Properties
 ```php
 /**
- * @var array
+ * @var string
  */
-protected options;
+protected prefix = ph-apcu-;
 
 ```
 
@@ -300,7 +331,7 @@ protected options;
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
-Constructor
+Apcu constructor.
 
 
 ```php
@@ -328,12 +359,6 @@ Reads data from the adapter
 
 
 ```php
-public function getAdapter(): mixed;
-```
-Always returns null
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
@@ -357,6 +382,13 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 Stores data in the adapter
 
 
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
+
+
 
 
 <h1 id="storage-adapter-libmemcached">Class Phalcon\Storage\Adapter\Libmemcached</h1>
@@ -364,7 +396,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | DateInterval, Exception, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception |
 | Extends    | AbstractAdapter |
 
 Libmemcached adapter
@@ -373,9 +405,9 @@ Libmemcached adapter
 ## Properties
 ```php
 /**
- * @var array
+ * @var string
  */
-protected options;
+protected prefix = ph-memc-;
 
 ```
 
@@ -442,6 +474,13 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 Stores data in the adapter
 
 
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
+
+
 
 
 <h1 id="storage-adapter-memory">Class Phalcon\Storage\Adapter\Memory</h1>
@@ -449,24 +488,22 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception |
 | Extends    | AbstractAdapter |
 
 Memory adapter
 
+@property array $data
+@property array $options
+
 
 ## Properties
 ```php
 /**
- * @var Collection|CollectionInterface
+ * @var array
  */
 protected data;
 
-/**
- * @var array
- */
-protected options;
-
 ```
 
 ## Methods
@@ -474,91 +511,7 @@ protected options;
 ```php
 public function __construct( SerializerFactory $factory, array $options = [] );
 ```
-Constructor
-
-
-```php
-public function clear(): bool;
-```
-Flushes/clears the cache
-
-
-```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Reads data from the adapter
-
-
-```php
-public function get( string $key, mixed $defaultValue = null ): mixed;
-```
-Reads data from the adapter
-
-
-```php
-public function getAdapter(): mixed;
-```
-Always returns null
-
-
-```php
-public function getKeys( string $prefix = string ): array;
-```
-Stores data in the adapter
-
-
-```php
-public function has( string $key ): bool;
-```
-Checks if an element exists in the cache
-
-
-```php
-public function increment( string $key, int $value = int ): int | bool;
-```
-Increments a stored number
-
-
-```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
-```
-Stores data in the adapter
-
-
-
-
-<h1 id="storage-adapter-redis">Class Phalcon\Storage\Adapter\Redis</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Redis.zep)
-
-| Namespace  | Phalcon\Storage\Adapter |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
-| Extends    | AbstractAdapter |
-
-Redis adapter
-
-
-## Properties
-```php
-/**
- * @var array
- */
-protected options;
-
-```
-
-## Methods
-
-```php
-public function __construct( SerializerFactory $factory, array $options = [] );
-```
-Constructor
+Memory constructor.
 
 
 ```php
@@ -580,23 +533,15 @@ Deletes data from the adapter
 
 
 ```php
-public function get( string $key, mixed $defaultValue = null ): mixed;
+public function get( string $key, mixed $defaultValue = null );
 ```
 Reads data from the adapter
 
 
 ```php
-public function getAdapter(): mixed;
-```
-Returns the already connected adapter or connects to the Redis
-server(s)
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
-Gets the keys from the adapter. Accepts an optional prefix which will
-filter the keys returned
+Stores data in the adapter
 
 
 ```php
@@ -614,7 +559,108 @@ Increments a stored number
 ```php
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
-Stores data in the adapter. If no ttl is given, the default value will be used (3600s at the moment). 
+Stores data in the adapter
+
+
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
+
+
+
+
+<h1 id="storage-adapter-redis">Class Phalcon\Storage\Adapter\Redis</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Redis.zep)
+
+| Namespace  | Phalcon\Storage\Adapter |
+| Uses       | DateInterval, Exception, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception |
+| Extends    | AbstractAdapter |
+
+Redis adapter
+
+@property array $options
+
+
+## Properties
+```php
+/**
+ * @var string
+ */
+protected prefix = ph-reds-;
+
+```
+
+## Methods
+
+```php
+public function __construct( SerializerFactory $factory, array $options = [] );
+```
+Redis constructor.
+
+
+```php
+public function clear(): bool;
+```
+Flushes/clears the cache
+
+
+```php
+public function decrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+public function delete( string $key ): bool;
+```
+Reads data from the adapter
+
+
+```php
+public function get( string $key, mixed $defaultValue = null ): mixed;
+```
+Reads data from the adapter
+
+
+```php
+public function getAdapter(): mixed;
+```
+Returns the already connected adapter or connects to the Redis
+server(s)
+
+
+```php
+public function getKeys( string $prefix = string ): array;
+```
+Stores data in the adapter
+
+
+```php
+public function has( string $key ): bool;
+```
+Checks if an element exists in the cache
+
+
+```php
+public function increment( string $key, int $value = int ): int | bool;
+```
+Increments a stored number
+
+
+```php
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter
+
+
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
 
 
 
@@ -624,23 +670,26 @@ Stores data in the adapter. If no ttl is given, the default value will be used (
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | FilesystemIterator, Iterator, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface, RecursiveDirectoryIterator, RecursiveIteratorIterator |
+| Uses       | DateInterval, FilesystemIterator, Iterator, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Traits\StorageErrorHandlerTrait, Phalcon\Support\Exception, Phalcon\Traits\Helper\Str\DirFromFileTrait, Phalcon\Traits\Helper\Str\DirSeparatorTrait, Phalcon\Traits\Php\FileTrait, RecursiveDirectoryIterator, RecursiveIteratorIterator |
 | Extends    | AbstractAdapter |
 
 Stream adapter
+
+@property string $storageDir
+@property array  $options
 
 
 ## Properties
 ```php
 /**
-    * @var string
-    */
-protected storageDir = ;
+ * @var string
+ */
+protected prefix = ph-strm;
 
 /**
- * @var array
+ * @var string
  */
-protected options;
+protected storageDir = ;
 
 ```
 
@@ -677,12 +726,6 @@ Reads data from the adapter
 
 
 ```php
-public function getAdapter(): mixed;
-```
-Always returns null
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
@@ -704,6 +747,13 @@ Increments a stored number
 public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 Stores data in the adapter
+
+
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
 
 
 
@@ -748,9 +798,15 @@ Create a new instance of the adapter
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
 
+
+
+```php
+protected function getServices(): array;
+```
+Returns the available adapters
 
 
 
@@ -760,7 +816,7 @@ protected function getAdapters(): array;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Exception.zep)
 
 | Namespace  | Phalcon\Storage |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Phalcon\Storage\Exception
 
@@ -774,15 +830,13 @@ Exceptions thrown in Phalcon\Storage will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/AbstractSerializer.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | Phalcon\Storage\Exception |
 | Implements | SerializerInterface |
 
-This file is part of the Phalcon Framework.
+Class AbstractSerializer
 
-(c) Phalcon Team <team@phalcon.io>
+@package Phalcon\Storage\Serializer
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+@property mixed $data
 
 
 ## Properties
@@ -799,7 +853,7 @@ protected data;
 ```php
 public function __construct( mixed $data = null );
 ```
-Constructor
+Constructor.
 
 
 ```php
@@ -830,12 +884,9 @@ If this returns true, then the data returns back as is
 | Uses       | InvalidArgumentException |
 | Extends    | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Class Base64
 
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+@package Phalcon\Storage\Serializer
 
 
 ## Methods
@@ -872,7 +923,7 @@ file that was distributed with this source code.
 ## Methods
 
 ```php
-public function serialize(): string;
+public function serialize();
 ```
 Serializes data
 
@@ -890,21 +941,18 @@ Unserializes data
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Json.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException, JsonSerializable, Phalcon\Helper\Json |
+| Uses       | InvalidArgumentException, JsonSerializable |
 | Extends    | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Class Json
 
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+@package Phalcon\Storage\Serializer
 
 
 ## Methods
 
 ```php
-public function serialize(): string;
+public function serialize();
 ```
 Serializes data
 
@@ -953,15 +1001,11 @@ Unserializes data
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/None.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException |
 | Extends    | AbstractSerializer |
 
-This file is part of the Phalcon Framework.
+Class None
 
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+@package Phalcon\Storage\Serializer
 
 
 ## Methods
@@ -985,7 +1029,7 @@ Unserializes data
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Serializer/Php.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException, Phalcon\Storage\Exception |
+| Uses       | InvalidArgumentException, Phalcon\Storage\Traits\StorageErrorHandlerTrait |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
@@ -1020,12 +1064,9 @@ Unserializes data
 | Uses       | Serializable |
 | Extends    | Serializable |
 
-This file is part of the Phalcon Framework.
+Interface SerializerInterface
 
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+@package Phalcon\Storage\Serializer
 
 
 ## Methods
@@ -1075,8 +1116,14 @@ public function newInstance( string $name ): SerializerInterface;
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
 
+
+
+```php
+protected function getServices(): array;
+```
+Returns the available adapters
 
 

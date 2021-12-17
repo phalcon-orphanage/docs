@@ -75,6 +75,9 @@ title: 'Phalcon\Mvc'
 * [Phalcon\Mvc\Router\Route](#mvc-router-route)
 * [Phalcon\Mvc\Router\RouteInterface](#mvc-router-routeinterface)
 * [Phalcon\Mvc\RouterInterface](#mvc-routerinterface)
+* [Phalcon\Mvc\Url](#mvc-url)
+* [Phalcon\Mvc\Url\Exception](#mvc-url-exception)
+* [Phalcon\Mvc\Url\UrlInterface](#mvc-url-urlinterface)
 * [Phalcon\Mvc\View](#mvc-view)
 * [Phalcon\Mvc\View\Engine\AbstractEngine](#mvc-view-engine-abstractengine)
 * [Phalcon\Mvc\View\Engine\EngineInterface](#mvc-view-engine-engineinterface)
@@ -141,13 +144,19 @@ $application->main();
 
 ## Properties
 ```php
-//
+/**
+ * @var bool
+ */
 protected implicitView = true;
 
-//
+/**
+ * @var bool
+ */
 protected sendCookies = true;
 
-//
+/**
+ * @var bool
+ */
 protected sendHeaders = true;
 
 ```
@@ -301,7 +310,7 @@ in it, and then instantiating a controller and calling an action of that
 controller.
 
 ```php
-$di = new \Phalcon\Di();
+$di = new \Phalcon\Di\Di();
 
 $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
@@ -590,50 +599,80 @@ $app->handle("/say/welcome/Phalcon");
 
 ## Properties
 ```php
-//
+/**
+ * @var callable|null
+ */
 protected activeHandler;
 
-//
+/**
+ * @var array
+ */
 protected afterBindingHandlers;
 
-//
+/**
+ * @var array
+ */
 protected afterHandlers;
 
-//
+/**
+ * @var array
+ */
 protected beforeHandlers;
 
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var callable|null
+ */
 protected errorHandler;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
-//
+/**
+ * @var array
+ */
 protected finishHandlers;
 
-//
+/**
+ * @var array
+ */
 protected handlers;
 
-//
+/**
+ * @var BinderInterface|null
+ */
 protected modelBinder;
 
-//
+/**
+ * @var callable|null
+ */
 protected notFoundHandler;
 
-//
+/**
+ * @var callable|null
+ */
 protected responseHandler;
 
-//
+/**
+ * @var mixed|null
+ */
 protected returnedValue;
 
-//
+/**
+ * @var RouterInterface|null
+ */
 protected router;
 
-//
-protected stopped;
+/**
+ * @var bool
+ */
+protected stopped = false;
 
 ```
 
@@ -924,30 +963,38 @@ $app->mount($collection);
 
 ## Properties
 ```php
-//
+/**
+ * @var callable
+ */
 protected handler;
 
-//
+/**
+ * @var array
+ */
 protected handlers;
 
-//
-protected lazy;
+/**
+ * @var bool
+ */
+protected lazy = false;
 
-//
-protected prefix;
+/**
+ * @var string
+ */
+protected prefix = ;
 
 ```
 
 ## Methods
 
 ```php
-public function delete( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function delete( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE.
 
 
 ```php
-public function get( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function get( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is GET.
 
@@ -971,7 +1018,7 @@ Returns the collection prefix if any
 
 
 ```php
-public function head( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function head( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is HEAD.
 
@@ -983,13 +1030,13 @@ Returns if the main handler must be lazy loaded
 
 
 ```php
-public function map( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function map( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler.
 
 
 ```php
-public function mapVia( string $routePattern, mixed $handler, mixed $method, string $name = null ): CollectionInterface;
+public function mapVia( string $routePattern, callable $handler, mixed $method, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler via methods.
 
@@ -1004,26 +1051,26 @@ $collection->mapVia(
 
 
 ```php
-public function options( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function options( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is
 OPTIONS.
 
 
 ```php
-public function patch( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function patch( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PATCH.
 
 
 ```php
-public function post( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function post( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is POST.
 
 
 ```php
-public function put( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
+public function put( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PUT.
 
@@ -1047,7 +1094,7 @@ Sets a prefix for all routes added to the collection
 
 
 ```php
-protected function addMap( mixed $method, string $routePattern, mixed $handler, string $name );
+protected function addMap( mixed $method, string $routePattern, callable $handler, string $name ): void;
 ```
 Internal function to add a handler to the group.
 
@@ -1164,7 +1211,7 @@ Sets a prefix for all routes added to the collection
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Micro |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
@@ -1184,10 +1231,14 @@ Lazy-Load of handlers for Mvc\Micro using auto-loading
 
 ## Properties
 ```php
-//
+/**
+ * @var object|null
+ */
 protected handler;
 
-//
+/**
+ * @var string
+ */
 protected definition;
 
 ```
@@ -1207,13 +1258,13 @@ Calling __call method
 
 
 ```php
-public function getDefinition()
+public function getDefinition(): string
 ```
 
 
 
 ```php
-public function getHandler()
+public function getHandler(): object|null
 ```
 
 
@@ -1245,7 +1296,7 @@ Calls the middleware
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model.zep)
 
 | Namespace  | Phalcon\Mvc |
-| Uses       | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Serializable |
+| Uses       | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Filter\Validation\ValidationInterface, Serializable |
 | Extends    | AbstractInjectionAware |
 | Implements | EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable |
 
@@ -1300,7 +1351,9 @@ const TRANSACTION_INDEX = transaction;
 
 ## Properties
 ```php
-//
+/**
+ * @var int
+ */
 protected dirtyState = 1;
 
 /**
@@ -1313,10 +1366,14 @@ protected dirtyRelated;
  */
 protected errorMessages;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected modelsManager;
 
-//
+/**
+ * @var MetaDataInterface|null
+ */
 protected modelsMetaData;
 
 /**
@@ -1324,7 +1381,9 @@ protected modelsMetaData;
  */
 protected related;
 
-//
+/**
+ * @var int
+ */
 protected operationMade = 0;
 
 /**
@@ -1332,22 +1391,35 @@ protected operationMade = 0;
  */
 protected oldSnapshot;
 
-//
-protected skipped;
+/**
+ * @var bool
+ */
+protected skipped = false;
 
-//
+/**
+ * @var array
+ */
 protected snapshot;
 
-//
+/**
+ * @var TransactionInterface|null
+ */
 protected transaction;
 
-//
+/**
+ * @var string|null
+ */
 protected uniqueKey;
 
-//
+/**
+ * @var array
+ */
 protected uniqueParams;
 
-//
+/**
+ * @var array|null
+ * TODO: Make it always array in code
+ */
 protected uniqueTypes;
 
 ```
@@ -1503,7 +1575,7 @@ $robot->assign(
 
 
 ```php
-public static function average( mixed $parameters = null ): double | ResultsetInterface;
+public static function average( array $parameters = [] ): double | ResultsetInterface;
 ```
 Returns the average value on a column for a result-set of rows matching
 the specified conditions.
@@ -1705,7 +1777,7 @@ foreach ($robots as $robot) {
 // encapsulate find it into an running transaction esp. useful for application unit-tests
 // or complex business logic where we wanna control which transactions are used.
 
-$myTransaction = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
 $newRobot = new Robot();
@@ -1742,9 +1814,9 @@ foreach ($setOutsideTransaction as $robot) {
 $myTransaction->rollback();
 
 // creating two different transactions
-$myTransaction1 = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction1 = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction1->begin();
-$myTransaction2 = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction2 = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction2->begin();
 
  // add a new robots
@@ -1850,7 +1922,7 @@ $robot = Robots::findFirst(
 echo "The first virtual robot name is ", $robot->name;
 
 // behaviour with transaction
-$myTransaction = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
 $newRobot = new Robot();
@@ -2005,7 +2077,7 @@ Returns related records based on defined relations
 
 
 ```php
-final public function getSchema(): string;
+final public function getSchema(): string | null;
 ```
 Returns schema name where the mapped table is located
 
@@ -2023,7 +2095,7 @@ Returns the table name mapped in the model
 
 
 ```php
-public function getTransaction()
+public function getTransaction(): TransactionInterface|null
 ```
 
 
@@ -2410,8 +2482,8 @@ Check whether validation process has generated any messages
 
 ```php
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\ExclusionIn;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
 {
@@ -2445,125 +2517,6 @@ Writes an attribute value by its name
 ```php
 $robot->writeAttribute("name", "Rosey");
 ```
-
-
-```php
-protected function _cancelOperation();
-```
-Cancel the current operation
-
-@todo Remove in v5.0
-@deprecated Use cancelOperation()
-
-
-```php
-final protected function _checkForeignKeysRestrict(): bool;
-```
-Reads "belongs to" relations and check the virtual foreign keys when
-inserting or updating records to verify that inserted/updated values are
-present in the related entity
-
-
-```php
-final protected function _checkForeignKeysReverseCascade(): bool;
-```
-Reads both "hasMany" and "hasOne" relations and checks the virtual
-foreign keys (cascade) when deleting records
-
-
-```php
-final protected function _checkForeignKeysReverseRestrict(): bool;
-```
-Reads both "hasMany" and "hasOne" relations and checks the virtual
-foreign keys (restrict) when deleting records
-
-
-```php
-protected function _doLowInsert( MetaDataInterface $metaData, AdapterInterface $connection, mixed $table, mixed $identityField ): bool;
-```
-Sends a pre-build INSERT SQL statement to the relational database system
-
-@todo Remove in v5.0
-@deprecated Use doLowInsert()
-
-
-```php
-protected function _doLowUpdate( MetaDataInterface $metaData, AdapterInterface $connection, mixed $table ): bool;
-```
-Sends a pre-build UPDATE SQL statement to the relational database system
-
-@todo Remove in v5.0
-@deprecated Use doLowUpdate()
-
-
-```php
-protected function _exists( MetaDataInterface $metaData, AdapterInterface $connection ): bool;
-```
-Checks whether the current record already exists
-
-@todo Remove in v5.0
-@deprecated Use exists()
-
-
-```php
-protected function _getRelatedRecords( string $modelName, string $method, array $arguments );
-```
-Returns related records defined relations depending on the method name.
-Returns false if the relation is non-existent.
-
-@todo Remove in v5.0
-@deprecated Use getRelatedRecords()
-
-
-```php
-protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
-```
-Generate a PHQL SELECT statement for an aggregate
-
-@todo Remove in v5.0
-@deprecated Use groupResult()
-
-
-```php
-final protected function _possibleSetter( string $property, mixed $value ): bool;
-```
-Check for, and attempt to use, possible setter.
-
-
-```php
-protected function _postSave( bool $success, bool $exists ): bool;
-```
-Executes internal events after save a record
-
-@todo Remove in v5.0
-@deprecated Use postSave()
-
-
-```php
-protected function _postSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
-```
-Save the related records assigned in the has-one/has-many relations
-
-@todo Remove in v5.0
-@deprecated Use postSaveRelatedRecords()
-
-
-```php
-protected function _preSave( MetaDataInterface $metaData, bool $exists, mixed $identityField ): bool;
-```
-Executes internal hooks before save a record
-
-@todo Remove in v5.0
-@deprecated Use preSave()
-
-
-```php
-protected function _preSaveRelatedRecords( AdapterInterface $connection, mixed $related ): bool;
-```
-Saves related records that must be stored prior to save the master record
-
-@todo Remove in v5.0
-@deprecated Use preSaveRelatedRecords()
 
 
 ```php
@@ -2614,6 +2567,28 @@ Cancel the current operation
 
 
 ```php
+final protected function checkForeignKeysRestrict(): bool;
+```
+Reads "belongs to" relations and check the virtual foreign keys when
+inserting or updating records to verify that inserted/updated values are
+present in the related entity
+
+
+```php
+final protected function checkForeignKeysReverseCascade(): bool;
+```
+Reads both "hasMany" and "hasOne" relations and checks the virtual
+foreign keys (cascade) when deleting records
+
+
+```php
+final protected function checkForeignKeysReverseRestrict(): bool;
+```
+Reads both "hasMany" and "hasOne" relations and checks the virtual
+foreign keys (restrict) when deleting records
+
+
+```php
 protected function collectRelatedToSave(): array;
 ```
 Collects previously queried (belongs-to, has-one and has-one-through)
@@ -2633,12 +2608,6 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 ```php
-protected function exists( MetaDataInterface $metaData, AdapterInterface $connection ): bool;
-```
-Checks whether the current record already exists
-
-
-```php
 protected function getRelatedRecords( string $modelName, string $method, array $arguments );
 ```
 Returns related records defined relations depending on the method name.
@@ -2646,9 +2615,15 @@ Returns false if the relation is non-existent.
 
 
 ```php
-protected static function groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
+protected static function groupResult( string $functionName, string $alias, mixed $parameters = null ): ResultsetInterface;
 ```
 Generate a PHQL SELECT statement for an aggregate
+
+
+```php
+protected function has( MetaDataInterface $metaData, AdapterInterface $connection ): bool;
+```
+Checks whether the current record already exists
 
 
 ```php
@@ -2672,7 +2647,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasManyToMany( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
+protected function hasManyToMany( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options = [] ): Relation;
 ```
 Setup an n-n relation between two models, through an intermediate
 relation
@@ -2757,6 +2732,12 @@ class Robots extends Model
     }
 }
 ```
+
+
+```php
+final protected function possibleSetter( string $property, mixed $value ): bool;
+```
+Check for, and attempt to use, possible setter.
 
 
 ```php
@@ -2883,8 +2864,8 @@ Executes validators on every validation call
 
 ```php
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\ExclusionIn;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
 {
@@ -3068,16 +3049,22 @@ protected boundModels;
 
 /**
  * Cache object used for caching parameters for model binding
+ *
+ * @var AdapterInterface|null
  */
 protected cache;
 
 /**
  * Internal cache for caching parameters for model binding during request
+ *
+ * @var array
  */
 protected internalCache;
 
 /**
  * Array for original values
+ *
+ * @var array
  */
 protected originalValues;
 
@@ -3110,7 +3097,7 @@ Sets cache instance
 
 
 ```php
-public function getOriginalValues()
+public function getOriginalValues(): array
 ```
 
 
@@ -3208,7 +3195,7 @@ Sets cache instance
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Criteria.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Query\BuilderInterface |
+| Uses       | Phalcon\Di\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Query\BuilderInterface |
 | Implements | CriteriaInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Criteria
@@ -3230,19 +3217,29 @@ $robots = Robots::query()
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected bindParams;
 
-//
+/**
+ * @var array
+ */
 protected bindTypes;
 
-//
+/**
+ * @var int
+ */
 protected hiddenParamNumber = 0;
 
-//
+/**
+ * @var string|null
+ */
 protected model;
 
-//
+/**
+ * @var array
+ */
 protected params;
 
 ```
@@ -3850,7 +3847,7 @@ Sets the conditions parameter in the criteria
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Phalcon\Mvc\Model\Exception
 
@@ -3863,7 +3860,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Manager.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
+| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface, ReflectionClass, ReflectionProperty |
 | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Model\Manager
@@ -3872,10 +3869,10 @@ This components controls the initialization of models, keeping record of
 relations between the different models of the application.
 
 A ModelsManager is injected to a model via a Dependency Injector/Services
-Container such as Phalcon\Di.
+Container such as Phalcon\Di\Di.
 
 ```php
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Model\Manager as ModelsManager;
 
 $di = new Di();
@@ -3893,116 +3890,170 @@ $robot = new Robots($di);
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected aliases;
 
 /**
  * Models' behaviors
+ *
+ * @var array
  */
 protected behaviors;
 
 /**
  * Belongs to relations
+ *
+ * @var array
  */
 protected belongsTo;
 
 /**
  * All the relationships by model
+ *
+ * @var array
  */
 protected belongsToSingle;
 
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var array
+ */
 protected customEventsManager;
 
 /**
  * Does the model use dynamic update, instead of updating all rows?
+ *
+ * @var array
  */
 protected dynamicUpdate;
 
-//
+/**
+ * @var EventsManagerInterface|null
+ */
 protected eventsManager;
 
 /**
  * Has many relations
+ *
+ * @var array
  */
 protected hasMany;
 
 /**
  * Has many relations by model
+ *
+ * @var array
  */
 protected hasManySingle;
 
 /**
  * Has many-Through relations
+ *
+ * @var array
  */
 protected hasManyToMany;
 
 /**
  * Has many-Through relations by model
+ *
+ * @var array
  */
 protected hasManyToManySingle;
 
 /**
  * Has one relations
+ *
+ * @var array
  */
 protected hasOne;
 
 /**
  * Has one relations by model
+ *
+ * @var array
  */
 protected hasOneSingle;
 
 /**
  * Has one through relations
+ *
+ * @var array
  */
 protected hasOneThrough;
 
 /**
  * Has one through relations by model
+ *
+ * @var array
  */
 protected hasOneThroughSingle;
 
 /**
  * Mark initialized models
+ *
+ * @var array
  */
 protected initialized;
 
-//
+/**
+ * @var array
+ */
 protected keepSnapshots;
 
 /**
  * Last model initialized
+ *
+ * @var ModelInterface|null
  */
 protected lastInitialized;
 
 /**
  * Last query created/executed
+ *
+ * @var QueryInterface|null
  */
 protected lastQuery;
 
-//
+/**
+ * @var array
+ */
 protected modelVisibility;
 
-//
+/**
+ * @var string
+ */
 protected prefix = ;
 
-//
+/**
+ * @var array
+ */
 protected readConnectionServices;
 
-//
+/**
+ * @var array
+ */
 protected sources;
 
-//
+/**
+ * @var array
+ */
 protected schemas;
 
-//
+/**
+ * @var array
+ */
 protected writeConnectionServices;
 
 /**
  * Stores a list of reusable instances
+ *
+ * @var array
  */
 protected reusable;
 
@@ -4014,16 +4065,6 @@ protected reusable;
 public function __destruct();
 ```
 Destroys the current PHQL cache
-
-
-```php
-public function _getConnectionService( ModelInterface $model, mixed $connectionServices ): string;
-```
-Returns the connection service name used to read or write data related to
-a model depending on the connection services
-
-@todo Remove in v5.0
-@deprecated Use getConnectionService()
 
 
 ```php
@@ -4110,30 +4151,35 @@ $manager->executeQuery('DELETE FROM Robots WHERE id = :id:', ['id' => 1]);
 public function existsBelongsTo( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a belongsTo relation with another model
+@deprecated
 
 
 ```php
 public function existsHasMany( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a hasMany relation with another model
+@deprecated
 
 
 ```php
 public function existsHasManyToMany( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a hasManyToMany relation with another model
+@deprecated
 
 
 ```php
 public function existsHasOne( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a hasOne relation with another model
+@deprecated
 
 
 ```php
 public function existsHasOneThrough( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a hasOneThrough relation with another model
+@deprecated
 
 
 ```php
@@ -4174,7 +4220,7 @@ Returns the DependencyInjector container
 
 
 ```php
-public function getEventsManager(): EventsManagerInterface;
+public function getEventsManager(): EventsManagerInterface | null;
 ```
 Returns the internal event manager
 
@@ -4240,7 +4286,7 @@ Returns the prefix for all model sources.
 
 
 ```php
-public function getModelSchema( ModelInterface $model ): string;
+public function getModelSchema( ModelInterface $model ): string | null;
 ```
 Returns the mapped schema for a model
 
@@ -4303,6 +4349,36 @@ Returns the connection to write data related to a model
 public function getWriteConnectionService( ModelInterface $model ): string;
 ```
 Returns the connection service name used to write data related to a model
+
+
+```php
+public function hasBelongsTo( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a belongsTo relation with another model
+
+
+```php
+public function hasHasMany( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasMany relation with another model
+
+
+```php
+public function hasHasManyToMany( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasManyToMany relation with another model
+
+
+```php
+public function hasHasOne( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasOne relation with another model
+
+
+```php
+public function hasHasOneThrough( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasOneThrough relation with another model
 
 
 ```php
@@ -4456,15 +4532,6 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 ```php
-protected function _getConnection( ModelInterface $model, mixed $connectionServices ): AdapterInterface;
-```
-Returns the connection to read or write data related to a model depending on the connection services.
-
-@todo Remove in v5.0
-@deprecated Use getConnection()
-
-
-```php
 final protected function _mergeFindParameters( mixed $findParamsOne, mixed $findParamsTwo ): array;
 ```
 Merge two arrays of find parameters
@@ -4547,36 +4614,6 @@ Creates a Phalcon\Mvc\Model\Query and execute it
 
 
 ```php
-public function existsBelongsTo( string $modelName, string $modelRelation ): bool;
-```
-Checks whether a model has a belongsTo relation with another model
-
-
-```php
-public function existsHasMany( string $modelName, string $modelRelation ): bool;
-```
-Checks whether a model has a hasMany relation with another model
-
-
-```php
-public function existsHasManyToMany( string $modelName, string $modelRelation ): bool;
-```
-Checks whether a model has a hasManyToMany relation with another model
-
-
-```php
-public function existsHasOne( string $modelName, string $modelRelation ): bool;
-```
-Checks whether a model has a hasOne relation with another model
-
-
-```php
-public function existsHasOneThrough( string $modelName, string $modelRelation ): bool;
-```
-Checks whether a model has a hasOneThrough relation with another model
-
-
-```php
 public function getBelongsTo( ModelInterface $model ): RelationInterface[] | array;
 ```
 Gets belongsTo relations defined on a model
@@ -4643,7 +4680,7 @@ Returns the last query created or executed in the models manager
 
 
 ```php
-public function getModelSchema( ModelInterface $model ): string;
+public function getModelSchema( ModelInterface $model ): string | null;
 ```
 Returns the mapped schema for a model
 
@@ -4667,7 +4704,7 @@ Returns the connection service name used to read data related to a model
 
 
 ```php
-public function getRelationByAlias( string $modelName, string $alias ): Relation | bool;
+public function getRelationByAlias( string $modelName, string $alias ): RelationInterface | bool;
 ```
 Returns a relation by its alias
 
@@ -4700,6 +4737,36 @@ Returns the connection to write data related to a model
 public function getWriteConnectionService( ModelInterface $model ): string;
 ```
 Returns the connection service name used to write data related to a model
+
+
+```php
+public function hasBelongsTo( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a belongsTo relation with another model
+
+
+```php
+public function hasHasMany( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasMany relation with another model
+
+
+```php
+public function hasHasManyToMany( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasManyToMany relation with another model
+
+
+```php
+public function hasHasOne( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasOne relation with another model
+
+
+```php
+public function hasHasOneThrough( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasOneThrough relation with another model
 
 
 ```php
@@ -4855,20 +4922,28 @@ const MODELS_REVERSE_COLUMN_MAP = 1;
 ## Properties
 ```php
 /**
- * @var CacheAdapterInterface
+ * @var CacheAdapterInterface|null
  */
 protected adapter;
 
-//
+/**
+ * @var array
+ */
 protected columnMap;
 
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var array
+ */
 protected metaData;
 
-//
+/**
+ * @var StrategyInterface|null
+ */
 protected strategy;
 
 ```
@@ -5266,6 +5341,12 @@ print_r(
 
 
 ```php
+protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null ): mixed;
+```
+@todo Remove this when we get traits
+
+
+```php
 final protected function initialize( ModelInterface $model, mixed $key, mixed $table, mixed $schema );
 ```
 Initialize the metadata for certain table
@@ -5278,7 +5359,7 @@ Initialize the metadata for certain table
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Apcu.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
+| Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
 Phalcon\Mvc\Model\MetaData\Apcu
@@ -5314,7 +5395,7 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Libmemcached.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
+| Uses       | Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
 Phalcon\Mvc\Model\MetaData\Libmemcached
@@ -5381,7 +5462,7 @@ Writes the meta-data to temporal memory
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Redis.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
+| Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
 Phalcon\Mvc\Model\MetaData\Redis
@@ -5538,7 +5619,9 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
 
 ## Properties
 ```php
-//
+/**
+ * @var string
+ */
 protected metaDataDir = ./;
 
 ```
@@ -5546,7 +5629,7 @@ protected metaDataDir = ./;
 ## Methods
 
 ```php
-public function __construct( mixed $options = null );
+public function __construct( array $options = [] );
 ```
 Phalcon\Mvc\Model\MetaData\Files constructor
 
@@ -5760,7 +5843,7 @@ Writes meta-data for certain model using a MODEL_* constant
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang |
+| Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang, Psr\SimpleCache\CacheInterface |
 | Implements | QueryInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Query
@@ -5823,82 +5906,131 @@ const TYPE_UPDATE = 300;
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ * TODO: Add default value, instead of null, also remove type check
+ */
 protected ast;
 
-//
+/**
+ * @var array
+ */
 protected bindParams;
 
-//
+/**
+ * @var array
+ */
 protected bindTypes;
 
-//
+/**
+ * @var \Psr\SimpleCache\CacheInterface|null
+ */
 protected cache;
 
-//
+/**
+ * @var array|null
+ */
 protected cacheOptions;
 
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var bool
+ */
 protected enableImplicitJoins;
 
-//
+/**
+ * @var array
+ */
 protected intermediate;
 
-//
+/**
+ * @var \Phalcon\Mvc\Model\ManagerInterface|null
+ */
 protected manager;
 
-//
+/**
+ * @var \Phalcon\Mvc\Model\MetaDataInterface|null
+ */
 protected metaData;
 
-//
+/**
+ * @var array
+ */
 protected models;
 
-//
+/**
+ * @var array
+ */
 protected modelsInstances;
 
-//
+/**
+ * @var int
+ */
 protected nestingLevel = -1;
 
-//
+/**
+ * @var string|null
+ */
 protected phql;
 
-//
-protected sharedLock;
+/**
+ * @var bool
+ */
+protected sharedLock = false;
 
-//
+/**
+ * @var array
+ */
 protected sqlAliases;
 
-//
+/**
+ * @var array
+ */
 protected sqlAliasesModels;
 
-//
+/**
+ * @var array
+ */
 protected sqlAliasesModelsInstances;
 
-//
+/**
+ * @var array
+ */
 protected sqlColumnAliases;
 
-//
+/**
+ * @var array
+ */
 protected sqlModelsAliases;
 
-//
+/**
+ * @var int|null
+ */
 protected type;
 
-//
-protected uniqueRow;
-
-//
-static protected _irPhqlCache;
+/**
+ * @var bool
+ */
+protected uniqueRow = false;
 
 /**
  * TransactionInterface so that the query can wrap a transaction
  * around batch updates and intermediate selects within the transaction.
  * however if a model got a transaction set inside it will use the local
  * transaction instead of this one
+ *
+ * @var TransactionInterface|null
  */
-protected _transaction;
+protected transaction;
+
+/**
+ * @var array|null
+ */
+protected static internalPhqlCache;
 
 ```
 
@@ -5978,6 +6110,12 @@ SELECT statements)
 
 
 ```php
+public function getTransaction(): TransactionInterface|null
+```
+
+
+
+```php
 public function getType(): int;
 ```
 Gets the type of PHQL statement executed
@@ -5988,12 +6126,6 @@ public function getUniqueRow(): bool;
 ```
 Check if the query is programmed to get only the first row in the
 resultset
-
-
-```php
-public function get_transaction()
-```
-
 
 
 ```php
@@ -6054,136 +6186,6 @@ returned
 
 
 ```php
-final protected function _executeDelete( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
-```
-Executes the DELETE intermediate representation producing a
-Phalcon\Mvc\Model\Query\Status
-
-
-```php
-final protected function _executeInsert( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
-```
-Executes the INSERT intermediate representation producing a
-Phalcon\Mvc\Model\Query\Status
-
-
-```php
-final protected function _executeSelect( array $intermediate, array $bindParams, array $bindTypes, bool $simulate = bool ): ResultsetInterface | array;
-```
-Executes the SELECT intermediate representation producing a
-Phalcon\Mvc\Model\Resultset
-
-
-```php
-final protected function _executeUpdate( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
-```
-Executes the UPDATE intermediate representation producing a
-Phalcon\Mvc\Model\Query\Status
-
-
-```php
-final protected function _getCallArgument( array $argument ): array;
-```
-Resolves an expression in a single call argument
-
-
-```php
-final protected function _getCaseExpression( array $expr ): array;
-```
-Resolves an expression in a single call argument
-
-
-```php
-final protected function _getExpression( array $expr, bool $quoting = bool ): string;
-```
-Resolves an expression from its intermediate code into a string
-
-
-```php
-final protected function _getFunctionCall( array $expr ): array;
-```
-Resolves an expression in a single call argument
-
-
-```php
-final protected function _getGroupClause( array $group ): array;
-```
-Returns a processed group clause for a SELECT statement
-
-
-```php
-final protected function _getJoin( ManagerInterface $manager, array $join ): array;
-```
-Resolves a JOIN clause checking if the associated models exist
-
-
-```php
-final protected function _getJoinType( array $join ): string;
-```
-Resolves a JOIN type
-
-
-```php
-final protected function _getJoins( array $select ): array;
-```
-Processes the JOINs in the query returning an internal representation for
-the database dialect
-
-
-```php
-final protected function _getLimitClause( array $limitClause ): array;
-```
-Returns a processed limit clause for a SELECT statement
-
-
-```php
-final protected function _getMultiJoin( string $joinType, mixed $joinSource, string $modelAlias, string $joinAlias, RelationInterface $relation ): array;
-```
-Resolves joins involving many-to-many relations
-
-
-```php
-final protected function _getOrderClause( mixed $order ): array;
-```
-Returns a processed order clause for a SELECT statement
-
-
-```php
-final protected function _getQualified( array $expr ): array;
-```
-Replaces the model's name to its source name in a qualified-name
-expression
-
-
-```php
-final protected function _getRelatedRecords( ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes ): ResultsetInterface;
-```
-Query the records on which the UPDATE/DELETE operation will be done
-
-@todo Remove in v5.0
-@deprecated Use getRelatedRecords()
-
-
-```php
-final protected function _getSelectColumn( array $column ): array;
-```
-Resolves a column from its intermediate representation into an array
-used to determine if the resultset produced is simple or complex
-
-
-```php
-final protected function _getSingleJoin( string $joinType, mixed $joinSource, string $modelAlias, string $joinAlias, RelationInterface $relation ): array;
-```
-Resolves joins involving has-one/belongs-to/has-many relations
-
-
-```php
-final protected function _getTable( ManagerInterface $manager, array $qualifiedName );
-```
-Resolves a table in a SELECT statement checking if the model exists
-
-
-```php
 final protected function _prepareDelete(): array;
 ```
 Analyzes a DELETE intermediate code and produces an array to be executed
@@ -6211,6 +6213,108 @@ later
 
 
 ```php
+final protected function executeDelete( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
+```
+Executes the DELETE intermediate representation producing a
+Phalcon\Mvc\Model\Query\Status
+
+
+```php
+final protected function executeInsert( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
+```
+Executes the INSERT intermediate representation producing a
+Phalcon\Mvc\Model\Query\Status
+
+
+```php
+final protected function executeSelect( array $intermediate, array $bindParams, array $bindTypes, bool $simulate = bool ): ResultsetInterface | array;
+```
+Executes the SELECT intermediate representation producing a
+Phalcon\Mvc\Model\Resultset
+
+
+```php
+final protected function executeUpdate( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
+```
+Executes the UPDATE intermediate representation producing a
+Phalcon\Mvc\Model\Query\Status
+
+
+```php
+final protected function getCallArgument( array $argument ): array;
+```
+Resolves an expression in a single call argument
+
+
+```php
+final protected function getCaseExpression( array $expr ): array;
+```
+Resolves an expression in a single call argument
+
+
+```php
+final protected function getExpression( array $expr, bool $quoting = bool ): array;
+```
+Resolves an expression from its intermediate code into an array
+
+
+```php
+final protected function getFunctionCall( array $expr ): array;
+```
+Resolves an expression in a single call argument
+
+
+```php
+final protected function getGroupClause( array $group ): array;
+```
+Returns a processed group clause for a SELECT statement
+
+
+```php
+final protected function getJoin( ManagerInterface $manager, array $join ): array;
+```
+Resolves a JOIN clause checking if the associated models exist
+
+
+```php
+final protected function getJoinType( array $join ): string;
+```
+Resolves a JOIN type
+
+
+```php
+final protected function getJoins( array $select ): array;
+```
+Processes the JOINs in the query returning an internal representation for
+the database dialect
+
+
+```php
+final protected function getLimitClause( array $limitClause ): array;
+```
+Returns a processed limit clause for a SELECT statement
+
+
+```php
+final protected function getMultiJoin( string $joinType, mixed $joinSource, string $modelAlias, string $joinAlias, RelationInterface $relation ): array;
+```
+Resolves joins involving many-to-many relations
+
+
+```php
+final protected function getOrderClause( mixed $order ): array;
+```
+Returns a processed order clause for a SELECT statement
+
+
+```php
+final protected function getQualified( array $expr ): array;
+```
+Replaces the model's name to its source name in a qualified-name
+expression
+
+
+```php
 protected function getReadConnection( ModelInterface $model, array $intermediate = null, array $bindParams = [], array $bindTypes = [] ): AdapterInterface;
 ```
 Gets the read connection from the model if there is no transaction set
@@ -6221,6 +6325,25 @@ inside the query object
 final protected function getRelatedRecords( ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes ): ResultsetInterface;
 ```
 Query the records on which the UPDATE/DELETE operation will be done
+
+
+```php
+final protected function getSelectColumn( array $column ): array;
+```
+Resolves a column from its intermediate representation into an array
+used to determine if the resultset produced is simple or complex
+
+
+```php
+final protected function getSingleJoin( string $joinType, mixed $joinSource, string $modelAlias, string $joinAlias, RelationInterface $relation ): array;
+```
+Resolves joins involving has-one/belongs-to/has-many relations
+
+
+```php
+final protected function getTable( ManagerInterface $manager, array $qualifiedName );
+```
+Resolves a table in a SELECT statement checking if the model exists
 
 
 ```php
@@ -6237,7 +6360,7 @@ inside the query object
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Builder.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
-| Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface |
+| Uses       | Phalcon\Di\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface |
 | Implements | BuilderInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Query\Builder
@@ -6278,42 +6401,64 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected bindParams;
 
-//
+/**
+ * @var array
+ */
 protected bindTypes;
 
-//
+/**
+ * @var array|string|null
+ */
 protected columns;
 
-//
+/**
+ * @var array|string|null
+ */
 protected conditions;
 
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var mixed
+ */
 protected distinct;
 
-//
-protected forUpdate;
+/**
+ * @var bool
+ */
+protected forUpdate = false;
 
 /**
  * @var array
  */
 protected group;
 
-//
+/**
+ * @var string|null
+ */
 protected having;
 
-//
+/**
+ * @var int
+ */
 protected hiddenParamNumber = 0;
 
-//
+/**
+ * @var array
+ */
 protected joins;
 
-//
+/**
+ * @var array|string
+ */
 protected limit;
 
 /**
@@ -6321,14 +6466,20 @@ protected limit;
  */
 protected models;
 
-//
-protected offset;
+/**
+ * @var int
+ */
+protected offset = 0;
 
-//
+/**
+ * @var array|string
+ */
 protected order;
 
-//
-protected sharedLock;
+/**
+ * @var bool
+ */
+protected sharedLock = false;
 
 ```
 
@@ -6602,7 +6753,7 @@ $builder->groupBy(
 
 
 ```php
-public function having( mixed $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
+public function having( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Sets the HAVING condition clause
 
@@ -7070,7 +7221,7 @@ Sets a GROUP BY clause
 
 
 ```php
-public function having( string $having ): BuilderInterface;
+public function having( string $conditions ): BuilderInterface;
 ```
 Sets a HAVING condition clause
 
@@ -7130,7 +7281,7 @@ Appends a condition to the current conditions using an OR operator
 
 
 ```php
-public function orderBy( string $orderBy ): BuilderInterface;
+public function orderBy( mixed $orderBy ): BuilderInterface;
 ```
 Sets an ORDER BY condition clause
 
@@ -7235,10 +7386,14 @@ if ($status->success()) {
 
 ## Properties
 ```php
-//
+/**
+ * @var ModelInterface|null
+ */
 protected model;
 
-//
+/**
+ * @var bool
+ */
 protected success;
 
 ```
@@ -7426,28 +7581,44 @@ const NO_ACTION = 0;
 
 ## Properties
 ```php
-//
+/**
+ * @var array|string
+ */
 protected fields;
 
-//
+/**
+ * @var array|string
+ */
 protected intermediateFields;
 
-//
+/**
+ * @var string|null
+ */
 protected intermediateModel;
 
-//
+/**
+ * @var array|string
+ */
 protected intermediateReferencedFields;
 
-//
+/**
+ * @var array
+ */
 protected options;
 
-//
+/**
+ * @var array|string
+ */
 protected referencedFields;
 
-//
+/**
+ * @var string
+ */
 protected referencedModel;
 
-//
+/**
+ * @var int
+ */
 protected type;
 
 ```
@@ -7686,7 +7857,7 @@ Sets the object's state
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, SeekableIterator, Serializable |
+| Uses       | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, Psr\SimpleCache\CacheInterface, SeekableIterator, Serializable |
 | Implements | ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable |
 
 Phalcon\Mvc\Model\Resultset
@@ -7741,35 +7912,55 @@ const TYPE_RESULT_PARTIAL = 1;
 
 ## Properties
 ```php
-//
+/**
+ * @var mixed|null
+ */
 protected activeRow;
 
-//
+/**
+ * @var CacheInterface|null
+ */
 protected cache;
 
-//
+/**
+ * @var int
+ */
 protected count = 0;
 
-//
+/**
+ * @var array
+ */
 protected errorMessages;
 
-//
+/**
+ * @var int
+ */
 protected hydrateMode = 0;
 
-//
+/**
+ * @var bool
+ */
 protected isFresh = true;
 
-//
+/**
+ * @var int
+ */
 protected pointer = 0;
 
-//
+/**
+ * @var mixed|null
+ */
 protected row;
 
-//
+/**
+ * @var array|null
+ */
 protected rows;
 
 /**
  * Phalcon\Db\ResultInterface or false for empty resultset
+ *
+ * @var ResultInterface|bool
  */
 protected result;
 
@@ -7778,7 +7969,7 @@ protected result;
 ## Methods
 
 ```php
-public function __construct( mixed $result, AdapterInterface $cache = null );
+public function __construct( mixed $result, CacheInterface $cache = null );
 ```
 Phalcon\Mvc\Model\Resultset constructor
 
@@ -7812,7 +8003,7 @@ $filtered = $robots->filter(
 
 
 ```php
-public function getCache(): AdapterInterface;
+public function getCache(): CacheInterface | null;
 ```
 Returns the associated cache for the resultset
 
@@ -7966,7 +8157,7 @@ Check whether internal resource has rows to fetch
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Complex.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Resultset |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass |
+| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, Psr\SimpleCache\CacheInterface, stdClass |
 | Extends    | Resultset |
 | Implements | ResultsetInterface |
 
@@ -7978,12 +8169,16 @@ This class builds every complex row as it is required
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected columnTypes;
 
 /**
  * Unserialised result-set hydrated all rows already. unserialise() sets
  * disableHydration to true
+ *
+ * @var bool
  */
 protected disableHydration = false;
 
@@ -7992,7 +8187,7 @@ protected disableHydration = false;
 ## Methods
 
 ```php
-public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null );
+public function __construct( mixed $columnTypes, ResultInterface $result = null, CacheInterface $cache = null );
 ```
 Phalcon\Mvc\Model\Resultset\Complex constructor
 
@@ -8029,7 +8224,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Simple.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Resultset |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, Psr\SimpleCache\CacheInterface |
 | Extends    | Resultset |
 
 Phalcon\Mvc\Model\Resultset\Simple
@@ -8040,10 +8235,14 @@ This class builds every complete object as it is required
 
 ## Properties
 ```php
-//
+/**
+ * @var array|string
+ */
 protected columnMap;
 
-//
+/**
+ * @var ModelInterface|Row
+ */
 protected model;
 
 /**
@@ -8056,7 +8255,7 @@ protected keepSnapshots = false;
 ## Methods
 
 ```php
-public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null );
+public function __construct( mixed $columnMap, mixed $model, mixed $result, CacheInterface $cache = null, bool $keepSnapshots = bool );
 ```
 Phalcon\Mvc\Model\Resultset\Simple constructor
 
@@ -8096,7 +8295,7 @@ the saved state
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultsetInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface |
+| Uses       | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Psr\SimpleCache\CacheInterface |
 
 Phalcon\Mvc\Model\ResultsetInterface
 
@@ -8128,7 +8327,7 @@ $filtered = $robots->filter(
 
 
 ```php
-public function getCache(): AdapterInterface;
+public function getCache(): CacheInterface | null;
 ```
 Returns the associated cache for the resultset
 
@@ -8282,7 +8481,7 @@ $robot->writeAttribute("name", "Rosey");
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface |
+| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface |
 | Implements | TransactionInterface |
 
 Phalcon\Mvc\Model\Transaction
@@ -8331,28 +8530,44 @@ try {
 
 ## Properties
 ```php
-//
+/**
+ * @var bool
+ */
 protected activeTransaction = false;
 
-//
+/**
+ * @var AdapterInterface
+ */
 protected connection;
 
-//
+/**
+ * @var bool
+ */
 protected isNewTransaction = true;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected manager;
 
-//
+/**
+ * @var array
+ */
 protected messages;
 
-//
+/**
+ * @var ModelInterface|null
+ */
 protected rollbackRecord;
 
-//
+/**
+ * @var bool
+ */
 protected rollbackOnAbort = false;
 
-//
+/**
+ * @var bool
+ */
 protected rollbackThrowException = false;
 
 ```
@@ -8378,7 +8593,7 @@ Commits the transaction
 
 
 ```php
-public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface;
+public function getConnection(): AdapterInterface;
 ```
 Returns the connection related to transaction
 
@@ -8467,7 +8682,9 @@ This class will be thrown to exit a try/catch block for isolated transactions
 
 ## Properties
 ```php
-//
+/**
+ * @var ModelInterface|null
+ */
 protected record;
 
 ```
@@ -8499,7 +8716,7 @@ Returns validation record messages which stop the transaction
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Manager.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Transaction |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface |
+| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface |
 | Implements | ManagerInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Transaction\Manager
@@ -8551,19 +8768,29 @@ try {
 
 ## Properties
 ```php
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var bool
+ */
 protected initialized = false;
 
-//
+/**
+ * @var int
+ */
 protected number = 0;
 
-//
+/**
+ * @var bool
+ */
 protected rollbackPendent = true;
 
-//
+/**
+ * @var string
+ */
 protected service = db;
 
 /**
@@ -8865,7 +9092,7 @@ Enables throwing exception
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ValidationFailed.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface |
+| Uses       | Phalcon\Messages\Message, Phalcon\Mvc\ModelInterface |
 | Extends    | Exception |
 
 Phalcon\Mvc\Model\ValidationFailed
@@ -8876,10 +9103,14 @@ Phalcon\Mvc\Model must be set up to have this behavior
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected messages;
 
-//
+/**
+ * @var ModelInterface
+ */
 protected model;
 
 ```
@@ -8933,7 +9164,7 @@ Assigns values to a model from an array
 
 
 ```php
-public static function average( mixed $parameters = null ): double | ResultsetInterface;
+public static function average( array $parameters = [] ): double | ResultsetInterface;
 ```
 Allows to calculate the average value on a column matching the specified
 conditions
@@ -8946,7 +9177,7 @@ Assigns values to a model from an array returning a new model
 
 
 ```php
-public static function cloneResultMap( mixed $base, array $data, mixed $columnMap, int $dirtyState = int, bool $keepSnapshots = null ): ModelInterface;
+public static function cloneResultMap( mixed $base, array $data, mixed $columnMap, int $dirtyState = int, bool $keepSnapshots = bool ): ModelInterface;
 ```
 Assigns values to a model from an array returning a new model
 
@@ -9053,7 +9284,7 @@ Returns related records based on defined relations
 
 
 ```php
-public function getSchema(): string;
+public function getSchema(): string | null;
 ```
 Returns schema name where table mapped is located
 
@@ -9248,61 +9479,99 @@ const POSITION_LAST = 1;
 
 ## Properties
 ```php
-//
+/**
+ * @var string|null
+ */
 protected action;
 
-//
+/**
+ * @var string|null
+ */
 protected controller;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultAction;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultController;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultModule;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultNamespace;
 
-//
+/**
+ * @var array
+ */
 protected defaultParams;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
-//
+/**
+ * @var array
+ */
 protected keyRouteNames;
 
-//
+/**
+ * @var array
+ */
 protected keyRouteIds;
 
-//
+/**
+ * @var RouteInterface|null
+ */
 protected matchedRoute;
 
-//
+/**
+ * @var array
+ */
 protected matches;
 
-//
+/**
+ * @var string|null
+ */
 protected module;
 
-//
+/**
+ * @var string|null
+ */
 protected namespaceName;
 
-//
+/**
+ * @var array|string|null
+ */
 protected notFoundPaths;
 
-//
+/**
+ * @var array
+ */
 protected params;
 
-//
-protected removeExtraSlashes;
+/**
+ * @var bool
+ */
+protected removeExtraSlashes = false;
 
-//
+/**
+ * @var array
+ */
 protected routes;
 
-//
+/**
+ * @var bool
+ */
 protected wasMatched = false;
 
 ```
@@ -9316,7 +9585,7 @@ Phalcon\Mvc\Router constructor
 
 
 ```php
-public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null, mixed $position = static-constant-access ): RouteInterface;
+public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router without any HTTP constraint
 
@@ -9341,68 +9610,68 @@ $router->add(
 
 
 ```php
-public function addConnect( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addConnect( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 ```php
-public function addDelete( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addDelete( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 ```php
-public function addGet( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addGet( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
 
 ```php
-public function addHead( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addHead( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 ```php
-public function addOptions( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addOptions( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 ```php
-public function addPatch( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addPatch( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 ```php
-public function addPost( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addPost( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
 
 ```php
-public function addPurge( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addPurge( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
 (Squid and Varnish support)
 
 
 ```php
-public function addPut( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addPut( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 ```php
-public function addTrace( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
+public function addTrace( string $pattern, mixed $paths = null, int $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
 
 ```php
-public function attach( RouteInterface $route, mixed $position = static-constant-access ): RouterInterface;
+public function attach( RouteInterface $route, int $position = static-constant-access ): RouterInterface;
 ```
 Attach Route object to the routes stack.
 
@@ -9448,19 +9717,19 @@ Returns an array of default parameters
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Returns the internal event manager
 
 
 ```php
-public function getKeyRouteIds()
+public function getKeyRouteIds(): array
 ```
 
 
 
 ```php
-public function getKeyRouteNames()
+public function getKeyRouteNames(): array
 ```
 
 
@@ -9572,6 +9841,8 @@ public function setDefaultNamespace( string $namespaceName ): RouterInterface;
 ```
 Sets the name of the default namespace
 
+@parma string namespaceName
+
 
 ```php
 public function setDefaults( array $defaults ): RouterInterface;
@@ -9597,13 +9868,13 @@ Sets the events manager
 
 
 ```php
-public function setKeyRouteIds( $keyRouteIds )
+public function setKeyRouteIds( array $keyRouteIds )
 ```
 
 
 
 ```php
-public function setKeyRouteNames( $keyRouteNames )
+public function setKeyRouteNames( array $keyRouteNames )
 ```
 
 
@@ -9648,20 +9919,30 @@ $di->setShared(
 
 ## Properties
 ```php
-//
+/**
+ * @var string
+ */
 protected actionSuffix = Action;
 
-//
+/**
+ * @var callable|string|null
+ */
 protected actionPreformatCallback;
 
-//
+/**
+ * @var string
+ */
 protected controllerSuffix = Controller;
 
-//
+/**
+ * @var array
+ */
 protected handlers;
 
-//
-protected routePrefix;
+/**
+ * @var string
+ */
+protected routePrefix = ;
 
 ```
 
@@ -9701,7 +9982,7 @@ Produce the routing parameters from the rewrite information
 
 
 ```php
-public function processActionAnnotation( string $module, string $namespaceName, string $controller, string $action, Annotation $annotation );
+public function processActionAnnotation( string $module, string $namespaceName, string $controller, string $action, Annotation $annotation ): void;
 ```
 Checks for annotations in the public methods of the controller
 
@@ -9720,12 +10001,19 @@ $action here already without suffix 'Action'
 
 ```php
 // Array as callback
-$annotationRouter->setActionPreformatCallback([Text::class, 'uncamelize']);
+$annotationRouter->setActionPreformatCallback(
+     [
+         new Uncamelize(),
+         '__invoke'
+     ]
+ );
 
 // Function as callback
-$annotationRouter->setActionPreformatCallback(function(action){
-    return action;
-});
+$annotationRouter->setActionPreformatCallback(
+    function ($action) {
+        return $action;
+    }
+);
 
 // String as callback
 $annotationRouter->setActionPreformatCallback('strtolower');
@@ -9754,7 +10042,7 @@ Changes the controller class suffix
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Phalcon\Mvc\Router\Exception
 
@@ -9819,19 +10107,29 @@ $router->mount($blog);
 
 ## Properties
 ```php
-//
+/**
+ * @var callable|null
+ */
 protected beforeMatch;
 
-//
+/**
+ * @var string|null
+ */
 protected hostname;
 
-//
+/**
+ * @var array|string|null
+ */
 protected paths;
 
-//
+/**
+ * @var string|null
+ */
 protected prefix;
 
-//
+/**
+ * @var array
+ */
 protected routes;
 
 ```
@@ -10186,40 +10484,64 @@ This class represents every route added to the router
 
 ## Properties
 ```php
-//
+/**
+ * @var callable|null
+ */
 protected beforeMatch;
 
-//
+/**
+ * @var string|null
+ */
 protected compiledPattern;
 
-//
+/**
+ * @var array
+ */
 protected converters;
 
-//
+/**
+ * @var GroupInterface|null
+ */
 protected group;
 
-//
+/**
+ * @var string|null
+ */
 protected hostname;
 
-//
+/**
+ * @var string|null
+ */
 protected id;
 
-//
+/**
+ * @var array|string
+ */
 protected methods;
 
-//
+/**
+ * @var callable|null
+ */
 protected match;
 
-//
+/**
+ * @var string|null
+ */
 protected name;
 
-//
+/**
+ * @var array
+ */
 protected paths;
 
-//
+/**
+ * @var string
+ */
 protected pattern;
 
-//
+/**
+ * @var int
+ */
 protected static uniqueId = 0;
 
 ```
@@ -10233,7 +10555,7 @@ Phalcon\Mvc\Router\Route constructor
 
 
 ```php
-public function beforeMatch( mixed $callback ): RouteInterface;
+public function beforeMatch( callable $callback ): RouteInterface;
 ```
 Sets a callback that is called if the route is matched.
 The developer can implement any arbitrary conditions here
@@ -10314,7 +10636,7 @@ Returns the HTTP methods that constraint matching the route
 
 
 ```php
-public function getId()
+public function getId(): string|null
 ```
 
 
@@ -10648,7 +10970,7 @@ Adds a route to the router that only match if the HTTP method is TRACE
 
 
 ```php
-public function attach( RouteInterface $route, mixed $position = static-constant-access ): RouterInterface;
+public function attach( RouteInterface $route, int $position = static-constant-access ): RouterInterface;
 ```
 Attach Route object to the routes stack.
 
@@ -10763,12 +11085,244 @@ Check if the router matches any of the defined routes
 
 
 
+<h1 id="mvc-url">Class Phalcon\Mvc\Url</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Url.zep)
+
+| Namespace  | Phalcon\Mvc |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Url\Exception, Phalcon\Mvc\Url\UrlInterface |
+| Extends    | AbstractInjectionAware |
+| Implements | UrlInterface |
+
+This components helps in the generation of: URIs, URLs and Paths
+
+```php
+// Generate a URL appending the URI to the base URI
+echo $url->get("products/edit/1");
+
+// Generate a URL for a predefined route
+echo $url->get(
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2012",
+    ]
+);
+```
+
+
+## Properties
+```php
+/**
+ * @var null | string
+ */
+protected baseUri;
+
+/**
+ * @var null | string
+ */
+protected basePath;
+
+/**
+ * @var RouterInterface | null
+ */
+protected router;
+
+/**
+ * @var null | string
+ */
+protected staticBaseUri;
+
+```
+
+## Methods
+
+```php
+public function __construct( RouterInterface $router = null );
+```
+
+
+
+```php
+public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
+```
+Generates a URL
+
+```php
+// Generate a URL appending the URI to the base URI
+echo $url->get("products/edit/1");
+
+// Generate a URL for a predefined route
+echo $url->get(
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2015",
+    ]
+);
+
+// Generate a URL with GET arguments (/show/products?id=1&name=Carrots)
+echo $url->get(
+    "show/products",
+    [
+        "id"   => 1,
+        "name" => "Carrots",
+    ]
+);
+
+// Generate an absolute URL by setting the third parameter as false.
+echo $url->get(
+    "https://phalcon.io/",
+    null,
+    false
+);
+```
+
+
+```php
+public function getBasePath(): string;
+```
+Returns the base path
+
+
+```php
+public function getBaseUri(): string;
+```
+Returns the prefix for all the generated urls. By default /
+
+
+```php
+public function getStatic( mixed $uri = null ): string;
+```
+Generates a URL for a static resource
+
+```php
+// Generate a URL for a static resource
+echo $url->getStatic("img/logo.png");
+
+// Generate a URL for a static predefined route
+echo $url->getStatic(
+    [
+        "for" => "logo-cdn",
+    ]
+);
+```
+
+
+```php
+public function getStaticBaseUri(): string;
+```
+Returns the prefix for all the generated static urls. By default /
+
+
+```php
+public function path( string $path = null ): string;
+```
+Generates a local path
+
+
+```php
+public function setBasePath( string $basePath ): UrlInterface;
+```
+Sets a base path for all the generated paths
+
+```php
+$url->setBasePath("/var/www/htdocs/");
+```
+
+
+```php
+public function setBaseUri( string $baseUri ): UrlInterface;
+```
+Sets a prefix for all the URIs to be generated
+
+```php
+$url->setBaseUri("/invo/");
+
+$url->setBaseUri("/invo/index.php/");
+```
+
+
+```php
+public function setStaticBaseUri( string $staticBaseUri ): UrlInterface;
+```
+Sets a prefix for all static URLs generated
+
+```php
+$url->setStaticBaseUri("/invo/");
+```
+
+
+
+
+<h1 id="mvc-url-exception">Class Phalcon\Mvc\Url\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Url/Exception.zep)
+
+| Namespace  | Phalcon\Mvc\Url |
+| Extends    | \Exception |
+
+Phalcon\Mvc\Url\Exception
+
+Exceptions thrown in Phalcon\Mvc\Url will use this class
+
+
+
+<h1 id="mvc-url-urlinterface">Interface Phalcon\Mvc\Url\UrlInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Url/UrlInterface.zep)
+
+| Namespace  | Phalcon\Mvc\Url |
+
+Interface for Phalcon\Mvc\Url\UrlInterface
+
+
+## Methods
+
+```php
+public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
+```
+Generates a URL
+
+
+```php
+public function getBasePath(): string;
+```
+Returns a base path
+
+
+```php
+public function getBaseUri(): string;
+```
+Returns the prefix for all the generated urls. By default /
+
+
+```php
+public function path( string $path = null ): string;
+```
+Generates a local path
+
+
+```php
+public function setBasePath( string $basePath ): UrlInterface;
+```
+Sets a base paths for all the generated paths
+
+
+```php
+public function setBaseUri( string $baseUri ): UrlInterface;
+```
+Sets a prefix to all the urls generated
+
+
+
+
 <h1 id="mvc-view">Class Phalcon\Mvc\View</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View.zep)
 
 | Namespace  | Phalcon\Mvc |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\View\Engine\Php |
+| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\View\Engine\Php |
 | Extends    | Injectable |
 | Implements | ViewInterface, EventsAwareInterface |
 
@@ -10810,73 +11364,119 @@ const LEVEL_NO_RENDER = 0;
 
 ## Properties
 ```php
-//
+/**
+ * @var string
+ */
 protected actionName;
 
-//
+/**
+ * @var array
+ */
 protected activeRenderPaths;
 
-//
+/**
+ * @var string
+ */
 protected basePath = ;
 
-//
+/**
+ * @var string
+ */
 protected content = ;
 
-//
+/**
+ * @var string
+ */
 protected controllerName;
 
-//
+/**
+ * @var int
+ */
 protected currentRenderLevel = 0;
 
-//
+/**
+ * @var bool
+ */
 protected disabled = false;
 
-//
+/**
+ * @var array
+ */
 protected disabledLevels;
 
-//
+/**
+ * @var array|bool
+ */
 protected engines = false;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
-//
+/**
+ * @var string|null
+ */
 protected layout;
 
-//
+/**
+ * @var string
+ */
 protected layoutsDir = ;
 
-//
+/**
+ * @var string
+ */
 protected mainView = index;
 
-//
+/**
+ * @var array
+ */
 protected options;
 
-//
+/**
+ * @var array
+ */
 protected params;
 
-//
+/**
+ * @var array|null
+ */
 protected pickView;
 
-//
+/**
+ * @var string
+ */
 protected partialsDir = ;
 
-//
+/**
+ * @var array
+ */
 protected registeredEngines;
 
-//
+/**
+ * @var int
+ */
 protected renderLevel = 5;
 
-//
+/**
+ * @var array
+ */
 protected templatesAfter;
 
-//
+/**
+ * @var array
+ */
 protected templatesBefore;
 
-//
+/**
+ * @var array
+ */
 protected viewsDirs;
 
-//
+/**
+ * @var array
+ */
 protected viewParams;
 
 ```
@@ -10960,6 +11560,7 @@ Enables the auto-rendering process
 public function exists( string $view ): bool;
 ```
 Checks whether view exists
+@deprecated
 
 
 ```php
@@ -10999,7 +11600,7 @@ Gets the name of the controller rendered
 
 
 ```php
-public function getCurrentRenderLevel()
+public function getCurrentRenderLevel(): int
 ```
 
 
@@ -11062,7 +11663,7 @@ Gets the current partials sub-directory
 
 
 ```php
-public function getRegisteredEngines()
+public function getRegisteredEngines(): array
 ```
 
 
@@ -11084,7 +11685,7 @@ $template = $this->view->getRender(
 
 
 ```php
-public function getRenderLevel()
+public function getRenderLevel(): int
 ```
 
 
@@ -11099,6 +11700,12 @@ Returns a parameter previously set in the view
 public function getViewsDir(): string | array;
 ```
 Gets views directory
+
+
+```php
+public function has( string $view ): bool;
+```
+Checks whether view exists
 
 
 ```php
@@ -11382,7 +11989,9 @@ basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 ## Properties
 ```php
-//
+/**
+ * @var ViewBaseInterface
+ */
 protected view;
 
 ```
@@ -11443,6 +12052,8 @@ public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 Renders a view using the template engine
 
+TODO: Change params to array type
+
 
 
 
@@ -11471,7 +12082,7 @@ Renders a view using the template engine
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception |
 | Extends    | AbstractEngine |
 | Implements | EventsAwareInterface |
 
@@ -11480,16 +12091,24 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 
 ## Properties
 ```php
-//
+/**
+ * @var Compiler
+ */
 protected compiler;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
-//
+/**
+ * @var array
+ */
 protected macros;
 
-//
+/**
+ * @var array
+ */
 protected options;
 
 ```
@@ -11539,7 +12158,14 @@ Length filter. If an array/object is passed a count is performed otherwise a str
 
 
 ```php
-public function render( string $templatePath, mixed $params, bool $mustClean = bool );
+public function preload( mixed $parameters ): string;
+```
+Parses the preload element passed and sets the necessary link headers
+@todo find a better way to handle this
+
+
+```php
+public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 Renders a view using the template engine
 
@@ -11591,67 +12217,113 @@ require $compiler->getCompiledTemplatePath();
 
 ## Properties
 ```php
-//
+/**
+ * @var bool
+ */
 protected autoescape = false;
 
-//
+/**
+ * @var int
+ */
 protected blockLevel = 0;
 
-//
+/**
+ * @var array|null
+ *
+ * TODO: Make array only?
+ */
 protected blocks;
 
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var string|null
+ */
 protected compiledTemplatePath;
 
-//
+/**
+ * @var string|null
+ */
 protected currentBlock;
 
-//
+/**
+ * @var string|null
+ */
 protected currentPath;
 
-//
+/**
+ * @var int
+ */
 protected exprLevel = 0;
 
-//
+/**
+ * @var bool
+ */
 protected extended = false;
 
-//
+/**
+ * @var array
+ */
 protected extensions;
 
-//
+/**
+ * @var array|bool
+ *
+ * TODO: Make it always array
+ */
 protected extendedBlocks;
 
-//
+/**
+ * @var array
+ */
 protected filters;
 
-//
+/**
+ * @var int
+ */
 protected foreachLevel = 0;
 
-//
+/**
+ * @var array
+ */
 protected forElsePointers;
 
-//
+/**
+ * @var array
+ */
 protected functions;
 
-//
+/**
+ * @var int
+ */
 protected level = 0;
 
-//
+/**
+ * @var array
+ */
 protected loopPointers;
 
-//
+/**
+ * @var array
+ */
 protected macros;
 
-//
+/**
+ * @var array
+ */
 protected options;
 
-//
-protected prefix;
+/**
+ * @var string
+ */
+protected prefix = ;
 
-//
+/**
+ * @var ViewBaseInterface|null
+ */
 protected view;
 
 ```
@@ -11668,6 +12340,8 @@ Phalcon\Mvc\View\Engine\Volt\Compiler
 public function addExtension( mixed $extension ): Compiler;
 ```
 Registers a Volt's extension
+
+@var mixed extension
 
 
 ```php
@@ -11705,15 +12379,6 @@ require $compiler->getCompiledTemplatePath();
 public function compileAutoEscape( array $statement, bool $extendsMode ): string;
 ```
 Compiles a "autoescape" statement returning PHP code
-
-
-```php
-public function compileCache( array $statement, bool $extendsMode = bool ): string;
-```
-Compiles a "cache" statement returning PHP code
-
-@deprecated Will be removed in 5.0
-@todo Remove this in the next major version
 
 
 ```php
@@ -11794,6 +12459,8 @@ public function compileReturn( array $statement ): string;
 ```
 Compiles a "return" statement returning PHP code
 
+@throws \Phalcon\Mvc\View\Engine\Volt\Exception
+
 
 ```php
 public function compileSet( array $statement ): string;
@@ -11824,7 +12491,7 @@ Resolves an expression node in an AST volt tree
 
 
 ```php
-final public function fireExtensionEvent( string $name, mixed $arguments = null );
+final public function fireExtensionEvent( string $name, array $arguments = [] );
 ```
 Fires an event to registered extensions
 
@@ -11866,7 +12533,7 @@ Register the user registered functions
 
 
 ```php
-public function getOption( string $option );
+public function getOption( string $option ): string | null;
 ```
 Returns a compiler's option
 
@@ -11891,7 +12558,7 @@ contexts
 
 
 ```php
-public function parse( string $viewCode );
+public function parse( string $viewCode ): array;
 ```
 Parses a Volt template returning its intermediate representation
 
@@ -11977,7 +12644,9 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ */
 protected statement;
 
 ```
@@ -12003,7 +12672,7 @@ Gets currently parsed statement (if any).
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\View |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Phalcon\Mvc\View\Exception
 
@@ -12016,7 +12685,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Simple.zep)
 
 | Namespace  | Phalcon\Mvc\View |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php |
+| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php |
 | Extends    | Injectable |
 | Implements | ViewBaseInterface, EventsAwareInterface |
 
@@ -12049,35 +12718,44 @@ echo $view->render(
 
 ## Properties
 ```php
-//
+/**
+ * @var string
+ */
 protected activeRenderPath;
 
-//
+/**
+ * @var string
+ */
 protected content;
 
 /**
- * @var \Phalcon\Mvc\View\EngineInterface[]|false
+ * @var EngineInterface[]|false
  */
 protected engines = false;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
-//
+/**
+ * @var array
+ */
 protected options;
-
-//
-protected partialsDir;
 
 /**
  * @var array|null
  */
 protected registeredEngines;
 
-//
+/**
+ * @var string
+ */
 protected viewsDir;
 
-//
+/**
+ * @var array
+ */
 protected viewParams;
 
 ```
@@ -12101,7 +12779,7 @@ echo $this->view->products;
 
 
 ```php
-public function __set( string $key, mixed $value );
+public function __set( string $key, mixed $value ): void;
 ```
 Magic method to pass variables to the views
 
@@ -12153,7 +12831,7 @@ Gets views directory
 
 
 ```php
-public function partial( string $partialPath, mixed $params = null );
+public function partial( string $partialPath, mixed $params = null ): void;
 ```
 Renders a partial view
 
@@ -12174,7 +12852,7 @@ $this->partial(
 
 
 ```php
-public function registerEngines( array $engines );
+public function registerEngines( array $engines ): void;
 ```
 Register templating engines
 
@@ -12246,13 +12924,13 @@ $this->view->setVars(
 
 
 ```php
-public function setViewsDir( string $viewsDir );
+public function setViewsDir( string $viewsDir ): void;
 ```
 Sets views directory
 
 
 ```php
-final protected function internalRender( string $path, mixed $params );
+final protected function internalRender( string $path, mixed $params ): void;
 ```
 Tries to render the view with every engine registered in the component
 

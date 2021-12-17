@@ -55,7 +55,7 @@ Destroy
 
 
 ```php
-public function gc( mixed $maxlifetime ): bool;
+public function gc( mixed $maxlifetime );
 ```
 Garbage Collector
 
@@ -78,6 +78,12 @@ public function write( mixed $id, mixed $data ): bool;
 Write
 
 
+```php
+protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null ): mixed;
+```
+@todo Remove this when we get traits
+
+
 
 
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
@@ -85,7 +91,7 @@ Write
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr |
+| Uses       | Phalcon\Storage\AdapterFactory |
 | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Libmemcached
@@ -129,6 +135,8 @@ $session->setAdapter(new Noop());
 ```php
 /**
  * The connection of some adapters
+ *
+ * @var null
  */
 protected connection;
 
@@ -176,7 +184,7 @@ Destroy
 
 
 ```php
-public function gc( mixed $maxlifetime ): bool;
+public function gc( mixed $maxlifetime );
 ```
 Garbage Collector
 
@@ -212,7 +220,7 @@ Helper method to get the name prefixed
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr |
+| Uses       | Phalcon\Storage\AdapterFactory |
 | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Redis
@@ -233,7 +241,7 @@ Constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Helper\Str, Phalcon\Session\Exception |
+| Uses       | Phalcon\Session\Exception |
 | Extends    | Noop |
 
 Phalcon\Session\Adapter\Stream
@@ -280,9 +288,9 @@ public function destroy( mixed $id ): bool;
 
 
 ```php
-public function gc( mixed $maxlifetime ): bool;
+public function gc( mixed $maxlifetime );
 ```
-
+Garbage Collector
 
 
 ```php
@@ -312,7 +320,7 @@ public function write( mixed $id, mixed $data ): bool;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | Phalcon\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
+| Uses       | Phalcon\Support\Collection, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
 | Extends    | Collection |
 | Implements | InjectionAwareInterface |
 
@@ -332,13 +340,21 @@ $user->age  = 22;
 
 ## Properties
 ```php
-//
+/**
+ * @var DiInterface|null
+ */
 private container;
 
-//
+/**
+ * Session Bag name
+ *
+ * @var string
+ */
 private name;
 
-//
+/**
+ * @var \Phalcon\Session\ManagerInterface
+ */
 private session;
 
 ```
@@ -346,7 +362,7 @@ private session;
 ## Methods
 
 ```php
-public function __construct( string $name );
+public function __construct( string $name, DiInterface $container = null );
 ```
 Phalcon\Session\Bag constructor
 
@@ -394,7 +410,7 @@ Sets the DependencyInjector container
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Exception.zep)
 
 | Namespace  | Phalcon\Session |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Exception |
 
 Phalcon\Session\Exception
 
@@ -407,7 +423,7 @@ Exceptions thrown in Phalcon\Session will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Manager.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr |
+| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Support\Helper\Arr\Get |
 | Extends    | AbstractInjectionAware |
 | Implements | ManagerInterface |
 
