@@ -5,131 +5,21 @@ version: '5.0'
 title: 'Phalcon\Config'
 ---
 
-* [Phalcon\Config](#config)
 * [Phalcon\Config\Adapter\Grouped](#config-adapter-grouped)
 * [Phalcon\Config\Adapter\Ini](#config-adapter-ini)
 * [Phalcon\Config\Adapter\Json](#config-adapter-json)
 * [Phalcon\Config\Adapter\Php](#config-adapter-php)
 * [Phalcon\Config\Adapter\Yaml](#config-adapter-yaml)
+* [Phalcon\Config\Config](#config-config)
 * [Phalcon\Config\ConfigFactory](#config-configfactory)
 * [Phalcon\Config\ConfigInterface](#config-configinterface)
 * [Phalcon\Config\Exception](#config-exception)
-
-<h1 id="config">Class Phalcon\Config</h1>
-
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config.zep)
-
-| Namespace  | Phalcon | | Uses       | Phalcon\Collection, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception | | Extends    | Collection | | Implements | ConfigInterface |
-
-`Phalcon\Config` está diseñado para simplificar el acceso a, y el uso de, los datos de configuración de las aplicaciones. Proporciona una propiedad de objeto anidado basada en interfaz de usuario para acceder a estos datos de configuración dentro del código de la aplicación.
-
-```php
-$config = new \Phalcon\Config(
-    [
-        "database" => [
-            "adapter"  => "Mysql",
-            "host"     => "localhost",
-            "username" => "scott",
-            "password" => "cheetah",
-            "dbname"   => "test_db",
-        ],
-        "phalcon" => [
-            "controllersDir" => "../app/controllers/",
-            "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
-        ],
-    ]
-);
-```
-
-
-## Constantes
-```php
-const DEFAULT_PATH_DELIMITER = .;
-```
-
-## Propiedades
-```php
-/**
- * @var string
- */
-protected pathDelimiter;
-
-```
-
-## Métodos
-
-```php
-public function getPathDelimiter(): string;
-```
-Devuelve el delimitador de ruta por defecto
-
-
-```php
-public function merge( mixed $toMerge ): ConfigInterface;
-```
-Combina una configuración con la actual
-
-```php
-$appConfig = new \Phalcon\Config(
-    [
-        "database" => [
-            "host" => "localhost",
-        ],
-    ]
-);
-
-$globalConfig->merge($appConfig);
-```
-
-
-```php
-public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
-```
-Devuelve un valor de la configuración actual usando una ruta separada por puntos.
-
-```php
-echo $config->path("unknown.path", "default", ".");
-```
-
-
-```php
-public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
-```
-Establece el delimitador de la ruta predeterminada
-
-
-```php
-public function toArray(): array;
-```
-Convierte recursivamente el objeto a un vector
-
-```php
-print_r(
-    $config->toArray()
-);
-```
-
-
-```php
-final protected function internalMerge( array $source, array $target ): array;
-```
-Ejecuta una combinación recursivamente
-
-
-```php
-protected function setData( mixed $element, mixed $value ): void;
-```
-Establece los datos de la colección
-
-
-
 
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Grouped.zep)
 
-| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config, Phalcon\Config\ConfigFactory, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception, Phalcon\Factory\Exception | | Extends    | Config |
+| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config\Config, Phalcon\Config\ConfigFactory, Phalcon\Config\ConfigInterface, Phalcon\Config\Exception, Phalcon\Factory\Exception | | Extends    | Config |
 
 Lee múltiples ficheros (o vectores) y los combina todos juntos.
 
@@ -196,9 +86,9 @@ Constructor Phalcon\Config\Adapter\Grouped
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Ini.zep)
 
-| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config, Phalcon\Config\Exception | | Extends    | Config |
+| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config\Config, Phalcon\Config\Exception, Phalcon\Support\Traits\PhpFileTrait | | Extends    | Config |
 
-Lee ficheros ini y los convierte a objetos Phalcon\Config.
+Reads ini files and converts them to Phalcon\Config\Config objects.
 
 Dado el siguiente fichero de configuración:
 
@@ -240,7 +130,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 ## Métodos
 
 ```php
-public function __construct( string $filePath, mixed $mode = null );
+public function __construct( string $filePath, int $mode = int );
 ```
 Constructor Ini.
 
@@ -252,9 +142,19 @@ Tenemos que convertir valores manualmente porque parse_ini_file() tiene una impl
 
 
 ```php
+protected function castArray( array $ini ): array;
+```
+
+```php
 protected function parseIniString( string $path, mixed $value ): array;
 ```
 Construye un vector multidimensional desde una cadena
+
+
+```php
+protected function phpParseIniFile( string $filename, bool $processSections = bool, int $scannerMode = int );
+```
+@todo to be removed when we get traits
 
 
 
@@ -263,9 +163,9 @@ Construye un vector multidimensional desde una cadena
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Json.zep)
 
-| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config, Phalcon\Helper\Json | | Extends    | Config |
+| Namespace  | Phalcon\Config\Adapter | | Uses       | InvalidArgumentException, Phalcon\Config\Config | | Extends    | Config |
 
-Lee ficheros JSON y los convierte a objetos Phalcon\Config.
+Reads JSON files and converts them to Phalcon\Config\Config objects.
 
 Dado el siguiente fichero de configuración:
 
@@ -299,9 +199,9 @@ Constructor Phalcon\Config\Adapter\Json
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Php.zep)
 
-| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config | | Extends    | Config |
+| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config\Config | | Extends    | Config |
 
-Lee ficheros php y los convierte a objetos Phalcon\Config.
+Reads php files and converts them to Phalcon\Config\Config objects.
 
 Dado el siguiente fichero de configuración:
 
@@ -350,9 +250,9 @@ Constructor Phalcon\Config\Adapter\Php
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Adapter/Yaml.zep)
 
-| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config, Phalcon\Config\Exception | | Extends    | Config |
+| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config\Config, Phalcon\Config\Exception | | Extends    | Config |
 
-Lee ficheros YAML y los convierte a objetos Phalcon\Config.
+Reads YAML files and converts them to Phalcon\Config\Config objects.
 
 Dado el siguiente fichero de configuración:
 
@@ -397,13 +297,135 @@ public function __construct( string $filePath, array $callbacks = null );
 Constructor Phalcon\Config\Adapter\Yaml
 
 
+```php
+protected function phpExtensionLoaded( string $name ): bool;
+```
+
+```php
+protected function phpYamlParseFile( mixed $filename, mixed $pos = int, mixed $ndocs = null, mixed $callbacks = [] );
+```
+@todo to be removed when we get traits
+
+
+
+
+<h1 id="config-config">Class Phalcon\Config\Config</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Config.zep)
+
+| Namespace  | Phalcon\Config | | Uses       | Phalcon\Support\Collection | | Extends    | Collection | | Implements | ConfigInterface |
+
+`Phalcon\Config` está diseñado para simplificar el acceso a, y el uso de, los datos de configuración de las aplicaciones. Proporciona una propiedad de objeto anidado basada en interfaz de usuario para acceder a estos datos de configuración dentro del código de la aplicación.
+
+```php
+$config = new \Phalcon\Config(
+    [
+        "database" => [
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db",
+        ],
+        "phalcon" => [
+            "controllersDir" => "../app/controllers/",
+            "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ],
+    ]
+);
+```
+
+@property string $pathDelimiter
+
+
+## Constantes
+```php
+const DEFAULT_PATH_DELIMITER = .;
+```
+
+## Propiedades
+```php
+/**
+ * @var string
+ */
+protected pathDelimiter;
+
+```
+
+## Métodos
+
+```php
+public function getPathDelimiter(): string;
+```
+Devuelve el delimitador de ruta por defecto
+
+
+```php
+public function merge( mixed $toMerge ): ConfigInterface;
+```
+Combina una configuración con la actual
+
+```php
+$appConfig = new \Phalcon\Config(
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
+);
+
+$globalConfig->merge($appConfig);
+```
+
+
+```php
+public function path( string $path, mixed $defaultValue = null, string $delimiter = null ): mixed;
+```
+Devuelve un valor de la configuración actual usando una ruta separada por puntos.
+
+```php
+echo $config->path("unknown.path", "default", ".");
+```
+
+
+```php
+public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
+```
+Establece el delimitador de la ruta predeterminada
+
+
+```php
+public function toArray(): array;
+```
+Convierte recursivamente el objeto a un vector
+
+```php
+print_r(
+    $config->toArray()
+);
+```
+
+
+```php
+final protected function internalMerge( array $source, array $target ): array;
+```
+Ejecuta una combinación recursivamente
+
+
+```php
+protected function setData( mixed $element, mixed $value ): void;
+```
+Establece los datos de la colección
+
+
 
 
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigFactory.zep)
 
-| Namespace  | Phalcon\Config | | Uses       | Phalcon\Config, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends    | AbstractFactory |
+| Namespace  | Phalcon\Config | | Uses       | Phalcon\Config\Config, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
 
 Carga la clase `Config Adapter` usando la opción 'adapter', si no se proporciona ninguna extensión será añadirá al filePath
 
@@ -440,9 +462,19 @@ Devuelve una nueva instancia de configuración
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
-Devuelve los adaptadores de la fábrica
+
+```php
+protected function getServices(): array;
+```
+Devuelve los adaptadores disponibles
+
+
+```php
+protected function parseConfig( mixed $config ): array;
+```
+
 
 
 
@@ -451,7 +483,7 @@ Devuelve los adaptadores de la fábrica
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/ConfigInterface.zep)
 
-| Namespace  | Phalcon\Config | | Uses       | Phalcon\Collection\CollectionInterface | | Extends    | CollectionInterface |
+| Namespace  | Phalcon\Config | | Uses       | Phalcon\Support\Collection\CollectionInterface | | Extends    | CollectionInterface |
 
 Phalcon\Config\ConfigInterface
 
@@ -469,7 +501,7 @@ public function merge( mixed $toMerge ): ConfigInterface;
 ```
 
 ```php
-public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null ): mixed | null;
+public function path( string $path, mixed $defaultValue = null, string $delimiter = null ): mixed;
 ```
 
 ```php
@@ -484,7 +516,7 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Config/Exception.zep)
 
-| Namespace  | Phalcon\Config | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Config | | Extends    | \Exception |
 
 Las excepciones lanzadas en Phalcon\Config usarán esta clase
 

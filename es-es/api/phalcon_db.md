@@ -98,23 +98,29 @@ Clase base para adaptadores Phalcon\Db\Adapter
 ```php
 /**
  * Connection ID
+ *
+ * @var int
  */
 protected static connectionConsecutive = 0;
 
 /**
  * Active connection ID
  *
- * @var long
+ * @var int
  */
 protected connectionId;
 
 /**
  * Descriptor used to connect to a database
+ *
+ * @var array
  */
 protected descriptor;
 
 /**
  * Dialect instance
+ *
+ * @var object
  */
 protected dialect;
 
@@ -128,7 +134,7 @@ protected dialectType;
 /**
  * Event Manager
  *
- * @var ManagerInterface
+ * @var ManagerInterface|null
  */
 protected eventsManager;
 
@@ -162,11 +168,15 @@ protected sqlVariables;
 
 /**
  * Current transaction level
+ *
+ * @var int
  */
 protected transactionLevel = 0;
 
 /**
  * Whether the database supports transactions with save points
+ *
+ * @var bool
  */
 protected transactionsWithSavepoints = false;
 
@@ -230,7 +240,7 @@ Crea una vista
 
 
 ```php
-public function delete( mixed $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
+public function delete( mixed $table, string $whereCondition = null, array $placeholders = [], array $dataTypes = [] ): bool;
 ```
 Borra datos de una tabla usando sintaxis SQL del RBDM personalizada
 
@@ -326,7 +336,7 @@ $escapedTable = $connection->escapeIdentifier(
 
 
 ```php
-public function fetchAll( string $sqlQuery, int $fetchMode = static-constant-access, mixed $bindParams = null, mixed $bindTypes = null ): array;
+public function fetchAll( string $sqlQuery, int $fetchMode = static-constant-access, array $bindParams = [], array $bindTypes = [] ): array;
 ```
 Vuelca el resultado completo de una consulta en un vector
 
@@ -375,7 +385,7 @@ print_r($robot);
 
 
 ```php
-public function fetchOne( string $sqlQuery, mixed $fetchMode = static-constant-access, mixed $bindParams = null, mixed $bindTypes = null ): array;
+public function fetchOne( string $sqlQuery, mixed $fetchMode = static-constant-access, array $bindParams = [], array $bindTypes = [] ): array;
 ```
 Devuelve la primera fila en un resultado de consulta SQL
 
@@ -480,7 +490,7 @@ public function getDialectType(): string
 ```
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Devuelve el administrador de eventos interno
 
@@ -510,8 +520,10 @@ Sentencia SQL activa en el objeto
 
 
 ```php
-public function getSqlVariables(): array
+public function getSQLVariables(): array;
 ```
+Active SQL variables in the object
+
 
 ```php
 public function getType(): string
@@ -800,7 +812,7 @@ Inicia una transacción en la conexión
 
 
 ```php
-public function close(): bool;
+public function close(): void;
 ```
 Cierra la conexión activa devolviendo éxito. Phalcon automáticamente cierra y destruye las conexiones activas dentro de Phalcon\Db\Pool
 
@@ -812,7 +824,7 @@ Confirma la transacción activa en la conexión
 
 
 ```php
-public function connect( array $descriptor = null ): bool;
+public function connect( array $descriptor = [] ): void;
 ```
 Este método se llama automáticamente en el constructor \Phalcon\Db\Adapter\Pdo. Llámelo cuando necesite restaurar una conexión de base de datos
 
@@ -836,7 +848,7 @@ Crea una vista
 
 
 ```php
-public function delete( mixed $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
+public function delete( mixed $table, string $whereCondition = null, array $placeholders = [], array $dataTypes = [] ): bool;
 ```
 Borra datos de una tabla usando sintaxis SQL del RBDMS personalizada
 
@@ -908,13 +920,13 @@ Escapa un valor para evitar inyecciones SQL
 
 
 ```php
-public function execute( string $sqlStatement, mixed $placeholders = null, mixed $dataTypes = null ): bool;
+public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
 ```
 Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxito. Use este método sólo cuando las sentencias SQL enviadas al servidor no devuelvan ninguna fila
 
 
 ```php
-public function fetchAll( string $sqlQuery, int $fetchMode = int, mixed $placeholders = null ): array;
+public function fetchAll( string $sqlQuery, int $fetchMode = int, array $bindParams = [], array $bindTypes = [] ): array;
 ```
 Vuelca el resultado completo de una consulta en un vector
 
@@ -939,7 +951,7 @@ print_r($robot);
 
 
 ```php
-public function fetchOne( string $sqlQuery, int $fetchMode = int, mixed $placeholders = null ): array;
+public function fetchOne( string $sqlQuery, int $fetchMode = int, array $bindParams = [], array $bindTypes = [] ): array;
 ```
 Devuelve la primera fila en un resultado de consulta SQL
 
@@ -1016,7 +1028,7 @@ Devuelve el nombre del dialecto usado
 
 
 ```php
-public function getInternalHandler(): \PDO;
+public function getInternalHandler(): mixed;
 ```
 Devuelve el manejador PDO interno
 
@@ -1096,7 +1108,7 @@ Comprueba si la conexión está bajo una transacción de base de datos
 
 
 ```php
-public function lastInsertId( mixed $sequenceName = null );
+public function lastInsertId( string $name = null ): string | bool;
 ```
 Devuelve el id de inserción para una columna auto_increment insertada en la última sentencia SQL
 
@@ -1126,7 +1138,7 @@ Modifica una columna de base de datos basada en una definición
 
 
 ```php
-public function query( string $sqlStatement, mixed $placeholders = null, mixed $dataTypes = null ): ResultInterface | bool;
+public function query( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): ResultInterface | bool;
 ```
 Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxito. Use este método sólo cuando las sentencias SQL enviadas al servidor devuelvan filas
 
@@ -1254,8 +1266,10 @@ $connection = new Mysql($config);
 ```php
 /**
  * Last affected rows
+ *
+ * @var int
  */
-protected affectedRows;
+protected affectedRows = 0;
 
 /**
  * PDO Handler
@@ -1295,7 +1309,7 @@ Inicia una transacción en la conexión
 
 
 ```php
-public function close(): bool;
+public function close(): void;
 ```
 Cierra la conexión activa devolviendo éxito. Phalcon automáticamente cierra y destruye las conexiones activas cuando la petición termina
 
@@ -1307,7 +1321,7 @@ Confirma la transacción activa en la conexión
 
 
 ```php
-public function connect( array $descriptor = null ): bool;
+public function connect( array $descriptor = [] ): void;
 ```
 Este método se llama automáticamente en el constructor \Phalcon\Db\Adapter\Pdo.
 
@@ -1360,7 +1374,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 
 ```php
-public function execute( string $sqlStatement, mixed $bindParams = null, mixed $bindTypes = null ): bool;
+public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
 ```
 Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxito. Use este método sólo cuando las sentencias SQL enviadas al servidor no devuelvan ninguna fila
 
@@ -1405,13 +1419,13 @@ $result = $connection->executePrepared(
 
 
 ```php
-public function getErrorInfo();
+public function getErrorInfo(): array;
 ```
 Devuelve la información del error, si lo hay
 
 
 ```php
-public function getInternalHandler(): \PDO;
+public function getInternalHandler(): mixed;
 ```
 Devuelve el manejador PDO interno
 
@@ -1438,7 +1452,7 @@ var_dump(
 
 
 ```php
-public function lastInsertId( mixed $sequenceName = null ): int | bool;
+public function lastInsertId( string $name = null ): string | bool;
 ```
 Devuelve el ID de la inserción para una columna auto_increment/serial insertada en la última sentencia SQL ejecutada
 
@@ -1486,7 +1500,7 @@ $result = $connection->executePrepared(
 
 
 ```php
-public function query( string $sqlStatement, mixed $bindParams = null, mixed $bindTypes = null ): ResultInterface | bool;
+public function query( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): ResultInterface | bool;
 ```
 Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxito. Use este método sólo cuando la sentencia SQL enviada al servidor devuelve filas
 
@@ -1565,6 +1579,12 @@ protected type = mysql;
 ```
 
 ## Métodos
+
+```php
+public function __construct( array $descriptor );
+```
+Constructor de Phalcon\Db\Adapter\Pdo
+
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
@@ -1662,7 +1682,7 @@ Constructor para Phalcon\Db\Adapter\Pdo\Postgresql
 
 
 ```php
-public function connect( array $descriptor = null ): bool;
+public function connect( array $descriptor = [] ): void;
 ```
 A este método se llama automáticamente en el constructor Phalcon\Db\Adapter\Pdo. Llámelo cuando necesite restaurar una conexión de base de datos.
 
@@ -1788,7 +1808,7 @@ Constructor para Phalcon\Db\Adapter\Pdo\Sqlite
 
 
 ```php
-public function connect( array $descriptor = null ): bool;
+public function connect( array $descriptor = [] ): void;
 ```
 A este método se llama automáticamente en el constructor Phalcon\Db\Adapter\Pdo. Llámelo cuando necesite restaurar una conexión de base de datos.
 
@@ -1870,7 +1890,7 @@ Devuelve el DSN predeterminado del adaptador PDO como mapa clave-valor.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/PdoFactory.zep)
 
-| Namespace  | Phalcon\Db\Adapter | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends    | AbstractFactory |
+| Namespace  | Phalcon\Db\Adapter | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Support\Helper\Arr\Get | | Extends    | AbstractFactory |
 
 Este fichero es parte del Framework Phalcon.
 
@@ -1900,7 +1920,11 @@ Crea una nueva instancia del adaptador
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
+```
+
+```php
+protected function getServices(): array;
 ```
 Devuelve los adaptadores disponibles
 
@@ -1947,6 +1971,7 @@ const BIND_PARAM_NULL = 0;
 const BIND_PARAM_STR = 2;
 const BIND_SKIP = 1024;
 const TYPE_BIGINTEGER = 14;
+const TYPE_BINARY = 26;
 const TYPE_BIT = 19;
 const TYPE_BLOB = 11;
 const TYPE_BOOLEAN = 8;
@@ -1972,6 +1997,7 @@ const TYPE_TIMESTAMP = 17;
 const TYPE_TINYBLOB = 10;
 const TYPE_TINYINTEGER = 26;
 const TYPE_TINYTEXT = 25;
+const TYPE_VARBINARY = 27;
 const TYPE_VARCHAR = 2;
 ```
 
@@ -1993,11 +2019,15 @@ protected autoIncrement = false;
 
 /**
  * Bind Type
+ *
+ * @var int
  */
 protected bindType = 2;
 
 /**
  * Default column value
+ *
+ * @var mixed|null
  */
 protected _default;
 
@@ -2010,6 +2040,8 @@ protected first = false;
 
 /**
  * The column have some numeric type?
+ *
+ * @var bool
  */
 protected isNumeric = false;
 
@@ -2023,7 +2055,7 @@ protected name;
 /**
  * Column's comment
  *
- * @var string
+ * @var string|null
  */
 protected comment;
 
@@ -2038,6 +2070,8 @@ protected notNull = true;
 
 /**
  * Column is part of the primary key?
+ *
+ * @var bool
  */
 protected primary = false;
 
@@ -2051,7 +2085,7 @@ protected scale = 0;
 /**
  * Integer column size
  *
- * @var int | string
+ * @var int|string
  */
 protected size = 0;
 
@@ -2106,7 +2140,7 @@ Devuelve el tipo de manejador de enlaces
 
 
 ```php
-public function getComment(): string
+public function getComment(): string|null
 ```
 
 ```php
@@ -2118,7 +2152,7 @@ public function getScale(): int
 ```
 
 ```php
-public function getSize(): int | string
+public function getSize(): int|string
 ```
 
 ```php
@@ -2134,7 +2168,7 @@ public function getTypeValues(): array|string
 ```
 
 ```php
-public function get_default()
+public function get_default(): mixed|null
 ```
 
 ```php
@@ -2301,10 +2335,14 @@ Esta es la clase base para cada dialecto de base de datos. Implementa métodos c
 
 ## Propiedades
 ```php
-//
+/**
+ * @var string
+ */
 protected escapeChar;
 
-//
+/**
+ * @var array
+ */
 protected customFunctions;
 
 ```
@@ -2342,7 +2380,7 @@ echo $sql; // SELECTFROM robots FOR UPDATE
 
 
 ```php
-final public function getColumnList( array $columnList, string $escapeChar = null, mixed $bindCounts = null ): string;
+final public function getColumnList( array $columnList, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Devuelve una lista de columnas con los identificadores escapados
 
@@ -2363,13 +2401,13 @@ Devuelve las funciones registradas
 
 
 ```php
-final public function getSqlColumn( mixed $column, string $escapeChar = null, mixed $bindCounts = null ): string;
+final public function getSqlColumn( mixed $column, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve expresiones de Columna
 
 
 ```php
-public function getSqlExpression( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+public function getSqlExpression( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Transforma una representación intermedia de una expresión en una expresión válida para el sistema de base de datos
 
@@ -2467,25 +2505,25 @@ Resuelve
 
 
 ```php
-final protected function getSqlExpressionBinaryOperations( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionBinaryOperations( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve expresiones de operaciones binarias
 
 
 ```php
-final protected function getSqlExpressionCase( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionCase( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve expresiones CASE
 
 
 ```php
-final protected function getSqlExpressionCastValue( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionCastValue( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve CAST de valores
 
 
 ```php
-final protected function getSqlExpressionConvertValue( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionConvertValue( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve CONVERT de codificación de valores
 
@@ -2497,49 +2535,49 @@ Resuelve una cláusula FROM
 
 
 ```php
-final protected function getSqlExpressionFunctionCall( array $expression, string $escapeChar = null, mixed $bindCounts ): string;
+final protected function getSqlExpressionFunctionCall( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve llamadas a funciones
 
 
 ```php
-final protected function getSqlExpressionGroupBy( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionGroupBy( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve una cláusula GROUP BY
 
 
 ```php
-final protected function getSqlExpressionHaving( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionHaving( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve una cláusula HAVING
 
 
 ```php
-final protected function getSqlExpressionJoins( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionJoins( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve una cláusula JOIN
 
 
 ```php
-final protected function getSqlExpressionLimit( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionLimit( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve una cláusula LIMIT
 
 
 ```php
-final protected function getSqlExpressionList( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionList( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve Listas
 
 
 ```php
-final protected function getSqlExpressionObject( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionObject( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve expresiones de objeto
 
 
 ```php
-final protected function getSqlExpressionOrderBy( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionOrderBy( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve una cláusula ORDER BY
 
@@ -2551,19 +2589,19 @@ Resuelve expresiones cualitativas
 
 
 ```php
-final protected function getSqlExpressionScalar( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionScalar( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve expresiones de Columna
 
 
 ```php
-final protected function getSqlExpressionUnaryOperations( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionUnaryOperations( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve expresiones de operaciones unitarias
 
 
 ```php
-final protected function getSqlExpressionWhere( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+final protected function getSqlExpressionWhere( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Resuelve una cláusula WHERE
 
@@ -3324,7 +3362,7 @@ Devuelve las funciones registradas
 
 
 ```php
-public function getSqlExpression( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
+public function getSqlExpression( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
 ```
 Transforma una representación intermedia para una expresión en una expresión válida para el sistema de base de datos
 
@@ -3444,7 +3482,7 @@ const FETCH_UNIQUE;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Exception.zep)
 
-| Namespace  | Phalcon\Db | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Db | | Extends    | \Exception |
 
 Las excepciones lanzadas en Phalcon\Db usarán esta clase
 
@@ -3620,16 +3658,16 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 ## Propiedades
 ```php
 /**
- * Active Phalcon\Db\Profiler\Item
+ * Active Item
  *
- * @var Phalcon\Db\Profiler\Item
+ * @var Item
  */
 protected activeProfile;
 
 /**
- * All the Phalcon\Db\Profiler\Item in the active profile
+ * All the Items in the active profile
  *
- * @var \Phalcon\Db\Profiler\Item[]
+ * @var Item[]
  */
 protected allProfiles;
 
@@ -4054,17 +4092,25 @@ while ($robot = $result->fetchArray()) {
 
 ## Propiedades
 ```php
-//
+/**
+ * @var array
+ */
 protected bindParams;
 
-//
+/**
+ * @var array
+ */
 protected bindTypes;
 
-//
+/**
+ * @var AdapterInterface
+ */
 protected connection;
 
 /**
  * Active fetch mode
+ *
+ * @var int
  */
 protected fetchMode;
 
@@ -4075,13 +4121,20 @@ protected fetchMode;
  */
 protected pdoStatement;
 
-//
+/**
+ * @var mixed
+ * TODO: Check if this property is used
+ */
 protected result;
 
-//
+/**
+ * @var bool
+ */
 protected rowCount = false;
 
-//
+/**
+ * @var string|null
+ */
 protected sqlStatement;
 
 ```
@@ -4095,7 +4148,7 @@ Constructor Phalcon\Db\Result\Pdo
 
 
 ```php
-public function dataSeek( long $number ): void;
+public function dataSeek( int $number ): void;
 ```
 Mueve el cursor del conjunto de resultados interno a otra posición permitiéndonos obtener una fila determinada
 
@@ -4230,7 +4283,7 @@ Interfaz para objetos Phalcon\Db\Result
 ## Métodos
 
 ```php
-public function dataSeek( long $number );
+public function dataSeek( int $number );
 ```
 Mueve el cursor del conjunto de resultados interno a otra posición permitiéndonos obtener una fila determinada
 

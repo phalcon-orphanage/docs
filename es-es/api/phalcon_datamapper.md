@@ -27,12 +27,9 @@ title: 'Phalcon\DataMapper'
 * [Phalcon\DataMapper\Query\Select](#datamapper-query-select)
 * [Phalcon\DataMapper\Query\Update](#datamapper-query-update)
 
-
 <h1 id="datamapper-pdo-connection">Class Phalcon\DataMapper\Pdo\Connection</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection.zep)
-
-![](/assets/images/version-4.1.svg)
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Connection\AbstractConnection, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | AbstractConnection |
 
@@ -94,7 +91,7 @@ Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`
 ## Propiedades
 ```php
 /**
- * @var PDO
+ * @var \PDO
  */
 protected pdo;
 
@@ -783,15 +780,49 @@ protected messages;
 ## Métodos
 
 ```php
-public function getMessages();
+public function alert( mixed $message, array $context = [] );
+```
+
+```php
+public function critical( mixed $message, array $context = [] );
+```
+
+```php
+public function debug( mixed $message, array $context = [] );
+```
+
+```php
+public function emergency( mixed $message, array $context = [] );
+```
+
+```php
+public function error( mixed $message, array $context = [] );
+```
+
+```php
+public function getMessages(): array;
 ```
 Devuelve los mensajes registrados.
 
 
 ```php
+public function info( mixed $message, array $context = [] );
+```
+
+```php
 public function log( mixed $level, mixed $message, array $context = [] );
 ```
 Registra un mensaje.
+
+
+```php
+public function notice( mixed $message, array $context = [] );
+```
+
+```php
+public function warning( mixed $message, array $context = [] );
+```
+
 
 
 
@@ -800,7 +831,7 @@ Registra un mensaje.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Helper\Json, Psr\Log\LoggerInterface, Psr\Log\LogLevel | | Implements | ProfilerInterface |
+| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Psr\Log\LoggerInterface, Psr\Log\LogLevel | | Implements | ProfilerInterface |
 
 Envía los perfiles de consulta a un registrador.
 
@@ -971,7 +1002,7 @@ Inicia una entrada de perfil.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/AbstractConditions.zep)
 
-| Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\Helper\Arr | | Extends    | AbstractQuery |
+| Namespace  | Phalcon\DataMapper\Query | | Extends    | AbstractQuery |
 
 Clase AbstractConditions
 
@@ -1439,7 +1470,7 @@ Crea un nuevo objeto Update
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Select.zep)
 
-| Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException, Phalcon\Helper\Arr | | Extends    | AbstractConditions |
+| Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException | | Extends    | AbstractConditions |
 
 Clase Select
 

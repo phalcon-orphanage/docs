@@ -21,11 +21,13 @@ title: 'Phalcon\Translate'
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Translate\Adapter | | Uses       | Phalcon\Helper\Arr, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Implements | AdapterInterface |
+| Namespace  | Phalcon\Translate\Adapter | | Uses       | Phalcon\Support\Helper\Arr\Get, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Implements | AdapterInterface |
 
-Phalcon\Translate\Adapter
+Class AbstractAdapter
 
-Base class for Phalcon\Translate adapters
+@package Phalcon\Translate\Adapter
+
+@property string              $defaultInterpolator @property InterpolatorFactory $interpolatorFactory
 
 
 ## Properties
@@ -45,8 +47,10 @@ protected interpolatorFactory;
 ## Méthodes
 
 ```php
-public function __construct( InterpolatorFactory $interpolator, array $options );
+public function __construct( InterpolatorFactory $interpolator, array $options = [] );
 ```
+AbstractAdapter constructor.
+
 
 ```php
 public function _( string $translateKey, array $placeholders = [] ): string;
@@ -106,7 +110,7 @@ Interface for Phalcon\Translate adapters
 ## Méthodes
 
 ```php
-public function exists( string $index ): bool;
+public function has( string $index ): bool;
 ```
 Check whether is defined a translation key in the internal array
 
@@ -131,9 +135,11 @@ Returns the translation string of the given key
 
 | Namespace  | Phalcon\Translate\Adapter | | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends    | AbstractAdapter | | Implements | ArrayAccess |
 
-Phalcon\Translate\Adapter\Csv
+Class Csv
 
-Allows to define translation lists using CSV file
+@package Phalcon\Translate\Adapter
+
+@property array $translate
 
 
 ## Properties
@@ -150,7 +156,7 @@ protected translate;
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
-Phalcon\Translate\Adapter\Csv constructor
+Csv constructor.
 
 
 ```php
@@ -160,9 +166,21 @@ Check whether is defined a translation key in the internal array
 
 
 ```php
-public function query( string $index, array $placeholders = [] ): string;
+public function has( string $index ): bool;
+```
+Check whether is defined a translation key in the internal array
+
+
+```php
+public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 Returns the translation related to the given key
+
+
+```php
+protected function phpFopen( string $filename, string $mode );
+```
+@todo to be removed when we get traits
 
 
 
@@ -189,6 +207,8 @@ $adapter = new Gettext(
 ```
 
 Allows translate using gettext
+
+@property int          $category @property string       $defaultDomain @property string|array $directory @property string|false $locale
 
 
 ## Properties
@@ -220,7 +240,7 @@ protected locale;
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
-Phalcon\Translate\Adapter\Gettext constructor
+Gettext constructor.
 
 
 ```php
@@ -246,13 +266,19 @@ public function getLocale(): string
 ```
 
 ```php
+public function has( string $index ): bool;
+```
+Check whether is defined a translation key in the internal array
+
+
+```php
 public function nquery( string $msgid1, string $msgid2, int $count, array $placeholders = [], string $domain = null ): string;
 ```
 The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
 
 
 ```php
-public function query( string $index, array $placeholders = [] ): string;
+public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 Returns the translation related to the given key.
 
@@ -293,13 +319,13 @@ $gettext->setDirectory(
 
 
 ```php
-public function setDomain( mixed $domain ): string;
+public function setDomain( string $domain = null ): string;
 ```
 Changes the current domain (i.e. the translation file)
 
 
 ```php
-public function setLocale( int $category, string $locale ): string | bool;
+public function setLocale( int $category, array $localeArray = [] ): string | bool;
 ```
 Sets locale information
 
@@ -319,6 +345,12 @@ Gets default options
 
 
 ```php
+protected function phpFunctionExists( string $name ): bool;
+```
+@todo to be removed when we get traits
+
+
+```php
 protected function prepareOptions( array $options ): void;
 ```
 Validator for constructor
@@ -332,9 +364,13 @@ Validator for constructor
 
 | Namespace  | Phalcon\Translate\Adapter | | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends    | AbstractAdapter | | Implements | ArrayAccess |
 
-Phalcon\Translate\Adapter\NativeArray
+Class NativeArray
 
-Allows to define translation lists using PHP arrays
+Defines translation lists using PHP arrays
+
+@package Phalcon\Translate\Adapter
+
+@property array $translate @property bool  $triggerError
 
 
 ## Properties
@@ -356,11 +392,17 @@ private triggerError = false;
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
-Phalcon\Translate\Adapter\NativeArray constructor
+NativeArray constructor.
 
 
 ```php
 public function exists( string $index ): bool;
+```
+Check whether is defined a translation key in the internal array
+
+
+```php
+public function has( string $index ): bool;
 ```
 Check whether is defined a translation key in the internal array
 
@@ -372,7 +414,7 @@ Whenever a key is not found this method will be called
 
 
 ```php
-public function query( string $index, array $placeholders = [] ): string;
+public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 Returns the translation related to the given key
 
@@ -383,7 +425,7 @@ Returns the translation related to the given key
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Exception.zep)
 
-| Namespace  | Phalcon\Translate | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Translate | | Extends    | \Exception |
 
 Phalcon\Translate\Exception
 
@@ -395,13 +437,11 @@ Class for exceptions thrown by Phalcon\Translate
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/AssociativeArray.zep)
 
-| Namespace  | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
+| Namespace  | Phalcon\Translate\Interpolator | | Uses       | Phalcon\Support\Helper\Str\Interpolate | | Implements | InterpolatorInterface |
 
-This file is part of the Phalcon Framework.
+Class AssociativeArray
 
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+@package Phalcon\Translate\Interpolator
 
 
 ## Méthodes
@@ -420,11 +460,9 @@ Replaces placeholders by the values passed
 
 | Namespace  | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
 
-This file is part of the Phalcon Framework.
+Class IndexedArray
 
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+@package Phalcon\Translate\Interpolator
 
 
 ## Méthodes
@@ -476,7 +514,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 ```php
 public function __construct( array $services = [] );
 ```
-AdapterFactory constructor.
+InterpolatorFactor constructor.
 
 
 ```php
@@ -486,9 +524,13 @@ Create a new instance of the adapter
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
 
+```php
+protected function getServices(): array;
+```
+Returns the available adapters
 
 
 
@@ -497,13 +539,13 @@ protected function getAdapters(): array;
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/TranslateFactory.zep)
 
-| Namespace  | Phalcon\Translate | | Uses       | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\Adapter\AdapterInterface | | Extends    | AbstractFactory |
+| Namespace  | Phalcon\Translate | | Uses       | Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends    | AbstractFactory |
 
-This file is part of the Phalcon Framework.
+Class TranslateFactory
 
-(c) Phalcon Team <team@phalcon.io>
+@package Phalcon\Translate
 
-For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+@property InterpolatorFactory $interpolator
 
 
 ## Properties
@@ -524,7 +566,7 @@ AdapterFactory constructor.
 
 
 ```php
-public function load( mixed $config ): mixed;
+public function load( mixed $config ): AdapterInterface;
 ```
 Factory to create an instance from a Config object
 
@@ -536,8 +578,12 @@ Create a new instance of the adapter
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
 
+```php
+protected function getServices(): array;
+```
+Returns the available adapters
 
 

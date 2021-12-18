@@ -28,16 +28,22 @@ Phalcon\Paginator\Adapter\AbstractAdapter
 ```php
 /**
  * Configuration of paginator
+ *
+ * @var array
  */
 protected config;
 
 /**
  * Number of rows to show in the paginator. By default is null
+ *
+ * @var int|null
  */
 protected limitRows;
 
 /**
  * Current page in paginate
+ *
+ * @var int|null
  */
 protected page;
 
@@ -71,7 +77,7 @@ Establece el número de página actual
 
 
 ```php
-public function setLimit( int $limitRows ): AdapterInterface;
+public function setLimit( int $limit ): AdapterInterface;
 ```
 Establece el límite de filas actual
 
@@ -133,7 +139,7 @@ Establece el límite de filas actual
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Paginator/Adapter/Model.zep)
 
-| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Paginator\Exception, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
+| Namespace  | Phalcon\Paginator\Adapter | | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Paginator\Exception, Phalcon\Paginator\RepositoryInterface | | Extends    | AbstractAdapter |
 
 Phalcon\Paginator\Adapter\Model
 
@@ -282,11 +288,15 @@ $paginator = new QueryBuilder(
 ```php
 /**
  * Paginator's data
+ *
+ * @var Builder
  */
 protected builder;
 
 /**
  * Columns for count query if builder has having
+ *
+ * @var array|string
  */
 protected columns;
 
@@ -330,7 +340,7 @@ Establece el objeto constructor de consultas
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Paginator/Exception.zep)
 
-| Namespace  | Phalcon\Paginator | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Paginator | | Extends    | \Exception |
 
 Phalcon\Paginator\Exception
 
@@ -342,7 +352,7 @@ Las excepciones lanzadas en Phalcon\Paginator usarán esta clase
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Paginator/PaginatorFactory.zep)
 
-| Namespace | Phalcon\Paginator | | Uses | Phalcon\Paginator\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace  | Phalcon\Paginator | | Uses       | Phalcon\Paginator\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
 
 Este fichero es parte del Framework Phalcon.
 
@@ -392,9 +402,13 @@ Crea una nueva instancia del adaptador
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
 
+```php
+protected function getServices(): array;
+```
+Devuelve los adaptadores disponibles
 
 
 
@@ -403,7 +417,7 @@ protected function getAdapters(): array;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Paginator/Repository.zep)
 
-| Namespace | Phalcon\Paginator | | Uses | JsonSerializable, Phalcon\Helper\Arr | | Implements | RepositoryInterface, JsonSerializable |
+| Namespace  | Phalcon\Paginator | | Uses       | JsonSerializable | | Implements | RepositoryInterface, JsonSerializable |
 
 Phalcon\Paginator\Repository
 

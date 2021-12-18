@@ -26,10 +26,14 @@ Todos los adaptadores de imagen deben usar esta clase
 
 ## Propiedades
 ```php
-//
+/**
+ * @var bool
+ */
 protected static checked = false;
 
-//
+/**
+ * @var string
+ */
 protected file;
 
 /**
@@ -39,7 +43,9 @@ protected file;
  */
 protected height;
 
-//
+/**
+ * @var object|null
+ */
 protected image;
 
 /**
@@ -49,7 +55,9 @@ protected image;
  */
 protected mime;
 
-//
+/**
+ * @var string
+ */
 protected realpath;
 
 /**
@@ -75,29 +83,33 @@ protected width;
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
 ```
- Establece el color de fondo de una imagen
+Establece el color de fondo de una imagen
+
 
 ```php
 public function blur( int $radius ): AdapterInterface;
 ```
- Desenfoca una imagen
+Desenfoca una imagen
+
 
 ```php
 public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): AdapterInterface;
 ```
- Recorta una imagen al tamaño dado
+Recorta una imagen al tamaño dado
+
 
 ```php
 public function flip( int $direction ): AdapterInterface;
 ```
- Da la vuelta a la imagen a lo largo del eje horizontal o vertical
+Da la vuelta a la imagen a lo largo del eje horizontal o vertical
+
 
 ```php
 public function getHeight(): int
 ```
 
 ```php
-public function getImage()
+public function getImage(): object|null
 ```
 
 ```php
@@ -105,7 +117,7 @@ public function getMime(): string
 ```
 
 ```php
-public function getRealpath()
+public function getRealpath(): string
 ```
 
 ```php
@@ -125,53 +137,61 @@ Este método escala las imágenes usando el método de reescalado líquido. Solo
 ```php
 public function mask( AdapterInterface $watermark ): AdapterInterface;
 ```
- Combina una imagen en otra
+Combina una imagen en otra
+
 
 ```php
 public function pixelate( int $amount ): AdapterInterface;
 ```
- Pixela una imagen
+Pixela una imagen
+
 
 ```php
 public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): AdapterInterface;
 ```
- Añade un reflejo a una imagen
+Añade un reflejo a una imagen
+
 
 ```php
 public function render( string $ext = null, int $quality = int ): string;
 ```
- Renderiza la imagen y devuelve la cadena binaria
+Renderiza la imagen y devuelve la cadena binaria
+
 
 ```php
 public function resize( int $width = null, int $height = null, int $master = static-constant-access ): AdapterInterface;
 ```
- Redimensiona la imagen al tamaño dado
+Redimensiona la imagen al tamaño dado
+
 
 ```php
 public function rotate( int $degrees ): AdapterInterface;
 ```
- Rota la imagen en la cantidad indicada
+Rota la imagen en la cantidad indicada
+
 
 ```php
 public function save( string $file = null, int $quality = int ): AdapterInterface;
 ```
- Guarda la imagen
+Guarda la imagen
+
 
 ```php
 public function sharpen( int $amount ): AdapterInterface;
 ```
- Ajusta la nitidez de la imagen en la cantidad indicada
+Ajusta la nitidez de la imagen en la cantidad indicada
+
 
 ```php
 public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): AdapterInterface;
 ```
- Añade un texto a un imagen con una opacidad especificada
+Añade un texto a un imagen con una opacidad especificada
+
 
 ```php
 public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): AdapterInterface;
 ```
- Añade una marca de agua a una imagen con una opacidad especificada
-
+Añade una marca de agua a una imagen con una opacidad especificada
 
 
 
@@ -266,7 +286,9 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 
 ## Propiedades
 ```php
-//
+/**
+ * @var bool
+ */
 protected static checked = false;
 
 ```
@@ -370,17 +392,20 @@ $image->resize(200, 200)->rotate(90)->crop(100, 100);
 
 if ($image->save()) {
     echo "success";
-
 }
 ```
 
 
 ## Propiedades
 ```php
-//
+/**
+ * @var bool
+ */
 protected static checked = false;
 
-//
+/**
+ * @var int
+ */
 protected static version = 0;
 
 ```
@@ -412,7 +437,7 @@ Obtiene una instancia
 
 
 ```php
-public function setResourceLimit( int $type, int $limit );
+public function setResourceLimit( int $type, int $limit ): void;
 ```
 Establece los limites para un recurso particular en megabytes
 
@@ -420,49 +445,49 @@ Establece los limites para un recurso particular en megabytes
 
 
 ```php
-protected function processBackground( int $r, int $g, int $b, int $opacity );
+protected function processBackground( int $r, int $g, int $b, int $opacity ): void;
 ```
 Ejecuta un fondo.
 
 
 ```php
-protected function processBlur( int $radius );
+protected function processBlur( int $radius ): void;
 ```
 Desenfoca una imagen
 
 
 ```php
-protected function processCrop( int $width, int $height, int $offsetX, int $offsetY );
+protected function processCrop( int $width, int $height, int $offsetX, int $offsetY ): void;
 ```
 Ejecuta un recorte.
 
 
 ```php
-protected function processFlip( int $direction );
+protected function processFlip( int $direction ): void;
 ```
 Ejecuta un giro.
 
 
 ```php
-protected function processLiquidRescale( int $width, int $height, int $deltaX, int $rigidity );
+protected function processLiquidRescale( int $width, int $height, int $deltaX, int $rigidity ): void;
 ```
 Este método escala las imágenes usando el método de reescalado líquido. Solo para soporte Imagick
 
 
 ```php
-protected function processMask( AdapterInterface $image );
+protected function processMask( AdapterInterface $image ): void;
 ```
 Combina una imagen en otra
 
 
 ```php
-protected function processPixelate( int $amount );
+protected function processPixelate( int $amount ): void;
 ```
 Pixela una imagen
 
 
 ```php
-protected function processReflection( int $height, int $opacity, bool $fadeIn );
+protected function processReflection( int $height, int $opacity, bool $fadeIn ): void;
 ```
 Ejecuta un reflejo.
 
@@ -474,19 +499,19 @@ Ejecuta un renderizado.
 
 
 ```php
-protected function processResize( int $width, int $height );
+protected function processResize( int $width, int $height ): void;
 ```
 Ejecuta un cambio de tamaño.
 
 
 ```php
-protected function processRotate( int $degrees );
+protected function processRotate( int $degrees ): void;
 ```
 Ejecuta una rotación.
 
 
 ```php
-protected function processSave( string $file, int $quality );
+protected function processSave( string $file, int $quality ): void;
 ```
 Ejecuta un guardado.
 
@@ -542,7 +567,7 @@ const WIDTH = 2;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Exception.zep)
 
-| Namespace | Phalcon\Image | | Extends | \Phalcon\Exception |
+| Namespace  | Phalcon\Image | | Extends    | \Exception |
 
 Este fichero es parte del Framework Phalcon.
 
@@ -556,7 +581,7 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/ImageFactory.zep)
 
-| Namespace | Phalcon\Image | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface | | Extends | AbstractFactory |
+| Namespace  | Phalcon\Image | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Image\Adapter\AdapterInterface | | Extends    | AbstractFactory |
 
 Phalcon\Image/ImageFactory
 
@@ -582,8 +607,12 @@ Crea una nueva instancia
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
 
+```php
+protected function getServices(): array;
+```
+Devuelve los adaptadores disponibles
 
 
