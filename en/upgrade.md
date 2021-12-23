@@ -251,7 +251,7 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 
 > Status: **no changes**
 >
-> Usage: [Cli Documentation](cli)
+> Usage: [Cli Documentation](application-cli)
 {: .alert .alert-info }
 
 
