@@ -13,7 +13,7 @@ title: 'Phalcon\Tag'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag.zep)
 
-| Namespace  | Phalcon | | Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Helper\Str, Phalcon\Helper\Exception, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
+| Namespace  | Phalcon | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Mvc\Url\UrlInterface, Phalcon\Support\Helper\Str\Friendly |
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is a class that you can extend to add more helpers.
 
@@ -35,40 +35,60 @@ const XHTML5 = 11;
 
 ## Properties
 ```php
-//
+/**
+ * @var bool
+ */
 protected static autoEscape = true;
 
 /**
  * DI Container
+ *
+ * @var DiInterface|null
  */
 protected static container;
 
 /**
  * Pre-assigned values for components
+ *
+ * @var array
  */
 protected static displayValues;
 
-//
+/**
+ * @var array
+ */
 protected static documentAppendTitle;
 
-//
+/**
+ * @var array
+ */
 protected static documentPrependTitle;
 
 /**
  * HTML document title
+ *
+ * @var string|null
  */
 protected static documentTitle;
 
-//
+/**
+ * @var string|null
+ */
 protected static documentTitleSeparator;
 
-//
+/**
+ * @var int
+ */
 protected static documentType = 11;
 
-//
+/**
+ * @var EscaperInterface|null
+ */
 protected static escaperService;
 
-//
+/**
+ * @var UrlInterface|null
+ */
 protected static urlService;
 
 ```
@@ -430,7 +450,7 @@ Builds INPUT tags that implements the checked attribute
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag/Exception.zep)
 
-| Namespace  | Phalcon\Tag | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Tag | | Extends    | \Exception |
 
 Phalcon\Tag\Exception
 
@@ -442,7 +462,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Tag/Select.zep)
 
-| Namespace  | Phalcon\Tag | | Uses       | Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
+| Namespace  | Phalcon\Tag | | Uses       | Phalcon\Tag, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
 
 Phalcon\Tag\Select
 

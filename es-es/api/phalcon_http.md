@@ -14,8 +14,10 @@ title: 'Phalcon\Http'
 * [Phalcon\Http\Message\Exception\InvalidArgumentException](#http-message-exception-invalidargumentexception)
 * [Phalcon\Http\Message\Request](#http-message-request)
 * [Phalcon\Http\Message\RequestFactory](#http-message-requestfactory)
+* [Phalcon\Http\Message\RequestMethodInterface](#http-message-requestmethodinterface)
 * [Phalcon\Http\Message\Response](#http-message-response)
 * [Phalcon\Http\Message\ResponseFactory](#http-message-responsefactory)
+* [Phalcon\Http\Message\ResponseStatusCodeInterface](#http-message-responsestatuscodeinterface)
 * [Phalcon\Http\Message\ServerRequest](#http-message-serverrequest)
 * [Phalcon\Http\Message\ServerRequestFactory](#http-message-serverrequestfactory)
 * [Phalcon\Http\Message\Stream](#http-message-stream)
@@ -46,7 +48,7 @@ title: 'Phalcon\Http'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie.zep)
 
-| Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Helper\Arr, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface | | Extends    | AbstractInjectionAware | | Implements | CookieInterface |
+| Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Encryption\Crypt\CryptInterface, Phalcon\Encryption\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface | | Extends    | AbstractInjectionAware | | Implements | CookieInterface |
 
 Proporciona envolturas OO para gestionar una cookie HTTP.
 
@@ -63,7 +65,9 @@ protected domain;
  */
 protected expire;
 
-//
+/**
+ * @var FilterInterface|null
+ */
 protected filter;
 
 /**
@@ -99,10 +103,11 @@ protected restored = false;
 /**
  * @var bool
  */
-protected secure;
+protected secure = true;
 
 /**
  * The cookie's sign key.
+ *
  * @var string|null
  */
 protected signKey;
@@ -113,7 +118,7 @@ protected signKey;
 protected useEncryption = false;
 
 /**
- * @var mixed
+ * @var mixed|null
  */
 protected value;
 
@@ -122,7 +127,7 @@ protected value;
 ## Métodos
 
 ```php
-public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool, array $options = [] );
+public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] );
 ```
 Constructor Phalcon\Http\Cookie.
 
@@ -410,7 +415,7 @@ Establece si la cookie se debe encriptar/desencriptar automáticamente
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/Exception.zep)
 
-| Namespace  | Phalcon\Http\Cookie | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Http\Cookie | | Extends    | \Exception |
 
 Phalcon\Http\Cookie\Exception
 
@@ -453,7 +458,7 @@ Comprueba el elemento pasado; lo asigna a la propiedad y devuelve un clon del ob
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractMessage.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface | | Extends    | AbstractCommon |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface | | Extends    | AbstractCommon |
 
 Métodos de mensaje
 
@@ -703,7 +708,7 @@ Comprueba el protocolo
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/AbstractRequest.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends    | AbstractMessage |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends    | AbstractMessage | | Implements | RequestMethodInterface |
 
 Métodos de solicitud
 
@@ -715,7 +720,7 @@ Métodos de solicitud
  *
  * @var string
  */
-protected method = GET;
+protected method;
 
 /**
  * The request-target, if it has been provided or calculated.
@@ -837,7 +842,7 @@ PSR-7 Request
 ## Métodos
 
 ```php
-public function __construct( string $method = string, mixed $uri = null, mixed $body = string, mixed $headers = [] );
+public function __construct( string $method = static-constant-access, mixed $uri = null, mixed $body = string, mixed $headers = [] );
 ```
 Constructor Request.
 
@@ -863,11 +868,37 @@ Crea una nueva petición.
 
 
 
+<h1 id="http-message-requestmethodinterface">Interface Phalcon\Http\Message\RequestMethodInterface</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/RequestMethodInterface.zep)
+
+| Namespace  | Phalcon\Http\Message |
+
+Interface for Request methods
+
+Implementation of this file has been influenced by PHP FIG @link    https://github.com/php-fig/http-message-util/ @license https://github.com/php-fig/http-message-util/blob/master/LICENSE
+
+
+## Constantes
+```php
+const METHOD_CONNECT = CONNECT;
+const METHOD_DELETE = DELETE;
+const METHOD_GET = GET;
+const METHOD_HEAD = HEAD;
+const METHOD_OPTIONS = OPTIONS;
+const METHOD_PATCH = PATCH;
+const METHOD_POST = POST;
+const METHOD_PURGE = PURGE;
+const METHOD_PUT = PUT;
+const METHOD_TRACE = TRACE;
+```
+
+
 <h1 id="http-message-response">Final Class Phalcon\Http\Message\Response</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Response.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Helper\Number, Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ResponseInterface | | Extends    | AbstractMessage | | Implements | ResponseInterface |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ResponseInterface | | Extends    | AbstractMessage | | Implements | ResponseInterface, ResponseStatusCodeInterface |
 
 PSR-7 Response
 
@@ -964,11 +995,119 @@ Crea una nueva respuesta.
 
 
 
+<h1 id="http-message-responsestatuscodeinterface">Interface Phalcon\Http\Message\ResponseStatusCodeInterface</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
+
+| Namespace  | Phalcon\Http\Message |
+
+Interface for Request methods
+
+Implementation of this file has been influenced by PHP FIG @link    https://github.com/php-fig/http-message-util/ @license https://github.com/php-fig/http-message-util/blob/master/LICENSE
+
+Defines constants for common HTTP status code.
+
+@see https://tools.ietf.org/html/rfc2295#section-8.1 @see https://tools.ietf.org/html/rfc2324#section-2.3 @see https://tools.ietf.org/html/rfc2518#section-9.7 @see https://tools.ietf.org/html/rfc2774#section-7 @see https://tools.ietf.org/html/rfc3229#section-10.4 @see https://tools.ietf.org/html/rfc4918#section-11 @see https://tools.ietf.org/html/rfc5842#section-7.1 @see https://tools.ietf.org/html/rfc5842#section-7.2 @see https://tools.ietf.org/html/rfc6585#section-3 @see https://tools.ietf.org/html/rfc6585#section-4 @see https://tools.ietf.org/html/rfc6585#section-5 @see https://tools.ietf.org/html/rfc6585#section-6 @see https://tools.ietf.org/html/rfc7231#section-6 @see https://tools.ietf.org/html/rfc7238#section-3 @see https://tools.ietf.org/html/rfc7725#section-3 @see https://tools.ietf.org/html/rfc7540#section-9.1.2 @see https://tools.ietf.org/html/rfc8297#section-2 @see https://tools.ietf.org/html/rfc8470#section-7
+
+
+## Constantes
+```php
+const STATUS_ACCEPTED = 202;
+const STATUS_ALREADY_REPORTED = 208;
+const STATUS_BAD_GATEWAY = 502;
+const STATUS_BAD_REQUEST = 400;
+const STATUS_BANDWIDTH_LIMIT_EXCEEDED = 509;
+const STATUS_BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS = 450;
+const STATUS_CLIENT_CLOSED_REQUEST = 499;
+const STATUS_CONFLICT = 409;
+const STATUS_CONNECTION_TIMEOUT = 522;
+const STATUS_CONTINUE = 100;
+const STATUS_CREATED = 201;
+const STATUS_EARLY_HINTS = 103;
+const STATUS_EXPECTATION_FAILED = 417;
+const STATUS_FAILED_DEPENDENCY = 424;
+const STATUS_FORBIDDEN = 403;
+const STATUS_FOUND = 302;
+const STATUS_GATEWAY_TIMEOUT = 504;
+const STATUS_GONE = 410;
+const STATUS_HTTP_REQUEST_SENT_TO_HTTPS_PORT = 497;
+const STATUS_IM_A_TEAPOT = 418;
+const STATUS_IM_USED = 226;
+const STATUS_INSUFFICIENT_STORAGE = 507;
+const STATUS_INTERNAL_SERVER_ERROR = 500;
+const STATUS_INVALID_SSL_CERTIFICATE = 526;
+const STATUS_INVALID_TOKEN_ESRI = 498;
+const STATUS_LENGTH_REQUIRED = 411;
+const STATUS_LOCKED = 423;
+const STATUS_LOGIN_TIMEOUT = 440;
+const STATUS_LOOP_DETECTED = 508;
+const STATUS_METHOD_FAILURE = 420;
+const STATUS_METHOD_NOT_ALLOWED = 405;
+const STATUS_MISDIRECTED_REQUEST = 421;
+const STATUS_MOVED_PERMANENTLY = 301;
+const STATUS_MULTIPLE_CHOICES = 300;
+const STATUS_MULTI_STATUS = 207;
+const STATUS_NETWORK_AUTHENTICATION_REQUIRED = 511;
+const STATUS_NETWORK_CONNECT_TIMEOUT_ERROR = 599;
+const STATUS_NETWORK_READ_TIMEOUT_ERROR = 598;
+const STATUS_NON_AUTHORITATIVE_INFORMATION = 203;
+const STATUS_NOT_ACCEPTABLE = 406;
+const STATUS_NOT_EXTENDED = 510;
+const STATUS_NOT_FOUND = 404;
+const STATUS_NOT_IMPLEMENTED = 501;
+const STATUS_NOT_MODIFIED = 304;
+const STATUS_NO_CONTENT = 204;
+const STATUS_NO_RESPONSE = 444;
+const STATUS_OK = 200;
+const STATUS_ORIGIN_DNS_ERROR = 530;
+const STATUS_ORIGIN_IS_UNREACHABLE = 523;
+const STATUS_PAGE_EXPIRED = 419;
+const STATUS_PARTIAL_CONTENT = 206;
+const STATUS_PAYLOAD_TOO_LARGE = 413;
+const STATUS_PAYMENT_REQUIRED = 402;
+const STATUS_PERMANENT_REDIRECT = 308;
+const STATUS_PRECONDITION_FAILED = 412;
+const STATUS_PRECONDITION_REQUIRED = 428;
+const STATUS_PROCESSING = 102;
+const STATUS_PROXY_AUTHENTICATION_REQUIRED = 407;
+const STATUS_RAILGUN_ERROR = 527;
+const STATUS_RANGE_NOT_SATISFIABLE = 416;
+const STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE = 431;
+const STATUS_REQUEST_HEADER_TOO_LARGE = 494;
+const STATUS_REQUEST_TIMEOUT = 408;
+const STATUS_RESERVED = 306;
+const STATUS_RESET_CONTENT = 205;
+const STATUS_RETRY_WITH = 449;
+const STATUS_SEE_OTHER = 303;
+const STATUS_SERVICE_UNAVAILABLE = 503;
+const STATUS_SSL_CERTIFICATE_ERROR = 495;
+const STATUS_SSL_CERTIFICATE_REQUIRED = 496;
+const STATUS_SSL_HANDSHAKE_FAILED = 525;
+const STATUS_SWITCHING_PROTOCOLS = 101;
+const STATUS_TEMPORARY_REDIRECT = 307;
+const STATUS_THIS_IS_FINE = 218;
+const STATUS_TIMEOUT_OCCURRED = 524;
+const STATUS_TOO_EARLY = 425;
+const STATUS_TOO_MANY_REQUESTS = 429;
+const STATUS_UNAUTHORIZED = 401;
+const STATUS_UNAVAILABLE_FOR_LEGAL_REASONS = 451;
+const STATUS_UNKNOWN_ERROR = 520;
+const STATUS_UNPROCESSABLE_ENTITY = 422;
+const STATUS_UNSUPPORTED_MEDIA_TYPE = 415;
+const STATUS_UPGRADE_REQUIRED = 426;
+const STATUS_URI_TOO_LONG = 414;
+const STATUS_USE_PROXY = 305;
+const STATUS_VARIANT_ALSO_NEGOTIATES = 506;
+const STATUS_VERSION_NOT_SUPPORTED = 505;
+const STATUS_WEB_SERVER_IS_DOWN = 521;
+```
+
+
 <h1 id="http-message-serverrequest">Final Class Phalcon\Http\Message\ServerRequest</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequest.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface | | Extends    | AbstractRequest | | Implements | ServerRequestInterface |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface | | Extends    | AbstractRequest | | Implements | ServerRequestInterface |
 
 PSR-7 ServerRequest
 
@@ -1051,7 +1190,7 @@ protected uploadedFiles;
 ## Métodos
 
 ```php
-public function __construct( string $method = string, mixed $uri = null, array $serverParams = [], mixed $body = string, mixed $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], mixed $parsedBody = null, string $protocol = string );
+public function __construct( string $method = static-constant-access, mixed $uri = null, array $serverParams = [], mixed $body = string, mixed $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], mixed $parsedBody = null, string $protocol = string );
 ```
 Constructor ServerRequest.
 
@@ -1168,7 +1307,7 @@ Este método se DEBE implementar de tal manera que conserve la inmutabilidad del
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ServerRequestFactory.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface | | Implements | ServerRequestFactoryInterface |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface | | Implements | ServerRequestFactoryInterface, RequestMethodInterface |
 
 PSR-17 ServerRequestFactory
 
@@ -1203,7 +1342,7 @@ Devuelve el apache_request_headers si existe
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Stream.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Helper\Arr, Exception, Psr\Http\Message\StreamInterface, RuntimeException | | Implements | StreamInterface |
+| Namespace  | Phalcon\Http\Message | | Uses       | Exception, Psr\Http\Message\StreamInterface, RuntimeException | | Implements | StreamInterface |
 
 PSR-7 Stream
 
@@ -1400,8 +1539,6 @@ public function getContents( int $length = int ): string;
 ```
 Devuelve el contenido restante en una cadena
 
-@throws RuntimeException if unable to read. @throws RuntimeException if error occurs while reading.
-
 
 ```php
 public function isWritable(): bool;
@@ -1502,7 +1639,7 @@ El flujo DEBE ser legible y puede ser escribible.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/UploadedFile.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Helper\Number, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, RuntimeException | | Implements | UploadedFileInterface |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, RuntimeException | | Implements | UploadedFileInterface |
 
 PSR-7 UploadedFile
 
@@ -1671,7 +1808,7 @@ Si no se proporciona un tamaño, se determinará comprobando el tamaño del fluj
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/Uri.zep)
 
-| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends    | AbstractCommon | | Implements | UriInterface |
+| Namespace  | Phalcon\Http\Message | | Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends    | AbstractCommon | | Implements | UriInterface |
 
 PSR-7 Uri
 
@@ -1681,7 +1818,7 @@ PSR-7 Uri
 /**
  * Returns the fragment of the URL
  *
- * @return string
+ * @var string
  */
 protected fragment = ;
 
@@ -1695,7 +1832,7 @@ protected fragment = ;
  *
  * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
  *
- * @return string
+ * @var string
  */
 protected host = ;
 
@@ -1707,7 +1844,7 @@ protected pass = ;
 /**
  * Returns the path of the URL
  *
- * @return string
+ * @var string
  */
 protected path = ;
 
@@ -1724,14 +1861,14 @@ protected path = ;
  * If no port is present, but a scheme is present, this method MAY return
  * the standard port for that scheme, but SHOULD return null.
  *
- * @return int|null
+ * @var int|null
  */
 protected port;
 
 /**
  * Returns the query of the URL
  *
- * @return string
+ * @var string
  */
 protected query = ;
 
@@ -1748,7 +1885,7 @@ protected query = ;
  *
  * @see https://tools.ietf.org/html/rfc3986#section-3.1
  *
- * @return string
+ * @var string
  */
 protected scheme = https;
 
@@ -1782,27 +1919,27 @@ Obtiene el componente autoridad de la URI.
 
 
 ```php
-public function getFragment()
+public function getFragment(): string
 ```
 
 ```php
-public function getHost()
+public function getHost(): string
 ```
 
 ```php
-public function getPath()
+public function getPath(): string
 ```
 
 ```php
-public function getPort()
+public function getPort(): int|null
 ```
 
 ```php
-public function getQuery()
+public function getQuery(): string
 ```
 
 ```php
-public function getScheme()
+public function getScheme(): string
 ```
 
 ```php
@@ -1920,7 +2057,7 @@ Devuelve un objeto Localizador con todos los ayudantes definidos en funciones an
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request.zep)
 
-| Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Helper\Json, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass | | Extends    | AbstractInjectionAware | | Implements | RequestInterface |
+| Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass | | Extends    | AbstractInjectionAware | | Implements | RequestInterface, RequestMethodInterface |
 
 Encapsula la información de la solicitud para un acceso fácil y seguro desde los controladores de la aplicación.
 
@@ -1948,7 +2085,9 @@ $request->getLanguages();
 
 ## Propiedades
 ```php
-//
+/**
+ * @var FilterInterface|null
+ */
 private filterService;
 
 /**
@@ -1961,11 +2100,15 @@ private httpMethodParameterOverride = false;
  */
 private queryFilters;
 
-//
+/**
+ * @var array|null
+ */
 private putCache;
 
-//
-private rawBody;
+/**
+ * @var string
+ */
+private rawBody = ;
 
 /**
  * @var bool
@@ -2474,7 +2617,7 @@ Simplifica $_FILES para tener un vector simple con todos los ficheros subidos
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/Exception.zep)
 
-| Namespace  | Phalcon\Http\Request | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Http\Request | | Extends    | \Exception |
 
 Phalcon\Http\Request\Exception
 
@@ -2486,7 +2629,7 @@ Las excepciones lanzadas en Phalcon\Http\Request usarán esta clase
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/File.zep)
 
-| Namespace  | Phalcon\Http\Request | | Uses       | Phalcon\Helper\Arr | | Implements | FileInterface |
+| Namespace  | Phalcon\Http\Request | | Implements | FileInterface |
 
 Phalcon\Http\Request\File
 
@@ -2528,19 +2671,29 @@ protected extension;
  */
 protected key;
 
-//
+/**
+ * @var string
+ */
 protected name;
 
-//
+/**
+ * @var string
+ */
 protected realType;
 
-//
-protected size;
+/**
+ * @var int
+ */
+protected size = 0;
 
-//
+/**
+ * @var string|null
+ */
 protected tmp;
 
-//
+/**
+ * @var string
+ */
 protected type;
 
 ```
@@ -3073,7 +3226,7 @@ Devuelve el número de archivos disponibles
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response.zep)
 
-| Namespace  | Phalcon\Http | | Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Helper\Fs, Phalcon\Helper\Json, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface |
+| Namespace  | Phalcon\Http | | Uses       | DateTime, DateTimeZone, InvalidArgumentException, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface, ResponseStatusCodeInterface |
 
 Parte del ciclo HTTP es devolver respuestas a los clientes. Phalcon\HTTP\Response es el componente Phalcon responsable de realizar esta tarea. Las respuestas HTTP suelen estar compuestas por cabeceras y cuerpo.
 
@@ -3089,22 +3242,34 @@ $response->send();
 
 ## Propiedades
 ```php
-//
+/**
+ * @var DiInterface|null
+ */
 protected container;
 
-//
+/**
+ * @var string|null
+ */
 protected content;
 
-//
+/**
+ * @var CookiesInterface|null
+ */
 protected cookies;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
-//
+/**
+ * @var string|null
+ */
 protected file;
 
-//
+/**
+ * @var Headers
+ */
 protected headers;
 
 /**
@@ -3112,7 +3277,9 @@ protected headers;
  */
 protected sent = false;
 
-//
+/**
+ * @var array
+ */
 protected statusCodes;
 
 ```
@@ -3150,7 +3317,7 @@ Devuelve el inyector de dependencias interno
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Devuelve el administrador de eventos interno
 
@@ -3427,8 +3594,8 @@ Esta clase es una bolsa para gestionar las cookies.
 Una bolsa de cookies se registra automáticamente como parte del servicio 'response' en el DI. Por defecto, las cookies automáticamente se encriptan antes de enviarse al cliente y son desencriptadas cuando se recuperan desde el usuario. Para establecer la clave de firma a usar para generar un código de autenticación de mensaje use `Phalcon\Http\Response\Cookies::setSignKey()`.
 
 ```php
-use Phalcon\Di;
-use Phalcon\Crypt;
+use Phalcon\Di\Di;
+use Phalcon\Encryption\Crypt;
 use Phalcon\Http\Response\Cookies;
 
 $di = new Di();
@@ -3466,10 +3633,19 @@ $di->set(
 
 ## Propiedades
 ```php
-//
+/**
+ * @var array
+ */
 protected cookies;
 
-//
+/**
+ * @var bool
+ */
+protected isSent = false;
+
+/**
+ * @var bool
+ */
 protected registered = false;
 
 /**
@@ -3478,7 +3654,9 @@ protected registered = false;
  */
 protected signKey;
 
-//
+/**
+ * @var bool
+ */
 protected useEncryption = true;
 
 ```
@@ -3513,6 +3691,12 @@ Obtiene todas las cookies de la bolsa
 public function has( string $name ): bool;
 ```
 Comprueba si una cookie está definida en la bolsa o existe en el superglobal _COOKIE
+
+
+```php
+public function isSent(): bool;
+```
+Returns if the headers have already been sent
 
 
 ```php
@@ -3642,7 +3826,7 @@ Establece si las cookies de la bolsa se deben encriptar/desencriptar automática
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Exception.zep)
 
-| Namespace  | Phalcon\Http\Response | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Http\Response | | Extends    | \Exception |
 
 Phalcon\Http\Response\Exception
 
@@ -3663,8 +3847,15 @@ Esta clase es una bolsa para gestionar las cabeceras de la respuesta
 
 ## Propiedades
 ```php
-//
+/**
+ * @var array
+ */
 protected headers;
+
+/**
+ * @var bool
+ */
+protected isSent = false;
 
 ```
 
@@ -3683,9 +3874,15 @@ Comprueba si existe una cabecera
 
 
 ```php
+public function isSent(): bool;
+```
+Returns if the headers have already been sent
+
+
+```php
 public function remove( string $header ): HeadersInterface;
 ```
-Elimina una cabecera que será enviada al final de la solicitud
+Removes a header by its name
 
 
 ```php

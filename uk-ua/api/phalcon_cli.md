@@ -76,7 +76,7 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
 ```php
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Cli\Dispatcher;
 
 $di = new Di();
@@ -95,9 +95,7 @@ $handle = $dispatcher->dispatch();
 
 ## Властивості
 ```php
-/**
- * @var string
- */
+//
 protected defaultHandler = main;
 
 /**
@@ -307,13 +305,19 @@ echo $router->getTaskName();
 
 ## Властивості
 ```php
-//
+/**
+ * @var string|null
+ */
 protected action;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultAction;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultModule;
 
 /**
@@ -321,16 +325,25 @@ protected defaultModule;
  */
 protected defaultParams;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultTask;
 
-//
+/**
+ * @var RouteInterface|null
+ */
 protected matchedRoute;
 
-//
+/**
+ * @var array|null
+ * TODO: make always array
+ */
 protected matches;
 
-//
+/**
+ * @var string|null
+ */
 protected module;
 
 /**
@@ -338,13 +351,19 @@ protected module;
  */
 protected params;
 
-//
+/**
+ * @var array
+ */
 protected routes;
 
-//
+/**
+ * @var string|null
+ */
 protected task;
 
-//
+/**
+ * @var bool
+ */
 protected wasMatched = false;
 
 ```
@@ -472,7 +491,7 @@ Checks if the router matches any of the defined routes
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Exception.zep)
 
-| Namespace  | Phalcon\Cli\Router | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Cli\Router | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Cli\Router will use this class
 
@@ -494,37 +513,59 @@ const DEFAULT_DELIMITER =  ;
 
 ## Властивості
 ```php
-//
+/**
+ * @var mixed|null
+ */
 protected beforeMatch;
 
-//
+/**
+ * @var string|null
+ */
 protected compiledPattern;
 
-//
+/**
+ * @var array
+ */
 protected converters;
 
-//
+/**
+ * @var string
+ */
 protected delimiter;
 
-//
+/**
+ * @var string
+ */
 protected static delimiterPath;
 
-//
+/**
+ * @var string|null
+ */
 protected description;
 
-//
+/**
+ * @var string
+ */
 protected id;
 
-//
+/**
+ * @var string|null
+ */
 protected name;
 
-//
+/**
+ * @var array
+ */
 protected paths;
 
-//
+/**
+ * @var string
+ */
 protected pattern;
 
-//
+/**
+ * @var int|string
+ */
 protected static uniqueId = 0;
 
 ```
@@ -895,7 +936,9 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ## Властивості
 ```php
-//
+/**
+ * @var ManagerInterface
+ */
 protected eventsManager;
 
 ```

@@ -20,7 +20,9 @@ Esta es la clase base para Phalcon\Mvc\Dispatcher y Phalcon\Cli\Dispatcher. Esta
 
 ## Propiedades
 ```php
-//
+/**
+ * @var object|null
+ */
 protected activeHandler;
 
 /**
@@ -28,7 +30,9 @@ protected activeHandler;
  */
 protected activeMethodMap;
 
-//
+/**
+ * @var string|null
+ */
 protected actionName;
 
 /**
@@ -46,10 +50,14 @@ protected camelCaseMap;
  */
 protected defaultAction = ;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultNamespace;
 
-//
+/**
+ * @var string|null
+ */
 protected defaultHandler;
 
 /**
@@ -57,7 +65,9 @@ protected defaultHandler;
  */
 protected handlerHashes;
 
-//
+/**
+ * @var string|null
+ */
 protected handlerName;
 
 /**
@@ -65,7 +75,9 @@ protected handlerName;
  */
 protected handlerSuffix = ;
 
-//
+/**
+ * @var ManagerInterface|null
+ */
 protected eventsManager;
 
 /**
@@ -83,10 +95,14 @@ protected forwarded = false;
  */
 protected isControllerInitialize = false;
 
-//
+/**
+ * @var mixed|null
+ */
 protected lastHandler;
 
-//
+/**
+ * @var BinderInterface|null
+ */
 protected modelBinder;
 
 /**
@@ -94,10 +110,14 @@ protected modelBinder;
  */
 protected modelBinding = false;
 
-//
+/**
+ * @var string|null
+ */
 protected moduleName;
 
-//
+/**
+ * @var string|null
+ */
 protected namespaceName;
 
 /**
@@ -105,16 +125,24 @@ protected namespaceName;
  */
 protected params;
 
-//
+/**
+ * @var string|null
+ */
 protected previousActionName;
 
-//
+/**
+ * @var string|null
+ */
 protected previousHandlerName;
 
-//
+/**
+ * @var string|null
+ */
 protected previousNamespaceName;
 
-//
+/**
+ * @var string|null
+ */
 protected returnedValue;
 
 ```
@@ -145,7 +173,7 @@ $this->dispatcher->forward(
 );
 ```
 
-@throws \Phalcon\Exception
+@throws PhalconException
 
 
 ```php
@@ -190,7 +218,7 @@ Devuelve el espacio de nombres por defecto
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Devuelve el administrador de eventos interno
 
@@ -274,7 +302,7 @@ Establece el nombre de acción predeterminado
 
 
 ```php
-public function setDefaultNamespace( string $namespaceName ): void;
+public function setDefaultNamespace( string $defaultNamespace ): void;
 ```
 Establece el espacio de nombres por defecto
 
@@ -494,7 +522,7 @@ Establece los parámetros de la acción a despachar
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Dispatcher/Exception.zep)
 
-| Namespace  | Phalcon\Dispatcher | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Dispatcher | | Extends    | \Exception |
 
 Las excepciones lanzadas en Phalcon\Dispatcher/* usarán esta clase
 

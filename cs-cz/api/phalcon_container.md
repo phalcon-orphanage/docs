@@ -5,13 +5,13 @@ version: '5.0'
 title: 'Phalcon\Container'
 ---
 
-* [Phalcon\Container](#container)
+* [Phalcon\Container\Container](#container-container)
 
-<h1 id="container">Class Phalcon\Container</h1>
+<h1 id="container-container">Class Phalcon\Container\Container</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Container.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Container/Container.zep)
 
-| Namespace  | Phalcon | | Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
+| Namespace  | Phalcon\Container | | Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
 
 PSR-11 Wrapper for `Phalcon\Di`
 
@@ -34,13 +34,13 @@ Phalcon\Container constructor
 
 
 ```php
-public function get( mixed $name ): mixed;
+public function get( string $name ): mixed;
 ```
 Return the service
 
 
 ```php
-public function has( mixed $name ): bool;
+public function has( string $name ): bool;
 ```
 Whether a service exists or not in the container
 

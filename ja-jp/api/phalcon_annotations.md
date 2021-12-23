@@ -375,7 +375,7 @@ Returns the number of arguments that the annotation has
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/AnnotationsFactory.zep)
 
-| Namespace  | Phalcon\Annotations | | Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends    | AbstractFactory |
+| Namespace  | Phalcon\Annotations | | Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Support\Helper\Arr\Get | | Extends    | AbstractFactory |
 
 Factory to create annotations components
 
@@ -399,9 +399,13 @@ public function newInstance( string $name, array $options = [] ): AdapterInterfa
 
 
 ```php
-protected function getAdapters(): array;
+protected function getExceptionClass(): string;
 ```
-The available adapters
+
+```php
+protected function getServices(): array;
+```
+Returns the available adapters
 
 
 
@@ -516,7 +520,7 @@ Check if the current annotation in the iterator is valid
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Annotations/Exception.zep)
 
-| Namespace  | Phalcon\Annotations | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Annotations | | Extends    | \Exception |
 
 Class for exceptions thrown by Phalcon\Annotations
 
@@ -598,13 +602,22 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ## Properties
 ```php
-//
+/**
+ * @var array
+ * TODO: Make always array
+ */
 protected classAnnotations;
 
-//
+/**
+ * @var array
+ * TODO: Make always array
+ */
 protected methodAnnotations;
 
-//
+/**
+ * @var array
+ * TODO: Make always array
+ */
 protected propertyAnnotations;
 
 /**

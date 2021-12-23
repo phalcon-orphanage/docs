@@ -9,6 +9,10 @@ title: 'Phalcon\Html'
 * [Phalcon\Html\Attributes\AttributesInterface](#html-attributes-attributesinterface)
 * [Phalcon\Html\Attributes\RenderInterface](#html-attributes-renderinterface)
 * [Phalcon\Html\Breadcrumbs](#html-breadcrumbs)
+* [Phalcon\Html\Escaper](#html-escaper)
+* [Phalcon\Html\Escaper\EscaperInterface](#html-escaper-escaperinterface)
+* [Phalcon\Html\Escaper\Exception](#html-escaper-exception)
+* [Phalcon\Html\EscaperFactory](#html-escaperfactory)
 * [Phalcon\Html\Exception](#html-exception)
 * [Phalcon\Html\Helper\AbstractHelper](#html-helper-abstracthelper)
 * [Phalcon\Html\Helper\AbstractList](#html-helper-abstractlist)
@@ -18,6 +22,7 @@ title: 'Phalcon\Html'
 * [Phalcon\Html\Helper\Body](#html-helper-body)
 * [Phalcon\Html\Helper\Button](#html-helper-button)
 * [Phalcon\Html\Helper\Close](#html-helper-close)
+* [Phalcon\Html\Helper\Doctype](#html-helper-doctype)
 * [Phalcon\Html\Helper\Element](#html-helper-element)
 * [Phalcon\Html\Helper\Form](#html-helper-form)
 * [Phalcon\Html\Helper\Img](#html-helper-img)
@@ -66,7 +71,7 @@ title: 'Phalcon\Html'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Attributes.zep)
 
-| Namespace  | Phalcon\Html | | Uses       | Phalcon\Collection, Phalcon\Html\Attributes\RenderInterface, Phalcon\Tag | | Extends    | Collection | | Implements | RenderInterface |
+| Namespace  | Phalcon\Html | | Uses       | Phalcon\Support\Collection, Phalcon\Html\Attributes\RenderInterface | | Extends    | Collection | | Implements | RenderInterface |
 
 This class helps to work with HTML Attributes
 
@@ -83,6 +88,12 @@ Alias of the render method
 public function render(): string;
 ```
 Render attributes as HTML attributes
+
+
+```php
+protected function renderAttributes( array $attributes ): string;
+```
+@todo remove this when we refactor forms. Maybe remove this class? Put it into traits
 
 
 
@@ -234,11 +245,267 @@ Returns the internal breadcrumbs array
 
 
 
+<h1 id="html-escaper">Class Phalcon\Html\Escaper</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Escaper.zep)
+
+| Namespace  | Phalcon\Html | | Uses       | Phalcon\Html\Escaper\EscaperInterface | | Implements | EscaperInterface |
+
+Phalcon\Html\Escaper
+
+Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
+
+This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.
+
+```php
+$escaper = new \Phalcon\Html\Escaper();
+
+$escaped = $escaper->escapeCss("font-family: <Verdana>");
+
+echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
+```
+
+
+## Властивості
+```php
+/**
+ * @var bool
+ */
+protected doubleEncode = true;
+
+/**
+ * @var string
+ */
+protected encoding = utf-8;
+
+/**
+ * ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+ *
+ * @var int
+ */
+protected flags = 11;
+
+```
+
+## Методи
+
+```php
+public function attributes( string $input ): string;
+```
+Escapes a HTML attribute string
+
+
+```php
+public function css( string $input ): string;
+```
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+
+
+```php
+final public function detectEncoding( string $input ): string | null;
+```
+Detect the character encoding of a string to be handled by an encoder. Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
+
+
+```php
+public function escapeCss( string $input ): string;
+```
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+
+
+```php
+public function escapeHtml( string $input = null ): string;
+```
+Escapes a HTML string. Internally uses htmlspecialchars
+
+
+```php
+public function escapeHtmlAttr( string $input = null ): string;
+```
+Escapes a HTML attribute string
+
+
+```php
+public function escapeJs( string $input ): string;
+```
+Escape JavaScript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+
+
+```php
+public function escapeUrl( string $input ): string;
+```
+Escapes a URL. Internally uses rawurlencode
+
+
+```php
+public function getEncoding(): string
+```
+
+```php
+public function getFlags(): int
+```
+
+```php
+public function html( string $input = null ): string;
+```
+Escapes a HTML string. Internally uses htmlspecialchars
+
+
+```php
+public function js( string $input ): string;
+```
+Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+
+
+```php
+final public function normalizeEncoding( string $input ): string;
+```
+Utility to normalize a string's encoding to UTF-32.
+
+
+```php
+public function setDoubleEncode( bool $doubleEncode ): Escaper;
+```
+Sets the double_encode to be used by the escaper
+
+```php
+$escaper->setDoubleEncode(false);
+```
+
+
+```php
+public function setEncoding( string $encoding ): EscaperInterface;
+```
+Sets the encoding to be used by the escaper
+
+```php
+$escaper->setEncoding("utf-8");
+```
+
+
+```php
+public function setFlags( int $flags ): Escaper;
+```
+Sets the HTML quoting type for htmlspecialchars
+
+```php
+$escaper->setFlags(ENT_XHTML);
+```
+
+
+```php
+public function setHtmlQuoteType( int $flags ): EscaperInterface;
+```
+Sets the HTML quoting type for htmlspecialchars
+
+```php
+$escaper->setHtmlQuoteType(ENT_XHTML);
+```
+
+
+```php
+public function url( string $input ): string;
+```
+Escapes a URL. Internally uses rawurlencode
+
+
+
+
+<h1 id="html-escaper-escaperinterface">Interface Phalcon\Html\Escaper\EscaperInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Escaper/EscaperInterface.zep)
+
+| Namespace  | Phalcon\Html\Escaper |
+
+Interface for Phalcon\Html\Escaper
+
+
+## Методи
+
+```php
+public function attributes( string $input ): string;
+```
+Escapes a HTML attribute string
+
+
+```php
+public function css( string $input ): string;
+```
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal representation
+
+
+```php
+public function getEncoding(): string;
+```
+Returns the internal encoding used by the escaper
+
+
+```php
+public function html( string $input ): string;
+```
+Escapes a HTML string
+
+
+```php
+public function js( string $input ): string;
+```
+Escape Javascript strings by replacing non-alphanumeric chars by their hexadecimal representation
+
+
+```php
+public function setEncoding( string $encoding ): EscaperInterface;
+```
+Sets the encoding to be used by the escaper
+
+
+```php
+public function setHtmlQuoteType( int $flags ): EscaperInterface;
+```
+Sets the HTML quoting type for htmlspecialchars
+
+
+```php
+public function url( string $input ): string;
+```
+Escapes a URL. Internally uses rawurlencode
+
+
+
+
+<h1 id="html-escaper-exception">Class Phalcon\Html\Escaper\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Escaper/Exception.zep)
+
+| Namespace  | Phalcon\Html\Escaper | | Extends    | \Exception |
+
+Exceptions thrown in Phalcon\Html\Escaper will use this class
+
+
+
+<h1 id="html-escaperfactory">Class Phalcon\Html\EscaperFactory</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/EscaperFactory.zep)
+
+| Namespace  | Phalcon\Html |
+
+Class EscaperFactory
+
+
+## Методи
+
+```php
+public function newInstance(): Escaper;
+```
+Create a new instance of the object
+
+
+
+
 <h1 id="html-exception">Class Phalcon\Html\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Exception.zep)
 
-| Namespace  | Phalcon\Html | | Extends    | \Phalcon\Exception |
+| Namespace  | Phalcon\Html | | Extends    | \Exception |
 
 Phalcon\Html\Tag\Exception
 
@@ -250,11 +517,9 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/AbstractHelper.zep)
 
-| Namespace  | Phalcon\Html\Helper | | Uses       | Phalcon\Escaper\EscaperInterface, Phalcon\Html\Exception |
+| Namespace  | Phalcon\Html\Helper | | Uses       | Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Exception |
 
-Class AbstractHelper
-
-@property string  $delimiter @property Escaper $escaper @property string  $indent @property int     $indentLevel
+@property string           $delimiter @property EscaperInterface $escaper @property string           $indent @property int              $indentLevel
 
 
 ## Властивості
@@ -376,7 +641,7 @@ protected store;
 ## Методи
 
 ```php
-public function __invoke( string $indent = null, string $delimiter = null, array $attributes = [] ): AbstractList;
+public function __invoke( string $indent = string, string $delimiter = null, array $attributes = [] ): AbstractList;
 ```
 
 ```php
@@ -399,7 +664,7 @@ Returns the tag name.
 
 | Namespace  | Phalcon\Html\Helper | | Extends    | AbstractHelper |
 
-Class AbstractSeries
+@property array $attributes @property array $store
 
 
 ## Властивості
@@ -419,7 +684,7 @@ protected store;
 ## Методи
 
 ```php
-public function __invoke( string $indent = null, string $delimiter = null ): AbstractSeries;
+public function __invoke( string $indent = string, string $delimiter = null ): AbstractSeries;
 ```
 
 ```php
@@ -537,6 +802,64 @@ Produce a `</...>` tag.
 
 
 
+<h1 id="html-helper-doctype">Class Phalcon\Html\Helper\Doctype</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Doctype.zep)
+
+| Namespace  | Phalcon\Html\Helper |
+
+Creates Doctype tags
+
+
+## Constants
+```php
+const HTML32 = 1;
+const HTML401_FRAMESET = 4;
+const HTML401_STRICT = 2;
+const HTML401_TRANSITIONAL = 3;
+const HTML5 = 5;
+const XHTML10_FRAMESET = 8;
+const XHTML10_STRICT = 6;
+const XHTML10_TRANSITIONAL = 7;
+const XHTML11 = 9;
+const XHTML20 = 10;
+const XHTML5 = 11;
+```
+
+## Властивості
+```php
+/**
+ * @var string
+ */
+private delimiter;
+
+/**
+ * @var int
+ */
+private flag;
+
+```
+
+## Методи
+
+```php
+public function __construct();
+```
+
+```php
+public function __invoke( int $flag = static-constant-access, string $delimiter = string ): void;
+```
+Produce a <doctype> tag
+
+
+```php
+public function __toString(): string;
+```
+
+
+
+
+
 <h1 id="html-helper-element">Class Phalcon\Html\Helper\Element</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Element.zep)
@@ -643,7 +966,7 @@ Sets the value of the element
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Input/Checkbox.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input | | Uses       | Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr | | Extends    | AbstractInput |
+| Namespace  | Phalcon\Html\Helper\Input | | Uses       | Phalcon\Html\Escaper\EscaperInterface | | Extends    | AbstractInput |
 
 Class Checkbox
 
@@ -986,7 +1309,7 @@ Add an element to the list
 ```php
 public function addPlaceholder( string $text, mixed $value = null, array $attributes = [], bool $raw = bool ): Select;
 ```
-Add an element to the list
+Add a placeholder to the element
 
 
 ```php
@@ -1063,7 +1386,7 @@ Class Text
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Input/Textarea.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input | | Uses       | Phalcon\Helper\Arr, Phalcon\Html\Exception | | Extends    | AbstractInput |
+| Namespace  | Phalcon\Html\Helper\Input | | Uses       | Phalcon\Html\Exception | | Extends    | AbstractInput |
 
 Class Textarea
 
@@ -1150,7 +1473,7 @@ Class Label
 ## Методи
 
 ```php
-public function __invoke( array $attributes = [] ): string;
+public function __invoke( string $label, array $attributes = [], bool $raw = bool ): string;
 ```
 Produce a `<label>` tag.
 
@@ -1161,17 +1484,23 @@ Produce a `<label>` tag.
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Link.zep)
 
-| Namespace  | Phalcon\Html\Helper | | Extends    | AbstractSeries |
+| Namespace  | Phalcon\Html\Helper | | Extends    | Style |
 
-Class Link
+Creates <link> tags
 
 
 ## Методи
 
 ```php
-public function add( string $rel, string $href ): Link;
+public function add( string $url, array $attributes = [] );
 ```
 Add an element to the list
+
+
+```php
+protected function getAttributes( string $url, array $attributes ): array;
+```
+Returns the necessary attributes
 
 
 ```php
@@ -1248,7 +1577,7 @@ protected function getTag(): string;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Helper/Script.zep)
 
-| Namespace  | Phalcon\Html\Helper | | Extends    | Style |
+| Namespace  | Phalcon\Html\Helper | | Uses       | Phalcon\Html\Exception | | Extends    | AbstractSeries |
 
 Class Script
 
@@ -1256,7 +1585,13 @@ Class Script
 ## Методи
 
 ```php
-protected function getAttributes( string $src, array $attributes ): array;
+public function add( string $url, array $attributes = [] );
+```
+Add an element to the list
+
+
+```php
+protected function getAttributes( string $url, array $attributes ): array;
 ```
 Returns the necessary attributes
 
@@ -1278,16 +1613,31 @@ protected function getTag(): string;
 Class Style
 
 
+## Властивості
+```php
+/**
+ * @var bool
+ */
+private isStyle = false;
+
+```
+
 ## Методи
 
 ```php
-public function add( string $href, array $attributes = [] );
+public function add( string $url, array $attributes = [] );
 ```
 Add an element to the list
 
 
 ```php
-protected function getAttributes( string $href, array $attributes ): array;
+public function setStyle( bool $flag ): Style;
+```
+Sets if this is a style or link tag
+
+
+```php
+protected function getAttributes( string $url, array $attributes ): array;
 ```
 Returns the necessary attributes
 
@@ -1482,7 +1832,7 @@ If the specified link is not present, this method MUST return normally without e
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
 
-| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Psr\Link\LinkInterface | | Implements | LinkInterface |
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Psr\Link\LinkInterface | | Implements | LinkInterface |
 
 Class Phalcon\Http\Link\Link
 
@@ -1570,8 +1920,6 @@ Determines if a href is a templated link or not.
 
 | Namespace  | Phalcon\Html\Link | | Uses       | Psr\Link\LinkInterface, Psr\Link\LinkProviderInterface | | Implements | LinkProviderInterface |
 
-Class Phalcon\Http\Link\LinkProvider
-
 @property LinkInterface[] links
 
 
@@ -1658,9 +2006,17 @@ Serializer method
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/TagFactory.zep)
 
-| Namespace  | Phalcon\Html | | Uses       | Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
+| Namespace  | Phalcon\Html | | Uses       | Phalcon\Html\Escaper, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
 
-ServiceLocator implementation for Tag helpers
+ServiceLocator implementation for Tag helpers.
+
+Services are registered using the constructor using a key-value pair. The key is the name of the tag helper, while the value is a callable that returns the object.
+
+The class implements `__call()` to allow calling helper objects as methods.
+
+@property EscaperInterface $escaper @property array            $services
+
+@method a(string $href, string $text, array $attributes = [], bool $raw = false): string @method base(string $href, array $attributes = []): string @method body(array $attributes = []): string @method button(string $text, array $attributes = [], bool $raw = false): string @method close(string $tag, bool $raw = false): string @method doctype(int $flag, string $delimiter): string @method element(string $tag, string $text, array $attributes = [], bool $raw = false): string @method form(array $attributes = []): string @method img(string $src, array $attributes = []): string @method inputCheckbox(string $name, string $value = null, array $attributes = []): string @method inputColor(string $name, string $value = null, array $attributes = []): string @method inputDate(string $name, string $value = null, array $attributes = []): string @method inputDateTime(string $name, string $value = null, array $attributes = []): string @method inputDateTimeLocal(string $name, string $value = null, array $attributes = []): string @method inputEmail(string $name, string $value = null, array $attributes = []): string @method inputFile(string $name, string $value = null, array $attributes = []): string @method inputHidden(string $name, string $value = null, array $attributes = []): string @method inputImage(string $name, string $value = null, array $attributes = []): string @method inputInput(string $name, string $value = null, array $attributes = []): string @method inputMonth(string $name, string $value = null, array $attributes = []): string @method inputNumeric(string $name, string $value = null, array $attributes = []): string @method inputPassword(string $name, string $value = null, array $attributes = []): string @method inputRadio(string $name, string $value = null, array $attributes = []): string @method inputRange(string $name, string $value = null, array $attributes = []): string @method inputSearch(string $name, string $value = null, array $attributes = []): string @method inputSelect(string $name, string $value = null, array $attributes = []): string @method inputSubmit(string $name, string $value = null, array $attributes = []): string @method inputTel(string $name, string $value = null, array $attributes = []): string @method inputText(string $name, string $value = null, array $attributes = []): string @method inputTextarea(string $name, string $value = null, array $attributes = []): string @method inputTime(string $name, string $value = null, array $attributes = []): string @method inputUrl(string $name, string $value = null, array $attributes = []): string @method inputWeek(string $name, string $value = null, array $attributes = []): string @method label(array $attributes = []): string @method link(string $indent = '    ', string $delimiter = PHP_EOL): string @method meta(string $indent = '    ', string $delimiter = PHP_EOL): string @method ol(string $text, array $attributes = [], bool $raw = false): string @method script(string $indent = '    ', string $delimiter = PHP_EOL): string @method style(string $indent = '    ', string $delimiter = PHP_EOL): string @method title(string $separator = '', string $indent = '', string $delimiter = PHP_EOL): string @method ul(string $text, array $attributes = [], bool $raw = false): string
 
 
 ## Властивості
@@ -1670,9 +2026,20 @@ ServiceLocator implementation for Tag helpers
  */
 private escaper;
 
+/**
+ * @var array
+ */
+protected services;
+
 ```
 
 ## Методи
+
+```php
+public function __call( string $name, array $arguments );
+```
+Magic call to make the helper objects available as methods.
+
 
 ```php
 public function __construct( EscaperInterface $escaper, array $services = [] );
@@ -1681,12 +2048,26 @@ TagFactory constructor.
 
 
 ```php
-public function newInstance( string $name ): mixed;
+public function has( string $name ): bool;
 ```
 
 ```php
-protected function getAdapters(): array;
+public function newInstance( string $name ): mixed;
+```
+Create a new instance of the object
+
+
+```php
+public function set( string $name, mixed $method ): void;
 ```
 
+```php
+protected function getExceptionClass(): string;
+```
+
+```php
+protected function getServices(): array;
+```
+Returns the available services
 
 
