@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Ναι    | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Ναι    | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Ναι    | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Ναι    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ναι    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Ναι    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι    | Αποστολέας                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Ναι    | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Ναι    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ναι    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ναι    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Ναι    | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Ναι    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Ναι    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Ναι    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Ναι    | Ασφάλεια                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Ναι    | Ασφάλεια                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Ναι    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Ναι    | HTML Tag helpers             |
