@@ -584,7 +584,7 @@ class InvoicesController extends Controller
 ## Datos Persistentes
 You can also inject the [Phalcon\Session\Bag][session-bag] component. Hacerlo le ayudará a aislar variables para cada clase sin contaminar la sesión. Este componente se registra automáticamente usando el nombre de propiedad `persistent`. Cualquier cosa configurada en `$this->persist` estará disponible sólo en la propia clase, mientras que si los datos están configurados en el gestor de sesiones estarán disponibles a lo largo de la aplicación.
 
-En un controlador:
+In a controller:
 
 ```php
 <?php
@@ -615,7 +615,7 @@ class InvoicesController extends Controller
 }
 ```
 
-En un componente:
+In a component:
 
 ```php
 <?php
