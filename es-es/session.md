@@ -596,7 +596,40 @@ class InvoicesController extends Controller
 
 También puede inyectar el componente [Phalcon\Session\Bag](api/Phalcon_Session#session-bag). Hacerlo le ayudará a aislar variables para cada clase sin contaminar la sesión. Este componente se registra automáticamente usando el nombre de propiedad `persistent`. Cualquier cosa configurada en `$this->persist` estará disponible sólo en la propia clase, mientras que si los datos están configurados en el gestor de sesiones estarán disponibles a lo largo de la aplicación.
 
-En un controlador:
+> NOTE: A `session` service must be present for the `persistent` service to work and persist the data
+{: .alert .alert-warning }
+
+In your providers/services setup:
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Session\Manager;
+use Phalcon\Session\Adapter\Stream;
+
+$container = new Di();
+
+$container->set(
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+
+        $session
+            ->setAdapter($files)
+            ->start();
+
+        return $session;
+    }
+);
+```
+
+In a controller:
 
 ```php
 <?php
@@ -627,7 +660,7 @@ class InvoicesController extends Controller
 }
 ```
 
-En un componente:
+In a component:
 
 ```php
 <?php
