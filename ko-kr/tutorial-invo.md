@@ -436,7 +436,7 @@ $user = Users::findFirst(
 ```
 > **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. 이렇게 함으로써 SQL injection의 위험 없이 이들 컬럼을 값으로 대체 할 수 있습니다.
 
-데이터베이스 내의 사용자를 검색할 때, 우리는 바로 평문 텍스트를 사용해서 암호를 찾지 않습니다. The application stores passwords as hashes, using the [sha1][sha1] method. 이 방법론은 튜토리얼 목적으론 적절하지만, 운영환경의 어플리케이션을 위해서는 다른 알고리즘을 고려하는 것이 더 적절할 수 있습니다. [Phalcon\Security](security) 컴포넌트는 해쉬값을 위해 더 강화된 알고리즘을 적용할 수 있도록 편리한 메서드들을 제공하고 있습니다.
+데이터베이스 내의 사용자를 검색할 때, 우리는 바로 평문 텍스트를 사용해서 암호를 찾지 않습니다. The application stores passwords as hashes, using the [sha1][sha1] method. 이 방법론은 튜토리얼 목적으론 적절하지만, 운영환경의 어플리케이션을 위해서는 다른 알고리즘을 고려하는 것이 더 적절할 수 있습니다. The [Phalcon\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 사용자를 찾으면, 해당 사용자를 세션에 등록(사용자를 로그 인) 하고 환영 메시지를 표시하면서 대시보드(`Invoices` 컨트롤러, `index` 액션) 로 이동시킵니다.
 
