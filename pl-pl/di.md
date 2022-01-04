@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Tak    | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Tak    | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Tak    | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Tak    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Tak    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Tak    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Tak    | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Tak    | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Tak    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Tak    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Tak    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Tak    | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Tak    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Tak    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Tak    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Tak    | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Tak    | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Tak    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Tak    | HTML Tag helpers             |
