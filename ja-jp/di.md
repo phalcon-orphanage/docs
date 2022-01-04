@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | はい     | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | はい     | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | はい     | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | はい     | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | はい     | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | はい     | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | はい     | ディスパッチャー                     |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | はい     | エスケープ                        |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | はい     | エスケープ                        |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | はい     | イベント管理                       |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | はい     | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | はい     | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | はい     | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | はい     | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | はい     | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | はい     | セキュリティ                       |
+| `security`           | [Phalcon\Security](encryption-security)                            | はい     | セキュリティ                       |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | はい     | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | はい     | HTML Tag helpers             |
