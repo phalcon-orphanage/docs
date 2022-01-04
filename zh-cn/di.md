@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | 是的     | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | 是的     | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | 是的     | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | 是的     | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | 是的     | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | 是的     | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | 是的     | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | 是的     | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | 是的     | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | 是的     | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | 是的     | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | 是的     | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | 是的     | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | 是的     | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | 是的     | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | 是的     | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | 是的     | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | 是的     | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | 是的     | HTML Tag helpers             |
