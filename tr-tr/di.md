@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Evet   | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Evet   | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Evet   | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Evet   | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Evet   | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Evet   | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Evet   | Gönderici                    |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Evet   | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Evet   | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Evet   | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Evet   | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Evet   | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Evet   | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Evet   | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Evet   | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Evet   | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Evet   | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Evet   | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Evet   | HTML Tag helpers             |
