@@ -2094,10 +2094,10 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 [array_keys]: https://php.net/manual/en/function.array-keys
 [asort]: https://php.net/manual/en/function.asort.php
 [count]: https://www.php.net/manual/en/function.count.php
-[escaper]: escaper
-[escaper]: escaper
-[escaper]: escaper
-[escaper]: escaper
+[escaper]: html-escaper
+[escaper]: html-escaper
+[escaper]: html-escaper
+[escaper]: html-escaper
 [jinja]: https://github.com/pallets/jinja
 [join]: https://php.net/manual/en/function.join.php
 [json]: https://php.net/manual/en/function.json-encode.php
