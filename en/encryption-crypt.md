@@ -181,7 +181,7 @@ The component offers a getter and a setter for the key to be used. Once the key 
 
 > You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
 >
->Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security) component, which can offer a strong key by hashing a string.
+>Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](encryption-security) component, which can offer a strong key by hashing a string.
 {: .alert .alert-danger }
 
 ### Signing

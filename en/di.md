@@ -1540,11 +1540,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 |----------------------|-----------------------------------------------------------------|--------|------------------------------|
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)               |  Yes   | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                |  Yes   | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                          |  Yes   | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                          |  Yes   | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)               |  Yes   | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                          |  Yes   | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                            |  Yes   | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                      |  Yes   | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                      |  Yes   | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                |  Yes   | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                   |  Yes   | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                  |  Yes   | Flash Session Messaging      |
@@ -1555,7 +1555,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                 |  Yes   | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                               |  Yes   | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                   |  Yes   | Router                       |
-| `security`           | [Phalcon\Security](security)                                    |  Yes   | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                                    |  Yes   | Security                     |
 | `session`            |                                                                 |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                              |  Yes   | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                              |  Yes   | HTML Tag helpers             |
