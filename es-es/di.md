@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Si         | Analizador de anotaciones                |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Si         | Gestor de recursos                       |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Si         | Encriptar/Desencriptar                   |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Si         | Encriptar/Desencriptar                   |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Si         | Gestor de Cookies HTTP                   |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Si         | Conexión de base de datos                |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Si         | Dispatcher                               |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Si         | Escaper                                  |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Si         | Escaper                                  |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Si         | Gestor de Eventos                        |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Si         | Mensajería Flash                         |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Si         | Mensajería de Sesión Flash               |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Si         | Petición HTTP                            |
 | `response`           | [Phalcon\Http\Response](response)                                 | Si         | Respuesta HTTP                           |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Si         | Router                                   |
-| `security`           | [Phalcon\Security](security)                                       | Si         | Seguridad                                |
+| `security`           | [Phalcon\Security](encryption-security)                            | Si         | Seguridad                                |
 | `session`            |                                                                     |            | Servicio de Sesiones                     |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Si         | Servicio de bolsa de sesión              |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Si         | Ayudantes de Etiquetas HTML              |
