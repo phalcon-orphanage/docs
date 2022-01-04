@@ -528,9 +528,30 @@ class IndexController extends Controller
 <?php
 
 use Phalcon\Di;
+use Phalcon\Session\Manager;
+use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Bag as SessionBag;
 
 $container = new Di();
+
+$container->set(
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+
+        $session
+            ->setAdapter($files)
+            ->start();
+
+        return $session;
+    }
+);
+
 $user      = new SessionBag('user');
 
 $user->setDI($container);
