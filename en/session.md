@@ -541,7 +541,7 @@ $container->set(
     }
 );
 
-$user      = new SessionBag('user');
+$user = new SessionBag('user');
 
 $user->setDI($container);
 
@@ -602,7 +602,7 @@ class InvoicesController extends Controller
 ```
 
 ## Persistent Data
-You can also inject the [Phalcon\Session\Bag][session-bag] component. Doing so will help you isolate variables for every class without polluting the session. The component is registered automatically using the `persistent` property name. Anything set in `$this->persist` will only be available in each class itself, whereas if data is set in the session manager will be available throughout the application.
+You can also inject the [Phalcon\Session\Bag][session-bag] component. Doing so will help you isolate variables for every class without polluting the session. The component is registered automatically using the `persistent` property name. 
 
 > NOTE: A `session` service must be present for the `persistent` service to work and persist the data
 {: .alert .alert-warning }
