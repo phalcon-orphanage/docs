@@ -22,8 +22,6 @@ Phalcon v5 supports only PHP 7.4 and above. PHP 7.4 [active support][php-support
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
 
-<a name='psr'></a>
-
 ### PSR (Recomendaciones Estándar de PHP)
 Phalcon requiere la extensión PSR. The extension can be installed with PECL:
 
@@ -89,7 +87,7 @@ php -m | grep phalcon
 
 ## Notas generales
 
-One of the biggest changes with this release is that we no longer have top level classes. All top level classes have been moved into relevant namespaces. For instance `Phalcon\Loader` has been moved to `Phalcon\Autoload\Loader`. This change was necessary for the future expansion of the project.
+One of the biggest changes with this release is that we no longer have top level classes. All top level classes have been moved into relevant namespaces (with the exception of `Phalcon\Tag`). For instance `Phalcon\Loader` has been moved to `Phalcon\Autoload\Loader`. This change was necessary for the future expansion of the project.
 
 **Summary**
 
@@ -111,7 +109,6 @@ One of the biggest changes with this release is that we no longer have top level
 | `Phalcon\Kernel`     | Eliminado                                      |
 | `Phalcon\Registry`   | `Phalcon\Support\Registry`                   |
 | `Phalcon\Security`   | `Phalcon\Encryption\Security`                |
-| `Phalcon\Tag`        | Removed in favor of `Phalcon\Html\Helper`    |
 | `Phalcon\Text`       | Removed in favor of `Phalcon\Support\Helper` |
 | `Phalcon\Url`        | `Phalcon\Mvc\Url`                            |
 | `Phalcon\Validation` | `Phalcon\Filter\Validation`                  |
@@ -135,6 +132,8 @@ En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y compon
 ### `Acl\Adapter\Memory` - `Acl\Adapter\AdapterInterface`
 - Added `getInheritedRoles()` to return an array of the inherited roles in the adapter.
 
+---
+
 ### Anotaciones
 
 > Status: **no changes**
@@ -142,6 +141,8 @@ En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y compon
 > Usage: [Annotations Documentation](annotations) 
 > 
 > {: .alert .alert-info }
+
+---
 
 ### Application
 
@@ -152,6 +153,8 @@ En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y compon
 > {: .alert .alert-info }
 
 The `getEventsManager()` now returns a `Phalcon\Events\ManagerInterface` or `null`
+
+---
 
 ### Recursos Activos
 
@@ -234,6 +237,8 @@ public function addInlineJs(
 
 - Added `has()` method to return if a collection exists
 
+---
+
 ### Cache
 
 > Status: **changes required**
@@ -255,6 +260,8 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 #### `Phalcon\Cache\Cache`
 - Moved `Phalcon\Cache` to `Phalcon\Cache\Cache`
 
+---
+
 ### CLI
 
 > Status: **no changes**
@@ -263,38 +270,82 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 > 
 > {: .alert .alert-info }
 
+---
 
-Coleccion
-
-> Status: **changes required**
-> 
-> Usage: [Collection Documentation](collection) 
-> 
-> {: .alert .alert-warning }
-
-Configuración
+### Coleccion
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Collection Documentation](support-collection) 
 > 
 > {: .alert .alert-warning }
 
-Container
+The [Collection](support-collection) component has been moved to the `Support` namespace.
+
+#### `Phalcon\Support\Collection`
+- Moved `Phalcon\Collection` to `Phalcon\Support\Collection`
+- `get()` will return the `defaultValue` if the `key` is not set. It will also return the `defaultValue` if the `key` is set and the value is `null`. This aligns with the 3.x behavior.
+
+#### `Phalcon\Support\Collection\CollectionInterface`
+- A new interface has been introduced (`Phalcon\Support\Collection\CollectionInterface`) to offer more flexibility when extending the collection object.
+
+#### `Phalcon\Support\Collection\ReadOnlyCollection`
+- This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words.
+
+---
+
+### Configuración
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Config Documentation](config) 
 > 
 > {: .alert .alert-warning }
 
-DataMapper
+The [Config](config) component has been moved to the `Config` namespace.
+
+#### `Phalcon\Config\Config`
+- Moved `Phalcon\Config` to `Phalcon\Config\Config`
+
+#### `Phalcon\Config\ConfigInterface`
+- A new interface has been introduced (`Phalcon\Config\ConfigInterface`) to offer more flexibility when extending the config object.
+
+---
+
+### Container
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Container Documentation](container) 
 > 
 > {: .alert .alert-warning }
+
+The [Container](collection) component has been moved to the `Container` namespace.
+
+#### `Phalcon\Container\Container`
+- Moved `Phalcon\Container` to `Phalcon\Container\Container`
+
+---
+
+### Crypt
+
+> Status: **changes required**
+> 
+> Usage: [Crypt Documentation](encryption-crypt) 
+> 
+> {: .alert .alert-warning }
+
+The [Crypt](encryption-crypt) component has been moved to the `Encryption` namespace. [more](#encryption)
+
+---
+
+### DataMapper
+
+> Status: **no changes**
+> 
+> Usage: [DataMapper Documentation](datamapper) 
+> 
+> {: .alert .alert-info }
 
 Db
 
@@ -304,37 +355,131 @@ Db
 > 
 > {: .alert .alert-warning }
 
-Di
+---
+
+### Di
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Di Documentation](di) 
 > 
 > {: .alert .alert-warning }
 
-Dispatcher
+The [Di](di) component has been moved to the `Di` namespace.
+
+#### `Phalcon\Di\Di`
+- Moved `Phalcon\Di` to `Phalcon\Di\Di`
+- The `tag` service now returns an instance of `Phalcon\Html\TagFactory`
+- The (new) `helper` service returns an instance of `Phalcon\Support\HelperFactory`
+
+---
+
+### Dispatcher
+
+> Status: **no changes**
+> 
+> Usage: [Dispatcher Documentation](dispatcher) 
+> 
+> {: .alert .alert-info }
+
+---
+
+### Domain
+
+> Status: **no changes**
+> 
+> Usage: [Domain Documentation](domain) 
+> 
+> {: .alert .alert-info }
+
+---
+
+The [Di](di) component has been moved to the `Di` namespace.
+
+---
+
+### Encriptación
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Crypt Documentation](encryption-crypt), [Security Documentation](encryption-security). [JWT Documentation](encryption-security-jwt) 
 > 
 > {: .alert .alert-warning }
 
-Domain
+#### `Phalcon\Encryption\Crypt`
+- Moved `Phalcon\Crypt` to `Phalcon\Encryption\Crypt`
+- Two new constants introduced `DEFAULT_ALGORITHM = "sha256"` and `DEFAULT_CIPHER = "aes-256-cfb"`
+- The `__construct` now sets `useSigning` as `true` (previously `false`)
+- The `__construct` accepts a third parameter (`null` by default), which is a `Phalcon\Encryption\Crypt\PadFactory`
+
+```php 
+use Phalcon\Encryption\Crypt;
+use Phalcon\Encryption\Crypt\PadFactory;
+
+$padFactory = new PadFactory();
+$crypt      = new Crypt("aes-256-cfb", true, $padFactory);
+```
+
+If no `padFactory` is passed, a new one will be created in the component.
+
+- `Phalcon\Encryption\Crypt::getAvailableHashAlgos()` was renamed to `Phalcon\Encryption\Crypt::getAvailableHashAlgorithms()`
+- `Phalcon\Encryption\Crypt::getHashAlgo()` was renamed to `Phalcon\Encryption\Crypt::getHashAlgorithm()`
+- `Phalcon\Encryption\Crypt::setHashAlgo()` was renamed to `Phalcon\Encryption\Crypt::setHashAlgorithm()`
+
+#### `Phalcon\Encryption\Crypt\CryptInterface`
+- Moved `Phalcon\Crypt\CryptInterface` to `Phalcon\Encryption\Crypt\CryptInterface`
+- Changed `Phalcon\Encryption\Crypt\CryptInterface::decryptBase64()` to accept a `string` variable as the `key`
+- Changed `Phalcon\Encryption\Crypt\CryptInterface::encryptBase64()` to accept a `string` variable as the `key`
+- Added `Phalcon\Encryption\Crypt\CryptInterface::useSigning(bool useSigning)`
+
+#### `Phalcon\Encryption\Crypt\Exception\Exception`
+- Moved `Phalcon\Crypt\Exception` to `Phalcon\Encryption\Crypt\Exception\Exception`
+
+#### `Phalcon\Encryption\Crypt\Exception\Mismatch`
+- Moved `Phalcon\Crypt\Mismatch` to `Phalcon\Encryption\Crypt\Exception\Mismatch`
+
+#### `Phalcon\Encryption\Crypt`
+- Moved from `Phalcon\Crypt`
+
+### `Phalcon\Encryption\PadFactory`
+- Added `Phalcon\Encryption\PadFactory` to allow for different padding schemes during encryption and decryption of data
+
+### `Phalcon\Encryption\Padding\*`
+- Added `Phalcon\Encryption\Padding\PadInterface` to allow for custom padding classes
+- Added `Phalcon\Encryption\Padding\Ansi`
+- Added `Phalcon\Encryption\Padding\Iso10126`
+- Added `Phalcon\Encryption\Padding\IsoIek`
+- Added `Phalcon\Encryption\Padding\Noop`
+- Added `Phalcon\Encryption\Padding\Pkcs7`
+- Added `Phalcon\Encryption\Padding\Space`
+- Added `Phalcon\Encryption\Padding\Zero`
+
+---
+
+### Escaper
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Escaper Documentation](html-escaper) 
 > 
 > {: .alert .alert-warning }
 
-Encriptación
+The [Escaper](html-escaper) component has been moved to the `Html` namespace. [more](#html)
 
-> Status: **changes required**
-> 
-> Usage: [Assets Documentation](assets) 
-> 
-> {: .alert .alert-warning }
+
+Escaper Events Factory Filter Flash Forms Helper Html Http Image Loader Logger Messages Mvc Paginator Security Session Storage Tag Translate Url Validation Cache.zep Collection.zep Config.zep Container.zep Crypt.zep Debug.zep Di.zep Escaper.zep Exception.zep Filter.zep Kernel.zep Loader.zep Logger.zep Registry.zep Security.zep Tag.zep Text.zep Url.zep Validation.zep Version.zep
+
+
+
+
+
+
+
+
+
+
+
+---
 
 Eventos
 
