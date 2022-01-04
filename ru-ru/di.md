@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Да     | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Да     | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Да     | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Да     | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Да     | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Да     | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Да     | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Да     | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Да     | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Да     | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Да     | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Да     | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Да     | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Да     | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Да     | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Да     | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Да     | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Да     | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Да     | HTML Tag helpers             |
