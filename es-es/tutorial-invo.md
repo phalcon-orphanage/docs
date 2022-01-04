@@ -436,7 +436,7 @@ $user = Users::findFirst(
 ```
 > **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. Esto reemplaza con seguridad los valores para esas columnas sin correr el riesgo de una inyección SQL.
 
-Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. El componente [Phalcon\Security](security) ofrece métodos apropiados para reforzar el algoritmo usado para sus *hashes*.
+Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. The [Phalcon\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 Si se encuentra el usuario, entonces registramos el usuario en la sesión (el usuario inicia sesión) y lo reenviamos al panel de control (controlador `Invoices`, acción `index`) mostrando un mensaje de bienvenida.
 
