@@ -1546,11 +1546,11 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Ano    | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Ano    | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Ano    | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Ano    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ano    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Ano    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ano    | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Ano    | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Ano    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ano    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ano    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Ano    | Flash Session Messaging      |
@@ -1561,7 +1561,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Ano    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Ano    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Ano    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Ano    | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Ano    | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Ano    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Ano    | HTML Tag helpers             |
