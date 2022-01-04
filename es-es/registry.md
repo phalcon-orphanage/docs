@@ -11,7 +11,7 @@ keywords: 'registro'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Registry][registry] is an object oriented array. Extiende [Phalcon\Collection](collection) pero no puede ser extendido a sí mismo, ya que todos sus métodos están declarados como `final`. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
+[Phalcon\Registry][registry] is an object oriented array. It extends [Phalcon\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
