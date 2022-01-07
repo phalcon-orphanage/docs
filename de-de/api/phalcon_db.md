@@ -1391,7 +1391,7 @@ $result = $connection->executePrepared(
         "name" => "Voltron",
     ],
     [
-        "name" => Column::BIND_PARAM_INT,
+        "name" => Column::BIND_PARAM_STR,
     ]
 );
 ```
