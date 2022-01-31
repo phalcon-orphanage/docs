@@ -47,7 +47,7 @@ Phalcon - проект з відкритим вихідним кодом, яки
 
 ## Питання та підтримка
 
-> **ПРИМІТКА**: Ми приймаємо лише звіти про помилки, запити на вдосконалення функціоналу та запити на злиття на GitHub. Для обговорення тем, що стосуються використання фреймворку чи подання запитів щодо підтримки, будь ласка, відвідайте [офіційний форум](https://phalcon.io/forum) або наш [сервер Discord](https://phalcon.io/discord).
+> **ПРИМІТКА**: Ми приймаємо лише звіти про помилки, запити на вдосконалення функціоналу та запити на злиття на GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions](https://github.com/phalcon/cphalcon/discussions) or our [Discord](https://phalcon.io/discord) server.
 {:.alert .alert-danger}
 
 ## Занесення помилок до контрольного списку
