@@ -41,7 +41,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 ## Questions and Support
 
-> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum][phalcon-forum] or our [Discord][phalcon-discord] server.
+> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions][discussions] or our [Discord][phalcon-discord] server.
 {:.alert .alert-danger}
 
 ## Bug Report Checklist
@@ -92,7 +92,7 @@ Thanks!
 [phalcon-docs]: https://github.com/phalcon/docs
 [crowdin]: https://crowdin.com
 [phalcon-docs]: https://crowdin.com/project/phalcon-documentation
-[phalcon-forum]: https://phalcon.io/forum
+[discussions]: https://github.com/phalcon/cphalcon/discussions
 [phalcon-discord]: https://phalcon.io/discord
 [tests]: reproducible-tests
 [segfault]: https://en.wikipedia.org/wiki/Segmentation_fault 
