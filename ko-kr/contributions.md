@@ -47,7 +47,7 @@ Zephir 프로그래밍이 쉽지 않으시다면, 그밖에도 기여할 수 있
 
 ## 질문과 지원
 
-> **주의**: 우리는 Github에서 버그리포트, 새로운기능 요청 그리고 pull request만 받습니다. 프레임워크 사용에 대한 문의나 지원요청 등은 [공식 포럼](https://phalcon.io/forum) 이나 [Discord](https://phalcon.io/discord) 서버를 이용해 주세요.
+> **주의**: 우리는 Github에서 버그리포트, 새로운기능 요청 그리고 pull request만 받습니다. For questions regarding the usage of the framework or support requests please visit the [github discussions](https://github.com/phalcon/cphalcon/discussions) or our [Discord](https://phalcon.io/discord) server.
 {:.alert .alert-danger}
 
 ## 버그 리포트 체크리스트
