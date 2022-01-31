@@ -47,7 +47,7 @@ Se você deseja contribuir para o Phalcon traduzindo nossos documentos em sua l�
 
 ## Perguntas e Suporte
 
-> **NOTA**: Aceitamos apenas relatórios de bugs, novas solicitações de recursos e pull requests são no GitHub. Para perguntas sobre o uso da estrutura ou pedidos de suporte por favor visite o [fórum oficial](https://phalcon.io/forum) ou nosso servidor [Discord](https://phalcon.io/discord).
+> **NOTA**: Aceitamos apenas relatórios de bugs, novas solicitações de recursos e pull requests são no GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions](https://github.com/phalcon/cphalcon/discussions) or our [Discord](https://phalcon.io/discord) server.
 {:.alert .alert-danger}
 
 ## Lista de Problemas Encontrados
