@@ -47,7 +47,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 ## Questions and Support
 
-> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/forum) or our [Discord](https://phalcon.io/discord) server.
+> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions](https://github.com/phalcon/cphalcon/discussions) or our [Discord](https://phalcon.io/discord) server.
 {:.alert .alert-danger}
 
 ## Bug Report Checklist
