@@ -1548,7 +1548,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                |  Yes   | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                   |  Yes   | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                  |  Yes   | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                        |  Yes   | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                        |  Yes   | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                 |        | Cache backend for models     |                      
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                          |  Yes   | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         |  No    | Models MetaData              |

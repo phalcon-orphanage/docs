@@ -1882,7 +1882,7 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter](filter) component. You can add more filters to this component or use the built-in ones.
+Filtering and sanitizing is performed using the [filter](filter-filter) component. You can add more filters to this component or use the built-in ones.
 
 ## Events
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
