@@ -1554,7 +1554,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Tak    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Tak    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Tak    | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | Tak    | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | Tak    | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Tak    | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Nie    | Models MetaData              |
