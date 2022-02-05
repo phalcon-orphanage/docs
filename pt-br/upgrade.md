@@ -3,7 +3,7 @@ layout: default
 language: 'pt-br'
 version: '5.0'
 title: 'Upgrade Guide'
-keywords: 'atualização, v3, v4'
+keywords: 'upgrade, v3, v4, v5'
 ---
 
 # Upgrade Guide
@@ -239,6 +239,64 @@ public function addInlineJs(
 
 ---
 
+### Autoload
+
+> Status: **changes required**
+> 
+> Usage: [Autoload Documentation](autoload-loader) 
+> 
+> {: .alert .alert-warning }
+
+The [Autoload\Loader](autoload-loader) component has been moved from the parent namespace. Some method names have been changed and new functionality introduced.
+
+#### `Phalcon\Autoload\Loader`
+- `__construct(bool $isDebug = false)` The constructor now accepts a boolean, which allows the loader to collect and store debug information during the discovery and loading process of files, classes etc. If the variable is set to `true`, `getDebug()` will return an array with all the debugging information during the autoload operation. This mode is only for debugging purposes and must not be used in production environments.
+
+```php
+
+use Phalcon\Autoload\Loader;
+use Adapter\Another;
+
+$loader = new Loader(true);
+
+$loader
+    ->addNamespace('Base', './Namespaces/Base/')
+    ->addNamespace('Adapter', './Namespaces/Adapter/')
+    ->addNamespace('Namespaces', './Namespaces/')
+;
+
+$loader->autoload(Another::class);
+
+var_dump($loader->getDebug());
+
+// [
+//     'Loading: Adapter\Another',
+//     'Class: 404: Adapter\Another',
+//     'Require: 404: ./Namespaces/Adapter/Another.php',
+//     'Require: ./Namespaces/Another.php',
+//     'Namespace: Namespaces\Adapter - ./Namespaces/Another.php',
+// ];
+```
+
+- `add*` methods have been introduced to help with the setup of the autoloader
+  - `addClass(string $name, string $file): Loader`
+  - `addDirectory(string $directory): Loader`
+  - `addExtension(string $extension): Loader`
+  - `addFile(string $file): Loader`
+  - `addNamespace(string $name, string|array $directories, bool $prepend = false): Loader`
+- `getCheckedPath()` now returns either a string or a `null` (if not populated yet)
+- `getDebug()` returns an array of debug information, if the Loader has been instantiated with `$isDebug = true`
+- `getDirs()` has been renamed to `getDirectories()`
+- `getFoundPath()` now returns either a string or a `null` (if not populated yet)
+- `registerClasses()` has been renamed to `setClasses()`
+- `registerDirs()` has been renamed to `setDirectories()`
+- `registerExtensions()` has been renamed to `setExtensions()`
+- `setExtensions()` now accepts a second parameter (`bool` `$merge`) which allows you to merge the data set with what is already set in the Loader
+- `registerFiles()` has been renamed to `setFiles()`
+- `registerNamespaces()` has been renamed to `setNamespaces()`
+
+---
+
 ### Cache
 
 > Status: **changes required**
@@ -280,17 +338,7 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 > 
 > {: .alert .alert-warning }
 
-The [Collection](support-collection) component has been moved to the `Support` namespace.
-
-#### `Phalcon\Support\Collection`
-- Moved `Phalcon\Collection` to `Phalcon\Support\Collection`
-- `get()` will return the `defaultValue` if the `key` is not set. It will also return the `defaultValue` if the `key` is set and the value is `null`. This aligns with the 3.x behavior.
-
-#### `Phalcon\Support\Collection\CollectionInterface`
-- A new interface has been introduced (`Phalcon\Support\Collection\CollectionInterface`) to offer more flexibility when extending the collection object.
-
-#### `Phalcon\Support\Collection\ReadOnlyCollection`
-- This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words.
+The [Collection](support-collection) component has been moved to the `Support` namespace. [more](#support)
 
 ---
 
@@ -335,7 +383,7 @@ The [Container](collection) component has been moved to the `Container` namespac
 > 
 > {: .alert .alert-warning }
 
-The [Crypt](encryption-crypt) component has been moved to the `Encryption` namespace. [more](#encryption)
+The [Crypt](encryption-crypt) component has been moved to the `Encryption` namespace. [more](#encryption-crypt)
 
 ---
 
@@ -347,13 +395,103 @@ The [Crypt](encryption-crypt) component has been moved to the `Encryption` names
 > 
 > {: .alert .alert-info }
 
+---
+
 Db
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Db Documentation](db-layer) 
 > 
 > {: .alert .alert-warning }
+
+---
+
+#### `Phalcon\Db\Adapter\Pdo\AbstractPdo`
+- Changed `connect(array descriptor = null): bool` to `connect(array descriptor = []): void`
+- Changed `execute(string $sqlStatement, $bindParams = null, $bindTypes = null): bool` to `execute(string $sqlStatement, array $bindParams = [], array $bindTypes = []) -> bool`
+- Changed `getErrorInfo()` to `getErrorInfo(): array`
+- Changed `getInternalHandler(): \PDO` to `getInternalHandler(): mixed`
+- Changed `lastInsertId($sequenceName = null): int | bool` to `lastInsertId(string $name = null) -> string | bool`
+- Changed `query(string $sqlStatement, $bindParams = null, $bindTypes = null): ResultInterface | bool` to `query(string $sqlStatement, array $bindParams = [], array $bindTypes = []): ResultInterface | bool`
+
+#### `Phalcon\Db\Adapter\Pdo\Mysql`
+- Changed bind type for `Column::TYPE_BIGINT` to be `Column::BIND_PARAM_STR`
+- Added bind type for `Column::TYPE_BINARY` to cater for `VARBINARY` and `BINARY` fields
+- Added support for comments
+
+#### `Phalcon\Db\Adapter\Pdo\Postgresql`
+- Changed bind type for `Column::TYPE_BIGINT` to be `Column::BIND_PARAM_STR`
+- Added support for comments
+
+#### `Phalcon\Db\Adapter\AbstractAdapter`
+- Changed property `connectionId` to `int`
+- Added property `realSqlStatement` to store the real SQL statement executed
+- Changed `delete($table, $whereCondition = null, $placeholders = null, $dataTypes = null): bool` to `delete($table, string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool`
+- Changed `fetchAll(string $sqlQuery, int $fetchMode = Enum::FETCH_ASSOC, $bindParams = null, $bindTypes = null): array` to `fetchAll(string $sqlQuery, int $fetchMode = Enum::FETCH_ASSOC, array $bindParams = [], array $bindTypes = []): array`
+- Changed `fetchOne(string $sqlQuery, $fetchMode = Enum::FETCH_ASSOC, $bindParams = null, $bindTypes = null): array` to `fetchOne(string $sqlQuery, $fetchMode = Enum::FETCH_ASSOC, array $bindParams = [], array $bindTypes = []): array`
+- Changed `getEventsManager(): ManagerInterface` to `getEventsManager(): ManagerInterface | null`
+- Added `getSQLVariables(): array` to return the SQL variables used
+- Added `supportsDefaultValue(): bool` to allow checking for adapters that support the `DEFAULT` keyword
+
+#### `Phalcon\Db\Adapter\AdapterInterface`
+- Changed `close(): bool` to `close(): void`
+- Changed `connect(array $descriptor = null): bool` to `connect(array $descriptor = []): void`
+- Changed `delete($table, $whereCondition = null, $placeholders = null, $dataTypes = null): bool` to `delete($table, string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool`
+- Changed `execute(string $sqlStatement, $placeholders = null, $dataTypes = null): bool` to `execute(string $sqlStatement, array $bindParams = [], array $bindTypes = []): bool`
+- Changed `fetchAll(string $sqlQuery, int $fetchMode = 2, $placeholders = null): array` to `fetchAll(string $sqlQuery, int $fetchMode = 2, array $bindParams = [], array $bindTypes = []): array`
+- Changed `fetchOne(string $sqlQuery, int $fetchMode = 2, $placeholders = null): array;` to `fetchOne(string $sqlQuery, int $fetchMode = 2, array $bindParams = [], array $bindTypes = []): array`
+- Added `getDefaultValue(): RawValue`
+- Changed `getInternalHandler(): \PDO` to `getInternalHandler(): mixed`
+- Changed `lastInsertId($sequenceName = null): int | bool` to `lastInsertId(string $name = null) -> string | bool`
+- Changed `query(string $sqlStatement, $bindParams = null, $bindTypes = null): ResultInterface | bool` to `query(string $sqlStatement, array $bindParams = [], array $bindTypes = []): ResultInterface | bool`
+- Added `supportsDefaultValue(): bool`
+
+#### `Phalcon\Db\Adapter\PdoFactory`
+- Added `getExceptionClass()` to return the exception class for the factory
+- Renamed `getAdapters()` to `getServices()`
+
+#### `Phalcon\Db\Dialect\*`
+- Added support for comments
+- Added support for `SMALLINT` for Postgresql
+
+#### `Phalcon\Db\Result\ResultPdo`
+- Renamed `Phalcon\Db\Result\Pdo` to `Phalcon\Db\Result\ResultPdo`
+
+#### `Phalcon\Db\Column`
+- Added support for comments
+- Added `TYPE_BINARY` constant
+- Added `TYPE_VARBINARY` constant
+- Added `getComment(): string | null`
+
+#### `Phalcon\Db\DialectInterface`
+- Changed `getSqlExpression(array $expression, string $escapeChar = null, $bindCounts = null): string;` to `getSqlExpression(array $expression, string $escapeChar = null, array $bindCounts = []): string`
+
+#### `Phalcon\Db\Dialect`
+- Changed `getColumnList(array $columnList, string $escapeChar = null, $bindCounts = null): string` to `getColumnList(array $columnList, string $escapeChar = null, array $bindCounts = []): string`
+- Changed `getSqlColumn($column, string $escapeChar = null, $bindCounts = null): string` to `getSqlColumn($column, string $escapeChar = null, array $bindCounts = []): string`
+- Changed `getSqlExpression(array $expression, string $escapeChar = null, $bindCounts = null): string;` to `getSqlExpression(array $expression, string $escapeChar = null, array $bindCounts = []): string`
+
+#### `Phalcon\Db\Exception`
+- Changed `Phalcon\Db\Exception` to extend `\Exception`
+
+#### `Phalcon\Db\Profiler`
+- Changed `Phalcon\Db\Profiler` to use `hrtime()` internally to calculate metrics
+
+#### `Phalcon\Db\ResultInterface`
+- Changed `dataSeek(long $number)` to `dataseek(int $number)`
+
+---
+
+### Depuração
+
+> Status: **changes required**
+> 
+> Usage: [Debug Documentation](support-debug) 
+> 
+> {: .alert .alert-warning }
+
+The [Debug](support-debug) component has been moved to the `Support` namespace. [more](#support)
 
 ---
 
@@ -382,6 +520,12 @@ The [Di](di) component has been moved to the `Di` namespace.
 > 
 > {: .alert .alert-info }
 
+### `Phalcon\Dispatcher\AbstractDispatcher`
+- Changed `getEventsManager(): ManagerInterface` to `getEventsManager(): ManagerInterface | null`
+
+#### `Phalcon\Dispatcher\Exception`
+- Changed `Phalcon\Dispatcher\Exception` to extend `\Exception`
+
 ---
 
 ### Domain
@@ -391,10 +535,6 @@ The [Di](di) component has been moved to the `Di` namespace.
 > Usage: [Domain Documentation](domain) 
 > 
 > {: .alert .alert-info }
-
----
-
-The [Di](di) component has been moved to the `Di` namespace.
 
 ---
 
@@ -466,8 +606,114 @@ If no `padFactory` is passed, a new one will be created in the component.
 
 The [Escaper](html-escaper) component has been moved to the `Html` namespace. [more](#html)
 
+---
 
-Escaper Events Factory Filter Flash Forms Helper Html Http Image Loader Logger Messages Mvc Paginator Security Session Storage Tag Translate Url Validation Cache.zep Collection.zep Config.zep Container.zep Crypt.zep Debug.zep Di.zep Escaper.zep Exception.zep Filter.zep Kernel.zep Loader.zep Logger.zep Registry.zep Security.zep Tag.zep Text.zep Url.zep Validation.zep Version.zep
+### Eventos
+
+> Status: **changes required**
+> 
+> Usage: [Escaper Documentation](html-escaper) 
+> 
+> {: .alert .alert-warning }
+
+#### `Phalcon\Events\AbstractEventsAware`
+- Added abstract `Phalcon\Events\AbstractEventsAware`
+
+#### `Phalcon\Events\Event`
+- Changed `public function __construct(string $type, object $source, $data = null, bool $cancelable = true)` to `__construct(string $type, $source = null, $data = null, bool $cancelable = true)` (`$source` is now nullable)
+
+#### `Phalcon\Events\Exception`
+- Changed `Phalcon\Events\Exception` to extend `\Exception`
+
+#### `Phalcon\Events\Manager`
+- Added `isValidHandler(): bool` to return if the internal handler is valid or not
+
+---
+
+### Factory
+
+> Status: **changes required**
+> 
+> {: .alert .alert-warning }
+
+
+#### `Phalcon\Factory\AbstractConfigFactory`
+- Added abstract `Phalcon\Factory\AbstractConfigFactory` to check configuration elements
+
+#### `Phalcon\Factory\AbstractFactory`
+- Changed `init()` to read from `getServices()`
+
+#### `Phalcon\Factory\Exception`
+- Changed `Phalcon\Factory\Exception` to extend `\Exception`
+
+---
+
+### Filter
+
+> Status: **changes required**
+> 
+> Usage: [Filter Documentation](filter-filter), [Validation Documentation](filter-validation) 
+> 
+> {: .alert .alert-warning }
+
+#### `Phalcon\Filter`
+- Moved under the `Filter` namespace
+
+#### `Phalcon\Filter\Exception`
+- Changed `Phalcon\Filter\Exception` to extend `\Exception`
+
+#### `Phalcon\Filter\Factory`
+- Changed `getAdapters()` to `getServices()`
+
+#### `Phalcon\Filter\Filter`
+- Added `__call()` to allow using filter names as methods i.e. `$filter->upper($input)`
+
+#### `Phalcon\Filter\Validation`
+- Added `getValueByEntity()` and `getValueByData()` for more options to retrieve data
+
+#### `Phalcon\Filter\Validation\Validator\Exception`
+- Changed `Phalcon\Filter\Validation\Validator\Exception` to extend `\Exception`
+
+#### `AbstractValidator.zep`
+- Added the ability to define `allowEmpty` to any validator (in the parameters)
+
+#### `Phalcon\Filter\Validation\Exception`
+- Changed `Phalcon\Filter\Validation\Exception` to extend `\Exception`
+
+#### `Phalcon\Filter\Validation\ValidationInterface`
+- Changed `add(string $field, ValidatorInterface $validator): <ValidationInterface` to `add($field, ValidatorInterface $validator): <ValidationInterface`
+- Changed `rule(string $field, ValidatorInterface $validator): <ValidationInterface` to `rule($field, ValidatorInterface $validator): <ValidationInterface`
+
+#### `Phalcon\Filter\Validation\ValidatorFactory`
+- Changed `getAdapters()` to `getServices()`
+
+---
+
+### Flash
+
+> Status: **changes required**
+> 
+> Usage: [Flash Documentation](flash) 
+> 
+> {: .alert .alert-warning }
+
+#### `Phalcon\Flash\AbstractFlash`
+- Added the ability to define CSS icon classes (`setCssIconClasses()`)
+- Changed `getTemplate(string $cssClasses): string` to `getTemplate(string $cssClasses, string $cssIconClasses): string`
+
+#### `Phalcon\Flash\Exception`
+- Changed `Phalcon\Flash\Exception` to extend `\Exception`
+
+#### `Phalcon\Flash\Session`
+- Added `SESSION_KEY` constant
+- Changed `has($type = null): bool` to `has(string $type = null): bool`
+- Changed `message(string $type, string $message): string | null` to `message(string $type, $message): string | null`
+
+---
+
+_WIP_
+
+Forms Helper Html Http Image Loader Logger Messages Mvc Paginator Security Session Storage Tag Translate Url Validation Cache.zep Collection.zep Config.zep Container.zep Crypt.zep Debug.zep Di.zep Escaper.zep Exception.zep Filter.zep Kernel.zep Loader.zep Logger.zep Registry.zep Security.zep Tag.zep Text.zep Url.zep Validation.zep Version.zep
 
 
 
@@ -553,53 +799,18 @@ Loader
 > 
 > {: .alert .alert-warning }
 
-The [Loader](loader) component has been moved to the `Autoload` namespace. Some method names have been changed and new functionality introduced.
+The [Loader](autoload-loader) component has been moved to the `Autoload` namespace. Some method names have been changed and new functionality introduced.
 
-#### `Phalcon\Autoload\Loader`
-- `__construct(bool $isDebug = false)` The constructor now accepts a boolean, which allows the loader to collect and store debug information during the discovery and loading process of files, classes etc. If the variable is set to `true`, `getDebug()` will return an array with all the debugging information during the autoload operation. This mode is only for debugging purposes and must not be used in production environments.
 
-```php
 
-use Phalcon\Autoload\Loader;
-use Adapter\Another;
 
-$loader = new Loader(true);
 
-$loader
-    ->addNamespace('Base', './Namespaces/Base/')
-    ->addNamespace('Adapter', './Namespaces/Adapter/')
-    ->addNamespace('Namespaces', './Namespaces/')
-;
 
-$loader->autoload(Another::class);
 
-var_dump($loader->getDebug());
 
-// [
-//     'Loading: Adapter\Another',
-//     'Class: 404: Adapter\Another',
-//     'Require: 404: ./Namespaces/Adapter/Another.php',
-//     'Require: ./Namespaces/Another.php',
-//     'Namespace: Namespaces\Adapter - ./Namespaces/Another.php',
-// ];
-```
 
-- `add*` methods have been introduced to help with the setup of the autoloader
-  - `addClass(string $name, string $file): Loader`
-  - `addDirectory(string $directory): Loader`
-  - `addExtension(string $extension): Loader`
-  - `addFile(string $file): Loader`
-  - `addNamespace(string $name, string|array $directories, bool $prepend = false): Loader`
-- `getCheckedPath()` now returns either a string or a `null` (if not populated yet)
-- `getDebug()` returns an array of debug information, if the Loader has been instantiated with `$isDebug = true`
-- `getDirs()` has been renamed to `getDirectories()`
-- `getFoundPath()` now returns either a string or a `null` (if not populated yet)
-- `registerClasses()` has been renamed to `setClasses()`
-- `registerDirs()` has been renamed to `setDirectories()`
-- `registerExtensions()` has been renamed to `setExtensions()`
-- `setExtensions()` now accepts a second parameter (`bool` `$merge`) which allows you to merge the data set with what is already set in the Loader
-- `registerFiles()` has been renamed to `setFiles()`
-- `registerNamespaces()` has been renamed to `setNamespaces()`
+
+
 
 
 
@@ -659,6 +870,30 @@ Suporte
 > Usage: [Assets Documentation](assets) 
 > 
 > {: .alert .alert-warning }
+
+### Coleção
+
+> Status: **changes required**
+> 
+> Usage: [Collection Documentation](support-collection) 
+> 
+> {: .alert .alert-warning }
+
+The [Collection](support-collection) component has been moved to the `Support` namespace.
+
+#### `Phalcon\Support\Collection`
+- Moved `Phalcon\Collection` to `Phalcon\Support\Collection`
+- `get()` will return the `defaultValue` if the `key` is not set. It will also return the `defaultValue` if the `key` is set and the value is `null`. This aligns with the 3.x behavior.
+
+#### `Phalcon\Support\Collection\CollectionInterface`
+- A new interface has been introduced (`Phalcon\Support\Collection\CollectionInterface`) to offer more flexibility when extending the collection object.
+
+#### `Phalcon\Support\Collection\ReadOnlyCollection`
+- This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words.
+
+---
+
+
 
 Tag
 
