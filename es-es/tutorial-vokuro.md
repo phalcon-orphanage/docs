@@ -819,7 +819,7 @@ El flujo de trabajo de la aplicación es:
 
 ### Form
 
-Para tener validación de los datos facilitados por el usuario, usamos las clases [Phalcon\Forms\Form](forms) y [Phalcon\Validation\*](validation). Estas clases nos permiten crear elementos HTML y adjuntarles validadores. El formulario se pasa entonces a la vista, donde los elementos HTML actuales se renderizan en la pantalla.
+In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](filter-validation) classes. Estas clases nos permiten crear elementos HTML y adjuntarles validadores. El formulario se pasa entonces a la vista, donde los elementos HTML actuales se renderizan en la pantalla.
 
 Cuando el usuario envía la información, envía los datos publicados de vuelta al formulario y los validadores correspondientes validan la entrada y devuelven cualquier posible mensaje de error.
 
@@ -1528,7 +1528,7 @@ El evento `afterSave` se dispara justo después de guardar un registro en la bas
 
 **Validación**
 
-El modelo también tiene el método `validate` que nos permite adjuntar un validador a cualquier número de campos de nuestro modelo. Para la tabla `Users`, necesitamos que el `email` sea único. Para lo cual, le adjuntamos el [validador](validation) `Uniqueness`. El validador se disparará justo antes de que se realice cualquier operación de guardado en el modelo y se devolverá el mensaje si la validación falla.
+El modelo también tiene el método `validate` que nos permite adjuntar un validador a cualquier número de campos de nuestro modelo. Para la tabla `Users`, necesitamos que el `email` sea único. As such, we attach the `Uniqueness` [validator](filter-validation) to it. El validador se disparará justo antes de que se realice cualquier operación de guardado en el modelo y se devolverá el mensaje si la validación falla.
 
 
 ```php
