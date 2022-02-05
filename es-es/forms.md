@@ -726,7 +726,7 @@ $form->add($email);
 > {: .alert .alert-info }
 
 ## Validación
-Los formularios de Phalcon se integran con el componente [validation](validation) para ofrecer validación instantánea. Los validadores integrados o personalizados se pueden configurar para cada elemento:
+Phalcon forms are integrated with the [validation](filter-validation) component to offer instant validation. Los validadores integrados o personalizados se pueden configurar para cada elemento:
 
 ```php
 <?php
