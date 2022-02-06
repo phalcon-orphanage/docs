@@ -14,7 +14,7 @@ keywords: 'security, hashing, passwords, jwt, rfc7519'
 > **NOTE**: Currently, only symmetric algorithms are supported 
 {: .alert .alert-info }
 
-`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. These components are:
+`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7519][rfc-7519]. These components are:
 
 - Builder ([Phalcon\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser])
