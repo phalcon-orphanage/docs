@@ -16,7 +16,7 @@ keywords: 'security, hashing, passwords, jwt, rfc7519'
 > 
 > {: .alert .alert-info }
 
-`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. These components are:
+`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7519][rfc-7519]. These components are:
 
 - Builder ([Phalcon\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser])
@@ -582,6 +582,8 @@ class IndexController extends Controller
     }
 }
 ```
+
+[rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 
 [rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 [security-jwt-builder]: api/phalcon_security#security-jwt-builder
