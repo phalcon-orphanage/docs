@@ -16,7 +16,7 @@ keywords: 'seguridad, hash, contraseñas, jwt, rfc7519'
 > 
 > {: .alert .alert-info }
 
-`Phalcon\Security\JWT` es un espacio de nombres que contiene componentes que le permiten emitir, analizar y validar Tokens Web JSON como se describe en [RFC 7915][rfc-7519]. Estos componentes son:
+`Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. Estos componentes son:
 
 - Builder ([Phalcon\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Security\JWT\Token\Parser][security-jwt-token-parser])
