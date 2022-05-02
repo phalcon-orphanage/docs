@@ -1031,7 +1031,7 @@ Verifica si un valor tiene un archivo correcto
 <?php
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\File\Size;
+use Phalcon\Validation\Validator\File\Size\Equal;
 
 $validator = new Validation();
 
@@ -1078,7 +1078,7 @@ Verifica si un valor tiene un archivo correcto
 <?php
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\File\Size;
+use Phalcon\Validation\Validator\File\Size\Max;
 
 $validator = new Validation();
 
@@ -1125,7 +1125,7 @@ Verifica si un valor tiene un archivo correcto
 <?php
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\File\Size;
+use Phalcon\Validation\Validator\File\Size\Min;
 
 $validator = new Validation();
 
