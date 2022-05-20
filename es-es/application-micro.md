@@ -942,7 +942,7 @@ Coincide si el método HTTP es `HEAD` y la ruta es `/api/products`
 ```php
 <?php
 
-$app->get(
+$app->head(
     '/api/products',
     'getProducts'
 );
