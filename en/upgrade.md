@@ -17,30 +17,9 @@ We will outline the areas that you need to pay attention to and make necessary c
 
 ## Requirements
 ### PHP 7.4
-Phalcon v5 supports only PHP 7.4 and above. PHP 7.4 [active support][php-support] expired roughly a month before the release of Phalcon 5, but support for Security patches etc. will continue until November 2022. After that time, we will drop support for PHP 7.4 also.
+Phalcon v5 supports only PHP 7.4 and above. PHP 7.4 [active support][php-support] expired roughly a month before the release of Phalcon 5, but support for security patches etc. will continue until November 2022. After that time, we will drop support for PHP 7.4 also.
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
-
-### PSR
-Phalcon requires the PSR extension. The extension can be installed with PECL:
-
-```bash
-pecl install psr
-```
-
-If you do not wish to install it with PECL, you can download and compile OSR from [this][psr-extension] GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
-
-```ini
-extension=psr.so
-```
-
-before
-
-```ini
-extension=phalcon.so
-```
-
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
 ### Installation
 Phalcon can be installed using PECL.
@@ -48,13 +27,6 @@ Phalcon can be installed using PECL.
 ```bash
 pecl install phalcon-5.0.0
 ```
-
-> It is important to check your `php.ini` file (both for your web server and CLI) and make sure that phalcon is loaded after psr. Your php.ini should look something like this:
->
-> `extension=psr.so`
->
-> `extension=phalcon.so`
-{: .alert .alert-warning }
 
 **Alternative installation**
 
@@ -85,7 +57,7 @@ php -m | grep phalcon
 
 ## General Notes
 
-One of the biggest changes with this release is that we no longer have top level classes. All top level classes have been moved into relevant namespaces (with the exception of `Phalcon\Tag`). For instance `Phalcon\Loader` has been moved to `Phalcon\Autoload\Loader`. This change was necessary for the future expansion of the project.
+One of the biggest changes with this release is that we no longer have top level classes. All top level classes have been moved into relevant namespaces (except `Phalcon\Tag`). For instance `Phalcon\Loader` has been moved to `Phalcon\Autoload\Loader`. This change was necessary for the future expansion of the project.
 
 **Summary**
 
@@ -352,15 +324,11 @@ The [Config](config) component has been moved to the `Config` namespace.
 
 ### Container
 
-> Status: **changes required**
+> Status: **removed**
 >
-> Usage: [Container Documentation](container)
 {: .alert .alert-warning }
 
-The [Container](collection) component has been moved to the `Container` namespace.
-
-#### `Phalcon\Container\Container`
-- Moved `Phalcon\Container` to `Phalcon\Container\Container`
+The [Container](collection) component has been removed from the framework. It is in our roadmap to develop a new container that will support auto wiring, as well as providers. Additionally, the container will be designed and implemented in such a way that could be used as a PSR-11 container (with the help of a Proxy class). 
 
 ---
 
@@ -615,7 +583,6 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 >
 {: .alert .alert-warning }
 
-
 #### `Phalcon\Factory\AbstractConfigFactory`
 - Added abstract `Phalcon\Factory\AbstractConfigFactory` to check configuration elements
 
@@ -686,12 +653,57 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 - Changed `has($type = null): bool` to `has(string $type = null): bool`
 - Changed `message(string $type, string $message): string | null` to `message(string $type, $message): string | null`
 
+### Forms
+
+> Status: **changes required**
+>
+> Usage: [Forms Documentation](forms)
+{: .alert .alert-warning }
+
+`Phalcon\Forms\Element\*` classes now use the new `Phalcon\Html\TagFactory` to generate HTML code. As a result, the functionality has changed slightly. The main difference is that a `Phalcon\Html\TagFactory` has to be set in the form object, so that elements can be rendered. If the `Phalcon\Html\TagFactory` is not set, then the component will search the Di container (`Phalcon\Di\DiInterface`) for a service with the name `tag`. If you are using `Phalcon\Di\FactoryDefault` as your container, then the `tag` service is already defined for you.
+
+#### `Phalcon\Forms\Element\AbstractElement`
+- Added `getTagFactory()` to return the `Phalcon\Html\TagFactory` object used internally, as well as `setTagFactory(TagFactory $tagFactory): AbstractElement` to set it.
+
+### Helper
+
+> Status: **changes required**
+>
+> Usage: [Helper Documentation](support-helper)
+{: .alert .alert-warning }
+
+The [Helper](support-helper) component has been moved to the `Support` namespace. [more](#support)
+
+### Html
+
+> Status: **changes required**
+>
+> Usage: [HTML Documentation](html)
+{: .alert .alert-warning }
+
+#### `Phalcon\Html\Escaper`
+
+This class has been moved to this namespace from the top level one. The names of the methods have been changed to be a lot simpler and verbose. Finally, the `flags` protected property that controls the flags for `htmlspecialchars()` is set to `11` which corresponds to `ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401`. 
+
+- A new method `attributes(string input)` can be used to escape HTML attributes (replaces `escapeHtmlAttr()`)
+- A new method `css(string $input)` can be used to escape CSS (replaces `escapeCss()`
+- `escapeCss()` now raises a deprecated warning
+- `escapeJs()` now raises a deprecated warning
+- `escapeHtml()` now raises a deprecated warning
+- `escapeUrl()` now raises a deprecated warning
+- A new method `html(string $input = null)` can be used to escape HTML attributes (replaces `escapeHtml()`)
+- A new method `js(string $input)` can be used to escape HTML attributes (replaces `escapeJs()`)
+- A new method `setFlags(int $flags)` can be used to set the flags for `htmlspecialchars()` (replaces `setHtmlQuoteType()`)
+- `setHtmlQuoteType()` now raises a deprecated warning
+- A new method `url(string $input)` can be used to escape URL strings (replaces `escapeUrl()`)
+
+
+
+
 ---
 
 _WIP_
 
-Forms
-Helper
 Html
 Http
 Image
@@ -739,34 +751,6 @@ Version.zep
 
 
 ---
-
-Events
-
-> Status: **changes required**
->
-> Usage: [Assets Documentation](assets)
-{: .alert .alert-warning }
-
-Factory
-
-> Status: **changes required**
->
-> Usage: [Assets Documentation](assets)
-{: .alert .alert-warning }
-
-Filter
-
-> Status: **changes required**
->
-> Usage: [Assets Documentation](assets)
-{: .alert .alert-warning }
-
-Flash
-
-> Status: **changes required**
->
-> Usage: [Assets Documentation](assets)
-{: .alert .alert-warning }
 
 Forms
 
