@@ -13,7 +13,9 @@ keywords: 'tutorial, tutorial básico, paso a paso, mvc'
 ## Resumen
 A lo largo de este tutorial, crearemos una aplicación con un simple formulario de registro, mientras introducimos los principales aspectos de diseños de Phalcon.
 
-Este tutorial cubre la implementación de una aplicación MVC simple, mostrando cuán rápido y fácil se puede hacer con Phalcon. Una vez desarrollado, puede usar esta aplicación y extenderla para satisfacer sus necesidades. El código en este tutorial también se puede usar como campo de juego para aprender otros conceptos e ideas específicas de Phalcon. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+Este tutorial cubre la implementación de una aplicación MVC simple, mostrando cuán rápido y fácil se puede hacer con Phalcon. Una vez desarrollado, puede usar esta aplicación y extenderla para satisfacer sus necesidades. El código en este tutorial también se puede usar como campo de juego para aprender otros conceptos e ideas específicas de Phalcon.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
 
 Si sólo quiere empezar, puede saltarse esto y crear automáticamente un proyecto Phalcon con nuestras [herramientas de desarrollador](devtools).
 
