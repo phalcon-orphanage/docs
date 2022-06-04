@@ -13,7 +13,9 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, 지침서, 기초, 튜�
 ## 개요
 이 지침서 전체에 걸쳐 Phalcon 설계 상의 주요 측면에 대해 소개함과 동시에, 간단한 등록양식이 있는 어플리케이션을 만들어 보겠습니다.
 
-이 지침서에서는 Phalcon 을 이용하면 얼마나 빠르고 쉽게 만들 수 있는지 보여주기 위해 간단한 MVC 어플리케이션의 구현을 다룹니다. 개발이 완료되면, 이 어플리케이션을 필요에 따라 확장시켜 사용하실 수있습니다. 이 지침서에 있는 코드는 다른 Phalcon 특유의 컨셉트와 아이디어를 배우는 놀이터로도 사용될 수 있습니다. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+이 지침서에서는 Phalcon 을 이용하면 얼마나 빠르고 쉽게 만들 수 있는지 보여주기 위해 간단한 MVC 어플리케이션의 구현을 다룹니다. 개발이 완료되면, 이 어플리케이션을 필요에 따라 확장시켜 사용하실 수있습니다. 이 지침서에 있는 코드는 다른 Phalcon 특유의 컨셉트와 아이디어를 배우는 놀이터로도 사용될 수 있습니다.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
 
 바로 시작하기를 원하신다면 이 섹션은 건너뛰고 [developer tools](devtools)를 이용해서 자동으로 Phalcon 프로젝트를 생성하세요.
 
