@@ -394,7 +394,7 @@ $ phalcon scaffold --table-name users
 Також, якщо бажаєте, можна використати інструменти розробника Phalcon через веб-інтерфейс. Перегляньте наступний ролик, щоб з'ясувати, як це працює:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen mark="crwd-mark"></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 ### Поєднання інструментів з PhpStorm IDE
@@ -402,5 +402,5 @@ $ phalcon scaffold --table-name users
 Нижче показаний ролик про те, як поєднати інструменти розробника з [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). Налаштування можуть бути легко адаптовані для інших IDE під PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
