@@ -393,7 +393,7 @@ Después de realizar una búsqueda, hay un componente de paginado disponible par
 También, si lo prefiere, es posible usar las Herramientas de Desarrollo de Phalcon desde un interfaz web. Eche un vistazo al siguiente videotutorial para descubrir como funciona:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen mark="crwd-mark"></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 ### Integrar Herramientas en IDE PhpStorm
@@ -401,5 +401,5 @@ También, si lo prefiere, es posible usar las Herramientas de Desarrollo de Phal
 El siguiente videotutorial muestra como integrar las herramientas de desarrollo con el [IDE PhpStorm](https://www.jetbrains.com/phpstorm/). Los pasos de configuración podrían adaptarse fácilmente a otros IDEs para PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
