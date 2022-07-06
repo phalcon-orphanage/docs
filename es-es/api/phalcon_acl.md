@@ -89,7 +89,7 @@ Devuelve el nivel de acceso ACL por defecto
 ```php
 public function setDefaultAction( int $defaultAccess ): void;
 ```
-Establece el nivel de acceso predeterminado (Phalcon\Acl::ALLOW o Phalcon\Acl::DENY)
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 
 
