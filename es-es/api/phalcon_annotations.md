@@ -50,6 +50,18 @@ Analiza o recupera todas las anotaciones encontradas en una clase
 
 
 ```php
+public function getConstant( string $className, string $constantName ): Collection;
+```
+Returns the annotations found in a specific constant
+
+
+```php
+public function getConstants( string $className ): array;
+```
+Returns the annotations found in all the class' constants
+
+
+```php
 public function getMethod( string $className, string $methodName ): Collection;
 ```
 Devuelve las anotaciones encontradas en un método específico
@@ -64,7 +76,7 @@ Devuelve las anotaciones encontradas en todos los métodos de la clase
 ```php
 public function getProperties( string $className ): array;
 ```
-Devuelve las anotaciones encontradas en todos los métodos de la clase
+Returns the annotations found in all the class' properties
 
 
 ```php
@@ -102,6 +114,18 @@ Esta interfaz debe ser implementada por adaptadores de Phalcon\Annotations
 public function get( string $className ): Reflection;
 ```
 Analiza o recupera todas las anotaciones encontradas en una clase
+
+
+```php
+public function getConstant( string $className, string $constantName ): Collection;
+```
+Returns the annotations found in a specific constant
+
+
+```php
+public function getConstants( string $className ): array;
+```
+Returns the annotations found in all the class' constants
 
 
 ```php
@@ -461,7 +485,7 @@ Devuelve el número de anotaciones en la colección
 
 
 ```php
-public function current(): Annotation | bool;
+public function current(): mixed;
 ```
 Devuelve la anotación actual en el iterador
 
@@ -565,7 +589,7 @@ Analiza los docblocks para devolver un vector con las anotaciones encontradas
 ```php
 public function parse( string $className ): array;
 ```
-Lee las anotaciones de la clase docblocks, sus métodos y/o propiedades
+Reads annotations from the class docblocks, its constants, properties and methods
 
 
 ```php
@@ -612,13 +636,19 @@ protected classAnnotations;
  * @var array
  * TODO: Make always array
  */
-protected methodAnnotations;
+protected constantAnnotations;
 
 /**
  * @var array
  * TODO: Make always array
  */
 protected propertyAnnotations;
+
+/**
+ * @var array
+ * TODO: Make always array
+ */
+protected methodAnnotations;
 
 /**
  * @var array
@@ -639,6 +669,12 @@ Constructor Phalcon\Annotations\Reflection
 public function getClassAnnotations(): Collection | bool;
 ```
 Devuelve las anotaciones encontradas en la clase docblock
+
+
+```php
+public function getConstantsAnnotations(): Collection[] | bool;
+```
+Returns the annotations found in the constants' docblocks
 
 
 ```php
