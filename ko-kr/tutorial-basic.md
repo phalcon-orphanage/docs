@@ -76,9 +76,9 @@ NginX, apache, cherokee 혹은 다른 웹서버를 사용하시는 것도 물론
 - 어플리케이션의 HTTP 요청을 처리
 
 ### Autoloader
-We are going to use [Phalcon\Loader](loader) a [PSR-4][psr-4] compliant file loader. 일반적으로 오토로더에 추가해야 할 것들은 컨트롤러와 모델 입니다. 어플리케이션이 요청하는 파일을 스캔할 디렉토리들도 등록할 수 있습니다.
+We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. 일반적으로 오토로더에 추가해야 할 것들은 컨트롤러와 모델 입니다. 어플리케이션이 요청하는 파일을 스캔할 디렉토리들도 등록할 수 있습니다.
 
-자 그럼, [Phalcon\Loader](loader)를 이용해서 `컨트롤러` 와 `모델` 디렉토리를 등록해 봅시다:
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
 
 `public/index.php`
 ```php
