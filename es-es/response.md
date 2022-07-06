@@ -508,7 +508,7 @@ $response = new Response();
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](url) service (by default [Phalcon\Url][url]). Este ejemplo demuestra como puede redirigir usando una ruta definida en su aplicación:
+All internal URIs are generated using the [url](mvc-url) service (by default [Phalcon\Url][url]). Este ejemplo demuestra como puede redirigir usando una ruta definida en su aplicación:
 
 ```php
 <?php 
