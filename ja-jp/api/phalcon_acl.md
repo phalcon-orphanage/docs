@@ -89,7 +89,7 @@ public function getDefaultAction(): int;
 ```php
 public function setDefaultAction( int $defaultAccess ): void;
 ```
-デフォルトのアクセスレベル (Phalcon\Acl::ALLOW または Phalcon\Acl::DENY)をセットします。
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 
 
