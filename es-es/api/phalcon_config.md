@@ -23,7 +23,7 @@ title: 'Phalcon\Config'
 
 Lee múltiples ficheros (o vectores) y los combina todos juntos.
 
-Ver `Phalcon\Config\Factory::load` para cargar la clase `Config Adapter` usando la opción *'adapter'*.
+See `Phalcon\Config\ConfigFactory::load` To load Config Adapter class using 'adapter' option.
 
 ```php
 use Phalcon\Config\Adapter\Grouped;
@@ -318,7 +318,7 @@ protected function phpYamlParseFile( mixed $filename, mixed $pos = int, mixed $n
 `Phalcon\Config` está diseñado para simplificar el acceso a, y el uso de, los datos de configuración de las aplicaciones. Proporciona una propiedad de objeto anidado basada en interfaz de usuario para acceder a estos datos de configuración dentro del código de la aplicación.
 
 ```php
-$config = new \Phalcon\Config(
+$config = new \Phalcon\Config\Config(
     [
         "database" => [
             "adapter"  => "Mysql",
@@ -367,7 +367,7 @@ public function merge( mixed $toMerge ): ConfigInterface;
 Combina una configuración con la actual
 
 ```php
-$appConfig = new \Phalcon\Config(
+$appConfig = new \Phalcon\Config\Config(
     [
         "database" => [
             "host" => "localhost",
@@ -487,7 +487,7 @@ protected function parseConfig( mixed $config ): array;
 
 Phalcon\Config\ConfigInterface
 
-Interfaz para la clase Phalcon\Config
+Interface for Phalcon\Config\Config class
 
 
 ## Métodos
