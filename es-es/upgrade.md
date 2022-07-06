@@ -48,11 +48,19 @@ zephir fullclean
 zephir build
 ```
 
+You will need to add the following line to your `php.ini` (in some cases both the CLI and web versions of it)
+
+```bash
+extension=phalcon.so
+```
+
 Comprueba el módulo
 
 ```bash
 php -m | grep phalcon
 ```
+
+If the above does not work, check the `php.ini` that your CLI is looking for. If you are using `phpinfo()` and a web browser to check if Phalcon has been loaded, make sure that your `php.ini` file that your web server is looking for contains the `extension=phalcon.so`. You will need to restart your web server after you added the new line in `php.ini`.
 
 - - -
 
@@ -288,6 +296,10 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 
 #### `Phalcon\Cache\Cache`
 - Moved `Phalcon\Cache` to `Phalcon\Cache\Cache`
+- The component has been refactored and the dependency to `PSR` has been removed. [more](cache)
+
+#### `Phalcon\Cache\CacheInterface`
+- A new interface has been introduced (`Phalcon\Cache\CacheInterface`) to offer more flexibility when extending the cache object.
 
 ---
 
@@ -363,7 +375,7 @@ The [Crypt](encryption-crypt) component has been moved to the `Encryption` names
 
 ---
 
-Db
+### Db
 
 > Status: **changes required**
 > 
@@ -596,6 +608,17 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 
 ---
 
+### Excepción
+
+> Status: **changes required**
+> 
+> {: .alert .alert-warning }
+
+### `Phalcon\Exception`
+The class has been removed.
+
+---
+
 ### Fábrica (Factory)
 
 > Status: **changes required**
@@ -621,8 +644,10 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 > 
 > {: .alert .alert-warning }
 
-#### `Phalcon\Filter`
-- Moved under the `Filter` namespace
+The [Filter](filter) component has been moved to the `Filter` namespace.
+
+#### `Phalcon\Filter\Filter`
+- Moved `Phalcon\Filter` to `Phalcon\Filter\Filter`
 
 #### `Phalcon\Filter\Exception`
 - Changed `Phalcon\Filter\Exception` to extend `\Exception`
@@ -674,6 +699,8 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 - Changed `has($type = null): bool` to `has(string $type = null): bool`
 - Changed `message(string $type, string $message): string | null` to `message(string $type, $message): string | null`
 
+---
+
 ### Formularios
 
 > Status: **changes required**
@@ -687,6 +714,8 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 #### `Phalcon\Forms\Element\AbstractElement`
 - Added `getTagFactory()` to return the `Phalcon\Html\TagFactory` object used internally, as well as `setTagFactory(TagFactory $tagFactory): AbstractElement` to set it.
 
+---
+
 ### Ayudantes
 
 > Status: **changes required**
@@ -697,6 +726,8 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 
 The [Helper](support-helper) component has been moved to the `Support` namespace. [more](#support)
 
+---
+
 ### Html
 
 > Status: **changes required**
@@ -706,163 +737,463 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 > {: .alert .alert-warning }
 
 #### `Phalcon\Html\Escaper`
+- Moved `Phalcon\Escaper` to `Phalcon\Html\Escaper`
+- Changed the `flags` property that controls the flags for `htmlspecialchars()` is set to `11` which corresponds to `ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401`.
+- Method names changed to be more verbose.
+  - Added `attributes(string input)` for escaping HTML attributes (replaces `escapeHtmlAttr()`)
+  - Added `css(string $input)` for escaping CSS (replaces `escapeCss()`
+  - Added `html(string $input = null)` for escaping HTML (replaces `escapeHtml()`)
+  - Added `js(string $input)` for escaping JS (replaces `escapeJs()`)
+  - Added `setFlags(int $flags)` to set the flags `htmlspecialchars()` (replaces `setHtmlQuoteType()`)
+  - Added `url(string $input)` for escaping URL strings (replaces `escapeUrl()`)
+  - `escapeCss()` now raises a deprecated warning
+  - `escapeJs()` now raises a deprecated warning
+  - `escapeHtml()` now raises a deprecated warning
+  - `escapeUrl()` now raises a deprecated warning
+  - `setHtmlQuoteType()` now raises a deprecated warning
 
-This class has been moved to this namespace from the top level one. The names of the methods have been changed to be a lot simpler and verbose. Finally, the `flags` protected property that controls the flags for `htmlspecialchars()` is set to `11` which corresponds to `ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401`.
+#### `Phalcon\Html\Escaper\EscaperInterface`
+- Moved `Phalcon\Escaper\EscaperInterface` to `Phalcon\Html\Escaper\EscaperInterface`
+- Added `attributes(string input)`
+- Added `css(string $input)`
+- Added `html(string $input = null)`
+- Added `js(string $input)`
+- Added `setFlags(int $flags)`
+- Added `url(string $input)`
+- Removed `escapeCss()`
+- Removed `escapeJs()`
+- Removed `escapeHtml()`
+- Removed `escapeUrl()`
+- Removed `setHtmlQuoteType()`
 
-- A new method `attributes(string input)` can be used to escape HTML attributes (replaces `escapeHtmlAttr()`)
-- A new method `css(string $input)` can be used to escape CSS (replaces `escapeCss()`
-- `escapeCss()` now raises a deprecated warning
-- `escapeJs()` now raises a deprecated warning
-- `escapeHtml()` now raises a deprecated warning
-- `escapeUrl()` now raises a deprecated warning
-- A new method `html(string $input = null)` can be used to escape HTML attributes (replaces `escapeHtml()`)
-- A new method `js(string $input)` can be used to escape HTML attributes (replaces `escapeJs()`)
-- A new method `setFlags(int $flags)` can be used to set the flags for `htmlspecialchars()` (replaces `setHtmlQuoteType()`)
-- `setHtmlQuoteType()` now raises a deprecated warning
-- A new method `url(string $input)` can be used to escape URL strings (replaces `escapeUrl()`)
+#### `Phalcon\Html\Escaper\Exception`
+- This class has been moved to this namespace `Phalcon\Escaper`.
+- Changed `Phalcon\Html\Escaper\Exception` to extend `\Exception`
 
+#### `Phalcon\Html\Helper`
+- Moved `Phalcon\Helper` to `Phalcon\Html\Helper`
+- The component has been refactored and offers more functionality now. [more](html-helper)
 
+#### `Phalcon\Html\Link`
+- The component has been refactored and the dependency to `PSR` has been removed. [more](html-helper)
 
+#### `Phalcon\Html\TagFactory`
+- Added `__call(string $name, array $arguments)` to allow calling helper objects as methods. [more](html#tagfactory)
+- Added `has(string $name) -> bool` Added `set(string $name, mixed $method): void`
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+#### `Phalcon\Html\Exception`
+- Changed `Phalcon\Html\Exception` to extend `\Exception`
 
 ---
 
-_WIP_
+### Http
 
-Html Http Image Loader Logger Messages Mvc Paginator Security Session Storage Tag Translate Url Validation Cache.zep Collection.zep Config.zep Container.zep Crypt.zep Debug.zep Di.zep Escaper.zep Exception.zep Filter.zep Kernel.zep Loader.zep Logger.zep Registry.zep Security.zep Tag.zep Text.zep Url.zep Validation.zep Version.zep
+> Status: **changes required**
+> 
+> Usage: [HTTP Documentation](http) 
+> 
+> {: .alert .alert-warning }
 
+#### `Phalcon\Http\Cookie`
+- Changed `__construct()` and made `$httpOnly = false`
 
+#### `Phalcon\Http\Cookie\Escaper`
+- Changed `Phalcon\Http\Request\Exception` to extend `\Exception`
 
+#### `Phalcon\Http\Message`
+- The namespace has been removed
 
+#### `Phalcon\Http\Request`
+- Added `getPreferredIsoLocaleVariant(): string` to return the preferred ISO locale variant.
 
+#### `Phalcon\Http\Request\Escaper`
+- Changed `Phalcon\Http\Cookie\Exception` to extend `\Exception`
 
+#### `Phalcon\Http\Response\Cookie`
+- Added `isSent(): bool` to return if the cookie has been sent or not
 
+#### `Phalcon\Http\Response\Headers`
+- Added `isSent(): bool` to return if the headers have been sent or not
 
+#### `Phalcon\Http\Response\Exception`
+- Changed `Phalcon\Http\Response\Exception` to extend `\Exception`
 
-
+#### `Phalcon\Http\Server`
+- The namespace has been removed
 
 ---
 
-Formularios
+### Imagen
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Image Documentation](image) 
 > 
 > {: .alert .alert-warning }
 
-Html
+#### `Phalcon\Image\Escaper`
+- Changed `Phalcon\Image\Exception` to extend `\Exception`
+
+---
+
+### Loader
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Loader Documentation](autoload) 
 > 
 > {: .alert .alert-warning }
 
-Http
+The class has been moved to the `Phalcon\Autoload` namespace [more](#autoload)
+
+---
+
+### Logger
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Logger Documentation](logger) 
 > 
 > {: .alert .alert-warning }
 
-Imagen
+The [Logger](logger) component has been moved to the `Logger` namespace.
+
+#### `Phalcon\Logger\Logger`
+- Moved `Phalcon\Logger` to `Phalcon\Logger\Logger`
+- The component has been refactored and the dependency to `PSR` has been removed. [more](logger)
+- The interface method calls are much stricter now.
+
+#### `Phalcon\Logger\AbstractLogger`
+- Added `Phalcon\Logger\AbstractLogger` with common functionality, to be used by packages that wish to alter interfaces to the logger while keeping the same functionality (see [proxy-psr3][proxy-psr3])
+
+#### `Phalcon\Logger\Adapter\Stream`
+- Failing to write to the file will throw a `LogicException` instead of `UnexpectedValueException`
+
+#### `Phalcon\Logger\Formatter\FormatterInterface`
+- Changed `process(Item $item): string` (previously it returned `array|string`)
+
+#### `Phalcon\Logger\Formatter\Json`
+- Changed `format()` to encode JSON with the following options by default: `JSON_HEX_TAG`, `JSON_HEX_APOS`, `JSON_HEX_AMP`, `JSON_HEX_QUOT`, `JSON_UNESCAPED_SLASHES`, `JSON_THROW_ON_ERROR`,
+
+#### `Phalcon\Logger\AdapterFactory`
+- The constructor now requires a `Phalcon\Storage\SerializerFactory` to be passed as the first parameter
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+#### `Phalcon\Logger\Exception`
+- Changed `Phalcon\Logger\Exception` to extend `\Exception`
+
+#### `Phalcon\Logger\Item`
+- Changed `__construct(string $message, string $levelName, int $level, DateTimeImmutable $dateTime, array $context = [])` (`dateTtime` accepts a `DateTimeImmutable` object)
+
+#### `Phalcon\Logger\LoggerInterface`
+- A new interface has been introduced (`Phalcon\Logger\LoggerInterface`) to offer more flexibility when extending the cache object.
+
+---
+
+### Messages
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Messages Documentation](messages) 
 > 
 > {: .alert .alert-warning }
 
-Loader
+#### `Phalcon\Messages\Exception`
+- Changed `Phalcon\Messages\Exception` to extend `\Exception`
+
+---
+
+### Mvc
 
 > Status: **changes required**
 > 
-> Usage: [Loader Documentation](loader) 
+> Usage: [MVC Documentation](mvc) 
 > 
 > {: .alert .alert-warning }
 
-The [Loader](autoload-loader) component has been moved to the `Autoload` namespace. Some method names have been changed and new functionality introduced.
+#### `Phalcon\Mvc\Micro\Collection`
+- Changed the methods to accept a `callable` as the `$handler` instead of mixed
+  - `delete(string $routePattern, callable $handler, string $name = null)`
+  - `get(string $routePattern, callable $handler, string $name = null)`
+  - `head(string $routePattern, callable $handler, string $name = null)`
+  - `map(string $routePattern, callable $handler, string $name = null)`
+  - `mapVia(string $routePattern, callable $handler, mixed $method, string $name = null)`
+  - `options(string $routePattern, callable $handler, string $name = null)`
+  - `patch(string $routePattern, callable $handler, string $name = null)`
+  - `post(string $routePattern, callable $handler, string $name = null)`
+  - `put(string $routePattern, callable $handler, string $name = null)`
 
+#### `Phalcon\Mvc\Micro\Exception`
+- Changed `Phalcon\Mvc\Micro\Exception` to extend `\Exception`
 
+#### `Phalcon\Mvc\Model\MetaData\Strategy\Annotations`
+- `Phalcon\Mvc\Model\MetaData\Strategy\Annotations::getMetaData()` will now return a string instead of an integer when encountering `BIGINT` fields
 
+#### `Phalcon\Mvc\Model\MetaData\Stream`
+- Changed the constructor to accept an array `__construct(array $options = [])`
 
+#### `Phalcon\Mvc\Model\Query\BuilderInterface`
+- Corrected `having()` signature `having(string $conditions, array $bindParams = [], array $bindTypes = [])`
+- Changed `orderBy()` to accept an array or a string `orderBy(array | string $orderBy)`
 
+#### `Phalcon\Mvc\Model\Resultset\Complex`
+- Changed `current()` to return `mixed`
+- Added `__serialize()` and `__unserialize()` methods
 
+#### `Phalcon\Mvc\Model\Resultset\Simple`
+- Changed the constructor to accept `mixed` for `$cache` : `__construct(mixed $columnMap, mixed $model, mixed $result, mixed $cache = null, bool $keepSnapshots = false)`
+- Added `__serialize()` and `__unserialize()` methods
 
+#### `Phalcon\Mvc\Model\CriteriaInterface`
+- Corrected `where()` signature `where(string $conditions, mixed $bindParams = null, mixed $bindTypes = null)`
 
+#### `Phalcon\Mvc\Model\Exception`
+- Changed `Phalcon\Mvc\Model\Exception` to extend `\Exception`
 
+#### `Phalcon\Mvc\Model\ManagerInterface`
+- Changed `$options` parameter to be an array:
+    - `addBelongsTo(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+    - `addHasMany(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+    - `addHasOne(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+    - `addHasOneThrough(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+    - `addHasManyToMany(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+- Changed `getModelSchema(ModelInterface $model)` to return `string` or `null`
+- Renamed:
+    - `existsBelongsTo()` to `hasBelongsTo()`
+    - `existsMany()` to `hasHasMany()`
+    - `existsOne()` to `hasHasOne()`
+    - `existsOneThrough()` to `hasHasOneThrough()`
+    - `existsManyToMany()` to `hasHasManyToMany()`
 
+#### `Phalcon\Mvc\Model\Manager`
+- Changed `getEventsManager()` to return `EventManagerInterface` or `null`
+- Changed `getModelSchema(ModelInterface $model)` to return `string` or `null`
+- Changed `$options` parameter to be an array:
+  - `addBelongsTo(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasMany(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasOne(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasOneThrough(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasManyToMany(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+- Marked as `@deprecated`:
+  - `existsBelongsTo()`
+  - `existsMany()`
+  - `existsOne()`
+  - `existsOneThrough()`
+  - `existsManyToMany()`
+- Added (replacing the `exists*` methods):
+  - `hasBelongsTo()`
+  - `hasHasMany()`
+  - `hasHasOne()`
+  - `hasHasOneThrough()`
+  - `hasHasManyToMany()`
+- Added `getBuilder()` to return the builder that was created with `createBuilder()` (or `null`)
 
+#### `Phalcon\Mvc\Model\Manager`
+- WIP
 
+#### `Phalcon\Mvc\Model\ResultsetInterface`
+- `getCache()` now returns `null` or an object (`mixed`)
 
+#### `Phalcon\Mvc\Model\Resultset`
+- `__construct()` accepts an object in the `$cache` parameter. The object has implement `Phalcon\Cache\CacheInterface` or `Psr\SimpleCache\CacheInterface`
+- `getCache()` now returns `null` or an object (`mixed`)
 
+#### `Phalcon\Mvc\Router`
+- Changed `add()`,  `addConnect()`, `addDelete()`, `addGet()`, `addHead()`, `addOptions()`, `addPatch()`, `addPost()`, `addPurge()`, `addPut()`, `addTrace()`, `attach()` to accept `int` as `$position`
+- Changed `getEventsManager()` to return `ManagerInterface` or `null`
 
-Logger
+#### `Phalcon\Mvc\RouterInterface`
+- Changed `add()`,  `addConnect()`, `addDelete()`, `addGet()`, `addHead()`, `addOptions()`, `addPatch()`, `addPost()`, `addPurge()`, `addPut()`, `addTrace()`, `attach()` to accept `int` as `$position`
+
+#### `Phalcon\Mvc\Router\Exception`
+- Changed `Phalcon\Mvc\Router\Exception` to extend `\Exception`
+
+#### `Phalcon\Mvc\Router\RouteInterface`
+-  `getHostname()` now returns `string` or `null`
+-  `getName()` now returns `string` or `null`
+
+#### `Phalcon\Mvc\Router\Route`
+- `beforeMatch(callable $callback): RouteInterface` now accepts a `callable`
+-  `getHostname()` now returns `string` or `null`
+-  `getName()` now returns `string` or `null`
+
+#### `Phalcon\Mvc\ModelInterface`
+- Changed `average(array $parameters = [])` to accept an array
+- Changed `cloneResultset()` to default `keepSnapshots = false`
+- Changed `findFirst(mixed $parameters = null): mixed | null` to return `null` instead of `false`
+- Changed `getSchema(): string | null` to return `string` or `null`
+
+#### `Phalcon\Mvc\View`
+- Marked as `@deprecated` `exists()`
+- Added `has()` (replacing the `exists()` method)
+
+#### `Phalcon\Mvc\View\Exception`
+- Changed `Phalcon\Mvc\View\Exception` to extend `\Exception`
+
+#### `Phalcon\Mvc\View\Engine\Volt\Compiler`
+- Removed `compileCache()`
+
+#### `Phalcon\Mvc\Url`
+- Moved from `Phalcon\Url`
+
+#### `Phalcon\Mvc\Url\Exception`
+- Moved from `Phalcon\Url\Exception`
+- Changed `Phalcon\Mvc\Url\Exception` to extend `\Exception`
+
+#### `Phalcon\Mvc\Url\UrlInterface`
+- Moved from `Phalcon\Url\UrlInterface`
+
+---
+
+### Paginator
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Paginator Documentation](pagination) 
 > 
 > {: .alert .alert-warning }
 
-Messages
+#### `Phalcon\Paginator\Exception`
+- Changed `Phalcon\Paginator\Exception` to extend `\Exception`
+
+#### `Phalcon\Paginator\PaginatorFactory`
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+---
+
+### Registro
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Registry Documentation](support-registry) 
 > 
 > {: .alert .alert-warning }
 
-Mvc
+The [Registry](support-registry) component has been moved to the `Support` namespace. [more](#support)
+
+---
+
+### Seguridad
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Security Documentation](encryption-security) 
 > 
 > {: .alert .alert-warning }
 
-Paginator
+The [Security](encryption-security) component has been moved to the `Encryption` namespace. [more](#encryption)
+
+---
+
+### Session
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Session Documentation](session) 
 > 
 > {: .alert .alert-warning }
 
-Session
+#### `Phalcon\Session\Adapter\AbstractAdapter`
+- Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
+
+#### `Phalcon\Session\Adapter\Noop`
+- Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
+
+#### `Phalcon\Session\Adapter\Stream`
+- Changed `__construct()` to throw an exception if the save path is empty
+
+#### `Phalcon\Session\BagInterface`
+- Added interface for `Phalcon\Session\Bag`
+
+#### `Phalcon\Session\Exception`
+- Changed `Phalcon\Session\Exception` to extend `\Exception`
+
+---
+
+### Storage
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Storage Documentation](storage) 
 > 
 > {: .alert .alert-warning }
 
-Storage
+#### `Phalcon\Storage\Adapter\AdapterInterface`
+- Added `setForever(string $key, mixed $value):` to set an item in the store forever
+
+#### `Phalcon\Storage\Adapter\Apcu`
+- Added `setForever(string $key, mixed $value):` to set an item in the store forever
+
+#### `Phalcon\Storage\Adapter\Libmemcached`
+- Added `setForever(string $key, mixed $value):` to set an item in the store forever
+
+#### `Phalcon\Storage\Adapter\Memory`
+- Added `setForever(string $key, mixed $value):` to set an item in the store forever
+
+#### `Phalcon\Storage\Adapter\Redis`
+- Added `setForever(string $key, mixed $value):` to set an item in the store forever
+- Added `timeout`, `connectTimeout`, `retryInterval` and `readTimeout` for constructor options
+
+#### `Phalcon\Storage\Adapter\Stream`
+- Added `setForever(string $key, mixed $value):` to set an item in the store forever
+
+#### `Phalcon\Storage\Serializer\AbstractSerializer`
+- Added `__serialize()` and `__unserialize()` methods
+- Added `isSuccess(): bool` to return when the data was serialized/unserialized successfully
+
+#### `Phalcon\Storage\Serializer\Base64`
+- Changed `unserialize` to set the data to an empty string in case of a failure
+
+#### `Phalcon\Storage\Serializer\Igbinary`
+- Changed `unserialize` to set the data to an empty string in case of a failure
+
+#### `Phalcon\Storage\Serializer\Msgpack`
+- Changed `unserialize` to set the data to an empty string in case of a failure
+
+#### `Phalcon\Storage\Serializer\Php`
+- Changed `unserialize` to set the data to an empty string in case of a failure
+
+#### `Phalcon\Storage\Serializer\*`
+- Added stub serializers for Memcached and Redis when in need to use the built in serializers for those storages:
+  - `Phalcon\Storage\Serializer\MemcachedIgbinary`
+  - `Phalcon\Storage\Serializer\MemcachedJson`
+  - `Phalcon\Storage\Serializer\MemcachedPhp`
+  - `Phalcon\Storage\Serializer\RedisIgbinary`
+  - `Phalcon\Storage\Serializer\RedisJson`
+  - `Phalcon\Storage\Serializer\RedisMsgpack`
+  - `Phalcon\Storage\Serializer\RedisNone`
+  - `Phalcon\Storage\Serializer\RedisPhp`
+
+#### `Phalcon\Storage\Exception`
+- Changed `Phalcon\Storage\Exception` to extend `\Exception`
+
+#### `Phalcon\Storage\AdapterFactory`
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+#### `Phalcon\Storage\SerializerFactory`
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+---
+
+### Soporte
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Support Documentation](support) 
 > 
 > {: .alert .alert-warning }
 
-Soporte
-
-> Status: **changes required**
-> 
-> Usage: [Assets Documentation](assets) 
-> 
-> {: .alert .alert-warning }
-
-### Coleccion
-
-> Status: **changes required**
-> 
-> Usage: [Collection Documentation](support-collection) 
-> 
-> {: .alert .alert-warning }
-
-The [Collection](support-collection) component has been moved to the `Support` namespace.
+The `Support` namespace contains classes that are used throughout the framework. The classes moved here are:
+- [Coleccion](support-collection)
+- [Depuración](support-debug)
+- [Ayudantes](support-helper)
+- [Registro](support-registry)
 
 #### `Phalcon\Support\Collection`
 - Moved `Phalcon\Collection` to `Phalcon\Support\Collection`
@@ -874,35 +1205,115 @@ The [Collection](support-collection) component has been moved to the `Support` n
 #### `Phalcon\Support\Collection\ReadOnlyCollection`
 - This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words.
 
+#### `Phalcon\Support\Debug\Exception`
+- Changed `Phalcon\Support\Debug\Exception` to extend `\Exception`
+
+#### `Phalcon\Support\Helper\Exception`
+- Changed `Phalcon\Support\Helper\Exception` to extend `\Exception`
+
+#### `Phalcon\Helper\*`
+- `Arr`, `Fs`, `Json`, `Number` and `Str` static classes have been removed and replaced with one class per method in the relevant namespace. For example `Phalcon\Helper\Arr::has()` is not `Phalcon\Support\Helper\Arr\Has::__invoke()`
+- Added `Phalcon\Support\Helper\HelperFactory` service locator to easily create objects from the `Phalcon\Support\Helper` namespace
+- Added `__call()` in `Phalcon\Support\Helper\HelperFactory` to offer an easier access to objects i.e. `$this->helperFactory->dirFromFile()`
+
 ---
 
-
-
-Tag
+### Tag
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Tag Documentation](tag) 
 > 
 > {: .alert .alert-warning }
 
-Traducciones
+------The [Url](mvc-url) component has been moved to the `Mvc` namespace. [more](#mvc)
+
+---
+
+### Text
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Uso: 
 > 
 > {: .alert .alert-warning }
 
-Tag.zep
+The `Phalcon\Text` component has been deprecated. It has been replaced with the `Phalcon\Support\HelperFactory`. [more](#support)
+
+---
+
+### Traducciones
 
 > Status: **changes required**
 > 
-> Usage: [Assets Documentation](assets) 
+> Usage: [Translate Documentation](translate) 
 > 
 > {: .alert .alert-warning }
 
+#### `Phalcon\Translate\Adapter\AbstractAdapter`
+- Changed `__construct(InterpolatorFactory $interpolator, array $options = []` to default to an empty array for `$options`
+
+#### `Phalcon\Translate\Adapter\Csv`
+- Marked as `@deprecated` `exists()`
+- Added `has()`
+
+#### `Phalcon\Translate\Adapter\Gettext`
+- Marked as `@deprecated` `exists()`
+- Added `has()`
+
+#### `Phalcon\Translate\Adapter\NativeArray`
+- Marked as `@deprecated` `exists()`
+- Added `has()`
+- Added `toArray()` to return the translation array back
+
+#### `Phalcon\Translate\Exception`
+- Changed `Phalcon\Translate\Exception` to extend `\Exception`
+
+#### `Phalcon\Translate\InterpolatorFactory`
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+#### `Phalcon\Translate\TranslateFactory`
+- The `getAdapters()` protected method has been renamed to `getServices()`
+- A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
+
+---
+
+### Url
+
+> Status: **changes required**
+> 
+> Usage: [Url Documentation](mvc-url) 
+> 
+> {: .alert .alert-warning }
+
+The [Url](mvc-url) component has been moved to the `Mvc` namespace. [more](#mvc)
+
+---
+
+### Validación
+
+> Status: **changes required**
+> 
+> Usage: [Validation Documentation](filter-validation) 
+> 
+> {: .alert .alert-warning }
+
+The [Validation](filter-validation) component has been moved to the `Filter` namespace. [more](#filter)
+
+---
+
+### Versión
+
+> Status: **changes required**
+> 
+> Usage: [Version Documentation](support-version) 
+> 
+> {: .alert .alert-warning }
+
+The [Version](support-version) component has been moved to the `Support` namespace. [more](#support)
 
 
 [php-support]: https://www.php.net/supported-versions.php
+[proxy-psr3]: https://github.com/phalcon/proxy-psr3
 [zephir-phar]: https://github.com/phalcon/zephir/releases
