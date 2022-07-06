@@ -1384,7 +1384,7 @@ Volt 的语法：
 ) }}{% endraw %}
 ```
 
-If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
+If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](mvc-url).
 
 ```php
 <?php
