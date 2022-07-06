@@ -50,7 +50,7 @@ will have:
 
 The above will call the `InvoicesController` and `listAction`. The parameters will be available through the [request](request) in the controller and action.
 
-Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Loader](loader) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
+Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Loader](autoload) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
 
 A sample controller is as follows:
 

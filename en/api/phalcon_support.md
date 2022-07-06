@@ -61,11 +61,14 @@ title: 'Phalcon\Support'
 * [Phalcon\Support\Helper\Str\IsLower](#support-helper-str-islower)
 * [Phalcon\Support\Helper\Str\IsPalindrome](#support-helper-str-ispalindrome)
 * [Phalcon\Support\Helper\Str\IsUpper](#support-helper-str-isupper)
+* [Phalcon\Support\Helper\Str\KebabCase](#support-helper-str-kebabcase)
 * [Phalcon\Support\Helper\Str\Len](#support-helper-str-len)
 * [Phalcon\Support\Helper\Str\Lower](#support-helper-str-lower)
+* [Phalcon\Support\Helper\Str\PascalCase](#support-helper-str-pascalcase)
 * [Phalcon\Support\Helper\Str\Prefix](#support-helper-str-prefix)
 * [Phalcon\Support\Helper\Str\Random](#support-helper-str-random)
 * [Phalcon\Support\Helper\Str\ReduceSlashes](#support-helper-str-reduceslashes)
+* [Phalcon\Support\Helper\Str\SnakeCase](#support-helper-str-snakecase)
 * [Phalcon\Support\Helper\Str\StartsWith](#support-helper-str-startswith)
 * [Phalcon\Support\Helper\Str\Suffix](#support-helper-str-suffix)
 * [Phalcon\Support\Helper\Str\Ucwords](#support-helper-str-ucwords)
@@ -136,9 +139,21 @@ Magic isset to check whether an element exists or not
 
 
 ```php
+public function __serialize(): array;
+```
+
+
+
+```php
 public function __set( string $element, mixed $value ): void;
 ```
 Magic setter to assign values to an element
+
+
+```php
+public function __unserialize( array $data ): void;
+```
+
 
 
 ```php
@@ -211,7 +226,7 @@ See [offsetExists](https://php.net/manual/en/arrayaccess.offsetexists.php)
 
 
 ```php
-public function offsetGet( mixed $element );
+public function offsetGet( mixed $element ): mixed;
 ```
 Offset to retrieve
 See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
@@ -270,7 +285,7 @@ See [rfc4627](https://www.ietf.org/rfc/rfc4627.txt)
 
 
 ```php
-public function unserialize( mixed $serialized ): void;
+public function unserialize( string $serialized ): void;
 ```
 Constructs the object
 See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
@@ -1407,14 +1422,15 @@ Uppercases a string using mbstring
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Camelize.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
+| Extends    | PascalCase |
 
-Converts strings to camelize style
+Converts strings to upperCamelCase or lowerCamelCase
 
 
 ## Methods
 
 ```php
-public function __invoke( string $text, string $delimiters = null ): string;
+public function __invoke( string $text, string $delimiters = null, bool $lowerFirst = bool ): string;
 ```
 
 
@@ -1789,6 +1805,26 @@ public function __invoke( string $text, string $encoding = string ): bool;
 
 
 
+<h1 id="support-helper-str-kebabcase">Class Phalcon\Support\Helper\Str\KebabCase</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/KebabCase.zep)
+
+| Namespace  | Phalcon\Support\Helper\Str |
+| Extends    | PascalCase |
+
+Converts strings to kebab-case style
+
+
+## Methods
+
+```php
+public function __invoke( string $text, string $delimiters = null ): string;
+```
+
+
+
+
+
 <h1 id="support-helper-str-len">Class Phalcon\Support\Helper\Str\Len</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Len.zep)
@@ -1822,6 +1858,31 @@ Converts a string to lowercase using mbstring
 
 ```php
 public function __invoke( string $text, string $encoding = string ): string;
+```
+
+
+
+
+
+<h1 id="support-helper-str-pascalcase">Class Phalcon\Support\Helper\Str\PascalCase</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/PascalCase.zep)
+
+| Namespace  | Phalcon\Support\Helper\Str |
+
+Converts strings to PascalCase style
+
+
+## Methods
+
+```php
+public function __invoke( string $text, string $delimiters = null ): string;
+```
+
+
+
+```php
+protected function processArray( string $text, string $delimiters = null ): array;
 ```
 
 
@@ -1890,6 +1951,26 @@ Reduces multiple slashes in a string to single slashes
 
 ```php
 public function __invoke( string $text ): string;
+```
+
+
+
+
+
+<h1 id="support-helper-str-snakecase">Class Phalcon\Support\Helper\Str\SnakeCase</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/SnakeCase.zep)
+
+| Namespace  | Phalcon\Support\Helper\Str |
+| Extends    | PascalCase |
+
+Converts strings to snake_case style
+
+
+## Methods
+
+```php
+public function __invoke( string $text, string $delimiters = null ): string;
 ```
 
 
@@ -2047,6 +2128,7 @@ ServiceLocator implementation for helpers
 @method string decode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
 @method string encode($data, int $options = 0, int $depth = 512)
 @method bool   between(int $value, int $start, int $end)
+@method string camelize(string $text, string $delimiters = null, bool $lowerFirst = false)
 @method string concat(string $delimiter, string $first, string $second, string ...$arguments)
 @method int    countVowels(string $text)
 @method string decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8')
@@ -2063,14 +2145,18 @@ ServiceLocator implementation for helpers
 @method bool   isLower(string $text, string $encoding = 'UTF-8')
 @method bool   isPalindrome(string $text)
 @method bool   isUpper(string $text, string $encoding = 'UTF-8')
+@method string kebabCase(string $text, string $delimiters = null)
 @method int    len(string $text, string $encoding = 'UTF-8')
 @method string lower(string $text, string $encoding = 'UTF-8')
+@method string pascalCase(string $text, string $delimiters = null)
 @method string prefix($text, string $prefix)
 @method string random(int $type = 0, int $length = 8)
 @method string reduceSlashes(string $text)
 @method bool   startsWith(string $haystack, string $needle, bool $ignoreCase = true)
+@method string snakeCase(string $text, string $delimiters = null)
 @method string suffix($text, string $suffix)
 @method string ucwords(string $text, string $encoding = 'UTF-8')
+@method string uncamelize(string $text, string $delimiters = '_')
 @method string underscore(string $text)
 @method string upper(string $text, string $encoding = 'UTF-8')
 

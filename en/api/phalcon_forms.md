@@ -28,7 +28,7 @@ title: 'Phalcon\Forms'
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/AbstractElement.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | InvalidArgumentException, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Html\TagFactory, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
+| Uses       | InvalidArgumentException, Phalcon\Di\DiInterface, Phalcon\Di\Di, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Html\Escaper, Phalcon\Html\TagFactory, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
 | Implements | ElementInterface |
 
 This is a base class for form elements
@@ -98,7 +98,7 @@ protected value;
 ```php
 public function __construct( string $name, array $attributes = [] );
 ```
-Phalcon\Forms\Element constructor
+Constructor
 
 
 ```php
@@ -554,8 +554,6 @@ Sets options for the element
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
-Phalcon\Forms\Element\Email
-
 Component INPUT[type=email] for forms
 
 
@@ -598,8 +596,6 @@ protected method = inputFile;
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
-Phalcon\Forms\Element\Hidden
-
 Component INPUT[type=hidden] for forms
 
 
@@ -620,8 +616,6 @@ protected method = inputHidden;
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
-
-Phalcon\Forms\Element\Numeric
 
 Component INPUT[type=number] for forms
 
@@ -644,8 +638,6 @@ protected method = inputNumeric;
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
-Phalcon\Forms\Element\Password
-
 Component INPUT[type=password] for forms
 
 
@@ -666,8 +658,6 @@ protected method = inputPassword;
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
-
-Phalcon\Forms\Element\Radio
 
 Component INPUT[type=radio] for forms
 
@@ -690,8 +680,6 @@ protected method = inputRadio;
 | Uses       | Phalcon\Tag\Select |
 | Extends    | AbstractElement |
 
-Phalcon\Forms\Element\Select
-
 Component SELECT (choice) for forms
 
 
@@ -709,7 +697,7 @@ protected optionsValues;
 ```php
 public function __construct( string $name, mixed $options = null, array $attributes = [] );
 ```
-Phalcon\Forms\Element constructor
+Constructor
 
 
 ```php
@@ -773,8 +761,6 @@ protected method = inputSubmit;
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Forms\Exception |
 | Extends    | AbstractElement |
-
-Phalcon\Forms\Element\Text
 
 Component INPUT[type=text] for forms
 
@@ -921,7 +907,7 @@ Returns the number of elements in the form
 
 
 ```php
-public function current(): ElementInterface | bool;
+public function current(): mixed;
 ```
 Returns the current element in the iterator
 

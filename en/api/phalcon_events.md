@@ -20,10 +20,7 @@ title: 'Phalcon\Events'
 | Namespace  | Phalcon\Events |
 | Uses       | Phalcon\Events\ManagerInterface |
 
-Trait EventsAwareTrait
-
-@package Phalcon\Events\Traits
-
+This abstract class offers access to the events manager
 @property ?ManagerInterface $eventsManager
 
 
@@ -64,8 +61,6 @@ Helper method to fire an event
 
 | Namespace  | Phalcon\Events |
 | Implements | EventInterface |
-
-Phalcon\Events\Event
 
 This class offers contextual information of a fired event in the
 EventsManager
@@ -195,8 +190,6 @@ if ($event->isCancelable()) {
 
 | Namespace  | Phalcon\Events |
 
-Phalcon\Events\EventInterface
-
 Interface for Phalcon\Events\Event class
 
 
@@ -252,8 +245,6 @@ Stops the event preventing propagation
 
 | Namespace  | Phalcon\Events |
 
-Phalcon\Events\EventsAwareInterface
-
 This interface must for those classes that accept an EventsManager and
 dispatch events
 
@@ -281,8 +272,6 @@ Sets the events manager
 | Namespace  | Phalcon\Events |
 | Extends    | \Exception |
 
-Phalcon\Events\Exception
-
 Exceptions thrown in Phalcon\Events will use this class
 
 
@@ -294,8 +283,6 @@ Exceptions thrown in Phalcon\Events will use this class
 | Namespace  | Phalcon\Events |
 | Uses       | Closure, SplPriorityQueue |
 | Implements | ManagerInterface |
-
-Phalcon\Events\Manager
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if
 needed, the normal flow of operation. With the EventsManager the developer
@@ -435,8 +422,6 @@ public function isValidHandler( mixed $handler ): bool;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Events |
-
-Phalcon\Events\ManagerInterface
 
 Interface for Phalcon\Events managers.
 

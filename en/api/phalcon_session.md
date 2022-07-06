@@ -11,6 +11,7 @@ title: 'Phalcon\Session'
 * [Phalcon\Session\Adapter\Redis](#session-adapter-redis)
 * [Phalcon\Session\Adapter\Stream](#session-adapter-stream)
 * [Phalcon\Session\Bag](#session-bag)
+* [Phalcon\Session\BagInterface](#session-baginterface)
 * [Phalcon\Session\Exception](#session-exception)
 * [Phalcon\Session\Manager](#session-manager)
 * [Phalcon\Session\ManagerInterface](#session-managerinterface)
@@ -23,12 +24,6 @@ title: 'Phalcon\Session'
 | Uses       | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface |
 | Implements | SessionHandlerInterface |
 
-This file is part of the Phalcon.
-
-(c) Phalcon Team <team@phalcon.com>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
 
 
 ## Properties
@@ -49,13 +44,13 @@ Close
 
 
 ```php
-public function destroy( mixed $id ): bool;
+public function destroy( mixed $sessionId ): bool;
 ```
 Destroy
 
 
 ```php
-public function gc( mixed $maxlifetime );
+public function gc( int $maxlifetime ): int | bool;
 ```
 Garbage Collector
 
@@ -67,13 +62,13 @@ Open
 
 
 ```php
-public function read( mixed $id ): string;
+public function read( mixed $sessionId ): string;
 ```
 Read
 
 
 ```php
-public function write( mixed $id, mixed $data ): bool;
+public function write( mixed $sessionId, mixed $data ): bool;
 ```
 Write
 
@@ -102,7 +97,7 @@ Phalcon\Session\Adapter\Libmemcached
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
 ```
-Constructor
+Libmemcached constructor.
 
 
 
@@ -178,13 +173,13 @@ Close
 
 
 ```php
-public function destroy( mixed $id ): bool;
+public function destroy( mixed $sessionId ): bool;
 ```
 Destroy
 
 
 ```php
-public function gc( mixed $maxlifetime );
+public function gc( int $maxlifetime ): int | bool;
 ```
 Garbage Collector
 
@@ -196,13 +191,13 @@ Open
 
 
 ```php
-public function read( mixed $id ): string;
+public function read( mixed $sessionId ): string;
 ```
 Read
 
 
 ```php
-public function write( mixed $id, mixed $data ): bool;
+public function write( mixed $sessionId, mixed $data ): bool;
 ```
 Write
 
@@ -282,13 +277,13 @@ Constructor
 
 
 ```php
-public function destroy( mixed $id ): bool;
+public function destroy( mixed $sessionId ): bool;
 ```
 
 
 
 ```php
-public function gc( mixed $maxlifetime );
+public function gc( int $maxlifetime ): int | bool;
 ```
 Garbage Collector
 
@@ -302,15 +297,57 @@ public function open( mixed $savePath, mixed $sessionName ): bool;
 
 
 ```php
-public function read( mixed $id ): string;
+public function read( mixed $sessionId ): string;
+```
+Reads data from the adapter
+
+
+```php
+public function write( mixed $sessionId, mixed $data ): bool;
 ```
 
 
 
 ```php
-public function write( mixed $id, mixed $data ): bool;
+protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null, string $cast = null ): mixed;
+```
+@todo Remove this when we get traits
+
+
+```php
+protected function phpFileExists( string $filename );
 ```
 
+
+
+```php
+protected function phpFileGetContents( string $filename );
+```
+
+
+
+```php
+protected function phpFilePutContents( string $filename, mixed $data, int $flags = int, mixed $context = null );
+```
+
+
+
+```php
+protected function phpFopen( string $filename, string $mode );
+```
+
+
+
+```php
+protected function phpIniGet( string $varname ): string;
+```
+Gets the value of a configuration option
+
+
+```php
+protected function phpIsWritable( string $filename ): bool;
+```
+Tells whether the filename is writable
 
 
 
@@ -320,9 +357,9 @@ public function write( mixed $id, mixed $data ): bool;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | Phalcon\Support\Collection, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
+| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface, Phalcon\Support\Collection |
 | Extends    | Collection |
-| Implements | InjectionAwareInterface |
+| Implements | BagInterface, InjectionAwareInterface |
 
 Phalcon\Session\Bag
 
@@ -353,7 +390,7 @@ private container;
 private name;
 
 /**
- * @var \Phalcon\Session\ManagerInterface
+ * @var ManagerInterface
  */
 private session;
 
@@ -362,9 +399,9 @@ private session;
 ## Methods
 
 ```php
-public function __construct( string $name, DiInterface $container = null );
+public function __construct( ManagerInterface $session, string $name );
 ```
-Phalcon\Session\Bag constructor
+
 
 
 ```php
@@ -401,6 +438,81 @@ Sets a value in the session bag
 public function setDI( DiInterface $container ): void;
 ```
 Sets the DependencyInjector container
+
+
+
+
+<h1 id="session-baginterface">Interface Phalcon\Session\BagInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/BagInterface.zep)
+
+| Namespace  | Phalcon\Session |
+
+Phalcon\Session\BagInterface
+
+Interface for Phalcon\Session\Bag
+
+
+## Methods
+
+```php
+public function __get( string $element ): mixed;
+```
+
+
+
+```php
+public function __isset( string $element ): bool;
+```
+
+
+
+```php
+public function __set( string $element, mixed $value ): void;
+```
+
+
+
+```php
+public function __unset( string $element ): void;
+```
+
+
+
+```php
+public function clear(): void;
+```
+
+
+
+```php
+public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
+```
+
+
+
+```php
+public function has( string $element ): bool;
+```
+
+
+
+```php
+public function init( array $data = [] ): void;
+```
+
+
+
+```php
+public function remove( string $element ): void;
+```
+
+
+
+```php
+public function set( string $element, mixed $value ): void;
+```
+
 
 
 
@@ -537,7 +649,7 @@ Check whether a session variable is set in an application context
 
 
 ```php
-public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
+public function regenerateId( bool $deleteOldSession = bool ): ManagerInterface;
 ```
 Regenerates the session id using the adapter.
 
@@ -561,7 +673,7 @@ Set the adapter for the session
 
 
 ```php
-public function setId( string $id ): ManagerInterface;
+public function setId( string $sessionId ): ManagerInterface;
 ```
 Set session Id
 
@@ -590,6 +702,12 @@ started)
 public function status(): int;
 ```
 Returns the status of the current session.
+
+
+```php
+protected function phpHeadersSent(): bool;
+```
+Checks if or where headers have been sent
 
 
 
@@ -688,7 +806,7 @@ Check whether a session variable is set in an application context
 
 
 ```php
-public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
+public function regenerateId( bool $deleteOldSession = bool ): ManagerInterface;
 ```
 Regenerates the session id using the adapter.
 
@@ -712,7 +830,7 @@ Set the adapter for the session
 
 
 ```php
-public function setId( string $id ): ManagerInterface;
+public function setId( string $sessionId ): ManagerInterface;
 ```
 Set session Id
 

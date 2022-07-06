@@ -29,7 +29,7 @@ title: 'Phalcon\Db'
 * [Phalcon\Db\RawValue](#db-rawvalue)
 * [Phalcon\Db\Reference](#db-reference)
 * [Phalcon\Db\ReferenceInterface](#db-referenceinterface)
-* [Phalcon\Db\Result\Pdo](#db-result-pdo)
+* [Phalcon\Db\Result\PdoResult](#db-result-pdoresult)
 * [Phalcon\Db\ResultInterface](#db-resultinterface)
 
 <h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
@@ -1275,7 +1275,7 @@ Generates SQL checking for the existence of a schema.view
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
-| Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\Pdo, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface |
+| Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\PdoResult, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface |
 | Extends    | AbstractAdapter |
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect
@@ -1453,7 +1453,7 @@ $result = $connection->executePrepared(
         "name" => "Voltron",
     ],
     [
-        "name" => Column::BIND_PARAM_INT,
+        "name" => Column::BIND_PARAM_STR,
     ]
 );
 ```
@@ -3557,6 +3557,7 @@ const FETCH_BOUND;
 const FETCH_CLASS;
 const FETCH_CLASSTYPE;
 const FETCH_COLUMN;
+const FETCH_DEFAULT = 0;
 const FETCH_FUNC;
 const FETCH_GROUP;
 const FETCH_INTO;
@@ -4209,12 +4210,12 @@ Gets the schema where referenced table is
 
 
 
-<h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
+<h1 id="db-result-pdoresult">Class Phalcon\Db\Result\PdoResult</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Result/Pdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Result/PdoResult.zep)
 
 | Namespace  | Phalcon\Db\Result |
-| Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
+| Uses       | Pdo, Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
 | Implements | ResultInterface |
 
 Encapsulates the resultset internals
@@ -4317,7 +4318,7 @@ execute the cursor again to fetch rows from the beginning
 
 
 ```php
-public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null, mixed $cursorOffset = null );
+public function fetch( int $fetchStyle = null, int $cursorOrientation = static-constant-access, int $cursorOffset = int );
 ```
 Fetches an array/object of strings that corresponds to the fetched row,
 or FALSE if there are no more rows. This method is affected by the active
@@ -4337,7 +4338,7 @@ while ($robot = $result->fetch()) {
 
 
 ```php
-public function fetchAll( mixed $fetchStyle = null, mixed $fetchArgument = null, mixed $ctorArgs = null ): array;
+public function fetchAll( int $fetchStyle = null, int $fetchArgument = static-constant-access, int $ctorArgs = int ): array;
 ```
 Returns an array of arrays containing all the records in the result
 This method is affected by the active fetch flag set using

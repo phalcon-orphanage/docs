@@ -819,7 +819,7 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [yui]: https://yui.github.io/yuicompressor
 [sass]: https://sass-lang.com
 [closure]: https://developers.google.com/closure/compiler
-[url]: url
+[url]: mvc-url
 [collections]: api/phalcon_assets#assets-collection
 [filter-interface]: api/phalcon_assets#assets-filterinterface
 [filter-none]: api/phalcon_assets#assets-filters-none

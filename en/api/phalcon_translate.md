@@ -184,6 +184,12 @@ Returns the translation related to the given key
 
 
 ```php
+public function toArray(): array;
+```
+Returns the internal array
+
+
+```php
 protected function phpFopen( string $filename, string $mode );
 ```
 @todo to be removed when we get traits
@@ -443,6 +449,12 @@ Whenever a key is not found this method will be called
 public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 Returns the translation related to the given key
+
+
+```php
+public function toArray(): array;
+```
+Returns the internal array
 
 
 

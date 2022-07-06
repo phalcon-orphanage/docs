@@ -21,8 +21,6 @@ title: 'Phalcon\Image'
 | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
 | Implements | AdapterInterface |
 
-Phalcon\Image\Adapter
-
 All image adapters must use this class
 
 
@@ -218,12 +216,7 @@ Add a watermark to an image with the specified opacity
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum |
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+Interface for Phalcon\Image\Adapter classes
 
 
 ## Methods
@@ -656,12 +649,7 @@ const WIDTH = 2;
 | Namespace  | Phalcon\Image |
 | Extends    | \Exception |
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+Exceptions thrown in Phalcon\Image will use this class
 
 
 
@@ -673,7 +661,6 @@ file that was distributed with this source code.
 | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Image\Adapter\AdapterInterface |
 | Extends    | AbstractFactory |
 
-Phalcon\Image/ImageFactory
 
 
 ## Methods
@@ -681,7 +668,7 @@ Phalcon\Image/ImageFactory
 ```php
 public function __construct( array $services = [] );
 ```
-TagFactory constructor.
+Constructor
 
 
 ```php

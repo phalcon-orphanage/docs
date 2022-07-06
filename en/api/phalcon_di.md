@@ -12,6 +12,7 @@ title: 'Phalcon\Di'
 * [Phalcon\Di\Exception\ServiceResolutionException](#di-exception-serviceresolutionexception)
 * [Phalcon\Di\FactoryDefault](#di-factorydefault)
 * [Phalcon\Di\FactoryDefault\Cli](#di-factorydefault-cli)
+* [Phalcon\Di\InitializationAwareInterface](#di-initializationawareinterface)
 * [Phalcon\Di\Injectable](#di-injectable)
 * [Phalcon\Di\InjectionAwareInterface](#di-injectionawareinterface)
 * [Phalcon\Di\Service](#di-service)
@@ -61,7 +62,7 @@ Sets the dependency injector
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Di.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
+| Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InitializationAwareInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
 | Implements | DiInterface |
 
 Phalcon\Di\Di is a component that implements Dependency Injection/Service
@@ -558,6 +559,24 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 
 
+<h1 id="di-initializationawareinterface">Interface Phalcon\Di\InitializationAwareInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/InitializationAwareInterface.zep)
+
+| Namespace  | Phalcon\Di |
+
+
+
+## Methods
+
+```php
+public function initialize(): void;
+```
+
+
+
+
+
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
@@ -575,14 +594,14 @@ accessing a public property with the same name of a registered service
 @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request
 @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response
 @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies
-@property \Phalcon\Filter $filter
+@property \Phalcon\Filter\Filter $filter
 @property \Phalcon\Flash\Direct $flash
 @property \Phalcon\Flash\Session $flashSession
 @property \Phalcon\Session\ManagerInterface $session
 @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
 @property \Phalcon\Db\Adapter\AdapterInterface $db
-@property \Phalcon\Security $security
-@property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt
+@property \Phalcon\Encryption\Security $security
+@property \Phalcon\Encryption\Crypt|\Phalcon\Encryption\Crypt\CryptInterface $crypt
 @property \Phalcon\Tag $tag
 @property \Phalcon\Html\Escaper|\Phalcon\Html\Escaper\EscaperInterface $escaper
 @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
