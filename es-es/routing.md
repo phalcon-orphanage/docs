@@ -867,7 +867,7 @@ $route = $router->add(
 $route->setName('invoices-view');
 ```
 
-Entonces, usando por ejemplo el componente [Phalcon\Url](url) podemos construir rutas desde el nombre definido:
+Then, using for example the component [Phalcon\Url](mvc-url) we can build routes from the defined name:
 
 ```php
 <?php
