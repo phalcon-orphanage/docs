@@ -76,9 +76,9 @@ require_once __DIR__ . '/public/index.php';
 - Забезпечення виконання HTTP запитів вашого продукту
 
 ### Автозавантажувач
-We are going to use [Phalcon\Loader](loader) a [PSR-4][psr-4] compliant file loader. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
+We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
 
-Для початку, давайте зареєструємо каталоги `контролерів` нашої програми і `моделей`, за допомогою [Phalcon\Loader](loader):
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
 
 `public/index.php`
 ```php
