@@ -1285,7 +1285,7 @@ $invoices
 $app->mount($invoices);
 ```
 
-Lastly you need the [Phalcon\Url](url) component to generate URLs for the named routes.
+Lastly you need the [Phalcon\Url](mvc-url) component to generate URLs for the named routes.
 
 ```php
 <?php
