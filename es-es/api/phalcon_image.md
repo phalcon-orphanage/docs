@@ -19,8 +19,6 @@ title: 'Phalcon\Image'
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Implements | AdapterInterface |
 
-Phalcon\Image\Adapter
-
 Todos los adaptadores de imagen deben usar esta clase
 
 
@@ -202,11 +200,7 @@ Añade una marca de agua a una imagen con una opacidad especificada
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum |
 
-Este fichero es parte del Framework Phalcon.
-
-(c) Phalcon Team <team@phalcon.io>
-
-Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
+Interface for Phalcon\Image\Adapter classes
 
 
 ## Métodos
@@ -569,11 +563,7 @@ const WIDTH = 2;
 
 | Namespace  | Phalcon\Image | | Extends    | \Exception |
 
-Este fichero es parte del Framework Phalcon.
-
-(c) Phalcon Team <team@phalcon.io>
-
-Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
+Exceptions thrown in Phalcon\Image will use this class
 
 
 
@@ -583,7 +573,6 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 
 | Namespace  | Phalcon\Image | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Image\Adapter\AdapterInterface | | Extends    | AbstractFactory |
 
-Phalcon\Image/ImageFactory
 
 
 ## Métodos
@@ -591,7 +580,7 @@ Phalcon\Image/ImageFactory
 ```php
 public function __construct( array $services = [] );
 ```
-Constructor TagFactory.
+Constructor
 
 
 ```php
