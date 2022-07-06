@@ -490,7 +490,7 @@ public function getFilters(): array
 ```
 
 ```php
-public function getIterator();
+public function getIterator(): \Traversable;
 ```
 Returns the generator of the class
 
