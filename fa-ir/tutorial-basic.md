@@ -76,9 +76,9 @@ This file handles 3 things:
 - Resolving the application's HTTP requests
 
 ### Autoloader
-We are going to use [Phalcon\Loader](loader) a [PSR-4][psr-4] compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
+We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
 
-To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](loader):
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
 
 `public/index.php`
 ```php
