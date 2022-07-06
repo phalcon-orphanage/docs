@@ -897,10 +897,10 @@ The events available in Phalcon are:
 | [Gönderici](dispatcher)     | `dispatch:beforeExecuteRoute`        | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Gönderici                                               |
-| [Yükleyici](loader)         | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [Yükleyici](loader)         | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Yükleyici](loader)         | `loader:beforeCheckPath`             | Yükleyici                                               |
-| [Yükleyici](loader)         | `loader:pathFound`                   | Loader, File Path                                       |
+| [Yükleyici](autoload)       | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [Yükleyici](autoload)       | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [Yükleyici](autoload)       | `loader:beforeCheckPath`             | Yükleyici                                               |
+| [Yükleyici](autoload)       | `loader:pathFound`                   | Loader, File Path                                       |
 | [Minik](application-micro)  | `micro:afterBinding`                 | Minik                                                   |
 | [Minik](application-micro)  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [Minik](application-micro)  | `micro:afterExecuteRoute`            | Minik                                                   |
