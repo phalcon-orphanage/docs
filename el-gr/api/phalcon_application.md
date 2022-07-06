@@ -25,9 +25,9 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 protected container;
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultModule;
+protected defaultModule = "";
 
 /**
  * @var ManagerInterface|null
