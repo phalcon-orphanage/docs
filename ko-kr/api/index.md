@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: 기본 설정
 language: 'ko-kr'
 version: '4.0'
 title: 'API 인덱스'
