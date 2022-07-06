@@ -897,10 +897,10 @@ The events available in Phalcon are:
 | [ディスパッチャー](dispatcher)      | `dispatch:beforeExecuteRoute`        | ディスパッチャー                                                |
 | [ディスパッチャー](dispatcher)      | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [ディスパッチャー](dispatcher)      | `dispatch:beforeNotFoundAction`      | ディスパッチャー                                                |
-| [ローダー](loader)              | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [ローダー](loader)              | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [ローダー](loader)              | `loader:beforeCheckPath`             | ローダー                                                    |
-| [ローダー](loader)              | `loader:pathFound`                   | Loader, File Path                                       |
+| [ローダー](autoload)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [ローダー](autoload)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [ローダー](autoload)            | `loader:beforeCheckPath`             | ローダー                                                    |
+| [ローダー](autoload)            | `loader:pathFound`                   | Loader, File Path                                       |
 | [小規模アプリ](application-micro) | `micro:afterBinding`                 | 小規模アプリ                                                  |
 | [小規模アプリ](application-micro) | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [小規模アプリ](application-micro) | `micro:afterExecuteRoute`            | 小規模アプリ                                                  |
