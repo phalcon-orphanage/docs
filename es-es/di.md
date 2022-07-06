@@ -1566,7 +1566,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Si         | Servicio de bolsa de sesión              |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Si         | Ayudantes de Etiquetas HTML              |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Si         | Gestor de Transacciones de Base de Datos |
-| `url`                | [Phalcon\Url](url)                                                 | Si         | Generación de URL                        |
+| `url`                | [Phalcon\Url](mvc-url)                                             | Si         | Generación de URL                        |
 
 Los nombres anteriores se usan en todo el *framework*. Por ejemplo, el servicio `db` se usa desde el servicio `transactionManager`. Puede sustituir estos componentes por los que prefiera, simplemente registrando su componente con el mismo nombre que los listados anteriormente.
 
