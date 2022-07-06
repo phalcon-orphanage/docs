@@ -897,10 +897,10 @@ The events available in Phalcon are:
 | [Диспетчер](dispatcher)     | `dispatch:beforeExecuteRoute`        | Диспетчер                                               |
 | [Диспетчер](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [Диспетчер](dispatcher)     | `dispatch:beforeNotFoundAction`      | Диспетчер                                               |
-| [Loader](loader)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [Loader](loader)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Loader](loader)            | `loader:beforeCheckPath`             | Loader                                                  |
-| [Loader](loader)            | `loader:pathFound`                   | Loader, File Path                                       |
+| [Loader](autoload)          | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [Loader](autoload)          | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [Loader](autoload)          | `loader:beforeCheckPath`             | Loader                                                  |
+| [Loader](autoload)          | `loader:pathFound`                   | Loader, File Path                                       |
 | [Micro](application-micro)  | `micro:afterBinding`                 | Micro                                                   |
 | [Micro](application-micro)  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [Micro](application-micro)  | `micro:afterExecuteRoute`            | Micro                                                   |
