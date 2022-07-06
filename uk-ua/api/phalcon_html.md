@@ -59,8 +59,14 @@ title: 'Phalcon\Html'
 * [Phalcon\Html\Helper\Style](#html-helper-style)
 * [Phalcon\Html\Helper\Title](#html-helper-title)
 * [Phalcon\Html\Helper\Ul](#html-helper-ul)
+* [Phalcon\Html\Link\AbstractLink](#html-link-abstractlink)
+* [Phalcon\Html\Link\AbstractLinkProvider](#html-link-abstractlinkprovider)
 * [Phalcon\Html\Link\EvolvableLink](#html-link-evolvablelink)
 * [Phalcon\Html\Link\EvolvableLinkProvider](#html-link-evolvablelinkprovider)
+* [Phalcon\Html\Link\Interfaces\EvolvableLinkInterface](#html-link-interfaces-evolvablelinkinterface)
+* [Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface](#html-link-interfaces-evolvablelinkproviderinterface)
+* [Phalcon\Html\Link\Interfaces\LinkInterface](#html-link-interfaces-linkinterface)
+* [Phalcon\Html\Link\Interfaces\LinkProviderInterface](#html-link-interfaces-linkproviderinterface)
 * [Phalcon\Html\Link\Link](#html-link-link)
 * [Phalcon\Html\Link\LinkProvider](#html-link-linkprovider)
 * [Phalcon\Html\Link\Serializer\Header](#html-link-serializer-header)
@@ -459,7 +465,7 @@ Sets the encoding to be used by the escaper
 
 
 ```php
-public function setHtmlQuoteType( int $flags ): EscaperInterface;
+public function setFlags( int $flags ): EscaperInterface;
 ```
 Sets the HTML quoting type for htmlspecialchars
 
@@ -1193,7 +1199,7 @@ Class Numeric
 ## Властивості
 ```php
 //
-protected type = numeric;
+protected type = number;
 
 ```
 
@@ -1688,7 +1694,7 @@ protected separator = ;
 ## Методи
 
 ```php
-public function __invoke( string $separator = string, string $indent = null, string $delimiter = null ): Title;
+public function __invoke( string $indent = null, string $delimiter = null ): Title;
 ```
 Sets the separator and returns the object back
 
@@ -1723,6 +1729,12 @@ public function set( string $text, bool $raw = bool ): Title;
 Sets the title
 
 
+```php
+public function setSeparator( string $separator, bool $raw = bool ): Title;
+```
+Sets the separator
+
+
 
 
 <h1 id="html-helper-ul">Class Phalcon\Html\Helper\Ul</h1>
@@ -1744,105 +1756,19 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-link-evolvablelink">Class Phalcon\Html\Link\EvolvableLink</h1>
+<h1 id="html-link-abstractlink">Abstract Class Phalcon\Html\Link\AbstractLink</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLink.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/AbstractLink.zep)
 
-| Namespace  | Phalcon\Html\Link | | Uses       | Psr\Link\EvolvableLinkInterface | | Extends    | Link | | Implements | EvolvableLinkInterface |
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Support\Collection |
 
-Class Phalcon\Http\Link\EvolvableLink
-
-@property array  attributes @property string href @property array  rels @property bool   templated
-
-
-## Методи
-
-```php
-public function withAttribute( mixed $attribute, mixed $value );
-```
-Returns an instance with the specified attribute added.
-
-If the specified attribute is already present, it will be overwritten with the new value.
-
-
-```php
-public function withHref( mixed $href );
-```
-Returns an instance with the specified href.
-
-
-```php
-public function withRel( mixed $rel );
-```
-Returns an instance with the specified relationship included.
-
-If the specified rel is already present, this method MUST return normally without errors, but without adding the rel a second time.
-
-
-```php
-public function withoutAttribute( mixed $attribute );
-```
-Returns an instance with the specified attribute excluded.
-
-If the specified attribute is not present, this method MUST return normally without errors.
-
-
-```php
-public function withoutRel( mixed $rel );
-```
-Returns an instance with the specified relationship excluded.
-
-If the specified rel is not present, this method MUST return normally without errors.
-
-
-
-
-<h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLinkProvider.zep)
-
-| Namespace  | Phalcon\Html\Link | | Uses       | Psr\Link\EvolvableLinkProviderInterface, Psr\Link\LinkInterface | | Extends    | LinkProvider | | Implements | EvolvableLinkProviderInterface |
-
-Class Phalcon\Http\Link\LinkProvider
-
-@property LinkInterface[] links
-
-
-## Методи
-
-```php
-public function withLink( LinkInterface $link );
-```
-Returns an instance with the specified link included.
-
-If the specified link is already present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
-
-
-```php
-public function withoutLink( LinkInterface $link );
-```
-Returns an instance with the specified link removed.
-
-If the specified link is not present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
-
-
-
-
-<h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
-
-| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Psr\Link\LinkInterface | | Implements | LinkInterface |
-
-Class Phalcon\Http\Link\Link
-
-@property array  attributes @property string href @property array  rels @property bool   templated
+@property array  $attributes @property string $href @property array  $rels @property bool   $templated
 
 
 ## Властивості
 ```php
 /**
- * @var Collection|CollectionInterface
+ * @var Collection
  */
 protected attributes;
 
@@ -1852,7 +1778,7 @@ protected attributes;
 protected href = ;
 
 /**
- * @var Collection|CollectionInterface
+ * @var Collection
  */
 protected rels;
 
@@ -1872,13 +1798,13 @@ Link constructor.
 
 
 ```php
-public function getAttributes();
+protected function doGetAttributes(): array;
 ```
 Returns a list of attributes that describe the target URI.
 
 
 ```php
-public function getHref();
+protected function doGetHref(): string;
 ```
 Returns the target of the link.
 
@@ -1891,7 +1817,7 @@ If a URI template is returned, isTemplated() MUST return True.
 
 
 ```php
-public function getRels();
+protected function doGetRels(): array;
 ```
 Returns the relationship type(s) of the link.
 
@@ -1899,10 +1825,30 @@ This method returns 0 or more relationship types for a link, expressed as an arr
 
 
 ```php
-public function isTemplated();
+protected function doIsTemplated(): bool;
 ```
-Returns whether or not this is a templated link.
+Returns whether this is a templated link.
 
+
+```php
+protected function doWithAttribute( string $key, mixed $value );
+```
+
+```php
+protected function doWithHref( string $href );
+```
+
+```php
+protected function doWithRel( string $key );
+```
+
+```php
+protected function doWithoutAttribute( string $key );
+```
+
+```php
+protected function doWithoutRel( string $key );
+```
 
 ```php
 protected function hrefIsTemplated( string $href ): bool;
@@ -1914,19 +1860,19 @@ Determines if a href is a templated link or not.
 
 
 
-<h1 id="html-link-linkprovider">Class Phalcon\Html\Link\LinkProvider</h1>
+<h1 id="html-link-abstractlinkprovider">Abstract Class Phalcon\Html\Link\AbstractLinkProvider</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/LinkProvider.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/AbstractLinkProvider.zep)
 
-| Namespace  | Phalcon\Html\Link | | Uses       | Psr\Link\LinkInterface, Psr\Link\LinkProviderInterface | | Implements | LinkProviderInterface |
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\LinkInterface |
 
-@property LinkInterface[] links
+@property array $links
 
 
 ## Властивості
 ```php
 /**
- * @var LinkInterface[]
+ * @var array
  */
 protected links;
 
@@ -1941,7 +1887,7 @@ LinkProvider constructor.
 
 
 ```php
-public function getLinks();
+protected function doGetLinks(): array;
 ```
 Returns an iterable of LinkInterface objects.
 
@@ -1949,7 +1895,7 @@ The iterable may be an array or any PHP \Traversable object. If no links are ava
 
 
 ```php
-public function getLinksByRel( mixed $rel );
+protected function doGetLinksByRel( string $rel ): array;
 ```
 Returns an iterable of LinkInterface objects that have a specific relationship.
 
@@ -1957,9 +1903,337 @@ The iterable may be an array or any PHP \Traversable object. If no links with th
 
 
 ```php
-protected function getKey( LinkInterface $link ): string;
+protected function doWithLink( mixed $link );
+```
+Returns an instance with the specified link included.
+
+If the specified link is already present, this method MUST return normally without errors. The link is present if $link is === identical to a link object already in the collection.
+
+
+```php
+protected function doWithoutLink( mixed $link );
+```
+Returns an instance with the specified link removed.
+
+If the specified link is not present, this method MUST return normally without errors. The link is present if $link is === identical to a link object already in the collection.
+
+
+```php
+protected function getKey( mixed $link ): string;
 ```
 Returns the object hash key
+
+
+
+
+<h1 id="html-link-evolvablelink">Class Phalcon\Html\Link\EvolvableLink</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLink.zep)
+
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\EvolvableLinkInterface | | Extends    | Link | | Implements | EvolvableLinkInterface |
+
+Class Phalcon\Http\Link\EvolvableLink
+
+@property array  attributes @property string href @property array  rels @property bool   templated
+
+
+## Методи
+
+```php
+public function withAttribute( mixed $attribute, mixed $value ): EvolvableLinkInterface;
+```
+Returns an instance with the specified attribute added.
+
+If the specified attribute is already present, it will be overwritten with the new value.
+
+
+```php
+public function withHref( string $href ): EvolvableLinkInterface;
+```
+Returns an instance with the specified href.
+
+
+```php
+public function withRel( string $rel ): EvolvableLinkInterface;
+```
+Returns an instance with the specified relationship included.
+
+If the specified rel is already present, this method MUST return normally without errors, but without adding the rel a second time.
+
+
+```php
+public function withoutAttribute( string $attribute ): EvolvableLinkInterface;
+```
+Returns an instance with the specified attribute excluded.
+
+If the specified attribute is not present, this method MUST return normally without errors.
+
+
+```php
+public function withoutRel( string $rel ): EvolvableLinkInterface;
+```
+Returns an instance with the specified relationship excluded.
+
+If the specified rel is not present, this method MUST return normally without errors.
+
+
+
+
+<h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/EvolvableLinkProvider.zep)
+
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface, Phalcon\Html\Link\Interfaces\LinkInterface | | Extends    | LinkProvider | | Implements | EvolvableLinkProviderInterface |
+
+Class Phalcon\Http\Link\LinkProvider
+
+@property LinkInterface[] links
+
+
+## Методи
+
+```php
+public function withLink( LinkInterface $link ): EvolvableLinkProviderInterface;
+```
+Returns an instance with the specified link included.
+
+If the specified link is already present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
+
+
+```php
+public function withoutLink( LinkInterface $link ): EvolvableLinkProviderInterface;
+```
+Returns an instance with the specified link removed.
+
+If the specified link is not present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
+
+
+
+
+<h1 id="html-link-interfaces-evolvablelinkinterface">Interface Phalcon\Html\Link\Interfaces\EvolvableLinkInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Interfaces/EvolvableLinkInterface.zep)
+
+| Namespace  | Phalcon\Html\Link\Interfaces | | Extends    | LinkInterface |
+
+An evolvable link value object.
+
+
+## Методи
+
+```php
+public function withAttribute( string $attribute, string $value ): EvolvableLinkInterface;
+```
+Returns an instance with the specified attribute added.
+
+If the specified attribute is already present, it will be overwritten with the new value.
+
+
+```php
+public function withHref( string $href ): EvolvableLinkInterface;
+```
+Returns an instance with the specified href.
+
+
+```php
+public function withRel( string $rel ): EvolvableLinkInterface;
+```
+Returns an instance with the specified relationship included.
+
+If the specified rel is already present, this method MUST return normally without errors, but without adding the rel a second time.
+
+
+```php
+public function withoutAttribute( string $attribute ): EvolvableLinkInterface;
+```
+Returns an instance with the specified attribute excluded.
+
+If the specified attribute is not present, this method MUST return normally without errors.
+
+
+```php
+public function withoutRel( string $rel ): EvolvableLinkInterface;
+```
+Returns an instance with the specified relationship excluded.
+
+If the specified rel is already not present, this method MUST return normally without errors.
+
+
+
+
+<h1 id="html-link-interfaces-evolvablelinkproviderinterface">Interface Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Interfaces/EvolvableLinkProviderInterface.zep)
+
+| Namespace  | Phalcon\Html\Link\Interfaces | | Extends    | LinkProviderInterface |
+
+An evolvable link provider value object.
+
+
+## Методи
+
+```php
+public function withLink( LinkInterface $link ): EvolvableLinkProviderInterface;
+```
+Returns an instance with the specified link included.
+
+If the specified link is already present, this method MUST return normally without errors. The link is present if $link is === identical to a link object already in the collection.
+
+
+```php
+public function withoutLink( LinkInterface $link ): EvolvableLinkProviderInterface;
+```
+Returns an instance with the specifed link removed.
+
+If the specified link is not present, this method MUST return normally without errors. The link is present if $link is === identical to a link object already in the collection.
+
+
+
+
+<h1 id="html-link-interfaces-linkinterface">Interface Phalcon\Html\Link\Interfaces\LinkInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Interfaces/LinkInterface.zep)
+
+| Namespace  | Phalcon\Html\Link\Interfaces |
+
+A readable link object.
+
+
+## Методи
+
+```php
+public function getAttributes(): array;
+```
+Returns a list of attributes that describe the target URI.
+
+
+```php
+public function getHref(): string;
+```
+Returns the target of the link.
+
+The target link must be one of:
+- An absolute URI, as defined by RFC 5988.
+- A relative URI, as defined by RFC 5988. The base of the relative link is assumed to be known based on context by the client.
+- A URI template as defined by RFC 6570.
+
+If a URI template is returned, isTemplated() MUST return True.
+
+
+```php
+public function getRels(): array;
+```
+Returns the relationship type(s) of the link.
+
+This method returns 0 or more relationship types for a link, expressed as an array of strings.
+
+
+```php
+public function isTemplated(): bool;
+```
+Returns whether this is a templated link.
+
+
+
+
+<h1 id="html-link-interfaces-linkproviderinterface">Interface Phalcon\Html\Link\Interfaces\LinkProviderInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Interfaces/LinkProviderInterface.zep)
+
+| Namespace  | Phalcon\Html\Link\Interfaces |
+
+A link provider object.
+
+
+## Методи
+
+```php
+public function getLinks(): array;
+```
+Returns an array of LinkInterface objects.
+
+
+```php
+public function getLinksByRel( string $rel ): array;
+```
+Returns an array of LinkInterface objects that have a specific relationship.
+
+
+
+
+<h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Link.zep)
+
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Html\Link\Interfaces\LinkInterface | | Extends    | AbstractLink | | Implements | LinkInterface |
+
+Class Phalcon\Http\Link\Link
+
+@property array  attributes @property string href @property array  rels @property bool   templated
+
+
+## Методи
+
+```php
+public function getAttributes(): array;
+```
+Returns a list of attributes that describe the target URI.
+
+
+```php
+public function getHref(): string;
+```
+Returns the target of the link.
+
+The target link must be one of:
+- An absolute URI, as defined by RFC 5988.
+- A relative URI, as defined by RFC 5988. The base of the relative link is assumed to be known based on context by the client.
+- A URI template as defined by RFC 6570.
+
+If a URI template is returned, isTemplated() MUST return True.
+
+
+```php
+public function getRels(): array;
+```
+Returns the relationship type(s) of the link.
+
+This method returns 0 or more relationship types for a link, expressed as an array of strings.
+
+
+```php
+public function isTemplated(): bool;
+```
+Returns whether or not this is a templated link.
+
+
+
+
+<h1 id="html-link-linkprovider">Class Phalcon\Html\Link\LinkProvider</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/LinkProvider.zep)
+
+| Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\LinkInterface, Phalcon\Html\Link\Interfaces\LinkProviderInterface | | Extends    | AbstractLinkProvider | | Implements | LinkProviderInterface |
+
+@property LinkInterface[] links
+
+
+## Методи
+
+```php
+public function getLinks(): array;
+```
+Returns an iterable of LinkInterface objects.
+
+The iterable may be an array or any PHP \Traversable object. If no links are available, an empty array or \Traversable MUST be returned.
+
+
+```php
+public function getLinksByRel( mixed $rel ): array;
+```
+Returns an iterable of LinkInterface objects that have a specific relationship.
+
+The iterable may be an array or any PHP \Traversable object. If no links with that relationship are available, an empty array or \Traversable MUST be returned.
 
 
 
@@ -1968,7 +2242,7 @@ Returns the object hash key
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Html/Link/Serializer/Header.zep)
 
-| Namespace  | Phalcon\Html\Link\Serializer | | Uses       | Psr\Link\EvolvableLinkInterface | | Implements | SerializerInterface |
+| Namespace  | Phalcon\Html\Link\Serializer | | Implements | SerializerInterface |
 
 Class Phalcon\Http\Link\Serializer\Header
 
