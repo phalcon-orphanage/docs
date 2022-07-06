@@ -52,7 +52,7 @@ tendrá:
 
 La dirección arriba descrita llamará a `InvoiceController` y `listAction`. Los parámetros estarán disponibles a través de la solicitud [](request) en el controlador y la acción.
 
-Las clases de controlador pueden estar en cualquier carpeta de la aplicación, siempre y cuando el autoloader sepa dónde buscarlas en el momento en el que se las llame. [Phalcon\Loader](loader) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
+Las clases de controlador pueden estar en cualquier carpeta de la aplicación, siempre y cuando el autoloader sepa dónde buscarlas en el momento en el que se las llame. [Phalcon\Loader](autoload) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
 
 A continuación un ejemplo de controlador:
 
