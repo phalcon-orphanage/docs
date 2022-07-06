@@ -29,7 +29,7 @@ title: 'Phalcon\Db'
 * [Phalcon\Db\RawValue](#db-rawvalue)
 * [Phalcon\Db\Reference](#db-reference)
 * [Phalcon\Db\ReferenceInterface](#db-referenceinterface)
-* [Phalcon\Db\Result\Pdo](#db-result-pdo)
+* [Phalcon\Db\Result\PdoResult](#db-result-pdoresult)
 * [Phalcon\Db\ResultInterface](#db-resultinterface)
 
 <h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
@@ -1243,7 +1243,7 @@ Genera SQL comprobando la existencia de un esquema.vista
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
 
-| Namespace  | Phalcon\Db\Adapter\Pdo | | Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\Pdo, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Db\Adapter\Pdo | | Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\PdoResult, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface | | Extends    | AbstractAdapter |
 
 Phalcon\Db\Adapter\Pdo es el Phalcon\Db que internamente usa PDO para conectar a la base de datos
 
@@ -1412,7 +1412,7 @@ $result = $connection->executePrepared(
         "name" => "Voltron",
     ],
     [
-        "name" => Column::BIND_PARAM_INT,
+        "name" => Column::BIND_PARAM_STR,
     ]
 );
 ```
@@ -3464,6 +3464,7 @@ const FETCH_BOUND;
 const FETCH_CLASS;
 const FETCH_CLASSTYPE;
 const FETCH_COLUMN;
+const FETCH_DEFAULT = 0;
 const FETCH_FUNC;
 const FETCH_GROUP;
 const FETCH_INTO;
@@ -4069,11 +4070,11 @@ Obtiene el esquema donde está la tabla referenciada
 
 
 
-<h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
+<h1 id="db-result-pdoresult">Class Phalcon\Db\Result\PdoResult</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Result/Pdo.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Result/PdoResult.zep)
 
-| Namespace  | Phalcon\Db\Result | | Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface | | Implements | ResultInterface |
+| Namespace  | Phalcon\Db\Result | | Uses       | Pdo, Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface | | Implements | ResultInterface |
 
 Encapsula el conjunto de resultados interno
 
@@ -4172,7 +4173,7 @@ Permite ejecutar la sentencia otra vez. Algunos sistemas de base de datos no sop
 
 
 ```php
-public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null, mixed $cursorOffset = null );
+public function fetch( int $fetchStyle = null, int $cursorOrientation = static-constant-access, int $cursorOffset = int );
 ```
 Obtiene un vector/objeto de cadenas que corresponden a las filas obtenidas, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
@@ -4190,7 +4191,7 @@ while ($robot = $result->fetch()) {
 
 
 ```php
-public function fetchAll( mixed $fetchStyle = null, mixed $fetchArgument = null, mixed $ctorArgs = null ): array;
+public function fetchAll( int $fetchStyle = null, int $fetchArgument = static-constant-access, int $ctorArgs = int ): array;
 ```
 Devuelve un vector de vectores que contiene todos los registros del resultado Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
