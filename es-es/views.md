@@ -1366,7 +1366,7 @@ $.ajax({
 </script>
 ```
 
-En el ejemplo anterior, usamos el componente [Phalcon\Url](url) en nuestro código javascript, para configurar correctamente la URL en nuestra aplicación. El servicio está disponible en la vista accediendo a `$this->url`.
+In the example above, we are utilizing the [Phalcon\Url](mvc-url) component in our javascript code, to correctly set up the URL in our application. El servicio está disponible en la vista accediendo a `$this->url`.
 
 ## Independiente
 You can also use the view as a _glue_ component in your application. Solo necesitará tener la configuración adecuada y luego usar la vista para devolver los resultados procesados.
