@@ -8,7 +8,7 @@ keywords: 'models, validation, uniqueness, inclusionin'
 
 # Model Validation
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 [Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules.
@@ -45,7 +45,7 @@ class Customers extends Model
 ## Data Integrity
 Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforce your business rules.
 
-The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation](validation) namespace.
+The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation](filter-validation) namespace.
 
 ```php
 <?php
@@ -93,7 +93,7 @@ class Invoices extends Model
 
 The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
 
-> **NOTE**: For more information on validators, see the [Validation documentation](validation) 
+> **NOTE**: For more information on validators, see the [Validation documentation](filter-validation) 
 > 
 > {: .alert .alert-warning }
 
@@ -176,7 +176,7 @@ Additional events are available when the data validation process finds any incon
 
 
 ## Custom
-The [validation](validation) document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
+The [validation](filter-validation) document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
 
 ```php
 <?php
