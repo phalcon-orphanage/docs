@@ -3,7 +3,7 @@ layout: default
 language: 'ko-kr'
 version: '5.0'
 title: '후원자'
-keywords: 'sponsors, opencollective, supporters'
+keywords: 'sponsors, github, opencollective, supporters'
 ---
 
 # Becoming a Sponsor
