@@ -8,7 +8,7 @@ keywords: 'events, events manager, hooks'
 
 # Events Manager
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
@@ -897,10 +897,10 @@ The events available in Phalcon are:
 | [Gönderici](dispatcher)     | `dispatch:beforeExecuteRoute`        | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Gönderici                                               |
-| [Yükleyici](loader)         | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [Yükleyici](loader)         | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Yükleyici](loader)         | `loader:beforeCheckPath`             | Yükleyici                                               |
-| [Yükleyici](loader)         | `loader:pathFound`                   | Loader, File Path                                       |
+| [Yükleyici](autoload)       | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [Yükleyici](autoload)       | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [Yükleyici](autoload)       | `loader:beforeCheckPath`             | Yükleyici                                               |
+| [Yükleyici](autoload)       | `loader:pathFound`                   | Loader, File Path                                       |
 | [Minik](application-micro)  | `micro:afterBinding`                 | Minik                                                   |
 | [Minik](application-micro)  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [Minik](application-micro)  | `micro:afterExecuteRoute`            | Minik                                                   |
