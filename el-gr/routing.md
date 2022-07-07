@@ -9,7 +9,7 @@ keywords: 'routing, routes'
 
 # Routing Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 The [Phalcon\Mvc\Router][mvc-router] component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
@@ -867,7 +867,7 @@ $route = $router->add(
 $route->setName('invoices-view');
 ```
 
-Then, using for example the component [Phalcon\Url](url) we can build routes from the defined name:
+Then, using for example the component [Phalcon\Url](mvc-url) we can build routes from the defined name:
 
 ```php
 <?php
