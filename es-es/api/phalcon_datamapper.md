@@ -761,9 +761,9 @@ Clase de Excepción Base
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/MemoryLogger.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Psr\Log\AbstractLogger | | Extends    | AbstractLogger |
+| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\Logger\Enum, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Adapter\Noop, Phalcon\Logger\LoggerInterface | | Implements | LoggerInterface |
 
-Un registrador ingenuo basado en memoria.
+A memory-based logger.
 
 @property array $messages
 
@@ -780,24 +780,42 @@ protected messages;
 ## Métodos
 
 ```php
-public function alert( mixed $message, array $context = [] );
+public function alert( string $message, array $context = [] ): void;
 ```
 
 ```php
-public function critical( mixed $message, array $context = [] );
+public function critical( string $message, array $context = [] ): void;
 ```
 
 ```php
-public function debug( mixed $message, array $context = [] );
+public function debug( string $message, array $context = [] ): void;
 ```
 
 ```php
-public function emergency( mixed $message, array $context = [] );
+public function emergency( string $message, array $context = [] ): void;
 ```
 
 ```php
-public function error( mixed $message, array $context = [] );
+public function error( string $message, array $context = [] ): void;
 ```
+
+```php
+public function getAdapter( string $name ): AdapterInterface;
+```
+Devuelve un adaptador de la pila
+
+
+```php
+public function getAdapters(): array;
+```
+Devuelve el vector de la pila de adaptadores
+
+
+```php
+public function getLogLevel(): int;
+```
+Returns the log level
+
 
 ```php
 public function getMessages(): array;
@@ -806,21 +824,27 @@ Devuelve los mensajes registrados.
 
 
 ```php
-public function info( mixed $message, array $context = [] );
+public function getName(): string;
+```
+Devuelve el nombre del registrador
+
+
+```php
+public function info( string $message, array $context = [] ): void;
 ```
 
 ```php
-public function log( mixed $level, mixed $message, array $context = [] );
+public function log( mixed $level, string $message, array $context = [] ): void;
 ```
 Registra un mensaje.
 
 
 ```php
-public function notice( mixed $message, array $context = [] );
+public function notice( string $message, array $context = [] ): void;
 ```
 
 ```php
-public function warning( mixed $message, array $context = [] );
+public function warning( string $message, array $context = [] ): void;
 ```
 
 
@@ -831,7 +855,7 @@ public function warning( mixed $message, array $context = [] );
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Psr\Log\LoggerInterface, Psr\Log\LogLevel | | Implements | ProfilerInterface |
+| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface | | Implements | ProfilerInterface |
 
 Envía los perfiles de consulta a un registrador.
 
@@ -935,7 +959,7 @@ Inicia una entrada de perfil.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/ProfilerInterface.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Psr\Log\LoggerInterface |
+| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\Logger\LoggerInterface |
 
 Interfaz para enviar perfiles de consultas a un registrador.
 
