@@ -97,10 +97,7 @@ One of the biggest changes with this release is that we no longer have top level
 
 ### Acl
 
-> Status: **changes required**
->
-> Usage: [ACL Documentation](acl)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](acl)
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
@@ -114,30 +111,22 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 ### Annotations
 
-> Status: **no changes**
->
-> Usage: [Annotations Documentation](annotations)
-{: .alert .alert-info }
+![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](annotations)
 
 ---
 
 ### Application
 
-> Status: **no changes**
->
-> Usage: [Application Documentation](application)
-{: .alert .alert-info }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](application)
 
-The `getEventsManager()` now returns a `Phalcon\Events\ManagerInterface` or `null`
+#### `Phalcon\Application\AbstractApplication`
+- The `getEventsManager()` now returns a `Phalcon\Events\ManagerInterface` or `null`
 
 ---
 
 ### Assets
 
-> Status: **changes required**
->
-> Usage: [Assets Documentation](assets)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](assets)
 
 The [Assets](assets) component has had changes to the interface as well as some methods were renamed. The functionality remains the same as in previous versions.
 
@@ -216,10 +205,7 @@ public function addInlineJs(
 
 ### Autoload
 
-> Status: **changes required**
->
-> Usage: [Autoload Documentation](autoload-loader)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](autoload-loader)
 
 The [Autoload\Loader](autoload-loader) component has been moved from the parent namespace. Some method names have been changed and new functionality introduced.
 
@@ -274,10 +260,7 @@ var_dump($loader->getDebug());
 
 ### Cache
 
-> Status: **changes required**
->
-> Usage: [Cache Documentation](cache)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](cache)
 
 The [Cache](cache) component has been moved to the `Cache` namespace.
 
@@ -300,19 +283,13 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 
 ### Cli
 
-> Status: **no changes**
->
-> Usage: [Cli Documentation](application-cli)
-{: .alert .alert-info }
+![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](application-cli)
 
 ---
 
 ### Collection
 
-> Status: **changes required**
->
-> Usage: [Collection Documentation](support-collection)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-collection)
 
 The [Collection](support-collection) component has been moved to the `Support` namespace. [more](#support)
 
@@ -320,10 +297,7 @@ The [Collection](support-collection) component has been moved to the `Support` n
 
 ### Config
 
-> Status: **changes required**
->
-> Usage: [Config Documentation](config)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](config)
 
 The [Config](config) component has been moved to the `Config` namespace.
 
@@ -337,20 +311,15 @@ The [Config](config) component has been moved to the `Config` namespace.
 
 ### Container
 
-> Status: **removed**
->
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg)
 
-The [Container](collection) component has been removed from the framework. It is in our roadmap to develop a new container that will support auto wiring, as well as providers. Additionally, the container will be designed and implemented in such a way that could be used as a PSR-11 container (with the help of a Proxy class). 
+The `Container` component has been removed from the framework. It is in our roadmap to develop a new container that will support auto wiring, as well as providers. Additionally, the container will be designed and implemented in such a way that could be used as a PSR-11 container (with the help of a Proxy class). 
 
 ---
 
 ### Crypt
 
-> Status: **changes required**
->
-> Usage: [Crypt Documentation](encryption-crypt)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](encryption-crypt)
 
 The [Crypt](encryption-crypt) component has been moved to the `Encryption` namespace. [more](#encryption-crypt)
 
@@ -358,19 +327,13 @@ The [Crypt](encryption-crypt) component has been moved to the `Encryption` names
 
 ### DataMapper
 
-> Status: **no changes**
->
-> Usage: [DataMapper Documentation](datamapper)
-{: .alert .alert-info }
+![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](datamapper)
 
 ---
 
 ### Db
 
-> Status: **changes required**
->
-> Usage: [Db Documentation](db-layer)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](db-layer)
 
 ---
 
@@ -452,10 +415,7 @@ The [Crypt](encryption-crypt) component has been moved to the `Encryption` names
 
 ### Debug
 
-> Status: **changes required**
->
-> Usage: [Debug Documentation](support-debug)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-debug)
 
 The [Debug](support-debug) component has been moved to the `Support` namespace. [more](#support)
 
@@ -463,10 +423,7 @@ The [Debug](support-debug) component has been moved to the `Support` namespace. 
 
 ### Di
 
-> Status: **changes required**
->
-> Usage: [Di Documentation](di)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](di)
 
 The [Di](di) component has been moved to the `Di` namespace.
 
@@ -479,10 +436,7 @@ The [Di](di) component has been moved to the `Di` namespace.
 
 ### Dispatcher
 
-> Status: **no changes**
->
-> Usage: [Dispatcher Documentation](dispatcher)
-{: .alert .alert-info }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](dispatcher)
 
 #### `Phalcon\Dispatcher\AbstractDispatcher`
 - Changed `getEventsManager(): ManagerInterface` to `getEventsManager(): ManagerInterface | null`
@@ -494,19 +448,13 @@ The [Di](di) component has been moved to the `Di` namespace.
 
 ### Domain
 
-> Status: **no changes**
->
-> Usage: [Domain Documentation](domain)
-{: .alert .alert-info }
+![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](domain)
 
 ---
 
 ### Encryption
 
-> Status: **changes required**
->
-> Usage: [Crypt Documentation](encryption-crypt), [Security Documentation](encryption-security). [JWT Documentation](encryption-security-jwt)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](encryption-crypt)
 
 #### `Phalcon\Encryption\Crypt`
 - Moved `Phalcon\Crypt` to `Phalcon\Encryption\Crypt`
@@ -560,10 +508,7 @@ If no `padFactory` is passed, a new one will be created in the component.
 
 ### Escaper
 
-> Status: **changes required**
->
-> Usage: [Escaper Documentation](html-escaper)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](html-escaper)
 
 The [Escaper](html-escaper) component has been moved to the `Html` namespace. [more](#html)
 
@@ -571,10 +516,7 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 
 ### Events
 
-> Status: **changes required**
->
-> Usage: [Escaper Documentation](html-escaper)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](events)
 
 #### `Phalcon\Events\AbstractEventsAware`
 - Added abstract `Phalcon\Events\AbstractEventsAware`
@@ -592,9 +534,7 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 
 ### Exception
 
-> Status: **changes required**
->
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg)
 
 #### `Phalcon\Exception`
 The class has been removed.
@@ -603,9 +543,7 @@ The class has been removed.
 
 ### Factory
 
-> Status: **changes required**
->
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) 
 
 #### `Phalcon\Factory\AbstractConfigFactory`
 - Added abstract `Phalcon\Factory\AbstractConfigFactory` to check configuration elements
@@ -620,10 +558,7 @@ The class has been removed.
 
 ### Filter
 
-> Status: **changes required**
->
-> Usage: [Filter Documentation](filter-filter), [Validation Documentation](filter-validation)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](filter-filter)
 
 The [Filter](filter) component has been moved to the `Filter` namespace.
 
@@ -662,10 +597,7 @@ The [Filter](filter) component has been moved to the `Filter` namespace.
 
 ### Flash
 
-> Status: **changes required**
->
-> Usage: [Flash Documentation](flash)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](flash)
 
 #### `Phalcon\Flash\AbstractFlash`
 - Added the ability to define CSS icon classes (`setCssIconClasses()`)
@@ -683,10 +615,7 @@ The [Filter](filter) component has been moved to the `Filter` namespace.
 
 ### Forms
 
-> Status: **changes required**
->
-> Usage: [Forms Documentation](forms)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](forms)
 
 `Phalcon\Forms\Element\*` classes now use the new `Phalcon\Html\TagFactory` to generate HTML code. As a result, the functionality has changed slightly. The main difference is that a `Phalcon\Html\TagFactory` has to be set in the form object, so that elements can be rendered. If the `Phalcon\Html\TagFactory` is not set, then the component will search the Di container (`Phalcon\Di\DiInterface`) for a service with the name `tag`. If you are using `Phalcon\Di\FactoryDefault` as your container, then the `tag` service is already defined for you.
 
@@ -697,10 +626,7 @@ The [Filter](filter) component has been moved to the `Filter` namespace.
 
 ### Helper
 
-> Status: **changes required**
->
-> Usage: [Helper Documentation](support-helper)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-helper)
 
 The [Helper](support-helper) component has been moved to the `Support` namespace. [more](#support)
 
@@ -708,10 +634,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ### Html
 
-> Status: **changes required**
->
-> Usage: [HTML Documentation](html)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](html)
 
 #### `Phalcon\Html\Escaper`
 - Moved `Phalcon\Escaper` to `Phalcon\Html\Escaper`
@@ -768,10 +691,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ### Http
 
-> Status: **changes required**
->
-> Usage: [HTTP Documentation](http)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](http)
 
 #### `Phalcon\Http\Cookie`
 - Changed `__construct()` and made `$httpOnly = false`
@@ -804,22 +724,13 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ### Image
 
-> Status: **changes required**
->
-> Usage: [Image Documentation](image)
-{: .alert .alert-warning }
-
-#### `Phalcon\Image\Escaper`
-- Changed `Phalcon\Image\Exception` to extend `\Exception`
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](image)
 
 ---
 
 ### Loader
 
-> Status: **changes required**
->
-> Usage: [Loader Documentation](autoload)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](autoload)
 
 The class has been moved to the `Phalcon\Autoload` namespace [more](#autoload)
 
@@ -827,10 +738,7 @@ The class has been moved to the `Phalcon\Autoload` namespace [more](#autoload)
 
 ### Logger
 
-> Status: **changes required**
->
-> Usage: [Logger Documentation](logger)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](logger)
 
 The [Logger](logger) component has been moved to the `Logger` namespace.
 
@@ -867,12 +775,7 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
 
 ---
 
-### Messages
-
-> Status: **changes required**
->
-> Usage: [Messages Documentation](messages)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](messages)
 
 #### `Phalcon\Messages\Exception`
 - Changed `Phalcon\Messages\Exception` to extend `\Exception`
@@ -881,10 +784,7 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
 
 ### Mvc
 
-> Status: **changes required**
->
-> Usage: [MVC Documentation](mvc)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](mvc)
 
 #### `Phalcon\Mvc\Micro\Collection`
 - Changed the methods to accept a `callable` as the `$handler` instead of mixed
@@ -1020,12 +920,7 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
 
 ---
 
-### Paginator
-
-> Status: **changes required**
->
-> Usage: [Paginator Documentation](pagination)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](pagination)
 
 #### `Phalcon\Paginator\Exception`
 - Changed `Phalcon\Paginator\Exception` to extend `\Exception`
@@ -1038,10 +933,7 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
 
 ### Registry
 
-> Status: **changes required**
->
-> Usage: [Registry Documentation](support-registry)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-registry)
 
 The [Registry](support-registry) component has been moved to the `Support` namespace. [more](#support)
 
@@ -1049,10 +941,7 @@ The [Registry](support-registry) component has been moved to the `Support` names
 
 ### Security
 
-> Status: **changes required**
->
-> Usage: [Security Documentation](encryption-security)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](encryption-security)
 
 The [Security](encryption-security) component has been moved to the `Encryption` namespace. [more](#encryption)
 
@@ -1060,10 +949,7 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 
 ### Session
 
-> Status: **changes required**
->
-> Usage: [Session Documentation](session)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](session)
 
 #### `Phalcon\Session\Adapter\AbstractAdapter`
 - Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
@@ -1082,12 +968,7 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 
 ---
 
-### Storage
-
-> Status: **changes required**
->
-> Usage: [Storage Documentation](storage)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](storage)
 
 #### `Phalcon\Storage\Adapter\AdapterInterface`
 - Added `setForever(string $key, mixed $value):` to set an item in the store forever
@@ -1150,10 +1031,7 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 
 ### Support
 
-> Status: **changes required**
->
-> Usage: [Support Documentation](support)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support)
 
 The `Support` namespace contains classes that are used throughout the framework. The classes moved here are:
 - [Collection](support-collection)
@@ -1186,21 +1064,15 @@ The `Support` namespace contains classes that are used throughout the framework.
 
 ### Tag
 
-> Status: **changes required**
->
-> Usage: [Tag Documentation](tag)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](tag)
 
-------The [Url](mvc-url) component has been moved to the `Mvc` namespace. [more](#mvc)
+WIP
 
 ---
 
 ### Text
 
-> Status: **changes required**
->
-> Usage:
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support)
 
 The `Phalcon\Text` component has been deprecated. It has been replaced with the `Phalcon\Support\HelperFactory`. [more](#support)
 
@@ -1208,10 +1080,7 @@ The `Phalcon\Text` component has been deprecated. It has been replaced with the 
 
 ### Translate 
 
-> Status: **changes required**
->
-> Usage: [Translate Documentation](translate)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](translate)
  
 #### `Phalcon\Translate\Adapter\AbstractAdapter`
 - Changed `__construct(InterpolatorFactory $interpolator, array $options = []` to default to an empty array for `$options`
@@ -1244,10 +1113,7 @@ The `Phalcon\Text` component has been deprecated. It has been replaced with the 
 
 ### Url
 
-> Status: **changes required**
->
-> Usage: [Url Documentation](mvc-url)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](mvc-url)
 
 The [Url](mvc-url) component has been moved to the `Mvc` namespace. [more](#mvc)
 
@@ -1255,10 +1121,7 @@ The [Url](mvc-url) component has been moved to the `Mvc` namespace. [more](#mvc)
 
 ### Validation
 
-> Status: **changes required**
->
-> Usage: [Validation Documentation](filter-validation)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](filter-validation)
 
 The [Validation](filter-validation) component has been moved to the `Filter` namespace. [more](#filter)
 
@@ -1266,10 +1129,7 @@ The [Validation](filter-validation) component has been moved to the `Filter` nam
 
 ### Version
 
-> Status: **changes required**
->
-> Usage: [Version Documentation](support-version)
-{: .alert .alert-warning }
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-version)
 
 The [Version](support-version) component has been moved to the `Support` namespace. [more](#support)
 
