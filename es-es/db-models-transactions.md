@@ -8,7 +8,7 @@ keywords: 'modelos, transacciones'
 
 # Transacciones en modelos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Cuando un proceso ejecuta múltiples operaciones de bases de datos, es importante realizar todas esas operaciones como una sola unidad de trabajo. De esta forma, si una de las operaciones falla, no terminaremos con datos corruptos o registros huérfanos. Las transacciones de base de datos ofrecen esta funcionalidad, y aseguran que todas las operaciones de base de datos han sido ejecutadas correctamente antes de almacenar los datos en la base de datos.
