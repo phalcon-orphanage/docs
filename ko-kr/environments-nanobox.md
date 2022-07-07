@@ -8,7 +8,7 @@ keywords: 'environment, nanobox, docker, 개발환경, 환경, 도커'
 
 # 개발환경
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 [Nanobox][nanobox] is a portable, micro platform for developing and deploying apps. 로컬에서 작업할 때, Nanobox는 구체적인 필요에 맞게 설정된 가상 개발 환경을 돌리고 구성하기 위해 도커를 사용합니다. 운영서버로 배포할 준비가 되면, Nanobox는 당신이 선택한 클라우드서비스에 동일한 개발환경을 구성하고 사용할 수 있도록 해주며, 앱의 관리와 확장은 Nanobox 대시보드에서 할 수 있게 됩니다.
