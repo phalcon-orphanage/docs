@@ -8,12 +8,14 @@ keywords: 'tutorial, tutorial básico, paso a paso, mvc'
 
 # Tutorial - Básico
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Resumen
 A lo largo de este tutorial, crearemos una aplicación con un simple formulario de registro, mientras introducimos los principales aspectos de diseños de Phalcon.
 
-Este tutorial cubre la implementación de una aplicación MVC simple, mostrando cuán rápido y fácil se puede hacer con Phalcon. Una vez desarrollado, puede usar esta aplicación y extenderla para satisfacer sus necesidades. El código en este tutorial también se puede usar como campo de juego para aprender otros conceptos e ideas específicas de Phalcon. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+Este tutorial cubre la implementación de una aplicación MVC simple, mostrando cuán rápido y fácil se puede hacer con Phalcon. Una vez desarrollado, puede usar esta aplicación y extenderla para satisfacer sus necesidades. El código en este tutorial también se puede usar como campo de juego para aprender otros conceptos e ideas específicas de Phalcon.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
 
 Si sólo quiere empezar, puede saltarse esto y crear automáticamente un proyecto Phalcon con nuestras [herramientas de desarrollador](devtools).
 
@@ -74,9 +76,9 @@ Este fichero gestiona 3 cosas:
 - Resolver las peticiones HTTP de la aplicación
 
 ### Autocargador
-We are going to use [Phalcon\Loader](loader) a [PSR-4][psr-4] compliant file loader. Cosas comunes que se deberían añadir al autocargador son sus controladores y modelos. También puede registrar directorios, que serán escaneados por los ficheros requeridos por la aplicación.
+We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Cosas comunes que se deberían añadir al autocargador son sus controladores y modelos. También puede registrar directorios, que serán escaneados por los ficheros requeridos por la aplicación.
 
-Para empezar, vamos a registrar nuestros directorios de la aplicación `controllers` y `models` usando [Phalcon\Loader](loader):
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
 
 `public/index.php`
 ```php
