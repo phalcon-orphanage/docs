@@ -8,7 +8,7 @@ keywords: 'base de datos, migraciones, esquema, tablas, columnas'
 
 # Migraciones de Bases de Datos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
 > 
