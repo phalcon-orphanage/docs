@@ -8,7 +8,7 @@ keywords: 'tutorial, tutorial invo, paso a paso, mvc'
 
 # Tutorial - INVO
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Resumen
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. Muestra como se gestionan ciertas tareas por Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. La aplicación no genera facturas reales, sino que sirve como ejemplo de cómo se implementan estas tareas usando Phalcon.
@@ -436,7 +436,7 @@ $user = Users::findFirst(
 ```
 > **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. Esto reemplaza con seguridad los valores para esas columnas sin correr el riesgo de una inyección SQL.
 
-Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. El componente [Phalcon\Security](security) ofrece métodos apropiados para reforzar el algoritmo usado para sus *hashes*.
+Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. The [Phalcon\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 Si se encuentra el usuario, entonces registramos el usuario en la sesión (el usuario inicia sesión) y lo reenviamos al panel de control (controlador `Invoices`, acción `index`) mostrando un mensaje de bienvenida.
 
