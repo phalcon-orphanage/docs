@@ -8,7 +8,7 @@ keywords: 'modelos, caché, phql, conjuntos de resultados, reutilización'
 
 # Caché de Modelos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 En la mayoría de aplicaciones, hay datos que cambian con poca frecuencia. Uno de los cuellos de botella más comunes en términos de rendimiento es el acceso a los datos de una base de datos. Primero tenemos una capa de complejidad que permite a PHP comunicarse con la base de datos y entonces tenemos una capa de complejidad y un potencial cuello de botella en la propia base de datos, cuando intentamos analizar la consulta enviada y devolver los datos de vuelta (especialmente cuando la consulta contiene múltiples uniones y sentencias de agrupación).
