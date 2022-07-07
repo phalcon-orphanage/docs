@@ -33,13 +33,12 @@ You can check our [GitHub][github] project for the code and browse through these
   - [디스코드 챗](https://phalcon.io/discord)
   - [포럼](https://phalcon.io/forum)
 - 후원
+  - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - 후원하기](https://phalcon.io/fund)
-  - [스토어 - 상점](https://phalcon.io/store)
 - 소셜미디어
   - [Telegram](https://phalcon.io/telegram)
   - [Gab](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
-  - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)
