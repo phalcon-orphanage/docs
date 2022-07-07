@@ -8,7 +8,7 @@ keywords: 'environment, devilbox, docker'
 
 # Ambientes
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
 The [Devilbox][devilbox] The Devilbox is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
