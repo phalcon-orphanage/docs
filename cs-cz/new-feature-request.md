@@ -8,7 +8,7 @@ keywords: 'new feature request, nfr'
 
 # Požadavek na funkcionalitu
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 [List of NFRs](new-feature-request-list)
 
