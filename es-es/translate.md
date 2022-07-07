@@ -8,7 +8,7 @@ keywords: 'traducir, traducciones, adaptadores de traducción, vector nativo, cs
 
 # Componente de traducción
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The component [Phalcon\Translate][translate] offers multilingual capabilities to applications. Este componente le permite mostrar contenido en diferentes idiomas, basado en la elección de idioma del usuario, disponible en la aplicación.
