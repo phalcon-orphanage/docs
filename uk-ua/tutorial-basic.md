@@ -8,12 +8,14 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, нав
 
 # Посібник - основи
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Огляд
 В цьому посібнику ми створимо програму з простою реєстраційною формою, розкриваючи основні аспекти дизайну Phalcon.
 
-Цей посібник охоплює реалізацію простого MVC додатку, показуючи, як швидко і легко це можна зробити за допомогою Phalcon. Після розробки ви можете скористатися цим додатком і розширити його для задоволення ваших потреб. Код в цьому посібнику також може використовуватися як майданчик для вивчення інших понять та ідей Phalcon. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+Цей посібник охоплює реалізацію простого MVC додатку, показуючи, як швидко і легко це можна зробити за допомогою Phalcon. Після розробки ви можете скористатися цим додатком і розширити його для задоволення ваших потреб. Код в цьому посібнику також може використовуватися як майданчик для вивчення інших понять та ідей Phalcon.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
 
 Якщо ви хочете просто почати роботу, ви можете пропустити це і створити проект Phalcon автоматично за допомогою наших [інструментів розробника](devtools).
 
@@ -74,9 +76,9 @@ require_once __DIR__ . '/public/index.php';
 - Забезпечення виконання HTTP запитів вашого продукту
 
 ### Автозавантажувач
-We are going to use [Phalcon\Loader](loader) a [PSR-4][psr-4] compliant file loader. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
+We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
 
-Для початку, давайте зареєструємо каталоги `контролерів` нашої програми і `моделей`, за допомогою [Phalcon\Loader](loader):
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
 
 `public/index.php`
 ```php
