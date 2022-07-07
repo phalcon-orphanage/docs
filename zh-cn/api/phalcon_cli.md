@@ -316,9 +316,9 @@ protected action;
 protected defaultAction;
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultModule;
+protected defaultModule = "";
 
 /**
  * @var array
@@ -342,9 +342,9 @@ protected matchedRoute;
 protected matches;
 
 /**
- * @var string|null
+ * @var string
  */
-protected module;
+protected module = "";
 
 /**
  * @var array
