@@ -8,7 +8,7 @@ keywords: 'anotaciones, enrutado, analizador de anotaciones, docblocks'
 
 # Anotaciones
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Phalcon introdujo el primer componente analizador de anotaciones escrito en C para PHP. El espacio de nombres `Phalcon\Annotations` contiene componentes de propósito general que ofrecen una forma fácil de analizar y cachear anotaciones en las aplicaciones PHP.
