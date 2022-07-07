@@ -8,7 +8,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 # Dependency Injection / Service Location
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Di][di] is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
@@ -1546,27 +1546,27 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | 是的     | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | 是的     | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | 是的     | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | 是的     | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | 是的     | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | 是的     | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | 是的     | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | 是的     | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | 是的     | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | 是的     | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | 是的     | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | 是的     | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | 是的     | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | 是的     | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | 是的     | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | 否      | Models MetaData              |
 | `request`            | [Phalcon\Http\Request](request)                                   | 是的     | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | 是的     | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | 是的     | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | 是的     | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | 是的     | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | 是的     | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | 是的     | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | 是的     | Database Transaction Manager |
-| `url`                | [Phalcon\Url](url)                                                 | 是的     | URL Generation               |
+| `url`                | [Phalcon\Url](mvc-url)                                             | 是的     | URL Generation               |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 
