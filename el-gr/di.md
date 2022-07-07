@@ -1183,7 +1183,7 @@ $annotations = $container->get(
 );
 ```
 
-## Γεγονότα
+## Events
 
 [Phalcon\Di](api/phalcon_di#di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `di`.
 
