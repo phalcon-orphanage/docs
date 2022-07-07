@@ -8,7 +8,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 
 # Tutorial - INVO
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Επισκόπηση
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. It showcases how certain tasks are handled by Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. The application does not generate actual invoices, but serves as an example on how these tasks are implemented using Phalcon.
@@ -436,7 +436,7 @@ $user = Users::findFirst(
 ```
 > **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. This safely replaces the values for those columns without having the risk of a SQL injection.
 
-When searching for the user in the database, we are not searching for the password directly using clear text. The application stores passwords as hashes, using the [sha1][sha1] method. Although this methodology is adequate for a tutorial, you might want to consider using a different algorithm for a production application. The [Phalcon\Security](security) component offers convenience methods to strengthen the algorithm used for your hashes.
+When searching for the user in the database, we are not searching for the password directly using clear text. The application stores passwords as hashes, using the [sha1][sha1] method. Although this methodology is adequate for a tutorial, you might want to consider using a different algorithm for a production application. The [Phalcon\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 If the user is found, then we register the user in the session (log the user in) and forward them to the dashboard (`Invoices` controller, `index` action) showing a welcome message.
 
