@@ -2,11 +2,11 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Συλλογή'
+title: 'Collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
-# Συλλογή
+# Collection
 
 * * *
 
