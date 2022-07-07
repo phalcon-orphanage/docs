@@ -484,7 +484,7 @@ The [Di](di) component has been moved to the `Di` namespace.
 > Usage: [Dispatcher Documentation](dispatcher)
 {: .alert .alert-info }
 
-### `Phalcon\Dispatcher\AbstractDispatcher`
+#### `Phalcon\Dispatcher\AbstractDispatcher`
 - Changed `getEventsManager(): ManagerInterface` to `getEventsManager(): ManagerInterface | null`
 
 #### `Phalcon\Dispatcher\Exception`
@@ -543,10 +543,10 @@ If no `padFactory` is passed, a new one will be created in the component.
 #### `Phalcon\Encryption\Crypt`
 - Moved from `Phalcon\Crypt`
 
-### `Phalcon\Encryption\PadFactory`
+#### `Phalcon\Encryption\PadFactory`
 - Added `Phalcon\Encryption\PadFactory` to allow for different padding schemes during encryption and decryption of data
 
-### `Phalcon\Encryption\Padding\*`
+#### `Phalcon\Encryption\Padding\*`
 - Added `Phalcon\Encryption\Padding\PadInterface` to allow for custom padding classes
 - Added `Phalcon\Encryption\Padding\Ansi`
 - Added `Phalcon\Encryption\Padding\Iso10126`
@@ -596,7 +596,7 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 >
 {: .alert .alert-warning }
 
-### `Phalcon\Exception`
+#### `Phalcon\Exception`
 The class has been removed.
 
 ---
