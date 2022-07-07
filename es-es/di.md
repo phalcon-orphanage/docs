@@ -8,7 +8,7 @@ keywords: 'inyección de dependencias, di, ioc, localizador servicios'
 
 # Inyector de Dependencias / Localizador de Servicios
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Phalcon\Di][di] is a container that stores services or components (classes). Estos servicios están disponibles desde la aplicación y facilitan el desarrollo. Supongamos que estamos desarrollando un componente llamado `InvoiceComponent` que realiza algunos cálculos para la factura de un cliente. Requiere una conexión de base de datos para obtener el registro `Invoice` desde la base de datos.
@@ -1546,27 +1546,27 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ---------- | ---------------------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Si         | Analizador de anotaciones                |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Si         | Gestor de recursos                       |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Si         | Encriptar/Desencriptar                   |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Si         | Encriptar/Desencriptar                   |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Si         | Gestor de Cookies HTTP                   |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Si         | Conexión de base de datos                |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Si         | Dispatcher                               |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Si         | Escaper                                  |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Si         | Escaper                                  |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Si         | Gestor de Eventos                        |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Si         | Mensajería Flash                         |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Si         | Mensajería de Sesión Flash               |
-| `filter`             | [Phalcon\Filter](filter)                                           | Si         | Filtrar / Sanear                         |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | Si         | Filtrar / Sanear                         |
 | `modelsCache`        |                                                                     |            | Motor de caché para modelos              |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Si         | Gestor de Modelos                        |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | No         | MetaDatos de Modelos                     |
 | `request`            | [Phalcon\Http\Request](request)                                   | Si         | Petición HTTP                            |
 | `response`           | [Phalcon\Http\Response](response)                                 | Si         | Respuesta HTTP                           |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Si         | Router                                   |
-| `security`           | [Phalcon\Security](security)                                       | Si         | Seguridad                                |
+| `security`           | [Phalcon\Security](encryption-security)                            | Si         | Seguridad                                |
 | `session`            |                                                                     |            | Servicio de Sesiones                     |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Si         | Servicio de bolsa de sesión              |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Si         | Ayudantes de Etiquetas HTML              |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Si         | Gestor de Transacciones de Base de Datos |
-| `url`                | [Phalcon\Url](url)                                                 | Si         | Generación de URL                        |
+| `url`                | [Phalcon\Url](mvc-url)                                             | Si         | Generación de URL                        |
 
 Los nombres anteriores se usan en todo el *framework*. Por ejemplo, el servicio `db` se usa desde el servicio `transactionManager`. Puede sustituir estos componentes por los que prefiera, simplemente registrando su componente con el mismo nombre que los listados anteriormente.
 
