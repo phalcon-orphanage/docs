@@ -8,7 +8,7 @@ keywords: 'environment, nanobox, docker'
 
 # Entornos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Nanobox][nanobox] is a portable, micro platform for developing and deploying apps. Cuando trabajamos localmente, Nanobox utiliza Docker de girar y configurar un entorno de desarrollo virtual configurado a sus necesidades específicas. Cuando esté listo para implementar servidores en vivo, Nanobox tomará ese mismo entorno y los girará para arriba en su proveedor de la nube de elección, donde puede gestionar y ampliar su aplicación a través de la consola de Nanobox.
