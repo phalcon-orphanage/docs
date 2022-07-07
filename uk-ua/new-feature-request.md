@@ -8,7 +8,7 @@ keywords: 'запит на вдосконалення функціоналу'
 
 # Запит на вдосконалення функціоналу
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 [Список ЗНФ](new-feature-request-list)
 
