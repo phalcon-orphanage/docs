@@ -33,13 +33,12 @@ You can check our [GitHub][github] project for the code and browse through these
   - [Чат Discord](https://phalcon.io/discord)
   - [Форум](https://phalcon.io/forum)
 - Підтримка
+  - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - Підтримайте нас](https://phalcon.io/fund)
-  - [Крамниця - Продажі](https://phalcon.io/store)
 - Соціальні мережі
   - [Telegram](https://phalcon.io/telegram)
   - [Gab.ai](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
-  - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)
