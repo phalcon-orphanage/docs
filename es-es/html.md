@@ -8,13 +8,13 @@ keywords: 'html, attributes, tag, factoría tag'
 
 # Ayudantes HTML
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Este espacio de nombres contiene componentes que ayudan a generar HTML.
 
 ## Atributos
-The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](collection). Además contiene dos métodos más `render()` y `__toString()`. `render()` usa [Phalcon\Tag](tag) internamente para renderizar los atributos que tiene un elemento HTML. Estos atributos HTML son definidos en el propio objeto.
+The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](support-collection). Además contiene dos métodos más `render()` y `__toString()`. `render()` usa [Phalcon\Tag](tag) internamente para renderizar los atributos que tiene un elemento HTML. Estos atributos HTML son definidos en el propio objeto.
 
 El componente se puede usar por si mismo si quieres recopilar atributos HTML en un objeto y luego renderizarlos (devolviéndolos como una cadena) en un formato `clave=valor`.
 
@@ -138,7 +138,7 @@ Los nombres registrados para los respectivos ayudantes son:
 | `textarea`   | [Phalcon\Html\Helper\TextArea][html-helper-textarea] - `<textarea>` tag |
 
 ### Ayudantes
-All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. Puede crear cada una de estas clases individualmente si lo desea, o puede usar la factoría de etiquetas tal y como se muestra arriba. Además de los ayudantes `*Raw`, si el ayudante requiere texto, automáticamente será escapado usando [Phalcon\Escaper](escaper).
+All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. Puede crear cada una de estas clases individualmente si lo desea, o puede usar la factoría de etiquetas tal y como se muestra arriba. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](html-escaper).
 
 > **NOTA**: El código y la salida inferior han sido formateados por legibilidad 
 > 
