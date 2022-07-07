@@ -8,7 +8,7 @@ keywords: 'use case, examples'
 
 # Use Case
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
