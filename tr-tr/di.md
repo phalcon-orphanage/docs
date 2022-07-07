@@ -8,7 +8,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 # Dependency Injection / Service Location
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
 [Phalcon\Di][di] is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
@@ -1546,27 +1546,27 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Evet   | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Evet   | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Evet   | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Evet   | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Evet   | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Evet   | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Evet   | Gönderici                    |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Evet   | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Evet   | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Evet   | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Evet   | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Evet   | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | Evet   | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | Evet   | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Evet   | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Hayır  | Models MetaData              |
 | `request`            | [Phalcon\Http\Request](request)                                   | Evet   | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Evet   | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Evet   | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Evet   | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Evet   | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Evet   | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Evet   | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Evet   | Database Transaction Manager |
-| `url`                | [Phalcon\Url](url)                                                 | Evet   | URL Generation               |
+| `url`                | [Phalcon\Url](mvc-url)                                             | Evet   | URL Generation               |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 
