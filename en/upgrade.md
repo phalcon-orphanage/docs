@@ -7,6 +7,7 @@ keywords: 'upgrade, v3, v4, v5'
 ---
 # Upgrade Guide
 - - -
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Upgrading to V5
 So you have decided to upgrade to v5! **Congratulations**!!

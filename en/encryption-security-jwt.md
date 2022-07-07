@@ -7,7 +7,7 @@ keywords: 'security, hashing, passwords, jwt, rfc7519'
 ---
 # Security - JSON Web Tokens (JWT)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-4.1.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-4.1.svg)
 
 ## Overview
 
