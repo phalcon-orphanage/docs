@@ -3,7 +3,7 @@ layout: default
 language: 'tr-tr'
 version: '5.0'
 title: 'Sponsorlar'
-keywords: 'sponsors, opencollective, supporters'
+keywords: 'sponsors, github, opencollective, supporters'
 ---
 
 # Becoming a Sponsor
