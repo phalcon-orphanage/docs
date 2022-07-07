@@ -8,7 +8,7 @@ keywords: 'events, events manager, hooks'
 
 # Events Manager
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
@@ -897,10 +897,10 @@ The events available in Phalcon are:
 | [Αποστολέας](dispatcher)    | `dispatch:beforeExecuteRoute`        | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeNotFoundAction`      | Αποστολέας                                              |
-| [Φορτωτής](loader)          | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [Φορτωτής](loader)          | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Φορτωτής](loader)          | `loader:beforeCheckPath`             | Φορτωτής                                                |
-| [Φορτωτής](loader)          | `loader:pathFound`                   | Loader, File Path                                       |
+| [Φορτωτής](autoload)        | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [Φορτωτής](autoload)        | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [Φορτωτής](autoload)        | `loader:beforeCheckPath`             | Φορτωτής                                                |
+| [Φορτωτής](autoload)        | `loader:pathFound`                   | Loader, File Path                                       |
 | [Micro](application-micro)  | `micro:afterBinding`                 | Micro                                                   |
 | [Micro](application-micro)  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [Micro](application-micro)  | `micro:afterExecuteRoute`            | Micro                                                   |
