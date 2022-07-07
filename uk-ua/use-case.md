@@ -8,7 +8,7 @@ keywords: 'use case, examples, приклади, способи використ
 
 # Use Case
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 В межах цієї документації ми будемо припускати, що ми створюємо бухгалтерський додаток.
 
