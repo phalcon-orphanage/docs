@@ -33,13 +33,12 @@ Feel free to connect with us using our social media accounts:
   - [Discord Chat](https://phalcon.io/discord)
   - [Φόρουμ](https://phalcon.io/forum)
 - Support
+  - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - Support Us](https://phalcon.io/fund)
-  - [Store - Merchandise](https://phalcon.io/store)
 - Social Media
   - [Telegram](https://phalcon.io/telegram)
   - [Gab](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
-  - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)
