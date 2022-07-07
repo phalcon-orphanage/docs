@@ -9,7 +9,7 @@ keywords: 'psr-3, logger, adaptadores, noop, flujo, syslog'
 
 # Logger
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Phalcon\Logger][logger-logger] is a component providing logging services for applications. Ofrece registro para diferentes *back-ends* usando diferentes adaptadores. También ofrece registro de transacciones, opciones de configuración y diferentes formatos de registro. You can use the [Phalcon\Logger][logger-logger] for any logging need your application has, from debugging processes to tracing application flow.
