@@ -9,7 +9,7 @@ keywords: 'enrutamiento, rutas'
 
 # Componente de Enrutamiento
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The [Phalcon\Mvc\Router][mvc-router] component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. El enrutador tiene dos modos: modo MVC y modo de sólo coincidencia. El primer modo es ideal para trabajar con aplicaciones MVC.
@@ -867,7 +867,7 @@ $route = $router->add(
 $route->setName('invoices-view');
 ```
 
-Entonces, usando por ejemplo el componente [Phalcon\Url](url) podemos construir rutas desde el nombre definido:
+Then, using for example the component [Phalcon\Url](mvc-url) we can build routes from the defined name:
 
 ```php
 <?php
