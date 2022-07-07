@@ -104,7 +104,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 - Renamed `Phalcon\Acl\ComponentAware` to `Phalcon\Acl\ComponentAwareInterface`
 - Renamed `Phalcon\Acl\RoleAware` to `Phalcon\Acl\RoleAwareInterface`
 
-### `Acl\Adapter\Memory` - `Acl\Adapter\AdapterInterface`
+#### `Acl\Adapter\Memory` - `Acl\Adapter\AdapterInterface`
 - Added `getInheritedRoles()` to return an array of the inherited roles in the adapter.
 
 ---
