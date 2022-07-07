@@ -8,7 +8,7 @@ keywords: 'etiqueta, ayudantes, ayudantes vista, generadores html'
 
 # Etiqueta (Ayudantes Vista)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Escribir y mantener código HTML puede convertirse rápidamente en una tarea tediosa a causa de las convenciones de nombre y numerosos atributos que se deben tener en consideración. Phalcon se ocupa de esta complejidad ofreciendo el componente [Phalcon\Tag](api/Phalcon_Tag) que a su vez ofrece ayudantes para generar marcado HTML.
@@ -1384,7 +1384,7 @@ Sintaxis Volt:
 ) }}{% endraw %}
 ```
 
-Si tiene rutas nombradas, puede usar la palabra clave `for` en su vector de parámetros para referenciarla. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
+Si tiene rutas nombradas, puede usar la palabra clave `for` en su vector de parámetros para referenciarla. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](mvc-url).
 
 ```php
 <?php
