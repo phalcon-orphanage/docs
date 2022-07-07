@@ -8,7 +8,7 @@ keywords: 'db, dbal, phql, base de datos, mysql, postgresql, sqlite'
 
 # Capa de Abstracción de Base de Datos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The components under the `Phalcon\Db` namespace are the ones responsible for powering the  [Phalcon\Mvc\Model][mvc-model] class - the `Model` in MVC for the framework. Consiste en una capa de abstracción independiente de alto nivel para sistemas de base de datos escrita completamente en C.
