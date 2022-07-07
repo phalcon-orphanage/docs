@@ -236,6 +236,12 @@ Returns the encryption key
 
 
 ```php
+public function isValidDecryptLength( string $input ): bool;
+```
+Returns if the input length for decryption is valid or not (number of bytes required by the cipher).
+
+
+```php
 public function setAuthData( string $data ): CryptInterface;
 ```
 
@@ -332,6 +338,10 @@ protected function phpFunctionExists( string $name ): bool;
 ```
 @todo to be removed when we get traits
 
+
+```php
+protected function phpOpensslCipherIvLength( string $cipher ): int | bool;
+```
 
 ```php
 protected function phpOpensslRandomPseudoBytes( int $length );
