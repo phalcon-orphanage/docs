@@ -3,7 +3,7 @@ layout: default
 language: 'ja-jp'
 version: '5.0'
 title: 'スポンサー'
-keywords: 'sponsors, opencollective, supporters, スポンサー, 援助'
+keywords: 'sponsors, github, opencollective, supporters'
 ---
 
 # スポンサーになると
