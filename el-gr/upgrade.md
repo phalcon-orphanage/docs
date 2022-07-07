@@ -290,7 +290,7 @@ class MainTask extends Task
 
 * * *
 
-## Εντοπισμός σφαλμάτων
+## Debug
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -371,7 +371,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Γεγονότα
+## Events
 
 ### Events\ManagerInterface
 
@@ -1054,7 +1054,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
 | Phalcon\Cache\Multiple              | Removed    |                                                     |
 
-### Συλλογή
+### Collection
 
 | 3.4.x | State | 4.0.x                          |
 | ----- | ----- | ------------------------------ |
