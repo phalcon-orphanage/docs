@@ -19,11 +19,7 @@ title: 'Phalcon\Events'
 
 | Namespace  | Phalcon\Events | | Uses       | Phalcon\Events\ManagerInterface |
 
-Trait EventsAwareTrait
-
-@package Phalcon\Events\Traits
-
-@property ?ManagerInterface $eventsManager
+This abstract class offers access to the events manager @property ?ManagerInterface $eventsManager
 
 
 ## Propiedades
@@ -62,8 +58,6 @@ Helper method to fire an event
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Event.zep)
 
 | Namespace  | Phalcon\Events | | Implements | EventInterface |
-
-Phalcon\Events\Event
 
 Esta clase ofrece información contextual de un evento disparado en el `EventsManager`
 
@@ -186,8 +180,6 @@ if ($event->isCancelable()) {
 
 | Namespace  | Phalcon\Events |
 
-Phalcon\Events\EventInterface
-
 Interfaz para la clase Phalcon\Events\Event
 
 
@@ -243,8 +235,6 @@ Detiene el evento evitando la propagación
 
 | Namespace  | Phalcon\Events |
 
-Phalcon\Events\EventsAwareInterface
-
 Este interfaz debe ser para aquellas clases que acepten un EventsManager y despachan eventos
 
 
@@ -270,8 +260,6 @@ Establece el administrador de eventos
 
 | Namespace  | Phalcon\Events | | Extends    | \Exception |
 
-Phalcon\Events\Exception
-
 Las excepciones lanzadas en Phalcon\Events usarán esta clase
 
 
@@ -281,8 +269,6 @@ Las excepciones lanzadas en Phalcon\Events usarán esta clase
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Manager.zep)
 
 | Namespace  | Phalcon\Events | | Uses       | Closure, SplPriorityQueue | | Implements | ManagerInterface |
-
-Phalcon\Events\Manager
 
 El Gestor de Eventos de Phalcon, ofrece una forma fácil de interceptar y manipular, si es necesario, el flujo normal de operación. Con el `EventsManager`, el desarrollador puede crear anclajes o plugins que ofrecerán monitorización de datos, manipulación, ejecución condicional y mucho más.
 
@@ -409,8 +395,6 @@ public function isValidHandler( mixed $handler ): bool;
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Events |
-
-Phalcon\Events\ManagerInterface
 
 Interfaz para gestores de Phalcon\Events.
 
