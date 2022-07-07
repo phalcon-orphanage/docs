@@ -8,7 +8,7 @@ keywords: 'tutorial, tutorial vokuro, paso a paso, mvc, seguridad, permisos'
 
 # Tutorial - Vökuró
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Vökuró
 [Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
@@ -177,7 +177,7 @@ Las opciones disponibles son:
 
 | Opción               | Descripción                                                                                                                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `APP_CRYPT_SALT`     | Cadena aleatoria y larga que se usa por el componente [Phalcon\Crypt](crypt) para producir contraseñas y cualquier otra característica de seguridad adicional                                                 |
+| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](encryption-crypt) component to produce passwords and any additional security features                                                              |
 | `APP_BASE_URI`       | Usualmente `/` si su servidor web apunta directamente al directorio Vökuró. Si tiene instalado Vökuró en un subdirectorio, puede ajustar la URI base                                                           |
 | `APP_PUBLIC_URL`     | La URL pública de la aplicación. Se usa para los emails.                                                                                                                                                       |
 | `DB_ADAPTER`         | El adaptador de base de datos. Los adaptadores disponibles son: `mysql`, `pgsql`, `sqlite`. Por favor, asegúrese de que tiene instaladas en su sistema las extensiones correspondientes para la base de datos. |
@@ -819,7 +819,7 @@ El flujo de trabajo de la aplicación es:
 
 ### Form
 
-Para tener validación de los datos facilitados por el usuario, usamos las clases [Phalcon\Forms\Form](forms) y [Phalcon\Validation\*](validation). Estas clases nos permiten crear elementos HTML y adjuntarles validadores. El formulario se pasa entonces a la vista, donde los elementos HTML actuales se renderizan en la pantalla.
+In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](filter-validation) classes. Estas clases nos permiten crear elementos HTML y adjuntarles validadores. El formulario se pasa entonces a la vista, donde los elementos HTML actuales se renderizan en la pantalla.
 
 Cuando el usuario envía la información, envía los datos publicados de vuelta al formulario y los validadores correspondientes validan la entrada y devuelven cualquier posible mensaje de error.
 
@@ -1243,7 +1243,7 @@ $name     = $this
 ;
 ```
 
-Tenga en cuenta que nunca almacenamos contraseñas en texto plano. En su lugar, usamos el componente [Phalcon\Security](security) y llamamos `hash` sobre él, para transformar las contraseñas proporcionadas a un hash unidireccional y almacenarlo en su lugar. De esta forma, si alguien compromete nuestra base de datos, al menos no tendrá acceso a las contraseñas en texto plano.
+Tenga en cuenta que nunca almacenamos contraseñas en texto plano. Instead we use the [Phalcon\Security](encryption-security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. De esta forma, si alguien compromete nuestra base de datos, al menos no tendrá acceso a las contraseñas en texto plano.
 
 ```php
 $password = $this
@@ -1479,7 +1479,7 @@ class Users extends Model
 }
 ```
 
-`beforeValidationOnCreate` disparará cada vez que tenemos un nuevo registro (`Create`), antes de que ocurra alguna validación. Comprobamos si hemos definido una contraseña o no, generaremos una cadena aleatoria, luego haremos *hash* de esa cadena usando [Phalcon\Security](security) y la almacena en la propiedad `password`. También activamos el parámetro para cambiar la contraseña.
+`beforeValidationOnCreate` disparará cada vez que tenemos un nuevo registro (`Create`), antes de que ocurra alguna validación. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](encryption-security) and storing it in the `password` property. También activamos el parámetro para cambiar la contraseña.
 
 Si la contraseña no está vacía, solo establecemos el campo `mustChangePassword` a `N`. Finalmente, establecemos algunos valores predeterminados sobre si el usuario está `active` (activo), `suspended` (suspendido) o `banned` (baneado). Esto asegura que nuestro registro está listo antes de ser insertado en la base de datos.
 
@@ -1528,7 +1528,7 @@ El evento `afterSave` se dispara justo después de guardar un registro en la bas
 
 **Validación**
 
-El modelo también tiene el método `validate` que nos permite adjuntar un validador a cualquier número de campos de nuestro modelo. Para la tabla `Users`, necesitamos que el `email` sea único. Para lo cual, le adjuntamos el [validador](validation) `Uniqueness`. El validador se disparará justo antes de que se realice cualquier operación de guardado en el modelo y se devolverá el mensaje si la validación falla.
+El modelo también tiene el método `validate` que nos permite adjuntar un validador a cualquier número de campos de nuestro modelo. Para la tabla `Users`, necesitamos que el `email` sea único. As such, we attach the `Uniqueness` [validator](filter-validation) to it. El validador se disparará justo antes de que se realice cualquier operación de guardado en el modelo y se devolverá el mensaje si la validación falla.
 
 
 ```php
@@ -1580,7 +1580,7 @@ Vökuró es una aplicación de ejemplo que usamos para demostrar algunas de las 
 - [ACL Phalcon](acl)
 - [Formularios Phalcon](forms)
 - [Respuesta HTTP Phalcon](response)
-- [Seguridad Phalcon](security)
+- [Seguridad Phalcon](encryption-security)
 - [Vökuró - Repositorio GitHub][github_vokuro]
 
 
