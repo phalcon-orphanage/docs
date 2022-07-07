@@ -178,6 +178,12 @@ Devuelve la traducción relacionada con la clave proporcionada
 
 
 ```php
+public function toArray(): array;
+```
+Returns the internal array
+
+
+```php
 protected function phpFopen( string $filename, string $mode );
 ```
 @todo to be removed when we get traits
@@ -417,6 +423,12 @@ Siempre que no se encuentre una clave, se llamará a este método
 public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 Devuelve la traducción relacionada con la clave proporcionada
+
+
+```php
+public function toArray(): array;
+```
+Returns the internal array
 
 
 

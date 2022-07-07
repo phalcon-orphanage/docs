@@ -8,7 +8,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 # 依存性の注入 / サービスの場所
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
 [Phalcon\Di][di] is a container that stores services or components (classes). これらのサービスはアプリケーション全体で利用可能で、開発を容易にします。 お客様の請求書の計算を実行する `InvoiceComponent` と呼ばれる請求書コンポーネントを開発していると仮定します。 データベースから `invoice` レコードを取得するためにデータベース接続が必要です。
@@ -1546,27 +1546,27 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | はい     | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | はい     | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | はい     | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | はい     | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | はい     | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | はい     | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | はい     | ディスパッチャー                     |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | はい     | エスケープ                        |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | はい     | エスケープ                        |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | はい     | イベント管理                       |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | はい     | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | はい     | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | はい     | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | はい     | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | はい     | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | No     | Models MetaData              |
 | `request`            | [Phalcon\Http\Request](request)                                   | はい     | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | はい     | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | はい     | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | はい     | セキュリティ                       |
+| `security`           | [Phalcon\Security](encryption-security)                            | はい     | セキュリティ                       |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | はい     | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | はい     | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | はい     | Database Transaction Manager |
-| `url`                | [Phalcon\Url](url)                                                 | はい     | URL Generation               |
+| `url`                | [Phalcon\Url](mvc-url)                                             | はい     | URL Generation               |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 

@@ -9,7 +9,7 @@ keywords: 'volt, template engine, php generation, view data'
 
 # Volt: Template Engine
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
@@ -2094,10 +2094,10 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 [array_keys]: https://php.net/manual/en/function.array-keys
 [asort]: https://php.net/manual/en/function.asort.php
 [count]: https://www.php.net/manual/en/function.count.php
-[escaper]: escaper
-[escaper]: escaper
-[escaper]: escaper
-[escaper]: escaper
+[escaper]: html-escaper
+[escaper]: html-escaper
+[escaper]: html-escaper
+[escaper]: html-escaper
 [jinja]: https://github.com/pallets/jinja
 [join]: https://php.net/manual/en/function.join.php
 [json]: https://php.net/manual/en/function.json-encode.php

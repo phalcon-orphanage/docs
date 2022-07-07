@@ -8,7 +8,7 @@ keywords: 'caso de uso, ejemplos'
 
 # Caso de Uso
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 A través de esta documentación vamos a asumir que estamos construyendo una aplicación contable.
 

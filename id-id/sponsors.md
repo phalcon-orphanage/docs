@@ -3,7 +3,7 @@ layout: default
 language: 'id-id'
 version: '5.0'
 title: 'Sponsors'
-keywords: 'sponsors, opencollective, supporters'
+keywords: 'sponsors, github, opencollective, supporters'
 ---
 
 # Becoming a Sponsor

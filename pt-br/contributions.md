@@ -8,7 +8,7 @@ keywords: 'contribuindo, pull request, nova solicitação de recurso'
 
 # Contribuições
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Contribuindo para o Phalcon
 Phalcon é um projeto de código aberto e depende fortemente dos esforços e contribuições voluntárias. Nós agradecemos as contribuições de todos!

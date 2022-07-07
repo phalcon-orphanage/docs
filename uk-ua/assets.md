@@ -9,7 +9,7 @@ keywords: 'assets, js, css'
 
 # Assets Management
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
@@ -820,7 +820,7 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [yui]: https://yui.github.io/yuicompressor
 [sass]: https://sass-lang.com
 [closure]: https://developers.google.com/closure/compiler
-[url]: url
+[url]: mvc-url
 [collections]: api/phalcon_assets#assets-collection
 [filter-interface]: api/phalcon_assets#assets-filterinterface
 [filter-none]: api/phalcon_assets#assets-filters-none

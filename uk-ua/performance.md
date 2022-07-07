@@ -8,7 +8,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode, продук
 
 # Продуктивність
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 Погано написана програма завжди матиме низьку продуктивність. Найпоширеніший спосіб для розробників підвищити продуктивність своїх продуктів:

@@ -8,7 +8,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 # Dependency Injection / Service Location
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Di][di] is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
@@ -1546,27 +1546,27 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Ano    | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Ano    | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Ano    | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Ano    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ano    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Ano    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ano    | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Ano    | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Ano    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ano    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ano    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Ano    | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | Ano    | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | Ano    | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Ano    | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Ne     | Models MetaData              |
 | `request`            | [Phalcon\Http\Request](request)                                   | Ano    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Ano    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Ano    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Ano    | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Ano    | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Ano    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Ano    | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Ano    | Database Transaction Manager |
-| `url`                | [Phalcon\Url](url)                                                 | Ano    | URL Generation               |
+| `url`                | [Phalcon\Url](mvc-url)                                             | Ano    | URL Generation               |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 

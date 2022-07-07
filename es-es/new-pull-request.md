@@ -8,7 +8,7 @@ keywords: 'new pull request, pull request, pr'
 
 # Nuevo *Pull Request (PR)*
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 A pull request for Phalcon must be against our main repository [cphalcon][]. Es una colección de cambios en el código que:
 

@@ -8,7 +8,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 # Dependency Injection / Service Location
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Di][di] is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
@@ -1546,27 +1546,27 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
 | `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Tak    | Annotations parser           |
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Tak    | Assets manager               |
-| `crypt`              | [Phalcon\Crypt](crypt)                                             | Tak    | Encrypt/Decrypt              |
+| `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Tak    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Tak    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Tak    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Tak    | Dispatcher                   |
-| `escaper`            | [Phalcon\Escaper](escaper)                                         | Tak    | Escaper                      |
+| `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Tak    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Tak    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Tak    | Flash Messaging              |
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Tak    | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter](filter)                                           | Tak    | Filtering / Sanitizing       |
+| `filter`             | [Phalcon\Filter](filter-filter)                                    | Tak    | Filtering / Sanitizing       |
 | `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Tak    | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Nie    | Models MetaData              |
 | `request`            | [Phalcon\Http\Request](request)                                   | Tak    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Tak    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Tak    | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Tak    | Security                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Tak    | Security                     |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Tak    | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Tak    | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Tak    | Database Transaction Manager |
-| `url`                | [Phalcon\Url](url)                                                 | Tak    | URL Generation               |
+| `url`                | [Phalcon\Url](mvc-url)                                             | Tak    | URL Generation               |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 

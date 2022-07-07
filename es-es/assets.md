@@ -9,7 +9,7 @@ keywords: 'recursos, js, css'
 
 # Gestión de Recursos (Assets)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 `Phalcon\Assets` es un componente que le permite gestionar recursos estáticos como hojas de estilo CSS o librerías JavaScript en una aplicación web.
@@ -820,7 +820,7 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [yui]: https://yui.github.io/yuicompressor
 [sass]: https://sass-lang.com
 [closure]: https://developers.google.com/closure/compiler
-[url]: url
+[url]: mvc-url
 [collections]: api/phalcon_assets#assets-collection
 [filter-interface]: api/phalcon_assets#assets-filterinterface
 [filter-none]: api/phalcon_assets#assets-filters-none

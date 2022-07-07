@@ -8,7 +8,7 @@ keywords: 'application, micro, handlers, api'
 
 # Micro Application
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
@@ -1288,7 +1288,7 @@ $invoices
 $app->mount($invoices);
 ```
 
-Lastly you need the [Phalcon\Url](url) component to generate URLs for the named routes.
+Lastly you need the [Phalcon\Url](mvc-url) component to generate URLs for the named routes.
 
 ```php
 <?php

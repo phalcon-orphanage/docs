@@ -527,8 +527,6 @@ public function __invoke( mixed $input );
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
-Phalcon\Filter\Sanitize\String
-
 Sanitizes a value to string
 
 
@@ -962,7 +960,7 @@ Checks if field can be empty.
 
 
 ```php
-protected function prepareCode( string $field ): int | null;
+protected function prepareCode( string $field ): int;
 ```
 Prepares a validation code.
 

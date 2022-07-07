@@ -9,7 +9,7 @@ keywords: 'mvc, vista, componente vista, vista simple, respuestas'
 
 # Vistas
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas formatean el contenido que necesita devolver al usuario/navegador web que inició la petición.
@@ -1366,7 +1366,7 @@ $.ajax({
 </script>
 ```
 
-En el ejemplo anterior, usamos el componente [Phalcon\Url](url) en nuestro código javascript, para configurar correctamente la URL en nuestra aplicación. El servicio está disponible en la vista accediendo a `$this->url`.
+In the example above, we are utilizing the [Phalcon\Url](mvc-url) component in our javascript code, to correctly set up the URL in our application. El servicio está disponible en la vista accediendo a `$this->url`.
 
 ## Independiente
 You can also use the view as a _glue_ component in your application. Solo necesitará tener la configuración adecuada y luego usar la vista para devolver los resultados procesados.

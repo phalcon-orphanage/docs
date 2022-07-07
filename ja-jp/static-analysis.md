@@ -8,7 +8,7 @@ keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 
 # Static Analysis
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## 概要
 

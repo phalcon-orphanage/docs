@@ -8,7 +8,7 @@ keywords: 'eventos, gestor de eventos, hooks'
 
 # Gestor de Eventos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. Estos *hooks* permiten a los desarrolladores obtener información de estado, manipular datos o cambiar el flujo de ejecución durante el proceso de un componente. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
@@ -897,10 +897,10 @@ Los eventos disponibles en Phalcon son:
 | [Dispatcher](dispatcher)       | `dispatch:beforeExecuteRoute`        | Dispatcher                                              |
 | [Dispatcher](dispatcher)       | `dispatch:beforeForward`             | Dispatcher, array (MVC Dispatcher)                      |
 | [Dispatcher](dispatcher)       | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
-| [Loader](loader)               | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [Loader](loader)               | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Loader](loader)               | `loader:beforeCheckPath`             | Loader                                                  |
-| [Loader](loader)               | `loader:pathFound`                   | Loader, File Path                                       |
+| [Loader](autoload)             | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [Loader](autoload)             | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [Loader](autoload)             | `loader:beforeCheckPath`             | Loader                                                  |
+| [Loader](autoload)             | `loader:pathFound`                   | Loader, File Path                                       |
 | [Micro](application-micro)     | `micro:afterBinding`                 | Micro                                                   |
 | [Micro](application-micro)     | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [Micro](application-micro)     | `micro:afterExecuteRoute`            | Micro                                                   |

@@ -9,7 +9,7 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 # Προβολές
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views format the content that you need to send back to the user/web browser that initiated the request.
@@ -1366,7 +1366,7 @@ $.ajax({
 </script>
 ```
 
-In the example above, we are utilizing the [Phalcon\Url](url) component in our javascript code, to correctly set up the URL in our application. The service is available in the view by accessing `$this->url`.
+In the example above, we are utilizing the [Phalcon\Url](mvc-url) component in our javascript code, to correctly set up the URL in our application. The service is available in the view by accessing `$this->url`.
 
 ## Stand Alone
 You can also use the view as a _glue_ component in your application. You will only need to have the proper setup and then use the view to return processed results back.

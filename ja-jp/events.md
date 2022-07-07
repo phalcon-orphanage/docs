@@ -8,7 +8,7 @@ keywords: 'events, events manager, hooks'
 
 # イベント管理
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. これらのフックにより、開発者はステータス情報を取得したり、データを操作したり、コンポーネントのプロセス中に実行フローを変更したりすることができます。 The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
@@ -897,10 +897,10 @@ The events available in Phalcon are:
 | [ディスパッチャー](dispatcher)      | `dispatch:beforeExecuteRoute`        | ディスパッチャー                                                |
 | [ディスパッチャー](dispatcher)      | `dispatch:beforeForward`             | Dispatcher, array  (MVC Dispatcher)                     |
 | [ディスパッチャー](dispatcher)      | `dispatch:beforeNotFoundAction`      | ディスパッチャー                                                |
-| [ローダー](loader)              | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [ローダー](loader)              | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [ローダー](loader)              | `loader:beforeCheckPath`             | ローダー                                                    |
-| [ローダー](loader)              | `loader:pathFound`                   | Loader, File Path                                       |
+| [ローダー](autoload)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [ローダー](autoload)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [ローダー](autoload)            | `loader:beforeCheckPath`             | ローダー                                                    |
+| [ローダー](autoload)            | `loader:pathFound`                   | Loader, File Path                                       |
 | [小規模アプリ](application-micro) | `micro:afterBinding`                 | 小規模アプリ                                                  |
 | [小規模アプリ](application-micro) | `micro:afterHandleRoute`             | Micro, return value mixed                               |
 | [小規模アプリ](application-micro) | `micro:afterExecuteRoute`            | 小規模アプリ                                                  |

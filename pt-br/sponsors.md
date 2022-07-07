@@ -3,7 +3,7 @@ layout: default
 language: 'pt-br'
 version: '5.0'
 title: 'Patrocinadores'
-keywords: 'patrocinadores, opencollective, apoiadores'
+keywords: 'sponsors, github, opencollective, supporters'
 ---
 
 # Torne-se um Patrocinador

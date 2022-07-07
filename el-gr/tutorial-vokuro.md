@@ -8,7 +8,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 
 # Tutorial - Vökuró
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Vökuró
 [Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
@@ -177,7 +177,7 @@ The available options are:
 
 | Option               | Περιγραφή                                                                                                                                                               |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](crypt) component to produce passwords and any additional security features                                  |
+| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](encryption-crypt) component to produce passwords and any additional security features                       |
 | `APP_BASE_URI`       | Usually `/` if your web server points directly to the Vökuró directory. If you have installed Vökuró in a sub directory, you can adjust the base URI                    |
 | `APP_PUBLIC_URL`     | The public URL of the application. This is used for the emails.                                                                                                         |
 | `DB_ADAPTER`         | The database adapter. The available adapters are: `mysql`, `pgsql`, `sqlite`. Please ensure that the relevant extensions for the database are installed in your system. |
@@ -819,7 +819,7 @@ The workflow of the application is:
 
 ### Form
 
-In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen.
+In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](filter-validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen.
 
 When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
 
@@ -1243,7 +1243,7 @@ $name     = $this
 ;
 ```
 
-Note that we never store clear text passwords. Instead we use the [Phalcon\Security](security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
+Note that we never store clear text passwords. Instead we use the [Phalcon\Security](encryption-security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
 
 ```php
 $password = $this
@@ -1479,7 +1479,7 @@ class Users extends Model
 }
 ```
 
-The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) and storing it in the `password` property. We also set the flag to change the password.
+The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](encryption-security) and storing it in the `password` property. We also set the flag to change the password.
 
 If the password is not empty, we just set the `mustChangePassword` field to `N`. Finally, we set some defaults on whether the user is `active`, `suspended` or `banned`. This ensures that our record is ready before it is inserted in the database.
 
@@ -1528,7 +1528,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 
 **Επικύρωση**
 
-The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
+The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](filter-validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 
 
 ```php
@@ -1580,7 +1580,7 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Phalcon ACL](acl)
 - [Phalcon Forms](forms)
 - [Phalcon HTTP Response](response)
-- [Phalcon Security](security)
+- [Phalcon Security](encryption-security)
 - [Vökuró - GitHub Repository][github_vokuro]
 
 

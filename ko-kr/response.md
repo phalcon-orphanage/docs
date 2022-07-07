@@ -8,7 +8,7 @@ keywords: 'http, http response, response'
 
 # Response Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 [Phalcon\Http\Response][http-response] is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not _only_ the actual response payload. The component acts as a constructor of the response and as a HTTP client to send the response back to the caller. You can always use the [Phalcon\Http\Message\Response][http-message-response] for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.
@@ -508,7 +508,7 @@ $response = new Response();
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](url) service (by default [Phalcon\Url][url]). This example demonstrates how you can redirect using a route you have defined in your application:
+All internal URIs are generated using the [url](mvc-url) service (by default [Phalcon\Url][url]). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php 

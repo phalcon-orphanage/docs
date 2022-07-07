@@ -8,13 +8,13 @@ keywords: 'html, attributes, tag, tag factory'
 
 # HTML Helpers
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 This namespace contains components that help with the generation of HTML.
 
 ## Attributes
-The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](collection). It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Tag](tag) internally to render the attributes that a HTML element has. These HTML attributes are defined in the object itself.
+The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](support-collection). It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Tag](tag) internally to render the attributes that a HTML element has. These HTML attributes are defined in the object itself.
 
 The component can be used on its own if you want to collect HTML attributes in an object and then _render) them (return them as a string) in a `key=value` format.
 
@@ -138,7 +138,7 @@ The registered names for respective helpers are:
 | `textarea`   | [Phalcon\Html\Helper\TextArea][html-helper-textarea] - `<textarea>` tag |
 
 ### Helpers
-All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](escaper).
+All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](html-escaper).
 
 > **NOTE**: The code and output below has been formatted for readability 
 > 

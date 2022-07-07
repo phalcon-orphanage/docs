@@ -61,11 +61,14 @@ title: 'Phalcon\Support'
 * [Phalcon\Support\Helper\Str\IsLower](#support-helper-str-islower)
 * [Phalcon\Support\Helper\Str\IsPalindrome](#support-helper-str-ispalindrome)
 * [Phalcon\Support\Helper\Str\IsUpper](#support-helper-str-isupper)
+* [Phalcon\Support\Helper\Str\KebabCase](#support-helper-str-kebabcase)
 * [Phalcon\Support\Helper\Str\Len](#support-helper-str-len)
 * [Phalcon\Support\Helper\Str\Lower](#support-helper-str-lower)
+* [Phalcon\Support\Helper\Str\PascalCase](#support-helper-str-pascalcase)
 * [Phalcon\Support\Helper\Str\Prefix](#support-helper-str-prefix)
 * [Phalcon\Support\Helper\Str\Random](#support-helper-str-random)
 * [Phalcon\Support\Helper\Str\ReduceSlashes](#support-helper-str-reduceslashes)
+* [Phalcon\Support\Helper\Str\SnakeCase](#support-helper-str-snakecase)
 * [Phalcon\Support\Helper\Str\StartsWith](#support-helper-str-startswith)
 * [Phalcon\Support\Helper\Str\Suffix](#support-helper-str-suffix)
 * [Phalcon\Support\Helper\Str\Ucwords](#support-helper-str-ucwords)
@@ -132,10 +135,18 @@ public function __isset( string $element ): bool;
 
 
 ```php
+public function __serialize(): array;
+```
+
+```php
 public function __set( string $element, mixed $value ): void;
 ```
 *Setter* mágico para asignar valores a un elemento
 
+
+```php
+public function __unserialize( array $data ): void;
+```
 
 ```php
 public function __unset( string $element ): void;
@@ -204,7 +215,7 @@ Indica si existe un desplazamiento. Ver [offsetExists](https://php.net/manual/en
 
 
 ```php
-public function offsetGet( mixed $element );
+public function offsetGet( mixed $element ): mixed;
 ```
 Desplazamiento a obtener. Ver [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
 
@@ -258,7 +269,7 @@ Ver [rfc4627](https://www.ietf.org/rfc/rfc4627.txt)
 
 
 ```php
-public function unserialize( mixed $serialized ): void;
+public function unserialize( string $serialized ): void;
 ```
 Construye el objeto. Ver [unserialize](https://php.net/manual/en/serializable.unserialize.php)
 
@@ -1316,15 +1327,15 @@ Uppercases a string using mbstring
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Camelize.zep)
 
-| Namespace  | Phalcon\Support\Helper\Str |
+| Namespace  | Phalcon\Support\Helper\Str | | Extends    | PascalCase |
 
-Convierte las cadenas a estilo camelize
+Converts strings to upperCamelCase or lowerCamelCase
 
 
 ## Métodos
 
 ```php
-public function __invoke( string $text, string $delimiters = null ): string;
+public function __invoke( string $text, string $delimiters = null, bool $lowerFirst = bool ): string;
 ```
 
 
@@ -1675,6 +1686,25 @@ public function __invoke( string $text, string $encoding = string ): bool;
 
 
 
+<h1 id="support-helper-str-kebabcase">Class Phalcon\Support\Helper\Str\KebabCase</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/KebabCase.zep)
+
+| Namespace  | Phalcon\Support\Helper\Str | | Extends    | PascalCase |
+
+Converts strings to kebab-case style
+
+
+## Métodos
+
+```php
+public function __invoke( string $text, string $delimiters = null ): string;
+```
+
+
+
+
+
 <h1 id="support-helper-str-len">Class Phalcon\Support\Helper\Str\Len</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Len.zep)
@@ -1707,6 +1737,29 @@ Converts a string to lowercase using mbstring
 
 ```php
 public function __invoke( string $text, string $encoding = string ): string;
+```
+
+
+
+
+
+<h1 id="support-helper-str-pascalcase">Class Phalcon\Support\Helper\Str\PascalCase</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/PascalCase.zep)
+
+| Namespace  | Phalcon\Support\Helper\Str |
+
+Converts strings to PascalCase style
+
+
+## Métodos
+
+```php
+public function __invoke( string $text, string $delimiters = null ): string;
+```
+
+```php
+protected function processArray( string $text, string $delimiters = null ): array;
 ```
 
 
@@ -1774,6 +1827,25 @@ Reduce múltiples barras de una cadena a sólo una barra
 
 ```php
 public function __invoke( string $text ): string;
+```
+
+
+
+
+
+<h1 id="support-helper-str-snakecase">Class Phalcon\Support\Helper\Str\SnakeCase</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/SnakeCase.zep)
+
+| Namespace  | Phalcon\Support\Helper\Str | | Extends    | PascalCase |
+
+Converts strings to snake_case style
+
+
+## Métodos
+
+```php
+public function __invoke( string $text, string $delimiters = null ): string;
 ```
 
 
@@ -1902,7 +1974,7 @@ public function __invoke( string $text, string $encoding = string ): string;
 
 ServiceLocator implementation for helpers
 
-@method array  blacklist(array $collection, array $blackList) @method array  chunk(array $collection, int $size, bool $preserveKeys = false) @method mixed  first(array $collection, callable $method = null) @method mixed  firstKey(array $collection, callable $method = null) @method array  flatten(array $collection, bool $deep = false) @method mixed  get(array $collection, $index, $defaultValue = null, string $cast = null) @method array  group(array $collection, $method) @method bool   has(array $collection, $index) @method bool   isUnique(array $collection) @method mixed  last(array $collection, callable $method = null) @method mixed  lastKey(array $collection, callable $method = null) @method array  order(array $collection, $attribute, string $order = 'asc') @method array  pluck(array $collection, string $element) @method array  set(array $collection, $value, $index = null) @method array  sliceLeft(array $collection, int $elements = 1) @method array  sliceRight(array $collection, int $elements = 1) @method array  split(array $collection) @method object toObject(array $collection) @method bool   validateAll(array $collection, callable $method) @method bool   validateAny(array $collection, callable $method) @method array  whitelist(array $collection, array $whiteList) @method string basename(string $uri, string $suffix = null) @method string decode(string $data, bool $associative = false, int $depth = 512, int $options = 0) @method string encode($data, int $options = 0, int $depth = 512) @method bool   between(int $value, int $start, int $end) @method string concat(string $delimiter, string $first, string $second, string ...$arguments) @method int    countVowels(string $text) @method string decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8') @method string decrement(string $text, string $separator = '_') @method string dirFromFile(string $file) @method string dirSeparator(string $directory) @method bool   endsWith(string $haystack, string $needle, bool $ignoreCase = true) @method string firstBetween(string $text, string $start, string $end) @method string friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null) @method string humanize(string $text) @method bool   includes(string $haystack, string $needle) @method string increment(string $text, string $separator = '_') @method bool   isAnagram(string $first, string $second) @method bool   isLower(string $text, string $encoding = 'UTF-8') @method bool   isPalindrome(string $text) @method bool   isUpper(string $text, string $encoding = 'UTF-8') @method int    len(string $text, string $encoding = 'UTF-8') @method string lower(string $text, string $encoding = 'UTF-8') @method string prefix($text, string $prefix) @method string random(int $type = 0, int $length = 8) @method string reduceSlashes(string $text) @method bool   startsWith(string $haystack, string $needle, bool $ignoreCase = true) @method string suffix($text, string $suffix) @method string ucwords(string $text, string $encoding = 'UTF-8') @method string underscore(string $text) @method string upper(string $text, string $encoding = 'UTF-8')
+@method array  blacklist(array $collection, array $blackList) @method array  chunk(array $collection, int $size, bool $preserveKeys = false) @method mixed  first(array $collection, callable $method = null) @method mixed  firstKey(array $collection, callable $method = null) @method array  flatten(array $collection, bool $deep = false) @method mixed  get(array $collection, $index, $defaultValue = null, string $cast = null) @method array  group(array $collection, $method) @method bool   has(array $collection, $index) @method bool   isUnique(array $collection) @method mixed  last(array $collection, callable $method = null) @method mixed  lastKey(array $collection, callable $method = null) @method array  order(array $collection, $attribute, string $order = 'asc') @method array  pluck(array $collection, string $element) @method array  set(array $collection, $value, $index = null) @method array  sliceLeft(array $collection, int $elements = 1) @method array  sliceRight(array $collection, int $elements = 1) @method array  split(array $collection) @method object toObject(array $collection) @method bool   validateAll(array $collection, callable $method) @method bool   validateAny(array $collection, callable $method) @method array  whitelist(array $collection, array $whiteList) @method string basename(string $uri, string $suffix = null) @method string decode(string $data, bool $associative = false, int $depth = 512, int $options = 0) @method string encode($data, int $options = 0, int $depth = 512) @method bool   between(int $value, int $start, int $end) @method string camelize(string $text, string $delimiters = null, bool $lowerFirst = false) @method string concat(string $delimiter, string $first, string $second, string ...$arguments) @method int    countVowels(string $text) @method string decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8') @method string decrement(string $text, string $separator = '_') @method string dirFromFile(string $file) @method string dirSeparator(string $directory) @method bool   endsWith(string $haystack, string $needle, bool $ignoreCase = true) @method string firstBetween(string $text, string $start, string $end) @method string friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null) @method string humanize(string $text) @method bool   includes(string $haystack, string $needle) @method string increment(string $text, string $separator = '_') @method bool   isAnagram(string $first, string $second) @method bool   isLower(string $text, string $encoding = 'UTF-8') @method bool   isPalindrome(string $text) @method bool   isUpper(string $text, string $encoding = 'UTF-8') @method string kebabCase(string $text, string $delimiters = null) @method int    len(string $text, string $encoding = 'UTF-8') @method string lower(string $text, string $encoding = 'UTF-8') @method string pascalCase(string $text, string $delimiters = null) @method string prefix($text, string $prefix) @method string random(int $type = 0, int $length = 8) @method string reduceSlashes(string $text) @method bool   startsWith(string $haystack, string $needle, bool $ignoreCase = true) @method string snakeCase(string $text, string $delimiters = null) @method string suffix($text, string $suffix) @method string ucwords(string $text, string $encoding = 'UTF-8') @method string uncamelize(string $text, string $delimiters = '_') @method string underscore(string $text) @method string upper(string $text, string $encoding = 'UTF-8')
 
 
 ## Métodos

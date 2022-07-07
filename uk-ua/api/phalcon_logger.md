@@ -5,12 +5,14 @@ version: '5.0'
 title: 'Phalcon\Logger'
 ---
 
+* [Phalcon\Logger\AbstractLogger](#logger-abstractlogger)
 * [Phalcon\Logger\Adapter\AbstractAdapter](#logger-adapter-abstractadapter)
 * [Phalcon\Logger\Adapter\AdapterInterface](#logger-adapter-adapterinterface)
 * [Phalcon\Logger\Adapter\Noop](#logger-adapter-noop)
 * [Phalcon\Logger\Adapter\Stream](#logger-adapter-stream)
 * [Phalcon\Logger\Adapter\Syslog](#logger-adapter-syslog)
 * [Phalcon\Logger\AdapterFactory](#logger-adapterfactory)
+* [Phalcon\Logger\Enum](#logger-enum)
 * [Phalcon\Logger\Exception](#logger-exception)
 * [Phalcon\Logger\Formatter\AbstractFormatter](#logger-formatter-abstractformatter)
 * [Phalcon\Logger\Formatter\FormatterInterface](#logger-formatter-formatterinterface)
@@ -19,6 +21,152 @@ title: 'Phalcon\Logger'
 * [Phalcon\Logger\Item](#logger-item)
 * [Phalcon\Logger\Logger](#logger-logger)
 * [Phalcon\Logger\LoggerFactory](#logger-loggerfactory)
+* [Phalcon\Logger\LoggerInterface](#logger-loggerinterface)
+
+<h1 id="logger-abstractlogger">Abstract Class Phalcon\Logger\AbstractLogger</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/AbstractLogger.zep)
+
+| Namespace  | Phalcon\Logger | | Uses       | DateTimeImmutable, DateTimeZone, Exception, Phalcon\Logger\Exception, Phalcon\Logger\Adapter\AdapterInterface |
+
+Abstract Logger Class
+
+A PSR compatible logger, with various adapters and formatters. A formatter interface is available as well as an adapter one. Adapters can be created easily using the built in AdapterFactory. A LoggerFactory is also available that allows developers to create new instances of the Logger or load them from config files (see Phalcon\Config\Config object).
+
+@package Phalcon\Logger
+
+@property AdapterInterface[] $adapters @property array              $excluded @property int                $logLevel @property string             $name @property string             $timezone
+
+
+## Constants
+```php
+const ALERT = 2;
+const CRITICAL = 1;
+const CUSTOM = 8;
+const DEBUG = 7;
+const EMERGENCY = 0;
+const ERROR = 3;
+const INFO = 6;
+const NOTICE = 5;
+const WARNING = 4;
+```
+
+## Властивості
+```php
+/**
+ * The adapter stack
+ *
+ * @var AdapterInterface[]
+ */
+protected adapters;
+
+/**
+ * The excluded adapters for this log process
+ *
+ * @var array
+ */
+protected excluded;
+
+/**
+ * Minimum log level for the logger
+ *
+ * @var int
+ */
+protected logLevel = 8;
+
+/**
+ * @var string
+ */
+protected name = ;
+
+/**
+ * @var DateTimeZone
+ */
+protected timezone;
+
+```
+
+## Методи
+
+```php
+public function __construct( string $name, array $adapters = [], DateTimeZone $timezone = null );
+```
+Constructor.
+
+
+```php
+public function addAdapter( string $name, AdapterInterface $adapter ): AbstractLogger;
+```
+Add an adapter to the stack. For processing we use FIFO
+
+
+```php
+public function excludeAdapters( array $adapters = [] ): AbstractLogger;
+```
+Exclude certain adapters.
+
+
+```php
+public function getAdapter( string $name ): AdapterInterface;
+```
+Returns an adapter from the stack
+
+
+```php
+public function getAdapters(): array;
+```
+Returns the adapter stack array
+
+
+```php
+public function getLogLevel(): int;
+```
+Returns the log level
+
+
+```php
+public function getName(): string;
+```
+Returns the name of the logger
+
+
+```php
+public function removeAdapter( string $name ): AbstractLogger;
+```
+Removes an adapter from the stack
+
+
+```php
+public function setAdapters( array $adapters ): AbstractLogger;
+```
+Sets the adapters stack overriding what is already there
+
+
+```php
+public function setLogLevel( int $level ): AbstractLogger;
+```
+Sets the adapters stack overriding what is already there
+
+
+```php
+protected function addMessage( int $level, string $message, array $context = [] ): bool;
+```
+Adds a message to each handler for processing
+
+
+```php
+protected function getLevelNumber( mixed $level ): int;
+```
+Converts the level from string/word to an integer
+
+
+```php
+protected function getLevels(): array;
+```
+Returns an array of log levels with integer to string conversion
+
+
+
 
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
@@ -421,6 +569,29 @@ Returns the available adapters
 
 
 
+<h1 id="logger-enum">Class Phalcon\Logger\Enum</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Enum.zep)
+
+| Namespace  | Phalcon\Logger |
+
+Log Level Enum constants
+
+
+## Constants
+```php
+const ALERT = 2;
+const CRITICAL = 1;
+const CUSTOM = 8;
+const DEBUG = 7;
+const EMERGENCY = 0;
+const ERROR = 3;
+const INFO = 6;
+const NOTICE = 5;
+const WARNING = 4;
+```
+
+
 <h1 id="logger-exception">Class Phalcon\Logger\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Exception.zep)
@@ -487,7 +658,7 @@ This interface must be implemented by formatters in Phalcon\Logger
 ## Методи
 
 ```php
-public function format( Item $item ): string | array;
+public function format( Item $item ): string;
 ```
 Applies a format to an item
 
@@ -647,81 +818,17 @@ public function getMessage(): string
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/Logger.zep)
 
-| Namespace  | Phalcon\Logger | | Uses       | DateTimeImmutable, DateTimeZone, Exception, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Exception, Psr\Log\InvalidArgumentException, Psr\Log\LoggerInterface | | Implements | LoggerInterface |
+| Namespace  | Phalcon\Logger | | Uses       | Exception, Phalcon\Logger\Exception | | Extends    | AbstractLogger | | Implements | LoggerInterface |
 
 Phalcon Logger.
 
-A PSR compatible logger, with various adapters and formatters. A formatter interface is available as well as an adapter one. Adapters can be created easily using the built in AdapterFactory. A LoggerFactory is also available that allows developers to create new instances of the Logger or load them from config files (see Phalcon\Config\Config object).
+A logger, with various adapters and formatters. A formatter interface is available as well as an adapter one. Adapters can be created easily using the built-in AdapterFactory. A LoggerFactory is also available that allows developers to create new instances of the Logger or load them from config files (see Phalcon\Config\Config object).
 
-@package Phalcon\Logger
-
-@property AdapterInterface[] $adapters @property array              $excluded @property int                $logLevel @property string             $name @property string             $timezone
-
-
-## Constants
-```php
-const ALERT = 2;
-const CRITICAL = 1;
-const CUSTOM = 8;
-const DEBUG = 7;
-const EMERGENCY = 0;
-const ERROR = 3;
-const INFO = 6;
-const NOTICE = 5;
-const WARNING = 4;
-```
-
-## Властивості
-```php
-/**
- * The adapter stack
- *
- * @var AdapterInterface[]
- */
-protected adapters;
-
-/**
- * The excluded adapters for this log process
- *
- * @var array
- */
-protected excluded;
-
-/**
- * Minimum log level for the logger
- *
- * @var int
- */
-protected logLevel = 8;
-
-/**
- * @var string
- */
-protected name = ;
-
-/**
- * @var DateTimeZone|null
- */
-protected timezone;
-
-```
 
 ## Методи
 
 ```php
-public function __construct( string $name, array $adapters = [], DateTimeZone $timezone = null );
-```
-Constructor.
-
-
-```php
-public function addAdapter( string $name, AdapterInterface $adapter ): Logger;
-```
-Add an adapter to the stack. For processing we use FIFO
-
-
-```php
-public function alert( mixed $message, array $context = [] ): void;
+public function alert( string $message, array $context = [] ): void;
 ```
 Action must be taken immediately.
 
@@ -729,7 +836,7 @@ Example: Entire website down, database unavailable, etc. This should trigger the
 
 
 ```php
-public function critical( mixed $message, array $context = [] ): void;
+public function critical( string $message, array $context = [] ): void;
 ```
 Critical conditions.
 
@@ -737,49 +844,25 @@ Example: Application component unavailable, unexpected exception.
 
 
 ```php
-public function debug( mixed $message, array $context = [] ): void;
+public function debug( string $message, array $context = [] ): void;
 ```
 Detailed debug information.
 
 
 ```php
-public function emergency( mixed $message, array $context = [] ): void;
+public function emergency( string $message, array $context = [] ): void;
 ```
 System is unusable.
 
 
 ```php
-public function error( mixed $message, array $context = [] ): void;
+public function error( string $message, array $context = [] ): void;
 ```
 Runtime errors that do not require immediate action but should typically be logged and monitored.
 
 
 ```php
-public function excludeAdapters( array $adapters = [] ): Logger;
-```
-Exclude certain adapters.
-
-
-```php
-public function getAdapter( string $name ): AdapterInterface;
-```
-Returns an adapter from the stack
-
-
-```php
-public function getAdapters(): AdapterInterface[]
-```
-
-```php
-public function getLogLevel(): int
-```
-
-```php
-public function getName(): string
-```
-
-```php
-public function info( mixed $message, array $context = [] ): void;
+public function info( string $message, array $context = [] ): void;
 ```
 Interesting events.
 
@@ -787,53 +870,23 @@ Example: User logs in, SQL logs.
 
 
 ```php
-public function log( mixed $level, mixed $message, array $context = [] ): void;
+public function log( mixed $level, string $message, array $context = [] ): void;
 ```
 Logs with an arbitrary level.
 
 
 ```php
-public function notice( mixed $message, array $context = [] ): void;
+public function notice( string $message, array $context = [] ): void;
 ```
 Normal but significant events.
 
 
 ```php
-public function removeAdapter( string $name ): Logger;
-```
-Removes an adapter from the stack
-
-
-```php
-public function setAdapters( array $adapters ): Logger;
-```
-Sets the adapters stack overriding what is already there
-
-
-```php
-public function setLogLevel( int $level ): Logger;
-```
-Sets the adapters stack overriding what is already there
-
-
-```php
-public function warning( mixed $message, array $context = [] ): void;
+public function warning( string $message, array $context = [] ): void;
 ```
 Exceptional occurrences that are not errors.
 
 Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
-
-
-```php
-protected function addMessage( int $level, string $message, array $context = [] ): bool;
-```
-Adds a message to each handler for processing
-
-
-```php
-protected function getLevels(): array;
-```
-Returns an array of log levels with integer to string conversion
 
 
 
@@ -884,5 +937,102 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 protected function getExceptionClass(): string;
 ```
 
+
+
+
+
+<h1 id="logger-loggerinterface">Interface Phalcon\Logger\LoggerInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Logger/LoggerInterface.zep)
+
+| Namespace  | Phalcon\Logger | | Uses       | Phalcon\Logger\Adapter\AdapterInterface |
+
+Interface for Phalcon based logger objects.
+
+
+## Методи
+
+```php
+public function alert( string $message, array $context = [] ): void;
+```
+Action must be taken immediately.
+
+Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
+
+
+```php
+public function critical( string $message, array $context = [] ): void;
+```
+Critical conditions.
+
+Example: Application component unavailable, unexpected exception.
+
+
+```php
+public function debug( string $message, array $context = [] ): void;
+```
+Detailed debug information.
+
+
+```php
+public function emergency( string $message, array $context = [] ): void;
+```
+System is unusable.
+
+
+```php
+public function error( string $message, array $context = [] ): void;
+```
+Runtime errors that do not require immediate action but should typically be logged and monitored.
+
+
+```php
+public function getAdapter( string $name ): AdapterInterface;
+```
+Returns an adapter from the stack
+
+
+```php
+public function getAdapters(): array;
+```
+Returns the adapter stack array
+
+
+```php
+public function getLogLevel(): int;
+```
+Returns the log level
+
+
+```php
+public function getName(): string;
+```
+Returns the name of the logger
+
+
+```php
+public function info( string $message, array $context = [] ): void;
+```
+Interesting events.
+
+Example: User logs in, SQL logs.
+
+
+```php
+public function log( mixed $level, string $message, array $context = [] ): void;
+```
+Logs with an arbitrary level.
+
+
+```php
+public function notice( string $message, array $context = [] ): void;
+```
+Normal but significant events.
+
+
+```php
+public function warning( string $message, array $context = [] ): void;
+```
+Normal but significant events.
 
 

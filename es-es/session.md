@@ -8,7 +8,7 @@ keywords: 'sesión, gestor de sesiones, adaptadores de sesión, redis, libmemcac
 
 # Session
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Las sesiones se usan en PHP para persistir datos entre peticiones. Esto permite a los desarrolladores construir mejores aplicaciones y aumentar la experiencia de usuario. Un uso muy común de las sesiones es mantener si un usuario está conectado o no. [Phalcon\Session\Manager][session-manager] is an object oriented approach to handle sessions using Phalcon. Hay varias razones para usar este componentes en lugar de las sesiones originales o acceder al superglobal `$_SESSION`:
@@ -582,9 +582,9 @@ class InvoicesController extends Controller
 ```
 
 ## Datos Persistentes
-You can also inject the [Phalcon\Session\Bag][session-bag] component. Hacerlo le ayudará a aislar variables para cada clase sin contaminar la sesión. Este componente se registra automáticamente usando el nombre de propiedad `persistent`. Cualquier cosa configurada en `$this->persist` estará disponible sólo en la propia clase, mientras que si los datos están configurados en el gestor de sesiones estarán disponibles a lo largo de la aplicación.
+You can also inject the [Phalcon\Session\Bag][session-bag] component. Hacerlo le ayudará a aislar variables para cada clase sin contaminar la sesión. Este componente se registra automáticamente usando el nombre de propiedad `persistent`. Anything set in `$this->persist` will only be available in each class itself, whereas if data is set in the session manager will be available throughout the application.
 
-En un controlador:
+In a controller:
 
 ```php
 <?php
@@ -615,7 +615,7 @@ class InvoicesController extends Controller
 }
 ```
 
-En un componente:
+In a component:
 
 ```php
 <?php

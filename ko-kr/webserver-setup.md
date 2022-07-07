@@ -8,7 +8,7 @@ keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee
 
 # 웹서버 설정
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 Phalcon 어플리케이션의 라우팅 기능이 동작하도록 하려면, 웹 서버가 리다이렉트를 적절하게 처리할 수 있도록 설정이 필요합니다. 아래는 일반적으로 많이 쓰는 웹서버들의 경우 설정방법입니다.

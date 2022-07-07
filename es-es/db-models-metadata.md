@@ -8,7 +8,7 @@ keywords: 'modelo, caché, metadatos, campos de consulta'
 
 # Metadatos de Modelo
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. Los datos se pueden almacenar en un almacén de datos (tipo Redis, APCu, etc.) para asegurar que la base de datos no se consulta por el esquema cada vez que se ejecuta una consulta.

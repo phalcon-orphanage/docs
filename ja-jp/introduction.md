@@ -33,13 +33,12 @@ You can check our [GitHub][github] project for the code and browse through these
   - [Discord Chat](https://phalcon.io/discord)
   - [フォーラム](https://phalcon.io/forum)
 - プロジェクトへの援助
+  - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [Open Collectiveによる支援](https://phalcon.io/fund)
-  - [ストア - グッズの販売](https://phalcon.io/store)
 - ソーシャルメディア
   - [Telegram](https://phalcon.io/telegram)
   - [Gab.ai](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
-  - [Parler](https://phalcon.io/parler)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)

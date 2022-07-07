@@ -8,7 +8,7 @@ keywords: 'modelos, validación, unicidad, inclusión'
 
 # Validación del Modelo
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules.
@@ -45,7 +45,7 @@ class Customers extends Model
 ## Integridad de Datos
 La integridad de datos es esencial en cada aplicación. Puede implementar validadores en sus modelos para introducir otra capa de validación, de modo que se pueda asegurar que los datos que se almacenan en su base de datos cumplen sus reglas de negocio.
 
-El eventos especial `validation` nos permite llamar validadores integrados sobre el registro. Phalcon expone validadores integrados adicionales que se pueden usar en esta fase de validación. Todos los validadores disponibles están bajo el espacio de nombres [Phalcon\Validation](validation).
+El eventos especial `validation` nos permite llamar validadores integrados sobre el registro. Phalcon expone validadores integrados adicionales que se pueden usar en esta fase de validación. All validators available are under the [Phalcon\Validation](filter-validation) namespace.
 
 ```php
 <?php
@@ -93,7 +93,7 @@ class Invoices extends Model
 
 The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]. Comprueba el valor del campo `inv_status_flag` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá `false`.
 
-> **NOTE**: For more information on validators, see the [Validation documentation](validation) 
+> **NOTE**: For more information on validators, see the [Validation documentation](filter-validation) 
 > 
 > {: .alert .alert-warning }
 
@@ -176,7 +176,7 @@ Hay disponibles eventos adicionales cuando el proceso de validación de datos en
 
 
 ## Personalizado
-El documento de [validación](validation) explica en detalle cómo puede crear sus propios validadores. Puede usar dichos validadores y reutilizarlos entre varios modelos. Un validador también puede ser tan simple como:
+The [validation](filter-validation) document explains in detail how you can create your own validators. Puede usar dichos validadores y reutilizarlos entre varios modelos. Un validador también puede ser tan simple como:
 
 ```php
 <?php

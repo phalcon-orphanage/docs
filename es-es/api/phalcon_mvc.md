@@ -788,13 +788,13 @@ Configura un controlador que será llamado cuando la ruta no coincida con ningun
 
 
 ```php
-public function offsetExists( mixed $alias ): bool;
+public function offsetExists( mixed $offset ): bool;
 ```
 Comprueba si un servicio está registrado en el contenedor de servicios interno utilizando la sintaxis de vector
 
 
 ```php
-public function offsetGet( mixed $alias ): mixed;
+public function offsetGet( mixed $offset ): mixed;
 ```
 Permite obtener un servicio compartido en el contenedor de servicios interno utilizando la sintaxis de vector
 
@@ -806,7 +806,7 @@ var_dump(
 
 
 ```php
-public function offsetSet( mixed $alias, mixed $definition ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Permite registrar un servicio compartido en el contenedor de servicios interno utilizando la sintaxis de vector
 
@@ -816,7 +816,7 @@ Permite registrar un servicio compartido en el contenedor de servicios interno u
 
 
 ```php
-public function offsetUnset( mixed $alias ): void;
+public function offsetUnset( mixed $offset ): void;
 ```
 Elimina un servicio del contenedor de servicios interno utilizando la sintaxis de vector
 
@@ -1055,7 +1055,7 @@ Configura un prefijo para todas las rutas agregadas a la colección
 
 
 ```php
-protected function addMap( mixed $method, string $routePattern, callable $handler, string $name ): void;
+protected function addMap( mixed $method, string $routePattern, callable $handler, string $name = null ): void;
 ```
 Una función interna para añadir un controlador al grupo.
 
@@ -1402,10 +1402,18 @@ Método mágico que comprueba si una propiedad es una relación válida
 
 
 ```php
+public function __serialize(): array;
+```
+
+```php
 public function __set( string $property, mixed $value );
 ```
 Método mágico para asignar valores a el modelo
 
+
+```php
+public function __unserialize( array $data ): void;
+```
 
 ```php
 public function addBehavior( BehaviorInterface $behavior ): void;
@@ -1830,7 +1838,7 @@ $transaction2->rollback();
 
 
 ```php
-public static function findFirst( mixed $parameters = null ): ModelInterface | null;
+public static function findFirst( mixed $parameters = null ): mixed | null;
 ```
 Consulta el primer registro que coincide con las condiciones especificadas
 
@@ -2451,7 +2459,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function belongsTo( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
+protected function belongsTo( mixed $fields, string $referenceModel, mixed $referencedFields, array $options = [] ): Relation;
 ```
 Configura una relación 1-1 inversa o n-1 entre dos modelos
 
@@ -2531,7 +2539,7 @@ Comprueba si el registro actual ya existe
 
 
 ```php
-protected function hasMany( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
+protected function hasMany( mixed $fields, string $referenceModel, mixed $referencedFields, array $options = [] ): Relation;
 ```
 Configura una relación 1-n entre dos modelos
 
@@ -2551,7 +2559,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasManyToMany( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options = [] ): Relation;
+protected function hasManyToMany( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, array $options = [] ): Relation;
 ```
 Configura una relación n-n entre dos modelos, a través de una relación intermedia
 
@@ -2575,7 +2583,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasOne( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
+protected function hasOne( mixed $fields, string $referenceModel, mixed $referencedFields, array $options = [] ): Relation;
 ```
 Configura una relación 1-1 entre dos modelos
 
@@ -2595,7 +2603,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasOneThrough( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
+protected function hasOneThrough( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, array $options = [] ): Relation;
 ```
 Configura una relación 1-1 entre dos modelos, a través de una relación intermedia
 
@@ -3940,31 +3948,31 @@ Enlaza un comportamiento a un modelo
 
 
 ```php
-public function addBelongsTo( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addBelongsTo( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación inversa muchos a uno entre dos modelos
 
 
 ```php
-public function addHasMany( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasMany( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-n entre dos modelos
 
 
 ```php
-public function addHasManyToMany( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasManyToMany( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación n-m entre dos modelos
 
 
 ```php
-public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-1 entre dos modelos
 
 
 ```php
-public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-1 entre dos modelos utilizando un modelo intermedio
 
@@ -4421,31 +4429,31 @@ Enlaza un comportamiento a un modelo
 
 
 ```php
-public function addBelongsTo( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addBelongsTo( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-1 entre dos modelos
 
 
 ```php
-public function addHasMany( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasMany( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-n entre dos modelos
 
 
 ```php
-public function addHasManyToMany( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasManyToMany( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación n-m entre dos modelos
 
 
 ```php
-public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasOne( ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-1 entre dos modelos
 
 
 ```php
-public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = [] ): RelationInterface;
 ```
 Configura una relación 1-1 entre dos modelos utilizando una tabla intermedia
 
@@ -5671,7 +5679,7 @@ Escribe metadatos para cierto modelo usando una constante `MODEL_*`
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query.zep)
 
-| Namespace  | Phalcon\Mvc\Model | | Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang, Psr\SimpleCache\CacheInterface | | Implements | QueryInterface, InjectionAwareInterface |
+| Namespace  | Phalcon\Mvc\Model | | Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang | | Implements | QueryInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Query
 
@@ -5750,7 +5758,7 @@ protected bindParams;
 protected bindTypes;
 
 /**
- * @var \Psr\SimpleCache\CacheInterface|null
+ * @var mixed|null
  */
 protected cache;
 
@@ -7643,7 +7651,7 @@ Establece el estado del objeto
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset.zep)
 
-| Namespace  | Phalcon\Mvc\Model | | Uses       | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, Psr\SimpleCache\CacheInterface, SeekableIterator, Serializable | | Implements | ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable |
+| Namespace  | Phalcon\Mvc\Model | | Uses       | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Cache\CacheInterface, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, SeekableIterator, Serializable | | Implements | ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable |
 
 Phalcon\Mvc\Model\Resultset
 
@@ -7751,7 +7759,7 @@ protected result;
 ## Métodos
 
 ```php
-public function __construct( mixed $result, CacheInterface $cache = null );
+public function __construct( mixed $result, mixed $cache = null );
 ```
 Constructor Phalcon\Mvc\Model\Resultset
 
@@ -7877,7 +7885,7 @@ Comprueba si existe un offset en el conjunto de resultados
 
 
 ```php
-public function offsetGet( mixed $index ): ModelInterface | bool;
+public function offsetGet( mixed $index ): mixed;
 ```
 Obtiene un registro de una posición específica del conjunto de resultados
 
@@ -7936,7 +7944,7 @@ Comprobar si el recurso interno tiene filas para recuperar
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Complex.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Resultset | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, Psr\SimpleCache\CacheInterface, stdClass | | Extends    | Resultset | | Implements | ResultsetInterface |
+| Namespace  | Phalcon\Mvc\Model\Resultset | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass | | Extends    | Resultset | | Implements | ResultsetInterface |
 
 Phalcon\Mvc\Model\Resultset\Complex
 
@@ -7963,13 +7971,21 @@ protected disableHydration = false;
 ## Métodos
 
 ```php
-public function __construct( mixed $columnTypes, ResultInterface $result = null, CacheInterface $cache = null );
+public function __construct( mixed $columnTypes, ResultInterface $result = null, mixed $cache = null );
 ```
 Constructor Phalcon\Mvc\Model\Resultset\Complex
 
 
 ```php
-final public function current(): ModelInterface | bool;
+public function __serialize(): array;
+```
+
+```php
+public function __unserialize( array $data ): void;
+```
+
+```php
+final public function current(): mixed;
 ```
 Devuelve la fila actual en el conjunto de resultados
 
@@ -7998,7 +8014,7 @@ Deserializar un conjunto de resultados sólo permitirá trabajar en las filas pr
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Simple.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Resultset | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, Psr\SimpleCache\CacheInterface | | Extends    | Resultset |
+| Namespace  | Phalcon\Mvc\Model\Resultset | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface | | Extends    | Resultset |
 
 Phalcon\Mvc\Model\Resultset\Simple
 
@@ -8027,10 +8043,18 @@ protected keepSnapshots = false;
 ## Métodos
 
 ```php
-public function __construct( mixed $columnMap, mixed $model, mixed $result, CacheInterface $cache = null, bool $keepSnapshots = bool );
+public function __construct( mixed $columnMap, mixed $model, mixed $result, mixed $cache = null, bool $keepSnapshots = bool );
 ```
 Constructor Phalcon\Mvc\Model\Resultset\Simple
 
+
+```php
+public function __serialize(): array;
+```
+
+```php
+public function __unserialize( array $data ): void;
+```
 
 ```php
 final public function current(): ModelInterface | null;
@@ -8062,7 +8086,7 @@ Deserializar un conjunto de resultados solo permitirá trabajar en las filas pre
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultsetInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model | | Uses       | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Psr\SimpleCache\CacheInterface |
+| Namespace  | Phalcon\Mvc\Model | | Uses       | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
 
 Phalcon\Mvc\Model\ResultsetInterface
 
@@ -8094,7 +8118,7 @@ $filtered = $robots->filter(
 
 
 ```php
-public function getCache(): CacheInterface | null;
+public function getCache(): mixed | null;
 ```
 Devuelve el caché asociado para el conjunto de resultados
 
@@ -8166,8 +8190,6 @@ Actualiza cada registro en el conjunto de resultados
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Row.zep)
 
 | Namespace  | Phalcon\Mvc\Model | | Uses       | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\ModelInterface | | Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
-
-Phalcon\Mvc\Model\Row
 
 Este componente permite a Phalcon\Mvc\Model devolver filas sin una entidad asociada. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
@@ -9192,34 +9214,34 @@ const POSITION_LAST = 1;
 ## Propiedades
 ```php
 /**
- * @var string|null
+ * @var string
  */
-protected action;
+protected action = "";
 
 /**
- * @var string|null
+ * @var string
  */
-protected controller;
+protected controller = "";
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultAction;
+protected defaultAction = "";
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultController;
+protected defaultController = "";
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultModule;
+protected defaultModule = "";
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultNamespace;
+protected defaultNamespace = "";
 
 /**
  * @var array
@@ -10307,7 +10329,7 @@ Devuelve el grupo asociado con la ruta
 
 
 ```php
-public function getHostname(): string;
+public function getHostname(): string | null;
 ```
 Devuelve la restricción del nombre de host si hay
 
@@ -10329,7 +10351,7 @@ Devuelve la función de retorno *'match'* si la hay
 
 
 ```php
-public function getName(): string;
+public function getName(): string | null;
 ```
 Devuelve el nombre de la ruta
 
@@ -10492,7 +10514,7 @@ Devuelve el patrón de la ruta
 
 
 ```php
-public function getHostname(): string;
+public function getHostname(): string | null;
 ```
 Devuelve la restricción del nombre de host si hay
 
@@ -10504,7 +10526,7 @@ Devuelve los métodos HTTP que coinciden con la ruta
 
 
 ```php
-public function getName(): string;
+public function getName(): string | null;
 ```
 Devuelve el nombre de la ruta
 

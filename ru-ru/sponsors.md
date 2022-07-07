@@ -3,7 +3,7 @@ layout: default
 language: 'ru-ru'
 version: '5.0'
 title: 'Спонсоры'
-keywords: 'sponsors, opencollective, supporters'
+keywords: 'sponsors, github, opencollective, supporters'
 ---
 
 # Becoming a Sponsor

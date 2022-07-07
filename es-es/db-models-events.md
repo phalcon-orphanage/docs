@@ -8,7 +8,7 @@ keywords: 'modelos, eventos, gestor de eventos'
 
 # Eventos del Modelo
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Los modelos le permiten implementar eventos que se lanzarán al realizar un `insert/update/delete`, que se pueden usar para definir las reglas de negocio. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of execution:
