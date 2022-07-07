@@ -8,7 +8,7 @@ keywords: 'forms, renderizar html, validación, elementos'
 
 # Formularios
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Phalcon ofrece un componente bajo el espacio de nombres `Phalcon\Forms` que ayuda a los desarrolladores a crear y mantener formularios que se pueden usar para renderizar elementos HTML en pantalla además de realizar validaciones sobre los datos introducidos en esos elementos.
@@ -726,7 +726,7 @@ $form->add($email);
 > {: .alert .alert-info }
 
 ## Validación
-Los formularios de Phalcon se integran con el componente [validation](validation) para ofrecer validación instantánea. Los validadores integrados o personalizados se pueden configurar para cada elemento:
+Phalcon forms are integrated with the [validation](filter-validation) component to offer instant validation. Los validadores integrados o personalizados se pueden configurar para cada elemento:
 
 ```php
 <?php
