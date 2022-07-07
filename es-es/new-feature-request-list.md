@@ -8,7 +8,7 @@ keywords: 'lista peticiones nuevas características, lista nfr'
 
 # Lista de Peticiones de Nuevas Características
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 
 
