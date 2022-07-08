@@ -93,7 +93,7 @@
                 "url": "/devtools"
             },
             {
-                "text": "Εντοπισμός σφαλμάτων",
+                "text": "Debug",
                 "url": "/debug"
             },
             {
@@ -225,7 +225,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Γεγονότα",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -439,7 +439,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Συλλογή",
+                "text": "Collection",
                 "url": "/collection"
             },
             {
