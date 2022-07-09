@@ -6,12 +6,12 @@ title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4, v5'
 ---
 
-# Upgrade Guide
+# Οδηγός Αναβάθμισης
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-# Upgrading to V5
-So you have decided to upgrade to v5! **Congratulations**!!
+# Αναβάθμιση σε V5
+Έχετε αποφασίσει να αναβαθμίσετε σε v5! **Συγχαρητήρια**!!
 
 Phalcon v5 contains a lot of changes in components and interfaces. Upgrading is going to be a time-consuming task, depending on how big and complex your application is. We hope that this document will make your upgrade journey smoother and also offer insight as to why certain changes were made and how it will help the framework in the future.
 
@@ -30,7 +30,7 @@ Phalcon can be installed using PECL.
 pecl install phalcon-5.0.0
 ```
 
-**Alternative installation**
+**Εναλλακτική εγκατάσταση**
 
 Download the latest `zephir.phar` from [here][zephir-phar]. Add it to a folder that can be accessed by your system.
 
@@ -94,7 +94,7 @@ One of the biggest changes with this release is that we no longer have top level
 | `Phalcon\Validation` | `Phalcon\Filter\Validation`                  |
 | `Phalcon\Version`    | `Phalcon\Support\Version`                    |
 
-## Changes
+## Αλλαγές
 
 ### Acl
 
@@ -287,7 +287,7 @@ The [Cache](cache) component has been moved to the `Cache` namespace.
 
 ---
 
-### Συλλογή
+### Collection
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-collection)
 
@@ -413,7 +413,7 @@ The [Crypt](encryption-crypt) component has been moved to the `Encryption` names
 
 ---
 
-### Εντοπισμός σφαλμάτων
+### Debug
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-debug)
 
@@ -514,7 +514,7 @@ The [Escaper](html-escaper) component has been moved to the `Html` namespace. [m
 
 ---
 
-### Γεγονότα
+### Events
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](events)
 
@@ -862,9 +862,6 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
   - `hasHasManyToMany()`
 - Added `getBuilder()` to return the builder that was created with `createBuilder()` (or `null`)
 
-#### `Phalcon\Mvc\Model\Manager`
-- WIP
-
 #### `Phalcon\Mvc\Model\ResultsetInterface`
 - `getCache()` now returns `null` or an object (`mixed`)
 
@@ -1033,8 +1030,8 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support)
 
 The `Support` namespace contains classes that are used throughout the framework. The classes moved here are:
-- [Συλλογή](support-collection)
-- [Εντοπισμός σφαλμάτων](support-debug)
+- [Collection](support-collection)
+- [Debug](support-debug)
 - [Helper](support-helper)
 - [Registry](support-registry)
 
@@ -1065,7 +1062,10 @@ The `Support` namespace contains classes that are used throughout the framework.
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](tag)
 
-WIP
+Note, this component will be removed in future versions of the framework.
+
+#### `Phalcon\Tag`
+- Added `preload(mixed $parameters): string` to parse preloading link headers
 
 ---
 

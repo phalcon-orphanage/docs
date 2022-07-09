@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '5.0'
-title: 'Εντοπισμός σφαλμάτων'
+title: 'Debug'
 keywords: 'debug, debugging, error handling'
 ---
 

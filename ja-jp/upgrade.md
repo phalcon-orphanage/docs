@@ -862,9 +862,6 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
   - `hasHasManyToMany()`
 - Added `getBuilder()` to return the builder that was created with `createBuilder()` (or `null`)
 
-#### `Phalcon\Mvc\Model\Manager`
-- WIP
-
 #### `Phalcon\Mvc\Model\ResultsetInterface`
 - `getCache()` now returns `null` or an object (`mixed`)
 
@@ -1065,7 +1062,10 @@ The `Support` namespace contains classes that are used throughout the framework.
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](tag)
 
-WIP
+Note, this component will be removed in future versions of the framework.
+
+#### `Phalcon\Tag`
+- Added `preload(mixed $parameters): string` to parse preloading link headers
 
 ---
 
