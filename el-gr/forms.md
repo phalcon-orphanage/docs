@@ -915,7 +915,7 @@ echo $element->renderDecorated('nameLast');
 echo $element->renderDecorated('nameFirst');
 ```
 
-## Γεγονότα
+## Events
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 
