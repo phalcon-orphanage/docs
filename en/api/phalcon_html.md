@@ -417,7 +417,7 @@ $escaper->setEncoding("utf-8");
 
 
 ```php
-public function setFlags( int $flags ): Escaper;
+public function setFlags( int $flags ): EscaperInterface;
 ```
 Sets the HTML quoting type for htmlspecialchars
 
@@ -908,7 +908,7 @@ public function __construct();
 
 
 ```php
-public function __invoke( int $flag = static-constant-access, string $delimiter = string ): void;
+public function __invoke( int $flag = static-constant-access, string $delimiter = string ): Doctype;
 ```
 Produce a <doctype> tag
 
@@ -1819,7 +1819,7 @@ protected separator = ;
 ## Methods
 
 ```php
-public function __invoke( string $indent = null, string $delimiter = null ): Title;
+public function __invoke( string $indent = "    ", string $delimiter = null ): Title;
 ```
 Sets the separator and returns the object back
 
@@ -2525,13 +2525,13 @@ The class implements `__call()` to allow calling helper objects as methods.
 @method inputTime(string $name, string $value = null, array $attributes = []): string
 @method inputUrl(string $name, string $value = null, array $attributes = []): string
 @method inputWeek(string $name, string $value = null, array $attributes = []): string
-@method label(array $attributes = []): string
+@method label(string $label, array $attributes = [], bool $raw = false): string
 @method link(string $indent = '    ', string $delimiter = PHP_EOL): string
 @method meta(string $indent = '    ', string $delimiter = PHP_EOL): string
 @method ol(string $text, array $attributes = [], bool $raw = false): string
 @method script(string $indent = '    ', string $delimiter = PHP_EOL): string
 @method style(string $indent = '    ', string $delimiter = PHP_EOL): string
-@method title(string $separator = '', string $indent = '', string $delimiter = PHP_EOL): string
+@method title(string $indent = '    ', string $delimiter = PHP_EOL): string
 @method ul(string $text, array $attributes = [], bool $raw = false): string
 
 

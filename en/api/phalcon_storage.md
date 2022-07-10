@@ -730,7 +730,7 @@ from the adapter.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Storage/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | DateInterval, FilesystemIterator, Iterator, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Traits\StorageErrorHandlerTrait, Phalcon\Support\Exception, Phalcon\Traits\Helper\Str\DirFromFileTrait, Phalcon\Traits\Helper\Str\DirSeparatorTrait, Phalcon\Traits\Php\FileTrait, RecursiveDirectoryIterator, RecursiveIteratorIterator |
+| Uses       | DateInterval, FilesystemIterator, Iterator, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Traits\StorageErrorHandlerTrait, Phalcon\Support\Exception, RecursiveDirectoryIterator, RecursiveIteratorIterator |
 | Extends    | AbstractAdapter |
 
 Stream adapter
@@ -953,13 +953,13 @@ AbstractSerializer constructor.
 ```php
 public function __serialize(): array;
 ```
-
+Serialize data
 
 
 ```php
 public function __unserialize( array $data ): void;
 ```
-
+Unserialize data
 
 
 ```php

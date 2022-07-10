@@ -24,6 +24,7 @@ title: 'Phalcon\Filter'
 * [Phalcon\Filter\Sanitize\Special](#filter-sanitize-special)
 * [Phalcon\Filter\Sanitize\SpecialFull](#filter-sanitize-specialfull)
 * [Phalcon\Filter\Sanitize\StringVal](#filter-sanitize-stringval)
+* [Phalcon\Filter\Sanitize\StringValLegacy](#filter-sanitize-stringvallegacy)
 * [Phalcon\Filter\Sanitize\Striptags](#filter-sanitize-striptags)
 * [Phalcon\Filter\Sanitize\Trim](#filter-sanitize-trim)
 * [Phalcon\Filter\Sanitize\Upper](#filter-sanitize-upper)
@@ -554,6 +555,28 @@ public function __invoke( mixed $input );
 | Namespace  | Phalcon\Filter\Sanitize |
 
 Sanitizes a value to string
+
+
+## Methods
+
+```php
+public function __invoke( string $input ): string;
+```
+
+
+
+
+
+<h1 id="filter-sanitize-stringvallegacy">Class Phalcon\Filter\Sanitize\StringValLegacy</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/StringValLegacy.zep)
+
+| Namespace  | Phalcon\Filter\Sanitize |
+
+Sanitizes a value to string using `filter_var()`. The filter provides
+backwards compatibility with versions prior to v5. For PHP higher or equal to
+8.1, the filter will remain the string unchanged. If anything other than a
+string is passed, the method will return false
 
 
 ## Methods
