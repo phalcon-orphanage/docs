@@ -1198,7 +1198,7 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
-## Γεγονότα
+## Events
 Similar to other Phalcon components, [Phalcon\Mvc\Router][mvc-router] also has events, when an [Events Manager](events) is present. The available events are:
 
 | Event                      | Fired when                        |

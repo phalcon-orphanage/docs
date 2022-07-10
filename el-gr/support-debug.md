@@ -2,11 +2,11 @@
 layout: default
 language: 'el-gr'
 version: '5.0'
-title: 'Εντοπισμός σφαλμάτων'
+title: 'Debug'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Εντοπισμός σφαλμάτων
+# Debug
 - - -
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
