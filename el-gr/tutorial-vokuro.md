@@ -1420,7 +1420,7 @@ As you can see in the defined relationships, we have a `belongsTo` and three `ha
 
 Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
 
-**Γεγονότα**
+**Events**
 
 [Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
 
