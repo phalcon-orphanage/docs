@@ -978,7 +978,7 @@ class ExceptionsPlugin
 > 
 > {: .alert .alert-danger }
 
-## Γεγονότα
+## Events
 [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to an [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Όνομα γεγονότος        | Ενεργοποίηση                                                                                                                | Can stop |
