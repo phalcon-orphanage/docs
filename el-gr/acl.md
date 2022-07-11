@@ -20,17 +20,17 @@ keywords: 'acl, access control list, permissions'
 > 
 > Μια εφαρμογή λογιστικής χρειάζεται διαφορετικές ομάδες χρηστών να έχουν πρόσβαση σε διάφορες περιοχές της εφαρμογής.
 > 
-> **Role** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
+> **Ρόλος** - Πρόσβαση Διαχειριστή (Administrator) - Πρόσβαση Λογιστηρείου (Accounting) - Πρόσβαση Μάνατζερ (Manager) - Πρόσβαση Επισκέπτη (Guest)
 > 
-> **Component** - Login page - Admin page - Invoices page - Reports page 
+> **Στοιχείο** - Σελίδα Σύνδεσης (Login) - Σελίδα Διαχείρησης (Admin) - Σελίδα Τιμολογίων (Invoices) - Σελίδα Αναφορών (Reports) 
 > 
 > {:.alert .alert-info}
 
-As seen above in the use case, an [Role][acl-role] is defined as who needs to access a particular [Component][acl-component] i.e. an area of the application. A [Component][acl-component] is defined as the area of the application that needs to be accessed.
+Όπως φαίνεται ανωτέρω, στην περίπτωση χρήσης, ένας [Ρόλος][acl-role] ορίζεται ως ποιός χρειάζεται για να αποκτήσει πρόσβαση σε ένα συγκεκριμένο [Στοιχείο][acl-component] δηλαδή, μια περιοχή από της εφαρμογής. Σαν [Στοιχείο][acl-component] ορίζουμε την περιοχή της εφαρμογής που χρειάζεται να προσβληθεί.
 
-Using the [Phalcon\Acl][acl-acl] component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.
+Χρησιμοποιώντας το [Phalcon\Acl][acl-acl], μπορούμε να συνδέσουμε αυτά τα δύο μαζί, και να ενισχύσουμε την ασφάλεια της εφαρμογής μας, επιτρέποντας μόνο συγκεκριμένους ρόλους να δεσμευθούν σε συγκεκριμένα στοιχεία.
 
-## Activation
+## Ενεργοποίηση
 [Phalcon\Acl][acl-acl] uses adapters to store and work with roles and components. The only adapter available right now is [Phalcon\Acl\Adapter\Memory][acl-adapter-memory]. Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
 The [Phalcon\Acl][acl-acl] constructor takes as its first parameter an adapter used to retrieve the information related to the control list.
@@ -822,9 +822,11 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-adapter-memory]: api/Phalcon_Acl#acl-adapter-memory
 [acl-component]: api/Phalcon_Acl#acl-component
 [acl-component]: api/Phalcon_Acl#acl-component
+[acl-component]: api/Phalcon_Acl#acl-component
 [acl-componentaware]: api/Phalcon_Acl#acl-componentaware
 [acl-enum]: api/Phalcon_Acl#acl-enum
 [acl-exception]: api/Phalcon_Acl#acl-exception
+[acl-role]: api/Phalcon_Acl#acl-role
 [acl-role]: api/Phalcon_Acl#acl-role
 [acl-role]: api/Phalcon_Acl#acl-role
 [acl-roleaware]: api/Phalcon_Acl#acl-roleaware
