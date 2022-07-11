@@ -12,9 +12,9 @@ keywords: 'acl, access control list, permissions'
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-[Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests.
+Το [Phalcon\Acl][acl-acl] παρέχει μια εύκολη και ελαφριά διαχείριση ACL καθώς και τα δικαιώματα που τους συνοδεύουν. [Οι Λίστες Ελέγχου Πρόσβασης][acl] (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
 
-In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
+Εν ολίγοις, οι ACL έχουν δύο αντικείμενα: το αντικείμενο που χρειάζεται πρόσβαση, και το αντικείμενο που χρειαζόμαστε να προσβάσουμε. In the programming world, these are usually referred to as Roles and Resources. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
 
 > **Use Case**
 > 
