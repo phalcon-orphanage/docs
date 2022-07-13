@@ -1029,7 +1029,7 @@ class ExceptionsPlugin
 > **NOTE**: Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
 {: .alert .alert-danger }
 
-## Γεγονότα
+## Events
 
 [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) is able to send events to an [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 

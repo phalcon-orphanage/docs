@@ -2035,7 +2035,7 @@ public function setUniquePrefix(string $prefix): Compiler
 
 Set a unique prefix to be used as prefix for compiled variables
 
-## Γεγονότα
+## Events
 
 The following compilation <events> are available to be implemented in extensions:
 
