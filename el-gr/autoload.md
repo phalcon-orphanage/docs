@@ -477,7 +477,7 @@ $loader->setFileCheckingCallback(null);
 
 Do not check file existence.
 
-## Γεγονότα
+## Events
 The \[Events Manager\]\[events\] component offers hooks that can be implemented to observe or expand the functionality of the loader. The [Phalcon\Loader][loader] implements the [Phalcon\Events\EventsAwareInterface][eventsawareinterface], and therefore the `getEventsManager()` and `setEventsManager()` methods are available.
 
 The following events are available:

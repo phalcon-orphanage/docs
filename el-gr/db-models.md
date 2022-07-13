@@ -3377,7 +3377,7 @@ var_dump(
 
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
-## Γεγονότα
+## Events
 As mentioned before [Phalcon\Mvc\Model][mvc-model] acts as a listener to events. Therefore, all the events that the model is listening to can be implemented as methods in the model itself. You can check the [events](events) document for additional information.
 
 The events supported are:

@@ -14,7 +14,7 @@ keywords: 'acl, access control list, permissions'
 ## Введение
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
-In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
+In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Resources. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
 
 > **Use Case**
 > 

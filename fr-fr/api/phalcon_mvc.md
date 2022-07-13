@@ -1404,6 +1404,8 @@ Magic method to check if a property is a valid relation
 ```php
 public function __serialize(): array;
 ```
+Serializes a model
+
 
 ```php
 public function __set( string $property, mixed $value );
@@ -1414,6 +1416,8 @@ Magic method to assign values to the the model
 ```php
 public function __unserialize( array $data ): void;
 ```
+Unserializes an array to the model
+
 
 ```php
 public function addBehavior( BehaviorInterface $behavior ): void;
@@ -3791,6 +3795,11 @@ protected belongsTo;
 protected belongsToSingle;
 
 /**
+ * @var BuilderInterface|null
+ */
+protected builder;
+
+/**
  * @var DiInterface|null
  */
 protected container;
@@ -4070,7 +4079,13 @@ Gets belongsTo related records from a model
 
 
 ```php
-public function getConnectionService( ModelInterface $model, mixed $connectionServices ): string;
+public function getBuilder(): BuilderInterface | null;
+```
+Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
+
+
+```php
+public function getConnectionService( ModelInterface $model, array $connectionServices ): string;
 ```
 Returns the connection service name used to read or write data related to a model depending on the connection services
 
@@ -4358,6 +4373,8 @@ $robots = new Robots();
 echo $robots->getSource(); // wp_robots
 ```
 
+$param string $prefix
+
 
 ```php
 public function setModelSchema( ModelInterface $model, string $schema ): void;
@@ -4396,15 +4413,15 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 ```php
-final protected function _mergeFindParameters( mixed $findParamsOne, mixed $findParamsTwo ): array;
+protected function getConnection( ModelInterface $model, array $connectionServices ): AdapterInterface;
 ```
-Merge two arrays of find parameters
+Returns the connection to read or write data related to a model depending on the connection services.
 
 
 ```php
-protected function getConnection( ModelInterface $model, mixed $connectionServices ): AdapterInterface;
+final protected function mergeFindParameters( mixed $findParamsOne, mixed $findParamsTwo ): array;
 ```
-Returns the connection to read or write data related to a model depending on the connection services.
+Merge two arrays of find parameters
 
 
 
@@ -4486,6 +4503,12 @@ Gets belongsTo relations defined on a model
 public function getBelongsToRecords( string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string $method = null ): ResultsetInterface | bool;
 ```
 Gets belongsTo related records from a model
+
+
+```php
+public function getBuilder(): BuilderInterface | null;
+```
+Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
 
 
 ```php
@@ -7034,7 +7057,7 @@ Sets a GROUP BY clause
 
 
 ```php
-public function having( string $conditions ): BuilderInterface;
+public function having( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Sets a HAVING condition clause
 
@@ -9274,14 +9297,14 @@ protected matchedRoute;
 protected matches;
 
 /**
- * @var string|null
+ * @var string
  */
-protected module;
+protected module = "";
 
 /**
- * @var string|null
+ * @var string
  */
-protected namespaceName;
+protected namespaceName = "";
 
 /**
  * @var array|string|null
@@ -10605,73 +10628,73 @@ Interface for Phalcon\Mvc\Router
 ## Méthodes
 
 ```php
-public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
+public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router on any HTTP method
 
 
 ```php
-public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
+public function addConnect( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 ```php
-public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
+public function addDelete( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 ```php
-public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
+public function addGet( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
 
 ```php
-public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
+public function addHead( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 ```php
-public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
+public function addOptions( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 ```php
-public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
+public function addPatch( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 ```php
-public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
+public function addPost( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
 
 ```php
-public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
+public function addPurge( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
 
 ```php
-public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
+public function addPut( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 ```php
-public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
+public function addTrace( string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
 
 ```php
-public function attach( RouteInterface $route, int $position = static-constant-access ): RouterInterface;
+public function attach( RouteInterface $route, int $position = Router::POSITION_LAST ): RouterInterface;
 ```
 Attach Route object to the routes stack.
 

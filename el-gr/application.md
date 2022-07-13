@@ -678,7 +678,7 @@ try {
 ```
 
 
-## Γεγονότα
+## Events
 [Phalcon\Mvc\Application][mvc-application] is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Όνομα γεγονότος       | Ενεργοποίηση                                                 |

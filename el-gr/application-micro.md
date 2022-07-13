@@ -1554,7 +1554,7 @@ $app->get(
 );
 ```
 
-## Γεγονότα
+## Events
 A [Phalcon\Mvc\Micro][mvc-micro] application works closely with an [Events Manager](events) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
 ### Διαθέσιμα γεγονότα
