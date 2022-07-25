@@ -181,17 +181,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Add the roles
- */
 $acl->addRole('manager');
 $acl->addRole('accounting');
 $acl->addRole('guest');
 
-
-/**
- * Add the Components
- */
 
 $acl->addComponent(
     'admin',
@@ -219,9 +212,6 @@ $acl->addComponent(
     ]
 );
 
-/**
- * Now tie them all together 
- */
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
@@ -290,13 +280,12 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 $acl->addRole('accounting');
 $acl->addRole('guest');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -323,32 +312,34 @@ $acl->addComponent(
     ]
 );
 
+// #03
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
 $acl->allow('*', '*', 'view');
 
+// #04
 $acl->deny('guest', '*', 'view');
 
 // ....
 
-
-
-// true - defined explicitly
+// #05
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-// true - defined with wildcard
+// #06
 $acl->isAllowed('manager', 'session', 'login');
 
-// true - defined with wildcard
+// #07
 $acl->isAllowed('accounting', 'reports', 'view');
 
-// false - defined explicitly
+// #08
 $acl->isAllowed('guest', 'reports', 'view');
 
-// false - default access level
+// #09
 $acl->isAllowed('guest', 'reports', 'add');
 ```
+
+> **Legend** 01: Add roles 02: Add components 03: Set up the `allow` list 04: Set up the `deny` list 05: `true` - defined explicitly 06: `true` - defined with wildcard 07: `true` - defined with wildcard 08: `false` - defined explicitly 09: `false` - default access level
 
 ## Acceso Basado en Función
 Dependiendo de las necesidades de su aplicación, podría necesitar otra capa de cálculos para permitir o denegar el acceso a los usuarios mediante la ACL. El método `isAllowed()` acepta un cuarto parámetro que es un `callable` como una función anónima.
@@ -364,11 +355,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -378,7 +368,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with custom function
+// #03
 $acl->allow(
     'manager',
     'admin',
@@ -388,6 +378,8 @@ $acl->allow(
     }
 );
 ```
+
+> **Legend** 01: Add roles 02: Add components 03: Set access level for role into components with custom function
 
 Ahora que el *callable* está definido en la ACL, necesitaremos llamar al método `isAllowed()` con un vector como cuarto parámetro:
 
@@ -400,11 +392,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -414,7 +405,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with custom function
+// #03
 $acl->allow(
     'manager',
     'admin',
@@ -424,7 +415,7 @@ $acl->allow(
     }
 );
 
-// Returns true
+// #04
 $acl->isAllowed(
     'manager',
     'admin',
@@ -434,7 +425,7 @@ $acl->isAllowed(
     ]
 );
 
-// Returns false
+// #05
 $acl->isAllowed(
     'manager',
     'admin',
@@ -444,6 +435,8 @@ $acl->isAllowed(
     ]
 );
 ```
+
+> **Legend** 01: Add roles 02: Add components 03: Set access level for role into components with custom function 04: Returns `true` 05: Returns `false`
 
 > **NOTE**:The fourth parameter must be an array. Cada elemento del vector representa un parámetro que acepta su función anónima. La clave del elemento es el nombre del parámetro, mientras que el valor es el que se pasará como valor del parámetro a la función. 
 > 
@@ -461,11 +454,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -475,7 +467,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with custom function
+// #03
 $acl->allow(
     'manager',
     'admin',
@@ -485,16 +477,18 @@ $acl->allow(
     }
 );
 
-// Returns false
+// #04
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
 $acl->setNoArgumentsDefaultAction(
     Enum::ALLOW
 );
 
-// Returns true
+// #05
 $acl->isAllowed('manager', 'admin', 'dashboard');
 ```
+
+> **Legend** 01: Add roles 02: Add components 03: Set access level for role into components with custom function 04: Returns `false` 05: Returns `true`
 
 ## Objetos Personalizados
 Phalcon permite a los desarrolladores definir sus propios objetos rol y componente. Estos objetos deben implementar las interfaces facilitadas:
@@ -510,7 +504,7 @@ We can implement the [Phalcon\Acl\RoleAware][acl-roleaware] in our custom class 
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// #01
 class ManagerRole implements RoleAware
 {
     protected $id;
@@ -528,13 +522,15 @@ class ManagerRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // #02
     public function getRoleName()
     {
         return $this->roleName;
     }
 }
 ```
+
+> **Legend** 01: Create our class which will be used as roleName 02: Implemented function from RoleAware Interface
 
 ### Componente
 We can implement the [Phalcon\Acl\ComponentAware][acl-componentaware] in our custom class with its own logic. El siguiente ejemplo muestra un nuevo objeto componente llamado `ReportsComponent`:
@@ -544,7 +540,7 @@ We can implement the [Phalcon\Acl\ComponentAware][acl-componentaware] in our cus
 
 use Phalcon\Acl\ComponentAware;
 
-// Create our class which will be used as componentName
+// #01
 class ReportsComponent implements ComponentAware
 {
     protected $id;
@@ -570,13 +566,15 @@ class ReportsComponent implements ComponentAware
         return $this->userId;
     }
 
-    // Implemented function from ComponentAware Interface
+    // #02
     public function getComponentName()
     {
         return $this->componentName;
     }
 }
 ```
+
+> **Legend** 01: Create our class which will be used as componentName 02: Implemented function from ComponentAware Interface
 
 ### ACL
 Estos objetos ahora ya se pueden usar en nuestra ACL.
@@ -592,14 +590,10 @@ use ReportsComponent;
 
 $acl = new Memory();
 
-/**
- * Add the roles
- */
+// #01
 $acl->addRole('manager');
 
-/**
- * Add the Components
- */
+// #02
 $acl->addComponent(
     'reports',
     [
@@ -609,10 +603,7 @@ $acl->addComponent(
     ]
 );
 
-/**
- * Now tie them all together with a custom function. The ManagerRole and
- * ModelSbject parameters are necessary for the custom function to work 
- */
+// #03
 $acl->allow(
     'manager', 
     'reports', 
@@ -622,24 +613,25 @@ $acl->allow(
     }
 );
 
-// Create the custom objects
+// #04
 $levelOne = new ManagerRole(1, 'manager-1');
 $levelTwo = new ManagerRole(2, 'manager');
 $admin    = new ManagerRole(3, 'manager');
 
-// id - name - userId
+// #05
 $reports  = new ModelComponent(2, 'reports', 2);
 
-// Check whether our user objects have access 
-// Returns false
+// #06
 $acl->isAllowed($levelOne, $reports, 'list');
 
-// Returns true
+// #07
 $acl->isAllowed($levelTwo, $reports, 'list');
 
-// Returns false
+// #08
 $acl->isAllowed($admin, $reports, 'list');
 ```
+
+> **Legend** 01: Add roles 02: Add components 03: Now tie them all together with a custom function. The `ManagerRole` and `ModelSubject` parameters are necessary for the custom function to work 04: Create the custom objects 05: id - name - userId 06: Check whether our user objects have access. Returns `false` 07: Returns `true` 08: Returns `false`
 
 La segunda llamada de `$levelTwo` evalúa `true` ya que `getUserId()` devuelve `2` que a su vez es evaluado en nuestra función personalizada. También tenga en cuenta que en la función personalizada `allow()` los objetos son automáticamente vinculados, proporcionando todos los datos necesarios para que la función personalizada funcione. La función personalizada puede aceptar cualquier número de parámetros adicionales. El orden de los parámetros definidos en el constructor `function()` no importa, porque los objetos serán descubiertos y vinculados automáticamente.
 
@@ -654,28 +646,22 @@ use Phalcon\Acl\Role;
 
 $acl = new Memory();
 
-/**
- * Create the roles
- */
+// #01
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
-/**
- * Add the `guest` role to the ACL 
- */
+// #02
 $acl->addRole($guest);
 
-/**
- * Add the `accounting` inheriting from `guest` 
- */
+// #03
 $acl->addRole($accounting, $guest);
 
-/**
- * Add the `manager` inheriting from `accounting` 
- */
+// #04
 $acl->addRole($manager, $accounting);
 ```
+
+> **Legend** 01: Create roles 02: Add the `guest` role to the ACL 03: Add the `accounting` inheriting from `guest` 04: Add the `manager` inheriting from `accounting`
 
 Sea cual sea el acceso que tenga `guests`, se propagará a `accounting` y a su vez `accounting` se propagará a `manager`. También puede pasar un vector de roles como segundo parámetro de `addRole` ofreciendo más flexibilidad.
 
@@ -690,27 +676,22 @@ use Phalcon\Acl\Role;
 
 $acl = new Memory();
 
-/**
- * Create the roles
- */
+// #01
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
-/**
- * Add all the roles
- */
+// #02
 $acl->addRole($manager);
 $acl->addRole($accounting);
 $acl->addRole($guest);
 
-/**
- * Add the inheritance 
- */
+// @03
 $acl->addInherit($manager, $accounting);
 $acl->addInherit($accounting, $guest);
-
 ```
+
+> **Legend** 01: Create roles 02: Add all the roles 03: Add the inheritance
 
 ## Serialización
 [Phalcon\Acl][acl-acl] can be serialized and stored in a cache system to improve efficiency. Puede almacenar el objeto serializado en APC, sesión, sistema de ficheros, base de datos, Redis, etc. De esta manera puede recuperar la ACL rápidamente sin tener que leer los datos subyacentes que crea la ACL, ni tendrá que calcular la ACL en cada petición.
@@ -721,33 +702,36 @@ $acl->addInherit($accounting, $guest);
 use Phalcon\Acl\Adapter\Memory;
 
 $aclFile = 'app/security/acl.cache';
-// Check whether ACL data already exist
+// #01
 if (true !== is_file($aclFile)) {
 
-    // The ACL does not exist - build it
+    // #02
     $acl = new Memory();
 
-    // ... Define roles, components, access, etc
+    // #03
+    // ...
 
-    // Store serialized list into plain file
+    // #04
     file_put_contents(
         $aclFile,
         serialize($acl)
     );
 } else {
-    // Restore ACL object from serialized file
+    // #05
     $acl = unserialize(
         file_get_contents($aclFile)
     );
 }
 
-// Use ACL list as needed
+// #06
 if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
     echo 'Access granted!';
 } else {
     echo 'Access denied :(';
 }
 ```
+
+> **Legend** 01: Check whether ACL data already exist 02: The ACL does not exist - build it 03: Define roles, components, access, etc. 04: Store serialized list into a plain file 05: Restore the ACL object from the serialized file 06: Use the ACL list as needed
 
 Es una buena práctica no usar serialización de la ACL durante el desarrollo, para asegurarse que su ACL se reconstruye en cada petición, mientras que se usan otros adaptadores o medios de serializado y almacenamiento para la ACL en producción.
 
@@ -770,10 +754,10 @@ use Phalcon\Events\Manager;
 
 // ...
 
-// Create an event manager
+// #01
 $eventsManager = new Manager();
 
-// Attach a listener for type 'acl'
+// #02
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -787,12 +771,14 @@ $eventsManager->attach(
 
 $acl = new Memory();
 
-// Setup the $acl
+// #03
 // ...
 
-// Bind the eventsManager to the ACL component
+// #04
 $acl->setEventsManager($eventsManager);
 ```
+
+> **Legend** 01: Create an event manager 02: Attach a listener for type `acl` 03: Setup the `$acl` 04: Bind the eventsManager to the ACL component
 
 ## Excepciones
 Any exceptions thrown in the `Phalcon\Acl` namespace will be of type [Phalcon\Acl\Exception][acl-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
