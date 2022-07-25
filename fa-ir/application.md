@@ -3,12 +3,13 @@ layout: default
 language: 'fa-ir'
 version: '5.0'
 title: 'Application'
+upgrade: '#application'
 keywords: 'application, mvc, controllers'
 ---
 
 # Application
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Mvc\Application][mvc-application] is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.
@@ -33,6 +34,10 @@ try {
     echo $e->getMessage();
 }
 ```
+> **NOTE**: `handle()` accepts a URI and will not operate without it. You can pass the `$_SERVER["REQUEST_URI"]` as a parameter 
+> 
+> {: .alert .alert-warning }
+
 
 ## Methods
 ```php
@@ -48,7 +53,7 @@ public function getDefaultModule(): string
 Returns the default module name
 
 ```php
-public function getEventsManager(): ManagerInterface
+public function getEventsManager(): ManagerInterface | null
 ```
 Returns the internal event manager
 
@@ -339,7 +344,7 @@ If namespaces are not used, the following bootstrap file could be used:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
 
@@ -386,7 +391,7 @@ If namespaces are used, the bootstrap changes slightly:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
@@ -468,7 +473,7 @@ Each subdirectory in `apps/` directory have its own MVC structure. A `Module.php
 
 namespace Multi\Back;
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;
@@ -493,7 +498,7 @@ class Module implements ModuleDefinitionInterface
 
     public function registerServices(DiInterface $container)
     {
-        // Registering a dispatcher
+        // Dispatcher
         $container->set(
             'dispatcher',
             function () {
@@ -506,7 +511,7 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        // Registering the view component
+        // View
         $container->set(
             'view',
             function () {
@@ -522,7 +527,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-A slightly modified bootstrap file is required for a a multi module MVC architecture
+A slightly modified bootstrap file is required for a multi-module MVC architecture
 
 ```php
 <?php
@@ -637,7 +642,7 @@ $application->registerModules(
 );
 ```
 
-When [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup.
+When a [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup.
 
 Module definition classes must implement two methods:
 - `registerAutoloaders()` and
