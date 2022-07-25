@@ -8,7 +8,17 @@ keywords: 'acl, access control list, permissions'
 ---
 # Access Control Lists (ACL)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
+> **Upgrade**
+> 
+> The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
+> 
+> - Renamed `Phalcon\Acl\ComponentAware` to `Phalcon\Acl\ComponentAwareInterface`
+> - Renamed `Phalcon\Acl\RoleAware` to `Phalcon\Acl\RoleAwareInterface`
+> - `Acl\Adapter\Memory` - `Acl\Adapter\AdapterInterface`
+>   - Added `getInheritedRoles()` to return an array of the inherited roles in the adapter.
+{:.alert .alert-warning}
 
 ## Overview
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests. 
