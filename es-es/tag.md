@@ -1749,7 +1749,7 @@ Después de crear nuestro ayudante personalizado, autocargaremos el nuevo direct
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Di\FactoryDefault();
 use Phalcon\Exception as PhalconException;

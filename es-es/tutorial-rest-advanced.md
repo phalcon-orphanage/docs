@@ -267,7 +267,7 @@ Ahora, debemos configurar una conexión para ser usada por este modelo y cargarl
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;

@@ -339,7 +339,7 @@ Si no se usa espacio de nombres, se podría usar el siguiente fichero de arranqu
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
 
@@ -386,7 +386,7 @@ Si se usa espacio de nombres, el arranque cambia claramente:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
@@ -468,7 +468,7 @@ Cada subdirectorio en el directorio `apps/` tiene su propia estructura MVC. Exis
 
 namespace Multi\Back;
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;

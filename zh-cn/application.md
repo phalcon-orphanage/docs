@@ -339,7 +339,7 @@ If namespaces are not used, the following bootstrap file could be used:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
 
@@ -386,7 +386,7 @@ If namespaces are used, the bootstrap changes slightly:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
@@ -468,7 +468,7 @@ Each subdirectory in `apps/` directory have its own MVC structure. A `Module.php
 
 namespace Multi\Back;
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;

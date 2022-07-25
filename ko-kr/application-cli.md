@@ -43,7 +43,7 @@ use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Exception as PhalconException;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
@@ -404,7 +404,7 @@ use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Exception as PhalconException;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();

@@ -2245,7 +2245,7 @@ Models can be used in Micro applications, so long as we instruct the application
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 
 $loader = new Loader();
@@ -2282,7 +2282,7 @@ By using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] class you can inject m
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Model\Binder;
 
