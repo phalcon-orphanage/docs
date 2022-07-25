@@ -1596,7 +1596,7 @@ try {
 }
 ```
 
-## Γεγονότα
+## Events
 The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 
 | Όνομα γεγονότος       | Ενεργοποίηση                        | Can stop |
