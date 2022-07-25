@@ -3,12 +3,13 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Application'
+upgrade: '#application'
 keywords: 'aplicación, mvc, controladores'
 ---
 
 # Application
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Phalcon\Mvc\Application][mvc-application] is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. Esta es una aplicación de pila completa (*full stack*) integrada con todos los servicios adicionales necesarios para permitir que el patrón MVC funcione como se desee.
@@ -33,6 +34,10 @@ try {
     echo $e->getMessage();
 }
 ```
+> **NOTE**: `handle()` accepts a URI and will not operate without it. You can pass the `$_SERVER["REQUEST_URI"]` as a parameter 
+> 
+> {: .alert .alert-warning }
+
 
 ## Métodos
 ```php
@@ -48,7 +53,7 @@ public function getDefaultModule(): string
 Devuelve el nombre de módulo por defecto
 
 ```php
-public function getEventsManager(): ManagerInterface
+public function getEventsManager(): ManagerInterface | null
 ```
 Devuelve el administrador de eventos interno
 
@@ -339,7 +344,7 @@ Si no se usa espacio de nombres, se podría usar el siguiente fichero de arranqu
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
 
@@ -386,7 +391,7 @@ Si se usa espacio de nombres, el arranque cambia claramente:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
@@ -468,7 +473,7 @@ Cada subdirectorio en el directorio `apps/` tiene su propia estructura MVC. Exis
 
 namespace Multi\Back;
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;
@@ -493,7 +498,7 @@ class Module implements ModuleDefinitionInterface
 
     public function registerServices(DiInterface $container)
     {
-        // Registering a dispatcher
+        // Dispatcher
         $container->set(
             'dispatcher',
             function () {
@@ -506,7 +511,7 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        // Registering the view component
+        // View
         $container->set(
             'view',
             function () {
@@ -522,7 +527,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-Se requiere un archivo de arranque ligeramente modificado para una arquitectura MVC multimódulo
+A slightly modified bootstrap file is required for a multi-module MVC architecture
 
 ```php
 <?php
@@ -637,7 +642,7 @@ $application->registerModules(
 );
 ```
 
-When [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Cada módulo registrado tiene una clase asociada que expone métodos para la configuración del módulo.
+When a [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Cada módulo registrado tiene una clase asociada que expone métodos para la configuración del módulo.
 
 Module definition classes must implement two methods:
 - `registerAutoloaders()` and
