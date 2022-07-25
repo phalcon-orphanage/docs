@@ -24,7 +24,7 @@ En resumen, ACLs tienen dos objetos: El objeto que necesita acceso, y el objeto 
 > 
 > **Component** - Login page - Admin page - Invoices page - Reports page 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 As seen above in the use case, an [Role][acl-role] is defined as who needs to access a particular [Component][acl-component] i.e. an area of the application. A [Component][acl-component] is defined as the area of the application that needs to be accessed.
 
@@ -447,7 +447,7 @@ $acl->isAllowed(
 
 > **NOTE**:The fourth parameter must be an array. Cada elemento del vector representa un parámetro que acepta su función anónima. La clave del elemento es el nombre del parámetro, mientras que el valor es el que se pasará como valor del parámetro a la función. 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 También puede omitir el paso del cuarto parámetro a `isAllowed()` si lo desea. El valor por defecto para una llamada a `isAllowed()` sin el último parámetro es `Acl\Enum::DENY`. Para cambiar este comportamiento, puede hacer una llamada a `setNoArgumentsDefaultAction()`:
 

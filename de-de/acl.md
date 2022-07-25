@@ -24,7 +24,7 @@ In short, ACLs have two objects: The object that needs access, and the object th
 > 
 > **Component** - Login page - Admin page - Invoices page - Reports page 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 As seen above in the use case, an [Role][acl-role] is defined as who needs to access a particular [Component][acl-component] i.e. an area of the application. A [Component][acl-component] is defined as the area of the application that needs to be accessed.
 
@@ -447,7 +447,7 @@ $acl->isAllowed(
 
 > **NOTE**:The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function. 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
 

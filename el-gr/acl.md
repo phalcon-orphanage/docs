@@ -24,7 +24,7 @@ keywords: 'acl, access control list, permissions'
 > 
 > **Στοιχείο** - Σελίδα Σύνδεσης (Login) - Σελίδα Διαχείρησης (Admin) - Σελίδα Τιμολογίων (Invoices) - Σελίδα Αναφορών (Reports) 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 Όπως φαίνεται ανωτέρω, στην περίπτωση χρήσης, ένας [Ρόλος][acl-role] ορίζεται ως ποιός χρειάζεται για να αποκτήσει πρόσβαση σε ένα συγκεκριμένο [Στοιχείο][acl-component] δηλαδή, μια περιοχή από της εφαρμογής. Σαν [Στοιχείο][acl-component] ορίζουμε την περιοχή της εφαρμογής που χρειάζεται να προσβληθεί.
 
@@ -447,7 +447,7 @@ $acl->isAllowed(
 
 > **NOTE**:The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function. 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
 
