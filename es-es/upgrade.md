@@ -622,6 +622,10 @@ The [Filter](filter) component has been moved to the `Filter` namespace.
 #### `Phalcon\Forms\Element\AbstractElement`
 - Added `getTagFactory()` to return the `Phalcon\Html\TagFactory` object used internally, as well as `setTagFactory(TagFactory $tagFactory): AbstractElement` to set it.
 
+#### `Phalcon\Forms\Element\Check`
+#### `Phalcon\Forms\Element\Radio`
+- The classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more](html-helper)
+
 ---
 
 ### Ayudantes
