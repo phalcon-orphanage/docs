@@ -84,7 +84,7 @@ To start, lets register our app's `controllers` and `models` directories using [
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
@@ -199,12 +199,12 @@ $response->send();
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Url;
 
-// Визначимо деякі константи абсолютних шляхів, щоб забезпечити визначення розташування ресурсів
+// Define some absolute path constants to aid in locating resources
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
