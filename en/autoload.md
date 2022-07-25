@@ -24,7 +24,7 @@ Usually we would use the [spl_autoload_register()][spl-autoload-register] to reg
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -49,7 +49,7 @@ You can always call the `isRegistered()` method to check if your autoloader is r
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -70,7 +70,7 @@ Unregistering the autoloader is similarly easy. All you need to do is call `unre
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -132,7 +132,7 @@ The `registerNamespaces()` method accepts an array, where keys are the namespace
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -172,7 +172,7 @@ The `registerNamespaces()` method also accepts a second parameter `merge`. By de
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -215,7 +215,7 @@ However, using this method can hinder the maintenance of your application. The m
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -239,7 +239,7 @@ The `registerClasses()` method also accepts a second parameter `merge`. By defau
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -284,7 +284,7 @@ There are times that you might need to _require_ a specific file that contains a
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -305,7 +305,7 @@ The `registerFiles()` method also accepts a second parameter `merge`. By default
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -348,7 +348,7 @@ This type of registration is not recommended in terms of performance. Additional
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -368,7 +368,7 @@ The `registerDirs()` method also accepts a second parameter `merge`. By default 
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -407,7 +407,7 @@ When you use the `registerNamespaces()` and `registerDirs()`,  [Phalcon\Loader][
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -442,7 +442,7 @@ The default behavior uses [is_file][is_file]. However you can also use `null` wh
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -454,7 +454,7 @@ Default behavior
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -466,7 +466,7 @@ Faster than `is_file()`, but introduces issues if the file is removed from the f
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $loader = new Loader();
 
@@ -494,7 +494,7 @@ In the following example, the `EventsManager` is working with the class loader, 
 
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $eventsManager = new Manager();
 $loader        = new Loader();
@@ -533,7 +533,7 @@ For events that can stop operation, all you will need to do is return `false` in
 
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 $eventsManager = new Manager();
 $loader        = new Loader();
