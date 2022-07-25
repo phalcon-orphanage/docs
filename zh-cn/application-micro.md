@@ -8,7 +8,7 @@ keywords: 'application, micro, handlers, api'
 
 # 微型应用
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
@@ -826,7 +826,7 @@ If you are working on a large application, there is no need to mount all the col
                 break;
 
             default: 
-            //do nothing (or something)
+            // ...
         }
 ```
 In this way, Phalcon can handle tens (or hundreds) of routes without regex performance penalty: using `explode()` is faster than regex.
@@ -838,7 +838,7 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro][mvc-micro] applic
 
 $app->notFound(
     function () use ($app) {
-        $message = 'Nothing to see here. Move along....';
+        $message = 'XXXXXX';
         $app
             ->response
             ->setStatusCode(404, 'Not Found')
@@ -1371,7 +1371,7 @@ $app->post(
     function () use ($app) {
         $app
             ->flash
-            ->success('What are you doing Dave?')
+            ->success('++++++')
         ;
     }
 );
@@ -1413,9 +1413,9 @@ $app->get(
 ```
 
 ## Responses
-A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
+A micro application can return many types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
-Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
+Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom-built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
 
 ### Direct
 ```php
@@ -1972,8 +1972,11 @@ class NotFoundMiddleware implements MiddlewareInterface
      */
     public function beforeNotFound(Event $event, Micro $application)
     {
-        $application->response->redirect('/404');
-        $application->response->send();
+        $application
+            ->response
+            ->redirect('/404')
+            ->send()
+        ;
 
         return false;
     }
@@ -2242,7 +2245,7 @@ Models can be used in Micro applications, so long as we instruct the application
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 
 $loader = new Loader();
@@ -2279,7 +2282,7 @@ By using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] class you can inject m
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Model\Binder;
 
@@ -2310,7 +2313,7 @@ $app->handle(
 ```
 Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
 
-Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/invoices/view/1`.
+Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/invoices/view/1`.
 
 ### Views
 [Phalcon\Mvc\Micro][mvc-micro] does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple][mvc-view-simple] component to render views.
