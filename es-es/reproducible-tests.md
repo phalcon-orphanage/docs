@@ -12,7 +12,7 @@ keywords: 'pruebas, test, testing, pruebas reproducibles'
 
 > **NOTE**: If you have found a bug, you can open an issue in [GitHub][issues]. Acompañado por la descripción del error y todos los detalles posibles de tal manera que el equipo principal pueda reproducirlo. La mejor forma de hacerlo es creando una prueba que falle: así se demuestra el error. Si el error se encuentra en una aplicación de dominio público en un repositorio, es pertinente incluir el enlace. You can also use a [Gist][gist] to post any code you want to share with us. 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 ## Creando un pequeño script
 La prueba para demostrar el error se puede crear en unas cuantas líneas de PHP, por ejemplo:
@@ -83,7 +83,7 @@ var_dump($_COOKIE);
 
 > **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -115,7 +115,7 @@ $result = $container['db']->query('SELECT * FROM customers');
 
 > **NOTE**: Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -201,7 +201,7 @@ $application->handle(
 ### Mapeo objeto-relacional (ORM, siglas en inglés)
 > **NOTE**: You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). 
 > 
-> {:.alert .alert-info}
+> {: .alert .alert-info }
 
 ```php
 <?php
