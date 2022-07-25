@@ -8,7 +8,7 @@ keywords: 'application, micro, handlers, api'
 
 # Micro Aplicaciones
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Phalcon ofrece una aplicación muy 'ligera', para que pueda crear `Micro` aplicaciones con un mínimo de código PHP y sobrecarga. Las micro aplicaciones son aptas para pequeñas aplicaciones que tendrán un bajo nivel de sobrecarga. Tales aplicaciones son generalmente APIs, prototipos, etc.
@@ -826,7 +826,7 @@ Si estás trabajando en una aplicación grande, no es necesario montar todas las
                 break;
 
             default: 
-            //do nothing (or something)
+            // ...
         }
 ```
 De esta manera, Phalcon puede manejar decenas (o cientos) de rutas sin penalización en el rendimiento de regex: usar `explode()` es más rápido que regex.
@@ -838,7 +838,7 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro][mvc-micro] applic
 
 $app->notFound(
     function () use ($app) {
-        $message = 'Nothing to see here. Move along....';
+        $message = 'XXXXXX';
         $app
             ->response
             ->setStatusCode(404, 'Not Found')
@@ -1371,7 +1371,7 @@ $app->post(
     function () use ($app) {
         $app
             ->flash
-            ->success('What are you doing Dave?')
+            ->success('++++++')
         ;
     }
 );
@@ -1413,9 +1413,9 @@ $app->get(
 ```
 
 ## Respuestas
-Una micro aplicación puede retornar muchos tipos de respuestas. Una salida directa, utilizar un motor de plantillas, calcular datos, una vista basada en datos, JSON, etc.
+A micro application can return many types of responses. Una salida directa, utilizar un motor de plantillas, calcular datos, una vista basada en datos, JSON, etc.
 
-Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
+Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom-built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
 
 ### Direct
 ```php
@@ -1972,8 +1972,11 @@ class NotFoundMiddleware implements MiddlewareInterface
      */
     public function beforeNotFound(Event $event, Micro $application)
     {
-        $application->response->redirect('/404');
-        $application->response->send();
+        $application
+            ->response
+            ->redirect('/404')
+            ->send()
+        ;
 
         return false;
     }
@@ -2242,7 +2245,7 @@ Los modelos se pueden usar en aplicaciones Micro, siempre y cuando se indique a 
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 
 $loader = new Loader();
@@ -2279,7 +2282,7 @@ By using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] class you can inject m
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Model\Binder;
 
@@ -2310,7 +2313,7 @@ $app->handle(
 ```
 Ya que el objeto `Binder</em> está usando internamente la API Reflexión de PHP, que requiere ciclos de CPU adicionales, hay una opción para configurar un caché que acelere el proceso. Esto se puede hacer usando el segundo argumento de <code>setModelBinder()` que puede aceptar un nombre de servicio o simplemente pasarle una instancia de caché al constructor `Binder`.
 
-Actualmente, el vinculador (binder) solo utilizará la clave primaria de los modelos para realizar un `findFirst()`. Un ejemplo de ruta para lo anterior sería `/invoices/view/1`.
+Currently, the binder will only use the models primary key to perform a `findFirst()` on. Un ejemplo de ruta para lo anterior sería `/invoices/view/1`.
 
 ### Vistas
 [Phalcon\Mvc\Micro][mvc-micro] does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple][mvc-view-simple] component to render views.
