@@ -8,7 +8,7 @@ keywords: 'インストール, インストール方法, Phalconのインスト�
 
 # インストール
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Requirements
 
