@@ -2,17 +2,16 @@
 layout: default
 language: 'es-es'
 version: '5.0'
-upgrade: '#cli'
 title: 'Aplicación CLI'
 keywords: 'cli, línea de comandos, aplicación, tareas'
 ---
 
 # Aplicación CLI
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Resumen
-CLI significa Interfaz de Línea de Comandos (*Command Line Interface* en inglés). Las aplicaciones CLI se ejecutan desde la línea de comandos o un indicador de *shell*. Uno de los beneficios de las aplicaciones CLI es que no tienen una capa de vista (sólo potencialmente muestran la salida por pantalla) y se pueden ejecutar más de una vez al mismo tiempo. Alguno de los usos comunes son tareas de cron, scripts de manipulación, scripts de importación de datos, utilidades de comandos y más.
+CLI significa Interfaz de Línea de Comandos (*Command Line Interface* en inglés). Las aplicaciones CLI se ejecutan desde la línea de comandos o un indicador de *shell*. Uno de los beneficios de las aplicaciones CLI es que no tienen una capa de vista (sólo potencialmente muestran la salida por pantalla) y se pueden ejecutar más de una vez al mismo tiempo. Some common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
 
 ## Estructura
 You can create a CLI application in Phalcon, using the [Phalcon\Cli\Console][cli-console] class. Esta clase extiende desde la clase abstracta de aplicación, y usa un directorio en el que se localizan los scripts de Tareas. Task scripts are classes that extend [Phalcon\Cli\Task][cli-task] and contain the code that we need executed.
@@ -41,9 +40,9 @@ declare(strict_types=1);
 use Exception;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
+use Phalcon\Cli\Exception as PhalconException;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
-use Phalcon\Exception as PhalconException;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
@@ -217,10 +216,17 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        // #01
+        echo '000000' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action 
+> 
+> {: .alert .alert-info }
 
 You can implement your own tasks by either extending the supplied [Phalcon\Cli\Task][cli-task] or writing your own class implementing the [Phalcon\Cli\TaskInterface][cli-taskinterface].
 
@@ -240,15 +246,25 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        // #01
+        echo '000000' . PHP_EOL;
     }
 
     public function regenerateAction(int $count = 0)
     {
-        echo 'This is the retenerate action' . PHP_EOL;
+        // #01
+        echo '111111' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action
+> 
+> 02: This is the regenerate action 
+> 
+> {: .alert .alert-info }
 
 Podemos llamar a la acción `main` (acción predeterminada):
 
@@ -278,7 +294,7 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo '000000' . PHP_EOL;
     }
 
     public function addAction(int $first, int $second)
@@ -287,6 +303,13 @@ class UsersTask extends Task
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action 
+> 
+> {: .alert .alert-info }
+
 
 Entonces podemos ejecutar el siguiente comando:
 
@@ -360,8 +383,10 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        # 01
+        echo '000000' . PHP_EOL;
 
+        # 02
         $this->console->handle(
             [
                 'task'   => 'main',
@@ -372,10 +397,22 @@ class UsersTask extends Task
 
     public function printAction()
     {
-        echo 'I will get printed too!' . PHP_EOL;
+        # 03
+        echo '444444' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action
+> 
+> 02: Also handle the `print` action
+> 
+> 03: Print action executed also 
+> 
+> {: .alert .alert-info }
+
 
 Esta técnica le permite ejecutar cualquier tarea y cualquier acción desde cualquier otra tarea. Sin embargo, no es recomendable porque podría provocar pesadillas de mantenimiento. It is better to extend [Phalcon\Cli\Task][cli-task] and implement your logic there.
 
@@ -404,7 +441,7 @@ use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Exception as PhalconException;
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
