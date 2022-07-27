@@ -8,12 +8,12 @@ keywords: 'contribuindo, pull request, nova solicitação de recurso'
 
 # Contribuições
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Contribuindo para o Phalcon
 Phalcon é um projeto de código aberto e depende fortemente dos esforços e contribuições voluntárias. Nós agradecemos as contribuições de todos!
 
-Por favor, dedique alguns instantes a rever este documento para compreender o processo de contribuição e torná-lo tão eficiente quanto possível para todos. Seguindo estas orientações, poderemos ter uma resolução mais rápida das questões, uma melhor comunicação e poderemos todos fazer com que o projeto avance!
+Por favor, dedique alguns instantes a rever este documento para compreender o processo de contribuição e torná-lo tão eficiente quanto possível para todos. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub][github]. You can browse our repositories in our [organization page][phalcon-org].
 
@@ -25,6 +25,10 @@ Quando você cria uma pull request, nós temos um modelo bastante útil para aju
 * put on hold, where the reviewer requires changes (styling, tests etc.)
 * put on hold, if discussion is necessary (community, core team etc.)
 * rejected
+
+> **NOTE**: If your pull request is a new feature, it is best to discuss with the core team first, to ensure that it will align with the evolution of the framework. 
+> 
+> {:.alert .alert-warning}
 
 > **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed 
 > 
