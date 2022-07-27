@@ -8,7 +8,7 @@ keywords: '설치, Phalcon 설치, 팔콘설치'
 
 # 설치
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Requirements
 
