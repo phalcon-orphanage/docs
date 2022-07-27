@@ -8,12 +8,12 @@ keywords: 'contributing, nfr, pull request, pr, new feature request, участ�
 
 # Участь у розвитку фреймворка
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Участь у розвитку Phalcon
 Phalcon - проект з відкритим вихідним кодом, який значною мірою залежить від зусиль добровольців та пожертв. Ми будемо вдячні за будь-яку допомогу у розвитку фреймворка!
 
-Будь ласка, виділіть кілька хвилин, щоб переглянути цей документ, зрозуміти процес участі у розвитку і зробити його максимально ефективним для всіх. Дотримуючись цих інструкцій, ми можемо досягти швидшого розв'язання проблем, кращої комунікації, що дозволить усім нам отримати найкращий результат!
+Будь ласка, виділіть кілька хвилин, щоб переглянути цей документ, зрозуміти процес участі у розвитку і зробити його максимально ефективним для всіх. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub][github]. You can browse our repositories in our [organization page][phalcon-org].
 
@@ -25,6 +25,10 @@ If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull re
 * відкладений у чергу, якщо автор вимагає менш пріоритетних змін (оформлення, тести тощо)
 * відкладений, якщо потрібне широке обговорення (спільнота, ключові розробники тощо)
 * відхилений
+
+> **NOTE**: If your pull request is a new feature, it is best to discuss with the core team first, to ensure that it will align with the evolution of the framework. 
+> 
+> {:.alert .alert-warning}
 
 > **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed 
 > 
