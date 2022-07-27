@@ -1,5 +1,4 @@
--
-        $application->response--
+---
 layout: default
 language: 'en'
 version: '5.0'
