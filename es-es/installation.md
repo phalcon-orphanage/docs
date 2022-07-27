@@ -12,33 +12,22 @@ keywords: 'instalación, instalación de Phalcon'
 
 ## Requerimentos
 
-### PHP 7.2
-Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 has been released 2 years ago and its [active support][php-support] has lapsed, so we decided to follow actively supported PHP versions. La instalación de un servidor web está fuera del ámbito de este documento. Por favor, consulte las guías relevantes en Internet sobre cómo instalar un servidor web.
-
-### PSR (Recomendaciones Estándar de PHP)
-Phalcon requiere la extensión PSR. The extension can be downloaded and compiled from [this][psr-extension] GitHub repository. Las instrucciones de instalación están disponibles en el `README` del repositorio. Dependiendo del método de instalación que elija, puede que necesite añadir una directiva en su `php. ni` para que la extensión PSR esté cargada.
-
-```ini
-extension=psr.so
-```
-
-> **NOTE**: You will need the PSR 1.0 extension installed. 
-> 
-> {: .alert .alert-danger }
+### PHP 7.4
+Phalcon v5 supports only PHP 7.4 and above. PHP 7.4 has been released 2 years ago and its [active support][php-support] was until November 2021, while security updates were until November 2022. Phalcon follows actively supported PHP versions, therefore support for PHP 7.4 will not be available in future versions. La instalación de un servidor web está fuera del ámbito de este documento. Por favor, consulte las guías relevantes en Internet sobre cómo instalar un servidor web.
 
 ### PDO
 Dado que Phalcon tiene bajo acoplamiento, expone la funcionalidad sin necesidad de extensiones adicionales. Sin embargo, ciertos componentes dependen de extensiones adicionales para funcionar. Cuando necesite conectividad y acceso a la base de datos, necesitará instalar la extensión `php_pdo`. Si su RDBMS es MySQL/MariaDB o Aurora, también se necesita la extensión `php_mysqlnd`. De manera similar, usar una base de datos PostgreSql con Phalcon requiere la extensión `php_pgsql`.
 
 ### Orden de Carga
-Phalcon debe cargarse después de `PDO` y `PSR`. Algunas distribuciones añaden un prefijo numérico en los archivos `ini`. Si ese es el caso, elija un número alto para Phalcon (por ejemplo, `50-phalcon. ni`), mayor que `PDO` y `PSR`. Esto lo cargará después de las dos extensiones previas. Sin embargo, si su distribución solo tiene un archivo `php.ini`, por favor asegúrese de que el orden es similar a este:
+Phalcon needs to be loaded after `PDO`. Algunas distribuciones añaden un prefijo numérico en los archivos `ini`. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`), higher than `PDO`. This will load Phalcon after the prerequisite extensions. Sin embargo, si su distribución solo tiene un archivo `php.ini`, por favor asegúrese de que el orden es similar a este:
 
 ```ini
-extension=psr.so
+extension=pdo.so
 extension=phalcon.so
 ```
 
 ### Hardware
-Phalcon fue diseñado para utilizar los mínimos recursos posibles, al tiempo que ofrece un alto rendimiento. Aunque hemos probado Phalcon en varios ambientes de bajo rendimiento, (como 0,25GB RAM, 0,5 CPU), el hardware que usted elija dependerá de las necesidades de su aplicación.
+Phalcon is designed to use as few resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
 
 Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de Amazon con 512MB de RAM y 1 vCPU.
 
@@ -48,7 +37,7 @@ Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de A
 > 
 > {: .alert .alert-danger }
 
-Desde PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de los componentes de Phalcon que necesite, podría necesitar instalar algunas de las siguientes extensiones:
+Along with PHP 7.4 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
 
 * [curl][curl]
 * [fileinfo][fileinfo]
@@ -68,25 +57,19 @@ Desde PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de los
 
 Para el paquete `libpcre3-dev` puede usar los siguientes comandos:
 
-### Pecl
-El método de instalación de Pecl está disponible para Windows, Linux y MacOS. Bajo windows se utilizarán archivos dll precompilados. En Linux y MacOS se compilará Phalcon localmente por lo que podría ser más rápido usar un método de instalación diferente en estas plataformas. To install using Pecl make sure you have [pecl/pear][install-pecl] installed.
-```
-pecl channel-update pecl.php.net
-pecl install phalcon
-```
-
-#### Debian
+#### PCRE
+##### Debian
 ```bash
 sudo apt-get install libpcre3-dev
 ```
 y luego intente instalar Phalcon otra vez
 
-#### CentOS
+##### CentOS
 ```bash
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx usando Brew
+##### Mac/Osx usando Brew
 ```bash
 brew install pcre
 ```
@@ -115,47 +98,23 @@ sudo pecl install apc
 ```
 
 ## Plataformas de instalación
-Como Phalcon está compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en su servidor web.
+Since Phalcon is compiled as a PHP extension, its installation is somewhat different from any other traditional PHP framework. Phalcon necesita ser instalado y cargado como un módulo en su servidor web.
 
-### Linux
-Para instalar Phalcon en Linux, necesitará añadir nuestro repositorio en su distribución y luego instalarlo.
-
-#### Distribuciones basadas en DEB (Debian, Ubuntu, etc.)
-
-##### Instalación desde el repositorio
-Añada el repositorio a su distribución:
-
-**Versiones estables**
-```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
-```
-
-**Versiones lanzadas cada noche**
-```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
-```
-
-**Versiones en línea principal (alfa, beta, etc.)**
-```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
-```
-
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. 
+> **NOTE**: The preferred method of installation is through [PECL][install-pecl]. 
 > 
-> {: .alert .alert-warning }
+> {: .alert .alert-info }
 
-##### Instalación de Phalcon
-Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
-
-```bash
-sudo apt-get update
-sudo apt-get install php7.2-phalcon
+### PECL
+The PECL installation method is available for Windows, Linux and macOS. Under windows pre-compiled dll files are available, while under Linux and macOS, Phalcon will be compiled locally. To install Phalcon using PECL make sure you have [pecl/pear][install-pecl] installed.
+```
+pecl channel-update pecl.php.net
+pecl install phalcon-5.0.0
 ```
 
-##### PPAs adicionales
-**Ondřej Surý**
+### Additional PPA
+#### Linux DEB: **Ondřej Surý**
 
-If you do not wish to use our repository at [packagecloud.io][packagecloud], you can always use the one offered by [Ondřej Surý][ondrej].
+You can install the repository offered by [Ondřej Surý][ondrej].
 
 Instalación del repositorio:
 ```php
@@ -166,44 +125,10 @@ sudo apt-get update
 y Phalcon:
 
 ```php
-sudo apt-get install php-phalcon4
+sudo apt-get install php-phalcon5
 ```
 
-#### Distribuciones basadas en RPM (CentOS, Fedora, etc.)
-
-##### Instalación desde el repositorio
-Añada el repositorio a su distribución:
-
-**Versiones estables**
-```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
-```
-
-**Versiones lanzadas cada noche**
-```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
-```
-
-**Versiones en línea principal (alfa, beta, etc.)**
-```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
-```
-
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. 
-> 
-> {: .alert .alert-warning }
-
-
-##### Instalación de Phalcon
-Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
-
-```bash
-sudo yum update
-sudo yum install php72u-phalcon
-```
-
-##### RPMs Adicionales
-**Remi**
+#### Linux RPM: **Remi**
 
 [Remi Collet][remi] maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here][remi-config].
 
@@ -216,31 +141,31 @@ yum install php72-php-phalcon4
 Versiones adicionales están disponibles para cada arquitectura específica (x86/x64), así como versiones específicas de PHP
 
 
-#### FreeBSD
-Para FreeBSD está disponible el paquete binario (pkg) y compilarlo desde el código fuente (ports). Para instalarlo deberá ejecutar los siguientes comandos:
+### FreeBSD
+Binary package (pkg) and compile from source (ports) are available for FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
 
 ##### pkg
 ```bash
-pkg install php74-phalcon4
+pkg install php74-phalcon5
 ```
 
 ##### ports
 ```bash
-cd /usr/ports/www/phalcon4
+cd /usr/ports/www/phalcon5
 
 make install clean
 ```
 
-##### Gentoo
+### Gentoo
 An overlay for installing Phalcon can be found [here][gentoo-overlay]
 
-#### Raspberry Pi
+### Raspberry Pi
 
 ```bash
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v4.0.0 ./
+git checkout tags/v5.0.0 ./
 zephir fullclean
 zephir build
 ```
@@ -262,7 +187,7 @@ Después de guardar la configuración, reinicie el demonio:
 ```
 
 ### macOS
-Brew incluye paquetes binarios para que no necesite compilar Phalcon usted mismo. Si desea compilar la extensión usted mismo, necesita las siguientes dependencias instaladas:
+Brew includes binary packages, so you don't need to compile Phalcon yourself. Si desea compilar la extensión usted mismo, necesita las siguientes dependencias instaladas:
 
 #### Requisitos de compilación
 * Recursos de desarrollo para PHP 7.x
@@ -325,6 +250,10 @@ Las DLL disponibles son:
 |     x64      |   7.x   | Non Thread safe (NTS) |
 |     x86      |   7.x   | Thread safe           |
 |     x86      |   7.x   | Non Thread safe (NTS) |
+|     x64      |   8.x   | Thread safe           |
+|     x64      |   8.x   | Non Thread safe (NTS) |
+|     x86      |   8.x   | Thread safe           |
+|     x86      |   8.x   | Non Thread safe (NTS) |
 
 Editar el archivo `php.ini` y luego añadir al final:
 
@@ -338,15 +267,41 @@ Reinicie su servidor web.
 Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
 
 #### Requerimentos
-* Recursos de desarrollo de PHP 7.2.x/7.3.x
+* PHP 7.4.x+ development resources
 * Compilador GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
 #### Compilación
-Download the latest `zephir.phar` from [here][zephir-phar]. Añada a una carpeta a la que puede acceder su sistema.
+If you wish to compile Phalcon you can do so by using [Zephir][zephir-phar]. You will first need to have the [Zephir Parser][zephir-parser] installed in your system:
 
-Clonar el repositorio
+```bash
+pecl install zephir_parser
+```
+
+Depending on your target system, you might need to create a `zephir_parser.ini` file, to load this extension. The contents of the file should be:
+
+```ini
+extension=zephir_parser.so
+```
+
+and you might need to enable the extension using `phpenmod`
+
+```bash
+phpenmod zephir_parser
+```
+
+You will then need to download the latest `zephir.phar` from [here][zephir-phar]. Move the file to a folder that is available in your `PATH`, such as `/usr/local/bin` for example, and make it executable:
+
+```bash
+mv zephir.phar /usr/local/bin 
+cd /usr/local/bin/
+mv zephir.phar zephir 
+chmod a+x zephir
+```
+You might also need to change the ownership of the file, depending on your environment.
+
+Clone the repository to a location on your file system.
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -356,7 +311,7 @@ Compilación de Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0 ./
+git checkout tags/v5.0.0 ./
 zephir fullclean
 zephir build
 ```
@@ -367,29 +322,19 @@ Comprueba el módulo
 php -m | grep phalcon
 ```
 
-Ahora tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
-```ini
-; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
-extension=phalcon.so
+You will now need enable Phalcon. Create a file called `phalcon.ini` with `extension=phalcon.so` as its content. The file should be present in:
 
-; CentOS/RedHat/Fedora: Add a File Called Phalcon.ini in /etc/php.d/ with This Content:
-extension=phalcon.so
-
-; Ubuntu/Debian with Apache2: Add a File Called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with This Content:
-extension=phalcon.so
-
-; Ubuntu/Debian with Php7-fpm: Add a File Called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with This Content:
-extension=phalcon.so
-
-; Ubuntu/Debian with Php7-cli: Add a File Called 30-phalcon.ini in /etc/php7/cli/conf.d/ with This Content:
-extension=phalcon.so
-```
+- Suse: `/etc/php7/conf.d/phalcon.ini`
+- CentOS/RedHat/Fedora: `/etc/php.d/phalcon.ini`
+- Ubuntu/Debian with Apache2: `/etc/php7/apache2/conf.d/30-phalcon.ini` with this Content:
+- Ubuntu/Debian with Php7-FPM: `/etc/php7/fpm/conf.d/30-phalcon.ini`
+- Ubuntu/Debian with Php7-CLI: `/etc/php7/cli/conf.d/30-phalcon.ini`
 
 The instructions above will compile **and** install the module on your system. También puede compilar la extensión y luego añadirla manualmente a su archivo `ini`:
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0 ./
+git checkout tags/v5.0.0 ./
 zephir fullclean
 zephir compile
 cd ext
@@ -400,9 +345,13 @@ make && make install
 
 Si usa el método anterior, necesitará añadir la linea `extension=phalcon.so` a su `php.ini` tanto para CLI como para el servidor web.
 
+> **NOTE**: If you are installing Phalcon with PHP 8.+, the paths will vary slightly. 
+> 
+> {: .alert .alert-warning }
+
 #### Ajustes de construcción
 
-Por defecto, compilamos para ser lo más compatible posible con todos los procesadores (`gcc -mtune=native -O2 -fomit-frame-pointer`). Si desea que el compilador genere código de máquina optimizado, que coincida con el procesador en el que se está ejecutando actualmente, puede configurar sus propios parámetros de compilación, exportando CFLAGS antes de la compilación. Por ejemplo
+By default, we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). Si desea que el compilador genere código de máquina optimizado, que coincida con el procesador en el que se está ejecutando actualmente, puede configurar sus propios parámetros de compilación, exportando CFLAGS antes de la compilación. Por ejemplo
 
 ```
 export CFLAGS="-march=native -O2 -fomit-frame-pointer"
@@ -418,7 +367,7 @@ Ejecutar su aplicación en un alojamiento compartido podría restringirlo en la 
 cPanel & WHM soportan Phalcon usando Easy Apache 4 (EA4). You can install Phalcon by enabling the [module][cpanel-phalcon] in Easy Apache 4 (EA4).
 
 #### Plesk
-The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website][plesk]
+The plesk control panel doesn't have Phalcon support, but you can find installation instructions on the Plesk [website][plesk]
 
 [plesk]: https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-
 [cpanel-phalcon]: https://github.com/CpanelInc/scl-phalcon
@@ -435,14 +384,15 @@ The plesk control panel doesn't have Phalcon support but you can find installati
 [mysql]: https://php.net/manual/en/ref.pdo-mysql.php
 [ondrej]: https://launchpad.net/~ondrej/+archive/ubuntu/php/
 [openssl]: https://php.net/manual/en/book.openssl.php
-[packagecloud]: https://packagecloud.io/phalcon
 [pcre]: https://www.pcre.org/
 [pdo]: https://php.net/manual/en/book.pdo.php
 [php-support]: https://www.php.net/supported-versions.php
 [postgresql]: https://php.net/manual/en/ref.pdo-pgsql.php
-[psr-extension]: https://github.com/jbboehr/php-psr
 [remi]: https://github.com/remicollet
 [remi-config]: https://blog.remirepo.net/pages/Config-en
+[zephir-parser]: https://github.com/zephir-lang/php-zephir-parser/releases
 [zephir-phar]: https://github.com/phalcon/zephir/releases
+[zephir-phar]: https://github.com/phalcon/zephir/releases
+[install-pecl]: https://pear.php.net/manual/en/installation.getting.php
 [install-pecl]: https://pear.php.net/manual/en/installation.getting.php
 [install-phpbrew]: https://github.com/phpbrew/phpbrew/wiki/Quick-Start
