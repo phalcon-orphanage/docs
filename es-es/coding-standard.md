@@ -8,7 +8,7 @@ keywords: 'coding standard, zephir'
 
 # Estándar de Código de Phalcon
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Última actualización: 04-07-2019
 
