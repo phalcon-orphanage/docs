@@ -9,6 +9,7 @@ keywords: 'assets, js, css'
 # Assets Management
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
 ## Overview
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
@@ -47,15 +48,36 @@ If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\H
 
 ## Assets
 Assets can be added to the manager or a collection using the Asset related classes. The [Phalcon\Assets\Asset][asset] class. The object accepts the necessary data to create the asset. 
-* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
-* `path` : the path of the asset
-* `local`: whether this is a local asset or not
-* `filter`: any filter attached to this asset
-* `attributes`: attributes relative to the asset
-* `version`: version of the asset
-* `autoVersion`: let the component auto version this asset or not
+ 
+**type**
+can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
 
-Each asset has a unique key assigned to it. The key is computed using `sha256` and it is calculated as: `$this->getType() . ":" . $this->getPath()`. This ensures uniqueness and does not duplicate assets in the asset manager.
+**path**
+the path of the asset
+
+**local**
+whether this is a local asset or not
+
+**filter**
+any filter attached to this asset
+
+**attributes**
+attributes relative to the asset
+
+**version**
+version of the asset
+
+**autoVersion**
+let the component auto version this asset or not
+
+
+Each asset has a unique key assigned to it. The key is computed using `sha256` and it is calculated as: 
+
+```php
+$this->getType() . ":" . $this->getPath()
+```
+
+This ensures uniqueness and does not duplicate assets in the asset manager.
 
 ```php
 <?php
@@ -111,10 +133,18 @@ $asset = new Js(
 
 ### Inline
 There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
-* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
-* `content`: the content to be injected
-* `filter`: any filter attached to this asset
-* `attributes`: attributes relative to the asset
+
+**type**
+can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+ 
+**content**
+the content to be injected
+
+**filter**
+any filter attached to this asset
+ 
+**attributes**
+attributes relative to the asset
 
 ```php
 <?php
@@ -182,7 +212,7 @@ class IndexController extends Controller
 
 ## Adding Assets
 ### Files
-`Phalcon\Assets` supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS. 
+`Phalcon\Assets\Manager` supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS. 
 
 You can easily add assets to these collections:
 
@@ -267,7 +297,7 @@ $manager
 ```
 
 ## Local/Remote Assets
-Local assets are those who are provided by the same application and they are located in a public location (usually `public`). The URLs for local assets are generated using the [url][url] service.
+Local assets are those who are provided by the same application, and they are located in a public location (usually `public`). The URLs for local assets are generated using the [url][url] service.
 
 Remote assets are those such as common libraries like [jQuery][jquery], [Bootstrap][bootstrap], etc. that are provided by a [CDN][cdn].
 
@@ -614,14 +644,16 @@ The `outputJs()` and `outputCss()` methods are available to generate the necessa
 ```php
 <?php
 
-use Phalcon\Tag;
+use Phalcon\Html\TagFactory;
 
+$tagFactory   = new TagFactory();
 $jsCollection = $this->assets->collection('js');
 
 foreach ($jsCollection as $asset) {
-    echo Tag::javascriptInclude(
-        $asset->getPath()
-    );
+    echo (string) $tagFactory
+        ->script()
+        ->add($asset->getPath())
+    ;
 }
 ```
 
@@ -804,7 +836,7 @@ class AssetsController extends ControllerBase
 }
 ```
 
-If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
+If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache, it will be a little different:
 
 ```nginx
 location ~ ^/assets/ {
