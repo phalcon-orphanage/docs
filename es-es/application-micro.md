@@ -23,7 +23,7 @@ $app = new Micro();
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 
@@ -348,7 +348,7 @@ $app = new Micro();
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -398,7 +398,7 @@ Puede utilizar una función anónima para manejar la solicitud
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -411,7 +411,7 @@ Acceder al objeto `$app` dentro de la función anónima puede lograrse mediante 
 $app->get(
     '/invoices/view/{id}',
     function ($id) use ($app){
-        $content = "<h1>Invoice #{$id}!</h1>";
+        $content = "<h1>#{$id}!</h1>";
 
         $app->response->setContent($content);
 
@@ -428,7 +428,7 @@ Podemos definir una función como el manejador y adjuntarlo a una ruta específi
 <?php
 
 function invoiceView($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
+    echo "<h1>#{$id}!</h1>";
 }
 
 $app->get(
@@ -447,7 +447,7 @@ También podemos usar un método estático como gestor, como se muestra a contin
 class InvoicesClass
 {
     public static function view($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 }
 
@@ -467,7 +467,7 @@ También puede utilizar un método en un objeto como manejador.
 class InvoicesClass
 {
     public function view($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 }
 
@@ -540,7 +540,7 @@ class InvoicesController extends Controller
 
     public function view($id)
     {
-        $content = "<h1>Invoice #{$id}!</h1>";
+        $content = "<h1>#{$id}!</h1>";
 
         $this->response->setContent($content);
 
@@ -754,80 +754,80 @@ Con este simple cambio en la aplicación, todos los manejadores permanecen sin s
 Si estás trabajando en una aplicación grande, no es necesario montar todas las colecciones, incluso si se cargan perezosamente: Phalcon usará regex para hacer coincidir las rutas. To speed up the routing process it is possible to run a _pre-filter_ like this, using the previous example:
 
 ```php
-        $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
-        $path = $uri->getPath();
-        $parts = explode("/", $path);
-        $collection = $parts[1];
+$uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
+$path = $uri->getPath();
+$parts = explode("/", $path);
+$collection = $parts[1];
 
-        switch ($collection) {
-            case "users":
-                $users = new MicroCollection();
-                $users
-                    ->setHandler(
-                        UsersController::class,
-                        true
-                    )
-                    ->setPrefix('/users')
-                    ->get(
-                        '/get/{id}', 
-                        'get'
-                    )
-                    ->get(
-                        '/add/{payload}', 
-                        'add'
-                    )
-                ;
+switch ($collection) {
+    case "users":
+        $users = new MicroCollection();
+        $users
+            ->setHandler(
+                UsersController::class,
+                true
+            )
+            ->setPrefix('/users')
+            ->get(
+                '/get/{id}', 
+                'get'
+            )
+            ->get(
+                '/add/{payload}', 
+                'add'
+            )
+        ;
 
-                $app->mount($users);
+        $app->mount($users);
 
-                break;
+        break;
 
-            case "invoices":
-                $invoices = new MicroCollection();
-                $invoices
-                    ->setHandler(
-                        InvoicesController::class,
-                        true
-                    )
-                    ->setPrefix('/invoices')
-                    ->get(
-                        '/get/{id}', 
-                        'get'
-                    )
-                    ->get(
-                        '/add/{payload}', 
-                        'add'
-                    )
-                ;
+    case "invoices":
+        $invoices = new MicroCollection();
+        $invoices
+            ->setHandler(
+                InvoicesController::class,
+                true
+            )
+            ->setPrefix('/invoices')
+            ->get(
+                '/get/{id}', 
+                'get'
+            )
+            ->get(
+                '/add/{payload}', 
+                'add'
+            )
+        ;
 
-                $app->mount($invoices);   
+        $app->mount($invoices);   
 
-                break;
+        break;
 
-            case "products": 
-                $products = new MicroCollection();
-                $products
-                    ->setHandler(
-                        ProductsController::class,
-                        true
-                    )
-                    ->setPrefix('/products')
-                    ->get(
-                        '/get/{id}', 
-                        'get'
-                    )
-                    ->get(
-                        '/add/{payload}', 
-                        'add'
-                    )
+    case "products": 
+        $products = new MicroCollection();
+        $products
+            ->setHandler(
+                ProductsController::class,
+                true
+            )
+            ->setPrefix('/products')
+            ->get(
+                '/get/{id}', 
+                'get'
+            )
+            ->get(
+                '/add/{payload}', 
+                'add'
+            )
 
-                $app->mount($products);  
+        $app->mount($products);  
 
-                break;
+        break;
 
-            default: 
-            // ...
-        }
+    default: 
+    // ...
+}
 ```
 De esta manera, Phalcon puede manejar decenas (o cientos) de rutas sin penalización en el rendimiento de regex: usar `explode()` es más rápido que regex.
 
@@ -1150,7 +1150,7 @@ Brevemente, hemos visto anteriormente cómo se definen los parámetros en las ru
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -1163,15 +1163,15 @@ También podemos aplicar ciertas reglas para cada parámetro, utilizando expresi
 $app->get(
     '/invoices/view/{id:[0-9]+}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 
 $app->get(
     '/invoices/search/year/{year:[0-9][4]}/title/{title:[a-zA-Z\-]+}',
     function ($year, $title) {
-        echo "'<h1>Title: {$title}</h1>", PHP_EOL,
-             "'<h2>Year: {$year}</h2>"
+        echo "'<h1>{$title}</h1>", PHP_EOL,
+             "'<h2>{$year}</h2>"
         ;
     }
 );
@@ -1201,7 +1201,7 @@ $app->get('/invoices/show/{id}',
 
 $app->get('/invoices/view/{id}',
     function ($id) use ($app) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -1297,7 +1297,7 @@ $app->get(
     '/',
     function () use ($app) {
         $url = sprintf(
-            '<a href="%s">Invoice</a>',
+            '<a href="%s">#</a>',
             $app
                 ->url
                 ->get(
@@ -1424,7 +1424,7 @@ Handlers may return raw responses using plain text, [Phalcon\Http\Response][http
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -1739,7 +1739,7 @@ $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
             $app['flashSession']
-                ->error("The user isn not authenticated")
+                ->error("The user is not authenticated")
             ;
 
             $app['response']
@@ -2343,7 +2343,7 @@ $app->get(
                 [
                     'id'         => 4,
                     'customerId' => 3,
-                    'title'      => 'Invoice for ACME Inc.',
+                    'title'      => 'ACME Inc.',
                     'total'      => 100,
                 ]
             )
@@ -2381,7 +2381,7 @@ $app->get(
                 [
                     'id'         => 4,
                     'customerId' => 3,
-                    'title'      => 'Invoice for ACME Inc.',
+                    'title'      => 'ACME Inc.',
                     'total'      => 100,
                 ]
             )
