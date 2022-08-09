@@ -778,7 +778,7 @@ $acl->addRole($manager);
 $acl->addRole($accounting);
 $acl->addRole($guest);
 
-// @03
+// #03
 $acl->addInherit($manager, $accounting);
 $acl->addInherit($accounting, $guest);
 ```
