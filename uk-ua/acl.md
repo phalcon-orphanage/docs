@@ -11,17 +11,6 @@ keywords: 'acl, access control list, permissions'
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **Оновлення**
-> 
-> У компоненті [ACL](acl) були перейменовані деякі методи та компоненти. Функціонал залишається таким самим, як у попередніх версіях.
-> 
-> - Renamed `Phalcon\Acl\ComponentAware` to `Phalcon\Acl\ComponentAwareInterface`
-> - Renamed `Phalcon\Acl\RoleAware` to `Phalcon\Acl\RoleAwareInterface`
-> - `Acl\Adapter\Memory` - `Acl\Adapter\AdapterInterface` 
->     - Added `getInheritedRoles()` to return an array of the inherited roles in the adapter. 
->         
->         {:.alert .alert-warning}
-
 ## Огляд
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
@@ -951,4 +940,3 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-roleaware]: api/Phalcon_Acl#acl-roleaware
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
-        
