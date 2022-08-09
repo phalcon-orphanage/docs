@@ -210,7 +210,6 @@ class IndexController extends Controller
     public function index()
     {
         try {
-            // Add some local CSS assets
             $this->assets->addCss('css/style.css');
             $this->assets->addCss('css/index.css');
         } catch (Exception $ex) {
@@ -236,11 +235,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        // Add some local CSS assets
         $this->assets->addCss('css/style.css');
         $this->assets->addCss('css/index.css');
 
-        // And some local JavaScript assets
         $this->assets->addJs('js/jquery.js');
         $this->assets->addJs('js/bootstrap.min.js');
     }
@@ -335,13 +332,13 @@ public function indexAction()
 ```php
 <?php
 
-// Javascript - header
+// Javascript - <head>
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript - footer
+// Javascript - <footer>
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -454,7 +451,6 @@ class CssYUICompressor implements FilterInterface
      */
     public function filter($contents)
     {
-        // Write the string contents into a temporal file
         file_put_contents('temp/my-temp-1.css', $contents);
 
         system(
@@ -467,7 +463,6 @@ class CssYUICompressor implements FilterInterface
             ' -o temp/my-temp-file-2.css'
         );
 
-        // Return the contents of file
         return file_get_contents('temp/my-temp-file-2.css');
     }
 }
@@ -478,10 +473,8 @@ Usage:
 ```php
 <?php
 
-// Get some CSS collection
 $css = $this->assets->get('head');
 
-// Add/Enable the YUI compressor filter in the collection
 $css->addFilter(
     new CssYUICompressor(
         [
@@ -530,13 +523,13 @@ To output files:
 ```php
 <?php
 
-// Javascript - header
+// Javascript - <head>
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript - footer
+// Javascript - <footer>
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -784,7 +777,7 @@ $router->addGet(
     ]
 );
 
-// Other routes...
+// ...
 ```
 
 Finally, we need to create a controller to handle asset requests:
@@ -803,31 +796,31 @@ class AssetsController extends ControllerBase
 {
     public function serveAction(): Response
     {
-        // Getting a response instance
+        // #01
         $response = new Response();
 
-        // Prepare output path
+        // #02
         $collectionName = $this->dispatcher->getParam('collection');
         $extension      = $this->dispatcher->getParam('extension');
         $type           = $this->dispatcher->getParam('type');
         $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
 
-        // Setting up the content type
+        // #03
         $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
         $response->setContentType($contentType, 'UTF-8');
 
-        // Check collection existence
+        // #04
         if (!$this->assets->exists($collectionName)) {
             return $response->setStatusCode(404, 'Not Found');
         }
 
-        // Setting up the Assets Collection
+        // #05
         $collection = $this->assets
             ->collection($collectionName)
             ->setTargetUri($targetPath)
             ->setTargetPath($targetPath);
 
-        // Store content to the disk and return fully qualified file path
+        // #06
         $contentPath = $this->assets->output(
             $collection,
             function (array $parameters) {
@@ -836,16 +829,35 @@ class AssetsController extends ControllerBase
             $type
         );
 
-        // Set the content of the response
+        // #07
         $response->setContent(
             file_get_contents($contentPath)
         );
 
-        // Return the response
+        // #08
         return $response;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01. Getting a response instance
+>
+> 02. Prepare output path
+>
+> 03. Setting up the content type
+>
+> 04. Check collection existence
+>
+> 05. Setting up the Assets Collection
+>
+> 06. Store content to the disk and return fully qualified file path
+>
+> 07. Set the content of the response
+>
+> 08. Return the response
+>
 
 If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache, it will be a little different:
 
