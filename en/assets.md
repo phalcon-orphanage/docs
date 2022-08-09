@@ -50,24 +50,31 @@ If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\H
 Assets can be added to the manager or a collection using the Asset related classes. The [Phalcon\Assets\Asset][asset] class. The object accepts the necessary data to create the asset. 
  
 **type**
+
 can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
 
 **path**
+
 the path of the asset
 
 **local**
+
 whether this is a local asset or not
 
 **filter**
+
 any filter attached to this asset
 
 **attributes**
+
 attributes relative to the asset
 
 **version**
+
 version of the asset
 
 **autoVersion**
+
 let the component auto version this asset or not
 
 
@@ -135,15 +142,19 @@ $asset = new Js(
 There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
 
 **type**
+
 can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
  
 **content**
+
 the content to be injected
 
 **filter**
+
 any filter attached to this asset
  
 **attributes**
+
 attributes relative to the asset
 
 ```php
