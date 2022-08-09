@@ -131,12 +131,12 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 The [Assets](assets) component has had changes to the interface as well as some methods were renamed. The functionality remains the same as in previous versions.
 
 #### `Phalcon\Assets\Asset`
-- `getAssetKey()` now uses `sha1` to compute the key
+- `getAssetKey()` now uses `sha256` to compute the key
 - Renamed `getLocal()` to `isLocal()`
 - Renamed `setLocal()` to `setIsLocal()`
 
 #### `Phalcon\Assets\Collection`
-- The class now uses `ArrayIterator` instead of `Iterator
+- The class now uses `ArrayIterator` instead of `Iterator`
 - Renamed `getLocal()` to `isLocal()`
 - Renamed `setLocal()` to `setIsLocal()`
 - Renamed `getTargetLocal()` to `getTargetIsLocal()`
@@ -144,7 +144,7 @@ The [Assets](assets) component has had changes to the interface as well as some 
 - Removed `getPosition()`, `current()`, `key()`, `next()`, `rewind()`, `valid()`
 
 #### `Phalcon\Assets\Inline`
-- `getAssetKey()` now uses `sha1` to compute the key
+- `getAssetKey()` now uses `sha256` to compute the key
 
 #### `Phalcon\Assets\Manager`
 - `__construct()` requires a `Phalcon\Html\TagFactory` as the first parameter
