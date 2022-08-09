@@ -10,6 +10,7 @@ keywords: 'recursos, js, css'
 # Gestión de Recursos (Assets)
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
 ## Resumen
 `Phalcon\Assets` es un componente que le permite gestionar recursos estáticos como hojas de estilo CSS o librerías JavaScript en una aplicación web.
 
@@ -48,15 +49,43 @@ If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\H
 
 ## Recursos Activos
 Los recursos se pueden añadir al gestor o una colección usando las clases relativas a `Asset`. The [Phalcon\Assets\Asset][asset] class. El objeto acepta los datos necesarios para crear el recurso.
-* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
-* `path` : the path of the asset
-* `local`: whether this is a local asset or not
-* `filter`: any filter attached to this asset
-* `attributes`: attributes relative to the asset
-* `version`: version of the asset
-* `autoVersion`: let the component auto version this asset or not
 
-Each asset has a unique key assigned to it. The key is computed using `sha256` and it is calculated as: `$this->getType() . ":" . $this->getPath()`. This ensures uniqueness and does not duplicate assets in the asset manager.
+**type**
+
+can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+
+**path**
+
+the path of the asset
+
+**local**
+
+whether this is a local asset or not
+
+**filter**
+
+any filter attached to this asset
+
+**attributes**
+
+attributes relative to the asset
+
+**version**
+
+version of the asset
+
+**autoVersion**
+
+let the component auto version this asset or not
+
+
+Each asset has a unique key assigned to it. The key is computed using `sha256` and it is calculated as:
+
+```php
+$this->getType() . ":" . $this->getPath()
+```
+
+This ensures uniqueness and does not duplicate assets in the asset manager.
 
 ```php
 <?php
@@ -112,10 +141,22 @@ $asset = new Js(
 
 ### En Línea
 Hay veces que la aplicación necesita generar CSS o JS para ser inyectado en la vista. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
-* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
-* `content`: the content to be injected
-* `filter`: any filter attached to this asset
-* `attributes`: attributes relative to the asset
+
+**type**
+
+can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+
+**content**
+
+the content to be injected
+
+**filter**
+
+any filter attached to this asset
+
+**attributes**
+
+attributes relative to the asset
 
 ```php
 <?php
@@ -170,7 +211,6 @@ class IndexController extends Controller
     public function index()
     {
         try {
-            // Add some local CSS assets
             $this->assets->addCss('css/style.css');
             $this->assets->addCss('css/index.css');
         } catch (Exception $ex) {
@@ -183,7 +223,7 @@ class IndexController extends Controller
 
 ## Añadir Recursos
 ### Archivos
-`Phalcon\Assets` supports two built-in assets: CSS and JavaScript assets. También puede crear otros tipos de recurso si lo necesita. El gestor de recursos almacena internamente dos colecciones de recursos por defecto - una para JavaScript y otra para CSS.
+`Phalcon\Assets\Manager` supports two built-in assets: CSS and JavaScript assets. También puede crear otros tipos de recurso si lo necesita. El gestor de recursos almacena internamente dos colecciones de recursos por defecto - una para JavaScript y otra para CSS.
 
 Fácilmente puede añadir recursos a estas colecciones:
 
@@ -196,11 +236,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        // Add some local CSS assets
         $this->assets->addCss('css/style.css');
         $this->assets->addCss('css/index.css');
 
-        // And some local JavaScript assets
         $this->assets->addJs('js/jquery.js');
         $this->assets->addJs('js/bootstrap.min.js');
     }
@@ -268,7 +306,7 @@ $manager
 ```
 
 ## Recursos Locales/Remotos
-Los recursos locales son aquellos que se proveen por la propia aplicación y están ubicados en una localización pública (normalmente `public`). The URLs for local assets are generated using the [url][url] service.
+Local assets are those who are provided by the same application, and they are located in a public location (usually `public`). The URLs for local assets are generated using the [url][url] service.
 
 Remote assets are those such as common libraries like [jQuery][jquery], [Bootstrap][bootstrap], etc. that are provided by a [CDN][cdn].
 
@@ -295,13 +333,13 @@ public function indexAction()
 ```php
 <?php
 
-// Javascript - header
+// Javascript - <head>
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript - footer
+// Javascript - <footer>
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -414,7 +452,6 @@ class CssYUICompressor implements FilterInterface
      */
     public function filter($contents)
     {
-        // Write the string contents into a temporal file
         file_put_contents('temp/my-temp-1.css', $contents);
 
         system(
@@ -427,7 +464,6 @@ class CssYUICompressor implements FilterInterface
             ' -o temp/my-temp-file-2.css'
         );
 
-        // Return the contents of file
         return file_get_contents('temp/my-temp-file-2.css');
     }
 }
@@ -438,10 +474,8 @@ Uso:
 ```php
 <?php
 
-// Get some CSS collection
 $css = $this->assets->get('head');
 
-// Add/Enable the YUI compressor filter in the collection
 $css->addFilter(
     new CssYUICompressor(
         [
@@ -490,13 +524,13 @@ Para mostrar ficheros:
 ```php
 <?php
 
-// Javascript - header
+// Javascript - <head>
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript - footer
+// Javascript - <footer>
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -615,14 +649,16 @@ Los métodos `outputJs()` y `outputCss()` están disponibles para generar el có
 ```php
 <?php
 
-use Phalcon\Tag;
+use Phalcon\Html\TagFactory;
 
+$tagFactory   = new TagFactory();
 $jsCollection = $this->assets->collection('js');
 
 foreach ($jsCollection as $asset) {
-    echo Tag::javascriptInclude(
-        $asset->getPath()
-    );
+    echo (string) $tagFactory
+        ->script()
+        ->add($asset->getPath())
+    ;
 }
 ```
 
@@ -742,7 +778,7 @@ $router->addGet(
     ]
 );
 
-// Other routes...
+// ...
 ```
 
 Finalmente, necesitamos crear un controlador para gestionar las peticiones de recursos:
@@ -761,31 +797,31 @@ class AssetsController extends ControllerBase
 {
     public function serveAction(): Response
     {
-        // Getting a response instance
+        // #01
         $response = new Response();
 
-        // Prepare output path
+        // #02
         $collectionName = $this->dispatcher->getParam('collection');
         $extension      = $this->dispatcher->getParam('extension');
         $type           = $this->dispatcher->getParam('type');
         $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
 
-        // Setting up the content type
+        // #03
         $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
         $response->setContentType($contentType, 'UTF-8');
 
-        // Check collection existence
+        // #04
         if (!$this->assets->exists($collectionName)) {
             return $response->setStatusCode(404, 'Not Found');
         }
 
-        // Setting up the Assets Collection
+        // #05
         $collection = $this->assets
             ->collection($collectionName)
             ->setTargetUri($targetPath)
             ->setTargetPath($targetPath);
 
-        // Store content to the disk and return fully qualified file path
+        // #06
         $contentPath = $this->assets->output(
             $collection,
             function (array $parameters) {
@@ -794,18 +830,36 @@ class AssetsController extends ControllerBase
             $type
         );
 
-        // Set the content of the response
+        // #07
         $response->setContent(
             file_get_contents($contentPath)
         );
 
-        // Return the response
+        // #08
         return $response;
     }
 }
 ```
 
-Si existen recursos precompilados en el sistema de ficheros deben ser servidos directamente por el servidor web. Así que para obtener beneficios de los recursos estáticos debemos actualizar la configuración de nuestro servidor. Usaremos un ejemplo de configuración para Nginx. Para Apache será un poco diferente:
+> **Legend**
+> 
+> 1. Getting a response instance
+> 
+> 2. Prepare output path
+> 
+> 3. Setting up the content type
+> 
+> 4. Check collection existence
+> 
+> 5. Setting up the Assets Collection
+> 
+> 6. Store content to the disk and return fully qualified file path
+> 
+> 7. Set the content of the response
+> 
+> 8. Return the response
+
+Si existen recursos precompilados en el sistema de ficheros deben ser servidos directamente por el servidor web. Así que para obtener beneficios de los recursos estáticos debemos actualizar la configuración de nuestro servidor. Usaremos un ejemplo de configuración para Nginx. For Apache, it will be a little different:
 
 ```nginx
 location ~ ^/assets/ {
