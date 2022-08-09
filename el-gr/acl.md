@@ -11,17 +11,6 @@ keywords: 'acl, access control list, permissions'
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-> **Αναβάθμιση**
-> 
-> The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
-> 
-> - Renamed `Phalcon\Acl\ComponentAware` to `Phalcon\Acl\ComponentAwareInterface`
-> - Renamed `Phalcon\Acl\RoleAware` to `Phalcon\Acl\RoleAwareInterface`
-> - `Acl\Adapter\Memory` - `Acl\Adapter\AdapterInterface` 
->     - Added `getInheritedRoles()` to return an array of the inherited roles in the adapter. 
->         
->         {:.alert .alert-warning}
-
 ## Επισκόπηση
 Το [Phalcon\Acl][acl-acl] παρέχει μια εύκολη και ελαφριά διαχείριση ACL καθώς και τα δικαιώματα που τους συνοδεύουν. [Οι Λίστες Ελέγχου Πρόσβασης][acl] (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
 
@@ -953,4 +942,3 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-roleaware]: api/Phalcon_Acl#acl-roleaware
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
-        
