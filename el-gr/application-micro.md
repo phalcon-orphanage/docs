@@ -21,8 +21,7 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-    '/invoices/view/{id}
-',
+    '/invoices/view/{id}',
     function ($id) {
         echo "<h1>Invoice #{$id}!</h1>";
     }
@@ -369,8 +368,7 @@ use Phalcon\Mvc\Router;
 
 $router = new Router();
 $router->addGet(
-    '/invoices/view/{id}
-',
+    '/invoices/view/{id}',
     'InvoicesClass::view'
 );
 
