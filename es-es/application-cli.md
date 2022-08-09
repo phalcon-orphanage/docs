@@ -63,7 +63,6 @@ $container->setShared('config', function () {
     return include 'app/config/config.php';
 });
 
-
 $console = new Console($container);
 
 $arguments = [];
@@ -144,7 +143,9 @@ $console = new Console($container);
 ```
 As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console][cli-console] class. Aquí la instanciamos y pasamos al contenedor DI.
 
-**Arguments** Our application needs arguments. Estos vienen de la siguiente forma:
+**Argumentos**
+
+Our application needs arguments. Estos vienen de la siguiente forma:
 
 ```bash
 php ./cli.php argument1 argument2 argument3 ...
@@ -413,19 +414,10 @@ class UsersTask extends Task
 > 
 > {: .alert .alert-info }
 
-
 Esta técnica le permite ejecutar cualquier tarea y cualquier acción desde cualquier otra tarea. Sin embargo, no es recomendable porque podría provocar pesadillas de mantenimiento. It is better to extend [Phalcon\Cli\Task][cli-task] and implement your logic there.
 
 ## Módulos
 Las aplicaciones CLI también puede gestionar diferentes módulos, igual que en aplicaciones MVC. Puede registrar diferentes módulos en su aplicación CLI, para manejar diferentes rutas de su aplicación CLI. Esto permite una mejor organización de su código y la agrupación de tareas.
-
-La aplicación CLI ofrece los siguientes métodos:
-
-- `getDefaultModule` - `string` - Devuelve el nombre del módulo predeterminado
-- `getModule(string $name)` - `array`/`object` - Obtiene la definición del módulo registrado en la aplicación vía nombre de módulo
-- `getModules` - `array` - Devuelve los módulos registrados en la aplicación
-- `registerModules(array $modules, bool $merge = false)` - `AbstractApplication` - Registra un vector de módulos presente en la aplicación
-- `setDefaultModule(string $defaultModule)` - `AbstractApplication` - Establece el nombre del módulo a ser usado si el router no devuelve un módulo valido
 
 Puede registrar un módulo `frontend` y `backend` para su aplicación de consola como sigue:
 
@@ -506,6 +498,36 @@ src/backend/Module.php
 src/frontend/Module.php
 php cli.php
 ```
+
+### Métodos
+
+La aplicación CLI ofrece los siguientes métodos:
+
+```php
+public function getDefaultModule(): string
+```
+Devuelve el nombre de módulo por defecto
+
+```php
+public function getModule(string $name): array | object
+```
+Obtiene la definición de módulo registrada en la aplicación a través del nombre del módulo
+
+```php
+public function getModules(): array
+```
+Devuelve los módulos registrados en la aplicación
+
+```php
+public function registerModules(array $modules, bool $merge = false): AbstractApplication
+```
+Registra un vector de módulos presente en la aplicación
+
+```php
+public function setDefaultModule(string $defaultModule): AbstractApplication
+```
+Sets the module name to be used if the router does not return a valid module
+
 ## Rutas
 La aplicación CLI tiene su propio router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
 
@@ -567,4 +589,3 @@ If you use the [Phalcon\Cli\Dispatcher][cli-dispatcher] you can also take advant
 [cli-taskinterface]: api/phalcon_cli#cli-taskinterface
 [di]: api/phalcon_di#di
 [di-factorydefault-cli]: api/phalcon_di#di-factorydefault-cli
-
