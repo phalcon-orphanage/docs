@@ -688,13 +688,13 @@ try {
 
 | Όνομα γεγονότος       | Ενεργοποίηση                                                 |
 | --------------------- | ------------------------------------------------------------ |
-| `boot`                | Executed when the application handles its first request      |
+| `boot`                | Εκτελέστηκε όταν η εφαρμογή χειριστεί το πρώτο αίτημά της    |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
 | `afterStartModule`    | After initialize a module, only when modules are registered  |
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-The following example demonstrates how to attach listeners to this component:
+Το παρακάτω παράδειγμα πώς δείχνει να προσαρτήσετε τους ακροατές σε αυτό το στοιχείο:
 
 ```php
 <?php
