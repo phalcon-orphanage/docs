@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'Απόδοση'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
