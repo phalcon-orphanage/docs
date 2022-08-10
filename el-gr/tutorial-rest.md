@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Tutorial - REST'
 keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
