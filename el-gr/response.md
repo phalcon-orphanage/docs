@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'HTTP Response'
 keywords: 'http, http response, response'
