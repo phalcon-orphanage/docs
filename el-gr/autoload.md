@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Φορτωτής'
 upgrade: '#autoload'
@@ -577,6 +577,174 @@ Some things to keep in mind when using the autoloader:
 * The autoloading process is case-sensitive
 * Strategies based on namespaces/prefixes are faster than the directories strategy
 * If a bytecode cache, such as [APCu][apcu], is installed, it will be used to get the requested file (an implicit caching of the file is performed)
+
+## Debugging
+The `Phalcon\Autoload\Loader` can be instantiated with passing `true` to the constructor, so that you can enable debug mode. In debug mode, the loader will collect data about searching and finding files that are requested. You can then use the `getDebug()` method to output the debug messages, to diagnose issues.
+
+```php
+<?php
+
+use Phalcon\Autoload\Loader;
+
+$loader    = new Loader(true);
+$directory = dataDir('some/directory/');
+$loader->addDirectory($directory);
+
+$loader->autoload('Simple');
+
+var_dump($loader->getDebug());
+
+// [
+//     'Loading: Simple',
+//     'Class: 404: Simple',
+//     'Namespace: 404: Simple',
+//     'Require: some/directory/Simple.php',
+//     'Directories: some/directory/Simple.php',
+// ];
+```
+
+## Methods
+```php
+public function __construct(bool $isDebug = false)
+```
+Constructor. If `$isDebug` is `true`, debugging information will be collected.
+
+```php
+public function addClass(string $name, string $file): Loader
+```
+Adds a class to the internal collection for the mapping
+
+```php
+public function addDirectory(string $directory): Loader
+```
+Adds a directory for the loaded files
+
+```php
+public function addExtension(string $extension): Loader
+```
+Adds an extension for the loaded files
+
+```php
+public function addFile(string $file): Loader
+```
+Adds a file to be added to the loader
+
+```php
+public function addNamespace(
+  string $name,
+  mixed $directories,
+  bool $prepend = false
+): Loade
+```
+Adds a namespace to the loader, mapping it to different directories. The third parameter allows to prepend the namespace.
+
+```php
+public function autoload(string $className): bool
+```
+Autoloads the registered classes
+
+```php
+public function getCheckedPath(): string | null
+```
+Get the path the loader is checking for a path
+
+```php
+public function getClasses(): array
+```
+Returns the class-map currently registered in the autoloader
+
+```php
+public function getDebug(): array
+```
+Returns debug information collected
+
+```php
+public function getDirectories(): array
+```
+Returns the directories currently registered in the autoloader
+
+```php
+public function getExtensions(): array
+```
+Returns the file extensions registered in the loader
+
+```php
+public function getFiles(): array
+```
+Returns the files currently registered in the autoloader
+
+```php
+public function getFoundPath(): string | null
+```
+Get the path when a class was found
+
+```php
+public function getNamespaces(): array
+```
+Returns the namespaces currently registered in the autoloader
+
+```php
+public function loadFiles(): void
+```
+Checks if a file exists and then adds the file by doing virtual require
+
+```php
+public function register(bool $prepend = false): Loader
+```
+Register the autoload method
+
+```php
+public function setClasses(
+    array $classes, 
+    bool $merge = false
+): Loader
+```
+Register classes and their locations
+
+```php
+public function setDirectories(
+    array $directories, 
+    bool $merge = false
+): Loader
+```
+Register directories in which "not found" classes could be found
+
+```php
+public function setExtensions(
+    array $extensions, 
+    bool $merge = false
+): Loader
+```
+Sets an array of file extensions that the loader must try in each attempt to locate the file
+
+```php
+public function setFileCheckingCallback(
+    mixed $method = null
+): Loader
+```
+Sets the file check callback.
+
+```php
+public function setFiles(
+    array $files, 
+    bool $merge = false
+): Loader
+```
+Register files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
+
+```php
+public function setNamespaces(
+    array namespaces, 
+    bool merge = false
+): Loader
+```
+Register namespaces and their related directories
+
+```php
+public function unregister(): Loader
+```
+Unregister the autoload method
+
 
 [spl-autoload-register]: https://www.php.net/manual/en/function.spl-autoload-register.php
 [is_file]: https://www.php.net/manual/en/function.is-file.php
