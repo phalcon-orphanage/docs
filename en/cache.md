@@ -179,7 +179,7 @@ $cache = $cacheFactory->load($cacheOptions);
 ```
 
 ## Exceptions
-Any exceptions thrown in the Cache component will be of type [Phalcon\Cache\Exception\Exception][cache-exception-exception] which implements [Psr\SimpleCache\CacheException][psr-cache-exception]. Additionally the [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception] which implements also the [Psr\SimpleCache\CacheException][psr-invalidargumentexception]. It is thrown when the data supplied to the component or any sub components is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Cache component will be of type [Phalcon\Cache\Exception\Exception][cache-exception-exception] which implements [Psr\SimpleCache\CacheException][psr-cache-exception]. Additionally the [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception] which implements also the [Psr\SimpleCache\CacheException][psr-invalidargumentexception]. It is thrown when the data supplied to the component or any subcomponents is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -367,7 +367,7 @@ $jsonSerializer = $factory->newInstance('json');
 ```
 The parameters you can use for the factory are:
 
-| **Namey**            | **Class**                                                                             |
+| **Name**             | **Class**                                                                             |
 |----------------------|---------------------------------------------------------------------------------------|
 | `base64`             | [Phalcon\Storage\Serializer\Base64][storage-serializer-base64]                        |
 | `igbinary`           | [Phalcon\Storage\Serializer\Igbinary][storage-serializer-igbinary]                    |
@@ -387,7 +387,7 @@ The parameters you can use for the factory are:
 ## Adapters
 The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface] interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code. 
 
-The available methdods are:
+The available methods are:
 
 | Method       | Description                                                                |
 |--------------|----------------------------------------------------------------------------|
@@ -603,7 +603,7 @@ echo $cache->get('my-key');      // 3
 ```
 
 ### `Stream`
-This adapter is the simplest to setup since it uses the target system's file system (it only requires a cache path that is writeable). It is one of the slowest cache adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the cache element, resulting in additional reads and writes to the file system.
+This adapter is the simplest to set up since it uses the target system's file system (it only requires a cache path that is writeable). It is one of the slowest cache adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the cache element, resulting in additional reads and writes to the file system.
 
 | Option              | Default   |
 |---------------------|-----------|
@@ -615,7 +615,7 @@ This adapter is the simplest to setup since it uses the target system's file sys
 
 If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
-> **NOTE**: The adapter utilizes logic to store files in separate sub directories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
+> **NOTE**: The adapter utilizes logic to store files in separate subdirectories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
 {: .alert .alert-info }
 
 The following example demonstrates how to create a new `Stream` cache adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will store the cached data in `/data/storage/cache`.  
