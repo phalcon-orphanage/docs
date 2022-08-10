@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Testing Environment'
 keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
