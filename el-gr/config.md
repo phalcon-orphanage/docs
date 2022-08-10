@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Ρυθμίσεις'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
