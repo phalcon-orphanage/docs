@@ -100,7 +100,6 @@ Consider the following example:
 ```php
 <?php
 
-// Basic autoloader
 spl_autoload_register(
     function (string $className) {
         $filepath = $className . '.php';
