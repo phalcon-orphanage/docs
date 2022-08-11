@@ -833,7 +833,7 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 
 The parameters you can use for the factory are:
 
-| Name           | Adapter                                                             |
+| Ονομα          | Προσαρμογέας                                                        |
 | -------------- | ------------------------------------------------------------------- |
 | `apcu`         | [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]                 |
 | `libmemcached` | [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached] |
