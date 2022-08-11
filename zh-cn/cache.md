@@ -832,11 +832,14 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 ```
 
 The parameters you can use for the factory are:
-* `apcu` for [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]
-* `libmemcached` for [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached]
-* `memory` for [Phalcon\Cache\Adapter\Memory][cache-adapter-memory]
-* `redis` for [Phalcon\Cache\Adapter\Redis][cache-adapter-redis]
-* `stream` for [Phalcon\Cache\Adapter\Stream][cache-adapter-stream]
+
+| Name           | 适配器                                                                 |
+| -------------- | ------------------------------------------------------------------- |
+| `apcu`         | [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]                 |
+| `libmemcached` | [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached] |
+| `memory`       | [Phalcon\Cache\Adapter\Memory][cache-adapter-memory]             |
+| `redis`        | [Phalcon\Cache\Adapter\Redis][cache-adapter-redis]               |
+| `stream`       | [Phalcon\Cache\Adapter\Stream][cache-adapter-stream]             |
 
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [serializable]: https://www.php.net/manual/en/class.serializable.php
