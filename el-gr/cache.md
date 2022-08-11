@@ -391,7 +391,7 @@ The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon
 
 The available methods are:
 
-| Method       | Περιγραφή                                                                  |
+| Μέθοδος      | Περιγραφή                                                                  |
 | ------------ | -------------------------------------------------------------------------- |
 | `clear`      | Flushes/clears the cache                                                   |
 | `decrement`  | Decrements a stored number                                                 |
@@ -415,7 +415,7 @@ The available adapters are:
 ### `Apcu`
 This adapter uses `Apcu` to store the data. In order to use this adapter, you will need to have [apcu][apcu] enabled in your target system. This class does not use an actual _adapter_, since the `apcu` functionality is exposed using the `apcu_*` PHP functions.
 
-| Option              | Default    |
+| Επιλογή             | Προεπιλογή |
 | ------------------- | ---------- |
 | `defaultSerializer` | `Php`      |
 | `lifetime`          | `3600`     |
@@ -445,7 +445,7 @@ The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerf
 ### `Libmemcached`
 This adapter utilizes PHP's [memcached][memcached] extension to connect to Memcached servers. The adapter used is an instance of the `Memcached` class, created after the first event that requires the connection to be active.
 
-| Option                                           | Default                                |
+| Επιλογή                                          | Προεπιλογή                             |
 | ------------------------------------------------ | -------------------------------------- |
 | `defaultSerializer`                              | `Php`                                  |
 | `lifetime`                                       | `3600`                                 |
@@ -608,13 +608,13 @@ echo $cache->get('my-key');      // 3
 ### `Stream`
 This adapter is the simplest to set up since it uses the target system's file system (it only requires a cache path that is writeable). It is one of the slowest cache adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the cache element, resulting in additional reads and writes to the file system.
 
-| Option              | Default   |
-| ------------------- | --------- |
-| `defaultSerializer` | `Php`     |
-| `lifetime`          | `3600`    |
-| `serializer`        | `null`    |
-| `prefix`            | `phstrm-` |
-| `storageDir`        |           |
+| Επιλογή             | Προεπιλογή |
+| ------------------- | ---------- |
+| `defaultSerializer` | `Php`      |
+| `lifetime`          | `3600`     |
+| `serializer`        | `null`     |
+| `prefix`            | `phstrm-`  |
+| `storageDir`        |            |
 
 If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
@@ -832,11 +832,14 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 ```
 
 The parameters you can use for the factory are:
-* `apcu` for [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]
-* `libmemcached` for [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached]
-* `memory` for [Phalcon\Cache\Adapter\Memory][cache-adapter-memory]
-* `redis` for [Phalcon\Cache\Adapter\Redis][cache-adapter-redis]
-* `stream` for [Phalcon\Cache\Adapter\Stream][cache-adapter-stream]
+
+| Name           | Adapter                                                             |
+| -------------- | ------------------------------------------------------------------- |
+| `apcu`         | [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]                 |
+| `libmemcached` | [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached] |
+| `memory`       | [Phalcon\Cache\Adapter\Memory][cache-adapter-memory]             |
+| `redis`        | [Phalcon\Cache\Adapter\Redis][cache-adapter-redis]               |
+| `stream`       | [Phalcon\Cache\Adapter\Stream][cache-adapter-stream]             |
 
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [serializable]: https://www.php.net/manual/en/class.serializable.php
