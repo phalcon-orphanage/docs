@@ -3,15 +3,16 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Configuración'
+upgrade: '#config'
 keywords: 'config, fábrica, configuración, agrupado, ini, json, array, yaml'
 ---
 
 # Config
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-Casi todas las aplicaciones requieren datos de configuración para funcionar correctamente. La configuración puede contener parámetros y ajustes iniciales para la aplicación como localización de ficheros de registro, valores de conexión a base de datos, servicios registrados, etc. The [Phalcon\Config][config] is designed to store this configuration data in an easy object oriented way. El componente se puede instanciar usando un vector PHP directamente o leer ficheros de configuración desde varios formatos como se describirá más adelante en la sección de adaptadores. [Phalcon\Config][config] extends the [Phalcon\Collection][collection] object and thus inheriting its functionality.
+Casi todas las aplicaciones requieren datos de configuración para funcionar correctamente. La configuración puede contener parámetros y ajustes iniciales para la aplicación como localización de ficheros de registro, valores de conexión a base de datos, servicios registrados, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy object-oriented way. El componente se puede instanciar usando un vector PHP directamente o leer ficheros de configuración desde varios formatos como se describirá más adelante en la sección de adaptadores. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object and thus inheriting its functionality.
 
 ```php
 <?php
@@ -39,14 +40,17 @@ echo $config->path('app.name');         // PHALCON
 
 ## Fábrica (Factory)
 ### `newInstance`
-Podemos crear un `Phalcon\Config` o cualquiera de las clases adaptador soportadas `Phalcon\Config\Adapter\*` usando la palabra clave `new`. Sin embargo Phalcon ofrece la clase `Phalcon\Config\ConfigFactory`, para que los desarrolladores puedan instanciar fácilmente los objetos de configuración. Llamando a `newInstance` con `name`, `fileName` y un vector `parameters` devolverá el nuevo objeto de configuración.
+We can easily create a `Phalcon\Config\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However, Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Llamando a `newInstance` con `name`, `fileName` y un vector `parameters` devolverá el nuevo objeto de configuración.
 
 The allowed values for `name`, which correspond to a different adapter class are:
-* `grouped`
-* `ini`
-* `json`
-* `php`
-* `yaml`
+
+| Nombre    | Adaptador                                    |
+| --------- | -------------------------------------------- |
+| `grouped` | [Phalcon\Config\Adapter\Grouped][grouped] |
+| `ini`     | [Phalcon\Config\Adapter\Ini][ini]         |
+| `json`    | [Phalcon\Config\Adapter\Json][json]       |
+| `php`     | [Phalcon\Config\Adapter\Php][php]         |
+| `yaml`    | [Phalcon\Config\Adapter\Yaml][yaml]       |
 
 The example below how to create a new [PHP array][php] based adapter:
 
@@ -110,7 +114,7 @@ filePath = PATH_DATA"storage/config"
 mode = 1
 ```
 
-the `load` function will create a [Ini][ini] config object:
+the `load` function will create an [Ini][ini] config object:
 
 ```php
 <?php
@@ -124,7 +128,7 @@ $config = $factory->load($fileName);
 ```
 
 ## Excepciones
-Any exceptions thrown in the [Phalcon\Config][config] component will be of type [Phalcon\Config\Exception][config-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Any exceptions thrown in the [Phalcon\Config\Config][config] component will be of type [Phalcon\Config\Exception][config-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
@@ -147,7 +151,7 @@ class IndexController extends Controller
 ```
 
 ## Vector Nativo
-The [Phalcon\Config][config] component accepts a PHP array in the constructor and loads it up.
+The [Phalcon\Config\Config][config] component accepts a PHP array in the constructor and loads it up.
 
 ```php
 <?php
@@ -233,7 +237,7 @@ echo config('app-unknown', 'default', '-');  // default
 ```
 
 #### Obtener
-Finalmente puede usar el método `get()` y encadenarlo para recorrer los objetos anidados:
+Finally, you can use the `get()` method and chain it to traverse the nested objects:
 
 ```php
 <?php
@@ -243,10 +247,10 @@ echo $config
         ->get('name');  // PHALCON
 ```
 
-Since [Phalcon\Config][config] extends [Phalcon\Collection][collection] you can also pass a second parameter in the `get()` that will act as the default value returned, should the particular config element is not defined.
+Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][collection] you can also pass a second parameter in the `get()` that will act as the default value returned, should the particular config element is not defined.
 
 ### Combinar
-Hay veces que podríamos necesitar combinar datos de configuración que vienen de dos objetos de configuración diferentes. Por ejemplo podríamos tener un objeto de configuración que contiene nuestros ajustes base/predeterminados, mientras que un segundo objeto de configuración carga opciones que son específicas para el sistema en el que se está ejecutando la aplicación (ej: test, desarrollo, producción, etc.). The system specific data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
+Hay veces que podríamos necesitar combinar datos de configuración que vienen de dos objetos de configuración diferentes. For instance, we might have one config object that contains our base/default settings, while a second config object loads options that are specific to the system the application is running on (i.e. test, development, production etc.). The system specific data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
 
 En el escenario anterior, necesitaremos combinar el segundo objeto de configuración con el primero. `merge()` nos permite hacer esto, combinar los dos objetos de configuración recursivamente.
 
@@ -338,10 +342,10 @@ El objeto se puede serializar y guardar en un fichero o servicio de caché usand
 ### `toArray` / `toJson`
 Si necesita recuperar el objeto como un vector `toArray()` y `toJson()` están disponibles.
 
-For additional information, you can check the [Phalcon\Collection][collection] documentation.
+For additional information, you can check the [Phalcon\Support\Collection](support-collection) documentation.
 
 ## Adaptadores
-Other than the base component [Phalcon\Config][config], which accepts a string (file name and path) or a native PHP array, there are several available adapters that can read different file types and load the configuration from them.
+Other than the base component [Phalcon\Config\Config][config], which accepts a string (file name and path) or a native PHP array, there are several available adapters that can read different file types and load the configuration from them.
 
 Los adaptadores disponibles son:
 
@@ -354,9 +358,9 @@ Los adaptadores disponibles son:
 | [Phalcon\Config\Adapter\Yaml][yaml]       | Carga la configuración desde ficheros YAML. Requiere que la extensión PHP `yaml` esté presente en el sistema.    |
 
 ## Grouped
-The [Phalcon\Config\Adapter\Grouped][grouped] adapter allows you to create a [Phalcon\Config][config] object from multiple sources without having to create each object separately from its source and then merge them together. Acepta un vector de configuración con los datos necesarios así como `defaultAdapter` que se establece a `php` por defecto.
+The [Phalcon\Config\Adapter\Grouped][grouped] adapter allows you to create a [Phalcon\Config\Config][config] object from multiple sources without having to create each object separately from its source and then merge them together. Acepta un vector de configuración con los datos necesarios así como `defaultAdapter` que se establece a `php` por defecto.
 
-El primer parámetro del constructor (`arrayConfig`) es un vector multidimensional que requiere las siguientes opciones
+The first parameter of the constructor (`arrayConfig`) is a multidimensional array which requires the following options
 
 - `adapter` - el adaptador a usar
 - `filePath` - la ruta del fichero de configuración
@@ -417,7 +421,7 @@ $options = [
 $config = new Grouped($options);
 ```
 
-Finally you can also use a [Phalcon\Config][config] object, as an option to your grouped object.
+Finally, you can also use a [Phalcon\Config\Config][config] object, as an option to your grouped object.
 
 ```php
 <?php
@@ -453,7 +457,7 @@ $config = new Grouped($options);
 ```
 
 ## Ini
-Los ficheros ini son una forma común de almacenar datos de configuración. [Phalcon\Config\Ini][ini] uses the optimized PHP function [parse_ini_file][parse-ini-file] to read these files. Cada sección representa un elemento de nivel superior. Los subelementos se dividen en colecciones anidadas si las claves tienen el separador `.`. Por defecto, el método de escaneo del fichero ini es `INI_SCANNER_RAW`. Sin embargo, se puede sobreescribir pasando un modo diferente en el constructor como segundo parámetro.
+Los ficheros ini son una forma común de almacenar datos de configuración. [Phalcon\Config\Ini][ini] uses the optimized PHP function [parse_ini_file][parse-ini-file] to read these files. Cada sección representa un elemento de nivel superior. Los subelementos se dividen en colecciones anidadas si las claves tienen el separador `.`. By default, the scanning method of the ini file is `INI_SCANNER_RAW`. Sin embargo, se puede sobreescribir pasando un modo diferente en el constructor como segundo parámetro.
 
 ```ini
 [database]
@@ -492,7 +496,7 @@ echo $config
         ->get('adapter');    // Memory
 ```
 
-Whenever you want to use the [Phalcon\Config\ConfigFactory][config-configfactory] component, you will can set the `mode` as a parameter.
+Whenever you want to use the [Phalcon\Config\ConfigFactory][config-configfactory] component, you can set the `mode` as a parameter.
 
 ```php
 <?php
@@ -533,7 +537,7 @@ $config = $factory->newinstance('ini', $fileName, $params);
 > 
 > {: .alert .alert-info }
 
-JSON es un formato muy popular, especialmente cuando transporta datos desde tu aplicación al frontal o cuando devuelve respuestas desde un API. También se puede usar para almacenar datos de configuración. [Phalcon\Config\Json][json] uses `json_decode()` internally to convert a JSON file to a PHP native array and parse it accordingly.
+JSON es un formato muy popular, especialmente cuando transporta datos desde tu aplicación al frontal o cuando devuelve respuestas desde un API. También se puede usar para almacenar datos de configuración. [Phalcon\Config\Adapter\Json][json] uses `json_decode()` internally to convert a JSON file to a PHP native array and parse it accordingly.
 
 ```json
 {
@@ -603,7 +607,7 @@ $config = $factory->newinstance('json', $fileName);
 ```
 
 ## Php
-The [Phalcon\Config\Php][php] adapter reads a PHP file that returns an array and loads it in the [Phalcon\Config][config] object. Puede almacenar su configuración como un vector PHP en un fichero y devolver el vector. El adaptador lo leerá y analizará en consecuencia.
+The [Phalcon\Config\Adapter\Php][php] adapter reads a PHP file that returns an array and loads it in the [Phalcon\Config\Config][config] object. Puede almacenar su configuración como un vector PHP en un fichero y devolver el vector. El adaptador lo leerá y analizará en consecuencia.
 
 ```php
 <?php
@@ -680,7 +684,7 @@ $config = $factory->newinstance('php', $fileName);
 > 
 > {: .alert .alert-info }
 
-Otro formato de fichero común es YAML. [Phalcon\Config\Yaml][yaml] requires the `yaml` PHP extension to be present in your system. It uses the PHP function [yaml_parse_file][yaml-parse-file] to read these files. El adaptador lee un fichero `yaml` proporcionado como primer parámetro del constructor, pero también acepta un segundo parámetro `callbacks` como un vector. `callbacks` proporciona manejadores de contenido para nodos YAML. Es un vector asociativo de mapeos `tag => callable`.
+Otro formato de fichero común es YAML. [Phalcon\Config\Adapter\Yaml][yaml] requires the `yaml` PHP extension to be present in your system. It uses the PHP function [yaml_parse_file][yaml-parse-file] to read these files. El adaptador lee un fichero `yaml` proporcionado como primer parámetro del constructor, pero también acepta un segundo parámetro `callbacks` como un vector. `callbacks` proporciona manejadores de contenido para nodos YAML. Es un vector asociativo de mapeos `tag => callable`.
 
 ```yaml
 app:
@@ -728,7 +732,7 @@ echo $config
         ->get('adapter');    // Memory
 ```
 
-Whenever you want to use the [Phalcon\Config\ConfigFactory][config-configfactory] component, you will can set the `mode` as a parameter.
+Whenever you want to use the [Phalcon\Config\ConfigFactory][config-configfactory] component, you can set the `mode` as a parameter.
 
 ```php
 <?php
@@ -776,7 +780,7 @@ $config = $factory->newinstance('yaml', $fileName, $callbacks);
 There are more adapters available for Config in the [Phalcon Incubator][phalcon-incubator]
 
 ## Inyección de Dependencias
-As with most Phalcon components, you can store the [Phalcon\Config][config] object in your [Phalcon\Di](di) container. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
+As with most Phalcon components, you can store the [Phalcon\Config\Config][config] object in your [Phalcon\Di\Di](di) container. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
 
 A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
@@ -833,12 +837,9 @@ También en sus vistas (sintaxis Volt)
 [ini]: api/phalcon_config#config-adapter-ini
 [ini]: api/phalcon_config#config-adapter-ini
 [json]: api/phalcon_config#config-adapter-json
-[json]: api/phalcon_config#config-adapter-json
 [php]: api/phalcon_config#config-adapter-php
 [php]: api/phalcon_config#config-adapter-php
 [php]: api/phalcon_config#config-adapter-php
-[php]: api/phalcon_config#config-adapter-php
-[yaml]: api/phalcon_config#config-adapter-yaml
 [yaml]: api/phalcon_config#config-adapter-yaml
 [config-configfactory]: api/phalcon_config#config-configfactory
 [config-exception]: api/phalcon_config#config-exception
