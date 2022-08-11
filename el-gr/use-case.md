@@ -2,8 +2,8 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'Use Case'
-keywords: 'use case, examples'
+title: 'Περιπτώσεις Χρήσης'
+keywords: 'περιπώσεις χρήσης, παραδείγματα'
 ---
 
 # Use Case
@@ -33,7 +33,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Groups - User Roles
 
-| Group          | Περιγραφή                                          |
+| Ομάδα          | Περιγραφή                                          |
 | -------------- | -------------------------------------------------- |
 | Guests         | Users that are not logged in, visitors to the site |
 | Customers      | Users that have purchased products                 |
