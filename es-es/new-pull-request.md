@@ -8,9 +8,9 @@ keywords: 'new pull request, pull request, pr'
 
 # Nuevo *Pull Request (PR)*
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-A pull request for Phalcon must be against our main repository [cphalcon][]. Es una colección de cambios en el código que:
+A pull request for Phalcon must be against our main repository [cphalcon][cphalcon]. Es una colección de cambios en el código que:
 
 - arreglar un error (problema actual)
 - introducir nuevas funcionalidades o mejoras.
@@ -21,7 +21,7 @@ Tú *pull request* debe incluir:
 * Una actualización al `CHANGELOG.md`
 * Contiene pruebas unitarias
 * Actualizaciones a la documentación y ejemplos de uso según sea necesario
-* Su código debe respetar los estándares de codificación que utiliza Phalcon. Para PHP, [PSR-2](https://www.php-fig.org/psr/); para Zephir, los estándares se encuentran en el archivo `.editorconfig` en la raíz del repositorio.
+* Su código debe respetar los estándares de codificación que utiliza Phalcon. For PHP code we use [PSR-12][psr-12] while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.
 
 > **NOTE**: **We do not accept Pull Requests to the `master` branch** 
 > 
@@ -31,9 +31,9 @@ Si el *pull request* es para corregir un problema o error, se debe incluir el n�
 
 For new functionality, **we will need to have an issue created and referenced**. Si esta nueva funcionalidad choca con la filosofía e implementación de Phalcon, el *pull request* será rechazado.
 
-También, si la nueva funcionalidad introduce cambios radicales no será aceptada para la versión actual: será necesario actualizarla para la siguiente versión principal.
+Additionally, any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version.
 
-Es muy recomendable discutir las Solicitudes de Nuevas Funcionalidades (NFR, por sus siglas en inglés) o PR con el equipo principal de Phalcon y, sobre todo, con la comunidad para obtener retroalimentación, orientación y establecer un plan de lanzamiento que beneficiará a todos.
+It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community to get feedback, guidance and to work on a release plan that will benefit everyone.
 
 ## Rama y *Commits*
 Se recomiendan los siguientes pasos, pero no son obligatorios.
@@ -53,8 +53,6 @@ Crea un nuevo archivo llamado `commit-msg` y pega el código de abajo y guárdel
 
 ```bash
 #!/bin/bash
-# This Way You can Customize Which Branches Should be Skipped When
-# Prepending Commit Message.
 if [ -z "$BRANCHES_TO_SKIP" ]; then
   BRANCHES_TO_SKIP=(master develop)
 fi
@@ -80,3 +78,4 @@ Cualquier commit que añadas ahora a su rama aparecerá atado al problema `12345
 Hacer lo anterior permite a todos ver qué commits se relacionan con qué problema.
 
 [cphalcon]: https://github.com/phalcon/cphalcon
+[psr-12]: https://www.php-fig.org/psr/psr-12/
