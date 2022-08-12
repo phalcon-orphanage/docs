@@ -8,7 +8,7 @@ keywords: 'análisis estático, analizador estático, vimeo, psalm, phalcon'
 
 # Análisis Estático
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 
@@ -17,7 +17,7 @@ Usar una herramienta de análisis estático en su proyecto puede incrementar dra
 ## Integrar Psalm con Phalcon
 
 ```bash
-composer require --dev vimeo/psalm:^3.11
+composer require --dev vimeo/psalm
 ```
 
 o agregando manualmente al archivo `composer.json`:
@@ -25,7 +25,7 @@ o agregando manualmente al archivo `composer.json`:
 ```json
 {
     "require-dev": {
-        "vimeo/psalm": "^3.11"
+        "vimeo/psalm": "^4.7"
     }
 }
 ```
@@ -37,7 +37,7 @@ Phalcon proporciona una librería *stub* que proporciona soporte para la mayorí
 Puede usar la librería *IDE Stubs* añadiéndola como dependencia:
 
 ```bash
-composer require --dev phalcon/ide-stubs:^v4.0
+composer require --dev phalcon/ide-stubs:^v5.0
 ```
 
 o agregando manualmente al archivo `composer.json`:
@@ -45,7 +45,7 @@ o agregando manualmente al archivo `composer.json`:
 ```json
 {
     "require-dev": {
-        "phalcon/ide-stubs": ",^v4.0"
+        "phalcon/ide-stubs": ",^v5.0"
     }
 }
 ```
