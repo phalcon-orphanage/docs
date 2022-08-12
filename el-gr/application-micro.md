@@ -1638,7 +1638,7 @@ The presence of a [Phalcon\Events\Manager][events-manager] is essential for midd
 ### Συνημμένα γεγονότα
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event    | Περιγραφή                                      |
+| Γεγονός  | Περιγραφή                                      |
 | -------- | ---------------------------------------------- |
 | `before` | Before the handler has been executed           |
 | `after`  | After the handler has been executed            |
