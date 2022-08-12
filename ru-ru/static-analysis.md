@@ -8,7 +8,7 @@ keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 
 # Static Analysis
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 
@@ -17,7 +17,7 @@ Using a static analysis tool in your project can dramatically increase your code
 ## Integrating Psalm with Phalcon
 
 ```bash
-composer require --dev vimeo/psalm:^3.11
+composer require --dev vimeo/psalm
 ```
 
 or by manually adding it to `composer.json`:
@@ -25,7 +25,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
     "require-dev": {
-        "vimeo/psalm": "^3.11"
+        "vimeo/psalm": "^4.7"
     }
 }
 ```
@@ -37,7 +37,7 @@ Phalcon provides a stub library that provides support for most IDEs. Psalm requi
 You can use the IDE Stubs library by adding it as a dependency:
 
 ```bash
-composer require --dev phalcon/ide-stubs:^v4.0
+composer require --dev phalcon/ide-stubs:^v5.0
 ```
 
 or by manually adding it to `composer.json`:
@@ -45,7 +45,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
     "require-dev": {
-        "phalcon/ide-stubs": ",^v4.0"
+        "phalcon/ide-stubs": ",^v5.0"
     }
 }
 ```
