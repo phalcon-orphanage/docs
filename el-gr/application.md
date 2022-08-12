@@ -7,7 +7,7 @@ upgrade: '#application'
 keywords: 'application, mvc, controllers'
 ---
 
-# Εφαρμογή
+# Application
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
