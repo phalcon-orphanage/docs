@@ -1582,7 +1582,7 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `crypt`              | [Phalcon\Crypt](crypt)                                             | Ναι    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ναι    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Ναι    | Database connection          |
-| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι    | Αποστολέας                   |
+| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι    | Dispatcher                   |
 | `escaper`            | [Phalcon\Escaper](escaper)                                         | Ναι    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ναι    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ναι    | Flash Messaging              |
