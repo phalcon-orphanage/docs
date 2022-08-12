@@ -54,7 +54,7 @@ The allowed values for `name`, which correspond to a different adapter class are
 
 Το παρακάτω παράδειγμα πώς να δημιουργήσετε ένα νέο προσαρμογέα βασισμένο σε ένα [PHP πίνακα][php]:
 
-Given a PHP configuration file `/app/storage/config.php`
+Αν έχουμε ένα αρχείο ρυθμίσεων PHP `/app/storage/config.php`
 
 ```php
 <?php
@@ -72,7 +72,7 @@ return [
 ];
 ```
 
-you can load it as follows:
+μπορείτε να το φορτώσετε ως εξής:
 
 ```php
 <?php
