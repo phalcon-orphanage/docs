@@ -187,7 +187,7 @@
                 "url": "/escaper"
             },
             {
-                "text": "Φορτωτής",
+                "text": "Loader",
                 "url": "/loader"
             },
             {
@@ -305,7 +305,7 @@
                 "url": "/controllers"
             },
             {
-                "text": "Αποστολέας",
+                "text": "Dispatcher",
                 "url": "/dispatcher"
             },
             {
