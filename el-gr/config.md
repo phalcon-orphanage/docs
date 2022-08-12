@@ -44,7 +44,7 @@ We can easily create a `Phalcon\Config\Config` or any of the supporting adapter 
 
 The allowed values for `name`, which correspond to a different adapter class are:
 
-| Name      | Adapter                                      |
+| Ονομα     | Προσαρμογέας                                 |
 | --------- | -------------------------------------------- |
 | `grouped` | [Phalcon\Config\Adapter\Grouped][grouped] |
 | `ini`     | [Phalcon\Config\Adapter\Ini][ini]         |
@@ -52,7 +52,7 @@ The allowed values for `name`, which correspond to a different adapter class are
 | `php`     | [Phalcon\Config\Adapter\Php][php]         |
 | `yaml`    | [Phalcon\Config\Adapter\Yaml][yaml]       |
 
-The example below how to create a new [PHP array][php] based adapter:
+Το παρακάτω παράδειγμα πώς να δημιουργήσετε ένα νέο προσαρμογέα βασισμένο σε ένα [PHP πίνακα][php]:
 
 Given a PHP configuration file `/app/storage/config.php`
 
