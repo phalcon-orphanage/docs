@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'New Pull Request'
+title: 'Νέα Αίτηση Ελξης'
 keywords: 'new pull request, pull request, pr'
 ---
 
-# New Pull Request
+# Νέα Αίτηση Ελξης
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
