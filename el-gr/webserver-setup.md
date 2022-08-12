@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'Web Server Setup'
+title: 'Εγκατάσταση του διακομιστή Web'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 
@@ -28,7 +28,7 @@ $(which php) -S localhost:8000 -t public .htrouter.php
 
 The above command does:
 
-| Command             | Περιγραφή                                                                                                                           |
+| Εντολή              | Περιγραφή                                                                                                                           |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `$(which php)`      | will insert the absolute path to your PHP binary                                                                                    |
 | `-S localhost:8000` | invokes server mode with the provided `host:port`                                                                                   |
@@ -354,10 +354,6 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 ## WAMP
 [WampServer][wamp] is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs. 
-> 
-> {: .alert .alert-warning }
-
 > **NOTE** Paths in this guide should be relative, according to your installation WAMP 
 > 
 > {: .alert .alert-warning }
@@ -375,7 +371,7 @@ WAMP has both 32 and 64 bit versions. From the download section, you can downloa
 
 Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php8.1.0\ext` (assuming your WAMP installation installed PHP 8.1.0).
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
@@ -423,7 +419,7 @@ XAMPP offers both 32 and 64 bit versions of Apache and PHP: Phalcon has dlls for
 
 Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
