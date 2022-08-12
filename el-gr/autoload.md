@@ -2,12 +2,12 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'Φορτωτής'
+title: 'Loader'
 upgrade: '#autoload'
 keywords: 'loader, psr-4, auto-loading, autoloader'
 ---
 
-# Φορτωτής
+# Loader
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
