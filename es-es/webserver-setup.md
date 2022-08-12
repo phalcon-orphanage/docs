@@ -354,10 +354,6 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 ## WAMP
 [WampServer][wamp] is a Windows web development environment. Te permite crear aplicaciones web con Apache2, PHP y una base de datos MySQL. A continuación te mostramos las instrucciones detalladas para instalar Phalcon en un servidor Wamp para Windows. Utilizar la última versión de WAMP Server es lo mas recomendable.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visita [esta URL](https://pecl.php.net/package/psr/0.7.0/windows) para obtener las DLL y seguir los mismos pasos para instalar la extensión al igual que con las DLL de Phalcon. 
-> 
-> {: .alert .alert-warning }
-
 > **NOTE** Paths in this guide should be relative, according to your installation WAMP 
 > 
 > {: .alert .alert-warning }
@@ -375,7 +371,7 @@ WAMP tiene dos versiones 32 y 64 bits. De la sección de descargas, puedes desca
 
 Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php8.1.0\ext` (assuming your WAMP installation installed PHP 8.1.0).
 
-Edita el archivo `php.ini`, se encuentra en `C:\wamp\bin\php\php7.2.18\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Agrega esto al final del archivo:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Agrega esto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
@@ -423,7 +419,7 @@ XAMPP offers both 32 and 64 bit versions of Apache and PHP: Phalcon has dlls for
 
 Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions directory. Si ha instalado XAMPP en la carpeta `C:\xampp`, la extensión necesita estar en `C:\xampp\php\ext`
 
-Edita el archivo `php.ini`, se encuentra en `C:\wamp\bin\php\php7.2.18\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Agrega esto al final del archivo:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Agrega esto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
