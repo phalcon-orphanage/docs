@@ -2,17 +2,17 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'New Feature Request List'
-keywords: 'new feature request list, nfr list'
+title: 'Λίστα Αιτημάτων Νέας Λειτουργικότητας'
+keywords: 'λίστα αιτημάτων νέας λειτουργικότητας, λίστα nfr'
 ---
 
-# New Feature Request List
+# Λίστα Αιτημάτων Νέας Λειτουργικότητας
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 
 
-| Votes | Περιγραφή                                                                                                                                                                                                            |
+| Ψήφοι | Περιγραφή                                                                                                                                                                                                            |
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 025   | [**ORM**: Many to Many behaviour - save related #2871](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456526)                                                                                      |
 | 020   | [**Queue**: Add redis queue adapter to replace beanstalkd #13385](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563462564)                                                                           |
