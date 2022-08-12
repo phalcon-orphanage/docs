@@ -8,7 +8,7 @@ keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee
 
 # 웹서버 설정
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 Phalcon 어플리케이션의 라우팅 기능이 동작하도록 하려면, 웹 서버가 리다이렉트를 적절하게 처리할 수 있도록 설정이 필요합니다. 아래는 일반적으로 많이 쓰는 웹서버들의 경우 설정방법입니다.
@@ -28,10 +28,12 @@ $(which php) -S localhost:8000 -t public .htrouter.php
 
 The above command does:
 
-- `$(which php)` - will insert the absolute path to your PHP binary
-- `-S localhost:8000` - invokes server mode with the provided `host:port`
-- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
-- `.htrouter.php` - the entry point that will be evaluated for each request
+| Command             | Description                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `$(which php)`      | will insert the absolute path to your PHP binary                                                                                    |
+| `-S localhost:8000` | invokes server mode with the provided `host:port`                                                                                   |
+| `-t public`         | defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory |
+| `.htrouter.php`     | the entry point that will be evaluated for each request                                                                             |
 
 `.htrouter.php` 파일에는 반드시 다음의 내용이 있어야 합니다:
 
@@ -55,8 +57,7 @@ require_once __DIR__ . '/public/index.php';
 
 진입점이 `public/index.php` 가 아닌 경우, `.htrouter.php` 의 마지막 줄과 스크립트 호출부분을 그에 맞춰 적절하게 수정해 주세요. 원하시는 경우 포트나 바인딩되는 네트워크 인터페이스등을 변경하실 수 있습니다.
 
-위의 명령어를 실행하신 후, 브라우저에서 `http://localhost:8000/` 로 가 보시면 사이트가 표시됩니다.
-
+After executing the command above, navigating to `http://localhost:8000/` will show your site.
 
 ## PHP-FPM
 The [PHP-FPM][php_fpm] (FastCGI Process Manager) is usually used to allow the processing of PHP files. 요즘은 리눅스 기반의 PHP 배포판에 PHP-FPM이 번들되어 배포됩니다.
@@ -73,7 +74,7 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
 ## nginx
-[nginx][nginx] is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. 전통적인 서버와 달리, Nginx는 쓰레드에 의존해서 요청을 처리하지 않습니다. 그 대신 훨씬 더 확장가능한 이벤트 기반(비동기적) 아키텍쳐를 사용하고 있습니다. 이 아키텍쳐는 작은 양의 메모리만 사용하는데, 그보다 중요한 것은 예측가능한 크기의 메모리를 사용한다는 것입니다.
+[nginx][nginx] is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. 전통적인 서버와 달리, Nginx는 쓰레드에 의존해서 요청을 처리하지 않습니다. Instead, it uses a much more scalable event-driven (asynchronous) architecture. 이 아키텍쳐는 작은 양의 메모리만 사용하는데, 그보다 중요한 것은 예측가능한 크기의 메모리를 사용한다는 것입니다.
 
 Phalcon 은 Nginx, PHP-FPM 과 함께 사용함으로써 최고 성능의 PHP 어플리케이션을 만들 수 있는 강력한 도구들을 제공합니다.
 
@@ -81,7 +82,7 @@ Phalcon 은 Nginx, PHP-FPM 과 함께 사용함으로써 최고 성능의 PHP �
 [nginx 공식 사이트][nginx_installation]
 
 ### Phalcon 설정
-nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세요:
+You can use following potential configuration to set up nginx with Phalcon:
 
 ```
 server {
@@ -178,7 +179,7 @@ service nginx start
 [Apache][apache] is a popular and well known web server available on many platforms.
 
 ### Phalcon 설정
-다음은 Apache에서 Phalcon을 사용하는 경우 참고하실 수 있는 설정입니다 이 섹션은 friendly URLs 와 [라우터 콤포넌트](routing)를 사용하기 위한 `mod_rewrite` 모듈의 설정에 대해 주로 다루고 있습니다. 어플리케이션을 위한 일반적인 디렉토리 구조는 다음과 같습니다:
+The following are potential configurations you can use to set up Apache with Phalcon. 이 섹션은 friendly URLs 와 [라우터 콤포넌트](routing)를 사용하기 위한 `mod_rewrite` 모듈의 설정에 대해 주로 다루고 있습니다. 어플리케이션을 위한 일반적인 디렉토리 구조는 다음과 같습니다:
 
 ```bash
 tutorial/
@@ -288,7 +289,7 @@ uri가 영어 이외의 문자를 포함하는 경우, `mod_rewrite`가 정확�
 
 [lighttpd Official Site](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
 
-You can use following potencial configuration to setup lighttpd with Phalcon:
+You can use following potential configuration to set up lighttpd with Phalcon:
 
 ```nginx
 server.modules = (
@@ -361,41 +362,25 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 > {: .alert .alert-warning }
 
 ### Phalcon 다운로드
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
-
-![](/assets/images/content/webserver-architecture.png)
-
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP and check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. For a thread safe, x64 using VS16 and PHP 8.1, you will need to download the following file:
 
 ```
-phalcon_x86_vc15_php7.2_4.0.0+4237.zip
+phalcon-php8.1-ts-windows2019-vs16-x64.zip
 ```
 
-which will match `x86`, `vc15` and `TS` which is _Thread Safe_. If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL.
+If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL.
 
 WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMP installation.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php8.1.0\ext` (assuming your WAMP installation installed PHP 8.1.0).
 
-![](/assets/images/content/webserver-zip-icon.png)
-
-Extract the library from the archive to get the Phalcon DLL:
-
-![](/assets/images/content/webserver-extracted-dlls.png)
-
-Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php7.2.18\ext` (assuming your WAMP installation installed PHP 7.2.18).
-
-![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
-
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
 
 ```ini
- extension=php_phalcon.dll
+extension=php_phalcon.dll
 ```
 
 and save it.
-
-![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
 
 Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
 
@@ -409,19 +394,9 @@ and save it.
 > 
 > {: .alert .alert-warning }
 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. 위의 이미지에 나타난 것 처럼 Phalcon 관련 줄 윗쪽에`extension=php_psr.dll` 줄이 위치해야 합니다. 
-> 
-> {: .alert .alert-warning }
-
-![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
-
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
-![](/assets/images/content/webserver-wamp-manager.png)
-
-Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
-
-![](/assets/images/content/webserver-wamp-phalcon.png)
+Open your browser to navigate to `https://localhost`. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that Phalcon was loaded.
 
 > **Congratulations! You are now phlying with Phalcon.** 
 > 
@@ -430,42 +405,24 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 ## XAMPP
 [XAMPP][xampp] is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. [이 URL](https://pecl.php.net/package/psr/0.7.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다. 
-> 
-> {: .alert .alert-warning }
-
 > **NOTE** Paths in this guide should be relative, according to your installation WAMP 
 > 
 > {: .alert .alert-warning }
 
 ### Phalcon 다운로드
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
-
-![](/assets/images/content/webserver-architecture.png)
-
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP and check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. For a thread safe, x64 using VS16 and PHP 8.1, you will need to download the following file:
 
 ```
-phalcon_x86_vc15_php7.2_4.0.0+4237.zip
+phalcon-php8.1-ts-windows2019-vs16-x64.zip
 ```
 
-which will match `x86`, `vc15` and `TS` which is _Thread Safe_. If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL.
+If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL.
 
-Notice that XAMPP offers both 32 and 64 bit versions of Apache and PHP (5.6+): Phalcon has dlls for both, just choose the right dll for the installed version.
+XAMPP offers both 32 and 64 bit versions of Apache and PHP: Phalcon has dlls for both, just choose the right dll for the installed version.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
-![](/assets/images/content/webserver-zip-icon.png)
-
-Extract the library from the archive to get the Phalcon DLL:
-
-![](/assets/images/content/webserver-extracted-dlls.png)
-
-Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
-
-![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
-
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
@@ -473,19 +430,9 @@ extension=php_phalcon.dll
 
 and save it.
 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. 위의 이미지에 나타난 것 처럼 Phalcon 관련 줄 윗쪽에`extension=php_psr.dll` 줄이 위치해야 합니다. 
-> 
-> {: .alert .alert-warning }
-
-![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
-
 Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
-![](/assets/images/content/webserver-xampp-phpinfo.png)
-
 [phpinfo][phpinfo] will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the Phalcon extension has been loaded correctly.
-
-![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
 > **Congratulations! You are now phlying with Phalcon.** 
 > 
