@@ -733,7 +733,9 @@ En el siguiente ejemplo, usamos el evento `beforeCreate`, para calcular automát
 
 namespace MyApp\Models;
 
-use Phalcon\Mvc\Model;use function str_pad;
+use Phalcon\Mvc\Model;
+
+use function str_pad;
 
 /**
  * Class Invoices
