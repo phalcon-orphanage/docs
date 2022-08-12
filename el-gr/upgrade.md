@@ -434,7 +434,7 @@ The [Di](di) component has been moved to the `Di` namespace.
 
 ---
 
-### Αποστολέας
+### Dispatcher
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](dispatcher)
 
@@ -731,7 +731,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ---
 
-### Φορτωτής
+### Loader
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](autoload)
 
