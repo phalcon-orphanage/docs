@@ -8,7 +8,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 
 # Performance
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
@@ -17,7 +17,7 @@ A poorly written application will always have poor performance. A very common wa
 > 
 > {: .alert .alert-info }
 
-The problem with the above approach is two fold. For starters, in most cases the owner is the one that will incur the additional costs. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
+The problem with the above approach is twofold. For starters, in most cases the owner is the one that will incur the additional costs. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
 
 The problem will remain: _the poorly written application_
 
@@ -36,7 +36,7 @@ and many more. In this article we will try to highlight some scenarios that coul
 ## Server
 [Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture on what is really going on at any given time in your application, and thus guide you to areas where you application needs attention. Profiling should be continuous in a production application.
 
-It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
+It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request, but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
 
 ### XDebug
 [XDebug][xdebug] offers a very handy profiler right out of the box. All you have to do is install the extension and enable profiling in your `php.ini`:
@@ -130,7 +130,7 @@ As with the aforementioned opcache, make sure, the amount of RAM available suits
 
 
 ## Slow Tasks
-Based on the requirements of your application, there maybe times that you will need to perform long running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is:
+Based on the requirements of your application, there maybe times that you will need to perform long-running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is:
 - The application initiates a task by sending a message to a queue service
 - The user sees a message that the task has been scheduled
 - In the background (or different server), worker scripts peek at the queue
