@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Αποστολέας'
+title: 'Dispatcher'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---
 
