@@ -42,7 +42,7 @@ Si está trabajando en un problema, tenga en cuenta el número del problema que 
 
 `#12345 - Create New Object`
 
-- Cambiarse la rama `4.0.x`
+- Checkout the `5.0.x` branch
 - Crear una nueva rama: `T12345-create-new-object`
 
 El nombre de la rama comienza con `T`, seguido por el número del problema y luego el título de la cuestión como un slug.
