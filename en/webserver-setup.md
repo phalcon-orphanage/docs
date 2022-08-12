@@ -370,7 +370,7 @@ WAMP has both 32 and 64 bit versions. From the download section, you can downloa
 
 Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php8.1.0\ext` (assuming your WAMP installation installed PHP 8.1.0).
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
  
 ```ini
 extension=php_phalcon.dll
@@ -415,7 +415,7 @@ XAMPP offers both 32 and 64 bit versions of Apache and PHP: Phalcon has dlls for
 
 Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
