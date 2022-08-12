@@ -1875,8 +1875,8 @@ The middleware that we will use are:
 * NotFound
 * Redirect
 * CORS
-* Αίτηση
-* Ανταπόκριση
+* Request
+* Response
 
 **Firewall Middleware**
 
