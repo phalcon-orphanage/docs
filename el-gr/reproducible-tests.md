@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'Αναπαραγώγιμες Δοκιμές'
+title: 'Αναπαραγώγιμα Τέστς'
 keywords: 'tests, testing, reproducible tests'
 ---
 
-# Αναπαραγώγιμες Δοκιμές
+# Αναπαραγώγιμα Τέστς
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
