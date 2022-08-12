@@ -733,7 +733,9 @@ In the following example, we are use the `beforeCreate` event, to automatically 
 
 namespace MyApp\Models;
 
-use Phalcon\Mvc\Model;use function str_pad;
+use Phalcon\Mvc\Model;
+
+use function str_pad;
 
 /**
  * Class Invoices
