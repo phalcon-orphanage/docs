@@ -1549,7 +1549,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `crypt`              | [Phalcon\Crypt](encryption-crypt)                                  | Ναι    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ναι    | HTTP Cookies manager         |
 | `db`                 | [Phalcon\Db](db-layer)                                             | Ναι    | Database connection          |
-| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι    | Αποστολέας                   |
+| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι    | Dispatcher                   |
 | `escaper`            | [Phalcon\Escaper](html-escaper)                                    | Ναι    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ναι    | Events Manager               |
 | `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ναι    | Flash Messaging              |
