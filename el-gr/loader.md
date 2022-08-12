@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'Φορτωτής'
 keywords: 'oader, psr-4, autoloading, autoloader'
@@ -493,7 +493,7 @@ The \[Events Manager\]\[events\] component offers hooks that can be implemented 
 
 The following events are available:
 
-| Event              | Περιγραφή                                                                       | Μπορεί να σταματήσει την λειτουργία; |
+| Γεγονός            | Περιγραφή                                                                       | Μπορεί να σταματήσει την λειτουργία; |
 | ------------------ | ------------------------------------------------------------------------------- | ------------------------------------ |
 | `afterCheckClass`  | Fires at the end of the auto load process when the class has not been found.    | Όχι                                  |
 | `beforeCheckClass` | Fires at the beginning of the auto load process, before checking for the class. | Ναι                                  |

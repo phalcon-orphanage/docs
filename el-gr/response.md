@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'HTTP Response'
 keywords: 'http, http response, response'
@@ -714,7 +714,7 @@ class PostsController extends Controller
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event               | Περιγραφή                               | Can stop operation |
+| Γεγονός             | Περιγραφή                               | Can stop operation |
 | ------------------- | --------------------------------------- |:------------------:|
 | `afterSendHeaders`  | Fires after the headers have been sent  |        Όχι         |
 | `beforeSendHeaders` | Fires before the headers have been sent |        Ναι         |

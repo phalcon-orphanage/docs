@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'Micro Application'
 keywords: 'application, micro, handlers, api'
@@ -1723,7 +1723,7 @@ The presence of a [Phalcon\Events\Manager](api/phalcon_events#events-manager) is
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event    | Περιγραφή                                      |
+| Γεγονός  | Περιγραφή                                      |
 | -------- | ---------------------------------------------- |
 | `before` | Before the handler has been executed           |
 | `after`  | After the handler has been executed            |

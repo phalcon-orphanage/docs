@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 upgrade: '#request'
 title: 'HTTP Request'
@@ -542,7 +542,7 @@ The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the 
 
 The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event                        | Περιγραφή                                        | Can stop operation |
+| Γεγονός                      | Περιγραφή                                        | Can stop operation |
 | ---------------------------- | ------------------------------------------------ |:------------------:|
 | `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |        Όχι         |
 | `beforeAuthorizationResolve` | Fires before the authorization has been resolved |        Ναι         |

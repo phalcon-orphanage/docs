@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'Δρομολόγηση'
 upgrade: '#router'
@@ -1262,7 +1262,7 @@ foreach ($testRoutes as $testRoute) {
 
 Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) also has events, when an [Events Manager](events) is present. The available events are:
 
-| Event                      | Fired when                        |
+| Γεγονός                    | Fired when                        |
 | -------------------------- | --------------------------------- |
 | `router:afterCheckRoutes`  | After checking all the routes     |
 | `router:beforeCheckRoute`  | Before checking a route           |
