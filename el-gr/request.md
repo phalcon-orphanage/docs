@@ -553,7 +553,7 @@ The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\Injec
 ## Events
  The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event                        | Περιγραφή                                        | Can stop operation |
+| Γεγονός                      | Περιγραφή                                        | Can stop operation |
 | ---------------------------- | ------------------------------------------------ |:------------------:|
 | `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |        Όχι         |
 | `beforeAuthorizationResolve` | Fires before the authorization has been resolved |        Ναι         |
