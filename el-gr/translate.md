@@ -232,10 +232,10 @@ $options = [
 $translator = $factory->newInstance('array', $options);
 ```
 
-## Adapters
+## Προσαρμογείς
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Adapter                                                 | Περιγραφή                                                |
+| Προσαρμογέας                                            | Περιγραφή                                                |
 | ------------------------------------------------------- | -------------------------------------------------------- |
 | [Phalcon\Translate\Adapter\NativeArray][nativearray] | Uses PHP arrays to store the messages.                   |
 | [Phalcon\Translate\Adapter\Csv][csv]                 | Uses a `.csv` file to store the messages for a language. |
@@ -352,7 +352,7 @@ The code above will trigger an error when we try to access the `unknown` entry.
 ### Csv
 If your translation strings are stored in a `.csv` file. The [Phalcon\Translate\Adapter\Csv][csv] adapter accepts the interpolator factory and an array with options necessary for loading the translations. The options array accepts:
 
-| Option      | Περιγραφή                                                          |
+| Επιλογή     | Περιγραφή                                                          |
 | ----------- | ------------------------------------------------------------------ |
 | `content`   | The location of the CSV file on the file system                    |
 | `delimiter` | The delimiter the CSV file uses (optional - defaults to `;`)       |
@@ -404,7 +404,7 @@ $translator = new Csv($interpolator, $options);
 
 The [gettext][wiki-gettext] format has been around for years and many applications are using it because it has become a standard, and it is easy to use. The translations are stored in `.po` and `.mo` files, and content can be easily added or changed using online editors or tools such as [POEdit][poedit]. This adapter requires files to be in specific folders, so it can locate the translation files. The options array accepts:
 
-| Option          | Περιγραφή                                                                                                                            |
+| Επιλογή         | Περιγραφή                                                                                                                            |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `locale`        | The language locale you need                                                                                                         |
 | `defaultDomain` | The domain for the files. This is the actual name of the files. Both `po` and `mo` files must have the same name.                    |
