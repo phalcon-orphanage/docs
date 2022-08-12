@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '5.0'
-title: 'Static Analysis'
+title: 'Στατική Ανάλυση'
 keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 ---
 
-# Static Analysis
+# Στατική Ανάλυση
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
@@ -103,7 +103,7 @@ If you find that you need to stub additional Phalcon components, add them to the
 </psalm>
 ```
 
-### Running Psalm
+### Εκτέλεση Psalm
 
 When you execute `vendor/bin/psalm` in your command-line, you will a get similar output depending on your errors:
 
