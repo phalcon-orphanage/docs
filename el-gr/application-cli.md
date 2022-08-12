@@ -568,7 +568,7 @@ CLI applications are also [events](events) aware. You can use the `setEventsMana
 
 The following events are available:
 
-| Event               | Stop | Περιγραφή                                               |
+| Γεγονός             | Stop | Περιγραφή                                               |
 | ------------------- |:----:| ------------------------------------------------------- |
 | `afterHandleTask`   | Ναι  | Called after the task is handled                        |
 | `afterStartModule`  | Ναι  | Called after processing a module (if modules are used)  |
