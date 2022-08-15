@@ -3,15 +3,16 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Coleccion'
+upgrade: '#support-collection'
 keywords: 'colecciones, collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
 # Coleccion
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-`Phalcon\Collection` es un arreglo o *array* orientado a objetos. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
+`Phalcon\Support\Collection` is an object-oriented array. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -22,15 +23,15 @@ keywords: 'colecciones, collection, arrayaccess, countable, iteratoraggregate, j
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -42,35 +43,35 @@ Puede construir el objeto como cualquier otro objeto en PHP. Sin embargo, el con
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
 ```
 
 ## Sensible a mayúsculas
-Al instanciar el objeto se puede especificar un segundo parámetro de tipo `bool`, el cual controlará la búsqueda por claves en el objeto. Por defecto `$insensitive` se establece en `true`, haciendo que las búsquedas en la colección sean insensibles a mayúsculas. Establecer este valor en `false` hará que la búsqueda del elemento sea sensible a mayúsculas y minúsculas.
+Al instanciar el objeto se puede especificar un segundo parámetro de tipo `bool`, el cual controlará la búsqueda por claves en el objeto. By default `$insensitive` is set to `true`, making searches in the collection case-insensitive. Setting this value to `false` will make the search for the element in a case-sensitive manner.
 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data, false);
@@ -79,20 +80,20 @@ echo $collection->has('COLORS'); // false
 ```
 
 ## Reutilización
-También puede reutilizar el componente, volviéndolo a rellenar. `Phalcon\Collection` expone los métodos `clear()` e `init()` que borrarán y rellenaran la matriz interna respectivamente,
+También puede reutilizar el componente, volviéndolo a rellenar. `Phalcon\Support\Collection` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -100,7 +101,7 @@ $collection = new Collection($data);
 echo $collection->count(); // 2
 
 $data = [
-    'year' => 1776,
+    'year' => 1987,
 ];
 
 $collection->clear();
@@ -110,7 +111,7 @@ echo $collection->count(); // 1
 ```
 
 ## Obtener
-Como se mencionó anteriormente, `Phalcon\Collection` implementa varias interfaces, con el fin de hacer el componente lo más flexible posible. Recuperar datos almacenados en un elemento se puede hacer usando:
+As mentioned above, `Phalcon\Support\Collection` implements several interfaces, in order to make the component as flexible as possible. Recuperar datos almacenados en un elemento se puede hacer usando:
 - Propiedad
 - `__get()`
 - Acceso como arreglo (`$collection[$element]`)
@@ -122,29 +123,29 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
 
-echo $collection->year; // 1776
+echo $collection->year;                    // 1987
 ```
 
 Puede usar `__get($element)` pero no es recomendable ya que es mucho más lenta que la sintaxis de propiedad. Lo mismo se aplica a `offsetGet`
 
 ```php
-echo $collection->__get('year');           // 1776
-echo $collection['year'];                  // 1776
-echo $collection->offsetGet('year');       // 1776
-echo $collection->get('year', 1776, true); // 1776
+echo $collection->__get('year');           // 1987
+echo $collection['year'];                  // 1987
+echo $collection->offsetGet('year');       // 1987
+echo $collection->get('year', 1987, true); // 1987
 ```
 
 ```php
@@ -155,7 +156,7 @@ public function get(
 ):  mixed
 ```
 
-Usar `get()` ofrece tres parámetros extra. Cuando se define `$defaultValue` en la llamada y el elemento no se encuentra, se devolverá `$defaultValue`.  El parámetro `cast` acepta una cadena que define a qué tipo será convertido el valor devuelto. Los valores disponibles son:
+Usar `get()` ofrece tres parámetros extra. Cuando se define `$defaultValue` en la llamada y el elemento no se encuentra, se devolverá `$defaultValue`.  The `cast` parameter accepts a string that defines what the returned value will be cast. Los valores disponibles son:
 
 - `array`
 - `bool`
@@ -168,7 +169,7 @@ Usar `get()` ofrece tres parámetros extra. Cuando se define `$defaultValue` en 
 - `object`
 - `string`
 
-El objeto de colección también ofrece dos *getters* más `getKeys()` y `getValues()`. `getKeys(bool $insensitive = true)` devuelve todas las claves almacenadas internamente en la colección. De forma predeterminada, devolverá las claves de forma insensible, es decir, todas las minúsculas. Si se pasa `false` en la llamada, retornará las claves exactamente como han sido almacenadas. `getValues()` devuelve los valores almacenados en la colección interna.
+El objeto de colección también ofrece dos *getters* más `getKeys()` y `getValues()`. `getKeys(bool $insensitive = true)` devuelve todas las claves almacenadas internamente en la colección. By default, it will return the keys case-insensitive manner i.e. all lowercase. Si se pasa `false` en la llamada, retornará las claves exactamente como han sido almacenadas. `getValues()` devuelve los valores almacenados en la colección interna.
 
 ## Has
 Para comprobar si un elemento existe o no en la colección, puede usar lo siguiente:
@@ -183,15 +184,15 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -225,28 +226,28 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
 ];
 
 $collection = new Collection($data);
 
-$collection->year = 1776;
+$collection->year = 1987;
 ```
 
 Puedes usar `__set($element, $value)` pero no es recomendable ya que es mucho más lento que la sintaxis de propiedades. Lo mismo se aplica a `offsetSet`
 
 ```php
-$collection->__set('year', 1776);
-$collection['year'] = 1776;
-$collection->offsetSet('year', 1776);
-$collection->set('year', 1776); 
+$collection->__set('year', 1987);
+$collection['year'] = 1987;
+$collection->offsetSet('year', 1987);
+$collection->set('year', 1987); 
 ```
 
 ## Eliminar
@@ -262,12 +263,12 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
 ];
@@ -296,11 +297,11 @@ Dado que el objeto de colección implementa `\IteratorAggregate`, puedes iterar 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
    'red',
-   'white',
+   'green',
    'blue'
 ];
 
@@ -317,15 +318,15 @@ La implementación de la interfaz `\Countable` expone el método `count()`, que 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -339,51 +340,55 @@ Las interfaces `\Serializable` y `\JsonSerializable` exponen métodos que le per
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
 
-echo $collection->serialize(); // a:2:{s:6:"colors";a:3:{i:0;s:3:"red";i:1;s:5:"white";i:2;s:4:"blue";}s:4:"year";i:1776;}
+echo $collection->serialize();    
+// a:2:{s:6:"colors";a:3:{i:0;s:3:"red";
+//  i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}
 
-$serialized = 'a:2:{s:6:"colors";a:3:{i:0;s:3:"red";i:1;s:5:"white";i:2;s:4:"blue";}s:4:"year";i:1776;}';
+$serialized = 'a:2:{s:6:"colors";a:3:{i:0;s:3:"red";'
+    . 'i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}';
 $collection->unserialize($serialized);
 
 echo $collection->jsonSerialize(); // $data
 ```
 
 ## Transformaciones
-`Phalcon\Collection` también expone dos métodos de transformación: `toArray()` y `toJson(int $options)`. `toArray()` devuelve el objeto transformado como un arreglo. Este método devuelve el mismo *array* que `jsonSerialize()`.
+`Phalcon\Support\Collection` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` devuelve el objeto transformado como un arreglo. Este método devuelve el mismo *array* que `jsonSerialize()`.
 
 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
 
-echo $collection->toArray(); // $data
+echo $collection->toArray();  // $data
 ```
 
-`toJson(int $options)` devuelve una representación JSON del objeto. Utiliza `json_encode()` internamente y acepta un parámetro, que representa las banderas que `json_encode` acepta. Por defecto, las opciones se configuran con el valor `74`, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) que se traduce a:
+`toJson(int $options)` devuelve una representación JSON del objeto. Utiliza `json_encode()` internamente y acepta un parámetro, que representa las banderas que `json_encode` acepta. By default, the options are set up with the value 79, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
+
 - `JSON_HEX_TAG`
 - `JSON_HEX_APOS`
 - `JSON_HEX_AMP`
@@ -395,54 +400,108 @@ Puede pasar cualquier bandera válida al método según sus necesidades.
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
 
-echo $collection->toJson(); // ["red","white","blue"],"year":1776}
+echo $collection->toJson();    // ["red","green","blue"],"year":1987}
 
 echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 /**
 {
     "colors": [
         "red",
-        "white",
+        "green",
         "blue"
     ],
-    "year": 1776
+    "year": 1987
 }
 */
 ```
 
-## Sólo lectura
-Phalcon también ofrece un componente que puede utilizarse de forma de sólo lectura. `Phalcon\Collection\ReadOnly` puede servir como una colección en su aplicación que sólo puede ser establecida con datos iniciales pero no permite que su contenido sea cambiado en toda la aplicación.
+## Read Only Collection
+Phalcon también ofrece un componente que puede utilizarse de forma de sólo lectura. `Phalcon\Support\Collection\ReadOnlyCollection` can serve as a collection in your application that can only be populated with initial data but not allowing its contents to be changed throughout the application.
+
+> This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words. 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
 
-use Phalcon\Collection\ReadOnly;
+use Phalcon\Support\Collection\ReadOnlyCollection;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new ReadOnly($data);
 
-echo $collection->toJson(); // ["red","white","blue"],"year":1776}
+echo $collection->toJson();    // ["red","green","blue"],"year":1987}
 
 $collection->set('colors', ['red']); // Exception
 ```
+
+## Objetos Personalizados
+Phalcon allows developers to define their Collection objects. These objects must implement the [Phalcon\Support\Collection\CollectionInterface][support-collection-collectioninterface]:
+
+```php
+<?php
+
+namespace MyApp;
+
+use Phalcon\Support\Collection\CollectionInterface
+
+class MyCollection implements CollectionInterface
+{
+    public function __get(string $element): mixed;
+
+    public function __isset(string $element): bool;
+
+    public function __set(string $element, mixed $value): void;
+
+    public function __unset(string $element): void;
+
+    public function clear(): void;
+
+    public function get(
+        string $element, 
+        mixed $defaultValue = null, 
+        string $cast = null
+    ): mixed;
+
+    public function getKeys(bool $insensitive = true): array;
+
+    public function getValues(): array;
+
+    public function has(string $element): bool;
+
+    public function init(array $data = []): void;
+
+    public function remove(string $element): void;
+
+    public function set(string $element, var $value): void;
+
+    public function toArray(): array;
+
+    public function toJson(int $options = 79): string;
+}
+
+```
+
+
+[support-collection-collectioninterface]: api/phalcon_support#support-collection-collectioninterface
