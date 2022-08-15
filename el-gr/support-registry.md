@@ -11,7 +11,7 @@ keywords: 'registry'
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-[Phalcon\Registry][registry] is an object oriented array. It extends [Phalcon\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. Προσφέρει ταχύτητα, καθώς και υλοποιήσεις διαφόρων PHP interfaces. Αυτά είναι:
+[Phalcon\Registry][registry] is an object oriented array. It extends [Phalcon\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -267,7 +267,7 @@ $collection->remove('year');
 public function remove(string $element):  void
 ```
 
-## Iteration
+## Επαναλήψεις
 Since the collection object implements `\IteratorAggregate`, you can iterate through the object with ease. The method `getIterator()` returns an `ArrayIterator()` object
 
 ```php
