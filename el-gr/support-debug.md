@@ -43,24 +43,13 @@ The [Exception class][exception], exposes the following:
 
 class Exception
 {
-    /**
-     * @var int
-     */
-    protected $code;
+    protected int $code;
 
-    /**
-     * @var string
-     */
-    protected $file;
-    /**
-     * @var int
-     */
-    protected $line;
+    protected string $file;
 
-    /**
-     * @var string
-     */
-    protected $message;
+    protected int $line;
+
+    protected string $message;
 
     public function __construct(
         string $message = '' 
@@ -212,25 +201,25 @@ $debug
 ## Getters
 There are a few getters available that offer information about the component. Extending those could also change the behavior of the component visually.
 
-| Method            | Returns  | Περιγραφή                                                           |
-| ----------------- | -------- | ------------------------------------------------------------------- |
-| `getCssSources()` | `string` | Returns the stylesheets used to display the contents on screen      |
-| `getJsSources()`  | `string` | Returns the javascript files used to display the contents on screen |
-| `getVersion()`    | `string` | Returns the link to the current version documentation               |
+| Μέθοδος           | Επιστροφή | Περιγραφή                                                           |
+| ----------------- | --------- | ------------------------------------------------------------------- |
+| `getCssSources()` | `string`  | Returns the stylesheets used to display the contents on screen      |
+| `getJsSources()`  | `string`  | Returns the javascript files used to display the contents on screen |
+| `getVersion()`    | `string`  | Returns the link to the current version documentation               |
 
 Extending the component and overriding the `getCssSources()` for instance to return different CSS HTML directives will change the appearance of the output on screen. The output CSS classes are based on [Bootstrap CSS][bootstrap].
 
 ## Setters
 [Phalcon\Support\Debug][debug] also offers some setters to better customize the output when an error occurs in your application.
 
-| Method                                        | Περιγραφή                                                                                           |
+| Μέθοδος                                       | Περιγραφή                                                                                           |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `setShowBackTrace(bool $showBackTrace)`       | Show/hide the exception's backtrace                                                                 |
 | `setShowFileFragment(bool $showFileFragment)` | Show/Hide the file fragment in the output (related to the exception)                                |
 | `setShowFiles(bool $showFiles)`               | Show/Hide the files in the backtrace                                                                |
 | `setUri(string $uri)`                         | The base URI for static resources (see also the Getters section for customization of the component) |
 
-## Variables
+## Μεταβλητές
 You can also use the `debugVar()` method, to inject any additional variables you want to present in the output. These are usually application specific variables. An example might be to show timing information for your application.
 
 ```php
