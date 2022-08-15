@@ -3,15 +3,16 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Registro'
+upgrade: '#support-registry'
 keywords: 'registro'
 ---
 
 # Componente Registro
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Registry][registry] is an object oriented array. It extends [Phalcon\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
+[Phalcon\Support\Registry][registry] is an object oriented array. It extends [Phalcon\Support\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. Ofrece velocidad, así como implementaciones de varias interfaces PHP. Estas son:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -22,15 +23,15 @@ keywords: 'registro'
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
@@ -42,35 +43,35 @@ Puede construir el objeto como cualquier otro objeto en PHP. Sin embargo, el con
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
 ```
 
 ## Reutilización
-También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Registry][registry] exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
+También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Support\Registry][registry] exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
@@ -78,7 +79,7 @@ $collection = new Registry($data);
 echo $collection->count(); // 2
 
 $data = [
-    'year' => 1776,
+    'year' => 1987,
 ];
 
 $collection->clear();
@@ -89,7 +90,7 @@ echo $collection->count(); // 1
 ```
 
 ## Obtener
-As mentioned above, [Phalcon\Registry][registry] implements several interfaces, in order to make the component as flexible as possible. Recuperar datos almacenados en un elemento se puede hacer usando:
+As mentioned above, [Phalcon\Support\Registry][registry] implements several interfaces, in order to make the component as flexible as possible. Recuperar datos almacenados en un elemento se puede hacer usando:
 - Propiedad
 - `__get()`
 - Acceso como arreglo (`$collection[$element]`)
@@ -101,29 +102,29 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
 
-echo $collection->year; // 1776
+echo $collection->year; // 1987
 ```
 
 Puede usar `__get($element)` pero no es recomendable ya que es mucho más lenta que la sintaxis de propiedad. Lo mismo se aplica a `offsetGet`
 
 ```php
-echo $collection->__get('year');           // 1776
-echo $collection['year'];                  // 1776
-echo $collection->offsetGet('year');       // 1776
-echo $collection->get('year', 1776, true); // 1776
+echo $collection->__get('year');           // 1987
+echo $collection['year'];                  // 1987
+echo $collection->offsetGet('year');       // 1987
+echo $collection->get('year', 1987, true); // 1987
 ```
 
 ```php
@@ -160,15 +161,15 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
@@ -202,28 +203,28 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
 ];
 
 $collection = new Registry($data);
 
-$collection->year = 1776;
+$collection->year = 1987;
 ```
 
 Puedes usar `__set($element, $value)` pero no es recomendable ya que es mucho más lento que la sintaxis de propiedades. Lo mismo se aplica a `offsetSet`
 
 ```php
-$collection->__set('year', 1776);
-$collection['year'] = 1776;
-$collection->offsetSet('year', 1776);
-$collection->set('year', 1776); 
+$collection->__set('year', 1987);
+$collection['year'] = 1987;
+$collection->offsetSet('year', 1987);
+$collection->set('year', 1987); 
 ```
 
 ## Eliminar
@@ -239,12 +240,12 @@ La manera más rápida es usando la sintaxis de propiedad:
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
 ];
@@ -273,15 +274,15 @@ Dado que el objeto de colección implementa `\IteratorAggregate`, puedes iterar 
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
@@ -297,15 +298,15 @@ La implementación de la interfaz `\Countable` expone el método `count()`, que 
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
@@ -319,43 +320,46 @@ Las interfaces `\Serializable` y `\JsonSerializable` exponen métodos que le per
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
 
-echo $collection->serialize();    // a:2:{s:6:"colors";a:3:{i:0;s:3:"red";i:1;s:5:"white";i:2;s:4:"blue";}s:4:"year";i:1776;}
+echo $collection->serialize();    
+// a:2:{s:6:"colors";a:3:{i:0;s:3:"red";
+// i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}
 
-$serialized = 'a:2:{s:6:"colors";a:3:{i:0;s:3:"red";i:1;s:5:"white";i:2;s:4:"blue";}s:4:"year";i:1776;}';
+$serialized = 'a:2:{s:6:"colors";a:3:{i:0;s:3:"red";'
+    . 'i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}';
 $collection->unserialize($serialized);
 
 echo $collection->jsonSerialize(); // $data
 ```
 
 ## Transformaciones
-[Phalcon\Registry][registry] also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` devuelve el objeto transformado como un arreglo. Este método devuelve el mismo *array* que `jsonSerialize()`.
+[Phalcon\Support\Registry][registry] also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` devuelve el objeto transformado como un arreglo. Este método devuelve el mismo *array* que `jsonSerialize()`.
 
 
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
@@ -363,7 +367,7 @@ $collection = new Registry($data);
 echo $collection->toArray(); // $data
 ```
 
-`toJson(int $options)` devuelve una representación JSON del objeto. Utiliza `json_encode()` internamente y acepta un parámetro, que representa las banderas que `json_encode` acepta. Por defecto, las opciones se configuran con el valor `74`, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) que se traduce a:
+`toJson(int $options)` devuelve una representación JSON del objeto. Utiliza `json_encode()` internamente y acepta un parámetro, que representa las banderas que `json_encode` acepta. By default the options are set up with the value 79, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
 - `JSON_HEX_TAG`
 - `JSON_HEX_APOS`
 - `JSON_HEX_AMP`
@@ -375,32 +379,32 @@ Puede pasar cualquier bandera válida al método según sus necesidades.
 ```php
 <?php
 
-use Phalcon\Registry;
+use Phalcon\Support\Registry;
 
 $data = [
     'colors' => [
         'red',
-        'white',
+        'green',
         'blue',
     ],
-    'year'   => 1776,
+    'year'   => 1987,
 ];
 
 $collection = new Registry($data);
 
-echo $collection->toJson(); // ["red","white","blue"],"year":1776}
+echo $collection->toJson(); // ["red","green","blue"],"year":1987}
 
 echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 /**
 {
     "colors": [
         "red",
-        "white",
+        "green",
         "blue"
     ],
-    "year": 1776
+    "year": 1987
 }
 */
 ```
 
-[registry]: api/phalcon_registry#registry
+[registry]: api/phalcon_support#support-registry
