@@ -23,9 +23,9 @@ $helper = new HelperFactory();
 
 The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper class, or calling the helper class directly as a method on the helper factory. The factory acts as a service locator, caching the objects to be reused if need be, in the same request.
 
-## Available Classes
+## Διαθέσιμες Τάξεις
 
-| Type   | Name            | Class                                          |
+| Τύπος  | Ονομα           | Τάξη                                           |
 | ------ | --------------- | ---------------------------------------------- |
 | Array  | `blacklist`     | `Phalcon\Support\Helper\Arr\Blacklist`     |
 | Array  | `chunk`         | `Phalcon\Support\Helper\Arr\Chunk`         |
@@ -98,7 +98,7 @@ $helper = new HelperFactory();
 $upper = $helper->newInstance('upper');
 ```
 
-## Methods
+## Μέθοδοι
 The methods can be called directly from the helper factory.
 
 ```php
@@ -163,25 +163,240 @@ var_dump($result);
 // ];
 ```
 
-`chunk(array $collection, int $size, bool $preserveKeys = false): array`
+`chunk(array $collection, int $size, bool $preserveKeys = false): array` Chunks an array into smaller arrays of a specified size
 
-`first(array $collection, callable $method = null): mixed`
+```php
+<?php
 
-`firstKey(array $collection, callable $method = null): mixed`
+$source = [
+    'k1' => 1,
+    'k2' => 2,
+    'k3' => 3,
+    'k4' => 4,
+    'k5' => 5,
+    'k6' => 6,
+];
 
-`flatten(array $collection, bool $deep = false): array`
+$helper = new HelperFactory();
 
-`get(array $collection, $index, $defaultValue = null, string $cast = null): mixed`
+$result = $helper->chunk($source, 2, true);
 
-`group(array $collection, $method): array`
+var_dump($result);
 
-`has(array $collection, $index): bool`
+// [
+//     ['k1' => 1, 'k2' => 2],
+//     ['k3' => 3, 'k4' => 4],
+//     ['k5' => 5, 'k6' => 6],
+// ]
+```
+
+`filter(array $collection, mixed $method = null): mixed` Filters a collection using array_filter and using the callable (if defined)
+
+```php
+<?php
+
+$source = [
+    1  => 1,
+    2  => 2,
+    3  => 3,
+    4  => 4,
+    5  => 5,
+    6  => 6,
+    7  => 7,
+    8  => 8,
+    9  => 9,
+    10 => 10,
+];
+
+$helper = new HelperFactory();
+
+$result = $helper->filter(
+    $source,
+    function ($element) {
+        return $element & 1;
+    }
+);
+
+var_dump($result);
+
+// [
+//     1 => 1,
+//     3 => 3,
+//     5 => 5,
+//     7 => 7,
+//     9 => 9,
+// ]
+```
+
+`first(array $collection, callable $method = null): mixed` Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+
+```php
+<?php
+
+$source = [
+    'one' => 'Phalcon',
+    'two' => 'Framework',
+];
+
+$helper = new HelperFactory();
+
+$result = $helper->first($source);
+
+echo $result; // 'Phalcon'
+```
+
+`firstKey(array $collection, callable $method = null): mixed` Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+
+```php
+<?php
+
+$source = [
+    'one' => 'Phalcon',
+    'two' => 'Framework',
+];
+
+$helper = new HelperFactory();
+
+$result = $helper->firstKey($source);
+
+echo $result; // 'one'
+```
+
+`flatten(array $collection, bool $deep = false): array` Flattens an array up to the one level depth, unless `$deep` is set to `true
+
+```php
+<?php
+
+$source = [1, [2], [[3], 4], 5];
+
+$helper = new HelperFactory();
+
+$result = $helper->flatten($source);
+
+var_dump($result);
+
+// [1, 2, [3], 4, 5]
+```
+
+`get(array $collection, mixed $index, $defaultValue = null, string $cast = null): mixed` Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value to a specific type using `settype` internally
+
+```php
+<?php
+
+$source = [
+    'one' => 'Phalcon',
+    'two' => '1',
+];
+
+$helper = new HelperFactory();
+
+echo $helper->get($source, 1);               // 'Phalcon'
+echo $helper->get($source, 3, 'Unknown');    // 'Unknown'
+echo $helper->get($source, 2, null, 'int');  // 1
+```
+
+`group(array $collection, $method): array` Groups the elements of an array based on the passed callable
+
+
+```php
+<?php
+
+$source = [
+    [
+        'name' => 'Paul',
+        'age'  => 34,
+    ],
+    [
+        'name' => 'Peter',
+        'age'  => 31,
+    ],
+    [
+        'name' => 'John',
+        'age'  => 29,
+    ],
+];
+
+$result = $helper->group($source, 'age');
+
+// [
+//     34 => [
+//         [
+//             'name' => 'Paul',
+//             'age'  => 34,
+//         ],
+//     ],
+//     31 => [
+//         [
+//             'name' => 'Peter',
+//             'age'  => 31,
+//         ],
+//     ],
+//     29 => [
+//         [
+//             'name' => 'John',
+//             'age'  => 29,
+//         ],
+//     ],
+// ];
+```
+
+
+`has(array $collection, $index): bool` Checks an array if it has an element with a specific key and returns `true`/`false` accordingly
+
+```php
+<?php
+
+$source = [
+    1     => 'Phalcon',
+    'two' => 'Framework',
+];
+
+$helper = new HelperFactory();
+
+echo $helper->has($source, 1);         // true
+echo $helper->get($source, 'two');     // true
+echo $helper->get($source, 'unknown'); // false
+```
 
 `isUnique(array $collection): bool`
 
-`last(array $collection, callable $method = null): mixed`
+`last(array $collection, callable $method = null): mixed` Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
-`lastKey(array $collection, callable $method = null): mixed`
+```php
+<?php
+
+$source = [
+    'one' => 'Phalcon',
+    'two' => 'Framework',
+];
+
+$helper = new HelperFactory();
+
+$result = $helper->last($source);
+
+var_dump($result);
+
+// 'Framework'
+```
+
+`lastKey(array $collection, callable $method = null): mixed` Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+
+```php
+<?php
+
+$source = [
+    'one' => 'Phalcon',
+    'two' => 'Framework',
+];
+
+$helper = new HelperFactory();
+
+$result = $helper->lastKey($source);
+
+var_dump($result);
+
+// 'two'
+```
 
 `order(array $collection, $attribute, string $order = 'asc'): array`
 
