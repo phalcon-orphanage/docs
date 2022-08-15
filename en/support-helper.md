@@ -86,7 +86,6 @@ The methods are available either by calling `newInstance()` on the factory objec
 | String  | `underscore`    | `Phalcon\Support\Helper\Str\Underscore`    |
 | String  | `upper`         | `Phalcon\Support\Helper\Str\Upper`         |
 
-
 ```php
 <?php
 
@@ -159,14 +158,16 @@ var_dump($result);
 //     12        => 'value-5',
 //     ' key-6 ' => 'value-6',
 //     'key-8'   => 'value-8',
-// ];
+// ]
 ```
 
-`chunk(array $collection, int $size, bool $preserveKeys = false): array`
+### `chunk(array $collection, int $size, bool $preserveKeys = false): array`
 Chunks an array into smaller arrays of a specified size
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     'k1' => 1,
@@ -190,11 +191,13 @@ var_dump($result);
 // ]
 ```
 
-`filter(array $collection, mixed $method = null): mixed`
+### `filter(array $collection, mixed $method = null): mixed`
 Filters a collection using array_filter and using the callable (if defined)
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     1  => 1,
@@ -229,11 +232,13 @@ var_dump($result);
 // ]
 ```
 
-`first(array $collection, callable $method = null): mixed`
+### `first(array $collection, callable $method = null): mixed`
 Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
  
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     'one' => 'Phalcon',
@@ -247,11 +252,13 @@ $result = $helper->first($source);
 echo $result; // 'Phalcon'
 ```
 
-`firstKey(array $collection, callable $method = null): mixed`
+### `firstKey(array $collection, callable $method = null): mixed`
 Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     'one' => 'Phalcon',
@@ -265,11 +272,13 @@ $result = $helper->firstKey($source);
 echo $result; // 'one'
 ```
 
-`flatten(array $collection, bool $deep = false): array`
+### `flatten(array $collection, bool $deep = false): array`
 Flattens an array up to the one level depth, unless `$deep` is set to `true
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [1, [2], [[3], 4], 5];
 
@@ -282,11 +291,13 @@ var_dump($result);
 // [1, 2, [3], 4, 5]
 ```
 
-`get(array $collection, mixed $index, $defaultValue = null, string $cast = null): mixed`
+### `get(array $collection, mixed $index, mixed $defaultValue = null, string $cast = null): mixed`
 Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value to a specific type using `settype` internally
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     'one' => 'Phalcon',
@@ -300,12 +311,13 @@ echo $helper->get($source, 3, 'Unknown');    // 'Unknown'
 echo $helper->get($source, 2, null, 'int');  // 1
 ```
 
-`group(array $collection, $method): array`
+### `group(array $collection, mixed $method): array`
 Groups the elements of an array based on the passed callable
-
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     [
@@ -343,15 +355,16 @@ $result = $helper->group($source, 'age');
 //             'age'  => 29,
 //         ],
 //     ],
-// ];
+// ]
 ```
 
-
-`has(array $collection, $index): bool`
+### `has(array $collection, mixed $index): bool`
 Checks an array if it has an element with a specific key and returns `true`/`false` accordingly
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     1     => 'Phalcon',
@@ -365,13 +378,39 @@ echo $helper->get($source, 'two');     // true
 echo $helper->get($source, 'unknown'); // false
 ```
 
-`isUnique(array $collection): bool`
+### `isUnique(array $collection): bool`
+Checks an array for duplicate values. Returns `true` if all values are unique, `false` otherwise.
 
-`last(array $collection, callable $method = null): mixed`
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$source = [
+    'Phalcon',
+    'Framework',
+];
+
+$helper = new HelperFactory();
+        
+echo $helper->isUnique($source); // true
+
+$source = [
+    'Phalcon',
+    'Framework',
+    'Phalcon',
+];
+
+echo $helper->isUnique($source); // false
+```
+
+### `last(array $collection, callable $method = null): mixed`
 Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     'one' => 'Phalcon',
@@ -382,16 +421,16 @@ $helper = new HelperFactory();
 
 $result = $helper->last($source);
 
-var_dump($result);
-
-// 'Framework'
+echo $result; // 'Framework'
 ```
 
-`lastKey(array $collection, callable $method = null): mixed`
+### `lastKey(array $collection, callable $method = null): mixed`
 Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
+
+use Phalcon\Support\HelperFactory;
 
 $source = [
     'one' => 'Phalcon',
@@ -402,100 +441,1500 @@ $helper = new HelperFactory();
 
 $result = $helper->lastKey($source);
 
-var_dump($result);
-
-// 'two'
+echo $result; // 'two'
 ```
 
-`order(array $collection, $attribute, string $order = 'asc'): array`
+### `order(array $collection, mixed $attribute, string $order = 'asc'): array`
+Sorts a collection of arrays or objects by an attribute of the object. It supports ascending/descending sorts but also flags that are identical to the ones used by `ksort` and `krsort`
 
-`pluck(array $collection, string $element): array`
+```php
+<?php
 
-`set(array $collection, $value, $index = null): array`
+use Phalcon\Support\Helper\Arr\Order;
+use Phalcon\Support\HelperFactory;
 
-`sliceLeft(array $collection, int $elements = 1): array`
+$helper = new HelperFactory();
 
-`sliceRight(array $collection, int $elements = 1): array`
+$source = [
+    [
+        'id'   => 2,
+        'name' => 'Paul',
+    ],
+    [
+        'id'   => 3,
+        'name' => 'Peter',
+    ],
+    [
+        'id'   => 1,
+        'name' => 'John',
+    ],
+];
 
-`split(array $collection): array`
+$result = $helper->order($source, 'id');
+
+var_dump($result);
+// [
+//     [
+//         'id'   => 1,
+//         'name' => 'John',
+//     ],
+//     [
+//         'id'   => 2,
+//         'name' => 'Paul',
+//     ],
+//     [
+//         'id'   => 3,
+//         'name' => 'Peter',
+//     ],
+// ]
+
+$result = $helper->order($source, 'id', Order::ORDER_DESC);
+
+var_dump($result);
+
+// [
+//     [
+//         'id'   => 3,
+//         'name' => 'Peter',
+//     ],
+//     [
+//         'id'   => 2,
+//         'name' => 'Paul',
+//     ],
+//     [
+//         'id'   => 1,
+//         'name' => 'John',
+//     ],
+// ]
+
+
+$source = [
+    (object) [
+        'id'   => 2,
+        'name' => 'Paul',
+    ],
+    (object) [
+        'id'   => 3,
+        'name' => 'Peter',
+    ],
+    (object) [
+        'id'   => 1,
+        'name' => 'John',
+    ],
+];
+
+$result = $helper->order($source, 'id');
+
+var_dump($result);
+
+// [
+//     (object) [
+//         'id'   => 1,
+//         'name' => 'John',
+//     ],
+//     (object) [
+//         'id'   => 2,
+//         'name' => 'Paul',
+//     ],
+//     (object) [
+//         'id'   => 3,
+//         'name' => 'Peter',
+//     ],
+// ]
+```
+
+### `pluck(array $collection, string $element): array`
+Returns a subset of the collection based on the collection values
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
+];
+
+$result = $helper->pluck($source, 'name');
+
+var_dump($result);
+// [
+//     'Desk',
+//     'Chair',
+// ]
+
+$source = [
+    (object) ['product_id' => 'prod-100', 'name' => 'Desk'],
+    (object) ['product_id' => 'prod-200', 'name' => 'Chair'],
+];
+
+$result = $helper->pluck($source, 'name');
+
+var_dump($result);
+// [
+//     'Desk',
+//     'Chair',
+// ]
+```
+
+### `set(array $collection, mixed $value, mixed $index = null): array`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
+
+### `sliceLeft(array $collection, int $elements = 1): array`
+Returns a new array with `n` elements removed from the left.
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'Phalcon',
+    'Framework',
+    'for',
+    'PHP',
+];
+
+$result = $helper->sliceLeft($source);
+
+var_dump($result);
+// [
+//     'Phalcon',
+// ]
+
+$result = $helper->sliceLeft($source, 3);
+
+var_dump($result);
+// [
+//     'Phalcon',
+//     'Framework',
+//     'for',
+// ]
+```
+
+### `sliceRight(array $collection, int $elements = 1): array`
+Returns a new array with `n` elements removed from the right.
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'Phalcon',
+    'Framework',
+    'for',
+    'PHP',
+];
+
+$result = $helper->sliceRight($source);
+
+var_dump($result);
+// [
+//     'PHP',
+// ]
+
+$result = $helper->sliceRight($source, 3);
+
+var_dump($result);
+// [
+//     'Framework',
+//     'for',
+//     'PHP',
+// ]
+```
+
+### `split(array $collection): array`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `toObject(array $collection): object`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `validateAll(array $collection, callable $method): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `validateAny(array $collection, callable $method): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `whitelist(array $collection, array $whiteList): array`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `basename(string $uri, string $suffix = null): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `decode(string $data, bool $associative = false, int $depth = 512, int $options = 0): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `encode($data, int $options = 0, int $depth = 512): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `between(int $value, int $start, int $end): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `camelize(string $text, string $delimiters = null, bool $lowerFirst = false): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `concat(string $delimiter, string $first, string $second, string ...$arguments): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `countVowels(string $text): int`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `decrement(string $text, string $separator = '_'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `dirFromFile(string $file): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `dirSeparator(string $directory): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `firstBetween(string $text, string $start, string $end): string`
+Sets an array element with an optional key
 
-`friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null): string`
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
+
+`friendly(
+    string $text, 
+    string $separator = '-', 
+    bool $lowercase = true, 
+    mixed $replace = null
+): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `humanize(string $text): string`
 
 `includes(string $haystack, string $needle): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `increment(string $text, string $separator = '_'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `isAnagram(string $first, string $second): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `isLower(string $text, string $encoding = 'UTF-8'): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `isPalindrome(string $text): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `isUpper(string $text, string $encoding = 'UTF-8'): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `kebabCase(string $text, string $delimiters = null): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `len(string $text, string $encoding = 'UTF-8'): int`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `lower(string $text, string $encoding = 'UTF-8'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `pascalCase(string $text, string $delimiters = null): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `prefix($text, string $prefix): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `random(int $type = 0, int $length = 8): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `reduceSlashes(string $text): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `snakeCase(string $text, string $delimiters = null): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `suffix($text, string $suffix): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `ucwords(string $text, string $encoding = 'UTF-8'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `uncamelize(string $text, string $delimiters = '_'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `underscore(string $text): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
 
 `upper(string $text, string $encoding = 'UTF-8'): string`
+Sets an array element with an optional key
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'Phalcon',
+];
+
+$result = $helper->set($source, 'Framework');
+
+var_dump($result);
+// [
+//     'one' => 'Phalcon',
+//     1     => 'Framework',
+// ]
+
+$result = $helper->set($source, 'abcde', 'suffix');
+
+var_dump($result);
+// [
+//     'one'    => 'Phalcon',
+//     1        => 'Framework',
+//     'suffix' => 'abcde',
+// ]
+```
+
 
 
 
