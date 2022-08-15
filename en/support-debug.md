@@ -42,24 +42,13 @@ The [Exception class][exception], exposes the following:
 
 class Exception
 {
-    /**
-     * @var int
-     */
-    protected $code;
+    protected int $code;
 
-    /**
-     * @var string
-     */
-    protected $file;
-    /**
-     * @var int
-     */
-    protected $line;
+    protected string $file;
 
-    /**
-     * @var string
-     */
-    protected $message;
+    protected int $line;
+
+    protected string $message;
     
     public function __construct(
         string $message = '' 
