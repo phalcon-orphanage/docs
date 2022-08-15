@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Εφαρμογή'
+title: 'Application'
 keywords: 'application, mvc, controllers'
 ---
 
-# Εφαρμογή
+# Application
 
 * * *
 
