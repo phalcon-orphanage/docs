@@ -120,6 +120,8 @@ Excludes elements of an array by the keys obtained from the elements of a blackl
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'value-1',
     'key-2'   => 'value-2',
@@ -147,12 +149,9 @@ $blackList = [
     'key-3',
 ];
 
-$helper = new HelperFactory();
-
 $result = $helper->blacklist($source, $blackList);
 
 var_dump($result);
-
 // [
 //     'value-1',
 //     12        => 'value-5',
@@ -169,6 +168,8 @@ Chunks an array into smaller arrays of a specified size
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'k1' => 1,
     'k2' => 2,
@@ -178,12 +179,9 @@ $source = [
     'k6' => 6,
 ];
 
-$helper = new HelperFactory();
-
 $result = $helper->chunk($source, 2, true);
 
 var_dump($result);
-
 // [
 //     ['k1' => 1, 'k2' => 2],
 //     ['k3' => 3, 'k4' => 4],
@@ -199,6 +197,8 @@ Filters a collection using array_filter and using the callable (if defined)
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     1  => 1,
     2  => 2,
@@ -212,8 +212,6 @@ $source = [
     10 => 10,
 ];
 
-$helper = new HelperFactory();
-
 $result = $helper->filter(
     $source,
     function ($element) {
@@ -222,7 +220,6 @@ $result = $helper->filter(
 );
 
 var_dump($result);
-
 // [
 //     1 => 1,
 //     3 => 3,
@@ -240,12 +237,12 @@ Returns the first element of the collection. If a `callable` is passed, the elem
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'one' => 'Phalcon',
     'two' => 'Framework',
 ];
-
-$helper = new HelperFactory();
 
 $result = $helper->first($source);
 
@@ -260,12 +257,12 @@ Returns the key of the first element of the collection. If a `callable` is passe
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'one' => 'Phalcon',
     'two' => 'Framework',
 ];
-
-$helper = new HelperFactory();
 
 $result = $helper->firstKey($source);
 
@@ -280,14 +277,13 @@ Flattens an array up to the one level depth, unless `$deep` is set to `true
 
 use Phalcon\Support\HelperFactory;
 
-$source = [1, [2], [[3], 4], 5];
-
 $helper = new HelperFactory();
+
+$source = [1, [2], [[3], 4], 5];
 
 $result = $helper->flatten($source);
 
 var_dump($result);
-
 // [1, 2, [3], 4, 5]
 ```
 
@@ -299,12 +295,12 @@ Gets an array element by key and if it does not exist returns the default. It al
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'one' => 'Phalcon',
     'two' => '1',
 ];
-
-$helper = new HelperFactory();
 
 echo $helper->get($source, 1);               // 'Phalcon'
 echo $helper->get($source, 3, 'Unknown');    // 'Unknown'
@@ -318,6 +314,8 @@ Groups the elements of an array based on the passed callable
 <?php
 
 use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
 
 $source = [
     [
@@ -366,12 +364,12 @@ Checks an array if it has an element with a specific key and returns `true`/`fal
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     1     => 'Phalcon',
     'two' => 'Framework',
 ];
-
-$helper = new HelperFactory();
 
 echo $helper->has($source, 1);         // true
 echo $helper->get($source, 'two');     // true
@@ -386,13 +384,13 @@ Checks an array for duplicate values. Returns `true` if all values are unique, `
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'Phalcon',
     'Framework',
 ];
 
-$helper = new HelperFactory();
-        
 echo $helper->isUnique($source); // true
 
 $source = [
@@ -412,12 +410,12 @@ Returns the last element of the collection. If a `callable` is passed, the eleme
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'one' => 'Phalcon',
     'two' => 'Framework',
 ];
-
-$helper = new HelperFactory();
 
 $result = $helper->last($source);
 
@@ -432,12 +430,12 @@ Returns the key of the first element of the collection. If a `callable` is passe
 
 use Phalcon\Support\HelperFactory;
 
+$helper = new HelperFactory();
+
 $source = [
     'one' => 'Phalcon',
     'two' => 'Framework',
 ];
-
-$helper = new HelperFactory();
 
 $result = $helper->lastKey($source);
 
@@ -491,7 +489,6 @@ var_dump($result);
 $result = $helper->order($source, 'id', Order::ORDER_DESC);
 
 var_dump($result);
-
 // [
 //     [
 //         'id'   => 3,
@@ -506,7 +503,6 @@ var_dump($result);
 //         'name' => 'John',
 //     ],
 // ]
-
 
 $source = [
     (object) [
@@ -526,7 +522,6 @@ $source = [
 $result = $helper->order($source, 'id');
 
 var_dump($result);
-
 // [
 //     (object) [
 //         'id'   => 1,
@@ -681,7 +676,278 @@ var_dump($result);
 ```
 
 ### `split(array $collection): array`
-Sets an array element with an optional key
+Returns a new array with keys of the collection as one element and values as another
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    1 => 'Phalcon',
+    3 => 'Framework',
+];
+
+$result = $helper->split($source);
+
+var_dump($result);
+// [
+//     [1, 3],
+//     ['Phalcon', 'Framework'],
+// ];
+```
+
+### `toObject(array $collection): object`
+Returns the passed array as an object
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one'   => 'two',
+    'three' => 'four',
+];
+
+$result = $helper->toObject($source);
+
+var_dump($result);
+// class stdClass#1 (2) {
+//   public $one =>
+//   string(3) "two"
+//   public $three =>
+//   string(4) "four"
+// }
+```
+
+### `validateAll(array $collection, callable $method): bool`
+Returns `true` if the provided function returns `true` for all elements of the collection, `false` otherwise.
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [2, 3, 4, 5];
+
+$result = $helper->validateAll(
+    $source,
+    function ($element) {
+        return $element > 1;
+    }
+);
+
+echo $result; // true        
+```
+
+### `validateAny(array $collection, callable $method): bool`
+Returns `true` if the provided function returns `true` for at least one  element of the collection, `false` otherwise.
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [1, 2, 3, 4, 5];
+
+$result = $helper->validateAny(
+    $collection,
+    function ($element) {
+        return $element < 2;
+    }
+);
+
+echo $result; // true
+```
+
+### `whitelist(array $collection, array $whiteList): array`
+Includes elements of an array by the keys obtained from the elements of a whitelist
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source  = [
+    'value-1',
+    ' key '  => 'value-2',
+    5        => 'value-3',
+    6        => 'value-4',
+    7        => 'value-5',
+    ' key-2' => 'value-6',
+    'key-3 ' => 'value-7',
+    'key-4'  => 'value-8',
+];
+
+$whiteList = [
+    7,
+    5,
+    0,
+    'key-3 ',
+    null,
+    -13,
+    new stdClass(),
+    [],
+    3.1415,
+];
+
+$result = $helper->whitelist($source, $blackList);
+
+var_dump($result);
+// [
+//     0        => 'value-1',
+//     5        => 'value-3',
+//     7        => 'value-5',
+//     'key-3 ' => 'value-7',
+// ];
+```
+
+### `basename(string $uri, string $suffix = null): string`
+Gets the filename from a given path, Same as PHP's `basename()` but has non-ASCII support. PHP's `basename()` does not properly support streams or filenames beginning with a non-US-ASCII character.
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = '/etc/sudoers.d';
+
+$result = $helper->basename($source);
+
+echo $result; // .d
+
+$source = '/root/ελληνικά.txt';
+
+$result = $helper->basename($source);
+
+echo $result; // 'ελληνικά.txt'
+```
+
+### `decode(
+    string $data, 
+    bool $associative = false, 
+    int $depth = 512, 
+    int $options = 0
+): string`
+Decodes a string using `json_decode` and throws an exception if the JSON data cannot be decoded
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = '{"one":"two","0":"three"}';
+
+$result = $helper->decode($source);
+
+var_dump($result);
+// [
+//     'one' => 'two',
+//     'three',
+// ];
+```
+
+### `encode($data, int $options = 0, int $depth = 512): string`
+Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
+
+The following options are used if none specified for `json_encode`
+
+- JSON_HEX_TAG
+- JSON_HEX_APOS
+- JSON_HEX_AMP
+- JSON_HEX_QUOT
+- JSON_UNESCAPED_SLASHES
+- JSON_THROW_ON_ERROR
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = [
+    'one' => 'two',
+    'three',
+];
+
+$result = $helper->encode($source);
+
+echo $result; // '{"one":"two","0":"three"}'
+```
+
+### `isBetween(int $value, int $start, int $end): bool`
+Checks if a number is within a range
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$result = $helper->isBetween(5, 1, 10);
+
+echo $result; // true
+```
+
+### `camelize(string $text, string $delimiters = null, bool $lowerFirst = false): string`
+Convert strings to upperCamelCase or lowerCamelCase
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = 'came-li-ze';
+
+$result = $helper->camelize($source);
+
+echo $result; // CameLiZe
+```
+
+### `concat(string $delimiter, string $first, string $second, string ...$arguments): string`
+Concatenate strings using the separator, only once, without duplication
+
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$result = $helper->concat(
+    '.',
+    '@test.',
+    '.test2.',
+    '.test',
+    '.34'
+);
+
+$result = $helper->concat($source);
+
+echo $result; // '@test.test2.test.34'
+```
+
+### `countVowels(string $text): int`
+Returns number of vowels in provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string
 
 ```php
 <?php
@@ -712,8 +978,12 @@ var_dump($result);
 // ]
 ```
 
-`toObject(array $collection): object`
-Sets an array element with an optional key
+### `decapitalize(
+    string $text, 
+    bool $upperRest = false, 
+    string $encoding = 'UTF-8'
+): string`
+Decapitalizes the first letter of the string and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 ```php
 <?php
@@ -744,8 +1014,8 @@ var_dump($result);
 // ]
 ```
 
-`validateAll(array $collection, callable $method): bool`
-Sets an array element with an optional key
+### `decrement(string $text, string $separator = '_'): string`
+Removes a number from the end of a string or decrements that number if it is already defined
 
 ```php
 <?php
@@ -776,8 +1046,8 @@ var_dump($result);
 // ]
 ```
 
-`validateAny(array $collection, callable $method): bool`
-Sets an array element with an optional key
+### `dirFromFile(string $file): string`
+Accepts a file name (without extension) and returns a calculated directory structure with the filename in the end
 
 ```php
 <?php
@@ -808,8 +1078,8 @@ var_dump($result);
 // ]
 ```
 
-`whitelist(array $collection, array $whiteList): array`
-Sets an array element with an optional key
+### `dirSeparator(string $directory): string`
+Accepts a directory name and ensures that it ends with `DIRECTORY_SEPARATOR`
 
 ```php
 <?php
@@ -840,8 +1110,17 @@ var_dump($result);
 // ]
 ```
 
-`basename(string $uri, string $suffix = null): string`
-Sets an array element with an optional key
+### `dynamic(
+    string $text, 
+    string $leftDelimiter = "{", 
+    string $rightDelimiter = "}", 
+    string $separator = "|"
+): string`
+Generates random text in accordance with the template. The template is defined by the left and right delimiter and it can contain values separated by the separator
+
+
+### `endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+Returns `true` if a string ends with a given string, `false` otherwise
 
 ```php
 <?php
@@ -872,8 +1151,8 @@ var_dump($result);
 // ]
 ```
 
-`decode(string $data, bool $associative = false, int $depth = 512, int $options = 0): string`
-Sets an array element with an optional key
+### `firstBetween(string $text, string $start, string $end): string`
+Returns the first string there is between the strings from the parameter start and end.
 
 ```php
 <?php
@@ -904,365 +1183,13 @@ var_dump($result);
 // ]
 ```
 
-`encode($data, int $options = 0, int $depth = 512): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`between(int $value, int $start, int $end): bool`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`camelize(string $text, string $delimiters = null, bool $lowerFirst = false): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`concat(string $delimiter, string $first, string $second, string ...$arguments): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`countVowels(string $text): int`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`decrement(string $text, string $separator = '_'): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`dirFromFile(string $file): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`dirSeparator(string $directory): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`firstBetween(string $text, string $start, string $end): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`friendly(
+### `friendly(
     string $text, 
     string $separator = '-', 
     bool $lowercase = true, 
     mixed $replace = null
 ): string`
-Sets an array element with an optional key
+Changes a text to a URL friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
 
 ```php
 <?php
@@ -1294,9 +1221,10 @@ var_dump($result);
 ```
 
 `humanize(string $text): string`
+Changes a text with underscores or dashes to human-readable
 
 `includes(string $haystack, string $needle): bool`
-Sets an array element with an optional key
+Determines whether a string includes another string or not
 
 ```php
 <?php
@@ -1328,7 +1256,7 @@ var_dump($result);
 ```
 
 `increment(string $text, string $separator = '_'): string`
-Sets an array element with an optional key
+Adds a number to the end of a string or increments that number if it is already defined
 
 ```php
 <?php
@@ -1359,8 +1287,16 @@ var_dump($result);
 // ]
 ```
 
+`interpolate(
+    string $message, 
+    array $context = [], 
+    string $leftToken = "%", 
+    string $rightToken = "%"
+): string`
+Interpolates context values into the message placeholders. By default, the right and left tokens are `%`
+
 `isAnagram(string $first, string $second): bool`
-Sets an array element with an optional key
+Compares two strings and returns `true` if both strings are anagram, `false` otherwise
 
 ```php
 <?php
@@ -1392,7 +1328,7 @@ var_dump($result);
 ```
 
 `isLower(string $text, string $encoding = 'UTF-8'): bool`
-Sets an array element with an optional key
+Returns `true` if the given string is in lower case, `false` otherwise
 
 ```php
 <?php
@@ -1424,7 +1360,7 @@ var_dump($result);
 ```
 
 `isPalindrome(string $text): bool`
-Sets an array element with an optional key
+Returns `true` if the given string is a palindrome, `false` otherwise
 
 ```php
 <?php
@@ -1456,7 +1392,7 @@ var_dump($result);
 ```
 
 `isUpper(string $text, string $encoding = 'UTF-8'): bool`
-Sets an array element with an optional key
+Returns `true` if the given string is in upper case, `false` otherwise
 
 ```php
 <?php
@@ -1488,7 +1424,7 @@ var_dump($result);
 ```
 
 `kebabCase(string $text, string $delimiters = null): string`
-Sets an array element with an optional key
+Converts strings to kebab-case style
 
 ```php
 <?php
@@ -1520,7 +1456,7 @@ var_dump($result);
 ```
 
 `len(string $text, string $encoding = 'UTF-8'): int`
-Sets an array element with an optional key
+Calculates the length of the string using `mb_strlen`
 
 ```php
 <?php
@@ -1552,7 +1488,7 @@ var_dump($result);
 ```
 
 `lower(string $text, string $encoding = 'UTF-8'): string`
-Sets an array element with an optional key
+Converts a string to lowercase using `mbstring`
 
 ```php
 <?php
@@ -1584,7 +1520,7 @@ var_dump($result);
 ```
 
 `pascalCase(string $text, string $delimiters = null): string`
-Sets an array element with an optional key
+Converts strings to PascalCase style
 
 ```php
 <?php
@@ -1616,7 +1552,7 @@ var_dump($result);
 ```
 
 `prefix($text, string $prefix): string`
-Sets an array element with an optional key
+Prefixes the text with the supplied prefix
 
 ```php
 <?php
@@ -1648,7 +1584,16 @@ var_dump($result);
 ```
 
 `random(int $type = 0, int $length = 8): string`
-Sets an array element with an optional key
+Generates a random string based on the given type. Type is one of:
+
+| Constant          | Description                                                                                      |
+|-------------------|--------------------------------------------------------------------------------------------------|
+| `RANDOM_ALNUM`    | Only alphanumeric characters [a-zA-Z0-9]                                                         |
+| `RANDOM_ALPHA`    | Only alphabetical characters [azAZ]                                                              |
+| `RANDOM_DISTINCT` | Only alphanumeric uppercase characters exclude similar characters [2345679ACDEFHJKLMNPRSTUVWXYZ] |
+| `RANDOM_HEXDEC`   | Only hexadecimal characters [0-9a-f]                                                             |
+| `RANDOM_NOZERO`   | Only numbers without 0 [1-9]                                                                     | 
+| `RANDOM_NUMERIC`  | Only numbers [0-9]                                                                               |
 
 ```php
 <?php
@@ -1680,39 +1625,7 @@ var_dump($result);
 ```
 
 `reduceSlashes(string $text): string`
-Sets an array element with an optional key
-
-```php
-<?php
-
-use Phalcon\Support\HelperFactory;
-
-$helper = new HelperFactory();
-
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
-```
-
-`startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
-Sets an array element with an optional key
+Reduces multiple slashes in a string to single slashes
 
 ```php
 <?php
@@ -1744,7 +1657,10 @@ var_dump($result);
 ```
 
 `snakeCase(string $text, string $delimiters = null): string`
-Sets an array element with an optional key
+Converts strings to snake_case style
+
+`startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+Returns `true` if a string starts with a given string, `false` otherwise
 
 ```php
 <?php
@@ -1776,7 +1692,7 @@ var_dump($result);
 ```
 
 `suffix($text, string $suffix): string`
-Sets an array element with an optional key
+Suffixes the text with the supplied suffix
 
 ```php
 <?php
@@ -1808,7 +1724,7 @@ var_dump($result);
 ```
 
 `ucwords(string $text, string $encoding = 'UTF-8'): string`
-Sets an array element with an optional key
+Capitalizes the first letter of each word
 
 ```php
 <?php
@@ -1840,7 +1756,7 @@ var_dump($result);
 ```
 
 `uncamelize(string $text, string $delimiters = '_'): string`
-Sets an array element with an optional key
+Converts strings to non camelized style
 
 ```php
 <?php
@@ -1872,7 +1788,7 @@ var_dump($result);
 ```
 
 `underscore(string $text): string`
-Sets an array element with an optional key
+Converts spaces in the passed text to underscores
 
 ```php
 <?php
@@ -1904,7 +1820,7 @@ var_dump($result);
 ```
 
 `upper(string $text, string $encoding = 'UTF-8'): string`
-Sets an array element with an optional key
+Converts a string to uppercase using mbstring
 
 ```php
 <?php
