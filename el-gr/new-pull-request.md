@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Νέα Αίτηση Ελξης'
 keywords: 'new pull request, pull request, pr'
