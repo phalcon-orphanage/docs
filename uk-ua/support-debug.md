@@ -3,12 +3,13 @@ layout: default
 language: 'uk-ua'
 version: '5.0'
 title: 'Відлагодження'
+upgrade: '#support-debug'
 keywords: 'debug, debugging, error handling, відлагодження'
 ---
 
 # Відлагодження
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 
@@ -33,7 +34,7 @@ try {
 }
 ```
 
-Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. A [Phalcon\Exception][phalcon-exception] extends the PHP [Exception class][exception]. Використання винятків Phalcon дозволяє відрізнити чи їх спричинив код Phalcon, чи щось інше.
+Будь-який виняток, виявлений завдяки цьому поєднанню, буде записано у змінній `$ex`. A [Phalcon\Support\Debug\Exception][phalcon-exception] extends the PHP [Exception class][exception]. Використання винятків Phalcon дозволяє відрізнити чи їх спричинив код Phalcon, чи щось інше.
 
 The [Exception class][exception], exposes the following:
 
@@ -42,24 +43,13 @@ The [Exception class][exception], exposes the following:
 
 class Exception
 {
-    /**
-     * @var int
-     */
-    protected $code;
+    protected int $code;
 
-    /**
-     * @var string
-     */
-    protected $file;
-    /**
-     * @var int
-     */
-    protected $line;
+    protected string $file;
 
-    /**
-     * @var string
-     */
-    protected $message;
+    protected int $line;
+
+    protected string $message;
 
     public function __construct(
         string $message = '' 
@@ -67,32 +57,32 @@ class Exception
         [, Exception $previous = null ]]]
     );
 
-    public function __toString() -> string;
+    public function __toString(): string;
 
-    final public function getCode() -> int;
+    final public function getCode(): int;
 
-    final public function getFile() -> string;
+    final public function getFile(): string;
 
-    final public function getLine() -> int;
+    final public function getLine(): int;
 
-    final public function getMessage() -> string;
+    final public function getMessage(): string;
 
-    final public function getPrevious() -> Exception;
+    final public function getPrevious(): Exception;
 
-    final public function getTrace() -> array;
+    final public function getTrace(): array;
 
-    final public function getTraceAsString() -> string;
+    final public function getTraceAsString(): string;
 
-    final private function __clone() -> void;
+    final private function __clone(): void;
 }
 ```
 
-You can use the same method calls when using the [Phalcon\Exception][phalcon-exception]:
+You can use the same method calls when using the [Phalcon\Support\Debug\Exception][phalcon-exception]:
 
 ```php
 <?php
 
-use Phalcon\Exception;
+use Phalcon\Support\Debug\Exception;
 
 try {
 
@@ -136,7 +126,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 Як продемонстровано вище, не має значення що Phalcon скомпільований як PHP-розширення. Інформація винятка містить параметри та виклики методів, які породжували фрагмент винятка вище. [Exception::getTrace()][exception_gettrace] provides additional information if necessary.
 
 ## Constructor
-[Phalcon\Debug][debug] provides visual aids as well as additional information for developers to easily locate errors produced in an application.
+[Phalcon\Support\Debug][debug] provides visual aids as well as additional information for developers to easily locate errors produced in an application.
 
 > **NOTE** Please make sure that this component is not used in production environments, as it can reveal information about your server to attackers 
 > 
@@ -153,7 +143,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 ```php
 <?php
 
-use \Phalcon\Debug;
+use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
@@ -165,24 +155,24 @@ $debug->listen();
 ```php
 <?php
 
-(new \Phalcon\Debug())->listen();
+(new Phalcon\Support\Debug())->listen();
 ```
 
 > **NOTE**: Any `try`/`catch` blocks must be removed or disabled to make this component work properly. 
 > 
 > {: .alert .alert-warning }
 
-За замовчуванням компонент буде слухати необроблені винятки, але не з низькою серйозністю помилки (попередження, повідомлення тощо). Ви можете змінити цю поведінку, передаючи відповідні параметри в `listen()`
+By default, the component will listen for uncaught exceptions but not low severity errors (warnings, notices etc.). Ви можете змінити цю поведінку, передаючи відповідні параметри в `listen()`
 
-- `exceptions` - boolean
-- `lowSeverity` - boolean
+- `exceptions` - bool
+- `lowSeverity` - bool
 
-У прикладі нижче не прослуховуються необроблені винятки, але слухаються сповіщення або попередження (низька серйозність):
+In the example below, do not listen to uncaught exceptions but listen to non-silent notices or warnings (low severity):
 
 ```php
 <?php
 
-use \Phalcon\Debug;
+use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
@@ -194,7 +184,7 @@ $debug->listen(false, true);
 ```php
 <?php
 
-use \Phalcon\Debug;
+use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
@@ -211,19 +201,23 @@ $debug
 ## Getters
 Існує декілька збирачів, які надають інформацію про компонент. Розширюючи їх, можливо також змінити візуальну поведінку цього компонента.
 
-- `getCssSources()` - `стрічка` повертає таблиці стилів, які використовуються для відображення вмісту на екрані`</li>
-<li><code>getJsSources()` - `стрічка` повертає файли javascript, які використовуються для відображення вмісту на екрані
-- `getVersion()` - `стрічка` повертає посилання на документацію поточної версії
+| Method            | Результат | Description                                                         |
+| ----------------- | --------- | ------------------------------------------------------------------- |
+| `getCssSources()` | `string`  | Returns the stylesheets used to display the contents on screen      |
+| `getJsSources()`  | `string`  | Returns the javascript files used to display the contents on screen |
+| `getVersion()`    | `string`  | Returns the link to the current version documentation               |
 
 Розширення компонента і перевизначення `getCssSources()`, наприклад, щоб повернути різні директиви CSS HTML, змінять зовнішній вигляд відображення на екрані. The output CSS classes are based on [Bootstrap CSS][bootstrap].
 
 ## Сетери (установлювачі)
-[Phalcon\Debug][debug] also offers some setters to better customize the output when an error occurs in your application.
+[Phalcon\Support\Debug][debug] also offers some setters to better customize the output when an error occurs in your application.
 
-- `setShowBackTrace(bool $showBackTrace)` - показати/приховати зворотнє трасування винятку
-- `setShowFileFragment(bool $showFileFragment)` - показати/приховати фрагмент файлу при відображенні (пов'язаний із винятком)
-- `setShowFiles(bool $showFiles)` - показати/приховати файли у даних зворотного трасування
-- `setUri(string $uri)` - базова URI для статичних ресурсів (також див. розділ Геттери (збирачі) для налаштування компонента)
+| Method                                        | Description                                                                                         |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `setShowBackTrace(bool $showBackTrace)`       | Show/hide the exception's backtrace                                                                 |
+| `setShowFileFragment(bool $showFileFragment)` | Show/Hide the file fragment in the output (related to the exception)                                |
+| `setShowFiles(bool $showFiles)`               | Show/Hide the files in the backtrace                                                                |
+| `setUri(string $uri)`                         | The base URI for static resources (see also the Getters section for customization of the component) |
 
 ## Змінні
 Ви також можете використовувати метод `debugVar()` для внесення будь-яких додаткових змінних, які ви хочете показати у відображенні. Це зазвичай власні змінні додатка. Прикладом може бути показ часової інформації для вашого додатку.
@@ -231,7 +225,7 @@ $debug
 ```php
 <?php
 
-use \Phalcon\Debug;
+use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
@@ -243,12 +237,12 @@ $debug
 
 Щоб очистити стек змінних, можна викликати `clearVars()`.
 
-Нарешті ви можете зупинити виконання вашого додатку і запустити показ інформації зворотного трасування викликом `halt()`
+Finally, you can halt execution of your application and trigger showing a backtrace by calling `halt()`
 
 ```php
 <?php
 
-use \Phalcon\Debug;
+use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
@@ -267,7 +261,7 @@ As mentioned above, the component **must not** be enabled in production environm
 ```php
 <?php
 
-use \Phalcon\Debug;
+use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
@@ -282,19 +276,19 @@ $debug
     ->listen();
 ```
 
-У наведеному вище прикладі ми ніколи не показуватимемо змінну `some` із `$_REQUEST`, а також `hostname` з `$_SERVER`. Ви завжди можете додати більше елементів, які не повинні відображатись та існують у цих двох глобальних змінних. Це особливо корисно, якщо ви забудете відключити компонент у вашому виробничому середовищі. Погана практика - залишати її увімкненою, але якщо ви забули, то принаймні певні ключові фрагменти інформації про ваш хост не будуть видимі для потенційних хакерів.
+У наведеному вище прикладі ми ніколи не показуватимемо змінну `some` із `$_REQUEST`, а також `hostname` з `$_SERVER`. You can always add more elements not to be displayed, that exist in these two super-globals. Це особливо корисно, якщо ви забудете відключити компонент у вашому виробничому середовищі. Погана практика - залишати її увімкненою, але якщо ви забули, то принаймні певні ключові фрагменти інформації про ваш хост не будуть видимі для потенційних хакерів.
 
-> **NOTE**: The keys of the array elements to be hidden are case insensitive 
+> **NOTE**: The keys of the array elements to be hidden are case-insensitive 
 > 
 > {: .alert .alert-info }
 
 ## Handlers
-In order to catch exceptions and low severity errors, [Phalcon\Debug][debug] makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. Більшість розробників, які використовують цей компонент, ніколи не потребують розширення цих методів. Проте, якщо ви хочете, то можете це зробити, розширивши компонент і перевизначивши ці методи, щоб маніпулювати винятком та отримати потрібний результат.
+In order to catch exceptions and low severity errors, [Phalcon\Support\Debug][debug] makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. Більшість розробників, які використовують цей компонент, ніколи не потребують розширення цих методів. Проте, якщо ви хочете, то можете це зробити, розширивши компонент і перевизначивши ці методи, щоб маніпулювати винятком та отримати потрібний результат.
 
 These two methods are being set as exception handlers using PHP's [set_exception_handler][set_exception_handler]. При виклику `listenExceptions()` зареєструється `oncaughtException()`, тоді як виклик `listenLowSeverity()` зареєструє `oncaughtLowSeverity`.
 
 ## Відображення та самоаналіз
-Phalcon classes do not differ from any other PHP classes and therefore you can use the [Reflection API][reflection_api] or simply print any object to display its contents and state:
+Phalcon classes do not differ from any other PHP classes, and therefore you can use the [Reflection API][reflection_api] or simply print any object to display its contents and state:
 
 ```php
 <?php
@@ -426,7 +420,7 @@ To set up Xdebug for PHPStorm you can check [this][phpstorm-xdebug] article.
 [debug]: api/phalcon_debug#debug
 [exception]: https://www.php.net/manual/en/language.exceptions.php
 [exception_gettrace]: https://www.php.net/manual/en/exception.gettrace.php
-[phalcon-exception]: api/Phalcon_Exception
+[phalcon-exception]: api/phalcon_support##support-debug-exception
 [phpstorm-xdebug]: https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
 [reflection_api]: https://php.net/manual/en/book.reflection.php
 [set_exception_handler]: https://www.php.net/manual/en/function.set-exception-handler.php

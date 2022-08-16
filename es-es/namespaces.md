@@ -8,13 +8,13 @@ keywords: 'espacios de nombres, clases con espacios de nombres'
 
 # Espacios de nombres
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Namespaces][namespaces] can be used to avoid class name collisions. Esto significa que si tiene dos controladores en una aplicación con el mismo nombre, se puede usar un espacio de nombres para ayudar a PHP a entender que son dos clases diferentes. Los espacios de nombres también son útiles cuando se crean paquetes o módulos.
 
 ## Activación
-Si decide usar espacios de nombres para su aplicación, necesitará instruir a su autocargador sobre dónde residen sus espacios de nombres. Esta es la forma más común de distinguir entre espacios de nombres en su aplicación. If you chose to use the [Phalcon\Loader](autoload) component, then you will need to register your namespaces accordingly:
+Si decide usar espacios de nombres para su aplicación, necesitará instruir a su autocargador sobre dónde residen sus espacios de nombres. Esta es la forma más común de distinguir entre espacios de nombres en su aplicación. If you chose to use the [Phalcon\Autoload\Loader](autoload) component, then you will need to register your namespaces accordingly:
 
 ```php
 <?php

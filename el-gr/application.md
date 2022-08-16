@@ -1,14 +1,15 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Εφαρμογή'
+upgrade: '#application'
 keywords: 'application, mvc, controllers'
 ---
 
-# Εφαρμογή
+# Application
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 [Phalcon\Mvc\Application][mvc-application] is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.
@@ -33,6 +34,10 @@ try {
     echo $e->getMessage();
 }
 ```
+> **NOTE**: `handle()` accepts a URI and will not operate without it. You can pass the `$_SERVER["REQUEST_URI"]` as a parameter 
+> 
+> {: .alert .alert-warning }
+
 
 ## Methods
 ```php
@@ -48,7 +53,7 @@ public function getDefaultModule(): string
 Returns the default module name
 
 ```php
-public function getEventsManager(): ManagerInterface
+public function getEventsManager(): ManagerInterface | null
 ```
 Returns the internal event manager
 
@@ -493,7 +498,7 @@ class Module implements ModuleDefinitionInterface
 
     public function registerServices(DiInterface $container)
     {
-        // Registering a dispatcher
+        // Dispatcher
         $container->set(
             'dispatcher',
             function () {
@@ -506,7 +511,7 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        // Registering the view component
+        // View
         $container->set(
             'view',
             function () {
@@ -522,7 +527,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-A slightly modified bootstrap file is required for a a multi module MVC architecture
+A slightly modified bootstrap file is required for a multi-module MVC architecture
 
 ```php
 <?php
@@ -637,7 +642,7 @@ $application->registerModules(
 );
 ```
 
-When [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup.
+When a [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup.
 
 Module definition classes must implement two methods:
 - `registerAutoloaders()` and
@@ -683,13 +688,13 @@ try {
 
 | Όνομα γεγονότος       | Ενεργοποίηση                                                 |
 | --------------------- | ------------------------------------------------------------ |
-| `boot`                | Executed when the application handles its first request      |
+| `boot`                | Εκτελέστηκε όταν η εφαρμογή χειριστεί το πρώτο αίτημά της    |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
 | `afterStartModule`    | After initialize a module, only when modules are registered  |
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-The following example demonstrates how to attach listeners to this component:
+Το παρακάτω παράδειγμα πώς δείχνει να προσαρτήσετε τους ακροατές σε αυτό το στοιχείο:
 
 ```php
 <?php

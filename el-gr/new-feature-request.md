@@ -1,14 +1,14 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
-title: 'New Feature Request'
+title: 'Αίτημα νέας λειτουργικότητας'
 keywords: 'new feature request, nfr'
 ---
 
-# New Feature Request
+# Αίτημα νέας λειτουργικότητας
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 [List of NFRs](new-feature-request-list)
 

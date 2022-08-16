@@ -8,7 +8,7 @@ keywords: 'rendimiento, perfilado, xdebug, xhprof, yslow, bytecode'
 
 # Rendimiento
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Una aplicación mal escrita siempre tendrá un rendimiento malo. Una forma muy común para que los desarrolladores incrementen el rendimiento de su aplicación es:
@@ -17,7 +17,7 @@ Una aplicación mal escrita siempre tendrá un rendimiento malo. Una forma muy c
 > 
 > {: .alert .alert-info }
 
-El problema con el enfoque anterior es doble. Para empezar, en la mayoría de casos el propietario es el que incurrirá en la costes adicionales. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
+The problem with the above approach is twofold. Para empezar, en la mayoría de casos el propietario es el que incurrirá en la costes adicionales. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
 
 The problem will remain: _the poorly written application_
 
@@ -36,7 +36,7 @@ y muchos más. En este artículo intentaremos destacar algunos escenarios que po
 ## Servidor
 [Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. El perfilado ofrece la imagen real sobre qué esta ocurriendo realmente en cualquier momento en su aplicación, y de este modo le conduce a las áreas en las que su aplicación necesita atención. El perfilado debería ser continuo en una aplicación en producción.
 
-Tiene una sobrecarga, por lo que hay que tenerlo en cuenta. La mayoría de perfilados más detallados se hacen en cada petición pero todo dependerá de su tráfico. Desde luego no queremos incrementar la carga del servidor sólo porque estamos perfilando la aplicación. Una forma común de perfilar es una petición por cada 100 o una por cada 1.000. Después de un tiempo tendrá suficientes datos para sacar conclusiones sobre dónde hay lentitudes, por qué ocurren los picos, etc.
+Tiene una sobrecarga, por lo que hay que tenerlo en cuenta. The most verbose profiling happens on every request, but it will all depend on your traffic. Desde luego no queremos incrementar la carga del servidor sólo porque estamos perfilando la aplicación. Una forma común de perfilar es una petición por cada 100 o una por cada 1.000. Después de un tiempo tendrá suficientes datos para sacar conclusiones sobre dónde hay lentitudes, por qué ocurren los picos, etc.
 
 ### Xdebug
 [XDebug][xdebug] offers a very handy profiler right out of the box. Todo lo que tiene que hacer es instalar la extensión y habilitar el perfilador en su `php.ini`:
@@ -130,7 +130,7 @@ Al igual que con el opcache mencionado anteriormente, asegúrese que la cantidad
 
 
 ## Tareas Lentas
-Basado en los requisitos de su aplicación, puede haber veces que necesite realizar tareas de ejecución largas. Ejemplos de estas tareas podrían ser procesamiento de vídeo, optimización de imágenes, envío de emails, generación de documentos PDF, etc. Estas tareas se deberían procesar usando tareas en segundo plano. The usual process is:
+Based on the requirements of your application, there maybe times that you will need to perform long-running tasks. Ejemplos de estas tareas podrían ser procesamiento de vídeo, optimización de imágenes, envío de emails, generación de documentos PDF, etc. Estas tareas se deberían procesar usando tareas en segundo plano. The usual process is:
 - The application initiates a task by sending a message to a queue service
 - The user sees a message that the task has been scheduled
 - In the background (or different server), worker scripts peek at the queue

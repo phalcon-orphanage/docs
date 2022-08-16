@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Σχολιασμοί'
 keywords: 'annotations, routing, annotations parser, docblocks'
@@ -8,10 +8,10 @@ keywords: 'annotations, routing, annotations parser, docblocks'
 
 # Σχολιασμοί
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offer an easy way to parse and cache annotations in PHP applications.
+Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offers an easy way to parse and cache annotations in PHP applications.
 
 ## Χρήση
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
@@ -20,21 +20,21 @@ Annotations are read from docblocks in classes, methods and properties. An annot
 <?php
 
 /**
- * This is the class description
+ * #01
  *
  * @AmazingClass(true)
  */
 class Example
 {
     /**
-     * This a property with a special feature
+     * #02
      *
      * @SpecialFeature
      */
     protected $someProperty;
 
     /**
-     * This is a method
+     * #03
      *
      * @SpecialFeature
      */
@@ -44,6 +44,17 @@ class Example
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the class description
+> 
+> 02: This a property with a special feature
+> 
+> 03: This is a method 
+> 
+> {: .alert .alert-info }
+
 
 An annotation has the following syntax:
 
@@ -60,15 +71,23 @@ Also, an annotation can be placed at any part of a docblock:
 <?php
 
 /**
- * This a property with a special feature
+ * #01
  *
  * @SpecialFeature
  *
- * More comments
+ * #02
  *
  * @AnotherSpecialFeature(true)
  */
 ```
+
+> **Legend**
+> 
+> 01: This is a property with a special feature
+> 
+> 02: More comments 
+> 
+> {: .alert .alert-info }
 
 The parser is highly flexible, the following docblock is valid:
 
@@ -89,13 +108,21 @@ However, to make the code more maintainable and understandable it is recommended
 <?php
 
 /**
- * This a property with a special feature
- * More comments
+ * #01
+ * #02
  *
  * @SpecialFeature({someParameter='the value', false})
  * @AnotherSpecialFeature(true)
  */
 ```
+
+> **Legend**
+> 
+> 01: This is a property with a special feature
+> 
+> 02: More comments 
+> 
+> {: .alert .alert-info }
 
 An example for a model is:
 
@@ -105,9 +132,9 @@ An example for a model is:
 use Phalcon\Mvc\Model;
 
 /**
- * Customers
+ * #01
  *
- * Represents a customer record
+ * #02
  *
  * @Source('co_customers');
  * @HasMany("cst_id", "Invoices", "inv_cst_id")
@@ -132,6 +159,14 @@ class Customers extends Model
     public $nameLast;
 }
 ```
+
+> **Legend**
+> 
+> 01: Customers
+> 
+> 02: Represents a customer record 
+> 
+> {: .alert .alert-info }
 
 ## Types
 Annotations may have parameters or not. A parameter could be a simple literal (`strings`, `number`, `boolean`, `null`), an `array`, a hashed list or other annotation:
@@ -244,7 +279,7 @@ return $result;
 ```
 
 ### Memory
-[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes while developing your application.
+[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes, while developing your application.
 
 ```php
 <?php
@@ -255,7 +290,7 @@ $adapter = new Memory();
 ```
 
 ### Stream
-[Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] stores the parsed and processed annotations in a file on the server. This adapter can be used in production systems but it will increase the I/O since for every request the annotations cache files will need to be read from the file system. The adapter accepts one parameter in the constructor's `options` array:
+[Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] stores the parsed and processed annotations in a file on the server. This adapter can be used in production systems, but it will increase the I/O since for every request the annotations cache files will need to be read from the file system. The adapter accepts one parameter in the constructor's `$options` array:
 - `annotationsDir` - the directory to store the annotations cache
 
 ```php

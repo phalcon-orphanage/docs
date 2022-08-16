@@ -132,12 +132,12 @@ En componente [ACL](acl) se le ha cambiado el nombre a algunos métodos y compon
 The [Assets](assets) component has had changes to the interface as well as some methods were renamed. La funcionalidad sigue siendo la misma que en versiones anteriores.
 
 #### `Phalcon\Assets\Asset`
-- `getAssetKey()` now uses `sha1` to compute the key
+- `getAssetKey()` now uses `sha256` to compute the key
 - Renamed `getLocal()` to `isLocal()`
 - Renamed `setLocal()` to `setIsLocal()`
 
 #### `Phalcon\Assets\Collection`
-- The class now uses `ArrayIterator` instead of `Iterator
+- The class now uses `ArrayIterator` instead of `Iterator`
 - Renamed `getLocal()` to `isLocal()`
 - Renamed `setLocal()` to `setIsLocal()`
 - Renamed `getTargetLocal()` to `getTargetIsLocal()`
@@ -145,7 +145,7 @@ The [Assets](assets) component has had changes to the interface as well as some 
 - Removed `getPosition()`, `current()`, `key()`, `next()`, `rewind()`, `valid()`
 
 #### `Phalcon\Assets\Inline`
-- `getAssetKey()` now uses `sha1` to compute the key
+- `getAssetKey()` now uses `sha256` to compute the key
 
 #### `Phalcon\Assets\Manager`
 - `__construct()` requires a `Phalcon\Html\TagFactory` as the first parameter
@@ -621,6 +621,10 @@ The [Filter](filter) component has been moved to the `Filter` namespace.
 
 #### `Phalcon\Forms\Element\AbstractElement`
 - Added `getTagFactory()` to return the `Phalcon\Html\TagFactory` object used internally, as well as `setTagFactory(TagFactory $tagFactory): AbstractElement` to set it.
+
+#### `Phalcon\Forms\Element\Check`
+#### `Phalcon\Forms\Element\Radio`
+- The classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more](html-helper)
 
 ---
 

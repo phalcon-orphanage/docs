@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Contributing'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
@@ -8,12 +8,12 @@ keywords: 'contributing, nfr, pull request, pr, new feature request'
 
 # Συνεισφορές
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Συμβάλλοντας στο Phalcon
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
-Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
+Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub][github]. You can browse our repositories in our [organization page][phalcon-org].
 
@@ -25,6 +25,10 @@ When you create a pull request, we have a handy template to help you describe wh
 * put on hold, where the reviewer requires changes (styling, tests etc.)
 * put on hold, if discussion is necessary (community, core team etc.)
 * rejected
+
+> **NOTE**: If your pull request is a new feature, it is best to discuss with the core team first, to ensure that it will align with the evolution of the framework. 
+> 
+> {:.alert .alert-warning}
 
 > **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed 
 > 

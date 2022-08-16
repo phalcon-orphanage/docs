@@ -3,12 +3,13 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Gestor de Eventos'
+upgrade: '#events'
 keywords: 'eventos, gestor de eventos, hooks'
 ---
 
 # Gestor de Eventos
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. Estos *hooks* permiten a los desarrolladores obtener información de estado, manipular datos o cambiar el flujo de ejecución durante el proceso de un componente. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
@@ -45,9 +46,9 @@ $connection->query(
 ```
 
 ## Convención de Nombres
-Los eventos Phalcon usan espacios de nombres para evitar colisiones de nombres. Cada componente en Phalcon ocupa un espacio de nombres de eventos diferente y usted es libre de crear el suyo propio como considere oportuno. Los nombre de evento son formateados como `component:event`. For example, as [Phalcon\Db][db] occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+Los eventos Phalcon usan espacios de nombres para evitar colisiones de nombres. Each component in Phalcon occupies a different event namespace, and you are free to create your own as you see fit. Los nombre de evento son formateados como `component:event`. For example, as [Phalcon\Db][db] occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (e.g. `db` to catch all the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 ## Manager
 The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as _a handler_. Independientemente del nombre, la funcionalidad y el propósito son los mismos.
@@ -118,10 +119,15 @@ Comprueba si cierto tipo de evento tiene oyentes
 ```php
 public function isCollecting(): bool
 ```
-Comprueba si el gestor de eventos está recogiendo todas las respuestas devueltas por cada oyente registrado en un único `disparo`
+Check if the events manager is collecting all the responses returned  by every registered listener in a single `fire`
+
+```php
+public function isValidHandler(object | callable handler): bool
+```
+Check if the handler is an object or a callable
 
 ## Uso
-If you are using the [Phalcon\Di\FactoryDefault][di-factorydefaul] DI container, the [Phalcon\Events\Manager][events-manager] is already registered for you with the name `eventsManager`. This is a _global_ events manager. Sin embargo no está restringido a usar sólo éste. Siempre puede crear un gestor separado para gestionar los eventos para cualquier componente que lo requiera.
+If you are using the [Phalcon\Di\FactoryDefault][di-factorydefaul] DI container, the [Phalcon\Events\Manager][events-manager] is already registered for you with the name `eventsManager`. This is a _global_ events manager. However, you are not restricted to use only that one. Siempre puede crear un gestor separado para gestionar los eventos para cualquier componente que lo requiera.
 
 The following example shows how you can create a query logging mechanism using the _global_ events manager:
 
@@ -191,7 +197,7 @@ $connection->query(
 
 En el ejemplo anterior, estamos usando el gestor de eventos para escuchar el evento `afterQuery` producido por el servicio `db`, en este caso MySQL. Usamos el método `attach` para adjuntar nuestro evento al gestor y usar el evento `db:afterQuery`. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. Este objeto contiene información contextual sobre el evento que ha sido disparado. El objeto de conexión a la base de datos como segundo. Usando la variable de conexión imprimimos la sentencia SQL. Puede pasar un tercer parámetro con datos arbitrarios específicos del evento, o incluso un objeto *logger* en la función anónima que permita registrar tus consultas en un fichero de registro separado.
 
-> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts 
+> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component, or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts 
 > 
 > {: .alert .alert-warning }
 
@@ -282,7 +288,7 @@ $eventsManager->attach(
 );
 ```
 
-El comportamiento resultante será que si la variable de configuración `app.logLevel` es mayor que `1` (que representa que estamos en modo desarrollo), todas las consultas serán registradas junto con los parámetros actuales vinculados a cada consulta. Adicionalmente nos registraremos cada vez que tengamos una cancelación en una transacción.
+El comportamiento resultante será que si la variable de configuración `app.logLevel` es mayor que `1` (que representa que estamos en modo desarrollo), todas las consultas serán registradas junto con los parámetros actuales vinculados a cada consulta. Additionally, we will log every time we have a rollback in a transaction.
 
 Otro oyente útil es el `404`:
 
@@ -374,7 +380,8 @@ use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
- * @property Logger $logger
+ * @property ManagerInterface $eventsManager
+ * @property Logger           $logger
  */
 class NotificationsAware extends Injectable implements EventsAwareInterface
 {
@@ -540,7 +547,7 @@ $eventsManager->attach(
 En el ejemplo simple anterior, paramos todos los eventos si hoy es anterior a `2019-01-01`.
 
 ## Cancelación
-Por defecto todos los eventos son cancelables. Sin embargo, podrías querer configurar un evento particular como no cancelable, permitiendo que este evento particular se dispare en todos los oyentes disponibles que lo implementen.
+By default, all events are cancelable. However, you might want to set a particular event to not be cancelable, allowing the particular event to fire on all available listeners that implement it.
 
 ```php
 <?php
@@ -600,7 +607,7 @@ $eventsManager->attach(
 ); 
 ```
 
-> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default 
+> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` to enable them. Priorities are disabled by default 
 > 
 > {: .alert .alert-info }
 
@@ -648,7 +655,7 @@ El ejemplo anterior produce:
 ]
 ```
 
-> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them. 
+> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` to enable collecting them. 
 > 
 > {: .alert .alert-info }
 
@@ -672,7 +679,7 @@ try {
 ```
 
 ## Controladores
-Los controladores actúan como oyentes ya registrados en el gestor de eventos. Como resultado, sólo necesita crear un método con el mismo nombre que un evento registrado y se lanzará.
+Los controladores actúan como oyentes ya registrados en el gestor de eventos. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
 
 Por ejemplo, si queremos enviar un usuario a la página `/login` si no está conectado, podemos añadir el siguiente código a nuestro controlador principal:
 
@@ -714,10 +721,10 @@ class BaseController extends Controller
     }
 }
 ```
-Ejecuta el código antes del enrutador para poder determinar si el usuario está conectado o no. Si no es así, los enviamos a la página de inicio de sesión.
+Execute the code before the router, so we can determine if the user is logged in or not. Si no es así, los enviamos a la página de inicio de sesión.
 
 ## Modelos
-Similar a los Controladores, los Modelos también actúan como oyentes ya registrados en el gestor de eventos. Como resultado, sólo necesita crear un método con el mismo nombre que un evento registrado y se lanzará.
+Similar a los Controladores, los Modelos también actúan como oyentes ya registrados en el gestor de eventos. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
 
 En el siguiente ejemplo, usamos el evento `beforeCreate`, para calcular automáticamente un número de factura:
 
@@ -726,7 +733,9 @@ En el siguiente ejemplo, usamos el evento `beforeCreate`, para calcular automát
 
 namespace MyApp\Models;
 
-use Phalcon\Mvc\Model;use function str_pad;
+use Phalcon\Mvc\Model;
+
+use function str_pad;
 
 /**
  * Class Invoices
@@ -798,32 +807,23 @@ use Phalcon\Events\ManagerInterface;
 class EventsManager implements ManagerInterface
 {
     /**
-     * Attach a listener to the events manager
-     *
      * @param string          $eventType
      * @param object|callable $handler
      */
     public function attach(string $eventType, $handler);
 
     /**
-     * Detach the listener from the events manager
-     *
      * @param string          $eventType
      * @param object|callable $handler
      */
     public function detach(string $eventType, $handler);
 
     /**
-     * Removes all events from the EventsManager
-     * 
      * @param string $type
      */
     public function detachAll(string $type = null);
 
     /**
-     * Fires an event in the events manager causing the active 
-     * listeners to be notified about it
-     *
      * @param string $eventType
      * @param object $source
      * @param mixed  $data
@@ -839,8 +839,6 @@ class EventsManager implements ManagerInterface
     );
 
     /**
-     * Returns all the attached listeners of a certain type
-     *
      * @param string $type
      *
      * @return array
@@ -848,8 +846,6 @@ class EventsManager implements ManagerInterface
     public function getListeners(string $type): array;
 
     /**
-     * Check whether certain type of event has listeners
-     *
      * @param string $type
      *
      * @return bool
@@ -951,7 +947,6 @@ Los eventos disponibles en Phalcon son:
 | [Volt](volt)                   | `compileStatement`                   | Volt, [statement]                                       |
 | [Volt](volt)                   | `resolveExpression`                  | Volt, [expression]                                      |
 
-
 [db]: api/phalcon_db
 [di-factorydefaul]: api/phalcon_di#di-factorydefault
 [events-event]: api/phalcon_events#events-event
@@ -960,4 +955,3 @@ Los eventos disponibles en Phalcon son:
 [events-manager]: api/phalcon_events#events-manager
 [events-managerinterface]: api/phalcon_events#events-managerinterface
 [splpriorityqueue]: https://www.php.net/manual/en/class.splpriorityqueue.php
-

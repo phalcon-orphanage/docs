@@ -1,14 +1,14 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
-title: 'Use Case'
-keywords: 'use case, examples'
+title: 'Περιπτώσεις Χρήσης'
+keywords: 'περιπώσεις χρήσης, παραδείγματα'
 ---
 
 # Use Case
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
@@ -33,7 +33,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Groups - User Roles
 
-| Group          | Περιγραφή                                          |
+| Ομάδα          | Περιγραφή                                          |
 | -------------- | -------------------------------------------------- |
 | Guests         | Users that are not logged in, visitors to the site |
 | Customers      | Users that have purchased products                 |

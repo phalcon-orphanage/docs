@@ -9,7 +9,7 @@ keywords: 'acl, access control list, permissions'
 
 # Списки управления доступом (ACL)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests.
@@ -181,17 +181,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Add the roles
- */
 $acl->addRole('manager');
 $acl->addRole('accounting');
 $acl->addRole('guest');
 
-
-/**
- * Add the Components
- */
 
 $acl->addComponent(
     'admin',
@@ -219,9 +212,6 @@ $acl->addComponent(
     ]
 );
 
-/**
- * Now tie them all together 
- */
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
@@ -290,13 +280,12 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 $acl->addRole('accounting');
 $acl->addRole('guest');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -323,32 +312,54 @@ $acl->addComponent(
     ]
 );
 
+// #03
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
 $acl->allow('*', '*', 'view');
 
+// #04
 $acl->deny('guest', '*', 'view');
 
 // ....
 
-
-
-// true - defined explicitly
+// #05
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-// true - defined with wildcard
+// #06
 $acl->isAllowed('manager', 'session', 'login');
 
-// true - defined with wildcard
+// #07
 $acl->isAllowed('accounting', 'reports', 'view');
 
-// false - defined explicitly
+// #08
 $acl->isAllowed('guest', 'reports', 'view');
 
-// false - default access level
+// #09
 $acl->isAllowed('guest', 'reports', 'add');
 ```
+
+> **Legend**
+> 
+> 01: Add roles
+> 
+> 02: Add components
+> 
+> 03: Set up the `allow` list
+> 
+> 04: Set up the `deny` list
+> 
+> 05: `true` - defined explicitly
+> 
+> 06: `true` - defined with wildcard
+> 
+> 07: `true` - defined with wildcard
+> 
+> 08: `false` - defined explicitly
+> 
+> 09: `false` - default access level 
+> 
+> {: .alert .alert-info }
 
 ## Function Based Access
 Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
@@ -364,11 +375,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -378,7 +388,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with custom function
+// #03
 $acl->allow(
     'manager',
     'admin',
@@ -388,6 +398,16 @@ $acl->allow(
     }
 );
 ```
+
+> **Legend**
+> 
+> 01: Add roles
+> 
+> 02: Add components
+> 
+> 03: Set access level for role into components with custom function 
+> 
+> {: .alert .alert-info }
 
 Now that the callable is defined in the ACL, we will need to call the `isAllowed()` method with an array as the fourth parameter:
 
@@ -400,11 +420,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -414,7 +433,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with custom function
+// #03
 $acl->allow(
     'manager',
     'admin',
@@ -424,7 +443,7 @@ $acl->allow(
     }
 );
 
-// Returns true
+// #04
 $acl->isAllowed(
     'manager',
     'admin',
@@ -434,7 +453,7 @@ $acl->isAllowed(
     ]
 );
 
-// Returns false
+// #05
 $acl->isAllowed(
     'manager',
     'admin',
@@ -444,6 +463,20 @@ $acl->isAllowed(
     ]
 );
 ```
+
+> **Legend**
+> 
+> 01: Add roles
+> 
+> 02: Add components
+> 
+> 03: Set access level for role into components with custom function
+> 
+> 04: Returns `true`
+> 
+> 05: Returns `false` 
+> 
+> {: .alert .alert-info }
 
 > **NOTE**:The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function. 
 > 
@@ -461,11 +494,10 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-/**
- * Setup the ACL
- */
+// #01
 $acl->addRole('manager');
 
+// #02
 $acl->addComponent(
     'admin',
     [
@@ -475,7 +507,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with custom function
+// #03
 $acl->allow(
     'manager',
     'admin',
@@ -485,16 +517,30 @@ $acl->allow(
     }
 );
 
-// Returns false
+// #04
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
 $acl->setNoArgumentsDefaultAction(
     Enum::ALLOW
 );
 
-// Returns true
+// #05
 $acl->isAllowed('manager', 'admin', 'dashboard');
 ```
+
+> **Legend**
+> 
+> 01: Add roles
+> 
+> 02: Add components
+> 
+> 03: Set access level for role into components with custom function
+> 
+> 04: Returns `false`
+> 
+> 05: Returns `true` 
+> 
+> {: .alert .alert-info }
 
 ## Custom Objects
 Phalcon allows developers to define their own role and component objects. These objects must implement the supplied interfaces:
@@ -510,7 +556,7 @@ We can implement the [Phalcon\Acl\RoleAware][acl-roleaware] in our custom class 
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// #01
 class ManagerRole implements RoleAware
 {
     protected $id;
@@ -528,13 +574,21 @@ class ManagerRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // #02
     public function getRoleName()
     {
         return $this->roleName;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: Create our class which will be used as roleName
+> 
+> 02: Implemented function from RoleAware Interface 
+> 
+> {: .alert .alert-info }
 
 ### Component
 We can implement the [Phalcon\Acl\ComponentAware][acl-componentaware] in our custom class with its own logic. The example below shows a new role object called `ReportsComponent`:
@@ -544,7 +598,7 @@ We can implement the [Phalcon\Acl\ComponentAware][acl-componentaware] in our cus
 
 use Phalcon\Acl\ComponentAware;
 
-// Create our class which will be used as componentName
+// #01
 class ReportsComponent implements ComponentAware
 {
     protected $id;
@@ -570,13 +624,21 @@ class ReportsComponent implements ComponentAware
         return $this->userId;
     }
 
-    // Implemented function from ComponentAware Interface
+    // #02
     public function getComponentName()
     {
         return $this->componentName;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: Create our class which will be used as componentName
+> 
+> 02: Implemented function from ComponentAware Interface 
+> 
+> {: .alert .alert-info }
 
 ### ACL
 These objects can now be used in our ACL.
@@ -592,14 +654,10 @@ use ReportsComponent;
 
 $acl = new Memory();
 
-/**
- * Add the roles
- */
+// #01
 $acl->addRole('manager');
 
-/**
- * Add the Components
- */
+// #02
 $acl->addComponent(
     'reports',
     [
@@ -609,10 +667,7 @@ $acl->addComponent(
     ]
 );
 
-/**
- * Now tie them all together with a custom function. The ManagerRole and
- * ModelSbject parameters are necessary for the custom function to work 
- */
+// #03
 $acl->allow(
     'manager', 
     'reports', 
@@ -622,24 +677,43 @@ $acl->allow(
     }
 );
 
-// Create the custom objects
+// #04
 $levelOne = new ManagerRole(1, 'manager-1');
 $levelTwo = new ManagerRole(2, 'manager');
 $admin    = new ManagerRole(3, 'manager');
 
-// id - name - userId
+// #05
 $reports  = new ModelComponent(2, 'reports', 2);
 
-// Check whether our user objects have access 
-// Returns false
+// #06
 $acl->isAllowed($levelOne, $reports, 'list');
 
-// Returns true
+// #07
 $acl->isAllowed($levelTwo, $reports, 'list');
 
-// Returns false
+// #08
 $acl->isAllowed($admin, $reports, 'list');
 ```
+
+> **Legend**
+> 
+> 01: Add roles
+> 
+> 02: Add components
+> 
+> 03: Now tie them all together with a custom function. The `ManagerRole` and `ModelSubject` parameters are necessary for the custom function to work
+> 
+> 04: Create the custom objects
+> 
+> 05: id - name - userId
+> 
+> 06: Check whether our user objects have access. Returns `false`
+> 
+> 07: Returns `true`
+> 
+> 08: Returns `false` 
+> 
+> {: .alert .alert-info }
 
 The second call for `$levelTwo` evaluates `true` since the `getUserId()` returns `2` which in turn is evaluated in our custom function. Also note that in the custom function for `allow()` the objects are automatically bound, providing all the data necessary for the custom function to work. The custom function can accept any number of additional parameters. The order of the parameters defined in the `function()` constructor does not matter, because the objects will be automatically discovered and bound.
 
@@ -654,28 +728,32 @@ use Phalcon\Acl\Role;
 
 $acl = new Memory();
 
-/**
- * Create the roles
- */
+// #01
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
-/**
- * Add the `guest` role to the ACL 
- */
+// #02
 $acl->addRole($guest);
 
-/**
- * Add the `accounting` inheriting from `guest` 
- */
+// #03
 $acl->addRole($accounting, $guest);
 
-/**
- * Add the `manager` inheriting from `accounting` 
- */
+// #04
 $acl->addRole($manager, $accounting);
 ```
+
+> **Legend**
+> 
+> 01: Create roles
+> 
+> 02: Add the `guest` role to the ACL
+> 
+> 03: Add the `accounting` inheriting from `guest`
+> 
+> 04: Add the `manager` inheriting from `accounting` 
+> 
+> {: .alert .alert-info }
 
 Whatever access `guests` have will be propagated to `accounting` and in turn `accounting` will be propagated to `manager`. You can also pass an array of roles as the second parameter of `addRole` offering more flexibility.
 
@@ -690,27 +768,30 @@ use Phalcon\Acl\Role;
 
 $acl = new Memory();
 
-/**
- * Create the roles
- */
+// #01
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
-/**
- * Add all the roles
- */
+// #02
 $acl->addRole($manager);
 $acl->addRole($accounting);
 $acl->addRole($guest);
 
-/**
- * Add the inheritance 
- */
+// #03
 $acl->addInherit($manager, $accounting);
 $acl->addInherit($accounting, $guest);
-
 ```
+
+> **Legend**
+> 
+> 01: Create roles
+> 
+> 02: Add all the roles
+> 
+> 03: Add the inheritance 
+> 
+> {: .alert .alert-info }
 
 ## Serialization
 [Phalcon\Acl][acl-acl] can be serialized and stored in a cache system to improve efficiency. You can store the serialized object in APC, session, file system, database, Redis etc. This way you can retrieve the ACL quickly without having to read the underlying data that create the ACL nor will you have to compute the ACL in every request.
@@ -721,33 +802,50 @@ $acl->addInherit($accounting, $guest);
 use Phalcon\Acl\Adapter\Memory;
 
 $aclFile = 'app/security/acl.cache';
-// Check whether ACL data already exist
+// #01
 if (true !== is_file($aclFile)) {
 
-    // The ACL does not exist - build it
+    // #02
     $acl = new Memory();
 
-    // ... Define roles, components, access, etc
+    // #03
+    // ...
 
-    // Store serialized list into plain file
+    // #04
     file_put_contents(
         $aclFile,
         serialize($acl)
     );
 } else {
-    // Restore ACL object from serialized file
+    // #05
     $acl = unserialize(
         file_get_contents($aclFile)
     );
 }
 
-// Use ACL list as needed
+// #06
 if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
     echo 'Access granted!';
 } else {
     echo 'Access denied :(';
 }
 ```
+
+> **Legend**
+> 
+> 01: Check whether ACL data already exist
+> 
+> 02: The ACL does not exist - build it
+> 
+> 03: Define roles, components, access, etc.
+> 
+> 04: Store serialized list into a plain file
+> 
+> 05: Restore the ACL object from the serialized file
+> 
+> 06: Use the ACL list as needed 
+> 
+> {: .alert .alert-info }
 
 It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
 
@@ -770,10 +868,10 @@ use Phalcon\Events\Manager;
 
 // ...
 
-// Create an event manager
+// #01
 $eventsManager = new Manager();
 
-// Attach a listener for type 'acl'
+// #02
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -787,12 +885,24 @@ $eventsManager->attach(
 
 $acl = new Memory();
 
-// Setup the $acl
+// #03
 // ...
 
-// Bind the eventsManager to the ACL component
+// #04
 $acl->setEventsManager($eventsManager);
 ```
+
+> **Legend**
+> 
+> 01: Create an event manager
+> 
+> 02: Attach a listener for type `acl`
+> 
+> 03: Setup the `$acl`
+> 
+> 04: Bind the eventsManager to the ACL component 
+> 
+> {: .alert .alert-info }
 
 ## Exceptions
 Any exceptions thrown in the `Phalcon\Acl` namespace will be of type [Phalcon\Acl\Exception][acl-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
@@ -830,4 +940,3 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-roleaware]: api/Phalcon_Acl#acl-roleaware
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
-        

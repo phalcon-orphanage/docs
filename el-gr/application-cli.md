@@ -1,18 +1,17 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
-upgrade: '#cli'
 title: 'CLI Application'
 keywords: 'cli, command line, application, tasks'
 ---
 
 # CLI Application
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Επισκόπηση
-CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on screen) and can be run more than one at a time. Some of the common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
+CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on screen) and can be run more than one at a time. Some common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
 
 ## Δομή
 You can create a CLI application in Phalcon, using the [Phalcon\Cli\Console][cli-console] class. This class extends from the main abstract application class, and uses a directory in which the Task scripts are located. Task scripts are classes that extend [Phalcon\Cli\Task][cli-task] and contain the code that we need executed.
@@ -41,8 +40,8 @@ declare(strict_types=1);
 use Exception;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
+use Phalcon\Cli\Exception as PhalconException;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
-use Phalcon\Exception as PhalconException;
 use Phalcon\Loader\Loader;
 use Throwable;
 
@@ -63,7 +62,6 @@ $container->setShared('dispatcher', $dispatcher);
 $container->setShared('config', function () {
     return include 'app/config/config.php';
 });
-
 
 $console = new Console($container);
 
@@ -96,7 +94,7 @@ Let's look at the code above in more detail.
 
 First we need to create all the necessary services for our CLI application. We are going to create a loader to autoload our tasks, the CLI application, a dispatcher and a CLI Console application. These are the minimum amount of services that we need to instantiate to create a CLI application.
 
-**Φορτωτής**
+**Loader**
 ```php
 $loader = new Loader();
 $loader->registerNamespaces(
@@ -119,7 +117,7 @@ $container  = new CliDI();
 ```
 We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli][di-factorydefault-cli] container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di][di] and register the services you need, one after another.
 
-**Αποστολέας**
+**Dispatcher**
 ```php
 $dispatcher = new Dispatcher();
 
@@ -139,13 +137,15 @@ The above snippet is optional but will allow you to access any configuration set
 
 Make sure to update the include path to be relative to where your `cli.php` file is.
 
-**Εφαρμογή**
+**Application**
 ```php
 $console = new Console($container);
 ```
 As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console][cli-console] class. Here we instantiate it and pass in it the DI container.
 
-**Arguments** Our application needs arguments. These come in the form of :
+**Arguments**
+
+Our application needs arguments. These come in the form of :
 
 ```bash
 php ./cli.php argument1 argument2 argument3 ...
@@ -217,10 +217,17 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        // #01
+        echo '000000' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action 
+> 
+> {: .alert .alert-info }
 
 You can implement your own tasks by either extending the supplied [Phalcon\Cli\Task][cli-task] or writing your own class implementing the [Phalcon\Cli\TaskInterface][cli-taskinterface].
 
@@ -240,15 +247,25 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        // #01
+        echo '000000' . PHP_EOL;
     }
 
     public function regenerateAction(int $count = 0)
     {
-        echo 'This is the retenerate action' . PHP_EOL;
+        // #01
+        echo '111111' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action
+> 
+> 02: This is the regenerate action 
+> 
+> {: .alert .alert-info }
 
 We can then call the `main` action (default action):
 
@@ -278,7 +295,7 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo '000000' . PHP_EOL;
     }
 
     public function addAction(int $first, int $second)
@@ -287,6 +304,13 @@ class UsersTask extends Task
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action 
+> 
+> {: .alert .alert-info }
+
 
 We can then run the following command:
 
@@ -360,8 +384,10 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        # 01
+        echo '000000' . PHP_EOL;
 
+        # 02
         $this->console->handle(
             [
                 'task'   => 'main',
@@ -372,23 +398,26 @@ class UsersTask extends Task
 
     public function printAction()
     {
-        echo 'I will get printed too!' . PHP_EOL;
+        # 03
+        echo '444444' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action
+> 
+> 02: Also handle the `print` action
+> 
+> 03: Print action executed also 
+> 
+> {: .alert .alert-info }
 
 This technique allows you to run any task and any action from any other task. However, it is not recommended because it could lead to maintenance nightmares. It is better to extend [Phalcon\Cli\Task][cli-task] and implement your logic there.
 
 ## Modules
 CLI applications can also handle different modules, the same as MVC applications. You can register different modules in your CLI application, to handle different paths of your CLI application. This allows for better organization of your code and grouping of tasks.
-
-The CLI application offers the following methods:
-
-- `getDefaultModule` - `string` - Returns the default module name
-- `getModule(string $name)` - `array`/`object` - Gets the module definition registered in the application via module name
-- `getModules` - `array` - Return the modules registered in the application
-- `registerModules(array $modules, bool $merge = false)` - `AbstractApplication` - Register an array of modules present in the application
-- `setDefaultModule(string $defaultModule)` - `AbstractApplication` - Sets the module name to be used if the router doesn't return a valid module
 
 You can register a `frontend` and `backend` module for your console application as follows:
 
@@ -469,6 +498,36 @@ src/backend/Module.php
 src/frontend/Module.php
 php cli.php
 ```
+
+### Methods
+
+The CLI application offers the following methods:
+
+```php
+public function getDefaultModule(): string
+```
+Returns the default module name
+
+```php
+public function getModule(string $name): array | object
+```
+Gets the module definition registered in the application via module name
+
+```php
+public function getModules(): array
+```
+Return the modules registered in the application
+
+```php
+public function registerModules(array $modules, bool $merge = false): AbstractApplication
+```
+Register an array of modules present in the application
+
+```php
+public function setDefaultModule(string $defaultModule): AbstractApplication
+```
+Sets the module name to be used if the router does not return a valid module
+
 ## Routes
 The CLI application has its own router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
 
@@ -485,7 +544,7 @@ The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There a
 | `:params`    | Any parameters                             |
 | `:int`       | Whether this is an integer route parameter |
 
-The [Phalcon\Cli\Router][cli-router] comes with two predefined routes, so that it works right out of the box. Αυτά είναι:
+The [Phalcon\Cli\Router][cli-router] comes with two predefined routes, so that it works right out of the box. These are:
 
 - `/:task/:action`
 - `/:task/:action/:params`
@@ -509,7 +568,7 @@ CLI applications are also [events](events) aware. You can use the `setEventsMana
 
 The following events are available:
 
-| Event               | Stop | Περιγραφή                                               |
+| Γεγονός             | Stop | Περιγραφή                                               |
 | ------------------- |:----:| ------------------------------------------------------- |
 | `afterHandleTask`   | Ναι  | Called after the task is handled                        |
 | `afterStartModule`  | Ναι  | Called after processing a module (if modules are used)  |
@@ -530,4 +589,3 @@ If you use the [Phalcon\Cli\Dispatcher][cli-dispatcher] you can also take advant
 [cli-taskinterface]: api/phalcon_cli#cli-taskinterface
 [di]: api/phalcon_di#di
 [di-factorydefault-cli]: api/phalcon_di#di-factorydefault-cli
-

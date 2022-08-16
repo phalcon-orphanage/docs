@@ -8,7 +8,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode, продук
 
 # Продуктивність
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 Погано написана програма завжди матиме низьку продуктивність. Найпоширеніший спосіб для розробників підвищити продуктивність своїх продуктів:
@@ -17,7 +17,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode, продук
 > 
 > {: .alert .alert-info }
 
-Проблема наведеного вище підходу має два недоліка. На початку в більшості випадків власник понесе додаткові витрати. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
+The problem with the above approach is twofold. На початку в більшості випадків власник понесе додаткові витрати. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
 
 The problem will remain: _the poorly written application_
 
@@ -36,7 +36,7 @@ The problem will remain: _the poorly written application_
 ## Server
 [Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. Профілювання показує справжню картину того, що насправді відбувається в будь-який час у програмі, і таким чином направляйте вас до областей, де потрібна ваша увага. Профілювання має бути безперервним у виробничій програмі.
 
-Це також створює додаткові витрати, що слід врахувати. Найбільш детальне профілювання відбувається з кожним запитом, але все це залежатиме від вашого трафіку. Ми, звичайно, не хочемо збільшувати навантаження на сервер тільки тому, що ми профілюємо додаток. Типовий спосіб профілювання - це один запит на 100 або 1 на 1000. Через деякий час буде достатньо даних для того, щоб зробити висновки щодо того, де відбувається уповільнення, чому виникли піки тощо.
+Це також створює додаткові витрати, що слід врахувати. The most verbose profiling happens on every request, but it will all depend on your traffic. Ми, звичайно, не хочемо збільшувати навантаження на сервер тільки тому, що ми профілюємо додаток. Типовий спосіб профілювання - це один запит на 100 або 1 на 1000. Через деякий час буде достатньо даних для того, щоб зробити висновки щодо того, де відбувається уповільнення, чому виникли піки тощо.
 
 ### XDebug
 [XDebug][xdebug] offers a very handy profiler right out of the box. Вам потрібно лише встановити розширення та увімкнути профілювання у вашому `php.ini`:
@@ -130,7 +130,7 @@ apc.shm_size = 32M  ;default
 
 
 ## Повільні завдання
-Виходячи з потреб вашого продукту, може бути час, коли необхідно буде виконувати окремі завдання протягом тривалого часу. Прикладами таких завдань можуть бути: обробка відео, оптимізація зображень, надсилання електронних листів, генерування PDF-документів тощо. Ці завдання повинні бути виконані за допомогою фонових завдань. The usual process is:
+Based on the requirements of your application, there maybe times that you will need to perform long-running tasks. Прикладами таких завдань можуть бути: обробка відео, оптимізація зображень, надсилання електронних листів, генерування PDF-документів тощо. Ці завдання повинні бути виконані за допомогою фонових завдань. The usual process is:
 - The application initiates a task by sending a message to a queue service
 - The user sees a message that the task has been scheduled
 - In the background (or different server), worker scripts peek at the queue

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Επικύρωση'
 keywords: 'validation, validating forms, validating models, validating data'

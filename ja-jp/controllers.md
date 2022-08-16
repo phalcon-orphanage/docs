@@ -8,7 +8,7 @@ keywords: 'controllers, mvc'
 
 # コントローラ
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 概要
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.
@@ -52,7 +52,7 @@ will have:
 
 The above will call the `InvoicesController` and `listAction`. The parameters will be available through the [request](request) in the controller and action.
 
-Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Loader](autoload) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
+Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Autoload\Loader](autoload) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
 
 A sample controller is as follows:
 
@@ -330,8 +330,8 @@ use Phalcon\Flash\Direct;
 use Phalcon\Mvc\Controller;
 
 /**
- * @property Dispatcher\ $dispatcher
- * @property Direct      $flash
+ * @property Dispatcher $dispatcher
+ * @property Direct     $flash
  */
 class InvoicesController extends Controller
 {

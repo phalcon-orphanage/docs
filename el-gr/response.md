@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'HTTP Response'
 keywords: 'http, http response, response'
@@ -446,7 +446,7 @@ $response
 ;
 ```
 
-In the above example, we set where the file lives (`/app/storage/files/invoice.pdf`). The second parameter will set the name of the file (when downloaded by the browser) to `downloaded.pdf`. The third parameter instructs the component to set the relevant headers for the download to happen. Αυτά είναι:
+In the above example, we set where the file lives (`/app/storage/files/invoice.pdf`). The second parameter will set the name of the file (when downloaded by the browser) to `downloaded.pdf`. The third parameter instructs the component to set the relevant headers for the download to happen. These are:
 
 - `Content-Description: File Transfer`
 - `Content-Type: application/octet-stream"`
@@ -725,7 +725,7 @@ class PostsController extends Controller
  The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 
-| Event               | Περιγραφή                               | Can stop operation |
+| Γεγονός             | Περιγραφή                               | Can stop operation |
 | ------------------- | --------------------------------------- |:------------------:|
 | `afterSendHeaders`  | Fires after the headers have been sent  |        Όχι         |
 | `beforeSendHeaders` | Fires before the headers have been sent |        Ναι         |

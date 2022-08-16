@@ -8,12 +8,12 @@ keywords: 'contributing, nfr, pull request, pr, new feature request, 기여하�
 
 # 기여하기
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Phalcon에 기여하기
 Phalcon은 오픈소스 프로젝트이며 자원봉사자들의 노력과 기여에 주로 의존하고 있습니다. 누구든 기여하실 분들은 대환영입니다!
 
-기여 절차를 이해할 수 있도록 잠시 시간을 내어 문서를 검토하셔서 모두에게 가능한 효율적이 될수 있도록 해주세요. 다음의 가인드라인을 따라 주심으로써, 우리는 발생하는 문제들에 대한 더 빠른 해결과 더 나은 커뮤니케이션을 얻을 수 있게 되고, 다함께 프로젝트가 한발짝 더 나갈 수 있도록 할 수 있습니다!
+기여 절차를 이해할 수 있도록 잠시 시간을 내어 문서를 검토하셔서 모두에게 가능한 효율적이 될수 있도록 해주세요. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub][github]. You can browse our repositories in our [organization page][phalcon-org].
 
@@ -25,6 +25,10 @@ Pull request 를 생성하실 때, pull request의 범위를 설명하는데 도
 * put on hold, where the reviewer requires changes (styling, tests etc.)
 * put on hold, if discussion is necessary (community, core team etc.)
 * rejected
+
+> **NOTE**: If your pull request is a new feature, it is best to discuss with the core team first, to ensure that it will align with the evolution of the framework. 
+> 
+> {:.alert .alert-warning}
 
 > **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed 
 > 

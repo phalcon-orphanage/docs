@@ -1,18 +1,18 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
-title: 'New Feature Request List'
-keywords: 'new feature request list, nfr list'
+title: 'Λίστα Αιτημάτων Νέας Λειτουργικότητας'
+keywords: 'λίστα αιτημάτων νέας λειτουργικότητας, λίστα nfr'
 ---
 
-# New Feature Request List
+# Λίστα Αιτημάτων Νέας Λειτουργικότητας
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 
 
-| Votes | Περιγραφή                                                                                                                                                                                                            |
+| Ψήφοι | Περιγραφή                                                                                                                                                                                                            |
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 025   | [**ORM**: Many to Many behaviour - save related #2871](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456526)                                                                                      |
 | 020   | [**Queue**: Add redis queue adapter to replace beanstalkd #13385](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563462564)                                                                           |
@@ -109,4 +109,3 @@ keywords: 'new feature request list, nfr list'
 | 000   | [**Session**: Need the lock for redis session #13738](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464989)                                                                                       |
 | 000   | [**Validation**: Why not to use ioc/factory style for validators like filters? #13567](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464179)                                                      |
 | 000   | [**Volt Compiler**: Allow \Phalcon\Mvc\View\Engine\Volt to accept Phalcon\Mvc\View\Engine\Volt\Compiler in the constructor #2700](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456153) |
-

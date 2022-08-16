@@ -8,7 +8,7 @@ keywords: 'pruebas, test, testing, pruebas reproducibles'
 
 # Pruebas Reproducibles
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: If you have found a bug, you can open an issue in [GitHub][issues]. Acompañado por la descripción del error y todos los detalles posibles de tal manera que el equipo principal pueda reproducirlo. La mejor forma de hacerlo es creando una prueba que falle: así se demuestra el error. Si el error se encuentra en una aplicación de dominio público en un repositorio, es pertinente incluir el enlace. You can also use a [Gist][gist] to post any code you want to share with us. 
 > 

@@ -8,7 +8,7 @@ keywords: 'tests, testing, reproducible tests'
 
 # 재현가능한 테스트
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: If you have found a bug, you can open an issue in [GitHub][issues]. Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist][gist] to post any code you want to share with us. 
 > 

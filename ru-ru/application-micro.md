@@ -8,7 +8,7 @@ keywords: 'application, micro, handlers, api'
 
 # Micro Application
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
@@ -23,7 +23,7 @@ $app = new Micro();
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 
@@ -348,7 +348,7 @@ $app = new Micro();
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -398,7 +398,7 @@ You can use an anonymous function to handle the request
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -411,7 +411,7 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/invoices/view/{id}',
     function ($id) use ($app){
-        $content = "<h1>Invoice #{$id}!</h1>";
+        $content = "<h1>#{$id}!</h1>";
 
         $app->response->setContent($content);
 
@@ -428,7 +428,7 @@ You can define a function as the handler and attach it to a specific route.
 <?php
 
 function invoiceView($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
+    echo "<h1>#{$id}!</h1>";
 }
 
 $app->get(
@@ -447,7 +447,7 @@ You can also use a static method as the handler.
 class InvoicesClass
 {
     public static function view($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 }
 
@@ -467,7 +467,7 @@ You can also use a method in an object as the handler.
 class InvoicesClass
 {
     public function view($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 }
 
@@ -540,7 +540,7 @@ class InvoicesController extends Controller
 
     public function view($id)
     {
-        $content = "<h1>Invoice #{$id}!</h1>";
+        $content = "<h1>#{$id}!</h1>";
 
         $this->response->setContent($content);
 
@@ -754,80 +754,80 @@ Using this simple change in implementation, all handlers remain non instantiated
 If you are working on a large application, there is no need to mount all the collections, even if they are lazy loaded: Phalcon will use regex to match the routes. To speed up the routing process it is possible to run a _pre-filter_ like this, using the previous example:
 
 ```php
-        $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
-        $path = $uri->getPath();
-        $parts = explode("/", $path);
-        $collection = $parts[1];
+$uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
+$path = $uri->getPath();
+$parts = explode("/", $path);
+$collection = $parts[1];
 
-        switch ($collection) {
-            case "users":
-                $users = new MicroCollection();
-                $users
-                    ->setHandler(
-                        UsersController::class,
-                        true
-                    )
-                    ->setPrefix('/users')
-                    ->get(
-                        '/get/{id}', 
-                        'get'
-                    )
-                    ->get(
-                        '/add/{payload}', 
-                        'add'
-                    )
-                ;
+switch ($collection) {
+    case "users":
+        $users = new MicroCollection();
+        $users
+            ->setHandler(
+                UsersController::class,
+                true
+            )
+            ->setPrefix('/users')
+            ->get(
+                '/get/{id}', 
+                'get'
+            )
+            ->get(
+                '/add/{payload}', 
+                'add'
+            )
+        ;
 
-                $app->mount($users);
+        $app->mount($users);
 
-                break;
+        break;
 
-            case "invoices":
-                $invoices = new MicroCollection();
-                $invoices
-                    ->setHandler(
-                        InvoicesController::class,
-                        true
-                    )
-                    ->setPrefix('/invoices')
-                    ->get(
-                        '/get/{id}', 
-                        'get'
-                    )
-                    ->get(
-                        '/add/{payload}', 
-                        'add'
-                    )
-                ;
+    case "invoices":
+        $invoices = new MicroCollection();
+        $invoices
+            ->setHandler(
+                InvoicesController::class,
+                true
+            )
+            ->setPrefix('/invoices')
+            ->get(
+                '/get/{id}', 
+                'get'
+            )
+            ->get(
+                '/add/{payload}', 
+                'add'
+            )
+        ;
 
-                $app->mount($invoices);   
+        $app->mount($invoices);   
 
-                break;
+        break;
 
-            case "products": 
-                $products = new MicroCollection();
-                $products
-                    ->setHandler(
-                        ProductsController::class,
-                        true
-                    )
-                    ->setPrefix('/products')
-                    ->get(
-                        '/get/{id}', 
-                        'get'
-                    )
-                    ->get(
-                        '/add/{payload}', 
-                        'add'
-                    )
+    case "products": 
+        $products = new MicroCollection();
+        $products
+            ->setHandler(
+                ProductsController::class,
+                true
+            )
+            ->setPrefix('/products')
+            ->get(
+                '/get/{id}', 
+                'get'
+            )
+            ->get(
+                '/add/{payload}', 
+                'add'
+            )
 
-                $app->mount($products);  
+        $app->mount($products);  
 
-                break;
+        break;
 
-            default: 
-            //do nothing (or something)
-        }
+    default: 
+    // ...
+}
 ```
 In this way, Phalcon can handle tens (or hundreds) of routes without regex performance penalty: using `explode()` is faster than regex.
 
@@ -838,7 +838,7 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro][mvc-micro] applic
 
 $app->notFound(
     function () use ($app) {
-        $message = 'Nothing to see here. Move along....';
+        $message = 'XXXXXX';
         $app
             ->response
             ->setStatusCode(404, 'Not Found')
@@ -1150,7 +1150,7 @@ We have briefly seen above how parameters are defined in the routes. Parameters 
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -1163,15 +1163,15 @@ We can also enforce certain rules for each parameter by using regular expression
 $app->get(
     '/invoices/view/{id:[0-9]+}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 
 $app->get(
     '/invoices/search/year/{year:[0-9][4]}/title/{title:[a-zA-Z\-]+}',
     function ($year, $title) {
-        echo "'<h1>Title: {$title}</h1>", PHP_EOL,
-             "'<h2>Year: {$year}</h2>"
+        echo "'<h1>{$title}</h1>", PHP_EOL,
+             "'<h2>{$year}</h2>"
         ;
     }
 );
@@ -1201,7 +1201,7 @@ $app->get('/invoices/show/{id}',
 
 $app->get('/invoices/view/{id}',
     function ($id) use ($app) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -1297,7 +1297,7 @@ $app->get(
     '/',
     function () use ($app) {
         $url = sprintf(
-            '<a href="%s">Invoice</a>',
+            '<a href="%s">#</a>',
             $app
                 ->url
                 ->get(
@@ -1371,7 +1371,7 @@ $app->post(
     function () use ($app) {
         $app
             ->flash
-            ->success('What are you doing Dave?')
+            ->success('++++++')
         ;
     }
 );
@@ -1413,9 +1413,9 @@ $app->get(
 ```
 
 ## Responses
-A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
+A micro application can return many types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
-Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
+Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom-built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
 
 ### Direct
 ```php
@@ -1424,7 +1424,7 @@ Handlers may return raw responses using plain text, [Phalcon\Http\Response][http
 $app->get(
     '/invoices/view/{id}',
     function ($id) {
-        echo "<h1>Invoice #{$id}!</h1>";
+        echo "<h1>#{$id}!</h1>";
     }
 );
 ```
@@ -1739,7 +1739,7 @@ $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
             $app['flashSession']
-                ->error("The user isn not authenticated")
+                ->error("The user is not authenticated")
             ;
 
             $app['response']
@@ -1972,8 +1972,11 @@ class NotFoundMiddleware implements MiddlewareInterface
      */
     public function beforeNotFound(Event $event, Micro $application)
     {
-        $application->response->redirect('/404');
-        $application->response->send();
+        $application
+            ->response
+            ->redirect('/404')
+            ->send()
+        ;
 
         return false;
     }
@@ -2310,7 +2313,7 @@ $app->handle(
 ```
 Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
 
-Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/invoices/view/1`.
+Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/invoices/view/1`.
 
 ### Views
 [Phalcon\Mvc\Micro][mvc-micro] does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple][mvc-view-simple] component to render views.
@@ -2340,7 +2343,7 @@ $app->get(
                 [
                     'id'         => 4,
                     'customerId' => 3,
-                    'title'      => 'Invoice for ACME Inc.',
+                    'title'      => 'ACME Inc.',
                     'total'      => 100,
                 ]
             )
@@ -2378,7 +2381,7 @@ $app->get(
                 [
                     'id'         => 4,
                     'customerId' => 3,
-                    'title'      => 'Invoice for ACME Inc.',
+                    'title'      => 'ACME Inc.',
                     'total'      => 100,
                 ]
             )

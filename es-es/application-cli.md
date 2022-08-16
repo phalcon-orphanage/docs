@@ -2,17 +2,16 @@
 layout: default
 language: 'es-es'
 version: '5.0'
-upgrade: '#cli'
 title: 'Aplicación CLI'
 keywords: 'cli, línea de comandos, aplicación, tareas'
 ---
 
 # Aplicación CLI
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Resumen
-CLI significa Interfaz de Línea de Comandos (*Command Line Interface* en inglés). Las aplicaciones CLI se ejecutan desde la línea de comandos o un indicador de *shell*. Uno de los beneficios de las aplicaciones CLI es que no tienen una capa de vista (sólo potencialmente muestran la salida por pantalla) y se pueden ejecutar más de una vez al mismo tiempo. Alguno de los usos comunes son tareas de cron, scripts de manipulación, scripts de importación de datos, utilidades de comandos y más.
+CLI significa Interfaz de Línea de Comandos (*Command Line Interface* en inglés). Las aplicaciones CLI se ejecutan desde la línea de comandos o un indicador de *shell*. Uno de los beneficios de las aplicaciones CLI es que no tienen una capa de vista (sólo potencialmente muestran la salida por pantalla) y se pueden ejecutar más de una vez al mismo tiempo. Some common usages are cron job tasks, manipulation scripts, import data scripts, command utilities and more.
 
 ## Estructura
 You can create a CLI application in Phalcon, using the [Phalcon\Cli\Console][cli-console] class. Esta clase extiende desde la clase abstracta de aplicación, y usa un directorio en el que se localizan los scripts de Tareas. Task scripts are classes that extend [Phalcon\Cli\Task][cli-task] and contain the code that we need executed.
@@ -41,8 +40,8 @@ declare(strict_types=1);
 use Exception;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
+use Phalcon\Cli\Exception as PhalconException;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
-use Phalcon\Exception as PhalconException;
 use Phalcon\Loader\Loader;
 use Throwable;
 
@@ -63,7 +62,6 @@ $container->setShared('dispatcher', $dispatcher);
 $container->setShared('config', function () {
     return include 'app/config/config.php';
 });
-
 
 $console = new Console($container);
 
@@ -145,7 +143,9 @@ $console = new Console($container);
 ```
 As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console][cli-console] class. Aquí la instanciamos y pasamos al contenedor DI.
 
-**Arguments** Our application needs arguments. Estos vienen de la siguiente forma:
+**Argumentos**
+
+Our application needs arguments. Estos vienen de la siguiente forma:
 
 ```bash
 php ./cli.php argument1 argument2 argument3 ...
@@ -217,10 +217,17 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        // #01
+        echo '000000' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action 
+> 
+> {: .alert .alert-info }
 
 You can implement your own tasks by either extending the supplied [Phalcon\Cli\Task][cli-task] or writing your own class implementing the [Phalcon\Cli\TaskInterface][cli-taskinterface].
 
@@ -240,15 +247,25 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        // #01
+        echo '000000' . PHP_EOL;
     }
 
     public function regenerateAction(int $count = 0)
     {
-        echo 'This is the retenerate action' . PHP_EOL;
+        // #01
+        echo '111111' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action
+> 
+> 02: This is the regenerate action 
+> 
+> {: .alert .alert-info }
 
 Podemos llamar a la acción `main` (acción predeterminada):
 
@@ -278,7 +295,7 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo '000000' . PHP_EOL;
     }
 
     public function addAction(int $first, int $second)
@@ -287,6 +304,13 @@ class UsersTask extends Task
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action 
+> 
+> {: .alert .alert-info }
+
 
 Entonces podemos ejecutar el siguiente comando:
 
@@ -360,8 +384,10 @@ class UsersTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        # 01
+        echo '000000' . PHP_EOL;
 
+        # 02
         $this->console->handle(
             [
                 'task'   => 'main',
@@ -372,23 +398,26 @@ class UsersTask extends Task
 
     public function printAction()
     {
-        echo 'I will get printed too!' . PHP_EOL;
+        # 03
+        echo '444444' . PHP_EOL;
     }
 }
 ```
+
+> **Legend**
+> 
+> 01: This is the default task and the default action
+> 
+> 02: Also handle the `print` action
+> 
+> 03: Print action executed also 
+> 
+> {: .alert .alert-info }
 
 Esta técnica le permite ejecutar cualquier tarea y cualquier acción desde cualquier otra tarea. Sin embargo, no es recomendable porque podría provocar pesadillas de mantenimiento. It is better to extend [Phalcon\Cli\Task][cli-task] and implement your logic there.
 
 ## Módulos
 Las aplicaciones CLI también puede gestionar diferentes módulos, igual que en aplicaciones MVC. Puede registrar diferentes módulos en su aplicación CLI, para manejar diferentes rutas de su aplicación CLI. Esto permite una mejor organización de su código y la agrupación de tareas.
-
-La aplicación CLI ofrece los siguientes métodos:
-
-- `getDefaultModule` - `string` - Devuelve el nombre del módulo predeterminado
-- `getModule(string $name)` - `array`/`object` - Obtiene la definición del módulo registrado en la aplicación vía nombre de módulo
-- `getModules` - `array` - Devuelve los módulos registrados en la aplicación
-- `registerModules(array $modules, bool $merge = false)` - `AbstractApplication` - Registra un vector de módulos presente en la aplicación
-- `setDefaultModule(string $defaultModule)` - `AbstractApplication` - Establece el nombre del módulo a ser usado si el router no devuelve un módulo valido
 
 Puede registrar un módulo `frontend` y `backend` para su aplicación de consola como sigue:
 
@@ -469,6 +498,36 @@ src/backend/Module.php
 src/frontend/Module.php
 php cli.php
 ```
+
+### Métodos
+
+La aplicación CLI ofrece los siguientes métodos:
+
+```php
+public function getDefaultModule(): string
+```
+Devuelve el nombre de módulo por defecto
+
+```php
+public function getModule(string $name): array | object
+```
+Obtiene la definición de módulo registrada en la aplicación a través del nombre del módulo
+
+```php
+public function getModules(): array
+```
+Devuelve los módulos registrados en la aplicación
+
+```php
+public function registerModules(array $modules, bool $merge = false): AbstractApplication
+```
+Registra un vector de módulos presente en la aplicación
+
+```php
+public function setDefaultModule(string $defaultModule): AbstractApplication
+```
+Sets the module name to be used if the router does not return a valid module
+
 ## Rutas
 La aplicación CLI tiene su propio router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
 
@@ -530,4 +589,3 @@ If you use the [Phalcon\Cli\Dispatcher][cli-dispatcher] you can also take advant
 [cli-taskinterface]: api/phalcon_cli#cli-taskinterface
 [di]: api/phalcon_di#di
 [di-factorydefault-cli]: api/phalcon_di#di-factorydefault-cli
-

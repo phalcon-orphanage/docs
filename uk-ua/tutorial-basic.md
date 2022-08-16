@@ -204,7 +204,7 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Url;
 
-// Визначимо деякі константи абсолютних шляхів, щоб забезпечити визначення розташування ресурсів
+// Define some absolute path constants to aid in locating resources
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 

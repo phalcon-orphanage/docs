@@ -145,7 +145,7 @@
                 "url": "/api/"
             },
             {
-                "text": "Εφαρμογή",
+                "text": "Application",
                 "url": "/application"
             },
             {
@@ -187,7 +187,7 @@
                 "url": "/escaper"
             },
             {
-                "text": "Φορτωτής",
+                "text": "Loader",
                 "url": "/loader"
             },
             {
@@ -279,7 +279,7 @@
                 "url": "/tag"
             },
             {
-                "text": "Προβολή",
+                "text": "View",
                 "url": "/views"
             },
             {
@@ -305,7 +305,7 @@
                 "url": "/controllers"
             },
             {
-                "text": "Αποστολέας",
+                "text": "Dispatcher",
                 "url": "/dispatcher"
             },
             {
@@ -343,11 +343,11 @@
                 "url": "/cookies"
             },
             {
-                "text": "Αίτηση",
+                "text": "Request",
                 "url": "/request"
             },
             {
-                "text": "Ανταπόκριση",
+                "text": "Response",
                 "url": "/response"
             }
         ]

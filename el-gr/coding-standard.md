@@ -1,16 +1,16 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Πρότυπο Κωδικοποίησης'
 keywords: 'coding standard, zephir'
 ---
 
-# Phalcon Coding Standard
+# Πρότυπο Κωδικοποίησης Phalcon
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-Last update: 2019-07-04
+Τελευταία ενημέρωση: 2019-07-04
 
 Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
 

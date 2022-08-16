@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Tutorial - REST'
 keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
@@ -34,7 +34,7 @@ The API consists of the following methods:
 | `PUT`    | `/api/robots/2`            | Update robot based on primary key          |
 | `DELETE` | `/api/robots/2`            | Delete robot based on primary key          |
 
-## Εφαρμογή
+## Application
 As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) for our needs. The structure of the application is as follows:
 
 ```php
