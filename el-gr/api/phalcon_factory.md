@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Factory'
 ---
@@ -110,3 +110,4 @@ This file is part of the Phalcon Framework.
 (c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+
