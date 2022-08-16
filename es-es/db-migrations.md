@@ -62,7 +62,6 @@ return new Config([
         'migrationsTsBased'    => true, 
         'exportDataFromTables' => [
             // Tables names
-            // Attention! It will export data every new migration
         ],
     ],
 ]);
@@ -136,53 +135,53 @@ Las tablas siguiente muestran los métodos de la Clase `Migration`. Se almacenan
 
 **Ejecutándose hacia arriba**
 
-| Nombre del método | Descripción                                             |
-| ----------------- | ------------------------------------------------------- |
-| morph             | Estructura morfológica de la tabla                      |
-| afterCreateTable  | Hace algo inmediatamente después de crear la tabla      |
-| up                | Tabla creada y lista para trabajar con ella             |
-| afterUp           | Método extra para trabajar en algunos casos específicos |
+| Nombre del método  | Descripción                                             |
+| ------------------ | ------------------------------------------------------- |
+| `morph`            | Estructura morfológica de la tabla                      |
+| `afterCreateTable` | Hace algo inmediatamente después de crear la tabla      |
+| `up`               | Tabla creada y lista para trabajar con ella             |
+| `afterUp`          | Método extra para trabajar en algunos casos específicos |
 
 
 **Ejecutándose hacia abajo**
 
-| Nombre del método                   | Descripción                                                                                        |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
-| down                                | Normalmente se pone aquí eliminación de la tabla o truncamiento de datos                           |
-| afterDown                           | Método extra para trabajar después de que todo se haya limpiado                                    |
-| morph (**from previous migration**) | Como la migración ha sido movida hacia atrás, es necesario que todo se devuelva al estado anterior |
+| Nombre del método | Descripción                                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `down`            | Normalmente se pone aquí eliminación de la tabla o truncamiento de datos                                           |
+| `afterDown`       | Método extra para trabajar después de que todo se haya limpiado                                                    |
+| `morph`           | (**from previous migration**) As the migration was moved backward, there need to be all returned to previous state |
 
 ## Argumentos y opciones CLI
 
 **Argumentos**
 
-| Argumento | Descripción                             |
-| --------- | --------------------------------------- |
-| generate  | Genera una Migración                    |
-| run       | Ejecuta una Migración                   |
-| list      | Lista todas las migraciones disponibles |
+| Argumento  | Descripción                             |
+| ---------- | --------------------------------------- |
+| `generate` | Genera una Migración                    |
+| `run`      | Ejecuta una Migración                   |
+| `list`     | Lista todas las migraciones disponibles |
 
 **Opciones**
 
-| Acción                   | Descripción                                                                                                         |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| --config=s               | Fichero de configuración                                                                                            |
-| --migrations=s           | Directorio de migraciones. Use cadena separada por comas para especificar múltiples directorios                     |
-| --directory=s            | Directorio donde se creó el proyecto                                                                                |
-| --table=s                | Tabla a migrar. Nombre de la tabla o prefijo de tabla con asterisco. Por defecto: todas                             |
-| --version=s              | Versión a migrar                                                                                                    |
-| --descr=s                | Descripción de la migración (usado para migraciones basadas en marcas de tiempo)                                    |
-| --data=s                 | Exportar datos \['always' o 'oncreate'\] (Los datos se importan durante la ejecución de la migración)               |
-| --exportDataFromTables=s | Export data from specific tables, use comma separated string                                                        |
-| --force                  | Fuerza a sobreescribir migraciones existentes                                                                       |
-| --ts-based               | Versión de migraciones basadas en marcas de tiempo                                                                  |
-| --log-in-db              | Mantiene el registro de migraciones en la tabla de base de datos en lugar de en fichero                             |
-| --dry                    | Intenta la operación solicitada sin hacer cambios en el sistema (sólo generando)                                    |
-| --verbose                | Muestra información de depuración durante la operación (sólo ejecutando)                                            |
-| --no-auto-increment      | Deshabilita autoincremento (sólo generando)                                                                         |
-| --skip-ref-schema        | Omitir referencedSchema en la migración generada (sólo generando)                                                   |
-| --skip-foreign-checks    | Envuelve la consulta con `SET FOREIGN_KEY_CHECKS` antes y después de la ejecución de una consulta (sólo ejecutando) |
-| --help                   | Muestra esta ayuda                                                                                                  |
+| Acción                     | Descripción                                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `--config=s`               | Fichero de configuración                                                                                            |
+| `--migrations=s`           | Directorio de migraciones. Use cadena separada por comas para especificar múltiples directorios                     |
+| `--directory=s`            | Directorio donde se creó el proyecto                                                                                |
+| `--table=s`                | Tabla a migrar. Nombre de la tabla o prefijo de tabla con asterisco. Por defecto: todas                             |
+| `--version=s`              | Versión a migrar                                                                                                    |
+| `--descr=s`                | Descripción de la migración (usado para migraciones basadas en marcas de tiempo)                                    |
+| `--data=s`                 | Exportar datos \['always' o 'oncreate'\] (Los datos se importan durante la ejecución de la migración)               |
+| `--exportDataFromTables=s` | Export data from specific tables, use comma separated string                                                        |
+| `--force`                  | Fuerza a sobreescribir migraciones existentes                                                                       |
+| `--ts-based`               | Versión de migraciones basadas en marcas de tiempo                                                                  |
+| `--log-in-db`              | Mantiene el registro de migraciones en la tabla de base de datos en lugar de en fichero                             |
+| `--dry`                    | Intenta la operación solicitada sin hacer cambios en el sistema (sólo generando)                                    |
+| `--verbose`                | Muestra información de depuración durante la operación (sólo ejecutando)                                            |
+| `--no-auto-increment`      | Deshabilita autoincremento (sólo generando)                                                                         |
+| `--skip-ref-schema`        | Omitir referencedSchema en la migración generada (sólo generando)                                                   |
+| `--skip-foreign-checks`    | Envuelve la consulta con `SET FOREIGN_KEY_CHECKS` antes y después de la ejecución de una consulta (sólo ejecutando) |
+| `--help`                   | Muestra esta ayuda                                                                                                  |
 
 ## Migraciones basadas en marcas de tiempo
 
