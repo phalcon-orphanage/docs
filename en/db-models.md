@@ -986,7 +986,7 @@ Sets the DependencyInjection connection service name used to write data
 
 ```php
 public function skipOperation(bool $skip): void
-```php
+```
 Skips the current operation forcing a success state
 
 ```php
