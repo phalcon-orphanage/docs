@@ -8,7 +8,7 @@ keywords: 'database, migrations, schema, tables, columns, база, міграц
 
 # Міграції бази даних
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
 > 
@@ -20,8 +20,8 @@ https://github.com/phalcon/migrations
 
 ## Вимоги
 
-* PHP >= 7.2
-* Phalcon >= 4.0.5
+* PHP >= 7.5
+* Phalcon >= 5.0.0
 
 ## Встановлення за допомогою Composer
 
@@ -47,25 +47,30 @@ composer require --dev phalcon/migrations
 use Phalcon\Config;
 
 return new Config([
-    'database' => [
-        'adapter' => 'mysql',
-        'host' => '127.0.0.1',
+    'database'    => [
+        'adapter'  => 'mysql',
+        'host'     => '127.0.0.1',
         'username' => 'root',
         'password' => '',
-        'dbname' => 'db-name',
-        'charset' => 'utf8',
+        'dbname'   => 'db-name',
+        'charset'  => 'utf8',
     ],
     'application' => [
-        'logInDb' => true,
-        'migrationsDir' => 'db/migrations',
-        'migrationsTsBased' => true, // true - використовуємо TIMESTAMP як назву версії, false - використовуємо версії
+        'logInDb'              => true,
+        'migrationsDir'        => 'db/migrations',
+        // true - TIMESTAMP, false - versions
+        'migrationsTsBased'    => true, 
         'exportDataFromTables' => [
-            // Імена таблиць
-            // Увага! Це експортує дані кожної нової міграції
+            // Tables names
+            // Attention! Це експортує дані кожної нової міграції
         ],
     ],
 ]);
 ```
+
+> NOTE: If `exportDataFromTables` is set, data will be exported with every migration 
+> 
+> {: .alert .alert-warning }
 
 ### Генерування міграцій
 
@@ -168,7 +173,7 @@ $migration::run([
 | --version=s              | Версія для міграції                                                                       |
 | --descr=s                | Опис міграції (використовується для міграцій на основі позначки часу)                     |
 | --data=s                 | Експорт даних \['always' або 'oncreate'\] (Дані імпортуються під час виконання міграції)  |
-| --exportDataFromTables=s | Експорт даних з вказаних таблиць, використовуйте розділення комами.                       |
+| --exportDataFromTables=s | Export data from specific tables, use comma separated string                              |
 | --force                  | Примусово перезаписати існуючі міграції                                                   |
 | --ts-based               | Версія міграції на основі часових позначок                                                |
 | --log-in-db              | Зберігати журнал міграції у базі даних, а не у файлі                                      |
@@ -190,9 +195,11 @@ vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
 
 Створить назву теки з такими іменами
 
+```sh
 * 1582539287636860_1.0.0
 * 1682539471102635_1.0.0
 * 1782539471102635_1.0.0
+```
 
 Міграції будуть виконані від старіших до новіших.
 
