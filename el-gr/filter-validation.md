@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Επικύρωση'
 keywords: 'validation, validating forms, validating models, validating data'
@@ -2118,3 +2118,4 @@ try {
 [validation-validator-url]: api/phalcon_validation#validation-validator-url
 [validation-validatorcompositeinterface]: api/phalcon_validation#validation-validatorcompositeinterface
 [validation-validatorinterface]: api/phalcon_validation#validation-validatorinterface
+        
