@@ -249,7 +249,6 @@ class Products extends Model
 
     public function initialize()
     {
-        // To the intermediate table
         $this->hasMany(
             'prd_id',
             InvoicesProducts::class,
@@ -365,7 +364,6 @@ class Invoices extends Model
                     return [
                         'conditions' => 'cst_location = :location:',
                         'bind'       => [
-                            // Location can change between queries
                             'location' => $container->getShared('myLocationService')->myLocation,
                          ]
                     ];
@@ -985,7 +983,6 @@ class Companies extends Model
 {
     public function initialize()
     {
-        // All invoices relationship
         $this->hasMany(
             'id',
             Invoices::class,
@@ -995,7 +992,6 @@ class Companies extends Model
             ]
         );
 
-        // Paid invoices relationship
         $this->hasMany(
             'id',
             Invoices::class,
@@ -1008,7 +1004,6 @@ class Companies extends Model
             ]
         );
 
-        // Unpaid invoices relationship + bound parameters
         $this->hasMany(
             'id',
             Invoices::class,
@@ -1051,7 +1046,6 @@ $unpaidInvoices = $company->getRelated(
     ]
 );
 
-// Also ordered
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
@@ -1235,20 +1229,17 @@ Magic properties can be used to store a record and its related properties:
 ```php
 <?php
 
-// Create an artist
 $artist = new Artists();
 
 $artist->name    = 'Shinichi Osawa';
 $artist->country = 'Japan';
 
-// Create an album
 $album = new Albums();
 
 $album->name   = 'The One';
-$album->artist = $artist; // Assign the artist
+$album->artist = $artist;
 $album->year   = 2008;
 
-// Save both records
 $album->save();
 ```
 

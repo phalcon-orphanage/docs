@@ -3720,7 +3720,6 @@ class Invoices extends Model
         $flash    = $this->getDI()->getFlash();
         $messages = $this->getMessages();
 
-        // Show validation messages
         foreach ($messages as $message) {
             $flash->error($message);
         }

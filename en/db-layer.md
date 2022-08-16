@@ -588,7 +588,6 @@ public function updateAsDict(
 Updates data on a table using custom RBDM SQL syntax. Another, more convenient syntax
 
 ```php
-// Updating existing invoice
 $success = $connection->updateAsDict(
     'co_invoices',
     [
@@ -597,10 +596,10 @@ $success = $connection->updateAsDict(
     'inv_id = 1'
 )
 
-// Next SQL sentence is sent to the database system
-UPDATE `co_invoices` 
-SET    `inv_title` = 'Invoice for ACME Inc.' 
-WHERE   inv_id = 1
+// SQL
+// UPDATE `co_invoices` 
+// SET    `inv_title` = 'Invoice for ACME Inc.' 
+// WHERE   inv_id = 1
 ```
 
 ```php
@@ -1596,7 +1595,6 @@ try {
 
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
     $connection->rollback();
 }
 ```

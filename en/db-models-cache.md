@@ -149,7 +149,6 @@ Earlier we saw how [Phalcon\Mvc\Model][mvc-model] integrates with the caching co
 ```php
 <?php
 
-// Cache the resultset for only for 5 minutes
 $invoices = Invoices::find(
     [
         'cache' => [
@@ -739,7 +738,6 @@ class CustomQuery extends ModelQuery
             );
         }
 
-        // Check if the query has conditions
         if (true === isset($ir['where'])) {
             $visitor = new CustomNodeVisitor();
             $visitor->visit(

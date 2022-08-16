@@ -56,7 +56,7 @@ return new Config([
     'application' => [
         'logInDb'              => true,
         'migrationsDir'        => 'db/migrations',
-        // true - Use TIMESTAMP as version name, false - use versions
+        // true - TIMESTAMP, false - versions
         'migrationsTsBased'    => true, 
         'exportDataFromTables' => [
             // Tables names
@@ -65,6 +65,9 @@ return new Config([
     ],
 ]);
 ```
+
+> NOTE: If `exportDataFromTables` is set, data will be exported with every migration
+{: .alert .alert-warning }
 
 ### Generate migrations
 
