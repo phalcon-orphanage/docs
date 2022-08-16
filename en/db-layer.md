@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '5.0'
 title: 'Database Abstraction Layer'
+upgrade: '#db'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 ---
 # Database Abstraction Layer
@@ -63,6 +64,7 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 | Type                 | Description    |
 |----------------------|----------------|
 | `TYPE_BIGINTEGER`    | Big integer    |
+| `TYPE_BINARY`        | Binary         |
 | `TYPE_BIT`           | Bit            |
 | `TYPE_BLOB`          | Blob           |
 | `TYPE_BOOLEAN`       | Boolean        |
@@ -88,6 +90,7 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 | `TYPE_TINYBLOB`      | Tiny Blob      |
 | `TYPE_TINYINTEGER`   | Tiny Integer   |
 | `TYPE_TINYTEXT`      | Tiny Text      |
+| `TYPE_VARBINARY`     | Varbinary      |
 | `TYPE_VARCHAR`       | Varchar        |
 
 > **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
@@ -144,7 +147,7 @@ public function begin(
 Starts a transaction in the connection
 
 ```php
-public function close(): bool
+public function close(): void
 ```
 Closes active connection returning success. Phalcon automatically closes and destroys active connections
 
@@ -157,8 +160,8 @@ Commits the active transaction in the connection
 
 ```php
 public function connect(
-    array $descriptor = null
-): bool
+    array $descriptor = []
+): void
 ```
  This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo][db-adapter-pdo-abstractpdo] constructor. Call it when you need to restore a database connection
 
@@ -190,9 +193,9 @@ Creates a view
 ```php
 public function delete(
     mixed $table, 
-    mixed $whereCondition = null, 
-    mixed $placeholders = null, 
-    mixed $dataTypes = null
+    string $whereCondition = null, 
+    array $placeholders = [], 
+    array $dataTypes = []
 ): bool
 ```
 Deletes data from a table using custom RDBMS SQL syntax
@@ -283,14 +286,14 @@ Escapes a column/table/schema name.
 
 ```php
 public function escapeString(string $str): string
-```php
+```
 Escapes a value to avoid SQL injections
 
 ```php
 public function execute(
     string $sqlStatement, 
-    mixed $placeholders = null, 
-    mixed $dataTypes = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): bool
 ```
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server does not return any rows
@@ -299,7 +302,8 @@ Sends SQL statements to the database server returning the success state. Use thi
 public function fetchAll(
     string $sqlQuery, 
     int $fetchMode = 2, 
-    mixed $placeholders = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): array
 ```
 Dumps the complete result of a query into an array
@@ -331,7 +335,8 @@ print_r($invoice)
 public function fetchOne(
     string $sqlQuery, 
     int $fetchMode = 2, 
-    mixed $placeholders = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): array
 ```
 Returns the first row in a SQL query result
@@ -363,6 +368,11 @@ public function getConnectionId(): string
 Gets the active connection unique identifier
 
 ```php
+public function getDefaultValue(): RawValue
+```
+Return the default value to make the RBDM use the default value declared in the table definition
+
+```php
 public function getDescriptor(): array
 ```
 Return descriptor used to connect to the active database
@@ -383,7 +393,12 @@ public function getDefaultIdValue(): RawValue
 Return the default identity value to insert in an identity column
 
 ```php
-public function getInternalHandler(): \PDO
+public function getErrorInfo() -> array
+```
+Return the last error information
+
+```php
+public function getInternalHandler(): mixed
 ```
 Return internal PDO handler
 
@@ -465,7 +480,7 @@ Checks whether connection is under database transaction
 ```php
 public function lastInsertId(
     mixed $sequenceName = null
-)
+): string | bool
 ```
 Returns insert id for the auto_increment column inserted in the last SQL statement
 
@@ -504,8 +519,8 @@ Modifies a table column based on a definition
 ```php
 public function query(
     string $sqlStatement, 
-    mixed $placeholders = null, 
-    mixed $dataTypes = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): ResultInterface | bool
 ```
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server returns rows
@@ -544,6 +559,11 @@ public function setNestedTransactionsWithSavepoints(
 ): AdapterInterface
 ```
 Set if nested transactions should use savepoints
+
+```php
+public function supportsDefaultValue(): bool
+```
+Check whether the database system supports a default value
 
 ```php
 public function supportSequences(): bool
