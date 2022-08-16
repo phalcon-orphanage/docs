@@ -1745,7 +1745,7 @@ After creating our custom helper, we will autoload the new directory that contai
 ```php
 <?php
 
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Di\FactoryDefault();
 use Phalcon\Exception as PhalconException;

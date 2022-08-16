@@ -17,7 +17,7 @@ title: 'Phalcon\Loader'
 Este componente ayuda a cargar automáticamente las clases de tu proyecto basándose en algunas convenciones
 
 ```php
-use Phalcon\Loader;
+use Phalcon\Loader\Loader;
 
 // Creates the autoloader
 $loader = new Loader();
