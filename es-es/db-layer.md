@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Capa de Abstracción de Base de Datos'
+upgrade: '#db'
 keywords: 'db, dbal, phql, base de datos, mysql, postgresql, sqlite'
 ---
 
@@ -64,6 +65,7 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 | Tipo                 | Descripción    |
 | -------------------- | -------------- |
 | `TYPE_BIGINTEGER`    | Big integer    |
+| `TYPE_BINARY`        | Binary         |
 | `TYPE_BIT`           | Bit            |
 | `TYPE_BLOB`          | Blob           |
 | `TYPE_BOOLEAN`       | Boolean        |
@@ -89,6 +91,7 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 | `TYPE_TINYBLOB`      | Tiny Blob      |
 | `TYPE_TINYINTEGER`   | Tiny Integer   |
 | `TYPE_TINYTEXT`      | Tiny Text      |
+| `TYPE_VARBINARY`     | Varbinary      |
 | `TYPE_VARCHAR`       | Varchar        |
 
 > **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite). 
@@ -146,7 +149,7 @@ public function begin(
 Inicia una transacción en la conexión
 
 ```php
-public function close(): bool
+public function close(): void
 ```
 Cierra la conexión activa devolviendo éxito. Phalcon automáticamente cierra y destruye las conexiones activas
 
@@ -159,8 +162,8 @@ Confirma la transacción activa en la conexión
 
 ```php
 public function connect(
-    array $descriptor = null
-): bool
+    array $descriptor = []
+): void
 ```
  This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo][db-adapter-pdo-abstractpdo] constructor. Llámelo cuando necesite restaurar una conexión de base de datos
 
@@ -192,9 +195,9 @@ Crea una vista
 ```php
 public function delete(
     mixed $table, 
-    mixed $whereCondition = null, 
-    mixed $placeholders = null, 
-    mixed $dataTypes = null
+    string $whereCondition = null, 
+    array $placeholders = [], 
+    array $dataTypes = []
 ): bool
 ```
 Borra datos de una tabla usando sintaxis SQL del RBDMS personalizada
@@ -285,14 +288,14 @@ Escapa un nombre de columna/tabla/esquema.
 
 ```php
 public function escapeString(string $str): string
-```php
+```
 Escapa un valor para evitar inyecciones SQL
 
 ```php
 public function execute(
     string $sqlStatement, 
-    mixed $placeholders = null, 
-    mixed $dataTypes = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): bool
 ```
 Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxito. Use este método sólo cuando las sentencias SQL enviadas al servidor no devuelvan ninguna fila
@@ -301,7 +304,8 @@ Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxi
 public function fetchAll(
     string $sqlQuery, 
     int $fetchMode = 2, 
-    mixed $placeholders = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): array
 ```
 Vuelca el resultado completo de una consulta en un vector
@@ -333,7 +337,8 @@ print_r($invoice)
 public function fetchOne(
     string $sqlQuery, 
     int $fetchMode = 2, 
-    mixed $placeholders = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): array
 ```
 Devuelve la primera fila en un resultado de consulta SQL
@@ -365,6 +370,11 @@ public function getConnectionId(): string
 Obtiene el identificador único de conexión activo
 
 ```php
+public function getDefaultValue(): RawValue
+```
+Return the default value to make the RBDM use the default value declared in the table definition
+
+```php
 public function getDescriptor(): array
 ```
 Devuelve el descriptor usado para conectar a la base de datos activa
@@ -385,7 +395,12 @@ public function getDefaultIdValue(): RawValue
 Devuelve el valor de la identidad predeterminado para insertar en una columna de identidad
 
 ```php
-public function getInternalHandler(): \PDO
+public function getErrorInfo() -> array
+```
+Return the last error information
+
+```php
+public function getInternalHandler(): mixed
 ```
 Devuelve el manejador PDO interno
 
@@ -467,7 +482,7 @@ Comprueba si la conexión está bajo una transacción de base de datos
 ```php
 public function lastInsertId(
     mixed $sequenceName = null
-)
+): string | bool
 ```
 Devuelve el id insertado en una columna auto_increment en la última sentencia SQL
 
@@ -506,8 +521,8 @@ Modifica una columna de base de datos basada en una definición
 ```php
 public function query(
     string $sqlStatement, 
-    mixed $placeholders = null, 
-    mixed $dataTypes = null
+    array $bindParams = [], 
+    array $bindTypes = []
 ): ResultInterface | bool
 ```
 Envía sentencias SQL al servidor de base de datos devolviendo el estado de éxito. Use este método sólo cuando las sentencias SQL enviadas al servidor devuelvan filas
@@ -546,6 +561,11 @@ public function setNestedTransactionsWithSavepoints(
 ): AdapterInterface
 ```
 Establece si las transacciones anidadas deberían usar puntos de guardado
+
+```php
+public function supportsDefaultValue(): bool
+```
+Check whether the database system supports a default value
 
 ```php
 public function supportSequences(): bool
