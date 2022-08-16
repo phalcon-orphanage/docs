@@ -7,7 +7,7 @@ keywords: 'models, validation, uniqueness, inclusionin'
 ---
 # Model Validation
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules. 
@@ -167,10 +167,10 @@ class Invoices extends Model
 ## Failed Events
 Additional events are available when the data validation process finds any inconsistencies:
 
-| Operation                | Name                 | Explanation                                                            |
-| ------------------------ | -------------------- | ---------------------------------------------------------------------- |
-| Insert or Update         | `notSaved`           | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails`  | Triggered when any data manipulation operation fails                   |
+| Operation                | Name                | Explanation                                                            |
+|--------------------------|---------------------|------------------------------------------------------------------------|
+| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
 
 
 ## Custom

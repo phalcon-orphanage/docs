@@ -5,7 +5,7 @@ version: '5.0'
 ---
 # Model Relationships
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Database normalization](db-normalization) is a process where data is split into different tables and links are created between those tables, in order to increase flexibility, reduce data redundancy and improve data integrity. Relationships are defined in the `initialize` method of each model. 
@@ -68,7 +68,7 @@ hasManyToMany(
 )
 ```
 
-Relationships can be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
+Relationships can be unidirectional or bidirectional, and each can be simple (a one-to-one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
 
 ```php
 <?php
@@ -275,7 +275,7 @@ class Products extends Model
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model, and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+Many-to-many relationships require 3 models and define the attributes involved in the relationship:
 
 ```php
 <?php
@@ -481,7 +481,7 @@ foreach ($customer->invoices as $invoice) {
 }
 ```
 
-or for a many to many relationship (see models above):
+or for a many-to-many relationship (see models above):
 
 ```php
 <?php
@@ -526,7 +526,7 @@ foreach ($customer->getInvoices() as $invoice) {
 }
 ```
 
-or for a many to many relationship (see models above):
+or for a many-to-many relationship (see models above):
 
 ```php
 <?php
@@ -646,7 +646,7 @@ foreach ($products as $product) {
 The prefix `get` is used to `find()`/`findFirst()` related records.
 
 | Type             | Implicit Method | Returns                                                              |
-|------------------| ----------------|----------------------------------------------------------------------|
+|------------------|-----------------|----------------------------------------------------------------------|
 | Belongs-To       | `findFirst`     | Model instance of the related record directly                        |
 | Has-One          | `findFirst`     | Model instance of the related record directly                        |
 | Has-One-Through  | `findFirst`     | Model instance of the related record directly                        |
@@ -690,7 +690,7 @@ foreach ($customer->getRelated('invoices') as $invoice) {
 }
 ```
 
-or for a many to many relationship (see models above):
+or for a many-to-many relationship (see models above):
 
 ```php
 <?php
@@ -1290,7 +1290,7 @@ $customer->save();
 
 The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship of the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
 
-Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.  
+Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replacement. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.  
 
 Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
 
