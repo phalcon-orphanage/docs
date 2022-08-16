@@ -8,7 +8,7 @@ keywords: 'modelos, comportamientos'
 
 # Comportamientos en Modelos (Behaviors)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to re-use code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Los `Traits` requieren que use exactamente los mismos nombres de campos para que el código común funcione. Los Comportamientos son más flexibles.
@@ -223,7 +223,7 @@ public function missingMethod(
 )
 ```
 
-Este método actúa como respaldo cuando se llama un método inexistente en el modelo
+This method acts as a fallback when a missing method is called on the model
 
 ```php
 public function notify(
@@ -234,10 +234,12 @@ public function notify(
 
 Este método recibe las notificaciones del [Events Manager](events).
 
-Additionally if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
+Additionally, if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
 
-- `getOptions(string $eventName = null)` - Devuelve las opciones del comportamiento relativas a un evento
-- `mustTakeAction(string $eventName)` - `bool` - Comprueba si el comportamiento debe realizar acciones sobre un cierto evento
+| Método                                 | Descripción                                                      |
+| -------------------------------------- | ---------------------------------------------------------------- |
+| `getOptions(string $eventName = null)` | Devuelve las opciones de comportamiento relacionadas a un evento |
+| `mustTakeAction(string $eventName)`    | Comprueba si el comportamiento debe actuar en ciertos eventos    |
 
 El siguiente comportamiento es un ejemplo, implementa el comportamiento `Blameable` que ayuda a identificar el usuario que ha ejecutado operaciones sobre el modelo:
 
@@ -358,7 +360,7 @@ class Invoices extends Model
 }
 ```
 
-> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. También, si implementa un método de evento en un rasgo (ej. `beforeCreate`) no podrá tenerlo también en su modelo ya que los dos producirán un error. 
+> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also, if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error. 
 > 
 > {: .alert .alert-info }
 
