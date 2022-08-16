@@ -836,12 +836,7 @@ $result = $helper->basename($source);
 echo $result; // 'ελληνικά.txt'
 ```
 
-### `decode(
-    string $data, 
-    bool $associative = false, 
-    int $depth = 512, 
-    int $options = 0
-): string`
+### `decode(string $data, bool $associative = false, int $depth = 512, int $options = 0): string`
 Decodes a string using `json_decode` and throws an exception if the JSON data cannot be decoded
 
 ```php
@@ -956,33 +951,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Luke, I am your father!';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->countVowels($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 9
 ```
 
-### `decapitalize(
-    string $text, 
-    bool $upperRest = false, 
-    string $encoding = 'UTF-8'
-): string`
+### `decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
 Decapitalizes the first letter of the string and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 ```php
@@ -992,26 +968,11 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'BeetleJuice';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->decapitalize($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'beetleJuice'
 ```
 
 ### `decrement(string $text, string $separator = '_'): string`
@@ -1024,26 +985,11 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'file_2';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->decrement($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'file_1'
 ```
 
 ### `dirFromFile(string $file): string`
@@ -1056,26 +1002,11 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'abcdef12345.jpg';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->dirFromFile($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'ab/cd/ef/12/3/'
 ```
 
 ### `dirSeparator(string $directory): string`
@@ -1088,36 +1019,33 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = '/home/phalcon//';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->dirSeparator($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // '/home/phalcon/'
 ```
 
-### `dynamic(
-    string $text, 
-    string $leftDelimiter = "{", 
-    string $rightDelimiter = "}", 
-    string $separator = "|"
-): string`
-Generates random text in accordance with the template. The template is defined by the left and right delimiter and it can contain values separated by the separator
+### `dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string`
+Generates random text in accordance with the template. The template is defined by the left and right delimiter, and it can contain values separated by the separator
 
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = '{Hi|Hello}, my name is Bob!';
+
+$result = $helper->dynamic($source);
+
+echo $result; // 'Hi, my name is Bob!'
+
+$result = $helper->dynamic($source);
+
+echo $result; // 'Hello, my name is Bob!'
+```
 
 ### `endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
 Returns `true` if a string ends with a given string, `false` otherwise
@@ -1129,26 +1057,11 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'abcdef';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->endsWith($source, 'ef');
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
 ### `firstBetween(string $text, string $start, string $end): string`
@@ -1161,34 +1074,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'This is a [custom] string';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->firstBetween($source, '[', ']');
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'custom'
 ```
 
-### `friendly(
-    string $text, 
-    string $separator = '-', 
-    bool $lowercase = true, 
-    mixed $replace = null
-): string`
+### `friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string`
 Changes a text to a URL friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
 
 ```php
@@ -1198,32 +1091,31 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'This is a Test';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->friendly($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'this-is-a-test'
 ```
 
-`humanize(string $text): string`
+### `humanize(string $text): string`
 Changes a text with underscores or dashes to human-readable
 
-`includes(string $haystack, string $needle): bool`
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = 'kittens-are_cats';
+
+$result = $helper->friendly($source);
+
+echo $result; // 'kittens are cats'
+```
+
+### `includes(string $haystack, string $needle): bool`
 Determines whether a string includes another string or not
 
 ```php
@@ -1233,29 +1125,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Phalcon Framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->includes($source, 'Framework');
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
-`increment(string $text, string $separator = '_'): string`
+### `increment(string $text, string $separator = '_'): string`
 Adds a number to the end of a string or increments that number if it is already defined
 
 ```php
@@ -1265,37 +1142,35 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'file_1';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->increment($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'file_2'
 ```
 
-`interpolate(
-    string $message, 
-    array $context = [], 
-    string $leftToken = "%", 
-    string $rightToken = "%"
-): string`
+### `interpolate(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%"): string`
 Interpolates context values into the message placeholders. By default, the right and left tokens are `%`
 
-`isAnagram(string $first, string $second): bool`
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = '%date% (YYYY-MM-DD) %level% (0-9)';
+$data   = [
+    'date'  => '2020-09-09',
+    'level' => 'CRITICAL',
+];
+
+$result = $helper->interpolate($source, $data);
+
+echo $result; // '2020-09-09 (YYYY-MM-DD) CRITICAL (0-9)'
+```
+
+### `isAnagram(string $first, string $second): bool`
 Compares two strings and returns `true` if both strings are anagram, `false` otherwise
 
 ```php
@@ -1305,29 +1180,15 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'rail safety';
+$target = 'fairy tales';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->isAnagram($source, $target);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
-`isLower(string $text, string $encoding = 'UTF-8'): bool`
+### `isLower(string $text, string $encoding = 'UTF-8'): bool`
 Returns `true` if the given string is in lower case, `false` otherwise
 
 ```php
@@ -1337,29 +1198,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'phalcon framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->isLower($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
-`isPalindrome(string $text): bool`
+### `isPalindrome(string $text): bool`
 Returns `true` if the given string is a palindrome, `false` otherwise
 
 ```php
@@ -1369,29 +1215,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'racecar';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->isPalindrome($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
-`isUpper(string $text, string $encoding = 'UTF-8'): bool`
+### `isUpper(string $text, string $encoding = 'UTF-8'): bool`
 Returns `true` if the given string is in upper case, `false` otherwise
 
 ```php
@@ -1401,30 +1232,15 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'PHALCON FRAMEWORK';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->isUpper($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
-`kebabCase(string $text, string $delimiters = null): string`
-Converts strings to kebab-case style
+### `kebabCase(string $text, string $delimiters = null): string`
+Convert strings to kebab-case style
 
 ```php
 <?php
@@ -1433,29 +1249,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'customer_session';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->kebabCase($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'customer-session'
 ```
 
-`len(string $text, string $encoding = 'UTF-8'): int`
+### `len(string $text, string $encoding = 'UTF-8'): int`
 Calculates the length of the string using `mb_strlen`
 
 ```php
@@ -1465,29 +1266,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'abcdef';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->len($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 6
 ```
 
-`lower(string $text, string $encoding = 'UTF-8'): string`
+### `lower(string $text, string $encoding = 'UTF-8'): string`
 Converts a string to lowercase using `mbstring`
 
 ```php
@@ -1497,30 +1283,15 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Phalcon Framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->lower($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'phalcon framework'
 ```
 
-`pascalCase(string $text, string $delimiters = null): string`
-Converts strings to PascalCase style
+### `pascalCase(string $text, string $delimiters = null): string`
+Convert strings to PascalCase style
 
 ```php
 <?php
@@ -1529,29 +1300,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'customer-session';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->pascalCase($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'CustomerSession'
 ```
 
-`prefix($text, string $prefix): string`
+### `prefix($text, string $prefix): string`
 Prefixes the text with the supplied prefix
 
 ```php
@@ -1561,29 +1317,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->prefix($source, 'Phalcon');
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'PhalconFramework'
 ```
 
-`random(int $type = 0, int $length = 8): string`
+### `random(int $type = 0, int $length = 8): string`
 Generates a random string based on the given type. Type is one of:
 
 | Constant          | Description                                                                                      |
@@ -1598,33 +1339,18 @@ Generates a random string based on the given type. Type is one of:
 ```php
 <?php
 
+use Phalcon\Support\Helper\Str\Random;
 use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
-
-$result = $helper->set($source, 'Framework');
-
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $helper->random(Random::RANDOM_ALNUM); // 4
+echo $helper->random(Random::RANDOM_ALNUM); // 2
+echo $helper->random(Random::RANDOM_ALNUM); // 1
+echo $helper->random(Random::RANDOM_ALNUM); // 3
 ```
 
-`reduceSlashes(string $text): string`
+### `reduceSlashes(string $text): string`
 Reduces multiple slashes in a string to single slashes
 
 ```php
@@ -1634,32 +1360,31 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'app/controllers//IndexController';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->reduceSlashes($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'app/controllers/IndexController'
 ```
 
-`snakeCase(string $text, string $delimiters = null): string`
-Converts strings to snake_case style
+### `snakeCase(string $text, string $delimiters = null): string`
+Convert strings to snake_case style
 
-`startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+```php
+<?php
+
+use Phalcon\Support\HelperFactory;
+
+$helper = new HelperFactory();
+
+$source = 'customer-session';
+
+$result = $helper->snakeCase($source);
+
+echo $result; // 'customer_session'
+```
+
+### `startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
 Returns `true` if a string starts with a given string, `false` otherwise
 
 ```php
@@ -1669,29 +1394,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'abcdef';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->startsWith($source, 'ab');
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // true
 ```
 
-`suffix($text, string $suffix): string`
+### `suffix($text, string $suffix): string`
 Suffixes the text with the supplied suffix
 
 ```php
@@ -1701,29 +1411,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Phalcon';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->suffix($source, 'Framework');
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'PhalconFramework'
 ```
 
-`ucwords(string $text, string $encoding = 'UTF-8'): string`
+### `ucwords(string $text, string $encoding = 'UTF-8'): string`
 Capitalizes the first letter of each word
 
 ```php
@@ -1733,26 +1428,11 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'phalcon framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->ucwords($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'Phalcon Framework'
 ```
 
 `uncamelize(string $text, string $delimiters = '_'): string`
@@ -1765,30 +1445,15 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'CameLiZe';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->uncamelize($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // came-li-ze
 ```
 
-`underscore(string $text): string`
-Converts spaces in the passed text to underscores
+### `underscore(string $text): string`
+Converts spaces to underscores
 
 ```php
 <?php
@@ -1797,29 +1462,14 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Phalcon Framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->underscore($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'Phalcon_Framework'
 ```
 
-`upper(string $text, string $encoding = 'UTF-8'): string`
+### `upper(string $text, string $encoding = 'UTF-8'): string`
 Converts a string to uppercase using mbstring
 
 ```php
@@ -1829,30 +1479,11 @@ use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
 
-$source = [
-    'one' => 'Phalcon',
-];
+$source = 'Phalcon Framework';
 
-$result = $helper->set($source, 'Framework');
+$result = $helper->upper($source);
 
-var_dump($result);
-// [
-//     'one' => 'Phalcon',
-//     1     => 'Framework',
-// ]
-
-$result = $helper->set($source, 'abcde', 'suffix');
-
-var_dump($result);
-// [
-//     'one'    => 'Phalcon',
-//     1        => 'Framework',
-//     'suffix' => 'abcde',
-// ]
+echo $result; // 'PHALCON FRAMEWORK'
 ```
-
-
-
-
 
 [support-helper]: api/phalcon_support#support-helperfactory
