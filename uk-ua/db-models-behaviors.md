@@ -8,7 +8,7 @@ keywords: 'models, behaviors'
 
 # Model Behaviors
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 [Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to re-use code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
@@ -223,7 +223,7 @@ public function missingMethod(
 )
 ```
 
-This methods acts as a fallback when a missing method is called on the model
+This method acts as a fallback when a missing method is called on the model
 
 ```php
 public function notify(
@@ -234,10 +234,12 @@ public function notify(
 
 This method receives the notifications from the [Events Manager](events).
 
-Additionally if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
+Additionally, if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
 
-- `getOptions(string $eventName = null)` - Returns the behavior options related to an event
-- `mustTakeAction(string $eventName)` - `bool` - Checks whether the behavior must take action on certain event
+| Method                                 | Description                                                   |
+| -------------------------------------- | ------------------------------------------------------------- |
+| `getOptions(string $eventName = null)` | Returns the behavior options related to an event              |
+| `mustTakeAction(string $eventName)`    | Checks whether the behavior must take action on certain event |
 
 The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is performed operations on a model:
 
@@ -358,7 +360,7 @@ class Invoices extends Model
 }
 ```
 
-> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error. 
+> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also, if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error. 
 > 
 > {: .alert .alert-info }
 
