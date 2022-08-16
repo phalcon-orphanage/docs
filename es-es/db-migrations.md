@@ -8,7 +8,7 @@ keywords: 'base de datos, migraciones, esquema, tablas, columnas'
 
 # Migraciones de Bases de Datos
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
 > 
@@ -20,8 +20,8 @@ https://github.com/phalcon/migrations
 
 ## Requerimentos
 
-* PHP >= 7.2
-* Phalcon >= 4.0.5
+* PHP >= 7.5
+* Phalcon >= 5.0.0
 
 ## Instalación vía Composer
 
@@ -47,18 +47,19 @@ Después de eso puede ejecutar esas migraciones (run) en otro entorno para crear
 use Phalcon\Config;
 
 return new Config([
-    'database' => [
-        'adapter' => 'mysql',
-        'host' => '127.0.0.1',
+    'database'    => [
+        'adapter'  => 'mysql',
+        'host'     => '127.0.0.1',
         'username' => 'root',
         'password' => '',
-        'dbname' => 'db-name',
-        'charset' => 'utf8',
+        'dbname'   => 'db-name',
+        'charset'  => 'utf8',
     ],
     'application' => [
-        'logInDb' => true,
-        'migrationsDir' => 'db/migrations',
-        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        'logInDb'              => true,
+        'migrationsDir'        => 'db/migrations',
+        // true - TIMESTAMP, false - versions
+        'migrationsTsBased'    => true, 
         'exportDataFromTables' => [
             // Tables names
             // Attention! It will export data every new migration
@@ -66,6 +67,10 @@ return new Config([
     ],
 ]);
 ```
+
+> NOTE: If `exportDataFromTables` is set, data will be exported with every migration 
+> 
+> {: .alert .alert-warning }
 
 ### Generar migraciones
 
@@ -168,7 +173,7 @@ Las tablas siguiente muestran los métodos de la Clase `Migration`. Se almacenan
 | --version=s              | Versión a migrar                                                                                                    |
 | --descr=s                | Descripción de la migración (usado para migraciones basadas en marcas de tiempo)                                    |
 | --data=s                 | Exportar datos \['always' o 'oncreate'\] (Los datos se importan durante la ejecución de la migración)               |
-| --exportDataFromTables=s | Exportar datos de tablas específicas, usar cadena separadas por comas.                                              |
+| --exportDataFromTables=s | Export data from specific tables, use comma separated string                                                        |
 | --force                  | Fuerza a sobreescribir migraciones existentes                                                                       |
 | --ts-based               | Versión de migraciones basadas en marcas de tiempo                                                                  |
 | --log-in-db              | Mantiene el registro de migraciones en la tabla de base de datos en lugar de en fichero                             |
@@ -190,9 +195,11 @@ vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
 
 Producirá el nombre de carpeta con tales nombres
 
+```sh
 * 1582539287636860_1.0.0
 * 1682539471102635_1.0.0
 * 1782539471102635_1.0.0
+```
 
 Las migraciones se ejecutarán de la más antigua a la más reciente.
 
