@@ -153,17 +153,17 @@ The tables below show the Migration Class methods. They are stored by order of e
 
 ## CLI Arguments and options
 
-**Arguments**
+**Μεταβλητές**
 
-| Argument   | Περιγραφή                     |
+| Μεταβλητή  | Περιγραφή                     |
 | ---------- | ----------------------------- |
 | `generate` | Generate a Migration          |
 | `run`      | Run a Migration               |
 | `list`     | List all available migrations |
 
-**Options**
+**Επιλογές**
 
-| Action                     | Περιγραφή                                                                                |
+| Ενέργεια                   | Περιγραφή                                                                                |
 | -------------------------- | ---------------------------------------------------------------------------------------- |
 | `--config=s`               | Configuration file                                                                       |
 | `--migrations=s`           | Migrations directory. Use comma separated string to specify multiple directories         |
