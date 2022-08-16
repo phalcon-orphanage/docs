@@ -112,7 +112,10 @@ $result = $helper->upper($source);
 echo $result; // ABCDE
 ```
 
-### `blacklist(array $collection, array $blackList): array`
+### `blacklist`
+
+`blacklist(array $collection, array $blackList): array`
+
 Excludes elements of an array by the keys obtained from the elements of a blacklist
 
 ```php
@@ -160,7 +163,10 @@ var_dump($result);
 // ]
 ```
 
-### `chunk(array $collection, int $size, bool $preserveKeys = false): array`
+### `chunk`
+
+`chunk(array $collection, int $size, bool $preserveKeys = false): array`
+
 Chunks an array into smaller arrays of a specified size
 
 ```php
@@ -189,7 +195,10 @@ var_dump($result);
 // ]
 ```
 
-### `filter(array $collection, mixed $method = null): mixed`
+### `filter`
+
+`filter(array $collection, mixed $method = null): mixed`
+
 Filters a collection using array_filter and using the callable (if defined)
 
 ```php
@@ -229,7 +238,10 @@ var_dump($result);
 // ]
 ```
 
-### `first(array $collection, callable $method = null): mixed`
+### `first`
+
+`first(array $collection, callable $method = null): mixed`
+
 Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
  
 ```php
@@ -249,7 +261,10 @@ $result = $helper->first($source);
 echo $result; // 'Phalcon'
 ```
 
-### `firstKey(array $collection, callable $method = null): mixed`
+### `firstKey`
+
+`firstKey(array $collection, callable $method = null): mixed`
+
 Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
@@ -269,7 +284,10 @@ $result = $helper->firstKey($source);
 echo $result; // 'one'
 ```
 
-### `flatten(array $collection, bool $deep = false): array`
+### `flatten`
+
+`flatten(array $collection, bool $deep = false): array`
+
 Flattens an array up to the one level depth, unless `$deep` is set to `true
 
 ```php
@@ -287,7 +305,10 @@ var_dump($result);
 // [1, 2, [3], 4, 5]
 ```
 
-### `get(array $collection, mixed $index, mixed $defaultValue = null, string $cast = null): mixed`
+### `get`
+
+`get(array $collection, mixed $index, mixed $defaultValue = null, string $cast = null): mixed`
+
 Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value to a specific type using `settype` internally
 
 ```php
@@ -307,7 +328,10 @@ echo $helper->get($source, 3, 'Unknown');    // 'Unknown'
 echo $helper->get($source, 2, null, 'int');  // 1
 ```
 
-### `group(array $collection, mixed $method): array`
+### `group`
+
+`group(array $collection, mixed $method): array`
+
 Groups the elements of an array based on the passed callable
 
 ```php
@@ -356,7 +380,10 @@ $result = $helper->group($source, 'age');
 // ]
 ```
 
-### `has(array $collection, mixed $index): bool`
+### `has`
+
+`has(array $collection, mixed $index): bool`
+
 Checks an array if it has an element with a specific key and returns `true`/`false` accordingly
 
 ```php
@@ -376,7 +403,10 @@ echo $helper->get($source, 'two');     // true
 echo $helper->get($source, 'unknown'); // false
 ```
 
-### `isUnique(array $collection): bool`
+### `isUnique`
+
+`isUnique(array $collection): bool`
+
 Checks an array for duplicate values. Returns `true` if all values are unique, `false` otherwise.
 
 ```php
@@ -402,7 +432,10 @@ $source = [
 echo $helper->isUnique($source); // false
 ```
 
-### `last(array $collection, callable $method = null): mixed`
+### `last`
+
+`last(array $collection, callable $method = null): mixed`
+
 Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
@@ -422,7 +455,10 @@ $result = $helper->last($source);
 echo $result; // 'Framework'
 ```
 
-### `lastKey(array $collection, callable $method = null): mixed`
+### `lastKey`
+
+`lastKey(array $collection, callable $method = null): mixed`
+
 Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
@@ -442,7 +478,10 @@ $result = $helper->lastKey($source);
 echo $result; // 'two'
 ```
 
-### `order(array $collection, mixed $attribute, string $order = 'asc'): array`
+### `order`
+
+`order(array $collection, mixed $attribute, string $order = 'asc'): array`
+
 Sorts a collection of arrays or objects by an attribute of the object. It supports ascending/descending sorts but also flags that are identical to the ones used by `ksort` and `krsort`
 
 ```php
@@ -538,7 +577,10 @@ var_dump($result);
 // ]
 ```
 
-### `pluck(array $collection, string $element): array`
+### `pluck`
+
+`pluck(array $collection, string $element): array`
+
 Returns a subset of the collection based on the collection values
 
 ```php
@@ -575,7 +617,10 @@ var_dump($result);
 // ]
 ```
 
-### `set(array $collection, mixed $value, mixed $index = null): array`
+### `set`
+
+`set(array $collection, mixed $value, mixed $index = null): array`
+
 Sets an array element with an optional key
 
 ```php
@@ -607,7 +652,10 @@ var_dump($result);
 // ]
 ```
 
-### `sliceLeft(array $collection, int $elements = 1): array`
+### `sliceLeft`
+
+`sliceLeft(array $collection, int $elements = 1): array`
+
 Returns a new array with `n` elements removed from the left.
 
 ```php
@@ -641,7 +689,10 @@ var_dump($result);
 // ]
 ```
 
-### `sliceRight(array $collection, int $elements = 1): array`
+### `sliceRight`
+
+`sliceRight(array $collection, int $elements = 1): array`
+
 Returns a new array with `n` elements removed from the right.
 
 ```php
@@ -675,7 +726,10 @@ var_dump($result);
 // ]
 ```
 
-### `split(array $collection): array`
+### `split`
+
+`split(array $collection): array`
+
 Returns a new array with keys of the collection as one element and values as another
 
 ```php
@@ -699,7 +753,10 @@ var_dump($result);
 // ];
 ```
 
-### `toObject(array $collection): object`
+### `toObject`
+
+`toObject(array $collection): object`
+
 Returns the passed array as an object
 
 ```php
@@ -725,7 +782,10 @@ var_dump($result);
 // }
 ```
 
-### `validateAll(array $collection, callable $method): bool`
+### `validateAll`
+
+`validateAll(array $collection, callable $method): bool`
+
 Returns `true` if the provided function returns `true` for all elements of the collection, `false` otherwise.
 
 ```php
@@ -747,7 +807,10 @@ $result = $helper->validateAll(
 echo $result; // true        
 ```
 
-### `validateAny(array $collection, callable $method): bool`
+### `validateAny`
+
+`validateAny(array $collection, callable $method): bool`
+
 Returns `true` if the provided function returns `true` for at least one  element of the collection, `false` otherwise.
 
 ```php
@@ -769,7 +832,10 @@ $result = $helper->validateAny(
 echo $result; // true
 ```
 
-### `whitelist(array $collection, array $whiteList): array`
+### `whitelist`
+
+`whitelist(array $collection, array $whiteList): array`
+
 Includes elements of an array by the keys obtained from the elements of a whitelist
 
 ```php
@@ -813,7 +879,10 @@ var_dump($result);
 // ];
 ```
 
-### `basename(string $uri, string $suffix = null): string`
+### `basename`
+
+`basename(string $uri, string $suffix = null): string`
+
 Gets the filename from a given path, Same as PHP's `basename()` but has non-ASCII support. PHP's `basename()` does not properly support streams or filenames beginning with a non-US-ASCII character.
 
 ```php
@@ -836,7 +905,10 @@ $result = $helper->basename($source);
 echo $result; // 'ελληνικά.txt'
 ```
 
-### `decode(string $data, bool $associative = false, int $depth = 512, int $options = 0): string`
+### `decode`
+
+`decode(string $data, bool $associative = false, int $depth = 512, int $options = 0): string`
+
 Decodes a string using `json_decode` and throws an exception if the JSON data cannot be decoded
 
 ```php
@@ -857,7 +929,10 @@ var_dump($result);
 // ];
 ```
 
-### `encode($data, int $options = 0, int $depth = 512): string`
+### `encode`
+
+`encode($data, int $options = 0, int $depth = 512): string`
+
 Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
 
 The following options are used if none specified for `json_encode`
@@ -886,7 +961,10 @@ $result = $helper->encode($source);
 echo $result; // '{"one":"two","0":"three"}'
 ```
 
-### `isBetween(int $value, int $start, int $end): bool`
+### `isBetween`
+
+`isBetween(int $value, int $start, int $end): bool`
+
 Checks if a number is within a range
 
 ```php
@@ -901,7 +979,10 @@ $result = $helper->isBetween(5, 1, 10);
 echo $result; // true
 ```
 
-### `camelize(string $text, string $delimiters = null, bool $lowerFirst = false): string`
+### `camelize`
+
+`camelize(string $text, string $delimiters = null, bool $lowerFirst = false): string`
+
 Convert strings to upperCamelCase or lowerCamelCase
 
 ```php
@@ -918,7 +999,10 @@ $result = $helper->camelize($source);
 echo $result; // CameLiZe
 ```
 
-### `concat(string $delimiter, string $first, string $second, string ...$arguments): string`
+### `concat`
+
+`concat(string $delimiter, string $first, string $second, string ...$arguments): string`
+
 Concatenate strings using the separator, only once, without duplication
 
 ```php
@@ -941,7 +1025,10 @@ $result = $helper->concat($source);
 echo $result; // '@test.test2.test.34'
 ```
 
-### `countVowels(string $text): int`
+### `countVowels`
+
+`countVowels(string $text): int`
+
 Returns number of vowels in provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string
 
 ```php
@@ -958,7 +1045,10 @@ $result = $helper->countVowels($source);
 echo $result; // 9
 ```
 
-### `decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
+### `decapitalize`
+
+`decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
+
 Decapitalizes the first letter of the string and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 ```php
@@ -975,7 +1065,10 @@ $result = $helper->decapitalize($source);
 echo $result; // 'beetleJuice'
 ```
 
-### `decrement(string $text, string $separator = '_'): string`
+### `decrement`
+
+`decrement(string $text, string $separator = '_'): string`
+
 Removes a number from the end of a string or decrements that number if it is already defined
 
 ```php
@@ -992,7 +1085,10 @@ $result = $helper->decrement($source);
 echo $result; // 'file_1'
 ```
 
-### `dirFromFile(string $file): string`
+### `dirFromFile`
+
+`dirFromFile(string $file): string`
+
 Accepts a file name (without extension) and returns a calculated directory structure with the filename in the end
 
 ```php
@@ -1009,7 +1105,10 @@ $result = $helper->dirFromFile($source);
 echo $result; // 'ab/cd/ef/12/3/'
 ```
 
-### `dirSeparator(string $directory): string`
+### `dirSeparator`
+
+`dirSeparator(string $directory): string`
+
 Accepts a directory name and ensures that it ends with `DIRECTORY_SEPARATOR`
 
 ```php
@@ -1026,7 +1125,10 @@ $result = $helper->dirSeparator($source);
 echo $result; // '/home/phalcon/'
 ```
 
-### `dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string`
+### `dynamic`
+
+`dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string`
+
 Generates random text in accordance with the template. The template is defined by the left and right delimiter, and it can contain values separated by the separator
 
 ```php
@@ -1047,7 +1149,10 @@ $result = $helper->dynamic($source);
 echo $result; // 'Hello, my name is Bob!'
 ```
 
-### `endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+### `endsWith`
+
+`endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+
 Returns `true` if a string ends with a given string, `false` otherwise
 
 ```php
@@ -1064,7 +1169,10 @@ $result = $helper->endsWith($source, 'ef');
 echo $result; // true
 ```
 
-### `firstBetween(string $text, string $start, string $end): string`
+### `firstBetween`
+
+`firstBetween(string $text, string $start, string $end): string`
+
 Returns the first string there is between the strings from the parameter start and end.
 
 ```php
@@ -1081,7 +1189,10 @@ $result = $helper->firstBetween($source, '[', ']');
 echo $result; // 'custom'
 ```
 
-### `friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string`
+### `friendly`
+
+`friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string`
+
 Changes a text to a URL friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
 
 ```php
@@ -1098,7 +1209,10 @@ $result = $helper->friendly($source);
 echo $result; // 'this-is-a-test'
 ```
 
-### `humanize(string $text): string`
+### `humanize`
+
+`humanize(string $text): string`
+
 Changes a text with underscores or dashes to human-readable
 
 ```php
@@ -1115,7 +1229,10 @@ $result = $helper->friendly($source);
 echo $result; // 'kittens are cats'
 ```
 
-### `includes(string $haystack, string $needle): bool`
+### `includes`
+
+`includes(string $haystack, string $needle): bool`
+
 Determines whether a string includes another string or not
 
 ```php
@@ -1132,7 +1249,10 @@ $result = $helper->includes($source, 'Framework');
 echo $result; // true
 ```
 
-### `increment(string $text, string $separator = '_'): string`
+### `increment`
+
+`increment(string $text, string $separator = '_'): string`
+
 Adds a number to the end of a string or increments that number if it is already defined
 
 ```php
@@ -1149,7 +1269,10 @@ $result = $helper->increment($source);
 echo $result; // 'file_2'
 ```
 
-### `interpolate(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%"): string`
+### `interpolate`
+
+`interpolate(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%"): string`
+
 Interpolates context values into the message placeholders. By default, the right and left tokens are `%`
 
 ```php
@@ -1170,7 +1293,10 @@ $result = $helper->interpolate($source, $data);
 echo $result; // '2020-09-09 (YYYY-MM-DD) CRITICAL (0-9)'
 ```
 
-### `isAnagram(string $first, string $second): bool`
+### `isAnagram`
+
+`isAnagram(string $first, string $second): bool`
+
 Compares two strings and returns `true` if both strings are anagram, `false` otherwise
 
 ```php
@@ -1188,7 +1314,10 @@ $result = $helper->isAnagram($source, $target);
 echo $result; // true
 ```
 
-### `isLower(string $text, string $encoding = 'UTF-8'): bool`
+### `isLower`
+
+`isLower(string $text, string $encoding = 'UTF-8'): bool`
+
 Returns `true` if the given string is in lower case, `false` otherwise
 
 ```php
@@ -1205,7 +1334,10 @@ $result = $helper->isLower($source);
 echo $result; // true
 ```
 
-### `isPalindrome(string $text): bool`
+### `isPalindrome`
+
+`isPalindrome(string $text): bool`
+
 Returns `true` if the given string is a palindrome, `false` otherwise
 
 ```php
@@ -1222,7 +1354,10 @@ $result = $helper->isPalindrome($source);
 echo $result; // true
 ```
 
-### `isUpper(string $text, string $encoding = 'UTF-8'): bool`
+### `isUpper`
+
+`isUpper(string $text, string $encoding = 'UTF-8'): bool`
+
 Returns `true` if the given string is in upper case, `false` otherwise
 
 ```php
@@ -1239,7 +1374,10 @@ $result = $helper->isUpper($source);
 echo $result; // true
 ```
 
-### `kebabCase(string $text, string $delimiters = null): string`
+### `kebabCase`
+
+`kebabCase(string $text, string $delimiters = null): string`
+
 Convert strings to kebab-case style
 
 ```php
@@ -1256,7 +1394,10 @@ $result = $helper->kebabCase($source);
 echo $result; // 'customer-session'
 ```
 
-### `len(string $text, string $encoding = 'UTF-8'): int`
+### `len`
+
+`len(string $text, string $encoding = 'UTF-8'): int`
+
 Calculates the length of the string using `mb_strlen`
 
 ```php
@@ -1273,7 +1414,10 @@ $result = $helper->len($source);
 echo $result; // 6
 ```
 
-### `lower(string $text, string $encoding = 'UTF-8'): string`
+### `lower`
+
+`lower(string $text, string $encoding = 'UTF-8'): string`
+
 Converts a string to lowercase using `mbstring`
 
 ```php
@@ -1290,7 +1434,10 @@ $result = $helper->lower($source);
 echo $result; // 'phalcon framework'
 ```
 
-### `pascalCase(string $text, string $delimiters = null): string`
+### `pascalCase`
+
+`pascalCase(string $text, string $delimiters = null): string`
+
 Convert strings to PascalCase style
 
 ```php
@@ -1307,7 +1454,10 @@ $result = $helper->pascalCase($source);
 echo $result; // 'CustomerSession'
 ```
 
-### `prefix($text, string $prefix): string`
+### `prefix`
+
+`prefix($text, string $prefix): string`
+
 Prefixes the text with the supplied prefix
 
 ```php
@@ -1324,7 +1474,10 @@ $result = $helper->prefix($source, 'Phalcon');
 echo $result; // 'PhalconFramework'
 ```
 
-### `random(int $type = 0, int $length = 8): string`
+### `random`
+
+`random(int $type = 0, int $length = 8): string`
+
 Generates a random string based on the given type. Type is one of:
 
 | Constant          | Description                                                                                      |
@@ -1350,7 +1503,10 @@ echo $helper->random(Random::RANDOM_ALNUM); // 1
 echo $helper->random(Random::RANDOM_ALNUM); // 3
 ```
 
-### `reduceSlashes(string $text): string`
+### `reduceSlashes`
+
+`reduceSlashes(string $text): string`
+
 Reduces multiple slashes in a string to single slashes
 
 ```php
@@ -1367,7 +1523,10 @@ $result = $helper->reduceSlashes($source);
 echo $result; // 'app/controllers/IndexController'
 ```
 
-### `snakeCase(string $text, string $delimiters = null): string`
+### `snakeCase`
+
+`snakeCase(string $text, string $delimiters = null): string`
+
 Convert strings to snake_case style
 
 ```php
@@ -1384,7 +1543,10 @@ $result = $helper->snakeCase($source);
 echo $result; // 'customer_session'
 ```
 
-### `startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+### `startsWith`
+
+`startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
+
 Returns `true` if a string starts with a given string, `false` otherwise
 
 ```php
@@ -1401,7 +1563,10 @@ $result = $helper->startsWith($source, 'ab');
 echo $result; // true
 ```
 
-### `suffix($text, string $suffix): string`
+### `suffix`
+
+`suffix($text, string $suffix): string`
+
 Suffixes the text with the supplied suffix
 
 ```php
@@ -1418,7 +1583,10 @@ $result = $helper->suffix($source, 'Framework');
 echo $result; // 'PhalconFramework'
 ```
 
-### `ucwords(string $text, string $encoding = 'UTF-8'): string`
+### `ucwords`
+
+`ucwords(string $text, string $encoding = 'UTF-8'): string`
+
 Capitalizes the first letter of each word
 
 ```php
@@ -1435,7 +1603,10 @@ $result = $helper->ucwords($source);
 echo $result; // 'Phalcon Framework'
 ```
 
+### `uncamelize`
+
 `uncamelize(string $text, string $delimiters = '_'): string`
+
 Converts strings to non camelized style
 
 ```php
@@ -1452,7 +1623,10 @@ $result = $helper->uncamelize($source);
 echo $result; // came-li-ze
 ```
 
-### `underscore(string $text): string`
+### `underscore`
+
+`underscore(string $text): string`
+
 Converts spaces to underscores
 
 ```php
@@ -1469,8 +1643,11 @@ $result = $helper->underscore($source);
 echo $result; // 'Phalcon_Framework'
 ```
 
-### `upper(string $text, string $encoding = 'UTF-8'): string`
-Converts a string to uppercase using mbstring
+### `upper`
+
+`upper(string $text, string $encoding = 'UTF-8'): string`
+
+Converts a string to uppercase using `mbstring`
 
 ```php
 <?php
