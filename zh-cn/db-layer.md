@@ -395,7 +395,7 @@ public function getDefaultIdValue(): RawValue
 Return the default identity value to insert in an identity column
 
 ```php
-public function getErrorInfo() -> array
+public function getErrorInfo(): array
 ```
 Return the last error information
 
