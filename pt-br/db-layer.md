@@ -8,7 +8,7 @@ keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 
 # Database Abstraction Layer
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
 The components under the `Phalcon\Db` namespace are the ones responsible for powering the  [Phalcon\Mvc\Model][mvc-model] class - the `Model` in MVC for the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
@@ -49,43 +49,47 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 
 **Bind Types**
 
-- `BIND_PARAM_BLOB` - Blob
-- `BIND_PARAM_BOOL` - Bool
-- `BIND_PARAM_DECIMAL` - Decimal
-- `BIND_PARAM_INT` - Integer
-- `BIND_PARAM_NULL` - Null
-- `BIND_PARAM_STR` - String
-- `BIND_SKIP` - Skip binding
+| Type                 | Description  |
+| -------------------- | ------------ |
+| `BIND_PARAM_BLOB`    | Blob         |
+| `BIND_PARAM_BOOL`    | Bool         |
+| `BIND_PARAM_DECIMAL` | Decimal      |
+| `BIND_PARAM_INT`     | Integer      |
+| `BIND_PARAM_NULL`    | Null         |
+| `BIND_PARAM_STR`     | String       |
+| `BIND_SKIP`          | Skip binding |
 
 **Column Types**
 
-- `TYPE_BIGINTEGER` - Big integer
-- `TYPE_BIT` - Bit
-- `TYPE_BLOB` - Blob
-- `TYPE_BOOLEAN` - Boolean
-- `TYPE_CHAR` - Char
-- `TYPE_DATE` - Date
-- `TYPE_DATETIME` - Datetime
-- `TYPE_DECIMAL` - Decimal
-- `TYPE_DOUBLE` - Double
-- `TYPE_ENUM` - Enum
-- `TYPE_FLOAT` - Float
-- `TYPE_INTEGER` - Integer
-- `TYPE_JSON` - JSON
-- `TYPE_JSONB` - JSONB
-- `TYPE_LONGBLOB` - Long Blob
-- `TYPE_LONGTEXT` - Long Text
-- `TYPE_MEDIUMBLOB` - Medium Blob
-- `TYPE_MEDIUMINTEGER` - Medium Integer
-- `TYPE_MEDIUMTEXT` - Medium Text
-- `TYPE_SMALLINTEGER` - Small Integer
-- `TYPE_TEXT` - Text
-- `TYPE_TIME` - Time
-- `TYPE_TIMESTAMP` - Timestamp
-- `TYPE_TINYBLOB` - Tiny Blob
-- `TYPE_TINYINTEGER` - Tiny Integer
-- `TYPE_TINYTEXT` - Tiny Text
-- `TYPE_VARCHAR` - Varchar
+| Type                 | Description    |
+| -------------------- | -------------- |
+| `TYPE_BIGINTEGER`    | Big integer    |
+| `TYPE_BIT`           | Bit            |
+| `TYPE_BLOB`          | Blob           |
+| `TYPE_BOOLEAN`       | Boolean        |
+| `TYPE_CHAR`          | Char           |
+| `TYPE_DATE`          | Date           |
+| `TYPE_DATETIME`      | Datetime       |
+| `TYPE_DECIMAL`       | Decimal        |
+| `TYPE_DOUBLE`        | Double         |
+| `TYPE_ENUM`          | Enum           |
+| `TYPE_FLOAT`         | Float          |
+| `TYPE_INTEGER`       | Integer        |
+| `TYPE_JSON`          | JSON           |
+| `TYPE_JSONB`         | JSONB          |
+| `TYPE_LONGBLOB`      | Long Blob      |
+| `TYPE_LONGTEXT`      | Long Text      |
+| `TYPE_MEDIUMBLOB`    | Medium Blob    |
+| `TYPE_MEDIUMINTEGER` | Medium Integer |
+| `TYPE_MEDIUMTEXT`    | Medium Text    |
+| `TYPE_SMALLINTEGER`  | Small Integer  |
+| `TYPE_TEXT`          | Text           |
+| `TYPE_TIME`          | Time           |
+| `TYPE_TIMESTAMP`     | Timestamp      |
+| `TYPE_TINYBLOB`      | Tiny Blob      |
+| `TYPE_TINYINTEGER`   | Tiny Integer   |
+| `TYPE_TINYTEXT`      | Tiny Text      |
+| `TYPE_VARCHAR`       | Varchar        |
 
 > **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite). 
 > 
@@ -167,7 +171,12 @@ public function createSavepoint(
 ```
 Creates a new savepoint
 
-public function createTable( string $tableName, string $schemaName, array $definition ): bool
+```php
+public function createTable(
+    string $tableName, 
+    string $schemaName, 
+    array $definition
+): bool
 ```
 Creates a table
 
@@ -430,7 +439,6 @@ public function insertAsDict(
 Inserts data into a table using custom RBDM SQL syntax
 
 ```php
-// Inserting a new invoice
 $success = $connection->insertAsDict(
     'co_invoices',
     [
@@ -439,11 +447,11 @@ $success = $connection->insertAsDict(
     ]
 )
 
-// Next SQL sentence is sent to the database system
-INSERT INTO `co_invoices` 
-    ( `inv_cst_id`, `inv_title` ) 
-VALUES 
-    ( 1, 'Invoice for ACME Inc.' )
+// SQL
+// INSERT INTO `co_invoices` 
+//     ( `inv_cst_id`, `inv_title` ) 
+// VALUES 
+//     ( 1, 'Invoice for ACME Inc.' )
 ```
 
 ```php
@@ -550,7 +558,7 @@ public function tableExists(
     string $schemaName = null
 ): bool
 ```
-Generates SQL checking for the existence of a schema.table
+Generates SQL checking for the existence of a `schema.table`
 
 ```php
 public function tableOptions(
@@ -582,7 +590,6 @@ public function updateAsDict(
 Updates data on a table using custom RBDM SQL syntax. Another, more convenient syntax
 
 ```php
-// Updating existing invoice
 $success = $connection->updateAsDict(
     'co_invoices',
     [
@@ -591,10 +598,10 @@ $success = $connection->updateAsDict(
     'inv_id = 1'
 )
 
-// Next SQL sentence is sent to the database system
-UPDATE `co_invoices` 
-SET    `inv_title` = 'Invoice for ACME Inc.' 
-WHERE   inv_id = 1
+// SQL
+// UPDATE `co_invoices` 
+// SET    `inv_title` = 'Invoice for ACME Inc.' 
+// WHERE   inv_id = 1
 ```
 
 ```php
@@ -611,7 +618,7 @@ public function viewExists(
 Generates SQL checking for the existence of a schema view
 
 ### Custom
-The [Phalcon\Db\AdapterInterface][db-adapter-adapterinterface] interface must be implemented in order to create your own database adapters or extend the existing ones. Additionally you can extend the [Phalcon\Db\AbstractAdapter][db-adapter-abstractadapter] that already has some implementation for your custom adapter.
+The [Phalcon\Db\AdapterInterface][db-adapter-adapterinterface] interface must be implemented in order to create your own database adapters or extend the existing ones. Additionally, you can extend the [Phalcon\Db\AbstractAdapter][db-adapter-abstractadapter] that already has some implementation for your custom adapter.
 
 ### Escaping
 Escaping identifiers is enabled by default. However, if you need to disable this feature, you can do so using the `setup()` method:
@@ -631,9 +638,12 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory][db-adapter-pdofactory] class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The reserved names are:
-- `mysql` - [Phalcon\Db\Adapter\Pdo\Mysql][db-adapter-pdo-mysql]
-- `postgresql` - [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql]
-- `sqlite` - [Phalcon\Db\Adapter\Pdo\Sqlite][db-adapter-pdo-sqlite]
+
+| Name         | Adapter                                                            |
+| ------------ | ------------------------------------------------------------------ |
+| `mysql`      | [Phalcon\Db\Adapter\Pdo\Mysql][db-adapter-pdo-mysql]           |
+| `postgresql` | [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql] |
+| `sqlite`     | [Phalcon\Db\Adapter\Pdo\Sqlite][db-adapter-pdo-sqlite]         |
 
 The example below shows how you can create a MySQL adapter with the `new` keyword or the factory:
 
@@ -1116,7 +1126,7 @@ foreach ($invoices as $invoice) {
 $invoice = $connection->fetchOne($sql);
 ```
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+By default, these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
 
 | Constant                         | Description                                               |
 | -------------------------------- | --------------------------------------------------------- |
@@ -1176,7 +1186,7 @@ echo $result->numRows();
 ```
 
 ### Binding
-Bound parameters are also supported. Although there is a minimal performance impact by using bound parameters, you are highly encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported.
+Bound parameters are also supported. Although there is a minimal performance impact by using bound parameters, you are highly encouraged to use this methodology to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported.
 
 ```php
 <?php
@@ -1225,7 +1235,7 @@ $success = $connection->query(
 ```
 Binding with named placeholders
 
-When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter, data are automatically escaped using [PDO Quote][pdo_quote]. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter, data are automatically escaped using [PDO Quote][pdo_quote]. This function takes into account the connection charset, therefore it is recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
 Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
@@ -1436,7 +1446,7 @@ The following types are available:
 | array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
 ### Cast
-By default, bound parameters are not casted in the PHP userland to the specified bind types. This option allows you to make Phalcon cast values before binding them with PDO. A common scenario is when passing a string to a `LIMIT`/`OFFSET` placeholder:
+By default, bound parameters are not cast in the PHP userland to the specified bind types. This option allows you to make Phalcon cast values before binding them with PDO. A common scenario is when passing a string to a `LIMIT`/`OFFSET` placeholder:
 
 ```php
 <?php
@@ -1494,7 +1504,7 @@ $invoices = $modelsManager->executeQuery(
 );
 ```
 
-However this solution requires that the developer pays special attention about how bound parameters are passed and their types. To make this task easier and avoid unexpected exceptions you can instruct Phalcon to do this casting for you:
+However, this solution requires that the developer pays special attention about how bound parameters are passed and their types. To make this task easier and avoid unexpected exceptions you can instruct Phalcon to do this casting for you:
 
 ```php
 <?php
@@ -1548,7 +1558,7 @@ if (11 === $invoice->inv_id) {
 > {: .alert .alert-info }
 
 ## Transações
-Working with transactions is supported the same way as with with PDO. Using transactions increases performance in most database systems and also ensures data integrity:
+Working with transactions is supported the same way as with PDO. Using transactions increases performance in most database systems and also ensures data integrity:
 
 ```php
 <?php
@@ -1591,7 +1601,6 @@ try {
 
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
     $connection->rollback();
 }
 ```
@@ -1657,7 +1666,7 @@ $manager->attach(
 ```
 
 ## Profiling
-The adapter includes the [Phalcon\Db\Profiler][db-profiler] component, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+The adapter includes the [Phalcon\Db\Profiler][db-profiler] component, that is used to analyze the performance of database operations to diagnose performance problems and discover bottlenecks.
 
 ```php
 <?php
@@ -1817,9 +1826,9 @@ The `Phalcon\Db` adapters also provide methods to retrieve detailed information 
 ```php
 <?php
 
-$tables = $connection->listTables('gonano');
+$tables = $connection->listTables('phalcon_db');
 ```
-Get tables on the `gonano` database
+Get tables on the `phalcon_db` database
 
 ```php
 <?php
@@ -1873,9 +1882,9 @@ Methods to get information about views are also implemented for every supported 
 ```php
 <?php
 
-$tables = $connection->listViews('gonano');
+$tables = $connection->listViews('phalcon_db');
 ```
-Get views on the `gonano` database
+Get views on the `phalcon_db` database
 
 ```php
 <?php
@@ -2010,7 +2019,7 @@ $connection->dropColumn(
 ```
 
 ### Drop
-To drop an existing table from the current database, use the `dropTable` method. To drop an table from a custom database, you can use the second parameter to set the database name.
+To drop an existing table from the current database, use the `dropTable` method. To drop a table from a custom database, you can use the second parameter to set the database name.
 
 ```php
 <?php
@@ -2022,9 +2031,9 @@ Drop the table `co_invoices` from active database
 ```php
 <?php
 
-$connection->dropTable('co_invoices', 'gonano');
+$connection->dropTable('co_invoices', 'phalcon_db');
 ```
-Drop the table `co_invoices` from the database `gonano`
+Drop the table `co_invoices` from the database `phalcon_db`
 
 [pdo_quote]: https://www.php.net/manual/en/pdo.quote.php
 [nested_transactions]: https://en.wikipedia.org/wiki/Nested_transaction
