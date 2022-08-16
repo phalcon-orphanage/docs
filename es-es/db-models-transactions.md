@@ -8,7 +8,7 @@ keywords: 'modelos, transacciones'
 
 # Transacciones en modelos
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Cuando un proceso ejecuta múltiples operaciones de bases de datos, es importante realizar todas esas operaciones como una sola unidad de trabajo. De esta forma, si una de las operaciones falla, no terminaremos con datos corruptos o registros huérfanos. Las transacciones de base de datos ofrecen esta funcionalidad, y aseguran que todas las operaciones de base de datos han sido ejecutadas correctamente antes de almacenar los datos en la base de datos.
@@ -102,10 +102,8 @@ Las transacciones aisladas se ejecutan en una nueva conexión asegurando que tod
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
-// Create a transaction manager
 $manager = new TxManager();
 
-// Request a transaction
 $transaction = $manager->get();
 
 try {
@@ -152,10 +150,8 @@ Las transacciones se pueden usar para eliminar un número de registros, asegurá
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
-// Create a transaction manager
 $manager = new TxManager();
 
-// Request a transaction
 $transaction = $manager->get();
 
 try {
@@ -190,7 +186,7 @@ try {
 ## Excepciones
 Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. Puede usar estas excepciones para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
-Además, puede lanzar una excepción si la operación deshacer no se ejecuta correctamente, usando el método `throwRollbackException(true)`.
+Additionally, you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
 
 
 ```php
@@ -199,10 +195,8 @@ Además, puede lanzar una excepción si la operación deshacer no se ejecuta cor
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
-// Create a transaction manager
 $manager = new TxManager();
 
-// Request a transaction
 $transaction = $manager
     ->get()
     ->throwRollbackException(true)

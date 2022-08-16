@@ -8,7 +8,7 @@ keywords: 'database, migrations, schema, tables, columns'
 
 # Database Migrations
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository. 
 > 
@@ -20,8 +20,8 @@ https://github.com/phalcon/migrations
 
 ## Requirements
 
-* PHP >= 7.2
-* Phalcon >= 4.0.5
+* PHP >= 7.5
+* Phalcon >= 5.0.0
 
 ## Installing via Composer
 
@@ -47,18 +47,19 @@ After that you can execute that migrations (run) in another environment to creat
 use Phalcon\Config;
 
 return new Config([
-    'database' => [
-        'adapter' => 'mysql',
-        'host' => '127.0.0.1',
+    'database'    => [
+        'adapter'  => 'mysql',
+        'host'     => '127.0.0.1',
         'username' => 'root',
         'password' => '',
-        'dbname' => 'db-name',
-        'charset' => 'utf8',
+        'dbname'   => 'db-name',
+        'charset'  => 'utf8',
     ],
     'application' => [
-        'logInDb' => true,
-        'migrationsDir' => 'db/migrations',
-        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        'logInDb'              => true,
+        'migrationsDir'        => 'db/migrations',
+        // true - TIMESTAMP, false - versions
+        'migrationsTsBased'    => true, 
         'exportDataFromTables' => [
             // Tables names
             // Attention! It will export data every new migration
@@ -66,6 +67,10 @@ return new Config([
     ],
 ]);
 ```
+
+> NOTE: If `exportDataFromTables` is set, data will be exported with every migration 
+> 
+> {: .alert .alert-warning }
 
 ### Generate migrations
 
@@ -168,7 +173,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 | --version=s              | Version to migrate                                                                       |
 | --descr=s                | Migration description (used for timestamp based migration)                               |
 | --data=s                 | Export data \['always' or 'oncreate'\] (Data is imported during migration run)           |
-| --exportDataFromTables=s | Export data from specific tables, use comma separated string.                            |
+| --exportDataFromTables=s | Export data from specific tables, use comma separated string                             |
 | --force                  | Forces to overwrite existing migrations                                                  |
 | --ts-based               | Timestamp based migration version                                                        |
 | --log-in-db              | Keep migrations log in the database table rather then in file                            |
@@ -190,9 +195,11 @@ vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
 
 Will produce folder name with such names
 
+```sh
 * 1582539287636860_1.0.0
 * 1682539471102635_1.0.0
 * 1782539471102635_1.0.0
+```
 
 Migrations will be executed from oldest to newest.
 

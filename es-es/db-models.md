@@ -9,7 +9,7 @@ keywords: 'modelos, registro activo'
 
 # Modelos
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. Es una clase que conecta objetos de negocio y tablas de la base de datos, para crear un modelo de dominio persistente, donde la lógica y los datos se envuelven en uno. Es una implementación del mapeo objeto-relacional (ORM).
@@ -122,7 +122,7 @@ public function __isset(string $property): bool
 ```php
 public function __set(string $property, mixed $value)
 ```
-Método mágico para asignar valores a el modelo
+Magic method to assign values to the model
 
 ```php
 public function addBehavior(
@@ -327,7 +327,7 @@ public static function cloneResultMap(
     bool $keepSnapshots = null
 ): ModelInterface
 ```
-Asigna valores a un modelo desde un vector, devolviendo un nuevo modelo, usando el mapa de columnas.
+Assign values to a model from an array, returning a new model, using the column map.
 
 ```php
 <?php
@@ -353,7 +353,7 @@ public static function cloneResultMapHydrate(
     int $hydrationMode
 ): mixed
 ```
-Devuelve un resultado hidratado basado en los datos y el mapa de columnas
+Returns a hydrated result based on the data and the column map
 
 ```php
 public static function count(
@@ -602,7 +602,7 @@ public function getRelated(
 ```
 Devuelve registros relacionados basados en relaciones definidas. Si la relación es uno a uno y no se han encontrado registros, devolverá `null`
 
-> **NOTE**: `getRelated()` no longer returns `false` if a record was not found on a one to one relationship. 
+> **NOTE**: `getRelated()` no longer returns `false` if a record was not found on a one-to-one relationship. 
 > 
 > {: .alert .alert-warning }
 
@@ -1132,7 +1132,7 @@ protected function belongsTo(
     array options = null
 ): Relation
 ```
-Configura una relación 1-1 inversa o n-1 entre dos modelos
+Set up a reverse 1-1 or n-1 relation between two models
 
 ```php
 <?php 
@@ -1195,7 +1195,7 @@ protected function hasManyToMany(
     array $options = null
 ): Relation
 ```
-Configura una relación n-n entre dos modelos, a través de una relación intermedia
+Set up an n-n relation between two models, through an intermediate relation
 
 ```php
 <?php 
@@ -1495,7 +1495,7 @@ class Invoices extends Model
 > 
 > {: .alert .alert-warning }
 
-Los modelos se pueden implementar con propiedades públicas, lo que significa que cualquier propiedad se puede leer y actualizar desde cualquier parte del código que ha instanciado esa clase de modelo:
+Models can be implemented with public properties, meaning that each property can be read and updated from any part of the code that has instantiated that model class:
 
 ```php
 <?php
@@ -1770,7 +1770,7 @@ $invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 
 ### Parámetros
 
-> **NOTE**: It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. Para más información consulte la sección [Parámetros de Vinculación](#binding-parameters)`. 
+> **NOTE**: It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria come from user input. Para más información consulte la sección [Parámetros de Vinculación](#binding-parameters)`. 
 > 
 > {: .alert .alert-warning }
 
@@ -1902,11 +1902,11 @@ $invoices = Invoices::find(
 );
 ```
 
-El vector de columnas puede devolver las columnas directamente si sólo se ha establecido un valor para uno de los elementos del vector. Sin embargo, si elige especificar una clave, se usará como alias para ese campo. En el ejemplo anterior, `cst_name_first` tiene un alias como `first`.
+El vector de columnas puede devolver las columnas directamente si sólo se ha establecido un valor para uno de los elementos del vector. However, if you choose to specify a key, it will be used as an alias for that field. En el ejemplo anterior, `cst_name_first` tiene un alias como `first`.
 
 **`conditions`**
 
-Condiciones de búsqueda para la operación de búsqueda. Se usa para extraer solo aquellos registros que cumplen un criterio específico. By default [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions.
+Condiciones de búsqueda para la operación de búsqueda. Se usa para extraer solo aquellos registros que cumplen un criterio específico. By default, [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions.
 
 ```php
 <?php
@@ -2093,7 +2093,7 @@ The static method `query()` returns a [Phalcon\Mvc\Model\Criteria][mvc-model-cri
 Todas las consultas se manejan internamente como consultas [PHQL](db-phql). PHQL es un lenguaje de alto nivel, orientado a objetos y similar a SQL. Este lenguaje ofrece muchas características para realizar consultas como uniones con otros modelos, agrupación de registros, agregaciones, etc.
 
 ### `findBy*`
-Puede usar el método `findBy<property-name>()`. Este método expande el método `find()` mencionado antes. Le permite realizar rápidamente una selección de registros de una tabla usando el nombre de la propiedad en el propio método y pasándole un parámetro que contiene los datos que quiere buscar para esa columna.
+Puede usar el método `findBy<property-name>()`. Este método expande el método `find()` mencionado antes. It allows you to quickly perform a select query from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
 
 Para el siguiente modelo:
 
@@ -2296,7 +2296,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 ### Conjuntos de Resultados Personalizados
-Hay veces que la lógica de aplicación requiere una manipulación adicional de los datos que se obtienen de la base de datos. Previamente, justo extendíamos el modelo y encapsulábamos la funcionalidad en una clase en el modelo o un `trait`, devolviendo normalmente al invocante un vector de datos transformados.
+Hay veces que la lógica de aplicación requiere una manipulación adicional de los datos que se obtienen de la base de datos. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning to the caller usually an array of transformed data.
 
 Con conjuntos de resultados personalizados, ya no necesita hacer eso. The custom resultset will encapsulate the functionality, that otherwise would be in the model, and can be reused by other models, thus keeping the code [DRY][dry]. This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], but instead the custom one. Phalcon le permite hacer esto usando `getResultsetClass()` en su modelo.
 
@@ -2379,7 +2379,7 @@ $invoices = $invoices->filter(
 El ejemplo anterior devolverá sólo las facturas pagadas de nuestra tabla (`inv_status_flag = 1`);
 
 ### Parámetros de Enlace
-Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. Se recomienda usar esta metodología para eliminar la posibilidad de que su código sea sujeto de ataques de inyección SQL. Se soportan tanto marcadores `string` como `integer`.
+Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology to eliminate the possibility of your code being subject to SQL injection attacks. Se soportan tanto marcadores `string` como `integer`.
 
 > **NOTE**: When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). Cuando usa marcadores `string` debe encerrar la cadena entre `:` (`:name:`, `:total:`). 
 > 
@@ -2426,9 +2426,9 @@ $invoices = Invoices::find(
 );
 ```
 
-Strings are automatically escaped using [PDO][pdo-statements]. Esta función tiene en cuenta el conjunto de caracteres de la conexión, por lo que se recomienda definir correctamente el conjunto de caracteres en los parámetros de conexión o en la configuración de base de datos, ya que un conjunto de caracteres incorrecto producirá efectos no deseados cuando se almacene o recupere datos.
+Strings are automatically escaped using [PDO][pdo-statements]. This function takes into account the connection charset, therefore it is recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-Además, puede configurar el parámetro `bindTypes`, que le permite definir como se deben enlazar los parámetros de acuerdo a sus tipos de datos:
+Additionally, you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to their data type:
 
 ```php
 <?php
@@ -2456,7 +2456,7 @@ $invoices = Invoices::find(
 );
 ```
 
-> **NOTE**: Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are strings 
+> **NOTE**: Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all the columns are strings 
 > 
 > {: .alert .alert-info }
 
@@ -2500,7 +2500,7 @@ $invoices = Invoices::find(
 > 
 > {: .alert .alert-info }
 
-If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. También cuando usa `findFirstBy*` se enlazan los parámetros automáticamente.
+If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also, when using `findFirstBy*` the parameters are automatically bound.
 
 ```php
 <?php
@@ -2518,7 +2518,7 @@ $invoices = Invoices::findByInvTotal(1000);
 ```
 
 ## Antes/Después de Obtener
-Hay casos donde necesitamos manipular los datos después de que se hayan devuelto desde la base de datos para que nuestro modelo contenga lo que necesitamos en la capa de aplicación. Como se ve en el documento [events](events), los modelos actúan como oyentes por lo que podemos implementar algunos eventos como métodos en el modelo.
+Hay casos donde necesitamos manipular los datos después de que se hayan devuelto desde la base de datos para que nuestro modelo contenga lo que necesitamos en la capa de aplicación. As seen in the [events](events) document, models act as listeners, so we can implement some events as methods in the model.
 
 Tales métodos incluyen `beforeSave`, `afterSave` y `afterFetch` como se muestra en nuestro ejemplo a continuación. El método `afterFetch` se ejecutará justo después de que los datos rellenen el modelo desde la base de datos. Podemos usar este método para modificar o transformar los datos en el modelo.
 
@@ -2785,7 +2785,7 @@ $invoice->assign(
 $result = $invoice->save();
 ```
 
-Los valores asignados directamente o mediante el vector de atributos son escapados/saneados según el tipo de datos de los atributos relacionados. Así que puede pasar un vector inseguro sin preocuparse de posibles inyecciones SQL:
+Values assigned directly, or via the array of attributes, are escaped/sanitized according to the related attribute data type. Así que puede pasar un vector inseguro sin preocuparse de posibles inyecciones SQL:
 
 ```php
 <?php
@@ -2803,7 +2803,7 @@ $result = $invoice->save();
 > 
 > {: .alert .alert-danger }
 
-Puede configurar un parámetro adicional en `assign` para establecer una lista blanca de los campos que sólo deben tenerse en cuenta cuando se hace la asignación masiva:
+You can set an additional parameter in `assign` to set a whitelist of fields that are only taken into account when doing the mass assignment:
 
 ```php
 <?php
@@ -2931,14 +2931,14 @@ foreach ($invoices as $invoice) {
 ## Modos de Hidratación
 Como se ha mencionado anteriormente, los conjuntos de resultados son colecciones de objetos completos. Esto significa que cada resultado devuelto es un objeto, que representa una fila en la base de datos. Estos documentos se pueden modificar y más tarde guardados para persistir los cambios en la base de datos.
 
-Sin embargo, hay veces que necesitará obtener los datos en modo solo lectura, como en casos en los que solo visualiza datos. En estos casos, es útil cambiar la forma en que se devuelven los registros para ahorrar recursos y aumentar el rendimiento. La estrategia usada para representar estos objetos devueltos en un conjunto de resultados se llama `hidratación`.
+Sin embargo, hay veces que necesitará obtener los datos en modo solo lectura, como en casos en los que solo visualiza datos. En estos casos, es útil cambiar la forma en que se devuelven los registros para ahorrar recursos y aumentar el rendimiento. The strategy used to represent these objects returned in a resultset is called `hydration`.
 
 Phalcon offers three ways of hydrating data:
 - Arrays : `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`
 - Objects : `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS`
 - Records : `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS`
 
-El modo de hidratación por defecto es devolver registros (`HYDRATE_RECORDS`). Podemos cambiar fácilmente el modo de hidratación para obtener vectores u objetos. Cambiar el modo de hidratación a cualquier otro distinto de `HYDRATE_RECORDS` devolverá objetos (o vectores) que no tendrán conexión con la base de datos, es decir, no podremos realizar ninguna operación sobre estos objetos como `save()`, `create()`, `delete()` etc.
+El modo de hidratación por defecto es devolver registros (`HYDRATE_RECORDS`). Podemos cambiar fácilmente el modo de hidratación para obtener vectores u objetos. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
 ```php
 <?php
@@ -3044,7 +3044,7 @@ echo $invoice->inv_id; // 4
 
 [Phalcon\Mvc\Model][mvc-model] attempts to recognize the identity column from each table. Sin embargo, dependiendo del sistema de base de datos, estas columnas podrían ser columnas de serie, como en el caso de PostgreSQL o columnas `auto_increment` en el caso de MySQL.
 
-PostgreSQL usa secuencias para generar automáticamente valores numéricos para la clave primaria. Phalcon intenta obtener el valor generado de la secuencia `table_field_seq`, por ejemplo: `co_invoices_id_seq`. Si el nombre de la secuencia es diferente, siempre puede usar el método `getSequenceName()` en el modelo, indicando a Phalcon la secuencia que necesita usar para la clave primaria:
+PostgreSQL usa secuencias para generar automáticamente valores numéricos para la clave primaria. Phalcon intenta obtener el valor generado de la secuencia `table_field_seq`, por ejemplo: `co_invoices_id_seq`. If the sequence name is different, you can always use the `getSequenceName()` method in the model, instructing Phalcon the sequence it needs to use for the primary key:
 
 ```php
 <?php
@@ -3072,7 +3072,7 @@ CREATE TABLE co_invoices (
 )
 ```
 
-El código anterior (para MySQL) indica al RDBMS que asigne la marca de tiempo actual al campo `inv_created_at` cuando se crea el registro. Por lo tanto, podemos omitir este campo cuando creamos un registro. Del mismo modo, podríamos querer ignorar algunos campos cuando estamos actualizando registros.
+El código anterior (para MySQL) indica al RDBMS que asigne la marca de tiempo actual al campo `inv_created_at` cuando se crea el registro. Por lo tanto, podemos omitir este campo cuando creamos un registro. Similarly, we might want to ignore some fields when we are updating records.
 
 Para lograr esta tarea podemos usar `skipAttributes` (para cualquier operación), `skipAttributesOnCreate` (crear) o `skipAttributesOnUpdate` (actualizar)
 
@@ -3304,7 +3304,7 @@ var_dump($invoice->hasChanged('inv_total')); // true
 var_dump($invoice->hasChanged('inv_cst_id')); // false
 ```
 
-Las instantáneas se actualizan en la creación/actualización del modelo. Se puede usar `hasUpdated()` y `getUpdatedFields()` para comprobar si los campos se han actualizado después de crear/guardar/actualizar pero podría causar problemas potencialmente a su aplicacion si ejecuta `getChangedFields()` en `afterUpdate()`, `afterSave()` o `afterCreate()`.
+Las instantáneas se actualizan en la creación/actualización del modelo. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update, but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`.
 
 Puede deshabilitar esta funcionalidad usando:
 
@@ -3726,7 +3726,7 @@ Si se han definido condiciones, comprobamos si tenemos el `id` como campo en las
 El método `selectReadConnection()` se llama cada vez que necesitamos obtener datos desde la base de datos, y devuelve la conexión correcta a usar.
 
 ## Inyección de Dependencias
-[Phalcon\Mvc\Model][mvc-model] is tightly bound to the DI container. Puede recuperar el contenedor usando el método `getDI`. Por lo tanto, tiene acceso a todos los servicios registrados en el contenedor DI.
+[Phalcon\Mvc\Model][mvc-model] is tightly bound to the DI container. Puede recuperar el contenedor usando el método `getDI`. Therefore, you have access to all services registered in the DI container.
 
 El siguiente ejemplo muestra como puede imprimir cualquier mensaje generado por una operación `save` fallida en el modelo, y mostrar estos mensajes en el mensajero [flash](flash). Para hacer esto, usamos el evento `notSaved`:
 
@@ -3745,7 +3745,6 @@ class Invoices extends Model
         $flash    = $this->getDI()->getFlash();
         $messages = $this->getMessages();
 
-        // Show validation messages
         foreach ($messages as $message) {
             $flash->error($message);
         }
@@ -3828,7 +3827,7 @@ Opciones `ini`:
 > 
 > {: .alert .alert-warning }
 
-## Componente Independiente
+## Stand-Alone Component
 You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. El ejemplo siguiente demuestra como puede conseguirlo.
 
 ```php

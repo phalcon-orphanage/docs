@@ -8,10 +8,10 @@ keywords: 'modelos, caché, phql, conjuntos de resultados, reutilización'
 
 # Caché de Modelos
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-En la mayoría de aplicaciones, hay datos que cambian con poca frecuencia. Uno de los cuellos de botella más comunes en términos de rendimiento es el acceso a los datos de una base de datos. Primero tenemos una capa de complejidad que permite a PHP comunicarse con la base de datos y entonces tenemos una capa de complejidad y un potencial cuello de botella en la propia base de datos, cuando intentamos analizar la consulta enviada y devolver los datos de vuelta (especialmente cuando la consulta contiene múltiples uniones y sentencias de agrupación).
+En la mayoría de aplicaciones, hay datos que cambian con poca frecuencia. Uno de los cuellos de botella más comunes en términos de rendimiento es el acceso a los datos de una base de datos. We first have a layer of complexity that allows PHP to communicate with the database, and then we have the layer of complexity and potentially bottleneck within the database itself, when trying to analyze the query sent and return the data back (especially when the query contains multiple joins and group statements).
 
 Implementando algunas capas de caché, reduce el número de conexiones y búsquedas a la base de datos. Esto asegurará que los datos serán consultados a la base de datos sólo cuando sea absolutamente necesario. Este artículo muestra algunas áreas donde el cache podría incrementar el rendimiento.
 
@@ -152,7 +152,6 @@ Earlier we saw how [Phalcon\Mvc\Model][mvc-model] integrates with the caching co
 ```php
 <?php
 
-// Cache the resultset for only for 5 minutes
 $invoices = Invoices::find(
     [
         'cache' => [
@@ -372,7 +371,7 @@ foreach ($invoices as $invoice) {
     echo $customer->cst_name, PHP_EOL;
 }
 ```
-Un cliente puede tener más de una factura. Por lo tanto en este ejemplo, el mismo registro de cliente podría ser innecesariamente consultado varias veces. Para evitar esto, podemos establecer la relación como `reusable`. Esto indicará a Phalcon que cachee el registro relacionado en memoria la primera vez que se accede, y las llamadas siguientes al mismo registro devolverá los datos de la entidad cacheada desde memoria.
+Un cliente puede tener más de una factura. Therefore, in this example, the same customer record could be unnecessarily queried several times. Para evitar esto, podemos establecer la relación como `reusable`. Esto indicará a Phalcon que cachee el registro relacionado en memoria la primera vez que se accede, y las llamadas siguientes al mismo registro devolverá los datos de la entidad cacheada desde memoria.
 
 ```php
 <?php
@@ -437,7 +436,7 @@ $customer = $invoice->getCustomer();
 $customer = $invoice->getRelated('customer');
 ```
 
-Las llamadas anteriores llaman al mismo método `findFirst` en segundo plano. Adicionalmente, podríamos reemplazar el método `findFirst()` en el modelo `Invoices` e implementar el caché que es más apropiado para las necesidades de nuestra aplicación:
+The above call the same `findFirst` method in the background. Adicionalmente, podríamos reemplazar el método `findFirst()` en el modelo `Invoices` e implementar el caché que es más apropiado para las necesidades de nuestra aplicación:
 
 ```php
 <?php
@@ -670,7 +669,7 @@ $invoices = Invoices::find(
 
 Para lograr esto necesitamos interceptar la representación intermedia (IR) generada por el analizador PHQL y personalizar el caché apropiadamente:
 
-Lo primero es crear un constructor personalizado, así podemos generar una consulta totalmente personalizada:
+The first task is to create a custom builder, so we can generate a totally customized query:
 
 ```php
 <?php
@@ -744,7 +743,6 @@ class CustomQuery extends ModelQuery
             );
         }
 
-        // Check if the query has conditions
         if (true === isset($ir['where'])) {
             $visitor = new CustomNodeVisitor();
             $visitor->visit(

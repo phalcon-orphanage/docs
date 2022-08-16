@@ -8,7 +8,7 @@ keywords: 'model, caching, metadata, query fields'
 
 # Model Metadata
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
@@ -26,7 +26,7 @@ use Phalcon\Mvc\Model\MetaData;
 
 $invoice = new Invoices();
 
-/** @var MetaData\ $metadata */
+/** @var MetaData $metadata */
 $metadata = $invoice->getModelsMetaData();
 
 $attributes = $metadata->getAttributes($invoice);
@@ -105,7 +105,7 @@ public function getAutomaticCreateAttributes(
     ModelInterface $model
 ): array
 ```
-Returns attributes that must be ignored from the `INSERT` SQL generation
+Return attributes that must be ignored from the `INSERT` SQL generation
 
 ```php
 print_r(
@@ -120,7 +120,7 @@ public function getAutomaticUpdateAttributes(
     ModelInterface $model
 ): array
 ```
-Returns attributes that must be ignored from the `UPDATE` SQL generation
+Return attributes that must be ignored from the `UPDATE` SQL generation
 
 ```php
 print_r(
@@ -133,7 +133,7 @@ print_r(
 ```php
 public function getBindTypes(ModelInterface $model): array
 ```
-Returns attributes and their bind data types
+Return attributes and their bind data types
 
 ```php
 print_r(
@@ -160,7 +160,7 @@ print_r(
 ```php
 public function getDefaultValues(ModelInterface $model): array
 ```
-Returns attributes (which have default values) and their default values
+Return attributes (which have default values) and their default values
 
 ```php
  print_r(
@@ -173,7 +173,7 @@ Returns attributes (which have default values) and their default values
 ```php
 public function getDataTypes(ModelInterface $model): array
 ```
-Returns attributes and their data types
+Return attributes and their data types
 
 ```php
 print_r(
@@ -186,7 +186,7 @@ print_r(
 ```php
 public function getDataTypesNumeric(ModelInterface $model): array
 ```
-Returns attributes which types are numerical
+Return attributes which types are numerical
 
 ```php
 print_r(
@@ -201,7 +201,7 @@ public function getEmptyStringAttributes(
     ModelInterface $model
 ): array
 ```
-Returns attributes allow empty strings
+Return attributes allow empty strings
 
 ```php
 print_r(
@@ -485,7 +485,7 @@ final protected function initialize(
 Initialize the metadata for certain table
 
 ## Adapters
-Retrieving the metadata is an expensive database operation and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
+Retrieving the metadata is an expensive database operation, and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
 
 > **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately. 
 > 
