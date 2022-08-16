@@ -3,12 +3,13 @@ layout: default
 language: 'pt-br'
 version: '5.0'
 title: 'Segurança'
+upgrade: '#security'
 keywords: 'security, hashing, passwords'
 ---
 
 # Segurança
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Visão Geral
 
@@ -16,7 +17,7 @@ keywords: 'security, hashing, passwords'
 > 
 > {: .alert .alert-info }
 
-[Phalcon\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
+[Phalcon\Encryption\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
 ## Password Hashing
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use popular one way hashing methods [md5][md5] and [sha1][sha1]. However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables][rainbow-tables].
@@ -32,7 +33,7 @@ This component offers a simple interface to use the algorithm:
 ```php
 <?php
 
-use Phalcon\Security;
+use Phalcon\Encryption\Security;
 
 $security = new Security();
 
@@ -47,7 +48,7 @@ We can now check if a value sent to us by a user through the UI of our applicati
 ```php
 <?php
 
-use Phalcon\Security;
+use Phalcon\Encryption\Security;
 
 $password = $_POST['password'] ?? '';
 
@@ -57,7 +58,7 @@ $hashed = $security->hash('Phalcon');
 echo $security->checkHash($password, $hashed); // true / false
 ```
 
-The above example simply shows how the `checkHash()` can be used. In production applications we will definitely need to sanitize input and also we need to store the hashed password in a data store such as a database. Using controllers, the above example can be shown as:
+The above example simply shows how the `checkHash()` can be used. In production applications we will definitely need to sanitize input, and also we need to store the hashed password in a data store such as a database. Using controllers, the above example can be shown as:
 
 ```php
 <?php
@@ -65,7 +66,7 @@ The above example simply shows how the `checkHash()` can be used. In production 
 use MyApp\Models\Users;
 use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
-use Phalcon\Security;
+use Phalcon\Encryption\Security;
 
 /**
  * @property Request  $request
@@ -73,9 +74,6 @@ use Phalcon\Security;
  */
 class SessionController extends Controller
 {
-    /**
-     * Login
-     */
     public function loginAction()
     {
         $login    = $this->request->getPost('login');
@@ -105,9 +103,6 @@ class SessionController extends Controller
         // ERROR
     }
 
-    /**
-     * Register
-     */
     public function registerAction()
     {
         $login    = $this->request->getPost('login', 'string');
@@ -128,9 +123,9 @@ class SessionController extends Controller
 > 
 > {: .alert .alert-danger }
 
-The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security][security] component so that we do not save it as plain text in our database.
+The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Encryption\Security][security] component so that we do not save it as plain text in our database.
 
-The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database.
+The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phalcon\Encryption\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database.
 
 > **NOTE**: You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you. 
 > 
@@ -145,7 +140,7 @@ Separating the error messages is not a good idea. If a hacker that is using brut
 
 `Invalid Login/Password combination`
 
-Finally you will notice in the example that when the user is not found, we call:
+Finally, you will notice in the example that when the user is not found, we call:
 
 ```php
 $this->security->hash(rand());
@@ -154,12 +149,12 @@ $this->security->hash(rand());
 This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
 
 ## Exceptions
-Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception][security-exception]. You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
+Any exceptions thrown in the Security component will be of type [Phalcon\Encryption\Security\Exception][security-exception]. You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
 
 ```php
 <?php
 
-use Phalcon\Security\Exception;
+use Phalcon\Encryption\Security\Exception;
 use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
@@ -176,7 +171,7 @@ class IndexController extends Controller
 ```
 
 ## CSRF Protection
-Cross-Site Request Forgery (CSRF) is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
+Cross-Site Request Forgery (CSRF) is another common attack against websites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
 The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce][random-nonce] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
@@ -185,8 +180,9 @@ The idea is to prevent the form values from being sent outside our application. 
 
     <!-- Login and password inputs ... -->
 
-    <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
-        value='<?php echo $this->security->getToken() ?>'/>
+    <input type='hidden' 
+           name='<?php echo $this->security->getTokenKey() ?>'
+           value='<?php echo $this->security->getToken() ?>'/>
 
 </form>
 ```
@@ -215,7 +211,7 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTE**: It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work. 
+> **NOTE**: It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise, the `checkToken()` will not work. 
 > 
 > {: .alert .alert-warning }
 
@@ -227,7 +223,7 @@ Adding a [captcha][captcha] to the form is also recommended to completely avoid 
 
 **getDefaultHash() / setDefaultHash()**
 
-Getter and setter for the default hash that the component will use. By default the hash is set to `CRYPT_DEFAULT` (`0`). The available options are:
+Getter and setter for the default hash that the component will use. By default, the hash is set to `CRYPT_DEFAULT` (`0`). The available options are:
 
 * `CRYPT_BLOWFISH_A`
 * `CRYPT_BLOWFISH_X`
@@ -253,12 +249,12 @@ Returns `true` if the passed hashed string is a valid [bcrypt][bcrypt] hash.
 
 **computeHmac()**
 
-Generates a keyed hash value using the HMAC method. It uses PHP's [`hash_hmac`][hash-hmac] method internally, therefore all the parameters it accepts are the same as the [`hash_hmac`][hash-hmac].
+Generates a keyed hash value using the HMAC method. It uses PHP's [hash_hmac][hash-hmac] method internally, therefore all the parameters it accepts are the same as the [hash_hmac][hash-hmac].
 
 ### Random
 **`getRandom()`**
 
-Returns a [Phalcon\Security\Random][security-random] object, which is secure random number generator instance. The component is explained in detail below.
+Returns a [Phalcon\Encryption\Security\Random][security-random] object, which is secure random number generator instance. The component is explained in detail below.
 
 **`getRandomBytes()` / `setRandomBytes()`**
 
@@ -283,7 +279,7 @@ Returns the value of the CSRF token for the current request.
 
 **`checkToken()`**
 
-Check if the CSRF token sent in the request is the same that the current in session. The first parameter is the token key and the second one the token value. It also accepts a third boolean parameter `destroyIfValid` which if set to `true` will destroy the token if the method returns `true`.
+Check if the CSRF token sent in the request is the same that the current in session. The first parameter is the token key and the second one the token value. It also accepts a third boolean parameter `destroyIfValid` which, if set to `true` will destroy the token if the method returns `true`.
 
 **`getSessionToken()`**
 
@@ -294,20 +290,20 @@ Returns the value of the CSRF token in session
 Removes the value of the CSRF token and key from session
 
 ## Random
-The [Phalcon\Security\Random][security-random] class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom][secure-random] library from Ruby.
+The [Phalcon\Encryption\Security\Random][security-random] class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom][secure-random] library from Ruby.
 
 It supports following secure random number generators:
-* random_bytes
-* libsodium
-* openssl, libressl
-* /dev/urandom
+* `random_bytes`
+* `libsodium`
+* `openssl`, `libressl`
+* `/dev/urandom`
 
 To utilize the above you will need to ensure that the generators are available in your system. For instance to use `openssl` your PHP installation needs to support it.
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -322,14 +318,14 @@ echo $random->base58();      // 4kUgL2pdQMSCQtjE
 
 **`base58()`**
 
-Generates a random `base58` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in future. The result may contain alphanumeric characters except `0` (zero), `O` (capital `o`), `I` (capital `i`) and `l` (lower case `L`).
+Generates a random `base58` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in the future. The result may contain alphanumeric characters except `0` (zero), `O` (capital `o`), `I` (capital `i`) and `l` (lower case `L`).
 
 It is similar to `base64()` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -338,12 +334,12 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 **`base62()`**
 
-Generates a random `base62` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in future. It is similar to `base58()` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is `[A-Za-z0-9]`
+Generates a random `base62` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in the future. It is similar to `base58()` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is `[A-Za-z0-9]`
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -352,14 +348,14 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 
 **`base64()`**
 
-Generates a random `base64` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in future. The length of the result string is usually greater of `$len`. The size formula is:
+Generates a random `base64` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in the future. The length of the result string is usually greater of `$len`. The size formula is:
 
 `4 * ($len / 3)` rounded up to a multiple of 4.
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -368,14 +364,14 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 **`base64Safe()`**
 
-Generates a URL safe random `base64` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in future. The length of the result string is usually greater of `$len`.
+Generates a URL safe random `base64` string. If the `$len` parameter is not specified, `16` is assumed. It may be larger in the future. The length of the result string is usually greater of `$len`.
 
 By default, padding is not generated because `=` may be used as a URL delimiter. The result may contain `A-Z`, `a-z`, `0-9`, `-` and `_`. `=` is also used if `$padding` is `true`. See [RFC 3548][rfc-3548] for the definition of URL-safe `base64`.
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -384,12 +380,12 @@ echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 
 **`bytes()`**
 
-Generates a random binary string and accepts as input an integer representing the length in bytes to be returned. If `$len` is not specified, `16` is assumed. It may be larger in future. The result may contain any byte: `x00` - `xFF`.
+Generates a random binary string and accepts as input an integer representing the length in bytes to be returned. If `$len` is not specified, `16` is assumed. It may be larger in the future. The result may contain any byte: `x00` - `xFF`.
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -400,12 +396,12 @@ var_dump(bin2hex($bytes));
 
 **`hex()`**
 
-Generates a random hex string. If `$len` is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of `$len`.
+Generates a random hex string. If `$len` is not specified, 16 is assumed. It may be larger in the future. The length of the result string is usually greater of `$len`.
 
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -419,7 +415,7 @@ Generates a random number between `0` and `$len`. Returns an integer: `0 <= resu
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -435,7 +431,7 @@ This algorithm sets the version number (4 bits) as well as two reserved bits. Al
 ```php
 <?php
 
-use Phalcon\Security\Random;
+use Phalcon\Encryption\Security\Random;
 
 $random = new Random();
 
@@ -443,7 +439,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 ```
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Security][security] is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Encryption\Security][security] is already registered for you. However, you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -451,7 +447,7 @@ An example of the registration of the service as well as accessing it is below:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Security;
+use Phalcon\Encryption\Security;
 
 // Create a container
 $container = new FactoryDefault();
@@ -476,7 +472,7 @@ The component is now available in your controllers using the `security` key
 <?php
 
 use Phalcon\Mvc\Controller;
-use Phalcon\Security;
+use Phalcon\Encryption\Security;
 
 /**
  * @property Security $security
@@ -496,26 +492,23 @@ Also in your views (Volt syntax)
 {% raw %}{{ security.getToken() }}{% endraw %}
 ```
 
-
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
-
 
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
 [captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA
 [eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
+[factorydefault]: api/phalcon_di#di-factorydefault
+[hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
 [md5]: https://php.net/manual/en/function.md5.php
 [openssl]: https://php.net/manual/en/book.openssl.php
 [openssl-random-pseudo-bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
 [random-nonce]: https://en.wikipedia.org/wiki/Cryptographic_nonce
 [rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
-[sha1]: https://php.net/manual/en/function.sha1.php
-[wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
-[security-exception]: api/phalcon_security#security-exception
-[security-random]: api/phalcon_security#security-random
-[security]: api/phalcon_security#security
-[security]: api/phalcon_security#security
-[factorydefault]: api/phalcon_di#di-factorydefault
-[hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
-[secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 [rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt
 [rfc-4122]: https://www.ietf.org/rfc/rfc4122.txt
+[secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
+[security]: api/phalcon_encryption#encryption-security
+[security-exception]: api/phalcon_encryption#encryption-security-exception
+[security-random]: api/phalcon_encryption#encryption-security-random
+[sha1]: https://php.net/manual/en/function.sha1.php
+[wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
