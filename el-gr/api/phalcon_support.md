@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Support'
 ---
@@ -2262,5 +2262,3 @@ protected function getVersion(): array;
 Area where the version number is set. The format is as follows: ABBCCDE
 
 A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Special release version i.e. RC1, Beta2 etc.
-
-

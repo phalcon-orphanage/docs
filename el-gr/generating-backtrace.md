@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Generating a backtrace'
 keywords: 'backtrace, debugging, segmentation faults'
@@ -19,4 +19,3 @@ Please follow this guide to understand how to generate the backtrace.
 [https://bugs.php.net/bugs-generating-backtrace.php](https://bugs.php.net/bugs-generating-backtrace.php)
 
 [https://bugs.php.net/bugs-generating-backtrace-win32.php](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-

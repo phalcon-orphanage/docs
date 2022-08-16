@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Logger'
 ---
@@ -1032,5 +1032,3 @@ Normal but significant events.
 public function warning( string $message, array $context = [] ): void;
 ```
 Normal but significant events.
-
-

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Tutorial - INVO'
 keywords: 'tutorial, invo tutorial, step by step, mvc'

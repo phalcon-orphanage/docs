@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Filter'
 ---
@@ -3483,5 +3483,3 @@ public function setTemplates( array $templates ): ValidatorInterface;
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 Executes the validation
-
-

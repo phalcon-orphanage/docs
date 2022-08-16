@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Events'
 ---
@@ -435,5 +435,3 @@ Returns all the attached listeners of a certain type
 public function hasListeners( string $type ): bool;
 ```
 Check whether certain type of event has listeners
-
-

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Tutorial - Vökuró'
 keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'

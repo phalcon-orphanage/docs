@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Assets'
 ---
@@ -1066,5 +1066,3 @@ Sets the manager options
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Sets if the HTML generated must be directly printed or returned
-
-
