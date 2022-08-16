@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Tag'
 keywords: 'tag, helpers, view helpers, html generators'

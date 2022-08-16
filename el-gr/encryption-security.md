@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Ασφάλεια'
 keywords: 'security, hashing, passwords'

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Mvc'
 ---
@@ -12852,3 +12852,5 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
+
+

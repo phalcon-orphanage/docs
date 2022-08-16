@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Λίστα Αιτημάτων Νέας Λειτουργικότητας'
 keywords: 'λίστα αιτημάτων νέας λειτουργικότητας, λίστα nfr'

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Session'
 ---
@@ -802,3 +802,5 @@ Starts the session (if headers are already sent the session will not be started)
 public function status(): int;
 ```
 Returns the status of the current session.
+
+
