@@ -6,7 +6,7 @@ version: '5.0'
 
 # Relaciones de modelos
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 La [normalización de base de datos](db-normalization) es un proceso donde los datos se dividen en diferentes tablas y se crean enlaces entre esas tablas, para incrementar la flexibilidad, reducir la redundancia de datos y mejorar la integridad de los datos. Las relaciones se definen en el método `initialize` de cada modelo.
@@ -69,7 +69,7 @@ hasManyToMany(
 )
 ```
 
-Las relaciones pueden ser unidireccionales o bidireccionales, y cada una puede ser simple (un modelo uno a uno) o más compleja (una combinación de modelos). El gestor de modelos gestiona restricciones de clave ajena para estas relaciones, la definición de estas ayuda a la integridad referencial así como al acceso fácil y rápido de registros relacionados al modelo. A través de la implementación de relaciones, es fácil acceder a datos en modelos relacionados desde el modelo fuente de una forma fácil y uniforme.
+Relationships can be unidirectional or bidirectional, and each can be simple (a one-to-one model) or more complex (a combination of models). El gestor de modelos gestiona restricciones de clave ajena para estas relaciones, la definición de estas ayuda a la integridad referencial así como al acceso fácil y rápido de registros relacionados al modelo. A través de la implementación de relaciones, es fácil acceder a datos en modelos relacionados desde el modelo fuente de una forma fácil y uniforme.
 
 ```php
 <?php
@@ -250,7 +250,6 @@ class Products extends Model
 
     public function initialize()
     {
-        // To the intermediate table
         $this->hasMany(
             'prd_id',
             InvoicesProducts::class,
@@ -276,7 +275,7 @@ class Products extends Model
 
 El primer parámetro indica el campo del modelo local usado en la relación; el segundo indica el nombre del modelo referenciado, y el tercero el nombre del campo en el modelo referenciado. También podría usar vectores para definir múltiples campos en la relación.
 
-Las relaciones muchos a muchos requieren 3 modelos y definir las atributos involucrados en la relación:
+Many-to-many relationships require 3 models and define the attributes involved in the relationship:
 
 ```php
 <?php
@@ -366,7 +365,6 @@ class Invoices extends Model
                     return [
                         'conditions' => 'cst_location = :location:',
                         'bind'       => [
-                            // Location can change between queries
                             'location' => $container->getShared('myLocationService')->myLocation,
                          ]
                     ];
@@ -483,7 +481,7 @@ foreach ($customer->invoices as $invoice) {
 }
 ```
 
-o para una relación muchos a muchos (ver modelos anteriores):
+or for a many-to-many relationship (see models above):
 
 ```php
 <?php
@@ -528,7 +526,7 @@ foreach ($customer->getInvoices() as $invoice) {
 }
 ```
 
-o para una relación muchos a muchos (ver modelos anteriores):
+or for a many-to-many relationship (see models above):
 
 ```php
 <?php
@@ -692,7 +690,7 @@ foreach ($customer->getRelated('invoices') as $invoice) {
 }
 ```
 
-o para una relación muchos a muchos (ver modelos anteriores):
+or for a many-to-many relationship (see models above):
 
 ```php
 <?php
@@ -988,7 +986,6 @@ class Companies extends Model
 {
     public function initialize()
     {
-        // All invoices relationship
         $this->hasMany(
             'id',
             Invoices::class,
@@ -998,7 +995,6 @@ class Companies extends Model
             ]
         );
 
-        // Paid invoices relationship
         $this->hasMany(
             'id',
             Invoices::class,
@@ -1011,7 +1007,6 @@ class Companies extends Model
             ]
         );
 
-        // Unpaid invoices relationship + bound parameters
         $this->hasMany(
             'id',
             Invoices::class,
@@ -1054,7 +1049,6 @@ $unpaidInvoices = $company->getRelated(
     ]
 );
 
-// Also ordered
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
@@ -1238,20 +1232,17 @@ Se pueden usar las propiedades mágicas para almacenar un registro y sus propied
 ```php
 <?php
 
-// Create an artist
 $artist = new Artists();
 
 $artist->name    = 'Shinichi Osawa';
 $artist->country = 'Japan';
 
-// Create an album
 $album = new Albums();
 
 $album->name   = 'The One';
-$album->artist = $artist; // Assign the artist
+$album->artist = $artist;
 $album->year   = 2008;
 
-// Save both records
 $album->save();
 ```
 
@@ -1293,7 +1284,7 @@ $customer->save();
 
 El código anterior obtiene un cliente de nuestra base de datos. Se crean dos facturas y se asignan a la relación `invoices` del cliente como un vector. Se guarda entonces el registro de cliente, lo que también guarda las dos facturas en la base de datos y las enlaza al cliente.
 
-Aunque la sintaxis anterior es muy útil, no siempre es ideal para usar, especialmente cuando actualiza registros relacionados. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
+Aunque la sintaxis anterior es muy útil, no siempre es ideal para usar, especialmente cuando actualiza registros relacionados. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replacement. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
 
 Guardar los datos con la sintaxis anterior implícitamente creará una transacción y la confirmará si todo va bien. Los mensajes generados durante el proceso de guardado de toda la transacción se devolverán al usuario para más información.
 

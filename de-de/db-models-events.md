@@ -8,7 +8,7 @@ keywords: 'models, events, events manager'
 
 # Model Events
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of execution:
@@ -37,7 +37,7 @@ Models allow you to implement events that will be thrown while performing an ins
 | Insert/Update | `validation`               |  Yes  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
 
 ### Events
-Models act as listeners to the events manager. Therefore we only need to implement the events above in the models directly as public methods:
+Models act as listeners to the events manager. Therefore, we only need to implement the events above in the models directly as public methods:
 
 ```php
 <?php
@@ -414,7 +414,6 @@ $container->set(
             ]
         );
 
-        // Assign the eventsManager to the db adapter instance
         $connection->setEventsManager($manager);
 
         return $connection;

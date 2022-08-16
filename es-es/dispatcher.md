@@ -3,12 +3,13 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Dispatcher'
+upgrade: '#dispatcher'
 keywords: 'despachador, mvc, bucle de despacho'
 ---
 
 # Componente Despachador
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Despachar es el proceso de tomar el objeto de solicitud, extraer el nombre del módulo, el nombre de controlador, el nombre de la acción, y los parámetros opcionales que contenga, y luego instanciar un controlador y llamar una acción de ese controlador.
@@ -396,7 +397,7 @@ while (true !== $finished) {
 El el código anterior, estamos calculando el nombre del controlador, instanciándolo y llamando a la acción relevante. Después de eso terminamos el bucle. El ejemplo está muy simplificado y carece de validaciones, filtros y comprobaciones adicionales, pero demuestra el flujo normal de operación dentro del despachador.
 
 ## Reenvío
-El bucle de despacho le permite reenviar el flujo de ejecución a otro controlador/acción. Esto es muy útil en situaciones donde comprobamos si el usuario tiene acceso a ciertas áreas, y si no se le permite es reenviado a otros controladores y acciones, lo que le permite reutilizar código.
+El bucle de despacho le permite reenviar el flujo de ejecución a otro controlador/acción. This is very useful in situations when checking if the user has access to certain areas, and if not allowed to be forwarded to other controllers and actions, thus allowing you to reuse code.
 
 ```php
 <?php
@@ -423,7 +424,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Keep in mind that performing a `forward` is not the same as making a HTTP redirect. Aunque producen el mismo resultado, la ejecución de `forward` no recargará la página actual, mientras que la redirección HTTP necesita dos peticiones para completar el proceso. 
+> **NOTE**: Keep in mind that performing a `forward` is not the same as making an HTTP redirect. Aunque producen el mismo resultado, la ejecución de `forward` no recargará la página actual, mientras que la redirección HTTP necesita dos peticiones para completar el proceso. 
 > 
 > {: .alert .alert-info }
 
@@ -463,7 +464,7 @@ Una acción `forward` acepta los siguientes parámetros:
 
 ## Parámetros
 ### Preparación
-By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. Esto es particularmente útil cuando actualiza su aplicación y quiere transformar algunas URLs antiguas. Por ejemplo, podría querer que sus URLs fuesen:
+By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. Esto es particularmente útil cuando actualiza su aplicación y quiere transformar algunas URLs antiguas. For instance, you might want your URLs to be:
 
 ```
 https://domain.com/controller/key1/value1/key2/value
@@ -841,7 +842,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> Actualmente, el vinculador (binder) solo utilizará la clave primaria de los modelos para realizar un `findFirst()`. An example route for the above would be `/posts/show/{1}` 
+> Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}` 
 > 
 > {: .alert .alert-warning }
 
@@ -979,7 +980,7 @@ class ExceptionsPlugin
 > {: .alert .alert-danger }
 
 ## Eventos
-[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to an [Manager](events) if it is present. Los eventos son disparados usando el tipo `dispatch`. Algunos eventos cuando devuelven el booleano `false` podrían detener la operación activa. Se soportan los siguientes eventos:
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to a [Manager](events) if it is present. Los eventos son disparados usando el tipo `dispatch`. Algunos eventos cuando devuelven el booleano `false` podrían detener la operación activa. Se soportan los siguientes eventos:
 
 | Nombre de evento       | Disparado                                                                                                                   | Puede detenerse |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:---------------:|
@@ -1051,7 +1052,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not. 
+> **NOTE**: Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not. 
 > 
 > {: .alert .alert-warning }
 
