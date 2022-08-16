@@ -145,7 +145,7 @@
                 "url": "/api/"
             },
             {
-                "text": "Εφαρμογή",
+                "text": "Application",
                 "url": "/application"
             },
             {
@@ -279,7 +279,7 @@
                 "url": "/tag"
             },
             {
-                "text": "Προβολή",
+                "text": "View",
                 "url": "/views"
             },
             {
@@ -343,11 +343,11 @@
                 "url": "/cookies"
             },
             {
-                "text": "Αίτηση",
+                "text": "Request",
                 "url": "/request"
             },
             {
-                "text": "Ανταπόκριση",
+                "text": "Response",
                 "url": "/response"
             }
         ]

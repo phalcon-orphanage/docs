@@ -100,7 +100,7 @@ Let's look at the code above in more detail.
 
 First we need to create all the necessary services for our CLI application. We are going to create a loader to autoload our tasks, the CLI application, a dispatcher and a CLI Console application. These are the minimum amount of services that we need to instantiate to create a CLI application.
 
-**Φορτωτής**
+**Loader**
 
 ```php
 $loader = new Loader();
@@ -125,7 +125,7 @@ $container  = new CliDI();
 
 We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli](api/phalcon_di#di-factorydefault-cli) container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di](api/phalcon_di#di) and register the services you need, one after another.
 
-**Αποστολέας**
+**Dispatcher**
 
 ```php
 $dispatcher = new Dispatcher();
@@ -148,7 +148,7 @@ The above snippet is optional but will allow you to access any configuration set
 
 Make sure to update the include path to be relative to where your `cli.php` file is.
 
-**Εφαρμογή**
+**Application**
 
 ```php
 $console = new Console($container);
@@ -503,7 +503,7 @@ The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There a
 | `:params`    | Any parameters                             |
 | `:int`       | Whether this is an integer route parameter |
 
-The [Phalcon\Cli\Router](api/phalcon_cli#cli-router) comes with two predefined routes, so that it works right out of the box. Αυτά είναι:
+The [Phalcon\Cli\Router](api/phalcon_cli#cli-router) comes with two predefined routes, so that it works right out of the box. These are:
 
 - `/:task/:action`
 - `/:task/:action/:params`

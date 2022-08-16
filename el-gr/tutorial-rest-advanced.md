@@ -72,7 +72,7 @@ Setting up the
 ### Tokens
 ### Verification
 ### Επικύρωση
-### Ανταπόκριση
+### Response
 
 ## CLI
 

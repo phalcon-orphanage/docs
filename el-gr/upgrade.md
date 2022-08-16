@@ -364,7 +364,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Αποστολέας
+## Dispatcher
 
 - Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
 - Added `getHandlerSuffix()`, `setHandlerSuffix()`
@@ -881,7 +881,7 @@ $group->addTrace(
 
 * * *
 
-## Αίτηση
+## Request
 
 ### Http\Request
 
@@ -1012,7 +1012,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Annotations\Adapter\Xcache | Removed    |                                                |
 | Phalcon\Annotations\Factory         | Renamed to | Phalcon\Annotations\AnnotationsFactory       |
 
-### Εφαρμογή
+### Application
 
 | 3.4.x                | State      | 4.0.x                                     |
 | -------------------- | ---------- | ----------------------------------------- |
@@ -1084,7 +1084,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Db\Adapter\Pdo\Factory | Renamed to | Phalcon\Db\Adapter\PdoFactory       |
 |                                    | New        | Phalcon\Db\Enum                      |
 
-### Αποστολέας
+### Dispatcher
 
 | 3.4.x               | State      | 4.0.x                                   |
 | ------------------- | ---------- | --------------------------------------- |

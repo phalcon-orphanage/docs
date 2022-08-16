@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Φορτωτής'
+title: 'Loader'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 
-# Φορτωτής
+# Loader
 
 * * *
 

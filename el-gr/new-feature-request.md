@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'New Feature Request'
+title: 'Αίτημα νέας λειτουργικότητας'
 keywords: 'new feature request, nfr'
 ---
 
-# New Feature Request
+# Αίτημα νέας λειτουργικότητας
 
 * * *
 
