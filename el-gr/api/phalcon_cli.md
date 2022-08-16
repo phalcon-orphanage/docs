@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Cli'
 ---
@@ -972,3 +972,4 @@ Sets the events manager
 | Namespace  | Phalcon\Cli |
 
 Interface for task handlers
+
