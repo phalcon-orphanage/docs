@@ -993,7 +993,7 @@ Establece el nombre de servicio de conexión *DependencyInjection* usado para es
 
 ```php
 public function skipOperation(bool $skip): void
-```php
+```
 Omite la operación actual forzando un estado de éxito
 
 ```php
@@ -3800,7 +3800,6 @@ Las opciones disponibles son:
 Opciones `ini`:
 
 ```
-; phalcon.orm.ast_cache = null
 ; phalcon.orm.cache_level = 3
 ; phalcon.orm.case_insensitive_column_map = false
 ; phalcon.orm.cast_last_insert_id_to_int = false
@@ -3816,11 +3815,12 @@ Opciones `ini`:
 ; phalcon.orm.ignore_unknown_columns = false
 ; phalcon.orm.late_state_binding = false
 ; phalcon.orm.not_null_validations = true
-; phalcon.orm.parser_cache = null,
-; phalcon.orm.resultset_prefetch_records = 0
+; phalcon.orm.resultset_prefetch_records = "0"
 ; phalcon.orm.unique_cache_id = 3
 ; phalcon.orm.update_snapshot_on_save = true
 ; phalcon.orm.virtual_foreign_keys = true
+; phalcon.db.escape_identifiers = On
+; phalcon.db.force_casting = Off
 ```
 
 > **NOTE** `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. Esto añadirá una sobrecarga adicional a su aplicación. Puede cambiar este comportamiento añadiendo `phalcon.orm.disable_assign_setters = 1` a su fichero ini, con esto se usará simplemente `$this->property = value`. 
