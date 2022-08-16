@@ -3,11 +3,12 @@ layout: default
 language: 'en'
 version: '5.0'
 title: 'Dispatcher'
+upgrade: '#dispatcher'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---
 # Dispatcher Component
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
@@ -395,7 +396,7 @@ while (true !== $finished) {
 In the code above, we are calculating the controller name, instantiate it and call the relevant action. After that we finish the loop. The example is very simplified and lacks validations, filters and additional checks, but it demonstrates the normal flow of operation within the dispatcher.
 
 ## Forwarding
-The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas, and if not allowed be forwarded to other controllers and actions, thus allowing you to reuse code.
+The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas, and if not allowed to be forwarded to other controllers and actions, thus allowing you to reuse code.
 
 ```php
 <?php
@@ -422,7 +423,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Keep in mind that performing a `forward` is not the same as making a HTTP redirect. Although they produce the same result, performing a `forward` will not reload the current page, while the HTTP redirect needs two requests to complete the process.
+> **NOTE**: Keep in mind that performing a `forward` is not the same as making an HTTP redirect. Although they produce the same result, performing a `forward` will not reload the current page, while the HTTP redirect needs two requests to complete the process.
 {: .alert .alert-info }
 
 Examples:
@@ -461,7 +462,7 @@ A `forward` action accepts the following parameters:
 
 ## Parameters
 ### Preparing
-By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance you might want your URLs to be:
+By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance, you might want your URLs to be:
  
 ```
 https://domain.com/controller/key1/value1/key2/value
@@ -837,7 +838,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+> Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
 {: .alert .alert-warning }
 
 ## Not-Found (404) 
@@ -973,21 +974,21 @@ class ExceptionsPlugin
 {: .alert .alert-danger }
 
 ## Events
-[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to an [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to a [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Event Name             | Triggered                                                                                                                   | Can stop |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------|:--------:|
-| `afterBinding`         | After models are bound but before executing route                                                                           |    Yes   |
-| `afterDispatch`        | After executing the controller/action method.                                                                               |    Yes   |
+| `afterBinding`         | After models are bound but before executing route                                                                           |   Yes    |
+| `afterDispatch`        | After executing the controller/action method.                                                                               |   Yes    |
 | `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |    No    |
 | `afterExecuteRoute`    | After executing the controller/action method.                                                                               |    No    |
 | `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |    No    |
-| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |    Yes   |
-| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |    Yes   |
-| `beforeException`      | Before the dispatcher throws any exception                                                                                  |    Yes   |
-| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |    Yes   |
+| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
+| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Yes    |
+| `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Yes    |
+| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |   Yes    |
 | `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |    No    |
-| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |    Yes   |
+| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Yes    |
 
 The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl)
 
@@ -1045,7 +1046,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
+> **NOTE**: Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
 {: .alert .alert-warning }
 
 ## Events Manager
