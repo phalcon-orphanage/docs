@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Crypt'
 keywords: 'crypt, encryption, decryption, ciphers'
@@ -287,3 +287,4 @@ class SecretsController extends Controller
 [suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
 [crypt]: api/phalcon_crypt#crypt
 [crypt-mismatch]: api/phalcon_crypt#crypt-mismatch
+
