@@ -2934,9 +2934,12 @@ Como se ha mencionado anteriormente, los conjuntos de resultados son colecciones
 Sin embargo, hay veces que necesitará obtener los datos en modo solo lectura, como en casos en los que solo visualiza datos. En estos casos, es útil cambiar la forma en que se devuelven los registros para ahorrar recursos y aumentar el rendimiento. The strategy used to represent these objects returned in a resultset is called `hydration`.
 
 Phalcon offers three ways of hydrating data:
-- Arrays : `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`
-- Objects : `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS`
-- Records : `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS`
+
+| Result   | Mode                                              |
+| -------- | ------------------------------------------------- |
+| Vectores | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
+| Objetos  | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
+| Records  | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
 
 El modo de hidratación por defecto es devolver registros (`HYDRATE_RECORDS`). Podemos cambiar fácilmente el modo de hidratación para obtener vectores u objetos. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
