@@ -109,7 +109,7 @@ In Phalcon, relationships must be defined in the `initialize()` method of a mode
 - referenced model
 - referenced fields
 
-| Method          | Περιγραφή                  |
+| Μέθοδος         | Περιγραφή                  |
 | --------------- | -------------------------- |
 | `belongsTo`     | Defines a n-1 relationship |
 | `hasMany`       | Defines a 1-n relationship |
@@ -454,7 +454,7 @@ class Products extends Model
 > 
 > {: .alert .alert-info }
 
-## Accessing
+## Πρόσβαση
 There are several ways that we can access the relationships of a model.
 
 - Magic `__get`, `__set`
@@ -645,13 +645,13 @@ foreach ($products as $product) {
 
 The prefix `get` is used to `find()`/`findFirst()` related records.
 
-| Type             | Implicit Method | Returns                                                              |
-| ---------------- | --------------- | -------------------------------------------------------------------- |
-| Belongs-To       | `findFirst`     | Model instance of the related record directly                        |
-| Has-One          | `findFirst`     | Model instance of the related record directly                        |
-| Has-One-Through  | `findFirst`     | Model instance of the related record directly                        |
-| Has-Many         | `find`          | Collection of model instances of the referenced model                |
-| Has-Many-to-Many | (complex query) | Collection of model instances of the referenced model (`inner join`) |
+| Τύπος            | Υπονοούμενη Μέθοδος | Επιστρέφει                                                           |
+| ---------------- | ------------------- | -------------------------------------------------------------------- |
+| Belongs-To       | `findFirst`         | Model instance of the related record directly                        |
+| Has-One          | `findFirst`         | Model instance of the related record directly                        |
+| Has-One-Through  | `findFirst`         | Model instance of the related record directly                        |
+| Has-Many         | `find`              | Collection of model instances of the referenced model                |
+| Has-Many-to-Many | (complex query)     | Collection of model instances of the referenced model (`inner join`) |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -1223,7 +1223,7 @@ class Products extends Model
 
 The code above allows you to delete all the related record if the primary record is deleted (cascade delete).
 
-## Operations
+## Λειτουργίες
 You can perform operations using relationships, if a resultset returns complete objects.
 
 ### Save
