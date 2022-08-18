@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon Query Language (PHQL)'
 keywords: 'phql, phalcon query language, query language'
@@ -8,14 +8,14 @@ keywords: 'phql, phalcon query language, query language'
 
 # Phalcon Query Language (PHQL)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows you to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
 To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite][sqlite]. This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
-The parser first checks the syntax of the PHQL statement to be parsed, then builds an intermediate representation of the statement and finally it converts it to the respective SQL dialect of the target RDBMS.
+The parser first checks the syntax of the PHQL statement to be parsed, then builds an intermediate representation of the statement, and finally it converts it to the respective SQL dialect of the target RDBMS.
 
 In PHQL, we have implemented a set of features to make your access to databases more securely:
 
@@ -562,7 +562,7 @@ foreach ($invoices as $invoice) {
 
 Scalars are mapped as properties of each 'row', while complete objects are mapped as properties with the name of its related model. In the above example, the scalar `status` is accessed directly from the object, while the database row can be accessed by the `invoices` property, which is the same name as the name of the model.
 
-If you mix `*` selections from one model with columns from another, you will end up with both scalars as well as objects.
+If you mix `*` selections from one model with columns from another, you will end up with both scalars and objects.
 
 ```php
 <?php
@@ -639,7 +639,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-Note that we are selecting one column from the `Customers` model and we need to alias it (`name_last`) so that it becomes a scalar in our resultset.
+Note that we are selecting one column from the `Customers` model, and we need to alias it (`name_last`) so that it becomes a scalar in our resultset.
 
 ### Joins
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
@@ -1237,7 +1237,7 @@ $records  = $this
 ;
 ```
 
-Inserting data with specific columns columns:
+Inserting data with specific columns:
 
 ```php
 <?php
@@ -1695,7 +1695,7 @@ if (false === $result->success()) {
 ```
 
 ## Query Builder
-[Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] is a very handy builder that allows you to construct PHQL statements in an object oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
+[Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] is a very handy builder that allows you to construct PHQL statements in an object-oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
 
 The PHQL query:
 
@@ -2078,7 +2078,7 @@ public function innerJoin(
     string $alias = null
 ): BuilderInterface
 ```
-Adds an `INNER` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
+Adds an `INNER` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
 
 ```php
 <?php
@@ -2133,7 +2133,7 @@ public function join(
 ): BuilderInterface
 ```
 
-Adds a join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias. The last parameter defines the `type` of the join. By default the join is `INNER`. Acceptable values are: `INNER`, `LEFT` and `RIGHT`.
+Adds a join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias. The last parameter defines the `type` of the join. By default, the join is `INNER`. Acceptable values are: `INNER`, `LEFT` and `RIGHT`.
 
 ```php
 <?php
@@ -2169,7 +2169,7 @@ public function leftJoin(
     string $alias = null
 ): BuilderInterface
 ```
-Adds a `LEFT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
+Adds a `LEFT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
 
 ```php
 <?php
@@ -2377,7 +2377,7 @@ public function rightJoin(
     string $alias = null
 ): BuilderInterface
 ```
-Adds a `RIGHT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
+Adds a `RIGHT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
 
 ```php
 <?php
@@ -2918,7 +2918,7 @@ Literals can be disabled in PHQL. This means that you will not be able to use st
 > 
 > {: .alert .alert-info }
 
-> **NOTE**: This setting can be set globally for all models. Please refer to the [models](db-models) document for a how to and additional settings. 
+> **NOTE**: This setting can be set globally for all models. Please refer to the [models](db-models) document for a how-to and additional settings. 
 > 
 > {: .alert .alert-info }
 
@@ -2985,7 +2985,7 @@ $result = $manager->executeQuery($phql);
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application connecting to.
 
 ## Custom Dialect
-Due to differences in SQL dialects based on the RDBMS of your choice, not all methods are supported. However you can extend the dialect, so that you can use additional functions that your RDBMS supports.
+Due to differences in SQL dialects based on the RDBMS of your choice, not all methods are supported. However, you can extend the dialect, so that you can use additional functions that your RDBMS supports.
 
 For the example below, we are using the `MATCH_AGAINST` method for MySQL.
 
@@ -3019,7 +3019,7 @@ $connection = new Connection(
 );
 ```
 
-Now you can use this function in PHQL and it internally translates to the correct SQL using the custom function:
+Now you can use this function in PHQL, and it internally translates to the correct SQL using the custom function:
 
 ```php
 
@@ -3083,7 +3083,7 @@ $connection = new Connection(
 );
 ```
 
-Now you can use this function in PHQL and it internally translates to the correct SQL using the custom function:
+Now you can use this function in PHQL, and it internally translates to the correct SQL using the custom function:
 
 ```php
 
@@ -3204,7 +3204,7 @@ $robots = Invoices::findByRawSql(
 ## Troubleshooting
 Some things to keep in mind when using PHQL:
 
-* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case sensitive file systems such as Linux.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
 * The correct charset must be defined in the connection to bind parameters successfully.
 * Aliased classes are not replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
 * If column renaming is enabled avoid, using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
