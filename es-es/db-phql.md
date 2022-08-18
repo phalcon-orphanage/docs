@@ -8,14 +8,14 @@ keywords: 'phql, lenguaje consulta phalcon, lenguaje consulta'
 
 # Lenguaje de consulta de Phalcon (PHQL)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Phalcon Query Language, PhalconQL o simplemente PHQL es un dialecto SQL de alto nivel, orientado a objetos, que le permite escribir consultas usando un lenguaje estándar como SQL. PHQL está implementado como un analizador (escrito en C) que traduce la sintaxis en la del RDBMS destino.
 
 To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite][sqlite]. Esta tecnología proporciona un analizador pequeño en memoria con una huella en memoria muy baja que también es segura en hilos.
 
-El analizador primero comprueba la sintaxis de la sentencia PHQL a ser analizada, luego construye una representación intermedia de la sentencia y finalmente la convierte al dialecto SQL respectivo del RDBMS de destino.
+The parser first checks the syntax of the PHQL statement to be parsed, then builds an intermediate representation of the statement, and finally it converts it to the respective SQL dialect of the target RDBMS.
 
 En PHQL, hemos implementado un conjunto de características para hacer más seguro su acceso a las base de datos:
 
@@ -562,7 +562,7 @@ foreach ($invoices as $invoice) {
 
 Los escalares se mapean como propiedades de cada 'fila', mientras que los objetos completos se mapean como propiedades con el nombre de su modelo relacionado. En el ejemplo anterior, el escalar `status` se accede directamente desde el modelo, mientras que la fila de la base de datos se accede por la propiedad `invoices`, que es el mismo nombre que el nombre del modelo.
 
-Si mezcla selecciones `*` de un modelo con columnas de otro, terminará tanto con escalares como con objetos.
+If you mix `*` selections from one model with columns from another, you will end up with both scalars and objects.
 
 ```php
 <?php
@@ -639,7 +639,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-Tenga en cuenta que estamos seleccionando una columna del modelo `Customers` y necesitamos crear un alias (`name_last`) para que se convierta en un escalar en nuestro conjunto de resultados.
+Note that we are selecting one column from the `Customers` model, and we need to alias it (`name_last`) so that it becomes a scalar in our resultset.
 
 ### Uniones (Joins)
 Es fácil solicitar registros desde múltiples modelos usando PHQL. Se soportan la mayoría de tipos de uniones. Como definimos las relaciones en los modelos, PHQL añade estas condiciones automáticamente:
@@ -1237,7 +1237,7 @@ $records  = $this
 ;
 ```
 
-Insertar datos con columnas específicas:
+Inserting data with specific columns:
 
 ```php
 <?php
@@ -1695,7 +1695,7 @@ if (false === $result->success()) {
 ```
 
 ## Constructor de Consultas
-[Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] is a very handy builder that allows you to construct PHQL statements in an object oriented way. La mayoría de métodos devuelven el objeto constructor, permitiéndole usar una interfaz fluida y lo suficiente flexible para permitirle añadir condicionales si lo necesita, sin tener que crear sentencias `if` complejas y concatenaciones de cadenas al construir la sentencia PHQL.
+[Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] is a very handy builder that allows you to construct PHQL statements in an object-oriented way. La mayoría de métodos devuelven el objeto constructor, permitiéndole usar una interfaz fluida y lo suficiente flexible para permitirle añadir condicionales si lo necesita, sin tener que crear sentencias `if` complejas y concatenaciones de cadenas al construir la sentencia PHQL.
 
 La consulta PHQL:
 
@@ -2078,7 +2078,7 @@ public function innerJoin(
     string $alias = null
 ): BuilderInterface
 ```
-Añade un `INNER` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias.
+Añade un `INNER` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
 
 ```php
 <?php
@@ -2133,7 +2133,7 @@ public function join(
 ): BuilderInterface
 ```
 
-Añade un join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias. El último parámetro define el `tipo` del join. Por defecto, el join es `INNER`. Los valores aceptables son: `INNER`, `LEFT` y `RIGHT`.
+Añade un join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias. El último parámetro define el `tipo` del join. By default, the join is `INNER`. Los valores aceptables son: `INNER`, `LEFT` y `RIGHT`.
 
 ```php
 <?php
@@ -2169,7 +2169,7 @@ public function leftJoin(
     string $alias = null
 ): BuilderInterface
 ```
-Añade un `LEFT` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias.
+Añade un `LEFT` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
 
 ```php
 <?php
@@ -2377,7 +2377,7 @@ public function rightJoin(
     string $alias = null
 ): BuilderInterface
 ```
-Añade un `RIGHT` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. Sin embargo, puede configurar las condiciones manualmente usando el segundo parámetro, mientras que el tercero (si se especifica) es el alias.
+Añade un `RIGHT` join a la consulta. El primer parámetro es el modelo. Las condiciones de unión se calculan automáticamente, si las relaciones relevantes se han configurado apropiadamente en los respectivos modelos. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
 
 ```php
 <?php
@@ -2918,7 +2918,7 @@ Los literales se pueden deshabilitar en PHQL. Esto significa que no se podrán u
 > 
 > {: .alert .alert-info }
 
-> **NOTE**: This setting can be set globally for all models. Por favor, consulte el documento de [modelos](db-models) para ver cómo y configuración adicional. 
+> **NOTE**: This setting can be set globally for all models. Please refer to the [models](db-models) document for a how-to and additional settings. 
 > 
 > {: .alert .alert-info }
 
@@ -2985,7 +2985,7 @@ $result = $manager->executeQuery($phql);
 Los delimitadores se traducen dinámicamente a delimitadores válidos dependiendo del sistema de base de datos al que se conecta la aplicación.
 
 ## Dialecto Personalizado
-Debido a las diferencias en los dialectos SQL basados en el RDBMS de su elección, no se soportan todos los métodos. Sin embargo, puede extender el dialecto, de modo que pueda usar funciones adicionales que soporte su RDBMS.
+Debido a las diferencias en los dialectos SQL basados en el RDBMS de su elección, no se soportan todos los métodos. However, you can extend the dialect, so that you can use additional functions that your RDBMS supports.
 
 Para el siguiente ejemplo, usamos el método `MATCH_AGAINST` para MySQL.
 
@@ -3019,7 +3019,7 @@ $connection = new Connection(
 );
 ```
 
-Ahora puede usar esta función en PHQL y se traduce internamente al SQL correcto usando la función personalizada:
+Now you can use this function in PHQL, and it internally translates to the correct SQL using the custom function:
 
 ```php
 
@@ -3083,7 +3083,7 @@ $connection = new Connection(
 );
 ```
 
-Ahora puede usar esta función en PHQL y se traduce internamente al SQL correcto usando la función personalizada:
+Now you can use this function in PHQL, and it internally translates to the correct SQL using the custom function:
 
 ```php
 
@@ -3204,7 +3204,7 @@ $robots = Invoices::findByRawSql(
 ## Resolución de problemas
 Algunas cosas a tener en cuenta al usar PHQL:
 
-* La clases son sensibles a mayúsculas y minúsculas, si una clase no se define con el mismo nombre con el que se creó podría conducir a comportamientos inesperados en sistemas operativos con un sistema de ficheros sensible a mayúsculas y minúsculas, como Linux.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
 * Se debe definir en la conexión el conjunto de caracteres correcto para enlazar parámetros correctamente.
 * Las clases con alias no se reemplazan por las clases con espacios de nombres completos, ya que esto solo ocurre en el código PHP y no dentro de cadenas.
 * Si el renombrado de columnas está habilitado para evitar, usar alias de columnas con el mismo nombre que las columnas a renombrar, podría confundir al resolutor de consultas.
