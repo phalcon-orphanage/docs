@@ -1743,21 +1743,23 @@ $invoices = $this
 ### Parameters
 Whether you create a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
 
-- `bind` - `array` - array of the data to be bound
-- `bindTypes` - `array` - PDO parameter types
-- `container` - DI
-- `columns` - `array | string` - columns to select
-- `conditions` - `array | string` - conditions (where)
-- `distinct` - `string` - distinct column
-- `for_update` - `bool` - for update or not
-- `group` - `array` - group by columns
-- `having` - `string` - having columns
-- `joins` - `array` - model classes used for joins
-- `limit` - `array | int` - limit for the records (i.e. `20` or `[20, 20]`)
-- `models` - `array` - model classes used
-- `offset` - `int` - the offset
-- `order` - `array | string` - order columns
-- `shared_lock` - `bool` - issue shared lock or not
+| Параметр      | Тип                     | Описание                                        |
+| ------------- | ----------------------- | ----------------------------------------------- |
+| `bind`        | `array`                 | array of the data to be bound                   |
+| `bindTypes`   | `array`                 | PDO parameter types                             |
+| `container`   | DI                      | DI контейнер                                    |
+| `columns`     | `array&vert;string` | columns to select                               |
+| `conditions`  | `array&vert;string` | conditions (where)                              |
+| `distinct`    | `string`                | distinct column                                 |
+| `for_update`  | `bool`                  | for update or not                               |
+| `group`       | `array`                 | group by columns                                |
+| `having`      | `string`                | having columns                                  |
+| `joins`       | `array`                 | model classes used for joins                    |
+| `limit`       | `array&vert;int`    | limit for the records (i.e. `20` or `[20, 20]`) |
+| `models`      | `array`                 | model classes used                              |
+| `offset`      | `int`                   | the offset                                      |
+| `order`       | `array&vert;string` | order columns                                   |
+| `shared_lock` | `bool`                  | issue shared lock or not                        |
 
 ```php
 <?php
@@ -1802,22 +1804,24 @@ $builder = new Builder($params);
 
 ### Getters
 
-- `autoescape(string $identifier)` - `string` - Automatically escapes identifiers but only if they need to be escaped.
-- `getBindParams(): array` - Returns default bind params
-- `getBindTypes(): array` - Returns default [bind types][pdo-constants]
-- `getColumns()` - `string | array` - Return the columns to be queried
-- `getDistinct()` - `bool` - Returns the `SELECT DISTINCT` / `SELECT ALL` clause
-- `getFrom()` - `string | array` - Return the models for the query
-- `getGroupBy()` - `array` - Returns the `GROUP BY` clause
-- `getHaving()` - `string` - Returns the `HAVING` clause
-- `getJoins()` - `array` - Returns `JOIN` join parts of the query
-- `getLimit()` - `string | array` - Returns the current `LIMIT` clause
-- `getModels()` - `string | array | null` - Returns the models involved in the query
-- `getOffset()` - `int` - Returns the current `OFFSET` clause
-- `getOrderBy()` - `string / array` - Returns the `ORDER BY` clause
-- `getPhql()` - `string` - Returns the generated PHQL statement
-- `getQuery()` - `QueryInterface` - Returns the query built
-- `getWhere()` - `string | array` - Return the conditions for the query
+| Метод                                              | Описание                                                               |
+| -------------------------------------------------- | ---------------------------------------------------------------------- |
+| `autoescape(string $identifier): string`           | Automatically escapes identifiers but only if they need to be escaped. |
+| `getBindParams(): array`                           | Returns default bind params                                            |
+| `getBindTypes(): array`                            | Returns default [bind types][pdo-constants]                            |
+| `getColumns(): string&vert;array`              | Return the columns to be queried                                       |
+| `getDistinct(): bool`                              | Returns the `SELECT DISTINCT` / `SELECT ALL` clause                    |
+| `getFrom(): string&vert;array`                 | Return the models for the query                                        |
+| `getGroupBy(): array`                              | Returns the `GROUP BY` clause                                          |
+| `getHaving(): string`                              | Returns the `HAVING` clause                                            |
+| `getJoins(): array`                                | Returns `JOIN` join parts of the query                                 |
+| `getLimit(): string&vert;array`                | Returns the current `LIMIT` clause                                     |
+| `getModels(): string&vert;array&vert;null` | Returns the models involved in the query                               |
+| `getOffset(): int`                                 | Returns the current `OFFSET` clause                                    |
+| `getOrderBy(): string&vert;array`              | Returns the `ORDER BY` clause                                          |
+| `getPhql(): string`                                | Returns the generated PHQL statement                                   |
+| `getQuery(): QueryInterface`                       | Returns the query built                                                |
+| `getWhere(): string&vert;array`                | Return the conditions for the query                                    |
 
 ### Методы
 
