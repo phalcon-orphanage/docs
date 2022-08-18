@@ -64,7 +64,7 @@ class Invoices extends Model
 ## Built In
 The following built-in behaviors are provided by the framework:
 
-| Name                                              | Περιγραφή                                                                                                  |
+| Ονομα                                             | Περιγραφή                                                                                                  |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | [SoftDelete][mvc-model-behavior-softdelete]       | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
 | [Timestampable][mvc-model-behavior-timestampable] | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
@@ -236,7 +236,7 @@ This method receives the notifications from the [Events Manager](events).
 
 Additionally, if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
 
-| Method                                 | Περιγραφή                                                     |
+| Μέθοδος                                | Περιγραφή                                                     |
 | -------------------------------------- | ------------------------------------------------------------- |
 | `getOptions(string $eventName = null)` | Returns the behavior options related to an event              |
 | `mustTakeAction(string $eventName)`    | Checks whether the behavior must take action on certain event |

@@ -2932,9 +2932,12 @@ As mentioned earlier, resultsets are collections of complete objects. This means
 However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in a resultset is called `hydration`.
 
 Phalcon offers three ways of hydrating data:
-- Arrays : `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`
-- Objects : `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS`
-- Records : `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS`
+
+| Result  | Mode                                              |
+| ------- | ------------------------------------------------- |
+| Arrays  | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
+| Objects | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
+| Records | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
 
 The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 

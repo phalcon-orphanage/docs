@@ -118,7 +118,7 @@ if (false === $invoice->save()) {
 
 [Phalcon\Mvc\Model][mvc-model] can generate the following types of validation messages:
 
-| Type                   | Generated when                                                                                                         |
+| Τύπος                  | Δημιουργείται όταν                                                                                                     |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `ConstraintViolation`  | A field, part of a virtual foreign key, is trying to insert/update a value that does not exist in the referenced model |
 | `InvalidCreateAttempt` | Trying to create a record that already exists                                                                          |
@@ -169,10 +169,10 @@ class Invoices extends Model
 ## Failed Events
 Additional events are available when the data validation process finds any inconsistencies:
 
-| Operation                | Name                | Explanation                                                            |
-| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
-| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+| Λειτουργία                     | Όνομα               | Εξήγηση                                                                |
+| ------------------------------ | ------------------- | ---------------------------------------------------------------------- |
+| Εισαγωγή ή Ενημέρωση           | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Εισαγωγή, διαγραφή ή ενημέρωση | `onValidationFails` | Triggered when any data manipulation operation fails                   |
 
 
 ## Custom
