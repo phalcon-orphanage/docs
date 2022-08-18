@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Domain'
 ---
@@ -299,5 +299,3 @@ Sets the output produced from the domain layer.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
-
-

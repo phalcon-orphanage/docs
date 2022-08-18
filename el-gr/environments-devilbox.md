@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Environments - Devilbox'
 keywords: 'environment, devilbox, docker'
@@ -171,6 +171,3 @@ Save the file as `nginx.yml` and ensure not to use any tabs in the file or devil
 [hosts-mac]: https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-mac.html#howto-add-project-hosts-entry-on-mac
 [hosts-windows]: https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-win.html#howto-add-project-hosts-entry-on-win
 [auto-dns]: https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html#setup-auto-dns
-
-
-

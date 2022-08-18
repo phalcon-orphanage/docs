@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Flash'
 ---
@@ -363,5 +363,3 @@ Returns the messages stored in session
 protected function setSessionMessages( array $messages ): array;
 ```
 Stores the messages in session
-
-

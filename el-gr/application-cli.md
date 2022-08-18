@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'CLI Application'
 keywords: 'cli, command line, application, tasks'

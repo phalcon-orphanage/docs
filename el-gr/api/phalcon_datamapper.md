@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\DataMapper'
 ---
@@ -1708,5 +1708,3 @@ Adds the `RETURNING` clause
 public function set( string $column, mixed $value = null ): Update;
 ```
 Sets a column = value condition
-
-

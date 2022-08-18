@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Di'
 ---
@@ -841,5 +841,3 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function register( DiInterface $di ): void;
 ```
 Registers a service provider.
-
-

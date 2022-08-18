@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Html'
 ---
@@ -2343,5 +2343,3 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available services
-
-

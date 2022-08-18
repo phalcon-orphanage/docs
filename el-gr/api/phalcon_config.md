@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Config'
 ---
@@ -519,4 +519,3 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 | Namespace  | Phalcon\Config | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Config will use this class
-

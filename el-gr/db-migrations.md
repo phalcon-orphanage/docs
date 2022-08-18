@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Database Migrations'
 keywords: 'database, migrations, schema, tables, columns'
