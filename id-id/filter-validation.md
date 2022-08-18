@@ -1317,6 +1317,7 @@ $validator->add(
 ```
 
 ### PresenceOf
+Validates whether a field is present
 
 ```php
 <?php
