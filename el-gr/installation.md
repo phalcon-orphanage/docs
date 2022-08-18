@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Εγκατάσταση'
 keywords: 'installation, installing Phalcon'
