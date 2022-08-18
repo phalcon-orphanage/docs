@@ -9,13 +9,13 @@ keywords: 'flash, flash messages, flash direct, flash session, templates'
 
 # Flash Messages
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 ## 适配器
-This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
+This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available, but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
 
 | 适配器                                      | 描述                                                                                           |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -170,7 +170,7 @@ or when using Volt
 > {: .alert .alert-info }
 
 ## Styling
-The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default the component uses the following mapping:
+The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default, the component uses the following mapping:
 
 | Type      | Name of CSS class |
 | --------- | ----------------- |
@@ -238,7 +238,7 @@ will produce:
 <div class="alert alert-danger">Error message</div>
 ```
 
-> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setCssClasses()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
@@ -273,7 +273,44 @@ will produce:
 <span class="myErrorClass">Error message</span>
 ```
 
-> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setCustomTemplate()` returns back the object, so you can use in a more fluent interface by chaining calls. 
+> 
+> {: .alert .alert-info }
+
+You can also set the icon class for each CSS class by using `setCssIconClasses()`. This is particularly useful when working with CSS libraries such as \[Bootstrap\]\[bootstrap\].
+
+```php
+<?php
+
+use Phalcon\Escaper;
+use Phalcon\Flash\Direct;
+
+$escaper = new Escaper();
+$flash   = new Direct($escaper);
+
+$iconClasses = [
+    'error'   => 'alert alert-error',
+    'success' => 'alert alert-success',
+    'notice'  => 'alert alert-notice',
+    'warning' => 'alert alert-warning',
+];
+
+$flash->setCssClasses($cssClasses);
+```
+
+and then calling
+
+```php
+$flash->error('Error message');
+```
+
+will produce:
+
+```html
+<div class="errorMessage"><i class="alert alert-error"></i>Error message
+```
+
+> **NOTE**: The `setCssIconClasses()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
@@ -335,7 +372,7 @@ $flash->clear();
 > {: .alert .alert-info }
 
 ## Implicit Flush
-By default implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
+By default, implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
 
 ```php
 <?php
@@ -356,7 +393,7 @@ echo $flash
 ;
 ```
 
-> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setImplicitFlush()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
@@ -390,12 +427,12 @@ will produce
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setAutoescape()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally, the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`.
 
 An example of the registration of the service as well as accessing it is below:
 
