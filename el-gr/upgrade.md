@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4, v5'
