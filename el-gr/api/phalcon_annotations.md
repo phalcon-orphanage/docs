@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Annotations'
 ---
@@ -693,3 +693,5 @@ Returns the annotations found in the properties' docblocks
 public function getReflectionData(): array;
 ```
 Returns the raw parsing intermediate definitions used to construct the reflection
+
+
