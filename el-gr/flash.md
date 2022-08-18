@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 upgrade: '#flash'
 title: 'Flash Messages'
@@ -14,10 +14,10 @@ keywords: 'flash, flash messages, flash direct, flash session, templates'
 ## Επισκόπηση
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
-## Adapters
+## Προσαρμογείς
 This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
 
-| Adapter                                  | Περιγραφή                                                                                    |
+| Προσαρμογέας                             | Περιγραφή                                                                                    |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
 | [Phalcon\Flash\Direct][flash-direct]   | Directly outputs the messages passed to the flasher                                          |
 | [Phalcon\Flash\Session][flash-session] | Temporarily stores the messages in session, then messages can be printed in the next request |
