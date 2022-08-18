@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Πρότυπο Κωδικοποίησης'
 keywords: 'coding standard, zephir'
