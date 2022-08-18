@@ -139,8 +139,7 @@ Gets the value to validate in the object entity source
 ```php
 public function getValueByData(mixed $data, string $field): mixed | null
 ```
-* Gets the value to validate in the array/object data source
-
+Gets the value to validate in the array/object data source
 
 ```php
 public function rule(
