@@ -1743,11 +1743,11 @@ $invoices = $this
 ### Παράμετροι
 Whether you create a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
 
-| Parameter     | Type                    | Περιγραφή                                       |
+| Παράμετρος    | Τύπος                   | Περιγραφή                                       |
 | ------------- | ----------------------- | ----------------------------------------------- |
 | `bind`        | `array`                 | array of the data to be bound                   |
 | `bindTypes`   | `array`                 | PDO parameter types                             |
-| `container`   | DI                      | DI Κοντέινερ                                    |
+| `container`   | DI                      | DI Container                                    |
 | `columns`     | `array&vert;string` | columns to select                               |
 | `conditions`  | `array&vert;string` | conditions (where)                              |
 | `distinct`    | `string`                | distinct column                                 |
