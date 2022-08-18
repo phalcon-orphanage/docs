@@ -3695,9 +3695,9 @@ class Invoices extends Model
      * @return Phalcon\Db\Adapter\AdapterInterface
      */
     public function selectReadConnection(
-        $intermediate, 
-        $bindParams, 
-        $bindTypes
+        array $intermediate, 
+        array $bindParams, 
+        array $bindTypes
     ) {
         if (true === isset($intermediate['where'])) {
             $conditions = $intermediate['where'];

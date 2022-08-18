@@ -809,17 +809,17 @@ To create a connection it's necessary instantiate the adapter class. It only req
 
 | Προσαρμογέας | Παράμετρος   | Κατάσταση   |
 | ------------ | ------------ | ----------- |
-| `MySQL`      | `host`       | απαιτείται  |
-|              | `username`   | απαιτείται  |
-|              | `password`   | απαιτείται  |
-|              | `dbname`     | απαιτείται  |
+| `MySQL`      | `host`       | υποχρεωτικό |
+|              | `username`   | υποχρεωτικό |
+|              | `password`   | υποχρεωτικό |
+|              | `dbname`     | υποχρεωτικό |
 |              | `persistent` | προαιρετικό |
-| `PostgreSQL` | `host`       | απαιτείται  |
-|              | `username`   | απαιτείται  |
-|              | `password`   | απαιτείται  |
-|              | `dbname`     | απαιτείται  |
+| `PostgreSQL` | `host`       | υποχρεωτικό |
+|              | `username`   | υποχρεωτικό |
+|              | `password`   | υποχρεωτικό |
+|              | `dbname`     | υποχρεωτικό |
 |              | `schema`     | προαιρετικό |
-| `Sqlite`     | `dbname`     | απαιτείται  |
+| `Sqlite`     | `dbname`     | υποχρεωτικό |
 
 Connecting to each adapter can be achieved by either the factory as demonstrated above or by passing the relevant options to the constructor of each class.
 

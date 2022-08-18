@@ -2935,11 +2935,11 @@ However, there are times that you will need to get the data in a read only mode,
 
 Phalcon offers three ways of hydrating data:
 
-| Result  | Mode                                              |
-| ------- | ------------------------------------------------- |
-| Arrays  | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
-| Objects | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
-| Records | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
+| Αποτέλεσμα | Λειτουργία                                        |
+| ---------- | ------------------------------------------------- |
+| Arrays     | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
+| Objects    | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
+| Records    | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
 
 The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
@@ -3380,7 +3380,7 @@ var_dump(
 
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
-## Events
+## Γεγονότα
 As mentioned before [Phalcon\Mvc\Model][mvc-model] acts as a listener to events. Therefore, all the events that the model is listening to can be implemented as methods in the model itself. You can check the [events](events) document for additional information.
 
 The events supported are:
@@ -3697,9 +3697,9 @@ class Invoices extends Model
      * @return Phalcon\Db\Adapter\AdapterInterface
      */
     public function selectReadConnection(
-        $intermediate, 
-        $bindParams, 
-        $bindTypes
+        array $intermediate, 
+        array $bindParams, 
+        array $bindTypes
     ) {
         if (true === isset($intermediate['where'])) {
             $conditions = $intermediate['where'];
@@ -3780,25 +3780,25 @@ Model::setup(
 
 The available options are:
 
-| Option                          | Default | Περιγραφή                                                                |
-| ------------------------------- |:-------:| ------------------------------------------------------------------------ |
-| `caseInsensitiveColumnMap`      | `false` | Case insensitive column map                                              |
-| `castLastInsertIdToInt`         | `false` | Casts the `lastInsertId` to an integer                                   |
-| `castOnHydrate`                 | `false` | Automatic cast to original types on hydration                            |
-| `columnRenaming`                | `true`  | Column renaming                                                          |
-| `disableAssignSetters`          | `false` | Disable setters                                                          |
-| `enableImplicitJoins`           | `true`  | Enable implicit joins                                                    |
-| `events`                        | `true`  | Callbacks, hooks and event notifications from all the models             |
-| `exceptionOnFailedMetaDataSave` | `false` | Throw an exception when there is a failed meta-data save                 |
-| `exceptionOnFailedSave`         | `false` | Throw an exception when there is a failed `save()`                       |
-| `forceCasting`                  | `false` | Force casting bound parameters to their native types                     |
-| `ignoreUnknownColumns`          | `false` | Ignore unknown columns on the model                                      |
-| `lateStateBinding`              | `false` | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |
-| `notNullValidations`            | `true`  | Automatically validate the not `null` columns present                    |
-| `phqlLiterals`                  | `true`  | Literals in the PHQL parser                                              |
-| `prefetchRecords`               |   `0`   | The number of records to prefetch when getting data from the ORM         |
-| `updateSnapshotOnSave`          | `true`  | Update snapshots on `save()`                                             |
-| `virtualForeignKeys`            | `true`  | Virtual foreign keys                                                     |
+| Επιλογή                         | Προεπιλογή | Περιγραφή                                                                |
+| ------------------------------- |:----------:| ------------------------------------------------------------------------ |
+| `caseInsensitiveColumnMap`      |  `false`   | Case insensitive column map                                              |
+| `castLastInsertIdToInt`         |  `false`   | Casts the `lastInsertId` to an integer                                   |
+| `castOnHydrate`                 |  `false`   | Automatic cast to original types on hydration                            |
+| `columnRenaming`                |   `true`   | Column renaming                                                          |
+| `disableAssignSetters`          |  `false`   | Disable setters                                                          |
+| `enableImplicitJoins`           |   `true`   | Enable implicit joins                                                    |
+| `events`                        |   `true`   | Callbacks, hooks and event notifications from all the models             |
+| `exceptionOnFailedMetaDataSave` |  `false`   | Throw an exception when there is a failed meta-data save                 |
+| `exceptionOnFailedSave`         |  `false`   | Throw an exception when there is a failed `save()`                       |
+| `forceCasting`                  |  `false`   | Force casting bound parameters to their native types                     |
+| `ignoreUnknownColumns`          |  `false`   | Ignore unknown columns on the model                                      |
+| `lateStateBinding`              |  `false`   | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |
+| `notNullValidations`            |   `true`   | Automatically validate the not `null` columns present                    |
+| `phqlLiterals`                  |   `true`   | Literals in the PHQL parser                                              |
+| `prefetchRecords`               |    `0`     | The number of records to prefetch when getting data from the ORM         |
+| `updateSnapshotOnSave`          |   `true`   | Update snapshots on `save()`                                             |
+| `virtualForeignKeys`            |   `true`   | Virtual foreign keys                                                     |
 
 `ini` options:
 
