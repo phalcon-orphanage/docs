@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Acl'
 ---
@@ -795,5 +795,3 @@ Returns role description
 public function getName(): string;
 ```
 Returns the role name
-
-

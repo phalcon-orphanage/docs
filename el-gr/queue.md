@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Χρησημοποίηση Ουρών'
 keywords: 'queue, nats, beanstalk, redis'

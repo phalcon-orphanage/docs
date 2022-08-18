@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Phalcon\Cache'
 ---
@@ -424,4 +424,3 @@ Exceptions thrown in Phalcon\Cache will use this class
 | Namespace  | Phalcon\Cache\Exception | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Cache will use this class
-
