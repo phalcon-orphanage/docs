@@ -36,7 +36,7 @@ Models allow you to implement events that will be thrown while performing an ins
 | Insert/Update | `prepareSave`              |  Όχι  | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               |  Ναι  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
 
-### Events
+### Γεγονότα
 Models act as listeners to the events manager. Therefore, we only need to implement the events above in the models directly as public methods:
 
 ```php

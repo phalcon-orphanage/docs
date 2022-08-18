@@ -67,7 +67,7 @@ The above code will print the field names and also the fields to field types arr
 ## Constants
 [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] exposes a number of constants that can be used to retrieve attributes from the internal collection.
 
-| Name                              | Περιγραφή                                                                  |
+| Ονομα                             | Περιγραφή                                                                  |
 | --------------------------------- | -------------------------------------------------------------------------- |
 | `MODELS_ATTRIBUTES`               | Every column in the mapped table                                           |
 | `MODELS_AUTOMATIC_DEFAULT_INSERT` | Fields that must be ignored from `INSERT` SQL statements                   |
@@ -491,7 +491,7 @@ Retrieving the metadata is an expensive database operation, and we certainly do 
 > 
 > {: .alert .alert-info }
 
-| Adapter                                                                         | Περιγραφή                                                                                           |
+| Προσαρμογέας                                                                    | Περιγραφή                                                                                           |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | [Phalcon\Mvc\Models\MetaData\Apcu][mvc-model-metadata-apcu]                 | This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. (production) |
 | [Phalcon\Mvc\Models\MetaData\Libmemcached][mvc-model-metadata-libmemcached] | This adapter uses the [Memcached Server][memcached] to store the table metadata. (production)       |
@@ -651,7 +651,7 @@ You can use the `orm.exception_on_failed_metadata_save` option in your `php.ini`
 orm.exception_on_failed_metadata_save = true
 ```
 
-## Strategies
+## Στρατηγικές
 The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
 
 ```php
@@ -723,7 +723,7 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name        | Περιγραφή                                         |
+| Όνομα       | Περιγραφή                                         |
 | ----------- | ------------------------------------------------- |
 | `@Primary`  | Mark the field as part of the table's primary key |
 | `@Identity` | The field is an auto_increment/serial column      |
@@ -731,7 +731,7 @@ The following annotations are supported:
 
 The annotation `@Column` supports the following parameters:
 
-| Name                 | Περιγραφή                                                                                                                                                                                                      |
+| Όνομα                | Περιγραφή                                                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `column`             | Real column name                                                                                                                                                                                               |
 | `type`               | The column's type: `char`, `biginteger`, `blob`, `boolean`, `date`, `datetime`, `decimal`, `integer`, `float`, `json`, `longblob`, `mediumblob`, `timestamp`, `tinyblob`, `text`, `varchar`/`string` (default) |

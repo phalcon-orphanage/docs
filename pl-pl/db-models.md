@@ -993,7 +993,7 @@ Sets the DependencyInjection connection service name used to write data
 
 ```php
 public function skipOperation(bool $skip): void
-```php
+```
 Skips the current operation forcing a success state
 
 ```php
@@ -2932,9 +2932,12 @@ As mentioned earlier, resultsets are collections of complete objects. This means
 However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in a resultset is called `hydration`.
 
 Phalcon offers three ways of hydrating data:
-- Arrays : `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`
-- Objects : `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS`
-- Records : `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS`
+
+| Result  | Mode                                              |
+| ------- | ------------------------------------------------- |
+| Arrays  | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
+| Objects | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
+| Records | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
 
 The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
@@ -3798,7 +3801,6 @@ The available options are:
 `ini` options:
 
 ```
-; phalcon.orm.ast_cache = null
 ; phalcon.orm.cache_level = 3
 ; phalcon.orm.case_insensitive_column_map = false
 ; phalcon.orm.cast_last_insert_id_to_int = false
@@ -3814,11 +3816,12 @@ The available options are:
 ; phalcon.orm.ignore_unknown_columns = false
 ; phalcon.orm.late_state_binding = false
 ; phalcon.orm.not_null_validations = true
-; phalcon.orm.parser_cache = null,
-; phalcon.orm.resultset_prefetch_records = 0
+; phalcon.orm.resultset_prefetch_records = "0"
 ; phalcon.orm.unique_cache_id = 3
 ; phalcon.orm.update_snapshot_on_save = true
 ; phalcon.orm.virtual_foreign_keys = true
+; phalcon.db.escape_identifiers = On
+; phalcon.db.force_casting = Off
 ```
 
 > **NOTE** `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`. 

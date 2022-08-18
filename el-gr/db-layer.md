@@ -395,7 +395,7 @@ public function getDefaultIdValue(): RawValue
 Return the default identity value to insert in an identity column
 
 ```php
-public function getErrorInfo() -> array
+public function getErrorInfo(): array
 ```
 Return the last error information
 
@@ -659,7 +659,7 @@ Although all adapter classes can be instantiated using the `new` keyword, Phalco
 
 The reserved names are:
 
-| Name         | Adapter                                                            |
+| Ονομα        | Προσαρμογέας                                                       |
 | ------------ | ------------------------------------------------------------------ |
 | `mysql`      | [Phalcon\Db\Adapter\Pdo\Mysql][db-adapter-pdo-mysql]           |
 | `postgresql` | [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql] |
@@ -807,19 +807,19 @@ $posts = $modelsManager->executeQuery(
 ## Connect
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
-| Adapter      | Parameter    | Status   |
-| ------------ | ------------ | -------- |
-| `MySQL`      | `host`       | required |
-|              | `username`   | required |
-|              | `password`   | required |
-|              | `dbname`     | required |
-|              | `persistent` | optional |
-| `PostgreSQL` | `host`       | required |
-|              | `username`   | required |
-|              | `password`   | required |
-|              | `dbname`     | required |
-|              | `schema`     | optional |
-| `Sqlite`     | `dbname`     | required |
+| Προσαρμογέας | Παράμετρος   | Κατάσταση   |
+| ------------ | ------------ | ----------- |
+| `MySQL`      | `host`       | απαιτείται  |
+|              | `username`   | απαιτείται  |
+|              | `password`   | απαιτείται  |
+|              | `dbname`     | απαιτείται  |
+|              | `persistent` | προαιρετικό |
+| `PostgreSQL` | `host`       | απαιτείται  |
+|              | `username`   | απαιτείται  |
+|              | `password`   | απαιτείται  |
+|              | `dbname`     | απαιτείται  |
+|              | `schema`     | προαιρετικό |
+| `Sqlite`     | `dbname`     | απαιτείται  |
 
 Connecting to each adapter can be achieved by either the factory as demonstrated above or by passing the relevant options to the constructor of each class.
 
@@ -877,7 +877,7 @@ $connection = new Mysql(
 );
 ```
 
-## Create
+## Δημιουργία
 To insert a row in the database, you can use raw SQL or use the methods present by the adapter:
 
 ```php
@@ -942,7 +942,7 @@ $success = $connection->insertAsDict(
 ```
 Dynamic generation (alternative syntax)
 
-## Update
+## Ενημέρωση
 To update a row in the database, you can use raw SQL or use the methods present by the adapter:
 
 ```php
@@ -1072,7 +1072,7 @@ $success = $connection->updateAsDict(
 ```
 With conditionals escaped (alternative syntax)
 
-## Delete
+## Διαγραφή
 
 ```php
 <?php
@@ -1625,19 +1625,19 @@ try {
 }
 ```
 
-## Events
+## Γεγονότα
 The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 
-| Όνομα γεγονότος       | Ενεργοποίηση                        | Can stop |
-| --------------------- | ----------------------------------- |:--------:|
-| `afterQuery`          | After a query is executed           |   Όχι    |
-| `beforeQuery`         | Before a query is executed          |   Ναι    |
-| `beginTransaction`    | Before a transaction starts         |   Όχι    |
-| `createSavepoint`     | Before a savepoint is created       |   Όχι    |
-| `commitTransaction`   | Before a transaction is committed   |   Όχι    |
-| `releaseSavepoint`    | Before a savepoint is released      |   Όχι    |
-| `rollbackTransaction` | Before a transaction is rolled back |   Όχι    |
-| `rollbackSavepoint`   | Before a savepoint is rolled back   |   Όχι    |
+| Όνομα γεγονότος       | Ενεργοποίηση                        | Μπορεί να σταματήσει |
+| --------------------- | ----------------------------------- |:--------------------:|
+| `afterQuery`          | After a query is executed           |         Όχι          |
+| `beforeQuery`         | Before a query is executed          |         Ναι          |
+| `beginTransaction`    | Before a transaction starts         |         Όχι          |
+| `createSavepoint`     | Before a savepoint is created       |         Όχι          |
+| `commitTransaction`   | Before a transaction is committed   |         Όχι          |
+| `releaseSavepoint`    | Before a savepoint is released      |         Όχι          |
+| `rollbackTransaction` | Before a transaction is rolled back |         Όχι          |
+| `rollbackSavepoint`   | Before a savepoint is rolled back   |         Όχι          |
 
 
 If you bind an [Events Manager](events) to the database connection, all the events with the type `db` will be enabled and fired for the relevant listeners.
@@ -1839,8 +1839,8 @@ The listener will also work with models and their operations. It will also inclu
     LIMIT :APL0 - [{"emp_email":"team@phalcon.ld","APL0":1}]
 ```
 
-## Tables
-### Describe
+## Πίνακες
+### Περιγραφή
 The `Phalcon\Db` adapters also provide methods to retrieve detailed information about tables and views:
 
 ```php
@@ -1913,7 +1913,7 @@ $exists = $connection->viewExists('vw_invoices');
 ```
 Check if there is a view `vw_invoices` in the database
 
-### Create
+### Δημιουργία
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` adapters offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 An example on how to create a table is shown below:
@@ -1961,19 +1961,19 @@ $connection->createTable(
 
 The `createTable` method accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column][db-column]. The table below shows the options available to define a column:
 
-| Option          | Περιγραφή                                                                                                               | Optional |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `after`         | Column must be placed after indicated column                                                                            |   Ναι    |
-| `autoIncrement` | Set whether this column will be auto incremented by the database. Only one column in the table can have this attribute. |   Ναι    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                  |   Ναι    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                  |   Ναι    |
-| `first`         | Column must be placed at first position in the column order                                                             |   Ναι    |
-| `notNull`       | Column can store null values                                                                                            |   Ναι    |
-| `primary`       | `true` if the column is part of the table's primary key                                                                 |   Ναι    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                         |   Ναι    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                               |   Ναι    |
-| `type`          | Column type. Must be a [Phalcon\Db\Column][db-column] constant (see below for a list)                                 |   Όχι    |
-| `unsigned`      | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                   |   Ναι    |
+| Επιλογή         | Περιγραφή                                                                                                               | Προαιρετικό |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------- |:-----------:|
+| `after`         | Column must be placed after indicated column                                                                            |     Ναι     |
+| `autoIncrement` | Set whether this column will be auto incremented by the database. Only one column in the table can have this attribute. |     Ναι     |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                  |     Ναι     |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                  |     Ναι     |
+| `first`         | Column must be placed at first position in the column order                                                             |     Ναι     |
+| `notNull`       | Column can store null values                                                                                            |     Ναι     |
+| `primary`       | `true` if the column is part of the table's primary key                                                                 |     Ναι     |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                         |     Ναι     |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                               |     Ναι     |
+| `type`          | Column type. Must be a [Phalcon\Db\Column][db-column] constant (see below for a list)                                 |     Όχι     |
+| `unsigned`      | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                   |     Ναι     |
 
 The following database column types are supported by the adapters:
 
@@ -1987,14 +1987,14 @@ The following database column types are supported by the adapters:
 
 The associative array passed in `createTable()` can have the following keys:
 
-| Index        | Περιγραφή                                                                                   | Optional |
-| ------------ | ------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with columns defined with [Phalcon\Db\Column][db-column]                         |   Όχι    |
-| `indexes`    | An array with indexes defined with [Phalcon\Db\Index][db-index]                           |   Ναι    |
-| `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference][db-reference] |   Ναι    |
-| `options`    | An array with creation options. (specific to the database system)                           |   Ναι    |
+| Ευρετήριο    | Περιγραφή                                                                                   | Προαιρετικό |
+| ------------ | ------------------------------------------------------------------------------------------- |:-----------:|
+| `columns`    | An array with columns defined with [Phalcon\Db\Column][db-column]                         |     Όχι     |
+| `indexes`    | An array with indexes defined with [Phalcon\Db\Index][db-index]                           |     Ναι     |
+| `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference][db-reference] |     Ναι     |
+| `options`    | An array with creation options. (specific to the database system)                           |     Ναι     |
 
-### Alter
+### Μεταβολή
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow you to modify existing columns or adding columns between two existing ones. [Phalcon\Db][db-column] is limited by these constraints.
 
 ```php
@@ -2038,7 +2038,7 @@ $connection->dropColumn(
 );
 ```
 
-### Drop
+### Διαγραφή
 To drop an existing table from the current database, use the `dropTable` method. To drop a table from a custom database, you can use the second parameter to set the database name.
 
 ```php
