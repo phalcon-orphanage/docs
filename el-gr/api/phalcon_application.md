@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Application'
 ---
@@ -115,3 +115,4 @@ Sets the events manager
 | Namespace  | Phalcon\Application | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Application class will use this class
+
