@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Environments - Nanobox'
 keywords: 'environment, nanobox, docker'
