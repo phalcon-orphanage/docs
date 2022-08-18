@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Data Mapper'
 keywords: 'data mapper, pdo, query builder'
@@ -937,3 +937,4 @@ One of the components required by this implementation is a PDO connector. The [P
 [datamapper]: https://martinfowler.com/eaaCatalog/dataMapper.html
 [datamapper-pdo-connection]: api/phalcon_datamapper#datamapper-pdo-connection
 [eaa]: https://martinfowler.com/books/eaa.html
+
