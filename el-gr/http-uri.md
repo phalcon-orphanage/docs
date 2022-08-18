@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'HTTP Uri (PSR-7)'
 keywords: 'psr-7, http, http uri'
