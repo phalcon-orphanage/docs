@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Σχολιασμοί'
 keywords: 'annotations, routing, annotations parser, docblocks'
@@ -675,3 +675,4 @@ class Invoices extends BaseController
 [annotations-exception]: api/phalcon_annotations#annotations-exception
 [annotations-reader]: api/phalcon_annotations#annotations-reader
 [annotations-reflection]: api/phalcon_annotations#annotations-reflection
+        

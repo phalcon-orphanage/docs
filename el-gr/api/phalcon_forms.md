@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Forms'
 ---
@@ -1123,3 +1123,5 @@ Checks if a form is registered in the forms manager
 public function set( string $name, Form $form ): Manager;
 ```
 Registers a form in the Forms Manager
+
+

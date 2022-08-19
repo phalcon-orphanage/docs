@@ -1743,21 +1743,23 @@ $invoices = $this
 ### Parámetros
 Whether you create a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. Las claves del vector son:
 
-- `bind` - `array` - vector de datos a enlazar
-- `bindTypes` - `array` - Tipos de parámetro PDO
-- `container` - DI
-- `columns` - `array | string` - columnas a seleccionar
-- `conditions` - `array | string` - condiciones (where)
-- `distinct` - `string` - distinguir columnas
-- `for_update` - `bool` - para actualizar o no
-- `group` - `array` - agrupar por columnas
-- `having` - `string` - teniendo columnas
-- `joins` - `array` - clases de modelos usadas en joins
-- `limit` - `array | int` - límite para los registros (ej. `20` o `[20, 20]`)
-- `models` - `array` - clases de modelos usadas
-- `offset` - `int` - el desplazamiento
-- `order` - `array | string` - columnas de orden
-- `shared_lock` - `bool` - emite bloque compartido o no
+| Parámetro     | Tipo                    | Descripción                                     |
+| ------------- | ----------------------- | ----------------------------------------------- |
+| `bind`        | `array`                 | array of the data to be bound                   |
+| `bindTypes`   | `array`                 | PDO parameter types                             |
+| `container`   | DI                      | Contenedor DI                                   |
+| `columns`     | `array&vert;string` | columns to select                               |
+| `conditions`  | `array&vert;string` | conditions (where)                              |
+| `distinct`    | `string`                | distinct column                                 |
+| `for_update`  | `bool`                  | for update or not                               |
+| `group`       | `array`                 | group by columns                                |
+| `having`      | `string`                | having columns                                  |
+| `joins`       | `array`                 | model classes used for joins                    |
+| `limit`       | `array&vert;int`    | limit for the records (i.e. `20` or `[20, 20]`) |
+| `models`      | `array`                 | model classes used                              |
+| `offset`      | `int`                   | the offset                                      |
+| `order`       | `array&vert;string` | order columns                                   |
+| `shared_lock` | `bool`                  | issue shared lock or not                        |
 
 ```php
 <?php
@@ -1802,22 +1804,24 @@ $builder = new Builder($params);
 
 ### Getters
 
-- `autoescape(string $identifier)` - `string` - Automáticamente escapa identificadores pero solo si necesitan ser escapados.
-- `getBindParams(): array` - Devuelve los parámetros de enlace predeterminados
-- `getBindTypes(): array` - Returns default [bind types][pdo-constants]
-- `getColumns()` - `string | array` - Devuelve las columnas a consultar
-- `getDistinct()` - `bool` - Devuelve la cláusula `SELECT DISTINCT` / `SELECT ALL`
-- `getFrom()` - `string | array` - Devuelve los modelos para la consulta
-- `getGroupBy()` - `array` - Devuelve la cláusula `GROUP BY`
-- `getHaving()` - `string` - Devuelve la cláusula `HAVING`
-- `getJoins()` - `array` - Devuelve las partes `JOIN` de la consulta
-- `getLimit()` - `string | array` - Devuelve la cláusula `LIMIT` actual
-- `getModels()` - `string | array | null` - Devuelve los modelos involucrados en la consulta
-- `getOffset()` - `int` - Devuelve la cláusula `OFFSET` actual
-- `getOrderBy()` - `string / array` - Devuelve la cláusula `ORDER BY`
-- `getPhql()` - `string` - Devuelve la sentencia PHQL generada
-- `getQuery()` - `QueryInterface` - Devuelve la consulta construida
-- `getWhere()` - `string | array` - Devuelve las condiciones de la consulta
+| Método                                             | Descripción                                                                       |
+| -------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `autoescape(string $identifier): string`           | Escapa automáticamente los identificadores, pero sólo si necesitan ser escapados. |
+| `getBindParams(): array`                           | Devuelve parámetros de enlace por defecto                                         |
+| `getBindTypes(): array`                            | Returns default [bind types][pdo-constants]                                       |
+| `getColumns(): string&vert;array`              | Devuelve las columnas a ser consultadas                                           |
+| `getDistinct(): bool`                              | Returns the `SELECT DISTINCT` / `SELECT ALL` clause                               |
+| `getFrom(): string&vert;array`                 | Return the models for the query                                                   |
+| `getGroupBy(): array`                              | Returns the `GROUP BY` clause                                                     |
+| `getHaving(): string`                              | Returns the `HAVING` clause                                                       |
+| `getJoins(): array`                                | Returns `JOIN` join parts of the query                                            |
+| `getLimit(): string&vert;array`                | Returns the current `LIMIT` clause                                                |
+| `getModels(): string&vert;array&vert;null` | Devuelve los modelos involucrados en la consulta                                  |
+| `getOffset(): int`                                 | Returns the current `OFFSET` clause                                               |
+| `getOrderBy(): string&vert;array`              | Returns the `ORDER BY` clause                                                     |
+| `getPhql(): string`                                | Returns the generated PHQL statement                                              |
+| `getQuery(): QueryInterface`                       | Devuelve la consulta construida                                                   |
+| `getWhere(): string&vert;array`                | Devolver las condiciones de la consulta                                           |
 
 ### Métodos
 
