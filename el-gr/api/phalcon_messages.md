@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Messages'
 ---
@@ -361,3 +361,5 @@ Rewinds the internal iterator
 public function valid(): bool;
 ```
 Check if the current message in the iterator is valid
+
+

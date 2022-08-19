@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'HTTP Factories (PSR-17)'
 keywords: 'psr-17, http, http factories'

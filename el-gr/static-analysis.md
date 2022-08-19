@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Στατική Ανάλυση'
 keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Translate'
 ---
@@ -597,3 +597,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+

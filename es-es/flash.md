@@ -9,13 +9,13 @@ keywords: 'flash, mensajes flash, flash directo, flash sesión, plantillas'
 
 # Mensajes Flash
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Los mensajes flash son usados para notificar al usuario sobre el estado de acciones que ha hecho o simplemente muestra información a los usuarios. Estos tipos de mensajes pueden ser generados usando este componente.
 
 ## Adaptadores
-Este componente usa adaptadores que indican como se muestran los mensajes o se envían a la vista. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
+Este componente usa adaptadores que indican como se muestran los mensajes o se envían a la vista. There are two adapters available, but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
 
 | Adaptador                                | Descripción                                                                                                         |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -170,7 +170,7 @@ o cuando se usa Volt
 > {: .alert .alert-info }
 
 ## Estilo
-El componente (independientemente del adaptador) ofrece un estilo automático de los mensajes en pantalla. Esto significa que los mensajes serán envueltos en etiquetas `<div>`. Hay también un mapeo del tipo de mensaje a clase CSS, del que puede sacar partido basándose en la hoja de estilos que use en su aplicación. Por defecto el componente usa el siguiente mapeo:
+El componente (independientemente del adaptador) ofrece un estilo automático de los mensajes en pantalla. Esto significa que los mensajes serán envueltos en etiquetas `<div>`. Hay también un mapeo del tipo de mensaje a clase CSS, del que puede sacar partido basándose en la hoja de estilos que use en su aplicación. By default, the component uses the following mapping:
 
 | Tipo      | Nombre de la clase CSS |
 | --------- | ---------------------- |
@@ -238,7 +238,7 @@ producirá:
 <div class="alert alert-danger">Error message</div>
 ```
 
-> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setCssClasses()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
@@ -273,7 +273,44 @@ producirá:
 <span class="myErrorClass">Error message</span>
 ```
 
-> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setCustomTemplate()` returns back the object, so you can use in a more fluent interface by chaining calls. 
+> 
+> {: .alert .alert-info }
+
+You can also set the icon class for each CSS class by using `setCssIconClasses()`. This is particularly useful when working with CSS libraries such as \[Bootstrap\]\[bootstrap\].
+
+```php
+<?php
+
+use Phalcon\Escaper;
+use Phalcon\Flash\Direct;
+
+$escaper = new Escaper();
+$flash   = new Direct($escaper);
+
+$iconClasses = [
+    'error'   => 'alert alert-error',
+    'success' => 'alert alert-success',
+    'notice'  => 'alert alert-notice',
+    'warning' => 'alert alert-warning',
+];
+
+$flash->setCssClasses($cssClasses);
+```
+
+y luego llamar
+
+```php
+$flash->error('Error message');
+```
+
+producirá:
+
+```html
+<div class="errorMessage"><i class="alert alert-error"></i>Error message
+```
+
+> **NOTE**: The `setCssIconClasses()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
@@ -335,7 +372,7 @@ $flash->clear();
 > {: .alert .alert-info }
 
 ## Volcado Implícito
-Por defecto el volcado implícito está establecido a `true`. Sin embargo puede desactivarlo usando `setImplicitFlush(false)`. El propósito de este método es establecer si la salida debe ser volcada implícitamente a la salida o devuelta como una cadena
+By default, implicit flushing is set to `true`. Sin embargo puede desactivarlo usando `setImplicitFlush(false)`. El propósito de este método es establecer si la salida debe ser volcada implícitamente a la salida o devuelta como una cadena
 
 ```php
 <?php
@@ -356,7 +393,7 @@ echo $flash
 ;
 ```
 
-> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setImplicitFlush()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
@@ -390,12 +427,12 @@ producirá
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls. 
+> **NOTE**: The `setAutoescape()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
 
 ## Inyección de Dependencias
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally, the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`.
 
 A continuación, un ejemplo de registro del servicio así como de acceso a él:
 

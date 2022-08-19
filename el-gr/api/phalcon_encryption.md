@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Encryption'
 ---
@@ -1791,3 +1791,5 @@ Generates a random string based on the number ($base) of characters ($alphabet).
 If $n is not specified, 16 is assumed. It may be larger in future.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
+

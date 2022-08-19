@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '5.0'
 title: 'Phalcon\Paginator'
 ---
@@ -621,3 +621,5 @@ Sets the aliases for properties repository
 public function setProperties( array $properties ): RepositoryInterface;
 ```
 Sets values for properties of the repository
+
+
