@@ -14,7 +14,7 @@ keywords: 'assets, js, css'
 ## 概要
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
-[Phalcon\Assets\Manager][assets-manager] is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
+[Phalcon\Assets\Manager][assets-manager] は、アセットを登録し、アプリケーション全体で使用できるコンポーネントです。 If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
 
 ```php
 <?php
