@@ -1675,7 +1675,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model][
 [Phalcon\Mvc\Model][mvc-model] also offers several methods for querying records.
 
 ### `find`
-The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Comples][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
+The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Complex][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
 
  The method accept a variety of parameters to retrieve data:
 
