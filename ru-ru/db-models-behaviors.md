@@ -308,8 +308,8 @@ use Phalcon\Mvc\Model\BehaviorInterface;
 class Sluggable extends Behavior
 {
     public function missingMethod(
-        string $model, 
-        ModelInterface $method, 
+        ModelInterface $model,
+        string $method,
         $arguments = []
     ) {
         if ($method === 'getSlug') {
