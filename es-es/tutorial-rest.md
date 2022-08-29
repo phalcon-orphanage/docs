@@ -8,15 +8,17 @@ keywords: 'tutorial, tutorial rest, api, rest, paso a paso, micro'
 
 # Tutorial - REST
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Resumen
 In this tutorial, you will learn how to create a simple application that provides a [RESTful][restful] API using different HTTP methods:
 
-* `GET` para recuperar y buscar datos
-* `POST` para agregar datos
-* `PUT` para actualizar datos
-* `DELETE` para borrar datos
+| Método   | Descripción              |
+| -------- | ------------------------ |
+| `GET`    | retrieve and search data |
+| `POST`   | add data                 |
+| `PUT`    | update data              |
+| `DELETE` | delete data              |
 
 > **NOTE**: This is just a sample application. Carece de muchas características como autenticación, autorización, saneamiento de la entrada y gestión de errores, por nombras algunas. Por favor, úsela como un *set* de construcción para su aplicación, o como tutorial para comprender cómo puede construir un API REST con Phalcon. También puede echar un vistazo al proyecto [rest-api](rest-api). 
 > 
@@ -64,9 +66,7 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-$app->handle(
-    $_SERVER["REQUEST_URI"]
-);
+$app->handle($_SERVER["REQUEST_URI"]);
 ```
 
 Ahora necesitamos crear las rutas, para que la aplicación pueda entender qué hacer cuando los usuarios finales interactúan con nuestra aplicación. El fichero `index.php` cambia a:
@@ -114,9 +114,7 @@ $app->delete(
     }
 );
 
-$app->handle(
-    $_SERVER["REQUEST_URI"]
-);
+$app->handle($_SERVER["REQUEST_URI"]);
 ```
 
 A medida que añadimos las rutas, usamos los métodos HTTP reales como nombres de los métodos llamados en el objeto aplicación. Esto nos permite fácilmente definir puntos de escucha para la aplicación basados en esos métodos HTTP.
@@ -127,10 +125,10 @@ El primer parámetro de cada método de llamada es la ruta y el segundo es el ma
 /api/robots/{id:[0-9]+}
 ```
 
-explícitamente establecemos el parámetro `id` para que sea un número. Cuando una ruta definida coincide con la URI solicitada, entonces se ejecuta el manejador (función anónima) correspondiente.
+We explicitly set the `id` parameter to be a number. Cuando una ruta definida coincide con la URI solicitada, entonces se ejecuta el manejador (función anónima) correspondiente.
 
 ## Modelos
-Para esta aplicación almacenamos y manipulamos `Robots` en la base de datos. Para acceder a la tabla necesitamos un modelo. La clase siguiente nos permite acceder a cada registro de la tabla de una forma orientada a objetos. También hemos implementado reglas de negocio, usando validadores integrados. Al hacerlo, tenemos una gran confianza de que los datos guardados cumplen los requerimientos de nuestra aplicación. Este fichero de modelo se debe crear en el directorio `my-rest-api/models`.
+Para esta aplicación almacenamos y manipulamos `Robots` en la base de datos. Para acceder a la tabla necesitamos un modelo. The class below, allows us to access each record of the table in an object-oriented manner. También hemos implementado reglas de negocio, usando validadores integrados. Al hacerlo, tenemos una gran confianza de que los datos guardados cumplen los requerimientos de nuestra aplicación. Este fichero de modelo se debe crear en el directorio `my-rest-api/models`.
 
 ```php
 <?php
@@ -154,7 +152,7 @@ class Robots extends Model
             new InclusionIn(
                 [
                     'message' => 'Type must be "droid", "mechanical", or "virtual"',
-                    'domain' => [
+                    'domain'  => [
                         'droid',
                         'mechanical',
                         'virtual',
@@ -184,6 +182,7 @@ class Robots extends Model
     }
 }
 ```
+
 Adjuntamos tres validadores al modelo. El primero comprueba el tipo de robot. Que debe ser `droid`, `mechanical` o `virtual`. Cualquier otro valor hará que el validador devuelva `false` y la operación (insert/update) fallará. El segundo validador comprueba la unicidad del nombre de nuestro robot. El último validador comprueba el campo `year` para que sea un número positivo.
 
 ## Base de Datos
@@ -261,10 +260,10 @@ $app->get(
 );
 ```
 
-[PHQL](db-phql), nos permite escribir consultas usando un dialecto SQL de alto nivel, orientado a objetos, que internamente traduce sus consultas a las sentencias SQL correctas dependiendo del sistema de base de datos usado. La sentencia `use` en la función anónima ofrece inyección de objetos desde el ámbito local a la función anónima.
+[PHQL](db-phql), allows us to write queries using a high level, object-oriented SQL dialect, that internally translates your query to the correct SQL statements depending on the database system used. La sentencia `use` en la función anónima ofrece inyección de objetos desde el ámbito local a la función anónima.
 
 ### Obtener - Texto
-Podemos obtener robots usando su nombre o una parte de su nombre. Esta característica de búsqueda también será un `get()` en lo que respecta al método HTTP y se vinculará al punto de acceso `/api/robots/search/{name}`. La implementación es similar a la anterior. Sólo necesitamos cambiar ligeramente la consulta.
+Podemos obtener robots usando su nombre o una parte de su nombre. This search feature will also be a `get()` as far as HTTP method is concerned, and it will tie to the `/api/robots/search/{name}` endpoint. La implementación es similar a la anterior. Sólo necesitamos cambiar ligeramente la consulta.
 
 ```php
 <?php
@@ -420,6 +419,7 @@ $app->post(
     }
 );
 ```
+
 Después de ejecutar la consulta contra nuestra base de datos, usando PHQL, creamos un nuevo objeto `Response`. Si la consulta se ejecuta correctamente, manipulamos la respuesta para tener un código de estado de `201` y un texto `Created`. Finalmente, actualizamos el `id` del registro creado recientemente, y enviamos el robot de vuelta con la respuesta.
 
 Si algo sale mal, cambiamos el código de estado de la respuesta a `409` con el texto `Conflict` y recopilamos todos los errores que se han producido en la operación de base de datos. Entonces enviamos esos mensajes de error de vuelta con la respuesta.
@@ -481,6 +481,7 @@ $app->put(
     }
 );
 ```
+
 La operación es muy similar a la que hemos usado al insertar datos. Si la operación de actualización es correcta, enviamos de vuelta una carga útil JSON con `OK`.
 
 Si algo sale mal, cambiamos el código de estado de la respuesta a `409` con el texto `Conflict` y recopilamos todos los errores que se han producido en la operación de base de datos. Entonces enviamos esos mensajes de error de vuelta con la respuesta.
@@ -495,7 +496,6 @@ El `index.php` cambia otra vez:
 
 use Phalcon\Http\Response;
 
-// Deletes robots based on primary key
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -541,6 +541,7 @@ $app->delete(
     }
 );
 ```
+
 Si la operación de borrado es correcta, devolvemos una carga útil JSON con `OK`.
 
 Si algo sale mal, cambiamos el código de estado de la respuesta a `409` con el texto `Conflict` y recopilamos todos los errores que se han producido en la operación de base de datos. Entonces enviamos esos mensajes de error de vuelta con la respuesta.
