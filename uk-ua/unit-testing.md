@@ -8,7 +8,7 @@ keywords: 'unit testing, phpunit, phalcon'
 
 # Юніт-тестування
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Огляд
 
@@ -182,7 +182,7 @@ If you need to overload the `setUp` method, it is important you call the parent 
     {
         parent::setUp();
 
-        //some setup mocks
+        //...
     }
 
 ````
@@ -193,19 +193,18 @@ When you execute `vendor/bin/phpunit` in your command-line, you will get the fol
 
 ```bash
 $ phpunit
-PHPUnit 9.1.4 by Sebastian Bergmann and contributors.
+PHPUnit 9.5.23 by Sebastian Bergmann and contributors.
 
-Runtime:       PHP 7.4.5 with Xdebug 2.9.5
+Runtime:       PHP 8.1.8 with Xdebug 3.1.5
 Configuration: /var/www//phpunit.xml
-
 
 Time: 3 ms, Memory: 3.25Mb
 
-Мала місце 1 помилка:
+There was 1 failure:
 
 1) Test\Unit\UnitTest::testTestCase
-Цей буде невдалим
-Хибне твердження, що тих дві стрічки однакові.
+This will fail
+Failed asserting that two strings are equal.
 --- Expected
 +++ Actual
 @@ @@
