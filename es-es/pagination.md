@@ -3,18 +3,20 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Paginación'
+upgrade: '#pagination'
 keywords: 'paginación, paginación modelos, paginación bd, paginación vector, paginación consulta'
 ---
 
 # Paginación
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Un paginador es un componente que ayuda a dividir una gran cantidad de datos gradualmente. Un ejemplo sería mostrar todos los mensajes de un blog, 5 cada vez. El Paginador de Phalcon acepta parámetros y basado en ellos devuelve la _porción_ correspondiente de todo el conjunto de resultados para que el desarrollador pueda presentar los datos paginados.
 
  ```php
 <?php 
+declare(strict_types=1);
 
 use Phalcon\Paginator\Adapter\NativeArray;
 
@@ -59,26 +61,31 @@ public function __construct(array $config)
 
 Cada adaptador requiere opciones para funcionar correctamente. Estas opciones se pasan como vector clave/valor en el constructor del adaptador.
 
-- `builder` - Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object
-- `data` - Los datos a paginar. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)
-- `limit` - `int` - El tamaño de la porción de página. Si `limit` es negativo, se lanzará una excepción.
-- `model` - Los datos a paginar. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)
-- `page` - `int` - La página actual
-- `repository` - [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. Para más información sobre repositorios ver a continuación.
+| Opción          | Descripción                                                                                                                                                                          |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `builder`       | Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object                                                             |
+| `data`          | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                                                            |
+| `limit` (`int`) | The size of the page slice. Si `limit` es negativo, se lanzará una excepción.                                                                                                        |
+| `model`         | The data to paginate. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)                                                                                        |
+| `page` (`int`)  | The current page                                                                                                                                                                     |
+| `repository`    | [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. Para más información sobre repositorios ver a continuación. |
 
 Los métodos expuestos son:
 
-- `getLimit()` - `int` - Obtiene el límite de filas actual
-- `getRepository(array $properties = null)` - `RepositoryInterface` - Obtiene el repositorio actual para la paginación
-- `setCurrentPage(int $page)` - `AdapterInterface` - Establece el número de página actual
-- `setLimit(int $limitRows)` - `AdapterInterface` - Establece el límite de filas actual
-- `setRepository(RepositoryInterface $repository)` - `AdapterInterface` - Establece el repositorio actual para la paginación
+| Método                                                             | Descripción                                        |
+| ------------------------------------------------------------------ | -------------------------------------------------- |
+| `getLimit(): int`                                                  | Obtener el límite actual de filas                  |
+| `getRepository(array $properties = null): RepositoryInterface`     | Obtiene el repositorio actual para la paginación   |
+| `setCurrentPage(int $page): AdapterInterface`                      | Establece el número de página actual               |
+| `setLimit(int $limitRows): AdapterInterface`                       | Establece el límite de filas actual                |
+| `setRepository(RepositoryInterface $repository): AdapterInterface` | Establece el repositorio actual para la paginación |
 
 ### Modelo
 The [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter uses a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] as the source of the data. Este ese el resultado del método `find()` en un modelo.
 
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\Model;
@@ -102,13 +109,14 @@ $paginator   = new Model(
 $paginate = $paginator->paginate();
 ```
 
-El vector acepta `model` para la clase de modelo a usar. Se llamará al método `find()` sobre él. Adicionalmente este adaptador puede aceptar `parámetros` como el vector que puede usar `find()` con todas las condiciones relevantes requeridas.
+El vector acepta `model` para la clase de modelo a usar. Se llamará al método `find()` sobre él. Additionally, this adapter can accept `parameters` as the array that `find()` can use with all the relevant conditionals required.
 
 ### Vector
 The [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] accepts a PHP array as the source of the data.
 
 ```php
 <?php
+declare(strict_types=1);
 
 use Phalcon\Paginator\Adapter\NativeArray;
 
@@ -135,6 +143,7 @@ The [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] ada
 
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\QueryBuilder;
@@ -172,17 +181,19 @@ El método `paginate()` hace todo el trabajo para paginar los datos. It returns 
 ### Métodos
 Los métodos expuestos son:
 
-- `getAliases()` - `array` - Obtiene los alias para el repositorio de propiedades
-- `getCurrent()` - `int` - Obtiene el número de la página actual
-- `getFirst()` - `int` - Obtiene el número de la primera página
-- `getItems()` - `mixed` - Obtiene los elementos de la página actual
-- `getLast()` - `int` - Obtiene el número de la última página
-- `getLimit()` - `int` - Obtiene el límite de filas actual
-- `getNext()` - `int` - Obtiene el número de la siguiente página
-- `getPrevious()` - `int` - Obtiene el número de la página anterior
-- `getTotalItems()` - `int` - Obtiene el número total de elementos
-- `setAliases(array $aliases)` - `RepositoryInterface` - Establece los alias para el repositorio de propiedades
-- `setProperties(array $properties)` - `RepositoryInterface` - Establece los valores para las propiedades del repositorio
+| Métodos                                                 | Descripción                                            |
+| ------------------------------------------------------- | ------------------------------------------------------ |
+| `getAliases(): array`                                   | Obtiene los alias del repositorio de propiedades       |
+| `getCurrent(): int`                                     | Obtiene el número de la página actual                  |
+| `getFirst(): int`                                       | Obtiene el número de la primera página                 |
+| `getItems(): mixed`                                     | Obtiene los elementos de la página actual              |
+| `getLast(): int`                                        | Obtiene el número de la última página                  |
+| `getLimit(): int`                                       | Obtiene el límite actual de filas                      |
+| `getNext(): int`                                        | Obtiene el número de la siguiente página               |
+| `getPrevious(): int`                                    | Obtiene el número de la página anterior                |
+| `getTotalItems(): int`                                  | Obtiene el número total de elementos                   |
+| `setAliases(array $aliases): RepositoryInterface`       | Establece los alias del repositorio de propiedades     |
+| `setProperties(array $properties): RepositoryInterface` | Establece valores para las propiedades del repositorio |
 
 Puede acceder a los datos usando los métodos anteriores o usar las propiedades mágicas como las definidas en las constantes:
 
@@ -241,6 +252,7 @@ Si quiere usar sus propios nombres para cada propiedad mágica que el objeto Rep
 
 ```php
 <?php
+declare(strict_types=1);
 
 use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\Adapter\NativeArray;
@@ -288,15 +300,18 @@ You can also create your custom repository class by implementing the [Phalcon\Pa
 ## Fábrica (Factory)
 Puede usar la clase Fábrica de Paginación para instanciar un nuevo objeto paginador. Los nombres del servicio son:
 
-- `model` - [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]
-- `nativeArray` - [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]
-- `queryBuilder` - [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder]
+| Nombre         | Clase                                                                       |
+| -------------- | --------------------------------------------------------------------------- |
+| `model`        | [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]               |
+| `nativeArray`  | [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]   |
+| `queryBuilder` | [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] |
 
-### Nueva Instancia
+### newInstance
 Un método que puede usar es `newInstance()`:
 
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
@@ -325,6 +340,7 @@ Carga la clase Adaptador de Paginador usando la opción `adapter`. La configurac
 
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
@@ -396,6 +412,7 @@ En el ejemplo anterior, el paginador usará el resultado de una consulta de un m
 ### Completo
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Http\Request;
@@ -464,6 +481,7 @@ Puede instanciar una clase Paginador usando `AdapterFactory`.
 **Modelo**
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
@@ -472,7 +490,7 @@ $factory = new PaginatorFactory();
 
 $currentPage = 2;
 $options     = [
-   'model'  => Invoices::class,
+   'model' => Invoices::class,
    'limit' => 10,
    'page'  => $currentPage,
 ];
@@ -483,6 +501,7 @@ $paginator = $factory->newInstance('model', $options);
 **Vector**
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
@@ -507,6 +526,7 @@ $paginator = $factory->newInstance('nativeArray', $options);
 
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
@@ -535,6 +555,7 @@ Un ejemplo de fuente de datos que se debe usar para cada adaptador:
 **Modelo**
 ```php
 <?php
+declare(strict_types=1);
 
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
@@ -551,6 +572,7 @@ $paginator   = new PaginatorModel(
 **Vector**
 ```php
 <?php
+declare(strict_types=1);
 
 use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
 
@@ -573,6 +595,7 @@ $paginator   = new PaginatorArray(
 **Constructor de Consultas**
 ```php
 <?php
+declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
@@ -599,6 +622,7 @@ The [Phalcon\Paginator\AdapterInterface][paginator-adapter-adapterinterface] int
 
 ```php
 <?php
+declare(strict_types=1);
 
 use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
 use Phalcon\Paginator\RepositoryInterface;
