@@ -3,12 +3,13 @@ layout: default
 language: 'it-it'
 version: '5.0'
 title: 'Forms'
+upgrade: '#forms'
 keywords: 'forms, render html, validation, elements'
 ---
 
 # Forms
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
@@ -86,7 +87,7 @@ In the template:
 </form>
 ```
 
-Each element in the form can be rendered as required by the developer. Internally, [Phalcon\Tag](tag) is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of `render()`:
+Each element in the form can be rendered as required by the developer. Internally, [Phalcon\Tag](tag) is used to produce the correct HTML for each element, and you can pass additional HTML attributes as the second parameter of `render()`:
 
 ```php
 <p>
@@ -180,7 +181,7 @@ $form->add(
 );
 ```
 
-If the `entity` is passed and it is not an object, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
+If the `entity` is passed, and it is not an object, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 
 ```php
@@ -219,7 +220,7 @@ If there are no elements in the form, a [Phalcon\Forms\Exception][forms-exceptio
 ```php
 public function clear(mixed $fields = null): Form
 ```
-Clears every element in the form to its default value. If the passed parameter `fields` is a string, only that field will will be cleared. If an array is passed, all elements in the array will be cleared. Finally, if nothing is passed, all fields will be cleared.
+Clears every element in the form to its default value. If the passed parameter `fields` is a string, only that field will be cleared. If an array is passed, all elements in the array will be cleared. Finally, if nothing is passed, all fields will be cleared.
 
 ```php
 public function count(): int
@@ -256,6 +257,12 @@ public function getEntity()
 ```
 Returns the entity related to the model
 
+
+```php
+public function getFilteredValue(string $name): mixed | null
+```
+Gets a value from the internal filtered data or calls getValue(name)
+
 ```php
 public function getLabel(string $name): string
 ```
@@ -281,9 +288,9 @@ public function getMessagesFor(string $name): Messages
 Returns the messages generated for a specific element
 
 ```php
-public function getValidation(): ValidationInterface
+public function getTagFactory(): TagFactory | null
 ```
-Returns the validator object registered in the form
+Returns the `Phalcon\Html\TagFactory` object
 
 ```php
 public function getUserOption(
@@ -297,6 +304,11 @@ Returns the value of an option if present. If the option is not present the `def
 public function getUserOptions(): array
 ```
 Returns the options for the element
+
+```php
+public function getValidation(): ValidationInterface
+```
+Returns the validator object registered in the form
 
 ```php
 public function getValue(string $name): mixed | null
@@ -316,7 +328,8 @@ Check if messages were generated for a specific element
 ```php
 public function isValid(
     array $data = null, 
-    object $entity = null
+    object $entity = null,
+    array $whitelist = []
 ): bool
 ```
 Validates the form. The first element is the data that has been provided by the user. This is usually the `$_POST` array.
@@ -331,7 +344,7 @@ The second optional parameter is `entity` (object). If passed, internally the co
 
 Once the `bind()` process finishes, the modified `entity` will be passed in the `beforeValidation` event (if events are enabled) and after that all the validators will be called on the form using the modified `entity` object.
 
-> **NOTE**: Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, so as to keep a copy of the original object 
+> **NOTE**: Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, to keep a copy of the original object 
 > 
 > {: .alert .alert-info }
 
@@ -370,7 +383,7 @@ Moves the internal iteration pointer to the next position
 ```php
 public function render(
     string $name, 
-    array attributes = []
+    array $attributes = []
 ): string
 ```
 Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for the element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
@@ -403,6 +416,11 @@ public function setAttributes(
 Set form attributes collection
 
 ```php
+public function setTagFactory(TagFactory $tagFactory): Form
+```
+Sets the `Phalcon\Html\TagFactory` for the form
+
+```php
 public function setValidation(
     ValidationInterface $validation
 );
@@ -418,6 +436,11 @@ public function setUserOption(
 Sets a user defined option for the form
 
 ```php
+public function setWhitelist(array $whitelist): Form
+```
+Sets the default whitelist
+
+```php
 public function setUserOptions(array $options): Form
 ```
 Sets user defined options for the form
@@ -428,7 +451,7 @@ public function valid(): bool
 Returns if the current element in the iterator is valid or not
 
 ## Initialization
-Forms can be initialized outside the form class by adding elements to it. However you can reuse code or organize your form classes by implementing forms in their own classes:
+Forms can be initialized outside the form class by adding elements to it. However, you can reuse code or organize your form classes by implementing forms in their own classes:
 
 ```php
 <?php
@@ -587,9 +610,9 @@ We can also use a PHP class as an entity:
 
 class Preferences
 {
-    public $timezone = 'Europe/Amsterdam';
+    public string $timezone = 'Europe/Amsterdam';
 
-    public $receiveEmails = 'No';
+    public string $receiveEmails = 'No';
 }
 ```
 
@@ -632,16 +655,16 @@ Entities can implement getters, which have a higher precedence than public prope
 
 class Preferences
 {
-    public $timezone;
+    public string $timezone;
 
-    public $receiveEmails;
+    public string $receiveEmails;
 
-    public function getTimezone()
+    public function getTimezone(): string
     {
         return 'Europe/Amsterdam';
     }
 
-    public function getReceiveEmails()
+    public function getReceiveEmails(): string
     {
         return 'No';
     }
@@ -668,11 +691,15 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | [Phalcon\Forms\Element\Text][forms-element-text]         | Generate `input[type=text]` elements        |
 | [Phalcon\Forms\Element\TextArea][forms-element-textarea] | Generate `textarea` elements                |
 
-These elements use the [Phalcon\Tag](tag) component transparently.
+These elements use the [Phalcon\Html\TagFactory](tagfactory) component transparently.
 
-> **NOTE**: For more information regarding HTML elements, you can check our [Tag document](tag) 
+> **NOTE**: For more information regarding HTML elements, you can check our [TagFactory document](tagfactory) 
 > 
 > {: .alert .alert-info }
+
+> **NOTE**: The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more](html-helper) 
+> 
+> {: .alert .alert-warning }
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
 
@@ -700,6 +727,7 @@ A form is also able to filter data before it is validated. You can set filters i
 ```php
 <?php
 
+use Phalcon\Filter\Filter;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Form;
 
@@ -708,8 +736,8 @@ $form = new Form();
 $name = new Text('nameLast');
 $name->setFilters(
     [
-        'string',
-        'trim',
+        'string', // Filter::FILTER_STRING
+        'trim',   // Filter::FILTER_TRIM
     ]
 );
 $form->add($name);
@@ -775,7 +803,7 @@ if (false === $form->isValid($_POST)) {
 
 Validators are executed in the same order as they were registered.
 
-By default messages generated by all the elements in the form are joined so they can be traversed using a single `foreach`. You can also get specific messages for an element:
+By default, messages generated by all the elements in the form are joined, so they can be traversed using a single `foreach`. You can also get specific messages for an element:
 
 ```php
 <?php
@@ -970,7 +998,7 @@ class IndexController extends Controller
 ```
 
 ## Dependency Injection
-[Phalcon\Forms\Form][forms-form] extends [Phalcon\Di\Injectable][di-injectable] so you have access to the application services if needed:
+[Phalcon\Forms\Form][forms-form] extends [Phalcon\Di\Injectable][di-injectable], so you have access to the application services if needed:
 
 ```php
 <?php
