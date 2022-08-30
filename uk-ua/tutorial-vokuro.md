@@ -8,7 +8,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, 
 
 # Навчальний посібник - Vökuró
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Vökuró
 [Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
@@ -17,7 +17,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, 
 - User Permissions
 - User management
 
-> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. Це аж ніяк не ідеальний продукт, який точно не відповідає усім потребам. 
+> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application, and it does not fit all needs. 
 > 
 > {: .alert .alert-info }
 
@@ -89,10 +89,10 @@ $ docker run -it --rm phalcon-tutorial-vokuro bash
 ```bash
 root@c7b43060b115:/code $ php -v
 
-PHP 7.3.9 (cli) (built: Sep 12 2019 10:08:33) ( NTS )
-Copyright (c) 1997-2018 The PHP Group
-Zend Engine v3.3.9, Copyright (c) 1998-2018 Zend Technologies
-    with Zend OPcache v7.3.9, Copyright (c) 1999-2018, by Zend Technologies
+PHP 8.1.8 (cli) (built: Jul 12 2022 08:28:43) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.1.8, Copyright (c) Zend Technologies
+    with Xdebug v3.1.5, Copyright (c) 2002-2022, by Derick Rethans
 ```
 
 та Phalcon:
@@ -177,7 +177,7 @@ vokuro/
 
 | Option               | Description                                                                                                                                                     |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](encryption-crypt) component to produce passwords and any additional security features               |
+| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Encryption\Crypt](encryption-crypt) component to produce passwords and any additional security features   |
 | `APP_BASE_URI`       | Зазвичай `/`, якщо ваш веб-сервер спрямовує запити безпосередньо у каталог Vökuró. Якщо ви встановили Vökuró в підкаталозі, ви можете відкоригувати базовий URI |
 | `APP_PUBLIC_URL`     | Публічний URL додатку. Використовується для електронних листів.                                                                                                 |
 | `DB_ADAPTER`         | Адаптер бази даних. Доступні адаптери: `mysql`, `pgsql`, `sqlite`. Будь ласка, переконайтеся, що в вашій системі встановлені відповідні розширення бази даних.  |
@@ -231,7 +231,7 @@ vokuro/
 ### Config
 **acl.php**
 
-Заглянувши у папку `config/`, ви помітите чотири файли. Вам не потрібно змінювати ці файли, щоб запустити додаток, але якщо ви хочете їх змінити, то це саме те місце, де вони розташовані. The `acl.php` file returns an array of _routes_ that controls which routes are visible to only logged in users.
+Заглянувши у папку `config/`, ви помітите чотири файли. Вам не потрібно змінювати ці файли, щоб запустити додаток, але якщо ви хочете їх змінити, то це саме те місце, де вони розташовані. The `acl.php` file returns an array of _routes_ that controls which routes are visible to only logged-in users.
 
 Поточне налаштування вимагає, щоб користувач увійшов у систему, якщо хоче отрисати доступ до таких маршрутів:
 
@@ -248,7 +248,7 @@ vokuro/
 - `profiles/delete`
 - `permissions/index`
 
-Якщо ви використовуєте Vökuró як відправну точку для вашого власного продукту, то вам потрібно буде змінити цей файл, щоб додавати чи видалити маршрути, щоб переконатися, що ваші захищені маршрути доступні після авторизації.
+If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes to ensure that your protected routes are behind the login mechanism.
 
 > **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Як тільки ваш додаток почне зростати, ви можете розглянути іншу техніку зберігання своїх приватних иаршрутів, наприклад: база даних з механізмом кешування. 
 > 
@@ -266,7 +266,7 @@ vokuro/
 
 **routes.php**
 
-У цьому файлі містяться маршрути, які розуміє Vökuró. Роутер уже зареєстрував маршрути за замовчуванням, тому будь-які маршрутизатори, визначені в `routes.php` є специфічними і нетиповими. Ви можете додати в цей файл будь-які нестандартні маршрути при налаштуванні Vökuró. На всякий випадок нагадаємо маршрути за замовчуванням:
+У цьому файлі містяться маршрути, які розуміє Vökuró. Роутер уже зареєстрував маршрути за замовчуванням, тому будь-які маршрутизатори, визначені в `routes.php` є специфічними і нетиповими. You can add any non-standard routes you need, when customizing Vökuró, in this file. На всякий випадок нагадаємо маршрути за замовчуванням:
 
 ```bash
 /:controller/:action/:parameters
@@ -330,14 +330,8 @@ $rootPath = dirname(__DIR__);
 try {
     require_once $rootPath . '/vendor/autoload.php';
 
-    /**
-     * Завантаження .env конфігурації
-     */
     Dotenv\Dotenv::create($rootPath)->load();
 
-    /**
-     * Запуск Vökuró!
-     */
     echo (new VokuroApplication($rootPath))->run();
 } catch (Exception $e) {
     echo $e->getMessage(), '<br>';
@@ -390,9 +384,6 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Mvc\Application as MvcApplication;
 
-/**
- * Vökuró Application
- */
 class Application
 {
     const APPLICATION_PROVIDER = 'bootstrap';
@@ -408,8 +399,6 @@ class Application
     protected $di;
 
     /**
-     * Кореневий шлях проекту
-     *
      * @var string
      */
     protected $rootPath;
@@ -431,8 +420,6 @@ class Application
     }
 
     /**
-     * Запуск Vökuró Application
-     *
      * @return string
      * @throws Exception
      */
@@ -446,8 +433,6 @@ class Application
     }
 
     /**
-     * Отримуємо кореневий шлях проекту
-     *
      * @return string
      */
     public function getRootPath(): string
@@ -536,7 +521,7 @@ class Application
 | `users`               | Користувачі                                     |
 
 ## Моделі
-Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding the `phinxlog`). Моделі дозволяють нам взаємодіяти з таблицями бази даних у легкий об'єктно-орієнтований спосіб. Моделі розташовані в каталозі `/src/Models`, і кожна модель визначає відповідні поля вихідної таблиці та будь-які зв'язки між моделлю та іншими об'єктами. Деякі моделі також втілюють правила перевірки для забезпечення належного збереження даних у базі даних.
+Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object-oriented manner. Моделі розташовані в каталозі `/src/Models`, і кожна модель визначає відповідні поля вихідної таблиці та будь-які зв'язки між моделлю та іншими об'єктами. Деякі моделі також втілюють правила перевірки для забезпечення належного збереження даних у базі даних.
 
 ```php
 <?php
@@ -546,11 +531,6 @@ namespace Vokuro\Models;
 
 use Phalcon\Mvc\Model;
 
-/**
- * Успішні авторизації
- *
- * Ця модель реєструє успішні спроби авторизації зареєстрованих користувачів
- */
 class SuccessLogins extends Model
 {
     /**
@@ -610,7 +590,7 @@ echo $successLogin->user->name;
 ## Контролери
 Again following the [Model-View-Controller][mvc] pattern, Vökuró has one controller to handle a specific _parent_ route. Це означає, що `AboutController` обробляє маршрут `/about`. Всі контролери знаходяться в каталозі `/src/Cotnrollers`.
 
-Контролер за замовчуванням це `IndexController`. Всі класи контролерів мають суфікс `Controller`. Кожен контролер має методи з суфіксамит`Action`, а дія за замовчуванням - `indexAction`. Таким чином, якщо ви відвідаєте сайт, перейшовши з базовою URL, буде викликано `IndexController`, яким буде виконано дію `indexAction`.
+Контролер за замовчуванням це `IndexController`. Всі класи контролерів мають суфікс `Controller`. Кожен контролер має методи з суфіксамит`Action`, а дія за замовчуванням - `indexAction`. Therefore, if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
 
 Після цього, якщо ви не реєстрували певні специфічні маршрути, маршрути за замовчуванням (автоматично зареєстровані) намагатимуться прив'язувати:
 
@@ -702,7 +682,7 @@ ProfilesController -> createAction
 | `Користувачі`   | `delete`         | `/users/delete.volt`           | Видалити користувача                           |
 | `Користувачі`   | `edit`           | `/users/edit.volt`             | Редагувати користувача                         |
 
-Файл `/index.volt` містить основну схему сторінки, включаючи посилання на стилі, javascript і т. д. Каталог `/layouts` містить різні макети, які використовуються в програмі, для екземпляра `публічного`, якщо користувач не увійшов у систему, і `приватного` подання інформації користувачу, якщо він увійшов у систему. Окремі подання вкладаються у макети та будують кінцеву сторінку.
+Файл `/index.volt` містить основну схему сторінки, включаючи посилання на стилі, javascript і т. д. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged-in users. Окремі подання вкладаються у макети та будують кінцеву сторінку.
 
 ## Компоненти
 У Vökuró є кілька компонентів, функціонал яких ви використовуємо по всьому додатку. Всі ці компоненти знаходяться в каталозі `/src/Plugins`.
@@ -710,7 +690,7 @@ ProfilesController -> createAction
 ### Acl
 `Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List][acl] for our application. ACL контролює, до яких ресурсів має доступ окремий користувач. Більше про ACL можна прочитати на нашій [окремій сторінці](acl).
 
-In this component, We define the resources that are considered _private_. Вони зберігаються у внутрішньому масиві з контролером як ключом та дією як значенням, та визначають, які контролери/дії потребують аутентифікації. Він також вміщує розбірливі описи дій, які використовуються в усій програмі.
+In this component, We define the resources that are considered _private_. Вони зберігаються у внутрішньому масиві з контролером як ключом та дією як значенням, та визначають, які контролери/дії потребують аутентифікації. It also holds human-readable descriptions for actions used throughout the application.
 
 Компонент використовує наступні методи:
 
@@ -783,9 +763,6 @@ use Vokuro\Models\Users;
  */
 class SessionController extends ControllerBase
 {
-    /**
-     * Дозволяємо користувачу зареєструватися в системі
-     */
     public function signupAction()
     {
         $form = new SignUpForm();
@@ -819,7 +796,7 @@ class SessionController extends ControllerBase
 
 ### Форма
 
-In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](filter-validation) classes. Ці класи дозволяють нам створювати HTML елементи та додавати до них валідатори. Потім форма передається до подання, де HTML елементи виводяться на екран.
+In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Filter\Validation\*](filter-validation) classes. Ці класи дозволяють нам створювати HTML елементи та додавати до них валідатори. Потім форма передається до подання, де HTML елементи виводяться на екран.
 
 Коли користувач відправляє інформацію, ми відправляємо надіслані дані назад до форми, де відповідні валідатори перевіряють коректність введення та повертають будь-які потенційні повідомлення про помилки.
 
@@ -858,12 +835,12 @@ class SignUpForm extends Form
         array $options = []
     ) {
         $name = new Text('name');
-        $name->setLabel('Ім/'я');
+        $name->setLabel('Name');
         $name->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'Ім/'я обов/'язкове',
+                        'message' => 'The name is required',
                     ]
                 ),
             ]
@@ -871,19 +848,18 @@ class SignUpForm extends Form
 
         $this->add($name);
 
-        // Email
         $email = new Text('email');
         $email->setLabel('E-Mail');
         $email->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'Потрібно вказати Е-mail',
+                        'message' => 'The e-mail is required',
                     ]
                 ),
                 new Email(
                     [
-                        'message' => 'Е-mail неправильний',
+                        'message' => 'The e-mail is not valid',
                     ]
                 ),
             ]
@@ -891,27 +867,26 @@ class SignUpForm extends Form
 
         $this->add($email);
 
-        // Пароль
         $password = new Password('password');
-        $password->setLabel('Пароль');
+        $password->setLabel('Password');
         $password->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'Потрібно вказати пароль',
+                        'message' => 'The password is required',
                     ]
                 ),
                 new StringLength(
                     [
                         'min'            => 8,
-                        'messageMinimum' => 'Пароль занадто короткий. ' .
+                        'messageMinimum' => 'Password is too short. ' .
                                             'Мінімум 8 символів',
                     ]
                 ),
                 new Confirmation(
                     [
                         'message' => "Пароль не збігається " .
-                                     "з підтвердженням",
+                                     "confirmation",
                         'with'    => 'confirmPassword',
                     ]
                 ),
@@ -920,15 +895,14 @@ class SignUpForm extends Form
 
         $this->add($password);
 
-        // Підтвердження паролю
         $confirmPassword = new Password('confirmPassword');
-        $confirmPassword->setLabel('Підтвердіть пароль');
+        $confirmPassword->setLabel('Confirm Password');
         $confirmPassword->addValidators(
             [
                 new PresenceOf(
                     [
-                        'message' => 'Підтвердження паролю ' .
-                                     'необхідне',
+                        'message' => 'The confirmation password ' .
+                                     'is required',
                     ]
                 ),
             ]
@@ -936,7 +910,6 @@ class SignUpForm extends Form
 
         $this->add($confirmPassword);
 
-        // Запам'ятати
         $terms = new Check(
             'terms', 
             [
@@ -944,26 +917,25 @@ class SignUpForm extends Form
             ]
         );
 
-        $terms->setLabel('Прийняти умови користування');
+        $terms->setLabel('Accept terms and conditions');
         $terms->addValidator(
             new Identical(
                 [
-                    'value'   => 'так',
-                    'message' => 'Умови користування необхідно ' .
-                                 'прийняти',
+                    'value'   => 'yes',
+                    'message' => 'Terms and conditions must be ' .
+                                 'accepted',
                 ]
             )
         );
 
         $this->add($terms);
 
-        // CSRF
         $csrf = new Hidden('csrf');
         $csrf->addValidator(
             new Identical(
                 [
                     'value'   => $this->security->getRequestToken(),
-                    'message' => 'CSRF перевірку не пройдено',
+                    'message' => 'CSRF validation failed',
                 ]
             )
         );
@@ -971,10 +943,9 @@ class SignUpForm extends Form
 
         $this->add($csrf);
 
-        // Реєстрація
         $this->add(
             new Submit(
-                'Зареєструватися', 
+                'Sign Up', 
                 [
                     'class' => 'btn btn-success',
                 ]
@@ -983,8 +954,6 @@ class SignUpForm extends Form
     }
 
     /**
-     * Виведення повідомлень для специфічних елементів
-     *
      * @param string $name
      *
      * @return string
@@ -1020,19 +989,18 @@ class SignUpForm extends Form
 <?php
 declare(strict_types=1);
 
-// Email
 $email = new Text('email');
 $email->setLabel('E-Mail');
 $email->addValidators(
     [
         new PresenceOf(
             [
-                'message' => 'Потрібно вказати е-mail',
+                'message' => 'The e-mail is required',
             ]
         ),
         new Email(
             [
-                'message' => 'Е-mail неправильний',
+                'message' => 'The e-mail is not valid',
             ]
         ),
     ]
@@ -1129,7 +1097,7 @@ Our view now needs to _render_ the elements:
 {% endraw %}
 ```
 
-Змінна, яку ми встановили у поданні нашого об'єкта `SignUpForm` називається `form`. Тому ми використовуємо її напряму і викликаємо її методи. Синтаксис в Volt дещо відрізняється. В PHP ми б використовували `$form->render()`, тоді як у Volt ми будемо використовувати `form.render()`.
+Змінна, яку ми встановили у поданні нашого об'єкта `SignUpForm` називається `form`. Тому ми використовуємо її напряму і викликаємо її методи. Синтаксис в Volt дещо відрізняється. In PHP, we would use `$form->render()` whereas in Volt we will use `form.render()`.
 
 Подання містить спочатку результати перевірки, чи мають місце якісь помилки у нашій формі, і якщо так, то додається клас CSS `is-invalid` до відповідного елемента. Цей клас додає гарну червону рамку до елемента, виділяючи помилку та відображаючи повідомлення.
 
@@ -1163,9 +1131,6 @@ use Vokuro\Models\Users;
  */
 class SessionController extends ControllerBase
 {
-    /**
-     * Дозволяємо користувачу зареєструватись у системі
-     */
     public function signupAction()
     {
         $form = new SignUpForm();
@@ -1216,7 +1181,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-Якщо користувач відправив дані, то наступний рядок буде оцінюватися і ми будемо виконувати код в межах команди `if`:
+If the user has submitted data, the following line will evaluate, and we will be executing code inside the `if` statement:
 
 ```php
 if (true === $this->request->isPost()) {
@@ -1243,7 +1208,7 @@ $name     = $this
 ;
 ```
 
-Зверніть увагу, що ми ніколи не зберігаємо точний текст паролів. Instead we use the [Phalcon\Security](encryption-security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. Таким чином, якщо хтось скомпрометує нашу базу даних, принаймні він не матиме доступу до конкретних текстів паролів.
+Зверніть увагу, що ми ніколи не зберігаємо точний текст паролів. Instead, we use the [Phalcon\Security](encryption-security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. Таким чином, якщо хтось скомпрометує нашу базу даних, принаймні він не матиме доступу до конкретних текстів паролів.
 
 ```php
 $password = $this
@@ -1360,9 +1325,6 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
-/**
- * Всі користувачі, зареєстровані на сайті
- */
 class Users extends Model
 {
     // ...
@@ -1423,7 +1385,7 @@ class Users extends Model
 
 Як ви бачите у визначених зв/'язках, ми маємо `belongsTo`, а також три `hasMany`. Усі зв/'язки мають псевдоніми, щоб ми могли легше отримати до них доступ. Відношення `belongsTo` також має активний прапорець `reusable`. Це означає, що якщо у одному запиті викликається зв/'язок більш ніж один раз, Phalcon виконуватиме запит до бази даних лише перший раз і кешуватиме результат. Будь-які наступні запити використовуватимуть кешовані результати.
 
-Також важливо, що ми визначаємо конкретні повідомлення для зовнішніх ключів. Якщо конкретні зв/'язки будуть порушуватись, то визначене повідомлення буде показане.
+Also, notable is that we define specific messages for foreign keys. Якщо конкретні зв/'язки будуть порушуватись, то визначене повідомлення буде показане.
 
 **Events**
 
@@ -1442,9 +1404,6 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
-/**
- * Всі користувачі, зареєстровані на сайті
- */
 class Users extends Model
 {
     public function beforeValidationOnCreate()
@@ -1456,25 +1415,25 @@ class Users extends Model
                 base64_encode(openssl_random_pseudo_bytes(12))
             );
 
-            $this->mustChangePassword = 'так';
+            $this->mustChangePassword = 'Y';
 
             $this->password = $this->getDI()
                                    ->getSecurity()
                                    ->hash($tempPassword)
             ;
         } else {
-            $this->mustChangePassword = 'ні';
+            $this->mustChangePassword = 'N';
         }
 
         if ($this->getDI()->get('config')->useMail) {
-            $this->active = 'ні';
+            $this->active = 'N';
         } else {
-            $this->active = 'так';
+            $this->active = 'Y';
         }
 
-        $this->suspended = 'ні';
+        $this->suspended = 'N';
 
-        $this->banned = 'ні';
+        $this->banned = 'N';
     }
 }
 ```
@@ -1493,15 +1452,12 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
-/**
- * Всі користувачі, зареєстровані на сайті
- */
 class Users extends Model
 {
     public function afterSave()
     {
         if ($this->getDI()->get('config')->useMail) {
-            if ($this->active == 'ні') {
+            if ($this->active == 'N') {
                 $emailConfirmation          = new EmailConfirmations();
                 $emailConfirmation->usersId = $this->id;
 
@@ -1509,7 +1465,7 @@ class Users extends Model
                     $this->getDI()
                          ->getFlash()
                          ->notice(
-                            'Лист підтвердження ' .
+                            'A confirmation mail has ' .
                             'надіслано на ' . $this->email
                         )
                     ;
@@ -1528,7 +1484,7 @@ class Users extends Model
 
 **Валідація**
 
-Модель також має метод `validate`, який дозволяє нам додати валідатордо будь-якої кількості полей нашої моделі. Для таблиці `Users` на потрібно, щоб `email` був унікальним. As such, we attach the `Uniqueness` [validator](filter-validation) to it. Валідатор виконується перед здійсненням будь-якої операції збереження у моделі та буде показано повідомлення в разі невдачі валідації.
+Модель також має метод `validate`, який дозволяє нам додати валідатордо будь-якої кількості полей нашої моделі. Для таблиці `Users` на потрібно, щоб `email` був унікальним. As such, we attach the `Uniqueness` [validator](filter-validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned if the validation fails.
 
 
 ```php
@@ -1541,9 +1497,6 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
-/**
- * Усі користувачі, зареєстровані на сайті
- */
 class Users extends Model
 {
     public function validation()
@@ -1554,7 +1507,7 @@ class Users extends Model
             'email', 
             new Uniqueness(
                 [
-                    "message" => "Такий еmail вже зареєстровано",
+                    "message" => "The email is already registered",
                 ]
             )
         );
@@ -1565,7 +1518,7 @@ class Users extends Model
 ```
 
 ## Підсумок
-Vökuró це приклад додатку, який ми використовуємо для демонстрації деяких функцій, які пропонує Phalcon. Це, безумовно, не рішення, яке підійде для всіх потреб. Тим не менш, ви можете використовувати його як відправну точку для розробки вашої програми.
+Vökuró це приклад додатку, який ми використовуємо для демонстрації деяких функцій, які пропонує Phalcon. Це, безумовно, не рішення, яке підійде для всіх потреб. However, you can use it as a starting point to develop your application.
 
 ## References
 
@@ -1573,9 +1526,7 @@ Vökuró це приклад додатку, який ми використов�
 - [Composer][composer]
 - [DotEnv - Vance Lucas][dotenv]
 - [Визначення Модель-Подання-Контролер][mvc]
-- [Посібники з Нанобоксу][nanobox-guides]
 - [Phinx - Cake PHP][phinx]
-- [PSR розширення][psr]
 - [Swift Mailer][swiftmailer]
 - [Phalcon ACL](acl)
 - [Форми Phalcon](forms)
@@ -1600,9 +1551,7 @@ Vökuró це приклад додатку, який ми використов�
 [mvc]: https://en.wikipedia.org/wiki/Model–view–controller
 [mvc]: https://en.wikipedia.org/wiki/Model–view–controller
 [nanobox-guides]: https://guides.nanobox.io/php/
-[nanobox-guides]: https://guides.nanobox.io/php/
 [phinx]: https://github.com/cakephp/phinx
 [phinx]: https://github.com/cakephp/phinx
-[psr]: https://github.com/jbboehr/php-psr
 [psr]: https://github.com/jbboehr/php-psr
 [swiftmailer]: https://swiftmailer.symfony.com
