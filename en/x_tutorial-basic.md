@@ -7,7 +7,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc'
 ---
 # Tutorial - Basic
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Throughout this tutorial, we will create an application with a simple registration form, while introducing the main design aspects of Phalcon. 
@@ -18,7 +18,7 @@ This tutorial covers the implementation of a simple MVC application, showing how
 
 If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](devtools).
 
-The best way to use this guide is to follow along and try to have fun. You can get the complete code [here][github_tutorial]. If you get stuck or have questions, please visit us on [Discord][discord] or in our [Forum][forum].
+The best way to use this guide is to follow along and try to have fun. You can get the complete code [here][github_tutorial]. If you get stuck or have questions, please visit us on [Discord][discord] or in our [Discussions][discussions].
 
 ## File Structure
 One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a _standard_ directory structure, commonly used in MVC applications.
@@ -101,13 +101,13 @@ $loader->register();
 ```
 
 ### Dependency Management
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC][ioc] container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound complex but Phalcon ensures that their use is simple, practical and efficient. Phalcon's IoC container consists of the following concepts:
+Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager, so they can be injected automatically to components and services wrapped in the [IoC][ioc] container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound complex but Phalcon ensures that their use is simple, practical and efficient. Phalcon's IoC container consists of the following concepts:
 - Service Container: a "bag" where we globally store the services that our application needs to function.
 - Service or Component: Data processing object which will be injected into components
 
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
 
-> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler][injection]. Also we have [a great tutorial](di) covering many use cases.
+> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler][injection]. Also, we have [a great tutorial](di) covering many use cases.
 {: .alert .alert-warning }
 
 ### Factory Default
@@ -169,7 +169,7 @@ $container->set(
 ```
 
 ### Handling the Application Request
-In order to handle any requests, the [Phalcon\Mvc\Application](application) object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
+In order to handle any requests, the [Phalcon\Mvc\Application](application) object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning the results.
 
 `public/index.php`
 ```php
@@ -251,10 +251,10 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
+As you can see, the bootstrap file is very short, and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
 
 ## Creating a Controller
-By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
+By default, Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (e.g. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
 `app/controllers/IndexController.php`
 ```php
@@ -281,7 +281,7 @@ The controller classes must have the suffix `Controller` and controller actions 
 ## Sending Output to a View
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. 
 
-Therefore in our case if the URL is:
+Therefore, in our case if the URL is:
 
 ```php
 http://localhost/
@@ -347,7 +347,7 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 <a href="/signup">Sign Up Here!</a>
 ```
 
-To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector so we can use `$this->tag` to access its functionality. 
+To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector, so we can use `$this->tag` to access its functionality. 
 
 > **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
 {: .alert .alert-info }
@@ -497,7 +497,7 @@ $container->set(
 
 Adjust the code snippet above as appropriate for your database. 
 
-With the correct database parameters, our model is ready to interact with the rest of the application so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the _save_ operation.
+With the correct database parameters, our model is ready to interact with the rest of the application, so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the _save_ operation.
 
 `app/views/signup/register.phtml`
 ```php
@@ -558,7 +558,7 @@ class SignupController extends Controller
 
 At the beginning of the `registerAction` we create an empty user object using the `Users` class we created earlier. We will use this class to manage the record of a user. As mentioned above, the class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a `boolean` value which indicates whether the save was successful or not.
 
-The ORM will automatically escape the input preventing SQL injections so we only need to pass the request to the `save()` method.
+The ORM will automatically escape the input preventing SQL injections, so we only need to pass the request to the `save()` method.
 
 Additional validation happens automatically on fields that are defined as not null (required). If we do not enter any of the required fields in the sign-up form our screen will look like this:
 
@@ -668,12 +668,12 @@ If you are ready to learn more check out the [Vökuró Tutorial](tutorial-vokuro
 
 [anonymous_function]: https://php.net/manual/en/functions.anonymous.php
 [discord]: https://phalcon.io/discord
-[forum]: https://phalcon.io/forum
+[discussions]: https://phalcon.io/discussions
 [github_tutorial]: https://github.com/phalcon/tutorial
 [htrouter]: https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php
 [injection]: https://martinfowler.com/articles/injection.html
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control
 [psr-4]: https://www.php-fig.org/psr/psr-4/
-[di]: api/Phalcon_Di
-[di-factorydefault]: api/Phalcon_Di#di-factorydefault 
+[di]: api/phalcon_di
+[di-factorydefault]: api/phalcon_di#di-factorydefault 
 [bootstrap]: https://getbootstrap.com/

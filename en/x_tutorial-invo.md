@@ -7,7 +7,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 ---
 # Tutorial - INVO
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. It showcases how certain tasks are handled by Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. The application does not generate actual invoices, but serves as an example on how these tasks are implemented using Phalcon.
@@ -269,7 +269,7 @@ $container->set(
 
 Here, we return an instance of the MySQL connection adapter. We can also add extra functionality, such as adding a [Logger](logger), a [profiler](db-models-events#profiling-sql-statements) to measure query execution times or even change the adapter to a different RDBMS.
 
-The following simple form (`app/views/session/index.volt`) produces the necessary HTML so that users can submit login information. Some of the HTML code has been removed to improve readability:
+The following simple form (`app/views/session/index.volt`) produces the necessary HTML so that users can submit login information. Some HTML code has been removed to improve readability:
 
 ```twig
 {% raw %}
@@ -303,7 +303,7 @@ The following simple form (`app/views/session/index.volt`) produces the necessar
 {% endraw %}
 ```
 
-We are using [Volt](volt) as our template engine instead of PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
+We are using [Volt](volt) as our template engine instead of PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user-friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) validates the data submitted from the form, and also checks for a valid user in the database:
 
@@ -373,9 +373,9 @@ class SessionController extends ControllerBase
 }
 ```
 
-At first inspection of the code, you will note that several public properties are accessed in the controller, such as `$this->flash`, `$this->request` or `$this->session`. [Controllers](controllers) in Phalcon are automatically tied to the [Phalcon\Di](di) container and as a result, all the services registered in the container are present in each controller as properties with the same name as the name of each service. If the service is accessed for the first time, it will be automatically instantiated and returned to the caller. Additionally these services are set as _shared_ so the same instance will be returned back, no matter how many times we access the property/service in the same request. These are services defined in the services container from earlier (`app/config/services.php`) and you can of course change this behavior when setting up these services.
+At first inspection of the code, you will note that several public properties are accessed in the controller, such as `$this->flash`, `$this->request` or `$this->session`. [Controllers](controllers) in Phalcon are automatically tied to the [Phalcon\Di](di) container and as a result, all the services registered in the container are present in each controller as properties with the same name as the name of each service. If the service is accessed for the first time, it will be automatically instantiated and returned to the caller. Additionally, these services are set as _shared_ so the same instance will be returned, no matter how many times we access the property/service in the same request. These are services defined in the services container from earlier (`app/config/services.php`) and you can of course change this behavior when setting up these services.
 
-For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
+For instance, here we invoke the `session` service, and then we store the user identity in the variable `auth`:
 
 ```php
 <?php
@@ -773,7 +773,7 @@ foreach ($privateComponents as $resource => $actions) {
 ## CRUD
 A backend portion of an application is the code that provides forms and logic, allowing users to manipulate data i.e. perform CRUD operations. We will explore how INVO handles this task and also demonstrate the use of forms, validators, paginators and more.
 
-We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, so as to manipulate data (companies, products, types of products). For products the following files are used:
+We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, to manipulate data (companies, products, types of products). For products the following files are used:
 
 
 ```bash
@@ -952,7 +952,7 @@ $name->addValidators(
 
 $this->add($name);
 ```
-First we create the element. Then we attach a label to it, attach filters, so that we can perform sanitization of data. Following that we apply an validators on the element and finally add the element to the form.
+First we create the element. Then we attach a label to it, attach filters, so that we can perform sanitization of data. Following that we apply a validators on the element and finally add the element to the form.
 
 Other elements are also used in this form:
 
@@ -1164,7 +1164,7 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-The [paginator](pagination) object receives the results obtained by the search. We also set a limit (results per page) as well as the page number. Finally we call `paginate()` to get the appropriate chunk of the resultset back.
+The [paginator](pagination) object receives the results obtained by the search. We also set a limit (results per page) as well as the page number. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
 
 We then pass the returned page to view:
 
@@ -1347,7 +1347,7 @@ Now you can go back to the view and find out what every block is doing. Every fi
 {% endraw %}
 ```
 
-As we seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.productTypes.name`. To understand this part, we have to check the Products model (`app/models/Products.php`):
+As we have seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.productTypes.name`. To understand this part, we have to check the Products model (`app/models/Products.php`):
 
 ```php
 <?php
@@ -1377,7 +1377,7 @@ class Products extends Model
 }
 ```
 
-A model can have a method called `initialize()`, this method is called once per request and it serves the ORM to initialize a model. In this case, `Products` is initialized by defining that this model has a one-to-many relationship to another model called `ProductTypes`.
+A model can have a method called `initialize()`, this method is called once per request, and it serves the ORM to initialize a model. In this case, `Products` is initialized by defining that this model has a one-to-many relationship to another model called `ProductTypes`.
 
 ```php
 <?php
@@ -1391,7 +1391,7 @@ $this->belongsTo(
     ]
 );
 ```
-Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
+Which means, the local attribute `product_types_id` in `Products` has a one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
 
 ```twig
 {% raw %}
@@ -1473,7 +1473,7 @@ public function createAction()
     // ...
 }
 ```
-As seen earlier, when we were creating the form, there were some filters assigned to the relevant elements. When the data is passed to the form, these filters are invoked and they sanitize the supplied input. Although this filtering is optional, it is always a good practice. Added to this, the ORM also escapes the supplied data and performs additional casting according to the column types:
+As seen earlier, when we were creating the form, there were some filters assigned to the relevant elements. When the data is passed to the form, these filters are invoked, and they sanitize the supplied input. Although this filtering is optional, it is always a good practice. Added to this, the ORM also escapes the supplied data and performs additional casting according to the column types:
 
 ```php
 <?php
@@ -1685,7 +1685,7 @@ public function saveAction()
 ```
 
 ## Components
-The UI has been create with the [Bootstrap][bootstrap] library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+The UI has been created with the [Bootstrap][bootstrap] library. Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
 This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
 
