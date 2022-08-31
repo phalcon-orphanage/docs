@@ -2,14 +2,14 @@
 layout: default
 language: 'es-es'
 version: '5.0'
-upgrade: '#request'
+upgrade: '#http'
 title: 'Petición HTTP'
 keywords: 'http, petición http, petición'
 ---
 
 # Componente Petición
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 [Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. También ofrece fácil acceso a la información como datos de la cabecera, ficheros, métodos, variables, etc.
@@ -43,11 +43,14 @@ There are 5 methods that allow you to retrieve submitted data from a request:
 - `getServer()`
 
 All (except `getServer()`) accept the following parameters:
-- `name` the name of the value to get
-- `filters` (array/string) the sanitizers to apply to the value
-- `defaultValue` returned if the element is not defined (`null`)
-- `notAllowEmpty` if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null`
-- `noRecursive` applies the sanitizers recursively in the value (if value is an array)
+
+| Nombre          | Descripción                                                                                    |
+| --------------- | ---------------------------------------------------------------------------------------------- |
+| `name`          | the name of the value to get                                                                   |
+| `filters`       | (array/string) the sanitizers to apply to the value                                            |
+| `defaultValue`  | returned if the element is not defined (`null`)                                                |
+| `notAllowEmpty` | if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null` |
+| `noRecursive`   | applies the sanitizers recursively in the value (if value is an array)                         |
 
 ```php
 <?php
@@ -324,63 +327,84 @@ class PostsController extends Controller
 
 ## Operaciones de Comprobación
 The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. Por ejemplo, si quiere comprobar si se ha realizado una solicitud en particular usando AJAX, puede hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`.
-- `isAjax()`: Checks whether request has been made using AJAX
-- `isConnect()`: Checks whether HTTP method is CONNECT
-- `isDelete()`: Checks whether HTTP method is DELETE
-- `isGet()`: Checks whether HTTP method is GET
-- `isHead()`: Checks whether HTTP method is HEAD
-- `isMethod()`: Check if HTTP method match any of the passed methods
-- `isOptions()`: Checks whether HTTP method is OPTIONS
-- `isPatch()`: Checks whether HTTP method is PATCH
-- `isPost()`: Checks whether HTTP method is POST
-- `isPurge()`: Checks whether HTTP method is PURGE (Squid and Varnish support)
-- `isPut()`: Checks whether HTTP method is PUT
-- `isSecure()`: Checks whether request has been made using any secure layer
-- `isSoap()`: Checks whether request has been made using SOAP
-- `isTrace()`: Checks whether HTTP method is TRACE
-- `isValidHttpMethod()`: Checks if a method is a valid HTTP method
+
+| Nombre                | Descripción                                                            |
+| --------------------- | ---------------------------------------------------------------------- |
+| `isAjax()`            | Checks whether request has been made using AJAX                        |
+| `isConnect()`         | Checks whether HTTP method is CONNECT                                  |
+| `isDelete()`          | Checks whether HTTP method is DELETE                                   |
+| `isGet()`             | Checks whether HTTP method is GET                                      |
+| `isHead()`            | Checks whether HTTP method is HEAD                                     |
+| `isMethod()`          | Comprueba si el método HTTP coincide con alguno de los métodos pasados |
+| `isOptions()`         | Checks whether HTTP method is OPTIONS                                  |
+| `isPatch()`           | Checks whether HTTP method is PATCH                                    |
+| `isPost()`            | Checks whether HTTP method is POST                                     |
+| `isPurge()`           | Checks whether HTTP method is PURGE (Squid and Varnish support)        |
+| `isPut()`             | Checks whether HTTP method is PUT                                      |
+| `isSecure()`          | Comprueba si la petición se ha hecho usando alguna capa segura         |
+| `isSoap()`            | Comprueba si la petición se ha hecho usando SOAP                       |
+| `isTrace()`           | Checks whether HTTP method is TRACE                                    |
+| `isValidHttpMethod()` | Comprueba si un método es un método HTTP válido                        |
 
 ## Comprobar Existencia
 Hay un número de métodos disponibles que le permiten comprobar la existencia de elementos de la solicitud. Estos métodos llevan el prefijo `has`. Dependiendo del método utilizado, puede comprobar si existe un elemento en el `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, caché PUT y los encabezados de solicitud.
-- `has()`: Checks whether the $_REQUEST superglobal has a certain element
-- `hasFiles()`: Checks whether the request has any uploaded files
-- `hasHeader()`: Checks whether the headers have a certain element
-- `hasPost()`: Checks whether $_POST superglobal has a certain element
-- `hasPut()`: Checks whether the PUT data has a certain element
-- `hasQuery()`: Checks whether $_GET superglobal has a certain element
-- `hasServer()`: Checks whether $_SERVER superglobal has a certain element
-- `numFiles()`: Returns the number of files present in the request
+
+| Nombre        | Descripción                                                    |
+| ------------- | -------------------------------------------------------------- |
+| `has()`       | Checks whether the $_REQUEST superglobal has a certain element |
+| `hasFiles()`  | Checks whether the request has any uploaded files              |
+| `hasHeader()` | Checks whether the headers have a certain element              |
+| `hasPost()`   | Checks whether $_POST superglobal has a certain element        |
+| `hasPut()`    | Checks whether the PUT data has a certain element              |
+| `hasQuery()`  | Checks whether $_GET superglobal has a certain element         |
+| `hasServer()` | Checks whether $_SERVER superglobal has a certain element      |
+| `numFiles()`  | Returns the number of files present in the request             |
 
 ## Información de la Petición
 The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request.
 ### Autenticación
-- `getBasicAuth()`: Obtiene información de autenticación aceptada por el navegador/cliente
-- `getDigestAuth()`: Obtiene información de autenticación aceptada por el navegador/cliente
+
+| Nombre            | Descripción                                   |
+| ----------------- | --------------------------------------------- |
+| `getBasicAuth()`  | Gets auth info accepted by the browser/client |
+| `getDigestAuth()` | Gets auth info accepted by the browser/client |
 
 ### Cliente
-- `getClientAddress()`: Obtiene la dirección IPv4 del cliente más probable
-- `getClientCharsets()`: Obtiene un vector de conjuntos de caracteres y sus cualidades aceptado por el navegador/cliente
-- `getUserAgent()`: Obtiene el agente HTTP del usuario usado para hacer la petición
-- `getHTTPReferer()`: Obtiene la página web que hace referencia a la petición activa
+
+| Nombre                | Descripción                                                            |
+| --------------------- | ---------------------------------------------------------------------- |
+| `getClientAddress()`  | Gets most possible client IPv4 Address                                 |
+| `getClientCharsets()` | Gets a charsets array and their quality accepted by the browser/client |
+| `getUserAgent()`      | Obtiene el agente de usuario HTTP utilizado para hacer la solicitud    |
+| `getHTTPReferer()`    | Gets web page that refers active request                               |
 
 ### Contenido
-- `getAcceptableContent()`: Obtiene un vector con tipos mime y sus cualidades aceptadas por el navegador/cliente
-- `getBestAccept()`: Obtiene los mejores tipos mime aceptados por el navegador/cliente
-- `getContentType()`: Obtiene el tipo de contenido que ha enviado la petición
-- `getJsonRawBody()`: Obtiene el JSON sin procesar del cuerpo de la petición HTTP
-- `getRawBody()`: Obtiene el cuerpo de la petición HTTP sin procesar
+
+| Nombre                   | Descripción                                                                    |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| `getAcceptableContent()` | Gets an array with mime/types and their quality accepted by the browser/client |
+| `getBestAccept()`        | Gets best mime/type accepted by the browser/client                             |
+| `getContentType()`       | Obtiene el tipo de contenido en el que se hizo la solicitud                    |
+| `getJsonRawBody()`       | Obtiene el cuerpo de la petición HTTP sin procesar decodificado en JSON        |
+| `getRawBody()`           | Obtiene el cuerpo de solicitud HTTP sin procesar                               |
 
 ### i18n
-- `getBestCharset()`: Obtiene el mejor conjunto de caracteres aceptados por el navegador/cliente
-- `getBestLanguage()`: Obtiene el mejor idioma aceptado por el navegador/cliente
-- `getLanguages()`: Obtiene un vector de idiomas y sus cualidades aceptadas por el navegador/cliente
+
+| Nombre              | Descripción                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| `getBestCharset()`  | Gets best charset accepted by the browser/client                      |
+| `getBestLanguage()` | Gets best language accepted by the browser/client                     |
+| `getLanguages()`    | Gets languages array and their quality accepted by the browser/client |
 
 ### Servidor
-- `getPort()`: Obtiene información sobre el puerto sobre el que se ha hecho la petición
-- `getServerAddress()`: Obtiene la dirección IP activa del servidor
-- `getServerName()`: Obtiene el nombre del servidor activo
-- `getScheme()`: Obtiene el esquema HTTP (http/https)
-- `getURI()`: Obtiene la URI HTTP que ha hecho la solicitud. Si se pasa `true` como parámetro, la parte de consulta no se devolverá
+
+| Nombre               | Descripción                                                                                                       |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `getPort()`          | Obtiene información sobre el puerto en el que se ha hecho la petición                                             |
+| `getServerAddress()` | Obtiene la IP de la dirección del servidor activo                                                                 |
+| `getServerName()`    | Obtiene el nombre del servidor activo                                                                             |
+| `getScheme()`        | Obtiene el esquema HTTP (http/https)                                                                              |
+| `getURI()`           | Gets HTTP URI which request has been made. Si se pasa `true` como parámetro, la parte de consulta no se devolverá |
 
 ```php
 <?php
@@ -531,21 +555,26 @@ class PostsController extends Controller
 Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File][http-request-file] which implements the [Phalcon\Http\Request\FileInterface][http-request-fileinterface] class. Usar el vector superglobal `$_FILES` ofrece el mismo comportamiento. [Phalcon\Http\Request\File][http-request-file] encapsulates only the information related to each file uploaded with the request.
 
 `getUploadedFiles()` acepta dos parámetros.
-- `$onlySuccessful`: Contains only successful uploads
-- `$namedKeys`: Returns the array with named keys obtained by the upload process
+
+| Nombre            | Descripción                                                      |
+| ----------------- | ---------------------------------------------------------------- |
+| `$onlySuccessful` | Contains only successful uploads                                 |
+| `$namedKeys`      | Returns the array with named keys obtained by the upload process |
 
 The method returns an array of [Phalcon\Http\Request\File][http-request-file] objects. Cada objeto ofrece las siguientes propiedades y métodos, que le permiten trabajar con los ficheros subidos:
 
-- `getError()` (string) - Devuelve cualquier error que haya ocurrido con este fichero
-- `getExtension()` (string) - Devuelve la extensión del fichero
-- `getKey()` (string) - Devuelve la clave interna del fichero
-- `getName()` (string) - Devuelve el nombre real del fichero subido
-- `getRealType()` (string) - Devuelve el tipo mime real del fichero subido usando finfo
-- `getSize()` (int) - Devuelve el tamaño del fichero subido
-- `getTempName()` (string) - Devuelve el nombre temporal del fichero subido
-- `getType()` (string) - Devuelve el tipo mime informado por el navegador. El tipo mime no es completamente seguro, use `getRealType()` en su lugar
-- `isUploadedFile()` (bool) - Comprueba si el fichero ha sido subido vía `POST`.
-- `moveTo(string $destination)` (bool) - Mueve el fichero temporal a un destino dentro de la aplicación
+| Nombre                              | Descripción                                                                                                             |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `getError(): string`                | Returns any error that happened with this file                                                                          |
+| `getExtension(): string`            | Returns the extension of the file                                                                                       |
+| `getKey(): string`                  | Returns the internal key of the file                                                                                    |
+| `getName(): string`                 | Devuelve el nombre real del fichero subido                                                                              |
+| `getRealType(): string`             | Return the real mime type of the upload file using finfo                                                                |
+| `getSize(): int`                    | Devuelve el tamaño de fichero del fichero subido                                                                        |
+| `getTempName(): string`             | Devuelve el nombre temporal del fichero subido                                                                          |
+| `getType(): string`                 | Returns the mime type reported by the browser. El tipo mime no es completamente seguro, use `getRealType()` en su lugar |
+| `isUploadedFile(): bool`            | Checks whether the file has been uploaded via `POST`.                                                                   |
+| `moveTo(string $destination): bool` | Mueve el fichero temporal a una ubicación dentro de la aplicación                                                       |
 
 ## Inyección de Dependencias
 The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
