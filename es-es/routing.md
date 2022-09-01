@@ -566,7 +566,7 @@ $router->add(
 La primera posición se debe omitir porque se usa para el parámetro nombrado `year`.
 
 ### Módulos
-Puede definir rutas con módulos en el camino. Esto es especialmente adecuado para aplicaciones multimódulo. Puede definir una ruta por defecto que incluya un comodín de módulo.
+Puede definir rutas con módulos en el camino. This is specially suitable to multimodule applications. Puede definir una ruta por defecto que incluya un comodín de módulo.
 
 ```php
 <?php
