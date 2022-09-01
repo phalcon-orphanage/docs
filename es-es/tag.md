@@ -8,7 +8,11 @@ keywords: 'etiqueta, ayudantes, ayudantes vista, generadores html'
 
 # Etiqueta (Ayudantes Vista)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
+> **NOTE** `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component. 
+> 
+> {: .alert .alert-danger }
 
 ## Resumen
 Escribir y mantener código HTML puede convertirse rápidamente en una tarea tediosa a causa de las convenciones de nombre y numerosos atributos que se deben tener en consideración. Phalcon se ocupa de esta complejidad ofreciendo el componente [Phalcon\Tag](api/Phalcon_Tag) que a su vez ofrece ayudantes para generar marcado HTML.
@@ -1810,3 +1814,4 @@ You can also check out [Volt](volt) a faster template engine for PHP, where you 
 [factorydefault]: api/phalcon_di#di-factorydefault
 [injectable]: api/phalcon_di#di-injectable
 [tag]: api/phalcon_tag
+[tagfactory]: api/phalcon_html#html-tagfactory
