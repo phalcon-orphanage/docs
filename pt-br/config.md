@@ -830,7 +830,7 @@ Also in your views (Volt syntax)
 ```
 
 [config]: api/phalcon_config
-[collection]: api/phalcon_collection
+[collection]: support-collection
 [phalcon-incubator]: https://github.com/phalcon/incubator
 [grouped]: api/phalcon_config#config-adapter-grouped
 [ini]: api/phalcon_config#config-adapter-ini
