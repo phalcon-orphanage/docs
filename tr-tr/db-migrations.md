@@ -127,7 +127,7 @@ $migration::run([
 
 ## Migration methods
 
-Each migration is an separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
+Each migration is a separate class that works as an entity for specific database table. Inside each class there are different methods that can occur during migration running.
 
 Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
 
