@@ -11,7 +11,7 @@ keywords: 'html, attributes'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
-The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Collection](support-collection). It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Html\TagFactory](html-tagfactory) internally to render the attributes that an HTML element has. These HTML attributes are defined in the object itself.
+The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Support\Collection](support-collection). It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Html\TagFactory](html-tagfactory) internally to render the attributes that an HTML element has. These HTML attributes are defined in the object itself.
 
 The component can be used on its own if you want to collect HTML attributes in an object and then _render_ them (return them as a string) in a `key=value` format.
 
