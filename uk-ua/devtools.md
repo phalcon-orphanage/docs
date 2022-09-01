@@ -13,7 +13,7 @@ keywords: 'devtools, developer tools, models, controllers'
 ## Огляд
 Ці інструменти допомагають генерувати скелетний код, підтримувати структуру бази даних та сприяють пришвидшенню розробки. Основні компоненти вашого додатка можна створити за допомогою простої команди, що дозволяє легко розробляти програми за допомогою Phalcon.
 
-Управляти Phalcon Devtool можна за допомогою командного рядка (cmd) або веб-інтерфейсу.
+You can use the Phalcon Devtools either from the command line (terminal) or the web interface.
 
 ## Встановлення
 
@@ -32,24 +32,24 @@ composer require phalcon/devtools
 ```bash
 $ phalcon
 
-Phalcon DevTools (4.0.0)
+Phalcon DevTools (5.0.0)
 
-Доступні команди:
-  info             (синонім: i)
-  commands         (синоніми: list, enumerate)
-  controller       (синонім: create-controller)
-  module           (синонім: create-module)
-  model            (синонім: create-model)
-  all-models       (синонім: create-all-models)
-  project          (синонім: create-project)
-  scaffold         (синонім: create-scaffold)
-  migration        (синонім: create-migration)
-  webtools         (синонім: create-webtools)
-  serve            (синонім: server)
-  console          (синоніми: shell, psysh)
+Available commands:
+  info             (alias of: i)
+  commands         (alias of: list, enumerate)
+  controller       (alias of: create-controller)
+  module           (alias of: create-module)
+  model            (alias of: create-model)
+  all-models       (alias of: create-all-models)
+  project          (alias of: create-project)
+  scaffold         (alias of: create-scaffold)
+  migration        (alias of: create-migration)
+  webtools         (alias of: create-webtools)
+  serve            (alias of: server)
+  console          (alias of: shell, psysh)
 ```
 
-Інструменти devtools також доступні у форматі phar для завантаження у нашому [репозиторії](github_devtools) github.
+The devtools are also available as phar download on our GitHub [repository](github_devtools).
 
 ## Використання
 ### Доступні команди
@@ -58,7 +58,7 @@ Phalcon DevTools (4.0.0)
 ```bash
 $ phalcon commands
 
-Phalcon DevTools (4.0.0)
+Phalcon DevTools (5.0.0)
 
 Available commands:
   info             (alias of: i)
@@ -76,7 +76,7 @@ Available commands:
 ```
 
 ### Створення скелету проекту
-Ви можете використовувати інструменти Phalcon для створення типового скелета проекту для ваших додатків на основі фреймворка Phalcon. За замовчуванням генератор скелета проекту використовуватиме mod_rewrite для Apache. Наберіть таку команду в кореневій папці проекту:
+Ви можете використовувати інструменти Phalcon для створення типового скелета проекту для ваших додатків на основі фреймворка Phalcon. By default, the project skeleton generator will use mod_rewrite for Apache. Наберіть таку команду в кореневій папці проекту:
 
 ```bash
 $ phalcon create-project store
@@ -91,31 +91,30 @@ $ phalcon create-project store
 ```bash
 $ phalcon project --help
 
-Phalcon DevTools (4.0.0)
+Phalcon DevTools (5.0.0)
 
-Довідка:
-  Створює проект
+Help:
+  Creates a project
 
-Використання:
+Usage:
   project [name] [type] [directory] [enable-webtools]
 
-Аргументи:
-  help  Показує цей довідковий текст (англійською)
+Arguments:
+  help  Shows this help text
 
-Приклад
+Example
   phalcon project store simple
 
-Опції:
- --name=s               Назва нового проекту
- --enable-webtools      Визначає, чи має бути активовано вебінструментарій
- [optional]
- --directory=s          Базовий шлях, де проект буде створено [optional]
- --type=s               Тип додатка, що буде згенеровано (cli, micro, simple, modules)
- --template-path=s      Уточнення шляху до шаблону [optional]
- --template-engine=s    Визначення двигуна візуалізації, за замовчуванням phtml (phtml, volt) [optional]
- --use-config-ini       Використання файлу ini для зберігання параметрів налаштувань [optional]
- --trace                Відображає трасування фреймворка у разі виняткової ситуації [optional]
- --help                 Показувати цю довідку (англійською) [optional]
+Options:
+ --name=s               Name of the new project
+ --enable-webtools      Determines if webtools should be enabled [optional]
+ --directory=s          Base path on which project will be created [optional]
+ --type=s               Type of the application to be generated (cli, micro, simple, modules)
+ --template-path=s      Specify a template path [optional]
+ --template-engine=s    Define the template engine, default phtml (phtml, volt) [optional]
+ --use-config-ini       Use a ini file as configuration file [optional]
+ --trace                Shows the trace of the framework in case of exception [optional]
+ --help                 Shows this help [optional]
 ```
 
 Доступ до проекту з веб-сервера покаже вам:
@@ -137,12 +136,10 @@ declare(strict_types=1);
 
 class TestController extends \Phalcon\Mvc\Controller
 {
-
     public function indexAction()
     {
 
     }
-
 }
 
 ```
@@ -209,148 +206,136 @@ return new \Phalcon\Config([
  --help               Показує цю довідку [optional]
 ```
 
-Найпростіший спосіб створити модель для таблиці з назвою users:
+The simplest way to generate a model for a table called `customers` is:
+
 ```bash
-$ phalcon model users
+$ phalcon model customers
 ```
+
 Якщо ваша база даних виглядає так:
+
 ```sql
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` char(60) NOT NULL,
-  `active` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table customers
+(
+    `cst_id`          int(10) auto_increment primary key,
+    `cst_status_flag` tinyint(1)   null,
+    `cst_name_last`   varchar(100) null,
+    `cst_name_first`  varchar(50)  null
+);
 
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`);
+create index customers_cst_status_flag_index
+    on `customers` (`cst_status_flag`);
 
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
+create index customers_cst_name_last_index
+    on `customers` (`cst_name_last`);
+
+create index customers_cst_name_first_index
+    on `customers` (`cst_name_first`);
 ```
+
 Це призведе до
 
 ```php
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace Phalcon\Tests\Models;
+
+use Phalcon\Mvc\Model;
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\Email as EmailValidator;
+use Phalcon\Validation\Validator\PresenceOf as EmailValidator;
 
-class Users extends \Phalcon\Mvc\Model
+/**
+ * @property int    $cst_id
+ * @property int    $cst_status_flag
+ * @property string $cst_name_last
+ * @property string $cst_name_first
+ * @property array  $cst_data;
+ */
+class Customers extends Model
 {
-
     /**
-     *
-     * @var integer
+     * @var int 
      */
-    public $id;
+    public $cst_id;
 
     /**
-     *
-     * @var string
+     * @var int 
      */
-    public $name;
+    public $cst_status_flag;
 
     /**
-     *
-     * @var string
+     * @var string 
      */
-    public $email;
+    public $cst_name_last;
 
     /**
-     *
-     * @var string
+     * @var string 
      */
-    public $password;
+    public $cst_name_first;
+
+    public function initialize()
+    {
+        $this->setSource('customers');
+    }
 
     /**
-     *
-     * @var string
-     */
-    public $active;
-
-    /**
-     * Validations and business logic
-     *
-     * @return boolean
+     * @return bool
      */
     public function validation()
     {
         $validator = new Validation();
 
         $validator->add(
-            'email',
-            new EmailValidator(
+            'cst_name_last',
+            new PresenceOf(
                 [
                     'model'   => $this,
-                    'message' => 'Please enter a correct email address',
+                    'message' => 'Please enter a valid last name',
                 ]
             )
         );
 
         return $this->validate($validator);
     }
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->setSchema("test");
-        $this->setSource("users");
-    }
-
-    /**
-     * Дозволяє запитувати набір записів, які відповідають зазначеним умовам
-     *
-     * @param mixed $parameters
-     * @return Users[]|Users|\Phalcon\Mvc\Model\ResultSetInterface
-     */
-    public static function find($parameters = null): \Phalcon\Mvc\Model\ResultsetInterface
-    {
-        return parent::find($parameters);
-    }
-
-    /**
-     * Дозволяє запитувати перший запис, який відповідає вказаним умовам
-     *
-     * @param mixed $parameters
-     * @return Users|\Phalcon\Mvc\Model\ResultInterface
-     */
-    public static function findFirst($parameters = null)
-    {
-        return parent::findFirst($parameters);
-    }
-
 }
 ```
+
 Варіанти створення різних типів креслень моделі можна знайти за допомогою
+
 ```bash
 phalcon model --help
 ```
 
 ### Генерування CRUD
-Генерування - це швидкий спосіб створити деякі основні частини додатку. Якщо ви хочете створити моделі, представлення та контролери для нового ресурсу в одній операції, використовуйте інструмент генерування.
+Scaffolding is a quick way to generate some major pieces of an application. Якщо ви хочете створити моделі, представлення та контролери для нового ресурсу в одній операції, використовуйте інструмент генерування.
 
-Після генерації коду, він повинен бути налаштований для задоволення ваших потреб. Багато розробників уникають генерації, обирають писати всі або більшість своїх вихідних кодів з нуля. Згенерований код може слугувати довідником, щоб краще зрозуміти як працює фреймворк або розробка прототипів. Наведений нижче код показує генерацію на основі таблиці `users`:
+Після генерації коду, він повинен бути налаштований для задоволення ваших потреб. Багато розробників уникають генерації, обирають писати всі або більшість своїх вихідних кодів з нуля. Згенерований код може слугувати довідником, щоб краще зрозуміти як працює фреймворк або розробка прототипів. The code below shows a scaffold based on the table `customers`:
 
 ```bash
-$ phalcon scaffold --table-name users
+$ phalcon scaffold --table-name customers
 ```
 
 Генератор побудує декілька файлів у вашому застосунку, а також створить деякі папки. Ось короткий огляд того, що буде згенеровано:
 
-| Файл                                  | Призначення                        |
-| ------------------------------------- | ---------------------------------- |
-| `app/controllers/UsersController.php` | The Users controller               |
-| `app/models/Users.php`                | The Users model                    |
-| `app/views/layout/users.phtml`        | Шаблон контролера для користувачів |
-| `app/views/products/search.phtml`     | Представлення для дії `search`     |
-| `app/views/products/new.phtml`        | Представлення для дії `new`        |
-| `app/views/products/edit.phtml`       | Представлення для дії `edit`       |
+| Файл                                      | Призначення                        |
+| ----------------------------------------- | ---------------------------------- |
+| `app/controllers/CustomersController.php` | The Customers controller           |
+| `app/models/Customers.php`                | The Customers model                |
+| `app/views/layout/customers.phtml`        | Шаблон контролера для користувачів |
+| `app/views/products/search.phtml`         | Представлення для дії `search`     |
+| `app/views/products/new.phtml`            | Представлення для дії `new`        |
+| `app/views/products/edit.phtml`           | Представлення для дії `edit`       |
 
 Переглядаючи щойно згенерований контролер, ви побачите форму пошуку та посилання на створення нового продукту:
 
