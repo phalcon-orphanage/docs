@@ -1607,7 +1607,7 @@ echo $result; // 'Phalcon Framework'
 
 `uncamelize(string $text, string $delimiters = '_'): string`
 
-Converts strings to non camelized style
+Convert strings to non camelized style
 
 ```php
 <?php
