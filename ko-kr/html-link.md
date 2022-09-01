@@ -2,24 +2,29 @@
 layout: default
 language: 'ko-kr'
 version: '5.0'
-title: 'HTML Link (PSR-13)'
-keywords: 'psr-13, http, link, evolvable link'
+title: 'HTML Link'
+keywords: 'http, link, evolvable link'
 ---
 
-# HTML Link (PSR-13)
+# HTML Link
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
-[Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink], [Phalcon\Html\Link\EvolvableLinkProvider][html-link-evolvablelinkprovider], [Phalcon\Html\Link\Link][html-link-link] and [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] are classes that implement the interfaces as defined by [PHP-FIG][php-fig].
+[Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink], [Phalcon\Html\Link\EvolvableLinkProvider][html-link-evolvablelinkprovider], [Phalcon\Html\Link\Link][html-link-link] and [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] are classes that implement the interfaces based on [PSR-13][psr-13], but with much stricter types
 
-![](/assets/images/implements-psr--13-blue.svg)
-
-These components aid in creating Link objects as defined by the [PSR-13][psr-13] standard.
-
-> **NOTE**: This component does not generate any HTML links. It just stores the links and offers methods as defined by the [PSR-13][psr-13] standard. You will need to create your own serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use. 
+> **NOTE**: This component does not generate any HTML links. It just stores the links. You will need to create your own serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use. 
 > 
 > {: .alert .alert-info }
+
+### Operations
+The `Phalcon\Html\Link\*` components implement methods that are inline with [PSR-13][psr-13], but do not implement the particular interface. A package that implements [PSR-13][psr-13] is available, that uses the `Phalcon\Html\Link\*` components. The package is located [here][proxy-psr13]. To use it, you will need to have Phalcon installed and then using composer you can install the proxy package.
+
+```sh
+composer require phalcon/proxy-psr13
+```
+
+Using the proxy classes allows you to follow [PSR-13][psr-13] and use it with any other package that needs that interface.
 
 ## Link
 The [Phalcon\Html\Link\Link][html-link-link] is used to create a link and assign attributes to it upon construction.
@@ -120,7 +125,7 @@ var_dump(
 
 ## Serializers
 ### Header
-You can use a serializer to parse the `Phalcon\Html\Links` objects and create the necessary headers. Phalcon comes with the [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer, to help with the task of serializing links for the headers:
+You can use a serializer to parse the `Phalcon\Html\Link\*` objects and create the necessary headers. Phalcon comes with the [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer, to help with the task of serializing links for the headers:
 
 ```php
 <?php
@@ -170,7 +175,7 @@ class Custom implements SerializerInterface
 }
 ```
 
-[php-fig]: https://www.php-fig.org/
+[proxy-psr13]: https://github.com/phalcon/proxy-psr13
 [psr-13]: https://www.php-fig.org/psr/psr-13/
 [html-link-evolvablelink]: api/phalcon_html#html-link-evolvablelink
 [html-link-evolvablelinkprovider]: api/phalcon_html#html-link-evolvablelinkprovider

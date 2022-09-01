@@ -2,14 +2,14 @@
 layout: default
 language: 'ru-ru'
 version: '5.0'
-upgrade: '#request'
+upgrade: '#http'
 title: 'HTTP Request'
 keywords: 'http, http request, request'
 ---
 
 # Request Component
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 [Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
@@ -43,11 +43,14 @@ There are 5 methods that allow you to retrieve submitted data from a request:
 - `getServer()`
 
 All (except `getServer()`) accept the following parameters:
-- `name` the name of the value to get
-- `filters` (array/string) the sanitizers to apply to the value
-- `defaultValue` returned if the element is not defined (`null`)
-- `notAllowEmpty` if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null`
-- `noRecursive` applies the sanitizers recursively in the value (if value is an array)
+
+| Название        | Описание                                                                                       |
+| --------------- | ---------------------------------------------------------------------------------------------- |
+| `name`          | the name of the value to get                                                                   |
+| `filters`       | (array/string) the sanitizers to apply to the value                                            |
+| `defaultValue`  | returned if the element is not defined (`null`)                                                |
+| `notAllowEmpty` | if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null` |
+| `noRecursive`   | applies the sanitizers recursively in the value (if value is an array)                         |
 
 ```php
 <?php
@@ -324,63 +327,84 @@ class PostsController extends Controller
 
 ## Checking Operations
 The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
-- `isAjax()`: Checks whether request has been made using AJAX
-- `isConnect()`: Checks whether HTTP method is CONNECT
-- `isDelete()`: Checks whether HTTP method is DELETE
-- `isGet()`: Checks whether HTTP method is GET
-- `isHead()`: Checks whether HTTP method is HEAD
-- `isMethod()`: Check if HTTP method match any of the passed methods
-- `isOptions()`: Checks whether HTTP method is OPTIONS
-- `isPatch()`: Checks whether HTTP method is PATCH
-- `isPost()`: Checks whether HTTP method is POST
-- `isPurge()`: Checks whether HTTP method is PURGE (Squid and Varnish support)
-- `isPut()`: Checks whether HTTP method is PUT
-- `isSecure()`: Checks whether request has been made using any secure layer
-- `isSoap()`: Checks whether request has been made using SOAP
-- `isTrace()`: Checks whether HTTP method is TRACE
-- `isValidHttpMethod()`: Checks if a method is a valid HTTP method
+
+| Название              | Описание                                                        |
+| --------------------- | --------------------------------------------------------------- |
+| `isAjax()`            | Checks whether request has been made using AJAX                 |
+| `isConnect()`         | Checks whether HTTP method is CONNECT                           |
+| `isDelete()`          | Checks whether HTTP method is DELETE                            |
+| `isGet()`             | Checks whether HTTP method is GET                               |
+| `isHead()`            | Checks whether HTTP method is HEAD                              |
+| `isMethod()`          | Check if HTTP method match any of the passed methods            |
+| `isOptions()`         | Checks whether HTTP method is OPTIONS                           |
+| `isPatch()`           | Checks whether HTTP method is PATCH                             |
+| `isPost()`            | Checks whether HTTP method is POST                              |
+| `isPurge()`           | Checks whether HTTP method is PURGE (Squid and Varnish support) |
+| `isPut()`             | Checks whether HTTP method is PUT                               |
+| `isSecure()`          | Checks whether request has been made using any secure layer     |
+| `isSoap()`            | Checks whether request has been made using SOAP                 |
+| `isTrace()`           | Checks whether HTTP method is TRACE                             |
+| `isValidHttpMethod()` | Checks if a method is a valid HTTP method                       |
 
 ## Checking Existence
 There are a number of methods available that allow you to check the existence of elements in the request. These methods are prefixed with `has`. Depending on the method used, you can check if an element exists in the `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, PUT cache and the request headers.
-- `has()`: Checks whether the $_REQUEST superglobal has a certain element
-- `hasFiles()`: Checks whether the request has any uploaded files
-- `hasHeader()`: Checks whether the headers have a certain element
-- `hasPost()`: Checks whether $_POST superglobal has a certain element
-- `hasPut()`: Checks whether the PUT data has a certain element
-- `hasQuery()`: Checks whether $_GET superglobal has a certain element
-- `hasServer()`: Checks whether $_SERVER superglobal has a certain element
-- `numFiles()`: Returns the number of files present in the request
+
+| Название      | Описание                                                       |
+| ------------- | -------------------------------------------------------------- |
+| `has()`       | Checks whether the $_REQUEST superglobal has a certain element |
+| `hasFiles()`  | Checks whether the request has any uploaded files              |
+| `hasHeader()` | Checks whether the headers have a certain element              |
+| `hasPost()`   | Checks whether $_POST superglobal has a certain element        |
+| `hasPut()`    | Checks whether the PUT data has a certain element              |
+| `hasQuery()`  | Checks whether $_GET superglobal has a certain element         |
+| `hasServer()` | Checks whether $_SERVER superglobal has a certain element      |
+| `numFiles()`  | Returns the number of files present in the request             |
 
 ## Request Information
 The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request.
 ### Authentication
-- `getBasicAuth()`: Gets auth info accepted by the browser/client
-- `getDigestAuth()`: Gets auth info accepted by the browser/client
+
+| Название          | Описание                                      |
+| ----------------- | --------------------------------------------- |
+| `getBasicAuth()`  | Gets auth info accepted by the browser/client |
+| `getDigestAuth()` | Gets auth info accepted by the browser/client |
 
 ### Client
-- `getClientAddress()`: Gets most possible client IPv4 Address
-- `getClientCharsets()`: Gets a charsets array and their quality accepted by the browser/client
-- `getUserAgent()`: Gets HTTP user agent used to made the request
-- `getHTTPReferer()`: Gets web page that refers active request
+
+| Название              | Описание                                                               |
+| --------------------- | ---------------------------------------------------------------------- |
+| `getClientAddress()`  | Gets most possible client IPv4 Address                                 |
+| `getClientCharsets()` | Gets a charsets array and their quality accepted by the browser/client |
+| `getUserAgent()`      | Gets HTTP user agent used to made the request                          |
+| `getHTTPReferer()`    | Gets web page that refers active request                               |
 
 ### Content
-- `getAcceptableContent()`: Gets an array with mime/types and their quality accepted by the browser/client
-- `getBestAccept()`: Gets best mime/type accepted by the browser/client
-- `getContentType()`: Gets content type which request has been made
-- `getJsonRawBody()`: Gets decoded JSON HTTP raw request body
-- `getRawBody()`: Gets HTTP raw request body
+
+| Название                 | Описание                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| `getAcceptableContent()` | Gets an array with mime/types and their quality accepted by the browser/client |
+| `getBestAccept()`        | Gets best mime/type accepted by the browser/client                             |
+| `getContentType()`       | Gets content type which request has been made                                  |
+| `getJsonRawBody()`       | Gets decoded JSON HTTP raw request body                                        |
+| `getRawBody()`           | Gets HTTP raw request body                                                     |
 
 ### i18n
-- `getBestCharset()`: Gets best charset accepted by the browser/client
-- `getBestLanguage()`: Gets best language accepted by the browser/client
-- `getLanguages()`: Gets languages array and their quality accepted by the browser/client
+
+| Название            | Описание                                                              |
+| ------------------- | --------------------------------------------------------------------- |
+| `getBestCharset()`  | Gets best charset accepted by the browser/client                      |
+| `getBestLanguage()` | Gets best language accepted by the browser/client                     |
+| `getLanguages()`    | Gets languages array and their quality accepted by the browser/client |
 
 ### Server
-- `getPort()`: Gets information about the port on which the request is made
-- `getServerAddress()`: Gets active server address IP
-- `getServerName()`: Gets active server name
-- `getScheme()`: Gets HTTP schema (http/https)
-- `getURI()`: Gets HTTP URI which request has been made. If `true` is passed as a parameter, the query part will not be returned
+
+| Название             | Описание                                                                                                           |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `getPort()`          | Gets information about the port on which the request is made                                                       |
+| `getServerAddress()` | Gets active server address IP                                                                                      |
+| `getServerName()`    | Gets active server name                                                                                            |
+| `getScheme()`        | Gets HTTP schema (http/https)                                                                                      |
+| `getURI()`           | Gets HTTP URI which request has been made. If `true` is passed as a parameter, the query part will not be returned |
 
 ```php
 <?php
@@ -531,21 +555,26 @@ class PostsController extends Controller
 Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File][http-request-file] which implements the [Phalcon\Http\Request\FileInterface][http-request-fileinterface] class. Using the `$_FILES` superglobal array offers the same behavior. [Phalcon\Http\Request\File][http-request-file] encapsulates only the information related to each file uploaded with the request.
 
 The `getUploadedFiles()` accepts two parameters.
-- `$onlySuccessful`: Contains only successful uploads
-- `$namedKeys`: Returns the array with named keys obtained by the upload process
+
+| Название          | Описание                                                         |
+| ----------------- | ---------------------------------------------------------------- |
+| `$onlySuccessful` | Contains only successful uploads                                 |
+| `$namedKeys`      | Returns the array with named keys obtained by the upload process |
 
 The method returns an array of [Phalcon\Http\Request\File][http-request-file] objects. Each object offers the following properties and methods, allowing you to work with uploaded files:
 
-- `getError()` (string) - Returns any error that happened with this file
-- `getExtension()` (string) - Returns the extension of the file
-- `getKey()` (string) - Returns the internal key of the file
-- `getName()` (string) -Returns the real name of the uploaded file
-- `getRealType()` (string) - Return the real mime type of the upload file using finfo
-- `getSize()`  (int) - Returns the file size of the uploaded file
-- `getTempName()` (string) - Returns the temporary name of the uploaded file
-- `getType()` (string) - Returns the mime type reported by the browser. This mime type is not completely secure, use `getRealType()` instead
-- `isUploadedFile()` (bool) - Checks whether the file has been uploaded via `POST`.
-- `moveTo(string $destination)` (bool) - Moves the temporary file to a destination within the application
+| Название                            | Описание                                                                                                            |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `getError(): string`                | Returns any error that happened with this file                                                                      |
+| `getExtension(): string`            | Returns the extension of the file                                                                                   |
+| `getKey(): string`                  | Returns the internal key of the file                                                                                |
+| `getName(): string`                 | Returns the real name of the uploaded file                                                                          |
+| `getRealType(): string`             | Return the real mime type of the upload file using finfo                                                            |
+| `getSize(): int`                    | Returns the file size of the uploaded file                                                                          |
+| `getTempName(): string`             | Returns the temporary name of the uploaded file                                                                     |
+| `getType(): string`                 | Returns the mime type reported by the browser. This mime type is not completely secure, use `getRealType()` instead |
+| `isUploadedFile(): bool`            | Checks whether the file has been uploaded via `POST`.                                                               |
+| `moveTo(string $destination): bool` | Moves the temporary file to a destination within the application                                                    |
 
 ## Dependency Injection
 The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.

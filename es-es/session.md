@@ -3,15 +3,16 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Session'
+upgrade: '#session'
 keywords: 'sesión, gestor de sesiones, adaptadores de sesión, redis, libmemcached, none, stream'
 ---
 
 # Session
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-Las sesiones se usan en PHP para persistir datos entre peticiones. Esto permite a los desarrolladores construir mejores aplicaciones y aumentar la experiencia de usuario. Un uso muy común de las sesiones es mantener si un usuario está conectado o no. [Phalcon\Session\Manager][session-manager] is an object oriented approach to handle sessions using Phalcon. Hay varias razones para usar este componentes en lugar de las sesiones originales o acceder al superglobal `$_SESSION`:
+Las sesiones se usan en PHP para persistir datos entre peticiones. Esto permite a los desarrolladores construir mejores aplicaciones y aumentar la experiencia de usuario. Un uso muy común de las sesiones es mantener si un usuario está conectado o no. [Phalcon\Session\Manager][session-manager] is an object-oriented approach to handle sessions using Phalcon. Hay varias razones para usar este componentes en lugar de las sesiones originales o acceder al superglobal `$_SESSION`:
 
 - Aislar fácilmente datos de sesión en las aplicaciones en el mismo dominio
 - Interceptar donde se establecen los datos de la sesión en su aplicación
@@ -151,7 +152,7 @@ $session->regenerateId();
 ```
 
 ### Obtener
-Puede usar `get()` para obtener los contenidos almacenados en la sesión para un elemento particular pasado como un parámetro cadena. El componente también soporta el *getter* mágico para que pueda recuperarlo como una propiedad del gestor.
+Puede usar `get()` para obtener los contenidos almacenados en la sesión para un elemento particular pasado como un parámetro cadena. The component also supports the magic getter, so you can retrieve it as a property of the manager.
 
 ```php
 <?php
@@ -201,7 +202,7 @@ var_dump(
 ```
 
 ### Id
-También puede configurar el id de sesión. El id de sesión se establece en una cookie HTTP. Puede establecer el nombre llamando a `setId()`. `getId()` se usa para recuperar el id de sesión.
+También puede configurar el id de sesión. The session id is set in an HTTP cookie. Puede establecer el nombre llamando a `setId()`. `getId()` se usa para recuperar el id de sesión.
 
 > **NOTE**: You need call this method before calling `start()` for the id to take effect 
 > 
@@ -228,7 +229,7 @@ echo $session->getId(); // 'phalcon-id'
 ```
 
 ### Nombre
-Cada sesión puede tener un nombre. El nombre de sesión se establece en una cookie HTTP. Si no está configurado, se usa el ajuste `session.name` de `php.ini`. Puede configurar el nombre llamando a `setName()`. `getName()` se usa para recuperar el nombre de la sesión.
+Cada sesión puede tener un nombre. The session name is set in an HTTP cookie. Si no está configurado, se usa el ajuste `session.name` de `php.ini`. Puede configurar el nombre llamando a `setName()`. `getName()` se usa para recuperar el nombre de la sesión.
 
 > **NOTE**: You need to call this method before calling `start()` for the name to take effect 
 > 
@@ -255,7 +256,7 @@ echo $session->getName(); // 'phalcon-app'
 ```
 
 ### Opciones
-Puede establecer opciones para el gestor usando `setOptions()`. El método acepta un vector y en él puede establecer el `uniqueId` para la sesión. Para obtener las opciones puede llamar a `getOptions()` que devolverá el vector de opciones almacenadas en el gestor.
+Puede establecer opciones para el gestor usando `setOptions()`. The method accepts an array and in it, you can set the `uniqueId` for the session. Para obtener las opciones puede llamar a `getOptions()` que devolverá el vector de opciones almacenadas en el gestor.
 
 ```php
 <?php
@@ -283,7 +284,7 @@ $session->setOptions(
 En el ejemplo anterior, después de llamar a `setOptions()` con un nuevo `uniqueId`, los datos se almacenarán usando `id-2` ahora y cualquier cosa almacenada antes no será accesible hasta que cambie la clave de vuelta a `id-1`.
 
 ### Establecer
-Puede usar `set()` para almacenar contenidos en su sesión. El método acepta una `cadena` como nombre del elemento y el valor a ser almacenado. El componente también soporta el *setter* mágico para que pueda establecerlo como propiedad del gestor.
+Puede usar `set()` para almacenar contenidos en su sesión. El método acepta una `cadena` como nombre del elemento y el valor a ser almacenado. The component also supports the magic setter, so you can set it as a property of the manager.
 
 ```php
 <?php
@@ -335,11 +336,19 @@ unset($session->userId);
 [Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
 The available options for Memcached are:
-- `client` - client settings
-- `servers` - array of server data
-    - `host` - the host
-    - `port` - the port
-    - `weight` - the weight for the server
+
+| Nombre    | Descripción          |
+| --------- | -------------------- |
+| `client`  | client settings      |
+| `servers` | array of server data |
+
+The `servers` option is an array that contains the following options:
+
+| Nombre   | Descripción               |
+| -------- | ------------------------- |
+| `host`   | the host                  |
+| `port`   | the port                  |
+| `weight` | the weight for the server |
 
 ```php
 <?php
@@ -389,12 +398,15 @@ $session
 [Phalcon\Session\Adapter\Redis][session-adapter-redis] uses the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis] internally to store data in Redis. In order to use this adapter you need the settings for Redis and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
 The available options for Redis are:
-- `host` - the host
-- `port` - the port
-- `index` - the index
-- `persistent` - whether to persist connections or not
-- `auth` - authentication parameters
-- `socket` - socket connection
+
+| Nombre       | Descripción                           |
+| ------------ | ------------------------------------- |
+| `host`       | the host                              |
+| `port`       | the port                              |
+| `index`      | the index                             |
+| `persistent` | whether to persist connections or not |
+| `auth`       | authentication parameters             |
+| `socket`     | socket connection                     |
 
 ```php
 <?php
@@ -453,34 +465,16 @@ use SessionHandlerInterface;
 
 class Custom extends SessionHandlerInterface
 {
-    /**
-     * Close
-     */
     public function close() -> bool;
 
-    /**
-     * Destroy
-     */
     public function destroy($sessionId) -> bool;
 
-    /**
-     * Garbage Collector
-     */
-    public function gc($maxlifetime) -> bool;
+    public function gc(int $maxlifetime) -> bool;
 
-    /**
-     * Read
-     */
     public function read($sessionId) -> string;
 
-    /**
-     * Open
-     */
     public function open($savePath, $sessionName) -> bool;
 
-    /**
-     * Write
-     */
     public function write($sessionId, $data) -> bool;
 }
 ```
@@ -512,7 +506,7 @@ class IndexController extends Controller
 ```
 
 ## Bag
-[Phalcon\Session\Bag][session-bag] is a component that helps separating session data into `namespaces`. De esta forma puede crear grupos de variables de sesión para su aplicación. Configurar datos en la bolsa los almacena automáticamente en la sesión:
+[Phalcon\Session\Bag][session-bag] is a component that helps to separate session data into `namespaces`. De esta forma puede crear grupos de variables de sesión para su aplicación. Configurar datos en la bolsa los almacena automáticamente en la sesión:
 
 ```php
 <?php
@@ -645,17 +639,17 @@ class InvoicesController extends Controller
 }
 ```
 
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[di-injectable]: api/phalcon_di#di-injectable
 [incubator]: https://github.com/phalcon/incubator/
-[session-adapter-libmemcached]: api/Phalcon_Session#session-adapter-libmemcached
-[session-adapter-noop]: api/Phalcon_Session#session-adapter-noop
-[session-adapter-redis]: api/Phalcon_Session#session-adapter-redis
-[session-adapter-stream]: api/Phalcon_Session#session-adapter-stream
-[session-bag]: api/Phalcon_Session#session-bag
-[session-exception]: api/Phalcon_Session#session-exception
-[session-manager]: api/Phalcon_Session#session-manager
+[session-adapter-libmemcached]: api/phalcon_session#session-adapter-libmemcached
+[session-adapter-noop]: api/phalcon_session#session-adapter-noop
+[session-adapter-redis]: api/phalcon_session#session-adapter-redis
+[session-adapter-stream]: api/phalcon_session#session-adapter-stream
+[session-bag]: api/phalcon_session#session-bag
+[session-exception]: api/phalcon_session#session-exception
+[session-manager]: api/phalcon_session#session-manager
 [sessionhandlerinterface]: https://www.php.net/manual/en/class.sessionhandlerinterface.php
-[storage-adapter]: api/Phalcon_Storage#storage-adapterfactory
-[storage-adapter-libmemcached]: api/Phalcon_Storage#storage-adapter-libmemcached
-[storage-adapter-redis]: api/Phalcon_Storage#storage-adapter-redis
-[di-factorydefault]: api/Phalcon_Di#di-factorydefault
-[di-injectable]: api/Phalcon_Di#di-injectable
+[storage-adapter]: api/phalcon_storage#storage-adapterfactory
+[storage-adapter-libmemcached]: api/phalcon_storage#storage-adapter-libmemcached
+[storage-adapter-redis]: api/phalcon_storage#storage-adapter-redis
