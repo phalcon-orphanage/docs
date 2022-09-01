@@ -9,7 +9,7 @@
             },
             {
                 "text": "릴리스 노트",
-                "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
+                "url": "https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG.md",
                 "external": true
             },
             {
@@ -94,7 +94,7 @@
             },
             {
                 "text": "디버그",
-                "url": "/debug"
+                "url": "/support-debug"
             },
             {
                 "text": "마이그레이션",
@@ -184,11 +184,11 @@
             },
             {
                 "text": "Escaper",
-                "url": "/escaper"
+                "url": "/html-escaper"
             },
             {
                 "text": "로더",
-                "url": "/loader"
+                "url": "/autoload"
             },
             {
                 "text": "로거",
@@ -276,6 +276,10 @@
             },
             {
                 "text": "태그",
+                "url": "/html-tagfactory"
+            },
+            {
+                "text": "Tag (legacy)",
                 "url": "/tag"
             },
             {
@@ -314,7 +318,7 @@
             },
             {
                 "text": "필터",
-                "url": "/filter"
+                "url": "/filter-filter"
             },
             {
                 "text": "라우팅",
@@ -326,11 +330,11 @@
             },
             {
                 "text": "Url",
-                "url": "/url"
+                "url": "/mvc-url"
             },
             {
                 "text": "유효성 검사",
-                "url": "/validation"
+                "url": "/filter-validation"
             }
         ]
     },
@@ -358,65 +362,15 @@
         "menu": [
             {
                 "text": "암호화",
-                "url": "/crypt"
+                "url": "/encryption-crypt"
             },
             {
                 "text": "보안",
-                "url": "/security"
+                "url": "/encryption-security"
             },
             {
                 "text": "JWT",
-                "url": "/security-jwt"
-            }
-        ]
-    },
-    {
-        "text": "PSR",
-        "url": "",
-        "menu": [
-            {
-                "text": "PSR-3 로거",
-                "url": "/logger"
-            },
-            {
-                "text": "PSR-0, PSR-4 로더",
-                "url": "/loader"
-            },
-            {
-                "text": "PSR-7 HTTP 요청",
-                "url": "/http-request"
-            },
-            {
-                "text": "PSR-7 HTTP 응답",
-                "url": "/http-response"
-            },
-            {
-                "text": "PSR-7 HTTP 서버 요청",
-                "url": "/http-server-request"
-            },
-            {
-                "text": "PSR-7 HTTP 스트림",
-                "url": "/http-stream"
-            },
-            {
-                "text": "PSR-7 HTTP UploadedFile",
-                "url": "/http-uploaded-file"
-            },
-            {
-                "text": "PSR-7 HTTP Uri",
-                "url": "/http-uri"
-            },
-            {
-                "text": "PSR-11 컨테이너",
-                "url": "/container"
-            },
-            {
-                "text": "PSR-13 HTML 링크",
-                "url": "/html-link"
-            },
-            {
-                "text": "PSR-17 HTTP 팩토리",
-                "url": "/http-factories"
+                "url": "/encryption-security-jwt"
             }
         ]
     },
@@ -440,23 +394,23 @@
         "menu": [
             {
                 "text": "컬렉션",
-                "url": "/collection"
+                "url": "/support-collection"
             },
             {
                 "text": "Domain",
                 "url": "/domain"
             },
             {
-                "text": "HTML",
-                "url": "/html"
-            },
-            {
                 "text": "Helper",
-                "url": "/helper"
+                "url": "/support-helper"
             },
             {
                 "text": "Registry",
-                "url": "/registry"
+                "url": "/support-registry"
+            },
+            {
+                "text": "버전",
+                "url": "/support-version"
             }
         ]
     }
