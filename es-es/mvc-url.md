@@ -9,15 +9,15 @@ keywords: 'url, gestión url, generación url, url estática, url dinámica'
 
 # Componente Url
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-[Phalcon\Url][url] is the component responsible of generate URLs in a Phalcon application. También se puede usar para construir URLs basadas en rutas.
+[Phalcon\Mvc\Url][url] is the component responsible for generating URLs in a Phalcon application. También se puede usar para construir URLs basadas en rutas.
 
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -34,15 +34,15 @@ echo $url->get(
 ```
 
 ## Generación
-The [Phalcon\Url][url] component can generate URLs that are static as well as dynamic ones. Las URLs dinámicas se pueden generar también basadas en parámetros o rutas de su aplicación, como se define usando el componente \[Router\]\[routing\].
+The [Phalcon\Mvc\Url][url] component can generate URLs that are static as well as dynamic ones. Las URLs dinámicas se pueden generar también basadas en parámetros o rutas de su aplicación, como se define usando el componente \[Router\]\[routing\].
 
 ## URLs Estáticas
-Las URLs estáticas son las que se refieren a recursos estáticos. Pueden ser imágenes, recursos CSS/JS, vídeos, etc. The [Phalcon\Url][url] component offers an easy way to generate those URLs.
+Las URLs estáticas son las que se refieren a recursos estáticos. Pueden ser imágenes, recursos CSS/JS, vídeos, etc. The [Phalcon\Mvc\Url][url] component offers an easy way to generate those URLs.
 
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -54,7 +54,7 @@ Junto con `getStatic()`, el componente también ofrece los métodos *getter* `ge
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -68,7 +68,7 @@ y cuando sea necesario usar un CDN para su entorno de producción:
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -90,7 +90,7 @@ Finalmente, dependiendo de las rutas que haya especificado, puede recuperar un r
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -102,16 +102,16 @@ echo $url->getStatic(
 ```
 
 ## URLs Dinámicas
-Las URLs dinámicas son URLs que se generan dinámicamente, ej. basadas en las rutas o URLs de su aplicación. The [Phalcon\Url][url] component offers an easy way to generate those URLs.
+Las URLs dinámicas son URLs que se generan dinámicamente, ej. basadas en las rutas o URLs de su aplicación. The [Phalcon\Mvc\Url][url] component offers an easy way to generate those URLs.
 
-Dependiendo del directorio del *document root* donde esté instalada su aplicación, podrá tener una URI base o no. Por ejemplo, si su *document root* es `/var/www/htdocs` y su aplicación está instalada en `/var/www/htdocs/app` entonces su *baseUri* será `/app/`. Si está usando un *VirtualHost* o su aplicación está instalada en el *document root*, entonces su URI base es `/`.
+Depending on which directory of your document root your application is installed, it may have a base URI or not. Por ejemplo, si su *document root* es `/var/www/htdocs` y su aplicación está instalada en `/var/www/htdocs/app` entonces su *baseUri* será `/app/`. Si está usando un *VirtualHost* o su aplicación está instalada en el *document root*, entonces su URI base es `/`.
 
 Si no está seguro y quiere saber cuál es su URI base, puede ejecutar el siguiente código en la carpeta de su aplicación:
 
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -123,7 +123,7 @@ Por defecto, Phalcon intentará detectar su URI base. Se recomienda que especifi
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -135,7 +135,7 @@ Junto con `get()`, el componente también ofrece los métodos *getter* `getBaseU
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -151,7 +151,7 @@ The above code will prefix all the URLs with `/portal/`, allowing you to _group_
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 use Phalcon\Mvc\Controller
 
 /**
@@ -213,7 +213,7 @@ Ahora puede generar una URL definida en la ruta nombrada `invoice-edit`, pasando
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -228,14 +228,14 @@ echo $url->get(
 Lo anterior producirá `/portal/invoices/edit/1`.
 
 ### mod_rewrite
-Developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Url][url] offers the necessary functionality to replace `mod_rewrite`. Esto es especialmente útil si el sistema de destino no tiene el módulo instalado o no puede instalarlo usted mismo.
+Developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Mvc\Url][url] offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed, or you cannot install it yourself.
 
-The following example shows you how to replace `mod_rewrite` with [Phalcon\Url][url]:
+The following example shows you how to replace `mod_rewrite` with [Phalcon\Mvc\Url][url]:
 
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -265,7 +265,7 @@ y ahora la aplicación puede procesar la URL como se espera:
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -296,12 +296,12 @@ Generar rutas estáticas:
 ```
 
 ## Path
-Although a `path` is not really a URL, the [Phalcon\Url][url] offers methods that allow you to create paths for your application, the same way as URLs.
+Although a `path` is not really a URL, the [Phalcon\Mvc\Url][url] offers methods that allow you to create paths for your application, the same way as URLs.
 
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -313,7 +313,7 @@ Junto con `path()`, el componente también ofrece los métodos *getter* `getBase
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 $url = new Url();
 
@@ -331,12 +331,12 @@ El código anterior prefijará todos los caminos con `/data/app/`.
 > {: .alert .alert-info }
 
 ## Excepciones
-Any exceptions thrown in the [Phalcon\Url][url] component will be of type [Phalcon\Url\Exception][url-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
+Any exceptions thrown in the [Phalcon\Mvc\Url][url] component will be of type [Phalcon\Mvc\Url\Exception][url-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente.
 
 ```php
 <?php
 
-use Phalcon\Url\Exception;
+use Phalcon\Mvc\Url\Exception;
 use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
@@ -354,10 +354,10 @@ class IndexController extends Controller
 ```
 
 ## Personalizado
-\[Phalcon\UrlInterface\]\[url-interface\] está disponible si desea implementar su propio componente `Url`. Implementar este interfaz asegurará que su componente personalizado funcionará con Phalcon.
+The \[Phalcon\Mvc\Url\UrlInterface\]\[url-interface\] is available if you wish to implement your own `Url` component. Implementar este interfaz asegurará que su componente personalizado funcionará con Phalcon.
 
 ## Inyección de Dependencias
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Url][url] is already registered for you. Sin embargo, podría querer sobreescribir el registro predeterminado para poder establecer su propio `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di](di) the registration is the same. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Mvc\Url][url] is already registered for you. However, you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di](di) the registration is the same. Al hacerlo, podrá acceder a su objeto de configuración desde controladores, modelos, vistas y cualquier componente que implemente `Injectable`.
 
 A continuación, un ejemplo de registro del servicio así como de acceso a él:
 
@@ -365,7 +365,7 @@ A continuación, un ejemplo de registro del servicio así como de acceso a él:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 // Create a container
 $container = new FactoryDefault();
@@ -389,7 +389,7 @@ El componente está disponible ahora en sus controladores usando la clave `url`
 <?php
 
 use Phalcon\Mvc\Controller;
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 /**
  * @property Url $url
@@ -415,6 +415,6 @@ Por supuesto, puede acceder al objeto de la misma forma que cualquier servicio r
 {% raw %}{{ url.get('/portal/invoices/link') }}{% endraw %}
 ```
 
-[url]: api/phalcon_url#url
-[url-exception]: api/phalcon_url#url-exception
+[url]: api/phalcon_mvcl#mvc-url
+[url-exception]: api/phalcon_mvc#mvc-url-exception
 [factorydefault]: api/phalcon_di#di-factorydefault
