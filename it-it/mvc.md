@@ -3,12 +3,13 @@ layout: default
 language: 'it-it'
 version: '5.0'
 title: 'Model View Controller (MVC)'
+upgrade: '#mvc'
 keywords: 'model, view, controller, model view controller, mvc'
 ---
 
 # MVC - Model View Controller
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Model View Controller ([MVC][wiki-mvc]) is a software architectural pattern, which divides the application logic into three interconnected elements, separating internal representations of information of the application.
