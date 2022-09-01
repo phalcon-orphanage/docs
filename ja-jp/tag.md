@@ -8,7 +8,11 @@ keywords: 'tag, helpers, view helpers, html generators'
 
 # Tag (View Helpers)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
+> **NOTE** `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component. 
+> 
+> {: .alert .alert-danger }
 
 ## 概要
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
@@ -1810,3 +1814,4 @@ You can also check out [Volt](volt) a faster template engine for PHP, where you 
 [factorydefault]: api/phalcon_di#di-factorydefault
 [injectable]: api/phalcon_di#di-injectable
 [tag]: api/phalcon_tag
+[tagfactory]: api/phalcon_html#html-tagfactory
