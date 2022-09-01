@@ -9,7 +9,7 @@
             },
             {
                 "text": "Notas de la Versión",
-                "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
+                "url": "https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG.md",
                 "external": true
             },
             {
@@ -94,7 +94,7 @@
             },
             {
                 "text": "Depuración",
-                "url": "/debug"
+                "url": "/support-debug"
             },
             {
                 "text": "Migraciones",
@@ -184,11 +184,11 @@
             },
             {
                 "text": "Escaper",
-                "url": "/escaper"
+                "url": "/html-escaper"
             },
             {
                 "text": "Loader",
-                "url": "/loader"
+                "url": "/autoload"
             },
             {
                 "text": "Logger",
@@ -276,6 +276,10 @@
             },
             {
                 "text": "Tag",
+                "url": "/html-tagfactory"
+            },
+            {
+                "text": "Tag (legacy)",
                 "url": "/tag"
             },
             {
@@ -314,7 +318,7 @@
             },
             {
                 "text": "Filtros",
-                "url": "/filter"
+                "url": "/filter-filter"
             },
             {
                 "text": "Ruteo",
@@ -326,11 +330,11 @@
             },
             {
                 "text": "Url",
-                "url": "/url"
+                "url": "/mvc-url"
             },
             {
                 "text": "Validación",
-                "url": "/validation"
+                "url": "/filter-validation"
             }
         ]
     },
@@ -358,65 +362,15 @@
         "menu": [
             {
                 "text": "Crypto",
-                "url": "/crypt"
+                "url": "/encryption-crypt"
             },
             {
                 "text": "Seguridad",
-                "url": "/security"
+                "url": "/encryption-security"
             },
             {
                 "text": "JWT",
-                "url": "/security-jwt"
-            }
-        ]
-    },
-    {
-        "text": "PSR (Recomendaciones Estándar de PHP)",
-        "url": "",
-        "menu": [
-            {
-                "text": "PSR-3 Logger",
-                "url": "/logger"
-            },
-            {
-                "text": "PSR-0, PSR-4 Cargador",
-                "url": "/loader"
-            },
-            {
-                "text": "PSR-7 Petición HTTP",
-                "url": "/http-request"
-            },
-            {
-                "text": "PSR-7 Respuesta HTTP",
-                "url": "/http-response"
-            },
-            {
-                "text": "PSR-7 Petición Servidor HTTP",
-                "url": "/http-server-request"
-            },
-            {
-                "text": "PSR-7 Flujo HTTP",
-                "url": "/http-stream"
-            },
-            {
-                "text": "PSR-7 Fichero Subido HTTP",
-                "url": "/http-uploaded-file"
-            },
-            {
-                "text": "PSR-7 Uri HTTP",
-                "url": "/http-uri"
-            },
-            {
-                "text": "PSR-11 Contenedor",
-                "url": "/container"
-            },
-            {
-                "text": "PSR-13 Enlaces HTML",
-                "url": "/html-link"
-            },
-            {
-                "text": "PSR-17 Fábricas HTTP",
-                "url": "/http-factories"
+                "url": "/encryption-security-jwt"
             }
         ]
     },
@@ -440,23 +394,23 @@
         "menu": [
             {
                 "text": "Coleccion",
-                "url": "/collection"
+                "url": "/support-collection"
             },
             {
                 "text": "Domain",
                 "url": "/domain"
             },
             {
-                "text": "HTML",
-                "url": "/html"
-            },
-            {
                 "text": "Ayudantes",
-                "url": "/helper"
+                "url": "/support-helper"
             },
             {
                 "text": "Registro",
-                "url": "/registry"
+                "url": "/support-registry"
+            },
+            {
+                "text": "Versión",
+                "url": "/support-version"
             }
         ]
     }
