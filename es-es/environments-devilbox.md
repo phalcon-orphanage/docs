@@ -11,7 +11,7 @@ keywords: 'entorno, devilbox, docker'
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
-The [Devilbox][devilbox] The Devilbox is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. El objetivo principal es fácilmente cambiar y combinar cualquier versión requerida para el desarrollo local. Soporta un número de proyectos ilimitado para vhosts, certificados SSL y registros DNS que se crean automáticamente. Se admiten proxies inversos por proyecto para garantizar que también se pueda acceder a un servidor de escucha como NodeJS. Las herramientas de desarrollo populares y de correo electrónico también estarán a su servicio. No será necesaria su configuración, ya que todo está preconfigurado.
+[Devilbox][devilbox] is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. El objetivo principal es fácilmente cambiar y combinar cualquier versión requerida para el desarrollo local. Soporta un número de proyectos ilimitado para vhosts, certificados SSL y registros DNS que se crean automáticamente. Se admiten proxies inversos por proyecto para garantizar que también se pueda acceder a un servidor de escucha como NodeJS. Las herramientas de desarrollo populares y de correo electrónico también estarán a su servicio. No será necesaria su configuración, ya que todo está preconfigurado.
 
 Además, Devilbox proporciona un entorno de desarrollo idéntico y reproducible para diferentes sistemas operativos anfitriones.
 
@@ -55,7 +55,7 @@ host> ./shell.sh
 El directorio vhost define el nombre bajo el cual estará disponible su proyecto. (`<vhost dir>.TLD_SUFFIX` será la URL final).
 
 ```bash
-devilbox@php-7.3 in /shared/httpd $ mkdir my-phalcon
+devilbox@php-8.0 in /shared/httpd $ mkdir my-phalcon
 ```
 
 ### Instalar Phalcon
@@ -63,14 +63,14 @@ devilbox@php-7.3 in /shared/httpd $ mkdir my-phalcon
 Vaya a su recién creado directorio vhost e instale Phalcon con el cliente `phalcon`.
 
 ```bash
-devilbox@php-7.3 in /shared/httpd $ cd my-phalcon
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ phalcon project phalconphp
+devilbox@php-8.0 in /shared/httpd $ cd my-phalcon
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ phalcon project phalconphp
 ```
 
 La estructura del directorio se ve así después de la instalación:
 
 ```bash
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ tree -L 1
 .
 └── phalconphp
 
@@ -84,13 +84,13 @@ Es importante enlazar simbólicamente el actual directorio webroot a `htdocs`. E
 Sin embargo algunos *frameworks*, almacenan ficheros y contenido en directorios anidados de niveles desconocidos. Por lo tanto, es imposible establecer esto como preconfiguración en el entorno. Por eso tendrá que establecer manualmente un enlace simbólico a la ruta esperada que requiera su *framework*.
 
 ```bash
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
 ```
 
 La estructura del directorio se ve así después de la instalación:
 
 ```bash
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ tree -L 1
 .
 ├── phalconphp
 └── htdocs -> phalconphp/public
