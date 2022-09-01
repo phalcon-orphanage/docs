@@ -21,7 +21,7 @@ Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invente
 - Імена файлів повинні називатися по принципу StudlyCaps (великі літери виділяють істотні складові суті файла).
 - Всі файли повинні використовувати кінець рядка за правилами Unix LF (linefeed).
 - Всі файли мають закінчуватися одним пустим рядком.
-- Теки теж називаються по принципу StudlyCaps, а дерево директорії/підкаталога слідують за простором імен класу.
+- Folders are also named StudlyCaps and the folder/sub-folder tree follows the namespace of the class.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -39,7 +39,7 @@ class Memory extends Adapter
 ```
 
 - Код має використовувати 4 пробіли для відступу, а не таби.
-- Рядки повинні містити 80 символів або менше. Жорсткий ліміт на довжину рядка 120 символів.
+- Lines should be 80 characters or fewer. Жорсткий ліміт на довжину рядка 120 символів.
 - Має бути по одному порожньому рядку після декларування простору імен та після блоку оголошень використання "use".
 - У кінці непорожніх ліній не повинно бути пробілів.
 - Порожні лінії можуть бути додані для поліпшення читабельності та виділення пов'язаних блоків коду.
@@ -81,8 +81,6 @@ use Phalcon\Acl\Adapter;
 class Memory extends Adapter
 {
     /**
-     * Returns latest key used to acquire access
-     *
      * @var string | null
      */
     protected activeKey = "" { get };
