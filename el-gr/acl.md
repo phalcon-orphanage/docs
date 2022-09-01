@@ -12,7 +12,7 @@ keywords: 'acl, access control list, permissions'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-Το [Phalcon\Acl][acl-acl] παρέχει μια εύκολη και ελαφριά διαχείριση ACL καθώς και τα δικαιώματα που τους συνοδεύουν. [Οι Λίστες Ελέγχου Πρόσβασης][acl] (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
+[Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Οι Λίστες Ελέγχου Πρόσβασης][acl] (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
 
 Εν ολίγοις, οι ACL έχουν δύο αντικείμενα: το αντικείμενο που χρειάζεται πρόσβαση, και το αντικείμενο που χρειαζόμαστε να προσβάσουμε. In the programming world, these are usually referred to as Roles and Resources. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
 
@@ -26,9 +26,9 @@ keywords: 'acl, access control list, permissions'
 > 
 > {: .alert .alert-info }
 
-Όπως φαίνεται ανωτέρω, στην περίπτωση χρήσης, ένας [Ρόλος][acl-role] ορίζεται ως ποιός χρειάζεται για να αποκτήσει πρόσβαση σε ένα συγκεκριμένο [Στοιχείο][acl-component] δηλαδή, μια περιοχή από της εφαρμογής. Σαν [Στοιχείο][acl-component] ορίζουμε την περιοχή της εφαρμογής που χρειάζεται να προσβληθεί.
+As seen above in the use case, a [Role][acl-role] is defined as who needs to access a particular [Component][acl-component] i.e. an area of the application. A [Component][acl-component] is defined as the area of the application that needs to be accessed.
 
-Χρησιμοποιώντας το [Phalcon\Acl][acl-acl], μπορούμε να συνδέσουμε αυτά τα δύο μαζί, και να ενισχύσουμε την ασφάλεια της εφαρμογής μας, επιτρέποντας μόνο συγκεκριμένους ρόλους να δεσμευθούν σε συγκεκριμένα στοιχεία.
+Using the [Phalcon\Acl][acl-acl] component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.
 
 ## Ενεργοποίηση
 [Phalcon\Acl][acl-acl] uses adapters to store and work with roles and components. The only adapter available right now is [Phalcon\Acl\Adapter\Memory][acl-adapter-memory]. Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
@@ -103,7 +103,7 @@ $acl->addRole('guest');
 ```
 
 ## Adding Components
-A [Component][acl-component] is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component][acl-component] class can be used to define components in the application. Also it is important to add related actions to a component so that the ACL can understand what it should control.
+A [Component][acl-component] is the area of the application where access is controlled. In an MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component][acl-component] class can be used to define components in the application. Also, it is important to add related actions to a component so that the ACL can understand what it should control.
 
 There are two ways of adding components to our list.
 * by using a [Phalcon\Acl\Component][acl-component] object or
@@ -226,13 +226,13 @@ What the above lines tell us:
 $acl->allow('manager', 'admin', 'users');
 ```
 
-For the `manager` role, allow access to the `admin` component and `users` action. To bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `admin` controller and `users` action.
+For the `manager` role, allow access to the `admin` component and `users` action. To bring this into perspective with an MVC application, the above line says that the group `manager` is allowed to access the `admin` controller and `users` action.
 
 ```php
 $acl->allow('manager', 'reports', ['list', 'add']);
 ```
 
-You can also pass an array as the `action` parameter when invoking the `allow()` command. The above means that for the `manager` role, allow access to the `reports` component and `list` and `add` actions. Again to bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `reports` controller and `list` and `add` actions.
+You can also pass an array as the `action` parameter when invoking the `allow()` command. The above means that for the `manager` role, allow access to the `reports` component and `list` and `add` actions. Again to bring this into perspective with an MVC application, the above line says that the group `manager` is allowed to access the `reports` controller and `list` and `add` actions.
 
 ```php
 $acl->allow('*', 'session', '*');
@@ -244,7 +244,7 @@ Wildcards can also be used to do mass matching for roles, components or actions.
 $acl->allow('*', '*', 'view');
 ```
 
-Similarly the above gives access to any role, any component that has the `view` action. In a MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`.
+Similarly, the above gives access to any role, any component that has the `view` action. In an MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`.
 
 > **NOTE**: Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
 > 
@@ -926,19 +926,17 @@ try {
 The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must be implemented in order to create your own ACL adapters or extend the existing ones.
 
 [acl]: https://en.wikipedia.org/wiki/Access_control_list
-[acl-acl]: api/Phalcon_Acl
-[acl-adapter-adapterinterface]: api/Phalcon_Acl#acl-adapter-adapterinterface
-[acl-adapter-memory]: api/Phalcon_Acl#acl-adapter-memory
-[acl-adapter-memory]: api/Phalcon_Acl#acl-adapter-memory
-[acl-component]: api/Phalcon_Acl#acl-component
-[acl-component]: api/Phalcon_Acl#acl-component
-[acl-component]: api/Phalcon_Acl#acl-component
-[acl-componentaware]: api/Phalcon_Acl#acl-componentaware
-[acl-enum]: api/Phalcon_Acl#acl-enum
-[acl-exception]: api/Phalcon_Acl#acl-exception
-[acl-role]: api/Phalcon_Acl#acl-role
-[acl-role]: api/Phalcon_Acl#acl-role
-[acl-role]: api/Phalcon_Acl#acl-role
-[acl-roleaware]: api/Phalcon_Acl#acl-roleaware
+[acl-acl]: api/phalcon_acl
+[acl-adapter-adapterinterface]: api/phalcon_acl#acl-adapter-adapterinterface
+[acl-adapter-memory]: api/phalcon_acl#acl-adapter-memory
+[acl-adapter-memory]: api/phalcon_acl#acl-adapter-memory
+[acl-component]: api/phalcon_acl#acl-component
+[acl-component]: api/phalcon_acl#acl-component
+[acl-componentaware]: api/phalcon_acl#acl-componentaware
+[acl-enum]: api/phalcon_acl#acl-enum
+[acl-exception]: api/phalcon_acl#acl-exception
+[acl-role]: api/phalcon_acl#acl-role
+[acl-role]: api/phalcon_acl#acl-role
+[acl-roleaware]: api/phalcon_acl#acl-roleaware
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
