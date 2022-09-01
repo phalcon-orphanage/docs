@@ -15,7 +15,7 @@ keywords: 'tag, helpers, view helpers, html generators'
 > {: .alert .alert-danger }
 
 ## Overview
-Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
+Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/phalcon_tag) component which in turn offers view helpers to generate HTML markup.
 
 This component can be used in a plain HTML+PHP view or in a [Volt](volt) template.
 
@@ -267,7 +267,7 @@ Tag::setTitleSeparator(' ');
 
 ## Input
 ### `checkField()`
-Builds a HTML `input[type='check']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='check']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -300,7 +300,7 @@ Volt syntax:
 ```
 
 ### `colorField()`
-Builds a HTML `input[type='color']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='color']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -333,7 +333,7 @@ Volt syntax:
 ```
 
 ### `dateField()`
-Builds a HTML `input[type='date']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='date']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -366,7 +366,7 @@ Volt syntax:
 ```
 
 ### `dateTimeField()`
-Builds a HTML `input[type='datetime']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='datetime']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -400,7 +400,7 @@ Volt syntax:
 ```
 
 ### `dateTimeLocalField()`
-Builds a HTML `input[type='datetime-local']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='datetime-local']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -434,7 +434,7 @@ Volt syntax:
 ```
 
 ### `fileField()`
-Builds a HTML `input[type='file']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='file']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -467,7 +467,7 @@ Volt syntax:
 ```
 
 ### `hiddenField()`
-Builds a HTML `input[type='hidden']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='hidden']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -500,7 +500,7 @@ Volt syntax:
 ```
 
 ### `imageInput()`
-Builds a HTML `input[type='image']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='image']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -531,7 +531,7 @@ Volt syntax:
 ```
 
 ### `monthField()`
-Builds a HTML `input[type='month']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='month']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -564,7 +564,7 @@ Volt syntax:
 ```
 
 ### `numericField()`
-Builds a HTML `input[type='number']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='number']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -599,7 +599,7 @@ Volt syntax:
 ```
 
 ### `radioField()`
-Builds a HTML `input[type='radio']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='radio']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -632,7 +632,7 @@ Volt syntax:
 ```
 
 ### `rangeField()`
-Builds a HTML `input[type='range']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='range']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -667,7 +667,7 @@ Volt syntax:
 ```
 
 ### `searchField()`
-Builds a HTML `input[type='search']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='search']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -700,7 +700,7 @@ Volt syntax:
 ```
 
 ### `submitButton()`
-Builds a HTML `input[type='submit']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='submit']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -731,7 +731,7 @@ Volt syntax:
 ```
 
 ### `telField()`
-Builds a HTML `input[type='tel']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='tel']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -764,7 +764,7 @@ Volt syntax:
 ```
 
 ### `passwordField()`
-Builds a HTML `input[type='text']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='text']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -797,7 +797,7 @@ Volt syntax:
 ```
 
 ### `timeField()`
-Builds a HTML `input[type='time']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='time']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -830,7 +830,7 @@ Volt syntax:
 ```
 
 ### `urlField()`
-Builds a HTML `input[type='url']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='url']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -861,7 +861,7 @@ Volt syntax:
 ```
 
 ### `weekField()`
-Builds a HTML `input[type='week']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='week']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -896,7 +896,7 @@ Volt syntax:
 ## Elements
 
 ### `image()`
-Builds a HTML image tag. Accepts an array with the attributes of the element. The first element of the array is the src of the element. The method accepts a second boolean parameter, signifying whether this resource is local or not.
+Builds an HTML image tag. Accepts an array with the attributes of the element. The first element of the array is the src of the element. The method accepts a second boolean parameter, signifying whether this resource is local or not.
 
 ```php
 <?php
@@ -913,11 +913,11 @@ echo Tag::image(
 // <img alt='alternative text' src='/your-app/img/hello.gif'>
 
 echo Tag::image(
-   'http://static.mywebsite.com/img/bg.png',
+   'https://static.mywebsite.com/img/bg.png',
     false
 );
 
-// <img src='http://static.mywebsite.com/img/bg.png'>
+// <img src='https://static.mywebsite.com/img/bg.png'>
 ```
 
 HTML syntax:
@@ -930,7 +930,7 @@ HTML syntax:
 ); ?>
 
 <?php echo $this->tag->image(
-   'http://static.mywebsite.com/img/bg.png',
+   'https://static.mywebsite.com/img/bg.png',
     false
 ); ?>
 ```
@@ -938,7 +938,7 @@ HTML syntax:
 Volt syntax:
 ```twig
 {% raw %}{{ image('img/hello.gif', 'alt': 'alternative text') }}
-{{ image('http://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
+{{ image('https://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
 ```
 
 ### `select()`
@@ -1094,7 +1094,7 @@ Phalcon offers a generic HTML helper that allows the generation of any kind of H
 The `tagHtml()` accepts the following parameters
 - `name` - `string` - the name of the element
 - `attributes` - `array` - any attributes
-- `selfClose` - `bool` - whether this is a self closing element or not
+- `selfClose` - `bool` - whether this is a self-closing element or not
 - `onlyStart` - `bool` - whether to produce only the _opening_ part of the tag (i.e. `<tag>` vs. `<tag></tag>`)
 - `useEol` - `bool` - add a `PHP_EOL` at the end of the generated string or not
 
@@ -1501,7 +1501,7 @@ Phalcon also provides a [form builder](forms) to create forms in an object-orien
 
 ## Data
 ### `setDefault()`
-You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag][tag]. The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
+You can use `setDefault()` to pre-populate values for elements generated by [Phalcon\Tag][tag]. The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it, you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
 
 ```php
 <?php
@@ -1773,7 +1773,7 @@ try {
 
     $di = new FactoryDefault();
 
-    // Assign our new tag a definition so we can call it
+    // Assign our new tag a definition, so we can call it
     $di->set(
         'MyTags',
         function () {
