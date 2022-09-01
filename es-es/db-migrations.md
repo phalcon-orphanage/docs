@@ -127,7 +127,7 @@ $migration::run([
 
 ## Métodos de migración
 
-Cada migración está en una clase separada que trabaja como entidad para una tabla de base de datos específica. Dentro de cada clase hay diferentes métodos que pueden ocurrir durante la ejecución de la migración.
+Each migration is a separate class that works as an entity for specific database table. Dentro de cada clase hay diferentes métodos que pueden ocurrir durante la ejecución de la migración.
 
 Cada fichero de migración (y clase) puede implementar métodos específicos, que serán ejecutados según la operación solicitada. No hay restricciones sobre la lógica encapsulada en cada método.
 
