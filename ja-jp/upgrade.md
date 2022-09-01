@@ -206,9 +206,9 @@ public function addInlineJs(
 
 ### Autoload
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](autoload-loader)
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](autoload)
 
-The [Autoload\Loader](autoload-loader) component has been moved from the parent namespace. Some method names have been changed and new functionality introduced.
+The [Autoload\Loader](autoload) component has been moved from the parent namespace. Some method names have been changed and new functionality introduced.
 
 #### `Phalcon\Autoload\Loader`
 - `__construct(bool $isDebug = false)` The constructor now accepts a boolean, which allows the loader to collect and store debug information during the discovery and loading process of files, classes etc. If the variable is set to `true`, `getDebug()` will return an array with all the debugging information during the autoload operation. This mode is only for debugging purposes and must not be used in production environments.
@@ -321,7 +321,7 @@ The `Container` component has been removed from the framework. It is in our road
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](encryption-crypt)
 
-The [Crypt](encryption-crypt) component has been moved to the `Encryption` namespace. [more](#encryption-crypt)
+The [Crypt](encryption-crypt) component has been moved to the `Encryption` namespace. [more](encryption-crypt)
 
 ---
 
@@ -560,7 +560,7 @@ The class has been removed.
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](filter-filter)
 
-The [Filter](filter) component has been moved to the `Filter` namespace.
+The [Filter](filter-filter) component has been moved to the `Filter` namespace.
 
 #### `Phalcon\Filter\Filter`
 - Moved `Phalcon\Filter` to `Phalcon\Filter\Filter`
@@ -624,7 +624,7 @@ The [Filter](filter) component has been moved to the `Filter` namespace.
 
 #### `Phalcon\Forms\Element\Check`
 #### `Phalcon\Forms\Element\Radio`
-- The classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more](html-helper)
+- The classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more](html-tagfactory)
 
 ---
 
@@ -676,13 +676,13 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 #### `Phalcon\Html\Helper`
 - Moved `Phalcon\Helper` to `Phalcon\Html\Helper`
-- The component has been refactored and offers more functionality now. [more](html-helper)
+- The component has been refactored and offers more functionality now. [more](html-tagfactory)
 
 #### `Phalcon\Html\Link`
-- The component has been refactored and the dependency to `PSR` has been removed. [more](html-helper)
+- The component has been refactored and the dependency to `PSR` has been removed. [more](html-link)
 
 #### `Phalcon\Html\TagFactory`
-- Added `__call(string $name, array $arguments)` to allow calling helper objects as methods. [more](html#tagfactory)
+- Added `__call(string $name, array $arguments)` to allow calling helper objects as methods. [more](html-tagfactory)
 - Added `has(string $name) -> bool` Added `set(string $name, mixed $method): void`
 - The `getAdapters()` protected method has been renamed to `getServices()`
 - A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
@@ -694,7 +694,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ### Http
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](http)
+![](/assets/images/status-changes-required-red.svg)
 
 #### `Phalcon\Http\Cookie`
 - Changed `__construct()` and made `$httpOnly = false`
@@ -778,7 +778,9 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
 
 ---
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](messages)
+### Messages
+
+![](/assets/images/status-changes-required-red.svg)
 
 #### `Phalcon\Messages\Exception`
 - Changed `Phalcon\Messages\Exception` to extend `\Exception`
@@ -968,6 +970,8 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 
 ---
 
+### Storage
+
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](storage)
 
 #### `Phalcon\Storage\Adapter\AdapterInterface`
@@ -1006,7 +1010,7 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 - Changed `unserialize` to set the data to an empty string in case of a failure
 
 #### `Phalcon\Storage\Serializer\*`
-- Added stub serializers for Memcached and Redis when in need to use the built in serializers for those storages:
+- Added stub serializers for Memcached and Redis when in need to use the built-in serializers for those storages:
   - `Phalcon\Storage\Serializer\MemcachedIgbinary`
   - `Phalcon\Storage\Serializer\MemcachedJson`
   - `Phalcon\Storage\Serializer\MemcachedPhp`
@@ -1031,7 +1035,7 @@ The [Security](encryption-security) component has been moved to the `Encryption`
 
 ### プロジェクトへの援助
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support)
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-collection)
 
 The `Support` namespace contains classes that are used throughout the framework. The classes moved here are:
 - [コレクション](support-collection)
@@ -1075,7 +1079,7 @@ Note, this component will be removed in future versions of the framework.
 
 ### Text
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support)
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-helper)
 
 The `Phalcon\Text` component has been deprecated. It has been replaced with the `Phalcon\Support\HelperFactory`. [more](#support)
 
