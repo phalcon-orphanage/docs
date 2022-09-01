@@ -9,7 +9,7 @@ keywords: 'enrutamiento, rutas'
 
 # Componente de Enrutamiento
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 The [Phalcon\Mvc\Router][mvc-router] component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. El enrutador tiene dos modos: modo MVC y modo de sólo coincidencia. El primer modo es ideal para trabajar con aplicaciones MVC.
@@ -56,7 +56,7 @@ public function add(
     string $pattern, 
     mixed $paths = null, 
     mixed $httpMethods = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
  Añade una ruta al enrutador sin ninguna restricción HTTP
@@ -84,7 +84,7 @@ $router->add(
 public function addConnect(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `CONNECT`
@@ -93,7 +93,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `CONNECT`
 public function addDelete(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `DELETE`
@@ -102,7 +102,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `DELETE`
 public function addGet(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `GET`
@@ -111,7 +111,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `GET`
 public function addHead(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `HEAD`
@@ -120,7 +120,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `HEAD`
 public function addOptions(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `OPTIONS`
@@ -129,7 +129,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `OPTIONS`
 public function addPatch(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `PATCH`
@@ -138,7 +138,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `PATCH`
 public function addPost(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `POST`
@@ -147,7 +147,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `POST`
 public function addPurge(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `PURGE` (soporte Squid y Varnish)
@@ -156,7 +156,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `PURGE` (s
 public function addPut(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `PUT`
@@ -165,7 +165,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `PUT`
 public function addTrace(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Añade una ruta al enrutador que sólo coincide si el método HTTP es `TRACE`
@@ -173,7 +173,7 @@ Añade una ruta al enrutador que sólo coincide si el método HTTP es `TRACE`
 ```php
 public function attach(
     RouteInterface $route, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouterInterface
 ```
  Adjunta un objeto `Route` a la pila de rutas.
@@ -515,7 +515,7 @@ class InvoicesController extends Controller
         $day = $this->dispatcher->getParam('day');
 
         // invoiceNo
-        $invoicNo = $this->dispatcher->getParam('invoiceNo');
+        $invoiceNo = $this->dispatcher->getParam('invoiceNo');
 
         // ...
     }
@@ -766,7 +766,7 @@ $router->mount($invoices);
 ```
 En el ejemplo anterior, primero creamos un grupo con un módulo y controlador común. Entonces añadimos el prefijo `/invoices` al grupo. A continuación añadimos más rutas al grupo, algunas sin parámetros y algunas con. La última ruta nos permite usar un controlador diferente del predeterminado (`common`). Finalmente, añadimos el grupo al enrutador.
 
-We can extend the [Phalcon\Mvc\Router\Group][mvc-router-group] component and register our routes in it on a per group basis. Esto nos permite organizar mejor las rutas de nuestra aplicación.
+We can extend the [Phalcon\Mvc\Router\Group][mvc-router-group] component and register our routes in it on a per-group basis. Esto nos permite organizar mejor las rutas de nuestra aplicación.
 
 ```php
 <?php
@@ -831,7 +831,7 @@ RewriteCond   %{REQUEST_FILENAME} !-f
 RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 ```
 
-En esta configuración, cualquier petición a ficheros y carpetas que no existan se enviará a `index.php`. El siguiente ejemplo muestra como usar esto como un componente independiente:
+En esta configuración, cualquier petición a ficheros y carpetas que no existan se enviará a `index.php`. The following example shows how to use this as a stand-alone component:
 
 ```php
 <?php
@@ -851,7 +851,7 @@ echo $router->getActionName();
 
 $route = $router->getMatchedRoute();
 ```
-En el ejemplo anterior, primero creamos un objeto enrutador. Podemos tener algo de código después de eso, como definición de servicios, rutas, etc.. Entonces cogemos el elemento `_url` del superglobal `$_GET` y después podemos obtener el nombre del controlador o el nombre de la acción o incluso recuperar la ruta coincidente.
+En el ejemplo anterior, primero creamos un objeto enrutador. We can have some code after that, such as defining services, routes etc. Entonces cogemos el elemento `_url` del superglobal `$_GET` y después podemos obtener el nombre del controlador o el nombre de la acción o incluso recuperar la ruta coincidente.
 
 ## Nombrar Rutas
 Each route that is added to the router is stored internally as a [Phalcon\Mvc\Router\Route][mvc-router-route] object. Esa clase encapsula todos los detalles de cada ruta. Por ejemplo, podemos dar un nombre a un camino para identificarlo de forma única en nuestra aplicación. Esto es especialmente útil si quiere crear URLs desde ella.
@@ -1050,7 +1050,7 @@ $route->beforeMatch(
 );
 ```
 
-Finalmente, puede usar el método (o evento) `beforeMatch` para comprobar si era una llamada AJAX o no.
+Finally, you can use the `beforeMatch` method (or event) to check whether this was an AJAX call or not.
 
 ```php
 <?php
