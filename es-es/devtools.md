@@ -13,7 +13,7 @@ keywords: 'devtools, herramientas de desarrollo, modelos, controladores'
 ## Resumen
 Estas herramientas le ayudarán a generar código esqueleto, a mantener su estructura de base de datos y a acelerar el desarrollo. Los componentes principales de su aplicación se pueden generar con un comando simple, permitiéndole desarrollar aplicaciones fácilmente usando Phalcon.
 
-Las *Devtool* de Phalcon se pueden controlar usando la línea de comandos o el interfaz web.
+You can use the Phalcon Devtools either from the command line (terminal) or the web interface.
 
 ## Instalación
 
@@ -32,7 +32,7 @@ Compruebe su instalación escribiendo: `phalcon`
 ```bash
 $ phalcon
 
-Phalcon DevTools (4.0.0)
+Phalcon DevTools (5.0.0)
 
 Available commands:
   info             (alias of: i)
@@ -49,7 +49,7 @@ Available commands:
   console          (alias of: shell, psysh)
 ```
 
-Las *devtools* también están disponibles como descarga *phar* en nuestro [repositorio](github_devtools) git.
+The devtools are also available as phar download on our GitHub [repository](github_devtools).
 
 ## Uso
 ### Comandos Disponibles
@@ -58,7 +58,7 @@ Puede obtener un listado de los comandos disponibles en las herramientas Phalcon
 ```bash
 $ phalcon commands
 
-Phalcon DevTools (4.0.0)
+Phalcon DevTools (5.0.0)
 
 Available commands:
   info             (alias of: i)
@@ -76,7 +76,7 @@ Available commands:
 ```
 
 ### Generando un Esqueleto de Proyecto
-Puede usar las herramientas de Phalcon para generar esqueletos de proyecto predefinidos para sus aplicaciones con el *framework* Phalcon. Por defecto el generador de esqueletos de proyecto usarán mod_rewrite de Apache. Escriba el siguiente comando en el *document root* de su servidor web:
+Puede usar las herramientas de Phalcon para generar esqueletos de proyecto predefinidos para sus aplicaciones con el *framework* Phalcon. By default, the project skeleton generator will use mod_rewrite for Apache. Escriba el siguiente comando en el *document root* de su servidor web:
 
 ```bash
 $ phalcon create-project store
@@ -91,7 +91,7 @@ Podría añadir el parámetro `--help` para obtener ayuda sobre el uso de un com
 ```bash
 $ phalcon project --help
 
-Phalcon DevTools (4.0.0)
+Phalcon DevTools (5.0.0)
 
 Help:
   Creates a project
@@ -136,12 +136,10 @@ declare(strict_types=1);
 
 class TestController extends \Phalcon\Mvc\Controller
 {
-
     public function indexAction()
     {
 
     }
-
 }
 
 ```
@@ -208,148 +206,136 @@ Opciones:
  --help               Muestra esta ayuda [optional]
 ```
 
-La manera más simple de generar un modelo para una tabla llamada *users* es:
+The simplest way to generate a model for a table called `customers` is:
+
 ```bash
-$ phalcon model users
+$ phalcon model customers
 ```
+
 Si su base de datos se ve así:
+
 ```sql
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` char(60) NOT NULL,
-  `active` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table customers
+(
+    `cst_id`          int(10) auto_increment primary key,
+    `cst_status_flag` tinyint(1)   null,
+    `cst_name_last`   varchar(100) null,
+    `cst_name_first`  varchar(50)  null
+);
 
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`);
+create index customers_cst_status_flag_index
+    on `customers` (`cst_status_flag`);
 
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
+create index customers_cst_name_last_index
+    on `customers` (`cst_name_last`);
+
+create index customers_cst_name_first_index
+    on `customers` (`cst_name_first`);
 ```
+
 Resultará en
 
 ```php
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace Phalcon\Tests\Models;
+
+use Phalcon\Mvc\Model;
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\Email as EmailValidator;
+use Phalcon\Validation\Validator\PresenceOf as EmailValidator;
 
-class Users extends \Phalcon\Mvc\Model
+/**
+ * @property int    $cst_id
+ * @property int    $cst_status_flag
+ * @property string $cst_name_last
+ * @property string $cst_name_first
+ * @property array  $cst_data;
+ */
+class Customers extends Model
 {
-
     /**
-     *
-     * @var integer
+     * @var int 
      */
-    public $id;
+    public $cst_id;
 
     /**
-     *
-     * @var string
+     * @var int 
      */
-    public $name;
+    public $cst_status_flag;
 
     /**
-     *
-     * @var string
+     * @var string 
      */
-    public $email;
+    public $cst_name_last;
 
     /**
-     *
-     * @var string
+     * @var string 
      */
-    public $password;
+    public $cst_name_first;
+
+    public function initialize()
+    {
+        $this->setSource('customers');
+    }
 
     /**
-     *
-     * @var string
-     */
-    public $active;
-
-    /**
-     * Validations and business logic
-     *
-     * @return boolean
+     * @return bool
      */
     public function validation()
     {
         $validator = new Validation();
 
         $validator->add(
-            'email',
-            new EmailValidator(
+            'cst_name_last',
+            new PresenceOf(
                 [
                     'model'   => $this,
-                    'message' => 'Please enter a correct email address',
+                    'message' => 'Please enter a valid last name',
                 ]
             )
         );
 
         return $this->validate($validator);
     }
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->setSchema("test");
-        $this->setSource("users");
-    }
-
-    /**
-     * Allows to query a set of records that match the specified conditions
-     *
-     * @param mixed $parameters
-     * @return Users[]|Users|\Phalcon\Mvc\Model\ResultSetInterface
-     */
-    public static function find($parameters = null): \Phalcon\Mvc\Model\ResultsetInterface
-    {
-        return parent::find($parameters);
-    }
-
-    /**
-     * Allows to query the first record that match the specified conditions
-     *
-     * @param mixed $parameters
-     * @return Users|\Phalcon\Mvc\Model\ResultInterface
-     */
-    public static function findFirst($parameters = null)
-    {
-        return parent::findFirst($parameters);
-    }
-
 }
 ```
+
 Opciones para generar diferentes tipos de formatos de modelo se pueden encontrar usando
+
 ```bash
 phalcon model --help
 ```
 
 ### Andamiaje CRUD
-El *scaffolding* o andamiaje es una forma rápida de generar algunas de las piezas principales de una aplicación. Si quiere crear modelos, vistas y controladores para un nuevo recurso en una sola operación, el andamiaje es la herramienta para este trabajo.
+Scaffolding is a quick way to generate some major pieces of an application. Si quiere crear modelos, vistas y controladores para un nuevo recurso en una sola operación, el andamiaje es la herramienta para este trabajo.
 
-Una vez se genera el código, debe adaptarlo para cumplir con sus necesidades. Muchos desarrolladores evitan completamente el andamiaje, optando por escribir todo o la mayoría de su código fuente desde cero. El código generado puede servir como guía para comprender mejor cómo trabaja el framework o los prototipos de desarrollo. El siguiente código muestra un andamio basado en la tabla `users`:
+Una vez se genera el código, debe adaptarlo para cumplir con sus necesidades. Muchos desarrolladores evitan completamente el andamiaje, optando por escribir todo o la mayoría de su código fuente desde cero. El código generado puede servir como guía para comprender mejor cómo trabaja el framework o los prototipos de desarrollo. The code below shows a scaffold based on the table `customers`:
 
 ```bash
-$ phalcon scaffold --table-name users
+$ phalcon scaffold --table-name customers
 ```
 
 El generador del andamio construirá varios ficheros en su aplicación, además de algunas carpetas. Aquí hay un resumen breve de lo que se generará:
 
-| Archivo                               | Propósito                           |
-| ------------------------------------- | ----------------------------------- |
-| `app/controllers/UsersController.php` | El controlador de Usuarios          |
-| `app/models/Users.php`                | El modelo de Usuarios               |
-| `app/views/layout/users.phtml`        | Disposición de la vista de Usuarios |
-| `app/views/products/search.phtml`     | Vista para la acción `search`       |
-| `app/views/products/new.phtml`        | Vista para la acción `new`          |
-| `app/views/products/edit.phtml`       | View for the action `edit`          |
+| Archivo                                   | Propósito                           |
+| ----------------------------------------- | ----------------------------------- |
+| `app/controllers/CustomersController.php` | The Customers controller            |
+| `app/models/Customers.php`                | The Customers model                 |
+| `app/views/layout/customers.phtml`        | Disposición de la vista de Usuarios |
+| `app/views/products/search.phtml`         | Vista para la acción `search`       |
+| `app/views/products/new.phtml`            | Vista para la acción `new`          |
+| `app/views/products/edit.phtml`           | View for the action `edit`          |
 
 Si navega por el controlador recién generado, verá un formulario de búsqueda y un link para crear un nuevo Usuario:
 
