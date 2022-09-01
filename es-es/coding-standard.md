@@ -21,7 +21,7 @@ En este documento se describe el estándar de código que utiliza Phalcon para e
 - Los nombres de los archivos deben estar en formato [StudlyCaps](https://en.wikipedia.org/wiki/Studly_caps).
 - Todos los archivos deben usar el final de línea de Unix LF (*linefeed*).
 - Todos los archivos deben terminar con una única línea en blanco.
-- Los nombres de  las carpetas también deben estar en formato StudlyCaps y el árbol de carpeta/subcarpeta debe seguir el espacio de nombres (*namespace*) de la clase.
+- Folders are also named StudlyCaps and the folder/sub-folder tree follows the namespace of the class.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -39,7 +39,7 @@ class Memory extends Adapter
 ```
 
 - El código debe utilizar 4 espacios para la sangría, no tabulaciones.
-- Las líneas deben tener como máximo 80 caracteres. El límite de la longitud de línea es de 120 caracteres.
+- Lines should be 80 characters or fewer. El límite de la longitud de línea es de 120 caracteres.
 - Debe haber una línea en blanco después del espacio de nombres. También debe haber una línea en blanco después del bloque de declaraciones.
 - No debe haber espacios en blanco al final de las líneas con código.
 - Se pueden agregar líneas en blanco para hacer más legible el código o para indicar bloques de código relacionados.
@@ -81,8 +81,6 @@ use Phalcon\Acl\Adapter;
 class Memory extends Adapter
 {
     /**
-     * Returns latest key used to acquire access
-     *
      * @var string | null
      */
     protected activeKey = "" { get };
