@@ -312,7 +312,7 @@ If there is a problem with storing the data in the folder due to permissions or 
 
 ## Εργοστάσιο
 ### `newInstance`
-We can easily create an annotations adapter class using the `new` keyword. However Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. The names of the preconfigured adapters are:
+We can easily create an annotations adapter class using the `new` keyword. However, Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. The names of the preconfigured adapters are:
 
 | Name     | Adapter                                                             |
 | -------- | ------------------------------------------------------------------- |
@@ -378,7 +378,7 @@ foreach ($annotations as $annotation) {
 ```
 In the above example we first create the memory annotations adapter. We then call `get` on it to load the annotations from the `Invoices` class. The `getClassAnnotations` will return a [Phalcon\Annotations\Collection][annotations-collection] class. We iterate through the collection and print out the name (`getName`), the number arguments (`numberArguments`) and then we print all the arguments (`getArguments`) on screen.
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter so as to reduce unnecessary CPU cycles for parsing.
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter to reduce unnecessary CPU cycles for parsing.
 
 ## Exceptions
 Any exceptions thrown in the `Phalcon\Annotations` namespace will be of type [Phalcon\Annotations\Exception][annotations-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
@@ -675,4 +675,3 @@ class Invoices extends BaseController
 [annotations-exception]: api/phalcon_annotations#annotations-exception
 [annotations-reader]: api/phalcon_annotations#annotations-reader
 [annotations-reflection]: api/phalcon_annotations#annotations-reflection
-        

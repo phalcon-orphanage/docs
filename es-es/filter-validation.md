@@ -171,7 +171,7 @@ public function setFilters(
     array | string $filters
 ): ValidationInterface
 ```
-Añade filtros al campo
+Add filters to the field
 
 ```php
 public function setLabels(
@@ -406,7 +406,7 @@ $validator->add(
 ```
 
 ### Callback
-By using [Phalcon\Filter\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. Al devolver `true` la validación será exitosa, al devolver `false` significará que la validación ha fallado. Cuando se ejecuta este validador, Phalcon pasará datos dependiendo de lo que sean - si es una entidad (ej. un modelo, una `stdClass`, etc.) entonces la entidad será pasada, de lo contrario los datos (ej. un vector como `$_POST`). Aquí un ejemplo:
+By using [Phalcon\Filter\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. Al devolver `true` la validación será exitosa, al devolver `false` significará que la validación ha fallado. When executing this validator Phalcon will pass data depending on what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). Aquí un ejemplo:
 
 ```php
 <?php
@@ -1671,7 +1671,7 @@ $validator->add(
 ```
 
 ### Url
-Comprueba si un valor tiene un formato de url
+Checks if a value has an url format
 
 ```php
 <?php

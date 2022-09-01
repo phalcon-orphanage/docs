@@ -111,7 +111,7 @@ public function handle(
     string $uri
 ): ResponseInterface | bool
 ```
-Gestiona una petición MVC. Acepta la URL del servidor (normalmente `$_SERVER['REQUEST_URI`]`)
+Handles an MVC request. Acepta la URL del servidor (normalmente `$_SERVER['REQUEST_URI`]`)
 
 ```php
 public function sendCookiesOnHandleRequest(
@@ -446,7 +446,7 @@ try {
 ```
 
 ### Multi Módulo
-Una aplicación multi-módulo usa la misma raíz de documentos (*document root*) para más de un módulo. Los módulos son grupos de componentes/ficheros que ofrecen funcionalidad pero incrementan el mantenimiento y aíslan la funcionalidad si es necesario. Each module must implement the [Phalcon\Mvc\ModuleDefinitionInterface][mvc-moduledefinitioninterface], to ensure proper functionality. Una estructura de directorio de ejemplo puede verse a continuación:
+A multimodule application uses the same document root for more than one module. Los módulos son grupos de componentes/ficheros que ofrecen funcionalidad pero incrementan el mantenimiento y aíslan la funcionalidad si es necesario. Each module must implement the [Phalcon\Mvc\ModuleDefinitionInterface][mvc-moduledefinitioninterface], to ensure proper functionality. Una estructura de directorio de ejemplo puede verse a continuación:
 
 ```
 multiple/
@@ -527,7 +527,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-A slightly modified bootstrap file is required for a multi-module MVC architecture
+A slightly modified bootstrap file is required for a multimodule MVC architecture
 
 ```php
 <?php

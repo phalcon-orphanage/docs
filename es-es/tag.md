@@ -8,10 +8,14 @@ keywords: 'etiqueta, ayudantes, ayudantes vista, generadores html'
 
 # Etiqueta (Ayudantes Vista)
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+
+> **NOTE** `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component. 
+> 
+> {: .alert .alert-danger }
 
 ## Resumen
-Escribir y mantener código HTML puede convertirse rápidamente en una tarea tediosa a causa de las convenciones de nombre y numerosos atributos que se deben tener en consideración. Phalcon se ocupa de esta complejidad ofreciendo el componente [Phalcon\Tag](api/Phalcon_Tag) que a su vez ofrece ayudantes para generar marcado HTML.
+Escribir y mantener código HTML puede convertirse rápidamente en una tarea tediosa a causa de las convenciones de nombre y numerosos atributos que se deben tener en consideración. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/phalcon_tag) component which in turn offers view helpers to generate HTML markup.
 
 Este componente se puede usar en una vista plana HTML+PHP o en una plantilla [Volt](volt).
 
@@ -263,7 +267,7 @@ Tag::setTitleSeparator(' ');
 
 ## Entrada
 ### `checkField()`
-Construye una etiqueta HTML `input[type='check']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='check']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -296,7 +300,7 @@ Sintaxis Volt:
 ```
 
 ### `colorField()`
-Construye una etiqueta HTML `input[type='color']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='color']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -329,7 +333,7 @@ Sintaxis Volt:
 ```
 
 ### `dateField()`
-Construye una etiqueta HTML `input[type='date']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='date']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -362,7 +366,7 @@ Sintaxis Volt:
 ```
 
 ### `dateTimeField()`
-Construye una etiqueta HTML `input[type='datetime']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='datetime']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -396,7 +400,7 @@ Sintaxis Volt:
 ```
 
 ### `dateTimeLocalField()`
-Construye una etiqueta HTML `input[type='datetime-local']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='datetime-local']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -430,7 +434,7 @@ Sintaxis Volt:
 ```
 
 ### `fileField()`
-Construye una etiqueta HTML `input[type='file']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='file']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -463,7 +467,7 @@ Sintaxis Volt:
 ```
 
 ### `hiddenField()`
-Construye una etiqueta HTML `input[type='hidden']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='hidden']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -496,7 +500,7 @@ Sintaxis Volt:
 ```
 
 ### `imageInput()`
-Construye una etiqueta HTML `input[type='image']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='image']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -527,7 +531,7 @@ Sintaxis Volt:
 ```
 
 ### `monthField()`
-Construye una etiqueta HTML `input[type='month']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='month']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -560,7 +564,7 @@ Sintaxis Volt:
 ```
 
 ### `numericField()`
-Construye una etiqueta HTML `input[type='number']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='number']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -595,7 +599,7 @@ Sintaxis Volt:
 ```
 
 ### `radioField()`
-Construye una etiqueta HTML `input[type='radio']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='radio']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -628,7 +632,7 @@ Sintaxis Volt:
 ```
 
 ### `rangeField()`
-Construye una etiqueta HTML `input[type='range']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='range']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -663,7 +667,7 @@ Sintaxis Volt:
 ```
 
 ### `searchField()`
-Construye una etiqueta HTML `input[type='search']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='search']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -696,7 +700,7 @@ Sintaxis Volt:
 ```
 
 ### `submitButton()`
-Construye una etiqueta HTML `input[type='submit']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='submit']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -727,7 +731,7 @@ Sintaxis Volt:
 ```
 
 ### `telField()`
-Construye una etiqueta HTML `input[type='tel']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='tel']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -760,7 +764,7 @@ Sintaxis Volt:
 ```
 
 ### `passwordField()`
-Construye una etiqueta HTML `input[type='text']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='text']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -793,7 +797,7 @@ Sintaxis Volt:
 ```
 
 ### `timeField()`
-Construye una etiqueta HTML `input[type='time']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='time']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -826,7 +830,7 @@ Sintaxis Volt:
 ```
 
 ### `urlField()`
-Construye una etiqueta HTML `input[type='url']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='url']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -857,7 +861,7 @@ Sintaxis Volt:
 ```
 
 ### `weekField()`
-Construye una etiqueta HTML `input[type='week']`. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
+Builds an HTML `input[type='week']` tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el nombre del elemento.
 
 ```php
 <?php
@@ -892,7 +896,7 @@ Sintaxis Volt:
 ## Elementos
 
 ### `image()`
-Construye una etiqueta HTML de imagen. Acepta un vector con los atributos del elemento. El primer elemento del vector es el `src` del elemento. El método acepta un segundo parámetro booleano, que indica si el recurso es local o no.
+Builds an HTML image tag. Acepta un vector con los atributos del elemento. El primer elemento del vector es el `src` del elemento. El método acepta un segundo parámetro booleano, que indica si el recurso es local o no.
 
 ```php
 <?php
@@ -909,11 +913,11 @@ echo Tag::image(
 // <img alt='alternative text' src='/your-app/img/hello.gif'>
 
 echo Tag::image(
-   'http://static.mywebsite.com/img/bg.png',
+   'https://static.mywebsite.com/img/bg.png',
     false
 );
 
-// <img src='http://static.mywebsite.com/img/bg.png'>
+// <img src='https://static.mywebsite.com/img/bg.png'>
 ```
 
 Sintaxis HTML:
@@ -926,7 +930,7 @@ Sintaxis HTML:
 ); ?>
 
 <?php echo $this->tag->image(
-   'http://static.mywebsite.com/img/bg.png',
+   'https://static.mywebsite.com/img/bg.png',
     false
 ); ?>
 ```
@@ -934,7 +938,7 @@ Sintaxis HTML:
 Sintaxis Volt:
 ```twig
 {% raw %}{{ image('img/hello.gif', 'alt': 'alternative text') }}
-{{ image('http://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
+{{ image('https://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
 ```
 
 ### `select()`
@@ -1090,7 +1094,7 @@ Phalcon ofrece un ayudante HTML genérico que permite la generación de cualquie
 The `tagHtml()` accepts the following parameters
 - `name` - `string` - the name of the element
 - `attributes` - `array` - any attributes
-- `selfClose` - `bool` - whether this is a self closing element or not
+- `selfClose` - `bool` - whether this is a self-closing element or not
 - `onlyStart` - `bool` - whether to produce only the _opening_ part of the tag (i.e. `<tag>` vs. `<tag></tag>`)
 - `useEol` - `bool` - add a `PHP_EOL` at the end of the generated string or not
 
@@ -1497,7 +1501,7 @@ Phalcon también proporciona un [constructor de formularios](forms) para crear f
 
 ## Datos
 ### `setDefault()`
-You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag][tag]. Los ayudantes de este componente conservarán los valores entre peticiones. De esta forma, puede fácilmente mostrar mensajes de validación sin perder los datos introducidos. Cada ayudante de formulario soporta el parámetro `value`. Con esto, puede especificar un valor para el ayudante directamente. Cuando el parámetro está presente, cualquier valor preestablecido usando `setDefault()` o vía petición serán ignorados.
+You can use `setDefault()` to pre-populate values for elements generated by [Phalcon\Tag][tag]. Los ayudantes de este componente conservarán los valores entre peticiones. De esta forma, puede fácilmente mostrar mensajes de validación sin perder los datos introducidos. Cada ayudante de formulario soporta el parámetro `value`. With it, you can specify a value for the helper directly. Cuando el parámetro está presente, cualquier valor preestablecido usando `setDefault()` o vía petición serán ignorados.
 
 ```php
 <?php
@@ -1769,7 +1773,7 @@ try {
 
     $di = new FactoryDefault();
 
-    // Assign our new tag a definition so we can call it
+    // Assign our new tag a definition, so we can call it
     $di->set(
         'MyTags',
         function () {
@@ -1810,3 +1814,4 @@ You can also check out [Volt](volt) a faster template engine for PHP, where you 
 [factorydefault]: api/phalcon_di#di-factorydefault
 [injectable]: api/phalcon_di#di-injectable
 [tag]: api/phalcon_tag
+[tagfactory]: api/phalcon_html#html-tagfactory

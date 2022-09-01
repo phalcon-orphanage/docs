@@ -3,7 +3,7 @@ layout: default
 language: 'uk-ua'
 version: '5.0'
 title: 'Registry'
-upgrade: '#support-registry'
+upgrade: '#support'
 keywords: 'registry'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'registry'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
-[Phalcon\Support\Registry][registry] is an object oriented array. It extends [Phalcon\Support\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
+[Phalcon\Support\Registry][registry] is an object-oriented array. It extends [Phalcon\Support\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -135,7 +135,7 @@ public function get(
 ):  mixed
 ```
 
-Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be cast. The available values are:
 
 - `масив`
 - `bool`
@@ -367,7 +367,7 @@ $collection = new Registry($data);
 echo $collection->toArray(); // $data
 ```
 
-`toJson(int $options)` returns a JSON representation of the object. It uses `json_encode` internally and accepts a parameter, which represents the flags that `json_encode` accepts. By default the options are set up with the value 79, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
+`toJson(int $options)` returns a JSON representation of the object. It uses `json_encode` internally and accepts a parameter, which represents the flags that `json_encode` accepts. By default, the options are set up with the value 79, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
 - `JSON_HEX_TAG`
 - `JSON_HEX_APOS`
 - `JSON_HEX_AMP`

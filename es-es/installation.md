@@ -27,7 +27,7 @@ extension=phalcon.so
 ```
 
 ### Hardware
-Phalcon is designed to use as few resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
+Phalcon is designed to use as few resources as possible, while offering high performance. Although we have tested Phalcon in various high-end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
 
 Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de Amazon con 512MB de RAM y 1 vCPU.
 
@@ -42,8 +42,8 @@ Along with PHP 7.4 or greater, depending on your application needs and the Phalc
 * [curl][curl]
 * [fileinfo][fileinfo]
 * [gettext][gettext]
-* [gd2][gd2] (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick][imagick] (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2][gd2] (to use the [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd) class)
+* [imagick][imagick] (to use the [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick) class)
 * [json][json]
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (en macOS)
 * [PDO][pdo] Extension as well as the relevant RDBMS specific extension (i.e. [MySQL][mysql], [PostgreSql][postgresql] etc.)
@@ -138,7 +138,7 @@ La instalación de Phalcon después de eso, es tan fácil como:
 yum install php72-php-phalcon4
 ```
 
-Versiones adicionales están disponibles para cada arquitectura específica (x86/x64), así como versiones específicas de PHP
+Additional versions are available both architecture specific (x86/x64) and PHP version specific
 
 
 ### FreeBSD

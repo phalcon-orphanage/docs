@@ -3,13 +3,13 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Vistas'
-upgrade: '#views'
+upgrade: '#mvc'
 keywords: 'mvc, vista, componente vista, vista simple, respuestas'
 ---
 
 # Vistas
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Resumen
 Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas formatean el contenido que necesita devolver al usuario/navegador web que inició la petición.
@@ -155,7 +155,7 @@ Obtiene el nombre de la vista principal
 ```php
 public function getLayoutsDir(): string
 ```
-Obtiene los diseños actuales del subdirectorio
+Gets the current layouts subdirectory
 
 ```php
 public function getMainView(): string
@@ -193,7 +193,7 @@ Recupera los contenidos de una parcial con argumentos
 ```php
 public function getPartialsDir(): string
 ```
-Obtiene el subdirectorio actual de parciales
+Gets the current partials subdirectory
 
 ```php
 public function getRender(
@@ -322,7 +322,7 @@ public function setBasePath(
     string $basePath
 ): View
 ```
-Establece la ruta base. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
+Establece la ruta base. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setBasePath(__DIR__ . "/");
@@ -357,7 +357,7 @@ public function setLayoutsDir(
     string $layoutsDir
 ): View
 ```
-Establece el subdirectorio de disposiciones. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
+Establece el subdirectorio de disposiciones. Debe ser un directorio dentro del directorio de vistas. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setLayoutsDir(
@@ -382,7 +382,7 @@ public function setPartialsDir(
     string $partialsDir
 ): View
 ```
-Establece un subdirectorio de parciales. Debe ser un directorio dentro del directorio de vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
+Sets a partials subdirectory. Debe ser un directorio dentro del directorio de vistas. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setPartialsDir(
@@ -469,7 +469,7 @@ public function setViewsDir(
     mixed $viewsDir
 ): View
 ```
-Establece el directorio de las vistas. Dependiendo de su plataforma, siempre añada una barra diagonal o barra invertida al final
+Establece el directorio de las vistas. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 public function start(): View
@@ -557,7 +557,7 @@ Asumiendo que el directorio de vistas es `app/views`, el componente vista autom�
 | Disposición de Controlador | app/views/layouts/invoices.phtml | Vista relacionada con el controlador. Será renderizada para cada acción ejecutada en el `InvoicesController`. |
 | Disposición Principal      | app/views/index.phtml            | Vista relacionada con la Aplicación. Se mostrará en cada controlador/acción de la aplicación                  |
 
-No está obligado a implementar todos los ficheros mencionados arriba. [Phalcon\Mvc\View][mvc-view] will simply move to the next view level in the hierarchy of files. Si los tres ficheros de vista se implementan, entonces se procesarán como sigue:
+You are not required to implement all the files mentioned above. [Phalcon\Mvc\View][mvc-view] will simply move to the next view level in the hierarchy of files. Si los tres ficheros de vista se implementan, entonces se procesarán como sigue:
 
 ```php
 <!-- app/views/invoices/view.phtml -->
@@ -1121,7 +1121,7 @@ Una forma de usar parciales es tratarlas como fragmentos HTML que se pueden inye
 </div>
 ```
 
-El método `partial()` acepta un segundo parámetro como un vector de variables/parámetros que sólo existirá en el ámbito del parcial:
+The `partial()` method does accept a second parameter as an array of variables/parameters that only will exist in the scope of the partial:
 
 ```php
 <?php 
@@ -1272,7 +1272,7 @@ $container->set(
 If you like to use [Mustache][mustache], [Twig][twig] or [Smarty][smarty] as your template engine, you can visit our [incubator][incubator-engines] repository for examples on how to activate these engines in your application
 
 ### Personalizado
-When using an external template engine, [Phalcon\Mvc\View][mvc-view] provides exactly the same view hierarchy and it is still possible to access the API inside these templates. Si quiere crear su propio motor de plantillas, puede aprovechar el API para realizar las operaciones que necesite.
+When using an external template engine, [Phalcon\Mvc\View][mvc-view] provides exactly the same view hierarchy, and it is still possible to access the API inside these templates. Si quiere crear su propio motor de plantillas, puede aprovechar el API para realizar las operaciones que necesite.
 
 A template engine adapter is a class that acts as bridge between [Phalcon\Mvc\View][mvc-view] and the template engine itself. Normalmente, solo necesita dos métodos implementados: `__construct()` y `render()`. The first one receives the [Phalcon\Mvc\View][mvc-view] instance that creates the engine adapter and the DI container used by the application.
 
@@ -1422,7 +1422,7 @@ echo $view->getRender(
 ```
 
 ### Renderizado Simple
-You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand alone component. Este componente es extremadamente útil cuando quiere renderizar una plantilla que no siempre está ligada a la estructura de su aplicación. Un ejemplo es renderizar código HTML requerido por emails.
+You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand-alone component. Este componente es extremadamente útil cuando quiere renderizar una plantilla que no siempre está ligada a la estructura de su aplicación. Un ejemplo es renderizar código HTML requerido por emails.
 
 ```php
 <?php

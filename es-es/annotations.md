@@ -312,7 +312,7 @@ If there is a problem with storing the data in the folder due to permissions or 
 
 ## Fábrica (Factory)
 ### `newInstance`
-Podemos crear fácilmente una clase adaptador de anotaciones usando la palabra clave `new`. However Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. La fábrica aceptará un vector de opciones que a su vez se usarán para instanciar la clase adaptador necesaria. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. Los nombre de los adaptadores preconfigurados son:
+Podemos crear fácilmente una clase adaptador de anotaciones usando la palabra clave `new`. However, Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. La fábrica aceptará un vector de opciones que a su vez se usarán para instanciar la clase adaptador necesaria. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. Los nombre de los adaptadores preconfigurados son:
 
 | Nombre   | Adaptador                                                           |
 | -------- | ------------------------------------------------------------------- |
@@ -378,7 +378,7 @@ foreach ($annotations as $annotation) {
 ```
 En el ejemplo anterior primero creamos el adaptador de anotaciones de memoria. Luego se llama a `get` para cargar las anotaciones de la clase `Invoices`. The `getClassAnnotations` will return a [Phalcon\Annotations\Collection][annotations-collection] class. Iteramos sobre la colección e imprimimos el nombre (`getName`), el número de argumentos (`numberArguments`) y luego imprimimos todos los argumentos (`getArguments`) por pantalla.
 
-El proceso de lectura de anotaciones es muy rápido, sin embargo, por razones de rendimiento se recomienda almacenar las anotaciones analizadas usando un adaptador para reducir ciclos de CPU innecesarios para su análisis.
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter to reduce unnecessary CPU cycles for parsing.
 
 ## Excepciones
 Any exceptions thrown in the `Phalcon\Annotations` namespace will be of type [Phalcon\Annotations\Exception][annotations-exception]. Puede usar estas excepciones para capturar selectivamente sólo las excepciones lanzadas desde este componente.
@@ -675,4 +675,3 @@ class Invoices extends BaseController
 [annotations-exception]: api/phalcon_annotations#annotations-exception
 [annotations-reader]: api/phalcon_annotations#annotations-reader
 [annotations-reflection]: api/phalcon_annotations#annotations-reflection
-        

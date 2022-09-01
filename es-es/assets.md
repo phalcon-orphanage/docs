@@ -45,7 +45,7 @@ $container->set(
 )
 ```
 
-If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\Html\TagFactory][html-helper] is already registered as a service with the name `tag` and automatically injected in the constructor of [Phalcon\Assets\Manager][assets-manager]. This is to ensure that objects are reused and memory usage is kept to a minimum. If you are registering the [Phalcon\Assets\Manager][assets-manager] on your own, and you already have the [Phalcon\Html\TagFactory][html-helper] registered in your container, you can reuse it without creating a new instance.
+If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\Html\TagFactory][html-tagfactory] is already registered as a service with the name `tag` and automatically injected in the constructor of [Phalcon\Assets\Manager][assets-manager]. This is to ensure that objects are reused and memory usage is kept to a minimum. If you are registering the [Phalcon\Assets\Manager][assets-manager] on your own, and you already have the [Phalcon\Html\TagFactory][html-tagfactory] registered in your container, you can reuse it without creating a new instance.
 
 ## Recursos Activos
 Los recursos se pueden añadir al gestor o una colección usando las clases relativas a `Asset`. The [Phalcon\Assets\Asset][asset] class. El objeto acepta los datos necesarios para crear el recurso.
@@ -347,7 +347,7 @@ $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
 ### Obtener
-The _getter_ methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. El gestor ofrece `get()`, `getCollection()`, `getCss()` y `getJs()`. Estos métodos devolverán la colección que almacena el gestor. `getCss()` y `getJs()` devolverán las colecciones incorporadas preregistradas.
+The _getter_ methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. El gestor ofrece `get()`, `getCollection()`, `getCss()` y `getJs()`. These methods will return the collection that the manager stores. `getCss()` y `getJs()` devolverán las colecciones incorporadas preregistradas.
 
 The `collection()` method acts as a _creator_ and _getter_ at the same time. Le permite crear una colección y obtenerla para que le puedas añadir recursos. `getCss()` y `getJs()` realizan la misma función, es decir, crean la colección si no existe y la devuelven. Estas dos colecciones establecen las colecciones predefinidas `css` y `js` en el gestor.
 
@@ -718,7 +718,7 @@ $asset = new Css(
     true
 );
 ```
-Lo anterior resultará en el siguiente script como salida (asumiendo que su fichero fuera modificado el 20 de Mayo de 2019): Asumiendo que su fichero fue modificado por última vez el 20 de Mayo, la versión
+The above will result in the following script as the output (assuming that your file was modified in May 20th 2019): Assuming that your file was last modified on May 20, the version
 ```html
 <link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
@@ -910,7 +910,7 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [filter-none]: api/phalcon_assets#assets-filters-none
 [jquery]: https://jquery.com
 [sass]: https://sass-lang.com
-[html-helper]: html-helper
+[html-tagfactory]: html-tagfactory
 [yui]: https://yui.github.io/yuicompressor
 [url]: mvc-url
 [varnish]: https://varnish-cache.org/

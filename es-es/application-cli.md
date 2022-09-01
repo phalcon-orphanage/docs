@@ -200,7 +200,7 @@ En el código anterior, usamos el objeto consola y llamamos `handle` con los par
 Any exception thrown in the [Phalcon\Cli\Console][cli-console] component will be of type [Phalcon\Cli\Console\Exception][cli-console-exception], which allows you to trap the exception specifically.
 
 ## Tareas
-Las tareas son el equivalente a los controladores en una aplicación MVC. Cualquier aplicación CLI necesita al menos una tarea llamada `MainTask` y un `mainAction`. Cualquier tarea definida necesita tener un `mainAction` que se llamará si no se define ninguna acción. No hay restricción en el número de acciones que cada tarea puede contener.
+Tasks are the equivalent of controllers in an MVC application. Cualquier aplicación CLI necesita al menos una tarea llamada `MainTask` y un `mainAction`. Cualquier tarea definida necesita tener un `mainAction` que se llamará si no se define ninguna acción. No hay restricción en el número de acciones que cada tarea puede contener.
 
 Un ejemplo de una clase de tarea (`src/Tasks/MainTask.php`) es:
 
@@ -367,7 +367,7 @@ $arguments = [];
 
 Ahora que la aplicación de consola está en el contenedor DI, podemos acceder a ella desde cualquier tarea.
 
-Supongamos que queremos llamar `printAction()` desde la tarea `Users`, todo lo que tenemos que hacer es llamarla usando el contenedor.
+Assume we want to call the `printAction()` from the `Users` task, all we have to do is call it, using the container.
 
 ```php
 <?php
@@ -529,9 +529,9 @@ public function setDefaultModule(string $defaultModule): AbstractApplication
 Sets the module name to be used if the router does not return a valid module
 
 ## Rutas
-La aplicación CLI tiene su propio router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
+La aplicación CLI tiene su propio router. By default, the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
 
-Similar to a MVC application, the [Phalcon\Cli\Router][cli-router] uses [Phalcon\Cli\Router\Route][cli-router-route] objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface][cli-router-routeinterface].
+Similar to an MVC application, the [Phalcon\Cli\Router][cli-router] uses [Phalcon\Cli\Router\Route][cli-router-route] objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface][cli-router-routeinterface].
 
 Las rutas aceptan los parámetros regex esperados como `a-zA-Z0-9` etc. También hay comodines adicionales que puede aprovechar:
 

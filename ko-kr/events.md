@@ -935,13 +935,13 @@ The events available in Phalcon are:
 | [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
 | [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
 | [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
-| [뷰](view)                   | `view:afterCompile`                  | Volt                                                    |
-| [뷰](view)                   | `view:afterRender`                   | 뷰                                                       |
-| [뷰](view)                   | `view:afterRenderView`               | 뷰                                                       |
-| [뷰](view)                   | `view:beforeCompile`                 | Volt                                                    |
-| [뷰](view)                   | `view:beforeRender`                  | 뷰                                                       |
-| [뷰](view)                   | `view:beforeRenderView`              | View, View Engine Path                                  |
-| [뷰](view)                   | `view:notFoundView`                  | View, View Engine Path                                  |
+| [뷰](views)                  | `view:afterCompile`                  | Volt                                                    |
+| [뷰](views)                  | `view:afterRender`                   | 뷰                                                       |
+| [뷰](views)                  | `view:afterRenderView`               | 뷰                                                       |
+| [뷰](views)                  | `view:beforeCompile`                 | Volt                                                    |
+| [뷰](views)                  | `view:beforeRender`                  | 뷰                                                       |
+| [뷰](views)                  | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [뷰](views)                  | `view:notFoundView`                  | View, View Engine Path                                  |
 | [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |

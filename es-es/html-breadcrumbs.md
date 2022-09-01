@@ -13,7 +13,7 @@ keywords: 'html, breadcrumbs, tag, tag factory'
 ## Resumen
 Una pieza común de HTML que está presente en muchas aplicaciones web son las migas de pan. Son enlaces separados normalmente por un espacio o por el carácter `/`, que representa la estructura jerárquica de una aplicación. El propósito es dar a los usuarios otra forma visual sencilla para navegar por la aplicación.
 
-Un ejemplo es una aplicación que tiene un módulo `admin`, un área `facturas` y una página `ver factura`. Usualmente, seleccionarías el módulo `admin`, entonces desde los enlaces seleccionarías `facturas` (lista) y entonces pulsando sobre una de las facturas de la lista, podrías verla. Para representar esta estructura jerárquica, las migas de pan mostradas podrían ser:
+Un ejemplo es una aplicación que tiene un módulo `admin`, un área `facturas` y una página `ver factura`. Usually, you would select the `admin` module, then from the links you will choose `invoices` (list) and then clicking on one of the invoices in the list, you can view it. Para representar esta estructura jerárquica, las migas de pan mostradas podrían ser:
 
 ```php
 Inicio / Admin / Facturas / Viendo Factura [1234]

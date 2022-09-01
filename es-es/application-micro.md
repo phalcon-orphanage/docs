@@ -748,7 +748,7 @@ $products
 $app->mount($products);   
 ```
 
-Con este simple cambio en la aplicación, todos los manejadores permanecen sin ser instanciados hasta que son solicitados. Por lo tanto cuando alguien hace una petición a `/invoices/get/2`, nuestra aplicación crea una instancia de `InvoicesController` y llama al método `get`. Nuestra aplicación ahora consume menos recursos que antes.
+Con este simple cambio en la aplicación, todos los manejadores permanecen sin ser instanciados hasta que son solicitados. Therefore, whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Nuestra aplicación ahora consume menos recursos que antes.
 
 #### Consejo de rendimiento extra
 Si estás trabajando en una aplicación grande, no es necesario montar todas las colecciones, incluso si se cargan perezosamente: Phalcon usará regex para hacer coincidir las rutas. To speed up the routing process it is possible to run a _pre-filter_ like this, using the previous example:
@@ -1812,7 +1812,7 @@ $application->after(
 $application->setEventsManager($manager);
 ```
 
-We need a [Phalcon\Events\Manager][events-manager] object. Puede ser un objeto recién instanciado o podemos obtener el existente de nuestro contenedor DI (si ha usado `FactoryDefault`, o si no ha configurado un contenedor DI, ya que será creado automáticamente para usted).
+We need a [Phalcon\Events\Manager][events-manager] object. This can be a newly instantiated object, or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one, or if you have not set up a DI container, since it will be automatically created for you).
 
 Adjuntamos cada clase middleware en el ancla `micro` en el Gestor de Eventos. También podría ser un poco más específico y adjuntarlo al evento `micro:beforeExecuteRoute`.
 
@@ -2189,7 +2189,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 **Middleware Respuesta**
 
-Este *middleware* es responsable de manipular nuestra respuesta y devolverla al que llama como una cadena JSON. Por lo tanto, necesitamos adjuntarlo al evento `after` de nuestra aplicación Micro.
+Este *middleware* es responsable de manipular nuestra respuesta y devolverla al que llama como una cadena JSON. Therefore, we need to attach it to the `after` event of our Micro application.
 
 > **NOTE**: We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle. 
 > 
@@ -2311,7 +2311,7 @@ $app->handle(
     $_SERVER["REQUEST_URI"]
 );
 ```
-Ya que el objeto `Binder</em> está usando internamente la API Reflexión de PHP, que requiere ciclos de CPU adicionales, hay una opción para configurar un caché que acelere el proceso. Esto se puede hacer usando el segundo argumento de <code>setModelBinder()` que puede aceptar un nombre de servicio o simplemente pasarle una instancia de caché al constructor `Binder`.
+Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache to speed up the process. Esto se puede hacer usando el segundo argumento de `setModelBinder()` que puede aceptar un nombre de servicio o simplemente pasarle una instancia de caché al constructor `Binder`.
 
 Currently, the binder will only use the models primary key to perform a `findFirst()` on. Un ejemplo de ruta para lo anterior sería `/invoices/view/1`.
 

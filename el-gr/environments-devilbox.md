@@ -11,7 +11,7 @@ keywords: 'environment, devilbox, docker'
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-The [Devilbox][devilbox] The Devilbox is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+[Devilbox][devilbox] is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
 Furthermore, the Devilbox provides an identical and reproducible development environment for different host operating systems.
 
@@ -55,7 +55,7 @@ host> ./shell.sh
 The vhost directory defines the name under which your project will be available. (`<vhost dir>.TLD_SUFFIX` will be the final URL ).
 
 ```bash
-devilbox@php-7.3 in /shared/httpd $ mkdir my-phalcon
+devilbox@php-8.0 in /shared/httpd $ mkdir my-phalcon
 ```
 
 ### Install Phalcon
@@ -63,14 +63,14 @@ devilbox@php-7.3 in /shared/httpd $ mkdir my-phalcon
 Navigate into your newly created vhost directory and install Phalcon with `phalcon` cli.
 
 ```bash
-devilbox@php-7.3 in /shared/httpd $ cd my-phalcon
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ phalcon project phalconphp
+devilbox@php-8.0 in /shared/httpd $ cd my-phalcon
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ phalcon project phalconphp
 ```
 
 The directory structure looks like this after the installation:
 
 ```bash
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ tree -L 1
 .
 └── phalconphp
 
@@ -84,13 +84,13 @@ Symlinking the actual webroot directory to `htdocs` is important. The web server
 Some frameworks however, store files and content in nested directories of unknown levels. It is therefore impossible to set this as a pre-set for the environment. You will therefore have to manually set a symlink back to the expected path that your framework requires.
 
 ```bash
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
 ```
 
 The directory structure looks like this after the installation:
 
 ```bash
-devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ tree -L 1
 .
 ├── phalconphp
 └── htdocs -> phalconphp/public

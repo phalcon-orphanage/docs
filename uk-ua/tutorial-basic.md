@@ -8,7 +8,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, нав
 
 # Посібник - основи
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Огляд
 В цьому посібнику ми створимо програму з простою реєстраційною формою, розкриваючи основні аспекти дизайну Phalcon.
@@ -19,7 +19,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, нав
 
 Якщо ви хочете просто почати роботу, ви можете пропустити це і створити проект Phalcon автоматично за допомогою наших [інструментів розробника](devtools).
 
-Найкращий спосіб використовувати цей посібник - вникнути в основи та спробувати насолодитись процесом. You can get the complete code [here][github_tutorial]. If you get stuck or have questions, please visit us on [Discord][discord] or in our [Forum][forum].
+Найкращий спосіб використовувати цей посібник - вникнути в основи та спробувати насолодитись процесом. You can get the complete code [here][github_tutorial]. If you get stuck or have questions, please visit us on [Discord][discord] or in our [Discussions][discussions].
 
 ## Файлова структура
 Однією з головних особливостей Phalcon є слабка зв'язаність. Через це ви можете використати будь-яку структуру каталогів, яка вам зручна. In this tutorial we will use a _standard_ directory structure, commonly used in MVC applications.
@@ -76,45 +76,45 @@ require_once __DIR__ . '/public/index.php';
 - Забезпечення виконання HTTP запитів вашого продукту
 
 ### Автозавантажувач
-We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
+We are going to use [Phalcon\Autoload\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Загальні речі, які слід додати до автозавантажувача, це ваші контролери і моделі. Ви також можете зареєструвати каталоги, які будуть проскановані для пошуку файлів, необхідних вашій програмі.
 
-To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Autoload\Loader](autoload):
 
 `public/index.php`
 ```php
 <?php
 
-use Phalcon\Loader\Loader;
+use Phalcon\Autoload\Loader;
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 // ...
 
 $loader = new Loader();
-
-$loader->registerDirs(
+$loader->setDirectories(
     [
         APP_PATH . '/controllers/',
         APP_PATH . '/models/',
     ]
 );
 
+
 $loader->register();
 ```
 
 ### Керування залежностями
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC][ioc] container. Часто ви стикатиметесь з терміном DI, який означає впровадження залежностей (Dependency Injection). Впровадження залежностей та Інверсія контролю (IoC) можуть звучати складно, але Phalcon гарантує, що їх використання є простим, практичним та ефективним. Контейнер IoC Phalcon містить такі концепції:
+Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager, so they can be injected automatically to components and services wrapped in the [IoC][ioc] container. Часто ви стикатиметесь з терміном DI, який означає впровадження залежностей (Dependency Injection). Впровадження залежностей та Інверсія контролю (IoC) можуть звучати складно, але Phalcon гарантує, що їх використання є простим, практичним та ефективним. Контейнер IoC Phalcon містить такі концепції:
 - Сервіс-контейнер - "сховище", де ми зберігаємо сервіси, які наш продукт потребує для функціонування.
 - Послуга або компонент - об'єкт обробки даних, який буде включено до компонентів
 
 Кожен раз, коли фреймворк потребує компонента або послугу, він буде звертатися до контейнера використовуючи певне ім'я сервісу. Таким чином, ми маємо простий спосіб отримання об'єктів, необхідних для нашої програми, таких як логер, з'єднання бази даних і тощо.
 
-> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler][injection]. Також ми маємо [чудовий посібник](di), що охоплює багато випадків використання. 
+> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler][injection]. Also, we have [a great tutorial](di) covering many use cases. 
 > 
 > {: .alert .alert-warning }
 
 ### Factory Default
-The [Phalcon\Di\FactoryDefault][di-factorydefault] is a variant of [Phalcon\Di][di]. Щоб спростити роботу, він автоматично зареєструє більшість компонентів, що необхідні для продукту та стандартно поставляється з Phalcon. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault] container initially and later on customize it to fit your needs.
+The [Phalcon\Di\FactoryDefault][di-factorydefault] is a variant of [Phalcon\Di\Di][di]. Щоб спростити роботу, він автоматично зареєструє більшість компонентів, що необхідні для продукту та стандартно поставляється з Phalcon. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault] container initially and later on customize it to fit your needs.
 
 Services can be registered in several ways, but for our tutorial, we will use an [anonymous function][anonymous_function]:
 
@@ -125,7 +125,6 @@ Services can be registered in several ways, but for our tutorial, we will use an
 
 use Phalcon\Di\FactoryDefault;
 
-// Create a DI
 $container = new FactoryDefault();
 ```
 
@@ -156,7 +155,7 @@ $container->set(
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 // ...
 
@@ -172,7 +171,7 @@ $container->set(
 ```
 
 ### Обробка запитів додатка
-Для того, щоб обробляти будь-які запити, використовуєтьс об'єкт [Phalcon\Mvc\Application](application), який виконує всі самі важкі завдання. Цей компонент прийме запит користувача, визначить шляхи, скоординує дії контролера та виведе візуальне подання результатів обробки запиту.
+Для того, щоб обробляти будь-які запити, використовуєтьс об'єкт [Phalcon\Mvc\Application](application), який виконує всі самі важкі завдання. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning the results.
 
 `public/index.php`
 ```php
@@ -204,11 +203,9 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Url;
 
-// Define some absolute path constants to aid in locating resources
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Реєструємо автозавантажувач
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -254,10 +251,14 @@ try {
 }
 ```
 
-Як ви бачите, файл bootstrap дуже короткий і нам не потрібно включати до нього будь-які додаткові файли. Ви маєте змогу створити гнучкий MVC додаток менш ніж за 30 рядків коду.
+> **NOTE** In the tutorial files from our [GitHub][github_tutorial] repository, to register services in the `DI` container, we use the array notation i.e. `$container['url'] = ....`. 
+> 
+> {: .alert .alert-info }
+
+As you can see, the bootstrap file is very short, and we do not need to include any additional files. Ви маєте змогу створити гнучкий MVC додаток менш ніж за 30 рядків коду.
 
 ## Створення контролера
-За замовчуванням Phalcon буде шукати контролер з назвою `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost/`). `IndexController` та його `IndexAction` повинен бути схожим на такий приклад:
+By default, Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (e.g. `https://localhost/`). `IndexController` та його `IndexAction` повинен бути схожим на такий приклад:
 
 `app/controllers/IndexController.php`
 ```php
@@ -285,7 +286,7 @@ class IndexController extends Controller
 ## Відправка результату до View
 Виведення результату на екран безпосередньо з контролера часом потрібне, але не бажане, і це підтвердять більшість пуристів MVC спільноти. Всі результати мають передаватись компоненту view, який відповідальний за виведення інформації на екран. Phalcon шукатиме view з такою ж назвою, як і остання виконана дія, в папці з ім'ям контролера, якому така дія належить.
 
-Таким чином, у нашому випадку якщо URL-адреса:
+Therefore, in our case if the URL is:
 
 ```php
 http://localhost/
@@ -351,13 +352,11 @@ echo $this->tag->linkTo(
 <a href="/signup">Sign Up Here!</a>
 ```
 
-Для створення посилання для тегу `<a>`, ми використовуємо компонент [Phalcon\Tag](tag). Це допоміжний інструмент, який пропонує простий спосіб побудови HTML-тегів з урахуванням правил фреймворку. Цей клас також є сервісом, зареєстрованим у Dependency Injector, тому ми можемо використовувати `$this->tag` для доступу до його функціональності.
+To generate the link for the `<a>` tag, we use the [Phalcon\Html\TagFactory](html-tagfactory) component. Це допоміжний інструмент, який пропонує простий спосіб побудови HTML-тегів з урахуванням правил фреймворку. This class is also a service registered in the Dependency Injector, so we can use `$this->tag` to access its functionality.
 
-> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. Якщо ви вирішили реєструвати усі сервіси самостійно, то потрібно зареєструвати у цьому контейнері кожен такий сервіс, щоб зробити його доступним у вашому продукті. 
+> **NOTE**: `Phalcon\Html\TagFactory` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. Якщо ви вирішили реєструвати усі сервіси самостійно, то потрібно зареєструвати у цьому контейнері кожен такий сервіс, щоб зробити його доступним у вашому продукті. 
 > 
 > {: .alert .alert-info }
-
-Компонент [Phalcon\Tag](tag) також використовує раніше зареєстрований [Phalcon\Uri](uri) компонент для правильного створення URI. Більш детальну статтю стосовно генерування HTML [можна знайти тут](tag).
 
 ![](/assets/images/content/tutorial-basic-2.png)
 
@@ -407,7 +406,7 @@ class SignupController extends Controller
 
 ![](/assets/images/content/tutorial-basic-3.png)
 
-Як зазначено вище, клас інструментів [Phalcon\Tag](tag) пропонує корисні методи, що дозволяють з легкістю створювати форми HTML-елементів. `Phalcon\Tag::form()` метод отримує лише один параметр - відносний URI до контролера/дії в додатку. `Phalcon\Tag::textField()` створює текстовий елемент HTML з іменем як переданим параметром, тоді як `Phalcon\Tag::submitButton()` створює HTML кнопку відправки даних форми.
+As mentioned above, the [Phalcon\Html\TagFactory](html-tagfactory) utility class, exposes useful methods allowing you to build form HTML elements with ease. The `form()` method receives an array of key/value pairs that set up the form, for example a relative URI to a controller/action in the application. The `inputText()` creates a text HTML element with the name as the passed parameter, while the `inputSubmit()` creates a submit HTML button. Finally, a call to `close()` will close our `<form>` tag.
 
 By clicking the _Register_ button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Наш `public/index.php` згенерує цей виняток:
 
@@ -448,13 +447,13 @@ Phalcon пропонує перший ORM для PHP повністю напис
 
 `create_users_table.sql`
 ```sql
-CREATE TABLE `users` (
-    `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
-    `name`  varchar(70)          NOT NULL,
-    `email` varchar(70)          NOT NULL,
-
+CREATE TABLE `users`
+(
+    `id`    int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Record ID',
+    `name`  varchar(255) NOT NULL COMMENT 'User Name',
+    `email` varchar(255) NOT NULL COMMENT 'User Email Address',
     PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
 Модель має розташовуватись у каталозі `app/models` (`app/models/Users.php`). The model maps to the _users_ table:
@@ -503,7 +502,7 @@ $container->set(
 
 Змініть вищевказаний фрагмент коду відповідно до налаштувань доступу до вашої бази даних.
 
-З правильними параметрами бази даних наша модель готова до взаємодії з рештою додатку і таким чином ми вже можемо зберегти записи користувача. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the _save_ operation.
+With the correct database parameters, our model is ready to interact with the rest of the application, so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the _save_ operation.
 
 `app/views/signup/register.phtml`
 ```php
@@ -532,28 +531,23 @@ class SignupController extends Controller
 
     public function registerAction()
     {
-        $user = new Users();
+        $post = $this->request->getPost();
 
-        //присвоєння значень з форми змінній $user
-        $user->assign(
-            $this->request->getPost(),
-            [
-                'name',
-                'email'
-            ]
-        );
-
-        // Перевірка на наявність помилок та збереження
+        // Store and check for errors
+        $user        = new Users();
+        $user->name  = $post['name'];
+        $user->email = $post['email'];
+        // Store and check for errors
         $success = $user->save();
 
-        // виведення результату для перегляду
+        // passing the result to the view
         $this->view->success = $success;
 
         if ($success) {
-            $message = "Дякуємо за реєстрацію!";
+            $message = "Thanks for registering!";
         } else {
-            $message = "Вибачте, було ідентифіковано такі проблеми:<br>"
-                     . implode('<br>', $user->getMessages());
+            $message = "Sorry, the following problems were generated:<br>"
+                . implode('<br>', $user->getMessages());
         }
 
         // передача повідомлення поданню
@@ -564,7 +558,7 @@ class SignupController extends Controller
 
 На початку `registerAction` ми створили порожній об'єкт користувача, використовуючи клас користувачів `Users`, який ми створили раніше. Ми будемо використовувати цей клас для керування записами користувача. Як було зазначено вище, публічні властивості класу ведуть до полів таблиці `users` у нашій базі даних. Вставлення відповідних значень до нового запису і виклик `save()` збереже дані цього запису у базі даних. Метод `save()` повертає значення `boolean`, яке сигналізує про успіх чи невдачу операції збереження.
 
-ORM автоматично обріже записи, аби уникнути SQL ін'єкцій, тому нам потрібно лише передати запит методу `save()`.
+The ORM will automatically escape the input preventing SQL injections, so we only need to pass the request to the `save()` method.
 
 Додаткова перевірка відбувається автоматично в усіх полях, що визначені як не null (обов’язкові). Якщо ми не заповнимо жодного з обов'язкових полів у реєстраційній формі, наш екран виглядатиме схоже на це:
 
@@ -654,7 +648,8 @@ As you can see our variable `$users` can be iterated and counted. Ви може�
 <head>
     <meta charset="UTF-8">
     <title>Phalcon Tutorial</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
@@ -675,11 +670,12 @@ As you can see our variable `$users` can be iterated and counted. Ви може�
 
 [anonymous_function]: https://php.net/manual/en/functions.anonymous.php
 [discord]: https://phalcon.io/discord
-[forum]: https://phalcon.io/forum
+[discussions]: https://phalcon.io/discussions
+[github_tutorial]: https://github.com/phalcon/tutorial
 [github_tutorial]: https://github.com/phalcon/tutorial
 [injection]: https://martinfowler.com/articles/injection.html
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control
 [psr-4]: https://www.php-fig.org/psr/psr-4/
-[di]: api/Phalcon_Di
-[di-factorydefault]: api/Phalcon_Di#di-factorydefault
+[di]: api/phalcon_di
+[di-factorydefault]: api/phalcon_di#di-factorydefault
 [bootstrap]: https://getbootstrap.com/

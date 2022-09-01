@@ -9,7 +9,7 @@ keywords: 'routing, routes'
 
 # Routing Component
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## 개요
 The [Phalcon\Mvc\Router][mvc-router] component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
@@ -56,7 +56,7 @@ public function add(
     string $pattern, 
     mixed $paths = null, 
     mixed $httpMethods = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
  Adds a route to the router without any HTTP constraint
@@ -84,7 +84,7 @@ $router->add(
 public function addConnect(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `CONNECT`
@@ -93,7 +93,7 @@ Adds a route to the router that only match if the HTTP method is `CONNECT`
 public function addDelete(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `DELETE`
@@ -102,7 +102,7 @@ Adds a route to the router that only match if the HTTP method is `DELETE`
 public function addGet(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `GET`
@@ -111,7 +111,7 @@ Adds a route to the router that only match if the HTTP method is `GET`
 public function addHead(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `HEAD`
@@ -120,7 +120,7 @@ Adds a route to the router that only match if the HTTP method is `HEAD`
 public function addOptions(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Add a route to the router that only match if the HTTP method is `OPTIONS`
@@ -129,7 +129,7 @@ Add a route to the router that only match if the HTTP method is `OPTIONS`
 public function addPatch(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `PATCH`
@@ -138,7 +138,7 @@ Adds a route to the router that only match if the HTTP method is `PATCH`
 public function addPost(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `POST`
@@ -147,7 +147,7 @@ Adds a route to the router that only match if the HTTP method is `POST`
 public function addPurge(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `PURGE` (Squid and Varnish support)
@@ -156,7 +156,7 @@ Adds a route to the router that only match if the HTTP method is `PURGE` (Squid 
 public function addPut(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `PUT`
@@ -165,7 +165,7 @@ Adds a route to the router that only match if the HTTP method is `PUT`
 public function addTrace(
     string $pattern, 
     mixed $paths = null, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is `TRACE`
@@ -173,7 +173,7 @@ Adds a route to the router that only match if the HTTP method is `TRACE`
 ```php
 public function attach(
     RouteInterface $route, 
-    mixed $position = Router::POSITION_LAST
+    int $position = Router::POSITION_LAST
 ): RouterInterface
 ```
  Attach Route object to the routes stack.
@@ -515,7 +515,7 @@ class InvoicesController extends Controller
         $day = $this->dispatcher->getParam('day');
 
         // invoiceNo
-        $invoicNo = $this->dispatcher->getParam('invoiceNo');
+        $invoiceNo = $this->dispatcher->getParam('invoiceNo');
 
         // ...
     }
@@ -566,7 +566,7 @@ $router->add(
 The first position must be skipped because it is used for the named parameter `year`.
 
 ### Modules
-You can define routes with modules in the path. This is specially suitable to multi-module applications. You can define a default route that includes a module wildcard.
+You can define routes with modules in the path. This is specially suitable to multimodule applications. You can define a default route that includes a module wildcard.
 
 ```php
 <?php
@@ -766,7 +766,7 @@ $router->mount($invoices);
 ```
 In the above example, we first create a group with a common module and controller. We then add the prefix for the group to be `/invoices`. We then add more routes to the group, some without parameters and some with. The last route allows us to use a different controller than the default one (`common`). Finally, we add the group to the router.
 
-We can extend the [Phalcon\Mvc\Router\Group][mvc-router-group] component and register our routes in it on a per group basis. This allows us to better organize the routes of our application.
+We can extend the [Phalcon\Mvc\Router\Group][mvc-router-group] component and register our routes in it on a per-group basis. This allows us to better organize the routes of our application.
 
 ```php
 <?php
@@ -831,7 +831,7 @@ RewriteCond   %{REQUEST_FILENAME} !-f
 RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 ```
 
-In this configuration, any requests to files or folders that do not exist will be sent to `index.php`. The following example shows how to use this as a stand alone component:
+In this configuration, any requests to files or folders that do not exist will be sent to `index.php`. The following example shows how to use this as a stand-alone component:
 
 ```php
 <?php
@@ -851,7 +851,7 @@ echo $router->getActionName();
 
 $route = $router->getMatchedRoute();
 ```
-In the above example, we first create a router object. We can have some code after that, such as defining services, routes etc.. We then take the `_url` element from the `$_GET` superglobal and after that we can get the controller name or the action name or even get back the matched route.
+In the above example, we first create a router object. We can have some code after that, such as defining services, routes etc. We then take the `_url` element from the `$_GET` superglobal and after that we can get the controller name or the action name or even get back the matched route.
 
 ## Naming Routes
 Each route that is added to the router is stored internally as a [Phalcon\Mvc\Router\Route][mvc-router-route] object. That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application. This is especially useful if you want to create URLs from it.
@@ -1050,7 +1050,7 @@ $route->beforeMatch(
 );
 ```
 
-Finally you can use the `beforeMatch` method (or event) to check whether this was an AJAX call or not.
+Finally, you can use the `beforeMatch` method (or event) to check whether this was an AJAX call or not.
 
 ```php
 <?php
