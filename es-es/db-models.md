@@ -2273,7 +2273,7 @@ Los conjuntos de resultados de Phalcon emulan cursores desplazables. Puede obten
 
 Almacenar grandes resultados de consulta en memoria consumirá muchos recursos. Sin embargo, puede ordenar a Phalcon que obtenga los datos en trozos de filas, reduciendo así la necesidad de volver a ejecutar la solicitud en muchos casos. Puede conseguir esto estableciendo el valor de configuración de `orm.resultset_prefetch_records`. Esto se puede hacer en `php.ini` o en el `setup()` del modelo. Puede encontrar más información sobre esto en la sección [características](#disablingenabling-features).
 
-Tenga en cuenta que los conjuntos de resultados se pueden serializar y almacenar en un *backend* de caché. [Phalcon\Cache](cache) puede ayudar con esta tarea. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Tenga en cuenta que los conjuntos de resultados se pueden serializar y almacenar en un *backend* de caché. [Phalcon\Cache\Cache](cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
