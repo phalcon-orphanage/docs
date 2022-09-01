@@ -74,28 +74,28 @@ This file handles 3 things:
 - Resolving the application's HTTP requests
 
 ### Autoloader
-We are going to use [Phalcon\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
+We are going to use [Phalcon\Autoload\Loader](autoload) a [PSR-4][psr-4] compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
 
-To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](autoload):
+To start, lets register our app's `controllers` and `models` directories using [Phalcon\Autoload\Loader](autoload):
 
 `public/index.php`
 ```php
 <?php
 
-use Phalcon\Loader\Loader;
+use Phalcon\Autoload\Loader;
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 // ...
 
 $loader = new Loader();
-
-$loader->registerDirs(
+$loader->setDirectories(
     [
         APP_PATH . '/controllers/',
         APP_PATH . '/models/',
     ]
 );
+    
 
 $loader->register();
 ```
@@ -111,7 +111,7 @@ Each time the framework requires a component or service, it will ask the contain
 {: .alert .alert-warning }
 
 ### Factory Default
-The [Phalcon\Di\FactoryDefault][di-factorydefault] is a variant of [Phalcon\Di][di]. To make things easier, it will automatically register most of the components that are required by an application and come with Phalcon as standard. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault] container initially and later on customize it to fit your needs.
+The [Phalcon\Di\FactoryDefault][di-factorydefault] is a variant of [Phalcon\Di\Di][di]. To make things easier, it will automatically register most of the components that are required by an application and come with Phalcon as standard. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault] container initially and later on customize it to fit your needs.
 
 Services can be registered in several ways, but for our tutorial, we will use an [anonymous function][anonymous_function]:
 
@@ -122,7 +122,6 @@ Services can be registered in several ways, but for our tutorial, we will use an
 
 use Phalcon\Di\FactoryDefault;
 
-// Create a DI
 $container = new FactoryDefault();
 ```
 
@@ -153,7 +152,7 @@ Now we need to register a base URI, that will offer the functionality to create 
 ```php
 <?php
 
-use Phalcon\Url;
+use Phalcon\Mvc\Url;
 
 // ...
 
@@ -201,11 +200,9 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Url;
 
-// Define some absolute path constants to aid in locating resources
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Register an autoloader
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -250,6 +247,9 @@ try {
     echo 'Exception: ', $e->getMessage();
 }
 ```
+
+> **NOTE** In the tutorial files from our [GitHub][github_tutorial] repository, to register services in the `DI` container, we use the array notation i.e. `$container['url'] = ....`.
+{: .alert .alert-info }
 
 As you can see, the bootstrap file is very short, and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
 
@@ -347,12 +347,10 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 <a href="/signup">Sign Up Here!</a>
 ```
 
-To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector, so we can use `$this->tag` to access its functionality. 
+To generate the link for the `<a>` tag, we use the [Phalcon\Html\TagFactory](html-tagfactory) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector, so we can use `$this->tag` to access its functionality. 
 
-> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **NOTE**: `Phalcon\Html\TagFactory` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
 {: .alert .alert-info }
-
-The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
 
 ![](/assets/images/content/tutorial-basic-2.png)
 
@@ -402,7 +400,7 @@ Viewing the form in your browser will display the following:
 
 ![](/assets/images/content/tutorial-basic-3.png)
 
-As mentioned above, the [Phalcon\Tag](tag) utility class, exposes useful methods allowing you to build form HTML elements with ease. The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application. The `Phalcon\Tag::textField()` creates a text HTML element with the name as the passed parameter, while the `Phalcon\Tag::submitButton()` creates a submit HTML button.
+As mentioned above, the [Phalcon\Html\TagFactory](html-tagfactory) utility class, exposes useful methods allowing you to build form HTML elements with ease. The `form()` method receives an array of key/value pairs that set up the form, for example a relative URI to a controller/action in the application. The `inputText()` creates a text HTML element with the name as the passed parameter, while the `inputSubmit()` creates a submit HTML button. Finally, a call to `close()` will close our `<form>` tag.
 
 By clicking the _Register_ button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
 
@@ -443,13 +441,13 @@ Before creating our first model, we need to create a database table using a data
 
 `create_users_table.sql`
 ```sql
-CREATE TABLE `users` (
-    `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
-    `name`  varchar(70)          NOT NULL,
-    `email` varchar(70)          NOT NULL,
-
+CREATE TABLE `users`
+(
+    `id`    int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Record ID',
+    `name`  varchar(255) NOT NULL COMMENT 'User Name',
+    `email` varchar(255) NOT NULL COMMENT 'User Email Address',
     PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
 A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the _users_ table:
@@ -526,17 +524,12 @@ class SignupController extends Controller
 
     public function registerAction()
     {
-        $user = new Users();
+        $post = $this->request->getPost();
 
-        //assign value from the form to $user
-        $user->assign(
-            $this->request->getPost(),
-            [
-                'name',
-                'email'
-            ]
-        );
-
+        // Store and check for errors
+        $user        = new Users();
+        $user->name  = $post['name'];
+        $user->email = $post['email'];
         // Store and check for errors
         $success = $user->save();
 
@@ -547,7 +540,7 @@ class SignupController extends Controller
             $message = "Thanks for registering!";
         } else {
             $message = "Sorry, the following problems were generated:<br>"
-                     . implode('<br>', $user->getMessages());
+                . implode('<br>', $user->getMessages());
         }
 
         // passing a message to the view
@@ -647,7 +640,8 @@ We can now add small design touches to our application. We can add the [Bootstra
 <head>
     <meta charset="UTF-8">
     <title>Phalcon Tutorial</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
