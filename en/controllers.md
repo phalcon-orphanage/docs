@@ -20,7 +20,7 @@ Controllers in Phalcon **must** have the suffix `Controller` in their file and c
 {: .alert .alert-info }
 
 ## Routing
-[Routing](routing) is further explained in the relevant document. However the default route is:
+[Routing](routing) is further explained in the relevant document. However, the default route is:
 
 ```bash
 /:module/:controller/:action/:parameter1/:parameter2
@@ -539,7 +539,7 @@ class UserController extends Controller
 {: .alert .alert-info }
 
 ## Dependency Injection
-You can create a controller as a stand alone class. However you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
+You can create a controller as a stand-alone class. However, you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
 
 ```php
 <?php

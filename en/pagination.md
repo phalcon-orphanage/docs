@@ -179,18 +179,18 @@ The `paginate()` method does all the work to paginate the data. It returns a [Ph
 ### Methods
 The methods exposed are:
 
-| Methods                                                 | Description                                    |
-|---------------------------------------------------------|------------------------------------------------|
-| `getAliases(): array`                                   | Gets the aliases for properties repository     |
-| `getCurrent(): int`                                     | Gets number of the current page                |
-| `getFirst(): int`                                       | Gets number of the first page                  |
-| `getItems(): mixed`                                     | Gets the items on the current page             |
-| `getLast(): int`                                        | Gets number of the last page                   |
-| `getLimit(): int`                                       | Gets current rows limit                        |
-| `getNext(): int`                                        | Gets number of the next page                   |
-| `getPrevious(): int`                                    | Gets number of the previous page               |
-| `getTotalItems(): int`                                  | Gets the total number of items                 |
-| `setAliases(array $aliases): RepositoryInterface`       | Sets the aliases for properties repository     |
+| Methods                                                 | Description                                  |
+|---------------------------------------------------------|----------------------------------------------|
+| `getAliases(): array`                                   | Gets the aliases for properties repository   |
+| `getCurrent(): int`                                     | Gets number of the current page              |
+| `getFirst(): int`                                       | Gets number of the first page                |
+| `getItems(): mixed`                                     | Gets the items on the current page           |
+| `getLast(): int`                                        | Gets number of the last page                 |
+| `getLimit(): int`                                       | Gets current rows limit                      |
+| `getNext(): int`                                        | Gets number of the next page                 |
+| `getPrevious(): int`                                    | Gets number of the previous page             |
+| `getTotalItems(): int`                                  | Gets the total number of items               |
+| `setAliases(array $aliases): RepositoryInterface`       | Sets the aliases for properties repository   |
 | `setProperties(array $properties): RepositoryInterface` | Sets values for properties of the repository |
 
 You can access the data by using the methods above or use the magic properties as defined in the constants:

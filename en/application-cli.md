@@ -197,7 +197,7 @@ In the code above, we use our console object and call `handle` with the calculat
 Any exception thrown in the [Phalcon\Cli\Console][cli-console] component will be of type [Phalcon\Cli\Console\Exception][cli-console-exception], which allows you to trap the exception specifically.
 
 ## Tasks
-Tasks are the equivalent of controllers in a MVC application. Any CLI application needs at least one task called `MainTask` and a `mainAction`. Any task defined needs to have a `mainAction` which will be called if no action is defined. You are not restricted to the number of actions that each task can contain.
+Tasks are the equivalent of controllers in an MVC application. Any CLI application needs at least one task called `MainTask` and a `mainAction`. Any task defined needs to have a `mainAction` which will be called if no action is defined. You are not restricted to the number of actions that each task can contain.
 
 An example of a task class (`src/Tasks/MainTask.php`) is:
 
@@ -361,7 +361,7 @@ $arguments = [];
 
 Now that the console application is inside the DI container, we can access it from any task. 
 
-Assume we want to call the `printAction()` from the `Users` task, all we have to do is call it using the container.
+Assume we want to call the `printAction()` from the `Users` task, all we have to do is call it, using the container.
 
 ```php
 <?php
@@ -522,9 +522,9 @@ public function setDefaultModule(string $defaultModule): AbstractApplication
 Sets the module name to be used if the router does not return a valid module
 
 ## Routes
-The CLI application has its own router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
+The CLI application has its own router. By default, the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
 
-Similar to a MVC application, the [Phalcon\Cli\Router][cli-router] uses [Phalcon\Cli\Router\Route][cli-router-route] objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface][cli-router-routeinterface].
+Similar to an MVC application, the [Phalcon\Cli\Router][cli-router] uses [Phalcon\Cli\Router\Route][cli-router-route] objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface][cli-router-routeinterface].
 
 The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There are also additional placeholders that you can take advantage of:
 
@@ -565,7 +565,7 @@ The following events are available:
 |---------------------|:----:|---------------------------------------------------------|
 | `afterHandleTask`   | Yes  | Called after the task is handled                        |
 | `afterStartModule`  | Yes  | Called after processing a module (if modules are used)  |
-| `beforeHandleTask`  | No   | Called before the task is handled                       |
+| `beforeHandleTask`  |  No  | Called before the task is handled                       |
 | `beforeStartModule` | Yes  | Called before processing a module (if modules are used) |
 | `boot`              | Yes  | Called when the application boots                       |
 

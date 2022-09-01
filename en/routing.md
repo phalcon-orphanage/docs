@@ -564,7 +564,7 @@ $router->add(
 The first position must be skipped because it is used for the named parameter `year`.
 
 ### Modules
-You can define routes with modules in the path. This is specially suitable to multi-module applications. You can define a default route that includes a module wildcard.
+You can define routes with modules in the path. This is specially suitable to multimodule applications. You can define a default route that includes a module wildcard.
 
 ```php
 <?php
@@ -891,7 +891,7 @@ echo $url->get(
 
 For example, for a URL like this `https://dev.phalcon.od/download/linux/ubuntu.html`, this router will translate it as follows:
 
-|      Controller      |    Action     | Parameter     |
+|      Controller      |    Action     |   Parameter   |
 |:--------------------:|:-------------:|:-------------:|
 | `DownloadController` | `linuxAction` | `ubuntu.html` |
 
