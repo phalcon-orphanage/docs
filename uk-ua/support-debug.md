@@ -417,7 +417,7 @@ Xdebug пропонує декілька способів для отриман�
 To set up Xdebug for PHPStorm you can check [this][phpstorm-xdebug] article.
 
 [bootstrap]: https://getbootstrap.com/
-[debug]: api/phalcon_debug#debug
+[debug]: api/phalcon_support#support-debug
 [exception]: https://www.php.net/manual/en/language.exceptions.php
 [exception_gettrace]: https://www.php.net/manual/en/exception.gettrace.php
 [phalcon-exception]: api/phalcon_support##support-debug-exception
