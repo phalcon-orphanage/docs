@@ -708,7 +708,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 #### `Phalcon\Http\Request`
 - Added `getPreferredIsoLocaleVariant(): string` to return the preferred ISO locale variant.
 
-#### `Phalcon\Http\Request\Escaper`
+#### `Phalcon\Http\Request\Exception`
 - Changed `Phalcon\Http\Cookie\Exception` to extend `\Exception`
 
 #### `Phalcon\Http\Response\Cookie`
@@ -727,7 +727,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ### 이미지
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](image)
+![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](datamapper)
 
 ---
 
