@@ -18,7 +18,7 @@ The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connect
 
 The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
-> **NOTE**: Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/Phalcon_Db) component documentation. 
+> **NOTE**: Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/phalcon_db) component documentation. 
 > 
 > {: .alert .alert-warning }
 
