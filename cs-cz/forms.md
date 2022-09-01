@@ -691,13 +691,13 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | [Phalcon\Forms\Element\Text][forms-element-text]         | Generate `input[type=text]` elements        |
 | [Phalcon\Forms\Element\TextArea][forms-element-textarea] | Generate `textarea` elements                |
 
-These elements use the [Phalcon\Html\TagFactory][tagfactory] component transparently.
+These elements use the [Phalcon\Html\TagFactory](tagfactory) component transparently.
 
-> **NOTE**: For more information regarding HTML elements, you can check our [TagFactory document][tagfactory] 
+> **NOTE**: For more information regarding HTML elements, you can check our [TagFactory document](tagfactory) 
 > 
 > {: .alert .alert-info }
 
-> **NOTE**: The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][tagfactory] 
+> **NOTE**: The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more](html-helper) 
 > 
 > {: .alert .alert-warning }
 
@@ -749,7 +749,7 @@ $email->setFilters(
 $form->add($email);
 ```
 
-> **NOTE**: For more information regarding filters, you can check our [Filter document](filter-filter) 
+> **NOTE**: For more information regarding filters, you can check our [Filter document](filters) 
 > 
 > {: .alert .alert-info }
 
@@ -1061,6 +1061,3 @@ class ContactForm extends Form
 [forms-form]: api/phalcon_forms#forms-form
 [forms-manager]: api/phalcon_forms#forms-manager
 [html-attributes]: api/phalcon_html#html-attributes
-[tagfactory]: html-tagfactory.md
-[tagfactory]: html-tagfactory.md
-[tagfactory]: html-tagfactory.md

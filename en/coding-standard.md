@@ -20,7 +20,7 @@ In this document we outline the coding standard that Phalcon is using for editin
 - File names must be named StudlyCaps.
 - All files must use the Unix LF (linefeed) line ending.
 - All files must end with a single blank line.
-- Folders are also named StudlyCaps and the folder/subfolder tree follows the namespace of the class.
+- Folders are also named StudlyCaps and the folder/sub-folder tree follows the namespace of the class.
 
 ```php
 phalcon/Acl/Adapter/Memory.zep
@@ -38,7 +38,7 @@ class Memory extends Adapter
 ```
 
 - Code must use 4 spaces for indenting, not tabs.
-- Lines should be 80 characters or less. The hard limit on line length is 120 characters.
+- Lines should be 80 characters or fewer. The hard limit on line length is 120 characters.
 - There must be one blank line after the namespace declaration, and there must be one blank line after the block of use declarations.
 - There must not be trailing whitespace at the end of non-blank lines.
 - Blank lines may be added to improve readability and to indicate related blocks of code.
@@ -80,8 +80,6 @@ use Phalcon\Acl\Adapter;
 class Memory extends Adapter
 {
     /**
-     * Returns latest key used to acquire access
-     *
      * @var string | null
      */
     protected activeKey = "" { get };

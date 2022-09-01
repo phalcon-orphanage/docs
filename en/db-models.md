@@ -17,7 +17,7 @@ A model represents the information (data) of the application and the rules to ma
 
 The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
-> **NOTE**: Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/Phalcon_Db) component documentation.
+> **NOTE**: Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/phalcon_db) component documentation.
 {: .alert .alert-warning }
 
 ```php
@@ -1665,7 +1665,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model][
 [Phalcon\Mvc\Model][mvc-model] also offers several methods for querying records.
  
 ### `find` 
-The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Comples][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
+The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Complex][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
   
  The method accept a variety of parameters to retrieve data:
 
@@ -2257,7 +2257,7 @@ Phalcon's resultsets emulate scrollable cursors. You can get any row just by acc
 
 Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#disablingenabling-features) section.
 
-Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache\Cache](cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -3733,7 +3733,7 @@ class Invoices extends Model
 ## Model Features
 The ORM has several options that control specific behaviors globally. You can enable or disable these features by adding specific lines to your `php.ini` file or use the `setup` static method on the model. You can enable or disable these features temporarily in your code or permanently.
 
-```
+```ini
 phalcon.orm.column_renaming = false
 phalcon.orm.events          = false
 ```
@@ -3803,6 +3803,64 @@ The available options are:
 
 > **NOTE** `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.
 {: .alert .alert-warning }
+
+## Integers vs. Strings
+If you want to get integer values back from `int` related database fields, you will need to do the following:
+- Make sure that the `castOnHydrate` (or set `ini_set('phalcon.orm.cast_on_hydrate', 'on')`) is enabled
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+Model::setup(
+    [
+        'castOnHydrate' => true,
+    ]
+);
+```
+
+- Ensure that you are using the `mysqlnd` driver on your server. You can check that using `phpinfo()` (pdo_mysql > Client API version)
+- In your database connection provider you need to pass the following options:
+
+```php
+[
+    PDO::ATTR_EMULATE_PREPARES  => false,
+    PDO::ATTR_STRINGIFY_FETCHES => false,
+]
+```
+Registering the provider should look like this:
+```php 
+
+$parameters = [
+  // ....
+];
+
+/** @var Manager $eventsManager */
+$eventsManager = $container->getShared('eventsManager');
+
+$container->setShared(
+    'db',
+    function () use ($eventsManager, $parameters) {
+        $options = [
+            'host'     => $parameters['host'] ?? 'localhost',
+            'dbname'   => $parameters['dbname'] ?? 'phalcon',
+            'username' => $parameters['user'] ?? 'root',
+            'password' => $parameters['pass'] ?? 'secret',
+            'encoding' => $parameters['encoding'] ?? 'utf8',
+            'options'  => [
+                PDO::ATTR_EMULATE_PREPARES  => false,
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+            ]
+        ];
+
+        $connection = new Mysql($options);
+        $connection->setEventsManager($eventsManager);
+
+        return $connection;
+    );
+}
+```
 
 ## Stand-Alone Component 
 You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. The example below demonstrates how you can achieve that.

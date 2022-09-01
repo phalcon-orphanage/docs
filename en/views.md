@@ -3,12 +3,12 @@ layout: default
 language: 'en'
 version: '5.0'
 title: 'Views'
-upgrade: '#views'
+upgrade: '#mvc'
 keywords: 'mvc, view, view component, simple view, responses'
 ---
 # Views
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views format the content that you need to send back to the user/web browser that initiated the request.
@@ -154,7 +154,7 @@ Returns the name of the main view
 ```php
 public function getLayoutsDir(): string
 ```
-Gets the current layouts sub-directory
+Gets the current layouts subdirectory
 
 ```php
 public function getMainView(): string
@@ -192,7 +192,7 @@ Retrieve the contents of a partial with arguments
 ```php
 public function getPartialsDir(): string
 ```
-Gets the current partials sub-directory
+Gets the current partials subdirectory
 
 ```php
 public function getRender(
@@ -321,7 +321,7 @@ public function setBasePath(
     string $basePath
 ): View
 ```
-Sets base path. Depending of your platform, always add a trailing slash or backslash
+Sets base path. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setBasePath(__DIR__ . "/");
@@ -356,7 +356,7 @@ public function setLayoutsDir(
     string $layoutsDir
 ): View
 ```
-Sets the layouts subdirectory. It must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Sets the layouts subdirectory. It must be a directory under the views directory. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setLayoutsDir(
@@ -381,7 +381,7 @@ public function setPartialsDir(
     string $partialsDir
 ): View
 ```
-Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Sets a partials subdirectory. Must be a directory under the views directory. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setPartialsDir(
@@ -468,7 +468,7 @@ public function setViewsDir(
     mixed $viewsDir
 ): View
 ```
-Sets the views directory. Depending of your platform, always add a trailing slash or backslash
+Sets the views directory. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 public function start(): View
@@ -556,7 +556,7 @@ Assuming that the views directory is `app/views`, the view component will find a
 | Controller Layout | app/views/layouts/invoices.phtml | Controller related view. It will be rendered for every action executed in the `InvoicesController`. |
 | Main Layout       | app/views/index.phtml            | Application related view. It shows on every controller/action of the application                    |
 
-You are not required to implement all of the files mentioned above. [Phalcon\Mvc\View][mvc-view] will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
+You are not required to implement all the files mentioned above. [Phalcon\Mvc\View][mvc-view] will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
 ```php
 <!-- app/views/invoices/view.phtml -->
@@ -826,11 +826,11 @@ The available render levels are:
 | Class Constant          | Description                                                              | Order |
 |-------------------------|--------------------------------------------------------------------------|:-----:|
 | `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         | 1     |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         | 2     |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     | 3     |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. | 4     |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
 
 ### Disabling Render Levels
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
@@ -1119,7 +1119,7 @@ One way to use partials is to treat them as HTML fragments that can be injected 
 </div>
 ```
 
-The `partial()` method does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
+The `partial()` method does accept a second parameter as an array of variables/parameters that only will exist in the scope of the partial:
 
 ```php
 <?php 
@@ -1270,7 +1270,7 @@ $container->set(
 If you like to use [Mustache][mustache], [Twig][twig] or [Smarty][smarty] as your template engine, you can visit our [incubator][incubator-engines] repository for examples on how to activate these engines in your application
 
 ### Custom
-When using an external template engine, [Phalcon\Mvc\View][mvc-view] provides exactly the same view hierarchy and it is still possible to access the API inside these templates. If you want to create your own template engine, you can leverage the API to perform the operations you need. 
+When using an external template engine, [Phalcon\Mvc\View][mvc-view] provides exactly the same view hierarchy, and it is still possible to access the API inside these templates. If you want to create your own template engine, you can leverage the API to perform the operations you need. 
 
 A template engine adapter is a class that acts as bridge between [Phalcon\Mvc\View][mvc-view] and the template engine itself. Usually it only needs two methods implemented: `__construct()` and `render()`. The first one receives the [Phalcon\Mvc\View][mvc-view] instance that creates the engine adapter and the DI container used by the application.
 
@@ -1420,7 +1420,7 @@ echo $view->getRender(
 ```
 
 ### Simple Rendering
-You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand alone component. This component is extremely useful when you want to render a template that is not always tied to your application structure. An example is rendering HTML code required by emails.
+You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand-alone component. This component is extremely useful when you want to render a template that is not always tied to your application structure. An example is rendering HTML code required by emails.
 
 ```php
 <?php
@@ -1448,11 +1448,11 @@ In the above example, we set up the engine and then echo a rendered template on 
 
 | Event Name         | Triggered                           | Can stop |
 |--------------------|-------------------------------------|:--------:|
-| `afterRender`      | After completing the render process | No       |
-| `afterRenderView`  | After rendering an existing view    | No       |
-| `beforeRender`     | Before starting the render process  | Yes      |
-| `beforeRenderView` | Before rendering an existing view   | Yes      |
-| `notFoundView`     | When a view was not found           | No       |
+| `afterRender`      | After completing the render process |    No    |
+| `afterRenderView`  | After rendering an existing view    |    No    |
+| `beforeRender`     | Before starting the render process  |   Yes    |
+| `beforeRenderView` | Before rendering an existing view   |   Yes    |
+| `notFoundView`     | When a view was not found           |    No    |
 
 The following example demonstrates how to attach listeners to this component:
 

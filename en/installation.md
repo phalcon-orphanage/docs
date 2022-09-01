@@ -26,7 +26,7 @@ extension=phalcon.so
 ```
 
 ### Hardware
-Phalcon is designed to use as few resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
+Phalcon is designed to use as few resources as possible, while offering high performance. Although we have tested Phalcon in various high-end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
 
 We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
 
@@ -40,8 +40,8 @@ Along with PHP 7.4 or greater, depending on your application needs and the Phalc
 * [curl][curl]
 * [fileinfo][fileinfo]
 * [gettext][gettext]
-* [gd2][gd2] (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick][imagick] (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2][gd2] (to use the [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd) class)
+* [imagick][imagick] (to use the [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick) class)
 * [json][json]
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [PDO][pdo] Extension as well as the relevant RDBMS specific extension (i.e. [MySQL][mysql], [PostgreSql][postgresql] etc.)
@@ -134,7 +134,7 @@ Installing Phalcon after that is as easy as:
 yum install php72-php-phalcon4
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
+Additional versions are available both architecture specific (x86/x64) and PHP version specific
 
 
 ### FreeBSD
@@ -241,15 +241,15 @@ Identify your PHP installation as well as architecture. If you download the wron
 The available DLLs are:
 
 | Architecture | Version | Type                  |
-| :----------: |:-------:|---------------------- |
-| x64          |   7.x   | Thread safe           |
-| x64          |   7.x   | Non Thread safe (NTS) |
-| x86          |   7.x   | Thread safe           |
-| x86          |   7.x   | Non Thread safe (NTS) |
-| x64          |   8.x   | Thread safe           |
-| x64          |   8.x   | Non Thread safe (NTS) |
-| x86          |   8.x   | Thread safe           |
-| x86          |   8.x   | Non Thread safe (NTS) |
+|:------------:|:-------:|-----------------------|
+|     x64      |   7.x   | Thread safe           |
+|     x64      |   7.x   | Non Thread safe (NTS) |
+|     x86      |   7.x   | Thread safe           |
+|     x86      |   7.x   | Non Thread safe (NTS) |
+|     x64      |   8.x   | Thread safe           |
+|     x64      |   8.x   | Non Thread safe (NTS) |
+|     x86      |   8.x   | Thread safe           |
+|     x86      |   8.x   | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 

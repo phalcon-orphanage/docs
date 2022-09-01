@@ -170,7 +170,7 @@ public function setFilters(
     array | string $filters
 ): ValidationInterface
 ```
-Adds filters to the field
+Add filters to the field
 
 ```php
 public function setLabels(
@@ -250,8 +250,8 @@ if (count($messages)) {
 ## Validators
 Phalcon offers a set of built-in validators for this component:
 
-| Class                                                                                            | Validates                  |
-|--------------------------------------------------------------------------------------------------|----------------------------|
+| Class                                                                                                   | Validates                  |
+|---------------------------------------------------------------------------------------------------------|----------------------------|
 | [Phalcon\Filter\Validation\Validator\Alnum][validation-validator-alnum]                                 | Alphanumeric character(s)  |
 | [Phalcon\Filter\Validation\Validator\Alpha][validation-validator-alpha]                                 | Alphabet character(s).     |
 | [Phalcon\Filter\Validation\Validator\Between][validation-validator-between]                             | Between two values         |
@@ -405,7 +405,7 @@ $validator->add(
 ```
 
 ### Callback                        
-By using [Phalcon\Filter\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
+By using [Phalcon\Filter\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending on what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
 ```php
 <?php
@@ -1670,7 +1670,7 @@ $validator->add(
 ```
 
 ### Url      
-Checks if a value has a url format
+Checks if a value has an url format
 
 ```php
 <?php

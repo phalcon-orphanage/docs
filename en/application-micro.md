@@ -745,7 +745,7 @@ $products
 $app->mount($products);   
 ```
 
-Using this simple change in implementation, all handlers remain non instantiated until requested by a caller. Therefore whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
+Using this simple change in implementation, all handlers remain non instantiated until requested by a caller. Therefore, whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
 
 #### Extra performance tip
 If you are working on a large application, there is no need to mount all the collections, even if they are lazy loaded: Phalcon will use regex to match the routes. To speed up the routing process it is possible to run a _pre-filter_ like this, using the previous example:
@@ -1552,13 +1552,13 @@ A [Phalcon\Mvc\Micro][mvc-micro] application works closely with an [Events Manag
 The following events are supported:
 
 | Event Name           | Triggered                                                         | Can stop |
-|----------------------| ------------------------------------------------------------------|:--------:|
-| `afterBinding`       | Triggered after models are bound but before executing the handler |    Yes   |
+|----------------------|-------------------------------------------------------------------|:--------:|
+| `afterBinding`       | Triggered after models are bound but before executing the handler |   Yes    |
 | `afterExecuteRoute`  | Handler just finished running                                     |    No    |
-| `afterHandleRoute`   | Route just finished executing                                     |    Yes   |
-| `beforeExecuteRoute` | Route matched, Handler valid, Handler has not been executed yet   |    Yes   |
-| `beforeHandleRoute`  | Main method called; Routes have not been checked yet              |    Yes   |
-| `beforeNotFound`     | Route has not been found                                          |    Yes   |
+| `afterHandleRoute`   | Route just finished executing                                     |   Yes    |
+| `beforeExecuteRoute` | Route matched, Handler valid, Handler has not been executed yet   |   Yes    |
+| `beforeHandleRoute`  | Main method called; Routes have not been checked yet              |   Yes    |
+| `beforeNotFound`     | Route has not been found                                          |   Yes    |
 
 ### Authentication example
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. The following example demonstrates such a scenario:
@@ -1632,7 +1632,7 @@ The presence of a [Phalcon\Events\Manager][events-manager] is essential for midd
 Middleware can be attached to a micro application in 3 different events. Those are:
 
 | Event    | Description                                    |
-|--------- | ---------------------------------------------- |
+|----------|------------------------------------------------|
 | `before` | Before the handler has been executed           |
 | `after`  | After the handler has been executed            |
 | `finish` | After the response has been sent to the caller |
@@ -1803,7 +1803,7 @@ $application->after(
 $application->setEventsManager($manager);
 ```
 
-We need a [Phalcon\Events\Manager][events-manager] object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one, or if you have not set up a DI container, since it will be automatically created for you).
+We need a [Phalcon\Events\Manager][events-manager] object. This can be a newly instantiated object, or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one, or if you have not set up a DI container, since it will be automatically created for you).
 
 We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
 
@@ -2180,7 +2180,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 **Response Middleware**
 
-This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
+This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore, we need to attach it to the `after` event of our Micro application.
 
 > **NOTE**: We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.
 {: .alert .alert-warning }
@@ -2300,7 +2300,7 @@ $app->handle(
     $_SERVER["REQUEST_URI"]
 );
 ```
-Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
 
 Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/invoices/view/1`.
 
