@@ -830,7 +830,7 @@ También en sus vistas (sintaxis Volt)
 ```
 
 [config]: api/phalcon_config
-[collection]: api/phalcon_collection
+[collection]: support-collection
 [phalcon-incubator]: https://github.com/phalcon/incubator
 [grouped]: api/phalcon_config#config-adapter-grouped
 [ini]: api/phalcon_config#config-adapter-ini
