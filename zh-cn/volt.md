@@ -2,17 +2,17 @@
 layout: default
 language: 'zh-cn'
 version: '5.0'
-upgrade: '#volt'
+upgrade: '#mvc'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
 ---
 
 # Volt: Template Engine
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
+Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand-alone component in your application.
 
 ![](/assets/images/content/views-volt.png)
 
@@ -28,20 +28,20 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% for invoice in invoices %}
 <div class='row'>
     <div>
-        ID: {{ invoice.titleinv_id }}
+        ID: {{ invoice.inv_id }}
     </div>
     <div>
-        {%- if 1 === invoice.titleinv_status_flag -%}
+        {%- if 1 === invoice.inv_status_flag -%}
         Paid
         {%- else -%}
         Unpaid
         {%- endif -%}
     </div>
     <div>
-        {{ invoice.titleinv_description }}
+        {{ invoice.inv_description }}
     </div>
     <div>
-        {{ invoice.titleinv_total }}
+        {{ invoice.inv_total }}
     </div>
 </div>
 {% endfor %}{% endraw %}
@@ -53,7 +53,7 @@ compared to:
 <?php foreach ($invoices as $invoice) { ?>
 <div class='row'>
     <div>
-        ID: <?php echo $invoice->inv_id; ?>
+        ID: <?= $invoice->inv_id; ?>
     </div>
     <div>
         <?php if (1 === $invoice->inv_status_flag) { ?>
@@ -63,10 +63,10 @@ compared to:
         <?php } ?>
     </div>
     <div>
-        <?php echo $invoice->inv_description; ?>
+        <?= $invoice->inv_description; ?>
     </div>
     <div>
-        <?php echo $invoice->total; ?>
+        <?= $invoice->total; ?>
     </div>
 </div>
 <?php } ?>
@@ -300,7 +300,7 @@ The following options are available in Volt:
 | `stat`       | `true`  | Whether Phalcon must check if there are differences between the template file and its compiled path                      |
 
 
-The compilation path is generated according to the options above. You however, have total freedom in defining the compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the relative path to the template in the predefined views directory.
+The compilation path is generated according to the options above. You however, have total freedom in defining the compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the relative path to the template in the predefined `views` directory.
 
 **Appending extensions**
 
@@ -381,7 +381,7 @@ Below is a sample template that illustrates a few basics:
 {% endraw %}
 ```
 
-Using [Phalcon\Mvc\View](view) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `showNavigation`, `menu`, `title` and `post`:
+Using [Phalcon\Mvc\View](views) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `showNavigation`, `menu`, `title` and `post`:
 
 ```php
 <?php
@@ -476,11 +476,11 @@ The available built-in filters are:
 | `capitalize`       | Capitalizes a string by applying the [`ucwords`][ucwords] PHP function to the value                  |
 | `convert_encoding` | Converts a string from one charset to another                                                        |
 | `default`          | Sets a default value in case the evaluated expression is empty, not set or evaluates to falsy value  |
-| `e`                | Applies [`Phalcon\Escaper->escapeHtml()`][escaper] to the value                                  |
-| `escape`           | Applies [`Phalcon\Escaper->escapeHtml()`][escaper] to the value                                  |
-| `escape_attr`      | Applies [`Phalcon\Escaper->escapeHtmlAttr()`][escaper] to the value                              |
-| `escape_css`       | Applies [`Phalcon\Escaper->escapeCss()`][escaper] to the value                                   |
-| `escape_js`        | Applies [`Phalcon\Escaper->escapeJs()`][escaper] to the value                                    |
+| `e`                | Applies [`Phalcon\Html\Escaper->html()`][escaper] to the value                                  |
+| `escape`           | Applies [`Phalcon\Html\Escaper->html()`][escaper] to the value                                  |
+| `escape_attr`      | Applies [`Phalcon\Html\Escaper->attributes()`][escaper] to the value                            |
+| `escape_css`       | Applies [`Phalcon\Html\Escaper->css()`][escaper] to the value                                   |
+| `escape_js`        | Applies [`Phalcon\Html\Escaper->js()`][escaper] to the value                                    |
 | `format`           | Formats a string using [`sprintf`][sprintf]                                                          |
 | `json_encode`      | Converts a value into its [JSON][json] representation                                                |
 | `json_decode`      | Converts a value from its [JSON][json] representation to a PHP representation                        |
@@ -873,15 +873,15 @@ Additionally, you can use compound assignment operators:
 The following operators are available:
 
 | Operator | 描述                        |
-| -------- | ------------------------- |
-| `=`      | Standard Assignment       |
-| `+=`     | Addition assignment       |
-| `-=`     | Subtraction assignment    |
+|:--------:| ------------------------- |
+|   `=`    | Standard Assignment       |
+|   `+=`   | Addition assignment       |
+|   `-=`   | Subtraction assignment    |
 | `\*=`  | Multiplication assignment |
-| `/=`     | Division assignment       |
+|   `/=`   | Division assignment       |
 
 ## Expressions
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{%- raw -%}{{{% endraw %}` and `{%- raw -%}}}{% endraw %}` delimiters:
+Volt provides a basic set of expression support, including literals and common operators. An expression can be evaluated and printed using the `{%- raw -%}{{{% endraw %}` and `{%- raw -%}}}{% endraw %}` delimiters:
 
 ```twig
 {%- raw -%}
@@ -976,17 +976,17 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 ### Other Operators
 Additional operators seen the following operators are available:
 
-| Operator          | 描述                                                                                                 |
-| ----------------- | -------------------------------------------------------------------------------------------------- |
-| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
-| `|`               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello'|uppercase }}{% endraw %}` |
-| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`       |
-| `is`              | Same as == (equals), also performs tests                                                           |
-| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                    |
-| `is not`          | Same as != (not equals)                                                                            |
-| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                             |
-| `++`              | Increments a value                                                                                 |
-| `--`              | Decrements a value                                                                                 |
+| Operator                  | 描述                                                                                           |
+| ------------------------- | -------------------------------------------------------------------------------------------- |
+| `~`                       | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                 |
+| <code>&#124;</code> | Applies a filter in the right operand to the left <code>{%- raw -%}{{ 'hello' &#124; uppercase }}{% endraw %}</code>                   |
+| `..`                      | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}` |
+| `is`                      | Same as == (equals), also performs tests                                                     |
+| `in`                      | To check if an expression is contained into other expressions `if 'a' in 'abc'`              |
+| `is not`                  | Same as != (not equals)                                                                      |
+| `'a' ? 'b' : 'c'`         | Ternary operator. The same as the PHP ternary operator                                       |
+| `++`                      | Increments a value                                                                           |
+| `--`                      | Decrements a value                                                                           |
 
 The following example shows how to use operators:
 
@@ -1126,7 +1126,7 @@ When calling macros, parameters can be passed by name:
 {{ 
     error_messages(
         'type': 'Invalid', 
-        'message': 'The name not invalid', 
+        'message': 'The name is not valid', 
         'field': 'name'
     ) 
 }}
@@ -1161,89 +1161,119 @@ And receive optional parameters:
 ```
 
 ## Tag Helpers
-Volt is highly integrated with [Phalcon\Tag](tag), so it's easy to use the helpers provided by that component in a Volt template:
+Volt is highly integrated with [Phalcon\Html\TagFactory](html-tagfactory), so it's easy to use the helpers provided by that component in a Volt template:
 
 ```twig
 {%- raw -%}
-{{ javascript_include('js/jquery.js') }}
+{{ script().add('js/jquery.js') }}
 
-{{ form('products/save', 'method': 'post') }}
+{{ form(['action' => 'products/save', 'method': 'post']) }}
 
     <label for='name'>Name</label>
-    {{ text_field('name', 'size': 32) }}
+    {{ inputText('name', null, ['size': 32]) }}
 
     <label for='type'>Type</label>
-    {{ select({'type', productTypes, 'using': ['id', 'name']}) }}
+    {% for productType in productTypes }}
+    {{ inputSelect().addPlaceholder('...').add(productType.name, productType.id) }}
+    {% endfor %}
 
-    <label for='type'>Section</label>
-    {{ 
-        select(
-            [
-                'type', 
-                productSections, 
-                'using': ['id', 'name'], 
-                'useEmpty': true, 
-                'emptyText': '...', 
-                'emptyValue': '', 
-                'class': 'form-control'
-            ]
-        ) 
-    }}
+    {{ inputSubmit('Send') }}
 
-    {{ submit_button('Send') }}
-
-{{ end_form() }}
+{{ close('form') }}
 {% endraw %}
 ```
 
 The following PHP is generated:
 
 ```php
-<?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
+<?= $this->tag->script("\t", "\n\n") ?>
 
-<?php echo Phalcon\Tag::form(['products/save', 'method' => 'post']); ?>
+<?= $this->tag->form(['products/save', 'method' => 'post']); ?>
 
     <label for='name'>Name</label>
-    <?php echo Phalcon\Tag::textField(['name', 'size' => 32]); ?>
+    <?= $this->tag->inputText(['name', 'size' => 32]); ?>
 
     <label for='type'>Type</label>
-    <?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
+    <?php foreach ($productTypes as $productType) { ?>
+    <?= $this->tag->addPlaceholder('...').add(productType.name, productType.id); ?>
+    <?php } ?>
 
-    <label for='type'>Section</label>
-    <?php echo Phalcon\Tag::select(['type', $productSections, 'using' => ['id', 'name'], 'useEmpty' => true, 'emptyText' => '...', 'emptyValue' => '', 'class' => 'form-control']); ?>
+    <?= $this->tag->inputSubmit('Send'); ?>
 
-    <?php echo Phalcon\Tag::submitButton('Send'); ?>
-
-{%- raw -%}
-{{ end_form() }}
-{% endraw %}
+<?= $this->tag->close('form'); ?>
 ```
 
-To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncamelized version of the method:
+You can call any of the helpers that [Phalcon\Html\TagFactory](html-tagfactory) provides directly in Volt.
 
-| 方法                                | Volt function        |
-| --------------------------------- | -------------------- |
-| `Phalcon\Tag::checkField`        | `check_field`        |
-| `Phalcon\Tag::dateField`         | `date_field`         |
-| `Phalcon\Tag::emailField`        | `email_field`        |
-| `Phalcon\Tag::endForm`           | `end_form`           |
-| `Phalcon\Tag::fileField`         | `file_field`         |
-| `Phalcon\Tag::form`              | `form`               |
-| `Phalcon\Tag::friendlyTitle`     | `friendly_title`     |
-| `Phalcon\Tag::getTitle`          | `get_title`          |
-| `Phalcon\Tag::hiddenField`       | `hidden_field`       |
-| `Phalcon\Tag::image`             | `image`              |
-| `Phalcon\Tag::javascriptInclude` | `javascript_include` |
-| `Phalcon\Tag::linkTo`            | `link_to`            |
-| `Phalcon\Tag::numericField`      | `numeric_field`      |
-| `Phalcon\Tag::passwordField`     | `password_field`     |
-| `Phalcon\Tag::radioField`        | `radio_field`        |
-| `Phalcon\Tag::select`            | `select`             |
-| `Phalcon\Tag::selectStatic`      | `select_static`      |
-| `Phalcon\Tag::stylesheetLink`    | `stylesheet_link`    |
-| `Phalcon\Tag::submitButton`      | `submit_button`      |
-| `Phalcon\Tag::textArea`          | `text_area`          |
-| `Phalcon\Tag::textField`         | `text_field`         |
+| Volt Function        | 类                                             |
+| -------------------- | --------------------------------------------- |
+| `a`                  | `Phalcon\Html\Helper\Anchor`               |
+| `base`               | `Phalcon\Html\Helper\Base`                 |
+| `body`               | `Phalcon\Html\Helper\Body`                 |
+| `button`             | `Phalcon\Html\Helper\Button`               |
+| `close`              | `Phalcon\Html\Helper\Close`                |
+| `doctype`            | `Phalcon\Html\Helper\Doctype`              |
+| `element`            | `Phalcon\Html\Helper\Element`              |
+| `form`               | `Phalcon\Html\Helper\Form`                 |
+| `img`                | `Phalcon\Html\Helper\Img`                  |
+| `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`      |
+| `inputColor`         | `Phalcon\Html\Helper\Input\Color`         |
+| `inputDate`          | `Phalcon\Html\Helper\Input\Date`          |
+| `inputDateTime`      | `Phalcon\Html\Helper\Input\DateTime`      |
+| `inputDateTimeLocal` | `Phalcon\Html\Helper\Input\DateTimeLocal` |
+| `inputEmail`         | `Phalcon\Html\Helper\Input\Email`         |
+| `inputFile`          | `Phalcon\Html\Helper\Input\File`          |
+| `inputHidden`        | `Phalcon\Html\Helper\Input\Hidden`        |
+| `inputImage`         | `Phalcon\Html\Helper\Input\Image`         |
+| `inputInput`         | `Phalcon\Html\Helper\Input\Input`         |
+| `inputMonth`         | `Phalcon\Html\Helper\Input\Month`         |
+| `inputNumeric`       | `Phalcon\Html\Helper\Input\Numeric`       |
+| `inputPassword`      | `Phalcon\Html\Helper\Input\Password`      |
+| `inputRadio`         | `Phalcon\Html\Helper\Input\Radio`         |
+| `inputRange`         | `Phalcon\Html\Helper\Input\Range`         |
+| `inputSearch`        | `Phalcon\Html\Helper\Input\Search`        |
+| `inputSelect`        | `Phalcon\Html\Helper\Input\Select`        |
+| `inputSubmit`        | `Phalcon\Html\Helper\Input\Submit`        |
+| `inputTel`           | `Phalcon\Html\Helper\Input\Tel`           |
+| `inputText`          | `Phalcon\Html\Helper\Input\Text`          |
+| `inputTextarea`      | `Phalcon\Html\Helper\Input\Textarea`      |
+| `inputTime`          | `Phalcon\Html\Helper\Input\Time`          |
+| `inputUrl`           | `Phalcon\Html\Helper\Input\Url`           |
+| `inputWeek`          | `Phalcon\Html\Helper\Input\Week`          |
+| `label`              | `Phalcon\Html\Helper\Label`                |
+| `link`               | `Phalcon\Html\Helper\Link`                 |
+| `meta`               | `Phalcon\Html\Helper\Meta`                 |
+| `ol`                 | `Phalcon\Html\Helper\Ol`                   |
+| `script`             | `Phalcon\Html\Helper\Script`               |
+| `style`              | `Phalcon\Html\Helper\Style`                |
+| `title`              | `Phalcon\Html\Helper\Title`                |
+| `ul`                 | `Phalcon\Html\Helper\Ul`                   |
+
+Also, you can use the [Phalcon\Tag](api/phalcon_tag) helper methods. You only need to call an uncamelized version of the method:
+
+| Volt function        | 方法                                |
+| -------------------- | --------------------------------- |
+| `check_field`        | `Phalcon\Tag::checkField`        |
+| `date_field`         | `Phalcon\Tag::dateField`         |
+| `email_field`        | `Phalcon\Tag::emailField`        |
+| `end_form`           | `Phalcon\Tag::endForm`           |
+| `file_field`         | `Phalcon\Tag::fileField`         |
+| `form_legacy`        | `Phalcon\Tag::form`              |
+| `friendly_title`     | `Phalcon\Tag::friendlyTitle`     |
+| `get_title`          | `Phalcon\Tag::getTitle`          |
+| `hidden_field`       | `Phalcon\Tag::hiddenField`       |
+| `image`              | `Phalcon\Tag::image`             |
+| `javascript_include` | `Phalcon\Tag::javascriptInclude` |
+| `link_to`            | `Phalcon\Tag::linkTo`            |
+| `numeric_field`      | `Phalcon\Tag::numericField`      |
+| `password_field`     | `Phalcon\Tag::passwordField`     |
+| `radio_field`        | `Phalcon\Tag::radioField`        |
+| `select`             | `Phalcon\Tag::select`            |
+| `select_static`      | `Phalcon\Tag::selectStatic`      |
+| `stylesheet_link`    | `Phalcon\Tag::stylesheetLink`    |
+| `submit_button`      | `Phalcon\Tag::submitButton`      |
+| `text_area`          | `Phalcon\Tag::textArea`          |
+| `text_field`         | `Phalcon\Tag::textField`         |
 
 ## Functions
 The following built-in functions are available in Volt:
@@ -1264,7 +1294,7 @@ The following built-in functions are available in Volt:
 | `version_id`  | Returns the current version id of the framework             |
 
 ## View
-Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the view hierarchy and include partials as well:
+Also, Volt is integrated with [Phalcon\Mvc\View](views), you can play with the view hierarchy and include partials as well:
 
 ```twig
 {%- raw -%}
@@ -1289,7 +1319,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 ```
 
 ### Include
-`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
+`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file, and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
 ```twig
 {%- raw -%}
@@ -1345,7 +1375,7 @@ From other template we could extend the base template replacing the blocks:
 
 {% block title %}Index{% endblock %}
 
-{% block head %}<style type='text/css'>.important { color: #336699; }</style>{% endblock %}
+{% block head %}<style>.important { color: #336699; }</style>{% endblock %}
 
 {% block content %}
     <h1>Index</h1>
@@ -1360,7 +1390,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 <!DOCTYPE html>
 <html>
     <head>
-        <style type='text/css'>.important { color: #336699; }</style>
+        <style>.important { color: #336699; }</style>
 
         <title>Index - My Webpage</title>
     </head>
@@ -1413,7 +1443,7 @@ Template `layout.volt` extends `main.volt`
 {% endraw %}
 ```
 
-Finally a view that extends `layout.volt`:
+Finally, a view that extends `layout.volt`:
 
 ```twig
 {%- raw -%}
@@ -1523,7 +1553,7 @@ and in Volt:
 {% raw %}{{ widget('param1', 'param2') }}{% endraw %}
 ```
 
-You can also treat the arguments independently and also check for unresolved parameters. In the example below, we retrieve the first parameter and then check for the existence of a second parameter. If present, we store it, otherwise we use the default `10`. Finally we call the `str_repeat` PHP method on the first and second parameter.
+You can also treat the arguments independently and also check for unresolved parameters. In the example below, we retrieve the first parameter and then check for the existence of a second parameter. If present, we store it, otherwise we use the default `10`. Finally, we call the `str_repeat` PHP method on the first and second parameter.
 
 ```php
 <?php
@@ -2083,7 +2113,7 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 
 ## External Resources
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Phosphorum](https://forum.phalcon.io), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
+* Phosphorum, Phalcon's forum implementation, also uses Volt, [GitHub](https://github.com/phalcon/forum)
 * [Vökuró][vokuro], is another sample application that uses Volt, [GitHub](https://github.com/phalcon/vokuro)
 
 
