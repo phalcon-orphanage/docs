@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Стандарти кодування'
 keywords: 'coding standard, zephir, стандарти кодування'
 ---
 
 # Стандарти кодування Phalcon
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Останнє оновлення: 2019-07-04
 
