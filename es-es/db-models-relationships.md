@@ -1,12 +1,10 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 ---
 
 # Relaciones de modelos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 La [normalización de base de datos](db-normalization) es un proceso donde los datos se dividen en diferentes tablas y se crean enlaces entre esas tablas, para incrementar la flexibilidad, reducir la redundancia de datos y mejorar la integridad de los datos. Las relaciones se definen en el método `initialize` de cada modelo.
