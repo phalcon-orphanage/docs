@@ -8,7 +8,7 @@ keywords: 'psr-7, http, respuesta http'
 
 # Respuesta HTTP (PSR-7)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) es una implementación del interfaz de mensajería [PSR-7](https://www.php-fig.org/psr/psr-7/) definido por [PHP-FIG](https://www.php-fig.org/).

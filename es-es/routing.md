@@ -11,7 +11,7 @@ keywords: 'enrutamiento, rutas'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 
@@ -1541,4 +1541,3 @@ $router->add(
 
 > **NOTA**: Tenga cuidado cuando permita caracteres en expresiones regulares para controladores y espacios de nombres. Estos se convertirán en nombres de clases y a su vez interactuarán con el sistema de archivos. Como tal, es posible que un atacante pueda acceder a ficheros no autorizados. Una expresión regular segura es: `/([a-zA-Z0-9\_\-]+)`
 {: .alert .alert-danger }
-

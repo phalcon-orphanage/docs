@@ -89,7 +89,7 @@ title: 'Phalcon\Mvc'
 
 <h1 id="mvc-application">Class Phalcon\Mvc\Application</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Application.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Closure, Phalcon\Application\AbstractApplication, Phalcon\Di\DiInterface, Phalcon\Http\ResponseInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Application\Exception, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\ModuleDefinitionInterface |
@@ -183,7 +183,7 @@ You can full disable the view component using this method
 
 <h1 id="mvc-application-exception">Class Phalcon\Mvc\Application\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Application/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Application/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Application |
 | Extends    | \Phalcon\Application\Exception |
@@ -196,7 +196,7 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 <h1 id="mvc-controller">Abstract Class Phalcon\Mvc\Controller</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Controller.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Controller.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Di\Injectable |
@@ -255,7 +255,7 @@ Phalcon\Mvc\Controller constructor
 
 <h1 id="mvc-controller-bindmodelinterface">Interface Phalcon\Mvc\Controller\BindModelInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Controller/BindModelInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Controller/BindModelInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Controller |
 
@@ -276,7 +276,7 @@ Return the model name associated with this controller
 
 <h1 id="mvc-controllerinterface">Interface Phalcon\Mvc\ControllerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ControllerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/ControllerInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 
@@ -288,7 +288,7 @@ Interface for controller handlers
 
 <h1 id="mvc-dispatcher">Class Phalcon\Mvc\Dispatcher</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Dispatcher.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Mvc\Dispatcher\Exception, Phalcon\Events\ManagerInterface, Phalcon\Http\ResponseInterface, Phalcon\Dispatcher\AbstractDispatcher |
@@ -467,7 +467,7 @@ Throws an internal exception
 
 <h1 id="mvc-dispatcher-exception">Class Phalcon\Mvc\Dispatcher\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Dispatcher/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Dispatcher/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Dispatcher |
 | Extends    | \Phalcon\Dispatcher\Exception |
@@ -480,7 +480,7 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 <h1 id="mvc-dispatcherinterface">Interface Phalcon\Mvc\DispatcherInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/DispatcherInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/DispatcherInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Dispatcher\DispatcherInterface |
@@ -533,7 +533,7 @@ Sets the default controller name
 
 <h1 id="mvc-entityinterface">Interface Phalcon\Mvc\EntityInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/EntityInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/EntityInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 
@@ -560,7 +560,7 @@ Writes an attribute value by its name
 
 <h1 id="mvc-micro">Class Phalcon\Mvc\Micro</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Micro.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | ArrayAccess, Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable |
@@ -898,7 +898,7 @@ executed
 
 <h1 id="mvc-micro-collection">Class Phalcon\Mvc\Micro\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Micro/Collection.zep)
 
 | Namespace  | Phalcon\Mvc\Micro |
 | Implements | CollectionInterface |
@@ -1056,7 +1056,7 @@ Internal function to add a handler to the group.
 
 <h1 id="mvc-micro-collectioninterface">Interface Phalcon\Mvc\Micro\CollectionInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/CollectionInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Micro/CollectionInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Micro |
 
@@ -1161,7 +1161,7 @@ Sets a prefix for all routes added to the collection
 
 <h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Micro/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Micro |
 | Extends    | \Phalcon\Exception |
@@ -1172,7 +1172,7 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 <h1 id="mvc-micro-lazyloader">Class Phalcon\Mvc\Micro\LazyLoader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/LazyLoader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Micro/LazyLoader.zep)
 
 | Namespace  | Phalcon\Mvc\Micro |
 | Uses       | Phalcon\Mvc\Model\BinderInterface |
@@ -1222,7 +1222,7 @@ public function getHandler()
 
 <h1 id="mvc-micro-middlewareinterface">Interface Phalcon\Mvc\Micro\MiddlewareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Micro/MiddlewareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Micro/MiddlewareInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Micro |
 | Uses       | Phalcon\Mvc\Micro |
@@ -1242,7 +1242,7 @@ Calls the middleware
 
 <h1 id="mvc-model">Abstract Class Phalcon\Mvc\Model</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Serializable |
@@ -2914,7 +2914,7 @@ class Subscriptors extends Model
 
 <h1 id="mvc-model-behavior">Abstract Class Phalcon\Mvc\Model\Behavior</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Behavior.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
@@ -2970,7 +2970,7 @@ Checks whether the behavior must take action on certain event
 
 <h1 id="mvc-model-behavior-softdelete">Class Phalcon\Mvc\Model\Behavior\SoftDelete</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior/SoftDelete.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Behavior/SoftDelete.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Behavior |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception |
@@ -2994,7 +2994,7 @@ Listens for notifications from the models manager
 
 <h1 id="mvc-model-behavior-timestampable">Class Phalcon\Mvc\Model\Behavior\Timestampable</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Behavior/Timestampable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Behavior/Timestampable.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Behavior |
 | Uses       | Closure, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception |
@@ -3018,7 +3018,7 @@ Listens for notifications from the models manager
 
 <h1 id="mvc-model-behaviorinterface">Interface Phalcon\Mvc\Model\BehaviorInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/BehaviorInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/BehaviorInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
@@ -3046,7 +3046,7 @@ This method receives the notifications from the EventsManager
 
 <h1 id="mvc-model-binder">Class Phalcon\Mvc\Model\Binder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Binder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Binder.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Closure, Phalcon\Mvc\Controller\BindModelInterface, Phalcon\Mvc\Model\Binder\BindableInterface, Phalcon\Cache\Adapter\AdapterInterface, ReflectionFunction, ReflectionMethod |
@@ -3143,7 +3143,7 @@ Get modified params for handler using reflection
 
 <h1 id="mvc-model-binder-bindableinterface">Interface Phalcon\Mvc\Model\Binder\BindableInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Binder/BindableInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Binder/BindableInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Binder |
 
@@ -3165,7 +3165,7 @@ this class
 
 <h1 id="mvc-model-binderinterface">Interface Phalcon\Mvc\Model\BinderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/BinderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/BinderInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface |
@@ -3205,7 +3205,7 @@ Sets cache instance
 
 <h1 id="mvc-model-criteria">Class Phalcon\Mvc\Model\Criteria</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Criteria.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Criteria.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Query\BuilderInterface |
@@ -3583,7 +3583,7 @@ Sets the conditions parameter in the criteria
 
 <h1 id="mvc-model-criteriainterface">Interface Phalcon\Mvc\Model\CriteriaInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/CriteriaInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/CriteriaInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Di\DiInterface |
@@ -3847,7 +3847,7 @@ Sets the conditions parameter in the criteria
 
 <h1 id="mvc-model-exception">Class Phalcon\Mvc\Model\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Extends    | \Phalcon\Exception |
@@ -3860,7 +3860,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 <h1 id="mvc-model-manager">Class Phalcon\Mvc\Model\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Manager.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
@@ -4480,7 +4480,7 @@ Returns the connection to read or write data related to a model depending on the
 
 <h1 id="mvc-model-managerinterface">Interface Phalcon\Mvc\Model\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
@@ -4806,7 +4806,7 @@ Sets if a model must use dynamic update instead of the all-field update
 
 <h1 id="mvc-model-metadata">Abstract Class Phalcon\Mvc\Model\MetaData</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface, Phalcon\Mvc\ModelInterface |
@@ -5275,7 +5275,7 @@ Initialize the metadata for certain table
 
 <h1 id="mvc-model-metadata-apcu">Class Phalcon\Mvc\Model\MetaData\Apcu</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Apcu.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Apcu.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
 | Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
@@ -5311,7 +5311,7 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 <h1 id="mvc-model-metadata-libmemcached">Class Phalcon\Mvc\Model\MetaData\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Libmemcached.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
 | Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
@@ -5342,7 +5342,7 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 <h1 id="mvc-model-metadata-memory">Class Phalcon\Mvc\Model\MetaData\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Memory.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
 | Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
@@ -5378,7 +5378,7 @@ Writes the meta-data to temporal memory
 
 <h1 id="mvc-model-metadata-redis">Class Phalcon\Mvc\Model\MetaData\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Redis.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
 | Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
@@ -5423,7 +5423,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 <h1 id="mvc-model-metadata-strategy-annotations">Class Phalcon\Mvc\Model\MetaData\Strategy\Annotations</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Strategy/Annotations.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Strategy/Annotations.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
@@ -5455,7 +5455,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 <h1 id="mvc-model-metadata-strategy-introspection">Class Phalcon\Mvc\Model\MetaData\Strategy\Introspection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Strategy/Introspection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Strategy/Introspection.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData |
@@ -5484,7 +5484,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 <h1 id="mvc-model-metadata-strategy-strategyinterface">Interface Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Strategy/StrategyInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Strategy/StrategyInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Di\DiInterface |
@@ -5517,7 +5517,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 <h1 id="mvc-model-metadata-stream">Class Phalcon\Mvc\Model\MetaData\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaData/Stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaData/Stream.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
 | Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
@@ -5567,7 +5567,7 @@ Writes the meta-data to files
 
 <h1 id="mvc-model-metadatainterface">Interface Phalcon\Mvc\Model\MetaDataInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/MetaDataInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/MetaDataInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface |
@@ -5757,7 +5757,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 <h1 id="mvc-model-query">Class Phalcon\Mvc\Model\Query</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Query.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang |
@@ -6234,7 +6234,7 @@ inside the query object
 
 <h1 id="mvc-model-query-builder">Class Phalcon\Mvc\Model\Query\Builder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Query/Builder.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface |
@@ -6904,7 +6904,7 @@ Appends a NOT IN condition
 
 <h1 id="mvc-model-query-builderinterface">Interface Phalcon\Mvc\Model\Query\BuilderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/BuilderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Query/BuilderInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Mvc\Model\QueryInterface |
@@ -7163,7 +7163,7 @@ Sets conditions for the query
 
 <h1 id="mvc-model-query-lang">Abstract Class Phalcon\Mvc\Model\Query\Lang</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Lang.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Query/Lang.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
 
@@ -7200,7 +7200,7 @@ Parses a PHQL statement returning an intermediate representation (IR)
 
 <h1 id="mvc-model-query-status">Class Phalcon\Mvc\Model\Query\Status</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/Status.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Query/Status.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
@@ -7273,7 +7273,7 @@ Allows to check if the executed operation was successful
 
 <h1 id="mvc-model-query-statusinterface">Interface Phalcon\Mvc\Model\Query\StatusInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Query/StatusInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Query/StatusInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
@@ -7307,7 +7307,7 @@ Allows to check if the executed operation was successful
 
 <h1 id="mvc-model-queryinterface">Interface Phalcon\Mvc\Model\QueryInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/QueryInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/QueryInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
@@ -7402,7 +7402,7 @@ Tells to the query if only the first row in the resultset must be returned
 
 <h1 id="mvc-model-relation">Class Phalcon\Mvc\Model\Relation</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Relation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Relation.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Implements | RelationInterface |
@@ -7555,7 +7555,7 @@ Sets the intermediate model data for has-*-through relations
 
 <h1 id="mvc-model-relationinterface">Interface Phalcon\Mvc\Model\RelationInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/RelationInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/RelationInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 
@@ -7661,7 +7661,7 @@ Sets the intermediate model data for has-*-through relations
 
 <h1 id="mvc-model-resultinterface">Interface Phalcon\Mvc\Model\ResultInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/ResultInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
@@ -7683,7 +7683,7 @@ Sets the object's state
 
 <h1 id="mvc-model-resultset">Abstract Class Phalcon\Mvc\Model\Resultset</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Resultset.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, SeekableIterator, Serializable |
@@ -7963,7 +7963,7 @@ Check whether internal resource has rows to fetch
 
 <h1 id="mvc-model-resultset-complex">Class Phalcon\Mvc\Model\Resultset\Complex</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Complex.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Resultset/Complex.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Resultset |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass |
@@ -8026,7 +8026,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 <h1 id="mvc-model-resultset-simple">Class Phalcon\Mvc\Model\Resultset\Simple</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Resultset/Simple.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Resultset/Simple.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Resultset |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface |
@@ -8093,7 +8093,7 @@ the saved state
 
 <h1 id="mvc-model-resultsetinterface">Interface Phalcon\Mvc\Model\ResultsetInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ResultsetInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/ResultsetInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface |
@@ -8198,7 +8198,7 @@ Updates every record in the resultset
 
 <h1 id="mvc-model-row">Class Phalcon\Mvc\Model\Row</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Row.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Row.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\ModelInterface |
@@ -8279,7 +8279,7 @@ $robot->writeAttribute("name", "Rosey");
 
 <h1 id="mvc-model-transaction">Class Phalcon\Mvc\Model\Transaction</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Transaction.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface |
@@ -8441,7 +8441,7 @@ Enables throwing exception
 
 <h1 id="mvc-model-transaction-exception">Class Phalcon\Mvc\Model\Transaction\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Transaction/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Extends    | \Phalcon\Mvc\Model\Exception |
@@ -8454,7 +8454,7 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 <h1 id="mvc-model-transaction-failed">Class Phalcon\Mvc\Model\Transaction\Failed</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Failed.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Transaction/Failed.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
@@ -8496,7 +8496,7 @@ Returns validation record messages which stop the transaction
 
 <h1 id="mvc-model-transaction-manager">Class Phalcon\Mvc\Model\Transaction\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Transaction/Manager.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface |
@@ -8685,7 +8685,7 @@ Removes transactions from the TransactionManager
 
 <h1 id="mvc-model-transaction-managerinterface">Interface Phalcon\Mvc\Model\Transaction\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/Transaction/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/Transaction/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Uses       | Phalcon\Mvc\Model\TransactionInterface |
@@ -8774,7 +8774,7 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 <h1 id="mvc-model-transactioninterface">Interface Phalcon\Mvc\Model\TransactionInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/TransactionInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/TransactionInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface |
@@ -8862,7 +8862,7 @@ Enables throwing exception
 
 <h1 id="mvc-model-validationfailed">Class Phalcon\Mvc\Model\ValidationFailed</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Model/ValidationFailed.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Model/ValidationFailed.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
@@ -8908,7 +8908,7 @@ Returns the model that generated the messages
 
 <h1 id="mvc-modelinterface">Interface Phalcon\Mvc\ModelInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ModelInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/ModelInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface |
@@ -9177,7 +9177,7 @@ Check whether validation process has generated any messages
 
 <h1 id="mvc-moduledefinitioninterface">Interface Phalcon\Mvc\ModuleDefinitionInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ModuleDefinitionInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/ModuleDefinitionInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Di\DiInterface |
@@ -9205,7 +9205,7 @@ Registers services related to the module
 
 <h1 id="mvc-router">Class Phalcon\Mvc\Router</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\Exception, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\RouteInterface |
@@ -9618,7 +9618,7 @@ Checks if the router matches any of the defined routes
 
 <h1 id="mvc-router-annotations">Class Phalcon\Mvc\Router\Annotations</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Annotations.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router/Annotations.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\Router, Phalcon\Annotations\Annotation |
@@ -9751,7 +9751,7 @@ Changes the controller class suffix
 
 <h1 id="mvc-router-exception">Class Phalcon\Mvc\Router\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
 | Extends    | \Phalcon\Exception |
@@ -9764,7 +9764,7 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 <h1 id="mvc-router-group">Class Phalcon\Mvc\Router\Group</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router/Group.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
 | Implements | GroupInterface |
@@ -9986,7 +9986,7 @@ Adds a route applying the common attributes
 
 <h1 id="mvc-router-groupinterface">Interface Phalcon\Mvc\Router\GroupInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/GroupInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router/GroupInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
 
@@ -10174,7 +10174,7 @@ Set a common uri prefix for all the routes in this group
 
 <h1 id="mvc-router-route">Class Phalcon\Mvc\Router\Route</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/Route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router/Route.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
 | Implements | RouteInterface |
@@ -10459,7 +10459,7 @@ $route->via(
 
 <h1 id="mvc-router-routeinterface">Interface Phalcon\Mvc\Router\RouteInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/Router/RouteInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/Router/RouteInterface.zep)
 
 | Namespace  | Phalcon\Mvc\Router |
 
@@ -10570,7 +10570,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 <h1 id="mvc-routerinterface">Interface Phalcon\Mvc\RouterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/RouterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/RouterInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Router\GroupInterface |
@@ -10765,7 +10765,7 @@ Check if the router matches any of the defined routes
 
 <h1 id="mvc-view">Class Phalcon\Mvc\View</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\View\Engine\Php |
@@ -11369,7 +11369,7 @@ Phalcon\Mvc\View\Engine\Php
 
 <h1 id="mvc-view-engine-abstractengine">Abstract Class Phalcon\Mvc\View\Engine\AbstractEngine</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/AbstractEngine.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Engine/AbstractEngine.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\ViewBaseInterface |
@@ -11417,7 +11417,7 @@ Renders a partial inside another view
 
 <h1 id="mvc-view-engine-engineinterface">Interface Phalcon\Mvc\View\Engine\EngineInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/EngineInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Engine/EngineInterface.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine |
 
@@ -11448,7 +11448,7 @@ Renders a view using the template engine
 
 <h1 id="mvc-view-engine-php">Class Phalcon\Mvc\View\Engine\Php</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Engine/Php.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine |
 | Extends    | AbstractEngine |
@@ -11468,7 +11468,7 @@ Renders a view using the template engine
 
 <h1 id="mvc-view-engine-volt">Class Phalcon\Mvc\View\Engine\Volt</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Engine/Volt.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception |
@@ -11572,7 +11572,7 @@ Sorts an array
 
 <h1 id="mvc-view-engine-volt-compiler">Class Phalcon\Mvc\View\Engine\Volt\Compiler</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt/Compiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Engine/Volt/Compiler.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine\Volt |
 | Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Di\InjectionAwareInterface |
@@ -11966,7 +11966,7 @@ Compiles a block of statements
 
 <h1 id="mvc-view-engine-volt-exception">Class Phalcon\Mvc\View\Engine\Volt\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Engine/Volt/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Engine/Volt/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine\Volt |
 | Uses       | Phalcon\Mvc\View\Exception |
@@ -12000,7 +12000,7 @@ Gets currently parsed statement (if any).
 
 <h1 id="mvc-view-exception">Class Phalcon\Mvc\View\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Exception.zep)
 
 | Namespace  | Phalcon\Mvc\View |
 | Extends    | \Phalcon\Exception |
@@ -12013,7 +12013,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 <h1 id="mvc-view-simple">Class Phalcon\Mvc\View\Simple</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/View/Simple.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/View/Simple.zep)
 
 | Namespace  | Phalcon\Mvc\View |
 | Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php |
@@ -12268,7 +12268,7 @@ Phalcon\Mvc\View\Engine\Php
 
 <h1 id="mvc-viewbaseinterface">Interface Phalcon\Mvc\ViewBaseInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ViewBaseInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/ViewBaseInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface |
@@ -12333,7 +12333,7 @@ slash or backslash
 
 <h1 id="mvc-viewinterface">Interface Phalcon\Mvc\ViewInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Mvc/ViewInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Mvc/ViewInterface.zep)
 
 | Namespace  | Phalcon\Mvc |
 | Extends    | ViewBaseInterface |
@@ -12512,5 +12512,3 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
-
-

@@ -8,7 +8,7 @@ keywords: 'список запитів на вдосконалення функ�
 
 # Список запитів на вдосконалення функціоналу
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 
 
@@ -109,4 +109,3 @@ keywords: 'список запитів на вдосконалення функ�
 | 000   | [**Session**: Need the lock for redis session #13738](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464989)                                                                                       |
 | 000   | [**Validation**: Why not to use ioc/factory style for validators like filters? #13567](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464179)                                                      |
 | 000   | [**Volt Compiler**: Allow \Phalcon\Mvc\View\Engine\Volt to accept Phalcon\Mvc\View\Engine\Volt\Compiler in the constructor #2700](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456153) |
-

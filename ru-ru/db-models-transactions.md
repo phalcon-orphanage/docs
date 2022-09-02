@@ -10,7 +10,7 @@ keywords: 'models, transactions'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Введение
 
@@ -288,5 +288,3 @@ class ProductsController extends Controller
 
 > **NOTE**: While a transaction is active, the transaction manager will always return the same transaction across the application.
 {: .alert .alert-info }
-
-

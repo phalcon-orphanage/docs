@@ -13,7 +13,7 @@ title: 'Phalcon\Flash'
 
 <h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/AbstractFlash.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/AbstractFlash.zep)
 
 | Namespace  | Phalcon\Flash |
 | Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface |
@@ -202,7 +202,7 @@ $flash->warning("Hey, this is important");
 
 <h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Direct.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/Direct.zep)
 
 | Namespace  | Phalcon\Flash |
 | Extends    | AbstractFlash |
@@ -229,7 +229,7 @@ Prints the messages accumulated in the flasher
 
 <h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/Exception.zep)
 
 | Namespace  | Phalcon\Flash |
 | Extends    | \Phalcon\Exception |
@@ -240,7 +240,7 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/FlashInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/FlashInterface.zep)
 
 | Namespace  | Phalcon\Flash |
 
@@ -285,7 +285,7 @@ Shows a HTML warning message
 
 <h1 id="flash-session">Class Phalcon\Flash\Session</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/Session.zep)
 
 | Namespace  | Phalcon\Flash |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Session\ManagerInterface |
@@ -344,5 +344,3 @@ Returns the messages stored in session
 protected function setSessionMessages( array $messages ): array;
 ```
 Stores the messages in session
-
-

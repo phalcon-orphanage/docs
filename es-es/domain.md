@@ -10,7 +10,7 @@ keywords: 'domain, adr, payload, dominio'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 El componente de dominio incorpora componentes que se utilizan para la implementación del patrón [Respondedor de Dominio de Acción](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) ([ADR](http://pmjones.io/adr/)) y también se pueden usar al implementar [Diseño Dirigido por Dominio](https://en.wikipedia.org/wiki/Domain-driven_design).
 

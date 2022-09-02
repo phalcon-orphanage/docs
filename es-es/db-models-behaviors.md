@@ -10,7 +10,7 @@ keywords: 'modelos, comportamientos'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 
@@ -367,5 +367,3 @@ class Invoices extends Model
 
 > **NOTA**: Puede usar rasgos en lugar de comportamientos, pero requerirán que todos los campos afectados por el comportamiento tengan el mismo nombre. También, si implementa un método de evento en un rasgo (ej. `beforeCreate`) no podrá tenerlo también en su modelo ya que los dos producirán un error.
 {: .alert .alert-info }
-
-

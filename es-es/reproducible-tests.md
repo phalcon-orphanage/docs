@@ -10,7 +10,7 @@ keywords: 'pruebas, test, testing, pruebas reproducibles'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **NOTA**: En caso de encontrar un error se puede reportar en [GitHub](https://github.com/phalcon/cphalcon/issues). Acompañado por la descripción del error y todos los detalles posibles de tal manera que el equipo principal pueda reproducirlo. La mejor forma de hacerlo es creando una prueba que falle: así se demuestra el error. Si el error se encuentra en una aplicación de dominio público en un repositorio, es pertinente incluir el enlace. También se puede utilizar un [Gist](https://gist.github.com/) para publicar el código relevante para el equipo principal.
 {:.alert .alert-info}

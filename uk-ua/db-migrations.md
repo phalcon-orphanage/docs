@@ -10,7 +10,7 @@ keywords: 'database, migrations, schema, tables, columns, база, міграц
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **ПРИМІТКА**: Міграції Phalcon були вилучені з DevTools та переміщені в окреме сховище.
 {: .alert .alert-info } 

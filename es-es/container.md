@@ -8,7 +8,7 @@ keywords: 'psr-11, di, contenedor, inyección de dependencias'
 
 # Contenedor de inyección de dependencias (PSR-11)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Preámbulo
 [Phalcon\Container](api/phalcon_container#container) es una implementación del Interfaz de Contenedor [PSR-11](https://www.php-fig.org/psr/psr-11/) definido por [PHP-FIG](https://www.php-fig.org/).
@@ -35,4 +35,3 @@ $container = new Container($default);
 
 $request = $container->get('request');
 ```
-

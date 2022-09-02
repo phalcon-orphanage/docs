@@ -10,7 +10,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, 지침서, 기초, 튜�
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## 개요
 

@@ -7,7 +7,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 ---
 # Validation Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 [Phalcon\Validation][validation] is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
@@ -2120,4 +2120,3 @@ try {
 [validation-validatorcompositeinterface]: api/phalcon_validation#validation-validatorcompositeinterface
 [validation-validatorfactory]: api/phalcon_validation#validation-validatorfactory
 [validation-validatorinterface]: api/phalcon_validation#validation-validatorinterface
-        

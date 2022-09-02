@@ -10,7 +10,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc, посібник, нав
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Огляд
 

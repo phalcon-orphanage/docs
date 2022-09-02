@@ -15,7 +15,7 @@ title: 'Phalcon\Image'
 
 <h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Implements | AdapterInterface |
 
@@ -188,7 +188,7 @@ Add a watermark to an image with the specified opacity
 
 <h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum |
 
@@ -258,7 +258,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 <h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/Gd.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/Gd.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -356,7 +356,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 <h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/Imagick.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/Imagick.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -512,7 +512,7 @@ Execute a watermarking.
 
 <h1 id="image-enum">Class Phalcon\Image\Enum</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Enum.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Enum.zep)
 
 | Namespace | Phalcon\Image |
 
@@ -538,7 +538,7 @@ const WIDTH = 2;
 
 <h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Exception.zep)
 
 | Namespace | Phalcon\Image | | Extends | \Phalcon\Exception |
 
@@ -550,7 +550,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 <h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/ImageFactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/ImageFactory.zep)
 
 | Namespace | Phalcon\Image | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface | | Extends | AbstractFactory |
 

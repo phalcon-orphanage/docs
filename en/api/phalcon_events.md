@@ -14,7 +14,7 @@ title: 'Phalcon\Events'
 
 <h1 id="events-event">Class Phalcon\Events\Event</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/Event.zep)
 
 | Namespace  | Phalcon\Events |
 | Implements | EventInterface |
@@ -145,7 +145,7 @@ if ($event->isCancelable()) {
 
 <h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/EventInterface.zep)
 
 | Namespace  | Phalcon\Events |
 
@@ -202,7 +202,7 @@ Stops the event preventing propagation
 
 <h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventsAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/EventsAwareInterface.zep)
 
 | Namespace  | Phalcon\Events |
 
@@ -230,7 +230,7 @@ Sets the events manager
 
 <h1 id="events-exception">Class Phalcon\Events\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/Exception.zep)
 
 | Namespace  | Phalcon\Events |
 | Extends    | \Phalcon\Exception |
@@ -243,7 +243,7 @@ Exceptions thrown in Phalcon\Events will use this class
 
 <h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/Manager.zep)
 
 | Namespace  | Phalcon\Events |
 | Uses       | Closure, SplPriorityQueue |
@@ -382,7 +382,7 @@ public function isValidHandler( mixed $handler ): bool;
 
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/ManagerInterface.zep)
 
 | Namespace  | Phalcon\Events |
 
@@ -428,5 +428,3 @@ Returns all the attached listeners of a certain type
 public function hasListeners( string $type ): bool;
 ```
 Check whether certain type of event has listeners
-
-

@@ -11,7 +11,7 @@ keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, mem
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Visão Geral
 

@@ -7,7 +7,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 ---
 # Crypt Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 
@@ -285,4 +285,3 @@ class SecretsController extends Controller
 [crypt-cryptinterface]: api/phalcon_crypt#crypt-cryptinterface
 [crypt-exception]: api/phalcon_crypt#crypt-exception
 [crypt-mismatch]: api/phalcon_crypt#crypt-mismatch
-

@@ -10,7 +10,7 @@ keywords: 'caso de uso, ejemplos'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 A través de esta documentación vamos a asumir que estamos construyendo una aplicación contable.
 

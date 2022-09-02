@@ -8,7 +8,7 @@ keywords: 'psr-7, http, http uri'
 
 # HTTP Uri (PSR-7)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) es una implementación de la interfaz de mensajería HTTP [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).
 

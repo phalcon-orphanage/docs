@@ -10,7 +10,7 @@ keywords: 'db, dbal, phql, base de datos, mysql, postgresql, sqlite'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 

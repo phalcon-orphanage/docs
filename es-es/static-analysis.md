@@ -8,7 +8,7 @@ keywords: 'análisis estático, analizador estático, vimeo, psalm, phalcon'
 
 # Análisis Estático
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Resumen
 

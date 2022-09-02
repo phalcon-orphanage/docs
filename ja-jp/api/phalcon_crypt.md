@@ -12,7 +12,7 @@ title: 'Phalcon\Crypt'
 
 <h1 id="crypt">Phalcon\Cryptクラス</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch | | Implements | CryptInterface |
 
@@ -291,7 +291,7 @@ Initialize available cipher algorithms.
 
 <h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/CryptInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt/CryptInterface.zep)
 
 | Namespace | Phalcon\Crypt |
 
@@ -397,7 +397,7 @@ Changes the padding scheme used.
 
 <h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt/Exception.zep)
 
 | Namespace | Phalcon\Crypt | | Extends | \Phalcon\Exception |
 
@@ -405,7 +405,7 @@ Exceptions thrown in Phalcon\Crypt use this class
 
 <h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Mismatch.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt/Mismatch.zep)
 
 | Namespace | Phalcon\Crypt | | Extends | Exception |
 

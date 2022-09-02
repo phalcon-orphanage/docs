@@ -8,7 +8,7 @@ keywords: 'paginación, paginación modelos, paginación bd, paginación vector,
 
 # Paginación
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Un paginador es un componente que ayuda a dividir una gran cantidad de datos gradualmente. Un ejemplo sería mostrar todos los mensajes de un blog, 5 cada vez. El Paginador de Phalcon acepta parámetros y basado en ellos devuelve la _porción_ correspondiente de todo el conjunto de resultados para que el desarrollador pueda presentar los datos paginados.

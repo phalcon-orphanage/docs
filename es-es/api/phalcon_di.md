@@ -21,7 +21,7 @@ title: 'Phalcon\Di'
 
 <h1 id="di">Class Phalcon\Di</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
@@ -330,7 +330,7 @@ Carga servicios desde un objeto `Config`.
 
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/AbstractInjectionAware.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/AbstractInjectionAware.zep)
 
 | Namespace | Phalcon\Di | | Implements | InjectionAwareInterface |
 
@@ -364,7 +364,7 @@ Configura el inyector de dependencia
 
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/DiInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/DiInterface.zep)
 
 | Namespace | Phalcon\Di | | Uses | ArrayAccess | | Extends | ArrayAccess |
 
@@ -458,7 +458,7 @@ Registra un servicio "siempre compartido" en el contenedor de servicios
 
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/Exception.zep)
 
 | Namespace | Phalcon\Di | | Extends | \Phalcon\Exception |
 
@@ -466,7 +466,7 @@ Las excepciones lanzadas en Phalcon\Di usarán esta clase
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Exception/ServiceResolutionException.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/Exception/ServiceResolutionException.zep)
 
 | Namespace | Phalcon\Di\Exception | | Extends | \Phalcon\Di\Exception |
 
@@ -474,7 +474,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/FactoryDefault.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/FactoryDefault.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Filter\FilterFactory | | Extends | \Phalcon\Di |
 
@@ -490,7 +490,7 @@ Constructor Phalcon\Di\FactoryDefault
 
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/FactoryDefault/Cli.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/FactoryDefault/Cli.zep)
 
 | Namespace | Phalcon\Di\FactoryDefault | | Uses | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory | | Extends | FactoryDefault |
 
@@ -508,7 +508,7 @@ Constructor Phalcon\Di\FactoryDefault\Cli
 
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Injectable.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/Injectable.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
 
@@ -556,7 +556,7 @@ Configura el inyector de dependencias
 
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/InjectionAwareInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/InjectionAwareInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -578,7 +578,7 @@ Configura el inyector de dependencia
 
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/Service.zep)
 
 | Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
@@ -678,7 +678,7 @@ Establece/Reestablece la instancia compartida relacionada con el servicio
 
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/Service/Builder.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/Service/Builder.zep)
 
 | Namespace | Phalcon\Di\Service | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
 
@@ -696,7 +696,7 @@ Construye un servicio usando una definición de servicio compleja
 
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/ServiceInterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -754,7 +754,7 @@ Establece si el servicio es compartido o no
 
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Di/ServiceProviderInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Di/ServiceProviderInterface.zep)
 
 | Namespace | Phalcon\Di |
 

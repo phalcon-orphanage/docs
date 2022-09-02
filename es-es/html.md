@@ -8,7 +8,7 @@ keywords: 'html, attributes, tag, factoría tag'
 
 # Ayudantes HTML
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Este espacio de nombres contiene componentes que ayudan a generar HTML.

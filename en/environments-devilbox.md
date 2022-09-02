@@ -7,7 +7,7 @@ keywords: 'environment, devilbox, docker'
 ---
 # Environments
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 The [Devilbox][devilbox] The Devilbox is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
@@ -170,6 +170,3 @@ Save the file as `nginx.yml` and ensure not to use any tabs in the file or devil
 [hosts-mac]: https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-mac.html#howto-add-project-hosts-entry-on-mac
 [hosts-windows]: https://devilbox.readthedocs.io/en/latest/howto/dns/add-project-dns-entry-on-win.html#howto-add-project-hosts-entry-on-win
 [auto-dns]: https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html#setup-auto-dns
-
-
-

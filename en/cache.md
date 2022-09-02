@@ -8,7 +8,7 @@ keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, mem
 ---
 # Cache
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 The [Phalcon\Cache][cache-cache] namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
@@ -785,4 +785,3 @@ The parameters you can use for the factory are:
 [storage-serializer-php]: api/phalcon_storage#storage-serializer-php
 [storage-serializer-serializerinterface]: api/phalcon_storage#storage-serializer-serializerinterface
 [storage-serializerfactory]: api/phalcon_storage#storage-serializerfactory
-   

@@ -10,7 +10,7 @@ keywords: 'backtrace, debugging, segmentation faults, зворотне трас�
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Phalcon скомпільований у C-розширення, завантажене на ваш веб-сервер. Через це помилки призводять до порушення сегментації, що призводить до аварійного завершення деяких процесів вашого веб-сервера.
 

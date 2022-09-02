@@ -10,7 +10,7 @@ keywords: 'database, migrations, schema, tables, columns, データベース, �
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
 {: .alert .alert-info } 

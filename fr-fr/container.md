@@ -8,7 +8,7 @@ keywords: 'psr-11, di, container, dependency injection'
 
 # Dependency Injection Container (PSR-11)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Vue d'ensemble
 [Phalcon\Container](api/phalcon_container#container) is an implementation of the [PSR-11](https://www.php-fig.org/psr/psr-11/) Container interface as defined by [PHP-FIG](https://www.php-fig.org/).
@@ -35,4 +35,3 @@ $container = new Container($default);
 
 $request = $container->get('request');
 ```
-

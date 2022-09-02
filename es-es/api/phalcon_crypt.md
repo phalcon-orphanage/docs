@@ -12,7 +12,7 @@ title: 'Phalcon\Crypt'
 
 <h1 id="crypt">Class Phalcon\Crypt</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch | | Implements | CryptInterface |
 
@@ -291,7 +291,7 @@ Inicializa los algoritmos de cifrado disponibles.
 
 <h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/CryptInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt/CryptInterface.zep)
 
 | Namespace | Phalcon\Crypt |
 
@@ -397,7 +397,7 @@ Cambia el esquema de relleno usado.
 
 <h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt/Exception.zep)
 
 | Namespace | Phalcon\Crypt | | Extends | \Phalcon\Exception |
 
@@ -405,7 +405,7 @@ Las excepciones lanzadas desde Phalcon\Crypt usarán esta clase
 
 <h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Crypt/Mismatch.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Crypt/Mismatch.zep)
 
 | Namespace | Phalcon\Crypt | | Extends | Exception |
 

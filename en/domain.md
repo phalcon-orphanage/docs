@@ -7,7 +7,7 @@ keywords: 'domain, adr, payload'
 ---
 # Domain
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 The domain component incorporates components that are used for the implementation of the [Action Domain Responder][adr] ([ADR][adr-jones]) pattern and can also be used when implementing [Domain Driven Design][ddd].
 
@@ -140,4 +140,3 @@ class ReportsController extends Controller
 [payload-readableinterface]: api/phalcon_domain#domain-payload-readableinterface
 [payload-status]: api/phalcon_domain#domain-payload-status
 [payload-writeableinterface]: api/phalcon_domain#domain-payload-writeableinterface
-   

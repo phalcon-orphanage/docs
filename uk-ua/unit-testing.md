@@ -3,7 +3,7 @@ layout: default language: 'uk-ua' version: '4.0' title: 'Юніт-тестува
 - - -
 # Юніт-тестування
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Огляд
 

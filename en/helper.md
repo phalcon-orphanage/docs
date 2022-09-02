@@ -8,7 +8,7 @@ keywords: 'helpers, array, string, file system, number, utilities'
 ---
 # Helper Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework. 

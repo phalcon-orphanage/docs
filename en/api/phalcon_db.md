@@ -34,7 +34,7 @@ title: 'Phalcon\Db'
 
 <h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/AbstractDb.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/AbstractDb.zep)
 
 | Namespace  | Phalcon\Db |
 | Uses       | \PDO |
@@ -94,7 +94,7 @@ Enables/disables options in the Database component
 
 <h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
 | Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
@@ -774,7 +774,7 @@ var_dump(
 
 <h1 id="db-adapter-adapterinterface">Interface Phalcon\Db\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
 | Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ResultInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\ReferenceInterface |
@@ -1262,7 +1262,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-adapter-pdo-abstractpdo">Abstract Class Phalcon\Db\Adapter\Pdo\AbstractPdo</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\Pdo, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface |
@@ -1575,7 +1575,7 @@ Constructs the SQL statement (with parameters)
 
 <h1 id="db-adapter-pdo-mysql">Class Phalcon\Db\Adapter\Pdo\Mysql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/Mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/Pdo/Mysql.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
@@ -1666,7 +1666,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-postgresql">Class Phalcon\Db\Adapter\Pdo\Postgresql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/Postgresql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/Pdo/Postgresql.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Throwable |
@@ -1801,7 +1801,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-sqlite">Class Phalcon\Db\Adapter\Pdo\Sqlite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/Pdo/Sqlite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/Pdo/Sqlite.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
@@ -1926,7 +1926,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdofactory">Class Phalcon\Db\Adapter\PdoFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Adapter/PdoFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Adapter/PdoFactory.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
 | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
@@ -1970,7 +1970,7 @@ Returns the available adapters
 
 <h1 id="db-column">Class Phalcon\Db\Column</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Column.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Column.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | ColumnInterface |
@@ -2261,7 +2261,7 @@ Returns true if number column is unsigned
 
 <h1 id="db-columninterface">Interface Phalcon\Db\ColumnInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/ColumnInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/ColumnInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -2370,7 +2370,7 @@ Returns true if number column is unsigned
 
 <h1 id="db-dialect">Abstract Class Phalcon\Db\Dialect</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Dialect.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | DialectInterface |
@@ -2671,7 +2671,7 @@ Prepares table for this RDBMS
 
 <h1 id="db-dialect-mysql">Class Phalcon\Db\Dialect\Mysql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect/Mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Dialect/Mysql.zep)
 
 | Namespace  | Phalcon\Db\Dialect |
 | Uses       | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface |
@@ -2875,7 +2875,7 @@ Generates SQL to add the table creation options
 
 <h1 id="db-dialect-postgresql">Class Phalcon\Db\Dialect\Postgresql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect/Postgresql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Dialect/Postgresql.zep)
 
 | Namespace  | Phalcon\Db\Dialect |
 | Uses       | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface |
@@ -3074,7 +3074,7 @@ protected function getTableOptions( array $definition ): string;
 
 <h1 id="db-dialect-sqlite">Class Phalcon\Db\Dialect\Sqlite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Dialect/Sqlite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Dialect/Sqlite.zep)
 
 | Namespace  | Phalcon\Db\Dialect |
 | Uses       | Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\Dialect, Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface |
@@ -3286,7 +3286,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-dialectinterface">Interface Phalcon\Db\DialectInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/DialectInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/DialectInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3504,7 +3504,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-enum">Class Phalcon\Db\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Enum.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3535,7 +3535,7 @@ const FETCH_UNIQUE;
 
 <h1 id="db-exception">Class Phalcon\Db\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Exception.zep)
 
 | Namespace  | Phalcon\Db |
 | Extends    | \Phalcon\Exception |
@@ -3546,7 +3546,7 @@ Exceptions thrown in Phalcon\Db will use this class
 
 <h1 id="db-index">Class Phalcon\Db\Index</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Index.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Index.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | IndexInterface |
@@ -3635,7 +3635,7 @@ public function getType(): string
 
 <h1 id="db-indexinterface">Interface Phalcon\Db\IndexInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/IndexInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/IndexInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3666,7 +3666,7 @@ Gets the index type
 
 <h1 id="db-profiler">Class Phalcon\Db\Profiler</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Profiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Profiler.zep)
 
 | Namespace  | Phalcon\Db |
 | Uses       | Phalcon\Db\Profiler\Item |
@@ -3795,7 +3795,7 @@ Stops the active profile
 
 <h1 id="db-profiler-item">Class Phalcon\Db\Profiler\Item</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Profiler/Item.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Profiler/Item.zep)
 
 | Namespace  | Phalcon\Db\Profiler |
 
@@ -3913,7 +3913,7 @@ public function setSqlVariables( array $sqlVariables )
 
 <h1 id="db-rawvalue">Class Phalcon\Db\RawValue</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/RawValue.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/RawValue.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3966,7 +3966,7 @@ public function getValue(): string
 
 <h1 id="db-reference">Class Phalcon\Db\Reference</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Reference.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Reference.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | ReferenceInterface |
@@ -4112,7 +4112,7 @@ public function getSchemaName(): string
 
 <h1 id="db-referenceinterface">Interface Phalcon\Db\ReferenceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/ReferenceInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/ReferenceInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -4173,7 +4173,7 @@ Gets the schema where referenced table is
 
 <h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/Result/Pdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/Result/Pdo.zep)
 
 | Namespace  | Phalcon\Db\Result |
 | Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
@@ -4371,7 +4371,7 @@ $result->setFetchMode(
 
 <h1 id="db-resultinterface">Interface Phalcon\Db\ResultInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Db/ResultInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Db/ResultInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -4435,5 +4435,3 @@ Gets number of rows returned by a resultset
 public function setFetchMode( int $fetchMode ): bool;
 ```
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
-
-

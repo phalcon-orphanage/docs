@@ -10,7 +10,7 @@ keywords: 'backtrace, depuración, fallas de segmentación'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Phalcon está compilado en una extensión C cargada en su servidor web. Debido a esto, los errores conducen a fallas de segmentación, causando que Phalcon bloquee algunos de sus procesos de servidor web.
 

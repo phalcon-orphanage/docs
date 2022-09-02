@@ -3,7 +3,7 @@ layout: default language: 'en' version: '4.0' title: 'Unit Testing' keywords: 'u
 - - -
 # Unit Testing
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Overview
 

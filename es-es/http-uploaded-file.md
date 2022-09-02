@@ -8,7 +8,7 @@ keywords: 'psr-7, http, fichero subido http'
 
 # Fichero Subido HTTP (PSR-7)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) es una implementación de la interfaz de mensajería [PSR-7](https://www.php-fig.org/psr/psr-7/) definida por [PHP-FIG](https://www.php-fig.org/).

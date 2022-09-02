@@ -8,7 +8,7 @@ keywords: 'psr-13, http, enlace, enlace evolutivo'
 
 # Enlace HTML (PSR-13)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Html\Link\EvolvableLink](api/phalcon_html#html-link-evolvablelink), [Phalcon\Html\Link\EvolvableLinkProvider](api/phalcon_html#html-link-evolvablelinkprovider), [Phalcon\Html\Link\Link](api/phalcon_html#html-link-link) y [Phalcon\Html\Link\LinkProvider](api/phalcon_html#html-link-linkprovider) son clases que implementan las interfaces definidas por [PHP-FIG](https://www.php-fig.org/).

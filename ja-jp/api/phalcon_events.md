@@ -14,7 +14,7 @@ title: 'Phalcon\Events'
 
 <h1 id="events-event">Class Phalcon\Events\Event</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Event.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/Event.zep)
 
 | Namespace | Phalcon\Events | | Implements | EventInterface |
 
@@ -135,7 +135,7 @@ if ($event->isCancelable()) {
 
 <h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/EventInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -189,7 +189,7 @@ Stops the event preventing propagation
 
 <h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/EventsAwareInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/EventsAwareInterface.zep)
 
 | Namespace | Phalcon\Events |
 
@@ -213,7 +213,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 <h1 id="events-exception">Class Phalcon\Events\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/Exception.zep)
 
 | Namespace | Phalcon\Events | | Extends | \Phalcon\Exception |
 
@@ -223,7 +223,7 @@ Exceptions thrown in Phalcon\Events will use this class
 
 <h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/Manager.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/Manager.zep)
 
 | Namespace | Phalcon\Events | | Uses | Closure, SplPriorityQueue | | Implements | ManagerInterface |
 
@@ -344,7 +344,7 @@ public function isValidHandler( mixed $handler ): bool;
 
 <h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Events/ManagerInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Events/ManagerInterface.zep)
 
 | Namespace | Phalcon\Events |
 

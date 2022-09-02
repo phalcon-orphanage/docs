@@ -11,7 +11,7 @@ keywords: 'ayudantes, vector, cadena, sistema de ficheros, numero, utilidades'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 

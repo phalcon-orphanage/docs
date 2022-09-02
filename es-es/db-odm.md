@@ -10,7 +10,7 @@ keywords: 'mongo, odm, object document mapper'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **NOTA**: La funcionalidad del Mapper de Documentos de Objeto ha sido **temporalmente** eliminada para la v4.0.
 > 

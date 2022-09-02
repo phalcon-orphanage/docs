@@ -10,7 +10,7 @@ keywords: 'new pull request, pull request, pr'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Un *pull request* para Phalcon debe ser hecho en nuestro repositorio principal [cphalcon](https://github.com/phalcon/cphalcon). Es una colección de cambios en el código que:
 

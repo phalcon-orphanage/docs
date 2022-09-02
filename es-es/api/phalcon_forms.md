@@ -25,7 +25,7 @@ title: 'Phalcon\Forms'
 
 <h1 id="forms-element-abstractelement">Abstract Class Phalcon\Forms\Element\AbstractElement</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/AbstractElement.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/AbstractElement.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | InvalidArgumentException, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation\ValidatorInterface | | Implements | ElementInterface |
 
@@ -261,7 +261,7 @@ Establece las opciones para el elemento
 
 <h1 id="forms-element-check">Class Phalcon\Forms\Element\Check</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Check.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Check.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -279,7 +279,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-date">Class Phalcon\Forms\Element\Date</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Date.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Date.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -295,7 +295,7 @@ Renderiza el widget del elemento devolviendo html
 
 <h1 id="forms-element-elementinterface">Interface Phalcon\Forms\Element\ElementInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/ElementInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/ElementInterface.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidatorInterface |
 
@@ -491,7 +491,7 @@ Establece las opciones para el elemento
 
 <h1 id="forms-element-email">Class Phalcon\Forms\Element\Email</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Email.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Email.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -509,7 +509,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-file">Class Phalcon\Forms\Element\File</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/File.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/File.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -525,7 +525,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-hidden">Class Phalcon\Forms\Element\Hidden</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Hidden.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Hidden.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -543,7 +543,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-numeric">Class Phalcon\Forms\Element\Numeric</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Numeric.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Numeric.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -561,7 +561,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-password">Class Phalcon\Forms\Element\Password</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Password.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Password.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -579,7 +579,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-radio">Class Phalcon\Forms\Element\Radio</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Radio.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Radio.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -597,7 +597,7 @@ Renderiza el widget del elemento devolviendo HTML
 
 <h1 id="forms-element-select">Class Phalcon\Forms\Element\Select</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Select.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Select.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag\Select | | Extends | AbstractElement |
 
@@ -647,7 +647,7 @@ Establece las opciones a elegir
 
 <h1 id="forms-element-submit">Class Phalcon\Forms\Element\Submit</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Submit.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Submit.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -663,7 +663,7 @@ Renderiza el widget del elemento
 
 <h1 id="forms-element-text">Class Phalcon\Forms\Element\Text</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/Text.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/Text.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -681,7 +681,7 @@ Renderiza el widget del elemento
 
 <h1 id="forms-element-textarea">Class Phalcon\Forms\Element\TextArea</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Element/TextArea.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Element/TextArea.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -697,7 +697,7 @@ Renderiza el widget del elemento
 
 <h1 id="forms-exception">Class Phalcon\Forms\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Exception.zep)
 
 | Namespace | Phalcon\Forms | | Extends | \Phalcon\Exception |
 
@@ -705,7 +705,7 @@ Las excepciones lanzadas en Phalcon\Forms usarán esta clase
 
 <h1 id="forms-form">Class Phalcon\Forms\Form</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Form.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Form.zep)
 
 | Namespace | Phalcon\Forms | | Uses | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface | | Extends | Injectable | | Implements | Countable, Iterator, AttributesInterface |
 
@@ -959,7 +959,7 @@ Comprueba si el elemento actual en el iterador es válido
 
 <h1 id="forms-manager">Class Phalcon\Forms\Manager</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Forms/Manager.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Forms/Manager.zep)
 
 | Namespace | Phalcon\Forms |
 

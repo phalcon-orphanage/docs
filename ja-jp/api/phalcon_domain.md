@@ -14,7 +14,7 @@ title: 'Phalcon\Domain'
 
 <h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/Payload.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable | | Implements | PayloadInterface |
 
@@ -133,7 +133,7 @@ Sets the payload status.
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
@@ -149,7 +149,7 @@ Instantiate a new object
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Extends | ReadableInterface |
 
@@ -157,7 +157,7 @@ This interface is used for consumers
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
@@ -203,7 +203,7 @@ Gets the status of this payload.
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/Status.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
@@ -244,7 +244,7 @@ Instantiation not allowed.
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 

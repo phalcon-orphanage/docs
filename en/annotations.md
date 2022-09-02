@@ -7,7 +7,7 @@ keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 # Annotations
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offer an easy way to parse and cache annotations in PHP applications.
@@ -640,4 +640,3 @@ class Invoices extends BaseController
 [annotations-reader]: api/phalcon_annotations#annotations-reader
 [annotations-readerinterface]: api/phalcon_annotations#annotations-readerinterface
 [annotations-reflection]: api/phalcon_annotations#annotations-reflection
-        

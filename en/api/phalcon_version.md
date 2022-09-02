@@ -9,7 +9,7 @@ title: 'Phalcon\Version'
 
 <h1 id="version">Class Phalcon\Version</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Version.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Version.zep)
 
 | Namespace  | Phalcon |
 
@@ -87,5 +87,3 @@ B - Med version (two digits)
 C - Min version (two digits)
 D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable
 E - Special release version i.e. RC1, Beta2 etc.
-
-

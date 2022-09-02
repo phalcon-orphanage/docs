@@ -8,7 +8,7 @@ keywords: 'lista peticiones nuevas características, lista nfr'
 
 # Lista de Peticiones de Nuevas Características
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 
 
@@ -109,4 +109,3 @@ keywords: 'lista peticiones nuevas características, lista nfr'
 | 000   | [**Sesión**: Necesita el bloqueo para sesión redis #13738](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464989)                                                                                       |
 | 000   | [**Validación**: ¿Por qué no usar estilo *ioc/factory* para validadores como filtros? #13567](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563464989)                                                    |
 | 000   | [**Compilador Volt**: Permitir que \Phalcon\Mvc\View\Engine\Volt acepte Phalcon\Mvc\View\Engine\Volt\Compiler en el constructor #2700](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456153) |
-

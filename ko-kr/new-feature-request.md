@@ -10,7 +10,7 @@ keywords: 'new feature request, nfr'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 [List of NFRs](new-feature-request-list)
 

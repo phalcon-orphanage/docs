@@ -10,7 +10,7 @@ keywords: 'modelos, transacciones'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 
@@ -288,5 +288,3 @@ class ProductsController extends Controller
 
 > **NOTA**: Mientras que una transacción esté activa, el gestor de transacciones siempre devolverá la misma transacción en toda la aplicación.
 {: .alert .alert-info }
-
-

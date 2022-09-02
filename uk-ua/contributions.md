@@ -10,7 +10,7 @@ keywords: 'contributing, nfr, pull request, pr, new feature request, участ�
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Участь у розвитку Phalcon
 

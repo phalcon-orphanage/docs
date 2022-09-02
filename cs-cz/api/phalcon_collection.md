@@ -12,7 +12,7 @@ title: 'Phalcon\Collection'
 
 <h1 id="collection">Class Phalcon\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Collection.zep)
 
 | Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, CollectionInterface, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
@@ -202,7 +202,7 @@ Internal method to set data
 
 <h1 id="collection-collectioninterface">Interface Phalcon\Collection\CollectionInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/CollectionInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Collection/CollectionInterface.zep)
 
 | Namespace | Phalcon\Collection |
 
@@ -270,7 +270,7 @@ public function toJson( int $options = int ): string;
 
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Collection/Exception.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Phalcon\Exception | | Implements | Throwable |
 
@@ -278,7 +278,7 @@ Exceptions for the Collection object
 
 <h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Collection/ReadOnly.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Collection/ReadOnly.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Phalcon\Collection | | Extends | Collection |
 
