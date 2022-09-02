@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Phalcon\Autoload'
 ---
 
@@ -10,7 +8,7 @@ title: 'Phalcon\Autoload'
 
 <h1 id="autoload-exception">Class Phalcon\Autoload\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Autoload/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Autoload/Exception.zep)
 
 | Namespace  | Phalcon\Autoload | | Extends    | \Exception |
 
@@ -20,7 +18,7 @@ Exceptions thrown in Phalcon\Autoload will use this class
 
 <h1 id="autoload-loader">Class Phalcon\Autoload\Loader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Autoload/Loader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Autoload/Loader.zep)
 
 | Namespace  | Phalcon\Autoload | | Uses       | Phalcon\Events\AbstractEventsAware | | Extends    | AbstractEventsAware |
 
