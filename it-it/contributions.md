@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'it-it'
-version: '5.0'
 title: 'Contributing'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 
 # Contributions
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Contributing to Phalcon
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
