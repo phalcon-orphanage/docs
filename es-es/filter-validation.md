@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '5.0'
 title: 'Validación'
-upgrade: '`#validation`'
+upgrade: '#validation'
 keywords: 'validación, validar formularios, validar modelos, validar datos'
 ---
 
