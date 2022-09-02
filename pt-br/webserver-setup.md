@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'pt-br'
-version: '5.0'
 title: 'Web Server Setup'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 
 # Configuração de Servidor Web
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Visão Geral
 In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
