@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Traducciones'
 upgrade: '#translate'
 keywords: 'traducir, traducciones, adaptadores de traducción, vector nativo, csv, gettest'
@@ -9,7 +7,7 @@ keywords: 'traducir, traducciones, adaptadores de traducción, vector nativo, cs
 
 # Componente de traducción
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 The component [Phalcon\Translate][translate] offers multilingual capabilities to applications. Este componente le permite mostrar contenido en diferentes idiomas, basado en la elección de idioma del usuario, disponible en la aplicación.
