@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Http'
 ---
 
@@ -25,7 +23,7 @@ title: 'Phalcon\Http'
 
 <h1 id="http-cookie">Class Phalcon\Http\Cookie</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Cookie.zep)
 
 | Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Encryption\Crypt\CryptInterface, Phalcon\Encryption\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface | | Extends    | AbstractInjectionAware | | Implements | CookieInterface |
 
@@ -265,7 +263,7 @@ Afirma que la clave de la cookie es suficientemente larga.
 
 <h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/CookieInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Cookie/CookieInterface.zep)
 
 | Namespace  | Phalcon\Http\Cookie |
 
@@ -392,7 +390,7 @@ Establece si la cookie se debe encriptar/desencriptar automáticamente
 
 <h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Cookie/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Cookie/Exception.zep)
 
 | Namespace  | Phalcon\Http\Cookie | | Extends    | \Exception |
 
@@ -404,7 +402,7 @@ Las excepciones lanzadas en Phalcon\Http\Cookie usarán esta clase.
 
 <h1 id="http-message-requestmethodinterface">Interface Phalcon\Http\Message\RequestMethodInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/RequestMethodInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Message/RequestMethodInterface.zep)
 
 | Namespace  | Phalcon\Http\Message |
 
@@ -430,7 +428,7 @@ const METHOD_TRACE = TRACE;
 
 <h1 id="http-message-responsestatuscodeinterface">Interface Phalcon\Http\Message\ResponseStatusCodeInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
 
 | Namespace  | Phalcon\Http\Message |
 
@@ -538,7 +536,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 
 <h1 id="http-request">Class Phalcon\Http\Request</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Request.zep)
 
 | Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass | | Extends    | AbstractInjectionAware | | Implements | RequestInterface, RequestMethodInterface |
 
@@ -1098,7 +1096,7 @@ Simplifica $_FILES para tener un vector simple con todos los ficheros subidos
 
 <h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Request/Exception.zep)
 
 | Namespace  | Phalcon\Http\Request | | Extends    | \Exception |
 
@@ -1110,7 +1108,7 @@ Las excepciones lanzadas en Phalcon\Http\Request usarán esta clase
 
 <h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/File.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Request/File.zep)
 
 | Namespace  | Phalcon\Http\Request | | Implements | FileInterface |
 
@@ -1247,7 +1245,7 @@ Mueve el fichero temporal a una ubicación dentro de la aplicación
 
 <h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Request/FileInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Request/FileInterface.zep)
 
 | Namespace  | Phalcon\Http\Request |
 
@@ -1305,7 +1303,7 @@ Mueve el fichero temporal a una ubicación
 
 <h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/RequestInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/RequestInterface.zep)
 
 | Namespace  | Phalcon\Http | | Uses       | Phalcon\Http\Request\FileInterface, stdClass |
 
@@ -1707,7 +1705,7 @@ Devuelve el número de archivos disponibles
 
 <h1 id="http-response">Class Phalcon\Http\Response</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Response.zep)
 
 | Namespace  | Phalcon\Http | | Uses       | DateTime, DateTimeZone, InvalidArgumentException, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface, ResponseStatusCodeInterface |
 
@@ -2066,7 +2064,7 @@ $response->setStatusCode(404, "Not Found");
 
 <h1 id="http-response-cookies">Class Phalcon\Http\Response\Cookies</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Cookies.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Response/Cookies.zep)
 
 | Namespace  | Phalcon\Http\Response | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\Cookie\Exception, Phalcon\Http\Cookie\CookieInterface | | Extends    | AbstractInjectionAware | | Implements | CookiesInterface |
 
@@ -2244,7 +2242,7 @@ Establece si las cookies de la bolsa se deben encriptar/desencriptar automática
 
 <h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/CookiesInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Response/CookiesInterface.zep)
 
 | Namespace  | Phalcon\Http\Response | | Uses       | Phalcon\Http\Cookie\CookieInterface |
 
@@ -2307,7 +2305,7 @@ Establece si las cookies de la bolsa se deben encriptar/desencriptar automática
 
 <h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Response/Exception.zep)
 
 | Namespace  | Phalcon\Http\Response | | Extends    | \Exception |
 
@@ -2319,7 +2317,7 @@ Las excepciones lanzadas en Phalcon\Http\Response usarán esta clase.
 
 <h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/Headers.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Response/Headers.zep)
 
 | Namespace  | Phalcon\Http\Response | | Implements | HeadersInterface |
 
@@ -2402,7 +2400,7 @@ Devuelve las cabeceras actuales como un vector
 
 <h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/Response/HeadersInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/Response/HeadersInterface.zep)
 
 | Namespace  | Phalcon\Http\Response |
 
@@ -2453,7 +2451,7 @@ Establece una cabecera en bruto para enviar al final de la petición
 
 <h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Http/ResponseInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Http/ResponseInterface.zep)
 
 | Namespace  | Phalcon\Http | | Uses       | DateTime, Phalcon\Http\Response\HeadersInterface |
 
@@ -2596,5 +2594,3 @@ Envía una cabecera en bruto a la respuesta
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 Establece el código de respuesta HTTP
-
-
