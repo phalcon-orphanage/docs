@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Tutorial - Vökuró'
 keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
@@ -659,7 +659,7 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | View                           | Περιγραφή                                   |
+| Controller    | Action           | Προβολή                        | Περιγραφή                                   |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Index`       | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -1023,7 +1023,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-### View
+### Προβολή
 
 Now that we have everything set up in our form, we pass the form to the view:
 
