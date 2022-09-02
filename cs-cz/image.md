@@ -1,7 +1,6 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '5.0'
 title: 'Image'
 upgrade: '#image'
 keywords: 'image, gd, imagick'
@@ -9,7 +8,7 @@ keywords: 'image, gd, imagick'
 
 # Image
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.

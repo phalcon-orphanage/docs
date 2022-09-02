@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: '#assets'
 title: 'Recursos Activos'
 keywords: 'recursos, js, css'
@@ -9,7 +7,7 @@ keywords: 'recursos, js, css'
 
 # Gestión de Recursos (Assets)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 `Phalcon\Assets` es un componente que le permite gestionar recursos estáticos como hojas de estilo CSS o librerías JavaScript en una aplicación web.

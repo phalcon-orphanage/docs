@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'インストール'
 keywords: 'インストール, インストール方法, Phalconのインストール'
 ---
 
 # インストール
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Requirements
 

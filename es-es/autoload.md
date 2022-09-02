@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Loader'
 upgrade: '#autoload'
 keywords: 'loader, psr-4, auto-loading, autoloader'
@@ -9,7 +7,7 @@ keywords: 'loader, psr-4, auto-loading, autoloader'
 
 # Loader
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > The `Phalcon\Autoload\Loader` class has been renamed `Phalcon\Autoload\Loader`. La funcionalidad sigue siendo la misma. 
 > 

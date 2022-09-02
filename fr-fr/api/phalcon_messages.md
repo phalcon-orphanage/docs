@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'fr-fr'
-version: '5.0'
 title: 'Phalcon\Messages'
 ---
 
@@ -12,7 +10,7 @@ title: 'Phalcon\Messages'
 
 <h1 id="messages-exception">Classe Phalcon\Messages\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Messages/Exception.zep)
 
 | Namespace  | Phalcon\Messages | | Extends    | \Exception |
 
@@ -22,7 +20,7 @@ Les exceptions émises dans la classe Phalcon\Messages\* utiliseront cette class
 
 <h1 id="messages-message">Classe Phalcon\Messages\Message</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Message.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Messages/Message.zep)
 
 | Espace de noms | Phalcon\Messages | | Utilise | JsonSerializable | | Implémente | MessageInterface, JsonSerializable |
 
@@ -134,7 +132,7 @@ Sets message type
 
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/MessageInterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Messages/MessageInterface.zep)
 
 | Namespace  | Phalcon\Messages |
 
@@ -215,7 +213,7 @@ Sets message type
 
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Messages/Messages.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Messages/Messages.zep)
 
 | Namespace  | Phalcon\Messages | | Uses       | ArrayAccess, Countable, Iterator, JsonSerializable | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
 
@@ -361,5 +359,3 @@ Rewinds the internal iterator
 public function valid(): bool;
 ```
 Check if the current message in the iterator is valid
-
-

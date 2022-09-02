@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Tutorial - INVO'
 keywords: 'tutorial, tutorial invo, paso a paso, mvc'
 ---
 
 # Tutorial - INVO
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. Muestra como se gestionan ciertas tareas por Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. La aplicación no genera facturas reales, sino que sirve como ejemplo de cómo se implementan estas tareas usando Phalcon.

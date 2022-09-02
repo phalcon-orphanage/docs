@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'el-gr'
-version: '5.0'
 title: 'Εντοπισμός σφαλμάτων'
 keywords: 'debug, debugging, error handling'
 ---
 
 # Εντοπισμός σφαλμάτων
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 

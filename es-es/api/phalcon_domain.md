@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Domain'
 ---
 
@@ -14,7 +12,7 @@ title: 'Phalcon\Domain'
 
 <h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/Payload.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable | | Implements | PayloadInterface |
 
@@ -135,7 +133,7 @@ Establece el estado de la carga útil.
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
 
@@ -154,7 +152,7 @@ Instancia un nuevo objeto
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Extends    | ReadableInterface |
 
@@ -164,7 +162,7 @@ Esta interfaz se usa para consumidores
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
@@ -213,7 +211,7 @@ Obtiene el estado de esta carga útil.
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/Status.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
 
@@ -256,7 +254,7 @@ Instanciación no permitida.
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
@@ -299,5 +297,3 @@ Establece la salida producida desde la capa de dominio.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Establece el estado de esta carga útil.
-
-

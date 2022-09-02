@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Application'
 ---
 
@@ -10,7 +8,7 @@ title: 'Phalcon\Application'
 
 <h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/AbstractApplication.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Application/AbstractApplication.zep)
 
 | Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
 
@@ -110,9 +108,8 @@ Establece el administrador de eventos
 
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Application/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Application/Exception.zep)
 
 | Namespace  | Phalcon\Application | | Extends    | \Exception |
 
 Las excepciones lanzadas en la clase Phalcon\Application usarán esta clase
-

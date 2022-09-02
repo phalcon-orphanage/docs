@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Registry'
 ---
 
@@ -9,7 +7,7 @@ title: 'Phalcon\Registry'
 
 <h1 id="registry">Final Class Phalcon\Registry</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Registry.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Registry.zep)
 
 | Namespace | Phalcon | | Uses | Traversable | | Extends | Collection |
 
@@ -204,5 +202,3 @@ final public function unserialize( mixed $serialized ): void;
 Construye el objeto
 
 @link https://php.net/manual/en/serializable.unserialize.php
-
-

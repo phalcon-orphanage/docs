@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Знайомство'
 keywords: 'знайомство'
 ---

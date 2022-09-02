@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Image'
 ---
 
@@ -15,7 +13,7 @@ title: 'Phalcon\Image'
 
 <h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Implements | AdapterInterface |
 
@@ -196,7 +194,7 @@ Añade una marca de agua a una imagen con una opacidad especificada
 
 <h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/AdapterInterface.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum |
 
@@ -267,7 +265,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 <h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/Gd.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/Gd.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -371,7 +369,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 <h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Adapter/Imagick.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/Imagick.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -532,7 +530,7 @@ Ejecuta una marca de agua.
 
 <h1 id="image-enum">Class Phalcon\Image\Enum</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Enum.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Enum.zep)
 
 | Namespace | Phalcon\Image |
 
@@ -559,7 +557,7 @@ const WIDTH = 2;
 
 <h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Exception.zep)
 
 | Namespace  | Phalcon\Image | | Extends    | \Exception |
 
@@ -569,7 +567,7 @@ Exceptions thrown in Phalcon\Image will use this class
 
 <h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Image/ImageFactory.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/ImageFactory.zep)
 
 | Namespace  | Phalcon\Image | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Image\Adapter\AdapterInterface | | Extends    | AbstractFactory |
 
@@ -603,5 +601,3 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Devuelve los adaptadores disponibles
-
-

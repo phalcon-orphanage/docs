@@ -1,7 +1,6 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '5.0'
 title: 'API Index'
 ---
 
@@ -10,6 +9,6 @@ title: 'API Index'
 ### {{ element['title'] }}
 
     {% for document in element['docs'] %}
-* [{{ document | replace: '_', '\' }}](/{{ page.version }}/{{ page.language }}/api/{{ element['title'] | replace: '\', '_' | downcase }}#{{ document | replace: '/', '-' | downcase }})
+* [{{ document | replace: '_', '\' }}](/{{ pageVersion }}/{{ pageLanguage }}/api/{{ element['title'] | replace: '\', '_' | downcase }}#{{ document | replace: '/', '-' | downcase }})
     {% endfor %}
 {% endfor %}

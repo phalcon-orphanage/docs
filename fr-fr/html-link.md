@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'fr-fr'
-version: '5.0'
 title: 'HTML Link'
 keywords: 'http, link, evolvable link'
 ---
 
 # HTML Link
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Vue d'ensemble
 [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink], [Phalcon\Html\Link\EvolvableLinkProvider][html-link-evolvablelinkprovider], [Phalcon\Html\Link\Link][html-link-link] and [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] are classes that implement the interfaces based on [PSR-13][psr-13], but with much stricter types

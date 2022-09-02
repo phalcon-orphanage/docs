@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Acl'
 ---
 
@@ -19,7 +17,7 @@ title: 'Phalcon\Acl'
 
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Events\AbstractEventsAware, Phalcon\Events\EventsAwareInterface | | Extends    | AbstractEventsAware | | Implements | AdapterInterface, EventsAwareInterface |
 
@@ -96,7 +94,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
@@ -231,7 +229,7 @@ Establece el nivel de acceso predeterminado (Phalcon\Acl\Enum::ALLOW o Phalcon\A
 
 <h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Acl\RoleAwareInterface, Phalcon\Acl\ComponentAwareInterface, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends    | AbstractAdapter |
 
@@ -573,7 +571,7 @@ Establece el nivel de acceso predeterminado (`Phalcon\Enum::ALLOW` o `Phalcon\En
 
 <h1 id="acl-component">Class Phalcon\Acl\Component</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Component.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Component.zep)
 
 | Namespace | Phalcon\Acl | | Implements | ComponentInterface |
 
@@ -624,7 +622,7 @@ public function getName(): string
 
 <h1 id="acl-componentawareinterface">Interface Phalcon\Acl\ComponentAwareInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentAwareInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/ComponentAwareInterface.zep)
 
 | Namespace | Phalcon\Acl |
 
@@ -643,7 +641,7 @@ Devuelve el nombre del componente
 
 <h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/ComponentInterface.zep)
 
 | Namespace | Phalcon\Acl |
 
@@ -674,7 +672,7 @@ Devuelve el nombre del componente
 
 <h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Enum.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Enum.zep)
 
 | Namespace | Phalcon\Acl |
 
@@ -690,7 +688,7 @@ const DENY = 0;
 
 <h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Exception.zep)
 
 | Namespace  | Phalcon\Acl | | Extends    | \Exception |
 
@@ -700,7 +698,7 @@ Clase para excepciones lanzadas por Phalcon\Acl
 
 <h1 id="acl-role">Class Phalcon\Acl\Role</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Role.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Role.zep)
 
 | Namespace | Phalcon\Acl | | Implements | RoleInterface |
 
@@ -751,7 +749,7 @@ public function getName(): string
 
 <h1 id="acl-roleawareinterface">Interface Phalcon\Acl\RoleAwareInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleAwareInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/RoleAwareInterface.zep)
 
 | Namespace | Phalcon\Acl |
 
@@ -770,7 +768,7 @@ Devuelve el nombre del rol
 
 <h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/RoleInterface.zep)
 
 | Namespace | Phalcon\Acl |
 
@@ -795,5 +793,3 @@ Devuelve la descripción del rol
 public function getName(): string;
 ```
 Devuelve el nombre del rol
-
-

@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: '#flash'
 title: 'Mensajes Flash'
 keywords: 'flash, mensajes flash, flash directo, flash sesión, plantillas'
@@ -9,7 +7,7 @@ keywords: 'flash, mensajes flash, flash directo, flash sesión, plantillas'
 
 # Mensajes Flash
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Los mensajes flash son usados para notificar al usuario sobre el estado de acciones que ha hecho o simplemente muestra información a los usuarios. Estos tipos de mensajes pueden ser generados usando este componente.

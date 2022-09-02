@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Безпека'
 upgrade: '#security'
 keywords: 'security, hashing, passwords'
@@ -9,7 +7,7 @@ keywords: 'security, hashing, passwords'
 
 # Безпека
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Огляд
 

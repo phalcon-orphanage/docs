@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Cli'
 ---
 
@@ -20,7 +18,7 @@ title: 'Phalcon\Cli'
 
 <h1 id="cli-console">Class Phalcon\Cli\Console</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Console.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Console.zep)
 
 | Namespace  | Phalcon\Cli | | Uses       | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface | | Extends    | AbstractApplication |
 
@@ -59,7 +57,7 @@ Establece un argumento específico
 
 <h1 id="cli-console-exception">Class Phalcon\Cli\Console\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Console/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Console/Exception.zep)
 
 | Namespace  | Phalcon\Cli\Console | | Extends    | \Phalcon\Application\Exception |
 
@@ -69,7 +67,7 @@ Las excepciones lanzadas en Phalcon\Cli\Console usarán esta clase
 
 <h1 id="cli-dispatcher">Class Phalcon\Cli\Dispatcher</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Dispatcher.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Dispatcher.zep)
 
 | Namespace  | Phalcon\Cli | | Uses       | Phalcon\Cli\Dispatcher\Exception, Phalcon\Dispatcher\AbstractDispatcher, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface | | Extends    | CliDispatcher | | Implements | DispatcherInterface |
 
@@ -205,7 +203,7 @@ Lanza una excepción interna
 
 <h1 id="cli-dispatcher-exception">Class Phalcon\Cli\Dispatcher\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Dispatcher/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Dispatcher/Exception.zep)
 
 | Namespace  | Phalcon\Cli\Dispatcher | | Extends    | \Phalcon\Dispatcher\Exception |
 
@@ -215,7 +213,7 @@ Las excepciones lanzadas en Phalcon\Cli\Dispatcher usarán esta clase
 
 <h1 id="cli-dispatcherinterface">Interface Phalcon\Cli\DispatcherInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/DispatcherInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/DispatcherInterface.zep)
 
 | Namespace  | Phalcon\Cli | | Uses       | Phalcon\Dispatcher\DispatcherInterface | | Extends    | DispatcherInterfaceBase |
 
@@ -282,7 +280,7 @@ Establece el sufijo de la tarea por defecto
 
 <h1 id="cli-router">Class Phalcon\Cli\Router</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Router.zep)
 
 | Namespace  | Phalcon\Cli | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception, Phalcon\Cli\Router\RouteInterface | | Extends    | AbstractInjectionAware |
 
@@ -489,7 +487,7 @@ Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 <h1 id="cli-router-exception">Class Phalcon\Cli\Router\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Router/Exception.zep)
 
 | Namespace  | Phalcon\Cli\Router | | Extends    | \Exception |
 
@@ -499,7 +497,7 @@ Las excepciones lanzadas en Phalcon\Cli\Router usarán esta clase
 
 <h1 id="cli-router-route">Class Phalcon\Cli\Router\Route</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/Route.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Router/Route.zep)
 
 | Namespace  | Phalcon\Cli\Router | | Implements | RouteInterface |
 
@@ -703,7 +701,7 @@ $router->add(
 
 <h1 id="cli-router-routeinterface">Interface Phalcon\Cli\Router\RouteInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Router/RouteInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Router/RouteInterface.zep)
 
 | Namespace  | Phalcon\Cli\Router |
 
@@ -800,7 +798,7 @@ Establece el nombre de la ruta
 
 <h1 id="cli-routerinterface">Interface Phalcon\Cli\RouterInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/RouterInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/RouterInterface.zep)
 
 | Namespace  | Phalcon\Cli | | Uses       | Phalcon\Cli\Router\RouteInterface |
 
@@ -909,7 +907,7 @@ Comprueba si el enrutador coincide con alguna de las rutas definidas
 
 <h1 id="cli-task">Class Phalcon\Cli\Task</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/Task.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/Task.zep)
 
 | Namespace  | Phalcon\Cli | | Uses       | Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends    | Injectable | | Implements | TaskInterface, EventsAwareInterface |
 
@@ -967,9 +965,8 @@ Establece el administrador de eventos
 
 <h1 id="cli-taskinterface">Interface Phalcon\Cli\TaskInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Cli/TaskInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Cli/TaskInterface.zep)
 
 | Namespace | Phalcon\Cli |
 
 Interfaz para los manejadores de tareas
-

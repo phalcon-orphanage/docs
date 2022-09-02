@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'pt-br'
-version: '5.0'
 title: 'Registry'
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
@@ -9,7 +7,7 @@ keywords: 'storage, stream, redis, memcached'
 
 # Storage Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Visão Geral
 The `Phalcon\Storage` namespace contains components that help with storing data in different storages. The component is heavily integrated in [Phalcon\Cache\Cache](cache) as well as [Phalcon\Session](session). It offers serialization of data based on various serialization adapters, and storage of data based on various storage adapters. Factories help with the creation of all necessary objects for the component to work.

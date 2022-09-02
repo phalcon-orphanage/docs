@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'イベント管理'
 upgrade: '#events'
 keywords: 'events, events manager, hooks'
@@ -9,7 +7,7 @@ keywords: 'events, events manager, hooks'
 
 # イベント管理
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 概要
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. これらのフックにより、開発者はステータス情報を取得したり、データを操作したり、コンポーネントのプロセス中に実行フローを変更したりすることができます。 The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.

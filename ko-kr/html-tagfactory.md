@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 upgrade: ''
 title: 'HTML Tag Factory'
 keywords: 'html, tag factory, factory, tags'
@@ -9,7 +7,7 @@ keywords: 'html, tag factory, factory, tags'
 
 # Tag Factory
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 [Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()` by passing a `Phalcon\Html\Escaper` object to it.

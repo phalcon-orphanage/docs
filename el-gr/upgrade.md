@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4, v5'
 ---
 
 # Οδηγός Αναβάθμισης
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Αναβάθμιση σε V5
 Έχετε αποφασίσει να αναβαθμίσετε σε v5! **Συγχαρητήρια**!!

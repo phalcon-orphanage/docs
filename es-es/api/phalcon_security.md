@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Security'
 ---
 
@@ -25,7 +23,7 @@ title: 'Phalcon\Security'
 
 <h1 id="security">Class Phalcon\Security</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\RequestInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware |
 
@@ -234,7 +232,7 @@ Establece el factor de trabajo
 
 <h1 id="security-exception">Class Phalcon\Security\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/Exception.zep)
 
 | Namespace | Phalcon\Security | | Extends | \Phalcon\Exception |
 
@@ -245,7 +243,7 @@ Las excepciones lanzadas en Phalcon\Security usarán esta clase
 
 <h1 id="security-jwt-builder">Class Phalcon\Security\JWT\Builder</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Builder.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Builder.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -398,7 +396,7 @@ El reclamo "sub" (asunto) identifica el principal que es el sujeto del JWT.  Los
 
 <h1 id="security-jwt-exceptions-unsupportedalgorithmexception">Class Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -414,7 +412,7 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 
 <h1 id="security-jwt-exceptions-validatorexception">Class Phalcon\Security\JWT\Exceptions\ValidatorException</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Exceptions/ValidatorException.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Exceptions/ValidatorException.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -430,7 +428,7 @@ Para obtener toda la información sobre derechos de autor y licencias, por favor
 
 <h1 id="security-jwt-signer-abstractsigner">Abstract Class Phalcon\Security\JWT\Signer\AbstractSigner</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/AbstractSigner.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Signer/AbstractSigner.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -462,7 +460,7 @@ public function getAlgorithm(): string
 
 <h1 id="security-jwt-signer-hmac">Class Phalcon\Security\JWT\Signer\Hmac</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/Hmac.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Signer/Hmac.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -501,7 +499,7 @@ Verificar una fuente pasada con una carga útil y una contraseña
 
 <h1 id="security-jwt-signer-none">Class Phalcon\Security\JWT\Signer\None</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/None.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Signer/None.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -540,7 +538,7 @@ Verificar una fuente pasada con una carga útil y una contraseña
 
 <h1 id="security-jwt-signer-signerinterface">Interface Phalcon\Security\JWT\Signer\SignerInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Signer/SignerInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Signer/SignerInterface.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -583,7 +581,7 @@ Verificar una fuente pasada con una carga útil y una contraseña
 
 <h1 id="security-jwt-token-abstractitem">Abstract Class Phalcon\Security\JWT\Token\AbstractItem</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/AbstractItem.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Token/AbstractItem.zep)
 
 | Namespace  | Phalcon\Security\JWT\Token |
 
@@ -613,7 +611,7 @@ public function getEncoded(): string;
 
 <h1 id="security-jwt-token-enum">Class Phalcon\Security\JWT\Token\Enum</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Enum.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Token/Enum.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -641,7 +639,7 @@ const TYPE            = 'typ';
 
 <h1 id="security-jwt-token-item">Class Phalcon\Security\JWT\Token\Item</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Item.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Token/Item.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -676,7 +674,7 @@ public function has( string $name ): bool;
 
 <h1 id="security-jwt-token-parser">Class Phalcon\Security\JWT\Token\Parser</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Parser.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Token/Parser.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -697,7 +695,7 @@ Analiza un token y lo devuelve
 
 <h1 id="security-jwt-token-signature">Class Phalcon\Security\JWT\Token\Signature</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Signature.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Token/Signature.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -724,7 +722,7 @@ public function getHash(): string;
 
 <h1 id="security-jwt-token-token">Class Phalcon\Security\JWT\Token\Token</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Token/Token.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Token/Token.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -790,7 +788,7 @@ public function getToken(): string;
 
 <h1 id="security-jwt-validator">Class Phalcon\Security\JWT\Validator</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/JWT/Validator.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/JWT/Validator.zep)
 
 ![](/assets/images/version-4.1.svg)
 
@@ -861,7 +859,7 @@ public function validateSignature( SignerInterface $signer, string $passphrase )
 
 <h1 id="security-random">Class Phalcon\Security\Random</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Security/Random.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Security/Random.zep)
 
 | Namespace  | Phalcon\Security |
 
@@ -1078,5 +1076,3 @@ Genera una cadena aleatoria basada en el número ($base) de caracteres ($alphabe
 Si $n no se especifica, se asume 16. Puede ser más grande en el futuro.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
-
-

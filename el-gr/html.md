@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Html'
 keywords: 'html, attributes, tag, tag factory'
 ---
 
 # HTML Components
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 This namespace contains components that help with the generation of HTML.

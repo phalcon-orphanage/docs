@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ru-ru'
-version: '5.0'
 title: 'Views'
 upgrade: '#mvc'
 keywords: 'mvc, view, view component, simple view, responses'
@@ -9,7 +7,7 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 # Views
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Введение
 Views represent the user interface of your application. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Views format the content that you need to send back to the user/web browser that initiated the request.

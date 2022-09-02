@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Loader'
 keywords: 'cargador, psr-4, autocargar, autocargador'
 ---
 
 # Loader
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Como cualquier autocargador, dependiendo de su configuración, intentará encontrar los ficheros que su código está buscando en base a fichero, clase, espacio de nombres, etc. Como este componente está escrito en C, ofrece la menor sobrecarga al procesar su configuración, ofreciendo así un aumento de rendimiento.
@@ -582,5 +580,3 @@ Algunas cosas a tener en cuenta cuando se usa el autocargador:
 [apcu]: https://php.net/manual/en/book.apcu.php
 [loader]: api/phalcon_loader#loader
 [eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
-
-

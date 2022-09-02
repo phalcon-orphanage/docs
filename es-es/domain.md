@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Domain'
 keywords: 'domain, adr, payload, dominio'
 ---
 
 # Domain
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > In future versions of Phalcon, this component will be reworked to follow the [Payload Interop][payload-interop] interface. 
 > 

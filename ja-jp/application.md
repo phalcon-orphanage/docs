@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'アプリケーション'
 upgrade: '#application'
 keywords: 'application, mvc, controllers'
@@ -9,7 +7,7 @@ keywords: 'application, mvc, controllers'
 
 # アプリケーション
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 概要
 [Phalcon\Mvc\Application][mvc-application] is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.

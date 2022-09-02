@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 upgrade: '#cache'
 title: 'Cache'
 keywords: 'cache, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
@@ -9,7 +7,7 @@ keywords: 'cache, base64, igbinary, json, msgpack, serialize, redis, memcached, 
 
 # Cache
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Огляд
 The [Phalcon\Cache\Cache][cache-cache] is a component that offers a lightweight yet flexible caching mechanism to be used with your Phalcon applications.

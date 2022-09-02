@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'Registry'
 upgrade: '#support'
 keywords: 'registry'
@@ -9,7 +7,7 @@ keywords: 'registry'
 
 # Registry Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 概要
 [Phalcon\Support\Registry][registry] is an object-oriented array. It extends [Phalcon\Support\Collection](support-collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:

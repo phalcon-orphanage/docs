@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Migas de Pan'
 keywords: 'html, breadcrumbs, tag, tag factory'
 ---
 
 # HTML Components
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Una pieza común de HTML que está presente en muchas aplicaciones web son las migas de pan. Son enlaces separados normalmente por un espacio o por el carácter `/`, que representa la estructura jerárquica de una aplicación. El propósito es dar a los usuarios otra forma visual sencilla para navegar por la aplicación.

@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'pt-br'
-version: '5.0'
 title: 'Segurança'
 upgrade: '#security'
 keywords: 'security, hashing, passwords'
@@ -9,7 +7,7 @@ keywords: 'security, hashing, passwords'
 
 # Segurança
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Visão Geral
 

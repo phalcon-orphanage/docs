@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: '#http'
 title: 'Petición HTTP'
 keywords: 'http, petición http, petición'
@@ -9,7 +7,7 @@ keywords: 'http, petición http, petición'
 
 # Componente Petición
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. También ofrece fácil acceso a la información como datos de la cabecera, ficheros, métodos, variables, etc.

@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: '자습서 - INVO'
 keywords: 'tutorial, invo tutorial, step by step, mvc, 자습서'
 ---
 
 # 자습서 - INVO
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## 개요
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. 이것은 Phalcon이 특정 작업을 어떻게 처리하는지 잘 보여줍니다. On the client side, [Bootstrap][bootstrap] is used for the UI. 이 어플리케이션은 실제 송장을 생성하지는 않지만, 이런 작업들을 Phalcon을 사용해서 어떻게 구현할 수 있는지 잘 보여주는 예제로 생각해 주세요.

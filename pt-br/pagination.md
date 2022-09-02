@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'pt-br'
-version: '5.0'
 title: 'Paginação'
 upgrade: '#pagination'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
@@ -9,7 +7,7 @@ keywords: 'pagination, model pagination, db pagination, array pagination, query 
 
 # Paginação
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Visão Geral
 A paginator is a component which helps with splitting a large amount of data gradually. An example would be displaying all the posts of a blog, 5 at a time. The Phalcon Paginator accepts parameters and based on those returns the relevant _slice_ of the whole resultset so that the developer can present the paginated data.

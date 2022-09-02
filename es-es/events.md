@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Gestor de Eventos'
 upgrade: '#events'
 keywords: 'eventos, gestor de eventos, hooks'
@@ -9,7 +7,7 @@ keywords: 'eventos, gestor de eventos, hooks'
 
 # Gestor de Eventos
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. Estos *hooks* permiten a los desarrolladores obtener información de estado, manipular datos o cambiar el flujo de ejecución durante el proceso de un componente. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.

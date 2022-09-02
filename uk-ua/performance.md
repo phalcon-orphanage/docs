@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Продуктивність'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode, продуктивність'
 ---
 
 # Продуктивність
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Огляд
 Погано написана програма завжди матиме низьку продуктивність. Найпоширеніший спосіб для розробників підвищити продуктивність своїх продуктів:

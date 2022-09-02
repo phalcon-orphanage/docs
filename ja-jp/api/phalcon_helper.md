@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'Phalcon\Helper'
 ---
 
@@ -15,7 +13,7 @@ title: 'Phalcon\Helper'
 
 <h1 id="helper-arr">Class Phalcon\Helper\Arr</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Arr.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Arr.zep)
 
 | Namespace  | Phalcon\Helper | | Uses       | stdClass |
 
@@ -160,7 +158,7 @@ White list filter by key: obtain elements of an array filtering by the keys obta
 
 <h1 id="helper-base64">Class Phalcon\Helper\Base64</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Base64.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Base64.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -187,7 +185,7 @@ Encode a json string in Base64 Url format.
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Exception.zep)
 
 | Namespace  | Phalcon\Helper | | Extends    | \Phalcon\Exception |
 
@@ -197,7 +195,7 @@ Exceptions thrown in Phalcon\Helper will use this class
 
 <h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Fs.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Fs.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -216,7 +214,7 @@ Gets the filename from a given path, Same as PHP's basename() but has non-ASCII 
 
 <h1 id="helper-json">Class Phalcon\Helper\Json</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Json.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Json.zep)
 
 | Namespace  | Phalcon\Helper | | Uses       | InvalidArgumentException |
 
@@ -265,7 +263,7 @@ echo Json::encode($data);
 
 <h1 id="helper-number">Class Phalcon\Helper\Number</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Number.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Number.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -286,7 +284,7 @@ Helper method to get an array element or a default
 
 <h1 id="helper-str">Class Phalcon\Helper\Str</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Str.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Str.zep)
 
 | Namespace  | Phalcon\Helper | | Uses       | RuntimeException |
 
@@ -578,5 +576,3 @@ Uppercases a string, this function makes use of the mbstring extension if availa
 ```php
 echo Phalcon\Helper\Str::upper("hello"); // HELLO
 ```
-
-

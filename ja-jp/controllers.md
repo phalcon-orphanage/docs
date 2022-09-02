@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'コントローラ'
 keywords: 'controllers, mvc'
 ---
 
 # コントローラ
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 概要
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.

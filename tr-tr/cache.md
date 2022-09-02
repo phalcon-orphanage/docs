@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'tr-tr'
-version: '5.0'
 upgrade: '#cache'
 title: 'Önbellek'
 keywords: 'cache, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
@@ -9,7 +7,7 @@ keywords: 'cache, base64, igbinary, json, msgpack, serialize, redis, memcached, 
 
 # Önbellek
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Genel Bakış
 The [Phalcon\Cache\Cache][cache-cache] is a component that offers a lightweight yet flexible caching mechanism to be used with your Phalcon applications.

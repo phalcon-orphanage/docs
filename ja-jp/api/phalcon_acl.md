@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'Phalcon\Acl'
 ---
 
@@ -19,7 +17,7 @@ title: 'Phalcon\Acl'
 
 <h1 id="acl-adapter-abstractadapter">抽象クラス Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Events\AbstractEventsAware, Phalcon\Events\EventsAwareInterface | | Extends    | AbstractEventsAware | | Implements | AdapterInterface, EventsAwareInterface |
 
@@ -96,7 +94,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 <h1 id="acl-adapter-adapterinterface">インターフェース Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
@@ -231,7 +229,7 @@ isAllowedアクションに引数が指定されていなかった際のデフ�
 
 <h1 id="acl-adapter-memory">Phalcon\Acl\Adapter\Memoryクラス</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Adapter/Memory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Acl\RoleAwareInterface, Phalcon\Acl\ComponentAwareInterface, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends    | AbstractAdapter |
 
@@ -573,7 +571,7 @@ isAllowedアクションに引数が指定されていなかった際のデフ�
 
 <h1 id="acl-component">Phalcon\Acl\Componentクラス</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Component.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Component.zep)
 
 | Namespace  | Phalcon\Acl | | Implements | ComponentInterface |
 
@@ -624,7 +622,7 @@ public function getName(): string
 
 <h1 id="acl-componentawareinterface">Interface Phalcon\Acl\ComponentAwareInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentAwareInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/ComponentAwareInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -643,7 +641,7 @@ public function getComponentName(): string;
 
 <h1 id="acl-componentinterface">Phalcon\Acl\ComponentInterfaceインターフェース</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/ComponentInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/ComponentInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -674,7 +672,7 @@ public function getName(): string;
 
 <h1 id="acl-enum">Phalcon\Acl\Enumクラス</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Enum.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Enum.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -690,7 +688,7 @@ const DENY = 0;
 
 <h1 id="acl-exception">Phalcon\Acl\Exceptionクラス</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Exception.zep)
 
 | Namespace  | Phalcon\Acl | | Extends    | \Exception |
 
@@ -700,7 +698,7 @@ Phalcon\Aclがスローする例外のクラス
 
 <h1 id="acl-role">Phalcon\Acl\Role クラス</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/Role.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/Role.zep)
 
 | Namespace  | Phalcon\Acl | | Implements | RoleInterface |
 
@@ -751,7 +749,7 @@ public function getName(): string
 
 <h1 id="acl-roleawareinterface">Interface Phalcon\Acl\RoleAwareInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleAwareInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/RoleAwareInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -770,7 +768,7 @@ public function getRoleName(): string;
 
 <h1 id="acl-roleinterface">Phalcon\Acl\RoleInterfaceインターフェース</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Acl/RoleInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Acl/RoleInterface.zep)
 
 | Namespace  | Phalcon\Acl |
 
@@ -795,5 +793,3 @@ public function getDescription(): string;
 public function getName(): string;
 ```
 ロール名を返します。
-
-

@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'it-it'
-version: '5.0'
 title: 'Breadcrumbs'
 keywords: 'html, breadcrumbs, tag, tag factory'
 ---
 
 # HTML Components
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represent the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application.

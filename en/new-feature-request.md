@@ -1,13 +1,11 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'New Feature Request'
 keywords: 'new feature request, nfr'
 ---
 # New Feature Request
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 [List of NFRs](new-feature-request-list)
 

@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Validación del Modelo'
 keywords: 'modelos, validación, unicidad, inclusión'
 ---
 
 # Validación del Modelo
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules.

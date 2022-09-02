@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Helper'
 ---
 
@@ -15,7 +13,7 @@ title: 'Phalcon\Helper'
 
 <h1 id="helper-arr">Class Phalcon\Helper\Arr</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Arr.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Arr.zep)
 
 | Namespace  | Phalcon\Helper | | Uses       | stdClass |
 
@@ -160,7 +158,7 @@ Filtro de lista blanca por clave: obtiene elementos de un vector filtrando por c
 
 <h1 id="helper-base64">Class Phalcon\Helper\Base64</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Base64.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Base64.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -187,7 +185,7 @@ Codifica una cadena json a formato Url Base64.
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Exception.zep)
 
 | Namespace  | Phalcon\Helper | | Extends    | \Phalcon\Exception |
 
@@ -197,7 +195,7 @@ Las excepciones lanzadas en Phalcon\Helper usarán esta clase
 
 <h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Fs.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Fs.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -216,7 +214,7 @@ Obtiene el nombre del fichero desde la ruta dada, lo mismo que basename() de PHP
 
 <h1 id="helper-json">Class Phalcon\Helper\Json</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Json.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Json.zep)
 
 | Namespace  | Phalcon\Helper | | Uses       | InvalidArgumentException |
 
@@ -266,7 +264,7 @@ echo Json::encode($data);
 
 <h1 id="helper-number">Class Phalcon\Helper\Number</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Number.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Number.zep)
 
 | Namespace  | Phalcon\Helper |
 
@@ -287,7 +285,7 @@ Método ayudante para obtener un elemento vector o un valor por defecto
 
 <h1 id="helper-str">Class Phalcon\Helper\Str</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Helper/Str.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Helper/Str.zep)
 
 | Namespace  | Phalcon\Helper | | Uses       | RuntimeException |
 
@@ -579,5 +577,3 @@ Convierte una cadena de texto a mayúsculas, esta función hace uso de la extens
 ```php
 echo Phalcon\Helper\Str::upper("hello"); // HELLO
 ```
-
-

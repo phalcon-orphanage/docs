@@ -1,14 +1,13 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '5.0'
 title: 'Data Mapper'
 keywords: 'data mapper, pdo, query builder'
 ---
 
 # Data Mapper
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > These components have been heavily influenced by [Aura PHP][auraphp] and [Atlas PHP][atlasphp] 
 > 

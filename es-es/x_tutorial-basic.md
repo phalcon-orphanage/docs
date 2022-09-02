@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Tutorial - Básico'
 keywords: 'tutorial, tutorial básico, paso a paso, mvc'
 ---
 
 # Tutorial - Básico
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 A lo largo de este tutorial, crearemos una aplicación con un simple formulario de registro, mientras introducimos los principales aspectos de diseños de Phalcon.

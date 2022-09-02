@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: '#acl'
 title: 'Listas de control de acceso (ACL)'
 keywords: 'acl, lista de control de acceso, permisos'
@@ -9,7 +7,7 @@ keywords: 'acl, lista de control de acceso, permisos'
 
 # Listas de control de acceso (ACL)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests.

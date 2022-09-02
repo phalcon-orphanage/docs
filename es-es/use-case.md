@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Caso de Uso'
 keywords: 'caso de uso, ejemplos'
 ---
 
 # Caso de Uso
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 A través de esta documentación vamos a asumir que estamos construyendo una aplicación contable.
 

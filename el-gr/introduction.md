@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Εισαγωγή'
 keywords: 'introduction'
 ---

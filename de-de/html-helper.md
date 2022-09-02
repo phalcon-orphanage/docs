@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'de-de'
-version: '5.0'
 upgrade: ''
 title: 'Helper'
 keywords: 'helpers, array, string, file system, number, utilities'
@@ -9,7 +7,7 @@ keywords: 'helpers, array, string, file system, number, utilities'
 
 # Helper Component
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework.

@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'zh-cn'
-version: '5.0'
 title: '微型应用'
 keywords: 'application, micro, handlers, api'
 ---
 
 # 微型应用
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.

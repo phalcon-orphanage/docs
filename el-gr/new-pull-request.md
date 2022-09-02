@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Νέα Αίτηση Ελξης'
 keywords: 'new pull request, pull request, pr'
 ---
 
 # Νέα Αίτηση Ελξης
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 A pull request for Phalcon must be against our main repository [cphalcon][cphalcon]. It is a collection of changes to the code that:
 

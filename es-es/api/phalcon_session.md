@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Session'
 ---
 
@@ -18,7 +16,7 @@ title: 'Phalcon\Session'
 
 <h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/AbstractAdapter.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Adapter/AbstractAdapter.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface | | Implements | SessionHandlerInterface |
 
@@ -81,7 +79,7 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Libmemcached.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Storage\AdapterFactory | | Extends    | AbstractAdapter |
 
@@ -100,7 +98,7 @@ Constructor Libmemcached.
 
 <h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Noop.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Adapter/Noop.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | SessionHandlerInterface | | Implements | SessionHandlerInterface |
 
@@ -205,7 +203,7 @@ Método auxiliar para obtener el prefijo del nombre
 
 <h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Redis.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Adapter/Redis.zep)
 
 | Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Storage\AdapterFactory | | Extends    | AbstractAdapter |
 
@@ -224,7 +222,7 @@ Constructor
 
 <h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Adapter/Stream.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Session\Adapter | | Uses       | Phalcon\Session\Exception | | Extends    | Noop |
 
@@ -329,7 +327,7 @@ Tells whether the filename is writable
 
 <h1 id="session-bag">Class Phalcon\Session\Bag</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Bag.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Bag.zep)
 
 | Namespace  | Phalcon\Session | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface, Phalcon\Support\Collection | | Extends    | Collection | | Implements | BagInterface, InjectionAwareInterface |
 
@@ -412,7 +410,7 @@ Configura el contenedor DependencyInjector
 
 <h1 id="session-baginterface">Interface Phalcon\Session\BagInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/BagInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/BagInterface.zep)
 
 | Namespace  | Phalcon\Session |
 
@@ -469,7 +467,7 @@ public function set( string $element, mixed $value ): void;
 
 <h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Exception.zep)
 
 | Namespace  | Phalcon\Session | | Extends    | \Exception |
 
@@ -481,7 +479,7 @@ Las excepciones lanzadas en Phalcon\Session usarán esta clase
 
 <h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/Manager.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/Manager.zep)
 
 | Namespace  | Phalcon\Session | | Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Support\Helper\Arr\Get | | Extends    | AbstractInjectionAware | | Implements | ManagerInterface |
 
@@ -658,7 +656,7 @@ Checks if or where headers have been sent
 
 <h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Session/ManagerInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Session/ManagerInterface.zep)
 
 | Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface |
 
@@ -802,5 +800,3 @@ Inicia la sesión (si las cabeceras ya se enviaron, la sesión no iniciará)
 public function status(): int;
 ```
 Devuelve el estado de la sesión actual.
-
-

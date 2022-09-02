@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'pl-pl'
-version: '5.0'
 title: 'Generating a backtrace'
 keywords: 'backtrace, debugging, segmentation faults'
 ---
 
 # Generating a Backtrace
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Phalcon is compiled into a C extension loaded on your web server. Because of that, bugs lead to segmentation faults, causing Phalcon to crash some of your web server processes.
 
@@ -19,4 +17,3 @@ Please follow this guide to understand how to generate the backtrace.
 [https://bugs.php.net/bugs-generating-backtrace.php](https://bugs.php.net/bugs-generating-backtrace.php)
 
 [https://bugs.php.net/bugs-generating-backtrace-win32.php](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-

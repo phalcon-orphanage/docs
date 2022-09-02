@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: '#filter'
 title: 'Filtro'
 keywords: 'filtro, sanear'
@@ -9,7 +7,7 @@ keywords: 'filtro, sanear'
 
 # Filtro
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Sanear la entrada del usuario es una parte crítica del desarrollo de software. Confiar o descuidar el saneamiento de la entrada del usuario podría provocar un acceso no autorizado al contenido de su aplicación, principalmente a los datos de usuarios, o incluso al servidor donde su aplicación se aloja.

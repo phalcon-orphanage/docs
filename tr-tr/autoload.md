@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'tr-tr'
-version: '5.0'
 title: 'Yükleyici'
 upgrade: '#autoload'
 keywords: 'loader, psr-4, auto-loading, autoloader'
@@ -9,7 +7,7 @@ keywords: 'loader, psr-4, auto-loading, autoloader'
 
 # Yükleyici
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > The `Phalcon\Autoload\Loader` class has been renamed `Phalcon\Autoload\Loader`. The functionality remains the same. 
 > 

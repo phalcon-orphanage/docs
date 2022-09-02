@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'fr-fr'
-version: '5.0'
 title: 'Loader'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 
 # Loader
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Vue d'ensemble
 [Phalcon\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
@@ -582,5 +580,3 @@ Some things to keep in mind when using the autoloader:
 [apcu]: https://php.net/manual/en/book.apcu.php
 [loader]: api/phalcon_loader#loader
 [eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
-
-

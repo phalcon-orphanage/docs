@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ru-ru'
-version: '5.0'
 title: 'Настройка веб-сервера'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 
 # Настройка веб-сервера
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Введение
 Для работы приложения Phalcon вам нужно настроить ваш веб-сервер таким образом, чтобы он должным образом обрабатывал перенаправления. Ниже приведены инструкции для популярных веб-серверов:

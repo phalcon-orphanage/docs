@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'pt-br'
-version: '5.0'
 title: 'Environments - Nanobox'
 keywords: 'environment, nanobox, docker'
 ---
 
 # Ambientes
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **NOTE**: [Nanobox][nanobox] has been discontinued. 
 > 

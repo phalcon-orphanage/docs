@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'fa-ir'
-version: '5.0'
 title: 'Phalcon\Url'
 ---
 
@@ -11,7 +9,7 @@ title: 'Phalcon\Url'
 
 <h1 id="url">Class Phalcon\Url</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Url.zep)
 
 | Namespace  | Phalcon | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface | | Extends    | AbstractInjectionAware | | Implements | UrlInterface |
 
@@ -176,7 +174,7 @@ $url->setStaticBaseUri("/invo/");
 
 <h1 id="url-exception">Class Phalcon\Url\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Url/Exception.zep)
 
 | Namespace  | Phalcon\Url | | Extends    | \Phalcon\Exception |
 
@@ -188,7 +186,7 @@ Exceptions thrown in Phalcon\Url will use this class
 
 <h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Url/UrlInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Url/UrlInterface.zep)
 
 | Namespace  | Phalcon\Url |
 
@@ -231,5 +229,3 @@ Sets a base paths for all the generated paths
 public function setBaseUri( string $baseUri ): UrlInterface;
 ```
 Sets a prefix to all the urls generated
-
-

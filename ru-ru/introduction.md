@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ru-ru'
-version: '5.0'
 title: 'Введение'
 keywords: 'introduction'
 ---

@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: 'Devtools'
 keywords: 'devtools, developer tools, models, controllers'
 ---

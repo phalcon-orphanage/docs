@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Entorno de prueba'
 keywords: 'testing environment, codeception, testing, phpunit, tests'
 ---
 
 # Entorno de prueba
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Resumen
 La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir][zephir], which has a very similar syntax to PHP or Javascript. In [2003][2003], we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.

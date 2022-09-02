@@ -2,14 +2,13 @@
 layout: default
 language: 'tr-tr'
 upgrade: '#url'
-version: '5.0'
 title: 'URL'
 keywords: 'url, url handling, url generation, static url, dynamic url'
 ---
 
 # Url Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Genel Bakış
 [Phalcon\Mvc\Url][url] is the component responsible for generating URLs in a Phalcon application. It can also be used to construct URLs based on routes.

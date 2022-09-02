@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Loader'
 ---
 
@@ -10,7 +8,7 @@ title: 'Phalcon\Loader'
 
 <h1 id="loader">Class Phalcon\Loader</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Loader.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Loader.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | EventsAwareInterface |
 
@@ -225,11 +223,10 @@ protected function prepareNamespace( array $namespaceName ): array;
 
 <h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Loader/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Loader/Exception.zep)
 
 | Namespace | Phalcon\Loader | | Extends | \Phalcon\Exception |
 
 Phalcon\Loader\Exception
 
 Las excepciones lanzadas en Phalcon\Loader usarán esta clase
-

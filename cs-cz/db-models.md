@@ -1,7 +1,6 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '5.0'
 upgrade: '#models'
 title: 'Models'
 keywords: 'models, active record'
@@ -9,7 +8,7 @@ keywords: 'models, active record'
 
 # Models
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connects business objects and database tables, to create a persistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).

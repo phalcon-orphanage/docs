@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Solicitud de Nueva Funcionalidad'
 keywords: 'Solicitud de Nueva Funcionalidad, nfr'
 ---
 
 # Solicitud de Nueva Funcionalidad
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 [Lista de Solicitudes de Nuevas Funcionalidades](new-feature-request-list)
 

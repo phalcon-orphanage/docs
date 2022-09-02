@@ -1,7 +1,6 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '5.0'
 title: 'Phalcon\DataMapper'
 ---
 
@@ -29,7 +28,7 @@ title: 'Phalcon\DataMapper'
 
 <h1 id="datamapper-pdo-connection">Class Phalcon\DataMapper\Pdo\Connection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Connection.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Connection\AbstractConnection, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | AbstractConnection |
 
@@ -79,7 +78,7 @@ Disconnects from the database.
 
 <h1 id="datamapper-pdo-connection-abstractconnection">Abstract Class Phalcon\DataMapper\Pdo\Connection\AbstractConnection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection/AbstractConnection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Connection/AbstractConnection.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Implements | ConnectionInterface |
 
@@ -330,7 +329,7 @@ Bind a value using the proper PDO::PARAM_* type.
 
 <h1 id="datamapper-pdo-connection-connectioninterface">Interface Phalcon\DataMapper\Pdo\Connection\ConnectionInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection/ConnectionInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Connection/ConnectionInterface.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | PdoInterface |
 
@@ -453,7 +452,7 @@ Sets the Profiler instance.
 
 <h1 id="datamapper-pdo-connection-decorated">Class Phalcon\DataMapper\Pdo\Connection\Decorated</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection/Decorated.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Connection/Decorated.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotDisconnect, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | AbstractConnection |
 
@@ -488,7 +487,7 @@ Disconnects from the database; disallowed with decorated PDO connections.
 
 <h1 id="datamapper-pdo-connection-pdointerface">Interface Phalcon\DataMapper\Pdo\Connection\PdoInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Connection/PdoInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Connection/PdoInterface.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Connection |
 
@@ -585,7 +584,7 @@ Set a database connection attribute
 
 <h1 id="datamapper-pdo-connectionlocator">Class Phalcon\DataMapper\Pdo\ConnectionLocator</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/ConnectionLocator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/ConnectionLocator.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | Phalcon\DataMapper\Pdo\Connection\ConnectionInterface, Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound | | Implements | ConnectionLocatorInterface |
 
@@ -680,7 +679,7 @@ Returns a connection by name.
 
 <h1 id="datamapper-pdo-connectionlocatorinterface">Interface Phalcon\DataMapper\Pdo\ConnectionLocatorInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/ConnectionLocatorInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/ConnectionLocatorInterface.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo | | Uses       | Phalcon\DataMapper\Pdo\Connection\ConnectionInterface |
 
@@ -729,7 +728,7 @@ Sets a write connection registry entry by name.
 
 <h1 id="datamapper-pdo-exception-cannotdisconnect">Class Phalcon\DataMapper\Pdo\Exception\CannotDisconnect</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Exception/CannotDisconnect.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Exception/CannotDisconnect.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Exception | | Extends    | Exception |
 
@@ -739,7 +738,7 @@ ExtendedPdo could not disconnect; e.g., because its PDO connection was created e
 
 <h1 id="datamapper-pdo-exception-connectionnotfound">Class Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Exception/ConnectionNotFound.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Exception/ConnectionNotFound.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Exception | | Extends    | Exception |
 
@@ -749,7 +748,7 @@ Locator could not find a named connection.
 
 <h1 id="datamapper-pdo-exception-exception">Class Phalcon\DataMapper\Pdo\Exception\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Exception/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Exception/Exception.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Exception | | Extends    | \Exception |
 
@@ -759,7 +758,7 @@ Base Exception class
 
 <h1 id="datamapper-pdo-profiler-memorylogger">Class Phalcon\DataMapper\Pdo\Profiler\MemoryLogger</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/MemoryLogger.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Profiler/MemoryLogger.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\Logger\Enum, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Adapter\Noop, Phalcon\Logger\LoggerInterface | | Implements | LoggerInterface |
 
@@ -853,7 +852,7 @@ public function warning( string $message, array $context = [] ): void;
 
 <h1 id="datamapper-pdo-profiler-profiler">Class Phalcon\DataMapper\Pdo\Profiler\Profiler</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface | | Implements | ProfilerInterface |
 
@@ -957,7 +956,7 @@ Starts a profile entry.
 
 <h1 id="datamapper-pdo-profiler-profilerinterface">Interface Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Pdo/Profiler/ProfilerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Pdo/Profiler/ProfilerInterface.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\Logger\LoggerInterface |
 
@@ -1024,7 +1023,7 @@ Starts a profile entry.
 
 <h1 id="datamapper-query-abstractconditions">Abstract Class Phalcon\DataMapper\Query\AbstractConditions</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/AbstractConditions.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/AbstractConditions.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Extends    | AbstractQuery |
 
@@ -1137,7 +1136,7 @@ Processes a value (array or string) and merges it with the store
 
 <h1 id="datamapper-query-abstractquery">Abstract Class Phalcon\DataMapper\Query\AbstractQuery</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/AbstractQuery.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/AbstractQuery.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection |
 
@@ -1249,7 +1248,7 @@ Indents a collection
 
 <h1 id="datamapper-query-bind">Class Phalcon\DataMapper\Query\Bind</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Bind.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/Bind.zep)
 
 | Namespace  | Phalcon\DataMapper\Query |
 
@@ -1318,7 +1317,7 @@ Processes an array - if passed as an `inline` parameter
 
 <h1 id="datamapper-query-delete">Class Phalcon\DataMapper\Query\Delete</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Delete.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/Delete.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractConditions |
 
@@ -1367,7 +1366,7 @@ Adds the `RETURNING` clause
 
 <h1 id="datamapper-query-insert">Class Phalcon\DataMapper\Query\Insert</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Insert.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/Insert.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractQuery |
 
@@ -1432,7 +1431,7 @@ Sets a column = value condition
 
 <h1 id="datamapper-query-queryfactory">Class Phalcon\DataMapper\Query\QueryFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/QueryFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/QueryFactory.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection |
 
@@ -1492,7 +1491,7 @@ Create a new Update object
 
 <h1 id="datamapper-query-select">Class Phalcon\DataMapper\Query\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/Select.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException | | Extends    | AbstractConditions |
 
@@ -1649,7 +1648,7 @@ Statement builder
 
 <h1 id="datamapper-query-update">Class Phalcon\DataMapper\Query\Update</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/DataMapper/Query/Update.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/DataMapper/Query/Update.zep)
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractConditions |
 
@@ -1708,5 +1707,3 @@ Adds the `RETURNING` clause
 public function set( string $column, mixed $value = null ): Update;
 ```
 Sets a column = value condition
-
-

@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: '기여하기'
 keywords: 'contributing, nfr, pull request, pr, new feature request, 기여하기, 새로운 기능 요청'
 ---
 
 # 기여하기
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Phalcon에 기여하기
 Phalcon은 오픈소스 프로젝트이며 자원봉사자들의 노력과 기여에 주로 의존하고 있습니다. 누구든 기여하실 분들은 대환영입니다!

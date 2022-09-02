@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'id-id'
-version: '5.0'
 title: 'Database Abstraction Layer'
 upgrade: '#db'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
@@ -9,7 +7,7 @@ keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 
 # Database Abstraction Layer
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 The components under the `Phalcon\Db` namespace are the ones responsible for powering the  [Phalcon\Mvc\Model][mvc-model] class - the `Model` in MVC for the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.

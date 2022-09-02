@@ -1,7 +1,6 @@
 ---
 layout: default
 language: 'cs-cz'
-version: '5.0'
 title: 'Phalcon\Filter'
 ---
 
@@ -74,7 +73,7 @@ title: 'Phalcon\Filter'
 
 <h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Exception.zep)
 
 | Namespace  | Phalcon\Filter | | Extends    | \Exception |
 
@@ -86,7 +85,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 <h1 id="filter-filter">Class Phalcon\Filter\Filter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Filter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Filter.zep)
 
 | Namespace  | Phalcon\Filter | | Implements | FilterInterface |
 
@@ -184,7 +183,7 @@ Loads the objects in the internal mapper array
 
 <h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/FilterFactory.zep)
 
 | Namespace  | Phalcon\Filter | | Uses       | Phalcon\Filter\Filter |
 
@@ -211,7 +210,7 @@ Returns the available adapters
 
 <h1 id="filter-filterinterface">Interface Phalcon\Filter\FilterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/FilterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/FilterInterface.zep)
 
 | Namespace  | Phalcon\Filter |
 
@@ -230,7 +229,7 @@ Sanitizes a value with a specified single or set of sanitizers
 
 <h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/AbsInt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/AbsInt.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -251,7 +250,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alnum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Alnum.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -272,7 +271,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Alpha.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Alpha.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -293,7 +292,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-boolval">Class Phalcon\Filter\Sanitize\BoolVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/BoolVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/BoolVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -314,7 +313,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-email">Class Phalcon\Filter\Sanitize\Email</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Email.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -335,7 +334,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-floatval">Class Phalcon\Filter\Sanitize\FloatVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/FloatVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/FloatVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -356,7 +355,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-intval">Class Phalcon\Filter\Sanitize\IntVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/IntVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/IntVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -377,7 +376,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-lower">Class Phalcon\Filter\Sanitize\Lower</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Lower.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Lower.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -398,7 +397,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/LowerFirst.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/LowerFirst.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -419,7 +418,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Regex.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Regex.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -440,7 +439,7 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 <h1 id="filter-sanitize-remove">Class Phalcon\Filter\Sanitize\Remove</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Remove.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Remove.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -461,7 +460,7 @@ public function __invoke( mixed $input, mixed $replace );
 
 <h1 id="filter-sanitize-replace">Class Phalcon\Filter\Sanitize\Replace</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Replace.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Replace.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -482,7 +481,7 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 <h1 id="filter-sanitize-special">Class Phalcon\Filter\Sanitize\Special</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Special.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Special.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -503,7 +502,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-specialfull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/SpecialFull.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/SpecialFull.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -524,7 +523,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-stringval">Class Phalcon\Filter\Sanitize\StringVal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/StringVal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/StringVal.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -543,7 +542,7 @@ public function __invoke( string $input ): string;
 
 <h1 id="filter-sanitize-stringvallegacy">Class Phalcon\Filter\Sanitize\StringValLegacy</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/StringValLegacy.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/StringValLegacy.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -562,7 +561,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-sanitize-striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Striptags.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Striptags.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -583,7 +582,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Trim.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Trim.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -604,7 +603,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-upper">Class Phalcon\Filter\Sanitize\Upper</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Upper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Upper.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -625,7 +624,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperFirst.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/UpperFirst.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -646,7 +645,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/UpperWords.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/UpperWords.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -667,7 +666,7 @@ public function __invoke( string $input );
 
 <h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Sanitize/Url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Sanitize/Url.zep)
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
@@ -688,7 +687,7 @@ public function __invoke( mixed $input );
 
 <h1 id="filter-validation">Class Phalcon\Filter\Validation</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation.zep)
 
 | Namespace  | Phalcon\Filter | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Filter\Validation\ValidationInterface, Phalcon\Filter\Validation\Exception, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Filter\Validation\AbstractCombinedFieldsValidator | | Extends    | Injectable | | Implements | ValidationInterface |
 
@@ -871,7 +870,7 @@ Internal validations, if it returns true, then skip the current validator
 
 <h1 id="filter-validation-abstractcombinedfieldsvalidator">Abstract Class Phalcon\Filter\Validation\AbstractCombinedFieldsValidator</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/AbstractCombinedFieldsValidator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/AbstractCombinedFieldsValidator.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Extends    | AbstractValidator |
 
@@ -881,7 +880,7 @@ This is a base class for combined fields validators
 
 <h1 id="filter-validation-abstractvalidator">Abstract Class Phalcon\Filter\Validation\AbstractValidator</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/AbstractValidator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/AbstractValidator.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Uses       | Phalcon\Support\Helper\Arr\Whitelist, Phalcon\Messages\Message, Phalcon\Filter\Validation | | Implements | ValidatorInterface |
 
@@ -995,7 +994,7 @@ Prepares a label for the field.
 
 <h1 id="filter-validation-abstractvalidatorcomposite">Abstract Class Phalcon\Filter\Validation\AbstractValidatorComposite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/AbstractValidatorComposite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/AbstractValidatorComposite.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Uses       | Phalcon\Filter\Validation | | Extends    | AbstractValidator | | Implements | ValidatorCompositeInterface |
 
@@ -1027,7 +1026,7 @@ Executes the validation
 
 <h1 id="filter-validation-exception">Class Phalcon\Filter\Validation\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Exception.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Extends    | \Exception |
 
@@ -1037,7 +1036,7 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 
 <h1 id="filter-validation-validationinterface">Interface Phalcon\Filter\Validation\ValidationInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/ValidationInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/ValidationInterface.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Uses       | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
 
@@ -1134,7 +1133,7 @@ Validate a set of data according to a set of rules
 
 <h1 id="filter-validation-validator-alnum">Class Phalcon\Filter\Validation\Validator\Alnum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Alnum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Alnum.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1197,7 +1196,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-alpha">Class Phalcon\Filter\Validation\Validator\Alpha</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Alpha.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Alpha.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1260,7 +1259,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-between">Class Phalcon\Filter\Validation\Validator\Between</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Between.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Between.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1333,7 +1332,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-callback">Class Phalcon\Filter\Validation\Validator\Callback</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Callback.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Callback.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1406,7 +1405,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-confirmation">Class Phalcon\Filter\Validation\Validator\Confirmation</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Confirmation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Confirmation.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Exception, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1480,7 +1479,7 @@ Compare strings
 
 <h1 id="filter-validation-validator-creditcard">Class Phalcon\Filter\Validation\Validator\CreditCard</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/CreditCard.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/CreditCard.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1543,7 +1542,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-date">Class Phalcon\Filter\Validation\Validator\Date</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Date.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Date.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | DateTime, Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1611,7 +1610,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-digit">Class Phalcon\Filter\Validation\Validator\Digit</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Digit.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Digit.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1674,7 +1673,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-email">Class Phalcon\Filter\Validation\Validator\Email</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Email.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -1737,7 +1736,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-exception">Class Phalcon\Filter\Validation\Validator\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Exception.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Extends    | \Exception |
 
@@ -1747,7 +1746,7 @@ Exceptions thrown in Phalcon\Filter\Validation\Validator\* classes will use this
 
 <h1 id="filter-validation-validator-exclusionin">Class Phalcon\Filter\Validation\Validator\ExclusionIn</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/ExclusionIn.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/ExclusionIn.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception | | Extends    | AbstractValidator |
 
@@ -1821,7 +1820,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file">Class Phalcon\Filter\Validation\Validator\File</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Support\Helper\Arr\Get, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidatorComposite, Phalcon\Filter\Validation\Validator\File\MimeType, Phalcon\Filter\Validation\Validator\File\Resolution\Equal, Phalcon\Filter\Validation\Validator\File\Resolution\Max, Phalcon\Filter\Validation\Validator\File\Resolution\Min, Phalcon\Filter\Validation\Validator\File\Size\Equal, Phalcon\Filter\Validation\Validator\File\Size\Max, Phalcon\Filter\Validation\Validator\File\Size\Min | | Extends    | AbstractValidatorComposite |
 
@@ -1907,7 +1906,7 @@ Constructor
 
 <h1 id="filter-validation-validator-file-abstractfile">Abstract Class Phalcon\Filter\Validation\Validator\File\AbstractFile</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/AbstractFile.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/AbstractFile.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -2047,7 +2046,7 @@ Checks if a file has been uploaded; Internal check that can be overriden in a su
 
 <h1 id="filter-validation-validator-file-mimetype">Class Phalcon\Filter\Validation\Validator\File\MimeType</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/MimeType.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/MimeType.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Exception | | Extends    | AbstractFile |
 
@@ -2118,7 +2117,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file-resolution-equal">Class Phalcon\Filter\Validation\Validator\File\Resolution\Equal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/Resolution/Equal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/Resolution/Equal.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File\Resolution | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile | | Extends    | AbstractFile |
 
@@ -2186,7 +2185,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file-resolution-max">Class Phalcon\Filter\Validation\Validator\File\Resolution\Max</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/Resolution/Max.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/Resolution/Max.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File\Resolution | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile | | Extends    | AbstractFile |
 
@@ -2259,7 +2258,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file-resolution-min">Class Phalcon\Filter\Validation\Validator\File\Resolution\Min</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/Resolution/Min.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/Resolution/Min.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File\Resolution | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile | | Extends    | AbstractFile |
 
@@ -2332,7 +2331,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file-size-equal">Class Phalcon\Filter\Validation\Validator\File\Size\Equal</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/Size/Equal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/Size/Equal.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File\Size | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile | | Extends    | AbstractFile |
 
@@ -2405,7 +2404,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file-size-max">Class Phalcon\Filter\Validation\Validator\File\Size\Max</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/Size/Max.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/Size/Max.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File\Size | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile | | Extends    | AbstractFile |
 
@@ -2478,7 +2477,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-file-size-min">Class Phalcon\Filter\Validation\Validator\File\Size\Min</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/File/Size/Min.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/File/Size/Min.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\File\Size | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile | | Extends    | AbstractFile |
 
@@ -2551,7 +2550,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-identical">Class Phalcon\Filter\Validation\Validator\Identical</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Identical.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Identical.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -2619,7 +2618,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-inclusionin">Class Phalcon\Filter\Validation\Validator\InclusionIn</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/InclusionIn.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/InclusionIn.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception | | Extends    | AbstractValidator |
 
@@ -2687,7 +2686,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-ip">Class Phalcon\Filter\Validation\Validator\Ip</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Ip.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Ip.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Messages\Message | | Extends    | AbstractValidator |
 
@@ -2773,7 +2772,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-numericality">Class Phalcon\Filter\Validation\Validator\Numericality</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Numericality.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Numericality.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -2836,7 +2835,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-presenceof">Class Phalcon\Filter\Validation\Validator\PresenceOf</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/PresenceOf.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/PresenceOf.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -2899,7 +2898,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-regex">Class Phalcon\Filter\Validation\Validator\Regex</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Regex.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Regex.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -2967,7 +2966,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-stringlength">Class Phalcon\Filter\Validation\Validator\StringLength</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/StringLength.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/StringLength.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\AbstractValidatorComposite, Phalcon\Filter\Validation\Validator\StringLength\Max, Phalcon\Filter\Validation\Validator\StringLength\Min, Phalcon\Filter\Validation\Exception | | Extends    | AbstractValidatorComposite |
 
@@ -3042,7 +3041,7 @@ Constructor
 
 <h1 id="filter-validation-validator-stringlength-max">Class Phalcon\Filter\Validation\Validator\StringLength\Max</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/StringLength/Max.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/StringLength/Max.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\StringLength | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception | | Extends    | AbstractValidator |
 
@@ -3115,7 +3114,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-stringlength-min">Class Phalcon\Filter\Validation\Validator\StringLength\Min</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/StringLength/Min.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/StringLength/Min.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator\StringLength | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception | | Extends    | AbstractValidator |
 
@@ -3188,7 +3187,7 @@ Executes the validation
 
 <h1 id="filter-validation-validator-uniqueness">Class Phalcon\Filter\Validation\Validator\Uniqueness</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Uniqueness.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Uniqueness.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractCombinedFieldsValidator, Phalcon\Filter\Validation\Exception | | Extends    | AbstractCombinedFieldsValidator |
 
@@ -3307,7 +3306,7 @@ Uniqueness method used for model
 
 <h1 id="filter-validation-validator-url">Class Phalcon\Filter\Validation\Validator\Url</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/Validator/Url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/Validator/Url.zep)
 
 | Namespace  | Phalcon\Filter\Validation\Validator | | Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator | | Extends    | AbstractValidator |
 
@@ -3370,7 +3369,7 @@ Executes the validation
 
 <h1 id="filter-validation-validatorcompositeinterface">Interface Phalcon\Filter\Validation\ValidatorCompositeInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/ValidatorCompositeInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/ValidatorCompositeInterface.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Uses       | Phalcon\Filter\Validation |
 
@@ -3395,7 +3394,7 @@ Executes the validation
 
 <h1 id="filter-validation-validatorfactory">Class Phalcon\Filter\Validation\ValidatorFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/ValidatorFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/ValidatorFactory.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Uses       | Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
 
@@ -3434,7 +3433,7 @@ Returns the available adapters
 
 <h1 id="filter-validation-validatorinterface">Interface Phalcon\Filter\Validation\ValidatorInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Filter/Validation/ValidatorInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Filter/Validation/ValidatorInterface.zep)
 
 | Namespace  | Phalcon\Filter\Validation | | Uses       | Phalcon\Filter\Validation |
 
@@ -3483,5 +3482,3 @@ public function setTemplates( array $templates ): ValidatorInterface;
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 Executes the validation
-
-

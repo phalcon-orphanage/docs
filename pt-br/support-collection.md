@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'pt-br'
-version: '5.0'
 title: 'Coleção'
 upgrade: '#support-collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
@@ -9,7 +7,7 @@ keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializea
 
 # Coleção
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Visão Geral
 `Phalcon\Support\Collection` is an object-oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:

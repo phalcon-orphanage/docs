@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: '로더'
 keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 
 # 로더
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 [Phalcon\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
@@ -582,5 +580,3 @@ Some things to keep in mind when using the autoloader:
 [apcu]: https://php.net/manual/en/book.apcu.php
 [loader]: api/phalcon_loader#loader
 [eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
-
-

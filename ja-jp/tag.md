@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'タグ'
 keywords: 'tag, helpers, view helpers, html generators'
 ---
 
 # Tag (View Helpers)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **NOTE** `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component. 
 > 

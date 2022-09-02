@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Tutorial - REST'
 keywords: 'tutorial, tutorial rest, api, rest, paso a paso, micro'
 ---
 
 # Tutorial - REST
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Resumen
 In this tutorial, you will learn how to create a simple application that provides a [RESTful][restful] API using different HTTP methods:
