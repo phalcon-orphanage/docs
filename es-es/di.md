@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Inyector de Dependencias / Localizador de Servicios'
 keywords: 'inyección de dependencias, di, ioc, localizador servicios'
 ---
 
 # Inyector de Dependencias / Localizador de Servicios
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [Phalcon\Di\Di][di] is a container that stores services or components (classes). Estos servicios están disponibles desde la aplicación y facilitan el desarrollo. Supongamos que estamos desarrollando un componente llamado `InvoiceComponent` que realiza algunos cálculos para la factura de un cliente. Requiere una conexión de base de datos para obtener el registro `Invoice` desde la base de datos.
