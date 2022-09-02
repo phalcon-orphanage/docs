@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Use Case'
 keywords: 'use case, examples, приклади, способи використання'
 ---
 
 # Use Case
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 В межах цієї документації ми будемо припускати, що ми створюємо бухгалтерський додаток.
 
