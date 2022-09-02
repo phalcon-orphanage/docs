@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'アップグレードガイド'
 keywords: 'upgrade, v3, v4, v5'
 ---
 
 # アップグレードガイド
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Upgrading to V5
 So you have decided to upgrade to v5! **Congratulations**!!
