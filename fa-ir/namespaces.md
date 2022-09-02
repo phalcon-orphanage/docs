@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'fa-ir'
-version: '5.0'
 title: 'Namespaces'
 keywords: 'namespaces, namespaced classes'
 ---
 
 # Namespaces
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 [Namespaces][namespaces] can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
