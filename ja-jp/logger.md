@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 upgrade: '#logger'
 title: 'ログ'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'
@@ -9,7 +7,7 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 # ログ
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 概要
 [Phalcon\Logger\Logger][logger-logger] is a component providing logging services for applications. 異なるアダプタを使用して異なるバックエンドにログを記録することができます。 そして、トランザクションログ、設定オプション、さらに異なるログ形式も提供します。 You can use the [Phalcon\Logger\Logger][logger-logger] for any logging need your application has, from debugging processes to tracing application flow.
