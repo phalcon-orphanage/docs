@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'de-de'
-version: '5.0'
 title: 'Security - JWT'
 keywords: 'security, hashing, passwords, jwt, rfc7519'
 ---
 
 # Security - JSON Web Tokens (JWT)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 
