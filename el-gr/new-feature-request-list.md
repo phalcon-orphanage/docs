@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
-title: 'Λίστα Αιτημάτων Νέας Λειτουργικότητας'
-keywords: 'λίστα αιτημάτων νέας λειτουργικότητας, λίστα nfr'
+title: 'New Feature Request List'
+keywords: 'new feature request list, nfr list'
 ---
 
 # Λίστα Αιτημάτων Νέας Λειτουργικότητας
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 
 
