@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: '유효성 검사'
 upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'
@@ -9,7 +7,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 
 # Validation Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 [Phalcon\Filter\Validation][validation] is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
