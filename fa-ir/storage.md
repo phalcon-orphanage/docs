@@ -2,7 +2,7 @@
 layout: default
 language: 'fa-ir'
 version: '5.0'
-title: 'Registry'
+title: 'Storage'
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
 ---
