@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'pl-pl'
-version: '5.0'
 title: 'Controllers'
 keywords: 'controllers, mvc'
 ---
 
 # Controllers
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.
