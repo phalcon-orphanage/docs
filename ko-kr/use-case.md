@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: 'Use Case'
 keywords: 'use case, examples'
 ---
 
 # Use Case
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
