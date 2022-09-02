@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Створення зворотного трасування'
 keywords: 'backtrace, debugging, segmentation faults, зворотне трасування, відлагодження, виловлювання помилок'
 ---
 
 # Створення зворотного трасування
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Phalcon скомпільований у C-розширення, завантажене на ваш веб-сервер. Через це помилки призводять до порушення сегментації, що призводить до аварійного завершення деяких процесів вашого веб-сервера.
 
@@ -19,4 +17,3 @@ Phalcon скомпільований у C-розширення, завантаж
 [https://bugs.php.net/bugs-generating-backtrace.php](https://bugs.php.net/bugs-generating-backtrace.php)
 
 [https://bugs.php.net/bugs-generating-backtrace-win32.php](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-
