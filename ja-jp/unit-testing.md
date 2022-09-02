@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: '単体テスト'
 keywords: 'unit testing, phpunit, phalcon'
 ---
 
 # 単体テスト
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## 概要
 
