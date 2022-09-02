@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Modelo Vista Controlador (MVC)'
 upgrade: '#mvc'
 keywords: 'modelo, vista, controlador, modelo vista controlador, mvc'
@@ -9,7 +7,7 @@ keywords: 'modelo, vista, controlador, modelo vista controlador, mvc'
 
 # MVC - Modelo Vista Controlador
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Model View Controller ([MVC][wiki-mvc]) is a software architectural pattern, which divides the application logic into three interconnected elements, separating internal representations of information of the application.
