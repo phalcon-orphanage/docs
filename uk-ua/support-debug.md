@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Відлагодження'
 upgrade: '#support-debug'
 keywords: 'debug, debugging, error handling, відлагодження'
@@ -9,7 +7,7 @@ keywords: 'debug, debugging, error handling, відлагодження'
 
 # Відлагодження
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Огляд
 
