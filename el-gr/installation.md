@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'el-gr'
-version: '5.0'
 title: 'Εγκατάσταση'
 keywords: 'installation, installing Phalcon'
 ---
 
 # Εγκατάσταση
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Προϋποθέσεις
 
