@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: 'Performance'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---
 
 # Performance
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
