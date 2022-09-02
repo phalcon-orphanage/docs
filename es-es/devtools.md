@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Devtools'
 keywords: 'devtools, herramientas de desarrollo, modelos, controladores'
 ---
