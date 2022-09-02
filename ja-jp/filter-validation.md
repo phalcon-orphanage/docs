@@ -3,7 +3,7 @@ layout: default
 language: 'ja-jp'
 version: '5.0'
 title: 'バリデーション'
-upgrade: '`#validation`'
+upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 

@@ -3,7 +3,7 @@ layout: default
 language: 'ko-kr'
 version: '5.0'
 title: '유효성 검사'
-upgrade: '`#validation`'
+upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 

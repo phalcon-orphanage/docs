@@ -3,7 +3,7 @@ layout: default
 language: 'el-gr'
 version: '5.0'
 title: 'Επικύρωση'
-upgrade: '`#validation`'
+upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
