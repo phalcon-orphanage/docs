@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Índice del API'
 ---
 
@@ -10,6 +8,6 @@ title: 'Índice del API'
 ### {{ element['title'] }}
 
     {% for document in element['docs'] %}
-* [{{ document | replace: '_', '\' }}](/{{ page.version }}/{{ page.language }}/api/{{ element['title'] | replace: '\', '_' | downcase }}#{{ document | replace: '/', '-' | downcase }})
+* [{{ document | replace: '_', '\' }}](/{{ pageVersion }}/{{ pageLanguage }}/api/{{ element['title'] | replace: '\', '_' | downcase }}#{{ document | replace: '/', '-' | downcase }})
     {% endfor %}
 {% endfor %}
