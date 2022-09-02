@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Lista de Peticiones de Nuevas Características'
 keywords: 'lista peticiones nuevas características, lista nfr'
 ---
 
 # Lista de Peticiones de Nuevas Características
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 
 
