@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Vistas'
 upgrade: '#mvc'
 keywords: 'mvc, vista, componente vista, vista simple, respuestas'
@@ -9,7 +7,7 @@ keywords: 'mvc, vista, componente vista, vista simple, respuestas'
 
 # Vistas
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas formatean el contenido que necesita devolver al usuario/navegador web que inició la petición.
