@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Rendimiento'
 keywords: 'rendimiento, perfilado, xdebug, xhprof, yslow, bytecode'
 ---
 
 # Rendimiento
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Una aplicación mal escrita siempre tendrá un rendimiento malo. Una forma muy común para que los desarrolladores incrementen el rendimiento de su aplicación es:
