@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 upgrade: '#flash'
 title: 'Flash Messages'
 keywords: 'flash, flash messages, flash direct, flash session, templates'
@@ -9,7 +7,7 @@ keywords: 'flash, flash messages, flash direct, flash session, templates'
 
 # Flash Messages
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Огляд
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
