@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Περιβάλλον tests",
+                "text": "Περιβάλλον δοκιμών",
                 "url": "/testing-environment"
             },
             {
@@ -93,7 +93,7 @@
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Εντοπισμός σφαλμάτων",
                 "url": "/support-debug"
             },
             {
@@ -145,7 +145,7 @@
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Εφαρμογή",
                 "url": "/application"
             },
             {
@@ -187,7 +187,7 @@
                 "url": "/html-escaper"
             },
             {
-                "text": "Loader",
+                "text": "Φορτωτής",
                 "url": "/autoload"
             },
             {
@@ -225,7 +225,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Γεγονότα",
                 "url": "/db-models-events"
             },
             {
@@ -283,7 +283,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -309,7 +309,7 @@
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "Αποστολέας",
                 "url": "/dispatcher"
             },
             {
@@ -347,11 +347,11 @@
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Αίτηση",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Ανταπόκριση",
                 "url": "/response"
             }
         ]
@@ -379,7 +379,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Διεθνοποίηση",
                 "url": "/i18n"
             },
             {
@@ -393,19 +393,19 @@
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Συλλογή",
                 "url": "/support-collection"
             },
             {
-                "text": "Domain",
+                "text": "Τομέας",
                 "url": "/domain"
             },
             {
-                "text": "Helper",
+                "text": "Βοηθός",
                 "url": "/support-helper"
             },
             {
-                "text": "Registry",
+                "text": "Μητρώο",
                 "url": "/support-registry"
             },
             {
