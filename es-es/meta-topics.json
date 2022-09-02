@@ -344,7 +344,7 @@
         "menu": [
             {
                 "text": "Cookies",
-                "url": "/cookies"
+                "url": "/response#cookies "
             },
             {
                 "text": "Consulta",
