@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Dependency Injection / Service Locator'
 keywords: 'dependency injection, di, ioc, service locator'
 ---
 
 # Dependency Injection / Service Location
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 [Phalcon\Di\Di][di] is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
