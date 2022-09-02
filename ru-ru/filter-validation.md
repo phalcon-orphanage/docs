@@ -3,7 +3,7 @@ layout: default
 language: 'ru-ru'
 version: '5.0'
 title: 'Валидация'
-upgrade: '`#validation`'
+upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
