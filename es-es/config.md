@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Configuración'
 upgrade: '#config'
 keywords: 'config, fábrica, configuración, agrupado, ini, json, array, yaml'
@@ -9,7 +7,7 @@ keywords: 'config, fábrica, configuración, agrupado, ini, json, array, yaml'
 
 # Config
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Casi todas las aplicaciones requieren datos de configuración para funcionar correctamente. La configuración puede contener parámetros y ajustes iniciales para la aplicación como localización de ficheros de registro, valores de conexión a base de datos, servicios registrados, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy object-oriented way. El componente se puede instanciar usando un vector PHP directamente o leer ficheros de configuración desde varios formatos como se describirá más adelante en la sección de adaptadores. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object and thus inheriting its functionality.
