@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'fr-fr'
-version: '5.0'
 title: 'Phalcon\Domain'
 ---
 
@@ -14,7 +12,7 @@ title: 'Phalcon\Domain'
 
 <h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Payload.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/Payload.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable | | Implements | PayloadInterface |
 
@@ -135,7 +133,7 @@ Sets the payload status.
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/PayloadFactory.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
 
@@ -154,7 +152,7 @@ Instantiate a new object
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/PayloadInterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Extends    | ReadableInterface |
 
@@ -164,7 +162,7 @@ This interface is used for consumers
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/ReadableInterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
@@ -213,7 +211,7 @@ Gets the status of this payload.
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/Status.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/Status.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
 
@@ -256,7 +254,7 @@ Instantiation not allowed.
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Domain/Payload/WriteableInterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload | | Uses       | Throwable |
 
@@ -299,5 +297,3 @@ Sets the output produced from the domain layer.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
-
-
