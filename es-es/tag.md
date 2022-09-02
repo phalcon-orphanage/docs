@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Tag'
 keywords: 'etiqueta, ayudantes, ayudantes vista, generadores html'
 ---
 
 # Etiqueta (Ayudantes Vista)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 > **NOTE** `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component. 
 > 
