@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'id-id'
-version: '5.0'
 title: 'Version'
 upgrade: '#version'
 keywords: 'registry'
@@ -9,7 +7,7 @@ keywords: 'registry'
 
 # Version Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 [Phalcon\Support\Version][version] is a small but handy class, that returns the current version of Phalcon installed in your system.
