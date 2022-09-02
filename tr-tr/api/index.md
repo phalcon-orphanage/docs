@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'tr-tr'
-version: '5.0'
 title: 'API Bölüm'
 ---
 
@@ -10,6 +8,6 @@ title: 'API Bölüm'
 ### {{ element['title'] }}
 
     {% for document in element['docs'] %}
-* [{{ document | replace: '_', '\' }}](/{{ page.version }}/{{ page.language }}/api/{{ element['title'] | replace: '\', '_' | downcase }}#{{ document | replace: '/', '-' | downcase }})
+* [{{ document | replace: '_', '\' }}](/{{ pageVersion }}/{{ pageLanguage }}/api/{{ element['title'] | replace: '\', '_' | downcase }}#{{ document | replace: '/', '-' | downcase }})
     {% endfor %}
 {% endfor %}
