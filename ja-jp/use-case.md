@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: '使用例'
 keywords: 'use case, examples'
 ---
 
 # 使用例
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
