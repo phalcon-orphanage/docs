@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'it-it'
-version: '5.0'
 title: 'Introduction'
 keywords: 'introduction'
 ---
