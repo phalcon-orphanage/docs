@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Formularios'
 upgrade: '#forms'
 keywords: 'forms, renderizar html, validación, elementos'
@@ -9,7 +7,7 @@ keywords: 'forms, renderizar html, validación, elementos'
 
 # Formularios
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Phalcon ofrece un componente bajo el espacio de nombres `Phalcon\Forms` que ayuda a los desarrolladores a crear y mantener formularios que se pueden usar para renderizar elementos HTML en pantalla además de realizar validaciones sobre los datos introducidos en esos elementos.
