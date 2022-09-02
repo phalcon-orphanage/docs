@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Controladores'
 keywords: 'controllers, mvc'
 ---
 
 # Controladores
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Un controlador es una clase que contiene la lógica de negocio para una aplicación. También es responsable de ejecutar las solicitudes de los usuarios. Controllers have methods called _actions_ that contain such business logic and handle user requests.
