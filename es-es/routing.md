@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Ruteo'
 upgrade: '#router'
 keywords: 'enrutamiento, rutas'
@@ -9,7 +7,7 @@ keywords: 'enrutamiento, rutas'
 
 # Componente de Enrutamiento
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 The [Phalcon\Mvc\Router][mvc-router] component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. El enrutador tiene dos modos: modo MVC y modo de sólo coincidencia. El primer modo es ideal para trabajar con aplicaciones MVC.
