@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: '설치'
 keywords: '설치, Phalcon 설치, 팔콘설치'
 ---
 
 # 설치
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Requirements
 
