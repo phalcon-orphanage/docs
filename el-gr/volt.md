@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 upgrade: '#mvc'
 title: 'Volt: Template Engine'
@@ -83,7 +83,7 @@ public function __construct(
 
 The constructor accepts a [Phalcon\Mvc\View](views) or any component that implements the `ViewBaseInterface`, and a DI container.
 
-## Methods
+## Μέθοδοι
 There are several methods available in Volt. In most cases, only a handful of them are used in modern day applications.
 
 ```php
@@ -1293,7 +1293,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `version_id`  | Returns the current version id of the framework             |
 
-## View
+## Προβολή
 Also, Volt is integrated with [Phalcon\Mvc\View](views), you can play with the view hierarchy and include partials as well:
 
 ```twig
