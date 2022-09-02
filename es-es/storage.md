@@ -2,7 +2,7 @@
 layout: default
 language: 'es-es'
 version: '5.0'
-title: 'Registro'
+title: 'Storage'
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
 ---
