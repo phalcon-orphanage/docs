@@ -279,7 +279,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -439,7 +439,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Συλλογή",
+                "text": "Collection",
                 "url": "/collection"
             },
             {
