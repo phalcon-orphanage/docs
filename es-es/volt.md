@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: '#mvc'
 title: 'Volt: Motor de plantillas'
 keywords: 'volt, motor de plantillas, generación php, datos de vista'
@@ -9,7 +7,7 @@ keywords: 'volt, motor de plantillas, generación php, datos de vista'
 
 # Volt: Motor de plantillas
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Volt es un motor de plantillas ultrarrápido y de diseño amigable, escrito en C para PHP. Ofrece un conjunto de ayudantes para escribir las vistas fácilmente. Volt is highly integrated with other components of Phalcon, but can be used as a stand-alone component in your application.
