@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Навчальний посібник - Vökuró'
 keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions, навчальний посібник vokuro, крок за кроком, безпека, дозволи'
 ---
 
 # Навчальний посібник - Vökuró
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Vökuró
 [Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
