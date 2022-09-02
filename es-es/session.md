@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Session'
 upgrade: '#session'
 keywords: 'sesión, gestor de sesiones, adaptadores de sesión, redis, libmemcached, none, stream'
@@ -9,7 +7,7 @@ keywords: 'sesión, gestor de sesiones, adaptadores de sesión, redis, libmemcac
 
 # Session
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Las sesiones se usan en PHP para persistir datos entre peticiones. Esto permite a los desarrolladores construir mejores aplicaciones y aumentar la experiencia de usuario. Un uso muy común de las sesiones es mantener si un usuario está conectado o no. [Phalcon\Session\Manager][session-manager] is an object-oriented approach to handle sessions using Phalcon. Hay varias razones para usar este componentes en lugar de las sesiones originales o acceder al superglobal `$_SESSION`:
