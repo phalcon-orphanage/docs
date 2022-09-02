@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'fr-fr'
-version: '5.0'
 title: 'Phalcon\Support'
 ---
 
@@ -81,7 +79,7 @@ title: 'Phalcon\Support'
 
 <h1 id="support-collection">Class Phalcon\Support\Collection</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Collection.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Collection.zep)
 
 | Namespace  | Phalcon\Support | | Uses       | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, InvalidArgumentException, JsonSerializable, Phalcon\Support\Collection\CollectionInterface, Serializable, Traversable | | Implements | ArrayAccess, CollectionInterface, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
@@ -296,7 +294,7 @@ Internal method to set data
 
 <h1 id="support-collection-collectioninterface">Interface Phalcon\Support\Collection\CollectionInterface</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Collection/CollectionInterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Collection/CollectionInterface.zep)
 
 | Namespace  | Phalcon\Support\Collection |
 
@@ -369,7 +367,7 @@ public function toJson( int $options = int ): string;
 
 <h1 id="support-collection-exception">Class Phalcon\Support\Collection\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Collection/Exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Collection/Exception.zep)
 
 | Namespace  | Phalcon\Support\Collection | | Uses       | Throwable | | Extends    | \Exception |
 
@@ -379,7 +377,7 @@ Exceptions for the Collection object
 
 <h1 id="support-collection-readonlycollection">Class Phalcon\Support\Collection\ReadOnlyCollection</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Collection/ReadOnlyCollection.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Collection/ReadOnlyCollection.zep)
 
 | Namespace  | Phalcon\Support\Collection | | Uses       | Phalcon\Support\Collection | | Extends    | Collection |
 
@@ -404,7 +402,7 @@ Set an element in the collection
 
 <h1 id="support-debug">Class Phalcon\Support\Debug</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Debug.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Debug.zep)
 
 | Namespace  | Phalcon\Support | | Uses       | ErrorException, Phalcon\Support\Debug\Exception, ReflectionClass, ReflectionException, ReflectionFunction, Throwable |
 
@@ -589,7 +587,7 @@ Shows a backtrace item
 
 <h1 id="support-debug-dump">Class Phalcon\Support\Debug\Dump</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Debug/Dump.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Debug/Dump.zep)
 
 | Namespace  | Phalcon\Support\Debug | | Uses       | InvalidArgumentException, Phalcon\Di\Di, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
@@ -722,7 +720,7 @@ Prepare an HTML string of information about a single variable.
 
 <h1 id="support-debug-exception">Class Phalcon\Support\Debug\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Debug/Exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Debug/Exception.zep)
 
 | Namespace  | Phalcon\Support\Debug | | Extends    | \Exception |
 
@@ -732,7 +730,7 @@ Exceptions thrown in Phalcon\Debug will use this class
 
 <h1 id="support-exception">Class Phalcon\Support\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Exception.zep)
 
 | Namespace  | Phalcon\Support | | Extends    | \Exception |
 
@@ -742,7 +740,7 @@ Phalcon\Support\Exception
 
 <h1 id="support-helper-arr-abstractarr">Abstract Class Phalcon\Support\Helper\Arr\AbstractArr</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/AbstractArr.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/AbstractArr.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -763,7 +761,7 @@ Helper method to filter the collection
 
 <h1 id="support-helper-arr-blacklist">Class Phalcon\Support\Helper\Arr\Blacklist</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Blacklist.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Blacklist.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -782,7 +780,7 @@ public function __invoke( array $collection, array $blackList ): array;
 
 <h1 id="support-helper-arr-chunk">Class Phalcon\Support\Helper\Arr\Chunk</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Chunk.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Chunk.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -801,7 +799,7 @@ public function __invoke( array $collection, int $size, bool $preserveKeys = boo
 
 <h1 id="support-helper-arr-filter">Class Phalcon\Support\Helper\Arr\Filter</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Filter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Filter.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -820,7 +818,7 @@ public function __invoke( array $collection, mixed $method = null ): mixed;
 
 <h1 id="support-helper-arr-first">Class Phalcon\Support\Helper\Arr\First</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/First.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/First.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -839,7 +837,7 @@ public function __invoke( array $collection, mixed $method = null ): mixed;
 
 <h1 id="support-helper-arr-firstkey">Class Phalcon\Support\Helper\Arr\FirstKey</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/FirstKey.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/FirstKey.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -858,7 +856,7 @@ public function __invoke( array $collection, mixed $method = null ): mixed;
 
 <h1 id="support-helper-arr-flatten">Class Phalcon\Support\Helper\Arr\Flatten</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Flatten.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Flatten.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -877,7 +875,7 @@ public function __invoke( array $collection, bool $deep = bool ): array;
 
 <h1 id="support-helper-arr-get">Class Phalcon\Support\Helper\Arr\Get</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Get.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Get.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -896,7 +894,7 @@ public function __invoke( array $collection, mixed $index, mixed $defaultValue =
 
 <h1 id="support-helper-arr-group">Class Phalcon\Support\Helper\Arr\Group</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Group.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Group.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -915,7 +913,7 @@ public function __invoke( array $collection, mixed $method ): array;
 
 <h1 id="support-helper-arr-has">Class Phalcon\Support\Helper\Arr\Has</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Has.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Has.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -934,7 +932,7 @@ public function __invoke( array $collection, mixed $index ): bool;
 
 <h1 id="support-helper-arr-isunique">Class Phalcon\Support\Helper\Arr\IsUnique</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/IsUnique.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/IsUnique.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -953,7 +951,7 @@ public function __invoke( array $collection ): bool;
 
 <h1 id="support-helper-arr-last">Class Phalcon\Support\Helper\Arr\Last</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Last.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Last.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -972,7 +970,7 @@ public function __invoke( array $collection, mixed $method = null ): mixed;
 
 <h1 id="support-helper-arr-lastkey">Class Phalcon\Support\Helper\Arr\LastKey</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/LastKey.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/LastKey.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -991,7 +989,7 @@ public function __invoke( array $collection, mixed $method = null ): mixed;
 
 <h1 id="support-helper-arr-order">Class Phalcon\Support\Helper\Arr\Order</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Order.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Order.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1016,7 +1014,7 @@ public function __invoke( array $collection, mixed $attribute, int $order = stat
 
 <h1 id="support-helper-arr-pluck">Class Phalcon\Support\Helper\Arr\Pluck</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Pluck.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Pluck.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1035,7 +1033,7 @@ public function __invoke( array $collection, string $element ): array;
 
 <h1 id="support-helper-arr-set">Class Phalcon\Support\Helper\Arr\Set</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Set.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Set.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1054,7 +1052,7 @@ public function __invoke( array $collection, mixed $value, mixed $index = null )
 
 <h1 id="support-helper-arr-sliceleft">Class Phalcon\Support\Helper\Arr\SliceLeft</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/SliceLeft.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/SliceLeft.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1073,7 +1071,7 @@ public function __invoke( array $collection, int $elements = int ): array;
 
 <h1 id="support-helper-arr-sliceright">Class Phalcon\Support\Helper\Arr\SliceRight</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/SliceRight.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/SliceRight.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1092,7 +1090,7 @@ public function __invoke( array $collection, int $elements = int ): array;
 
 <h1 id="support-helper-arr-split">Class Phalcon\Support\Helper\Arr\Split</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Split.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Split.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1111,7 +1109,7 @@ public function __invoke( array $collection ): array;
 
 <h1 id="support-helper-arr-toobject">Class Phalcon\Support\Helper\Arr\ToObject</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/ToObject.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/ToObject.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr |
 
@@ -1130,7 +1128,7 @@ public function __invoke( array $collection ): object;
 
 <h1 id="support-helper-arr-validateall">Class Phalcon\Support\Helper\Arr\ValidateAll</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/ValidateAll.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/ValidateAll.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -1149,7 +1147,7 @@ public function __invoke( array $collection, mixed $method ): bool;
 
 <h1 id="support-helper-arr-validateany">Class Phalcon\Support\Helper\Arr\ValidateAny</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/ValidateAny.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/ValidateAny.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -1168,7 +1166,7 @@ public function __invoke( array $collection, mixed $method ): bool;
 
 <h1 id="support-helper-arr-whitelist">Class Phalcon\Support\Helper\Arr\Whitelist</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Arr/Whitelist.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Arr/Whitelist.zep)
 
 | Namespace  | Phalcon\Support\Helper\Arr | | Extends    | AbstractArr |
 
@@ -1187,7 +1185,7 @@ public function __invoke( array $collection, array $whiteList ): array;
 
 <h1 id="support-helper-exception">Class Phalcon\Support\Helper\Exception</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Exception.zep)
 
 | Namespace  | Phalcon\Support\Helper | | Extends    | \Exception |
 
@@ -1196,7 +1194,7 @@ public function __invoke( array $collection, array $whiteList ): array;
 
 <h1 id="support-helper-file-basename">Class Phalcon\Support\Helper\File\Basename</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/File/Basename.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/File/Basename.zep)
 
 | Namespace  | Phalcon\Support\Helper\File |
 
@@ -1215,7 +1213,7 @@ public function __invoke( string $uri, string $suffix = null ): string;
 
 <h1 id="support-helper-json-decode">Class Phalcon\Support\Helper\Json\Decode</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Json/Decode.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Json/Decode.zep)
 
 | Namespace  | Phalcon\Support\Helper\Json | | Uses       | InvalidArgumentException |
 
@@ -1234,7 +1232,7 @@ public function __invoke( string $data, bool $associative = bool, int $depth = i
 
 <h1 id="support-helper-json-encode">Class Phalcon\Support\Helper\Json\Encode</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Json/Encode.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Json/Encode.zep)
 
 | Namespace  | Phalcon\Support\Helper\Json | | Uses       | JsonException |
 
@@ -1259,7 +1257,7 @@ public function __invoke( mixed $data, int $options = int, int $depth = int ): s
 
 <h1 id="support-helper-number-isbetween">Class Phalcon\Support\Helper\Number\IsBetween</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Number/IsBetween.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Number/IsBetween.zep)
 
 | Namespace  | Phalcon\Support\Helper\Number |
 
@@ -1278,7 +1276,7 @@ public function __invoke( int $value, int $start, int $end ): bool;
 
 <h1 id="support-helper-str-abstractstr">Abstract Class Phalcon\Support\Helper\Str\AbstractStr</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/AbstractStr.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/AbstractStr.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1325,7 +1323,7 @@ Uppercases a string using mbstring
 
 <h1 id="support-helper-str-camelize">Class Phalcon\Support\Helper\Str\Camelize</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Camelize.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Camelize.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | PascalCase |
 
@@ -1344,7 +1342,7 @@ public function __invoke( string $text, string $delimiters = null, bool $lowerFi
 
 <h1 id="support-helper-str-concat">Class Phalcon\Support\Helper\Str\Concat</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Concat.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Concat.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Uses       | Phalcon\Support\Helper\Exception | | Extends    | AbstractStr |
 
@@ -1363,7 +1361,7 @@ public function __invoke(): string;
 
 <h1 id="support-helper-str-countvowels">Class Phalcon\Support\Helper\Str\CountVowels</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/CountVowels.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/CountVowels.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1382,7 +1380,7 @@ public function __invoke( string $text ): int;
 
 <h1 id="support-helper-str-decapitalize">Class Phalcon\Support\Helper\Str\Decapitalize</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Decapitalize.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Decapitalize.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1401,7 +1399,7 @@ public function __invoke( string $text, bool $upperRest = bool, string $encoding
 
 <h1 id="support-helper-str-decrement">Class Phalcon\Support\Helper\Str\Decrement</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Decrement.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Decrement.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1420,7 +1418,7 @@ public function __invoke( string $text, string $separator = string ): string;
 
 <h1 id="support-helper-str-dirfromfile">Class Phalcon\Support\Helper\Str\DirFromFile</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/DirFromFile.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/DirFromFile.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1439,7 +1437,7 @@ public function __invoke( string $file ): string;
 
 <h1 id="support-helper-str-dirseparator">Class Phalcon\Support\Helper\Str\DirSeparator</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/DirSeparator.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/DirSeparator.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1458,7 +1456,7 @@ public function __invoke( string $directory ): string;
 
 <h1 id="support-helper-str-dynamic">Class Phalcon\Support\Helper\Str\Dynamic</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Dynamic.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Dynamic.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Uses       | RuntimeException |
 
@@ -1477,7 +1475,7 @@ public function __invoke( string $text, string $leftDelimiter = string, string $
 
 <h1 id="support-helper-str-endswith">Class Phalcon\Support\Helper\Str\EndsWith</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/EndsWith.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/EndsWith.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1496,7 +1494,7 @@ public function __invoke( string $haystack, string $needle, bool $ignoreCase = b
 
 <h1 id="support-helper-str-firstbetween">Class Phalcon\Support\Helper\Str\FirstBetween</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/FirstBetween.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/FirstBetween.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1515,7 +1513,7 @@ public function __invoke( string $text, string $start, string $end ): string;
 
 <h1 id="support-helper-str-friendly">Class Phalcon\Support\Helper\Str\Friendly</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Friendly.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Friendly.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Uses       | Phalcon\Support\Helper\Exception | | Extends    | AbstractStr |
 
@@ -1534,7 +1532,7 @@ public function __invoke( string $text, string $separator = string, bool $lowerc
 
 <h1 id="support-helper-str-humanize">Class Phalcon\Support\Helper\Str\Humanize</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Humanize.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Humanize.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1553,7 +1551,7 @@ public function __invoke( string $text ): string;
 
 <h1 id="support-helper-str-includes">Class Phalcon\Support\Helper\Str\Includes</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Includes.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Includes.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1572,7 +1570,7 @@ public function __invoke( string $haystack, string $needle ): bool;
 
 <h1 id="support-helper-str-increment">Class Phalcon\Support\Helper\Str\Increment</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Increment.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Increment.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1591,7 +1589,7 @@ public function __invoke( string $text, string $separator = string ): string;
 
 <h1 id="support-helper-str-interpolate">Class Phalcon\Support\Helper\Str\Interpolate</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Interpolate.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Interpolate.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1612,7 +1610,7 @@ public function __invoke( string $message, array $context = [], string $leftToke
 
 <h1 id="support-helper-str-isanagram">Class Phalcon\Support\Helper\Str\IsAnagram</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/IsAnagram.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/IsAnagram.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1631,7 +1629,7 @@ public function __invoke( string $first, string $second ): bool;
 
 <h1 id="support-helper-str-islower">Class Phalcon\Support\Helper\Str\IsLower</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/IsLower.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/IsLower.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1650,7 +1648,7 @@ public function __invoke( string $text, string $encoding = string ): bool;
 
 <h1 id="support-helper-str-ispalindrome">Class Phalcon\Support\Helper\Str\IsPalindrome</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/IsPalindrome.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/IsPalindrome.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1669,7 +1667,7 @@ public function __invoke( string $text ): bool;
 
 <h1 id="support-helper-str-isupper">Class Phalcon\Support\Helper\Str\IsUpper</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/IsUpper.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/IsUpper.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1688,7 +1686,7 @@ public function __invoke( string $text, string $encoding = string ): bool;
 
 <h1 id="support-helper-str-kebabcase">Class Phalcon\Support\Helper\Str\KebabCase</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/KebabCase.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/KebabCase.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | PascalCase |
 
@@ -1707,7 +1705,7 @@ public function __invoke( string $text, string $delimiters = null ): string;
 
 <h1 id="support-helper-str-len">Class Phalcon\Support\Helper\Str\Len</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Len.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Len.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1726,7 +1724,7 @@ public function __invoke( string $text, string $encoding = string ): int;
 
 <h1 id="support-helper-str-lower">Class Phalcon\Support\Helper\Str\Lower</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Lower.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Lower.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1745,7 +1743,7 @@ public function __invoke( string $text, string $encoding = string ): string;
 
 <h1 id="support-helper-str-pascalcase">Class Phalcon\Support\Helper\Str\PascalCase</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/PascalCase.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/PascalCase.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1768,7 +1766,7 @@ protected function processArray( string $text, string $delimiters = null ): arra
 
 <h1 id="support-helper-str-prefix">Class Phalcon\Support\Helper\Str\Prefix</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Prefix.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Prefix.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1787,7 +1785,7 @@ public function __invoke( mixed $text, string $prefix ): string;
 
 <h1 id="support-helper-str-random">Class Phalcon\Support\Helper\Str\Random</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Random.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Random.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1816,7 +1814,7 @@ public function __invoke( int $type = static-constant-access, int $length = int 
 
 <h1 id="support-helper-str-reduceslashes">Class Phalcon\Support\Helper\Str\ReduceSlashes</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/ReduceSlashes.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/ReduceSlashes.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1835,7 +1833,7 @@ public function __invoke( string $text ): string;
 
 <h1 id="support-helper-str-snakecase">Class Phalcon\Support\Helper\Str\SnakeCase</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/SnakeCase.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/SnakeCase.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | PascalCase |
 
@@ -1854,7 +1852,7 @@ public function __invoke( string $text, string $delimiters = null ): string;
 
 <h1 id="support-helper-str-startswith">Class Phalcon\Support\Helper\Str\StartsWith</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/StartsWith.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/StartsWith.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1873,7 +1871,7 @@ public function __invoke( string $haystack, string $needle, bool $ignoreCase = b
 
 <h1 id="support-helper-str-suffix">Class Phalcon\Support\Helper\Str\Suffix</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Suffix.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Suffix.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1892,7 +1890,7 @@ public function __invoke( mixed $text, string $suffix ): string;
 
 <h1 id="support-helper-str-ucwords">Class Phalcon\Support\Helper\Str\Ucwords</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Ucwords.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Ucwords.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1911,7 +1909,7 @@ public function __invoke( string $text, string $encoding = string ): string;
 
 <h1 id="support-helper-str-uncamelize">Class Phalcon\Support\Helper\Str\Uncamelize</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Uncamelize.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Uncamelize.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1930,7 +1928,7 @@ public function __invoke( string $text, string $delimiter = string ): string;
 
 <h1 id="support-helper-str-underscore">Class Phalcon\Support\Helper\Str\Underscore</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Underscore.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Underscore.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str |
 
@@ -1949,7 +1947,7 @@ public function __invoke( string $text ): string;
 
 <h1 id="support-helper-str-upper">Class Phalcon\Support\Helper\Str\Upper</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Helper/Str/Upper.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Helper/Str/Upper.zep)
 
 | Namespace  | Phalcon\Support\Helper\Str | | Extends    | AbstractStr |
 
@@ -1968,7 +1966,7 @@ public function __invoke( string $text, string $encoding = string ): string;
 
 <h1 id="support-helperfactory">Class Phalcon\Support\HelperFactory</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/HelperFactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/HelperFactory.zep)
 
 | Namespace  | Phalcon\Support | | Uses       | Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
 
@@ -2007,7 +2005,7 @@ Returns the available adapters
 
 <h1 id="support-registry">Final Class Phalcon\Support\Registry</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Registry.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Registry.zep)
 
 | Namespace  | Phalcon\Support | | Uses       | Phalcon\Support\Collection, Traversable | | Extends    | Collection |
 
@@ -2208,7 +2206,7 @@ Constructs the object
 
 <h1 id="support-version">Class Phalcon\Support\Version</h1>
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Support/Version.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Support/Version.zep)
 
 | Namespace  | Phalcon\Support |
 
@@ -2262,5 +2260,3 @@ protected function getVersion(): array;
 Area where the version number is set. The format is as follows: ABBCCDE
 
 A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Special release version i.e. RC1, Beta2 etc.
-
-
