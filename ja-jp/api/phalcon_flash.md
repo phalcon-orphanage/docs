@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'Phalcon\Flash'
 ---
 
@@ -13,7 +11,7 @@ title: 'Phalcon\Flash'
 
 <h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/AbstractFlash.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/AbstractFlash.zep)
 
 | Namespace  | Phalcon\Flash | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface, Phalcon\Support\Helper\Str\Interpolate | | Extends    | AbstractInjectionAware | | Implements | FlashInterface |
 
@@ -215,7 +213,7 @@ $flash->warning("Hey, this is important");
 
 <h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Direct.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/Direct.zep)
 
 | Namespace  | Phalcon\Flash | | Extends    | AbstractFlash |
 
@@ -242,7 +240,7 @@ Prints the messages accumulated in the flasher
 
 <h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/Exception.zep)
 
 | Namespace  | Phalcon\Flash | | Extends    | \Exception |
 
@@ -252,7 +250,7 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/FlashInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/FlashInterface.zep)
 
 | Namespace  | Phalcon\Flash |
 
@@ -297,7 +295,7 @@ Shows a HTML warning message
 
 <h1 id="flash-session">Class Phalcon\Flash\Session</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Flash/Session.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Flash/Session.zep)
 
 | Namespace  | Phalcon\Flash | | Uses       | Phalcon\Session\ManagerInterface | | Extends    | AbstractFlash |
 
@@ -363,5 +361,3 @@ Returns the messages stored in session
 protected function setSessionMessages( array $messages ): array;
 ```
 Stores the messages in session
-
-
