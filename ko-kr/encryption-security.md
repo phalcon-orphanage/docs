@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ko-kr'
-version: '5.0'
 title: '보안'
 upgrade: '#security'
 keywords: 'security, hashing, passwords'
@@ -9,7 +7,7 @@ keywords: 'security, hashing, passwords'
 
 # 보안
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 
