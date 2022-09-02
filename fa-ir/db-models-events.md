@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'fa-ir'
-version: '5.0'
 title: 'Model Events'
 keywords: 'models, events, events manager'
 ---
 
 # Model Events
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of execution:
