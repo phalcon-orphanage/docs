@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '5.0'
 title: 'Phalcon\Translate'
 ---
 
@@ -19,7 +17,7 @@ title: 'Phalcon\Translate'
 
 <h1 id="translate-adapter-abstractadapter">Abstract Class Phalcon\Translate\Adapter\AbstractAdapter</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/AbstractAdapter.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Translate\Adapter | | Uses       | Phalcon\Support\Helper\Arr\Get, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Implements | AdapterInterface |
 
@@ -98,7 +96,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-adapter-adapterinterface">Interface Phalcon\Translate\Adapter\AdapterInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/AdapterInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Translate\Adapter |
 
@@ -131,7 +129,7 @@ Returns the translation string of the given key
 
 <h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/Csv.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Adapter/Csv.zep)
 
 | Namespace  | Phalcon\Translate\Adapter | | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends    | AbstractAdapter | | Implements | ArrayAccess |
 
@@ -193,7 +191,7 @@ protected function phpFopen( string $filename, string $mode );
 
 <h1 id="translate-adapter-gettext">Class Phalcon\Translate\Adapter\Gettext</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/Gettext.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Adapter/Gettext.zep)
 
 | Namespace  | Phalcon\Translate\Adapter | | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends    | AbstractAdapter | | Implements | ArrayAccess |
 
@@ -366,7 +364,7 @@ Validator for constructor
 
 <h1 id="translate-adapter-nativearray">Class Phalcon\Translate\Adapter\NativeArray</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Adapter/NativeArray.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Adapter/NativeArray.zep)
 
 | Namespace  | Phalcon\Translate\Adapter | | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends    | AbstractAdapter | | Implements | ArrayAccess |
 
@@ -435,7 +433,7 @@ Returns the internal array
 
 <h1 id="translate-exception">Class Phalcon\Translate\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Exception.zep)
 
 | Namespace  | Phalcon\Translate | | Extends    | \Exception |
 
@@ -447,7 +445,7 @@ Class for exceptions thrown by Phalcon\Translate
 
 <h1 id="translate-interpolator-associativearray">Class Phalcon\Translate\Interpolator\AssociativeArray</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/AssociativeArray.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Interpolator/AssociativeArray.zep)
 
 | Namespace  | Phalcon\Translate\Interpolator | | Uses       | Phalcon\Support\Helper\Str\Interpolate | | Implements | InterpolatorInterface |
 
@@ -468,7 +466,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolator-indexedarray">Class Phalcon\Translate\Interpolator\IndexedArray</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/IndexedArray.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Interpolator/IndexedArray.zep)
 
 | Namespace  | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
 
@@ -489,7 +487,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolator-interpolatorinterface">Interface Phalcon\Translate\Interpolator\InterpolatorInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
 
 | Namespace  | Phalcon\Translate\Interpolator |
 
@@ -510,7 +508,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolatorfactory">Class Phalcon\Translate\InterpolatorFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/InterpolatorFactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/InterpolatorFactory.zep)
 
 | Namespace  | Phalcon\Translate | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Interpolator\InterpolatorInterface | | Extends    | AbstractFactory |
 
@@ -549,7 +547,7 @@ Returns the available adapters
 
 <h1 id="translate-translatefactory">Class Phalcon\Translate\TranslateFactory</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Translate/TranslateFactory.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Translate/TranslateFactory.zep)
 
 | Namespace  | Phalcon\Translate | | Uses       | Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends    | AbstractFactory |
 
@@ -597,5 +595,3 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
-
-
