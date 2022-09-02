@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'id-id'
-version: '5.0'
 title: 'Helper'
 keywords: 'helper, text, factory'
 ---
 
 # Helper
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 [Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers and strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
