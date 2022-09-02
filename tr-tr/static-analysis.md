@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'tr-tr'
-version: '5.0'
 title: 'Static Analysis'
 keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 ---
 
 # Static Analysis
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Genel Bakış
 
