@@ -1,15 +1,13 @@
 ---
 layout: default
-language: 'el-gr'
-version: '5.0'
 upgrade: '#acl'
-title: 'Λίστες ελέγχου πρόσβασης (ACL)'
+title: 'Access Control Lists (ACL)'
 keywords: 'acl, access control list, permissions'
 ---
 
 # Λίστες ελέγχου πρόσβασης (ACL)
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Οι Λίστες Ελέγχου Πρόσβασης][acl] (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
