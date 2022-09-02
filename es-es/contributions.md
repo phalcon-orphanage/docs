@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Contribuciones'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 
 # Contribuciones
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Cómo contribuir en Phalcon
 Phalcon es un proyecto de código abierto que depende en gran medida de los esfuerzos y contribuciones voluntarias. ¡Por lo que son bienvenidas las contribuciones de todos!
