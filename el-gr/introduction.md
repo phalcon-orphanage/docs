@@ -1,9 +1,9 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '5.0'
 title: 'Εισαγωγή'
-keywords: 'introduction'
+keywords: 'εισαγωγή'
 ---
 
 # Καλώς ορίσατε
