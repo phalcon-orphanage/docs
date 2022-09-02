@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'it-it'
-version: '5.0'
 title: 'Crypt'
 upgrade: '#encryption'
 keywords: 'crypt, encryption, decryption, ciphers'
@@ -9,7 +7,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 
 # Crypt Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Overview
 
