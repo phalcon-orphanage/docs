@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'uk-ua'
-version: '5.0'
 title: 'Участь у розвитку'
 keywords: 'contributing, nfr, pull request, pr, new feature request, участь у розвитку фреймворка, звф, вдосконалення функціоналу'
 ---
 
 # Участь у розвитку фреймворка
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Участь у розвитку Phalcon
 Phalcon - проект з відкритим вихідним кодом, який значною мірою залежить від зусиль добровольців та пожертв. Ми будемо вдячні за будь-яку допомогу у розвитку фреймворка!
