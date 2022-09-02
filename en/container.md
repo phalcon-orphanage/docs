@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Dependency Injection Container (PSR-11)'
 keywords: 'psr-11, di, container, dependency injection'

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Validation'
 keywords: 'validation, validating forms, validating models, validating data'

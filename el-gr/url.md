@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 upgrade: '#url'
 version: '4.0'
 title: 'URL'

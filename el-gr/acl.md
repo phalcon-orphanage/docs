@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 upgrade: '#acl'
 title: 'Λίστες ελέγχου πρόσβασης (ACL)'

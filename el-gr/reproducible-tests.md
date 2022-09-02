@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Αναπαραγώγιμες Δοκιμές'
 keywords: 'tests, testing, reproducible tests'

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Phalcon Query Language (PHQL)'
 keywords: 'phql, phalcon query language, query language'

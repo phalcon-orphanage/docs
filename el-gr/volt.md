@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 upgrade: '#volt'
 title: 'Volt: Template Engine'

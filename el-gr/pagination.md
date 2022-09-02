@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Σελιδοποίηση'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'

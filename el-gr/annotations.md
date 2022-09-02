@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Σχολιασμοί'
 keywords: 'annotations, routing, annotations parser, docblocks'

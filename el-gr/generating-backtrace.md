@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'en'
 version: '4.0'
 title: 'Generating a backtrace'
 keywords: 'backtrace, debugging, segmentation faults'
