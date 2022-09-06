@@ -1,9 +1,5 @@
 ---
 layout: default
-<<<<<<< HEAD
-=======
-language: 'cs-cz'
->>>>>>> 5.0
 title: 'Environments - Nanobox'
 keywords: 'environment, nanobox, docker'
 ---
