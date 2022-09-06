@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#models'
 title: 'Models'
 keywords: 'models, active record'

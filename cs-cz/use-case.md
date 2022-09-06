@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Use Case'
 keywords: 'use case, examples'
 ---

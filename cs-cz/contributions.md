@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Contributing'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---

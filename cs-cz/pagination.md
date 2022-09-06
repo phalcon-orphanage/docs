@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Pagination'
 upgrade: '#pagination'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'

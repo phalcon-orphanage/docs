@@ -1,6 +1,5 @@
 ---
 layout: default
-upgrade: ''
 title: 'HTML Tag Factory'
 keywords: 'html, tag factory, factory, tags'
 ---

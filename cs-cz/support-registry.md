@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Registry'
 upgrade: '#support'
 keywords: 'registry'

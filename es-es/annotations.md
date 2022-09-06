@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Anotaciones'
-keywords: 'anotaciones, enrutado, analizador de anotaciones, docblocks'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Anotaciones

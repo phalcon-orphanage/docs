@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Domain'
 keywords: 'domain, adr, payload'
 ---

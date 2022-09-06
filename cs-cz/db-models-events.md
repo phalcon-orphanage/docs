@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Model Events'
 keywords: 'models, events, events manager'
 ---

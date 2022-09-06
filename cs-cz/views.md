@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Views'
 upgrade: '#mvc'
 keywords: 'mvc, view, view component, simple view, responses'

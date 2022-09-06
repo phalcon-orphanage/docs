@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'HTTP Response'
 upgrade: '#http'
 keywords: 'http, http response, response'

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'New Feature Request List'
 keywords: 'new feature request list, nfr list'
 ---

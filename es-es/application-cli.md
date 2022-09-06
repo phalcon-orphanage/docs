@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Aplicación CLI'
-keywords: 'cli, línea de comandos, aplicación, tareas'
+keywords: 'cli, command line, application, tasks'
 ---
 
 # Aplicación CLI

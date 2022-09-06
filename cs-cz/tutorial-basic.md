@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Tutorial - Basic'
 keywords: 'tutorial, basic tutorial, step by step, mvc'
 ---

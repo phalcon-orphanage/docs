@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Security - JWT'
 keywords: 'security, hashing, passwords, jwt, rfc7519'
 ---

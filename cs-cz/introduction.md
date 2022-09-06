@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Introduction'
 keywords: 'introduction'
 ---

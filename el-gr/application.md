@@ -5,7 +5,7 @@ upgrade: '#application'
 keywords: 'application, mvc, controllers'
 ---
 
-# Application
+# Εφαρμογή
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
@@ -681,7 +681,7 @@ try {
 ```
 
 
-## Events
+## Γεγονότα
 [Phalcon\Mvc\Application][mvc-application] is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Όνομα γεγονότος       | Ενεργοποίηση                                                 |
@@ -712,7 +712,7 @@ $manager->attach(
 );
 ```
 
-## External Resources
+## Εξωτερικοί Πόροι
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)
 
 [application-exception]: api/phalcon_application#application-exception

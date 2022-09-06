@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Coding Standard'
 keywords: 'coding standard, zephir'
 ---

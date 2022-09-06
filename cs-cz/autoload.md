@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Loader'
 upgrade: '#autoload'
 keywords: 'loader, psr-4, auto-loading, autoloader'

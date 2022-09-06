@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Security'
 upgrade: '#security'
 keywords: 'security, hashing, passwords'

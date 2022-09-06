@@ -1,7 +1,7 @@
 ---
 layout: default
 upgrade: '#filter'
-title: 'Φίλτρα'
+title: 'Filter'
 keywords: 'filter, sanitize'
 ---
 

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Požadavek na funkcionalitu'
 keywords: 'new feature request, nfr'
 ---

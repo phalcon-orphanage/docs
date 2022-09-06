@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#mvc'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'

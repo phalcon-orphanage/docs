@@ -2,7 +2,7 @@
 layout: default
 upgrade: '#assets'
 title: 'Recursos Activos'
-keywords: 'recursos, js, css'
+keywords: 'assets, js, css'
 ---
 
 # Gestión de Recursos (Assets)

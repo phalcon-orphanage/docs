@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Tag'
 keywords: 'tag, helpers, view helpers, html generators'
 ---

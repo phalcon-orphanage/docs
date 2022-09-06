@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 'Loader'
+title: 'Φορτωτής'
 upgrade: '#autoload'
 keywords: 'loader, psr-4, auto-loading, autoloader'
 ---
 
-# Loader
+# Φορτωτής
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
@@ -479,7 +479,7 @@ $loader->setFileCheckingCallback(null);
 
 Do not check file existence.
 
-## Events
+## Γεγονότα
 The \[Events Manager\]\[events\] component offers hooks that can be implemented to observe or expand the functionality of the loader. The [Phalcon\Autoload\Loader][loader] implements the [Phalcon\Events\EventsAwareInterface][eventsawareinterface], and therefore the `getEventsManager()` and `setEventsManager()` methods are available.
 
 The following events are available:

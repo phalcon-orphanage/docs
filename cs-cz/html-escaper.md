@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Escaper'
 upgrade: '#escaper'
 keywords: 'escaper, escape html, escape js, escape css'

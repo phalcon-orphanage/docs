@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
-upgrade: ''
 title: 'HTML Tag Factory'
 keywords: 'html, tag factory, factory, tags'
 ---

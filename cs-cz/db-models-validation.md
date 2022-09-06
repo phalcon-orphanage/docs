@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Model Validation'
 keywords: 'models, validation, uniqueness, inclusionin'
 ---
