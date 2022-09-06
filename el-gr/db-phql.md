@@ -1802,7 +1802,7 @@ $builder = new Builder($params);
 
 ### Getters
 
-| Method                                             | Περιγραφή                                                              |
+| Μέθοδος                                            | Περιγραφή                                                              |
 | -------------------------------------------------- | ---------------------------------------------------------------------- |
 | `autoescape(string $identifier): string`           | Automatically escapes identifiers but only if they need to be escaped. |
 | `getBindParams(): array`                           | Returns default bind params                                            |
@@ -1821,7 +1821,7 @@ $builder = new Builder($params);
 | `getQuery(): QueryInterface`                       | Returns the query built                                                |
 | `getWhere(): string&vert;array`                | Return the conditions for the query                                    |
 
-### Methods
+### Μέθοδοι
 
 ```php
 public function addFrom(
@@ -2500,7 +2500,7 @@ $builder->where(
 );
 ```
 
-### Examples
+### Παραδείγματα
 ```php
 <?php
 
