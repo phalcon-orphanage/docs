@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Στατική Ανάλυση'
+title: 'Static Analysis'
 keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 ---
 
