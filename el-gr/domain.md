@@ -90,7 +90,7 @@ The [Phalcon\Domain\Payload\Status][payload-status] class contains several const
 
 These statuses can be used at the display/view layer of your application to process domain objects retrieved via `Payload::getOutput()`.
 
-## Example
+## Παράδειγμα
 ```php
 <?php
 
