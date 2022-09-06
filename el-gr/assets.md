@@ -5,7 +5,7 @@ title: 'Πόροι'
 keywords: 'assets, js, css'
 ---
 
-# Assets Management
+# Διαχείριση Πόρων
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
