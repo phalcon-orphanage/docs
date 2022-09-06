@@ -8,7 +8,7 @@ keywords: 'contributing, nfr, pull request, pr, new feature request'
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
-# Συμβάλλοντας στο Phalcon
+# Συνεισφορά στο Phalcon
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
 Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
@@ -41,7 +41,7 @@ All you have to do is go to our [docs][phalcon-docs] repository, fork it, make t
 > 
 > {:.alert .alert-warning}
 
-## Translations
+## Μεταφράσεις
 If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin][crowdin]. Our project is located [here][phalcon-docs]. If your language is not listed, please send us a message so that we can add it.
 
 ## Ερωτήσεις και Υποστήρηξη
@@ -73,7 +73,7 @@ Please check the following links for instructions on how to generate the backtra
 - Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C generated files directly
 - Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2][psr-2] standard
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
-- More information [here][pr].
+- Περισσότερες πληροφορίες [εδώ][pr].
 
 Before submitting **new functionality**, please open a [NFR][nfr] as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
@@ -81,7 +81,7 @@ Before submitting **new functionality**, please open a [NFR][nfr] as a new issue
 - Unit Tests
 - Documentation or Usage Examples
 
-## Getting Support
+## Λήψη Υποστήριξης
 If you have any questions about how to use Phalcon, please see the [support page][support].
 
 ## Requesting Features
