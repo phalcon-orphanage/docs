@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Registro'
+title: 'Storage'
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
 ---

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Translate'
 upgrade: '#translate'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'

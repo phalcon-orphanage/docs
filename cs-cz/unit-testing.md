@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Unit Testing'
 keywords: 'unit testing, phpunit, phalcon'
 ---

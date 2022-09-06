@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#flash'
 title: 'Flash Messages'
 keywords: 'flash, flash messages, flash direct, flash session, templates'

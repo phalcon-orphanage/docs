@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Performance'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---

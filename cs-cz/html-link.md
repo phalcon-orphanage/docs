@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'HTML Link'
 keywords: 'http, link, evolvable link'
 ---

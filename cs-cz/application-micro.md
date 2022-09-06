@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Micro Application'
 keywords: 'application, micro, handlers, api'
 ---

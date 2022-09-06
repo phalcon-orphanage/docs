@@ -859,13 +859,13 @@ The events available in Phalcon are:
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
 | [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
 | [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
-| [Application](application)  | `application:afterHandleRequest`     | Application, Controller                                 |
-| [Application](application)  | `application:afterStartModule`       | Application, Module                                     |
-| [Application](application)  | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
-| [Application](application)  | `application:beforeSendResponse`     | Application, Response                                   |
-| [Application](application)  | `application:beforeStartModule`      | Application, Module                                     |
-| [Application](application)  | `application:boot`                   | Application                                             |
-| [Application](application)  | `application:viewRender`             | Application, View                                       |
+| [Εφαρμογή](application)     | `application:afterHandleRequest`     | Application, Controller                                 |
+| [Εφαρμογή](application)     | `application:afterStartModule`       | Application, Module                                     |
+| [Εφαρμογή](application)     | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
+| [Εφαρμογή](application)     | `application:beforeSendResponse`     | Application, Response                                   |
+| [Εφαρμογή](application)     | `application:beforeStartModule`      | Application, Module                                     |
+| [Εφαρμογή](application)     | `application:boot`                   | Εφαρμογή                                                |
+| [Εφαρμογή](application)     | `application:viewRender`             | Application, View                                       |
 | [CLI](application-cli)      | `dispatch:beforeException`           | Console, Exception                                      |
 | [Console](application-cli)  | `console:afterHandleTask`            | Console, Task                                           |
 | [Console](application-cli)  | `console:afterStartModule`           | Console, Module                                         |
@@ -933,13 +933,13 @@ The events available in Phalcon are:
 | [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
 | [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
 | [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
-| [View](views)               | `view:afterCompile`                  | Volt                                                    |
-| [View](views)               | `view:afterRender`                   | View                                                    |
-| [View](views)               | `view:afterRenderView`               | View                                                    |
-| [View](views)               | `view:beforeCompile`                 | Volt                                                    |
-| [View](views)               | `view:beforeRender`                  | View                                                    |
-| [View](views)               | `view:beforeRenderView`              | View, View Engine Path                                  |
-| [View](views)               | `view:notFoundView`                  | View, View Engine Path                                  |
+| [Προβολή](views)            | `view:afterCompile`                  | Volt                                                    |
+| [Προβολή](views)            | `view:afterRender`                   | Προβολή                                                 |
+| [Προβολή](views)            | `view:afterRenderView`               | Προβολή                                                 |
+| [Προβολή](views)            | `view:beforeCompile`                 | Volt                                                    |
+| [Προβολή](views)            | `view:beforeRender`                  | Προβολή                                                 |
+| [Προβολή](views)            | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [Προβολή](views)            | `view:notFoundView`                  | View, View Engine Path                                  |
 | [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |

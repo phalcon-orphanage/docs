@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Crypt'
 upgrade: '#encryption'
 keywords: 'crypt, encryption, decryption, ciphers'

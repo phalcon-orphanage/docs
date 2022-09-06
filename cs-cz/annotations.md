@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Annotations'
 keywords: 'annotations, routing, annotations parser, docblocks'
 ---

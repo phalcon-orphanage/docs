@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#assets'
 title: 'Assets'
 keywords: 'assets, js, css'

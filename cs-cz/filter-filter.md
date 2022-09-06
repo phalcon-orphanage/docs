@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#filter'
 title: 'Filter'
 keywords: 'filter, sanitize'

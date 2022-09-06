@@ -135,7 +135,7 @@ The above snippet is optional but will allow you to access any configuration set
 
 Make sure to update the include path to be relative to where your `cli.php` file is.
 
-**Application**
+**Εφαρμογή**
 ```php
 $console = new Console($container);
 ```
@@ -561,18 +561,18 @@ $router = new Router(false);
 
 For more information regarding routes and the route classes, you can check the [Routing](routing) page.
 
-## Events
+## Γεγονότα
 CLI applications are also [events](events) aware. You can use the `setEventsManager` and `getEventsManager` methods to access the events manager.
 
 The following events are available:
 
-| Γεγονός             | Stop | Περιγραφή                                               |
-| ------------------- |:----:| ------------------------------------------------------- |
-| `afterHandleTask`   | Ναι  | Called after the task is handled                        |
-| `afterStartModule`  | Ναι  | Called after processing a module (if modules are used)  |
-| `beforeHandleTask`  | Όχι  | Called before the task is handled                       |
-| `beforeStartModule` | Ναι  | Called before processing a module (if modules are used) |
-| `boot`              | Ναι  | Called when the application boots                       |
+| Γεγονός             | Διακοπή | Περιγραφή                                               |
+| ------------------- |:-------:| ------------------------------------------------------- |
+| `afterHandleTask`   |   Ναι   | Called after the task is handled                        |
+| `afterStartModule`  |   Ναι   | Called after processing a module (if modules are used)  |
+| `beforeHandleTask`  |   Όχι   | Called before the task is handled                       |
+| `beforeStartModule` |   Ναι   | Called before processing a module (if modules are used) |
+| `boot`              |   Ναι   | Called when the application boots                       |
 
 If you use the [Phalcon\Cli\Dispatcher][cli-dispatcher] you can also take advantage of the `beforeException` event, which can stop operations and is fired from the dispatcher object.
 

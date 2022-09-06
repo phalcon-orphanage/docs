@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Forms'
 upgrade: '#forms'
 keywords: 'forms, render html, validation, elements'

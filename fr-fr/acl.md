@@ -1,11 +1,11 @@
 ---
 layout: default
 upgrade: '#acl'
-title: 'Listes de contrôle d''accès (Access Control Lists)'
+title: 'Access Control Lists (ACL)'
 keywords: 'acl, access control list, permissions'
 ---
 
-# Listes de contrôle d'accès (Access Control Lists)
+# Access Control Lists (ACL)
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 ---
 
 # Model Relationships

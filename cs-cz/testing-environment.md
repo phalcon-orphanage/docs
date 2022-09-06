@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Testing Environment'
 keywords: 'testing environment, codeception, testing, phpunit, tests'
 ---

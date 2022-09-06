@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#acl'
 title: 'Access Control Lists (ACL)'
 keywords: 'acl, access control list, permissions'

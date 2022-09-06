@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Tutorial - Vökuró'
 keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 ---

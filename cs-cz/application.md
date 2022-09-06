@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Application'
 upgrade: '#application'
 keywords: 'application, mvc, controllers'

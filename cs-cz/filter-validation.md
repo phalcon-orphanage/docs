@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Validation'
 upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'

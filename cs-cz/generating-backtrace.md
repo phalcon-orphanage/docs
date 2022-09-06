@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Generating a backtrace'
 keywords: 'backtrace, debugging, segmentation faults'
 ---

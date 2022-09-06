@@ -1,7 +1,6 @@
 ---
 layout: default
-language: 'cs-cz'
-title: 'Registry'
+title: 'Storage'
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
 ---

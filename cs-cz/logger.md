@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#logger'
 title: 'Logger'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'

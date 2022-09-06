@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'CLI Application'
 keywords: 'cli, command line, application, tasks'
 ---

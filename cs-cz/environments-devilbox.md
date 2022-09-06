@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Environments - Devilbox'
 keywords: 'environment, devilbox, docker'
 ---

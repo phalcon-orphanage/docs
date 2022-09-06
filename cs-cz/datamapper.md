@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Data Mapper'
 keywords: 'data mapper, pdo, query builder'
 ---

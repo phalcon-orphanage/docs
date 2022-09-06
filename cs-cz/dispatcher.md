@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Dispatcher'
 upgrade: '#dispatcher'
 keywords: 'dispatcher, mvc, dispatch loop'

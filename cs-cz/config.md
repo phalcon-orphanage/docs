@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Config'
 upgrade: '#config'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'

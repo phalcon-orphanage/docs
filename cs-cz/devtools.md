@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Devtools'
 keywords: 'devtools, developer tools, models, controllers'
 ---

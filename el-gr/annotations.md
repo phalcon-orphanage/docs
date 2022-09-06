@@ -228,7 +228,7 @@ Nested Annotations
 ## Adapters
 This component makes use of adapters to cache or no cache the parsed and processed annotations improving performance:
 
-| Adapter                                                             | Περιγραφή                                                                    |
+| Προσαρμογέας                                                        | Περιγραφή                                                                    |
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu]     | Use APCu to store parsed and processed annotations (production)              |
 | [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] | Use memory to store annotations (development)                                |
@@ -312,7 +312,7 @@ If there is a problem with storing the data in the folder due to permissions or 
 ### `newInstance`
 We can easily create an annotations adapter class using the `new` keyword. However, Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. The names of the preconfigured adapters are:
 
-| Name     | Adapter                                                             |
+| Όνομα    | Προσαρμογέας                                                        |
 | -------- | ------------------------------------------------------------------- |
 | `apcu`   | [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu]     |
 | `memory` | [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] |
@@ -378,7 +378,7 @@ In the above example we first create the memory annotations adapter. We then cal
 
 The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter to reduce unnecessary CPU cycles for parsing.
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the `Phalcon\Annotations` namespace will be of type [Phalcon\Annotations\Exception][annotations-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
@@ -408,7 +408,7 @@ class IndexController extends Controller
 }
 ```
 
-## Examples
+## Παραδείγματα
 
 **Controller based access**
 

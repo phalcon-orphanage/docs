@@ -2,7 +2,7 @@
 layout: default
 upgrade: '#acl'
 title: 'Listas de control de acceso (ACL)'
-keywords: 'acl, lista de control de acceso, permisos'
+keywords: 'acl, access control list, permissions'
 ---
 
 # Listas de control de acceso (ACL)

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'HTTP Response (PSR-7)'
 keywords: 'psr-7, http, http stream'
 ---

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Reproducible Tests'
 keywords: 'tests, testing, reproducible tests'
 ---

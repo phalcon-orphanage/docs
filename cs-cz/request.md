@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 upgrade: '#http'
 title: 'HTTP Request'
 keywords: 'http, http request, request'

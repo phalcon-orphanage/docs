@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Breadcrumbs'
 keywords: 'html, breadcrumbs, tag, tag factory'
 ---

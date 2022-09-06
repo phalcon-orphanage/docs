@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Phalcon Query Language (PHQL)'
 keywords: 'phql, phalcon query language, query language'
 ---

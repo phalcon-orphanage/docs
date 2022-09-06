@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Object Document Mapper'
 keywords: 'mongo, odm, object document mapper'
 ---

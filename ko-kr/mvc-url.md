@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'ko-kr'
 upgrade: '#url'
 title: 'URL'
 keywords: 'url, url handling, url generation, static url, dynamic url'

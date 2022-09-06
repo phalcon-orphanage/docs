@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Queueing'
 keywords: 'queue, nats, beanstalk, redis'
 ---

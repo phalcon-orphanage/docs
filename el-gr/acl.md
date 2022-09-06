@@ -1,7 +1,7 @@
 ---
 layout: default
 upgrade: '#acl'
-title: 'Λίστες ελέγχου πρόσβασης (ACL)'
+title: 'Access Control Lists (ACL)'
 keywords: 'acl, access control list, permissions'
 ---
 
@@ -847,7 +847,7 @@ if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
 
 It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
 
-## Events
+## Γεγονότα
 [Phalcon\Acl][acl-acl] can work in conjunction with the [Events Manager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
 | Όνομα γεγονότος     | Ενεργοποίηση                                             | Can stop role? |

@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Database Abstraction Layer'
 upgrade: '#db'
 keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'

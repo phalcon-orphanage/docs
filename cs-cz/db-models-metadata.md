@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Models Metadata'
 keywords: 'model, caching, metadata, query fields'
 ---

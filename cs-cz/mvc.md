@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Model View Controller (MVC)'
 upgrade: '#mvc'
 keywords: 'model, view, controller, model view controller, mvc'

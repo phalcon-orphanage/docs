@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Static Analysis'
 keywords: 'static analysis, static analyzer, vimeo, psalm, phalcon'
 ---

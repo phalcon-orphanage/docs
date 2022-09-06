@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Database Migrations'
 keywords: 'database, migrations, schema, tables, columns'
 ---

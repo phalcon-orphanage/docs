@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4, v5'
 ---

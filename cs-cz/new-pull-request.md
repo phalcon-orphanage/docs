@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'New Pull Request'
 keywords: 'new pull request, pull request, pr'
 ---

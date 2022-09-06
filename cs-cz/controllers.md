@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Controllers'
 keywords: 'controllers, mvc'
 ---

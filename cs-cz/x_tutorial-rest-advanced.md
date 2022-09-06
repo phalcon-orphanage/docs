@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Tutorial - REST'
 keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---

@@ -384,23 +384,23 @@ The parameters you can use for the factory are:
 | `redis_none`         | [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none]                 |
 | `redis_php`          | [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php]                   |
 
-## Adapters
+## Προσαρμογείς
 The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface] interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code.
 
 The available methods are:
 
-| Μέθοδος      | Περιγραφή                                                                  |
-| ------------ | -------------------------------------------------------------------------- |
-| `clear`      | Flushes/clears the cache                                                   |
-| `decrement`  | Decrements a stored number                                                 |
-| `delete`     | Deletes data from the adapter                                              |
-| `get`        | Reads data from the adapter                                                |
-| `getAdapter` | Returns the already connected adapter or connects to the backend server(s) |
-| `getKeys`    | Returns all the keys stored (optional filter parameter)                    |
-| `getPrefix`  | Returns the prefix for the keys                                            |
-| `has`        | Checks if an element exists in the cache                                   |
-| `increment`  | Increments a stored number                                                 |
-| `set`        | Stores data in the adapter                                                 |
+| Μέθοδος      | Περιγραφή                                                                         |
+| ------------ | --------------------------------------------------------------------------------- |
+| `clear`      | Flushes/clears the cache                                                          |
+| `decrement`  | Μειώνει έναν αποθηκευμένο αριθμό                                                  |
+| `delete`     | Διαγραφή δεδομένων από τον προσαρμογέα                                            |
+| `get`        | Ανάγνωση δεδομένων από τον προσαρμογέα                                            |
+| `getAdapter` | Returns the already connected adapter or connects to the backend server(s)        |
+| `getKeys`    | Επιστρέφει όλα τα κλειδιά που είναι αποθηκευμένα (προαιρετική παράμετρος φίλτρου) |
+| `getPrefix`  | Επιστρέφει το πρόθεμα για τα κλειδιά                                              |
+| `has`        | Ελέγχει αν ένα στοιχείο υπάρχει στην κρύπτη                                       |
+| `increment`  | Αυξάνει έναν αποθηκευμένο αριθμό                                                  |
+| `set`        | Αποθηκεύει τα δεδομένα στον προσαρμογέα                                           |
 
 > **NOTE**: The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer, since it can be used to execute additional methods that each adapter offers. For instance for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange` and other methods not exposed by the Phalcon adapter. 
 > 

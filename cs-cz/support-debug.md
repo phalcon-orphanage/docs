@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Debug'
 upgrade: '#support-debug'
 keywords: 'debug, debugging, error handling'

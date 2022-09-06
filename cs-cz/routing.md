@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Routing'
 upgrade: '#router'
 keywords: 'routing, routes'

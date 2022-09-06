@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'es-es'
 upgrade: '#url'
 title: 'URL'
 keywords: 'url, gestión url, generación url, url estática, url dinámica'

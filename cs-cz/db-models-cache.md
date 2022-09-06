@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Model Caching'
 keywords: 'models, caching, phql, resultsets, reuse'
 ---

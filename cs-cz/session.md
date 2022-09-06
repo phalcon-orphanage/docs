@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Session'
 upgrade: '#session'
 keywords: 'session, session manager, session adapters, redis, libmemcached, none, stream'

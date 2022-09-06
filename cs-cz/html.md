@@ -1,6 +1,5 @@
 ---
 layout: default
-language: 'cs-cz'
 title: 'Html'
 keywords: 'html, attributes, tag, tag factory'
 ---
