@@ -1,10 +1,6 @@
 ---
 layout: default
-<<<<<<< HEAD
 title: 'Storage'
-=======
-title: 'Registry'
->>>>>>> 5.0
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
 ---
