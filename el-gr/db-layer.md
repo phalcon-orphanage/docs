@@ -1451,7 +1451,7 @@ $invoices = $this
 
 The following types are available:
 
-| Bind Type | Bind Type Constant                | Example             |
+| Bind Type | Bind Type Constant                | Παράδειγμα          |
 | --------- | --------------------------------- | ------------------- |
 | str       | `Column::BIND_PARAM_STR`          | `{name:str}`        |
 | int       | `Column::BIND_PARAM_INT`          | `{number:int}`      |
