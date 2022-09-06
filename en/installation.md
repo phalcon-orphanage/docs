@@ -184,7 +184,7 @@ After saving the setting, restart the daemon:
 Brew includes binary packages, so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
 
 #### Compilation requirements
-* PHP 7.x development resources
+* PHP 7.x (or 8.x) development resources
 * XCode
 
 #### Brew
@@ -201,8 +201,8 @@ brew install phalcon --build-from-source
 
 #### MacPorts
 ```bash
-sudo port install php72-phalcon
-sudo port install php73-phalcon
+sudo port install php74-phalcon
+sudo port install php80-phalcon
 ```
 
 Edit your php.ini file and then append at the end:
@@ -221,12 +221,6 @@ If you're using PHPBrew, you can install Phalcon using the following:
 
 ```bash
 sudo phpbrew ext install phalcon
-```
-
-You can install the PSR dependency via phpbrew as well if needed:
-
-```bash
-sudo phpbrew ext install psr
 ```
 
 ### Windows
@@ -323,6 +317,8 @@ You will now need enable Phalcon. Create a file called `phalcon.ini` with `exten
 - Ubuntu/Debian with Apache2: `/etc/php7/apache2/conf.d/30-phalcon.ini` with this Content:
 - Ubuntu/Debian with Php7-FPM: `/etc/php7/fpm/conf.d/30-phalcon.ini`
 - Ubuntu/Debian with Php7-CLI: `/etc/php7/cli/conf.d/30-phalcon.ini`
+
+For PHP 8.+ the above paths might differ slightly.
 
 The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
 
