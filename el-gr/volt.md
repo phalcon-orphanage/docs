@@ -1291,7 +1291,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `version_id`  | Returns the current version id of the framework             |
 
-## Προβολή
+## View
 Also, Volt is integrated with [Phalcon\Mvc\View](views), you can play with the view hierarchy and include partials as well:
 
 ```twig
