@@ -129,7 +129,7 @@ sudo apt-get install php-phalcon5
 Installing Phalcon after that is as easy as:
 
 ```bash
-yum install php72-php-phalcon4
+yum install php74-php-phalcon5
 ```
 
 Additional versions are available both architecture specific (x86/x64) and PHP version specific
