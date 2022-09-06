@@ -304,20 +304,24 @@ Two constants are available:
 * `DEFAULT_ALGORITHM = "sha256"`
 * `DEFAULT_CIPHER    = "aes-256-cfb"`
 
-* `PADDING_ANSI_X_923`     = 1
-* `PADDING_DEFAULT`        = 0
-* `PADDING_ISO_10126`      = 3
-* `PADDING_ISO_IEC_7816_4` = 4
-* `PADDING_PKCS7`          = 2
-* `PADDING_SPACE`          = 6
-* `PADDING_ZERO`           = 5
+* `PADDING_ANSI_X_923      = 1`
+* `PADDING_DEFAULT         = 0`
+* `PADDING_ISO_10126       = 3`
+* `PADDING_ISO_IEC_7816_4  = 4`
+* `PADDING_PKCS7           = 2`
+* `PADDING_SPACE           = 6`
+* `PADDING_ZERO            = 5`
 
 You can use them in your project or override them if you want to implement your own class.
 
 ## メソッド
 
 ```php
-public function __construct(string $cipher = self::DEFAULT_CIPHER, bool $useSigning = true, PadFactory $padFactory = null)
+public function __construct(
+    string $cipher = self::DEFAULT_CIPHER, 
+    bool $useSigning = true, 
+    PadFactory $padFactory = null
+)
 ```
 Constructor
 
@@ -327,7 +331,11 @@ public function decrypt(string $input, string $key = null): string
 Decrypt an encrypted text
 
 ```php
-public function decryptBase64(string $input, string $key = null, bool $safe = false): string
+public function decryptBase64(
+    string $input, 
+    string $key = null, 
+    bool $safe = false
+): string
 ```
 Decrypt a text that is coded as a `base64` string
 
@@ -337,7 +345,10 @@ public function encrypt(string $input, string $key = null): string
 Encrypt a text
 
 ```php
-public function encryptBase64(string $input, string $key = null, bool $safe = false
+public function encryptBase64(
+    string $input, 
+    string $key = null, 
+    bool $safe = false
 ): string
 ```
 Encrypts a text returning the result as a `base64` string
