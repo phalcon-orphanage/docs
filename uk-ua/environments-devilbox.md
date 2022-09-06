@@ -20,7 +20,13 @@ This example will use `phalcon` to install Phalcon from within the Devilbox PHP 
 
 The following configuration will be used:
 
-| Project name          | `my-phalcon`                                      | | VirtualHost directory | `/shared/httpd/my-phalcon`                        | | Database              | n.a.                                              | | `TLD_SUFFIX`          | loc                                               | | Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
+| Setting               | Value                                             |
+| --------------------- | ------------------------------------------------- |
+| Project name          | `my-phalcon`                                      |
+| VirtualHost directory | `/shared/httpd/my-phalcon`                        |
+| База данних           | n.a.                                              |
+| `TLD_SUFFIX`          | loc                                               |
+| Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
 
 > * Inside the Devilbox PHP container, projects are always in `/shared/httpd/`.
 > * On your host operating system, projects are by default in `./data/www/` inside the Devilbox git directory. This path can be changed via `HOST_PATH_HTTPD_DATADIR`. 
