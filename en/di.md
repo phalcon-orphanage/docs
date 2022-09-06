@@ -583,9 +583,8 @@ Registers a service in the services container
 
 ```php
 public static function setDefault(<DiInterface> container)
-* Set a default dependency injection container to be obtained into static
-* methods
 ```
+Set a default dependency injection container
 
 ```php
 public function setInternalEventsManager(
