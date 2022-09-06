@@ -344,7 +344,7 @@
         "menu": [
             {
                 "text": "クッキー",
-                "url": "/response#cookies "
+                "url": "/cookies"
             },
             {
                 "text": "リクエスト",
