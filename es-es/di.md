@@ -584,9 +584,8 @@ Registra un servicio en el contenedor de servicios
 
 ```php
 public static function setDefault(<DiInterface> container)
-* Establece un contenedor de inyección de dependencias por defecto para ser obtenido estáticamente
-* métodos
 ```
+Set a default dependency injection container
 
 ```php
 public function setInternalEventsManager(
@@ -1233,28 +1232,23 @@ $request = $container->getShared('request');
 Una vez que se registra un servicio en el contenedor de servicios, lo puede recuperar para manipularlo individualmente:
 
 ```php
-    <?php
+<?php
 
-    use Phalcon\Http\Request;
+use Phalcon\Http\Request;
 
-    // Register the 'request' service
-    $container->set('request', 'Phalcon\Http\Request');
+$container->set('request', 'Phalcon\Http\Request');
 
-    // Get the service
-    $requestService = $container->getService('request');
+$requestService = $container->getService('request');
 
-    // Change its definition
-    $requestService->setDefinition(
-        function () {
-            return new Request();
-        }
-    );
+$requestService->setDefinition(
+    function () {
+        return new Request();
+    }
+);
 
-    // Change it to shared
-    $requestService->setShared(true);
+$requestService->setShared(true);
 
-    // Resolve the service (return a Phalcon\Http\Request instance)
-    $request = $requestService->resolve();
+$request = $requestService->resolve();
 ```
 
 ## Instanciado de Clases
@@ -1320,7 +1314,7 @@ $container->set('inv-component', InvoiceComponent::class);
 $invoiceComponent = $container->get('inv-component');
 ```
 
-> **NOTE** `: $invoiceComponent->setDi($container) is automatically called) 
+> **NOTE** `$invoiceComponent->setDi($container)` is automatically called 
 > 
 > {: .alert .alert-info }
 
@@ -1547,7 +1541,6 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Si         | Gestor de recursos                       |
 | `crypt`              | [Phalcon\Encryption\Crypt](encryption-crypt)                      | Si         | Encriptar/Desencriptar                   |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Si         | Gestor de Cookies HTTP                   |
-| `db`                 | [Phalcon\Db](db-layer)                                             | Si         | Conexión de base de datos                |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Si         | Dispatcher                               |
 | `escaper`            | [Phalcon\Html\Escaper](html-escaper)                              | Si         | Escaper                                  |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Si         | Gestor de Eventos                        |
@@ -1555,18 +1548,24 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Si         | Mensajería de Sesión Flash               |
 | `filter`             | [Phalcon\Filter\Filter](filter-filter)                            | Si         | Filtrar / Sanear                         |
 | `helper`             | [Phalcon\Support\HelperFactory](support-helper)                   | Si         | String, array etc. helpers               |
-| `modelsCache`        |                                                                     |            | Motor de caché para modelos              |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Si         | Gestor de Modelos                        |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | No         | MetaDatos de Modelos                     |
 | `request`            | [Phalcon\Http\Request](request)                                   | Si         | Petición HTTP                            |
 | `response`           | [Phalcon\Http\Response](response)                                 | Si         | Respuesta HTTP                           |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Si         | Router                                   |
 | `security`           | [Phalcon\Security](encryption-security)                            | Si         | Seguridad                                |
-| `session`            |                                                                     |            | Servicio de Sesiones                     |
-| `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Si         | Servicio de bolsa de sesión              |
 | `tag`                | [Phalcon\Html\TagFactory](tag)                                    | Si         | Ayudantes de Etiquetas HTML              |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Si         | Gestor de Transacciones de Base de Datos |
 | `url`                | [Phalcon\Mvc\Url](mvc-url)                                        | Si         | Generación de URL                        |
+
+If certain components are registered (such as a database connection) they are used internally with the following names:
+
+| Nombre        | Objeto                               | Compartido | Descripción                 |
+| ------------- | ------------------------------------ | ---------- | --------------------------- |
+| `db`          | [Phalcon\Db](db-layer)              | Si         | Conexión de base de datos   |
+| `modelsCache` |                                      |            | Motor de caché para modelos |
+| `session`     |                                      |            | Servicio de Sesiones        |
+| `sessionBag`  | [Phalcon\Session\Bag](session#bag) | Si         | Servicio de bolsa de sesión |
 
 Los nombres anteriores se usan en todo el *framework*. Por ejemplo, el servicio `db` se usa desde el servicio `transactionManager`. Puede sustituir estos componentes por los que prefiera, simplemente registrando su componente con el mismo nombre que los listados anteriormente.
 
