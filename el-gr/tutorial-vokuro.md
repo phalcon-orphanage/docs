@@ -366,7 +366,7 @@ Dotenv\Dotenv::create($rootPath)->load();
 
 Finally, we run our application.
 
-### Application
+### Εφαρμογή
 All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
 
 ```php
