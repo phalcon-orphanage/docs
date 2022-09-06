@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Kernel'
 ---
 
@@ -9,7 +7,7 @@ title: 'Phalcon\Kernel'
 
 <h1 id="kernel">Class Phalcon\Kernel</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Kernel.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Kernel.zep)
 
 | Namespace | Phalcon |
 
@@ -22,5 +20,3 @@ Esta clase permite cambiar el comportamiento interno del framework en tiempo de 
 public static function preComputeHashKey( string $key );
 ```
 Produce una clave hash precalculada basada en una cadena. Esta función produce diferentes números en procesadores de 32bit/64bit
-
-

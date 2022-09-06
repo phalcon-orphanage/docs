@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Collection'
+title: 'Συλλογή'
 upgrade: '#support-collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---

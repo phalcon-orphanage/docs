@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ja-jp'
-version: '4.0'
 title: 'Phalcon\Firewall'
 ---
 
@@ -14,7 +12,7 @@ title: 'Phalcon\Firewall'
 
 <h1 id="firewall-adapter-abstractadapter">Abstract Class Phalcon\Firewall\Adapter\AbstractAdapter</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/abstractadapter.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/firewall/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Firewall\Adapter | | Uses | Closure, Phalcon\Acl\Enum, Phalcon\Acl\RoleAware, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\Dispatcher | | Implements | AdapterInterface, EventsAwareInterface |
 
@@ -172,7 +170,7 @@ Throws an internal exception
 
 <h1 id="firewall-adapter-acl">Class Phalcon\Firewall\Adapter\Acl</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/acl.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/firewall/adapter/acl.zep)
 
 | Namespace | Phalcon\Firewall\Adapter | | Uses | Phalcon\Acl\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\DispatcherInterface | | Extends | AbstractAdapter |
 
@@ -314,7 +312,7 @@ protected function saveAccessInCache( string $key, bool $access ): void;
 
 <h1 id="firewall-adapter-adapterinterface">Interface Phalcon\Firewall\Adapter\AdapterInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/adapterinterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/firewall/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Firewall\Adapter | | Uses | Closure, Phalcon\Mvc\DispatcherInterface, Phalcon\Cache\Adapter\AdapterInterface |
 
@@ -366,7 +364,7 @@ Sets role callback to fetch role name
 
 <h1 id="firewall-adapter-annotations">Class Phalcon\Firewall\Adapter\Annotations</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/annotations.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/firewall/adapter/annotations.zep)
 
 | Namespace | Phalcon\Firewall\Adapter | | Uses | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\DispatcherInterface, ReflectionClass | | Extends | AbstractAdapter |
 
@@ -460,7 +458,7 @@ protected function handleAnnotation( mixed $annotation, bool $access, mixed $rol
 
 <h1 id="firewall-adapter-micro-acl">Class Phalcon\Firewall\Adapter\Micro\Acl</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/micro/acl.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/firewall/adapter/micro/acl.zep)
 
 | Namespace | Phalcon\Firewall\Adapter\Micro | | Uses | Phalcon\Acl\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Adapter\AbstractAdapter, Phalcon\Firewall\Exception, Phalcon\Mvc\Micro, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router | | Extends | AbstractAdapter |
 
@@ -614,7 +612,7 @@ protected function saveAccessInCache( string $key, bool $access ): void;
 
 <h1 id="firewall-exception">Class Phalcon\Firewall\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/firewall/exception.zep)
 
 | Namespace | Phalcon\Firewall | | Extends | \Phalcon\Exception |
 

@@ -1,13 +1,11 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4, v5'
 ---
 # Upgrade Guide
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 # Upgrading to V5
 So you have decided to upgrade to v5! **Congratulations**!!

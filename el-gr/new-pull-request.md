@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'New Pull Request'
+title: 'Νέα Αίτηση Ελξης'
 keywords: 'new pull request, pull request, pr'
 ---
 

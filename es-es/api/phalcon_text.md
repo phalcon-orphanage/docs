@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Text'
 ---
 
@@ -9,7 +7,7 @@ title: 'Phalcon\Text'
 
 <h1 id="text">Class Phalcon\Text</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Text.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Text.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Helper\Str |
 
@@ -196,5 +194,3 @@ Convierte una cadena de texto a mayúsculas, esta función hace uso de la extens
 ```php
 echo Phalcon\Text::upper("hello"); // HELLO
 ```
-
-

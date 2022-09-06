@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'ru-ru'
-version: '5.0'
 title: 'Phalcon\Text'
 ---
 
@@ -9,7 +7,7 @@ title: 'Phalcon\Text'
 
 <h1 id="text">Class Phalcon\Text</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Text.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Text.zep)
 
 | Namespace  | Phalcon | | Uses       | Phalcon\Helper\Str |
 
@@ -196,5 +194,3 @@ Uppercases a string, this function makes use of the mbstring extension if availa
 ```php
 echo Phalcon\Text::upper("hello"); // HELLO
 ```
-
-

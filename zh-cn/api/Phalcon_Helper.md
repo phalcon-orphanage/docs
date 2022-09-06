@@ -13,7 +13,7 @@ title: 'Phalcon\Helper'
 
 <h1 id="helper-arr">Class Phalcon\Helper\Arr</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/arr.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/helper/arr.zep)
 
 | Namespace | Phalcon\Helper | | Uses | Phalcon\Helper\Exception, stdClass |
 
@@ -179,7 +179,7 @@ White list filter by key: obtain elements of an array filtering by the keys obta
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/helper/exception.zep)
 
 | Namespace | Phalcon\Helper | | Extends | \Phalcon\Exception |
 
@@ -187,7 +187,7 @@ Exceptions thrown in Phalcon\Helper will use this class
 
 <h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/fs.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/helper/fs.zep)
 
 | Namespace | Phalcon\Helper |
 
@@ -205,7 +205,7 @@ Gets the filename from a given path, Same as PHP's basename() but has non-ASCII 
 
 <h1 id="helper-number">Class Phalcon\Helper\Number</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/number.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/helper/number.zep)
 
 | Namespace | Phalcon\Helper | | Uses | Phalcon\Helper\Exception |
 
@@ -223,7 +223,7 @@ Helper method to get an array element or a default
 
 <h1 id="helper-str">Class Phalcon\Helper\Str</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/str.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/helper/str.zep)
 
 | Namespace | Phalcon\Helper | | Uses | Phalcon\Helper\Arr, Phalcon\Helper\Exception, RuntimeException |
 

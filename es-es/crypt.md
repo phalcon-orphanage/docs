@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Crypt'
 keywords: 'crypt, encriptación, desencriptación, cifrados'
 ---
 
 # Componente Crypt
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 
@@ -287,4 +285,3 @@ class SecretsController extends Controller
 [suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
 [crypt]: api/phalcon_crypt#crypt
 [crypt-mismatch]: api/phalcon_crypt#crypt-mismatch
-

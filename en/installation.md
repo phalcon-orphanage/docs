@@ -1,13 +1,11 @@
 ---
 layout: default
-language: 'en'
-version: '5.0'
 title: 'Installation'
 keywords: 'installation, installing Phalcon'
 ---
 # Installation
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Requirements
 

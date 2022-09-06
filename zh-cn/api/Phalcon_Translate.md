@@ -19,7 +19,7 @@ title: 'Phalcon\Translate'
 
 <h1 id="translate-adapter-abstractadapter">Abstract Class Phalcon\Translate\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/abstractadapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Translate\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AdapterInterface, Phalcon\Translate\InterpolatorFactory | | Implements | AdapterInterface |
 
@@ -94,7 +94,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-adapter-adapterinterface">Interface Phalcon\Translate\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Translate\Adapter |
 
@@ -124,7 +124,7 @@ Returns the translation string of the given key
 
 <h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/csv.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/adapter/csv.zep)
 
 | Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
 
@@ -164,7 +164,7 @@ Returns the translation related to the given key
 
 <h1 id="translate-adapter-gettext">Class Phalcon\Translate\Adapter\Gettext</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/adapter/gettext.zep)
 
 | Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
 
@@ -321,7 +321,7 @@ Validator for constructor
 
 <h1 id="translate-adapter-nativearray">Class Phalcon\Translate\Adapter\NativeArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/nativearray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/adapter/nativearray.zep)
 
 | Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
 
@@ -372,7 +372,7 @@ Returns the translation related to the given key
 
 <h1 id="translate-exception">Class Phalcon\Translate\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/exception.zep)
 
 | Namespace | Phalcon\Translate | | Extends | \Phalcon\Exception |
 
@@ -382,7 +382,7 @@ Class for exceptions thrown by Phalcon\Translate
 
 <h1 id="translate-interpolator-associativearray">Class Phalcon\Translate\Interpolator\AssociativeArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/associativearray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/interpolator/associativearray.zep)
 
 | Namespace | Phalcon\Translate\Interpolator | | Uses | Phalcon\Translate\Interpolator\InterpolatorInterface | | Implements | InterpolatorInterface |
 
@@ -402,7 +402,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolator-indexedarray">Class Phalcon\Translate\Interpolator\IndexedArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
 | Namespace | Phalcon\Translate\Interpolator | | Uses | Phalcon\Translate\Interpolator\InterpolatorInterface | | Implements | InterpolatorInterface |
 
@@ -422,7 +422,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolator-interpolatorinterface">Interface Phalcon\Translate\Interpolator\InterpolatorInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/interpolatorinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/interpolator/interpolatorinterface.zep)
 
 | Namespace | Phalcon\Translate\Interpolator |
 
@@ -440,7 +440,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolatorfactory">Class Phalcon\Translate\InterpolatorFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorfactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/interpolatorfactory.zep)
 
 | Namespace | Phalcon\Translate | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
@@ -487,7 +487,7 @@ protected function getAdapters(): array;
 
 <h1 id="translate-translatefactory">Class Phalcon\Translate\TranslateFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/translatefactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ pageVersion }}.0/phalcon/translate/translatefactory.zep)
 
 | Namespace | Phalcon\Translate | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\InterpolatorFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends | AbstractFactory |
 

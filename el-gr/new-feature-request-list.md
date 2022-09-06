@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'New Feature Request List'
-keywords: 'new feature request list, nfr list'
+title: 'Λίστα Αιτημάτων Νέας Λειτουργικότητας'
+keywords: 'λίστα αιτημάτων νέας λειτουργικότητας, λίστα nfr'
 ---
 
 # Λίστα Αιτημάτων Νέας Λειτουργικότητας

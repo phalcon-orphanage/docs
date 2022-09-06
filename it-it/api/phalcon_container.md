@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'it-it'
-version: '5.0'
 title: 'Phalcon\Container'
 ---
 
@@ -9,7 +7,7 @@ title: 'Phalcon\Container'
 
 <h1 id="container-container">Class Phalcon\Container\Container</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Container/Container.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Container/Container.zep)
 
 | Namespace  | Phalcon\Container | | Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
 
@@ -43,5 +41,3 @@ Return the service
 public function has( string $name ): bool;
 ```
 Whether a service exists or not in the container
-
-

@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'el-gr'
-version: '5.0'
 title: 'Registry'
 keywords: 'registry'
 ---
 
 # Registry Component
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 [Phalcon\Registry][registry] is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. Προσφέρει ταχύτητα, καθώς και υλοποιήσεις διαφόρων PHP interfaces. Αυτά είναι:

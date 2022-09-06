@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Debug'
 ---
 
@@ -11,7 +9,7 @@ title: 'Phalcon\Debug'
 
 <h1 id="debug">Clase Phalcon\Debug</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Debug.zep)
 
 | Namespace  | Phalcon | | Uses       | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
 
@@ -190,7 +188,7 @@ Muestra un elemento de traza inversa
 
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Dump.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Debug/Dump.zep)
 
 | Namespace  | Phalcon\Debug | | Uses       | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
@@ -323,9 +321,8 @@ Prepara una cadena HTML de información sobre una única variable.
 
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Debug/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Debug/Exception.zep)
 
 | Namespace  | Phalcon\Debug | | Extends    | \Phalcon\Exception |
 
 Las excepciones lanzadas en Phalcon\Debug usarán esta clase
-

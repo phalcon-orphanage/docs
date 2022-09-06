@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Web Server Setup'
+title: 'Εγκατάσταση του διακομιστή Web'
 keywords: 'web server, webserver, apache, nginx, lighttpd, xampp, wamp, cherokee, php built-in server'
 ---
 

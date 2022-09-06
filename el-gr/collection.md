@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'el-gr'
-version: '5.0'
 title: 'Συλλογή'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
 # Συλλογή
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 `Phalcon\Collection` είναι μια συστοιχία με πρόσβαση σαν αντικείμενο. Προσφέρει ταχύτητα, καθώς και υλοποιήσεις διαφόρων PHP interfaces. Αυτά είναι:

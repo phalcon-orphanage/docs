@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 title: 'Phalcon\Escaper'
 ---
 
@@ -11,7 +9,7 @@ title: 'Phalcon\Escaper'
 
 <h1 id="escaper">Class Phalcon\Escaper</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Escaper.zep)
 
 | Namespace  | Phalcon | | Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
 
@@ -179,7 +177,7 @@ Escapa una URL. Internamente usa rawurlencode
 
 <h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper/EscaperInterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Escaper/EscaperInterface.zep)
 
 | Namespace  | Phalcon\Escaper |
 
@@ -240,9 +238,8 @@ Establece el tipo de comillas HTML para htmlspecialchars
 
 <h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ page.version }}.0/phalcon/Escaper/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Escaper/Exception.zep)
 
 | Namespace  | Phalcon\Escaper | | Extends    | \Phalcon\Exception |
 
 Las excepciones lanzadas en Phalcon\Escaper usarán esta clase
-

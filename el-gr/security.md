@@ -1,14 +1,12 @@
 ---
 layout: default
-language: 'el-gr'
-version: '5.0'
 title: 'Ασφάλεια'
 keywords: 'security, hashing, passwords'
 ---
 
 # Ασφάλεια
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 

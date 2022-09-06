@@ -8,7 +8,7 @@ keywords: 'firewall, dispatcher, events, acl, access control list, permissions, 
 
 # Firewall (Dispatcher / ACL)
 <hr />
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 The `Phalcon\Firewall` namespace contains
@@ -22,4 +22,3 @@ The `Phalcon\Firewall` namespace contains
 ## Custom
 
 ## Exceptions
-        

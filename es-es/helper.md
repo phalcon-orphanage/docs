@@ -1,7 +1,5 @@
 ---
 layout: default
-language: 'es-es'
-version: '5.0'
 upgrade: ''
 title: 'Ayudantes'
 keywords: 'ayudantes, vector, cadena, sistema de ficheros, numero, utilidades'
@@ -9,7 +7,7 @@ keywords: 'ayudantes, vector, cadena, sistema de ficheros, numero, utilidades'
 
 # Componente Ayudante
 - - -
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 `Phalcon\Helper` un componente que expone las clases ayudantes y métodos estáticos usados por el framework.
