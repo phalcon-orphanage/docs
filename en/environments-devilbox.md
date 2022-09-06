@@ -19,6 +19,8 @@ This example will use `phalcon` to install Phalcon from within the Devilbox PHP 
 
 The following configuration will be used:
 
+| Setting               | Value                                             |
+|-----------------------|---------------------------------------------------|
 | Project name          | `my-phalcon`                                      |
 | VirtualHost directory | `/shared/httpd/my-phalcon`                        |
 | Database              | n.a.                                              |

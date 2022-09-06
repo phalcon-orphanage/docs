@@ -197,7 +197,7 @@ The component utilizes the [hmac_equals][hmac_equals] and [hash_hmac][hash_hmac]
 public function getAlgHeader(): string
 ```
 
-Returns a string identifying the algorithm. For the HMAC algoritms it will return:
+Returns a string identifying the algorithm. For the HMAC algorithms it will return:
 
 | Algorithm | `getAlgHeader` |
 |-----------|----------------|
