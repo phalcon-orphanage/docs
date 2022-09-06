@@ -36,7 +36,7 @@ $helper = $container->tag->newInstance('a');
 
 The registered names for respective helpers are:
 
-| Name                 | Class                                         |
+| Όνομα                | Class                                         |
 | -------------------- | --------------------------------------------- |
 | `a`                  | `Phalcon\Html\Helper\Anchor`               |
 | `base`               | `Phalcon\Html\Helper\Base`                 |
@@ -80,7 +80,7 @@ The registered names for respective helpers are:
 | `title`              | `Phalcon\Html\Helper\Title`                |
 | `ul`                 | `Phalcon\Html\Helper\Ul`                   |
 
-### Method call
+### Κλήση μεθόδου
 If you do not wish to call `newInstance()`, you can always use the method call that corresponds to the name of the helper. Some helpers accept a `bool` `$raw` parameter, which defines whether the input will be escaped or not. This is useful when creating anchor links with images.
 
 ```php
@@ -355,7 +355,7 @@ All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are 
 ### `a`
 [Phalcon\Html\Helper\Anchor][html-helper-anchor] creates a `<a>` (anchor) tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `string $href`           | The href                          |
 | `string $text`           | The text to display               |
@@ -388,7 +388,7 @@ echo $helper('/myurl', 'click<>me', $options);
 ### `base`
 [Phalcon\Html\Helper\Base][html-helper-base] creates a `<base>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `string $href`           | The href                          |
 | `array $attributes = []` | Additional attributes (key/value) |
@@ -413,7 +413,7 @@ echo $helper('/myurl', $options);
 ### `body`
 [Phalcon\Html\Helper\Body][html-helper-body] creates a `<body>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `array $attributes = []` | Additional attributes (key/value) |
 
@@ -440,7 +440,7 @@ echo $helper($options);
 ### `button`
 [Phalcon\Html\Helper\Button][html-helper-button] creates a `<button>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `string $text`           | The text to display               |
 | `array $attributes = []` | Additional attributes (key/value) |
@@ -472,7 +472,7 @@ echo $helper('click<>me', $options);
 ### `close`
 [Phalcon\Html\Helper\Close][html-helper-close] creates a closing tag.
 
-| Parameter           | Περιγραφή                         |
+| Παράμετρος          | Περιγραφή                         |
 | ------------------- | --------------------------------- |
 | `string $text`      | The text to display               |
 | `bool $raw = false` | Whether to escape or not the text |
@@ -493,7 +493,7 @@ echo $helper('form');
 ### `doctype`
 [Phalcon\Html\Helper\Doctype][html-helper-doctype] creates a `<doctype>` tag.
 
-| Parameter           | Περιγραφή                         |
+| Παράμετρος          | Περιγραφή                         |
 | ------------------- | --------------------------------- |
 | `int $flag`         | The text to display               |
 | `string $delimiter` | Whether to escape or not the text |
@@ -516,7 +516,7 @@ echo $helper(Doctype::XHTML11, '-:-');
 ### `element`
 [Phalcon\Html\Helper\Element][html-helper-element] creates a tag based on the passed `name`.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `string $tag`            | The href                          |
 | `string $text`           | The text to display               |
