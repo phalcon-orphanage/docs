@@ -426,7 +426,7 @@ class InvoicesController extends Controller
 > 
 > {: .alert .alert-info }
 
-Examples:
+Παραδείγματα:
 
 ```php
 <?php
@@ -453,7 +453,7 @@ Forward flow to another action in the current controller, passing parameters
 
 A `forward` action accepts the following parameters:
 
-| Parameter    | Περιγραφή                                               |
+| Παράμετρος   | Περιγραφή                                               |
 | ------------ | ------------------------------------------------------- |
 | `controller` | A valid controller name to forward to.                  |
 | `action`     | A valid action name to forward to.                      |
@@ -977,26 +977,26 @@ class ExceptionsPlugin
 > 
 > {: .alert .alert-danger }
 
-## Events
+## Γεγονότα
 [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to a [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Όνομα γεγονότος        | Ενεργοποίηση                                                                                                                | Can stop |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `afterBinding`         | After models are bound but before executing route                                                                           |   Ναι    |
-| `afterDispatch`        | After executing the controller/action method.                                                                               |   Ναι    |
-| `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |   Όχι    |
-| `afterExecuteRoute`    | After executing the controller/action method.                                                                               |   Όχι    |
-| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |   Όχι    |
-| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Ναι    |
-| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Ναι    |
-| `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Ναι    |
-| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |   Ναι    |
-| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |   Όχι    |
-| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Ναι    |
+| Όνομα γεγονότος        | Ενεργοποίηση                                                                                                                | Μπορεί να σταματήσει |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |:--------------------:|
+| `afterBinding`         | After models are bound but before executing route                                                                           |         Ναι          |
+| `afterDispatch`        | After executing the controller/action method.                                                                               |         Ναι          |
+| `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |         Όχι          |
+| `afterExecuteRoute`    | After executing the controller/action method.                                                                               |         Όχι          |
+| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |         Όχι          |
+| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |         Ναι          |
+| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |         Ναι          |
+| `beforeException`      | Before the dispatcher throws any exception                                                                                  |         Ναι          |
+| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |         Ναι          |
+| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |         Όχι          |
+| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |         Ναι          |
 
 The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl)
 
-The following example demonstrates how to attach listeners to this component:
+Το παρακάτω παράδειγμα δείχνει πώς  προσαρτήσετε να τους ακροατές σε αυτό το στοιχείο:
 
 ```php
 <?php
