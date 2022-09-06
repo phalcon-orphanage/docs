@@ -1454,7 +1454,7 @@ In the above example, we set up the engine and then echo a rendered template on 
 | `beforeRenderView` | Before rendering an existing view   |   Ναι    |
 | `notFoundView`     | When a view was not found           |   Όχι    |
 
-The following example demonstrates how to attach listeners to this component:
+Το παρακάτω παράδειγμα δείχνει πώς  προσαρτήσετε να τους ακροατές σε αυτό το στοιχείο:
 
 ```php
 <?php

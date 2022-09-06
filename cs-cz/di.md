@@ -584,9 +584,8 @@ Registers a service in the services container
 
 ```php
 public static function setDefault(<DiInterface> container)
-* Set a default dependency injection container to be obtained into static
-* methods
 ```
+Set a default dependency injection container
 
 ```php
 public function setInternalEventsManager(
@@ -1233,28 +1232,23 @@ $request = $container->getShared('request');
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
 ```php
-    <?php
+<?php
 
-    use Phalcon\Http\Request;
+use Phalcon\Http\Request;
 
-    // Register the 'request' service
-    $container->set('request', 'Phalcon\Http\Request');
+$container->set('request', 'Phalcon\Http\Request');
 
-    // Get the service
-    $requestService = $container->getService('request');
+$requestService = $container->getService('request');
 
-    // Change its definition
-    $requestService->setDefinition(
-        function () {
-            return new Request();
-        }
-    );
+$requestService->setDefinition(
+    function () {
+        return new Request();
+    }
+);
 
-    // Change it to shared
-    $requestService->setShared(true);
+$requestService->setShared(true);
 
-    // Resolve the service (return a Phalcon\Http\Request instance)
-    $request = $requestService->resolve();
+$request = $requestService->resolve();
 ```
 
 ## Instantiating Classes
@@ -1320,7 +1314,7 @@ $container->set('inv-component', InvoiceComponent::class);
 $invoiceComponent = $container->get('inv-component');
 ```
 
-> **NOTE** `: $invoiceComponent->setDi($container) is automatically called) 
+> **NOTE** `$invoiceComponent->setDi($container)` is automatically called 
 > 
 > {: .alert .alert-info }
 
@@ -1547,7 +1541,6 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `assets`             | [Phalcon\Assets\Manager](assets)                                  | Ano    | Assets manager               |
 | `crypt`              | [Phalcon\Encryption\Crypt](encryption-crypt)                      | Ano    | Encrypt/Decrypt              |
 | `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ano    | HTTP Cookies manager         |
-| `db`                 | [Phalcon\Db](db-layer)                                             | Ano    | Database connection          |
 | `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ano    | Dispatcher                   |
 | `escaper`            | [Phalcon\Html\Escaper](html-escaper)                              | Ano    | Escaper                      |
 | `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ano    | Events Manager               |
@@ -1555,18 +1548,24 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Ano    | Flash Session Messaging      |
 | `filter`             | [Phalcon\Filter\Filter](filter-filter)                            | Ano    | Filtering / Sanitizing       |
 | `helper`             | [Phalcon\Support\HelperFactory](support-helper)                   | Ano    | String, array etc. helpers   |
-| `modelsCache`        |                                                                     |        | Cache backend for models     |
 | `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Ano    | Models Management            |
 | `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Ne     | Models MetaData              |
 | `request`            | [Phalcon\Http\Request](request)                                   | Ano    | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Ano    | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Ano    | Router                       |
 | `security`           | [Phalcon\Security](encryption-security)                            | Ano    | Security                     |
-| `session`            |                                                                     |        | Session Service              |
-| `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Ano    | Session Bag service          |
 | `tag`                | [Phalcon\Html\TagFactory](tag)                                    | Ano    | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Ano    | Database Transaction Manager |
 | `url`                | [Phalcon\Mvc\Url](mvc-url)                                        | Ano    | URL Generation               |
+
+If certain components are registered (such as a database connection) they are used internally with the following names:
+
+| Name          | Object                               | Shared | Description              |
+| ------------- | ------------------------------------ | ------ | ------------------------ |
+| `db`          | [Phalcon\Db](db-layer)              | Ano    | Database connection      |
+| `modelsCache` |                                      |        | Cache backend for models |
+| `session`     |                                      |        | Session Service          |
+| `sessionBag`  | [Phalcon\Session\Bag](session#bag) | Ano    | Session Bag service      |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 

@@ -114,7 +114,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 ---
 
-### Application
+### Εφαρμογή
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](application)
 

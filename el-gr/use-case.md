@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Περιπτώσεις Χρήσης'
-keywords: 'περιπώσεις χρήσης, παραδείγματα'
+title: 'Use Case'
+keywords: 'use case, examples'
 ---
 
 # Use Case
