@@ -344,7 +344,7 @@
         "menu": [
             {
                 "text": "Çerezler",
-                "url": "/response#cookies "
+                "url": "/cookies"
             },
             {
                 "text": "İstek",
