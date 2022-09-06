@@ -29,7 +29,7 @@ Phalcon is designed to use as few resources as possible, while offering high per
 
 We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
 
-### Software
+### Λογισμικό
 
 > **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. 
 > 
@@ -133,7 +133,7 @@ sudo apt-get install php-phalcon5
 Installing Phalcon after that is as easy as:
 
 ```bash
-yum install php72-php-phalcon4
+yum install php74-php-phalcon5
 ```
 
 Additional versions are available both architecture specific (x86/x64) and PHP version specific
@@ -188,7 +188,7 @@ After saving the setting, restart the daemon:
 Brew includes binary packages, so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
 
 #### Compilation requirements
-* PHP 7.x development resources
+* PHP 7.x (or 8.x) development resources
 * XCode
 
 #### Brew
@@ -205,8 +205,8 @@ brew install phalcon --build-from-source
 
 #### MacPorts
 ```bash
-sudo port install php72-phalcon
-sudo port install php73-phalcon
+sudo port install php74-phalcon
+sudo port install php80-phalcon
 ```
 
 Edit your php.ini file and then append at the end:
@@ -227,12 +227,6 @@ If you're using PHPBrew, you can install Phalcon using the following:
 sudo phpbrew ext install phalcon
 ```
 
-You can install the PSR dependency via phpbrew as well if needed:
-
-```bash
-sudo phpbrew ext install psr
-```
-
 ### Windows
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download][download] page.
 
@@ -242,16 +236,16 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Εκδοχή | Type                  |
-|:------------:|:------:| --------------------- |
-|     x64      |  7.x   | Thread safe           |
-|     x64      |  7.x   | Non Thread safe (NTS) |
-|     x86      |  7.x   | Thread safe           |
-|     x86      |  7.x   | Non Thread safe (NTS) |
-|     x64      |  8.x   | Thread safe           |
-|     x64      |  8.x   | Non Thread safe (NTS) |
-|     x86      |  8.x   | Thread safe           |
-|     x86      |  8.x   | Non Thread safe (NTS) |
+| Αρχιτεκτονική | Έκδοση | Τύπος                 |
+|:-------------:|:------:| --------------------- |
+|      x64      |  7.x   | Ασφαλές νήμα          |
+|      x64      |  7.x   | Μη ασφαλές νήμα (NTS) |
+|      x86      |  7.x   | Ασφαλές νήμα          |
+|      x86      |  7.x   | Μη ασφαλές νήμα (NTS) |
+|      x64      |  8.x   | Ασφαλές νήμα          |
+|      x64      |  8.x   | Μη ασφαλές νήμα (NTS) |
+|      x86      |  8.x   | Ασφαλές νήμα          |
+|      x86      |  8.x   | Μη ασφαλές νήμα (NTS) |
 
 Edit your php.ini file and then append at the end:
 
@@ -327,6 +321,8 @@ You will now need enable Phalcon. Create a file called `phalcon.ini` with `exten
 - Ubuntu/Debian with Apache2: `/etc/php7/apache2/conf.d/30-phalcon.ini` with this Content:
 - Ubuntu/Debian with Php7-FPM: `/etc/php7/fpm/conf.d/30-phalcon.ini`
 - Ubuntu/Debian with Php7-CLI: `/etc/php7/cli/conf.d/30-phalcon.ini`
+
+For PHP 8.+ the above paths might differ slightly.
 
 The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
 
