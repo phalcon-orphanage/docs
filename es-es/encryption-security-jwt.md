@@ -199,7 +199,7 @@ El componente usa internamente los métodos PHP \[hmac_equals\]\[hmac_equals\] y
 public function getAlgHeader(): string
 ```
 
-Devuelve una cadena que identifica el algoritmo. Para el algoritmo HMAC devolverá:
+Devuelve una cadena que identifica el algoritmo. For the HMAC algorithms it will return:
 
 | Algoritmo | `getAlgHeader` |
 | --------- | -------------- |
