@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Αναπαραγώγιμα Τέστς'
+title: 'Αναπαραγώγιμες Δοκιμές'
 keywords: 'tests, testing, reproducible tests'
 ---
 
