@@ -584,9 +584,8 @@ Registers a service in the services container
 
 ```php
 public static function setDefault(<DiInterface> container)
-* Set a default dependency injection container to be obtained into static
-* methods
 ```
+Set a default dependency injection container
 
 ```php
 public function setInternalEventsManager(
@@ -1022,7 +1021,7 @@ $container->set(
 
 Supported parameter types include the following:
 
-| Type        | Περιγραφή                                            | Example                                                                                     |
+| Τύπος       | Περιγραφή                                            | Παράδειγμα                                                                                  |
 | ----------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `instance`  | Represents an object that must be built dynamically  | `['type' => 'instance', 'className' => \DateTime::class, 'arguments' => ['now']]` |
 | `parameter` | Represents a literal value to be passed as parameter | `['type' => 'parameter', 'value' => 1234]`                                            |
@@ -1151,7 +1150,7 @@ $annotations = $container->get(
 );
 ```
 
-## Events
+## Γεγονότα
 [Phalcon\Di\Di][di] is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `di`.
 
 | Όνομα γεγονότος        | Ενεργοποίηση                                                                                                    |
@@ -1233,28 +1232,23 @@ $request = $container->getShared('request');
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
 ```php
-    <?php
+<?php
 
-    use Phalcon\Http\Request;
+use Phalcon\Http\Request;
 
-    // Register the 'request' service
-    $container->set('request', 'Phalcon\Http\Request');
+$container->set('request', 'Phalcon\Http\Request');
 
-    // Get the service
-    $requestService = $container->getService('request');
+$requestService = $container->getService('request');
 
-    // Change its definition
-    $requestService->setDefinition(
-        function () {
-            return new Request();
-        }
-    );
+$requestService->setDefinition(
+    function () {
+        return new Request();
+    }
+);
 
-    // Change it to shared
-    $requestService->setShared(true);
+$requestService->setShared(true);
 
-    // Resolve the service (return a Phalcon\Http\Request instance)
-    $request = $requestService->resolve();
+$request = $requestService->resolve();
 ```
 
 ## Instantiating Classes
@@ -1320,7 +1314,7 @@ $container->set('inv-component', InvoiceComponent::class);
 $invoiceComponent = $container->get('inv-component');
 ```
 
-> **NOTE** `: $invoiceComponent->setDi($container) is automatically called) 
+> **NOTE** `$invoiceComponent->setDi($container)` is automatically called 
 > 
 > {: .alert .alert-info }
 
@@ -1541,32 +1535,37 @@ $container = new FactoryDefault();
 
 The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] are:
 
-| Name                 | Object                                                              | Shared | Περιγραφή                    |
-| -------------------- | ------------------------------------------------------------------- | ------ | ---------------------------- |
-| `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Ναι    | Annotations parser           |
-| `assets`             | [Phalcon\Assets\Manager](assets)                                  | Ναι    | Assets manager               |
-| `crypt`              | [Phalcon\Encryption\Crypt](encryption-crypt)                      | Ναι    | Encrypt/Decrypt              |
-| `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ναι    | HTTP Cookies manager         |
-| `db`                 | [Phalcon\Db](db-layer)                                             | Ναι    | Database connection          |
-| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι    | Dispatcher                   |
-| `escaper`            | [Phalcon\Html\Escaper](html-escaper)                              | Ναι    | Escaper                      |
-| `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ναι    | Events Manager               |
-| `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ναι    | Flash Messaging              |
-| `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Ναι    | Flash Session Messaging      |
-| `filter`             | [Phalcon\Filter\Filter](filter-filter)                            | Ναι    | Filtering / Sanitizing       |
-| `helper`             | [Phalcon\Support\HelperFactory](support-helper)                   | Ναι    | String, array etc. helpers   |
-| `modelsCache`        |                                                                     |        | Cache backend for models     |
-| `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Ναι    | Models Management            |
-| `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Όχι    | Models MetaData              |
-| `request`            | [Phalcon\Http\Request](request)                                   | Ναι    | HTTP Request                 |
-| `response`           | [Phalcon\Http\Response](response)                                 | Ναι    | HTTP Response                |
-| `router`             | [Phalcon\Mvc\Router](routing)                                     | Ναι    | Router                       |
-| `security`           | [Phalcon\Security](encryption-security)                            | Ναι    | Ασφάλεια                     |
-| `session`            |                                                                     |        | Session Service              |
-| `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Ναι    | Session Bag service          |
-| `tag`                | [Phalcon\Html\TagFactory](tag)                                    | Ναι    | HTML Tag helpers             |
-| `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Ναι    | Database Transaction Manager |
-| `url`                | [Phalcon\Mvc\Url](mvc-url)                                        | Ναι    | URL Generation               |
+| Όνομα                | Αντικείμενο                                                         | Κοινής χρήσης | Περιγραφή                    |
+| -------------------- | ------------------------------------------------------------------- | ------------- | ---------------------------- |
+| `annotations`        | [Phalcon\Annotations\Adapter\Memory](annotations)                | Ναι           | Annotations parser           |
+| `assets`             | [Phalcon\Assets\Manager](assets)                                  | Ναι           | Assets manager               |
+| `crypt`              | [Phalcon\Encryption\Crypt](encryption-crypt)                      | Ναι           | Encrypt/Decrypt              |
+| `cookies`            | [Phalcon\Http\Response\Cookies](response#cookies)                | Ναι           | HTTP Cookies manager         |
+| `dispatcher`         | [Phalcon\Mvc\Dispatcher](dispatcher)                              | Ναι           | Dispatcher                   |
+| `escaper`            | [Phalcon\Html\Escaper](html-escaper)                              | Ναι           | Escaper                      |
+| `eventsManager`      | [Phalcon\Events\Manager](events)                                  | Ναι           | Events Manager               |
+| `flash`              | [Phalcon\Flash\Direct](flash)                                     | Ναι           | Flash Messaging              |
+| `flashSession`       | [Phalcon\Flash\Session](flash)                                    | Ναι           | Flash Session Messaging      |
+| `filter`             | [Phalcon\Filter\Filter](filter-filter)                            | Ναι           | Filtering / Sanitizing       |
+| `helper`             | [Phalcon\Support\HelperFactory](support-helper)                   | Ναι           | String, array etc. helpers   |
+| `modelsManager`      | [Phalcon\Mvc\Model\Manager](db-models)                           | Ναι           | Models Management            |
+| `modelsMetadata`     | [Phalcon\Mvc\Model\MetaData\Memory](db-models-metadata)         | Όχι           | Models MetaData              |
+| `request`            | [Phalcon\Http\Request](request)                                   | Ναι           | HTTP Request                 |
+| `response`           | [Phalcon\Http\Response](response)                                 | Ναι           | HTTP Response                |
+| `router`             | [Phalcon\Mvc\Router](routing)                                     | Ναι           | Router                       |
+| `security`           | [Phalcon\Security](encryption-security)                            | Ναι           | Ασφάλεια                     |
+| `tag`                | [Phalcon\Html\TagFactory](tag)                                    | Ναι           | HTML Tag helpers             |
+| `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Ναι           | Database Transaction Manager |
+| `url`                | [Phalcon\Mvc\Url](mvc-url)                                        | Ναι           | URL Generation               |
+
+If certain components are registered (such as a database connection) they are used internally with the following names:
+
+| Name          | Object                               | Shared | Περιγραφή                |
+| ------------- | ------------------------------------ | ------ | ------------------------ |
+| `db`          | [Phalcon\Db](db-layer)              | Ναι    | Database connection      |
+| `modelsCache` |                                      |        | Cache backend for models |
+| `session`     |                                      |        | Session Service          |
+| `sessionBag`  | [Phalcon\Session\Bag](session#bag) | Ναι    | Session Bag service      |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 
