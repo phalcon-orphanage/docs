@@ -149,7 +149,7 @@ to
 
 Save the file as `nginx.yml` and ensure not to use any tabs in the file or devilbox will not use the custom configuration. You can use `yamllint nginx.yml` whilst inside the Devilbox shell to check the file before restarting devilbox.
 
-## References
+## Αναφορές
 - [Devilbox.com][devilbox]
 - [Devilbox Documentation][devilbox-documentation]
 - [HOST_PATH_HTTPD_DATADIR][host-path-httpd-datadir]
