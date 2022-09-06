@@ -314,7 +314,7 @@ Two constants are available:
 
 You can use them in your project or override them if you want to implement your own class.
 
-## Methods
+## Μέθοδοι
 
 ```php
 public function __construct(
@@ -440,7 +440,7 @@ Use a message digest (signing) to be used or not
 ## PadFactory
 The [Phalcon\Encryption\Crypt\PadFactory][pad-factory] is an object that instantiates classes to be used for padding and unpadding data during encryption or decryption.
 
-| Name       | Class                                           |
+| Ονομα      | Class                                           |
 | ---------- | ----------------------------------------------- |
 | `ansi`     | `Phalcon\Encryption\Crypt\Padding\Ansi`     |
 | `iso10126` | `Phalcon\Encryption\Crypt\Padding\Iso10126` |
