@@ -651,7 +651,7 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 );
 ```
 
-## Εργοστάσιο
+## Factory
 ### `newInstance()`
 Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory][db-adapter-pdofactory] class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
