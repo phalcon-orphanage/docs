@@ -308,7 +308,7 @@ If there is a problem with storing the data in the folder due to permissions or 
 ### Custom
 [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface] is available. Extending this interface will allow you to create custom adapters.
 
-## Εργοστάσιο
+## Factory
 ### `newInstance`
 We can easily create an annotations adapter class using the `new` keyword. However, Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. The names of the preconfigured adapters are:
 
