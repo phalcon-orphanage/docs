@@ -108,7 +108,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 ---
 
-### Σχολιασμοί
+### Annotations
 
 ![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](annotations)
 
