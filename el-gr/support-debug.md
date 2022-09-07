@@ -17,7 +17,7 @@ PHP offers tools to debug applications with notices, warnings, errors and except
 
 Despite being written in C, Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP based frameworks offer.
 
-## Exceptions
+## Εξαιρέσεις
 A very common way to control the flow of errors in your application (intentional or otherwise) is to use a `try`/`catch` block to catch exceptions. There are plenty of examples in our documentation demonstrating such blocks.
 
 ```php
@@ -199,11 +199,11 @@ $debug
 ## Getters
 There are a few getters available that offer information about the component. Extending those could also change the behavior of the component visually.
 
-| Μέθοδος           | Επιστροφή | Περιγραφή                                                           |
-| ----------------- | --------- | ------------------------------------------------------------------- |
-| `getCssSources()` | `string`  | Returns the stylesheets used to display the contents on screen      |
-| `getJsSources()`  | `string`  | Returns the javascript files used to display the contents on screen |
-| `getVersion()`    | `string`  | Returns the link to the current version documentation               |
+| Μέθοδος           | Επιστρέφει | Περιγραφή                                                           |
+| ----------------- | ---------- | ------------------------------------------------------------------- |
+| `getCssSources()` | `string`   | Returns the stylesheets used to display the contents on screen      |
+| `getJsSources()`  | `string`   | Returns the javascript files used to display the contents on screen |
+| `getVersion()`    | `string`   | Returns the link to the current version documentation               |
 
 Extending the component and overriding the `getCssSources()` for instance to return different CSS HTML directives will change the appearance of the output on screen. The output CSS classes are based on [Bootstrap CSS][bootstrap].
 
