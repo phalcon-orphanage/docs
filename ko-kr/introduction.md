@@ -18,8 +18,9 @@ C 언어를 몰라도 Phalcon을 사용하는데에는 지장이 없습니다. P
 
 Phalcon은 느슨하게 연결되어 있어서, 개발자들이 어플리케이션 개발 시 필요한 객체만 연결 컴포넌트(glue components) 로 사용할 수 있습니다.
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
-  {: .alert .alert-info }
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. The translations are handled in [GitHub][github_docs] for English, and [Crowdin][crowdin] for other languages 
+> 
+> {: .alert .alert-info }
 
 You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
@@ -29,7 +30,7 @@ You can check our [GitHub][github] project for the code and browse through these
 
 - 채팅 - Q&A
   - [디스코드 챗](https://phalcon.io/discord)
-  - [포럼](https://phalcon.io/forum)
+  - [Discussions](https://phalcon.io/discussions)
 - 후원
   - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - 후원하기](https://phalcon.io/fund)
@@ -45,4 +46,6 @@ You can check our [GitHub][github] project for the code and browse through these
   - [LBRY](https://phalcon.io/lbry)
   - [유튜브](https://phalcon.io/youtube)
 
-[github]: https://github.com/phalcon/cphalcon 
+[crowdin]: https://crowdin.com/project/phalcon-documentation
+[github]: https://github.com/phalcon/cphalcon
+[github_docs]: https://github.com/phalcon/docs
