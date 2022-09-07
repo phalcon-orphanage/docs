@@ -2,7 +2,7 @@
 layout: default
 upgrade: '#logger'
 title: 'ログ'
-keywords: 'psr-3, logger, adapters, noop, stream, syslog'
+keywords: 'logger, adapters, noop, stream, syslog'
 ---
 
 # ログ
@@ -695,7 +695,7 @@ The [Phalcon\Logger\AdapterInterface][logger-adapter-adapterinterface] interface
 
 ### Abstract Classes
 There are three abstract classes that offer useful functionality when creating custom objects:
-- \[Phalcon\Logger\AbstractLogger\]\[logger-abstractlogger\]
+- [Phalcon\Logger\AbstractLogger][logger-abstractlogger]
 - [Phalcon\Logger\Adapter\AbstractAdapter][logger-adapter-abstractadapter]
 - [Phalcon\Logger\Formatter\AbstractFormatter][logger-formatter-abstractformatter].
 
@@ -734,6 +734,7 @@ $logger = $container->getShared('logger');
 [date-formats]: https://www.php.net/manual/en/function.date.php
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 [logger-logger]: api/phalcon_logger#logger-logger
+[logger-abstractlogger]: api/phalcon_logger#logger-abstractlogger
 [logger-adapter-noop]: api/phalcon_logger#logger-adapter-noop
 [logger-adapter-stream]: api/phalcon_logger#logger-adapter-stream
 [logger-adapter-stream]: api/phalcon_logger#logger-adapter-stream
