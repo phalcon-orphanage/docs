@@ -152,7 +152,7 @@ vokuro/
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Ελεγκτές                                              |
+| `src/Controllers` | Controllers                                           |
 | `src/Forms`       | Φόρμες                                                |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
@@ -585,7 +585,7 @@ echo $successLogin->user->name;
 > 
 > {: .alert .alert-info }
 
-## Ελεγκτές
+## Controllers
 Again following the [Model-View-Controller][mvc] pattern, Vökuró has one controller to handle a specific _parent_ route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
 
 The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore, if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
