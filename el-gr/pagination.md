@@ -38,10 +38,10 @@ $paginate = $paginator->paginate();
 
 The example above uses an array as the source, and limits the results to 2 records at a time. It will return elements with id `3` and `4` because the `page` has been set to `2`.
 
-## Adapters
+## Προσαρμογείς
 For the source of the data, the component uses adapters. It comes with the following adapters:
 
-| Adapter                                                                     | Περιγραφή                                                                                  |
+| Προσαρμογέας                                                                | Περιγραφή                                                                                  |
 | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]               | Use a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] object as source data.         |
 | [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]   | Use a PHP array as source data                                                             |
@@ -52,14 +52,14 @@ For the source of the data, the component uses adapters. It comes with the follo
 > {: .alert .alert-warning}
 
 
-### Methods
+### Μέθοδοι
 ```php
 public function __construct(array $config)
 ```
 
 Every adapter requires options to operate properly. These options are passed as a key/value array in the constructor of the adapter.
 
-| Option          | Περιγραφή                                                                                                                                                       |
+| Επιλογή         | Περιγραφή                                                                                                                                                       |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `builder`       | Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object                                        |
 | `data`          | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                                       |
@@ -70,7 +70,7 @@ Every adapter requires options to operate properly. These options are passed as 
 
 The methods exposed are:
 
-| Method                                                             | Περιγραφή                              |
+| Μέθοδος                                                            | Περιγραφή                              |
 | ------------------------------------------------------------------ | -------------------------------------- |
 | `getLimit(): int`                                                  | Get current rows limit                 |
 | `getRepository(array $properties = null): RepositoryInterface`     | Gets current repository for pagination |
@@ -78,7 +78,7 @@ The methods exposed are:
 | `setLimit(int $limitRows): AdapterInterface`                       | Set current rows limit                 |
 | `setRepository(RepositoryInterface $repository): AdapterInterface` | Sets current repository for pagination |
 
-### Model
+### Μοντέλο
 The [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter uses a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] as the source of the data. This is the result of the `find()` method on a model.
 
 ```php
@@ -176,10 +176,10 @@ The `paginate()` method does all the work to paginate the data. It returns a [Ph
 - `PROPERTY_PREVIOUS_PAGE` = "previous";
 - `PROPERTY_TOTAL_ITEMS`   = "total_items";
 
-### Methods
+### Μέθοδοι
 The methods exposed are:
 
-| Methods                                                 | Περιγραφή                                    |
+| Μέθοδοι                                                 | Περιγραφή                                    |
 | ------------------------------------------------------- | -------------------------------------------- |
 | `getAliases(): array`                                   | Gets the aliases for properties repository   |
 | `getCurrent(): int`                                     | Gets number of the current page              |
@@ -295,10 +295,10 @@ echo $paginate->myTotalItems;    // 1
 
 You can also create your custom repository class by implementing the [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] interface.
 
-## Εργοστάσιο
+## Factory
 You can use the Pagination Factory class to instantiate a new paginator object. The names of the services are:
 
-| Name           | Class                                                                       |
+| Όνομα          | Class                                                                       |
 | -------------- | --------------------------------------------------------------------------- |
 | `model`        | [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]               |
 | `nativeArray`  | [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]   |
@@ -372,7 +372,7 @@ options.page = 1
 
 The configuration expects an element `adapter` for the relevant adapter and an `options` array with the necessary options for the adapter.
 
-## Exception
+## Εξαίρεση
 Any exceptions thrown in the Paginator component will be of type [Phalcon\Paginator\Exception][paginator-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 
@@ -404,7 +404,7 @@ try {
 }
 ```
 
-## Examples
+## Παραδείγματα
 In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
 ### Full
@@ -473,10 +473,10 @@ The `$page` object also contains navigation data:
 <?php echo "Page {$page->getCurrent()}  of {$page->getLast()}"; ?>
 ```
 
-### Εργοστάσιο
+### Factory
 You can instantiate a Paginator class using the `AdapterFactory`.
 
-**Model**
+**Μοντέλο**
 ```php
 <?php
 declare(strict_types=1);
@@ -550,7 +550,7 @@ $paginator = $factory->newInstance('queryBuilder', $options);
 ### Individual Classes
 An example of the source data that must be used for each adapter:
 
-**Model**
+**Μοντέλο**
 ```php
 <?php
 declare(strict_types=1);

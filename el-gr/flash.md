@@ -170,7 +170,7 @@ or when using Volt
 ## Styling
 The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default, the component uses the following mapping:
 
-| Type      | Name of CSS class |
+| Τύπος     | Name of CSS class |
 | --------- | ----------------- |
 | `error`   | `errorMessage`    |
 | `notice`  | `noticeMessage`   |

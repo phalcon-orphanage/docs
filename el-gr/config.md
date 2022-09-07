@@ -36,7 +36,7 @@ echo $config->app->name;                // PHALCON
 echo $config->path('app.name');         // PHALCON
 ```
 
-## Εργοστάσιο
+## Factory
 ### `newInstance`
 We can easily create a `Phalcon\Config\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However, Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `newInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
 

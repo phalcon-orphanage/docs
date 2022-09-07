@@ -62,7 +62,7 @@ if (count($messages)) {
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
 
-## Methods
+## Μέθοδοι
 
 ```php
 public function __construct(
@@ -1668,7 +1668,7 @@ $validator->add(
 );
 ```
 
-### Διεύθυνση URL
+### Url
 Checks if a value has an url format
 
 ```php

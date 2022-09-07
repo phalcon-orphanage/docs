@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Ελεγκτές'
+title: 'Controllers'
 keywords: 'controllers, mvc'
 ---
 

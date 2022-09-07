@@ -158,7 +158,7 @@ Volt syntax:
 {% raw %}{{ js | escape_js }}{% endraw %}
 ```
 
-## Encoding
+## Κωδικοποίηση
 [Phalcon\Html\Escape][escaper] also offers methods regarding the encoding of the text to be escaped.
 
 ### `detectEncoding()`
@@ -253,7 +253,7 @@ $escaper = new Escaper();
 $escaper->setFlags(ENT_XHTML);
 ```
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the Escaper component will be of type [Phalcon\Html\Escaper\Exception][escaper-exception]. It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php

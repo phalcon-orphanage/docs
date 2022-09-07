@@ -35,7 +35,7 @@ The remaining dependencies for the project are installed using composer.
 Setting up the
 
 
-## Ελεγκτές
+## Controllers
 ## Μοντέλα
 ## Routes
 

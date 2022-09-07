@@ -18,8 +18,9 @@ Developers do not need to know the C language to use Phalcon. Its interface is e
 
 Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
-  {: .alert .alert-info }
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in [GitHub][github_docs] for English, and [Crowdin][crowdin] for other languages 
+> 
+> {: .alert .alert-info }
 
 You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
@@ -29,7 +30,7 @@ Feel free to connect with us using our social media accounts:
 
 - Chat - Q&A
   - [Discord Chat](https://phalcon.io/discord)
-  - [Forum](https://phalcon.io/forum)
+  - [Discussions](https://phalcon.io/discussions)
 - Support
   - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - Support Us](https://phalcon.io/fund)
@@ -45,4 +46,6 @@ Feel free to connect with us using our social media accounts:
   - [LBRY](https://phalcon.io/lbry)
   - [YouTube](https://phalcon.io/youtube)
 
-[github]: https://github.com/phalcon/cphalcon 
+[crowdin]: https://crowdin.com/project/phalcon-documentation
+[github]: https://github.com/phalcon/cphalcon
+[github_docs]: https://github.com/phalcon/docs

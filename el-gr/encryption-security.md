@@ -146,7 +146,7 @@ $this->security->hash(rand());
 
 This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the Security component will be of type [Phalcon\Encryption\Security\Exception][security-exception]. You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
 
 ```php

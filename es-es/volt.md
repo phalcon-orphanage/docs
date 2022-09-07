@@ -974,17 +974,17 @@ Los operadores lógicos son útiles en la evaluación de la expresión `if` para
 ### Otros operadores
 También están disponibles otros operadores:
 
-| Operador                  | Descripción                                                                                |
-| ------------------------- | ------------------------------------------------------------------------------------------ |
-| `~`                       | Concatena ambos operandos `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                |
-| <code>&#124;</code> | Applies a filter in the right operand to the left <code>{%- raw -%}{{ 'hello' &#124; uppercase }}{% endraw %}</code>                 |
-| `..`                      | Crea un rango `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}` |
-| `is`                      | Alias de == (igual), también realiza pruebas                                               |
-| `in`                      | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`      |
-| `is not`                  | Alias de != (no iguales)                                                                   |
-| `'a' ? 'b' : 'c'`         | Operador ternario. El mismo que el operador ternario de PHP                                |
-| `++`                      | Incrementa un valor                                                                        |
-| `--`                      | Decrementa un valor                                                                        |
+| Operador          | Descripción                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `~`               | Concatena ambos operandos `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                                   |
+| `&vert;`      | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' &vert; uppercase }}{% endraw %}` |
+| `..`              | Crea un rango `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`                    |
+| `is`              | Alias de == (igual), también realiza pruebas                                                                  |
+| `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`                         |
+| `is not`          | Alias de != (no iguales)                                                                                      |
+| `'a' ? 'b' : 'c'` | Operador ternario. El mismo que el operador ternario de PHP                                                   |
+| `++`              | Incrementa un valor                                                                                           |
+| `--`              | Decrementa un valor                                                                                           |
 
 El ejemplo siguiente muestra cómo usar los operadores:
 

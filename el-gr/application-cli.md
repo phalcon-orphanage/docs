@@ -135,7 +135,7 @@ The above snippet is optional but will allow you to access any configuration set
 
 Make sure to update the include path to be relative to where your `cli.php` file is.
 
-**Εφαρμογή**
+**Application**
 ```php
 $console = new Console($container);
 ```

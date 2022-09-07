@@ -133,7 +133,7 @@ sudo apt-get install php-phalcon5
 La instalación de Phalcon después de eso, es tan fácil como:
 
 ```bash
-yum install php72-php-phalcon4
+yum install php74-php-phalcon5
 ```
 
 Additional versions are available both architecture specific (x86/x64) and PHP version specific
@@ -188,7 +188,7 @@ Después de guardar la configuración, reinicie el demonio:
 Brew includes binary packages, so you don't need to compile Phalcon yourself. Si desea compilar la extensión usted mismo, necesita las siguientes dependencias instaladas:
 
 #### Requisitos de compilación
-* Recursos de desarrollo para PHP 7.x
+* PHP 7.x (or 8.x) development resources
 * XCode
 
 #### Brew
@@ -205,8 +205,8 @@ brew install phalcon --build-from-source
 
 #### MacPorts
 ```bash
-sudo port install php72-phalcon
-sudo port install php73-phalcon
+sudo port install php74-phalcon
+sudo port install php80-phalcon
 ```
 
 Editar el archivo `php.ini` y luego añadir al final:
@@ -225,12 +225,6 @@ Si está utilizando PHPBrew, puede instalar Phalcon usando lo siguiente:
 
 ```bash
 sudo phpbrew ext install phalcon
-```
-
-También puede instalar la dependencia PSR desde PHPBrew si es necesario:
-
-```bash
-sudo phpbrew ext install psr
 ```
 
 ### Windows
@@ -327,6 +321,8 @@ You will now need enable Phalcon. Create a file called `phalcon.ini` with `exten
 - Ubuntu/Debian with Apache2: `/etc/php7/apache2/conf.d/30-phalcon.ini` with this Content:
 - Ubuntu/Debian with Php7-FPM: `/etc/php7/fpm/conf.d/30-phalcon.ini`
 - Ubuntu/Debian with Php7-CLI: `/etc/php7/cli/conf.d/30-phalcon.ini`
+
+For PHP 8.+ the above paths might differ slightly.
 
 The instructions above will compile **and** install the module on your system. También puede compilar la extensión y luego añadirla manualmente a su archivo `ini`:
 

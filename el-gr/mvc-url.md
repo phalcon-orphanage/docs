@@ -328,7 +328,7 @@ The above code will prefix all the paths with `/data/app/`.
 > 
 > {: .alert .alert-info }
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the [Phalcon\Mvc\Url][url] component will be of type [Phalcon\Mvc\Url\Exception][url-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php

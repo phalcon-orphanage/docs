@@ -329,20 +329,20 @@ $session->remove('userId');
 unset($session->userId);
 ```
 
-## Adapters
+## Προσαρμογείς
 ### Libmemcached
 [Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
 The available options for Memcached are:
 
-| Name      | Περιγραφή            |
+| Ονομα     | Περιγραφή            |
 | --------- | -------------------- |
 | `client`  | client settings      |
 | `servers` | array of server data |
 
 The `servers` option is an array that contains the following options:
 
-| Name     | Περιγραφή                 |
+| Όνομα    | Περιγραφή                 |
 | -------- | ------------------------- |
 | `host`   | the host                  |
 | `port`   | the port                  |
@@ -397,7 +397,7 @@ $session
 
 The available options for Redis are:
 
-| Name         | Περιγραφή                             |
+| Όνομα        | Περιγραφή                             |
 | ------------ | ------------------------------------- |
 | `host`       | the host                              |
 | `port`       | the port                              |
@@ -477,7 +477,7 @@ class Custom extends SessionHandlerInterface
 }
 ```
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the Session component will be of type [Phalcon\Session\Exception][session-exception]. It is thrown if any session operation is not completed correctly. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php

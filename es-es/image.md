@@ -69,8 +69,11 @@ Each adapter offers getters to provide information about the component:
 ## Operaciones
 ### `background()`
 Establece el color de fondo para la imagen. The available parameters are:
-- `color` - `string` - the color in hex format
-- `opacity` - `int` - the opacity (optional - default `100`).
+
+| Parámetro       | Descripción                            |
+| --------------- | -------------------------------------- |
+| `string $color` | the color in hex format                |
+| `int $opacity`  | the opacity (optional - default `100`) |
 
 ```php
 <?php

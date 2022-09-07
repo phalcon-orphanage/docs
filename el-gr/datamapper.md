@@ -35,7 +35,7 @@ One of the components required by this implementation is a PDO connector. The [P
 
 ### Profiler
 ## Query
-### Εργοστάσιο
+### Factory
 ### Delete
 ### Insert
 ### Select
