@@ -551,7 +551,7 @@ One of the easiest ways to improve the performance in your applications and redu
 
 HTTP Cache is implemented by setting certain headers in the response. The cache is set (using the headers) upon the first visit of the user to our application. The following headers help with HTTP Cache:
 
-| Name             | Περιγραφή                                                                                                                              |
+| Όνομα            | Περιγραφή                                                                                                                              |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Expires:`       | Set the expiration date of the page. Once the page expires the browser will request a fresh copy of the page vs. using the cached one. |
 | `Cache-Control:` | How long is a page considered _fresh_ in the browser.                                                                                  |
