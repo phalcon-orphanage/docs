@@ -548,7 +548,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-## Εργοστάσιο
+## Factory
 ### `newInstance`
 
 The [Phalcon\Image\ImageFactory][image-imagefactory] offers an easy way to create image adapter objects. There are two adapters already preset for you:
