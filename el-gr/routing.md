@@ -39,7 +39,7 @@ There are two constants available for the [Phalcon\Mvc\Router][mvc-router] compo
 - `POSITION_FIRST`
 - `POSITION_LAST`
 
-## Methods
+## Μέθοδοι
 
 ```php
 public function __construct(
@@ -398,9 +398,9 @@ $router->add(
 
 In the example above, we are using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/customers/view/12345/1`) would produce:
 
-| Controller  | Action | Parameter | Parameter |
-|:-----------:|:------:|:---------:|:---------:|
-| `customers` | `view` |  `12345`  |    `1`    |
+| Controller  | Action | Παράμετρος | Παράμετρος |
+|:-----------:|:------:|:----------:|:----------:|
+| `customers` | `view` |  `12345`   |    `1`     |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions][pcre].
 
@@ -586,9 +586,9 @@ $router->add(
 
 With the above route, you need to always have the module name as part of your URL. For example, for the following URL: `/admin/invoices/view/12345`, will be processed as:
 
-| Module  | Controller | Action | Parameter |
-|:-------:|:----------:|:------:|:---------:|
-| `admin` | `invoices` | `view` |  `12345`  |
+| Module  | Controller | Action | Παράμετρος |
+|:-------:|:----------:|:------:|:----------:|
+| `admin` | `invoices` | `view` |  `12345`   |
 
 Or you can bind specific routes to specific modules:
 
@@ -891,7 +891,7 @@ echo $url->get(
 
 For example, for a URL like this `https://dev.phalcon.od/download/linux/ubuntu.html`, this router will translate it as follows:
 
-|      Controller      |    Action     |   Parameter   |
+|      Controller      |    Action     |  Παράμετρος   |
 |:--------------------:|:-------------:|:-------------:|
 | `DownloadController` | `linuxAction` | `ubuntu.html` |
 
@@ -1196,7 +1196,7 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
-## Events
+## Γεγονότα
 Similar to other Phalcon components, [Phalcon\Mvc\Router][mvc-router] also has events, when an [Events Manager](events) is present. The available events are:
 
 | Γεγονός                    | Fired when                        |
@@ -1208,7 +1208,7 @@ Similar to other Phalcon components, [Phalcon\Mvc\Router][mvc-router] also has e
 | `router:matchedRoute`      | When a route is matched           |
 | `router:notMatchedRoute`   | When a route is not matched       |
 
-## Σχολιασμοί
+## Annotations
 This component provides a variant that is integrated with the [annotations](annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in router component directly.
 
 ```php
@@ -1299,7 +1299,7 @@ Only methods marked with valid annotations are used as routes. The available ann
 
 For annotations that add routes, the following parameters are supported:
 
-| Name         | Περιγραφή                                      | Χρήση                                                               |
+| Όνομα        | Περιγραφή                                      | Χρήση                                                               |
 | ------------ | ---------------------------------------------- | ------------------------------------------------------------------- |
 | `converters` | A hash of converters for the parameters        | `@Route('/posts/{id}/{slug}', converter={id='MyConverter::getId'})` |
 | `methods`    | One or more HTTP methods allowed for the route | `@Route('/api/products', methods={'GET', 'POST'})`                  |
@@ -1389,7 +1389,7 @@ You can create your own components by implementing the supplied interfaces:
 - [Phalcon\Mvc\Router\RouteInterface][mvc-router-routeinterface]
 - [Phalcon\Mvc\RouterInterface][mvc-routerinterface]
 
-## Examples
+## Παραδείγματα
 The following are examples of custom routes:
 
 ```php

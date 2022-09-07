@@ -974,17 +974,17 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 ### Other Operators
 Additional operators seen the following operators are available:
 
-| Operator                  | Περιγραφή                                                                                    |
-| ------------------------- | -------------------------------------------------------------------------------------------- |
-| `~`                       | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                 |
-| <code>&#124;</code> | Applies a filter in the right operand to the left <code>{%- raw -%}{{ 'hello' &#124; uppercase }}{% endraw %}</code>                   |
-| `..`                      | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}` |
-| `is`                      | Same as == (equals), also performs tests                                                     |
-| `in`                      | To check if an expression is contained into other expressions `if 'a' in 'abc'`              |
-| `is not`                  | Same as != (not equals)                                                                      |
-| `'a' ? 'b' : 'c'`         | Ternary operator. The same as the PHP ternary operator                                       |
-| `++`                      | Increments a value                                                                           |
-| `--`                      | Decrements a value                                                                           |
+| Operator          | Περιγραφή                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                                  |
+| `&vert;`      | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' &vert; uppercase }}{% endraw %}` |
+| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`                  |
+| `is`              | Same as == (equals), also performs tests                                                                      |
+| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                               |
+| `is not`          | Same as != (not equals)                                                                                       |
+| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                                        |
+| `++`              | Increments a value                                                                                            |
+| `--`              | Decrements a value                                                                                            |
 
 The following example shows how to use operators:
 
@@ -1291,7 +1291,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `version_id`  | Returns the current version id of the framework             |
 
-## Προβολή
+## View
 Also, Volt is integrated with [Phalcon\Mvc\View](views), you can play with the view hierarchy and include partials as well:
 
 ```twig

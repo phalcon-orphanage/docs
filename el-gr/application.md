@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Εφαρμογή'
+title: 'Application'
 upgrade: '#application'
 keywords: 'application, mvc, controllers'
 ---

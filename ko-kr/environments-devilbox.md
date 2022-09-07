@@ -20,7 +20,13 @@ keywords: 'environment, devilbox, docker, 개발환경'
 
 다음의 설정이 사용됩니다:
 
-| Project name          | `my-phalcon`                                      | | VirtualHost directory | `/shared/httpd/my-phalcon`                        | | Database              | n.a.                                              | | `TLD_SUFFIX`          | loc                                               | | Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
+| Setting               | Value                                             |
+| --------------------- | ------------------------------------------------- |
+| Project name          | `my-phalcon`                                      |
+| VirtualHost directory | `/shared/httpd/my-phalcon`                        |
+| 데이터베이스                | n.a.                                              |
+| `TLD_SUFFIX`          | loc                                               |
+| Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
 
 > * Devilbox PHP 컨테이너 내에서, 프로젝트는 항상 `/shared/httpd/` 폴더에 존재하게 됩니다.
 > * 호스트 운영체제에서, 프로젝트는 Devilbox git 디렉토리 내 `./data/www/` 에 존재하게 됩니다(기본값). 이 경로는 `HOST_PATH_HTTPD_DATADIR` 값을 수정하여 변경할 수 있습니다. 

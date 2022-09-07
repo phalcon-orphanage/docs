@@ -124,7 +124,7 @@ $form->add(
 );
 ```
 
-## Methods
+## Μέθοδοι
 [Phalcon\Forms\Form][forms-form] exposes a number of methods that help with setting up a form with the necessary elements so that it can be used for validation, rendering elements etc.
 
 ```php
@@ -674,7 +674,7 @@ For the above entity class, the `getReceiveEmails` and `getTimezone` methods wil
 ## Elements
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                                        | Περιγραφή                                   |
+| Ονομα                                                       | Περιγραφή                                   |
 | ----------------------------------------------------------- | ------------------------------------------- |
 | [Phalcon\Forms\Element\Check][forms-element-check]       | Generate `input[type=check]` elements       |
 | [Phalcon\Forms\Element\Date][forms-element-date]         | Generate `input[type=date]` elements        |
@@ -908,7 +908,7 @@ echo $element->renderDecorated('nameLast');
 echo $element->renderDecorated('nameFirst');
 ```
 
-## Events
+## Γεγονότα
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 
 ```php
@@ -969,7 +969,7 @@ echo $loginForm->render();
 
 If a form is not found in the manager, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the `Phalcon\Forms` namespace will be [Phalcon\Forms\Exception][forms-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php

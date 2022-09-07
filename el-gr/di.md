@@ -1560,12 +1560,12 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 
 If certain components are registered (such as a database connection) they are used internally with the following names:
 
-| Name          | Object                               | Shared | Περιγραφή                |
-| ------------- | ------------------------------------ | ------ | ------------------------ |
-| `db`          | [Phalcon\Db](db-layer)              | Ναι    | Database connection      |
-| `modelsCache` |                                      |        | Cache backend for models |
-| `session`     |                                      |        | Session Service          |
-| `sessionBag`  | [Phalcon\Session\Bag](session#bag) | Ναι    | Session Bag service      |
+| Όνομα         | Αντικείμενο                          | Κοινής χρήσης | Περιγραφή                |
+| ------------- | ------------------------------------ | ------------- | ------------------------ |
+| `db`          | [Phalcon\Db](db-layer)              | Ναι           | Database connection      |
+| `modelsCache` |                                      |               | Cache backend for models |
+| `session`     |                                      |               | Session Service          |
+| `sessionBag`  | [Phalcon\Session\Bag](session#bag) | Ναι           | Session Bag service      |
 
 The above names are used throughout the framework. For instance the `db` service is used within the `transactionManager` service. You can replace these components with the ones you prefer by just registering your component with the same name as the ones listed above.
 

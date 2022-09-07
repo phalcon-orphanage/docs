@@ -20,7 +20,13 @@ Este ejemplo usará `phalcon` para instalar Phalcon desde el contenedor PHP Devi
 
 Se puede usar la siguiente configuración:
 
-| Project name          | `my-phalcon`                                      | | VirtualHost directory | `/shared/httpd/my-phalcon`                        | | Database              | n.a.                                              | | `TLD_SUFFIX`          | loc                                               | | Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
+| Setting               | Valor                                             |
+| --------------------- | ------------------------------------------------- |
+| Project name          | `my-phalcon`                                      |
+| VirtualHost directory | `/shared/httpd/my-phalcon`                        |
+| Base de Datos         | n.a.                                              |
+| `TLD_SUFFIX`          | loc                                               |
+| Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |
 
 > * Dentro del contenedor PHP Devilbox, los proyectos siempre están en `/shared/httpd/`.
 > * En su sistema operativo anfitrión, por defecto los proyectos están en `./data/www/` dentro del directorio git de Devilbox. Esta ruta puede ser cambiada mediante `HOST_PATH_HTTPD_DATADIR`. 

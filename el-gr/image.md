@@ -1,18 +1,18 @@
 ---
 layout: default
-title: 'Εικόνες'
+title: 'Image'
 upgrade: '#image'
 keywords: 'image, gd, imagick'
 ---
 
-# Εικόνες
+# Image
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Επισκόπηση
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
-## Adapters
+## Προσαρμογείς
 This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
 
 | Class                                                     | Περιγραφή                                         |
@@ -51,7 +51,7 @@ This component uses adapters that offer methods to manipulate images. You can ea
 ## Getters
 Each adapter offers getters to provide information about the component:
 
-| Method                  | Περιγραφή                                         |
+| Μέθοδος                 | Περιγραφή                                         |
 | ----------------------- | ------------------------------------------------- |
 | `getHeight(): int`      | Returns the image height                          |
 | `getImage(): mixed`     | Returns the image                                 |
@@ -66,11 +66,14 @@ Each adapter offers getters to provide information about the component:
 ## Imagick
 [Phalcon\Image\Adapters\Imagick][image-adapter-imagick] utilizes the [ImageMagick PHP extension][imagick]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
-## Operations
+## Λειτουργίες
 ### `background()`
 Sets the background color for the image. The available parameters are:
-- `color` - `string` - the color in hex format
-- `opacity` - `int` - the opacity (optional - default `100`).
+
+| Παράμετρος      | Περιγραφή                              |
+| --------------- | -------------------------------------- |
+| `string $color` | the color in hex format                |
+| `int $opacity`  | the opacity (optional - default `100`) |
 
 ```php
 <?php
@@ -102,7 +105,7 @@ $image->save('blur-image.jpg');
 ### `crop()`
 You can crop images programmatically. The `crop()` method accepts the following parameters:
 
-| Parameter      | Περιγραφή               |
+| Παράμετρος     | Περιγραφή               |
 | -------------- | ----------------------- |
 | `int $width`   | the width               |
 | `int $height`  | the height              |
@@ -150,7 +153,7 @@ $image->save('flip-image.jpg');
 ### `liquidRescale()`
 This method is only available in the [Phalcon\Image\Imagick][image-adapter-imagick] adapter. It uses the [liquid][imagick-liquidrescale] rescaling method to rescale the image. The method accepts the following parameters:
 
-| Parameter       | Περιγραφή                                                                                                       |
+| Παράμετρος      | Περιγραφή                                                                                                       |
 | --------------- | --------------------------------------------------------------------------------------------------------------- |
 | `int $width`    | the new width                                                                                                   |
 | `int $height`   | the new height                                                                                                  |
@@ -203,7 +206,7 @@ $image->save('pixelate-image.jpg');
 ### `reflection()`
 Adds reflection to the image. The method accepts the following parameters:
 
-| Parameter      | Περιγραφή                                              |
+| Παράμετρος     | Περιγραφή                                              |
 | -------------- | ------------------------------------------------------ |
 | `int $height`  | the height                                             |
 | `int $opacity` | the opacity (optional - default `100`)                 |
@@ -224,7 +227,7 @@ $image->save('reflection-image.jpg');
 ### `render()`
 Renders the image and returns it back as a binary string. The method accepts the following parameters:
 
-| Method         | Περιγραφή                                           |
+| Μέθοδος        | Περιγραφή                                           |
 | -------------- | --------------------------------------------------- |
 | `string $ext`  | the extension (optional)                            |
 | `int $quality` | the quality of the image (optional - default `100`) |
@@ -244,7 +247,7 @@ echo $image->render('jpg', 90);
 ### `resize()`
 Resizes the image based on the passed parameters. The method accepts the following parameters:
 
-| Parameter     | Περιγραφή                                                |
+| Παράμετρος    | Περιγραφή                                                |
 | ------------- | -------------------------------------------------------- |
 | `int $width`  | the width (optional)                                     |
 | `int $height` | the height (optional)                                    |
@@ -545,7 +548,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-## Εργοστάσιο
+## Factory
 ### `newInstance`
 
 The [Phalcon\Image\ImageFactory][image-imagefactory] offers an easy way to create image adapter objects. There are two adapters already preset for you:
@@ -593,7 +596,7 @@ $options = [
 $image = $factory->load($options);
 ```
 
-## Exceptions
+## Εξαιρέσεις
 Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception][image-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php

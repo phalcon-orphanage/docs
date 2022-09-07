@@ -114,7 +114,7 @@ $result = $cache->deleteMultiple(['my-key1', 'my-key2']);
 
 If you wish to clear all the keys, you can call the `clear()` method. The method returns `true` on success and `false` on failure.
 
-## Εργοστάσιο
+## Factory
 ### `newInstance`
 We can easily create a [Phalcon\Cache\Cache][cache-cache] class using the `new` keyword. However, Phalcon offers the [Phalcon\Cache\CacheFactory][cache-cachefactory] class, so that developers can easily instantiate cache objects. The factory accepts a [Phalcon\Cache\AdapterFactory][cache-adapterfactory] object (which in turn requires a `Phalcon\Storage\SerializerFactory` object) and can instantiate the necessary Cache class with the selected adapter and options. The factory always returns a new instance of [Phalcon\Cache\Cache][cache-cache].
 

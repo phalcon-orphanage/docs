@@ -18,8 +18,9 @@ Phalcon це повноцінний фреймворк для PHP з відкр�
 
 Складові середовища Phalcon слабко зв'язані між собою, що дозволяє розробникам використовувати лише ті об'єкти, які їм необхідні для поєднання конкретних компонентів фреймворка, виходячи з потреб їх проектів чи завдань, що перед ними стоять.
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. Ми будемо вдячні всім бажаючим прийняти участь у перекладах та виправленні помилок. The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
-  {: .alert .alert-info }
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. Ми будемо вдячні всім бажаючим прийняти участь у перекладах та виправленні помилок. The translations are handled in [GitHub][github_docs] for English, and [Crowdin][crowdin] for other languages 
+> 
+> {: .alert .alert-info }
 
 You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
@@ -29,7 +30,7 @@ You can check our [GitHub][github] project for the code and browse through these
 
 - Чат - З&В
   - [Чат Discord](https://phalcon.io/discord)
-  - [Форум](https://phalcon.io/forum)
+  - [Discussions](https://phalcon.io/discussions)
 - Підтримка
   - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - Підтримайте нас](https://phalcon.io/fund)
@@ -45,4 +46,6 @@ You can check our [GitHub][github] project for the code and browse through these
   - [LBRY](https://phalcon.io/lbry)
   - [YouTube](https://phalcon.io/youtube)
 
-[github]: https://github.com/phalcon/cphalcon 
+[crowdin]: https://crowdin.com/project/phalcon-documentation
+[github]: https://github.com/phalcon/cphalcon
+[github_docs]: https://github.com/phalcon/docs

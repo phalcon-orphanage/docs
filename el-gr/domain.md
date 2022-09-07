@@ -43,7 +43,7 @@ The component offers getters and setters for the above properties.
 > 
 > {: .alert .alert-info }
 
-## Εργοστάσιο
+## Factory
 [Phalcon\Domain\PayloadFactory][payload-payloadfactory] is also available, offering an easy way to generate new Payload objects.
 
 ```php

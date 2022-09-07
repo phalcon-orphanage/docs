@@ -36,7 +36,7 @@ $helper = $container->tag->newInstance('a');
 
 The registered names for respective helpers are:
 
-| Name                 | Class                                         |
+| Όνομα                | Class                                         |
 | -------------------- | --------------------------------------------- |
 | `a`                  | `Phalcon\Html\Helper\Anchor`               |
 | `base`               | `Phalcon\Html\Helper\Base`                 |
@@ -80,7 +80,7 @@ The registered names for respective helpers are:
 | `title`              | `Phalcon\Html\Helper\Title`                |
 | `ul`                 | `Phalcon\Html\Helper\Ul`                   |
 
-### Method call
+### Κλήση μεθόδου
 If you do not wish to call `newInstance()`, you can always use the method call that corresponds to the name of the helper. Some helpers accept a `bool` `$raw` parameter, which defines whether the input will be escaped or not. This is useful when creating anchor links with images.
 
 ```php
@@ -355,10 +355,10 @@ All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are 
 ### `a`
 [Phalcon\Html\Helper\Anchor][html-helper-anchor] creates a `<a>` (anchor) tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $href`           | The href                          |
-| `string $text`           | The text to display               |
+| `string $href`           | Το href                           |
+| `string $text`           | Το κείμενο που θα εμφανιστεί      |
 | `array $attributes = []` | Additional attributes (key/value) |
 | `bool $raw = false`      | Whether to escape or not the text |
 
@@ -388,9 +388,9 @@ echo $helper('/myurl', 'click<>me', $options);
 ### `base`
 [Phalcon\Html\Helper\Base][html-helper-base] creates a `<base>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $href`           | The href                          |
+| `string $href`           | Το href                           |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -413,7 +413,7 @@ echo $helper('/myurl', $options);
 ### `body`
 [Phalcon\Html\Helper\Body][html-helper-body] creates a `<body>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `array $attributes = []` | Additional attributes (key/value) |
 
@@ -440,9 +440,9 @@ echo $helper($options);
 ### `button`
 [Phalcon\Html\Helper\Button][html-helper-button] creates a `<button>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $text`           | The text to display               |
+| `string $text`           | Το κείμενο που θα εμφανιστεί      |
 | `array $attributes = []` | Additional attributes (key/value) |
 | `bool $raw = false`      | Whether to escape or not the text |
 
@@ -472,9 +472,9 @@ echo $helper('click<>me', $options);
 ### `close`
 [Phalcon\Html\Helper\Close][html-helper-close] creates a closing tag.
 
-| Parameter           | Περιγραφή                         |
+| Παράμετρος          | Περιγραφή                         |
 | ------------------- | --------------------------------- |
-| `string $text`      | The text to display               |
+| `string $text`      | Το κείμενο που θα εμφανιστεί      |
 | `bool $raw = false` | Whether to escape or not the text |
 
 ```php
@@ -493,9 +493,9 @@ echo $helper('form');
 ### `doctype`
 [Phalcon\Html\Helper\Doctype][html-helper-doctype] creates a `<doctype>` tag.
 
-| Parameter           | Περιγραφή                         |
+| Παράμετρος          | Περιγραφή                         |
 | ------------------- | --------------------------------- |
-| `int $flag`         | The text to display               |
+| `int $flag`         | Το κείμενο που θα εμφανιστεί      |
 | `string $delimiter` | Whether to escape or not the text |
 
 ```php
@@ -516,10 +516,10 @@ echo $helper(Doctype::XHTML11, '-:-');
 ### `element`
 [Phalcon\Html\Helper\Element][html-helper-element] creates a tag based on the passed `name`.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $tag`            | The href                          |
-| `string $text`           | The text to display               |
+| `string $tag`            | Το href                           |
+| `string $text`           | Το κείμενο που θα εμφανιστεί      |
 | `array $attributes = []` | Additional attributes (key/value) |
 | `bool $raw = false`      | Whether to escape or not the text |
 
@@ -549,7 +549,7 @@ echo $helper('address', 'click<>me', $options);
 ### `form`
 [Phalcon\Html\Helper\Form][html-helper-form] creates a `<form>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
 | `array $attributes = []` | Additional attributes (key/value) |
 
@@ -585,9 +585,9 @@ echo $helper($options);
 ### `img`
 [Phalcon\Html\Helper\Img][html-helper-img] creates a `<img>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $src`            | The image source                  |
+| `string $src`            | Η πηγή της εικόνας                |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -615,13 +615,13 @@ echo $helper('/my-url', $options);
 ### `inputCheckbox`
 \[Phalcon\Html\Helper\Checkbox\]\[html-helper-checkbox\] creates a `<input type="checkbox">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function label(array $attributes)
@@ -659,10 +659,10 @@ echo $result;
 ### `inputColor`
 \[Phalcon\Html\Helper\Color\]\[html-helper-color\] creates a `<input type="color">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -690,10 +690,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputDate`
 \[Phalcon\Html\Helper\Date\]\[html-helper-date\] creates a `<input type="date">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -721,10 +721,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputDatetime`
 \[Phalcon\Html\Helper\DateTime\]\[html-helper-datetime\] creates a `<input type="datetime">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -752,10 +752,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputDatetimeLocal`
 \[Phalcon\Html\Helper\DateTimeLocal\]\[html-helper-datetime-local\] creates a `<input type="datetime-local">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -783,10 +783,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputEmail`
 \[Phalcon\Html\Helper\Email\]\[html-helper-email\] creates a `<input type="email">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -814,10 +814,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputFile`
 \[Phalcon\Html\Helper\File\]\[html-helper-file\] creates a `<input type="file">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -845,10 +845,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputHidden`
 \[Phalcon\Html\Helper\Hidden\]\[html-helper-hidden\] creates a `<input type="hidden">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -876,10 +876,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputImage`
 \[Phalcon\Html\Helper\Image\]\[html-helper-image\] creates a `<input type="image">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -907,10 +907,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputMonth`
 \[Phalcon\Html\Helper\Month\]\[html-helper-month\] creates a `<input type="month">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -938,13 +938,13 @@ echo $helper('test-name', "test-value", $options);
 ### `input`
 \[Phalcon\Html\Helper\Input\]\[html-helper-input\] creates a `<input>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function setType(string $type)
@@ -980,10 +980,10 @@ echo $result;
 ### `inputNumeric`
 \[Phalcon\Html\Helper\Numeric\]\[html-helper-numeric\] creates a `<input type="numeric">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1011,10 +1011,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputPassword`
 \[Phalcon\Html\Helper\Password\]\[html-helper-password\] creates a `<input type="password">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1042,13 +1042,13 @@ echo $helper('test-name', "test-value", $options);
 ### `inputRadio`
 \[Phalcon\Html\Helper\Radio\]\[html-helper-radio\] creates a `<input type="radio">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function label(array $attributes)
@@ -1086,10 +1086,10 @@ echo $result;
 ### `inputRange`
 \[Phalcon\Html\Helper\Range\]\[html-helper-range\] creates a `<input type="range">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1117,10 +1117,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputSearch`
 \[Phalcon\Html\Helper\Search\]\[html-helper-search\] creates a `<input type="search">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1148,14 +1148,14 @@ echo $helper('test-name', "test-value", $options);
 ### `inputSelect`
 \[Phalcon\Html\Helper\Select\]\[html-helper-select\] creates a `<select>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function add(
@@ -1240,10 +1240,10 @@ echo $result;
 ### `inputSubmit`
 \[Phalcon\Html\Helper\Submit\]\[html-helper-submit\] creates a `<input type="submit">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1271,10 +1271,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputTel`
 \[Phalcon\Html\Helper\Tel\]\[html-helper-tel\] creates a `<input type="tel">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1302,10 +1302,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputText`
 \[Phalcon\Html\Helper\Text\]\[html-helper-text\] creates a `<input type="text">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1333,10 +1333,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputTextarea`
 \[Phalcon\Html\Helper\TextArea\]\[html-helper-textarea\] creates a `<textarea>` tags
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1365,10 +1365,10 @@ echo $helper('click<>me', $options);
 ### `inputTime`
 \[Phalcon\Html\Helper\Time\]\[html-helper-time\] creates a `<input type="time">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1396,10 +1396,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputUrl`
 \[Phalcon\Html\Helper\Url\]\[html-helper-url\] creates a `<input type="url">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1427,10 +1427,10 @@ echo $helper('test-name', "test-value", $options);
 ### `inputWeek`
 \[Phalcon\Html\Helper\Week\]\[html-helper-week\] creates a `<input type="week">` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
+| `string $name`           | Το όνομα                          |
+| `string $value`          | Η τιμή                            |
 | `array $attributes = []` | Additional attributes (key/value) |
 
 ```php
@@ -1458,9 +1458,9 @@ echo $helper('test-name', "test-value", $options);
 ### `label`
 [Phalcon\Html\Helper\Label][html-helper-label] creates a `<label>` tag.
 
-| Parameter                | Περιγραφή                         |
+| Παράμετρος               | Περιγραφή                         |
 | ------------------------ | --------------------------------- |
-| `string $label`          | The label                         |
+| `string $label`          | Η ετικέτα                         |
 | `array $attributes = []` | Additional attributes (key/value) |
 | `bool $raw = false`      | Whether to escape or not the text |
 
@@ -1492,10 +1492,10 @@ echo $helper($options);
 ### `link`
 [Phalcon\Html\Helper\Link][html-helper-link] creates a `<link>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
 ```php
 <?php
@@ -1520,12 +1520,12 @@ echo $result;
 ### `meta`
 [Phalcon\Html\Helper\Meta][html-helper-meta] creates a `<meta>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
-**Methods**
+**Μέθοδοι**
 ```php
 public function add(array $attributes = []): Meta
 ```
@@ -1578,12 +1578,12 @@ echo $result;
 ### `ol`
 [Phalcon\Html\Helper\Ol][html-helper-ol] creates a `<ol>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function add(
@@ -1627,12 +1627,12 @@ echo $result;
 ### `script`
 [Phalcon\Html\Helper\Script][html-helper-script] creates a `<script>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function add(
@@ -1668,12 +1668,12 @@ echo $result;
 ### `style`
 [Phalcon\Html\Helper\Script][html-helper-style] creates a `<link>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function add(
@@ -1709,12 +1709,12 @@ echo $result;
 ### `title`
 [Phalcon\Html\Helper\Title][html-helper-title] creates a `<title>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function append(
@@ -1784,12 +1784,12 @@ echo $result;
 ### `ul`
 [Phalcon\Html\Helper\Ul][html-helper-ol] creates a `<ul>` tag.
 
-| Parameter           | Περιγραφή     |
-| ------------------- | ------------- |
-| `string $indent`    | The indent    |
-| `string $delimiter` | The delimiter |
+| Παράμετρος          | Περιγραφή   |
+| ------------------- | ----------- |
+| `string $indent`    | Η εσοχή     |
+| `string $delimiter` | Ο οριοθέτης |
 
-**Methods**
+**Μέθοδοι**
 
 ```php
 public function add(

@@ -683,7 +683,7 @@ $container->set(
 ### Introspection
 This strategy does not require any customization and is implicitly used by all the metadata adapters.
 
-### Σχολιασμοί
+### Annotations
 This strategy makes use of [annotations](annotations) to describe the columns in a model.
 
 ```php

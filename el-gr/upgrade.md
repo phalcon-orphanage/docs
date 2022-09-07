@@ -108,13 +108,13 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 ---
 
-### Σχολιασμοί
+### Annotations
 
 ![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](annotations)
 
 ---
 
-### Εφαρμογή
+### Application
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](application)
 
@@ -539,7 +539,7 @@ The class has been removed.
 
 ---
 
-### Εργοστάσιο
+### Factory
 
 ![](/assets/images/status-changes-required-red.svg)
 
@@ -723,7 +723,7 @@ The [Helper](support-helper) component has been moved to the `Support` namespace
 
 ---
 
-### Εικόνες
+### Image
 
 ![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)](datamapper)
 
@@ -1116,7 +1116,7 @@ The `Phalcon\Text` component has been deprecated. It has been replaced with the 
 
 ---
 
-### Διεύθυνση URL
+### Url
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](mvc-url)
 

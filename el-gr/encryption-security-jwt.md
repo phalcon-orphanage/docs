@@ -110,7 +110,7 @@ $validator
 
 The above example gives a general view on how the component can be used to generate, parse and validate JSON Web Tokens.
 
-## Objects
+## Αντικείμενα
 
 There are several utility components that live in the `Phalcon\Encryption\Security\JWT\Token` namespace, that help with the issuing, parsing and validating JWT tokens
 
@@ -199,13 +199,13 @@ The component utilizes the \[hmac_equals\]\[hmac_equals\] and \[hash_hmac\]\[has
 public function getAlgHeader(): string
 ```
 
-Returns a string identifying the algorithm. For the HMAC algoritms it will return:
+Returns a string identifying the algorithm. For the HMAC algorithms it will return:
 
-| Algorithm | `getAlgHeader` |
-| --------- | -------------- |
-| `sha512`  | `HS512`        |
-| `sha384`  | `HS384`        |
-| `sha256`  | `HS256`        |
+| Αλγόριθμος | `getAlgHeader` |
+| ---------- | -------------- |
+| `sha512`   | `HS512`        |
+| `sha384`   | `HS384`        |
+| `sha256`   | `HS256`        |
 
 ```php
 public function sign(string $payload, string $passphrase): string
@@ -361,7 +361,7 @@ private function setClaim(string $name, $value): Builder
 Sets a claim value in the internal collection.
 
 
-### Example
+### Παράδειγμα
 
 ```php
 <?php
@@ -479,7 +479,7 @@ public function validateSignature(SignerInterface $signer, string $passphrase): 
 ```
 Validates the signature of the token. If the signature is not valid, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
-### Example
+### Παράδειγμα
 
 ```php
 <?php
@@ -533,7 +533,7 @@ $validator
 ;
 ```
 
-## Exceptions
+## Εξαιρέσεις
 
 Any exceptions thrown in the Security component will be of the namespace `Phalcon\Encryption\Security\JWT\*`. You can use this exception to selectively catch exceptions thrown only from this component. There are two exceptions raised. First if you supply the wrong algoritm string when instantiating the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
 

@@ -152,7 +152,7 @@ vokuro/
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Ελεγκτές                                              |
+| `src/Controllers` | Controllers                                           |
 | `src/Forms`       | Φόρμες                                                |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
@@ -366,7 +366,7 @@ Dotenv\Dotenv::create($rootPath)->load();
 
 Finally, we run our application.
 
-### Εφαρμογή
+### Application
 All the application logic is wrapped in the `Vokuro\Application` class. Let's see how this is done:
 
 ```php
@@ -585,7 +585,7 @@ echo $successLogin->user->name;
 > 
 > {: .alert .alert-info }
 
-## Ελεγκτές
+## Controllers
 Again following the [Model-View-Controller][mvc] pattern, Vökuró has one controller to handle a specific _parent_ route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
 
 The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore, if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
@@ -657,7 +657,7 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | Προβολή                        | Περιγραφή                                   |
+| Controller    | Action           | View                           | Περιγραφή                                   |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Index`       | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -1021,7 +1021,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-### Προβολή
+### View
 
 Now that we have everything set up in our form, we pass the form to the view:
 

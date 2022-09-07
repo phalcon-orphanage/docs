@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Storage'
+title: 'Αποθήκευση'
 upgrade: '#storage'
 keywords: 'storage, stream, redis, memcached'
 ---

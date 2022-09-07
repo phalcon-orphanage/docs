@@ -974,17 +974,17 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 ### Other Operators
 Additional operators seen the following operators are available:
 
-| 演算子                       | Description                                                                                  |
-| ------------------------- | -------------------------------------------------------------------------------------------- |
-| `~`                       | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                 |
-| <code>&#124;</code> | Applies a filter in the right operand to the left <code>{%- raw -%}{{ 'hello' &#124; uppercase }}{% endraw %}</code>                   |
-| `..`                      | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}` |
-| `is`                      | ==（equals）と同じですが、テストも実行します                                                                   |
-| `in`                      | 式が他の式に含まれている事をチェックする `if 'a' in 'abc'`                                                       |
-| `is not`                  | != (not equals) と同じ                                                                          |
-| `'a' ? 'b' : 'c'`         | Ternary operator. The same as the PHP ternary operator                                       |
-| `++`                      | 値を増やす                                                                                        |
-| `--`                      | 値を減らす                                                                                        |
+| 演算子               | Description                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                                  |
+| `&vert;`      | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' &vert; uppercase }}{% endraw %}` |
+| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`                  |
+| `is`              | ==（equals）と同じですが、テストも実行します                                                                                    |
+| `in`              | 式が他の式に含まれている事をチェックする `if 'a' in 'abc'`                                                                        |
+| `is not`          | != (not equals) と同じ                                                                                           |
+| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                                        |
+| `++`              | 値を増やす                                                                                                         |
+| `--`              | 値を減らす                                                                                                         |
 
 The following example shows how to use operators:
 
