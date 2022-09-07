@@ -539,7 +539,7 @@ The class has been removed.
 
 ---
 
-### Εργοστάσιο
+### Factory
 
 ![](/assets/images/status-changes-required-red.svg)
 
