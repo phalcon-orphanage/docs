@@ -676,7 +676,7 @@ try {
 }
 ```
 
-## Ελεγκτές
+## Controllers
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
 
 For instance if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
