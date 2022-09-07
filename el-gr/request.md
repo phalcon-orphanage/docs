@@ -42,7 +42,7 @@ There are 5 methods that allow you to retrieve submitted data from a request:
 
 All (except `getServer()`) accept the following parameters:
 
-| Name            | Περιγραφή                                                                                      |
+| Ονομα           | Περιγραφή                                                                                      |
 | --------------- | ---------------------------------------------------------------------------------------------- |
 | `name`          | the name of the value to get                                                                   |
 | `filters`       | (array/string) the sanitizers to apply to the value                                            |
@@ -291,7 +291,7 @@ The above will automatically sanitize any parameter that is POSTed from a form t
 
 These methods accept the same parameters as the `getPost()`, `getPut()` and `getQuery()` but without the `$filter` parameter.
 
-## Ελεγκτές
+## Controllers
 If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Http\Request][http-request] is already registered for you. The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request][http-request] object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
@@ -326,7 +326,7 @@ class PostsController extends Controller
 ## Checking Operations
 The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
 
-| Name                  | Περιγραφή                                                       |
+| Όνομα                 | Περιγραφή                                                       |
 | --------------------- | --------------------------------------------------------------- |
 | `isAjax()`            | Checks whether request has been made using AJAX                 |
 | `isConnect()`         | Checks whether HTTP method is CONNECT                           |
@@ -347,7 +347,7 @@ The [Phalcon\Http\Request][http-request] component contains a number of methods 
 ## Checking Existence
 There are a number of methods available that allow you to check the existence of elements in the request. These methods are prefixed with `has`. Depending on the method used, you can check if an element exists in the `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, PUT cache and the request headers.
 
-| Name          | Περιγραφή                                                      |
+| Όνομα         | Περιγραφή                                                      |
 | ------------- | -------------------------------------------------------------- |
 | `has()`       | Checks whether the $_REQUEST superglobal has a certain element |
 | `hasFiles()`  | Checks whether the request has any uploaded files              |
@@ -362,14 +362,14 @@ There are a number of methods available that allow you to check the existence of
 The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request.
 ### Authentication
 
-| Name              | Περιγραφή                                     |
+| Όνομα             | Περιγραφή                                     |
 | ----------------- | --------------------------------------------- |
 | `getBasicAuth()`  | Gets auth info accepted by the browser/client |
 | `getDigestAuth()` | Gets auth info accepted by the browser/client |
 
 ### Client
 
-| Name                  | Περιγραφή                                                              |
+| Όνομα                 | Περιγραφή                                                              |
 | --------------------- | ---------------------------------------------------------------------- |
 | `getClientAddress()`  | Gets most possible client IPv4 Address                                 |
 | `getClientCharsets()` | Gets a charsets array and their quality accepted by the browser/client |
@@ -378,7 +378,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 
 ### Content
 
-| Name                     | Περιγραφή                                                                      |
+| Όνομα                    | Περιγραφή                                                                      |
 | ------------------------ | ------------------------------------------------------------------------------ |
 | `getAcceptableContent()` | Gets an array with mime/types and their quality accepted by the browser/client |
 | `getBestAccept()`        | Gets best mime/type accepted by the browser/client                             |
@@ -388,7 +388,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 
 ### i18n
 
-| Name                | Περιγραφή                                                             |
+| Όνομα               | Περιγραφή                                                             |
 | ------------------- | --------------------------------------------------------------------- |
 | `getBestCharset()`  | Gets best charset accepted by the browser/client                      |
 | `getBestLanguage()` | Gets best language accepted by the browser/client                     |
@@ -396,7 +396,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 
 ### Server
 
-| Name                 | Περιγραφή                                                                                                          |
+| Ονομα                | Περιγραφή                                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `getPort()`          | Gets information about the port on which the request is made                                                       |
 | `getServerAddress()` | Gets active server address IP                                                                                      |
@@ -454,7 +454,7 @@ $language = $request->getBestLanguage();
 Get the best language accepted configured in the browser. ie. `en-us`
 
 
-### Method
+### Μέθοδος
 `getMethod()` returns the HTTP method which request has been made. If the `X-HTTP-Method-Override` header is set, and if the method is a `POST`, then it is used to determine the "real" intended HTTP method. The `_method` request parameter can also be used to determine the HTTP method, `setHttpMethodParameterOverride(true)` has been called. The method always returns an uppercase string.
 
 ```php
@@ -554,14 +554,14 @@ Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instanc
 
 The `getUploadedFiles()` accepts two parameters.
 
-| Name              | Περιγραφή                                                        |
+| Όνομα             | Περιγραφή                                                        |
 | ----------------- | ---------------------------------------------------------------- |
 | `$onlySuccessful` | Contains only successful uploads                                 |
 | `$namedKeys`      | Returns the array with named keys obtained by the upload process |
 
 The method returns an array of [Phalcon\Http\Request\File][http-request-file] objects. Each object offers the following properties and methods, allowing you to work with uploaded files:
 
-| Name                                | Περιγραφή                                                                                                           |
+| Όνομα                               | Περιγραφή                                                                                                           |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `getError(): string`                | Returns any error that happened with this file                                                                      |
 | `getExtension(): string`            | Returns the extension of the file                                                                                   |
@@ -577,7 +577,7 @@ The method returns an array of [Phalcon\Http\Request\File][http-request-file] ob
 ## Dependency Injection
 The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
-## Events
+## Γεγονότα
  The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 | Γεγονός                      | Περιγραφή                                        | Can stop operation |
@@ -624,7 +624,7 @@ $request = new Request();
 print_r($request->getHeaders());
 ```
 
-Result:
+Αποτέλεσμα:
 
 ```bash
 Array
@@ -697,7 +697,7 @@ print_r(
 );
 ```
 
-Result:
+Αποτέλεσμα:
 
 ```bash
 Array
