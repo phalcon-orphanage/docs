@@ -283,7 +283,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -409,7 +409,7 @@
                 "url": "/support-registry"
             },
             {
-                "text": "Εκδοχή",
+                "text": "Έκδοση",
                 "url": "/support-version"
             }
         ]
