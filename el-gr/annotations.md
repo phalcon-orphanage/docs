@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 'Σχολιασμοί'
+title: 'Annotations'
 keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
-# Σχολιασμοί
+# Annotations
 - - -
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
