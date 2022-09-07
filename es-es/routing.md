@@ -1199,14 +1199,14 @@ foreach ($testRoutes as $testRoute) {
 ## Eventos
 Similar to other Phalcon components, [Phalcon\Mvc\Router][mvc-router] also has events, when an [Events Manager](events) is present. Los eventos disponibles son:
 
-| Evento                     | Disparado cuando                            |
-| -------------------------- | ------------------------------------------- |
-| `router:afterCheckRoutes`  | Después de comprobar todas las rutas        |
-| `router:beforeCheckRoute`  | Antes de comprobar una ruta                 |
-| `router:beforeCheckRoutes` | Antes de comprobar todas las rutas cargadas |
-| `router:beforeMount`       | Antes de montar una nueva ruta              |
-| `router:matchedRoute`      | Cuando una ruta coincide                    |
-| `router:notMatchedRoute`   | Cuando una ruta no coincide                 |
+| Evento              | Disparado cuando                            |
+| ------------------- | ------------------------------------------- |
+| `afterCheckRoutes`  | Después de comprobar todas las rutas        |
+| `beforeCheckRoute`  | Antes de comprobar una ruta                 |
+| `beforeCheckRoutes` | Antes de comprobar todas las rutas cargadas |
+| `beforeMount`       | Antes de montar una nueva ruta              |
+| `matchedRoute`      | Cuando una ruta coincide                    |
+| `notMatchedRoute`   | Cuando una ruta no coincide                 |
 
 ## Anotaciones
 Este componente proporciona una variante que se integra con el servicio [anotaciones](annotations). Usando esta estrategia puede escribir las rutas directamente en los controladores en vez de añadirlas en el componente enrutador directamente.
