@@ -71,6 +71,7 @@ $request->get(
 The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request][http-request] object as follows: 
 
 **Examples**
+
 Get the `userEmail` field from the `$_REQUEST` superglobal:
 
 ```php
@@ -111,6 +112,7 @@ $email = $request->get('userEmail', null, 'some@example.com');
 The [$_GET][get] superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the `getQuery()` method as follows: 
 
 **Examples**
+
 Get the `userEmail` field from the `$_GET` superglobal:
 
 ```php
@@ -152,6 +154,7 @@ $email = $request->getQuery('userEmail', null, 'some@example.com');
 The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows: 
 
 **Examples**
+
 Get the `userEmail` field from the `$_POST` superglobal:
 
 ```php
@@ -192,6 +195,7 @@ $email = $request->getPost('userEmail', null, 'some@example.com');
 The request object parses the PUT stream that has been received internally. You can retrieve the data stored in the array by calling the `getPut()` method as follows: 
 
 **Examples**
+
 Get the `userEmail` field from the `PUT` stream:
 
 ```php
@@ -232,6 +236,7 @@ $email = $request->getPut('userEmail', null, 'some@example.com');
 The [$_SERVER][server] superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the `getServer()` method as follows: 
 
 **Examples**
+
 Get the `SERVER_NAME` value from the `$_SERVER` superglobal:
 
 ```php

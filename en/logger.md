@@ -2,7 +2,7 @@
 layout: default
 upgrade: '#logger'
 title: 'Logger'
-keywords: 'psr-3, logger, adapters, noop, stream, syslog'
+keywords: 'logger, adapters, noop, stream, syslog'
 ---
 # Logger
 - - -
@@ -733,6 +733,7 @@ $logger = $container->getShared('logger');
 [date-formats]: https://www.php.net/manual/en/function.date.php
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 [logger-logger]: api/phalcon_logger#logger-logger
+[logger-abstractlogger]: api/phalcon_logger#logger-abstractlogger
 [logger-adapter-noop]: api/phalcon_logger#logger-adapter-noop
 [logger-adapter-stream]: api/phalcon_logger#logger-adapter-stream
 [logger-adapter-syslog]: api/phalcon_logger#logger-adapter-syslog
