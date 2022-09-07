@@ -18,8 +18,9 @@ Phalconを使用するのに、開発者はC言語を理解する必要はあり
 
 Phalconは疎結合であり、開発者はアプリケーションに必要なだけ、グルーコンポーネントとして必要なオブジェクトのみを使用できます。
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. 私たちは、あなたの新たな翻訳や修正への参加を歓迎しています。 The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
-  {: .alert .alert-info }
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. 私たちは、あなたの新たな翻訳や修正への参加を歓迎しています。 The translations are handled in [GitHub][github_docs] for English, and [Crowdin][crowdin] for other languages 
+> 
+> {: .alert .alert-info }
 
 You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
@@ -29,7 +30,7 @@ You can check our [GitHub][github] project for the code and browse through these
 
 - チャット - Q&A
   - [Discord Chat](https://phalcon.io/discord)
-  - [フォーラム](https://phalcon.io/forum)
+  - [Discussions](https://phalcon.io/discussions)
 - プロジェクトへの援助
   - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [Open Collectiveによる支援](https://phalcon.io/fund)
@@ -45,4 +46,6 @@ You can check our [GitHub][github] project for the code and browse through these
   - [LBRY](https://phalcon.io/lbry)
   - [YouTube](https://phalcon.io/youtube)
 
-[github]: https://github.com/phalcon/cphalcon 
+[crowdin]: https://crowdin.com/project/phalcon-documentation
+[github]: https://github.com/phalcon/cphalcon
+[github_docs]: https://github.com/phalcon/docs
