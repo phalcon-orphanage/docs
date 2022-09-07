@@ -175,6 +175,7 @@ class UnitTest extends AbstractUnitTest
 ```
 
 Si necesita sobrecargar el método `setUp`, es importante llamar al padre o Phalcon no se inicializará correctamente.
+
 ```php
     protected function setUp(): void
     {
@@ -182,7 +183,6 @@ Si necesita sobrecargar el método `setUp`, es importante llamar al padre o Phal
 
         //...
     }
-
 ````
 
 ### Running Unit Tests

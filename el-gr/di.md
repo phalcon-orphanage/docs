@@ -1553,7 +1553,7 @@ The services registered in the [Phalcon\Di\FactoryDefault][di-factorydefault] ar
 | `request`            | [Phalcon\Http\Request](request)                                   | Ναι           | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Ναι           | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Ναι           | Router                       |
-| `security`           | [Phalcon\Security](encryption-security)                            | Ναι           | Ασφάλεια                     |
+| `security`           | [Phalcon\Security](encryption-security)                            | Ναι           | Security                     |
 | `tag`                | [Phalcon\Html\TagFactory](tag)                                    | Ναι           | HTML Tag helpers             |
 | `transactionManager` | [Phalcon\Mvc\Model\Transaction\Manager](db-models-transactions) | Ναι           | Database Transaction Manager |
 | `url`                | [Phalcon\Mvc\Url](mvc-url)                                        | Ναι           | URL Generation               |

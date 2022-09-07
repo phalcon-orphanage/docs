@@ -101,7 +101,7 @@ You can also accompany that with `setContentLength()` which allows you to set th
 
 **Παραδείγματα**
 
-PDF File:
+Αρχείο Pdf:
 
 ```php
 <?php
@@ -399,7 +399,7 @@ There are several methods available to help you retrieve data from the component
 
 `set(): CookiesInterface` accepts the following parameters:
 
-| Parameter                | Περιγραφή                           |
+| Παράμετρος               | Περιγραφή                           |
 | ------------------------ | ----------------------------------- |
 | `string $name`           | The name of the cookie              |
 | `mixed $value = null`    | The value of the cookie             |
@@ -434,7 +434,7 @@ The `setFileToSend()` helper method allows you to easily set a file to be sent b
 
 Η μέθοδος δέχεται τις ακόλουθες παραμέτρους:
 
-| Parameter                | Περιγραφή                                           |
+| Παράμετρος               | Περιγραφή                                           |
 | ------------------------ | --------------------------------------------------- |
 | `string $filePath`       | The path of where the file is                       |
 | `string $attachmentName` | the name that the browser will save the file as     |
@@ -551,7 +551,7 @@ One of the easiest ways to improve the performance in your applications and redu
 
 HTTP Cache is implemented by setting certain headers in the response. The cache is set (using the headers) upon the first visit of the user to our application. The following headers help with HTTP Cache:
 
-| Name             | Περιγραφή                                                                                                                              |
+| Όνομα            | Περιγραφή                                                                                                                              |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Expires:`       | Set the expiration date of the page. Once the page expires the browser will request a fresh copy of the page vs. using the cached one. |
 | `Cache-Control:` | How long is a page considered _fresh_ in the browser.                                                                                  |

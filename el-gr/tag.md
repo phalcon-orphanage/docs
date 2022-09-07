@@ -282,7 +282,7 @@ echo Tag::checkField(
 // <input type='checkbox' id='terms' name='terms' value='Y' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->checkField(
     [
@@ -292,7 +292,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ check_field('terms', 'value': 'Y') }}{% endraw %}
 ```
@@ -315,7 +315,7 @@ echo Tag::colorField(
 // <input type='color' id='background' name='background' class='myclass' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->colorField(
     [
@@ -325,7 +325,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ color_field('background', 'class': 'myclass') }}{% endraw %}
 ```
@@ -348,7 +348,7 @@ echo Tag::dateField(
 // <input type='date' id='born' name='born' value='1980-01-01' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->dateField(
     [
@@ -358,7 +358,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ date_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
@@ -382,7 +382,7 @@ echo Tag::dateTimeField(
 //        value='1980-01-01 01:02:03' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->dateTimeField(
     [
@@ -392,7 +392,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ date_time_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
@@ -416,7 +416,7 @@ echo Tag::dateTimeLocalField(
 //        value='1980-01-01 01:02:03' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->dateTimeLocalField(
     [
@@ -426,7 +426,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ date_time_local_field('born', 'value': '1980-01-01 01:02:03') }}{% endraw %}
 ```
@@ -449,7 +449,7 @@ echo Tag::fileField(
 // <input type='file' id='document' name='document' class='input' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->fileField(
     [
@@ -459,7 +459,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ file_field('document', 'class': 'input') }}{% endraw %}
 ```
@@ -482,7 +482,7 @@ echo Tag::hiddenField(
 // <input type='hidden' id='id' name='id' value='1234' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->hiddenField(
     [
@@ -492,7 +492,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ hidden_field('id', 'value': '1234') }}{% endraw %}
 ```
@@ -514,7 +514,7 @@ echo Tag::imageInput(
 // <input type='image' src='/img/button.png' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->imageInput(
     [
@@ -523,7 +523,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ image_input('src': '/img/button.png') }}{% endraw %}
 ```
@@ -546,7 +546,7 @@ echo Tag::monthField(
 // <input type='month' id='month' name='month' value='04' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->monthField(
     [
@@ -556,7 +556,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ month_field('month', 'value': '04') }}{% endraw %}
 ```
@@ -580,7 +580,7 @@ echo Tag::numericField(
 // <input type='number' id='price' name='price' min='1' max='5' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->numericField(
     [
@@ -591,7 +591,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ numeric_field('price', 'min': '1', 'max': '5') }}{% endraw %}
 ```
@@ -614,7 +614,7 @@ echo Tag::radioField(
 // <input type='radio' id='gender' name='gender' value='Male' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->radioField(
     [
@@ -624,7 +624,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ radio_field('gender', 'value': 'Male') }}{% endraw %}
 ```
@@ -648,7 +648,7 @@ echo Tag::rangeField(
 // <input type='range' id='points' name='points' min='0' max='10' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->rangeField(
     [
@@ -659,7 +659,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ range_field('points', 'min': '0', 'max': '10') }}{% endraw %}
 ```
@@ -682,7 +682,7 @@ echo Tag::searchField(
 // <input type='search' id='search' name='search' q='startpage' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->searchField(
     [
@@ -692,7 +692,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ search_field('search', 'q': 'startsearch') }}{% endraw %}
 ```
@@ -714,7 +714,7 @@ echo Tag::submitButton(
 // <input type='submit' value='Save' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->submitButton(
     [
@@ -723,7 +723,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ submit_button('Save') }}{% endraw %}
 ```
@@ -746,7 +746,7 @@ echo Tag::telField(
 // <input type='tel' id='mobile' name='mobile' size='12' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->telField(
     [
@@ -756,7 +756,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ tel_field('mobile', 'size': '12') }}{% endraw %}
 ```
@@ -779,7 +779,7 @@ echo Tag::textField(
 // <input type='text' id='name' name='name' size='30' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->textField(
     [
@@ -789,7 +789,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ text_field('name', 'size': '30') }}{% endraw %}
 ```
@@ -812,7 +812,7 @@ echo Tag::timeField(
 // <input type='time' id='start' name='start' size='5' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->timeField(
     [
@@ -822,7 +822,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ time_field('start', 'size': '5') }}{% endraw %}
 ```
@@ -844,7 +844,7 @@ echo Tag::urlField(
 // <input type='url' id='homepage' name='homepage' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->urlField(
     [
@@ -853,7 +853,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ url_field('homepage') }}{% endraw %}
 ```
@@ -876,7 +876,7 @@ echo Tag::weekField(
 // <input type='week' id='week' name='week' size='2' />
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->weekField(
     [
@@ -886,7 +886,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ week_field('week', 'size': '2') }}{% endraw %}
 ```
@@ -918,7 +918,7 @@ echo Tag::image(
 // <img src='https://static.mywebsite.com/img/bg.png'>
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->image(
     [
@@ -933,7 +933,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ image('img/hello.gif', 'alt': 'alternative text') }}
 {{ image('https://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
@@ -987,7 +987,7 @@ echo Tag::select(
 // </select>
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->select(
     [
@@ -1004,7 +1004,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ select(
     [
@@ -1060,7 +1060,7 @@ echo Tag::selectStatic(
 // </select>
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php echo $this->tag->selectStatic(
     [
@@ -1073,7 +1073,7 @@ HTML syntax:
 ); ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}{{ select(
     [
@@ -1121,7 +1121,7 @@ echo Tag::tagHtmlClose('canvas');
 // </canvas>
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php 
 
@@ -1143,7 +1143,7 @@ echo $this->tag->tagHtmlClose('canvas');
 ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}
 {{ tag_html('canvas', ['id': 'canvas1', width': '300', 'class': 'cnvclass'], false, true, true) }}
@@ -1151,7 +1151,7 @@ Volt syntax:
 {{ tag_html_close('canvas') }}
 {% endraw %}
 ```
-## Πόροι
+## Assets
 [Phalcon\Tag][tag] offers helper methods to generate stylesheet and javascript HTML tags.
 
 ### `stylesheetLink()`
@@ -1185,7 +1185,7 @@ echo Tag::stylesheetLink(
 //       type='text/css'>
 ```
 
-HTML syntax
+Σύνταξη HTML
 
 ```php
 <?php echo $this->tag->stylesheetLink('css/style.css'); ?>
@@ -1208,7 +1208,7 @@ echo $this->tag->stylesheetLink(
 ); ?>
 ```
 
-Volt Syntax:
+Σύνταξη Volt:
 
 ```php
 {% raw %}{{ stylesheet_link('css/style.css') }}
@@ -1256,7 +1256,7 @@ echo Tag::javascriptInclude(
 //         type='application/javascript'></script>
 ```
 
-HTML syntax
+Σύνταξη HTML
 
 ```php
 <?php echo $this->tag->javascriptInclude('js/jquery.js'); ?>
@@ -1279,7 +1279,7 @@ echo $this->tag->javascriptInclude(
 ); ?>
 ```
 
-Volt Syntax:
+Σύνταξη Volt:
 
 ```php
 {% raw %}{{ javascript_include('js/jquery.js') }}
@@ -1340,7 +1340,7 @@ echo Tag::linkTo('https://phalcon.io/', 'Phalcon', false);
 // <a href='https://phalcon.io/'>Phalcon Home</a>
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php 
 
@@ -1367,7 +1367,7 @@ echo $this->tag->linkTo('https://phalcon.io/', 'Phalcon', false);
 ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
@@ -1405,7 +1405,7 @@ echo Tag::linkTo(
 );
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php 
 
@@ -1423,7 +1423,7 @@ echo $this->tag->linkTo(
 ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
@@ -1463,7 +1463,7 @@ echo Tag::endForm();
 // </form>
 ```
 
-HTML syntax:
+Σύνταξη HTML:
 ```php
 <?php 
 
@@ -1481,7 +1481,7 @@ echo $this->tag->endForm();
 ?>
 ```
 
-Volt syntax:
+Σύνταξη Volt:
 ```twig
 {% raw %}
 {{ form(

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Collection'
+title: 'Συλλογή'
 upgrade: '#support-collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
@@ -177,7 +177,7 @@ The collection object also offers two more getters `getKeys` and `getValues` `ge
 To check whether an element exists or not in the collection, you can use the following:
 - `isset()` στην ιδιότητα
 - `__isset()`
-- array based isset (`isset($coollection[$element])`)
+- isset στον πίνακα (`isset($coollection[$element])`)
 - `offsetExists()`
 - `has()`
 
@@ -430,7 +430,7 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 */
 ```
 
-## Read Only Collection
+## Read Only Συλλογή
 Phalcon also offers a component that can be used in a read-only fashion. `Phalcon\Support\Collection\ReadOnlyCollection` can serve as a collection in your application that can only be populated with initial data but not allowing its contents to be changed throughout the application.
 
 > This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words. 
