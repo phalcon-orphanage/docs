@@ -70,7 +70,7 @@ if (true !== $response->isSent()) {
 ## Getters
 The [Phalcon\Http\Response][http-response] offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available:
 
-| Name                             | Περιγραφή                                                                                                                                    |
+| Ονομα                            | Περιγραφή                                                                                                                                    |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `getContent(): string`           | Returns the HTTP response body.                                                                                                              |
 | `getHeaders(): HeadersInterface` | Returns the headers object, containing headers set by the user.                                                                              |
@@ -99,7 +99,7 @@ You can also accompany that with `setContentLength()` which allows you to set th
 > 
 > {: .alert .alert-info }
 
-**Examples**
+**Παραδείγματα**
 
 PDF File:
 
@@ -265,7 +265,7 @@ $response->setHeaders($headers);
 
 The [Phalcon\Http\Response\Headers][http-response-headers] object offers the following methods, allowing you to manipulate headers:
 
-| Name                                 | Περιγραφή                                               |
+| Όνομα                                | Περιγραφή                                               |
 | ------------------------------------ | ------------------------------------------------------- |
 | <code>get( string $name ): string&#124;bool</code>            | Gets a header value from the object                     |
 | `has( string $name ): bool`          | Checks if a header already exists in the reponse        |
@@ -334,7 +334,7 @@ $cookie  = new Cookie(
 > 
 > {: .alert .alert-info }
 
-### Encryption
+### Κρυπτογράφηση
 The cookies collection is automatically registered as part of the `response` service that is registered in the DI container. By default, cookies are automatically encrypted prior to sending them to the client and are decrypted when retrieved from the user.
 
 In order to set the sign key used to generate a message you can either set it in the constructor:
@@ -380,11 +380,11 @@ $response->setCookies($cookies);
 > 
 > {: .alert .alert-danger }
 
-### Methods
+### Μέθοδοι
 
 There are several methods available to help you retrieve data from the component:
 
-| Method                                                   | Περιγραφή                                                                                                                                                                                                                                                                                                          |
+| Μέθοδος                                                  | Περιγραφή                                                                                                                                                                                                                                                                                                          |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `delete( string $name ): bool`                           | Deletes a cookie by name. This method **does not remove** cookies from the `$_COOKIE` superglobal                                                                                                                                                                                                                  |
 | `get( string $name ): CookieInterface`                   | Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise. |
@@ -399,7 +399,7 @@ There are several methods available to help you retrieve data from the component
 
 `set(): CookiesInterface` accepts the following parameters:
 
-| Method                   | Περιγραφή                           |
+| Μέθοδος                  | Περιγραφή                           |
 | ------------------------ | ----------------------------------- |
 | `string $name`           | The name of the cookie              |
 | `mixed $value = null`    | The value of the cookie             |
@@ -432,7 +432,7 @@ $cookies->set(
 ## Files
 The `setFileToSend()` helper method allows you to easily set a file to be sent back to the caller using the response object. This is particularly useful when we want to introduce download files functionality in our application.
 
-The method accepts the following parameters:
+Η μέθοδος δέχεται τις ακόλουθες παραμέτρους:
 - `filePath` - string - The path of where the file is
 - `attachmentName` - string - the name that the browser will save the file as
 - `attachment` - bool - whether this is an attachment or not (sets headers)
@@ -467,7 +467,7 @@ When calling `send()`, the file will be read using [readfile()][readfile] and th
 ## Ανακατευθύνσεις
 With [Phalcon\Http\Response][http-response] you can also execute HTTP redirections.
 
-**Examples**
+**Παραδείγματα**
 
 Redirect to the default URI
 
@@ -548,7 +548,7 @@ One of the easiest ways to improve the performance in your applications and redu
 
 HTTP Cache is implemented by setting certain headers in the response. The cache is set (using the headers) upon the first visit of the user to our application. The following headers help with HTTP Cache:
 
-| Name             | Περιγραφή                                                                                                                              |
+| Όνομα            | Περιγραφή                                                                                                                              |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Expires:`       | Set the expiration date of the page. Once the page expires the browser will request a fresh copy of the page vs. using the cached one. |
 | `Cache-Control:` | How long is a page considered _fresh_ in the browser.                                                                                  |
@@ -731,14 +731,14 @@ class PostsController extends Controller
 }
 ```
 
-## Events
+## Γεγονότα
  The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 
-| Γεγονός             | Περιγραφή                               | Can stop operation |
-| ------------------- | --------------------------------------- |:------------------:|
-| `afterSendHeaders`  | Fires after the headers have been sent  |        Όχι         |
-| `beforeSendHeaders` | Fires before the headers have been sent |        Ναι         |
+| Γεγονός             | Περιγραφή                               | Μπορεί να σταματήσει τη λειτουργία |
+| ------------------- | --------------------------------------- |:----------------------------------:|
+| `afterSendHeaders`  | Fires after the headers have been sent  |                Όχι                 |
+| `beforeSendHeaders` | Fires before the headers have been sent |                Ναι                 |
 
 [http-response]: api/phalcon_http#http-response
 [http-response-cookies]: api/phalcon_http#http-response-cookies
