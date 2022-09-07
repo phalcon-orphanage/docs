@@ -71,7 +71,9 @@ $request->get(
 ### $_REQUEST
 The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request][http-request] object as follows:
 
-**Examples** Get the `userEmail` field from the `$_REQUEST` superglobal:
+**Ejemplos**
+
+Get the `userEmail` field from the `$_REQUEST` superglobal:
 
 ```php
 <?php
@@ -110,7 +112,9 @@ $email = $request->get('userEmail', null, 'some@example.com');
 ### $_GET
 The [$_GET][get] superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). Puede recuperar los datos almacenados en el vector llamando al método `getQuery()` de la siguiente manera:
 
-**Examples** Get the `userEmail` field from the `$_GET` superglobal:
+**Ejemplos**
+
+Get the `userEmail` field from the `$_GET` superglobal:
 
 ```php
 <?php
@@ -150,7 +154,9 @@ $email = $request->getQuery('userEmail', null, 'some@example.com');
 ### $_POST
 The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. Puede recuperar los datos almacenados en el vector llamando al método `getPost()` de la siguiente manera:
 
-**Examples** Get the `userEmail` field from the `$_POST` superglobal:
+**Ejemplos**
+
+Get the `userEmail` field from the `$_POST` superglobal:
 
 ```php
 <?php
@@ -189,7 +195,9 @@ $email = $request->getPost('userEmail', null, 'some@example.com');
 ### Put
 El objeto petición analiza el flujo PUT que se ha recibido internamente. Puede recuperar los datos almacenados en el vector llamando al método `getPut()` de la siguiente manera:
 
-**Examples** Get the `userEmail` field from the `PUT` stream:
+**Ejemplos**
+
+Get the `userEmail` field from the `PUT` stream:
 
 ```php
 <?php
@@ -228,7 +236,9 @@ $email = $request->getPut('userEmail', null, 'some@example.com');
 ### $_SERVER
 The [$_SERVER][server] superglobal contains an array containing information such as headers, paths, and script locations. Puede recuperar los datos almacenados en el vector llamando al método `getServer()` de la siguiente manera:
 
-**Examples** Get the `SERVER_NAME` value from the `$_SERVER` superglobal:
+**Ejemplos**
+
+Get the `SERVER_NAME` value from the `$_SERVER` superglobal:
 
 ```php
 <?php
