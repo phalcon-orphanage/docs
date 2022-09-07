@@ -70,12 +70,12 @@ if (true !== $response->isSent()) {
 ## Getters
 The [Phalcon\Http\Response][http-response] offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available:
 
-| Name                             | Description                                                                                                                                  |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `getContent(): string`           | Returns the HTTP response body.                                                                                                              |
-| `getHeaders(): HeadersInterface` | Returns the headers object, containing headers set by the user.                                                                              |
-| <code>getReasonPhrase(): string&#124;null</code>        | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
-| <code>getStatusCode(): int&#124;null</code>        | Returns the status code (e.g. `200`).                                                                                                        |
+| Name                                      | Description                                                                                                                                  |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `getContent(): string`                    | Returns the HTTP response body.                                                                                                              |
+| `getHeaders(): HeadersInterface`          | Returns the headers object, containing headers set by the user.                                                                              |
+| `getReasonPhrase(): string&vert;null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
+| `getStatusCode(): int&vert;null`      | Returns the status code (e.g. `200`).                                                                                                        |
 
 
 ## Content
@@ -265,16 +265,16 @@ $response->setHeaders($headers);
 
 The [Phalcon\Http\Response\Headers][http-response-headers] object offers the following methods, allowing you to manipulate headers:
 
-| Name                                 | Description                                             |
-| ------------------------------------ | ------------------------------------------------------- |
-| <code>get( string $name ): string&#124;bool</code>            | Gets a header value from the object                     |
-| `has( string $name ): bool`          | Checks if a header already exists in the reponse        |
-| `remove( string $header )`           | Removes a header from the response                      |
-| `reset()`                            | Resets all headers                                      |
-| `send(): bool`                       | Sends the headers to the client                         |
-| `set( string $name, string $value )` | Sets a header to be sent at the end of the response     |
-| `setRaw( string $header )`           | Sets a raw header to be sent at the end of the response |
-| `toArray(): array`                   | Returns the current headers as an array                 |
+| Name                                        | Description                                             |
+| ------------------------------------------- | ------------------------------------------------------- |
+| `get( string $name ): string&vert;bool` | Gets a header value from the object                     |
+| `has( string $name ): bool`                 | Checks if a header already exists in the reponse        |
+| `remove( string $header )`                  | Removes a header from the response                      |
+| `reset()`                                   | Resets all headers                                      |
+| `send(): bool`                              | Sends the headers to the client                         |
+| `set( string $name, string $value )`        | Sets a header to be sent at the end of the response     |
+| `setRaw( string $header )`                  | Sets a raw header to be sent at the end of the response |
+| `toArray(): array`                          | Returns the current headers as an array                 |
 
 ```php
 <?php
@@ -399,7 +399,7 @@ There are several methods available to help you retrieve data from the component
 
 `set(): CookiesInterface` accepts the following parameters:
 
-| メソッド                     | Description                         |
+| Parameter                | Description                         |
 | ------------------------ | ----------------------------------- |
 | `string $name`           | The name of the cookie              |
 | `mixed $value = null`    | The value of the cookie             |
@@ -433,9 +433,12 @@ $cookies->set(
 The `setFileToSend()` helper method allows you to easily set a file to be sent back to the caller using the response object. This is particularly useful when we want to introduce download files functionality in our application.
 
 The method accepts the following parameters:
-- `filePath` - string - The path of where the file is
-- `attachmentName` - string - the name that the browser will save the file as
-- `attachment` - bool - whether this is an attachment or not (sets headers)
+
+| Parameter                | Description                                         |
+| ------------------------ | --------------------------------------------------- |
+| `string $filePath`       | The path of where the file is                       |
+| `string $attachmentName` | the name that the browser will save the file as     |
+| `bool $attachment`       | whether this is an attachment or not (sets headers) |
 
 ```php
 <?php
