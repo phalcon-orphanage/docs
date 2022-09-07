@@ -445,7 +445,7 @@ If you are using [Angular][angular] you can set the interpolators as follows:
 );
 ```
 
-## Variables
+## Μεταβλητές
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
 ```twig
@@ -468,7 +468,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The available built-in filters are:
 
-| Filter             | Περιγραφή                                                                                            |
+| Φίλτρο             | Περιγραφή                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------- |
 | `abs`              | Applies the [`abs`][abs] PHP function to a value.                                                    |
 | `capitalize`       | Capitalizes a string by applying the [`ucwords`][ucwords] PHP function to the value                  |
@@ -498,7 +498,7 @@ The available built-in filters are:
 | `upper`            | Applies the [`strtoupper`][strtoupper] PHP function to the value.                                    |
 | `url_encode`       | Applies the [`urlencode`][urlencode] PHP function to the value                                       |
 
-**Examples**
+**Παραδείγματα**
 
 ```twig
 {%- raw -%}
@@ -560,7 +560,7 @@ The available built-in filters are:
 {% endraw %}
 ```
 
-## Comments
+## Σχόλια
 Comments may also be added to a template using the `{%- raw -%}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
 ```twig
@@ -804,7 +804,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 ### Loop Context
 A special variable is available inside `for` loops providing you information about
 
-| Variable         | Περιγραφή                                                     |
+| Μεταβλητή        | Περιγραφή                                                     |
 | ---------------- | ------------------------------------------------------------- |
 | `loop.first`     | True if in the first iteration.                               |
 | `loop.index`     | The current iteration of the loop. (1 indexed)                |
@@ -814,7 +814,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
 | `loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
 
-Example:
+Παράδειγμα:
 
 ```twig
 {%- raw -%}
@@ -839,7 +839,7 @@ Example:
 {% endraw %}
 ```
 
-## Assignments
+## Αναθέσεις
 Variables may be changed in a template using the instruction `set`:
 
 ```twig
@@ -898,7 +898,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 ### Literals
 The following literals are supported:
 
-| Filter               | Περιγραφή                                                          |
+| Φίλτρο               | Περιγραφή                                                          |
 | -------------------- | ------------------------------------------------------------------ |
 | `'this is a string'` | Text between double quotes or single quotes are handled as strings |
 | `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
@@ -907,7 +907,7 @@ The following literals are supported:
 | `true`               | Constant `true` is the boolean `true` value                        |
 | `null`               | Constant `null` is the `null` value                                |
 
-### Arrays
+### Πίνακες
 You can create arrays by enclosing a list of values in square brackets:
 
 ```twig
@@ -935,7 +935,7 @@ Curly braces also can be used to define arrays or hashes:
 {% endraw %}
 ```
 
-### Math
+### Μαθηματικά
 You may make calculations in templates using the following operators:
 
 | Operator | Περιγραφή                                                                                      |
@@ -1249,7 +1249,7 @@ You can call any of the helpers that [Phalcon\Html\TagFactory](html-tagfactory) 
 
 Also, you can use the [Phalcon\Tag](api/phalcon_tag) helper methods. You only need to call an uncamelized version of the method:
 
-| Volt function        | Method                            |
+| Volt function        | Μέθοδος                           |
 | -------------------- | --------------------------------- |
 | `check_field`        | `Phalcon\Tag::checkField`        |
 | `date_field`         | `Phalcon\Tag::dateField`         |
@@ -1276,7 +1276,7 @@ Also, you can use the [Phalcon\Tag](api/phalcon_tag) helper methods. You only ne
 ## Functions
 The following built-in functions are available in Volt:
 
-| Name          | Περιγραφή                                                   |
+| Όνομα         | Περιγραφή                                                   |
 | ------------- | ----------------------------------------------------------- |
 | `constant`    | Reads a PHP constant                                        |
 | `content`     | Includes the content produced in a previous rendering stage |
@@ -1291,7 +1291,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `version_id`  | Returns the current version id of the framework             |
 
-## View
+## Προβολή
 Also, Volt is integrated with [Phalcon\Mvc\View](views), you can play with the view hierarchy and include partials as well:
 
 ```twig
@@ -1330,7 +1330,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 ### Partial Vs Include
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| Type       | Περιγραφή                                                                                                                                                                                                                                                              |
+| Τύπος      | Περιγραφή                                                                                                                                                                                                                                                              |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `partial`  | allows you to include templates made in Volt and in other template engines. As well allows you to pass an expression like a variable allowing to include the content of other view dynamically. It's better if the content that you have to include changes frequently |
 | `includes` | copies the compiled content into the view which improves the performance. Only allows to include templates made with Volt. Requires an existing template at compile time                                                                                               |
@@ -1947,7 +1947,7 @@ public function setUniquePrefix(string $prefix): Compiler
 ```
 Set a unique prefix to be used as prefix for compiled variables
 
-## Events
+## Γεγονότα
 The following compilation [events](events) are available to be implemented in extensions:
 
 | Event/Method        | Περιγραφή                                                                                             |
