@@ -70,12 +70,12 @@ if (true !== $response->isSent()) {
 ## Getters
 The [Phalcon\Http\Response][http-response] offers several getters, allowing you to retrieve information regarding the response based on your application needs. The following getters are available:
 
-| Ονομα                            | Περιγραφή                                                                                                                                    |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `getContent(): string`           | Returns the HTTP response body.                                                                                                              |
-| `getHeaders(): HeadersInterface` | Returns the headers object, containing headers set by the user.                                                                              |
-| <code>getReasonPhrase(): string&#124;null</code>        | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
-| <code>getStatusCode(): int&#124;null</code>        | Returns the status code (e.g. `200`).                                                                                                        |
+| Ονομα                                     | Περιγραφή                                                                                                                                    |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `getContent(): string`                    | Returns the HTTP response body.                                                                                                              |
+| `getHeaders(): HeadersInterface`          | Returns the headers object, containing headers set by the user.                                                                              |
+| `getReasonPhrase(): string&vert;null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
+| `getStatusCode(): int&vert;null`      | Returns the status code (e.g. `200`).                                                                                                        |
 
 
 ## Content
@@ -265,16 +265,16 @@ $response->setHeaders($headers);
 
 The [Phalcon\Http\Response\Headers][http-response-headers] object offers the following methods, allowing you to manipulate headers:
 
-| Όνομα                                | Περιγραφή                                               |
-| ------------------------------------ | ------------------------------------------------------- |
-| <code>get( string $name ): string&#124;bool</code>            | Gets a header value from the object                     |
-| `has( string $name ): bool`          | Checks if a header already exists in the reponse        |
-| `remove( string $header )`           | Removes a header from the response                      |
-| `reset()`                            | Resets all headers                                      |
-| `send(): bool`                       | Sends the headers to the client                         |
-| `set( string $name, string $value )` | Sets a header to be sent at the end of the response     |
-| `setRaw( string $header )`           | Sets a raw header to be sent at the end of the response |
-| `toArray(): array`                   | Returns the current headers as an array                 |
+| Όνομα                                       | Περιγραφή                                               |
+| ------------------------------------------- | ------------------------------------------------------- |
+| `get( string $name ): string&vert;bool` | Gets a header value from the object                     |
+| `has( string $name ): bool`                 | Checks if a header already exists in the reponse        |
+| `remove( string $header )`                  | Removes a header from the response                      |
+| `reset()`                                   | Resets all headers                                      |
+| `send(): bool`                              | Sends the headers to the client                         |
+| `set( string $name, string $value )`        | Sets a header to be sent at the end of the response     |
+| `setRaw( string $header )`                  | Sets a raw header to be sent at the end of the response |
+| `toArray(): array`                          | Returns the current headers as an array                 |
 
 ```php
 <?php
@@ -399,7 +399,7 @@ There are several methods available to help you retrieve data from the component
 
 `set(): CookiesInterface` accepts the following parameters:
 
-| Μέθοδος                  | Περιγραφή                           |
+| Parameter                | Περιγραφή                           |
 | ------------------------ | ----------------------------------- |
 | `string $name`           | The name of the cookie              |
 | `mixed $value = null`    | The value of the cookie             |
@@ -433,9 +433,12 @@ $cookies->set(
 The `setFileToSend()` helper method allows you to easily set a file to be sent back to the caller using the response object. This is particularly useful when we want to introduce download files functionality in our application.
 
 Η μέθοδος δέχεται τις ακόλουθες παραμέτρους:
-- `filePath` - string - The path of where the file is
-- `attachmentName` - string - the name that the browser will save the file as
-- `attachment` - bool - whether this is an attachment or not (sets headers)
+
+| Parameter                | Περιγραφή                                           |
+| ------------------------ | --------------------------------------------------- |
+| `string $filePath`       | The path of where the file is                       |
+| `string $attachmentName` | the name that the browser will save the file as     |
+| `bool $attachment`       | whether this is an attachment or not (sets headers) |
 
 ```php
 <?php
@@ -548,7 +551,7 @@ One of the easiest ways to improve the performance in your applications and redu
 
 HTTP Cache is implemented by setting certain headers in the response. The cache is set (using the headers) upon the first visit of the user to our application. The following headers help with HTTP Cache:
 
-| Όνομα            | Περιγραφή                                                                                                                              |
+| Name             | Περιγραφή                                                                                                                              |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Expires:`       | Set the expiration date of the page. Once the page expires the browser will request a fresh copy of the page vs. using the cached one. |
 | `Cache-Control:` | How long is a page considered _fresh_ in the browser.                                                                                  |
@@ -735,10 +738,10 @@ class PostsController extends Controller
  The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 
-| Γεγονός             | Περιγραφή                               | Μπορεί να σταματήσει τη λειτουργία |
-| ------------------- | --------------------------------------- |:----------------------------------:|
-| `afterSendHeaders`  | Fires after the headers have been sent  |                Όχι                 |
-| `beforeSendHeaders` | Fires before the headers have been sent |                Ναι                 |
+| Γεγονός             | Περιγραφή                               | Can stop operation |
+| ------------------- | --------------------------------------- |:------------------:|
+| `afterSendHeaders`  | Fires after the headers have been sent  |        Όχι         |
+| `beforeSendHeaders` | Fires before the headers have been sent |        Ναι         |
 
 [http-response]: api/phalcon_http#http-response
 [http-response-cookies]: api/phalcon_http#http-response-cookies
