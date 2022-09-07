@@ -123,7 +123,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 ---
 
-### Πόροι
+### Assets
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](assets)
 
@@ -256,7 +256,7 @@ var_dump($loader->getDebug());
 
 ---
 
-### Μνήμη cache
+### Cache
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](cache)
 
@@ -293,7 +293,7 @@ The [Collection](support-collection) component has been moved to the `Support` n
 
 ---
 
-### Ρυθμίσεις
+### Config
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](config)
 
@@ -939,7 +939,7 @@ The [Registry](support-registry) component has been moved to the `Support` names
 
 ---
 
-### Ασφάλεια
+### Security
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](encryption-security)
 
@@ -1124,7 +1124,7 @@ The [Url](mvc-url) component has been moved to the `Mvc` namespace. [more](#mvc)
 
 ---
 
-### Επικύρωση
+### Validation
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](filter-validation)
 
@@ -1132,7 +1132,7 @@ The [Validation](filter-validation) component has been moved to the `Filter` nam
 
 ---
 
-### Εκδοχή
+### Version
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](support-version)
 
