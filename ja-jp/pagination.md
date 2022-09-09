@@ -59,14 +59,14 @@ public function __construct(array $config)
 
 Every adapter requires options to operate properly. These options are passed as a key/value array in the constructor of the adapter.
 
-| オプション           | Description                                                                                                                                                     |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `builder`       | Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object                                        |
-| `data`          | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                                       |
-| `limit` (`int`) | The size of the page slice. If `limit` is negative, an exception will be thrown.                                                                                |
-| `model`         | The data to paginate. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)                                                                   |
-| `page` (`int`)  | The current page                                                                                                                                                |
-| `repository`    | [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. For more about repositories see below. |
+| オプション           | Description                                                                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `builder`       | Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object                 |
+| `data`          | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                |
+| `limit` (`int`) | The size of the page slice. If `limit` is negative, an exception will be thrown.                                                         |
+| `model`         | The data to paginate. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)                                            |
+| `page` (`int`)  | The current page                                                                                                                         |
+| `repository`    | [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - 結果セットを設定するリポジトリオブジェクト。 For more about repositories see below. |
 
 The methods exposed are:
 
