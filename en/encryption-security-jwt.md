@@ -18,6 +18,9 @@ keywords: 'security, hashing, passwords, jwt, rfc7519'
 - Parser ([Phalcon\Encryption\Security\JWT\Token\Parser][security-jwt-token-parser])
 - Validator ([Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator])
 
+> **NOTE**: For the examples below, we have split the output split into different lines for readability
+{: .alert .alert-warning }
+
 An example of using the component is:
 
 ```php
@@ -53,14 +56,11 @@ $builder
     ->setPassphrase($passphrase)                // password 
 ;
 
-// Phalcon\Encryption\Security\JWT\Token\Token object
+// Phalcon\Encryption\Security\JWT\Token\Token
 $tokenObject = $builder->getToken();
 
-// The token
 echo $tokenObject->getToken();
 
-// Token split into different lines for readability
-//
 // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImN0eSI6ImFwcGxpY2F0aW9uXC9qc29uIn0.
 // eyJhdWQiOlsiaHR0cHM6XC9cL3RhcmdldC5waGFsY29uLmlvIl0sImV4cCI6MTYxNDE4NTkxN
 // ywianRpIjoiYWJjZDEyMzQ1Njc4OSIsImlhdCI6MTYxNDA5OTUxNywiaXNzIjoiaHR0cHM6XC
@@ -71,7 +71,7 @@ echo $tokenObject->getToken();
 ```
 
 ```php
-// $tokenReceived is what we received
+// #01
 $tokenReceived = getMyTokenFromTheApplication();
 $audience      = 'https://target.phalcon.io';
 $now           = new DateTimeImmutable();
@@ -81,20 +81,20 @@ $expires       = $now->getTimestamp();
 $id            = 'abcd123456789';
 $issuer        = 'https://phalcon.io';
 
-// Defaults to 'sha512'
+// #02
 $signer     = new Hmac();
 $passphrase = 'QcMpZ&b&mo3TPsPk668J6QH8JA$&U&m2';
 
-// Parse the token
+// #03
 $parser      = new Parser();
 
-// Phalcon\Encryption\Security\JWT\Token\Token object
+// Phalcon\Encryption\Security\JWT\Token\Token
 $tokenObject = $parser->parse($tokenReceived);
 
-// Phalcon\Encryption\Security\JWT\Validator object
-$validator = new Validator($tokenObject, 100); // allow for a time shift of 100
+// Phalcon\Encryption\Security\JWT\Validator
+$validator = new Validator($tokenObject, 100); // #04
 
-// Throw exceptions if those do not validate
+# 05
 $validator
     ->validateAudience($audience)
     ->validateExpiration($expires)
@@ -104,7 +104,25 @@ $validator
     ->validateNotBefore($notBefore)
     ->validateSignature($signer, $passphrase)
 ;
+
+# 06
+var_dump($validator->getErrors())
 ```
+
+> **LEGEND**
+>
+> 1. $tokenReceived is what we received
+>
+> 2. Defaults to 'sha512'
+>
+> 3. Parse the token
+>
+> 4. Allow for a time shift of 100
+> 
+> 5. Run the validators
+>
+> 6. Errors printed out (if any)
+{: .alert .alert-info }
 
 The above example gives a general view on how the component can be used to generate, parse and validate JSON Web Tokens. 
 
@@ -153,10 +171,42 @@ class Enum
 
 [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] is the component responsible for storing and calculating the JWT token. It accepts the headers, claims (as [Phalcon\Encryption\Security\JWT\Token\Item][security-jwt-token-item] objects) and signature objects in its constructor and exposes:
 
-* `getPayload`: Returns the payload
-* `getToken`: Returns the token
+```php
+public function getClaims(): Item
+```
+Return the claims collection
 
-For a token `abcd.efgh.ijkl`, `getPayload` will return `abcd.efgh` and `getToken` will return `abcd.efgh.ijkl`. 
+```php
+public function getHeaders(): Item
+```
+Return the headers collection
+
+```php
+public function getPayload(): string
+```
+Return the payload. For a token `abcd.efgh.ijkl`, it will return `abcd.efgh`
+
+```php
+public function getSignature(): Signature
+```
+Return the signature
+
+```php
+public function getToken(): string
+```
+Return the token as a string. For a token `abcd.efgh.ijkl` it will return `abcd.efgh.ijkl`.
+
+```php
+public function validate(Validator $validator): array
+```
+Run all validators against the token data. Return the errors array from the validator
+
+```php
+public function verify(SignerInterface $signer, string $key): bool
+```
+Verify the signature of the token
+
+
 
 ### Signer
 
@@ -200,10 +250,10 @@ public function getAlgHeader(): string
 Returns a string identifying the algorithm. For the HMAC algorithms it will return:
 
 | Algorithm | `getAlgHeader` |
-|-----------|----------------|
-| `sha512`  | `HS512`        |
-| `sha384`  | `HS384`        |
-| `sha256`  | `HS256`        |
+|:---------:|:--------------:|
+| `sha512`  |    `HS512`     |
+| `sha384`  |    `HS384`     |
+| `sha256`  |    `HS256`     |
 
 ```php
 public function sign(string $payload, string $passphrase): string
@@ -249,7 +299,12 @@ public function init(): Builder
 Initializes the object - useful when you want to reuse the same builder
 
 ```php
-public function getAudience()
+public function addClaim(string $name, mixed $value): Builder
+```
+Adds a custom claim in the claims collection
+
+```php
+public function getAudience(): array|string
 ```
 Returns the `aud` contents
 
@@ -309,7 +364,7 @@ public function getPassphrase(): string
 Returns the supplied passphrase
 
 ```php
-public function setAudience($audience): Builder
+public function setAudience(array|string $audience): Builder
 ```
 Sets the audience (`aud`). If the parameter passed is not an array or a string, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
@@ -369,10 +424,9 @@ use Phalcon\Encryption\Security\JWT\Signer\Hmac;
 use Phalcon\Encryption\Security\JWT\Token\Parser;
 use Phalcon\Encryption\Security\JWT\Validator;
 
-// Defaults to 'sha512'
+// 'sha512'
 $signer  = new Hmac();
 
-// Builder object
 $builder = new Builder($signer);
 
 $now        = new DateTimeImmutable();
@@ -381,7 +435,6 @@ $notBefore  = $now->modify('-1 minute')->getTimestamp();
 $expires    = $now->modify('+1 day')->getTimestamp();
 $passphrase = 'QcMpZ&b&mo3TPsPk668J6QH8JA$&U&m2';
 
-// Setup
 $builder
     ->setAudience('https://target.phalcon.io')  // aud
     ->setContentType('application/json')        // cty - header
@@ -394,14 +447,11 @@ $builder
     ->setPassphrase($passphrase)                // password 
 ;
 
-// Phalcon\Encryption\Security\JWT\Token\Token object
+// Phalcon\Encryption\Security\JWT\Token\Token 
 $tokenObject = $builder->getToken();
 
-// The token
 echo $tokenObject->getToken();
 
-// Token split into different lines for readability
-//
 // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImN0eSI6ImFwcGxpY2F0aW9uXC9qc29uIn0.
 // eyJhdWQiOlsiaHR0cHM6XC9cL3RhcmdldC5waGFsY29uLmlvIl0sImV4cCI6MTYxNDE4NTkxN
 // ywianRpIjoiYWJjZDEyMzQ1Njc4OSIsImlhdCI6MTYxNDA5OTUxNywiaXNzIjoiaHR0cHM6XC
@@ -417,20 +467,17 @@ In order to validate a token you will need to create a new [Phalcon\Encryption\S
 
 In order to parse the JWT received and convert it to a [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] object, you will need to use a [Phalcon\Encryption\Security\JWT\Token\Parser][security-jwt-token-parser] object and parse it.
 
+### Validator
 ```php
-// Parser
 $parser = new Parser();
 
-// Parse the token received
 $tokenObject = $parser->parse($tokenReceived);
 
-// Create the validator
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 ```
+You can use the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] object to validate each claim by calling the `validate*` methods with the necessary parameters (taken from the [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token]). The internal `errors` array in the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] will be populated accordingly, returning the results with the `getErrors()` method.
 
-After that, you can start calling the `validate*` methods with the necessary parameters to validate the token received. If no exceptions are thrown, the token is valid.
-
-### Methods
+#### Methods
 
 ```php
 public function __construct(Token $token, int $timeShift = 0)
@@ -443,7 +490,7 @@ public function setToken(Token $token): Validator
 Sets the token object.
 
 ```php
-public function validateAudience(string $audience): Validator
+public function validateAudience(array|string $audience): Validator
 ```
 Validates the audience. If it is not included in the token's `aud`, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
@@ -477,7 +524,7 @@ public function validateSignature(SignerInterface $signer, string $passphrase): 
 ```
 Validates the signature of the token. If the signature is not valid, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
-### Example
+#### Example
 
 ```php
 <?php
@@ -486,8 +533,6 @@ use Phalcon\Encryption\Security\JWT\Signer\Hmac;
 use Phalcon\Encryption\Security\JWT\Token\Parser;
 use Phalcon\Encryption\Security\JWT\Validator;
 
-// Token split into different lines for readability
-//
 // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImN0eSI6ImFwcGxpY2F0aW9uXC9qc29uIn0.
 // eyJhdWQiOlsiaHR0cHM6XC9cL3RhcmdldC5waGFsY29uLmlvIl0sImV4cCI6MTYxNDE4NTkxN
 // ywianRpIjoiYWJjZDEyMzQ1Njc4OSIsImlhdCI6MTYxNDA5OTUxNywiaXNzIjoiaHR0cHM6XC
@@ -496,7 +541,6 @@ use Phalcon\Encryption\Security\JWT\Validator;
 // LdYevRZaQDZ2lul4CCQ5DymeP2ubcapTtgeezOZGIq7Meu7rFF1pv32b-AMWOxCS63CQz_jpm
 // BPlPyOeEAkMbg
 
-// $tokenReceived is what we received
 $tokenReceived = getMyTokenFromTheApplication();
 $audience      = 'https://target.phalcon.io';
 $now           = new DateTimeImmutable();
@@ -506,20 +550,18 @@ $expires       = $now->getTimestamp();
 $id            = 'abcd123456789';
 $issuer        = 'https://phalcon.io';
 
-// Defaults to 'sha512'
+// 'sha512'
 $signer     = new Hmac();
 $passphrase = 'QcMpZ&b&mo3TPsPk668J6QH8JA$&U&m2';
 
-// Parse the token
 $parser      = new Parser();
 
-// Phalcon\Encryption\Security\JWT\Token\Token object
+// Phalcon\Encryption\Security\JWT\Token\Token 
 $tokenObject = $parser->parse($tokenReceived);
 
-// Phalcon\Encryption\Security\JWT\Validator object
+// Phalcon\Encryption\Security\JWT\Validator 
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 
-// Throw exceptions if those do not validate
 $validator
     ->validateAudience($audience)
     ->validateExpiration($expires)
@@ -529,6 +571,76 @@ $validator
     ->validateNotBefore($notBefore)
     ->validateSignature($signer, $passphrase)
 ;
+
+var_dump($validator->getErrors());
+```
+
+### Token
+As an alternative, you can `verify()` and `validate()` your token using the relevant methods in the [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] object.
+
+#### Methods
+
+```php
+public function validate(Validator $validator): array
+```
+Validate the token claims. The validators that are executed are:
+- 
+- `validateAudience()`
+- `validateExpiration()`
+- `validateId()`
+- `validateIssuedAt()`
+- `validateIssuer()`
+- `validateNotBefore()`
+
+You can extend the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] and [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] objects to include more validators and execute them (as seen below).
+
+```php
+public function verify(SignerInterface $signer, string $key): bool
+```
+Verify the signature of the token
+
+#### Example
+
+```php
+<?php
+
+use Phalcon\Encryption\Security\JWT\Signer\Hmac;
+use Phalcon\Encryption\Security\JWT\Token\Parser;
+use Phalcon\Encryption\Security\JWT\Validator;
+
+// eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImN0eSI6ImFwcGxpY2F0aW9uXC9qc29uIn0.
+// eyJhdWQiOlsiaHR0cHM6XC9cL3RhcmdldC5waGFsY29uLmlvIl0sImV4cCI6MTYxNDE4NTkxN
+// ywianRpIjoiYWJjZDEyMzQ1Njc4OSIsImlhdCI6MTYxNDA5OTUxNywiaXNzIjoiaHR0cHM6XC
+// 9cL3BoYWxjb24uaW8iLCJuYmYiOjE2MTQwOTk0NTcsInN1YiI6Im15IHN1YmplY3QgZm9yIHR
+// oaXMgY2xhaW0ifQ.
+// LdYevRZaQDZ2lul4CCQ5DymeP2ubcapTtgeezOZGIq7Meu7rFF1pv32b-AMWOxCS63CQz_jpm
+// BPlPyOeEAkMbg
+
+$tokenReceived = getMyTokenFromTheApplication();
+$audience      = 'https://target.phalcon.io';
+$now           = new DateTimeImmutable();
+$issued        = $now->getTimestamp();
+$notBefore     = $now->modify('-1 minute')->getTimestamp();
+$expires       = $now->getTimestamp();
+$id            = 'abcd123456789';
+$issuer        = 'https://phalcon.io';
+
+// 'sha512'
+$signer     = new Hmac();
+$passphrase = 'QcMpZ&b&mo3TPsPk668J6QH8JA$&U&m2';
+
+$parser      = new Parser();
+
+// Phalcon\Encryption\Security\JWT\Token\Token 
+$tokenObject = $parser->parse($tokenReceived);
+
+// Phalcon\Encryption\Security\JWT\Validator 
+$validator = new Validator($tokenObject, 100); // allow for a time shift of 100
+
+$tokenObject->verify($signer, $passphrase);
+$errors = $tokenObject->validate($validator);
+
+var_dump($errors);
 ```
 
 ## Exceptions
