@@ -422,21 +422,9 @@ $logger->error('This is another error');
 $logger->close();
 ```
 
-@property resource|null $handler
-@property string        $mode
-@property string        $name
-@property array         $options
-
 
 ## Properties
 ```php
-/**
- * Stream handler resource
- *
- * @var resource|null
- */
-protected handler;
-
 /**
  * The file open mode. Defaults to 'ab'
  *
@@ -475,9 +463,9 @@ Closes the stream
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
-
+Stream name
 
 
 ```php
@@ -646,13 +634,11 @@ Exceptions thrown in Phalcon\Logger will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Formatter/AbstractFormatter.zep)
 
 | Namespace  | Phalcon\Logger\Formatter |
-| Uses       | Phalcon\Logger\Item, Phalcon\Support\Helper\Str\AbstractStr |
+| Uses       | DateTimeImmutable, Phalcon\Logger\Item, Phalcon\Support\Helper\Str\AbstractStr |
 | Extends    | AbstractStr |
 | Implements | FormatterInterface |
 
 Class AbstractFormatter
-
-@property string $dateFormat
 
 
 ## Properties
@@ -669,15 +655,15 @@ protected dateFormat = c;
 ## Methods
 
 ```php
-public function getDateFormat(): string
+public function getDateFormat(): string;
 ```
-
+Return the default date format
 
 
 ```php
-public function setDateFormat( string $dateFormat )
+public function setDateFormat( string $format ): void;
 ```
-
+Set the default date format
 
 
 ```php
@@ -718,8 +704,6 @@ Applies a format to an item
 | Uses       | JsonException, Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
-Phalcon\Logger\Formatter\Json
-
 Formats messages using JSON encoding
 
 
@@ -749,8 +733,6 @@ Applies a format to a message before sent it to the internal log
 
 Class Line
 
-@property string $format
-
 
 ## Properties
 ```php
@@ -778,15 +760,15 @@ Applies a format to a message before sent it to the internal log
 
 
 ```php
-public function getFormat(): string
+public function getFormat(): string;
 ```
-
+Return the format applied to each message
 
 
 ```php
-public function setFormat( string $format )
+public function setFormat( string $format ): Line;
 ```
-
+Set the format applied to each message
 
 
 
@@ -817,6 +799,11 @@ Represents each item in a logging transaction
 protected context;
 
 /**
+ * @var DateTimeImmutable
+ */
+protected dateTime;
+
+/**
  * @var string
  */
 protected message;
@@ -831,11 +818,6 @@ protected level;
  */
 protected levelName;
 
-/**
- * @var DateTimeImmutable
- */
-protected dateTime;
-
 ```
 
 ## Methods
@@ -847,31 +829,31 @@ Item constructor.
 
 
 ```php
-public function getContext(): array
+public function getContext(): array;
 ```
 
 
 
 ```php
-public function getDateTime(): DateTimeImmutable
+public function getDateTime(): DateTimeImmutable;
 ```
 
 
 
 ```php
-public function getLevel(): int
+public function getLevel(): int;
 ```
 
 
 
 ```php
-public function getLevelName(): string
+public function getLevelName(): string;
 ```
 
 
 
 ```php
-public function getMessage(): string
+public function getMessage(): string;
 ```
 
 
@@ -1115,3 +1097,5 @@ Normal but significant events.
 public function warning( string $message, array $context = [] ): void;
 ```
 Normal but significant events.
+
+

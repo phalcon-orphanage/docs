@@ -977,7 +977,7 @@ check
 
 
 ```php
-public function getWorkFactor(): int
+public function getWorkFactor(): int;
 ```
 
 
@@ -1041,7 +1041,9 @@ Exceptions thrown in Phalcon\Security will use this class
 | Namespace  | Phalcon\Encryption\Security\JWT |
 | Uses       | InvalidArgumentException, Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Item, Phalcon\Encryption\Security\JWT\Token\Signature, Phalcon\Encryption\Security\JWT\Token\Token |
 
-Class Builder
+Builder
+
+The builder offers
 
 @property CollectionInterface  $claims
 @property CollectionInterface  $jose
@@ -1275,16 +1277,10 @@ Sets a registered claim
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
 
 | Namespace  | Phalcon\Encryption\Security\JWT\Exceptions |
-| Uses       | Exception, Throwable |
+| Uses       | Exception |
 | Extends    | Exception |
-| Implements | Throwable |
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+Exception thrown when the algorithm is not supported for JWT
 
 
 
@@ -1293,16 +1289,10 @@ file that was distributed with this source code.
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Encryption/Security/JWT/Exceptions/ValidatorException.zep)
 
 | Namespace  | Phalcon\Encryption\Security\JWT\Exceptions |
-| Uses       | Exception, Throwable |
+| Uses       | Exception |
 | Extends    | Exception |
-| Implements | Throwable |
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+Exception thrown when the validation does not pass for JWT
 
 
 
@@ -1313,9 +1303,7 @@ file that was distributed with this source code.
 | Namespace  | Phalcon\Encryption\Security\JWT\Signer |
 | Implements | SignerInterface |
 
-Class AbstractSigner
-
-@property string $algo
+Abstract class helping with the signer classes
 
 
 ## Properties
@@ -1323,14 +1311,14 @@ Class AbstractSigner
 /**
  * @var string
  */
-protected algorithm;
+protected algorithm = "";
 
 ```
 
 ## Methods
 
 ```php
-public function getAlgorithm(): string
+public function getAlgorithm(): string;
 ```
 
 
@@ -1345,7 +1333,7 @@ public function getAlgorithm(): string
 | Uses       | Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException |
 | Extends    | AbstractSigner |
 
-Class Hmac
+HMAC signing class
 
 
 ## Methods
@@ -1383,7 +1371,7 @@ Verify a passed source with a payload and passphrase
 | Namespace  | Phalcon\Encryption\Security\JWT\Signer |
 | Implements | SignerInterface |
 
-Class None
+No signing class
 
 
 ## Methods
@@ -1420,12 +1408,7 @@ Verify a passed source with a payload and passphrase
 
 | Namespace  | Phalcon\Encryption\Security\JWT\Signer |
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+Interface for JWT Signer classes
 
 
 ## Methods
@@ -1462,7 +1445,7 @@ Verify a passed source with a payload and passphrase
 
 | Namespace  | Phalcon\Encryption\Security\JWT\Token |
 
-Class AbstractItem
+Abstract helper class for Tokens
 
 @property array $data
 
@@ -1492,7 +1475,7 @@ public function getEncoded(): string;
 
 | Namespace  | Phalcon\Encryption\Security\JWT\Token |
 
-Class Enum
+Constants for Tokens. It offers constants for Headers as well as Claims
 
 @link https://tools.ietf.org/html/rfc7519
 
@@ -1519,7 +1502,7 @@ const TYPE = typ;
 | Namespace  | Phalcon\Encryption\Security\JWT\Token |
 | Extends    | AbstractItem |
 
-Class Item
+Storage class for a Token Item
 
 
 ## Methods
@@ -1557,7 +1540,11 @@ public function has( string $name ): bool;
 | Namespace  | Phalcon\Encryption\Security\JWT\Token |
 | Uses       | InvalidArgumentException |
 
-Class Parser
+Token Parser class.
+
+It parses a token by validating if it is formed properly and splits it into
+three parts. The headers are decoded, then the claims and finally the
+signature. It returns a token object populated with the decoded information.
 
 
 ## Methods
@@ -1577,7 +1564,7 @@ Parse a token and return it
 | Namespace  | Phalcon\Encryption\Security\JWT\Token |
 | Extends    | AbstractItem |
 
-Class Item
+Signature class containing the encoded data and the hash.
 
 
 ## Methods
@@ -1601,8 +1588,12 @@ public function getHash(): string;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Encryption/Security/JWT/Token/Token.zep)
 
 | Namespace  | Phalcon\Encryption\Security\JWT\Token |
+| Uses       | Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Validator |
 
-Class Token
+Token Class.
+
+A container for Token related data. It stores the claims, headers, signature
+and payload. It also calculates and returns the token string.
 
 @property Item      $claims
 @property Item      $headers
@@ -1639,13 +1630,13 @@ Token constructor.
 
 
 ```php
-public function getClaims(): Item
+public function getClaims(): Item;
 ```
 
 
 
 ```php
-public function getHeaders(): Item
+public function getHeaders(): Item;
 ```
 
 
@@ -1657,7 +1648,7 @@ public function getPayload(): string;
 
 
 ```php
-public function getSignature(): Signature
+public function getSignature(): Signature;
 ```
 
 
@@ -1666,6 +1657,18 @@ public function getSignature(): Signature
 public function getToken(): string;
 ```
 
+
+
+```php
+public function validate( Validator $validator ): array;
+```
+
+
+
+```php
+public function verify( SignerInterface $signer, string $key ): bool;
+```
+Verify the signature
 
 
 
@@ -1685,6 +1688,11 @@ Class Validator
 
 ## Properties
 ```php
+/**
+ * @var array
+ */
+private errors;
+
 /**
  * @var int
  */
@@ -1706,13 +1714,19 @@ Validator constructor.
 
 
 ```php
+public function getErrors(): array;
+```
+
+
+
+```php
 public function setToken( Token $token ): Validator;
 ```
 
 
 
 ```php
-public function validateAudience( string $audience ): Validator;
+public function validateAudience( mixed $audience ): Validator;
 ```
 
 
@@ -2003,3 +2017,5 @@ Generates a random string based on the number ($base) of characters
 If $n is not specified, 16 is assumed. It may be larger in future.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
+

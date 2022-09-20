@@ -31,18 +31,6 @@ Represents an asset
 $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 ```
 
-@property array       $attributes
-@property bool        $isAutoVersion
-@property bool        $filter
-@property bool        $isLocal
-@property string      $path
-@property string      $sourcePath
-@property string      $targetPath
-@property string      $targetUri
-@property string      $type
-@property string|null $version
-
-
 
 ## Properties
 ```php
@@ -128,13 +116,13 @@ Optionally a base path where the asset is located can be set
 
 
 ```php
-public function getFilter(): bool
+public function getFilter(): bool;
 ```
 
 
 
 ```php
-public function getPath(): string
+public function getPath(): string;
 ```
 
 
@@ -158,33 +146,33 @@ Returns the real target uri for the generated HTML
 
 
 ```php
-public function getSourcePath(): string
+public function getSourcePath(): string;
 ```
 
 
 
 ```php
-public function getTargetPath(): string
+public function getTargetPath(): string;
 ```
 
 
 
 ```php
-public function getTargetUri(): string
+public function getTargetUri(): string;
 ```
 
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
 
 
 
 ```php
-public function getVersion(): string|null
+public function getVersion(): string | null;
 ```
-
+Version of resource
 
 
 ```php
@@ -427,12 +415,12 @@ protected filters;
 /**
  * @var bool
  */
-protected join = true;
+protected isLocal = true;
 
 /**
  * @var bool
  */
-protected isLocal = true;
+protected join = true;
 
 /**
  * @var string
@@ -517,25 +505,25 @@ Return the count of the assets
 
 
 ```php
-public function getAssets(): array
+public function getAssets(): array;
 ```
 
 
 
 ```php
-public function getAttributes(): array
+public function getAttributes(): array;
 ```
 
 
 
 ```php
-public function getCodes(): array
+public function getCodes(): array;
 ```
 
 
 
 ```php
-public function getFilters(): array
+public function getFilters(): array;
 ```
 
 
@@ -549,13 +537,13 @@ Returns the generator of the class
 
 
 ```php
-public function getJoin(): bool
+public function getJoin(): bool;
 ```
 
 
 
 ```php
-public function getPrefix(): string
+public function getPrefix(): string;
 ```
 
 
@@ -568,31 +556,31 @@ be written
 
 
 ```php
-public function getSourcePath(): string
+public function getSourcePath(): string;
 ```
 
 
 
 ```php
-public function getTargetIsLocal(): bool
+public function getTargetIsLocal(): bool;
 ```
 
 
 
 ```php
-public function getTargetPath(): string
+public function getTargetPath(): string;
 ```
 
 
 
 ```php
-public function getTargetUri(): string
+public function getTargetUri(): string;
 ```
 
 
 
 ```php
-public function getVersion(): string
+public function getVersion(): string;
 ```
 
 
@@ -817,7 +805,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 ## Properties
 ```php
 /**
- * @var array | null
+ * @var array
  */
 protected attributes;
 
@@ -853,25 +841,25 @@ Gets the asset's key.
 
 
 ```php
-public function getAttributes(): array | null
+public function getAttributes(): array;
 ```
 
 
 
 ```php
-public function getContent(): string
+public function getContent(): string;
 ```
 
 
 
 ```php
-public function getFilter(): bool
+public function getFilter(): bool;
 ```
 
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
 
 
@@ -1167,3 +1155,5 @@ Sets the manager options
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Sets if the HTML generated must be directly printed or returned
+
+

@@ -407,7 +407,7 @@ Returns processed action name
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Returns the route that matches the handled URI
 
@@ -848,7 +848,7 @@ Returns processed action name
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Returns the route that matches the handled URI
 
@@ -1004,3 +1004,4 @@ Sets the events manager
 | Namespace  | Phalcon\Cli |
 
 Interface for task handlers
+

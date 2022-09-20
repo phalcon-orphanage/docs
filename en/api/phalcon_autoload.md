@@ -253,3 +253,5 @@ Unregister the autoload method
 protected function requireFile( string $file ): bool;
 ```
 If the file exists, require it and return true; false otherwise
+
+

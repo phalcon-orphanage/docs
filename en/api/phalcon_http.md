@@ -800,9 +800,9 @@ $request->getHttpHost(); // example.com
 
 
 ```php
-public function getHttpMethodParameterOverride(): bool
+public function getHttpMethodParameterOverride(): bool;
 ```
-
+Return the HTTP method parameter override flag
 
 
 ```php
@@ -1112,9 +1112,9 @@ Returns the number of files available
 
 
 ```php
-public function setHttpMethodParameterOverride( bool $httpMethodParameterOverride )
+public function setHttpMethodParameterOverride( bool $override ): Request;
 ```
-
+Set the HTTP method parameter override flag
 
 
 ```php
@@ -1266,19 +1266,19 @@ Phalcon\Http\Request\File constructor
 
 
 ```php
-public function getError(): string|null
+public function getError(): string | null;
 ```
 
 
 
 ```php
-public function getExtension(): string
+public function getExtension(): string;
 ```
 
 
 
 ```php
-public function getKey(): string|null
+public function getKey(): string | null;
 ```
 
 
@@ -1334,10 +1334,7 @@ Moves the temporary file to a destination within the application
 
 | Namespace  | Phalcon\Http\Request |
 
-Phalcon\Http\Request\FileInterface
-
 Interface for Phalcon\Http\Request\File
-
 
 
 ## Methods

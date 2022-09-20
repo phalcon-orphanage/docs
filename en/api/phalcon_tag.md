@@ -159,7 +159,7 @@ Builds a HTML input[type="file"] tag
 
 
 ```php
-public static function form( mixed $parameters ): string;
+public static function formLegacy( mixed $parameters ): string;
 ```
 Builds a HTML FORM tag
 
@@ -495,3 +495,5 @@ Phalcon\Mvc\Model resultset
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 Generates a SELECT tag
+
+

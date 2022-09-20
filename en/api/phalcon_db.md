@@ -494,9 +494,9 @@ Returns internal dialect instance
 
 
 ```php
-public function getDialectType(): string
+public function getDialectType(): string;
 ```
-
+Name of the dialect used
 
 
 ```php
@@ -536,9 +536,9 @@ Active SQL variables in the object
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
-
+Type of database system the adapter is used for
 
 
 ```php
@@ -2085,11 +2085,18 @@ protected autoIncrement = false;
 protected bindType = 2;
 
 /**
+ * Column's comment
+ *
+ * @var string|null
+ */
+protected comment;
+
+/**
  * Default column value
  *
  * @var mixed|null
  */
-protected _default;
+protected defaultValue;
 
 /**
  * Position is first
@@ -2111,13 +2118,6 @@ protected isNumeric = false;
  * @var string
  */
 protected name;
-
-/**
- * Column's comment
- *
- * @var string|null
- */
-protected comment;
 
 /**
  * Column not nullable?
@@ -2200,51 +2200,51 @@ Returns the type of bind handling
 
 
 ```php
-public function getComment(): string|null
+public function getComment(): string | null;
 ```
-
+Column's comment
 
 
 ```php
-public function getName(): string
+public function getDefault(): mixed;
 ```
-
+Default column value
 
 
 ```php
-public function getScale(): int
+public function getName(): string;
 ```
-
+Column's name
 
 
 ```php
-public function getSize(): int|string
+public function getScale(): int;
 ```
-
+Integer column number scale
 
 
 ```php
-public function getType(): int
+public function getSize(): int | string;
 ```
-
+Integer column size
 
 
 ```php
-public function getTypeReference(): int
+public function getType(): int;
 ```
-
+Column data type
 
 
 ```php
-public function getTypeValues(): array|string
+public function getTypeReference(): int;
 ```
-
+Column data type reference
 
 
 ```php
-public function get_default(): mixed|null
+public function getTypeValues(): array | string;
 ```
-
+Column data type values
 
 
 ```php
@@ -3651,21 +3651,21 @@ Phalcon\Db\Index constructor
 
 
 ```php
-public function getColumns(): array
+public function getColumns(): array;
 ```
-
+Index columns
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
-
+Index name
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
-
+Index type
 
 
 
@@ -3881,33 +3881,33 @@ protected sqlVariables;
 ## Methods
 
 ```php
-public function getFinalTime(): double
+public function getFinalTime(): double;
 ```
-
+Return the timestamp when the profile ended
 
 
 ```php
-public function getInitialTime(): double
+public function getInitialTime(): double;
 ```
-
+Return the timestamp when the profile started
 
 
 ```php
-public function getSqlBindTypes(): array
+public function getSqlBindTypes(): array;
 ```
-
+Return the SQL bind types related to the profile
 
 
 ```php
-public function getSqlStatement(): string
+public function getSqlStatement(): string;
 ```
-
+Return the SQL statement related to the profile
 
 
 ```php
-public function getSqlVariables(): array
+public function getSqlVariables(): array;
 ```
-
+Return the SQL variables related to the profile
 
 
 ```php
@@ -3917,33 +3917,33 @@ Returns the total time in seconds spent by the profile
 
 
 ```php
-public function setFinalTime( double $finalTime )
+public function setFinalTime( double $finalTime ): Item;
 ```
-
+Return the timestamp when the profile ended
 
 
 ```php
-public function setInitialTime( double $initialTime )
+public function setInitialTime( double $initialTime ): Item;
 ```
-
+Return the timestamp when the profile started
 
 
 ```php
-public function setSqlBindTypes( array $sqlBindTypes )
+public function setSqlBindTypes( array $sqlBindTypes ): Item;
 ```
-
+Return the SQL bind types related to the profile
 
 
 ```php
-public function setSqlStatement( string $sqlStatement )
+public function setSqlStatement( string $sqlStatement ): Item;
 ```
-
+Return the SQL statement related to the profile
 
 
 ```php
-public function setSqlVariables( array $sqlVariables )
+public function setSqlVariables( array $sqlVariables ): Item;
 ```
-
+Return the SQL variables related to the profile
 
 
 
@@ -3988,13 +3988,13 @@ Phalcon\Db\RawValue constructor
 
 
 ```php
-public function __toString(): string
+public function __toString(): string;
 ```
 
 
 
 ```php
-public function getValue(): string
+public function getValue(): string;
 ```
 
 
@@ -4098,51 +4098,51 @@ Phalcon\Db\Reference constructor
 
 
 ```php
-public function getColumns(): array
+public function getColumns(): array;
 ```
-
+Local reference columns
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
-
+Constraint name
 
 
 ```php
-public function getOnDelete(): string
+public function getOnDelete(): string;
 ```
-
+ON DELETE
 
 
 ```php
-public function getOnUpdate(): string
+public function getOnUpdate(): string;
 ```
-
+ON UPDATE
 
 
 ```php
-public function getReferencedColumns(): array
+public function getReferencedColumns(): array;
 ```
-
+Referenced Columns
 
 
 ```php
-public function getReferencedSchema(): string
+public function getReferencedSchema(): string;
 ```
-
+Referenced Schema
 
 
 ```php
-public function getReferencedTable(): string
+public function getReferencedTable(): string;
 ```
-
+Referenced Table
 
 
 ```php
-public function getSchemaName(): string
+public function getSchemaName(): string;
 ```
-
+Schema name
 
 
 
@@ -4487,3 +4487,5 @@ Gets number of rows returned by a resultset
 public function setFetchMode( int $fetchMode ): bool;
 ```
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+
+

@@ -1230,14 +1230,14 @@ Lazy-Load of handlers for Mvc\Micro using auto-loading
 ## Properties
 ```php
 /**
- * @var object|null
- */
-protected handler;
-
-/**
  * @var string
  */
 protected definition;
+
+/**
+ * @var object|null
+ */
+protected handler;
 
 ```
 
@@ -1256,13 +1256,13 @@ Calling __call method
 
 
 ```php
-public function getDefinition(): string
+public function getDefinition(): string;
 ```
 
 
 
 ```php
-public function getHandler(): object|null
+public function getHandler(): object | null;
 ```
 
 
@@ -2105,7 +2105,7 @@ Returns the table name mapped in the model
 
 
 ```php
-public function getTransaction(): TransactionInterface|null
+public function getTransaction(): TransactionInterface | null;
 ```
 
 
@@ -2787,7 +2787,7 @@ Sets the table name to which model should be mapped
 
 
 ```php
-protected function skipAttributes( array $attributes );
+protected function skipAttributes( array $attributes ): void;
 ```
 Sets a list of attributes that must be skipped from the
 generated INSERT/UPDATE statement
@@ -3095,9 +3095,9 @@ Bind models into params in proper handler
 
 
 ```php
-public function getBoundModels(): array
+public function getBoundModels(): array;
 ```
-
+Return the active bound models
 
 
 ```php
@@ -3107,9 +3107,9 @@ Sets cache instance
 
 
 ```php
-public function getOriginalValues(): array
+public function getOriginalValues(): array;
 ```
-
+Return the array for original values
 
 
 ```php
@@ -6141,7 +6141,7 @@ SELECT statements)
 
 
 ```php
-public function getTransaction(): TransactionInterface|null
+public function getTransaction(): TransactionInterface | null;
 ```
 
 
@@ -9776,19 +9776,19 @@ Returns the internal event manager
 
 
 ```php
-public function getKeyRouteIds(): array
+public function getKeyRouteIds(): array;
 ```
 
 
 
 ```php
-public function getKeyRouteNames(): array
+public function getKeyRouteNames(): array;
 ```
 
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Returns the route that matches the handled URI
 
@@ -9921,13 +9921,13 @@ Sets the events manager
 
 
 ```php
-public function setKeyRouteIds( array $keyRouteIds )
+public function setKeyRouteIds( array $routeIds ): Router;
 ```
 
 
 
 ```php
-public function setKeyRouteNames( array $keyRouteNames )
+public function setKeyRouteNames( array $routeNames ): Router;
 ```
 
 
@@ -10689,7 +10689,7 @@ Returns the HTTP methods that constraint matching the route
 
 
 ```php
-public function getId(): string|null
+public function getId(): string | null;
 ```
 
 
@@ -11047,7 +11047,7 @@ Returns processed controller name
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Returns the route that matches the handled URI
 
@@ -11653,7 +11653,7 @@ Gets the name of the controller rendered
 
 
 ```php
-public function getCurrentRenderLevel(): int
+public function getCurrentRenderLevel(): int;
 ```
 
 
@@ -11716,7 +11716,7 @@ Gets the current partials sub-directory
 
 
 ```php
-public function getRegisteredEngines(): array
+public function getRegisteredEngines(): array;
 ```
 
 
@@ -11738,7 +11738,7 @@ $template = $this->view->getRender(
 
 
 ```php
-public function getRenderLevel(): int
+public function getRenderLevel(): int;
 ```
 
 
@@ -12538,7 +12538,7 @@ Compiles a 'switch' statement returning PHP code
 
 
 ```php
-final public function expression( array $expr ): string;
+final public function expression( array $expr, bool $doubleQuotes = bool ): string;
 ```
 Resolves an expression node in an AST volt tree
 
@@ -12550,7 +12550,7 @@ Fires an event to registered extensions
 
 
 ```php
-public function functionCall( array $expr ): string;
+public function functionCall( array $expr, bool $doubleQuotes = bool ): string;
 ```
 Resolves function intermediate code into PHP function calls
 
@@ -12797,7 +12797,7 @@ protected eventsManager;
 protected options;
 
 /**
- * @var array|null
+ * @var array
  */
 protected registeredEngines;
 
@@ -12866,7 +12866,7 @@ Returns parameters to views
 
 
 ```php
-public function getRegisteredEngines(): array|null
+public function getRegisteredEngines(): array;
 ```
 
 

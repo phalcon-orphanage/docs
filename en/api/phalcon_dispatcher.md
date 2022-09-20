@@ -248,7 +248,7 @@ Gets model binder
 
 
 ```php
-public function getModuleName(): string;
+public function getModuleName(): string | null;
 ```
 Gets the module where the controller class is
 
@@ -349,7 +349,7 @@ $di->set(
 
 
 ```php
-public function setModuleName( string $moduleName ): void;
+public function setModuleName( string $moduleName = null ): void;
 ```
 Sets the module where the controller is (only informative)
 
@@ -501,7 +501,7 @@ Sets the default suffix for the handler
 
 
 ```php
-public function setModuleName( string $moduleName ): void;
+public function setModuleName( string $moduleName = null ): void;
 ```
 Sets the module name which the application belongs to
 

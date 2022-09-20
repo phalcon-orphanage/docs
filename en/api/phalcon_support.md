@@ -693,7 +693,7 @@ Alias of variables() method
 
 
 ```php
-public function getDetailed(): bool
+public function getDetailed(): bool;
 ```
 
 
@@ -705,7 +705,7 @@ Alias of variable() method
 
 
 ```php
-public function setDetailed( bool $detailed )
+public function setDetailed( bool $detailed ): void;
 ```
 
 
@@ -2471,3 +2471,5 @@ B - Med version (two digits)
 C - Min version (two digits)
 D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable
 E - Special release version i.e. RC1, Beta2 etc.
+
+

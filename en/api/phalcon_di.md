@@ -129,7 +129,7 @@ protected eventsManager;
  *
  * @var DiInterface|null
  */
-protected static _default;
+protected static defaultDi;
 
 ```
 
@@ -503,8 +503,8 @@ Exceptions thrown in Phalcon\Di will use this class
 | Namespace  | Phalcon\Di\Exception |
 | Extends    | \Phalcon\Di\Exception |
 
- Phalcon\Di\Exception\ServiceResolutionException
- 
+Phalcon\Di\Exception\ServiceResolutionException
+
 
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
@@ -600,7 +600,7 @@ accessing a public property with the same name of a registered service
 @property \Phalcon\Db\Adapter\AdapterInterface $db
 @property \Phalcon\Encryption\Security $security
 @property \Phalcon\Encryption\Crypt|\Phalcon\Encryption\Crypt\CryptInterface $crypt
-@property \Phalcon\Tag $tag
+@property \Phalcon\Html\TagFactory $tag
 @property \Phalcon\Html\Escaper|\Phalcon\Html\Escaper\EscaperInterface $escaper
 @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
 @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
@@ -904,3 +904,5 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function register( DiInterface $di ): void;
 ```
 Registers a service provider.
+
+

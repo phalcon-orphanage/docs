@@ -638,3 +638,5 @@ Sets the aliases for properties repository
 public function setProperties( array $properties ): RepositoryInterface;
 ```
 Sets values for properties of the repository
+
+

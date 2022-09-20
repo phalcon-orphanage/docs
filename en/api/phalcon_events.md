@@ -121,19 +121,19 @@ Phalcon\Events\Event constructor
 
 
 ```php
-public function getData(): mixed
+public function getData(): mixed;
 ```
 
 
 
 ```php
-public function getSource(): object|null
+public function getSource(): object | null;
 ```
 
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
 
 
@@ -461,3 +461,5 @@ Returns all the attached listeners of a certain type
 public function hasListeners( string $type ): bool;
 ```
 Check whether certain type of event has listeners
+
+
