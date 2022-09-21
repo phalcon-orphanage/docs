@@ -129,8 +129,10 @@ Returns the adapter - connects to the storage if not connected
 
 
 ```php
-public function getDefaultSerializer(): string
+public function getDefaultSerializer(): string;
 ```
+Name of the default serializer class
+
 
 ```php
 abstract public function getKeys( string $prefix = string ): array;
