@@ -74,24 +74,34 @@ Gets the potential exception thrown in the domain layer
 
 
 ```php
-public function getExtras(): mixed
+public function getExtras(): mixed;
 ```
+Extra information
+
 
 ```php
-public function getInput(): mixed
+public function getInput(): mixed;
 ```
+Input
+
 
 ```php
-public function getMessages(): mixed
+public function getMessages(): mixed;
 ```
+Messages
+
 
 ```php
-public function getOutput(): mixed
+public function getOutput(): mixed;
 ```
+Output
+
 
 ```php
-public function getStatus(): mixed
+public function getStatus(): mixed;
 ```
+Status
+
 
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
@@ -297,3 +307,5 @@ Sets the output produced from the domain layer.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
+
+
