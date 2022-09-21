@@ -125,7 +125,7 @@ $container->setShared('dispatcher', $dispatcher);
 
 CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher][cli-dispatcher] offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
 
-**Ρυθμίσεις**
+**Config**
 ```php
 $container->setShared('config', function () {
     return include 'app/config/config.php';
