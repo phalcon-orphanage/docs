@@ -957,8 +957,10 @@ Returns the options for the element
 
 
 ```php
-public function getValidation(): ValidationInterface|null
+public function getValidation(): ValidationInterface | null;
 ```
+return ValidationInterface|null
+
 
 ```php
 public function getValue( string $name ): mixed | null;
@@ -967,8 +969,10 @@ Gets a value from the internal related entity or from the default value
 
 
 ```php
-public function getWhitelist(): array
+public function getWhitelist(): array;
 ```
+return array
+
 
 ```php
 public function has( string $name ): bool;
@@ -1121,3 +1125,5 @@ Checks if a form is registered in the forms manager
 public function set( string $name, Form $form ): Manager;
 ```
 Registers a form in the Forms Manager
+
+
