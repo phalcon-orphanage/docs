@@ -399,18 +399,9 @@ $logger->error('This is another error');
 $logger->close();
 ```
 
-@property resource|null $handler @property string        $mode @property string        $name @property array         $options
-
 
 ## Propiedades
 ```php
-/**
- * Stream handler resource
- *
- * @var resource|null
- */
-protected handler;
-
 /**
  * The file open mode. Defaults to 'ab'
  *
@@ -449,8 +440,10 @@ Cierra el flujo
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
+Stream name
+
 
 ```php
 public function process( Item $item ): void;
@@ -604,11 +597,9 @@ Las excepciones lanzadas en Phalcon\Logger usarán esta clase
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Formatter/AbstractFormatter.zep)
 
-| Namespace  | Phalcon\Logger\Formatter | | Uses       | Phalcon\Logger\Item, Phalcon\Support\Helper\Str\AbstractStr | | Extends    | AbstractStr | | Implements | FormatterInterface |
+| Namespace  | Phalcon\Logger\Formatter | | Uses       | DateTimeImmutable, Phalcon\Logger\Item, Phalcon\Support\Helper\Str\AbstractStr | | Extends    | AbstractStr | | Implements | FormatterInterface |
 
 Class AbstractFormatter
-
-@property string $dateFormat
 
 
 ## Propiedades
@@ -625,12 +616,16 @@ protected dateFormat = c;
 ## Métodos
 
 ```php
-public function getDateFormat(): string
+public function getDateFormat(): string;
 ```
+Return the default date format
+
 
 ```php
-public function setDateFormat( string $dateFormat )
+public function setDateFormat( string $format ): void;
 ```
+Set the default date format
+
 
 ```php
 protected function getFormattedDate( Item $item ): string;
@@ -667,8 +662,6 @@ Aplica un formato a un elemento
 
 | Namespace  | Phalcon\Logger\Formatter | | Uses       | JsonException, Phalcon\Logger\Item | | Extends    | AbstractFormatter |
 
-Phalcon\Logger\Formatter\Json
-
 Formatea mensajes utilizando la codificación JSON
 
 
@@ -695,8 +688,6 @@ Aplica un formato a un mensaje antes de enviarlo al registro interno
 | Namespace  | Phalcon\Logger\Formatter | | Uses       | Exception, Phalcon\Logger\Item | | Extends    | AbstractFormatter |
 
 Class Line
-
-@property string $format
 
 
 ## Propiedades
@@ -725,13 +716,15 @@ Aplica un formato a un mensaje antes de enviarlo al registro interno
 
 
 ```php
-public function getFormat(): string
+public function getFormat(): string;
 ```
+Return the format applied to each message
+
 
 ```php
-public function setFormat( string $format )
+public function setFormat( string $format ): Line;
 ```
-
+Set the format applied to each message
 
 
 
@@ -757,6 +750,11 @@ Representa cada objeto en una transacción de registro
 protected context;
 
 /**
+ * @var DateTimeImmutable
+ */
+protected dateTime;
+
+/**
  * @var string
  */
 protected message;
@@ -771,11 +769,6 @@ protected level;
  */
 protected levelName;
 
-/**
- * @var DateTimeImmutable
- */
-protected dateTime;
-
 ```
 
 ## Métodos
@@ -787,23 +780,23 @@ Constructor Item.
 
 
 ```php
-public function getContext(): array
+public function getContext(): array;
 ```
 
 ```php
-public function getDateTime(): DateTimeImmutable
+public function getDateTime(): DateTimeImmutable;
 ```
 
 ```php
-public function getLevel(): int
+public function getLevel(): int;
 ```
 
 ```php
-public function getLevelName(): string
+public function getLevelName(): string;
 ```
 
 ```php
-public function getMessage(): string
+public function getMessage(): string;
 ```
 
 
@@ -1030,3 +1023,5 @@ Eventos normales pero significativos.
 public function warning( string $message, array $context = [] ): void;
 ```
 Eventos normales pero significativos.
+
+
