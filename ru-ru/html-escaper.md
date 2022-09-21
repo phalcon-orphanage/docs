@@ -66,6 +66,14 @@ HTML syntax:
 ## HTML Attributes
 Escaping attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses [htmlspecialchars][htmlspecialchars] internally. This kind of escaping is intended escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `attributes()` method. This method has been renamed. The old method `escapeHtmlAttr()` will be removed in the future and emits a `@deprecated` warning.
 
+The method also accepts an array as a parameter. The keys are the attribute names and the values are attribute values. If a value is boolean (`true`/`false`) then the attribute will have no value:
+
+```
+['disabled' => true] -> 'disabled`
+```
+
+The resulting string will have attribute pairs separated by a space.
+
 ```php
 <?php
 
