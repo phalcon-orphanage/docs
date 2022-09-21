@@ -240,7 +240,7 @@ Obtiene el enlazador del modelo
 
 
 ```php
-public function getModuleName(): string;
+public function getModuleName(): string | null;
 ```
 Obtiene el módulo donde está la clase del controlador
 
@@ -340,7 +340,7 @@ $di->set(
 
 
 ```php
-public function setModuleName( string $moduleName ): void;
+public function setModuleName( string $moduleName = null ): void;
 ```
 Establece el módulo donde está el controlador (sólo informativo)
 
@@ -491,7 +491,7 @@ Establece el sufijo por defecto del manejador
 
 
 ```php
-public function setModuleName( string $moduleName ): void;
+public function setModuleName( string $moduleName = null ): void;
 ```
 Establece el nombre del módulo al que pertenece la aplicación
 
