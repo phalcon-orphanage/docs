@@ -244,3 +244,5 @@ Anula el registro del método de autocarga
 protected function requireFile( string $file ): bool;
 ```
 If the file exists, require it and return true; false otherwise
+
+
