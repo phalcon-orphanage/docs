@@ -226,7 +226,7 @@ And the `status` command will now show all green:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### Ρυθμίσεις
+### Config
 **acl.php**
 
 Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of _routes_ that controls which routes are visible to only logged-in users.
@@ -493,7 +493,7 @@ The available providers are:
 | `MailProvider`           | Mail support                                      |
 | `ModelsMetadataProvider` | Metadata for models                               |
 | `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Ασφάλεια                                          |
+| `SecurityProvider`       | Security                                          |
 | `SessionBagProvider`     | Session data                                      |
 | `SessionProvider`        | Session data                                      |
 | `UrlProvider`            | URL handling                                      |
@@ -1480,7 +1480,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > 
 > {: .alert .alert-info }
 
-**Επικύρωση**
+**Validation**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](filter-validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned if the validation fails.
 
