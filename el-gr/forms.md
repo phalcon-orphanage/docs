@@ -751,7 +751,7 @@ $form->add($email);
 > 
 > {: .alert .alert-info }
 
-## Επικύρωση
+## Validation
 Phalcon forms are integrated with the [validation](filter-validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
