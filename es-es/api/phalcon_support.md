@@ -642,7 +642,7 @@ Alias del método variables()
 
 
 ```php
-public function getDetailed(): bool
+public function getDetailed(): bool;
 ```
 
 ```php
@@ -652,7 +652,7 @@ Alias del método variable()
 
 
 ```php
-public function setDetailed( bool $detailed )
+public function setDetailed( bool $detailed ): void;
 ```
 
 ```php
@@ -2260,3 +2260,5 @@ protected function getVersion(): array;
 Área donde se encuentra el número de versión. El formato es el siguiente: ABBCCDE
 
 A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable E - Special release version i.e. RC1, Beta2 etc.
+
+
