@@ -254,19 +254,19 @@ Comprueba si una clave de traducción está definida en el vector interno
 
 
 ```php
-public function getCategory(): int
+public function getCategory(): int;
 ```
 
 ```php
-public function getDefaultDomain(): string
+public function getDefaultDomain(): string;
 ```
 
 ```php
-public function getDirectory(): string|array
+public function getDirectory(): array | string;
 ```
 
 ```php
-public function getLocale(): string
+public function getLocale(): string;
 ```
 
 ```php
@@ -595,3 +595,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Devuelve los adaptadores disponibles
+
+
