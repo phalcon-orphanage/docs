@@ -391,7 +391,7 @@ Devuelve el nombre de la acción procesada
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Devuelve la ruta que coincide con el URI gestionado
 
@@ -820,7 +820,7 @@ Devuelve el nombre de la acción procesada
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Devuelve la ruta que coincide con el URI gestionado
 
@@ -970,3 +970,4 @@ Establece el administrador de eventos
 | Namespace | Phalcon\Cli |
 
 Interfaz para los manejadores de tareas
+
