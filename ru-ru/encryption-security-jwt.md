@@ -588,7 +588,7 @@ As an alternative, you can `verify()` and `validate()` your token using the rele
 public function validate(Validator $validator): array
 ```
 Validate the token claims. The validators that are executed are:
--
+
 - `validateAudience()`
 - `validateExpiration()`
 - `validateId()`
