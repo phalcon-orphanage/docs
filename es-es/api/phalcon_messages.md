@@ -73,23 +73,23 @@ Método mágico __toString que devuelve un mensaje detallado
 
 
 ```php
-public function getCode(): int
+public function getCode(): int;
 ```
 
 ```php
-public function getField(): string
+public function getField(): string;
 ```
 
 ```php
-public function getMessage(): string
+public function getMessage(): string;
 ```
 
 ```php
-public function getMetaData(): array
+public function getMetaData(): array;
 ```
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
 
 ```php
