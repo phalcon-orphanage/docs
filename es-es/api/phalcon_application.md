@@ -113,3 +113,4 @@ Establece el administrador de eventos
 | Namespace  | Phalcon\Application | | Extends    | \Exception |
 
 Las excepciones lanzadas en la clase Phalcon\Application usarán esta clase
+
