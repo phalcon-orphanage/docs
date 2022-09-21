@@ -2933,11 +2933,11 @@ However, there are times that you will need to get the data in a read only mode,
 
 Phalcon offers three ways of hydrating data:
 
-| Αποτέλεσμα | Λειτουργία                                        |
-| ---------- | ------------------------------------------------- |
-| Arrays     | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
-| Objects    | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
-| Records    | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
+| Αποτέλεσμα  | Λειτουργία                                        |
+| ----------- | ------------------------------------------------- |
+| Πίνακες     | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
+| Αντικείμενα | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
+| Εγγραφές    | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
 
 The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
@@ -3853,8 +3853,11 @@ Model::setup(
     PDO::ATTR_STRINGIFY_FETCHES => false,
 ]
 ```
+
 Registering the provider should look like this:
+
 ```php 
+<?php
 
 $parameters = [
   // ....
@@ -3885,6 +3888,15 @@ $container->setShared(
     );
 }
 ```
+
+## Invalid parameter number
+In v5, the parameters used to instantiate PDO have changed. More specifically the `PDO::ATTR_EMULATE_PREPARES` now defaults to `false`. As a result, you might encounter the following message in your code, when a bound parameter is used more than once in a query:
+
+> Invalid parameter number 
+> 
+> {: .alert .alert-warning }
+
+You can change the name of the parameters, or you can change the `PDO::ATTR_EMULATE_PREPARES` to `true`, when registering your database provider.
 
 ## Stand-Alone Component
 You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. The example below demonstrates how you can achieve that.
