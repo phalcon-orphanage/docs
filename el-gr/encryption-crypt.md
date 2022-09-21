@@ -168,7 +168,7 @@ The `encryptBase64()` can be used to encrypt a string in a URL friendly way. It 
 ## Base64 Decrypt
 The `decryptBase64()` can be used to decrypt a string in a URL friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_  characters such as `+` or `/`.
 
-## Exceptions
+## Εξαιρέσεις
 Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of type \[Phalcon\Encryption\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
@@ -191,7 +191,7 @@ class IndexController extends Controller
 }
 ```
 
-## Functionality
+## Λειτουργικότητα
 ### Ciphers
 The getter `getCipher()` returns the currently selected cipher. If none has been explicitly defined either by the setter `setCipher()` or the constructor of the object the `aes-256-cfb` is selected by default. The `aes-256-gcm` is the preferable cipher.
 
