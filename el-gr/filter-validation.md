@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Επικύρωση'
+title: 'Validation'
 upgrade: '#validation'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
