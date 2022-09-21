@@ -254,19 +254,19 @@ Check whether is defined a translation key in the internal array
 
 
 ```php
-public function getCategory(): int
+public function getCategory(): int;
 ```
 
 ```php
-public function getDefaultDomain(): string
+public function getDefaultDomain(): string;
 ```
 
 ```php
-public function getDirectory(): string|array
+public function getDirectory(): array | string;
 ```
 
 ```php
-public function getLocale(): string
+public function getLocale(): string;
 ```
 
 ```php
@@ -595,3 +595,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+
