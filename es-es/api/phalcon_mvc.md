@@ -1189,14 +1189,14 @@ Carga perezosa de manejadores para Mvc\Micro utilizando la autocarga
 ## Propiedades
 ```php
 /**
- * @var object|null
- */
-protected handler;
-
-/**
  * @var string
  */
 protected definition;
+
+/**
+ * @var object|null
+ */
+protected handler;
 
 ```
 
@@ -1215,11 +1215,11 @@ Método de llamada __call
 
 
 ```php
-public function getDefinition(): string
+public function getDefinition(): string;
 ```
 
 ```php
-public function getHandler(): object|null
+public function getHandler(): object | null;
 ```
 
 
@@ -2035,7 +2035,7 @@ Devuelve el nombre de tabla mapeado en el modelo
 
 
 ```php
-public function getTransaction(): TransactionInterface|null
+public function getTransaction(): TransactionInterface | null;
 ```
 
 ```php
@@ -2689,7 +2689,7 @@ Establece el nombre de tabla al que se debe mapear el modelo
 
 
 ```php
-protected function skipAttributes( array $attributes );
+protected function skipAttributes( array $attributes ): void;
 ```
 Configura una lista de atributos que se deben omitir de la sentencia INSERT/UPDATE generada
 
@@ -2983,8 +2983,10 @@ Vincular modelos en parámetros en el manejador apropiado
 
 
 ```php
-public function getBoundModels(): array
+public function getBoundModels(): array;
 ```
+Return the active bound models
+
 
 ```php
 public function getCache(): AdapterInterface;
@@ -2993,8 +2995,10 @@ Establece la instancia de caché
 
 
 ```php
-public function getOriginalValues(): array
+public function getOriginalValues(): array;
 ```
+Return the array for original values
+
 
 ```php
 public function setCache( AdapterInterface $cache ): BinderInterface;
@@ -5965,7 +5969,7 @@ Devuelve el SQL a ser generado por el PHQL interno (solo funciona en sentencias 
 
 
 ```php
-public function getTransaction(): TransactionInterface|null
+public function getTransaction(): TransactionInterface | null;
 ```
 
 ```php
@@ -9477,15 +9481,15 @@ Devuelve el administrador de eventos interno
 
 
 ```php
-public function getKeyRouteIds(): array
+public function getKeyRouteIds(): array;
 ```
 
 ```php
-public function getKeyRouteNames(): array
+public function getKeyRouteNames(): array;
 ```
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Devuelve la ruta que coincide con el URI gestionado
 
@@ -9615,11 +9619,11 @@ Establece el administrador de eventos
 
 
 ```php
-public function setKeyRouteIds( array $keyRouteIds )
+public function setKeyRouteIds( array $routeIds ): Router;
 ```
 
 ```php
-public function setKeyRouteNames( array $keyRouteNames )
+public function setKeyRouteNames( array $routeNames ): Router;
 ```
 
 ```php
@@ -10362,7 +10366,7 @@ Devuelve los métodos HTTP que coinciden con la ruta
 
 
 ```php
-public function getId(): string|null
+public function getId(): string | null;
 ```
 
 ```php
@@ -10716,7 +10720,7 @@ Devuelve el nombre del controlador procesado
 
 
 ```php
-public function getMatchedRoute(): RouteInterface;
+public function getMatchedRoute(): RouteInterface | null;
 ```
 Devuelve la ruta que coincide con el URI gestionado
 
@@ -11309,7 +11313,7 @@ Obtiene el nombre del controlador renderizado
 
 
 ```php
-public function getCurrentRenderLevel(): int
+public function getCurrentRenderLevel(): int;
 ```
 
 ```php
@@ -11370,7 +11374,7 @@ Obtiene el subdirectorio actual de parciales
 
 
 ```php
-public function getRegisteredEngines(): array
+public function getRegisteredEngines(): array;
 ```
 
 ```php
@@ -11390,7 +11394,7 @@ $template = $this->view->getRender(
 
 
 ```php
-public function getRenderLevel(): int
+public function getRenderLevel(): int;
 ```
 
 ```php
@@ -12167,7 +12171,7 @@ Compila una sentencia 'switch' devolviendo código PHP
 
 
 ```php
-final public function expression( array $expr ): string;
+final public function expression( array $expr, bool $doubleQuotes = bool ): string;
 ```
 Resuelve un nodo de expresión en un árbol AST de Volt
 
@@ -12179,7 +12183,7 @@ Dispara un evento a las extensiones registradas
 
 
 ```php
-public function functionCall( array $expr ): string;
+public function functionCall( array $expr, bool $doubleQuotes = bool ): string;
 ```
 Resuelve el código intermedio de funciones en llamadas a funciones PHP
 
@@ -12417,7 +12421,7 @@ protected eventsManager;
 protected options;
 
 /**
- * @var array|null
+ * @var array
  */
 protected registeredEngines;
 
@@ -12486,7 +12490,7 @@ Obtiene los parámetros de las vistas
 
 
 ```php
-public function getRegisteredEngines(): array|null
+public function getRegisteredEngines(): array;
 ```
 
 ```php
