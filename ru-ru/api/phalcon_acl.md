@@ -27,6 +27,13 @@ Adapter for Phalcon\Acl adapters
 ## Properties
 ```php
 /**
+ * Access Granted
+ *
+ * @var bool
+ */
+protected accessGranted = false;
+
+/**
  * Active access which the list is checking if some role can access it
  *
  * @var string|null
@@ -34,11 +41,11 @@ Adapter for Phalcon\Acl adapters
 protected activeAccess;
 
 /**
- * Access Granted
+ * Component which the list is checking if some role can access it
  *
- * @var bool
+ * @var string|null
  */
-protected accessGranted = false;
+protected activeComponent;
 
 /**
  * Role which the list is checking if it's allowed to certain
@@ -47,13 +54,6 @@ protected accessGranted = false;
  * @var string|null
  */
 protected activeRole;
-
-/**
- * Component which the list is checking if some role can access it
- *
- * @var string|null
- */
-protected activeComponent;
 
 /**
  * Default access
@@ -67,16 +67,22 @@ protected defaultAccess;
 ## Методы
 
 ```php
-public function getActiveAccess(): string|null
+public function getActiveAccess(): string | null;
 ```
+Active access which the list is checking if some role can access it
+
 
 ```php
-public function getActiveComponent(): string|null
+public function getActiveComponent(): string | null;
 ```
+Component which the list is checking if some role can access it
+
 
 ```php
-public function getActiveRole(): string|null
+public function getActiveRole(): string | null;
 ```
+Role which the list is checking if it's allowed to certain component/access
+
 
 ```php
 public function getDefaultAction(): int;
@@ -500,16 +506,22 @@ Removes an access from a component
 
 
 ```php
-public function getActiveFunction(): mixed
+public function getActiveFunction(): mixed;
 ```
+Returns latest function used to acquire access
+
 
 ```php
-public function getActiveFunctionCustomArgumentsCount(): int
+public function getActiveFunctionCustomArgumentsCount(): int;
 ```
+Returns number of additional arguments(excluding role and resource) for active function
+
 
 ```php
-public function getActiveKey(): string|null
+public function getActiveKey(): string | null;
 ```
+Returns latest key used to acquire access
+
 
 ```php
 public function getComponents(): ComponentInterface[];
@@ -605,15 +617,15 @@ Phalcon\Acl\Component constructor
 
 
 ```php
-public function __toString(): string
+public function __toString(): string;
 ```
 
 ```php
-public function getDescription(): string
+public function getDescription(): string;
 ```
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
 
 
@@ -708,18 +720,18 @@ This class defines role entity and its description
 ## Properties
 ```php
 /**
- * Role name
- *
- * @var string
- */
-private name;
-
-/**
  * Role description
  *
  * @var string
  */
 private description;
+
+/**
+ * Role name
+ *
+ * @var string
+ */
+private name;
 
 ```
 
@@ -732,15 +744,15 @@ Phalcon\Acl\Role constructor
 
 
 ```php
-public function __toString(): string
+public function __toString(): string;
 ```
 
 ```php
-public function getDescription(): string
+public function getDescription(): string;
 ```
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
 
 
@@ -793,3 +805,5 @@ Returns role description
 public function getName(): string;
 ```
 Returns the role name
+
+

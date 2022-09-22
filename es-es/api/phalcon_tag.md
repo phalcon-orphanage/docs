@@ -152,7 +152,7 @@ Construye una etiqueta Input[type="file"] de HTML
 
 
 ```php
-public static function form( mixed $parameters ): string;
+public static function formLegacy( mixed $parameters ): string;
 ```
 Construye una etiqueta FORM de HTML
 
@@ -473,3 +473,5 @@ Genera una etiqueta SELECT en HTML utilizando un vector estático de valores o u
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 Genera una etiqueta SELECT
+
+

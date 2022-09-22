@@ -69,7 +69,7 @@ Setting up the
 ### Authentication
 ### Tokens
 ### Verification
-### Επικύρωση
+### Validation
 ### Response
 
 ## CLI

@@ -1,7 +1,7 @@
 ---
 layout: default
 upgrade: '#assets'
-title: 'Πόροι'
+title: 'Assets'
 keywords: 'assets, js, css'
 ---
 

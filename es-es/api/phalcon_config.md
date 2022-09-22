@@ -517,3 +517,4 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 | Namespace  | Phalcon\Config | | Extends    | \Exception |
 
 Las excepciones lanzadas en Phalcon\Config usarán esta clase
+

@@ -619,3 +619,5 @@ Establece los alias del repositorio de propiedades
 public function setProperties( array $properties ): RepositoryInterface;
 ```
 Establece valores para las propiedades del repositorio
+
+

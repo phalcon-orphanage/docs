@@ -23,11 +23,6 @@ All image adapters must use this class
 ## Властивості
 ```php
 /**
- * @var bool
- */
-protected static checked = false;
-
-/**
  * @var string
  */
 protected file;
@@ -40,7 +35,7 @@ protected file;
 protected height;
 
 /**
- * @var object|null
+ * @var mixed|null
  */
 protected image;
 
@@ -101,37 +96,31 @@ Flip the image along the horizontal or vertical axis
 
 
 ```php
-public function getHeight(): int
+public function getHeight(): int;
 ```
 
 ```php
-public function getImage(): object|null
+public function getImage();
 ```
 
 ```php
-public function getMime(): string
+public function getMime(): string;
 ```
 
 ```php
-public function getRealpath(): string
+public function getRealpath(): string;
 ```
 
 ```php
-public function getType(): int
+public function getType(): int;
 ```
 
 ```php
-public function getWidth(): int
+public function getWidth(): int;
 ```
 
 ```php
-public function liquidRescale( int $width, int $height, int $deltaX = int, int $rigidity = int ): AbstractAdapter;
-```
-This method scales the images using liquid rescaling method. Only support Imagick
-
-
-```php
-public function mask( AdapterInterface $watermark ): AdapterInterface;
+public function mask( AdapterInterface $mask ): AdapterInterface;
 ```
 Composite one image onto another
 
@@ -149,7 +138,7 @@ Add a reflection to an image
 
 
 ```php
-public function render( string $ext = null, int $quality = int ): string;
+public function render( string $extension = null, int $quality = int ): string;
 ```
 Render the image and return the binary string
 
@@ -179,7 +168,7 @@ Sharpen the image by a given amount
 
 
 ```php
-public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): AdapterInterface;
+public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontFile = null ): AdapterInterface;
 ```
 Add a text to an image with a specified opacity
 
@@ -188,6 +177,12 @@ Add a text to an image with a specified opacity
 public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): AdapterInterface;
 ```
 Add a watermark to an image with the specified opacity
+
+
+```php
+protected function checkHighLow( int $value, int $min = int, int $max = int ): int;
+```
+
 
 
 
@@ -206,59 +201,85 @@ Interface for Phalcon\Image\Adapter classes
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
 ```
+Add a background to an image
+
 
 ```php
 public function blur( int $radius ): AdapterInterface;
 ```
+Blur an image
+
 
 ```php
 public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): AdapterInterface;
 ```
+Crop an image
+
 
 ```php
 public function flip( int $direction ): AdapterInterface;
 ```
+Flip an image
+
 
 ```php
-public function mask( AdapterInterface $watermark ): AdapterInterface;
+public function mask( AdapterInterface $mask ): AdapterInterface;
 ```
+Add a mask to an image
+
 
 ```php
 public function pixelate( int $amount ): AdapterInterface;
 ```
+Pixelate an image
+
 
 ```php
 public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): AdapterInterface;
 ```
+Reflect an image
+
 
 ```php
-public function render( string $ext = null, int $quality = int ): string;
+public function render( string $extension = null, int $quality = int ): string;
 ```
+Render an image
+
 
 ```php
 public function resize( int $width = null, int $height = null, int $master = static-constant-access ): AdapterInterface;
 ```
+Resize an image
+
 
 ```php
 public function rotate( int $degrees ): AdapterInterface;
 ```
+Rotate an image
+
 
 ```php
 public function save( string $file = null, int $quality = int ): AdapterInterface;
 ```
+Save an image
+
 
 ```php
 public function sharpen( int $amount ): AdapterInterface;
 ```
+Sharpen an image
+
 
 ```php
-public function text( string $text, int $offsetX = int, int $offsetY = int, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): AdapterInterface;
+public function text( string $text, int $offsetX = int, int $offsetY = int, int $opacity = int, string $color = string, int $size = int, string $fontFile = null ): AdapterInterface;
 ```
+Adds text on an image
+
 
 ```php
 public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): AdapterInterface;
 ```
-
+Add a watermark on an image
 
 
 
@@ -276,15 +297,6 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
 
-## Властивості
-```php
-/**
- * @var bool
- */
-protected static checked = false;
-
-```
-
 ## Методи
 
 ```php
@@ -294,21 +306,19 @@ public function __construct( string $file, int $width = null, int $height = null
 ```php
 public function __destruct();
 ```
+Destructor
+
 
 ```php
-public static function check(): bool;
+public function getVersion(): string;
 ```
 
 ```php
-public static function getVersion(): string;
+protected function processBackground( int $red, int $green, int $blue, int $opacity ): void;
 ```
 
 ```php
-protected function processBackground( int $r, int $g, int $b, int $opacity );
-```
-
-```php
-protected function processBlur( int $radius );
+protected function processBlur( int $radius ): void;
 ```
 
 ```php
@@ -316,11 +326,11 @@ protected function processCreate( int $width, int $height );
 ```
 
 ```php
-protected function processCrop( int $width, int $height, int $offsetX, int $offsetY );
+protected function processCrop( int $width, int $height, int $offsetX, int $offsetY ): void;
 ```
 
 ```php
-protected function processFlip( int $direction );
+protected function processFlip( int $direction ): void;
 ```
 
 ```php
@@ -328,39 +338,39 @@ protected function processMask( AdapterInterface $mask );
 ```
 
 ```php
-protected function processPixelate( int $amount );
+protected function processPixelate( int $amount ): void;
 ```
 
 ```php
-protected function processReflection( int $height, int $opacity, bool $fadeIn );
+protected function processReflection( int $height, int $opacity, bool $fadeIn ): void;
 ```
 
 ```php
-protected function processRender( string $ext, int $quality );
+protected function processRender( string $extension, int $quality );
 ```
 
 ```php
-protected function processResize( int $width, int $height );
+protected function processResize( int $width, int $height ): void;
 ```
 
 ```php
-protected function processRotate( int $degrees );
+protected function processRotate( int $degrees ): void;
 ```
 
 ```php
-protected function processSave( string $file, int $quality );
+protected function processSave( string $file, int $quality ): bool;
 ```
 
 ```php
-protected function processSharpen( int $amount );
+protected function processSharpen( int $amount ): void;
 ```
 
 ```php
-protected function processText( string $text, int $offsetX, int $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile );
+protected function processText( string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string $fontFile = null ): void;
 ```
 
 ```php
-protected function processWatermark( AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity );
+protected function processWatermark( AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity ): void;
 ```
 
 
@@ -371,11 +381,11 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Image/Adapter/Imagick.zep)
 
-| Namespace  | Phalcon\Image\Adapter | | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Image\Adapter | | Uses       | Imagick, ImagickDraw, ImagickDrawException, ImagickException, ImagickPixel, ImagickPixelException, Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends    | AbstractAdapter |
 
 Phalcon\Image\Adapter\Imagick
 
-Image manipulation support. Allows images to be resized, cropped, etc.
+Image manipulation support. Resize, rotate, crop etc.
 
 ```php
 $image = new \Phalcon\Image\Adapter\Imagick("upload/test.jpg");
@@ -391,14 +401,9 @@ if ($image->save()) {
 ## Властивості
 ```php
 /**
- * @var bool
- */
-protected static checked = false;
-
-/**
  * @var int
  */
-protected static version = 0;
+protected version = 0;
 
 ```
 
@@ -407,7 +412,7 @@ protected static version = 0;
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
 ```
-\Phalcon\Image\Adapter\Imagick constructor
+Constructor
 
 
 ```php
@@ -417,15 +422,9 @@ Destroys the loaded image to free up resources.
 
 
 ```php
-public static function check(): bool;
+public function liquidRescale( int $width, int $height, int $deltaX = int, int $rigidity = int ): AbstractAdapter;
 ```
-Checks if Imagick is enabled
-
-
-```php
-public function getInternalImInstance(): \Imagick;
-```
-Get instance
+This method scales the images using liquid rescaling method. Only support Imagick
 
 
 ```php
@@ -433,11 +432,9 @@ public function setResourceLimit( int $type, int $limit ): void;
 ```
 Sets the limit for a particular resource in megabytes
 
-@link http://php.net/manual/ru/imagick.constants.php#imagick.constants.resourcetypes
-
 
 ```php
-protected function processBackground( int $r, int $g, int $b, int $opacity ): void;
+protected function processBackground( int $red, int $green, int $blue, int $opacity ): void;
 ```
 Execute a background.
 
@@ -458,12 +455,6 @@ Execute a crop.
 protected function processFlip( int $direction ): void;
 ```
 Execute a flip.
-
-
-```php
-protected function processLiquidRescale( int $width, int $height, int $deltaX, int $rigidity ): void;
-```
-This method scales the images using liquid rescaling method. Only support Imagick
 
 
 ```php
@@ -509,21 +500,21 @@ Execute a save.
 
 
 ```php
-protected function processSharpen( int $amount );
+protected function processSharpen( int $amount ): void;
 ```
 Execute a sharpen.
 
 
 ```php
-protected function processText( string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile );
+protected function processText( string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string $fontFile = null ): void;
 ```
 Execute a text
 
 
 ```php
-protected function processWatermark( AdapterInterface $image, int $offsetX, int $offsetY, int $opacity );
+protected function processWatermark( AdapterInterface $image, int $offsetX, int $offsetY, int $opacity ): void;
 ```
-Execute a watermarking.
+Add Watermark
 
 
 
@@ -601,3 +592,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+

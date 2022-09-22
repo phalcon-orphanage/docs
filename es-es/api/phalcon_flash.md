@@ -106,19 +106,23 @@ $flash->error("This is an error");
 
 
 ```php
-public function getAutoescape(): bool
+public function getAutoescape(): bool;
 ```
 
 ```php
-public function getCssClasses(): array
+public function getAutomaticHtml(): bool;
 ```
 
 ```php
-public function getCssIconClasses(): array
+public function getCssClasses(): array;
 ```
 
 ```php
-public function getCustomTemplate(): string
+public function getCssIconClasses(): array;
+```
+
+```php
+public function getCustomTemplate(): string;
 ```
 
 ```php
@@ -361,3 +365,5 @@ Devuelve los mensajes almacenados en sesión
 protected function setSessionMessages( array $messages ): array;
 ```
 Almacena los mensajes en sesión
+
+

@@ -117,15 +117,15 @@ Constructor Phalcon\Events\Event
 
 
 ```php
-public function getData(): mixed
+public function getData(): mixed;
 ```
 
 ```php
-public function getSource(): object|null
+public function getSource(): object | null;
 ```
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
 
 ```php
@@ -433,3 +433,5 @@ Devuelve todos los oyentes adjuntos de cierto tipo
 public function hasListeners( string $type ): bool;
 ```
 Comprueba si cierto tipo de evento tiene oyentes
+
+

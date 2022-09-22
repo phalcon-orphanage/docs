@@ -625,26 +625,22 @@ $classAnnotations = $reflection->getClassAnnotations();
 ## Properties
 ```php
 /**
- * @var array
- * TODO: Make always array
+ * @var Collection|null
  */
 protected classAnnotations;
 
 /**
  * @var array
- * TODO: Make always array
  */
 protected constantAnnotations;
 
 /**
  * @var array
- * TODO: Make always array
  */
 protected propertyAnnotations;
 
 /**
  * @var array
- * TODO: Make always array
  */
 protected methodAnnotations;
 
@@ -660,29 +656,27 @@ protected reflectionData;
 ```php
 public function __construct( array $reflectionData = [] );
 ```
-Phalcon\Annotations\Reflection constructor
-
 
 ```php
-public function getClassAnnotations(): Collection | bool;
+public function getClassAnnotations(): Collection | null;
 ```
 Returns the annotations found in the class docblock
 
 
 ```php
-public function getConstantsAnnotations(): Collection[] | bool;
+public function getConstantsAnnotations(): Collection[];
 ```
 Returns the annotations found in the constants' docblocks
 
 
 ```php
-public function getMethodsAnnotations(): Collection[] | bool;
+public function getMethodsAnnotations(): Collection[];
 ```
 Returns the annotations found in the methods' docblocks
 
 
 ```php
-public function getPropertiesAnnotations(): Collection[] | bool;
+public function getPropertiesAnnotations(): Collection[];
 ```
 Returns the annotations found in the properties' docblocks
 
@@ -691,3 +685,5 @@ Returns the annotations found in the properties' docblocks
 public function getReflectionData(): array;
 ```
 Returns the raw parsing intermediate definitions used to construct the reflection
+
+

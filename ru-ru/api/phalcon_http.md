@@ -750,8 +750,10 @@ $request->getHttpHost(); // example.com
 
 
 ```php
-public function getHttpMethodParameterOverride(): bool
+public function getHttpMethodParameterOverride(): bool;
 ```
+Return the HTTP method parameter override flag
+
 
 ```php
 public function getJsonRawBody( bool $associative = bool ): \stdClass | array | bool;
@@ -1041,8 +1043,10 @@ Returns the number of files available
 
 
 ```php
-public function setHttpMethodParameterOverride( bool $httpMethodParameterOverride )
+public function setHttpMethodParameterOverride( bool $override ): Request;
 ```
+Set the HTTP method parameter override flag
+
 
 ```php
 public function setParameterFilters( string $name, array $filters = [], array $scope = [] ): RequestInterface;
@@ -1188,15 +1192,15 @@ Phalcon\Http\Request\File constructor
 
 
 ```php
-public function getError(): string|null
+public function getError(): string | null;
 ```
 
 ```php
-public function getExtension(): string
+public function getExtension(): string;
 ```
 
 ```php
-public function getKey(): string|null
+public function getKey(): string | null;
 ```
 
 ```php
@@ -1249,10 +1253,7 @@ Moves the temporary file to a destination within the application
 
 | Namespace  | Phalcon\Http\Request |
 
-Phalcon\Http\Request\FileInterface
-
 Interface for Phalcon\Http\Request\File
-
 
 
 ## Методы

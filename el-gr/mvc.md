@@ -27,7 +27,7 @@ A model represents the information (data) of the application and the rules to ma
 ## Προβολές
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [more...](views)
 
-## Ελεγκτές
+## Controllers
 The controllers provide the _flow_ between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [more...](controllers)
 
 [wiki-mvc]: https://en.wikipedia.org/wiki/Model–view–controller

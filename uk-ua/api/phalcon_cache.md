@@ -422,3 +422,4 @@ Exceptions thrown in Phalcon\Cache will use this class
 | Namespace  | Phalcon\Cache\Exception | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Cache will use this class
+

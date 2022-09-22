@@ -113,3 +113,4 @@ Sets the events manager
 | Namespace  | Phalcon\Application | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Application class will use this class
+

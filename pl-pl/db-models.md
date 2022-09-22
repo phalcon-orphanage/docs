@@ -3851,8 +3851,11 @@ Model::setup(
     PDO::ATTR_STRINGIFY_FETCHES => false,
 ]
 ```
+
 Registering the provider should look like this:
+
 ```php 
+<?php
 
 $parameters = [
   // ....
@@ -3883,6 +3886,15 @@ $container->setShared(
     );
 }
 ```
+
+## Invalid parameter number
+In v5, the parameters used to instantiate PDO have changed. More specifically the `PDO::ATTR_EMULATE_PREPARES` now defaults to `false`. As a result, you might encounter the following message in your code, when a bound parameter is used more than once in a query:
+
+> Invalid parameter number 
+> 
+> {: .alert .alert-warning }
+
+You can change the name of the parameters, or you can change the `PDO::ATTR_EMULATE_PREPARES` to `true`, when registering your database provider.
 
 ## Stand-Alone Component
 You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. The example below demonstrates how you can achieve that.

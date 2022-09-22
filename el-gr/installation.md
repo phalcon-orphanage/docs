@@ -24,7 +24,7 @@ extension=pdo.so
 extension=phalcon.so
 ```
 
-### Hardware
+### Υλικό
 Phalcon is designed to use as few resources as possible, while offering high performance. Although we have tested Phalcon in various high-end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
 
 We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
@@ -67,7 +67,7 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-##### Mac/Osx using Brew
+##### Mac/Osx χρησιμοποιώντας το Brew
 ```bash
 brew install pcre
 ```
@@ -84,7 +84,7 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-For Maverick
+Για Maverick
 ```bash
 brew install pcre
 ```

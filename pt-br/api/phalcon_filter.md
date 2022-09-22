@@ -90,7 +90,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 Lazy loads, stores and exposes sanitizer objects
 
-@method absint(mixed $input): int @method alnum(mixed $input): string @method alpha(mixed $input): string @method bool(mixed $input): bool @method email(string $input): string @method float(mixed $input): float @method int(string $input): int @method lower(string $input): string @method lowerfirst(string $input): string @method regex(mixed $input, mixed $pattern, mixed $replace): mixed @method remove(mixed $input, mixed $replace): mixed @method replace(mixed $input, mixed $source, mixed $target): mixed @method special(string $input): string @method specialfull(string $input): string @method string(string $input): string @method striptags(string $input): string @method trim(string $input): string @method upper(string $input): string @method upperFirst(string $input): string @method upperWords(string $input): string|null @method url(string $input): string|null
+@method absint(mixed $input): int @method alnum(mixed $input): string @method alpha(mixed $input): string @method bool(mixed $input): bool @method email(string $input): string @method float(mixed $input): float @method int(string $input): int @method lower(string $input): string @method lowerfirst(string $input): string @method regex(mixed $input, mixed $pattern, mixed $replace): mixed @method remove(mixed $input, mixed $replace): mixed @method replace(mixed $input, mixed $source, mixed $target): mixed @method special(string $input): string @method specialfull(string $input): string @method string(string $input): string @method stringlegacy(mixed $input): string @method striptags(string $input): string @method trim(string $input): string @method upper(string $input): string @method upperFirst(string $input): string @method upperWords(string $input): string|null @method url(string $input): string|null
 
 @property array $mapper @property array $services
 
@@ -112,6 +112,7 @@ const FILTER_REPLACE = replace;
 const FILTER_SPECIAL = special;
 const FILTER_SPECIALFULL = specialfull;
 const FILTER_STRING = string;
+const FILTER_STRING_LEGACY = stringlegacy;
 const FILTER_STRIPTAGS = striptags;
 const FILTER_TRIM = trim;
 const FILTER_UPPER = upper;
@@ -768,7 +769,7 @@ Assigns the data to an entity The entity is used to obtain the validation values
 
 
 ```php
-public function getData(): mixed
+public function getData(): mixed;
 ```
 
 ```php
@@ -850,7 +851,7 @@ Adds labels for fields
 
 
 ```php
-public function setValidators( array $validators )
+public function setValidators( array $validators ): Validation;
 ```
 
 ```php
@@ -1012,7 +1013,7 @@ protected validators;
 ## Methods
 
 ```php
-public function getValidators(): array
+public function getValidators(): array;
 ```
 
 ```php
@@ -2006,16 +2007,22 @@ public function getFileSizeInBytes( string $size ): double;
 
 
 ```php
-public function getMessageFileEmpty(): string
+public function getMessageFileEmpty(): string;
 ```
+Empty is empty
+
 
 ```php
-public function getMessageIniSize(): string
+public function getMessageIniSize(): string;
 ```
+File exceeds the file size set in PHP configuration
+
 
 ```php
-public function getMessageValid(): string
+public function getMessageValid(): string;
 ```
+File is not valid
+
 
 ```php
 public function isAllowEmpty( Validation $validation, string $field ): bool;
@@ -2024,16 +2031,22 @@ Check on empty
 
 
 ```php
-public function setMessageFileEmpty( string $messageFileEmpty )
+public function setMessageFileEmpty( string $message ): void;
 ```
+Empty is empty
+
 
 ```php
-public function setMessageIniSize( string $messageIniSize )
+public function setMessageIniSize( string $message ): void;
 ```
+File exceeds the file size set in PHP configuration
+
 
 ```php
-public function setMessageValid( string $messageValid )
+public function setMessageValid( string $message ): void;
 ```
+File is not valid
+
 
 ```php
 protected function checkIsUploadedFile( string $name ): bool;
@@ -3481,3 +3494,5 @@ public function setTemplates( array $templates ): ValidatorInterface;
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 Executes the validation
+
+

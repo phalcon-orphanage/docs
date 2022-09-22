@@ -74,24 +74,34 @@ Obtiene la excepción potencial lanzada en la capa de dominio
 
 
 ```php
-public function getExtras(): mixed
+public function getExtras(): mixed;
 ```
+Extra information
+
 
 ```php
-public function getInput(): mixed
+public function getInput(): mixed;
 ```
+Entrada
+
 
 ```php
-public function getMessages(): mixed
+public function getMessages(): mixed;
 ```
+Messages
+
 
 ```php
-public function getOutput(): mixed
+public function getOutput(): mixed;
 ```
+Salida
+
 
 ```php
-public function getStatus(): mixed
+public function getStatus(): mixed;
 ```
+Estado
+
 
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
@@ -297,3 +307,5 @@ Establece la salida producida desde la capa de dominio.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Establece el estado de esta carga útil.
+
+
