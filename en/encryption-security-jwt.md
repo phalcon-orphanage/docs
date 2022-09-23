@@ -485,6 +485,16 @@ public function __construct(Token $token, int $timeShift = 0)
 Constructor
 
 ```php
+public function get(string $claim): mixed | null
+```
+Returns a claim's value - `null` if the claim does not exist
+
+```php
+public function set(string $claim, mixed $value): Validator
+```
+Sets a claim and its value
+
+```php
 public function setToken(Token $token): Validator
 ```
 Sets the token object.
@@ -604,6 +614,7 @@ Verify the signature of the token
 ```php
 <?php
 
+use Phalcon\Encryption\Security\JWT\Enum;
 use Phalcon\Encryption\Security\JWT\Signer\Hmac;
 use Phalcon\Encryption\Security\JWT\Token\Parser;
 use Phalcon\Encryption\Security\JWT\Validator;
@@ -617,6 +628,7 @@ use Phalcon\Encryption\Security\JWT\Validator;
 // BPlPyOeEAkMbg
 
 $tokenReceived = getMyTokenFromTheApplication();
+$subject       = 'Mary had a little lamb';
 $audience      = 'https://target.phalcon.io';
 $now           = new DateTimeImmutable();
 $issued        = $now->getTimestamp();
@@ -636,6 +648,16 @@ $tokenObject = $parser->parse($tokenReceived);
 
 // Phalcon\Encryption\Security\JWT\Validator 
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
+
+$validator
+    ->set(Enum::AUDIENCE, $audience)
+    ->set(Enum::EXPIRATION_TIME, $expiry)
+    ->set(Enum::ISSUER, $issuer)
+    ->set(Enum::ISSUED_AT, $issued)
+    ->set(Enum::ID, $id)
+    ->set(Enum::NOT_BEFORE, $notBefore)
+    ->set(Enum::SUBJECT, $subject)
+;
 
 $tokenObject->verify($signer, $passphrase);
 $errors = $tokenObject->validate($validator);
