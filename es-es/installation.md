@@ -11,7 +11,11 @@ keywords: 'instalación, instalación de Phalcon'
 ## Requerimentos
 
 ### PHP 7.4
-Phalcon v5 supports only PHP 7.4 and above. PHP 7.4 has been released 2 years ago and its [active support][php-support] was until November 2021, while security updates were until November 2022. Phalcon follows actively supported PHP versions, therefore support for PHP 7.4 will not be available in future versions. La instalación de un servidor web está fuera del ámbito de este documento. Por favor, consulte las guías relevantes en Internet sobre cómo instalar un servidor web.
+Phalcon v5 supports only PHP 7.4 and above.
+
+PHP 7.4 has been released 2 years ago and its [active support][php-support] was until November 2021, while security updates were until November 2022. Phalcon follows actively supported PHP versions, therefore support for PHP 7.4 will not be available in future versions. We will continue to support PHP 7.4 for v5 for another year, until September 2023. Phalcon v6 and later will support PHP 8.+.
+
+La instalación de un servidor web está fuera del ámbito de este documento. Por favor, consulte las guías relevantes en Internet sobre cómo instalar un servidor web.
 
 ### PDO
 Dado que Phalcon tiene bajo acoplamiento, expone la funcionalidad sin necesidad de extensiones adicionales. Sin embargo, ciertos componentes dependen de extensiones adicionales para funcionar. Cuando necesite conectividad y acceso a la base de datos, necesitará instalar la extensión `php_pdo`. Si su RDBMS es MySQL/MariaDB o Aurora, también se necesita la extensión `php_mysqlnd`. De manera similar, usar una base de datos PostgreSql con Phalcon requiere la extensión `php_pgsql`.
