@@ -6,7 +6,7 @@ keywords: 'devtools, herramientas de desarrollo, modelos, controladores'
 
 # Devtools de Phalcon
 - - -
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 Estas herramientas le ayudarán a generar código esqueleto, a mantener su estructura de base de datos y a acelerar el desarrollo. Los componentes principales de su aplicación se pueden generar con un comando simple, permitiéndole desarrollar aplicaciones fácilmente usando Phalcon.
@@ -250,8 +250,8 @@ declare(strict_types=1);
 namespace Phalcon\Tests\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\PresenceOf as EmailValidator;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf as EmailValidator;
 
 /**
  * @property int    $cst_id
