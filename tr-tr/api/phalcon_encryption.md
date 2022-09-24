@@ -1517,6 +1517,11 @@ Class Validator
 /**
  * @var array
  */
+private claims;
+
+/**
+ * @var array
+ */
 private errors;
 
 /**
@@ -1540,7 +1545,15 @@ Validator constructor.
 
 
 ```php
+public function get( string $claim ): mixed | null;
+```
+
+```php
 public function getErrors(): array;
+```
+
+```php
+public function set( string $claim, mixed $value ): Validator;
 ```
 
 ```php
