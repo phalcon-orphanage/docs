@@ -31,9 +31,6 @@ Abstract Logger Class
 
 Abstract logger class, providing common functionality. A formatter interface is available as well as an adapter one. Adapters can be created easily using the built in AdapterFactory. A LoggerFactory is also available that allows developers to create new instances of the Logger or load them from config files (see Phalcon\Config\Config object).
 
-@property AdapterInterface[] $adapters @property array              $excluded @property int                $logLevel @property string             $name @property string             $timezone
-
-
 ## 常量
 ```php
 const ALERT = 2;
@@ -171,9 +168,6 @@ Returns an array of log levels with integer to string conversion
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Formatter\Line, Phalcon\Logger\Item | | Implements | AdapterInterface |
 
 Class AbstractAdapter
-
-@property string             $defaultFormatter @property FormatterInterface $formatter @property bool               $inTransaction @property array              $queue
-
 
 ## Properties
 ```php
@@ -467,9 +461,6 @@ protected function phpFopen( string $filename, string $mode );
 
 Class Syslog
 
-@property string $defaultFormatter @property int    $facility @property string $name @property bool   $opened @property int    $option
-
-
 ## Properties
 ```php
 /**
@@ -738,9 +729,6 @@ Set the format applied to each message
 Phalcon\Logger\Item
 
 Represents each item in a logging transaction
-
-@property array             $context @property string            $message @property int               $level @property string            $levelName @property DateTimeImmutable $datetime
-
 
 ## Properties
 ```php
@@ -1023,5 +1011,3 @@ Normal but significant events.
 public function warning( string $message, array $context = [] ): void;
 ```
 Normal but significant events.
-
-
