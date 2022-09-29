@@ -71,7 +71,7 @@ Sometimes due to [Segmentation Fault][segfault] error, Phalcon could crash some 
 - Запити на злиття в гілку `master` не приймаються. Будь ласка, створіть виправлену копію репозиторію та створіть свою гілку з необхідної гілки-джерела, наприклад `4.0.x` і якщо потрібно перпбащуйте гілку перед тим, як надіслати запит на злиття. Якщо мають місце колізії, ми попросимо вас повторно перебазувати вашу гілку.
 - Додайте тести до вашого запиту на злиття або налаштуйте існуючі. Це дуже важливо, оскільки допомагає обґрунтувати ваш запит на злиття. Please check our [testing][env] page for more information on how to set up a test environment and how to write tests.
 - Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C generated files directly
-- Phalcon слідує певному стилю кодування. Будь ласка, встановіть `editorconfig` плагін у вашому улюбленому IDE, щоб скористатися переванами наданого `. ditorconfig` файлу, який поставляється з репозиторію, а тому не потрібно хвилюватися за стандарти кодування. All tests (PHP code), follow the [PSR-2][psr-2] standard
+- Phalcon слідує певному стилю кодування. Будь ласка, встановіть `editorconfig` плагін у вашому улюбленому IDE, щоб скористатися переванами наданого `. ditorconfig` файлу, який поставляється з репозиторію, а тому не потрібно хвилюватися за стандарти кодування. All tests (PHP code), follow the [PSR-12][psr-12] standard
 - Видаліть будь-яку зміну файлів `ext/kernel`, `*.zep.c` та `*.zep.h` перед надсиланням запиту на злиття
 - More information [here][pr].
 
@@ -108,7 +108,7 @@ If you have any changes or new features in mind, please fill an [NFR][nfr].
 [building-php]: http://www.phpinternalsbook.com/build_system/building_php.html
 [env]: testing-environment
 [zephir]: https://zephir-lang.com
-[psr-2]: https://www.php-fig.org/psr/
+[psr-12]: https://www.php-fig.org/psr/
 [pr]: new-pull-request
 [nfr]: new-feature-request
 [support]: https://phalcon.io/support
