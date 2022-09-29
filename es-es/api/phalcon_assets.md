@@ -346,9 +346,6 @@ Establece el tipo de recurso.
 
 Collection of asset objects
 
-@property array  $assets @property array  $attributes @property bool   $autoVersion @property array  $codes @property array  $filters @property bool   $join @property bool   $isLocal @property string $prefix @property string $sourcePath @property bool   $targetIsLocal @property string $targetPath @property string $targetUri @property string $version
-
-
 ## Propiedades
 ```php
 /**
@@ -847,9 +844,6 @@ Constructor Phalcon\Assets\Inline\Js
 
 Gestiona colecciones de recursos CSS/JavaScript
 
-@property array      $collections @property bool       $implicitOutput @property array      $options @property TagFactory $tagFactory
-
-
 ## Propiedades
 ```php
 /**
@@ -1063,5 +1057,3 @@ Establece las opciones del gestor
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Establece si el HTML generado debe ser impreso directamente o devuelto
-
-
