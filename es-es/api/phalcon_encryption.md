@@ -978,11 +978,6 @@ Builder
 
 The builder offers
 
-@property CollectionInterface  $claims @property CollectionInterface  $jose @property string               $passphrase @property SignerInterface      $signer
-
-@link https://tools.ietf.org/html/rfc7519
-
-
 ## Propiedades
 ```php
 /**
@@ -1300,9 +1295,6 @@ Verificar una fuente pasada con una carga útil y una contraseña
 
 Abstract helper class for Tokens
 
-@property array $data
-
-
 ## Propiedades
 ```php
 /**
@@ -1437,11 +1429,6 @@ Token Class.
 
 A container for Token related data. It stores the claims, headers, signature and payload. It also calculates and returns the token string.
 
-@property Item      $claims @property Item      $headers @property Signature $signature
-
-@link https://tools.ietf.org/html/rfc7519
-
-
 ## Propiedades
 ```php
 /**
@@ -1508,9 +1495,6 @@ Verify the signature
 | Namespace  | Phalcon\Encryption\Security\JWT | | Uses       | Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Token |
 
 Class Validator
-
-@property int   $timeShift @property Token $token
-
 
 ## Propiedades
 ```php
@@ -1811,5 +1795,3 @@ Genera una cadena aleatoria basada en el número ($base) de caracteres ($alphabe
 Si $n no se especifica, se asume 16. Puede ser más grande en el futuro.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
-
-
