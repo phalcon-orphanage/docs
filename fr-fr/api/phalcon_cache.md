@@ -23,10 +23,7 @@ title: 'Phalcon\Cache'
 
 | Namespace  | Phalcon\Cache | | Uses       | DateInterval, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\InvalidArgumentException, Traversable | | Implements | CacheInterface |
 
-This component offers caching capabilities for your application. Phalcon\Cache implements PSR-16.
-
-@property AdapterInterface $adapter
-
+This component offers caching capabilities for your application.
 
 ## Properties
 ```php
@@ -189,9 +186,6 @@ Stream adapter
 
 Factory to create Cache adapters
 
-@property SerializerFactory $serializerFactory
-
-
 ## Properties
 ```php
 /**
@@ -233,10 +227,7 @@ Returns the available adapters
 
 | Namespace  | Phalcon\Cache | | Uses       | DateInterval, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\InvalidArgumentException | | Extends    | AbstractCache |
 
-This component offers caching capabilities for your application. Phalcon\Cache implements PSR-16.
-
-@property AdapterInterface $adapter
-
+This component offers caching capabilities for your application.
 
 ## Méthodes
 
@@ -303,9 +294,6 @@ Returns the exception class that will be used for exceptions thrown
 | Namespace  | Phalcon\Cache | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Cache, Phalcon\Cache\Exception\Exception, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractConfigFactory | | Extends    | AbstractConfigFactory |
 
 Creates a new Cache class
-
-@property AdapterFactory $adapterFactory;
-
 
 ## Properties
 ```php
@@ -422,4 +410,3 @@ Exceptions thrown in Phalcon\Cache will use this class
 | Namespace  | Phalcon\Cache\Exception | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Cache will use this class
-
