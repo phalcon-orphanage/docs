@@ -71,7 +71,7 @@ Confira os seguintes links para obter instruções sobre como gerar o backtrace:
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing][env] page for more information on how to set up a test environment and how to write tests.
 - Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C generated files directly
-- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2][psr-2] standard
+- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-12][psr-12] standard
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 - More information [here][pr].
 
@@ -108,7 +108,7 @@ Obrigado!
 [building-php]: http://www.phpinternalsbook.com/build_system/building_php.html
 [env]: testing-environment
 [zephir]: https://zephir-lang.com
-[psr-2]: https://www.php-fig.org/psr/
+[psr-12]: https://www.php-fig.org/psr/
 [pr]: new-pull-request
 [nfr]: new-feature-request
 [support]: https://phalcon.io/support
