@@ -114,7 +114,7 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 Añade un componente a la lista ACL
 
-Los nombres de acceso pueden ser una acción particular, por ejemplo buscar, actualizar, eliminar, etc o una lista de ellos
+Access names can be a particular action, by example search, update, delete, etc. or a list of them
 
 
 ```php
@@ -150,7 +150,7 @@ Denegar acceso a un rol en un componente
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-Elimina un acceso de un componente
+Removes access from a component
 
 
 ```php
@@ -333,7 +333,7 @@ protected activeFunction;
 protected activeFunctionCustomArgumentsCount = 0;
 
 /**
- * Returns latest key used to acquire access
+ * Returns the latest key used to acquire access
  *
  * @var string|null
  */
@@ -361,7 +361,7 @@ protected componentsNames;
 protected func;
 
 /**
- * Default action for no arguments is allow
+ * Default action for no arguments is `allow`
  *
  * @var mixed
  */
@@ -396,11 +396,11 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 Añade un componente a la lista ACL
 
-Los nombres de acceso pueden ser una acción particular, por ejemplo buscar, actualizar, eliminar, etc o una lista de ellos
+Access names can be a particular action, by example search, update, delete, etc. or a list of them
 
 Ejemplo:
 ```php
-// Add a component to the the list allowing access to an action
+// Add a component to the list allowing access to an action
 $acl->addComponent(
     new Phalcon\Acl\Component("customers"),
     "search"
@@ -502,7 +502,7 @@ $acl->deny("*", "*", "browse");
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-Elimina un acceso de un componente
+Removes access from a component
 
 
 ```php
@@ -520,7 +520,7 @@ Returns number of additional arguments(excluding role and resource) for active f
 ```php
 public function getActiveKey(): string | null;
 ```
-Returns latest key used to acquire access
+Returns the latest key used to acquire access
 
 
 ```php
@@ -694,7 +694,7 @@ Constantes para adaptadores Phalcon\Acl\Adapter
 ## Constantes
 ```php
 const ALLOW = 1;
-const DENY = 0;
+const DENY  = 0;
 ```
 
 
@@ -805,5 +805,3 @@ Devuelve la descripción del rol
 public function getName(): string;
 ```
 Devuelve el nombre del rol
-
-
