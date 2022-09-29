@@ -38,11 +38,6 @@ title: 'Phalcon\Storage'
 
 Class AbstractAdapter
 
-@package Phalcon\Storage\Adapter
-
-@property mixed               $adapter @property string              $defaultSerializer @property int                 $lifetime @property array               $options @property string              $prefix @property SerializerInterface $serializer @property SerializerFactory   $serializerFactory
-
-
 ## Propiedades
 ```php
 /**
@@ -305,9 +300,6 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 
 Adaptador Apcu
 
-@property array $options
-
-
 ## Propiedades
 ```php
 /**
@@ -501,9 +493,6 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 
 Adaptador de Memoria
 
-@property array $data @property array $options
-
-
 ## Propiedades
 ```php
 /**
@@ -585,9 +574,6 @@ protected function doGet( string $key );
 
 Adaptador Redis
 
-@property array $options
-
-
 ## Propiedades
 ```php
 /**
@@ -668,9 +654,6 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, FilesystemIterator, Iterator, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Traits\StorageErrorHandlerTrait, Phalcon\Support\Exception, RecursiveDirectoryIterator, RecursiveIteratorIterator | | Extends    | AbstractAdapter |
 
 Adaptador de Flujo
-
-@property string $storageDir @property array  $options
-
 
 ## Propiedades
 ```php
