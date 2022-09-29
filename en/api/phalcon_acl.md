@@ -120,7 +120,7 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 Adds a component to the ACL list
 
 Access names can be a particular action, by example
-search, update, delete, etc or a list of them
+search, update, delete, etc. or a list of them
 
 
 ```php
@@ -157,7 +157,7 @@ Deny access to a role on a component
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-Removes an access from a component
+Removes access from a component
 
 
 ```php
@@ -349,7 +349,7 @@ protected activeFunction;
 protected activeFunctionCustomArgumentsCount = 0;
 
 /**
- * Returns latest key used to acquire access
+ * Returns the latest key used to acquire access
  *
  * @var string|null
  */
@@ -377,7 +377,7 @@ protected componentsNames;
 protected func;
 
 /**
- * Default action for no arguments is allow
+ * Default action for no arguments is `allow`
  *
  * @var mixed
  */
@@ -413,11 +413,11 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 Adds a component to the ACL list
 
 Access names can be a particular action, by example
-search, update, delete, etc or a list of them
+search, update, delete, etc. or a list of them
 
 Example:
 ```php
-// Add a component to the the list allowing access to an action
+// Add a component to the list allowing access to an action
 $acl->addComponent(
     new Phalcon\Acl\Component("customers"),
     "search"
@@ -519,7 +519,7 @@ $acl->deny("*", "*", "browse");
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-Removes an access from a component
+Removes access from a component
 
 
 ```php
@@ -537,7 +537,7 @@ Returns number of additional arguments(excluding role and resource) for active f
 ```php
 public function getActiveKey(): string | null;
 ```
-Returns latest key used to acquire access
+Returns the latest key used to acquire access
 
 
 ```php
@@ -721,7 +721,7 @@ Constants for Phalcon\Acl\Adapter adapters
 ## Constants
 ```php
 const ALLOW = 1;
-const DENY = 0;
+const DENY  = 0;
 ```
 
 
@@ -838,5 +838,3 @@ Returns role description
 public function getName(): string;
 ```
 Returns the role name
-
-

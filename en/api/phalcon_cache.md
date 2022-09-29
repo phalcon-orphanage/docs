@@ -26,10 +26,6 @@ title: 'Phalcon\Cache'
 | Implements | CacheInterface |
 
 This component offers caching capabilities for your application.
-Phalcon\Cache implements PSR-16.
-
-@property AdapterInterface $adapter
-
 
 ## Properties
 ```php
@@ -212,9 +208,6 @@ Stream adapter
 
 Factory to create Cache adapters
 
-@property SerializerFactory $serializerFactory
-
-
 ## Properties
 ```php
 /**
@@ -261,10 +254,6 @@ Returns the available adapters
 | Extends    | AbstractCache |
 
 This component offers caching capabilities for your application.
-Phalcon\Cache implements PSR-16.
-
-@property AdapterInterface $adapter
-
 
 ## Methods
 
@@ -334,9 +323,6 @@ Returns the exception class that will be used for exceptions thrown
 | Extends    | AbstractConfigFactory |
 
 Creates a new Cache class
-
-@property AdapterFactory $adapterFactory;
-
 
 ## Properties
 ```php
@@ -457,4 +443,3 @@ Exceptions thrown in Phalcon\Cache will use this class
 | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Cache will use this class
-

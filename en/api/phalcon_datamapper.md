@@ -36,11 +36,6 @@ title: 'Phalcon\DataMapper'
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
-@property array             $arguments
-@property PDO               $pdo
-@property ProfilerInterface $profiler
-
-
 ## Properties
 ```php
 /**
@@ -91,10 +86,6 @@ Disconnects from the database.
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
-
-@property PDO               $pdo
-@property ProfilerInterface $profiler
-
 
 ## Properties
 ```php
@@ -377,12 +368,6 @@ Bind a value using the proper PDO::PARAM_* type.
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
-
-@property array             $args
-@property PDO               $pdo
-@property ProfilerInterface $profiler
-@property array             $quote
-
 
 ## Methods
 
@@ -671,11 +656,6 @@ Set a database connection attribute
 
 Manages Connection instances for default, read, and write connections.
 
-@property callable $master
-@property array    $read
-@property array    $write
-
-
 ## Properties
 ```php
 /**
@@ -862,9 +842,6 @@ Base Exception class
 
 A memory-based logger.
 
-@property array $messages
-
-
 ## Properties
 ```php
 /**
@@ -971,13 +948,6 @@ public function warning( string $message, array $context = [] ): void;
 | Implements | ProfilerInterface |
 
 Sends query profiles to a logger.
-
-@property bool            $active
-@property array           $context
-@property string          $logFormat
-@property string          $logLevel
-@property LoggerInterface $logger
-
 
 ## Properties
 ```php
@@ -1265,11 +1235,6 @@ Processes a value (array or string) and merges it with the store
 
 Class AbstractQuery
 
-@property Bind       $bind
-@property Connection $connection
-@property array      $store
-
-
 ## Properties
 ```php
 /**
@@ -1378,10 +1343,6 @@ Indents a collection
 | Namespace  | Phalcon\DataMapper\Query |
 
 Class Bind
-
-@property int   $inlineCount
-@property array $store
-
 
 ## Properties
 ```php
@@ -1576,9 +1537,6 @@ Sets a column = value condition
 
 Class QueryFactory
 
-@property string $class
-
-
 ## Properties
 ```php
 /**
@@ -1637,21 +1595,6 @@ Create a new Update object
 | Extends    | AbstractConditions |
 
 Class Select
-
-@property string $asAlias
-@property bool   $forUpdate
-
-@method int    fetchAffected()
-@method array  fetchAll()
-@method array  fetchAssoc()
-@method array  fetchColumn(int $column = 0)
-@method array  fetchGroup(int $flags = PDO::FETCH_ASSOC)
-@method object fetchObject(string $class = 'stdClass', array $arguments = [])
-@method array  fetchObjects(string $class = 'stdClass', array $arguments = [])
-@method array  fetchOne()
-@method array  fetchPairs()
-@method mixed  fetchValue()
-
 
 ## Constants
 ```php
@@ -1865,5 +1808,3 @@ Adds the `RETURNING` clause
 public function set( string $column, mixed $value = null ): Update;
 ```
 Sets a column = value condition
-
-

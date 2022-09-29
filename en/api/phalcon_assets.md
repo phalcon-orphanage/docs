@@ -368,21 +368,6 @@ Sets the asset's type.
 
 Collection of asset objects
 
-@property array  $assets
-@property array  $attributes
-@property bool   $autoVersion
-@property array  $codes
-@property array  $filters
-@property bool   $join
-@property bool   $isLocal
-@property string $prefix
-@property string $sourcePath
-@property bool   $targetIsLocal
-@property string $targetPath
-@property string $targetUri
-@property string $version
-
-
 ## Properties
 ```php
 /**
@@ -936,12 +921,6 @@ Phalcon\Assets\Inline\Js constructor
 
 Manages collections of CSS/JavaScript assets
 
-@property array      $collections
-@property bool       $implicitOutput
-@property array      $options
-@property TagFactory $tagFactory
-
-
 ## Properties
 ```php
 /**
@@ -1155,5 +1134,3 @@ Sets the manager options
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Sets if the HTML generated must be directly printed or returned
-
-

@@ -358,9 +358,6 @@ $config = new \Phalcon\Config\Config(
 );
 ```
 
-@property string $pathDelimiter
-
-
 ## Constants
 ```php
 const DEFAULT_PATH_DELIMITER = .;
@@ -555,4 +552,3 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Config will use this class
-

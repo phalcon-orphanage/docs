@@ -40,17 +40,6 @@ title: 'Phalcon\Storage'
 
 Class AbstractAdapter
 
-@package Phalcon\Storage\Adapter
-
-@property mixed               $adapter
-@property string              $defaultSerializer
-@property int                 $lifetime
-@property array               $options
-@property string              $prefix
-@property SerializerInterface $serializer
-@property SerializerFactory   $serializerFactory
-
-
 ## Properties
 ```php
 /**
@@ -326,9 +315,6 @@ from the adapter.
 
 Apcu adapter
 
-@property array $options
-
-
 ## Properties
 ```php
 /**
@@ -549,10 +535,6 @@ from the adapter.
 
 Memory adapter
 
-@property array $data
-@property array $options
-
-
 ## Properties
 ```php
 /**
@@ -640,9 +622,6 @@ protected function doGet( string $key );
 | Extends    | AbstractAdapter |
 
 Redis adapter
-
-@property array $options
-
 
 ## Properties
 ```php
@@ -732,10 +711,6 @@ from the adapter.
 | Extends    | AbstractAdapter |
 
 Stream adapter
-
-@property string $storageDir
-@property array  $options
-
 
 ## Properties
 ```php

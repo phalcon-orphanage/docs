@@ -50,7 +50,7 @@ There are some prerequisites for the Vökuró to run. You will need to have PHP 
 - xml
 - xmlwriter
 
-Phalcon needs to be installed. Head over to the [installation](installation) page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr][psr] GitHub page. 
+Phalcon needs to be installed. Head over to the [installation](installation) page if you need help with installing Phalcon.  
 
 Finally, you will also need to ensure that you have updated the composer packages (see section below).
 
