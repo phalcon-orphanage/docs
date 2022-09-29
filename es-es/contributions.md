@@ -71,7 +71,7 @@ Por favor consulte los siguientes enlaces para obtener instrucciones sobre cómo
 - No se aceptan *pull requests* a la rama `master`. Por favor haga un *fork* del repositorio y cree su rama (*branch*) de la rama "fuente" necesaria, por ejemplo `4.0.x`. Si es el caso, por favor haga un *rebase* de su rama antes de enviar el *pull request*. En caso de que se presenten conflictos, le pediremos que por favor vuelva a hacer el *rebase* de su rama.
 - Agregar pruebas al *pull request* o ajustar las existentes. Es muy importante hacerlo porque básicamente es la justificación del *pull request*. Please check our [testing][env] page for more information on how to set up a test environment and how to write tests.
 - Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C generated files directly
-- Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. All tests (PHP code), follow the [PSR-2][psr-2] standard
+- Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. All tests (PHP code), follow the [PSR-12][psr-12] standard
 - Suprimir cualquier cambio hecho a los archivos `ext/kernel`, `*.zep.c` y `*.zep.h` antes de enviar su *pull request*
 - More information [here][pr].
 
@@ -108,7 +108,7 @@ If you have any changes or new features in mind, please fill an [NFR][nfr].
 [building-php]: http://www.phpinternalsbook.com/build_system/building_php.html
 [env]: testing-environment
 [zephir]: https://zephir-lang.com
-[psr-2]: https://www.php-fig.org/psr/
+[psr-12]: https://www.php-fig.org/psr/
 [pr]: new-pull-request
 [nfr]: new-feature-request
 [support]: https://phalcon.io/support
