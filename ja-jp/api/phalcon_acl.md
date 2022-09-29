@@ -114,7 +114,7 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 アクセス制御リストにコンポーネントを追加します。
 
-アクセス名は特定のアクションで使用します。例えば search(検索), update(更新), delete(削除)などで、またはこれらのリストの要素です。
+Access names can be a particular action, by example search, update, delete, etc. or a list of them
 
 
 ```php
@@ -150,7 +150,7 @@ public function deny( string $roleName, string $componentName, mixed $access, mi
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-コンポーネントからのアクセスを削除します
+Removes access from a component
 
 
 ```php
@@ -333,7 +333,7 @@ protected activeFunction;
 protected activeFunctionCustomArgumentsCount = 0;
 
 /**
- * Returns latest key used to acquire access
+ * Returns the latest key used to acquire access
  *
  * @var string|null
  */
@@ -361,7 +361,7 @@ protected componentsNames;
 protected func;
 
 /**
- * Default action for no arguments is allow
+ * Default action for no arguments is `allow`
  *
  * @var mixed
  */
@@ -396,11 +396,11 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 アクセス制御リストにコンポーネントを追加します。
 
-アクセス名は特定のアクションで使用します。例えば search(検索), update(更新), delete(削除)などで、またはこれらのリストの要素です。
+Access names can be a particular action, by example search, update, delete, etc. or a list of them
 
 例:
 ```php
-// Add a component to the the list allowing access to an action
+// Add a component to the list allowing access to an action
 $acl->addComponent(
     new Phalcon\Acl\Component("customers"),
     "search"
@@ -502,7 +502,7 @@ $acl->deny("*", "*", "browse");
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-コンポーネントからのアクセスを削除します
+Removes access from a component
 
 
 ```php
@@ -520,7 +520,7 @@ Returns number of additional arguments(excluding role and resource) for active f
 ```php
 public function getActiveKey(): string | null;
 ```
-Returns latest key used to acquire access
+Returns the latest key used to acquire access
 
 
 ```php
@@ -694,7 +694,7 @@ Phalcon\Acl\Adapter アダプタの定数
 ## 定数
 ```php
 const ALLOW = 1;
-const DENY = 0;
+const DENY  = 0;
 ```
 
 
@@ -805,5 +805,3 @@ public function getDescription(): string;
 public function getName(): string;
 ```
 ロール名を返します。
-
-
