@@ -33,9 +33,6 @@ title: 'Phalcon\DataMapper'
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
 
-@property array             $arguments @property PDO               $pdo @property ProfilerInterface $profiler
-
-
 ## Властивості
 ```php
 /**
@@ -82,9 +79,6 @@ Disconnects from the database.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Implements | ConnectionInterface |
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
-
-@property PDO               $pdo @property ProfilerInterface $profiler
-
 
 ## Властивості
 ```php
@@ -333,9 +327,6 @@ Bind a value using the proper PDO::PARAM_* type.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | PdoInterface |
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
-
-@property array             $args @property PDO               $pdo @property ProfilerInterface $profiler @property array             $quote
-
 
 ## Методи
 
@@ -589,9 +580,6 @@ Set a database connection attribute
 
 Manages Connection instances for default, read, and write connections.
 
-@property callable $master @property array    $read @property array    $write
-
-
 ## Властивості
 ```php
 /**
@@ -763,9 +751,6 @@ Base Exception class
 
 A memory-based logger.
 
-@property array $messages
-
-
 ## Властивості
 ```php
 /**
@@ -856,9 +841,6 @@ public function warning( string $message, array $context = [] ): void;
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface | | Implements | ProfilerInterface |
 
 Sends query profiles to a logger.
-
-@property bool            $active @property array           $context @property string          $logFormat @property string          $logLevel @property LoggerInterface $logger
-
 
 ## Властивості
 ```php
@@ -1141,9 +1123,6 @@ Processes a value (array or string) and merges it with the store
 
 Class AbstractQuery
 
-@property Bind       $bind @property Connection $connection @property array      $store
-
-
 ## Властивості
 ```php
 /**
@@ -1252,9 +1231,6 @@ Indents a collection
 | Namespace  | Phalcon\DataMapper\Query |
 
 Class Bind
-
-@property int   $inlineCount @property array $store
-
 
 ## Властивості
 ```php
@@ -1436,9 +1412,6 @@ Sets a column = value condition
 
 Class QueryFactory
 
-@property string $class
-
-
 ## Властивості
 ```php
 /**
@@ -1495,11 +1468,6 @@ Create a new Update object
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException | | Extends    | AbstractConditions |
 
 Class Select
-
-@property string $asAlias @property bool   $forUpdate
-
-@method int    fetchAffected() @method array  fetchAll() @method array  fetchAssoc() @method array  fetchColumn(int $column = 0) @method array  fetchGroup(int $flags = PDO::FETCH_ASSOC) @method object fetchObject(string $class = 'stdClass', array $arguments = []) @method array  fetchObjects(string $class = 'stdClass', array $arguments = []) @method array  fetchOne() @method array  fetchPairs() @method mixed  fetchValue()
-
 
 ## Constants
 ```php
@@ -1706,5 +1674,3 @@ Adds the `RETURNING` clause
 public function set( string $column, mixed $value = null ): Update;
 ```
 Sets a column = value condition
-
-

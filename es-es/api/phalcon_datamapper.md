@@ -33,9 +33,6 @@ title: 'Phalcon\DataMapper'
 
 Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
 
-@property array             $arguments @property PDO               $pdo @property ProfilerInterface $profiler
-
-
 ## Propiedades
 ```php
 /**
@@ -82,9 +79,6 @@ Desconecta de la base de datos.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Implements | ConnectionInterface |
 
 Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
-
-@property PDO               $pdo @property ProfilerInterface $profiler
-
 
 ## Propiedades
 ```php
@@ -333,9 +327,6 @@ Vincula un valor usando el tipo PDO::PARAM_* apropiado.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | PdoInterface |
 
 Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
-
-@property array             $args @property PDO               $pdo @property ProfilerInterface $profiler @property array             $quote
-
 
 ## Métodos
 
@@ -589,9 +580,6 @@ Establece un atributo de conexión de base de datos
 
 Gestiona instancias de conexión predeterminadas, de lectura y escritura.
 
-@property callable $master @property array    $read @property array    $write
-
-
 ## Propiedades
 ```php
 /**
@@ -763,9 +751,6 @@ Clase de Excepción Base
 
 A memory-based logger.
 
-@property array $messages
-
-
 ## Propiedades
 ```php
 /**
@@ -856,9 +841,6 @@ public function warning( string $message, array $context = [] ): void;
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface | | Implements | ProfilerInterface |
 
 Envía los perfiles de consulta a un registrador.
-
-@property bool            $active @property array           $context @property string          $logFormat @property string          $logLevel @property LoggerInterface $logger
-
 
 ## Propiedades
 ```php
@@ -1141,9 +1123,6 @@ Procesa un valor (vector o cadena) y lo combina con el almacén
 
 Clase AbstractQuery
 
-@property Bind       $bind @property Connection $connection @property array      $store
-
-
 ## Propiedades
 ```php
 /**
@@ -1252,9 +1231,6 @@ Sangrar una colección
 | Namespace  | Phalcon\DataMapper\Query |
 
 Clase Bind
-
-@property int   $inlineCount @property array $store
-
 
 ## Propiedades
 ```php
@@ -1436,9 +1412,6 @@ Establece una condición columna = valor
 
 Clase QueryFactory
 
-@property string $class
-
-
 ## Propiedades
 ```php
 /**
@@ -1495,11 +1468,6 @@ Crea un nuevo objeto Update
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException | | Extends    | AbstractConditions |
 
 Clase Select
-
-@property string $asAlias @property bool   $forUpdate
-
-@method int    fetchAffected() @method array  fetchAll() @method array  fetchAssoc() @method array  fetchColumn(int $column = 0) @method array  fetchGroup(int $flags = PDO::FETCH_ASSOC) @method object fetchObject(string $class = 'stdClass', array $arguments = []) @method array  fetchObjects(string $class = 'stdClass', array $arguments = []) @method array  fetchOne() @method array  fetchPairs() @method mixed  fetchValue()
-
 
 ## Constantes
 ```php
@@ -1706,5 +1674,3 @@ Añade la cláusula `RETURNING`
 public function set( string $column, mixed $value = null ): Update;
 ```
 Establece una condición columna = valor
-
-

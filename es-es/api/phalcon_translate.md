@@ -23,11 +23,6 @@ title: 'Phalcon\Translate'
 
 Class AbstractAdapter
 
-@package Phalcon\Translate\Adapter
-
-@property string              $defaultInterpolator @property InterpolatorFactory $interpolatorFactory
-
-
 ## Propiedades
 ```php
 /**
@@ -135,11 +130,6 @@ Devuelve la cadena de traducción de la clave dada
 
 Class Csv
 
-@package Phalcon\Translate\Adapter
-
-@property array $translate
-
-
 ## Propiedades
 ```php
 /**
@@ -211,9 +201,6 @@ $adapter = new Gettext(
 ```
 
 Permite traducir usando gettext
-
-@property int          $category @property string       $defaultDomain @property string|array $directory @property string|false $locale
-
 
 ## Propiedades
 ```php
@@ -371,11 +358,6 @@ Validador para el constructor
 Class NativeArray
 
 Defines translation lists using PHP arrays
-
-@package Phalcon\Translate\Adapter
-
-@property array $translate @property bool  $triggerError
-
 
 ## Propiedades
 ```php
@@ -553,11 +535,6 @@ Devuelve los adaptadores disponibles
 
 Class TranslateFactory
 
-@package Phalcon\Translate
-
-@property InterpolatorFactory $interpolator
-
-
 ## Propiedades
 ```php
 /**
@@ -595,5 +572,3 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Devuelve los adaptadores disponibles
-
-

@@ -54,7 +54,7 @@ git clone https://github.com/phalcon/vokuro
 - xml
 - xmlwriter
 
-Phalcon повинен бути встановлений. Перейдіть на сторінку [встановлення](installation), якщо вам потрібна допомога з встановленням Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr][psr] GitHub page.
+Phalcon повинен бути встановлений. Перейдіть на сторінку [встановлення](installation), якщо вам потрібна допомога з встановленням Phalcon.
 
 Нарешті, вам також потрібно буде переконатися, що ви оновили пакети композера (див. розділ нижче).
 
@@ -1551,5 +1551,4 @@ Vökuró це приклад додатку, який ми використов�
 [nanobox-guides]: https://guides.nanobox.io/php/
 [phinx]: https://github.com/cakephp/phinx
 [phinx]: https://github.com/cakephp/phinx
-[psr]: https://github.com/jbboehr/php-psr
 [swiftmailer]: https://swiftmailer.symfony.com

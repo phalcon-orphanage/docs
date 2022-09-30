@@ -90,11 +90,6 @@ Las excepciones lanzadas en Phalcon\Filter usarán esta clase
 
 Carga perezosamente, almacena y expone objetos saneadores
 
-@method absint(mixed $input): int @method alnum(mixed $input): string @method alpha(mixed $input): string @method bool(mixed $input): bool @method email(string $input): string @method float(mixed $input): float @method int(string $input): int @method lower(string $input): string @method lowerfirst(string $input): string @method regex(mixed $input, mixed $pattern, mixed $replace): mixed @method remove(mixed $input, mixed $replace): mixed @method replace(mixed $input, mixed $source, mixed $target): mixed @method special(string $input): string @method specialfull(string $input): string @method string(string $input): string @method stringlegacy(mixed $input): string @method striptags(string $input): string @method trim(string $input): string @method upper(string $input): string @method upperFirst(string $input): string @method upperWords(string $input): string|null @method url(string $input): string|null
-
-@property array $mapper @property array $services
-
-
 ## Constantes
 ```php
 const FILTER_ABSINT = absint;
@@ -3494,5 +3489,3 @@ public function setTemplates( array $templates ): ValidatorInterface;
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 Ejecuta la validación
-
-

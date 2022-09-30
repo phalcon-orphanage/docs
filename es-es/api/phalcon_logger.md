@@ -31,9 +31,6 @@ Abstract Logger Class
 
 Abstract logger class, providing common functionality. A formatter interface is available as well as an adapter one. Adapters can be created easily using the built in AdapterFactory. A LoggerFactory is also available that allows developers to create new instances of the Logger or load them from config files (see Phalcon\Config\Config object).
 
-@property AdapterInterface[] $adapters @property array              $excluded @property int                $logLevel @property string             $name @property string             $timezone
-
-
 ## Constantes
 ```php
 const ALERT = 2;
@@ -171,9 +168,6 @@ Devuelve un vector de niveles de registro con conversión de entero a cadena
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Formatter\Line, Phalcon\Logger\Item | | Implements | AdapterInterface |
 
 Class AbstractAdapter
-
-@property string             $defaultFormatter @property FormatterInterface $formatter @property bool               $inTransaction @property array              $queue
-
 
 ## Propiedades
 ```php
@@ -467,9 +461,6 @@ protected function phpFopen( string $filename, string $mode );
 
 Class Syslog
 
-@property string $defaultFormatter @property int    $facility @property string $name @property bool   $opened @property int    $option
-
-
 ## Propiedades
 ```php
 /**
@@ -738,9 +729,6 @@ Set the format applied to each message
 Phalcon\Logger\Item
 
 Representa cada objeto en una transacción de registro
-
-@property array             $context @property string            $message @property int               $level @property string            $levelName @property DateTimeImmutable $datetime
-
 
 ## Propiedades
 ```php
@@ -1023,5 +1011,3 @@ Eventos normales pero significativos.
 public function warning( string $message, array $context = [] ): void;
 ```
 Eventos normales pero significativos.
-
-

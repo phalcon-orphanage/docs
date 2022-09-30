@@ -54,7 +54,7 @@ There are some prerequisites for the Vökuró to run. You will need to have PHP 
 - xml
 - xmlwriter
 
-Phalcon needs to be installed. Head over to the [installation](installation) page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr][psr] GitHub page.
+Phalcon needs to be installed. Head over to the [installation](installation) page if you need help with installing Phalcon.
 
 Finally, you will also need to ensure that you have updated the composer packages (see section below).
 
@@ -1551,5 +1551,4 @@ Vökuró is a sample application that we use to demonstrate some of the features
 [nanobox-guides]: https://guides.nanobox.io/php/
 [phinx]: https://github.com/cakephp/phinx
 [phinx]: https://github.com/cakephp/phinx
-[psr]: https://github.com/jbboehr/php-psr
 [swiftmailer]: https://swiftmailer.symfony.com

@@ -529,9 +529,6 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 | Namespace  | Phalcon\Html\Helper | | Uses       | Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Exception |
 
-@property string           $delimiter @property EscaperInterface $escaper @property string           $indent @property int              $indentLevel
-
-
 ## Properties
 ```php
 /**
@@ -673,9 +670,6 @@ Returns the tag name.
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Html/Helper/AbstractSeries.zep)
 
 | Namespace  | Phalcon\Html\Helper | | Extends    | AbstractHelper |
-
-@property array $attributes @property array $store
-
 
 ## Properties
 ```php
@@ -935,9 +929,6 @@ Produce a <img /> tag.
 
 Class AbstractInput
 
-@property array  $attributes @property string $type @property string $value
-
-
 ## Properties
 ```php
 /**
@@ -979,9 +970,6 @@ Sets the value of the element
 | Namespace  | Phalcon\Html\Helper\Input | | Uses       | Phalcon\Html\Escaper\EscaperInterface | | Extends    | AbstractInput |
 
 Class Checkbox
-
-@property array $label
-
 
 ## Properties
 ```php
@@ -1285,9 +1273,6 @@ protected type = search;
 | Namespace  | Phalcon\Html\Helper\Input | | Uses       | Phalcon\Html\Helper\AbstractList | | Extends    | AbstractList |
 
 Class Select
-
-@property string $elementTag @property bool   $inOptGroup @property string $selected
-
 
 ## Properties
 ```php
@@ -1668,9 +1653,6 @@ protected function getTag(): string;
 
 Class Title
 
-@property array  $append @property string $delimiter @property string $indent @property array  $prepend @property string $title @property string $separator
-
-
 ## Properties
 ```php
 /**
@@ -1765,9 +1747,6 @@ protected function getTag(): string;
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Html/Link/AbstractLink.zep)
 
 | Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Support\Collection |
-
-@property array  $attributes @property string $href @property array  $rels @property bool   $templated
-
 
 ## Properties
 ```php
@@ -1870,9 +1849,6 @@ Determines if a href is a templated link or not.
 
 | Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\LinkInterface |
 
-@property array $links
-
-
 ## Properties
 ```php
 /**
@@ -1938,9 +1914,6 @@ Returns the object hash key
 
 Class Phalcon\Http\Link\EvolvableLink
 
-@property array  attributes @property string href @property array  rels @property bool   templated
-
-
 ## メソッド
 
 ```php
@@ -1990,9 +1963,6 @@ If the specified rel is not present, this method MUST return normally without er
 | Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface, Phalcon\Html\Link\Interfaces\LinkInterface | | Extends    | LinkProvider | | Implements | EvolvableLinkProviderInterface |
 
 Class Phalcon\Http\Link\LinkProvider
-
-@property LinkInterface[] links
-
 
 ## メソッド
 
@@ -2173,9 +2143,6 @@ Returns an array of LinkInterface objects that have a specific relationship.
 
 Class Phalcon\Http\Link\Link
 
-@property array  attributes @property string href @property array  rels @property bool   templated
-
-
 ## メソッド
 
 ```php
@@ -2218,9 +2185,6 @@ Returns whether or not this is a templated link.
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Html/Link/LinkProvider.zep)
 
 | Namespace  | Phalcon\Html\Link | | Uses       | Phalcon\Html\Link\Interfaces\LinkInterface, Phalcon\Html\Link\Interfaces\LinkProviderInterface | | Extends    | AbstractLinkProvider | | Implements | LinkProviderInterface |
-
-@property LinkInterface[] links
-
 
 ## メソッド
 
@@ -2291,11 +2255,6 @@ ServiceLocator implementation for Tag helpers.
 Services are registered using the constructor using a key-value pair. The key is the name of the tag helper, while the value is a callable that returns the object.
 
 The class implements `__call()` to allow calling helper objects as methods.
-
-@property EscaperInterface $escaper @property array            $services
-
-@method string a(string $href, string $text, array $attributes = [], bool $raw = false) @method string base(string $href, array $attributes = []) @method string body(array $attributes = []) @method string button(string $text, array $attributes = [], bool $raw = false) @method string close(string $tag, bool $raw = false) @method string doctype(int $flag, string $delimiter) @method string element(string $tag, string $text, array $attributes = [], bool $raw = false) @method string form(array $attributes = []) @method string img(string $src, array $attributes = []) @method string inputCheckbox(string $name, string $value = null, array $attributes = []) @method string inputColor(string $name, string $value = null, array $attributes = []) @method string inputDate(string $name, string $value = null, array $attributes = []) @method string inputDateTime(string $name, string $value = null, array $attributes = []) @method string inputDateTimeLocal(string $name, string $value = null, array $attributes = []) @method string inputEmail(string $name, string $value = null, array $attributes = []) @method string inputFile(string $name, string $value = null, array $attributes = []) @method string inputHidden(string $name, string $value = null, array $attributes = []) @method string inputImage(string $name, string $value = null, array $attributes = []) @method string inputInput(string $name, string $value = null, array $attributes = []) @method string inputMonth(string $name, string $value = null, array $attributes = []) @method string inputNumeric(string $name, string $value = null, array $attributes = []) @method string inputPassword(string $name, string $value = null, array $attributes = []) @method string inputRadio(string $name, string $value = null, array $attributes = []) @method string inputRange(string $name, string $value = null, array $attributes = []) @method string inputSearch(string $name, string $value = null, array $attributes = []) @method string inputSelect(string $name, string $value = null, array $attributes = []) @method string inputSubmit(string $name, string $value = null, array $attributes = []) @method string inputTel(string $name, string $value = null, array $attributes = []) @method string inputText(string $name, string $value = null, array $attributes = []) @method string inputTextarea(string $name, string $value = null, array $attributes = []) @method string inputTime(string $name, string $value = null, array $attributes = []) @method string inputUrl(string $name, string $value = null, array $attributes = []) @method string inputWeek(string $name, string $value = null, array $attributes = []) @method string label(string $label, array $attributes = [], bool $raw = false) @method string link(string $indent = '    ', string $delimiter = PHP_EOL) @method string meta(string $indent = '    ', string $delimiter = PHP_EOL) @method string ol(string $text, array $attributes = [], bool $raw = false) @method string script(string $indent = '    ', string $delimiter = PHP_EOL) @method string style(string $indent = '    ', string $delimiter = PHP_EOL) @method string title(string $indent = '    ', string $delimiter = PHP_EOL) @method string ul(string $text, array $attributes = [], bool $raw = false)
-
 
 ## Properties
 ```php
