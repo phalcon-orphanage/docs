@@ -528,7 +528,7 @@ Sanitizes a value to string
 ## Metody
 
 ```php
-public function __invoke( string $input ): string;
+public function __invoke( string $input, int $flags = int ): string;
 ```
 
 
