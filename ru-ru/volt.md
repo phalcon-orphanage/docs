@@ -1165,7 +1165,7 @@ Volt is highly integrated with [Phalcon\Html\TagFactory](html-tagfactory), so it
 {%- raw -%}
 {{ script().add('js/jquery.js') }}
 
-{{ form(['action' => 'products/save', 'method': 'post']) }}
+{{ form(['action' : 'products/save', 'method': 'post']) }}
 
     <label for='name'>Name</label>
     {{ inputText('name', null, ['size': 32]) }}
@@ -1186,10 +1186,10 @@ The following PHP is generated:
 ```php
 <?= $this->tag->script("\t", "\n\n") ?>
 
-<?= $this->tag->form(['products/save', 'method' => 'post']); ?>
+<?= $this->tag->form(['products/save', 'method' : 'post']); ?>
 
     <label for='name'>Name</label>
-    <?= $this->tag->inputText(['name', 'size' => 32]); ?>
+    <?= $this->tag->inputText(['name', 'size' : 32]); ?>
 
     <label for='type'>Type</label>
     <?php foreach ($productTypes as $productType) { ?>
