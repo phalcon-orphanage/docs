@@ -419,6 +419,12 @@ public function url( string $input ): string;
 Escapa una URL. Internamente usa rawurlencode
 
 
+```php
+protected function phpHtmlSpecialChars( string $input ): string;
+```
+Proxy method for testing
+
+
 
 
 <h1 id="html-escaper-escaperinterface">Interface Phalcon\Html\Escaper\EscaperInterface</h1>
