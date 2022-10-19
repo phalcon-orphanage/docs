@@ -511,7 +511,7 @@ Valida la audiencia. If it is not included in the token's `aud`, a [Phalcon\Encr
 ```php
 public function validateExpiration(int $timestamp): Validator
 ```
-Valida el tiempo de expiración. If the `exp` value stored in the token is less than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Valida el tiempo de expiración. If the `exp` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
 ```php
 public function validateId(string $id): Validator
