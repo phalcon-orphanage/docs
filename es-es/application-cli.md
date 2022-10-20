@@ -44,7 +44,7 @@ use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp' => 'src/',
     ]
@@ -95,7 +95,7 @@ Primero necesitamos crear todos los servicios necesarios para nuestra aplicació
 **Loader**
 ```php
 $loader = new Loader();
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp' => 'src/',
     ]
@@ -435,7 +435,7 @@ use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp' => 'src/',
     ]
