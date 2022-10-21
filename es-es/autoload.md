@@ -32,7 +32,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -58,7 +58,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -79,7 +79,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -131,7 +131,7 @@ To avoid most of these kind of attacks, [Phalcon\Autoload\Loader][loader] remove
 ## Espacios de nombres
 Una forma muy popular de organizar su aplicación es con directorios, cada uno representando un espacio de nombres en particular. [Phalcon\Autoload\Loader][loader] can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
 
-El método `registerNamespaces()` acepta un vector, donde las claves son los espacios de nombres y los valores son los directorios actuales en el sistema de ficheros. El separador de espacio de nombres se sustituirá por el separador de directorio cuando el cargador intente encontrar las clases.
+The `setNamespaces()` method accepts an array, where keys are the namespaces and values are the actual directories in the file system. El separador de espacio de nombres se sustituirá por el separador de directorio cuando el cargador intente encontrar las clases.
 
 ```php
 <?php
@@ -140,7 +140,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'             => 'app/library',
        'MyApp\Controllers' => 'app/controllers',
@@ -167,11 +167,12 @@ que tiene un espacio de nombres de:
 MyApp\Components
 ```
 
-entonces el cargador, definido anteriormente, no necesita saber la ubicación del espacio de nombres `MyApp\Components`, o tenerlo definido en la declaración `registerNamespaces()`.
+then the loader, as defined above, does not need to know about the `MyApp\Components` namespace location, or have it defined in the `
+()` declaration.
 
 If the component referenced in the code is `MyApp\Components\Mail`, it will assume that it is a subdirectory of the root namespace. Sin embargo, ya que especificamos una ubicación diferente para los espacios de nombres `MyApp\Controllers` y `MyApp\Models`, el cargador buscará esos espacios de nombres en los directorios especificados.
 
-El método `registerNamespaces()` también acepta un segundo parámetro `merge`. By default, it is `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerNamespaces()` para que las definiciones de espacio de nombres se unan.
+The `setNamespaces()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setNamespaces()` so that the namespace definitions are merged.
 
 ```php
 <?php
@@ -180,13 +181,13 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'             => 'app/library',
     ]
 );
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp\Controllers' => 'app/controllers',
        'MyApp\Models'      => 'app/models',
@@ -197,7 +198,7 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-El ejemplo anterior une la segunda declaración de `registerNamespaces()` con la anterior.
+The above example merges the second declaration of `setNamespaces()` with the previous one.
 
 Si necesita comprobar qué espacios de nombres están registrados en el autocargador, puede usar el *getter* `getNamespaces()`, que devuelve el vector de los espacios de nombres registrados. Para el ejemplo anterior, `getNamespaces()` devuelve:
 
@@ -210,11 +211,11 @@ Si necesita comprobar qué espacios de nombres están registrados en el autocarg
 ```
 
 ## Clases
-Another way to let [Phalcon\Autoload\Loader][loader] know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
+Another way to let [Phalcon\Autoload\Loader][loader] know where your components/classes are located, so that the autoloader can load them properly, is by using `setClasses()`.
 
 El método acepta un vector, donde la clave es la clase con el espacio de nombres y el valor es la ubicación del fichero que contiene la clase. Como era de esperar, esta es la manera más rápida de autocargar una clase, ya que el autocargador no necesita escanear o sacar estadísticas de ficheros para encontrar las referencias de los ficheros.
 
-Sin embargo, usar este método puede dificultar el mantenimiento de su aplicación. Cuanto más crece su aplicación, más ficheros se añaden, lo más fácil es llegar a cometer un error al mantener la lista de ficheros usados en `registerClasses()`
+Sin embargo, usar este método puede dificultar el mantenimiento de su aplicación. The more your application grows, the more files are added, the easier it becomes to make a mistake while maintaining the list of files used in `setClasses()`
 
 ```php
 <?php
@@ -223,7 +224,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerClasses(
+$loader->setClasses(
     [
         'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
         'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
@@ -238,7 +239,7 @@ $loader->register();
 
 En el ejemplo anterior, estamos definiendo la relación entre una clase con espacio de nombres y un fichero. Como puede ver, el cargador será tan rápido como pueda pero la lista empezará a crecer, cuanto más crece nuestra aplicación, dificultando el mantenimiento. Sin embargo, si su aplicación no tiene demasiados componentes, no hay razón por la que no pueda usar este método de autocarga de componentes.
 
-El método `registerClasses()` también acepta un segundo parámetro `merge`. By default, it is `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerClasses()` para que las definiciones de clase se unan.
+The `setClasses()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setClasses()` so that the class definitions are merged.
 
 ```php
 <?php
@@ -247,7 +248,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerClasses(
+$loader->setClasses(
     [
         'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
         'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
@@ -255,7 +256,7 @@ $loader->registerClasses(
     ]
 );
 
-$loader->registerClasses(
+$loader->setClasses(
     [
         'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
         'MyApp\Models\Users'                => 'app/models/Users.php',
@@ -266,7 +267,7 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-El ejemplo anterior une la segunda declaración de `registerClasses()` con la anterior.
+The above example merges the second declaration of `setClasses()` with the previous one.
 
 Si necesita comprobar qué clases están registradas en el autocargador, puede usar el *getter* `getClasses()`, que devuelve el vector de las clases registradas. Para el ejemplo anterior, `getClasses()` devuelve:
 
@@ -283,7 +284,7 @@ Si necesita comprobar qué clases están registradas en el autocargador, puede u
 ## Archivos
 There are times that you might need to _require_ a specific file that contains a class without a namespace or a file that contains some code that you need. Un ejemplo sería un fichero que contiene funciones de depuración prácticas.
 
-[Phalcon\Autoload\Loader][loader] offers `registerFiles()` which is used to _require_ such files. Acepta un vector, que contiene el nombre y localización de cada fichero.
+[Phalcon\Autoload\Loader][loader] offers `setFiles()` which is used to _require_ such files. Acepta un vector, que contiene el nombre y localización de cada fichero.
 
 ```php
 <?php
@@ -292,7 +293,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerFiles(
+$loader->setFiles(
     [
         'functions.php',
         'arrayFunctions.php',
@@ -304,7 +305,7 @@ $loader->register();
 
 Estos ficheros se cargan automáticamente cuando se llama al método `register()`.
 
-El método `registerFiles()` también acepta un segundo parámetro `merge`. By default, it is `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerFiles()` para que las definiciones de clase se unan.
+The `setFiles()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setFiles()` so that the file definitions are merged.
 
 ```php
 <?php
@@ -313,13 +314,13 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerFiles(
+$loader->setFiles(
     [
         'app/functions/functions.php',
     ]
 );
 
-$loader->registerFiles(
+$loader->setFiles(
     [
         'app/functions/debug.php',
     ],
@@ -329,7 +330,7 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-El ejemplo anterior une la segunda declaración de `registerFiles()` con la anterior.
+The above example merges the second declaration of `setFiles()` with the previous one.
 
 Si necesita comprobar qué ficheros están registrados en el autocargador, puede usar el *getter* `getFiles()`, que devuelve el vector de los ficheros registrados. Para el ejemplo anterior, `getFiles()` devuelve:
 
@@ -345,7 +346,7 @@ También tiene acceso al método `loadFiles()`, que recorrerá todos los fichero
 ## Directorios
 Another way to let [Phalcon\Autoload\Loader][loader] know where your application files are is to register directories. Cuando un fichero necesita ser requerido por la aplicación, el autocargador escaneará los directorios registrados para encontrar el fichero referenciado para poder requerirlo.
 
-El método `registerDirs()` acepta un vector donde cada elemento es un directorio del sistema de ficheros que contiene los ficheros que serán requeridos por la aplicación.
+The `setDirectories()` method accepts an array with each element being a directory in the file system containing the files that will be required by the application.
 
 Este tipo de registro no se recomienda en términos de rendimiento. Additionally, the order of declared directories matters, since the autoloader tries to locate the files by searching directories sequentially. Como resultado, el directorio que contiene los ficheros más referenciados debería declararse primero, etc.
 
@@ -356,7 +357,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/functions',
         'app/controllers',
@@ -367,7 +368,7 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-El método `registerDirs()` también acepta un segundo parámetro `merge`. By default, it is `false`. Sin embargo, puede establecerlo a `true` cuando se tienen múltiples llamadas a `registerDirs()` para que las definiciones de clase se unan.
+The `setDirectories()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setDirectories()` so that the class definitions are merged.
 
 ```php
 <?php
@@ -376,13 +377,13 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/functions',
     ]
 );
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/controllers',
         'app/models',
@@ -393,7 +394,7 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-El ejemplo anterior une la segunda declaración de `registerDirs()` con la anterior.
+The above example merges the second declaration of `setDirectories()` with the previous one.
 
 Si necesita comprobar qué directorios están registrados en el autocargador, puede usar el *getter* `getDirs()`, que devuelve el vector de los directorios registrados. Para el ejemplo anterior, `getDirs()` devuelve:
 
@@ -406,7 +407,7 @@ Si necesita comprobar qué directorios están registrados en el autocargador, pu
 ```
 
 ## Extensiones de Ficheros
-When you use the `registerNamespaces()` and `registerDirs()`,  [Phalcon\Autoload\Loader][loader] automatically assumes that your files will have the `.php` extension. Puede cambiar este comportamiento usando el método `setExtensions()`. El método acepta un vector, donde cada elemento es la extensión a comprobar (sin el `.`):
+When you use the `setNamespaces()` and `setDirectories()`,  [Phalcon\Autoload\Loader][loader] automatically assumes that your files will have the `.php` extension. Puede cambiar este comportamiento usando el método `setExtensions()`. El método acepta un vector, donde cada elemento es la extensión a comprobar (sin el `.`):
 
 ```php
 <?php
@@ -423,7 +424,7 @@ $loader->setExtensions(
     ]
 );
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/functions',
     ]
@@ -503,7 +504,7 @@ use Phalcon\Autoload\Loader;
 $eventsManager = new Manager();
 $loader        = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -542,7 +543,7 @@ use Phalcon\Autoload\Loader;
 $eventsManager = new Manager();
 $loader        = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',

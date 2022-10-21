@@ -32,7 +32,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -58,7 +58,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -79,7 +79,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -131,7 +131,7 @@ To avoid most of these kind of attacks, [Phalcon\Autoload\Loader][loader] remove
 ## Χώροι ονομάτων
 A very popular way to organize your application is with directories, each representing a particular namespace. [Phalcon\Autoload\Loader][loader] can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
 
-The `registerNamespaces()` method accepts an array, where keys are the namespaces and values are the actual directories in the file system. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
+The `setNamespaces()` method accepts an array, where keys are the namespaces and values are the actual directories in the file system. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
 ```php
 <?php
@@ -140,7 +140,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'             => 'app/library',
        'MyApp\Controllers' => 'app/controllers',
@@ -167,11 +167,12 @@ that has a namespace of:
 MyApp\Components
 ```
 
-then the loader, as defined above, does not need to know about the `MyApp\Components` namespace location, or have it defined in the `registerNamespaces()` declaration.
+then the loader, as defined above, does not need to know about the `MyApp\Components` namespace location, or have it defined in the `
+()` declaration.
 
 If the component referenced in the code is `MyApp\Components\Mail`, it will assume that it is a subdirectory of the root namespace. However, since we specified a different location for the `MyApp\Controllers` and `MyApp\Models` namespaces, the loader will look for those namespaces in the specified directories.
 
-The `registerNamespaces()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `registerNamespaces()` so that the namespace definitions are merged.
+The `setNamespaces()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setNamespaces()` so that the namespace definitions are merged.
 
 ```php
 <?php
@@ -180,13 +181,13 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'             => 'app/library',
     ]
 );
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp\Controllers' => 'app/controllers',
        'MyApp\Models'      => 'app/models',
@@ -197,7 +198,7 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerNamespaces()` with the previous one.
+The above example merges the second declaration of `setNamespaces()` with the previous one.
 
 If you need to check what namespaces are registered in the autoloader, you can use the `getNamespaces()` getter, which returns the array of the registered namespaces. For the example above, `getNamespaces()` returns:
 
@@ -210,11 +211,11 @@ If you need to check what namespaces are registered in the autoloader, you can u
 ```
 
 ## Classes
-Another way to let [Phalcon\Autoload\Loader][loader] know where your components/classes are located, so that the autoloader can load them properly, is by using `registerClasses()`.
+Another way to let [Phalcon\Autoload\Loader][loader] know where your components/classes are located, so that the autoloader can load them properly, is by using `setClasses()`.
 
 The method accepts an array, where the key is the namespaced class and the value is the location of the file that contains the class. As expected, this is the fastest way to autoload a class, since the autoloader does not need to do file scans or stats to find the files references.
 
-However, using this method can hinder the maintenance of your application. The more your application grows, the more files are added, the easier it becomes to make a mistake while maintaining the list of files used in `registerClasses()`
+However, using this method can hinder the maintenance of your application. The more your application grows, the more files are added, the easier it becomes to make a mistake while maintaining the list of files used in `setClasses()`
 
 ```php
 <?php
@@ -223,7 +224,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerClasses(
+$loader->setClasses(
     [
         'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
         'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
@@ -238,7 +239,7 @@ $loader->register();
 
 In the above example, we are defining the relationship between a namespaced class and a file. As you can see, the loader will be as fast as it can be but the list will start growing, the more our application grows, making maintenance difficult. If however your application does not have that many components, there is no reason why you cannot use this method of autoloading components.
 
-The `registerClasses()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `registerClasses()` so that the class definitions are merged.
+The `setClasses()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setClasses()` so that the class definitions are merged.
 
 ```php
 <?php
@@ -247,7 +248,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerClasses(
+$loader->setClasses(
     [
         'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
         'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
@@ -255,7 +256,7 @@ $loader->registerClasses(
     ]
 );
 
-$loader->registerClasses(
+$loader->setClasses(
     [
         'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
         'MyApp\Models\Users'                => 'app/models/Users.php',
@@ -266,7 +267,7 @@ $loader->registerClasses(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerClasses()` with the previous one.
+The above example merges the second declaration of `setClasses()` with the previous one.
 
 If you need to check what classes are registered in the autoloader, you can use the `getClasses()` getter, which returns the array of the registered classes. For the example above, `getClasses()` returns:
 
@@ -283,7 +284,7 @@ If you need to check what classes are registered in the autoloader, you can use 
 ## Files
 There are times that you might need to _require_ a specific file that contains a class without a namespace or a file that contains some code that you need. An example would be a file that contains handy debugging functions.
 
-[Phalcon\Autoload\Loader][loader] offers `registerFiles()` which is used to _require_ such files. It accepts an array, containing the file name and location of each file.
+[Phalcon\Autoload\Loader][loader] offers `setFiles()` which is used to _require_ such files. It accepts an array, containing the file name and location of each file.
 
 ```php
 <?php
@@ -292,7 +293,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerFiles(
+$loader->setFiles(
     [
         'functions.php',
         'arrayFunctions.php',
@@ -304,7 +305,7 @@ $loader->register();
 
 These files are automatically loaded when the `register()` method is called.
 
-The `registerFiles()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `registerFiles()` so that the file definitions are merged.
+The `setFiles()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setFiles()` so that the file definitions are merged.
 
 ```php
 <?php
@@ -313,13 +314,13 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerFiles(
+$loader->setFiles(
     [
         'app/functions/functions.php',
     ]
 );
 
-$loader->registerFiles(
+$loader->setFiles(
     [
         'app/functions/debug.php',
     ],
@@ -329,7 +330,7 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerFiles()` with the previous one.
+The above example merges the second declaration of `setFiles()` with the previous one.
 
 If you need to check what files are registered in the autoloader, you can use the `getFiles()` getter, which returns the array of the registered files. For the example above, `getFiles()` returns:
 
@@ -345,7 +346,7 @@ You also have access to the `loadFiles()` method, which will traverse all the fi
 ## Directories
 Another way to let [Phalcon\Autoload\Loader][loader] know where your application files are is to register directories. When a file needs to be required by the application, the autoloader will scan the registered directories to find the referenced file so that it can require it.
 
-The `registerDirs()` method accepts an array with each element being a directory in the file system containing the files that will be required by the application.
+The `setDirectories()` method accepts an array with each element being a directory in the file system containing the files that will be required by the application.
 
 This type of registration is not recommended in terms of performance. Additionally, the order of declared directories matters, since the autoloader tries to locate the files by searching directories sequentially. As a result, the directory that contains the most referenced files should be declared first, etc.
 
@@ -356,7 +357,7 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/functions',
         'app/controllers',
@@ -367,7 +368,7 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-The `registerDirs()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `registerDirs()` so that the class definitions are merged.
+The `setDirectories()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setDirectories()` so that the class definitions are merged.
 
 ```php
 <?php
@@ -376,13 +377,13 @@ use Phalcon\Autoload\Loader;
 
 $loader = new Loader();
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/functions',
     ]
 );
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/controllers',
         'app/models',
@@ -393,7 +394,7 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-The above example merges the second declaration of `registerDirs()` with the previous one.
+The above example merges the second declaration of `setDirectories()` with the previous one.
 
 If you need to check what directories are registered in the autoloader, you can use the `getDirs()` getter, which returns the array of the registered directories. For the example above, `getDirs()` returns:
 
@@ -406,7 +407,7 @@ If you need to check what directories are registered in the autoloader, you can 
 ```
 
 ## File Extensions
-When you use the `registerNamespaces()` and `registerDirs()`,  [Phalcon\Autoload\Loader][loader] automatically assumes that your files will have the `.php` extension. You can change this behavior by using the `setExtensions()` method. The method accepts an array, where each element is the extension to be checked (without the `.`):
+When you use the `setNamespaces()` and `setDirectories()`,  [Phalcon\Autoload\Loader][loader] automatically assumes that your files will have the `.php` extension. You can change this behavior by using the `setExtensions()` method. The method accepts an array, where each element is the extension to be checked (without the `.`):
 
 ```php
 <?php
@@ -423,7 +424,7 @@ $loader->setExtensions(
     ]
 );
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         'app/functions',
     ]
@@ -503,7 +504,7 @@ use Phalcon\Autoload\Loader;
 $eventsManager = new Manager();
 $loader        = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
@@ -542,7 +543,7 @@ use Phalcon\Autoload\Loader;
 $eventsManager = new Manager();
 $loader        = new Loader();
 
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
        'MyApp'        => 'app/library',
        'MyApp\Models' => 'app/models',
