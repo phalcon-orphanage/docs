@@ -3,6 +3,7 @@ layout: default
 title: 'API 인덱스'
 ---
 
+{%- include env-setup.html -%}
 ## API 인덱스
 {% for element in site.data.api %}
 ### {{ element['title'] }}
