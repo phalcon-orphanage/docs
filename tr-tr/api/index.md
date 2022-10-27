@@ -3,6 +3,7 @@ layout: default
 title: 'API Bölüm'
 ---
 
+{%- include env-setup.html -%}
 ## API Bölüm
 {% for element in site.data.api %}
 ### {{ element['title'] }}
