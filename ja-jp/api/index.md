@@ -3,6 +3,7 @@ layout: default
 title: 'API インデックス'
 ---
 
+{%- include env-setup.html -%}
 ## API インデックス
 {% for element in site.data.api %}
 ### {{ element['title'] }}
