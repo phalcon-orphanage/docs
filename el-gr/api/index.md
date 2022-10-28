@@ -3,6 +3,7 @@ layout: default
 title: 'Δείκτης API'
 ---
 
+{%- include env-setup.html -%}
 ## Δείκτης API
 {% for element in site.data.api %}
 ### {{ element['title'] }}

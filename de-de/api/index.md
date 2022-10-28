@@ -3,6 +3,7 @@ layout: default
 title: 'API Index'
 ---
 
+{%- include env-setup.html -%}
 ## API Index
 {% for element in site.data.api %}
 ### {{ element['title'] }}
