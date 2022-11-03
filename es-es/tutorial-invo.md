@@ -6,7 +6,7 @@ keywords: 'tutorial, tutorial invo, paso a paso, mvc'
 
 # Tutorial - INVO
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## Resumen
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. Muestra como se gestionan ciertas tareas por Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. La aplicación no genera facturas reales, sino que sirve como ejemplo de cómo se implementan estas tareas usando Phalcon.
@@ -24,24 +24,37 @@ You can clone the repository to your machine (or download it) from [GitHub][gith
 
 ```bash
 └── invo
-    ├── app
-    │   ├── config
-    │   ├── controllers
-    │   ├── forms
-    │   ├── library
-    │   ├── logs
-    │   ├── models
-    │   ├── plugins
-    │   └── views
-    ├── cache
-    │   └── volt
-    ├── docs
+    ├── config
+    ├── db
+    │   └── migrations
+    │       └── 1.0.0
+    ├── docker
+    │   └── 8.0
+    │   └── 8.1
     │── public
-    │   ├── css
-    │   ├── img
     │   ├── index.php
     │   └── js
-    └── schemas
+    ├── src
+    │   ├── Controllers
+    │   ├── Forms
+    │   ├── Models
+    │   ├── Plugins
+    │   ├── Providers
+    ├── themes
+    │   ├── about
+    │   ├── companies
+    │   ├── contact
+    │   ├── errors
+    │   ├── index
+    │   ├── invoices
+    │   ├── layouts
+    │   ├── products
+    │   ├── producttypes
+    │   ├── register
+    │   └── session
+    └── var
+        ├── cache
+        └── logs
 ```
 Ya que Phalcon no impone una estructura de directorios en particular, la estructura particular es sólo nuestra implementación. Necesita configurar su servidor web con instrucciones de la página [configuración del servidor web](webserver-setup).
 
@@ -61,118 +74,94 @@ INVO usa la ruta estándar que está integrada en el componente [Router](routing
 La ruta personalizada `/session/register` ejecuta el controlador `SessionController` y su acción `registerAction`.
 
 ## Configuración
-INVO tiene un fichero de configuración que establece parámetros generales de la aplicación. Este fichero se localiza en `app/config/config.ini` y se carga en las líneas iniciales del arranque de la aplicación (`public/index.php`):
-
-```php
-<?php
-
-use Phalcon\Config\Adapter\Ini as ConfigIni;
-
-// ...
-
-$config = new ConfigIni(
-    APP_PATH . 'app/config/config.ini'
-);
-
-```
-
-La [Configuración de Phalcon](config) nos permite manipular el fichero de una forma orientada a objetos. En este ejemplo, estamos usando un fichero `ini` para la configuración. El objeto [Phalcon\Config](config) tiene un adaptador adicional que carga ficheros de configuración de diferentes fuentes. El fichero de configuración tiene los siguientes ajustes:
-
-```ini
-[database]
-host     = localhost
-username = root
-password = secret
-name     = invo
-
-[application]
-controllersDir = app/controllers/
-modelsDir      = app/models/
-viewsDir       = app/views/
-pluginsDir     = app/plugins/
-formsDir       = app/forms/
-libraryDir     = app/library/
-baseUri        = /invo/
-```
-
-Phalcon no tiene una convención para definir los ajustes. Las secciones nos ayudan a organizar las opciones basadas en grupos que tienen sentido para nuestra aplicación. En nuestro fichero hay dos cuestiones que se usarán más tarde en: `application` y `database`.
-
 ## Autocargador
-La segunda parte que aparece en el fichero de arranque (`public/index.php`) es el autocargador:
+For this application, we utilize the autoloader that comes with composer. You can easily adjust the code to use the autoloader provided by Phalcon if you wish:
 
 ```php
 <?php
 
-require APP_PATH . 'app/config/loader.php';
+$rootPath = realpath('..');
+require_once $rootPath . '/vendor/autoload.php';
 ```
 
-El autocargador registra un conjunto de directorios, en los cuales, la aplicación buscará las clases que necesitamos.
+### `DotEnv`
+INVO uses the `Dotenv\Dotenv` library to retrieve some configuration variables that are unique to each installation.
 
 ```php
 <?php
 
-$loader = new Phalcon\Loader();
-$loader->registerDirs(
-    [
-        APP_PATH . $config->application->controllersDir,
-        APP_PATH . $config->application->pluginsDir,
-        APP_PATH . $config->application->libraryDir,
-        APP_PATH . $config->application->modelsDir,
-        APP_PATH . $config->application->formsDir,
-    ]
-);
-
-$loader->register();
+/**
+ * Load ENV variables
+ */
+Dotenv::createImmutable($rootPath)
+      ->load()
+;
 ```
+The above assumes that a `.env` file is present in your root directory. There is a `.env.example` file that you can use as a reference and copy/rename it.
 
-> **NOTE**: The above code has registered the directories that were defined in the configuration file. El único directorio que no se ha registrado es `viewsDir` porque contiene ficheros HTML + PHP pero sin clases. 
-> 
-> {: .alert .alert-info }
+### Proveedores
+We will need to register all the services we need for the application in a DI container. The framework provides a variant of [Phalcon\Di\Di](di) called [Phalcon\Di\FactoryDefault](di#factory-default). Esta clase tiene servicios preregistrados para adaptarse a una aplicación MVC de pila completa. We therefore create a new `Phalcon\Di\FactoryDefault` object and then call the provider classes  to load the necessary services including the configuration of the application. They are all under the `Providers` folder.
 
-> **NOTE**: We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project: 
-> 
-> {: .alert .alert-info }
+As an example, the `Providers\ConfigProvider.php` class loads the `config/config.php` file, which contains the configuration of the application:
 
 ```php
 <?php
 
-// ...
+namespace Invo\Providers;
 
-define('APP_PATH', realpath('..') . '/');
-```
+use Exception;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\ServiceProviderInterface;
 
-## Servicios
-Otro fichero requerido en el arranque es (`app/config/services.php`). Este fichero nos permite organizar los servicios que usa INVO y los registra en el contenedor DI.
+/**
+ * Read the configuration
+ */
+class ConfigProvider implements ServiceProviderInterface
+{
+    public function register(DiInterface $di): void
+    {
+        $configPath = $di->offsetGet('rootPath') . '/config/config.php';
+        if (!file_exists($configPath) || !is_readable($configPath)) {
+            throw new Exception('Config file does not exist: ' . $configPath);
+        }
 
-```php
-<?php
-
-require APP_PATH . 'app/config/services.php';
-```
-
-Para el registro de servicios, usamos clausuras para cargar perezosamente los componentes requeridos:
-
-```php
-<?php
-
-use Phalcon\Url;
-
-$container->set(
-    'url',
-    function () use ($config) {
-        $url = new Url();
-
-        $url->setBaseUri(
-            $config->application->baseUri
-        );
-
-        return $url;
+        $di->setShared('config', function () use ($configPath) {
+            return require_once $configPath;
+        });
     }
-);
+}
 ```
+
+[Phalcon\Config\Config](config) allows us to manipulate the file in an object-oriented way. El fichero de configuración tiene los siguientes ajustes:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Phalcon\Config\Config;
+
+return new Config([
+    'database' => [
+        'adapter'  => $_ENV['DB_ADAPTER'] ?? 'Mysql',
+        'host'     => $_ENV['DB_HOST'] ?? 'locahost',
+        'username' => $_ENV['DB_USERNAME'] ?? 'phalcon',
+        'password' => $_ENV['DB_PASSWORD'] ?? 'secret',
+        'dbname'   => $_ENV['DB_DBNAME'] ?? 'phalcon_invo',
+        'charset'  => $_ENV['DB_CHARSET'] ?? 'utf8',
+    ],
+    'application' => [
+        'viewsDir' => $_ENV['VIEWS_DIR'] ?? 'themes/invo',
+        'baseUri'  => $_ENV['BASE_URI'] ?? '/',
+    ],
+]);
+```
+
+Phalcon no tiene una convención para definir los ajustes. Las secciones nos ayudan a organizar las opciones basadas en grupos que tienen sentido para nuestra aplicación. In our file there are two sections that will be used later on: `application` and `database`.
+
 
 ## Gestión de Petición
-Si saltamos al final del fichero (`public/index.php`), la petición se gestiona finalmente por [Phalcon\Mvc\Application](application), que inicializa todos los servicios necesarios para ejecutar la aplicación.
+At the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](application), which initializes all the services necessary for the application to run.
 
 ```php
 <?php
@@ -181,41 +170,40 @@ use Phalcon\Mvc\Application;
 
 // ...
 
-$application = new Application($container);
-
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
-
-$response->send();
+/**
+ * Init MVC Application and send output to client
+ */
+(new Application($di))
+    ->handle($_SERVER['REQUEST_URI'])
+    ->send()
+;
 ```
 
 ## Inyección de Dependencias
 En la primera línea del bloque de código anterior, el constructor de la clase [Application](application) recibe la variable `$container` como argumento.
 
-Ya que Phalcon es altamente desacoplado, necesitamos el contenedor para ser capaces de acceder a los servicios registrados desde él en diferentes partes de la aplicación. El componente en cuestión es [Phalcon\Di](di). Es un contenedor de servicios, también permite realizar inyección de dependencias y localización de servicios, instanciando todos los componentes que se necesitan por la aplicación.
+Ya que Phalcon es altamente desacoplado, necesitamos el contenedor para ser capaces de acceder a los servicios registrados desde él en diferentes partes de la aplicación. The component in question is [Phalcon\Di\Di](di). Es un contenedor de servicios, también permite realizar inyección de dependencias y localización de servicios, instanciando todos los componentes que se necesitan por la aplicación.
 
 Hay muchas maneras disponibles para registrar servicios en el contenedor. En INVO, la mayoría de servicios se han registrado usando funciones anónimas/clausuras. Gracias a esto, los objetos se cargan perezosamente, reduciendo los recursos requeridos por la aplicación al mínimo.
 
-Por ejemplo, en el siguiente fragmento se registra el servicio de sesión. La función anónima solo se llamará cuando la aplicación requiera el acceso a los datos de sesión:
+For instance, in the following excerpt the `Providers\SessionProvider` service is registered. La función anónima solo se llamará cuando la aplicación requiera el acceso a los datos de sesión:
 
 ```php
 <?php
 
-use Phalcon\Session\Manager;
-use Phalcon\Session\Adapter\Stream;
+use Phalcon\Session\Adapter\Stream as SessionAdapter;
+use Phalcon\Session\Manager as SessionManager;
 
-$container->set(
-    'session',
+$di->setShared(
+    'session', 
     function () {
-        $session = new Manager();
-        $files   = new Stream(
+        $session = new SessionManager();
+        $files   = new SessionAdapter(
             [
-                'savePath' => '/tmp',
+                'savePath' => sys_get_temp_dir(),
             ]
         );
         $session->setAdapter($files);
-
         $session->start();
 
         return $session;
@@ -223,24 +211,10 @@ $container->set(
 );
 ```
 
-Aquí, tenemos la libertad de cambiar el adaptador, realizar una inicialización adicional y mucho más. Tenga en cuenta que el servicio se registró usando el nombre `session`. Es una convención que permitirá al framework identificar el servicio activo en el contenedor de servicios.
-
-Una petición puede usar muchos servicios y registrar cada servicio individualmente puede ser una tarea engorrosa. Por esa razón, el framework proporciona una variante de [Phalcon\Di](di) llamada [Phalcon\Di\FactoryDefault](di#factory-default)`. Esta clase tiene servicios preregistrados para adaptarse a una aplicación MVC de pila completa.
-
-```php
-<?php
-
-use Phalcon\Di\FactoryDefault;
-
-// ...
-
-$container = new FactoryDefault();
-```
-
-Si es necesario sobrescribir algún servicio, podríamos configurarlo de nuevo como lo hicimos anteriormente con `session` o `url`. Esta es la razón de la existencia de la variable `$container`.
+Aquí, tenemos la libertad de cambiar el adaptador, realizar una inicialización adicional y mucho más. Tenga en cuenta que el servicio se registró usando el nombre `session`. This is a convention that will allow the framework to identify the active service in the DI container.
 
 ## Inicio de Sesión
-Una página `de inicio de sesión` nos permitirá trabajar con los controladores del *backend*. La separación entre controladores del *backend* y los del *frontend* es arbitraria. Todos los controladores se localizan en el mismo directorio (`app/controllers/`).
+Una página `de inicio de sesión` nos permitirá trabajar con los controladores del *backend*. La separación entre controladores del *backend* y los del *frontend* es arbitraria. All controllers are located in the same directory (`src/Controllers/`).
 
 ![](/assets/images/content/tutorial-invo-2.png)
 
@@ -251,134 +225,134 @@ Ahora necesitamos configurar la conexión a la base de datos. Está configurado 
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-
 // ...
 
-$container->set(
-    'db',
-    function () use ($config) {
-        return new DbAdapter(
-            [
-                'host'     => $config->database->host,
-                'username' => $config->database->username,
-                'password' => $config->database->password,
-                'dbname'   => $config->database->name,
-            ]
-        );
-    }
-);
+$dbConfig = $di->getShared('config')
+               ->get('database')
+               ->toArray()
+;
+$di->setShared('db', function () use ($dbConfig) {
+    $dbClass = 'Phalcon\Db\Adapter\Pdo\\' . $dbConfig['adapter'];
+    unset($dbConfig['adapter']);
+
+    return new $dbClass($dbConfig);
+});
 ```
 
-Aquí, devolvemos una instancia del adaptador de conexión MySQL. También podemos añadir funcionalidad adicional, como añadir un [logger](logger), un [profiler](db-models-events#profiling-sql-statements) para medir tiempos de ejecución o incluso cambiar el adaptador a un RMBMS diferente.
+Here, we return an instance of the MySQL connection adapter, because the `$dbConfig['adapter']` setting is `Mysql`. También podemos añadir funcionalidad adicional, como añadir un [logger](logger), un [profiler](db-models-events#profiling-sql-statements) para medir tiempos de ejecución o incluso cambiar el adaptador a un RMBMS diferente.
 
-El siguiente formulario simple (`app/views/session/index.volt`) produce el HTML necesario para que los usuarios puedan enviar la información de inicio de sesión. Parte del código HTML se ha eliminado para mejorar la legibilidad:
+The following simple form (`themes/invo/session/index.volt`) produces the necessary HTML so that users can submit login information. Some HTML code has been removed to improve readability:
 
 ```twig
 {% raw %}
-{{ form('session/start') }}
-    <fieldset>
-        <div>
-            <label for='email'>
-                Username/Email
-            </label>
+        <form action="/session/start" role="form" method="post">
+            <fieldset>
+                <div class="form-group">
+                    <label for="email">Username/Email</label>
+                    <div class="controls">
+                        {{ text_field('email', 'class': "form-control") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="controls">
+                        {{ password_field('password', 'class': "form-control") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ submit_button('Login', 'class': 'btn btn-primary btn-large') }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
 
-            <div>
-                {{ text_field('email') }}
-            </div>
+    <div class="col-md-6">
+        <div class="clearfix center">
+            {{ link_to('register', 'Sign Up', 'class': 'btn btn-primary btn-large btn-success') }}
         </div>
-
-        <div>
-            <label for='password'>
-                Password
-            </label>
-
-            <div>
-                {{ password_field('password') }}
-            </div>
-        </div>
-
-        <div>
-            {{ submit_button('Login') }}
-        </div>
-    </fieldset>
-{{ endForm() }}
+    </div>
+</div>
 {% endraw %}
 ```
 
-Estamos usando [Volt](volt) como nuestro motor de plantillas en lugar de PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
+Estamos usando [Volt](volt) como nuestro motor de plantillas en lugar de PHP. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user-friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
 
-La función `SessionController::startAction` (`app/controllers/SessionController.php`) valida los datos enviados desde el formulario, y también comprueba que el usuario sea válido en la base datos:
+The `SessionController::startAction` function (`src/Controllers/SessionController.php`) validates the data submitted from the form, and also checks for a valid user in the database:
 
 ```php
 <?php
+
+use Invo\Models\Users;
 
 class SessionController extends ControllerBase
 {
     // ...
 
-    private function _registerSession($user)
+    /**
+     * This action authenticate and logs a user into the application
+     */
+    public function startAction(): void
     {
-        $this->session->set(
-            'auth',
-            [
-                'id'   => $user->id,
-                'name' => $user->name,
-            ]
-        );
-    }
-
-    public function startAction()
-    {
-        if (true === $this->request->isPost()) {
+        if ($this->request->isPost()) {
             $email    = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $user = Users::findFirst(
-                [
-                    "(email = :email: OR username = :email:) " .
-                    "AND password = :password: " .
-                    "AND active = 'Y'",
-                    'bind' => [
-                        'email'    => $email,
-                        'password' => sha1($password),
-                    ]
-                ]
-            );
+            /** @var Users|null $user */
+            $user = Users::findFirst([
+                "(email = :email: OR username = :email:) AND "
+                . "password = :password: AND active = 'Y'",
+                'bind' => [
+                    'email'    => $email,
+                    'password' => sha1($password),
+                ],
+            ]);
 
-            if (null !== $user) {
-                $this->_registerSession($user);
+            if ($user) {
+                $this->registerSession($user);
+                $this->flash->success('Welcome ' . $user->name);
 
-                $this->flash->success(
-                    'Welcome ' . $user->name
-                );
-
-                return $this->dispatcher->forward(
+                $this->dispatcher->forward(
                     [
                         'controller' => 'invoices',
                         'action'     => 'index',
                     ]
                 );
+
+                return;
             }
 
-            $this->flash->error(
-                'Wrong email/password'
-            );
+            $this->flash->error('Wrong email/password');
         }
 
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'session',
                 'action'     => 'index',
             ]
         );
     }
+
+    /**
+     * Register an authenticated user into session data
+     *
+     * @param Users $user
+     */
+    private function registerSession(Users $user): void
+    {
+        $this->session->set(
+            'auth', 
+            [
+                'id'   => $user->id,
+                'name' => $user->name,
+            ]
+        );
+    }
 }
 ```
 
-En la primera inspección del código, observará que se accede a varias propiedades públicas en el controlador, como `$this->flash`, `$this->request` o `$this->session`. Los [controladores](controllers) en Phalcon se vinculan automáticamente al contenedor [Phalcon\Di](di) y como resultado, todos los servicios registrados están presentes en cada controlador como propiedades con el mismo nombre que el nombre de cada servicio. Si el servicio se accede por primera vez, será automáticamente instanciado y devuelto a la persona que lo invoca. Additionally these services are set as _shared_ so the same instance will be returned back, no matter how many times we access the property/service in the same request. Hay servicios definidos en el contenedor de servicios desde antes (`app/config/services.php`) y, por supuesto, puede cambiar este comportamiento al configurar estos servicios.
+En la primera inspección del código, observará que se accede a varias propiedades públicas en el controlador, como `$this->flash`, `$this->request` o `$this->session`. [Controllers](controllers) in Phalcon are automatically tied to the [Phalcon\Di\Di](di) container and as a result, all the services registered in the container are present in each controller as properties with the same name as the name of each service. Si el servicio se accede por primera vez, será automáticamente instanciado y devuelto a la persona que lo invoca. Additionally, these services are set as _shared_ so the same instance will be returned, no matter how many times we access the property/service in the same request. These are services defined in the services container from earlier (`Providers` folder) and you can of course change this behavior when setting up these services.
 
-Por ejemplo, aquí invocamos el servicio `session` y luego almacenamos la identidad del usuario en la variable `auth`:
+For instance, here we invoke the `session` service, and then we store the user identity in the variable `auth`:
 
 ```php
 <?php
@@ -434,26 +408,23 @@ $user = Users::findFirst(
 ```
 > **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. Esto reemplaza con seguridad los valores para esas columnas sin correr el riesgo de una inyección SQL.
 
-Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. The [Phalcon\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
+Cuando buscamos al usuario en la base de datos, no estamos buscando la contraseña directamente usando texto plano. The application stores passwords as hashes, using the [sha1][sha1] method. Aunque esta metodología es adecuada para un tutorial, podría considerar usar un algoritmo diferente para una aplicación en producción. The [Phalcon\Encryption\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 Si se encuentra el usuario, entonces registramos el usuario en la sesión (el usuario inicia sesión) y lo reenviamos al panel de control (controlador `Invoices`, acción `index`) mostrando un mensaje de bienvenida.
 
 ```php
 <?php
 
-if (null !== $user) {
-    $this->_registerSession($user);
+if ($user) {
+    $this->registerSession($user);
+    $this->flash->success('Welcome ' . $user->name);
 
-    $this->flash->success(
-        'Welcome ' . $user->name
-    );
+    $this->dispatcher->forward([
+        'controller' => 'invoices',
+        'action'     => 'index',
+    ]);
 
-    return $this->dispatcher->forward(
-        [
-            'controller' => 'invoices',
-            'action'     => 'index',
-        ]
-    );
+    return;
 }
 ```
 
@@ -473,13 +444,11 @@ return $this->dispatcher->forward(
 ## Seguridad del *Backend*
 El *backend* es un área privada donde sólo tienen acceso los usuarios registrados. Por lo tanto, hay que comprobar que sólo los usuarios registrados tienen acceso a esos controladores. If you are not logged in and try to access a _private_ area you will see a message like the one below:
 
-![](/assets/images/content/tutorial-invo-3.png)
-
 Cada vez que un usuario intenta acceder a un controlador/acción, la aplicación verifica que el rol actual (almacenado en sesión) tiene acceso a él, de lo contrario mostrará un mensaje como el mostrado anteriormente y reenviará el flujo a la página de inicio.
 
 Para poder lograr esto, necesitamos usar el componente [Despachador](dispatcher). Cuando el usuario solicita una página o URL, la aplicación primero identifica la página solicitada usando el componente [Enrutador](routing). Una vez que se ha identificado la ruta y encaja con un controlador y acción válidos, esta información se delega al [Despachador](dispatcher) que después carga el controlador y ejecuta la acción.
 
-Normalmente, el framework crea el Despachador automáticamente. En nuestro caso, necesitamos verificar que el usuario se conecta antes de que se despache la ruta. Como tal, necesitamos reemplazar el componente predeterminado en el contenedor DI y establecer uno nuevo. Lo hacemos cuando iniciamos la aplicación:
+Normalmente, el framework crea el Despachador automáticamente. En nuestro caso, necesitamos verificar que el usuario se conecta antes de que se despache la ruta. As such we need to replace the default component in the DI container and set a new one in (`Providers\DispatchProvider.php`). Lo hacemos cuando iniciamos la aplicación:
 
 ```php
 <?php
@@ -487,15 +456,15 @@ Normalmente, el framework crea el Despachador automáticamente. En nuestro caso,
 use Phalcon\Mvc\Dispatcher;
 
 // ...
-
-$container->set(
-    'dispatcher',
+$di->setShared(
+    'dispatcher', 
     function () {
         // ...
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace('Invo\Controllers');
+        // ...
 
-        $containerspatcher = new Dispatcher();
-
-        return $containerspatcher;
+        return $dispatcher;
     }
 );
 ```
@@ -509,29 +478,38 @@ El [Gestor de Eventos](events) nos permite adjuntar oyentes a un tipo de evento 
 ```php
 <?php
 
+use Invo\Plugins\NotFoundPlugin;
+use Invo\Plugins\SecurityPlugin;
+use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Events\Manager;
 
-$container->set(
-    'dispatcher',
+$di->setShared(
+    'dispatcher', 
     function () {
-        $eventsManager = new Manager();
+        $eventsManager = new EventsManager();
 
+        /**
+         * Check if the user is allowed to access certain action using 
+         * the SecurityPlugin
+         */
         $eventsManager->attach(
-            'dispatch:beforeExecuteRoute',
+            'dispatch:beforeExecuteRoute', 
             new SecurityPlugin()
         );
 
+        /**
+         * Handle exceptions and not-found exceptions using NotFoundPlugin
+         */
         $eventsManager->attach(
-            'dispatch:beforeException',
+            'dispatch:beforeException', 
             new NotFoundPlugin()
         );
 
-        $containerspatcher = new Dispatcher();
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace('Invo\Controllers');
+        $dispatcher->setEventsManager($eventsManager);
 
-        $containerspatcher->setEventsManager($eventsManager);
-
-        return $containerspatcher;
+        return $dispatcher;
     }
 );
 ```
@@ -558,7 +536,7 @@ $eventsManager->attach(
 );
 ```
 
-`SecurityPlugin` es una clase localizada en el directorio `plugins` (`app/plugins/SecurityPlugin.php`). Esta clase implementa el método `beforeExecuteRoute`. Este es el mismo nombre que el de los eventos producidos en el Despachador:
+`SecurityPlugin` is a class located in the `Plugins` directory (`src/Plugins/SecurityPlugin.php`). Esta clase implementa el método `beforeExecuteRoute`. Este es el mismo nombre que el de los eventos producidos en el Despachador:
 
 ```php
 <?php
@@ -599,33 +577,43 @@ class SecurityPlugin extends Plugin
         Dispatcher $containerspatcher
     ) {
         $auth = $this->session->get('auth');
-
         if (!$auth) {
             $role = 'Guests';
         } else {
             $role = 'Users';
         }
 
-        $controller = $containerspatcher->getControllerName();
-        $action     = $containerspatcher->getActionName();
+        $controller = $dispatcher->getControllerName();
+        $action     = $dispatcher->getActionName();
 
         $acl = $this->getAcl();
 
-        $allowed = $acl->isAllowed($role, $controller, $action);
-        if (true !== $allowed) {
-            $this->flash->error(
-                "You do not have access to this module"
-            );
-
-            $containerspatcher->forward(
+        if (!$acl->isComponent($controller)) {
+            $dispatcher->forward(
                 [
-                    'controller' => 'index',
-                    'action'     => 'index',
+                    'controller' => 'errors',
+                    'action'     => 'show404',
                 ]
             );
 
             return false;
         }
+
+        $allowed = $acl->isAllowed($role, $controller, $action);
+        if (!$allowed) {
+            $dispatcher->forward(
+                [
+                    'controller' => 'errors',
+                    'action'     => 'show401',
+                ]
+            );
+
+            $this->session->destroy();
+
+            return false;
+        }
+
+        return true;
     }
 }
 ```
@@ -647,13 +635,17 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 $acl = new AclList();
 
-$acl->setDefaultAction(
-    Enum::DENY
-);
+$acl->setDefaultAction(Enum::DENY);
 
 $roles = [
-    'users'  => new Role('Users'),
-    'guests' => new Role('Guests'),
+    'users'  => new Role(
+        'Users',
+        'Member privileges, granted after sign in.'
+    ),
+    'guests' => new Role(
+        'Guests',
+        'Anyone browsing the site who is not signed in is considered to be a "Guest".'
+    )
 ];
 
 foreach ($roles as $role) {
@@ -752,23 +744,19 @@ Ahora que los roles y componentes están registrados, necesitamos enlazarlos par
 ```php
 <?php
 
+// Grant access to public areas to both users and guests
 foreach ($roles as $role) {
-    foreach ($publicComponents as $resource => $actions) {
-        $acl->allow(
-            $role->getName(),
-            $resource,
-            '*'
-        );
+    foreach ($publicResources as $resource => $actions) {
+        foreach ($actions as $action) {
+            $acl->allow($role->getName(), $resource, $action);
+        }
     }
 }
 
-foreach ($privateComponents as $resource => $actions) {
+// Grant access to private area to role Users
+foreach ($privateResources as $resource => $actions) {
     foreach ($actions as $action) {
-        $acl->allow(
-            'Users',
-            $resource,
-            $action
-        );
+        $acl->allow('Users', $resource, $action);
     }
 }
 ```
@@ -776,24 +764,25 @@ foreach ($privateComponents as $resource => $actions) {
 ## CRUD
 La porción de *backend* de una aplicación es el código que proporciona formularios y lógica, permitiendo a los usuarios manipular datos, es decir, realizar operaciones CRUD. Exploraremos cómo INVO gestiona esta tarea y también mostraremos el uso de formularios, validadores, paginadores y más.
 
-We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, so as to manipulate data (companies, products, types of products). Para los productos se usan los siguientes ficheros:
+We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, to manipulate data (companies, products, types of products). Para los productos se usan los siguientes ficheros:
 
 
 ```bash
 └── invo
-    └── app
-        ├── controllers
+    └── src
+        ├── Controllers
         │   └── ProductsController.php
-        ├── forms
+        ├── Forms
         │   └── ProductsForm.php
-        ├── models
+        ├── Models
         │   └── Products.php
-        └── views
-            └── products
-                ├── edit.volt
-                ├── index.volt
-                ├── new.volt
-                └── search.volt
+        └── themes
+            └── invo
+                └── products
+                    ├── edit.volt
+                    ├── index.volt
+                    ├── new.volt
+                    └── search.volt
 ```
 Para otras áreas (como compañías por ejemplo), los ficheros correspondientes (prefijados con `Company`) se pueden encontrar en los mismos directorios que los mostrados arriba.
 
@@ -804,19 +793,19 @@ Cada controlador tiene las siguientes acciones:
 
 class ProductsController extends ControllerBase
 {
-    public function indexAction();
+    public function createAction();
 
-    public function searchAction();
+    public function editAction($id);
+
+    public function deleteAction($id);
+
+    public function indexAction();
 
     public function newAction();
 
-    public function editAction();
-
-    public function createAction();
-
     public function saveAction();
 
-    public function deleteAction($id);
+    public function searchAction();
 }
 ```
 
@@ -843,7 +832,7 @@ public function indexAction()
     $this->view->form = new ProductsForm();
 }
 ```
-Se pasa a la vista una instancia del formulario `ProductsForm` (`app/forms/ProductsForm.php`). Este formulario define los campos que son visibles para el usuario:
+An instance of the `ProductsForm` form (`src/Forms/ProductsForm.php`) is passed to the view. Este formulario define los campos que son visibles para el usuario:
 
 ```php
 <?php
@@ -861,71 +850,65 @@ class ProductsForm extends Form
     public function initialize($entity = null, $options = [])
     {
         if (!isset($options['edit'])) {
-            $element = new Text('id');
-            $element->setLabel('Id');
-            $this->add($element);
+            $this->add((new Text('id'))->setLabel('Id'));
         } else {
             $this->add(new Hidden('id'));
         }
 
+        /**
+         * Name text field
+         */
         $name = new Text('name');
         $name->setLabel('Name');
-        $name->setFilters(
-            [
-                'striptags',
-                'string',
-            ]
-        );
-        $name->addValidators(
-            [
-                new PresenceOf(
-                    [
-                        'message' => 'Name is required',
-                    ]
-                )
-            ]
-        );
+        $name->setFilters(['striptags', 'string']);
+        $name->addValidators([
+            new PresenceOf(
+                [
+                    'message' => 'Name is required'
+                ]
+            ),
+        ]);
+
         $this->add($name);
 
+        /**
+         * Product Type Id Select
+         */
         $type = new Select(
-            'profilesId',
+            'product_types_id',
             ProductTypes::find(),
             [
-                'using'      => [
-                    'id',
-                    'name',
-                ],
+                'using'      => ['id', 'name'],
                 'useEmpty'   => true,
                 'emptyText'  => '...',
                 'emptyValue' => '',
             ]
         );
+        $type->setLabel('Type');
 
         $this->add($type);
 
+        /**
+         * Price text field
+         */
         $price = new Text('price');
         $price->setLabel('Price');
-        $price->setFilters(
-            [
-                'float',
-            ]
-        );
-        $price->addValidators(
-            [
-                new PresenceOf(
-                    [
-                        'message' => 'Price is required',
-                    ]
-                ),
-                new Numericality(
-                    [
-                        'message' => 'Price is required',
-                    ]
-                ),
-            ]
-        );
+        $price->setFilters(['float']);
+        $price->addValidators([
+            new PresenceOf(
+                [
+                    'message' => 'Price is required'
+                ]
+            ),
+            new Numericality(
+                [
+                    'message' => 'Price is required'
+                ]
+            ),
+        ]);
+
         $this->add($price);
-    }
+     }
 }
 ```
 
@@ -955,7 +938,7 @@ $name->addValidators(
 
 $this->add($name);
 ```
-Primero creamos el elemento. Luego le adjuntamos una etiqueta, adjuntamos filtros, para poder realizar el saneado de los datos. A continuación, aplicamos los validadores sobre el elemento y finalmente añadimos el elemento al formulario.
+Primero creamos el elemento. Luego le adjuntamos una etiqueta, adjuntamos filtros, para poder realizar el saneado de los datos. Following that we apply a validators on the element and finally add the element to the form.
 
 Se usan también otros elementos en este formulario:
 
@@ -988,33 +971,31 @@ En el fragmento de código anterior, añadimos un campo HTML oculto que contiene
 
 ```twig
 {% raw %}
-{{ form('products/search') }}
+<div class="row mb-3">
+    <div class="col-xs-12 col-md-6">
+        <h2>Search products</h2>
+    </div>
+    <div class="col-xs-12 col-md-6 text-right">
+        {{ link_to("products/new", "Create Product", "class": "btn btn-primary") }}
+    </div>
+</div>
 
-    <h2>
-        Search products
-    </h2>
-
-    <fieldset>
-
-        {% for element in form %}
-            <div class='control-group'>
-                {{ element.label(['class': 'control-label']) }}
-
-                <div class='controls'>
-                    {{ element }}
+<form action="/products/search" role="form" method="get">
+    {% for element in form %}
+        {% if is_a(element, 'Phalcon\Forms\Element\Hidden') %}
+            {{ element }}
+        {% else %}
+            <div class="form-group">
+                {{ element.label() }}
+                <div class="controls">
+                    {{ element.setAttribute("class", "form-control") }}
                 </div>
             </div>
-        {% endfor %}
+        {% endif %}
+    {% endfor %}
 
-
-
-        <div class='control-group'>
-            {{ submit_button('Search', 'class': 'btn btn-primary') }}
-        </div>
-
-    </fieldset>
-
-{{ endForm() }}
+    {{ submit_button("Search", "class": "btn btn-primary") }}
+</form>
 {% endraw %}
 ```
 
@@ -1025,6 +1006,9 @@ Esto produce el siguiente HTML:
 
     <h2>
         Search products
+        <div class="col-xs-12 col-md-6 text-right">
+            <a href="products/new" "class=btn btn-primary">Create Product</a>
+        </div>
     </h2>
 
     <fieldset>
@@ -1167,7 +1151,7 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-El objeto [paginator](pagination) recibe los resultados obtenidos por la búsqueda. También establecemos un límite (resultados por página) así como el número de página. Finalmente, llamamos `paginate()` para obtener de vuelta el fragmento del conjunto de resultados correspondiente.
+El objeto [paginator](pagination) recibe los resultados obtenidos por la búsqueda. También establecemos un límite (resultados por página) así como el número de página. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
 
 A continuación, pasamos la página devuelta a la vista:
 
@@ -1177,93 +1161,90 @@ A continuación, pasamos la página devuelta a la vista:
 $this->view->page = $page;
 ```
 
-En la vista (`app/views/products/search.volt`), recorremos los resultados correspondientes a la vista actual, mostrando cada fila de la página actual al usuario:
+In the view (`themes/invo/products/search.volt`), we traverse the results corresponding to the current page, showing every row in the current page to the user:
 
 ```twig
 {% raw %}
 {% for product in page.items %}
     {% if loop.first %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Product Type</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Active</th>
-                </tr>
-            </thead>
-            <tbody>
+        <table class="table table-bordered table-striped" align="center">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product Type</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
     {% endif %}
-
     <tr>
-        <td>
-            {{ product.id }}
+        <td>{{ product.id }}</td>
+        <td>{{ product.getProductTypes().name }}</td>
+        <td>{{ product.name }}</td>
+        <td>${{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">
+            {{ 
+                link_to(
+                    "products/edit/" ~ product.id, 
+                    '<i class="glyphicon glyphicon-edit"></i> Edit', 
+                    "class": "btn btn-default"
+                ) 
+            }}
         </td>
-
-        <td>
-            {{ product.getProductTypes().name }}
-        </td>
-
-        <td>
-            {{ product.name }}
-        </td>
-
-        <td>
-            {{ '%.2f'|format(product.price) }}
-        </td>
-
-        <td>
-            {{ product.getActiveDetail() }}
-        </td>
-
-        <td width='7%'>
-            {{ link_to('products/edit/' ~ product.id, 'Edit') }}
-        </td>
-
-        <td width='7%'>
-            {{ link_to('products/delete/' ~ product.id, 'Delete') }}
+        <td width="7%">
+            {{ 
+                link_to(
+                    "products/delete/" ~ product.id, 
+                    '<i class="glyphicon glyphicon-remove"></i> Delete', 
+                    "class": "btn btn-default"
+                ) 
+            }}
         </td>
     </tr>
-
     {% if loop.last %}
-            </tbody>
-            <tbody>
-                <tr>
-                    <td colspan='7'>
-                        <div>
-                            {{ 
-                                link_to(
-                                    'products/search', 
-                                    'First'
-                                ) 
-                            }}
-                            {{ 
-                                link_to(
-                                    'products/search?page=' ~ page.previous, 
-                                    'Previous'
-                                ) 
-                            }}
-                            {{ 
-                                link_to(
-                                    'products/search?page=' ~ page.next, 
-                                    'Next'
-                                ) 
-                            }}
-                            {{ 
-                                link_to(
-                                    'products/search?page=' ~ page.last, 
-                                    'Last'
-                                ) 
-                            }}
-                            <span class='help-inline'>
-                                {{ page.current }} of 
-                                {{ page.total_pages }}
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+        </tbody>
+        <tbody>
+        <tr>
+            <td colspan="7" align="right">
+                <div class="btn-group">
+                    {{ 
+                        link_to(
+                            "products/search", 
+                            '<i class="icon-fast-backward"></i> First', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    {{ 
+                        link_to(
+                            "products/search?page=" ~ page.before, 
+                            '<i class="icon-step-backward"></i> Previous', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    {{ 
+                        link_to(
+                            "products/search?page=" ~ page.next, 
+                            '<i class="icon-step-forward"></i> Next', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    {{ 
+                        link_to(
+                            "products/search?page=" ~ page.last, 
+                            '<i class="icon-fast-forward"></i> Last', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    <span class="help-inline">
+                        {{ page.current }} of {{ page.total_pages }}
+                    </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
         </table>
     {% endif %}
 {% else %}
@@ -1324,7 +1305,7 @@ Ahora puede volver a la vista y averiguar qué hace cada bloque. Cada campo de `
     </td>
 
     <td>
-        {{ product.productTypes.name }}
+        {{ product.getProductTypes().name }}
     </td>
 
     <td>
@@ -1350,7 +1331,7 @@ Ahora puede volver a la vista y averiguar qué hace cada bloque. Cada campo de `
 {% endraw %}
 ```
 
-Como hemos visto antes, usar `product.id` es lo mismo que en PHP haciendo: `$product->id`, hemos hecho lo mismo con `product.name` y así sucesivamente. Otros campos se renderizan de forma diferente, por ejemplo, prestemos atención a `product.productTypes.name`. Para comprender esta parte, tenemos que comprobar el modelo *Products* (`app/models/Products.php`):
+As we have seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.getProductTypes().name`. Para comprender esta parte, tenemos que comprobar el modelo *Products* (`app/models/Products.php`):
 
 ```php
 <?php
@@ -1380,7 +1361,7 @@ class Products extends Model
 }
 ```
 
-Un modelo puede tener un método llamado `initialize()`, este método se llama una vez por petición y sirve al ORM para inicializar un modelo. En este caso, `Products` se inicializa definiendo que este modelo tiene una relación uno-a-muchos con otro modelo llamado `ProductTypes`.
+A model can have a method called `initialize()`, this method is called once per request, and it serves the ORM to initialize a model. En este caso, `Products` se inicializa definiendo que este modelo tiene una relación uno-a-muchos con otro modelo llamado `ProductTypes`.
 
 ```php
 <?php
@@ -1394,11 +1375,11 @@ $this->belongsTo(
     ]
 );
 ```
-Lo que significa, el atributo local `product_types_id` en `Products` tiene una relación uno-a-muchos con el modelo `ProductTypes` en su atributo `id`. Al definir esta relación, podemos acceder al nombre del tipo de producto usando:
+Which means, the local attribute `product_types_id` in `Products` has a one-to-many relation to the `ProductTypes` model in its attribute `id`. Al definir esta relación, podemos acceder al nombre del tipo de producto usando:
 
 ```twig
 {% raw %}
-<td>{{ product.productTypes.name }}</td>
+<td>{{ product.getProductTypes().name }}</td>
 {% endraw %}
 ```
 
@@ -1476,7 +1457,7 @@ public function createAction()
     // ...
 }
 ```
-Como se ha visto anteriormente, cuando estábamos creando el formulario, había algunos filtros asignados a los elementos pertinentes. Cuando los datos se pasan al formulario, se invocan estos filtros que sanean la entrada proporcionada. Aunque este filtrado es opcional, siempre es una buena práctica. Como añadido, el ORM también escapa los datos proporcionados y realiza una conversión de tipos adicional según los tipos de columna:
+Como se ha visto anteriormente, cuando estábamos creando el formulario, había algunos filtros asignados a los elementos pertinentes. When the data is passed to the form, these filters are invoked, and they sanitize the supplied input. Aunque este filtrado es opcional, siempre es una buena práctica. Como añadido, el ORM también escapa los datos proporcionados y realiza una conversión de tipos adicional según los tipos de columna:
 
 ```php
 <?php
@@ -1505,7 +1486,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-Al guardar los datos, sabremos si las reglas de negocio y los validadores implementados en `ProductsForm` se superan (`app/forms/ProductsForm.php`):
+Upon saving the data, we will know whether the business rules and validations implemented in the `ProductsForm` pass (`src/Forms/ProductsForm.php`):
 
 ```php
 <?php
@@ -1687,85 +1668,6 @@ public function saveAction()
 }
 ```
 
-## Components
-The UI has been create with the [Bootstrap][bootstrap] library. Algunos elementos, como la barra de navegación cambia según el estado de la aplicación. Por ejemplo, en la esquina superior derecha, el enlace `Log in / Sign Up` cambia a `Log out` si un usuario ha iniciado sesión en la aplicación.
-
-Esta parte de la aplicación se implementa en el componente `Elements` (`app/library/Elements.php`).
-
-```php
-<?php
-
-use Phalcon\Di\Injectable;
-
-class Elements extends Injectable
-{
-    public function getMenu()
-    {
-        // ...
-    }
-
-    public function getTabs()
-    {
-        // ...
-    }
-}
-```
-
-This class extends the [Phalcon\Di\Injectable][di-injectable]. No es necesario hacerlo, pero extender este componente nos permite acceder a todos los servicios de la aplicación. Vamos a registrar este componente de usuario en el contenedor de servicios:
-
-```php
-<?php
-
-$container->set(
-    'elements',
-    function () {
-        return new Elements();
-    }
-);
-```
-
-Ya que este componente esta registrado en el contenedor DI, podemos acceder a él directamente en la vista, usando una propiedad con el mismo nombre que el usado para registrar el servicio:
-
-```twig
-{% raw %}
-<div class='navbar navbar-fixed-top'>
-    <div class='navbar-inner'>
-        <div class='container'>
-            <a class='btn btn-navbar' 
-               data-toggle='collapse' 
-               data-target='.nav-collapse'>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </a>
-
-            <a class='brand' href='#'>INVO</a>
-
-            {{ elements.getMenu() }}
-        </div>
-    </div>
-</div>
-
-<div class='container'>
-    {{ content() }}
-
-    <hr>
-
-    <footer>
-        <p>&copy; Company {{ date('Y') }}</p>
-    </footer>
-</div>
-{% endraw %}
-```
-
-La parte importante es:
-
-```twig
-{% raw %}
-{{ elements.getMenu() }}
-{% endraw %}
-```
-
 ## Títulos Dinámicos
 Cuando navega por la aplicación, verá que el título cambia dinámicamente indicando dónde estamos trabajando actualmente. Esto se consigue en cada controlador (método `initialize()`):
 
@@ -1776,11 +1678,11 @@ class ProductsController extends ControllerBase
 {
     public function initialize()
     {
-        $this->tag->setTitle(
-            'Manage your product types'
-        );
-
         parent::initialize();
+
+        $this->tag->title()
+                  ->set('Manage your products')
+        ;
     }
 
     // ...
@@ -1798,7 +1700,10 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        $this->tag->prependTitle('INVO | ');
+        $this->tag->title()
+                  ->prepend('INVO | ')
+        ;
+        $this->view->setTemplateAfter('main');
     }
 
     // ...
@@ -1806,7 +1711,7 @@ class ControllerBase extends Controller
 ```
 El código anterior antepone el nombre de la aplicación al título
 
-Finalmente, el título se prime en la vista principal (`app/views/index.volt`):
+Finally, the title is printed in the main view (`themes/invo/views/index.volt`):
 
 ```php
 <!DOCTYPE html>
