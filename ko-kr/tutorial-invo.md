@@ -6,7 +6,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc, 자습서'
 
 # 자습서 - INVO
 - - -
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ pageVersion }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ pageVersion }}.svg)
 
 ## 개요
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. 이것은 Phalcon이 특정 작업을 어떻게 처리하는지 잘 보여줍니다. On the client side, [Bootstrap][bootstrap] is used for the UI. 이 어플리케이션은 실제 송장을 생성하지는 않지만, 이런 작업들을 Phalcon을 사용해서 어떻게 구현할 수 있는지 잘 보여주는 예제로 생각해 주세요.
@@ -24,24 +24,37 @@ You can clone the repository to your machine (or download it) from [GitHub][gith
 
 ```bash
 └── invo
-    ├── app
-    │   ├── config
-    │   ├── controllers
-    │   ├── forms
-    │   ├── library
-    │   ├── logs
-    │   ├── models
-    │   ├── plugins
-    │   └── views
-    ├── cache
-    │   └── volt
-    ├── docs
+    ├── config
+    ├── db
+    │   └── migrations
+    │       └── 1.0.0
+    ├── docker
+    │   └── 8.0
+    │   └── 8.1
     │── public
-    │   ├── css
-    │   ├── img
     │   ├── index.php
     │   └── js
-    └── schemas
+    ├── src
+    │   ├── Controllers
+    │   ├── Forms
+    │   ├── Models
+    │   ├── Plugins
+    │   ├── Providers
+    ├── themes
+    │   ├── about
+    │   ├── companies
+    │   ├── contact
+    │   ├── errors
+    │   ├── index
+    │   ├── invoices
+    │   ├── layouts
+    │   ├── products
+    │   ├── producttypes
+    │   ├── register
+    │   └── session
+    └── var
+        ├── cache
+        └── logs
 ```
 Phalcon은 특정한 디렉토리 구조를 강제하지 않으며, 여기서 보시는 특정 디렉토리 구조는 우리가 그렇게 구현한 것일 뿐입니다. [웹서버 설정](webserver-setup) 페이지의 설명에 따라 웹서버를 준비해 주세요.
 
@@ -61,118 +74,94 @@ INVO는 [Router](routing) 컴포넌트에 내장된 표준 라우트를 사용�
 커스텀 라우트인 `/session/register` 는 `SessionController` 컨트롤러와 그에 속한 `registerAction` 액션을 실행시킵니다.
 
 ## 구성
-INVO는 어플리케이션에서 사용할 일반적인 파라미터 값들을 설정한 구성파일을 가지고 있습니다. 이 파일은 `app/config/config.ini` 에 위치하며 어플리케이션 시동(`public/index.php`) 과정 중 첫 번째로 로드됩니다:
-
-```php
-<?php
-
-use Phalcon\Config\Adapter\Ini as ConfigIni;
-
-// ...
-
-$config = new ConfigIni(
-    APP_PATH . 'app/config/config.ini'
-);
-
-```
-
-[Phalcon Config](config) 는 파일을 객체지향적 방식으로 처리할 수 있도록 해 줍니다. 이 예제에서 우리는, 구성을 위해 `ini` 파일을 사용합니다. [Phalcon\Config](config) 객체는 다른 소스에서도 설정파일을 로드할 수 있도록 추가적인 어댑터를 제공하고 있습니다. 구성파일은 다음의 설정을 가지고 있습니다:
-
-```ini
-[database]
-host     = localhost
-username = root
-password = secret
-name     = invo
-
-[application]
-controllersDir = app/controllers/
-modelsDir      = app/models/
-viewsDir       = app/views/
-pluginsDir     = app/plugins/
-formsDir       = app/forms/
-libraryDir     = app/library/
-baseUri        = /invo/
-```
-
-Phalcon에서는 설정값들을 정의하는데 있어서 특별한 규칙이 없습니다. 섹션은 어플리케이션에서 의미있는 그룹들을 기반으로 옵션을 정리하는데 도움이 됩니다. 우리의 파일에는 이후에 사용하게 될 두개의 항목이 있습니다: `application` 과 `database`.
-
 ## Autoloader
-부트스트랩(시동) 파일 (`public/index.php`) 에서 보이는 두번째 부분은 오토로더입니다:
+For this application, we utilize the autoloader that comes with composer. You can easily adjust the code to use the autoloader provided by Phalcon if you wish:
 
 ```php
 <?php
 
-require APP_PATH . 'app/config/loader.php';
+$rootPath = realpath('..');
+require_once $rootPath . '/vendor/autoload.php';
 ```
 
-오토로더는 우리가 필요한 클래스들을 어플리케이션이 찾아볼 수 있는, 몇개의 디렉토리들을 등록합니다.
+### `DotEnv`
+INVO uses the `Dotenv\Dotenv` library to retrieve some configuration variables that are unique to each installation.
 
 ```php
 <?php
 
-$loader = new Phalcon\Loader();
-$loader->registerDirs(
-    [
-        APP_PATH . $config->application->controllersDir,
-        APP_PATH . $config->application->pluginsDir,
-        APP_PATH . $config->application->libraryDir,
-        APP_PATH . $config->application->modelsDir,
-        APP_PATH . $config->application->formsDir,
-    ]
-);
-
-$loader->register();
+/**
+ * Load ENV variables
+ */
+Dotenv::createImmutable($rootPath)
+      ->load()
+;
 ```
+The above assumes that a `.env` file is present in your root directory. There is a `.env.example` file that you can use as a reference and copy/rename it.
 
-> **NOTE**: The above code has registered the directories that were defined in the configuration file. 예외로, `viewsDir` 는 클래스가 아닌 HTML + PHP파일들만 존재하기 때문에 별도로 등록하지 않습니다. 
-> 
-> {: .alert .alert-info }
+### Providers
+We will need to register all the services we need for the application in a DI container. The framework provides a variant of [Phalcon\Di\Di](di) called [Phalcon\Di\FactoryDefault](di#factory-default). 이 클래스는 풀스택 MVC 어플리케이션에 맞춰 필요한 서비스가 사전에 등록되어 있습니다. We therefore create a new `Phalcon\Di\FactoryDefault` object and then call the provider classes  to load the necessary services including the configuration of the application. They are all under the `Providers` folder.
 
-> **NOTE**: We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project: 
-> 
-> {: .alert .alert-info }
+As an example, the `Providers\ConfigProvider.php` class loads the `config/config.php` file, which contains the configuration of the application:
 
 ```php
 <?php
 
-// ...
+namespace Invo\Providers;
 
-define('APP_PATH', realpath('..') . '/');
-```
+use Exception;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\ServiceProviderInterface;
 
-## 서비스
-부트스트랩에서 필요한 또 다른 파일은 (`app/config/services.php`)입니다. 이 파일은 INVO가 사용하는 서비스들을 체계화 할 수 있도록 해주고 DI 컨테이너에 등록 해줍니다.
+/**
+ * Read the configuration
+ */
+class ConfigProvider implements ServiceProviderInterface
+{
+    public function register(DiInterface $di): void
+    {
+        $configPath = $di->offsetGet('rootPath') . '/config/config.php';
+        if (!file_exists($configPath) || !is_readable($configPath)) {
+            throw new Exception('Config file does not exist: ' . $configPath);
+        }
 
-```php
-<?php
-
-require APP_PATH . 'app/config/services.php';
-```
-
-서비스 등록에서, 필요한 컴포넌트의 지연로딩(lazy loading) 을 위해 클로저를 사용합니다:
-
-```php
-<?php
-
-use Phalcon\Url;
-
-$container->set(
-    'url',
-    function () use ($config) {
-        $url = new Url();
-
-        $url->setBaseUri(
-            $config->application->baseUri
-        );
-
-        return $url;
+        $di->setShared('config', function () use ($configPath) {
+            return require_once $configPath;
+        });
     }
-);
+}
 ```
+
+[Phalcon\Config\Config](config) allows us to manipulate the file in an object-oriented way. 구성파일은 다음의 설정을 가지고 있습니다:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Phalcon\Config\Config;
+
+return new Config([
+    'database' => [
+        'adapter'  => $_ENV['DB_ADAPTER'] ?? 'Mysql',
+        'host'     => $_ENV['DB_HOST'] ?? 'locahost',
+        'username' => $_ENV['DB_USERNAME'] ?? 'phalcon',
+        'password' => $_ENV['DB_PASSWORD'] ?? 'secret',
+        'dbname'   => $_ENV['DB_DBNAME'] ?? 'phalcon_invo',
+        'charset'  => $_ENV['DB_CHARSET'] ?? 'utf8',
+    ],
+    'application' => [
+        'viewsDir' => $_ENV['VIEWS_DIR'] ?? 'themes/invo',
+        'baseUri'  => $_ENV['BASE_URI'] ?? '/',
+    ],
+]);
+```
+
+Phalcon에서는 설정값들을 정의하는데 있어서 특별한 규칙이 없습니다. 섹션은 어플리케이션에서 의미있는 그룹들을 기반으로 옵션을 정리하는데 도움이 됩니다. In our file there are two sections that will be used later on: `application` and `database`.
+
 
 ## 요청 처리
-파일(`public/index.php`)의 제일 아랫쪽으로 가 보면, 어플리케이션이 실행하는데 필요한 모든 서비스를 초기화시키는 [Phalcon\Mvc\Application](application)에 의해 요청(request)이 처리됩니다.
+At the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](application), which initializes all the services necessary for the application to run.
 
 ```php
 <?php
@@ -181,41 +170,40 @@ use Phalcon\Mvc\Application;
 
 // ...
 
-$application = new Application($container);
-
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
-
-$response->send();
+/**
+ * Init MVC Application and send output to client
+ */
+(new Application($di))
+    ->handle($_SERVER['REQUEST_URI'])
+    ->send()
+;
 ```
 
 ## 의존성 주입(Dependency Injection)
 위 코드 블록의 첫줄에서, [Application](application) 클래스 생성자는 `$container` 변수를 인자값으로 받습니다.
 
-Phalcon은 매우 느슨하게 연결(highly decoupled) 되어 있기 때문에, 어플리케이션의 다른 부분에서 컨테이너가 등록된 서비스에 접근할 수 있도록 해줄 필요가 있습니다. 이 부분에 해당하는 컴포넌트는 [Phalcon\Di](di) 입니다. 이 컴포넌트는 서비스 컨테이너이며 동시에 의존성 주입, 서비스 위치확인, 어플리케이션에서 필요한 모든 컴포넌트 의 인스턴스화 등을 담당하고 있습니다.
+Phalcon은 매우 느슨하게 연결(highly decoupled) 되어 있기 때문에, 어플리케이션의 다른 부분에서 컨테이너가 등록된 서비스에 접근할 수 있도록 해줄 필요가 있습니다. The component in question is [Phalcon\Di\Di](di). 이 컴포넌트는 서비스 컨테이너이며 동시에 의존성 주입, 서비스 위치확인, 어플리케이션에서 필요한 모든 컴포넌트 의 인스턴스화 등을 담당하고 있습니다.
 
 컨테이너에 서비스를 등록하는 방법은 다양합니다. INVO에서는, 대부분의 서비스는 익명함수/클로저를 이용해서 등록합니다. 덕분에, 객체는 지연 로딩(lazy loaded) 되어 어플리케이션에서 필요한 리소스를 최소화 시켜줍니다.
 
-예를 들어, 다음의 예제코드는 세션 서비스를 등록합니다. 이 익명함수는 어플리케이션에서 세션데이터를 필요로 할때만 호출됩니다:
+For instance, in the following excerpt the `Providers\SessionProvider` service is registered. 이 익명함수는 어플리케이션에서 세션데이터를 필요로 할때만 호출됩니다:
 
 ```php
 <?php
 
-use Phalcon\Session\Manager;
-use Phalcon\Session\Adapter\Stream;
+use Phalcon\Session\Adapter\Stream as SessionAdapter;
+use Phalcon\Session\Manager as SessionManager;
 
-$container->set(
-    'session',
+$di->setShared(
+    'session', 
     function () {
-        $session = new Manager();
-        $files   = new Stream(
+        $session = new SessionManager();
+        $files   = new SessionAdapter(
             [
-                'savePath' => '/tmp',
+                'savePath' => sys_get_temp_dir(),
             ]
         );
         $session->setAdapter($files);
-
         $session->start();
 
         return $session;
@@ -223,24 +211,10 @@ $container->set(
 );
 ```
 
-여기서, 우리는 어댑터를 자유로이 변경할 수 있으며, 추가적인 초기화 등 다양한 작업을 할 수 있습니다. 이 서비스는 `session` 라는 이름으로 등록되었음을 주의해주세요. 프레임워크가 서비스 컨테이너에서 활성화된 서비스를 구분하기 위한 규약입니다.
-
-요청은 다수의 서비스를 사용할 수 있으며, 이들 서비스를 개별적으로 등록하는 것은 매우 번거로운 작업이 될 가능성이 큽니다. 그런 이유로, 프레임워크는 [Phalcon\Di](di)의 변형인 [Phalcon\Di\FactoryDefault](di#factory-default)를 제공합니다`. 이 클래스는 풀스택 MVC 어플리케이션에 맞춰 필요한 서비스가 사전에 등록되어 있습니다.
-
-```php
-<?php
-
-use Phalcon\Di\FactoryDefault;
-
-// ...
-
-$container = new FactoryDefault();
-```
-
-If any services need to be overwritten we could just set it again as we did above with `session` or `url`. 이것이 `$container`변수가 존재하는 이유입니다.
+여기서, 우리는 어댑터를 자유로이 변경할 수 있으며, 추가적인 초기화 등 다양한 작업을 할 수 있습니다. 이 서비스는 `session` 라는 이름으로 등록되었음을 주의해주세요. This is a convention that will allow the framework to identify the active service in the DI container.
 
 ## 로그인
-`로그인` 페이지는 백엔드 컨트롤러와 작업할 수 있도록 해 줍니다. 백엔드 컨트롤러와 프론트엔드 컨트롤러 간의 구분은 사실 좀 임의적입니다. 모든 컨트롤러는 동일한 디렉토리 내에 있거든요 (`app/controllers/`).
+`로그인` 페이지는 백엔드 컨트롤러와 작업할 수 있도록 해 줍니다. 백엔드 컨트롤러와 프론트엔드 컨트롤러 간의 구분은 사실 좀 임의적입니다. All controllers are located in the same directory (`src/Controllers/`).
 
 ![](/assets/images/content/tutorial-invo-2.png)
 
@@ -251,134 +225,134 @@ If any services need to be overwritten we could just set it again as we did abov
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-
 // ...
 
-$container->set(
-    'db',
-    function () use ($config) {
-        return new DbAdapter(
-            [
-                'host'     => $config->database->host,
-                'username' => $config->database->username,
-                'password' => $config->database->password,
-                'dbname'   => $config->database->name,
-            ]
-        );
-    }
-);
+$dbConfig = $di->getShared('config')
+               ->get('database')
+               ->toArray()
+;
+$di->setShared('db', function () use ($dbConfig) {
+    $dbClass = 'Phalcon\Db\Adapter\Pdo\\' . $dbConfig['adapter'];
+    unset($dbConfig['adapter']);
+
+    return new $dbClass($dbConfig);
+});
 ```
 
-여기서, MySQL 연결 어댑터의 인스턴스를 반환합니다. [Logger](logger) 를 추가하거나, 쿼리 실행시간 측정을 위한 [profiler](db-models-events#profiling-sql-statements)를 추가 하는 등의 별도 기능을 추가할 수 있으며, 심지어 다른 RDBMS로 어댑터 변경도 가능합니다.
+Here, we return an instance of the MySQL connection adapter, because the `$dbConfig['adapter']` setting is `Mysql`. [Logger](logger) 를 추가하거나, 쿼리 실행시간 측정을 위한 [profiler](db-models-events#profiling-sql-statements)를 추가 하는 등의 별도 기능을 추가할 수 있으며, 심지어 다른 RDBMS로 어댑터 변경도 가능합니다.
 
-다음의 간단한 form (`app/views/session/index.volt`) 은 사용자가 로그인 정보를 submit 하는데 필요한 HTML을 생성합니다. 가독성을 위해 HTML 코드의 일부를 제거했습니다.
+The following simple form (`themes/invo/session/index.volt`) produces the necessary HTML so that users can submit login information. Some HTML code has been removed to improve readability:
 
 ```twig
 {% raw %}
-{{ form('session/start') }}
-    <fieldset>
-        <div>
-            <label for='email'>
-                Username/Email
-            </label>
+        <form action="/session/start" role="form" method="post">
+            <fieldset>
+                <div class="form-group">
+                    <label for="email">Username/Email</label>
+                    <div class="controls">
+                        {{ text_field('email', 'class': "form-control") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="controls">
+                        {{ password_field('password', 'class': "form-control") }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ submit_button('Login', 'class': 'btn btn-primary btn-large') }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
 
-            <div>
-                {{ text_field('email') }}
-            </div>
+    <div class="col-md-6">
+        <div class="clearfix center">
+            {{ link_to('register', 'Sign Up', 'class': 'btn btn-primary btn-large btn-success') }}
         </div>
-
-        <div>
-            <label for='password'>
-                Password
-            </label>
-
-            <div>
-                {{ password_field('password') }}
-            </div>
-        </div>
-
-        <div>
-            {{ submit_button('Login') }}
-        </div>
-    </fieldset>
-{{ endForm() }}
+    </div>
+</div>
 {% endraw %}
 ```
 
-템플릿 엔진으로 PHP 대신에 [Volt](volt)를 사용하고 있습니다. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
+템플릿 엔진으로 PHP 대신에 [Volt](volt)를 사용하고 있습니다. This is a built-in template engine inspired by [Jinja][jinja] providing a simple and user-friendly syntax to create templates. If you have worked with [Jinja][jinja] or [Twig][twig] in the past, you will see many similarities.
 
-`SessionController::startAction` 함수 (`app/controllers/SessionController.php`) 는 form에서 제출된 데이터를 검증하고, 데이터베이스에서 유효한 사용자를 확인합니다:
+The `SessionController::startAction` function (`src/Controllers/SessionController.php`) validates the data submitted from the form, and also checks for a valid user in the database:
 
 ```php
 <?php
+
+use Invo\Models\Users;
 
 class SessionController extends ControllerBase
 {
     // ...
 
-    private function _registerSession($user)
+    /**
+     * This action authenticate and logs a user into the application
+     */
+    public function startAction(): void
     {
-        $this->session->set(
-            'auth',
-            [
-                'id'   => $user->id,
-                'name' => $user->name,
-            ]
-        );
-    }
-
-    public function startAction()
-    {
-        if (true === $this->request->isPost()) {
+        if ($this->request->isPost()) {
             $email    = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $user = Users::findFirst(
-                [
-                    "(email = :email: OR username = :email:) " .
-                    "AND password = :password: " .
-                    "AND active = 'Y'",
-                    'bind' => [
-                        'email'    => $email,
-                        'password' => sha1($password),
-                    ]
-                ]
-            );
+            /** @var Users|null $user */
+            $user = Users::findFirst([
+                "(email = :email: OR username = :email:) AND "
+                . "password = :password: AND active = 'Y'",
+                'bind' => [
+                    'email'    => $email,
+                    'password' => sha1($password),
+                ],
+            ]);
 
-            if (null !== $user) {
-                $this->_registerSession($user);
+            if ($user) {
+                $this->registerSession($user);
+                $this->flash->success('Welcome ' . $user->name);
 
-                $this->flash->success(
-                    'Welcome ' . $user->name
-                );
-
-                return $this->dispatcher->forward(
+                $this->dispatcher->forward(
                     [
                         'controller' => 'invoices',
                         'action'     => 'index',
                     ]
                 );
+
+                return;
             }
 
-            $this->flash->error(
-                'Wrong email/password'
-            );
+            $this->flash->error('Wrong email/password');
         }
 
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'session',
                 'action'     => 'index',
             ]
         );
     }
+
+    /**
+     * Register an authenticated user into session data
+     *
+     * @param Users $user
+     */
+    private function registerSession(Users $user): void
+    {
+        $this->session->set(
+            'auth', 
+            [
+                'id'   => $user->id,
+                'name' => $user->name,
+            ]
+        );
+    }
 }
 ```
 
-코드를 보는 순간, 컨트롤러 내에서 `$this->flash`, `$this->request` 혹은 `$this->session` 등 몇 개의 퍼블릭 속성 값들을 사용하고 있다는 것을 알아차리실 것입니다. Phalcon에서 [컨트롤러](controllers) 는 자동으로 [Phalcon\Di](di) 컨테이너에 자동으로 연결되기 때문에, 컨테이너에 등록된 모든 서비스들은 각 서비스명과 동일한 이름의 속성으로 각각의 컨트롤러 내에 존재하게 됩니다. 서비스에 처음 접근하는 시점에서 해당서비스는 자동으로 인스턴스화 되어 호출자에게 반환됩니다. Additionally these services are set as _shared_ so the same instance will be returned back, no matter how many times we access the property/service in the same request. 이들은 앞에서 나왔던 서비스 컨테이너(`app/config/services.php`) 내에서 정의된 서비스들이며 당연히 서비스 설정 시 이 행동들을 변경할 수 있습니다.
+코드를 보는 순간, 컨트롤러 내에서 `$this->flash`, `$this->request` 혹은 `$this->session` 등 몇 개의 퍼블릭 속성 값들을 사용하고 있다는 것을 알아차리실 것입니다. [Controllers](controllers) in Phalcon are automatically tied to the [Phalcon\Di\Di](di) container and as a result, all the services registered in the container are present in each controller as properties with the same name as the name of each service. 서비스에 처음 접근하는 시점에서 해당서비스는 자동으로 인스턴스화 되어 호출자에게 반환됩니다. Additionally, these services are set as _shared_ so the same instance will be returned, no matter how many times we access the property/service in the same request. These are services defined in the services container from earlier (`Providers` folder) and you can of course change this behavior when setting up these services.
 
-예를 들어, `session` 서비스를 호출해서 사용자정보를 `auth` 변수에 저장한다고 하면:
+For instance, here we invoke the `session` service, and then we store the user identity in the variable `auth`:
 
 ```php
 <?php
@@ -434,26 +408,23 @@ $user = Users::findFirst(
 ```
 > **NOTE**: Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. 이렇게 함으로써 SQL injection의 위험 없이 이들 컬럼을 값으로 대체 할 수 있습니다.
 
-데이터베이스 내의 사용자를 검색할 때, 우리는 바로 평문 텍스트를 사용해서 암호를 찾지 않습니다. The application stores passwords as hashes, using the [sha1][sha1] method. 이 방법론은 튜토리얼 목적으론 적절하지만, 운영환경의 어플리케이션을 위해서는 다른 알고리즘을 고려하는 것이 더 적절할 수 있습니다. The [Phalcon\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
+데이터베이스 내의 사용자를 검색할 때, 우리는 바로 평문 텍스트를 사용해서 암호를 찾지 않습니다. The application stores passwords as hashes, using the [sha1][sha1] method. 이 방법론은 튜토리얼 목적으론 적절하지만, 운영환경의 어플리케이션을 위해서는 다른 알고리즘을 고려하는 것이 더 적절할 수 있습니다. The [Phalcon\Encryption\Security](encryption-security) component offers convenience methods to strengthen the algorithm used for your hashes.
 
 사용자를 찾으면, 해당 사용자를 세션에 등록(사용자를 로그 인) 하고 환영 메시지를 표시하면서 대시보드(`Invoices` 컨트롤러, `index` 액션) 로 이동시킵니다.
 
 ```php
 <?php
 
-if (null !== $user) {
-    $this->_registerSession($user);
+if ($user) {
+    $this->registerSession($user);
+    $this->flash->success('Welcome ' . $user->name);
 
-    $this->flash->success(
-        'Welcome ' . $user->name
-    );
+    $this->dispatcher->forward([
+        'controller' => 'invoices',
+        'action'     => 'index',
+    ]);
 
-    return $this->dispatcher->forward(
-        [
-            'controller' => 'invoices',
-            'action'     => 'index',
-        ]
-    );
+    return;
 }
 ```
 
@@ -473,13 +444,11 @@ return $this->dispatcher->forward(
 ## 백엔드 보안
 백엔드는 등록된 사용자만 접근할 수 있는 비공개 영역입니다. 그러므로, 등록된 사용자만 이들 컨트롤러에 접근가능한지 여부를 확인할 필요가 있습니다. If you are not logged in and try to access a _private_ area you will see a message like the one below:
 
-![](/assets/images/content/tutorial-invo-3.png)
-
 사용자가 컨트롤러/액션에 접근하려 할 때 마다, 어플리케이션은 현재의 역할(세션에 저장되어 있음) 로 해당 컨트롤러/액션에 접근할 수 있는지 확인하게 되며, 권한이 없다면 위와 같은 메시지를 뿌리고는 홈페이지로 이동시킵니다.
 
 이렇게 하기 위해서 우리는 [Dispatcher](dispatcher) 컴포넌트를 사용해야 합니다. 사용자가 페이지나 URL을 요청하면, 어플리케이션은 먼저 [Route](routing) 컴포넌트를 이용해서 요청받은 페이지를 확인합니다. 경로(route) 가 확인되고 매치되는 유효한 컨트롤러/액션이 있다면, 이 정보는 [Dispatcher](dispatcher) 로 위임(delegate) 되어 해당 컨트롤러를 로드하고 액션을 실행시킵니다.
 
-보통은 프레임워크가 자동으로 Dispatcher를 생성합니다. 우리의 경우, 해당 경로(route) 로 보내기 전에 먼저 사용자가 로그인 되어있는지 확인할 필요가 있습니다. 그래서 우리는 DI 컨테이너 내의 기본 컴포넌트를 대체할 새 컴포넌트를 끼워 넣어야 합니다. 어플리케이션을 부트스트래핑(초기화) 할 때 이 작업을 수행합니다:
+보통은 프레임워크가 자동으로 Dispatcher를 생성합니다. 우리의 경우, 해당 경로(route) 로 보내기 전에 먼저 사용자가 로그인 되어있는지 확인할 필요가 있습니다. As such we need to replace the default component in the DI container and set a new one in (`Providers\DispatchProvider.php`). 어플리케이션을 부트스트래핑(초기화) 할 때 이 작업을 수행합니다:
 
 ```php
 <?php
@@ -487,15 +456,15 @@ return $this->dispatcher->forward(
 use Phalcon\Mvc\Dispatcher;
 
 // ...
-
-$container->set(
-    'dispatcher',
+$di->setShared(
+    'dispatcher', 
     function () {
         // ...
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace('Invo\Controllers');
+        // ...
 
-        $containerspatcher = new Dispatcher();
-
-        return $containerspatcher;
+        return $dispatcher;
     }
 );
 ```
@@ -509,29 +478,38 @@ Now that the dispatcher is registered, we need to take advantage of a _hook_ ava
 ```php
 <?php
 
+use Invo\Plugins\NotFoundPlugin;
+use Invo\Plugins\SecurityPlugin;
+use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Events\Manager;
 
-$container->set(
-    'dispatcher',
+$di->setShared(
+    'dispatcher', 
     function () {
-        $eventsManager = new Manager();
+        $eventsManager = new EventsManager();
 
+        /**
+         * Check if the user is allowed to access certain action using 
+         * the SecurityPlugin
+         */
         $eventsManager->attach(
-            'dispatch:beforeExecuteRoute',
+            'dispatch:beforeExecuteRoute', 
             new SecurityPlugin()
         );
 
+        /**
+         * Handle exceptions and not-found exceptions using NotFoundPlugin
+         */
         $eventsManager->attach(
-            'dispatch:beforeException',
+            'dispatch:beforeException', 
             new NotFoundPlugin()
         );
 
-        $containerspatcher = new Dispatcher();
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace('Invo\Controllers');
+        $dispatcher->setEventsManager($eventsManager);
 
-        $containerspatcher->setEventsManager($eventsManager);
-
-        return $containerspatcher;
+        return $dispatcher;
     }
 );
 ```
@@ -558,7 +536,7 @@ $eventsManager->attach(
 );
 ```
 
-`SecurityPlugin` 은 `plugins` 디렉토리에 위치한 클래스입니다(`app/plugins/SecurityPlugin.php`). 이 클래스는 `beforeExecuteRoute` 메서드를 구현합니다. Dispatcher에서 발생시킨 이벤트 이름과 동일합니다.
+`SecurityPlugin` is a class located in the `Plugins` directory (`src/Plugins/SecurityPlugin.php`). 이 클래스는 `beforeExecuteRoute` 메서드를 구현합니다. Dispatcher에서 발생시킨 이벤트 이름과 동일합니다.
 
 ```php
 <?php
@@ -599,33 +577,43 @@ class SecurityPlugin extends Plugin
         Dispatcher $containerspatcher
     ) {
         $auth = $this->session->get('auth');
-
         if (!$auth) {
             $role = 'Guests';
         } else {
             $role = 'Users';
         }
 
-        $controller = $containerspatcher->getControllerName();
-        $action     = $containerspatcher->getActionName();
+        $controller = $dispatcher->getControllerName();
+        $action     = $dispatcher->getActionName();
 
         $acl = $this->getAcl();
 
-        $allowed = $acl->isAllowed($role, $controller, $action);
-        if (true !== $allowed) {
-            $this->flash->error(
-                "이 모듈에 접근 권한이 없습니다"
-            );
-
-            $containerspatcher->forward(
+        if (!$acl->isComponent($controller)) {
+            $dispatcher->forward(
                 [
-                    'controller' => 'index',
-                    'action'     => 'index',
+                    'controller' => 'errors',
+                    'action'     => 'show404',
                 ]
             );
 
             return false;
         }
+
+        $allowed = $acl->isAllowed($role, $controller, $action);
+        if (!$allowed) {
+            $dispatcher->forward(
+                [
+                    'controller' => 'errors',
+                    'action'     => 'show401',
+                ]
+            );
+
+            $this->session->destroy();
+
+            return false;
+        }
+
+        return true;
     }
 }
 ```
@@ -647,13 +635,17 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 $acl = new AclList();
 
-$acl->setDefaultAction(
-    Enum::DENY
-);
+$acl->setDefaultAction(Enum::DENY);
 
 $roles = [
-    'users'  => new Role('Users'),
-    'guests' => new Role('Guests'),
+    'users'  => new Role(
+        'Users',
+        'Member privileges, granted after sign in.'
+    ),
+    'guests' => new Role(
+        'Guests',
+        'Anyone browsing the site who is not signed in is considered to be a "Guest".'
+    )
 ];
 
 foreach ($roles as $role) {
@@ -752,23 +744,19 @@ foreach ($publicComponents as $componentName => $actions) {
 ```php
 <?php
 
+// Grant access to public areas to both users and guests
 foreach ($roles as $role) {
-    foreach ($publicComponents as $resource => $actions) {
-        $acl->allow(
-            $role->getName(),
-            $resource,
-            '*'
-        );
+    foreach ($publicResources as $resource => $actions) {
+        foreach ($actions as $action) {
+            $acl->allow($role->getName(), $resource, $action);
+        }
     }
 }
 
-foreach ($privateComponents as $resource => $actions) {
+// Grant access to private area to role Users
+foreach ($privateResources as $resource => $actions) {
     foreach ($actions as $action) {
-        $acl->allow(
-            'Users',
-            $resource,
-            $action
-        );
+        $acl->allow('Users', $resource, $action);
     }
 }
 ```
@@ -776,24 +764,25 @@ foreach ($privateComponents as $resource => $actions) {
 ## CRUD
 어플리케이션의 백엔드 부분은 사용자가 데이터를 다룰 수 있도록 form과 로직을 제공하는, 즉 CRUD 작업을 수행하는 코드입니다. INVO 가 이 작업을 어떻게 다루는지, 그리고 form, validater, paginator 등을 사용하는 방법들에 대해 알아보도록 하겠습니다.
 
-We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, so as to manipulate data (companies, products, types of products). 상품(products) 데이터를 관리하기 위해 아래와 같은 파일들을 사용합니다:
+We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation in INVO, to manipulate data (companies, products, types of products). 상품(products) 데이터를 관리하기 위해 아래와 같은 파일들을 사용합니다:
 
 
 ```bash
 └── invo
-    └── app
-        ├── controllers
+    └── src
+        ├── Controllers
         │   └── ProductsController.php
-        ├── forms
+        ├── Forms
         │   └── ProductsForm.php
-        ├── models
+        ├── Models
         │   └── Products.php
-        └── views
-            └── products
-                ├── edit.volt
-                ├── index.volt
-                ├── new.volt
-                └── search.volt
+        └── themes
+            └── invo
+                └── products
+                    ├── edit.volt
+                    ├── index.volt
+                    ├── new.volt
+                    └── search.volt
 ```
 회사(companies) 등의 다른 데이터들의 경우, 관련파일들(접두어로 `Company`를 붙임) 이 위에서와 동일한 디렉토리에 위치합니다.
 
@@ -804,19 +793,19 @@ We have a simple [CRUD][crud] (Create, Read, Update and Delete) implementation i
 
 class ProductsController extends ControllerBase
 {
-    public function indexAction();
+    public function createAction();
 
-    public function searchAction();
+    public function editAction($id);
+
+    public function deleteAction($id);
+
+    public function indexAction();
 
     public function newAction();
 
-    public function editAction();
-
-    public function createAction();
-
     public function saveAction();
 
-    public function deleteAction($id);
+    public function searchAction();
 }
 ```
 
@@ -843,7 +832,7 @@ public function indexAction()
     $this->view->form = new ProductsForm();
 }
 ```
-`ProductsForm` form (`app/forms/ProductsForm.php`) 의 인스턴스를 뷰로 넘겨줍니다. 이 form은 사용자에게 보여지는 필드값들을 정의합니다.
+An instance of the `ProductsForm` form (`src/Forms/ProductsForm.php`) is passed to the view. 이 form은 사용자에게 보여지는 필드값들을 정의합니다.
 
 ```php
 <?php
@@ -861,71 +850,65 @@ class ProductsForm extends Form
     public function initialize($entity = null, $options = [])
     {
         if (!isset($options['edit'])) {
-            $element = new Text('id');
-            $element->setLabel('Id');
-            $this->add($element);
+            $this->add((new Text('id'))->setLabel('Id'));
         } else {
             $this->add(new Hidden('id'));
         }
 
+        /**
+         * Name text field
+         */
         $name = new Text('name');
         $name->setLabel('Name');
-        $name->setFilters(
-            [
-                'striptags',
-                'string',
-            ]
-        );
-        $name->addValidators(
-            [
-                new PresenceOf(
-                    [
-                        'message' => 'Name is required',
-                    ]
-                )
-            ]
-        );
+        $name->setFilters(['striptags', 'string']);
+        $name->addValidators([
+            new PresenceOf(
+                [
+                    'message' => 'Name is required'
+                ]
+            ),
+        ]);
+
         $this->add($name);
 
+        /**
+         * Product Type Id Select
+         */
         $type = new Select(
-            'profilesId',
+            'product_types_id',
             ProductTypes::find(),
             [
-                'using'      => [
-                    'id',
-                    'name',
-                ],
+                'using'      => ['id', 'name'],
                 'useEmpty'   => true,
                 'emptyText'  => '...',
                 'emptyValue' => '',
             ]
         );
+        $type->setLabel('Type');
 
         $this->add($type);
 
+        /**
+         * Price text field
+         */
         $price = new Text('price');
         $price->setLabel('Price');
-        $price->setFilters(
-            [
-                'float',
-            ]
-        );
-        $price->addValidators(
-            [
-                new PresenceOf(
-                    [
-                        'message' => 'Price is required',
-                    ]
-                ),
-                new Numericality(
-                    [
-                        'message' => 'Price is required',
-                    ]
-                ),
-            ]
-        );
+        $price->setFilters(['float']);
+        $price->addValidators([
+            new PresenceOf(
+                [
+                    'message' => 'Price is required'
+                ]
+            ),
+            new Numericality(
+                [
+                    'message' => 'Price is required'
+                ]
+            ),
+        ]);
+
         $this->add($price);
-    }
+     }
 }
 ```
 
@@ -955,7 +938,7 @@ $name->addValidators(
 
 $this->add($name);
 ```
-우선 요소를 생성합니다. 그리고 데이터 보안처리(sanitization) 를 할 수 있도록 요소에 라벨과 필터를 붙입니다. 그리고 요소에 validator를 적용한 후 마지막으로 form에 추가합니다.
+우선 요소를 생성합니다. 그리고 데이터 보안처리(sanitization) 를 할 수 있도록 요소에 라벨과 필터를 붙입니다. Following that we apply a validators on the element and finally add the element to the form.
 
 다른 요소들도 이 form에서 사용됩니다:
 
@@ -988,33 +971,31 @@ $type = new Select(
 
 ```twig
 {% raw %}
-{{ form('products/search') }}
+<div class="row mb-3">
+    <div class="col-xs-12 col-md-6">
+        <h2>Search products</h2>
+    </div>
+    <div class="col-xs-12 col-md-6 text-right">
+        {{ link_to("products/new", "Create Product", "class": "btn btn-primary") }}
+    </div>
+</div>
 
-    <h2>
-        Search products
-    </h2>
-
-    <fieldset>
-
-        {% for element in form %}
-            <div class='control-group'>
-                {{ element.label(['class': 'control-label']) }}
-
-                <div class='controls'>
-                    {{ element }}
+<form action="/products/search" role="form" method="get">
+    {% for element in form %}
+        {% if is_a(element, 'Phalcon\Forms\Element\Hidden') %}
+            {{ element }}
+        {% else %}
+            <div class="form-group">
+                {{ element.label() }}
+                <div class="controls">
+                    {{ element.setAttribute("class", "form-control") }}
                 </div>
             </div>
-        {% endfor %}
+        {% endif %}
+    {% endfor %}
 
-
-
-        <div class='control-group'>
-            {{ submit_button('Search', 'class': 'btn btn-primary') }}
-        </div>
-
-    </fieldset>
-
-{{ endForm() }}
+    {{ submit_button("Search", "class": "btn btn-primary") }}
+</form>
 {% endraw %}
 ```
 
@@ -1025,6 +1006,9 @@ $type = new Select(
 
     <h2>
         Search products
+        <div class="col-xs-12 col-md-6 text-right">
+            <a href="products/new" "class=btn btn-primary">Create Product</a>
+        </div>
     </h2>
 
     <fieldset>
@@ -1167,7 +1151,7 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-[paginator](pagination) 객체는 검색결과를 받습니다. 그리고 여기서 현재 페이지번호와 함께 리미트(페이지당 표시 건수) 도 설정합니다. 마지막으로 `paginate()` 를 호출해서 적적한 결과목록의 부분을 다시 넘겨받습니다.
+[paginator](pagination) 객체는 검색결과를 받습니다. 그리고 여기서 현재 페이지번호와 함께 리미트(페이지당 표시 건수) 도 설정합니다. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
 
 그리고 나서 반환된 페이지를 뷰로 전달합니다.
 
@@ -1177,93 +1161,90 @@ $page = $paginator->paginate();
 $this->view->page = $page;
 ```
 
-뷰 (`app/views/products/search.volt`) 에서, 현재페이지에 맞는 결과값을 루프를 돌면서 모든 row값들을 하나하나 표시합니다.
+In the view (`themes/invo/products/search.volt`), we traverse the results corresponding to the current page, showing every row in the current page to the user:
 
 ```twig
 {% raw %}
 {% for product in page.items %}
     {% if loop.first %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Product Type</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Active</th>
-                </tr>
-            </thead>
-            <tbody>
+        <table class="table table-bordered table-striped" align="center">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product Type</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
     {% endif %}
-
     <tr>
-        <td>
-            {{ product.id }}
+        <td>{{ product.id }}</td>
+        <td>{{ product.getProductTypes().name }}</td>
+        <td>{{ product.name }}</td>
+        <td>${{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">
+            {{ 
+                link_to(
+                    "products/edit/" ~ product.id, 
+                    '<i class="glyphicon glyphicon-edit"></i> Edit', 
+                    "class": "btn btn-default"
+                ) 
+            }}
         </td>
-
-        <td>
-            {{ product.getProductTypes().name }}
-        </td>
-
-        <td>
-            {{ product.name }}
-        </td>
-
-        <td>
-            {{ '%.2f'|format(product.price) }}
-        </td>
-
-        <td>
-            {{ product.getActiveDetail() }}
-        </td>
-
-        <td width='7%'>
-            {{ link_to('products/edit/' ~ product.id, 'Edit') }}
-        </td>
-
-        <td width='7%'>
-            {{ link_to('products/delete/' ~ product.id, 'Delete') }}
+        <td width="7%">
+            {{ 
+                link_to(
+                    "products/delete/" ~ product.id, 
+                    '<i class="glyphicon glyphicon-remove"></i> Delete', 
+                    "class": "btn btn-default"
+                ) 
+            }}
         </td>
     </tr>
-
     {% if loop.last %}
-            </tbody>
-            <tbody>
-                <tr>
-                    <td colspan='7'>
-                        <div>
-                            {{ 
-                                link_to(
-                                    'products/search', 
-                                    'First'
-                                ) 
-                            }}
-                            {{ 
-                                link_to(
-                                    'products/search?page=' ~ page.previous, 
-                                    'Previous'
-                                ) 
-                            }}
-                            {{ 
-                                link_to(
-                                    'products/search?page=' ~ page.next, 
-                                    'Next'
-                                ) 
-                            }}
-                            {{ 
-                                link_to(
-                                    'products/search?page=' ~ page.last, 
-                                    'Last'
-                                ) 
-                            }}
-                            <span class='help-inline'>
-                                {{ page.current }} of 
-                                {{ page.total_pages }}
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+        </tbody>
+        <tbody>
+        <tr>
+            <td colspan="7" align="right">
+                <div class="btn-group">
+                    {{ 
+                        link_to(
+                            "products/search", 
+                            '<i class="icon-fast-backward"></i> First', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    {{ 
+                        link_to(
+                            "products/search?page=" ~ page.before, 
+                            '<i class="icon-step-backward"></i> Previous', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    {{ 
+                        link_to(
+                            "products/search?page=" ~ page.next, 
+                            '<i class="icon-step-forward"></i> Next', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    {{ 
+                        link_to(
+                            "products/search?page=" ~ page.last, 
+                            '<i class="icon-fast-forward"></i> Last', 
+                            "class": "btn"
+                        ) 
+                    }}
+                    <span class="help-inline">
+                        {{ page.current }} of {{ page.total_pages }}
+                    </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
         </table>
     {% endif %}
 {% else %}
@@ -1324,7 +1305,7 @@ $this->view->page = $page;
     </td>
 
     <td>
-        {{ product.productTypes.name }}
+        {{ product.getProductTypes().name }}
     </td>
 
     <td>
@@ -1350,7 +1331,7 @@ $this->view->page = $page;
 {% endraw %}
 ```
 
-앞에서 확인한 바와 같이 `product.id` 를 사용하는 것은 PHP 에서: `$product->id` 와 동일하며, `product.name` 등도 같습니다. 다른 형태로 렌더링되는 필드도 있습니다, 예를 들어, `product.productTypes.name` 에 주목해 보세요. 이 부분을 이해하려면, Products 모델을 확인해야 합니다(`app/models/Products.php`):
+As we have seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.getProductTypes().name`. 이 부분을 이해하려면, Products 모델을 확인해야 합니다(`app/models/Products.php`):
 
 ```php
 <?php
@@ -1380,7 +1361,7 @@ class Products extends Model
 }
 ```
 
-모델은 `initialize()` 메서드를 가질 수 있습니다. 이 메서드는 요청당 한번씩 호출될 수 있으며 ORM이 모델을 초기화 하도록 해 줍니다. 이 경우, `Products`를 초기화 할때 `ProductTypes` 모델과 1: n 관계(one-to-many relationship) 임을 정의합니다.
+A model can have a method called `initialize()`, this method is called once per request, and it serves the ORM to initialize a model. 이 경우, `Products`를 초기화 할때 `ProductTypes` 모델과 1: n 관계(one-to-many relationship) 임을 정의합니다.
 
 ```php
 <?php
@@ -1394,11 +1375,11 @@ $this->belongsTo(
     ]
 );
 ```
-즉, `Products`의 로컬 속성인 `product_types_id`가 `ProductTypes`의 속성 `id`과 1: n 관계라는 의미입니다. 이 관계를 정의함으로써 우리는 다음과 같이 상품타입 명을 액세스 할 수 있게 됩니다:
+Which means, the local attribute `product_types_id` in `Products` has a one-to-many relation to the `ProductTypes` model in its attribute `id`. 이 관계를 정의함으로써 우리는 다음과 같이 상품타입 명을 액세스 할 수 있게 됩니다:
 
 ```twig
 {% raw %}
-<td>{{ product.productTypes.name }}</td>
+<td>{{ product.getProductTypes().name }}</td>
 {% endraw %}
 ```
 
@@ -1476,7 +1457,7 @@ public function createAction()
     // ...
 }
 ```
-앞에서 본 것 처럼, form을 생성할 때 관련 요소(elements) 에 할당된 필터들이 있었지요. 데이터가 form으로 전달되면, 이 필터들이 실행되어 입력값에 대해 검증처리(sanitize) 를 하게 됩니다. 이 필터링을 필수로 해야 하는건 아니지만, 언제나 그렇듯이 좋은 습관을 들이는 것이 좋습니다. 하나 더 추가하면, 입력된 데이터에 대해 ORM에서도 이스케이프처리를 하고, 컬럼 타입에 따라 추가적인 형변환(casting) 작업을 수행합니다:
+앞에서 본 것 처럼, form을 생성할 때 관련 요소(elements) 에 할당된 필터들이 있었지요. When the data is passed to the form, these filters are invoked, and they sanitize the supplied input. 이 필터링을 필수로 해야 하는건 아니지만, 언제나 그렇듯이 좋은 습관을 들이는 것이 좋습니다. 하나 더 추가하면, 입력된 데이터에 대해 ORM에서도 이스케이프처리를 하고, 컬럼 타입에 따라 추가적인 형변환(casting) 작업을 수행합니다:
 
 ```php
 <?php
@@ -1505,7 +1486,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-데이터를 저장하는 시점에, `ProductsForm` 에 적용된 (`app/forms/ProductsForm.php`) 비즈니스 룰과 유효성 검증(validation)을 통과했는지 알 수 있습니다:
+Upon saving the data, we will know whether the business rules and validations implemented in the `ProductsForm` pass (`src/Forms/ProductsForm.php`):
 
 ```php
 <?php
@@ -1687,85 +1668,6 @@ public function saveAction()
 }
 ```
 
-## Components
-The UI has been create with the [Bootstrap][bootstrap] library. 네비게이션 바와 같은 일부 요소들은 어플리케이션의 상태에 따라 바뀝니다. 예를 들어, 우상단 코너에 있는 `Log in / Sign Up` 링크는 사용자가 어플리켕션에 로그인 하면 `Log out`로 바뀝니다.
-
-어플리케이션에서 이 부분은 `Elements`컴포넌트에서 구현됩니다.(`app/library/Elements.php`).
-
-```php
-<?php
-
-use Phalcon\Di\Injectable;
-
-class Elements extends Injectable
-{
-    public function getMenu()
-    {
-        // ...
-    }
-
-    public function getTabs()
-    {
-        // ...
-    }
-}
-```
-
-This class extends the [Phalcon\Di\Injectable][di-injectable]. 그래야 할 필요는 없지만 이 컴포넌트를 상속 받으면 어플리케이션의 모든 서비스에 접근가능해 집니다. 이 사용자 컴포넌트를 서비스 컨테이너에 등록합니다:
-
-```php
-<?php
-
-$container->set(
-    'elements',
-    function () {
-        return new Elements();
-    }
-);
-```
-
-이 컴포넌트가 DI 컨테이너에 등록되었으므로, 서비스 등록시 사용했던 것과 같은 이름의 속성값을 이용해서 뷰에서 바로 접근할 수 있습니다.
-
-```twig
-{% raw %}
-<div class='navbar navbar-fixed-top'>
-    <div class='navbar-inner'>
-        <div class='container'>
-            <a class='btn btn-navbar' 
-               data-toggle='collapse' 
-               data-target='.nav-collapse'>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </a>
-
-            <a class='brand' href='#'>INVO</a>
-
-            {{ elements.getMenu() }}
-        </div>
-    </div>
-</div>
-
-<div class='container'>
-    {{ content() }}
-
-    <hr>
-
-    <footer>
-        <p>&copy; Company {{ date('Y') }}</p>
-    </footer>
-</div>
-{% endraw %}
-```
-
-중요한 부분은:
-
-```twig
-{% raw %}
-{{ elements.getMenu() }}
-{% endraw %}
-```
-
 ## 동적인 타이틀
 어플리케이션을 돌어다니면서 살펴보다 보면, 우리가 현재 작업중인 위치를 표시하며 타이틀이 동적으로 바뀌는 것을 보실 수 있습니다. 이것은 각각의 컨트롤러에서 수행됩니다 (`initialize()` 메서드):
 
@@ -1776,11 +1678,11 @@ class ProductsController extends ControllerBase
 {
     public function initialize()
     {
-        $this->tag->setTitle(
-            'Manage your product types'
-        );
-
         parent::initialize();
+
+        $this->tag->title()
+                  ->set('Manage your products')
+        ;
     }
 
     // ...
@@ -1798,7 +1700,10 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        $this->tag->prependTitle('INVO | ');
+        $this->tag->title()
+                  ->prepend('INVO | ')
+        ;
+        $this->view->setTemplateAfter('main');
     }
 
     // ...
@@ -1806,7 +1711,7 @@ class ControllerBase extends Controller
 ```
 위의 코드는 어플리케이션 이름을 타이틀의 앞부분에 추가합니다
 
-마지막으로, 타이틀이 메인 뷰에 출력됩니다(`app/views/index.volt`):
+Finally, the title is printed in the main view (`themes/invo/views/index.volt`):
 
 ```php
 <!DOCTYPE html>

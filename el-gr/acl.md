@@ -57,7 +57,7 @@ $acl->setDefaultAction(Enum::ALLOW);
 The [Phalcon\Acl\Enum][acl-enum] class offers two constants that can be used when defining access levels.
 
 - `Phalcon\Acl\Enum::ALLOW` (`1`)
-- `Phalcon\Acl\Enum::DENY` (`0` - default)
+- `Phalcon\Acl\Enum::DENY` (`0` - προεπιλογή)
 
 You can use these constants to define access levels for your ACL.
 
