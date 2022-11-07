@@ -809,7 +809,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-| Action         | Περιγραφή                                                                                               |
+| Ενέργεια       | Περιγραφή                                                                                               |
 | -------------- | ------------------------------------------------------------------------------------------------------- |
 | `createAction` | Creates a product based on the data entered in the `new` action                                         |
 | `deleteAction` | Deletes an existing product                                                                             |
@@ -1064,7 +1064,7 @@ This produces the following HTML:
 
 When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
 
-## Search
+## Αναζήτηση
 The `search` action has two operations. When accessed using the HTTP method `POST`, it performs the search based on the data sent from the form. When it is accessed using the HTTP method `GET`, it moves the current page in the paginator. To check which HTTP method has been used, we use the [Request](request) component:
 
 ```php
