@@ -39,6 +39,10 @@ Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de A
 > 
 > {: .alert .alert-danger }
 
+> **NOTE**: The documentation below refers to the Phalcon 5.0.0 installation. Adjust your installation/commands to the version you want to install accordingly. 
+> 
+> {: .alert .alert-danger }
+
 Along with PHP 7.4 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
 
 * [curl][curl]
@@ -263,7 +267,7 @@ Reinicie su servidor web.
 Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
 
 #### Requerimentos
-* PHP 7.4.x+ development resources
+* PHP development resources depending on your version (8.1 recommended)
 * Compilador GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
