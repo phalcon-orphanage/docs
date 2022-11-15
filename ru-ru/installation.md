@@ -39,6 +39,10 @@ We have hosted our website and blog for the last few years on an Amazon VM with 
 > 
 > {: .alert .alert-danger }
 
+> **NOTE**: The documentation below refers to the Phalcon 5.0.0 installation. Adjust your installation/commands to the version you want to install accordingly. 
+> 
+> {: .alert .alert-danger }
+
 Along with PHP 7.4 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
 
 * [curl][curl]
@@ -263,7 +267,7 @@ Restart your webserver.
 Compiling from source is similar to most environments (Linux/macOS).
 
 #### Requirements
-* PHP 7.4.x+ development resources
+* PHP development resources depending on your version (8.1 recommended)
 * Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev (libpcre3-dev)
