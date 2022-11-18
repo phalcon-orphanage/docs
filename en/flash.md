@@ -289,7 +289,7 @@ $iconClasses = [
     'warning' => 'alert alert-warning',
 ];
 
-$flash->setCssClasses($cssClasses);
+$flash->setCssIconClasses($iconClasses);
 ```
 
 and then calling
