@@ -242,8 +242,10 @@ will produce:
 
 The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
 
-- `%cssClass%` - where the CSS class will be injected
-- `%message%` - where the message will be injected
+| Placeholder  | Περιγραφή                            |
+|:------------:| ------------------------------------ |
+| `%cssClass%` | where the CSS class will be injected |
+| `%message%`  | where the message will be injected   |
 
 ```php
 <?php
@@ -293,7 +295,7 @@ $iconClasses = [
     'warning' => 'alert alert-warning',
 ];
 
-$flash->setCssClasses($cssClasses);
+$flash->setCssIconClasses($iconClasses);
 ```
 
 and then calling
@@ -311,6 +313,68 @@ will produce:
 > **NOTE**: The `setCssIconClasses()` returns back the object, so you can use in a more fluent interface by chaining calls. 
 > 
 > {: .alert .alert-info }
+
+An example of how the `setCssClasses`, `setCssIconClasses` and `setCustomTemplate` can be used to output flash messages that can be _closed_ is below:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Flash\Session;
+
+$container = new FactoryDefault();
+
+$container->set(
+    'flashSession',
+    function () {
+        $flash = new Session();
+
+        $flash->setCssClasses(
+            [
+                'error'   => 'error_message callout alert radius flashSession',
+                'success' => 'success_message callout success radius flashSession',
+                'warning' => 'warning_message callout warning radius flashSession',
+                'notice'  => 'notice_message callout secondary radius flashSession'
+            ]
+        );
+
+        $flash->setCssIconClasses(
+            [
+                'error'   => 'fi-alert',
+                'success' => 'fi-check',
+                'notice'  => 'fi-star',
+                'warning' => 'fi-flag',
+            ]
+        );
+
+        $template = '<div class="%cssClass%">
+    <i class="%cssIconClass%"></i> %message%
+    <button class="close-button" aria-label="Close" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>';
+        $flash->setCustomTemplate($template);
+
+        $flash->setAutoescape(false);
+
+        return $flash;
+    }
+);
+```
+If you then call:
+
+```php
+$this->flashSession->error('An error has occurred. Please contact support.')
+```
+will produce the following HTML snippet in your view (when calling `$flashSession->output()`:
+```html
+<div class="error_message callout alert radius flashSession">
+    <i class="fi-alert"></i> An error has occurred. Please contact support.
+    <button class="close-button" aria-label="Close" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+```
 
 ## Messages
 As mentioned above, the component has different types of messages. To add a message to the component you can call `message()` with the type as well as the message itself. The types of messages are:
