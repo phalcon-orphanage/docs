@@ -196,7 +196,7 @@ O arquivo `tutorial/public/index.php` deve se parecer com o seguinte:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader\Loader;
+use Phalcon\Autoload\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Url;
