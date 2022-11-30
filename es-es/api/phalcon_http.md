@@ -584,6 +584,11 @@ private queryFilters;
 /**
  * @var array|null
  */
+private patchCache;
+
+/**
+ * @var array|null
+ */
 private putCache;
 
 /**
@@ -666,6 +671,18 @@ Obtiene el tipo de contenido en el que se hizo la solicitud
 public function getDigestAuth(): array;
 ```
 Obtiene información de autenticación aceptada por el navegador/cliente desde $_SERVER["PHP_AUTH_DIGEST"]
+
+
+```php
+public function getFilteredData( string $methodKey, string $method, string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+```
+Gets filtered data
+
+
+```php
+public function getFilteredPatch( string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+```
+Retrieves a patch value always sanitized with the preset filters
 
 
 ```php
@@ -777,6 +794,20 @@ Si se establece la cabecera X-HTTP-Method-Override, y el método es POST, entonc
 El parámetro de petición _method también se puede usar para determinar el método HTTP, pero sólo si se ha llamado a setHttpMethodParameterOverride(true).
 
 El método siempre es una cadena en mayúscula.
+
+
+```php
+public function getPatch( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+```
+Obtiene una variable de la solicitud `put`
+
+```php
+// Returns value from $_PATCH["user_email"] without sanitizing
+$userEmail = $request->getPatch("user_email");
+
+// Returns value from $_PATCH["user_email"] with sanitizing
+$userEmail = $request->getPatch("user_email", "email");
+```
 
 
 ```php
@@ -914,6 +945,12 @@ Devuelve si la solicitud tiene archivos o no
 final public function hasHeader( string $header ): bool;
 ```
 Comprueba si las cabeceras tienen un cierto índice
+
+
+```php
+public function hasPatch( string $name ): bool;
+```
+Checks whether the PATCH data has certain index
 
 
 ```php
