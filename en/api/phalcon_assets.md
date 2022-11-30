@@ -723,7 +723,9 @@ removes last semicolon from last property
 public function filter( string $content ): string;
 ```
 Filters the content using CSSMIN
-NOTE: This functionality is not currently available
+
+> NOTE: This functionality is not currently available
+{: .alert .alert-info }
 
 
 
@@ -747,7 +749,9 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.
 public function filter( string $content ): string;
 ```
 Filters the content using JSMIN
-NOTE: This functionality is not currently available
+
+> NOTE: This functionality is not currently available
+{: .alert .alert-info }
 
 
 

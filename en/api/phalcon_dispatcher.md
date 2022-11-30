@@ -266,10 +266,23 @@ Gets a param by its name or numeric index
 
 
 ```php
+public function getParameter( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
+```
+Gets a param by its name or numeric index
+
+
+```php
+public function getParameters(): array;
+```
+Gets action params
+
+
+```php
 public function getParams(): array;
 ```
 Gets action params
 
+@todo remove this in future versions
 
 ```php
 public function getReturnedValue(): mixed;
@@ -279,6 +292,13 @@ Returns value returned by the latest dispatched action
 
 ```php
 public function hasParam( mixed $param ): bool;
+```
+Check if a param exists
+@todo deprecate this in the future
+
+
+```php
+public function hasParameter( mixed $param ): bool;
 ```
 Check if a param exists
 
@@ -364,12 +384,26 @@ Sets the namespace where the controller class is
 public function setParam( mixed $param, mixed $value ): void;
 ```
 Set a param by its name or numeric index
+@todo deprecate this in the future
+
+
+```php
+public function setParameter( mixed $param, mixed $value ): void;
+```
+Set a param by its name or numeric index
+
+
+```php
+public function setParameters( array $params ): void;
+```
+Sets action params to be dispatched
 
 
 ```php
 public function setParams( array $params ): void;
 ```
 Sets action params to be dispatched
+@todo deprecate this in the future
 
 
 ```php
@@ -443,6 +477,18 @@ Gets the default handler suffix
 public function getParam( mixed $param, mixed $filters = null ): mixed;
 ```
 Gets a param by its name or numeric index
+
+
+```php
+public function getParameter( mixed $param, mixed $filters = null ): mixed;
+```
+Gets a param by its name or numeric index
+
+
+```php
+public function getParameters(): array;
+```
+Gets action params
 
 
 ```php

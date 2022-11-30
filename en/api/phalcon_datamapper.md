@@ -1412,17 +1412,7 @@ Processes an array - if passed as an `inline` parameter
 | Uses       | Phalcon\DataMapper\Pdo\Connection |
 | Extends    | AbstractConditions |
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by AtlasPHP
-
-@link    https://github.com/atlasphp/Atlas.Query
-@license https://github.com/atlasphp/Atlas.Qyert/blob/1.x/LICENSE.md
+Delete Query
 
 
 ## Methods
@@ -1467,7 +1457,7 @@ Adds the `RETURNING` clause
 | Uses       | Phalcon\DataMapper\Pdo\Connection |
 | Extends    | AbstractQuery |
 
-Class Insert
+Insert Query
 
 
 ## Methods
@@ -1535,7 +1525,8 @@ Sets a column = value condition
 | Namespace  | Phalcon\DataMapper\Query |
 | Uses       | Phalcon\DataMapper\Pdo\Connection |
 
-Class QueryFactory
+QueryFactory
+
 
 ## Properties
 ```php
@@ -1594,7 +1585,8 @@ Create a new Update object
 | Uses       | BadMethodCallException |
 | Extends    | AbstractConditions |
 
-Class Select
+Select Query
+
 
 ## Constants
 ```php
@@ -1751,7 +1743,7 @@ Statement builder
 | Uses       | Phalcon\DataMapper\Pdo\Connection |
 | Extends    | AbstractConditions |
 
-Class Update
+Update Query
 
 
 ## Methods
