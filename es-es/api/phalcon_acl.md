@@ -319,7 +319,7 @@ protected access;
 protected accessList;
 
 /**
- * Returns latest function used to acquire access
+ * Returns the latest function used to acquire access
  *
  * @var mixed
  */
@@ -508,7 +508,7 @@ Removes access from a component
 ```php
 public function getActiveFunction(): mixed;
 ```
-Returns latest function used to acquire access
+Returns the latest function used to acquire access
 
 
 ```php
@@ -694,7 +694,7 @@ Constantes para adaptadores Phalcon\Acl\Adapter
 ## Constantes
 ```php
 const ALLOW = 1;
-const DENY  = 0;
+const DENY = 0;
 ```
 
 
@@ -805,3 +805,5 @@ Devuelve la descripción del rol
 public function getName(): string;
 ```
 Devuelve el nombre del rol
+
+
