@@ -258,10 +258,23 @@ Obtiene un parámetro por su nombre o índice numérico
 
 
 ```php
+public function getParameter( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
+```
+Obtiene un parámetro por su nombre o índice numérico
+
+
+```php
+public function getParameters(): array;
+```
+Obtiene los parámetros de la acción
+
+
+```php
 public function getParams(): array;
 ```
 Obtiene los parámetros de la acción
 
+@todo remove this in future versions
 
 ```php
 public function getReturnedValue(): mixed;
@@ -271,6 +284,12 @@ Devuelve el valor devuelto por la última acción despachada
 
 ```php
 public function hasParam( mixed $param ): bool;
+```
+Check if a param exists @todo deprecate this in the future
+
+
+```php
+public function hasParameter( mixed $param ): bool;
 ```
 Comprueba si un parámetro existe
 
@@ -354,13 +373,25 @@ Establece el espacio de nombres donde está la clase controlador
 ```php
 public function setParam( mixed $param, mixed $value ): void;
 ```
+Set a param by its name or numeric index @todo deprecate this in the future
+
+
+```php
+public function setParameter( mixed $param, mixed $value ): void;
+```
 Establece un parámetro por su nombre o índice numérico
+
+
+```php
+public function setParameters( array $params ): void;
+```
+Establece los parámetros de la acción a despachar
 
 
 ```php
 public function setParams( array $params ): void;
 ```
-Establece los parámetros de la acción a despachar
+Sets action params to be dispatched @todo deprecate this in the future
 
 
 ```php
@@ -434,6 +465,18 @@ Obtiene el sufijo del manejador por defecto
 public function getParam( mixed $param, mixed $filters = null ): mixed;
 ```
 Obtiene un parámetro por su nombre o índice numérico
+
+
+```php
+public function getParameter( mixed $param, mixed $filters = null ): mixed;
+```
+Obtiene un parámetro por su nombre o índice numérico
+
+
+```php
+public function getParameters(): array;
+```
+Obtiene los parámetros de la acción
 
 
 ```php
