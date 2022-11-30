@@ -668,7 +668,11 @@ Minimiza el CSS - elimina comentarios, elimina las líneas nuevas y los avances 
 ```php
 public function filter( string $content ): string;
 ```
-Filtra el contenido usando CSSMIN NOTA: Esta funcionalidad no está disponible actualmente
+Filters the content using CSSMIN
+
+> NOTE: This functionality is not currently available 
+> 
+> {: .alert .alert-info }
 
 
 
@@ -687,7 +691,11 @@ Elimina los caracteres que son insignificantes para JavaScript. Se eliminarán l
 ```php
 public function filter( string $content ): string;
 ```
-Filtra el contenido usando JSMIN NOTA: Esta funcionalidad no está disponible actualmente
+Filters the content using JSMIN
+
+> NOTE: This functionality is not currently available 
+> 
+> {: .alert .alert-info }
 
 
 
