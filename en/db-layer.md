@@ -1723,6 +1723,8 @@ echo 'SQL Statement: ', $profile->getSQLStatement(), PHP_EOL,
      'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), PHP_EOL;
 ```
 
+The profiler exposes the `getProfiles()` method, returning an array of `Phalcon\Db\Profiler\Item` objects. Each object contains relevant statistics, including calculations for seconds, microseconds and nanoseconds.
+
 You can also create your own profile class based on the [Phalcon\Db\Profiler][db-profiler] class to record real time statistics of the statements that are sent to the database:
 
 ```php
