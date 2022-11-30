@@ -584,6 +584,11 @@ private queryFilters;
 /**
  * @var array|null
  */
+private patchCache;
+
+/**
+ * @var array|null
+ */
 private putCache;
 
 /**
@@ -666,6 +671,18 @@ Gets content type which request has been made
 public function getDigestAuth(): array;
 ```
 Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+
+
+```php
+public function getFilteredData( string $methodKey, string $method, string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+```
+Gets filtered data
+
+
+```php
+public function getFilteredPatch( string $name = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+```
+Retrieves a patch value always sanitized with the preset filters
 
 
 ```php
@@ -777,6 +794,20 @@ If the X-HTTP-Method-Override header is set, and if the method is a POST, then i
 The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called.
 
 The method is always an uppercased string.
+
+
+```php
+public function getPatch( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+```
+Gets a variable from put request
+
+```php
+// Returns value from $_PATCH["user_email"] without sanitizing
+$userEmail = $request->getPatch("user_email");
+
+// Returns value from $_PATCH["user_email"] with sanitizing
+$userEmail = $request->getPatch("user_email", "email");
+```
 
 
 ```php
@@ -914,6 +945,12 @@ Returns if the request has files or not
 final public function hasHeader( string $header ): bool;
 ```
 Checks whether headers has certain index
+
+
+```php
+public function hasPatch( string $name ): bool;
+```
+Checks whether the PATCH data has certain index
 
 
 ```php
