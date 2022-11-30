@@ -529,6 +529,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 | Namespace  | Phalcon\Di |
 
+Interface for components that have `initialize()`
 
 
 ## Metody
