@@ -1296,15 +1296,7 @@ Procesa un vector - si se pasa como un parámetro `inline`
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractConditions |
 
-Este fichero es parte del Framework Phalcon.
-
-(c) Phalcon Team <team@phalcon.io>
-
-Para obtener toda la información sobre derechos de autor y licencias, por favor vea el archivo LICENSE.txt que se distribuyó con este código fuente.
-
-La implementación de este archivo ha sido influenciada por AtlasPHP
-
-@link    https://github.com/atlasphp/Atlas.Query @license https://github.com/atlasphp/Atlas.Qyert/blob/1.x/LICENSE.md
+Delete Query
 
 
 ## Métodos
@@ -1345,7 +1337,7 @@ Añade la cláusula `RETURNING`
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractQuery |
 
-Clase Insert
+Insert Query
 
 
 ## Métodos
@@ -1410,7 +1402,8 @@ Establece una condición columna = valor
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection |
 
-Clase QueryFactory
+QueryFactory
+
 
 ## Propiedades
 ```php
@@ -1467,7 +1460,8 @@ Crea un nuevo objeto Update
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | BadMethodCallException | | Extends    | AbstractConditions |
 
-Clase Select
+Select Query
+
 
 ## Constantes
 ```php
@@ -1619,7 +1613,7 @@ Constructor de sentencias
 
 | Namespace  | Phalcon\DataMapper\Query | | Uses       | Phalcon\DataMapper\Pdo\Connection | | Extends    | AbstractConditions |
 
-Clase Update
+Update Query
 
 
 ## Métodos
