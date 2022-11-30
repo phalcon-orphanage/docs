@@ -889,7 +889,7 @@ Sets a service from the DI
 
 
 ```php
-public function stop();
+public function stop(): void;
 ```
 Stops the middleware execution avoiding than other middlewares be executed
 
@@ -1360,8 +1360,7 @@ protected uniqueKey;
 protected uniqueParams;
 
 /**
- * @var array|null
- * TODO: Make it always array in code
+ * @var array
  */
 protected uniqueTypes;
 
