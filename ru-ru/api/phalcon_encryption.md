@@ -974,9 +974,10 @@ Exceptions thrown in Phalcon\Security will use this class
 
 | Namespace  | Phalcon\Encryption\Security\JWT | | Uses       | InvalidArgumentException, Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Item, Phalcon\Encryption\Security\JWT\Token\Signature, Phalcon\Encryption\Security\JWT\Token\Token |
 
-Builder
+JWT Builder
 
-The builder offers
+@link https://tools.ietf.org/html/rfc7519
+
 
 ## Properties
 ```php
@@ -1429,6 +1430,9 @@ Token Class.
 
 A container for Token related data. It stores the claims, headers, signature and payload. It also calculates and returns the token string.
 
+@link https://tools.ietf.org/html/rfc7519
+
+
 ## Properties
 ```php
 /**
@@ -1643,7 +1647,7 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-@link http://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
+@link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
 
 ## Методы

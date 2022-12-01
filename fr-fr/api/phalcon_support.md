@@ -451,9 +451,20 @@ protected showFiles = true;
     */
 protected uri = https://assets.phalcon.io/debug/5.0.x/;
 
+/**
+ * @var Version
+ */
+private version;
+
 ```
 
 ## Méthodes
+
+```php
+public function __construct();
+```
+Constructor setting a reusable version object
+
 
 ```php
 public function clearVars(): Debug;
@@ -1298,7 +1309,7 @@ protected function toInterpolate( string $input, array $context = [], string $le
 ```
 Interpolates context values into the message placeholders
 
-@see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message
+@see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
 
 
 ```php
@@ -1595,7 +1606,7 @@ public function __invoke( string $text, string $separator = string ): string;
 
 Interpolates context values into the message placeholders. By default, the right and left tokens are `%`
 
-@see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message
+@see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
 
 
 ## Méthodes

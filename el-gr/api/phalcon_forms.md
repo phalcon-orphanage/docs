@@ -999,7 +999,7 @@ Returns the current position/key in the iterator
 
 
 ```php
-public function label( string $name, array $attributes = null ): string;
+public function label( string $name, array $attributes = [] ): string;
 ```
 Generate the label of an element added to the form including HTML
 

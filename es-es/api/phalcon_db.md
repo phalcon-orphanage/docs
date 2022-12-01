@@ -3695,11 +3695,11 @@ protected activeProfile;
 protected allProfiles;
 
 /**
- * Total time spent by all profiles to complete
+ * Total time spent by all profiles to complete in nanoseconds
  *
  * @var float
  */
-protected totalSeconds = 0;
+protected totalNanoseconds = 0;
 
 ```
 
@@ -3724,6 +3724,18 @@ Obtiene todos los perfiles procesados
 
 
 ```php
+public function getTotalElapsedMilliseconds(): double;
+```
+Returns the total time in milliseconds spent by the profiles
+
+
+```php
+public function getTotalElapsedNanoseconds(): double;
+```
+Returns the total time in nanoseconds spent by the profiles
+
+
+```php
 public function getTotalElapsedSeconds(): double;
 ```
 Devuelve el tiempo total empleado por los perfiladores en segundos
@@ -3736,7 +3748,7 @@ Restablece el perfilador, limpiando todos los perfiladores
 
 
 ```php
-public function startProfile( string $sqlStatement, mixed $sqlVariables = null, mixed $sqlBindTypes = null ): Profiler;
+public function startProfile( string $sqlStatement, array $sqlVariables = [], array $sqlBindTypes = [] ): Profiler;
 ```
 Inicia el perfil de una sentencia SQL
 
@@ -3827,6 +3839,18 @@ Return the SQL statement related to the profile
 public function getSqlVariables(): array;
 ```
 Return the SQL variables related to the profile
+
+
+```php
+public function getTotalElapsedMilliseconds(): double;
+```
+Returns the total time in milliseconds spent by the profile
+
+
+```php
+public function getTotalElapsedNanoseconds(): double;
+```
+Returns the total time in nanoseconds spent by the profile
 
 
 ```php

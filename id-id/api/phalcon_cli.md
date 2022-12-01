@@ -334,8 +334,7 @@ protected defaultTask;
 protected matchedRoute;
 
 /**
- * @var array|null
- * TODO: make always array
+ * @var array
  */
 protected matches;
 
@@ -409,9 +408,17 @@ Returns processed module name
 
 
 ```php
+public function getParameters(): array;
+```
+Returns processed extra params
+
+
+```php
 public function getParams(): array;
 ```
 Returns processed extra params
+
+@todo deprecate this in future versions
 
 
 ```php
@@ -544,10 +551,10 @@ protected description;
 /**
  * @var string
  */
-protected id;
+protected routeId;
 
 /**
- * @var string|null
+ * @var string
  */
 protected name;
 
@@ -838,9 +845,15 @@ Returns processed module name
 
 
 ```php
-public function getParams(): array;
+public function getParameters(): array;
 ```
 Returns processed extra params
+
+
+```php
+public function getParams(): array;
+```
+Returns processed extra params @todo deprecate this in the future
 
 
 ```php

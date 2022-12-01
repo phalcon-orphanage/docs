@@ -999,7 +999,7 @@ Devuelve la clave/posición actual del iterador
 
 
 ```php
-public function label( string $name, array $attributes = null ): string;
+public function label( string $name, array $attributes = [] ): string;
 ```
 Genera la etiqueta de un elemento añadido al formulario incluyendo HTML
 

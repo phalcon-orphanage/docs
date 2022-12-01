@@ -889,7 +889,7 @@ Configura un servicio desde el DI
 
 
 ```php
-public function stop();
+public function stop(): void;
 ```
 Detiene la ejecución del software intermedio evitando que se ejecuten otros softwares intermedios
 
@@ -1360,8 +1360,7 @@ protected uniqueKey;
 protected uniqueParams;
 
 /**
- * @var array|null
- * TODO: Make it always array in code
+ * @var array
  */
 protected uniqueTypes;
 
