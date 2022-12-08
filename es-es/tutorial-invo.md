@@ -1151,7 +1151,7 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-El objeto [paginator](pagination) recibe los resultados obtenidos por la búsqueda. También establecemos un límite (resultados por página) así como el número de página. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
+The [paginator](db-pagination) object receives the results obtained by the search. También establecemos un límite (resultados por página) así como el número de página. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
 
 A continuación, pasamos la página devuelta a la vista:
 
