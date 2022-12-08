@@ -921,7 +921,7 @@ The [Logger](logger) component has been moved to the `Logger` namespace.
 
 ---
 
-![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](pagination)
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](db-pagination)
 
 #### `Phalcon\Paginator\Exception`
 - Changed `Phalcon\Paginator\Exception` to extend `\Exception`
