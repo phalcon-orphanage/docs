@@ -1151,7 +1151,7 @@ $paginator = new Paginator(
 
 $page = $paginator->paginate();
 ```
-[paginator](pagination) 객체는 검색결과를 받습니다. 그리고 여기서 현재 페이지번호와 함께 리미트(페이지당 표시 건수) 도 설정합니다. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
+The [paginator](db-pagination) object receives the results obtained by the search. 그리고 여기서 현재 페이지번호와 함께 리미트(페이지당 표시 건수) 도 설정합니다. Finally, we call `paginate()` to get the appropriate chunk of the resultset back.
 
 그리고 나서 반환된 페이지를 뷰로 전달합니다.
 
