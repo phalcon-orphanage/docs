@@ -210,12 +210,10 @@ $acl->addComponent(
     ]
 );
 
-$acl->allow('manager', 'admin', 'users');
+$acl->allow('manager', 'admin', 'dashboard');
 $acl->allow('manager', 'reports', ['list', 'add']);
+$acl->allow('accounting', 'reports', '*');
 $acl->allow('*', 'session', '*');
-$acl->allow('*', '*', 'view');
-
-$acl->deny('guest', '*', 'view');
 ```
 
 Lo que nos dicen las líneas anteriores:
