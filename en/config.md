@@ -14,7 +14,7 @@ Nearly all applications require configuration data for it to operate correctly. 
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 $config = new Config(
     [
@@ -153,7 +153,7 @@ The [Phalcon\Config\Config][config] component accepts a PHP array in the constru
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 $config = new Config(
     [
@@ -206,7 +206,7 @@ You can also use functional programming in conjunction with `path()` to obtain c
 <?php
 
 use Phalcon\Di;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 /**
  * @return mixed|Config
@@ -254,7 +254,7 @@ In the above scenario, we will need to merge the second configuration object wit
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use josegonzalez\Dotenv\Loader;
 
 $baseConfig = new Config(
@@ -423,7 +423,7 @@ Finally, you can also use a [Phalcon\Config\Config][config] object, as an option
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Config\Adapter\Grouped;
 
 $baseConfig = new Config(
@@ -783,7 +783,7 @@ An example of the registration of the service as well as accessing it is below:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 // Create a container
 $container = new FactoryDefault();
@@ -804,7 +804,7 @@ The component is now available in your controllers using the `config` key
 <?php
 
 use Phalcon\Mvc\Controller;
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 /**
  * @property Config $config
