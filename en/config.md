@@ -205,7 +205,7 @@ You can also use functional programming in conjunction with `path()` to obtain c
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Config\Config;
 
 /**
