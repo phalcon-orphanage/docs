@@ -20,7 +20,7 @@ When [Phalcon\Mvc\Model][mvc-model] requires a service to cache resultsets, it w
 ```php
 <?php
 
-use Phalcon\Cache;
+use Phalcon\Cache\Cache;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Storage\SerializerFactory;
@@ -452,7 +452,7 @@ In this scenario, we assume that every time we query a resultset, we also retrie
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Model;
 
 class Invoices extends Model
@@ -540,7 +540,7 @@ The above can also be performed using PHQL:
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Model;
 
 class Invoices extends Model

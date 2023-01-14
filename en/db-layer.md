@@ -715,7 +715,7 @@ adapter = mysql
 <?php
 
 use Phalcon\Config\Adapter\Ini;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Db\Adapter\PdoFactory;
 
 $container = new Di();
@@ -1754,14 +1754,14 @@ $manager->attach('db', $listener);
 ```
 
 ## Logging
-Using high-level abstraction components such as the `Phalcon\Db` adapters to access the database, makes it difficult to understand which statements are sent to the database system. The [Phalcon\Logger](logger) component interacts with the `Phalcon\Db` adapters offering logging capabilities on the database abstraction level.
+Using high-level abstraction components such as the `Phalcon\Db` adapters to access the database, makes it difficult to understand which statements are sent to the database system. The [Phalcon\Logger\Logger](logger) component interacts with the `Phalcon\Db` adapters offering logging capabilities on the database abstraction level.
 
 ```php
 <?php
 
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
-use Phalcon\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/queries.log');

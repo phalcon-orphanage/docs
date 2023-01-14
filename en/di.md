@@ -707,7 +707,7 @@ You can also access other DI services using the `get()` method:
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $container->set(
@@ -1067,7 +1067,7 @@ This feature will load services by parsing a YAML file:
 ```yaml
 ; /app/config/services.yml
 config:
-  className: \Phalcon\Config
+  className: \Phalcon\Config\Config
   shared: true
 ```
 
@@ -1092,7 +1092,7 @@ You can also load services using a PHP array:
 ```php
 // /app/config/services.php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 return [
     'config' => [
@@ -1394,7 +1394,7 @@ return [
 
 namespace MyApp\Providers;
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
 
@@ -1423,7 +1423,7 @@ class ConfigProvider implements ServiceProviderInterface
 
 namespace MyApp\Providers;
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Registry;
@@ -1465,7 +1465,7 @@ namespace MyApp\Providers;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 class LoggerProvider implements ServiceProviderInterface

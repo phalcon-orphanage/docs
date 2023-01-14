@@ -40,7 +40,7 @@ After that you can execute that migrations (run) in another environment to creat
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 return new Config([
     'database'    => [
