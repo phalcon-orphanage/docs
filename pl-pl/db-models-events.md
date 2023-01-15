@@ -291,7 +291,7 @@ $container->setShared(
 If a listener returns false that will stop the operation that is executing currently.
 
 ## Logging SQL Statements
-When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-model] to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model][mvc-model] is supported internally by [Phalcon\Db][db]. [Phalcon\Logger](logger) interacts with [Phalcon\Db][db], providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-model] to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model][mvc-model] is supported internally by [Phalcon\Db][db]. [Phalcon\Logger\Logger](logger) interacts with [Phalcon\Db][db], providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 ```php
 <?php
@@ -299,7 +299,7 @@ When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-mod
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Events\Manager;
-use Phalcon\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 $container = new FactoryDefault();
