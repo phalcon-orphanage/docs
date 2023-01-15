@@ -96,7 +96,7 @@ The [Phalcon\Logger\LoggerFactory][logger-loggerfactory] also offers the `newIns
 ```php
 <?php
 
-use Phalcon\Logger\Logger\Logger\Adapter\Stream;
+use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\AdapterFactory;
 use Phalcon\Logger\LoggerFactory;
 use Phalcon\Storage\SerializerFactory;
@@ -140,7 +140,7 @@ Dado que el componente de registro implementa PSR-3, los siguientes métodos est
 ```php
 <?php
 
-use Phalcon\Logger\Logger\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
@@ -182,7 +182,7 @@ El resultado de los anteriores mensajes registrados es:
 ```php
 <?php
 
-use Phalcon\Logger\Logger\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 $adapter1 = new Stream('/logs/first-log.log');
