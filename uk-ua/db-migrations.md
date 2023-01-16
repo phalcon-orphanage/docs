@@ -42,7 +42,7 @@ composer require --dev phalcon/migrations
 ```php
 <?php
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 return new Config([
     'database'    => [

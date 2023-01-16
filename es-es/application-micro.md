@@ -36,7 +36,7 @@ The [Phalcon\Mvc\Micro][mvc-micro] class is the one responsible for creating a M
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Micro;
 
 $container = new Di();
@@ -358,7 +358,7 @@ You can also create a [Phalcon\Mvc\Router][mvc-router] object, setting the route
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Router;
 
@@ -1338,7 +1338,7 @@ También puede crear su propio contenedor DI y asignarlo a la micro aplicación,
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Micro;
 use Phalcon\Config\Adapter\Ini;
 
@@ -2243,7 +2243,7 @@ Los modelos se pueden usar en aplicaciones Micro, siempre y cuando se indique a 
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader\Loader;
+use Phalcon\Autoload\Loader;
 use Phalcon\Mvc\Micro;
 
 $loader = new Loader();
@@ -2280,7 +2280,7 @@ By using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] class you can inject m
 <?php
 
 use MyApp\Models\Invoices;
-use Phalcon\Loader\Loader;
+use Phalcon\Autoload\Loader;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Model\Binder;
 

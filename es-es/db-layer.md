@@ -717,7 +717,7 @@ adapter = mysql
 <?php
 
 use Phalcon\Config\Adapter\Ini;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Db\Adapter\PdoFactory;
 
 $container = new Di();
@@ -1760,14 +1760,14 @@ $manager->attach('db', $listener);
 ```
 
 ## Registro
-Usar componentes de abstracción de alto nivel como los adaptadores `Phalcon\Db` para acceder a la base de datos, hace difícil entender qué sentencias se envían al sistema de base de datos. El componente [Phalcon\Logger](logger) interactúa con los adaptadores `Phalcon\Db` ofreciendo capacidades de registro en el nivel de abstracción de base de datos.
+Usar componentes de abstracción de alto nivel como los adaptadores `Phalcon\Db` para acceder a la base de datos, hace difícil entender qué sentencias se envían al sistema de base de datos. The [Phalcon\Logger\Logger](logger) component interacts with the `Phalcon\Db` adapters offering logging capabilities on the database abstraction level.
 
 ```php
 <?php
 
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
-use Phalcon\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/queries.log');

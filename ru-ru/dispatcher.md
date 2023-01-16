@@ -15,7 +15,7 @@ The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for in
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Dispatcher;
 
 $container  = new Di();
@@ -1061,7 +1061,7 @@ You can use the `dispatcher::beforeForward` event to change modules and perform 
 <?php
 
 use App\Back\Bootstrap;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Events\Manager;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Events\Event;
