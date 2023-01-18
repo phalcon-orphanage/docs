@@ -15,7 +15,7 @@ If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container fo
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\TagFactory;
 
 $escaper = new Escaper();
@@ -363,7 +363,7 @@ All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are 
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Anchor;
 
 $escaper = new Escaper();
@@ -394,7 +394,7 @@ echo $helper('/myurl', 'click<>me', $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Base;
 
 $escaper = new Escaper();
@@ -418,7 +418,7 @@ echo $helper('/myurl', $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Body;
 
 $escaper = new Escaper();
@@ -446,7 +446,7 @@ echo $helper($options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Button;
 
 $escaper = new Escaper();
@@ -477,7 +477,7 @@ echo $helper('click<>me', $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Close;
 
 $escaper = new Escaper();
@@ -498,7 +498,7 @@ echo $helper('form');
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Doctype;
 
 $escaper = new Escaper();
@@ -523,7 +523,7 @@ echo $helper(Doctype::XHTML11, '-:-');
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Element;
 
 $escaper = new Escaper();
@@ -553,7 +553,7 @@ echo $helper('address', 'click<>me', $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Form;
 
 $escaper = new Escaper();
@@ -589,7 +589,7 @@ echo $helper($options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Img;
 
 $escaper = new Escaper();
@@ -627,8 +627,8 @@ Sets the label for the checkbox
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Checkbox;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Checkbox;
 
 $escaper = new Escaper();
 $helper  = new Checkbox($escaper);
@@ -664,8 +664,8 @@ echo $result;
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Color;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Color;
 
 $escaper = new Escaper();
 $helper  = new Color($escaper);
@@ -695,8 +695,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Date;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Date;
 
 $escaper = new Escaper();
 $helper  = new Date($escaper);
@@ -726,8 +726,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\DateTime;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\DateTime;
 
 $escaper = new Escaper();
 $helper  = new DateTime($escaper);
@@ -757,8 +757,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\DateTimeLocal;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\DateTimeLocal;
 
 $escaper = new Escaper();
 $helper  = new DateTimeLocal($escaper);
@@ -788,8 +788,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Email;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Email;
 
 $escaper = new Escaper();
 $helper  = new Email($escaper);
@@ -819,8 +819,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\File;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\File;
 
 $escaper = new Escaper();
 $helper  = new File($escaper);
@@ -850,8 +850,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Hidden;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Hidden;
 
 $escaper = new Escaper();
 $helper  = new Hidden($escaper);
@@ -881,8 +881,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Image;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Image;
 
 $escaper = new Escaper();
 $helper  = new Image($escaper);
@@ -912,8 +912,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Month;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Month;
 
 $escaper = new Escaper();
 $helper  = new Month($escaper);
@@ -950,8 +950,8 @@ Sets the type of the input
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Input;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Input;
 
 $escaper = new Escaper();
 $helper  = new Input($escaper);
@@ -985,8 +985,8 @@ echo $result;
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Numeric;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Numeric;
 
 $escaper = new Escaper();
 $helper  = new Numeric($escaper);
@@ -1016,8 +1016,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Password;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Password;
 
 $escaper = new Escaper();
 $helper  = new Password($escaper);
@@ -1054,8 +1054,8 @@ Sets the label for the radio
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Radio;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Radio;
 
 $escaper = new Escaper();
 $helper  = new Radio($escaper);
@@ -1091,8 +1091,8 @@ echo $result;
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Range;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Range;
 
 $escaper = new Escaper();
 $helper  = new Range($escaper);
@@ -1122,8 +1122,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Search;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Search;
 
 $escaper = new Escaper();
 $helper  = new Search($escaper);
@@ -1189,8 +1189,8 @@ Set the selected option
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Select;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Select;
 
 $escaper = new Escaper();
 $helper  = new Select($escaper);
@@ -1245,8 +1245,8 @@ echo $result;
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Submit;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Submit;
 
 $escaper = new Escaper();
 $helper  = new Submit($escaper);
@@ -1276,8 +1276,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Tel;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Tel;
 
 $escaper = new Escaper();
 $helper  = new Tel($escaper);
@@ -1307,8 +1307,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Text;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Text;
 
 $escaper = new Escaper();
 $helper  = new Text($escaper);
@@ -1338,8 +1338,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\TextArea;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\TextArea;
 
 $escaper = new Escaper();
 $helper  = new TextArea($escaper);
@@ -1370,8 +1370,8 @@ echo $helper('click<>me', $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Time;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Time;
 
 $escaper = new Escaper();
 $helper  = new Time($escaper);
@@ -1401,8 +1401,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Url;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Url;
 
 $escaper = new Escaper();
 $helper  = new Url($escaper);
@@ -1432,8 +1432,8 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
-use Phalcon\Html\Helper\Week;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Week;
 
 $escaper = new Escaper();
 $helper  = new Week($escaper);
@@ -1463,7 +1463,7 @@ echo $helper('test-name', "test-value", $options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Label;
 
 $escaper = new Escaper();
@@ -1495,7 +1495,7 @@ echo $helper($options);
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Link;
 
 $escaper = new Escaper();
@@ -1544,7 +1544,7 @@ Adds a property meta tag
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Meta;
 
 $escaper = new Escaper();
@@ -1592,7 +1592,7 @@ Add an element to the list
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Ol;
 
 $escaper = new Escaper();
@@ -1640,7 +1640,7 @@ Add a URL to the list
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Script;
 
 $escaper = new Escaper();
@@ -1681,7 +1681,7 @@ Add a URL to the list
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Script;
 
 $escaper = new Escaper();
@@ -1751,7 +1751,7 @@ Prepends text to current document title
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Ul;
 
 $escaper = new Escaper();
@@ -1798,7 +1798,7 @@ Add an element to the list
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Ul;
 
 $escaper = new Escaper();
