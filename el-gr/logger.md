@@ -375,7 +375,7 @@ This component makes use of `formatters` to format messages before sending them 
 Formats the messages using a one-line string. The default logging format is:
 
 ```bash
-[%date%][%type%] %message%
+[%date%][%level%] %message%
 ```
 
 #### Μορφή Μηνύματος
@@ -385,7 +385,7 @@ If the default format of the message does not fit the needs of your application 
 | ----------- | ---------------------------------------- |
 | `%message%` | The message itself expected to be logged |
 | `%date%`    | Date the message was added               |
-| `%type%`    | Uppercase string with message type       |
+| `%level%`   | Uppercase string with message level      |
 
 The following example demonstrates how to change the message format:
 
@@ -396,7 +396,7 @@ use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\Formatter\Line;
 
-$formatter = new Line('[%type%] - [%date%] - %message%');
+$formatter = new Line('[%level%] - [%date%] - %message%');
 $adapter   = new Stream('/storage/logs/main.log');
 
 $adapter->setFormatter($formatter);
@@ -427,7 +427,7 @@ use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\Formatter\Line;
 
 $formatter = new Line();
-$formatter->setFormat('[%type%] - [%date%] - %message%');
+$formatter->setFormat('[%level%] - [%date%] - %message%');
 
 $adapter = new Stream('/storage/logs/main.log');
 
@@ -486,7 +486,7 @@ Formats the messages returning a JSON string:
 
 ```json
 {
-    "type"      : "Type of the message",
+    "level"     : "Level of the message",
     "message"   : "The message",
     "timestamp" : "The date as defined in the date format"
 }
@@ -532,7 +532,7 @@ which produces:
 
 ```json
 {
-    "type"      : "error",
+    "level"     : "error",
     "message"   : "Something went wrong",
     "timestamp" : "20181225-121314"
 }

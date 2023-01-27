@@ -375,17 +375,17 @@ Este componente utiliza `formatters` para formatear mensajes antes de enviarlos 
 Formatea los mensajes utilizando una cadena de una línea. El formato por defecto de los mensajes es:
 
 ```bash
-[%date%][%type%] %message%
+[%date%][%level%] %message%
 ```
 
 #### Formato del mensaje
 En caso de que el formato predeterminado no se ajuste a las necesidades de la aplicación, se puede personalizar mediante el método `setFormat()`. Las variables de formato de registro permitidas son:
 
-| Variable    | Descripción                        |
-| ----------- | ---------------------------------- |
-| `%message%` | El mensaje que se espera registrar |
-| `%date%`    | Fecha que del mensaje fue agregado |
-| `%type%`    | Tipo de mensaje en mayúsculas      |
+| Variable    | Descripción                         |
+| ----------- | ----------------------------------- |
+| `%message%` | El mensaje que se espera registrar  |
+| `%date%`    | Fecha que del mensaje fue agregado  |
+| `%level%`   | Uppercase string with message level |
 
 Ejemplo de cómo modificar el formato del mensaje:
 
@@ -396,7 +396,7 @@ use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\Formatter\Line;
 
-$formatter = new Line('[%type%] - [%date%] - %message%');
+$formatter = new Line('[%level%] - [%date%] - %message%');
 $adapter   = new Stream('/storage/logs/main.log');
 
 $adapter->setFormatter($formatter);
@@ -427,7 +427,7 @@ use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\Formatter\Line;
 
 $formatter = new Line();
-$formatter->setFormat('[%type%] - [%date%] - %message%');
+$formatter->setFormat('[%level%] - [%date%] - %message%');
 
 $adapter = new Stream('/storage/logs/main.log');
 
@@ -486,9 +486,9 @@ Formatea los mensajes y devuelve una cadena en JSON:
 
 ```json
 {
-    "type"      : "Tipo de mensaje",
-    "message"   : "El mensaje",
-    "timestamp" : "Fecha del mensaje según el formato definido"
+    "level"     : "Level of the message",
+    "message"   : "The message",
+    "timestamp" : "The date as defined in the date format"
 }
 ```
 
@@ -532,8 +532,8 @@ Resultado:
 
 ```json
 {
-    "type"      : "error",
-    "message"   : "Algo falló",
+    "level"     : "error",
+    "message"   : "Something went wrong",
     "timestamp" : "20181225-121314"
 }
 ```
