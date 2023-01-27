@@ -541,16 +541,16 @@ $acl->isAllowed('manager', 'admin', 'dashboard');
 ## Objetos Personalizados
 Phalcon permite a los desarrolladores definir sus propios objetos rol y componente. Estos objetos deben implementar las interfaces facilitadas:
 
-* [Phalcon\Acl\RoleAware][acl-roleaware] for Role
-* [Phalcon\Acl\ComponentAware][acl-componentaware] for Component
+* \[Phalcon\Acl\RoleAwareInterface\]\[acl-roleawareinterface\] for Role
+* \[Phalcon\Acl\ComponentAwareInterface\]\[acl-componentawareinterface\] for Component
 
 ### Rol
-We can implement the [Phalcon\Acl\RoleAware][acl-roleaware] in our custom class with its own logic. El siguiente ejemplo muestra un nuevo objeto rol llamado `ManagerRole`:
+We can implement the \[Phalcon\Acl\RoleAwareInterface\]\[acl-roleawareinterface\] in our custom class with its own logic. El siguiente ejemplo muestra un nuevo objeto rol llamado `ManagerRole`:
 
 ```php
 <?php
 
-use Phalcon\Acl\RoleAware;
+use Phalcon\Acl\RoleAwareInterface;
 
 // #01
 class ManagerRole implements RoleAware
@@ -933,6 +933,5 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-exception]: api/phalcon_acl#acl-exception
 [acl-role]: api/phalcon_acl#acl-role
 [acl-role]: api/phalcon_acl#acl-role
-[acl-roleaware]: api/phalcon_acl#acl-roleaware
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
