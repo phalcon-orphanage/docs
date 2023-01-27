@@ -541,16 +541,16 @@ $acl->isAllowed('manager', 'admin', 'dashboard');
 ## Custom Objects
 Phalcon allows developers to define their own role and component objects. These objects must implement the supplied interfaces:
 
-* [Phalcon\Acl\RoleAware][acl-roleaware] for Role
-* [Phalcon\Acl\ComponentAware][acl-componentaware] for Component
+* [Phalcon\Acl\RoleAwareInterface][acl-roleawareinterface] for Role
+* [Phalcon\Acl\ComponentAwareInterface][acl-componentawareinterface] for Component
 
 ### Role
-We can implement the [Phalcon\Acl\RoleAware][acl-roleaware] in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
+We can implement the [Phalcon\Acl\RoleAwareInterface][acl-roleawareinterface] in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
 
 ```php
 <?php
 
-use Phalcon\Acl\RoleAware;
+use Phalcon\Acl\RoleAwareInterface;
 
 // #01
 class ManagerRole implements RoleAware
