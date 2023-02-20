@@ -395,7 +395,7 @@ use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
 
 $loader = new Loader();
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
         'Single\Controllers' => '../apps/controllers/',
         'Single\Models'      => '../apps/models/',
@@ -484,7 +484,7 @@ class Module implements ModuleDefinitionInterface
     )
     {
         $loader = new Loader();
-        $loader->registerNamespaces(
+        $loader->setNamespaces(
             [
                 'Multi\Back\Controllers' => '../apps/back/controllers/',
                 'Multi\Back\Models'      => '../apps/back/models/',
