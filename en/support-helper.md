@@ -1222,7 +1222,7 @@ $helper = new HelperFactory();
 
 $source = 'kittens-are_cats';
 
-$result = $helper->friendly($source);
+$result = $helper->humanize($source);
 
 echo $result; // 'kittens are cats'
 ```
