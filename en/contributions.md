@@ -100,7 +100,7 @@ Thanks!
 [gdb]: https://bugs.php.net/bugs-generating-backtrace.php
 [gdb-w32]: https://bugs.php.net/bugs-generating-backtrace-win32.php
 [symbols]: https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols
-[building-php]: http://www.phpinternalsbook.com/build_system/building_php.html
+[building-php]: https://www.phpinternalsbook.com/build_system/building_php.html
 [env]: testing-environment
 [zephir]: https://zephir-lang.com 
 [psr-12]: https://www.php-fig.org/psr/
