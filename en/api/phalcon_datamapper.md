@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\DataMapper'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\DataMapper\Pdo\Connection](#datamapper-pdo-connection)
 * [Phalcon\DataMapper\Pdo\Connection\AbstractConnection](#datamapper-pdo-connection-abstractconnection)

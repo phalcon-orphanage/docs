@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Cache'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Cache\AbstractCache](#cache-abstractcache)
 * [Phalcon\Cache\Adapter\AdapterInterface](#cache-adapter-adapterinterface)

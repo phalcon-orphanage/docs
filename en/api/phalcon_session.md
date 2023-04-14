@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Session'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Session\Adapter\AbstractAdapter](#session-adapter-abstractadapter)
 * [Phalcon\Session\Adapter\Libmemcached](#session-adapter-libmemcached)

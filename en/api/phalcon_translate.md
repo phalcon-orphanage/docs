@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Translate'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Translate\Adapter\AbstractAdapter](#translate-adapter-abstractadapter)
 * [Phalcon\Translate\Adapter\AdapterInterface](#translate-adapter-adapterinterface)

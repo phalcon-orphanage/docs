@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Config'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Config\Adapter\Grouped](#config-adapter-grouped)
 * [Phalcon\Config\Adapter\Ini](#config-adapter-ini)

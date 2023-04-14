@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Application'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Application\AbstractApplication](#application-abstractapplication)
 * [Phalcon\Application\Exception](#application-exception)

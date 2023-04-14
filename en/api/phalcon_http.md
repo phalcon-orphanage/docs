@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Http'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Http\Cookie](#http-cookie)
 * [Phalcon\Http\Cookie\CookieInterface](#http-cookie-cookieinterface)

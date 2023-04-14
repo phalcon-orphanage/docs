@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Annotations'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Annotations\Adapter\AbstractAdapter](#annotations-adapter-abstractadapter)
 * [Phalcon\Annotations\Adapter\AdapterInterface](#annotations-adapter-adapterinterface)

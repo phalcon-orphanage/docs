@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Forms'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Forms\Element\AbstractElement](#forms-element-abstractelement)
 * [Phalcon\Forms\Element\Check](#forms-element-check)

@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Logger'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Logger\AbstractLogger](#logger-abstractlogger)
 * [Phalcon\Logger\Adapter\AbstractAdapter](#logger-adapter-abstractadapter)

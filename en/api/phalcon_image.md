@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Image'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Image\Adapter\AbstractAdapter](#image-adapter-abstractadapter)
 * [Phalcon\Image\Adapter\AdapterInterface](#image-adapter-adapterinterface)

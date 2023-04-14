@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Support'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Support\Collection](#support-collection)
 * [Phalcon\Support\Collection\CollectionInterface](#support-collection-collectioninterface)

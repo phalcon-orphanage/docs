@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Tag'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Tag](#tag)
 * [Phalcon\Tag\Exception](#tag-exception)

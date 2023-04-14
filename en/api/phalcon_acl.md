@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Acl'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Acl\Adapter\AbstractAdapter](#acl-adapter-abstractadapter)
 * [Phalcon\Acl\Adapter\AdapterInterface](#acl-adapter-adapterinterface)

@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Factory'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Factory\AbstractConfigFactory](#factory-abstractconfigfactory)
 * [Phalcon\Factory\AbstractFactory](#factory-abstractfactory)

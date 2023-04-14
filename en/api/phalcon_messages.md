@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Messages'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Messages\Exception](#messages-exception)
 * [Phalcon\Messages\Message](#messages-message)

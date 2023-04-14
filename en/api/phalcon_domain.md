@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Domain'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Domain\Payload\Payload](#domain-payload-payload)
 * [Phalcon\Domain\Payload\PayloadFactory](#domain-payload-payloadfactory)

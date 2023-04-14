@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Flash'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Flash\AbstractFlash](#flash-abstractflash)
 * [Phalcon\Flash\Direct](#flash-direct)

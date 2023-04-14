@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Encryption'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Encryption\Crypt](#encryption-crypt)
 * [Phalcon\Encryption\Crypt\CryptInterface](#encryption-crypt-cryptinterface)

@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Filter'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Filter\Exception](#filter-exception)
 * [Phalcon\Filter\Filter](#filter-filter)

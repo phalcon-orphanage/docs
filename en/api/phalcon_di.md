@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Di'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Di\AbstractInjectionAware](#di-abstractinjectionaware)
 * [Phalcon\Di\Di](#di-di)

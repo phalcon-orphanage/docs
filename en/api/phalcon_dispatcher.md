@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Dispatcher'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Dispatcher\AbstractDispatcher](#dispatcher-abstractdispatcher)
 * [Phalcon\Dispatcher\DispatcherInterface](#dispatcher-dispatcherinterface)

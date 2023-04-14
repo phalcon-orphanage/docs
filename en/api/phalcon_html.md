@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Html'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Html\Attributes](#html-attributes)
 * [Phalcon\Html\Attributes\AttributesInterface](#html-attributes-attributesinterface)

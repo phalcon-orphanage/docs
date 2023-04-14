@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Autoload'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Autoload\Exception](#autoload-exception)
 * [Phalcon\Autoload\Loader](#autoload-loader)

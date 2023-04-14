@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Db'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Db\AbstractDb](#db-abstractdb)
 * [Phalcon\Db\Adapter\AbstractAdapter](#db-adapter-abstractadapter)

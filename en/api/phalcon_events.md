@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Events'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Events\AbstractEventsAware](#events-abstracteventsaware)
 * [Phalcon\Events\Event](#events-event)

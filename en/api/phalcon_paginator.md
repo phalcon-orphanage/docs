@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Paginator'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Paginator\Adapter\AbstractAdapter](#paginator-adapter-abstractadapter)
 * [Phalcon\Paginator\Adapter\AdapterInterface](#paginator-adapter-adapterinterface)

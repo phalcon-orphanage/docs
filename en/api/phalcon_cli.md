@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Cli'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Cli\Console](#cli-console)
 * [Phalcon\Cli\Console\Exception](#cli-console-exception)

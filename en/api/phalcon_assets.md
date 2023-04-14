@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Assets'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Assets\Asset](#assets-asset)
 * [Phalcon\Assets\Asset\Css](#assets-asset-css)

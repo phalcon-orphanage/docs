@@ -2,6 +2,7 @@
 layout: default
 title: 'Phalcon\Storage'
 ---
+{%- include env-setup.html -%}
 
 * [Phalcon\Storage\Adapter\AbstractAdapter](#storage-adapter-abstractadapter)
 * [Phalcon\Storage\Adapter\AdapterInterface](#storage-adapter-adapterinterface)
