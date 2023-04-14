@@ -3,6 +3,8 @@ layout: default
 title: 'Phalcon\Storage'
 ---
 
+{%- include env-setup.html -%}
+
 * [Phalcon\Storage\Adapter\AbstractAdapter](#storage-adapter-abstractadapter)
 * [Phalcon\Storage\Adapter\AdapterInterface](#storage-adapter-adapterinterface)
 * [Phalcon\Storage\Adapter\Apcu](#storage-adapter-apcu)
@@ -32,7 +34,7 @@ title: 'Phalcon\Storage'
 
 <h1 id="storage-adapter-abstractadapter">Abstract Class Phalcon\Storage\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, DateTime, Exception, Phalcon\Storage\Serializer\SerializerInterface, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Implements | AdapterInterface |
 
@@ -215,7 +217,7 @@ Initializes the serializer
 
 <h1 id="storage-adapter-adapterinterface">Interface Phalcon\Storage\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | Phalcon\Storage\Serializer\SerializerInterface |
 
@@ -294,7 +296,7 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 
 <h1 id="storage-adapter-apcu">Class Phalcon\Storage\Adapter\Apcu</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/Apcu.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Apcu.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | APCuIterator, DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Extends    | AbstractAdapter |
 
@@ -405,7 +407,7 @@ protected function phpApcuStore( mixed $key, mixed $payload, int $ttl = int ): b
 
 <h1 id="storage-adapter-libmemcached">Class Phalcon\Storage\Adapter\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/Libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Libmemcached.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, Exception, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Extends    | AbstractAdapter |
 
@@ -487,7 +489,7 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 
 <h1 id="storage-adapter-memory">Class Phalcon\Storage\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/Memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Memory.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Extends    | AbstractAdapter |
 
@@ -568,7 +570,7 @@ protected function doGet( string $key );
 
 <h1 id="storage-adapter-redis">Class Phalcon\Storage\Adapter\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/Redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Redis.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, Exception, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Extends    | AbstractAdapter |
 
@@ -649,7 +651,7 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 
 <h1 id="storage-adapter-stream">Class Phalcon\Storage\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Adapter/Stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, FilesystemIterator, Iterator, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Traits\StorageErrorHandlerTrait, Phalcon\Support\Exception, RecursiveDirectoryIterator, RecursiveIteratorIterator | | Extends    | AbstractAdapter |
 
@@ -759,7 +761,7 @@ protected function phpUnlink( string $filename ): bool;
 
 <h1 id="storage-adapterfactory">Class Phalcon\Storage\AdapterFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/AdapterFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/AdapterFactory.zep)
 
 | Namespace  | Phalcon\Storage | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AdapterInterface | | Extends    | AbstractFactory |
 
@@ -807,7 +809,7 @@ Returns the available adapters
 
 <h1 id="storage-exception">Class Phalcon\Storage\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Exception.zep)
 
 | Namespace  | Phalcon\Storage | | Extends    | \Exception |
 
@@ -820,7 +822,7 @@ Exceptions thrown in Phalcon\Storage will use this class
 
 <h1 id="storage-serializer-abstractserializer">Abstract Class Phalcon\Storage\Serializer\AbstractSerializer</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/AbstractSerializer.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/AbstractSerializer.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Implements | SerializerInterface |
 
@@ -884,7 +886,7 @@ If this returns true, then the data is returned as is
 
 <h1 id="storage-serializer-base64">Class Phalcon\Storage\Serializer\Base64</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/Base64.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/Base64.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Uses       | InvalidArgumentException | | Extends    | AbstractSerializer |
 
@@ -914,7 +916,7 @@ Wrapper for base64_decode
 
 <h1 id="storage-serializer-igbinary">Class Phalcon\Storage\Serializer\Igbinary</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/Igbinary.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/Igbinary.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | AbstractSerializer |
 
@@ -961,7 +963,7 @@ Wrapper for `igbinary_serialize`
 
 <h1 id="storage-serializer-json">Class Phalcon\Storage\Serializer\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/Json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/Json.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Uses       | InvalidArgumentException, JsonSerializable | | Extends    | AbstractSerializer |
 
@@ -985,7 +987,7 @@ Unserializes data
 
 <h1 id="storage-serializer-memcachedigbinary">Class Phalcon\Storage\Serializer\MemcachedIgbinary</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/MemcachedIgbinary.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/MemcachedIgbinary.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -995,7 +997,7 @@ Serializer using the built-in Memcached 'igbinary' serializer
 
 <h1 id="storage-serializer-memcachedjson">Class Phalcon\Storage\Serializer\MemcachedJson</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/MemcachedJson.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/MemcachedJson.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1005,7 +1007,7 @@ Serializer using the built-in Memcached 'json' serializer
 
 <h1 id="storage-serializer-memcachedphp">Class Phalcon\Storage\Serializer\MemcachedPhp</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/MemcachedPhp.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/MemcachedPhp.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1015,7 +1017,7 @@ Serializer using the built-in Memcached 'php' serializer
 
 <h1 id="storage-serializer-msgpack">Class Phalcon\Storage\Serializer\Msgpack</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/Msgpack.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/Msgpack.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | Igbinary |
 
@@ -1038,7 +1040,7 @@ protected function doUnserialize( mixed $value );
 
 <h1 id="storage-serializer-none">Class Phalcon\Storage\Serializer\None</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/None.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/None.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | AbstractSerializer |
 
@@ -1067,7 +1069,7 @@ Unserializes data
 
 <h1 id="storage-serializer-php">Class Phalcon\Storage\Serializer\Php</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/Php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/Php.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Uses       | InvalidArgumentException | | Extends    | AbstractSerializer |
 
@@ -1096,7 +1098,7 @@ Unserializes data
 
 <h1 id="storage-serializer-redisigbinary">Class Phalcon\Storage\Serializer\RedisIgbinary</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/RedisIgbinary.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/RedisIgbinary.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1106,7 +1108,7 @@ Serializer using the built-in Redis 'igbinary' serializer
 
 <h1 id="storage-serializer-redisjson">Class Phalcon\Storage\Serializer\RedisJson</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/RedisJson.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/RedisJson.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1116,7 +1118,7 @@ Serializer using the built-in Redis 'json' serializer
 
 <h1 id="storage-serializer-redismsgpack">Class Phalcon\Storage\Serializer\RedisMsgpack</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/RedisMsgpack.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/RedisMsgpack.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1126,7 +1128,7 @@ Serializer using the built-in Redis 'msgpack' serializer
 
 <h1 id="storage-serializer-redisnone">Class Phalcon\Storage\Serializer\RedisNone</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/RedisNone.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/RedisNone.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1136,7 +1138,7 @@ Serializer using the built-in Redis 'none' serializer
 
 <h1 id="storage-serializer-redisphp">Class Phalcon\Storage\Serializer\RedisPhp</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/RedisPhp.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/RedisPhp.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Extends    | None |
 
@@ -1146,7 +1148,7 @@ Serializer using the built-in Redis 'php' serializer
 
 <h1 id="storage-serializer-serializerinterface">Interface Phalcon\Storage\Serializer\SerializerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/Serializer/SerializerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/SerializerInterface.zep)
 
 | Namespace  | Phalcon\Storage\Serializer | | Uses       | Serializable | | Extends    | Serializable |
 
@@ -1168,7 +1170,7 @@ public function setData( mixed $data ): void;
 
 <h1 id="storage-serializerfactory">Class Phalcon\Storage\SerializerFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Storage/SerializerFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/SerializerFactory.zep)
 
 | Namespace  | Phalcon\Storage | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends    | AbstractFactory |
 
