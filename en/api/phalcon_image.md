@@ -14,7 +14,7 @@ title: 'Phalcon\Image'
 
 <h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
@@ -204,7 +204,7 @@ protected function checkHighLow( int $value, int $min = int, int $max = int ): i
 
 <h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum |
@@ -302,7 +302,7 @@ Add a watermark on an image
 
 <h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/Adapter/Gd.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/Adapter/Gd.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
@@ -430,7 +430,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 <h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/Adapter/Imagick.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/Adapter/Imagick.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
 | Uses       | Imagick, ImagickDraw, ImagickDrawException, ImagickException, ImagickPixel, ImagickPixelException, Phalcon\Image\Enum, Phalcon\Image\Exception |
@@ -575,7 +575,7 @@ Add Watermark
 
 <h1 id="image-enum">Class Phalcon\Image\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/Enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/Enum.zep)
 
 | Namespace  | Phalcon\Image |
 
@@ -603,7 +603,7 @@ const WIDTH = 2;
 
 <h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/Exception.zep)
 
 | Namespace  | Phalcon\Image |
 | Extends    | \Exception |
@@ -614,7 +614,7 @@ Exceptions thrown in Phalcon\Image will use this class
 
 <h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Image/ImageFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Image/ImageFactory.zep)
 
 | Namespace  | Phalcon\Image |
 | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Image\Adapter\AdapterInterface |

@@ -11,7 +11,7 @@ title: 'Phalcon\Messages'
 
 <h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Messages/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Exception.zep)
 
 | Namespace  | Phalcon\Messages |
 | Extends    | \Exception |
@@ -22,7 +22,7 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 <h1 id="messages-message">Class Phalcon\Messages\Message</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Messages/Message.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Message.zep)
 
 | Namespace  | Phalcon\Messages |
 | Uses       | JsonSerializable |
@@ -146,7 +146,7 @@ Sets message type
 
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Messages/MessageInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/MessageInterface.zep)
 
 | Namespace  | Phalcon\Messages |
 
@@ -227,7 +227,7 @@ Sets message type
 
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Messages/Messages.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Messages.zep)
 
 | Namespace  | Phalcon\Messages |
 | Uses       | ArrayAccess, Countable, Iterator, JsonSerializable |

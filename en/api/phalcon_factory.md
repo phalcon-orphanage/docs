@@ -10,7 +10,7 @@ title: 'Phalcon\Factory'
 
 <h1 id="factory-abstractconfigfactory">Abstract Class Phalcon\Factory\AbstractConfigFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Factory/AbstractConfigFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Factory/AbstractConfigFactory.zep)
 
 | Namespace  | Phalcon\Factory |
 | Uses       | Phalcon\Config\ConfigInterface |
@@ -53,7 +53,7 @@ protected function getExceptionClass(): string;
 
 <h1 id="factory-abstractfactory">Abstract Class Phalcon\Factory\AbstractFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Factory/AbstractFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Factory/AbstractFactory.zep)
 
 | Namespace  | Phalcon\Factory |
 | Uses       | Phalcon\Config\ConfigInterface |
@@ -105,7 +105,7 @@ Initialize services/add new services
 
 <h1 id="factory-exception">Class Phalcon\Factory\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}/phalcon/Factory/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Factory/Exception.zep)
 
 | Namespace  | Phalcon\Factory |
 | Extends    | \Exception |
