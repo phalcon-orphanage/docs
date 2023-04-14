@@ -3,12 +3,14 @@ layout: default
 title: 'Phalcon\Autoload'
 ---
 
+{%- include env-setup.html -%}
+
 * [Phalcon\Autoload\Exception](#autoload-exception)
 * [Phalcon\Autoload\Loader](#autoload-loader)
 
 <h1 id="autoload-exception">Class Phalcon\Autoload\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Autoload/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Autoload/Exception.zep)
 
 | Namespace  | Phalcon\Autoload | | Extends    | \Exception |
 
@@ -18,7 +20,7 @@ Exceptions thrown in Phalcon\Autoload will use this class
 
 <h1 id="autoload-loader">Class Phalcon\Autoload\Loader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Autoload/Loader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Autoload/Loader.zep)
 
 | Namespace  | Phalcon\Autoload | | Uses       | Phalcon\Events\AbstractEventsAware | | Extends    | AbstractEventsAware |
 
@@ -244,5 +246,3 @@ Unregister the autoload method
 protected function requireFile( string $file ): bool;
 ```
 If the file exists, require it and return true; false otherwise
-
-
