@@ -3,13 +3,15 @@ layout: default
 title: 'Phalcon\Dispatcher'
 ---
 
+{%- include env-setup.html -%}
+
 * [Phalcon\Dispatcher\AbstractDispatcher](#dispatcher-abstractdispatcher)
 * [Phalcon\Dispatcher\DispatcherInterface](#dispatcher-dispatcherinterface)
 * [Phalcon\Dispatcher\Exception](#dispatcher-exception)
 
 <h1 id="dispatcher-abstractdispatcher">Abstract Class Phalcon\Dispatcher\AbstractDispatcher</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Dispatcher/AbstractDispatcher.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Dispatcher/AbstractDispatcher.zep)
 
 | Namespace  | Phalcon\Dispatcher | | Uses       | Exception, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Extends    | AbstractInjectionAware | | Implements | DispatcherInterface, EventsAwareInterface |
 
@@ -422,7 +424,7 @@ protected function toCamelCase( string $input ): string;
 
 <h1 id="dispatcher-dispatcherinterface">Interface Phalcon\Dispatcher\DispatcherInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Dispatcher/DispatcherInterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Dispatcher/DispatcherInterface.zep)
 
 | Namespace  | Phalcon\Dispatcher |
 
@@ -561,7 +563,7 @@ Sets action params to be dispatched
 
 <h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Dispatcher/Exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Dispatcher/Exception.zep)
 
 | Namespace  | Phalcon\Dispatcher | | Extends    | \Exception |
 

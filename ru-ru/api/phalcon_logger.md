@@ -3,6 +3,8 @@ layout: default
 title: 'Phalcon\Logger'
 ---
 
+{%- include env-setup.html -%}
+
 * [Phalcon\Logger\AbstractLogger](#logger-abstractlogger)
 * [Phalcon\Logger\Adapter\AbstractAdapter](#logger-adapter-abstractadapter)
 * [Phalcon\Logger\Adapter\AdapterInterface](#logger-adapter-adapterinterface)
@@ -23,7 +25,7 @@ title: 'Phalcon\Logger'
 
 <h1 id="logger-abstractlogger">Abstract Class Phalcon\Logger\AbstractLogger</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/AbstractLogger.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/AbstractLogger.zep)
 
 | Namespace  | Phalcon\Logger | | Uses       | DateTimeImmutable, DateTimeZone, Exception, Phalcon\Logger\Exception, Phalcon\Logger\Adapter\AdapterInterface |
 
@@ -163,7 +165,7 @@ Returns an array of log levels with integer to string conversion
 
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Adapter/AbstractAdapter.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Formatter\Line, Phalcon\Logger\Item | | Implements | AdapterInterface |
 
@@ -279,7 +281,7 @@ Returns the formatted item
 
 <h1 id="logger-adapter-adapterinterface">Interface Phalcon\Logger\Adapter\AdapterInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Adapter/AdapterInterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 
@@ -348,7 +350,7 @@ Sets the message formatter
 
 <h1 id="logger-adapter-noop">Class Phalcon\Logger\Adapter\Noop</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Adapter/Noop.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Adapter/Noop.zep)
 
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | Phalcon\Logger\Item | | Extends    | AbstractAdapter |
 
@@ -375,7 +377,7 @@ Processes the message i.e. writes it to the file
 
 <h1 id="logger-adapter-stream">Class Phalcon\Logger\Adapter\Stream</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Adapter/Stream.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Adapter/Stream.zep)
 
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | LogicException, Phalcon\Logger\Exception, Phalcon\Logger\Item | | Extends    | AbstractAdapter |
 
@@ -455,7 +457,7 @@ protected function phpFopen( string $filename, string $mode );
 
 <h1 id="logger-adapter-syslog">Class Phalcon\Logger\Adapter\Syslog</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Adapter/Syslog.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Adapter/Syslog.zep)
 
 | Namespace  | Phalcon\Logger\Adapter | | Uses       | LogicException, Phalcon\Logger\Item, Phalcon\Logger\Logger | | Extends    | AbstractAdapter |
 
@@ -516,7 +518,7 @@ Open connection to system logger
 
 <h1 id="logger-adapterfactory">Class Phalcon\Logger\AdapterFactory</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/AdapterFactory.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/AdapterFactory.zep)
 
 | Namespace  | Phalcon\Logger | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Exception | | Extends    | AbstractFactory |
 
@@ -551,7 +553,7 @@ Returns the available adapters
 
 <h1 id="logger-enum">Class Phalcon\Logger\Enum</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Enum.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Enum.zep)
 
 | Namespace  | Phalcon\Logger |
 
@@ -574,7 +576,7 @@ const WARNING = 4;
 
 <h1 id="logger-exception">Class Phalcon\Logger\Exception</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Exception.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Exception.zep)
 
 | Namespace  | Phalcon\Logger | | Extends    | \Exception |
 
@@ -586,7 +588,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 
 <h1 id="logger-formatter-abstractformatter">Abstract Class Phalcon\Logger\Formatter\AbstractFormatter</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Formatter/AbstractFormatter.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Formatter/AbstractFormatter.zep)
 
 | Namespace  | Phalcon\Logger\Formatter | | Uses       | DateTimeImmutable, Phalcon\Logger\Item, Phalcon\Support\Helper\Str\AbstractStr | | Extends    | AbstractStr | | Implements | FormatterInterface |
 
@@ -628,7 +630,7 @@ Returns the date formatted for the logger.
 
 <h1 id="logger-formatter-formatterinterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Formatter/FormatterInterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Formatter/FormatterInterface.zep)
 
 | Namespace  | Phalcon\Logger\Formatter | | Uses       | Phalcon\Logger\Item |
 
@@ -649,7 +651,7 @@ Applies a format to an item
 
 <h1 id="logger-formatter-json">Class Phalcon\Logger\Formatter\Json</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Formatter/Json.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Formatter/Json.zep)
 
 | Namespace  | Phalcon\Logger\Formatter | | Uses       | JsonException, Phalcon\Logger\Item | | Extends    | AbstractFormatter |
 
@@ -674,7 +676,7 @@ Applies a format to a message before sent it to the internal log
 
 <h1 id="logger-formatter-line">Class Phalcon\Logger\Formatter\Line</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Formatter/Line.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Formatter/Line.zep)
 
 | Namespace  | Phalcon\Logger\Formatter | | Uses       | Exception, Phalcon\Logger\Item | | Extends    | AbstractFormatter |
 
@@ -722,7 +724,7 @@ Set the format applied to each message
 
 <h1 id="logger-item">Class Phalcon\Logger\Item</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Item.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Item.zep)
 
 | Namespace  | Phalcon\Logger | | Uses       | DateTimeImmutable |
 
@@ -793,7 +795,7 @@ public function getMessage(): string;
 
 <h1 id="logger-logger">Class Phalcon\Logger\Logger</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/Logger.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/Logger.zep)
 
 | Namespace  | Phalcon\Logger | | Uses       | Exception, Phalcon\Logger\Exception | | Extends    | AbstractLogger | | Implements | LoggerInterface |
 
@@ -870,7 +872,7 @@ Example: Use of deprecated APIs, poor use of an API, undesirable things that are
 
 <h1 id="logger-loggerfactory">Class Phalcon\Logger\LoggerFactory</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/LoggerFactory.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/LoggerFactory.zep)
 
 | Namespace  | Phalcon\Logger | | Uses       | DateTimeZone, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractConfigFactory | | Extends    | AbstractConfigFactory |
 
@@ -920,7 +922,7 @@ protected function getExceptionClass(): string;
 
 <h1 id="logger-loggerinterface">Interface Phalcon\Logger\LoggerInterface</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Logger/LoggerInterface.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Logger/LoggerInterface.zep)
 
 | Namespace  | Phalcon\Logger | | Uses       | Phalcon\Logger\Adapter\AdapterInterface |
 

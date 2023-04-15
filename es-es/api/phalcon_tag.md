@@ -3,13 +3,15 @@ layout: default
 title: 'Phalcon\Tag'
 ---
 
+{%- include env-setup.html -%}
+
 * [Phalcon\Tag](#tag)
 * [Phalcon\Tag\Exception](#tag-exception)
 * [Phalcon\Tag\Select](#tag-select)
 
 <h1 id="tag">Class Phalcon\Tag</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Tag.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag.zep)
 
 | Namespace  | Phalcon | | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Mvc\Url\UrlInterface, Phalcon\Support\Helper\Str\Friendly |
 
@@ -446,7 +448,7 @@ Construye etiquetas INPUT que implementan el atributo checked
 
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Tag/Exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Exception.zep)
 
 | Namespace  | Phalcon\Tag | | Extends    | \Exception |
 
@@ -458,7 +460,7 @@ Las excepciones lanzadas en Phalcon\Tag usarán esta clase
 
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/v{{ pageVersion }}.0/phalcon/Tag/Select.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Select.zep)
 
 | Namespace  | Phalcon\Tag | | Uses       | Phalcon\Tag, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
 
@@ -473,5 +475,3 @@ Genera una etiqueta SELECT en HTML utilizando un vector estático de valores o u
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 Genera una etiqueta SELECT
-
-
