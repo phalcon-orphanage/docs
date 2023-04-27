@@ -17,7 +17,7 @@ In this tutorial, you will learn how to create a simple application that provide
 | `PUT`    | update data              |
 | `DELETE` | delete data              |
 
-> **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. You can also have a look at the [rest-api](rest-api) project. 
+> **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. You can also have a look at the [rest-api][rest-api] project. 
 {: .alert .alert-warning }
 
 ## Methods
