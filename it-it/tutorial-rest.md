@@ -691,3 +691,4 @@ Content-Type: text/html; charset=UTF-8
 
 [restful]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [curl]: https://en.wikipedia.org/wiki/CURL
+[rest-api]: https://github.com/phalcon/rest-api

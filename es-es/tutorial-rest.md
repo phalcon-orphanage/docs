@@ -18,7 +18,9 @@ In this tutorial, you will learn how to create a simple application that provide
 | `PUT`    | update data              |
 | `DELETE` | delete data              |
 
-> **NOTE**: This is just a sample application. Carece de muchas características como autenticación, autorización, saneamiento de la entrada y gestión de errores, por nombras algunas. Por favor, úsela como un *set* de construcción para su aplicación, o como tutorial para comprender cómo puede construir un API REST con Phalcon. También puede echar un vistazo al proyecto [rest-api][rest-api]. 
+
+> **NOTE**: This is just a sample application. Carece de muchas características como autenticación, autorización, saneamiento de la entrada y gestión de errores, por nombras algunas. Por favor, úsela como un *set* de construcción para su aplicación, o como tutorial para comprender cómo puede construir un API REST con Phalcon. You can also have a look at the [rest-api][rest-api] project. 
+
 > 
 > {: .alert .alert-warning }
 
@@ -691,3 +693,4 @@ Content-Type: text/html; charset=UTF-8
 
 [restful]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [curl]: https://en.wikipedia.org/wiki/CURL
+[rest-api]: https://github.com/phalcon/rest-api

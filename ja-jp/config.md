@@ -91,7 +91,7 @@ The Config Factory also offers the `load` method, which accepts a string or an a
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.php';
 $factory  = new ConfigFactory();
@@ -117,7 +117,7 @@ the `load` function will create an [Ini][ini] config object:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
