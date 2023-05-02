@@ -330,10 +330,7 @@ echo PHP_EOL;
 
 echo PHP_EOL;
 
-echo $this->tag->linkTo(
-    'signup',
-    'Sign Up Here!'
-);
+echo $this->tag->a('signup', 'Sign Up Here!', ['class' => 'btn btn-primary']);
 ```
 
 The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new controller:
