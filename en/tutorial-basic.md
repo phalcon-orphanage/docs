@@ -498,7 +498,7 @@ With the correct database parameters, our model is ready to interact with the re
     <?php echo $message; ?>
 </div>
 
-<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+<?php echo $this->tag->a(['/', 'Go back'); ?>
 ```
 Note that we have added some css styling in the code above. We will cover including the stylesheet in the [Styling](#styling) section below.
 
@@ -590,7 +590,7 @@ The view will look like this:
 
 echo "<h1>Hello!</h1>";
 
-echo $this->tag->linkTo(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+echo $this->tag->a(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>
