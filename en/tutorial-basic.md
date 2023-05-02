@@ -590,7 +590,7 @@ The view will look like this:
 
 echo "<h1>Hello!</h1>";
 
-echo $this->tag->a(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+echo $this->tag->a('signup', 'Sign Up Here!', ['class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>
