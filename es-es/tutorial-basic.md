@@ -335,10 +335,7 @@ echo PHP_EOL;
 
 echo PHP_EOL;
 
-echo $this->tag->linkTo(
-    'signup',
-    'Sign Up Here!'
-);
+echo $this->tag->a('signup', 'Sign Up Here!');
 ```
 
 El código HTML generado muestra un etiqueta HTML ancla (`<a>`) enlazando a un nuevo controlador:
@@ -508,7 +505,7 @@ With the correct database parameters, our model is ready to interact with the re
     <?php echo $message; ?>
 </div>
 
-<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+<?php echo $this->tag->a('/', 'Go back', ['class' => 'btn btn-primary']); ?>
 ```
 Tenga en cuenta que hemos añadido algunos estilos css en el código anterior. Cubriremos incluyendo la hoja de estilos en la sección [Estilo](#styling) a continuación.
 
@@ -601,7 +598,7 @@ La vista se parecerá a esto:
 
 echo "<h1>Hello!</h1>";
 
-echo $this->tag->linkTo(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+echo $this->tag->a('signup', 'Sign Up Here!', ['class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>

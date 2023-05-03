@@ -335,10 +335,7 @@ echo PHP_EOL;
 
 echo PHP_EOL;
 
-echo $this->tag->linkTo(
-    'signup',
-    'Sign Up Here!'
-);
+echo $this->tag->a('signup', 'Sign Up Here!');
 ```
 
 O código HTML gerado exibe um link (`<a>`) HTML com endereço para um novo controlador:
@@ -508,7 +505,7 @@ With the correct database parameters, our model is ready to interact with the re
     <?php echo $message; ?>
 </div>
 
-<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+<?php echo $this->tag->a('/', 'Go back', ['class' => 'btn btn-primary']); ?>
 ```
 Note que adicionamos algum estilo css no código acima. Vamos cobrir a inclusão da folha de estilos na seção [Estilos](#styling) abaixo.
 
@@ -601,7 +598,7 @@ A view deverá parecer com o seguinte:
 
 echo "<h1>Hello!</h1>";
 
-echo $this->tag->linkTo(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+echo $this->tag->a('signup', 'Sign Up Here!', ['class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>

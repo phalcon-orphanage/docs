@@ -335,10 +335,7 @@ echo PHP_EOL;
 
 echo PHP_EOL;
 
-echo $this->tag->linkTo(
-    'signup',
-    'Sign Up Here!'
-);
+echo $this->tag->a('signup', 'Sign Up Here!');
 ```
 
 Згенерований HTML код показує посилання (`&lt;a&gt;</code), що веде до нового контролера:</p>
@@ -508,7 +505,7 @@ With the correct database parameters, our model is ready to interact with the re
     <?php echo $message; ?>
 </div>
 
-<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
+<?php echo $this->tag->a('/', 'Go back', ['class' => 'btn btn-primary']); ?>
 ```
 Зауважте, що ми додали деякі CSS стилі в зазначений код. Ми розкриємо вміст таблиці стилів нижче у розділі [Оформлення](#styling).
 
@@ -599,23 +596,23 @@ class IndexController extends Controller
 ```html
 <?php
 
-echo "<h1>Привіт!</h1>";
+echo "<h1>Hello!</h1>";
 
-echo $this->tag->linkTo(["signup", "Зареєструватися!", 'class' => 'btn btn-primary']);
+echo $this->tag->a('signup', 'Sign Up Here!', ['class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>
     <table class="table table-bordered table-hover">
         <thead class="thead-light">
         <tr>
-            <th>N п/п</th>
-            <th>Ім'я</th>
+            <th>#</th>
+            <th>Name</th>
             <th>Email</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
-            <td colspan="3"> Кількість користувачів: <?php echo $users->count(); ?></td>
+            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
         </tr>
         </tfoot>
         <tbody>
