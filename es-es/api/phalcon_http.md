@@ -708,7 +708,7 @@ Obtiene una valor de consulta o `get` siempre saneado con los filtros preestable
 ```php
 public function getHTTPReferer(): string;
 ```
-Obtiene la página web de referencia en la petición activa. ie: http://www.google.com
+Obtiene la página web de referencia en la petición activa. ie: https://www.google.com
 
 
 ```php
@@ -1423,7 +1423,7 @@ Obtiene información de autenticación aceptada por el navegador/cliente desde $
 ```php
 public function getHTTPReferer(): string;
 ```
-Obtiene la página web de referencia en la petición activa. ie: http://www.google.com
+Obtiene la página web de referencia en la petición activa. ie: https://www.google.com
 
 
 ```php
