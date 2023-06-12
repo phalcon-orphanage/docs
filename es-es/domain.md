@@ -143,8 +143,8 @@ class ReportsController extends Controller
 
 
 [adr]: https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder
-[adr-jones]: http://pmjones.io/adr/
-[adr-clarifications]: http://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/
+[adr-jones]: https://pmjones.io/adr/
+[adr-clarifications]: https://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/
 [ddd]: https://en.wikipedia.org/wiki/Domain-driven_design
 [payload-interop]: https://github.com/payload-interop/payload-interop
 [payload-payload]: api/phalcon_domain#domain-payload-payload
