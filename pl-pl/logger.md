@@ -68,17 +68,19 @@ use Phalcon\Logger\LoggerFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $config = [
-    "name"     => "prod-logger",
-    "adapters" => [
-        "main"  => [
-            "adapter" => "stream",
-            "name"    => "/storage/logs/main.log",
-            "options" => []
-        ],
-        "admin" => [
-            "adapter" => "stream",
-            "name"    => "/storage/logs/admin.log",
-            "options" => []
+    "name"    => "prod-logger",
+    "options" => [
+        "adapters" => [
+            "main"  => [
+                "adapter" => "stream",
+                "name"    => "/storage/logs/main.log",
+                "options" => []
+            ],
+            "admin" => [
+                "adapter" => "stream",
+                "name"    => "/storage/logs/admin.log",
+                "options" => []
+            ],
         ],
     ],
 ];
