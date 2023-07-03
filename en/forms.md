@@ -696,7 +696,8 @@ These elements use the [Phalcon\Html\TagFactory][tagfactory] component transpare
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
  
-You can also create your own elements by extending the [Phalcon\Forms\Element\AbstractElement](https://docs.phalcon.io/5.0/en/api/phalcon_forms#forms-element-abstractelement) abstract class.
+You can also create your own elements by extending the [Phalcon\Forms\Element\AbstractElement][forms-element-abstractelement] abstract class.
+
 
 ```php
 <?php
