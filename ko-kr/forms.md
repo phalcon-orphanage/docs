@@ -701,7 +701,8 @@ These elements use the [Phalcon\Html\TagFactory][tagfactory] component transpare
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
 
-You can also create your own elements by extending the [Phalcon\Forms\Element\AbstractElement](https://docs.phalcon.io/5.0/en/api/phalcon_forms#forms-element-abstractelement) abstract class.
+You can also create your own elements by extending the [Phalcon\Forms\Element\AbstractElement][forms-element-abstractelement] abstract class.
+
 
 ```php
 <?php
@@ -1042,6 +1043,7 @@ class ContactForm extends Form
 * [Vökuró](https://github.com/phalcon/vokuro), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
 
 [di-injectable]: api/phalcon_di#di-injectable
+[forms-element-abstractelement]: api/phalcon_forms#forms-element-abstractelement
 [forms-element-check]: api/phalcon_forms#forms-element-check
 [forms-element-date]: api/phalcon_forms#forms-element-date
 [forms-element-email]: api/phalcon_forms#forms-element-email
