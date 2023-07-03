@@ -222,9 +222,11 @@ $container->set(
 ## CLI
 
 > Status: **changes required**
->
+> 
+> **Breaking : change function parameters one by one**
+> 
 > Usage: [CLI Documentation](cli)
-{: .alert .alert-info }
+{: .alert .alert-danger }
 
 ### Parameters
 Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
