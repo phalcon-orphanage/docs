@@ -163,7 +163,7 @@ protected function phpParseIniFile( string $filename, bool $processSections = bo
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Config/Adapter/Json.zep)
 
-| Namespace  | Phalcon\Config\Adapter | | Uses       | InvalidArgumentException, Phalcon\Config\Config | | Extends    | Config |
+| Namespace  | Phalcon\Config\Adapter | | Uses       | Phalcon\Config\Config, Phalcon\Support\Helper\Json\Decode | | Extends    | Config |
 
 Reads JSON files and converts them to Phalcon\Config\Config objects.
 
@@ -335,6 +335,7 @@ $config = new \Phalcon\Config\Config(
     ]
 );
 ```
+
 
 ## Constants
 ```php
