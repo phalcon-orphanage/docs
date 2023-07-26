@@ -239,7 +239,7 @@ Establece el nivel de acceso predeterminado (Phalcon\Acl\Enum::ALLOW o Phalcon\A
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Acl/Adapter/Memory.zep)
 
-| Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Acl\RoleAwareInterface, Phalcon\Acl\ComponentAwareInterface, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Acl\Adapter | | Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Acl\RoleAwareInterface, Phalcon\Acl\ComponentAwareInterface, Phalcon\Acl\ComponentInterface, ReflectionClass, ReflectionFunction | | Extends    | AbstractAdapter |
 
 Administra listas de ACL en memoria
 
@@ -807,3 +807,5 @@ Devuelve la descripción del rol
 public function getName(): string;
 ```
 Devuelve el nombre del rol
+
+
