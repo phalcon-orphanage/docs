@@ -12,6 +12,7 @@ title: 'Phalcon\Storage'
 * [Phalcon\Storage\Adapter\Memory](#storage-adapter-memory)
 * [Phalcon\Storage\Adapter\Redis](#storage-adapter-redis)
 * [Phalcon\Storage\Adapter\Stream](#storage-adapter-stream)
+* [Phalcon\Storage\Adapter\Weak](#storage-adapter-weak)
 * [Phalcon\Storage\AdapterFactory](#storage-adapterfactory)
 * [Phalcon\Storage\Exception](#storage-exception)
 * [Phalcon\Storage\Serializer\AbstractSerializer](#storage-serializer-abstractserializer)
@@ -298,7 +299,7 @@ Stores data in the adapter forever. The key needs to manually deleted from the a
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Apcu.zep)
 
-| Namespace  | Phalcon\Storage\Adapter | | Uses       | APCuIterator, DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Extends    | AbstractAdapter |
+| Namespace  | Phalcon\Storage\Adapter | | Uses       | APCUIterator, DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception | | Extends    | AbstractAdapter |
 
 Apcu adapter
 
@@ -394,7 +395,7 @@ protected function phpApcuInc( mixed $key, int $step = int, mixed $success = nul
 ```
 
 ```php
-protected function phpApcuIterator( string $pattern ): APCuIterator | bool;
+protected function phpApcuIterator( string $pattern ): APCUIterator | bool;
 ```
 
 ```php
@@ -759,6 +760,105 @@ protected function phpUnlink( string $filename ): bool;
 
 
 
+<h1 id="storage-adapter-weak">Class Phalcon\Storage\Adapter\Weak</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Adapter/Weak.zep)
+
+| Namespace  | Phalcon\Storage\Adapter | | Uses       | DateInterval, Exception, Phalcon\Storage\SerializerFactory, Phalcon\Support\Exception, Phalcon\Storage\Serializer\SerializerInterface | | Extends    | AbstractAdapter |
+
+* Weak Adapter */
+
+## Properties
+```php
+/**
+ *
+ *
+ * @var int|null
+ */
+protected fetching;
+
+/**
+ * @var array
+ */
+protected weakList;
+
+/**
+ * @var array
+ */
+protected options;
+
+```
+
+## メソッド
+
+```php
+public function __construct( SerializerFactory $factory, array $options = [] );
+```
+Constructor, there are no options
+
+
+```php
+public function clear(): bool;
+```
+Flushes/clears the cache
+
+
+```php
+public function decrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+public function delete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+public function get( string $key, mixed $defaultValue = null ): mixed;
+```
+   Reads data from the adapter
+
+
+```php
+public function getKeys( string $prefix = string ): array;
+```
+Stores data in the adapter
+
+
+```php
+public function has( string $key ): bool;
+```
+   Checks if an element exists in the cache
+
+
+```php
+public function increment( string $key, int $value = int ): int | bool;
+```
+Increments a stored number
+
+
+```php
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter. If the TTL is `null` (default) or not defined then the default TTL will be used, as set in this adapter. If the TTL is `0` or a negative number, a `delete()` will be issued, since this item has expired. If you need to set this key forever, you should use the `setForever()` method.
+
+
+```php
+public function setDefaultSerializer( string $serializer ): void;
+```
+will never set a serializer, WeakReference cannot be serialized
+
+
+```php
+public function setForever( string $key, mixed $value ): bool;
+```
+For compatiblity only, there is no Forever with WeakReference.
+
+
+
+
 <h1 id="storage-adapterfactory">Class Phalcon\Storage\AdapterFactory</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/AdapterFactory.zep)
@@ -965,11 +1065,31 @@ Wrapper for `igbinary_serialize`
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Storage/Serializer/Json.zep)
 
-| Namespace  | Phalcon\Storage\Serializer | | Uses       | InvalidArgumentException, JsonSerializable | | Extends    | AbstractSerializer |
+| Namespace  | Phalcon\Storage\Serializer | | Uses       | InvalidArgumentException, JsonSerializable, Phalcon\Support\Helper\Json\Decode, Phalcon\Support\Helper\Json\Encode | | Extends    | AbstractSerializer |
 
 
+
+## Properties
+```php
+/**
+ * @var Decode
+ */
+private decode;
+
+/**
+ * @var Encode
+ */
+private encode;
+
+```
 
 ## メソッド
+
+```php
+public function __construct( mixed $data = null );
+```
+AbstractSerializer constructor.
+
 
 ```php
 public function serialize();
