@@ -2256,7 +2256,7 @@ Serializer method
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/TagFactory.zep)
 
-| Namespace  | Phalcon\Html | | Uses       | Phalcon\Html\Escaper, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory | | Extends    | AbstractFactory |
+| Namespace  | Phalcon\Html | | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Helper\Doctype, Phalcon\Html\Helper\Input\Checkbox, Phalcon\Html\Helper\Input\Color, Phalcon\Html\Helper\Input\Date, Phalcon\Html\Helper\Input\DateTime, Phalcon\Html\Helper\Input\DateTimeLocal, Phalcon\Html\Helper\Input\Email, Phalcon\Html\Helper\Input\File, Phalcon\Html\Helper\Input\Hidden, Phalcon\Html\Helper\Input\Image, Phalcon\Html\Helper\Input\Input, Phalcon\Html\Helper\Input\Month, Phalcon\Html\Helper\Input\Numeric, Phalcon\Html\Helper\Input\Password, Phalcon\Html\Helper\Input\Radio, Phalcon\Html\Helper\Input\Range, Phalcon\Html\Helper\Input\Search, Phalcon\Html\Helper\Input\Select, Phalcon\Html\Helper\Input\Submit, Phalcon\Html\Helper\Input\Tel, Phalcon\Html\Helper\Input\Text, Phalcon\Html\Helper\Input\Textarea, Phalcon\Html\Helper\Input\Time, Phalcon\Html\Helper\Input\Url, Phalcon\Html\Helper\Input\Week, Phalcon\Html\Helper\Meta, Phalcon\Html\Helper\Ol, Phalcon\Html\Helper\Script, Phalcon\Html\Helper\Style, Phalcon\Html\Helper\Title, Phalcon\Html\Helper\Ul, Phalcon\Html\Link\Link | | Extends    | AbstractFactory |
 
 ServiceLocator implementation for Tag helpers.
 
