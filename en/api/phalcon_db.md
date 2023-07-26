@@ -3417,7 +3417,7 @@ Generates SQL to delete primary key from a table
 
 
 ```php
-public function dropTable( string $tableName, string $schemaName ): string;
+public function dropTable( string $tableName, string $schemaName, bool $ifExists = bool ): string;
 ```
 Generates SQL to drop a table
 
@@ -3565,6 +3565,7 @@ const FETCH_LAZY;
 const FETCH_NAMED;
 const FETCH_NUM;
 const FETCH_OBJ;
+const FETCH_ORI_NEXT;
 const FETCH_PROPS_LATE;
 const FETCH_SERIALIZE;
 const FETCH_UNIQUE;
@@ -4238,7 +4239,7 @@ Gets the schema where referenced table is
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Result/PdoResult.zep)
 
 | Namespace  | Phalcon\Db\Result |
-| Uses       | Pdo, Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
+| Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
 | Implements | ResultInterface |
 
 Encapsulates the resultset internals
@@ -4348,7 +4349,7 @@ or FALSE if there are no more rows. This method is affected by the active
 fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
@@ -4361,7 +4362,7 @@ while ($robot = $result->fetch()) {
 
 
 ```php
-public function fetchAll( int $fetchStyle = null, int $fetchArgument = static-constant-access, int $ctorArgs = int ): array;
+public function fetchAll( int $mode = Enum::FETCH_DEFAULT, mixed $fetchArgument = Enum::FETCH_ORI_NEXT, mixed $constructorArgs = null ): array;
 ```
 Returns an array of arrays containing all the records in the result
 This method is affected by the active fetch flag set using
@@ -4369,7 +4370,7 @@ This method is affected by the active fetch flag set using
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 $robots = $result->fetchAll();
@@ -4384,7 +4385,7 @@ if there are no more rows. This method is affected by the active fetch
 flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_NUM
@@ -4409,7 +4410,7 @@ Gets number of rows returned by a resultset
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots robots ORDER BY name"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";

@@ -369,6 +369,7 @@ Sets the asset's type.
 
 Collection of asset objects
 
+
 ## Properties
 ```php
 /**
@@ -926,6 +927,7 @@ Phalcon\Assets\Inline\Js constructor
 
 Manages collections of CSS/JavaScript assets
 
+
 ## Properties
 ```php
 /**
@@ -1139,3 +1141,5 @@ Sets the manager options
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Sets if the HTML generated must be directly printed or returned
+
+

@@ -572,7 +572,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Support\Helper\Json\Decode, UnexpectedValueException, stdClass |
 | Extends    | AbstractInjectionAware |
 | Implements | RequestInterface, RequestMethodInterface |
 
@@ -754,7 +754,7 @@ Retrieves a query/get value always sanitized with the preset filters
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -1515,7 +1515,7 @@ $_SERVER["PHP_AUTH_DIGEST"]
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -1849,7 +1849,7 @@ Returns the number of files available
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | DateTime, DateTimeZone, InvalidArgumentException, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
+| Uses       | DateTime, DateTimeZone, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Support\Helper\Json\Encode |
 | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface, ResponseStatusCodeInterface |
 
 Part of the HTTP cycle is return responses to the clients.
@@ -1907,6 +1907,11 @@ protected sent = false;
  * @var array
  */
 protected statusCodes;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 ```
 

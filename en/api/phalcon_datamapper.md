@@ -37,6 +37,7 @@ title: 'Phalcon\DataMapper'
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
+
 ## Properties
 ```php
 /**
@@ -87,6 +88,7 @@ Disconnects from the database.
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
+
 
 ## Properties
 ```php
@@ -369,6 +371,7 @@ Bind a value using the proper PDO::PARAM_* type.
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
+
 
 ## Methods
 
@@ -657,6 +660,7 @@ Set a database connection attribute
 
 Manages Connection instances for default, read, and write connections.
 
+
 ## Properties
 ```php
 /**
@@ -843,6 +847,7 @@ Base Exception class
 
 A memory-based logger.
 
+
 ## Properties
 ```php
 /**
@@ -945,10 +950,11 @@ public function warning( string $message, array $context = [] ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
 | Namespace  | Phalcon\DataMapper\Pdo\Profiler |
-| Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface |
+| Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface, Phalcon\Support\Helper\Json\Encode |
 | Implements | ProfilerInterface |
 
 Sends query profiles to a logger.
+
 
 ## Properties
 ```php
@@ -976,6 +982,11 @@ protected logLevel = 0;
  * @var LoggerInterface
  */
 protected logger;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 ```
 
@@ -1236,6 +1247,7 @@ Processes a value (array or string) and merges it with the store
 
 Class AbstractQuery
 
+
 ## Properties
 ```php
 /**
@@ -1344,6 +1356,7 @@ Indents a collection
 | Namespace  | Phalcon\DataMapper\Query |
 
 Class Bind
+
 
 ## Properties
 ```php
