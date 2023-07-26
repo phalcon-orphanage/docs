@@ -35,6 +35,7 @@ title: 'Phalcon\DataMapper'
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
 
+
 ## Властивості
 ```php
 /**
@@ -81,6 +82,7 @@ Disconnects from the database.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Implements | ConnectionInterface |
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
+
 
 ## Властивості
 ```php
@@ -329,6 +331,7 @@ Bind a value using the proper PDO::PARAM_* type.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | PdoInterface |
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()` methods
+
 
 ## Методи
 
@@ -582,6 +585,7 @@ Set a database connection attribute
 
 Manages Connection instances for default, read, and write connections.
 
+
 ## Властивості
 ```php
 /**
@@ -753,6 +757,7 @@ Base Exception class
 
 A memory-based logger.
 
+
 ## Властивості
 ```php
 /**
@@ -840,9 +845,10 @@ public function warning( string $message, array $context = [] ): void;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface | | Implements | ProfilerInterface |
+| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface, Phalcon\Support\Helper\Json\Encode | | Implements | ProfilerInterface |
 
 Sends query profiles to a logger.
+
 
 ## Властивості
 ```php
@@ -870,6 +876,11 @@ protected logLevel = 0;
  * @var LoggerInterface
  */
 protected logger;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 ```
 
@@ -1125,6 +1136,7 @@ Processes a value (array or string) and merges it with the store
 
 Class AbstractQuery
 
+
 ## Властивості
 ```php
 /**
@@ -1233,6 +1245,7 @@ Indents a collection
 | Namespace  | Phalcon\DataMapper\Query |
 
 Class Bind
+
 
 ## Властивості
 ```php
