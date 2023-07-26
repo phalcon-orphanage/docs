@@ -348,6 +348,7 @@ Establece el tipo de recurso.
 
 Collection of asset objects
 
+
 ## Propiedades
 ```php
 /**
@@ -854,6 +855,7 @@ Constructor Phalcon\Assets\Inline\Js
 
 Gestiona colecciones de recursos CSS/JavaScript
 
+
 ## Propiedades
 ```php
 /**
@@ -1067,3 +1069,5 @@ Establece las opciones del gestor
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Establece si el HTML generado debe ser impreso directamente o devuelto
+
+
