@@ -3346,7 +3346,7 @@ Genera SQL para eliminar la clave primaria de una tabla
 
 
 ```php
-public function dropTable( string $tableName, string $schemaName ): string;
+public function dropTable( string $tableName, string $schemaName, bool $ifExists = bool ): string;
 ```
 Genera SQL para eliminar una tabla
 
@@ -3493,6 +3493,7 @@ const FETCH_LAZY;
 const FETCH_NAMED;
 const FETCH_NUM;
 const FETCH_OBJ;
+const FETCH_ORI_NEXT;
 const FETCH_PROPS_LATE;
 const FETCH_SERIALIZE;
 const FETCH_UNIQUE;
@@ -4154,7 +4155,7 @@ Obtiene el esquema donde está la tabla referenciada
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Result/PdoResult.zep)
 
-| Namespace  | Phalcon\Db\Result | | Uses       | Pdo, Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface | | Implements | ResultInterface |
+| Namespace  | Phalcon\Db\Result | | Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface | | Implements | ResultInterface |
 
 Encapsula el conjunto de resultados interno
 
@@ -4258,7 +4259,7 @@ public function fetch( int $fetchStyle = null, int $cursorOrientation = static-c
 Obtiene un vector/objeto de cadenas que corresponden a las filas obtenidas, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
@@ -4271,13 +4272,13 @@ while ($robot = $result->fetch()) {
 
 
 ```php
-public function fetchAll( int $fetchStyle = null, int $fetchArgument = static-constant-access, int $ctorArgs = int ): array;
+public function fetchAll( int $mode = Enum::FETCH_DEFAULT, mixed $fetchArgument = Enum::FETCH_ORI_NEXT, mixed $constructorArgs = null ): array;
 ```
 Devuelve un vector de vectores que contiene todos los registros del resultado Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 $robots = $result->fetchAll();
@@ -4290,7 +4291,7 @@ public function fetchArray();
 Devuelve un vector de cadenas que corresponden a la fila obtenida, o FALSE si no hay más filas. Este método se ve afectado por el indicador de obtención activo configurado usando `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECTFROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM robots robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_NUM
@@ -4315,7 +4316,7 @@ Obtiene el número de filas devueltas por un conjunto de resultados
 
 ```php
 $result = $connection->query(
-    "SELECTFROM robots ORDER BY name"
+    "SELECT * FROM robots robots ORDER BY name"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";
