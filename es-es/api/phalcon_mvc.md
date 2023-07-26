@@ -4832,6 +4832,12 @@ protected strategy;
 ## Métodos
 
 ```php
+public function getAdapter(): CacheAdapterInterface | null;
+```
+Return the internal cache adapter
+
+
+```php
 public function getAttributes( ModelInterface $model ): array;
 ```
 Devuelve los nombres de los atributos de la tabla (campos)
@@ -8215,7 +8221,7 @@ Actualiza cada registro en el conjunto de resultados
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Mvc/Model/Row.zep)
 
-| Namespace  | Phalcon\Mvc\Model | | Uses       | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\ModelInterface | | Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
+| Namespace  | Phalcon\Mvc\Model | | Uses       | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\ModelInterface | | Extends    | \stdClass | | Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
 
 Este componente permite a Phalcon\Mvc\Model devolver filas sin una entidad asociada. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
@@ -11399,7 +11405,7 @@ public function getRenderLevel(): int;
 ```
 
 ```php
-public function getVar( string $key );
+public function getVar( string $key ): mixed | null;
 ```
 Devuelve un parámetro previamente establecido en la vista
 
