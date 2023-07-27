@@ -974,7 +974,7 @@ Las excepciones lanzadas en Phalcon\Security usarán esta clase
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Builder.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT | | Uses       | InvalidArgumentException, Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Item, Phalcon\Encryption\Security\JWT\Token\Signature, Phalcon\Encryption\Security\JWT\Token\Token |
+| Namespace  | Phalcon\Encryption\Security\JWT | | Uses       | Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Item, Phalcon\Encryption\Security\JWT\Token\Signature, Phalcon\Encryption\Security\JWT\Token\Token, Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Support\Helper\Json\Encode |
 
 JWT Builder
 
@@ -987,6 +987,11 @@ JWT Builder
  * @var CollectionInterface
  */
 private claims;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 /**
  * @var CollectionInterface
@@ -1298,6 +1303,7 @@ Verificar una fuente pasada con una carga útil y una contraseña
 
 Abstract helper class for Tokens
 
+
 ## Propiedades
 ```php
 /**
@@ -1380,14 +1386,27 @@ public function has( string $name ): bool;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/Parser.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token | | Uses       | InvalidArgumentException |
+| Namespace  | Phalcon\Encryption\Security\JWT\Token | | Uses       | InvalidArgumentException, Phalcon\Support\Helper\Json\Decode |
 
 Token Parser class.
 
 It parses a token by validating if it is formed properly and splits it into three parts. The headers are decoded, then the claims and finally the signature. It returns a token object populated with the decoded information.
 
 
+## Propiedades
+```php
+/**
+ * @var Decode
+ */
+private decode;
+
+```
+
 ## Métodos
+
+```php
+public function __construct( Decode $decode = null );
+```
 
 ```php
 public function parse( string $token ): Token;
@@ -1501,6 +1520,7 @@ Verify the signature
 | Namespace  | Phalcon\Encryption\Security\JWT | | Uses       | Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Token |
 
 Class Validator
+
 
 ## Propiedades
 ```php

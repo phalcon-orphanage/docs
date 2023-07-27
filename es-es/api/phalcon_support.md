@@ -602,7 +602,7 @@ Muestra un elemento de traza inversa
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Support/Debug/Dump.zep)
 
-| Namespace  | Phalcon\Support\Debug | | Uses       | InvalidArgumentException, Phalcon\Di\Di, Reflection, ReflectionClass, ReflectionProperty, stdClass |
+| Namespace  | Phalcon\Support\Debug | | Uses       | Phalcon\Di\Di, Phalcon\Support\Helper\Json\Encode, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
 Vuelca información de una variable(s)
 
@@ -637,6 +637,11 @@ protected methods;
  * @var array
  */
 protected styles;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 ```
 
@@ -1232,6 +1237,12 @@ public function __invoke( string $uri, string $suffix = null ): string;
 
 Decodifica una cadena usando `json_decode` y lanza una excepción si los datos JSON no se han podido decodificar
 
+The following options are used if none specified for json_encode
+
+JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
+
+If JSON_THROW_ON_ERROR is defined in the options a JsonException will be thrown in the case of an error. Otherwise, any error will throw InvalidArgumentException
+
 
 ## Métodos
 
@@ -1247,13 +1258,15 @@ public function __invoke( string $data, bool $associative = bool, int $depth = i
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Support/Helper/Json/Encode.zep)
 
-| Namespace  | Phalcon\Support\Helper\Json | | Uses       | JsonException |
+| Namespace  | Phalcon\Support\Helper\Json | | Uses       | InvalidArgumentException |
 
 Codifica una cadena usando `json_encode` y lanza una excepción si los datos JSON no se han podido codificar
 
 The following options are used if none specified for json_encode
 
-JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES, JSON_THROW_ON_ERROR
+JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
+
+If JSON_THROW_ON_ERROR is defined in the options a JsonException will be thrown in the case of an error. Otherwise, any error will throw InvalidArgumentException
 
 @see  https://www.ietf.org/rfc/rfc4627.txt
 

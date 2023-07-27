@@ -278,6 +278,7 @@ Gets action params
 
 @todo remove this in future versions
 
+
 ```php
 public function getReturnedValue(): mixed;
 ```

@@ -540,7 +540,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request.zep)
 
-| Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass | | Extends    | AbstractInjectionAware | | Implements | RequestInterface, RequestMethodInterface |
+| Namespace  | Phalcon\Http | | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Support\Helper\Json\Decode, UnexpectedValueException, stdClass | | Extends    | AbstractInjectionAware | | Implements | RequestInterface, RequestMethodInterface |
 
 Encapsula la información de la solicitud para un acceso fácil y seguro desde los controladores de la aplicación.
 
@@ -708,7 +708,7 @@ Obtiene una valor de consulta o `get` siempre saneado con los filtros preestable
 ```php
 public function getHTTPReferer(): string;
 ```
-Obtiene la página web de referencia en la petición activa. ie: https://www.google.com
+Obtiene la página web de referencia en la petición activa. ie: http://www.google.com
 
 
 ```php
@@ -1423,7 +1423,7 @@ Obtiene información de autenticación aceptada por el navegador/cliente desde $
 ```php
 public function getHTTPReferer(): string;
 ```
-Obtiene la página web de referencia en la petición activa. ie: https://www.google.com
+Obtiene la página web de referencia en la petición activa. ie: http://www.google.com
 
 
 ```php
@@ -1747,7 +1747,7 @@ Devuelve el número de archivos disponibles
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response.zep)
 
-| Namespace  | Phalcon\Http | | Uses       | DateTime, DateTimeZone, InvalidArgumentException, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface, ResponseStatusCodeInterface |
+| Namespace  | Phalcon\Http | | Uses       | DateTime, DateTimeZone, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Support\Helper\Json\Encode | | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface, ResponseStatusCodeInterface |
 
 Parte del ciclo HTTP es devolver respuestas a los clientes. Phalcon\HTTP\Response es el componente Phalcon responsable de realizar esta tarea. Las respuestas HTTP suelen estar compuestas por cabeceras y cuerpo.
 
@@ -1802,6 +1802,11 @@ protected sent = false;
  * @var array
  */
 protected statusCodes;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 ```
 

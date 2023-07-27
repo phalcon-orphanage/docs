@@ -278,6 +278,7 @@ Obtiene los parámetros de la acción
 
 @todo remove this in future versions
 
+
 ```php
 public function getReturnedValue(): mixed;
 ```

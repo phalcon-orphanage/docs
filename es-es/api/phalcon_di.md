@@ -548,7 +548,7 @@ public function initialize(): void;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Injectable.zep)
 
-| Namespace  | Phalcon\Di | | Uses       | Phalcon\Di\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
+| Namespace  | Phalcon\Di | | Uses       | stdClass, Phalcon\Di\Di, Phalcon\Session\BagInterface | | Extends    | stdClass | | Implements | InjectionAwareInterface |
 
 Esta clase permite acceder a servicios en el contenedor de servicios simplemente accediendo a una propiedad pública con el mismo nombre que el servicio registrado
 

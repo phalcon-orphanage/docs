@@ -35,6 +35,7 @@ title: 'Phalcon\DataMapper'
 
 Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
 
+
 ## Propiedades
 ```php
 /**
@@ -81,6 +82,7 @@ Desconecta de la base de datos.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Implements | ConnectionInterface |
 
 Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
+
 
 ## Propiedades
 ```php
@@ -329,6 +331,7 @@ Vincula un valor usando el tipo PDO::PARAM_* apropiado.
 | Namespace  | Phalcon\DataMapper\Pdo\Connection | | Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface | | Extends    | PdoInterface |
 
 Proporciona citas de vector, creación de perfiles, un nuevo método `perform()`, nuevos métodos `fetch*()`
+
 
 ## Métodos
 
@@ -582,6 +585,7 @@ Establece un atributo de conexión de base de datos
 
 Gestiona instancias de conexión predeterminadas, de lectura y escritura.
 
+
 ## Propiedades
 ```php
 /**
@@ -753,6 +757,7 @@ Clase de Excepción Base
 
 A memory-based logger.
 
+
 ## Propiedades
 ```php
 /**
@@ -840,9 +845,10 @@ public function warning( string $message, array $context = [] ): void;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface | | Implements | ProfilerInterface |
+| Namespace  | Phalcon\DataMapper\Pdo\Profiler | | Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Logger\Enum, Phalcon\Logger\LoggerInterface, Phalcon\Support\Helper\Json\Encode | | Implements | ProfilerInterface |
 
 Envía los perfiles de consulta a un registrador.
+
 
 ## Propiedades
 ```php
@@ -870,6 +876,11 @@ protected logLevel = 0;
  * @var LoggerInterface
  */
 protected logger;
+
+/**
+ * @var Encode
+ */
+private encode;
 
 ```
 
@@ -1125,6 +1136,7 @@ Procesa un valor (vector o cadena) y lo combina con el almacén
 
 Clase AbstractQuery
 
+
 ## Propiedades
 ```php
 /**
@@ -1233,6 +1245,7 @@ Sangrar una colección
 | Namespace  | Phalcon\DataMapper\Query |
 
 Clase Bind
+
 
 ## Propiedades
 ```php

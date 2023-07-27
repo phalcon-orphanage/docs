@@ -12,6 +12,7 @@ title: 'Phalcon\Cache'
 * [Phalcon\Cache\Adapter\Memory](#cache-adapter-memory)
 * [Phalcon\Cache\Adapter\Redis](#cache-adapter-redis)
 * [Phalcon\Cache\Adapter\Stream](#cache-adapter-stream)
+* [Phalcon\Cache\Adapter\Weak](#cache-adapter-weak)
 * [Phalcon\Cache\AdapterFactory](#cache-adapterfactory)
 * [Phalcon\Cache\Cache](#cache-cache)
 * [Phalcon\Cache\CacheFactory](#cache-cachefactory)
@@ -180,6 +181,15 @@ Stream adapter
 
 
 
+<h1 id="cache-adapter-weak">Class Phalcon\Cache\Adapter\Weak</h1>
+
+[Source sur GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cache/Adapter/Weak.zep)
+
+| Namespace  | Phalcon\Cache\Adapter | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Weak | | Extends    | StorageWeak | | Implements | CacheAdapterInterface |
+
+* WeakCache implementation based on WeakReference */
+
+
 <h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
 
 [Source sur GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cache/AdapterFactory.zep)
@@ -187,6 +197,7 @@ Stream adapter
 | Namespace  | Phalcon\Cache | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends    | AbstractFactory |
 
 Factory to create Cache adapters
+
 
 ## Properties
 ```php
@@ -230,6 +241,7 @@ Returns the available adapters
 | Namespace  | Phalcon\Cache | | Uses       | DateInterval, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\InvalidArgumentException | | Extends    | AbstractCache |
 
 This component offers caching capabilities for your application.
+
 
 ## Méthodes
 
@@ -296,6 +308,7 @@ Returns the exception class that will be used for exceptions thrown
 | Namespace  | Phalcon\Cache | | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Cache, Phalcon\Cache\Exception\Exception, Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractConfigFactory | | Extends    | AbstractConfigFactory |
 
 Creates a new Cache class
+
 
 ## Properties
 ```php
