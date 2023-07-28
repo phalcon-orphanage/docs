@@ -17,6 +17,11 @@ keywords: 'seguridad, hash, contraseñas'
 
 [Phalcon\Encryption\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
+> By default, the component will use `password_hash` to hash a string using the `Phalcon\Encrtyption\Security::CRYPT_DEFAULT` which defaults to `Phalcon\Encryption\Security::CRYPT_BCRYPT` and corresponds to PHP's `PASSWORD_BCRYPT`. 
+> 
+> {: .alert .alert-info }
+
+
 ## Hashing de contraseñas
 Almacenar contraseñas en texto plano es una práctica de seguridad mala. Cualquiera con acceso a la base de datos tendrá inmediatamente acceso a las cuentas de todos los usuarios, y podrá realizar actividades no autorizadas. To combat that, many applications use popular one way hashing methods [md5][md5] and [sha1][sha1]. Sin embargo, el hardware evoluciona cada día y los procesadores se vuelven más rápidos, estos algoritmos se están volviendo vulnerables contra ataques de fuerza bruta. These attacks are also known as [rainbow tables][rainbow-tables].
 
@@ -38,8 +43,6 @@ $security = new Security();
 echo $security->hash('Phalcon'); 
 // $2y$08$ZUFGUUk5c3VpcHFoVUFXeOYoA4NPFEP4G9gcm6rdo3jFPaNFdR2/O
 ```
-
-El hash creado usó el factor de trabajo predeterminado, que está establecido en `10`. Usar un factor de trabajo más alto tomará un poco más de tiempo para calcular el hash.
 
 Ahora podemos comprobar si un valor enviado a nosotros por un usuario, a través del interfaz de usuario de nuestra aplicación, es idéntico a nuestra cadena hash:
 
@@ -145,6 +148,52 @@ $this->security->hash(rand());
 ```
 
 Esto se hace para proteger contra ataques temporales. Independientemente de si un usuario existe o no, el script tomará aproximadamente la misma cantidad de tiempo para ejecutarse, ya que está calculando el hash otra vez, aunque nunca usemos ese resultado.
+
+## Work Factor
+The work factor is what we also refer to as `cost`. It is a number that is passed in the `crypt()` method to hash the string. The work factor can be any number between `4` and `31`. The higher the number, the slower the algorithm will be.
+
+The work factor can be set using the `setWorkFactor()` method or passed as an element of the second parameter to the `hash()` method.
+
+```php 
+<?php
+
+use Phalcon\Encryption\Security;
+
+$password = 'password1';
+$security = new Security();
+$hashed   = $security->hash('Phalcon', ['cost' => 31]);
+
+echo $security->checkHash($password, $hashed); // true / false
+```
+
+The `workFactor` (or `cost`) is used when:
+- We are using a legacy hash (i.e. one that does not use the `password_hash` method) and in particular the `Phalcon\Encryption\Security::CRYPT_BLOWFISH_A` or `Phalcon\Encryption\Security::CRYPT_BLOWFISH_X`.
+- We are using a non legacy hash (i.e. using `password_hash`) with the `Phalcon\Encryption\Security::CRYPT_DEFAULT` or `Phalcon\Encryption\Security::CRYPT_BCRYPT` algorithms.
+
+## Argon2i
+`Phalcon\Encryption\Security` also supports the new [Argon2i][argon2i] hashing algorithm. This algorithm is the winner of the [Password Hashing Competition][password-hashing-competition] and is considered to be the best algorithm for hashing passwords. It is also the default algorithm used by PHP's `password_hash()` method.
+
+```php 
+<?php
+
+use Phalcon\Encryption\Security;
+
+$password = 'password1';
+$security = new Security();
+$security->setDefaultHash(Security::CRYPT_ARGON2I);
+$hashed   = $security->hash(
+    'Phalcon', 
+    [
+        'memory_cost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
+        'time_cost'   => PASSWORD_ARGON2_DEFAULT_TIME_COST,
+        'threads'     => PASSWORD_ARGON2_DEFAULT_THREADS,
+    ]
+);
+
+echo $security->checkHash($password, $hashed); // true / false
+```
+If no options are set, the defaults will be used.
+
 
 ## Excepciones
 Any exceptions thrown in the Security component will be of type [Phalcon\Encryption\Security\Exception][security-exception]. Puede usar esta excepción para capturar selectivamente sólo las excepciones lanzadas desde este componente. Las excepciones se pueden lanzar si el algoritmo de hashing es desconocido, si el servicio `session` no está presente en el contenedor Di, etc.
@@ -490,8 +539,8 @@ También en sus vistas (sintaxis Volt)
 {% raw %}{{ security.getToken() }}{% endraw %}
 ```
 
+[argon2i]: https://argon2.online
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
-
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
 [captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA
 [eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
@@ -500,6 +549,7 @@ También en sus vistas (sintaxis Volt)
 [md5]: https://php.net/manual/en/function.md5.php
 [openssl]: https://php.net/manual/en/book.openssl.php
 [openssl-random-pseudo-bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
+[password-hashing-competition]: https://password-hashing.net
 [random-nonce]: https://en.wikipedia.org/wiki/Cryptographic_nonce
 [rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
 [rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt
