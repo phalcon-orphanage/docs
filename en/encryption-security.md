@@ -37,8 +37,6 @@ echo $security->hash('Phalcon');
 // $2y$08$ZUFGUUk5c3VpcHFoVUFXeOYoA4NPFEP4G9gcm6rdo3jFPaNFdR2/O
 ```
 
-The hash that was created used the default work factor which is set to `10`. Using a higher work factor will take a bit more time to calculate the hash. 
-
 We can now check if a value sent to us by a user through the UI of our application, is identical to our hashed string:
 
 ```php
@@ -141,6 +139,51 @@ $this->security->hash(rand());
 ```
 
 This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
+
+## Work Factor
+The work factor is what we also refer to as `cost`. It is a number that is passed in the `crypt()` method to hash the string. The work factor can be any number between `4` and `31`. The higher the number, the slower the algorithm will be.
+
+The work factor can be set using the `setWorkFactor()` method or passed as an element of the second parameter to the `hash()` method. 
+
+```php 
+<?php
+
+use Phalcon\Encryption\Security;
+
+$password = 'password1';
+$security = new Security();
+$hashed   = $security->hash('Phalcon', ['cost' => 31]);
+
+echo $security->checkHash($password, $hashed); // true / false
+```
+
+> The `workFactor` (or `cost`) is only used with _legacy_ hashes i.e. those that do not use the `password_hash` method. Additionally, it is only used when using `Phalcon\Encryption\Security::CRYPT_BLOWFISH_A` or `Phalcon\Encryption\Security::CRYPT_BLOWFISH_X`. The `cost` is then incorporated in the string that needs to be passed in the `crypt()` method.  
+{: .alert .alert-info }
+
+## Argon2i
+`Phalcon\Encryption\Security` also supports the new [Argon2i][argon2i] hashing algorithm. This algorithm is the winner of the [Password Hashing Competition][password-hashing-competition] and is considered to be the best algorithm for hashing passwords. It is also the default algorithm used by PHP's `password_hash()` method.
+
+```php 
+<?php
+
+use Phalcon\Encryption\Security;
+
+$password = 'password1';
+$security = new Security();
+$security->setDefaultHash(Security::CRYPT_ARGON2I);
+$hashed   = $security->hash(
+    'Phalcon', 
+    [
+        'memory_cost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
+        'time_cost'   => PASSWORD_ARGON2_DEFAULT_TIME_COST,
+        'threads'     => PASSWORD_ARGON2_DEFAULT_THREADS,
+    ]
+);
+
+echo $security->checkHash($password, $hashed); // true / false
+```
+If no options are set, the defaults will be used.
+
 
 ## Exceptions
 Any exceptions thrown in the Security component will be of type [Phalcon\Encryption\Security\Exception][security-exception]. You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
@@ -485,6 +528,7 @@ Also in your views (Volt syntax)
 {% raw %}{{ security.getToken() }}{% endraw %}
 ```
 
+[argon2i]: https://argon2.online
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
 [captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA
 [eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
@@ -493,6 +537,7 @@ Also in your views (Volt syntax)
 [md5]: https://php.net/manual/en/function.md5.php
 [openssl]: https://php.net/manual/en/book.openssl.php
 [openssl-random-pseudo-bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
+[password-hashing-competition]: https://password-hashing.net
 [random-nonce]: https://en.wikipedia.org/wiki/Cryptographic_nonce
 [rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
 [rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt
