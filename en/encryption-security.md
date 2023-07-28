@@ -15,6 +15,10 @@ keywords: 'security, hashing, passwords'
 
 [Phalcon\Encryption\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
+> By default, the component will use `password_hash` to hash a string using the `Phalcon\Encrtyption\Security::CRYPT_DEFAULT` which defaults to `Phalcon\Encryption\Security::CRYPT_BCRYPT` and corresponds to PHP's `PASSWORD_BCRYPT`.
+{: .alert .alert-info }
+
+
 ## Password Hashing
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use popular one way hashing methods [md5][md5] and [sha1][sha1]. However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables][rainbow-tables].
 
@@ -157,8 +161,9 @@ $hashed   = $security->hash('Phalcon', ['cost' => 31]);
 echo $security->checkHash($password, $hashed); // true / false
 ```
 
-> The `workFactor` (or `cost`) is only used with _legacy_ hashes i.e. those that do not use the `password_hash` method. Additionally, it is only used when using `Phalcon\Encryption\Security::CRYPT_BLOWFISH_A` or `Phalcon\Encryption\Security::CRYPT_BLOWFISH_X`. The `cost` is then incorporated in the string that needs to be passed in the `crypt()` method.  
-{: .alert .alert-info }
+The `workFactor` (or `cost`) is used when:
+- We are using a legacy hash (i.e. one that does not use the `password_hash` method) and in particular the `Phalcon\Encryption\Security::CRYPT_BLOWFISH_A` or `Phalcon\Encryption\Security::CRYPT_BLOWFISH_X`.  
+- We are using a non legacy hash (i.e. using `password_hash`) with the `Phalcon\Encryption\Security::CRYPT_DEFAULT` or `Phalcon\Encryption\Security::CRYPT_BCRYPT` algorithms. 
 
 ## Argon2i
 `Phalcon\Encryption\Security` also supports the new [Argon2i][argon2i] hashing algorithm. This algorithm is the winner of the [Password Hashing Competition][password-hashing-competition] and is considered to be the best algorithm for hashing passwords. It is also the default algorithm used by PHP's `password_hash()` method.
