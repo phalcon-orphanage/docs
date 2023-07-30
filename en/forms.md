@@ -715,6 +715,26 @@ class MyElement extends AbstractElement
 }
 ```
 
+### Reserved names
+Because of the way forms work and interact with elements, certain names are reserved and cannot be used as element names. These names are:
+
+* `action`
+* `attributes`
+* `di`
+* `elements`
+* `entity`
+* `eventsmanager`
+* `messages`
+* `messagesfor`
+* `label`
+* `tagFactory`
+* `useroption`
+* `useroptions`
+* `validation`
+* `value`
+
+These names correspond to getters in the `Form` object or are properties coming from the Di container.
+
 ## Filtering
 A form is also able to filter data before it is validated. You can set filters in each element:
 
