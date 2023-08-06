@@ -1388,6 +1388,53 @@ $customer->getInvoices()->delete(
 );
 ```
 
+
+### Messages
+You can append messages from another model.
+
+```php
+<?php
+
+$invoices = $customer->getInvoices();
+
+foreach ($invoices as $invoice) {
+    if ( false === $invoice->save() ) {
+        $customer->appendMessagesFrom($invoice);
+    }
+}
+$messages = $customer->getMessages();
+foreach ($messages as $message) {
+    echo $message;
+    $metaData = $message->getMetadata();
+    if ( true === isset($metaData['model']) ) {
+        echo $metaData['model'];
+    }
+}
+```
+
+
+For better error reporting you can retrieve the name of the Model and Reference Model from the Message MetaData:
+
+```php
+<?php
+
+$invoices = $customer->getInvoices();
+if ( false === $customer->save() ) {
+    $messages = $customer->getMessages();
+    foreach ($messages as $message) {
+        echo $message;
+        $metaData = $message->getMetadata();
+        if ( true === isset($metaData['model']) ) {
+            echo $metaData['model'];
+        }
+        if ( true === isset($metaData['referenceModel']) ) {
+            echo $metaData['referenceModel'];
+        }
+    }
+}
+```
+
+
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
 [mvc-model]: api/phalcon_mvc#mvc-model
 [mvc-model-relation]: api/phalcon_mvc#mvc-model-relation
