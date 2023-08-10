@@ -802,3 +802,5 @@ Inicia la sesión (si las cabeceras ya se enviaron, la sesión no iniciará)
 public function status(): int;
 ```
 Devuelve el estado de la sesión actual.
+
+
