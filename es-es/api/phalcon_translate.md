@@ -574,3 +574,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Devuelve los adaptadores disponibles
+
+
