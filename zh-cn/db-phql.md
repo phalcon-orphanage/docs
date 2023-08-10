@@ -115,7 +115,7 @@ The [Phalcon\Mvc\Model\Query][mvc-model-query] requires the second parameter of 
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Model\Query;
 use Phalcon\Mvc\View;
