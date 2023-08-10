@@ -1025,6 +1025,12 @@ Adds a custom claim
 
 
 ```php
+public function addHeader( string $name, mixed $value ): Builder;
+```
+Adds a custom header
+
+
+```php
 public function getAudience();
 ```
 
@@ -1484,22 +1490,32 @@ Constructor Token.
 ```php
 public function getClaims(): Item;
 ```
+Return the registered claims
+
 
 ```php
 public function getHeaders(): Item;
 ```
+Return the registered headers
+
 
 ```php
 public function getPayload(): string;
 ```
+Return the payload
+
 
 ```php
 public function getSignature(): Signature;
 ```
+Return the signature
+
 
 ```php
 public function getToken(): string;
 ```
+Return the token
+
 
 ```php
 public function validate( Validator $validator ): array;
@@ -1557,47 +1573,67 @@ Constructor Validator.
 ```php
 public function get( string $claim ): mixed | null;
 ```
+Return the value of a claim
+
 
 ```php
 public function getErrors(): array;
 ```
+Return an array with validation errors (if any)
+
 
 ```php
 public function set( string $claim, mixed $value ): Validator;
 ```
+Set the value of a claim, for comparison with the token values
+
 
 ```php
 public function setToken( Token $token ): Validator;
 ```
+Set the token to be validated
+
 
 ```php
 public function validateAudience( mixed $audience ): Validator;
 ```
+Validate the audience
+
 
 ```php
 public function validateExpiration( int $timestamp ): Validator;
 ```
+Validate the expiration time of the token
+
 
 ```php
 public function validateId( string $id ): Validator;
 ```
+Validate the id of the token
+
 
 ```php
 public function validateIssuedAt( int $timestamp ): Validator;
 ```
+Validate the issued at (iat) of the token
+
 
 ```php
 public function validateIssuer( string $issuer ): Validator;
 ```
+Validate the issuer of the token
+
 
 ```php
 public function validateNotBefore( int $timestamp ): Validator;
 ```
+Validate the notbefore (nbf) of the token
+
 
 ```php
 public function validateSignature( SignerInterface $signer, string $passphrase ): Validator;
 ```
-
+Validate the signature of the token
 
 
 
@@ -1821,3 +1857,5 @@ Genera una cadena aleatoria basada en el número ($base) de caracteres ($alphabe
 Si $n no se especifica, se asume 16. Puede ser más grande en el futuro.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
+
