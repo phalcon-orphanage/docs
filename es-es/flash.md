@@ -26,7 +26,7 @@ Este componente usa adaptadores que indican como se muestran los mensajes o se e
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -41,7 +41,7 @@ $flash->error('Something went wrong');
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
@@ -196,7 +196,7 @@ Si no quiere usar las clases por defecto, puede usar el método `setCssClasses()
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -250,7 +250,7 @@ El componente también le permite especificar una plantilla diferente, para que 
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -282,7 +282,7 @@ You can also set the icon class for each CSS class by using `setCssIconClasses()
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -387,7 +387,7 @@ Como se ha mencionado anteriormente, el componente tiene diferentes tipos de men
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -401,7 +401,7 @@ Mientras que puede pasar el tipo como primer parámetro cuando se llama a `messa
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -418,7 +418,7 @@ Si su aplicación lo requiere, podría querer limpiar los mensajes en algún mom
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -439,7 +439,7 @@ By default, implicit flushing is set to `true`. Sin embargo puede desactivarlo u
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -469,7 +469,7 @@ Por defecto, el componente escapará el contenido del mensaje. Sin embargo, podr
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -503,8 +503,8 @@ A continuación, un ejemplo de registro del servicio así como de acceso a él:
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Escaper;
+use Phalcon\Di\Di;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $container = new Di();
@@ -523,8 +523,8 @@ $container->set(
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Escaper;
+use Phalcon\Di\Di;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
