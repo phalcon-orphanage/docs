@@ -2639,3 +2639,5 @@ Envía una cabecera en bruto a la respuesta
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 Establece el código de respuesta HTTP
+
+
