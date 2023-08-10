@@ -309,3 +309,5 @@ Sets the output produced from the domain layer.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
+
+
