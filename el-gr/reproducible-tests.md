@@ -204,7 +204,7 @@ $application->handle(
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Model;
