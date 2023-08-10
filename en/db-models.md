@@ -3877,7 +3877,7 @@ You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary 
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Db\Adapter\Pdo\Sqlite;

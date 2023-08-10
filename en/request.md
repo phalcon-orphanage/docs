@@ -257,7 +257,7 @@ To make the sanitization process easier, when retrieving such fields, [Phalcon\H
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Filter;
 use Phalcon\Http\Request;
 
@@ -649,7 +649,7 @@ Example using custom authorization resolver:
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Events\Event;
 use Phalcon\Http\Request;
 use Phalcon\Events\Manager;

@@ -25,7 +25,7 @@ This component uses adapters that dictate how messages are displayed or sent to 
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -40,7 +40,7 @@ $flash->error('Something went wrong');
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
@@ -194,7 +194,7 @@ If you do not wish to use the default classes, you can use the `setCssClasses()`
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -247,7 +247,7 @@ The component also allows you to specify a different template, so that you can c
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -278,7 +278,7 @@ You can also set the icon class for each CSS class by using `setCssIconClasses()
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -382,7 +382,7 @@ As mentioned above, the component has different types of messages. To add a mess
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -396,7 +396,7 @@ While you can pass the type as the first parameter when calling `message()` you 
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -413,7 +413,7 @@ If your application requires it, you might want to clear the messages at some po
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -433,7 +433,7 @@ By default, implicit flushing is set to `true`. You can however turn it off by u
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -461,7 +461,7 @@ By default, the component will escape the contents of the message. There might b
 ```php
 <?php
 
-use Phalcon\Escaper;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -494,8 +494,8 @@ An example of the registration of the service as well as accessing it is below:
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Escaper;
+use Phalcon\Di\Di;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Direct;
 
 $container = new Di();
@@ -514,8 +514,8 @@ $container->set(
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Escaper;
+use Phalcon\Di\Di;
+use Phalcon\Escaper\Escaper;
 use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
