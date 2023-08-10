@@ -985,3 +985,4 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 | Namespace  | Phalcon\Cli |
 
 Interface for task handlers
+
