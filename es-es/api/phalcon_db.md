@@ -4410,3 +4410,5 @@ Obtiene el número de filas devueltas por un conjunto de resultados
 public function setFetchMode( int $fetchMode ): bool;
 ```
 Cambia el modo de obtención que afecta a Phalcon\Db\Result\Pdo::fetch()
+
+
