@@ -244,7 +244,7 @@ El siguiente comportamiento es un ejemplo, implementa el comportamiento `Blameab
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
 
