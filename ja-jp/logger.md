@@ -707,7 +707,7 @@ You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
