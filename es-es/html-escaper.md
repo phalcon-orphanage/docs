@@ -295,7 +295,7 @@ A continuación, un ejemplo de registro del servicio así como de acceso a él:
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Html\Escaper;
 
 $container = new Di();
