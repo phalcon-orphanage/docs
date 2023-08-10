@@ -1091,6 +1091,12 @@ Adds a custom claim
 
 
 ```php
+public function addHeader( string $name, mixed $value ): Builder;
+```
+Adds a custom header
+
+
+```php
 public function getAudience();
 ```
 
@@ -1640,31 +1646,31 @@ Token constructor.
 ```php
 public function getClaims(): Item;
 ```
-
+Return the registered claims
 
 
 ```php
 public function getHeaders(): Item;
 ```
-
+Return the registered headers
 
 
 ```php
 public function getPayload(): string;
 ```
-
+Return the payload
 
 
 ```php
 public function getSignature(): Signature;
 ```
-
+Return the signature
 
 
 ```php
 public function getToken(): string;
 ```
-
+Return the token
 
 
 ```php
@@ -1726,67 +1732,67 @@ Validator constructor.
 ```php
 public function get( string $claim ): mixed | null;
 ```
-
+Return the value of a claim
 
 
 ```php
 public function getErrors(): array;
 ```
-
+Return an array with validation errors (if any)
 
 
 ```php
 public function set( string $claim, mixed $value ): Validator;
 ```
-
+Set the value of a claim, for comparison with the token values
 
 
 ```php
 public function setToken( Token $token ): Validator;
 ```
-
+Set the token to be validated
 
 
 ```php
 public function validateAudience( mixed $audience ): Validator;
 ```
-
+Validate the audience
 
 
 ```php
 public function validateExpiration( int $timestamp ): Validator;
 ```
-
+Validate the expiration time of the token
 
 
 ```php
 public function validateId( string $id ): Validator;
 ```
-
+Validate the id of the token
 
 
 ```php
 public function validateIssuedAt( int $timestamp ): Validator;
 ```
-
+Validate the issued at (iat) of the token
 
 
 ```php
 public function validateIssuer( string $issuer ): Validator;
 ```
-
+Validate the issuer of the token
 
 
 ```php
 public function validateNotBefore( int $timestamp ): Validator;
 ```
-
+Validate the notbefore (nbf) of the token
 
 
 ```php
 public function validateSignature( SignerInterface $signer, string $passphrase ): Validator;
 ```
-
+Validate the signature of the token
 
 
 
@@ -2039,3 +2045,5 @@ Generates a random string based on the number ($base) of characters
 If $n is not specified, 16 is assumed. It may be larger in future.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
+

@@ -860,3 +860,5 @@ started)
 public function status(): int;
 ```
 Returns the status of the current session.
+
+
