@@ -707,7 +707,7 @@ Puede registrar tantos registradores como quiera en el contenedor \[Phalcon\Di\F
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Logger\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
