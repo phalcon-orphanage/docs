@@ -509,7 +509,7 @@ class IndexController extends Controller
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Session\Bag as SessionBag;
 
 $container = new Di();
@@ -527,7 +527,7 @@ If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container you can 
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 
