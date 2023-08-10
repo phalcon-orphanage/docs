@@ -4410,3 +4410,5 @@ Gets number of rows returned by a resultset
 public function setFetchMode( int $fetchMode ): bool;
 ```
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+
+
