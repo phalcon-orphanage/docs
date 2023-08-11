@@ -1641,7 +1641,7 @@ An example of the registration of the service as well as accessing it is below:
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Tag;
 
 $container = new Di();

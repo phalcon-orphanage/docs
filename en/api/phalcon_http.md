@@ -2761,3 +2761,5 @@ Send a raw header to the response
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 Sets the HTTP response code
+
+

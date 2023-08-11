@@ -242,7 +242,7 @@ The following behavior is an example, it implements the `Blameable` behavior whi
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
 

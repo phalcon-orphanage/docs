@@ -1019,3 +1019,4 @@ Sets the events manager
 | Namespace  | Phalcon\Cli |
 
 Interface for task handlers
+
