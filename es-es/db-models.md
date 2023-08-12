@@ -3155,7 +3155,11 @@ class Invoices extends Model
 > {: .alert .alert-warning }
 
 ## Actualización Dinámica
-Las sentencias SQL `UPDATE` se crean por defecto con cada columna definida en el modelo (actualización SQL completa de todos los campos). Puede cambiar modelos específicos para hacer actualizaciones dinámicas, en este caso, sólo se usarán los campos que han cambiado para crear la sentencia SQL final.
+> **NOTE**: Dynamic Update is now enabled by default, you can disable it by changing the "phalcon.orm.dynamic_update" in the php.ini or by ini_set. 
+> 
+> {: .alert .alert-warning }
+
+If the system wide dynamic update is disabled, the SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). Puede cambiar modelos específicos para hacer actualizaciones dinámicas, en este caso, sólo se usarán los campos que han cambiado para crear la sentencia SQL final.
 
 En algunos casos esto podría mejorar el rendimiento al reducir el tráfico entre la aplicación y el servidor de base de datos, especialmente cuando la tabla destino tiene campos blob/text:
 
@@ -3904,7 +3908,7 @@ You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary 
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Db\Adapter\Pdo\Sqlite;

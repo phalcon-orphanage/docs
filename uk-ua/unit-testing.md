@@ -112,7 +112,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Incubator\Test\PHPUnit\UnitTestCase;
 use PHPUnit\Framework\IncompleteTestError;
@@ -137,7 +137,7 @@ abstract class AbstractUnitTest extends UnitTestCase
     {
         if (!$this->loaded) {
             throw new IncompleteTestError(
-                "Будь ласка запустіть parent::setUp()."
+                "Please run parent::setUp()."
             );
         }
     }

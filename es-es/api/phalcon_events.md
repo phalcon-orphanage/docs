@@ -21,6 +21,7 @@ title: 'Phalcon\Events'
 
 This abstract class offers access to the events manager
 
+
 ## Propiedades
 ```php
 /**
@@ -434,3 +435,5 @@ Devuelve todos los oyentes adjuntos de cierto tipo
 public function hasListeners( string $type ): bool;
 ```
 Comprueba si cierto tipo de evento tiene oyentes
+
+

@@ -28,6 +28,7 @@ title: 'Phalcon\Cache'
 
 This component offers caching capabilities for your application.
 
+
 ## Properties
 ```php
 /**
@@ -425,3 +426,4 @@ Exceptions thrown in Phalcon\Cache will use this class
 | Namespace  | Phalcon\Cache\Exception | | Extends    | \Exception |
 
 Exceptions thrown in Phalcon\Cache will use this class
+

@@ -839,3 +839,5 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function register( DiInterface $di ): void;
 ```
 Registra un proveedor de servicios.
+
+

@@ -1127,3 +1127,5 @@ Checks if a form is registered in the forms manager
 public function set( string $name, Form $form ): Manager;
 ```
 Registers a form in the Forms Manager
+
+

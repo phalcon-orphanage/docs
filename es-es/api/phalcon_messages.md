@@ -361,3 +361,5 @@ Rebobina el iterador interno
 public function valid(): bool;
 ```
 Comprueba si el mensaje actual en el iterador es válido
+
+

@@ -985,3 +985,4 @@ Establece el administrador de eventos
 | Namespace | Phalcon\Cli |
 
 Interfaz para los manejadores de tareas
+

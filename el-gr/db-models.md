@@ -3155,7 +3155,11 @@ class Invoices extends Model
 > {: .alert .alert-warning }
 
 ## Dynamic Updates
-SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
+> **NOTE**: Dynamic Update is now enabled by default, you can disable it by changing the "phalcon.orm.dynamic_update" in the php.ini or by ini_set. 
+> 
+> {: .alert .alert-warning }
+
+If the system wide dynamic update is disabled, the SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
 In some cases this could improve the performance by reducing the traffic between the application and the database server, especially when the target table has blob/text fields:
 
@@ -3904,7 +3908,7 @@ You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary 
 ```php
 <?php
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Db\Adapter\Pdo\Sqlite;

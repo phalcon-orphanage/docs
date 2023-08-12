@@ -1127,3 +1127,5 @@ Comprueba si un formulario está registrado en el gestor de formularios
 public function set( string $name, Form $form ): Manager;
 ```
 Registra un formulario en el Gestor de Formularios
+
+

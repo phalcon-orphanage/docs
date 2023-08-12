@@ -361,3 +361,5 @@ public function rewind(): void;
 public function valid(): bool;
 ```
 Check if the current message in the iterator is valid
+
+

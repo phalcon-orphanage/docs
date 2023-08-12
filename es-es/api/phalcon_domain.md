@@ -309,3 +309,5 @@ Establece la salida producida desde la capa de dominio.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Establece el estado de esta carga útil.
+
+

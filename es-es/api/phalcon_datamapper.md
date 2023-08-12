@@ -1683,3 +1683,5 @@ Añade la cláusula `RETURNING`
 public function set( string $column, mixed $value = null ): Update;
 ```
 Establece una condición columna = valor
+
+
