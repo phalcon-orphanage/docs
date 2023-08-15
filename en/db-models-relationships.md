@@ -733,6 +733,25 @@ foreach ($products as $product) {
 }
 ```
 
+### `setRelated()`
+You can set the same relationship by using `setRelated()` and defining which relationship you want to set.
+
+```php
+<?php
+
+$customer = Customers::findFirst(
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
+$invoice = new Invoice();
+$customer->setRelated('invoices', [$invoice]);
+```
+
+
 ## Aliases
 Accessing a relationship cam be achieved by using the name of the remote table. Due to naming conventions, this might not be that easy and could lead to confusion. As seen above, you can define an `alias` to the relationship.
 

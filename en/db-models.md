@@ -599,6 +599,14 @@ Returns related records based on defined relations. If the relationship is one t
 {: .alert .alert-warning }
 
 ```php
+public function setRelated(
+    string $alias, 
+    mixed $value
+): \Phalcon\Mvc\Model | array | null 
+```
+Sets related objects based on Alias and type of value (Model or array), by setting relations, the dirtyState are set acordingly to Transient has opt-in. `null`` is returned if no relation was found
+
+```php
 <?php
 
 use MyApp\Models\Customers;
