@@ -5243,7 +5243,7 @@ print_r(
 
 
 ```php
-final public function readColumnMapIndex( ModelInterface $model, int $index );
+final public function readColumnMapIndex( ModelInterface $model, int $index ): array | null;
 ```
 Reads column-map information for certain model using a MODEL_* constant
 
@@ -5258,7 +5258,7 @@ print_r(
 
 
 ```php
-final public function readMetaData( ModelInterface $model ): array;
+final public function readMetaData( ModelInterface $model ): array | null;
 ```
 Reads the complete meta-data for certain model
 
@@ -5272,7 +5272,7 @@ print_r(
 
 
 ```php
-final public function readMetaDataIndex( ModelInterface $model, int $index );
+final public function readMetaDataIndex( ModelInterface $model, int $index ): array | null;
 ```
 Reads meta-data for certain model
 
@@ -5385,6 +5385,18 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 
 ```php
 final protected function initialize( ModelInterface $model, mixed $key, mixed $table, mixed $schema );
+```
+Initialize old behaviour for compatability
+
+
+```php
+final protected function initializeColumnMap( ModelInterface $model, mixed $key ): bool;
+```
+Initialize ColumnMap for a certain table
+
+
+```php
+final protected function initializeMetaData( ModelInterface $model, mixed $key ): bool;
 ```
 Initialize the metadata for certain table
 
@@ -5814,19 +5826,19 @@ Reads the ordered/reversed column map for certain model
 
 
 ```php
-public function readColumnMapIndex( ModelInterface $model, int $index );
+public function readColumnMapIndex( ModelInterface $model, int $index ): array | null;
 ```
 Reads column-map information for certain model using a MODEL_* constant
 
 
 ```php
-public function readMetaData( ModelInterface $model ): array;
+public function readMetaData( ModelInterface $model ): array | null;
 ```
 Reads meta-data for certain model
 
 
 ```php
-public function readMetaDataIndex( ModelInterface $model, int $index ): mixed;
+public function readMetaDataIndex( ModelInterface $model, int $index ): array | null;
 ```
 Reads meta-data for certain model using a MODEL_* constant
 
