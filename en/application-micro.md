@@ -42,6 +42,10 @@ $container = new Di();
 $app       = new Micro($container);
 ```
 
+> *NOTE*: Prior to Phalcon v5.3.0, the `Micro` object was automatically registered in the dependency injection container with the name `application`. This is no longer the case. 
+{: .alert .alert-warning }
+
+
 ## Methods
 
 ```php
