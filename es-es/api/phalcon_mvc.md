@@ -5093,7 +5093,7 @@ print_r(
 
 
 ```php
-final public function readColumnMapIndex( ModelInterface $model, int $index );
+final public function readColumnMapIndex( ModelInterface $model, int $index ): array | null;
 ```
 Lee información del mapa de columnas para cierto modelo usando una constante MODEL_*
 
@@ -5108,7 +5108,7 @@ print_r(
 
 
 ```php
-final public function readMetaData( ModelInterface $model ): array;
+final public function readMetaData( ModelInterface $model ): array | null;
 ```
 Lee los metadatos completos para cierto modelo
 
@@ -5122,7 +5122,7 @@ print_r(
 
 
 ```php
-final public function readMetaDataIndex( ModelInterface $model, int $index );
+final public function readMetaDataIndex( ModelInterface $model, int $index ): array | null;
 ```
 Lee los metadatos para cierto modelo
 
@@ -5235,6 +5235,18 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 
 ```php
 final protected function initialize( ModelInterface $model, mixed $key, mixed $table, mixed $schema );
+```
+Initialize old behaviour for compatability
+
+
+```php
+final protected function initializeColumnMap( ModelInterface $model, mixed $key ): bool;
+```
+Initialize ColumnMap for a certain table
+
+
+```php
+final protected function initializeMetaData( ModelInterface $model, mixed $key ): bool;
 ```
 Inicializa los metadatos para cierta tabla
 
@@ -5646,19 +5658,19 @@ Lee el mapa de columnas ordenado/inverso para cierto modelo
 
 
 ```php
-public function readColumnMapIndex( ModelInterface $model, int $index );
+public function readColumnMapIndex( ModelInterface $model, int $index ): array | null;
 ```
 Lee información del mapa de columnas para cierto modelo usando una constante MODEL_*
 
 
 ```php
-public function readMetaData( ModelInterface $model ): array;
+public function readMetaData( ModelInterface $model ): array | null;
 ```
 Lee los metadatos para cierto modelo
 
 
 ```php
-public function readMetaDataIndex( ModelInterface $model, int $index ): mixed;
+public function readMetaDataIndex( ModelInterface $model, int $index ): array | null;
 ```
 Lee meta-datos para ciertos modelos usando una constante MODEL_*
 
