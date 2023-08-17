@@ -177,6 +177,12 @@ Returns the namespaces currently registered in the autoloader
 
 
 ```php
+public function isRegistered(): bool;
+```
+returns isRegister
+
+
+```php
 public function loadFiles(): void;
 ```
 Checks if a file exists and then adds the file by doing virtual require
