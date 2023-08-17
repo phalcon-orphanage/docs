@@ -25,7 +25,8 @@ Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon a
 Phalcon can be installed using PECL.
 
 ```bash
-pecl install phalcon-5.0.0
+pecl install phalcon
+// pecl install phalcon-5.3.0
 ```
 
 **Alternative installation**
@@ -42,7 +43,7 @@ Phalconのコンパイル
 
 ```bash
 cd cphalcon/
-git checkout tags/5.0.0 ./
+git checkout tags/5.3.0 ./
 zephir fullclean
 zephir build
 ```
