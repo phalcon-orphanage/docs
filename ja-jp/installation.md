@@ -114,7 +114,7 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 The PECL installation method is available for Windows, Linux and macOS. Under windows pre-compiled dll files are available, while under Linux and macOS, Phalcon will be compiled locally. To install Phalcon using PECL make sure you have [pecl/pear][install-pecl] installed.
 ```
 pecl channel-update pecl.php.net
-pecl install phalcon-5.0.0
+pecl install phalcon
 ```
 
 ### Additional PPA
@@ -171,7 +171,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.0.0 ./
+git checkout tags/v5.3.0 ./
 zephir fullclean
 zephir build
 ```
@@ -311,7 +311,7 @@ Phalconのコンパイル
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.0.0 ./
+git checkout tags/v5.3.0 ./
 zephir fullclean
 zephir build
 ```
@@ -336,7 +336,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.0.0 ./
+git checkout tags/v5.3.0 ./
 zephir fullclean
 zephir compile
 cd ext

@@ -177,6 +177,12 @@ Devuelve los espacios de nombres registrados actualmente en el autocargador
 
 
 ```php
+public function isRegistered(): bool;
+```
+returns isRegister
+
+
+```php
 public function loadFiles(): void;
 ```
 Comprueba si un archivo existe y a continuación añade el archivo haciendo un `require` virtual
