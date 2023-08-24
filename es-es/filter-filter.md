@@ -61,6 +61,10 @@ $text = $locator->hello('World');
 > 
 > {: .alert .alert-warning }
 
+> **NOTE**: To use the prefedined filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory` as shown above. 
+> 
+> {: .alert .alert-warning }
+
 A continuación se enlistan los filtros predeterminados del componente. (N. del T.: se preserva la palabra inglesa *mixed* [mixto], para definir que el filtro acepta como entrada [`$input`] tanto cadenas de caracteres [`string`] como matrices [`array`]):
 
 #### `absint`
@@ -242,15 +246,16 @@ const FILTER_URL           = 'url';
 ```
 
 ## Métodos
-The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and implements the `__call()` method. As a result, you can use any filter as a method directly on the locator. The names of the methods are the same as the ones defined by the constants:
+The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and implements the `__call()` method. As a result, you can use any filter as a method directly on the locator. The names of the methods are the same as the ones defined by the constants. To use the built-in filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory`.
 
 ```php
 <?php
 
-use Phalcon\Filter\Filter;
+use Phalcon\Filter\FilterFactory;
 
-$filter = new Filter();
-$source = -123;
+$factory = new FilterFactory();
+$filter  = $factory->newInstance();
+$source  = -123;
 
 echo $filter->absint($source); // 123
 ```
