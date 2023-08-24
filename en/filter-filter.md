@@ -242,7 +242,7 @@ const FILTER_URL           = 'url';
 ```
 
 ## Methods
-The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and implements the `__call()` method. As a result, you can use any filter as a method directly on the locator. The names of the methods are the same as the ones defined by the constants:
+The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and implements the `__call()` method. As a result, you can use any filter as a method directly on the locator. The names of the methods are the same as the ones defined by the constants. To use the built-in filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory`. 
 
 ```php
 <?php
