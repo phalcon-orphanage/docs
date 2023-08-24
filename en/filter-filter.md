@@ -58,6 +58,9 @@ $text = $locator->hello('World');
 > **NOTE**: Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non-numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
 
+> **NOTE**: To use the prefedined filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory` as shown above.
+{: .alert .alert-warning }
+
 The following are the built-in filters provided by this component:
 
 #### `absint`
@@ -244,10 +247,11 @@ The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and impleme
 ```php
 <?php
 
-use Phalcon\Filter\Filter;
+use Phalcon\Filter\FilterFactory;
 
-$filter = new Filter();
-$source = -123;
+$factory = new FilterFactory();
+$filter  = $factory->newInstance();
+$source  = -123;
 
 echo $filter->absint($source); // 123
 ```
