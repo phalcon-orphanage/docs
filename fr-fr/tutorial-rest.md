@@ -135,9 +135,9 @@ namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Messages\Message;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness;
-use Phalcon\Validation\Validator\InclusionIn;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 class Robots extends Model
 {
@@ -191,13 +191,13 @@ These changes need to be made in the `index.php` file.
 ```php
 <?php
 
-use Phalcon\Loader\Loader;
+use Phalcon\Autoload\Loader;
 use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
 $loader = new Loader();
-$loader->registerNamespaces(
+$loader->setNamespaces(
     [
         'MyApp\Models' => __DIR__ . '/models/',
     ]
