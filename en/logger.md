@@ -562,7 +562,7 @@ $logger  = new Logger(
     ]
 );
 
-$message = '{framework} executed the "Hello World" test in {secs} second(s)';
+$message = '%framework% executed the "Hello World" test in %secs% second(s)';
 $context = [
     'framework' => 'Phalcon',
     'secs'      => 1,
@@ -570,6 +570,9 @@ $context = [
 
 $logger->info($message, $context);
 ```
+
+> NOTE: At the moment, changing the interpolation placeholders is not available. We will introduce this feature in future versions of Phalcon.
+{: .alert .alert-warning }
 
 ## Item
 The formatter classes above accept a [Phalcon\Logger\Item][logger-item] object. The object contains all the necessary data required for the logging process. It is used as transport of data from the logger to the formatter.
