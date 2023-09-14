@@ -360,4 +360,8 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
+
+### Phalcon plug-in for CodeLobster IDE
+Codelobster IDE includes a [special plug-in for Phalcon development](http://www.codelobster.com/phalcon.html)
+
 [phpstorm]: https://www.jetbrains.com/phpstorm/
