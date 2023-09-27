@@ -510,9 +510,14 @@ class IndexController extends Controller
 
 use Phalcon\Di\Di;
 use Phalcon\Session\Bag as SessionBag;
+use Phalcon\Session\Manager as SessionManager;
+use Phalcon\Session\Adapter\Stream as SessionAdapter;
 
 $container = new Di();
-$user      = new SessionBag('user');
+$adapter = new SessionAdapter();
+$session = new SessionManager();
+$session->setAdapter($adapter);
+$user      = new SessionBag($session, 'user');
 
 $user->setDI($container);
 
