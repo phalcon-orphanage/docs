@@ -1988,8 +1988,8 @@ If you are creating custom validators you can dynamically stop the validation ch
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Message;
 use Phalcon\Filter\Validation\Validator;
+use Phalcon\Messages\Message;
 
 class MyValidator extends Validator
 {
