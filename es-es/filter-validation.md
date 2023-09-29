@@ -1989,8 +1989,8 @@ Si está creando validadores personalizados, puede parar la cadena de validació
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Message;
 use Phalcon\Filter\Validation\Validator;
+use Phalcon\Messages\Message;
 
 class MyValidator extends Validator
 {
