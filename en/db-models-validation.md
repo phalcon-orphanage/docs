@@ -16,8 +16,8 @@ keywords: 'models, validation, uniqueness, inclusionin'
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
 
 class Customers extends Model
 {
@@ -50,9 +50,9 @@ The special `validation` event allows us to call built-in validators on the reco
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness;
-use Phalcon\Validation\Validator\InclusionIn;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 class Invoices extends Model
 {
@@ -88,7 +88,7 @@ class Invoices extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`. 
+The above example performs a validation using the built-in validator [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
 
 > **NOTE**: For more information on validators, see the [Validation documentation](filter-validation)
 {: .alert .alert-warning }
@@ -205,6 +205,6 @@ class Invoices extends Model
 
 [mvc-model]: api/phalcon_mvc#mvc-model
 [mvc-model-validationfailed]: api/phalcon_mvc#mvc-model-validationfailed
-[validation-validator-inclusionin]: api/phalcon_validation#validation-validator-inclusionin
+[validation-validator-inclusionin]: api/phalcon_filter#filter-validation-validator-inclusionin
 [messages-message]: api/phalcon_messages#messages-message
 [messages-messages]: api/phalcon_messages#messages-messages
