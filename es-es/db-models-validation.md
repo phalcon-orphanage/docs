@@ -17,8 +17,8 @@ keywords: 'modelos, validación, unicidad, inclusión'
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
 
 class Customers extends Model
 {
@@ -51,9 +51,9 @@ El eventos especial `validation` nos permite llamar validadores integrados sobre
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\Uniqueness;
-use Phalcon\Validation\Validator\InclusionIn;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 class Invoices extends Model
 {
@@ -89,7 +89,7 @@ class Invoices extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]. Comprueba el valor del campo `inv_status_flag` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá `false`.
+The above example performs a validation using the built-in validator [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]. Comprueba el valor del campo `inv_status_flag` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá `false`.
 
 > **NOTE**: For more information on validators, see the [Validation documentation](filter-validation) 
 > 
@@ -206,6 +206,6 @@ class Invoices extends Model
 ```
 
 [mvc-model]: api/phalcon_mvc#mvc-model
-[validation-validator-inclusionin]: api/phalcon_validation#validation-validator-inclusionin
+[validation-validator-inclusionin]: api/phalcon_filter#filter-validation-validator-inclusionin
 [messages-message]: api/phalcon_messages#messages-message
 [messages-messages]: api/phalcon_messages#messages-messages
