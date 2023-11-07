@@ -823,7 +823,7 @@ class Parts extends Model
     {
         $this->hasMany(
             'par_id',
-            Invoices::class,
+            self::class,
             'par_par_id',
             [
                 'reusable' => true,
@@ -833,7 +833,7 @@ class Parts extends Model
 
         $this->belongsTo(
             'par_par_id',
-            Invoices::class,
+            self::class,
             'par_id',
             [
                 'reusable' => true,
