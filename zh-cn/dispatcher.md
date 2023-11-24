@@ -811,7 +811,7 @@ use Phalcon\Mvc\Model\Binder\BindableInterface;
 
 class InvoicesController extends CrudController implements BindableInterface
 {
-    public static function getModelName()
+    public function getModelName()
     {
         return Invoices::class;
     }
