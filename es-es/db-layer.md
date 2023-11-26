@@ -700,17 +700,17 @@ $connection = $factory
 ```
 
 ### `load()`
-También puede usar el método `load()` para crear un adaptador usando un objeto de configuración o un vector. El siguiente ejemplo usa un fichero `ini` para instanciar la conexión de base de datos usando `load()`.
+También puede usar el método `load()` para crear un adaptador usando un objeto de configuración o un vector. El siguiente ejemplo usa un fichero `ini` para instanciar la conexión de base de datos usando `load()`. The `load()` method accepts a `Phalcon\Config\Config` object or an array with two elements: the name of the adapter (`adapter`) and options for the adapter (`options`).
 
 ```
 [database]
-host = TEST_DB_MYSQL_HOST
-username = TEST_DB_MYSQL_USER
-password = TEST_DB_MYSQL_PASSWD
-dbname = TEST_DB_MYSQL_NAME
-port = TEST_DB_MYSQL_PORT
-charset = TEST_DB_MYSQL_CHARSET
 adapter = mysql
+options.host = DATA_MYSQL_HOST
+options.username = DATA_MYSQL_USER
+options.password = DATA_MYSQL_PASS
+options.dbname = DATA_MYSQL_NAME
+options.port = DATA_MYSQL_PORT
+options.charset = DATA_MYSQL_CHARSET
 ```
 
 ```php
