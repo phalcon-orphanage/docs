@@ -404,7 +404,7 @@ The [gettext][wiki-gettext] format has been around for years and many applicatio
 
 | 选项              | 描述                                                                                                                                   |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `locale`        | The language locale you need                                                                                                         |
+| `locale`        | The language locale(s) you need (array)                                                                                              |
 | `defaultDomain` | The domain for the files. This is the actual name of the files. Both `po` and `mo` files must have the same name.                    |
 | `directory`     | The directory where the translation files are located                                                                                |
 | `category`      | A `LC*` PHP variable defining what category should be used. This maps to a folder (as seen below in the sample directory structure). |
@@ -419,7 +419,7 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-    'locale'        => 'de_DE.UTF-8',
+    'locale'        => ['de_DE.UTF-8'],
     'defaultDomain' => 'translations',
     'directory'     => '/path/to/application/locales',
     'category'      => LC_MESSAGES,
@@ -451,7 +451,7 @@ use Phalcon\Translate\Adapter\Gettext;
 
 $interpolator = new InterpolatorFactory();
 $options      = [
-    'locale'        => 'de_DE.UTF-8',
+    'locale'        => ['de_DE.UTF-8'],
     'defaultDomain' => 'translations',
     'directory'     => '/path/to/application/locales',
     'category'      => LC_MESSAGES,
