@@ -8,17 +8,19 @@ keywords: 'introdução'
 Bem-vindo à documentação do framework Phalcon.
 
 ## Missão
-Nossa missão é oferecer aos desenvolvedores uma ferramenta avançada e rica, para que eles possam usar para desenvolver aplicações poderosas com baixo consumo de servidor e alto desempenho.
+Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to facilitate the development of powerful applications with minimal server resource consumption and optimal performance.
 
 ## O que é a Phalcon
-Phalcon é um framework "full stack" de código aberto para PHP, escrito como uma extensão em linguagem C. O Phalcon é otimizada para alta performance. Sua arquitetura única permite que o framework esteja sempre residente na memória, oferecendo sua funcionalidade sempre que necessário, sem toda aquela leitura e carregamento de arquivos que frameworks tradicionais do PHP exigem.
+Phalcon is an open-source full-stack framework for PHP, distinguished by its unique architecture written as a C-extension. This means that it is implemented in C and directly integrated into PHP for enhanced performance.
+
+Its innovative architecture ensures that the framework is always memory-resident, providing functionality on demand without the overhead of file stats and reads typical in traditional PHP frameworks.
 
 ## Utilização
-Os desenvolvedores não precisam saber programar em linguagem C para usar o Phalcon. Sua interface está exposta como classes PHP sob o namespace `Phalcon`, pronto para ser usado.
+Phalcon is designed to be developer-friendly, and you don't need to be familiar with the C language to utilize its power. The framework's interface is exposed as PHP classes under the `Phalcon` namespace, making it accessible and easy to use.
 
 A Phalcon possuí baixa dependência, permitindo que os desenvolvedores utilizem apenas os objetos que eles precisam como componentes acoplados, baseados nas necessidades de suas aplicações.
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. Sua participação no esforço de tradução com novas traduções e/ou correções é super bem-vinda. The translations are handled in [GitHub][github_docs] for English, and [Crowdin][crowdin] for other languages 
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We invite and appreciate your participation in the translation effort. Contribute new translations or corrections via [GitHub][github_docs] for English or [Crowdin][crowdin] for other languages. 
 > 
 > {: .alert .alert-info }
 
@@ -28,20 +30,20 @@ Uma vez que este é um projeto orientado pela comunidade. você pode compartilha
 
 Sinta-se à vontade para conectar-se conosco usando nossas redes sociais:
 
-- Chat - Q&A
+- **Chat - Q&A**
   - [Chat do Discord](https://phalcon.io/discord)
   - [Discussions](https://phalcon.io/discussions)
-- Suporte
+- **Suporte**
   - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - Apoie-nos](https://phalcon.io/fund)
-- Mídias Sociais
+- **Mídias Sociais**
   - [Telegram](https://phalcon.io/telegram)
   - [Gab.ai](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)
-- Vídeos
+- **Vídeos**
   - [BitChute](https://phalcon.io/bitchute)
   - [LBRY](https://phalcon.io/lbry)
   - [YouTube](https://phalcon.io/youtube)
