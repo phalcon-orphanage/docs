@@ -8,17 +8,19 @@ keywords: '소 개'
 Phalcon 프레임워크에 대한 문서에 오신 것을 환영합니다.
 
 ## 미션
-우리의 미션은 풍부한 기능의 고급 도구를 개발자들에게 제공하여 서버부담은 낮지만 고성능의 강력한 어플리케이션을 개발할 수 있도록 하는 것입니다.
+Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to facilitate the development of powerful applications with minimal server resource consumption and optimal performance.
 
 ## 팔콘은 무엇인가?
-Phalcon은 C-익스텐션으로 작성된, PHP를 위한 오픈소스 풀스택 프레임워크입니다. Phalcon은 고성능을 위해 최적화되어 있습니다. 부하가 큰 파일상태, 파일읽기를 채용한 전통적인 PHP프레임워크와 달리, Phalcon의 고유한 아키텍처 덕분에 이 프레임워크는 메모리에 상주하면서 기능들을 필요할 때마다 바로바로 제공할 수 있도록 해줍니다.
+Phalcon is an open-source full-stack framework for PHP, distinguished by its unique architecture written as a C-extension. This means that it is implemented in C and directly integrated into PHP for enhanced performance.
+
+Its innovative architecture ensures that the framework is always memory-resident, providing functionality on demand without the overhead of file stats and reads typical in traditional PHP frameworks.
 
 ## 사용
-C 언어를 몰라도 Phalcon을 사용하는데에는 지장이 없습니다. Phalcon의 인터페이스는 `Phalcon` 네임스페이스 아래에 PHP 클래스로 만들어져 있어서, 바로 사용할 수 있습니다.
+Phalcon is designed to be developer-friendly, and you don't need to be familiar with the C language to utilize its power. The framework's interface is exposed as PHP classes under the `Phalcon` namespace, making it accessible and easy to use.
 
 Phalcon은 느슨하게 연결되어 있어서, 개발자들이 어플리케이션 개발 시 필요한 객체만 연결 컴포넌트(glue components) 로 사용할 수 있습니다.
 
-> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. The translations are handled in [GitHub][github_docs] for English, and [Crowdin][crowdin] for other languages 
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We invite and appreciate your participation in the translation effort. Contribute new translations or corrections via [GitHub][github_docs] for English or [Crowdin][crowdin] for other languages. 
 > 
 > {: .alert .alert-info }
 
@@ -28,20 +30,20 @@ You can check our [GitHub][github] project for the code and browse through these
 
 소셜미디어 계정을 통해 우리와 편하게 연락 하실 수 있습니다:
 
-- 채팅 - Q&A
+- **채팅 - Q&A**
   - [디스코드 챗](https://phalcon.io/discord)
   - [Discussions](https://phalcon.io/discussions)
-- 후원
+- **후원**
   - [GitHub Sponsors - Support Us](https://github.com/sponsors/phalcon)
   - [OpenCollective - 후원하기](https://phalcon.io/fund)
-- 소셜미디어
+- **소셜미디어**
   - [Telegram](https://phalcon.io/telegram)
   - [Gab](https://phalcon.io/gab)
   - [MeWe](https://phalcon.io/mewe)
   - [Reddit](https://phalcon.io/reddit)
   - [Facebook](https://phalcon.io/fb)
   - [Twitter](https://phalcon.io/t)
-- 동영상
+- **동영상**
   - [BitChute](https://phalcon.io/bitchute)
   - [LBRY](https://phalcon.io/lbry)
   - [유튜브](https://phalcon.io/youtube)
